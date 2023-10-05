@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,6 +20,7 @@
 
 #include "arrow.hpp"
 
+#include "draw.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
 
@@ -138,11 +139,10 @@ bool arrow::path_contains(const map_location& hex) const
 
 void arrow::draw_hex(const map_location& hex)
 {
-	if(path_contains(hex))
-	{
-		display* disp = display::get_singleton();
-		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
-					hex, symbols_map_[hex]);
+	if(path_contains(hex)) {
+		display::get_singleton()->drawing_buffer_add(layer_, hex, [tex = image::get_texture(symbols_map_[hex])](const rect& dest) {
+			draw::blit(tex, dest);
+		});
 	}
 }
 

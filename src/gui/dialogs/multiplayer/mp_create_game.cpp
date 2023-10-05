@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -66,7 +66,8 @@ namespace prefs = preferences;
 REGISTER_DIALOG(mp_create_game)
 
 mp_create_game::mp_create_game(saved_game& state, bool local_mode)
-	: create_engine_(state)
+	: modal_dialog(window_id())
+	, create_engine_(state)
 	, config_engine_()
 	, options_manager_()
 	, selected_game_index_(-1)
@@ -136,7 +137,7 @@ void mp_create_game::pre_show(window& win)
 		std::bind(&mp_create_game::load_game_callback, this));
 
 	// Custom dialog close hook
-	win.set_exit_hook_ok_only([this](window& w)->bool { return dialog_exit_hook(w); });
+	win.set_exit_hook(window::exit_hook::on_ok, [this](window& w) { return dialog_exit_hook(w); });
 
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab
@@ -462,10 +463,10 @@ void mp_create_game::sync_with_depcheck()
 	DBG_MP << "sync_with_depcheck: end";
 }
 
-template<typename widget>
+template<typename T>
 void mp_create_game::on_filter_change(const std::string& id, bool do_select)
 {
-	create_engine_.apply_level_filter(find_widget<widget>(get_window(), id, false).get_value());
+	create_engine_.apply_level_filter(find_widget<T>(get_window(), id, false).get_value());
 
 	listbox& game_list = find_widget<listbox>(get_window(), "games_list", false);
 

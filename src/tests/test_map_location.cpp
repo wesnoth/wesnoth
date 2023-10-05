@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,9 +63,7 @@ struct MLFixture
 	~MLFixture() {}
 };
 
-BOOST_GLOBAL_FIXTURE ( MLFixture );
-
-BOOST_AUTO_TEST_SUITE ( test_map_location )
+BOOST_FIXTURE_TEST_SUITE ( test_map_location, MLFixture );
 
 //#define MAP_LOCATION_GET_OUTPUT
 

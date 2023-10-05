@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@ namespace dialogs
 class statistics_dialog : public modal_dialog
 {
 public:
-	statistics_dialog(const team& current_team);
+	statistics_dialog(statistics_t& statistics, const team& current_team);
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(statistics_dialog)
 
@@ -40,9 +40,9 @@ private:
 	/**
 	 * Picks out the stats structure that was selected for displaying.
 	 */
-	inline const statistics::stats& current_stats();
+	inline const statistics_t::stats& current_stats();
 
-	void add_stat_row(const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost = true);
+	void add_stat_row(const std::string& type, const statistics_t::stats::str_int_map& value, const bool has_cost = true);
 
 	/** Add a row to the Damage table */
 	void add_damage_row(
@@ -64,8 +64,8 @@ private:
 	void add_hits_row(
 		const std::string& type,
 		const bool more_is_better,
-		const statistics::stats::hitrate_map& by_cth,
-		const statistics::stats::hitrate_map& turn_by_cth,
+		const statistics_t::stats::hitrate_map& by_cth,
+		const statistics_t::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn);
 
 	void update_lists();
@@ -75,12 +75,12 @@ private:
 
 	const team& current_team_;
 
-	const statistics::stats  campaign_;
-	const statistics::levels scenarios_;
+	const statistics_t::stats  campaign_;
+	const statistics_t::levels scenarios_;
 
 	std::size_t selection_index_;
 
-	std::vector<const statistics::stats::str_int_map*> main_stat_table_;
+	std::vector<const statistics_t::stats::str_int_map*> main_stat_table_;
 };
 
 } // namespace dialogs

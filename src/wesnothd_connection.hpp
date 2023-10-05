@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -181,6 +181,8 @@ private:
 
 	void send();
 	void recv();
+
+	void set_keepalive(int seconds);
 
 	template<typename T>
 	using data_queue = std::queue<T, std::list<T>>;

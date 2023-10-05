@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -107,6 +107,8 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_->parry());
 	} else if(key == "movement_used") {
 		return variant(att_->movement_used());
+	} else if(key == "attacks_used") {
+		return variant(att_->attacks_used());
 	} else if(key == "specials" || key == "special") {
 		std::vector<variant> res;
 
@@ -133,6 +135,7 @@ void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "accuracy");
 	add_input(inputs, "parry");
 	add_input(inputs, "movement_used");
+	add_input(inputs, "attacks_used");
 	add_input(inputs, "attack_weight");
 	add_input(inputs, "defense_weight");
 	add_input(inputs, "specials");
@@ -303,7 +306,7 @@ variant unit_callable::get_value(const std::string& key) const
 		} else if(key == "vision_cost") {
 			mt.get_vision().write(cfg);
 		} else if(key == "jamming_cost") {
-			mt.get_vision().write(cfg);
+			mt.get_jamming().write(cfg);
 		} else if(key == "defense") {
 			mt.get_defense().write(cfg);
 			needs_flip = true;
@@ -967,11 +970,13 @@ variant event_callable::get_value(const std::string &key) const
 		}
 	} else if(key == "weapon") {
 		if(event_info.data.has_child("first")) {
-			return variant(std::make_shared<attack_type_callable>(attack_type(event_info.data.child("first"))));
+			first_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("first"));
+			return variant(std::make_shared<attack_type_callable>(*first_weapon));
 		}
 	} else if(key == "second_weapon") {
 		if(event_info.data.has_child("second")) {
-			return variant(std::make_shared<attack_type_callable>(attack_type(event_info.data.child("second"))));
+			second_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("second"));
+			return variant(std::make_shared<attack_type_callable>(*second_weapon));
 		}
 	}
 

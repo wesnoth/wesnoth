@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -35,6 +35,9 @@ public:
 	explicit end_credits(const std::string& campaign = "");
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(end_credits)
+
+	/** TLD override to update animations, called once per frame */
+	virtual void update() override;
 
 private:
 	virtual const std::string& window_id() const override;

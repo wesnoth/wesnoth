@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -363,11 +363,10 @@ void dialog_frame::layout()
 	dirty_ = false;
 }
 
-bool dialog_frame::expose(const SDL_Rect& region)
+bool dialog_frame::expose(const rect& region)
 {
 	DBG_DP << "dialog_frame::expose " << region;
 	// Just draw everthing.
-	(void)region;
 	draw();
 	return true;
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -85,9 +85,9 @@ public:
 	 *
 	 * TLDs must not perform any actual drawing during layout.
 	 *
-	 * Implementation of this interface is mandatory.
+	 * This interface is optional.
 	 */
-	virtual void layout() = 0;
+	virtual void layout() {};
 
 	/**
 	 * Perform any internal rendering necessary to prepare the drawable.
@@ -113,7 +113,7 @@ public:
 	 *                  coordinates.
 	 * @returns         True if anything was drawn, false otherwise.
 	 */
-	virtual bool expose(const SDL_Rect& region) = 0;
+	virtual bool expose(const rect& region) = 0;
 
 	/**
 	 * The location of the TLD on the screen, in drawing coordinates.

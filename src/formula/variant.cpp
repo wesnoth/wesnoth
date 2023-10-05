@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -633,6 +633,7 @@ void variant::serialize_from_string(const std::string& str)
 	try {
 		*this = formula(str).evaluate();
 	} catch(...) {
+		DBG_SF << "Evaluation failed with exception: " << utils::get_unknown_exception_type();
 		*this = variant(str);
 	}
 }

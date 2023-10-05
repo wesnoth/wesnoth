@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,7 +52,7 @@ std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& dis
 	}
 
 	const overlay& item = item_palette_.selected_fg_item();
-	disp.add_overlay(start_hex_, item.image, item.halo, "", "", true);
+	disp.add_overlay(start_hex_, item.image, item.halo, "", "", item.visible_in_fog, item.submerge);
 
 	click_ = true;
 	return nullptr;

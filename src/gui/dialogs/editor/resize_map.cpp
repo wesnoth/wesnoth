@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,8 @@ editor_resize_map::editor_resize_map(int& width,
 									   int& height,
 									   EXPAND_DIRECTION& expand_direction,
 									   bool& copy_edge_terrain)
-	: width_(register_integer("width", true, width))
+	: modal_dialog(window_id())
+	, width_(register_integer("width", true, width))
 	, height_(register_integer("height", true, height))
 	, old_width_(width)
 	, old_height_(height)

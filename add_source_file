@@ -1,0 +1,246 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+# A script for adding source files to the Battle for Wesnoth project.
+
+# known issues:
+# xcode - if a file already exists in 'wesnoth' target, then it incorrectly thinks it also exists in the 'tests' target even though the tests build will fail
+
+import sys
+import inspect
+import pathlib
+
+try:
+    import pbxproj
+except:
+    print('\n'.join((
+        'This script requires the "pbxproj" module.',
+        'Install it using "pip install pbxproj"',
+    )))
+    exit(1)
+
+USAGE = f"""USAGE: {sys.argv[0]} <file> [target ...]
+
+Adds <file> to the specified build targets.
+
+Valid build targets are:
+ * "wesnoth" - the main game
+ * "wesnothd" - the wesnoth server
+ * "campaignd"
+ * "lua"
+ * "tests" - boost unit tests
+
+If no build target is specified, "wesnoth" is assumed.
+
+The file will be added to:
+ * the lists used by CMake and SCons in "source_lists"
+ * the Xcode project
+ * The Code::Blocks project
+
+This only supports files inside the "src" directory.
+"""
+
+#=========#
+# Globals #
+#=========#
+
+# Either the executable directory or the current working directory
+# should be the wesnoth root directory
+rootdir = pathlib.Path(inspect.getsourcefile(lambda:0))
+if not rootdir.joinpath("projectfiles").exists():
+    rootdir = pathlib.Path()
+if not rootdir.joinpath("projectfiles").exists():
+    raise Exception("Could not find project file directory")
+
+# the names of the targets in the Xcode project
+xcode_target_translations = {
+    "wesnoth": ["The Battle for Wesnoth", "unit_tests"],
+    "wesnothd": ["wesnothd"],
+    "campaignd": ["campaignd"],
+    "lua": ["liblua"],
+    "tests": ["unit_tests"],
+}
+
+# the names of the targets in source_lists
+source_list_target_translations = {
+    "wesnoth": "wesnoth",
+    "wesnothd": "wesnothd",
+    "campaignd": "campaignd",
+    "lua": "lua",
+    "tests": "boost_unit_tests",
+}
+
+# the names of the targets in Code::Blocks
+code_blocks_target_translations = {
+    "wesnoth": "wesnoth",
+    "wesnothd": "wesnothd",
+    "campaignd": "campaignd",
+    "lua": "liblua",
+    "tests": "tests",
+}
+
+#=======#
+# XCode #
+#=======#
+
+def add_to_xcode(filename, targets):
+    """Add the given file to the specified targets.
+    """
+    projectfile = rootdir.joinpath(
+        "projectfiles",
+        "Xcode",
+        "The Battle for Wesnoth.xcodeproj",
+        "project.pbxproj",
+    )
+    
+    project = pbxproj.XcodeProject.load(projectfile)
+    
+    translated_targets = [item for t in targets for item in xcode_target_translations[t]]
+    translated_targets = list(set(translated_targets))
+    print(" xcode targets:", translated_targets)
+    
+    for tname in translated_targets:
+        if not project.get_target_by_name(tname):
+            raise Exception(
+                f"Could not find target '{tname}' in Xcode project file")
+    
+    # groups are organized by directory structure under "src"
+    src_groups = project.get_groups_by_name("src")
+    if len(src_groups) != 1:
+        raise Exception("problem finding 'src' group in xcode project")
+    src_group = src_groups[0]
+    parent_group = src_group
+    for d in filename.parts[:-1]:
+        found_groups = project.get_groups_by_name(d, parent=parent_group)
+        if len(found_groups) != 1:
+            groupname = parent_group.get_name()
+            raise Exception(f"problem finding '{d}' group in '{groupname}'")
+        parent_group = found_groups[0]
+    
+    # if the group already has an entry with the same filename, loudly skip.
+    # note: this doesn't allow adding to targets one at a time.
+    # a new file should be added to all targets at once...
+    # or maybe targets could be checked somehow,
+    # or maybe the file could simply be completely removed and readded.
+    if project.get_files_by_name(filename.name, parent=parent_group):
+        print("  '"+filename.name+"' already found in Xcode project '"+",".join(translated_targets)+"', skipping")
+        return
+    
+    # force is True here because otherwise a duplicate filename in
+    # a different place will block addition of the new file.
+    # the rest is just to match existing project file structure.
+    project.add_file(filename.name,
+        force=True,
+        tree="<group>",
+        parent=parent_group,
+        target_name=translated_targets,
+    )
+    
+    # that's done, save the file
+    project.save()
+    return
+
+#==============#
+# source_lists #
+#==============#
+
+def add_to_source_list(filename, source_list):
+    source_list_file = rootdir.joinpath("source_lists", source_list)
+    sl_lines = open(source_list_file).readlines()
+    file_line = filename.as_posix() + '\n'
+    
+    # we only need source files in the source_lists, not header files
+    if filename.suffix != ".cpp":
+        return
+
+    # if the target already has an entry with the same filename, loudly skip
+    if file_line in sl_lines:
+        print(f"  '{filename}' already found in '{source_list}', skipping")
+        return
+    
+    sl_lines.append(file_line)
+    sl_lines.sort()
+    open(source_list_file, 'w').writelines(sl_lines)
+
+def add_to_source_lists(filename, target):
+    translated_targets = [source_list_target_translations[t] for t in targets]
+    print(" source_list targets:", translated_targets)
+    for t in translated_targets:
+        add_to_source_list(filename, t)
+
+#==============#
+# Code::Blocks #
+#==============#
+
+def add_to_code_blocks_target(filename, target):
+    cbp_file = rootdir.joinpath(
+        "projectfiles",
+        "CodeBlocks",
+        f"{target}.cbp",
+    )
+    cbp_lines = open(cbp_file).readlines()
+    
+    filename_for_cbp = pathlib.PurePath(
+        "..", "..", "src", filename
+    ).as_posix()
+    
+    elem = f"\t\t<Unit filename=\"{filename_for_cbp}\" />\n"
+    
+    # if the target already has an entry with the same filename, loudly skip
+    if elem in cbp_lines:
+        print(f"  '{filename}' already found in '{target}.cbp', skipping")
+        return
+    
+    # find an appropriate line to add before/after
+    index = 0
+    for line in cbp_lines:
+        if line.startswith("\t\t<Unit "):
+            if elem < line:
+                break
+        elif line.startswith("\t\t<Extensions>"):
+            # we must be the last entry, as this comes after the Unit section
+            break
+        index += 1
+    cbp_lines.insert(index, elem)
+    
+    open(cbp_file, 'w').writelines(cbp_lines)
+
+def add_to_code_blocks(filename, targets):
+    translated_targets = [code_blocks_target_translations[t] for t in targets]
+    print(" code::blocks targets:", translated_targets)
+    for t in translated_targets:
+        add_to_code_blocks_target(filename, t)
+        # if there's also an .hpp file, add that too
+        hpp = filename.with_suffix(".hpp")
+        if rootdir.joinpath("src", hpp).exists():
+            add_to_code_blocks_target(hpp, t)
+
+#======#
+# main #
+#======#
+
+if __name__ == "__main__":
+    # a file argument is mandatory
+    if len(sys.argv) < 2:
+        print(USAGE)
+        exit(1)
+    
+    filename = pathlib.PurePath(sys.argv[1])
+    targets = sys.argv[2:]
+    
+    # the default target is "wesnoth"
+    if not targets: targets = ["wesnoth"]
+    
+    # this only works on files in "src/".
+    # if it started with "src/", remove it.
+    parts = filename.parts
+    if parts[0] == "src":
+        filename = pathlib.PurePath(*parts[1:])
+    
+    # note: this does not currently check whether or not the file exists,
+    # and does not currently work with file paths relative to elsewhere.
+    # it could be made to do that.
+    
+    print(f"adding '{filename}' to targets: {targets}")
+    add_to_xcode(filename, targets)
+    add_to_source_lists(filename, targets)
+    add_to_code_blocks(filename, targets)

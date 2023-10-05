@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,9 +33,6 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
-#ifdef _WIN32
-#include "log_windows.hpp"
-#endif
 
 #include <functional>
 
@@ -53,13 +50,12 @@ namespace gui2::dialogs
 REGISTER_DIALOG(game_version)
 
 game_version::game_version()
-	: path_wid_stem_("path_")
+	: modal_dialog(window_id())
+	, path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
 	, browse_wid_stem_("browse_")
 	, path_map_()
-#ifdef _WIN32
-	, log_path_(lg::log_file_path())
-#endif
+	, log_path_(lg::get_log_file_path())
 	, deps_()
 	, opts_(game_config::optional_features_table())
 	, report_()
@@ -72,9 +68,9 @@ game_version::game_version()
 	path_map_["saves"] = filesystem::get_saves_dir();
 	path_map_["addons"] = filesystem::get_addons_dir();
 	path_map_["cache"] = filesystem::get_cache_dir();
-#ifdef _WIN32
+	// path to logs directory
 	path_map_["logs"] = filesystem::get_logs_dir();
-#endif
+	path_map_["screenshots"] = filesystem::get_screenshot_dir();
 
 	for(unsigned k = 0; k < game_config::LIB_COUNT; ++k) {
 		const game_config::LIBRARY_ID lib = game_config::LIBRARY_ID(k);
@@ -109,9 +105,7 @@ void game_version::pre_show(window& window)
 	os_label.set_label(VGETTEXT("Running on $os", i18n_syms));
 
 	button& copy_all = find_widget<button>(&window, "copy_all", false);
-	connect_signal_mouse_left_click(
-			copy_all,
-			std::bind(&game_version::report_copy_callback, this));
+	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
 
 	//
 	// Game paths tab.
@@ -122,26 +116,19 @@ void game_version::pre_show(window& window)
 		const std::string& path_id = path_ent.first;
 		const std::string& path_path = filesystem::normalize_path(path_ent.second, true);
 
-		text_box_base& path_w
-				= find_widget<text_box_base>(&window, path_wid_stem_ + path_id, false);
-		button& copy_w = find_widget<button>(
-				&window, copy_wid_stem_ + path_id, false);
-		button& browse_w = find_widget<button>(
-				&window, browse_wid_stem_ + path_id, false);
+		text_box_base& path_w = find_widget<text_box_base>(&window, path_wid_stem_ + path_id, false);
+		button& copy_w = find_widget<button>(&window, copy_wid_stem_ + path_id, false);
+		button& browse_w = find_widget<button>(&window, browse_wid_stem_ + path_id, false);
 
 		path_w.set_value(path_path);
 		path_w.set_active(false);
 
 		connect_signal_mouse_left_click(
 				copy_w,
-				std::bind(&game_version::copy_to_clipboard_callback,
-							this,
-							path_path));
+				std::bind(&game_version::copy_to_clipboard_callback, this, path_path));
 		connect_signal_mouse_left_click(
 				browse_w,
-				std::bind(&game_version::browse_directory_callback,
-							this,
-							path_path));
+				std::bind(&game_version::browse_directory_callback, this, path_path));
 
 		if(!desktop::open_object_is_supported()) {
 			// No point in displaying these on platforms that can't do
@@ -155,20 +142,9 @@ void game_version::pre_show(window& window)
 		}
 	}
 
-#ifndef _WIN32
-	for(const auto& wid : {"win32_paths", "label_logs", "path_logs", "copy_logs", "browse_logs"}) {
-		find_widget<widget>(&window, wid, false).set_visible(widget::visibility::invisible);
-	}
-#else
-	button& stderr_button
-			= find_widget<button>(&window, "open_stderr", false);
-	connect_signal_mouse_left_click(
-			stderr_button,
-			std::bind(&game_version::browse_directory_callback,
-						this,
-						log_path_));
+	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
+	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty());
-#endif
 
 	//
 	// Build info tab.

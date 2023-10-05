@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -104,6 +104,13 @@ void invalidate_all();
  * time to simulate vsync, even if vsync is disabled.
  */
 void sparkle();
+
+/**
+ * Returns the length of one display frame, in milliseconds.
+ *
+ * This will usually be determined by the active monitor's refresh rate.
+ */
+int get_frame_length();
 
 /** Register a top-level drawable.
  *

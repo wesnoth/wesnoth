@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,11 +77,9 @@ public:
 	virtual void handle_event(const SDL_Event& event) = 0;
 	virtual void handle_window_event(const SDL_Event&) {};
 	virtual void process_event() {}
-	virtual void draw() {}
 
 	virtual bool requires_event_focus(const SDL_Event * = nullptr) const { return false; }
 
-	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 	virtual void process_tooltip_string(int /*mousex*/, int /*mousey*/) {}
 
 	virtual void join(); /*joins the current event context*/
@@ -142,11 +140,15 @@ struct event_context
 	~event_context();
 };
 
-//causes events to be dispatched to all handler objects.
+/** Process all events currently in the queue. */
 void pump();
 
-//look for resize events and update references to the screen area
-void peek_for_resize();
+/** Trigger a draw cycle. */
+void draw();
+
+/** pump() then immediately draw() */
+inline void pump_and_draw() { pump(); draw(); }
+// TODO: draw_manager - should this also raise_process_event? Some things do some don't
 
 struct pump_info {
 	pump_info() : resize_dimensions(), ticks_(0) {}
@@ -166,8 +168,11 @@ public:
 
 void raise_process_event();
 void raise_resize_event();
-void raise_draw_event();
-void raise_help_string_event(int mousex, int mousey);
+/**
+ * Triggered by mouse-motion, sends the cursor position to all handlers to
+ * check whether a tooltip should be shown.
+ */
+void process_tooltip_strings(int mousex, int mousey);
 
 
 /**

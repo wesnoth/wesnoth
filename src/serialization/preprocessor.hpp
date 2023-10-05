@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -20,10 +20,11 @@
 #include "exceptions.hpp"
 #include "filesystem.hpp"
 #include "game_version.hpp"
-#include <optional>
 
 #include <iosfwd>
 #include <map>
+#include <string>
+#include <optional>
 #include <vector>
 
 class config_writer;

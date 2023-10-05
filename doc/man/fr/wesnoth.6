@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2021 wesnoth "Bataille pour Wesnoth"
+.TH WESNOTH 6 2022 wesnoth "Bataille pour Wesnoth"
 .
 .SH NOM
 wesnoth \- Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour
@@ -101,21 +101,22 @@ d'informations).
 active certains mécanismes de débogage pour Lua.
 .TP 
 \fB\-\-strict\-lua\fP
-disallow deprecated Lua API calls
+Désactive les appels obsolètes à l'interface lua.
 .TP 
 \fB\-D,\-\-diff\fP\fI\ fichier\-original\fP\fB\ \fP\fIfichier\-nouveau\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+Fait la différence entre deux fichiers WML sans résolution préalable des
+macros (pour appliquer cela, utiliser d'abord \fB\-p\fP). La sortie de la
+différence sous format DiffWML se fait vers la sortie par défaut ou vers le
+fichier spécifié par \fI\-\-output\fP.
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=fichier\fP\fB]\fP
 Lance directement l'éditeur de carte.  Si \fIfichier\fP est utilisé, équivaut à
 \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
-displays the number of frames per second the game is currently running at in
-a corner of the screen as well as writes these values to a file in the
-userdata directory.
+Affiche, dans un angle de l'écran, le nombre d'images par seconde auquel le
+jeu est actuellement rafraichi et écrit ces valeurs dans un fichier du
+répertoire des données de l'utilisateur.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 Lance le jeu en mode plein écran.
@@ -161,6 +162,19 @@ résultat du jeu. Uniquement utile avec l'option \fB\-u\fP.
 Liste les types de journaux définis (uniquement ceux contenant \fIfiltre\fP si
 l'option est utilisée) et quitte
 .TP 
+\fB\-\-no\-log\-to\-file\fP
+prevents redirecting logged output to a file. Log files are created in the
+logs directory under the userdata folder.
+.TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ ips\fP
 Nombre d'images par seconde que le jeu peut afficher. La valeur doit être
 comprise entre \fB1\fP et \fB1000\fP, la valeur par défaut est celle du
@@ -197,7 +211,7 @@ Lance le jeu sans IHM. Uniquement disponible en combinaison de
 \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP ou \fB\-\-plugin\fP.
 .TP 
 \fB\-\-nobanner\fP
-suppress the startup banner.
+Supprime le bandeau de démarrage.
 .TP 
 \fB\-\-nomusic\fP
 Lance le jeu sans musique.
@@ -210,7 +224,8 @@ l'option \fB\-u\fP.
 Lance le jeu sans son ni musique.
 .TP 
 \fB\-\-output\fP\fI\ fichier\fP
-output to the specified file. Applicable to diffing operations.
+Redirige la sortie vers le fichier donné (pour les opérations de différence
+entre fichiers).
 .TP 
 \fB\-\-password\fP\fI\ mot de passe\fP
 Utilise \fImot de passe\fP lors de la connexion à un serveur, en ignorant
@@ -223,9 +238,9 @@ exécutée comme une coroutine et réveillée périodiquement avec des mises à
 jour.
 .TP 
 \fB\-P,\-\-patch\fP\fI\ fichier\-cible\fP\fB\ \fP\fIfichier\-patch\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
-by \fI\-\-output\fP.
+Applique une différence au format DiffWML à un fichier WML sans résolution
+préalable des macros dans les fichiers. La sortie du fichier WML modifié se
+fait vers la sortie par défaut ou vers le fichier spécifié par \fI\-\-output\fP.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ fichier/dossier\fP\fB\ \fP\fIrépertoire cible\fP
 Prétraite un fichier/dossier spécifié. Pour chaque fichier(s) un fichier
@@ -291,10 +306,9 @@ Lance le jeu avec une IHM, surpassant toute utilisation implicite de
 Les erreurs de validation sont traitées comme des erreurs fatales.
 .TP 
 \fB\-t[\fP\fIidentifiant scénario\fP\fB],\ \-\-test[\fP\fI=identifiant scénario\fP\fB]\fP
-Lance un petit scénario de test. Ce scénario devrait être définit avec un
-tag WML \fB[test]\fP. Celui par défaut est \fB[test]\fP. Une démonstration de la
-fonctionnalité \fB[micro_ai]\fP peut être lancé avec \fBmicro_ai_test\fP.
-Implique \fB\-\-nogui\fP.
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ pourcentage\fP
 Définit à \fIpour cent\fP la limite pour déterminer si une traduction est jugée
@@ -312,7 +326,7 @@ confiance ! Cette action donne aux scripts Lua les mêmes permissions que
 l'exécutable de Wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ chemin\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+Donne le schéma WML à utiliser dans \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ nom\fP
 Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
@@ -344,16 +358,16 @@ Utilise \fInom d'utilisateur\fP lors de la connexion à un serveur, en ignorant
 d'autres préférences.
 .TP 
 \fB\-\-validate\fP\fI\ chemin\fP
-validates a file against the WML schema.
+Valide un fichier en fonction du schéma WML.
 .TP 
 \fB\-\-validate\-addon\fP\fI\ id_extension\fP
-validates the WML of the given addon as you play.
+Valide le code WML d'une extension durant le jeu.
 .TP 
 \fB\-\-validate\-core\fP
-validates the core WML as you play.
+Valide le code WML d'un noyau durant le jeu.
 .TP 
 \fB\-\-validate\-schema \ chemin\fP
-validates a file as a WML schema.
+Valide un fichier en tant que schéma WML.
 .TP 
 \fB\-\-validcache\fP
 Suppose que le cache est valide (risqué).
@@ -456,7 +470,7 @@ Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

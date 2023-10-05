@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,6 +34,7 @@ class language_selection : public modal_dialog
 {
 public:
 	language_selection()
+		: modal_dialog(window_id())
 	{
 	}
 

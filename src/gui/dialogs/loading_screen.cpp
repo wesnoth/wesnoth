@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -81,7 +81,8 @@ REGISTER_DIALOG(loading_screen)
 loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
-	: load_funcs_{f}
+	: modal_dialog(window_id())
+	, load_funcs_{f}
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
@@ -121,9 +122,7 @@ void loading_screen::progress(loading_stage stage)
 	if(singleton_ && stage != loading_stage::none) {
 		singleton_->current_stage_.store(stage, std::memory_order_release);
 		// Allow display to update, close events to be handled, etc.
-		// TODO: draw_manager - draws should probably go after pumping
-		events::raise_draw_event();
-		events::pump();
+		events::pump_and_draw();
 	}
 }
 
@@ -141,10 +140,9 @@ void loading_screen::spin()
 
 	// Restrict actual update rate.
 	int elapsed = SDL_GetTicks() - last_spin_;
-	if (elapsed > 10 || elapsed < 0) {
-		events::raise_draw_event();
-		events::pump();
+	if (elapsed > draw_manager::get_frame_length() || elapsed < 0) {
 		last_spin_ = SDL_GetTicks();
+		events::pump_and_draw();
 	}
 }
 
@@ -176,13 +174,15 @@ void loading_screen::process(events::pump_info&)
 
 	// If there's nothing more to do, close.
 	if (load_funcs_.empty()) {
-		draw_manager::invalidate_region(get_window()->get_rectangle());
-		get_window()->close();
+		queue_redraw();
+		window::close();
 	}
 }
 
 void loading_screen::layout()
 {
+	modal_dialog::layout();
+
 	DBG_DP << "loading_screen::layout";
 
 	loading_stage stage = current_stage_.load(std::memory_order_acquire);
@@ -208,17 +208,6 @@ void loading_screen::layout()
 
 	animation_->get_drawing_canvas().set_variable("time", wfl::variant(duration_cast<milliseconds>(now - *animation_start_).count()));
 	animation_->queue_redraw();
-}
-
-bool loading_screen::expose(const SDL_Rect& region)
-{
-	DBG_DP << "loading_screen::expose " << region;
-	return get_window()->expose(region);
-}
-
-rect loading_screen::screen_location()
-{
-	return get_window()->screen_location();
 }
 
 loading_screen::~loading_screen()

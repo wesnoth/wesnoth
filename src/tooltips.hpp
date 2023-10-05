@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,8 +20,6 @@
 
 #include <string>
 
-struct SDL_Rect;
-
 namespace tooltips {
 
 class manager : public gui2::top_level_drawable
@@ -31,7 +29,7 @@ public:
 	~manager();
 	// TLD interface
 	virtual void layout() override;
-	virtual bool expose(const SDL_Rect& region) override;
+	virtual bool expose(const rect& region) override;
 	virtual rect screen_location() override;
 };
 

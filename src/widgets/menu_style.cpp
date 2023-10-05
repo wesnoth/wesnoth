@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Patrick Parker <patrick_x99@hotmail.com>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -131,6 +131,11 @@ bool menu::imgsel_style::load_images()
 		}
 	}
 	return (!load_failed_);
+}
+
+void menu::imgsel_style::unload_images()
+{
+	img_map_.clear();
 }
 
 void menu::imgsel_style::draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)

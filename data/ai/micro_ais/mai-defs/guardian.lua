@@ -9,8 +9,8 @@ function wesnoth.micro_ais.stationed_guardian(cfg)
 	end
 	local required_keys = { distance = 'integer' }
 	local optional_keys = { id = 'string', filter = 'tag',
-	    guard_loc = 'string', guard_x = 'integer', guard_y = 'integer',
-	    station_loc = 'string', station_x = 'integer', station_y = 'integer'
+		guard_loc = 'string', guard_x = 'integer', guard_y = 'integer',
+		station_loc = 'string', station_x = 'integer', station_y = 'integer'
 	}
 	local CA_parms = {
 		ai_id = 'mai_stationed_guardian',
@@ -25,7 +25,7 @@ function wesnoth.micro_ais.zone_guardian(cfg)
 	end
 	local required_keys = { filter_location = 'tag' }
 	local optional_keys = { id = 'string', filter = 'tag', filter_location_enemy = 'tag',
-	    station_loc = 'string', station_x = 'integer', station_y = 'integer'
+		station_loc = 'string', station_x = 'integer', station_y = 'integer'
 	}
 	local CA_parms = {
 		ai_id = 'mai_zone_guardian',
@@ -43,7 +43,7 @@ function wesnoth.micro_ais.return_guardian(cfg)
 	end
 	local required_keys = {}
 	local optional_keys = { id = 'string', filter = 'tag',
-	    return_loc = 'string', return_x = 'integer', return_y = 'integer'
+		return_loc = 'string', return_x = 'integer', return_y = 'integer'
 	}
 	local CA_parms = {
 		ai_id = 'mai_return_guardian',
@@ -58,8 +58,8 @@ function wesnoth.micro_ais.coward(cfg)
 	end
 	local required_keys = { distance = 'integer' }
 	local optional_keys = { attack_if_trapped = 'boolean', id = 'string', filter = 'tag',
-	    filter_second = 'tag', seek_loc = 'string', seek_x = 'integer', seek_y = 'integer',
-	    avoid_loc = 'string', avoid_x = 'integer', avoid_y = 'integer'
+		filter_second = 'tag', seek_loc = 'string', seek_x = 'integer', seek_y = 'integer',
+		avoid_loc = 'string', avoid_x = 'integer', avoid_y = 'integer'
 	}
 	local CA_parms = {
 		ai_id = 'mai_coward',

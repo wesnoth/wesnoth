@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -179,6 +179,10 @@ private:
 	map_location selected_hex_;
 	map_location next_unit_;
 	pathfind::marked_route current_route_;
+	/**
+	 * If non-empty, current_paths_.destinations contains a cache of highlighted
+	 * hexes, likely the movement range or attack range of a unit.
+	 */
 	pathfind::paths current_paths_;
 	bool unselected_paths_;
 	bool unselected_reach_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,7 +63,8 @@ network_transmission::network_transmission(
 		connection_data& connection,
 		const std::string& title,
 		const std::string& subtitle)
-	: connection_(&connection)
+	: modal_dialog(window_id())
+	, connection_(&connection)
 	, pump_monitor_(connection_)
 	, subtitle_(subtitle)
 {

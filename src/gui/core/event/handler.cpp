@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -169,10 +169,6 @@ private:
 
 	/** Fires a raw SDL event. */
 	void raw_event(const SDL_Event &event);
-
-	/** Fires a draw event. */
-	using events::sdl_handler::draw;
-	void draw() override;
 
 	/**
 	 * Fires a video resize event.
@@ -445,7 +441,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
-				case SDL_WINDOWEVENT_RESIZED:
+				// Always precedes SDL_WINDOWEVENT_RESIZED, but the latter does not always
+				// happen; in particular when we change the game resolution via
+				// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
+				case SDL_WINDOWEVENT_SIZE_CHANGED:
 					video_resize(video::game_canvas_size());
 					break;
 
@@ -532,7 +531,10 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 		   == dispatchers_.end());
 
+	DBG_GUI_E << "adding dispatcher " << static_cast<void*>(dispatcher);
+
 	if(dispatchers_.empty()) {
+		LOG_GUI_E << "creating new dispatcher event context";
 		event_context = new events::event_context();
 		join();
 	}
@@ -545,6 +547,8 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	/***** Validate pre conditions. *****/
 	auto itor = std::find(dispatchers_.begin(), dispatchers_.end(), disp);
 	assert(itor != dispatchers_.end());
+
+	DBG_GUI_E << "removing dispatcher " << static_cast<void*>(disp);
 
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
@@ -564,6 +568,7 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
+		LOG_GUI_E << "deleting unused dispatcher event context";
 		leave();
 		delete event_context;
 		event_context = nullptr;
@@ -575,14 +580,6 @@ void sdl_event_handler::activate()
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(SDL_ACTIVATE, dynamic_cast<widget&>(*dispatcher), nullptr);
-	}
-}
-
-void sdl_event_handler::draw()
-{
-	for(auto dispatcher : dispatchers_)
-	{
-		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 }
 

@@ -17,7 +17,7 @@ const wmlName = () => fc.stringOf(
 
 const wmlValue = () => fc.stringOf(
   fc.constantFrom(...valueChars), { minLength: 1 }
-).filter((value) => (value.trimStart().length > 0) && (value.includes('_ ') === false))
+).filter((value) => (value.replace(/_|\s/, '').length > 0) && (value.includes('_ ') === false))
 
 const wmlValueString = () => fc.stringOf(
   fc.constantFrom(...valueChars, '\n', '"'), { minLength: 1 }
@@ -32,9 +32,35 @@ const wmlValueTranslatable = (): fc.Arbitrary<string> => {
   )
 }
 
+const wmlCommentUnmapper = (comment: string) => {
+  const [padding, value] = comment.split(/(\s*)#(.+)/)
+  return { padding: padding.length, value }
+}
+
+const wmlComment = (): fc.Arbitrary<string> => {
+  return fc.convertFromNext(
+    fc.convertToNext(
+      fc.tuple(
+        fc.nat({ max: 5 }),
+        fc.lorem()
+      )
+    ).map(
+      ([padding, value]) => `${' '.repeat(padding)}#${value}`,
+      (comment) => {
+        if (typeof comment !== 'string') {
+          throw new Error('Invalid type')
+        }
+
+        const segments = wmlCommentUnmapper(comment)
+        return [segments.padding, segments.value]
+      }
+    )
+  )
+}
+
 const fullAttributeUnmapper = (fullAttribute: string) => {
-  const [key, keyPadding, valuePadding, value] = fullAttribute.split(/(\s*)=(\s*)/)
-  return { key, keyPadding: keyPadding.length, valuePadding: valuePadding.length, value }
+  const { key, keyPadding, valuePadding, value, comment } = fullAttribute.match(/(?<key>[^\s]+)(?<keyPadding>\s*)=(?<valuePadding>\s*)(?<value>[^#]+)(?<comment>#.+)?/)!.groups!
+  return { key, keyPadding: keyPadding.length, valuePadding: valuePadding.length, value, comment }
 }
 
 const fullAttributeStringUnmapper = (fullAttributeString: string) => {
@@ -52,17 +78,18 @@ const fullAttribute = (): fc.Arbitrary<string> => {
         wmlName(),
         fc.nat({ max: 5 }),
         fc.nat({ max: 5 }),
-        wmlValue()
+        wmlValue(),
+        fc.option(wmlComment())
       )
     ).map(
-      ([key, keyPadding, valuePadding, value]) => `${key}${' '.repeat(keyPadding)}=${' '.repeat(valuePadding)}${value}`,
+      ([key, keyPadding, valuePadding, value, comment]) => `${key}${' '.repeat(keyPadding)}=${' '.repeat(valuePadding)}${value}${comment ? comment : ''}`,
       (attribute) => {
         if (typeof attribute !== 'string') {
           throw new Error('Invalid type')
         }
 
         const segments = fullAttributeUnmapper(attribute)
-        return [segments.key, segments.keyPadding, segments.valuePadding, segments.value]
+        return [segments.key, segments.keyPadding, segments.valuePadding, segments.value, segments.comment]
       }
     )
   )
@@ -95,6 +122,7 @@ export {
   wmlName,
   wmlValue,
   wmlValueTranslatable,
+  wmlComment,
   fullAttributeUnmapper,
   fullAttribute,
   fullAttributeString,

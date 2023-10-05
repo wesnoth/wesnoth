@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,7 +36,9 @@ transient_message::transient_message(const std::string& title,
 									   const std::string& message,
 									   const bool message_use_markup,
 									   const std::string& image)
-	: hide_title_(title.empty()), hide_image_(image.empty())
+	: modal_dialog(window_id())
+	, hide_title_(title.empty())
+	, hide_image_(image.empty())
 {
 	register_label("title", true, title, title_use_markup);
 	register_label("message", true, message, message_use_markup);

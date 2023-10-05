@@ -215,7 +215,7 @@ end
 function enemy.init_data()
 	if wml.variables.wc2_enemy_army == nil then
 		-- give eras an option to overwrite the enemy data.
-		wesnoth.fire_event("wc2_init_enemy")
+		wesnoth.game_events.fire("wc2_init_enemy")
 	end
 	if wml.variables.wc2_enemy_army == nil then
 		-- give eras an option to overwrite the enemy data.

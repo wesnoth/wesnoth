@@ -4,14 +4,14 @@
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2022.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-01-05 20:52+0300\n"
-"Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"PO-Revision-Date: 2022-08-21 14:54+0300\n"
+"Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -27,20 +27,75 @@ msgstr ""
 msgid "Underground"
 msgstr "Yeraltı"
 
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "yarı ölü"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "korkusuz"
+
+#. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
+msgid "plague"
+msgstr "veba"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/weapon_specials.cfg:53
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Bir birim Veba saldırısı ile öldürüldüğü zaman, ölüsü Veba saldırısı yapan "
+"birimle aynı tarafta bir Yürüyen Cesetle değiştirilir. Bu yarı ölüler ve "
+"köylerdeki birimler için çalışmaz."
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "sarsılmaz"
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/core/macros/abilities.cfg:131
+msgid "female^steadfast"
+msgstr "sarsılmaz"
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:593
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "tedavi +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:594
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "+4 tedavi"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:595
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -59,26 +114,26 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr "Bu birim temel tedavileri yapabilir ve su kaybını yavaşlatabilir."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:617
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "tedavi +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:618
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "+8 tedavi"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:619
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -97,17 +152,17 @@ msgstr ""
 "ilaç verebilen bir birim aramalıdır."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
 msgid "heals +12"
 msgstr "+12 tedavi"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 msgid "female^heals +12"
 msgstr "+12 tedavi"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -126,7 +181,7 @@ msgstr ""
 "ilaç verebilen bir birim aramalıdır."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -159,16 +214,9 @@ msgid "Always rest heals"
 msgstr "Dinlenme daima iyileştirir"
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "korkusuz"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "destekli"
 
@@ -208,7 +256,7 @@ msgstr "gizlenir"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "sömürür"
 
@@ -230,7 +278,7 @@ msgstr "Tepeler"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "nişancı"
 
@@ -244,16 +292,9 @@ msgstr "Mantar Korusu"
 msgid "nightstalk"
 msgstr "karabasan"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "veba"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "zehirler"
 
@@ -269,7 +310,7 @@ msgstr "avcı"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "yavaşlatır"
 
@@ -290,13 +331,13 @@ msgstr "Harita ve Senaryo Düzenleyici"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 msgid "Terrain Editor"
 msgstr "Arazi Düzenleyici"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 msgid "Scenario Editor"
 msgstr "Senaryo Düzenleyici"
 
@@ -504,7 +545,8 @@ msgid "Starting Locations Tool"
 msgstr "Başlangıç Konumları Aracı"
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:109
+#. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:110
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -558,8 +600,8 @@ msgstr ""
 "Adlandırılan konumlara Standart Konum Filtresinin <italic>text='location_id "
 "='</italic> etiketi kullanılarak WML'den erişilebilir. Oyuncu başlangıcına, "
 "<italic>text='location_id = 1'</italic>, <italic>text='location_id = 2'</"
-"italic>, vb. kullanılarak WML'den de erişilebilir — numaranın önüne \"Oyuncu"
-"\" eklemeden yalnızca sayıyı kullanın.\n"
+"italic>, vb. kullanılarak WML'den de erişilebilir — numaranın önüne "
+"\"Oyuncu\" eklemeden yalnızca sayıyı kullanın.\n"
 "\n"
 "<bold>text='Klavye Değiştiricileri '</bold>\n"
 "\n"
@@ -568,23 +610,26 @@ msgstr ""
 "seçer."
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Düzenleyici Arazi-Kaplama Grafikleri"
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:129
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
 "game. There are a few exceptions, where different graphics are used in the "
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"Haritalar genellikle düzenleyicide oyundaki görünümlerine benzer. "
+"Düzenleyicide farklı grafiklerin kullanıldığı birkaç istisna vardır; burada "
+"açıklanan tüm kaplamalar, arazi paletinin \"özel\" grubunda bulunur."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:133
+#: data/core/editor/help.cfg:134
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
@@ -598,11 +643,23 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='Hareket Kaplamaları'</bold>\n"
+"\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Geçilmez ve Yürünemez\n"
+"\n"
+"Düzenleyicide kolayca fark edilirken, bunlar oyunda görünmez, bu yüzden "
+"oluşturulan karışık araziler temel araziye benzer. Sırasıyla “geçilmez” veya "
+"“yürünemez” olarak ayarlanmış hareket maliyetleriyle bunlar karışık bir "
+"arazi oluşturur."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:143
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
@@ -620,11 +677,27 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='Kale Kaplamaları</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Bu kaplamalardan herhangi birinin geçilebilir bir altıgen üzerine eklenmesi, "
+"birimlerin o altıgen üzerinde askere alınmasını sağlar. Kale ayrıca bir "
+"liderin oradan asker toplamasını sağlar.\n"
+"\n"
+"Bunlar, bir kaleyi geçilmez bir duvardan görsel olarak ayrı bir kaleye "
+"bağlamak için geçilmez bir altıgene eklenebilir. Kale ve kuleler arasında "
+"otlak gibi görünen bir kale oluşturmak da mümkündür, ancak bunun için "
+"bağlantı altıgenlerinde askere alımı önlemek önlemek için bunların işgal "
+"edilmesi veya bloke edilmesi gerekir."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:153
+#: data/core/editor/help.cfg:154
 msgid ""
 "editor^<bold>text='Village Overlay'</bold>\n"
 "\n"
@@ -633,10 +706,16 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='Köy Kaplaması'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"Bu, kaplamayı gelir ve şifa sağlayan bir köye dönüştürür."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:161
+#: data/core/editor/help.cfg:162
 msgid ""
 "editor^<bold>text='Fake Shroud'</bold>\n"
 "\n"
@@ -645,18 +724,137 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='Sahte Örtü'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Sahte Örtü, örtünün devre dışı bırakıldığı senaryolarda ve oyuncu "
+"birimlerinin altıgeni görebildiği durumlarda bile keşfedilmemiş bir alan "
+"gibi görünür."
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+#, fuzzy
+#| msgid "Editor Terrain-Overlay Graphics"
+msgid "Terrain Elevation Graphics"
+msgstr "Düzenleyici Arazi-Kaplama Grafikleri"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:172
+#, fuzzy
+#| msgid ""
+#| "editor^Maps generally look similar in the editor to their appearance in "
+#| "the game. There are a few exceptions, where different graphics are used "
+#| "in the editor; all the overlays described here are found in the terrain "
+#| "palette’s “special” group."
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+"Haritalar genellikle düzenleyicide oyundaki görünümlerine benzer. "
+"Düzenleyicide farklı grafiklerin kullanıldığı birkaç istisna vardır; burada "
+"açıklanan tüm kaplamalar, arazi paletinin \"özel\" grubunda bulunur."
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:175
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<bold>text='Advanced'</bold>"
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr ""
+"\n"
+"\n"
+"<bold>text='Kapsamlı'</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:177
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:182
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<bold>text='Advanced'</bold>"
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr ""
+"\n"
+"\n"
+"<bold>text='Kapsamlı'</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid "Raised elevation on-map marker"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:185
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:192
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:203
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Base Terrain: "
+#: data/core/editor/help.cfg:208
 msgid "Deprecated Terrain"
-msgstr "Temel Arazi: "
+msgstr "Kullanımdan Kaldırılan Arazi"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:211
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -670,14 +868,26 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>Mor ‘D’ (“Deprecated” - Kullanımdan Kalktı).\n"
+"\n"
+"Düzenleyicide kullanımdan kalkan arazi kodları üzerine gösterilir. "
+"Örnekler:\n"
+"• <ref>dst='terrain_fungus_grove_old' text='“^Uf” mantar tarlası'</ref>,\n"
+"• “Xol” Aydınlık Taş Duvar: Kullanımdan kalma sebebi bazı duvar türlerinde "
+"artık “^Efs” Aplik süsleme desteğinin olmasıdır.\n"
+"\n"
+"Bu araziler için yardım sayfalarında, yalnızca düzenleyicide gösterilen, "
+"kullanımdan kaldırmayı ve önerilen değiştirmeleri açıklayan ek metinler "
+"olabilir."
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:224
 msgid "Label Tool"
 msgstr "Etiketleme Aracı"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:225
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -701,12 +911,12 @@ msgstr ""
 "<italic>text='[label]'</italic> etiketi kullanılarak uygulanır."
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:240
 msgid "Item Tool (Scenery Tool)"
 msgstr "Öğe Aracı (Dekor Aracı)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:241
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -732,12 +942,12 @@ msgstr ""
 "kullanılarak uygulanır."
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:254
 msgid "Village Ownership Tool"
 msgstr "Köy Sahiplik Aracı"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:255
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -762,12 +972,12 @@ msgstr ""
 "italic> etiketleri eklenerek saklanır."
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:269
 msgid "Unit Tool"
 msgstr "Birim Aracı"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:270
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -792,12 +1002,12 @@ msgstr ""
 "italic> etiketlerini ekler."
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:285
 msgid "Named Areas"
 msgstr "İsimli Alanlar"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:286
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -846,12 +1056,12 @@ msgstr ""
 "değiştirmeye gerek kalmadan başka amaçlar için kullanılabilir."
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:307
 msgid "Playlist Manager"
 msgstr "Çalma Listesi Yöneticisi"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:308
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -865,17 +1075,76 @@ msgstr ""
 "Bu araç yalnızca Senaryo Kipinde mevcut olup senaryoya WML "
 "<italic>text='[music]'</italic> etiketleri ekler."
 
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:319
+#, fuzzy
+#| msgid "Using Add-ons"
+msgid "Change Add-on ID"
+msgstr "Eklentilerin Kullanılması"
+
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:320
+msgid ""
+"Allows changing the ID of an add-on, which is the name of the folder it’s "
+"in. This will only rename that folder and update any references to it in the "
+"_main.cfg file. Any other place will need to be updated manually."
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:329
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:330
+msgid ""
+"Allows setting up an add-on’s _server.pbl file, which is required for "
+"publishing an add-on to the add-ons server for other players to download. "
+"The Validate button will check whether all required fields have valid values."
+msgstr ""
+
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr "Harita / Senaryo Düzenleyici"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:339
+#, fuzzy
+#| msgid ""
+#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
+#| "maps on which every Wesnoth scenario takes place. It also provides a "
+#| "limited set of features for setting up a basic scenario.\n"
+#| "\n"
+#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
+#| "option at the title screen.\n"
+#| "\n"
+#| "<header>text='Editing Modes'</header>\n"
+#| "\n"
+#| "The editor features two modes of operation: terrain mode and scenario "
+#| "mode.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
+#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+#| "locations'</ref>.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+#| "addition to the tools available in terrain mode, adds support for adding "
+#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
+#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
+#| "ref> at the start of the scenario. There’s also a "
+#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
-"of features for setting up a basic scenario.\n"
+"of features for setting up a basic scenario as well as initializing an add-"
+"on which can be used to distribute the scenarios you create.\n"
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
@@ -931,7 +1200,19 @@ msgstr ""
 "mevcuttur."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:351
+msgid ""
+"In either mode, you will be prompted to choose an add-on to use for the "
+"scenarios you create. This can be an existing add-on or a brand new add-on. "
+"If you choose to use a brand new add-on, then the add-on will have all the "
+"required files and folders automatically created as well as a default ID "
+"assigned. Unless you are editing an already existing map file, using "
+"scenario mode is required in order for your maps to be selectable during "
+"game creation."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:353
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -978,7 +1259,7 @@ msgstr ""
 "için bu eklentiye ihtiyacı olacaktır."
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:373
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -1002,7 +1283,7 @@ msgstr ""
 "Haritalar” oyun türünde bulunabilir."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:385
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1015,7 +1296,7 @@ msgstr ""
 "düzenleyicisi, senaryonun olaylarını kodlamayı desteklemez."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:387
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1033,7 +1314,7 @@ msgstr ""
 "• Arazi kipinde “Alanlar” ve “Taraf” menüleri gri renktedir."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1059,7 +1340,7 @@ msgstr ""
 "(bir .map dosyası değil)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:402
 #, fuzzy
 #| msgid ""
 #| "<header>text='The files: .map and .cfg'</header>\n"
@@ -1067,7 +1348,7 @@ msgstr ""
 #| "The map editor saves exactly one file, either a .map (for terrain mode) "
 #| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
 #| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenaro mode then an old .map "
+#| "editing in terrain mode and then switch to scenario mode then an old .map "
 #| "file might remain, but this is not updated by the scenario editor.\n"
 #| "\n"
 #| "Loading a .cfg file has different results depending on the contents of "
@@ -1079,18 +1360,16 @@ msgstr ""
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"The map editor saves exactly one file, either a .map (for terrain mode) or "
-"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
-"the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenario mode then an old .map file might "
-"remain, but this is not updated by the scenario editor.\n"
+"The map editor saves one file when in terrain mode (a .map) or two files "
+"when in scenario mode (both a .map and a .cfg).\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
 "cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that use a "
-"separate .map file (which can't be created by the scenario editor), the "
-"editor may follow the link and open the corresponding .map in terrain-only "
-"mode, as if the .map file was chosen in the file selector."
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
+"scenario's map data and open the corresponding .map file in terrain-only "
+"mode, as if the .map file was chosen in the file selector. It is recommended "
+"in those cases to simply load the .map file directly instead."
 msgstr ""
 "<header>text='Dosyalar: .map ve .cfg'</header>\n"
 "\n"
@@ -1102,127 +1381,59 @@ msgstr ""
 "tarafından güncellenmez.\n"
 "\n"
 ".cfg dosyasının yüklenmesi, .cfg dosyasının içeriğine bağlı olarak farklı "
-"sonuçlara sahiptir. Senaryo düzenleyicisi tarafından oluşturulan .cfg "
-"dosyaları için, .cfg dosyası senaryo düzenleyicisinde açılır. Ancak, ayrı "
-"bir .map dosyası kullanan (senaryo düzenleyicisi tarafından oluşturulmamış) ."
-"cfg dosyaları için, düzenleyici bağlantıyı izleyebilir ve karşılık gelen ."
-"map dosyasını dosya seçiciden seçilmiş bir .map dosyası gibi arazi kipindeki "
-"bir .map dosyası olarak açabilir."
+"sonuçlar verir. Senaryo düzenleyicisinde oluşturulan .cfg dosyaları, senaryo "
+"düzenleyicisinde açılabilir. Ancak, ayrı bir .map dosyası kullanan (senaryo "
+"düzenleyicisi tarafından oluşturulmamış) .cfg dosyaları için, düzenleyici "
+"bağlantıyı izleyebilir ve karşılık gelen .map dosyasını dosya seçiciden "
+"seçilmiş bir .map dosyası gibi arazi kipindeki bir .map dosyası olarak "
+"açabilir."
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:414
 msgid "Using a separate file for WML events"
 msgstr "WML olayları için ayrı bir dosya kullanımı"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:415
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
 "been edited by hand.\n"
 "\n"
-"Files created by the scenario editor omit the opening [scenario] and closing "
-"[/scenario] tags. If you are creating a campaign (or other add-on), then "
-"those tags need to be added; there is more detail about this in the "
-"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
-"\n"
-"One workflow is to create a separate WML file, also with the .cfg extension, "
+"One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
 "separate file contains both the [scenario] tag and any hand-edited WML such "
 "as events. With this workflow, the add-on’s file structure could look like "
 "this:\n"
 "\n"
-"<header>text='For Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-"these four lines:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"The first three of those lines insert the scenario-generated file inside a "
-"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
-"will be combined, with attributes in the second one overriding attributes in "
-"the first one.\n"
-"\n"
-"<header>text='1.16 and later'</header>\n"
-"\n"
-"If your add-on will only be used on 1.16 and later, there are new features "
-"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
-"within the .cfg files.\n"
+"<header>text='Example'</header>\n"
+"If your add-on will only be used on 1.18 and later, it is instead "
+"recommended to use the new include_file attribute to load a .cfg file "
+"containing additional WML into the scenario.\n"
 "\n"
 "• _main.cfg:\n"
 "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory.\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-"load that file"
+"which makes “map_file” search the “maps” directory\n"
+"• maps/first.map\n"
+"  ◦ this is the .map file created by the scenario editor when saving in "
+"scenario mode\n"
+"• scenarios/other.cfg\n"
+"  ◦ this is the .cfg file containing everything that the scenario editor "
+"doesn't understand\n"
+"• scenarios/first.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
+"map file\n"
+"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
+"the additional cfg file"
 msgstr ""
-"Bir .cfg dosyasını yüklerken, senaryo düzenleyicisi kendisinde oluşturulan "
-"dosyaları anlar, ancak elle düzenlenen dosyalarda sorun yaşama olasılığı "
-"yüksektir. \n"
-"\n"
-"Senaryo düzenleyicisi tarafından oluşturulan dosyalarda açılış [scenario] ve "
-"kapanış [/scenario] etiketleri yoktur. Bir seferberlik (veya bir eklenti) "
-"oluşturuyorsanız, bu etiketlerin eklenmesi gerekir;"
-"<ref>dst='editor_map_format' text='harita dosyasının biçimi'</ref> "
-"belgelerinde bununla ilgili daha fazla ayrıntı vardır.\n"
-"\n"
-"Bir iş akışı, düzenleyici tarafından oluşturulan dosyayı dahil etmek için "
-"WML ön işlemcisini kullanan .cfg uzantısına sahip ayrı bir WML dosyası "
-"oluşturmaktır. Bu ayrı dosya hem [scenario] etiketini hem de olaylar gibi "
-"elle düzenlenmiş WML'leri içerir. Bu iş akışıyla, eklentinin dosya yapısı "
-"şöyle görünebilir \n"
-"\n"
-"<header>text='Wesnoth 1.14 için'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ “scenarios” dizinini içermesi için use “{./scenarios}” kullan\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ Bu dosya senaryo düzenleyicide oluşturulur\n"
-"• scenarios/01_Forest.cfg, açılış [scenario] etiketi yerine bu dört satırı "
-"koy:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"Bu satırların ilk üçü, senaryo tarafından oluşturulan dosyayı bir [scenario] "
-"etiketinin içine ekler. Dördüncü satırdaki \"+\" işareti, iki senaryo "
-"etiketinin birleştirileceği ve ikincisindeki özniteliklerin birincideki "
-"öznitelikleri geçersiz kıldığı anlamına gelir. \n"
-"\n"
-"<header>text='1.16 ve sonrası'</header>\n"
-"\n"
-"Eklentiniz yalnızca 1.16 ve sonraki sürümlerde kullanılacaksa, .cfg "
-"dosyalarını map_file aracılığıyla yüklemek ve eklenti adının .cfg "
-"dosyalarında tekrarlanmasını önlemek için yeni özellikler vardır.\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ eklenti dizinlerini ikil yola eklemek için “[binary_path]” kullan, "
-"böylece “map_file” araması “maps” dizininde yapılır.\n"
-"  ◦  “scenarios” dizinini içermek için “{./scenarios}” kullan\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ bu dosya senaryo düzenleyicide oluşturulur\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦  [scenario] içinde, bu dosyayı yüklemek için “map_file=\"map_from_01.cfg"
-"\"” kullan"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr "Düzenleyici Maske Kullanımı"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1232,12 +1443,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:447
 msgid "ToD and Schedule Editor"
 msgstr "Zaman Çizelgesi Düzenleyicisi"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:448
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1258,13 +1469,13 @@ msgstr ""
 "ref> için ayrı bir zaman planlayıcısına erişir."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:459
 msgid "Editor Palette"
 msgstr "Düzenleyici Paleti"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:461
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1291,32 +1502,32 @@ msgstr ""
 "seçildiğine bağlı olarak değişir. Örnekler:"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:466
 msgid "Show all kinds of terrain"
 msgstr "Tüm arazi türlerini göster"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:467
 msgid "Show only water terrains"
 msgstr "Yalnız sulu arazileri göster"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:468
 msgid "Show only villages"
 msgstr "Yalnız köyleri göster"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:480
 msgid "Wesnoth Map Format"
 msgstr "Vesnot Harita Biçemi"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "Haritalar insan tarafından okunabilir düz metin dosyalarında saklanır."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:483
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1373,7 +1584,7 @@ msgstr ""
 "edililir."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1408,15 +1619,26 @@ msgstr ""
 "menüsünde (E) işaretlidir."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:504
+#, fuzzy
+#| msgid ""
+#| "<header>text='Files created by the Scenario Editor'</header>\n"
+#| "\n"
+#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
+#| "map data. When loading a .cfg file, the scenario editor understands files "
+#| "created by the scenario editor itself, but is likely to have difficulty "
+#| "with files that have been edited by hand; problems can be avoided by "
+#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"In scenario mode, the editor saves the data as a .cfg file with embedded map "
-"data. When loading a .cfg file, the scenario editor understands files "
-"created by the scenario editor itself, but is likely to have difficulty with "
-"files that have been edited by hand; problems can be avoided by "
-"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"In scenario mode, the editor saves the scenario data as a .cfg file and the "
+"map data as a separate .map file. The scenario then references the .map file "
+"via map_file. When loading a .cfg file, the scenario editor understands "
+"files created by the scenario editor itself, but is likely to have "
+"difficulty with files that have been edited by hand; problems can be avoided "
+"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
 "<header>text='Senaryo Düzenleyicisiyle oluşturulan Dosyalar'</header>\n"
@@ -1427,47 +1649,6 @@ msgstr ""
 "düzenlenen dosyalarda büyük olasılıkla sorun çıkarabilir; elle düzenlenen "
 "parçalarla ilgili sorunlar <ref>dst='editor_separate_events_file' text='ayrı "
 "bir .cfg dosyası kullanarak'</ref> seçeneği ile önlenebilir."
-
-#. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
-msgid ""
-"<header>text='Which scenario files use the [scenario] tag'</header>\n"
-"\n"
-"Files created by the scenario editor have the contents of a WML scenario "
-"element, but don’t include the opening [scenario] and closing [/scenario] "
-"tags. For each .cfg file in the userdata folder’s editor/scenarios "
-"subfolder, the game will automatically try to load a scenario from it to "
-"include in the “Custom Scenarios” list (files that fail to load are "
-"ignored). In this folder each file is a separate item - files that fail to "
-"parse as a scenario are ignored, and files must not contain the [scenario][/"
-"scenario] tags.\n"
-"\n"
-"The opposite applies when a scenario is part of a campaign or other add-on. "
-"Typically each scenario has its own .cfg file, however this is unnecessary - "
-"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
-"matter whether the add-on is written as separate files or not. The engine "
-"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
-"to know which WML is part of each scenario."
-msgstr ""
-"<header>text='[scenario] etiketinin kullanıldığı senaryo dosyaları'</"
-"header>\n"
-"\n"
-"Senaryo düzenleyicisi tarafından oluşturulan dosyalar bir WML senaryo "
-"öğesinin içeriğine sahiptir ancak açılış [scenario] ve kapanış [/scenario] "
-"etiketlerini içermez. Oyun, userdata dizininin  editor/scenarios alt "
-"dizinindeki her .cfg dosyasını, otomatik olarak \"Özel Senaryolar\" "
-"listesine dahil etmek üzere bir senaryo olarak yüklemeye çalışır "
-"(yüklenemeyen dosyalar yok sayılır). Bu dizindeki her dosya ayrı bir öğedir "
-"- senaryo olarak çözümlenemeyen dosyalar yok sayılır ve bu dosyalar "
-"[scenario][/scenario] etiketlerini içermemelidir.\n"
-"\n"
-"Bir senaryo bir seferberliğin veya bir eklentinin parçası olduğunda bunun "
-"tam tersi geçerlidir. Tipik olarak her senaryonun kendi .cfg dosyası vardır, "
-"ancak bu gereksizdir - bir eklentideki tüm WML'ler önişlemci tarafından "
-"birleştirilir, eklentinin ayrı dosyalar halinde olup olmasının bir önemi "
-"yoktur. Motorun, hangi WML'nin hangi senaryonun parçası olduğunu bilmek için "
-"[scenario] ... [/scenario] (veya [multiplayer] ... [/multiplayer]) "
-"etiketlerine ihtiyacı vardır."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -3497,32 +3678,6 @@ msgstr ""
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "The orbs show whether the unit can move or attack. The statuses and their "
-#| "standard colors are:\n"
-#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
-#| "turn.\n"
-#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
-#| "attack. It might still be able to move further too.\n"
-#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
-#| "this turn.\n"
-#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
-#| "    • when a unit is in the middle of a multi-turn move (has been told to "
-#| "move further than it can in the current turn).\n"
-#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
-#| "still move further, but it can no longer attack.\n"
-#| "    • This can happen due to campaign-specific events or abilities, for "
-#| "example the <italic>text='disengage'</italic> ability in the campaign "
-#| "<italic>text='Under the Burning Suns'</italic>.\n"
-#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
-#| "own turn.\n"
-#| "    • During the ally’s own turn, their units will be shown with the "
-#| "colors showing whether the units can still move and attack; however their "
-#| "moves, and the corresponding orb changes, are delayed as explained in "
-#| "<ref>dst='shroud_and_fog' text='Shroud and Fog of War'</ref>.\n"
-#| "• Enemy units normally don’t have orbs, however these can be enabled in "
-#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -4519,6 +4674,32 @@ msgstr "Eklentilerin Kurulumu"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
+#, fuzzy
+#| msgid ""
+#| "User-made add-ons can be obtained and updated through the "
+#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
+#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
+#| "italic>), you will be presented with a list of add-ons available on the "
+#| "server for downloading.\n"
+#| "\n"
+#| "The installation status for each add-on is shown below each entry. For "
+#| "add-ons that are <italic>text='upgradable'</italic> or "
+#| "<italic>text='outdated'</italic> on the server, their installed and "
+#| "published versions will be shown in the <italic>text='Version'</italic> "
+#| "column.\n"
+#| "\n"
+#| "To search for add-ons by keywords, type any relevant terms in any order "
+#| "in the search box, separated by spaces. You can also sort the add-on list "
+#| "by clicking the column headers. It is also possible to choose to only "
+#| "display add-ons of specific categories by clicking on the "
+#| "<bold>text='Type'</bold> dropdown.\n"
+#| "\n"
+#| "To install an add-on, select it from the list and click the "
+#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
+#| "If the window is too small to show them inline, the <bold>text='Addon "
+#| "Details'</bold> button provides you with additional details about the add-"
+#| "on, such as its full description, installation status, and available "
+#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4538,7 +4719,7 @@ msgid ""
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
 "bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
@@ -5115,16 +5296,6 @@ msgid ""
 msgstr "Bu birim yanında köyü taşıyormuşçasına her el iyileşir."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "sarsılmaz"
-
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
-msgid "female^steadfast"
-msgstr "sarsılmaz"
-
-#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
@@ -5302,9 +5473,18 @@ msgstr "saklanır"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -5355,208 +5535,6 @@ msgid ""
 msgstr ""
 "Vebaya bağışık olmayan yaşayan bir birimi öldürdüğünde bu birimin yaşam "
 "puanı 1 arttırılır."
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "cinnet"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Saldırı ve savunmada, bu saldırı türü, çarpışanlardan biri yıkılana kadar "
-"veya 30 saldırıya denk olana kadar devam eder."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Bu saldırı türü, saldırı amaçlı kullanıldığında, hedef birimin arkasında "
-"düşmanı olan bir birim varsa ve bu düşman saldıramaz durumda (örneğin, taşa "
-"çevrilmiş veya sersemlemiş) değilse, hedefe iki misli hasar verir."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Bir birim Veba saldırısı ile öldürüldüğü zaman, ölüsü Veba saldırısı yapan "
-"birimle aynı tarafta bir birimle değiştirilir. Bu ölüler ve köylerdeki "
-"birimler için çalışmaz."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Bir birim Veba saldırısı ile öldürüldüğü zaman, ölüsü Veba saldırısı yapan "
-"birimle aynı tarafta bir Yürüyen Cesetle değiştirilir. Bu yarı ölüler ve "
-"köylerdeki birimler için çalışmaz."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Bu saldırı hedefi bir el boyunca yavaşlatır. Kurbanın saldırı hasarlarını "
-"yarıya indirir ve hızını yarıya (yukarı yuvarlanmış olarak) düşürür. "
-"Yavaşlatılmış bir birim seçildiğinde durum çubuğundaki bilgilerinde bir "
-"sümüklü böcek simgesi gösterilir."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "taşlaştırır"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Bu saldırı hedefi taşa çevirir. Taşa çevrilmiş birimler hareket edemez ve "
-"saldıramaz."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Saldırı amaçlı kullanıldığı zaman, bu saldırı her zaman %60 isabet şansına "
-"sahiptir."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr "saptırma"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Savunma amaçlı kullanıldığı zaman, bu saldırı düşmanın isabet şansını %10 "
-"düşürür."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-"Bu birimin savunma teknikleri düşman saldırısının başarı şansını azaltır."
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "sihirli"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Bu saldırı her zaman (saldırı ve savunmada) %70 isabet şansına sahiptir."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "kaynaşma"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Bu saldırı türünde, vuruş sayısı birim yaralanınca azalır. Vuruş sayısı, o "
-"anki yaşam puanının toplam yaşam puanına oranıyla azalır. Mesela toplam "
-"yaşam puanının 3/4’üne sahip birim, normalin 3/4’ü oranında vuruş yapabilir."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "yükleme"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Bu saldırı, türü, saldırı amaçlı kullanıldığında, hedefe çifte hasar verir. "
-"Bununla beraber, bu birim hedefin misillemesinden de çifte hasar alır."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr "özümser"
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-"Bu saldırı, birimi iyi bir savunma konumuna getirir ve bir düşman "
-"saldırısının verdiği hasarın bir kısmını emer."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-"Bu birim, düşman saldırılarını engelleyebilir, böylece vurulduğunda daha az "
-"hasar alır."
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Bu birim yaşayan birimlerden yaşam enerjisini emer ve verdiği hasarın (aşağı "
-"yuvarlanmış) yarısı kadar iyileşir."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "ilk vuruş"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Bu birim bu saldırısıyla, savunmadayken bile, her zaman ilk vuruşu yapar."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Bu saldırı yaşayan hedefleri zehirler. Zehirlenmiş birimler tedavi edilene "
-"veya yaşam puanı 1’e inene kadar her el 8 YP kaybeder. Birim zehirden ölmez, "
-"ama kolay öldürülür hale gelir."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -5750,7 +5728,7 @@ msgstr "Uzun Karanlık (3)"
 msgid "The Long Dark (4)"
 msgstr "Uzun Karanlık (4)"
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -5758,7 +5736,7 @@ msgstr ""
 "Periler çok yararsız hasar dirençlerine sahiptirler ve açık su üzerinde "
 "oldukça yavaş hareket ederler."
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -5766,32 +5744,32 @@ msgstr ""
 "Bu birimin gizemli saldırısı sihirli yaratıklara ve hatta bazı sıradan "
 "yaratıklara çok büyük hasarlar verir."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "Bu birim temel tedavileri yapabilir."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 msgid "This unit is capable of rapid healing."
 msgstr "Bu birim hızla iyileşebilir."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr "Bu birim etrafındakileri iyileştirebilir ve panzehir verebilir."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr "Bu birim yanındaki birimlerden zehrin etkisini kaldırır."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr "Bu birim yanında köyü taşıyormuşçasına her el iyileşir."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5799,7 +5777,7 @@ msgstr ""
 "Bu birimin sarsılmazlığı bazı saldırıların verdiği hasarı sadece savunma "
 "sırasında azaltır."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5807,7 +5785,7 @@ msgstr ""
 "Bu birimin liderlik vasfı çevresindeki alt seviyeden dost birimlerin saldırı "
 "sırasında daha etkili vurmasını sağlar."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5815,11 +5793,11 @@ msgstr ""
 "Bu birim avcılığı sayesinde düşmanlarının etki alanlarını yok sayar ve "
 "böylece aralarına sızabilir."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "Aydınlatma, komşu alanların ışık seviyesini arttırır."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5827,7 +5805,7 @@ msgstr ""
 "Bu birim tarafının sahip olduğu iki boş köy arasında ışınlanarak hareket "
 "edebilir."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5835,11 +5813,11 @@ msgstr ""
 "Bu birim ağaçlık alanlarda hemen yanında düşman birim olmadıkça ve "
 "saldırarak kendini açığa vurmadıkça düşman tarafından farkedilmez."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "Bu birim geceleyin kendini belli etmeden gizlenebilir."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5847,21 +5825,21 @@ msgstr ""
 "Bu birim köylerde gizlenebilir (sualtı köyleri hariç) ve köyün yanına gelene "
 "kadar düşmanları tarafından farkedilmez."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "Bu birim derin suda yüzeyden hava almaya ihtiyaç duymadan ve görünmeksizin "
 "hareket edebilir."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 "Yaşayan bir birimi öldürdüğünde bu birimin toplam yaşam puanı 1 arttırılır."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5869,7 +5847,7 @@ msgstr ""
 "Bir çılgın saldırının her kullanılışında, birimin kendisi ya da düşmanı "
 "ölene kadar saldırı devam ettirilir."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5878,7 +5856,7 @@ msgstr ""
 "Bu saldırı, hedef birimin saldırı yönüne göre tam arkasında düşmanı varsa "
 "saldırgan birimin iki kat hasar vermesine sebep olur."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5886,7 +5864,19 @@ msgstr ""
 "Vebaya maruz kalarak hayatlarını kaybeden düşmanlar bir köyde bulunmadıkları "
 "takdirde yürüyen cesede dönüşür."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
+#, fuzzy
+#| msgid ""
+#| "Foes who lose their life to the plague will rise again in unlife, unless "
+#| "they are standing on a village."
+msgid ""
+"Foes who lose their life to certain horrors of nature become nourishment for "
+"a rapidly growing larva, unless they are standing in a village."
+msgstr ""
+"Vebaya maruz kalarak hayatlarını kaybeden düşmanlar bir köyde bulunmadıkları "
+"takdirde yürüyen cesede dönüşür."
+
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5894,12 +5884,12 @@ msgstr ""
 "Bu birim düşmanlarını yavaşlatabilir, hızları ve saldırı güçleri bir el "
 "boyunca yarıya düşer."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr "Bu birimin yaşayanları taşa çevirmesi onu çok tehlikeli yapar."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5907,21 +5897,21 @@ msgstr ""
 "Bu birimin nişancılığı düşmanına isabet şansını sadece saldırı sırasında "
 "arttırır."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
 "Bu birimin her zaman yüksek isabet şansına sahip sihirli saldırıları vardır."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
 "Bu birimin kaynaşma saldırıları birim yara aldıkça daha az ölümcül olur."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -5929,14 +5919,14 @@ msgstr ""
 "Yükleme saldırısının kullanılması verilen ve alınan hasarı ikiye katlar; "
 "ancak savunmada aynı tepkimeye yol açmaz."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 "Savaş sırasında bu birim kurbanlarının yaşam enerjisini emerek kendi "
 "yaşamını yeniler."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5944,7 +5934,7 @@ msgstr ""
 "Bu birimin silahının uzunluğu savunmada dahi olsa yakın saldırıda ilk vuruşu "
 "yapmasını sağlar."
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5952,7 +5942,7 @@ msgstr ""
 "Bu birimin zehrinin kurbanları bir köyde veya bir ilaç veren tarafından "
 "iyileştirilene kadar sürekli olarak zehirden hasar görecektir."
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -5961,11 +5951,12 @@ msgstr ""
 "arazi türlerini içeren karma arazilerde bu birim daha yüksek bir savunma "
 "oranı elde edemez."
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-msgid "Special Notes:"
-msgstr "Özel Bilgiler:"
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#: data/core/macros/special-notes.cfg:122
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
+msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6013,11 +6004,6 @@ msgstr ""
 "<italic>text='Sadık'</italic> birimlerin gideri yoktur. Çoğu birim el "
 "sonunda seviyelerine eşit bir gidere yol açar. Sadık birimler bu gidere yol "
 "açmaz."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "yarı ölü"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -6491,6 +6477,221 @@ msgstr ""
 "<italic>text='Yaşlı'</italic> birimlerin yaşam puanında 8,  hareketinde ve "
 "yakın dövüş hasarında ise 1 puanlık bir düşüş vardır."
 
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "cinnet"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Saldırı ve savunmada, bu saldırı türü, çarpışanlardan biri yıkılana kadar "
+"veya 30 saldırıya denk olana kadar devam eder."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Bu saldırı türü, saldırı amaçlı kullanıldığında, hedef birimin arkasında "
+"düşmanı olan bir birim varsa ve bu düşman saldıramaz durumda (örneğin, taşa "
+"çevrilmiş veya sersemlemiş) değilse, hedefe iki misli hasar verir."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Bir birim Veba saldırısı ile öldürüldüğü zaman, ölüsü Veba saldırısı yapan "
+"birimle aynı tarafta bir birimle değiştirilir. Bu ölüler ve köylerdeki "
+"birimler için çalışmaz."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Bu saldırı hedefi bir el boyunca yavaşlatır. Kurbanın saldırı hasarlarını "
+"yarıya indirir ve hızını yarıya (yukarı yuvarlanmış olarak) düşürür. "
+"Yavaşlatılmış bir birim seçildiğinde durum çubuğundaki bilgilerinde bir "
+"sümüklü böcek simgesi gösterilir."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "taşlaştırır"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Bu saldırı hedefi taşa çevirir. Taşa çevrilmiş birimler hareket edemez ve "
+"saldıramaz."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Saldırı amaçlı kullanıldığı zaman, bu saldırı her zaman %60 isabet şansına "
+"sahiptir."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr "saptırma"
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Savunma amaçlı kullanıldığı zaman, bu saldırı düşmanın isabet şansını %10 "
+"düşürür."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+"Bu birimin savunma teknikleri düşman saldırısının başarı şansını azaltır."
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "sihirli"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Bu saldırı her zaman (saldırı ve savunmada) %70 isabet şansına sahiptir."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "kaynaşma"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Bu saldırı türünde, vuruş sayısı birim yaralanınca azalır. Vuruş sayısı, o "
+"anki yaşam puanının toplam yaşam puanına oranıyla azalır. Mesela toplam "
+"yaşam puanının 3/4’üne sahip birim, normalin 3/4’ü oranında vuruş yapabilir."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "yükleme"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Bu saldırı, türü, saldırı amaçlı kullanıldığında, hedefe çifte hasar verir. "
+"Bununla beraber, bu birim hedefin misillemesinden de çifte hasar alır."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr "özümser"
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+"Bu saldırı, birimi iyi bir savunma konumuna getirir ve bir düşman "
+"saldırısının verdiği hasarın bir kısmını emer."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+"Bu birim, düşman saldırılarını engelleyebilir, böylece vurulduğunda daha az "
+"hasar alır."
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Bu birim yaşayan birimlerden yaşam enerjisini emer ve verdiği hasarın (aşağı "
+"yuvarlanmış) yarısı kadar iyileşir."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "ilk vuruş"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Bu birim bu saldırısıyla, savunmadayken bile, her zaman ilk vuruşu yapar."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Bu saldırı yaşayan hedefleri zehirler. Zehirlenmiş birimler tedavi edilene "
+"veya yaşam puanı 1’e inene kadar her el 8 YP kaybeder. Birim zehirden ölmez, "
+"ama kolay öldürülür hale gelir."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| "This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Bu birim düşmanlarını yavaşlatabilir, hızları ve saldırı güçleri bir el "
+"boyunca yarıya düşer."
+
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -6582,7 +6783,7 @@ msgstr "Ejderhalar"
 #| "Drakes are inherently magical creatures, with a mysterious internal fire "
 #| "fueling their very lives. This can easily be witnessed when one of their "
 #| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "remains into ashes. Their internal fire is also their greatest weakness; "
 #| "it makes them extremely vulnerable to cold attacks. Despite their magical "
 #| "nature, drakes are incapable of channeling magic in a controlled manner. "
 #| "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -6698,8 +6899,8 @@ msgstr ""
 "yaratıklardır. Ortalama olarak, yetişkin bir ejder yaklaşık üç metre boya "
 "ulaşır ve bir binici ve bir atın toplam ağırlığından daha ağır olurlar. "
 "Derileri sert pullarla kaplıdır, delici ve soğuk hasar hariç çoğu fiziksel "
-"darbeye dayanıklıdır. Çoğu wjder, gerçek bir uçuş yeteneğine sahiptir ve "
-"uzun mesafeleri hızla katedebilirler. Ancak, ağırlıkları ve kütleleri uçma "
+"darbeye dayanıklıdır. Çoğu ejder, gerçek bir uçuş yeteneğine sahiptir ve "
+"uzun mesafeleri hızla katedebilir. Ancak, ağırlıkları ve kütleleri uçma "
 "kabiliyetlerini bir miktar sınırlar ve onları havada haince durdurur. Mümkün "
 "olan yerlerde daha fazla yükseklik ve hız kazanmak için tepeler, dağlar ve "
 "ağaçlar gibi arazi özelliklerini uçuşa başlangıç ​​noktaları olarak "
@@ -6750,8 +6951,8 @@ msgstr ""
 "şekilde yaşam sürerler.\n"
 "\n"
 "<header>text='Coğrafya'</header>\n"
-"Ejderler, <ref>dst='great_ocean' text='Büyük Okyanus'</ref>ta  "
-"<ref>dst='morogor' text='Morogor'</ref>  olarak adlandırılan volkanik "
+"Ejderler, <ref>dst='great_ocean' text='Büyük Okyanus'</ref>ta "
+"<ref>dst='morogor' text='Morogor'</ref> olarak adlandırılan volkanik "
 "takımadalarda yaşarlar. Nüfus baskısı ve çoğu adanın yoksulluğu ejder "
 "kabilelerinin <ref>dst='great_continent' text='Büyük Kıta'</ref>ya "
 "yayılmasını sebep olmuştur. Ejderler, kuluçkalarını ve dökümhanelerini "
@@ -7138,18 +7339,6 @@ msgstr "Atlar"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses. While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7167,7 +7356,7 @@ msgstr ""
 "kardeşlerinin yanında vahşi doğada gelişmesine izin verir.\n"
 "\n"
 "Atlar birçok uygarlığın önemli bir parçası olmuştur, bu nedenle onlarla "
-"ilgili bir çok efsane ve hikaye olması şaşırtıcı değildir.  Kanatlı atlar, "
+"ilgili bir çok efsane ve hikaye olması şaşırtıcı değildir. Kanatlı atlar, "
 "insan-at melezleri ve hayalet atlar yazılı tarihe girdiler, ancak çok az "
 "kimse dürüstçe böyle şeyler gördüğünü iddia edebilir."
 
@@ -8125,15 +8314,32 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 azami YP"
 
-#: src/help/help.cpp:213
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+#, fuzzy
+#| msgid "female^undead"
+msgid "female^stunned"
+msgstr "yarı ölü"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr ""
+
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Kapat"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Yardım"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
 msgstr "Yardım metni çözümlenirken ayrıştırma hatası:"
 
@@ -8149,6 +8355,8 @@ msgstr "En kötü"
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Köyler, orada bulunan herhangi bir birimin iyileşmesini veya zehirden "
+"kurtulmasını sağlar."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -8160,13 +8368,17 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Bu arazi, birimlerin zehirden kurtulmasını veya +1 YP iyileşmesini sağlar"
 msgstr[1] ""
+"Bu arazi, birimlerin bir köyde duruyormuşçasına zehirden kurtulmasını veya "
+"$amount YP iyileşmesini sağlar"
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Bu arazi bir kaledir - ona bağlı bir içkaleden birimler askere alınabilir."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
@@ -8174,6 +8386,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Bu arazi bir içkaledir - bir lider bu altıgenden bağlantılı kale "
+"altıgenlerine asker alabilir."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -8181,6 +8395,14 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Bu olağandışı içkale, bir liderin üzerinde dururken asker toplamasına izin "
+"verir, ancak bağlantılı bir içkaledeki bir liderin bu altıgen üzerinde asker "
+"toplamasına izin vermez."
+
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
+msgid "Special Notes:"
+msgstr "Özel Bilgiler:"
 
 #: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
@@ -8283,27 +8505,27 @@ msgstr "Yönelim:"
 msgid "Required XP:"
 msgstr "Gerekli TP:"
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "Saldırılar"
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "İsim"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "Vuruş Sayısı"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "Silah menzili"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "Tür"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "Özel"
 
@@ -8319,33 +8541,184 @@ msgstr "Saldırı Türü"
 msgid "Resistance"
 msgstr "Direnç"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "Arazi Değiştiriciler"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Arazi"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Savunma"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Hareket Bedeli"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "Savunma Kapasitesi"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "Görüş Bedeli"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Sıkışma Bedeli"
+
+#, fuzzy
+#~| msgid "first strike"
+#~ msgid "first verse"
+#~ msgstr "ilk vuruş"
+
+#, fuzzy
+#~| msgid "Second Dusk"
+#~ msgid "second verse"
+#~ msgstr "İkinci Akşam"
+
+#~ msgid ""
+#~ "When loading a .cfg file, the scenario editor understands files created "
+#~ "by the scenario editor, but is likely to have difficulty with files that "
+#~ "have been edited by hand.\n"
+#~ "\n"
+#~ "Files created by the scenario editor omit the opening [scenario] and "
+#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
+#~ "on), then those tags need to be added; there is more detail about this in "
+#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
+#~ "documentation.\n"
+#~ "\n"
+#~ "One workflow is to create a separate WML file, also with the .cfg "
+#~ "extension, which uses the WML preprocessor to include the editor-created "
+#~ "file. This separate file contains both the [scenario] tag and any hand-"
+#~ "edited WML such as events. With this workflow, the add-on’s file "
+#~ "structure could look like this:\n"
+#~ "\n"
+#~ "<header>text='For Wesnoth 1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+#~ "these four lines:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "The first three of those lines insert the scenario-generated file inside "
+#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
+#~ "tags will be combined, with attributes in the second one overriding "
+#~ "attributes in the first one.\n"
+#~ "\n"
+#~ "<header>text='1.16 and later'</header>\n"
+#~ "\n"
+#~ "If your add-on will only be used on 1.16 and later, there are new "
+#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
+#~ "on’s name within the .cfg files.\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+#~ "which makes “map_file” search the “maps” directory.\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+#~ "load that file"
+#~ msgstr ""
+#~ "Bir .cfg dosyasını yüklerken, senaryo düzenleyicisi kendisinde "
+#~ "oluşturulan dosyaları anlar, ancak elle düzenlenen dosyalarda sorun "
+#~ "yaşama olasılığı yüksektir. \n"
+#~ "\n"
+#~ "Senaryo düzenleyicisi tarafından oluşturulan dosyalarda açılış [scenario] "
+#~ "ve kapanış [/scenario] etiketleri yoktur. Bir seferberlik (veya bir "
+#~ "eklenti) oluşturuyorsanız, bu etiketlerin eklenmesi gerekir;"
+#~ "<ref>dst='editor_map_format' text='harita dosyasının biçimi'</ref> "
+#~ "belgelerinde bununla ilgili daha fazla ayrıntı vardır.\n"
+#~ "\n"
+#~ "Bir iş akışı, düzenleyici tarafından oluşturulan dosyayı dahil etmek için "
+#~ "WML ön işlemcisini kullanan .cfg uzantısına sahip ayrı bir WML dosyası "
+#~ "oluşturmaktır. Bu ayrı dosya hem [scenario] etiketini hem de olaylar gibi "
+#~ "elle düzenlenmiş WML'leri içerir. Bu iş akışıyla, eklentinin dosya yapısı "
+#~ "şöyle görünebilir \n"
+#~ "\n"
+#~ "<header>text='Wesnoth 1.14 için'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ “scenarios” dizinini içermesi için use “{./scenarios}” kullan\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ Bu dosya senaryo düzenleyicide oluşturulur\n"
+#~ "• scenarios/01_Forest.cfg, açılış [scenario] etiketi yerine bu dört "
+#~ "satırı koy:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "Bu satırların ilk üçü, senaryo tarafından oluşturulan dosyayı bir "
+#~ "[scenario] etiketinin içine ekler. Dördüncü satırdaki \"+\" işareti, iki "
+#~ "senaryo etiketinin birleştirileceği ve ikincisindeki özniteliklerin "
+#~ "birincideki öznitelikleri geçersiz kıldığı anlamına gelir. \n"
+#~ "\n"
+#~ "<header>text='1.16 ve sonrası'</header>\n"
+#~ "\n"
+#~ "Eklentiniz yalnızca 1.16 ve sonraki sürümlerde kullanılacaksa, .cfg "
+#~ "dosyalarını map_file aracılığıyla yüklemek ve eklenti adının .cfg "
+#~ "dosyalarında tekrarlanmasını önlemek için yeni özellikler vardır.\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ eklenti dizinlerini ikil yola eklemek için “[binary_path]” kullan, "
+#~ "böylece “map_file” araması “maps” dizininde yapılır.\n"
+#~ "  ◦  “scenarios” dizinini içermek için “{./scenarios}” kullan\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ bu dosya senaryo düzenleyicide oluşturulur\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦  [scenario] içinde, bu dosyayı yüklemek için “map_file=\"map_from_01."
+#~ "cfg\"” kullan"
+
+#~ msgid ""
+#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
+#~ "\n"
+#~ "Files created by the scenario editor have the contents of a WML scenario "
+#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
+#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
+#~ "subfolder, the game will automatically try to load a scenario from it to "
+#~ "include in the “Custom Scenarios” list (files that fail to load are "
+#~ "ignored). In this folder each file is a separate item - files that fail "
+#~ "to parse as a scenario are ignored, and files must not contain the "
+#~ "[scenario][/scenario] tags.\n"
+#~ "\n"
+#~ "The opposite applies when a scenario is part of a campaign or other add-"
+#~ "on. Typically each scenario has its own .cfg file, however this is "
+#~ "unnecessary - all of the WML in an add-on will be combined by the "
+#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
+#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
+#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
+#~ "scenario."
+#~ msgstr ""
+#~ "<header>text='[scenario] etiketinin kullanıldığı senaryo dosyaları'</"
+#~ "header>\n"
+#~ "\n"
+#~ "Senaryo düzenleyicisi tarafından oluşturulan dosyalar bir WML senaryo "
+#~ "öğesinin içeriğine sahiptir ancak açılış [scenario] ve kapanış [/"
+#~ "scenario] etiketlerini içermez. Oyun, userdata dizininin  editor/"
+#~ "scenarios alt dizinindeki her .cfg dosyasını, otomatik olarak \"Özel "
+#~ "Senaryolar\" listesine dahil etmek üzere bir senaryo olarak yüklemeye "
+#~ "çalışır (yüklenemeyen dosyalar yok sayılır). Bu dizindeki her dosya ayrı "
+#~ "bir öğedir - senaryo olarak çözümlenemeyen dosyalar yok sayılır ve bu "
+#~ "dosyalar [scenario][/scenario] etiketlerini içermemelidir.\n"
+#~ "\n"
+#~ "Bir senaryo bir seferberliğin veya bir eklentinin parçası olduğunda bunun "
+#~ "tam tersi geçerlidir. Tipik olarak her senaryonun kendi .cfg dosyası "
+#~ "vardır, ancak bu gereksizdir - bir eklentideki tüm WML'ler önişlemci "
+#~ "tarafından birleştirilir, eklentinin ayrı dosyalar halinde olup olmasının "
+#~ "bir önemi yoktur. Motorun, hangi WML'nin hangi senaryonun parçası "
+#~ "olduğunu bilmek için [scenario] ... [/scenario] (veya [multiplayer] ... [/"
+#~ "multiplayer]) etiketlerine ihtiyacı vardır."
 
 #~ msgid "Flat"
 #~ msgstr "Çayır"

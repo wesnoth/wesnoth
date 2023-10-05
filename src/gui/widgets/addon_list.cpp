@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -427,10 +427,10 @@ addon_list_definition::resolution::resolution(const config& cfg)
 	static config dummy("draw");
 	state.emplace_back(dummy);
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 namespace implementation

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -73,11 +74,12 @@ REGISTER_DIALOG(title_screen)
 bool show_debug_clock_button = false;
 
 title_screen::title_screen(game_launcher& game)
-	: debug_clock_()
+	: modal_dialog(window_id())
+	, debug_clock_()
 	, game_(game)
 {
-	// Need to set this in the constructor, pre_show() / post_build() is too late
 	set_allow_plugin_skip(false);
+	init_callbacks();
 }
 
 title_screen::~title_screen()
@@ -142,34 +144,37 @@ static void debug_tooltip(window& /*window*/, bool& handled, const point& coordi
 }
 #endif
 
-void title_screen::pre_show(window& win)
+void title_screen::init_callbacks()
 {
-	win.set_click_dismiss(false);
-	win.set_enter_disabled(true);
-	win.set_escape_disabled(true);
+	set_click_dismiss(false);
+	set_enter_disabled(true);
+	set_escape_disabled(true);
 
 #ifdef DEBUG_TOOLTIP
-	win.connect_signal<event::SDL_MOUSE_MOTION>(
-			std::bind(debug_tooltip, std::ref(win), std::placeholders::_3, std::placeholders::_5),
+	connect_signal<event::SDL_MOUSE_MOTION>(
+			std::bind(debug_tooltip, std::ref(*this), std::placeholders::_3, std::placeholders::_5),
 			event::dispatcher::front_child);
 #endif
 
-	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this));
+	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this));
 
 	//
 	// General hotkeys
 	//
-	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
-		std::bind(&gui2::window::set_retval, std::ref(win), RELOAD_GAME_DATA, true));
+	register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
+		std::bind(&gui2::window::set_retval, std::ref(*this), RELOAD_GAME_DATA, true));
 
-	win.register_hotkey(hotkey::TITLE_SCREEN__TEST,
+	register_hotkey(hotkey::HOTKEY_ACHIEVEMENTS,
+		std::bind(&title_screen::show_achievements, this));
+
+	register_hotkey(hotkey::TITLE_SCREEN__TEST,
 		std::bind(&title_screen::hotkey_callback_select_tests, this));
 
 	// A wrapper is needed here since the relevant display function is overloaded, and
 	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
-	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
+	register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
 
-	win.register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot));
+	register_hotkey(hotkey::HOTKEY_SCREENSHOT, std::bind(&make_screenshot));
 
 	//
 	// Background and logo images
@@ -178,32 +183,21 @@ void title_screen::pre_show(window& win)
 		ERR_CF << "No title image defined";
 	}
 
-	win.get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
+	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 
 	if(game_config::images::game_title_background.empty()) {
 		ERR_CF << "No title background image defined";
 	}
 
-	win.get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
+	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
-	find_widget<image>(&win, "logo-bg", false).set_image(game_config::images::game_logo_background);
-	find_widget<image>(&win, "logo", false).set_image(game_config::images::game_logo);
-
-	//
-	// Version string
-	//
-	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
-
-	if(label* version_label = find_widget<label>(&win, "revision_number", false, false)) {
-		version_label->set_label(version_string);
-	}
-
-	win.get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
+	find_widget<image>(this, "logo", false).set_image(game_config::images::game_logo);
 
 	//
 	// Tip-of-the-day browser
 	//
-	multi_page* tip_pages = find_widget<multi_page>(&win, "tips", false, false);
+	multi_page* tip_pages = find_widget<multi_page>(this, "tips", false, false);
 
 	if(tip_pages != nullptr) {
 		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
@@ -228,16 +222,16 @@ void title_screen::pre_show(window& win)
 		update_tip(true);
 	}
 
-	register_button(win, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
+	register_button(*this, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
 		std::bind(&title_screen::update_tip, this, true));
 
-	register_button(win, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
+	register_button(*this, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, false));
 
 	//
 	// Help
 	//
-	register_button(win, "help", hotkey::HOTKEY_HELP, []() {
+	register_button(*this, "help", hotkey::HOTKEY_HELP, []() {
 		if(gui2::new_widgets) {
 			gui2::dialogs::help_browser::display();
 		}
@@ -248,18 +242,18 @@ void title_screen::pre_show(window& win)
 	//
 	// About
 	//
-	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
+	register_button(*this, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
 
 	//
 	// Campaign
 	//
-	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
+	register_button(*this, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this]() {
 		try{
 			if(game_.new_campaign()) {
 				// Suspend drawing of the title screen,
 				// so it doesn't flicker in between loading screens.
-				win.set_suspend_drawing(true);
-				win.set_retval(LAUNCH_GAME);
+				hide();
+				set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
 			gui2::show_error_message(e.what());
@@ -269,55 +263,114 @@ void title_screen::pre_show(window& win)
 	//
 	// Multiplayer
 	//
-	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
+	register_button(*this, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
 		std::bind(&title_screen::button_callback_multiplayer, this));
 
 	//
 	// Load game
 	//
-	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
+	register_button(*this, "load", hotkey::HOTKEY_LOAD_GAME, [this]() {
 		if(game_.load_game()) {
 			// Suspend drawing of the title screen,
 			// so it doesn't flicker in between loading screens.
-			win.set_suspend_drawing(true);
-			win.set_retval(LAUNCH_GAME);
+			hide();
+			set_retval(LAUNCH_GAME);
 		}
 	});
 
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [&win]() {
+	register_button(*this, "addons", hotkey::TITLE_SCREEN__ADDONS, [this]() {
 		if(manage_addons()) {
-			win.set_retval(RELOAD_GAME_DATA);
+			set_retval(RELOAD_GAME_DATA);
 		}
 	});
 
 	//
 	// Editor
 	//
-	register_button(win, "editor", hotkey::TITLE_SCREEN__EDITOR, [&win]() { win.set_retval(MAP_EDITOR); });
+	register_button(*this, "editor", hotkey::TITLE_SCREEN__EDITOR, [this]() { set_retval(MAP_EDITOR); });
 
 	//
 	// Cores
 	//
-	win.register_hotkey(hotkey::TITLE_SCREEN__CORES,
+	register_hotkey(hotkey::TITLE_SCREEN__CORES,
 		std::bind(&title_screen::button_callback_cores, this));
 
 	//
 	// Language
 	//
-	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this]() {
+	register_button(*this, "language", hotkey::HOTKEY_LANGUAGE, [this]() {
 		try {
 			if(game_.change_language()) {
 				on_resize();
+				update_static_labels();
 			}
 		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
 		}
 	});
 
-	if(auto* lang_button = find_widget<button>(&win, "language", false, false); lang_button) {
+	//
+	// Preferences
+	//
+	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
+		gui2::dialogs::preferences_dialog::display();
+	});
+
+	//
+	// Achievements
+	//
+	register_button(*this, "achievements", hotkey::HOTKEY_ACHIEVEMENTS,
+		std::bind(&title_screen::show_achievements, this));
+
+	//
+	// Credits
+	//
+	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
+
+	//
+	// Quit
+	//
+	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
+	find_widget<button>(this, "quit", false, true);
+
+	//
+	// Debug clock
+	//
+	register_button(*this, "clock", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_debug_clock_window, this));
+
+	auto clock = find_widget<button>(this, "clock", false, false);
+	if(clock) {
+		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// Static labels (version and language)
+	//
+	update_static_labels();
+}
+
+void title_screen::update_static_labels()
+{
+	//
+	// Version menu label
+	//
+	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+
+	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
+		version_label->set_label(version_string);
+	}
+
+	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+
+	//
+	// Language menu label
+	//
+	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
 		// and strip the charset from the Boost locale identifier.
@@ -340,36 +393,6 @@ void title_screen::pre_show(window& win)
 			// locale identifier as a last resort
 			lang_button->set_label(boost_name);
 		}
-	}
-
-	//
-	// Preferences
-	//
-	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
-		gui2::dialogs::preferences_dialog::display();
-	});
-
-	//
-	// Credits
-	//
-	register_button(win, "credits", hotkey::TITLE_SCREEN__CREDITS, [&win]() { win.set_retval(SHOW_ABOUT); });
-
-	//
-	// Quit
-	//
-	register_button(win, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [&win]() { win.set_retval(QUIT_GAME); });
-	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
-	find_widget<button>(&win, "quit", false, true);
-
-	//
-	// Debug clock
-	//
-	register_button(win, "clock", hotkey::HOTKEY_NULL,
-		std::bind(&title_screen::show_debug_clock_window, this));
-
-	auto clock = find_widget<button>(&win, "clock", false, false);
-	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
 }
 
@@ -437,6 +460,12 @@ void title_screen::hotkey_callback_select_tests()
 		game_.set_test(options[choice]);
 		set_retval(LAUNCH_GAME);
 	}
+}
+
+void title_screen::show_achievements()
+{
+	achievements_dialog ach;
+	ach.show();
 }
 
 void title_screen::button_callback_multiplayer()

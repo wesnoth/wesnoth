@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -75,10 +75,8 @@ public:
 	/** Cycle to the next brush. */
 	void cycle_brush();
 
-	/** TODO */
 	void set_brush(std::string id);
 
-	/** TODO */
 	bool is_active_brush(std::string id) const { return brush_->id() == id; }
 
 	palette_manager* get_palette_manager() { return palette_manager_.get(); }

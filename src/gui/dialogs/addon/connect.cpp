@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,9 +31,9 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(addon_connect)
 
-addon_connect::addon_connect(std::string& host_name,
-							   const bool allow_remove)
-	: allow_remove_(allow_remove)
+addon_connect::addon_connect(std::string& host_name, bool allow_remove)
+	: modal_dialog(window_id())
+	, allow_remove_(allow_remove)
 {
 	register_text("host_name", false, host_name, true);
 }

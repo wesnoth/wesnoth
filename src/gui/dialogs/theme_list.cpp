@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,9 @@ namespace gui2::dialogs
 REGISTER_DIALOG(theme_list)
 
 theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
-	: index_(selection), themes_(themes)
+	: modal_dialog(window_id())
+	, index_(selection)
+	, themes_(themes)
 {
 }
 

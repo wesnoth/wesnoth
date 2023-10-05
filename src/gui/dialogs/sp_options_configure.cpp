@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(sp_options_configure)
 
 sp_options_configure::sp_options_configure(ng::create_engine& create_engine, ng::configure_engine& config_engine)
-	: create_engine_(create_engine)
+	: modal_dialog(window_id())
+	, create_engine_(create_engine)
 	, config_engine_(config_engine)
 	, options_manager_()
 {

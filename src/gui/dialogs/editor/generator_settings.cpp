@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,8 @@ static int min_size = 20;
 REGISTER_DIALOG(generator_settings)
 
 generator_settings::generator_settings(generator_data& data)
-	: players_(register_integer("players", true, data.nplayers))
+	: modal_dialog(window_id())
+	, players_(register_integer("players", true, data.nplayers))
 	, width_(register_integer("width",     true, data.width))
 	, height_(register_integer("height",   true, data.height))
 	, update_width_label_()

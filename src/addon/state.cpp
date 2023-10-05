@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,7 +40,8 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 				t.remote_version = *addon.versions.begin();
 
 				// Try to obtain the version number from the .pbl first.
-				config pbl = get_addon_pbl_info(id);
+				// Just grabbing the version, no need to validate.
+				config pbl = get_addon_pbl_info(id, false);
 
 				if(pbl.has_attribute("version")) {
 					t.installed_version = pbl["version"].str();

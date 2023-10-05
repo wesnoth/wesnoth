@@ -1,10 +1,12 @@
 import fs from 'fs'
 
-type Tilemap = {
+type Tile = {
   baseCode: string,
-  miscCode: string,
-  player: string,
-}[][]
+  miscCode: string | undefined,
+  player: string | undefined,
+}
+
+type Tilemap = Tile[][]
 
 const parseRawMap = (rawMap: string) => {
   return rawMap
@@ -52,8 +54,8 @@ type WalkthroughCallback =
       x: number,
       y: number,
       baseCode: string,
-      miscCode: string,
-      player: string,
+      miscCode: string | undefined,
+      player: string | undefined,
     }
   ) => void
 const walkthrough = (tilemap: Tilemap, callback: WalkthroughCallback) => {
@@ -95,4 +97,4 @@ const diff = (left: Tilemap, right: Tilemap) => {
   return diffTiles
 }
 
-export { Tilemap, parseFile, size, walkthrough, diff }
+export { Tile, Tilemap, parseFile, size, walkthrough, diff }

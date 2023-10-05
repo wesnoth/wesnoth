@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "events.hpp"                   // for raise_draw_event, pump, etc
+#include "events.hpp"                   // for draw, pump, etc
 #include "font/constants.hpp"           // for relative_size
 #include "preferences/game.hpp"
 #include "game_config_manager.hpp"
@@ -242,8 +242,8 @@ void show_with_toplevel(const section &toplevel_sec,
 		else {
 			hb.show_topic(default_show_topic);
 		}
-		hb.set_dirty(true);
-		events::raise_draw_event();
+		hb.queue_redraw();
+		events::draw();
 		CKey key;
 		for (;;) {
 			events::pump();
@@ -260,7 +260,7 @@ void show_with_toplevel(const section &toplevel_sec,
 				}
 			}
 			// This also rate limits to vsync
-			events::raise_draw_event();
+			events::draw();
 		}
 	}
 	catch (const parse_error& e) {

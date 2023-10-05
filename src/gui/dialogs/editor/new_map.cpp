@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,6 +25,7 @@ namespace gui2::dialogs
 REGISTER_DIALOG(editor_new_map)
 
 editor_new_map::editor_new_map(const t_string& title, int& width, int& height)
+	: modal_dialog(window_id())
 {
 	register_label("title", true, title);
 

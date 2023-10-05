@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -142,11 +142,11 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 				continue;
 			}
 		}
-		if(const config& cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)) {
+		if(auto cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)) {
 			if(!cfg["addon_id"].empty()) {
 				res.insert(cfg["addon_id"]);
 			}
-			for (const config& load_res : cfg.child_range("load_resource")) {
+			for (const config& load_res : cfg->child_range("load_resource")) {
 				mods.emplace_back("resource", load_res["id"].str());
 			}
 		} else {

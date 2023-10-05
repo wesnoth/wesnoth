@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(mp_staging)
 
 mp_staging::mp_staging(ng::connect_engine& connect_engine, wesnothd_connection* connection)
-	: connect_engine_(connect_engine)
+	: modal_dialog(window_id())
+	, connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, network_connection_(connection)
 	, update_timer_(0)

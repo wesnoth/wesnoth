@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,6 +44,7 @@ static void set_dont_ask_again(const bool ask_again)
 }
 
 game_delete::game_delete()
+	: modal_dialog(window_id())
 {
 	register_bool(
 			"dont_ask_again", true, &get_dont_ask_again, &set_dont_ask_again);

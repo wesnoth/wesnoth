@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -48,11 +48,9 @@ void palette_manager::set_group(std::size_t index)
 
 void palette_manager::adjust_size()
 {
-	restore_palette_bg(false);
 	const SDL_Rect& rect = gui_.palette_area();
 	set_location(rect);
 	palette_start_ = rect.y;
-	bg_register(rect);
 	active_palette().adjust_size(rect);
 	set_dirty();
 }
@@ -87,33 +85,13 @@ void palette_manager::scroll_up()
 
 void palette_manager::scroll_top()
 {
-	restore_palette_bg(true);
-}
-
-// TODO: draw_manager - can probably remove this...
-void palette_manager::restore_palette_bg(bool scroll_top)
-{
-	const SDL_Rect rect = gui_.palette_area();
-	if (scroll_top) {
-		active_palette().set_start_item(0);
-	}
-	bg_restore(rect);
+	active_palette().set_start_item(0);
 	set_dirty();
 }
 
 common_palette& palette_manager::active_palette()
 {
 	return toolkit_.get_palette();
-}
-
-void palette_manager::scroll_bottom()
-{
-	unsigned int old_start   = active_palette().num_items();
-	unsigned int items_start = active_palette().start_num();
-	while (old_start != items_start) {
-		old_start = items_start;
-		scroll_down();
-	}
 }
 
 void palette_manager::layout()
@@ -140,7 +118,8 @@ void palette_manager::layout()
 
 void palette_manager::draw_contents()
 {
-	active_palette().draw();
+	// This is unnecessary as every GUI1 widget is a TLD.
+	//active_palette().draw();
 }
 
 sdl_handler_vector palette_manager::handler_members()

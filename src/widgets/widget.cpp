@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "floating_label.hpp"
 #include "widgets/widget.hpp"
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
@@ -32,9 +31,9 @@ namespace gui {
 bool widget::mouse_lock_ = false;
 
 widget::widget(const bool auto_join)
-	: events::sdl_handler(auto_join), focus_(true), rect_(EmptyRect), needs_restore_(false),
-	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
-	  clip_rect_(EmptyRect), has_help_(false), mouse_lock_local_(false)
+	: events::sdl_handler(auto_join), focus_(true), rect_(EmptyRect),
+	  state_(UNINIT), enabled_(true), clip_(false),
+	  clip_rect_(EmptyRect), mouse_lock_local_(false)
 {
 }
 
@@ -43,7 +42,6 @@ widget::~widget()
 	if (!hidden()) {
 		queue_redraw();
 	}
-	bg_cancel();
 	free_mouse_lock();
 }
 
@@ -68,48 +66,28 @@ bool widget::mouse_locked() const
 	return mouse_lock_ && !mouse_lock_local_;
 }
 
-// TODO: draw_manager - kill surface restorers
-void widget::bg_cancel()
-{
-	/*for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->cancel();*/
-	restorer_.clear();
-}
-
 void widget::set_location(const SDL_Rect& rect)
 {
-	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
+	if(rect_ == rect) {
 		return;
+	}
+
+	// If we were shown somewhere else, queue it to be cleared.
+	if(state_ == DIRTY || state_ == DRAWN) {
+		queue_redraw();
+	}
+
 	if(state_ == UNINIT && rect.x != -1234 && rect.y != -1234)
 		state_ = DRAWN;
 
-	// TODO: draw_manager - overhaul
-	bg_restore();
-	bg_cancel();
 	rect_ = rect;
-	set_dirty(true);
+	queue_redraw();
 	update_location(rect);
-}
-
-void widget::update_location(const SDL_Rect& rect)
-{
-	bg_register(rect);
 }
 
 void widget::layout()
 {
 	// this basically happens in set_location, so there's nothing to do here.
-}
-
-const SDL_Rect* widget::clip_rect() const
-{
-	return clip_ ? &clip_rect_ : nullptr;
-}
-
-void widget::bg_register(const SDL_Rect& rect)
-{
-	restorer_.emplace_back(rect);
 }
 
 void widget::set_location(int x, int y)
@@ -152,7 +130,7 @@ void widget::set_focus(bool focus)
 	if (focus)
 		events::focus_handler(this);
 	focus_ = focus;
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool widget::focus(const SDL_Event* event)
@@ -163,29 +141,13 @@ bool widget::focus(const SDL_Event* event)
 void widget::hide(bool value)
 {
 	if (value) {
-		if ((state_ == DIRTY || state_ == DRAWN) && !hidden_override_)
-			bg_restore();
+		if (state_ == DIRTY || state_ == DRAWN) {
+			queue_redraw();
+		}
 		state_ = HIDDEN;
 	} else if (state_ == HIDDEN) {
 		state_ = DRAWN;
-		if (!hidden_override_) {
-			bg_update();
-			set_dirty(true);
-		}
-	}
-}
-
-void widget::hide_override(bool value) {
-	if (hidden_override_ != value) {
-		hidden_override_ = value;
-		if (state_ == DIRTY || state_ == DRAWN) {
-			if (value) {
-				bg_restore();
-			} else {
-				bg_update();
-				set_dirty(true);
-			}
-		}
+		queue_redraw();
 	}
 }
 
@@ -193,12 +155,12 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 {
 	clip_rect_ = rect;
 	clip_ = true;
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool widget::hidden() const
 {
-	return (state_ == HIDDEN || hidden_override_ || state_ == UNINIT
+	return (state_ == HIDDEN || state_ == UNINIT
 		|| (clip_ && !rect_.overlaps(clip_rect_)));
 }
 
@@ -206,7 +168,7 @@ void widget::enable(bool new_val)
 {
 	if (enabled_ != new_val) {
 		enabled_ = new_val;
-		set_dirty();
+		queue_redraw();
 	}
 }
 
@@ -215,18 +177,17 @@ bool widget::enabled() const
 	return enabled_;
 }
 
-// TODO: draw_manager - this needs to die
 void widget::set_dirty(bool dirty)
 {
-	if ((dirty && (hidden_override_ || state_ != DRAWN)) || (!dirty && state_ != DIRTY))
+	if ((dirty && state_ != DRAWN) || (!dirty && state_ != DIRTY)) {
 		return;
+	}
 
 	state_ = dirty ? DIRTY : DRAWN;
+
 	if (dirty) {
 		queue_redraw();
 	}
-	//if (!dirty)
-	//	needs_restore_ = true;
 }
 
 bool widget::dirty() const
@@ -246,43 +207,6 @@ void widget::set_id(const std::string& id)
 	}
 }
 
-void widget::bg_update()
-{
-	/*for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->update();*/
-}
-
-void widget::bg_restore() const
-{
-	if (needs_restore_) {
-		for(const rect& r : restorer_) {
-			if(clip_) {
-				draw_manager::invalidate_region(r.intersect(clip_rect_));
-			} else {
-				draw_manager::invalidate_region(r);
-			}
-		}
-		/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
-		    i_end = restorer_.end(); i != i_end; ++i)
-			i->restore();*/
-		needs_restore_ = false;
-	}
-}
-
-void widget::bg_restore(const SDL_Rect& where) const
-{
-	rect c = clip_ ? clip_rect_ : where;
-	c.clip(where);
-
-	for(const rect& r : restorer_) {
-		draw_manager::invalidate_region(r.intersect(c));
-	}
-	/*for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
-	    i_end = restorer_.end(); i != i_end; ++i)
-		i->restore(rect);*/
-}
-
 void widget::queue_redraw(const rect& r)
 {
 	draw_manager::invalidate_region(r);
@@ -293,23 +217,21 @@ void widget::queue_redraw()
 	queue_redraw(location());
 }
 
-bool widget::expose(const SDL_Rect& region)
+bool widget::expose(const rect& region)
 {
-	// TODO: draw_manager - draw always? or only when dirty?
-	//if (!dirty()) {
-	//	return false;
-	//}
-	(void)region;
+	if (hidden()) { return false; }
+	if (!rect_.overlaps(region)) { return false; }
+	if (clip_ && !clip_rect_.overlaps(region)) { return false; }
+
 	draw();
 	return true;
 }
 
 void widget::draw()
 {
-	if (hidden())
+	if (hidden()) {
 		return;
-
-	//bg_restore();
+	}
 
 	if (clip_) {
 		auto clipper = draw::reduce_clip(clip_rect_);
@@ -321,28 +243,9 @@ void widget::draw()
 	set_dirty(false);
 }
 
-void widget::set_help_string(const std::string& str)
-{
-	help_text_ = str;
-}
-
 void widget::set_tooltip_string(const std::string& str)
 {
 	tooltip_text_ = str;
-}
-
-void widget::process_help_string(int mousex, int mousey)
-{
-	if (!hidden() && rect_.contains(mousex, mousey)) {
-		if(!has_help_ && !help_text_.empty()) {
-			//PLAIN_LOG << "setting help string to '" << help_text_ << "'";
-			font::set_help_string(help_text_);
-			has_help_ = true;
-		}
-	} else if(has_help_) {
-		font::clear_help_string();
-		has_help_ = false;
-	}
 }
 
 void widget::process_tooltip_string(int mousex, int mousey)

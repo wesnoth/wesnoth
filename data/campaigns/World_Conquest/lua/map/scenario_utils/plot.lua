@@ -49,7 +49,11 @@ function add_plot(scenario, scenario_num, nplayers)
 		end
 		start_message(ai1, true, _ "Foolish upstarts. You will never defeat us! Come, my allies. Let us crush them!")
 		start_message(ai1, false, _ "Yes! We will drive them into the sea!")
-		start_message("1,2,3", false, _ "Never fear! Your trusted friends stand beside you!")
+		if nplayers == 4 then
+			start_message("4", true, _ "Never fear! Your trusted friends stand beside you!")
+		else
+			start_message("1,2,3", false, _ "Never fear! Your trusted friends stand beside you!")
+		end
 
 		end_message("1,2,3", true, _ "Victory is ours! Let us set sail in search of new lands to conquer!")
 	elseif scenario_num == 2 then

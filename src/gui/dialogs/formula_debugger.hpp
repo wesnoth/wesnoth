@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,7 +42,8 @@ namespace gui2::dialogs
 class formula_debugger : public modal_dialog
 {
 public:
-	explicit formula_debugger(wfl::formula_debugger& fdb) : fdb_(fdb)
+	explicit formula_debugger(wfl::formula_debugger& fdb)
+		: modal_dialog(window_id()) , fdb_(fdb)
 	{
 	}
 

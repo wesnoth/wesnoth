@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -207,15 +207,15 @@ public:
 	void redraw(const int frame_time, bool on_start_time, bool in_scope_of_frame, const map_location& src, const map_location& dst,
 		halo::handle& halo_id, halo::manager& halo_man, const frame_parameters& animation_val, const frame_parameters& engine_val) const;
 
-	const frame_parameters merge_parameters(int current_time, const frame_parameters& animation_val,
+	frame_parameters merge_parameters(int current_time, const frame_parameters& animation_val,
 		const frame_parameters& engine_val = frame_parameters()) const;
 
-	const frame_parameters parameters(int current_time) const
+	frame_parameters parameters(int current_time) const
 	{
 		return builder_.parameters(current_time);
 	}
 
-	const frame_parameters end_parameters() const
+	frame_parameters end_parameters() const
 	{
 		return builder_.parameters(duration());
 	}

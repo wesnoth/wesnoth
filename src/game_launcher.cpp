@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,13 +52,16 @@
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp" // for split
-#include "statistics.hpp"
 #include "tstring.hpp"       // for operator==, operator!=
 #include "video.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
 #include <algorithm> // for copy, max, min, stable_sort
+#ifdef _WIN32
+#include <boost/process/windows.hpp>
+#endif
+#include <boost/process.hpp>
 #include <cstdlib>   // for system
 #include <new>
 #include <utility> // for pair
@@ -69,14 +72,6 @@
 #include "gui/widgets/debug.hpp"
 #endif
 
-// For wesnothd launch code.
-#ifdef _WIN32
-
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-#endif // _WIN32
-
 struct incorrect_map_format_error;
 
 static lg::log_domain log_config("config");
@@ -84,6 +79,7 @@ static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
+#define ERR_GENERAL LOG_STREAM(err, lg::general())
 #define LOG_GENERAL LOG_STREAM(info, lg::general())
 #define WRN_GENERAL LOG_STREAM(warn, lg::general())
 #define DBG_GENERAL LOG_STREAM(debug, lg::general())
@@ -98,6 +94,8 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
+
+namespace bp = boost::process;
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
@@ -313,7 +311,6 @@ bool game_launcher::init_language()
 
 bool game_launcher::init_video()
 {
-	// TODO: draw_manager - this should probably be set in more situations, e.g. render_image
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui
 		|| cmdline_opts_.headless_unit_test
@@ -340,7 +337,7 @@ bool game_launcher::init_video()
 	video::set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
-	surface icon(image::get_surface("icons/icon-game.png", image::UNSCALED));
+	surface icon(image::get_surface(image::locator{"icons/icon-game.png"}, image::UNSCALED));
 	if(icon != nullptr) {
 		video::set_window_icon(icon);
 	}
@@ -645,7 +642,7 @@ bool game_launcher::play_screenshot_mode()
 
 	::init_textdomains(game_config_manager::get()->game_config());
 
-	editor::start(screenshot_map_, true, screenshot_filename_);
+	editor::start(false, screenshot_map_, true, screenshot_filename_);
 	return false;
 }
 
@@ -741,12 +738,12 @@ bool game_launcher::load_game()
 	play_replay_ = load.data().show_replay;
 	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no");
 	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no");
-	// in case load.data().show_replay && !state_.is_mid_game_save()
+	// in case load.data().show_replay && state_.is_start_of_scenario
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
 
-	if(state_.is_mid_game_save() && load.data().show_replay) {
-		statistics::clear_current_scenario();
+	if(!state_.is_start_of_scenario() && load.data().show_replay) {
+		state_.statistics().clear_current_scenario();
 	}
 
 	if(state_.classification().is_multiplayer()) {
@@ -822,8 +819,8 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
-	const std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
-		? filesystem::get_program_invocation("wesnothd")
+	std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
+		? filesystem::get_exe_dir() + "/" + filesystem::get_program_invocation("wesnothd")
 		: preferences::get_mp_server_program_name();
 
 	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
@@ -832,28 +829,27 @@ void game_launcher::start_wesnothd()
 		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
 	}
 
+	LOG_GENERAL << "Starting wesnothd";
+	try
+	{
 #ifndef _WIN32
-	std::string command = "\"" + wesnothd_program +"\" -c \"" + config + "\" -d -t 2 -T 5";
+		bp::child c(wesnothd_program, "-c", config);
 #else
-	// start wesnoth as background job
-	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c \"" + config + "\" -t 2 -T 5";
-	// Make sure wesnothd's console output is visible on the console window by
-	// disabling SDL's stdio redirection code for this and future child
-	// processes. No need to bother cleaning this up because it's only
-	// meaningful to SDL applications during pre-main initialization.
-	SetEnvironmentVariableA("SDL_STDIO_REDIRECT", "0");
+		bp::child c(wesnothd_program, "-c", config, bp::windows::create_no_window);
 #endif
-	LOG_GENERAL << "Starting wesnothd: "<< command;
-	if (std::system(command.c_str()) == 0) {
+		c.detach();
 		// Give server a moment to start up
 		SDL_Delay(50);
 		return;
 	}
-	preferences::set_mp_server_program_name("");
+	catch(const bp::process_error& e)
+	{
+		preferences::set_mp_server_program_name("");
 
-	// Couldn't start server so throw error
-	WRN_GENERAL << "Failed to run server start script";
-	throw game::mp_server_error("Starting MP server failed!");
+		// Couldn't start server so throw error
+		WRN_GENERAL << "Failed to start server " << wesnothd_program << ":\n" << e.what();
+		throw game::mp_server_error("Starting MP server failed!");
+	}
 }
 
 bool game_launcher::play_multiplayer(mp_mode mode)
@@ -972,7 +968,12 @@ bool game_launcher::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(cmdline_opts_);
+	try {
+		mp::start_local_game_commandline(cmdline_opts_);
+	} catch(savegame::load_game_exception& e) {
+		load_data_ = std::move(e.data_);
+		return true;
+	}
 
 	return false;
 }
@@ -1046,12 +1047,13 @@ void game_launcher::play_replay()
 
 editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
+	editor::EXIT_STATUS res = editor::EXIT_STATUS::EXIT_NORMAL;
 	while(true) {
 		game_config_manager::get()->load_game_config_for_editor();
 
 		::init_textdomains(game_config_manager::get()->game_config());
 
-		editor::EXIT_STATUS res = editor::start(filename);
+		res = editor::start(res != editor::EXIT_RELOAD_DATA, filename);
 
 		if(res != editor::EXIT_RELOAD_DATA) {
 			return res;
@@ -1072,6 +1074,10 @@ game_launcher::~game_launcher()
 {
 	try {
 		sound::close_sound();
+		video::deinit();
+	} catch(std::exception& e) {
+		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher: " << e.what();
 	} catch(...) {
+		ERR_GENERAL << "Suppressing exception " << utils::get_unknown_exception_type() << " thrown during ~game_launcher";
 	}
 }

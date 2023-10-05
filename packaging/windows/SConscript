@@ -8,12 +8,11 @@ binaries = ["wesnoth", "wesnothd"]
 for bin in binaries:
     try:
         env["RCCOM"] = '$RC $_CPPDEFFLAGS $RCINCFLAGS ${RCINCPREFIX} ${SOURCE.dir} $RCFLAGS -i $SOURCE -o $TARGET'
-        res = [env.RES(bin + ".rc", CPPPATH=["#/"])]
+        res = env.RES(bin + ".rc", CPPPATH=["#/"])
+        if bin == "wesnoth":
+            Depends(res, File("wesnoth.exe.manifest"))
     except AttributeError:
-        res = []
-    env[bin + "_res"] = res
-
-Depends(env["wesnoth_res"], File("wesnoth.exe.manifest"))
+        pass
 
 def WindowsInstaller(env, files):
     files = [Entry(file) for file in Flatten(files)]

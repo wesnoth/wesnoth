@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -57,9 +57,8 @@ help_text_area::help_text_area(const section &toplevel) :
 	set_scroll_rate(40);
 }
 
-void help_text_area::set_inner_location(const SDL_Rect& rect)
+void help_text_area::set_inner_location(const SDL_Rect& /*rect*/)
 {
-	bg_register(rect);
 	if (shown_topic_)
 		set_items();
 }
@@ -68,7 +67,7 @@ void help_text_area::show_topic(const topic &t)
 {
 	shown_topic_ = &t;
 	set_items();
-	set_dirty(true);
+	queue_redraw();
 	DBG_HP << "Showing topic: " << t.id << ": " << t.title;
 }
 
@@ -134,8 +133,8 @@ void help_text_area::set_items()
 				read(cfg, stream);
 
 #define TRY(name) do { \
-				if (config &child = cfg.child(#name)) \
-					handle_##name##_cfg(child); \
+				if (auto child = cfg.optional_child(#name)) \
+					handle_##name##_cfg(*child); \
 				} while (0)
 
 				TRY(ref);
@@ -541,7 +540,6 @@ int help_text_area::get_remaining_width()
 void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
-	//bg_restore();
 	auto clipper = draw::reduce_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect_;
@@ -572,7 +570,7 @@ void help_text_area::scroll(unsigned int)
 	// Nothing will be done on the actual scroll event. The scroll
 	// position is checked when drawing instead and things drawn
 	// accordingly.
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool help_text_area::item_at::operator()(const item& item) const {

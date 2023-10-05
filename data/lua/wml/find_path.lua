@@ -59,9 +59,9 @@ function wesnoth.wml_actions.find_path(cfg)
 				ignore_visibility = ignore_visibility
 			} )
 
-			if #path == 0 or cost >= 42424241 then
-				-- it's not a reachable hex. 42424242 is the high value returned for unwalkable or busy terrains
-			else
+			-- it's a reachable hex.
+			-- it's not 0, and less than 42424242 which is the high value returned for unwalkable or busy terrains
+			if #path ~= 0 and cost < 42424241 then
 				local steps = #path
 
 				local is_better = false

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -72,6 +72,7 @@
 #include "preferences/credentials.hpp"
 #include "preferences/display.hpp"
 #include "replay.hpp"
+#include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"
@@ -138,7 +139,7 @@ void menu_handler::objectives()
 
 void menu_handler::show_statistics(int side_num)
 {
-	gui2::dialogs::statistics_dialog::display(board().get_team(side_num));
+	gui2::dialogs::statistics_dialog::display(pc_.statistics(), board().get_team(side_num));
 }
 
 void menu_handler::unit_list()
@@ -1315,8 +1316,8 @@ protected:
 				"whiteboard_options", &console_handler::do_whiteboard_options, _("Access whiteboard options dialog."));
 		register_alias("whiteboard_options", "wbo");
 
-		if(const config& alias_list = preferences::get_alias()) {
-			for(const config::attribute& a : alias_list.attribute_range()) {
+		if(auto alias_list = preferences::get_alias()) {
+			for(const config::attribute& a : alias_list->attribute_range()) {
 				register_alias(a.second, a.first);
 			}
 		}
@@ -1733,7 +1734,8 @@ void console_handler::do_clear()
 
 void console_handler::do_foreground()
 {
-	menu_handler_.gui_->toggle_debug_foreground();
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_FOREGROUND);
+	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_layers()
@@ -1764,7 +1766,7 @@ void console_handler::do_fps()
 
 void console_handler::do_benchmark()
 {
-	menu_handler_.gui_->toggle_benchmark();
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_BENCHMARK);
 }
 
 void console_handler::do_save()
@@ -1815,7 +1817,7 @@ void console_handler::do_choose_level()
 		// find scenarios of multiplayer campaigns
 		// (assumes that scenarios are ordered properly in the game_config)
 		std::string scenario_id = menu_handler_.pc_.get_mp_settings().mp_scenario;
-		if(const config& this_scenario = menu_handler_.game_config_.find_child(tag, "id", scenario_id)) {
+		if(auto this_scenario = menu_handler_.game_config_.find_child(tag, "id", scenario_id)) {
 			std::string addon_id = this_scenario["addon_id"].str();
 			for(const config& sc : menu_handler_.game_config_.child_range(tag)) {
 				if(sc["addon_id"] == addon_id) {
@@ -2076,18 +2078,18 @@ void console_handler::do_event()
 
 void console_handler::do_toggle_draw_coordinates()
 {
-	menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_COORDINATES);
 	menu_handler_.gui_->invalidate_all();
 }
 void console_handler::do_toggle_draw_terrain_codes()
 {
-	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
 	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_draw_num_of_bitmaps()
 {
-	menu_handler_.gui_->set_draw_num_of_bitmaps(!menu_handler_.gui_->get_draw_num_of_bitmaps());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
 	menu_handler_.gui_->invalidate_all();
 }
 
@@ -2117,7 +2119,7 @@ void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_han
 		add_chat_message(std::time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
 	} catch(const wfl::formula_error&) {
 	} catch(...) {
-		add_chat_message(std::time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
+		add_chat_message(std::time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA: "+utils::get_unknown_exception_type());
 	}
 }
 

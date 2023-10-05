@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2019-02-21 00:51+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=Dead_Water
@@ -105,11 +105,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Grafija"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -2050,20 +2045,20 @@ msgstr ""
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1098
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1105
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:135
 msgid "Cylanna! I need you!"
 msgstr "Silana! Man tavęs reikia!"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:490
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1102
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1109
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tiegėja niekada man neatleis.  Mes pražuvę."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:504
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1116
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1123
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:149
 msgid "We are lost without our king!"
 msgstr "Be karaliaus mes pražuvę!"
@@ -2357,47 +2352,47 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:910
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:917
 msgid "Now we can finally grab that sword."
 msgstr "Pagaliau galime griebti tą kalaviją."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:926
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:933
 msgid "I am not going with you. One of your people should take the sword."
 msgstr "Aš su jumis nevyksiu. Kalaviją turėtų paimti kas nors iš jūsiškių."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:944
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:951
 msgid "This is not food. And it is definitely not a toy. Leave it."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:973
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:980
 msgid "This sword is 8×4, magical, with <i>fire</i> damage."
 msgstr "Kalavijas yra 8×4, magiškas, deginantis <i>ugnimi</i>."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:980
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:987
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
 msgstr "Aš paimsiu kalaviją ir ugnies pliūpsniais naikinsiu nemirėlius."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:989
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:996
 msgid "This sword is not right for me. Let someone else have it."
 msgstr "Šis kalavijas man netinka. Tegul jį ima kas nors kitas."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1024
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1031
 msgid "I’ll carry the sword."
 msgstr "Aš paimsiu kalaviją."
 
 #. [option]
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1033
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1040
 msgid "Let someone else have it."
 msgstr "Tegul kas nors kitas jį paima."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1071
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1078
 #, fuzzy
 #| msgid ""
 #| "We thank all you humans for your help, and release you from any farther "
@@ -2410,19 +2405,19 @@ msgstr ""
 "įsipareigojimų. Ten, kur keliaujame mes, jums lengvo kelio nėra."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1132
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1139
 #, fuzzy
 #| msgid "CURSE you mermen!"
 msgid "CURSE you merfolk!"
 msgstr "Būkite PRAKEIKTI, vandeniai!"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1147
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1154
 msgid "Aghh! Die!"
 msgstr "Ach! Mirk!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1152
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1159
 msgid "He has that staff of..."
 msgstr "Jis turi lazdą..."
 
@@ -2801,30 +2796,6 @@ msgid ""
 "until he became fat and lazy in his old age."
 msgstr ""
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr ""
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "pritrenktas"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "pritrenkta"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -2842,31 +2813,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "skeptras"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Vandenių pilietis"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:5
-msgid "Kraken"
-msgstr "Krakenas"
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:20
-msgid ""
-"Krakens are gigantic creatures of the seas. They can grab their opponents "
-"with strong tentacles, or spit a poisonous black ink from a distance. The "
-"best way to survive an encounter with these monsters is to remain ashore."
-msgstr ""
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3032,23 +2978,20 @@ msgstr ""
 "Burtininkas dėvėjo žiedą! Galbūt jis stebuklingas. Reikia kam nors pabandyti "
 "ir pažiūrėti koks poveikis."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "pritrenkia"
+#~ msgid "stunned"
+#~ msgstr "pritrenktas"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
+#~ msgid "female^stunned"
+#~ msgstr "pritrenkta"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
+#~ msgid "Merman Citizen"
+#~ msgstr "Vandenių pilietis"
+
+#~ msgid "stun"
+#~ msgstr "pritrenkia"
+
+#~ msgid "Kraken"
+#~ msgstr "Krakenas"
 
 #~ msgid "Beginner"
 #~ msgstr "Pradedantysis"

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,10 +28,10 @@ namespace gui2::dialogs
 REGISTER_DIALOG(server_info)
 
 server_info::server_info(const std::string& info, const std::string& announcements)
-: server_information_(info)
-, announcements_(announcements)
+	: modal_dialog(window_id())
+	, server_information_(info)
+	, announcements_(announcements)
 {
-
 }
 
 void server_info::pre_show(window& window)

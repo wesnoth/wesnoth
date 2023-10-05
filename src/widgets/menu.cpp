@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "draw.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
-#include "floating_label.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
 #include "lexical_cast.hpp"
@@ -155,7 +154,6 @@ menu::menu(const std::vector<std::string>& items,
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
   heading_height_(-1),
-  cur_help_(-1,-1),
   selected_(0), click_selects_(click_selects), out_(false),
   previous_button_(true), show_result_(false),
   double_clicked_(false),
@@ -202,8 +200,6 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 		}
 	}
 
-	create_help_strings();
-
 	if(sortby_ >= 0) {
 		do_sort();
 	}
@@ -248,7 +244,7 @@ void menu::do_sort()
 		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
 	}
 
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::recalculate_pos()
@@ -266,26 +262,6 @@ void menu::assert_pos()
 	assert(item_pos_.size() == sz);
 	for(std::size_t n = 0; n != sz; ++n) {
 		assert(item_pos_[n] < sz && n == items_[item_pos_[n]].id);
-	}
-}
-
-void menu::create_help_strings()
-{
-	for(std::vector<item>::iterator i = items_.begin(); i != items_.end(); ++i) {
-		i->help.clear();
-		for(std::vector<std::string>::iterator j = i->fields.begin(); j != i->fields.end(); ++j) {
-			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
-				i->help.emplace_back();
-			} else {
-				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
-				if(items.size() >= 2) {
-					*j = items.front();
-					i->help.push_back(items.back());
-				} else {
-					i->help.emplace_back();
-				}
-			}
-		}
 	}
 }
 
@@ -331,11 +307,10 @@ int menu::selection() const
 	return items_[selected_].id;
 }
 
-void menu::set_inner_location(const SDL_Rect& rect)
+void menu::set_inner_location(const SDL_Rect& /*rect*/)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
-	bg_register(rect);
 }
 
 void menu::change_item(int pos1, int pos2,const std::string& str)
@@ -346,7 +321,7 @@ void menu::change_item(int pos1, int pos2,const std::string& str)
 	}
 
 	items_[item_pos_[pos1]].fields[pos2] = str;
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::erase_item(std::size_t index)
@@ -375,7 +350,7 @@ void menu::erase_item(std::size_t index)
 	update_scrollbar_grip_height();
 	adjust_viewport_to_selection();
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_heading(const std::vector<std::string>& heading)
@@ -386,7 +361,7 @@ void menu::set_heading(const std::vector<std::string>& heading)
 	heading_ = heading;
 	max_items_ = -1;
 
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
@@ -417,7 +392,7 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	if(!keep_viewport) {
 		adjust_viewport_to_selection();
 	}
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_max_height(const int new_max_height)
@@ -715,7 +690,7 @@ void menu::set_numeric_keypress_selection(bool value)
 void menu::scroll(unsigned int)
 {
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_sorter(sorter *s)
@@ -747,7 +722,7 @@ void menu::sort_by(int column)
 
 	do_sort();
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 SDL_Rect menu::style::item_size(const std::string& item) const {
@@ -785,8 +760,6 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 
 void menu::style::draw_row_bg(menu& /*menu_ref*/, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
 {
-	//menu_ref.bg_restore(rect);
-
 	int rgb = 0;
 	double alpha = 0.0;
 
@@ -869,7 +842,7 @@ void menu::clear_item(int item)
 	SDL_Rect rect = get_item_rect(item);
 	if (rect.w == 0)
 		return;
-	bg_restore(rect);
+	queue_redraw(rect);
 }
 
 void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)
@@ -940,8 +913,9 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
-					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
+					const texture sort_tex(image::get_texture(
+						image::locator{sortreversed_ ? "buttons/sliders/slider_arrow_blue.png"
+													 : "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"}));
 					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
 						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
 						const int sort_y = loc.y + loc.h/2 - sort_tex.h()/2;
@@ -972,34 +946,6 @@ void menu::draw_contents()
 	}
 }
 
-
-void menu::layout()
-{
-	widget::layout();
-
-	if(!dirty()) {
-
-		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {
-			if(*i == -1) {
-				// TODO: draw_manager - is this ever actually used?
-				SDL_Rect heading_rect = inner_location();
-				heading_rect.h = heading_height();
-				queue_redraw(heading_rect);
-			} else if(*i >= 0 && *i < int(item_pos_.size())) {
-				const SDL_Rect& rect = get_item_rect(*i);
-				queue_redraw(rect);
-			}
-		}
-
-		invalid_.clear();
-		return;
-	}
-
-	invalid_.clear();
-
-	queue_redraw();
-}
-
 int menu::hit(int x, int y) const
 {
 	const SDL_Rect& loc = inner_location();
@@ -1024,21 +970,6 @@ int menu::hit_column(int x) const
 		}
 	}
 	return j;
-}
-
-std::pair<int,int> menu::hit_cell(int x, int y) const
-{
-	const int row = hit(x, y);
-	if(row < 0) {
-		return std::pair<int,int>(-1, -1);
-	}
-
-	const int col = hit_column(x);
-	if(col < 0) {
-		return std::pair<int,int>(-1, -1);
-	}
-
-	return std::pair<int,int>(x,y);
 }
 
 int menu::hit_heading(int x, int y) const
@@ -1134,39 +1065,13 @@ std::size_t menu::get_item_height(int) const
 	return item_height_ = max_height;
 }
 
-void menu::process_help_string(int mousex, int mousey)
-{
-	if (hidden()) return;
-
-	const std::pair<int,int> loc(hit(mousex,mousey), hit_column(mousex));
-	if(loc == cur_help_) {
-		return;
-	} else if(loc.first == -1) {
-		font::clear_help_string();
-	} else {
-		font::clear_help_string();
-		if(std::size_t(loc.first) < items_.size()) {
-			const std::vector<std::string>& row = items_[item_pos_[loc.first]].help;
-			if(std::size_t(loc.second) < row.size()) {
-				const std::string& help = row[loc.second];
-				if(help.empty() == false) {
-					//PLAIN_LOG << "setting help string from menu to '" << help << "'";
-					font::set_help_string(help);
-				}
-			}
-		}
-	}
-
-	cur_help_ = loc;
-}
-
 void menu::invalidate_row(std::size_t id)
 {
 	if(id >= items_.size()) {
 		return;
 	}
 
-	invalid_.insert(int(id));
+	queue_redraw(get_item_rect(id));
 }
 
 void menu::invalidate_row_pos(std::size_t pos)
@@ -1180,7 +1085,9 @@ void menu::invalidate_row_pos(std::size_t pos)
 
 void menu::invalidate_heading()
 {
-	invalid_.insert(-1);
+	rect heading_rect = inner_location();
+	heading_rect.h = heading_height();
+	queue_redraw(heading_rect);
 }
 
 }

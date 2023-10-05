@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -46,7 +46,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(mp_change_control)
 
 mp_change_control::mp_change_control(events::menu_handler& mh)
-	: menu_handler_(mh)
+	: modal_dialog(window_id())
+	, menu_handler_(mh)
 	, selected_side_(0)
 	, selected_nick_(0)
 	, sides_()

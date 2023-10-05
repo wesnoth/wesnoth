@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,7 +41,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(screenshot_notification)
 
 screenshot_notification::screenshot_notification(const std::string& path, surface screenshot)
-	: path_(path)
+	: modal_dialog(window_id())
+	, path_(path)
 	, screenshots_dir_path_(filesystem::get_screenshot_dir())
 	, screenshot_(screenshot)
 {

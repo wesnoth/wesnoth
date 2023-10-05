@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,7 +34,8 @@ simple_item_selector::simple_item_selector(const std::string& title,
 											 const list_type& items,
 											 bool title_uses_markup,
 											 bool message_uses_markup)
-	: index_(-1)
+	: modal_dialog(window_id())
+	, index_(-1)
 	, single_button_(false)
 	, items_(items)
 	, ok_label_()

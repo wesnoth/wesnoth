@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -65,9 +65,8 @@ private:
 
 	std::map<std::string, std::string> path_map_;
 
-#ifdef _WIN32
+	/** path to current log file */
 	const std::string log_path_;
-#endif
 
 	typedef std::array<std::string, 4> deplist_entry;
 	std::vector<deplist_entry> deps_;

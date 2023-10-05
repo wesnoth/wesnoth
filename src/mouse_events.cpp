@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -361,19 +361,23 @@ void mouse_handler::show_reach_for_unit(const unit_ptr& un)
 				gui().set_route(&route);
 			}
 			over_route_ = true;
+		}
 
-			wb::future_map_if_active raii;
-			current_paths_ = pathfind::paths(*un, false, true,
-											 viewing_team(), path_turns_);
-		} else {
-			//unit under cursor is not on our team
-			//Note: planned unit map must be activated after this is done,
-			//since the future state includes changes to units' movement.
-			unit_movement_resetter move_reset(*un);
+		// Scope for the unit_movement_resetter and future_map_if_active.
+		{
+			// Making this non-null will show the unit's max moves instead of current moves.
+			// Because movement is reset to max in the side's refresh phase, use the max if
+			// that refresh will happen before the unit's side can move again.
+			std::unique_ptr<unit_movement_resetter> move_reset;
+			if(un->side() != side_num_) {
+				move_reset = std::make_unique<unit_movement_resetter>(*un);
+			}
 
+			// Handle whiteboard. Any move_reset must be done before this, since the future
+			// state includes changes to units' movement.
 			wb::future_map_if_active raii;
-			current_paths_ = pathfind::paths(*un, false, true,
-											 viewing_team(), path_turns_);
+
+			current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
 		}
 
 		unselected_paths_ = true;
@@ -1266,7 +1270,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	if(bc_vector.empty()) {
-		gui2::show_transient_message("No Attacks", _("This unit has no usable weapons."));
+		gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
 
 		return -1;
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,21 +63,14 @@ public:
 	bool do_healing_;
 
 	std::optional<end_level_data> end_level_data_;
-	bool init_side_done_;
-	bool start_event_fired_;
 	// used to sync with the mpserver
 	int server_request_number_;
-	bool& init_side_done() { return init_side_done_; }
 
 
 	game_events::wmi_manager& get_wml_menu_items();
 	const game_events::wmi_manager& get_wml_menu_items() const;
-	int first_human_team_; //needed to initialize the viewpoint during setup
-	bool has_human_sides() const { return first_human_team_ != -1; }
 
 	game_state(const config & level, play_controller &);
-	/** The third parameter is an optimisation. */
-	game_state(const config & level, play_controller &, game_board& board);
 
 	~game_state();
 
@@ -111,6 +104,18 @@ public:
 	virtual game_lua_kernel* get_lua_kernel() const override
 	{
 		return lua_kernel_.get();
+	}
+
+
+	bool in_phase(game_data::PHASE phase) const
+	{
+		return gamedata_.phase() == phase;
+	}
+
+	template< typename... Arguments >
+	bool in_phase(game_data::PHASE phase, Arguments ... args) const
+	{
+		return in_phase(phase) || in_phase(args...);
 	}
 
 	/** Checks to see if a leader at @a leader_loc could recruit somewhere. */

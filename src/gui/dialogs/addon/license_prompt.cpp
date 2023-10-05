@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2023
 	by Iris Morelle <shadowm@wesnoth.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,7 @@ namespace gui2::dialogs
 REGISTER_DIALOG(addon_license_prompt)
 
 addon_license_prompt::addon_license_prompt(const std::string& license_terms)
+	: modal_dialog(window_id())
 {
 	register_label("terms", true, license_terms, true);
 }

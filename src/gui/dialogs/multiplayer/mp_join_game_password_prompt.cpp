@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,7 @@ REGISTER_DIALOG(mp_join_game_password_prompt)
 
 mp_join_game_password_prompt::mp_join_game_password_prompt(
 		std::string& password)
+	: modal_dialog(window_id())
 {
 	register_text("password", true, password, true);
 }

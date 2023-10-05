@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
-#include "video.hpp" // TODO: draw_manager - only needed for pixel scale
 #include "sdl/input.hpp" // get_mouse_state
 
 static lg::log_domain log_display("display");
@@ -61,12 +60,11 @@ void textbox::update_location(const SDL_Rect& rect)
 {
 	scrollarea::update_location(rect);
 	update_text_cache(true);
-	set_dirty(true);
+	queue_redraw();
 }
 
-void textbox::set_inner_location(const SDL_Rect& rect)
+void textbox::set_inner_location(const SDL_Rect& /*rect*/)
 {
-	bg_register(rect);
 	if (!text_image_) return;
 	text_pos_ = 0;
 	update_text_cache(false);
@@ -86,7 +84,7 @@ void textbox::set_text(const std::string& text, const color_t& color)
 	text_pos_ = 0;
 	selstart_ = -1;
 	selend_ = -1;
-	set_dirty(true);
+	queue_redraw();
 	update_text_cache(true, color);
 	handle_text_changed(text_);
 }
@@ -108,7 +106,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 
 	text_image_ = add_text_line(text_);
 
-	set_dirty(true);
+	queue_redraw();
 	update_text_cache(false);
 	const bool is_at_bottom = get_position() == get_max_position();
 	if(auto_scroll && is_at_bottom) scroll_to_bottom();
@@ -123,7 +121,7 @@ void textbox::clear()
 	text_pos_ = 0;
 	selstart_ = -1;
 	selend_ = -1;
-	set_dirty(true);
+	queue_redraw();
 	update_text_cache(true);
 	handle_text_changed(text_);
 }
@@ -140,7 +138,7 @@ void textbox::set_selection(const int selstart, const int selend)
 	}
 	selstart_= selstart;
 	selend_ = selend;
-	set_dirty(true);
+	queue_redraw();
 }
 
 void textbox::set_cursor_pos(const int cursor_pos)
@@ -155,7 +153,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 
 	cursor_ = cursor_pos;
 	update_text_cache(false);
-	set_dirty(true);
+	queue_redraw();
 }
 
 void textbox::draw_cursor(int pos) const
@@ -280,14 +278,14 @@ void textbox::set_wrap(bool val)
 	if(wrap_ != val) {
 		wrap_ = val;
 		update_text_cache(true);
-		set_dirty(true);
+		queue_redraw();
 	}
 }
 
 void textbox::scroll(unsigned int pos)
 {
 	yscroll_ = pos;
-	set_dirty(true);
+	queue_redraw();
 }
 
 texture textbox::add_text_line(const std::u32string& text, const color_t& color)
@@ -697,7 +695,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 			grabmouse_ = false;
 		}
 
-		set_dirty();
+		queue_redraw();
 	}
 
 	//if we don't have the focus, then see if we gain the focus,
@@ -730,7 +728,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		handle_text_changed(text_);
 	}
 
-	set_dirty(true);
+	queue_redraw();
 }
 
 void textbox::pass_event_to_target(const SDL_Event& event)

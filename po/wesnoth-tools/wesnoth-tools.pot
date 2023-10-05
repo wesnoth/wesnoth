@@ -1,0 +1,508 @@
+# #-#-#-#-#  wesnoth-tools.py.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Wesnoth development team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  wesnoth-tools.py.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2023-08-19 20:56-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  wesnoth-tools.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2023-08-20 01:56 UTC\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/tools/GUI.pyw:58
+msgid "Open a Graphical User Interface (GUI) to WML Tools"
+msgstr ""
+
+#: data/tools/GUI.pyw:59
+msgid "LANGUAGE"
+msgstr ""
+
+#. TRANSLATORS: ISO 15897 "Procedures for the registration of cultural elements" specifies use
+#. of underscores in the locale id. For example, use en_GB, not en-GB.
+#: data/tools/GUI.pyw:65
+msgid ""
+"Launch GUI.pyw in the given language. Language code must follow ISO 15897 (e."
+"g. en_GB)."
+msgstr ""
+
+#: data/tools/GUI.pyw:70 data/tools/GUI.pyw:77 data/tools/GUI.pyw:1254
+#: data/tools/GUI.pyw:1306 data/tools/GUI.pyw:1348 data/tools/GUI.pyw:1376
+#: data/tools/GUI.pyw:1413 data/tools/GUI.pyw:1437 data/tools/GUI.pyw:1479
+#: data/tools/GUI.pyw:1498 data/tools/GUI.pyw:1810
+msgid "Error"
+msgstr ""
+
+#. TRANSLATORS: {0} is "translations", the folder where compiled translation files (.mo) are stored.
+#: data/tools/GUI.pyw:72
+#, python-brace-format
+msgid ""
+"`{0}` folder not found. Please run the GUI.pyw executable packaged with the "
+"Wesnoth installation."
+msgstr ""
+
+#. TRANSLATORS: {0} is the ISO 15897 code for the language selected by the user.
+#: data/tools/GUI.pyw:79
+#, python-brace-format
+msgid "Locale {0} not recognized."
+msgstr ""
+
+#. TRANSLATORS: {0} is the name of command being executed.
+#: data/tools/GUI.pyw:329
+#, python-brace-format
+msgid ""
+"Running: {0}\n"
+"Please wait..."
+msgstr ""
+
+#: data/tools/GUI.pyw:343
+msgid "Terminate script"
+msgstr ""
+
+#: data/tools/GUI.pyw:391
+msgid "Cut"
+msgstr ""
+
+#: data/tools/GUI.pyw:396
+msgid "Copy"
+msgstr ""
+
+#: data/tools/GUI.pyw:402
+msgid "Paste"
+msgstr ""
+
+#: data/tools/GUI.pyw:408
+msgid "Select all"
+msgstr ""
+
+#: data/tools/GUI.pyw:470
+msgid "Directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:482 data/tools/GUI.pyw:521
+msgid "Browse..."
+msgstr ""
+
+#: data/tools/GUI.pyw:488 data/tools/GUI.pyw:527
+msgid "Clear"
+msgstr ""
+
+#: data/tools/GUI.pyw:570
+msgid "wmllint mode"
+msgstr ""
+
+#: data/tools/GUI.pyw:575 data/tools/GUI.pyw:944
+msgid "Normal"
+msgstr ""
+
+#. TRANSLATORS: Explanation for Normal.
+#: data/tools/GUI.pyw:583 data/tools/GUI.pyw:953
+msgid "Perform file conversion"
+msgstr ""
+
+#: data/tools/GUI.pyw:585 data/tools/GUI.pyw:955
+msgid "Dry run"
+msgstr ""
+
+#. TRANSLATORS: Explanation for Dry run.
+#: data/tools/GUI.pyw:594 data/tools/GUI.pyw:963
+msgid "Do not perform changes"
+msgstr ""
+
+#: data/tools/GUI.pyw:596
+msgid "Clean"
+msgstr ""
+
+#. TRANSLATORS: Explanation for Clean.
+#: data/tools/GUI.pyw:605
+msgid "Delete *.bak files"
+msgstr ""
+
+#: data/tools/GUI.pyw:607
+msgid "Diff"
+msgstr ""
+
+#. TRANSLATORS: Explanation for Diff.
+#: data/tools/GUI.pyw:616
+msgid "Show differences in converted files"
+msgstr ""
+
+#: data/tools/GUI.pyw:618
+msgid "Revert"
+msgstr ""
+
+#. TRANSLATORS: Explanation for Revert.
+#: data/tools/GUI.pyw:627
+msgid "Revert conversions using *.bak files"
+msgstr ""
+
+#: data/tools/GUI.pyw:629 data/tools/GUI.pyw:965
+msgid "Verbosity level"
+msgstr ""
+
+#: data/tools/GUI.pyw:635 data/tools/GUI.pyw:971
+msgid "Terse"
+msgstr ""
+
+#: data/tools/GUI.pyw:643
+msgid "List changes"
+msgstr ""
+
+#: data/tools/GUI.pyw:651
+msgid "Name files before processing"
+msgstr ""
+
+#: data/tools/GUI.pyw:659
+msgid "Show parse details"
+msgstr ""
+
+#: data/tools/GUI.pyw:667
+msgid "wmllint options"
+msgstr ""
+
+#. TRANSLATORS: Special characters marking end of line.
+#: data/tools/GUI.pyw:674
+msgid "Convert EOL characters to Unix style"
+msgstr ""
+
+#: data/tools/GUI.pyw:682
+msgid "Don't warn about tags without side= keys"
+msgstr ""
+
+#: data/tools/GUI.pyw:690
+msgid "Disable checks for unknown units"
+msgstr ""
+
+#: data/tools/GUI.pyw:698
+msgid "Disable spellchecking"
+msgstr ""
+
+#: data/tools/GUI.pyw:706
+msgid "Skip core directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:730
+msgid "wmlscope options"
+msgstr ""
+
+#: data/tools/GUI.pyw:740
+msgid "Check for duplicate macro definitions"
+msgstr ""
+
+#: data/tools/GUI.pyw:748
+msgid "Check for duplicate resource files"
+msgstr ""
+
+#: data/tools/GUI.pyw:756
+msgid "Make definition list"
+msgstr ""
+
+#: data/tools/GUI.pyw:764
+msgid "List files that will be processed"
+msgstr ""
+
+#: data/tools/GUI.pyw:772
+msgid "Report unresolved macro references"
+msgstr ""
+
+#: data/tools/GUI.pyw:780
+msgid "Extract help from macro definition comments"
+msgstr ""
+
+#: data/tools/GUI.pyw:788
+msgid "Report all macros with untyped formals"
+msgstr ""
+
+#: data/tools/GUI.pyw:796
+msgid "Show progress"
+msgstr ""
+
+#: data/tools/GUI.pyw:813
+msgid "Exclude files matching regexp:"
+msgstr ""
+
+#: data/tools/GUI.pyw:830
+msgid "Exclude files not matching regexp:"
+msgstr ""
+
+#: data/tools/GUI.pyw:847
+msgid ""
+"Report only on macros referenced\n"
+"in exactly n files:"
+msgstr ""
+
+#: data/tools/GUI.pyw:866
+msgid "Report macro definitions and usages in file"
+msgstr ""
+
+#. TRANSLATORS: regexp is "regular expression".
+#: data/tools/GUI.pyw:884
+msgid "Allow unused macros with names matching regexp:"
+msgstr ""
+
+#: data/tools/GUI.pyw:939
+msgid "wmlindent mode"
+msgstr ""
+
+#: data/tools/GUI.pyw:979
+msgid "Verbose"
+msgstr ""
+
+#: data/tools/GUI.pyw:987
+msgid "Report unchanged files"
+msgstr ""
+
+#: data/tools/GUI.pyw:995
+msgid "wmlindent options"
+msgstr ""
+
+#: data/tools/GUI.pyw:1001
+msgid ""
+"Exclude files\n"
+"matching regexp:"
+msgstr ""
+
+#: data/tools/GUI.pyw:1019
+msgid "Do not generate output"
+msgstr ""
+
+#: data/tools/GUI.pyw:1041
+msgid "Output dir:"
+msgstr ""
+
+#: data/tools/GUI.pyw:1047
+msgid "Options"
+msgstr ""
+
+#: data/tools/GUI.pyw:1052
+msgid "Scan subdirectories"
+msgstr ""
+
+#: data/tools/GUI.pyw:1057
+msgid "Show optional warnings"
+msgstr ""
+
+#. TRANSLATORS: Also called "Needs work".
+#: data/tools/GUI.pyw:1063
+msgid "Mark all strings as fuzzy"
+msgstr ""
+
+#: data/tools/GUI.pyw:1067
+msgid "Advanced options"
+msgstr ""
+
+#: data/tools/GUI.pyw:1071
+msgid "Package version"
+msgstr ""
+
+#: data/tools/GUI.pyw:1088
+msgid "Initial textdomain:"
+msgstr ""
+
+#: data/tools/GUI.pyw:1131 data/tools/GUI.pyw:1237
+msgid "Run wmllint"
+msgstr ""
+
+#: data/tools/GUI.pyw:1138
+msgid "Save as text..."
+msgstr ""
+
+#: data/tools/GUI.pyw:1145
+msgid "Clear output"
+msgstr ""
+
+#: data/tools/GUI.pyw:1152
+msgid "About..."
+msgstr ""
+
+#: data/tools/GUI.pyw:1159
+msgid "Exit"
+msgstr ""
+
+#: data/tools/GUI.pyw:1175 data/tools/GUI.pyw:1312
+msgid "wmllint"
+msgstr ""
+
+#: data/tools/GUI.pyw:1179 data/tools/GUI.pyw:1382
+msgid "wmlscope"
+msgstr ""
+
+#: data/tools/GUI.pyw:1183 data/tools/GUI.pyw:1419
+msgid "wmlindent"
+msgstr ""
+
+#: data/tools/GUI.pyw:1187 data/tools/GUI.pyw:1468
+msgid "wmlxgettext"
+msgstr ""
+
+#: data/tools/GUI.pyw:1190
+msgid "Output"
+msgstr ""
+
+#: data/tools/GUI.pyw:1240
+msgid "Run wmlscope"
+msgstr ""
+
+#: data/tools/GUI.pyw:1243
+msgid "Run wmlindent"
+msgstr ""
+
+#: data/tools/GUI.pyw:1246
+msgid "Run wmlxgettext"
+msgstr ""
+
+#: data/tools/GUI.pyw:1254
+msgid ""
+"wmllint cannot run because there is no directory selected.\n"
+"\n"
+"Please select a directory or disable the \"Skip core directory\" option"
+msgstr ""
+
+#: data/tools/GUI.pyw:1292 data/tools/GUI.pyw:1300 data/tools/GUI.pyw:1362
+#: data/tools/GUI.pyw:1370 data/tools/GUI.pyw:1406 data/tools/GUI.pyw:1432
+#: data/tools/GUI.pyw:1450
+msgid "Warning"
+msgstr ""
+
+#: data/tools/GUI.pyw:1292
+msgid ""
+"You selected the core directory or one of its subdirectories in the add-on "
+"selection box.\n"
+"\n"
+"wmllint will be run only on the Wesnoth core directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:1300
+msgid ""
+"You didn't select a directory.\n"
+"\n"
+"wmllint will be run only on the Wesnoth core directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:1306 data/tools/GUI.pyw:1376 data/tools/GUI.pyw:1413
+#: data/tools/GUI.pyw:1437
+msgid "The selected directory does not exists"
+msgstr ""
+
+#: data/tools/GUI.pyw:1348
+msgid "You typed an invalid value. Value must be an integer in the range 0-999"
+msgstr ""
+
+#: data/tools/GUI.pyw:1362
+msgid ""
+"You selected the core directory or one of its subdirectories in the add-on "
+"selection box.\n"
+"\n"
+"wmlscope will be run only on the Wesnoth core directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:1370
+msgid ""
+"You didn't select a directory.\n"
+"\n"
+"wmlscope will be run only on the Wesnoth core directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:1406
+msgid ""
+"You didn't select a directory.\n"
+"\n"
+"wmlindent will be run on the Wesnoth core directory"
+msgstr ""
+
+#: data/tools/GUI.pyw:1432
+msgid ""
+"You didn't select a directory.\n"
+"\n"
+"wmlxgettext won't be run"
+msgstr ""
+
+#: data/tools/GUI.pyw:1443
+msgid "Overwrite confirmation"
+msgstr ""
+
+#. TRANSLATORS: {} is a placeholder for a file name, and not meant to be modified.
+#: data/tools/GUI.pyw:1445
+msgid ""
+"File {} already exists.\n"
+"Do you want to overwrite it?"
+msgstr ""
+
+#: data/tools/GUI.pyw:1450
+msgid ""
+"You didn't select an output file.\n"
+"\n"
+"wmlxgettext won't be run"
+msgstr ""
+
+#: data/tools/GUI.pyw:1479
+#, python-brace-format
+msgid ""
+"There was an error while executing {0}.\n"
+"\n"
+"Error code: {1}"
+msgstr ""
+
+#: data/tools/GUI.pyw:1490
+msgid "Text file"
+msgstr ""
+
+#: data/tools/GUI.pyw:1498
+#, python-brace-format
+msgid ""
+"Error while writing to:\n"
+"{0}\n"
+"\n"
+"Error code: {1}\n"
+"\n"
+"{2}"
+msgstr ""
+
+#: data/tools/GUI.pyw:1515
+msgid "About Maintenance tools GUI"
+msgstr ""
+
+#. TRANSLATORS: {} is a placeholder for Wesnoth's current version, and not meant to be modified.
+#: data/tools/GUI.pyw:1517
+msgid ""
+"© Elvish_Hunter, 2014-2016\n"
+"\n"
+"Version: {}\n"
+"\n"
+"Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
+"license\n"
+"\n"
+"Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
+"org), and are released in the Public Domain"
+msgstr ""
+
+#: data/tools/GUI.pyw:1529
+msgid "Exit confirmation"
+msgstr ""
+
+#: data/tools/GUI.pyw:1530
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: data/tools/GUI.pyw:1810
+msgid "This application must be placed into the wesnoth/data/tools directory"
+msgstr ""

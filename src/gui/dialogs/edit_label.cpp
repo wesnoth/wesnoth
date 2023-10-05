@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,6 +25,7 @@ namespace gui2::dialogs
 REGISTER_DIALOG(edit_label)
 
 edit_label::edit_label(std::string& label, bool& team_only)
+	: modal_dialog(window_id())
 {
 	register_text("label", true, label, true);
 	register_bool("team_only_toggle", true, team_only);

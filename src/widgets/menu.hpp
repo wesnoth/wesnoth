@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -75,6 +75,7 @@ public:
 
 		virtual void init() { load_images(); }
 		bool load_images();
+		void unload_images();
 
 	protected:
 		const std::string img_base_;
@@ -96,15 +97,14 @@ public:
 
 	struct item
 	{
-		item() : fields(), help(), id(0)
+		item() : fields(), id(0)
 		{}
 
 		item(const std::vector<std::string>& fields, std::size_t id)
-			: fields(fields), help(), id(id)
+			: fields(fields), id(id)
 		{}
 
 		std::vector<std::string> fields;
-		std::vector<std::string> help;
 		std::size_t id;
 	};
 
@@ -166,9 +166,6 @@ public:
 	virtual void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
 				   bool keep_viewport=false);
 
-	/** top_level_drawable */
-	virtual void layout() override;
-
 	/**
 	 * Set a new max height for this menu. Note that this does not take
 	 * effect immediately, only after certain operations that clear
@@ -213,7 +210,6 @@ protected:
 
 	int hit(int x, int y) const;
 
-	std::pair<int,int> hit_cell(int x, int y) const;
 	int hit_column(int x) const;
 
 	int hit_heading(int x, int y) const;
@@ -238,11 +234,6 @@ private:
 
 	std::vector<std::string> heading_;
 	mutable int heading_height_;
-
-	void create_help_strings();
-	void process_help_string(int mousex, int mousey) override;
-
-	std::pair<int,int> cur_help_;
 
 	mutable std::vector<int> column_widths_;
 

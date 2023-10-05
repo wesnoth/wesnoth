@@ -5,7 +5,6 @@
 1 test_return_fail
 0 test_assert
 1 test_assert_fail
-1 test_assert_fail_two
 0 test_lua_return
 1 test_lua_return_fail
 8 test_lua_return_victory
@@ -34,11 +33,13 @@
 1 test_lua_assert_errors9
 2 empty_test
 0 test_end_turn
+9 there_is_no_test_with_this_name
 #
 # The synchronisation mechanism
 #
 4 break_replay_with_lua_random
 0 fixed_lua_random_replay_with_sync_choice
+9 test_synced_side_number
 0 test_synced_state
 #
 # Security test
@@ -72,6 +73,10 @@
 1 check_victory_never_fail_three
 8 check_victory_never_pass
 7 check_victory_never_ai_fail
+#
+# Preprocessor
+#
+0 test_preprocessor_ifdef_in_arg
 #
 # WML API tests
 #
@@ -110,6 +115,7 @@
 0 replace_schedule_prestart
 0 modify_unit_facing
 0 modify_unit_which_recall_list
+0 modify_unit_recall_cost
 0 put_to_recall_and_modify
 0 event_handlers_in_events_1
 0 event_handlers_in_events_3
@@ -136,9 +142,20 @@
 0 event_test_filter_condition
 0 event_test_filter_side
 0 event_test_filter_unit
+0 event_test_filter_ability
+0 event_test_filter_ability_interval_number
+0 event_test_filter_ability_neg_value
+0 event_test_filter_ability_no_match
+0 event_test_filter_ability_no_match_neg_prefix
+0 event_test_filter_ability_active
+0 event_test_filter_ability_active_inactive
 0 test_ability_id_active
 0 test_ability_id_not_active
 0 event_test_filter_attack
+0 event_test_filter_attack_no_defense
+0 event_test_filter_attack_specials
+0 event_test_filter_attack_on_moveto
+0 event_test_filter_attack_opponent_weapon_condition
 0 event_test_filter_wfl
 0 event_test_filter_wfl2
 0 event_test_filter_lua_serializable
@@ -150,7 +167,16 @@
 0 event_test_lua_repeat
 9 event_test_lua_break_save
 0 test_lua_name
-0 filter_vision
+0 filter_vision_all_no_side
+0 filter_vision_all_side_2
+0 filter_vision_all_side_4
+0 filter_vision_side_1_side_4
+0 filter_vision_side_2_side_4
+0 filter_vision_side_3_side_4
+0 filter_vision_side_4_side_1
+0 filter_vision_side_4_side_3
+0 filter_vision_side_4_not_side_2
+0 filter_vision_not_side_5
 0 test_shroud_init
 0 test_shroud_place_wml
 0 test_shroud_place_lua
@@ -163,7 +189,11 @@
 0 test_shroud_modify_wml
 0 test_shroud_modify_lua
 0 scatter_units
-0 has_ally
+0 dave_has_ally_bob
+0 dave_has_enemy_alice
+0 dave_not_has_ally_steve
+0 dave_has_enemy_sides
+0 not_dave_has_ally_charlie
 0 xp_mod_1
 0 xp_mod_2
 0 xp_mod_3
@@ -178,15 +208,24 @@
 0 events-test_victory
 0 events-test_defeat
 0 events-test_die
+0 events-test_pre_attack_base
+0 events-test_pre_attack_change_weapon
 0 test_store_unit_defense_on
 9 test_store_unit_defense_deprecated
+0 special_note_from_movetype
+0 special_note_individual_unit
+0 has_achievement
+0 test_movement_used
+0 test_attacks_used
+0 no_duplicate_advancements
+0 add_advancement
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
 0 test_terrain_mask_simple_underlay
 0 test_terrain_mask_simple_overlay
 0 test_terrain_mask_simple_name
-0 test_terrain_mask_simple_name_fail
+0 test_terrain_mask_simple_name_ignore
 0 test_terrain_mask_align_odd_on_odd
 0 test_terrain_mask_align_odd_on_even
 0 test_terrain_mask_align_even_on_odd
@@ -196,6 +235,7 @@
 0 test_terrain_mask_deprecated_border_no
 0 test_terrain_mask_deprecated_border_yes
 0 test_terrain_mask_rule_basic
+0 test_terrain_mask_file
 #
 # LUA
 #
@@ -205,7 +245,9 @@
 0 test_wml_actions
 0 test_wml_conditionals
 0 lua_wml_tagnames
-0 test_scoped_vars
+0 test_parse_range
+0 test_scoped_array
+0 test_scoped_scalar
 0 as_text
 0 test_lua_version_api
 #
@@ -268,8 +310,9 @@
 0 test_grunt_tod_damage
 0 test_time_area_damage
 0 test_time_area_prestart
-0 test_berzerk_firststrike
-0 feeding
+0 test_berserk_firststrike
+0 feeding_on_living
+0 feeding_on_dead
 0 firststrike_and_laststrike
 0 backstab_active_with_accomplice_behind_bob
 0 backstab_inactive_with_triangular_formation
@@ -278,19 +321,53 @@
 0 reflexive_drains
 0 reflexive_poison
 0 reflexive_slow
+0 replace_special_with_filter_in_attack_event_active
+0 replace_special_with_filter_in_attack_event_inactive
 0 swarm_disables_upgrades
-0 swarm_disables_upgrades_with_abilities
-0 swarm_disables_upgrades_with_abilities_fail
-0 swarm_disables_upgrades_with_abilities_adjacent
-0 swarm_disables_upgrades_with_abilities_adjacent_fail
-0 swarm_disables_upgrades_with_abilities_adjacent_leadership
-0 swarm_disables_upgrades_with_abilities_adjacent_leadership_fail
 0 poison_opponent
-0 test_add_in_leadership_abilities
-0 test_sub_in_leadership_abilities
 0 unslowable_status_test
 0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro
+0 trait_exclusion_test
+0 trait_requirement_test
+0 test_remove_ability_by_filter
+0 swarms_filter_student_by_type
+0 swarms_effects_not_checkable
+0 filter_special_id_active
+0 filter_ability_special_id_active
+0 filter_special_id_not_exists
+0 special_id_active_lua_function
+0 leadership_when_other_has_special
+0 leadership_when_other_has_no_special
+0 effect_increase_attacks
+0 opponent_weapon_has_no_special
+0 opponent_weapon_has_special
+0 plague_without_priority
+0 student_teacher_are_same
+0 teacher_damage_formula
+# Math operations in ability or specials tags
+0 special_calculation_add
+0 special_calculation_add2_add3_cumulative
+0 special_calculation_add3_add2_cumulative
+0 special_calculation_add_multiply_combined
+0 special_calculation_add_multiply_separated
+0 special_calculation_add_sub_combined
+0 special_calculation_add_sub_cumulative
+0 special_calculation_add2_sub_minus3_cumulative
+0 special_calculation_add_sub_separated
+0 special_calculation_add_sub_with_ids
+0 special_calculation_divide
+0 special_calculation_divide_float_2dp
+0 special_calculation_divide_float_3dp
+0 special_calculation_divide_multiply_combined
+0 special_calculation_divide_multiply_separated
+0 special_calculation_multiply_float_2dp
+0 special_calculation_multiply_float_3dp
+0 special_calculation_sub
+0 special_calculation_sub2_sub3_cumulative
+0 special_calculation_sub3_sub2_cumulative
+0 test_add_in_leadership_abilities
+0 test_sub_in_leadership_abilities
 #
 # Deterministic unit facing tests
 0 recruit_facing_enemy_one
@@ -301,7 +378,7 @@
 # Interface tests
 #
 0 test_wml_menu_items_1
-10 test_wml_menu_items_2
+0 test_wml_menu_items_2
 0 test_wml_menu_items_3
 #
 # Conditional tests
@@ -319,7 +396,9 @@
 0 check_interrupts_return
 0 check_interrupts_continue
 0 check_interrupts_break_global
-0 check_interrupts_return_nested
+0 check_interrupts_break_nested_event
+0 check_interrupts_return_nested_command
+0 check_interrupts_return_nested_event
 9 check_interrupts_continue_global
 0 check_interrupts_elseif
 0 check_interrupts_case
@@ -341,6 +420,7 @@
 0 for_end2_step2
 0 for_end-2
 0 for_end-2_step-2
+0 foreach_mutate_nested
 # AI Config Parsing tests
 0 test_basic_simplified_aspect
 0 test_basic_abbreviated_aspect
@@ -363,18 +443,35 @@
 # Changing the number of sides
 0 test_create_side
 # Event tests
+0 event_name_variable_substitution
 0 order_of_variable_events1
 0 order_of_variable_events2
-0 event_name_variable_substitution
+0 order_of_variable_events3
+0 premature_end_turn1
+2 premature_end_turn2
+0 events_test_priority_vs_origin
+0 events_test_same_priority
+0 events_test_multi_int
+0 events_test_multi_float
+0 events_test_lua_events_add_priority_vs_origin
+0 events_test_lua_events_add_repeating_priority_vs_origin
+0 kill_fires_events
 # Game mechanics
 0 heal
+0 zero_experience
+0 unit_no_advancements
+0 no_sides
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated
 9 unknown_scenario_1_0
+9 unknown_scenario_1_0_last
+9 unknown_scenario_1_1
+9 unknown_scenario_2_0
+9 unknown_scenario_1_1_last_null
 
 # Lua API tests
-0 lua_functional
+0 lua_functional_reduce
 0 lua_map_find
 0 mapgen_filter_range
 0 mapgen_filter_terrain

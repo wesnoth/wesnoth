@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <cctype>
 #include <functional>
+#include <string>
 
 namespace utils
 {
@@ -83,6 +84,26 @@ template<typename Container, typename Value>
 inline bool contains(const Container& container, const Value& value)
 {
 	return detail::contains_impl<Container, Value>::eval(container, value);
+}
+
+/**
+ * Utility function for finding the type of thing caught with `catch(...)`.
+ * Not implemented for other compilers at this time.
+ *
+ * @return For the GCC/clang compilers, the unmangled name of an unknown exception that was caught.
+ */
+std::string get_unknown_exception_type();
+
+/**
+ * Convenience wrapper for using std::remove_if on a container.
+ *
+ * todoc++20 use C++20's std::erase_if instead. The C++20 function returns the number of elements
+ * removed; this one could do that but it seems unnecessary to add it unless something is using it.
+ */
+template<typename Container, typename Predicate>
+void erase_if(Container& container, const Predicate& predicate)
+{
+	container.erase(std::remove_if(container.begin(), container.end(), predicate), container.end());
 }
 
 } // namespace utils

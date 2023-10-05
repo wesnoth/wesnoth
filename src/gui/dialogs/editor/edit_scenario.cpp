@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Fabian Müller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,6 +35,7 @@ editor_edit_scenario::editor_edit_scenario(
 		int& experience_modifier,
 		bool& victory_when_enemies_defeated,
 		bool& random_start_time)
+	: modal_dialog(window_id())
 {
 	register_text("id", true, id, true);
 	register_text("name", true, name, false);

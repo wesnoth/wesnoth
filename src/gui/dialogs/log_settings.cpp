@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(log_settings)
 
 log_settings::log_settings()
-	: last_words_()
+	: modal_dialog(window_id())
+	, last_words_()
 {
 	//list of names must match those in logging.cfg
 	widget_id_.push_back("none");

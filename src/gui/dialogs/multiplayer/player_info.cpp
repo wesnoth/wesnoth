@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,7 +37,8 @@ REGISTER_DIALOG(lobby_player_info)
 lobby_player_info::lobby_player_info(events::chat_handler& chat,
 									   const mp::user_info& info,
 									   const mp::lobby_info& li)
-	: chat_(chat)
+	: modal_dialog(window_id())
+	, chat_(chat)
 	, info_(info)
 	, reason_(nullptr)
 	, time_(nullptr)

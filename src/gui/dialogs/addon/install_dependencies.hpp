@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	by Jyrki Vesterinen <sandgtx@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,7 @@ class install_dependencies : public modal_dialog
 {
 public:
 	explicit install_dependencies(const addons_list& addons)
-		: addons_(addons)
+		: modal_dialog(window_id()), addons_(addons)
 	{}
 
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(install_dependencies)

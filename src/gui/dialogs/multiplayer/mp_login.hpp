@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,8 +49,8 @@ private:
 
 	virtual void post_show(window& window) override;
 
-	void load_password() const;
-	void save_password() const;
+	void load_password();
+	void save_password();
 
 	const std::string host_;
 	field_text* username_;

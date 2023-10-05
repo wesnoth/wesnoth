@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,6 +51,13 @@ enum class fake { none, window, draw };
 void init(fake fake_type = fake::none);
 
 /**
+ * Deinitialize the video subsystem.
+ *
+ * This flushes all texture caches and disconnects the SDL video subsystem.
+ */
+void deinit();
+
+/**
  * Update buffers to match current resolution and pixel scale settings.
  *
  * If @p autoupdate is true and buffers are changed by this call,
@@ -77,6 +84,9 @@ bool testing();
 /***********************/
 /* Windowing functions */
 /***********************/
+
+/** Whether the game has set up a window to render into */
+bool has_window();
 
 /** Whether we are currently in fullscreen mode */
 bool is_fullscreen();
@@ -311,6 +321,26 @@ public:
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit)
 };
+
+
+/***************/
+/* Diagnostics */
+/***************/
+
+/**
+ * Provides diagnostic information about the current renderer for the @a build_info API.
+ */
+std::vector<std::pair<std::string, std::string>> renderer_report();
+
+/**
+ * Retrieves the current game screen DPI for the @a build_info API.
+ */
+std::pair<float, float> get_dpi();
+
+
+/**************************/
+/* Implementation details */
+/**************************/
 
 /* This should only be used by draw.cpp for drawing, and texture.cpp for
  * texture creation. Try not to use it for anything else. */

@@ -8,7 +8,7 @@ local function world_conquest_tek_map_repaint_2b()
 		))
 
 		-- base amount in map surface
-		local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 330))
+		local r = mathx.random_choice(tostring(scenario_data.total_tiles // 675) .. ".." .. tostring(scenario_data.total_tiles // 330))
 		wct_storm(terrain_to_change, r)
 	end
 	wct_expand_snow()
@@ -143,7 +143,7 @@ local function world_conquest_tek_map_repaint_2b()
 	-- chance of diferent forest based in map temperature
 	local terrain_to_change = map:find(f.terrain("A*^*,Ha*^*,Ms^*"))
 
-	local chance = 2000 * #terrain_to_change // total_tiles
+	local chance = 2000 * #terrain_to_change // scenario_data.total_tiles
 	if mathx.random(0, 99 ) > chance then
 		set_terrain { "*^Ftd",
 			f.terrain("*^Ft"),
@@ -231,7 +231,7 @@ function world_conquest_tek_map_constructor_lakes()
 		fraction_rand = "11..13",
 	}
 
-	local r = mathx.random_choice(tostring(total_tiles // 675) .. ".." .. tostring(total_tiles // 285))
+	local r = mathx.random_choice(tostring(scenario_data.total_tiles // 675) .. ".." .. tostring(scenario_data.total_tiles // 285))
 
 	set_terrain { "Hh^Tf",
 		f.all(

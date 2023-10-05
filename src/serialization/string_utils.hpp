@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -35,6 +35,23 @@ namespace utils {
 
 using string_map = std::map<std::string, t_string>;
 
+const std::vector<std::string> res_order = {"blade", "pierce", "impact", "fire", "cold", "arcane"};
+
+struct res_compare {
+	/** Returns whether a < b, considering res_order. */
+	bool operator()(const std::string& a, const std::string& b) const {
+		for(const std::string& r : res_order) {
+			if (b == r)	// this means b <= a, so a < b is false
+				return false;
+			if (a == r)
+				return true;
+		}
+		return a < b;	// fallback only reached when neither a nor b occur in res_order
+	}
+};
+
+using string_map_res = std::map<std::string, t_string, res_compare>;
+
 bool isnewline(const char c);
 bool portable_isspace(const char c);
 bool notspace(char c);
@@ -54,8 +71,8 @@ void split_foreach_impl(std::string_view s, char sep, const F& f)
 	}
 	while(true)
 	{
-		int partend = s.find(sep);
-		if(partend == int(std::string_view::npos)) {
+		std::size_t partend = s.find(sep);
+		if(partend == std::string_view::npos) {
 			break;
 		}
 		f(s.substr(0, partend));
@@ -265,9 +282,44 @@ std::string bullet_list(const T& v, std::size_t indent = 4, const std::string& b
  */
 std::string indent(const std::string& string, std::size_t indent_size = 4);
 
+/**
+ * Recognises the following patterns, and returns a {min, max} pair.
+ *
+ * * "1" returns {1, 1}
+ * * "1-3" returns {1, 3}
+ * * "1-infinity" returns {1, maximum int}
+ * * "-1" returns {-1, -1}
+ * * "-3--1" returns {-3, -1}
+ *
+ * Note that:
+ *
+ * * "3-1" returns {3, 3} and does not log an error
+ * * "-1--3" returns {-1, -1} and does not log an error
+ * * Although "-infinity--1", "2-infinity" and "-infinity-infinity" are all supported,
+ * * ranges that can't match a reasonable number, e.g. "-infinity" or "infinity..infinity", may be treated as errors.
+ */
 std::pair<int, int> parse_range(const std::string& str);
 
-std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
+/**
+ * Handles a comma-separated list of inputs to parse_range, in a context that does not expect
+ * negative values. Will return an empty list if any of the ranges have a minimum that's below
+ * zero.
+ */
+std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str);
+
+/**
+ * Handles a comma-separated list of inputs to parse_range.
+ */
+std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str);
+
+/**
+ * Recognises similar patterns to parse_range, and returns a {min, max} pair.
+ *
+ * For this function, "infinity" results in std::numeric_limits<double>::infinity.
+ */
+std::pair<double, double> parse_range_real(const std::string& str);
+
+std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);
 
 int apply_modifier(const int number, const std::string &amount, const int minimum = 0);
 

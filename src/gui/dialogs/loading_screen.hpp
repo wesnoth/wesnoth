@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -73,7 +73,7 @@ class window;
 
 namespace dialogs
 {
-class loading_screen : public modal_dialog, public events::pump_monitor, public gui2::top_level_drawable
+class loading_screen : public modal_dialog, public events::pump_monitor
 {
 public:
 	loading_screen(std::function<void()> f);
@@ -129,16 +129,6 @@ private:
 
 	/** Called by draw_manager to assign concrete layout. */
 	virtual void layout() override;
-
-	/**
-	 * Called by draw_manager when it believes a redraw is necessary.
-	 *
-	 * Currently this is every frame, as pre_show() registers as an animator.
-	 */
-	virtual bool expose(const SDL_Rect& region) override;
-
-	/** The current draw location of the window, on the screen. */
-	virtual rect screen_location() override;
 
 	static loading_screen* singleton_;
 

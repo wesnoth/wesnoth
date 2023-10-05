@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(unit_advance)
 
 unit_advance::unit_advance(const std::vector<unit_const_ptr>& samples, std::size_t real)
-	: previews_(samples)
+	: modal_dialog(window_id())
+	, previews_(samples)
 	, selected_index_(0)
 	, last_real_advancement_(real)
 {

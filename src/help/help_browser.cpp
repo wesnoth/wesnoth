@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -82,7 +82,7 @@ void help_browser::adjust_layout()
 	back_button_.set_location(back_button_x, back_button_y);
 	forward_button_.set_location(forward_button_x, forward_button_y);
 
-	set_dirty(true);
+	queue_redraw();
 }
 
 void help_browser::update_location(const SDL_Rect&)

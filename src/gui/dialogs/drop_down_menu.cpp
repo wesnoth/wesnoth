@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -83,7 +83,8 @@ namespace
 }
 
 drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open)
-	: parent_(parent)
+	: modal_dialog(window_id())
+	, parent_(parent)
 	, items_(items.begin(), items.end())
 	, button_pos_(parent->get_rectangle())
 	, selected_item_(selected_item)
@@ -94,7 +95,8 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 }
 
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
-	: parent_(nullptr)
+	: modal_dialog(window_id())
+	, parent_(nullptr)
 	, items_(items.begin(), items.end())
 	, button_pos_(button_pos)
 	, selected_item_(selected_item)
@@ -193,7 +195,7 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
 
 		if(entry.checkbox) {
-			auto checkbox = build_single_widget_instance<toggle_button>();
+			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 

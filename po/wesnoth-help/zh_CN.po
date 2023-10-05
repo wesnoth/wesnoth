@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-04-22 16:11+0800\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"PO-Revision-Date: 2023-09-10 08:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -33,20 +33,74 @@ msgstr ""
 msgid "Underground"
 msgstr "地下"
 
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "亡灵"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "无惧"
+
+#. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
+msgid "plague"
+msgstr "瘟疫"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/weapon_specials.cfg:53
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"当一个单位被瘟疫攻击杀死时，该单位将变成行尸，并与进行瘟疫攻击的单位属于同一"
+"阵营。这对亡灵或在村庄中的单位不起作用。"
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "坚定"
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/core/macros/abilities.cfg:131
+msgid "female^steadfast"
+msgstr "坚定"
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:593
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "疗伤+4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:594
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "疗伤+4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:595
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -62,26 +116,26 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr "此单位有基本的疗伤能力，并能减缓脱水。"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:617
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "疗伤+8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:618
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "疗伤+8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:619
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -98,17 +152,17 @@ msgstr ""
 "中毒的单位不能由疗伤者疗毒，只能进入村庄疗毒，或者由拥有疗毒能力的单位疗毒。"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
 msgid "heals +12"
 msgstr "疗伤+12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 msgid "female^heals +12"
 msgstr "疗伤+12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -125,7 +179,7 @@ msgstr ""
 "中毒的单位不能由疗伤者疗毒，只能进入村庄疗毒，或者由拥有疗毒能力的单位疗毒。"
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -156,16 +210,9 @@ msgid "Always rest heals"
 msgstr "总是能获得休息疗伤效果"
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "无惧"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "背刺"
 
@@ -205,7 +252,7 @@ msgstr "隐蔽"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "吸血"
 
@@ -227,7 +274,7 @@ msgstr "丘陵"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "精准"
 
@@ -241,16 +288,9 @@ msgstr "蘑菇林"
 msgid "nightstalk"
 msgstr "夜遁"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "瘟疫"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "毒素"
 
@@ -266,7 +306,7 @@ msgstr "散兵"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "减速"
 
@@ -287,13 +327,13 @@ msgstr "地图与场景编辑器"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 msgid "Terrain Editor"
 msgstr "地形编辑器"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 msgid "Scenario Editor"
 msgstr "场景编辑器"
 
@@ -497,7 +537,8 @@ msgid "Starting Locations Tool"
 msgstr "起始位置工具"
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:109
+#. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:110
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -555,23 +596,26 @@ msgstr ""
 "时进行放置，与在编辑器调色板中选择该位置等价。"
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "编辑器地形遮罩图形"
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:129
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
 "game. There are a few exceptions, where different graphics are used in the "
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"通常，在编辑器中的地图，看起来与在游戏中是相似的。不过也有例外，此时编辑器中"
+"使用的图形与游戏中是不同的。此处描述的遮罩都可以在地形调色板的“特殊”组中找"
+"到。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:133
+#: data/core/editor/help.cfg:134
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
@@ -585,11 +629,21 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='移动遮罩'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> 不可"
+"通过地形和不可步行地形\n"
+"\n"
+"虽然在编辑器里很容易注意到，但在游戏中，这些地形是不可见的，所以，用它们创建"
+"出来的混合地形看起来和基础地形一样。它们所创建的混合地形，其上的移动消耗分别"
+"设置为“不可通过”和“不可步行”。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:143
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
@@ -607,11 +661,24 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='城堡遮罩'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"将这两种遮罩之一放置到可以通过的六角格上，就能允许在该格上征募单位。主楼也允"
+"许首领在该格上进行征募。\n"
+"\n"
+"这些遮罩也可以加到不可通过的六角格之上，这样就能将城堡格通过不可通过的墙链接"
+"到视觉上不相邻的主楼上。还可以创造出在主楼和塔楼之间似乎有草地的城堡，不过这"
+"就要求用于连接的六角格被占用或阻挡，以免有单位被征募到这些格子上。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:153
+#: data/core/editor/help.cfg:154
 msgid ""
 "editor^<bold>text='Village Overlay'</bold>\n"
 "\n"
@@ -620,10 +687,16 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='村庄遮罩'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"这将把任何基本地形转变为村庄，可提供收入和治疗。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:161
+#: data/core/editor/help.cfg:162
 msgid ""
 "editor^<bold>text='Fake Shroud'</bold>\n"
 "\n"
@@ -632,18 +705,136 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='伪战场黑幕'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"伪战场黑幕看上去就是一片未探索的区域，哪怕是在禁用黑幕的场景中，哪怕玩家的单"
+"位可以看到该六角格。"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+#, fuzzy
+#| msgid "Editor Terrain-Overlay Graphics"
+msgid "Terrain Elevation Graphics"
+msgstr "编辑器地形遮罩图形"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:172
+#, fuzzy
+#| msgid ""
+#| "editor^Maps generally look similar in the editor to their appearance in "
+#| "the game. There are a few exceptions, where different graphics are used "
+#| "in the editor; all the overlays described here are found in the terrain "
+#| "palette’s “special” group."
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+"通常，在编辑器中的地图，看起来与在游戏中是相似的。不过也有例外，此时编辑器中"
+"使用的图形与游戏中是不同的。此处描述的遮罩都可以在地形调色板的“特殊”组中找"
+"到。"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:175
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<bold>text='Advanced'</bold>"
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr ""
+"\n"
+"\n"
+"<bold>text='高级'</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:177
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:182
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<bold>text='Advanced'</bold>"
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr ""
+"\n"
+"\n"
+"<bold>text='高级'</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid "Raised elevation on-map marker"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:185
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:192
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:203
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Base Terrain: "
+#: data/core/editor/help.cfg:208
 msgid "Deprecated Terrain"
-msgstr "基础地形："
+msgstr "废弃地形"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:211
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -657,14 +848,24 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img> 洋红色的“D” （代表“废弃（Deprecated）”).\n"
+"\n"
+"在编辑器中，这显示在已废弃的地形代码之上。例如：\n"
+"• <ref>dst='terrain_fungus_grove_old' text='“^Uf”蘑菇地形'</ref>,\n"
+"• “Xol”被照亮的石墙，由于多种墙类地形现在已支持“^Efs”墙上灯座，因此“被照亮的"
+"石墙”被废弃了。\n"
+"\n"
+"这些地形的帮助页面上也许还有额外的只在编辑器中显示的文本，其中说明了废弃情况"
+"以及推荐的替代品。"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:224
 msgid "Label Tool"
 msgstr "标签工具"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:225
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -686,12 +887,12 @@ msgstr ""
 "签在场景中实现。"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:240
 msgid "Item Tool (Scenery Tool)"
 msgstr "物品工具（景色工具）"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:241
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -714,12 +915,12 @@ msgstr ""
 "<italic>text='[item]'</italic>标签在场景中实现。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:254
 msgid "Village Ownership Tool"
 msgstr "村庄所有权工具"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:255
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -743,12 +944,12 @@ msgstr ""
 "来存储的。"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:269
 msgid "Unit Tool"
 msgstr "单位工具"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:270
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -771,12 +972,12 @@ msgstr ""
 "到适当的<italic>text='[side]'</italic>下。"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:285
 msgid "Named Areas"
 msgstr "具名区域"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:286
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -820,12 +1021,12 @@ msgstr ""
 "改变该区域的时段安排。"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:307
 msgid "Playlist Manager"
 msgstr "播放列表管理器"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:308
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -838,17 +1039,76 @@ msgstr ""
 "此工具只在场景模式中可用。它会将WML的<italic>text='[music]'</italic>标签添加"
 "到场景中。"
 
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:319
+#, fuzzy
+#| msgid "Using Add-ons"
+msgid "Change Add-on ID"
+msgstr "使用附加组件"
+
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:320
+msgid ""
+"Allows changing the ID of an add-on, which is the name of the folder it’s "
+"in. This will only rename that folder and update any references to it in the "
+"_main.cfg file. Any other place will need to be updated manually."
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:329
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:330
+msgid ""
+"Allows setting up an add-on’s _server.pbl file, which is required for "
+"publishing an add-on to the add-ons server for other players to download. "
+"The Validate button will check whether all required fields have valid values."
+msgstr ""
+
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr "地图/场景编辑器"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:339
+#, fuzzy
+#| msgid ""
+#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
+#| "maps on which every Wesnoth scenario takes place. It also provides a "
+#| "limited set of features for setting up a basic scenario.\n"
+#| "\n"
+#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
+#| "option at the title screen.\n"
+#| "\n"
+#| "<header>text='Editing Modes'</header>\n"
+#| "\n"
+#| "The editor features two modes of operation: terrain mode and scenario "
+#| "mode.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
+#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+#| "locations'</ref>.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+#| "addition to the tools available in terrain mode, adds support for adding "
+#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
+#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
+#| "ref> at the start of the scenario. There’s also a "
+#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
-"of features for setting up a basic scenario.\n"
+"of features for setting up a basic scenario as well as initializing an add-"
+"on which can be used to distribute the scenarios you create.\n"
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
@@ -877,7 +1137,7 @@ msgstr ""
 "韦诺的地图和场景编辑器允许用户创建和编辑地图。韦诺的所有场景都在这些地图上发"
 "生。它还提供了一套有限的功能来设置基本场景。\n"
 "\n"
-"编辑器可以从标题界面的<bold>文本='地图编辑器'</bold>选项中启动。\n"
+"编辑器可以从标题界面的<bold>text='地图编辑器'</bold>选项中启动。\n"
 "\n"
 "<header>text='编辑模式'</header>\n"
 "\n"
@@ -899,7 +1159,19 @@ msgstr ""
 "音乐。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:351
+msgid ""
+"In either mode, you will be prompted to choose an add-on to use for the "
+"scenarios you create. This can be an existing add-on or a brand new add-on. "
+"If you choose to use a brand new add-on, then the add-on will have all the "
+"required files and folders automatically created as well as a default ID "
+"assigned. Unless you are editing an already existing map file, using "
+"scenario mode is required in order for your maps to be selectable during "
+"game creation."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:353
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -941,7 +1213,7 @@ msgstr ""
 "地形的附加组件，则需要该附加组件将自身的附加地形信息告知编辑器。"
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:373
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -963,7 +1235,7 @@ msgstr ""
 "框的“自定义地图”游戏类型中找到。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:385
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -975,7 +1247,7 @@ msgstr ""
 "编写脚本。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:387
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -992,7 +1264,7 @@ msgstr ""
 "• 在纯地形模式下，“区域”和“阵营”菜单是灰色的。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1016,7 +1288,7 @@ msgstr ""
 "件（不是.map文件）。"
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:402
 #, fuzzy
 #| msgid ""
 #| "<header>text='The files: .map and .cfg'</header>\n"
@@ -1024,7 +1296,7 @@ msgstr ""
 #| "The map editor saves exactly one file, either a .map (for terrain mode) "
 #| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
 #| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenaro mode then an old .map "
+#| "editing in terrain mode and then switch to scenario mode then an old .map "
 #| "file might remain, but this is not updated by the scenario editor.\n"
 #| "\n"
 #| "Loading a .cfg file has different results depending on the contents of "
@@ -1036,18 +1308,16 @@ msgstr ""
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"The map editor saves exactly one file, either a .map (for terrain mode) or "
-"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
-"the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenario mode then an old .map file might "
-"remain, but this is not updated by the scenario editor.\n"
+"The map editor saves one file when in terrain mode (a .map) or two files "
+"when in scenario mode (both a .map and a .cfg).\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
 "cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that use a "
-"separate .map file (which can't be created by the scenario editor), the "
-"editor may follow the link and open the corresponding .map in terrain-only "
-"mode, as if the .map file was chosen in the file selector."
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
+"scenario's map data and open the corresponding .map file in terrain-only "
+"mode, as if the .map file was chosen in the file selector. It is recommended "
+"in those cases to simply load the .map file directly instead."
 msgstr ""
 "<header>text='文件：.map和.cfg'</header>\n"
 "\n"
@@ -1056,118 +1326,57 @@ msgstr ""
 "地形模式下开始编辑，然后切换到场景模式，那么旧的.map文件可能会保留下来，但场"
 "景编辑器不会更新这个文件。\n"
 "\n"
-"载入.cfg文件会产生不同的结果，这取决于.cfg文件的内容。对于由场景编辑器创建的."
-"cfg文件，则会在场景编辑器中打开该文件。然而，对于使用单独的.map文件（这类文件"
-"不能由场景编辑器创建）的.cfg文件，编辑器可能会跟随链接并在仅地形模式下打开相"
-"应的.map，就像在文件选择器中选择了.map文件一样。"
+"根据.cfg文件的内容，载入.cfg文件会产生不同的结果。对于由场景编辑器创建的.cfg"
+"文件，则会在场景编辑器中打开该文件。然而，对于使用单独的.map文件（这类文件不"
+"能由场景编辑器创建）的.cfg文件，编辑器可能会跟随链接并在仅地形模式下打开相应"
+"的.map，就像在文件选择器中选择了.map文件一样。"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:414
 msgid "Using a separate file for WML events"
 msgstr "为WML事件使用单独的文件"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:415
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
 "been edited by hand.\n"
 "\n"
-"Files created by the scenario editor omit the opening [scenario] and closing "
-"[/scenario] tags. If you are creating a campaign (or other add-on), then "
-"those tags need to be added; there is more detail about this in the "
-"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
-"\n"
-"One workflow is to create a separate WML file, also with the .cfg extension, "
+"One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
 "separate file contains both the [scenario] tag and any hand-edited WML such "
 "as events. With this workflow, the add-on’s file structure could look like "
 "this:\n"
 "\n"
-"<header>text='For Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-"these four lines:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"The first three of those lines insert the scenario-generated file inside a "
-"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
-"will be combined, with attributes in the second one overriding attributes in "
-"the first one.\n"
-"\n"
-"<header>text='1.16 and later'</header>\n"
-"\n"
-"If your add-on will only be used on 1.16 and later, there are new features "
-"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
-"within the .cfg files.\n"
+"<header>text='Example'</header>\n"
+"If your add-on will only be used on 1.18 and later, it is instead "
+"recommended to use the new include_file attribute to load a .cfg file "
+"containing additional WML into the scenario.\n"
 "\n"
 "• _main.cfg:\n"
 "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory.\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-"load that file"
+"which makes “map_file” search the “maps” directory\n"
+"• maps/first.map\n"
+"  ◦ this is the .map file created by the scenario editor when saving in "
+"scenario mode\n"
+"• scenarios/other.cfg\n"
+"  ◦ this is the .cfg file containing everything that the scenario editor "
+"doesn't understand\n"
+"• scenarios/first.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
+"map file\n"
+"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
+"the additional cfg file"
 msgstr ""
-"当加载.cfg文件时，场景编辑器能解析由场景编辑器创建的文件，但对手工编辑过的文"
-"件可能存在解析上的困难。\n"
-"\n"
-"由场景编辑器创建的文件省略了开头的[scenario]和结尾的[/scenario]标签。如果你正"
-"在创建战役（或其他附加组件），那么需要添加这些标签。在"
-"<ref>dst='editor_map_format' text='地图文件格式'</ref>文档中有更多关于这方面"
-"的细节。\n"
-"\n"
-"一种典型的工作流如下：创建一个单独的WML文件，这个文件也是以.cfg为扩展名的，文"
-"件中使用WML预处理器来包含编辑器创建的文件。这个单独的文件同时包含了[scenario]"
-"标签和全部手工编辑的WML（如事件）。使用这一工作流时，附加组件的文件结构可能是"
-"这样的：\n"
-"\n"
-"<header>text='针对韦诺1.14'</header>\n"
-"\n"
-"• _main.cfg：\n"
-"  ◦ 使用 \"{./scenarios}\"来包含“scenarios”目录\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ 这是由场景编辑器创建的文件\n"
-"• scenarios/01_Forest.cfg，此文件不使用典型的[scenario]标签开头，而是包含这四"
-"行：\n"
-"  ◦ [scenario]\n"
-"  ◦  {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"其中前三行在[scenario]标签内插入场景编辑器生成的文件。第四行的'+'号意味着两个"
-"场景标签将被合并，第二个标签中的属性将覆盖第一个标签中的属性。\n"
-"\n"
-"<header>text='1.16及以后'</header>\n"
-"\n"
-"如果你的附加组件只用于1.16及以后的版本中，则可以通过map_file载入.cfg文件，这"
-"些新功能可以避免在.cfg文件中重复附加组件的名字。\n"
-"\n"
-"• _main.cfg：\n"
-"  ◦ 使用“[binary_path]”将附加组件目录添加到二进制文件路径中，这样一"
-"来，“map_file”将搜索“maps”目录\n"
-"  ◦ 使用“{./scenarios}”来包含“scenarios”目录\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ 这是由场景编辑器创建的文件\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ 在[scenario]元素中，使用“map_file=\"map_from_01.cfg”来加载该文件"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr "编辑器遮罩用法"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1175,12 +1384,12 @@ msgstr "遮罩可以用于基础地图上，以便于在多个发生于同一位
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:447
 msgid "ToD and Schedule Editor"
 msgstr "时段和日程编辑器"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:448
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1199,13 +1408,13 @@ msgstr ""
 "<ref>dst='editor_named_area' text='时间区域'</ref>的自有日程表。"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:459
 msgid "Editor Palette"
 msgstr "编辑器调色板"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:461
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1229,32 +1438,32 @@ msgstr ""
 "左边的一个，其图形会根据选择的内容而改变。例如："
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:466
 msgid "Show all kinds of terrain"
 msgstr "显示所有类型的地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:467
 msgid "Show only water terrains"
 msgstr "只显示水地形"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:468
 msgid "Show only villages"
 msgstr "只显示村庄"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:480
 msgid "Wesnoth Map Format"
 msgstr "韦诺地图格式"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "韦诺将其地图存储在人类可读的纯文本文件中。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:483
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1304,7 +1513,7 @@ msgstr ""
 "优先使用<italic>text='map_file'</italic>语法，而不是预处理器包含。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1336,15 +1545,26 @@ msgstr ""
 "在“窗口”菜单中被标记为（E）。"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:504
+#, fuzzy
+#| msgid ""
+#| "<header>text='Files created by the Scenario Editor'</header>\n"
+#| "\n"
+#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
+#| "map data. When loading a .cfg file, the scenario editor understands files "
+#| "created by the scenario editor itself, but is likely to have difficulty "
+#| "with files that have been edited by hand; problems can be avoided by "
+#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"In scenario mode, the editor saves the data as a .cfg file with embedded map "
-"data. When loading a .cfg file, the scenario editor understands files "
-"created by the scenario editor itself, but is likely to have difficulty with "
-"files that have been edited by hand; problems can be avoided by "
-"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"In scenario mode, the editor saves the scenario data as a .cfg file and the "
+"map data as a separate .map file. The scenario then references the .map file "
+"via map_file. When loading a .cfg file, the scenario editor understands "
+"files created by the scenario editor itself, but is likely to have "
+"difficulty with files that have been edited by hand; problems can be avoided "
+"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
 "<header>text='由场景编辑器创建的文件'</header>\n"
@@ -1353,40 +1573,6 @@ msgstr ""
 "景编辑器能解析由场景编辑器自己创建的文件，但对那些被手工编辑过的文件可能存在"
 "解析上的困难。通过<ref>dst='editor_separate_events_file' text='使用单独的.cfg"
 "文件'</ref>来存储手工编辑的部分，这一问题可以解决。"
-
-#. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
-msgid ""
-"<header>text='Which scenario files use the [scenario] tag'</header>\n"
-"\n"
-"Files created by the scenario editor have the contents of a WML scenario "
-"element, but don’t include the opening [scenario] and closing [/scenario] "
-"tags. For each .cfg file in the userdata folder’s editor/scenarios "
-"subfolder, the game will automatically try to load a scenario from it to "
-"include in the “Custom Scenarios” list (files that fail to load are "
-"ignored). In this folder each file is a separate item - files that fail to "
-"parse as a scenario are ignored, and files must not contain the [scenario][/"
-"scenario] tags.\n"
-"\n"
-"The opposite applies when a scenario is part of a campaign or other add-on. "
-"Typically each scenario has its own .cfg file, however this is unnecessary - "
-"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
-"matter whether the add-on is written as separate files or not. The engine "
-"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
-"to know which WML is part of each scenario."
-msgstr ""
-"<header>text='哪些场景文件使用[scenario]标签'</header>\n"
-"\n"
-"由场景编辑器创建的文件中含有WML场景元素应该包含的内容，但不包括开头的"
-"[scenario]和结尾的[/scenario]标签。对于用户数据文件夹的editor/scenarios子文件"
-"夹中的每个.cfg文件，游戏会自动尝试从其中加载场景，以包括在“自定义场景”列表中"
-"——加载失败的文件会被忽略。在此文件夹中，每个文件都是一个单独的项目——未能被解"
-"析为场景的文件会被忽略，而且文件中不能包含[scenario][/scenario]标签。\n"
-"\n"
-"当场景是战役或其他附加组件的一部分时，情况则相反。通常情况下，每个场景都有自"
-"己的.cfg文件，但这不必要——一个附加组件中的所有WML都会被预处理器合并，无论附加"
-"组件是否被写成多个独立的文件都无所谓。引擎需要[scenario]...[/scenario]（或"
-"[multiplayer]...[/multiplayer]）标签来知道哪些WML是哪个场景的一部分。"
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -1491,7 +1677,7 @@ msgid ""
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"泰河构成了<ref>dst='kingdom_wesnoth' text=韦诺王国'</ref>与"
+"泰河构成了<ref>dst='kingdom_wesnoth' text='韦诺王国'</ref>与"
 "<ref>dst='northlands' text='北陆'</ref>的边界。它在<ref>dst='elensefar' "
 "text='埃仁撒伐'</ref>流入<ref>dst='great_ocean' text='泰洋'</ref>。"
 
@@ -1647,8 +1833,10 @@ msgid ""
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
 "韦诺王国位于<ref>dst='great_continent' text='泰陆'</ref>的中北部。绝大部分主"
-"线战役围绕此地展开。北面的泰河，西面的泰洋，<ref>dst='southwest_elven_lands' "
-"text='西南面'</ref>的艾森丛林，以及东南面的苦涩沼泽为它在地图上划定了疆界。\n"
+"线战役围绕此地展开。北面的<ref>dst='great_river' text='泰河'</ref>，西面的"
+"<ref>dst='great_ocean' text='泰洋'</ref>海岸，"
+"<ref>dst='southwest_elven_lands' text='西南面'</ref>的艾森丛林，以及东南面的"
+"苦涩沼泽为它在地图上划定了疆界。\n"
 "\n"
 "在艾森河之上，塔恩要塞之南，是韦诺的一块边疆领地。其南部以茂密的大森林（地图"
 "上未标注）为界，艾森丛林可以视作是这一大森林最北边的突出部分。\n"
@@ -3294,7 +3482,7 @@ msgstr ""
 "移动，但不能再攻击。\n"
 "    • 这一状态可能由于战役特定的事件或能力而出现，例如战役<bold>text='灼烧双"
 "日之下'</bold>中的<bold>text='脱战'</bold>能力。\n"
-"• <bold>文本='蓝色'</bold>表示友军单位，但在该友军自己的回合内则不使用蓝色"
+"• <bold>text='蓝色'</bold>表示友军单位，但在该友军自己的回合内则不使用蓝色"
 "球。\n"
 "    • 在友军自己的回合中，他们的单位的状态球会显示单位是否还能移动和攻击，但"
 "是他们的行动，以及状态球的对应变化会延迟显示，正如<ref>dst='shroud_and_fog' "
@@ -4195,6 +4383,32 @@ msgstr "安装附加组件"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
+#, fuzzy
+#| msgid ""
+#| "User-made add-ons can be obtained and updated through the "
+#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
+#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
+#| "italic>), you will be presented with a list of add-ons available on the "
+#| "server for downloading.\n"
+#| "\n"
+#| "The installation status for each add-on is shown below each entry. For "
+#| "add-ons that are <italic>text='upgradable'</italic> or "
+#| "<italic>text='outdated'</italic> on the server, their installed and "
+#| "published versions will be shown in the <italic>text='Version'</italic> "
+#| "column.\n"
+#| "\n"
+#| "To search for add-ons by keywords, type any relevant terms in any order "
+#| "in the search box, separated by spaces. You can also sort the add-on list "
+#| "by clicking the column headers. It is also possible to choose to only "
+#| "display add-ons of specific categories by clicking on the "
+#| "<bold>text='Type'</bold> dropdown.\n"
+#| "\n"
+#| "To install an add-on, select it from the list and click the "
+#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
+#| "If the window is too small to show them inline, the <bold>text='Addon "
+#| "Details'</bold> button provides you with additional details about the add-"
+#| "on, such as its full description, installation status, and available "
+#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4214,7 +4428,7 @@ msgid ""
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
 "bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
@@ -4755,16 +4969,6 @@ msgid ""
 "village."
 msgstr "此单位能够治疗自己，但效果不如驻扎在村庄里时的治疗效果。"
 
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "坚定"
-
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
-msgid "female^steadfast"
-msgstr "坚定"
-
 # not very sure about "vulnerabilities are not affected"
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
@@ -4935,9 +5139,18 @@ msgstr "隐蔽"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -4985,189 +5198,6 @@ msgid ""
 "except units that are immune to plague."
 msgstr ""
 "此单位每杀死一个单位就会获得1点额外的最大生命值，除非被杀死的单位免疫瘟疫。"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "狂暴"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"不论是在进攻还是防御时，此攻击都会使作战双方维持战斗状态，直到其中一方被杀，"
-"或者恶斗三十回合为止。"
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"在用于进攻时，如果目标的另一面（与进攻方相对）紧邻着与目标敌对的单位，且该单"
-"位具有战斗力（没有被石化或者被别的方式麻痹）时，此攻击将造成双倍伤害。"
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"当一个单位被瘟疫攻击杀死时，该单位将变成与进行瘟疫攻击的单位属于同一阵营的单"
-"位，并与进行瘟疫攻击的单位属于同一阵营。这对亡灵或在村庄中的单位不起作用。"
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"当一个单位被瘟疫攻击杀死时，该单位将变成行尸，并与进行瘟疫攻击的单位属于同一"
-"阵营。这对亡灵或在村庄中的单位不起作用。"
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"此攻击将使目标减速，直到本回合结束。减速攻击使目标的攻击伤害减半，而移动消耗"
-"则加倍。被减速的单位被选中时，其侧边栏信息中会显示一个蜗牛图标。"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "石化"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr "此攻击将使目标石化，也就是把他变成石头。被石化的单位将不能移动或攻击。"
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr "当用于进攻时，此攻击总是至少有60%的几率会命中。"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr "偏转"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr "当用于防御时，此攻击将使得对手的命中率下降10%。"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr "此单位的防御技巧减少了敌方的攻击成功率。"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "魔法"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr "此攻击无视被攻击单位的防御能力，而总是拥有70%的命中率。"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "群击"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"这种攻击的打击次数随着此单位的伤势递减，其打击次数与此单位当前生命值所占最大"
-"生命值的比重成正比。例如，一个生命值只剩下最大值的3/4的单位，其打击次数也只有"
-"峰值的3/4。"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "冲锋"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"用于进攻时，此攻击将对目标造成双倍伤害，但目标的反击也会使此单位受到双倍伤"
-"害。"
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr "吸收"
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr "此攻击使单位处于良好的防御体势，可以吸收敌人攻击造成的部分伤害。"
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr "此单位可以格挡敌人的打击，使其被击中时受到的伤害减少。"
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"此单位从活体单位身上吸取体力，使得自身的生命值回复所造成伤害的一半（向下舍"
-"入）。"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "先制"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr "此单位使用此攻击时，总是能率先攻击，即使是在防御时也不例外。"
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"此攻击使活体目标中毒。中毒单位每回合失去8点生命值，直到他们被治愈或生命值降到"
-"1。仅仅靠毒素本身是不足以杀死一个单位的。"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -5361,51 +5391,51 @@ msgstr "长夜(3)"
 msgid "The Long Dark (4)"
 msgstr "长夜(4)"
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr "亡魂们对伤害具有相当不寻常的抗性，但在开阔的水面上移动得很慢。"
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr "此单位的奥术攻击对魔法造物将造成巨大的伤害，对某些凡间的生物也是如此。"
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "此单位能够简单疗伤。"
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 msgid "This unit is capable of rapid healing."
 msgstr "此单位能够迅速疗伤。"
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr "此单位能够为周围的单位疗伤，并解除中毒状态。"
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr "此单位能够解除周围单位的中毒状态。"
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr "此单位能够再生，这让它能够像一直驻扎在村庄里一样得到治疗。"
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
 "此单位的坚忍不拔使得它遭到某些攻击时受到的伤害下降，但这只在防御时有效。"
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5413,7 +5443,7 @@ msgstr ""
 "此单位的领导能力使得相邻的本阵营单位在战斗中造成更多的伤害，虽然这只对比此单"
 "位等级低的单位有效。"
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5421,18 +5451,18 @@ msgstr ""
 "此单位的散兵作战能力使其能够忽略敌方控制区域，因而能毫无阻碍地在他们身边移"
 "动。"
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "照明能力会提升相邻区域的明亮程度。"
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
 "此单位可以花费一次移动机会，在任意两个属于本阵营的无人驻守的村庄之间传送。"
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5440,11 +5470,11 @@ msgstr ""
 "在树林中，此单位的伏击技能让敌人无法察觉到其存在，除非敌人与其紧邻，或者此单"
 "位在攻击时暴露了自己。"
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "此单位能够在夜晚隐匿身形，不留蛛丝马迹。"
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5452,24 +5482,24 @@ msgstr ""
 "此单位可以隐藏在村庄里（水中村庄除外）而不会被敌人发觉，除了那些与它相邻的敌"
 "人之外。"
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr "此单位不需要呼吸水面上的空气，可以在深水中移动而不被发现。"
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr "此单位每杀死一个活体单位，其最大生命值就会增加1点。"
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr "无论何时，只要此单位使用狂暴攻击，就将不停战斗，直到自己或敌方死亡。"
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5478,60 +5508,70 @@ msgstr ""
 "如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以悄悄绕到敌人背"
 "后并背刺之，造成双倍伤害。"
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr "因瘟疫而丧生的敌人将重生为亡灵，除非他们在丧生前驻扎在村庄里。"
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
+#, fuzzy
+#| msgid ""
+#| "Foes who lose their life to the plague will rise again in unlife, unless "
+#| "they are standing on a village."
+msgid ""
+"Foes who lose their life to certain horrors of nature become nourishment for "
+"a rapidly growing larva, unless they are standing in a village."
+msgstr "因瘟疫而丧生的敌人将重生为亡灵，除非他们在丧生前驻扎在村庄里。"
+
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 "此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到他们的回合结束。"
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr "把活人变成石头的能力使得此单位变得极其危险。"
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr "此单位的精准射术让它有很高的几率命中被瞄准的敌人，但只有在进攻时有效。"
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr "此单位拥有魔法攻击，该攻击总是有很高的几率能命中对手。"
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr "当此单位的成员受伤时，他们的成群攻击就不那么致命了。"
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr "冲锋攻击时，输出和受到的伤害都加倍。防守反击则不受此影响。"
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr "作战时，此单位能够从受害者身上吸取生命以补充自己的体力。"
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr "此单位的武器长度使得他在近战中可以先发制人，甚至在防御时也是如此。"
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5539,7 +5579,7 @@ msgstr ""
 "此单位的毒素的受害者们将持续受到伤害，直到他们在城镇中疗毒，或者被拥有疗毒能"
 "力的单位疗毒为止。"
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -5547,11 +5587,12 @@ msgstr ""
 "此单位在某些地形类型上有防御力上限——在以这些地形类型为基本类型的混合地形上，"
 "此单位不能获得更高的防御值。"
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-msgid "Special Notes:"
-msgstr "特别备注："
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#: data/core/macros/special-notes.cfg:122
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
+msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5596,11 +5637,6 @@ msgid ""
 msgstr ""
 "<bold>text='忠诚'</bold>单位不需要维护费用。大多数单位在每回合结束时都需要花"
 "费维护费用，该费用与他们的等级相等。而忠诚单位不会增加这笔开销。"
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "亡灵"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -5829,9 +5865,9 @@ msgstr ""
 "\n"
 "\n"
 "<bold>text='聪慧'</bold>单位在战役的开始阶段非常有用，因为他们能更快地升到高"
-"等级。在战役的后期聪慧单位并不是很有用，因为<bold>text='满级奖励'</"
-"bold>（AMLA）与升级相比效果并不显著。如果拥有很多达到“满级”的单位，那你也许会"
-"希望召回那些拥有更有用的特质的单位。"
+"等级。在战役的后期聪慧单位并不是很有用，因为<bold>text='满级奖励'</bold>"
+"（AMLA）与升级相比效果并不显著。如果拥有很多达到“满级”的单位，那你也许会希望"
+"召回那些拥有更有用的特质的单位。"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
@@ -5895,8 +5931,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='康健'</italic>单位拥有1点额外的生命值，并且每升一级再获得额外的"
-"1点。他们也能每回合回复2点生命值，而不论在前一回合是否参加了战斗。"
+"<bold>text='康健'</bold>单位拥有1点额外的生命值，并且每升一级再获得额外的1"
+"点。他们也能每回合回复2点生命值，而不论在前一回合是否参加了战斗。"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
@@ -6046,6 +6082,202 @@ msgstr ""
 "拥有<bold>text='年迈'</bold>特质的单位，其生命值减少8点，移动点数和近战伤害均"
 "减少1点。"
 
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "狂暴"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"不论是在进攻还是防御时，此攻击都会使作战双方维持战斗状态，直到其中一方被杀，"
+"或者恶斗三十回合为止。"
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"在用于进攻时，如果目标的另一面（与进攻方相对）紧邻着与目标敌对的单位，且该单"
+"位具有战斗力（没有被石化或者被别的方式麻痹）时，此攻击将造成双倍伤害。"
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"当一个单位被瘟疫攻击杀死时，该单位将变成与进行瘟疫攻击的单位属于同一阵营的单"
+"位，并与进行瘟疫攻击的单位属于同一阵营。这对亡灵或在村庄中的单位不起作用。"
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"此攻击将使目标减速，直到本回合结束。减速攻击使目标的攻击伤害减半，而移动消耗"
+"则加倍。被减速的单位被选中时，其侧边栏信息中会显示一个蜗牛图标。"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "石化"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr "此攻击将使目标石化，也就是把他变成石头。被石化的单位将不能移动或攻击。"
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr "当用于进攻时，此攻击总是至少有60%的几率会命中。"
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr "偏转"
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr "当用于防御时，此攻击将使得对手的命中率下降10%。"
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr "此单位的防御技巧减少了敌方的攻击成功率。"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "魔法"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr "此攻击无视被攻击单位的防御能力，而总是拥有70%的命中率。"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "群击"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"这种攻击的打击次数随着此单位的伤势递减，其打击次数与此单位当前生命值所占最大"
+"生命值的比重成正比。例如，一个生命值只剩下最大值的3/4的单位，其打击次数也只有"
+"峰值的3/4。"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "冲锋"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"用于进攻时，此攻击将对目标造成双倍伤害，但目标的反击也会使此单位受到双倍伤"
+"害。"
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr "吸收"
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr "此攻击使单位处于良好的防御体势，可以吸收敌人攻击造成的部分伤害。"
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr "此单位可以格挡敌人的打击，使其被击中时受到的伤害减少。"
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"此单位从活体单位身上吸取体力，使得自身的生命值回复所造成伤害的一半（向下舍"
+"入）。"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "先制"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr "此单位使用此攻击时，总是能率先攻击，即使是在防御时也不例外。"
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"此攻击使活体目标中毒。中毒单位每回合失去8点生命值，直到他们被治愈或生命值降到"
+"1。仅仅靠毒素本身是不足以杀死一个单位的。"
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| "This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到他们的回合结束。"
+
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -6133,7 +6365,7 @@ msgstr "龙人"
 #| "Drakes are inherently magical creatures, with a mysterious internal fire "
 #| "fueling their very lives. This can easily be witnessed when one of their "
 #| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "remains into ashes. Their internal fire is also their greatest weakness; "
 #| "it makes them extremely vulnerable to cold attacks. Despite their magical "
 #| "nature, drakes are incapable of channeling magic in a controlled manner. "
 #| "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -7512,15 +7744,32 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1最大生命值"
 
-#: src/help/help.cpp:213
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+#, fuzzy
+#| msgid "female^undead"
+msgid "female^stunned"
+msgstr "亡灵"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr ""
+
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "关闭"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "帮助"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
 msgstr "分析帮助文本时出现分析错误："
 
@@ -7535,7 +7784,7 @@ msgstr "最差"
 #: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
-msgstr ""
+msgstr "村庄治疗任何驻扎在内的单位，或疗毒。"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -7546,21 +7795,21 @@ msgid ""
 msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "此地形为单位疗毒，或回复1点生命值。"
+msgstr[1] "此地形让单位回复$amount|点生命值，或疗毒，就如同驻扎在村庄里一样。"
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
-msgstr ""
+msgstr "此地形是城堡地形——单位可以从相连的主楼处征募到此地形上。"
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
-msgstr ""
+msgstr "此地形是主楼地形——首领可以从此六角格征募单位到相连的城堡六角格上。"
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -7568,6 +7817,13 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"此特殊主楼允许首领在站立于此处时进行征募，但不允许相连主楼上的首领征募单位到"
+"此六角格上。"
+
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
+msgid "Special Notes:"
+msgstr "特别备注："
 
 #: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
@@ -7670,27 +7926,27 @@ msgstr "立场："
 msgid "Required XP:"
 msgstr "所需经验："
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "攻击手段"
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "打击次数"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "射程"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "类型"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "特攻"
 
@@ -7706,31 +7962,31 @@ msgstr "攻击类型"
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "地形修正"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "防御"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "移动消耗"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "防御上限"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "视野消耗"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "干扰消耗"
 
@@ -7739,3 +7995,132 @@ msgstr "干扰消耗"
 
 #~ msgid "Village"
 #~ msgstr "村庄"
+
+#~ msgid ""
+#~ "When loading a .cfg file, the scenario editor understands files created "
+#~ "by the scenario editor, but is likely to have difficulty with files that "
+#~ "have been edited by hand.\n"
+#~ "\n"
+#~ "Files created by the scenario editor omit the opening [scenario] and "
+#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
+#~ "on), then those tags need to be added; there is more detail about this in "
+#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
+#~ "documentation.\n"
+#~ "\n"
+#~ "One workflow is to create a separate WML file, also with the .cfg "
+#~ "extension, which uses the WML preprocessor to include the editor-created "
+#~ "file. This separate file contains both the [scenario] tag and any hand-"
+#~ "edited WML such as events. With this workflow, the add-on’s file "
+#~ "structure could look like this:\n"
+#~ "\n"
+#~ "<header>text='For Wesnoth 1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+#~ "these four lines:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "The first three of those lines insert the scenario-generated file inside "
+#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
+#~ "tags will be combined, with attributes in the second one overriding "
+#~ "attributes in the first one.\n"
+#~ "\n"
+#~ "<header>text='1.16 and later'</header>\n"
+#~ "\n"
+#~ "If your add-on will only be used on 1.16 and later, there are new "
+#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
+#~ "on’s name within the .cfg files.\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+#~ "which makes “map_file” search the “maps” directory.\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+#~ "load that file"
+#~ msgstr ""
+#~ "当加载.cfg文件时，场景编辑器能解析由场景编辑器创建的文件，但对手工编辑过的"
+#~ "文件可能存在解析上的困难。\n"
+#~ "\n"
+#~ "由场景编辑器创建的文件省略了开头的[scenario]和结尾的[/scenario]标签。如果"
+#~ "你正在创建战役（或其他附加组件），那么需要添加这些标签。在"
+#~ "<ref>dst='editor_map_format' text='地图文件格式'</ref>文档中有更多关于这方"
+#~ "面的细节。\n"
+#~ "\n"
+#~ "一种典型的工作流如下：创建一个单独的WML文件，这个文件也是以.cfg为扩展名"
+#~ "的，文件中使用WML预处理器来包含编辑器创建的文件。这个单独的文件同时包含了"
+#~ "[scenario]标签和全部手工编辑的WML（如事件）。使用这一工作流时，附加组件的"
+#~ "文件结构可能是这样的：\n"
+#~ "\n"
+#~ "<header>text='针对韦诺1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg：\n"
+#~ "  ◦ 使用 \"{./scenarios}\"来包含“scenarios”目录\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ 这是由场景编辑器创建的文件\n"
+#~ "• scenarios/01_Forest.cfg，此文件不使用典型的[scenario]标签开头，而是包含"
+#~ "这四行：\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦  {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "其中前三行在[scenario]标签内插入场景编辑器生成的文件。第四行的'+'号意味着"
+#~ "两个场景标签将被合并，第二个标签中的属性将覆盖第一个标签中的属性。\n"
+#~ "\n"
+#~ "<header>text='1.16及以后'</header>\n"
+#~ "\n"
+#~ "如果你的附加组件只用于1.16及以后的版本中，则可以通过map_file载入.cfg文件，"
+#~ "这些新功能可以避免在.cfg文件中重复附加组件的名字。\n"
+#~ "\n"
+#~ "• _main.cfg：\n"
+#~ "  ◦ 使用“[binary_path]”将附加组件目录添加到二进制文件路径中，这样一"
+#~ "来，“map_file”将搜索“maps”目录\n"
+#~ "  ◦ 使用“{./scenarios}”来包含“scenarios”目录\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ 这是由场景编辑器创建的文件\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ 在[scenario]元素中，使用“map_file=\"map_from_01.cfg”来加载该文件"
+
+#~ msgid ""
+#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
+#~ "\n"
+#~ "Files created by the scenario editor have the contents of a WML scenario "
+#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
+#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
+#~ "subfolder, the game will automatically try to load a scenario from it to "
+#~ "include in the “Custom Scenarios” list (files that fail to load are "
+#~ "ignored). In this folder each file is a separate item - files that fail "
+#~ "to parse as a scenario are ignored, and files must not contain the "
+#~ "[scenario][/scenario] tags.\n"
+#~ "\n"
+#~ "The opposite applies when a scenario is part of a campaign or other add-"
+#~ "on. Typically each scenario has its own .cfg file, however this is "
+#~ "unnecessary - all of the WML in an add-on will be combined by the "
+#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
+#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
+#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
+#~ "scenario."
+#~ msgstr ""
+#~ "<header>text='哪些场景文件使用[scenario]标签'</header>\n"
+#~ "\n"
+#~ "由场景编辑器创建的文件中含有WML场景元素应该包含的内容，但不包括开头的"
+#~ "[scenario]和结尾的[/scenario]标签。对于用户数据文件夹的editor/scenarios子"
+#~ "文件夹中的每个.cfg文件，游戏会自动尝试从其中加载场景，以包括在“自定义场"
+#~ "景”列表中——加载失败的文件会被忽略。在此文件夹中，每个文件都是一个单独的项"
+#~ "目——未能被解析为场景的文件会被忽略，而且文件中不能包含[scenario][/"
+#~ "scenario]标签。\n"
+#~ "\n"
+#~ "当场景是战役或其他附加组件的一部分时，情况则相反。通常情况下，每个场景都有"
+#~ "自己的.cfg文件，但这不必要——一个附加组件中的所有WML都会被预处理器合并，无"
+#~ "论附加组件是否被写成多个独立的文件都无所谓。引擎需要[scenario]...[/"
+#~ "scenario]（或[multiplayer]...[/multiplayer]）标签来知道哪些WML是哪个场景的"
+#~ "一部分。"

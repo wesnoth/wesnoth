@@ -222,7 +222,7 @@ def reindent(name, infp, outfp):
         # May need to indent based on the line we just saw.
         if opener(transformed):
             indent_level += 1
-        if continued_string.search(transformed):
+        if continued_string.search(transformed) and not (transformed.startswith("#")):
             if not instring:
                 indent_level += 1
                 instring = True

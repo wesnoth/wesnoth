@@ -179,36 +179,51 @@ function wml_actions.foreach(cfg)
 	local array = wml.array_variables[array_name]
 	if #array == 0 then return end -- empty and scalars unwanted
 	local item_name = cfg.variable or "this_item"
-	local this_item <close> = utils.scoped_var(item_name) -- if this_item is already set
 	local i_name = cfg.index_var or "i"
-	local i <close> = utils.scoped_var(i_name) -- if i is already set
-	local array_length = wml.variables[array_name .. ".length"]
 
-	for index, value in ipairs(array) do
-		-- Some protection against external modification
-		-- It's not perfect, though - it'd be nice if *any* change could be detected
-		if array_length ~= wml.variables[array_name .. ".length"] then
-			wml.error("WML array length changed during [foreach] iteration")
-		end
-		wml.variables[item_name] = value
-		-- set index variable
-		wml.variables[i_name] = index-1 -- here -1, because of WML array
-		-- perform actions
-		for do_child in wml.child_range(cfg, "do") do
-			local action = utils.handle_event_commands(do_child, "loop")
-			if action == "break" then
-				utils.set_exiting("none")
-				goto exit
-			elseif action == "continue" then
-				utils.set_exiting("none")
-				break
-			elseif action ~= "none" then
-				goto exit
+	-- Some protection against unsupported modification of the array while iterating. Changes to
+	-- via the WML variable named array_name will be ignored during the loop, and then overwritten
+	-- by the contents of "array" afterwards. The check_for_modifications is just trying to add an
+	-- error message instead of silently ignoring those changes.
+	local array_length = wml.variables[array_name .. ".length"]
+	local check_for_modifications = true
+	if array_name:find("^" .. item_name) then
+		-- Disable the check for WML such as [for]array=this_item or [for]array=this_item.abilities,
+		-- where the current item is shadowing the variable of the same name outside the loop.
+		check_for_modifications = false
+	end
+
+	do
+		local this_item <close> = utils.scoped_var(item_name)
+		local i <close> = utils.scoped_var(i_name)
+
+		for index, value in ipairs(array) do
+			wml.variables[item_name] = value
+			-- set index variable
+			wml.variables[i_name] = index-1 -- here -1, because of WML array
+			-- perform actions
+			for do_child in wml.child_range(cfg, "do") do
+				local action = utils.handle_event_commands(do_child, "loop")
+				if action == "break" then
+					utils.set_exiting("none")
+					goto exit
+				elseif action == "continue" then
+					utils.set_exiting("none")
+					break
+				elseif action ~= "none" then
+					goto exit
+				end
 			end
-		end
-		-- set back the content, in case the author made some modifications
-		if not cfg.readonly then
-			array[index] = wml.variables[item_name]
+
+			-- Update the copy which will eventually be written back to the
+			-- array, in case the author made some modifications.
+			if not cfg.readonly then
+				array[index] = wml.variables[item_name]
+			end
+
+			if check_for_modifications and array_length ~= wml.variables[array_name .. ".length"] then
+				wml.error("WML array length changed during [foreach] iteration")
+			end
 		end
 	end
 	::exit::

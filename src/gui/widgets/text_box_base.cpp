@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -316,7 +316,8 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
-			if(get_window() != open_window_stack.back()) {
+			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
+			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;

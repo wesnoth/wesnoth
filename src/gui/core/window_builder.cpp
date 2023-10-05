@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,31 +41,7 @@ std::unique_ptr<window> build(const builder_window::window_resolution& definitio
 	// best size (if needed) after all widgets have been placed.
 	auto win = std::make_unique<window>(definition);
 	assert(win);
-
-	for(const auto& lg : definition.linked_groups) {
-		if(win->has_linked_size_group(lg.id)) {
-			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
-
-			FAIL(msg);
-		}
-
-		win->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
-	}
-
-	win->set_click_dismiss(definition.click_dismiss);
-
-	const auto conf = win->cast_config_to<window_definition>();
-	assert(conf);
-
-	if(conf->grid) {
-		win->init_grid(*conf->grid);
-		win->finalize(*definition.grid);
-	} else {
-		win->init_grid(*definition.grid);
-	}
-
-	win->add_to_keyboard_chain(win.get());
-
+	win->finish_build(definition);
 	return win;
 }
 
@@ -186,11 +162,11 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 		wfl::formula(cfg["functions"], &functions).evaluate();
 	}
 
-	const config& c = cfg.child("grid");
+	auto c = cfg.optional_child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(c);
+	grid = std::make_shared<builder_grid>(*c);
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(), missing_mandatory_wml_key("resolution", "width"));

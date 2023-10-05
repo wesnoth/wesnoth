@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -94,6 +94,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_ZOOM_OUT, "zoomout", N_("Zoom Out"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_FULLSCREEN, "fullscreen", N_("Toggle Full Screen"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
+	{ HOTKEY_ACHIEVEMENTS, "achievements", N_("Achievements"), false, scope_game | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ACCELERATED, "accelerated", N_("Toggle Accelerated Speed"), false, scope_game, HKCAT_GENERAL, "" },
@@ -266,6 +267,9 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_AREA_REMOVE, "editor-remove-area", N_("Remove Selected Area"),   false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_AREA_ADD,    "editor-add-area",    N_("Add New Area"),           false, scope_editor, HKCAT_SCENARIO, "" },
 
+	{ HOTKEY_EDITOR_PBL,             "editor-pbl",      N_("Add-on Publishing Editor"),   false, scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_EDITOR_CHANGE_ADDON_ID, "editor-addon-id", N_("Change Add-on ID"),           false, scope_editor, HKCAT_GENERAL, "" },
+
 	{ HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SIDE_EDIT, "editor-side-edit", N_("Edit Side"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SIDE_REMOVE, "editor-side-remove", N_("Remove Side"), false, scope_editor, HKCAT_SCENARIO, "" },
@@ -301,7 +305,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ LUA_CONSOLE, "global__lua__console", N_("Show Lua Console"), false, scope_game | scope_editor | scope_main, HKCAT_DEBUG, ""},
 
 	//This list item must stay at the end since it is used as terminator for iterating.
-	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, SCOPE_COUNT, HKCAT_PLACEHOLDER, "" }
+	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, 0, HKCAT_PLACEHOLDER, "" }
 }};
 
 const std::set<HOTKEY_COMMAND> toggle_commands {
@@ -486,9 +490,9 @@ void init_hotkey_commands()
 	}
 }
 
-const std::map<HOTKEY_CATEGORY, std::string>& get_category_names()
+t_string get_translatable_category_name(HOTKEY_CATEGORY category)
 {
-	return category_names;
+	return {category_names.at(category), "wesnoth-lib"};
 }
 
 } // namespace hotkey

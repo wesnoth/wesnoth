@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -90,7 +90,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	void init_callbacks();
 
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 
@@ -103,10 +103,15 @@ private:
 	 */
 	void update_tip(const bool previous);
 
+	/** Updates UI labels that are not t_string after a language change. */
+	void update_static_labels();
+
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
 
 	void hotkey_callback_select_tests();
+
+	void show_achievements();
 
 	void button_callback_multiplayer();
 

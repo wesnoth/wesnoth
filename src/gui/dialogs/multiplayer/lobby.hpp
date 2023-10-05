@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -113,6 +113,12 @@ private:
 
 	void show_server_info();
 
+	void open_profile_url();
+
+	void open_match_history();
+
+	void tab_switch_callback();
+
 	void refresh_lobby();
 
 	void game_filter_init();
@@ -129,8 +135,6 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void post_build(window& window) override;
-
 	virtual void pre_show(window& window) override;
 
 	virtual void post_show(window& window) override;
@@ -145,6 +149,7 @@ private:
 	field_bool* filter_ignored_;
 	field_bool* filter_slots_;
 	field_bool* filter_invert_;
+	bool filter_auto_hosted_;
 
 	text_box* filter_text_;
 

@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2021 wesnoth "Bitva o Wesnoth"
+.TH WESNOTH 6 2022 wesnoth "Bitva o Wesnoth"
 .
 .SH NÁZEV
 wesnoth\ – Bitva o Wesnoth, tahová fantasy strategická hra
@@ -156,6 +156,19 @@ bez ohledu na vítězný výsledek. Má smysl pouze při použití s \fB\-u\fP.
 vypíše definované oblasti zaznamenávání (pokud je použit \fIfiltr\fP, pak pouze
 ty, které jej obsahují) a\ skončí.
 .TP 
+\fB\-\-no\-log\-to\-file\fP
+zabrání přesměrování výstupu záznamů do souboru. Soubory se záznamy jsou
+vytvářeny v\ adresáři logs pod složkou s\ uživatelskými daty.
+.TP 
+\fB\-\-log\-to\-file\fP
+výstup záznamů je kromě standardních výstupů output/error zapsán také do
+souboru. Ruší účinek volby \-\-no\-log\-to\-file ať už je vyjádřena přímo, nebo
+nepřímo.
+.TP 
+\fB\-\-wnoconsole\fP
+Ve Windows, pokud je použita spolu s\ \-\-no\-log\-to\-file, způsobí, že je výstup
+zapisován do cerr/cout místo do CONOUT. V\ ostatních případech nedělá nic.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 počet snímků za sekundu, které může hra zobrazit. Hodnota by měla být mezi
 \fB1\fP a\ \fB1000\fP. Výchozí hodnotou je obnovovací frekvence monitoru.
@@ -279,7 +292,7 @@ chyby ověření jsou brány jako fatální.
 \fB\-t[\fP\fIid_scénáře\fP\fB],\ \-\-test[\fP\fI=id_scénáře\fP\fB]\fP
 spustí hru v\ malém testovacím scénáři. Scénář by měl být definován pomocí
 WML značky \fB[test]\fP. Výchozím je \fBtest\fP. Ukázku prvku \fB[micro_ai]\fP lze
-spustit pomocí \fBmicro_ai_test\fP. Zahrnuje \fB\-\-nogui\fP.
+spustit pomocí \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ procent\fP
 nastaví od kolika \fIprocent\fP je překlad považován za dost hotový na to, aby
@@ -429,13 +442,13 @@ Upravili Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 Tuto manuálovou stránku původně vytvořil Cyril Bouthors
 <cyril@bouthors.org>.
 .br
-Navštivte oficiální stránky: https://www.wesnoth.org/
+Navštiv oficiální domovskou stránku: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003–2023 David White <davidnwhite@verizon.net>
 .br
-Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+Toto je svobodný software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a
 to i co se týká obchodovatelnosti a použitelnosti.
 .

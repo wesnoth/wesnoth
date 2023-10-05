@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -33,6 +33,7 @@ class version_info;
 
 #include "addon/validation.hpp"
 
+#include <functional>
 #include <string>
 #include <vector>
 #include <utility>
@@ -99,11 +100,12 @@ bool have_addon_in_vcs_tree(const std::string& addon_name);
  * Gets the publish information for an add-on.
  *
  * @param addon_name              The add-on's main directory/file name.
+ * @param do_validate             Whether we want to run validation on the .pbl file.
  *
  * @exception invalid_pbl_exception If it is not possible to read the .pbl file
  *                                  (often due to invalid WML).
  */
-config get_addon_pbl_info(const std::string& addon_name);
+config get_addon_pbl_info(const std::string& addon_name, bool do_validate);
 
 /**
  * Sets the publish information for an add-on.
@@ -153,7 +155,7 @@ bool is_addon_installed(const std::string& addon_name);
 void archive_addon(const std::string& addon_name, class config& cfg);
 
 /** Unarchives an add-on from campaignd's retrieved config object. */
-void unarchive_addon(const class config& cfg);
+void unarchive_addon(const class config& cfg, std::function<void(unsigned)> progress_callback = {});
 
 /** Removes the listed files from the addon. */
 void purge_addon(const config& removelist);

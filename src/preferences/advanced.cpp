@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,7 @@
 #include "preferences/advanced.hpp"
 
 #include "game_config_view.hpp"
+#include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 
@@ -36,6 +37,15 @@ advanced_manager::advanced_manager(const game_config_view& gc)
 		} catch(const std::invalid_argument& e) {
 			ERR_ADV << e.what();
 			continue;
+		}
+	}
+
+	// show_deprecation has a different default on the dev branch
+	if(game_config::wesnoth_version.is_dev_version()) {
+		for(option& op : prefs) {
+			if(op.field == "show_deprecation") {
+				op.cfg["default"] = true;
+			}
 		}
 	}
 

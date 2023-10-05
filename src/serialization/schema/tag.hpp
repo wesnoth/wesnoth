@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -69,8 +69,7 @@ private:
 			ensure_valid_or_end();
 		}
 		// Construct an end iterator
-		// That weird expression is to get a reference to an "invalid" config.
-		iterator() : match(config().child("a")) {}
+		iterator() : match(config().child_or_empty("fsdfsdf")) {}
 	private:
 		friend class boost::iterator_core_access;
 		void init(const wml_tag& base_tag);

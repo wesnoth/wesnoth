@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,6 +47,26 @@ static lg::log_domain log_font("font");
 namespace font
 {
 
+namespace
+{
+/**
+ * The text texture cache.
+ *
+ * Each time a specific bit of text is rendered, a corresponding texture is created and
+ * added to the cache. We don't store the surface since there isn't really any use for
+ * it. If we need texture size that can be easily queried.
+ *
+ * @todo Figure out how this can be optimized with a texture atlas. It should be possible
+ * to store smaller bits of text in the atlas and construct new textures from hem.
+ */
+std::map<std::size_t, texture> rendered_cache{};
+} // anon namespace
+
+void flush_texture_cache()
+{
+	rendered_cache.clear();
+}
+
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
@@ -77,19 +97,12 @@ pango_text::pango_text()
 	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
-
-	/*
-	 * Set the pango spacing a bit bigger since the default is deemed to small
-	 * https://www.wesnoth.org/forum/viewtopic.php?p=358832#p358832
-	 */
-	pango_layout_set_spacing(layout_.get(), 4 * PANGO_SCALE);
+	pango_layout_set_line_spacing(layout_.get(), 1.3f);
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
 	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
-	// Always use grayscale AA, particularly on Windows where ClearType subpixel hinting
-	// will result in colour fringing otherwise. See from_cairo_format() further below.
-	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_GRAY);
+	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_DEFAULT);
 
 	pango_cairo_context_set_font_options(context_.get(), fo);
 	cairo_font_options_destroy(fo);
@@ -102,18 +115,6 @@ texture pango_text::render_texture(const SDL_Rect& viewport)
 
 texture pango_text::render_and_get_texture()
 {
-	/**
-	 * The text texture cache.
-	 *
-	 * Each time a specific bit of text is rendered, a corresponding texture is created and
-	 * added to the cache. We don't store the surface since there isn't really any use for
-	 * it. If we need texture size that can be easily queried.
-	 *
-	 * @todo Figure out how this can be optimized with a texture atlas. It should be possible
-	 * to store smaller bits of text in the atlas and construct new textures from hem.
-	 */
-	static std::map<std::size_t, texture> rendered_cache{};
-
 	// Update our settings then hash them.
 	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
@@ -137,13 +138,6 @@ surface pango_text::render_surface(const SDL_Rect& viewport)
 	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
 	return create_surface(viewport);
-}
-
-surface pango_text::render_surface()
-{
-	update_pixel_scale(); // TODO: this should be in recalculate()
-	recalculate();
-	return create_surface();
 }
 
 texture pango_text::with_draw_scale(const texture& t) const
@@ -674,9 +668,9 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
  */
 struct inverse_table
 {
-	unsigned values[256];
+	unsigned values[256] {};
 
-	inverse_table()
+	constexpr inverse_table()
 	{
 		values[0] = 0;
 		for (int i = 1; i < 256; ++i) {
@@ -687,7 +681,7 @@ struct inverse_table
 	unsigned operator[](uint8_t i) const { return values[i]; }
 };
 
-static const inverse_table inverse_table_;
+static constexpr inverse_table inverse_table_;
 
 /***
  * Helper function for un-premultiplying alpha
@@ -720,17 +714,6 @@ static void from_cairo_format(uint32_t & c)
 	unpremultiply(r, div);
 	unpremultiply(g, div);
 	unpremultiply(b, div);
-
-#ifdef _WIN32
-	// Grayscale AA with ClearType results in wispy unreadable text because of gamma issues
-	// that would normally be solved by rendering directly onto the destination surface without
-	// alpha blending. However, since the current game engine design would never allow us to do
-	// that, we work around that by increasing alpha at the expense of AA accuracy (which is
-	// not particularly noticeable if you don't know what you're looking for anyway).
-	if(a < 255) {
-		a = std::clamp<unsigned>(unsigned(a) * 1.75, 0, 255);
-	}
-#endif
 
 	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }

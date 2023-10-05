@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,9 +22,9 @@
 #include <fstream>
 #include <locale>
 #include <map>
-#include <mutex>
 #include <boost/locale.hpp>
 #include <set>
+#include <type_traits>
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
@@ -43,7 +43,6 @@
 namespace bl = boost::locale;
 namespace
 {
-	std::mutex& get_mutex() { static std::mutex* m = new std::mutex(); return *m; }
 
 	class default_utf8_locale_name
 	{
@@ -167,7 +166,11 @@ namespace
 			return msg;
 		}
 
+#if BOOST_VERSION < 108300
 		const char* get(int domain_id, const char* ctx, const char* sid, int n) const override
+#else
+		const char* get(int domain_id, const char* ctx, const char* sid, bl::count_type n) const override
+#endif
 		{
 			auto& base = get_base();
 			const char* msg = base.get(domain_id, ctx, sid, n);
@@ -223,8 +226,13 @@ namespace
 			}
 
 			generator_.use_ansi_encoding(false);
+#if BOOST_VERSION < 108100
 			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet | bl::convert_facet);
 			generator_.characters(bl::char_facet);
+#else
+			generator_.categories(bl::category_t::message | bl::category_t::information | bl::category_t::collation | bl::category_t::formatting | bl::category_t::convert);
+			generator_.characters(bl::char_facet_t::char_f);
+#endif
 			// We cannot have current_locale_ be a non boost-generated locale since it might not supply
 			// the bl::info facet. As soon as we add message paths, update_locale_internal might fail,
 			// for example because of invalid .mo files. So make sure we call it at least once before adding paths/domains
@@ -367,7 +375,12 @@ namespace
 			if(std::has_facet<bl::collator<char>>(current_locale_)) {
 				res << "has bl::collator<char> facet, ";
 			}
+#if BOOST_VERSION < 108100
 			res << "generator categories='" << generator_.categories() << "'";
+#else
+			res << "generator categories='" <<
+				static_cast<std::underlying_type<bl::category_t>::type>(generator_.categories()) << "'";
+#endif
 			return res.str();
 		}
 
@@ -413,12 +426,10 @@ namespace translation
 
 std::string dgettext(const char* domain, const char* msgid)
 {
-	std::scoped_lock lock(get_mutex());
 	return bl::dgettext(domain, msgid, get_manager().get_locale());
 }
 std::string egettext(char const *msgid)
 {
-	std::scoped_lock lock(get_mutex());
 	return msgid[0] == '\0' ? msgid : bl::gettext(msgid, get_manager().get_locale());
 }
 
@@ -454,9 +465,8 @@ inline const char* is_unlocalized_string2(const std::string& str, const char* si
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	//TODO: only the next line needs to be in the lock.
-	std::scoped_lock lock(get_mutex());
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+
 	auto original = is_unlocalized_string2(msgval, singular, plural);
 	if (original) {
 		const char* firsthat = std::strchr (original, '^');
@@ -471,7 +481,6 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
 	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'";
-	std::scoped_lock lock(get_mutex());
 	get_manager().add_messages_domain(domain);
 	get_manager().add_messages_path(directory);
 	get_manager().update_locale();
@@ -480,7 +489,6 @@ void bind_textdomain(const char* domain, const char* directory, const char* /*en
 void set_default_textdomain(const char* domain)
 {
 	LOG_G << "set_default_textdomain: '" << domain << "'";
-	std::scoped_lock lock(get_mutex());
 	get_manager().set_default_messages_domain(domain);
 }
 
@@ -490,13 +498,11 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// why should we need alternates? which languages we support should only be related
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "'";
-	std::scoped_lock lock(get_mutex());
 	get_manager().set_language(language);
 }
 
 int compare(const std::string& s1, const std::string& s2)
 {
-	std::scoped_lock lock(get_mutex());
 
 	try {
 		return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
@@ -519,11 +525,15 @@ int icompare(const std::string& s1, const std::string& s2)
 	// https://github.com/wesnoth/wesnoth/issues/2094
 	return compare(ascii_to_lowercase(s1), ascii_to_lowercase(s2));
 #else
-	std::scoped_lock lock(get_mutex());
 
 	try {
+#if BOOST_VERSION < 108100
 		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collator_base::secondary, s1, s2);
+#else
+		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
+			bl::collate_level::secondary, s1, s2);
+#endif
 	} catch(const std::bad_cast&) {
 		static bool bad_cast_once = false;
 
@@ -547,7 +557,6 @@ int icompare(const std::string& s1, const std::string& s2)
 std::string strftime(const std::string& format, const std::tm* time)
 {
 	std::basic_ostringstream<char> dummy;
-	std::scoped_lock lock(get_mutex());
 	dummy.imbue(get_manager().get_locale());	// TODO: Calling imbue() with hard-coded locale appears to work with put_time in glibc, but not with get_locale()...
 	// Revert to use of boost (from 1.14) instead of std::put_time() because the latter does not appear to handle locale properly in Linux
 	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
@@ -557,7 +566,6 @@ std::string strftime(const std::string& format, const std::tm* time)
 
 bool ci_search(const std::string& s1, const std::string& s2)
 {
-	std::scoped_lock lock(get_mutex());
 	const std::locale& locale = get_manager().get_locale();
 
 	std::string ls1 = bl::to_lower(s1, locale);
@@ -569,7 +577,6 @@ bool ci_search(const std::string& s1, const std::string& s2)
 
 const boost::locale::info& get_effective_locale_info()
 {
-	std::scoped_lock lock(get_mutex());
 	return std::use_facet<boost::locale::info>(get_manager().get_locale());
 }
 }

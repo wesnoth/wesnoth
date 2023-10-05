@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
 "PO-Revision-Date: 2014-06-05 23:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -22,20 +22,75 @@ msgstr ""
 msgid "Underground"
 msgstr "Dưới lòng đất"
 
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "ma quái"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "dũng cảm"
+
+#. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
+msgid "plague"
+msgstr "bệnh dịch"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/weapon_specials.cfg:53
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
+"thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
+"dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "chịu đòn"
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/core/macros/abilities.cfg:131
+msgid "female^steadfast"
+msgstr "chịu đòn"
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:593
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "hồi máu +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:594
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "hồi máu +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:595
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -54,28 +109,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr " Đơn vị này có khả năng hồi máu cơ bản."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:617
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "hồi máu +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:618
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "hồi máu +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:619
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -95,21 +150,21 @@ msgstr ""
 "năng giải độc."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
 #, fuzzy
 #| msgid "heals +4"
 msgid "heals +12"
 msgstr "hồi máu +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 #, fuzzy
 #| msgid "female^heals +4"
 msgid "female^heals +12"
 msgstr "hồi máu +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
 #, fuzzy
 #| msgid ""
 #| "This unit combines herbal remedies with magic to heal units more quickly "
@@ -138,7 +193,7 @@ msgstr ""
 "năng giải độc."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -175,16 +230,9 @@ msgid "Always rest heals"
 msgstr "Luôn hồi máu như khi nghỉ ngơi"
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "dũng cảm"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "đánh lén"
 
@@ -224,7 +272,7 @@ msgstr "ẩn nấp"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "bòn rút"
 
@@ -248,7 +296,7 @@ msgstr "Đồi"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "thiện xạ"
 
@@ -262,16 +310,9 @@ msgstr "Lùm nấm"
 msgid "nightstalk"
 msgstr "săn đêm"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "bệnh dịch"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "độc"
 
@@ -287,7 +328,7 @@ msgstr "đột nhập"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "chậm"
 
@@ -308,7 +349,7 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
@@ -316,7 +357,7 @@ msgstr "Hệ số địa hình"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -477,7 +518,8 @@ msgid "Starting Locations Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:109
+#. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:110
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -511,12 +553,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:129
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
 "game. There are a few exceptions, where different graphics are used in the "
@@ -527,7 +569,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:133
+#: data/core/editor/help.cfg:134
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
@@ -545,7 +587,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:143
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
@@ -567,7 +609,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:153
+#: data/core/editor/help.cfg:154
 msgid ""
 "editor^<bold>text='Village Overlay'</bold>\n"
 "\n"
@@ -579,7 +621,7 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:161
+#: data/core/editor/help.cfg:162
 msgid ""
 "editor^<bold>text='Fake Shroud'</bold>\n"
 "\n"
@@ -589,8 +631,97 @@ msgid ""
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
 
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+#, fuzzy
+#| msgid "Terrain Modifiers"
+msgid "Terrain Elevation Graphics"
+msgstr "Hệ số địa hình"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:172
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:175
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:177
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:182
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid "Raised elevation on-map marker"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:185
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:192
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:203
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
+
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:170
+#: data/core/editor/help.cfg:208
 #, fuzzy
 #| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
@@ -599,7 +730,7 @@ msgstr "Địa hình cơ bản: "
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:211
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -615,12 +746,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:224
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:225
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -634,12 +765,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:240
 msgid "Item Tool (Scenery Tool)"
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:241
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -654,12 +785,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:254
 msgid "Village Ownership Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:255
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -674,12 +805,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:269
 msgid "Unit Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:270
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -694,12 +825,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:285
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:286
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -726,12 +857,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:307
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:308
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -740,17 +871,46 @@ msgid ""
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
 
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:319
+#, fuzzy
+#| msgid "Using Add-ons"
+msgid "Change Add-on ID"
+msgstr "Sử dụng phần bổ sung"
+
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:320
+msgid ""
+"Allows changing the ID of an add-on, which is the name of the folder it’s "
+"in. This will only rename that folder and update any references to it in the "
+"_main.cfg file. Any other place will need to be updated manually."
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:329
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:330
+msgid ""
+"Allows setting up an add-on’s _server.pbl file, which is required for "
+"publishing an add-on to the add-ons server for other players to download. "
+"The Validate button will check whether all required fields have valid values."
+msgstr ""
+
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:339
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
-"of features for setting up a basic scenario.\n"
+"of features for setting up a basic scenario as well as initializing an add-"
+"on which can be used to distribute the scenarios you create.\n"
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
@@ -778,7 +938,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:351
+msgid ""
+"In either mode, you will be prompted to choose an add-on to use for the "
+"scenarios you create. This can be an existing add-on or a brand new add-on. "
+"If you choose to use a brand new add-on, then the add-on will have all the "
+"required files and folders automatically created as well as a default ID "
+"assigned. Unless you are editing an already existing map file, using "
+"scenario mode is required in order for your maps to be selectable during "
+"game creation."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:353
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -804,7 +976,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:373
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -819,7 +991,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:385
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -828,7 +1000,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:387
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -839,7 +1011,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -854,89 +1026,68 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:402
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"The map editor saves exactly one file, either a .map (for terrain mode) or "
-"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
-"the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenario mode then an old .map file might "
-"remain, but this is not updated by the scenario editor.\n"
+"The map editor saves one file when in terrain mode (a .map) or two files "
+"when in scenario mode (both a .map and a .cfg).\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
 "cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that use a "
-"separate .map file (which can't be created by the scenario editor), the "
-"editor may follow the link and open the corresponding .map in terrain-only "
-"mode, as if the .map file was chosen in the file selector."
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
+"scenario's map data and open the corresponding .map file in terrain-only "
+"mode, as if the .map file was chosen in the file selector. It is recommended "
+"in those cases to simply load the .map file directly instead."
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:414
 msgid "Using a separate file for WML events"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:415
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
 "been edited by hand.\n"
 "\n"
-"Files created by the scenario editor omit the opening [scenario] and closing "
-"[/scenario] tags. If you are creating a campaign (or other add-on), then "
-"those tags need to be added; there is more detail about this in the "
-"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
-"\n"
-"One workflow is to create a separate WML file, also with the .cfg extension, "
+"One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
 "separate file contains both the [scenario] tag and any hand-edited WML such "
 "as events. With this workflow, the add-on’s file structure could look like "
 "this:\n"
 "\n"
-"<header>text='For Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-"these four lines:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"The first three of those lines insert the scenario-generated file inside a "
-"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
-"will be combined, with attributes in the second one overriding attributes in "
-"the first one.\n"
-"\n"
-"<header>text='1.16 and later'</header>\n"
-"\n"
-"If your add-on will only be used on 1.16 and later, there are new features "
-"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
-"within the .cfg files.\n"
+"<header>text='Example'</header>\n"
+"If your add-on will only be used on 1.18 and later, it is instead "
+"recommended to use the new include_file attribute to load a .cfg file "
+"containing additional WML into the scenario.\n"
 "\n"
 "• _main.cfg:\n"
 "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory.\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-"load that file"
+"which makes “map_file” search the “maps” directory\n"
+"• maps/first.map\n"
+"  ◦ this is the .map file created by the scenario editor when saving in "
+"scenario mode\n"
+"• scenarios/other.cfg\n"
+"  ◦ this is the .cfg file containing everything that the scenario editor "
+"doesn't understand\n"
+"• scenarios/first.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
+"map file\n"
+"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
+"the additional cfg file"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -944,14 +1095,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:447
 #, fuzzy
 #| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
 msgstr "Thời điểm trong ngày"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:448
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -964,13 +1115,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:459
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:461
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -986,32 +1137,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:466
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:467
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:468
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:480
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:483
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1042,7 +1193,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1062,38 +1213,17 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:504
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"In scenario mode, the editor saves the data as a .cfg file with embedded map "
-"data. When loading a .cfg file, the scenario editor understands files "
-"created by the scenario editor itself, but is likely to have difficulty with "
-"files that have been edited by hand; problems can be avoided by "
-"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"In scenario mode, the editor saves the scenario data as a .cfg file and the "
+"map data as a separate .map file. The scenario then references the .map file "
+"via map_file. When loading a .cfg file, the scenario editor understands "
+"files created by the scenario editor itself, but is likely to have "
+"difficulty with files that have been edited by hand; problems can be avoided "
+"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
-msgstr ""
-
-#. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
-msgid ""
-"<header>text='Which scenario files use the [scenario] tag'</header>\n"
-"\n"
-"Files created by the scenario editor have the contents of a WML scenario "
-"element, but don’t include the opening [scenario] and closing [/scenario] "
-"tags. For each .cfg file in the userdata folder’s editor/scenarios "
-"subfolder, the game will automatically try to load a scenario from it to "
-"include in the “Custom Scenarios” list (files that fail to load are "
-"ignored). In this folder each file is a separate item - files that fail to "
-"parse as a scenario are ignored, and files must not contain the [scenario][/"
-"scenario] tags.\n"
-"\n"
-"The opposite applies when a scenario is part of a campaign or other add-on. "
-"Typically each scenario has its own .cfg file, however this is unnecessary - "
-"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
-"matter whether the add-on is written as separate files or not. The engine "
-"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
-"to know which WML is part of each scenario."
 msgstr ""
 
 #. [editor_times]: id=deep_underground
@@ -4202,7 +4332,7 @@ msgid ""
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
 "bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
@@ -4807,16 +4937,6 @@ msgstr ""
 "làng."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "chịu đòn"
-
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
-msgid "female^steadfast"
-msgstr "chịu đòn"
-
-#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
@@ -5024,8 +5144,8 @@ msgstr "ẩn nấp"
 #| "they have units next to it. Any enemy unit that first discovers this unit "
 #| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -5076,220 +5196,6 @@ msgid ""
 msgstr ""
 "Đơn vị này tăng thêm 1 máu tối đa khi nó giết một đơn vị, trừ các đơn vị "
 "miễn nhiễm với bệnh dịch."
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "điên cuồng"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Bất kể được sử dụng để tấn công hay phòng thủ, đòn này đẩy cuộc giao chiến "
-"đến khi một trong hai bên tham chiến bị tiêu diệt, hoặc 30 vòng đấu đã diễn "
-"ra."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi nếu có "
-"một kẻ thù của đối phương ở phía đối diện của đối phương, và đơn vị đó không "
-"bị mất khả năng (hóa đá hay bị tê liệt)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
-"thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
-"dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
-"thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
-"dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Đòn tấn công này làm chậm đối phương đến khi nó kết thúc lượt. Đòn tấn công "
-"chậm làm giảm một nửa lượng thiệt hại gây ra bởi đòn của đối phương và chi "
-"phí di chuyển của đơn vị bị chậm tăng gấp đôi. Một đơn vị bị chậm sẽ có biểu "
-"tượng con ốc sên trong thông tin trạng thái khi chọn nó."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "hóa đá"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Đòn tấn công này hóa đá đối phương, biến nó thành đá. Các đơn vị đã bị hóa "
-"đá không thể di chuyển hay tấn công."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
-"là 60%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
-"là 60%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "phép thuật"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Đòn này luôn có cơ hội đánh trúng 70% bất kể khả năng phòng thủ của đơn vị "
-"bị tấn công."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "liên hoàn"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Số lần đánh của đòn tấn công này giảm khi đơn vị bị thương. Số lần đánh tỷ "
-"lệ với phần trăm lượng máu trên lượng tối đa đơn vị có. Ví dụ một đơn vị có "
-"lượng máu bằng 3/4 lượng máu tối đa sẽ có số lần đánh bằng 3/4 số lần đánh "
-"được phép."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "xung kích"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
-"đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
-"đôi từ đòn phản công của đối phương."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Đơn vị này bòn rút sức khỏe từ các đơn vị có sự sống, phục hồi máu cho bản "
-"thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "đánh trước"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr "Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-#, fuzzy
-#| msgid ""
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Đòn tấn công này làm nhiễm độc những đối thủ có sự sống. Các đơn vị bị nhiễm "
-"độc mất 8 máu mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống còn 1 "
-"máu. Bản thân chất độc không thể giết một đơn vị."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -5483,7 +5389,7 @@ msgstr "Đêm dài (3)"
 msgid "The Long Dark (4)"
 msgstr "Đêm dài (4)"
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5495,7 +5401,7 @@ msgstr ""
 " Linh hồn có sức kháng cự rất khác thường, và di chuyển khá chậm trên những "
 "vùng nước trống trải."
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5507,19 +5413,19 @@ msgstr ""
 " Đòn tấn công bí kíp của đơn vị này gây thiệt hại ghê gớm cho các sinh vật "
 "phép thuật, và cũng đáng kể cho các sinh vật cõi trần."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Đơn vị này có khả năng hồi máu cơ bản."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Đơn vị này có khả năng hồi máu nhanh chóng."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5530,7 +5436,7 @@ msgstr ""
 " Đơn vị này có khả năng hồi máu cho các đơn vị xung quanh, và giải độc cho "
 "chúng."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5542,7 +5448,7 @@ msgstr ""
 " Đơn vị này có khả năng vô hiệu tác dụng của chất độc có trong các đơn vị "
 "xung quanh."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5554,7 +5460,7 @@ msgstr ""
 " Đơn vị này tái tạo, cho phép nó phục hồi như thể luôn đứng trong một ngôi "
 "làng."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5566,7 +5472,7 @@ msgstr ""
 " Khả năng chịu đòn của đơn vị này làm giảm lượng thiệt hại từ một số đòn tấn "
 "công, nhưng chỉ khi phòng thủ."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5580,7 +5486,7 @@ msgstr ""
 "gây nhiều thiệt hại hơn khi chiến đấu, dù khả năng này chỉ áp dụng cho các "
 "đơn vị có cấp thấp hơn."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5592,13 +5498,13 @@ msgstr ""
 " Kỹ năng đột nhập của đơn vị này cho phép nó bỏ qua vùng kiểm soát của kẻ "
 "thù, do đó di chuyển xung quanh kẻ thù mà không bị cản trở."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Khả năng chiếu sáng tăng mức độ sáng ở các vùng lân cận."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5610,7 +5516,7 @@ msgstr ""
 " Đơn vị này có thể sử dụng một điểm di chuyển để dịch chuyển tức thời giữa "
 "hai ngôi làng trống bất kỳ mà phe nó kiểm soát."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5622,7 +5528,7 @@ msgstr ""
 " Trong rừng, kỹ năng mai phục của đơn vị này làm cho nó vô hình với kẻ thù, "
 "trừ khi nó đứng ngay cạnh kẻ thù hoặc lộ diện khi tấn công."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
@@ -5631,7 +5537,7 @@ msgstr ""
 " Đơn vị này có thể ẩn nấp vào ban đêm, không để lại dấu vết về sự hiện diện "
 "của nó."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5643,7 +5549,7 @@ msgstr ""
 " Đơn vị này có thể ẩn nấp trong làng (trừ những ngôi làng dưới nước), và "
 "không bị kẻ thù phát hiện, trừ khi kẻ thù đứng bên cạnh nó."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5654,7 +5560,7 @@ msgstr ""
 " Đơn vị này có thể di chuyển trong nước sâu mà không bị phát hiện, không cần "
 "không khí trên bề mặt để thở."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5665,7 +5571,7 @@ msgid ""
 msgstr ""
 " Đơn vị này tăng thêm 1 đơn vị máu tối đa khi nó giết một đơn vị có sự sống."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5677,7 +5583,7 @@ msgstr ""
 " Khi sử dụng đòn tấn công điên cuồng, đơn vị này tiếp tục tấn công đến khi "
 "hoặc nó hoặc kẻ thù của nó chết."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5692,7 +5598,7 @@ msgstr ""
 "tấn công, đơn vị này có thể đánh lén, gây lượng thiệt hại lớn gấp đôi bằng "
 "cách lẻn ra sau lưng kẻ thù."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5704,7 +5610,19 @@ msgstr ""
 " Địch thủ nào mất mạng bởi đòn tấn công bệnh dịch sẽ hồi sinh với sự sống "
 "giả tạo, trừ khi đứng trong một ngôi làng."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
+#, fuzzy
+#| msgid ""
+#| " Foes who lose their life to the plague will rise again in unlife, unless "
+#| "they are standing on a village."
+msgid ""
+"Foes who lose their life to certain horrors of nature become nourishment for "
+"a rapidly growing larva, unless they are standing in a village."
+msgstr ""
+" Địch thủ nào mất mạng bởi đòn tấn công bệnh dịch sẽ hồi sinh với sự sống "
+"giả tạo, trừ khi đứng trong một ngôi làng."
+
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5716,7 +5634,7 @@ msgstr ""
 " Đơn vị này có thể làm chậm kẻ thù, giảm một nửa tốc độ di chuyển và lượng "
 "thiệt hại từ đòn tấn công của chúng đến khi chúng kết thúc lượt."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5727,7 +5645,7 @@ msgstr ""
 " Khả năng biến các sinh vật thành đá khiến đơn vị này trở nên cực kỳ nguy "
 "hiểm."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5739,7 +5657,7 @@ msgstr ""
 " Tài thiện xạ của đơn vị này cho nó cơ hội đánh trúng cao khi nhằm vào kẻ "
 "thù, nhưng chỉ khi tấn công."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5751,7 +5669,7 @@ msgstr ""
 " Đơn vị này có đòn tấn công phép thuật, luôn có cơ hội đánh trúng đối thủ "
 "cao."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5762,7 +5680,7 @@ msgid ""
 msgstr ""
 " Đòn tấn công liên hoàn của đơn vị này trở nên ít nguy hiểm khi nó bị thương."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5774,7 +5692,7 @@ msgstr ""
 " Việc sử dụng đòn tấn công xung kích tăng gấp đôi lượng thiệt hại cả gây ra "
 "lẫn nhận về; điều này không áp dụng khi phòng thủ."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5785,7 +5703,7 @@ msgstr ""
 " Trong trận chiến, đơn vị này có thể bòn rút sinh lực từ các nạn nhân để "
 "phục hồi máu của nó."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5797,7 +5715,7 @@ msgstr ""
 " Chiều dài vũ khí của đơn vị này cho phép nó ra đòn trước khi cận chiến, kể "
 "cả khi phòng thủ."
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5810,25 +5728,18 @@ msgstr ""
 "đến khi chúng được giải độc trong làng hoặc bởi một đơn vị có khả năng giải "
 "độc."
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#: data/core/macros/special-notes.cfg:122
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
 msgstr ""
-"\n"
-"\n"
-"Ghi chú đặc biệt:"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5877,11 +5788,6 @@ msgstr ""
 "Các đơn vị <italic>text='trung thành'</italic> không đòi phí bảo trì. Hầu "
 "hết các đơn vị đều đòi một chi phí bảo trì ở cuối mỗi lượt, bằng với cấp độ "
 "của chúng. Các đơn vị trung thành không đòi chi phí này."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "ma quái"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -6383,6 +6289,233 @@ msgid ""
 msgstr ""
 "Các đơn vị có đặc điểm <italic>text='già'</italic> giảm 8 máu, giảm 1 điểm "
 "di chuyển và lượng thiệt hại cận chiến."
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "điên cuồng"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Bất kể được sử dụng để tấn công hay phòng thủ, đòn này đẩy cuộc giao chiến "
+"đến khi một trong hai bên tham chiến bị tiêu diệt, hoặc 30 vòng đấu đã diễn "
+"ra."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi nếu có "
+"một kẻ thù của đối phương ở phía đối diện của đối phương, và đơn vị đó không "
+"bị mất khả năng (hóa đá hay bị tê liệt)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+#, fuzzy
+#| msgid ""
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
+"thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
+"dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Đòn tấn công này làm chậm đối phương đến khi nó kết thúc lượt. Đòn tấn công "
+"chậm làm giảm một nửa lượng thiệt hại gây ra bởi đòn của đối phương và chi "
+"phí di chuyển của đơn vị bị chậm tăng gấp đôi. Một đơn vị bị chậm sẽ có biểu "
+"tượng con ốc sên trong thông tin trạng thái khi chọn nó."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "hóa đá"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Đòn tấn công này hóa đá đối phương, biến nó thành đá. Các đơn vị đã bị hóa "
+"đá không thể di chuyển hay tấn công."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
+"là 60%."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
+"là 60%."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "phép thuật"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Đòn này luôn có cơ hội đánh trúng 70% bất kể khả năng phòng thủ của đơn vị "
+"bị tấn công."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "liên hoàn"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Số lần đánh của đòn tấn công này giảm khi đơn vị bị thương. Số lần đánh tỷ "
+"lệ với phần trăm lượng máu trên lượng tối đa đơn vị có. Ví dụ một đơn vị có "
+"lượng máu bằng 3/4 lượng máu tối đa sẽ có số lần đánh bằng 3/4 số lần đánh "
+"được phép."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "xung kích"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
+"đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
+"đôi từ đòn phản công của đối phương."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Đơn vị này bòn rút sức khỏe từ các đơn vị có sự sống, phục hồi máu cho bản "
+"thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "đánh trước"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr "Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+#, fuzzy
+#| msgid ""
+#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
+#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
+#| "kill a unit."
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Đòn tấn công này làm nhiễm độc những đối thủ có sự sống. Các đơn vị bị nhiễm "
+"độc mất 8 máu mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống còn 1 "
+"máu. Bản thân chất độc không thể giết một đơn vị."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| " This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+" Đơn vị này có thể làm chậm kẻ thù, giảm một nửa tốc độ di chuyển và lượng "
+"thiệt hại từ đòn tấn công của chúng đến khi chúng kết thúc lượt."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -8109,15 +8242,32 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 máu tối đa"
 
-#: src/help/help.cpp:213
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+#, fuzzy
+#| msgid "female^undead"
+msgid "female^stunned"
+msgstr "ma quái"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr ""
+
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Đóng"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
@@ -8166,6 +8316,19 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"Ghi chú đặc biệt:"
 
 #: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
@@ -8288,27 +8451,27 @@ msgstr "Phân loại: "
 msgid "Required XP:"
 msgstr "KN cần thiết: "
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "Đòn tấn công"
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "Tên"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "Đòn đánh"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "Phạm vi"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "Kiểu"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "Đặc biệt"
 
@@ -8324,37 +8487,47 @@ msgstr "Kiểu tấn công"
 msgid "Resistance"
 msgstr "Sức kháng cự"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Hệ số địa hình"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Địa hình"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Phòng thủ"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Chi phí di chuyển"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Phòng thủ"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "Chi phí tầm nhìn"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Chi phí phá rối"
+
+#, fuzzy
+#~| msgid "first strike"
+#~ msgid "first verse"
+#~ msgstr "đánh trước"
+
+#, fuzzy
+#~| msgid "Second Dusk"
+#~ msgid "second verse"
+#~ msgstr "Chạng vạng thứ hai"
 
 #~ msgid "Flat"
 #~ msgstr "Đất phẳng"

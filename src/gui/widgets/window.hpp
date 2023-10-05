@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -74,7 +74,7 @@ class window : public panel, public top_level_drawable
 public:
 	explicit window(const builder_window::window_resolution& definition);
 
-	~window();
+	virtual ~window();
 
 	/**
 	 * Returns the instance of a window.
@@ -87,6 +87,8 @@ public:
 
 	/** Gets the retval for the default buttons. */
 	static retval get_retval_by_id(const std::string& id);
+
+	void finish_build(const builder_window::window_resolution&);
 
 	/**
 	 * Shows the window, running an event loop until it should close.
@@ -142,10 +144,8 @@ public:
 	 */
 	void draw();
 
-	/**
-	 * Undraws the window.
-	 */
-	void undraw();
+	/** Hides the window. It will not draw until it is shown again. */
+	void hide();
 
 	/**
 	 * Lays out the window.
@@ -160,7 +160,7 @@ public:
 	virtual void layout() override;
 
 	/** Called by draw_manager when it believes a redraw is necessary. */
-	virtual bool expose(const SDL_Rect &region) override;
+	virtual bool expose(const rect& region) override;
 
 	/** The current draw location of the window, on the screen. */
 	virtual rect screen_location() override;
@@ -397,26 +397,30 @@ public:
 		return point(-1, -1);
 	}
 
+	enum class exit_hook {
+		/** Always run hook */
+		on_all,
+		/** Run hook *only* if result is OK. */
+		on_ok,
+	};
+
 	/**
 	 * Sets the window's exit hook.
 	 *
-	 * A window will only close if this function returns true.
-	 *
-	 * @param func A function taking a window reference and returning a boolean result.
+	 * A window will only close if the given function returns true under the specified mode.
 	 */
-	void set_exit_hook(std::function<bool(window&)> func)
+	void set_exit_hook(exit_hook mode, std::function<bool(window&)> func)
 	{
-		exit_hook_ = func;
-	}
-
-	void set_exit_hook_ok_only(std::function<bool(window&)> func)
-	{
-		exit_hook_ = [func](window& w)->bool { return w.get_retval() != OK || func(w); };
-	}
-
-	void set_suspend_drawing(bool s = true)
-	{
-		suspend_drawing_ = s;
+		exit_hook_ = [mode, func](window& w) {
+			switch(mode) {
+			case exit_hook::on_all:
+				return func(w);
+			case exit_hook::on_ok:
+				return w.get_retval() != OK || func(w);
+			default:
+				return true;
+			}
+		};
 	}
 
 	enum class show_mode {
@@ -458,7 +462,7 @@ private:
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
-	bool suspend_drawing_;
+	bool hidden_;
 
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;

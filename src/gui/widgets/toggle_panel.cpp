@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,7 +80,7 @@ toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
 
 unsigned toggle_panel::num_states() const
 {
-	std::div_t res = std::div(this->config()->state.size(), COUNT);
+	std::div_t res = std::div(this->get_config()->state.size(), COUNT);
 	assert(res.rem == 0);
 	assert(res.quot > 0);
 	return res.quot;
@@ -299,9 +299,9 @@ toggle_panel_definition::resolution::resolution(const config& cfg)
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.child("enabled"));
-		state.emplace_back(c.child("disabled"));
-		state.emplace_back(c.child("focused"));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "enabled", _("Missing required state for toggle panel")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "disabled", _("Missing required state for toggle panel")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "focused", _("Missing required state for toggle panel")));
 	}
 }
 
@@ -316,11 +316,11 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
-	const config& c = cfg.child("grid");
+	auto c = cfg.optional_child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(c);
+	grid = std::make_shared<builder_grid>(*c);
 }
 
 std::unique_ptr<widget> builder_toggle_panel::build() const

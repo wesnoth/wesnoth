@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,24 +30,6 @@ static lg::log_domain log_engine("engine");
 
 namespace game_config
 {
-//
-// Path info
-//
-#ifdef WESNOTH_PATH
-std::string path = WESNOTH_PATH;
-#else
-std::string path = "";
-#endif
-
-#ifdef DEFAULT_PREFS_PATH
-std::string default_preferences_path = DEFAULT_PREFS_PATH;
-#else
-std::string default_preferences_path = "";
-#endif
-bool check_migration = false;
-
-std::string wesnoth_program_dir;
-
 //
 // Gameplay constants
 //
@@ -82,12 +64,8 @@ double xp_bar_scaling  = 0.5;
 //
 // Misc
 //
-int cache_compression_level = 6;
-
 unsigned lobby_network_timer  = 100;
 unsigned lobby_refresh        = 4000;
-
-const std::string observer_team_name = "observer";
 
 const std::size_t max_loop = 65536;
 
@@ -137,6 +115,7 @@ bool show_disengaged_orb;
 bool show_enemy_orb;
 bool show_moved_orb;
 bool show_partial_orb;
+bool show_status_on_ally_orb;
 bool show_unmoved_orb;
 
 //
@@ -169,7 +148,6 @@ std::vector<std::string> default_colors;
 namespace colors
 {
 std::string ally_orb_color;
-std::string disengaged_orb_color;
 std::string enemy_orb_color;
 std::string moved_orb_color;
 std::string partial_orb_color;
@@ -227,6 +205,7 @@ std::string
 	level,
 	ellipsis,
 	missing,
+	blank,
 	// notifications icon
 	app_icon = "images/icons/icon-game.png";
 
@@ -305,7 +284,7 @@ void load_config(const config &v)
 	default_victory_music = utils::split(v["default_victory_music"].str());
 	default_defeat_music  = utils::split(v["default_defeat_music"].str());
 
-	if(const config& i = v.child("colors")){
+	if(auto i = v.optional_child("colors")){
 		using namespace game_config::colors;
 
 		moved_orb_color    = i["moved_orb_color"].str();
@@ -313,17 +292,17 @@ void load_config(const config &v)
 		partial_orb_color  = i["partial_orb_color"].str();
 		enemy_orb_color    = i["enemy_orb_color"].str();
 		ally_orb_color     = i["ally_orb_color"].str();
-		disengaged_orb_color = i["disengaged_orb_color"].str();
 	} // colors
 
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
 	show_enemy_orb    = v["show_enemy_orb"].to_bool(false);
 	show_moved_orb    = v["show_moved_orb"].to_bool(true);
-	show_partial_orb  = v["show_partly_orb"].to_bool(true);
+	show_partial_orb  = v["show_partial_orb"].to_bool(true);
+	show_status_on_ally_orb = v["show_status_on_ally_orb"].to_bool(true);
 	show_unmoved_orb  = v["show_unmoved_orb"].to_bool(true);
 	show_disengaged_orb = v["show_disengaged_orb"].to_bool(true);
 
-	if(const config& i = v.child("images")){
+	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
 		game_title            = i["game_title"].str();
@@ -360,6 +339,7 @@ void load_config(const config &v)
 		level      = i["level"].str();
 		ellipsis   = i["ellipsis"].str();
 		missing    = i["missing"].str();
+		blank      = i["blank"].str();
 	} // images
 
 	hp_bar_scaling  = v["hp_bar_scaling"].to_double(0.666);
@@ -414,7 +394,7 @@ void load_config(const config &v)
 		server_list.push_back(sinf);
 	}
 
-	if(const config& s = v.child("sounds")) {
+	if(auto s = v.optional_child("sounds")) {
 		using namespace game_config::sounds;
 
 		const auto load_attribute = [](const config& c, const std::string& key, std::string& member) {
@@ -423,26 +403,26 @@ void load_config(const config &v)
 			}
 		};
 
-		load_attribute(s, "turn_bell",        turn_bell);
-		load_attribute(s, "timer_bell",       timer_bell);
-		load_attribute(s, "public_message",   public_message);
-		load_attribute(s, "private_message",  private_message);
-		load_attribute(s, "friend_message",   friend_message);
-		load_attribute(s, "server_message",   server_message);
-		load_attribute(s, "player_joins",     player_joins);
-		load_attribute(s, "player_leaves",    player_leaves);
-		load_attribute(s, "game_created",     game_created);
-		load_attribute(s, "game_user_arrive", game_user_arrive);
-		load_attribute(s, "game_user_leave",  game_user_leave);
-		load_attribute(s, "ready_for_start",  ready_for_start);
-		load_attribute(s, "game_has_begun",   game_has_begun);
+		load_attribute(*s, "turn_bell",        turn_bell);
+		load_attribute(*s, "timer_bell",       timer_bell);
+		load_attribute(*s, "public_message",   public_message);
+		load_attribute(*s, "private_message",  private_message);
+		load_attribute(*s, "friend_message",   friend_message);
+		load_attribute(*s, "server_message",   server_message);
+		load_attribute(*s, "player_joins",     player_joins);
+		load_attribute(*s, "player_leaves",    player_leaves);
+		load_attribute(*s, "game_created",     game_created);
+		load_attribute(*s, "game_user_arrive", game_user_arrive);
+		load_attribute(*s, "game_user_leave",  game_user_leave);
+		load_attribute(*s, "ready_for_start",  ready_for_start);
+		load_attribute(*s, "game_has_begun",   game_has_begun);
 
-		if(const config & ss = s.child("status")) {
+		if(auto ss = s->optional_child("status")) {
 			using namespace game_config::sounds::status;
 
-			load_attribute(ss, "poisoned",  poisoned);
-			load_attribute(ss, "slowed",    slowed);
-			load_attribute(ss, "petrified", petrified);
+			load_attribute(*ss, "poisoned",  poisoned);
+			load_attribute(*ss, "slowed",    slowed);
+			load_attribute(*ss, "petrified", petrified);
 		}
 	}
 }
@@ -555,22 +535,22 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	return tc_info(name);
 }
 
-color_t red_to_green(int val, bool for_text)
+color_t red_to_green(double val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
-	val = std::clamp(val, 0, 100);
-	const int lvl = (color_scale.size() - 1) * val / 100;
+	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
+	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
 
 	return color_scale[lvl];
 }
 
-color_t blue_to_white(int val, bool for_text)
+color_t blue_to_white(double val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? blue_white_scale_text : blue_white_scale;
 
-	val = std::clamp(val, 0, 100);
-	const int lvl = (color_scale.size() - 1) * val / 100;
+	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
+	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
 
 	return color_scale[lvl];
 }

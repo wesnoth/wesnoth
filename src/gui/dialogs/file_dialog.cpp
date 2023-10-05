@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -103,7 +103,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(file_dialog)
 
 file_dialog::file_dialog()
-	: title_(_("Find File"))
+	: modal_dialog(window_id())
+	, title_(_("Find File"))
 	, msg_()
 	, ok_label_()
 	, extension_()
@@ -116,6 +117,7 @@ file_dialog::file_dialog()
 	, bookmark_paths_()
 	, current_bookmark_()
 	, user_bookmarks_begin_()
+	, extra_paths_()
 {
 }
 
@@ -191,8 +193,10 @@ void file_dialog::pre_show(window& window)
 	// Push hard-coded bookmarks.
 	//
 
-	std::vector<desktop::path_info> bookmarks = desktop::game_paths();
-	const auto& sys_paths = desktop::system_paths();
+	extra_paths_.emplace(desktop::GAME_CORE_DATA_DIR);
+	extra_paths_.emplace(desktop::GAME_USER_DATA_DIR);
+	std::vector<desktop::path_info> bookmarks = desktop::game_paths(extra_paths_);
+	const auto& sys_paths = desktop::system_paths({desktop::SYSTEM_ALL_DRIVES, desktop::SYSTEM_USER_PROFILE, desktop::SYSTEM_ROOTFS});
 	bookmarks.insert(bookmarks.end(), sys_paths.begin(), sys_paths.end());
 
 	bookmark_paths_.clear();
@@ -257,7 +261,7 @@ void file_dialog::pre_show(window& window)
 
 	window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
 	window.add_to_keyboard_chain(&filelist);
-	window.set_exit_hook(std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
+	window.set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
 }
 
 bool file_dialog::on_exit(window& window)

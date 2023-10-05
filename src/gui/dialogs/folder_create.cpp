@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,7 +29,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(folder_create)
 
 folder_create::folder_create(std::string& folder_name)
-	: bookmark_mode_(false)
+	: modal_dialog(window_id())
+	, bookmark_mode_(false)
 {
 	register_text("name", true, folder_name, true);
 }

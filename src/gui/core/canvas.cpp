@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -376,11 +376,19 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 		return resize_mode::stretch;
 	} else if(resize_mode == "scale_sharp") {
 		return resize_mode::scale_sharp;
+	} else if(resize_mode == "scale") {
+		return resize_mode::scale;
 	} else {
-		if(!resize_mode.empty() && resize_mode != "scale") {
+		if(!resize_mode.empty()) {
 			ERR_GUI_E << "Invalid resize mode '" << resize_mode << "' falling back to 'scale'.";
 		}
-		return resize_mode::scale;
+
+		// Linear scaling just looks horrible as a default, especially on HDPI screens, and even
+		// for some non-pixel art (the logo, for example). Nearest-neighbor isn't perfect for those
+		// usecases, but it's definitely better, in my opinion.
+		//
+		// -- vultraz, 2022-08-20
+		return resize_mode::scale_sharp;
 	}
 }
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -106,6 +106,7 @@ struct game_info
 
 	bool has_friends;
 	bool has_ignored;
+	bool auto_hosted;
 
 	enum class disp_status {
 		CLEAN,

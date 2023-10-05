@@ -20,7 +20,7 @@ on_event("moveto", function(event_context)
 	for i, item in ipairs(items) do
 		dropping.current_item = item
 		dropping.item_taken = nil
-		wesnoth.fire_event("wc2_drop_pickup", x, y)
+		wesnoth.game_events.fire("wc2_drop_pickup", x, y)
 		if dropping.item_taken then
 			wesnoth.interface.remove_item(x,y, item.name)
 		end

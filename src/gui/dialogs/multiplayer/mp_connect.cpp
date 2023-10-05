@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,7 +63,8 @@ namespace dialogs
 REGISTER_DIALOG(mp_connect)
 
 mp_connect::mp_connect()
-	: host_name_(register_text("host_name",
+	: modal_dialog(window_id())
+	, host_name_(register_text("host_name",
 							   true,
 							   preferences::network_host,
 							   preferences::set_network_host,

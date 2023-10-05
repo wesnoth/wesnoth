@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,7 +40,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(game_cache_options)
 
 game_cache_options::game_cache_options()
-	: cache_path_(filesystem::get_cache_dir())
+	: modal_dialog(window_id())
+	, cache_path_(filesystem::get_cache_dir())
 	, clean_button_(nullptr)
 	, purge_button_(nullptr)
 	, size_label_(nullptr)

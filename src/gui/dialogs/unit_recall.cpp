@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -59,7 +59,8 @@ static listbox::order_pair sort_default { 2, sort_order::type::descending};
 REGISTER_DIALOG(unit_recall)
 
 unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team& team)
-	: recall_list_(recall_list)
+	: modal_dialog(window_id())
+	, recall_list_(recall_list)
 	, team_(team)
 	, selected_index_()
 	, filter_options_()

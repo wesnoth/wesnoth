@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,10 +38,6 @@ static lg::log_domain log_halo("halo");
 
 namespace halo
 {
-
-// TODO: draw_manager - GH#1354 - halo_mod doesn't mod halos - maybe not hard
-// TODO: draw_manager - GH#1960 - halos inherit alpha from unit - maybe not hard
-// TODO: draw_manager - GH#6738 - (1) done already (2) halos off screen maybe done
 
 class halo_impl
 {
@@ -146,7 +142,9 @@ class halo_impl
 	void remove(int handle);
 
 	void update();
-	void render();
+
+	/** Render all halos overlapping the given region */
+	void render(const rect&);
 
 }; //end halo_impl
 
@@ -171,7 +169,6 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 void halo_impl::effect::set_location(int x, int y)
 {
-	// TODO: draw_manager - tidy...
 	int new_x = x - disp->get_location_x(map_location::ZERO());
 	int new_y = y - disp->get_location_y(map_location::ZERO());
 	if (new_x != abs_mid_.x || new_y != abs_mid_.y) {
@@ -187,7 +184,6 @@ rect halo_impl::effect::get_draw_location()
 }
 
 
-// TODO: draw_manager - maybe rename in line with TLD interface.
 /** Update the current location, animation frame, etc. */
 void halo_impl::effect::update()
 {
@@ -223,7 +219,6 @@ void halo_impl::effect::update()
 	int w(tex_.w() * disp->get_zoom_factor());
 	int h(tex_.h() * disp->get_zoom_factor());
 
-	// TODO: draw_manager - should these be baked in?
 	const int zero_x = disp->get_location_x(map_location::ZERO());
 	const int zero_y = disp->get_location_y(map_location::ZERO());
 
@@ -243,8 +238,8 @@ void halo_impl::effect::update()
 bool halo_impl::effect::visible()
 {
 	// Source is shrouded
-	// TODO: draw_manager - what if part of the halo peeks out of the shroud?
-	// TODO: draw_manager - is this related to GH#6738?
+	// The halo will be completely obscured here, even if it would
+	// technically be large enough to peek out of the shroud.
 	if(map_loc_.x != -1 && map_loc_.y != -1 && disp->shrouded(map_loc_)) {
 		return false;
 	}
@@ -404,17 +399,14 @@ void halo_impl::update()
 	}
 }
 
-void halo_impl::render()
+void halo_impl::render(const rect& region)
 {
 	if(haloes.empty()) {
 		return;
 	}
 
-	// TODO: draw_manager - pass in rect in stead of assuming clip makes sense
-	rect clip = draw::get_clip();
-
 	for(auto& [id, effect] : haloes) {
-		if(clip.overlaps(effect.get_draw_location())) {
+		if(region.overlaps(effect.get_draw_location())) {
 			DBG_HL << "drawing intersected halo " << id;
 			effect.render();
 		}
@@ -456,9 +448,9 @@ void manager::update()
 	impl_->update();
 }
 
-void manager::render()
+void manager::render(const rect& r)
 {
-	impl_->render();
+	impl_->render(r);
 }
 
 // end halo::manager implementation

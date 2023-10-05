@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,6 +43,7 @@
 #include "pathfind/pathfind.hpp"
 #include "persist_var.hpp"
 #include "play_controller.hpp"
+#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "random.hpp"
@@ -239,16 +240,16 @@ wml_action::wml_action(const std::string & tag, handler function)
  *
  * Generated code looks like this:
  * \code
- * void wml_func_foo(...);
+ * static void wml_func_foo(...);
  * static wml_action wml_action_foo("foo", &wml_func_foo);
- * void wml_func_foo(...)
+ * static void wml_func_foo(...)
  * {
  *    // code for foo
  * }
  * \endcode
  */
 #define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
-	static void wml_func_##pname(const queued_event &pei, const vconfig &pcfg); \
+	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg); \
 	static wml_action wml_action_##pname(#pname, &wml_func_##pname);  \
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
@@ -285,27 +286,17 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "custom_command"};
 
-	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
-	const bool is_unsynced_too_early = resources::gamedata->phase() != game_data::PLAY;
+	const bool is_too_early = resources::gamedata->phase() == game_data::INITIAL || resources::gamedata->phase() == game_data::PRELOAD;
+	const bool is_during_turn = resources::gamedata->phase() == game_data::TURN_PLAYING;
 	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
 		ERR_NG << "[do_command] called too early, only allowed at START or later";
 		return;
 	}
-	if(is_unsynced && resources::controller->is_lingering())
+	if(is_unsynced && !is_during_turn)
 	{
-		ERR_NG << "[do_command] cannot be used in linger mode";
-		return;
-	}
-	if(is_unsynced && !resources::controller->gamestate().init_side_done())
-	{
-		ERR_NG << "[do_command] cannot be used before the turn has started";
-		return;
-	}
-	if(is_unsynced && is_unsynced_too_early)
-	{
-		ERR_NG << "[do_command] called too early";
+		ERR_NG << "[do_command] can only be used during a turn when a user woudl also be able to invoke commands";
 		return;
 	}
 	if(is_unsynced && events::commands_disabled)

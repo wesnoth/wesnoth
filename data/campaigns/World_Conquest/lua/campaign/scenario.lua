@@ -59,11 +59,10 @@ end
 -- carryover handling: we use a custom carryover machnics that
 -- splits the carryover gold evenly to all players
 on_event("prestart", function(cx)
-	wesnoth.fire_event("wc2_start")
+	wesnoth.game_events.fire("wc2_start")
 end)
 
 -- we need to do this also after difficulty selection.
--- NOTE: this is a bit fragile, in particualr it breaks if difficulty_selection happens before the prestart event above.
 on_event("wc2_start", function(cx)
 	if wml.variables.wc2_scenario == 1 then
 		for side_num = 1, wml.variables.wc2_player_count do

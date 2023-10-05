@@ -669,6 +669,16 @@ function battle_calcs.battle_outcome(attacker, defender, cfg, cache)
         def_strikes = math.floor(def_strikes * defender.hitpoints / defender.max_hitpoints)
     end
 
+    -- At around 15 combined strikes, wesnoth.simulate_combat becomes faster
+    if (att_strikes + def_strikes > 14) then
+        if (def_weapon == 0) then def_weapon = nil end
+        if (att_weapon == 0) then
+            return wesnoth.simulate_combat(attacker, defender, def_weapon)
+        else
+            return wesnoth.simulate_combat(attacker, att_weapon, defender, def_weapon)
+        end
+    end
+
     -- Maximum number of hits that either unit can survive
     local att_max_hits = math.floor((attacker.hitpoints - 1) / def_damage)
     if (att_max_hits > def_strikes) then att_max_hits = def_strikes end

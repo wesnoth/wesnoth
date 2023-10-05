@@ -52,6 +52,10 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "--no-log-to-file"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--data-dir=&quot;$(PROJECT_DIR)/../..&quot;"
             isEnabled = "NO">
          </CommandLineArgument>

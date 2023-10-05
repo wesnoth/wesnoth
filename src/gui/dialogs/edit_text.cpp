@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,8 @@ edit_text::edit_text(const std::string& title,
 					   const std::string& label,
 					   std::string& text,
 					   bool disallow_empty)
-	: disallow_empty_(disallow_empty)
+	: modal_dialog(window_id())
+	, disallow_empty_(disallow_empty)
 {
 	register_label("title", true, title, true);
 	register_label("label", true, label, true);

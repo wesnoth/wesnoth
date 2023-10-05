@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Battle for Wesnoth\-Mehrspielernetzwerkdaemon"
+.TH WESNOTHD 6 2022 wesnothd "Battle for Wesnoth\-Mehrspielernetzwerkdaemon"
 .
 .SH NAME
 .
@@ -41,10 +41,10 @@ Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
 .
 .TP 
 \fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
-Sagt wesnothd wo es die zu benutzende Konfigurationsdatei findet. Siehe den
-Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für die genaue Syntax. Sie
-können die Konfigurationsdatei durch senden eines SIGHUP an den
-Serverprozess neu laden.
+Sagt wesnothd wo es die Konfigurationsdatei findet. Siehe den Abschnitt
+\fBSERVER KONFIGURATION\fP unterhalb für die genaue Syntax. Sie können die
+Konfigurationsdatei durch senden eines SIGHUP an den Serverprozess neu
+laden.
 .TP 
 \fB\-d, \-\-daemon\fP
 Startet wesnothd als Dämon.
@@ -57,7 +57,7 @@ Setzt die Stufe der Logausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
 zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP benutzt und die Stufe
 \fBinfo\fP für die Domäne \fBserver\fP verwendet.
 .TP 
-\fB\-p\ \fP\fIPort\fP\fB,\ \-\-port\fP\fI\ Port\fP
+\fB\-p\ \fP\fIPort\-Nummer\fP\fB,\ \-\-port\fP\fI\ Port\-Nummer\fP
 Bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port \fB15000\fP genommen.
 .TP 
@@ -65,7 +65,7 @@ wird Port \fB15000\fP genommen.
 Legt die maximale Anzahl an für Netzwerk E/A reservierten Arbeiterthreads
 fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
 .TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ Wert\fP
+\fB\-T,\ \-\-max\-threads\fP\fI\ Nummer\fP
 Legt die maximal zu erzeugende Anzahl an Arbeiterthreads fest. Bei einem
 Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
 .TP 
@@ -80,13 +80,13 @@ Aktiviert mehr Details in der Logausgabe, einschließlich der Stufe \fBdebug\fP.
 .SS "Die allgemeine Syntax ist:"
 .
 .P
-[\fIElement\fP]
+[\fItag\fP]
 .IP
 \fISchlüssel\fP="\fIWert\fP"
 .IP
 \fISchlüssel\fP="\fIWert\fP,\fIWert\fP,..."
 .P
-[/\fIElement\fP]
+[/\fItag\fP]
 .
 .SS "Globale Schlüssel:"
 .
@@ -111,8 +111,8 @@ Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+Legt fest, ob sich nur Spieler einloggen dürfen, welche beim \fBuser_handler\fP
+registriert sind. (Standard: false)
 .TP 
 \fBdisallow_names\fP
 Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
@@ -187,12 +187,18 @@ zulässt. \fB*\fP und \fB?\fP sind erlaubt. (Standard: Die aktuell installierte
 Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
-.SS "Globale Elemente:"
+.SS "Globale Tags:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Ein Tag, um bestimmte Programmversionen anzugeben, die auf
+einen anderen Server umgeleitet werden sollen. Wird nur verwendet wenn
+\fBversions_accepted\fP gesetzt ist.
 .RS
 .TP 
 \fBhost\fP
@@ -222,57 +228,73 @@ werden Minuten (m) angenommen. Beispiel: \fBtime="1D12h30m"\fP steht für eine
 Ban\-Zeit von einem Tag, 12 Stunden und 30 Minuten.
 .RE
 .P
-\fB[proxy]\fP Ein Element, das benutzt wird, um dem Server mitzuteilen, wie ein
-Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
-den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
-bei \fB[redirect]\fP akzeptiert.
+\fB[proxy]\fP Ein Tag, durch den der Server wie ein Proxy agiert und somit alle
+Anfragen der mit ihm verbundenen Rechners an den angegebenen Server
+weiterleitet. Es werden die gleichen Schlüssel wie bei \fB[redirect]\fP
+akzeptiert.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Ist kein
+\fB[user_handler]\fP\-Bereich vorhanden, so ist es nicht möglich,
+Nutzerauthentifizierung auf dem Server zu verwenden. Alle zusätzlichen
+Datenbanktabellen, welche für den \fBforum_user_handler\fP benötigt werden,
+können über die Datei table_definitions.sql angelegt werden, welche im
+Wesnoth Code\-Repository zu finden ist. Erfordert, dass die
+MySQL\-Unterstützung aktiviert ist. Für cmake kann diese durch
+\fBENABLE_MYSQL\fP erreicht werden, für scons durch \fBforum_user_handler\fP.
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+Der Hostname des Datenbank\-Servers.
 .TP 
 \fBdb_name\fP
-The name of the database
+Der Name der Datenbank.
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+Der Benutzername, der zur Anmeldung an der Datenbank verwendet werden soll.
 .TP 
 \fBdb_password\fP
-This user's password
+Das Passwort dieses Benutzers.
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
+The name of the table in which your phpbb forum saves its user data. Most
 likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+Der Name der Tabelle, in der wesnothd Informationen über Nutzer speichert.
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+Der Name der Tabelle, in der wesnothd Informationen über Spiele speichert.
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+Der Name der Tabelle, in der wesnothd Informationen über die Spieler eines
+Spiels speichert.
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+Der Name der Tabelle, in der wesnothd Informationen über sie in einem Spiel
+verwendeten Modifikationen speichert.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
+The name of the table in which your phpbb forum saves its user group
 data. Most likely this will be <table\-prefix>_user_group
 (e.g. phpbb3_user_group).
 .TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
+.TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+Die ID der Forengruppe, welche über Moderationsrechte verfügt
 .RE
 .
 .SH RÜCKGABEWERT
@@ -296,7 +318,7 @@ Besuchen Sie auch die offizielle Webseite: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
 .br
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
 GNU General Public License, wie von der Free Software Foundation

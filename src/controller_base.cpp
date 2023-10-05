@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -391,7 +391,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	events::pump();
 	events::raise_process_event();
-	events::raise_draw_event();
+	events::draw();
 
 	// Update sound sources before scrolling
 	if(soundsource::manager* l = get_soundsource_man()) {
@@ -451,10 +451,10 @@ void controller_base::show_menu(
 	std::vector<config> items;
 	for(const config& c : items_arg) {
 		const std::string& id = c["id"];
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
+		const hotkey::ui_command cmd = hotkey::ui_command(id);
 
-		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.command))) {
-			items.emplace_back("id", id);
+		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
+			items.emplace_back(c);
 		}
 	}
 
@@ -474,8 +474,8 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 
 	std::vector<std::string> items;
 	for(const std::string& item : items_arg) {
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
-		if(cmd_exec->can_execute_command(command)) {
+		hotkey::ui_command cmd = hotkey::ui_command(item);
+		if(cmd_exec->can_execute_command(cmd)) {
 			items.push_back(item);
 		}
 	}
@@ -487,7 +487,7 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 	cmd_exec->execute_action(items, xloc, yloc, context_menu, get_display());
 }
 
-bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
+bool controller_base::in_context_menu(const hotkey::ui_command& /*command*/) const
 {
 	return true;
 }

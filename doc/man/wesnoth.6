@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 .\"
 .
-.TH WESNOTH 6 "2021" "wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "2022" "wesnoth" "Battle for Wesnoth"
 .
 .SH NAME
 wesnoth \- Battle for Wesnoth, a turn-based fantasy strategy game
@@ -190,8 +190,14 @@ lists defined log domains (only the ones containing
 .I filter
 if used) and exits
 .TP
+.B --no-log-to-file
+prevents redirecting logged output to a file. Log files are created in the logs directory under the userdata folder.
+.TP
 .B --log-to-file
-redirects logged output to a file. Log files are created in the logs directory under the userdata folder.
+log output is written to a file in addition to standard output/error. Cancels the effect of --no-log-to-file whether implicit or explicit.
+.TP
+.B --wnoconsole
+For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP
 .BI --max-fps \ fps
 the number of frames per second the game can show, the value should be between
@@ -349,8 +355,6 @@ A demonstration of the
 .B [micro_ai]
 feature can be started with
 .BR micro_ai_test .
-Implies
-.BR --nogui .
 .TP
 .BI --translations-over \ percent
 Set the standard for deeming a translation is complete enough to show in the
@@ -534,7 +538,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003-2023 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

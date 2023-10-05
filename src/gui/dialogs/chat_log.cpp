@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -409,7 +409,9 @@ private:
 };
 
 
-chat_log::chat_log(const vconfig& cfg, const replay& r) : view_()
+chat_log::chat_log(const vconfig& cfg, const replay& r)
+	: modal_dialog(window_id())
+	, view_()
 {
 	LOG_CHAT_LOG << "Entering chat_log::chat_log";
 	view_ = std::make_shared<view>(cfg, r);

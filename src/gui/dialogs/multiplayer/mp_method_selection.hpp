@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,8 @@ public:
 	/** Corresponds to each connection option. */
 	enum class choice { JOIN = 0, CONNECT, HOST, LOCAL };
 
-	mp_method_selection() : user_name_(), choice_()
+	mp_method_selection()
+		: modal_dialog(window_id()) , user_name_(), choice_()
 	{
 	}
 

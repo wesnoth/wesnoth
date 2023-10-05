@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,21 +135,34 @@ public:
 
 	virtual bool has_time_area() const override;
 
+	/**
+	 * TLD update() override. Replaces old pre_draw(). Be sure to call
+	 * the base class method as well.
+	 *
+	 * game_display does specific things related e.g. to unit rendering
+	 * and calls the whiteboard pre-draw method here.
+	 */
+	virtual void update() override;
+
+	/**
+	 * TLD layout() override. Replaces old refresh_reports(). Be sure to
+	 * call the base class method as well.
+	 *
+	 * This updates some reports, like clock, that need to be refreshed
+	 * every frame.
+	 */
+	virtual void layout() override;
+
+	/**
+	 * TLD render() override. Replaces old post_draw(). Be sure to call
+	 * the base class method as well.
+	 *
+	 * This calls the whiteboard's post-draw method after rendering.
+	 */
+	virtual void render() override;
+
 protected:
-	/**
-	 * game_display pre_draw does specific things related e.g. to unit rendering
-	 * and calls the whiteboard pre-draw method.
-	 */
-	virtual void pre_draw() override;
-	/**
-	 * Calls the whiteboard's post-draw method.
-	 */
-	virtual void post_draw() override;
-
 	virtual void draw_invalidated() override;
-
-	// TODO: draw_manager - maybe delete
-	//virtual void post_commit() override;
 
 	virtual void draw_hex(const map_location& loc) override;
 
@@ -185,7 +198,7 @@ public:
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	/** The playing team is the team whose turn it is. */
-	virtual int playing_side() const override { return activeTeam_ + 1; }
+	virtual int playing_side() const override { return static_cast<int>(activeTeam_) + 1; }
 
 	std::string current_team_name() const;
 
@@ -220,8 +233,6 @@ private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
 
-	virtual void refresh_reports() override;
-
 	overlay_map overlay_map_;
 
 	// Locations of the attack direction indicator's parts
@@ -234,7 +245,7 @@ private:
 
 	map_location displayedUnitHex_;
 
-	bool in_game_;
+	bool first_turn_, in_game_;
 
 	const std::unique_ptr<display_chat_manager> chat_man_;
 

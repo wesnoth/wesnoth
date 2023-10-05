@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Servidor de partidas multijugador para La batalla por Wesnoth"
+.TH WESNOTHD 6 2022 wesnothd "Servidor de partidas multijugador para La batalla por Wesnoth"
 .
 .SH NOMBRE
 .
@@ -169,16 +169,17 @@ Define si el servidor almacenará automáticamente las repeticiones de las
 partidas. (Por defecto: \fBfalse\fP.)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Habilite el uso de TLS. Si es verdadero, también requiere que se configuren
+las siguientes 3 opciones.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+Cadena de certificados TLS completa en formato .pem
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+clave privada para TLS en formato .pem
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+Parámetros TLS DH como archivo .pem. Generar con \fBopenssl dhparam \-out
 filename.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
@@ -187,12 +188,18 @@ admitidos por el servidor. \fB*\fP y \fB?\fP sirven de comodines. (Por defecto e
 la versión de Wesnoth correspondiente al servidor.)
 .br
 Ejemplo: \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
+.TP 
+\fBid\fP
+El ID del servidor cuando se usa la funcionalidad de la base de datos para
+almacenar información del juego. Generalmente es la versión mayor.menor de
+los clientes aceptados, como 1.16 o 1.17.
 .
 .SS "Etiquetas globales:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Una etiqueta para especificar un servidor al que se
+redirigirán ciertas versiones de clientes. No es usado si
+\fBversions_accepted\fP no está establecido.
 .RS
 .TP 
 \fBhost\fP
@@ -226,12 +233,13 @@ reenvíe las solicitudes de los clientes conectados al servidor
 especificado.  Acepta las mismas opciones que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configura el servicio de usuarios. Si no hay ninguna
+sección \fB[user_handler]\fP en la configuración, el servidor funcionará sin
+ningún servicio de registro de usuarios. Todas las tablas adicionales que se
+necesitan para que funcione \fBforum_user_handler\fP pueden encontrarse en
+table_definitions.sql en el repositorio de fuentes de Wesnoth. Requiere
+soporte mysql activado. Para cmake es \fBENABLE_MYSQL\fP y por scons es
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -268,9 +276,24 @@ El nombre de la tabla en la que wesnothd guardará sus propios datos acerca
 de las modificaciones usadas en una partida.
 .TP 
 \fBdb_user_group_table\fP
-El nombre de la tabla en la que sus foros phpbb almacenan los datos de sus
+El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
 grupos de usuarios. Generalmente éste será <table\-prefix>_user_group
 (por ej.: phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+El nombre de la tabla en la que almacenar los tiempos de inicio/cierre de
+sesión. También se utiliza para hacer coincidir las direcciones IP con los
+usuarios y viceversa.
+.TP 
+\fBdb_topics_table\fP
+El nombre de la tabla en la que sus foros phpBB almacenan la información de
+sus conversaciones (hilos). Generalmente éste será
+<table\-prefix>_topics (por ej.: phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
+usuarios baneados. Generalmente éste será <table\-prefix>_banlist
+(por ej.: phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 El ID del grupo del foro que se considera que tiene autorización para
@@ -295,7 +318,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

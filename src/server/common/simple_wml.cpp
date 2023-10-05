@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,9 +24,11 @@
 #include "server/common/simple_wml.hpp"
 
 #include "log.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
+#define LOG_SWML LOG_STREAM(info, log_config)
 
 namespace simple_wml {
 
@@ -995,6 +997,7 @@ document::document(string_span compressed_buf) :
 	try {
 		root_ = new node(*this, nullptr, &cbuf);
 	} catch(...) {
+		ERR_SWML << "Caught exception creating a new simple_wml node: " << utils::get_unknown_exception_type();
 		delete [] buffers_.front();
 		buffers_.clear();
 		throw;
@@ -1237,32 +1240,3 @@ void swap(document& lhs, document& rhs)
 }
 
 }
-
-#ifdef UNIT_TEST_SIMPLE_WML
-
-int main(int argc, char** argv)
-{
-	char* doctext = strdup(
-"[test]\n"
-"a=\"blah\"\n"
-"b=\"blah\"\n"
-"c=\"\\\\\"\n"
-"d=\"\\\"\"\n"
-"[/test]");
-	std::cerr << doctext << "\n";
-	simple_wml::document doc(doctext);
-
-	simple_wml::node& node = doc.root();
-	simple_wml::node* test_node = node.child("test");
-	assert(test_node);
-	assert((*test_node)["a"] == "blah");
-	assert((*test_node)["b"] == "blah");
-	assert((*test_node)["c"] == "\\\\");
-	assert((*test_node)["d"] == "\\\"");
-
-	node.set_attr("blah", "blah");
-	test_node->set_attr("e", "f");
-	std::cerr << doc.output();
-}
-
-#endif

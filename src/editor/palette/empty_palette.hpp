@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,7 +42,6 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
-	virtual void draw() override {}
 
 	void hide(bool /*hidden*/) override
 	{

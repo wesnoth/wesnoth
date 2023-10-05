@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -41,6 +41,7 @@ static void set_do_not_show_again(const bool do_not_show_again)
 }
 
 mp_host_game_prompt::mp_host_game_prompt()
+	: modal_dialog(window_id())
 {
 	register_bool("do_not_show_again",
 				  true,

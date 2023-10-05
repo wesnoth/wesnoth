@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -226,7 +226,7 @@ public:
 		explicit resistances(const config & cfg) : cfg_(cfg) {}
 
 		/** Returns a map from attack types to resistances. */
-		utils::string_map damage_table() const;
+		utils::string_map_res damage_table() const;
 		/** Returns the resistance against the indicated attack. */
 		int resistance_against(const attack_type & attack) const;
 		/** Returns the resistance against the indicated damage type. */
@@ -299,7 +299,7 @@ public:
 	int resistance_against(const std::string & damage_type) const
 	{ return resist_.resistance_against(damage_type); }
 	/** Returns a map from attack types to resistances. */
-	utils::string_map damage_table() const
+	utils::string_map_res damage_table() const
 	{ return resist_.damage_table(); }
 
 	/** Returns whether or not there are any terrain caps with respect to a set of terrains. */
@@ -334,9 +334,12 @@ public:
 	void merge(const config & new_cfg, bool overwrite=true);
 
 	/**
-	 * Merges the given config over the existing data.
-	 * @a applies_to which type of movement to change ("movement_costs", etc)
-	 * @a new_cfg data which could be one of the children of the config for the two-argument form of this function.
+	 * Merges the given config over the existing data; this 3-argument version affects only the
+	 * subelement identified by the @a applies_to argument.
+	 *
+	 * @param applies_to which type of movement to change ("movement_costs", etc)
+	 * @param new_cfg data which could be one of the children of the config for the two-argument form of this function.
+	 * @param overwrite if false, the new values will be added to the old.
 	 */
 	void merge(const config & new_cfg, const std::string & applies_to, bool overwrite=true);
 
@@ -346,8 +349,23 @@ public:
 	/** Contents of any [special_note] tags */
 	const std::vector<t_string>& special_notes() const { return special_notes_; }
 
-	/** Writes the movement type data to the provided config. */
-	void write(config & cfg) const;
+	/**
+	 * Writes the movement type data to the provided config.
+	 *
+	 * There is no default value for the include_notes argument. Given the implied contract that a
+	 * class with a constructor(const config&) and a write(config&) supports round-tripping the
+	 * data, the default would need to be true. However, this method has only two callers, and
+	 * neither of them want to include the notes:
+	 *
+	 * Movetype patching is unaffected by the notes, as they will be ignored by movetype::merge().
+	 *
+	 * [store_unit] is broken by the notes, because they end up in unit::special_notes_ instead of
+	 * movetype::special_notes_ after the subsequent [unstore_unit].
+	 *
+	 * @param cfg output
+	 * @param include_notes if false, omits any special notes
+	 */
+	void write(config& cfg, bool include_notes) const;
 
 private:
 	terrain_info movement_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,7 +56,8 @@ config generate_difficulty_config(const config& source)
 }
 
 campaign_difficulty::campaign_difficulty(const config& campaign)
-	: difficulties_(generate_difficulty_config(campaign))
+	: modal_dialog(window_id())
+	, difficulties_(generate_difficulty_config(campaign))
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_("CANCEL")
 {
@@ -109,7 +110,7 @@ void campaign_difficulty::post_show(window& window)
 {
 	if(get_retval() == retval::OK) {
 		listbox& list = find_widget<listbox>(&window, "listbox", false);
-		selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
+		selected_difficulty_ = difficulties_.mandatory_child("difficulty", list.get_selected_row())["define"].str();
 	}
 }
 } // namespace dialogs

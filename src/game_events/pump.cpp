@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -208,8 +208,8 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	unit_map& units = resources::gameboard->units();
 	scoped_xy_unit first_unit("unit", ev.loc1, units);
 	scoped_xy_unit second_unit("second_unit", ev.loc2, units);
-	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
-	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+	scoped_weapon_info first_weapon("weapon", ev.data.optional_child("first"));
+	scoped_weapon_info second_weapon("second_weapon", ev.data.optional_child("second"));
 
 	if(!handler_p->filter_event(ev)) {
 		return;

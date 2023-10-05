@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -709,7 +709,8 @@ void lua_interpreter::pre_show(window& window)
 }
 
 lua_interpreter::lua_interpreter(lua_kernel_base & lk)
-		: controller_(new lua_interpreter::controller(lk))
+	: modal_dialog(window_id())
+	, controller_(new lua_interpreter::controller(lk))
 {
 	LOG_LUA << "entering lua_interpreter ctor...";
 	LOG_LUA << "finished lua_interpreter ctor...";

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -116,7 +116,7 @@ point get_mouse_position()
 	return sdl::get_mouse_location();
 }
 
-std::string debug_truncate(const std::string& text)
+std::string_view debug_truncate(std::string_view text)
 {
 	return text.substr(0, 15);
 }

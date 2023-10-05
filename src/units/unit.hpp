@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -96,16 +96,29 @@ public:
 	const unit_ability& back()  const  { return cfgs_.back();  }
 
 	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
+	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
 
 	template<typename... T>
 	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
 
 	const map_location& loc() const { return loc_; }
 
-	/** Appens the abilities from @a other to @a this, ignores other.loc() */
+	/** Appends the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
-		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
+		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
+	}
+
+	/**
+	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
+	 *
+	 * @param other where to copy the elements from
+	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
+	 */
+	template<typename Predicate>
+	void append_if(const unit_ability_list& other, const Predicate& predicate)
+	{
+		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
 	}
 
 private:
@@ -212,8 +225,6 @@ public:
 	}
 
 	virtual ~unit();
-
-	void swap(unit&);
 
 	unit& operator=(const unit&) = delete;
 
@@ -847,14 +858,16 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
-		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
-		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
-		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
-		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
-		STATE_UNHEALABLE, /** The unit cannot be healed */
-		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
-		STATE_UNKNOWN = -1/** A status effect not known to the engine */
+		STATE_SLOWED = 0,   /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,     /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,    /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,    /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,    /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE,   /** The unit cannot be healed */
+		STATE_GUARDIAN,     /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_INVULNERABLE, /** The unit is invulnerable - it cannot be hit by any attack */
+		NUMBER_OF_STATES,   /** To set the size of known_boolean_states_ */
+		STATE_UNKNOWN = -1  /** A status effect not known to the engine */
 	};
 
 	/**
@@ -1034,7 +1047,7 @@ public:
 	}
 
 	/** Gets resistances without any abilities applied. */
-	utils::string_map get_base_resistances() const
+	utils::string_map_res get_base_resistances() const
 	{
 		return movement_type_.damage_table();
 	}
@@ -1546,6 +1559,14 @@ public:
 		return halo_.value_or("");
 	}
 
+	const std::vector<std::string> halo_or_icon_abilities(const std::string& image_type) const;
+
+	/** Get the [halo] abilities halo image(s). */
+	const std::vector<std::string> halo_abilities() const
+	{
+		return halo_or_icon_abilities("halo");
+	}
+
 	/** Set the unit's halo image. */
 	void set_image_halo(const std::string& halo);
 
@@ -1589,6 +1610,11 @@ public:
 		return overlays_;
 	}
 
+	/** Get the [overlay] ability overlay images. */
+	const std::vector<std::string> overlays_abilities() const
+	{
+		return halo_or_icon_abilities("overlay");
+	}
 	/**
 	 * Color for this unit's *current* hitpoints.
 	 *
@@ -1759,10 +1785,24 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
+	/**
+	 * Removes a unit's abilities with a specific ID or other attribute.
+	 * @param filter the config of ability to remove.
+	 */
+	void remove_ability_by_attribute(const config& filter);
+
+	/**
+	 * Verify what abilities attributes match with filter.
+	 * @param cfg the config of ability to check.
+	 * @param tag_name the tag name of ability to check.
+	 * @param filter the filter used for checking.
+	 */
+	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+
 
 private:
 
-	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
@@ -1894,7 +1934,7 @@ private:
 
 	std::set<std::string> states_;
 
-	static const std::size_t num_bool_states = 7;
+	static const std::size_t num_bool_states = state_t::NUMBER_OF_STATES;
 
 	std::bitset<num_bool_states> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
@@ -1979,9 +2019,6 @@ private:
 	}
 };
 
-/** Implement non-member swap function for std::swap (calls @ref unit::swap). */
-void swap(unit& lhs, unit& rhs);
-
 /**
  * Object which temporarily resets a unit's movement.
  *
@@ -2001,6 +2038,19 @@ private:
 	int moves_;
 };
 
+namespace backwards_compatibility
+{
+/**
+ * Optional parameter for get_checksum to use the algorithm of an older version of Wesnoth,
+ * thus preventing spurious OOS warnings while watching old replays.
+ */
+enum class unit_checksum_version {
+	current,
+	version_1_16_or_older /**< Included some of the flavortext from weapon specials. */
+};
+
+} // namespace backwards_compatibility
+
 /**
  * Gets a checksum for a unit.
  *
@@ -2009,7 +2059,9 @@ private:
  * same problem.
  *
  *  @param u                    this unit
+ *  @param version              allows the checksum expected in older replays to be used
  *
  *  @returns                    the checksum for a unit
  */
-std::string get_checksum(const unit& u);
+std::string get_checksum(const unit& u,
+	backwards_compatibility::unit_checksum_version version = backwards_compatibility::unit_checksum_version::current);

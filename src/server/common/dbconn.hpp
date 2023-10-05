@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2022
+	Copyright (C) 2020 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,8 @@
 
 #include <vector>
 #include <unordered_map>
+
+typedef std::vector<std::variant<bool, int, long, unsigned long long, std::string, const char*>> sql_parameters;
 
 /**
  * This class is responsible for handling the database connections as well as executing queries and handling any results.
@@ -64,9 +66,12 @@ class dbconn
 		 *
 		 * @param player_id The forum ID of the player to get the game history for.
 		 * @param offset The offset to provide to the database for where to start returning rows from.
+		 * @param search_game_name Query for games matching this name. Supports leading and/or trailing wildcards.
+		 * @param search_content_type The content type to query for (ie: scenario)
+		 * @param search_content Query for games using this content ID. Supports leading and/or trailing wildcards.
 		 * @return The simple_wml document containing the query results, or simply the @a error attribute if an exception is thrown.
 		 */
-		std::unique_ptr<simple_wml::document> get_game_history(int player_id, int offset);
+		std::unique_ptr<simple_wml::document> get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content);
 
 		/**
 		 * @see forum_user_handler::user_exists().
@@ -85,7 +90,9 @@ class dbconn
 		bool extra_row_exists(const std::string& name);
 
 		/**
-		 * @see forum_user_handler::is_user_in_group().
+		 * @param name The player's username.
+		 * @param group_id The forum group ID to check if the user is part of.
+		 * @return Whether the user is a member of the forum group.
 		 */
 		bool is_user_in_group(const std::string& name, int group_id);
 
@@ -132,12 +139,12 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_player_info().
 		 */
-		void insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
+		void insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders);
 
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().
 		 */
-		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version);
 
 		/**
 		 * @see forum_user_handler::db_set_oos_flag().
@@ -152,7 +159,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_addon_info().
 		 */
-		void insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
+		void insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader);
 
 		/**
 		 * @see forum_user_handler::db_insert_login().
@@ -178,6 +185,27 @@ class dbconn
 		 * @see forum_user_handler::db_update_addon_download_count().
 		 */
 		void update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
+
+		/**
+		 * @see forum_user_handler::is_user_primary_author().
+		 * @see forum_user_handler::is_user_secondary_author().
+		 */
+		bool is_user_author(const std::string& instance_version, const std::string& id, const std::string& username, int is_primary);
+
+		/**
+		 * @see forum_user_handler::db_delete_addon_authors().
+		 */
+		void delete_addon_authors(const std::string& instance_version, const std::string& id);
+
+		/**
+		 * @see forum_user_handler::db_insert_addon_authors().
+		 */
+		void insert_addon_author(const std::string& instance_version, const std::string& id, const std::string author, int is_primary);
+
+		/**
+		 * @see forum_user_handler::do_any_authors_exist().
+		 */
+		bool do_any_authors_exist(const std::string& instance_version, const std::string& id);
 
 	private:
 		/**
@@ -211,6 +239,8 @@ class dbconn
 		std::string db_addon_info_table_;
 		/** The name of the table that contains user connection history. */
 		std::string db_connection_history_table_;
+		/** The name of the table that contains the add-on authors information */
+		std::string db_addon_authors_table_;
 
 		/**
 		 * This is used to write out error text when an SQL-related exception occurs.
@@ -232,109 +262,73 @@ class dbconn
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param base The class that will handle reading the results.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 */
-		template<typename... Args>
-		void get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, Args&&... args);
+		void get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The single string value queried.
 		 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 		 */
-		template<typename... Args>
-		std::string get_single_string(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		std::string get_single_string(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The single long value queried.
 		 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 		 */
-		template<typename... Args>
-		long get_single_long(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		long get_single_long(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return True if any data was returned by the query, otherwise false.
 		 */
-		template<typename... Args>
-		bool exists(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		bool exists(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * Executes a select statement.
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return A result set containing the results of the select statement executed.
 		 */
-		template<typename... Args>
-		mariadb::result_set_ref select(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		mariadb::result_set_ref select(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * Executes non-select statements (ie: insert, update, delete).
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The number of rows modified.
 		 */
-		template<typename... Args>
-		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a generated ID.
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The value of an AUTO_INCREMENT column on the table being modified.
 		 */
-		template<typename... Args>
-		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
-		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.
+		 * For a given connection, set the provided SQL and parameters on a statement.
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
-		 * @return A statement object with all parameterized values added. This will then be executed by either @ref modify() or @ref select().
+		 * @param params The parameterized values to be inserted into the query.
+		 * @return A statement ready to be executed.
 		 */
-		template<typename... Args>
-		mariadb::statement_ref query(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
-
-		/**
-		 * The next parameter to be added is split off from the parameter pack.
-		 *
-		 * @param stmt The statement that will have parameterized values set on it.
-		 * @param i The index of the current parameterized value.
-		 * @param arg The next parameter to be added.
-		 * @param args The remaining parameters to be added.
-		 */
-		template<typename Arg, typename... Args>
-		void prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args);
-
-		/**
-		 * Specializations for each type of value to be parameterized.
-		 * There are other parameter setters than those currently implemented, but so far there hasn't been a reason to add them.
-		 *
-		 * @param stmt The statement that will have parameterized values set on it.
-		 * @param i The index of the current parameterized value.
-		 * @param arg The next parameter to be added.
-		 * @return The index of the next parameter to add.
-		 */
-		template<typename Arg>
-		int prepare(mariadb::statement_ref stmt, int i, Arg arg);
-
-		/**
-		 * Nothing left to parameterize, so break out of the recursion.
-		 */
-		void prepare(mariadb::statement_ref stmt, int i);
+		mariadb::statement_ref query(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 };

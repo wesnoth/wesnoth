@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,7 @@
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 #include <string>
@@ -237,8 +238,8 @@ label_definition::resolution::resolution(const config& cfg)
 	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for text label control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for text label control")));
 }
 
 // }---------- BUILDER -----------{

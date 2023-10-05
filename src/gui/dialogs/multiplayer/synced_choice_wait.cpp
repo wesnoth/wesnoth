@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(synched_choice_wait)
 
 synched_choice_wait::synched_choice_wait(user_choice_manager& mgr)
-	: mgr_(mgr)
+	: modal_dialog(window_id())
+	, mgr_(mgr)
 	, message_()
 {
 	mgr_.changed_event_.attach_handler(this);

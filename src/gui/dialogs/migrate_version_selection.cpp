@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -48,6 +48,7 @@ void migrate_version_selection::execute()
 }
 
 migrate_version_selection::migrate_version_selection()
+	: modal_dialog(window_id())
 {
 	version_info current_version = game_config::wesnoth_version;
 	std::string current_version_str = filesystem::get_version_path_suffix();

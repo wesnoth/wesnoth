@@ -58,6 +58,15 @@ if(SDL2_FOUND)
 
 	mark_as_advanced(SDL2_INCLUDE_DIRS SDL2_LIBRARIES)
 
+	if(NOT TARGET SDL2::SDL2main)
+		# In SDL 2.24.0, the CONFIG method doesn't add a target for libSDL2main. Seen on Debian
+		# Unstable, and seems to be https://github.com/libsdl-org/SDL/issues/6119 which is reported
+		# upstream on macOS. For consistency's sake, let's add a phony library we can link with,
+		# which is also the workaround that upstream suggests in the bug report.
+		message(STATUS "SDL2 found via CONFIG, but it didn't define SDL2::SDL2main, adding dummy target")
+		add_library(SDL2::SDL2main INTERFACE IMPORTED)
+	endif()
+
 	return()
 endif()
 
