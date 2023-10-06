@@ -628,14 +628,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	debug_cmd_notification("kill");
 
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
-	const map_location loc2(child["x"].to_int() + 1, child["y"].to_int(), wml_loc());
 
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
 	if (i != resources::gameboard->units().end()) {
 		const int dying_side = i->side();
-		resources::controller->pump().fire("teleport", loc, loc2);
-
-		/*
+		
 		resources::controller->pump().fire("last_breath", loc, loc);
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
@@ -650,7 +647,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		}
 		resources::whiteboard->on_kill_unit();
 		actions::recalculate_fog(dying_side);
-		*/
+		
 	}
 	return true;
 }

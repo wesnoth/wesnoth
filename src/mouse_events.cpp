@@ -800,14 +800,13 @@ void mouse_handler::select_teleport()
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
 	   (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
-		//TODO: test if all of this is necessary
 		selected_hex_ = last_hex_;
-		gui().select_hex(selected_hex_);
-		gui().clear_attack_indicator();
-		gui().set_route(nullptr);
-		show_partial_move_ = false;
-		preventing_units_highlight_ = true;
+		//show_partial_move_ = false;
 		teleport_selected_ = true;	
+		//preventing_units_highlight_ = true;
+		gui().select_hex(selected_hex_);
+		//gui().clear_attack_indicator();
+		//gui().set_route(nullptr);
 	}
 }
 
@@ -820,23 +819,19 @@ void mouse_handler::teleport_action()
 
 	actions::teleport_unit_and_record(selected_hex_, last_hex_);
 	cursor::set(cursor::NORMAL);
-	gui().invalidate_game_status();
-
+	//gui().invalidate_game_status();
 	select_hex(last_hex_, false, false, false);
+	gui().invalidate(last_hex_);
+	gui().invalidate(selected_hex_);
+	
 	selected_hex_ = map_location();
 	gui().select_hex(map_location());
-	gui().clear_attack_indicator();
-	gui().set_route(nullptr);
-	gui().unhighlight_reach();
-	pc_.get_whiteboard()->save_temp_move();
+	//gui().clear_attack_indicator();
+	//gui().set_route(nullptr);
+	//gui().highlight_reach()
+	//pc_.get_whiteboard()->save_temp_move();
 
 	current_route_.steps.clear();
-
-}
-
-bool mouse_handler::is_teleport_selected() const
-{
-	return teleport_selected_;
 }
 
 void mouse_handler::select_or_action(bool browse)
@@ -907,15 +902,8 @@ void mouse_handler::move_action(bool browse)
 		attack_from = current_unit_attacks_from(hex);
 	} // end planned unit map scope
 
-	// See if we are using teleport debug option
 	if(teleport_selected_)
 	{
-		// Don't teleport if the unit already has actions
-		// from the whiteboard.
-		if(pc_.get_whiteboard()->unit_has_actions(u ? u : clicked_u)) {
-			return;
-		}
-
 		teleport_action();
 	}
 
@@ -1064,7 +1052,6 @@ void mouse_handler::move_action(bool browse)
 			}
 		}
 		teleport_selected_ = false;
-		return;
 	}
 }
 

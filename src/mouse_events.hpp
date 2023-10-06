@@ -90,7 +90,6 @@ public:
 
 	void select_or_action(bool browse);
 	void select_teleport();
-	bool is_teleport_selected() const;
 
 
 	/**

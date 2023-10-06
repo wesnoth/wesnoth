@@ -1031,6 +1031,7 @@ namespace { // Private helpers for move_unit()
 		if(success) {
 			// Update the moving unit.
 			move_it_ = unit_it;
+			move_it_->set_facing(teleport_from.get_relative_dir(teleport_to));
 
 			move_it_->anim_comp().set_standing(false);
 			disp.invalidate_unit_after_move(teleport_from, teleport_to);

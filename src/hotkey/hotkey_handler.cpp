@@ -132,13 +132,7 @@ void play_controller::hotkey_handler::left_mouse_click(){
 }
 
 void play_controller::hotkey_handler::select_and_action() {
-	if(mouse_handler_.is_teleport_selected()){
-		mouse_handler_.teleport_action();
-	}
-	else
-	{
-		mouse_handler_.select_or_action(browse());
-	}
+	mouse_handler_.select_or_action(browse());
 }
 
 void play_controller::hotkey_handler::touch_hex() {
