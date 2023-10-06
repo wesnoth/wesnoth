@@ -605,15 +605,16 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*err
 	}
 	debug_cmd_notification("teleport");
 
-	const map_location begin(child["start_hex_x"].to_int(), child["start_hex_y"].to_int(), wml_loc());
-	const map_location end(child["end_hex_x"].to_int() + 1, child["end_hex_y"].to_int(), wml_loc());
+	const map_location teleport_from(child["teleport_from_x"].to_int(), child["teleport_from_y"].to_int(), wml_loc());
+	const map_location teleport_to(child["teleport_to_x"].to_int(), child["teleport_to_y"].to_int(), wml_loc());
 	
-	const unit_map::iterator unit_iter = resources::gameboard->units().find(begin);
+	const unit_map::iterator unit_iter = resources::gameboard->units().find(teleport_from);
 	if (unit_iter != resources::gameboard->units().end()) {
 		if (unit_iter.valid()) {
-			unit_display::unit_teleport(begin, *unit_iter, end);
+			unit_display::unit_teleport(teleport_from, *unit_iter, teleport_to);
 		}
 		display::get_singleton()->redraw_minimap();
+		
 	} 
 	
 	return true;
@@ -627,9 +628,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	debug_cmd_notification("kill");
 
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
+	const map_location loc2(child["x"].to_int() + 1, child["y"].to_int(), wml_loc());
+
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
 	if (i != resources::gameboard->units().end()) {
 		const int dying_side = i->side();
+		resources::controller->pump().fire("teleport", loc, loc2);
+
+		/*
 		resources::controller->pump().fire("last_breath", loc, loc);
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
@@ -644,6 +650,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		}
 		resources::whiteboard->on_kill_unit();
 		actions::recalculate_fog(dying_side);
+		*/
 	}
 	return true;
 }

@@ -92,7 +92,6 @@ public:
 	virtual void whisper() {}
 	virtual void shout() {}
 	virtual void create_unit() {}
-	virtual void teleport_unit() {}
 	virtual void change_side() {}
 	virtual void kill_unit() {}
 	virtual void preferences() {}

@@ -815,9 +815,10 @@ void mouse_handler::teleport_action()
 {
 	LOG_NG << "(Debug) Telport unit from " << last_hex_.x << " : " << last_hex_.y
 	 << " to " << selected_hex_.x << " : " << selected_hex_.y;
+
 	teleport_selected_ = false;
 
-	actions::teleport_unit_and_record(last_hex_, selected_hex_);
+	actions::teleport_unit_and_record(selected_hex_, last_hex_);
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
 
@@ -831,6 +832,11 @@ void mouse_handler::teleport_action()
 
 	current_route_.steps.clear();
 
+}
+
+bool mouse_handler::is_teleport_selected() const
+{
+	return teleport_selected_;
 }
 
 void mouse_handler::select_or_action(bool browse)

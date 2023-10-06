@@ -209,7 +209,7 @@ namespace { // Private helpers for move_unit()
 		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
 
-		void try_teleport(const map_location& start_hex, const map_location& end_hex);
+		void try_teleport(const map_location& teleport_from, const map_location& teleport_to);
 
 		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
@@ -1015,12 +1015,8 @@ namespace { // Private helpers for move_unit()
 		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
 	}
 
-	void unit_mover::try_teleport(const map_location& start_hex, const map_location& end_hex)
+	void unit_mover::try_teleport(const map_location& teleport_from, const map_location& teleport_to)
 	{
-		// Prepare to animate.
-		//unit_display::unit_mover animator(route_, true);
-		//animator.start(move_it_.get_shared_ptr());
-
 		game_display &disp = *game_display::get_singleton();
 
 		move_it_->set_movement(moves_left_.front(), true);
@@ -1030,46 +1026,23 @@ namespace { // Private helpers for move_unit()
 		move_it_->anim_comp().invalidate(disp);
 
 		// Attempt actually moving. Fails if *step_to is occupied.
-		auto [unit_it, success] = resources::gameboard->units().move(start_hex, end_hex);
+		auto [unit_it, success] = resources::gameboard->units().move(teleport_from, teleport_to);
 
 		if(success) {
 			// Update the moving unit.
 			move_it_ = unit_it;
-			//move_it_->set_facing(start_hex->get_relative_dir(*end_hex));
-			// Disable bars. The expectation here is that the animation
-			// unit_mover::finish() will clean after us at a later point. Ugly,
-			// but it works.
-			move_it_->anim_comp().set_standing(false);
-			disp.invalidate_unit_after_move(start_hex, end_hex);
-			disp.invalidate(end_hex);
-			//move_loc_ = step_to;
 
-			// Show this move.
-			/*
-			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
-			                    move_it_->appearance_changed(), false);
-			
-			*/
+			move_it_->anim_comp().set_standing(false);
+			disp.invalidate_unit_after_move(teleport_from, teleport_to);
+			disp.invalidate(teleport_to);
+
 			move_it_->set_appearance_changed(false);
 			disp.redraw_minimap();
 		}
 
-	//	animator.wait_for_anims();
 		fire_hex_event("enter hex", full_end_, real_end_);
 
 		pump_sighted(full_end_-1);
-
-		if ( move_it_.valid() ) {
-			// Finish animating.
-			//animator.finish(move_it_.get_shared_ptr());
-			/*
-			// Check for the moving unit being seen.
-			auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*move_it_, &not_seeing);
-			// TODO: should we call post_wml ?
-			wml_move_aborted_ |= wml_move_aborted;
-			wml_undo_disabled_ |= wml_undo_blocked;
-			*/
-		}
 	} 
 
 
@@ -1265,15 +1238,13 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 	return mover.steps_travelled();
 }
 
-void teleport_unit_and_record(const map_location& start_hex, const map_location& end_hex,
+void teleport_unit_and_record(const map_location& teleport_from, const map_location& teleport_to,
 	move_unit_spectator* move_spectator)
 {
 	const bool skip_ally_sighted = true;
 	const bool continued_move = false;
 
-	const map_location start = map_location(start_hex.wml_x(), start_hex.wml_y());
-	const map_location end = map_location(end_hex.wml_x() - 1, end_hex.wml_y() - 1);
-	const std::vector<map_location> & route{end, start};
+	const std::vector<map_location> & route{teleport_from, teleport_to};
 
 	unit_mover mover(route, move_spectator, continued_move, skip_ally_sighted);
 	
@@ -1282,16 +1253,16 @@ void teleport_unit_and_record(const map_location& start_hex, const map_location&
 		/*
 			enter the synced mode and do the actual movement.
 		*/
-		resources::recorder->add_synced_command("debug_teleport", config {"start_hex_x", start_hex.wml_x(), "start_hex_y", start_hex.wml_y(),
-		"end_hex_x", end_hex.wml_x(), "end_hex_y", end_hex.wml_y() });
+		resources::recorder->add_synced_command("debug_teleport", config {"teleport_from_x", teleport_from.wml_x(), "teleport_from_y", teleport_from.wml_y(),
+		"teleport_to_x", teleport_to.wml_x(), "teleport_to_y", teleport_to.wml_y() });
 		set_scontext_synced sync;
-		mover.try_teleport(end_hex, start_hex);
+		mover.try_teleport(teleport_from, teleport_to);
 		sync.do_final_checkup();
 	}
 	else
 	{
 		//we are already in synced mode and don't need to reenter it again.
-		mover.try_teleport(end_hex, start_hex);
+		mover.try_teleport(teleport_from, teleport_to);
 	}
 }
 
