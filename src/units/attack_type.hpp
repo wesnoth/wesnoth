@@ -98,7 +98,10 @@ public:
 	int composite_value(const unit_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
-	/** Returns list who contains get_weapon_ability and get_specials list for each ability type */
+	/**
+	 * @param special the tag name to check for
+	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
+	 */
 	unit_ability_list get_specials_and_abilities(const std::string& special) const;
 	/** used for abilities used like weapon
 	 * @return True if the ability @a special is active.
@@ -144,8 +147,7 @@ private:
 	 */
 	unit_ability_list overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const;
 	/**
-	 * Filter a element of list of abilities or weapon specials, and return true if element must be removed by
-	 * the overwrite_specials attributes of a second list.
+	 * Check whether @a cfg would be overwritten by any element of @a overwriters.
 	 *
 	 * @return True if element checked is overwritable.
 	 * @param overwriters list used for check if element is overwritable.

@@ -1312,10 +1312,14 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
+	// get all weapon specials of the provided type
 	unit_ability_list abil_list = get_specials(special);
+	// append all such weapon specials as abilities as well
 	abil_list.append(get_weapon_ability(special));
+	// get a list of specials/"specials as abilities" that may potentially overwrite others
 	unit_ability_list overwriters = overwrite_special_overwriter(abil_list, special);
 	if(!abil_list.empty() && !overwriters.empty()){
+		// remove all abilities that would be overwritten
 		utils::erase_if(abil_list, [&](const unit_ability& j) {
 			return (overwrite_special_checking(overwriters, *j.ability_cfg, special));
 		});
@@ -1341,11 +1345,14 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 		return (!overwrite_special_affects(*i.ability_cfg));
 	});
 
+	// if empty, nothing is doing any overwriting
 	if(overwriters.empty()){
 		return overwriters;
 	}
 
+	// if there are specials/"specials as abilities" that could potentially overwrite each other
 	if(overwriters.size() >= 2){
+		// sort them by overwrite priority from highest to lowest (default priority is 0)
 		utils::sort_if(overwriters,[](const unit_ability& i, const unit_ability& j){
 			auto oi = (*i.ability_cfg).optional_child("overwrite");
 			double l = 0;
@@ -1359,6 +1366,7 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 			}
 			return l > r;
 		});
+		// remove any that need to be overwritten
 		utils::erase_if(overwriters, [&](const unit_ability& i) {
 			return (overwrite_special_checking(overwriters, *i.ability_cfg, tag_name));
 		});
@@ -1371,14 +1379,25 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 	if(overwriters.empty()){
 		return false;
 	}
+
 	for(const auto& j : overwriters) {
+		// whether the overwriter affects a single side
 		bool affect_side = ((*j.ability_cfg)["overwrite_specials"] == "one_side");
+		// the overwriter's priority, default of 0
 		auto overwrite_specials = (*j.ability_cfg).optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
+		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = cfg.optional_child("overwrite");
+		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
+		// else true
 		bool prior = (priority > 0) ? (has_overwrite_specials && has_overwrite_specials["priority"].to_double(0) >= priority) : true;
+		// true if the cfg being checked affects one or both sides and doesn't have a higher priority, or if it doesn't affect one or both sides
+		// aka whether the cfg being checked can potentially be overwritten by the current overwriter
 		bool is_overwritable = (overwrite_special_affects(cfg) && !prior) || !overwrite_special_affects(cfg);
 		bool one_side_overwritable = true;
+
+		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
+		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
 		if(affect_side && is_overwritable){
 			if(special_affects_self(*j.ability_cfg, is_attacker_)){
 				one_side_overwritable = special_affects_self(cfg, is_attacker_);
@@ -1387,6 +1406,8 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 				one_side_overwritable = special_affects_opponent(cfg, !is_attacker_);
 			}
 		}
+
+		// check whether the current overwriter is disabled due to a filter
 		bool special_matches = true;
 		if(overwrite_specials){
 			auto overwrite_filter = (*overwrite_specials).optional_child("filter_specials");
@@ -1396,6 +1417,10 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 				}
 			}
 		}
+
+		// if the cfg being checked should be overwritten
+		// and either this unit or its opponent are affected
+		// and the current overwriter is not disabled due to a filter
 		if(is_overwritable && one_side_overwritable && special_matches){
 			return true;
 		}
