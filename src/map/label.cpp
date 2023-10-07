@@ -159,40 +159,49 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 
 	// See if there is already a label in this location for this team.
 	// (We do not use get_label_private() here because we might need
-	// the label_map as well as the terrain-label.)
+	// the label_map as well as the terrain_label.)
 	team_label_map::iterator current_label_map = labels_.find(team_name);
 	label_map::iterator current_label;
 
 	if(current_label_map != labels_.end() &&
 		(current_label = current_label_map->second.find(loc)) != current_label_map->second.end())
 	{
-		// Found old label, checking if it needs to be erased
-		if(text.str().empty()) {
+		// Found old checking if need to erase it
+		if (text.str().empty()) {
 			// Erase the old label.
 			current_label_map->second.erase(current_label);
+
+			// Remove the label from other team members
+			for(auto& team : labels_) {
+				if (team.first != team_name) {
+					auto itor = team.second.find(loc);
+					if (itor != team.second.end()) {
+						team.second.erase(itor);
+					}
+				}
+			}
+
+			// Restore the global label in the same spot, if any.
+			if(terrain_label* global_label = get_label_private(loc, "")) {
+				global_label->recalculate();
+			}
 		} else {
 			current_label->second.update_info(
 				text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
-				
+
 			res = &current_label->second;
 		}
 	} else if(!text.str().empty()) {
-		// Add the new label.
 		// See if we will be replacing a global label.
+		terrain_label* global_label = get_label_private(loc, "");
+
+		// Add the new label.
 		res = add_label(
 			*this, text, creator, team_name, loc, color, visible_in_fog, visible_in_shroud, immutable, category, tooltip);
-	}
 
-	// Check if it's a global label (team_name is empty) and apply the update to all labels.
-	if(team_name.empty()) {
-		for(auto& team_labels : labels_) {
-			if(team_labels.first != team_name) {
-				terrain_label* global_label = team_labels.second[loc];
-				if (global_label) {
-					global_label->update_info(
-						text, creator, tooltip, team_labels.first, color, visible_in_fog, visible_in_shroud, immutable, category);
-				}
-			}
+		// Hide the old label.
+		if (global_label != nullptr) {
+			global_label->recalculate();
 		}
 	}
 
