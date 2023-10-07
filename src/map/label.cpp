@@ -145,59 +145,60 @@ void map_labels::set_team(const team* team)
 }
 
 const terrain_label* map_labels::set_label(const map_location& loc,
-    const t_string& text,
-    const int creator,
-    const std::string& team_name,
-    const color_t color,
-    const bool visible_in_fog,
-    const bool visible_in_shroud,
-    const bool immutable,
-    const std::string& category,
-    const t_string& tooltip)
+		const t_string& text,
+		const int creator,
+		const std::string& team_name,
+		const color_t color,
+		const bool visible_in_fog,
+		const bool visible_in_shroud,
+		const bool immutable,
+		const std::string& category,
+		const t_string& tooltip)
 {
-    terrain_label* res = nullptr;
+	terrain_label* res = nullptr;
 
-    // See if there is already a label in this location for this team.
-    team_label_map::iterator current_label_map = labels_.find(team_name);
-    label_map::iterator current_label;
+	// See if there is already a label in this location for this team.
+	// (We do not use get_label_private() here because we might need
+	// the label_map as well as the terrain-label.)
+	team_label_map::iterator current_label_map = labels_.find(team_name);
+	label_map::iterator current_label;
 
-    if (current_label_map != labels_.end() &&
-        (current_label = current_label_map->second.find(loc)) != current_label_map->second.end())
-    {
-        // Found old label, checking if it needs to be erased
-        if (text.str().empty()) {
-            // Erase the old label.
-            current_label_map->second.erase(current_label);
-        }
-        else {
-            current_label->second.update_info(
-                text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
-            res = &current_label->second;
-        }
-    }
-    else if (!text.str().empty()) {
-        // Add the new label.
-        res = add_label(
-            *this, text, creator, team_name, loc, color, visible_in_fog, visible_in_shroud, immutable, category, tooltip);
-    }
+	if(current_label_map != labels_.end() &&
+		(current_label = current_label_map->second.find(loc)) != current_label_map->second.end())
+	{
+		// Found old label, checking if it needs to be erased
+		if(text.str().empty()) {
+			// Erase the old label.
+			current_label_map->second.erase(current_label);
+		} else {
+			current_label->second.update_info(
+				text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
+				
+			res = &current_label->second;
+		}
+	} else if(!text.str().empty()) {
+		// Add the new label.
+		// See if we will be replacing a global label.
+		res = add_label(
+			*this, text, creator, team_name, loc, color, visible_in_fog, visible_in_shroud, immutable, category, tooltip);
+	}
 
-    // Check if it's a global label (team_name is empty) and apply the update to all labels.
-    if (team_name.empty()) {
-        for (auto& team_labels : labels_) {
-            if (team_labels.first != team_name) {
-                terrain_label* global_label = team_labels.second[loc];
-                if (global_label) {
-                    global_label->update_info(
-                        text, creator, tooltip, team_labels.first, color, visible_in_fog, visible_in_shroud, immutable, category);
-                }
-            }
-        }
-    }
+	// Check if it's a global label (team_name is empty) and apply the update to all labels.
+	if(team_name.empty()) {
+		for(auto& team_labels : labels_) {
+			if(team_labels.first != team_name) {
+				terrain_label* global_label = team_labels.second[loc];
+				if (global_label) {
+					global_label->update_info(
+						text, creator, tooltip, team_labels.first, color, visible_in_fog, visible_in_shroud, immutable, category);
+				}
+			}
+		}
+	}
 
-    categories_dirty = true;
-    return res;
+	categories_dirty = true;
+	return res;
 }
-
 
 template<typename... T>
 terrain_label* map_labels::add_label(T&&... args)
