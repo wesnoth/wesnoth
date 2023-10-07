@@ -8,6 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Welsh
    * Updated translations: British English, Chinese (Simplified), French, Slovak
  ### Units
    * Update graphics and stats of Roc
