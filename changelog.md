@@ -8,6 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Welsh
    * Updated translations: Arabic, British English, Chinese (Simplified), Czech, Japanese, Slovak
  ### Units
  ### User interface
