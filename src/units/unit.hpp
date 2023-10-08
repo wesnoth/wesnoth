@@ -94,6 +94,7 @@ public:
 	const unit_ability& front() const  { return cfgs_.front(); }
 	unit_ability&       back()         { return cfgs_.back();  }
 	const unit_ability& back()  const  { return cfgs_.back();  }
+	std::size_t         size()         { return cfgs_.size();  }
 
 	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
 	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
