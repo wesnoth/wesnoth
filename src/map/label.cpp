@@ -167,15 +167,15 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		(current_label = current_label_map->second.find(loc)) != current_label_map->second.end())
 	{
 		// Found old checking if need to erase it
-		if (text.str().empty()) {
+		if(text.str().empty()) {
 			// Erase the old label.
 			current_label_map->second.erase(current_label);
 
 			// Remove the label from other team members
 			for(auto& team : labels_) {
-				if (team.first != team_name) {
+				if(team.first != team_name) {
 					auto itor = team.second.find(loc);
-					if (itor != team.second.end()) {
+					if(itor != team.second.end()) {
 						team.second.erase(itor);
 					}
 				}
@@ -200,7 +200,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			*this, text, creator, team_name, loc, color, visible_in_fog, visible_in_shroud, immutable, category, tooltip);
 
 		// Hide the old label.
-		if (global_label != nullptr) {
+		if(global_label != nullptr) {
 			global_label->recalculate();
 		}
 	}
