@@ -87,9 +87,9 @@ local function status_anim_update(is_undo)
                 end
         end
         if not is_undo then
-                wesnoth.game_events.set_undoable(true)
+                wesnoth.experimental.game_events.set_undoable(true)
                 if changed_something then
-                        wesnoth.game_events.add_undo_actions(function(_)
+                        wesnoth.experimental.game_events.add_undo_actions(function(_)
                                 status_anim_update(true)
                         end)
                 end
