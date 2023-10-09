@@ -645,11 +645,11 @@ function wml_actions.put_to_recall_list(cfg)
 end
 
 function wml_actions.allow_undo(cfg)
-	wesnoth.game_events.set_undoable(true)
+	wesnoth.experimental.game_events.set_undoable(true)
 end
 
 function wml_actions.disallow_undo(cfg)
-	wesnoth.game_events.set_undoable(false)
+	wesnoth.experimental.game_events.set_undoable(false)
 end
 
 function wml_actions.allow_end_turn(cfg)
@@ -1032,8 +1032,8 @@ end
 
 function wml_actions.on_undo(cfg)
 	if cfg.delayed_variable_substitution then
-		wesnoth.game_events.add_undo_actions(wml.literal(cfg));
+		wesnoth.experimental.game_events.add_undo_actions(wml.literal(cfg));
 	else
-		wesnoth.game_events.add_undo_actions(wml.parsed(cfg));
+		wesnoth.experimental.game_events.add_undo_actions(wml.parsed(cfg));
 	end
 end
