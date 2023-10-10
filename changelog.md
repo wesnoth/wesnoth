@@ -4,6 +4,8 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+ ### Multiplayer server
+   * Record and replay chat messages when joining a game that has not started yet
  ### Lua API
  ### Packaging
  ### Terrain
