@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-16 22:33-0500\n"
-"PO-Revision-Date: 2019-01-26 18:06+0100\n"
+"PO-Revision-Date: 2023-10-06 22:11+0200\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -16,36 +16,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 3.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Predvolená AI"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Stará verzia predvolenej AI"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Zápas"
+msgstr "Experimentálna AI"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Zápas"
+msgstr "Vývojárska, Nečinná AI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "Vývojárska, Predvolená AI s alternatívnym verbovaním"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -161,10 +157,8 @@ msgstr "Močiar"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Palmový les"
+msgstr "Les morských rias"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -265,10 +259,8 @@ msgstr "Čistá sivá dlažba"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
-#, fuzzy
-#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "Plážové piesky"
+msgstr "Skalnaté piesky"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -277,10 +269,8 @@ msgstr "Veľká dlažba"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:294
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Čistá sivá dlažba"
+msgstr "Ľadové dlažby"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:307
@@ -382,10 +372,8 @@ msgstr "Kamene"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:420
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Sneh"
+msgstr "Kúsky snehu"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:429
@@ -420,36 +408,32 @@ msgstr "Táborový oheň"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:484
 msgid "Sconce"
-msgstr ""
+msgstr "Svietnik"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:494
 msgid "Brazier"
-msgstr ""
+msgstr "Horák"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:503
 msgid "Lit Brazier"
-msgstr ""
+msgstr "Zapálený horák"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:524
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Plot"
+msgstr "Železný plot"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:534
 msgid "Palisade"
-msgstr ""
+msgstr "Palisáda"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Drevený most"
+msgstr "Drevená palisáda"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -469,7 +453,7 @@ msgstr "Kvitnúce vodné lekná"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:573
 msgid "Seashells"
-msgstr ""
+msgstr "Mušle"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:584
@@ -493,10 +477,8 @@ msgstr "Veľký strom"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:619
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Veľký strom"
+msgstr "Zasnežený veľký strom"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:631
@@ -505,10 +487,8 @@ msgstr "Mŕtvy veľký strom"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:643
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Mŕtvy veľký strom"
+msgstr "Mŕtvy veľký dub"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -696,10 +676,8 @@ msgstr "Jednoduchá kamenná podlaha"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:939
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Kamenná podlaha"
+msgstr "Starobylá kamenná podlaha"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -794,10 +772,8 @@ msgstr "Hubový porast"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1054
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Osvetlený hubový porast"
+msgstr "Nezmiešaný hubový porast"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -813,6 +789,12 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"Prekrytia '^Uf' a '^Ufi' sú zastarané, pretože hoci grafika zobrazuje "
+"prekrytie s iným terénom pod ním, štatistiky pohybu a obrany sú čisto "
+"hubovým terénom a ignorujú podkladový terén. Odporúčanými náhradami sú '^Tf' "
+"a '^Tfi', ktoré vyzerajú rovnako, ale majú štatistiky naznačené grafikou. Na "
+"šesťuhoľníkoch, kde sú požadované štatistiky čisto hubového terénu, je 'Tb' "
+"hubový základný terén, ktorý možno použiť s '^Tf' alebo bez neho."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -826,13 +808,16 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Trpasličie povesti opisujú rôzne typy húb - pri niektorých typoch nemá "
+"náročnosť pohybu po hubovitej podlahe žiadnu súvislosť so zemou pod ňou, aj "
+"keď je podlaha pod ňou stále viditeľná. Obrana a náklady na pohyb v tomto "
+"teréne sú založené výlučne na štatistikách jednotky pre "
+"<italic>text='Fungus'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1073
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Osvetlený hubový porast"
+msgstr "Osvetlený nezmiešaný hubový porast"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1105
@@ -842,7 +827,7 @@ msgstr "Osvetlený hubový porast"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1117 data/core/terrain.cfg:1118
 msgid "Mycelium"
-msgstr ""
+msgstr "Mycélium"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -854,20 +839,6 @@ msgstr "Skalnatá jaskyňa"
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1133 data/core/terrain.cfg:1149
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -890,15 +861,12 @@ msgstr ""
 "Väčšina jednotiek má v skalnatej jaskyni obranu okolo 50%, jazda len 40%. "
 "Trpaslíci majú vďaka svojej malej výške obranu 60%.\n"
 "\n"
-"Jaskyne sú niekedy <ref>dst='terrain_illuminated_cave' text='osvetlené'</"
-"ref>."
+"Niekedy sú jaskyne aj <italic>text='osvetlené'</italic>."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1144
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Skalnatá jaskyňa"
+msgstr "Zemitá skalnatá jaskyňa"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -911,29 +879,27 @@ msgstr "Banské koľaje"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1206
 msgid "Bluff"
-msgstr ""
+msgstr "Útes"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1216
 msgid "Gulch"
-msgstr ""
+msgstr "Roklina"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1227
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Neschodná vrstva"
+msgstr "Nepriechodná roklina"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1240
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Zalesnené útesy"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1249
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Zalesnená roklina"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1040,22 +1006,18 @@ msgstr "Prírodná zemitá stena jaskyne"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1413
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Prírodná stena jaskyne"
+msgstr "Poškodená stena jaskyne"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1423
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Husté živé ploty"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1424
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Hedges Wall"
-msgstr "Sekaná stena jaskyne"
+msgstr "Stena zo živého plotu"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1095,52 +1057,38 @@ msgstr "Čistá kamenná stena"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1509
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Osvetlená kamenná stena"
+msgstr "Starobylá kamenná stena"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1519
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Stena jaskyne"
+msgstr "Stena katakomb"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1520
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Čistá kamenná stena"
+msgstr "Kamenná stena katakomb"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1530
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Veľká dlažba"
+msgstr "Zarastený múr"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1531
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Čistá kamenná stena"
+msgstr "Zarastená kamenná stena"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1542
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Kamenná stena"
+msgstr "Poškodená kamenná stena"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Stena bane"
+msgstr "Zničená stena"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1368,10 +1316,8 @@ msgstr "Jašteria dedina"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2041
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Jašteria dedina"
+msgstr "Dedina snežných jašterov"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2056
@@ -1525,17 +1471,13 @@ msgstr "Ruiny elfského hradu"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2304
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Elfský hrad"
+msgstr "Zimný elfský hrad"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2316
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Trpasličí hrad"
+msgstr "Trpasličí podzemný hrad"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2328
@@ -1544,17 +1486,13 @@ msgstr "Trpasličí hrad"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2340
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Trpasličí hrad"
+msgstr "Ruiny trpasličieho hradu"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2352
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Trpasličí hrad"
+msgstr "Zimný trpasličí hrad"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1687,17 +1625,13 @@ msgstr "Ruiny elfskej pevnosti"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2596
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Ruiny elfskej pevnosti"
+msgstr "Zimná elfská pevnosť"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2609
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Trpasličia hradná pevnosť"
+msgstr "Trpasličia podzemná pevnosť"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2622
@@ -1706,17 +1640,13 @@ msgstr "Trpasličia hradná pevnosť"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2635
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Trpasličia hradná pevnosť"
+msgstr "Ruiny trpasličej pevnosti"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2648
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Trpasličia hradná pevnosť"
+msgstr "Zimná trpasličia pevnosť"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1870,10 +1800,8 @@ msgstr "Jednoduchý kamenný most"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2920 data/core/terrain.cfg:2932
 #: data/core/terrain.cfg:2945
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Jednoduchý kamenný most"
+msgstr "Zimný kamenný most"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1910,22 +1838,22 @@ msgstr "Doskový most"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3130
 msgid "Marker High"
-msgstr ""
+msgstr "Značka vysoká"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3140
 msgid "Marker High 2"
-msgstr ""
+msgstr "Značka vysoká 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3150
 msgid "Marker Low"
-msgstr ""
+msgstr "Značka nízka"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3160
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Značka nízka 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3172
@@ -1940,7 +1868,7 @@ msgstr "Falošný okraj mapy"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3192
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Miesto pre umenie"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1968,18 +1896,6 @@ msgstr "Huby"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3245
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1992,35 +1908,16 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<italic>text='Hubový porast'</italic> je rozsiahly podzemný les obrovských "
-"húb,\n"
-"ktorým sa darí vo vlhkom a tmavom prostredí. Väčšina jednotiek má problém "
-"predierať sa podlahou pokrytou menšími hubami, ale má možnosť sa kryť za "
-"väčšími kusmi. Jazdecké jednotky sú však v tomto prostredí veľmi obmedzené a "
-"nemajú možnosť manévrovať. Nemŕtvym jednotkám sa v prostredí hniloby darí "
-"dobre a sú v hubových lesoch pomerne účinné.\n"
+"húb, ktorým sa darí vo vlhkom a tmavom prostredí. Väčšina jednotiek má "
+"problém predierať sa podlahou pokrytou menšími hubami, ale má možnosť sa "
+"kryť za väčšími kusmi. Jazdecké jednotky sú však v tomto prostredí veľmi "
+"obmedzené a nemajú možnosť manévrovať. Nemŕtvym jednotkám sa v prostredí "
+"hniloby darí dobre a sú v hubových lesoch pomerne účinné.\n"
 "\n"
 "Väčšina jednotiek má v hubovom poraste obranu 50% až 60%, jazda má iba 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:3256
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -2040,12 +1937,11 @@ msgid ""
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
 "<italic>text='Jaskynný'</italic> terén predstavuje akúkoľvek podzemnú "
-"chodbu, do ktorej sa zmestí vojenská jednotka.\n"
+"chodbu, do ktorej sa zmestí vojenská jednotka. \n"
 "Väčšina jednotiek s týmto terénom nemá skúsenosti a preto sú tu pomalé a "
 "ťažko sa bránia. Trpaslíci a trolovia žijú v jaskyniach, preto sa tu pomerne "
 "ľahko pohybujú; zvlášť trpaslíci, ktorí sa vďaka menším rozmerom ľahko vyhnú "
-"mnohým prekážkam. Jaskyne sú niekedy <ref>dst='terrain_illuminated_cave' "
-"text='osvetlené'</ref>.\n"
+"mnohým prekážkam. Jaskyne sú niekedy <italic>text='osvetlené'</italic>.\n"
 "\n"
 "Vzácne sú pásy podzemného sveta osvetlené svetlom z povrchu. Toto poskytuje "
 "útočnú výhodu jednotkám poriadku a uberá výhodu jednotkám chaosu. V iných "
@@ -2078,17 +1974,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3300
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2100,11 +1985,11 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic>text='Kopce'</italic> predstavujú pomerne nerovný terén,\n"
-"kde je dosť údolí a vyvýšenín poskytujúcich úkryt. Väčšina jednotiek sa v "
-"kopcoch ťažko pohybuje. Trpaslíci, trolovia a orkovia sa v tomto teréne "
-"cítia ako doma a môžu ním prechádzať bez spomalenia. Jazda má zvyčajne "
-"problém orientovať sa v tomto teréne, preto sa obranný bonus stráca.\n"
+"<italic>text='Kopce'</italic> predstavujú pomerne nerovný terén, kde je dosť "
+"údolí a vyvýšenín poskytujúcich úkryt. Väčšina jednotiek sa v kopcoch ťažko "
+"pohybuje. Trpaslíci, trolovia a orkovia sa v tomto teréne cítia ako doma a "
+"môžu ním prechádzať bez spomalenia. Jazda má zvyčajne problém orientovať sa "
+"v tomto teréne, preto sa obranný bonus stráca.\n"
 "\n"
 "Väčšina jednotiek má v kopcoch obranu 50%, ale kavaléria iba 40%. Trpaslíci "
 "majú v kopcoch obranu 60%."
@@ -2176,19 +2061,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3356
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2205,13 +2077,16 @@ msgid ""
 msgstr ""
 "<italic>text='Hory'</italic> sú zvyčajne tak strmé, že jednotky v nich musia "
 "preliezať rôzne prekážky.\n"
-"Poskytujú preto veľký obranný bonus pre väčšinu jednotiek, ale zároveň "
-"výrazne spomaľujú pohyb. Väčšina jazdeckých jednotiek na tento terén ani "
-"nemôže vstúpiť; výnimkou sú elfí jazdci a goblini na vlkoch. Trpaslíci a "
-"trolovia sú v týchto oblastiach doma, preto sa v nich pomerne ľahko "
-"pohybujú.\n"
+"Z tohto dôvodu poskytujú väčšine jednotiek značný obranný bonus, ale zároveň "
+"výrazne sťažujú akýkoľvek prechod cez ne. Jednotky zaťažené ťažkým "
+"pancierom, ako napríklad Wesnothská kavaléria a ťažké pechotné línie, do "
+"nich ani nemôžu vstúpiť. Vodné rasy a bytosti ako napríklad Morskí ľudia,, "
+"majú rybie telo, ktoré im tiež znemožňuje prekonávať strmé svahy. Nagy sú "
+"výnimkou vďaka svojim silným pažiam a robustným šupinám. Trpaslíci aj "
+"trollovia pochádzajú z hornatého terénu a ľahko ho prekonávajú. \n"
 "\n"
-"Väčšina jednotiek má v horách obranu 60%, trpaslíci majú až 70%."
+"Väčšina jednotiek má v horách približne 60 % obranu, zatiaľ čo trpaslíci 70 "
+"%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3368
@@ -2391,10 +2266,8 @@ msgstr ""
 #: data/core/terrain.cfg:3466 data/core/terrain.cfg:3477
 #: data/core/terrain.cfg:3488 data/core/terrain.cfg:3499
 #: data/core/terrain.cfg:3510
-#, fuzzy
-#| msgid "Game data:"
 msgid "Deprecated"
-msgstr "Údaje hry:"
+msgstr "Zastarané"
 
 #. [settings]
 #: data/gui/default.cfg:23
@@ -2412,6 +2285,8 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"Pre vybrané obdobie, hru alebo modifikáciu nie sú k dispozícii žiadne "
+"vlastné možnosti."
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
@@ -2428,10 +2303,8 @@ msgstr "Predvoľby"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:30
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Connected Players"
-msgstr "Vyber hráča"
+msgstr "Pripojení hráči"
 
 #. [toggle_button]: id=sort_0
 #. [toggle_button]: id=sort_name
@@ -2545,22 +2418,18 @@ msgstr "Profil"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:259 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Povýšenia"
+msgstr "Úspechy"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Overiť"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Premenuj"
+msgstr "Používateľské meno:"
 
 #. [label]
 #. [grid]
@@ -2680,10 +2549,8 @@ msgstr "Pripojiť"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Typ ($order)"
+msgstr "Podmienky  ($server)"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2691,19 +2558,21 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Pred nahrávaním obsahu na tento server musíte súhlasiť s nasledujúcimi "
+"podmienkami distribúcie výberom možnosti \"Súhlasím\"."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
 msgid "I Agree"
-msgstr ""
+msgstr "Súhlasím"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Prenos dát medzi hrou a serverom nie je zabezpečený"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Prenos dát medzi hrou a serverom je šifrovaný"
 
 #. [label]
 #. [grid]
@@ -2755,10 +2624,8 @@ msgstr "Verzia:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:471
-#, fuzzy
-#| msgid "Delete add-on"
 msgid "Select the add-on version"
-msgstr "Odstrániť doplnok"
+msgstr "Vyberte verziu doplnku"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:489
@@ -2767,10 +2634,8 @@ msgstr "Webstránka:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -2805,10 +2670,8 @@ msgstr "Žiadne"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:770
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Filtruje doplnky podľa popisu, verzie, typu a autora."
+msgstr "Filtruje doplnky podľa popisu, verzie, typu a autora"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:791
@@ -2820,7 +2683,7 @@ msgstr "Stav:"
 #: data/gui/window/addon_manager.cfg:844
 #: data/gui/window/editor_edit_pbl.cfg:209
 msgid "Tags:"
-msgstr ""
+msgstr "Značky:"
 
 #. [label]
 #. [label]: id=translations_language
@@ -2846,8 +2709,6 @@ msgstr "Správca doplnkov"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Detaily doplnku"
 
@@ -2878,7 +2739,7 @@ msgstr "Odstrániť"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
 msgid "Base damage"
-msgstr ""
+msgstr "Základné poškodenie"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
@@ -2893,7 +2754,7 @@ msgstr "Bonus velenia"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr ""
+msgstr "Trest spomalenia"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
@@ -2908,17 +2769,17 @@ msgstr "Šanca trafiť"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Šanca zostať bez úhony"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Očakávaný výsledok bitky (HP)"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Výpočty zranenia"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:272
@@ -2933,19 +2794,17 @@ msgstr "Obranca"
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:215
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "Zoradiť podľa úplného názvu kampane v abecednom poradí"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:226
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Časový limit:"
+msgstr "Časová os"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:227
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "Zoraďte udalosti príbehu v približnom chronologickom poradí"
 
 #. [label]
 #. [label]: id=mods_header
@@ -2957,34 +2816,32 @@ msgstr "Modifikácie:"
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:302
 msgid "Combat:"
-msgstr ""
+msgstr "Boj:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:317
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Predvolené"
+msgstr "Predvolená náhodnosť"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:318
 msgid "Reloading alters future combat outcomes"
-msgstr ""
+msgstr "Opätovné načítanie zmení výsledky boja"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
 msgid "Predictable RNG"
-msgstr ""
+msgstr "Predvídateľná náhodnosť"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Combat outcomes remain constant when reloading"
-msgstr ""
+msgstr "Výsledky boja zostávajú pri opätovnom načítaní rovnaké"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
 msgid "Biased RNG (experimental)"
-msgstr ""
+msgstr "Zaujatá náhodnosť (experimentálna)"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:326
@@ -2992,30 +2849,28 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
+"Výsledky boja sú viac v súlade so zobrazenými pravdepodobnosťami a nie sú "
+"ovplyvnené opätovným načítaním"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:341
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Náročnosť: "
+msgstr "Náročnosť:"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:355
 msgid "Easy"
-msgstr ""
+msgstr "Ľahká"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:358
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Bežná pokrývka"
+msgstr "Normálna"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:361
 msgid "Hard"
-msgstr ""
+msgstr "Ťažká"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:418
@@ -3025,8 +2880,6 @@ msgstr "Hrať výpravu"
 #. [button]: id=ok
 #: data/gui/window/campaign_dialog.cfg:482
 #: data/gui/window/campaign_difficulty.cfg:221
-#, fuzzy
-#| msgid "Play"
 msgid "game^Play"
 msgstr "Hraj"
 
@@ -3266,10 +3119,8 @@ msgstr "Len tímu"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on selection"
-msgstr "Detaily doplnku"
+msgstr "Voľba doplnku"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3278,25 +3129,24 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Vyberte doplnok, ktorý sa má priradiť k aktuálnej relácii editora. Ak je "
+"zvolená možnosť Nový doplnok, jeho ID možno zmeniť pomocou možnosti Zmeniť "
+"ID doplnku."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "Doplnky"
+msgstr "ID doplnku"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
-#, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show all"
-msgstr "Ukázať všetky príchody do čakárne"
+msgstr "Ukázať všetky"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Zobrazenie všetkých nainštalovaných doplnkov alebo len vašich doplnkov"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3331,17 +3181,17 @@ msgstr "Viditeľné v zakrytej mape"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Nastavenie publikovania doplnkov"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "Meno doplnku zobrazeného v hre"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Titulok:"
 
 #. [grid]
 #. [label]
@@ -3354,19 +3204,17 @@ msgstr "Popis:"
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "Popis doplnku, ktorý sa zobrazí v správcovi doplnkov."
 
 #. [label]: id=icon_label
 #: data/gui/window/editor_edit_pbl.cfg:162
 msgid "Icon:"
-msgstr ""
+msgstr "Ikona:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Zruš označenie"
+msgstr "Označ ikonu súboru"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3374,6 +3222,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Cesta k obrázku ikony, ktorý sa má zobraziť v správcovi doplnkov. Musí to "
+"byť obrázok z hlavnej línie."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206

@@ -98,7 +98,10 @@ public:
 	int composite_value(const unit_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
-	/** Returns list who contains get_weapon_ability and get_specials list for each ability type */
+	/**
+	 * @param special the tag name to check for
+	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
+	 */
 	unit_ability_list get_specials_and_abilities(const std::string& special) const;
 	/** used for abilities used like weapon
 	 * @return True if the ability @a special is active.
@@ -136,14 +139,22 @@ private:
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	/**
-	 * Filter a list of abilities or weapon specials, removing any entries that are overridden by
-	 * the overwrite_specials attributes of a second list.
+	 * Filter a list of abilities or weapon specials, removing any entries that don't own
+	 * the overwrite_specials attributes.
 	 *
-	 * @param input list to check, a filtered copy of this list is returned by the function.
 	 * @param overwriters list that may have overwrite_specials attributes.
-	 * @param is_special if true, input contains weapon specials; if false, it contains abilities.
+	 * @param tag_name type of abilitie/special checked.
 	 */
-	unit_ability_list overwrite_special_checking(unit_ability_list input, unit_ability_list overwriters, bool is_special) const;
+	unit_ability_list overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const;
+	/**
+	 * Check whether @a cfg would be overwritten by any element of @a overwriters.
+	 *
+	 * @return True if element checked is overwritable.
+	 * @param overwriters list used for check if element is overwritable.
+	 * @param cfg element checked.
+	 * @param tag_name type of abilitie/special checked.
+	 */
+	bool overwrite_special_checking(unit_ability_list& overwriters, const config& cfg, const std::string& tag_name) const;
 	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.
