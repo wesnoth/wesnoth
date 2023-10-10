@@ -1757,12 +1757,8 @@ void game::send_chat_history(player_iterator player) const
 	if(chat_history_.empty()) {
 		return;
 	}
-	try {
-		for(auto& h : chat_history_) {
-			server.send_to_player(player, *h);
-		}
-	} catch(const simple_wml::error& e) {
-		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
+	for(auto& h : chat_history_) {
+		server.send_to_player(player, *h);
 	}
 }
 
