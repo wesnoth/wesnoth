@@ -1421,28 +1421,6 @@ void unit::remove_ability_by_id(const std::string& ability)
 	}
 }
 
-static bool type_value_if_present(const config& filter, const config& cfg)
-{
-	if(filter["type_value"].empty()) {
-		return true;
-	}
-
-	std::string cfg_type_value;
-	const std::vector<std::string> filter_attribute = utils::split(filter["type_value"]);
-	if(!cfg["value"].empty()){
-		cfg_type_value ="value";
-	} else if(!cfg["add"].empty()){
-		cfg_type_value ="add";
-	} else if(!cfg["sub"].empty()){
-		cfg_type_value ="sub";
-	} else if(!cfg["multiply"].empty()){
-		cfg_type_value ="multiply";
-	} else if(!cfg["divide"].empty()){
-		cfg_type_value ="divide";
-	}
-	return ( std::find(filter_attribute.begin(), filter_attribute.end(), cfg_type_value) != filter_attribute.end() );
-}
-
 static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 {
 	using namespace utils::config_filters;
@@ -1495,9 +1473,6 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 		return false;
 
 	if(!double_matches_if_present(filter, cfg, "divide"))
-		return false;
-
-	if(!type_value_if_present(filter, cfg))
 		return false;
 
 	// Passed all tests.
