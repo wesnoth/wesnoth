@@ -611,7 +611,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*err
 	const unit_map::iterator unit_iter = resources::gameboard->units().find(teleport_from);
 	if (unit_iter != resources::gameboard->units().end()) {
 		if (unit_iter.valid()) {
-			unit_display::unit_teleport(teleport_from, *unit_iter, teleport_to);
+			//unit_display::unit_teleport(teleport_from, *unit_iter, teleport_to);
 		}
 		display::get_singleton()->redraw_minimap();
 		

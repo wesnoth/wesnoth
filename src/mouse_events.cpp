@@ -806,31 +806,29 @@ void mouse_handler::select_teleport()
 		//preventing_units_highlight_ = true;
 		gui().select_hex(selected_hex_);
 		//gui().clear_attack_indicator();
-		//gui().set_route(nullptr);
+		gui().set_route(nullptr);
 	}
 }
 
 void mouse_handler::teleport_action()
 {
+	/*
 	LOG_NG << "(Debug) Telport unit from " << last_hex_.x << " : " << last_hex_.y
 	 << " to " << selected_hex_.x << " : " << selected_hex_.y;
 
+	*/
 	teleport_selected_ = false;
 
 	actions::teleport_unit_and_record(selected_hex_, last_hex_);
+	gui().invalidate_unit_after_move(selected_hex_, last_hex_);
 	cursor::set(cursor::NORMAL);
-	//gui().invalidate_game_status();
-	select_hex(last_hex_, false, false, false);
-	gui().invalidate(last_hex_);
-	gui().invalidate(selected_hex_);
-	
-	selected_hex_ = map_location();
-	gui().select_hex(map_location());
-	//gui().clear_attack_indicator();
-	//gui().set_route(nullptr);
-	//gui().highlight_reach()
-	//pc_.get_whiteboard()->save_temp_move();
+	gui().invalidate_game_status();
 
+	gui().invalidate_all();
+	gui().clear_attack_indicator();
+	gui().set_route(nullptr);
+	select_hex(last_hex_, false);
+	deselect_hex();
 	current_route_.steps.clear();
 }
 
@@ -858,6 +856,7 @@ void mouse_handler::select_or_action(bool browse)
 	} else {
 		move_action(browse);
 	}
+	teleport_selected_ = false;
 }
 
 void mouse_handler::move_action(bool browse)
@@ -1051,7 +1050,6 @@ void mouse_handler::move_action(bool browse)
 				select_hex(selected_hex_, browse);
 			}
 		}
-		teleport_selected_ = false;
 	}
 }
 

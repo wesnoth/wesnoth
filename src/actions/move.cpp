@@ -210,6 +210,9 @@ namespace { // Private helpers for move_unit()
 		void feedback() const;
 
 		void try_teleport(const map_location& teleport_from, const map_location& teleport_to);
+		bool do_teleport(const route_iterator & step_from,
+								const route_iterator & step_to,
+								unit_display::unit_mover & animator);
 
 		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
@@ -949,7 +952,7 @@ namespace { // Private helpers for move_unit()
 			// Each iteration performs the move from real_end_-1 to real_end_.
 			for ( real_end_ = begin_+1; real_end_ != ambush_limit_; ++real_end_ ) {
 				const route_iterator step_from = real_end_ - 1;
-
+	
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
 				if ( wml_removed_unit_ || wml_move_aborted_) {
@@ -989,8 +992,10 @@ namespace { // Private helpers for move_unit()
 					pump_sighted(real_end_);
 				}
 			}//for
+		
 			// Make sure any remaining sighted events get fired.
 			pump_sighted(real_end_-1);
+			
 
 			if ( move_it_.valid() ) {
 				// Finish animating.
@@ -1002,7 +1007,7 @@ namespace { // Private helpers for move_unit()
 				wml_undo_disabled_ |= wml_undo_blocked;
 			}
 		}//if
-
+		
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
@@ -1013,37 +1018,81 @@ namespace { // Private helpers for move_unit()
 		// event_mutated_ does not get unset, regardless of other reasons
 		// for stopping, but we do save its current value.
 		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
+		
 	}
 
-	void unit_mover::try_teleport(const map_location& teleport_from, const map_location& teleport_to)
+	bool unit_mover::do_teleport(const route_iterator & step_from,
+								const route_iterator & step_to,
+								unit_display::unit_mover & animator)
 	{
 		game_display &disp = *game_display::get_singleton();
-
-		move_it_->set_movement(moves_left_.front(), true);
-		moves_left_.pop_front();
-
+		
 		// Invalidate before moving so we invalidate neighbor hexes if needed.
 		move_it_->anim_comp().invalidate(disp);
 
 		// Attempt actually moving. Fails if *step_to is occupied.
-		auto [unit_it, success] = resources::gameboard->units().move(teleport_from, teleport_to);
+		auto [unit_it, success] = resources::gameboard->units().move(*begin_, *(begin_ + 1));
 
 		if(success) {
 			// Update the moving unit.
 			move_it_ = unit_it;
-			move_it_->set_facing(teleport_from.get_relative_dir(teleport_to));
+			move_it_->set_facing(begin_->get_relative_dir(*(begin_ + 1)));
 
 			move_it_->anim_comp().set_standing(false);
-			disp.invalidate_unit_after_move(teleport_from, teleport_to);
-			disp.invalidate(teleport_to);
+			disp.invalidate_unit_after_move(*begin_, *(begin_ + 1));
+			disp.invalidate(*(begin_ + 1));
+			move_loc_ = (begin_ + 1);
 
+			// Show this move.
+			animator.proceed_to(move_it_.get_shared_ptr(), (begin_ + 1) - begin_,
+			                    move_it_->appearance_changed(), false);
+		
 			move_it_->set_appearance_changed(false);
 			disp.redraw_minimap();
 		}
+		return success;
+	}
 
-		fire_hex_event("enter hex", full_end_, real_end_);
+	void unit_mover::try_teleport(const map_location& teleport_from, const map_location& teleport_to)
+	{
+		const route_iterator step_from = real_end_ - 1;
+		const route_iterator step_to = begin_ + 1;
 
-		pump_sighted(full_end_-1);
+
+		//cache_hidden_units(begin_, step_from);
+		std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
+
+		// Prepare to animate.
+		unit_display::unit_mover animator(route_, false);
+		animator.start(move_it_.get_shared_ptr());
+		fire_hex_event("exit hex", step_from, begin_);
+
+
+		bool new_animation = do_teleport(begin_, step_from, animator);
+
+		if ( current_uses_fog_ )
+			handle_fog(*step_from, new_animation);
+
+		animator.wait_for_anims();
+
+		//Maybe switch 
+		fire_hex_event("enter hex", begin_, step_from);
+		
+		if (is_reasonable_stop(*step_from)) {
+			pump_sighted(step_from);
+		}
+		
+		pump_sighted(step_from);
+
+		if ( move_it_.valid() ) {
+			// Finish animating.
+			animator.finish(move_it_.get_shared_ptr());
+			// Check for the moving unit being seen.
+			auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*move_it_, &not_seeing);
+			// TODO: should we call post_wml ?
+			wml_move_aborted_ |= wml_move_aborted;
+			wml_undo_disabled_ |= wml_undo_blocked;
+		}
 	} 
 
 
@@ -1223,7 +1272,7 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 
 		//TODO: move the unit by force to the desired destination with something like mover.reset_final_hex(co["x"], co["y"]);
 	}
-
+	
 	// Bookkeeping, etc.
 	// also fires the moveto event
 	mover.post_move(undo_stack);
@@ -1236,6 +1285,7 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 		*interrupted = mover.interrupted();
 	}
 
+	
 	return mover.steps_travelled();
 }
 
@@ -1258,13 +1308,16 @@ void teleport_unit_and_record(const map_location& teleport_from, const map_locat
 		"teleport_to_x", teleport_to.wml_x(), "teleport_to_y", teleport_to.wml_y() });
 		set_scontext_synced sync;
 		mover.try_teleport(teleport_from, teleport_to);
+		mover.post_move(nullptr);
 		sync.do_final_checkup();
 	}
 	else
 	{
 		//we are already in synced mode and don't need to reenter it again.
-		mover.try_teleport(teleport_from, teleport_to);
+		//mover.try_teleport(teleport_from, teleport_to);
 	}
+
+	mover.post_move(nullptr);
 }
 
 /**
