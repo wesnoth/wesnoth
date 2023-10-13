@@ -1071,7 +1071,7 @@ namespace { // Private helpers for move_unit()
 		bool new_animation = do_teleport(begin_, step_from, animator);
 
 		if ( current_uses_fog_ )
-			handle_fog(*step_from, new_animation);
+			handle_fog(*(begin_ + 1), new_animation);
 
 		animator.wait_for_anims();
 
