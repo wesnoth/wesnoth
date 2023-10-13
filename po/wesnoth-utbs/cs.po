@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2023-07-21 20:42+0200\n"
+"PO-Revision-Date: 2023-09-23 14:01+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2272,7 +2272,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "Garakovy odolnosti jsou při obraně zvýšeny o 20 %."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
@@ -2572,10 +2572,8 @@ msgstr ""
 
 #. ['A unit’s name, should be short.']
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1540
-#, fuzzy
-#| msgid "Wounded Elven Scout"
 msgid "Wounded Scout"
-msgstr "Zraněný elfský průzkumník"
+msgstr "Zraněný průzkumník"
 
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -15923,51 +15921,51 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
 msgid "uses 1 attack"
-msgstr ""
+msgstr "užívá 1 útok"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
 msgid "uses 2 attacks"
-msgstr ""
+msgstr "užívá 2 útoky"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
 msgid "uses 3 attacks"
-msgstr ""
+msgstr "užívá 3 útoky"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 msgid "uses 4 attacks"
-msgstr ""
+msgstr "užívá 4 útoky"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 msgid "uses 5 attacks"
-msgstr ""
+msgstr "užívá 5 útoků"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 msgid "uses 6 attacks"
-msgstr ""
+msgstr "užívá 6 útoků"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 msgid "This attack uses 1 attack"
-msgstr ""
+msgstr "Tento útok užívá 1 útok"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
 msgid "This attack uses 2 attacks"
-msgstr ""
+msgstr "Tento útok užívá 2 útoky"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
 msgid "This attack uses 3 attacks"
-msgstr ""
+msgstr "Tento útok užívá 3 útoky"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
 msgid "This attack uses 4 attacks"
-msgstr ""
+msgstr "Tento útok užívá 4 útoky"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
 msgid "This attack uses 5 attacks"
-msgstr ""
+msgstr "Tento útok užívá 5 útoků"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
 msgid "This attack uses 6 attacks"
-msgstr ""
+msgstr "Tento útok užívá 6 útoků"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
@@ -15976,6 +15974,10 @@ msgid ""
 "the last verse is sung or the song sequence is broken due to not attacking "
 "for a turn, the song starts again from the first verse."
 msgstr ""
+"Tento útok je první slokou Písně východu slunce, která postupuje o jednu "
+"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
+"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
+"kole neútočilo, začíná píseň znovu od první sloky."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
 msgid ""
@@ -15984,6 +15986,10 @@ msgid ""
 "the last verse is sung or the song sequence is broken due to not attacking "
 "for a turn, the song starts again from the first verse."
 msgstr ""
+"Tento útok je druhou slokou Písně východu slunce, která postupuje o jednu "
+"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
+"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
+"kole neútočilo, začíná píseň znovu od první sloky."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:83
 msgid ""
@@ -15992,34 +15998,38 @@ msgid ""
 "the last verse is sung or the song sequence is broken due to not attacking "
 "for a turn, the song starts again from the first verse."
 msgstr ""
+"Tento útok je třetí slokou Písně východu slunce, která postupuje o jednu "
+"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
+"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
+"kole neútočilo, začíná píseň znovu od první sloky."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "first verse"
-msgstr ""
+msgstr "první sloka"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:89
 msgid "second verse"
-msgstr ""
+msgstr "druhá sloka"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:92
 msgid "third verse"
-msgstr ""
+msgstr "třetí sloka"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
 msgid "once per turn"
-msgstr ""
+msgstr "jednou za kolo"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
 msgid "This attack can be used offensively only once per turn"
-msgstr ""
+msgstr "Tento útok lze použít ofenzivně pouze jednou za kolo"
 
 #. [dummy]: id=nova
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:404
 msgid "nova"
-msgstr ""
+msgstr "nova"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:405
@@ -16027,19 +16037,20 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
+"Pokud je tato zbraň užita ofenzivně, způsobí při zásahu zranění všem "
+"jednotkám, které sousedí se sesilatelem."
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:406
 msgid "This unit has wide-area attacks centered on the caster."
 msgstr ""
+"Tato jednotka má útoky s větším dosahem, které mají ohnisko u sesilatele."
 
 #. [dummy]: id=ray
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:442
-#, fuzzy
-#| msgid "sun ray"
 msgid "ray"
-msgstr "paprsek slunce"
+msgstr "paprsek"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:443
@@ -16047,23 +16058,24 @@ msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
+"Pokud je tato zbraň užita ofenzivně, způsobuje zranění i jednotce za cílem."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:567
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
-msgstr ""
+msgstr "Na začátku kola tato jednotka zvýší počet kroků okolních jednotek o +1"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:570
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
-msgstr ""
+msgstr "Na začátku kola tato jednotka zvýší počet kroků okolních jednotek o +2"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:574
 msgid "tailwind +"
-msgstr ""
+msgstr "vítr v zádech +"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
@@ -17327,16 +17339,3 @@ msgstr "Hrad duchů"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Tvrz duchů"
-
-#~ msgid "steadfast"
-#~ msgstr "vytrvalý"
-
-#~ msgid "female^steadfast"
-#~ msgstr "vytrvalá"
-
-#~ msgid ""
-#~ "This unit's resistances are increased by 20%, up to a maximum of 50%, "
-#~ "when defending. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Odolnosti této jednotky jsou při obraně zvýšeny o 20 %, až na maximum "
-#~ "50 %. Odolnosti se zápornými hodnotami (zranitelnosti) nejsou ovlivněny."

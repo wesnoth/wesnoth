@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-16 22:33-0500\n"
-"PO-Revision-Date: 2023-09-08 18:36+0200\n"
+"PO-Revision-Date: 2023-10-10 20:45+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2159,20 +2159,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
-"<italic>text='Lesy'</italic> představuje každý lesík s příslušným porostem, "
-"který je dostatečný pro zpomalení pochodu. I když zpomalí téměř každého, "
+"<italic>text='Lesy'</italic> představuje každý lesík s příslušným porostem, "
+"který je dostatečný pro zpomalení pochodu. I když zpomalí téměř každého, "
 "nabízí les pro většinu jednotek lepší defenzivní pozici než otevřené "
-"prostranství. Jízda má samozřejmě při pohybu v tomto terénu spoustu "
-"problémů, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
+"prostranství. Jízda má samozřejmě při pohybu v tomto terénu spoustu "
+"problémů, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
 "potlačen. Elfové jsou výjimkou oproti všeobecně platnému pravidlu pro lesy. "
 "Nejen že jsou schopni postupu lesem beze zpomalení, ale také získávají "
-"značný obranný bonus. Trpaslíci jsou také výjimkou. I když jsou schopni se "
-"pohybovat lesem bez výrazné ztráty rychlosti, jejich neobeznámenost s "
-"terénem způsobuje, že nezískávají žádný obranný bonus.\n"
+"značný obranný bonus. Trpaslíci jsou také výjimkou. I když jsou schopni se "
+"pohybovat lesem bez výrazné ztráty rychlosti, jejich neobeznámenost "
+"s terénem způsobuje, že nezískávají žádný obranný bonus.\n"
 "\n"
 "Většina jednotek získá jako obranný bonus 50 %, ale jízda je omezena na 30 "
-"%. Elfové naproti tomu získávají obranný bonus od 60 % do 70 %, a to i když "
-"jedou na koních. Trpaslíci obvykle získají v lese obranný bonus pouze 30 %."
+"%. Elfové naproti tomu získávají obranný bonus od 60 % do 70 %, a to i když "
+"jedou na koních. Trpaslíci obvykle získají v lese obranný bonus pouze 30 %."
 
 # pseudoterén
 #. [terrain_type]: id=frozen
@@ -3140,6 +3140,9 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Vyber rozšíření, které má být spojeno se stávající prací v editoru. Pokud je "
+"zvolena možnost Nové rozšíření, lze jeho ID změnit pomocí volby Změnit ID "
+"rozšíření."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
@@ -3154,7 +3157,7 @@ msgstr "Ukázat všechna"
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Zda chceš ukázat všechna instalovaná rozšíření, nebo pouze ta svá."
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3189,17 +3192,17 @@ msgstr "Viditelný ve tmě"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Nastavení rozšíření k zveřejnění"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "Název rozšíření zobrazený ve hře."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Název:"
 
 #. [grid]
 #. [label]
@@ -3212,12 +3215,12 @@ msgstr "Popis:"
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "Popis rozšíření, který se zobrazí ve správci rozšíření."
 
 #. [label]: id=icon_label
 #: data/gui/window/editor_edit_pbl.cfg:162
 msgid "Icon:"
-msgstr ""
+msgstr "Ikona:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
@@ -3230,6 +3233,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Cesta k obrázku ikony, který se má zobrazit ve správci rozšíření. Musí to "
+"být obrázek z hlavní řady."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3242,11 +3247,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"Autor tohoto rozšíření. Pokud je použito ověření z fóra, je to tvé "
+"uživatelské jméno na fóru."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "Současná verze rozšíření. Měla by mít tvar X.Y.Z."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:208
@@ -3255,11 +3262,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Seznam ID všech ostatních rozšíření oddělených čárkou, na kterých toto "
+"rozšíření závisí. ID rozšíření je název složky ve správci souborů tvého "
+"operačního systému, nikoli název rozšíření."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Vlákno fóra:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3267,16 +3277,18 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"Číselné ID tématu vlákna na fóru Wesnothu, kam mohou hráči posílat zpětnou "
+"vazbu."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "URL adresa fóra"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "Úplná URL adresa tvého vlákna pro zpětnou vazbu na fóru."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3289,6 +3301,8 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Zda chceš při nahrávání použít své uživatelské jméno a heslo z fóra, nebo "
+"své heslo a e-mailovou adresu uložit v rozšíření do souboru _server.pbl."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3296,22 +3310,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Seznam uživatelských jmen z fóra oddělených čárkami, jež patří lidem, kteří "
+"mohou nahrávat pro toto rozšíření aktualizace."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Vedlejší autoři:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"E-mailová adresa, na které jsi k zastižení, pro případ problémů s tvým "
+"rozšířením."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "E-mail:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3319,11 +3337,13 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"Stávající heslo rozšíření. Místo něj je doporučeno použít ověření z fóra, "
+"protože toto heslo není uloženo bezpečně."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "Název"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
@@ -3348,7 +3368,7 @@ msgstr "Smazat"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr ""
+msgstr "Ověřit"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3380,21 +3400,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"Název národního prostředí překladu podle standardu POSIX, například sv "
+"(švédština) nebo zh_CN (zjednodušená čínština)."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Název:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "Překlad názvu rozšíření."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "Překlad popisu rozšíření."
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -5057,7 +5079,6 @@ msgstr "Hráči"
 msgid "Modifications"
 msgstr "Rozšíření"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [widget]: id=label
@@ -6057,7 +6078,7 @@ msgstr "Rozšíření"
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Stáhnout balíčky tažení, ér nebo map vytvořené uživateli"
+msgstr "Stáhnout tažení, éry nebo balíčky map vytvořené uživateli"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -6079,7 +6100,6 @@ msgstr "Upravit nastavení hry"
 msgid "View achievements"
 msgstr "Prohlédnout si úspěchy"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [grid]
 #: data/gui/window/title_screen.cfg:260
 msgid "Credits"
@@ -6500,7 +6520,7 @@ msgstr "Scénáře"
 
 #: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "Tažení SP nebo MP"
+msgstr "Tažení SP/MP"
 
 #: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^MP campaigns"
@@ -6508,15 +6528,15 @@ msgstr "Tažení MP"
 
 #: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^MP scenarios"
-msgstr "Scénář MP"
+msgstr "Scénáře MP"
 
 #: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP map-packs"
-msgstr "Sady map MP"
+msgstr "Balíčky map MP"
 
 #: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP eras"
-msgstr "Éra MP"
+msgstr "Éry MP"
 
 #: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^MP factions"
@@ -6536,11 +6556,11 @@ msgstr "Zdroje"
 
 #: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_of_type^Other"
-msgstr "Ostatní"
+msgstr "Jiná"
 
 #: src/gui/dialogs/addon/manager.cpp:183
 msgid "addons_of_type^Unknown"
-msgstr "Neznámé"
+msgstr "Neznámá"
 
 #: src/gui/dialogs/addon/manager.cpp:187
 msgid "addons_order^Name ($order)"
@@ -6870,7 +6890,6 @@ msgstr "Tažení"
 msgid "Hybrid Campaign"
 msgstr "Smíšené tažení"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
 msgid "Multiplayer Campaign"
 msgstr "Tažení pro více hráčů"
@@ -6894,7 +6913,7 @@ msgstr "Éra"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
 msgid "Map Pack"
-msgstr ""
+msgstr "Balíček map"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Modification"
@@ -6902,11 +6921,11 @@ msgstr "Modifikace"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Media"
-msgstr ""
+msgstr "Média"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Other"
-msgstr ""
+msgstr "Jiné"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:189
 msgid "Cooperative"
@@ -6918,7 +6937,7 @@ msgstr "Kosmetické"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "RNG"
-msgstr ""
+msgstr "GNČ"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
 msgid "Survival"
@@ -6930,11 +6949,11 @@ msgstr "Terraformace"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:373
 msgid "No validation errors"
-msgstr ""
+msgstr "Žádné chyby při ověřování"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:373
 msgid "Success"
-msgstr ""
+msgstr "Úspěch"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:403
 msgid "Choose an icon"
@@ -7375,7 +7394,6 @@ msgstr "Přidat server"
 msgid "Scenarios"
 msgstr "Scénáře"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "Multiplayer Campaigns"
 msgstr "Tažení pro více hráčů"
@@ -8723,7 +8741,7 @@ msgstr "Přidat novou oblast"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Editor pro zveřejnění rozšíření"
 
 #: src/hotkey/hotkey_command.cpp:271
 msgid "Change Add-on ID"

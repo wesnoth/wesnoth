@@ -11,7 +11,7 @@
  ### Terrain
  ### Translations
    * Updated translations: Welsh
-   * Updated translations: British English, Chinese (Simplified), French, Slovak
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Slovak
  ### Units
    * Update graphics and stats of Roc
    * New monster unit line - Ravens

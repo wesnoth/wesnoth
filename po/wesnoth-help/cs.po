@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-16 22:32-0500\n"
-"PO-Revision-Date: 2023-09-07 18:04+0200\n"
+"PO-Revision-Date: 2023-10-13 18:42+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -72,14 +72,14 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
 #: data/core/macros/abilities.cfg:130
 msgid "steadfast"
-msgstr "vytrvalost"
+msgstr "vytrvalý"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
-msgstr "vytrvalost"
+msgstr "vytrvalá"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:593
@@ -4149,9 +4149,9 @@ msgstr ""
 "\n"
 "\n"
 "Pro většinu jednotek jiných než nemrtvých jsou dostupné tyto vlastnosti: "
-"<ref>dst='traits_intelligent' text='inteligentní'</ref>, "
-"<ref>dst='traits_quick' text='rychlý'</ref>, <ref>dst='traits_resilient' "
-"text='houževnatý'</ref> a <ref>dst='traits_strong' text='silný'</ref>."
+"<ref>dst='traits_intelligent' text='chytrý'</ref>, <ref>dst='traits_quick' "
+"text='rychlý'</ref>, <ref>dst='traits_resilient' text='houževnatý'</ref> "
+"a <ref>dst='traits_strong' text='silný'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:537
@@ -4483,10 +4483,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tažení pro jednoho hráče je sbírkou scénářů, která dohromady tvoří příběh. "
-"Dostupné jsou jednak samostatné scénáře – pokud jsou takto zamýšlené – tak "
-"běžná tažení, která jsou dostupná z menu <italic>text='Tažení'</italic> na "
-"úvodní stránce."
+"Tažení pro jednoho hráče jsou sbírkou scénářů, které do sebe zapadají "
+"a vyprávějí příběh. Tažení i samostatné scénáře – pokud jsou určeny ke hraní "
+"jako takové – jsou dostupné v nabídce <italic>text='Tažení'</italic> na "
+"hlavní obrazovce."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:615
@@ -4497,7 +4497,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Tažení pro více hráčů, scénáře a sady map'</header>"
+"<header>text='Tažení, scénáře a balíčky map pro hru více hráčů'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
@@ -4510,9 +4510,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Hry pro více hráčů'</italic> můžeš hrát v plně funkčních "
-"scénářích nebo dokonce speciálně navržených taženích. Existují také balíčky "
-"poskytující jednotlivé scénáře pro více hráčů."
+"<italic>text='Hry pro více hráčů'</italic> lze hrát v plně přizpůsobených "
+"scénářích nebo dokonce ve speciálně navržených taženích. Existují také "
+"balíčky poskytující sady jednotlivých scénářů pro více hráčů."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:619
@@ -4631,7 +4631,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Zdroje tvůrce'</header>"
+"<header>text='Možnosti tvůrců'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:639
@@ -4646,11 +4646,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Autoři obsahu mohou použít balíky s obsahem dostupné na serveru s "
-"rozšířeními k obohacení jejich vlastního obsahu existujícími zdroji, jako "
-"jsou obrázky, hudba a zdrojový kód. Tyto zdroje nejsou zpravidla určeny k "
-"příménu nasazení do hry; nicméně, některá rozšíření na nich mohou záviset a "
-"mohou je doporučit nebo vyžadovat během stahování."
+"Autoři obsahu mohou použít zdrojové balíčky dostupné na serveru "
+"s rozšířeními k obohacení svého vlastního obsahu existujícími zdroji, jako "
+"jsou obrázky, hudba a kód. Ty nejsou zpravidla určeny k přímému použití ve "
+"hře, nicméně jiná hratelná rozšíření na nich mohou záviset a při stahování "
+"navrhovat nebo vyžadovat jejich instalaci."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:648
@@ -4659,32 +4659,6 @@ msgstr "Instalace rozšíření"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the search box, separated by spaces. You can also sort the add-on list "
-#| "by clicking the column headers. It is also possible to choose to only "
-#| "display add-ons of specific categories by clicking on the "
-#| "<bold>text='Type'</bold> dropdown.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "If the window is too small to show them inline, the <bold>text='Addon "
-#| "Details'</bold> button provides you with additional details about the add-"
-#| "on, such as its full description, installation status, and available "
-#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4753,7 +4727,7 @@ msgstr ""
 "rozšíření, která máš právě nainstalovaná.\n"
 "\n"
 "Není možné odstranit rozšíření, která obsahují soubory s informacemi "
-"o publikaci (soubory <italic>text='.pbl'</italic>), aby  se předešlo náhodné "
+"o publikaci (soubory <italic>text='.pbl'</italic>), aby se předešlo náhodné "
 "ztrátě. Pokud je to nezbytné, musíš tyto soubory nebo samotná rozšíření "
 "vymazat ručně za pomoci správce souborů dostupného pro tvou platformu."
 
@@ -5855,16 +5829,12 @@ msgstr ""
 
 # pův.: "procitnou "
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| "Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-"Nepřátelé, kteří padnou na následky nákazy, znova povstanou jako nemrtví – "
-"pokud ovšem nestojí na vesnici."
+"Nepřátelé, kteří přijdou o život díky jistým děsům přírody, se stanou "
+"potravou pro rychle rostoucí larvu, pokud ovšem zrovna nestojí ve vesnici."
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -6238,19 +6208,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Inteligentní'</italic> jednotky jsou velmi užitečné na začátku "
+"<italic>text='Chytré'</italic> jednotky jsou velmi užitečné na začátku "
 "tažení, neboť mohou rychle zvyšovat svoji úroveň. V pozdějších scénářích "
-"tažení již však nejsou chytré jednotky tak užitečné, neboť "
-"<italic>text='dosáhnutí maxima svých schopností (AMLA)'</italic> není až tak "
-"významná výhoda ve srovnání se zvýšením úrovně. Pokud máš hodně jednotek na "
-"hranici jejich možností, možná budeš chtít povolat jednotky s vhodnějšími "
-"vlastnostmi."
+"tažení již však tak užitečné nejsou, neboť <italic>text='postup po dosažení "
+"nejvyšší úrovně'</italic> (AMLA) není až tak významná výhoda ve srovnání se "
+"zvýšením úrovně. Pokud máš hodně jednotek na hranici jejich možností, možná "
+"budeš chtít povolat jednotky s vhodnějšími vlastnostmi."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
-"Inteligentní jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
+msgstr "Chytré jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -8515,126 +8483,3 @@ msgstr "Cena rozhledu"
 #: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Cena rušení"
-
-#~ msgid "uses 1 attack"
-#~ msgstr "užívá 1 útok"
-
-#~ msgid "uses 2 attacks"
-#~ msgstr "užívá 2 útoky"
-
-#~ msgid "uses 3 attacks"
-#~ msgstr "užívá 3 útoky"
-
-#~ msgid "uses 4 attacks"
-#~ msgstr "užívá 4 útoky"
-
-#~ msgid "uses 5 attacks"
-#~ msgstr "užívá 5 útoků"
-
-#~ msgid "uses 6 attacks"
-#~ msgstr "užívá 6 útoků"
-
-#~ msgid "This attack uses 1 attack"
-#~ msgstr "Tento útok užívá 1 útok"
-
-#~ msgid "This attack uses 2 attacks"
-#~ msgstr "Tento útok užívá 2 útoky"
-
-#~ msgid "This attack uses 3 attacks"
-#~ msgstr "Tento útok užívá 3 útoky"
-
-#~ msgid "This attack uses 4 attacks"
-#~ msgstr "Tento útok užívá 4 útoky"
-
-#~ msgid "This attack uses 5 attacks"
-#~ msgstr "Tento útok užívá 5 útoků"
-
-#~ msgid "This attack uses 6 attacks"
-#~ msgstr "Tento útok užívá 6 útoků"
-
-#~ msgid ""
-#~ "This attack is the first verse of the Song of Sun Ascension, which "
-#~ "progresses by one verse each turn this unit uses a song verse attack. "
-#~ "When the last verse is sung or the song sequence is broken due to not "
-#~ "attacking for a turn, the song starts again from the first verse."
-#~ msgstr ""
-#~ "Tento útok je první slokou Písně východu slunce, která postupuje o jednu "
-#~ "sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-#~ "zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se "
-#~ "v daném kole neútočilo, začíná píseň znovu od první sloky."
-
-#~ msgid ""
-#~ "This attack is the second verse of the Song of Sun Ascension, which "
-#~ "progresses by one verse each turn this unit uses a song verse attack. "
-#~ "When the last verse is sung or the song sequence is broken due to not "
-#~ "attacking for a turn, the song starts again from the first verse."
-#~ msgstr ""
-#~ "Tento útok je druhou slokou Písně východu slunce, která postupuje o jednu "
-#~ "sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-#~ "zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se "
-#~ "v daném kole neútočilo, začíná píseň znovu od první sloky."
-
-#~ msgid ""
-#~ "This attack is the third verse of the Song of Sun Ascension, which "
-#~ "progresses by one verse each turn this unit uses a song verse attack. "
-#~ "When the last verse is sung or the song sequence is broken due to not "
-#~ "attacking for a turn, the song starts again from the first verse."
-#~ msgstr ""
-#~ "Tento útok je třetí slokou Písně východu slunce, která postupuje o jednu "
-#~ "sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-#~ "zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se "
-#~ "v daném kole neútočilo, začíná píseň znovu od první sloky."
-
-#~ msgid "first verse"
-#~ msgstr "první verš"
-
-#~ msgid "second verse"
-#~ msgstr "druhý verš"
-
-#~ msgid "third verse"
-#~ msgstr "třetí verš"
-
-#~ msgid "once per turn"
-#~ msgstr "jednou za kolo"
-
-#~ msgid "This attack can be used offensively only once per turn"
-#~ msgstr "Tento útok lze použít ofenzivně pouze jednou za kolo"
-
-#~ msgid "nova"
-#~ msgstr "nova"
-
-#~ msgid ""
-#~ "This weapon, when used offensively, deals damage to all units adjacent to "
-#~ "the caster when it hits."
-#~ msgstr ""
-#~ "Pokud je tato zbraň užita ofenzivně, způsobí při zásahu zranění všem "
-#~ "jednotkám, které sousedí se sesilatelem."
-
-#~ msgid "This unit has wide-area attacks centered on the caster."
-#~ msgstr ""
-#~ "Tato jednotka má útoky s větším dosahem, které mají ohnisko u sesilatele."
-
-#~ msgid "ray"
-#~ msgstr "paprsek"
-
-#~ msgid ""
-#~ "This weapon, when used offensively, also deals damage to a unit behind "
-#~ "the target."
-#~ msgstr ""
-#~ "Pokud je tato zbraň užita ofenzivně, způsobuje zranění i jednotce za "
-#~ "cílem."
-
-#~ msgid ""
-#~ "At the start of the turn this unit increases movement points of "
-#~ "surrounding units by +1"
-#~ msgstr ""
-#~ "Na začátku kola tato jednotka zvýší počet kroků okolních jednotek o +1"
-
-#~ msgid ""
-#~ "At the start of the turn this unit increases movement points of "
-#~ "surrounding units by +2"
-#~ msgstr ""
-#~ "Na začátku kola tato jednotka zvýší počet kroků okolních jednotek o +2"
-
-#~ msgid "tailwind +"
-#~ msgstr "vítr v zádech +"
