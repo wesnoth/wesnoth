@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-07-22 22:50-0500\n"
-"PO-Revision-Date: 2023-06-06 22:46+0200\n"
+"PO-Revision-Date: 2023-10-10 20:41+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2033,20 +2033,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
-"<italic>text='Lesy'</italic> představuje každý lesík s příslušným porostem, "
-"který je dostatečný pro zpomalení pochodu. I když zpomalí téměř každého, "
+"<italic>text='Lesy'</italic> představuje každý lesík s příslušným porostem, "
+"který je dostatečný pro zpomalení pochodu. I když zpomalí téměř každého, "
 "nabízí les pro většinu jednotek lepší defenzivní pozici než otevřené "
-"prostranství. Jízda má samozřejmě při pohybu v tomto terénu spoustu "
-"problémů, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
+"prostranství. Jízda má samozřejmě při pohybu v tomto terénu spoustu "
+"problémů, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
 "potlačen. Elfové jsou výjimkou oproti všeobecně platnému pravidlu pro lesy. "
 "Nejen že jsou schopni postupu lesem beze zpomalení, ale také získávají "
-"značný obranný bonus. Trpaslíci jsou také výjimkou. I když jsou schopni se "
-"pohybovat lesem bez výrazné ztráty rychlosti, jejich neobeznámenost s "
-"terénem způsobuje, že nezískávají žádný obranný bonus.\n"
+"značný obranný bonus. Trpaslíci jsou také výjimkou. I když jsou schopni se "
+"pohybovat lesem bez výrazné ztráty rychlosti, jejich neobeznámenost "
+"s terénem způsobuje, že nezískávají žádný obranný bonus.\n"
 "\n"
 "Většina jednotek získá jako obranný bonus 50 %, ale jízda je omezena na 30 "
-"%. Elfové naproti tomu získávají obranný bonus od 60 % do 70 %, a to i když "
-"jedou na koních. Trpaslíci obvykle získají v lese obranný bonus pouze 30 %."
+"%. Elfové naproti tomu získávají obranný bonus od 60 % do 70 %, a to i když "
+"jedou na koních. Trpaslíci obvykle získají v lese obranný bonus pouze 30 %."
 
 # pseudoterén
 #. [terrain_type]: id=frozen
@@ -4571,7 +4571,6 @@ msgstr "Uživatel"
 msgid "Login:"
 msgstr "Přihlášení:"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [widget]: id=label
@@ -5501,7 +5500,7 @@ msgstr "Rozšíření"
 #. [grid]
 #: data/gui/window/title_screen.cfg:254
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Stáhnout balíčky tažení, ér nebo map vytvořené uživateli"
+msgstr "Stáhnout tažení, éry nebo balíčky map vytvořené uživateli"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:255
@@ -5518,7 +5517,6 @@ msgstr "Spustit editor map"
 msgid "Configure the game’s settings"
 msgstr "Upravit nastavení hry"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
 msgid "Credits"
@@ -5946,7 +5944,7 @@ msgstr "Scénáře"
 
 #: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "Tažení SP nebo MP"
+msgstr "Tažení SP/MP"
 
 #: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP campaigns"
@@ -5954,15 +5952,15 @@ msgstr "Tažení MP"
 
 #: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP scenarios"
-msgstr "Scénář MP"
+msgstr "Scénáře MP"
 
 #: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^MP map-packs"
-msgstr "Sady map MP"
+msgstr "Balíčky map MP"
 
 #: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^MP eras"
-msgstr "Éra MP"
+msgstr "Éry MP"
 
 #: src/gui/dialogs/addon/manager.cpp:179
 msgid "addons_of_type^MP factions"
@@ -5982,11 +5980,11 @@ msgstr "Zdroje"
 
 #: src/gui/dialogs/addon/manager.cpp:184
 msgid "addons_of_type^Other"
-msgstr "Ostatní"
+msgstr "Jiná"
 
 #: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_of_type^Unknown"
-msgstr "Neznámé"
+msgstr "Neznámá"
 
 #: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^Name ($order)"
@@ -6746,7 +6744,6 @@ msgstr "Přidat server"
 msgid "Scenarios"
 msgstr "Scénáře"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 msgid "Multiplayer Campaigns"
 msgstr "Tažení pro více hráčů"

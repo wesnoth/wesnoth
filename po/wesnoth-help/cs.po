@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-02 09:55-0500\n"
-"PO-Revision-Date: 2023-08-19 08:37+0200\n"
+"PO-Revision-Date: 2023-10-13 18:39+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -353,7 +353,7 @@ msgstr "zpomalení"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:119
 #: data/core/macros/abilities.cfg:130
 msgid "steadfast"
-msgstr "vytrvalost"
+msgstr "vytrvalý"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:122
 #: src/help/help_topic_generators.cpp:619
@@ -4105,9 +4105,9 @@ msgstr ""
 "\n"
 "\n"
 "Pro většinu jednotek jiných než nemrtvých jsou dostupné tyto vlastnosti: "
-"<ref>dst='traits_intelligent' text='inteligentní'</ref>, "
-"<ref>dst='traits_quick' text='rychlý'</ref>, <ref>dst='traits_resilient' "
-"text='houževnatý'</ref> a <ref>dst='traits_strong' text='silný'</ref>."
+"<ref>dst='traits_intelligent' text='chytrý'</ref>, <ref>dst='traits_quick' "
+"text='rychlý'</ref>, <ref>dst='traits_resilient' text='houževnatý'</ref> "
+"a <ref>dst='traits_strong' text='silný'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:537
@@ -4439,10 +4439,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tažení pro jednoho hráče je sbírkou scénářů, která dohromady tvoří příběh. "
-"Dostupné jsou jednak samostatné scénáře – pokud jsou takto zamýšlené – tak "
-"běžná tažení, která jsou dostupná z menu <italic>text='Tažení'</italic> na "
-"úvodní stránce."
+"Tažení pro jednoho hráče jsou sbírkou scénářů, které do sebe zapadají "
+"a vyprávějí příběh. Tažení i samostatné scénáře – pokud jsou určeny ke hraní "
+"jako takové – jsou dostupné v nabídce <italic>text='Tažení'</italic> na "
+"hlavní obrazovce."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:615
@@ -4453,7 +4453,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Tažení pro více hráčů, scénáře a sady map'</header>"
+"<header>text='Tažení, scénáře a balíčky map pro hru více hráčů'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
@@ -4466,9 +4466,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Hry pro více hráčů'</italic> můžeš hrát v plně funkčních "
-"scénářích nebo dokonce speciálně navržených taženích. Existují také balíčky "
-"poskytující jednotlivé scénáře pro více hráčů."
+"<italic>text='Hry pro více hráčů'</italic> lze hrát v plně přizpůsobených "
+"scénářích nebo dokonce ve speciálně navržených taženích. Existují také "
+"balíčky poskytující sady jednotlivých scénářů pro více hráčů."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:619
@@ -4587,7 +4587,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Zdroje tvůrce'</header>"
+"<header>text='Možnosti tvůrců'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:639
@@ -4602,11 +4602,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Autoři obsahu mohou použít balíky s obsahem dostupné na serveru s "
-"rozšířeními k obohacení jejich vlastního obsahu existujícími zdroji, jako "
-"jsou obrázky, hudba a zdrojový kód. Tyto zdroje nejsou zpravidla určeny k "
-"příménu nasazení do hry; nicméně, některá rozšíření na nich mohou záviset a "
-"mohou je doporučit nebo vyžadovat během stahování."
+"Autoři obsahu mohou použít zdrojové balíčky dostupné na serveru "
+"s rozšířeními k obohacení svého vlastního obsahu existujícími zdroji, jako "
+"jsou obrázky, hudba a kód. Ty nejsou zpravidla určeny k přímému použití ve "
+"hře, nicméně jiná hratelná rozšíření na nich mohou záviset a při stahování "
+"navrhovat nebo vyžadovat jejich instalaci."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:648
@@ -4683,7 +4683,7 @@ msgstr ""
 "rozšíření, která máš právě nainstalovaná.\n"
 "\n"
 "Není možné odstranit rozšíření, která obsahují soubory s informacemi "
-"o publikaci (soubory <italic>text='.pbl'</italic>), aby  se předešlo náhodné "
+"o publikaci (soubory <italic>text='.pbl'</italic>), aby se předešlo náhodné "
 "ztrátě. Pokud je to nezbytné, musíš tyto soubory nebo samotná rozšíření "
 "vymazat ručně za pomoci správce souborů dostupného pro tvou platformu."
 
@@ -5213,7 +5213,7 @@ msgstr ""
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
-msgstr "vytrvalost"
+msgstr "vytrvalá"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
@@ -6317,19 +6317,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Inteligentní'</italic> jednotky jsou velmi užitečné na začátku "
+"<italic>text='Chytré'</italic> jednotky jsou velmi užitečné na začátku "
 "tažení, neboť mohou rychle zvyšovat svoji úroveň. V pozdějších scénářích "
-"tažení již však nejsou chytré jednotky tak užitečné, neboť "
-"<italic>text='dosáhnutí maxima svých schopností (AMLA)'</italic> není až tak "
-"významná výhoda ve srovnání se zvýšením úrovně. Pokud máš hodně jednotek na "
-"hranici jejich možností, možná budeš chtít povolat jednotky s vhodnějšími "
-"vlastnostmi."
+"tažení již však tak užitečné nejsou, neboť <italic>text='postup po dosažení "
+"nejvyšší úrovně'</italic> (AMLA) není až tak významná výhoda ve srovnání se "
+"zvýšením úrovně. Pokud máš hodně jednotek na hranici jejich možností, možná "
+"budeš chtít povolat jednotky s vhodnějšími vlastnostmi."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
-"Inteligentní jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
+msgstr "Chytré jednotky potřebují ke svému povýšení o 20 % méně zkušeností."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
