@@ -981,13 +981,27 @@ void mouse_handler::move_action(bool browse)
 	// otherwise we're trying to move to a hex
 	else if(
 		// The old use case: move selected unit to mouse hex field.
-		((!browse || pc_.get_whiteboard()->is_active()) && selected_hex_.valid() && selected_hex_ != hex && u != nullptr
-			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active()) && !clicked_u
-			&& !current_route_.steps.empty() && current_route_.steps.front() == selected_hex_)
+		(
+			(!browse || pc_.get_whiteboard()->is_active())
+			&& selected_hex_.valid()
+			&& selected_hex_ != hex
+			&& u != nullptr
+			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active())
+			&& !clicked_u
+			&& !current_route_.steps.empty() && current_route_.steps.front() == selected_hex_
+		)
 		|| // The new use case: move mouse unit to selected hex field.
-		((!browse || pc_.get_whiteboard()->is_active()) && selected_hex_.valid() && selected_hex_ != hex && clicked_u
-			&& !current_route_.steps.empty() && current_route_.steps.back() == selected_hex_ && !u
-			&& clicked_u->side() == side_num_)) {
+		(
+			(!browse || pc_.get_whiteboard()->is_active())
+			&& selected_hex_.valid()
+			&& selected_hex_ != hex
+			&& clicked_u
+			&& !current_route_.steps.empty()
+			&& current_route_.steps.back() == selected_hex_ &&
+			!u
+			&& clicked_u->side() == side_num_
+		)
+	) {
 		// Ignore this command if commands are disabled.
 		if(commands_disabled) {
 			return;
@@ -1028,6 +1042,8 @@ void mouse_handler::move_action(bool browse)
 				select_hex(selected_hex_, browse);
 			}
 		}
+
+		return;
 	}
 }
 
