@@ -784,7 +784,6 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 	return gui().map_area().contains(x, y);
 }
 
-
 void mouse_handler::select_teleport()
 {
 	// Load whiteboard partial moves
@@ -798,35 +797,29 @@ void mouse_handler::select_teleport()
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
-	   (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
 		selected_hex_ = last_hex_;
-		//show_partial_move_ = false;
-		teleport_selected_ = true;	
-		//preventing_units_highlight_ = true;
+		teleport_selected_ = true;
 		gui().select_hex(selected_hex_);
-		//gui().clear_attack_indicator();
 		gui().set_route(nullptr);
 	}
 }
 
 void mouse_handler::teleport_action()
 {
-	/*
-	LOG_NG << "(Debug) Telport unit from " << last_hex_.x << " : " << last_hex_.y
-	 << " to " << selected_hex_.x << " : " << selected_hex_.y;
-
-	*/
+	// Set the teleport to active so that we can use existing functions
+	// for teleport
 	teleport_selected_ = false;
 
 	actions::teleport_unit_and_record(selected_hex_, last_hex_);
-	gui().invalidate_unit_after_move(selected_hex_, last_hex_);
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
-
 	gui().invalidate_all();
 	gui().clear_attack_indicator();
 	gui().set_route(nullptr);
+
+	// Select and deselect the units hex to prompt updates for hover
 	select_hex(last_hex_, false);
 	deselect_hex();
 	current_route_.steps.clear();
@@ -901,8 +894,8 @@ void mouse_handler::move_action(bool browse)
 		attack_from = current_unit_attacks_from(hex);
 	} // end planned unit map scope
 
-	if(teleport_selected_)
-	{
+	// See if the teleport option is toggled
+	if(teleport_selected_) {
 		teleport_action();
 	}
 
@@ -988,28 +981,13 @@ void mouse_handler::move_action(bool browse)
 	// otherwise we're trying to move to a hex
 	else if(
 		// The old use case: move selected unit to mouse hex field.
-		(
-			(!browse || pc_.get_whiteboard()->is_active())
-			&& selected_hex_.valid()
-			&& selected_hex_ != hex
-			&& u != nullptr
-			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active())
-			&& !clicked_u
-			&& !current_route_.steps.empty()
-			&& current_route_.steps.front() == selected_hex_
-		)
+		((!browse || pc_.get_whiteboard()->is_active()) && selected_hex_.valid() && selected_hex_ != hex && u != nullptr
+			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active()) && !clicked_u
+			&& !current_route_.steps.empty() && current_route_.steps.front() == selected_hex_)
 		|| // The new use case: move mouse unit to selected hex field.
-		(
-			(!browse || pc_.get_whiteboard()->is_active())
-			&& selected_hex_.valid()
-			&& selected_hex_ != hex
-			&& clicked_u
-			&& !current_route_.steps.empty()
-			&& current_route_.steps.back() == selected_hex_
-			&& !u
-			&& clicked_u->side() == side_num_
-		)
-	) {
+		((!browse || pc_.get_whiteboard()->is_active()) && selected_hex_.valid() && selected_hex_ != hex && clicked_u
+			&& !current_route_.steps.empty() && current_route_.steps.back() == selected_hex_ && !u
+			&& clicked_u->side() == side_num_)) {
 		// Ignore this command if commands are disabled.
 		if(commands_disabled) {
 			return;
