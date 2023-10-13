@@ -956,6 +956,7 @@ namespace { // Private helpers for move_unit()
 		return expected_end_ != begin_;
 	}
 
+
 	/**
 	 * Attempts to move the unit along the expected path.
 	 * (This will do nothing unless check_expected_movement() was called first.)
@@ -967,13 +968,15 @@ namespace { // Private helpers for move_unit()
 		static const std::string enter_hex_str("enter hex");
 		static const std::string exit_hex_str("exit hex");
 
+
 		bool obstructed_stop = false;
+
 
 		// Check for hidden units along the expected path before we start
 		// animating and firing events.
 		cache_hidden_units(begin_, expected_end_);
 
-		if(begin_ != ambush_limit_) {
+		if ( begin_ != ambush_limit_ ) {
 			// Cache the moving unit's visibility.
 			std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
@@ -983,24 +986,24 @@ namespace { // Private helpers for move_unit()
 
 			// Traverse the route to the hex where we need to stop.
 			// Each iteration performs the move from real_end_-1 to real_end_.
-			for(real_end_ = begin_ + 1; real_end_ != ambush_limit_; ++real_end_) {
+			for ( real_end_ = begin_+1; real_end_ != ambush_limit_; ++real_end_ ) {
 				const route_iterator step_from = real_end_ - 1;
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
-				if(wml_removed_unit_ || wml_move_aborted_) {
+				if ( wml_removed_unit_ || wml_move_aborted_) {
 					break;
 				}
-				if(sighted_ && is_reasonable_stop(*step_from)) {
+				if ( sighted_ && is_reasonable_stop(*step_from) ) {
 					sighted_stop_ = true;
 					break;
 				}
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
 				fire_hex_event(exit_hex_str, step_from, real_end_);
-				if(wml_removed_unit_ || wml_move_aborted_) {
+				if (wml_removed_unit_ || wml_move_aborted_) {
 					break;
 				}
-				if(real_end_ == obstructed_) {
+				if ( real_end_ == obstructed_ ) {
 					// We did not check for being a replay when checking for an
 					// obstructed hex, so we do not check can_break here.
 					obstructed_stop = true;
@@ -1010,7 +1013,7 @@ namespace { // Private helpers for move_unit()
 				// We can leave *step_from. Make the move to *real_end_.
 				bool new_animation = do_move(step_from, real_end_, animator);
 				// Update the fog.
-				if(current_uses_fog_)
+				if ( current_uses_fog_ )
 					handle_fog(*real_end_, new_animation);
 				animator.wait_for_anims();
 
@@ -1020,14 +1023,14 @@ namespace { // Private helpers for move_unit()
 				// us out of the loop if needed.)
 				fire_hex_event(enter_hex_str, real_end_, step_from);
 				// Sighted events only fire if we could stop due to sighting.
-				if(is_reasonable_stop(*real_end_)) {
+				if (is_reasonable_stop(*real_end_)) {
 					pump_sighted(real_end_);
 				}
-			} // for
+			}//for
 			// Make sure any remaining sighted events get fired.
-			pump_sighted(real_end_ - 1);
+			pump_sighted(real_end_-1);
 
-			if(move_it_.valid()) {
+			if ( move_it_.valid() ) {
 				// Finish animating.
 				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
@@ -1036,12 +1039,11 @@ namespace { // Private helpers for move_unit()
 				wml_move_aborted_ |= wml_move_aborted;
 				wml_undo_disabled_ |= wml_undo_blocked;
 			}
-		} // if
+		}//if
 
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
-
 		if(!obstructed_stop) {
 			blocked_loc_ = map_location::null_location();
 		}
@@ -1243,11 +1245,13 @@ namespace { // Private helpers for move_unit()
 
 }//end anonymous namespace
 
-static std::size_t move_unit_internal(undo_list* undo_stack, bool show_move, bool* interrupted, unit_mover& mover)
+
+static std::size_t move_unit_internal(undo_list* undo_stack, 
+	bool show_move, bool* interrupted, unit_mover& mover)
 {
 	const events::command_disabler disable_commands;
 	// Default return value.
-	if(interrupted) {
+	if (interrupted) {
 		*interrupted = false;
 	}
 
@@ -1256,18 +1260,15 @@ static std::size_t move_unit_internal(undo_list* undo_stack, bool show_move, boo
 
 	config co;
 	config cn{
-		"stopped_early",
-		mover.stopped_early(),
-		"final_hex_x",
-		mover.final_hex().wml_x(),
-		"final_hex_y",
-		mover.final_hex().wml_y(),
+		"stopped_early", mover.stopped_early(),
+		"final_hex_x", mover.final_hex().wml_x(),
+		"final_hex_y", mover.final_hex().wml_y(),
 	};
 	bool matches_replay = checkup_instance->local_checkup(cn, co);
-	if(!matches_replay) {
-		replay::process_error("calculated movement destination (x=" + cn["final_hex_x"].str()
-			+ " y=" + cn["final_hex_y"].str() + ") didn't match the original destination(x=" + co["final_hex_x"].str()
-			+ " y=" + co["final_hex_y"].str() + ")\n");
+	if(!matches_replay) 
+	{
+		replay::process_error("calculated movement destination (x=" + cn["final_hex_x"].str() + " y=" + cn["final_hex_y"].str() + 
+			") didn't match the original destination(x=" + co["final_hex_x"].str() + " y=" + co["final_hex_y"].str() + ")\n");
 
 		// TODO: move the unit by force to the desired destination with something like mover.reset_final_hex(co["x"],
 		// co["y"]);
@@ -1276,12 +1277,12 @@ static std::size_t move_unit_internal(undo_list* undo_stack, bool show_move, boo
 	// Bookkeeping, etc.
 	// also fires the moveto event
 	mover.post_move(undo_stack);
-	if(show_move) {
+	if (show_move) {
 		mover.feedback();
 	}
 
 	// Set return value.
-	if(interrupted) {
+	if (interrupted) {
 		*interrupted = mover.interrupted();
 	}
 
