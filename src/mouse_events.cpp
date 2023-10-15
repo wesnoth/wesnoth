@@ -597,6 +597,21 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	}
 }
 
+// Hook for notifying lua game kernel of mouse button events. We pass button as
+// a serpaate argument than the original SDL event in order to manage touch
+// emulation (i.e., long touch = right click) and such.
+void mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc)
+{
+	if (loc == map_location::null_location())
+		return;
+
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		// Ever any reason to allow lua functions to consume an event? If so,
+		// would have to make sure state stays correctly updated.
+		lk->mouse_button_callback(loc, button, event.state == SDL_PRESSED);
+	}
+}
+
 unit_map::iterator mouse_handler::selected_unit()
 {
 	unit_map::iterator res = find_unit(selected_hex_);

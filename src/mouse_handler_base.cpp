@@ -158,6 +158,10 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	return false;
 }
 
+void mouse_handler_base::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc)
+{
+}
+
 void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
 	if(is_middle_click(event) && !preferences::middle_click_scrolls()) {
@@ -171,6 +175,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	static clock_t touch_timestamp = 0;
 
 	if(is_touch_click(event)) {
+		mouse_button_event(event, SDL_BUTTON_LEFT, loc);
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
 			touch_timestamp = clock();
@@ -183,6 +188,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 				clock_t dt = clock() - touch_timestamp;
 				if (dt > CLOCKS_PER_SEC * 3 / 10) {
 					right_click(event.x, event.y, browse); // show_menu_ = true;
+					mouse_button_event(event, SDL_BUTTON_RIGHT, loc);
 				}
 			} else {
 				touch_timestamp = 0;
@@ -192,6 +198,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			left_mouse_up(event.x, event.y, browse);
 		}
 	} else if(is_left_click(event)) {
+		mouse_button_event(event, SDL_BUTTON_LEFT, loc);
 		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
 			init_dragging(dragging_left_);
@@ -202,6 +209,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			left_mouse_up(event.x, event.y, browse);
 		}
 	} else if(is_right_click(event)) {
+		mouse_button_event(event, SDL_BUTTON_RIGHT, loc);
 		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
 			init_dragging(dragging_right_);
@@ -212,6 +220,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			right_mouse_up(event.x, event.y, browse);
 		}
 	} else if(is_middle_click(event)) {
+		mouse_button_event(event, SDL_BUTTON_MIDDLE, loc);
 		if(event.state == SDL_PRESSED) {
 			set_scroll_start(event.x, event.y);
 			scroll_started_ = true;
@@ -238,6 +247,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			simple_warp_ = false;
 			scroll_started_ = false;
 		}
+	} else if(event.button == SDL_BUTTON_X1 || event.button == SDL_BUTTON_X2) {
+		mouse_button_event(event, event.button, loc);
 	}
 	if(!dragging_left_ && !dragging_right_ && !dragging_touch_ && dragging_started_) {
 		dragging_started_ = false;

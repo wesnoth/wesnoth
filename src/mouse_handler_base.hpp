@@ -96,6 +96,7 @@ public:
 			= 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
+	virtual void mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
