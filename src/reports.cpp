@@ -1582,24 +1582,28 @@ REPORT_GENERATOR(terrain_info, rc)
 
 	if(map.is_village(mouseover_hex)) {
 		int owner = rc.dc().village_owner(mouseover_hex);
-		int viewing_side = rc.screen().viewing_side();
-		const team& viewing_team = rc.dc().get_team(viewing_side);
+		// This report is used in both game and editor. get_team(viewing_side) would throw in the editor's
+		// terrain-only mode, but if the village already has an owner then we're not in that mode.
+		if(owner != 0) {
+			int viewing_side = rc.screen().viewing_side();
+			const team& viewing_team = rc.dc().get_team(viewing_side);
 
-		if(owner != 0 && !viewing_team.fogged(mouseover_hex)) {
-			const team& owner_team = rc.dc().get_team(owner);
+			if(!viewing_team.fogged(mouseover_hex)) {
+				const team& owner_team = rc.dc().get_team(owner);
 
-			std::string flag_icon = owner_team.flag_icon();
-			std::string old_rgb = game_config::flag_rgb;
-			std::string new_rgb = team::get_side_color_id(owner_team.side());
-			std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
-			if(flag_icon.empty()) {
-				flag_icon = game_config::images::flag_icon;
+				std::string flag_icon = owner_team.flag_icon();
+				std::string old_rgb = game_config::flag_rgb;
+				std::string new_rgb = team::get_side_color_id(owner_team.side());
+				std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
+				if(flag_icon.empty()) {
+					flag_icon = game_config::images::flag_icon;
+				}
+				std::string tooltip = side_tooltip(owner_team);
+				std::string side = std::to_string(owner_team.side());
+
+				add_image(cfg, flag_icon + mods, tooltip);
+				add_text(cfg, side, tooltip);
 			}
-			std::string tooltip = side_tooltip(owner_team);
-			std::string side = std::to_string(owner_team.side());
-
-			add_image(cfg, flag_icon + mods, tooltip);
-			add_text(cfg, side, tooltip);
 		}
 	}
 
