@@ -604,11 +604,22 @@ void mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 {
 	if (loc == map_location::null_location())
 		return;
+	if (button < SDL_BUTTON_LEFT || button > SDL_BUTTON_X2)
+		return;
+
+	static const std::string buttons[6] = {
+		[0]					= "",
+		[SDL_BUTTON_LEFT]	= "left",
+		[SDL_BUTTON_MIDDLE]	= "middle",
+		[SDL_BUTTON_RIGHT]	= "right",
+		[SDL_BUTTON_X1]		= "x1",
+		[SDL_BUTTON_X2]		= "x2",
+	};
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
 		// Ever any reason to allow lua functions to consume an event? If so,
 		// would have to make sure state stays correctly updated.
-		lk->mouse_button_callback(loc, button, event.state == SDL_PRESSED);
+		lk->mouse_button_callback(loc, buttons[button], event.state == SDL_PRESSED);
 	}
 }
 
