@@ -1534,24 +1534,27 @@ void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::strin
 
 REPORT_GENERATOR(terrain_info, rc)
 {
-	const gamemap &map = rc.map();
+	const gamemap& map = rc.map();
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 
-	if (!map.on_board(mouseover_hex))
+	if(!map.on_board(mouseover_hex)) {
 		mouseover_hex = rc.screen().selected_hex();
+	}
 
-	if (!map.on_board(mouseover_hex))
+	if(!map.on_board(mouseover_hex)) {
 		return config();
+	}
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
+	if(t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 		return config();
+	}
 
 	config cfg;
 
 	bool high_res = false;
 
-	if (display::get_singleton()->shrouded(mouseover_hex)) {
+	if(display::get_singleton()->shrouded(mouseover_hex)) {
 		return cfg;
 	}
 	//TODO
@@ -1564,17 +1567,46 @@ REPORT_GENERATOR(terrain_info, rc)
 //	}
 
 	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
-
-		if (t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP))
+	for(const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+		if(t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
+		}
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		const std::string& terrain_name = map.get_terrain_string(underlying_terrain);
 		const std::string& terrain_icon = map.get_terrain_info(underlying_terrain).icon_image();
-		if (terrain_icon.empty())
+		if(terrain_icon.empty()) {
 			continue;
+		}
 		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res, terrain_name);
 	}
+
+	if(map.is_village(mouseover_hex)) {
+		int owner = rc.dc().village_owner(mouseover_hex);
+		// This report is used in both game and editor. get_team(viewing_side) would throw in the editor's
+		// terrain-only mode, but if the village already has an owner then we're not in that mode.
+		if(owner != 0) {
+			int viewing_side = rc.screen().viewing_side();
+			const team& viewing_team = rc.dc().get_team(viewing_side);
+
+			if(!viewing_team.fogged(mouseover_hex)) {
+				const team& owner_team = rc.dc().get_team(owner);
+
+				std::string flag_icon = owner_team.flag_icon();
+				std::string old_rgb = game_config::flag_rgb;
+				std::string new_rgb = team::get_side_color_id(owner_team.side());
+				std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
+				if(flag_icon.empty()) {
+					flag_icon = game_config::images::flag_icon;
+				}
+				std::string tooltip = side_tooltip(owner_team);
+				std::string side = std::to_string(owner_team.side());
+
+				add_image(cfg, flag_icon + mods, tooltip);
+				add_text(cfg, side, tooltip);
+			}
+		}
+	}
+
 	return cfg;
 }
 

@@ -190,13 +190,24 @@ public:
 	/** If we are in a mp game, ask the server, otherwise generate the answer ourselves. */
 	static config ask_server_choice(const server_choice&);
 
-	typedef std::deque<std::pair<config, game_events::queued_event>> event_list;
+	struct event_info {
+		config cmds_;
+		std::optional<int> lua_;
+		game_events::queued_event evt_;
+		event_info(const config& cmds, game_events::queued_event evt) : cmds_(cmds), evt_(evt) {}
+		event_info(int lua, game_events::queued_event evt) : lua_(lua), evt_(evt) {}
+		event_info(int lua, const config& args, game_events::queued_event evt) : cmds_(args), lua_(lua), evt_(evt) {}
+	};
+
+	typedef std::deque<event_info> event_list;
 	static event_list& get_undo_commands()
 	{
 		return undo_commands_;
 	}
 
 	static void add_undo_commands(const config& commands, const game_events::queued_event& ctx);
+	static void add_undo_commands(int fcn_idx, const game_events::queued_event& ctx);
+	static void add_undo_commands(int fcn_idx, const config& args, const game_events::queued_event& ctx);
 
 	static void reset_undo_commands()
 	{
@@ -221,7 +232,7 @@ private:
 	/** Used to restore the unit id manager when undoing. */
 	static inline int last_unit_id_ = 0;
 
-	/** Actions wml to be executed when the current action is undone. */
+	/** Actions to be executed when the current action is undone. */
 	static inline event_list undo_commands_ {};
 };
 

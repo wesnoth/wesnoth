@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-07-16 03:12 UTC\n"
-"PO-Revision-Date: 2019-01-26 17:07+0100\n"
-"Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
+"PO-Revision-Date: 2023-10-11 14:16+0200\n"
+"Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 3.4\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -60,15 +60,6 @@ msgstr "Ork vojvoda"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Your father Karun Black-Eye was the greatest orcish leader that ever "
-#| "lived. Now, as his son, it’s up to you to thwart the selfish designs of "
-#| "the humans who have broken the old agreements with the orcs and are bent "
-#| "upon taking your lands. Unite the warring orcish tribes, bring together "
-#| "the Orcish Council and call up the Great Horde to send the human-worms "
-#| "and their wose-born allies to the land of the dead!\n"
-#| "\n"
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it’s up to you to thwart the selfish designs of the humans "
@@ -270,12 +261,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:119
-#, fuzzy
-#| msgid ""
-#| "Retaliating, the orcs systematically slaughtered human colonies and "
-#| "villages on their lands. Then, Earl Lanbec’h — the most powerful human "
-#| "warlord of the North — determined to abolish the orcish menace raised an "
-#| "army and conferred leadership of it to his son-in-law Baron Alber."
 msgid ""
 "Retaliating, the orcs systematically slaughtered human colonies and villages "
 "on their lands. Then, Earl Lanbec’h — the most powerful human warlord of the "
@@ -284,7 +269,7 @@ msgid ""
 msgstr ""
 "To samozrejme vyvolalo násilné nájazdy orkov, pri ktorých systematicky "
 "prepadávali ľudské kolónie a dediny na svojom území. Vtedy sa gróf Earl "
-"Lanbec'h rozhodol definitívne čeliť orkskej hrozbe a zveril menšiu armádu "
+"Lanbech rozhodol definitívne čeliť orkskej hrozbe a zveril menšiu armádu "
 "svojmu zaťovi, barónovi Albertovi."
 
 #. [part]
@@ -388,7 +373,7 @@ msgstr ""
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:228
 msgid "Hmmm..."
-msgstr "..."
+msgstr "Hmmm..."
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:231
@@ -467,7 +452,7 @@ msgstr "Ľudská armáda"
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:22
 msgid "Defeat Lanbec’h"
-msgstr "Poraz Lanbec'hta"
+msgstr "Poraz Lanbecha"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:31
@@ -497,7 +482,7 @@ msgstr "Dostaň Kapou'eho k smerovníku na severovýchode"
 #. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:87
 msgid "Lanbec’h"
-msgstr "Gróf Lanbec'h"
+msgstr "Gróf Lanbech"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:101
@@ -516,7 +501,7 @@ msgid ""
 "Lanbec’h led the army himself."
 msgstr ""
 "A nesklamal sa. O niekoľko dní dorazila hlavná časť ľudskej armády. A hnaný "
-"túžbou po pomste za smrť svojho zaťa, sám gróf Lanbec'h stál na jej čele."
+"túžbou po pomste za smrť svojho zaťa, sám gróf Lanbech stál na jej čele."
 
 #. [message]: speaker=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:124
@@ -771,30 +756,21 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:199
-#, fuzzy
-#| msgid ""
-#| "We could, but then again, if we crush them then we can loot their "
-#| "treasury and their dwellings. The gold will be useful."
 msgid ""
 "We could, but then again, if we crush them, then we can loot their treasury "
 "and their dwellings. The gold will be useful."
 msgstr ""
-"Mohli by sme, iste. Ale na druhej strane, ak im dáme príučku teraz, poskytne "
-"nám to príležitosť na... povedzme, že to nazveme \"výber daní\" od tunajších "
-"osadníkov. Myslím, že čosi zlata navyše by sa nám v budúcnosti mohlo zísť."
+"Mohli by sme, ale znova, ak ich rozdrvíme, môžeme vyplieniť ich pokladnicu a "
+"ich obydlia. Zlato bude užitočné."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:204
-#, fuzzy
-#| msgid ""
-#| "Whatever else happens, we have to pass through these mountains and I "
-#| "dislike leaving enemies in our rear. Stab, smite, and slay!"
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
 "leaving enemies to our rear. Stab, smite, and slay!"
 msgstr ""
-"Nech sa stane čokoľvek, cez tieto hory prejsť musíme a nerád by som si "
-"nechával nepriateľov za chrbtom. Hor sa, tnite, bite, zabíjajte!"
+"Čokoľvek sa stane, musíme prejsť cez tieto hory a ja nerád nechávam "
+"nepriateľov v našej zadnej časti. Bodnite, udrite a zabite!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:220
@@ -900,12 +876,6 @@ msgstr "Argh! Zomieram!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:371
-#, fuzzy
-#| msgid ""
-#| "You were warned, dwarf. Riders, spread out of the area and collect what "
-#| "you can from each of these houses. If anyone refuses to pay, tie them up "
-#| "and take it anyway. Let them know that they live only on my good graces. "
-#| "I’ll take the army to Barag Gór. Catch up when you’re done."
 msgid ""
 "You were warned, dwarf. Riders, spread out over the area and collect what "
 "you can from each of these houses. If anyone refuses to pay, tie them up and "
@@ -935,18 +905,13 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:426
-#, fuzzy
-#| msgid ""
-#| "Blemaker, many thanks for your help in this fight. Would you like to join "
-#| "us in our journey with your son? You are a powerful warrior, and you "
-#| "would be of great help."
 msgid ""
 "Blemaker, many thanks for your help in this fight. Would you and your son "
 "like to join us in our journey? You are a powerful warrior, and you would be "
 "of great help."
 msgstr ""
-"Blemaker, veľmi ti ďakujem za pomoc v tomto boji. Chcel by si sa so svojím "
-"synom pripojiť k našej výprave? Veľmi by sme ocenili vašu pomoc!"
+"Blemaker, veľká vďaka za vašu pomoc v tomto boji. Chceli by ste sa vy a váš "
+"syn pridať k nám na našej ceste? Si mocný bojovník a veľmi by si nám pomohol."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:431
@@ -1122,10 +1087,6 @@ msgstr ""
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:300
-#, fuzzy
-#| msgid ""
-#| "Quit your boasting, mule-ears. The chief wants to know why you’re here, "
-#| "instead of cowering in your dung-spattered forests."
 msgid ""
 "Quit your boasting, mule-ears. The Chief wants to know why you’re here, "
 "instead of cowering in your dung-spattered forests."
@@ -1217,19 +1178,14 @@ msgstr "Ľudia podplatili elfov, aby zajali a priviedli k nim našich šamanov."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:429
-#, fuzzy
-#| msgid ""
-#| "Over my dead body! The shamans of the Great Council are the only people "
-#| "who can call up the Great Horde. If they are captured then all the orcs "
-#| "on this continent would surely be doomed."
 msgid ""
 "Over my dead body! The shamans of the Great Council are the only people who "
 "can call up the Great Horde. If they are captured, then all the orcs on this "
 "continent would surely be doomed."
 msgstr ""
-"Len cez moju mŕtvolu!!! Šamani sú členmi našej veľrady, sú to jediné "
-"osobnosti, ktoré dokážu zvolať Veľkú Hordu. Ak sa elfom podarí šamanov "
-"zajať, je to koniec všetkým orkom na kontinente."
+"Cez moju mŕtvolu! Šamani Veľkej rady sú jediní ľudia, ktorí môžu vyvolať "
+"Veľkú hordu. Ak budú zajatí, všetci orkovia na tomto kontinente by boli "
+"určite odsúdení na zánik."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:434
@@ -1276,11 +1232,6 @@ msgstr "Jetto, ako sa stalo, že si sa dostal do problémov s takou zberbou?"
 
 #. [message]: speaker=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:498
-#, fuzzy
-#| msgid ""
-#| "The Barag Gór council sent me to assassinate the elvish leaders. "
-#| "Unfortunately, I was captured. But now I am free and the elves shall feel "
-#| "my wrath!"
 msgid ""
 "The Barag Gór Council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured. But now I am free and the elves shall feel my "
@@ -1373,10 +1324,6 @@ msgstr "A teba tu akým spôsobom uväznili?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:600
-#, fuzzy
-#| msgid ""
-#| "The Barag Gór council sent me to assassinate the elvish leaders. "
-#| "Unfortunately, I was captured."
 msgid ""
 "The Barag Gór Council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured."
@@ -1422,40 +1369,28 @@ msgstr "Ma-Rana"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:126
-#, fuzzy
-#| msgid ""
-#| "Kapou’e and the shamans rested and discussed the matter for three days. "
-#| "It was finally decided that it might be necessary to call up the Great "
-#| "Horde to deal with this massive human incursion. However, in order to do "
-#| "that the entire Great Council would have to gather."
 msgid ""
 "Kapou’e and the shamans rested and discussed the matter for three days. It "
 "was finally decided that it might be necessary to call up the Great Horde to "
 "deal with this massive human incursion. However, in order to do that, the "
 "entire Great Council would have to gather."
 msgstr ""
-"Kapou'e a šamani si oddýchli a potom venovali diskusii plné tri dni. "
-"Nakoniec dospeli k rozhodnutiu, že by bolo vhodné zvolať Veľkú Hordu, ktorá "
-"by sa dokázala postaviť takému obrovskému prieniku na územie orkov. Avšak na "
-"to, aby k tomu vôbec mohlo dôjsť, musí sa zísť celá Veľrada orkských kmeňov."
+"Kapou’e a šamani odpočívali a diskutovali o veci tri dni. Nakoniec sa "
+"rozhodlo, že možno bude potrebné zavolať Veľkú hordu, aby sa vysporiadala s "
+"týmto masívnym ľudským vpádom. Aby to však bolo možné, musela by sa "
+"zhromaždiť celá Veľká rada."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Since it was now obvious that the humans were going to try their best to "
-#| "prevent that by capturing or killing the shamans, Kapou’e was requested "
-#| "to escort the shamans to the Harbor of Tirigaz where the rest of the "
-#| "council was residing."
 msgid ""
 "Since it was now obvious that the humans were going to try their best to "
 "prevent that by capturing or killing the shamans, Kapou’e was requested to "
 "escort the shamans to the harbor of Tirigaz where the rest of the Council "
 "was residing."
 msgstr ""
-"Bolo zrejmé, že sa ľudia pokúsia zabrániť tomu, aby sa veľrada zišla, či už "
-"zajatím ale likvidáciou niektorých šamanov, rada požiadala Kapou'a, aby "
-"sprevádzal šamanov do prístavného mesta Tirigaz, kde prebýva zvyšok veľrady."
+"Keďže teraz bolo zrejmé, že ľudia sa tomu budú snažiť čo najlepšie zabrániť "
+"zajatím alebo zabitím šamanov, Kapou’e bol požiadaný, aby šamanov odprevadil "
+"do prístavu Tirigaz, kde sídlil zvyšok Rady."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
@@ -1513,20 +1448,14 @@ msgstr "Ani za nič! Grüü chce rozmlátiť týchto nemŕtvych."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:240
-#, fuzzy
-#| msgid ""
-#| "Grüü is right. It is not wise to let these undead remain here cutting off "
-#| "our supply lines and path of retreat. In these days of turmoil, we don’t "
-#| "know what lies ahead, so it is best not to leave any threats in our rear."
 msgid ""
 "Grüü is right. It is not wise to let these undead remain here, cutting off "
 "our supply lines and path of retreat. In these days of turmoil, we don’t "
 "know what lies ahead, so it is best not to leave any threats to our rear."
 msgstr ""
-"Grüü má pravdu, priatelia. Nebolo by veľmi chytré, aby nám táto banda "
-"nemŕtvych odrezala zásobovacie cesty, a tiež ústupové cesty. V týchto "
-"ťažkých dňoch jeden nikdy nevie, čo naňho čaká za najbližšou zákrutou. Takže "
-"by bolo najlepšie nenechávať žiadnu hrozbu aj za chrbtom."
+"Grüü má pravdu. Nie je múdre nechať týchto nemŕtvych zostať tu a odrezať "
+"naše zásobovacie linky a cestu ústupu. V týchto nepokojných dňoch nevieme, "
+"čo nás čaká, a preto je najlepšie nenechať žiadne hrozby za sebou."
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:245
@@ -1905,19 +1834,14 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:178
-#, fuzzy
-#| msgid ""
-#| "I wouldn’t worry about the scorpions right now, I would worry about "
-#| "getting out of this sandstorm! These things can last for weeks, and if we "
-#| "aren’t buried alive by all the sand we will die of hunger and thirst."
 msgid ""
 "I wouldn’t worry about the scorpions right now, I would worry about getting "
 "out of this sandstorm! These things can last for weeks, and if we aren’t "
 "buried alive by all the sand, we will die of hunger and thirst."
 msgstr ""
-"Momentálne by som sa neobával škorpiónov, skôr mám strach z tejto búrky! "
-"Takéto búrky môžu trvať týždne a aj keď nás to nepochová zaživa, určite "
-"zahynieme od hladu a smädu."
+"Teraz by som sa nebál škorpiónov, ale o to, ako sa dostať z tejto piesočnej "
+"búrky! Tieto veci môžu trvať týždne, a ak nás zaživa nepochová všetok "
+"piesok, zomrieme od hladu a smädu."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:182
@@ -1932,11 +1856,8 @@ msgstr "Čože?! Prejsť cez tento chaos?!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:192
-#, fuzzy
-#| msgid "We don’t have any other choice. If we remain here we’ll die."
 msgid "We don’t have any other choice. If we remain here, we’ll die."
-msgstr ""
-"Nemáme na výber. Ak tu zastaneme a budeme čakať, je to istý ortieľ smrti."
+msgstr "inú možnosť nemáme. Ak tu zostaneme, zomrieme."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:216
@@ -2239,16 +2160,12 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:272
-#, fuzzy
-#| msgid ""
-#| "Why would you elves want still more territory? You guys already have the "
-#| "undisputed rule of the whole elvish forest."
 msgid ""
 "Why would you elves want still more territory? You already have the "
 "undisputed rule of the whole elvish forest."
 msgstr ""
 "A prečo treba elfom väčšie územia? Veď vám predsa patria prakticky všetky "
-"lesy."
+"elfské lesy."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:277
@@ -2328,15 +2245,11 @@ msgstr ""
 
 #. [message]: speaker=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:388
-#, fuzzy
-#| msgid ""
-#| "Ahhh! Flee; warn the prince that I have been slain and the enclave "
-#| "destroyed."
 msgid ""
 "Ahhh! Flee; warn the Prince that I have been slain and the enclave destroyed."
 msgstr ""
-"Ach! Flíp, choď varovať princa, že moje jednotky porazili a že náš tábor bol "
-"zničený."
+"Ach! Zmizni; Choď varovať princa, že moje jednotky porazili a že náš tábor "
+"bol zničený."
 
 #. [unit]: type=Elvish Scout, id=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:397
@@ -2374,7 +2287,7 @@ msgstr "Shan Taum"
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:69
 msgid "Rivals"
-msgstr ""
+msgstr "Nepriatelia"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:78
@@ -2485,16 +2398,12 @@ msgstr "No, ehmmm..."
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:171
-#, fuzzy
-#| msgid ""
-#| "Kapou’e, rumors tell of you making a long trip to seek assistance from "
-#| "us, and escorting Pirk, Gork and Vraurk. The council is grateful for that."
 msgid ""
 "Kapou’e, rumors tell of you making a long trip to seek assistance from us, "
 "and escorting Pirk, Gork and Vraurk. The Council is grateful for that."
 msgstr ""
-"Kapou'e, zvesti hovoria, že si prešiel dlhú púť, aby si vyhľadal našu pomoc, "
-"a pritom si sprevádzal Pirka, Gorka a Vraurka. Rada je ti za to vďačná."
+"Kapou’e, povesti hovoria o tom, že si podnikol dlhú cestu, aby si od nás "
+"vyhľadal pomoc a sprevádzal Pirka, Gorka a Vraurka. Rada je za to vďačná."
 
 #. [message]: speaker=Fabstep
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:175
@@ -2508,19 +2417,14 @@ msgstr "Ale moji ľudia..."
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:183
-#, fuzzy
-#| msgid ""
-#| "You don’t understand. Orcs have been divided for ages. The only one who "
-#| "gave us some unity was your father, Black-Eye Karun. Hearing rumors of "
-#| "your exploits, we understood you are a worthy son of your father."
 msgid ""
 "You don’t understand. Orcs have been divided for ages. The only one who gave "
 "us some unity was your father, Black-Eye Karun. When we heard rumors of your "
 "exploits, we understood that you are a worthy son of your father."
 msgstr ""
-"Nerozumieš tomu. Orkovia boli rozdelení celé stáročia. Jediný, kto nás ako "
-"tak vedel zjednotiť, bol tvoj otec, Karun Čierne Oko. Správy o tebe zatiaľ "
-"nasvedčujú, že si synom hodným svojho otca."
+"nerozumiete. Orkovia boli rozdelení už veky. Jediný, kto nám dal trochu "
+"jednoty, bol tvoj otec, Black-Eye Karun. Keď sme počuli klebety o tvojich "
+"skutkoch, pochopili sme, že si dôstojným synom svojho otca."
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:187
@@ -2554,25 +2458,17 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:203
-#, fuzzy
-#| msgid ""
-#| "Leave your people here Kapou’e — they are safe for the moment — and go "
-#| "defend Prestim. In the meantime, now that the council is complete again, "
-#| "we will decide. We may have to form the Great Horde again, and give you "
-#| "the leadership of it."
 msgid ""
 "Go defend Prestim, Kapou’e. In the meantime, now that the Council is "
 "complete again, we will decide. We may have to form the Great Horde again "
 "and make you its leader."
 msgstr ""
-"Nechaj svojich ľudí tu, Kapou'e — teraz sú tu v bezpečí — a choď brániť "
-"Prestim. Medzitým, kým je rada opäť pohromade, rozhodneme, či nastal čas "
-"znovu vytvoriť Veľkú Hordu a zveriť ti jej vedenie."
+"Choď brániť Prestima, Kapou’e. Medzitým, teraz, keď je Rada opäť kompletná, "
+"rozhodneme. Možno budeme musieť znova sformovať Veľkú hordu a urobiť z vás "
+"jej vodcu."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:248
-#, fuzzy
-#| msgid "Nooo! Don’t kill me, I surrender to you little earthworm."
 msgid "Nooo! Don’t kill me, I surrender to you, little earthworm."
 msgstr "Nieee! Nezabíjaj ma, vzdávam sa, ty prízemný červ."
 
@@ -2628,20 +2524,14 @@ msgstr "Plonk"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:192
-#, fuzzy
-#| msgid ""
-#| "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
-#| "fortified bridge over the River Bork was taken this morning by a small "
-#| "commando of elves, we have already tried to assault it twice without "
-#| "success."
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
 "commando of elves. We have already tried to assault it twice without success."
 msgstr ""
-"Konečne posily! Nech ste ktokoľvek, vitajte v Prestimi! Náš opevnený most "
-"cez rieku Bork dnes ráno dobylo malé komando elfov. Dva razy sme ich skúšali "
-"napadnúť, ale bez úspechu."
+"Konečne posily! Kto ste, ste vítaní v Prestime! Opevnený most cez rieku Bork "
+"dnes ráno obsadilo malé komando elfov. Už sme sa ho pokúsili zaútočiť "
+"dvakrát bez úspechu."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:196
@@ -2670,10 +2560,6 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:208
-#, fuzzy
-#| msgid ""
-#| "If Inarix falls prey to those humans then we won’t be able to count on "
-#| "their help in this struggle. We must do something!"
 msgid ""
 "If Inarix falls prey to those humans, then we won’t be able to count on "
 "their help in this struggle. We must do something!"
@@ -2693,12 +2579,6 @@ msgstr "To nebude také ľahké! Naši nepriatelia sú dobre opevnení."
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:221
-#, fuzzy
-#| msgid ""
-#| "We can sabotage the southern bridge to slow them down. When the bulk of "
-#| "the saurians have crossed, someone needs to go and light the barrel of "
-#| "oil we have set up beside the bridge to destroy it. Any warriors trapped "
-#| "on the bridge or on the other side of the river will perish!"
 msgid ""
 "We can capture the southern bridge and keep it open for the saurians. When "
 "the bulk of them have crossed, someone needs to go and light the barrel of "
@@ -2739,7 +2619,7 @@ msgid ""
 "Hurry-hurry, friends. Lanbec’h and his kind are right on our tails, we must "
 "reach Prestim quickly."
 msgstr ""
-"Tu sme, priatelia. Lanbec'h a jeho družina sú nám v pätách, musíme sa "
+"Tu sme, priatelia. Lanbech a jeho družina sú nám v pätách, musíme sa "
 "poponáhľať."
 
 #. [message]: speaker=Kapou'e
@@ -2775,12 +2655,8 @@ msgstr "Hej, nezapaľuj to. Ja ešte nie som v bezpečí!"
 #. [message]: speaker=Grüü
 #. To "blow up" means "to make something explode".
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:451
-#, fuzzy
-#| msgid "Chief, we can’t be blowing the bridge before Inarix is here, can we?"
 msgid "Chief, we can’t be blowing up the bridge before Inarix is here, can we?"
-msgstr ""
-"Náčelník, určite chcete ten most vyhodiť do vzduchu aj keď tu ešte nie je "
-"Inarix?"
+msgstr "Šéf, nemôžeme vyhodiť do vzduchu most skôr, ako tu bude Inarix, však?"
 
 #. [then]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:463
@@ -2862,7 +2738,7 @@ msgstr "Aby sa nehovorilo, že sú elfovia odvážnejší ako my, všetci do út
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:80
 msgid "Earl Lanbec’h"
-msgstr "Earl Lanbec'h"
+msgstr "Earl Lanbech"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:677
@@ -2881,6 +2757,9 @@ msgid ""
 "able to muster a defense. No matter. Once the vanguard of my army arrives, I "
 "will storm their pitiful fortress myself."
 msgstr ""
+"Takže elfovia a trpaslíci nedokázali dobyť pevnosť a beštie boli schopné "
+"zhromaždiť obranu. Nevadí. Keď dorazí predvoj mojej armády, sám zaútočím na "
+"ich žalostnú pevnosť."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:741
@@ -2904,10 +2783,6 @@ msgstr "Ubrániš Prestim počas štyroch dní"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:25
-#, fuzzy
-#| msgid ""
-#| "Enemies control any villages on the north side of the river when turns "
-#| "run out"
 msgid ""
 "You don’t control all villages on the north side of the river when turns run "
 "out"
@@ -2937,13 +2812,6 @@ msgstr "Múry Prestimi sú pevné ako skala, rozbijú sa na nich."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:265
-#, fuzzy
-#| msgid ""
-#| "I’m not that sure. Every fortress has its own weakness. Prestim’s walls "
-#| "are strong but long and it is difficult to defend them from many "
-#| "directions at once. This Earl Lanbec’h must know they can’t break through "
-#| "by only fording the river where the bridge previously stood so he must "
-#| "have a better plan than that."
 msgid ""
 "I’m not that sure. Every fortress has its own weakness. Prestim’s walls are "
 "strong but long, and it is difficult to defend them from many directions at "
@@ -2953,7 +2821,7 @@ msgid ""
 msgstr ""
 "Tým by som si nebol taký istý. Každá pevnosť má svoju slabinu. Múry Prestimu "
 "sú síce silné ale veľmi dlhé a je náročné brániť každú ich časť. Tento Earl "
-"Lanbec’h musí vedieť, že útok cez zbúraný most ľahko odrazíme, takže určite "
+"Lanbech musí vedieť, že útok cez zbúraný most ľahko odrazíme, takže určite "
 "má aj nejaký lepší plán."
 
 #. [message]: role=cannonfodder
@@ -2975,28 +2843,17 @@ msgstr "Najskôr za štyri dni. Obávam sa, že už bude neskoro."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:285
-#, fuzzy
-#| msgid ""
-#| "Fool! We can hold that long. But we have to have Prestim firmly in "
-#| "control when the shamans arrive with the Great Horde. We can’t let the "
-#| "humans establish a foothold on this side of the river."
 msgid ""
 "Fool! We can hold that long. But we have to have Prestim firmly in control "
 "when the shamans arrive with the Great Horde. We can’t let the humans "
 "establish a foothold on this side of the river..."
 msgstr ""
-"Hlupák! Odolávať môžeme dlho. Ale keď prídu šamani spoločne s Veľkou Hordou, "
-"mali by sme mať Prestim relatívne pod kontrolou. Nesmieme ľudom dovoliť, aby "
-"vkročili na našu stranu rieky."
+"Blázon! Vydržíme tak dlho. Ale musíme mať Prestima pevne pod kontrolou, keď "
+"prídu šamani s Veľkou hordou. Nemôžeme dovoliť, aby si ľudia vytvorili oporu "
+"na tejto strane rieky..."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:295
-#, fuzzy
-#| msgid ""
-#| "Because if we cannot decisively beat these humans, the other tribes won’t "
-#| "think us strong enough to lead them. Each chieftain will try to claim the "
-#| "leadership of the horde for themselves and the humans will be able to "
-#| "break through our defenses."
 msgid ""
 "... because if we cannot decisively beat these humans, the other tribes "
 "won’t think us strong enough to lead them. Each chieftain will try to claim "
@@ -3036,7 +2893,7 @@ msgstr "Plouf"
 #. [message]: speaker=Plouf
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1053
 msgid "We arrive to honor our alliance, Earl Lanbec’h."
-msgstr "Prichádzame na pomoc ako spojenci, gróf Lanbec'h."
+msgstr "Prichádzame na pomoc ako spojenci, gróf Lanbech."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1058
@@ -3083,10 +2940,8 @@ msgstr ""
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1206
-#, fuzzy
-#| msgid "Here we are! Hold on Prestim, we arrive to push them to the river!"
 msgid "Here we are! Hold on Prestim, we will help you push them to the river!"
-msgstr "Tu sme! Bráňte Prestim, my ich zatlačíme cez rieku!"
+msgstr "Tu sme! Bráňte Prestim, my ich zatlačíme do rieky!"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:1211
@@ -3117,7 +2972,7 @@ msgid ""
 "pursuit. We will not rest until we destroy Earl Lanbec’h. Smite, stab, slay!"
 msgstr ""
 "Prišiel čas ukázať im, kto sme a viesť Veľkú Hordu za nimi! Nebudú mať "
-"pokoja, kým nepadne gróf Lanbec'h. Ničte, zabíjajte, vraždite!"
+"pokoja, kým nepadne gróf Lanbech. Ničte, zabíjajte, vraždite!"
 
 #. [scenario]: id=12_Giving_Some_Back
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:5
@@ -3161,12 +3016,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:126
-#, fuzzy
-#| msgid ""
-#| "After a fair amount of squabbling — for some of the older warlords were "
-#| "reluctant to let this young upstart lead them — and a few consequent "
-#| "executions, the leadership of the horde was formally bestowed upon "
-#| "Kapou’e."
 msgid ""
 "After a fair amount of squabbling — for some of the older warlords were "
 "reluctant to let this young upstart lead them — and a few consequent "
@@ -3178,27 +3027,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Riders were dispatched in all directions to gather intelligence and to "
-#| "pinpoint the exact location of the hostile forces."
 msgid ""
 "Riders were dispatched in all directions to gather intelligence and to "
 "pinpoint the exact locations of hostile forces."
 msgstr ""
-"Jazdci boli poslaní všetkými smermi aby zbierali správy a zistili presné "
-"polohy nepriateľských síl."
+"Vo všetkých smeroch boli vyslaní jazdci, aby zhromaždili informácie a určili "
+"presné miesta nepriateľských síl."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:138
-#, fuzzy
-#| msgid ""
-#| "The horde was then split into two forces. On the advice of the shamans, "
-#| "Kapou’e placed one force under the leadership of Shan Taum the Smug, who "
-#| "— despite his obnoxious nature — was a fierce and capable leader. He was "
-#| "sent to Bitok, the most southwestern orcish city, to cut off the humans "
-#| "already invading the harbor of Tirigaz, and to stop any further human "
-#| "incursion into orcish territory."
 msgid ""
 "The horde was then split into two forces. On the advice of the shamans, "
 "Kapou’e placed one force under the leadership of Shan Taum the Smug, who — "
@@ -3211,15 +3048,10 @@ msgstr ""
 "zverené Namyslenému Shan Taumovi, ktorý - napriek svojej náture - bol "
 "schopný veliteľ. Bol poslaný do Bitoku, najjužnejšieho orkského mesta, aby "
 "odrezal ľudí už útočiacich na prístav Tirigaz a aby ich zastavil ich ďalšie "
-"útoky orkské teritótium."
+"útoky orkské teritórium."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:145
-#, fuzzy
-#| msgid ""
-#| "He sent the shamans, Pirk, Gork and Vraurk back to Borstep — a city just "
-#| "north of the Mourned Hills — to organize any remaining orcish forces as "
-#| "well as create an arms and supply depot."
 msgid ""
 "Kapou’e sent the shamans, Pirk, Gork and Vraurk back to Borstep — a city "
 "just north of the Mourned Hills — to organize any remaining orcish forces as "
@@ -3237,13 +3069,13 @@ msgid ""
 msgstr ""
 "Sám Kapou'e  — želajúci si vybaviť túto záležitosť raz a navždy  — viedol "
 "svojich zostávajúcich vojakov do Dorsetu, ľudského mesta juhovýchodne od "
-"Prestimu, do ktorého sa Earl Lanbec'h stiahol."
+"Prestimu, do ktorého sa Earl Lanbech stiahol."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:226
 msgid ""
 "Earl Lanbec’h, you slimy coward, come out and face me if you have the guts!"
-msgstr "Lanbec'h, ty zbabelý potkan, vylez a bojuj ak na to máš!"
+msgstr "Lanbech, ty zbabelý potkan, vylez a bojuj, ak na to máš!"
 
 #. [message]: speaker=Arthain
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:232
@@ -3251,20 +3083,16 @@ msgid ""
 "Sorry there, old chap. You’re deemed too insignificant for the likes of the "
 "Earl to deal with. He’s left that pleasure to me instead."
 msgstr ""
-"Sory, kámo. Si pre Earla Lanbec'hta moc bezvýznamný, aby sa s tebou "
+"Sory, kámo. Si pre Earla Lanbecha moc bezvýznamný, aby sa s tebou "
 "zapodieval. To potešenie prenechal mne."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:237
-#, fuzzy
-#| msgid ""
-#| "Foolish human. Attack, men, I want that city to be orcish territory "
-#| "within the week. Smite, stab, and slay!"
 msgid ""
 "Foolish human. Attack, men! I want that city to be orcish territory within "
 "the week. Smite, stab, and slay!"
 msgstr ""
-"Sprostý ľudia. Do útoku! Chcem aby to mesto patrilo orkom! Zabíjajte, "
+"Sprostí ľudia. Do útoku! Chcem aby to mesto patrilo orkom! Zabíjajte, "
 "rabujte, vraždite!"
 
 #. [message]: speaker=Al'Brock
@@ -3293,27 +3121,15 @@ msgstr "Sagmar"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:103
-#, fuzzy
-#| msgid ""
-#| "After conquering and occupying Dorest, Kapou’e and his men set themselves "
-#| "to stabilizing the area and bringing it firmly under the iron-hard orcish "
-#| "rule."
 msgid ""
 "After conquering and occupying Dorest, Kapou’e and his men set themselves to "
 "stabilizing the area and bringing it firmly under iron-hard orcish rule."
 msgstr ""
-"Po dobytí Dorsetu Kapou'e a jeho družina začali upevňovať orkskú nadvládu na "
-"okolitými územiami."
+"Po dobytí a obsadení Dorestu sa Kapou’e a jeho muži pustili do stabilizácie "
+"oblasti a dostali ju pod tvrdú orkovskú vládu."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:109
-#, fuzzy
-#| msgid ""
-#| "After a few weeks of putting down minor rebellions and clearing out the "
-#| "last human strongholds, the first snows of the long northern winter began "
-#| "to fall. A few days after the first snowfall a goblin rider — half dead "
-#| "from exhaustion — raced into Dorest with the news that Borstep was under "
-#| "siege by a large force of dwarves, outlaws and elves."
 msgid ""
 "After a few weeks of putting down minor rebellions and clearing out the last "
 "human strongholds, the first snows of the long northern winter began to "
@@ -3354,13 +3170,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:127
-#, fuzzy
-#| msgid ""
-#| "Rushing to reach Borstep before the river froze up for the winter, the "
-#| "orcs sailed up the River Bork. Paddling day and night the horde barely "
-#| "managed to get through the Silent Forest before the river froze solid. "
-#| "Beaching their crafts, they marched the last leg of their journey through "
-#| "the deepening snow of the Mourned Hills."
 msgid ""
 "Rushing to reach Borstep before the river froze up for the winter, the orcs "
 "sailed up the River Bork. Paddling day and night, the horde barely managed "
@@ -3387,13 +3196,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:139
-#, fuzzy
-#| msgid ""
-#| "With eyes burning with apprehension and rage, Kapou’e sent his riders out "
-#| "to scour the land in all directions for the culprits while he made camp "
-#| "with the rest of the horde. A few hours later a rider reported back that "
-#| "he had picked up a trail of a large body of dwarves, elves and humans "
-#| "heading east through the mountains."
 msgid ""
 "With eyes burning with apprehension and rage, Kapou’e sent his riders out to "
 "scour the land in all directions for the culprits while he made camp with "
@@ -3562,21 +3364,16 @@ msgstr "O čom premýšľaš, náčelník?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:293
-#, fuzzy
-#| msgid ""
-#| "My men know the land well. Flar’Tar and Al’Brock, both of you take a "
-#| "scout and circle around to the Northeast and Southeast respectively. "
-#| "Grüü, you take your trolls and circle around to the Northwest. If all "
-#| "goes well we shall surround them."
 msgid ""
 "My men know the land well. Flar’Tar and Al’Brock, both of you take a scout "
 "and circle around to the northeast and southeast respectively. Grüü, you "
 "take your trolls and circle around to the northwest. If all goes well, we "
 "shall surround them."
 msgstr ""
-"Moji muži to tu poznajú dobre. Flar'Taar a Al'Blrock, obaja si zoberte pár "
-"orkov a choďte na severovýchod a juhovýchod. Grüü, ty si zober svojich "
-"trolov a choď na severozápad. Ak pôjde všetko podľa plánu, obkľúčime ich."
+"Moji muži poznajú krajinu dobre. Flar’Tar a Al’Brock, obaja si vezmite "
+"prieskumníka a zakrúťte okolo na severovýchod a juhovýchod. Grüü, vezmite "
+"svojich trollov a krúžia okolo na severozápad. Ak všetko pôjde dobre, "
+"obkľúčime ich."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:299
@@ -3687,10 +3484,6 @@ msgstr "Eh, prepáčte, ale po ceste sme stretli pár ľudí."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:584
-#, fuzzy
-#| msgid ""
-#| "Better late than never. Now it’s time to kill! Let nobody escape and "
-#| "everyone keep an eye out for the shamans."
 msgid ""
 "Better late than never. Now it’s time to kill! Let nobody escape! Everyone, "
 "keep an eye out for the shamans."
@@ -3910,32 +3703,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:181
-#, fuzzy
-#| msgid ""
-#| "With the Council broken, there was now nothing left to hold the orcish "
-#| "forces together. And if the orcish forces began to fight amongst "
-#| "themselves as they so often did, then the humans would eradicate them "
-#| "with ease."
 msgid ""
 "With the Council broken, there was now nothing left to hold the orcish "
 "forces together. And if the orcish forces began to fight amongst themselves, "
 "as they so often did, then the humans would eradicate them with ease."
 msgstr ""
-"Bez Rady, už nič nedržalo orkov pohromade. A ak začnú bojovať medzi sebou "
-"navzájom, ako sa to už často stávalo, ľudia by ich poľahky vyhladili."
+"Keď bola Rada zlomená, už nezostalo nič, čo by udržalo orkské sily "
+"pohromade. A keby orkské sily začali medzi sebou bojovať, ako to často "
+"robili, ľudia by ich ľahko vyhladili."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:187
-#, fuzzy
-#| msgid ""
-#| "Kapou’e vowed that this would not happen. Events had the smell of a "
-#| "treacherous plot aimed at destroying the unity of the orcs. Furthermore, "
-#| "if the tree-shagger was to be trusted, then Shan Taum the Smug was behind "
-#| "it all. What an orc expected to gain from destroying his own race was "
-#| "beyond Kapou’e, but he decided to march to Bitok personally and confront "
-#| "the traitor. Bitok being on the far side of orcish territory, this would "
-#| "also give him a good chance to clobber the orcs together again — the old "
-#| "fashioned way."
 msgid ""
 "Kapou’e vowed that this would not happen. Events had the smell of a "
 "treacherous plot aimed at destroying the unity of the orcs. Furthermore, if "
@@ -3946,13 +3724,13 @@ msgid ""
 "give him a good chance to clobber the orcs into working together again — the "
 "old-fashioned way."
 msgstr ""
-"Kapou'e si želal, aby sa toto nestalo. Udalosti zaváňali zradou namierenou "
-"proti jednote Hordy. Navyše, ak by veril tomu stromoblbovi, tak Namyslený "
-"Shan Taum bol za tým všetkým. Čo chcel získať zničením svojho vlastného "
-"národa, bolo za hranicami Kapoue'ho chápania, ale aj tak sa rozhodol, že "
-"pôjde do Bitoku osobne, aby sa stretol so zradcom. Keďže bol Bitok na "
-"opačnej strane orkského teritória, mal Kapou'e možnosť znovuzjednotiť orkov "
-"starým dobrým spôsobom."
+"Kapou’e sľúbil, že sa to nestane. Udalosti mali vôňu zradného sprisahania "
+"zameraného na zničenie jednoty orkov. Okrem toho, ak sa dalo veriť tomu, kto "
+"chátral, potom za tým všetkým bol Shan Taum Samoľúby. To, čo ork očakával, "
+"že získa zničením svojej vlastnej rasy, bolo mimo Kapou’e, ale rozhodol sa "
+"osobne pochodovať do Bitoku a postaviť sa zradcovi. Bitok, ktorý je na "
+"odvrátenej strane orkského územia, by mu tiež dal dobrú šancu prinútiť "
+"orkov, aby opäť spolupracovali – starým spôsobom."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:193
@@ -3986,12 +3764,6 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:224
-#, fuzzy
-#| msgid ""
-#| "If we are going to make it to Bitok, and then back to Dorest before "
-#| "spring we have to get a move on. Break camp as soon as possible. Destroy "
-#| "all opposition in your path, I want this area to be firmly under my "
-#| "control by the time we are through here."
 msgid ""
 "If we are going to make it to Bitok, and then back to Dorest before spring, "
 "we have to get a move on. Break camp as soon as possible. Destroy all "
@@ -4108,14 +3880,6 @@ msgstr "Nofhug"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:110
-#, fuzzy
-#| msgid ""
-#| "Kapou’e and his followers made a grueling march across the frozen "
-#| "Northlands. For the orcs it was a constant nightmare of freezing, "
-#| "marching and fighting. Food was scarce, and the stores that they managed "
-#| "to seize from rebellious tribes had to be strictly rationed. Many of the "
-#| "weaker orcs who weren’t killed in combat died from exhaustion, or fell "
-#| "behind and froze to death."
 msgid ""
 "Kapou’e and his followers made a grueling march across the frozen "
 "Northlands. For the orcs, it was a constant nightmare of freezing, marching "
@@ -4124,20 +3888,14 @@ msgid ""
 "who weren’t killed in combat died from exhaustion or fell behind and froze "
 "to death."
 msgstr ""
-"Kapou'e a jeho poddaný podstúpili zničujúci pochod cez zamrznutý sever. Bola "
-"to pre nich nočná mora plná mrazu, boja a pochodovania. Jedla bolo málo a "
-"to, čo ukoristili, bolo striktne na prídel. Veľa slabých orkov, ktorí "
-"nezahynuli v boji, umreli z vyčerpania, alebo umrzli."
+"Kapou’e a jeho nasledovníci podnikli vyčerpávajúci pochod cez zamrznuté "
+"Severné zeme. Pre orkov to bola neustála nočná mora mrazenia, pochodovania a "
+"boja. Jedlo bolo vzácne a obchody, ktoré sa im podarilo ukoristiť odbojným "
+"kmeňom, museli byť prísne na prídel. Mnohí zo slabších orkov, ktorí neboli "
+"zabití v boji, zomreli od vyčerpania alebo zaostali a zamrzli."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:116
-#, fuzzy
-#| msgid ""
-#| "Throughout this nightmare Kapou’e drove himself and his men ruthlessly. "
-#| "The spring thaw would soon be upon them and with it, the human army that "
-#| "Earl Lanbec’h was no doubt rallying. By that time the orcs had to be "
-#| "united one way or another, since if they were separated and scattered, "
-#| "they would surely be exterminated."
 msgid ""
 "Throughout this nightmare, Kapou’e drove himself and his men ruthlessly. The "
 "spring thaw would soon be upon them and with it, the human army that Earl "
@@ -4146,7 +3904,7 @@ msgid ""
 "surely be exterminated."
 msgstr ""
 "Aj cez túto nočnú moru, Kapou'e viedol svojich ľudí naďalej. Jar, ktorá mala "
-"čoskoro prísť, mala priniesť aj armádu ľudí, ktorú bez pochýb Earl Lanbec'h "
+"čoskoro prísť, mala priniesť aj armádu ľudí, ktorú bez pochýb Earl Lanbech "
 "zhromažďoval. Vtedy už budú musieť byť orkovia zjednotení, inak ich čaká "
 "istá smrť."
 
@@ -4175,8 +3933,6 @@ msgstr "Dobré ráno, Shan Taum!"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:206
-#, fuzzy
-#| msgid "What... Kapou’e! What in the frozen northlands are you doing here?!"
 msgid "What... Kapou’e! What in the frozen Northlands are you doing here?!"
 msgstr "Čo... Kapou'e! Čo pri zamrznutom severe tu robíš?"
 
@@ -4218,14 +3974,12 @@ msgstr "LŽI! SÚ TO LŽI!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:233
-#, fuzzy
-#| msgid ""
-#| "Tell you what, you ungrateful backstabbing traitor, if you surrender "
-#| "right now I will just cut off your head instead of torturing you to death."
 msgid ""
 "Tell you what, you ungrateful backstabbing traitor, if you surrender right "
 "now, I will just cut off your head instead of torturing you to death."
-msgstr "Dám ti návrh. Vzdaj sa a ja ťa zabijem rýchlo, nebudem ťa mučiť."
+msgstr ""
+"Poviem ti, ty nevďačný zradca, ak sa hneď vzdáš, namiesto toho, aby som ťa "
+"umučil na smrť, ti len odseknem hlavu."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:239
@@ -4264,11 +4018,6 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
-#, fuzzy
-#| msgid ""
-#| "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out "
-#| "like we did to clobber the other tribes to his rule. In any case, it will "
-#| "be convenient for us."
 msgid ""
 "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out like "
 "we did to clobber the other tribes into his rule. In any case, it will be "
@@ -4298,16 +4047,10 @@ msgstr "Zadrž ľudí"
 #. [objectives]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:28
 msgid "Defeat Earl Lanbec’h"
-msgstr "Poraz Earla Lanbec'ha"
+msgstr "Poraz Earla Lanbecha"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:129
-#, fuzzy
-#| msgid ""
-#| "As Kapou’e expected, by the time his forces had been defeated Shan Taum "
-#| "was nowhere to be found. Gritting his teeth and vowing that he would yet "
-#| "make a mug out of the traitor’s skull, Kapou’e gathered his men and "
-#| "headed for Dorest."
 msgid ""
 "As Kapou’e expected, by the time his forces had been defeated, Shan Taum was "
 "nowhere to be found. Gritting his teeth and vowing that he would yet make a "
@@ -4320,13 +4063,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:135
-#, fuzzy
-#| msgid ""
-#| "Once there he found his generals, Al’Brock and Flar’Tar, had already "
-#| "arrived along with hundreds of bloodthirsty orcs. The warriors of the "
-#| "tribes that Kapou’e had cowed into submission were also present. In "
-#| "addition, the remaining shamans of the Great Council were also present to "
-#| "help in whatever way they could to preserve the unity of the Horde."
 msgid ""
 "Once there, he found that his generals, Al’Brock and Flar’Tar, had already "
 "arrived along with hundreds of bloodthirsty orcs. The warriors of the tribes "
@@ -4334,9 +4070,10 @@ msgid ""
 "remaining shamans of the Great Council were also present to help in whatever "
 "way they could to preserve the unity of the Horde."
 msgstr ""
-"Keď prišiel, našiel svojich veliteľov, Al'Brocka a Flar'Tara, so stovkami "
-"krvilačných orkov. Bojovníci všetkých kmeňov boli prítomní. Zvyšní šamani "
-"Veľkej Rady tam boli taktiež, aby pomohli udržať Hordu pokope."
+"Keď tam bol, zistil, že jeho generáli Al’Brock a Flar’Tar už dorazili spolu "
+"so stovkami krvilačných orkov. Prítomní boli aj bojovníci kmeňov, ktoré "
+"Kapou’e prinútil podriadiť sa. Okrem toho boli prítomní aj zvyšní šamani "
+"Veľkej rady, aby pomohli akýmkoľvek spôsobom zachovať jednotu Hordy."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:141
@@ -4355,36 +4092,24 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:147
-#, fuzzy
-#| msgid ""
-#| "Days passed, the snows melted and Kapou’e readied his defenses. A few "
-#| "weeks after Kapou’e’s arrival, riders caught sight of Earl Lanbec’h’s "
-#| "army."
 msgid ""
 "Days passed, the snows melted, and Kapou’e readied his defenses. A few weeks "
 "after Kapou’e’s arrival, riders caught sight of Earl Lanbec’h’s army."
 msgstr ""
-"Dni plynuli, sneh sa roztopil a Kapou'e posilnil svoju obranu. Niekoľko "
-"týždňov po Kapou'eho návrate, prieskumníci objavili predvoj armády Earla "
-"Lanbec'ha."
+"Dni plynuli, sneh sa roztopil a Kapou’e si pripravil obranu. Niekoľko "
+"týždňov po príchode Kapou’e zazreli jazdci armádu grófa Lanbecha."
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:236
-#, fuzzy
-#| msgid ""
-#| "This is it, men! It is time to make these orcs pay for all that they have "
-#| "done to us. Attack without compromise, we have several detachments of "
-#| "reinforcements on their way. Spare no orc and let us take back this land "
-#| "which is rightfully ours!"
 msgid ""
 "This is it, men! It is time to make these orcs pay for all that they have "
 "done to us. Attack without compromise, we have several detachments of "
 "reinforcements on their way. Spare no orc, and let us take back this land, "
 "which is rightfully ours!"
 msgstr ""
-"Je to tu, chlapi! Je načase, aby orkovia platili za to, čo nám urobili. "
-"Zaútočte bez zľutovania, na ceste je niekoľko oddielov našich posíl. Nikoho "
-"nešetrite a zoberme si naspäť túto zem, ktorá je právoplatne naša!"
+"Toto je ono, muži! Je čas, aby títo orkovia zaplatili za všetko, čo nám "
+"urobili. Útok bez kompromisov, na ceste máme niekoľko posíl. Nešetri "
+"žiadneho orka a vezmime si späť túto zem, ktorá nám právom patrí!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:241
@@ -4408,10 +4133,8 @@ msgstr "Sme tu, pane."
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:370
-#, fuzzy
-#| msgid "Ahhh, perfect, more reinforcements."
 msgid "Ahhh, perfect. More reinforcements."
-msgstr "Výborne, ďalšie posily."
+msgstr "No výborne. Ďalšie posily!"
 
 #. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
@@ -4461,7 +4184,7 @@ msgid ""
 "of you are no doubt violating. It is our duty as the orchestrator and "
 "witness of this treaty to see that it is honored."
 msgstr ""
-"Ale mám Earl Lanbec'h. Severná Aliancia bola ručiteľom dohody medzi tvojimi "
+"Ale mám, Earl Lanbech. Severná Aliancia bola ručiteľom dohody medzi tvojimi "
 "ľuďmi a orkami pred sedemnástimi rokmi, ktorú obaja porušujete. Je našou "
 "povinnosťou dohliadnuť na dodržiavanie tejto dohody."
 
@@ -4477,17 +4200,12 @@ msgstr ""
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:468
-#, fuzzy
-#| msgid ""
-#| "Cease your lies, Lanbec’h. We all know that you were the one who started "
-#| "this war. But enough, it is time for all this to end. I call for both "
-#| "sides to parley and we shall discuss this matter."
 msgid ""
 "Cease your lies, Lanbec’h. We all know that you were the one who started "
 "this war. But enough. It is time for all this to end. I call for both sides "
 "to parley and we shall discuss this matter."
 msgstr ""
-"Zastav ten príval lží Lanbec'h. Dobre vieme, kto začal túto vojnu. Ale dosť "
+"Zastav ten príval lží, Lanbech. Dobre vieme, kto začal túto vojnu. Ale dosť "
 "už, je čas toto tu ukončiť. Volám obe strany k diplomatickému stolu."
 
 #. [message]: speaker=Kapou'e
@@ -4506,10 +4224,6 @@ msgstr "O čom to pri bohoch hovoríš?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:484
-#, fuzzy
-#| msgid ""
-#| "I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago you people "
-#| "assassinated my father after inviting him to join the Northern Alliance."
 msgid ""
 "I am Kapou’e, son of the Black-Eye Karun. Seventeen years ago, you people "
 "assassinated my father after inviting him to join the Northern Alliance."
@@ -4551,7 +4265,7 @@ msgstr "Severná Aliancia"
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:26
 msgid "Kill Shan Taum and Earl Lanbec’h"
-msgstr "Zabil Shan Tauma a Earla Lanbec'ha"
+msgstr "Zabi Shan Tauma a Earla Lanbecha"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:37
@@ -4566,7 +4280,7 @@ msgid ""
 "Lanbec’h flatly refused to attend the parley."
 msgstr ""
 "Kapou'e súhlasil, že sa stretne s Howgartom III. Neveriac však ľuďom, zobral "
-"si zo sebou Grüüa a jedného zo svojich najlepších bojovníkov. Earl Lanbec'h "
+"si zo sebou Grüüa a jedného zo svojich najlepších bojovníkov. Earl Lanbech "
 "odmietol vyjednávanie."
 
 #. [part]
@@ -4594,7 +4308,7 @@ msgid ""
 "aggression, then under the dictates of the Northern Alliance, he himself "
 "would be forced to move against the Earl."
 msgstr ""
-"Hovgart III. súhlasil a dodal, že ak bude Earl Lanbec'h pokračovať v útokoch "
+"Hovgart III. súhlasil a dodal, že ak bude Earl Lanbech pokračovať v útokoch "
 "na orkov, potom on ako vodca Severnej Aliancie bude proti nemu musieť "
 "zasiahnuť."
 
@@ -4619,10 +4333,6 @@ msgstr "Ako ďalej preberali problém, skupina orkov ich obkľúčila."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:475
-#, fuzzy
-#| msgid ""
-#| "Now now now, what do we have here. Collaborating with the enemy again "
-#| "just like your disgusting father, are you?"
 msgid ""
 "Now now now, what do we have here? Collaborating with the enemy again just "
 "like your disgusting father, are you?"
@@ -4655,28 +4365,15 @@ msgstr "Čo som ti hovoril, Kapou'e?"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:502
-#, fuzzy
-#| msgid ""
-#| "Ha ha! Good work Shan Taum. That will teach them. Attack, boys, I want "
-#| "Dorest recaptured by sunset."
 msgid ""
 "Ha ha! Good work Shan Taum. That will teach them. Attack, boys! I want "
 "Dorest recaptured by sunset."
 msgstr ""
-"Ha ha! Dobrá práca, Shan Taum. To ich naučí. Dopredu chlapci, chcem mať "
-"Dorset naspäť do západu."
+"Ha ha! Dobrá práca Shan Taum. To ich naučí. Útok, chlapci! Chcem, aby bol "
+"Dorset znovu zajatý do západu slnka."
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:507
-#, fuzzy
-#| msgid ""
-#| "Hold, Earl Lanbec’h. I have reached an agreement with these orcs. Since "
-#| "your army has been the aggressor, you must immediately disperse your army "
-#| "and withdraw from orcish territory. Once that is done then Kapou’e will "
-#| "give you back Dorest and call off the horde. I have had dealings with "
-#| "Kapou’e’s father before and I believe his blood will be trustworthy. And "
-#| "if that isn’t enough, then we are here to protect you in case he violates "
-#| "the pact."
 msgid ""
 "Hold, Earl Lanbec’h. I have reached an agreement with these orcs. Since your "
 "army has been the aggressor, you must immediately disperse it and withdraw "
@@ -4685,7 +4382,7 @@ msgid ""
 "before, and I believe his blood will be trustworthy. And if that isn’t "
 "enough, then we are here to protect you in case he violates the pact."
 msgstr ""
-"Zadrž, Earl Lanbec'h. Dohodol som sa s orkmi. Keďže si bol ty agresorom "
+"Zadrž, Earl Lanbech. Dohodol som sa s orkmi. Keďže si bol ty agresorom "
 "konfliktu, musíš okamžite rozpustiť svoju armádu a stiahnuť sa z orkského "
 "teritória. Hneď po tom, ako sa toto stane, Kapou'e vráti Dorset a rozpustí "
 "Hordu. Rokoval som už s Kapou'eho otcom, takže si myslím, že sa mu môže "
@@ -4693,10 +4390,6 @@ msgstr ""
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:513
-#, fuzzy
-#| msgid ""
-#| "You and your damned compromises can go to hell. Your beloved Kapou’e will "
-#| "be joining you shortly."
 msgid ""
 "You and your damned compromises can go to hell! Your beloved Kapou’e will be "
 "joining you shortly."
@@ -4816,13 +4509,6 @@ msgstr "Epilóg"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:25
-#, fuzzy
-#| msgid ""
-#| "True to his word, once Lanbec’h had been slain, Howgarth III dispersed "
-#| "the Earl’s forces and withdrew them from orcish territory. For his part "
-#| "Kapou’e withdrew from Dorest and dispersed the Great Horde. However, "
-#| "before the horde was dispersed he appointed three more shamans — with the "
-#| "consent of all — to make the Great Council complete again."
 msgid ""
 "True to his word, once Lanbec’h had been slain, Howgarth III dispersed the "
 "Earl’s forces and withdrew them from orcish territory. For his part, Kapou’e "
@@ -4830,19 +4516,13 @@ msgid ""
 "horde was dispersed, he appointed three more shamans — with the consent of "
 "all — to make the Great Council complete again."
 msgstr ""
-"Presne ako sľúbil, keď bol Lanbec'h mŕtvy, Howgart III. rozpustil jeho "
-"armádu a stiahol jej zvyšky preč z orkského teritória. Kapou'e tiež dodržal "
-"slovo, stiahol sa z Dorsetu a rozpustil Hordu. Predtým však ešte vymenoval "
-"troch nových šamanov, aby bol Veľký Koncil opäť kompletný."
+"Presne ako sľúbil, keď bol Lanbech mŕtvy, Howgart III. rozpustil jeho armádu "
+"a stiahol jej zvyšky preč z orkského teritória. Kapou'e tiež dodržal slovo, "
+"stiahol sa z Dorsetu a rozpustil Hordu. Predtým však ešte vymenoval troch "
+"nových šamanov, aby bol Veľký Koncil opäť kompletný."
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:32
-#, fuzzy
-#| msgid ""
-#| "As Rahul had done to Kapou’e’s father, Howgarth III issued an invitation "
-#| "to Kapou’e to join the Northern Alliance. Kapou’e declined. Instead he "
-#| "went back to Barag Gór and, making that his capital, established himself "
-#| "as sovereign over all the northern tribes."
 msgid ""
 "As Rahul had done to Kapou’e’s father, Howgarth III issued an invitation to "
 "Kapou’e to join the Northern Alliance. Kapou’e declined. Instead, he went "
@@ -4918,14 +4598,6 @@ msgstr "Orkský šaman"
 
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4936,7 +4608,7 @@ msgid ""
 msgstr ""
 "Orkskí šamani sú strážcovia orkskej mágie. Majú rešpekt u všetkých orkských "
 "kmeňov a utvorili tzv. Veľký Koncil, ktorý má za úlohu rozhodovať o "
-"dôležitých veciach v Orkskej komunite a zabraňovať vzájomným potýčkam v "
+"dôležitých veciach v orkskej komunite a zabraňovať vzájomným potýčkam v "
 "tejto rase. Aj keď sú po fyzickej stránke pomerne slabí (na orka), Orkskí "
 "šamani sú dobrí čarodejníci a vedia prekliať ich nepriateľov, čím im "
 "vysávajú život."
@@ -4944,19 +4616,10 @@ msgstr ""
 #. [variation]
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
 msgid "variation^Novice"
-msgstr ""
+msgstr "Nováčik"
 
 #. [variation]
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Novice Shamans are still young and vigorous, but "
-#| "their spell-casting ability still needs improvement."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4977,19 +4640,10 @@ msgstr ""
 #. [variation]
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
 msgid "variation^Elder"
-msgstr ""
+msgstr "Starší"
 
 #. [variation]
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Old Orcish Shamans are shamans that have mastered "
-#| "magic, although their physical strength has declined with age."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -5001,7 +4655,7 @@ msgid ""
 msgstr ""
 "Orkskí šamani sú strážcovia orkskej mágie. Majú rešpekt u všetkých orkských "
 "kmeňov a utvorili tzv. Veľký Koncil, ktorý má za úlohu rozhodovať o "
-"dôležitých veciach v Orkskej komunite a zabraňovať vzájomným potýčkam v "
+"dôležitých veciach v orkskej komunite a zabraňovať vzájomným potýčkam v "
 "tejto rase. Aj keď sú po fyzickej stránke pomerne slabí (na orka), Orkskí "
 "šamani sú dobrí čarodejníci a vedia prekliať ich nepriateľov, čím im "
 "vysávajú život. Starší orkskí šamani patria medzi tých, ktorí majstrovsky "
@@ -5034,10 +4688,6 @@ msgstr "Áaaach!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Blast it, without Inarix to lead his saurians, we can no longer count on "
-#| "their help."
 msgid ""
 "Blast it, without Inarix to lead her saurians, we can no longer count on "
 "their help."

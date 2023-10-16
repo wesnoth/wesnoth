@@ -358,6 +358,16 @@ void synced_context::add_undo_commands(const config& commands, const game_events
 	undo_commands_.emplace_front(commands, ctx);
 }
 
+void synced_context::add_undo_commands(int idx, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(idx, ctx);
+}
+
+void synced_context::add_undo_commands(int idx, const config& args, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(idx, args, ctx);
+}
+
 set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
 	, old_rng_(randomness::generator)

@@ -645,7 +645,11 @@ function wml_actions.put_to_recall_list(cfg)
 end
 
 function wml_actions.allow_undo(cfg)
-	wesnoth.allow_undo()
+	wesnoth.experimental.game_events.set_undoable(true)
+end
+
+function wml_actions.disallow_undo(cfg)
+	wesnoth.experimental.game_events.set_undoable(false)
 end
 
 function wml_actions.allow_end_turn(cfg)
@@ -1024,4 +1028,12 @@ function wml_actions.progress_achievement(cfg)
 	end
 
 	wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, tonumber(cfg.limit) or 999999999)
+end
+
+function wml_actions.on_undo(cfg)
+	if cfg.delayed_variable_substitution then
+		wesnoth.experimental.game_events.add_undo_actions(wml.literal(cfg));
+	else
+		wesnoth.experimental.game_events.add_undo_actions(wml.parsed(cfg));
+	end
 end

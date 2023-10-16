@@ -2,22 +2,34 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
- ### Editor
+   * Under the Burning Suns
+     * More AMLAs for Kaleh and Nym.
+     * Balance changes.
  ### Multiplayer
  ### Multiplayer server
    * Record and replay chat messages when joining a game that has not started yet
  ### Lua API
  ### Packaging
  ### Terrain
+   * New embellishment for adding windows to impassible walls.
  ### Translations
    * Updated translations: Welsh
-   * Updated translations: British English, Chinese (Simplified), French, Slovak
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Slovak
  ### Units
    * Update graphics and stats of Roc
    * New monster unit line - Ravens
+   * New Jumping Spider monster.
+   * More balance changes in multiplayer units.
  ### User interface
+ ### WML API
+   * New ability attributes `halo_image=` and `halo_image_self=`, to illustrate the effects of the illumination ability, HttT's initiative, etc.
+   * New ability attributes `overlay_image=` and `overlay_image_self=`.
+   * New ability tag and attribute `[overwrite]priority=`.
+   * Two new tags, `[filter_ability]` and `[filter_ability_active]`, which have a temporary exception from the API freeze.
  ### WML Engine
+   * The implementation of `[allow_undo]` has changed, the behavior should be the same.
  ### Miscellaneous and Bug Fixes
+   * Asset copyright tracking is now handled in a .csv file, and sanity checked during CI builds.
 
 ## Version 1.17.21
  ### Campaigns

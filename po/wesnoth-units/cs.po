@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2023-06-05 22:05+0200\n"
+"PO-Revision-Date: 2023-10-03 20:51+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2378,17 +2378,6 @@ msgstr "Pouštní úderný jezdec"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Among the many different type of Dune horsemen, there are those who most "
-#| "enjoy the frantic melee at the heart of battle. Bearing short-ranged "
-#| "maces, these sunderers are sturdy, robust warriors who have both the "
-#| "disposition and skill to survive multiple skirmishes. Though not "
-#| "particularly creative or special warriors, such a rider is not impotent "
-#| "in any way  — even a small group of sunderers is powerful enough to "
-#| "breach most enemy lines through sheer force. In a situation that requires "
-#| "it, these horsemen also possess enough skill at archery to weaken enemy "
-#| "forces or pick off fleeing stragglers."
 msgid ""
 "Among the many different type of Dune horsemen, there are those who most "
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
@@ -3079,7 +3068,7 @@ msgstr ""
 "Šerm je mezi elfy nejčastěji využíván hraničáři a pomezními strážemi, které "
 "brání hlavně lesy a příležitostněji slouží jako čety, jež pronikají na jiná "
 "území. Elfské šermířství je známé pro svůj důraz na rychlé, hbité rány, "
-"které jsou sice slabší než od lidských nebo skřetích  válečníků, zato ale "
+"které jsou sice slabší než od lidských nebo skřetích válečníků, zato ale "
 "ponechávají méně času na reakci a odpor. Většina elfů se dokáže naučit "
 "základy šermu relativně rychle a když čelí bitvě, pohotově tasí čepel."
 
@@ -5775,8 +5764,8 @@ msgid ""
 "earth to the tops of tall mountains. Though normally not hostile, they can "
 "bite at close range."
 msgstr ""
-"Obří mravenci se běžně vyskytují v téměř jakémkoli prostředí, od jeskyní "
-"hluboko pod zemí až po vrcholky velehor. I když obvykle nejsou nepřátelští, "
+"Obří mravenci se běžně vyskytují v téměř jakémkoli prostředí, od jeskyní "
+"hluboko pod zemí až po vrcholky velehor. I když obvykle nejsou nepřátelští, "
 "při přiblížení mohou kousat."
 
 #: data/core/units/monsters/Ant_Egg.cfg:4
@@ -5788,13 +5777,17 @@ msgid ""
 "approaches an ant egg or breaches the shell of an adjacent brood member will "
 "spur that ant to hatch as a fully formed adult."
 msgstr ""
+"Vajíčka obřích mravenců mají tvrdou kožovitou skořápku, k jejímuž proražení "
+"je třeba vynaložit úsilí. Tato skořápka sice zvenčí ztěžuje zjištění stavu "
+"jejího obyvatele, ale před uvnitř rychle se vyvíjející mravenčí larvou "
+"vnější svět nezakrývá. Každý predátor nebo nepřítel, který se přiblíží "
+"k mravenčímu vajíčku nebo prolomí skořápku sousedního člena líhně, podnítí "
+"vylíhnutí tohoto mravence jako plně vyvinutého dospělce."
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:9
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Egg"
-msgstr "Obří mravenec"
+msgstr "Vejce obřího mravence"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
@@ -5805,13 +5798,16 @@ msgid ""
 "any suitable location.\n"
 "\n"
 msgstr ""
+"Obří mravenci se vyskytují téměř v každém prostředí a vajíčka, z nichž se "
+"líhnou, lze často nalézt v jeskyních nebo v kterýchkoli chráněných "
+"podmínkách. Většina vajíček pochází od jedné z královen kolonie, ale dělnice "
+"je přenášejí na libovolné vhodné místo.\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Egg"
-msgstr "Ohnivý mravenec"
+msgstr "Vejce ohnivého mravence"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
@@ -5822,6 +5818,11 @@ msgid ""
 "location.\n"
 "\n"
 msgstr ""
+"Ve velkém množství mohou být ohniví mravenci pro ostatní rasy skutečným "
+"nebezpečím a jejich hrozivé počty začínají jejich vajíčky. Většina vajíček "
+"ohnivých mravenců pochází od jedné z královen kolonie, ale dělnice je "
+"přenášejí na libovolné vhodné místo.\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
@@ -5853,10 +5854,8 @@ msgstr "oheň"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Queen"
-msgstr "Ohnivý mravenec"
+msgstr "Královna ohnivých mravenců"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:52
@@ -5864,6 +5863,8 @@ msgid ""
 "Fire ants possess fierce fangs and an unusual ability to generate fire, and "
 "the queen is no different."
 msgstr ""
+"Ohniví mravenci mají ostrá kusadla a neobvyklou schopnost vytvářet oheň "
+"a v tom se od nich královna nijak neliší."
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
@@ -5892,10 +5893,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:4
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Queen"
-msgstr "Obří mravenec"
+msgstr "Královna obřích mravenců"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
@@ -5909,6 +5908,14 @@ msgid ""
 "can expect a very short continued existence - and if their flesh is warm and "
 "nourishing, they can host an ant egg."
 msgstr ""
+"Obří mravenci se vyskytují téměř v každém prostředí, od jeskyní hluboko pod "
+"zemí až po vrcholky vysokých hor. Královny nejsou vznešené, jak by to "
+"chápalo mnoho jiných ras, ale jsou srdcem každého fungujícího mraveniště "
+"a budou bráněny za každou cenu. Jako základ hnízda musí být schopnými "
+"taktiky a jako cíl soupeřících mravenišť musí být také obratnými "
+"bojovnicemi. Typický člověk nebo skřet, který se ocitne na audienci "
+"u mravenčí královny, může očekávat, že jeho život bude mít velmi krátké "
+"trvání – a pokud je jeho tělo teplé a výživné, může hostit mravenčí vajíčko."
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
@@ -7606,7 +7613,7 @@ msgstr ""
 "Nejzkušenější skřetí vrazi obvykle působí jako žoldáci specializující se na "
 "„řešení vnitřních konfliktů“ a jen zřídka se účastní větších bitev. Tito "
 "skřeti, které jejich činnost přivedla až k překvapivé zručnosti a "
-"ostřílenosti, málokdy spojují svou věrnost s nějakým konkrétním klanem.  "
+"ostřílenosti, málokdy spojují svou věrnost s nějakým konkrétním klanem. "
 "Místo toho nabízejí své služby komukoli, kdo nabídne nejlepší cenu. Poté co "
 "dojde k dohodě a patřičnému plnění, vrah rychle a tiše udeří na svůj cíl a "
 "diskrétně ho pod rouškou tmy eliminuje. Kontrakt se šerobřitem znamená pro "
@@ -7948,12 +7955,6 @@ msgstr "Ještěrácká vrhačka kopí"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Some saurians  with particularly good aim prefer to aid their allies from "
-#| "the backlines rather than to infiltrate enemy formations. Their deadly "
-#| "spear throwing skills allow them to support other saurian warriors from "
-#| "afar."
 msgid ""
 "Some saurians with particularly good aim prefer to aid their allies from the "
 "backlines rather than to infiltrate enemy formations. Their deadly spear "
@@ -8184,10 +8185,8 @@ msgstr ""
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:143
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Rat"
 msgid "wc_variation^Ant"
-msgstr "Krysa"
+msgstr "Mravenec"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:159

@@ -1,2 +1,0 @@
-### WML Engine
-   * add a halo/overlay_image and halo/overlay_image_self attribute to all abilities to be able to illustrate the activity of these abilities (illumination in mainline or initiative ability in Httt)
