@@ -5952,20 +5952,23 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 	return;
 }
 
-void game_lua_kernel::mouse_button_callback(const map_location& loc, const std::string &button, bool down)
+bool game_lua_kernel::mouse_button_callback(const map_location& loc, const std::string &button, const std::string &event)
 {
 	lua_State *L = mState;
 
 	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_button")) {
-		return;
+		return false;
 	}
 
 	lua_push(L, loc.wml_x());
 	lua_push(L, loc.wml_y());
 	lua_push(L, button);
-	lua_push(L, down);
-	luaW_pcall(L, 4, 0, false);
-	return;
+	lua_push(L, event);
+
+	if (!luaW_pcall(L, 4, 1)) return false;
+	bool result = luaW_toboolean(L, -1);
+	lua_pop(L, 1);
+	return result;
 }
 
 void game_lua_kernel::select_hex_callback(const map_location& loc)
