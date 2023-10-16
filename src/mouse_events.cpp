@@ -94,7 +94,7 @@ void mouse_handler::set_side(int side_number)
 int mouse_handler::drag_threshold() const
 {
 	// TODO: Use physical screen size.
-	return 14;
+	return 4;
 }
 
 void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, map_location new_hex)
