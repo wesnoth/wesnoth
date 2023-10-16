@@ -599,7 +599,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 // Hook for notifying lua game kernel of mouse button events. We pass button as
 // a serpaate argument than the original SDL event in order to manage touch
-// emulation (i.e., long touch = right click) and such.
+// emulation (e.g., long touch = right click) and such.
 bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
 									   map_location loc, bool click)
 {
@@ -610,17 +610,17 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 	}
 
 	static const std::string buttons[6] = {
-		[0]					= "",
-		[SDL_BUTTON_LEFT]	= "left",
-		[SDL_BUTTON_MIDDLE]	= "middle",
-		[SDL_BUTTON_RIGHT]	= "right",
-		[SDL_BUTTON_X1]		= "x1",
-		[SDL_BUTTON_X2]		= "x2",
+		"",
+		"left",		// SDL_BUTTON_LEFT
+		"middle",	// SDL_BUTTON_MIDDLE
+		"right",	// SDL_BUTTON_RIGHT
+		"mouse4",	// SDL_BUTTON_X1
+		"mouse5"	// SDL_BUTTON_X2
 	};
 	static const std::string events[3] = {
-		[SDL_RELEASED]		= "up",
-		[SDL_PRESSED]		= "down",
-		[2]					= "click",
+		"up",		// SDL_RELEASED
+		"down",		// SDL_PRESSED
+		"click"
 	};
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
