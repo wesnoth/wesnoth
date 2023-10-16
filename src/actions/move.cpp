@@ -1317,6 +1317,18 @@ void teleport_unit_and_record(const map_location& teleport_from,
 	}
 }
 
+void teleport_unit_from_replay(const std::vector<map_location> &steps,
+	bool continued_move, bool skip_ally_sighted, bool show_move)
+{
+	unit_mover mover(steps, nullptr, continued_move, skip_ally_sighted);
+	if ( !mover.check_expected_movement() )
+	{
+		replay::process_error("found corrupt movement in replay.");
+		return;
+	}
+	mover.try_teleport(show_move);
+}
+
 /**
  * Moves a unit across the board.
  *

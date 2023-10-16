@@ -988,7 +988,7 @@ void mouse_handler::move_action(bool browse)
 			&& u != nullptr
 			&& (u->side() == side_num_ || pc_.get_whiteboard()->is_active())
 			&& !clicked_u
-			&& !current_route_.steps.empty() 
+			&& !current_route_.steps.empty()
 			&& current_route_.steps.front() == selected_hex_
 		)
 		|| // The new use case: move mouse unit to selected hex field.
@@ -998,7 +998,7 @@ void mouse_handler::move_action(bool browse)
 			&& selected_hex_ != hex
 			&& clicked_u
 			&& !current_route_.steps.empty()
-			&& current_route_.steps.back() == selected_hex_ 
+			&& current_route_.steps.back() == selected_hex_
 			&& !u
 			&& clicked_u->side() == side_num_
 		)

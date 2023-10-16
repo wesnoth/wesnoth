@@ -517,12 +517,6 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 	mover.finish(u, dir);
 }
 
-void unit_teleport(const map_location& teleport_from, unit& u, const map_location& teleport_to)
-{
-	display* disp = display::get_singleton();
-	teleport_unit_between(teleport_from, teleport_to, u, *disp);
-}
-
 void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,

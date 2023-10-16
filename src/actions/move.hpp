@@ -122,6 +122,16 @@ std::size_t move_unit_and_record(
 	move_unit_spectator* move_spectator = nullptr);
 
 /**
+ * Teleports a unit across the board.
+ * to be called from replay when we are already in the synced context.
+ */
+void teleport_unit_from_replay(
+	const std::vector<map_location> &steps,
+	bool continued_move,
+	bool skip_ally_sighted,
+	bool show_move);
+
+/**
  * Moves a unit across the board.
  * to be called from replay when we are already in the synced context.
  */
