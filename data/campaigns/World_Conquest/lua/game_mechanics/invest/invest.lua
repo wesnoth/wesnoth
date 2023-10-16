@@ -8,9 +8,11 @@ function wc2_invest.add_items(side_num, num_items)
 	local items_left = stringx.split(side.variables["wc2.items_left"] or "")
 	local items_available = stringx.split(side.variables["wc2.items"] or "")
 	for j = 1, num_items do
-		local i = mathx.random(#items_left)
-		table.insert(items_available, items_left[i])
-		table.remove(items_left, i)
+		if #items_left > 0 then
+			local i = mathx.random(#items_left)
+			table.insert(items_available, items_left[i])
+			table.remove(items_left, i)
+		end
 	end
 
 	side.variables["wc2.items_left"] = table.concat(items_left, ",")
