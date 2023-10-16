@@ -70,7 +70,7 @@ on_event("wc2_start", function(cx)
 				side = side_num
 			}
 		end
-	
+
 		if wml.variables.wc2_difficulty.extra_training then
 			for side_num = 1, wml.variables.wc2_player_count do
 				wesnoth.wml_actions.wc2_give_random_training {
