@@ -107,6 +107,7 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
 	const map_location& winner_loc=map_location::null_location(),
 	unit_ptr winner = unit_ptr());
 
+
 /**
  *  Make the unit on tile 'a' attack the unit on tile 'b'.
  *

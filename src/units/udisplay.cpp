@@ -517,6 +517,7 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 	mover.finish(u, dir);
 }
 
+
 void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
