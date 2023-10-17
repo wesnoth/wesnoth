@@ -1,17 +1,13 @@
-## Version 1.17.21+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.22
  ### Campaigns
    * Under the Burning Suns
      * More AMLAs for Kaleh and Nym.
      * Balance changes.
- ### Multiplayer
  ### Multiplayer server
    * Record and replay chat messages when joining a game that has not started yet
  ### Lua API
    * New experimental Lua undo API
    * New Lua mouse click callback
- ### Packaging
  ### Terrain
    * New embellishment for adding windows to impassible walls.
  ### Translations
@@ -21,7 +17,9 @@
    * Update graphics and stats of Roc
    * New monster unit line - Ravens
    * New Jumping Spider monster.
-   * More balance changes in multiplayer units.
+   * Drakes:
+     * Saurian Oracle – xp changed from 66 to 74
+     * Saurian Soothsayer – xp changed from 100 to 66
  ### User interface
    * Village ownership is shown with flag and side number in terrain info (issue #4334)
  ### WML API
