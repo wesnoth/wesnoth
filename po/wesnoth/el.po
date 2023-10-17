@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"POT-Creation-Date: 2023-10-16 23:13-0500\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -383,7 +383,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Λοιποί Συντελεστές"
 
 #. [about]
-#: data/core/about.cfg:1845
+#: data/core/about.cfg:1851
 msgid "Bots"
 msgstr "Υπολογιστής"
 
@@ -627,43 +627,43 @@ msgid "Slovak Translation"
 msgstr "Σλοβακική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1641
+#: data/core/about_i18n.cfg:1644
 msgid "Slovenian Translation"
 msgstr "Σλοβενική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1660
 msgid "Spanish Translation"
 msgstr "Ισπανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1747
+#: data/core/about_i18n.cfg:1750
 msgid "Swedish Translation"
 msgstr "Σουηδική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1792
+#: data/core/about_i18n.cfg:1795
 msgid "Turkish Translation"
 msgstr "Τουρκική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1817
+#: data/core/about_i18n.cfg:1820
 msgid "Ukrainian Translation"
 msgstr "Ουκρανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1833
+#: data/core/about_i18n.cfg:1836
 msgid "Valencian (southern Catalan) Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about_i18n.cfg:1846
+#: data/core/about_i18n.cfg:1849
 msgid "Vietnamese Translation"
 msgstr "Βιετναμέζικη Μετάφραση"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1876
 msgid "RACV’s Translation"
 msgstr "Μετάφραση RACV"
 
@@ -2998,7 +2998,7 @@ msgid "Weight of Revenge"
 msgstr "Φωτεινό πορτοκαλί"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3537,7 +3537,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:875
+#: data/lua/wml-tags.lua:879
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -3872,7 +3872,7 @@ msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:407
+#: data/themes/default.cfg:408
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -7176,7 +7176,7 @@ msgstr "Άκυρη περιοχή"
 msgid "prompt^Command:"
 msgstr "Εντολή:"
 
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1215
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7185,13 +7185,13 @@ msgstr ""
 "Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
 "ανακαλέσεις μονάδες"
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Επιτιθέμενος"
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 msgid "This unit has no usable weapons."
 msgstr "Επιλέξτε όπλο:"
@@ -7770,23 +7770,23 @@ msgid ""
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1691
+#: src/reports.cpp:1723
 msgid "Observers:"
 msgstr "Παρατηρητές:"
 
-#: src/reports.cpp:1711
+#: src/reports.cpp:1743
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1722
+#: src/reports.cpp:1754
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8144,21 +8144,21 @@ msgstr "Ωρα της ημέρας"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:920
+#: src/units/abilities.cpp:970
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "επιβραδυμένος:"
 
-#: src/units/abilities.cpp:923
+#: src/units/abilities.cpp:973
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:926
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:939
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr ""
 
@@ -8313,17 +8313,17 @@ msgstr "νομοταγής"
 msgid "female^neutral"
 msgstr "ουδέτερη"
 
-#: src/units/unit.cpp:1989
+#: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/units/unit.cpp:1995
+#: src/units/unit.cpp:1990
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2005
+#: src/units/unit.cpp:2000
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8331,25 +8331,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:2011
+#: src/units/unit.cpp:2006
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2015
+#: src/units/unit.cpp:2010
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2020
+#: src/units/unit.cpp:2015
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2019
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8358,13 +8358,13 @@ msgid_plural ""
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:2031
+#: src/units/unit.cpp:2026
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2498
+#: src/units/unit.cpp:2493
 msgid "$effect_description per level"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"POT-Creation-Date: 2023-10-16 23:13-0500\n"
 "PO-Revision-Date: 2015-11-03 13:30+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -408,7 +408,7 @@ msgstr "Contribuidores diversos"
 
 #
 #. [about]
-#: data/core/about.cfg:1845
+#: data/core/about.cfg:1851
 msgid "Bots"
 msgstr "Robôs"
 
@@ -700,50 +700,50 @@ msgstr "Tradução para o Eslovaco"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1641
+#: data/core/about_i18n.cfg:1644
 msgid "Slovenian Translation"
 msgstr "Tradução para o Esloveno"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1660
 msgid "Spanish Translation"
 msgstr "Tradução para o Espanhol"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1747
+#: data/core/about_i18n.cfg:1750
 msgid "Swedish Translation"
 msgstr "Tradução para o Sueco"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1792
+#: data/core/about_i18n.cfg:1795
 msgid "Turkish Translation"
 msgstr "Tradução para o Turco"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1817
+#: data/core/about_i18n.cfg:1820
 msgid "Ukrainian Translation"
 msgstr "Tradução para o Ucraniano"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1833
+#: data/core/about_i18n.cfg:1836
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradução para o Valenciano (Catalão do sul)"
 
 #
 #. [about]
-#: data/core/about_i18n.cfg:1846
+#: data/core/about_i18n.cfg:1849
 msgid "Vietnamese Translation"
 msgstr "Tradução para o Vietnamita"
 
 #
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1876
 msgid "RACV’s Translation"
 msgstr "Tradução para o RACV"
 
@@ -3677,7 +3677,7 @@ msgstr "Inicio da Vingança"
 
 #
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Apanhaste $amount_gold peças de ouro."
 
@@ -4271,7 +4271,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:875
+#: data/lua/wml-tags.lua:879
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -4637,7 +4637,7 @@ msgid "def"
 msgstr "def"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:407
+#: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
 msgstr "nvl"
 
@@ -8640,7 +8640,7 @@ msgid "prompt^Command:"
 msgstr "Comando:"
 
 #
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1215
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -8648,14 +8648,14 @@ msgstr ""
 "Não podes mover o teu líder longe da tua torre com alguns recrutamentos ou "
 "convocatórias planeados restantes."
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 #| msgid "Attack"
 msgid "No Attacks"
 msgstr "Ataque"
 
 #
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -9334,23 +9334,23 @@ msgid ""
 msgstr ""
 
 #
-#: src/reports.cpp:1691
+#: src/reports.cpp:1723
 msgid "Observers:"
 msgstr "Observadores:"
 
-#: src/reports.cpp:1711
+#: src/reports.cpp:1743
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1722
+#: src/reports.cpp:1754
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 #, fuzzy
 #| msgid "End Turn button"
 msgid "Turn Countdown"
@@ -9763,21 +9763,21 @@ msgid "This Time of Day is only a Stub!"
 msgstr ""
 
 #
-#: src/units/abilities.cpp:920
+#: src/units/abilities.cpp:970
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "atrasado: "
 
-#: src/units/abilities.cpp:923
+#: src/units/abilities.cpp:973
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:926
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:939
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9951,19 +9951,19 @@ msgid "female^neutral"
 msgstr "neutra"
 
 #
-#: src/units/unit.cpp:1989
+#: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #
-#: src/units/unit.cpp:1995
+#: src/units/unit.cpp:1990
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "por turno"
 
 #
-#: src/units/unit.cpp:2005
+#: src/units/unit.cpp:2000
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9972,28 +9972,28 @@ msgstr[0] "por turno"
 msgstr[1] "por turno"
 
 #
-#: src/units/unit.cpp:2011
+#: src/units/unit.cpp:2006
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "por turno"
 
 #
-#: src/units/unit.cpp:2015
+#: src/units/unit.cpp:2010
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "por turno"
 
 #
-#: src/units/unit.cpp:2020
+#: src/units/unit.cpp:2015
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "por turno"
 
 #
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2019
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -10003,14 +10003,14 @@ msgstr[0] "por turno"
 msgstr[1] "por turno"
 
 #
-#: src/units/unit.cpp:2031
+#: src/units/unit.cpp:2026
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "por turno"
 
 #
-#: src/units/unit.cpp:2498
+#: src/units/unit.cpp:2493
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
