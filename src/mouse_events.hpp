@@ -119,7 +119,7 @@ protected:
 	 * Due to the way this class is constructed we can assume that the
 	 * display* gui_ member actually points to a game_display (derived class)
 	 */
-	game_display& gui() { return *gui_; }
+	game_display& gui() override { return *gui_; }
 	/** Const version */
 	const game_display& gui() const override { return *gui_; }
 
