@@ -2,7 +2,7 @@
 
 major = 1
 minor = 17
-release = 21
+release = 22
 dev_suffix = "+dev" # either use "+dev", "-dev", "" (empty string) or None
 
 as_string = "{}.{}.{}{}".format(major,

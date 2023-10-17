@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"POT-Creation-Date: 2023-10-16 23:13-0500\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -364,7 +364,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Altres contribucions"
 
 #. [about]
-#: data/core/about.cfg:1845
+#: data/core/about.cfg:1851
 msgid "Bots"
 msgstr "Robots"
 
@@ -615,46 +615,46 @@ msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1641
+#: data/core/about_i18n.cfg:1644
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslovè"
 
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1660
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1747
+#: data/core/about_i18n.cfg:1750
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1792
+#: data/core/about_i18n.cfg:1795
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1817
+#: data/core/about_i18n.cfg:1820
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al romanès"
 
 #. [about]
-#: data/core/about_i18n.cfg:1833
+#: data/core/about_i18n.cfg:1836
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià (català meridional)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1846
+#: data/core/about_i18n.cfg:1849
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al xinès"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1876
 msgid "RACV’s Translation"
 msgstr "Traducció a l'idioma de la RACV"
 
@@ -3366,7 +3366,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3914,7 +3914,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:875
+#: data/lua/wml-tags.lua:879
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -4245,7 +4245,7 @@ msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:407
+#: data/themes/default.cfg:408
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -7656,7 +7656,7 @@ msgstr "Color no vàlid"
 msgid "prompt^Command:"
 msgstr "Comanda:"
 
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1215
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7664,13 +7664,13 @@ msgid ""
 msgstr ""
 "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Atacant"
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -8293,23 +8293,23 @@ msgid ""
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1691
+#: src/reports.cpp:1723
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/reports.cpp:1711
+#: src/reports.cpp:1743
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1722
+#: src/reports.cpp:1754
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8678,21 +8678,21 @@ msgstr "Hora del dia"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:920
+#: src/units/abilities.cpp:970
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "alentit: "
 
-#: src/units/abilities.cpp:923
+#: src/units/abilities.cpp:973
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:926
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:939
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr ""
 
@@ -8850,17 +8850,17 @@ msgstr "lleial"
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/unit.cpp:1989
+#: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1995
+#: src/units/unit.cpp:1990
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2005
+#: src/units/unit.cpp:2000
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8868,25 +8868,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:2011
+#: src/units/unit.cpp:2006
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2015
+#: src/units/unit.cpp:2010
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2020
+#: src/units/unit.cpp:2015
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2019
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8895,13 +8895,13 @@ msgid_plural ""
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:2031
+#: src/units/unit.cpp:2026
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2498
+#: src/units/unit.cpp:2493
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"

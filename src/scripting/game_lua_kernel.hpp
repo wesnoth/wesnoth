@@ -274,6 +274,7 @@ public:
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
 
 	void mouse_over_hex_callback(const map_location& loc);
+	bool mouse_button_callback(const map_location& loc, const std::string &button, const std::string &event);
 	void select_hex_callback(const map_location& loc);
 	void preload_finished() {has_preloaded_ = true;}
 };
