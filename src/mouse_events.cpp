@@ -603,13 +603,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
 									   map_location loc, bool click)
 {
-	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > SDL_BUTTON_X2) {
-		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
-		return false;
-	}
-
-	static const std::string buttons[6] = {
+	static const std::array<const std::string, 6> buttons = {
 		"",
 		"left",		// SDL_BUTTON_LEFT
 		"middle",	// SDL_BUTTON_MIDDLE
@@ -617,14 +611,15 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 		"mouse4",	// SDL_BUTTON_X1
 		"mouse5"	// SDL_BUTTON_X2
 	};
-	static const std::string events[3] = {
-		"up",		// SDL_RELEASED
-		"down",		// SDL_PRESSED
-		"click"
-	};
+
+	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
+		return false;
+	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+		return false;
+	}
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->mouse_button_callback(loc, buttons[button], events[event.state]);
+		lk->mouse_button_callback(loc, buttons[button], (event.state == SDL_RELEASED ? "up" : "down"));
 
 		// Are we being asked to send a click event?
 		if (click) {
@@ -633,7 +628,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 				return false;
 			}
 			// We allow this event to be consumed, but not up/down
-			return lk->mouse_button_callback(loc, buttons[button], events[2]);
+			return lk->mouse_button_callback(loc, buttons[button], "click");
 		}
 	}
 	return false;
