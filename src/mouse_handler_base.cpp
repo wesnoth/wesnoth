@@ -239,6 +239,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		}
 	} else if(is_middle_click(event)) {
 		if(event.state == SDL_PRESSED) {
+			drag_from_hex_ = loc;
 			set_scroll_start(event.x, event.y);
 			scroll_started_ = true;
 
@@ -249,13 +250,14 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 				minimap_scrolling_ = true;
 				last_hex_ = minimap_loc;
 				gui().scroll_to_tile(minimap_loc, display::WARP, false);
+			} else if(mouse_button_event(event, SDL_BUTTON_MIDDLE, loc, true)) {
+				scroll_started_ = false;
+				simple_warp_ = false;
 			} else if(simple_warp_) {
 				// middle click not on minimap, check gamemap instead
 				if(loc.valid()) {
 					last_hex_ = loc;
-					if (!mouse_button_event(event, SDL_BUTTON_MIDDLE, loc, true)) {
-						gui().scroll_to_tile(loc, display::WARP, false);
-					}
+					gui().scroll_to_tile(loc, display::WARP, false);
 				}
 			} else {
 				// Deselect the current tile as we're scrolling
@@ -269,11 +271,10 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			clear_drag_from_hex();
 		}
 	} else if(event.button == SDL_BUTTON_X1 || event.button == SDL_BUTTON_X2) {
-		bool dummy_flag = false;
 		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
 			// record mouse-down hex in drag_from_hex_
-			init_dragging(dummy_flag);
+			drag_from_hex_ = loc;
 			mouse_button_event(event, event.button, loc);
 		} else {
 			mouse_button_event(event, event.button, loc, true);
