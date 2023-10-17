@@ -23,6 +23,7 @@
    * New Jumping Spider monster.
    * More balance changes in multiplayer units.
  ### User interface
+   * Village ownership is shown with flag and side number in terrain info (issue #4334)
  ### WML API
    * New ability attributes `halo_image=` and `halo_image_self=`, to illustrate the effects of the illumination ability, HttT's initiative, etc.
    * New ability attributes `overlay_image=` and `overlay_image_self=`.
