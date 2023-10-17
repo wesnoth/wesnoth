@@ -96,6 +96,7 @@ public:
 			= 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
+	virtual bool mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc, bool click = false);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
@@ -216,6 +217,7 @@ public:
 protected:
 	void cancel_dragging();
 	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
+	void clear_drag_from_hex();
 	void init_dragging(bool& dragging_flag);
 
 	/** MMB click (on game map) state flag */
@@ -242,7 +244,7 @@ protected:
 	/** Drag start position y */
 	int drag_from_y_;
 
-	/** Drag start map location */
+	/** Drag start or mouse-down map location */
 	map_location drag_from_hex_;
 
 	/** last highlighted hex */
