@@ -9,6 +9,8 @@
  ### Multiplayer server
    * Record and replay chat messages when joining a game that has not started yet
  ### Lua API
+   * New experimental Lua undo API
+   * New Lua mouse click callback
  ### Packaging
  ### Terrain
    * New embellishment for adding windows to impassible walls.
