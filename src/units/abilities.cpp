@@ -1312,7 +1312,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, true) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
 				return false;
 		}
 

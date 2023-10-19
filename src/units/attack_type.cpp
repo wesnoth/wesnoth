@@ -101,7 +101,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, bool can_loop)
+static bool matches_simple_filter(const attack_type & attack, const config & filter)
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -112,6 +112,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::string& filter_attacks_used = filter["attacks_used"];
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
+	const std::vector<std::string> filter_replacement_type = utils::split(filter["replacement_type"]);
+	const std::vector<std::string> filter_alternative_type = utils::split(filter["alternative_type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -147,20 +149,16 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
 		return false;
 
-	if(!can_loop){
-		const std::vector<std::string> filter_replacement_type = utils::split(filter["replacement_type"]);
-		const std::vector<std::string> filter_alternative_type = utils::split(filter["alternative_type"]);
-		if(!filter_alternative_type.empty() || !filter_replacement_type.empty()){
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if(!filter_replacement_type.empty()){
-				if ( std::find(filter_replacement_type.begin(), filter_replacement_type.end(), damage_type.first) == filter_replacement_type.end() ){
-					return false;
-				}
+	if(!filter_alternative_type.empty() || !filter_replacement_type.empty()){
+		std::pair<std::string, std::string> damage_type = attack.damage_type();
+		if(!filter_replacement_type.empty()){
+			if ( std::find(filter_replacement_type.begin(), filter_replacement_type.end(), damage_type.first) == filter_replacement_type.end() ){
+				return false;
 			}
-			if(!filter_alternative_type.empty()){
-				if ( std::find(filter_alternative_type.begin(), filter_alternative_type.end(), damage_type.second) == filter_alternative_type.end() ){
-					return false;
-				}
+		}
+		if(!filter_alternative_type.empty()){
+			if ( std::find(filter_alternative_type.begin(), filter_alternative_type.end(), damage_type.second) == filter_alternative_type.end() ){
+				return false;
 			}
 		}
 	}
@@ -263,25 +261,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, bool can_loop) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, can_loop);
+	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, can_loop);
+			matches = matches && matches_filter(condition.cfg);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, can_loop);
+			matches = matches || matches_filter(condition.cfg);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, can_loop);
+			matches = matches && !matches_filter(condition.cfg);
 	}
 
 	return matches;
