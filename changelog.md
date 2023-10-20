@@ -9,6 +9,8 @@
  ### Terrain
  ### Translations
  ### Units
+   * Drakes:
+     * Saurian Seer - modify the unit to fix reductions in power level between level 2 and level 3.
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
