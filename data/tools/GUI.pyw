@@ -56,38 +56,39 @@ WESNOTH_TRAN_DIR = os.path.join(WESNOTH_ROOT_DIR, "translations")
 _ = lambda x: x
 
 
-def set_default_locale():
+def set_user_locale():
     global _
 
     # TODO: Replace CLI args for a proper locale selection GUI.
     # More importantly, code to dynamically update the text/layout is missing.
     parser = argparse.ArgumentParser(
-        description=_("Open a Graphical User Interface (GUI) to WML Tools"),
-        usage=("GUI.pyw [--lang=" + _("LANGUAGE") + "]")
+        description=_("Open a Graphical User Interface (GUI) to WML Tools")
     )
     parser.add_argument(
         '--lang',
-        # TRANSLATORS: ISO 15897 "Procedures for the registration of cultural elements" specifies use
-        # of underscores in the locale id. For example, use en_GB, not en-GB.
-        help=_("Launch GUI.pyw in the given language. Language code must follow ISO 15897 (e.g. en_GB).")
+        help=_("Launch GUI.pyw in the specified language. Language code is expected as a POSIX locale name, refer to "
+               "gettext.wesnoth.org for a full list.")
     )
+
     opts = parser.parse_args(sys.argv[1:])
     if opts.lang is not None:
         if not os.path.isdir(WESNOTH_TRAN_DIR):
-            showerror(_("Error"),
-                      # TRANSLATORS: {0} is "translations", the folder where compiled translation files (.mo) are stored.
-                      _("`{0}` folder not found. Please run the GUI.pyw executable packaged with the Wesnoth installation.").format(
-                          "translations")
-                      )
+            showerror(
+                _("Error"),
+                # TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
+                _("`{0}` directory not found. Please run the GUI.pyw program packaged with the Wesnoth installation.").
+                format("translations")
+            )
 
         try:
             _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[opts.lang], fallback=False).gettext
 
         except OSError:
-            showerror(_("Error"),
-                      # TRANSLATORS: {0} is the ISO 15897 code for the language selected by the user.
-                      _("Locale {0} not recognized.").format(opts.lang)
-                      )
+            showerror(
+                _("Error"),
+                # TRANSLATORS: {0} is the language argument entered by the user.
+                _("Locale {0} not recognized.").format(opts.lang)
+            )
 
         return
 
@@ -105,7 +106,7 @@ def set_default_locale():
 def on_update_locale(value):
     if value is None:
         try:
-            set_default_locale()
+            set_user_locale()
         except:
             # _ defaults to identity lambda.
             pass
