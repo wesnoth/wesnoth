@@ -1571,6 +1571,7 @@ The tool will not be run."""))
             wmlxgettext_command_string.append("--recursive")
         output_file = self.wmlxgettext_tab.output_variable.get()
         if os.path.exists(output_file):
+            # TRANSLATORS: dialogue box title.
             answer = askyesno(title=_("Overwrite confirmation"),
                               # TRANSLATORS: {} is a placeholder for a file name, and not meant to be modified.
                               message=_("""File {} already exists.
