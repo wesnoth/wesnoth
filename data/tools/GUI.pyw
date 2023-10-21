@@ -1571,8 +1571,8 @@ The tool will not be run."""))
             wmlxgettext_command_string.append("--recursive")
         output_file = self.wmlxgettext_tab.output_variable.get()
         if os.path.exists(output_file):
-            # TRANSLATORS: dialogue box title.
-            answer = askyesno(title=_("Overwrite confirmation"),
+            # TRANSLATORS: Dialogue box title.
+            answer = askyesno(title=_("Overwrite Confirmation"),
                               # TRANSLATORS: {} is a placeholder for a file name, and not meant to be modified.
                               message=_("""File {} already exists.
 Do you want to overwrite it?""").format(output_file))
@@ -1659,7 +1659,8 @@ Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), a
         # check if the text widget contains something
         # and ask for a confirmation if so
         if self.text.edit_modified():
-            answer = askyesno(_("Exit confirmation"),
+            # TRANSLATORS: Dialogue box title.
+            answer = askyesno(_("Exit Confirmation"),
                               _("Do you really want to quit?"),
                               icon=WARNING)
             if answer:
@@ -1941,5 +1942,5 @@ VEPjiOPN2tys7Y04Zj8UEAA7''')
     sys.exit(0)
 else:
     root.withdraw()  # avoid showing a blank Tk window
-    showerror(_("Error"), _("This application must be placed into the wesnoth/data/tools directory"))
+    showerror(_("Error"), _("This application must be placed into the wesnoth/data/tools directory."))
     sys.exit(1)
