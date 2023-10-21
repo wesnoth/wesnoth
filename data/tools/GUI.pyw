@@ -622,12 +622,15 @@ class WmllintTab(Frame):
         # Frame.__init__(self,parent)
         super().__init__(parent)
         self.mode_variable = IntVar()
+
         self.mode_frame = LabelFrame(self,
                                      text=_("wmllint mode"))
         self.mode_frame.grid(row=0,
                              column=0,
                              sticky=N + E + S + W)
+
         self.radio_normal = Radiobutton(self.mode_frame,
+                                        # TRANSLATORS: Normal run mode for wmllint.
                                         text=_("Normal"),
                                         variable=self.mode_variable,
                                         value=0)
@@ -636,7 +639,9 @@ class WmllintTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_normal = Tooltip(self.radio_normal,
-                                      _("Perform file conversion"))
+                                      # TRANSLATORS: Tool-tip explanation for normal run mode.
+                                      _("Perform conversion and save changes to file"))
+
         self.radio_dryrun = Radiobutton(self.mode_frame,
                                         text=_("Dry run"),
                                         variable=self.mode_variable,
@@ -646,8 +651,9 @@ class WmllintTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_dryrun = Tooltip(self.radio_dryrun,
-                                      # TRANSLATORS: Explanation for Dry run.
-                                      _("Do not perform changes"))
+                                      # TRANSLATORS: Tool-tip explanation for dry run mode.
+                                      _("Perform conversion without saving changes to file"))
+
         self.radio_clean = Radiobutton(self.mode_frame,
                                        text=_("Clean"),
                                        variable=self.mode_variable,
@@ -657,8 +663,9 @@ class WmllintTab(Frame):
                               sticky=W,
                               padx=10)
         self.tooltip_clean = Tooltip(self.radio_clean,
-                                     # TRANSLATORS: Explanation for Clean.
-                                     _("Delete *.bak files"))
+                                     # TRANSLATORS: Tool-tip explanation for clean mode.
+                                     _("Delete back-up files"))
+
         self.radio_diff = Radiobutton(self.mode_frame,
                                       text=_("Diff"),
                                       variable=self.mode_variable,
@@ -668,8 +675,9 @@ class WmllintTab(Frame):
                              sticky=W,
                              padx=10)
         self.tooltip_diff = Tooltip(self.radio_diff,
-                                    # TRANSLATORS: Explanation for Diff.
+                                    # TRANSLATORS: Tool-tip explanation for diff run mode.
                                     _("Show differences in converted files"))
+
         self.radio_revert = Radiobutton(self.mode_frame,
                                         text=_("Revert"),
                                         variable=self.mode_variable,
@@ -679,31 +687,39 @@ class WmllintTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_revert = Tooltip(self.radio_revert,
-                                      # TRANSLATORS: Explanation for Revert.
-                                      _("Revert conversions using *.bak files"))
+                                      # TRANSLATORS: Tool-tip explanation for revert run mode.
+                                      _("Revert conversions using back-up files"))
+
         self.verbosity_frame = LabelFrame(self,
                                           text=_("Verbosity level"))
         self.verbosity_frame.grid(row=0,
                                   column=1,
                                   sticky=N + E + S + W)
+
         self.verbosity_variable = IntVar()
         self.radio_v0 = Radiobutton(self.verbosity_frame,
+                                    # TRANSLATORS: Verbosity level.
                                     text=_("Terse"),
                                     variable=self.verbosity_variable,
                                     value=0)
+
         self.radio_v0.grid(row=0,
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.radio_v1 = Radiobutton(self.verbosity_frame,
-                                    text=_("List changes"),
+                                    # TRANSLATORS: Verbosity level.
+                                    text=_("Show changes"),
                                     variable=self.verbosity_variable,
                                     value=1)
         self.radio_v1.grid(row=1,
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.radio_v2 = Radiobutton(self.verbosity_frame,
+                                    # TRANSLATORS: Verbosity level.
                                     text=_("Name files before processing"),
                                     variable=self.verbosity_variable,
                                     value=2)
@@ -711,7 +727,9 @@ class WmllintTab(Frame):
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.radio_v3 = Radiobutton(self.verbosity_frame,
+                                    # TRANSLATORS: Verbosity level.
                                     text=_("Show parse details"),
                                     variable=self.verbosity_variable,
                                     value=3)
@@ -719,28 +737,34 @@ class WmllintTab(Frame):
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.options_frame = LabelFrame(self,
                                         text=_("wmllint options"))
         self.options_frame.grid(row=0,
                                 column=2,
                                 sticky=N + E + S + W)
+
         self.stripcr_variable = BooleanVar()
         self.stripcr_check = Checkbutton(self.options_frame,
-                                         # TRANSLATORS: Special characters marking end of line.
-                                         text=_("Convert EOL characters to Unix style"),
+                                         # TRANSLATORS: EOL = Special characters marking 'end-of-line'.
+                                         text=_("Convert EOL characters to Unix format"),
                                          variable=self.stripcr_variable)
         self.stripcr_check.grid(row=0,
                                 column=0,
                                 sticky=W,
                                 padx=10)
+
         self.missing_variable = BooleanVar()
         self.missing_check = Checkbutton(self.options_frame,
-                                         text=_("Don't warn about tags without side= keys"),
+                                         # TRANSLATORS: 'side=' in this context refers to WML and should not be
+                                         # translated.
+                                         text=_("Do not warn about tags without side= keys"),
                                          variable=self.missing_variable)
         self.missing_check.grid(row=1,
                                 column=0,
                                 sticky=W,
                                 padx=10)
+
         self.known_variable = BooleanVar()
         self.known_check = Checkbutton(self.options_frame,
                                        text=_("Disable checks for unknown units"),
@@ -749,6 +773,7 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
+
         self.spell_variable = BooleanVar()
         self.spell_check = Checkbutton(self.options_frame,
                                        text=_("Disable spellchecking"),
@@ -757,6 +782,7 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
+
         self.skip_variable = BooleanVar()
         self.skip_core = Checkbutton(self.options_frame,
                                      text=_("Skip core directory"),
@@ -766,6 +792,7 @@ class WmllintTab(Frame):
                             column=0,
                             sticky=W,
                             padx=10)
+
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
         self.columnconfigure(2, weight=1)
@@ -789,10 +816,12 @@ class WmlscopeTab(Frame):
         self.options_frame.grid(row=0,
                                 column=0,
                                 sticky=N + E + S + W)
+
         self.normal_options = Frame(self.options_frame)
         self.normal_options.grid(row=0,
                                  column=0,
                                  sticky=N + E + S + W)
+
         self.crossreference_variable = BooleanVar()  # equivalent to warnlevel 1
         self.crossreference_check = Checkbutton(self.normal_options,
                                                 text=_("Check for duplicate macro definitions"),
@@ -801,6 +830,7 @@ class WmlscopeTab(Frame):
                                        column=0,
                                        sticky=W,
                                        padx=10)
+
         self.collisions_variable = BooleanVar()
         self.collisions_check = Checkbutton(self.normal_options,
                                             text=_("Check for duplicate resource files"),
@@ -809,6 +839,7 @@ class WmlscopeTab(Frame):
                                    column=0,
                                    sticky=W,
                                    padx=10)
+
         self.definitions_variable = BooleanVar()
         self.definitions_check = Checkbutton(self.normal_options,
                                              text=_("Make definition list"),
@@ -817,6 +848,7 @@ class WmlscopeTab(Frame):
                                     column=0,
                                     sticky=W,
                                     padx=10)
+
         self.listfiles_variable = BooleanVar()
         self.listfiles_check = Checkbutton(self.normal_options,
                                            text=_("List files that will be processed"),
@@ -825,6 +857,7 @@ class WmlscopeTab(Frame):
                                   column=0,
                                   sticky=W,
                                   padx=10)
+
         self.unresolved_variable = BooleanVar()
         self.unresolved_check = Checkbutton(self.normal_options,
                                             text=_("Report unresolved macro references"),
@@ -833,6 +866,7 @@ class WmlscopeTab(Frame):
                                    column=0,
                                    sticky=W,
                                    padx=10)
+
         self.extracthelp_variable = BooleanVar()
         self.extracthelp_check = Checkbutton(self.normal_options,
                                              text=_("Extract help from macro definition comments"),
@@ -841,6 +875,7 @@ class WmlscopeTab(Frame):
                                     column=0,
                                     sticky=W,
                                     padx=10)
+
         self.unchecked_variable = BooleanVar()
         self.unchecked_check = Checkbutton(self.normal_options,
                                            text=_("Report all macros with untyped formals"),
@@ -849,6 +884,7 @@ class WmlscopeTab(Frame):
                                   column=0,
                                   sticky=W,
                                   padx=10)
+
         self.progress_variable = BooleanVar()
         self.progress_check = Checkbutton(self.normal_options,
                                           text=_("Show progress"),
@@ -857,18 +893,21 @@ class WmlscopeTab(Frame):
                                  column=0,
                                  sticky=W,
                                  padx=10)
+
         self.separator = Separator(self.options_frame,
                                    orient=VERTICAL)
         self.separator.grid(row=0,
                             column=1,
                             sticky=N + S)
+
         self.options_with_regexp = Frame(self.options_frame)
         self.options_with_regexp.grid(row=0,
                                       column=2,
                                       sticky=N + E + S + W)
+
         self.exclude_variable = BooleanVar()
         self.exclude_check = Checkbutton(self.options_with_regexp,
-                                         text=_("Exclude files matching regexp:"),
+                                         text=_("Exclude files matching regular expression:"),
                                          variable=self.exclude_variable,
                                          command=self.exclude_callback)
         self.exclude_check.grid(row=0,
@@ -883,9 +922,10 @@ class WmlscopeTab(Frame):
                                 column=1,
                                 sticky=E + W,
                                 padx=10)
+
         self.from_variable = BooleanVar()
         self.from_check = Checkbutton(self.options_with_regexp,
-                                      text=_("Exclude files not matching regexp:"),
+                                      text=_("Exclude files not matching regular expression:"),
                                       variable=self.from_variable,
                                       command=self.from_callback)
         self.from_check.grid(row=1,
@@ -900,9 +940,12 @@ class WmlscopeTab(Frame):
                              column=1,
                              sticky=E + W,
                              padx=10)
+
         self.refcount_variable = BooleanVar()
         self.refcount_check = Checkbutton(self.options_with_regexp,
-                                          text=_("Report only on macros referenced\nin exactly n files:"),
+                                          # TRANSLATORS: 'n' in this context refers to number, as in 'n number of
+                                          # files'.
+                                          text=_("Report only on macros referenced in exactly n files:"),
                                           variable=self.refcount_variable,
                                           command=self.refcount_callback)
         self.refcount_check.grid(row=2,
@@ -919,9 +962,10 @@ class WmlscopeTab(Frame):
                                 column=1,
                                 sticky=E + W,
                                 padx=10)
+
         self.typelist_variable = BooleanVar()
         self.typelist_check = Checkbutton(self.options_with_regexp,
-                                          text=_("Report macro definitions and usages in file"),
+                                          text=_("Report macro definitions and usages in file:"),
                                           variable=self.typelist_variable,
                                           command=self.typelist_callback)
         self.typelist_check.grid(row=3,
@@ -936,10 +980,10 @@ class WmlscopeTab(Frame):
                                  column=1,
                                  sticky=E + W,
                                  padx=10)
+
         self.force_variable = BooleanVar()
         self.force_check = Checkbutton(self.options_with_regexp,
-                                       # TRANSLATORS: regexp is "regular expression".
-                                       text=_("Allow unused macros with names matching regexp:"),
+                                       text=_("Allow unused macros with names matching regular expression:"),
                                        variable=self.force_variable,
                                        command=self.force_callback)
         self.force_check.grid(row=4,
@@ -954,6 +998,7 @@ class WmlscopeTab(Frame):
                               column=1,
                               sticky=E + W,
                               padx=10)
+
         self.columnconfigure(0, weight=1)
         self.options_frame.columnconfigure(0, weight=1)
         self.options_frame.columnconfigure(2, weight=1)
@@ -1004,7 +1049,9 @@ class WmlindentTab(Frame):
         self.mode_frame.grid(row=0,
                              column=0,
                              sticky=N + E + S + W)
+
         self.radio_normal = Radiobutton(self.mode_frame,
+                                        # TRANSLATORS: Normal run mode for wmlindent.
                                         text=_("Normal"),
                                         variable=self.mode_variable,
                                         value=0)
@@ -1013,8 +1060,9 @@ class WmlindentTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_normal = Tooltip(self.radio_normal,
-                                      # TRANSLATORS: Explanation for Normal.
-                                      _("Perform file conversion"))
+                                      # TRANSLATORS: Tool-tip explanation for normal run mode.
+                                      _("Perform conversion and save changes to file"))
+
         self.radio_dryrun = Radiobutton(self.mode_frame,
                                         text=_("Dry run"),
                                         variable=self.mode_variable,
@@ -1024,14 +1072,18 @@ class WmlindentTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_dryrun = Tooltip(self.radio_dryrun,
-                                      _("Do not perform changes"))
+                                      # TRANSLATORS: Tool-tip explanation for dry run mode.
+                                      _("Perform conversion without saving changes to file"))
+
         self.verbosity_frame = LabelFrame(self,
                                           text=_("Verbosity level"))
         self.verbosity_frame.grid(row=0,
                                   column=1,
                                   sticky=N + E + S + W)
         self.verbosity_variable = IntVar()
+
         self.radio_v0 = Radiobutton(self.verbosity_frame,
+                                    # TRANSLATORS: Verbosity level.
                                     text=_("Terse"),
                                     variable=self.verbosity_variable,
                                     value=0)
@@ -1039,7 +1091,9 @@ class WmlindentTab(Frame):
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.radio_v1 = Radiobutton(self.verbosity_frame,
+                                    # TRANSLATORS: Verbosity level.
                                     text=_("Verbose"),
                                     variable=self.verbosity_variable,
                                     value=1)
@@ -1047,7 +1101,9 @@ class WmlindentTab(Frame):
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.radio_v2 = Radiobutton(self.verbosity_frame,
+                                    # TRANSLATORS: Verbosity level.
                                     text=_("Report unchanged files"),
                                     variable=self.verbosity_variable,
                                     value=2)
@@ -1055,21 +1111,23 @@ class WmlindentTab(Frame):
                            column=0,
                            sticky=W,
                            padx=10)
+
         self.options_frame = LabelFrame(self,
                                         text=_("wmlindent options"))
         self.options_frame.grid(row=0,
                                 column=2,
                                 sticky=N + E + S + W)
+
         self.exclude_variable = BooleanVar()
         self.exclude_check = Checkbutton(self.options_frame,
-                                         text=_("Exclude files\nmatching regexp:"),
+                                         text=_("Exclude files matching regular expression:"),
                                          variable=self.exclude_variable,
                                          command=self.exclude_callback)
         self.exclude_check.grid(row=1,
                                 column=0,
-                                columnspan=2,
                                 sticky=W,
                                 padx=10)
+
         self.regexp_variable = StringVar()
         self.regexp_entry = EntryContext(self.options_frame,
                                          textvariable=self.regexp_variable,
@@ -1078,14 +1136,20 @@ class WmlindentTab(Frame):
                                column=1,
                                sticky=E + W,
                                padx=10)
+
         self.quiet_variable = BooleanVar()
         self.quiet_check = Checkbutton(self.options_frame,
-                                       text=_("Do not generate output"),
+                                       # TRANSLATORS: Option to run 'quietly'.
+                                       text=_("Quiet mode"),
                                        variable=self.quiet_variable)
         self.quiet_check.grid(row=2,
                               column=0,
                               sticky=W,
                               padx=10)
+        self.tooltip_quiet = Tooltip(self.quiet_check,
+                                     # TRANSLATORS: Tool-tip explanation for quiet option.
+                                     _("Do not generate output messages"))
+
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
         self.columnconfigure(2, weight=1)
