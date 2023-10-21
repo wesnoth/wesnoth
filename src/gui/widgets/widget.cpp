@@ -230,6 +230,7 @@ void widget::set_size(const point& size)
 	assert(size.x >= 0);
 	assert(size.y >= 0);
 
+	queue_redraw();
 	width_ = size.x;
 	height_ = size.y;
 
@@ -241,6 +242,7 @@ void widget::place(const point& origin, const point& size)
 	assert(size.x >= 0);
 	assert(size.y >= 0);
 
+	queue_redraw();
 	x_ = origin.x;
 	y_ = origin.y;
 	width_ = size.x;
