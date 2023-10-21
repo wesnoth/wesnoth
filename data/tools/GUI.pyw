@@ -1376,9 +1376,8 @@ wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
 
     def on_run_wmlscope(self):
         # build the command line
-        wmlscope_command_string = []
-        wmlscope_command_string.append(sys.executable)
-        wmlscope_command_string.append(os.path.join(APP_DIR, "wmlscope"))
+        wmlscope_command_string = [sys.executable, os.path.join(APP_DIR, "wmlscope")]
+
         if self.wmlscope_tab.crossreference_variable.get():
             wmlscope_command_string.append("--crossreference")
         if self.wmlscope_tab.collisions_variable.get():
@@ -1446,9 +1445,8 @@ wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
 
     def on_run_wmlindent(self):
         # build the command line
-        wmlindent_command_string = []
-        wmlindent_command_string.append(sys.executable)
-        wmlindent_command_string.append(os.path.join(APP_DIR, "wmlindent"))
+        wmlindent_command_string = [sys.executable, os.path.join(APP_DIR, "wmlindent")]
+
         mode = self.wmlindent_tab.mode_variable.get()
         if mode == 0:
             pass
@@ -1482,9 +1480,9 @@ wmlindent will be run on the Wesnoth core directory"""), icon=WARNING)
         dialog = Popup(self.parent, _("wmlindent"), wmlindent_thread)
 
     def on_run_wmlxgettext(self):
-        # build the command line and add the path of the Python interpreter
-        wmlxgettext_command_string = [sys.executable]
-        wmlxgettext_command_string.append(os.path.join(APP_DIR, "wmlxgettext"))
+        # build the command line and add the path of the Python interpreter and wmlxgettext
+        wmlxgettext_command_string = [sys.executable, os.path.join(APP_DIR, "wmlxgettext")]
+
         if self.wmlxgettext_tab.textdomain_variable.get():
             wmlxgettext_command_string.extend(["--domain", self.wmlxgettext_tab.textdomain_entry.get()])
         wmlxgettext_command_string.append("--directory")
