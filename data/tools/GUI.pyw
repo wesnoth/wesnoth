@@ -421,24 +421,24 @@ If the widget isn't active, some options do not appear"""
             self.add_command(label=_("Cut"),
                              image=ICONS['cut'],
                              compound=LEFT,
-                             accelerator='%s+X' % (control_key),
+                             accelerator='%s+X' % control_key,
                              command=lambda: self.widget.event_generate("<<Cut>>"))
         self.add_command(label=_("Copy"),
                          image=ICONS['copy'],
                          compound=LEFT,
-                         accelerator='%s+C' % (control_key),
+                         accelerator='%s+C' % control_key,
                          command=lambda: self.widget.event_generate("<<Copy>>"))
         if str(widget.cget('state')) in (ACTIVE, NORMAL):
             self.add_command(label=_("Paste"),
                              image=ICONS['paste'],
                              compound=LEFT,
-                             accelerator='%s+V' % (control_key),
+                             accelerator='%s+V' % control_key,
                              command=lambda: self.widget.event_generate("<<Paste>>"))
         self.add_separator()
         self.add_command(label=_("Select all"),
                          image=ICONS['select_all'],
                          compound=LEFT,
-                         accelerator='%s+A' % (control_key),
+                         accelerator='%s+A' % control_key,
                          command=self.on_select_all)
         self.tk_popup(x, y)  # self.post does not destroy the menu when clicking out of it
 
