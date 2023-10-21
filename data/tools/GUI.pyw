@@ -70,16 +70,16 @@ def set_user_locale():
                "gettext.wesnoth.org for a full list.")
     )
 
+    if not os.path.isdir(WESNOTH_TRAN_DIR):
+        showerror(
+            _("Error"),
+            # TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
+            _("`{0}` directory not found. Please run the GUI.pyw program packaged with the Wesnoth installation.").
+            format("translations")
+        )
+
     opts = parser.parse_args(sys.argv[1:])
     if opts.lang is not None:
-        if not os.path.isdir(WESNOTH_TRAN_DIR):
-            showerror(
-                _("Error"),
-                # TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
-                _("`{0}` directory not found. Please run the GUI.pyw program packaged with the Wesnoth installation.").
-                format("translations")
-            )
-
         try:
             _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[opts.lang], fallback=False).gettext
 
