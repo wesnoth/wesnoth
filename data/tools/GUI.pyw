@@ -1384,9 +1384,9 @@ class MainFrame(Frame):
         # if not, stop here
         umc_dir = self.dir_variable.get()
         if not umc_dir and self.wmllint_tab.skip_variable.get():
-            showerror(_("Error"), _("""wmllint cannot run because there is no directory selected.
+            showerror(_("Error"), _("""No directory selected.
 
-Please select a directory or disable the "Skip core directory" option"""))
+Please select a directory or disable the "Skip core directory" option."""))
             return
         # build the command line from Python interpreter path and wmllint tool path
         wmllint_command_string = [sys.executable, os.path.join(APP_DIR, "wmllint")]
