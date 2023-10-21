@@ -79,13 +79,16 @@ def set_default_locale():
                       _("`{0}` folder not found. Please run the GUI.pyw executable packaged with the Wesnoth installation.").format(
                           "translations")
                       )
+
         try:
             _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[opts.lang], fallback=False).gettext
-        except:
+
+        except OSError:
             showerror(_("Error"),
                       # TRANSLATORS: {0} is the ISO 15897 code for the language selected by the user.
                       _("Locale {0} not recognized.").format(opts.lang)
                       )
+
         return
 
     try:
