@@ -439,7 +439,7 @@ If the widget isn't active, some options do not appear"""
                              accelerator='%s+V' % control_key,
                              command=lambda: self.widget.event_generate("<<Paste>>"))
         self.add_separator()
-        self.add_command(label=_("Select all"),
+        self.add_command(label=_("Select All"),
                          image=ICONS['select_all'],
                          compound=LEFT,
                          accelerator='%s+A' % control_key,
