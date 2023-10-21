@@ -907,7 +907,7 @@ class WmlscopeTab(Frame):
 
         self.exclude_variable = BooleanVar()
         self.exclude_check = Checkbutton(self.options_with_regexp,
-                                         text=_("Exclude files matching regular expression:"),
+                                         text=_("Exclude file names matching regular expression:"),
                                          variable=self.exclude_variable,
                                          command=self.exclude_callback)
         self.exclude_check.grid(row=0,
@@ -925,7 +925,7 @@ class WmlscopeTab(Frame):
 
         self.from_variable = BooleanVar()
         self.from_check = Checkbutton(self.options_with_regexp,
-                                      text=_("Exclude files not matching regular expression:"),
+                                      text=_("Exclude file names not matching regular expression:"),
                                       variable=self.from_variable,
                                       command=self.from_callback)
         self.from_check.grid(row=1,
@@ -1120,7 +1120,7 @@ class WmlindentTab(Frame):
 
         self.exclude_variable = BooleanVar()
         self.exclude_check = Checkbutton(self.options_frame,
-                                         text=_("Exclude files matching regular expression:"),
+                                         text=_("Exclude file names matching regular expression:"),
                                          variable=self.exclude_variable,
                                          command=self.exclude_callback)
         self.exclude_check.grid(row=1,
