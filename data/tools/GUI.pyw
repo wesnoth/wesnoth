@@ -56,7 +56,11 @@ WESNOTH_TRAN_DIR = os.path.join(WESNOTH_ROOT_DIR, "translations")
 _ = lambda x: x
 
 
-def set_user_locale():
+def set_global_locale():
+    """
+    Attempts to set locale for the application session based on user-input at the command-line. If no input is given,
+    fall back to the system locale.
+    """
     global _
 
     # TODO: Replace CLI args for a proper locale selection GUI.
@@ -106,7 +110,7 @@ def set_user_locale():
 def on_update_locale(value):
     if value is None:
         try:
-            set_user_locale()
+            set_global_locale()
         except:
             # _ defaults to identity lambda.
             pass
