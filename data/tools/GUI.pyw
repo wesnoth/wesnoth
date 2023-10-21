@@ -82,6 +82,7 @@ def set_global_locale():
             format("translations")
         )
 
+    # User-specified locale
     opts = parser.parse_args(sys.argv[1:])
     if opts.lang is not None:
         try:
@@ -96,14 +97,19 @@ def set_global_locale():
 
         return
 
+    # System locale
+    # On POSIX systems, getlocale() should provide the POSIX locale name that gettext uses for finding translations.
+    # However, on Windows, getlocale() returns strings likely not suitable for gettext, although getdefaultlocale()
+    # does.
     try:
         system_locale = locale.getlocale()[0]
+        _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
-    except AttributeError:
+    except OSError:
         # Needed for compatibility with Python <3.10, and/or Windows 7/8.
+        # TODO: Note that getdefaultlocale() is deprecated in Python 3.11 so an alternative arrangement needs to be
+        #  implemented for Windows.
         system_locale = locale.getdefaultlocale()[0]
-
-    finally:
         _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
 
