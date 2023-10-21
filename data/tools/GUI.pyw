@@ -592,8 +592,10 @@ It has a context menu and a save file selection dialog."""
     def on_browse(self):
         if self.filetypes is None:
             directory = self.on_browse_dir()
+
         else:
-            directory = self.on_browse_file(self)
+            directory = self.on_browse_file()
+
         if directory:
             # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
             self.textvariable.set(os.path.normpath(directory))
