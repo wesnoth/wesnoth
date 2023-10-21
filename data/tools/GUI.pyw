@@ -1321,12 +1321,9 @@ class MainFrame(Frame):
 
 Please select a directory or disable the "Skip core directory" option"""))
             return
-        # build the command line
-        wmllint_command_string = []
-        # get the path of the Python interpreter
-        wmllint_command_string.append(sys.executable)
-        # get the path of the desired tool (wmllint, in this case)
-        wmllint_command_string.append(os.path.join(APP_DIR, "wmllint"))
+        # build the command line from Python interpreter path and wmllint tool path
+        wmllint_command_string = [sys.executable, os.path.join(APP_DIR, "wmllint")]
+
         mode = self.wmllint_tab.mode_variable.get()
         if mode == 0:
             pass
