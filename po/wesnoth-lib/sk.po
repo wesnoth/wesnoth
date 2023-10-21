@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-16 23:13-0500\n"
-"PO-Revision-Date: 2023-10-09 16:05+0200\n"
+"PO-Revision-Date: 2023-10-19 23:02+0200\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -467,10 +467,8 @@ msgstr "Pozostatky"
 
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
-#, fuzzy
-#| msgid "Window size:"
 msgid "Window"
-msgstr "Veľkosť okien:"
+msgstr "Okno"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -4589,41 +4587,37 @@ msgstr "Pripravený začať"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
 msgid "When the game you are hosting is ready to start"
-msgstr ""
+msgstr "Keď je hra ktorú hosťuješ pripravená na spustenie"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "Game has begun"
-msgstr ""
+msgstr "Hra sa začala"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "When the host (not you) has started the game"
-msgstr ""
+msgstr "Keď hostiteľ (nie vy) spustí hru"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn dialog"
 msgid "Turn changed"
-msgstr "Dialóg na začiatku kola"
+msgstr "Zmena ťahu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a new turn has begun"
-msgstr ""
+msgstr "Keď sa začal nový ťah"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created"
-msgstr "Údaje hry:"
+msgstr "Hra vytvorená"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 msgid "When a new game has been created"
-msgstr ""
+msgstr "Keď je vytvorená nová hra"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:228
@@ -7882,7 +7876,7 @@ msgstr "Nebol definovaný žiadny widget."
 #: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
 #: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
 msgid "Missing required state for slider"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre slider"
 
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
@@ -7899,21 +7893,21 @@ msgstr "Našiel sa objekt s pomôckou bez tipu pod myšou."
 #: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
 #: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
 msgid "Missing required state for editable text box"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre upraviteľné textové pole"
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
 msgid "Missing required state for toggle button"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre prepínacie tlačidlo"
 
 #: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
 #: src/gui/widgets/toggle_panel.cpp:304
 msgid "Missing required state for toggle panel"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre prepínací panel"
 
 #: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
 msgid "Missing required state for tree view"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre stromové zobrazenie"
 
 #: src/gui/widgets/tree_view.cpp:271
 msgid "No grid defined for tree view"
