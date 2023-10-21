@@ -14,21 +14,27 @@
 # queue is needed to exchange informations between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
-import argparse, sys, os, threading, subprocess, codecs
 
-import locale
+import argparse
+import codecs
 import gettext
+import locale
+import os
 import queue
+import subprocess
+import sys
+import threading
 
-from wesnoth import version
 # tkinter modules
+import tkinter.font as font
 from tkinter import *
+from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.messagebox import WARNING  # for Python >= 3.9
-from tkinter.filedialog import *
-import tkinter.font as font
 # ttk must be called last
 from tkinter.ttk import *
+
+from wesnoth import version
 
 # we need to know in what series we are
 # so set it in a constant string
