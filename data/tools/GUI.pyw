@@ -124,11 +124,11 @@ def wrap_elem(line):
 
 
 class ToolThread(threading.Thread):
-    def __init__(self, tool, queue, command):
+    def __init__(self, tool, tool_queue, command):
         super().__init__()
         self.tool = tool
         self.command = command
-        self.queue = queue
+        self.queue = tool_queue
         self.subproc = None
 
     def run(self):
@@ -1400,15 +1400,18 @@ wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
         if self.wmlscope_tab.from_variable.get():
             wmlscope_command_string.append("--from")
             wmlscope_command_string.append(self.wmlscope_tab.from_regexp.get())
+
         if self.wmlscope_tab.refcount_variable.get():
             try:
                 wmlscope_command_string.append("--refcount")
                 wmlscope_command_string.append(str(self.wmlscope_tab.refcount_number.get()))
-            except ValueError as error:
+
+            except ValueError:
                 # normally it should be impossible to raise this exception
                 # due to the fact that the Spinbox is read-only
                 showerror(_("Error"), _("""You typed an invalid value. Value must be an integer in the range 0-999"""))
                 return
+
         if self.wmlscope_tab.typelist_variable.get():
             wmlscope_command_string.append("--typelist")
             wmlscope_command_string.append(self.wmlscope_tab.typelist_string.get())
