@@ -1644,7 +1644,7 @@ Error code: {1}
         self.text.edit_modified(False)
 
     def on_about(self):
-        showinfo(_("About Maintenance tools GUI"),
+        showinfo(_("About Maintenance Tools GUI"),
                  # TRANSLATORS: {} is a placeholder for Wesnoth's current version, and not meant to be modified.
                  _("""© Elvish_Hunter, 2014-2016
 
@@ -1925,7 +1925,7 @@ VEPjiOPN2tys7Y04Zj8UEAA7''')
                                            ROOT_H,
                                            int((root.winfo_screenwidth() - ROOT_W) / 2),
                                            int((root.winfo_screenheight() - ROOT_H) / 2)))
-    root.title("Maintenance tools GUI")
+    root.title("Maintenance Tools GUI")
     root.rowconfigure(0, weight=1)
     root.columnconfigure(0, weight=1)
     # set the window icon
