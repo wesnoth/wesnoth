@@ -84,10 +84,12 @@ def set_default_locale():
 
     try:
         system_locale = locale.getlocale()[0]
-        _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
-    except Exception as ex:
-        # Needed for compat with Python <3.10, and/or Windows 7/8.
+
+    except AttributeError:
+        # Needed for compatibility with Python <3.10, and/or Windows 7/8.
         system_locale = locale.getdefaultlocale()[0]
+
+    finally:
         _ = gettext.translation("wesnoth-tools", WESNOTH_TRAN_DIR, languages=[system_locale], fallback=False).gettext
 
 
