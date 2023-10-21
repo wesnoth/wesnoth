@@ -512,7 +512,7 @@ class SelectDirectory(LabelFrame):
     def __init__(self, parent, textvariable=None, **kwargs):
         """A subclass of LabelFrame sporting a readonly Entry and a Button with a folder icon.
 It comes complete with a context menu and a directory selection screen"""
-        super().__init__(parent, text=_("Directory"), **kwargs)
+        super().__init__(parent, text=_("Working directory"), **kwargs)
         self.textvariable = textvariable
         self.dir_entry = EntryContext(self,
                                       width=40,
@@ -1419,21 +1419,21 @@ Please select a directory or disable the "Skip core directory" option"""))
             # the realpaths are here just in case that the user
             # attempts to fool the script by feeding it a symlink
             if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
-                answer = askokcancel(_("Warning"), _("""You selected the core directory or one of its subdirectories in the add-on selection box.
+                answer = askokcancel(_("Warning"), _("""Core directory or one of its subdirectories selected in the add-on selection box.
 
-wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
+The tool will be run only on the Wesnoth core directory."""), icon=WARNING)
                 if not answer:
                     return
             else:
                 wmllint_command_string.append(umc_dir)
         elif not umc_dir:  # path does not exist because the box was left empty
-            answer = askokcancel(_("Warning"), _("""You didn't select a directory.
+            answer = askokcancel(_("Warning"), _("""No directory selected.
 
-wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
+The tool will be run only on the Wesnoth core directory."""), icon=WARNING)
             if not answer:
                 return
         else:  # path doesn't exist and isn't empty
-            showerror(_("Error"), _("""The selected directory does not exists"""))
+            showerror(_("Error"), _("""The selected directory does not exist."""))
             return  # stop here
         # start thread and wmllint subprocess
         wmllint_thread = ToolThread("wmllint", self.queue, wmllint_command_string)
@@ -1476,7 +1476,7 @@ wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
             except ValueError:
                 # normally it should be impossible to raise this exception
                 # due to the fact that the Spinbox is read-only
-                showerror(_("Error"), _("""You typed an invalid value. Value must be an integer in the range 0-999"""))
+                showerror(_("Error"), _("""Invalid value. Value must be an integer in the range 0-999."""))
                 return
 
         if self.wmlscope_tab.typelist_variable.get():
@@ -1491,21 +1491,21 @@ wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
             # the realpaths are here just in case that the user
             # attempts to fool the script by feeding it a symlink
             if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
-                answer = askokcancel(_("Warning"), _("""You selected the core directory or one of its subdirectories in the add-on selection box.
+                answer = askokcancel(_("Warning"), _("""Core directory or one of its subdirectories selected in the add-on selection box.
 
-wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
+The tool will be run only on the Wesnoth core directory."""), icon=WARNING)
                 if not answer:
                     return
             else:
                 wmlscope_command_string.append(umc_dir)
         elif not umc_dir:  # path does not exist because the box was left empty
-            answer = askokcancel(_("Warning"), _("""You didn't select a directory.
+            answer = askokcancel(_("Warning"), _("""No directory selected.
 
-wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
+The tool will be run only on the Wesnoth core directory."""), icon=WARNING)
             if not answer:
                 return
         else:  # path doesn't exist and isn't empty
-            showerror(_("Error"), _("""The selected directory does not exists"""))
+            showerror(_("Error"), _("""The selected directory does not exist."""))
             return  # stop here
         # start thread and wmlscope subprocess
         wmlscope_thread = ToolThread("wmlscope", self.queue, wmlscope_command_string)
@@ -1534,14 +1534,14 @@ wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
         if os.path.exists(umc_dir):  # add-on exists
             wmlindent_command_string.append(umc_dir)
         elif not umc_dir:  # path does not exist because the box was left empty
-            answer = askokcancel(_("Warning"), _("""You didn't select a directory.
+            answer = askokcancel(_("Warning"), _("""No directory selected.
 
-wmlindent will be run on the Wesnoth core directory"""), icon=WARNING)
+The tool will be run on the Wesnoth core directory."""), icon=WARNING)
             if not answer:
                 return
             wmlindent_command_string.append(WESNOTH_CORE_DIR)
         else:  # path doesn't exist and isn't empty
-            showerror(_("Error"), _("""The selected directory does not exists"""))
+            showerror(_("Error"), _("""The selected directory does not exist."""))
             return  # stop here
         # start thread and wmllint subprocess
         wmlindent_thread = ToolThread("wmlindent", self.queue, wmlindent_command_string)
@@ -1560,12 +1560,12 @@ wmlindent will be run on the Wesnoth core directory"""), icon=WARNING)
         if os.path.exists(umc_dir):  # add-on exists
             wmlxgettext_command_string.append(umc_dir)
         elif not umc_dir:  # path does not exist because the box was left empty
-            showwarning(_("Warning"), _("""You didn't select a directory.
+            showwarning(_("Warning"), _("""No directory selected.
 
-wmlxgettext won't be run"""))
+The tool will not be run."""))
             return
         else:  # path doesn't exist and isn't empty
-            showerror(_("Error"), _("""The selected directory does not exists"""))
+            showerror(_("Error"), _("""The selected directory does not exist."""))
             return
         if self.wmlxgettext_tab.recursive_variable.get():
             wmlxgettext_command_string.append("--recursive")
@@ -1578,9 +1578,9 @@ Do you want to overwrite it?""").format(output_file))
             if not answer:
                 return
         elif not output_file:
-            showwarning(_("Warning"), _("""You didn't select an output file.
+            showwarning(_("Warning"), _("""No output file selected.
 
-wmlxgettext won't be run"""))
+The tool will not be run."""))
             return
         wmlxgettext_command_string.extend(["-o", self.wmlxgettext_tab.output_variable.get()])
         if self.wmlxgettext_tab.warnall_variable.get():
