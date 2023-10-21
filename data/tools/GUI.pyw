@@ -1652,7 +1652,7 @@ Version: {}
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
-Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""").format(
+Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain.""").format(
                      version.as_string))
 
     def on_quit(self):
