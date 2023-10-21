@@ -530,6 +530,7 @@ It comes complete with a context menu and a directory selection screen"""
         self.clear_button = Button(self,
                                    image=ICONS['clear16'],
                                    compound=LEFT,
+                                   # TRANSLATORS: Clear button for clearing the directory text box.
                                    text=_("Clear"),
                                    command=self.on_clear)
         self.clear_button.pack(side=LEFT)
@@ -572,6 +573,7 @@ It has a context menu and a save file selection dialog."""
         self.clear_button = Button(self,
                                    image=ICONS['clear16'],
                                    compound=LEFT,
+                                   # TRANSLATORS: Clear button for clearing the directory text box.
                                    text=_("Clear"),
                                    command=self.on_clear)
         self.clear_button.pack(side=LEFT)
@@ -1102,7 +1104,7 @@ class WmlxgettextTab(Frame):
         self.output_wrapper_frame = Frame(self)
         self.output_wrapper_frame.grid(row=0, column=0, columnspan=2, sticky=N + E + S + W)
         self.output_label = Label(self.output_wrapper_frame,
-                                  text=_("Output dir:"))
+                                  text=_("Output directory:"))
         self.output_label.grid(row=0, column=0, sticky=W)
         self.output_variable = StringVar()
         self.output_frame = SelectOutputPath(self.output_wrapper_frame, textvariable=self.output_variable)
