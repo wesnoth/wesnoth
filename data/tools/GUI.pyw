@@ -11,7 +11,7 @@
 # threading and subprocess are needed to run wmllint without freezing the window
 # codecs is used to save files as UTF8
 # locale and gettext provides internationalization and localization (i18n, l10n)
-# queue is needed to exchange informations between threads
+# queue is needed to exchange information between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 
@@ -138,7 +138,7 @@ class ToolThread(threading.Thread):
 
         # set the encoding for the subprocess
         # otherwise, with the new Unicode literals used by the wml tools,
-        # we may get UnicodeDecodeErros
+        # we may get UnicodeDecodeErrors
         env = os.environ
         env['PYTHONIOENCODING'] = "utf8"
         if sys.platform == "win32":
@@ -210,7 +210,7 @@ def get_addons_directory():
                                 WESNOTH_SERIES,
                                 "data",
                                 "add-ons")
-    elif sys.platform == "darwin":  # we're on MacOS
+    elif sys.platform == "darwin":  # we're on macOS
         # bear in mind that I don't have a Mac, so this point may be bugged
         userdata = os.path.join(os.path.expanduser("~"),
                                 "Library",
@@ -324,7 +324,7 @@ mouse pointer stays on the widget for more than 500 ms."""
         self.withdraw()
 
     def after_cleanup(self):
-        # each event should cleanup after itself,
+        # each event should clean up after itself,
         # to avoid having two .after() calls conflicting
         # for example, one previously scheduled .after() may
         # try to hide the tooltip before five seconds are passed
@@ -1258,7 +1258,7 @@ class MainFrame(Frame):
                                column=0,
                                sticky=N + E + S + W)
         # in former versions of this script, I disabled the text widget at its creation
-        # it turned out that doing so on Aqua (Mac OS) causes the widget to ignore
+        # it turned out that doing so on Aqua (macOS) causes the widget to ignore
         # any additional binding set after its disabling
         # the subclass EnhancedText first calls the constructor of the original Text widget
         # and only later it creates its own bindings
@@ -1359,7 +1359,7 @@ wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
                     return
             else:
                 wmllint_command_string.append(umc_dir)
-        elif not umc_dir:  # path does not exists because the box was left empty
+        elif not umc_dir:  # path does not exist because the box was left empty
             answer = askokcancel(_("Warning"), _("""You didn't select a directory.
 
 wmllint will be run only on the Wesnoth core directory"""), icon=WARNING)
@@ -1431,7 +1431,7 @@ wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
                     return
             else:
                 wmlscope_command_string.append(umc_dir)
-        elif not umc_dir:  # path does not exists because the box was left empty
+        elif not umc_dir:  # path does not exist because the box was left empty
             answer = askokcancel(_("Warning"), _("""You didn't select a directory.
 
 wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
@@ -1466,7 +1466,7 @@ wmlscope will be run only on the Wesnoth core directory"""), icon=WARNING)
         umc_dir = self.dir_variable.get()
         if os.path.exists(umc_dir):  # add-on exists
             wmlindent_command_string.append(umc_dir)
-        elif not umc_dir:  # path does not exists because the box was left empty
+        elif not umc_dir:  # path does not exist because the box was left empty
             answer = askokcancel(_("Warning"), _("""You didn't select a directory.
 
 wmlindent will be run on the Wesnoth core directory"""), icon=WARNING)
@@ -1492,7 +1492,7 @@ wmlindent will be run on the Wesnoth core directory"""), icon=WARNING)
         umc_dir = self.dir_variable.get()
         if os.path.exists(umc_dir):  # add-on exists
             wmlxgettext_command_string.append(umc_dir)
-        elif not umc_dir:  # path does not exists because the box was left empty
+        elif not umc_dir:  # path does not exist because the box was left empty
             showwarning(_("Warning"), _("""You didn't select a directory.
 
 wmlxgettext won't be run"""))
@@ -1862,7 +1862,7 @@ VEPjiOPN2tys7Y04Zj8UEAA7''')
     root.columnconfigure(0, weight=1)
     # set the window icon
     # for now, it's just a grayscale Wesnoth icon
-    # also, this line shouldn't have effect on Mac OS
+    # also, this line shouldn't have effect on macOS
     root.tk.call("wm", "iconphoto", root, "-default", ICONS["window_icon"])
     # use a better style on X11 systems instead of the Motif-like one
     style = Style()
