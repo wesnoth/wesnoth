@@ -404,8 +404,8 @@ config map_context::convert_scenario(const config& old_scenario)
 	}
 
 	config& event = multiplayer.add_child("event");
-	event["name"] = "start";
-	event["id"] = "editor_event-start";
+	event["name"] = "prestart";
+	event["id"] = "editor_event-prestart";
 
 	// for all children that aren't [side] or [time], move them to an event
 	// for [side]:
@@ -491,6 +491,9 @@ void map_context::load_scenario()
 	tod_manager_.reset(new tod_manager(scenario));
 
 	auto event = scenario.find_child("event", "id", "editor_event-start");
+	if(!event) {
+		event = scenario.find_child("event", "id", "editor_event-prestart");
+	}
 	if(event) {
 		config& evt = event.value();
 
@@ -640,7 +643,7 @@ config map_context::to_config()
 				: scen.add_child("multiplayer");
 
 	scenario.remove_children("side");
-	scenario.remove_children("event", [](config cfg){return cfg["id"].str() == "editor_event-start";});
+	scenario.remove_children("event", [](config cfg){return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";});
 
 	scenario["id"] = scenario_id_;
 	scenario["name"] = t_string(scenario_name_);
@@ -660,8 +663,9 @@ config map_context::to_config()
 
 	// find or add the editor's start event
 	config& event = scenario.add_child("event");
-	event["name"] = "start";
-	event["id"] = "editor_event-start";
+	event["name"] = "prestart";
+	event["id"] = "editor_event-prestart";
+	event["priority"] = 1000;
 
 	// write out all the scenario data below
 
