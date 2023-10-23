@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"POT-Creation-Date: 2023-10-16 23:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,20 +78,28 @@ msgstr ""
 msgid "female^steadfast"
 msgstr ""
 
+#. [illuminates]: id=illumination_song_verse
+#. [illuminates]: id=illumination
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
+#: data/core/macros/abilities.cfg:238
+msgid "female^illuminates"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:593
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:594
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:639
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:595
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:640
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -103,26 +111,26 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:644
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:683
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:713
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:617
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:662
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:618
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:663
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:619
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:664
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -134,17 +142,17 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:692
 msgid "heals +12"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
 msgid "female^heals +12"
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -156,7 +164,7 @@ msgid ""
 msgstr ""
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -167,7 +175,7 @@ msgstr ""
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
 #: data/campaigns/World_Conquest/resources/data/training.cfg:782
-#: data/core/macros/abilities.cfg:250
+#: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr ""
 
@@ -196,7 +204,7 @@ msgstr ""
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:384
+#: data/core/macros/abilities.cfg:387
 msgid "feeding"
 msgstr ""
 
@@ -209,7 +217,7 @@ msgstr ""
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:282
+#: data/core/macros/abilities.cfg:285
 msgid "ambush"
 msgstr ""
 
@@ -223,7 +231,7 @@ msgstr ""
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:343
+#: data/core/macros/abilities.cfg:346
 msgid "concealment"
 msgstr ""
 
@@ -261,7 +269,7 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
+#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
 msgid "nightstalk"
 msgstr ""
 
@@ -3687,17 +3695,12 @@ msgid ""
 msgstr ""
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:235
+#: data/core/macros/abilities.cfg:237
 msgid "illuminates"
 msgstr ""
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:236
-msgid "female^illuminates"
-msgstr ""
-
-#. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:237
+#: data/core/macros/abilities.cfg:239
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3707,24 +3710,24 @@ msgid ""
 msgstr ""
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:251
+#: data/core/macros/abilities.cfg:254
 msgid "female^teleport"
 msgstr ""
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:252
+#: data/core/macros/abilities.cfg:255
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:283
+#: data/core/macros/abilities.cfg:286
 msgid "female^ambush"
 msgstr ""
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:284
+#: data/core/macros/abilities.cfg:287
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3734,17 +3737,17 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:302
+#: data/core/macros/abilities.cfg:305
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:303
+#: data/core/macros/abilities.cfg:306
 msgid "female^burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:304
+#: data/core/macros/abilities.cfg:307
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -3755,7 +3758,7 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:325
+#: data/core/macros/abilities.cfg:328
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3765,12 +3768,12 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:344
+#: data/core/macros/abilities.cfg:347
 msgid "female^concealment"
 msgstr ""
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:345
+#: data/core/macros/abilities.cfg:348
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -3781,17 +3784,17 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:363
+#: data/core/macros/abilities.cfg:366
 msgid "submerge"
 msgstr ""
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:364
+#: data/core/macros/abilities.cfg:367
 msgid "female^submerge"
 msgstr ""
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:365
+#: data/core/macros/abilities.cfg:368
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -3801,12 +3804,12 @@ msgid ""
 msgstr ""
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:385
+#: data/core/macros/abilities.cfg:388
 msgid "female^feeding"
 msgstr ""
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:386
+#: data/core/macros/abilities.cfg:389
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -5593,23 +5596,58 @@ msgid ""
 "skills, like archery or assassination."
 msgstr ""
 
-#. [race]: id=troll
+#. [race]: id=raven
 #: data/core/units.cfg:353
+msgid "race^Raven"
+msgstr ""
+
+#. [race]: id=raven
+#: data/core/units.cfg:354
+msgid "race+female^Raven"
+msgstr ""
+
+#. [race]: id=raven
+#: data/core/units.cfg:355
+msgid "race^Ravens"
+msgstr ""
+
+#. [race]: id=raven
+#: data/core/units.cfg:356
+msgid ""
+"Ravens are general scavengers, often associating with hunters or predators "
+"in the hope of sharing in the kill. They do not have the powerful beak or "
+"claws of the gryphons or raptors, but can still be a threat because of their "
+"intelligence and ability to recognize any advantage.\n"
+"\n"
+"In the aftermath of a battle, the dead and wounded are a banquet for ravens, "
+"thus ravens are a nuisance for allies of the defeated but are seen by some "
+"victors as part of martial ceremonies. The violence and large numbers that "
+"characterize both orcs and humans bring these races into constant "
+"interaction with ravens in this context. For this reason, the birds have "
+"become characters in fables, parables, and superstitions related to war.\n"
+"\n"
+"As intelligent scavengers, ravens do not need war dead to survive. Some "
+"farmers struggle to keep ravens away from freshly sown seeds, but others are "
+"happy to have them around as sentries."
+msgstr ""
+
+#. [race]: id=troll
+#: data/core/units.cfg:369
 msgid "race^Troll"
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:354
+#: data/core/units.cfg:370
 msgid "race+female^Troll"
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:355
+#: data/core/units.cfg:371
 msgid "race^Trolls"
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:356
+#: data/core/units.cfg:372
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -5648,22 +5686,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:376
+#: data/core/units.cfg:392
 msgid "race^Undead"
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:377
+#: data/core/units.cfg:393
 msgid "race+female^Undead"
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:378
+#: data/core/units.cfg:394
 msgid "race+plural^Undead"
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:379
+#: data/core/units.cfg:395
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -5700,22 +5738,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:392
+#: data/core/units.cfg:408
 msgid "race^Wolf"
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:393
+#: data/core/units.cfg:409
 msgid "race+female^Wolf"
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:394
+#: data/core/units.cfg:410
 msgid "race^Wolves"
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:395
+#: data/core/units.cfg:411
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -5727,17 +5765,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:404
+#: data/core/units.cfg:420
 msgid "race^Wose"
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:405
+#: data/core/units.cfg:421
 msgid "race^Woses"
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:406
+#: data/core/units.cfg:422
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

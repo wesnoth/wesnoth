@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
+"POT-Creation-Date: 2023-10-17 04:13 UTC\n"
 "PO-Revision-Date: 2022-09-25 10:58-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: pt_BR\n"
@@ -96,9 +96,7 @@ msgstr "Difícil"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg, line: 2350
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg, line: 2351
 #. [campaign]: id=Under_the_Burning_Suns
-#. [advancement]: id=warrior_1
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:45
 msgid "Warrior"
 msgstr "Soldado"
 
@@ -1785,11 +1783,11 @@ msgstr "Você se lembra de algo sobre estas dunas?"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg, line: 277
 # File: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg, line: 25
 #. [message]: speaker=narrator
-#. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
+#. [modify_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:302
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1734
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1922
-#: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1916
+#: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:33
 msgid "Garak"
 msgstr "Garak"
 
@@ -4044,7 +4042,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2216
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1713
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1917
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1909
 msgid "Finally. It is over."
 msgstr "Finalmente. Acabou."
 
@@ -4066,8 +4064,8 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2037
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2224
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1743
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1930
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1921
 msgid "He’s... he’s still breathing!"
 msgstr "Ele... ele ainda está respirando!"
 
@@ -4078,11 +4076,12 @@ msgstr "Ele... ele ainda está respirando!"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2041
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2153
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2228
-#. [message]: speaker=Garak_defeated
+#. [message]: speaker=Possessed Garak
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1747
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1859
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1934
+#. Defeated, no longer posessed
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1739
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1851
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
 msgid "Protect the boy for me Zhul, (<i>cough</i>) I go to a better place."
 msgstr ""
 "Proteja o garoto por mim, Zhul (<i>tosse</i>) Estou indo para um lugar "
@@ -4092,7 +4091,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2052
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2052
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1758
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1750
 msgid "What about Garak?"
 msgstr "E quanto a Garak?"
 
@@ -4100,7 +4099,7 @@ msgstr "E quanto a Garak?"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2062
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2062
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1768
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1760
 msgid "I’ve asked and looked around, there is no sign of him or his body"
 msgstr "Eu perguntei e procurei por ele, nenhum sinal dele"
 
@@ -4108,7 +4107,7 @@ msgstr "Eu perguntei e procurei por ele, nenhum sinal dele"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2066
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2066
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1772
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1764
 msgid ""
 "He’s probably dead, then, but he died as a warrior. Let’s respect his wishes "
 "and remember him for that."
@@ -4120,7 +4119,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2072
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2072
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1778
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1770
 msgid "He died as a hero. Remember that and tell the tale, for it’s worth it."
 msgstr ""
 "Ele morreu como um herói. Lembrem-se disso e espalhem esta história, pois "
@@ -4130,7 +4129,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2108
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2108
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1814
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1806
 msgid "The undead lords are defeated at last."
 msgstr "Os lordes mortos-vivos foram finalmente derrotados."
 
@@ -4138,7 +4137,7 @@ msgstr "Os lordes mortos-vivos foram finalmente derrotados."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2112
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2112
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1818
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1810
 msgid ""
 "There’s too many of them and the night is almost gone. Pull back you "
 "wretches, pull back!"
@@ -4150,7 +4149,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2116
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2116
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1814
 msgid ""
 "I can see the first rays of Naia shining over the horizon. She never looked "
 "so beautiful. The undead forces have crumbled into dust and the remaining "
@@ -4164,7 +4163,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2120
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2120
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1826
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1818
 msgid ""
 "That was a very brave thing you did, Kaleh, defeating both of those Undead "
 "Lords. It took great courage and strength. Because of your daring attack, we "
@@ -4184,8 +4183,8 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2124
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2288
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1830
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1995
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1986
 msgid ""
 "Though we saved almost all our people this time, we won’t always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -4203,7 +4202,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2128
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2128
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1834
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1826
 msgid ""
 "You have triumphed for the moment, but think not that the dark lords can be "
 "so easily vanquished. We shall return, and shall rule long after your bones "
@@ -4217,7 +4216,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2132
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2132
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1830
 msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
@@ -4229,7 +4228,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2141
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2141
 #. [message]: id=Ystara,Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1847
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1839
 msgid "A token to remember us by..."
 msgstr "Algo para se lembrar de nós..."
 
@@ -4237,7 +4236,7 @@ msgstr "Algo para se lembrar de nós..."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2145
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2145
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1851
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1843
 msgid "Aauugghh!"
 msgstr "Aauugghh!"
 
@@ -4245,7 +4244,7 @@ msgstr "Aauugghh!"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2149
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2149
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1855
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1847
 msgid "He just collapsed!"
 msgstr "Ele caiu no chão!"
 
@@ -4253,7 +4252,7 @@ msgstr "Ele caiu no chão!"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2164
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2164
 #. [message]: id=Ystara,Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1870
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1862
 msgid ""
 "You will never see your champion again. And we will torment his soul for the "
 "rest of the eternity."
@@ -4265,7 +4264,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2168
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2168
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1874
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1866
 msgid ""
 "Don’t listen to them, they are powerless in their defeat. Even if Garak fell "
 "in battle his soul went to a better place and they can’t reach him there."
@@ -4278,7 +4277,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2204
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2204
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1905
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1897
 msgid ""
 "Hah, now you have learned the flesh is always weaker than the powers of the "
 "undead."
@@ -4290,7 +4289,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2210
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2210
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1903
 msgid "My undead zombies shall always defeat the living."
 msgstr "Meus zumbis mortos-vivos sempre derrotarão os vivos."
 
@@ -4298,7 +4297,7 @@ msgstr "Meus zumbis mortos-vivos sempre derrotarão os vivos."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2256
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2256
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1953
 msgid ""
 "From the sands he came, to the sands he will return. We remember and honor "
 "his sacrifice, and I vow that his death will not be in vain."
@@ -4310,7 +4309,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2260
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2260
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1966
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1957
 msgid "Goodbye, old friend. May Eloh shine her light eternal upon you."
 msgstr "Adeus, velho amigo. Que Eloh brilhe a sua luz eterna sobre você."
 
@@ -4318,7 +4317,7 @@ msgstr "Adeus, velho amigo. Que Eloh brilhe a sua luz eterna sobre você."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2264
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2264
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1970
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1961
 msgid ""
 "He was as brave and valiant a fighter as I have ever seen in my travels."
 msgstr ""
@@ -4329,7 +4328,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2268
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2268
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1974
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1965
 msgid ""
 "He was a bastard at times... But... but why did he have to die? It... it "
 "just doesn’t make sense."
@@ -4341,7 +4340,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2284
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2284
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1991
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1982
 msgid "Miraculously, all of our encampments survived the night."
 msgstr "Milagrosamente, todos os nossos acampamentos sobreviveram à noite."
 
@@ -4349,7 +4348,7 @@ msgstr "Milagrosamente, todos os nossos acampamentos sobreviveram à noite."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2294
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2294
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1992
 msgid "Well, only $elven_camps encampments remain, but we will survive."
 msgstr "Bem, apenas $elven_camps acampamentos restam, mas nós sobreviveremos."
 
@@ -4357,7 +4356,7 @@ msgstr "Bem, apenas $elven_camps acampamentos restam, mas nós sobreviveremos."
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2298
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2298
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2005
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1996
 msgid "Yes, but at what cost?"
 msgstr "Sim, mas a que preço?"
 
@@ -4365,7 +4364,7 @@ msgstr "Sim, mas a que preço?"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2308
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2308
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2015
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2006
 msgid ""
 "Though we saved almost all our people this time, we won’t always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -4383,7 +4382,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2320
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2320
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2027
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2018
 msgid ""
 "We have suffered losses, but we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -4401,7 +4400,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2328
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2328
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2035
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2026
 msgid ""
 "We have suffered grievous losses, but we are not broken yet. Long will this "
 "slaughter be remembered by our people. Where was Eloh during the darkness? "
@@ -4421,7 +4420,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2341
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2341
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2048
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2039
 msgid ""
 "All this death and destruction. What were those shades arguing over? Was "
 "this all just some sort of demented game?"
@@ -4433,7 +4432,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2345
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2345
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2052
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2043
 msgid ""
 "The lords of the dead are powerful and twisted indeed. Only Eloh knows the "
 "truth of what happened tonight."
@@ -4445,7 +4444,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2349
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 2349
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2056
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2047
 msgid ""
 "I don’t want to be here tomorrow night to find out. The hills to the north "
 "are close. Let’s be far away before another nightfall."
@@ -21578,6 +21577,12 @@ msgstr ""
 msgid "magic"
 msgstr "mágica"
 
+#. [variation]
+#. Only displayed in debug mode
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
+msgid "defeated"
+msgstr ""
+
 #
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg, line: 4
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg, line: 4
@@ -21862,7 +21867,8 @@ msgstr ""
 #. [attack]: type=impact
 #. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:98
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:340
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:646
 msgid "bolas"
 msgstr "boleadeira"
 
@@ -22075,13 +22081,13 @@ msgstr ""
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:38
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
 msgid "sun invocation"
 msgstr ""
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:52
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
 msgstr ""
 
@@ -22094,7 +22100,7 @@ msgid "female^Quenoth Sun Sylph"
 msgstr "Quenoth Silfa Solar"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:25
 msgid ""
 "In times past, those who stepped beyond the boundary of the worlds of elf "
 "and faerie were called Sylphs, mystics with unparalleled knowledge of the "
@@ -22117,7 +22123,7 @@ msgstr ""
 "destruição."
 
 #. [attack]: type=fire
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:68
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
 msgid "sun incarnate"
 msgstr ""
 
@@ -22389,63 +22395,201 @@ msgstr ""
 "raciocínio rápido e vontade forte. Seu alto astral é uma dádiva nestes "
 "tempos sombrios."
 
-#
-# File: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg, line: 4
-# File: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg, line: 4
-#. [advancement]: id=hunter_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:77
-msgid "Hunter"
-msgstr "Caçador"
+#. [advancement]: id=swordsmanship_training
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:52
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:404
+msgid "Swordsmanship Training"
+msgstr ""
+
+#. [advancement]: id=strong_strikes
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:73
+#, fuzzy
+#| msgid "true strike"
+msgid "Strong Strikes"
+msgstr "ataque verdadeiro"
+
+#. [advancement]: id=swordsman
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:90
+msgid "Swordsman"
+msgstr ""
 
 #
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 657
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 676
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 657
-# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 676
-#. [advancement]: id=leader_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:115
-msgid "Leader"
-msgstr "Líder"
+# File: data/campaigns/Under_the_Burning_Suns/units/undead/Haunt.cfg, line: 8
+# File: data/campaigns/Under_the_Burning_Suns/units/undead/Haunt.cfg, line: 8
+#. [advancement]: id=taunt
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:112
+#, fuzzy
+#| msgid "Haunt"
+msgid "Taunt"
+msgstr "Assombração"
 
-#. [advancement]: id=warrior_2_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:154
-msgid "Warrior (choose only one): specialize in melee combat"
-msgstr "Soldado (escolha apenas um): especializa-se em combate corpo-a-corpo"
+#. [advancement]: id=stronger_grip
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
+msgid "Stronger Grip"
+msgstr ""
 
-#. [advancement]: id=warrior_2_2
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:176
-msgid "Warrior (choose only one): specialize in archery"
-msgstr "Solado: (escolha apenas um): especializa-se com o arco"
+#. [advancement]: id=overwhelming_power
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:255
+msgid "Overwhelming Power"
+msgstr ""
 
-#. [advancement]: id=hunter_2_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:201
-msgid "Hunter (choose only one): specialize in surprise attacks"
-msgstr "Caçador (escolha apenas um): especializa-se em ataques surpresas"
+#. [advancement]: id=stamina_training
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:280
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
+msgid "Stamina Training"
+msgstr ""
 
-#. [advancement]: id=hunter_2_2
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:231
-msgid "Hunter (choose only one): specialize in skirmishing"
-msgstr "Caçador (escolha apenas um): especializa-se em escaramuçar"
+#. [advancement]: id=endurance_training
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:295
+msgid "Endurance Training"
+msgstr ""
 
-#. [advancement]: id=leader_2_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:259
-msgid "Leader (choose only one): specialize in supporting allies"
-msgstr "Líder (escolha apenas um): especializa-se em apoiar os aliados"
+#
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1479
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1481
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1482
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1484
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1548
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1479
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1481
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1482
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1484
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg, line: 1548
+#. [advancement]: id=skirmisher
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:315
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:621
+#, fuzzy
+#| msgid "Troll Skirmisher"
+msgid "Skirmisher"
+msgstr "Troll Escaramuçador"
 
-#. [advancement]: id=leader_2_2
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:291
-msgid "Leader (choose only one): specialize in distracting enemies"
-msgstr "Líder (escolha apenas um): especializa-se em distrair os inimigos"
+#
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg, line: 5
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg, line: 5
+#. [advancement]: id=training_with_bolas
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:334
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:640
+#, fuzzy
+#| msgid "Talking with Trolls"
+msgid "Training with Bolas"
+msgstr "Falando com os Trolls"
+
+#. [advancement]: id=slow
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:354
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:676
+msgid "Slow"
+msgstr ""
+
+#. [advancement]: id=opportunist
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:374
+msgid "Opportunist"
+msgstr ""
+
+#. [advancement]: id=inspiring
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:388
+msgid "Inspiring"
+msgstr ""
+
+#. [advancement]: id=accurate_strikes
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:425
+msgid "Accurate Strikes"
+msgstr ""
+
+#. [advancement]: id=faster_strikes
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:442
+#, fuzzy
+#| msgid "true strike"
+msgid "Faster Strikes"
+msgstr "ataque verdadeiro"
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 30
+# File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 30
+#. [advancement]: id=sword_dance
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:454
+#, fuzzy
+#| msgid "Second Dawn"
+msgid "Sword Dance"
+msgstr "Segundo Amanhecer"
+
+#. [advancement]: id=bowmanship_training
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:473
+msgid "Bowmanship Training"
+msgstr ""
+
+#. [advancement]: id=quickdraw
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:490
+msgid "Quickdraw"
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 4
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 4
+#. [advancement]: id=ranger
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:502
+#, fuzzy
+#| msgid "Desert Ranger"
+msgid "Ranger"
+msgstr "Patrulheiro do Deserto"
+
+#. [advancement]: id=rain_of_arrows
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:520
+msgid "Rain of Arrows"
+msgstr ""
+
+#. [advancement]: id=toxic_rain
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:549
+msgid "Toxic Rain"
+msgstr ""
+
+#. [advancement]: id=twin_arrows
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:566
+msgid "Twin Arrows"
+msgstr ""
+
+#. [advancement]: id=footwork
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:595
+msgid "Footwork"
+msgstr ""
+
+#. [advancement]: id=run_by_bolas
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:664
+msgid "Run By (Bolas)"
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg, line: 34
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg, line: 36
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg, line: 35
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 70
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg, line: 29
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg, line: 34
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg, line: 36
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg, line: 35
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 70
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg, line: 29
+#. [advancement]: id=bolaship
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:696
+#, fuzzy
+#| msgid "bolas"
+msgid "Bolaship"
+msgstr "boleadeira"
+
+#. [advancement]: id=herbalism
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:709
+msgid "Herbalism"
+msgstr ""
+
+#. [advancement]: id=run_by_sword_and_bow
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:727
+msgid "Run By (Sword and Bow)"
+msgstr ""
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 484
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 484
 #. [unit_type]: id=Quenoth Youth, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
-#. [unit_type]: id=Quenoth Youth 2, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
-#. [unit_type]: id=Quenoth Youth 3, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:443
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:498
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:860
 msgid "Quenoth Youth"
 msgstr "Quenoth Jovem"
 
@@ -22453,9 +22597,7 @@ msgstr "Quenoth Jovem"
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 340
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg, line: 340
 #. [female]: description={NYM_DESCRIPTION}
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:483
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:540
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:597
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:910
 msgid "female^Quenoth Youth"
 msgstr "Quenoth Jovem"
 
@@ -22777,99 +22919,153 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
 "This attack is the first verse of the Song of Sun Ascension, which "
-"progresses by one verse each turn this unit uses a song verse attack. When "
-"the last verse is sung or the song sequence is broken due to not attacking "
-"for a turn, the song starts again from the first verse."
+"progresses by one verse each turn this unit uses a song verse attack.\n"
+"\n"
+"When the last verse is sung or the song sequence is broken due to not "
+"attacking for a turn, the song starts again from the first verse."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
 msgid ""
 "This attack is the second verse of the Song of Sun Ascension, which "
-"progresses by one verse each turn this unit uses a song verse attack. When "
-"the last verse is sung or the song sequence is broken due to not attacking "
-"for a turn, the song starts again from the first verse."
+"progresses by one verse each turn this unit uses a song verse attack.\n"
+"\n"
+"If this was the last verse or when the song sequence is broken due to not "
+"attacking for a turn, the song starts again from the first verse."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:83
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension, which "
-"progresses by one verse each turn this unit uses a song verse attack. When "
-"the last verse is sung or the song sequence is broken due to not attacking "
-"for a turn, the song starts again from the first verse."
+"progresses by one verse each turn this unit uses a song verse attack.\n"
+"\n"
+"In the next turn, the song starts again from the first verse.\n"
+"\n"
+"Using this song will also grant illuminates for three turns."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
 msgid "first verse"
 msgstr ""
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 104
 # File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 104
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:89
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
 #, fuzzy
 #| msgid "Second Dusk"
 msgid "second verse"
 msgstr "Segundo Anoitecer"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:92
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "third verse"
 msgstr ""
 
+#. [illuminates]: id=illumination_song_verse
+#. Displayed in the help
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
+msgid "third verse illuminates"
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
+# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
+#. [illuminates]: id=illumination_song_verse
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
+#, fuzzy
+#| msgid "female^thirst"
+msgid "female^third verse illuminates"
+msgstr "sede"
+
+#. [illuminates]: id=illumination_song_verse
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
+msgid ""
+"When this ability is active after using the sun incarnate attack, this unit "
+"illuminates the surrounding area for three turns.\n"
+"\n"
+"Any units adjacent to this unit will fight as if it were dusk when it is "
+"night, and as if it were day when it is dusk."
+msgstr ""
+
+#. [illuminates]: id=illumination_song_verse
+#. A similar string exists in the textdomain wesnoth-help
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:351
+msgid ""
+"Illumination increases the lighting level in adjacent areas. This effect "
+"lasts for three turns after activation."
+msgstr ""
+
 #. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "once per turn"
 msgstr ""
 
 #. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 msgid "This attack can be used offensively only once per turn"
 msgstr ""
 
 #. [dummy]: id=nova
 #. weapon special
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:404
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 msgid "nova"
 msgstr ""
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:405
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:406
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
+msgid ""
+"This attack is the third verse of the Song of Sun Ascension. After using it, "
+"the first verse is availaibe in the next turn. Furthermore, invoking this "
+"attack will grant illumination for three turns."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
 msgid "This unit has wide-area attacks centered on the caster."
 msgstr ""
 
 #. [dummy]: id=ray
 #. weapon special
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:442
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:485
 msgid "ray"
 msgstr ""
 
 #. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:443
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:486
 msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:567
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:488
+msgid ""
+"This is the second verse of the Song of Sun Ascension. It is available only "
+"when the first verse was sung in the previous turn. If this was the last "
+"verse, then the first verse will be available in the next turn."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:612
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:570
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:615
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
 msgstr ""
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:574
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:619
 msgid "tailwind +"
 msgstr ""
 
@@ -22885,12 +23081,12 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Spectre.cfg, line: 16
 # File: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Wraith.cfg, line: 17
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:739
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr "Esta unidade é capaz de atravessar paredes sólidas de pedra."
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:703
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:748
 msgid "teaching"
 msgstr "ensino"
 
@@ -22898,12 +23094,12 @@ msgstr "ensino"
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:704
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid "female^teaching"
 msgstr "ensino"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:705
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:750
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -22915,12 +23111,12 @@ msgstr ""
 "de experiência simplesmente voltam a zero."
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:714
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:759
 msgid "shock"
 msgstr "choque"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:715
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:760
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
@@ -22929,7 +23125,7 @@ msgstr ""
 "golpe a menos do que de costume, com no mínimo um golpe."
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:716
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:761
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
@@ -22939,7 +23135,7 @@ msgstr ""
 "costume."
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:792
 msgid "formation"
 msgstr "formação"
 
@@ -22947,12 +23143,12 @@ msgstr "formação"
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Incarnation.cfg, line: 4
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Incarnation.cfg, line: 4
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:748
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:793
 msgid "female^formation"
 msgstr "formação"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:794
 msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
@@ -22963,14 +23159,14 @@ msgstr ""
 "defesa de uma unidade acima de 70%."
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:750
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:795
 msgid "Groups of units of this type are able to shield each other in combat."
 msgstr ""
 "Grupos de unidades deste tipo são capazes de proteger umas as outras em "
 "combate."
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:773
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:818
 msgid "disengage"
 msgstr "desengajar"
 
@@ -22978,12 +23174,12 @@ msgstr "desengajar"
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 156
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:774
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:819
 msgid "female^disengage"
 msgstr "desengajar"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:820
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
@@ -22992,17 +23188,17 @@ msgstr ""
 "movimento após o ataque."
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:776
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:821
 msgid "This unit can move either before or after attacking."
 msgstr "Esta unidade pode mover ou antes ou depois de atacar."
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:828
 msgid "daze"
 msgstr "estupefar"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:829
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -23020,7 +23216,7 @@ msgstr ""
 "Ataques com atirador só são afetados se a chance de acerto for maior que 60%."
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:788
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:833
 msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
@@ -23029,7 +23225,7 @@ msgstr ""
 "até o final do turno deles."
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:795
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:840
 msgid "distract"
 msgstr "distrair"
 
@@ -23037,12 +23233,12 @@ msgstr "distrair"
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Archer.cfg, line: 214
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Archer.cfg, line: 214
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:796
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:841
 msgid "female^distract"
 msgstr "distrair"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:797
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:842
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
@@ -23051,7 +23247,7 @@ msgstr ""
 "outras unidades aliadas (mas não para ela)."
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:798
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:843
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -23060,7 +23256,7 @@ msgstr ""
 "aliadas atravessem a Zona de Controle deles sem serem parados."
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:854
 msgid "support"
 msgstr "suporte"
 
@@ -23068,17 +23264,17 @@ msgstr "suporte"
 # File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 # File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:810
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:855
 msgid "female^support"
 msgstr "suporte"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:811
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:856
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr "O custo de manutenção das unidades adjacentes é diminuído em 1."
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:860
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:905
 msgid "dazed"
 msgstr "estupefado"
 
@@ -23086,9 +23282,159 @@ msgstr "estupefado"
 # File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 # File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:861
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:906
 msgid "female^dazed"
 msgstr "Estupefada"
+
+#. [dummy]: id=opportunist
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1375
+msgid "opportunist"
+msgstr ""
+
+#. [dummy]: id=opportunist
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1376
+msgid ""
+"This ability makes Kaleh attack enemies with single strike of bolas when "
+"they leave his zone of control."
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/undead/Haunt.cfg, line: 8
+# File: data/campaigns/Under_the_Burning_Suns/units/undead/Haunt.cfg, line: 8
+#. [dummy]: id=taunt
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1448
+#, fuzzy
+#| msgid "Haunt"
+msgid "taunt"
+msgstr "Assombração"
+
+#. [dummy]: id=taunt
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1449
+msgid ""
+"Taunts the enemy making them try to attack Kaleh no matter what for a one "
+"turn."
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/undead/Haunt.cfg, line: 8
+# File: data/campaigns/Under_the_Burning_Suns/units/undead/Haunt.cfg, line: 8
+#. [dummy]: id=taunted
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1484
+#, fuzzy
+#| msgid "Haunt"
+msgid "taunted"
+msgstr "Assombração"
+
+#. [dummy]: id=taunted
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1485
+msgid ""
+"This unit is taunted by Kaleh, it will try to attack him no matter what for "
+"one turn."
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Spire.cfg, line: 4
+# File: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Spire.cfg, line: 4
+#. [leadership]: id=inspire
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1494
+#, fuzzy
+#| msgid "Pulsing Spire"
+msgid "inspire"
+msgstr "Espiral Pulsante"
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
+# File: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg, line: 37
+#. [leadership]: id=inspire
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1495
+#, fuzzy
+#| msgid "female^support"
+msgid "female^inspire"
+msgstr "suporte"
+
+#. [leadership]: id=inspire
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1496
+msgid ""
+"This unit can inspire own units that are next to it, making them fight "
+"better. Adjacent own units of lower or equal level will deal 25% more damage "
+"plus 25% for each level they are below the inspiring unit."
+msgstr ""
+
+#. [leadership]: id=inspire
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1497
+msgid ""
+"The presence of this unit inspires own units next to it to deal more damage "
+"in combat, though this only applies to units of lower or equal level."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1508
+msgid "cooldown 1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1511
+msgid "cooldown 2"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1514
+msgid "After using this attack, you can't use it during your next turn."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1517
+msgid "After using this attack, you can't use it during your next two turns."
+msgstr ""
+
+#. [dummy]: id=pierce
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1577
+msgid "pierce"
+msgstr ""
+
+#. [dummy]: id=pierce
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1578
+msgid ""
+"This weapon, when used offensively, can also deal damage to a unit behind "
+"the target."
+msgstr ""
+
+#. [dummy]: id=puncture
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1640
+msgid "puncture"
+msgstr ""
+
+#. [dummy]: id=puncture
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1641
+msgid ""
+"This weapon, when used offensively, can also deal damage to two units behind "
+"the target."
+msgstr ""
+
+#. [dummy]: id=rain_of_arrows
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1716
+msgid "rain of arrows"
+msgstr ""
+
+#. [dummy]: id=rain_of_arrows
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1717
+msgid ""
+"This weapon, when used offensively, can also deal damage to a unit behind "
+"the target and all units adjacent to the unit behind the target."
+msgstr ""
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg, line: 1193
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg, line: 1193
+#. [dummy]: id=sword_dance
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1824
+#, fuzzy
+#| msgid "Good riddance."
+msgid "sword dance"
+msgstr "Já vai tarde."
+
+#. [dummy]: id=sword_dance
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1825
+msgid ""
+"Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
+"end of the combat."
+msgstr ""
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg, line: 26
@@ -23100,14 +23446,14 @@ msgstr "Kaleh"
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg, line: 6
 # File: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg, line: 6
-#: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:15
+#: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:18
 msgid "Nym"
 msgstr "Nym"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg, line: 46
 # File: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg, line: 46
-#: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:57
 msgid "Zhul"
 msgstr "Zhul"
 
@@ -24480,6 +24826,39 @@ msgid "Phantom Keep"
 msgstr "Fortaleza Fantasma"
 
 #
+# File: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg, line: 4
+# File: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg, line: 4
+#~ msgid "Hunter"
+#~ msgstr "Caçador"
+
+#
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 657
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 676
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 657
+# File: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg, line: 676
+#~ msgid "Leader"
+#~ msgstr "Líder"
+
+#~ msgid "Warrior (choose only one): specialize in melee combat"
+#~ msgstr ""
+#~ "Soldado (escolha apenas um): especializa-se em combate corpo-a-corpo"
+
+#~ msgid "Warrior (choose only one): specialize in archery"
+#~ msgstr "Solado: (escolha apenas um): especializa-se com o arco"
+
+#~ msgid "Hunter (choose only one): specialize in surprise attacks"
+#~ msgstr "Caçador (escolha apenas um): especializa-se em ataques surpresas"
+
+#~ msgid "Hunter (choose only one): specialize in skirmishing"
+#~ msgstr "Caçador (escolha apenas um): especializa-se em escaramuçar"
+
+#~ msgid "Leader (choose only one): specialize in supporting allies"
+#~ msgstr "Líder (escolha apenas um): especializa-se em apoiar os aliados"
+
+#~ msgid "Leader (choose only one): specialize in distracting enemies"
+#~ msgstr "Líder (escolha apenas um): especializa-se em distrair os inimigos"
+
+#
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Archer.cfg, line: 214
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Archer.cfg, line: 214
 #, fuzzy
@@ -25325,12 +25704,6 @@ msgstr "Fortaleza Fantasma"
 #~ msgstr "Salteadora do Deserto"
 
 #
-# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 4
-# File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 4
-#~ msgid "Desert Ranger"
-#~ msgstr "Patrulheiro do Deserto"
-
-#
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 28
 # File: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg, line: 28
 #, fuzzy
@@ -26019,12 +26392,6 @@ msgstr "Fortaleza Fantasma"
 # File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 20
 #~ msgid "First Dawn"
 #~ msgstr "Primeiro Amanhecer"
-
-#
-# File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 30
-# File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 30
-#~ msgid "Second Dawn"
-#~ msgstr "Segundo Amanhecer"
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/time.cfg, line: 40

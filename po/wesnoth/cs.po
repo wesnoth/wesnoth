@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"POT-Creation-Date: 2023-10-16 23:13-0500\n"
 "PO-Revision-Date: 2023-10-12 21:31+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -366,7 +366,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Různé"
 
 #. [about]
-#: data/core/about.cfg:1845
+#: data/core/about.cfg:1851
 msgid "Bots"
 msgstr "Boti"
 
@@ -607,37 +607,37 @@ msgid "Slovak Translation"
 msgstr "Slovenský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1641
+#: data/core/about_i18n.cfg:1644
 msgid "Slovenian Translation"
 msgstr "Slovinský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1660
 msgid "Spanish Translation"
 msgstr "Španělský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1747
+#: data/core/about_i18n.cfg:1750
 msgid "Swedish Translation"
 msgstr "Švédský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1792
+#: data/core/about_i18n.cfg:1795
 msgid "Turkish Translation"
 msgstr "Turecký překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1817
+#: data/core/about_i18n.cfg:1820
 msgid "Ukrainian Translation"
 msgstr "Ukrajinský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1833
+#: data/core/about_i18n.cfg:1836
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1846
+#: data/core/about_i18n.cfg:1849
 msgid "Vietnamese Translation"
 msgstr "Vietnamský překlad"
 
@@ -645,7 +645,7 @@ msgstr "Vietnamský překlad"
 # Každopádně RACV představuje zkratku instituce, proto tato forma.
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1876
 msgid "RACV’s Translation"
 msgstr "Překlad RACV"
 
@@ -3587,7 +3587,7 @@ msgid "Weight of Revenge"
 msgstr "Weight of Revenge"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Získáváš $amount_gold zlatých."
 
@@ -4209,7 +4209,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Neplatná úroveň zastarání $level (měla by být 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:875
+#: data/lua/wml-tags.lua:879
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Neplatná úroveň zastarání (měla by být 1-4)"
 
@@ -4520,7 +4520,7 @@ msgid "def"
 msgstr "obr."
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:407
+#: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
 msgstr "úr"
 
@@ -7894,7 +7894,7 @@ msgstr "Neplatná lokace"
 msgid "prompt^Command:"
 msgstr "Příkaz:"
 
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1215
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7902,11 +7902,11 @@ msgstr ""
 "Pokud má vůdce naplánováno verbování nebo povolávání, nelze jím pohnout z "
 "tvrze."
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 msgid "No Attacks"
 msgstr "Žádné útoky"
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 msgid "This unit has no usable weapons."
 msgstr "Tato jednotka nemá žádné použitelné zbraně."
 
@@ -8483,23 +8483,23 @@ msgstr ""
 "Čisté množství zlatých, které každé kolo získáš nebo ztratíš s ohledem na "
 "příjem z ovládaných vesnic a úhradu zaopatření."
 
-#: src/reports.cpp:1691
+#: src/reports.cpp:1723
 msgid "Observers:"
 msgstr "Pozorovatelé:"
 
-#: src/reports.cpp:1711
+#: src/reports.cpp:1743
 msgid "Clock"
 msgstr "Hodiny"
 
-#: src/reports.cpp:1722
+#: src/reports.cpp:1754
 msgid "Battery"
 msgstr "Baterie"
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Countdown until your turn automatically ends."
 msgstr "Odpočítávání, než tvé kolo automaticky skončí."
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Turn Countdown"
 msgstr "Čas na kolo"
 
@@ -8864,19 +8864,19 @@ msgstr "Útržek denní doby"
 msgid "This Time of Day is only a Stub!"
 msgstr "Tato denní doba je pouze útržek!"
 
-#: src/units/abilities.cpp:920
+#: src/units/abilities.cpp:970
 msgid "Owned: "
 msgstr "Vlastní: "
 
-#: src/units/abilities.cpp:923
+#: src/units/abilities.cpp:973
 msgid "Taught: "
 msgstr "Naučeno: "
 
-#: src/units/abilities.cpp:926
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr "Naučeno (nepřítelem): "
 
-#: src/units/abilities.cpp:939
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr "Užito protivníkem: "
 
@@ -9008,35 +9008,35 @@ msgstr "šerá"
 msgid "female^neutral"
 msgstr "neutrální"
 
-#: src/units/unit.cpp:1989
+#: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1995
+#: src/units/unit.cpp:1990
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> bodů života"
 
-#: src/units/unit.cpp:2005
+#: src/units/unit.cpp:2000
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> krok"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> kroky"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> kroků"
 
-#: src/units/unit.cpp:2011
+#: src/units/unit.cpp:2006
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> rozhled"
 
-#: src/units/unit.cpp:2015
+#: src/units/unit.cpp:2010
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> rušení"
 
-#: src/units/unit.cpp:2020
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> bodů zkušenosti k postupu"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2019
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9044,11 +9044,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
 
-#: src/units/unit.cpp:2031
+#: src/units/unit.cpp:2026
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cena za povolání"
 
-#: src/units/unit.cpp:2498
+#: src/units/unit.cpp:2493
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 

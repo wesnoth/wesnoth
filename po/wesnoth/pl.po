@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-16 22:32-0500\n"
+"POT-Creation-Date: 2023-10-16 23:13-0500\n"
 "PO-Revision-Date: 2022-06-04 21:52+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -365,7 +365,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Różności"
 
 #. [about]
-#: data/core/about.cfg:1845
+#: data/core/about.cfg:1851
 msgid "Bots"
 msgstr "Boty"
 
@@ -605,43 +605,43 @@ msgid "Slovak Translation"
 msgstr "Tłumaczenie słowackie"
 
 #. [about]
-#: data/core/about_i18n.cfg:1641
+#: data/core/about_i18n.cfg:1644
 msgid "Slovenian Translation"
 msgstr "Tłumaczenie słoweńskie"
 
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1660
 msgid "Spanish Translation"
 msgstr "Tłumaczenie hiszpańskie"
 
 #. [about]
-#: data/core/about_i18n.cfg:1747
+#: data/core/about_i18n.cfg:1750
 msgid "Swedish Translation"
 msgstr "Tłumaczenie szwedzkie"
 
 #. [about]
-#: data/core/about_i18n.cfg:1792
+#: data/core/about_i18n.cfg:1795
 msgid "Turkish Translation"
 msgstr "Tłumaczenie tureckie"
 
 #. [about]
-#: data/core/about_i18n.cfg:1817
+#: data/core/about_i18n.cfg:1820
 msgid "Ukrainian Translation"
 msgstr "Tłumaczenie ukraińskie"
 
 #. [about]
-#: data/core/about_i18n.cfg:1833
+#: data/core/about_i18n.cfg:1836
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tłumaczenie walenckie (południowy kataloński)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1846
+#: data/core/about_i18n.cfg:1849
 msgid "Vietnamese Translation"
 msgstr "Tłumaczenie wietnamskie"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1876
 msgid "RACV’s Translation"
 msgstr "Tłumaczenie RACV"
 
@@ -3619,7 +3619,7 @@ msgid "Weight of Revenge"
 msgstr "Ciężar zemsty"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Odzyskałeś $amount_gold sztuk złota"
 
@@ -4229,7 +4229,7 @@ msgstr ""
 "Niewłaściwe poziom przestarzałości $level (powinien być w przedziale 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:875
+#: data/lua/wml-tags.lua:879
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 "Niewłaściwe określenie poziomu przestarzałości (powinno być w przedziale 1-4)"
@@ -4544,7 +4544,7 @@ msgid "def"
 msgstr "obr"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:407
+#: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
 msgstr "poziom"
 
@@ -7982,7 +7982,7 @@ msgstr "Nieprawidłowa lokalizacja"
 msgid "prompt^Command:"
 msgstr "Komenda:"
 
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1215
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7990,14 +7990,14 @@ msgstr ""
 "Nie możesz przesunąć przywódcy z twierdzy, gdy są jeszcze zaplanowane "
 "rekrutacje lub przywołania."
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 #, fuzzy
 #| msgid "Attack"
 #| msgid_plural "Attacks"
 msgid "No Attacks"
 msgstr "Atak"
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1310
 msgid "This unit has no usable weapons."
 msgstr "Brak odpowiednich broni."
 
@@ -8593,23 +8593,23 @@ msgstr ""
 "Ilość złota, którą zyskujesz lub tracisz każdej tury, po wzięciu pod uwagę "
 "dochodu z kontrolowanych wiosek i opłaty za utrzymanie jednostek."
 
-#: src/reports.cpp:1691
+#: src/reports.cpp:1723
 msgid "Observers:"
 msgstr "Obserwatorzy:"
 
-#: src/reports.cpp:1711
+#: src/reports.cpp:1743
 msgid "Clock"
 msgstr "Zegar"
 
-#: src/reports.cpp:1722
+#: src/reports.cpp:1754
 msgid "Battery"
 msgstr "Bateria"
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Countdown until your turn automatically ends."
 msgstr "Odliczanie do automatycznego zakończenia tury."
 
-#: src/reports.cpp:1753
+#: src/reports.cpp:1785
 msgid "Turn Countdown"
 msgstr "Odliczanie czasu tury"
 
@@ -8974,21 +8974,21 @@ msgstr "Pora dnia"
 msgid "This Time of Day is only a Stub!"
 msgstr "Ta pora dnia jest tylko przykładem!"
 
-#: src/units/abilities.cpp:920
+#: src/units/abilities.cpp:970
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "spowolniona: "
 
-#: src/units/abilities.cpp:923
+#: src/units/abilities.cpp:973
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:926
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:939
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9126,34 +9126,34 @@ msgstr "półmroczna"
 msgid "female^neutral"
 msgstr "neutralna"
 
-#: src/units/unit.cpp:1989
+#: src/units/unit.cpp:1984
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1995
+#: src/units/unit.cpp:1990
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PŻ"
 
-#: src/units/unit.cpp:2005
+#: src/units/unit.cpp:2000
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ruch"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ruchy"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ruchów"
 
-#: src/units/unit.cpp:2011
+#: src/units/unit.cpp:2006
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> zasięgu widzenia"
 
-#: src/units/unit.cpp:2015
+#: src/units/unit.cpp:2010
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> zasłaniania"
 
-#: src/units/unit.cpp:2020
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PD do awansu"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2019
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9161,11 +9161,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> atak na turę"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataki na turę"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ataków na turę"
 
-#: src/units/unit.cpp:2031
+#: src/units/unit.cpp:2026
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> ceny przywołania"
 
-#: src/units/unit.cpp:2498
+#: src/units/unit.cpp:2493
 msgid "$effect_description per level"
 msgstr "$effect_description na poziom"
 

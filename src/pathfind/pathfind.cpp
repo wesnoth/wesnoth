@@ -415,7 +415,7 @@ static void find_routes(
 				}
 			}
 
-			if ( viewing_team && current_team && viewing_team != current_team && viewing_team->shrouded(next_hex) ) {
+			if ( !see_all && viewing_team && current_team && viewing_team != current_team && viewing_team->shrouded(next_hex) ) {
 				// bug #2199: in "Show Enemy Moves", don't pathfind enemy units through the player's shroud
 				continue;
 			}
