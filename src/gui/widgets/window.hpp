@@ -159,11 +159,43 @@ public:
 	 */
 	virtual void layout() override;
 
-	/** Called by draw_manager when it believes a redraw is necessary. */
+	/** Ensure the window's internal render buffer is up-to-date.
+	 *
+	 * This renders the window to an off-screen texture, which is then
+	 * copied to the screen during expose().
+	 */
+	virtual void render() override;
+
+private:
+	/** The internal render buffer used by render() and expose(). */
+	texture render_buffer_ = {};
+
+	/** The part of the window (if any) currently marked for rerender. */
+	rect awaiting_rerender_;
+
+	/** Ensure render textures are valid and correct. */
+	void update_render_textures();
+
+public:
+	/**
+	 * Called by draw_manager when it believes a redraw is necessary.
+	 * Can be called multiple times per vsync.
+	 */
 	virtual bool expose(const rect& region) override;
 
 	/** The current draw location of the window, on the screen. */
 	virtual rect screen_location() override;
+
+	/**
+	 * Queue a rerender of the internal render buffer.
+	 *
+	 * This does not request a repaint. Ordinarily use queue_redraw()
+	 * on a widget, which will call this automatically.
+	 *
+	 * @param region    The region to rerender in screen coordinates.
+	 */
+	void queue_rerender(const rect& region);
+	void queue_rerender();
 
 	/** The status of the window. */
 	enum class status {

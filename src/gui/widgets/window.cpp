@@ -646,15 +646,84 @@ void window::hide()
 	hidden_ = true;
 }
 
+void window::update_render_textures()
+{
+	point draw = get_size();
+	point render = draw * video::get_pixel_scale();
+
+	// Check that the render buffer size is correct.
+	point buf_raw = render_buffer_.get_raw_size();
+	point buf_draw = render_buffer_.draw_size();
+	bool raw_size_changed = buf_raw.x != render.x || buf_raw.y != render.y;
+	bool draw_size_changed = buf_draw.x != draw.x || buf_draw.y != draw.y;
+	if (!raw_size_changed && !draw_size_changed) {
+		// buffers are fine
+		return;
+	}
+
+	if(raw_size_changed) {
+		LOG_DP << "regenerating window render buffer as " << render;
+		render_buffer_ = texture(render.x, render.y, SDL_TEXTUREACCESS_TARGET);
+	}
+	if(raw_size_changed || draw_size_changed) {
+		LOG_DP << "updating window render buffer draw size to " << draw;
+		render_buffer_.set_draw_size(draw);
+	}
+
+	// Clear the entire texture, just in case
+	for(int i = 0; i < 2; ++i) {
+		auto setter = draw::set_render_target(render_buffer_);
+		draw::fill(0,0,0,0);
+	}
+
+	queue_rerender();
+}
+
+void window::queue_rerender()
+{
+	queue_rerender(get_rectangle());
+}
+
+void window::queue_rerender(const rect& screen_region)
+{
+	// More than one region updating per-frame should be rare.
+	// Just rerender the minimal area that covers everything.
+	rect local_region = screen_region;
+	local_region.shift(-get_origin());
+	awaiting_rerender_.expand_to_cover(local_region);
+}
+
+void window::render()
+{
+	update_render_textures();
+	if (awaiting_rerender_.empty()) {
+		return;
+	}
+	DBG_DP << "window::render() local " << awaiting_rerender_;
+	auto target_setter = draw::set_render_target(render_buffer_);
+	auto clip_setter = draw::override_clip(awaiting_rerender_);
+	draw();
+	awaiting_rerender_ = sdl::empty_rect;
+}
+
 bool window::expose(const rect& region)
 {
 	DBG_DP << "window::expose " << region;
-	rect i = get_rectangle().intersect(region);
-	i.clip(draw::get_clip());
-	if (i.empty()) {
+
+	// Calculate the destination region we need to draw.
+	rect dst = get_rectangle().intersect(region);
+	dst.clip(draw::get_clip());
+	if (dst.empty()) {
 		return false;
 	}
-	draw();
+
+	// Blit from the pre-rendered buffer.
+	rect src = dst;
+	src.shift(-get_origin());
+	render_buffer_.set_src(src);
+	draw::blit(render_buffer_, dst);
+	render_buffer_.clear_src();
+
 	return true;
 }
 
