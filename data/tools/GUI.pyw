@@ -649,7 +649,7 @@ class WmllintTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_normal = Tooltip(self.radio_normal,
-                                      # TRANSLATORS: Tool-tip explanation for normal run mode.
+                                      # TRANSLATORS: Tooltip explanation for normal run mode.
                                       _("Perform conversion and save changes to file"))
 
         self.radio_dryrun = Radiobutton(self.mode_frame,
@@ -661,7 +661,7 @@ class WmllintTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_dryrun = Tooltip(self.radio_dryrun,
-                                      # TRANSLATORS: Tool-tip explanation for dry run mode.
+                                      # TRANSLATORS: Tooltip explanation for dry run mode.
                                       _("Perform conversion without saving changes to file"))
 
         self.radio_clean = Radiobutton(self.mode_frame,
@@ -673,7 +673,7 @@ class WmllintTab(Frame):
                               sticky=W,
                               padx=10)
         self.tooltip_clean = Tooltip(self.radio_clean,
-                                     # TRANSLATORS: Tool-tip explanation for clean mode.
+                                     # TRANSLATORS: Tooltip explanation for clean mode.
                                      _("Delete back-up files"))
 
         self.radio_diff = Radiobutton(self.mode_frame,
@@ -685,7 +685,7 @@ class WmllintTab(Frame):
                              sticky=W,
                              padx=10)
         self.tooltip_diff = Tooltip(self.radio_diff,
-                                    # TRANSLATORS: Tool-tip explanation for diff run mode.
+                                    # TRANSLATORS: Tooltip explanation for diff run mode.
                                     _("Show differences in converted files"))
 
         self.radio_revert = Radiobutton(self.mode_frame,
@@ -697,7 +697,7 @@ class WmllintTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_revert = Tooltip(self.radio_revert,
-                                      # TRANSLATORS: Tool-tip explanation for revert run mode.
+                                      # TRANSLATORS: Tooltip explanation for revert run mode.
                                       _("Revert conversions using back-up files"))
 
         self.verbosity_frame = LabelFrame(self,
@@ -1070,7 +1070,7 @@ class WmlindentTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_normal = Tooltip(self.radio_normal,
-                                      # TRANSLATORS: Tool-tip explanation for normal run mode.
+                                      # TRANSLATORS: Tooltip explanation for normal run mode.
                                       _("Perform conversion and save changes to file"))
 
         self.radio_dryrun = Radiobutton(self.mode_frame,
@@ -1082,7 +1082,7 @@ class WmlindentTab(Frame):
                                sticky=W,
                                padx=10)
         self.tooltip_dryrun = Tooltip(self.radio_dryrun,
-                                      # TRANSLATORS: Tool-tip explanation for dry run mode.
+                                      # TRANSLATORS: Tooltip explanation for dry run mode.
                                       _("Perform conversion without saving changes to file"))
 
         self.verbosity_frame = LabelFrame(self,
@@ -1157,7 +1157,7 @@ class WmlindentTab(Frame):
                               sticky=W,
                               padx=10)
         self.tooltip_quiet = Tooltip(self.quiet_check,
-                                     # TRANSLATORS: Tool-tip explanation for quiet option.
+                                     # TRANSLATORS: Tooltip explanation for quiet option.
                                      _("Do not generate output messages"))
 
         self.columnconfigure(0, weight=1)
