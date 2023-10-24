@@ -62,6 +62,11 @@ struct point : SDL_Point
 		return *this;
 	}
 
+	constexpr point operator-() const
+	{
+		return {-x, -y};
+	}
+
 	constexpr point operator-(const point& point) const
 	{
 		return {x - point.x, y - point.y};
