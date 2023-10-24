@@ -634,8 +634,6 @@ void canvas::parse_cfg(const config& cfg)
 		} else {
 			ERR_GUI_P << "Canvas: found a shape of an invalid type " << type
 					  << ".";
-
-			assert(false);
 		}
 	}
 }
