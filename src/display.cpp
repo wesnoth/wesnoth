@@ -2649,7 +2649,7 @@ void display::draw_hex(const map_location& loc)
 		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
 		num_images_fg = terrain_image_vector_.size();
 
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
