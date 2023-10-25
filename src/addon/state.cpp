@@ -29,13 +29,11 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 	t.can_publish = have_addon_pbl_info(id);
 	t.in_version_control = have_addon_in_vcs_tree(id);
-	//t.installed_version = version_info();
 
 	if(is_addon_installed(id)) {
 		if(t.can_publish) {
 			if(addon.local_only) {
 				t.installed_version = addon.current_version;
-				//t.remote_version = version_info();
 			} else {
 				t.remote_version = *addon.versions.begin();
 
@@ -55,18 +53,20 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 			if(addon.versions.size() > 0) {
 				t.remote_version = *addon.versions.begin();
 			} else {
-				t.remote_version = version_info(0,0,0);
+				t.remote_version = version_info();
 			}
 		}
 
-		if(t.remote_version == t.installed_version) {
+		// if an add-on has a _server.pbl but no version attribute, then both remote_version and installed_version are 0.0.0
+		// this results in it showing as Published on the add-ons manager even though it isn't actually published
+		if(t.remote_version == t.installed_version && t.installed_version != version_info()) {
 			t.state = ADDON_INSTALLED;
 		} else if(t.remote_version > t.installed_version) {
 			t.state = ADDON_INSTALLED_UPGRADABLE;
 		} else if(t.remote_version == version_info()) {
 			// Remote version not set.
 			t.state = ADDON_INSTALLED_LOCAL_ONLY;
-		} else /* if(remote_version < t.installed_version) */ {
+		} else {
 			t.state = ADDON_INSTALLED_OUTDATED;
 		}
 	} else {
