@@ -482,6 +482,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 canvas::canvas()
 	: shapes_()
 	, blur_depth_(0)
+	, deferred_(false)
 	, w_(0)
 	, h_(0)
 	, variables_()
@@ -492,11 +493,64 @@ canvas::canvas()
 canvas::canvas(canvas&& c) noexcept
 	: shapes_(std::move(c.shapes_))
 	, blur_depth_(c.blur_depth_)
+	, deferred_(c.deferred_)
 	, w_(c.w_)
 	, h_(c.h_)
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 {
+}
+
+// It would be better if the blur effect was managed at a higher level.
+// But for now this works and should be both general and robust.
+bool canvas::update_blur(const rect& screen_region, bool force)
+{
+	if(!blur_depth_) {
+		// No blurring needed.
+		return true;
+	}
+	if(blur_texture_ && !force) {
+		// We already made the blur. It's expensive, so don't do it again.
+		return true;
+	}
+
+	// To blur what is underneath us, it must already be rendered somewhere.
+	// This is okay for sub-elements of an opaque window (panels on the main
+	// title screen for example) as the window will already have rendered
+	// its background to the render buffer before we get here.
+	// If however we are blurring elements behind the window, such as if
+	// the window itself is translucent (objectives popup), or it is
+	// transparent with a translucent element (character dialogue),
+	// then we need to render what will be behind it before capturing that
+	// and rendering a blur.
+	// We could use the previous render frame, but there could well have been
+	// another element there last frame such as a popup window which we
+	// don't want to be part of the blur.
+	// The only stable solution is to render in multiple passes.
+	// For now, we defer rendering of translucent elements to the next frame,
+	// so one frame is rendered without the element, then the element captures
+	// the result from that frame and renders itself on the next frame.
+	// Ultimately even with hardware acceleration of the blur effect
+	// a similar solution will need to be retained. The difference with a
+	// better future implementation would be that the multiple rendering
+	// passes can be managed at a higher level, and that they can be done
+	// within a single frame.
+
+	if(!deferred_) {
+		DBG_GUI_D << "Deferring blur at " << screen_region;
+		deferred_ = true;
+		return false;
+	}
+
+	// Read and blur pixels from the previous render frame.
+	DBG_GUI_D << "Blurring " << screen_region << " depth " << blur_depth_;
+	rect read_region = screen_region;
+	auto setter = draw::set_render_target({});
+	surface s = video::read_pixels_low_res(&read_region);
+	s = blur_surface(s, blur_depth_);
+	blur_texture_ = texture(s);
+	deferred_ = false;
+	return true;
 }
 
 void canvas::draw()
@@ -508,18 +562,15 @@ void canvas::draw()
 		return;
 	}
 
-	// Note: this doesn't update if whatever is underneath changes.
-	if(blur_depth_ && !blur_texture_) {
-		// Cache a blurred image of whatever is underneath.
-		SDL_Rect rect = draw::get_viewport();
-		surface s = video::read_pixels_low_res(&rect);
-		s = blur_surface(s, blur_depth_);
-		blur_texture_ = texture(s);
+	if(deferred_) {
+		// We will draw next frame.
+		return;
 	}
 
 	// Draw blurred background.
 	// TODO: hwaccel - this should be able to be removed at some point with shaders
 	if(blur_depth_ && blur_texture_) {
+		DBG_GUI_D << "blitting blur size " << blur_texture_.draw_size();
 		draw::blit(blur_texture_);
 	}
 

@@ -149,9 +149,10 @@ void multi_page::finalize(std::unique_ptr<generator_base> generator, const std::
 	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
 }
 
-void multi_page::impl_draw_background()
+bool multi_page::impl_draw_background()
 {
 	/* DO NOTHING */
+	return true;
 }
 
 void multi_page::set_self_active(const bool /*active*/)
