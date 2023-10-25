@@ -454,8 +454,9 @@ void saved_game::expand_mp_options()
 	}
 }
 
-static void inherit_scenario(config& scenario, config& map_scenario)
+static void inherit_scenario(config& scenario, config& map_scen)
 {
+	config& map_scenario = map_scen.has_child("multiplayer") ? map_scen.mandatory_child("multiplayer") : (map_scen.has_child("scenario") ? map_scen.mandatory_child("scenario") : map_scen);
 	config sides;
 	sides.splice_children(map_scenario, "side");
 	scenario.append_children(map_scenario);
