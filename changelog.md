@@ -38,6 +38,8 @@
    * Drakes:
      * Saurian Oracle – xp changed from 66 to 74
      * Saurian Soothsayer – xp changed from 100 to 66
+     * Saurian Prophet is added as an upgrade of the Saurian Oracle
+     * Saurian Seer is added as an upgrade of the Saurian Soothsayer
  ### User interface
    * Village ownership is shown with flag and side number in terrain info (issue #4334)
  ### WML API
