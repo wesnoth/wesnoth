@@ -55,7 +55,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 			}
 		}
 
-		if(t.remote_version == version_info()) {
+		if(addon.local_only) {
 			t.state = ADDON_INSTALLED_LOCAL_ONLY;
 		} else if(t.remote_version == t.installed_version) {
 			t.state = ADDON_INSTALLED;
