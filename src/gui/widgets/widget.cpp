@@ -370,12 +370,12 @@ SDL_Rect widget::calculate_clipping_rectangle() const
 	}
 }
 
-void widget::draw_background()
+bool widget::draw_background()
 {
 	assert(visible_ == visibility::visible);
 
 	if(get_drawing_action() == redraw_action::none) {
-		return;
+		return true;
 	}
 
 	// Set viewport and clip so we can draw in local coordinates.
@@ -389,7 +389,7 @@ void widget::draw_background()
 	auto clip_setter = draw::reduce_clip(clip);
 
 	draw_debug_border();
-	impl_draw_background();
+	return impl_draw_background();
 }
 
 void widget::draw_children()
@@ -413,12 +413,12 @@ void widget::draw_children()
 	impl_draw_children();
 }
 
-void widget::draw_foreground()
+bool widget::draw_foreground()
 {
 	assert(visible_ == visibility::visible);
 
 	if(get_drawing_action() == redraw_action::none) {
-		return;
+		return true;
 	}
 
 	// Set viewport and clip so we can draw in local coordinates.
@@ -431,7 +431,7 @@ void widget::draw_foreground()
 	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
-	impl_draw_foreground();
+	return impl_draw_foreground();
 }
 
 SDL_Rect widget::get_dirty_rectangle() const

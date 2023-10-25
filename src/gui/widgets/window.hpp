@@ -173,6 +173,9 @@ private:
 	/** The part of the window (if any) currently marked for rerender. */
 	rect awaiting_rerender_;
 
+	/** Parts of the window (if any) with rendering deferred to next frame */
+	std::vector<rect> deferred_regions_;
+
 	/** Ensure render textures are valid and correct. */
 	void update_render_textures();
 
@@ -196,6 +199,16 @@ public:
 	 */
 	void queue_rerender(const rect& region);
 	void queue_rerender();
+
+	/**
+	 * Defer rendering of a particular region to next frame.
+	 *
+	 * This is used for blur, which must render the region underneath once
+	 * before rendering the blur.
+	 *
+	 * @param region    The region to defer in screen coordinates.
+	 */
+	void defer_region(const rect& region);
 
 	/** The status of the window. */
 	enum class status {

@@ -619,13 +619,22 @@ void window::draw()
 	}
 
 	// Draw background.
-	this->draw_background();
+	if(!this->draw_background()) {
+		// We may need to blur the background behind the window,
+		// but at this point it hasn't been rendered yet.
+		// We thus defer rendering to next frame so we can snapshot what
+		// is underneath the window without drawing over it.
+		defer_region(get_rectangle());
+		return;
+	}
 
 	// Draw children.
 	this->draw_children();
 
 	// Draw foreground.
-	this->draw_foreground();
+	if(!this->draw_foreground()) {
+		defer_region(get_rectangle());
+	}
 
 	return;
 }
@@ -670,12 +679,13 @@ void window::update_render_textures()
 		render_buffer_.set_draw_size(draw);
 	}
 
-	// Clear the entire texture, just in case
-	for(int i = 0; i < 2; ++i) {
+	// Clear the entire texture.
+	{
 		auto setter = draw::set_render_target(render_buffer_);
 		draw::fill(0,0,0,0);
 	}
 
+	// Rerender everything.
 	queue_rerender();
 }
 
@@ -693,9 +703,24 @@ void window::queue_rerender(const rect& screen_region)
 	awaiting_rerender_.expand_to_cover(local_region);
 }
 
+void window::defer_region(const rect& screen_region)
+{
+	LOG_DP << "deferring region " << screen_region;
+	deferred_regions_.push_back(screen_region);
+}
+
 void window::render()
 {
+	// Ensure our render texture is correctly sized.
 	update_render_textures();
+
+	// Mark regions that were previously deferred for rerender and repaint.
+	for(auto& region : deferred_regions_) {
+		queue_redraw(region);
+	}
+	deferred_regions_.clear();
+
+	// Render the portion of the window awaiting rerender (if any).
 	if (awaiting_rerender_.empty()) {
 		return;
 	}

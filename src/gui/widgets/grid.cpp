@@ -1008,9 +1008,18 @@ void grid::impl_draw_children()
 			continue;
 		}
 
-		widget->draw_background();
+		// We may need to defer drawing to next frame for blur processing.
+		if(!widget->draw_background()) {
+			get_window()->defer_region(widget->get_rectangle());
+			continue;
+		}
+
 		widget->draw_children();
-		widget->draw_foreground();
+
+		if(!widget->draw_foreground()) {
+			get_window()->defer_region(widget->get_rectangle());
+			continue;
+		}
 	}
 }
 
