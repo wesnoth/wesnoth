@@ -52,20 +52,15 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 			t.installed_version = get_addon_version_info(id);
 			if(addon.versions.size() > 0) {
 				t.remote_version = *addon.versions.begin();
-			} else {
-				t.remote_version = version_info();
 			}
 		}
 
-		// if an add-on has a _server.pbl but no version attribute, then both remote_version and installed_version are 0.0.0
-		// this results in it showing as Published on the add-ons manager even though it isn't actually published
-		if(t.remote_version == t.installed_version && t.installed_version != version_info()) {
+		if(t.remote_version == version_info()) {
+			t.state = ADDON_INSTALLED_LOCAL_ONLY;
+		} else if(t.remote_version == t.installed_version) {
 			t.state = ADDON_INSTALLED;
 		} else if(t.remote_version > t.installed_version) {
 			t.state = ADDON_INSTALLED_UPGRADABLE;
-		} else if(t.remote_version == version_info()) {
-			// Remote version not set.
-			t.state = ADDON_INSTALLED_LOCAL_ONLY;
 		} else {
 			t.state = ADDON_INSTALLED_OUTDATED;
 		}
