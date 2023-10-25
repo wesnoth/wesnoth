@@ -577,7 +577,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	, viewport_()
 {
 	// Validate we can render to this texture.
-	assert(t.get_access() == SDL_TEXTUREACCESS_TARGET);
+	assert(!t || t.get_access() == SDL_TEXTUREACCESS_TARGET);
 
 	if (!renderer()) {
 		WRN_D << "can't set render target with null renderer";
@@ -587,7 +587,11 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	target_ = video::get_render_target();
 	SDL_RenderGetViewport(renderer(), &viewport_);
 
-	video::force_render_target(t);
+	if (t) {
+		video::force_render_target(t);
+	} else {
+		video::reset_render_target();
+	}
 }
 
 draw::render_target_setter::~render_target_setter()
@@ -602,7 +606,11 @@ draw::render_target_setter::~render_target_setter()
 
 draw::render_target_setter draw::set_render_target(const texture& t)
 {
-	DBG_D << "setting render target to "
-	      << t.w() << 'x' << t.h() << " texture";
+	if (t) {
+		DBG_D << "setting render target to "
+		      << t.w() << 'x' << t.h() << " texture";
+	} else {
+		DBG_D << "setting render target to main render buffer";
+	}
 	return draw::render_target_setter(t);
 }

@@ -519,6 +519,11 @@ void clear_render_target()
 	force_render_target({});
 }
 
+void reset_render_target()
+{
+	force_render_target(render_texture_);
+}
+
 texture get_render_target()
 {
 	// This should always be up-to-date, but assert for sanity.
@@ -561,7 +566,7 @@ void render_screen()
 	SDL_RenderPresent(*window);
 
 	// Reset the render target to the render texture.
-	force_render_target(render_texture_);
+	reset_render_target();
 }
 
 surface read_pixels(SDL_Rect* r)
