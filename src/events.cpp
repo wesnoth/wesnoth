@@ -761,7 +761,7 @@ void raise_resize_event()
 	point size = video::window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
+	event.window.event = SDL_WINDOWEVENT_SIZE_CHANGED;
 	event.window.windowID = 0; // We don't check this anyway... I think...
 	event.window.data1 = size.x;
 	event.window.data2 = size.y;

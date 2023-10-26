@@ -291,6 +291,9 @@ bool update_framebuffer()
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
+		} else {
+			// This isn't currently used, but ensure it's accurate anyway.
+			render_texture_.set_draw_size(lsize);
 		}
 	}
 	if (!render_texture_) {
