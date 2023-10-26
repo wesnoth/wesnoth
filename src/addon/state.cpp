@@ -35,7 +35,11 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 			if(addon.local_only) {
 				t.installed_version = addon.current_version;
 			} else {
-				t.remote_version = *addon.versions.begin();
+				if(addon.versions.size() > 0) {
+					t.remote_version = *addon.versions.begin();
+				} else {
+					t.remote_version = version_info();
+				}
 
 				// Try to obtain the version number from the .pbl first.
 				// Just grabbing the version, no need to validate.
