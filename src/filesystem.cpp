@@ -1778,17 +1778,13 @@ std::string get_localized_path(const std::string& file, const std::string& suff)
 
 std::string get_addon_id_from_path(const std::string& location)
 {
-	bfs::path path = bfs::absolute(location);
-	bool use_next = false;
-	std::string addon_base = filesystem::base_name(filesystem::get_addons_dir());
+	std::string full_path = normalize_path(location, true);
+	std::string addons_path = normalize_path(get_addons_dir(), true);
 
-	for(const bfs::path& dir : path) {
-		if(use_next) {
-			return dir.string();
-		} else {
-			if(dir.string() == addon_base) {
-				use_next = true;
-			}
+	if(full_path.find(addons_path) == 0) {
+		bfs::path path(full_path.substr(addons_path.size()+1));
+		if(path.size() > 0) {
+			return path.begin()->string();
 		}
 	}
 
