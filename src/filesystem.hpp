@@ -466,4 +466,10 @@ std::string get_program_invocation(const std::string &program_name);
  */
 std::string get_localized_path(const std::string& file, const std::string& suff = "");
 
+/**
+ * Returns the add-on ID from a path.
+ * aka the directory directly following the "add-ons" folder, or an empty string if none is found.
+ */
+std::string get_addon_id_from_path(const std::string& location);
+
 }
