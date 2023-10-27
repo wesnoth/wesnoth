@@ -15,6 +15,8 @@
 #include <algorithm>
 #include <vector>
 
+#include "gettext.hpp"
+#include "gui/dialogs/message.hpp"      // for show_error_message
 #include "utils/config_filters.hpp"
 
 #include "serialization/string_utils.hpp" // for utils::split
@@ -24,6 +26,10 @@ bool utils::config_filters::bool_matches_if_present(const config& filter, const 
 {
 	if(!filter.has_attribute(attribute)) {
 		return true;
+	}
+	//check if filter is boolean, if not then show error message.
+	if(filter[attribute].to_bool(true) != filter[attribute].to_bool(false)) {
+		gui2::show_error_message(_("The filter ") + attribute +  _(" can only take the values yes/true or no/false."));
 	}
 
 	return filter[attribute].to_bool() == cfg[attribute].to_bool(def);
