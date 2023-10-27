@@ -152,9 +152,25 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "  then SUBSTRING(game.INSTANCE_VERSION, 1, 4) "
 "  else 'trunk' "
 "  end as VERSION "
-"from "+db_game_info_table_+" game "
-"inner join "+db_game_player_info_table_+" player "
-"   on exists "
+"from "+db_game_player_info_table_+" player , "+db_game_content_info_table_+" scenario , "+db_game_content_info_table_+" era , "+db_game_info_table_+" game ";
+	// using a left join when searching by modification won't exclude anything
+	game_history_query += search_content_type == 2 && !search_content.empty() ? "inner join " : "left join ";
+	game_history_query += db_game_content_info_table_+" mods "
+"   on mods.TYPE = 'modification' "
+"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and mods.GAME_ID = game.GAME_ID ";
+	// modification id optional parameter
+	if(search_content_type == 2)
+	{
+		if(!search_content.empty())
+		{
+			game_history_query += "and mods.ID like ? ";
+
+			utils::to_sql_wildcards(search_content, false);
+			params.emplace_back(search_content);
+		}
+	}
+"where exists "
 "  ( "
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
@@ -171,8 +187,14 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "  and game.INSTANCE_UUID = player.INSTANCE_UUID "
 "  and game.GAME_ID = player.GAME_ID "
 "  and player.USER_ID != -1 "
-"  and game.END_TIME is not NULL ";
-
+"  and game.END_TIME is not NULL "
+"  and scenario.TYPE = 'scenario' "
+"  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and scenario.GAME_ID = game.GAME_ID "
+"  and era.TYPE = 'era' "
+"  and era.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and era.GAME_ID = game.GAME_ID ";
+	// game name optional paramenter
 	if(!search_game_name.empty())
 	{
 		game_history_query += "and game.GAME_NAME like ? ";
@@ -181,10 +203,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 		params.emplace_back(search_game_name);
 	}
 
-	game_history_query += "inner join "+db_game_content_info_table_+" scenario "
-"   on scenario.TYPE = 'scenario' "
-"  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and scenario.GAME_ID = game.GAME_ID ";
+	// scenario id optional parameter
 	if(search_content_type == 0)
 	{
 		if(!search_content.empty())
@@ -196,32 +215,12 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 		}
 	}
 
-	game_history_query += "inner join "+db_game_content_info_table_+" era "
-"   on era.TYPE = 'era' "
-"  and era.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and era.GAME_ID = game.GAME_ID ";
+	// era id optional parameter
 	if(search_content_type == 1)
 	{
 		if(!search_content.empty())
 		{
 			game_history_query += "and era.ID like ? ";
-
-			utils::to_sql_wildcards(search_content, false);
-			params.emplace_back(search_content);
-		}
-	}
-
-	// using a left join when searching by modification won't exclude anything
-	game_history_query += search_content_type == 2 && !search_content.empty() ? "inner join " : "left join ";
-	game_history_query += db_game_content_info_table_+" mods "
-"   on mods.TYPE = 'modification' "
-"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and mods.GAME_ID = game.GAME_ID ";
-	if(search_content_type == 2)
-	{
-		if(!search_content.empty())
-		{
-			game_history_query += "and mods.ID like ? ";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
