@@ -101,6 +101,9 @@ public:
 	 */
 	bool update_blur(const rect& screen_region, const bool force = false);
 
+	/** Clear the cached blur texture, forcing it to regenerate. */
+	void queue_reblur();
+
 	/**
 	 * Draw the canvas' shapes onto the screen.
 	 *
