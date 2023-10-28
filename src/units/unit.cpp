@@ -1451,8 +1451,12 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!string_matches_if_present(filter, cfg, "id", ""))
 		return false;
 
-	if(!string_matches_if_present(filter, cfg, "apply_to", "self"))
-		return false;
+	if(filter.has_attribute("apply_to")){
+		const std::string& default_apply = (tag_name != "resistance") ? "self" : "";
+		if(!string_matches_if_present(filter, cfg, "apply_to", default_apply)){
+			return false;
+		}
+	}
 
 	if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 		return false;
