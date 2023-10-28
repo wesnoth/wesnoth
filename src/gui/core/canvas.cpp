@@ -550,6 +550,11 @@ bool canvas::update_blur(const rect& screen_region, bool force)
 	return true;
 }
 
+void canvas::queue_reblur()
+{
+	blur_texture_.reset();
+}
+
 void canvas::draw()
 {
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
