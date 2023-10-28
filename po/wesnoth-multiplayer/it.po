@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-08-20 01:56 UTC\n"
-"PO-Revision-Date: 2023-02-28 22:46+0100\n"
+"PO-Revision-Date: 2023-10-21 21:06+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -88,8 +88,7 @@ msgstr ""
 #: data/multiplayer/achievements.cfg:34
 msgid "Completed the survival scenario <i>6p - Team Survival</i>."
 msgstr ""
-"Completatato lo scenario di sopravvivenza <i>6g - Sopravvivenza a Squadre</"
-"i>."
+"Completato lo scenario di sopravvivenza <i>6g - Sopravvivenza a Squadre</i>."
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:42 data/multiplayer/achievements.cfg:43
@@ -2517,44 +2516,43 @@ msgid ""
 "throne of a king? This free for all map has 38 villages and bonus income for "
 "the leader on the center keep."
 msgstr ""
+"Il Re è morto. In assenza di un erede, i suoi litigiosi signorotti ora "
+"competono per il trono in cima alla collina e tutto il potere e la ricchezza "
+"che esso comporta. Sei abbastanza potente da occupare questa posizione di "
+"potere prima che lo facciano i tuoi rivali? Riuscirai a resistere ai loro "
+"numerosi assassini? Il tuo deretano è <abbastanza grande da riempire il "
+"trono di un re? Questa mappa tutti contro tutti ha 38 villaggi e un bonus "
+"entrate per il condottiero della fortezza centrale."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:63
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "Southwest"
-msgstr "Sud-ovest"
+msgstr "Sudovest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:73
-#, fuzzy
-#| msgid "teamname^Southeast"
 msgid "Southeast"
-msgstr "Sud-est"
+msgstr "Sudest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:83
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northeast"
-msgstr "Gente del Nord"
+msgstr "Nordest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:93
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northwest"
-msgstr "Gente del Nord"
+msgstr "Nordovest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:106
 msgid "High Guard"
-msgstr ""
+msgstr "Guardia Scelta"
 
 #. [slider]: id=bonus_income
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:121
 msgid "Hill Bonus Income"
-msgstr ""
+msgstr "Bonus entrate Collina"
 
 #. [slider]: id=bonus_income
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:122
@@ -2562,22 +2560,24 @@ msgid ""
 "The amount of extra gold per turn granted to the leader who occupies the "
 "hill keep."
 msgstr ""
+"Il quantitativo di oro extra garantito ad ogni turno al condottiero che "
+"occupa la fortezza sulla collina."
 
 #. [slider]: id=chest_gold
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:130
 msgid "Treasure Chest Gold"
-msgstr ""
+msgstr "Oro dello Scrigno del Tesoro"
 
 #. [slider]: id=chest_gold
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:131
 msgid "The amount of gold stashed inside the treasure chest on the hill."
 msgstr ""
+"Il quantitativo di oro nascosto nello scrigno del tesoro sulla collina."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:139
-#, fuzzy
 msgid "Defeat enemy leaders"
-msgstr "Sconfiggi tutti i condottieri nemici"
+msgstr "Sconfiggi i condottieri nemici"
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:143
@@ -2585,6 +2585,8 @@ msgid ""
 "The treasure chest on the hill keep can only be unlocked by a leader, for a "
 "bonus of $chest_gold gold."
 msgstr ""
+"Lo scrigno del tesoro nella fortezza sulla collina può essere aperto "
+"soltanto da un condottiero, per un bonus di $chest_gold gold."
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:146
@@ -2592,6 +2594,8 @@ msgid ""
 "A side with a leader holding the hill keep gets +$bonus_income gold income "
 "each turn."
 msgstr ""
+"Una squadra il cui condottiero controlli la fortezza sulla collina ottiene "
+"una entrata aggiuntiva di $bonus_income oro ad ogni turno."
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:149
@@ -2599,16 +2603,19 @@ msgid ""
 "Each side gets two leaders. Whenever a leader is lost then another appears "
 "on the recall list at its full cost."
 msgstr ""
+"Ogni squadra ha due condottieri. Ogni volta che un condottiero viene "
+"eliminato ne apparirà un altro nella lista dei rinforzi reclutabili al suo "
+"pieno costo."
 
 #. [floating_text]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:233
 msgid "<span color='gold'>+$bonus_income gold</span>"
-msgstr ""
+msgstr "<span color='gold'>+$bonus_income oro</span>"
 
 #. [floating_text]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:270
 msgid "<span color='gold'>+$chest_gold gold</span>"
-msgstr ""
+msgstr "<span color='gold'>+$chest_gold oro</span>"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7

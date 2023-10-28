@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-16 23:13-0500\n"
-"PO-Revision-Date: 2023-07-30 17:30+0200\n"
+"PO-Revision-Date: 2023-10-21 23:11+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -475,10 +475,8 @@ msgstr "Resti"
 
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
-#, fuzzy
-#| msgid "Window size:"
 msgid "Window"
-msgstr "Dimensione finestra:"
+msgstr "Finestra"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -3188,14 +3186,12 @@ msgstr "Etichetta:"
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/window/edit_label.cfg:111
 msgid "Team only"
-msgstr "Solo squadra"
+msgstr "Solo schieramento"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Add-on Details"
 msgid "Add-on selection"
-msgstr "Dettagli estensione"
+msgstr "Selezione estensione"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3204,25 +3200,24 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Scegli una estensione da associare alla tua sessione corrente di edit. Se "
+"viene scelta una Nuova Estensione, il suo ID potrà essere cambiato tramite "
+"l’opzione Cambia ID Estensione."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "Estensioni"
+msgstr "ID estensione"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Mostra sfere alleati"
+msgstr "Mostra tutte"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Se mostrare tutte le estensioni installate o soltanto le tue"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3257,17 +3252,17 @@ msgstr "Visibile nell’oscurità"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Configurazione Pubblicazione Estensione"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "Il nome dell’estensione mostrato durante il gioco"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Titolo:"
 
 #. [grid]
 #. [label]
@@ -3280,19 +3275,17 @@ msgstr "Descrizione:"
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "La descrizione dell’estensione mostrata nel gestore di estensioni."
 
 #. [label]: id=icon_label
 #: data/gui/window/editor_edit_pbl.cfg:162
 msgid "Icon:"
-msgstr ""
+msgstr "Icona:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Annulla selezione"
+msgstr "Seleziona un file icona"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3300,13 +3293,13 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Il percorso dell’icona da mostrare nel gestore estensioni. Deve essere una "
+"immagine della linea principale."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
-#, fuzzy
-#| msgid "Author"
 msgid "Author:"
-msgstr "Autore"
+msgstr "Autore:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3314,11 +3307,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"L’autore di questa estensione. Se viene utilizzata l’autenticazione del "
+"forum, questo è il tuo utente del forum stesso."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "La versione corrente dell’estensione. Deve essere nella forma X.Y.Z."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:208
@@ -3327,11 +3322,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Una lista, separata da virgole, di ID di qualsiasi altra estensione dalla "
+"quale questa dipende. L’ID di una estensione è il nome della cartella nel "
+"file manager del tuo sistema operativo, non il nome dell’estensione."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Discussione del forum:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3339,23 +3337,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"L’ID numerico del post di una discussione sul forum di Wesnoth dovwei "
+"giocatori possono postare i loro feedback."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "URL del Forum"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "L'URL completo della discussione del tuo feedback nel forum."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
-#, fuzzy
-#| msgid "Authenticate"
 msgid "Forum Authentication:"
-msgstr "Autenticato"
+msgstr "Autenticazione Forum:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3363,6 +3361,8 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Se utilizzare il nome utente e la password del forum durante il caricamento "
+"o memorizzare la password e l’indirizzo email nel file estensione_server.pbl"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3370,22 +3370,25 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Lista, separata da virgloa, di utenze del forum di altre persone autorizzate "
+"ad inviare aggiornamenti di questa estensione."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Autori Secondari:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Indirizzo email per contatti in caso di problemi con la tua estensione."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3393,18 +3396,19 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"La password attuale dell’estensione. Si raccomanda l’utilizzo "
+"dell’autenticazione del forum, in quanto questa password non è memorizzata "
+"in maniera sicura."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Descrizione:"
+msgstr "Descrizione"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3424,7 +3428,7 @@ msgstr "Elimina"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr ""
+msgstr "Validazione"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3437,24 +3441,18 @@ msgstr "Salva"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Traduzioni:"
+msgstr "Traduzioni"
 
 #. [label]
 #: data/gui/window/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Password necessaria"
+msgstr "* Necessaria"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Lingua"
+msgstr "* Lingua:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
@@ -3462,21 +3460,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"Il nome POSIX locale della traduzione, tipo sv (Svedese) o zh_CN (Cinese "
+"Semplificato)"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Titolo:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "La traduzione del titolo dell’estensione."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "La traduzione della descrizione dell’estensione."
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -3523,19 +3523,17 @@ msgstr "Numero:"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:110
 msgid "Team identifier:"
-msgstr "Identificatore squadra:"
+msgstr "Identificatore schieramento:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:137
 msgid "Team name:"
-msgstr "Nome squadra:"
+msgstr "Nome schieramento:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruit Unit"
 msgid "Recruit list:"
-msgstr "Recluta unità"
+msgstr "Lista Reclutamento:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -5578,7 +5576,7 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
-"Cambia il tema dell'interfaccia in gioco. Nelle estensioni create dalla "
+"Cambia il tema dell’interfaccia in gioco. Nelle estensioni create dalla "
 "comunità si possono trovare temi aggiuntivi."
 
 #. [toggle_button]: id=show_floating_labels
@@ -5594,7 +5592,7 @@ msgstr "Mostra danni e cure come etichette sfumate sopra un’unità"
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr "Indicatori colore squadra"
+msgstr "Indicatori colore schieramento"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -6365,10 +6363,8 @@ msgid "filesystem_path_game^User preferences"
 msgstr "Preferenze utente"
 
 #: src/desktop/paths.cpp:227
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "Dati del gioco"
+msgstr "Editor mappe"
 
 #: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
@@ -6842,7 +6838,7 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:937
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
-"L'attributo passphrase non può essere presente quando viene utilizzato "
+"L’attributo passphrase non può essere presente quando viene utilizzato "
 "forum_auth."
 
 #: src/gui/dialogs/addon/manager.cpp:942
@@ -6959,46 +6955,32 @@ msgstr ""
 "Prova a sceglierne una compatibile."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:172
-#, fuzzy
-#| msgid "Load Core"
 msgid "Core"
-msgstr "Carica un nucleo"
+msgstr "Nucleo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
-msgstr "Campagne"
+msgstr "Campagna"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
-#, fuzzy
-#| msgid "Start Campaign"
 msgid "Hybrid Campaign"
-msgstr "Inizia la campagna"
+msgstr "Campagna Ibrida"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
-msgstr "Campagne multigiocatore"
+msgstr "Campagna multigiocatore"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:176
-#, fuzzy
-#| msgid "Scenarios"
 msgid "Scenario"
-msgstr "Scenari"
+msgstr "Scenario"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Avvertimenti MG"
+msgstr "Scenario Multigiocatore"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Azione"
+msgstr "Fazione"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
@@ -7007,63 +6989,51 @@ msgstr "Era"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
 msgid "Map Pack"
-msgstr ""
+msgstr "Pacchetto di Mappe"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Modifiche"
+msgstr "Modifica"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Other"
-msgstr ""
+msgstr "Altro"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:189
-#, fuzzy
-#| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Cooperativo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Abbellimento"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "RNG"
-msgstr ""
+msgstr "GNC"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
-#, fuzzy
-#| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Sopravvivenza"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:194
-#, fuzzy
-#| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "Terraforming"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:373
 msgid "No validation errors"
-msgstr ""
+msgstr "Nessun errore di validazione"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:373
 msgid "Success"
-msgstr ""
+msgstr "Successo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:403
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose an icon"
-msgstr "Scegli lo scenario di partenza"
+msgstr "Scegli una icona"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -8378,7 +8348,7 @@ msgstr "Esci e torna alla schermata iniziale"
 
 #: src/hotkey/hotkey_command.cpp:133
 msgid "Set Team Label"
-msgstr "Imposta l’etichetta della squadra"
+msgstr "Imposta l’etichetta dello schieramento"
 
 #: src/hotkey/hotkey_command.cpp:134
 msgid "Set Label"
@@ -8857,13 +8827,11 @@ msgstr "Aggiungi una nuova area"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Editor Pubblicazione Estensione"
 
 #: src/hotkey/hotkey_command.cpp:271
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Gestisci estensioni"
+msgstr "Cambia ID estensione"
 
 #: src/hotkey/hotkey_command.cpp:273
 msgid "Edit Scenario"
