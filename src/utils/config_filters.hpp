@@ -15,6 +15,7 @@
 #pragma once
 
 #include "config.hpp"
+#include <set>
 
 /**
  * Utility functions for implementing [filter], [filter_ability], [filter_weapon], etc.
@@ -68,5 +69,12 @@ bool string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def);
 
 bool bool_or_empty(const config& filter, const config& cfg, const std::string& attribute);
+
+/**
+ * vector used for verify what attribute checked can be present in special/abilities.
+ */
+const std::set<std::string> abilities_tags{"tailwind", "hides", "skirmisher", "teleport", "leadership", "illuminates", "heals", "regenerate"};
+
+const std::set<std::string> numerical_tags{"attacks", "damage", "chance_to_hit", "drains", "heal_on_hit", "resistance", "leadership", "illuminates", "heals", "regenerate"};
 
 } // namespace utils::config_filters

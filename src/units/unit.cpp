@@ -1441,7 +1441,7 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
 		return false;
 
-	if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+	if((filter.has_attribute("cumulative") && numerical_tags.count(tag_name) == 0 && tag_name != "berserk") || !bool_matches_if_present(filter, cfg, "cumulative", false))
 		return false;
 
 	const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
@@ -1450,17 +1450,23 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 
 	if(!string_matches_if_present(filter, cfg, "id", ""))
 		return false;
+	if(filter.has_attribute("apply_to")){
+		bool matche_apply_to = (tag_name == "resistance") ? string_matches_if_present(filter, cfg, "apply_to", "") : string_matches_if_present(filter, cfg, "apply_to", "self");
+		if(abilities_tags.count(tag_name) != 0 || !matche_apply_to){
+			return false;
+		}
+	}
 
-	if(!string_matches_if_present(filter, cfg, "apply_to", "self"))
+	if((filter.has_attribute("overwrite_specials") && numerical_tags.count(tag_name) == 0 && tag_name != "berserk" && tag_name != "plague") || !string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 		return false;
 
-	if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
-		return false;
-
-	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+	if((filter.has_attribute("active_on") && abilities_tags.count(tag_name) != 0) || !string_matches_if_present(filter, cfg, "active_on", "both"))
 		return false;
 
 	if(!filter["value"].empty()){
+		if((filter.has_attribute("value") && numerical_tags.count(tag_name) == 0 && tag_name != "berserk" && tag_name != "tailwind")){
+			return false;
+		}
 		bool has_other_key = (!cfg["add"].empty() || !cfg["sub"].empty() || !cfg["multiply"].empty() || !cfg["divide"].empty());
 		if(!has_other_key){
 			if(tag_name == "drains"){
@@ -1483,16 +1489,16 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 		}
 	}
 
-	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+	if((filter.has_attribute("add") && numerical_tags.count(tag_name) == 0) || !int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
 		return false;
 
-	if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
+	if((filter.has_attribute("sub") && numerical_tags.count(tag_name) == 0) || !int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
 		return false;
 
-	if(!double_matches_if_present(filter, cfg, "multiply"))
+	if((filter.has_attribute("multiply") && numerical_tags.count(tag_name) == 0) || !double_matches_if_present(filter, cfg, "multiply"))
 		return false;
 
-	if(!double_matches_if_present(filter, cfg, "divide"))
+	if((filter.has_attribute("divide") && numerical_tags.count(tag_name) == 0) || !double_matches_if_present(filter, cfg, "divide"))
 		return false;
 
 	// Passed all tests.
