@@ -925,6 +925,11 @@ void display::create_buttons()
 		action_buttons_.push_back(std::move(b));
 	}
 
+	if (prevent_draw_) {
+		// buttons start hidden in this case
+		hide_buttons();
+	}
+
 	layout_buttons();
 	DBG_DP << "buttons created";
 }
@@ -949,6 +954,26 @@ void display::draw_buttons()
 	//		btn->draw();
 	//	}
 	//}
+}
+
+void display::hide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide();
+	}
+	for (auto& button : action_buttons_) {
+		button->hide();
+	}
+}
+
+void display::unhide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide(false);
+	}
+	for (auto& button : action_buttons_) {
+		button->hide(false);
+	}
 }
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
@@ -2210,6 +2235,21 @@ double display::turbo_speed() const
 	else
 		return 1.0;
 }
+
+void display::set_prevent_draw(bool pd)
+{
+	prevent_draw_ = pd;
+	if (!pd) {
+		// ensure buttons are visible
+		unhide_buttons();
+	}
+}
+
+bool display::get_prevent_draw()
+{
+	return prevent_draw_;
+}
+
 
 void display::fade_tod_mask(
 	const std::string& old_mask,
