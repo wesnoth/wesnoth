@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2011-04-30 20:33-0000\n"
 "Last-Translator: Len vanDalsen <l.dog.96@gmail.com>\n"
 "Language-Team: Afrikaans\n"
@@ -232,7 +232,7 @@ msgstr "vergiftig"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "storm drietandvurk"
 
@@ -662,8 +662,15 @@ msgid "Vietnamese Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
+#: data/core/about_i18n.cfg:1868
+#, fuzzy
+#| msgid "Polish Translation"
+msgid "Welsh Translation"
+msgstr "Poolse Vertaling"
+
+#. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1876
+#: data/core/about_i18n.cfg:1877
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "+Sjinese Vertaling"
@@ -1162,7 +1169,7 @@ msgstr ""
 #. [item]: id=storm-trident2
 #. [object]
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:552
 msgid "Storm Trident"
 msgstr "Storm drietandvurk"
 
@@ -1849,81 +1856,81 @@ msgid ""
 msgstr ""
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:320
+#: data/core/macros/items.cfg:335
 msgid "Potion of Strength"
 msgstr "Sterkmaak Doepa"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:323
+#: data/core/macros/items.cfg:338
 msgid "Strength is given to the drinker."
 msgstr "Die een wat dit drink word Sterk"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:365
+#: data/core/macros/items.cfg:380
 msgid "Potion of Decay"
 msgstr "Vrotword Doepa"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:383
 msgid "This poor unit drank something really bad."
 msgstr "Hierdie arme drommel het iets baie sleg gedrink."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:404
+#: data/core/macros/items.cfg:419
 msgid "Ring of Regeneration"
 msgstr "Ring van Herlewing"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:407
+#: data/core/macros/items.cfg:422
 msgid "This ring will heal the bearer a little each turn."
 msgstr ""
 "Hierdie ring sal die draer daarvan so 'n bietjie met elke beurt laat herstel."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:445
+#: data/core/macros/items.cfg:460
 msgid "Ring of Slowness"
 msgstr "Ring van Traagheid"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:448
+#: data/core/macros/items.cfg:463
 msgid "The bearer of this ring is slowed."
 msgstr "Die draer van hierdie ring word baie stadig."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:499
 msgid "Staff of Swiftness"
 msgstr "Spoedstaf"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:487
+#: data/core/macros/items.cfg:502
 msgid "This staff will grant the bearer swift movement."
 msgstr "Hierdie staf laat die draer baie vinnig beweeg."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:488
+#: data/core/macros/items.cfg:503
 msgid "Only magical beings can wield such an object."
 msgstr "Slegs towerweses kan so 'n voorwerp gebruik."
 
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:547
 msgid "Should $unit.name pick up the trident?"
 msgstr "Moet $unit.name die drietandvurk op tel?"
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:548
 msgid "storm trident^Take it"
 msgstr ""
 
-#: data/core/macros/items.cfg:534
+#: data/core/macros/items.cfg:549
 msgid "storm trident^Leave it"
 msgstr "Los dit"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:550
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:555
 #, fuzzy
 #| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
@@ -1932,7 +1939,7 @@ msgstr ""
 "Hierdie vurk laat meermanne toe om weerligstrale op sy vyande los te laat."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:568
+#: data/core/macros/items.cfg:583
 msgid "sceptre of fire"
 msgstr ""
 
@@ -3965,7 +3972,7 @@ msgstr "EP om te bevorder"
 #: data/modifications.cfg:7
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
-"if it advances on another player's turn. With this modification you can set "
+"if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
@@ -6441,7 +6448,7 @@ msgstr "Onbekende scenario: '"
 msgid "No campaigns are available."
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:711 src/game_launcher.cpp:730 src/replay.cpp:666
 msgid "The file you have tried to load is corrupt"
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
@@ -6619,29 +6626,34 @@ msgstr "Jy"
 msgid "Error"
 msgstr "Fout"
 
-#: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
+#: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other aspects: "
 msgstr "Spel Waarnemer"
 
-#: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
-#: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
+#: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
+#: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
 msgid "Weapon: "
 msgstr "Wapen:"
 
-#: src/gui/dialogs/unit_attack.cpp:171 src/gui/dialogs/unit_attack.cpp:182
-#: src/reports.cpp:823 src/reports.cpp:1077
+#: src/gui/dialogs/unit_attack.cpp:191 src/gui/dialogs/unit_attack.cpp:204
+#: src/reports.cpp:195
+msgid "Type: "
+msgstr "Tipe:"
+
+#: src/gui/dialogs/unit_attack.cpp:192 src/gui/dialogs/unit_attack.cpp:205
+#: src/reports.cpp:823 src/reports.cpp:1087
 msgid "Damage: "
 msgstr "Skade:"
 
-#: src/gui/dialogs/unit_attack.cpp:172 src/gui/dialogs/unit_attack.cpp:183
+#: src/gui/dialogs/unit_attack.cpp:193 src/gui/dialogs/unit_attack.cpp:206
 #: src/reports.cpp:844
 #, fuzzy
 msgid "Attacks: "
 msgstr "Aanvaller"
 
-#: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
+#: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Chance to hit: "
@@ -7666,7 +7678,11 @@ msgstr ""
 msgid "current local time"
 msgstr "Huidige doelwit:"
 
-#: src/play_controller.cpp:1046
+#: src/play_controller.cpp:565
+msgid "Trying to create a corrupt file, please report this bug"
+msgstr ""
+
+#: src/play_controller.cpp:1050
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7675,18 +7691,18 @@ msgstr ""
 "Die spel is nie in pas nie en sal stop. Wil jy 'n foutregister van jou spel "
 "bêre?"
 
-#: src/play_controller.cpp:1047
+#: src/play_controller.cpp:1051
 #, fuzzy
 msgid "Error details:"
 msgstr "Fout"
 
-#: src/play_controller.cpp:1226
+#: src/play_controller.cpp:1230
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1232
+#: src/play_controller.cpp:1236
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7695,7 +7711,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1239
+#: src/play_controller.cpp:1243
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7705,11 +7721,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1243
+#: src/play_controller.cpp:1247
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1352
+#: src/play_controller.cpp:1356
 msgid "No objectives available"
 msgstr "Geen doelwitte beskikbaar nie"
 
@@ -7827,10 +7843,6 @@ msgstr "Wil jy regtig hierdie spel uitvee?"
 msgid "Name: "
 msgstr "Naam:"
 
-#: src/reports.cpp:195
-msgid "Type: "
-msgstr "Tipe:"
-
 #: src/reports.cpp:198
 #, fuzzy
 msgid "Special Notes:"
@@ -7929,7 +7941,7 @@ msgstr ""
 msgid "Ability: "
 msgstr "Vermoëns: "
 
-#: src/reports.cpp:442 src/reports.cpp:987
+#: src/reports.cpp:442 src/reports.cpp:997
 msgid " (inactive)"
 msgstr ""
 
@@ -8025,42 +8037,42 @@ msgstr "Spesiaal"
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:893
+#: src/reports.cpp:900
 msgid "Weapon range: "
 msgstr ""
 
-#: src/reports.cpp:894
+#: src/reports.cpp:901
 msgid "Damage type: "
 msgstr "Skade soort: "
 
-#: src/reports.cpp:895
+#: src/reports.cpp:902
 #, fuzzy
 msgid "Damage versus: "
 msgstr "skade soort: "
 
-#: src/reports.cpp:954
+#: src/reports.cpp:964
 #, fuzzy
 msgid "Accuracy:"
 msgstr "totale skade"
 
-#: src/reports.cpp:959
+#: src/reports.cpp:969
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:985
+#: src/reports.cpp:995
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Wapen speciaal"
 
-#: src/reports.cpp:1060
+#: src/reports.cpp:1070
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1089
+#: src/reports.cpp:1099
 msgid "Total damage"
 msgstr "Totale skade"
 
-#: src/reports.cpp:1153
+#: src/reports.cpp:1163
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8069,85 +8081,85 @@ msgstr[0] "Aanvaller"
 msgstr[1] "Aanvaller"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1161
+#: src/reports.cpp:1171
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1165
+#: src/reports.cpp:1175
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/reports.cpp:1257
+#: src/reports.cpp:1267
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Tyd van Dag:"
 
-#: src/reports.cpp:1306
+#: src/reports.cpp:1316
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Tyd van Dag:"
 
-#: src/reports.cpp:1307 src/reports.cpp:1361
+#: src/reports.cpp:1317 src/reports.cpp:1371
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Wettige eenhede: "
 
-#: src/reports.cpp:1309 src/reports.cpp:1363
+#: src/reports.cpp:1319 src/reports.cpp:1373
 msgid "Neutral units: "
 msgstr "Neutrale eenhede: "
 
-#: src/reports.cpp:1310 src/reports.cpp:1364
+#: src/reports.cpp:1320 src/reports.cpp:1374
 msgid "Chaotic units: "
 msgstr "Chaotiese eenhede: "
 
-#: src/reports.cpp:1312 src/reports.cpp:1366
+#: src/reports.cpp:1322 src/reports.cpp:1376
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Wettige eenhede: "
 
-#: src/reports.cpp:1425
+#: src/reports.cpp:1435
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Beurt"
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1437
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid "Gold"
 msgstr "Goud"
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "Villages"
 msgstr "Dorpies"
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "Units"
 msgstr "Eenhede"
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8156,39 +8168,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Inkomste"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1723
+#: src/reports.cpp:1733
 msgid "Observers:"
 msgstr "Waarnemers:"
 
-#: src/reports.cpp:1743
+#: src/reports.cpp:1753
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1754
+#: src/reports.cpp:1764
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1785
+#: src/reports.cpp:1795
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1785
+#: src/reports.cpp:1795
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8570,7 +8582,7 @@ msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:461
+#: src/units/attack_type.cpp:477
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8578,7 +8590,7 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "per beurt"
 msgstr[1] "per beurt"
 
-#: src/units/attack_type.cpp:470
+#: src/units/attack_type.cpp:486
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8588,7 +8600,7 @@ msgstr[0] "skade"
 msgstr[1] "skade"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:479
+#: src/units/attack_type.cpp:495
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -8597,7 +8609,7 @@ msgstr[0] "per beurt"
 msgstr[1] "per beurt"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:488
+#: src/units/attack_type.cpp:504
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -8607,33 +8619,33 @@ msgstr[0] "trefhou"
 msgstr[1] "trefhoue"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:497
+#: src/units/attack_type.cpp:513
 #, fuzzy
 msgid "$number| accuracy"
 msgstr "totale skade"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:504
+#: src/units/attack_type.cpp:520
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "per beurt"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:511
+#: src/units/attack_type.cpp:527
 #, fuzzy
 msgid "$number parry"
 msgstr "totale skade"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:518
+#: src/units/attack_type.cpp:534
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "per beurt"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:525
+#: src/units/attack_type.cpp:541
 #, fuzzy
 msgid "$number movement point"
 msgid_plural "$number movement points"
@@ -8641,7 +8653,7 @@ msgstr[0] "Beweging"
 msgstr[1] "Beweging"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:534
+#: src/units/attack_type.cpp:550
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -8650,7 +8662,7 @@ msgstr[0] "per beurt"
 msgstr[1] "per beurt"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:543
+#: src/units/attack_type.cpp:559
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8660,7 +8672,7 @@ msgstr[0] "skade"
 msgstr[1] "skade"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:552
+#: src/units/attack_type.cpp:568
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"

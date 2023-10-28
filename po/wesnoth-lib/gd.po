@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -2356,7 +2356,9 @@ msgstr "Chaidh an geama a chruthachadh"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+#, fuzzy
+#| msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Brùth air '$hotkey' airson barrachd fiosrachaidh)"
 
 #. [button]: id=search
@@ -5273,12 +5275,16 @@ msgstr ""
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-msgid "Change the side's controller"
+#, fuzzy
+#| msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "Atharraich cò stiùiricheas an taobh"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-msgid "Change the AI side's behaviour"
+#, fuzzy
+#| msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "Atharraich giùlan IF an taoibh"
 
 #. [menu_button]: id=side_team
@@ -5887,18 +5893,26 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
+#, fuzzy
+#| msgid ""
+#| "Add this username to your friends list (add optional notes, e.g., "
+#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "Cuir am far-ainm seo ri liosta nan caraidean agad (cuir nòtaichean "
 "roghainneil ris, m.e. “nòtaichean air caraid fhar_ainm”)"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
+#, fuzzy
+#| msgid ""
+#| "Add this username to your ignore list (add optional reason, e.g., "
+#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "Cuir am far-ainm seo ris an liosta neo-shuime agad (cuir adhbhar roghainneil "
 "ris, m.e. “adhbhar gus far_ainm a sheachnadh”)"
@@ -6633,8 +6647,8 @@ msgid "No resolution defined."
 msgstr "Cha deach dùmhlachd-bhreacaidh a mhìneachadh."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Cha deach griod a mhìneachadh."
@@ -7995,7 +8009,7 @@ msgstr ""
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -8029,11 +8043,11 @@ msgstr ""
 msgid "Missing required state for menu button"
 msgstr ""
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Cha deach duilleag a mhìneachadh."
 
@@ -8072,11 +8086,11 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr "Tha feum air co-dhiù 1 nì co-shìnte."
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr ""
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr ""
 
@@ -8132,7 +8146,7 @@ msgstr "Cha cho-fhreagair an àireamh dhe value_labels is luachan."
 msgid "No stack layers defined."
 msgstr "Cha deach stac bhreathan a mhìneachadh."
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Chaidh widget le gliocas-cobharach ach às aonais gliocas-sgrìn a lorg."
 
@@ -8256,11 +8270,11 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Tha iomadh mìneachadh aig a’ bhuidheann ceangailte “$id|.”"
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Tha putan “click_dismiss” no “ok” a dhìth air click dismiss."
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Cha deach còmhradh a shealltainn a tha ro mhòr airson an sgrìn."

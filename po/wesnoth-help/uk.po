@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2019-02-01 16:40+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
 "Language-Team: \n"
@@ -213,15 +213,15 @@ msgstr " Цей боєць здатний зцілювати сусідів і �
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
-#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "телепорт"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -4338,10 +4338,16 @@ msgstr "Основні команди"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
+#, fuzzy
+#| msgid ""
+#| "These commands can either be issued via the command line by prefixing "
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
+#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
+"with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
+"‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
 "Ці команди можуть бути задані через командний рядок, ставлячи перед ними "
@@ -4353,7 +4359,7 @@ msgstr ""
 #: data/core/help.cfg:681
 msgid ""
 "\n"
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
@@ -4895,7 +4901,7 @@ msgstr ""
 #| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
+"attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
 " Якщо при атаці хто-небудь із союзників стоїть навпроти противника, цей "
@@ -6234,7 +6240,7 @@ msgstr ""
 #| "When used offensively, this attack always has at least a 60% chance to "
 #| "hit."
 msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
+"When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr "При нападі ця атака завжди має шанс не менше 60% попасти в ціль."
 
@@ -6364,6 +6370,25 @@ msgid ""
 msgstr ""
 " Цей боєць здатний уповільнювати ворогів, удвічі зменшуючи швидкість "
 "пересування і шкоду від атаки до його наступного ходу."
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
 
 #: data/core/units.cfg:4
 msgid ""
@@ -6895,22 +6920,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Гоблін"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Гоблінша"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:152
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Гобліни"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:151
 msgid ""
 "\n"
 "\n"
@@ -6937,22 +6962,22 @@ msgstr ""
 "приносить оркам значне задоволення, як показник їх сили і майстерності."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Грифон"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Грифона"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:172
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Грифони"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6972,28 +6997,28 @@ msgstr ""
 "вагою, але це досі залишається таємницею, як і їхнє походження."
 
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:181
 #, fuzzy
 #| msgid "race^Wose"
 msgid "race^Horse"
 msgstr "Лісовик"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:182
 #, fuzzy
 #| msgid "race+female^Ogre"
 msgid "race+female^Horse"
 msgstr "Огр"
 
 #. [race]: id=horse
-#: data/core/units.cfg:185
+#: data/core/units.cfg:183
 #, fuzzy
 #| msgid "race^Woses"
 msgid "race^Horses"
 msgstr "Лісовики"
 
 #. [race]: id=horse
-#: data/core/units.cfg:186
+#: data/core/units.cfg:184
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7007,22 +7032,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:201
 msgid "race^Human"
 msgstr "Людина"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:202
 msgid "race+female^Human"
 msgstr "Людина"
 
 #. [race]: id=human
-#: data/core/units.cfg:205
+#: data/core/units.cfg:203
 msgid "race^Humans"
 msgstr "Люди"
 
 #. [race]: id=human
-#: data/core/units.cfg:206
+#: data/core/units.cfg:204
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7100,22 +7125,22 @@ msgstr ""
 "армії, та їх сильні і слабкі сторони компенсують одна одну."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:219
 msgid "race^Dunefolk Human"
 msgstr "Людина дюн"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:222
+#: data/core/units.cfg:220
 msgid "race+female^Dunefolk Human"
 msgstr "Людина дюн"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:221
 msgid "race+plural^Dunefolk"
 msgstr "Люди дюн"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:225
+#: data/core/units.cfg:223
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7173,22 +7198,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:244
 msgid "race^Saurian"
 msgstr "Ящір"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:245
 msgid "race+female^Saurian"
 msgstr "Ящірка"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:248
+#: data/core/units.cfg:246
 msgid "race^Saurians"
 msgstr "Ящіри"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:249
+#: data/core/units.cfg:247
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7318,17 +7343,17 @@ msgstr ""
 "подібних, обидві ситуації трапляються досить часто."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:273
 msgid "race^Mechanical"
 msgstr "Механізм"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:276
+#: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
 msgstr "Механізми"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:277
+#: data/core/units.cfg:275
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7341,22 +7366,22 @@ msgstr ""
 "магічного втручання."
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:284
 msgid "race^Merman"
 msgstr "Водяний"
 
 #. [race]: id=merman
-#: data/core/units.cfg:287
+#: data/core/units.cfg:285
 msgid "race^Mermaid"
 msgstr "Русалка"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:286
 msgid "race^Merfolk"
 msgstr "Водяні"
 
 #. [race]: id=merman
-#: data/core/units.cfg:290
+#: data/core/units.cfg:288
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7379,22 +7404,22 @@ msgstr ""
 "сповільнюється."
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:296
 msgid "race^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:297
 msgid "race+female^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:300
+#: data/core/units.cfg:298
 msgid "race^Monsters"
 msgstr "Монстри"
 
 #. [race]: id=monster
-#: data/core/units.cfg:301
+#: data/core/units.cfg:299
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7405,22 +7430,22 @@ msgstr ""
 "Вони також часто фігурують в казках і кошмарах представників різних рас."
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:306
 msgid "race^Naga"
 msgstr "Наг"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:307
 msgid "race^Nagini"
 msgstr "Нага"
 
 #. [race]: id=naga
-#: data/core/units.cfg:310
+#: data/core/units.cfg:308
 msgid "race^Nagas"
 msgstr "Наги"
 
 #. [race]: id=naga
-#: data/core/units.cfg:311
+#: data/core/units.cfg:309
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7449,22 +7474,22 @@ msgstr ""
 "люблять болота і річки так само, як і відкриті моря і океани."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:317
 msgid "race^Ogre"
 msgstr "Огр"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:318
 msgid "race+female^Ogre"
 msgstr "Огр"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:321
+#: data/core/units.cfg:319
 msgid "race^Ogres"
 msgstr "Огри"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:322
+#: data/core/units.cfg:320
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7496,22 +7521,22 @@ msgstr ""
 "отримання спільної вигоди, або просто чутки чи випадковість."
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:328
 msgid "race^Orc"
 msgstr "Орк"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:329
 msgid "race+female^Orc"
 msgstr "Орк"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:330
 msgid "race^Orcs"
 msgstr "Орки"
 
 #. [race]: id=orc
-#: data/core/units.cfg:333
+#: data/core/units.cfg:331
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7611,7 +7636,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:344
+#: data/core/units.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -7624,28 +7649,28 @@ msgstr ""
 "силові вміння, наприклад, стрільбу з лука або нічні вбивства."
 
 #. [race]: id=raven
-#: data/core/units.cfg:353
+#: data/core/units.cfg:351
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
 msgstr "Гноми"
 
 #. [race]: id=raven
-#: data/core/units.cfg:354
+#: data/core/units.cfg:352
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
 msgstr "Дрейк"
 
 #. [race]: id=raven
-#: data/core/units.cfg:355
+#: data/core/units.cfg:353
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "Гноми"
 
 #. [race]: id=raven
-#: data/core/units.cfg:356
+#: data/core/units.cfg:354
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -7665,22 +7690,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:369
+#: data/core/units.cfg:365
 msgid "race^Troll"
 msgstr "Троль"
 
 #. [race]: id=troll
-#: data/core/units.cfg:370
+#: data/core/units.cfg:366
 msgid "race+female^Troll"
 msgstr "Тролиха"
 
 #. [race]: id=troll
-#: data/core/units.cfg:371
+#: data/core/units.cfg:367
 msgid "race^Trolls"
 msgstr "Тролі"
 
 #. [race]: id=troll
-#: data/core/units.cfg:372
+#: data/core/units.cfg:368
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7789,22 +7814,22 @@ msgstr ""
 "сході Весноту, а також скрізь, куди йдуть орди орків."
 
 #. [race]: id=undead
-#: data/core/units.cfg:392
+#: data/core/units.cfg:388
 msgid "race^Undead"
 msgstr "Мрець"
 
 #. [race]: id=undead
-#: data/core/units.cfg:393
+#: data/core/units.cfg:389
 msgid "race+female^Undead"
 msgstr "Мертва"
 
 #. [race]: id=undead
-#: data/core/units.cfg:394
+#: data/core/units.cfg:390
 msgid "race+plural^Undead"
 msgstr "Мерці"
 
 #. [race]: id=undead
-#: data/core/units.cfg:395
+#: data/core/units.cfg:391
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -7886,22 +7911,22 @@ msgstr ""
 "лише незадовго до Халдріка I, ельфи і гноми чули про них і раніше."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:408
+#: data/core/units.cfg:404
 msgid "race^Wolf"
 msgstr "Вовк"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:409
+#: data/core/units.cfg:405
 msgid "race+female^Wolf"
 msgstr "Вовчиха"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:410
+#: data/core/units.cfg:406
 msgid "race^Wolves"
 msgstr "Вовки"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:411
+#: data/core/units.cfg:407
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7919,17 +7944,17 @@ msgstr ""
 "від цивілізації, однак, іноді вони полюють на домашню худобу."
 
 #. [race]: id=wose
-#: data/core/units.cfg:420
+#: data/core/units.cfg:416
 msgid "race^Wose"
 msgstr "Лісовик"
 
 #. [race]: id=wose
-#: data/core/units.cfg:421
+#: data/core/units.cfg:417
 msgid "race^Woses"
 msgstr "Лісовики"
 
 #. [race]: id=wose
-#: data/core/units.cfg:422
+#: data/core/units.cfg:418
 #, fuzzy
 #| msgid ""
 #| "The mighty wose resides within the deepest forests of the known world. To "

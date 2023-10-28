@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2020-05-09 23:50+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2444,7 +2444,9 @@ msgstr "Játék adatfájlok:"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+#, fuzzy
+#| msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr "(Nyomd meg a(z) '$hotkey' billentyűt további információért)"
 
 #. [button]: id=search
@@ -5411,12 +5413,16 @@ msgstr ""
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-msgid "Change the side's controller"
+#, fuzzy
+#| msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "Az oldal irányítójának megváltoztatása"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-msgid "Change the AI side's behaviour"
+#, fuzzy
+#| msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "Az MI oldal viselkedésének megváltoztatása"
 
 #. [menu_button]: id=side_team
@@ -6027,18 +6033,26 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
+#, fuzzy
+#| msgid ""
+#| "Add this username to your friends list (add optional notes, e.g., "
+#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "A megadott felhasználó felvétele a barátaim közé (egyéb információk "
 "hozzáadása a „játékos_neve megjegyzés” formában lehetséges)"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
+#, fuzzy
+#| msgid ""
+#| "Add this username to your ignore list (add optional reason, e.g., "
+#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "A megadott felhasználó felvétele a mellőzöttek közé (egyéb információk "
 "hozzáadása a „játékos_neve mellőzés oka” formában lehetséges)"
@@ -6716,8 +6730,8 @@ msgid "No resolution defined."
 msgstr "A felbontás nincs megadva."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Nincs mezőháló megadva."
@@ -8074,7 +8088,7 @@ msgstr ""
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -8108,11 +8122,11 @@ msgstr ""
 msgid "Missing required state for menu button"
 msgstr ""
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Nincs oldal megadva."
 
@@ -8149,11 +8163,11 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr "Legalább egy párhuzamos elem szükséges."
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr ""
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr ""
 
@@ -8209,7 +8223,7 @@ msgstr "Az értékek és az „értékcímkék” száma nem egyezik."
 msgid "No stack layers defined."
 msgstr "Nincsenek stack rétegek megadva."
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 "Találtam egy vezérlőeszközt, amelyikhez tartozik szöveg, de súgóbuborék nem."
@@ -8334,12 +8348,12 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr "A következő csoport több definícióval is rendelkezik: „$id”."
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 "A távozáshoz egy „kattints a távozásra” vagy egy „rendben” gomb szükséges."
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Egy párbeszédablak nem jeleníthető meg, mert nem fér el a képernyőn."

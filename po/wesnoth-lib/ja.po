@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
 "Last-Translator: RatArmy, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -2287,7 +2287,9 @@ msgstr "ゲームの作成"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+#, fuzzy
+#| msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr "（詳しくは「 $hotkey 」を押してください）"
 
 #. [button]: id=search
@@ -5181,12 +5183,16 @@ msgstr ""
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-msgid "Change the side's controller"
+#, fuzzy
+#| msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "陣営のコントローラを変更します"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-msgid "Change the AI side's behaviour"
+#, fuzzy
+#| msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "AI の挙動を変更します"
 
 #. [menu_button]: id=side_team
@@ -5781,18 +5787,26 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
+#, fuzzy
+#| msgid ""
+#| "Add this username to your friends list (add optional notes, e.g., "
+#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "このユーザー名を友人リストに追加します（次のように入力するとオプションとして"
 "メモを追加することもできます。「ユーザー名 メモ」）"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
+#, fuzzy
+#| msgid ""
+#| "Add this username to your ignore list (add optional reason, e.g., "
+#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "このユーザを無視リストに追加します（オプションとして理由も付加可能です。例："
 "player_name reason ignored）"
@@ -6474,8 +6488,8 @@ msgid "No resolution defined."
 msgstr "解像度（resolution）が1つも定義されていません。"
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "グリッド（grid）が定義されていません。"
@@ -7819,7 +7833,7 @@ msgstr ""
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -7853,11 +7867,11 @@ msgstr ""
 msgid "Missing required state for menu button"
 msgstr ""
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "pageが定義されていません。"
 
@@ -7893,11 +7907,11 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr "少なくとも1つのparallel itemが必要です。"
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr ""
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr ""
 
@@ -7953,7 +7967,7 @@ msgstr "value_labels と values の数が合いません。"
 msgid "No stack layers defined."
 msgstr "stack layerが定義されていません。"
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "helptipがあるのにtooltipの無いwidgetが見つかりました。"
 
@@ -8077,11 +8091,11 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr "「 $id 」に結び付けられたグループに重複する定義があります。"
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Click dismissには「 click_dismiss 」または「 ok 」ボタンが必要です。"
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "画面に合わないため、ダイアログの表示に失敗しました。"

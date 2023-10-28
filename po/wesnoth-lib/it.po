@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2023-10-21 23:11+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -2339,7 +2339,9 @@ msgstr "Deprecato"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+#, fuzzy
+#| msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Premi '$hotkey' per ulteriori informazioni)"
 
 #. [button]: id=search
@@ -5224,12 +5226,16 @@ msgstr "* required fields"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-msgid "Change the side's controller"
+#, fuzzy
+#| msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "Cambia il controllore della squadra"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-msgid "Change the AI side's behaviour"
+#, fuzzy
+#| msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "Cambia il comportamento della IA della squadra"
 
 #. [menu_button]: id=side_team
@@ -5830,18 +5836,26 @@ msgstr "Trova e imposta il percorso al server MG per ospitare partite su LAN"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
+#, fuzzy
+#| msgid ""
+#| "Add this username to your friends list (add optional notes, e.g., "
+#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "Aggiungi questo nome alla lista dei tuoi amici (aggiunge opzionalmente delle "
 "note, tipo «nome_giocatore inserito tra gli amici»)"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
+#, fuzzy
+#| msgid ""
+#| "Add this username to your ignore list (add optional reason, e.g., "
+#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "Aggiungi questo nome alla lista di quelli che ignori (aggiungi opzionalmente "
 "un motivo, tipo «nome_giocatore ignorato per questo motivo»)"
@@ -6533,8 +6547,8 @@ msgid "No resolution defined."
 msgstr "Non è stato definita nessuna risoluzione."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Non è stata definita nessuna griglia."
@@ -7852,7 +7866,7 @@ msgstr "Stato obbligatorio mancante per etichetta testuale di controllo"
 msgid "Missing required state for listbox"
 msgstr "Stato obbligatorio mancante per listbox"
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -7885,11 +7899,11 @@ msgstr "[main] mancante in [matrix]"
 msgid "Missing required state for menu button"
 msgstr "Stato obbligatorio mancante per bottone menu"
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr "Stato obbligatorio mancante per controllo minimappa"
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Non è stata definita nessuna pagina."
 
@@ -7926,11 +7940,11 @@ msgstr "[item_definition] mancante in [pane]"
 msgid "Need at least 1 parallel item."
 msgstr "Necessita di almeno un item parallelo."
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr "Sfondo obbligatorio mancante per definizione pannello"
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr "Primo piano obbligatorio mancante per definizione pannello"
 
@@ -7987,7 +8001,7 @@ msgid "No stack layers defined."
 msgstr "Non è stata definita nessuno stack layer."
 
 # XXX Controllare helptip e tooltip
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Trovato un widget con un suggerimento e senza un commento (tooltip)."
 
@@ -8109,11 +8123,11 @@ msgstr "[widget] mancante in [viewport]"
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Il gruppo «$id» collegato ha definizioni multiple."
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "L’ignora con un clic richiede un pulsante «click_dismiss» o «ok»."
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non è stato possibile mostrare una finestra che non sta nello schermo."
