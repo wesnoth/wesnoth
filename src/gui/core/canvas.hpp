@@ -25,6 +25,7 @@
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "sdl/texture.hpp"
+#include "sdl/rect.hpp"
 
 namespace wfl { class variant; }
 struct point;
@@ -86,6 +87,19 @@ public:
 	canvas(const canvas&) = delete;
 	canvas& operator=(const canvas&) = delete;
 	canvas(canvas&& c) noexcept;
+
+	/**
+	 * Update the background blur texture, if relevant and necessary.
+	 *
+	 * This should be called sometime before draw().
+	 * Updating it later is less important as it's quite expensive.
+	 *
+	 * @param screen_region     The area of the screen underneath the canvas.
+	 * @param force             Regenerate the blur even if we already did it.
+	 *
+	 * @returns                 True if draw should continue, false otherwise.
+	 */
+	bool update_blur(const rect& screen_region, const bool force = false);
 
 	/**
 	 * Draw the canvas' shapes onto the screen.
@@ -155,6 +169,9 @@ private:
 
 	/** Blurred background texture. */
 	texture blur_texture_;
+
+	/** Whether we have deferred rendering so we can capture for blur. */
+	bool deferred_;
 
 	/** The full width of the canvas. */
 	unsigned w_;

@@ -743,7 +743,12 @@ utils::string_map_res movetype::resistances::damage_table() const
  */
 int movetype::resistances::resistance_against(const attack_type & attack) const
 {
-	return cfg_[attack.type()].to_int(100);
+	std::pair<std::string, std::string> types = attack.damage_type();
+	int res = resistance_against(types.first);
+	if(!(types.second).empty()){
+		res = std::max(res, resistance_against(types.second));
+	}
+	return res;
 }
 
 

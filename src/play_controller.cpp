@@ -561,6 +561,10 @@ config play_controller::to_config() const
 	gui_->labels().write(cfg);
 	sound::write_music_play_list(cfg);
 
+	if(cfg["replay_pos"].to_int(0) > 0 && cfg["playing_team"].empty()) {
+		gui2::show_error_message(_("Trying to create a corrupt file, please report this bug"));
+	}
+
 	return cfg;
 }
 

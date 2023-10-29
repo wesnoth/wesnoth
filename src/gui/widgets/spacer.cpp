@@ -97,9 +97,10 @@ bool spacer::disable_click_dismiss() const
 	return false;
 }
 
-void spacer::impl_draw_background()
+bool spacer::impl_draw_background()
 {
 	/* DO NOTHING */
+	return true;
 }
 
 // }---------- DEFINITION ---------{

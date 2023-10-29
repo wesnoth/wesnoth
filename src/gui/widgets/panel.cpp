@@ -65,16 +65,24 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background()
+bool panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
+	if(!get_canvas(0).update_blur(get_rectangle())) {
+		return false;
+	}
 	get_canvas(0).draw();
+	return true;
 }
 
-void panel::impl_draw_foreground()
+bool panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
+	if(!get_canvas(1).update_blur(get_rectangle())) {
+		return false;
+	}
 	get_canvas(1).draw();
+	return true;
 }
 
 point panel::border_space() const

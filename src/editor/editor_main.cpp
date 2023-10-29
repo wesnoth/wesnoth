@@ -29,7 +29,6 @@ lg::log_domain log_editor("editor");
 
 namespace editor {
 
-// TODO: remember refreshing through F5
 std::string initialize_addon()
 {
 	std::string addon_id = "";

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
-"PO-Revision-Date: 2022-09-25 11:11+0200\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"PO-Revision-Date: 2023-08-20 09:37+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -200,7 +200,7 @@ msgstr "Finestra"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Estensione"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -317,11 +317,11 @@ msgstr "Nome:"
 msgid "Load Map"
 msgstr "Carica mappa"
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1045
+#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1049
 msgid "New Map"
 msgstr "Nuova mappa"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1045
+#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1049
 msgid "New Scenario"
 msgstr "Nuovo scenario"
 
@@ -358,7 +358,7 @@ msgid "Choose Target Map"
 msgstr "Scegli la mappa di destinazione"
 
 #: src/editor/map/context_manager.cpp:561
-#: src/editor/map/context_manager.cpp:954
+#: src/editor/map/context_manager.cpp:959
 msgid "Error loading map"
 msgstr "Errore di caricamento della mappa"
 
@@ -406,24 +406,18 @@ msgstr "Scenario salvato."
 msgid "Map saved."
 msgstr "Mappa salvata."
 
-#: src/editor/map/context_manager.cpp:946
+#: src/editor/map/context_manager.cpp:951
 msgid "Loaded embedded map data"
 msgstr "Caricati tutti i dati incorporati nella mappa"
 
-#: src/editor/map/context_manager.cpp:947
-#: src/editor/map/context_manager.cpp:950
+#: src/editor/map/context_manager.cpp:952
+#: src/editor/map/context_manager.cpp:955
 msgid "Map loaded from scenario"
 msgstr "Mappa caricata a partire dallo scenario"
 
-#: src/editor/map/context_manager.cpp:950
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
+#: src/editor/map/context_manager.cpp:955
 msgid "Loaded referenced map file:"
-msgstr ""
-"Caricato il file di riferimento della mappa:\n"
-"$new"
+msgstr "Caricato il file di riferimento della mappa:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -446,7 +440,7 @@ msgstr "File vuoto"
 
 #: src/editor/map/map_context.cpp:195
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "Il file non ha una estensione .map o .cfg"
 
 #: src/editor/map/map_context.cpp:241
 msgid ""
@@ -459,6 +453,8 @@ msgstr ""
 #: src/editor/map/map_context.cpp:260
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
+"Trovati i caratteri '<<' che indicano la presenza di una inline lua - "
+"abortire"
 
 #: src/editor/map/map_context.cpp:265
 #: src/editor/palette/location_palette.cpp:265
@@ -468,32 +464,29 @@ msgstr "Errore"
 #: src/editor/map/map_context.cpp:265
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
+"Impossibile caricare lo scenario, tentativo di caricamento della sola mappa."
 
 #: src/editor/map/map_context.cpp:272
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Il file della mappa assomiglia a uno scenario, ma il valore map_data non "
+"Il file della mappa assomiglia a uno scenario, ma il valore map_file non "
 "indica un file esistente"
 
 #: src/editor/map/map_context.cpp:287
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Impossibile analizzare il file per trovare i dati della mappa"
 
-#: src/editor/map/map_context.cpp:811
+#: src/editor/map/map_context.cpp:815
 msgid "Could not save the scenario: $msg"
 msgstr "Impossibile salvare lo scenario: $msg"
 
-#: src/editor/map/map_context.cpp:846
+#: src/editor/map/map_context.cpp:850
 msgid "Could not save into scenario"
 msgstr "Impossibile salvare nello scenario"
 
-#: src/editor/map/map_context.cpp:856
+#: src/editor/map/map_context.cpp:860
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 

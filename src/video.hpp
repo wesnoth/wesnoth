@@ -290,6 +290,9 @@ void force_render_target(const texture& t);
 /** Reset the render target to the main window / screen. */
 void clear_render_target();
 
+/** Reset the render target to the primary render buffer. */
+void reset_render_target();
+
 /** Get the current render target.
  *
  * Will return an empty texture if the render target is the underlying

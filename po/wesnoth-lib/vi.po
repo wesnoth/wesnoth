@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2014-06-05 22:47+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -2524,7 +2524,7 @@ msgstr "Dữ liệu trò chơi:"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr ""
 
 #. [button]: id=search
@@ -5640,14 +5640,14 @@ msgstr ""
 #: data/gui/window/mp_staging.cfg:245
 #, fuzzy
 #| msgid "Change the music volume"
-msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "Thay đổi mức âm lượng âm nhạc"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
 #, fuzzy
 #| msgid "Change the music volume"
-msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "Thay đổi mức âm lượng âm nhạc"
 
 #. [menu_button]: id=side_team
@@ -6280,9 +6280,13 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
+#, fuzzy
+#| msgid ""
+#| "Add this username to your friends list (add optional notes, e.g., "
+#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "Thêm tên người dùng này vào danh sách bạn bè của bạn (thêm ghi chú tùy chọn, "
 "ví dụ 'tên_người_chơi ghi chú về bạn bè')"
@@ -6295,7 +6299,7 @@ msgstr ""
 #| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "Thêm tên người dùng này vào danh sách từ chối của bạn (thêm lý do tùy chọn, "
 "ví dụ 'tên_người_chơi lý do bị từ chối')"
@@ -7000,8 +7004,8 @@ msgid "No resolution defined."
 msgstr "Không xác định được độ phân giải."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Không xác định được lưới."
@@ -8436,7 +8440,7 @@ msgstr ""
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' phải có cùng số cột với 'list_definition'."
@@ -8468,11 +8472,11 @@ msgstr ""
 msgid "Missing required state for menu button"
 msgstr ""
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Không xác định được trang."
 
@@ -8508,11 +8512,11 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr "Cần ít nhất 1 mục song song."
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr ""
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr ""
 
@@ -8574,7 +8578,7 @@ msgstr "Số value_labels và values không khớp nhau."
 msgid "No stack layers defined."
 msgstr "Không xác định được ngăn xếp."
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Tìm thấy một thành phần đồ họa có trợ giúp mà không có chú giải."
 
@@ -8702,11 +8706,11 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Nhóm '$id' đã liên kết có nhiều định nghĩa."
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Nhấn giải tán cần một nút 'click_dismiss' hoặc 'ok'."
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."

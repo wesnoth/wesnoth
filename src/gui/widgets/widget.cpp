@@ -370,22 +370,26 @@ SDL_Rect widget::calculate_clipping_rectangle() const
 	}
 }
 
-void widget::draw_background()
+bool widget::draw_background()
 {
 	assert(visible_ == visibility::visible);
 
 	if(get_drawing_action() == redraw_action::none) {
-		return;
+		return true;
 	}
 
-	SDL_Rect dest = calculate_blitting_rectangle();
-	SDL_Rect clip = calculate_clipping_rectangle();
-	clip.x -= dest.x; clip.y -= dest.y;
+	// Set viewport and clip so we can draw in local coordinates.
+	rect dest = calculate_blitting_rectangle();
+	rect clip = calculate_clipping_rectangle();
+	// Presumably we are drawing to our window's render buffer.
+	point window_origin = get_window()->get_origin();
+	dest.shift(-window_origin);
 	auto view_setter = draw::set_viewport(dest);
+	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
 	draw_debug_border();
-	impl_draw_background();
+	return impl_draw_background();
 }
 
 void widget::draw_children()
@@ -396,30 +400,38 @@ void widget::draw_children()
 		return;
 	}
 
-	SDL_Rect dest = calculate_blitting_rectangle();
-	SDL_Rect clip = calculate_clipping_rectangle();
-	clip.x -= dest.x; clip.y -= dest.y;
+	// Set viewport and clip so we can draw in local coordinates.
+	rect dest = calculate_blitting_rectangle();
+	rect clip = calculate_clipping_rectangle();
+	// Presumably we are drawing to our window's render buffer.
+	point window_origin = get_window()->get_origin();
+	dest.shift(-window_origin);
 	auto view_setter = draw::set_viewport(dest);
+	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
 	impl_draw_children();
 }
 
-void widget::draw_foreground()
+bool widget::draw_foreground()
 {
 	assert(visible_ == visibility::visible);
 
 	if(get_drawing_action() == redraw_action::none) {
-		return;
+		return true;
 	}
 
-	SDL_Rect dest = calculate_blitting_rectangle();
-	SDL_Rect clip = calculate_clipping_rectangle();
-	clip.x -= dest.x; clip.y -= dest.y;
+	// Set viewport and clip so we can draw in local coordinates.
+	rect dest = calculate_blitting_rectangle();
+	rect clip = calculate_clipping_rectangle();
+	// Presumably we are drawing to our window's render buffer.
+	point window_origin = get_window()->get_origin();
+	dest.shift(-window_origin);
 	auto view_setter = draw::set_viewport(dest);
+	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
-	impl_draw_foreground();
+	return impl_draw_foreground();
 }
 
 SDL_Rect widget::get_dirty_rectangle() const
@@ -452,6 +464,7 @@ void widget::queue_redraw()
 
 void widget::queue_redraw(const rect& region)
 {
+	get_window()->queue_rerender(region);
 	draw_manager::invalidate_region(region);
 }
 

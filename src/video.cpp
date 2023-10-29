@@ -291,6 +291,9 @@ bool update_framebuffer()
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
+		} else {
+			// This isn't currently used, but ensure it's accurate anyway.
+			render_texture_.set_draw_size(lsize);
 		}
 	}
 	if (!render_texture_) {
@@ -519,6 +522,11 @@ void clear_render_target()
 	force_render_target({});
 }
 
+void reset_render_target()
+{
+	force_render_target(render_texture_);
+}
+
 texture get_render_target()
 {
 	// This should always be up-to-date, but assert for sanity.
@@ -561,7 +569,7 @@ void render_screen()
 	SDL_RenderPresent(*window);
 
 	// Reset the render target to the render texture.
-	force_render_target(render_texture_);
+	reset_render_target();
 }
 
 surface read_pixels(SDL_Rect* r)

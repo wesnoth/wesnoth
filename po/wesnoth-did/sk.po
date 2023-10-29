@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2023-10-20 23:37+0200\n"
+"PO-Revision-Date: 2023-10-22 19:34+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -66,13 +66,18 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
+"Severné pohraničné mesto Parthyn máva rok čo rok problémy s pravidelnými "
+"nájazdmi orkov. Malin Keshar, čarodej, ktorého vyženú z jeho vlastného "
+"domova, sa snaží nájsť spôsob, ako nájazdy zastaviť a za každú cenu sa orkom "
+"pomstiť za nešťastnú sériu životných udalostí, ktorú ich nájazdy spôsobili. "
+"A ak sme povedali, že za každú cenu, tak to myslíme vážne: Malin totiž možno "
+"v mene pomsty upíše diablovi aj vlastnú dušu.\n"
+"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:28
-#, fuzzy
-#| msgid "(Intermediate level, 12 scenarios.)"
 msgid "(Intermediate level, 10 scenarios.)"
-msgstr "(Stredná náročnosť, 12 scén.)"
+msgstr "(Stredná náročnosť, 10 scenárov.)"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:31
@@ -190,15 +195,6 @@ msgstr "Záchrana Parthynu"
 #. Things to be careful about while editing: there are some poems in S8 and S11, please be mindful when making wording changes there. Some commas are added for readability even though they may not be grammatically correct.
 #. If the target language has a specialized term for a fortified town, like Latin "oppidum", use it for Parthyn.
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:36
-#, fuzzy
-#| msgid ""
-#| "Malin Keshar was born ten years after the death of Haldric IV. He grew up "
-#| "in the northern border town of Parthyn, the second child and eldest son "
-#| "of the baron of the city. Every summer when the mountain passes became "
-#| "clear, orcs came down from the north to prove themselves in battle. Every "
-#| "year Parthyn’s guards repelled the raids, though some of the townsfolk "
-#| "were always lost. Malin’s father led raiding parties to disrupt the orc "
-#| "encampments and send the orcs back to the north."
 msgid ""
 "Malin Keshar was born ten years after the death of Haldric IV. He grew up in "
 "the northern border town of Parthyn, the second child and eldest son of the "
@@ -209,12 +205,11 @@ msgid ""
 "the north."
 msgstr ""
 "Malin Keshar sa narodil 10 rokov po smrti Haldrika IV. Vyrástol na severe v "
-"pohraničnom meste Parthyn, ako druhé dieťa a najstarší syn tunajšieho "
-"baróna. Každé leto, keď ustúpil z horských priesmykov sneh, schádzali "
-"orkovia z hôr na severe aby zložili skúšku v bitke. Každý rok ich stráž "
-"Parthynu zahnala, ale zakaždým z nich niekto zomrel. Malinov otec viedol "
-"oddiel jazdcov, ktorého úlohou bolo zničiť tábory orkov a vyhnať orkov späť "
-"na sever."
+"pohraničnom meste Parthyn, ako druhé dieťa a zároveň najstarší syn "
+"tunajšieho baróna. Každé leto, keď sa v horských priesmykoch roztopil sneh, "
+"schádzali orkovia z hôr na severe aby plienili neďaleké ľudské mestá. V "
+"reakcii na nájazdy viedol Malinov otec už tradične do boja oddiel jazdcov, "
+"ktorého úlohou bolo zničiť tábory orkov a vyhnať ich späť na sever."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:40
@@ -575,7 +570,7 @@ msgstr "Vitajte v Parthyne"
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:340
 msgid "Ignorance is the parent of fear."
-msgstr ""
+msgstr "Ignorancia vedie k strachu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:354
@@ -587,12 +582,12 @@ msgstr ""
 #. [unit]: type=Soulless
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:385
 msgid "Sushi"
-msgstr ""
+msgstr "Sushi"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:393
 msgid "Someone left a dead fish here."
-msgstr ""
+msgstr "Niekto tu nechal mŕtvu rybu."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:408
@@ -613,12 +608,15 @@ msgstr "Ja… zomieram…"
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:472
 msgid "We’re back from the raid, Drogan. Seems like we made it just in time!"
 msgstr ""
+"Práve sme sa vrátili z nájazdu, Drogan. Dokonca sa zdá, že akurát vhod!"
 
 #. [message]: speaker=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:476
 msgid ""
 "More humans! We’ll need more fighters to squash ’em all. Grunts, retreat!"
 msgstr ""
+"Ďalší ľudia! Budeme potrebovať viac bojovníkov aby sme ich rozdrvili "
+"všetkých. Pešiaci, ústup!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:496
@@ -699,7 +697,7 @@ msgstr "No…"
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:569
 msgid "Ya can’t support ’im on this one, Dela."
-msgstr ""
+msgstr "Nemóžeš ho v tomto podporiť, krucifix, Dela."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:574
@@ -707,11 +705,13 @@ msgid ""
 "I... guess you’re right. You’ve decided your magic is more important than "
 "us, Malin. I can’t help you."
 msgstr ""
+"Ja… asi máš recht. Dal si prednosť svojim kúzlam pred nami, Malin. Niet ti "
+"pomoci."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:579
 msgid "Begone, Malin. I’ve no wish to see yer face around here ever again."
-msgstr ""
+msgstr "Zmizni, Malin. Tvoj ksicht tu už nechcem nikdy vidieť."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:585
@@ -732,7 +732,7 @@ msgstr ""
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:595
 msgid "I’ll pretend like I didn’t hear that."
-msgstr ""
+msgstr "Budem sa tváriť, že som to nepočul."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:600
@@ -787,12 +787,12 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:650
 msgid "You will eventually see that I am right, Dela. I am resolved."
-msgstr ""
+msgstr "Časom uvidíš, že mám pravdu, Dela. A teraz už padám."
 
 #. [scenario]: id=02_Peaceful_Valley
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:5
 msgid "Peaceful Valley"
-msgstr "Mierumilovné údolie"
+msgstr "Pokojné údolie"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:20
@@ -873,7 +873,7 @@ msgstr "T’shar Lggi"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:100
 msgid "Occupy all of the goblin villages"
-msgstr "Obsaď všetky dediny."
+msgstr "Obsadíš všetky goblinie dediny"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:108
@@ -931,7 +931,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:147
 msgid "Then what shall we do?"
-msgstr ""
+msgstr "Tak potom čo treba robiť?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:152
@@ -970,7 +970,7 @@ msgstr "Niekto tu stratil kľúč."
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:204
 msgid "There are some rotten corpses in this cage."
-msgstr ""
+msgstr "Tam v klietke vidím nejaké už trochu zhnité mŕtvolky."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:209
@@ -980,7 +980,7 @@ msgstr "Využi ich."
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:218
 msgid "A necromancer must always use whatever supplies he is given. Do it."
-msgstr ""
+msgstr "Černokňažník musí využiť každú jednu vec na ktorú natrafí. Do toho."
 
 #. [message]: speaker=Malin Keshar
 #. [message]: speaker=Darken Volk
@@ -1011,6 +1011,8 @@ msgid ""
 "Why do you hesitate? Did the orcs show your people any mercy when they "
 "attacked Parthyn?"
 msgstr ""
+"Prečo to naťahuješ? Rýchlo ho zabi. Mali orkovia voči tvojim ľuďom nejaké "
+"zľutovanie, keď útočili na Parthyn?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
@@ -1894,12 +1896,12 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:236
 msgid "Then let’s go."
-msgstr ""
+msgstr "Tak potom pome."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:252
 msgid "Revenge is a confession of pain."
-msgstr ""
+msgstr "Až pomsta je skutočným odrazom bolesti."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:268
@@ -1913,15 +1915,13 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:307
-#, fuzzy
-#| msgid "The orcs are broken, dead or fled."
 msgid "The best orc is a dead orc."
-msgstr "Orkovia sú porazení, mŕtvi alebo rozprášení."
+msgstr "Najlepší ork je mŕtvy ork."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:314
 msgid "There is a strange comfort in watching you die."
-msgstr ""
+msgstr "Je to až tak divne príjemné sledovať ťa jak umieraš."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:321
@@ -3338,10 +3338,8 @@ msgstr ""
 
 #. [scenario]: id=07c_A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:5
-#, fuzzy
-#| msgid "A Small Favor — Part 2"
 msgid "A Small Favor — III"
-msgstr "Malá láskavosť - druhá časť"
+msgstr "Malá láskavosť 3"
 
 #. [side]
 #. Book guards
@@ -3354,44 +3352,40 @@ msgstr "Strážca"
 #. Book guards
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:53
-#, fuzzy
-#| msgid "Guardian"
 msgid "female^Guardian"
-msgstr "Strážca"
+msgstr "female^Strážkyňa"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:207
 msgid "Retrieve the book and escape"
-msgstr ""
+msgstr "Získaš knihu a utečieš"
 
 #. [command]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
-#, fuzzy
-#| msgid "Dark Mage"
 msgid "Mage"
-msgstr "Temný mág"
+msgstr "Mág"
 
 #. [command]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
 msgid "female^Mage"
-msgstr ""
+msgstr "female^Mágyňa"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:467
-#, fuzzy
-#| msgid "I feel the book is very close, somewhere to the northwest."
 msgid "The book is very close, somewhere to the northwest."
-msgstr "Cítim tú knihu, je blízko, veľmi blízko. Niekde na severozápade."
+msgstr ""
+"Cítim už prítomnosť tej knihy, je niekde veľmi blízko nás, smerom na "
+"severozápad."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:783
 msgid "The guards continue to pursue us."
-msgstr ""
+msgstr "Stráže nám stále sú v pätách."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:797
 msgid "The guards are catching up to us."
-msgstr ""
+msgstr "Stráže sú už len kúsok za nami."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:811
@@ -3416,34 +3410,34 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:846
 msgid "This coffin is empty."
-msgstr ""
+msgstr "Táto truhla je prázdna."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:862
 msgid "Be careful around those urns."
-msgstr ""
+msgstr "Dávaj si na tie urny trochu pozor."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:875
 msgid "Fancy, but I’ve no use for a new cloak right now."
-msgstr ""
+msgstr "Pekný ale teraz žiadny nový plášť nepotrebujem."
 
 #. [message]: id=Darken Volk
 #. The speaker addresses an undead minion.
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1019
 msgid "The book! Guard it with your unlife while I come to fetch it."
-msgstr ""
+msgstr "Kniha! Stráž ju celým svojim nemŕtvym životom kým sa tam dostanem."
 
 #. [message]: id=Darken Volk
 #. The speaker addresses a human or a bat.
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1026
 msgid "The book! Guard it with your life while I come to fetch it."
-msgstr ""
+msgstr "Kniha! Stráž ju celým svojim životom kým sa tam dostanem."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1056
 msgid "Hand that over."
-msgstr ""
+msgstr "Daj mi to."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1061
@@ -3470,17 +3464,13 @@ msgstr "Uteč cez severovýchodný tunel"
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1101
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1235
-#, fuzzy
-#| msgid "Phew! Let’s get out of here."
 msgid "Let’s get out of here."
-msgstr "Pfuj! Poďme odtiaľto."
+msgstr "Zmiznime odtiaľto."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1164
-#, fuzzy
-#| msgid "We’ve got the book, but now how do we get out of here?"
 msgid "We’ve got the book, but how do we get out of here?"
-msgstr "Máme tú knihu, ale ako sa z tohoto prekliateho miesta dostaneme?"
+msgstr "Máme síce knihu ale ako sa odtiaľto dostaneme von?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1177
@@ -3489,37 +3479,31 @@ msgstr "Počkaj, snáď ma tu nenecháš, či hej?"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1184
-#, fuzzy
-#| msgid "Escape via the tunnel in the northeast cellar"
 msgid ""
 "Escape the manor (Malin reaches the tunnel in the northeast cellar before "
 "Darken Volk)"
-msgstr "Uteč cez severovýchodný tunel"
+msgstr ""
+"Utečieš z vily (Malin sa dostane k tunelu v pivnici na severovýchode skôr "
+"než Darken Volk)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1188
 msgid "Darken Volk reaches the tunnel before Malin does"
-msgstr ""
+msgstr "Darken Volk sa dostane k tunelu skôr než Malin"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1212
-#, fuzzy
-#| msgid "You have served me well, my apprentice."
 msgid "You have served me well, boy."
-msgstr "Poslúžil si mi dobre, môj učeň."
+msgstr "Poslúžil si mi dobre, chlapček."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1218
-#, fuzzy
-#| msgid ""
-#| "As he heads into the tunnel Darken Volk collapses its entrance, leaving "
-#| "Malin to be captured and executed by the city guards."
 msgid ""
 "As he heads into the tunnel, Darken Volk collapses the entrance, leaving "
 "Malin to be captured and executed by the city guards."
 msgstr ""
-"Ako sa priblížil ku tunelu, Darken Volk zavalil vchod, čím nechal Malina "
-"napospas mestským strážam."
+"Len čo Darken Volk vošiel do tunela, spustil mocné čary a celý vchod doňho "
+"sa zrútil a zasypal. Malina teda určite mestské stráže chytia a popravia."
 
 #. [scenario]: id=08_Alone_at_Last
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:5
@@ -3576,38 +3560,32 @@ msgstr "Ľudia z Wesnothu"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:170
 msgid "Take the book back from Darken Volk"
-msgstr "Znovu získaj knihu od Darken Volka"
+msgstr "Znovu získaš knihu od Darken Volka"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:220
-#, fuzzy
-#| msgid ""
-#| "Well, we made it out. We got your precious book. What’s in it, anyway? "
-#| "And what do we do now?"
 msgid ""
 "Well, we got your precious book and made it out of Tath in one piece. What "
 "do we do now?"
 msgstr ""
-"Máme to, zvládli sme to. Máme tvoju drahocennú knihu. Čo v nej vlastne je? A "
-"čo teraz urobíme?"
+"Super, takže tú tvoju vzácnu knižku máme a dokonca sme aj dostali z Tathu "
+"bez toho aby nás dakdo rozsekal. Čo budeme robiť ďalej?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:225
-#, fuzzy
-#| msgid "‘We’? <i>We</i> do nothing. You are no longer my apprentice."
 msgid "‘We’? <i>We</i> do nothing."
-msgstr "„My”? <i>MY</i> nič, už nie si môj učeň."
+msgstr "‘My’? <i>Ja</i> teda už nebudem robiť nič."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:240
 msgid "Now give the book to me."
-msgstr "Teraz mi daj tú knihu."
+msgstr "Teraz mi ale daj tú knihu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:246
 msgid ""
 "Darken Volk grabs the mysterious book from Malin’s hands and stalks away."
-msgstr "Darken Volk chytil tajomnú knihu od Malina a ušiel."
+msgstr "Darken Volk si z Malinových rúk vzal tú tajuplnú knihu a ušiel."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:255
@@ -3622,25 +3600,21 @@ msgstr "Nemôžeš ma tu len tak nechať!"
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:292
 msgid "Master, do you not see? He has merely been using you to get that book!"
-msgstr "Majster, ty to nevidíš? Využil ťa ako bábku len aby dostal tú knihu!"
+msgstr "Pane, vy to nevidíte? Využil vás len ako bábku aby dostal tú knihu!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:297
 msgid "What do you mean?"
-msgstr "Čo si myslíš?"
+msgstr "Čo máš na mysli?"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:302
-#, fuzzy
-#| msgid ""
-#| "He cares not about your noble quest to push back the orcs. He needed your "
-#| "help to fight the mages! The book is rightfully yours!"
 msgid ""
 "He cares not about your noble quest to push back the orcs. He needed your "
 "help to fight the mages!"
 msgstr ""
-"Jemu je totálne jedno čo bude s orkami. Nechce zachrániť svet tak ako ty. "
-"Potreboval ťa len na boj proti mágom! Tá kniha patrí tebe!"
+"Jemu je totálne jedno čo bude s orkami. On vás potreboval len na to aby ste "
+"spolu nakopali mágom zadky!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:307
@@ -3653,22 +3627,26 @@ msgid ""
 "You used me! You knew the people of Parthyn would cast me out — you knew I "
 "had nobody else to turn to! You knew I would do whatever you said..."
 msgstr ""
+"Len si ma zneužil! Vedel si, že ma z Parthynu pošlú hic a aj to že nemám kde "
+"inde ísť! Vedel si, že budem robiť hocičo mi povieš…"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:323
 msgid "After all this time... I haven’t just been a pawn to you... have I?"
-msgstr ""
+msgstr "Celý ten čas… som vlastne len skákal jak si pískal… či?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:328
 msgid "Why don’t you say anything?! Don’t you care at all?!"
-msgstr ""
+msgstr "Prečo zrazu držíš pysky?! Som ti úplne vieš kde alebo akože čo?!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:336
 msgid ""
 "... you can’t abandon me too, not the way they did... Father, Drogan, Dela..."
 msgstr ""
+"… nemôžeš sa na mňa vyondiť ešte aj ty, tak jak to spravili všetci ostatní… "
+"Tatko, Drogan, Dela…"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:346
@@ -3676,13 +3654,13 @@ msgid ""
 "He will not help you, but perhaps the book might. You were the one who "
 "helped him retrieve it. It is rightfully yours!"
 msgstr ""
+"On vám síce nepomôže, ale kniha by mohla. Predsa len vy ste ten, kto mu "
+"pomohol ju získať. Právom patrí vám!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:351
-#, fuzzy
-#| msgid "No, I suppose it does not."
 msgid "Yes, I suppose that is right..."
-msgstr "Nie, myslím že nie."
+msgstr "Jop, to dáva zmysel…"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:356
@@ -3690,13 +3668,13 @@ msgid ""
 "Darken Volk! That book is as much mine as it is yours! Give it back, or I "
 "will take it by force!"
 msgstr ""
+"Darken Volk! Tá kniha neni o nič viac tvoja ako je aj moja! Daj mi ju semka "
+"lebo si ju inak vezmem či budeš chcieť alebo nie!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:371
 msgid "You are even more of a fool than I thought."
-msgstr ""
-"Ty si ešte väčší blbec ako som si vedel predstaviť. Bili ťa rodičia po hlave "
-"magickým prútikom?"
+msgstr "Si ešte sprostejší ako som si predtým myslel."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:453
@@ -4231,7 +4209,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:667
 msgid "... something isn’t quite right."
-msgstr ""
+msgstr "… dačo tu nesedí."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:694
@@ -4270,7 +4248,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:882
 msgid "I do not really regret following my own path that much."
-msgstr ""
+msgstr "Vóbec neľutujem, že som zašiel až tak ďaleko."
 
 #. [unit]: id=MKBone, type=Revenant
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:961
@@ -4280,7 +4258,7 @@ msgstr "Kosti Malina Keshara"
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1003
 msgid "The physical form collapses altogether. What remains?"
-msgstr ""
+msgstr "Fyzická podoba človeka sa vždycky raz stratí. Ale čo ostane nafurt?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1087
@@ -4288,6 +4266,8 @@ msgid ""
 "The soul. Dela always said I was a creature without a soul. I suppose she "
 "was jesting at the time, but maybe not after I killed Drogan."
 msgstr ""
+"Duša. Dela vždycky vravela že som monštrum bez duše. Asi to bola len sranda "
+"aj keď po tom čo som zabil Drogana už ani tak nie."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1092
@@ -4310,7 +4290,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1102
 msgid "I should not regret anything. I’m not really one for regrets..."
-msgstr ""
+msgstr "Nemal by som ľutovať veru nič. Ja v tom aj tak nie som moc dobrý…"
 
 #. [unit]: id=MKSpirit, type=Spectre
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1170
@@ -4346,13 +4326,13 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1306
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1307
 msgid "conscience"
-msgstr ""
+msgstr "vedomie"
 
 #. [leadership]: id=conscience
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1308
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1309
 msgid "This unit has its damage increased by 50%"
-msgstr ""
+msgstr "Táto jednotka bude odteraz mať o 50% silnejšie útoky"
 
 #. [resistance]: id=carapace
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1360
@@ -4364,7 +4344,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1362
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1363
 msgid "This unit gains 40% to all resistances."
-msgstr ""
+msgstr "Táto jednotka bude odteraz o 40% odolnejšia voči všetkým útokom."
 
 #. [regenerate]: id=lifeblood
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1410
@@ -4379,16 +4359,18 @@ msgid ""
 "This unit will heal 40 HP every turn. If it is poisoned, it will remove the "
 "poison instead of healing."
 msgstr ""
+"Táto jednotka sa každé kolo vylieči o 40HP. Ak je otrávená, namiesto toho sa "
+"vylieči z otravy."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1538
 msgid "These runes seem to be useful."
-msgstr ""
+msgstr "Tieto runy vyzerajú byť užitočné."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1594
 msgid "There is darkness..."
-msgstr "Temnota..."
+msgstr "Je tu temnota…"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1603
@@ -4402,21 +4384,17 @@ msgstr "na chvíľu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1621
-#, fuzzy
-#| msgid ""
-#| "Then they are replaced by a pulling, a pain too strong to resist, and "
-#| "then..."
 msgid ""
 "Then, they are replaced by a pulling, a pain too strong to resist, and "
 "then..."
-msgstr "Bolesť, obrovská bolesť ktorej sa nedalo odolať, a potom..."
+msgstr ""
+"O chvíľu neskôr sú tieto pocity nahradené pálčivou bolesťou, ktorej sa nedá "
+"nijak brániť a potom…"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1626
-#, fuzzy
-#| msgid "by emptiness."
 msgid "... by emptiness."
-msgstr "prázdnota."
+msgstr "… prázdnotou."
 
 #. [modify_side]
 #. [unit]: type=Lich, id=Fake Mal Keshar
@@ -4438,7 +4416,7 @@ msgstr "<big>AAAaaiiigghh!!</big>"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1732
 msgid "The cold, it burns!"
-msgstr "Zima, páli!"
+msgstr "Ten chlad, štípe to!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1737

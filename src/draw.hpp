@@ -446,7 +446,9 @@ private:
  * SDL_TEXTUREACCESS_TARGET access mode.
  *
  * @param t     The new render target. This must be a texture created
- *              with SDL_TEXTUREACCESS_TARGET.
+ *              with SDL_TEXTUREACCESS_TARGET, or an empty texture.
+ *              If empty, it will set the render target to Wesnoth's
+ *              primary render buffer.
  * @returns     A render_target_setter object. When this object is
  *              destroyed the render target will be restored to
  *              whatever it was before this call.

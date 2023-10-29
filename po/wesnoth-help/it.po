@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
-"PO-Revision-Date: 2023-04-16 17:13+0200\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"PO-Revision-Date: 2023-10-21 21:53+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -211,15 +211,15 @@ msgstr ""
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
-#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "teletrasporto"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -711,7 +711,7 @@ msgstr ""
 "img>\n"
 "\n"
 "Aggiungere una di queste sovrapposizioni ad un esagono attraversabile "
-"permette alle unità di essere reclutate sull'esagono stesso. Anche la "
+"permette alle unità di essere reclutate sull’esagono stesso. Anche la "
 "fortezza permette ad un condottiero di reclutare da lì.\n"
 "\n"
 "Queste sovrapposizioni possono essere aggiunte ad un esagono invalicabile "
@@ -771,8 +771,8 @@ msgid ""
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"Un effetto cosmetico di elevazione che nell'editor risulta leggermente "
-"diverso da quello in gioco, dovuto agli aiuti visuali dell'editor stesso. "
+"Un effetto cosmetico di elevazione che nell’editor risulta leggermente "
+"diverso da quello in gioco, dovuto agli aiuti visuali dell’editor stesso. "
 "Tutte le sovrapposizioni descritte possono essere trovate nel gruppo "
 "\"elevazioni\" della tavolozza dei terreni."
 
@@ -832,13 +832,13 @@ msgstr ""
 "contemporaneamente utilizzare altri tipi di sovrapposizioni quali gli "
 "alberi, dovrai utilizzare questi marcatori. Piazzando una di queste frecce "
 "sulla mappa, la riempirai con una trasparenza colorata secondo codifica. In "
-"gioco non saranno visibili né la freccia, né la foschia. L'area coperta "
+"gioco non saranno visibili né la freccia, né la foschia. L’area coperta "
 "dalla foschia avrà un bordo  sporgente, facendola sembrare più alta o più "
 "bassa  delle tessere adiacenti.\n"
 "\n"
 "Ci sono due marcatori \"alto\" e due \"basso\", in modo da poter fare "
 "terrazze fino a cinque piani ( bassissimo, basso, normale, alto, altissimo). "
-"Non si ottengono scogliere più grandi piazzarndo una regione rialzata vicino "
+"Non si ottengono scogliere più grandi piazzando una regione rialzata vicino "
 "ad una ribassata.\n"
 
 #. [topic]: id=editor_terrain_elevation
@@ -861,19 +861,19 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
-"<bold>text='Modalità d'uso'</bold>\n"
+"<bold>text='Modalità d’uso'</bold>\n"
 "\n"
 "Le frecce marcatrici non sono molto utili di per sé, ma i terreni di tipo "
 "scogliere/forre possono essere utilizzati per contenere le aree coperte "
 "dalla trasparenza colorata.\n"
 "\n"
 "Un esempio di utilizzo potrebbe essere:\n"
-"1.  Seleziona la Scogliera (^Qhh) dalla tavolozza dell'editor e utilizza il "
+"1.  Seleziona la Scogliera (^Qhh) dalla tavolozza dell’editor e utilizza il "
 "pennello a singolo esagono per disegnare uno grossa area sopra una tratto "
 "vuoto e tutto pieno di erba della mappa,.\n"
-"2.  Pazza una freccia Marcatrice Alto (^_mh) in una tessera all'interno "
-"dell'area, non sui bordi della scogliera.\n"
-"3.  L'area dovrebbe risultare adesso tutta rialzata e fintanto che non "
+"2.  Pazza una freccia Marcatrice Alto (^_mh) in una tessera all’interno "
+"dell’area, non sui bordi della scogliera.\n"
+"3.  L’area dovrebbe risultare adesso tutta rialzata e fintanto che non "
 "sovrascriverai la freccia marcatrice o la sovrapposizione scogliera, puoi "
 "aggiungere qualsiasi altra sovrapposizione desideri.\n"
 "\n"
@@ -1131,10 +1131,8 @@ msgstr ""
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:319
-#, fuzzy
-#| msgid "Using Add-ons"
 msgid "Change Add-on ID"
-msgstr "Utilizzare le estensioni"
+msgstr "Cambia ID dell’estensione"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
@@ -1143,11 +1141,15 @@ msgid ""
 "in. This will only rename that folder and update any references to it in the "
 "_main.cfg file. Any other place will need to be updated manually."
 msgstr ""
+"Permette di cambiare l’ID di una estensione, che è il nome del folder che la "
+"contiene. Questa azione rinominerà soltanto la cartella e aggiornerà tutti i "
+"riferimenti nel file _main.cfg. Qualsiasi altro aggiornamento necessario "
+"dovrà essere effettuato manualmente."
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:329
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Editor pubblicazione estensione"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:330
@@ -1156,6 +1158,10 @@ msgid ""
 "publishing an add-on to the add-ons server for other players to download. "
 "The Validate button will check whether all required fields have valid values."
 msgstr ""
+"Permette di configurare un file di estensione _server.pbl, necessario per "
+"pubblicare una estensione su un server di estensioni in modo che gli altri "
+"giocatori possano scaricarlo. Il bottone Convalida verificherà che tutti i "
+"campi richiesti siano stati correttamente valorizzati."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:338
@@ -1164,36 +1170,6 @@ msgstr "Editor Mappa/Scenario"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -1227,7 +1203,8 @@ msgstr ""
 "L’editor di Mappe e Scenari di Wesnoth permette ai suoi utenti di creare e "
 "modificare le mappe utilizzate all’interno di ogni scenario di Wesnoth. "
 "Inoltre è dotato anche di un set ridotto di funzionalità di base per la "
-"creazione di un semplice scenario.\n"
+"creazione di un semplice scenario oltre a inizializzare una estensione che "
+"può essere utilizzata per distribuire gli scenari creati.\n"
 "\n"
 "L’editor può essere eseguito dall’opzione <italic>text='Editor di Mappe'</"
 "italic> nella schermata iniziale.\n"
@@ -1266,6 +1243,14 @@ msgid ""
 "scenario mode is required in order for your maps to be selectable during "
 "game creation."
 msgstr ""
+"In qualsiasi modalità, ti verrà chiesto di scegliere una estensione da "
+"utilizzare per gli scenari che andrai a creare. Questa può essere sia una "
+"estensione già esistente o una nuova. Se scegli di utilizzare una nuova "
+"estensione, allora verranno automaticamente creati tutte le cartelle e i "
+"files necessari così come le verrà assegnato un ID default. A meno che tu "
+"non stia modificando un file mappa pre-esistente, è necessario utilizzare la "
+"modalità scenario per far sì che le tue mappe siano selezionabili durante la "
+"creazione della partita."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:353
@@ -1402,22 +1387,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:402
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenario mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1434,12 +1403,15 @@ msgid ""
 msgstr ""
 "<header>text='I file: .map e .cfg'</header>\n"
 "\n"
-"L’editor di mappe salva soltanto un singolo file: o un .map (in modalità "
-"terreno) o un .cfg (in modalità scenario). In quest’ultima modalità, la "
-"mappa dei terreni viene salvata all’interno del file .cfg, in quanto non "
-"esiste un file .map separato. Se hai iniziato ad editare in modalità terreno "
-"e poi sei passato a quella scenario, allora potrebbe anche essere presente "
-"un vecchio file .map che però non viene aggiornato dall’editor di scenario.\n"
+"L’editor di mappe salva soltanto un singolo file in modalità terreno (un ."
+"map) e due file in modalità scenario (un .map e un .cfg). I file .cfg creati "
+"in modalità scenario verranno aperti dall’editor di scenario. Quelli che non "
+"possono essere aperti dall’editor di scenario\n"
+"In quest’ultima modalità, la mappa dei terreni viene salvata all’interno del "
+"file .cfg, in quanto non esiste un file .map separato. Se hai iniziato ad "
+"editare in modalità terreno e poi sei passato a quella scenario, allora "
+"potrebbe anche essere presente un vecchio file .map che però non viene "
+"aggiornato dall’editor di scenario.\n"
 "\n"
 "Il caricamento di un file .cfg file ha risultati diversi a seconda del "
 "contenuto del file stesso: per file .cfg creati dall’editor di scenario, lo "
@@ -1487,6 +1459,35 @@ msgid ""
 "  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
 "the additional cfg file"
 msgstr ""
+"Quando si carica un file .cfg, l’editor di scenario comprende quelli da lui "
+"creati, ma è probabile che abbia difficoltà con quelli modificati a mano.\n"
+"\n"
+"Una possibile opzione è quella di creare un file WML separato, anch’esso con "
+"una estensione ,cfg, che usi il preprocessore WML per includere il file "
+"creato dall’editor. Questo file separato contiene sia il tag [scenario] che "
+"tutti i WML creati manualmente, tipo gli eventi. Con questa modalità di "
+"lavoro la struttura di file dovrebbe essere più o meno questa:\n"
+"\n"
+"<header>text='Esempio'</header>\n"
+"Se la tua estensione verrà utilizzata soltanto nella versione 1.18 e "
+"successive, è consgliabile utilizzare il nuovo attributo include_file per "
+"caricare un file .cfg contenente il WML addizionale nello scenario.\n"
+"\n"
+"• _principale.cfg:\n"
+"  ◦ utilizza “[binary_path]” per aggiungere cartelle di estensioni al "
+"percorso dei binari, che fa in modo che “map_file” cerchi nella cartella "
+"“maps”\n"
+"• maps/prima_mappa.map\n"
+"  ◦ questo è il file .map file creato dall’editor di scenario salvando in "
+"modalità scenario\n"
+"• scenarios/altro.cfg\n"
+"  ◦ questo è il file .cfg file contenente tutto quello che l’editor di "
+"scenario non riesce a comprendere\n"
+"• scenarios/primo.cfg\n"
+"  ◦ all’interno dell’elemento [scenario] , usa “map_file=\"prima_mappa."
+"map\"” per caricare il file mappa\n"
+"  ◦ all’interno dell’elemento [scenario] , usa “include_file=\"altro.cfg\"” "
+"per caricare il file cfg addizionale"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:438
@@ -1691,16 +1692,6 @@ msgstr ""
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:504
-#, fuzzy
-#| msgid ""
-#| "<header>text='Files created by the Scenario Editor'</header>\n"
-#| "\n"
-#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
-#| "map data. When loading a .cfg file, the scenario editor understands files "
-#| "created by the scenario editor itself, but is likely to have difficulty "
-#| "with files that have been edited by hand; problems can be avoided by "
-#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
-#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1714,12 +1705,13 @@ msgid ""
 msgstr ""
 "<header>text='File creati dall’Editor di Scenario'</header>\n"
 "\n"
-"In modalità scenario mode, l’editor salva i dati in un file .cfg con il dati "
-"della mappa incorporati. Quando viene caricato un file .cfg, l’editor di "
-"scenario riconosce i file da lui creati, ma è possibile che si trovi in "
-"difficoltà con dei file modificati manualmente. Questi problemi possono "
-"essere evitati <ref>dst='editor_separate_events_file' text='utilizzando un "
-"file .cfg separato'</ref> per le parti editate a mano."
+"In modalità scenario, l’editor salva i dati dello scenario in un file .cfg e "
+"quelli della mappa in un file .map separato. Lo scenario farà poi "
+"riferimento al file .map tramite map_file. Quando viene caricato un file ."
+"cfg, l’editor di scenario riconosce i file da lui creati, ma è possibile che "
+"si trovi in difficoltà con dei file modificati manualmente. Questi problemi "
+"possono essere evitati <ref>dst='editor_separate_events_file' "
+"text='utilizzando un file .cfg separato'</ref> per le parti editate a mano."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -3416,7 +3408,7 @@ msgstr ""
 "nella tua <italic>text='lista dei veterani richiamabili'</italic>. (Questi "
 "concetti sono spiegati nell’esercitazione.) Se riesci a vincere uno "
 "scenario, perdendo però la maggior parte delle tue unità con più esperienza "
-"e utilizzando quasi tutte le tue monete d'oro, anche per il giocatore più "
+"e utilizzando quasi tutte le tue monete d’oro, anche per il giocatore più "
 "esperto potrebbe essere molto arduo superare lo scenario successivo. Se "
 "dovessi trovarti in questa situazione, puoi provare a tornare indietro di "
 "uno scenario o due e vincerli in maniera più efficace, oppure abbassando il "
@@ -4883,32 +4875,6 @@ msgstr "Installare le estensioni"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the search box, separated by spaces. You can also sort the add-on list "
-#| "by clicking the column headers. It is also possible to choose to only "
-#| "display add-ons of specific categories by clicking on the "
-#| "<bold>text='Type'</bold> dropdown.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "If the window is too small to show them inline, the <bold>text='Addon "
-#| "Details'</bold> button provides you with additional details about the add-"
-#| "on, such as its full description, installation status, and available "
-#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4935,8 +4901,8 @@ msgstr ""
 "Le estensioni create dagli utenti si possono ottenere ed aggiornare tramite "
 "l’opzione <italic>text='Estensioni'</italic> del menù principale. Una volta "
 "connessi al server delle estensioni (<italic>text='add-ons.wesnoth.org'</"
-"italic> di default), verrà presentata una lista delle estensioni disponibili "
-"sul server per essere scaricate.\n"
+"italic> di default), verrà presentata una lista di quelle disponibili sul "
+"server per essere scaricate.\n"
 "\n"
 "Sotto ciascuna delle estensioni viene mostrato il rispettivo stato di "
 "installazione. Per quelle contrassegnate sul server come "
@@ -4948,12 +4914,13 @@ msgstr ""
 "rilevanti in qualsiasi ordine nella casella di ricerca, separandoli tramite "
 "spazi. Puoi anche ordinare le estensioni facendo clic sulle intestazioni "
 "delle singole colonne. È inoltre possibile scegliere di visualizzare "
-"soltanto le estensioni di una specifica categoria facendo clic sul pulsante "
-"<bold>text='Opzioni'</bold> in alto a destra.\n"
+"soltanto le estensioni di una specifica categoria selezionandola col menù a "
+"tendina <bold>text='TIpo'</bold>.\n"
 "\n"
 "Per installare un’estensione, selezionala dalla lista e fai clic sull’icona "
-"<bold>text='+'OK</bold>, o più semplicemente fai doppio clic sul titolo "
-"dell’estensione. Il pulsante <bold>text='Descrizione'</bold> mostrerà alcuni "
+"<bold>text='+'</bold>, o più semplicemente fai doppio clic sul titolo "
+"dell’estensione. Se lo schermo è troppo piccolo per la visualizzazione in "
+"linea, il pulsante <bold>text='Dettagli Descrizione'</bold> mostrerà alcuni "
 "dettagli aggiuntivi relativi all’estensione, quali la sua descrizione "
 "completa, lo stato di installazione e le traduzioni disponibili."
 
@@ -4996,10 +4963,16 @@ msgstr "Comandi generali"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
+#, fuzzy
+#| msgid ""
+#| "These commands can either be issued via the command line by prefixing "
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
+#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
+"with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
+"‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
 "Questi comandi possono essere inviati sia tramite la riga di comando, "
@@ -5009,9 +4982,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Similar to the 'fps' command, but also forces everything to redraw "
+#| "instead of only things that have changed.\n"
+#| "\n"
 msgid ""
 "\n"
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
@@ -5546,9 +5525,14 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
+#, fuzzy
+#| msgid ""
+#| "If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit diverts the target's attention and reduces "
+#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
+"attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
 "Se sul lato opposto del bersaglio è presente un’unità sua nemica, "
@@ -6092,16 +6076,13 @@ msgstr ""
 "morti, a meno che non si trovino in un villaggio."
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| "Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-"I nemici che muoiono a causa del contagio risorgeranno sotto forma di non-"
-"morti, a meno che non si trovino in un villaggio."
+"I nemici che muoiono a causa di certi orrori della natura diventano "
+"nutrimento per una larva dalla rapida crescita, a meno che non si trovino in "
+"un villaggio."
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -6810,8 +6791,12 @@ msgstr "deflettere"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "When used defensively, this attack reduces the opponent's chance to hit "
+#| "by 10%."
 msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
+"When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
 "Usato in fase offensiva, questo attacco riduce del 10% la probabilità di "
@@ -6941,9 +6926,8 @@ msgid ""
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 "Questo attacco colpisce con una violenza tale da stordire il bersaglio al "
-"punto che non possa più mantenere una zona di controllo. L'effetto scompare "
-"al turno successivo del bersaglio.\n"
-" "
+"punto che non possa più mantenere una zona di controllo. L’effetto scompare "
+"al turno successivo del bersaglio."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
@@ -6952,6 +6936,25 @@ msgid ""
 msgstr ""
 "Quest’unità è in grado di stordire i suoi nemici, annullando la loro zona di "
 "controllo."
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
 
 #: data/core/units.cfg:4
 msgid ""
@@ -7470,22 +7473,22 @@ msgstr ""
 "rendendoli un strumento utile in appoggio alla carica di un esercito."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:152
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:151
 msgid ""
 "\n"
 "\n"
@@ -7515,22 +7518,22 @@ msgstr ""
 "svolgere per dare sfoggio della propria abilità."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Grifone"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Grifone"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:172
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Grifoni"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -7552,23 +7555,23 @@ msgstr ""
 
 # da correggere se, come nome della razza, stabiliamo Pumerviglio
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:181
 msgid "race^Horse"
 msgstr "Cavallo"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:182
 msgid "race+female^Horse"
 msgstr "Giumenta"
 
 # idem come sopra
 #. [race]: id=horse
-#: data/core/units.cfg:185
+#: data/core/units.cfg:183
 msgid "race^Horses"
 msgstr "Cavalli"
 
 #. [race]: id=horse
-#: data/core/units.cfg:186
+#: data/core/units.cfg:184
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7593,22 +7596,22 @@ msgstr ""
 "averne mai visto uno."
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:201
 msgid "race^Human"
 msgstr "Umano"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:202
 msgid "race+female^Human"
 msgstr "Umana"
 
 #. [race]: id=human
-#: data/core/units.cfg:205
+#: data/core/units.cfg:203
 msgid "race^Humans"
 msgstr "Uomini"
 
 #. [race]: id=human
-#: data/core/units.cfg:206
+#: data/core/units.cfg:204
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7692,22 +7695,22 @@ msgstr ""
 "si completano a vicenda."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:219
 msgid "race^Dunefolk Human"
 msgstr "Umano del Popolo delle Dune"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:222
+#: data/core/units.cfg:220
 msgid "race+female^Dunefolk Human"
 msgstr "Umana del Popolo delle Dune"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:221
 msgid "race+plural^Dunefolk"
 msgstr "Uomini del Popolo delle Dune"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:225
+#: data/core/units.cfg:223
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7825,22 +7828,22 @@ msgstr ""
 "passato del Popolo delle Dune, negli angoli più remoti ed esotici di Irdya."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:244
 msgid "race^Saurian"
 msgstr "Sauro"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:245
 msgid "race+female^Saurian"
 msgstr "Saura"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:248
+#: data/core/units.cfg:246
 msgid "race^Saurians"
 msgstr "Sauri"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:249
+#: data/core/units.cfg:247
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7979,17 +7982,17 @@ msgstr ""
 "piuttosto comuni."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:273
 msgid "race^Mechanical"
 msgstr "Meccanico"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:276
+#: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
 msgstr "Meccanici"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:277
+#: data/core/units.cfg:275
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -8002,22 +8005,22 @@ msgstr ""
 "autonomamente, ma alcune lo fanno come risultato di incantesimi magici."
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:284
 msgid "race^Merman"
 msgstr "Nereide"
 
 #. [race]: id=merman
-#: data/core/units.cfg:287
+#: data/core/units.cfg:285
 msgid "race^Mermaid"
 msgstr "Nereide"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:286
 msgid "race^Merfolk"
 msgstr "Nereidi"
 
 #. [race]: id=merman
-#: data/core/units.cfg:290
+#: data/core/units.cfg:288
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -8042,22 +8045,22 @@ msgstr ""
 "nelle foreste."
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:296
 msgid "race^Monster"
 msgstr "Mostro"
 
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:297
 msgid "race+female^Monster"
 msgstr "Mostro"
 
 #. [race]: id=monster
-#: data/core/units.cfg:300
+#: data/core/units.cfg:298
 msgid "race^Monsters"
 msgstr "Mostri"
 
 #. [race]: id=monster
-#: data/core/units.cfg:301
+#: data/core/units.cfg:299
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -8069,22 +8072,22 @@ msgstr ""
 "incubi delle varie popolazioni."
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:306
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:307
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:310
+#: data/core/units.cfg:308
 msgid "race^Nagas"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:311
+#: data/core/units.cfg:309
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -8117,22 +8120,22 @@ msgstr ""
 "acque libere."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:317
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:318
 msgid "race+female^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:321
+#: data/core/units.cfg:319
 msgid "race^Ogres"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:322
+#: data/core/units.cfg:320
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -8167,22 +8170,22 @@ msgstr ""
 "opportunismo non è dato sapere."
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:328
 msgid "race^Orc"
 msgstr "Orco"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:329
 msgid "race+female^Orc"
 msgstr "Orchessa"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:330
 msgid "race^Orcs"
 msgstr "Orchi"
 
 #. [race]: id=orc
-#: data/core/units.cfg:333
+#: data/core/units.cfg:331
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -8294,7 +8297,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:344
+#: data/core/units.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -8307,28 +8310,22 @@ msgstr ""
 "campi, come il tiro con l’arco oppure l’assassinio."
 
 #. [race]: id=raven
-#: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
+#: data/core/units.cfg:351
 msgid "race^Raven"
-msgstr "Nani"
+msgstr "Corvo"
+
+#. [race]: id=raven
+#: data/core/units.cfg:352
+msgid "race+female^Raven"
+msgstr "Corvo femmina"
+
+#. [race]: id=raven
+#: data/core/units.cfg:353
+msgid "race^Ravens"
+msgstr "Corvi"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
-#, fuzzy
-#| msgid "race+female^Drake"
-msgid "race+female^Raven"
-msgstr "Dragonessa"
-
-#. [race]: id=raven
-#: data/core/units.cfg:355
-#, fuzzy
-#| msgid "race^Dwarves"
-msgid "race^Ravens"
-msgstr "Nani"
-
-#. [race]: id=raven
-#: data/core/units.cfg:356
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8346,24 +8343,42 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"I corvi sono spazzini tuttofare. Spesso si associano a cacciatori o a "
+"predatori nella speranza di condividere l’uccisione. Non posseggono il becco "
+"potente o gli artigli di un grifone o dei rapaci, ma possono comunque "
+"rappresentare una minaccia a causa della loro intelligenza e abilità nel "
+"riconoscere qualsiasi vantaggio.\n"
+"\n"
+"Dopo una battaglia, i morti e i feriti costituiscono un banchetto per i "
+"corvi, che sono quindi visti come un fastidio dagli alleati degli sconfitti, "
+"ma altresì vengono considerati da alcuni vincitori coe parte delle cerimonie "
+"marziali. La violenza e i grandi numeri che caratterizzano sia gli orchi che "
+"gli umani, porta queste razze ad interagire costantemente con i corvi in "
+"questo contesto. Per questo motivo gli uccelli sono diventati personaggi di "
+"favole, parabole e superstizioni legate alla guerra.\n"
+"\n"
+"Essendo spazzini intelligenti, i corvi non hanno bisogno dei morti in guerra "
+"per sopravvivere. Alcuni agricoltori fanno fatica a tenerli lontani dalle "
+"sementi appena seminate, ma altri sono ben contenti di averli a portata di "
+"mano come sentinelle."
 
 #. [race]: id=troll
-#: data/core/units.cfg:369
+#: data/core/units.cfg:365
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:370
+#: data/core/units.cfg:366
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:371
+#: data/core/units.cfg:367
 msgid "race^Trolls"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:372
+#: data/core/units.cfg:368
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8439,22 +8454,22 @@ msgstr ""
 "e ad est di Wesnoth, e dovunque vi sia un’orda di orchi in viaggio."
 
 #. [race]: id=undead
-#: data/core/units.cfg:392
+#: data/core/units.cfg:388
 msgid "race^Undead"
 msgstr "Non-morto"
 
 #. [race]: id=undead
-#: data/core/units.cfg:393
+#: data/core/units.cfg:389
 msgid "race+female^Undead"
 msgstr "Non-morta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:394
+#: data/core/units.cfg:390
 msgid "race+plural^Undead"
 msgstr "Non-morti"
 
 #. [race]: id=undead
-#: data/core/units.cfg:395
+#: data/core/units.cfg:391
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8528,22 +8543,22 @@ msgstr ""
 "già sentito parlare in precedenza."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:408
+#: data/core/units.cfg:404
 msgid "race^Wolf"
 msgstr "Lupo"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:409
+#: data/core/units.cfg:405
 msgid "race+female^Wolf"
 msgstr "Lupa"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:410
+#: data/core/units.cfg:406
 msgid "race^Wolves"
 msgstr "Lupi"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:411
+#: data/core/units.cfg:407
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8564,18 +8579,18 @@ msgstr ""
 
 # da correggere se, come nome della razza, stabiliamo Pumerviglio
 #. [race]: id=wose
-#: data/core/units.cfg:420
+#: data/core/units.cfg:416
 msgid "race^Wose"
 msgstr "Wose"
 
 # idem come sopra
 #. [race]: id=wose
-#: data/core/units.cfg:421
+#: data/core/units.cfg:417
 msgid "race^Woses"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:422
+#: data/core/units.cfg:418
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -8790,7 +8805,7 @@ msgstr "Varianti: "
 
 #: src/help/help_topic_generators.cpp:436
 msgid "race^Miscellaneous"
-msgstr "Razza mista"
+msgstr "Razze varie"
 
 #: src/help/help_topic_generators.cpp:438
 msgid "Race: "
@@ -8809,7 +8824,7 @@ msgstr "Potenziamenti delle abilità: "
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:564
 msgid "HP:"
-msgstr "PF:"
+msgstr "+2 PF"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -9209,3 +9224,39 @@ msgstr "Costo di disturbo"
 #~ msgstr ""
 #~ "• <bold>text='Gialla'</bold> se l’unità è stata già mossa ma può ancora "
 #~ "muoversi o attaccare."
+
+#~ msgid ""
+#~ "This attack is the first verse of the Song of Sun Ascension, which "
+#~ "progresses by one verse each turn this unit uses a song verse attack. "
+#~ "When the last verse is sung or the song sequence is broken due to not "
+#~ "attacking for a turn, the song starts again from the first verse."
+#~ msgstr ""
+#~ "Questo attacco è la prima strofa della Canto dell'Ascensione del Sole, "
+#~ "che avanza di una strofa per ogni turno ne quale questa unità utilizza un "
+#~ "attacco cantato. Quando l'ultima strofa viene cantata o la sequenza della "
+#~ "canzone viene interrotta a causa del mancato attacco in un turno, il "
+#~ "canto ricomincia dalla prima strofa"
+
+#~ msgid ""
+#~ "This attack is the second verse of the Song of Sun Ascension, which "
+#~ "progresses by one verse each turn this unit uses a song verse attack. "
+#~ "When the last verse is sung or the song sequence is broken due to not "
+#~ "attacking for a turn, the song starts again from the first verse."
+#~ msgstr ""
+#~ "Questo attacco è la seconda strofa della Canto dell'Ascensione del Sole, "
+#~ "che avanza di una strofa per ogni turno ne quale questa unità utilizza un "
+#~ "attacco cantato. Quando l'ultima strofa viene cantata o la sequenza della "
+#~ "canzone viene interrotta a causa del mancato attacco in un turno, il "
+#~ "canto ricomincia dalla prima strofa"
+
+#~ msgid ""
+#~ "This attack is the third verse of the Song of Sun Ascension, which "
+#~ "progresses by one verse each turn this unit uses a song verse attack. "
+#~ "When the last verse is sung or the song sequence is broken due to not "
+#~ "attacking for a turn, the song starts again from the first verse."
+#~ msgstr ""
+#~ "Questo attacco è la terza strofa della Canto dell'Ascensione del Sole, "
+#~ "che avanza di una strofa per ogni turno ne quale questa unità utilizza un "
+#~ "attacco cantato. Quando l'ultima strofa viene cantata o la sequenza della "
+#~ "canzone viene interrotta a causa del mancato attacco in un turno, il "
+#~ "canto ricomincia dalla prima strofa"

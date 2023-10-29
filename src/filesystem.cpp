@@ -1776,4 +1776,19 @@ std::string get_localized_path(const std::string& file, const std::string& suff)
 	return "";
 }
 
+std::string get_addon_id_from_path(const std::string& location)
+{
+	std::string full_path = normalize_path(location, true);
+	std::string addons_path = normalize_path(get_addons_dir(), true);
+
+	if(full_path.find(addons_path) == 0) {
+		bfs::path path(full_path.substr(addons_path.size()+1));
+		if(path.size() > 0) {
+			return path.begin()->string();
+		}
+	}
+
+	return "";
+}
+
 } // namespace filesystem
