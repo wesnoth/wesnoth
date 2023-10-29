@@ -44,10 +44,8 @@ private:
 
 	virtual void pre_show(window& window) override;
 
-	void timer_callback();
 	void key_press_callback(const SDL_Keycode key);
 
-	
 	const std::string& focus_on_;
 
 	std::vector<std::string> backgrounds_;
@@ -57,15 +55,15 @@ private:
 	int scroll_speed_;
 
 	uint32_t last_scroll_;
-	//Fix credits crash 
-	static constexpr size_t sliding_size_=2; // slidingSize alters how many of the sliding contents are to be run at once 
-						  // n-1 = 2 => 3 strings at once concatinated 
-	static constexpr size_t screen_space_ = 300; // magic number #1  
-	static constexpr size_t magic_number_ = 150; // magic number #2
-												// these numbers are for when trying to modify the sliding window so you
-												// don't see the previous string	
-	size_t first_idx_=0;
-	size_t last_idx_=first_idx_ + sliding_size_;
+	
+	/**
+	 * sliding_size_ alters how many of the sliding contents are to be run at once
+	 * n-1 = 2 => 3 strings at once concatinated
+	 */
+	static constexpr std::size_t sliding_size_ = 2;
+	static constexpr std::size_t max_chunk_size_ = 1280;
+	std::size_t first_idx_;
+	std::size_t last_idx_;
 	std::string content_;
 	std::string sliding_content_;
 	std::vector<std::string> content_substrings_;

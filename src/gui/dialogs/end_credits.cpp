@@ -12,7 +12,6 @@
 	See the COPYING file for more details.
 */
 
-#include "end_credits.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/end_credits.hpp"
@@ -30,9 +29,8 @@
 #include "gettext.hpp"
 
 #include <functional>
-
 #include <sstream>
-//#include <iostream>
+
 namespace gui2::dialogs
 {
 
@@ -45,6 +43,8 @@ end_credits::end_credits(const std::string& campaign)
 	, text_widget_(nullptr)
 	, scroll_speed_(100)
 	, last_scroll_(std::numeric_limits<uint32_t>::max())
+	, first_idx_(0)
+	, last_idx_(first_idx_ + sliding_size_)
 {
 }
 
@@ -56,18 +56,18 @@ void end_credits::pre_show(window& window)
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
-	
+
 	for(const about::credits_group& group : about::get_credits_data()) {
 		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
 		group_stream << "\n";
-		
+
 		if(!group.header.empty()) {
 			group_stream << "<span size='xx-large'>" << group.header << "</span>" << "\n";
 		}
-		
+
 		for(const about::credits_group::about_group& about : group.sections) {
 			group_stream << "\n" << "<span size='x-large'>" << about.title << "</span>" << "\n";
-			
+
 			for(const auto& entry : about.names) {
 				group_stream << entry.first << "\n";
 			}
@@ -84,65 +84,61 @@ void end_credits::pre_show(window& window)
 	}
 	// TODO: implement showing all available images as the credits scroll
 	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
-	
+
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 	text_widget_->set_use_markup(true);
 	text_widget_->set_link_aware(false);
 
 	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
-	//TODO: Fix this better ? 
-	//Don't really know how to deal with this the best way but 
-	//lambda fucntion to parse the markup language ensure when storing the 
-	//substrings it doesn't cut in between spans and thus making markup invalid
-	//when combinding multiple substrings for the sliding window
-	//IrregularBismuth 2023-09-30
-	auto populate_chunks = [this](const size_t& max_chunk_size) -> void {
-		size_t start_pos = 0;
-		while (start_pos < content_.size()) {
-			size_t end_pos = start_pos + max_chunk_size;
-			if (end_pos >= content_.size()) {
-				end_pos = content_.size();
-			} else {
-				// Look for the closest newline or closing tag before end_pos
-				size_t newline_pos = content_.rfind('\n', end_pos);
-				size_t tag_close_pos = content_.rfind("</span>", end_pos);
+	// IrregularBismuth 2023-09-30
+	// TODO: Fix this better ?
+	// Don't really know how to deal with this the best way but
+	// parse the markup language ensure when storing the
+	// substrings it doesn't cut in between spans and thus making markup invalid
+	// when combinding multiple substrings for the sliding window
+	std::size_t start_pos = 0;
+	while(start_pos < content_.size()) {
+		std::size_t end_pos = start_pos + max_chunk_size_;
+		if (end_pos >= content_.size()) {
+			end_pos = content_.size();
+		} else {
+			// Look for the closest newline or closing tag before end_pos
+			std::size_t newline_pos = content_.rfind('\n', end_pos);
+			std::size_t tag_close_pos = content_.rfind("</span>", end_pos);
 
-				if (newline_pos != std::string::npos || tag_close_pos != std::string::npos) {
-					end_pos = std::max(newline_pos, tag_close_pos) + 1;  // +1 to include newline or closing tag
-				} else {
-					// If neither is found, search forward for the next newline or closing tag
-					newline_pos = content_.find('\n', end_pos);
-					tag_close_pos = content_.find("</span>", end_pos);
-					end_pos = (newline_pos == std::string::npos) ? tag_close_pos + 1 : std::min(newline_pos, tag_close_pos) + 1;
-				}
-				// Ensure the chunk doesn't end right after an opening tag
-				size_t tag_open_pos = content_.rfind("<span", end_pos);
-				if (tag_open_pos != std::string::npos && tag_open_pos > newline_pos) {
-					tag_close_pos = content_.find("</span>", tag_open_pos);
-					if (tag_close_pos != std::string::npos) {
-						end_pos = tag_close_pos + 7;  // +7 to include the closing tag
-					}
+			if (newline_pos != std::string::npos || tag_close_pos != std::string::npos) {
+				end_pos = std::max(newline_pos, tag_close_pos) + 1;  // +1 to include newline or closing tag
+			} else {
+				// If neither is found, search forward for the next newline or closing tag
+				newline_pos = content_.find('\n', end_pos);
+				tag_close_pos = content_.find("</span>", end_pos);
+				end_pos = newline_pos == std::string::npos ? tag_close_pos + 1 : std::min(newline_pos, tag_close_pos) + 1;
+			}
+
+			// Ensure the chunk doesn't end right after an opening tag
+			std::size_t tag_open_pos = content_.rfind("<span", end_pos);
+			if (tag_open_pos != std::string::npos && tag_open_pos > newline_pos) {
+				tag_close_pos = content_.find("</span>", tag_open_pos);
+				if (tag_close_pos != std::string::npos) {
+					end_pos = tag_close_pos + 7;  // +7 to include the closing tag
 				}
 			}
-		content_substrings_.push_back(content_.substr(start_pos, end_pos - start_pos));
-		//	std::cout << contentSubstrings_.size() << " size of vector" << std::endl;
-			start_pos = end_pos;
 		}
-	};
 
-	static constexpr size_t max_chunk_size = 1280;
-	populate_chunks(max_chunk_size);
+		content_substrings_.push_back(content_.substr(start_pos, end_pos - start_pos));
+		start_pos = end_pos;
+	}
+
 	sliding_content_.clear();
-	for(size_t i=0; i<=sliding_size_; ++i){
+	for(std::size_t i=0; i<=sliding_size_; ++i){
 		sliding_content_+=content_substrings_.at(i);
-	}	
+	}
+
 	//concat substring strings
 	text_widget_->set_label(sliding_content_);
-	//text_widget_->set_vertical_scrollbar_item_position(-500);
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
-	//
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
 		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
 
@@ -163,29 +159,31 @@ void end_credits::update()
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
-	//###### --- ######
-	//this might be in need of modification 
-	//this doesn't allow for scrolling up again after been scrolled down 
-	//  only the content in the current sliding window can be scrolled up
+
+	// this might be in need of modification
+	// this doesn't allow for scrolling up again after been scrolled down
+	// only the content in the current sliding window can be scrolled up
 	// TODO : lock scroll bar content
-	if(!(cur_pos > text_widget_->get_height()+screen_space_ - magic_number_)){	
+	if(!(cur_pos > text_widget_->get_height())){
 		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
-	}
-	else {
-		if(first_idx_ < content_substrings_.size()-sliding_size_){
+	} else {
+		if(first_idx_ < content_substrings_.size() - sliding_size_){
 			++first_idx_;
-			last_idx_ = first_idx_ + sliding_size_;	
-			sliding_content_="";
+			last_idx_ = first_idx_ + sliding_size_;
+			sliding_content_ = "";
+
 			if(last_idx_ <= content_substrings_.size()){
-				for(size_t i=first_idx_; i< last_idx_; ++i)
-				{
-					sliding_content_+=content_substrings_[i];
+				for(std::size_t i=first_idx_; i< last_idx_; ++i) {
+					sliding_content_ += content_substrings_[i];
 				}
 			}
-			text_widget_->set_label(sliding_content_); //updates the sliding window 
-			cur_pos-=(text_widget_->get_height()+screen_space_ - magic_number_);
+
+			// updates the sliding window
+			text_widget_->set_label(sliding_content_);
+			cur_pos -= text_widget_->get_height();
 		}
 	}
+
 	last_scroll_ = now;
 }
 
