@@ -83,6 +83,7 @@ void end_credits::pre_show(window& window)
 
 	// Get the appropriate background images
 	backgrounds_ = about::get_background_images(focus_on_);
+
 	if(backgrounds_.empty()) {
 		backgrounds_.push_back(game_config::images::game_title_background);
 	}
@@ -164,7 +165,7 @@ void end_credits::update()
 	uint32_t missed_time = now - last_scroll_;
 
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
-	
+
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
