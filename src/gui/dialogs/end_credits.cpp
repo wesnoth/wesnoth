@@ -29,6 +29,7 @@
 #include "gettext.hpp"
 
 #include <functional>
+
 #include <sstream>
 
 namespace gui2::dialogs
@@ -52,6 +53,7 @@ void end_credits::pre_show(window& window)
 {
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
+
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
 
 	std::stringstream ss;
@@ -73,19 +75,23 @@ void end_credits::pre_show(window& window)
 			}
 		}
 	}
+
 	// If a section is focused, move it to the top
 	if(!focus_ss.str().empty()) {
 		focus_ss << ss.rdbuf();
 	}
+
 	// Get the appropriate background images
 	backgrounds_ = about::get_background_images(focus_on_);
 	if(backgrounds_.empty()) {
 		backgrounds_.push_back(game_config::images::game_title_background);
 	}
+
 	// TODO: implement showing all available images as the credits scroll
 	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
+
 	text_widget_->set_use_markup(true);
 	text_widget_->set_link_aware(false);
 
@@ -154,8 +160,11 @@ void end_credits::update()
 	if(last_scroll_ > now) {
 		return;
 	}
+
 	uint32_t missed_time = now - last_scroll_;
+
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
+	
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
