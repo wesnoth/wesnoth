@@ -207,6 +207,7 @@ void end_credits::key_press_callback(const SDL_Keycode key)
 		scroll_speed_ >>= 1;
 	}
 }
+
 } // namespace dialogs
 
 
