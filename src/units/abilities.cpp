@@ -1207,6 +1207,9 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 	std::string type_damage, sec_type_damage;
 	type_damage = !type_list.empty() ? type_list.front() : type();
 	sec_type_damage = !added_type_list.empty() ? added_type_list.front() : "";
+	if(!sec_type_damage.empty()){
+		sec_type_damage =  type_damage != sec_type_damage ? sec_type_damage: "";
+	}
 	return {type_damage, sec_type_damage};
 }
 
@@ -1312,7 +1315,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon, true) )
 				return false;
 		}
 
