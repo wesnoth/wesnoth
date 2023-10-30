@@ -209,5 +209,3 @@ void end_credits::key_press_callback(const SDL_Keycode key)
 }
 
 } // namespace dialogs
-
-
