@@ -24,8 +24,6 @@ class display;
 namespace gui2
 {
 
-class scroll_label;
-
 namespace dialogs
 {
 
@@ -50,8 +48,6 @@ private:
 	const std::string& focus_on_;
 
 	std::vector<std::string> backgrounds_;
-
-	scroll_label* text_widget_;
 
 	// The speed of auto-scrolling, specified as px/s
 	int scroll_speed_;
