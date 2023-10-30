@@ -170,11 +170,9 @@ void end_credits::update()
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
 
-	// this might be in need of modification
-	// this doesn't allow for scrolling up again after been scrolled down
+	// TODO: this doesn't allow for scrolling up again after been scrolled down
 	// only the content in the current sliding window can be scrolled up
-	// TODO : lock scroll bar content
-	if(!(cur_pos > text_widget_->get_height())){
+	if(cur_pos <= text_widget_->get_height()){
 		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 	} else {
 		if(first_idx_ < content_substrings_.size() - sliding_size_){

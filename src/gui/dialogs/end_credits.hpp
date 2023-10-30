@@ -56,7 +56,7 @@ private:
 	int scroll_speed_;
 
 	uint32_t last_scroll_;
-	
+
 	/**
 	 * sliding_size_ alters how many of the sliding contents are to be run at once
 	 * n-1 = 2 => 3 strings at once concatinated
