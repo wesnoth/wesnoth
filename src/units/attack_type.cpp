@@ -101,7 +101,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, bool can_loop)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, bool no_check)
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -144,8 +144,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
 		return false;
 
-	if ( !filter_type.empty()){
-		if(can_loop){
+	if (!filter_type.empty()){
+		if(no_check){
 			if (std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() ){
 				return false;
 			}
@@ -255,25 +255,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, bool can_loop) const
+bool attack_type::matches_filter(const config& filter, bool no_check) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, can_loop);
+	bool matches = matches_simple_filter(*this, filter, no_check);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, can_loop);
+			matches = matches && matches_filter(condition.cfg, no_check);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, can_loop);
+			matches = matches || matches_filter(condition.cfg, no_check);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, can_loop);
+			matches = matches && !matches_filter(condition.cfg, no_check);
 	}
 
 	return matches;

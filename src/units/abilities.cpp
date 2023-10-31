@@ -468,7 +468,7 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 	if(!weapon) {
 		return false;
 	}
-	return weapon->matches_filter(filter);
+	return weapon->matches_filter(filter, true);
 }
 
 bool unit::has_ability_type(const std::string& ability) const
