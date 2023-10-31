@@ -62,12 +62,16 @@ private:
 	 * n-1 = 2 => 3 strings at once concatinated
 	 */
 	static constexpr std::size_t sliding_size_ = 2;
-	static constexpr std::size_t max_chunk_size_ = 1280;
+	/**
+	 * number of lines to put in each chunk of text to display
+	 * the final chunk will of course probably have fewer lines
+	 */
+	static constexpr std::size_t lines_per_chunk_ = 50;
 	std::size_t first_idx_;
 	std::size_t last_idx_;
 	std::string content_;
 	std::string sliding_content_;
-	std::vector<std::string> content_substrings_;
+	std::vector<std::vector<std::string>> chunks_;
 };
 
 } // namespace dialogs

@@ -97,48 +97,25 @@ void end_credits::pre_show(window& window)
 	text_widget_->set_link_aware(false);
 
 	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
-	// IrregularBismuth 2023-09-30
-	// TODO: Fix this better ?
-	// Don't really know how to deal with this the best way but
-	// parse the markup language ensure when storing the
-	// substrings it doesn't cut in between spans and thus making markup invalid
-	// when combinding multiple substrings for the sliding window
-	std::size_t start_pos = 0;
-	while(start_pos < content_.size()) {
-		std::size_t end_pos = start_pos + max_chunk_size_;
-		if (end_pos >= content_.size()) {
-			end_pos = content_.size();
-		} else {
-			// Look for the closest newline or closing tag before end_pos
-			std::size_t newline_pos = content_.rfind('\n', end_pos);
-			std::size_t tag_close_pos = content_.rfind("</span>", end_pos);
 
-			if (newline_pos != std::string::npos || tag_close_pos != std::string::npos) {
-				end_pos = std::max(newline_pos, tag_close_pos) + 1;  // +1 to include newline or closing tag
-			} else {
-				// If neither is found, search forward for the next newline or closing tag
-				newline_pos = content_.find('\n', end_pos);
-				tag_close_pos = content_.find("</span>", end_pos);
-				end_pos = newline_pos == std::string::npos ? tag_close_pos + 1 : std::min(newline_pos, tag_close_pos) + 1;
-			}
-
-			// Ensure the chunk doesn't end right after an opening tag
-			std::size_t tag_open_pos = content_.rfind("<span", end_pos);
-			if (tag_open_pos != std::string::npos && tag_open_pos > newline_pos) {
-				tag_close_pos = content_.find("</span>", tag_open_pos);
-				if (tag_close_pos != std::string::npos) {
-					end_pos = tag_close_pos + 7;  // +7 to include the closing tag
-				}
-			}
+	// splits the content text by newline, leaving blanks
+	// also truncates the length of the line to 200 characters
+	// 200 characters is completely arbitrary, just prevent the possibility of ridiculously wide lines
+	// NOTE: this depends on the assumption that the <span>s added above only ever wrap a single line
+	std::vector<std::string> lines = utils::split(content_, '\n', 0);
+	int i = 0;
+	for(const std::string& line : lines) {
+		if(i % lines_per_chunk_ == 0) {
+			chunks_.emplace_back();
 		}
-
-		content_substrings_.push_back(content_.substr(start_pos, end_pos - start_pos));
-		start_pos = end_pos;
+		std::vector<std::string>& last_chunk = chunks_[chunks_.size()-1];
+		last_chunk.emplace_back(line.size() < 200 ? line : line.substr(0, 200));
+		i++;
 	}
 
 	sliding_content_.clear();
-	for(std::size_t i=0; i<=sliding_size_; ++i){
-		sliding_content_+=content_substrings_.at(i);
+	for(std::size_t i = 0; i <= sliding_size_; i++){
+		sliding_content_ += utils::join(chunks_.at(i), "\n");
 	}
 
 	//concat substring strings
@@ -175,14 +152,14 @@ void end_credits::update()
 	if(cur_pos <= text_widget_->get_height()){
 		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 	} else {
-		if(first_idx_ < content_substrings_.size() - sliding_size_){
-			++first_idx_;
+		if(first_idx_ < chunks_.size() - sliding_size_){
+			first_idx_++;
 			last_idx_ = first_idx_ + sliding_size_;
-			sliding_content_ = "";
+			sliding_content_.clear();
 
-			if(last_idx_ <= content_substrings_.size()){
-				for(std::size_t i=first_idx_; i< last_idx_; ++i) {
-					sliding_content_ += content_substrings_[i];
+			if(last_idx_ <= chunks_.size()){
+				for(std::size_t i = first_idx_; i <= last_idx_; i++) {
+					sliding_content_ += utils::join(chunks_[i], "\n"); // TODO: this line crashes on reaching the end of the credits
 				}
 			}
 
