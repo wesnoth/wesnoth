@@ -824,7 +824,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 void mouse_handler::select_teleport()
 {
 	// Load whiteboard partial moves
-	wb::future_map_if_active planned_unit_map;
+	//wb::future_map_if_active planned_unit_map;
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
 		lk->select_hex_callback(last_hex_);

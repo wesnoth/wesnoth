@@ -1095,6 +1095,8 @@ namespace { // Private helpers for move_unit()
 			wml_move_aborted_ |= wml_move_aborted;
 			wml_undo_disabled_ |= wml_undo_blocked;
 		}
+
+		post_move(resources::undo_stack);
 	}
 
 	/**
