@@ -68,7 +68,7 @@ fake_display_manager::fake_display_manager()
 	, main_event_context_()
 	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
 {
-	video::init(video::fake::draw);
+	video::init(video::fake::no_draw);
 }
 
 game_display& fake_display_manager::get_display()

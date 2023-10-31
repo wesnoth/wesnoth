@@ -503,7 +503,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		srand(*cmdline_opts.rng_seed);
 	}
 
-	if(cmdline_opts.screenshot || cmdline_opts.render_image) {
+	if(cmdline_opts.render_image) {
 		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
