@@ -790,7 +790,10 @@ surface display::screenshot(bool map_screenshot)
 
 	map_screenshot_ = true;
 
+	DBG_DP << "invalidating region for map screenshot";
 	invalidate_locations_in_rect(map_area());
+
+	DBG_DP << "drawing map screenshot";
 	draw();
 
 	map_screenshot_ = false;
@@ -800,6 +803,7 @@ surface display::screenshot(bool map_screenshot)
 	ypos_ = old_ypos;
 
 	// Read rendered pixels back as an SDL surface.
+	LOG_DP << "reading pixels for map screenshot";
 	return video::read_pixels();
 }
 
@@ -1301,6 +1305,9 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 
 void display::drawing_buffer_commit()
 {
+	DBG_DP << "committing drawing buffer"
+	       << " with " << drawing_buffer_.size() << " items";
+
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
@@ -2394,7 +2401,7 @@ void display::draw()
 	set_scontext_unsynced leave_synced_context;
 
 	// This isn't the best, but also isn't important enough to do better.
-	if(redraw_background_) {
+	if(redraw_background_ && !map_screenshot_) {
 		DBG_DP << "display::draw redraw background";
 		render_map_outside_area();
 		draw_manager::invalidate_region(map_outside_area());
@@ -3133,7 +3140,7 @@ void display::invalidate_all()
 
 bool display::invalidate(const map_location& loc)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	bool tmp;
@@ -3143,7 +3150,7 @@ bool display::invalidate(const map_location& loc)
 
 bool display::invalidate(const std::set<map_location>& locs)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
@@ -3186,7 +3193,7 @@ bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	DBG_DP << "invalidating locations in " << rect;

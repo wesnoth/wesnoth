@@ -74,7 +74,7 @@ namespace video
 void render_screen(); // exposed and used only in draw_manager.cpp
 
 // Internal functions
-static void init_window();
+static void init_window(bool hidden=false);
 static void init_test_window();
 static void init_fake();
 static void init_test();
@@ -98,11 +98,14 @@ void init(fake type)
 	case fake::none:
 		init_window();
 		break;
-	case fake::window:
+	case fake::no_window:
 		init_fake();
 		break;
-	case fake::draw:
+	case fake::no_draw:
 		init_test();
+		break;
+	case fake::hide_window:
+		init_window(true);
 		break;
 	default:
 		throw error("unrecognized fake type passed to video::init");
@@ -151,6 +154,7 @@ bool testing()
 
 void init_fake()
 {
+	LOG_DP << "running headless";
 	headless_ = true;
 	refresh_rate_ = 1;
 	game_canvas_size_ = {800,600};
@@ -351,7 +355,7 @@ void init_test_window()
 	update_test_framebuffer();
 }
 
-void init_window()
+void init_window(bool hidden)
 {
 	// Position
 	const int x = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
@@ -372,6 +376,11 @@ void init_window()
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 	} else if(preferences::maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
+	}
+
+	if(hidden) {
+		LOG_DP << "hiding main window";
+		window_flags |= SDL_WINDOW_HIDDEN;
 	}
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
