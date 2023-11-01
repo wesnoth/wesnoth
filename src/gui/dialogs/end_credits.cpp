@@ -115,7 +115,7 @@ void end_credits::pre_show(window& window)
 
 	sliding_content_.clear();
 	for(std::size_t i = 0; i <= sliding_size_; i++){
-		sliding_content_ += utils::join(chunks_.at(i), "\n");
+		sliding_content_ += utils::join(chunks_.at(i), "\n") + "\n";
 	}
 
 	//concat substring strings
@@ -159,7 +159,7 @@ void end_credits::update()
 
 			if(last_idx_ <= chunks_.size()){
 				for(std::size_t i = first_idx_; i <= last_idx_; i++) {
-					sliding_content_ += utils::join(chunks_[i], "\n"); // TODO: this line crashes on reaching the end of the credits
+					sliding_content_ += utils::join(chunks_[i], "\n") + "\n"; // TODO: this line crashes on reaching the end of the credits
 				}
 			}
 
