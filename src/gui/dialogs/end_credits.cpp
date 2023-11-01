@@ -152,14 +152,14 @@ void end_credits::update()
 	if(cur_pos <= text_widget_->get_height()){
 		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 	} else {
-		if(first_idx_ < chunks_.size() - sliding_size_){
+		if(first_idx_ < chunks_.size() - sliding_size_ - 1){
 			first_idx_++;
 			last_idx_ = first_idx_ + sliding_size_;
 			sliding_content_.clear();
 
 			if(last_idx_ <= chunks_.size()){
 				for(std::size_t i = first_idx_; i <= last_idx_; i++) {
-					sliding_content_ += utils::join(chunks_[i], "\n") + "\n"; // TODO: this line crashes on reaching the end of the credits
+					sliding_content_ += utils::join(chunks_[i], "\n") + "\n";
 				}
 			}
 
