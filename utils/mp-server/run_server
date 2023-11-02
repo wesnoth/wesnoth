@@ -42,12 +42,10 @@ case $SERVER in
        set -- --threads 8;;
 1.12*)
        set -- --threads 30;;
-1.14*)
-       set -- --keepalive ;;
-1.16*)
-       set -- --keepalive ;;
-1.13*|trunk)
-       set -- --keepalive ;;
+1.1[346]*)
+       set -- --keepalive;;
+trunk)
+       set -- --keepalive --log-debug=sql_executor;;
 esac
 
 ulimit -Ss 2048
