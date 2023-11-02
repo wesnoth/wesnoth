@@ -51,7 +51,6 @@ end_credits::end_credits(const std::string& campaign)
 
 void end_credits::pre_show(window& window)
 {
-	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks();
 
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
