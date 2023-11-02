@@ -170,7 +170,8 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 			params.emplace_back(search_content);
 		}
 	}
-"where exists "
+
+	game_history_query += "where exists "
 "  ( "
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
