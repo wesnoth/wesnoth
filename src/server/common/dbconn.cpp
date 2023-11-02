@@ -232,20 +232,20 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "limit 11 offset ? ";
 		params.emplace_back(offset);
 
-		LOG_SQL << "before getting connection for game history query for player " << player_id;
+		DBG_SQL << "before getting connection for game history query for player " << player_id;
 
 		mariadb::connection_ref connection = create_connection();
 
-		LOG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
+		DBG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
 
 		game_history gh;
 		get_complex_results(connection, gh, game_history_query, params);
 
-		LOG_SQL << "after game history query for player " << player_id;
+		DBG_SQL << "after game history query for player " << player_id;
 
 		auto doc = gh.to_doc();
 
-		LOG_SQL << "after parsing results of game history query for player " << player_id;
+		DBG_SQL << "after parsing results of game history query for player " << player_id;
 
 		return doc;
 	}
