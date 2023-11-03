@@ -640,7 +640,7 @@ class WmllintTab(Frame):
                              sticky=N + E + S + W)
 
         self.radio_normal = Radiobutton(self.mode_frame,
-                                        # TRANSLATORS: Normal run mode for wmllint.
+                                        # TRANSLATORS: Normal run mode for the WML tool.
                                         text=_("Normal"),
                                         variable=self.mode_variable,
                                         value=0)
@@ -1061,7 +1061,6 @@ class WmlindentTab(Frame):
                              sticky=N + E + S + W)
 
         self.radio_normal = Radiobutton(self.mode_frame,
-                                        # TRANSLATORS: Normal run mode for wmlindent.
                                         text=_("Normal"),
                                         variable=self.mode_variable,
                                         value=0)
