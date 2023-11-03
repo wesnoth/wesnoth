@@ -78,7 +78,7 @@ def set_global_locale():
         showerror(
             _("Error"),
             # TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
-            _("`{0}` directory not found. Please run the GUI.pyw program packaged with the Wesnoth installation.").
+            _("‘{0}’ directory not found. Please run the GUI.pyw program packaged with the Wesnoth installation.").
             format("translations")
         )
 
