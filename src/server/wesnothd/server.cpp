@@ -1495,8 +1495,6 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 {
 	DBG_SERVER << "in process_data_game...";
 
-	wesnothd::player& player { p->info() };
-
 	game& g = *(p->get_game());
 	std::weak_ptr<game> g_ptr{p->get_game()};
 
@@ -1513,7 +1511,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// place a pointer to that summary in the game's description.
 		// g.level() should then receive the full data for the game.
 		if(!g.level_init()) {
-			LOG_SERVER << p->client_ip() << "\t" << player.name() << "\tcreated game:\t\"" << g.name() << "\" ("
+			LOG_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tcreated game:\t\"" << g.name() << "\" ("
 					   << g.id() << ", " << g.db_id() << ").";
 			// Update our config object which describes the open games,
 			// and save a pointer to the description in the new game.
@@ -1526,7 +1524,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			if(const simple_wml::node* m = data.child("multiplayer")) {
 				m->copy_into(desc);
 			} else {
-				WRN_SERVER << p->client_ip() << "\t" << player.name() << "\tsent scenario data in game:\t\""
+				WRN_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tsent scenario data in game:\t\""
 						   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.";
 				// Set the description so it can be removed in delete_game().
 				g.set_description(&desc);
@@ -1541,7 +1539,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			g.set_description(&desc);
 			desc.set_attr_dup("id", std::to_string(g.id()).c_str());
 		} else {
-			WRN_SERVER << p->client_ip() << "\t" << player.name() << "\tsent scenario data in game:\t\""
+			WRN_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tsent scenario data in game:\t\""
 					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") although it's already initialized.";
 			return;
 		}
@@ -1602,7 +1600,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 		// Everything below should only be processed if the game is already initialized.
 	} else if(!g.level_init()) {
-		WRN_SERVER << p->client_ip() << "\tReceived unknown data from: " << player.name()
+		WRN_SERVER << log_address(p->socket()) << "\tReceived unknown data from: " << p.name()
 				   << " while the scenario wasn't yet initialized."
 				   << data.output();
 		return;
@@ -1613,7 +1611,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		}
 
 		if(!g.level_init()) {
-			WRN_SERVER << p->client_ip() << "\tWarning: " << player.name()
+			WRN_SERVER << log_address(p->socket()) << "\tWarning: " << p.name()
 					   << "\tsent [store_next_scenario] in game:\t\"" << g.name() << "\" (" << g.id()
 					   << ", " << g.db_id() << ") while the scenario is not yet initialized.";
 			return;
@@ -1633,7 +1631,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		g.next_db_id();
 
 		if(g.description() == nullptr) {
-			ERR_SERVER << p->client_ip() << "\tERROR: \"" << g.name() << "\" (" << g.id()
+			ERR_SERVER << log_address(p->socket()) << "\tERROR: \"" << g.name() << "\" (" << g.id()
 					   << ", " << g.db_id() << ") is initialized but has no description_.";
 			return;
 		}
@@ -1644,7 +1642,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		if(const simple_wml::node* m = scenario->child("multiplayer")) {
 			m->copy_into(desc);
 		} else {
-			WRN_SERVER << p->client_ip() << "\t" << player.name() << "\tsent scenario data in game:\t\""
+			WRN_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tsent scenario data in game:\t\""
 					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.";
 
 			delete_game(g.id());
@@ -1921,7 +1919,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 	}
 
-	WRN_SERVER << p->client_ip() << "\tReceived unknown data from: " << player.name()
+	WRN_SERVER << log_address(p->socket()) << "\tReceived unknown data from: " << player.name()
 			   << " in game: \"" << g.name() << "\" (" << g.id() << ", " << g.db_id() << ")\n"
 			   << data.output();
 }
