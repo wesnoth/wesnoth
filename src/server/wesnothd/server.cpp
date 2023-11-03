@@ -190,8 +190,8 @@ static bool make_change_diff(const simple_wml::node& src,
 static std::string player_status(const wesnothd::player_record& player)
 {
 	std::ostringstream out;
-	out << "'" << player.name() << "' @ " << player.client_ip()
-		<< " logged on for " << lg::get_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time).count());
+	out << "'" << player.name() << "' @ " << log_address(player.socket()) << " logged on for "
+		<< lg::get_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time).count());
 	return out.str();
 }
 
@@ -1157,8 +1157,8 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 			std::string search_game_name = request->attr("search_game_name").to_string();
 			int search_content_type = request->attr("search_content_type").to_int();
 			std::string search_content = request->attr("search_content").to_string();
-			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
-					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
+			LOG_SERVER << log_address(player->socket()) << "\t" << player->name() << "requested game history for player id `" << player_id
+					   << "` searching for game `" << search_game_name << "`, content type `" << search_content_type << "`, content `" << search_content << "`.";
 			user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset, search_game_name, search_content_type, search_content);
 		}
 		return;
@@ -1326,10 +1326,10 @@ void server::handle_message(player_iterator user, simple_wml::node& message)
 	chat_message::truncate_message(msg, trunc_message);
 
 	if(msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
-		LOG_SERVER << user->client_ip() << "\t<" << user->name()
+		LOG_SERVER << log_address(user->socket()) << "\t<" << user->name()
 				   << simple_wml::string_span(msg.begin() + 3, msg.size() - 3) << ">";
 	} else {
-		LOG_SERVER << user->client_ip() << "\t<" << user->name() << "> " << msg;
+		LOG_SERVER << log_address(user->socket()) << "\t<" << user->name() << "> " << msg;
 	}
 
 	send_to_lobby(relay_message, user);
@@ -1353,7 +1353,7 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 	const std::string game_password = create_game["password"].to_string();
 	const std::string initial_bans = create_game["ignored"].to_string();
 
-	DBG_SERVER << player->client_ip() << "\t" << player->info().name()
+	DBG_SERVER << log_address(player->socket()) << "\t" << player->name()
 			   << "\tcreates a new game: \"" << game_name << "\".";
 
 	// Create the new game, remove the player from the lobby
@@ -1428,14 +1428,14 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	if(!g) {
-		WRN_SERVER << player->client_ip() << "\t" << player->info().name()
+		WRN_SERVER << log_address(player->socket()) << "\t" << player->name()
 				   << "\tattempted to join unknown game:\t" << game_id << ".";
 		send_to_player(player, leave_game_doc);
 		send_server_message(player, "Attempt to join unknown game.", "error");
 		send_to_player(player, games_and_users_list_);
 		return;
 	} else if(!g->level_init()) {
-		WRN_SERVER << player->client_ip() << "\t" << player->info().name()
+		WRN_SERVER << log_address(player->socket()) << "\t" << player->name()
 				   << "\tattempted to join uninitialized game:\t\"" << g->name() << "\" (" << game_id << ").";
 		send_to_player(player, leave_game_doc);
 		send_server_message(player, "Attempt to join an uninitialized game.", "error");
@@ -1443,16 +1443,16 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 		return;
 	} else if(player->info().is_moderator()) {
 		// Admins are always allowed to join.
-	} else if(g->player_is_banned(player, player->info().name())) {
-		DBG_SERVER << player->client_ip()
-				   << "\tReject banned player: " << player->info().name()
+	} else if(g->player_is_banned(player, player->name())) {
+		DBG_SERVER << log_address(player->socket())
+				   << "\tReject banned player: " << player->name()
 				   << "\tfrom game:\t\"" << g->name() << "\" (" << game_id << ").";
 		send_to_player(player, leave_game_doc);
 		send_server_message(player, "You are banned from this game.", "error");
 		send_to_player(player, games_and_users_list_);
 		return;
 	} else if(!g->password_matches(password)) {
-		WRN_SERVER << player->client_ip() << "\t" << player->info().name()
+		WRN_SERVER << log_address(player->socket()) << "\t" << player->name()
 				   << "\tattempted to join game:\t\"" << g->name() << "\" (" << game_id << ") with bad password";
 		send_to_player(player, leave_game_doc);
 		send_server_message(player, "Incorrect password.", "error");
@@ -1462,7 +1462,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 
 	bool joined = g->add_player(player, observer);
 	if(!joined) {
-		WRN_SERVER << player->client_ip() << "\t" << player->info().name()
+		WRN_SERVER << log_address(player->socket()) << "\t" << player->name()
 				   << "\tattempted to observe game:\t\"" << g->name() << "\" (" << game_id
 				   << ") which doesn't allow observers.";
 		send_to_player(player, leave_game_doc);
@@ -1953,6 +1953,7 @@ void server::disconnect_player(player_iterator player)
 void server::remove_player(player_iterator iter)
 {
 	std::string ip = iter->client_ip();
+	std::string log_ip = log_address(iter->socket());
 
 	const std::shared_ptr<game> g = iter->get_game();
 	bool game_ended = false;
@@ -1972,13 +1973,13 @@ void server::remove_player(player_iterator iter)
 
 	games_and_users_list_.root().remove_child("user", index);
 
-	LOG_SERVER << ip << "\t" << iter->info().name() << "\thas logged off";
+	LOG_SERVER << log_ip << "\t" << iter->name() << "\thas logged off";
 
 	// Find the matching nick-ip pair in the log and update the sign off time
 	if(user_handler_) {
 		user_handler_->db_update_logout(iter->info().get_login_id());
 	} else {
-		connection_log ip_name { iter->info().name(), ip, 0 };
+		connection_log ip_name { iter->name(), ip, 0 };
 
 		auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 		if(i != ip_log_.end()) {
@@ -2644,7 +2645,7 @@ void server::kickban_handler(
 		}
 	} else {
 		for(player_iterator player = player_connections_.begin(); player != player_connections_.end(); ++player) {
-			if(utils::wildcard_string_match(player->info().name(), target)) {
+			if(utils::wildcard_string_match(player->name(), target)) {
 				if(banned) {
 					*out << "\n";
 				} else {
@@ -2663,7 +2664,7 @@ void server::kickban_handler(
 	}
 
 	for(auto user : users_to_kick) {
-		*out << "\nKicked " << user->info().name() << " (" << user->client_ip() << ").";
+		*out << "\nKicked " << user->name() << " (" << user->client_ip() << ").";
 		utils::visit([this,reason](auto&& socket) { async_send_error(socket, "You have been banned. Reason: " + reason); }, user->socket());
 		disconnect_player(user);
 	}
@@ -2790,7 +2791,7 @@ void server::kick_handler(const std::string& /*issuer_name*/,
 	std::vector<player_iterator> users_to_kick;
 	for(player_iterator player = player_connections_.begin(); player != player_connections_.end(); ++player) {
 		if((match_ip && utils::wildcard_string_match(player->client_ip(), kick_mask)) ||
-		  (!match_ip && utils::wildcard_string_match(player->info().name(), kick_mask))
+		  (!match_ip && utils::wildcard_string_match(player->name(), kick_mask))
 		) {
 			users_to_kick.push_back(player);
 		}
