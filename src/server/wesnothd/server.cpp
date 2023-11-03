@@ -1511,7 +1511,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// place a pointer to that summary in the game's description.
 		// g.level() should then receive the full data for the game.
 		if(!g.level_init()) {
-			LOG_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tcreated game:\t\"" << g.name() << "\" ("
+			LOG_SERVER << log_address(p->socket()) << "\t" << p->name() << "\tcreated game:\t\"" << g.name() << "\" ("
 					   << g.id() << ", " << g.db_id() << ").";
 			// Update our config object which describes the open games,
 			// and save a pointer to the description in the new game.
@@ -1524,7 +1524,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			if(const simple_wml::node* m = data.child("multiplayer")) {
 				m->copy_into(desc);
 			} else {
-				WRN_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tsent scenario data in game:\t\""
+				WRN_SERVER << log_address(p->socket()) << "\t" << p->name() << "\tsent scenario data in game:\t\""
 						   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.";
 				// Set the description so it can be removed in delete_game().
 				g.set_description(&desc);
@@ -1539,7 +1539,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			g.set_description(&desc);
 			desc.set_attr_dup("id", std::to_string(g.id()).c_str());
 		} else {
-			WRN_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tsent scenario data in game:\t\""
+			WRN_SERVER << log_address(p->socket()) << "\t" << p->name() << "\tsent scenario data in game:\t\""
 					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") although it's already initialized.";
 			return;
 		}
@@ -1600,7 +1600,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 		// Everything below should only be processed if the game is already initialized.
 	} else if(!g.level_init()) {
-		WRN_SERVER << log_address(p->socket()) << "\tReceived unknown data from: " << p.name()
+		WRN_SERVER << log_address(p->socket()) << "\tReceived unknown data from: " << p->name()
 				   << " while the scenario wasn't yet initialized."
 				   << data.output();
 		return;
@@ -1611,7 +1611,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		}
 
 		if(!g.level_init()) {
-			WRN_SERVER << log_address(p->socket()) << "\tWarning: " << p.name()
+			WRN_SERVER << log_address(p->socket()) << "\tWarning: " << p->name()
 					   << "\tsent [store_next_scenario] in game:\t\"" << g.name() << "\" (" << g.id()
 					   << ", " << g.db_id() << ") while the scenario is not yet initialized.";
 			return;
@@ -1642,7 +1642,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		if(const simple_wml::node* m = scenario->child("multiplayer")) {
 			m->copy_into(desc);
 		} else {
-			WRN_SERVER << log_address(p->socket()) << "\t" << p.name() << "\tsent scenario data in game:\t\""
+			WRN_SERVER << log_address(p->socket()) << "\t" << p->name() << "\tsent scenario data in game:\t\""
 					   << g.name() << "\" (" << g.id() << ", " << g.db_id() << ") without a 'multiplayer' child.";
 
 			delete_game(g.id());
@@ -1780,7 +1780,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
 			bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", description, diff);
-			bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user", player.config_address(), diff);
+			bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user", p.info().config_address(), diff);
 
 			if(diff1 || diff2) {
 				send_to_lobby(diff, p);
@@ -1876,7 +1876,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		if((*info)["type"] == "termination") {
 			g.set_termination_reason((*info)["condition"].to_string());
 			if((*info)["condition"].to_string() == "out of sync") {
-				g.send_and_record_server_message(player.name() + " reports out of sync errors.");
+				g.send_and_record_server_message(p->name() + " reports out of sync errors.");
 				if(user_handler_){
 					user_handler_->db_set_oos_flag(uuid_, g.db_id());
 				}
@@ -1919,7 +1919,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 	}
 
-	WRN_SERVER << log_address(p->socket()) << "\tReceived unknown data from: " << player.name()
+	WRN_SERVER << log_address(p->socket()) << "\tReceived unknown data from: " << p->name()
 			   << " in game: \"" << g.name() << "\" (" << g.id() << ", " << g.db_id() << ")\n"
 			   << data.output();
 }
