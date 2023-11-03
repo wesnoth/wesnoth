@@ -145,13 +145,13 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if (!filter_type.empty()){
-		//if special is type "damage" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
-		if(tag_name == "damage"){
+		//if special is type "damage_type" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
+		if(tag_name == "damage_type"){
 			if (filter_type.count(attack.type()) == 0){
 				return false;
 			}
 		} else {
-			//if the type is different from "damage" then damage_type() can be called for safe checking.
+			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
 			std::pair<std::string, std::string> damage_type = attack.damage_type();
 			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
 				return false;

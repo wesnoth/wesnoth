@@ -1197,7 +1197,7 @@ static std::vector<std::string> damage_type_list(const unit_ability_list& abil_l
  */
 std::pair<std::string, std::string> attack_type::damage_type() const
 {
-	unit_ability_list abil_list = get_specials_and_abilities("damage");
+	unit_ability_list abil_list = get_specials_and_abilities("damage_type");
 	if(abil_list.empty()){
 		return {type(), ""};
 	}
