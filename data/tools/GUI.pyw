@@ -38,7 +38,7 @@ from wesnoth import version
 
 # we need to know in what series we are
 # so set it in a constant string
-WESNOTH_SERIES = "{}.{}".format(version.major, version.minor)
+WESNOTH_SERIES = "{0}.{1}".format(version.major, version.minor)
 
 # get the location where the script is placed
 # we'll check later if this is a Wesnoth directory
@@ -1582,8 +1582,8 @@ The tool will not be run."""))
         if os.path.exists(output_file):
             # TRANSLATORS: Dialogue box title.
             answer = askyesno(title=_("Overwrite Confirmation"),
-                              # TRANSLATORS: {} is a placeholder for a file name, and not meant to be modified.
-                              message=_("""File {} already exists.
+                              # TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
+                              message=_("""File {0} already exists.
 Do you want to overwrite it?""").format(output_file))
             if not answer:
                 return
@@ -1654,10 +1654,10 @@ Error code: {1}
 
     def on_about(self):
         showinfo(_("About Maintenance Tools GUI"),
-                 # TRANSLATORS: {} is a placeholder for Wesnoth's current version, and not meant to be modified.
+                 # TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
                  _("""© Elvish_Hunter, 2014-2016
 
-Version: {}
+Version: {0}
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
