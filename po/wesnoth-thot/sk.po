@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-28 14:02 UTC\n"
-"PO-Revision-Date: 2018-04-29 10:03+0200\n"
+"PO-Revision-Date: 2023-11-03 20:02+0100\n"
 "Last-Translator: Filip Hiadlovský <f.hiadlovsky@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -72,10 +72,8 @@ msgstr ""
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:26
-#, fuzzy
-#| msgid "(Intermediate level, 11 scenarios.)"
 msgid "(Intermediate level, 8 scenarios.)"
-msgstr "(Stredná úroveň, 11 scén.)"
+msgstr "(Stredná úroveň, 8 scén.)"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:29
@@ -241,7 +239,7 @@ msgstr ""
 #. [unit]: id=Movrur, type=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:145
 msgid "Movrur"
-msgstr ""
+msgstr "Movrur"
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:158
@@ -254,7 +252,7 @@ msgstr ""
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:168
 msgid "Yes, this cloak-pin be of our work."
-msgstr ""
+msgstr "Áno, tá spona je naša práca."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:173
@@ -264,7 +262,7 @@ msgstr ""
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:178
 msgid "I be Movrur, of the ancient stronghold of Kal Kartha."
-msgstr ""
+msgstr "Som Morvur z prastarej pevnosti Kal Kartha."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:183
@@ -273,6 +271,9 @@ msgid ""
 "That Kal Kartha? We have not heard from you in years! It was thought that "
 "your hold was lost to the orcs long ago."
 msgstr ""
+"Kal Kartha? Miesto kováčskych dielní a staré rodisko nášho druhu? Tá Kal "
+"Kartha? Roky sme o tom mieste nepočuli! Mysleli sme, že pevnosť bola dobitá "
+"orkami pred mnohými rokmi."
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:188
@@ -281,6 +282,9 @@ msgid ""
 "to clear them out and reclaim the lands that were once ours. However, as you "
 "saw here, our troubles with the orcs are far from over."
 msgstr ""
+"No, našu pevnosť obsadili orkovia, ale v poslednej dobe sme ich začali "
+"vyháňať a získavať späť územia, ktoré nám kedysi patrili. Ale ako ste si "
+"isto všimli, tak napriek tomu naše problémy s orkami ani zďaleka neskončili."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:193
@@ -403,11 +407,13 @@ msgid ""
 "to repair the artifact. The consequences of the Hammer’s ruination have thus "
 "been irreparable."
 msgstr ""
+"Časti sme získali veľmi dávno z Plamenných jaskýň, ale artefakt sa nám "
+"nepodarilo opraviť. Dôsledky zničenia kladiva tak boli nenapraviteľné."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:133
 msgid "What consequences?"
-msgstr ""
+msgstr "Aké následky?"
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:138
@@ -570,6 +576,8 @@ msgid ""
 "As the orcs recently slew one of our invaluable loremasters, we would "
 "welcome the wisdom of one of our kin from Knalga."
 msgstr ""
+"Keďže orkovia nedávno zabili jedného z našich neoceniteľných starešinov, "
+"budeme vďační za múdrosť jedného z našich príbuzných z Knalgy."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:218
@@ -645,7 +653,7 @@ msgstr "Votrelci"
 #. [side]: type=Orcish Slayer, id=Gorthas
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:88
 msgid "Gorthas"
-msgstr ""
+msgstr "Gorthas"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:121
@@ -1019,12 +1027,12 @@ msgstr ""
 #. [message]: role=peasantry
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:234
 msgid "Help! Someone please help!"
-msgstr ""
+msgstr "Pomóc! Prosím, pomôžte niekto!"
 
 #. [message]: role=peasantry
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:244
 msgid "Help!"
-msgstr ""
+msgstr "Pomóc!"
 
 #. [message]: role=slaver
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:254
@@ -1036,7 +1044,7 @@ msgstr ""
 #. [message]: role=peasantry
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:259
 msgid "They’ll stop you!"
-msgstr ""
+msgstr "Oni vás zastavia!"
 
 #. [message]: role=slaver
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:264
@@ -1056,7 +1064,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:287
 msgid "What in the world is going on here?"
-msgstr ""
+msgstr "Čo sa to tu preboha deje?"
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:292
@@ -1105,7 +1113,7 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:327
 msgid "Orcs, you say?"
-msgstr ""
+msgstr "Orkovia, hovoríš?"
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:332
@@ -1114,6 +1122,9 @@ msgid ""
 "forced to dedicate more of our forces here just to protect the peasants "
 "while they... go about their business."
 msgstr ""
+"Áno, orkovia. Okrajové častiach Kal Karthy nie sú bezpečné. Sme nútení držať "
+"viac našich síl tu, aby sme ochránili roľníkov, zatiaľ čo oni...sa venujú "
+"svojej práci."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:337
@@ -1121,16 +1132,18 @@ msgid ""
 "Well, then. Since we are already here, why don’t we... help you root out "
 "these orcs? It will help the peasants get back to their lives."
 msgstr ""
+"tak teda keď sme už tu... čo keby sme vám pomohli vykoreniť odtiaľto tých "
+"orkov? Pomôže to aj sedliakom sa sa vrátiť k ich predchádzajúcemu životu."
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:342
 msgid "Certainly..."
-msgstr ""
+msgstr "Samozrejme..."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:347
 msgid "<i>Angarthing, is something wrong?</i>"
-msgstr ""
+msgstr "<i>Angarthing, deje sa niečo?</i>"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:352
@@ -1138,6 +1151,8 @@ msgid ""
 "<i>Something is suspicious here. Stay alert and keep an eye on what those "
 "masked dwarves do. Movrur, too.</i>"
 msgstr ""
+"<i>Deje sa niečo podozrivé. Zostaň v strehu a sleduj tých maskovaných "
+"trpaslíkov. Na Movrura tiež</i>"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:358
@@ -1149,12 +1164,12 @@ msgstr "Porazíš maskovaných trpaslíkov"
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:423
 msgid "The orcs are here! Up axes!"
-msgstr ""
+msgstr "Orkovia sú tu! Pozdvihnite sekery!"
 
 #. [unit]: type=Orcish Slayer, type=Orcish Nightblade, id=Maluk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:569
 msgid "Maluk"
-msgstr ""
+msgstr "Maluk"
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:583
@@ -1162,11 +1177,13 @@ msgid ""
 "So, the filth shows its face at last. You may think yourself mighty for "
 "preying on weak humans, but you stand no chance against us dwarves."
 msgstr ""
+"Takže špina ukazuje svoju tvár. Možno si myslíte , akí ste mocní, keď lovíte "
+"slabých ľudí, ale proti nám trpaslíkom nemáte šancu."
 
 #. [message]: speaker=Maluk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:588
 msgid "We shall see, masked one."
-msgstr ""
+msgstr "Uvidíme, maskovaný."
 
 #. [message]: speaker=Maluk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:600
@@ -1178,24 +1195,24 @@ msgstr "Porazili sme ich!"
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:613
 msgid "Their leader has fled! We have won!"
-msgstr ""
+msgstr "Ich vodca utiekol. Vyhrali sme."
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:624
 msgid "In his haste to escape, it seems like the orc dropped some coins."
-msgstr ""
+msgstr "Sledujte, ako rýchlo zdrhli, dokonca im vypadli nejaké mince."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:629
 msgid "Let me see those."
-msgstr ""
+msgstr "Tak sa na ne pozrime."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:638
 msgid ""
 "These look as if they are of dwarven make! Movrur, what is the meaning of "
 "this?"
-msgstr ""
+msgstr "Vyzerajú, ako by ich vyrobili trpaslíci. Movrur, čo to má znamenať?"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:649
@@ -1223,11 +1240,13 @@ msgid ""
 "and weapons in their raids, for such beasts have little ability to create "
 "either on their own."
 msgstr ""
+"Títo orkovia sú zlodeji a lupiči. Pri svojich nájazdoch rabujú zlato a "
+"zbrane. Tieto zvieratá sú málokedy schopne vytvori´t niečo vlastné."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:673
 msgid "So you say."
-msgstr ""
+msgstr "To hovoríš ty."
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:678
