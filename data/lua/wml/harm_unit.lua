@@ -176,6 +176,7 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
+			local unit_to_harm_id = unit_to_harm.id
 			if kill ~= false and unit_to_harm.hitpoints <= 0 then
 				wml_actions.kill { id = unit_to_harm.id, animate = toboolean( animate ), fire_event = fire_event, harmer and T.secondary_unit { id = harmer.id } }
 			end
@@ -185,7 +186,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if variable then
-				wml.variables[string.format("%s[%d]", variable, index - 1)] = { id = unit_to_harm.id, harm_amount = damage }
+				wml.variables[string.format("%s[%d]", variable, index - 1)] = { id = unit_to_harm_id, harm_amount = damage }
 			end
 
 			-- both units may no longer be alive at this point, so double check
