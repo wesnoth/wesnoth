@@ -1917,6 +1917,12 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		new_zoom = zoom_levels[zoom_index_];
 	}
 
+	if((new_zoom / 4) * 4 != new_zoom) {
+		WRN_DP << "set_zoom forcing zoom " << new_zoom
+			<< " which is not a multiple of 4."
+			<< " This will likely cause graphical glitches.";
+	}
+
 	const SDL_Rect& outside_area = map_outside_area();
 	const SDL_Rect& area = map_area();
 
