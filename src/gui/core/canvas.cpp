@@ -483,6 +483,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 canvas::canvas()
 	: shapes_()
 	, blur_depth_(0)
+	, blur_region_(sdl::empty_rect)
 	, deferred_(false)
 	, w_(0)
 	, h_(0)
@@ -494,6 +495,7 @@ canvas::canvas()
 canvas::canvas(canvas&& c) noexcept
 	: shapes_(std::move(c.shapes_))
 	, blur_depth_(c.blur_depth_)
+	, blur_region_(c.blur_region_)
 	, deferred_(c.deferred_)
 	, w_(c.w_)
 	, h_(c.h_)
@@ -510,6 +512,15 @@ bool canvas::update_blur(const rect& screen_region, bool force)
 		// No blurring needed.
 		return true;
 	}
+
+	if(screen_region != blur_region_) {
+		DBG_GUI_D << "blur region changed from " << blur_region_
+			<< " to " << screen_region;
+		// something has changed. regenerate the texture.
+		blur_texture_.reset();
+		blur_region_ = screen_region;
+	}
+
 	if(blur_texture_ && !force) {
 		// We already made the blur. It's expensive, so don't do it again.
 		return true;
