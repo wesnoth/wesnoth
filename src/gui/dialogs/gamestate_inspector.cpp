@@ -43,6 +43,7 @@
 
 #include "display_context.hpp"
 #include "filter_context.hpp"
+#include "video.hpp"
 
 #include <vector>
 #include <functional>
@@ -111,13 +112,13 @@ private:
 	{
 		pages.clear();
 		std::size_t start = 0;
-		while(start + max_inspect_win_len < data.size()) {
+		while(start + page_characters < data.size()) {
 			// This could search into data that's already on a previous page, which is why the result
 			// is then checked for end < start.
-			std::size_t end = data.find_last_of('\n', start + max_inspect_win_len);
+			std::size_t end = data.find_last_of('\n', start + page_characters);
 			int len;
 			if(end == std::string::npos || end < start) {
-				len = max_inspect_win_len;
+				len = page_characters;
 			} else {
 				len = end - start + 1;
 			}
@@ -128,7 +129,7 @@ private:
 			pages.emplace_back(start, data.size() - start);
 		}
 	}
-	static const unsigned int max_inspect_win_len = 20000;
+	unsigned int page_characters = 10000 / video::get_pixel_scale();
 	std::string data;
 	std::vector<std::pair<std::size_t,int>> pages;
 };
