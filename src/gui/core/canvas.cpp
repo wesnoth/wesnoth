@@ -24,6 +24,7 @@
 #include "gui/core/canvas_private.hpp"
 
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -526,23 +527,19 @@ bool canvas::update_blur(const rect& screen_region, bool force)
 	// We could use the previous render frame, but there could well have been
 	// another element there last frame such as a popup window which we
 	// don't want to be part of the blur.
-	// The only stable solution is to render in multiple passes.
-	// For now, we defer rendering of translucent elements to the next frame,
-	// so one frame is rendered without the element, then the element captures
-	// the result from that frame and renders itself on the next frame.
-	// Ultimately even with hardware acceleration of the blur effect
-	// a similar solution will need to be retained. The difference with a
-	// better future implementation would be that the multiple rendering
-	// passes can be managed at a higher level, and that they can be done
-	// within a single frame.
+	// The stable solution is to render in multiple passes,
+	// so that is what we shall do.
 
+	// For the first pass, this element and its children are not rendered.
 	if(!deferred_) {
 		DBG_GUI_D << "Deferring blur at " << screen_region;
 		deferred_ = true;
+		draw_manager::request_extra_render_pass();
 		return false;
 	}
 
-	// Read and blur pixels from the previous render frame.
+	// For the second pass we read the result of the first pass at
+	// this widget's location, and blur it.
 	DBG_GUI_D << "Blurring " << screen_region << " depth " << blur_depth_;
 	rect read_region = screen_region;
 	auto setter = draw::set_render_target({});
@@ -551,6 +548,11 @@ bool canvas::update_blur(const rect& screen_region, bool force)
 	blur_texture_ = texture(s);
 	deferred_ = false;
 	return true;
+}
+
+void canvas::queue_reblur()
+{
+	blur_texture_.reset();
 }
 
 void canvas::draw()

@@ -38,10 +38,11 @@ namespace video
 /**
  * For describing the type of faked display, if any.
  *
- * fake::window never tries to create a window, or draw anything.
- * fake::draw does create an offscreen window, but does not draw to it.
+ * fake::no_window never tries to create a window, or draw anything.
+ * fake::no_draw does create an offscreen window, but does not draw to it.
+ * fake::hide_window creates a window as normal, but does not display it.
  */
-enum class fake { none, window, draw };
+enum class fake { none, no_window, no_draw, hide_window };
 
 /**
  * Initialize the video subsystem.

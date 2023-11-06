@@ -170,7 +170,8 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 			params.emplace_back(search_content);
 		}
 	}
-"where exists "
+
+	game_history_query += "where exists "
 "  ( "
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
@@ -232,9 +233,22 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "limit 11 offset ? ";
 		params.emplace_back(offset);
 
+		DBG_SQL << "before getting connection for game history query for player " << player_id;
+
+		mariadb::connection_ref connection = create_connection();
+
+		DBG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
+
 		game_history gh;
-		get_complex_results(create_connection(), gh, game_history_query, params);
-		return gh.to_doc();
+		get_complex_results(connection, gh, game_history_query, params);
+
+		DBG_SQL << "after game history query for player " << player_id;
+
+		auto doc = gh.to_doc();
+
+		DBG_SQL << "after parsing results of game history query for player " << player_id;
+
+		return doc;
 	}
 	catch(const mariadb::exception::base& e)
 	{

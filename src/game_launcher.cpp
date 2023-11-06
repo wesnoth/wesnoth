@@ -313,6 +313,7 @@ bool game_launcher::init_video()
 {
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui
+		|| cmdline_opts_.screenshot
 		|| cmdline_opts_.headless_unit_test
 		|| cmdline_opts_.render_image)
 	{
@@ -325,7 +326,14 @@ bool game_launcher::init_video()
 			PLAIN_LOG << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags";
 			return false;
 		}
-		video::init(video::fake::window);
+		if(cmdline_opts_.screenshot) {
+			// Screenshots require a rendering context, and thus a window,
+			// so we create one but hidden.
+			video::init(video::fake::hide_window);
+		} else {
+			// Other functions don't require a window at all.
+			video::init(video::fake::no_window);
+		}
 		game_config::no_delay = true;
 		return true;
 	}

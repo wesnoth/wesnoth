@@ -405,6 +405,11 @@ public:
 
 	void draw_buttons();
 
+	/** Hide theme buttons so they don't draw. */
+	void hide_buttons();
+	/** Unhide theme buttons so they draw again. */
+	void unhide_buttons();
+
 	/** Update the given report. Actual drawing is done in draw_report(). */
 	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
 
@@ -545,8 +550,8 @@ public:
 
 	/** Prevent the game display from drawing.
 	  * Used while story screen is showing to prevent flicker. */
-	void set_prevent_draw(bool pd) { prevent_draw_ = pd; }
-	bool get_prevent_draw() { return prevent_draw_; }
+	void set_prevent_draw(bool pd = true);
+	bool get_prevent_draw();
 
 private:
 	bool prevent_draw_ = false;

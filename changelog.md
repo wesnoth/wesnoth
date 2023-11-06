@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, French, Italian, Slovak, Welsh
+   * Updated translations: British English, French, Italian, Polish, Slovak, Welsh
  ### Units
    * Drakes:
      * Saurian Seer - modify the unit to fix reductions in power level between level 2 and level 3.

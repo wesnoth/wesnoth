@@ -48,6 +48,7 @@ std::vector<rect> invalidated_regions_;
 bool drawing_ = false;
 bool tlds_need_tidying_ = false;
 uint32_t last_sparkle_ = 0;
+bool extra_pass_requested_ = false;
 } // namespace
 
 namespace draw_manager {
@@ -123,6 +124,11 @@ void invalidate_all()
 	invalidate_region(video::game_canvas());
 }
 
+void request_extra_render_pass()
+{
+	extra_pass_requested_ = true;
+}
+
 void sparkle()
 {
 	if (drawing_) {
@@ -153,7 +159,16 @@ void sparkle()
 	draw_manager::render();
 
 	// Draw to the screen.
-	if (draw_manager::expose()) {
+	bool drew_something = draw_manager::expose();
+
+	// If extra render passes are requested, render and draw again.
+	while (extra_pass_requested_) {
+		extra_pass_requested_ = false;
+		draw_manager::render();
+		drew_something |= draw_manager::expose();
+	}
+
+	if (drew_something) {
 		// We only need to flip the screen if something was drawn.
 		video::render_screen();
 	} else {

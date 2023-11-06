@@ -790,7 +790,10 @@ surface display::screenshot(bool map_screenshot)
 
 	map_screenshot_ = true;
 
+	DBG_DP << "invalidating region for map screenshot";
 	invalidate_locations_in_rect(map_area());
+
+	DBG_DP << "drawing map screenshot";
 	draw();
 
 	map_screenshot_ = false;
@@ -800,6 +803,7 @@ surface display::screenshot(bool map_screenshot)
 	ypos_ = old_ypos;
 
 	// Read rendered pixels back as an SDL surface.
+	LOG_DP << "reading pixels for map screenshot";
 	return video::read_pixels();
 }
 
@@ -925,6 +929,11 @@ void display::create_buttons()
 		action_buttons_.push_back(std::move(b));
 	}
 
+	if (prevent_draw_) {
+		// buttons start hidden in this case
+		hide_buttons();
+	}
+
 	layout_buttons();
 	DBG_DP << "buttons created";
 }
@@ -949,6 +958,26 @@ void display::draw_buttons()
 	//		btn->draw();
 	//	}
 	//}
+}
+
+void display::hide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide();
+	}
+	for (auto& button : action_buttons_) {
+		button->hide();
+	}
+}
+
+void display::unhide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide(false);
+	}
+	for (auto& button : action_buttons_) {
+		button->hide(false);
+	}
 }
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
@@ -1276,6 +1305,9 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 
 void display::drawing_buffer_commit()
 {
+	DBG_DP << "committing drawing buffer"
+	       << " with " << drawing_buffer_.size() << " items";
+
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
@@ -1885,6 +1917,12 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		new_zoom = zoom_levels[zoom_index_];
 	}
 
+	if((new_zoom / 4) * 4 != new_zoom) {
+		WRN_DP << "set_zoom forcing zoom " << new_zoom
+			<< " which is not a multiple of 4."
+			<< " This will likely cause graphical glitches.";
+	}
+
 	const SDL_Rect& outside_area = map_outside_area();
 	const SDL_Rect& area = map_area();
 
@@ -2211,6 +2249,21 @@ double display::turbo_speed() const
 		return 1.0;
 }
 
+void display::set_prevent_draw(bool pd)
+{
+	prevent_draw_ = pd;
+	if (!pd) {
+		// ensure buttons are visible
+		unhide_buttons();
+	}
+}
+
+bool display::get_prevent_draw()
+{
+	return prevent_draw_;
+}
+
+
 void display::fade_tod_mask(
 	const std::string& old_mask,
 	const std::string& new_mask)
@@ -2354,7 +2407,7 @@ void display::draw()
 	set_scontext_unsynced leave_synced_context;
 
 	// This isn't the best, but also isn't important enough to do better.
-	if(redraw_background_) {
+	if(redraw_background_ && !map_screenshot_) {
 		DBG_DP << "display::draw redraw background";
 		render_map_outside_area();
 		draw_manager::invalidate_region(map_outside_area());
@@ -3093,7 +3146,7 @@ void display::invalidate_all()
 
 bool display::invalidate(const map_location& loc)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	bool tmp;
@@ -3103,7 +3156,7 @@ bool display::invalidate(const map_location& loc)
 
 bool display::invalidate(const std::set<map_location>& locs)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
@@ -3146,7 +3199,7 @@ bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	DBG_DP << "invalidating locations in " << rect;
