@@ -302,8 +302,7 @@ std::string unit_topic_generator::operator()() const {
 	if (screen_width >= 1200) ss << "~XBRZ(2)";
 	ss << "' box='no'</img> ";
 
-
-	if (&female_type != &male_type) {
+	if (female_type.image() != male_type.image()) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
 		if (screen_width >= 1200) ss << "~XBRZ(2)";
