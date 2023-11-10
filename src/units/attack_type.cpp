@@ -101,19 +101,17 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& tag_name)
 {
-	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
+	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_damage = filter["damage"];
 	const std::string& filter_attacks = filter["number"];
 	const std::string& filter_accuracy = filter["accuracy"];
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
 	const std::string& filter_attacks_used = filter["attacks_used"];
-	const std::vector<std::string> filter_name = utils::split(filter["name"]);
-	const std::vector<std::string> filter_type = utils::split(filter["type"]);
-	const std::vector<std::string> filter_replacement_type = utils::split(filter["replacement_type"]);
-	const std::vector<std::string> filter_alternative_type = utils::split(filter["alternative_type"]);
+	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
+	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -122,7 +120,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
 
-	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
+	if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
 		return false;
 
 	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges_unsigned(filter_damage)) )
@@ -143,21 +141,19 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
 		return false;
 
-	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
+	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
 
-	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
-		return false;
-
-	if(!filter_alternative_type.empty() || !filter_replacement_type.empty()){
-		std::pair<std::string, std::string> damage_type = attack.damage_type();
-		if(!filter_replacement_type.empty()){
-			if ( std::find(filter_replacement_type.begin(), filter_replacement_type.end(), damage_type.first) == filter_replacement_type.end() ){
+	if (!filter_type.empty()){
+		//if special is type "damage_type" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
+		if(tag_name == "damage_type"){
+			if (filter_type.count(attack.type()) == 0){
 				return false;
 			}
-		}
-		if(!filter_alternative_type.empty()){
-			if ( std::find(filter_alternative_type.begin(), filter_alternative_type.end(), damage_type.second) == filter_alternative_type.end() ){
+		} else {
+			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
+			std::pair<std::string, std::string> damage_type = attack.damage_type();
+			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
 				return false;
 			}
 		}
@@ -261,25 +257,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter) const
+bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter);
+	bool matches = matches_simple_filter(*this, filter, tag_name);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg);
+			matches = matches && matches_filter(condition.cfg, tag_name);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg);
+			matches = matches || matches_filter(condition.cfg, tag_name);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg);
+			matches = matches && !matches_filter(condition.cfg, tag_name);
 	}
 
 	return matches;

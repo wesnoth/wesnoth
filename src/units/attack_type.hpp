@@ -124,7 +124,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter) const;
+	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
