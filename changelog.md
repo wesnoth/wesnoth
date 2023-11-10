@@ -15,6 +15,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Added basic support for the `ttkthemes` Python library to GUI.pyw on Linux
 
 ## Version 1.17.22
  ### Campaigns

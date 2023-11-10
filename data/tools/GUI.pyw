@@ -30,6 +30,14 @@ import tkinter.font as font
 # ttk must be called last
 from tkinter.ttk import *
 
+# check if additional themes are available and set a flag
+# use pip or your package manager to install the "ttkthemes" package
+try:
+    from ttkthemes import ThemedStyle
+    additional_themes=True
+except ImportError:
+    additional_themes=False
+
 # we need to know in what series we are
 # so set it in a constant string
 WESNOTH_SERIES="{}.{}".format(version.major, version.minor)
@@ -1799,9 +1807,20 @@ VEPjiOPN2tys7Y04Zj8UEAA7''')
     # also, this line shouldn't have effect on Mac OS
     root.tk.call("wm", "iconphoto", root, "-default", ICONS["window_icon"])
     # use a better style on X11 systems instead of the Motif-like one
-    style=Style()
-    if root.tk.call('tk', 'windowingsystem') == "x11" and "clam" in style.theme_names():
-        style.theme_use("clam")
+    if root.tk.call('tk', 'windowingsystem') == "x11":
+        if additional_themes:
+            # if ttkthemes is available try using a new theme
+            # some of them have issues, but this one seems to work fine
+            # TODO: at some point, add a preferences dialog to allow changing theme
+            # and a preferences file to keep track of it and other settings
+            style=ThemedStyle()
+            if "keramik" in style.theme_names():
+                style.set_theme("keramik") 
+        else:
+            # no ttkthemes, clam is a built-in theme
+            style=Style()
+            if "clam" in style.theme_names():
+                style.theme_use("clam")
     app=MainFrame(root)
     root.mainloop()
     sys.exit(0)
