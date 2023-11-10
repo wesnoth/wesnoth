@@ -22,7 +22,7 @@
 
 bool utils::config_filters::bool_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, bool def)
 {
-	if(filter[attribute].empty()) {
+	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
 

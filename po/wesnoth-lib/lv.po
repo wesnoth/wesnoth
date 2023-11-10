@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2015-02-15 14:45+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -2472,7 +2472,7 @@ msgstr "Spēles dati:"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr ""
 
 #. [button]: id=search
@@ -5582,14 +5582,14 @@ msgstr ""
 #: data/gui/window/mp_staging.cfg:245
 #, fuzzy
 #| msgid "Change the music volume"
-msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "Mainīt mūzikas skaļumu"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
 #, fuzzy
 #| msgid "Change the music volume"
-msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "Mainīt mūzikas skaļumu"
 
 #. [menu_button]: id=side_team
@@ -6215,9 +6215,13 @@ msgstr "Atrast un iestatīt ceļu pie DS servera, uz kura mitinās LAN spēles."
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
+#, fuzzy
+#| msgid ""
+#| "Add this username to your friends list (add optional notes, e.g., "
+#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "Pievienot šo lietotāju savam draugu sarakstam, un pievienot piezīmi: "
 "'player_name: piezīme par draugu'"
@@ -6230,7 +6234,7 @@ msgstr ""
 #| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "Pievienot šo lietotāju ignorēto sarakstam, un pievienot piezīmi: "
 "'player_name: ignorēšanas iemesls'"
@@ -6949,8 +6953,8 @@ msgid "No resolution defined."
 msgstr "Izšķirtspēja nav iestatīta."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Režģis nav definēts."
@@ -8383,7 +8387,7 @@ msgstr ""
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' jāsatur tikpat kolonnu, cik 'list_definition'."
@@ -8415,11 +8419,11 @@ msgstr ""
 msgid "Missing required state for menu button"
 msgstr ""
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Neviena lapa nav definēta."
 
@@ -8457,11 +8461,11 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr "Vajadzīgs vismaz 1 paralēls rīks"
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr ""
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr ""
 
@@ -8523,7 +8527,7 @@ msgstr "'value_labels' skaits un vērtību skaits nesaskan."
 msgid "No stack layers defined."
 msgstr "Neviena grupa nav definēta."
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Atrada rīku ar padomu, bet bez rīka padoma"
 
@@ -8651,11 +8655,11 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Saistītajai '$id' grupai ir vairākas definīcijas."
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Klikšķa atbrīvošanai nepieciešama 'click_dismiss' vai 'ok' poga."
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nevar parādīt dialogu, tas neietilpst ekrānā."

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2023-09-10 08:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -196,15 +196,15 @@ msgstr "此单位可以对周围的单位疗伤，减缓脱水，并疗毒。"
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
-#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "传送"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -4491,10 +4491,16 @@ msgstr "常规命令"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
+#, fuzzy
+#| msgid ""
+#| "These commands can either be issued via the command line by prefixing "
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
+#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
+"with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
+"‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
 "这些命令有两种输入方法：一是通过命令行输入，请在命令前加上“:”（如此处所示）；"
@@ -4502,9 +4508,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Similar to the 'fps' command, but also forces everything to redraw "
+#| "instead of only things that have changed.\n"
+#| "\n"
 msgid ""
 "\n"
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
@@ -5006,9 +5018,14 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
+#, fuzzy
+#| msgid ""
+#| "If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit diverts the target's attention and reduces "
+#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
+"attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
 "如果目标被此单位和其他对其怀有敌意的单位前后包夹，此单位就可以让目标分神，让"
@@ -6155,8 +6172,12 @@ msgstr "偏转"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "When used defensively, this attack reduces the opponent's chance to hit "
+#| "by 10%."
 msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
+"When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr "当用于防御时，此攻击将使得对手的命中率下降10%。"
 
@@ -6280,6 +6301,25 @@ msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 "此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到他们的回合结束。"
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
 
 #: data/core/units.cfg:4
 msgid ""
@@ -6775,22 +6815,22 @@ msgstr ""
 "益。"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "地精"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "地精"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:152
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "地精"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:151
 msgid ""
 "\n"
 "\n"
@@ -6816,22 +6856,22 @@ msgstr ""
 "证明自己强大力量的工作。"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "狮鹫"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "狮鹫"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:172
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "狮鹫"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6849,22 +6889,22 @@ msgstr ""
 "很多争论，但却仍然是个谜，正如他们的起源一般。"
 
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:181
 msgid "race^Horse"
 msgstr "马"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:182
 msgid "race+female^Horse"
 msgstr "马"
 
 #. [race]: id=horse
-#: data/core/units.cfg:185
+#: data/core/units.cfg:183
 msgid "race^Horses"
 msgstr "马"
 
 #. [race]: id=horse
-#: data/core/units.cfg:186
+#: data/core/units.cfg:184
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -6885,23 +6925,23 @@ msgstr ""
 "西。"
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:201
 msgid "race^Human"
 msgstr "人类"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:202
 msgid "race+female^Human"
 msgstr "人类"
 
 #. [race]: id=human
-#: data/core/units.cfg:205
+#: data/core/units.cfg:203
 msgid "race^Humans"
 msgstr "人类"
 
 # TODO this is not checked by sylecn.
 #. [race]: id=human
-#: data/core/units.cfg:206
+#: data/core/units.cfg:204
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6968,22 +7008,22 @@ msgstr ""
 "些，而他们可以互相取长补短。"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:219
 msgid "race^Dunefolk Human"
 msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:222
+#: data/core/units.cfg:220
 msgid "race+female^Dunefolk Human"
 msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:221
 msgid "race+plural^Dunefolk"
 msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:225
+#: data/core/units.cfg:223
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7076,22 +7116,22 @@ msgstr ""
 "亚遥远的异域角落中生活。"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:244
 msgid "race^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:245
 msgid "race+female^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:248
+#: data/core/units.cfg:246
 msgid "race^Saurians"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:249
+#: data/core/units.cfg:247
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7206,17 +7246,17 @@ msgstr ""
 "腐，甚至还会同类相食。这两者都是很常见的。"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:273
 msgid "race^Mechanical"
 msgstr "机械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:276
+#: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
 msgstr "机械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:277
+#: data/core/units.cfg:275
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7228,22 +7268,22 @@ msgstr ""
 "但有一些会由于魔法影响而能够如此。"
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:284
 msgid "race^Merman"
 msgstr "人鱼"
 
 #. [race]: id=merman
-#: data/core/units.cfg:287
+#: data/core/units.cfg:285
 msgid "race^Mermaid"
 msgstr "人鱼"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:286
 msgid "race^Merfolk"
 msgstr "人鱼"
 
 #. [race]: id=merman
-#: data/core/units.cfg:290
+#: data/core/units.cfg:288
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7263,22 +7303,22 @@ msgstr ""
 "的地形或林地，对他们而言也是一件天大的苦差。"
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:296
 msgid "race^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:297
 msgid "race+female^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:300
+#: data/core/units.cfg:298
 msgid "race^Monsters"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:301
+#: data/core/units.cfg:299
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7288,22 +7328,22 @@ msgstr ""
 "的其他地方，同样地，也经常出没于世界住民的传说和梦魇之中。"
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:306
 msgid "race^Naga"
 msgstr "娜迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:307
 msgid "race^Nagini"
 msgstr "娜迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:310
+#: data/core/units.cfg:308
 msgid "race^Nagas"
 msgstr "娜迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:311
+#: data/core/units.cfg:309
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7330,22 +7370,22 @@ msgstr ""
 "是一样的。"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:317
 msgid "race^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:318
 msgid "race+female^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:321
+#: data/core/units.cfg:319
 msgid "race^Ogres"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:322
+#: data/core/units.cfg:320
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7373,22 +7413,22 @@ msgstr ""
 "袭击。尚不清楚这究竟标志着合作、驯化，还是单纯的相互利用。"
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:328
 msgid "race^Orc"
 msgstr "兽人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:329
 msgid "race+female^Orc"
 msgstr "兽人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:330
 msgid "race^Orcs"
 msgstr "兽人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:333
+#: data/core/units.cfg:331
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7477,7 +7517,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:344
+#: data/core/units.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -7489,28 +7529,28 @@ msgstr ""
 "在窝中并非最强壮的兽人倾向于专精其他的技能，例如射术或者暗杀。"
 
 #. [race]: id=raven
-#: data/core/units.cfg:353
+#: data/core/units.cfg:351
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
 msgstr "矮人"
 
 #. [race]: id=raven
-#: data/core/units.cfg:354
+#: data/core/units.cfg:352
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
 msgstr "龙人"
 
 #. [race]: id=raven
-#: data/core/units.cfg:355
+#: data/core/units.cfg:353
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "矮人"
 
 #. [race]: id=raven
-#: data/core/units.cfg:356
+#: data/core/units.cfg:354
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -7530,22 +7570,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:369
+#: data/core/units.cfg:365
 msgid "race^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:370
+#: data/core/units.cfg:366
 msgid "race+female^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:371
+#: data/core/units.cfg:367
 msgid "race^Trolls"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:372
+#: data/core/units.cfg:368
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7606,22 +7646,22 @@ msgstr ""
 "和东方的山脉里很常见，在兽人部落经过的地方也是如此。"
 
 #. [race]: id=undead
-#: data/core/units.cfg:392
+#: data/core/units.cfg:388
 msgid "race^Undead"
 msgstr "亡灵"
 
 #. [race]: id=undead
-#: data/core/units.cfg:393
+#: data/core/units.cfg:389
 msgid "race+female^Undead"
 msgstr "亡灵"
 
 #. [race]: id=undead
-#: data/core/units.cfg:394
+#: data/core/units.cfg:390
 msgid "race+plural^Undead"
 msgstr "亡灵"
 
 #. [race]: id=undead
-#: data/core/units.cfg:395
+#: data/core/units.cfg:391
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7678,22 +7718,22 @@ msgstr ""
 "矮人们并非没有听说过他们。"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:408
+#: data/core/units.cfg:404
 msgid "race^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:409
+#: data/core/units.cfg:405
 msgid "race+female^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:410
+#: data/core/units.cfg:406
 msgid "race^Wolves"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:411
+#: data/core/units.cfg:407
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7709,17 +7749,17 @@ msgstr ""
 "之处，只是不时地冒险接近以捕猎牲畜。"
 
 #. [race]: id=wose
-#: data/core/units.cfg:420
+#: data/core/units.cfg:416
 msgid "race^Wose"
 msgstr "树人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:421
+#: data/core/units.cfg:417
 msgid "race^Woses"
 msgstr "树人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:422
+#: data/core/units.cfg:418
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

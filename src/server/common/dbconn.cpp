@@ -152,9 +152,26 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "  then SUBSTRING(game.INSTANCE_VERSION, 1, 4) "
 "  else 'trunk' "
 "  end as VERSION "
-"from "+db_game_info_table_+" game "
-"inner join "+db_game_player_info_table_+" player "
-"   on exists "
+"from "+db_game_player_info_table_+" player , "+db_game_content_info_table_+" scenario , "+db_game_content_info_table_+" era , "+db_game_info_table_+" game ";
+	// using a left join when searching by modification won't exclude anything
+	game_history_query += search_content_type == 2 && !search_content.empty() ? "inner join " : "left join ";
+	game_history_query += db_game_content_info_table_+" mods "
+"   on mods.TYPE = 'modification' "
+"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and mods.GAME_ID = game.GAME_ID ";
+	// modification id optional parameter
+	if(search_content_type == 2)
+	{
+		if(!search_content.empty())
+		{
+			game_history_query += "and mods.ID like ? ";
+
+			utils::to_sql_wildcards(search_content, false);
+			params.emplace_back(search_content);
+		}
+	}
+
+	game_history_query += "where exists "
 "  ( "
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
@@ -171,8 +188,14 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "  and game.INSTANCE_UUID = player.INSTANCE_UUID "
 "  and game.GAME_ID = player.GAME_ID "
 "  and player.USER_ID != -1 "
-"  and game.END_TIME is not NULL ";
-
+"  and game.END_TIME is not NULL "
+"  and scenario.TYPE = 'scenario' "
+"  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and scenario.GAME_ID = game.GAME_ID "
+"  and era.TYPE = 'era' "
+"  and era.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and era.GAME_ID = game.GAME_ID ";
+	// game name optional paramenter
 	if(!search_game_name.empty())
 	{
 		game_history_query += "and game.GAME_NAME like ? ";
@@ -181,10 +204,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 		params.emplace_back(search_game_name);
 	}
 
-	game_history_query += "inner join "+db_game_content_info_table_+" scenario "
-"   on scenario.TYPE = 'scenario' "
-"  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and scenario.GAME_ID = game.GAME_ID ";
+	// scenario id optional parameter
 	if(search_content_type == 0)
 	{
 		if(!search_content.empty())
@@ -196,10 +216,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 		}
 	}
 
-	game_history_query += "inner join "+db_game_content_info_table_+" era "
-"   on era.TYPE = 'era' "
-"  and era.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and era.GAME_ID = game.GAME_ID ";
+	// era id optional parameter
 	if(search_content_type == 1)
 	{
 		if(!search_content.empty())
@@ -211,31 +228,27 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 		}
 	}
 
-	// using a left join when searching by modification won't exclude anything
-	game_history_query += search_content_type == 2 && !search_content.empty() ? "inner join " : "left join ";
-	game_history_query += db_game_content_info_table_+" mods "
-"   on mods.TYPE = 'modification' "
-"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and mods.GAME_ID = game.GAME_ID ";
-	if(search_content_type == 2)
-	{
-		if(!search_content.empty())
-		{
-			game_history_query += "and mods.ID like ? ";
-
-			utils::to_sql_wildcards(search_content, false);
-			params.emplace_back(search_content);
-		}
-	}
-
 	game_history_query += "group by game.INSTANCE_UUID, game.GAME_ID "
 "order by game.START_TIME desc "
 "limit 11 offset ? ";
 		params.emplace_back(offset);
 
+		DBG_SQL << "before getting connection for game history query for player " << player_id;
+
+		mariadb::connection_ref connection = create_connection();
+
+		DBG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
+
 		game_history gh;
-		get_complex_results(create_connection(), gh, game_history_query, params);
-		return gh.to_doc();
+		get_complex_results(connection, gh, game_history_query, params);
+
+		DBG_SQL << "after game history query for player " << player_id;
+
+		auto doc = gh.to_doc();
+
+		DBG_SQL << "after parsing results of game history query for player " << player_id;
+
+		return doc;
 	}
 	catch(const mariadb::exception::base& e)
 	{

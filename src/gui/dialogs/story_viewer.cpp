@@ -307,6 +307,9 @@ void story_viewer::display_part()
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
 
+	// Regenerate any background blur texture
+	panel_canvas.queue_reblur();
+
 	begin_fade_draw(true);
 	// if the previous page was skipped, it is possible that we already have a timer running.
 	clear_image_timer();

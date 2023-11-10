@@ -74,10 +74,10 @@ public:
 
 private:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background() override;
+	virtual bool impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground() override;
+	virtual bool impl_draw_foreground() override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

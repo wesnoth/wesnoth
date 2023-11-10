@@ -538,8 +538,10 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
+	 *
+	 * @returns                   False if drawing should be deferred.
 	 */
-	void draw_background();
+	bool draw_background();
 
 	/**
 	 * Draws the children of a widget.
@@ -559,13 +561,16 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
+	 *
+	 * @returns                   False if drawing should be deferred.
 	 */
-	void draw_foreground();
+	bool draw_foreground();
 
 private:
 	/** See @ref draw_background. */
-	virtual void impl_draw_background()
+	virtual bool impl_draw_background()
 	{
+		return true;
 	}
 
 	/** See @ref draw_children. */
@@ -574,8 +579,9 @@ private:
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground()
+	virtual bool impl_draw_foreground()
 	{
+		return true;
 	}
 
 public:

@@ -193,18 +193,18 @@ void toggle_panel::set_state(const state_t state)
 	assert(conf);
 }
 
-void toggle_panel::impl_draw_background()
+bool toggle_panel::impl_draw_background()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_background();
+	return styled_widget::impl_draw_background();
 }
 
-void toggle_panel::impl_draw_foreground()
+bool toggle_panel::impl_draw_foreground()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_foreground();
+	return styled_widget::impl_draw_foreground();
 }
 
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,

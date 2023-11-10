@@ -112,6 +112,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::string& filter_attacks_used = filter["attacks_used"];
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
+	const std::vector<std::string> filter_replacement_type = utils::split(filter["replacement_type"]);
+	const std::vector<std::string> filter_alternative_type = utils::split(filter["alternative_type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -146,6 +148,20 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
 		return false;
+
+	if(!filter_alternative_type.empty() || !filter_replacement_type.empty()){
+		std::pair<std::string, std::string> damage_type = attack.damage_type();
+		if(!filter_replacement_type.empty()){
+			if ( std::find(filter_replacement_type.begin(), filter_replacement_type.end(), damage_type.first) == filter_replacement_type.end() ){
+				return false;
+			}
+		}
+		if(!filter_alternative_type.empty()){
+			if ( std::find(filter_alternative_type.begin(), filter_alternative_type.end(), damage_type.second) == filter_alternative_type.end() ){
+				return false;
+			}
+		}
+	}
 
 	if(!filter_special.empty()) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");

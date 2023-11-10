@@ -93,6 +93,17 @@ void invalidate_region(const rect& region);
 void invalidate_all();
 
 /**
+ * Request an extra render pass.
+ *
+ * This is used for blur effects, which need to first render what's
+ * underneath so that it can be blurred.
+ *
+ * There is not currently any limit to the number of extra render passes,
+ * but do try to keep it finite.
+ */
+void request_extra_render_pass();
+
+/**
  * Ensure that everything which needs to be drawn is drawn.
  *
  * This includes making sure window sizes and locations are up to date,

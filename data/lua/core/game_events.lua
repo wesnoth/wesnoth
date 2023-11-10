@@ -30,6 +30,8 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
     end
     wesnoth.fire_event = wesnoth.deprecate_api('wesnoth.fire_event', 'wesnoth.game_events.fire', 1, nil, old_fire_event(wesnoth.game_events.fire))
     wesnoth.fire_event_by_id = wesnoth.deprecate_api('wesnoth.fire_event_by_id', 'wesnoth.game_events.fire_by_id', 1, nil, old_fire_event(wesnoth.game_events.fire_by_id))
+    -- This will be deprecated once it's no longer considered experimental
+    wesnoth.allow_undo = wesnoth.game_events.set_undoable
 
     -- The undo API is still experimental, so move those functions
 

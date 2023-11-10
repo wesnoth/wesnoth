@@ -719,7 +719,7 @@ env.Clean(all, 'TAGS')
 # Unix installation productions
 #
 # These will not be portable to Windows or Mac. They assume a Unix-like
-# directory structure and FreeDesktop standard locations foicon, app,
+# directory structure and FreeDesktop standard locations for icon, app,
 # and doc files.
 #
 

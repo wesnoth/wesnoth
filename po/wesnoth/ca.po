@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -252,7 +252,7 @@ msgstr "enverinat"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "trident de la tempesta"
 
@@ -651,8 +651,15 @@ msgid "Vietnamese Translation"
 msgstr "Traducció al vietnamita"
 
 #. [about]
+#: data/core/about_i18n.cfg:1868
+#, fuzzy
+#| msgid "Polish Translation"
+msgid "Welsh Translation"
+msgstr "Traducció al polonès"
+
+#. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1876
+#: data/core/about_i18n.cfg:1877
 msgid "RACV’s Translation"
 msgstr "Traducció a l'idioma de la RACV"
 
@@ -1151,7 +1158,7 @@ msgstr "Tauleta de pedra"
 #. [item]: id=storm-trident2
 #. [object]
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:552
 msgid "Storm Trident"
 msgstr "Trident de la tempesta"
 
@@ -1844,73 +1851,73 @@ msgstr ""
 "i> fins al final de l'escenari actual."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:320
+#: data/core/macros/items.cfg:335
 msgid "Potion of Strength"
 msgstr "Poció de força"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:323
+#: data/core/macros/items.cfg:338
 msgid "Strength is given to the drinker."
 msgstr "Dona força a qui la beu."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:365
+#: data/core/macros/items.cfg:380
 msgid "Potion of Decay"
 msgstr "Poció de decaïment"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:383
 msgid "This poor unit drank something really bad."
 msgstr "Aquesta unitat ha begut alguna cosa realment dolenta."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:404
+#: data/core/macros/items.cfg:419
 msgid "Ring of Regeneration"
 msgstr "Anell de regeneració"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:407
+#: data/core/macros/items.cfg:422
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Aquesta anell curarà al seu portador una mica cada torn."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:445
+#: data/core/macros/items.cfg:460
 msgid "Ring of Slowness"
 msgstr "Anell d'alentiment"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:448
+#: data/core/macros/items.cfg:463
 msgid "The bearer of this ring is slowed."
 msgstr "El portador d'aquest anell anirà més lent."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:499
 msgid "Staff of Swiftness"
 msgstr "Bastó de la rapidesa"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:487
+#: data/core/macros/items.cfg:502
 msgid "This staff will grant the bearer swift movement."
 msgstr "Aquest bastó concedirà al seu portador moviments més ràpids."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:488
+#: data/core/macros/items.cfg:503
 msgid "Only magical beings can wield such an object."
 msgstr "Només els éssers màgics poden portar un objecte com aquest."
 
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:547
 msgid "Should $unit.name pick up the trident?"
 msgstr "Hauria d'agafar el trident $unit.name?"
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:548
 msgid "storm trident^Take it"
 msgstr "trident de la tempesta^Agafa'l"
 
-#: data/core/macros/items.cfg:534
+#: data/core/macros/items.cfg:549
 msgid "storm trident^Leave it"
 msgstr "trident de la tempesta^Deixa'l"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:550
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
@@ -1919,14 +1926,14 @@ msgstr ""
 "tingui un dels sirènids que pugui portar-lo."
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:555
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
 "Aquest trident dona als sirènids el poder de llançar llamps als enemics."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:568
+#: data/core/macros/items.cfg:583
 msgid "sceptre of fire"
 msgstr "ceptre de foc"
 
@@ -4373,7 +4380,7 @@ msgstr "punt d'experiència per avançar"
 #: data/modifications.cfg:7
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
-"if it advances on another player's turn. With this modification you can set "
+"if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
@@ -6946,7 +6953,7 @@ msgstr "Escenari desconegut: «$scenario|»"
 msgid "No campaigns are available."
 msgstr "No hi ha campanyes disponibles."
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:711 src/game_launcher.cpp:730 src/replay.cpp:666
 msgid "The file you have tried to load is corrupt"
 msgstr "El fitxer que heu intentat carregar està malmès"
 
@@ -7128,28 +7135,33 @@ msgstr "Vós"
 msgid "Error"
 msgstr "Error"
 
-#: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
+#: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other aspects: "
 msgstr "Observa la partida"
 
-#: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
-#: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
+#: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
+#: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
 msgid "Weapon: "
 msgstr "Arma: "
 
-#: src/gui/dialogs/unit_attack.cpp:171 src/gui/dialogs/unit_attack.cpp:182
-#: src/reports.cpp:823 src/reports.cpp:1077
+#: src/gui/dialogs/unit_attack.cpp:191 src/gui/dialogs/unit_attack.cpp:204
+#: src/reports.cpp:195
+msgid "Type: "
+msgstr "Tipus: "
+
+#: src/gui/dialogs/unit_attack.cpp:192 src/gui/dialogs/unit_attack.cpp:205
+#: src/reports.cpp:823 src/reports.cpp:1087
 msgid "Damage: "
 msgstr "Dany: "
 
-#: src/gui/dialogs/unit_attack.cpp:172 src/gui/dialogs/unit_attack.cpp:183
+#: src/gui/dialogs/unit_attack.cpp:193 src/gui/dialogs/unit_attack.cpp:206
 #: src/reports.cpp:844
 msgid "Attacks: "
 msgstr "Atacs: "
 
-#: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
+#: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Chance to hit: "
@@ -8141,7 +8153,11 @@ msgstr "temps restant del torn actual"
 msgid "current local time"
 msgstr "hora local actual"
 
-#: src/play_controller.cpp:1046
+#: src/play_controller.cpp:565
+msgid "Trying to create a corrupt file, please report this bug"
+msgstr ""
+
+#: src/play_controller.cpp:1050
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8149,17 +8165,17 @@ msgstr ""
 "La partida està dessincronitzada. Potser no té gaire sentit continuar. Voleu "
 "desar la partida?"
 
-#: src/play_controller.cpp:1047
+#: src/play_controller.cpp:1051
 msgid "Error details:"
 msgstr "Detalls de l'error:"
 
-#: src/play_controller.cpp:1226
+#: src/play_controller.cpp:1230
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1232
+#: src/play_controller.cpp:1236
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8168,7 +8184,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1239
+#: src/play_controller.cpp:1243
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8178,11 +8194,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1243
+#: src/play_controller.cpp:1247
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1352
+#: src/play_controller.cpp:1356
 msgid "No objectives available"
 msgstr "No hi ha cap objectiu disponible"
 
@@ -8308,10 +8324,6 @@ msgstr "Segur que voleu sortir?"
 msgid "Name: "
 msgstr "Nom: "
 
-#: src/reports.cpp:195
-msgid "Type: "
-msgstr "Tipus: "
-
 #: src/reports.cpp:198
 #, fuzzy
 #| msgid ""
@@ -8417,7 +8429,7 @@ msgstr ""
 msgid "Ability: "
 msgstr "Habilitat: "
 
-#: src/reports.cpp:442 src/reports.cpp:987
+#: src/reports.cpp:442 src/reports.cpp:997
 msgid " (inactive)"
 msgstr " (inactiu)"
 
@@ -8501,84 +8513,84 @@ msgstr "Especials: "
 msgid "Subject to swarm: "
 msgstr "Subjecte a eixam: "
 
-#: src/reports.cpp:893
+#: src/reports.cpp:900
 msgid "Weapon range: "
 msgstr "Rang de l'arma: "
 
-#: src/reports.cpp:894
+#: src/reports.cpp:901
 msgid "Damage type: "
 msgstr "Tipus de dany: "
 
-#: src/reports.cpp:895
+#: src/reports.cpp:902
 msgid "Damage versus: "
 msgstr "Dany contra: "
 
-#: src/reports.cpp:954
+#: src/reports.cpp:964
 msgid "Accuracy:"
 msgstr "Precisió:"
 
-#: src/reports.cpp:959
+#: src/reports.cpp:969
 msgid "Parry:"
 msgstr "Parada:"
 
-#: src/reports.cpp:985
+#: src/reports.cpp:995
 msgid "Weapon special: "
 msgstr "Arma especial: "
 
-#: src/reports.cpp:1060
+#: src/reports.cpp:1070
 msgid "weapon^None"
 msgstr "weapon^Cap"
 
-#: src/reports.cpp:1089
+#: src/reports.cpp:1099
 msgid "Total damage"
 msgstr "Dany total"
 
-#: src/reports.cpp:1153
+#: src/reports.cpp:1163
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Atac"
 msgstr[1] "Atacs"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1161
+#: src/reports.cpp:1171
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1165
+#: src/reports.cpp:1175
 #, fuzzy
 #| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
 msgstr "Aquesta partida desada no és de multijugador."
 
-#: src/reports.cpp:1257
+#: src/reports.cpp:1267
 msgid "Time of day schedule:"
 msgstr "Moments del dia:"
 
-#: src/reports.cpp:1306
+#: src/reports.cpp:1316
 msgid "Time of day:"
 msgstr "Moment del dia:"
 
-#: src/reports.cpp:1307 src/reports.cpp:1361
+#: src/reports.cpp:1317 src/reports.cpp:1371
 msgid "Lawful units: "
 msgstr "Unitats legals: "
 
-#: src/reports.cpp:1309 src/reports.cpp:1363
+#: src/reports.cpp:1319 src/reports.cpp:1373
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:1310 src/reports.cpp:1364
+#: src/reports.cpp:1320 src/reports.cpp:1374
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:1312 src/reports.cpp:1366
+#: src/reports.cpp:1322 src/reports.cpp:1376
 msgid "Liminal units: "
 msgstr "Unitats liminals: "
 
-#: src/reports.cpp:1425
+#: src/reports.cpp:1435
 msgid "Turn Number"
 msgstr "Número de torn"
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1437
 #, fuzzy
 #| msgid ""
 #| "When the game reaches the number of turns indicated by the second number, "
@@ -8590,34 +8602,34 @@ msgstr ""
 "Quan la partida arribi al nombre de torns indicat pel segon nombre, "
 "s'acabarà."
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid "Gold"
 msgstr "Or"
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "La quantitat d'or actualment disponible per a reclutar i mantenir el vostre "
 "exèrcit."
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "The fraction of known villages that your side has captured."
 msgstr "La fracció de llogarets coneguts que el vostre bàndol ha capturat."
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "Villages"
 msgstr "Llogarets"
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "The total number of units on your side."
 msgstr "El nombre total d'unitats del vostre bàndol."
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "Units"
 msgstr "Unitats"
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8631,15 +8643,15 @@ msgstr ""
 "total del manteniment, inclòs el cobert pels llogarets, és a dir, la "
 "quantitat d'or que es deduiria si perdéssiu tots els llogarets."
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid "Upkeep"
 msgstr "Manteniment"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid "Net Income"
 msgstr "Ingressos nets"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8647,23 +8659,23 @@ msgstr ""
 "La quantitat neta d'or que guanyeu o perdeu cada torn, tenint en compte els "
 "ingressos dels llogarets sota control i el pagament del manteniment."
 
-#: src/reports.cpp:1723
+#: src/reports.cpp:1733
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/reports.cpp:1743
+#: src/reports.cpp:1753
 msgid "Clock"
 msgstr "Rellotge"
 
-#: src/reports.cpp:1754
+#: src/reports.cpp:1764
 msgid "Battery"
 msgstr "Bateria"
 
-#: src/reports.cpp:1785
+#: src/reports.cpp:1795
 msgid "Countdown until your turn automatically ends."
 msgstr "Compte enrere fins que el torn s'acaba automàticament."
 
-#: src/reports.cpp:1785
+#: src/reports.cpp:1795
 msgid "Turn Countdown"
 msgstr "Comptador de torns"
 
@@ -9034,68 +9046,68 @@ msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:461
+#: src/units/attack_type.cpp:477
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> dany"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> dany"
 
-#: src/units/attack_type.cpp:470
+#: src/units/attack_type.cpp:486
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number dany"
 msgstr[1] "$number dany"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:479
+#: src/units/attack_type.cpp:495
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> cop"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> cops"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:488
+#: src/units/attack_type.cpp:504
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number cop"
 msgstr[1] "$number cops"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:497
+#: src/units/attack_type.cpp:513
 msgid "$number| accuracy"
 msgstr "$number| precisió"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:504
+#: src/units/attack_type.cpp:520
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> precisió"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:511
+#: src/units/attack_type.cpp:527
 msgid "$number parry"
 msgstr "$number parada"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:518
+#: src/units/attack_type.cpp:534
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> parada"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:525
+#: src/units/attack_type.cpp:541
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number punt de moviment"
 msgstr[1] "$number punts de moviment"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:534
+#: src/units/attack_type.cpp:550
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> punt de moviment"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> punts de moviment"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:543
+#: src/units/attack_type.cpp:559
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9105,7 +9117,7 @@ msgstr[0] "$number dany"
 msgstr[1] "$number dany"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:552
+#: src/units/attack_type.cpp:568
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 #| msgid_plural ""

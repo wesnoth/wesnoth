@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
-"PO-Revision-Date: 2023-10-09 16:05+0200\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"PO-Revision-Date: 2023-11-01 14:45+0100\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -467,10 +467,8 @@ msgstr "Pozostatky"
 
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
-#, fuzzy
-#| msgid "Window size:"
 msgid "Window"
-msgstr "Veľkosť okien:"
+msgstr "Okno"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -2278,7 +2276,7 @@ msgstr "Zastarané"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Stlačte '$hotkey' pre viac informácií)"
 
 #. [button]: id=search
@@ -4589,41 +4587,37 @@ msgstr "Pripravený začať"
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:190
 msgid "When the game you are hosting is ready to start"
-msgstr ""
+msgstr "Keď je hra ktorú hosťuješ pripravená na spustenie"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "Game has begun"
-msgstr ""
+msgstr "Hra sa začala"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "When the host (not you) has started the game"
-msgstr ""
+msgstr "Keď hostiteľ (nie vy) spustí hru"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn dialog"
 msgid "Turn changed"
-msgstr "Dialóg na začiatku kola"
+msgstr "Zmena ťahu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a new turn has begun"
-msgstr ""
+msgstr "Keď sa začal nový ťah"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created"
-msgstr "Údaje hry:"
+msgstr "Hra vytvorená"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 msgid "When a new game has been created"
-msgstr ""
+msgstr "Keď je vytvorená nová hra"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:228
@@ -5154,12 +5148,12 @@ msgstr "* povinné polia"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-msgid "Change the side's controller"
+msgid "Change the side’s controller"
 msgstr "Zmena ovládača strán"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-msgid "Change the AI side's behaviour"
+msgid "Change the AI side’s behaviour"
 msgstr "Zmena správania AI"
 
 #. [menu_button]: id=side_team
@@ -5750,7 +5744,7 @@ msgstr "Nájdi a nastav cestu k serveru na vytvorenie sieťových hier"
 #: data/gui/window/preferences/05_multiplayer.cfg:264
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "Pridať tohto používateľa do zoznamu priateľov (s voliteľnými poznámkami, "
 "napr. 'meno_hráča poznámky k priateľovi')"
@@ -5759,7 +5753,7 @@ msgstr ""
 #: data/gui/window/preferences/05_multiplayer.cfg:277
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "Pridať tohto používateľa do zoznamu ignorovaných (s voliteľným dôvodom, "
 "napr. 'meno_hráča dôvod na ignorovanie')"
@@ -6458,8 +6452,8 @@ msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
@@ -7758,7 +7752,7 @@ msgstr "Chýbajúci požadovaný stav pre ovládací prvok textového štítku"
 msgid "Missing required state for listbox"
 msgstr "Chýbajúci požadovaný stav pre listbox"
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musí mať rovnaký počet stĺpcov ako 'list_definition'."
@@ -7790,11 +7784,11 @@ msgstr "Chýba [main] v [matrix]"
 msgid "Missing required state for menu button"
 msgstr "Chýbajúci požadovaný stav pre tlačidlo ponuky"
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr "Chýbajúci požadovaný stav pre ovládanie minimapy"
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Nebola definovaná žiadna stránka."
 
@@ -7832,11 +7826,11 @@ msgstr "Chýba [item_definition] v [pane]"
 msgid "Need at least 1 parallel item."
 msgstr "Vyžaduje sa aspoň jeden súbežný predmet."
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr "Chýbajúce požadované pozadie pre definíciu panela"
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr "Chýbajúce požadované popredie pre definíciu panela"
 
@@ -7882,7 +7876,7 @@ msgstr "Nebol definovaný žiadny widget."
 #: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
 #: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
 msgid "Missing required state for slider"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre slider"
 
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
@@ -7892,28 +7886,28 @@ msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 msgid "No stack layers defined."
 msgstr "Nie sú definované žiadne vrstvy zásobníka."
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Našiel sa objekt s pomôckou bez tipu pod myšou."
 
 #: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
 #: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
 msgid "Missing required state for editable text box"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre upraviteľné textové pole"
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
 msgid "Missing required state for toggle button"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre prepínacie tlačidlo"
 
 #: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
 #: src/gui/widgets/toggle_panel.cpp:304
 msgid "Missing required state for toggle panel"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre prepínací panel"
 
 #: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
 msgid "Missing required state for tree view"
-msgstr ""
+msgstr "Chýbajúci požadovaný stav pre stromové zobrazenie"
 
 #: src/gui/widgets/tree_view.cpp:271
 msgid "No grid defined for tree view"
@@ -8014,11 +8008,11 @@ msgstr "Chýba [widget] v [viewport]"
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Prepojená '$id' skupina má viac definícií."
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:910
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Zrušenie kliknutia vyžaduje tlačidlo 'click_dismiss' alebo 'ok'."
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
 #: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""

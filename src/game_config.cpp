@@ -274,7 +274,12 @@ void load_config(const config &v)
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
 		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
-			return static_cast<int>(std::stold(zoom) * tile_size);
+			int z = std::stoi(zoom);
+			if((z / 4) * 4 != z) {
+				ERR_NG << "zoom level " << z << " is not divisible by 4."
+					<< " This will cause graphical glitches!";
+			}
+			return z;
 		});
 	}
 

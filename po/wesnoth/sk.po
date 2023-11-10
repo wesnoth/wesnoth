@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
-"PO-Revision-Date: 2023-10-04 17:56+0200\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"PO-Revision-Date: 2023-10-30 10:22+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -241,7 +241,7 @@ msgstr "otrávený"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "hromový trojzubec"
 
@@ -638,8 +638,13 @@ msgid "Vietnamese Translation"
 msgstr "Vietnamský preklad"
 
 #. [about]
+#: data/core/about_i18n.cfg:1868
+msgid "Welsh Translation"
+msgstr "Waleský preklad"
+
+#. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1876
+#: data/core/about_i18n.cfg:1877
 msgid "RACV’s Translation"
 msgstr "RACV preklad"
 
@@ -1108,7 +1113,7 @@ msgstr "Kamenná doštička"
 #. [item]: id=storm-trident2
 #. [object]
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:552
 msgid "Storm Trident"
 msgstr "Bleskový trojzubec"
 
@@ -1786,73 +1791,73 @@ msgstr ""
 "zranenia až do konca tejto scény."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:320
+#: data/core/macros/items.cfg:335
 msgid "Potion of Strength"
 msgstr "Nápoj sily"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:323
+#: data/core/macros/items.cfg:338
 msgid "Strength is given to the drinker."
 msgstr "Kto ho vypije, získa vyššiu silu."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:365
+#: data/core/macros/items.cfg:380
 msgid "Potion of Decay"
 msgstr "Nápoj rozkladu"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:383
 msgid "This poor unit drank something really bad."
 msgstr "Táto úbohá jednotka vypila niečo naozaj zlé."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:404
+#: data/core/macros/items.cfg:419
 msgid "Ring of Regeneration"
 msgstr "Prsteň regenerácie"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:407
+#: data/core/macros/items.cfg:422
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Tento prsteň v každom kole trochu uzdraví svojho majiteľa."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:445
+#: data/core/macros/items.cfg:460
 msgid "Ring of Slowness"
 msgstr "Prsteň spomalenia"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:448
+#: data/core/macros/items.cfg:463
 msgid "The bearer of this ring is slowed."
 msgstr "Majiteľ tohoto prsteňa je spomalený."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:499
 msgid "Staff of Swiftness"
 msgstr "Palica rýchlosti"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:487
+#: data/core/macros/items.cfg:502
 msgid "This staff will grant the bearer swift movement."
 msgstr "Táto palica obdarí svojho nositeľa rýchlym pohybom."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:488
+#: data/core/macros/items.cfg:503
 msgid "Only magical beings can wield such an object."
 msgstr "Tento predmet môžu držať iba magické bytosti."
 
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:547
 msgid "Should $unit.name pick up the trident?"
 msgstr "Má $unit.name zodvihnúť trojzubec?"
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:548
 msgid "storm trident^Take it"
 msgstr "Vziať ho"
 
-#: data/core/macros/items.cfg:534
+#: data/core/macros/items.cfg:549
 msgid "storm trident^Leave it"
 msgstr "Nechať ho"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:550
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
@@ -1861,7 +1866,7 @@ msgstr ""
 "morských ľudí, ktorí ho zvládnu."
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:555
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
@@ -1869,7 +1874,7 @@ msgstr ""
 "blesky."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:568
+#: data/core/macros/items.cfg:583
 msgid "sceptre of fire"
 msgstr "ohnivé žezlo"
 
@@ -4267,7 +4272,7 @@ msgstr "Naplánuj povýšenie jednotky"
 #: data/modifications.cfg:7
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
-"if it advances on another player's turn. With this modification you can set "
+"if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
@@ -6793,7 +6798,7 @@ msgstr "Neznáma scéna: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Žiadne výpravy nie sú dostupné."
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:711 src/game_launcher.cpp:730 src/replay.cpp:666
 msgid "The file you have tried to load is corrupt"
 msgstr "Súbor, ktorý ste chceli načítať, je poškodený"
 
@@ -6958,26 +6963,31 @@ msgstr "Ty"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
+#: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
 msgid "Other aspects: "
 msgstr "Iné aspekty:"
 
-#: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
-#: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
+#: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
+#: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
 msgid "Weapon: "
 msgstr "Zbraň: "
 
-#: src/gui/dialogs/unit_attack.cpp:171 src/gui/dialogs/unit_attack.cpp:182
-#: src/reports.cpp:823 src/reports.cpp:1077
+#: src/gui/dialogs/unit_attack.cpp:191 src/gui/dialogs/unit_attack.cpp:204
+#: src/reports.cpp:195
+msgid "Type: "
+msgstr "Typ: "
+
+#: src/gui/dialogs/unit_attack.cpp:192 src/gui/dialogs/unit_attack.cpp:205
+#: src/reports.cpp:823 src/reports.cpp:1087
 msgid "Damage: "
 msgstr "Zranenia: "
 
-#: src/gui/dialogs/unit_attack.cpp:172 src/gui/dialogs/unit_attack.cpp:183
+#: src/gui/dialogs/unit_attack.cpp:193 src/gui/dialogs/unit_attack.cpp:206
 #: src/reports.cpp:844
 msgid "Attacks: "
 msgstr "Útoky: "
 
-#: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
+#: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 msgid "Chance to hit: "
 msgstr "Šanca na trafenie: "
 
@@ -7940,24 +7950,28 @@ msgstr "čas zostávajúci na kolo"
 msgid "current local time"
 msgstr "aktuálny lokálny čas"
 
-#: src/play_controller.cpp:1046
+#: src/play_controller.cpp:565
+msgid "Trying to create a corrupt file, please report this bug"
+msgstr "Pokus o vytvorenie chybového súboru, nahlás prosím túto chybu"
+
+#: src/play_controller.cpp:1050
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 "Hra nie je synchronizovaná. Nemá veľmi zmysel pokračovať. Chceš hru uložiť?"
 
-#: src/play_controller.cpp:1047
+#: src/play_controller.cpp:1051
 msgid "Error details:"
 msgstr "Detaily chyby:"
 
-#: src/play_controller.cpp:1226
+#: src/play_controller.cpp:1230
 msgid "Warning: broken campaign branches"
 msgstr "Varovanie: poškodené vetvy kampane"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1232
+#: src/play_controller.cpp:1236
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7967,7 +7981,7 @@ msgstr[0] "Ďalšia mapa kampane chýba, nemôžeš plne dokončiť kampaň."
 msgstr[1] "Ďalšia mapa kampane chýba, nemôžeš plne dokončiť kampaň."
 msgstr[2] "Niektoré mapy kampane chýbajú, nemôžeš plne dokončiť kampaň."
 
-#: src/play_controller.cpp:1239
+#: src/play_controller.cpp:1243
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7984,11 +7998,11 @@ msgstr[2] ""
 "Prosím, nahlás chýbajúce mapy autorovi kampane:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1243
+#: src/play_controller.cpp:1247
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Keď to bude opravené, môžeš reštartovať túto mapu."
 
-#: src/play_controller.cpp:1352
+#: src/play_controller.cpp:1356
 msgid "No objectives available"
 msgstr "Cieľ nie je stanovený"
 
@@ -8109,10 +8123,6 @@ msgstr "Chceš naozaj skončiť?"
 msgid "Name: "
 msgstr "Názov: "
 
-#: src/reports.cpp:195
-msgid "Type: "
-msgstr "Typ: "
-
 #: src/reports.cpp:198
 msgid "Special Notes:"
 msgstr "Poznámky:"
@@ -8201,7 +8211,7 @@ msgstr "Táto jednotka je nezničiteľná. Iné jednotky ju nemôžu napadnúť.
 msgid "Ability: "
 msgstr "Schopnosť: "
 
-#: src/reports.cpp:442 src/reports.cpp:987
+#: src/reports.cpp:442 src/reports.cpp:997
 msgid " (inactive)"
 msgstr " (neaktívna)"
 
@@ -8285,39 +8295,39 @@ msgstr "Špeciálne: "
 msgid "Subject to swarm: "
 msgstr "Ovplyvnené húfom: "
 
-#: src/reports.cpp:893
+#: src/reports.cpp:900
 msgid "Weapon range: "
 msgstr "Dosah zbrane: "
 
-#: src/reports.cpp:894
+#: src/reports.cpp:901
 msgid "Damage type: "
 msgstr "Typ zranenia: "
 
-#: src/reports.cpp:895
+#: src/reports.cpp:902
 msgid "Damage versus: "
 msgstr "Zranenie voči: "
 
-#: src/reports.cpp:954
+#: src/reports.cpp:964
 msgid "Accuracy:"
 msgstr "Presnosť:"
 
-#: src/reports.cpp:959
+#: src/reports.cpp:969
 msgid "Parry:"
 msgstr "Odvrátenie:"
 
-#: src/reports.cpp:985
+#: src/reports.cpp:995
 msgid "Weapon special: "
 msgstr "Špeciálna zbraň: "
 
-#: src/reports.cpp:1060
+#: src/reports.cpp:1070
 msgid "weapon^None"
 msgstr "Žiadna"
 
-#: src/reports.cpp:1089
+#: src/reports.cpp:1099
 msgid "Total damage"
 msgstr "Celkové zranenie"
 
-#: src/reports.cpp:1153
+#: src/reports.cpp:1163
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Útokov"
@@ -8325,74 +8335,74 @@ msgstr[1] "Útok"
 msgstr[2] "Útoky"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1161
+#: src/reports.cpp:1171
 msgid "Remaining: $left/$max"
 msgstr "Zostávajúce: $left/$max"
 
-#: src/reports.cpp:1165
+#: src/reports.cpp:1175
 msgid "This unit can attack multiple times per turn."
 msgstr "Táto jednotka môže zaútočiť na viac cieľov každé kolo."
 
-#: src/reports.cpp:1257
+#: src/reports.cpp:1267
 msgid "Time of day schedule:"
 msgstr "Denná doba: "
 
-#: src/reports.cpp:1306
+#: src/reports.cpp:1316
 msgid "Time of day:"
 msgstr "Denná doba: "
 
-#: src/reports.cpp:1307 src/reports.cpp:1361
+#: src/reports.cpp:1317 src/reports.cpp:1371
 msgid "Lawful units: "
 msgstr "Jednotky poriadku: "
 
-#: src/reports.cpp:1309 src/reports.cpp:1363
+#: src/reports.cpp:1319 src/reports.cpp:1373
 msgid "Neutral units: "
 msgstr "Neutrálne jednotky: "
 
-#: src/reports.cpp:1310 src/reports.cpp:1364
+#: src/reports.cpp:1320 src/reports.cpp:1374
 msgid "Chaotic units: "
 msgstr "Jednotky chaosu: "
 
-#: src/reports.cpp:1312 src/reports.cpp:1366
+#: src/reports.cpp:1322 src/reports.cpp:1376
 msgid "Liminal units: "
 msgstr "Jenotky 'na rozhraní': "
 
-#: src/reports.cpp:1425
+#: src/reports.cpp:1435
 msgid "Turn Number"
 msgstr "Číslo kola"
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1437
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "Hra skončí, ak dosiahne počet kôl určený druhým číslom."
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "Množstvo zlata dostupné na verbovanie a udržiavanie tvojej armády."
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "The fraction of known villages that your side has captured."
 msgstr "Podiel známych dedín, ktoré obsadila tvoja strana."
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "Villages"
 msgstr "Dediny"
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "The total number of units on your side."
 msgstr "Celkový počet jednotiek na tvojej strane."
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "Units"
 msgstr "Jednotky"
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8406,15 +8416,15 @@ msgstr ""
 "krytých dedinami – inými slovami, množstvo zlata, ktoré by sa odrátalo, ak "
 "by ste stratili všetky dediny."
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid "Upkeep"
 msgstr "Žold"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid "Net Income"
 msgstr "Príjem"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8422,23 +8432,23 @@ msgstr ""
 "Čistá suma zlata, ktorú získate alebo stratíte v každom kole, berúc do úvahy "
 "príjem z kontrolovaných dedín a platbu údržby."
 
-#: src/reports.cpp:1723
+#: src/reports.cpp:1733
 msgid "Observers:"
 msgstr "Diváci:"
 
-#: src/reports.cpp:1743
+#: src/reports.cpp:1753
 msgid "Clock"
 msgstr "Hodiny"
 
-#: src/reports.cpp:1754
+#: src/reports.cpp:1764
 msgid "Battery"
 msgstr "Batéria"
 
-#: src/reports.cpp:1785
+#: src/reports.cpp:1795
 msgid "Countdown until your turn automatically ends."
 msgstr "Odpočítavanie kým tvoj ťah automaticky skončí."
 
-#: src/reports.cpp:1785
+#: src/reports.cpp:1795
 msgid "Turn Countdown"
 msgstr "Odpočítavanie kola"
 
@@ -8815,14 +8825,14 @@ msgid "Used by opponent: "
 msgstr "Používané súperom:"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:461
+#: src/units/attack_type.cpp:477
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> zranení"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> zranenie"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> zranenia"
 
-#: src/units/attack_type.cpp:470
+#: src/units/attack_type.cpp:486
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number zranení"
@@ -8830,7 +8840,7 @@ msgstr[1] "$number zranenie"
 msgstr[2] "$number zranenia"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:479
+#: src/units/attack_type.cpp:495
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> útokov"
@@ -8838,7 +8848,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> útok"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoky"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:488
+#: src/units/attack_type.cpp:504
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number úderov"
@@ -8846,27 +8856,27 @@ msgstr[1] "$number úder"
 msgstr[2] "$number údery"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:497
+#: src/units/attack_type.cpp:513
 msgid "$number| accuracy"
 msgstr "$number| presnosť"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:504
+#: src/units/attack_type.cpp:520
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> presnosť"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:511
+#: src/units/attack_type.cpp:527
 msgid "$number parry"
 msgstr "$number odvrátenie"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:518
+#: src/units/attack_type.cpp:534
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> odvrátenie"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:525
+#: src/units/attack_type.cpp:541
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number bodov pohybu"
@@ -8874,7 +8884,7 @@ msgstr[1] "$number bod pohybu"
 msgstr[2] "$number body pohybu"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:534
+#: src/units/attack_type.cpp:550
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> krokov"
@@ -8882,7 +8892,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> krok"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> krokov"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:543
+#: src/units/attack_type.cpp:559
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number použitých útokov"
@@ -8890,7 +8900,7 @@ msgstr[1] "$number použitý útok"
 msgstr[2] "$number použitých útokov"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:552
+#: src/units/attack_type.cpp:568
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> útokov za kolo"

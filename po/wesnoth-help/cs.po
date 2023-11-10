@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-16 23:13-0500\n"
+"POT-Creation-Date: 2023-10-28 09:02-0500\n"
 "PO-Revision-Date: 2023-10-13 18:42+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -200,15 +200,15 @@ msgstr ""
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
-#: data/campaigns/World_Conquest/resources/data/training.cfg:782
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "teleportace"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -4748,10 +4748,16 @@ msgstr "Obecné příkazy"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
+#, fuzzy
+#| msgid ""
+#| "These commands can either be issued via the command line by prefixing "
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
+#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
+"with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
+"‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
 "Tyto příkazy mohou být použity buď přes příkazovou řádku tím, že před ně dáš "
@@ -4761,9 +4767,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Similar to the 'fps' command, but also forces everything to redraw "
+#| "instead of only things that have changed.\n"
+#| "\n"
 msgid ""
 "\n"
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
@@ -5292,9 +5304,14 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
+#, fuzzy
+#| msgid ""
+#| "If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit diverts the target's attention and reduces "
+#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
+"attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
 "Pokud právě nějaký spojenec zaměstnává nepřátelskou jednotku, může tato "
@@ -6519,8 +6536,12 @@ msgstr "odražení"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "When used defensively, this attack reduces the opponent's chance to hit "
+#| "by 10%."
 msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
+"When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
 "Pokud je tento útok použit defenzivně, snižuje o 10 % šanci protivníka na "
@@ -6654,6 +6675,25 @@ msgid ""
 msgstr ""
 "Tato jednotka dokáže omráčit své nepřátele, čímž naruší jejich oblast "
 "kontroly."
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
 
 #: data/core/units.cfg:4
 msgid ""
@@ -7135,22 +7175,22 @@ msgstr ""
 "a nepřítelem, a tak je činí užitečným přínosem na pomoc při vojenském útoku."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Goblinka"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:152
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Goblini"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:151
 msgid ""
 "\n"
 "\n"
@@ -7180,22 +7220,22 @@ msgstr ""
 "mimořádných schopností."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Gryf"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Gryfka"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:172
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Gryfové"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -7216,22 +7256,22 @@ msgstr ""
 "jejich původ."
 
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:181
 msgid "race^Horse"
 msgstr "Hřebec"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:182
 msgid "race+female^Horse"
 msgstr "Klisna"
 
 #. [race]: id=horse
-#: data/core/units.cfg:185
+#: data/core/units.cfg:183
 msgid "race^Horses"
 msgstr "Koně"
 
 #. [race]: id=horse
-#: data/core/units.cfg:186
+#: data/core/units.cfg:184
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7254,23 +7294,23 @@ msgstr ""
 "může se ctí prohlásit, že něco takového viděl."
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:201
 msgid "race^Human"
 msgstr "Muž"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:202
 msgid "race+female^Human"
 msgstr "Žena"
 
 #. [race]: id=human
-#: data/core/units.cfg:205
+#: data/core/units.cfg:203
 msgid "race^Humans"
 msgstr "Lidé"
 
 # Poslední věta sice není přesná, ale je to snad jediný možný hezký a smysluplný překlad
 #. [race]: id=human
-#: data/core/units.cfg:206
+#: data/core/units.cfg:204
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7348,22 +7388,22 @@ msgstr ""
 "složky vojska doplňovat ve svých výhodách a vyvažovat své nevýhody."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:219
 msgid "race^Dunefolk Human"
 msgstr "Pouštní člověk"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:222
+#: data/core/units.cfg:220
 msgid "race+female^Dunefolk Human"
 msgstr "Pouštní žena"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:221
 msgid "race+plural^Dunefolk"
 msgstr "Pouštní lid"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:225
+#: data/core/units.cfg:223
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7475,23 +7515,23 @@ msgstr ""
 "která se odehrávala v exotických vzdálených koutech Irdye."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:244
 msgid "race^Saurian"
 msgstr "Ještěrák"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:245
 msgid "race+female^Saurian"
 msgstr "Ještěráčice"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:248
+#: data/core/units.cfg:246
 msgid "race^Saurians"
 msgstr "Ještěráci"
 
 # Nechápu, jak je přesně myšlena ta mezipohlavní dominance. Jestli to neznamená spíš, že se to projevuje v rámci daného pohlaví.
 #. [race]: id=lizard
-#: data/core/units.cfg:249
+#: data/core/units.cfg:247
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7625,17 +7665,17 @@ msgstr ""
 "obojímu pravidelně dochází."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:273
 msgid "race^Mechanical"
 msgstr "Stroj"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:276
+#: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
 msgstr "Stroje"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:277
+#: data/core/units.cfg:275
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7648,22 +7688,22 @@ msgstr ""
 "překonat magie na ně vložená."
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:284
 msgid "race^Merman"
 msgstr "Mořský člověk"
 
 #. [race]: id=merman
-#: data/core/units.cfg:287
+#: data/core/units.cfg:285
 msgid "race^Mermaid"
 msgstr "Mořská panna"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:286
 msgid "race^Merfolk"
 msgstr "Mořský lid"
 
 #. [race]: id=merman
-#: data/core/units.cfg:290
+#: data/core/units.cfg:288
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7686,23 +7726,23 @@ msgstr ""
 "pohyb lesnatou krajinou jim činí nemalé obtíže."
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:296
 msgid "race^Monster"
 msgstr "Monstrum"
 
 # msgid "race^Monster"
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:297
 msgid "race+female^Monster"
 msgstr "Monstrum"
 
 #. [race]: id=monster
-#: data/core/units.cfg:300
+#: data/core/units.cfg:298
 msgid "race^Monsters"
 msgstr "Monstra"
 
 #. [race]: id=monster
-#: data/core/units.cfg:301
+#: data/core/units.cfg:299
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7713,22 +7753,22 @@ msgstr ""
 "vystupují pouze v příbězích a snech obyvatel Wesnothu."
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:306
 msgid "race^Naga"
 msgstr "Nága"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:307
 msgid "race^Nagini"
 msgstr "Nága"
 
 #. [race]: id=naga
-#: data/core/units.cfg:310
+#: data/core/units.cfg:308
 msgid "race^Nagas"
 msgstr "Nágy"
 
 #. [race]: id=naga
-#: data/core/units.cfg:311
+#: data/core/units.cfg:309
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7759,22 +7799,22 @@ msgstr ""
 "a řekám než otevřeným vodním plochám."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:317
 msgid "race^Ogre"
 msgstr "Obr"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:318
 msgid "race+female^Ogre"
 msgstr "Obryně"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:321
+#: data/core/units.cfg:319
 msgid "race^Ogres"
 msgstr "Obři"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:322
+#: data/core/units.cfg:320
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7806,22 +7846,22 @@ msgstr ""
 "okolnostem se neví."
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:328
 msgid "race^Orc"
 msgstr "Skřet"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:329
 msgid "race+female^Orc"
 msgstr "Skřetice"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:330
 msgid "race^Orcs"
 msgstr "Skřeti"
 
 #. [race]: id=orc
-#: data/core/units.cfg:333
+#: data/core/units.cfg:331
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7924,7 +7964,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:344
+#: data/core/units.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -7937,28 +7977,28 @@ msgstr ""
 "další dovednosti, jako je lukostřelba nebo vražda."
 
 #. [race]: id=raven
-#: data/core/units.cfg:353
+#: data/core/units.cfg:351
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
 msgstr "Trpaslíci"
 
 #. [race]: id=raven
-#: data/core/units.cfg:354
+#: data/core/units.cfg:352
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
 msgstr "Drakonidka"
 
 #. [race]: id=raven
-#: data/core/units.cfg:355
+#: data/core/units.cfg:353
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "Trpaslíci"
 
 #. [race]: id=raven
-#: data/core/units.cfg:356
+#: data/core/units.cfg:354
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -7978,22 +8018,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:369
+#: data/core/units.cfg:365
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:370
+#: data/core/units.cfg:366
 msgid "race+female^Troll"
 msgstr "Trollice"
 
 #. [race]: id=troll
-#: data/core/units.cfg:371
+#: data/core/units.cfg:367
 msgid "race^Trolls"
 msgstr "Trollové"
 
 #. [race]: id=troll
-#: data/core/units.cfg:372
+#: data/core/units.cfg:368
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8064,22 +8104,22 @@ msgstr ""
 "a východ od Wesnothu a také všude, kde se potulují skřetí hordy."
 
 #. [race]: id=undead
-#: data/core/units.cfg:392
+#: data/core/units.cfg:388
 msgid "race^Undead"
 msgstr "Nemrtvý"
 
 #. [race]: id=undead
-#: data/core/units.cfg:393
+#: data/core/units.cfg:389
 msgid "race+female^Undead"
 msgstr "Nemrtvá"
 
 #. [race]: id=undead
-#: data/core/units.cfg:394
+#: data/core/units.cfg:390
 msgid "race+plural^Undead"
 msgstr "Nemrtví"
 
 #. [race]: id=undead
-#: data/core/units.cfg:395
+#: data/core/units.cfg:391
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8147,22 +8187,22 @@ msgstr ""
 "s příchodem Haldrika I., nebyli už předtím elfům a trpaslíkům neznámí."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:408
+#: data/core/units.cfg:404
 msgid "race^Wolf"
 msgstr "Vlk"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:409
+#: data/core/units.cfg:405
 msgid "race+female^Wolf"
 msgstr "Vlčice"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:410
+#: data/core/units.cfg:406
 msgid "race^Wolves"
 msgstr "Vlci"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:411
+#: data/core/units.cfg:407
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8180,17 +8220,17 @@ msgstr ""
 "dobytek."
 
 #. [race]: id=wose
-#: data/core/units.cfg:420
+#: data/core/units.cfg:416
 msgid "race^Wose"
 msgstr "Stromový muž"
 
 #. [race]: id=wose
-#: data/core/units.cfg:421
+#: data/core/units.cfg:417
 msgid "race^Woses"
 msgstr "Stromový lid"
 
 #. [race]: id=wose
-#: data/core/units.cfg:422
+#: data/core/units.cfg:418
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

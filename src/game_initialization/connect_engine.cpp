@@ -1075,7 +1075,7 @@ config side_engine::new_config() const
 			(*leader)["type"] = flg_.current_leader();
 			(*leader)["gender"] = flg_.current_gender();
 			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"];
-		} else {
+		} else if(!controller_lock_) {
 			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
 			(*leader)["type"] = "null";
 			(*leader)["gender"] = "null";

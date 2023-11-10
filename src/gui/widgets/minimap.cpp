@@ -93,11 +93,12 @@ void minimap::set_map_data(const std::string& map_data)
 	}
 }
 
-void minimap::impl_draw_background()
+bool minimap::impl_draw_background()
 {
 	if(map_) {
 		image::render_minimap(get_width(), get_height(), *map_, nullptr, nullptr, nullptr, true);
 	}
+	return true;
 }
 
 // }---------- DEFINITION ---------{

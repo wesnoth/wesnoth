@@ -915,7 +915,12 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 
 	if(filesystem::ends_with(filename, ".cfg")) {
 		if(editor_controller::current_addon_id_ == "") {
-			editor_controller::current_addon_id_ = editor::initialize_addon();
+			// if no addon id has been set and the file being loaded is from an addon
+			// then use the file path to determine the addon rather than showing a dialog
+			editor_controller::current_addon_id_ = filesystem::get_addon_id_from_path(filename);
+			if(editor_controller::current_addon_id_ == "") {
+				editor_controller::current_addon_id_ = editor::initialize_addon();
+			}
 			set_addon_id(editor_controller::current_addon_id_);
 		}
 
