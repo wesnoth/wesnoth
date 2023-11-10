@@ -1934,7 +1934,7 @@ Cx1UA5QcErhBg8H6IuzADyegADBM3ETzhQRlwJDkkpEm/MMHJATDDDbjPDSONs4cQwUCaqhRRhlh
 hHHFFVJEwQQTG6wASzHLsPyRONgwY8wWCjUNgAxDF90yUOJwI40yxfyySy2udO2KLr0Mo4w03EwN
 VEPjiOPN2tys7Y04Zj8UEAA7''')
     }
-    ROOT_W, ROOT_H = 800, 480
+    ROOT_W, ROOT_H = 1024, 600
     # the following string may be confusing, so here there's an explanation
     # Python supports two ways to perform string interpolation
     # the first one is the C-like style
