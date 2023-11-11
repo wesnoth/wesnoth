@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-28 09:02-0500\n"
-"PO-Revision-Date: 2023-10-13 18:42+0200\n"
+"PO-Revision-Date: 2023-11-04 10:48+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4748,12 +4748,6 @@ msgstr "Obecné příkazy"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
-#, fuzzy
-#| msgid ""
-#| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with "
-#| "'/' (press 'm' first to open the chat line).\n"
-#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
@@ -4767,12 +4761,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Similar to the 'fps' command, but also forces everything to redraw "
-#| "instead of only things that have changed.\n"
-#| "\n"
 msgid ""
 "\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
@@ -5304,11 +5292,6 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| "If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit diverts the target's attention and reduces "
-#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
@@ -6189,11 +6172,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rychlost je velmi nápadnou vlastností, zejména u pomaleji se pohybujících "
-"jednotek jako trollové nebo těžká pěchota. Jednotky s touto vlastností mají "
-"často mnohem vyšší mobilitu v těžkém terénu, která může být důležitá při "
-"rozmísťování Vašich sil. Rychlé jednotky nejsou tak silné jako jednotky bez "
-"této vlastnosti a jsou také slabší při udržování bojových pozic."
+"Rychlost je velmi nápadnou vlastností, zejména u pomaleji se pohybujících "
+"jednotek jako trollové nebo těžká pěchota. Jednotky s touto vlastností mají "
+"často mnohem vyšší mobilitu v těžkém terénu, která může být důležitá při "
+"rozmísťování tvých sil. Rychlé jednotky nejsou tak silné jako jednotky bez "
+"této vlastnosti a jsou také slabší při udržování bojových pozic."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
@@ -6536,10 +6519,6 @@ msgstr "odražení"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used defensively, this attack reduces the opponent's chance to hit "
-#| "by 10%."
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -7978,24 +7957,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Trpaslíci"
+msgstr "Krkavec"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "Drakonidka"
+msgstr "Krkavčice"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Trpaslíci"
+msgstr "Krkavci"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
