@@ -17,9 +17,10 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "filesystem.hpp"
 #include "font/text_formatting.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -337,6 +338,27 @@ void campaign_selection::pre_show(window& window)
 
 		pages.add_page(data);
 		page_ids_.push_back(campaign["id"]);
+	}
+
+	std::vector<std::string> dirs;
+	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
+	if(dirs.size() <= 1) {
+		config missing;
+		missing["icon"] = "units/unknown-unit.png";
+		missing["name"] = _("Missing Campaigns");
+		missing["completed"] = false;
+		missing["id"] = "missing-campaign";
+
+		add_campaign_to_tree(missing);
+
+		widget_data data;
+		widget_item item;
+
+		item["label"] = _("Most mainline campaigns are missing. If you’re on Linux, then this most likely means the incorrect package was installed. To get the rest of the campaigns you will need to either: correctly install the wesnoth metapackage, install each campaign’s package one by one, or install Wesnoth via Steam or Flatpak.");
+		data.emplace("description", item);
+
+		pages.add_page(data);
+		page_ids_.push_back("missing-campaign");
 	}
 
 	//
