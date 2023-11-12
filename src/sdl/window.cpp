@@ -40,6 +40,13 @@ window::window(const std::string& title,
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
+#ifdef _WIN32
+	// SDL usually selects DirectX renderer on Windows systems. However, returning from the Windows lock screen causes issues with rendering with DirectX.
+	// While it would be best to resolve this by handling the SDL_RENDER_TARGETS_RESET event, a straightforward work-around is to just switch to OpenGL rendering.
+	// See https://github.com/wesnoth/wesnoth/issues/8038 for details.
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+#endif
+
 	if(sdl::runtime_at_least(2,0,10)) {
 		// Rendering in batches (for efficiency) is enabled by default from SDL 2.0.10
 		// The way Wesnoth uses SDL as of September 2019 does not work well with this rendering mode (eg story-only scenarios)
