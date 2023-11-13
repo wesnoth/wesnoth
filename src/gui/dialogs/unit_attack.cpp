@@ -134,7 +134,7 @@ void unit_attack::pre_show(window& window)
 			defw_type_second = ", " + string_table["type_" + defw_type_second];
 		}
 
-		const std::set<std::string> checking_tags_other = {"disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+		const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 		std::string attw_specials = attacker_weapon.weapon_specials();
 		std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
 		std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});

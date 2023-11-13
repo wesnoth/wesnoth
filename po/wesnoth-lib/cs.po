@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-28 09:02-0500\n"
-"PO-Revision-Date: 2023-10-10 20:45+0200\n"
+"PO-Revision-Date: 2023-11-04 10:44+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -467,10 +467,8 @@ msgstr "Zbytky"
 
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
-#, fuzzy
-#| msgid "Window size:"
 msgid "Window"
-msgstr "Velikost okna:"
+msgstr "Okno"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -2290,10 +2288,8 @@ msgstr "Zastaralý"
 
 #. [settings]
 #: data/gui/default.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
-msgstr " (Pro více informací stiskněte '$hotkey')"
+msgstr " (Pro více informací stiskni „$hotkey“)"
 
 #. [button]: id=search
 #: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:446
@@ -5170,15 +5166,11 @@ msgstr "* povinná pole"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "Změnit, kdo ovládá tuto stranu"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
 msgstr "Změnit chování strany s UI"
 
@@ -5773,29 +5765,21 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Přidat toto uživatelské jméno na tvůj seznam přátel (doplnit nepovinné "
-"poznámky, např. 'jméno_hráče poznámky o příteli')"
+"Přidat toto uživatelské jméno na svůj seznam přátel (doplnit nepovinné "
+"poznámky, např. „jméno_hráče poznámky o příteli“)"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
 "Přidat toto uživatelské jméno na tvůj seznam ignorovaných (doplnit nepovinný "
-"důvod, např. 'jméno_hráče důvod ignorování')"
+"důvod, např. „jméno_hráče důvod ignorování“)"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290

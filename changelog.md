@@ -8,13 +8,14 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, French, Italian, Polish, Slovak, Welsh
+   * Updated translations: British English, Czech, French, Italian, Polish, Slovak, Welsh
  ### Units
    * Drakes:
      * Saurian Seer - modify the unit to fix reductions in power level between level 2 and level 3.
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Added basic support for the `ttkthemes` Python library to GUI.pyw on Linux
 
 ## Version 1.17.22
  ### Campaigns

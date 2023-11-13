@@ -1803,7 +1803,7 @@ public:
 
 private:
 
-	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability

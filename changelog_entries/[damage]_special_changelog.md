@@ -1,2 +1,2 @@
  ### WML Engine
-   * Add a 'replacement_type' and 'alternative_type' attribute to [damage] to change the type of attack under specific conditions (terrain, time of day, leadership etc...)
+   * Add a [damage_type]'replacement_type' and 'alternative_type' attribute weapon special to change the type of attack under specific conditions (terrain, time of day, leadership etc...)

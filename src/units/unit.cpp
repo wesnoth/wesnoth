@@ -1460,6 +1460,17 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 		return false;
 
+	//for damage only
+	if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
+		return false;
+
+	//for plague only
+	if(!string_matches_if_present(filter, cfg, "type", ""))
+		return false;
+
 	if(!filter["value"].empty()){
 		bool has_other_key = (!cfg["add"].empty() || !cfg["sub"].empty() || !cfg["multiply"].empty() || !cfg["divide"].empty());
 		if(!has_other_key){

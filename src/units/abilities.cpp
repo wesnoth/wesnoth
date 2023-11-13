@@ -1197,7 +1197,7 @@ static std::vector<std::string> damage_type_list(const unit_ability_list& abil_l
  */
 std::pair<std::string, std::string> attack_type::damage_type() const
 {
-	unit_ability_list abil_list = get_specials_and_abilities("damage");
+	unit_ability_list abil_list = get_specials_and_abilities("damage_type");
 	if(abil_list.empty()){
 		return {type(), ""};
 	}
@@ -1207,6 +1207,9 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 	std::string type_damage, sec_type_damage;
 	type_damage = !type_list.empty() ? type_list.front() : type();
 	sec_type_damage = !added_type_list.empty() ? added_type_list.front() : "";
+	if(!sec_type_damage.empty()){
+		sec_type_damage =  type_damage != sec_type_damage ? sec_type_damage: "";
+	}
 	return {type_damage, sec_type_damage};
 }
 
@@ -1273,11 +1276,12 @@ namespace { // Helpers for attack_type::special_active()
 	 * (normally a [filter_*] child) of the provided filter.
 	 * @param[in]  u           A unit to filter.
 	 * @param[in]  u2          Another unit to filter.
-	 * @param[in]  loc         The presumed location of @a un_it.
+	 * @param[in]  loc         The presumed location of @a unit.
 	 * @param[in]  weapon      The attack_type to filter.
 	 * @param[in]  filter      The filter containing the child filter to use.
 	 * @param[in]  for_listing
 	 * @param[in]  child_tag   The tag of the child filter to use.
+	 * @param[in]  tag_name    Parameter used for don't have infinite recusion for some filter attribute.
 	 */
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
@@ -1285,7 +1289,7 @@ namespace { // Helpers for attack_type::special_active()
 		                             const_attack_ptr weapon,
 		                             const config & filter,
 									 const bool for_listing,
-		                             const std::string & child_tag)
+		                             const std::string & child_tag, const std::string& tag_name)
 	{
 		if (for_listing && !loc.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
@@ -1312,7 +1316,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
 				return false;
 		}
 
@@ -1810,13 +1814,20 @@ bool attack_type::special_active_impl(
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
 	// Filter the units involved.
-	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
+	//If filter concerns the unit on which special is applied,
+	//then the type of special must be entered to avoid calling
+	//the function of this special in matches_filter()
+	std::string self_tag_name = whom_is_self ? tag_name : "";
+	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
 		return false;
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent"))
+	std::string opp_tag_name = !whom_is_self ? tag_name : "";
+	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
 		return false;
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker"))
+	std::string att_tag_name = is_attacker ? tag_name : "";
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
 		return false;
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
+	std::string def_tag_name = !is_attacker ? tag_name : "";
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
 		return false;
 
 	const auto adjacent = get_adjacent_tiles(self_loc);
