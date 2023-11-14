@@ -1421,6 +1421,27 @@ void unit::remove_ability_by_id(const std::string& ability)
 	}
 }
 
+ /**
+ * Returns true if any of "add", "sub", "multiply" or "divide" are present and have a value
+ * other than their respective no-op value.
+ */
+static bool has_value_changing_modifier(const config& cfg)
+{
+	if(cfg.has_attribute("add") && cfg["add"].to_int(0) != 0){
+		return true;
+	}
+	if(cfg.has_attribute("sub") && cfg["sub"].to_int(0) != 0){
+		return true;
+	}
+	if(cfg.has_attribute("multiply") && cfg["multiply"].to_double(1) != 1){
+		return true;
+	}
+	if(cfg.has_attribute("divide") && cfg["divide"].to_double(1) != 1){
+		return true;
+	}
+	return false;
+}
+
 static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 {
 	using namespace utils::config_filters;
@@ -1472,8 +1493,7 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 		return false;
 
 	if(!filter["value"].empty()){
-		bool has_other_key = (!cfg["add"].empty() || !cfg["sub"].empty() || !cfg["multiply"].empty() || !cfg["divide"].empty());
-		if(!has_other_key){
+		if(!has_value_changing_modifier(cfg)){
 			if(tag_name == "drains"){
 				if(!int_matches_if_present(filter, cfg, "value", 50)){
 					return false;
