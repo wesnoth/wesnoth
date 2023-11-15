@@ -833,7 +833,16 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		if(res) {
 			resources::recorder->add_label(res);
 		}
+		else
+		{
+			resources::recorder->clear_label(loc.x, loc.y);
+		}
 	}
+}
+
+void menu_handler::clear_label()
+{
+
 }
 
 void menu_handler::clear_labels()

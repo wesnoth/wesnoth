@@ -281,6 +281,17 @@ void replay::add_label(const terrain_label* label)
 	cmd.add_child("label",val);
 }
 
+void replay::clear_label(int x, int y)
+{
+	config& cmd = add_nonundoable_command();
+	config val;
+
+	val["x"] = x;
+	val["y"] = y;
+
+	cmd.add_child("clear_label", std::move(val));
+}
+
 void replay::clear_labels(const std::string& team_name, bool force)
 {
 	config& cmd = add_nonundoable_command();
@@ -763,6 +774,16 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						label.creator(),
 						label.team_name(),
 						label.color());
+		} 
+		else if(auto clear_label = cfg->optional_child("clear_label")) 
+		{
+			
+			int x = stoi(std::string(clear_label["x"]));
+			int y = stoi(std::string(clear_label["y"]));
+			map_location loc(x, y);
+			const terrain_label* label = display::get_singleton()->labels().get_label(loc);
+			display::get_singleton()->labels().clear_label(label);
+
 		}
 		else if (auto clear_labels = cfg->optional_child("clear_labels"))
 		{

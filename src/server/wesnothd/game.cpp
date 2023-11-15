@@ -942,7 +942,8 @@ bool game::is_legal_command(const simple_wml::node& command, player_iterator use
 	}
 
 	if((is_player || is_host) && (
-		command.child("label") ||
+		command.child("label") || 
+		command.child("clear_label") ||
 		command.child("clear_labels") ||
 		command.child("rename") ||
 		command.child("countdown_update")

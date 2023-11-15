@@ -223,6 +223,21 @@ void map_labels::clear(const std::string& team_name, bool force)
 	categories_dirty = true;
 }
 
+void map_labels::clear_label(const terrain_label* label)
+{
+	if (label == nullptr)
+	{
+		return;
+	}
+	team_label_map::iterator i = labels_.find(label->team_name());
+
+	label_map& p = i->second;
+
+	p.erase(label->location());
+
+
+}
+
 void map_labels::clear_map(label_map& m, bool force)
 {
 	label_map::iterator i = m.begin();

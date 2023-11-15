@@ -72,6 +72,7 @@ public:
 	*/
 	void user_input(const std::string &name, const config &input, int from_side);
 	void add_label(const terrain_label*);
+	void clear_label(int x, int y);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
 	void end_turn(int next_player_number);

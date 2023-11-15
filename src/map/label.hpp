@@ -71,6 +71,7 @@ public:
 	void enable(bool is_enabled);
 
 	void clear(const std::string&, bool force);
+	void clear_label(const terrain_label* label);
 
 	void recalculate_labels();
 	void recalculate_shroud();
@@ -89,6 +90,7 @@ private:
 	terrain_label* add_label(T&&... args);
 
 	void clear_map(label_map&, bool);
+
 
 	terrain_label* get_label_private(const map_location& loc, const std::string& team_name);
 	// Note: this is not an overload of get_label() so that we do not block
