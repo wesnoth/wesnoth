@@ -773,16 +773,14 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						label.creator(),
 						label.team_name(),
 						label.color());
-		} 
+		}
 		else if(auto clear_label = cfg->optional_child("clear_label")) 
 		{
-			
 			int x = stoi(std::string(clear_label["x"]));
 			int y = stoi(std::string(clear_label["y"]));
 			map_location loc(x, y);
 			const terrain_label* label = display::get_singleton()->labels().get_label(loc);
 			display::get_singleton()->labels().clear_label(label);
-
 		}
 		else if (auto clear_labels = cfg->optional_child("clear_labels"))
 		{

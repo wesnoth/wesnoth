@@ -83,8 +83,6 @@ public:
 	void change_side(mouse_handler& mousehandler);
 	void kill_unit(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
-	// clear_label is NYI
-	void clear_label();
 	void clear_labels();
 	void label_settings();
 	void continue_move(mouse_handler& mousehandler, int side_num);
