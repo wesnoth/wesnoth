@@ -2254,7 +2254,6 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
-			deprecated_message("[effect]apply_to=remove_ability [abilities]", DEP_LEVEL::INDEFINITE, "", "Use [experimental_filter_ability] instead in [effect]apply_to=remove_ability");
 			for(const config::any_child ab : ab_effect->all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
