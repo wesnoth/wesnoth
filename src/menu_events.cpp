@@ -842,7 +842,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 void menu_handler::clear_label()
 {
-
+	// TODO: Implement
 }
 
 void menu_handler::clear_labels()

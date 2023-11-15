@@ -285,7 +285,6 @@ void replay::clear_label(int x, int y)
 {
 	config& cmd = add_nonundoable_command();
 	config val;
-
 	val["x"] = x;
 	val["y"] = y;
 

@@ -72,6 +72,7 @@ public:
 	*/
 	void user_input(const std::string &name, const config &input, int from_side);
 	void add_label(const terrain_label*);
+	//@param x and y used to create a map loc reference, (i.e a tile) and refer to the label found there
 	void clear_label(int x, int y);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
