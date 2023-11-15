@@ -1493,7 +1493,12 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 		return false;
 
 	if(!filter["value"].empty()){
-		if(!has_value_changing_modifier(cfg)){
+		if(has_value_changing_modifier(cfg)){
+			//if true, then default value modified, and can't be checked.
+			if(!int_matches_if_present(filter, cfg, "value")){
+				return false;
+			}
+		} else {
 			if(tag_name == "drains"){
 				if(!int_matches_if_present(filter, cfg, "value", 50)){
 					return false;
@@ -1506,10 +1511,11 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 				if(!int_matches_if_present(filter, cfg, "value" , 0)){
 					return false;
 				}
-			}
-		} else {
-			if(!int_matches_if_present(filter, cfg, "value")){
-				return false;
+				//if other tags, then ability can't have default value
+			} else {
+				if(!int_matches_if_present(filter, cfg, "value")){
+					return false;
+				}
 			}
 		}
 	}
