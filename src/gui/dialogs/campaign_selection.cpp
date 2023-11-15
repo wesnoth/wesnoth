@@ -360,7 +360,9 @@ void campaign_selection::pre_show(window& window)
 		widget_data data;
 		widget_item item;
 
-		item["label"] = _("Most mainline campaigns are missing. If you’re on Linux, then this most likely means the incorrect package was installed. To get the rest of the campaigns you will need to either: correctly install the wesnoth metapackage, install each campaign’s package one by one, or install Wesnoth via Steam or Flatpak.");
+		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
 		data.emplace("description", item);
 
 		pages.add_page(data);
