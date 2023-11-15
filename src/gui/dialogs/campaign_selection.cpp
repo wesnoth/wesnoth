@@ -57,6 +57,12 @@ void campaign_selection::campaign_selected()
 	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 
+		if(tree.selected_item()->id() == missing_campaign_) {
+			find_widget<button>(this, "ok", false).set_active(false);
+		} else {
+			find_widget<button>(this, "ok", false).set_active(true);
+		}
+
 		const int choice = std::distance(page_ids_.begin(), iter);
 		if(iter == page_ids_.end()) {
 			return;
@@ -347,7 +353,7 @@ void campaign_selection::pre_show(window& window)
 		missing["icon"] = "units/unknown-unit.png";
 		missing["name"] = _("Missing Campaigns");
 		missing["completed"] = false;
-		missing["id"] = "missing-campaign";
+		missing["id"] = missing_campaign_;
 
 		add_campaign_to_tree(missing);
 
@@ -358,7 +364,7 @@ void campaign_selection::pre_show(window& window)
 		data.emplace("description", item);
 
 		pages.add_page(data);
-		page_ids_.push_back("missing-campaign");
+		page_ids_.push_back(missing_campaign_);
 	}
 
 	//
