@@ -2255,7 +2255,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
-		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
+		if(auto fab_effect = effect.optional_child("filter_ability")) {
 			remove_ability_by_attribute(*fab_effect);
 		}
 	} else if(apply_to == "image_mod") {
