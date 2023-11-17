@@ -774,7 +774,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						label.team_name(),
 						label.color());
 		}
-		else if(auto clear_label = cfg->optional_child("clear_label")) 
+		else if(auto clear_label = cfg->optional_child("clear_label"))
 		{
 			int x = stoi(std::string(clear_label["x"]));
 			int y = stoi(std::string(clear_label["y"]));
