@@ -131,6 +131,8 @@ private:
 	bool currently_sorted_asc_;
 
 	std::vector<std::string> last_search_words_;
+
+	inline const static std::string missing_campaign_ = "////missing-campaign////";
 };
 
 } // namespace dialogs

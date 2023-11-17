@@ -806,7 +806,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					return side_filter(c, args.fc).match(args.u.side());
 				});
 			}
-			else if (child.first == "filter_ability") {
+			else if (child.first == "experimental_filter_ability") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					for(const config::any_child ab : args.u.abilities().all_children_range()) {
 						if(args.u.ability_matches_filter(ab.cfg, ab.key, c.get_parsed_config())) {
@@ -816,7 +816,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					return false;
 				});
 			}
-			else if (child.first == "filter_ability_active") {
+			else if (child.first == "experimental_filter_ability_active") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!display::get_singleton()){
 						return false;
