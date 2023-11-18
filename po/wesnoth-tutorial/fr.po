@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-16 00:58 UTC\n"
-"PO-Revision-Date: 2022-04-25 08:54-0500\n"
+"PO-Revision-Date: 2023-11-11 20:46+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -46,15 +46,15 @@ msgstr "Débutant"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
+#, fuzzy
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Tutoriel terminé"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
 #, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "Entraînement au combat"
+msgstr "Entraînement au combat terminé"
 
 # À l'infinitif comme le titre de la boîte de dialogue de confirmation quand on veut quitter la partie ("Quitter"). Sauf si quelqu'un a une autre référence.
 #. [label]
@@ -1946,10 +1946,14 @@ msgstr ""
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
+#, fuzzy
 msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"Quand vous déplacez une unité, les pourcentages affichés correspondent aux "
+"capacités de défense de l'unité sur cet hex. Plus le nombre est élevé, plus "
+"l’unité a de chances d’esquiver une attaque."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932

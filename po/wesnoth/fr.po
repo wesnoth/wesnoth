@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-28 09:02-0500\n"
-"PO-Revision-Date: 2023-04-06 11:16+0800\n"
+"PO-Revision-Date: 2023-11-08 17:57+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -650,9 +650,8 @@ msgstr "Traduction vietnamienne"
 #. [about]
 #: data/core/about_i18n.cfg:1868
 #, fuzzy
-#| msgid "Polish Translation"
 msgid "Welsh Translation"
-msgstr "Traduction polonaise"
+msgstr "Traduction galloise"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
@@ -4547,9 +4546,8 @@ msgstr "Chargement du tour..."
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
 #, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "Jouer le tour"
+msgstr "Rejouer le tour..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -5435,9 +5433,8 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:258
 #, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>- Roi Konrad, 536 ap. W.</i>"
+msgstr "<i>- Dominant Gorlack, 3 ap. W.</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5596,10 +5593,8 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(appuyez sur $hotkey pour poursuivre le mouvement)"
 
 #: src/actions/undo.cpp:413
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "Erreur du jeu"
+msgstr ""
 
 #: src/actions/undo.cpp:414
 msgid ""
@@ -5694,9 +5689,8 @@ msgstr "Gestionnaire d'extensions"
 
 #: src/addon/client.cpp:350
 #, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr "Envoi de l'extension <i>$addon_title</i>..."
+msgstr "Installation de l'extension <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:362 src/addon/client.cpp:388
 msgid ""
@@ -7001,15 +6995,13 @@ msgstr[1] ""
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 #, fuzzy
-#| msgid "Create a unit."
 msgid "Create a new add-on"
-msgstr "Créer une unité."
+msgstr "Créer une nouvelle extension"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 #, fuzzy
-#| msgid "Manage Add-ons"
 msgid "New Add-on"
-msgstr "Mettre à jour les extensions"
+msgstr "Nouvelle extension"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
@@ -7017,9 +7009,8 @@ msgstr ""
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 #, fuzzy
-#| msgid "No multiplayer sides."
 msgid "Mainline multiplayer scenarios"
-msgstr "Aucun camp multijoueur."
+msgstr "Scénarios multijoueurs du jeu de base"
 
 #: src/gui/dialogs/game_stats.hpp:42
 msgid "No visible sides found."
@@ -7027,9 +7018,8 @@ msgstr "Aucun camp visible trouvé."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 #, fuzzy
-#| msgid "Selected user: "
 msgid "Selected Game"
-msgstr "Utilisateur sélectionné : "
+msgstr "Partie sélectionnée"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 #, fuzzy
@@ -7039,9 +7029,8 @@ msgstr "Vestibule"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 #, fuzzy
-#| msgid "Observe Game"
 msgid "Other Games"
-msgstr "Observer la partie"
+msgstr "Autres parties"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
 #: src/gui/dialogs/multiplayer/match_history.cpp:90
@@ -7054,15 +7043,13 @@ msgstr "Scénario"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:69
 #, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Ère :"
+msgstr "Ère"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
 #, fuzzy
-#| msgid "Modifications:"
 msgid "Modification"
-msgstr "Modifications :"
+msgstr "Modification"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:134
 #, fuzzy
@@ -7076,9 +7063,8 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:230
 #, fuzzy
-#| msgid "No games found."
 msgid "No game history found."
-msgstr "Aucune partie trouvé."
+msgstr "Aucun historique de parties trouvé."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
@@ -7126,9 +7112,8 @@ msgstr "Erreur"
 
 #: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
 #, fuzzy
-#| msgid "Observe Game"
 msgid "Other aspects: "
-msgstr "Observer la partie"
+msgstr "Autres aspects :"
 
 #: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
 #: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
@@ -7152,9 +7137,8 @@ msgstr "Attaques : "
 
 #: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 #, fuzzy
-#| msgid "Advances to: "
 msgid "Chance to hit: "
-msgstr "Évolue en : "
+msgstr "Chance de toucher : "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
@@ -7312,15 +7296,13 @@ msgstr "Retour au tour "
 
 #: src/hotkey/hotkey_handler.cpp:457
 #, fuzzy
-#| msgid "Ready to start!"
 msgid "Replay from Start"
-msgstr "Prêt à commencer !"
+msgstr "Rejouer du début"
 
 #: src/hotkey/hotkey_handler.cpp:457
 #, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "Jouer le tour"
+msgstr "Rejouer du tour"
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -7336,21 +7318,18 @@ msgstr "Mode de planification désactivé !"
 
 #: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
-#| msgid "Do you still want to download it?"
 msgid "Do you want to load it anyway?"
-msgstr "Voulez-vous la télécharger ?"
+msgstr "Voulez-vous quand-même le charger ?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
-msgstr "Le fichier sauvegardé est corrompu"
+msgstr "Le fichier chargé ne contient pas d'historique à rejouer."
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
-msgstr "Le fichier sauvegardé est corrompu"
+msgstr "Le fichier chargé ne correspond pas à la session en cours."
 
 #: src/language.cpp:115
 msgid "System default language"
@@ -7386,15 +7365,12 @@ msgstr "Cette commande n'est pas disponible."
 
 #: src/map_command_handler.hpp:225
 #, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
-"La commande « $command » est inconnue. Essayez « $help_command » pour "
-"afficher la liste des commandes disponibles."
+"La commande « $command » est inconnue (suggestion : « $command_proposal »). "
+"Essayez « $help_command » pour afficher la liste des commandes disponibles."
 
 #: src/map_command_handler.hpp:229
 msgid ""
@@ -8062,10 +8038,8 @@ msgstr ""
 
 #: src/mouse_events.cpp:1310
 #, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
 msgid "No Attacks"
-msgstr "Attaque"
+msgstr "Pas d'attaque"
 
 #: src/mouse_events.cpp:1310
 msgid "This unit has no usable weapons."
@@ -8107,21 +8081,18 @@ msgstr "Changement"
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
 #, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
 msgstr ""
-"Une erreur s'est produite lors du téléchargement de la liste des extensions "
-"depuis le serveur."
+"Une erreur s'est produite lors du téléchargement du fichier. Pour plus "
+"d'information, voir le fichier de journalisation."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
 #, fuzzy
-#| msgid "Download"
 msgid "Download error"
-msgstr "Télécharger"
+msgstr "Erreur de téléchargement"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
@@ -8133,15 +8104,13 @@ msgstr ""
 
 #: src/network_download_file.cpp:81
 #, fuzzy
-#| msgid "Download"
 msgid "Download complete"
-msgstr "Télécharger"
+msgstr "Téléchargement terminé"
 
 #: src/network_download_file.cpp:81
 #, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "La partie a été sauvegardée."
+msgstr "Le fichier a été téléchargé."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8409,9 +8378,8 @@ msgstr ""
 
 #: src/reports.cpp:357
 #, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "insoignable"
+msgstr "insoignable : "
 
 #: src/reports.cpp:358
 msgid ""
@@ -8421,18 +8389,15 @@ msgstr ""
 
 #: src/reports.cpp:361
 #, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "invisible : "
+msgstr "invulnérable : "
 
 #: src/reports.cpp:362
 #, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr ""
-"Cette unité est invisible. Elle ne peut être vue ou attaquée par des unités "
-"ennemies."
+"Cette unité est invulnérable. Les attaques ne peuvent pas lui faire subir de "
+"dégât."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -9054,10 +9019,8 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Ce moment de la journée est bidon !"
 
 #: src/units/abilities.cpp:970
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "ralenti : "
+msgstr ""
 
 #: src/units/abilities.cpp:973
 msgid "Taught: "
@@ -9136,23 +9099,18 @@ msgstr[1] ""
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:559
 #, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number dégât"
-msgstr[1] "$number dégâts"
+msgstr[0] "$number attaque utilisée"
+msgstr[1] "$number attaques utilisées"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:568
 #, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> attaque par tour"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> attaques par tour"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> attaque utilisée"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> attaques utilisées"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -9273,9 +9231,8 @@ msgstr ""
 
 #: src/wesnoth.cpp:815
 #, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Journalisation"
+msgstr "Erreur de journalisation"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
