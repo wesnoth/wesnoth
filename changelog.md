@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burning Suns
+     * All sand terrian now correctly applies the dehydrated effect
  ### Editor
  ### Multiplayer
  ### Lua API
@@ -13,9 +15,20 @@
    * Drakes:
      * Saurian Seer - modify the unit to fix reductions in power level between level 2 and level 3.
  ### User interface
+   * If wesnoth is installed with most campaigns missing, an error message is shown in the campaign selection dialog
+   * The inspect dialog again is able to correctly paginate large amounts of text
+   * The credits now actually show up instead of crashing the game
+   * Significantly improve game history query performance, preventing the query from timing out
+   * The help browser, when looking at a unit type which uses the same image for male and female units, now only shows one image instead of showing a duplicate.
  ### WML Engine
+   * [filter_ability], [filter_ability_active], and [filter_specials] are renamed to [experimental_filter_ability], [experimental_filter_ability_active], and [experimental_filter_specials]
+   * Add a [damage_type]'replacement_type' and 'alternative_type' attribute weapon special to change the type of attack under specific conditions (terrain, time of day, leadership etc...)
  ### Miscellaneous and Bug Fixes
    * Added basic support for the `ttkthemes` Python library to GUI.pyw on Linux
+   * Fixed the screen not redrawing on Windows after unlocking the computer
+   * Fixed occasional bad rendering for blurred/translucent areas
+   * Significantly reduced CPU usage when a dialog is open
+   * Avoid an assert in `replay::add_start_if_not_there_yet` with corrupt files (issue #7154)
 
 ## Version 1.17.22
  ### Campaigns
