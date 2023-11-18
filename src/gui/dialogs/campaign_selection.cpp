@@ -348,7 +348,7 @@ void campaign_selection::pre_show(window& window)
 
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
-	if(dirs.size() <= 1) {
+	if(dirs.size() <= 15) {
 		config missing;
 		missing["icon"] = "units/unknown-unit.png";
 		missing["name"] = _("Missing Campaigns");
