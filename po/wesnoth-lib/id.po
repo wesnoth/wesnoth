@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-11-20 11:23-0600\n"
 "PO-Revision-Date: 2012-12-29 23:17+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -6725,11 +6725,11 @@ msgid_plural "timespan^$num seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/core/canvas.cpp:272
+#: src/gui/core/canvas.cpp:273
 msgid "Image doesn't fit on canvas."
 msgstr "Gambar tidak sesuai di kanvas"
 
-#: src/gui/core/canvas.cpp:413
+#: src/gui/core/canvas.cpp:414
 msgid "Text has a font size of 0."
 msgstr "Text memiliki ukuran font 0."
 
@@ -7117,7 +7117,23 @@ msgstr ""
 msgid "Attacker vulnerability vs"
 msgstr ""
 
+#: src/gui/dialogs/campaign_selection.cpp:354
+#, fuzzy
+#| msgid "Campaign"
+msgid "Missing Campaigns"
+msgstr "Kampanye"
+
+#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
 #: src/gui/dialogs/campaign_selection.cpp:365
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+
+#: src/gui/dialogs/campaign_selection.cpp:395
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
 #, fuzzy
 #| msgid "Choose Resolution"
@@ -7126,7 +7142,7 @@ msgstr "Pilih resolusi"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:141
-#: src/gui/dialogs/gamestate_inspector.cpp:417
+#: src/gui/dialogs/gamestate_inspector.cpp:418
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192

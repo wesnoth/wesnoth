@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-11-20 11:23-0600\n"
 "PO-Revision-Date: 2022-10-30 11:00-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -2657,8 +2657,8 @@ msgstr "O Jogo"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:475
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:474
+#: src/help/help_topic_generators.cpp:497
 msgid "Traits"
 msgstr "Características"
 
@@ -8629,19 +8629,19 @@ msgstr ""
 "Esta unidade é capaz de causar lentidão nos inimigos , cortando seu "
 "movimento e dano de ataque pela metade até o fim do turno deles."
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
@@ -10789,7 +10789,7 @@ msgstr ""
 # File: data/core/macros/special-notes.cfg, line: 3
 # File: data/core/macros/special-notes.cfg, line: 3
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:600
 msgid "Special Notes:"
 msgstr "Notas Especiais:"
 
@@ -10825,7 +10825,7 @@ msgstr "Nível"
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:357
 msgid "Advances from: "
 msgstr "Avança de: "
 
@@ -10833,7 +10833,7 @@ msgstr "Avança de: "
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances to: "
 msgstr "Avança para: "
 
@@ -10841,7 +10841,7 @@ msgstr "Avança para: "
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
-#: src/help/help_topic_generators.cpp:389
+#: src/help/help_topic_generators.cpp:388
 msgid "Base unit: "
 msgstr "Unidade Base: "
 
@@ -10849,7 +10849,7 @@ msgstr "Unidade Base: "
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:393
 msgid "Base units: "
 msgstr "Unidades Base: "
 
@@ -10857,7 +10857,7 @@ msgstr "Unidades Base: "
 # File: src/help.cpp, line: 1422
 # File: src/help.cpp, line: 1422
 # File: src/help.cpp, line: 1422
-#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:411
 msgid "Variations: "
 msgstr "Variações: "
 
@@ -10871,7 +10871,7 @@ msgstr "Variações: "
 # File: src/help.cpp, line: 1446
 # File: src/help.cpp, line: 1818
 # File: src/help.cpp, line: 1891
-#: src/help/help_topic_generators.cpp:436
+#: src/help/help_topic_generators.cpp:435
 msgid "race^Miscellaneous"
 msgstr "Miscelânea"
 
@@ -10879,7 +10879,7 @@ msgstr "Miscelânea"
 # File: src/help.cpp, line: 1448
 # File: src/help.cpp, line: 1448
 # File: src/help.cpp, line: 1448
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:437
 msgid "Race: "
 msgstr "Raça: "
 
@@ -10887,7 +10887,7 @@ msgstr "Raça: "
 # File: src/help.cpp, line: 1455
 # File: src/help.cpp, line: 1455
 # File: src/help.cpp, line: 1455
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:507
 msgid "Abilities: "
 msgstr "Habilidades: "
 
@@ -10895,7 +10895,7 @@ msgstr "Habilidades: "
 # File: src/help.cpp, line: 1472
 # File: src/help.cpp, line: 1472
 # File: src/help.cpp, line: 1472
-#: src/help/help_topic_generators.cpp:534
+#: src/help/help_topic_generators.cpp:533
 msgid "Ability Upgrades: "
 msgstr "Habilidades Melhoradas: "
 
@@ -10906,7 +10906,7 @@ msgstr "Habilidades Melhoradas: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:563
 msgid "HP:"
 msgstr "HP:"
 
@@ -10917,14 +10917,14 @@ msgstr "HP:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:567
 msgid "Moves:"
 msgstr "Movimento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:572
 msgid "Vision:"
 msgstr "Visão:"
 
@@ -10935,7 +10935,7 @@ msgstr "Visão:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:578
 msgid "Jamming:"
 msgstr "Interferência:"
 
@@ -10946,7 +10946,7 @@ msgstr "Interferência:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:583
 msgid "Cost:"
 msgstr "Custo:"
 
@@ -10957,7 +10957,7 @@ msgstr "Custo:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:587
 msgid "Alignment:"
 msgstr "Alinhamento:"
 
@@ -10968,7 +10968,7 @@ msgstr "Alinhamento:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:595
+#: src/help/help_topic_generators.cpp:594
 msgid "Required XP:"
 msgstr "XP Necessária:"
 
@@ -10976,7 +10976,7 @@ msgstr "XP Necessária:"
 # File: src/help.cpp, line: 1510
 # File: src/help.cpp, line: 1510
 # File: src/help.cpp, line: 1510
-#: src/help/help_topic_generators.cpp:613
+#: src/help/help_topic_generators.cpp:612
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
@@ -10984,7 +10984,7 @@ msgstr "Ataques"
 # File: src/help.cpp, line: 1517
 # File: src/help.cpp, line: 1517
 # File: src/help.cpp, line: 1517
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 msgid "unit help^Name"
 msgstr "Nome"
 
@@ -10992,7 +10992,7 @@ msgstr "Nome"
 # File: src/help.cpp, line: 1519
 # File: src/help.cpp, line: 1519
 # File: src/help.cpp, line: 1519
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Strikes"
 msgstr "Golpes"
 
@@ -11000,7 +11000,7 @@ msgstr "Golpes"
 # File: src/help.cpp, line: 1520
 # File: src/help.cpp, line: 1520
 # File: src/help.cpp, line: 1520
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Range"
 msgstr "Distância"
 
@@ -11008,7 +11008,7 @@ msgstr "Distância"
 # File: src/help.cpp, line: 1518
 # File: src/help.cpp, line: 1518
 # File: src/help.cpp, line: 1518
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:622
 msgid "Type"
 msgstr "Tipo"
 
@@ -11016,7 +11016,7 @@ msgstr "Tipo"
 # File: src/help.cpp, line: 1521
 # File: src/help.cpp, line: 1521
 # File: src/help.cpp, line: 1521
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 msgid "Special"
 msgstr "Especial"
 
@@ -11024,7 +11024,7 @@ msgstr "Especial"
 # File: src/help.cpp, line: 1567
 # File: src/help.cpp, line: 1567
 # File: src/help.cpp, line: 1567
-#: src/help/help_topic_generators.cpp:699
+#: src/help/help_topic_generators.cpp:698
 msgid "Resistances"
 msgstr "Resistências"
 
@@ -11032,7 +11032,7 @@ msgstr "Resistências"
 # File: src/help.cpp, line: 1571
 # File: src/help.cpp, line: 1571
 # File: src/help.cpp, line: 1571
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:702
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
@@ -11040,7 +11040,7 @@ msgstr "Tipo de ataque"
 # File: src/help.cpp, line: 1572
 # File: src/help.cpp, line: 1572
 # File: src/help.cpp, line: 1572
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:703
 msgid "Resistance"
 msgstr "Resistência"
 
@@ -11048,7 +11048,7 @@ msgstr "Resistência"
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 msgid "Terrain Modifiers"
 msgstr "Modificadores de Terreno"
 
@@ -11056,7 +11056,7 @@ msgstr "Modificadores de Terreno"
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
 msgstr "Terreno"
 
@@ -11064,7 +11064,7 @@ msgstr "Terreno"
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:738
 msgid "Defense"
 msgstr "Defesa"
 
@@ -11072,7 +11072,7 @@ msgstr "Defesa"
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
 msgstr "Custo de Movimento"
 
@@ -11080,15 +11080,15 @@ msgstr "Custo de Movimento"
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
 msgstr "Limite de Defesa"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr "Custo de Visão"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr "Custo de Interferência"
 
