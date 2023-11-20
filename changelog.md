@@ -1,14 +1,7 @@
-## Version 1.17.22+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.23
  ### Campaigns
    * Under the Burning Suns
      * All sand terrian now correctly applies the dehydrated effect
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Czech, French, Italian, Polish, Slovak, Welsh
  ### Units
