@@ -1472,20 +1472,17 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 		return false;
 
 	if(!filter["value"].empty()){
-		bool has_other_key = (!cfg["add"].empty() || !cfg["sub"].empty() || !cfg["multiply"].empty() || !cfg["divide"].empty());
-		if(!has_other_key){
-			if(tag_name == "drains"){
-				if(!int_matches_if_present(filter, cfg, "value", 50)){
-					return false;
-				}
-			} else if(tag_name == "berserk"){
-				if(!int_matches_if_present(filter, cfg, "value", 1)){
-					return false;
-				}
-			} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
-				if(!int_matches_if_present(filter, cfg, "value" , 0)){
-					return false;
-				}
+		if(tag_name == "drains"){
+			if(!int_matches_if_present(filter, cfg, "value", 50)){
+				return false;
+			}
+		} else if(tag_name == "berserk"){
+			if(!int_matches_if_present(filter, cfg, "value", 1)){
+				return false;
+			}
+		} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+			if(!int_matches_if_present(filter, cfg, "value" , 0)){
+				return false;
 			}
 		} else {
 			if(!int_matches_if_present(filter, cfg, "value")){
@@ -2254,12 +2251,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
-			deprecated_message("[effect]apply_to=remove_ability [abilities]", DEP_LEVEL::INDEFINITE, "", "Use [filter_ability] instead in [effect]apply_to=remove_ability");
 			for(const config::any_child ab : ab_effect->all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
-		if(auto fab_effect = effect.optional_child("filter_ability")) {
+		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
 			remove_ability_by_attribute(*fab_effect);
 		}
 	} else if(apply_to == "image_mod") {

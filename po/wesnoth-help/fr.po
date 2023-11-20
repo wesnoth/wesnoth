@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
-"PO-Revision-Date: 2022-10-28 10:10+0200\n"
-"Last-Translator: alberic89 <alberic89@gmx.com>\n"
+"POT-Creation-Date: 2023-11-20 11:23-0600\n"
+"PO-Revision-Date: 2023-11-06 11:22-0500\n"
+"Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -761,7 +761,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "Graphiques des surcouches de terrain pour l'éditeur"
+msgstr "Graphiques des élévations de terrain"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
@@ -776,10 +776,10 @@ msgid ""
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"Les cartes affichées dans l'éditeur ont une apparence identique à celles du "
-"jeu. Il y a cependant quelques exceptions où des graphiques spécifiques à "
-"l'éditeur sont affichés ; toutes les surcouches décrites ci-dessous se "
-"trouvent dans le groupe « spécial » de la palette de terrain."
+"Un effet cosmétique d'élévation qui diffère dans l'éditeur de celui du jeu à "
+"cause de l’aide visuelle présente dans l’éditeur ; toutes les surcouches "
+"décrites ci-dessous se trouvent dans le groupe « élévation » de la palette "
+"de terrain."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:175
@@ -789,10 +789,7 @@ msgstr ""
 #| "\n"
 #| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Avancé'</bold>"
+msgstr "<bold>text='Surcouches directes'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
@@ -813,10 +810,7 @@ msgstr ""
 #| "\n"
 #| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Avancé'</bold>"
+msgstr "<bold>text='Élévation submergée'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
@@ -1107,7 +1101,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Using Add-ons"
 msgid "Change Add-on ID"
-msgstr "Utiliser des extensions"
+msgstr "Changer l'identifiant de l'extension"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
@@ -1200,7 +1194,8 @@ msgstr ""
 "L'éditeur de cartes et de scénarios de Wesnoth permet aux joueurs de créer "
 "et d'éditer des cartes sur lesquelles les scénarios de Wesnoth se déroulent. "
 "Il fournit également un ensemble minimal de fonctionnalité pour mettre en "
-"œuvre un scénario basique.\n"
+"œuvre un scénario basique ainsi que l'initialisation d'une extension qui "
+"permet de publier un scénario que vous avez créé.\n"
 "\n"
 "L'éditeur peut être lancé depuis l'écran principal via le bouton "
 "<italic>text='Éditeur de carte'</italic>\n"
@@ -1404,20 +1399,15 @@ msgid ""
 msgstr ""
 "<header>text='Les fichiers : .map et .cfg'</header>\n"
 "\n"
-"L'éditeur de cartes sauvegarde exactement un fichier, soit .map (pour le "
-"mode terrain) ou .cfg (pour le mode scénario). En mode scénario la carte du "
-"terrain est incluse dans le fichier .cfg ; il n'y a pas de fichier .map "
-"séparé. Si vous commencez une édition en mode terrain puis passez en mode "
-"scénario, alors un vieux .map peut rester, mais il ne sera pas mis à jour "
-"par l'éditeur de scénario.\n"
+"L'éditeur de cartes sauvegarde un fichier en mode de terrain .map deux "
+"fichiers en mode scénario (un fichier .map et un .cfg).\n"
 "\n"
 "Charger un fichier .cfg a un résultat différent en fonction du contenu du "
-"fichier. Les fichiers .cfg créés par l'éditeur de scénarios ouvriront le "
-"fichier dans le mode scénario de l'éditeur. Cependant, les fichiers .cfg qui "
-"utilisent un fichier .map séparé (qui ne peuvent être créés par l'éditeur de "
-"scénarios), l'éditeur suivra le lien et ouvrira le fichier .map "
-"correspondant en mode terrain seul, comme si le fichier .map avait été "
-"choisi directement."
+"fichier. Les fichiers .cfg qui ne peuvent être ouverts par l'éditeur de "
+"scénarios, l'éditeur tentera de trouver les données de la carte du scénario "
+"et ouvrira le fichier .map correspondant en mode terrain comme si le "
+"fichier .map avait été choisi directement. Il est préférable dans ce cas de "
+"sélectionner directement le fichier .map."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:414
@@ -1683,13 +1673,14 @@ msgid ""
 msgstr ""
 "<header>text='Fichier créés dans l\\'éditeur de scénarios'</header>\n"
 "\n"
-"En mode scénario, l'éditeur sauvegarde les données dans un fichier .cfg en "
-"encapsulant les données de la carte. Au chargement d'un fichier .cfg, "
-"l'éditeur de scénario comprendra les fichiers créés par lui-même, mais il "
-"aura des difficultés avec les fichiers créés à la main : problèmes qui "
-"peuvent être évités en <ref>dst='editor_separate_events_file' "
-"text='utilisant un fichier .cfg séparé'</ref> pour les parties réalisées à "
-"la main."
+"En mode scénario, l'éditeur sauvegarde les données du scénario dans un "
+"fichier .cfg et les données de la carte dans un fichier .map séparé. Le "
+"scénario contiendra la référence au fichier contenant la carte dans "
+"l'attribut map_file. Au chargement d'un fichier .cfg, l'éditeur de scénario "
+"comprendra les fichiers créés par lui-même, mais il aura des difficultés "
+"avec les fichiers créés à la main : problèmes qui peuvent être évités en "
+"<ref>dst='editor_separate_events_file' text='utilisant un fichier .cfg "
+"séparé'</ref> pour les parties réalisées à la main."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2332,8 +2323,8 @@ msgstr "Déroulement du jeu"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:475
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:474
+#: src/help/help_topic_generators.cpp:497
 msgid "Traits"
 msgstr "Traits"
 
@@ -5637,9 +5628,8 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Cette unité peut se cacher dans les villages (sauf ceux aquatiques), et y "
-"rester invisible des ennemis à l'exception de ceux qui se tiennent juste à "
-"côté.\n"
+"Cette unité peut se cacher dans les villages, et y rester invisible des "
+"ennemis à l'exception de ceux qui se tiennent juste à côté.\n"
 "\n"
 "Les ennemis ne peuvent pas voir cette unité tant qu'elle se trouve dans un "
 "village, sauf s'ils sont juste à côté. Le premier à découvrir cette unité "
@@ -6032,8 +6022,9 @@ msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-" Ceux qui meurent de la peste deviendront des morts-vivants, sauf s'ils sont "
-"dans un village."
+"Ceux qui meurent de certaines horreurs de la nature deviennent une réserve "
+"de nourriture pour une larve en développement rapide, sauf s'ils sont dans "
+"un village."
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -6849,29 +6840,23 @@ msgstr ""
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-" Cette unité peut ralentir ses ennemis, réduisant de moitié leur déplacement "
-"et leurs dégâts jusqu'à la fin de leur tour."
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
@@ -7094,9 +7079,8 @@ msgstr ""
 "agilité dans les airs. Quand c'est possible, ils se servent des points hauts "
 "du terrain, comme des collines, des montagnes ou des forêts, comme point "
 "d'envol dans le but d'atteindre une hauteur et une vitesse plus élevées. "
-"Heureusement pour leurs ennemis, ce sont toujours des créatures assez "
-"maladroites et étonnamment lentes au combat. Cela, tout comme leur taille "
-"imposante, en fait des cibles faciles pour ceux qui osent les attaquer.\n"
+"Heureusement pour leurs ennemis, leur taille imposante en fait des cibles "
+"faciles pour ceux qui osent les attaquer.\n"
 "\n"
 "Les dracans sont des créatures magiques par nature, dont la vie même est "
 "nourrie par un mystérieux feu intérieur. On peut facilement l'observer quand "
@@ -7134,11 +7118,10 @@ msgstr ""
 "seule la production des fonderies naines les plus élaborées rivalise avec "
 "elle.\n"
 "\n"
-"Les dracans naissent dans des œufs et vivent habituellement entre 20 et 30 "
-"ans. Mourir au combat est la manière préférée des dracans de quitter ce "
-"monde. Contrairement aux anciens des autres races, les dracans ont une "
-"agressivité et une témérité qui croissent avec l'âge, sans doute pour mieux "
-"trouver une place dans les légendes héroïques de leur espèce.\n"
+"Les dracans naissent dans des œufs et peuvent vivre plusieurs décennies même "
+"si certains ont pu survivre plus longtemps. Cependant, mourir au combat est "
+"la manière préférée des dracans de quitter ce monde. Ainsi, la plupart des "
+"dracans n'atteignent pas la limite naturelle de leur espérance de vie.\n"
 "\n"
 "<header>text='Géographie'</header>\n"
 "Les dracans sont originaires d'un archipel d'îles volcaniques nommé "
@@ -8269,23 +8252,20 @@ msgstr ""
 #. [race]: id=raven
 #: data/core/units.cfg:351
 #, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Nains"
+msgstr "Corbeau"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
 #, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "Dracane"
+msgstr "Corbeau"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
 #, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Nains"
+msgstr "Corbeaux"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -8620,10 +8600,8 @@ msgstr ""
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "morte-vivante"
+msgstr ""
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
@@ -8700,7 +8678,7 @@ msgstr ""
 "permet pas à un chef sur un donjon attenant de recruter sur cet hexagone."
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:600
 msgid "Special Notes:"
 msgstr "Notes spéciales :"
 
@@ -8720,152 +8698,152 @@ msgstr "Caractéristiques de défense : "
 msgid "Level"
 msgstr "Niveau"
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:357
 msgid "Advances from: "
 msgstr "Évolue à partir de : "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances to: "
 msgstr "Évolue en : "
 
-#: src/help/help_topic_generators.cpp:389
+#: src/help/help_topic_generators.cpp:388
 msgid "Base unit: "
 msgstr "Unité de base : "
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:393
 msgid "Base units: "
 msgstr "Unités de base : "
 
-#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:411
 msgid "Variations: "
 msgstr "Variantes : "
 
-#: src/help/help_topic_generators.cpp:436
+#: src/help/help_topic_generators.cpp:435
 msgid "race^Miscellaneous"
 msgstr "Divers"
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:437
 msgid "Race: "
 msgstr "Race : "
 
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:507
 msgid "Abilities: "
 msgstr "Capacités : "
 
-#: src/help/help_topic_generators.cpp:534
+#: src/help/help_topic_generators.cpp:533
 msgid "Ability Upgrades: "
 msgstr "Mise à jour des capacités : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:563
 msgid "HP:"
 msgstr "PV : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:567
 msgid "Moves:"
 msgstr "Déplacements : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:572
 msgid "Vision:"
 msgstr "Vision : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:578
 msgid "Jamming:"
 msgstr "Brouillage : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:583
 msgid "Cost:"
 msgstr "Coût : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:587
 msgid "Alignment:"
 msgstr "Alignement : "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:595
+#: src/help/help_topic_generators.cpp:594
 msgid "Required XP:"
 msgstr "Expérience requise : "
 
-#: src/help/help_topic_generators.cpp:613
+#: src/help/help_topic_generators.cpp:612
 msgid "unit help^Attacks"
 msgstr "Attaques"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 msgid "unit help^Name"
 msgstr "Nom"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Strikes"
 msgstr "Attaques"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Range"
 msgstr "Portée"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:622
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 msgid "Special"
 msgstr "Spécial"
 
-#: src/help/help_topic_generators.cpp:699
+#: src/help/help_topic_generators.cpp:698
 msgid "Resistances"
 msgstr "Résistances"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:702
 msgid "Attack Type"
 msgstr "Type d'attaque"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:703
 msgid "Resistance"
 msgstr "Résistance"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 msgid "Terrain Modifiers"
 msgstr "Modifications dues au terrain"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
 msgstr "Terrain"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:738
 msgid "Defense"
 msgstr "Défense"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
 msgstr "Coût des mouvements"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
 msgstr "Limite défensive"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr "Coût de la vision"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr "Coût du brouillage"
 

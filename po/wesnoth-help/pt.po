@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-help)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-11-20 11:23-0600\n"
 "PO-Revision-Date: 2020-02-14 20:16+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -1974,8 +1974,8 @@ msgstr "Regras"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:475
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:474
+#: src/help/help_topic_generators.cpp:497
 msgid "Traits"
 msgstr "Caraterísticas"
 
@@ -6555,19 +6555,19 @@ msgstr ""
 " Esta unidade é capaz de deixar os seus inimigos atrasados, dividindo o seu "
 "movimento e dano de ataque à metade até o fim do seu turno."
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
@@ -8292,7 +8292,7 @@ msgstr ""
 
 #
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:600
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -8323,174 +8323,174 @@ msgstr ""
 msgid "Level"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:357
 #, fuzzy
 #| msgid "Advancement"
 msgid "Advances from: "
 msgstr "Promoção"
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 #, fuzzy
 #| msgid "Advancement"
 msgid "Advances to: "
 msgstr "Promoção"
 
-#: src/help/help_topic_generators.cpp:389
+#: src/help/help_topic_generators.cpp:388
 msgid "Base unit: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:393
 msgid "Base units: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:411
 msgid "Variations: "
 msgstr ""
 
 #
-#: src/help/help_topic_generators.cpp:436
+#: src/help/help_topic_generators.cpp:435
 #, fuzzy
 #| msgid "race^Merman"
 msgid "race^Miscellaneous"
 msgstr "Ondim"
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:437
 msgid "Race: "
 msgstr ""
 
 #
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:507
 #, fuzzy
 #| msgid "Abilities"
 msgid "Abilities: "
 msgstr "Habilidades"
 
-#: src/help/help_topic_generators.cpp:534
+#: src/help/help_topic_generators.cpp:533
 msgid "Ability Upgrades: "
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:563
 msgid "HP:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:567
 msgid "Moves:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:572
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:578
 msgid "Jamming:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:583
 msgid "Cost:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:587
 msgid "Alignment:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:595
+#: src/help/help_topic_generators.cpp:594
 msgid "Required XP:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:613
+#: src/help/help_topic_generators.cpp:612
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Strikes"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Range"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:622
 msgid "Type"
 msgstr ""
 
 #
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Special"
 msgstr "Efeitos das Armas"
 
-#: src/help/help_topic_generators.cpp:699
+#: src/help/help_topic_generators.cpp:698
 msgid "Resistances"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:702
 msgid "Attack Type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:703
 msgid "Resistance"
 msgstr ""
 
 #
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 #, fuzzy
 #| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
 msgstr "Editor de Terreno"
 
 #
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 #, fuzzy
 #| msgid "Terrains"
 msgid "Terrain"
 msgstr "Terrenos"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:738
 msgid "Defense"
 msgstr ""
 
 #
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:739
 #, fuzzy
 #| msgid "Movement"
 msgid "Movement Cost"
 msgstr "Movimento"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr ""
 

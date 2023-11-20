@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
+"POT-Creation-Date: 2023-11-20 17:23 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:34+0000\n"
 "Last-Translator: RatArmy, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -424,7 +424,7 @@ msgstr "弓"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
-#: data/core/units/drakes/Burner.cfg:28
+#: data/core/units/drakes/Burner.cfg:29
 #: data/core/units/goblins/Direwolf_Rider.cfg:41
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
@@ -765,7 +765,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:45
-#: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
+#: data/core/units/drakes/Clasher.cfg:34 data/core/units/drakes/Thrasher.cfg:32
 #: data/core/units/dunefolk/Harrier.cfg:31
 #: data/core/units/dunefolk/Skirmisher.cfg:32
 #: data/core/units/dunefolk/Spearguard.cfg:30
@@ -1013,8 +1013,8 @@ msgstr "刺の術"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:43
-#: data/core/units/drakes/Thrasher.cfg:40
+#: data/core/units/drakes/Enforcer.cfg:44
+#: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
 msgstr "角"
 
@@ -1188,7 +1188,7 @@ msgid "Drake Arbiter"
 msgstr "ドレークの裁定者"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
-#: data/core/units/drakes/Arbiter.cfg:17
+#: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes’ traditional "
@@ -1205,7 +1205,7 @@ msgstr ""
 "身を守る役割を充分に果たします。"
 
 #. [special_note]
-#: data/core/units/drakes/Arbiter.cfg:19
+#: data/core/units/drakes/Arbiter.cfg:20
 msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
@@ -1215,12 +1215,19 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Arbiter.cfg:36 data/core/units/drakes/Arbiter.cfg:45
-#: data/core/units/drakes/Warden.cfg:37 data/core/units/drakes/Warden.cfg:46
+#: data/core/units/drakes/Arbiter.cfg:37 data/core/units/drakes/Arbiter.cfg:46
+#: data/core/units/drakes/Warden.cfg:38 data/core/units/drakes/Warden.cfg:47
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
 msgstr "ハルバード"
+
+#. [female]
+#: data/core/units/drakes/Arbiter.cfg:174
+#, fuzzy
+#| msgid "Drake Arbiter"
+msgid "female^Drake Arbiter"
+msgstr "ドレークの裁定者"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
@@ -1228,7 +1235,7 @@ msgid "Armageddon Drake"
 msgstr "アルマゲドンドレーク"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
-#: data/core/units/drakes/Armageddon.cfg:19
+#: data/core/units/drakes/Armageddon.cfg:20
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -1243,25 +1250,32 @@ msgstr ""
 "して素晴らしい耐性をもち、また、強大な炎を操ります。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:36 data/core/units/drakes/Fire.cfg:29
-#: data/core/units/drakes/Inferno.cfg:31
+#: data/core/units/drakes/Armageddon.cfg:37 data/core/units/drakes/Fire.cfg:30
+#: data/core/units/drakes/Inferno.cfg:32
 msgid "battle claws"
 msgstr "格闘かぎ爪"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:45
-#: data/core/units/drakes/Blademaster.cfg:36
-#: data/core/units/drakes/Burner.cfg:37 data/core/units/drakes/Fighter.cfg:33
-#: data/core/units/drakes/Fire.cfg:38 data/core/units/drakes/Flameheart.cfg:39
-#: data/core/units/drakes/Flare.cfg:38 data/core/units/drakes/Glider.cfg:38
-#: data/core/units/drakes/Hurricane.cfg:60
-#: data/core/units/drakes/Inferno.cfg:40 data/core/units/drakes/Sky.cfg:59
-#: data/core/units/drakes/Warrior.cfg:34
+#: data/core/units/drakes/Armageddon.cfg:46
+#: data/core/units/drakes/Blademaster.cfg:37
+#: data/core/units/drakes/Burner.cfg:38 data/core/units/drakes/Fighter.cfg:34
+#: data/core/units/drakes/Fire.cfg:39 data/core/units/drakes/Flameheart.cfg:40
+#: data/core/units/drakes/Flare.cfg:39 data/core/units/drakes/Glider.cfg:39
+#: data/core/units/drakes/Hurricane.cfg:61
+#: data/core/units/drakes/Inferno.cfg:41 data/core/units/drakes/Sky.cfg:60
+#: data/core/units/drakes/Warrior.cfg:35
 #: data/core/units/monsters/Fire_Dragon.cfg:51
 #: data/core/units/monsters/Fire_Guardian.cfg:37
 #: data/core/units/monsters/Fire_Wraith.cfg:59
 msgid "fire breath"
 msgstr "火炎のブレス"
+
+#. [female]
+#: data/core/units/drakes/Armageddon.cfg:65
+#, fuzzy
+#| msgid "Armageddon Drake"
+msgid "female^Armageddon Drake"
+msgstr "アルマゲドンドレーク"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
@@ -1269,7 +1283,7 @@ msgid "Drake Blademaster"
 msgstr "ドレークの熟練剣士"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
-#: data/core/units/drakes/Blademaster.cfg:19
+#: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -1287,11 +1301,18 @@ msgstr ""
 "に疑いを挟もうとする者は誰もいないのです。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:27
-#: data/core/units/drakes/Clasher.cfg:24 data/core/units/drakes/Enforcer.cfg:34
-#: data/core/units/drakes/Thrasher.cfg:22
+#: data/core/units/drakes/Blademaster.cfg:28
+#: data/core/units/drakes/Clasher.cfg:25 data/core/units/drakes/Enforcer.cfg:35
+#: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
 msgstr "戦爪"
+
+#. [female]
+#: data/core/units/drakes/Blademaster.cfg:61
+#, fuzzy
+#| msgid "Drake Blademaster"
+msgid "female^Drake Blademaster"
+msgstr "ドレークの熟練剣士"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -1299,7 +1320,7 @@ msgid "Drake Burner"
 msgstr "ドレークの焼却者"
 
 #. [unit_type]: id=Drake Burner, race=drake
-#: data/core/units/drakes/Burner.cfg:17
+#: data/core/units/drakes/Burner.cfg:18
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -1310,13 +1331,20 @@ msgstr ""
 "先の力、特に炎の息を吐く能力について、最もよく受け継いでいます。これは、彼ら"
 "の巨大で恐ろしい爪が合わさることで、戦闘では危険な敵となります。"
 
+#. [female]
+#: data/core/units/drakes/Burner.cfg:67
+#, fuzzy
+#| msgid "female^Dune Burner"
+msgid "female^Drake Burner"
+msgstr "デューンの女炎使い"
+
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "ドレークの粉砕者"
 
 #. [unit_type]: id=Drake Clasher, race=drake
-#: data/core/units/drakes/Clasher.cfg:18
+#: data/core/units/drakes/Clasher.cfg:19
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -1340,13 +1368,20 @@ msgstr ""
 "唯一の階級でもあります。このことにより、彼らは他のドレークとの領土争いを「解"
 "決」し、彼らの部族の掟を強制するのにとりわけ優れています。"
 
+#. [female]
+#: data/core/units/drakes/Clasher.cfg:111
+#, fuzzy
+#| msgid "Drake Clasher"
+msgid "female^Drake Clasher"
+msgstr "ドレークの粉砕者"
+
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "ドレークの執行官"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
-#: data/core/units/drakes/Enforcer.cfg:19
+#: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -1364,11 +1399,18 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/drakes/Enforcer.cfg:52
+#: data/core/units/drakes/Enforcer.cfg:53
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
 #: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "トライデント"
+
+#. [female]
+#: data/core/units/drakes/Enforcer.cfg:119
+#, fuzzy
+#| msgid "Drake Enforcer"
+msgid "female^Drake Enforcer"
+msgstr "ドレークの執行官"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -1376,7 +1418,7 @@ msgid "Drake Fighter"
 msgstr "ドレークの戦士"
 
 #. [unit_type]: id=Drake Fighter, race=drake
-#: data/core/units/drakes/Fighter.cfg:17
+#: data/core/units/drakes/Fighter.cfg:18
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
@@ -1389,11 +1431,18 @@ msgstr ""
 "族の剣士を恐れさせるでしょう。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:24
-#: data/core/units/drakes/Flameheart.cfg:30 data/core/units/drakes/Flare.cfg:29
-#: data/core/units/drakes/Warrior.cfg:25
+#: data/core/units/drakes/Fighter.cfg:25
+#: data/core/units/drakes/Flameheart.cfg:31 data/core/units/drakes/Flare.cfg:30
+#: data/core/units/drakes/Warrior.cfg:26
 msgid "war blade"
 msgstr "戦刀"
+
+#. [female]
+#: data/core/units/drakes/Fighter.cfg:64
+#, fuzzy
+#| msgid "Drake Fighter"
+msgid "female^Drake Fighter"
+msgstr "ドレークの戦士"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -1401,7 +1450,7 @@ msgid "Fire Drake"
 msgstr "火炎ドレーク"
 
 #. [unit_type]: id=Fire Drake, race=drake
-#: data/core/units/drakes/Fire.cfg:17
+#: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
 "Burners, the Fire Drakes trim their armor with silver. Though they have only "
@@ -1414,13 +1463,20 @@ msgstr ""
 "炎に人生を捧げ始めていますが、その生命力は彼らの皮膚を通して発散され、彼らの"
 "鱗を赤みがかった灰色に焦がします。"
 
+#. [female]
+#: data/core/units/drakes/Fire.cfg:62
+#, fuzzy
+#| msgid "Fire Drake"
+msgid "female^Fire Drake"
+msgstr "火炎ドレーク"
+
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "ドレークフレイムハート"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
-#: data/core/units/drakes/Flameheart.cfg:18
+#: data/core/units/drakes/Flameheart.cfg:19
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
 "combat, but prefer in any case to avoid confrontation within the tribe. "
@@ -1437,13 +1493,20 @@ msgstr ""
 "最も良い時を。フレイムハートが覇権のために部族の指導者に挑戦するのは時々しか"
 "なく、仲間のドレークの支援が得られると確信しているときだけです。"
 
+#. [female]
+#: data/core/units/drakes/Flameheart.cfg:66
+#, fuzzy
+#| msgid "Drake Flameheart"
+msgid "female^Drake Flameheart"
+msgstr "ドレークフレイムハート"
+
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "ドレークフレア"
 
 #. [unit_type]: id=Drake Flare, race=drake
-#: data/core/units/drakes/Flare.cfg:17
+#: data/core/units/drakes/Flare.cfg:18
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and in peace. "
@@ -1457,13 +1520,20 @@ msgstr ""
 "として受け入れるでしょうが、小さな戦闘部隊を指揮していたり、絶妙な手腕で争い"
 "を仲裁しているところがもっと良く見かけられます。"
 
+#. [female]
+#: data/core/units/drakes/Flare.cfg:65
+#, fuzzy
+#| msgid "Drake Flare"
+msgid "female^Drake Flare"
+msgstr "ドレークフレア"
+
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "滑空ドレーク"
 
 #. [unit_type]: id=Drake Glider, race=drake
-#: data/core/units/drakes/Glider.cfg:18
+#: data/core/units/drakes/Glider.cfg:19
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
 "robes of the Glider caste. The long forays to the far reaches of the tribal "
@@ -1491,11 +1561,18 @@ msgstr ""
 "事な翼をできるだけ敵から遠くに保ちながら、しっかりと戦うでしょう。"
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
-#: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/drakes/Glider.cfg:30 data/core/units/drakes/Hurricane.cfg:52
+#: data/core/units/drakes/Sky.cfg:51
 #: data/core/units/monsters/Wild_Wyvern.cfg:88
 msgid "slam"
 msgstr "強打"
+
+#. [female]
+#: data/core/units/drakes/Glider.cfg:66
+#, fuzzy
+#| msgid "Drake Glider"
+msgid "female^Drake Glider"
+msgstr "滑空ドレーク"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -1503,7 +1580,7 @@ msgid "Hurricane Drake"
 msgstr "ハリケーンドレーク"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
-#: data/core/units/drakes/Hurricane.cfg:18
+#: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
 "the lower members of their caste are relegated. They are an integral part of "
@@ -1520,13 +1597,20 @@ msgstr ""
 "緒の訓練が許されたために戦闘能力が向上しましたが、彼らの最大の強みはいまだそ"
 "の速度と飛行にあるのです。"
 
+#. [female]
+#: data/core/units/drakes/Hurricane.cfg:101
+#, fuzzy
+#| msgid "Hurricane Drake"
+msgid "female^Hurricane Drake"
+msgstr "ハリケーンドレーク"
+
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "インフェルノドレーク"
 
 #. [unit_type]: id=Inferno Drake, race=drake
-#: data/core/units/drakes/Inferno.cfg:19
+#: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
 "their tribes nearly as much as the draconic ancestors themselves. They can "
@@ -1540,13 +1624,20 @@ msgstr ""
 "まりました。彼らの赤い金の彫刻された鎧は、彼らが本当にドラゴンであるという錯"
 "覚を助長します。"
 
+#. [female]
+#: data/core/units/drakes/Inferno.cfg:64
+#, fuzzy
+#| msgid "Inferno Drake"
+msgid "female^Inferno Drake"
+msgstr "インフェルノドレーク"
+
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "飛行ドレーク"
 
 #. [unit_type]: id=Sky Drake, race=drake
-#: data/core/units/drakes/Sky.cfg:17
+#: data/core/units/drakes/Sky.cfg:18
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1559,13 +1650,20 @@ msgstr ""
 "て、彼らはしばしば長期間に渡って住み処を離れます。それぞれが可能な限り多くの"
 "獲物を持ち帰るよう励み、部族からの敬意を競います。"
 
+#. [female]
+#: data/core/units/drakes/Sky.cfg:98
+#, fuzzy
+#| msgid "Sky Drake"
+msgid "female^Sky Drake"
+msgstr "飛行ドレーク"
+
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
 msgstr "ドレークの処罰者"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
-#: data/core/units/drakes/Thrasher.cfg:18
+#: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
 "learned to redirect its weight to supplement their bodies’ momentum, adding "
@@ -1582,13 +1680,20 @@ msgstr ""
 "わないずんぐりした頭蓋でさえ武器となります。戦場で片が付くならば、処罰者は喜"
 "んで自分の階級の職務を果たします。"
 
+#. [female]
+#: data/core/units/drakes/Thrasher.cfg:118
+#, fuzzy
+#| msgid "Drake Thrasher"
+msgid "female^Drake Thrasher"
+msgstr "ドレークの処罰者"
+
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "ドレークの長官"
 
 #. [unit_type]: id=Drake Warden, race=drake
-#: data/core/units/drakes/Warden.cfg:18
+#: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
 "their ornate helms, modeled after their dragon ancestors, and the care with "
@@ -1606,7 +1711,7 @@ msgstr ""
 "は人間を真っ二つに裂けます。"
 
 #. [special_note]
-#: data/core/units/drakes/Warden.cfg:20
+#: data/core/units/drakes/Warden.cfg:21
 msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
@@ -1614,13 +1719,20 @@ msgstr ""
 "他のドレークと比較すると、ドレークの長官（Drake Warden）は「刺突」に対して高"
 "い耐性を持ちます。"
 
+#. [female]
+#: data/core/units/drakes/Warden.cfg:175
+#, fuzzy
+#| msgid "Drake Warden"
+msgid "female^Drake Warden"
+msgstr "ドレークの長官"
+
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "ドレークの熟練戦士"
 
 #. [unit_type]: id=Drake Warrior, race=drake
-#: data/core/units/drakes/Warrior.cfg:17
+#: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
 "tribe’s army. No special abilities or skills set them apart; only their "
@@ -1634,6 +1746,13 @@ msgstr ""
 "つ獣のような力と軍事訓練のみを頼りに、敵軍の中に活路を切り開くのです。彼らは"
 "セラミック板で覆った革鎧に身を包み、両手の甲に伝統的な戦刀を着けて、何世紀も"
 "そうしてきたように戦います。"
+
+#. [female]
+#: data/core/units/drakes/Warrior.cfg:58
+#, fuzzy
+#| msgid "Drake Warrior"
+msgid "female^Drake Warrior"
+msgstr "ドレークの熟練戦士"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8

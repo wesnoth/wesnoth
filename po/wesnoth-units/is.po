@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
+"POT-Creation-Date: 2023-11-20 17:23 UTC\n"
 "PO-Revision-Date: 2009-05-10 12:21-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -421,7 +421,7 @@ msgstr "bogi"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
-#: data/core/units/drakes/Burner.cfg:28
+#: data/core/units/drakes/Burner.cfg:29
 #: data/core/units/goblins/Direwolf_Rider.cfg:41
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
@@ -732,7 +732,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:45
-#: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
+#: data/core/units/drakes/Clasher.cfg:34 data/core/units/drakes/Thrasher.cfg:32
 #: data/core/units/dunefolk/Harrier.cfg:31
 #: data/core/units/dunefolk/Skirmisher.cfg:32
 #: data/core/units/dunefolk/Spearguard.cfg:30
@@ -941,8 +941,8 @@ msgstr "þyrnir"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:43
-#: data/core/units/drakes/Thrasher.cfg:40
+#: data/core/units/drakes/Enforcer.cfg:44
+#: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
 msgstr ""
 
@@ -1118,7 +1118,7 @@ msgid "Drake Arbiter"
 msgstr "Dreika Stríðsmaður"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
-#: data/core/units/drakes/Arbiter.cfg:17
+#: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes’ traditional "
@@ -1129,7 +1129,7 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/drakes/Arbiter.cfg:19
+#: data/core/units/drakes/Arbiter.cfg:20
 msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
@@ -1137,12 +1137,18 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Arbiter.cfg:36 data/core/units/drakes/Arbiter.cfg:45
-#: data/core/units/drakes/Warden.cfg:37 data/core/units/drakes/Warden.cfg:46
+#: data/core/units/drakes/Arbiter.cfg:37 data/core/units/drakes/Arbiter.cfg:46
+#: data/core/units/drakes/Warden.cfg:38 data/core/units/drakes/Warden.cfg:47
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
 msgstr "atgeiri"
+
+#. [female]
+#: data/core/units/drakes/Arbiter.cfg:174
+#, fuzzy
+msgid "female^Drake Arbiter"
+msgstr "Dreika Stríðsmaður"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
@@ -1150,7 +1156,7 @@ msgid "Armageddon Drake"
 msgstr "Eldhafs Dreiki"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
-#: data/core/units/drakes/Armageddon.cfg:19
+#: data/core/units/drakes/Armageddon.cfg:20
 #, fuzzy
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -1164,26 +1170,33 @@ msgstr ""
 "yfir ótrúlegum eldi."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:36 data/core/units/drakes/Fire.cfg:29
-#: data/core/units/drakes/Inferno.cfg:31
+#: data/core/units/drakes/Armageddon.cfg:37 data/core/units/drakes/Fire.cfg:30
+#: data/core/units/drakes/Inferno.cfg:32
 #, fuzzy
 msgid "battle claws"
 msgstr "stríðsöxi"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:45
-#: data/core/units/drakes/Blademaster.cfg:36
-#: data/core/units/drakes/Burner.cfg:37 data/core/units/drakes/Fighter.cfg:33
-#: data/core/units/drakes/Fire.cfg:38 data/core/units/drakes/Flameheart.cfg:39
-#: data/core/units/drakes/Flare.cfg:38 data/core/units/drakes/Glider.cfg:38
-#: data/core/units/drakes/Hurricane.cfg:60
-#: data/core/units/drakes/Inferno.cfg:40 data/core/units/drakes/Sky.cfg:59
-#: data/core/units/drakes/Warrior.cfg:34
+#: data/core/units/drakes/Armageddon.cfg:46
+#: data/core/units/drakes/Blademaster.cfg:37
+#: data/core/units/drakes/Burner.cfg:38 data/core/units/drakes/Fighter.cfg:34
+#: data/core/units/drakes/Fire.cfg:39 data/core/units/drakes/Flameheart.cfg:40
+#: data/core/units/drakes/Flare.cfg:39 data/core/units/drakes/Glider.cfg:39
+#: data/core/units/drakes/Hurricane.cfg:61
+#: data/core/units/drakes/Inferno.cfg:41 data/core/units/drakes/Sky.cfg:60
+#: data/core/units/drakes/Warrior.cfg:35
 #: data/core/units/monsters/Fire_Dragon.cfg:51
 #: data/core/units/monsters/Fire_Guardian.cfg:37
 #: data/core/units/monsters/Fire_Wraith.cfg:59
 msgid "fire breath"
 msgstr "eldspúði"
+
+#. [female]
+#: data/core/units/drakes/Armageddon.cfg:65
+#, fuzzy
+#| msgid "Armageddon Drake"
+msgid "female^Armageddon Drake"
+msgstr "Eldhafs Dreiki"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
@@ -1191,7 +1204,7 @@ msgid "Drake Blademaster"
 msgstr "Dreika Skylmingameistari"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
-#: data/core/units/drakes/Blademaster.cfg:19
+#: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -1202,11 +1215,18 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:27
-#: data/core/units/drakes/Clasher.cfg:24 data/core/units/drakes/Enforcer.cfg:34
-#: data/core/units/drakes/Thrasher.cfg:22
+#: data/core/units/drakes/Blademaster.cfg:28
+#: data/core/units/drakes/Clasher.cfg:25 data/core/units/drakes/Enforcer.cfg:35
+#: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
 msgstr ""
+
+#. [female]
+#: data/core/units/drakes/Blademaster.cfg:61
+#, fuzzy
+#| msgid "Drake Blademaster"
+msgid "female^Drake Blademaster"
+msgstr "Dreika Skylmingameistari"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -1214,7 +1234,7 @@ msgid "Drake Burner"
 msgstr "Dreika Brennir"
 
 #. [unit_type]: id=Drake Burner, race=drake
-#: data/core/units/drakes/Burner.cfg:17
+#: data/core/units/drakes/Burner.cfg:18
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -1225,13 +1245,20 @@ msgstr ""
 "hvað sterkastur í, sem leyfir þeim að spúa eldi. Þetta, laggt saman við "
 "stærðina eina á klónun þeirra, gerir þá stórhættulega óvini í bardaga."
 
+#. [female]
+#: data/core/units/drakes/Burner.cfg:67
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Drake Burner"
+msgstr "Dreika Brennir"
+
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "Dreika Skylmingamaður"
 
 #. [unit_type]: id=Drake Clasher, race=drake
-#: data/core/units/drakes/Clasher.cfg:18
+#: data/core/units/drakes/Clasher.cfg:19
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -1246,13 +1273,20 @@ msgid ""
 "and enforcing the laws of their tribe."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Clasher.cfg:111
+#, fuzzy
+#| msgid "Drake Clasher"
+msgid "female^Drake Clasher"
+msgstr "Dreika Skylmingamaður"
+
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "Dreika Einherji"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
-#: data/core/units/drakes/Enforcer.cfg:19
+#: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -1264,11 +1298,18 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/drakes/Enforcer.cfg:52
+#: data/core/units/drakes/Enforcer.cfg:53
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
 #: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "gaffall"
+
+#. [female]
+#: data/core/units/drakes/Enforcer.cfg:119
+#, fuzzy
+#| msgid "Drake Enforcer"
+msgid "female^Drake Enforcer"
+msgstr "Dreika Einherji"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -1276,7 +1317,7 @@ msgid "Drake Fighter"
 msgstr "Dreika Stríðsmaður"
 
 #. [unit_type]: id=Drake Fighter, race=drake
-#: data/core/units/drakes/Fighter.cfg:17
+#: data/core/units/drakes/Fighter.cfg:18
 #, fuzzy
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
@@ -1290,12 +1331,19 @@ msgstr ""
 "ógnandi til sverðmanns af hvaða tegund sem er."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:24
-#: data/core/units/drakes/Flameheart.cfg:30 data/core/units/drakes/Flare.cfg:29
-#: data/core/units/drakes/Warrior.cfg:25
+#: data/core/units/drakes/Fighter.cfg:25
+#: data/core/units/drakes/Flameheart.cfg:31 data/core/units/drakes/Flare.cfg:30
+#: data/core/units/drakes/Warrior.cfg:26
 #, fuzzy
 msgid "war blade"
 msgstr "banablað"
+
+#. [female]
+#: data/core/units/drakes/Fighter.cfg:64
+#, fuzzy
+#| msgid "Drake Fighter"
+msgid "female^Drake Fighter"
+msgstr "Dreika Stríðsmaður"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -1303,7 +1351,7 @@ msgid "Fire Drake"
 msgstr "Eld Dreiki"
 
 #. [unit_type]: id=Fire Drake, race=drake
-#: data/core/units/drakes/Fire.cfg:17
+#: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
 "Burners, the Fire Drakes trim their armor with silver. Though they have only "
@@ -1312,13 +1360,20 @@ msgid ""
 "gray."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Fire.cfg:62
+#, fuzzy
+#| msgid "Fire Drake"
+msgid "female^Fire Drake"
+msgstr "Eld Dreiki"
+
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "Dreika Eldhjarta"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
-#: data/core/units/drakes/Flameheart.cfg:18
+#: data/core/units/drakes/Flameheart.cfg:19
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
 "combat, but prefer in any case to avoid confrontation within the tribe. "
@@ -1329,13 +1384,20 @@ msgid ""
 "drakes."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Flameheart.cfg:66
+#, fuzzy
+#| msgid "Drake Flameheart"
+msgid "female^Drake Flameheart"
+msgstr "Dreika Eldhjarta"
+
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "Dreika Blys"
 
 #. [unit_type]: id=Drake Flare, race=drake
-#: data/core/units/drakes/Flare.cfg:17
+#: data/core/units/drakes/Flare.cfg:18
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and in peace. "
@@ -1344,13 +1406,20 @@ msgid ""
 "with a subtle hand."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Flare.cfg:65
+#, fuzzy
+#| msgid "Drake Flare"
+msgid "female^Drake Flare"
+msgstr "Dreika Blys"
+
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr ""
 
 #. [unit_type]: id=Drake Glider, race=drake
-#: data/core/units/drakes/Glider.cfg:18
+#: data/core/units/drakes/Glider.cfg:19
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
 "robes of the Glider caste. The long forays to the far reaches of the tribal "
@@ -1367,11 +1436,18 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
-#: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/drakes/Glider.cfg:30 data/core/units/drakes/Hurricane.cfg:52
+#: data/core/units/drakes/Sky.cfg:51
 #: data/core/units/monsters/Wild_Wyvern.cfg:88
 msgid "slam"
 msgstr ""
+
+#. [female]
+#: data/core/units/drakes/Glider.cfg:66
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Drake Glider"
+msgstr "Dreika Brennir"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -1379,7 +1455,7 @@ msgid "Hurricane Drake"
 msgstr ""
 
 #. [unit_type]: id=Hurricane Drake, race=drake
-#: data/core/units/drakes/Hurricane.cfg:18
+#: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
 "the lower members of their caste are relegated. They are an integral part of "
@@ -1390,13 +1466,20 @@ msgid ""
 "still lies in their speed and flight."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Hurricane.cfg:101
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Hurricane Drake"
+msgstr "Dreika Brennir"
+
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr ""
 
 #. [unit_type]: id=Inferno Drake, race=drake
-#: data/core/units/drakes/Inferno.cfg:19
+#: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
 "their tribes nearly as much as the draconic ancestors themselves. They can "
@@ -1405,13 +1488,20 @@ msgid ""
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Inferno.cfg:64
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Inferno Drake"
+msgstr "Dreika Brennir"
+
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr ""
 
 #. [unit_type]: id=Sky Drake, race=drake
-#: data/core/units/drakes/Sky.cfg:17
+#: data/core/units/drakes/Sky.cfg:18
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1420,6 +1510,13 @@ msgid ""
 "of their tribe."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Sky.cfg:98
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Sky Drake"
+msgstr "Dreika Brennir"
+
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 #, fuzzy
@@ -1427,7 +1524,7 @@ msgid "Drake Thrasher"
 msgstr "Dreika Skylmingamaður"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
-#: data/core/units/drakes/Thrasher.cfg:18
+#: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
 "learned to redirect its weight to supplement their bodies’ momentum, adding "
@@ -1437,13 +1534,19 @@ msgid ""
 "can be done on the battlefield."
 msgstr ""
 
+#. [female]
+#: data/core/units/drakes/Thrasher.cfg:118
+#, fuzzy
+msgid "female^Drake Thrasher"
+msgstr "Dreika Skylmingamaður"
+
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr ""
 
 #. [unit_type]: id=Drake Warden, race=drake
-#: data/core/units/drakes/Warden.cfg:18
+#: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
 "their ornate helms, modeled after their dragon ancestors, and the care with "
@@ -1455,11 +1558,18 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/drakes/Warden.cfg:20
+#: data/core/units/drakes/Warden.cfg:21
 msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+
+#. [female]
+#: data/core/units/drakes/Warden.cfg:175
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Drake Warden"
+msgstr "Dreika Brennir"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1467,7 +1577,7 @@ msgid "Drake Warrior"
 msgstr ""
 
 #. [unit_type]: id=Drake Warrior, race=drake
-#: data/core/units/drakes/Warrior.cfg:17
+#: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
 "tribe’s army. No special abilities or skills set them apart; only their "
@@ -1476,6 +1586,13 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+
+#. [female]
+#: data/core/units/drakes/Warrior.cfg:58
+#, fuzzy
+#| msgid "Drake Burner"
+msgid "female^Drake Warrior"
+msgstr "Dreika Brennir"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8

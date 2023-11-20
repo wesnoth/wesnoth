@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-11-20 11:23-0600\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -10272,7 +10272,7 @@ msgstr[1] "$num segundos"
 # File: src/gui/auxiliary/canvas.cpp, line: 1092
 # File: src/gui/auxiliary/canvas.cpp, line: 1102
 # File: src/gui/auxiliary/canvas.cpp, line: 1109
-#: src/gui/core/canvas.cpp:272
+#: src/gui/core/canvas.cpp:273
 msgid "Image doesn't fit on canvas."
 msgstr "Imagem não cabe na tela."
 
@@ -10280,7 +10280,7 @@ msgstr "Imagem não cabe na tela."
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
-#: src/gui/core/canvas.cpp:413
+#: src/gui/core/canvas.cpp:414
 msgid "Text has a font size of 0."
 msgstr "Tamanho de fonte do texto é 0."
 
@@ -10849,17 +10849,37 @@ msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidades do atacante vs"
 
 #
-# File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-# File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-# File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
+# File: data/gui/default/window/title_screen.cfg, line: 257
+# File: data/gui/default/window/title_screen.cfg, line: 257
+# File: data/gui/default/window/title_screen.cfg, line: 257
+#: src/gui/dialogs/campaign_selection.cpp:354
+#, fuzzy
+#| msgid "Campaigns"
+msgid "Missing Campaigns"
+msgstr "Campanhas"
+
+#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
 #: src/gui/dialogs/campaign_selection.cpp:365
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+
+#
+# File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
+# File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
+# File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
+#: src/gui/dialogs/campaign_selection.cpp:395
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "Nenhum"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:141
-#: src/gui/dialogs/gamestate_inspector.cpp:417
+#: src/gui/dialogs/gamestate_inspector.cpp:418
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192

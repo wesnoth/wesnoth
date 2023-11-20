@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-11-20 11:23-0600\n"
 "PO-Revision-Date: 2022-05-31 09:41+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -2142,8 +2142,8 @@ msgstr "玩法"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:475
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:474
+#: src/help/help_topic_generators.cpp:497
 msgid "Traits"
 msgstr "特質"
 
@@ -6383,19 +6383,19 @@ msgstr ""
 "這個單位能夠緩速他的敵人，使他們的移動速度和攻擊傷害減半，直到他們結束一個回"
 "合。"
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
-#. [damage]: id=arcane_damage
+#. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
@@ -8000,7 +8000,7 @@ msgstr ""
 "單位招募到這個格子上。"
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:600
 msgid "Special Notes:"
 msgstr "特別備註："
 
@@ -8020,154 +8020,154 @@ msgstr "防禦性質："
 msgid "Level"
 msgstr "等級"
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:357
 msgid "Advances from: "
 msgstr "升級自："
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:359
 msgid "Advances to: "
 msgstr "升級成："
 
-#: src/help/help_topic_generators.cpp:389
+#: src/help/help_topic_generators.cpp:388
 msgid "Base unit: "
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:393
 msgid "Base units: "
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:411
 msgid "Variations: "
 msgstr "變體："
 
-#: src/help/help_topic_generators.cpp:436
+#: src/help/help_topic_generators.cpp:435
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:437
 msgid "Race: "
 msgstr "種族："
 
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:507
 msgid "Abilities: "
 msgstr "技能："
 
-#: src/help/help_topic_generators.cpp:534
+#: src/help/help_topic_generators.cpp:533
 msgid "Ability Upgrades: "
 msgstr "技能升級："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:563
 msgid "HP:"
 msgstr "生命值："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:567
 msgid "Moves:"
 msgstr "移動點數："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:572
 msgid "Vision:"
 msgstr "視野："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:578
 msgid "Jamming:"
 msgstr "干擾："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:583
 msgid "Cost:"
 msgstr "價格："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:587
 msgid "Alignment:"
 msgstr "立場："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:595
+#: src/help/help_topic_generators.cpp:594
 msgid "Required XP:"
 msgstr "升級所需經驗值："
 
-#: src/help/help_topic_generators.cpp:613
+#: src/help/help_topic_generators.cpp:612
 msgid "unit help^Attacks"
 msgstr "攻擊招數"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 msgid "unit help^Name"
 msgstr "名稱"
 
 # 這用來表示幫助中單位頁的「傷害×次數」那行。
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:620
 msgid "Strikes"
 msgstr "傷害×次數"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:621
 msgid "Range"
 msgstr "範圍"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:622
 msgid "Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 msgid "Special"
 msgstr "特殊效果"
 
-#: src/help/help_topic_generators.cpp:699
+#: src/help/help_topic_generators.cpp:698
 msgid "Resistances"
 msgstr "抗性"
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:702
 msgid "Attack Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:703
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:733
 msgid "Terrain Modifiers"
 msgstr "地形影響"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:738
 msgid "Defense"
 msgstr "防禦力"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
 msgstr "移動成本"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
 msgstr "防禦上限"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
 msgstr "視野成本"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
 msgstr "干擾成本"
 
