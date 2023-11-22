@@ -682,7 +682,7 @@ void window::update_render_textures()
 	// Clear the entire texture.
 	{
 		auto setter = draw::set_render_target(render_buffer_);
-		draw::fill(0,0,0,0);
+		draw::clear();
 	}
 
 	// Rerender everything.
