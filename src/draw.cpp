@@ -38,6 +38,16 @@ static SDL_Renderer* renderer()
 /* basic drawing and pixel primatives */
 /**************************************/
 
+void draw::clear()
+{
+	DBG_D << "clear";
+	SDL_BlendMode b;
+	SDL_GetRenderDrawBlendMode(renderer(), &b);
+	SDL_SetRenderDrawBlendMode(renderer(), SDL_BLENDMODE_NONE);
+	fill(0, 0, 0, 0);
+	SDL_SetRenderDrawBlendMode(renderer(), b);
+}
+
 void draw::fill(
 	const SDL_Rect& area,
 	uint8_t r, uint8_t g, uint8_t b, uint8_t a)
