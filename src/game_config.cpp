@@ -91,18 +91,28 @@ bool
 const bool& debug = debug_impl;
 
 void set_debug(bool new_debug) {
+    int severity;
+    lg::get_log_domain_severity("deprecation", severity);
+    int delta_severity; // change in severity
+    switch(severity) {
+        case -1: // LG_DISABLED, hence don't change
+            delta_severity = 0;
+            break;
+        case 0: // LG_ERROR
+        case 1: // LG_WARN
+        case 2: // LG_INFO
+        case 3: // LG_DEBUG
+            delta_severity = 2;
+            break;
+        default: // undefined case, hence don't change
+            delta_severity = 0;
+    }
 	if(debug_impl && !new_debug) {
 		// Turning debug mode off; decrease deprecation severity
-		int severity;
-		if(lg::get_log_domain_severity("deprecation", severity)) {
-			lg::set_log_domain_severity("deprecation", severity - 2);
-		}
+        lg::set_log_domain_severity("deprecation", severity - delta_severity);
 	} else if(!debug_impl && new_debug) {
 		// Turning debug mode on; increase deprecation severity
-		int severity;
-		if(lg::get_log_domain_severity("deprecation", severity)) {
-			lg::set_log_domain_severity("deprecation", severity + 2);
-		}
+        lg::set_log_domain_severity("deprecation", severity + delta_severity);
 	}
 	debug_impl = new_debug;
 }

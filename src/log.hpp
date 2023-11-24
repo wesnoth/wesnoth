@@ -74,6 +74,7 @@ const unsigned max_logs = 8;
 
 enum severity
 {
+    LG_DISABLED=-1,
 	LG_ERROR=0,
 	LG_WARN=1,
 	LG_INFO=2,
