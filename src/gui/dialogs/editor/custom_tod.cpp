@@ -79,6 +79,7 @@ void custom_tod::pre_show(window& window)
 	};
 
 	window.add_to_tab_order(find_widget<text_box>(&window, "tod_name", false, true));
+	window.add_to_tab_order(find_widget<text_box>(&window, "tod_desc", false, true));
 	window.add_to_tab_order(find_widget<text_box>(&window, "tod_id", false, true));
 
 	for(const auto& data : metadata_stuff) {
@@ -269,6 +270,7 @@ void custom_tod::update_selected_tod_info()
 	const time_of_day& current_tod = get_selected_tod();
 
 	find_widget<text_box>(get_window(), "tod_name", false).set_value(current_tod.name);
+	find_widget<text_box>(get_window(), "tod_desc", false).set_value(current_tod.description);
 	find_widget<text_box>(get_window(), "tod_id", false).set_value(current_tod.id);
 
 	find_widget<text_box>(get_window(), "path_image", false).set_value(current_tod.image);
@@ -299,6 +301,7 @@ void custom_tod::update_schedule()
 {
 	/* Update times_ with values from the dialog */
 	times_[current_tod_].name = find_widget<text_box>(get_window(), "tod_name", false).get_value();
+	times_[current_tod_].description = find_widget<text_box>(get_window(), "tod_desc", false).get_value();
 	times_[current_tod_].id = find_widget<text_box>(get_window(), "tod_id", false).get_value();
 
 	times_[current_tod_].image = find_widget<text_box>(get_window(), "path_image", false).get_value();
