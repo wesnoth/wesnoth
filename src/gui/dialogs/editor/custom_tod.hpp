@@ -56,6 +56,8 @@ public:
 	using string_pair = std::pair<std::string, std::string>;
 	using tod_attribute_getter = std::function<string_pair(const time_of_day&)>;
 
+	const std::vector<time_of_day> get_schedule();
+
 private:
 	virtual const std::string& window_id() const override;
 
@@ -73,7 +75,13 @@ private:
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
 	void select_file(const std::string& default_dir);
 
-	void color_slider_callback();
+	/* Three callbacks for three sliders
+	 * Using only one function results in two remaining
+	 * sliders not being updated.
+	 */
+	void color_slider_r_callback();
+	void color_slider_g_callback();
+	void color_slider_b_callback();
 
 	void update_tod_display();
 
@@ -85,6 +93,9 @@ private:
 	void update_selected_tod_info();
 
 	void copy_to_clipboard_callback(tod_attribute_getter getter);
+
+	/** Update current TOD with values from the GUI */
+	void update_schedule();
 
 	/** Available time_of_days */
 	std::vector<time_of_day> times_;

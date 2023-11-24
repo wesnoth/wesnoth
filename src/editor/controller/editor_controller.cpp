@@ -232,8 +232,11 @@ void editor_controller::custom_tods_dialog()
 
 	tod_manager& manager = *get_current_map_context().get_time_manager();
 
-	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time())) {
-		// TODO save the new tod here
+	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time());
+
+	if(tod_dlg.show()) {
+		/* Save the new schedule */
+		get_current_map_context().replace_schedule(tod_dlg.get_schedule());
 	}
 
 	gui_->update_tod();

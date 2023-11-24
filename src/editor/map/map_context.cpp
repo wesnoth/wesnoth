@@ -777,7 +777,46 @@ config map_context::to_config()
 	return scen;
 }
 
-bool map_context::save_scenario()
+void map_context::save_schedule()
+{
+	/* Create schedule config */
+	config schedule;
+	config& editor_times = schedule.add_child("editor_times");
+	config times = tod_manager_->to_config();
+	for(const config& time : times.child_range("time")) {
+		config& t = editor_times.add_child("time");
+		t.append(time);
+	}
+
+	/* Write to file */
+	try {
+		std::stringstream wml_stream;
+		wml_stream
+			<< "# This file was generated using the scenario editor.\n"
+			<< "#\n"
+			<< "#ifdef EDITOR\n";
+
+		{
+			config_writer out(wml_stream, false);
+			out.write(schedule);
+		}
+
+		wml_stream << "#endif";
+
+		if(!wml_stream.str().empty()) {
+			filesystem::write_file(filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg", wml_stream.str());
+		}
+
+	} catch(const filesystem::io_exception& e) {
+		utils::string_map symbols;
+		symbols["msg"] = e.what();
+		const std::string msg = VGETTEXT("Could not save current schedule: $msg", symbols);
+
+		throw editor_map_save_exception(msg);
+	}
+}
+
+void map_context::save_scenario()
 {
 	assert(!is_embedded());
 
@@ -808,6 +847,9 @@ bool map_context::save_scenario()
 			filesystem::write_file(get_filename(), wml_stream.str());
 		}
 
+		/* Writing current schedule */
+		save_schedule();
+
 		clear_modified();
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
@@ -819,13 +861,9 @@ bool map_context::save_scenario()
 
 	// After saving the map as a scenario, it's no longer a pure map.
 	pure_map_ = false;
-
-	// TODO the return value of this method does not need to be boolean.
-	// We either return true or there is an exception thrown.
-	return true;
 }
 
-bool map_context::save_map()
+void map_context::save_map()
 {
 	std::string map_data = map_.write();
 
@@ -861,10 +899,6 @@ bool map_context::save_map()
 
 		throw editor_map_save_exception(msg);
 	}
-
-	// TODO the return value of this method does not need to be boolean.
-	// We either return true or there is an exception thrown.
-	return true;
 }
 
 void map_context::set_map(const editor_map& map)
