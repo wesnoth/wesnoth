@@ -301,7 +301,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_SCROLL_RIGHT:
 			return true; //general hotkeys we can always do
 
-		case hotkey::HOTKEY_UNIT_LIST:
+		case HOTKEY_UNIT_LIST:
 			return !get_current_map_context().units().empty();
 
 		case HOTKEY_STATUS_TABLE:
@@ -333,13 +333,16 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			return get_current_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_QUIT_TO_DESKTOP:
-		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
+
+		// Only enable when editing a scenario
+		case HOTKEY_EDITOR_CUSTOM_TODS:
+			return !get_current_map_context().is_pure_map();
 
 		case HOTKEY_EDITOR_PBL:
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
@@ -533,17 +536,17 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_movement_coding()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_terrain_coding()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_draw_units()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_draw_terrain()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_ZOOM_DEFAULT:
-		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_NULL:
 		switch (active_menu_) {
@@ -604,14 +607,14 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 
 bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
-	SCOPE_ED;
 	using namespace hotkey;
+	HOTKEY_COMMAND command = cmd.hotkey_command;
+	SCOPE_ED;
 	int index = cmd.index;
 
 	// nothing here handles release; fall through to base implementation
 	if (!press) {
-		return hotkey::command_executor::do_execute_command(cmd, press, release);
+		return command_executor::do_execute_command(cmd, press, release);
 	}
 
 	switch (command) {
