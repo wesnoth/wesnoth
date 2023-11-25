@@ -9,7 +9,7 @@
  ### Terrain
  ### Translations
    * Updated translations: Welsh
-   * Updated translations: Arabic, British English, Chinese (Simplified), Czech, Japanese, Polish, Slovak
+   * Updated translations: Arabic, British English, Chinese (Simplified), Czech, French, Japanese, Polish, Slovak
  ### Units
  ### User interface
  ### WML Engine
