@@ -124,6 +124,10 @@ void custom_tod::pre_show(window& window)
 			find_widget<button>(&window, "delete", false),
 			std::bind(&custom_tod::do_delete_tod, this));
 
+	connect_signal_mouse_left_click(
+				find_widget<button>(&window, "preview", false),
+				std::bind(&custom_tod::preview_schedule, this));
+
 	connect_signal_notify_modified(
 			find_widget<slider>(&window, "lawful_bonus", false),
 			std::bind(&custom_tod::update_lawful_bonus, this));
@@ -297,6 +301,12 @@ void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
 	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
 }
 
+/** Quickly preview the schedule changes and color */
+void custom_tod::preview_schedule()
+{
+	update_map_and_schedule_(times_);
+}
+
 void custom_tod::update_schedule()
 {
 	/* Update times_ with values from the dialog */
@@ -319,6 +329,11 @@ const std::vector<time_of_day> custom_tod::get_schedule()
 {
 	update_schedule();
 	return times_;
+}
+
+void custom_tod::register_callback(std::function<void(std::vector<time_of_day>)> update_func)
+{
+	update_map_and_schedule_ = update_func;
 }
 
 void custom_tod::post_show(window& /*window*/)

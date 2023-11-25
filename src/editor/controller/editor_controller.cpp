@@ -231,16 +231,33 @@ void editor_controller::custom_tods_dialog()
 	}
 
 	tod_manager& manager = *get_current_map_context().get_time_manager();
+	std::vector<time_of_day> prev_schedule = manager.times();
 
 	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time());
 
+	/* Register callback to the dialog so that the map changes can be
+	 * previewed in real time.
+	 */
+	std::function<void(std::vector<time_of_day>)> update_func(
+				std::bind(
+						&editor::editor_controller::update_map_schedule,
+						this,
+						std::placeholders::_1));
+	tod_dlg.register_callback(update_func);
+
 	if(tod_dlg.show()) {
 		/* Save the new schedule */
-		get_current_map_context().replace_schedule(tod_dlg.get_schedule());
+		update_map_schedule(tod_dlg.get_schedule());
+	} else {
+		/* Restore old schedule */
+		update_map_schedule(prev_schedule);
 	}
+}
 
+void editor_controller::update_map_schedule(std::vector<time_of_day> schedule)
+{
+	get_current_map_context().replace_schedule(schedule);
 	gui_->update_tod();
-
 	context_manager_->refresh_all();
 }
 

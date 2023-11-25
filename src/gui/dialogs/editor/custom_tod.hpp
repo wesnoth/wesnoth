@@ -16,9 +16,11 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "editor/controller/editor_controller.hpp"
 #include "time_of_day.hpp"
 
 #include <vector>
+#include <functional>
 
 namespace gui2
 {
@@ -56,7 +58,11 @@ public:
 	using string_pair = std::pair<std::string, std::string>;
 	using tod_attribute_getter = std::function<string_pair(const time_of_day&)>;
 
+	/** Return current schedule */
 	const std::vector<time_of_day> get_schedule();
+    
+    /** Register callback for update */
+    void register_callback(std::function<void(std::vector<time_of_day>)>);
 
 private:
 	virtual const std::string& window_id() const override;
@@ -72,6 +78,9 @@ private:
 	void do_new_tod();
 	void do_delete_tod();
 
+	/** Callback for preview button */
+	void preview_schedule();
+
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
 	void select_file(const std::string& default_dir);
 
@@ -82,6 +91,9 @@ private:
 	void color_slider_r_callback();
 	void color_slider_g_callback();
 	void color_slider_b_callback();
+
+    /* Update map and schedule in realtime */
+	std::function<void(std::vector<time_of_day>)> update_map_and_schedule_;
 
 	void update_tod_display();
 

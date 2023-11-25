@@ -57,11 +57,11 @@ void time_of_day::write(config& cfg) const
 	cfg["green"] = color.g;
 	cfg["blue"] = color.b;
 	cfg["image"] = image;
-	cfg["name"] = name;
+	cfg["name"] = name; // TODO : Mark translatable
 	cfg["id"] = id;
 
 	// Optional keys
-	cfg["description"].write_if_not_empty(description);
+	cfg["description"].write_if_not_empty(description); // TODO : Mark translatable
 	cfg["mask"].write_if_not_empty(image_mask);
 	cfg["sound"].write_if_not_empty(sounds);
 }
