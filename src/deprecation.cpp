@@ -21,11 +21,7 @@
 #include "game_version.hpp"
 
 // Set the default severity with the second parameter.
-// -1 means the default is to never log on this domain.
-// 0 would mean log errors only.
-// 1 would mean log errors and warnings.
-// and so on and so on.
-static lg::log_domain log_deprecate("deprecation", 0);
+static lg::log_domain log_deprecate("deprecation", default_deprecation_severity);
 
 std::string deprecated_message(
 		const std::string& elem_name, DEP_LEVEL level, const version_info& version, const std::string& detail)

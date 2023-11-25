@@ -20,6 +20,12 @@
 /** See https://wiki.wesnoth.org/CompatibilityStandards for more info. */
 enum class DEP_LEVEL : uint8_t { INDEFINITE = 1, PREEMPTIVE, FOR_REMOVAL, REMOVED };
 
+// -1 means the default is to never log on this domain.
+// 0 would mean log errors only.
+// 1 would mean log errors and warnings.
+// and so on and so on.
+const static int default_deprecation_severity = 0;
+
 /**
  * Prints a message to the deprecation log domain informing players that a given feature
  * has been deprecated.

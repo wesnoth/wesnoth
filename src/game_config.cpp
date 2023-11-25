@@ -23,6 +23,7 @@
 #include "game_version.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
+#include "deprecation.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -93,28 +94,16 @@ const bool& debug = debug_impl;
 void set_debug(bool new_debug) {
     int severity;
     lg::get_log_domain_severity("deprecation", severity);
-    int delta_severity; // change in severity
-    switch(severity) {
-        case -1: // LG_DISABLED, hence don't change
-            delta_severity = 0;
-            break;
-        case 0: // LG_ERROR
-        case 1: // LG_WARN
-        case 2: // LG_INFO
-        case 3: // LG_DEBUG
-            delta_severity = 2;
-            break;
-        default: // undefined case, hence don't change
-            delta_severity = 0;
+    if(severity != -1){ // if deprecation logging not disabled
+        if(debug_impl && !new_debug) {
+            // Turning debug mode off; reset to default deprecation severity
+            lg::set_log_domain_severity("deprecation", default_deprecation_severity);
+        } else if(!debug_impl && new_debug) {
+            // Turning debug mode on; increase deprecation severity
+            lg::set_log_domain_severity("deprecation", default_deprecation_severity + 2);
+        }
+        debug_impl = new_debug;
     }
-	if(debug_impl && !new_debug) {
-		// Turning debug mode off; decrease deprecation severity
-        lg::set_log_domain_severity("deprecation", severity - delta_severity);
-	} else if(!debug_impl && new_debug) {
-		// Turning debug mode on; increase deprecation severity
-        lg::set_log_domain_severity("deprecation", severity + delta_severity);
-	}
-	debug_impl = new_debug;
 }
 
 //
