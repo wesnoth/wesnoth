@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2023-11-01 14:45+0100\n"
-"Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
+"PO-Revision-Date: 2023-11-22 15:07+0100\n"
+"Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
@@ -6818,10 +6818,8 @@ msgid "Attacker vulnerability vs"
 msgstr "Zraniteľnosť útočníka vs."
 
 #: src/gui/dialogs/campaign_selection.cpp:354
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Výpravy"
+msgstr "Chýbajúce kampane"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
@@ -6832,6 +6830,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth bežne obsahuje viac ako 15 hlavných kampaní, a to ešte pred "
+"inštaláciou niektorej zo servera doplnkov. Ak ste hru nainštalovali "
+"prostredníctvom správcu balíkov, pravdepodobne existuje samostatný balík na "
+"inštaláciu úplných údajov o hre."
 
 #: src/gui/dialogs/campaign_selection.cpp:395
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
