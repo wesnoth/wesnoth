@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,10 +50,6 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
-	void scroll_bottom();
-
-//TODO
-//	void swap();
 
 	void adjust_size();
 

@@ -64,9 +64,16 @@ local function determine_advantage()
 		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], other_side_number = winning_sides[2]}
 		result = "tie"
 	end
+	if dialog_type == "turnsover" then
 	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-	local a, b = gui.show_popup(_ "dialog^Turns Over", side_comparison)
+		local a, b = gui.show_popup(_ "dialog^Turns Over", side_comparison)
+	else
+		local a, b = gui.show_popup(_ "dialog^Advantage", side_comparison)
+	end
 	return result
 end
 
+arg={...}
+-- There need to be two different dialog titles, but the title is not passed directly as a string because it wouldn't be translatable in that case.
+dialog_type=arg[1]
 return determine_advantage()

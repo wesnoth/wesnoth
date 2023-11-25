@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "serialization/parser.hpp"
@@ -210,9 +209,7 @@ const std::string help_msg =
 
 server::server(int port,
 		bool keep_alive,
-		const std::string& config_file,
-		std::size_t /*min_threads*/,
-		std::size_t /*max_threads*/)
+		const std::string& config_file)
 	: server_base(port, keep_alive)
 	, ban_manager_()
 	, ip_log_()
@@ -530,13 +527,13 @@ void server::load_config()
 	user_handler_.reset();
 
 #ifdef HAVE_MYSQLPP
-	if(const config& user_handler = cfg_.child("user_handler")) {
+	if(auto user_handler = cfg_.optional_child("user_handler")) {
 		if(server_id_ == "") {
 			ERR_SERVER << "The server id must be set when database support is used";
 			exit(1);
 		}
 
-		user_handler_.reset(new fuh(user_handler));
+		user_handler_.reset(new fuh(*user_handler));
 		uuid_ = user_handler_->get_uuid();
 		tournaments_ = user_handler_->get_tournaments();
 	}
@@ -1145,13 +1142,10 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 			int offset = request->attr("offset").to_int();
 			int player_id = 0;
 
-			// if no search_for attribute -> get the requestor's forum id
 			// if search_for attribute for offline player -> query the forum database for the forum id
 			// if search_for attribute for online player -> get the forum id from wesnothd's player info
-			if(!request->has_attr("search_for")) {
-				player_id = player->info().config_address()->attr("forum_id").to_int();
-			} else {
-				std::string player_name = request->attr("search_for").to_string();
+			if(request->has_attr("search_player") && request->attr("search_player").to_string() != "") {
+				std::string player_name = request->attr("search_player").to_string();
 				auto player_ptr = player_connections_.get<name_t>().find(player_name);
 				if(player_ptr == player_connections_.get<name_t>().end()) {
 					player_id = user_handler_->get_forum_id(player_name);
@@ -1160,10 +1154,12 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 				}
 			}
 
-			if(player_id != 0) {
-				LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`.";
-				user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset);
-			}
+			std::string search_game_name = request->attr("search_game_name").to_string();
+			int search_content_type = request->attr("search_content_type").to_int();
+			std::string search_content = request->attr("search_content").to_string();
+			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
+					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
+			user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset, search_game_name, search_content_type, search_content);
 		}
 		return;
 	}
@@ -1742,7 +1738,27 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 						source = "Default";
 					}
 				}
-				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
+
+				// approximately determine leader(s) for the side like the client does
+				// useful generally to know how often leaders are used vs other leaders
+				// also as an indication for which faction was chosen if a custom recruit list is provided since that results in "Custom" in the faction field
+				std::vector<std::string> leaders;
+				// if a type= attribute is specified for the side, add it
+				if(side.attr("type") != "") {
+					leaders.emplace_back(side.attr("type").to_string());
+				}
+				// add each [unit] in the side that has canrecruit=yes
+				for(const auto unit : side.children("unit")) {
+					if(unit->attr("canrecruit") == "yes") {
+						leaders.emplace_back(unit->attr("type").to_string());
+					}
+				}
+				// add any [leader] specified for the side
+				for(const auto leader : side.children("leader")) {
+					leaders.emplace_back(leader->attr("type").to_string());
+				}
+
+				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string(), utils::join(leaders));
 			}
 		}
 
@@ -2973,8 +2989,6 @@ int main(int argc, char** argv)
 {
 	int port = 15000;
 	bool keep_alive = false;
-	std::size_t min_threads = 5;
-	std::size_t max_threads = 0;
 
 	srand(static_cast<unsigned>(std::time(nullptr)));
 
@@ -3049,7 +3063,6 @@ int main(int argc, char** argv)
 					  << "                             Available levels: error, warning, info, debug.\n"
 					  << "  -p, --port <port>          Binds the server to the specified port.\n"
 					  << "  --keepalive                Enable TCP keepalive.\n"
-					  << "  -t, --threads <n>          Uses n worker threads for network I/O (default: 5).\n"
 					  << "  -v  --verbose              Turns on more verbose logging.\n"
 					  << "  -V, --version              Returns the server version.\n"
 					  << "  -w, --dump-wml             Print all WML sent to clients to stdout.\n";
@@ -3073,13 +3086,6 @@ int main(int argc, char** argv)
 
 			setsid();
 #endif
-		} else if((val == "--threads" || val == "-t") && arg + 1 != argc) {
-			min_threads = atoi(argv[++arg]);
-			if(min_threads > 30) {
-				min_threads = 30;
-			}
-		} else if((val == "--max-threads" || val == "-T") && arg + 1 != argc) {
-			max_threads = atoi(argv[++arg]);
 		} else if(val == "--request_sample_frequency" && arg + 1 != argc) {
 			wesnothd::request_sample_frequency = atoi(argv[++arg]);
 		} else {
@@ -3088,5 +3094,5 @@ int main(int argc, char** argv)
 		}
 	}
 
-	return wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
+	return wesnothd::server(port, keep_alive, config_file).run();
 }

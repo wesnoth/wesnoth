@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -158,7 +158,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, persist_()
 	, gui_()
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
-	, statistics_context_(new statistics::scenario_context(level["name"]))
+	, statistics_context_(new statistics_t(state_of_game.statistics()))
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
 	, skip_story_(state_of_game.skip_story())
@@ -282,19 +282,6 @@ void play_controller::init(const config& level)
 		gamestate().set_game_display(gui_.get());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_lua);
 
-		if(gamestate().first_human_team_ != -1) {
-			gui_->set_team(gamestate().first_human_team_);
-		} else if(is_observer()) {
-			// Find first team that is allowed to be observed.
-			// If not set here observer would be without fog until
-			// the first turn of observable side
-			for(const team& t : get_teams()) {
-				if(!t.get_disallow_observers()) {
-					gui_->set_team(t.side() - 1);
-				}
-			}
-		}
-
 		init_managers();
 		gui2::dialogs::loading_screen::progress(loading_stage::start_game);
 		// loadscreen_manager->reset();
@@ -311,6 +298,8 @@ void play_controller::init(const config& level)
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
+	// TODO: should we update we update this->level_ with level ?
+
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
 	resources::tod_manager = nullptr;
@@ -422,13 +411,9 @@ void play_controller::init_gui()
 void play_controller::init_side_begin()
 {
 	mouse_handler_.set_side(current_side());
-
-	// If we are observers we move to watch next team if it is allowed
-	if((is_observer() && !current_team().get_disallow_observers()) || (current_team().is_local_human() && !is_replay())) {
-		update_gui_to_player(current_side() - 1);
-	}
-
 	gui_->set_playing_team(std::size_t(current_side() - 1));
+
+	update_viewing_player();
 
 	gamestate().gamedata_.last_selected = map_location::null_location();
 }
@@ -471,75 +456,78 @@ void play_controller::maybe_do_init_side()
 
 void play_controller::do_init_side()
 {
-	set_scontext_synced sync;
-	log_scope("player turn");
-	// In case we might end up calling sync:network during the side turn events,
-	// and we don't want do_init_side to be called when a player drops.
-	gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
+	{ // Block for set_scontext_synced
+		set_scontext_synced sync;
+		log_scope("player turn");
+		// In case we might end up calling sync:network during the side turn events,
+		// and we don't want do_init_side to be called when a player drops.
+		gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
+		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 
-	const std::string turn_num = std::to_string(turn());
-	const std::string side_num = std::to_string(current_side());
+		const std::string turn_num = std::to_string(turn());
+		const std::string side_num = std::to_string(current_side());
 
-	gamestate().gamedata_.get_variable("side_number") = current_side();
+		gamestate().gamedata_.get_variable("side_number") = current_side();
 
-	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
-	if(!gamestate().tod_manager_.has_turn_event_fired()) {
-		pump().fire("turn_" + turn_num);
-		pump().fire("new_turn");
-		gamestate().tod_manager_.turn_event_fired();
-	}
-
-	pump().fire("side_turn");
-	pump().fire("side_" + side_num + "_turn");
-	pump().fire("side_turn_" + turn_num);
-	pump().fire("side_" + side_num + "_turn_" + turn_num);
-
-	// We want to work out if units for this player should get healed,
-	// and the player should get income now.
-	// Healing/income happen if it's not the first turn of processing,
-	// or if we are loading a game.
-	if(turn() > 1) {
-		gamestate().board_.new_turn(current_side());
-		current_team().new_turn();
-
-		// If the expense is less than the number of villages owned
-		// times the village support capacity,
-		// then we don't have to pay anything at all
-		int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
-		if(expense > 0) {
-			current_team().spend_gold(expense);
+		// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
+		if(!gamestate().tod_manager_.has_turn_event_fired()) {
+			pump().fire("turn_" + turn_num);
+			pump().fire("new_turn");
+			gamestate().tod_manager_.turn_event_fired();
 		}
-	}
 
-	if(do_healing()) {
-		calculate_healing(current_side(), !is_skipping_replay());
-	}
+		pump().fire("side_turn");
+		pump().fire("side_" + side_num + "_turn");
+		pump().fire("side_turn_" + turn_num);
+		pump().fire("side_" + side_num + "_turn_" + turn_num);
 
-	// Do healing on every side turn except the very first side turn.
-	// (1.14 and earlier did healing whenever turn >= 2.)
-	set_do_healing(true);
+		// We want to work out if units for this player should get healed,
+		// and the player should get income now.
+		// Healing/income happen if it's not the first turn of processing,
+		// or if we are loading a game.
+		if(turn() > 1) {
+			gamestate().board_.new_turn(current_side());
+			current_team().new_turn();
 
-	// Set resting now after the healing has been done.
-	for(unit& patient : resources::gameboard->units()) {
-		if(patient.side() == current_side()) {
-			patient.set_resting(true);
+			// If the expense is less than the number of villages owned
+			// times the village support capacity,
+			// then we don't have to pay anything at all
+			int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
+			if(expense > 0) {
+				current_team().spend_gold(expense);
+			}
 		}
+
+		if(do_healing()) {
+			calculate_healing(current_side(), !is_skipping_replay());
+		}
+
+		// Do healing on every side turn except the very first side turn.
+		// (1.14 and earlier did healing whenever turn >= 2.)
+		set_do_healing(true);
+
+		// Set resting now after the healing has been done.
+		for(unit& patient : resources::gameboard->units()) {
+			if(patient.side() == current_side()) {
+				patient.set_resting(true);
+			}
+		}
+
+		// Prepare the undo stack.
+		undo_stack().new_side_turn(current_side());
+
+		pump().fire("turn_refresh");
+		pump().fire("side_" + side_num + "_turn_refresh");
+		pump().fire("turn_" + turn_num + "_refresh");
+		pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
+
+		// Make sure vision is accurate.
+		actions::clear_shroud(current_side(), true);
+
+		check_victory();
+		sync.do_final_checkup();
+		gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	}
-
-	// Prepare the undo stack.
-	undo_stack().new_side_turn(current_side());
-
-	pump().fire("turn_refresh");
-	pump().fire("side_" + side_num + "_turn_refresh");
-	pump().fire("turn_" + turn_num + "_refresh");
-	pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
-
-	// Make sure vision is accurate.
-	actions::clear_shroud(current_side(), true);
-
-	check_victory();
-	sync.do_final_checkup();
-	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 
 	init_side_end();
 
@@ -572,6 +560,10 @@ config play_controller::to_config() const
 
 	gui_->labels().write(cfg);
 	sound::write_music_play_list(cfg);
+
+	if(cfg["replay_pos"].to_int(0) > 0 && cfg["playing_team"].empty()) {
+		gui2::show_error_message(_("Trying to create a corrupt file, please report this bug"));
+	}
 
 	return cfg;
 }
@@ -790,14 +782,13 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 	}
 }
 
-int play_controller::find_last_visible_team() const
+int play_controller::find_viewing_side() const
 {
-	assert(current_side() <= static_cast<int>(get_teams().size()));
 	const int num_teams = get_teams().size();
 	const bool observer = is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
-		const int team_num = modulo(current_side() - i, num_teams, 1);
+		const int team_num = modulo(current_side() + i, num_teams, 1);
 		if(is_team_visible(team_num, observer)) {
 			return team_num;
 		}
@@ -1174,6 +1165,7 @@ void play_controller::start_game()
 				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
 			}
 		}
+		did_autosave_this_turn_ = false;
 	} else {
 		init_gui();
 		gui_->recalculate_minimap();
@@ -1287,6 +1279,9 @@ std::set<std::string> play_controller::all_players() const
 void play_controller::play_side()
 {
 	do {
+		if(std::find_if(get_teams().begin(), get_teams().end(), [](const team& t) { return !t.is_empty(); }) == get_teams().end()){
+			throw game::game_error("The scenario has no (non-empty) sides defined");
+		}
 		update_viewing_player();
 
 		maybe_do_init_side();
@@ -1296,7 +1291,10 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
+		//TODO: this resets the "current turn" statistics whenever the controller changes,
+		//  in particular whenever a game is reloaded, wouldn't it be better if this was
+		//  only done, when a sides turn actually ends?
+		statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
 
 		play_side_impl();
 

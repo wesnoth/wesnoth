@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
+"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
 "PO-Revision-Date: 2023-01-02 13:26+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgunbelma@gmail.com>\n"
 "Language-Team: none\n"
@@ -74,31 +74,31 @@ msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
 msgstr "SSST ile 60 TP azami sağlığı daima 6 YP yükseltir."
 
 #. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:150
 msgid "Max HP bonus +6%"
 msgstr "Azami YP ödülü +%6"
 
 #. [trait]: id=legendary_zombie
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:165
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:209
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:173
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:217
 msgid "legendary"
 msgstr "efsanevi"
 
 #. [trait]: id=legendary_zombie
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:166
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:210
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:174
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:218
 msgid "female^legendary"
 msgstr "efsanevi"
 
 #. [trait]: id=legendary_zombie
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:167
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:175
 msgid "Special advancement to Chocobone enabled."
 msgstr "Atlı İskelete özel terfi etkinleşti."
 
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:211
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:219
 msgid "Special advancement to Goblin Pillager enabled."
 msgstr "Goblin Yağmacıya özel terfi etkinleşti."
 
@@ -211,7 +211,7 @@ msgstr "Tekel"
 #. [label]: id=title
 #. [lua]: root_node.on_modified
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:45
-#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:234
+#: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:233
 msgid "WoCopedia"
 msgstr "Düfepedi"
 
@@ -276,11 +276,6 @@ msgstr "Alım onayını göster"
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
 msgid "Difficulty"
 msgstr "Zorluk"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
-msgid "World Conquest version"
-msgstr "Dünyanın Fethi sürüm"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -392,15 +387,15 @@ msgstr "içkale sayısı"
 msgid "$name|'s pet"
 msgstr "$name için evcil hayvan"
 
-#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:5
+#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
 msgid "Defeat all enemy leaders and commanders"
 msgstr "Tüm düşman liderlerini ve komutanlarını yen"
 
-#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
+#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
 msgid "Turns run out"
 msgstr "El kalmazsa"
 
-#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:7
+#: data/campaigns/World_Conquest/lua/campaign/objectives.lua:8
 msgid "Lose your leader and all your commanders"
 msgstr "Liderini ve tüm komutanlarını kaybedersen"
 
@@ -1305,7 +1300,7 @@ msgid "Tower"
 msgstr "Kule"
 
 #. [lua]: wc2_invest.invest
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:142
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:144
 msgid "WC2 Invest"
 msgstr "DF2 Kuşatması"
 
@@ -1957,8 +1952,9 @@ msgstr "Burada öğrenecek birşey kalmadı"
 msgid "From $level_before to $level_after"
 msgstr "Şundan: $level_before Şuna: $level_after"
 
+#. an Elvish Archer joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:5
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:68
 msgid ""
 "You look like you could use some help. Mind if I join in? It’s been a while "
 "since I had a good fight!"
@@ -1967,24 +1963,27 @@ msgstr ""
 "mı? İyi bir kavga etmeyeli uzun zaman oldu!"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:6
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:273
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:293
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:320
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:330
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:340
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:349
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:322
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:346
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:379
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:391
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:403
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:412
 msgid "Excellent. We could always use more help."
 msgstr "Mükemmel. Her zaman daha fazla yardım alabiliriz."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:9
+#. an Orcish Grunt joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:10
 msgid "’bout time. Been forever since I had a good fight, eh?"
 msgstr "Zaman hakkında. İyi bir kavga ettiğimden sonsuza kadar oldu, öyle mi?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:14
+#. a Troll Whelp joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:16
 msgid "Who you? I help you smash!"
 msgstr "Kimsin? Yenmene yardım ediyorum!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:19
+#. an Orcish Archer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:22
 msgid ""
 "My clan was destroyed long ago, leaving me to fend for myself. Let me join "
 "your army and I will fight as though your clan was my own!"
@@ -1993,19 +1992,23 @@ msgstr ""
 "zorunda bıraktı. Orduna katılmama izin ver ve kabilen benimmiş gibi "
 "savaşacağım!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:24
+#. an Orcish Assassin joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:28
 msgid "Hey boss. Looks like you’ve got some prey that need killing."
 msgstr "Hey patron. Öldürülmesi gereken bir avın var gibi görünüyor."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:29
+#. a Wolf Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
 msgid "I hunts. I join you, I hunts good for you!"
 msgstr "Avlanırım. Sana katılır, senin için avlarım!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
+#. speaker is a Wose, just after a Wolf Rider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:40
 msgid "Very well. But take care where your dog does its stuff."
 msgstr "Çok iyi. Ama köpeğinizin nereye yaptığına dikkat edin."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:38
+#. an Orcish Leader joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:45
 msgid ""
 "Heh, looks like you whelps might be getting in over your heads. Good thing "
 "I’m here now to win this fight for ya, huh?"
@@ -2013,8 +2016,10 @@ msgstr ""
 "Heh, görünüşe göre siz enikler başınızı bile kaşıyamıyorsunuz. İyi ki bu "
 "savaşı kazanmak için ben varım, ha?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:43
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:362
+#. a Naga Fighter joins a player's side
+#. a Dune Soldier joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:51
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:428
 msgid ""
 "I too have come a long way to this strange land. Perhaps we were destined to "
 "join blades here."
@@ -2022,29 +2027,34 @@ msgstr ""
 "Ben de bu garip ülkeye uzun bir yoldan geldim. Belki de burada bıçaklara "
 "katılmak kaderimizdi."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:48
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:86
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:95
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:152
+#. speaker is a Gryphon, just after a naga or merfolk joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:102
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:112
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:179
 msgid "Looks like we fished some tasty help."
 msgstr "Görünüşe göre lezzetli bir yardım yakaladık."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:52
+#. an Elvish Fighter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
 msgid "Need a friendly blade?"
 msgstr "Dost bir bıçağa mı ihtiyacınız var?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
+#. an Elvish Shaman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:74
 msgid ""
 "The mother forest sends you her blessings. Let us join together against her "
 "foes."
 msgstr ""
 "Ana orman sana iyi dileklerini gönderiyor. Düşmanlarına karşı birleşelim."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:67
+#. speaker is an elf or wose, just after a shaman joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:80
 msgid "Yeah, flower power!"
 msgstr "Evet, çiçek gücü!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:71
+#. an Elvish Scout joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:85
 msgid ""
 "I offer you the service of my arrows and my steed. You will find none that "
 "fly faster than either."
@@ -2052,12 +2062,14 @@ msgstr ""
 "Sana oklarımın ve atımın hizmetini sunuyorum. İkisinden de daha hızlı uçan "
 "hiçbirini bulamayacaksınız."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:76
+#. a Wose joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:91
 msgid "Hmm! Welcome, tree-friends. We will pound our enemies into dust!"
 msgstr ""
 "Hımm! Hoş geldiniz ağaç dostları. Düşmanlarımızı toz haline getireceğiz!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:81
+#. a Merman Hunter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:97
 msgid ""
 "Greetings, friends. I am a lone hunter and have no legions of warriors to "
 "offer you, but I will gladly lend my arms to your cause."
@@ -2065,7 +2077,8 @@ msgstr ""
 "Selam arkadaşlar. Ben yalnız bir avcıyım ve size sunabileceğim savaşçı "
 "birliklerim yok ama davanıza seve seve yardım ederim."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:90
+#. a Mermaid Initiate joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:107
 msgid ""
 "You have come a long way over the ocean, yet I see that you know little of "
 "her ways. Let me show you."
@@ -2073,8 +2086,10 @@ msgstr ""
 "Okyanusun üzerinde uzun bir yol kat ettiniz, yine de onun yolları hakkında "
 "çok az şey bildiğinizi görüyorum. Size göstereyim."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:99
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:137
+#. a Cavalryman joins a player's side
+#. a Sergeant joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:162
 msgid ""
 "You’re not from around here, but I seem to find myself between employers at "
 "the moment and I’m not picky. I’ll fight for you, if you’ll have me."
@@ -2082,21 +2097,26 @@ msgstr ""
 "Buralı değilsin ama şu anda kendimi patronlar arasında buluyorum ve seçici "
 "değilim. Bana sahip olursan senin için savaşırım."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:104
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:113
+#. speaker is female, just after a Cavalryman or Horseman joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:123
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:133
 msgid "Of course. How could a girl say no to a man riding a horse?"
 msgstr "Elbette. Bir kız ata binen bir erkeğe nasıl hayır diyebilir?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:108
+#. a Horseman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:128
 msgid ""
 "Hurrah! Now THIS is a battle too grand to be missed. Save some for me, eh?"
 msgstr ""
 "Yaşasın! Şimdi BU, kaçırılmayacak kadar büyük bir savaş. Benim için biraz "
 "ayır, ha?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:353
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:367
+#. a Spearman joins a player's side
+#. a Woodsman joins a player's side
+#. a Dune Rover joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:138
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:417
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:434
 msgid ""
 "Ho there, friends! I am but a soldier of humble circumstances, yet long have "
 "I dreamed of joining great wars beyond our shores. Let me join your mission!"
@@ -2105,7 +2125,8 @@ msgstr ""
 "zamandır kıyılarımızın ötesinde büyük savaşlara katılmayı hayal ettim. "
 "Görevine katılmama izin ver!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:122
+#. a Fencer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:144
 msgid ""
 "Looks like you’re a bit down on your luck, my friends. But now that I am "
 "here, there’s nothing to worry about!"
@@ -2113,7 +2134,8 @@ msgstr ""
 "Görünüşe göre şansınız biraz düşük arkadaşlar. Ama şimdi buradayım, "
 "endişelenecek bir şey yok!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:127
+#. a Heavy Infantryman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:150
 msgid ""
 "Finally reinforcements are here! I’ve been pinned down for days. Help me "
 "fight my way out of here and I’ll gladly follow you!"
@@ -2121,7 +2143,8 @@ msgstr ""
 "Sonunda takviyeler geldi! Günlerdir burada çakılı kaldım. Savaşarak buradan "
 "çıkmama yardım et, ben de seni seve seve takip ederim!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:132
+#. a Bowman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
 msgid ""
 "Greetings, my lords. I have watched your battle from afar and yearn to join "
 "such a glorious campaign. I pledge myself to your service!"
@@ -2129,8 +2152,10 @@ msgstr ""
 "Selamlar, lordlarım. Savaşınızı uzaktan izledim ve böyle görkemli bir "
 "seferberliğe katılmayı çok istiyorum. Kendimi hizmetinize adadım!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:142
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
+#. a Mage joins a player's side
+#. a Dune Herbalist joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:168
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:422
 msgid ""
 "Long have I studied the ways of lore, and I have much wisdom to offer. Allow "
 "me to guide you on your quest and together we will accomplish great things!"
@@ -2138,7 +2163,8 @@ msgstr ""
 "Uzun zamandır irfan yollarını araştırdım ve sunacak çok bilgeliğim var. Sana "
 "arayışında rehberlik etmeme izin verirsen birlikte harika şeyler başarırız!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:147
+#. a Merman Fighter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:174
 msgid ""
 "I bring greetings from the merfolk. We have heard your plight, and though we "
 "have few warriors to spare among us, I would gladly lend my trident to your "
@@ -2147,13 +2173,16 @@ msgstr ""
 "Susallardan selamlar getirdim. Durumunuzu duyduk ve aramızdan ayıracak az "
 "sayıda savaşçımız olsa da, çatalımı davanıza seve seve ödünç veririm."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:210
+#. a Dwarvish Fighter joins a player's side
+#. a Dwarvish Scout joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:184
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:246
 msgid "Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!"
 msgstr ""
 "Sorun mu yaşıyorsunuz? Merak etmeyin beyler, onları yakında halledeceğiz!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:161
+#. a Thief joins a player's side. This one's British slang for "you've caught me stealing, let me work for you instead", with extra words that are just parts of the idiom.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:190
 msgid ""
 "You’ve got me, guv, it’s a fair cop! Just lemme work for you instead. You "
 "won’t regret it, guv, I promise!"
@@ -2161,7 +2190,8 @@ msgstr ""
 "Beni yakaladın şef, bu adil bir polis! Onun yerine senin için çalışmama izin "
 "ver. Pişman olmayacaksın şef, söz veriyorum!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:166
+#. a Dwarvish Thunderer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:196
 msgid ""
 "Listen up, ye primitive screwheads! This... is me BOOM STICK. Lemme show you "
 "what this baby can do!"
@@ -2169,8 +2199,10 @@ msgstr ""
 "Dinleyin, ey ilkel kafalar! Bu... benim BUM SİLAHIM. Bu bebeğin neler "
 "yapabileceğini göstermeme izin verin!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:171
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:306
+#. a Poacher joins a player's side
+#. a Thug joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:202
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:362
 msgid ""
 "What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s "
 "give it a shot, eh?"
@@ -2178,15 +2210,18 @@ msgstr ""
 "Ne, yardımımı mı istiyorsun? Benim gibi bir adamın mı? Huh, bu zengin. Oh, "
 "peki... bir şans verelim mi, o halde?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:176
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:377
+#. a Dwarvish Guardsman joins a player's side
+#. a Dune Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:208
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:446
 msgid ""
 "A soldier is no good without something to fight for. Let me fight for you!"
 msgstr ""
 "Bir asker, uğruna savaşacak bir şey olmadan hiçbir işe yaramaz. Senin için "
 "savaşmama izin ver!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:181
+#. a Footpad joins a player's side. The first half is "please don’t attack me", the second is "you seem to be in a difficult situation too, I’m good at talking or fighting my way out".
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:214
 msgid ""
 "Hey, hey, easy there! I done nothin’ to hurt you. We’re all friends here, "
 "right? Looks like you might be in a tight spot, but don’t worry. No one’s "
@@ -2196,42 +2231,49 @@ msgstr ""
 "arkadaşız, değil mi? Zor bir konumdaymışsınız gibi görünüyor, ama "
 "endişelenmeyin. Zor yerlerden çıkmakta benden daha iyi kimse yok patron!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:186
+#. an Ulfserker joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
 msgid "Chin up, lads. Today is a good day to die!"
 msgstr "Başınızı kaldırın çocuklar. Bugün ölmek için güzel bir gün!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:191
+#. the speaker is another dwarf, after an Ulf joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:226
 msgid "Brave words. Welcome to The Fight Club..."
 msgstr "Cesur sözler. Dövüş Kulübüne Hoş Geldiniz..."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:194
-msgid "Brave words. Welcome little big man."
-msgstr "Cesur sözler. Hoşgeldin küçük dev adam."
-
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:198
+#. a Gryphon Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:231
 msgid "Need a hand? Me an’ me bird can get just about anywheres you need."
 msgstr ""
 "Bir ele mi ihtiyacınız var? Ben ve ben kuşum ihtiyacınız olan her yere "
 "ulaşabilir."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:203
+#. the speaker is a naga or merfolk, after a Gryphon Rider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:237
 msgid "Sounds good. You scared me for a moment."
 msgstr "Kulağa iyi geliyor. Bir an beni korkuttun."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:206
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:248
+#. the speaker is a bat or a gryphon, after a Gryphon Rider or Drake Glider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:241
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:291
 msgid "Cool. We could always need more air power."
 msgstr "Güzel. Her zaman daha fazla hava gücüne ihtiyacımız olabilir."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:215
+#. a Drake Fighter joins a player's side; they will have their standard weapon (a "war blade" in English)
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
+#, fuzzy
+#| msgid ""
+#| "The ancient spirits tell me my destiny lies with yours. My sword is at "
+#| "your command."
 msgid ""
-"The ancient spirits tell me my destiny lies with yours. My sword is at your "
+"The ancient spirits tell me my destiny lies with yours. My blade is at your "
 "command."
 msgstr ""
 "Kadim ruhlar bana kaderimin seninkiyle bir olduğunu söylüyor. Kılıcım "
 "emrinizde."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
+#. a Drake Clasher joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:258
 msgid ""
 "Stand fast, for I bring you the strength of dragons to assist you in your "
 "battle!"
@@ -2239,7 +2281,8 @@ msgstr ""
 "Sıkı durun, çünkü savaşınızda size yardımcı olacak ejderhaların gücünü "
 "getiriyorum!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:225
+#. a Drake Burner joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:264
 msgid ""
 "Today is a most auspicious day for you, for I deem you worthy of the power "
 "of dragonfire. Show me your foes and I will incinerate them!"
@@ -2247,22 +2290,26 @@ msgstr ""
 "Bugün senin için çok hayırlı bir gün, çünkü seni ejderha ateşinin gücüne "
 "layık görüyorum. Bana düşmanlarını göster, onları yakacağım!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:230
+#. the speaker is another drake, after a Drake Burner joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
 msgid "Perfect. We can always use more firepower."
 msgstr "Mükemmel. Her zaman daha fazla ateş gücü kullanabiliriz."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:234
+#. a Saurian Augur joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:275
 msgid ""
 "You no fight good enough, no have saurian way. I show you way of saurian!"
 msgstr ""
 "Yeterince iyi dövüşmüyorsun, sürüngen tarzın yok. Sana sürüngen tarzını "
 "göstereyim!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:239
+#. the speaker is another saurian, after a Saurian Augur joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:281
 msgid "Sure, bro..."
 msgstr "Elbette kardeşim..."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:243
+#. a Drake Glider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:286
 msgid ""
 "You may be out to take over the land and the seas, but you’ll never get "
 "anywhere without control of the skies. Fortunately I’m here to help you!"
@@ -2271,7 +2318,8 @@ msgstr ""
 "gökyüzünün kontrolü olmadan asla bir yere varamazsınız. Neyse ki sana yardım "
 "etmek için buradayım!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
+#. a Saurian Skirmisher joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:296
 msgid ""
 "Tribe fall long time ago, now tribe lost. This last fight of tribe. I fight "
 "with you, make last very great!"
@@ -2279,7 +2327,8 @@ msgstr ""
 "Kabile uzun zaman önce düştü, şimdi kabile kaybetti. Kabilenin bu son "
 "dövüşü. Seninle dövüşüyorum, sonu harika olsun!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:257
+#. a Skeleton joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
 msgid ""
 "Don’t hit me! I’m just your average regular friendly talking skeleton, see? "
 "Looks like you fellows could use some help!"
@@ -2287,7 +2336,8 @@ msgstr ""
 "Bana vurma! Ben senin sıradan, arkadaş canlısı konuşan iskeletinim, anladın "
 "mı? Arkadaşlar biraz yardıma ihtiyacınız var gibi görünüyor!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:262
+#. a Skeleton Archer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:308
 msgid ""
 "I am called forth from eternal rest, bound to follow he who called me. Show "
 "me the enemy, master!"
@@ -2295,7 +2345,8 @@ msgstr ""
 "Sonsuz huzurdan çağrıldım, beni çağıranı takip etmeye mecburum. Bana düşmanı "
 "göster efendi!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:267
+#. a Ghoul joins a player's side, and this line does not fit a Ghoul at all, it’s a pantomime-level stereotype of a British hero.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:315
 msgid ""
 "I say, old sport! It looks like you’ve got a spot of bother. Well, chin up, "
 "I say! I’m sure we’ll make a simply smashing team-up. We can sort this lot "
@@ -2304,12 +2355,15 @@ msgstr ""
 "Eski spor diyorum! Bir sıkıntın var gibi görünüyor. Peki, çeneni kaldır, "
 "diyorum! Tek kelimeyle harika bir takım kuracağımızdan eminim. Ne dersin?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
+#. response to the Ghoul’s introduction line
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:319
 msgid "Have at thee, unholy abomin... wait, huh?"
 msgstr "Seni kötü iğrenç şey... bekle, ha?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:277
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:372
+#. a Dark Adept joins a player's side
+#. a Dune Burner joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:327
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:440
 msgid ""
 "You may not trust me or my reasons, but it seems you are not in a position "
 "to be choosy about your allies. Let me assist you and you just may survive."
@@ -2318,7 +2372,8 @@ msgstr ""
 "konusunda seçici olacak durumda değilsin. Sana yardım etmeme izin ver ve "
 "sadece hayatta kal."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:282
+#. a Ghost joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:333
 msgid ""
 "Who calls me from my slumber? I sense a great battle being joined. Point me "
 "towards the enemy and I will feast upon their very souls!"
@@ -2326,11 +2381,13 @@ msgstr ""
 "Kim beni uykumdan çağırıyor? Büyük bir savaşa katılmakta olduğunu "
 "hissediyorum. Beni düşmana doğrult ve onların ruhlarıyla ziyafet çekeyim!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:287
+#. a Vampire Bat joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:339
 msgid "Skreeeeeeee!"
 msgstr "Kriiiiii!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:290
+#. after a Vampire Bat joins the player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:343
 msgid ""
 "This creature seems unusually intelligent for its kind. Perhaps it will help "
 "us!"
@@ -2338,41 +2395,50 @@ msgstr ""
 "Bu yaratık, türü için alışılmadık derecede zeki görünüyor. Belki bize "
 "yardımcı olur!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:297
+#. a Young Ogre joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:351
 msgid "You friend are? I friend help!"
 msgstr "Dost musun? Ben dost yardım!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
+#. the speaker is an ogre or troll, after a Young Ogre joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
 msgid "Me friend. We can play together."
 msgstr "Ben arkadaşım. Beraber oynayabiliriz."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:311
+#. a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:368
 msgid "Ah, please no hurtings me! I helps you, see?"
 msgstr "Ah, lütfen canımı yakmak yok! Sana yardım ediyorum, anladın mı?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:314
+#. after a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:372
 msgid "Fine. We could need a small help."
 msgstr "Güzel. Küçük bir yardıma ihtiyacımız olabilir."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:317
+#. after a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:376
 msgid "Excellent. We could always need cannon fodder."
 msgstr "Mükemmel. Her zaman top güllesine ihtiyacımız olabilir."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:324
+#. a Walking Corpse joins a player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:384
 msgid "..."
 msgstr "..."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:327
+#. after a Walking Corpse joins the player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:388
 msgid "Odd, it doesn’t seem to attack. I wonder if we can use it?"
 msgstr "Tuhaf, saldırmıyor gibi görünüyor. Merak ediyorum, kullanabilir miyiz?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:335
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:344
+#. a Peasant or Ruffian joins a player's side. This line is the speech of an overeager schoolchild.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:397
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:407
 msgid "Oooh oooh oooh! I want to help! Pick me, pick me!"
 msgstr "Oooh oooh oooh! Yardım etmek istiyorum! Beni seç, beni seç!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:337
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:346
+#. after a Peasant or Ruffian joins the player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:400
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:409
 msgid "...fine. I guess."
 msgstr "...güzel. Sanırım."
 
@@ -2580,18 +2646,18 @@ msgstr " (oyuncular için değil)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:122
+#: data/campaigns/World_Conquest/lua/map/main.lua:126
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "Başlangıç"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:124
+#: data/campaigns/World_Conquest/lua/map/main.lua:128
 msgid "Scenario"
 msgstr "Senaryo"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:126
+#: data/campaigns/World_Conquest/lua/map/main.lua:130
 msgid "Final Battle"
 msgstr "Son Çarpışma"
 
@@ -3188,17 +3254,17 @@ msgstr ""
 "saldırılara direnci arttırır."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:329
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
 msgid "Ice bow"
 msgstr "Buzyay"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:331
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:334
 msgid "19-1 ranged-cold slows"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:335
 #, fuzzy
 #| msgid ""
 #| "Draw this magical bow summon an ice arrow that will freeze and slow its "
@@ -3211,23 +3277,23 @@ msgstr ""
 "buz oku çağırın."
 
 #. [effect]: type=cold
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:337
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:340
 msgid "ice bow"
 msgstr "buzyay"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
 msgid "Medicinal herbs"
 msgstr "Şifalı otlar"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:377
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:380
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
 msgid "heals +8, cures"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:381
 msgid ""
 "These potent herbs give the bearer the ability to heal adjacent units and "
 "cure their poison."
@@ -3236,12 +3302,12 @@ msgstr ""
 "giderme yeteneği verir."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:396
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
 msgid "Melange"
 msgstr "Karışım"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:401
 #, fuzzy
 #| msgid "no undead^consumed by a living being:"
 msgid ""
@@ -3250,7 +3316,7 @@ msgid ""
 msgstr "bir canlı tarafından tüketilen:"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:402
 msgid ""
 "This exotic drug of organic origin enhances user’s vitality and awareness. "
 "It has no effect when consumed by undead."
@@ -3259,17 +3325,17 @@ msgstr ""
 "artırır. Yarı ölüler tarafından tüketildiğinde hiçbir etkisi yoktur."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:426
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
 msgid "Ointment of venom"
 msgstr "Zehirli merhem"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:428
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:431
 msgid "blade/pierce: poison and +20% damage"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:432
 msgid ""
 "This deadly poison envenoms the user’s blade and pierce attacks, increasing "
 "damage and allowing them to inflict poison."
@@ -3278,17 +3344,17 @@ msgstr ""
 "artırır ve zehir vermelerini sağlar."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:446
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
 msgid "Ring of frostbite"
 msgstr "Dondurucu yüzük"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:448
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:451
 msgid "melee: cold and slows"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:452
 msgid ""
 "This frigid ring envelops the user’s melee attacks with icy cold, changing "
 "their damage to cold and allowing them to inflict deathly chills that slow "
@@ -3299,17 +3365,17 @@ msgstr ""
 "vermelerini sağlar."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:466
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
 msgid "Ring of power"
 msgstr "Güç yüzüğü"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:468
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:471
 msgid "arcane/cold/fire: disengage"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:472
 msgid ""
 "Wearing this ring enhances damage with arcane and elemental attacks, "
 "allowing using them with supernatural skill and presence."
@@ -3318,35 +3384,35 @@ msgstr ""
 "doğaüstü beceri ve varlıkla kullanmayı sağlar."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:483
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
 msgid "Root of the Elder Wose"
 msgstr "Yaşlı Ulu Ağaç Kökü"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:488
 #, fuzzy
 #| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
 msgstr "$range|: gizemli ve +%25 hasar"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:489
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr " Cücelerin dövdüğü, bu kör silah Ulu Ağacın ezici gücünü taklit eder."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:500
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
 msgid "Runic sword"
 msgstr "Runik kılıç"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:502
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:505
 msgid "melee: magical"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:506
 msgid ""
 "This magic sword empowers the wielder’s melee attacks with the magical "
 "property."
@@ -3355,37 +3421,37 @@ msgstr ""
 "güçlendirir."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:519
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
 msgid "Staff of radiance"
 msgstr "Işıltı asası"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:521
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:524
 msgid "11-3 ranged-arcane magical"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:525
 msgid "This sacred rod can unleash brilliant bursts of luminous energy."
 msgstr "Bu kutsal asa, parlak enerji patlamalarını serbest bırakabilir."
 
 #. [effect]: type=arcane
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:527
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:530
 msgid "staff of radiance"
 msgstr "parlaklık asası"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:565
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
 msgid "Stormbringer"
 msgstr "Fırtına getiren"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:567
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:570
 msgid "melee: fury"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:571
 msgid ""
 "This tormented sword causes rage in any who wield it. Melee attacks will "
 "gain the fury ability pressing engagement for 3 rounds."
@@ -3394,13 +3460,13 @@ msgstr ""
 "dövüş saldırılarına 3 hamlelik öfke yeteneği kazandırır."
 
 #. [berserk]: id=wct_fury
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:581
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:582
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:584
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:585
 msgid "fury"
 msgstr "öfke"
 
 #. [berserk]: id=wct_fury
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:583
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:586
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 3 rounds of attacks have occurred."
@@ -3409,17 +3475,17 @@ msgstr ""
 "biri öldürülünceye veya 3 saldırı gerçekleşene kadar çarpışmaya zorlar."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:590
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
 msgid "Sylph bow"
 msgstr "Peri yayı"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:592
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:595
 msgid "ranged-blade/impact/pierce: +60% strikes and +1 damage"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:596
 msgid ""
 "A runic bow. This elvish heirloom, passed from Queen to Princess, gathers "
 "power with each generation and speeds up the wielders movements so that more "
@@ -3430,17 +3496,17 @@ msgstr ""
 "hareketlerini hızlandırır."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:608
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
 msgid "Terror disguise"
 msgstr "Korkunç giysi"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:613
 msgid "darkness, chaotic, corruption, distract"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:614
 msgid ""
 "This cursed outfit spreads a trail of darkness, harming those who get too "
 "close."
@@ -3448,13 +3514,13 @@ msgstr ""
 "Bu lanetli kıyafet bir karanlık iz yayar ve çok yaklaşanlara zarar verir."
 
 #. [illuminates]: id=darkness
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:631
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:632
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:634
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:635
 msgid "darkness"
 msgstr "karanlık"
 
 #. [illuminates]: id=darkness
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:633
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:636
 msgid ""
 "This unit darkens the surrounding area, making chaotic units fight better, "
 "and lawful units fight worse. Any units adjacent to this unit will fight as "
@@ -3465,13 +3531,13 @@ msgstr ""
 "olduğunda alacakaranlık, alacakaranlıkta ise geceymiş gibi savaşır."
 
 #. [dummy]: id=wc2_corruption
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:638
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:639
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:641
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:642
 msgid "corruption"
 msgstr "yozlaşma"
 
 #. [dummy]: id=wc2_corruption
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:640
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:643
 msgid ""
 "This unit corrupts adjacent enemies at the beginning of our turn. Corrupted "
 "units lose 6 HP or are reduced to 1 HP. Corruption cannot, of itself, kill a "
@@ -3481,44 +3547,44 @@ msgstr ""
 "6 YP kaybeder veya 1 YP'ye düşürülür. Çürümeyle bir birim ölmez."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:653
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
 msgid "The Key"
 msgstr "Anahtar"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:658
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:661
 msgid "This magical object opens the gateway between dimensions."
 msgstr "Bu büyülü nesne, boyutlar arasındaki geçidi açar."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:680
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
 msgid "Tome of secrets"
 msgstr "Sırlar kitabı"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:685
 #, fuzzy
 #| msgid "XP to advance"
 msgid "-50% XP to advance"
 msgstr "Terfi için TP"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:686
 msgid "This forgotten book imparts ancient knowledge to the reader."
 msgstr "Bu unutulmuş kitap, okuyucuya eski bilgileri aktarır."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:691
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
 msgid "Trident of storms"
 msgstr "Fırtına çatalı"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:693
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:696
 msgid "17-2 ranged-fire magical"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:697
 msgid ""
 "This legendary trident can summon lightning from the heavens, granting its "
 "wielder magical ranged fire attack."
@@ -3527,32 +3593,32 @@ msgstr ""
 "ateş saldırısı yaptırabilir."
 
 #. [effect]: type=fire
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:702
 msgid "storm trident"
 msgstr "fırtına çatalı"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:714
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
 msgid "Trolls blood potion"
 msgstr "Trollerin kan iksiri"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:719
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:722
 msgid "This foul-smelling potion allows the imbiber to regenerate health."
 msgstr "Bu kötü kokulu iksir, içenin sağlığını yenilemesini sağlar."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:729
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:732
 msgid "War banner"
 msgstr "Savaş flaması"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:731
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:734
 msgid "adjacent allies do 20% more damage"
 msgstr "yanındaki müttefikler %20 daha fazla hasar verir"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:732
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:735
 msgid ""
 "This inspiring banner rallies the bearer’s allies to war, imparting a damage "
 "bonus to the allied units around it."
@@ -3561,13 +3627,13 @@ msgstr ""
 "yanındaki müttefik birimlere hasar ödülü verir."
 
 #. [leadership]: id=banner
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:742
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:743
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:745
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:746
 msgid "banner"
 msgstr "sancak"
 
 #. [leadership]: id=banner
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:744
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:747
 msgid ""
 "This unit can lead ~allied~ units that are next to it, making them fight "
 "better. Adjacent allied units will do 20% more damage. This is cumulative "
@@ -3578,12 +3644,12 @@ msgstr ""
 "liderlikle birikimlidir."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:755
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:758
 msgid "Winged scepter"
 msgstr "Kanatlı asa"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:757
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
@@ -3592,7 +3658,7 @@ msgstr ""
 "savunma."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:758
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:761
 msgid ""
 "This wondrous rod imparts the user the ability to soar through the skies, "
 "making it a breeze to move through most terrain. Units that can already fly "
@@ -3603,17 +3669,17 @@ msgstr ""
 "gelişmiş savunma alır."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:798
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
 msgid "Winter’s bloom"
 msgstr "Kardelen"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:803
 msgid "+15 HP, up to 20% resistance vs cold"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:804
 msgid ""
 "This delicate blossom rarely found in snowy peaks, is strongly appreciated "
 "for its beneficial effects on health."
@@ -3622,17 +3688,17 @@ msgstr ""
 "nedeniyle büyük beğeni topluyor."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:816
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
 msgid "Zephyr cloak"
 msgstr "İnce pelerin"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:818
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:821
 msgid "skirmisher, ambush, nightstalk, +2 moves"
 msgstr ""
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:822
 msgid ""
 "This lightweight cloak renders its wearer almost invisible in the darkness "
 "and lets them move with fluid grace past enemies with ease."
@@ -3662,9 +3728,16 @@ msgstr "Hareket"
 
 #. [trainer]: type=Duelist
 #: data/campaigns/World_Conquest/resources/data/training.cfg:60
+#, fuzzy
+#| msgid ""
+#| "What, you want me to join the fight? Quite out of the question, old boy! "
+#| "I’m afraid battlefields just aren’t my scene - no drama, no style, no "
+#| "romance! No finesse at all! You probably wouldn’t understand, so let me "
+#| "show you. I’ll teach you how to break out of those dreary marching "
+#| "formations and step light as a feather!"
 msgid ""
 "What, you want me to join the fight? Quite out of the question, old boy! I’m "
-"afraid battlefields just aren’t my scene - no drama, no style, no romance! "
+"afraid battlefields just aren’t my scene — no drama, no style, no romance! "
 "No finesse at all! You probably wouldn’t understand, so let me show you. "
 "I’ll teach you how to break out of those dreary marching formations and step "
 "light as a feather!"
@@ -4047,6 +4120,12 @@ msgstr ""
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
 msgid "Campaign Maintenance"
 msgstr ""
+
+#~ msgid "World Conquest version"
+#~ msgstr "Dünyanın Fethi sürüm"
+
+#~ msgid "Brave words. Welcome little big man."
+#~ msgstr "Cesur sözler. Hoşgeldin küçük dev adam."
 
 #~ msgid "Use World Conquest PYA mod"
 #~ msgstr "Dünyanın Fethi PYA kipini kullan"

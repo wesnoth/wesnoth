@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -97,7 +97,7 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
-static const time_of_day get_visible_time_of_day_at(reports::context & rc, const map_location & hex)
+static const time_of_day get_visible_time_of_day_at(const reports::context& rc, const map_location & hex)
 {
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	if (viewing_team.shrouded(hex)) {
@@ -123,34 +123,34 @@ struct report_generator_helper
 };
 
 #define REPORT_GENERATOR(n, cn) \
-	static config report_##n(reports::context & cn); \
+	static config report_##n(const reports::context& cn); \
 	static report_generator_helper reg_gen_##n(#n, &report_##n); \
-	static config report_##n(reports::context & cn)
+	static config report_##n(const reports::context& cn)
 
 static char const *naps = "</span>";
 
-static const unit *get_visible_unit(reports::context & rc)
+static const unit *get_visible_unit(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit(rc.screen().displayed_unit_hex(),
 		rc.teams()[rc.screen().viewing_team()],
 		rc.screen().show_everything());
 }
 
-static const unit *get_selected_unit(reports::context & rc)
+static const unit *get_selected_unit(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit(rc.screen().selected_hex(),
 		rc.teams()[rc.screen().viewing_team()],
 		rc.screen().show_everything());
 }
 
-static unit_const_ptr get_selected_unit_ptr(reports::context & rc)
+static unit_const_ptr get_selected_unit_ptr(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit_shared_ptr(rc.screen().selected_hex(),
 		rc.teams()[rc.screen().viewing_team()],
 		rc.screen().show_everything());
 }
 
-static config gray_inactive(reports::context & rc, const std::string &str, const std::string& tooltip = "")
+static config gray_inactive(const reports::context& rc, const std::string &str, const std::string& tooltip = "")
 {
 	if ( rc.screen().viewing_side() == rc.screen().playing_side() )
 			return text_report(str, tooltip);
@@ -242,7 +242,7 @@ static std::string side_tooltip(const team& team)
 			 {"color_name", team::get_side_color_name_for_UI(team.side()) }});
 }
 
-static config unit_side(reports::context & rc, const unit* u)
+static config unit_side(const reports::context& rc, const unit* u)
 {
 	if (!u) return config();
 
@@ -332,7 +332,7 @@ REPORT_GENERATOR(selected_unit_traits, rc)
 	return unit_traits(u);
 }
 
-static config unit_status(reports::context & rc, const unit* u)
+static config unit_status(const reports::context& rc, const unit* u)
 {
 	if (!u) return config();
 	config res;
@@ -374,7 +374,7 @@ REPORT_GENERATOR(selected_unit_status, rc)
 	return unit_status(rc, u);
 }
 
-static config unit_alignment(reports::context & rc, const unit* u, const map_location& hex)
+static config unit_alignment(const reports::context& rc, const unit* u, const map_location& hex)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
@@ -474,7 +474,7 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 }
 
 
-static config unit_hp(reports::context& rc, const unit* u)
+static config unit_hp(const reports::context& rc, const unit* u)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
@@ -574,7 +574,7 @@ REPORT_GENERATOR(selected_unit_advancement_options, rc)
 	return unit_advancement_options(u);
 }
 
-static config unit_defense(reports::context & rc, const unit* u, const map_location& displayed_unit_hex)
+static config unit_defense(const reports::context& rc, const unit* u, const map_location& displayed_unit_hex)
 {
 	if(!u) {
 		return config();
@@ -668,7 +668,7 @@ REPORT_GENERATOR(selected_unit_vision, rc)
 	return unit_vision(u);
 }
 
-static config unit_moves(reports::context & rc, const unit* u, bool is_visible_unit)
+static config unit_moves(const reports::context& rc, const unit* u, bool is_visible_unit)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
@@ -774,7 +774,7 @@ static inline const color_t attack_info_percent_color(int resistance)
 	return game_config::red_to_green(50.0 + resistance * 5.0 / 6.0, false);
 }
 
-static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
+static int attack_info(const reports::context& rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
 {
 	std::ostringstream str, tooltip;
 	int damage = 0;
@@ -876,15 +876,22 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
-		std::string lang_type = string_table["type_" + at.type()];
+		std::pair<std::string, std::string> types = at.damage_type();
+		std::string secondary_lang_type = types.second;
+		if (!secondary_lang_type.empty()) {
+			secondary_lang_type = ", " + string_table["type_" + secondary_lang_type];
+		}
+		std::string lang_type = string_table["type_" + types.first] + secondary_lang_type;
 
 		// SCALE_INTO() is needed in case the 72x72 images/misc/missing-image.png is substituted.
 		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + types.first + ".png~SCALE_INTO(16,16)";
+		const std::string secondary_type_png = !(types.second).empty() ? std::string("icons/profiles/") + types.second + ".png~SCALE_INTO(16,16)" : "";
 		const bool range_png_exists = image::locator(range_png).file_exists();
 		const bool type_png_exists = image::locator(type_png).file_exists();
+		const bool secondary_type_png_exists = image::locator(secondary_type_png).file_exists();
 
-		if(!range_png_exists || !type_png_exists) {
+		if(!range_png_exists || !type_png_exists || (!secondary_type_png_exists && !secondary_lang_type.empty())) {
 			str << span_color(font::weapon_details_color) << "  " << "  "
 				<< range << font::weapon_details_sep
 				<< lang_type << "</span>\n";
@@ -941,6 +948,9 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
 		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
 		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
+		if(secondary_type_png_exists){
+			add_image(res, spacer + "~BLIT(" + secondary_type_png + ",0,5)", damage_versus.tooltip);
+		}
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
@@ -1022,7 +1032,7 @@ static std::string format_hp(unsigned hp)
 	return res.str();
 }
 
-static config unit_weapons(reports::context & rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 
@@ -1146,7 +1156,7 @@ static config unit_weapons(reports::context & rc, unit_const_ptr attacker, const
  * Display the attacks of the displayed unit against the unit passed as argument.
  * 'hex' is the location the attacker will be at during combat.
  */
-static config unit_weapons(reports::context & rc, const unit *u, const map_location &hex)
+static config unit_weapons(const reports::context& rc, const unit *u, const map_location &hex)
 {
 	config res = config();
 	if ((u != nullptr) && (!u->attacks().empty())) {
@@ -1246,7 +1256,7 @@ REPORT_GENERATOR(unit_profile, rc)
 	return image_report(u->small_profile());
 }
 
-static config tod_stats_at(reports::context & rc, const map_location& hex)
+static config tod_stats_at(const reports::context& rc, const map_location& hex)
 {
 	std::ostringstream tooltip;
 	std::ostringstream text;
@@ -1285,7 +1295,7 @@ REPORT_GENERATOR(selected_tod_stats, rc)
 	return tod_stats_at(rc, hex);
 }
 
-static config time_of_day_at(reports::context & rc, const map_location& mouseover_hex)
+static config time_of_day_at(const reports::context& rc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day tod = get_visible_time_of_day_at(rc, mouseover_hex);
@@ -1337,7 +1347,7 @@ REPORT_GENERATOR(selected_time_of_day, rc)
 	return time_of_day_at(rc, hex);
 }
 
-static config unit_box_at(reports::context & rc, const map_location& mouseover_hex)
+static config unit_box_at(const reports::context& rc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day global_tod = rc.tod().get_time_of_day();
@@ -1534,24 +1544,27 @@ void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::strin
 
 REPORT_GENERATOR(terrain_info, rc)
 {
-	const gamemap &map = rc.map();
+	const gamemap& map = rc.map();
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 
-	if (!map.on_board(mouseover_hex))
+	if(!map.on_board(mouseover_hex)) {
 		mouseover_hex = rc.screen().selected_hex();
+	}
 
-	if (!map.on_board(mouseover_hex))
+	if(!map.on_board(mouseover_hex)) {
 		return config();
+	}
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
+	if(t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 		return config();
+	}
 
 	config cfg;
 
 	bool high_res = false;
 
-	if (display::get_singleton()->shrouded(mouseover_hex)) {
+	if(display::get_singleton()->shrouded(mouseover_hex)) {
 		return cfg;
 	}
 	//TODO
@@ -1564,17 +1577,46 @@ REPORT_GENERATOR(terrain_info, rc)
 //	}
 
 	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
-
-		if (t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP))
+	for(const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+		if(t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
+		}
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		const std::string& terrain_name = map.get_terrain_string(underlying_terrain);
 		const std::string& terrain_icon = map.get_terrain_info(underlying_terrain).icon_image();
-		if (terrain_icon.empty())
+		if(terrain_icon.empty()) {
 			continue;
+		}
 		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res, terrain_name);
 	}
+
+	if(map.is_village(mouseover_hex)) {
+		int owner = rc.dc().village_owner(mouseover_hex);
+		// This report is used in both game and editor. get_team(viewing_side) would throw in the editor's
+		// terrain-only mode, but if the village already has an owner then we're not in that mode.
+		if(owner != 0) {
+			int viewing_side = rc.screen().viewing_side();
+			const team& viewing_team = rc.dc().get_team(viewing_side);
+
+			if(!viewing_team.fogged(mouseover_hex)) {
+				const team& owner_team = rc.dc().get_team(owner);
+
+				std::string flag_icon = owner_team.flag_icon();
+				std::string old_rgb = game_config::flag_rgb;
+				std::string new_rgb = team::get_side_color_id(owner_team.side());
+				std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
+				if(flag_icon.empty()) {
+					flag_icon = game_config::images::flag_icon;
+				}
+				std::string tooltip = side_tooltip(owner_team);
+				std::string side = std::to_string(owner_team.side());
+
+				add_image(cfg, flag_icon + mods, tooltip);
+				add_text(cfg, side, tooltip);
+			}
+		}
+	}
+
 	return cfg;
 }
 
@@ -1695,28 +1737,6 @@ REPORT_GENERATOR(observers, rc)
 	return image_report(game_config::images::observer, str.str());
 }
 
-/* TODO unused
-REPORT_GENERATOR(selected_terrain)
-{
-	const std::string selected_terrain = editor::get_selected_terrain();
-	if (selected_terrain.empty())
-		return config();
-	else
-		return text_report(selected_terrain);
-}
-*/
-
-/* TODO this is unused
-REPORT_GENERATOR(edit_left_button_function)
-{
-	const std::string left_button_function = editor::get_left_button_function();
-	if (left_button_function.empty())
-		return config();
-	else
-		return text_report(left_button_function);
-}
-*/
-
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
 	config report;
@@ -1782,7 +1802,7 @@ void reports::register_generator(const std::string &name, reports::generator *g)
 	dynamic_generators_[name].reset(g);
 }
 
-config reports::generate_report(const std::string &name, reports::context & rc, bool only_static)
+config reports::generate_report(const std::string &name, const reports::context& rc, bool only_static)
 {
 	if (!only_static) {
 		dynamic_report_generators::const_iterator i = dynamic_generators_.find(name);

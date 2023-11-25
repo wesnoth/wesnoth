@@ -1,0 +1,4 @@
+select INSTANCE_VERSION, ADDON_ID, VERSION, UPLOADED_ON, DOWNLOAD_COUNT
+from campaignd_addon_info
+where INSTANCE_VERSION not in ('1.15', '1.16')
+order by INSTANCE_VERSION desc, ADDON_ID, UPLOADED_ON desc

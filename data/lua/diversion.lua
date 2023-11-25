@@ -1,7 +1,6 @@
 
 local _ = wesnoth.textdomain 'wesnoth-help'
 local T = wml.tag
-local on_event = wesnoth.require("on_event")
 
 local u_pos_filter = function(u_id)
 
@@ -37,8 +36,7 @@ local u_pos_filter = function(u_id)
         end
 end
 
-
-local status_anim_update = function(is_undo)
+local function status_anim_update(is_undo)
 
         local ec = wesnoth.current.event_context
         local changed_something  = false
@@ -88,20 +86,16 @@ local status_anim_update = function(is_undo)
                     }
                 end
         end
-        if changed_something and not is_undo then
-                wesnoth.wml_actions.on_undo {
-                        wml.tag.on_undo_diversion {
-                        }
-                }
+        if not is_undo then
+                wesnoth.experimental.game_events.set_undoable(true)
+                if changed_something then
+                        wesnoth.experimental.game_events.add_undo_actions(function(_)
+                                status_anim_update(true)
+                        end)
+                end
         end
 end
 
-function wesnoth.wml_actions.on_undo_diversion(cfg)
-        status_anim_update(true)
-end
-
-on_event("moveto, die, recruit, recall", function()
-        status_anim_update()
-
+wesnoth.game_events.add_repeating("moveto, die, recruit, recall", function(_)
+        status_anim_update(false)
 end)
-

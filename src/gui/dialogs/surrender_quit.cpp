@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2023
 	by Amir Hassan <amir@viel-zu.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

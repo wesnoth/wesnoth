@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -191,6 +191,10 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_AREA_SAVE,
 	HOTKEY_EDITOR_AREA_RENAME,
 
+	// Addons
+	HOTKEY_EDITOR_PBL,
+	HOTKEY_EDITOR_CHANGE_ADDON_ID,
+
 	// Scenario
 	HOTKEY_EDITOR_SCENARIO_EDIT,
 	HOTKEY_EDITOR_SCENARIO_NEW,
@@ -217,13 +221,8 @@ enum HOTKEY_CATEGORY {
 	HKCAT_PLACEHOLDER // Keep this one last
 };
 
-/**
- * Returns the map of hotkey categories and their display names.
- *
- * These aren't translated and need be converted to a t_string before
- * being displayed to the player.
- */
-const std::map<HOTKEY_CATEGORY, std::string>& get_category_names();
+/** Gets the display name for a given hotkey category. */
+t_string get_translatable_category_name(HOTKEY_CATEGORY category);
 
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 

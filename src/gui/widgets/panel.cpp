@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -65,16 +65,24 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background()
+bool panel::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
+	if(!get_canvas(0).update_blur(get_rectangle())) {
+		return false;
+	}
 	get_canvas(0).draw();
+	return true;
 }
 
-void panel::impl_draw_foreground()
+bool panel::impl_draw_foreground()
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
+	if(!get_canvas(1).update_blur(get_rectangle())) {
+		return false;
+	}
 	get_canvas(1).draw();
+	return true;
 }
 
 point panel::border_space() const
@@ -108,8 +116,8 @@ panel_definition::resolution::resolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", _("Missing required background for panel definition")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", _("Missing required foreground for panel definition")));
 }
 
 // }---------- BUILDER -----------{
@@ -120,11 +128,11 @@ namespace implementation
 builder_panel::builder_panel(const config& cfg)
 	: builder_styled_widget(cfg), grid(nullptr)
 {
-	const config& c = cfg.child("grid");
+	auto c = cfg.optional_child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(c);
+	grid = std::make_shared<builder_grid>(*c);
 }
 
 std::unique_ptr<widget> builder_panel::build() const

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -174,11 +174,6 @@ void floating_label::update(int time)
 	rect draw_loc {new_pos.x, new_pos.y, tex_.w(), tex_.h()};
 
 	uint8_t new_alpha = get_alpha(time);
-
-	if(screen_loc_ == draw_loc && alpha_ == new_alpha) {
-		// nothing has changed
-		return;
-	}
 
 	// Invalidate former draw loc
 	draw_manager::invalidate_region(get_bg_rect(screen_loc_));

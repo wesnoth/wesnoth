@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -908,15 +908,6 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 	uc.add_unit(parsed_cfg, &cfg);
 
-}
-
-WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
-{
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_undo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_undo_commands(cfg.get_parsed_config(), event_info);
-	}
 }
 
 } // end namespace game_events

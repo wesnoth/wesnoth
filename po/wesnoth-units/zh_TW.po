@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-03-19 02:33 UTC\n"
+"POT-Creation-Date: 2023-11-20 17:23 UTC\n"
 "PO-Revision-Date: 2022-05-30 16:29+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -48,8 +48,6 @@ msgstr "釘鎚"
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:64
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:27
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:26
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:26
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:64
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:65
@@ -66,23 +64,26 @@ msgstr "釘鎚"
 #: data/core/units/humans/Mage_Red.cfg:31
 #: data/core/units/humans/Mage_Silver.cfg:38
 #: data/core/units/humans/Mage_White.cfg:47
-#: data/core/units/merfolk/Diviner.cfg:45
+#: data/core/units/merfolk/Diviner.cfg:44
 #: data/core/units/merfolk/Enchantress.cfg:23
 #: data/core/units/merfolk/Initiate.cfg:25
 #: data/core/units/merfolk/Priestess.cfg:42
-#: data/core/units/saurians/Augur.cfg:24 data/core/units/saurians/Oracle.cfg:36
-#: data/core/units/saurians/Soothsayer.cfg:25
+#: data/core/units/saurians/Augur.cfg:24 data/core/units/saurians/Oracle.cfg:35
+#: data/core/units/saurians/Prophet.cfg:37 data/core/units/saurians/Seer.cfg:25
+#: data/core/units/saurians/Soothsayer.cfg:24
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 msgid "staff"
 msgstr "杖"
 
 #. [attack]: type=blade
+#. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:22
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:465
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:493
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
+#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:35
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
 #: data/core/units/dunefolk/Falconer.cfg:141
@@ -100,7 +101,7 @@ msgstr "短劍"
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:35
 #: data/core/units/undead/Necro_Dark_Adept.cfg:29
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:57
-#: data/core/units/undead/Necromancer.cfg:38
+#: data/core/units/undead/Necromancer.cfg:41
 msgid "chill wave"
 msgstr "寒冰旋風"
 
@@ -109,14 +110,19 @@ msgstr "寒冰旋風"
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:44
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:514
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:556
+#: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Fallen_Mage.cfg:83
+#: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Twilight_Mage.cfg:85
+#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:62
+#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:62
+#: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:56
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:101
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:47
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:53
 #: data/core/units/undead/Necro_Dark_Adept.cfg:41
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:69
-#: data/core/units/undead/Necro_Lich.cfg:59
-#: data/core/units/undead/Necromancer.cfg:50
+#: data/core/units/undead/Necro_Lich.cfg:56
+#: data/core/units/undead/Necromancer.cfg:53
 msgid "shadow wave"
 msgstr "暗影波"
 
@@ -136,30 +142,138 @@ msgid "sling"
 msgstr "投石索"
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
-msgid "greatsword"
-msgstr "巨劍"
+#. [unit_type]: id=SotA Walking Corpse_Wolf
+#. [unit_type]: id=SotA Walking Corpse_Spider
+#. [unit_type]: id=SotA Flying Corpse_Bat
+#. [unit_type]: id=SotA Soulless_Wolf
+#. [unit_type]: id=SotA Soulless_Spider
+#. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=pierce
+#: data/campaigns/Eastern_Invasion/units/Ant_Queen.cfg:41
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:218
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:247
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:276
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:31
+#: data/core/units/bats/Bat_Blood.cfg:117 data/core/units/bats/Bat_Dread.cfg:32
+#: data/core/units/bats/Bat_Vampire.cfg:116
+#: data/core/units/goblins/Direwolf_Rider.cfg:32
+#: data/core/units/goblins/Knight.cfg:34
+#: data/core/units/goblins/Pillager.cfg:32
+#: data/core/units/goblins/Wolf_Rider.cfg:46
+#: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Ant_Fire.cfg:69
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:73
+#: data/core/units/monsters/Ant_Firebane.cfg:70
+#: data/core/units/monsters/Ant_Firebomb.cfg:72
+#: data/core/units/monsters/Ant_Queen.cfg:36
+#: data/core/units/monsters/Ant_Soldier.cfg:38
+#: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
+#: data/core/units/monsters/Caribe_Hunter.cfg:115
+#: data/core/units/monsters/Caribe_Nibbler.cfg:129
+#: data/core/units/monsters/Giant_Spider.cfg:28
+#: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/monsters/Shadow_Jumping_Spider.cfg:54
+#: data/core/units/monsters/Water_Serpent.cfg:42
+#: data/core/units/monsters/Wolf.cfg:48
+#: data/core/units/monsters/Wolf_Dire.cfg:33
+#: data/core/units/monsters/Wolf_Great.cfg:33
+msgid "fangs"
+msgstr "尖牙"
+
+#. [attack]: type=pierce
+#: data/campaigns/Eastern_Invasion/units/Human_Banneret.cfg:24
+#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
+#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
+#: data/core/units/dunefolk/Cataphract.cfg:52
+#: data/core/units/humans/Horse_Grand_Knight.cfg:33
+#: data/core/units/humans/Horse_Knight.cfg:32
+#: data/core/units/humans/Horse_Lancer.cfg:23
+#: data/core/units/humans/Horse_Paladin.cfg:48
+msgid "lance"
+msgstr "騎槍"
+
+#. [attack]: type=arcane
+#. [attack]: type=impact
+#. [unit_type]: id=SotA Walking Corpse_Human
+#. [unit_type]: id=SotA Walking Corpse_Dwarf
+#. [unit_type]: id=SotA Walking Corpse_Goblin
+#. [unit_type]: id=SotA Walking Corpse_Mounted
+#. [unit_type]: id=SotA Walking Corpse_Saurian
+#. [unit_type]: id=SotA Swimming Corpse
+#. [unit_type]: id=SotA Walking Corpse_Troll
+#. [unit_type]: id=SotA Walking Corpse_Wose
+#. [unit_type]: id=SotA Walking Corpse_Wolf Rider
+#. [unit_type]: id=SotA Soulless_Human
+#. [unit_type]: id=SotA Soulless_Dwarf
+#. [unit_type]: id=SotA Soulless_Goblin
+#. [unit_type]: id=SotA Soulless_Mounted
+#. [unit_type]: id=SotA Soulless_Saurian
+#. [unit_type]: id=SotA Soulless_Swimmer
+#. [unit_type]: id=SotA Soulless_Troll
+#. [unit_type]: id=SotA Soulless_Wose
+#. [unit_type]: id=SotA Soulless_Wolf Rider
+#. [attack]: type=fire
+#. [attack]: type=cold
+#: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Fallen_Mage.cfg:71
+#: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:84
+#: data/campaigns/Eastern_Invasion/units/Undead_Skeletal_Corpse.cfg:20
+#: data/campaigns/Eastern_Invasion/units/Undead_Skeletal_Soulless.cfg:22
+#: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:128
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:143
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:176
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:191
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:208
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:224
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:239
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:270
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:90
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:104
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:118
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:147
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:161
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:175
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:190
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:204
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:233
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:23
+#: data/core/units/undead/Corpse_Soulless.cfg:117
+#: data/core/units/undead/Corpse_Walking.cfg:118
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:29
+#: data/core/units/undead/Necro_Lich.cfg:32
+#: data/core/units/undead/Spirit_Ghost.cfg:57
+msgid "touch"
+msgstr "碰觸"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Twilight_Mage.cfg:73
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:33
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:36
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:38
 #: data/campaigns/tutorial/units/Quintain.cfg:25
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
-#: data/core/units/humans/Mage_of_Light.cfg:50
+#: data/core/units/humans/Mage_of_Light.cfg:49
 msgid "flail"
 msgstr "鏈枷"
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+#. [attack]: type=fire
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Lieutenant.cfg:29
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Sergeant.cfg:29
+#: data/campaigns/Eastern_Invasion/units/Human_Owaec_Clan_Captain.cfg:37
+#: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:15
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:131
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:24
@@ -183,9 +297,7 @@ msgstr "鏈枷"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:878
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -200,7 +312,7 @@ msgstr "鏈枷"
 #: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:59
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:58
 #: data/core/units/humans/Loyalist_Dragoon.cfg:35
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
@@ -215,6 +327,65 @@ msgstr "鏈枷"
 msgid "sword"
 msgstr "劍刃"
 
+#. [attack]: type=fire
+#. [attack]: type=pierce
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Lieutenant.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Sergeant.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
+#: data/core/units/humans/Loyalist_Cavalier.cfg:45
+#: data/core/units/humans/Loyalist_Dragoon.cfg:44
+#: data/core/units/humans/Loyalist_Duelist.cfg:45
+#: data/core/units/humans/Loyalist_General.cfg:53
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:36
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
+#: data/core/units/humans/Loyalist_Sergeant.cfg:36
+#: data/core/units/orcs/Crossbowman.cfg:41
+#: data/core/units/orcs/Crossbowman.cfg:50 data/core/units/orcs/Leader.cfg:36
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:43
+#: data/core/units/orcs/Slurbow.cfg:52 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/undead/Skele_Death_Knight.cfg:42
+msgid "crossbow"
+msgstr "十字弓"
+
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:46
+#: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:44
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:36
+#: data/core/units/humans/Loyalist_General.cfg:44
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
+msgid "longsword"
+msgstr "長劍"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:28
+#: data/core/units/humans/Outlaw.cfg:23
+#: data/core/units/humans/Outlaw_Bandit.cfg:29
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
+#: data/core/units/humans/Outlaw_Highwayman.cfg:24
+#: data/core/units/humans/Royal_Warrior.cfg:29
+msgid "morning star"
+msgstr "晨星鎚"
+
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Ogre_Ancient.cfg:35
+#: data/campaigns/Eastern_Invasion/units/Ogre_Great.cfg:32
+#: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
+msgid "cleaver"
+msgstr "大砍刀"
+
+#. [attack]: type=cold
+#: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:44
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:89
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:41
+#: data/core/units/undead/Necro_Lich.cfg:44
+msgid "chill tempest"
+msgstr "冰風暴"
+
 #. [attack]: type=pierce
 #. [attack]: type=fire
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:33
@@ -225,13 +396,11 @@ msgstr "劍刃"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:891
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
-#: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Fighter.cfg:31
+#: data/core/units/elves/Champion.cfg:33 data/core/units/elves/Fighter.cfg:31
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Marshal.cfg:48
 #: data/core/units/elves/Outrider.cfg:54 data/core/units/elves/Ranger.cfg:47
 #: data/core/units/elves/Rider.cfg:41 data/core/units/elves/Scout.cfg:41
@@ -257,18 +426,20 @@ msgstr "弓箭"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
-#: data/core/units/drakes/Burner.cfg:28
+#: data/core/units/drakes/Burner.cfg:29
 #: data/core/units/goblins/Direwolf_Rider.cfg:41
 #: data/core/units/gryphons/Gryphon.cfg:28
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
 #: data/core/units/monsters/Elder_Falcon.cfg:41
-#: data/core/units/monsters/Falcon.cfg:84
+#: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
-#: data/core/units/monsters/Jinn.cfg:90 data/core/units/monsters/Roc.cfg:37
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/monsters/Jinn.cfg:91
+#: data/core/units/monsters/Raven_Harbinger.cfg:87
+#: data/core/units/monsters/Roc.cfg:55
+#: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:94
@@ -330,59 +501,6 @@ msgstr ""
 "來的同伴變成對方的一分子，會造成心理上巨大的恐懼。"
 
 #. [attack]: type=impact
-#. [attack]: type=arcane
-#. [unit_type]: id=SotA Walking Corpse_Human
-#. [unit_type]: id=SotA Walking Corpse_Dwarf
-#. [unit_type]: id=SotA Walking Corpse_Goblin
-#. [unit_type]: id=SotA Walking Corpse_Mounted
-#. [unit_type]: id=SotA Walking Corpse_Saurian
-#. [unit_type]: id=SotA Swimming Corpse
-#. [unit_type]: id=SotA Walking Corpse_Troll
-#. [unit_type]: id=SotA Walking Corpse_Wose
-#. [unit_type]: id=SotA Walking Corpse_Wolf Rider
-#. [unit_type]: id=SotA Soulless_Human
-#. [unit_type]: id=SotA Soulless_Dwarf
-#. [unit_type]: id=SotA Soulless_Goblin
-#. [unit_type]: id=SotA Soulless_Mounted
-#. [unit_type]: id=SotA Soulless_Saurian
-#. [unit_type]: id=SotA Soulless_Swimmer
-#. [unit_type]: id=SotA Soulless_Troll
-#. [unit_type]: id=SotA Soulless_Wose
-#. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=fire
-#. [attack]: type=cold
-#: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
-#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:128
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:143
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:176
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:191
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:208
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:224
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:239
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:270
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:90
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:104
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:118
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:147
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:161
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:175
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:190
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:204
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:233
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:28
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:23
-#: data/core/units/undead/Corpse_Soulless.cfg:119
-#: data/core/units/undead/Corpse_Walking.cfg:118
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:29
-#: data/core/units/undead/Necro_Lich.cfg:35
-#: data/core/units/undead/Spirit_Ghost.cfg:57
-msgid "touch"
-msgstr "碰觸"
-
-#. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
@@ -399,14 +517,6 @@ msgstr "棍棒"
 msgid "Ancient Lich"
 msgstr "遠古巫妖"
 
-#. [attack]: type=cold
-#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:44
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:89
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:41
-#: data/core/units/undead/Necro_Lich.cfg:47
-msgid "chill tempest"
-msgstr "冰風暴"
-
 #. [unit_type]: id=Sacrifice, race=human
 #. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
@@ -416,58 +526,20 @@ msgstr "死靈法師"
 
 #. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Necromancer.cfg:11
-#: data/core/units/undead/Necromancer.cfg:26
+#: data/core/units/undead/Necromancer.cfg:29
 msgid "plague staff"
 msgstr "瘟疫法杖"
 
 #. [attack]: type=pierce
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:36
-#: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:45
-#: data/core/units/saurians/Soothsayer.cfg:34
+#: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:44
+#: data/core/units/saurians/Prophet.cfg:46 data/core/units/saurians/Seer.cfg:34
+#: data/core/units/saurians/Soothsayer.cfg:33
 msgid "curse"
 msgstr "詛咒"
-
-#. [unit_type]: id=SotA Walking Corpse_Wolf
-#. [unit_type]: id=SotA Walking Corpse_Spider
-#. [unit_type]: id=SotA Flying Corpse_Bat
-#. [unit_type]: id=SotA Soulless_Wolf
-#. [unit_type]: id=SotA Soulless_Spider
-#. [unit_type]: id=SotA Soulless_Bat
-#. [attack]: type=blade
-#. [attack]: type=pierce
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:218
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:247
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:276
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:31
-#: data/core/units/bats/Bat_Blood.cfg:117 data/core/units/bats/Bat_Dread.cfg:32
-#: data/core/units/bats/Bat_Vampire.cfg:116
-#: data/core/units/goblins/Direwolf_Rider.cfg:32
-#: data/core/units/goblins/Knight.cfg:34
-#: data/core/units/goblins/Pillager.cfg:32
-#: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Ant_Fire.cfg:69
-#: data/core/units/monsters/Ant_Firebane.cfg:70
-#: data/core/units/monsters/Ant_Firebomb.cfg:72
-#: data/core/units/monsters/Ant_Soldier.cfg:38
-#: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:112
-#: data/core/units/monsters/Caribe_Hunter.cfg:113
-#: data/core/units/monsters/Caribe_Nibbler.cfg:125
-#: data/core/units/monsters/Giant_Spider.cfg:28
-#: data/core/units/monsters/Sea_Serpent.cfg:27
-#: data/core/units/monsters/Water_Serpent.cfg:42
-#: data/core/units/monsters/Wolf.cfg:48
-#: data/core/units/monsters/Wolf_Dire.cfg:33
-#: data/core/units/monsters/Wolf_Great.cfg:33
-msgid "fangs"
-msgstr "尖牙"
 
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
@@ -485,23 +557,25 @@ msgstr "尖牙"
 #: data/core/units/monsters/Dragonfly.cfg:30
 #: data/core/units/monsters/Dragonfly_Grand.cfg:31
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:61
-#: data/core/units/monsters/Fire_Dragon.cfg:32
+#: data/core/units/monsters/Fire_Dragon.cfg:33
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
 #: data/core/units/monsters/Icemonax.cfg:62
 #: data/core/units/monsters/Icemonax_Greater.cfg:63
 #: data/core/units/monsters/Scarab.cfg:44
 #: data/core/units/monsters/Seahorse.cfg:34
-#: data/core/units/monsters/Wild_Wyvern.cfg:95
+#: data/core/units/monsters/Wild_Wyvern.cfg:97
 #: data/core/units/undead/Corpse_Ghast.cfg:27
-#: data/core/units/undead/Corpse_Soulless.cfg:279
-#: data/core/units/undead/Corpse_Walking.cfg:278
+#: data/core/units/undead/Corpse_Soulless.cfg:154
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:155
+#: data/core/units/undead/Corpse_Walking.cfg:295
 msgid "bite"
 msgstr "咬"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:14
-#: data/core/units/undead/Corpse_Soulless.cfg:114
+#: data/core/units/undead/Corpse_Soulless.cfg:112
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -541,7 +615,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:245
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:260
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:274
-#: data/core/units/undead/Corpse_Soulless.cfg:103
+#: data/core/units/undead/Corpse_Soulless.cfg:101
 msgid "Soulless"
 msgstr "喪魂屍"
 
@@ -636,12 +710,12 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:31
+#: data/core/units/undead/Skele_Bone_Knight.cfg:52
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:40
+#: data/core/units/undead/Skeleton_Rider.cfg:52
 msgid "axe"
 msgstr "戰斧"
 
@@ -655,7 +729,7 @@ msgstr "戰斧"
 #: data/core/units/dwarves/Runemaster.cfg:29
 #: data/core/units/dwarves/Runesmith.cfg:28
 #: data/core/units/dwarves/Steelclad.cfg:57 data/core/units/trolls/Great.cfg:25
-#: data/core/units/trolls/Hero.cfg:25 data/core/units/trolls/Warrior.cfg:25
+#: data/core/units/trolls/Hero.cfg:25 data/core/units/trolls/Warrior.cfg:38
 msgid "hammer"
 msgstr "戰鎚"
 
@@ -681,7 +755,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:45
-#: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
+#: data/core/units/drakes/Clasher.cfg:34 data/core/units/drakes/Thrasher.cfg:32
 #: data/core/units/dunefolk/Harrier.cfg:31
 #: data/core/units/dunefolk/Skirmisher.cfg:32
 #: data/core/units/dunefolk/Spearguard.cfg:30
@@ -868,17 +942,6 @@ msgstr ""
 msgid "female^Elvish Shyde"
 msgstr "精靈希德"
 
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-#: data/core/units/dunefolk/Cataphract.cfg:52
-#: data/core/units/humans/Horse_Grand_Knight.cfg:33
-#: data/core/units/humans/Horse_Knight.cfg:32
-#: data/core/units/humans/Horse_Lancer.cfg:23
-#: data/core/units/humans/Horse_Paladin.cfg:48
-msgid "lance"
-msgstr "騎槍"
-
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
 #: data/core/units/dunefolk/Spearguard.cfg:42
@@ -891,8 +954,8 @@ msgstr "盾擊"
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:16
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:28
-#: data/core/units/merfolk/Brawler.cfg:23
-#: data/core/units/merfolk/Citizen.cfg:23
+#: data/core/units/merfolk/Brawler.cfg:22
+#: data/core/units/merfolk/Citizen.cfg:22
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:32
 #: data/core/units/monsters/Yeti.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:25
@@ -905,8 +968,8 @@ msgstr "拳"
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
 #: data/core/units/humans/Mage_White.cfg:56
-#: data/core/units/humans/Mage_of_Light.cfg:59
-#: data/core/units/merfolk/Diviner.cfg:54
+#: data/core/units/humans/Mage_of_Light.cfg:58
+#: data/core/units/merfolk/Diviner.cfg:53
 #: data/core/units/merfolk/Priestess.cfg:51
 msgid "lightbeam"
 msgstr "光束"
@@ -923,8 +986,8 @@ msgstr "刺藤"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:43
-#: data/core/units/drakes/Thrasher.cfg:40
+#: data/core/units/drakes/Enforcer.cfg:44
+#: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
 msgstr "角"
 
@@ -934,6 +997,53 @@ msgstr "角"
 #: data/core/units/dunefolk/Strider.cfg:43
 msgid "bolas"
 msgstr "流星鎚"
+
+#. [effect]: type=blade
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:124
+msgid "taunting strike"
+msgstr ""
+
+#. [advancement]: id=run_by_taunt
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:145
+msgid "Run By (Taunting strike)"
+msgstr ""
+
+#. [advancement]: id=strength_training
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:158
+msgid "Strength Training"
+msgstr ""
+
+#. [advancement]: id=bowmanship_training
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:170
+msgid "Bowmanship Training"
+msgstr ""
+
+#. [advancement]: id=strong_shots
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:187
+msgid "Strong Shots"
+msgstr ""
+
+#. [advancement]: id=Bowman
+#. [unit_type]: id=Bowman, race=human
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:199
+#: data/core/units/humans/Loyalist_Bowman.cfg:4
+msgid "Bowman"
+msgstr "弓手"
+
+#. [advancement]: id=piercing_shot
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:216
+msgid "Piercing Shot"
+msgstr ""
+
+#. [effect]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:224
+msgid "piercing shot"
+msgstr ""
+
+#. [effect]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:528
+msgid "Rain of arrows"
+msgstr ""
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -1045,7 +1155,7 @@ msgid "Drake Arbiter"
 msgstr "龍族仲裁者"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
-#: data/core/units/drakes/Arbiter.cfg:17
+#: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes’ traditional "
@@ -1060,7 +1170,7 @@ msgstr ""
 "戰士所穿戴的厚重板甲，能夠好好地防止他們受到那些足以穿透龍鱗的武器的傷害。"
 
 #. [special_note]
-#: data/core/units/drakes/Arbiter.cfg:19
+#: data/core/units/drakes/Arbiter.cfg:20
 msgid ""
 "Compared to other drakes, Drake Arbiters have a higher resistance to "
 "‘pierce’ attacks."
@@ -1068,12 +1178,19 @@ msgstr "與其他龍族比起來，龍族仲裁者有著更高的「穿刺」攻
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Arbiter.cfg:36 data/core/units/drakes/Arbiter.cfg:45
-#: data/core/units/drakes/Warden.cfg:37 data/core/units/drakes/Warden.cfg:46
+#: data/core/units/drakes/Arbiter.cfg:37 data/core/units/drakes/Arbiter.cfg:46
+#: data/core/units/drakes/Warden.cfg:38 data/core/units/drakes/Warden.cfg:47
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
 msgstr "斧槍"
+
+#. [female]
+#: data/core/units/drakes/Arbiter.cfg:174
+#, fuzzy
+#| msgid "Drake Arbiter"
+msgid "female^Drake Arbiter"
+msgstr "龍族仲裁者"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
@@ -1081,7 +1198,7 @@ msgid "Armageddon Drake"
 msgstr "末日龍戰士"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
-#: data/core/units/drakes/Armageddon.cfg:19
+#: data/core/units/drakes/Armageddon.cfg:20
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -1093,25 +1210,32 @@ msgstr ""
 "疫，還能噴射出可怕的火焰。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:36 data/core/units/drakes/Fire.cfg:29
-#: data/core/units/drakes/Inferno.cfg:31
+#: data/core/units/drakes/Armageddon.cfg:37 data/core/units/drakes/Fire.cfg:30
+#: data/core/units/drakes/Inferno.cfg:32
 msgid "battle claws"
 msgstr "戰鬥爪"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:45
-#: data/core/units/drakes/Blademaster.cfg:36
-#: data/core/units/drakes/Burner.cfg:37 data/core/units/drakes/Fighter.cfg:33
-#: data/core/units/drakes/Fire.cfg:38 data/core/units/drakes/Flameheart.cfg:39
-#: data/core/units/drakes/Flare.cfg:38 data/core/units/drakes/Glider.cfg:38
-#: data/core/units/drakes/Hurricane.cfg:60
-#: data/core/units/drakes/Inferno.cfg:40 data/core/units/drakes/Sky.cfg:59
-#: data/core/units/drakes/Warrior.cfg:34
-#: data/core/units/monsters/Fire_Dragon.cfg:50
+#: data/core/units/drakes/Armageddon.cfg:46
+#: data/core/units/drakes/Blademaster.cfg:37
+#: data/core/units/drakes/Burner.cfg:38 data/core/units/drakes/Fighter.cfg:34
+#: data/core/units/drakes/Fire.cfg:39 data/core/units/drakes/Flameheart.cfg:40
+#: data/core/units/drakes/Flare.cfg:39 data/core/units/drakes/Glider.cfg:39
+#: data/core/units/drakes/Hurricane.cfg:61
+#: data/core/units/drakes/Inferno.cfg:41 data/core/units/drakes/Sky.cfg:60
+#: data/core/units/drakes/Warrior.cfg:35
+#: data/core/units/monsters/Fire_Dragon.cfg:51
 #: data/core/units/monsters/Fire_Guardian.cfg:37
 #: data/core/units/monsters/Fire_Wraith.cfg:59
 msgid "fire breath"
 msgstr "火焰吐息"
+
+#. [female]
+#: data/core/units/drakes/Armageddon.cfg:65
+#, fuzzy
+#| msgid "Armageddon Drake"
+msgid "female^Armageddon Drake"
+msgstr "末日龍戰士"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
@@ -1119,7 +1243,7 @@ msgid "Drake Blademaster"
 msgstr "龍族劍聖"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
-#: data/core/units/drakes/Blademaster.cfg:19
+#: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -1134,11 +1258,18 @@ msgstr ""
 "聖總是會很激烈地守護同伴們的榮譽，而沒有任何人能夠懷疑他們這樣做的權利。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:27
-#: data/core/units/drakes/Clasher.cfg:24 data/core/units/drakes/Enforcer.cfg:34
-#: data/core/units/drakes/Thrasher.cfg:22
+#: data/core/units/drakes/Blademaster.cfg:28
+#: data/core/units/drakes/Clasher.cfg:25 data/core/units/drakes/Enforcer.cfg:35
+#: data/core/units/drakes/Thrasher.cfg:23
 msgid "war talon"
 msgstr "戰爭利爪"
+
+#. [female]
+#: data/core/units/drakes/Blademaster.cfg:61
+#, fuzzy
+#| msgid "Drake Blademaster"
+msgid "female^Drake Blademaster"
+msgstr "龍族劍聖"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -1146,7 +1277,7 @@ msgid "Drake Burner"
 msgstr "龍族燒灼者"
 
 #. [unit_type]: id=Drake Burner, race=drake
-#: data/core/units/drakes/Burner.cfg:17
+#: data/core/units/drakes/Burner.cfg:18
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -1157,13 +1288,20 @@ msgstr ""
 "力──火焰噴射。結合他們高大的身材和可怕的龍爪，讓龍族燒灼者在戰場上成為了恐怖"
 "的對手。"
 
+#. [female]
+#: data/core/units/drakes/Burner.cfg:67
+#, fuzzy
+#| msgid "female^Dune Burner"
+msgid "female^Drake Burner"
+msgstr "沙丘焚燒者"
+
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "龍族碰撞者"
 
 #. [unit_type]: id=Drake Clasher, race=drake
-#: data/core/units/drakes/Clasher.cfg:18
+#: data/core/units/drakes/Clasher.cfg:19
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -1186,13 +1324,20 @@ msgstr ""
 "戰鬥。這使得他們非常擅長「解決」與其他龍族之間的領土爭端，以及強制執行本部落"
 "的法律。"
 
+#. [female]
+#: data/core/units/drakes/Clasher.cfg:111
+#, fuzzy
+#| msgid "Drake Clasher"
+msgid "female^Drake Clasher"
+msgstr "龍族碰撞者"
+
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "龍族執法者"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
-#: data/core/units/drakes/Enforcer.cfg:19
+#: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -1208,11 +1353,18 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/drakes/Enforcer.cfg:52
+#: data/core/units/drakes/Enforcer.cfg:53
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
 #: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
 msgstr "三叉戟"
+
+#. [female]
+#: data/core/units/drakes/Enforcer.cfg:119
+#, fuzzy
+#| msgid "Drake Enforcer"
+msgid "female^Drake Enforcer"
+msgstr "龍族執法者"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -1220,7 +1372,7 @@ msgid "Drake Fighter"
 msgstr "龍族戰士"
 
 #. [unit_type]: id=Drake Fighter, race=drake
-#: data/core/units/drakes/Fighter.cfg:17
+#: data/core/units/drakes/Fighter.cfg:18
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
@@ -1232,11 +1384,18 @@ msgstr ""
 "畏。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:24
-#: data/core/units/drakes/Flameheart.cfg:30 data/core/units/drakes/Flare.cfg:29
-#: data/core/units/drakes/Warrior.cfg:25
+#: data/core/units/drakes/Fighter.cfg:25
+#: data/core/units/drakes/Flameheart.cfg:31 data/core/units/drakes/Flare.cfg:30
+#: data/core/units/drakes/Warrior.cfg:26
 msgid "war blade"
 msgstr "戰爭之刃"
+
+#. [female]
+#: data/core/units/drakes/Fighter.cfg:64
+#, fuzzy
+#| msgid "Drake Fighter"
+msgid "female^Drake Fighter"
+msgstr "龍族戰士"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -1244,7 +1403,7 @@ msgid "Fire Drake"
 msgstr "火焰龍戰士"
 
 #. [unit_type]: id=Fire Drake, race=drake
-#: data/core/units/drakes/Fire.cfg:17
+#: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
 "Burners, the Fire Drakes trim their armor with silver. Though they have only "
@@ -1256,13 +1415,20 @@ msgstr ""
 "用白銀來裝飾自己的鎧甲。儘管他們只是剛剛開始將自己的生命獻給體內熊熊燃燒的火"
 "焰，但那火焰的力量已然穿透了皮膚，將他們的龍鱗灼燒成了灰紅色。"
 
+#. [female]
+#: data/core/units/drakes/Fire.cfg:62
+#, fuzzy
+#| msgid "Fire Drake"
+msgid "female^Fire Drake"
+msgstr "火焰龍戰士"
+
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "龍族熾心"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
-#: data/core/units/drakes/Flameheart.cfg:18
+#: data/core/units/drakes/Flameheart.cfg:19
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
 "combat, but prefer in any case to avoid confrontation within the tribe. "
@@ -1278,13 +1444,20 @@ msgstr ""
 "擇策略。熾心與部落首領爭奪權力的事情，只會在他確信自己會得到部下們的支持時才"
 "會偶爾發生。"
 
+#. [female]
+#: data/core/units/drakes/Flameheart.cfg:66
+#, fuzzy
+#| msgid "Drake Flameheart"
+msgid "female^Drake Flameheart"
+msgstr "龍族熾心"
+
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "龍族閃耀者"
 
 #. [unit_type]: id=Drake Flare, race=drake
-#: data/core/units/drakes/Flare.cfg:17
+#: data/core/units/drakes/Flare.cfg:18
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and in peace. "
@@ -1297,13 +1470,20 @@ msgstr ""
 "耀者來成為他們的首領，但在更多的時候，人們所見的閃耀者是在領導著小型的作戰部"
 "隊，或者靠著微妙的手法來調停紛爭。"
 
+#. [female]
+#: data/core/units/drakes/Flare.cfg:65
+#, fuzzy
+#| msgid "Drake Flare"
+msgid "female^Drake Flare"
+msgstr "龍族閃耀者"
+
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "龍族滑翔者"
 
 #. [unit_type]: id=Drake Glider, race=drake
-#: data/core/units/drakes/Glider.cfg:18
+#: data/core/units/drakes/Glider.cfg:19
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
 "robes of the Glider caste. The long forays to the far reaches of the tribal "
@@ -1329,11 +1509,18 @@ msgstr ""
 "得越遠越好。"
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
-#: data/core/units/drakes/Sky.cfg:50
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
+#: data/core/units/drakes/Glider.cfg:30 data/core/units/drakes/Hurricane.cfg:52
+#: data/core/units/drakes/Sky.cfg:51
+#: data/core/units/monsters/Wild_Wyvern.cfg:88
 msgid "slam"
 msgstr "猛擊"
+
+#. [female]
+#: data/core/units/drakes/Glider.cfg:66
+#, fuzzy
+#| msgid "Drake Glider"
+msgid "female^Drake Glider"
+msgstr "龍族滑翔者"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -1341,7 +1528,7 @@ msgid "Hurricane Drake"
 msgstr "颶風龍戰士"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
-#: data/core/units/drakes/Hurricane.cfg:18
+#: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
 "the lower members of their caste are relegated. They are an integral part of "
@@ -1356,13 +1543,20 @@ msgstr ""
 "其不意攻敵不備。雖然不情願，但是他們被允許與其他階層的新手一起訓練，這使得他"
 "們的戰鬥技能得到了提升，然而颶風龍戰士最強大的優勢仍然是速度與飛行能力。"
 
+#. [female]
+#: data/core/units/drakes/Hurricane.cfg:101
+#, fuzzy
+#| msgid "Hurricane Drake"
+msgid "female^Hurricane Drake"
+msgstr "颶風龍戰士"
+
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "煉獄龍戰士"
 
 #. [unit_type]: id=Inferno Drake, race=drake
-#: data/core/units/drakes/Inferno.cfg:19
+#: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
 "their tribes nearly as much as the draconic ancestors themselves. They can "
@@ -1375,13 +1569,20 @@ msgstr ""
 "量使用，他們的龍鱗已經全然變為了紅色。「煉獄龍戰士實際上就是真的龍」──他們被"
 "戰火風蝕的紅金相間的戰甲大大增強了這種幻覺。"
 
+#. [female]
+#: data/core/units/drakes/Inferno.cfg:64
+#, fuzzy
+#| msgid "Inferno Drake"
+msgid "female^Inferno Drake"
+msgstr "煉獄龍戰士"
+
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "天空龍戰士"
 
 #. [unit_type]: id=Sky Drake, race=drake
-#: data/core/units/drakes/Sky.cfg:17
+#: data/core/units/drakes/Sky.cfg:18
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -1394,13 +1595,20 @@ msgstr ""
 "盡力捕捉儘可能多的獵物並帶回家，為獲得部落的尊敬而互相競爭，如果可能的話，還"
 "能與那些被重重護衛的龍族女性之一約會。"
 
+#. [female]
+#: data/core/units/drakes/Sky.cfg:98
+#, fuzzy
+#| msgid "Sky Drake"
+msgid "female^Sky Drake"
+msgstr "天空龍戰士"
+
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
 msgstr "龍族痛擊者"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
-#: data/core/units/drakes/Thrasher.cfg:18
+#: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
 "learned to redirect its weight to supplement their bodies’ momentum, adding "
@@ -1414,13 +1622,20 @@ msgstr ""
 "盔和那下面厚重的頭骨都是武器。痛擊者非常樂意履行自身階層的義務，只要這能夠在"
 "戰場上達成就好。"
 
+#. [female]
+#: data/core/units/drakes/Thrasher.cfg:118
+#, fuzzy
+#| msgid "Drake Thrasher"
+msgid "female^Drake Thrasher"
+msgstr "龍族痛擊者"
+
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "龍族典獄長"
 
 #. [unit_type]: id=Drake Warden, race=drake
-#: data/core/units/drakes/Warden.cfg:18
+#: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
 "their ornate helms, modeled after their dragon ancestors, and the care with "
@@ -1437,11 +1652,18 @@ msgstr ""
 "熔爐中最強的傑作，而他們的斧槍能夠將人類一劈兩半。"
 
 #. [special_note]
-#: data/core/units/drakes/Warden.cfg:20
+#: data/core/units/drakes/Warden.cfg:21
 msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr "與其他龍族比起來，龍族典獄長有著更高的「穿刺」攻擊抗性。"
+
+#. [female]
+#: data/core/units/drakes/Warden.cfg:175
+#, fuzzy
+#| msgid "Drake Warden"
+msgid "female^Drake Warden"
+msgstr "龍族典獄長"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1449,7 +1671,7 @@ msgid "Drake Warrior"
 msgstr "龍族勇士"
 
 #. [unit_type]: id=Drake Warrior, race=drake
-#: data/core/units/drakes/Warrior.cfg:17
+#: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
 "tribe’s army. No special abilities or skills set them apart; only their "
@@ -1461,6 +1683,13 @@ msgstr ""
 "戰士階層的龍族，例如勇士，是所有部落軍隊的基礎。他們沒有與眾不同的特殊能力或"
 "者技能，只有靠天生的蠻力和軍事訓練在敵軍中殺出一條血路。幾百年來，他們都是穿"
 "著覆蓋陶瓷片的皮甲、在手背上綁著傳統的戰爭之刃來參加戰鬥。"
+
+#. [female]
+#: data/core/units/drakes/Warrior.cfg:58
+#, fuzzy
+#| msgid "Drake Warrior"
+msgid "female^Drake Warrior"
+msgstr "龍族勇士"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
@@ -2221,12 +2450,23 @@ msgstr "沙丘破陣騎兵"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Among the many different type of Dune horsemen, there are those who most "
+#| "enjoy the frantic melee at the heart of battle. Bearing short-ranged "
+#| "maces, these sunderers are sturdy, robust warriors who have both the "
+#| "disposition and skill to survive multiple skirmishes. Though not "
+#| "particularly creative or special warriors, such a rider is not impotent "
+#| "in any way  — even a small group of sunderers is powerful enough to "
+#| "breach most enemy lines through sheer force. In a situation that requires "
+#| "it, these horsemen also possess enough skill at archery to weaken enemy "
+#| "forces or pick off fleeing stragglers."
 msgid ""
 "Among the many different type of Dune horsemen, there are those who most "
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
 "these sunderers are sturdy, robust warriors who have both the disposition "
 "and skill to survive multiple skirmishes. Though not particularly creative "
-"or special warriors, such a rider is not impotent in any way  — even a small "
+"or special warriors, such a rider is not impotent in any way — even a small "
 "group of sunderers is powerful enough to breach most enemy lines through "
 "sheer force. In a situation that requires it, these horsemen also possess "
 "enough skill at archery to weaken enemy forces or pick off fleeing "
@@ -2823,7 +3063,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
 #: data/core/units/elves/Sorceress.cfg:36
-#: data/core/units/monsters/Caribe_Hunter.cfg:122
+#: data/core/units/monsters/Caribe_Hunter.cfg:124
 #: data/core/units/wose/Wose_Shaman.cfg:43
 msgid "entangle"
 msgstr "纏繞"
@@ -3370,11 +3610,26 @@ msgstr "恐狼騎兵"
 # 不太確定「the front set」的意思。
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:19
+#, fuzzy
+#| msgid ""
+#| "‘Dire wolves’ differ from the common variety only in size and color. They "
+#| "typically stand taller than a horse at the shoulder, and have an appetite "
+#| "to match. Only a madman would willingly encounter them; but goblins, at "
+#| "great cost to themselves, have managed to tame and ride them.\n"
+#| "\n"
+#| "The claws of a wolf are not generally regarded as being the more "
+#| "dangerous parts, but on a beast this large, they are thicker and longer "
+#| "than iron nails. Their riders smear a poison on the front set, not unlike "
+#| "that used by the orcish assassins, making a swipe from these beasts’ paws "
+#| "into a most deadly stroke."
 msgid ""
-"‘Dire wolves’ differ from the common variety only in size and color. They "
-"typically stand taller than a horse at the shoulder, and have an appetite to "
-"match. Only a madman would willingly encounter them; but goblins, at great "
-"cost to themselves, have managed to tame and ride them.\n"
+"While the ferocity and danger of direwolves makes them somewhat of an omen "
+"to most, the diminutive goblins have an unusual bond with these savage "
+"creatures. While it is beyond the abilities of goblins to tame these beasts, "
+"a certain amount of respect can be achieved between the two if a daring "
+"goblin chooses to live among the wolves and care for a pup from a young age. "
+"Having recognized said goblin as one of their own, a direwolf may then "
+"permit the goblin to ride it.\n"
 "\n"
 "The claws of a wolf are not generally regarded as being the more dangerous "
 "parts, but on a beast this large, they are thicker and longer than iron "
@@ -3483,13 +3738,22 @@ msgstr "地精矛兵"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:17
+#, fuzzy
+#| msgid ""
+#| "In any race, there are always those rare individuals who, by stroke of "
+#| "bad luck, are born much smaller and weaker than the rest of their kind. "
+#| "For Orcs, however, such occurrences are extraordinarily common, with "
+#| "there usually being several runts born in each litter. Known as "
+#| "‘Goblins’, these sickly creatures nearly always live short, brutal lives, "
+#| "most used merely as fodder against an enemy of their larger siblings' "
+#| "choosing while equipped with only the crudest of spears."
 msgid ""
 "In any race, there are always those rare individuals who, by stroke of bad "
 "luck, are born much smaller and weaker than the rest of their kind. For "
 "Orcs, however, such occurrences are extraordinarily common, with there "
 "usually being several runts born in each litter. Known as ‘Goblins’, these "
 "sickly creatures nearly always live short, brutal lives, most used merely as "
-"fodder against an enemy of their larger siblings' choosing while equipped "
+"fodder against an enemy of their larger siblings’ choosing while equipped "
 "with only the crudest of spears."
 msgstr ""
 "任何種族中，總會有罕見的個體存在，不幸的是，他們出生時比其他的同類來的弱小許"
@@ -3588,15 +3852,6 @@ msgstr ""
 "高階騎士達到了劍術和騎槍術的頂峰。他們穿著全身板甲，騎著以力量為主而不是以速"
 "度為主來飼育的坐騎，這些勇士組成任何正規的騎兵軍隊的核心。帶頭衝鋒的高階騎士"
 "對於步兵來說是一個可怕的景象，且往往能夠突破防守線。"
-
-#. [attack]: type=blade
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Cavalier.cfg:36
-#: data/core/units/humans/Loyalist_General.cfg:44
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
-msgid "longsword"
-msgstr "長劍"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -3703,11 +3958,6 @@ msgstr ""
 "必須要小心對付矛兵和弓箭手，對弓箭手來說，輕騎兵們巨大的體積提供誘人的目標。"
 
 #. [unit_type]: id=Bowman, race=human
-#: data/core/units/humans/Loyalist_Bowman.cfg:4
-msgid "Bowman"
-msgstr "弓手"
-
-#. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -3736,24 +3986,6 @@ msgstr ""
 "禁衛騎兵是在馬背上使用劍和十字弓的高手。他們的攻擊力量與機動性的結合令人畏"
 "懼，並且他們還有出了名的與之相襯的氣魄和侵略性。禁衛騎兵們的勇敢事蹟是許多故"
 "事和歌曲的主題。"
-
-#. [attack]: type=pierce
-#. [attack]: type=fire
-#: data/core/units/humans/Loyalist_Cavalier.cfg:45
-#: data/core/units/humans/Loyalist_Dragoon.cfg:44
-#: data/core/units/humans/Loyalist_Duelist.cfg:45
-#: data/core/units/humans/Loyalist_General.cfg:53
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:36
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
-#: data/core/units/humans/Loyalist_Sergeant.cfg:36
-#: data/core/units/orcs/Crossbowman.cfg:41
-#: data/core/units/orcs/Crossbowman.cfg:50 data/core/units/orcs/Leader.cfg:36
-#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:43
-#: data/core/units/orcs/Slurbow.cfg:52 data/core/units/orcs/Sovereign.cfg:37
-#: data/core/units/undead/Skele_Death_Knight.cfg:42
-msgid "crossbow"
-msgstr "十字弓"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
@@ -4370,6 +4602,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:35
+#: data/core/units/monsters/Raven_Harbinger.cfg:104
+#: data/core/units/monsters/Raven_Omen.cfg:94
 msgid "lightning"
 msgstr "雷電"
 
@@ -4550,7 +4784,7 @@ msgid "Mage of Light"
 msgstr "聖光法師"
 
 #. [unit_type]: id=Mage of Light, race=human
-#: data/core/units/humans/Mage_of_Light.cfg:20
+#: data/core/units/humans/Mage_of_Light.cfg:19
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -4566,14 +4800,14 @@ msgstr ""
 "序。"
 
 #. [special_note]
-#: data/core/units/humans/Mage_of_Light.cfg:24
+#: data/core/units/humans/Mage_of_Light.cfg:23
 msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr "與其他法師比起來，聖光法師有著更高的「秘法」攻擊抗性。"
 
 #. [female]
-#: data/core/units/humans/Mage_of_Light.cfg:102
+#: data/core/units/humans/Mage_of_Light.cfg:101
 msgid "female^Mage of Light"
 msgstr "聖光法師"
 
@@ -4597,15 +4831,6 @@ msgstr ""
 "鬥中證明了他們自己，所以被委以更加危險的任務，並能分到更多的贓物。雖然許多對"
 "手嘲笑他們對武器的選擇，但匪徒們很清楚它的致命威力，也很清楚現成的彈藥的可得"
 "性。匪徒有點不擅長在白天作戰，偏好在夜幕掩護之下行動。"
-
-#. [attack]: type=impact
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Outlaw_Bandit.cfg:29
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
-#: data/core/units/humans/Outlaw_Highwayman.cfg:24
-#: data/core/units/humans/Royal_Warrior.cfg:29
-msgid "morning star"
-msgstr "晨星鎚"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:74
@@ -4985,12 +5210,41 @@ msgstr ""
 "他們的技能在戰鬥中非常有用，這些獵人在夜間的能力異常地好，在森林和沼澤中也"
 "是。"
 
+#. [unit_type]: id=Merman Brawler, race=merman
+#: data/core/units/merfolk/Brawler.cfg:4
+#, fuzzy
+#| msgid "Merman Entangler"
+msgid "Merman Brawler"
+msgstr "人魚纏繞者"
+
+#. [unit_type]: id=Merman Brawler, race=merman
+#: data/core/units/merfolk/Brawler.cfg:17
+msgid ""
+"Exceptionally large and strong mermen are sometimes more comfortable with "
+"their own fists and tails than with other weapons."
+msgstr ""
+
 #. [attack]: type=impact
-#: data/core/units/merfolk/Brawler.cfg:31
-#: data/core/units/monsters/Fire_Dragon.cfg:41
+#: data/core/units/merfolk/Brawler.cfg:30
+#: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "尾巴"
+
+# Triton是一個拿著三叉戟的海神，這個不好翻譯，直接音譯。
+#. [unit_type]: id=Merman Citizen, race=merman
+#: data/core/units/merfolk/Citizen.cfg:4
+#, fuzzy
+#| msgid "Merman Triton"
+msgid "Merman Citizen"
+msgstr "人魚特里頓"
+
+#. [unit_type]: id=Merman Citizen, race=merman
+#: data/core/units/merfolk/Citizen.cfg:17
+msgid ""
+"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
+"situation, even merfolk with no weapons or training can be dangerous."
+msgstr ""
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -4999,7 +5253,7 @@ msgstr "人魚女神官"
 
 # 看不太懂「such as the that of the knights」。
 #. [unit_type]: id=Mermaid Diviner, race=merman
-#: data/core/units/merfolk/Diviner.cfg:23
+#: data/core/units/merfolk/Diviner.cfg:22
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
@@ -5314,6 +5568,49 @@ msgstr ""
 "巨蟻在幾乎任何環境中──從地下深處的洞穴到高山的山頂──都很常見。雖然通常沒有敵"
 "意，但牠們還是會近距離咬人。"
 
+#: data/core/units/monsters/Ant_Egg.cfg:4
+msgid ""
+"The giant ant eggs have a tough, leathery shell that takes a dedicated "
+"effort to break through. While this shell makes it difficult to know the "
+"status of the inhabitant from the outside, it does not obscure the outside "
+"world from the rapidly developing ant larva within. Any predator or foe who "
+"approaches an ant egg or breaches the shell of an adjacent brood member will "
+"spur that ant to hatch as a fully formed adult."
+msgstr ""
+
+#. [unit_type]: id=Giant Ant Egg, race=monster
+#: data/core/units/monsters/Ant_Egg.cfg:9
+#, fuzzy
+#| msgid "Giant Ant"
+msgid "Giant Ant Egg"
+msgstr "巨蟻"
+
+#. [unit_type]: id=Giant Ant Egg, race=monster
+#: data/core/units/monsters/Ant_Egg.cfg:71
+msgid ""
+"Giant Ants are common in almost any environment, and the eggs from which "
+"they emerge can often be found in caves or any sheltered environment. Most "
+"eggs come from one of the colony queens, but the workers transport them to "
+"any suitable location.\n"
+"\n"
+msgstr ""
+
+#. [unit_type]: id=Fire Ant Egg
+#: data/core/units/monsters/Ant_Egg.cfg:169
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Fire Ant Egg"
+msgstr "火蟻"
+
+#. [unit_type]: id=Fire Ant Egg
+#: data/core/units/monsters/Ant_Egg.cfg:174
+msgid ""
+"In large numbers, Fire Ants can be a real menace, and those threatening "
+"numbers start with their eggs. Most Fire Ant eggs come from one of the "
+"colony queens, but the workers transport them to any suitable location.\n"
+"\n"
+msgstr ""
+
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
 msgid "Fire Ant"
@@ -5335,10 +5632,25 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Ant_Fire.cfg:78
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:88
 #: data/core/units/monsters/Ant_Firebane.cfg:79
 #: data/core/units/monsters/Ant_Firebomb.cfg:81
 msgid "fire"
 msgstr "火焰"
+
+#. [unit_type]: id=Fire Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Fire Ant Queen"
+msgstr "火蟻"
+
+#. [unit_type]: id=Fire Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:52
+msgid ""
+"Fire ants possess fierce fangs and an unusual ability to generate fire, and "
+"the queen is no different."
+msgstr ""
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
@@ -5362,6 +5674,26 @@ msgid ""
 "spray in a swollen abdomen, which can make for a fearsome attack, but it "
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
+msgstr ""
+
+#. [unit_type]: id=Giant Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Queen.cfg:4
+#, fuzzy
+#| msgid "Giant Ant"
+msgid "Giant Ant Queen"
+msgstr "巨蟻"
+
+#. [unit_type]: id=Giant Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Queen.cfg:19
+msgid ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. The queens are not royalty as many "
+"other races would understand, but they are the heart of any functioning nest "
+"and will be defended at all costs. As the nest core, they must be capable "
+"tacticians, and as a target of rival nests, they must also be deft warriors. "
+"The typical human or orc that finds an audience with an Ant Queen can expect "
+"a very short continued existence — and if their flesh is warm and "
+"nourishing, they can host an ant egg."
 msgstr ""
 
 #. [unit_type]: id=Soldier Ant, race=monster
@@ -5423,8 +5755,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:384
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:399
+#: data/core/units/undead/Corpse_Walking.cfg:400
 msgid "tusk"
 msgstr "長牙"
 
@@ -5478,7 +5810,7 @@ msgid "Nibbler"
 msgstr ""
 
 #. [unit_type]: id=Nibbler, race=monster
-#: data/core/units/monsters/Caribe_Nibbler.cfg:41
+#: data/core/units/monsters/Caribe_Nibbler.cfg:43
 msgid ""
 "Nibblers are juvenile predator fish, often more curious than dangerous. A "
 "single individual may not be a threat, but these fish seldom travel alone."
@@ -5635,7 +5967,10 @@ msgstr ""
 #. [attack]: type=blade
 #. [attack]: type=pierce
 #: data/core/units/monsters/Elder_Falcon.cfg:50
-#: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:29
+#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:86
+#: data/core/units/monsters/Raven_Harbinger.cfg:96
+#: data/core/units/monsters/Raven_Omen.cfg:86
+#: data/core/units/monsters/Roc.cfg:64
 msgid "beak"
 msgstr "喙"
 
@@ -5662,7 +5997,7 @@ msgstr "火燄巨龍"
 
 # 「Battling a dragon is said to be the pinnacle of danger itself」直接翻譯是「與巨龍戰鬥被說成是危險本身的巔峰」，難以理解，不照翻。
 #. [unit_type]: id=Fire Dragon, race=monster
-#: data/core/units/monsters/Fire_Dragon.cfg:23
+#: data/core/units/monsters/Fire_Dragon.cfg:24
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
 "They are very rare, and were it not for the historical events, the "
@@ -6059,12 +6394,12 @@ msgstr ""
 "意，但也有旅人覺得沙漠神怪在守護著他們，趕走夜晚的有害力量的案例。"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Jinn.cfg:99
+#: data/core/units/monsters/Jinn.cfg:100
 msgid "desert windblast"
 msgstr "沙漠氣浪"
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Jinn.cfg:108
+#: data/core/units/monsters/Jinn.cfg:109
 msgid "desert lightning"
 msgstr "沙漠雷電"
 
@@ -6107,34 +6442,79 @@ msgstr ""
 "緩慢、脆弱，且易受火焰傷害，但牠們的快速且簡易的製造方式和牠們對普通平民的粗"
 "糙鈍器的抗性，讓牠們成為具有野心但經驗不足的召喚者們優先考慮的工具。"
 
+#. [unit_type]: id=Raven, race=raven
+#: data/core/units/monsters/Raven.cfg:4
+msgid "Raven"
+msgstr ""
+
+#. [unit_type]: id=Raven, race=raven
+#: data/core/units/monsters/Raven.cfg:18
+msgid ""
+"Ravens follow armies to feast upon the refuse and corpses that are the fruit "
+"of war. For this reason, they are often associated with death, war, and "
+"fate. They are not usually associated with necromancy, as their brazen and "
+"vivacious behavior ties them to the legacy of battle and its consequences "
+"for the living, rather than rot and the finality of the tomb."
+msgstr ""
+
+#. [unit_type]: id=War Harbinger, race=raven
+#: data/core/units/monsters/Raven_Harbinger.cfg:4
+msgid "War Harbinger"
+msgstr ""
+
+#. [unit_type]: id=War Harbinger, race=raven
+#: data/core/units/monsters/Raven_Harbinger.cfg:19
+msgid ""
+"Ravens follow armies to feast upon the refuse and corpses that are the fruit "
+"of war. This leads to folk wisdom that the dark birds are agents of the "
+"supernatural forces associated with conflict. Some of the larger ravens have "
+"been seen to wear crude ornaments and lead groups in a noisy chorus of calls "
+"and cries, a reliable sign that war is imminent."
+msgstr ""
+
+#. [unit_type]: id=Dark Omen, race=raven
+#: data/core/units/monsters/Raven_Omen.cfg:4
+#, fuzzy
+#| msgid "Dark Horse"
+msgid "Dark Omen"
+msgstr "暗馬"
+
+#. [unit_type]: id=Dark Omen, race=raven
+#: data/core/units/monsters/Raven_Omen.cfg:18
+msgid ""
+"Ravens follow armies to feast upon the refuse and corpses that are the fruit "
+"of war. This leads to folk wisdom that the dark birds are agents of the "
+"supernatural forces associated with conflict. The unusual abilities "
+"displayed by some have only supported this notion."
+msgstr ""
+
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
 msgstr "巨鹏"
 
 #. [unit_type]: id=Roc, race=monster
-#: data/core/units/monsters/Roc.cfg:19
+#: data/core/units/monsters/Roc.cfg:20
 msgid ""
-"Far from human cities in the great desert mountains, the large birds of prey "
-"known as Rocs can sometimes be found rapidly scouring the sands on their "
-"hunts. Despite their large size, Rocs tend to be reclusive and are only "
-"rarely encountered by other sapient races. Their elusive nature has raised "
-"them to near mythological status, particularly among the nomads of the "
-"deserts.\n"
+"In remote desert mountains, far from any city or settlement, enormous "
+"raptors are rumoured to nest in the lofty crags. Travellers and nomads claim "
+"to have witnessed livestock and grown men snatched into the sky without "
+"warning by these monsters. While one should not place much faith in the "
+"accounts of the desert roamers, they are less fantastical than the drunken "
+"lies of sailors who claim to have witnessed full-rigged ships, attempting to "
+"navigate the narrow straits between the sheer cliffs where nothing can grow, "
+"sunk by giant eagles dropping large rocks.\n"
 "\n"
-"Unlike other avians, such as falcons or hawks, the individualistic and "
-"intelligent Rocs are nearly untamable. Only on occasion, a Roc may offer its "
-"aid to a traveler in need, usually in exchange for a small trinket or shiny "
-"bauble."
+"Whatever kernel of truth is in these tall tales, there is no denying that "
+"the desert is a dangerous place, and both traders and armies do sometimes "
+"disappear when trying to cross the harsh ranges. If you must traverse the "
+"great deserts, keep an eye to the sky."
 msgstr ""
-"這些被稱為大鵰的大型猛禽生活在遠離人類城市的大片沙漠山脈中，在牠們的獵食時"
-"間，人們有時會發現牠們正在快速搜查沙地。儘管牠們龐大的身軀，大鵰傾向於獨處，"
-"很少被其他有智慧的種族遇到。牠們難以讓人找到的天性，使牠們升格到近乎神話般的"
-"地位，尤其是在沙漠的游牧民族間。\n"
-"\n"
-"不像其他的鳥類，例如獵鷹或是鷹，個人主義且聰明的大鵰幾乎是不可被馴服的。只有"
-"一個情況，大鵰也許會對旅行者提供其所需的幫助，通常是為了換取小飾品或閃亮的小"
-"玩意。"
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Roc.cfg:75
+msgid "rock"
+msgstr ""
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
@@ -6250,6 +6630,27 @@ msgstr ""
 "心的旅行者，這種大型的變體會噴水，力道之大足以使小型動物暈眩，牠們也擁有厚厚"
 "的外骨骼盔甲，但就像所有的海馬一樣，牠是個緩慢的游泳者，且不能移動到陸地上。"
 
+#. [unit_type]: id=Shadow Jumping Spider, race=monster
+#: data/core/units/monsters/Shadow_Jumping_Spider.cfg:4
+msgid "Shadow Jumping Spider"
+msgstr ""
+
+#. [unit_type]: id=Shadow Jumping Spider, race=monster
+#: data/core/units/monsters/Shadow_Jumping_Spider.cfg:29
+msgid ""
+"Unlike the feared Giant Spider that uses poison and webs to catch prey, the "
+"Shadow Jumper relies on speed and the element of surprise. These stealthy, "
+"keen-eyed hunters creep to within striking distance, then pounce with a bite "
+"that is said to punch through steel. Once they have pierced their victim’s "
+"defenses, the spiders take what nourishment is available, feeding in a "
+"manner as fast and remorseless as befits their nature.\n"
+"\n"
+"These giant jumping spiders often hunt in the same dark caverns as their web-"
+"weaving cousins, but they also prowl the forest canopy, ambushing hapless "
+"wanderers on the ground below. While they prefer the shadows, they are "
+"perfectly capable of hunting in the broad daylight."
+msgstr ""
+
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
@@ -6257,7 +6658,7 @@ msgstr "骷髏巨龍"
 
 # 「which it now serves」意思模糊，不照翻。
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:26
+#: data/core/units/monsters/Skeletal_Dragon.cfg:27
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -6271,7 +6672,7 @@ msgstr ""
 "活得久到足以改變他們的想法。"
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:30
+#: data/core/units/monsters/Skeletal_Dragon.cfg:31
 msgid "jaw"
 msgstr "顎"
 
@@ -6319,7 +6720,7 @@ msgstr "野生飛龍"
 
 # 為了更清楚描述而不照翻。
 #. [unit_type]: id=Wild Wyvern, race=monster
-#: data/core/units/monsters/Wild_Wyvern.cfg:44
+#: data/core/units/monsters/Wild_Wyvern.cfg:45
 msgid ""
 "Wyverns are large reptiles that resemble dragons, but are not the "
 "intelligent, magical creatures. However, the fact that they are just wild "
@@ -6346,11 +6747,7 @@ msgid "Wolf"
 msgstr "狼"
 
 #. [unit_type]: id=Wolf, race=wolf
-#. [unit_type]: id=Direwolf, race=wolf
-#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
-#: data/core/units/monsters/Wolf_Dire.cfg:19
-#: data/core/units/monsters/Wolf_Great.cfg:19
 msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
@@ -6363,10 +6760,28 @@ msgstr ""
 msgid "Direwolf"
 msgstr "恐狼"
 
+#. [unit_type]: id=Direwolf, race=wolf
+#: data/core/units/monsters/Wolf_Dire.cfg:19
+msgid ""
+"‘Direwolves’ differ from the common variety only in size and color. They "
+"typically stand taller than a horse at the shoulder, and have an appetite to "
+"match. Posing a considerable threat to even experienced soldiers, direwolves "
+"are avoided by all but madmen."
+msgstr ""
+
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
 msgid "Great Wolf"
 msgstr "巨狼"
+
+#. [unit_type]: id=Great Wolf, race=wolf
+#: data/core/units/monsters/Wolf_Great.cfg:19
+msgid ""
+"Some wolves can grow to abnormally large sizes, giving them an unusually "
+"savage appearance. While not particularly stronger than a regular wolf, "
+"these great wolves are usually faster and hardier, making even just a single "
+"one a grave threat to an unwary traveler."
+msgstr ""
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -6784,7 +7199,7 @@ msgid "Ogre"
 msgstr "食人魔"
 
 #. [unit_type]: id=Ogre, race=ogre
-#: data/core/units/ogres/Ogre.cfg:21
+#: data/core/units/ogres/Ogre.cfg:24
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -6794,18 +7209,13 @@ msgstr ""
 "食人魔是巨大的生物，通常獨自生活在野外，外形像是人類，十分引人注目，不過巨大"
 "且醜陋。雖然可以輕易地在速度或智慧上超過他們，但他們的力量還是不容小覷。"
 
-#. [attack]: type=blade
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
-msgid "cleaver"
-msgstr "大砍刀"
-
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
 msgstr "小食人魔"
 
 #. [unit_type]: id=Young Ogre, race=ogre
-#: data/core/units/ogres/Young_Ogre.cfg:20
+#: data/core/units/ogres/Young_Ogre.cfg:23
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -6974,6 +7384,12 @@ msgstr ""
 "爭吵和內鬥的艱難任務，而這個任務無法只靠武力來完成。這樣的半獸人不可避免地是"
 "他的同儕中最精明且最有洞察力的一個，而且是透過領導而非脅迫來贏得了他的弟兄的"
 "尊敬。"
+
+#. [attack]: type=blade
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
+msgid "greatsword"
+msgstr "巨劍"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -7183,7 +7599,7 @@ msgid "Saurian Oracle"
 msgstr "蜥蜴人先知"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
-#: data/core/units/saurians/Oracle.cfg:18
+#: data/core/units/saurians/Oracle.cfg:17
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -7196,6 +7612,55 @@ msgstr ""
 "是畫上去的，有些則是紋身。有人懷疑他們是他們的種族中有遠見卓識的人，或是先"
 "知。不過不管他們有什麼「社會性的」功能，他們會使用他們的種族擁有的奇異魔法，"
 "無可否認地很強大，也是一看到就需要提防的生物。"
+
+#. [unit_type]: id=Saurian Prophet, race=lizard
+#: data/core/units/saurians/Prophet.cfg:4
+#, fuzzy
+#| msgid "Saurian Oracle"
+msgid "Saurian Prophet"
+msgstr "蜥蜴人先知"
+
+#. [unit_type]: id=Saurian Prophet, race=lizard
+#: data/core/units/saurians/Prophet.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Certain saurians are seen dressed in arcane regalia and covered head to "
+#| "toe in horrifying, esoteric shapes and markings, both with paint and "
+#| "tattoo. Some suspect them to be visionaries, or oracles amongst their "
+#| "ilk. But whatever ‘societal’ function they may have, they are undeniably "
+#| "powerful in the strange magics their kind possess, and are beings to be "
+#| "wary of if ever seen."
+msgid ""
+"Certain saurians are seen dressed in arcane regalia and covered head to toe "
+"in horrifying, esoteric shapes and markings, both with paint and tattoo. "
+"Some suspect them to be visionaries, or prophets amongst their ilk. But "
+"whatever ‘societal’ function they may have, they are undeniably powerful in "
+"the strange magics their kind possess."
+msgstr ""
+"某些蜥蜴人被看到穿著難以理解的服飾，且從頭到腳佈滿恐怖且極不尋常的花紋，有些"
+"是畫上去的，有些則是紋身。有人懷疑他們是他們的種族中有遠見卓識的人，或是先"
+"知。不過不管他們有什麼「社會性的」功能，他們會使用他們的種族擁有的奇異魔法，"
+"無可否認地很強大，也是一看到就需要提防的生物。"
+
+#. [unit_type]: id=Saurian Seer, race=lizard
+#: data/core/units/saurians/Seer.cfg:4
+#, fuzzy
+#| msgid "Saurian Soothsayer"
+msgid "Saurian Seer"
+msgstr "蜥蜴人預言者"
+
+#. [unit_type]: id=Saurian Seer, race=lizard
+#. [unit_type]: id=Saurian Soothsayer, race=lizard
+#: data/core/units/saurians/Seer.cfg:18
+#: data/core/units/saurians/Soothsayer.cfg:17
+msgid ""
+"Saurians are known to have some strange skills, arts bordering on the "
+"magical and mysterious. It is clear that some of them are particularly "
+"skilled at a sort of medicine, which is of great benefit whenever battle is "
+"brought against them."
+msgstr ""
+"蜥蜴人被認為擁有一些奇異的能力，一些近乎魔力且神祕的能力。很明顯地，他們之中"
+"有些人特別掌握了一種醫療技術，每當戰鬥開始時，它會帶來巨大的優勢。"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
@@ -7224,17 +7689,6 @@ msgstr ""
 msgid "Saurian Soothsayer"
 msgstr "蜥蜴人預言者"
 
-#. [unit_type]: id=Saurian Soothsayer, race=lizard
-#: data/core/units/saurians/Soothsayer.cfg:18
-msgid ""
-"Saurians are known to have some strange skills, arts bordering on the "
-"magical and mysterious. It is clear that some of them are particularly "
-"skilled at a sort of medicine, which is of great benefit whenever battle is "
-"brought against them."
-msgstr ""
-"蜥蜴人被認為擁有一些奇異的能力，一些近乎魔力且神祕的能力。很明顯地，他們之中"
-"有些人特別掌握了一種醫療技術，每當戰鬥開始時，它會帶來巨大的優勢。"
-
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:4
 #, fuzzy
@@ -7245,8 +7699,8 @@ msgstr "蜥蜴人游擊兵"
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
 msgid ""
-"Some saurians  with particularly good aim prefer to aid their allies from "
-"the backlines rather than to infiltrate enemy formations. Their deadly spear "
+"Some saurians with particularly good aim prefer to aid their allies from the "
+"backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
 
@@ -7457,125 +7911,133 @@ msgstr ""
 "法的人來說才是清晰可見的。關於這個過程是不為人知的，但它一定如噩夢一般。"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:145
+#: data/core/units/undead/Corpse_Soulless.cfg:143
 #: data/core/units/undead/Corpse_Walking.cfg:144
+#, fuzzy
+#| msgid "wc_variation^Rat"
+msgid "wc_variation^Ant"
+msgstr "鼠"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:159
+#: data/core/units/undead/Corpse_Walking.cfg:160
 msgid "wc_variation^Drake"
 msgstr "龍族"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:160
-#: data/core/units/undead/Corpse_Walking.cfg:159
+#: data/core/units/undead/Corpse_Soulless.cfg:174
+#: data/core/units/undead/Corpse_Walking.cfg:175
 msgid "wc_variation^Dwarf"
 msgstr "矮人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:173
-#: data/core/units/undead/Corpse_Walking.cfg:172
+#: data/core/units/undead/Corpse_Soulless.cfg:187
+#: data/core/units/undead/Corpse_Walking.cfg:188
 msgid "wc_variation^Falcon"
 msgstr "獵鷹"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:207
-#: data/core/units/undead/Corpse_Walking.cfg:206
+#: data/core/units/undead/Corpse_Soulless.cfg:222
+#: data/core/units/undead/Corpse_Walking.cfg:223
 msgid "wc_variation^Goblin"
 msgstr "地精"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:217
-#: data/core/units/undead/Corpse_Walking.cfg:239
+#: data/core/units/undead/Corpse_Soulless.cfg:232
+#: data/core/units/undead/Corpse_Walking.cfg:256
 msgid "wc_variation^Horse"
 msgstr "馬"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:226
-#: data/core/units/undead/Corpse_Walking.cfg:248
+#: data/core/units/undead/Corpse_Soulless.cfg:241
+#: data/core/units/undead/Corpse_Walking.cfg:265
 msgid "wc_variation^Mounted"
 msgstr "騎兵"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:235
-#: data/core/units/undead/Corpse_Walking.cfg:257
+#: data/core/units/undead/Corpse_Soulless.cfg:250
+#: data/core/units/undead/Corpse_Walking.cfg:274
 msgid "wc_variation^Beast-Rider"
 msgstr "野獸騎手"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:244
-#: data/core/units/undead/Corpse_Walking.cfg:216
+#: data/core/units/undead/Corpse_Soulless.cfg:259
+#: data/core/units/undead/Corpse_Walking.cfg:233
 msgid "wc_variation^Gryphon"
 msgstr "獅鷲"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:267
-#: data/core/units/undead/Corpse_Walking.cfg:266
+#: data/core/units/undead/Corpse_Soulless.cfg:282
+#: data/core/units/undead/Corpse_Walking.cfg:283
 msgid "wc_variation^Rat"
 msgstr "鼠"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:284
-#: data/core/units/undead/Corpse_Walking.cfg:283
+#: data/core/units/undead/Corpse_Soulless.cfg:299
+#: data/core/units/undead/Corpse_Walking.cfg:300
 msgid "wc_variation^Saurian"
 msgstr "蜥蜴人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:294
-#: data/core/units/undead/Corpse_Walking.cfg:293
+#: data/core/units/undead/Corpse_Soulless.cfg:309
+#: data/core/units/undead/Corpse_Walking.cfg:310
 msgid "wc_variation^Scorpion"
 msgstr "蠍"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:312
-#: data/core/units/undead/Corpse_Walking.cfg:311
+#: data/core/units/undead/Corpse_Soulless.cfg:327
+#: data/core/units/undead/Corpse_Walking.cfg:328
 #, fuzzy
 #| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
 msgstr "蜘蛛"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:321
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:336
+#: data/core/units/undead/Corpse_Walking.cfg:337
 msgid "wc_variation^Spider"
 msgstr "蜘蛛"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:330
-#: data/core/units/undead/Corpse_Walking.cfg:329
+#: data/core/units/undead/Corpse_Soulless.cfg:345
+#: data/core/units/undead/Corpse_Walking.cfg:346
 msgid "wc_variation^Serpent"
 msgstr "蛇"
 
 # 人魚或是納迦。
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:349
-#: data/core/units/undead/Corpse_Walking.cfg:348
+#: data/core/units/undead/Corpse_Soulless.cfg:364
+#: data/core/units/undead/Corpse_Walking.cfg:365
 msgid "wc_variation^Swimmer"
 msgstr "游泳者"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:367
-#: data/core/units/undead/Corpse_Walking.cfg:366
+#: data/core/units/undead/Corpse_Soulless.cfg:382
+#: data/core/units/undead/Corpse_Walking.cfg:383
 msgid "wc_variation^Troll"
 msgstr "巨魔"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:376
-#: data/core/units/undead/Corpse_Walking.cfg:375
+#: data/core/units/undead/Corpse_Soulless.cfg:391
+#: data/core/units/undead/Corpse_Walking.cfg:392
 msgid "wc_variation^Boar"
 msgstr "野豬"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:389
-#: data/core/units/undead/Corpse_Walking.cfg:388
+#: data/core/units/undead/Corpse_Soulless.cfg:404
+#: data/core/units/undead/Corpse_Walking.cfg:405
 msgid "wc_variation^Wose"
 msgstr "樹人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:401
-#: data/core/units/undead/Corpse_Walking.cfg:400
+#: data/core/units/undead/Corpse_Soulless.cfg:416
+#: data/core/units/undead/Corpse_Walking.cfg:417
 msgid "wc_variation^Wolf"
 msgstr "狼"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:414
-#: data/core/units/undead/Corpse_Walking.cfg:413
+#: data/core/units/undead/Corpse_Soulless.cfg:429
+#: data/core/units/undead/Corpse_Walking.cfg:430
 msgid "wc_variation^Bat"
 msgstr "蝙蝠"
 
@@ -7708,7 +8170,7 @@ msgstr "巫妖"
 
 # 原文第一段第一句不清楚，不照翻。第二段第一句不清楚，不照翻。第二段最後一句直接翻譯的話會是「這個問題可以被提出來的這個事實，根本是一個對他們的法則已經達成的東西的重要性的證明」，完全不知道在講啥，不照翻。
 #. [unit_type]: id=Lich, race=undead
-#: data/core/units/undead/Necro_Lich.cfg:22
+#: data/core/units/undead/Necro_Lich.cfg:19
 msgid ""
 "A lich is the physical embodiment of black magic’s first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -7730,7 +8192,7 @@ msgstr ""
 "大的進展了。"
 
 #. [unit_type]: id=Necromancer, race=human
-#: data/core/units/undead/Necromancer.cfg:19
+#: data/core/units/undead/Necromancer.cfg:22
 msgid ""
 "One of the pinnacles of what is considered ‘black magic’ is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -7747,7 +8209,7 @@ msgstr ""
 "這項能力，在各個方面，是阻止死亡得到它的終極大獎的第一步。"
 
 #. [female]
-#: data/core/units/undead/Necromancer.cfg:149
+#: data/core/units/undead/Necromancer.cfg:152
 msgid "female^Necromancer"
 msgstr "死靈法師"
 
@@ -7777,7 +8239,7 @@ msgid "Bone Knight"
 msgstr "地精騎士"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:27
+#: data/core/units/undead/Skele_Bone_Knight.cfg:45
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -7785,7 +8247,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:41
+#: data/core/units/undead/Skele_Bone_Knight.cfg:62
 msgid "trample"
 msgstr ""
 
@@ -7957,7 +8419,7 @@ msgid "Skeleton Rider"
 msgstr "骷髏弓箭手"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:33
+#: data/core/units/undead/Skeleton_Rider.cfg:45
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
@@ -8173,6 +8635,28 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr "這些樹人能夠指揮森林的植物，像是藤蔓，來妨礙他們的敵人。"
+
+#~ msgid ""
+#~ "Far from human cities in the great desert mountains, the large birds of "
+#~ "prey known as Rocs can sometimes be found rapidly scouring the sands on "
+#~ "their hunts. Despite their large size, Rocs tend to be reclusive and are "
+#~ "only rarely encountered by other sapient races. Their elusive nature has "
+#~ "raised them to near mythological status, particularly among the nomads of "
+#~ "the deserts.\n"
+#~ "\n"
+#~ "Unlike other avians, such as falcons or hawks, the individualistic and "
+#~ "intelligent Rocs are nearly untamable. Only on occasion, a Roc may offer "
+#~ "its aid to a traveler in need, usually in exchange for a small trinket or "
+#~ "shiny bauble."
+#~ msgstr ""
+#~ "這些被稱為大鵰的大型猛禽生活在遠離人類城市的大片沙漠山脈中，在牠們的獵食時"
+#~ "間，人們有時會發現牠們正在快速搜查沙地。儘管牠們龐大的身軀，大鵰傾向於獨"
+#~ "處，很少被其他有智慧的種族遇到。牠們難以讓人找到的天性，使牠們升格到近乎神"
+#~ "話般的地位，尤其是在沙漠的游牧民族間。\n"
+#~ "\n"
+#~ "不像其他的鳥類，例如獵鷹或是鷹，個人主義且聰明的大鵰幾乎是不可被馴服的。只"
+#~ "有一個情況，大鵰也許會對旅行者提供其所需的幫助，通常是為了換取小飾品或閃亮"
+#~ "的小玩意。"
 
 #~ msgid "Giant Stoat"
 #~ msgstr "巨鼬"

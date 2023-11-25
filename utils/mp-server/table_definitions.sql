@@ -59,7 +59,8 @@ create table extra
 -- END_TIME: when the game ends, for any particular reason
 -- REPLAY_NAME: the file name of the replay create when the game is ended
 -- OOS: Y/N flag of whether the game encountered an OOS error
--- RELOAD: Y/N flag for whether the game allows observers
+-- RELOAD: Y/N flag for whether this is a new game or a reload of a previous game
+-- OBSERVERS: Y/N flag for whether the game allows observers
 -- PASSWORD: Y/N flag for whether the game had a password set
 -- PUBLIC: Y/N flag for whether the game will have a publicly accesible replay created for it
 create table game_info
@@ -89,6 +90,7 @@ CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
 -- USER_NAME: the username logged in with
+-- LEADERS: the leader(s) for the side. if multiple leaders are found, then they are comma delimited.
 create table game_player_info
 (
     INSTANCE_UUID  CHAR(36) NOT NULL,
@@ -100,6 +102,7 @@ create table game_player_info
     CLIENT_VERSION VARCHAR(255) NOT NULL DEFAULT '',
     CLIENT_SOURCE  VARCHAR(255) NOT NULL DEFAULT '',
     USER_NAME      VARCHAR(255) NOT NULL DEFAULT '',
+    LEADERS        VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);

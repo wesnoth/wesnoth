@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -160,9 +160,6 @@ struct addon_info
 	 *
 	 * If the real @a title is empty, the returned value is the @a id with
 	 * underscores replaced with blanks.
-	 *
-	 * @todo FIXME: Is it even possible for the add-ons server to provide untitled
-	 *       add-ons in its reply anymore? Titles seem to be required at upload time.
 	 */
 	std::string display_title() const;
 

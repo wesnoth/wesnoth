@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -149,9 +149,10 @@ void multi_page::finalize(std::unique_ptr<generator_base> generator, const std::
 	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
 }
 
-void multi_page::impl_draw_background()
+bool multi_page::impl_draw_background()
 {
 	/* DO NOTHING */
+	return true;
 }
 
 void multi_page::set_self_active(const bool /*active*/)
@@ -172,10 +173,10 @@ multi_page_definition::multi_page_definition(const config& cfg)
 multi_page_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -195,13 +196,13 @@ builder_multi_page::builder_multi_page(const config& cfg)
 	VALIDATE(!builders.empty(), _("No page defined."));
 
 	/** @todo This part is untested. */
-	const config& d = cfg.child("page_data");
+	auto d = cfg.optional_child("page_data");
 	if(!d) {
 		return;
 	}
 
 	auto builder = builders.begin()->second;
-	for(const auto & row : d.child_range("row"))
+	for(const auto & row : d->child_range("row"))
 	{
 		unsigned col = 0;
 

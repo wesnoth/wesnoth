@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -131,6 +131,8 @@ private:
 	bool currently_sorted_asc_;
 
 	std::vector<std::string> last_search_words_;
+
+	inline const static std::string missing_campaign_ = "////missing-campaign////";
 };
 
 } // namespace dialogs

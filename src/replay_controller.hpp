@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -45,7 +45,7 @@ public:
 
 	bool recorder_at_end() const;
 	bool should_stop() const { return stop_condition_->should_stop(); }
-	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
+	bool can_execute_command(const hotkey::ui_command& cmd) const;
 	bool is_controlling_view() const {
 		return vision_.has_value();
 	}

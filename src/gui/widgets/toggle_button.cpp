@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,8 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sound.hpp"
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #include <functional>
 
@@ -209,9 +211,9 @@ toggle_button_definition::resolution::resolution(const config& cfg)
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.child("enabled"));
-		state.emplace_back(c.child("disabled"));
-		state.emplace_back(c.child("focused"));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "enabled", _("Missing required state for toggle button")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "disabled", _("Missing required state for toggle button")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "focused", _("Missing required state for toggle button")));
 	}
 }
 

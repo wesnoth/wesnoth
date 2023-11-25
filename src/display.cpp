@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,14 +18,14 @@
  * Routines to set up the display, scroll and zoom the map.
  */
 
+#include "display.hpp"
+
 #include "arrow.hpp"
 #include "color.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
-#include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
@@ -790,7 +790,10 @@ surface display::screenshot(bool map_screenshot)
 
 	map_screenshot_ = true;
 
+	DBG_DP << "invalidating region for map screenshot";
 	invalidate_locations_in_rect(map_area());
+
+	DBG_DP << "drawing map screenshot";
 	draw();
 
 	map_screenshot_ = false;
@@ -800,6 +803,7 @@ surface display::screenshot(bool map_screenshot)
 	ypos_ = old_ypos;
 
 	// Read rendered pixels back as an SDL surface.
+	LOG_DP << "reading pixels for map screenshot";
 	return video::read_pixels();
 }
 
@@ -925,6 +929,11 @@ void display::create_buttons()
 		action_buttons_.push_back(std::move(b));
 	}
 
+	if (prevent_draw_) {
+		// buttons start hidden in this case
+		hide_buttons();
+	}
+
 	layout_buttons();
 	DBG_DP << "buttons created";
 }
@@ -949,6 +958,26 @@ void display::draw_buttons()
 	//		btn->draw();
 	//	}
 	//}
+}
+
+void display::hide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide();
+	}
+	for (auto& button : action_buttons_) {
+		button->hide();
+	}
+}
+
+void display::unhide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide(false);
+	}
+	for (auto& button : action_buttons_) {
+		button->hide(false);
+	}
 }
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
@@ -1276,6 +1305,9 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 
 void display::drawing_buffer_commit()
 {
+	DBG_DP << "committing drawing buffer"
+	       << " with " << drawing_buffer_.size() << " items";
+
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
@@ -1885,6 +1917,12 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		new_zoom = zoom_levels[zoom_index_];
 	}
 
+	if((new_zoom / 4) * 4 != new_zoom) {
+		WRN_DP << "set_zoom forcing zoom " << new_zoom
+			<< " which is not a multiple of 4."
+			<< " This will likely cause graphical glitches.";
+	}
+
 	const SDL_Rect& outside_area = map_outside_area();
 	const SDL_Rect& area = map_area();
 
@@ -2159,24 +2197,16 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 		if (map_center_x < r.x) {
 			target_x = r.x;
-			target_y = map_center_y;
-			if (target_y < r.y) target_y = r.y;
-			if (target_y > r.y+r.h-1) target_y = r.y+r.h-1;
+			target_y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if (map_center_x > r.x+r.w-1) {
-			target_x = r.x+r.w-1;
-			target_y = map_center_y;
-			if (target_y < r.y) target_y = r.y;
-			if (target_y >= r.y+r.h) target_y = r.y+r.h-1;
+			target_x = r.x + r.w - 1;
+			target_y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if (map_center_y < r.y) {
 			target_y = r.y;
-			target_x = map_center_x;
-			if (target_x < r.x) target_x = r.x;
-			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
+			target_x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else if (map_center_y > r.y+r.h-1) {
-			target_y = r.y+r.h-1;
-			target_x = map_center_x;
-			if (target_x < r.x) target_x = r.x;
-			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
+			target_y = r.y + r.h - 1;
+			target_x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else {
 			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all...";
 			// keep the target at the center
@@ -2189,14 +2219,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 void display::bounds_check_position()
 {
-	if(zoom_ < MinZoom) {
-		zoom_ = MinZoom;
-	}
-
-	if(zoom_ > MaxZoom) {
-		zoom_ = MaxZoom;
-	}
-
+	zoom_ = std::clamp(zoom_, MinZoom, MaxZoom);
 	bounds_check_position(xpos_, ypos_);
 }
 
@@ -2205,24 +2228,11 @@ void display::bounds_check_position(int& xpos, int& ypos) const
 	const int tile_width = hex_width();
 
 	// Adjust for the border 2 times
-	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width/3);
-	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_/2);
+	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width / 3);
+	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_ / 2);
 
-	if(xpos > xend - map_area().w) {
-		xpos = xend - map_area().w;
-	}
-
-	if(ypos > yend - map_area().h) {
-		ypos = yend - map_area().h;
-	}
-
-	if(xpos < 0) {
-		xpos = 0;
-	}
-
-	if(ypos < 0) {
-		ypos = 0;
-	}
+	xpos = std::clamp(xpos, 0, xend - map_area().w);
+	ypos = std::clamp(ypos, 0, yend - map_area().h);
 }
 
 double display::turbo_speed() const
@@ -2238,6 +2248,21 @@ double display::turbo_speed() const
 	else
 		return 1.0;
 }
+
+void display::set_prevent_draw(bool pd)
+{
+	prevent_draw_ = pd;
+	if (!pd) {
+		// ensure buttons are visible
+		unhide_buttons();
+	}
+}
+
+bool display::get_prevent_draw()
+{
+	return prevent_draw_;
+}
+
 
 void display::fade_tod_mask(
 	const std::string& old_mask,
@@ -2382,7 +2407,7 @@ void display::draw()
 	set_scontext_unsynced leave_synced_context;
 
 	// This isn't the best, but also isn't important enough to do better.
-	if(redraw_background_) {
+	if(redraw_background_ && !map_screenshot_) {
 		DBG_DP << "display::draw redraw background";
 		render_map_outside_area();
 		draw_manager::invalidate_region(map_outside_area());
@@ -2677,7 +2702,7 @@ void display::draw_hex(const map_location& loc)
 		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
 		num_images_fg = terrain_image_vector_.size();
 
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -2797,8 +2822,8 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(debug_flag_set(DEBUG_FOREGROUND)) {
-		drawing_buffer_add(
-			LAYER_UNIT_DEFAULT, loc, [tex = image::get_texture("terrain/foreground.png", image::TOD_COLORED)](const rect& dest) {
+		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc,
+			[tex = image::get_texture(image::locator{"terrain/foreground.png"}, image::TOD_COLORED)](const rect& dest) {
 				draw::blit(tex, dest);
 			});
 	}
@@ -2924,13 +2949,13 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	if (!str.empty()) {
 		config &e = report.add_child_at("element", config(), 0);
 		e["text"] = str;
-		e["tooltip"] = report.child("element")["tooltip"];
+		e["tooltip"] = report.mandatory_child("element")["tooltip"];
 	}
 	str = item->postfix();
 	if (!str.empty()) {
 		config &e = report.add_child("element");
 		e["text"] = str;
-		e["tooltip"] = report.child("element", -1)["tooltip"];
+		e["tooltip"] = report.mandatory_child("element", -1)["tooltip"];
 	}
 
 	// Do a fake run of drawing the report, so tooltips can be determined.
@@ -3121,7 +3146,7 @@ void display::invalidate_all()
 
 bool display::invalidate(const map_location& loc)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	bool tmp;
@@ -3131,7 +3156,7 @@ bool display::invalidate(const map_location& loc)
 
 bool display::invalidate(const std::set<map_location>& locs)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
@@ -3174,7 +3199,7 @@ bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	DBG_DP << "invalidating locations in " << rect;

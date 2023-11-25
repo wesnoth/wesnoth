@@ -12,9 +12,6 @@ Note: When adding new WML tags, unless they're very simple, it's preferred to
 add a new file in the "data/lua/wml" directory rather than implementing it in this file.
 The file will then automatically be loaded by the above require statement.
 
-Also note: The above on_load event needs to be registered before any other on_load events.
-That means before loading the WML tags via wesnoth.require "wml".
-
 ]]
 
 function wml_actions.sync_variable(cfg)
@@ -107,7 +104,7 @@ function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		wml.error "[clear_variable] missing required name= attribute."
 	if variables == nil then variables = wml.variables end
-	for _,w in ipairs(names:split()) do
+	for _,w in ipairs(tostring(names):split()) do
 		variables[w:trim()] = nil
 	end
 end
@@ -648,7 +645,11 @@ function wml_actions.put_to_recall_list(cfg)
 end
 
 function wml_actions.allow_undo(cfg)
-	wesnoth.allow_undo()
+	wesnoth.experimental.game_events.set_undoable(true)
+end
+
+function wml_actions.disallow_undo(cfg)
+	wesnoth.experimental.game_events.set_undoable(false)
 end
 
 function wml_actions.allow_end_turn(cfg)
@@ -1016,6 +1017,10 @@ function wml_actions.set_achievement(cfg)
 	wesnoth.achievements.set(cfg.content_for, cfg.id)
 end
 
+function wml_actions.set_sub_achievement(cfg)
+	wesnoth.achievements.set_sub_achievement(cfg.content_for, cfg.id, cfg.sub_id)
+end
+
 function wml_actions.progress_achievement(cfg)
 	if not tonumber(cfg.amount) then
 		wml.error("[progress_achievement] amount attribute not a number for content '"..cfg.content_for.."' and achievement '"..cfg.id.."'")
@@ -1023,4 +1028,12 @@ function wml_actions.progress_achievement(cfg)
 	end
 
 	wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, tonumber(cfg.limit) or 999999999)
+end
+
+function wml_actions.on_undo(cfg)
+	if cfg.delayed_variable_substitution then
+		wesnoth.experimental.game_events.add_undo_actions(wml.literal(cfg));
+	else
+		wesnoth.experimental.game_events.add_undo_actions(wml.parsed(cfg));
+	end
 end

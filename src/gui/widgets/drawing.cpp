@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,9 @@
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
+
+#include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -113,7 +116,7 @@ builder_drawing::builder_drawing(const config& cfg)
 	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
-	, draw(cfg.child("draw"))
+	, draw(VALIDATE_WML_CHILD(cfg, "draw", _("Missing [draw] in drawing")))
 {
 	assert(!draw.empty());
 }

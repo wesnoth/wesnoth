@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -149,7 +149,6 @@ level_result::type campaign_controller::play_game()
 #endif
 			{
 				res = playmp_scenario(end_level);
-				//todo: i removed the code that could return observer_end
 			}
 		} catch(const leavegame_wesnothd_error&) {
 			LOG_NG << "The game was remotely ended";

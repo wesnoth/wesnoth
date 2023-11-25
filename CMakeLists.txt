@@ -58,7 +58,7 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.66")
+set(BOOST_VERSION "1.67")
 
 # set what std version to use
 if(NOT CXX_STD)
@@ -70,7 +70,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # forbid defaulting to gnu++NN instead of c++NN
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(OpenSSL 1.0 REQUIRED)
+find_package(OpenSSL 3.0 REQUIRED)
 
 if(APPLE)
 	find_library(APPKIT_LIBRARY AppKit REQUIRED)
@@ -84,6 +84,7 @@ find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
+find_package(Python)
 
 find_package(X11)
 
@@ -447,7 +448,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=_WIN32_WINNT_WIN7 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+	add_definitions(-D_WIN32_WINNT=0x0601 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
@@ -557,7 +558,7 @@ endif()
 
 add_subdirectory(doc)
 
-if(GETTEXT_FOUND AND ENABLE_NLS)
+if(GETTEXT_FOUND AND Python_FOUND AND ENABLE_NLS)
 	add_subdirectory(po)
 endif()
 

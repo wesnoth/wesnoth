@@ -32,7 +32,7 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg) /*@ \label
  * * state_enabled, the progress bar is enabled.
  */
 	// Note the order should be the same as the enum tstate is progress_bar.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.optional_child("state_enabled")));
 }
 
 } // namespace gui2

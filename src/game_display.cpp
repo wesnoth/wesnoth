@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,6 +77,7 @@ game_display::game_display(game_board& board,
 	, attack_indicator_dst_()
 	, route_()
 	, displayedUnitHex_()
+	, first_turn_(true)
 	, in_game_(false)
 	, chat_man_(new display_chat_manager(*this))
 	, mode_(RUNNING)
@@ -95,10 +96,7 @@ game_display::~game_display()
 
 void game_display::new_turn()
 {
-	static bool first_turn = true;
-
-	// We want to skip this on the first run of this function
-	if(!first_turn) {
+	if(!first_turn_) {
 		const time_of_day& tod = resources::tod_manager->get_time_of_day();
 		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
 
@@ -107,7 +105,7 @@ void game_display::new_turn()
 		}
 	}
 
-	first_turn = false;
+	first_turn_ = false;
 
 	update_tod();
 }
@@ -414,15 +412,15 @@ void game_display::draw_movement_info(const map_location& loc)
 			drawing_buffer_add(LAYER_MOVE_INFO, loc,
 				[inv = w->second.invisible, zoc = w->second.zoc, cap = w->second.capture](const rect& dest) {
 					if(inv) {
-						draw::blit(image::get_texture("misc/hidden.png", image::HEXED), dest);
+						draw::blit(image::get_texture(image::locator{"misc/hidden.png"}, image::HEXED), dest);
 					}
 
 					if(zoc) {
-						draw::blit(image::get_texture("misc/zoc.png", image::HEXED), dest);
+						draw::blit(image::get_texture(image::locator{"misc/zoc.png"}, image::HEXED), dest);
 					}
 
 					if(cap) {
-						draw::blit(image::get_texture("misc/capture.png", image::HEXED), dest);
+						draw::blit(image::get_texture(image::locator{"misc/capture.png"}, image::HEXED), dest);
 					}
 				});
 

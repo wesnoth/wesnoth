@@ -278,7 +278,7 @@ function world_conquest_tek_map_repaint_4b()
 	-- mushrooms, base amount in map surface
 	local terrain_to_change3 = map:find(f.terrain("Hhd,Hhd^F^*"))
 	mathx.shuffle(terrain_to_change3)
-	local r1 = mathx.random_choice(tostring(total_tiles // 600) .. ".." .. tostring(total_tiles // 300))
+	local r1 = mathx.random_choice(tostring(scenario_data.total_tiles // 600) .. ".." .. tostring(scenario_data.total_tiles // 300))
 
 	for mush_i = 1, math.min(r1, #terrain_to_change3) do
 		map[terrain_to_change3[mush_i]] = "Hhd^Tf"

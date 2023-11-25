@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -388,7 +388,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
-		statistics::advance_unit(*new_unit);
+		resources::controller->statistics().advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}

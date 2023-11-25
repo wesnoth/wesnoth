@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,8 @@
 #include "preferences/game.hpp"
 #include "serialization/unicode.hpp"
 #include <functional>
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -273,8 +275,6 @@ void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 
 void text_box::update_offsets()
 {
-	assert(config());
-
 	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
@@ -408,10 +408,10 @@ text_box_definition::resolution::resolution(const config& cfg)
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in text_box.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_focused"));
-	state.emplace_back(cfg.child("state_hovered"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for editable text box")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for editable text box")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for editable text box")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_hovered", _("Missing required state for editable text box")));
 }
 
 // }---------- BUILDER -----------{

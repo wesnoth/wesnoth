@@ -115,6 +115,7 @@
 0 replace_schedule_prestart
 0 modify_unit_facing
 0 modify_unit_which_recall_list
+0 modify_unit_recall_cost
 0 put_to_recall_and_modify
 0 event_handlers_in_events_1
 0 event_handlers_in_events_3
@@ -141,9 +142,23 @@
 0 event_test_filter_condition
 0 event_test_filter_side
 0 event_test_filter_unit
+0 event_test_filter_ability
+0 event_test_filter_ability_interval_number
+0 event_test_filter_ability_neg_value
+0 event_test_filter_ability_no_match
+0 event_test_filter_ability_no_match_neg_prefix
+0 event_test_filter_ability_active
+0 event_test_filter_ability_active_inactive
+0 event_test_filter_ability_with_value_by_default
+0 event_test_filter_ability_no_match_by_default
 0 test_ability_id_active
 0 test_ability_id_not_active
 0 event_test_filter_attack
+0 event_test_filter_attack_no_defense
+0 event_test_filter_attack_type
+0 event_test_filter_attack_specials
+0 event_test_filter_attack_on_moveto
+0 event_test_filter_attack_opponent_weapon_condition
 0 event_test_filter_wfl
 0 event_test_filter_wfl2
 0 event_test_filter_lua_serializable
@@ -205,13 +220,15 @@
 0 has_achievement
 0 test_movement_used
 0 test_attacks_used
+0 no_duplicate_advancements
+0 add_advancement
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
 0 test_terrain_mask_simple_underlay
 0 test_terrain_mask_simple_overlay
 0 test_terrain_mask_simple_name
-0 test_terrain_mask_simple_name_fail
+0 test_terrain_mask_simple_name_ignore
 0 test_terrain_mask_align_odd_on_odd
 0 test_terrain_mask_align_odd_on_even
 0 test_terrain_mask_align_even_on_odd
@@ -231,6 +248,7 @@
 0 test_wml_actions
 0 test_wml_conditionals
 0 lua_wml_tagnames
+0 test_parse_range
 0 test_scoped_array
 0 test_scoped_scalar
 0 as_text
@@ -315,17 +333,25 @@
 0 test_force_chance_to_hit_macro
 0 trait_exclusion_test
 0 trait_requirement_test
+0 test_remove_ability_by_filter
+0 test_overwrite_specials_filter
+0 damage_type_test
+0 damage_type_with_filter_test
+0 damage_secondary_type_test
 0 swarms_filter_student_by_type
 0 swarms_effects_not_checkable
 0 filter_special_id_active
 0 filter_ability_special_id_active
 0 filter_special_id_not_exists
+0 special_id_active_lua_function
 0 leadership_when_other_has_special
 0 leadership_when_other_has_no_special
 0 effect_increase_attacks
 0 opponent_weapon_has_no_special
 0 opponent_weapon_has_special
+0 plague_without_priority
 0 student_teacher_are_same
+0 teacher_damage_formula
 # Math operations in ability or specials tags
 0 special_calculation_add
 0 special_calculation_add2_add3_cumulative
@@ -430,11 +456,19 @@
 0 order_of_variable_events3
 0 premature_end_turn1
 2 premature_end_turn2
+0 events_test_priority_vs_origin
+0 events_test_same_priority
+0 events_test_multi_int
+0 events_test_multi_float
+0 events_test_lua_events_add_priority_vs_origin
+0 events_test_lua_events_add_repeating_priority_vs_origin
 0 kill_fires_events
 # Game mechanics
 0 heal
+0 heal_with_filter
 0 zero_experience
 0 unit_no_advancements
+0 no_sides
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated

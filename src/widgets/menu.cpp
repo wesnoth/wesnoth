@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -913,8 +913,9 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
-					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
+					const texture sort_tex(image::get_texture(
+						image::locator{sortreversed_ ? "buttons/sliders/slider_arrow_blue.png"
+													 : "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"}));
 					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
 						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
 						const int sort_y = loc.y + loc.h/2 - sort_tex.h()/2;

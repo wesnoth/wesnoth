@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,6 +29,7 @@
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
+#include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "replay_helper.hpp"
@@ -74,7 +75,7 @@ recall::recall(std::size_t team_index, bool hidden, const unit& u, const map_loc
 recall::recall(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, temp_unit_()
-	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"], wml_loc())
+	, recall_hex_(cfg.mandatory_child("recall_hex_")["x"],cfg.mandatory_child("recall_hex_")["y"], wml_loc())
 	, fake_unit_()
 	, original_mp_(0)
 	, original_ap_(0)
@@ -201,7 +202,7 @@ void recall::draw_hex(const map_location& hex)
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
 		unit &it = *get_unit();
-		int cost = statistics::un_recall_unit_cost(it);
+		int cost = it.recall_cost();
 		if (cost < 0) {
 			number_text << font::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}

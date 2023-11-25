@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2023
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -26,6 +26,8 @@
 #include "mt_rng.hpp"
 
 #include <boost/algorithm/string.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <boost/iostreams/tee.hpp>
 
 #include <map>
 #include <sstream>
@@ -57,7 +59,7 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
-static bool is_log_dir_writable_ = true;
+static std::optional<bool> is_log_dir_writable_ = std::nullopt;
 static std::ostream *output_stream_ = nullptr;
 
 static std::ostream& output()
@@ -173,16 +175,24 @@ void check_log_dir_writable()
 void set_log_to_file()
 {
 	check_log_dir_writable();
-	// get the log file stream and assign cerr+cout to it
-	if(is_log_dir_writable_) {
+	// if the log directory is not writable, then don't try to do anything.
+	// if the log directory is writable, then setup logging and rotate the logs.
+	// if the optional isn't set, then logging to file has been disabled, so don't try to do anything
+	if(is_log_dir_writable_.value_or(false)) {
+		// get the log file stream and assign cerr+cout to it
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
-		output_file_.reset(filesystem::ostream_file(output_file_path_).release());
+		static std::unique_ptr<std::ostream> logfile { filesystem::ostream_file(output_file_path_) };
+		static std::ostream cerr_stream{std::cerr.rdbuf()};
+		//static std::ostream cout_stream{std::cout.rdbuf()};
+		auto cerr_tee { boost::iostreams::tee(*logfile, cerr_stream) };
+		output_file_.reset(new boost::iostreams::stream<decltype(cerr_tee)>{cerr_tee, 4096, 0});
 		std::cerr.rdbuf(output_file_.get()->rdbuf());
 		std::cout.rdbuf(output_file_.get()->rdbuf());
+		rotate_logs(filesystem::get_logs_dir());
 	}
 }
 
-bool log_dir_writable()
+std::optional<bool> log_dir_writable()
 {
 	return is_log_dir_writable_;
 }

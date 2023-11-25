@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "hash.hpp"
 #include "serialization/binary_or_text.hpp"

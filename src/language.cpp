@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -395,5 +395,3 @@ bool init_strings(const game_config_view& cfg)
 	}
 	return load_strings(true);
 }
-
-/* vim:set encoding=utf-8: */

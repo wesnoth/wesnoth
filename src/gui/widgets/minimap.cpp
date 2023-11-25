@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,8 @@
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
 #include <functional>
@@ -91,11 +93,12 @@ void minimap::set_map_data(const std::string& map_data)
 	}
 }
 
-void minimap::impl_draw_background()
+bool minimap::impl_draw_background()
 {
 	if(map_) {
 		image::render_minimap(get_width(), get_height(), *map_, nullptr, nullptr, nullptr, true);
 	}
+	return true;
 }
 
 // }---------- DEFINITION ---------{
@@ -112,7 +115,7 @@ minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for minimap control")));
 }
 
 // }---------- BUILDER -----------{

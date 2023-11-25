@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,24 +30,6 @@ static lg::log_domain log_engine("engine");
 
 namespace game_config
 {
-//
-// Path info
-//
-#ifdef WESNOTH_PATH
-std::string path = WESNOTH_PATH;
-#else
-std::string path = "";
-#endif
-
-#ifdef DEFAULT_PREFS_PATH
-std::string default_preferences_path = DEFAULT_PREFS_PATH;
-#else
-std::string default_preferences_path = "";
-#endif
-bool check_migration = false;
-
-std::string wesnoth_program_dir;
-
 //
 // Gameplay constants
 //
@@ -82,12 +64,8 @@ double xp_bar_scaling  = 0.5;
 //
 // Misc
 //
-int cache_compression_level = 6;
-
 unsigned lobby_network_timer  = 100;
 unsigned lobby_refresh        = 4000;
-
-const std::string observer_team_name = "observer";
 
 const std::size_t max_loop = 65536;
 
@@ -296,7 +274,12 @@ void load_config(const config &v)
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
 		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
-			return static_cast<int>(std::stold(zoom) * tile_size);
+			int z = std::stoi(zoom);
+			if((z / 4) * 4 != z) {
+				ERR_NG << "zoom level " << z << " is not divisible by 4."
+					<< " This will cause graphical glitches!";
+			}
+			return z;
 		});
 	}
 
@@ -306,7 +289,7 @@ void load_config(const config &v)
 	default_victory_music = utils::split(v["default_victory_music"].str());
 	default_defeat_music  = utils::split(v["default_defeat_music"].str());
 
-	if(const config& i = v.child("colors")){
+	if(auto i = v.optional_child("colors")){
 		using namespace game_config::colors;
 
 		moved_orb_color    = i["moved_orb_color"].str();
@@ -324,7 +307,7 @@ void load_config(const config &v)
 	show_unmoved_orb  = v["show_unmoved_orb"].to_bool(true);
 	show_disengaged_orb = v["show_disengaged_orb"].to_bool(true);
 
-	if(const config& i = v.child("images")){
+	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
 		game_title            = i["game_title"].str();
@@ -416,7 +399,7 @@ void load_config(const config &v)
 		server_list.push_back(sinf);
 	}
 
-	if(const config& s = v.child("sounds")) {
+	if(auto s = v.optional_child("sounds")) {
 		using namespace game_config::sounds;
 
 		const auto load_attribute = [](const config& c, const std::string& key, std::string& member) {
@@ -425,26 +408,26 @@ void load_config(const config &v)
 			}
 		};
 
-		load_attribute(s, "turn_bell",        turn_bell);
-		load_attribute(s, "timer_bell",       timer_bell);
-		load_attribute(s, "public_message",   public_message);
-		load_attribute(s, "private_message",  private_message);
-		load_attribute(s, "friend_message",   friend_message);
-		load_attribute(s, "server_message",   server_message);
-		load_attribute(s, "player_joins",     player_joins);
-		load_attribute(s, "player_leaves",    player_leaves);
-		load_attribute(s, "game_created",     game_created);
-		load_attribute(s, "game_user_arrive", game_user_arrive);
-		load_attribute(s, "game_user_leave",  game_user_leave);
-		load_attribute(s, "ready_for_start",  ready_for_start);
-		load_attribute(s, "game_has_begun",   game_has_begun);
+		load_attribute(*s, "turn_bell",        turn_bell);
+		load_attribute(*s, "timer_bell",       timer_bell);
+		load_attribute(*s, "public_message",   public_message);
+		load_attribute(*s, "private_message",  private_message);
+		load_attribute(*s, "friend_message",   friend_message);
+		load_attribute(*s, "server_message",   server_message);
+		load_attribute(*s, "player_joins",     player_joins);
+		load_attribute(*s, "player_leaves",    player_leaves);
+		load_attribute(*s, "game_created",     game_created);
+		load_attribute(*s, "game_user_arrive", game_user_arrive);
+		load_attribute(*s, "game_user_leave",  game_user_leave);
+		load_attribute(*s, "ready_for_start",  ready_for_start);
+		load_attribute(*s, "game_has_begun",   game_has_begun);
 
-		if(const config & ss = s.child("status")) {
+		if(auto ss = s->optional_child("status")) {
 			using namespace game_config::sounds::status;
 
-			load_attribute(ss, "poisoned",  poisoned);
-			load_attribute(ss, "slowed",    slowed);
-			load_attribute(ss, "petrified", petrified);
+			load_attribute(*ss, "poisoned",  poisoned);
+			load_attribute(*ss, "slowed",    slowed);
+			load_attribute(*ss, "petrified", petrified);
 		}
 	}
 }

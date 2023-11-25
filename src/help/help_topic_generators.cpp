@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -302,8 +302,7 @@ std::string unit_topic_generator::operator()() const {
 	if (screen_width >= 1200) ss << "~XBRZ(2)";
 	ss << "' box='no'</img> ";
 
-
-	if (&female_type != &male_type) {
+	if (female_type.image() != male_type.image()) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
 		if (screen_width >= 1200) ss << "~XBRZ(2)";
@@ -686,7 +685,7 @@ std::string unit_topic_generator::operator()() const {
 		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
 				for (const config & effect : t.child_range("effect")) {
-					if (!effect.child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
+					if (!effect.has_child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
 							&& movetype::effects.find(effect["apply_to"].str()) != movetype::effects.end()) {
 						movement_type.merge(effect, effect["replace"].to_bool());
 					}

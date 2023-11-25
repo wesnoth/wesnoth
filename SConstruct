@@ -186,7 +186,7 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = "1.66"
+boost_version = "1.67"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -719,7 +719,7 @@ env.Clean(all, 'TAGS')
 # Unix installation productions
 #
 # These will not be portable to Windows or Mac. They assume a Unix-like
-# directory structure and FreeDesktop standard locations foicon, app,
+# directory structure and FreeDesktop standard locations for icon, app,
 # and doc files.
 #
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -362,6 +362,7 @@ void wml_menu_item::update_command(const config& new_command)
 
 		command_["name"] = event_name_;
 		command_["first_time_only"] = false;
+		command_["priority"] = 0.;
 
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;

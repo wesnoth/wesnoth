@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -148,6 +148,8 @@ void unit_animation_component::refresh()
 void unit_animation_component::clear_haloes ()
 {
 	unit_halo_.reset();
+	abil_halos_.clear();
+	abil_halos_ref_.clear();
 	if(anim_ ) anim_->clear_haloes();
 }
 

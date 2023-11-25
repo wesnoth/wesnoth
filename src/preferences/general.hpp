@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -59,7 +59,7 @@ namespace preferences {
 	void set(const std::string& key, const config::attribute_value& value);
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
-	const config &get_child(const std::string &key);
+	optional_const_config get_child(const std::string &key);
 	std::string get(const std::string& key);
 	std::string get(const std::string& key, const std::string& def);
 	bool get(const std::string& key, bool def);
@@ -167,7 +167,7 @@ namespace preferences {
 	void clear_hotkeys();
 
 	void add_alias(const std::string& alias, const std::string& command);
-	const config &get_alias();
+	optional_const_config get_alias();
 
 
 	std::string allied_color();
@@ -296,6 +296,8 @@ namespace preferences {
 	 * If you only want to check the achievement's current progress, then omit the last three arguments.
 	 * @a amount defaults to 0, which will result in the current progress value being returned without being changed (x + 0 == x).
 	 *
+	 * Note that this uses the same [in_progress] as is used for set_sub_achievement().
+	 *
 	 * @param content_for The id of the achievement group this achievement is in.
 	 * @param id The id for the specific achievement in the achievement group.
 	 * @param limit The maximum value that a specific call to this function can increase the achievement progress value.
@@ -304,5 +306,34 @@ namespace preferences {
 	 * @return The achievement's current progress, or -1 if it has already been completed.
 	 */
 	int progress_achievement(const std::string& content_for, const std::string& id, int limit = 999999, int max_progress = 999999, int amount = 0);
+
+	/**
+	 * @param content_for The achievement group the achievement is part of.
+	 * @param id The ID of the achievement within the achievement group.
+	 * @param sub_id The ID of the sub-achievement within the achievement.
+	 * @return True if the sub-achievement exists and is completed, false otherwise.
+	 */
+	bool sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id);
+
+	/**
+	 * Marks the specified sub-achievement as completed.
+	 *
+	 * Note that this uses the same [in_progress] as is used for progress_achievement().
+	 *
+	 * @param content_for The achievement group the achievement is part of.
+	 * @param id The ID of the achievement within the achievement group.
+	 * @param sub_id The ID of the sub-achievement within the achievement.
+	 */
+	void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id);
+
+	/**
+	 * @param addon_id The chosen addon id from the editor to store in the preferences.
+	 */
+	void set_editor_chosen_addon(const std::string& addon_id);
+
+	/**
+	 * @return The most recently selected add-on id from the editor. May be an empty string.
+	 */
+	std::string editor_chosen_addon();
 
 } // end namespace preferences

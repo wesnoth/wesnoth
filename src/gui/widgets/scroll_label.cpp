@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,7 @@
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -176,12 +177,10 @@ scroll_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_label.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll label control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll label control")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for scroll label control"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

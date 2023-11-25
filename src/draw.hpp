@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022
+	Copyright (C) 2022 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -46,11 +46,22 @@ namespace draw
 /* basic drawing and pixel primatives */
 /**************************************/
 
+/**
+ * Clear the current render target.
+ *
+ * Sets all pixel values in the current render target to (0, 0, 0, 0),
+ * that is both black and fully transparent.
+ *
+ * To clear to a fully opaque colour in stead, use fill().
+ */
+void clear();
 
 /**
  * Fill an area with the given colour.
  *
  * If the alpha component is not specified, it defaults to fully opaque.
+ * If not fully opaque, the fill colour will apply according to the current
+ * blend mode, by default SDL_BLENDMODE_BLEND.
  *
  * If a fill area is not specified, it will fill the entire render target.
  *
@@ -446,7 +457,9 @@ private:
  * SDL_TEXTUREACCESS_TARGET access mode.
  *
  * @param t     The new render target. This must be a texture created
- *              with SDL_TEXTUREACCESS_TARGET.
+ *              with SDL_TEXTUREACCESS_TARGET, or an empty texture.
+ *              If empty, it will set the render target to Wesnoth's
+ *              primary render buffer.
  * @returns     A render_target_setter object. When this object is
  *              destroyed the render target will be restored to
  *              whatever it was before this call.

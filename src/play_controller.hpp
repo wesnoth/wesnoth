@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -58,9 +58,7 @@ namespace soundsource {
 	class manager;
 } // namespace soundsource
 
-namespace statistics {
-	struct scenario_context;
-} // namespace statistics
+class statistics_t;
 
 namespace pathfind {
 	class manager;
@@ -257,7 +255,7 @@ public:
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const override;
-#
+
 	class hotkey_handler;
 
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
@@ -324,6 +322,7 @@ public:
 
 	saved_game& get_saved_game() { return saved_game_; }
 
+	statistics_t& statistics() { return *statistics_context_; }
 	bool is_during_turn() const;
 	bool is_linger_mode() const;
 
@@ -352,8 +351,9 @@ protected:
 
 
 	bool is_team_visible(int team_num, bool observer) const;
+public:
 	/** returns 0 if no such team was found. */
-	int find_last_visible_team() const;
+	int find_viewing_side() const;
 
 private:
 	const int ticks_;
@@ -385,7 +385,7 @@ protected:
 	//other objects
 	std::unique_ptr<game_display> gui_;
 	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
-	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
+	const std::unique_ptr<statistics_t> statistics_context_;
 	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; }
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; }
 	std::unique_ptr<replay> replay_;

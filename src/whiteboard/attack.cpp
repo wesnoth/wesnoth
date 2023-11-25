@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -69,7 +69,7 @@ attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location&
 
 attack::attack(const config& cfg, bool hidden)
 	: move(cfg,hidden)
-	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"], wml_loc())
+	, target_hex_(cfg.mandatory_child("target_hex_")["x"], cfg.mandatory_child("target_hex_")["y"], wml_loc())
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
@@ -199,7 +199,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 // Draws the attack indicator.
 void attack::draw_hex(const map_location& hex)
 {
-	if (hex != get_dest_hex() && hex != target_hex_) {
+	if(hex != get_dest_hex() && hex != target_hex_) {
 		return;
 	}
 
@@ -208,27 +208,15 @@ void attack::draw_hex(const map_location& hex)
 	const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
 
 	//calculate direction (valid for both hexes)
-	std::string direction_text = map_location::write_direction(
-			get_dest_hex().get_relative_dir(target_hex_));
+	const std::string direction_text = map_location::write_direction(get_dest_hex().get_relative_dir(target_hex_));
 
-	if (hex == get_dest_hex()) //add symbol to attacker hex
-	{
-		auto disp = display::get_singleton();
+	texture indicator = (hex == get_dest_hex())
+		? image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)
+		: image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED);
 
-		disp->drawing_buffer_add(layer, get_dest_hex(),
-			[=, tex = image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
-			});
-	}
-	else if (hex == target_hex_) //add symbol to defender hex
-	{
-		auto disp = display::get_singleton();
-
-		disp->drawing_buffer_add(layer, target_hex_,
-			[=, tex = image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
-			});
-	}
+	// hex is either the dst or target here. Whichever it is, we want to draw there.
+	display::get_singleton()->drawing_buffer_add(
+		layer, hex, [tex = std::move(indicator)](const rect& d) { draw::blit(tex, d); });
 }
 
 void attack::redraw()

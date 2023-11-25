@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -178,7 +178,7 @@ private:
 	void fire(const std::string& hook, const std::string& addon);
 
 	/** Retrieves an addon by id if found, or a null config otherwise. */
-	config& get_addon(const std::string& id);
+	optional_config get_addon(const std::string& id);
 
 	void delete_addon(const std::string& id);
 

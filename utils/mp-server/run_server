@@ -26,30 +26,26 @@ if [ $# -ge 1 ] && [ "$1" = "--test" ]; then
 	exit 0
 fi
 
-THREADS=4
 PORT=15000
 case $SERVER in
 1.4|1.8)
        PORT=14998
-       THREADS=8  ;;
+       set -- --threads 8;;
 1.6)   PORT=14999
-       THREADS=8  ;;
+       set -- --threads 8;;
 1.5*)  PORT=14999
-       THREADS=16 ;;
+       set -- --threads 16;;
 1.7*)  PORT=14997
-       THREADS=16 ;;
+       set -- --threads 16;;
 1.9*|1.10*)
        PORT=14996
-       THREADS=8 ;;
+       set -- --threads 8;;
 1.12*)
-       THREADS=30 ;;
-1.14*)
-       set -- --keepalive ;;
-1.16*)
-       set -- --keepalive ;;
-1.13*|trunk)
-       # TODO: loonycyborg wants to test this with asio builds
-       set -- --keepalive ;;
+       set -- --threads 30;;
+1.1[346]*)
+       set -- --keepalive;;
+trunk)
+       set -- --keepalive --log-debug=sql_executor;;
 esac
 
 ulimit -Ss 2048
@@ -70,9 +66,10 @@ do
 	#REV=r$(echo $BUILDDIR | sed -nre "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER$,\1,p")
 	REV=${BUILDDIR#*wesnothd-*-git-}
 	LOG="wesnothd.$DATE.$REV.log"
-	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port "$PORT" --threads "$THREADS" "$@" > "$SERVERBASE/logs/$LOG" 2>&1 &
+	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port "$PORT" "$@" > "$SERVERBASE/logs/$LOG" 2>&1 &
 	PID=$!
-	echo "started $SERVER server with command: 'wesnothd-$SERVER -c \"$SERVERBASE\"/wesnothd.cfg --port $PORT --threads $THREADS $*' (commit: $REV, pid: $PID) logging to: $LOG"
+	trap 'kill -s INT "$PID"; trap - INT; kill -s INT "$$"' INT # kill backgrounded wesnothd on INT and properly die from the signal
+	echo "started $SERVER server with command: 'wesnothd-$SERVER -c \"$SERVERBASE\"/wesnothd.cfg --port $PORT $*' (commit: $REV, pid: $PID) logging to: $LOG"
 	# wait a bit in case the process dies immediately
 	sleep 5
 	if ps -p $PID > /dev/null 2>&1
@@ -89,6 +86,7 @@ do
 	wait $PID
 	EXIT_CODE=$?
 	printf '%s wesnothd exited with code: %s\n' "$(date +'%Y%m%d %T')" "$EXIT_CODE"
+	trap - INT
 	# need to use the recorded path since the build/ symlink might have changed
 	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" > /dev/null 2>&1
 	# check for return code if not zero or 98 (port in use) the server should be restarted

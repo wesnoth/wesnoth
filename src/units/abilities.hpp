@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Dominic Bolin <dominic.bolin@exong.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

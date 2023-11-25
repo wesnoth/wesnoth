@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -156,7 +156,7 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
 
 	//load_language_list();
-	game_config::load_config(main_config.child("game_config"));
+	game_config::load_config(main_config.mandatory_child("game_config"));
 
 	BOOST_CHECK_EQUAL( get_binary_dir_location("images", "."), gamedata + "/images/." );
 

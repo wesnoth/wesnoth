@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,6 +52,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
+#include "utils/config_filters.hpp"
 #include "variable.hpp" // for vconfig, etc
 
 #include <cassert>                     // for assert
@@ -88,6 +89,8 @@ namespace
 		"type",
 		"id",
 		"name",
+        "male_name",
+        "female_name",
 		"gender",
 		"random_gender",
 		"variation",
@@ -382,10 +385,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	type_ = &get_unit_type(cfg["parent_type"].blank() ? cfg["type"].str() : cfg["parent_type"].str());
 	race_ = &unit_race::null_race;
 	id_ = cfg["id"].str();
-	name_ = cfg["name"].t_str();
 	variation_ = cfg["variation"].empty() ? type_->default_variation() : cfg["variation"].str();
 	canrecruit_ = cfg["canrecruit"].to_bool();
 	gender_ = generate_gender(*type_, cfg);
+    name_ = gender_value(cfg, gender_, "male_name", "female_name", "name").t_str();
 	role_ = cfg["role"].str();
 	//, facing_(map_location::NDIRECTIONS)
 	//, anim_comp_(new unit_animation_component(*this))
@@ -451,8 +454,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 	}
 
-	if(const config& variables = cfg.child("variables")) {
-		variables_ = variables;
+	if(auto variables = cfg.optional_child("variables")) {
+		variables_ = *variables;
 	}
 
 	if(const config::attribute_value* v = cfg.get("race")) {
@@ -527,17 +530,17 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_advances_to(temp_advances);
 	}
 
-	if(const config& ai = cfg.child("ai")) {
-		formula_man_->read(ai);
+	if(auto ai = cfg.optional_child("ai")) {
+		formula_man_->read(*ai);
 		config ai_events;
-		for(config mai : ai.child_range("micro_ai")) {
+		for(config mai : ai->child_range("micro_ai")) {
 			mai.clear_children("filter");
 			mai.add_child("filter")["id"] = id();
 			mai["side"] = side();
 			mai["action"] = "add";
 			ai_events.add_child("micro_ai", mai);
 		}
-		for(config ca : ai.child_range("candidate_action")) {
+		for(config ca : ai->child_range("candidate_action")) {
 			ca.clear_children("filter_own");
 			ca.add_child("filter_own")["id"] = id();
 			// Sticky candidate actions not supported here (they cause a crash because the unit isn't on the map yet)
@@ -619,8 +622,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	movement_type_.merge(cfg);
 
-	if(const config& status_flags = cfg.child("status")) {
-		for(const config::attribute &st : status_flags.attribute_range()) {
+	if(auto status_flags = cfg.optional_child("status")) {
+		for(const config::attribute &st : status_flags->attribute_range()) {
 			if(st.second.to_bool()) {
 				set_state(st.first, true);
 			}
@@ -723,73 +726,6 @@ unit::~unit()
 	} catch(...) {
 		DBG_UT << "Caught general exception when destroying unit: " << utils::get_unknown_exception_type();
 	}
-}
-
-/**
- * Swap, for copy and swap idiom
- */
-void unit::swap(unit & o)
-{
-	using std::swap;
-
-	// Don't swap reference count, or it will be incorrect...
-	swap(loc_, o.loc_);
-	swap(advances_to_, o.advances_to_);
-	swap(type_, o.type_);
-	swap(type_name_, o.type_name_);
-	swap(race_, o.race_);
-	swap(id_, o.id_);
-	swap(name_, o.name_);
-	swap(underlying_id_, o.underlying_id_);
-	swap(undead_variation_, o.undead_variation_);
-	swap(variation_, o.variation_);
-	swap(hit_points_, o.hit_points_);
-	swap(max_hit_points_, o.max_hit_points_);
-	swap(experience_, o.experience_);
-	swap(max_experience_, o.max_experience_);
-	swap(level_, o.level_);
-	swap(recall_cost_, o.recall_cost_);
-	swap(canrecruit_, o.canrecruit_);
-	swap(recruit_list_, o.recruit_list_);
-	swap(alignment_, o.alignment_);
-	swap(flag_rgb_, o.flag_rgb_);
-	swap(image_mods_, o.image_mods_);
-	swap(unrenamable_, o.unrenamable_);
-	swap(side_, o.side_);
-	swap(gender_, o.gender_);
-	swap(formula_man_, o.formula_man_);
-	swap(movement_, o.movement_);
-	swap(max_movement_, o.max_movement_);
-	swap(vision_, o.vision_);
-	swap(jamming_, o.jamming_);
-	swap(movement_type_, o.movement_type_);
-	swap(hold_position_, o.hold_position_);
-	swap(end_turn_, o.end_turn_);
-	swap(resting_, o.resting_);
-	swap(attacks_left_, o.attacks_left_);
-	swap(max_attacks_, o.max_attacks_);
-	swap(states_, o.states_);
-	swap(known_boolean_states_, o.known_boolean_states_);
-	swap(variables_, o.variables_);
-	swap(events_, o.events_);
-	swap(filter_recall_, o.filter_recall_);
-	swap(emit_zoc_, o.emit_zoc_);
-	swap(overlays_, o.overlays_);
-	swap(role_, o.role_);
-	swap(attacks_, o.attacks_);
-	swap(facing_, o.facing_);
-	swap(trait_names_, o.trait_names_);
-	swap(trait_descriptions_, o.trait_descriptions_);
-	swap(unit_value_, o.unit_value_);
-	swap(goto_, o.goto_);
-	swap(interrupted_move_, o.interrupted_move_);
-	swap(is_fearless_, o.is_fearless_);
-	swap(is_healthy_, o.is_healthy_);
-	swap(modification_descriptions_, o.modification_descriptions_);
-	swap(anim_comp_, o.anim_comp_);
-	swap(hidden_, o.hidden_);
-	swap(modifications_, o.modifications_);
-	swap(invisibility_cache_, o.invisibility_cache_);
 }
 
 void unit::generate_name()
@@ -1292,7 +1228,7 @@ void unit::expire_modifications(const std::string& duration)
 		// Looping in reverse since we may delete the current modification.
 		for(int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
 		{
-			const config& mod = modifications_.child(mod_name, j);
+			const config& mod = modifications_.mandatory_child(mod_name, j);
 
 			if(mod_duration_match(mod["duration"], duration)) {
 				// If removing this mod means reverting the unit's type:
@@ -1478,6 +1414,129 @@ void unit::remove_ability_by_id(const std::string& ability)
 	config::all_children_iterator i = abilities_.ordered_begin();
 	while (i != abilities_.ordered_end()) {
 		if(i->cfg["id"] == ability) {
+			i = abilities_.erase(i);
+		} else {
+			++i;
+		}
+	}
+}
+
+static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
+{
+	using namespace utils::config_filters;
+
+	if(!filter["affect_adjacent"].empty()){
+		bool adjacent = cfg.has_child("affect_adjacent");
+		if(filter["affect_adjacent"].to_bool() != adjacent){
+			return false;
+		}
+	}
+
+	if(!bool_matches_if_present(filter, cfg, "affect_self", true))
+		return false;
+
+	if(!bool_or_empty(filter, cfg, "affect_allies"))
+		return false;
+
+	if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
+		return false;
+
+	if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+		return false;
+
+	const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "id", ""))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "apply_to", "self"))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+		return false;
+
+	//for damage only
+	if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
+		return false;
+
+	//for plague only
+	if(!string_matches_if_present(filter, cfg, "type", ""))
+		return false;
+
+	if(!filter["value"].empty()){
+		if(tag_name == "drains"){
+			if(!int_matches_if_present(filter, cfg, "value", 50)){
+				return false;
+			}
+		} else if(tag_name == "berserk"){
+			if(!int_matches_if_present(filter, cfg, "value", 1)){
+				return false;
+			}
+		} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+			if(!int_matches_if_present(filter, cfg, "value" , 0)){
+				return false;
+			}
+		} else {
+			if(!int_matches_if_present(filter, cfg, "value")){
+				return false;
+			}
+		}
+	}
+
+	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+		return false;
+
+	if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
+		return false;
+
+	if(!double_matches_if_present(filter, cfg, "multiply"))
+		return false;
+
+	if(!double_matches_if_present(filter, cfg, "divide"))
+		return false;
+
+	// Passed all tests.
+	return true;
+}
+
+bool unit::ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+{
+	// Handle the basic filter.
+	bool matches = matches_ability_filter(cfg, tag_name, filter);
+
+	// Handle [and], [or], and [not] with in-order precedence
+	for (const config::any_child condition : filter.all_children_range() )
+	{
+		// Handle [and]
+		if ( condition.key == "and" )
+			matches = matches && ability_matches_filter(cfg, tag_name, condition.cfg);
+
+		// Handle [or]
+		else if ( condition.key == "or" )
+			matches = matches || ability_matches_filter(cfg, tag_name, condition.cfg);
+
+		// Handle [not]
+		else if ( condition.key == "not" )
+			matches = matches && !ability_matches_filter(cfg, tag_name, condition.cfg);
+	}
+
+	return matches;
+}
+
+void unit::remove_ability_by_attribute(const config& filter)
+{
+	set_attr_changed(UA_ABILITIES);
+	config::all_children_iterator i = abilities_.ordered_begin();
+	while (i != abilities_.ordered_end()) {
+		if(ability_matches_filter(i->cfg, i->key, filter)) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
@@ -1729,7 +1788,7 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 
 int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	int res = movement_type_.resistance_against(damage_name);
+	int res = opp_weapon ? movement_type_.resistance_against(*opp_weapon) : movement_type_.resistance_against(damage_name);
 
 	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
 	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
@@ -1812,8 +1871,8 @@ std::vector<config> unit::get_modification_advances() const
 		if(adv["strict_amla"].to_bool() && !advances_to_.empty()) {
 			continue;
 		}
-		if(const config& filter = adv.child("filter")) {
-			if(!unit_filter(vconfig(filter)).matches(*this, loc_)) {
+		if(auto filter = adv.optional_child("filter")) {
+			if(!unit_filter(vconfig(*filter)).matches(*this, loc_)) {
 				continue;
 			}
 		}
@@ -1907,7 +1966,7 @@ std::size_t unit::modification_count(const std::string& mod_type, const std::str
 
 const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
-	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
+	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs", "level",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
 	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
@@ -2170,9 +2229,9 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(std::find(movetype::effects.cbegin(), movetype::effects.cend(), apply_to) != movetype::effects.cend()) {
 		// "movement_costs", "vision_costs", "jamming_costs", "defense", "resistance"
-		if(const config& ap = effect.child(apply_to)) {
+		if(auto ap = effect.optional_child(apply_to)) {
 			set_attr_changed(UA_MOVEMENT_TYPE);
-			movement_type_.merge(ap, apply_to, effect["replace"].to_bool());
+			movement_type_.merge(*ap, apply_to, effect["replace"].to_bool());
 		}
 	} else if(apply_to == "zoc") {
 		if(const config::attribute_value* v = effect.get("value")) {
@@ -2180,10 +2239,10 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			emit_zoc_ = v->to_bool();
 		}
 	} else if(apply_to == "new_ability") {
-		if(const config& ab_effect = effect.child("abilities")) {
+		if(auto ab_effect = effect.optional_child("abilities")) {
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
-			for(const config::any_child ab : ab_effect.all_children_range()) {
+			for(const config::any_child ab : ab_effect->all_children_range()) {
 				if(!has_ability_by_id(ab.cfg["id"])) {
 					to_append.add_child(ab.key, ab.cfg);
 				}
@@ -2191,10 +2250,13 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			abilities_.append(to_append);
 		}
 	} else if(apply_to == "remove_ability") {
-		if(const config& ab_effect = effect.child("abilities")) {
-			for(const config::any_child ab : ab_effect.all_children_range()) {
+		if(auto ab_effect = effect.optional_child("abilities")) {
+			for(const config::any_child ab : ab_effect->all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
+		}
+		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
+			remove_ability_by_attribute(*fab_effect);
 		}
 	} else if(apply_to == "image_mod") {
 		LOG_UT << "applying image_mod";
@@ -2296,7 +2358,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "recall_cost") {
 		const std::string& increase = effect["increase"];
 		const std::string& set = effect["set"];
-		const int recall_cost = recall_cost_ < 0 ? resources::gameboard->teams().at(side_).recall_cost() : recall_cost_;
+		const int team_recall_cost = resources::gameboard ? resources::gameboard->get_team(side_).recall_cost() : 20;
+		const int recall_cost = recall_cost_ < 0 ? team_recall_cost : recall_cost_;
 
 		if(!set.empty()) {
 			if(set.back() == '%') {
@@ -2338,6 +2401,21 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		} else {
 			WRN_UT << "unknown type '" << new_type_id << "' (name=) in [effect]apply_to=type, ignoring";
 		}
+	} else if(effect["apply_to"] == "level") {
+		const std::string& increase = effect["increase"];
+		const std::string& set = effect["set"];
+
+		set_attr_changed(UA_LEVEL);
+
+		// no support for percentages, since levels are usually small numbers
+
+		if(!set.empty()) {
+			level_ = lexical_cast_default<int>(set);
+		}
+
+		if(!increase.empty()) {
+			level_ += lexical_cast_default<int>(increase);
+		}
 	}
 }
 
@@ -2354,9 +2432,9 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
 		// Apply SUF.
-		if(const config& afilter = effect.child("filter")) {
+		if(auto afilter = effect.optional_child("filter")) {
 			assert(resources::filter_con);
-			if(!unit_filter(vconfig(afilter)).matches(*this, loc_)) {
+			if(!unit_filter(vconfig(*afilter)).matches(*this, loc_)) {
 				continue;
 			}
 		}
@@ -2365,7 +2443,13 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		t_string description;
 
 		if(effect["times"] == "per level") {
-			times = level_;
+			if(effect["apply_to"] == "level") {
+				WRN_UT << "[effect] times=per level is not allowed with apply_to=level, using default value of 1";
+				times = 1;
+			}
+			else {
+				times = level_;
+			}
 		}
 
 		if(times) {
@@ -2859,9 +2943,4 @@ std::string get_checksum(const unit& u, backwards_compatibility::unit_checksum_v
 	DBG_UT << wcfg;
 
 	return wcfg.hash();
-}
-
-void swap(unit& lhs, unit& rhs)
-{
-	lhs.swap(rhs);
 }

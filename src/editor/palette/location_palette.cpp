@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -301,7 +301,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	dstrect.h = item_size_ + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {
 		dstrect.x = target.x;
-		dstrect.y = target.y + i * item_space_;
+		dstrect.y = target.y + static_cast<int>(i) * item_space_;
 		buttons_[i].set_location(dstrect);
 	}
 

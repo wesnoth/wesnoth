@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -151,7 +151,8 @@ bool manager::can_modify_game_state() const
 					|| resources::gameboard == nullptr
 					|| executing_actions_
 					|| resources::gameboard->is_observer()
-					|| resources::controller->is_linger_mode())
+					|| resources::controller->is_linger_mode()
+					|| !synced_context::is_unsynced())
 	{
 		return false;
 	}
@@ -186,7 +187,6 @@ void manager::set_active(bool active)
 		{
 			if(should_clear_undo()) {
 				if(!resources::controller->current_team().auto_shroud_updates()) {
-					synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
 					synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(true));
 				}
 				resources::undo_stack->clear();
@@ -649,13 +649,13 @@ void manager::send_network_data()
 
 void manager::process_network_data(const config& cfg)
 {
-	if(const config& wb_cfg = cfg.child("whiteboard"))
+	if(auto wb_cfg = cfg.optional_child("whiteboard"))
 	{
-		std::size_t count = wb_cfg.child_count("net_cmd");
+		std::size_t count = wb_cfg->child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").";
 
 		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
-		for(const side_actions::net_cmd& cmd : wb_cfg.child_range("net_cmd"))
+		for(const side_actions::net_cmd& cmd : wb_cfg->child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
 }

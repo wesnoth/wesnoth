@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <optional>
 #include "vision.hpp"
 #include "map/location.hpp"
 #include "units/ptr.hpp"
@@ -26,10 +27,12 @@ namespace actions {
 	class undo_list;
 
 	struct undo_event {
+		std::optional<int> lua_idx;
 		config commands, data;
 		map_location loc1, loc2, filter_loc1, filter_loc2;
 		std::size_t uid1, uid2;
 		std::string id1, id2;
+		undo_event(int fcn_idx, const config& args, const game_events::queued_event& ctx);
 		undo_event(const config& cmds, const game_events::queued_event& ctx);
 		undo_event(const config& first, const config& second, const config& weapons, const config& cmds);
 	};

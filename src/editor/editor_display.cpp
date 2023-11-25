@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -81,15 +81,15 @@ void editor_display::draw_hex(const map_location& loc)
 
 	if(map().in_selection(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc,
-			[tex = image::get_texture("editor/selection-overlay.png", image::TOD_COLORED)](const rect& d) {
-				draw::blit(tex, scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
+				draw::blit(tex, d);
 			});
 	}
 
 	if(brush_locations_.find(loc) != brush_locations_.end()) {
 		static const image::locator brush(game_config::images::editor_brush);
 		drawing_buffer_add(LAYER_SELECTED_HEX, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d) {
-			draw::blit(tex, scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+			draw::blit(tex, d);
 		});
 	}
 

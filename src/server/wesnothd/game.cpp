@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "server/wesnothd/game.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp" // game_config::observer_team_name
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "preferences/credentials.hpp"
@@ -96,6 +95,7 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, started_(false)
 	, level_()
 	, history_()
+	, chat_history_()
 	, description_(nullptr)
 	, current_turn_(0)
 	, current_side_index_(0)
@@ -319,6 +319,7 @@ void game::start_game(player_iterator starter)
 
 	update_turn_data();
 	clear_history();
+	clear_chat_history();
 
 	// Send [observer] tags for all observers that are already in the game.
 	send_observerjoins();
@@ -880,10 +881,10 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 	simple_wml::node* const message = data.root().child("message");
 	assert(message);
 	message->set_attr_dup("sender", user->info().name().c_str());
-
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
-
+	// Save chat as history to be sent to newly joining players
+	chat_history_.push_back(data.clone());
 	send_data(data, user);
 }
 
@@ -1123,6 +1124,7 @@ void game::handle_random_choice()
 	simple_wml::node& random_seed = command.add_child("random_seed");
 
 	random_seed.set_attr_dup("new_seed", stream.str().c_str());
+	random_seed.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1188,6 +1190,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 	change_controller_wml.set_attr_dup("controller", side_controller::get_string(*new_controller).c_str());
 	change_controller_wml.set_attr("is_local", "yes");
+	change_controller_wml.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1416,6 +1419,8 @@ bool game::add_player(player_iterator player, bool observer)
 		send_history(player);
 	} else {
 		send_user_list();
+		// Send the game chat log, regardless if observer or not
+		send_chat_history(player);
 	}
 
 	const std::string clones = has_same_ip(player);
@@ -1747,6 +1752,17 @@ void game::send_history(player_iterator player) const
 	}
 }
 
+void game::send_chat_history(player_iterator player) const
+{
+	if(chat_history_.empty()) {
+		return;
+	}
+	for(auto& h : chat_history_) {
+		server.send_to_player(player, *h);
+	}
+}
+
+
 static bool is_invalid_filename_char(char c)
 {
 	return !(isalnum(c) ||
@@ -1842,6 +1858,11 @@ void game::record_data(std::unique_ptr<simple_wml::document> data)
 void game::clear_history()
 {
 	history_.clear();
+}
+
+void game::clear_chat_history()
+{
+	chat_history_.clear();
 }
 
 void game::set_description(simple_wml::node* desc)
