@@ -60,9 +60,11 @@ public:
 
 	/** Return current schedule */
 	const std::vector<time_of_day> get_schedule();
-    
-    /** Register callback for update */
-    void register_callback(std::function<void(std::vector<time_of_day>)>);
+	/** Register callback for update */
+	void register_callback(std::function<void(std::vector<time_of_day>)>);
+
+	/** enum used in identifying sliders */
+	enum COLOR_TYPE {COLOR_R, COLOR_G, COLOR_B};
 
 private:
 	virtual const std::string& window_id() const override;
@@ -84,13 +86,8 @@ private:
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
 	void select_file(const std::string& default_dir);
 
-	/* Three callbacks for three sliders
-	 * Using only one function results in two remaining
-	 * sliders not being updated.
-	 */
-	void color_slider_r_callback();
-	void color_slider_g_callback();
-	void color_slider_b_callback();
+	/* Callback for color sliders */
+	void color_slider_callback(COLOR_TYPE type);
 
     /* Update map and schedule in realtime */
 	std::function<void(std::vector<time_of_day>)> update_map_and_schedule_;

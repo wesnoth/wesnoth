@@ -134,15 +134,15 @@ void custom_tod::pre_show(window& window)
 
 	connect_signal_notify_modified(
 			*(color_field_r_->get_widget()),
-			std::bind(&custom_tod::color_slider_r_callback, this));
+			std::bind(&custom_tod::color_slider_callback, this, COLOR_R));
 
 	connect_signal_notify_modified(
 			*(color_field_g_->get_widget()),
-			std::bind(&custom_tod::color_slider_g_callback, this));
+			std::bind(&custom_tod::color_slider_callback, this, COLOR_G));
 
 	connect_signal_notify_modified(
 			*(color_field_b_->get_widget()),
-			std::bind(&custom_tod::color_slider_b_callback, this));
+			std::bind(&custom_tod::color_slider_callback, this, COLOR_B));
 
 	update_selected_tod_info();
 }
@@ -224,30 +224,22 @@ const time_of_day& custom_tod::get_selected_tod() const
 	}
 }
 
-
-void custom_tod::color_slider_r_callback()
+void custom_tod::color_slider_callback(COLOR_TYPE type)
 {
 	time_of_day& current_tod = times_[current_tod_];
 
-	current_tod.color.r = color_field_r_->get_widget_value();
-
-	update_tod_display();
-}
-
-void custom_tod::color_slider_g_callback()
-{
-	time_of_day& current_tod = times_[current_tod_];
-
-	current_tod.color.g = color_field_g_->get_widget_value();
-
-	update_tod_display();
-}
-
-void custom_tod::color_slider_b_callback()
-{
-	time_of_day& current_tod = times_[current_tod_];
-
-	current_tod.color.b = color_field_b_->get_widget_value();
+	switch(type)
+	{
+	case COLOR_R:
+		current_tod.color.r = color_field_r_->get_widget_value();
+		break;
+	case COLOR_G :
+		current_tod.color.g = color_field_g_->get_widget_value();
+		break;
+	case COLOR_B :
+		current_tod.color.b = color_field_b_->get_widget_value();
+		break;
+	}
 
 	update_tod_display();
 }
@@ -339,12 +331,6 @@ void custom_tod::register_callback(std::function<void(std::vector<time_of_day>)>
 void custom_tod::post_show(window& /*window*/)
 {
 	update_tod_display();
-
-	/*
-	if(get_retval() == retval::OK) {
-		// TODO: save ToD
-
-	}*/
 }
 
 } // namespace dialogs
