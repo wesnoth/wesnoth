@@ -663,12 +663,12 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			}
 		}
 	} else if(ctl == "log") {
-		static const std::map<std::string, int> log_levels = {
+		static const std::map<std::string, lg::severity> log_levels = {
 			{ "error",   lg::err().get_severity() },
 			{ "warning", lg::warn().get_severity() },
 			{ "info",    lg::info().get_severity() },
 			{ "debug",   lg::debug().get_severity() },
-			{ "none",    -1 }
+			{ "none",    lg::severity::LG_NONE }
 		};
 
 		if(ctl.args_count() != 2) {
@@ -1995,12 +1995,12 @@ static int run_campaignd(int argc, char** argv)
 	}
 
 	if(cmdline.show_log_domains) {
-		std::cout << lg::list_logdomains("");
+		std::cout << lg::list_log_domains("");
 		return 0;
 	}
 
 	for(const auto& ldl : cmdline.log_domain_levels) {
-		if(!lg::set_log_domain_severity(ldl.first, ldl.second)) {
+		if(!lg::set_log_domain_severity(ldl.first, static_cast<lg::severity>(ldl.second))) {
 			PLAIN_LOG << "Unknown log domain: " << ldl.first;
 			return 2;
 		}
