@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include "log.hpp"                      // for logger, set_strict_severity, etc
+
 #include <optional>
 
 #include <boost/program_options/options_description.hpp>
@@ -107,7 +109,7 @@ public:
 	 * Contains parsed arguments of --log-* (e.g. --log-debug).
 	 * Vector of pairs (severity, log domain).
 	 */
-	std::optional<std::vector<std::pair<int, std::string>>> log;
+	std::optional<std::vector<std::pair<lg::severity, std::string>>> log;
 	/** Non-empty if --log-strict was given */
 	std::optional<int> log_strict_level;
 	/** Non-empty if --load was given on the command line. Savegame specified to load after start. */
@@ -252,7 +254,7 @@ public:
 	/** Non-empty if --all-translations or --translations-over is given on the command line. */
 	std::optional<unsigned int> translation_percent;
 private:
-	void parse_log_domains_(const std::string &domains_string, const int severity);
+	void parse_log_domains_(const std::string &domains_string, const lg::severity severity);
 	void parse_log_strictness (const std::string &severity);
 	void parse_resolution_ (const std::string &resolution_string);
 	/** A helper function splitting vector of strings of format unsigned int:string to vector of tuples (unsigned int,string) */

@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "formatter.hpp"
 #include "lexical_cast.hpp"
-#include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
 
 #include <boost/any.hpp>                // for any
@@ -395,7 +394,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	if(vm.count("log-debug"))
 		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug().get_severity());
 	if(vm.count("log-none"))
-		 parse_log_domains_(vm["log-none"].as<std::string>(),-1);
+		 parse_log_domains_(vm["log-none"].as<std::string>(),lg::severity::LG_NONE);
 	if(vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
 	if(vm.count("log-precise"))
@@ -549,7 +548,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		translation_percent = std::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
 }
 
-void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
+void commandline_options::parse_log_domains_(const std::string &domains_string, const lg::severity severity)
 {
 	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty()) {
 		if(!log) {
@@ -570,7 +569,7 @@ void commandline_options::parse_log_strictness (const std::string & severity) {
 		}
 	}
 	PLAIN_LOG << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging.";
-	lg::set_strict_severity(-1);
+	lg::set_strict_severity(lg::severity::LG_NONE);
 }
 
 void commandline_options::parse_resolution_ (const std::string& resolution_string)

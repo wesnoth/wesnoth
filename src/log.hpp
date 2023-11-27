@@ -72,13 +72,15 @@ const std::string log_file_suffix = ".log";
 // Note that this count does not include the current log file!
 const unsigned max_logs = 8;
 
-enum severity
+enum class severity
 {
+    LG_NONE=-1,
 	LG_ERROR=0,
 	LG_WARN=1,
 	LG_INFO=2,
 	LG_DEBUG=3
 };
+std::ostringstream& operator<<(std::ostringstream& oss, lg::severity severity);
 
 /**
  * Helper class to redirect the output of the logger in a certain scope.
@@ -111,21 +113,21 @@ private:
 
 class logger;
 
-typedef std::pair<const std::string, int> logd;
+typedef std::pair<const std::string, severity> logd;
 
 class log_domain {
 	logd *domain_;
 public:
-	explicit log_domain(char const *name, int severity = 1);
+	explicit log_domain(char const *name, severity severity = severity::LG_WARN);
 	friend class logger;
 };
 
-bool set_log_domain_severity(const std::string& name, int severity);
+bool set_log_domain_severity(const std::string& name, severity severity);
 bool set_log_domain_severity(const std::string& name, const logger &lg);
-bool get_log_domain_severity(const std::string& name, int &severity);
-std::string list_logdomains(const std::string& filter);
+bool get_log_domain_severity(const std::string& name, severity &severity);
+std::string list_log_domains(const std::string& filter);
 
-void set_strict_severity(int severity);
+void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 void set_log_to_file();
@@ -160,9 +162,9 @@ public:
 
 class logger {
 	char const *name_;
-	int severity_;
+    severity severity_;
 public:
-	logger(char const *name, int severity): name_(name), severity_(severity) {}
+	logger(char const *name, severity severity): name_(name), severity_(severity) {}
 	log_in_progress operator()(const log_domain& domain,
 		bool show_names = true, bool do_indent = false, bool show_timestamps = true, bool break_strict = true, bool auto_newline = true) const;
 
@@ -171,15 +173,7 @@ public:
 		return severity_ > domain.domain_->second;
 	}
 
-	/**
-	 * Returns following values depending on the logger:
-	 * error: 0
-	 * warn: 1
-	 * info: 2
-	 * debug: 3
-	 * See also the lg::severity enum.
-	 */
-	int get_severity() const
+	severity get_severity() const
 	{
 		return severity_;
 	}

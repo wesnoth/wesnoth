@@ -45,7 +45,7 @@ log_settings::log_settings()
 
 
 	//empty string is the filter (in other words, this grabs the whole list of domains)
-	std::string temp_string = lg::list_logdomains("");
+	std::string temp_string = lg::list_log_domains("");
 	//std::cout<<temp_string; //use to print the full log domain list
 	std::string one_domain;
 
@@ -79,10 +79,11 @@ void log_settings::pre_show(window& window)
 				group.add_member(button, this_id);
 			}
 		}
-		int current_sev, max_sev = widget_id_.size();
+		lg::severity current_sev;
+        lg::severity max_sev = lg::severity::LG_DEBUG;
 		if (lg::get_log_domain_severity(this_domain, current_sev)) {
 			if (current_sev <= max_sev) {
-				group.set_member_states(widget_id_[current_sev + 1]);
+				group.set_member_states(widget_id_[static_cast<int>(current_sev) + 1]);
 			}
 		}
 	}
@@ -150,7 +151,7 @@ void log_settings::set_logger(const std::string log_domain)
 	} else if(active_value == widget_id_[1]){ //level0: error
 		lg::set_log_domain_severity(log_domain, lg::err());
 	} else if(active_value == widget_id_[0]){ //level-1: disable
-		lg::set_log_domain_severity(log_domain, -1);
+		lg::set_log_domain_severity(log_domain, lg::severity::LG_NONE);
 	}
 }
 

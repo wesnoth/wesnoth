@@ -82,6 +82,12 @@ static std::string output_file_path_ = "";
 
 namespace lg {
 
+std::ostringstream& operator<<(std::ostringstream& oss, const lg::severity severity)
+{
+    oss << static_cast<int>(severity);
+    return oss;
+}
+
 /** Helper function for rotate_logs. */
 bool is_not_log_file(const std::string& fn)
 {
@@ -217,33 +223,33 @@ redirect_output_setter::~redirect_output_setter()
 	output_stream_ = old_stream_;
 }
 
-typedef std::map<std::string, int> domain_map;
+typedef std::map<std::string, severity> domain_map;
 static domain_map *domains;
-static int strict_level_ = -1;
+static severity strict_level_ = severity::LG_NONE;
 void timestamps(bool t) { timestamp = t; }
 void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
 logger& err()
 {
-	static logger lg("error", 0);
+	static logger lg("error", severity::LG_ERROR);
 	return lg;
 }
 
 logger& warn()
 {
-	static logger lg("warning", 1);
+	static logger lg("warning", severity::LG_WARN);
 	return lg;
 }
 
 logger& info()
 {
-	static logger lg("info", 2);
+	static logger lg("info", severity::LG_INFO);
 	return lg;
 }
 
 logger& debug()
 {
-	static logger lg("debug", 3);
+	static logger lg("debug", severity::LG_DEBUG);
 	return lg;
 }
 
@@ -254,7 +260,7 @@ log_domain& general()
 	return dom;
 }
 
-log_domain::log_domain(char const *name, int severity)
+log_domain::log_domain(char const *name, severity severity)
 	: domain_(nullptr)
 {
 	// Indirection to prevent initialization depending on link order.
@@ -263,7 +269,7 @@ log_domain::log_domain(char const *name, int severity)
 	domain_->second = severity;
 }
 
-bool set_log_domain_severity(const std::string& name, int severity)
+bool set_log_domain_severity(const std::string& name, severity severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
@@ -287,7 +293,7 @@ bool set_log_domain_severity(const std::string& name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());
 }
 
-bool get_log_domain_severity(const std::string& name, int &severity)
+bool get_log_domain_severity(const std::string& name, severity &severity)
 {
 	domain_map::iterator it = domains->find(name);
 	if (it == domains->end())
@@ -296,7 +302,7 @@ bool get_log_domain_severity(const std::string& name, int &severity)
 	return true;
 }
 
-std::string list_logdomains(const std::string& filter)
+std::string list_log_domains(const std::string& filter)
 {
 	std::ostringstream res;
 	for(logd &l : *domains) {
@@ -306,7 +312,7 @@ std::string list_logdomains(const std::string& filter)
 	return res.str();
 }
 
-void set_strict_severity(int severity) {
+void set_strict_severity(severity severity) {
 	strict_level_ = severity;
 }
 
