@@ -95,7 +95,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config() const
+config tod_manager::to_config(std::string textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;
@@ -114,7 +114,7 @@ config tod_manager::to_config() const
 	}
 
 	for(const time_of_day& tod : times_) {
-		tod.write(cfg.add_child("time"));
+		tod.write(cfg.add_child("time"), textdomain);
 	}
 
 	for(const area_time_of_day& a_tod : areas_) {

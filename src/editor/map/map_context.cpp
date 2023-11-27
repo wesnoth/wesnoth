@@ -624,6 +624,9 @@ config map_context::to_config()
 {
 	config scen;
 
+	// Textdomain
+	std::string current_textdomain = "wesnoth-"+addon_id_;
+
 	// the state of the previous scenario cfg
 	// if it exists, alter specific parts of it (sides, times, and editor events) rather than replacing it entirely
 	if(previous_cfg_) {
@@ -646,8 +649,8 @@ config map_context::to_config()
 	scenario.remove_children("event", [](config cfg){return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";});
 
 	scenario["id"] = scenario_id_;
-	scenario["name"] = t_string(scenario_name_);
-	scenario["description"] = scenario_description_;
+	scenario["name"] = t_string(scenario_name_, current_textdomain);
+	scenario["description"] = t_string(scenario_description_, current_textdomain);
 
 	if(xp_mod_) {
 		scenario["experience_modifier"] = *xp_mod_;
@@ -671,7 +674,7 @@ config map_context::to_config()
 
 	// [time]s and [time_area]s
 	// put the [time_area]s into the event to keep as much editor-specific stuff separated in its own event as possible
-	config times = tod_manager_->to_config();
+	config times = tod_manager_->to_config(current_textdomain);
 	times.remove_attribute("turn_at");
 	times.remove_attribute("it_is_a_new_turn");
 	if(scenario["turns"].to_int() == -1) {
@@ -706,7 +709,7 @@ config map_context::to_config()
 
 			// Optional keys
 			item["id"].write_if_not_empty(o.id);
-			item["name"].write_if_not_empty(o.name);
+			item["name"].write_if_not_empty(t_string(o.name, current_textdomain));
 			item["team_name"].write_if_not_empty(o.team_name);
 			item["halo"].write_if_not_empty(o.halo);
 			if(o.submerge) {
@@ -728,7 +731,7 @@ config map_context::to_config()
 
 		u["side"] = unit.side();
 		u["type"] = unit.type_id();
-		u["name"].write_if_not_empty(unit.name());
+		u["name"].write_if_not_empty(t_string(unit.name(), current_textdomain));
 		u["facing"] = map_location::write_direction(unit.facing());
 
 		if(!boost::regex_match(unit.id(), boost::regex(".*-[0-9]+"))) {
@@ -755,7 +758,7 @@ config map_context::to_config()
 		side["no_leader"] = team.no_leader();
 
 		side["team_name"] = team.team_name();
-		side["user_team_name"].write_if_not_empty(team.user_team_name());
+		side["user_team_name"].write_if_not_empty(t_string(team.user_team_name(), current_textdomain));
 		if(team.recruits().size() > 0) {
 			side["recruit"] = utils::join(team.recruits(), ",");
 			side["faction"] = "Custom";
@@ -779,16 +782,19 @@ config map_context::to_config()
 
 void map_context::save_schedule()
 {
-	/* Create schedule config */
+	// Textdomain
+	std::string current_textdomain = "wesnoth-"+addon_id_;
+
+	// Create schedule config
 	config schedule;
 	config& editor_times = schedule.add_child("editor_times");
-	config times = tod_manager_->to_config();
+	config times = tod_manager_->to_config(current_textdomain);
 	for(const config& time : times.child_range("time")) {
 		config& t = editor_times.add_child("time");
 		t.append(time);
 	}
 
-	/* Write to file */
+	// Write to file
 	try {
 		std::stringstream wml_stream;
 		wml_stream
@@ -804,7 +810,8 @@ void map_context::save_schedule()
 		wml_stream << "#endif";
 
 		if(!wml_stream.str().empty()) {
-			filesystem::write_file(filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg", wml_stream.str());
+			filesystem::write_file(
+					filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg", wml_stream.str());
 		}
 
 	} catch(const filesystem::io_exception& e) {
