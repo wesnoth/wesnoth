@@ -512,7 +512,7 @@ void title_screen::button_callback_multiplayer()
 			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::HOST:
-			game_.select_mp_server("localhost");
+			game_.select_mp_server("[::]");
 			get_window()->set_retval(MP_HOST);
 			break;
 		case decltype(dlg)::choice::LOCAL:
