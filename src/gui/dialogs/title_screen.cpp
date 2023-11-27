@@ -315,8 +315,24 @@ void title_screen::init_callbacks()
 	//
 	// Preferences
 	//
-	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
+	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
 		gui2::dialogs::preferences_dialog::display();
+
+		// Currently blurred windows don't capture well if there is something
+		// on top of them at the time of blur. Resizing the game window in
+		// preferences will cause the title screen tip and menu panels to
+		// capture the prefs dialog in their blur. This workaround simply
+		// forces them to re-capture the blur after the dialog closes.
+		panel* tip_panel = find_widget<panel>(this, "tip_panel", false, false);
+		if(tip_panel != nullptr) {
+			tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
+			tip_panel->queue_redraw();
+		}
+		panel* menu_panel = find_widget<panel>(this, "menu_panel", false, false);
+		if(menu_panel != nullptr) {
+			menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
+			menu_panel->queue_redraw();
+		}
 	});
 
 	//

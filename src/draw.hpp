@@ -46,11 +46,22 @@ namespace draw
 /* basic drawing and pixel primatives */
 /**************************************/
 
+/**
+ * Clear the current render target.
+ *
+ * Sets all pixel values in the current render target to (0, 0, 0, 0),
+ * that is both black and fully transparent.
+ *
+ * To clear to a fully opaque colour in stead, use fill().
+ */
+void clear();
 
 /**
  * Fill an area with the given colour.
  *
  * If the alpha component is not specified, it defaults to fully opaque.
+ * If not fully opaque, the fill colour will apply according to the current
+ * blend mode, by default SDL_BLENDMODE_BLEND.
  *
  * If a fill area is not specified, it will fill the entire render target.
  *

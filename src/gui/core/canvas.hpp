@@ -173,6 +173,9 @@ private:
 	/** Blurred background texture. */
 	texture blur_texture_;
 
+	/** The region of the screen we have blurred (if any). */
+	rect blur_region_;
+
 	/** Whether we have deferred rendering so we can capture for blur. */
 	bool deferred_;
 

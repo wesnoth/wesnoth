@@ -314,7 +314,7 @@ def list_contents():
                 continue
             info["parsed"] = False
             info["dependencies"] = all_dependencies
-            parse("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+            parse("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
@@ -365,7 +365,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
 
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
@@ -373,7 +373,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
                 wesnoth.parser.parse_text("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
-            wesnoth.parser.parse_text("{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
+            wesnoth.parser.parse_text("{themes}{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
             wesnoth.add_units(cid)
 
     if addon == "mainline" and cid == "mainline":

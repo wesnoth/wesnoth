@@ -682,7 +682,7 @@ void window::update_render_textures()
 	// Clear the entire texture.
 	{
 		auto setter = draw::set_render_target(render_buffer_);
-		draw::fill(0,0,0,0);
+		draw::clear();
 	}
 
 	// Rerender everything.
@@ -698,7 +698,7 @@ void window::queue_rerender(const rect& screen_region)
 {
 	// More than one region updating per-frame should be rare.
 	// Just rerender the minimal area that covers everything.
-	rect local_region = screen_region;
+	rect local_region = screen_region.intersect(get_rectangle());
 	local_region.shift(-get_origin());
 	awaiting_rerender_.expand_to_cover(local_region);
 }
