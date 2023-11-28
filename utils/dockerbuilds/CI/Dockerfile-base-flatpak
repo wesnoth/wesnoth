@@ -5,4 +5,4 @@ RUN apt update
 RUN apt install -y flatpak flatpak-builder jq
 RUN flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 # install runtime
-RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/22.08 org.freedesktop.Sdk/x86_64/22.08
+RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/22.08 org.freedesktop.Sdk/x86_64/22.08 org.freedesktop.Platform/x86_64/23.08 org.freedesktop.Sdk/x86_64/23.08
