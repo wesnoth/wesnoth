@@ -1199,7 +1199,7 @@ class HTMLOutput:
                     error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                         icon, uid))
                     # core/images/units/elves-wood/shaman.png
-                    icon = os.path.join(PICS_LOCATION, "shaman..Y29yZS9pbWFnZXMvdW5pdHMvZWx2ZXMtd29vZA..png")
+                    icon = os.path.join(PICS_LOCATION, "shaman..Y29yZS9pbWFnZXMvdW5pdHMvZWx2ZXMtd29vZA.png")
                 else:
                     icon = os.path.join(PICS_LOCATION, image_add.id_name)
                 write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))

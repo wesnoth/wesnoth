@@ -108,7 +108,7 @@ class ImageCollector:
             encoded_dir_name = base64url.encode_str(os.path.dirname(vpath))
             sanitized_file_name = re.sub(r'[^a-zA-Z0-9_.-]' , "", ".".join(os.path.basename(vpath).split("(")[0].split(".")[-2:]))
             head, ext = os.path.splitext(sanitized_file_name)
-            return '%s..%s.%s' % (head, encoded_dir_name, ext)
+            return '%s..%s%s' % (head, encoded_dir_name, ext)
 
         if ipath:
             id_name = make_name(ipath, self.hide_paths)
