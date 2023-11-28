@@ -239,6 +239,13 @@ config_attribute_value& config_attribute_value::operator=(const t_string& v)
 	return *this;
 }
 
+void config_attribute_value::write_if_not_empty(const std::string& v)
+{
+	if(!v.empty()) {
+		*this = v;
+	}
+}
+
 void config_attribute_value::write_if_not_empty(const t_string& v)
 {
 	if(!v.empty()) {
