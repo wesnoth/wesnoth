@@ -464,11 +464,42 @@
 0 events_test_lua_events_add_repeating_priority_vs_origin
 0 kill_fires_events
 # Game mechanics
-0 heal
-0 heal_with_filter
 0 zero_experience
 0 unit_no_advancements
 0 no_sides
+# heal ability tests
+0 heal
+0 heal_with_filter
+0 heal_positive_value
+0 heal_negative_value
+0 heal_zero
+0 heal_add
+0 heal_add_divide
+0 heal_add_multiply
+0 heal_add_sub
+0 heal_affect_self
+0 heal_affect_enemies
+0 heal_affect_everybody
+0 heal_divide
+0 heal_high_fraction
+0 heal_low_fraction
+0 heal_multiply
+0 heal_multiply_divide
+0 heal_no_value
+0 heal_sub
+0 heal_sub_divide
+0 heal_sub_multiply
+0 heal_wfl_other
+0 heal_wfl_self
+0 heal_poison_slowed
+0 heal_poison_cured
+0 heal_no_poison
+0 heal_two_cumulative_yes_same_id
+0 heal_two_cumulative_yes_unique_id
+0 heal_two_cumulative_no_same_id
+0 heal_two_cumulative_no_unique_id
+0 heal_two_cumulative_mixed_same_id
+0 heal_two_cumulative_mixed_unique_id
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated
