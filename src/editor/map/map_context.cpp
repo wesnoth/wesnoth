@@ -817,7 +817,8 @@ void map_context::save_schedule()
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		const std::string msg = VGETTEXT("Could not save current schedule: $msg", symbols);
+		//TODO : Needs to be replaced with a better message later.
+		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
 
 		throw editor_map_save_exception(msg);
 	}
