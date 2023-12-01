@@ -1770,14 +1770,11 @@ void preprocess_resource(const std::string& res_name,
 
 		// Files in current directory
 		for(const std::string& file : files) {
-			preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, parent_directory);
+			if(filesystem::ends_with(file, ".cfg")) {
+				preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, parent_directory);
+			}
 		}
 
-		return;
-	}
-
-	// process only config files.
-	if(!filesystem::ends_with(res_name, ".cfg")) {
 		return;
 	}
 
