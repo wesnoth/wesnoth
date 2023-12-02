@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Winds of Fate
+     * Fix macro argument in translatable string
  ### Editor
  ### Multiplayer
  ### Lua API
