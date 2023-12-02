@@ -217,6 +217,9 @@ class editor_controller : public controller_base,
 		 */
 		void display_redraw_callback(display&);
 
+		/* Set tods_index_ */
+		void set_tods_index(int);
+
 		/**
 		 * Undos an action in the current map context
 		 */
@@ -250,6 +253,9 @@ class editor_controller : public controller_base,
 		std::unique_ptr<font::floating_label_context> floating_label_manager_;
 
 		std::unique_ptr<help::help_manager> help_manager_;
+
+		/** Remember the currently selected tod schedule */
+		int tods_index_;
 
 		/** Quit main loop flag */
 		bool do_quit_;

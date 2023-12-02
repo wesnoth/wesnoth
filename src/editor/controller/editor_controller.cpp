@@ -31,6 +31,7 @@
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
+#include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -245,13 +246,29 @@ void editor_controller::custom_tods_dialog()
 						std::placeholders::_1));
 	tod_dlg.register_callback(update_func);
 
+	/* Get currently selected schedule id and name */
+	tods_map::const_iterator it = tods_.begin();
+	std::advance(it, tods_index_);
+	std::string sch_id = it->first;
+	std::string sch_name = it->second.first;
+
+	/* Show dialog and update current schedule */
 	if(tod_dlg.show()) {
 		/* Save the new schedule */
-		update_map_schedule(tod_dlg.get_schedule());
+		std::vector<time_of_day> schedule = tod_dlg.get_schedule();
+		gui2::dialogs::tod_new_schedule::execute(sch_id, sch_name);
+		tods_.emplace(sch_id, std::pair(sch_name, schedule));
+		get_current_map_context().replace_schedule(schedule);
+		get_current_map_context().save_schedule(sch_id, sch_name);
+		gui_->update_tod();
+		context_manager_->refresh_all();
 	} else {
 		/* Restore old schedule */
 		update_map_schedule(prev_schedule);
 	}
+
+	//gui_->update_tod();
+	//context_manager_->refresh_all();
 }
 
 void editor_controller::update_map_schedule(std::vector<time_of_day> schedule)
@@ -698,6 +715,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				{
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
+					tods_index_ = index;
 					get_current_map_context().replace_schedule(iter->second.second);
 					// TODO: test again after the assign-schedule menu is fixed. Should work, though.
 					gui_->update_tod();

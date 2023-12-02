@@ -25,28 +25,25 @@ namespace dialogs
 /**
  * @ingroup GUIWindowDefinitionWML
  *
- * Dialog for getting a single text value from the player.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * prompt_box        | text_box      |yes      |The text box to enter the value into.
+ * Dialog that takes new schedule ID and name from the player.
  */
- 
-class prompt : public modal_dialog
+class tod_new_schedule : public modal_dialog
 {
 public:
-	prompt(std::string& value);
+	tod_new_schedule(std::string& schedule_id, std::string& schedule_name);
 
 	/** The execute function. See @ref modal_dialog for more information. */
-	DEFINE_SIMPLE_EXECUTE_WRAPPER(prompt)
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(tod_new_schedule);
 
 private:
-	virtual void pre_show(window& window) override;
 	virtual void post_show(window& window) override;
 
 	virtual const std::string& window_id() const override;
-
-	std::string& value_;
+	
+	std::string& schedule_id_;
+	std::string& schedule_name_;
 };
+
 
 } // namespace dialogs
 } // namespace gui2

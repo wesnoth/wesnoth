@@ -327,7 +327,7 @@ public:
 	/**
 	 * Save custom time of day schedule in the utils directory.
 	 */
-	void save_schedule();
+	void save_schedule(const std::string& schedule_id, const std::string& schedule_name);
 
 	/**
 	 * Convert an old-style editor scenario config to a config with a top level [multiplayer] tag.

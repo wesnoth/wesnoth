@@ -780,7 +780,7 @@ config map_context::to_config()
 	return scen;
 }
 
-void map_context::save_schedule()
+void map_context::save_schedule(const std::string& schedule_id, const std::string& schedule_name)
 {
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
@@ -788,6 +788,8 @@ void map_context::save_schedule()
 	// Create schedule config
 	config schedule;
 	config& editor_times = schedule.add_child("editor_times");
+	editor_times["id"] = schedule_id;
+	editor_times["name"] = t_string(schedule_name, current_textdomain);
 	config times = tod_manager_->to_config(current_textdomain);
 	for(const config& time : times.child_range("time")) {
 		config& t = editor_times.add_child("time");
@@ -854,9 +856,6 @@ void map_context::save_scenario()
 		if(!wml_stream.str().empty()) {
 			filesystem::write_file(get_filename(), wml_stream.str());
 		}
-
-		/* Writing current schedule */
-		save_schedule();
 
 		clear_modified();
 	} catch(const filesystem::io_exception& e) {
