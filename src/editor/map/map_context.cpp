@@ -800,7 +800,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 	try {
 		std::string schedule_path = filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg";
 		std::stringstream wml_stream;
-		
+
 		wml_stream
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
@@ -811,7 +811,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			out.write(schedule);
 		}
 		wml_stream << "#endif";
-		
+
 		if(!wml_stream.str().empty()) {
 			if (filesystem::file_exists(schedule_path)) {
 				/* If schedule.cfg exists, append the new schedule */

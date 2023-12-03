@@ -260,7 +260,7 @@ void editor_controller::custom_tods_dialog()
 			update_map_schedule(prev_schedule);
 			return;
 		}
-		
+
 		/* In case the ID or Name field is blank and user presses OK */
 		if (sch_id.empty()) {
 			sch_id = "custom-"+std::to_string(current_millis);
@@ -273,11 +273,11 @@ void editor_controller::custom_tods_dialog()
 				}
 			}
 		}
-		
+
 		if (sch_name.empty()) {
 			sch_name = "Custom Schedule "+std::to_string(current_millis);
 		}
-		
+
 		tods_.emplace(sch_id, std::pair(sch_name, schedule));
 		get_current_map_context().replace_schedule(schedule);
 		get_current_map_context().save_schedule(sch_id, sch_name);
