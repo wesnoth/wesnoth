@@ -85,7 +85,7 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 
 	-- add [side]s to the [scenario]
 	local enemy_data = scenario_data.get_enemy_data(enemy_stength)
-	wc_ii_generate_sides(scenario, prestart_event, nplayers, scenario_num, enemy_stength, enemy_data, scenario_data)
+	wc_ii_generate_sides(scenario, prestart_event, nplayers, scenario_num, enemy_data, scenario_data)
 
 	-- add plot (that is [event] with [message]s)
 	add_plot(scenario, scenario_num, nplayers)
