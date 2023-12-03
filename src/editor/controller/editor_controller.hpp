@@ -217,9 +217,6 @@ class editor_controller : public controller_base,
 		 */
 		void display_redraw_callback(display&);
 
-		/* Set tods_index_ */
-		void set_tods_index(int);
-
 		/**
 		 * Undos an action in the current map context
 		 */

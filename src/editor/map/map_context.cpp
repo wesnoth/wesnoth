@@ -798,7 +798,9 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 
 	// Write to file
 	try {
+		std::string schedule_path = filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg";
 		std::stringstream wml_stream;
+		
 		wml_stream
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
@@ -808,12 +810,17 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			config_writer out(wml_stream, false);
 			out.write(schedule);
 		}
-
 		wml_stream << "#endif";
-
+		
 		if(!wml_stream.str().empty()) {
-			filesystem::write_file(
-					filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg", wml_stream.str());
+			if (filesystem::file_exists(schedule_path)) {
+				/* If schedule.cfg exists, append the new schedule */
+				filesystem::write_file(
+					schedule_path, wml_stream.str(), std::ios_base::binary|std::ios_base::app);
+			} else {
+				filesystem::write_file(
+					schedule_path, wml_stream.str());
+			}
 		}
 
 	} catch(const filesystem::io_exception& e) {

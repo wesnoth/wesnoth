@@ -246,17 +246,38 @@ void editor_controller::custom_tods_dialog()
 						std::placeholders::_1));
 	tod_dlg.register_callback(update_func);
 
-	/* Get currently selected schedule id and name */
-	tods_map::const_iterator it = tods_.begin();
-	std::advance(it, tods_index_);
-	std::string sch_id = it->first;
-	std::string sch_name = it->second.first;
+	/* Autogenerate schedule id and name in case the user doesn't give any. */
+	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+	std::string sch_id = "custom-"+std::to_string(current_millis);
+	std::string sch_name = "Custom Schedule "+std::to_string(current_millis);
 
 	/* Show dialog and update current schedule */
 	if(tod_dlg.show()) {
 		/* Save the new schedule */
 		std::vector<time_of_day> schedule = tod_dlg.get_schedule();
-		gui2::dialogs::tod_new_schedule::execute(sch_id, sch_name);
+		if(!gui2::dialogs::tod_new_schedule::execute(sch_id, sch_name)) {
+			/* User pressed Cancel. Restore old schedule */
+			update_map_schedule(prev_schedule);
+			return;
+		}
+		
+		/* In case the ID or Name field is blank and user presses OK */
+		if (sch_id.empty()) {
+			sch_id = "custom-"+std::to_string(current_millis);
+		} else {
+			/* Check if the id entered is same as any of the existing ids
+			 * If so, replace */
+			for (auto map_elem : tods_) {
+				if (sch_id == map_elem.first) {
+					sch_id = "custom-"+std::to_string(current_millis);
+				}
+			}
+		}
+		
+		if (sch_name.empty()) {
+			sch_name = "Custom Schedule "+std::to_string(current_millis);
+		}
+		
 		tods_.emplace(sch_id, std::pair(sch_name, schedule));
 		get_current_map_context().replace_schedule(schedule);
 		get_current_map_context().save_schedule(sch_id, sch_name);
@@ -266,9 +287,6 @@ void editor_controller::custom_tods_dialog()
 		/* Restore old schedule */
 		update_map_schedule(prev_schedule);
 	}
-
-	//gui_->update_tod();
-	//context_manager_->refresh_all();
 }
 
 void editor_controller::update_map_schedule(std::vector<time_of_day> schedule)
@@ -715,7 +733,6 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				{
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
-					tods_index_ = index;
 					get_current_map_context().replace_schedule(iter->second.second);
 					// TODO: test again after the assign-schedule menu is fixed. Should work, though.
 					gui_->update_tod();

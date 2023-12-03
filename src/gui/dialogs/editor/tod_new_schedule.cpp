@@ -33,6 +33,11 @@ tod_new_schedule::tod_new_schedule(std::string& schedule_id, std::string& schedu
 {
 }
 
+void tod_new_schedule::pre_show(window& win) {
+	find_widget<text_box>(&win, "id_box", false).set_value(schedule_id_);
+	find_widget<text_box>(&win, "name_box", false).set_value(schedule_name_);
+}
+
 void tod_new_schedule::post_show(window& win)
 {
 	schedule_id_ = find_widget<text_box>(&win, "id_box", false).get_value();

@@ -45,11 +45,11 @@ std::string initialize_addon()
 
 	if(addon_id == "///newaddon///") {
 		std::string& addon_id_new = addon_id;
+		std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+		addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
 		if (gui2::dialogs::prompt::execute(addon_id_new)) {
-			addon_id = addon_id_new;
-		} else {
-			std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-			addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
+			/* In case somebody enters a blank id and presses OK */
+			addon_id = addon_id_new.empty() ? "MyAwesomeAddon-"+std::to_string(current_millis) : addon_id_new;
 		}
 	}
 

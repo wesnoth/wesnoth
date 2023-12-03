@@ -30,7 +30,7 @@ namespace dialogs
  * ------------------|---------------|---------|-----------
  * prompt_box        | text_box      |yes      |The text box to enter the value into.
  */
- 
+
 class prompt : public modal_dialog
 {
 public:
