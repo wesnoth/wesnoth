@@ -45,7 +45,7 @@ def run_with_rerun_for_sdl_video(executable, test_name):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument("-e", "--executable", help="The name of the boost unit test executable. Default is boost_unit_tests.", default="boost_unit_tests")
-    ap.add_argument("-p", "--path", metavar="dir", help="Path to boost unit test binary. By default assume it is with this script.", default=".")
+    ap.add_argument("-p", "--path", metavar="dir", help="Path to boost unit test binary. By default assume it is the current directory.", default=".")
     ap.add_argument("-l", "--test_list", metavar="filename", help="Loads the list of tests from the given file. Default is boost_test_schedule.", default="boost_test_schedule")
 
     options = ap.parse_args()
