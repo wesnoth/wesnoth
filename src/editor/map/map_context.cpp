@@ -29,6 +29,7 @@
 #include "preferences/editor.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "game_config_view.hpp"
@@ -785,9 +786,29 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
 
+	// Path to schedule.cfg
+	std::string schedule_path = filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg";
+
 	// Create schedule config
 	config schedule;
+	try {
+		if (filesystem::file_exists(schedule_path)) {
+			/* If exists, read the schedule.cfg
+			 * and insert [editor_times] block at correct place */
+			preproc_map editor_map;
+			editor_map["EDITOR"] = preproc_define("true");
+			read(schedule, *(preprocess_file(schedule_path, &editor_map)));
+		}
+	} catch(const filesystem::io_exception& e) {
+		utils::string_map symbols;
+		symbols["msg"] = e.what();
+		//TODO : Needs to be replaced with a better message later.
+		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
+		throw editor_map_save_exception(msg);
+	}
+
 	config& editor_times = schedule.add_child("editor_times");
+
 	editor_times["id"] = schedule_id;
 	editor_times["name"] = t_string(schedule_name, current_textdomain);
 	config times = tod_manager_->to_config(current_textdomain);
@@ -798,10 +819,10 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 
 	// Write to file
 	try {
-		std::string schedule_path = filesystem::get_current_editor_dir(addon_id_) + "/utils/schedule.cfg";
 		std::stringstream wml_stream;
 
 		wml_stream
+			<< "#\n"
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
 			<< "#ifdef EDITOR\n";
@@ -810,17 +831,18 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			config_writer out(wml_stream, false);
 			out.write(schedule);
 		}
+
 		wml_stream << "#endif";
 
 		if(!wml_stream.str().empty()) {
-			if (filesystem::file_exists(schedule_path)) {
-				/* If schedule.cfg exists, append the new schedule */
-				filesystem::write_file(
-					schedule_path, wml_stream.str(), std::ios_base::binary|std::ios_base::app);
-			} else {
+//			if (filesystem::file_exists(schedule_path)) {
+//				/* If schedule.cfg exists, append the new schedule */
+//				filesystem::write_file(
+//					schedule_path, wml_stream.str(), std::ios_base::binary|std::ios_base::app);
+//			} else {
 				filesystem::write_file(
 					schedule_path, wml_stream.str());
-			}
+//			}
 		}
 
 	} catch(const filesystem::io_exception& e) {
