@@ -835,14 +835,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 		wml_stream << "#endif";
 
 		if(!wml_stream.str().empty()) {
-//			if (filesystem::file_exists(schedule_path)) {
-//				/* If schedule.cfg exists, append the new schedule */
-//				filesystem::write_file(
-//					schedule_path, wml_stream.str(), std::ios_base::binary|std::ios_base::app);
-//			} else {
-				filesystem::write_file(
-					schedule_path, wml_stream.str());
-//			}
+			filesystem::write_file(schedule_path, wml_stream.str());
 		}
 
 	} catch(const filesystem::io_exception& e) {
