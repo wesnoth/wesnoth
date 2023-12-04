@@ -251,9 +251,6 @@ class editor_controller : public controller_base,
 
 		std::unique_ptr<help::help_manager> help_manager_;
 
-		/** Remember the currently selected tod schedule */
-		int tods_index_;
-
 		/** Quit main loop flag */
 		bool do_quit_;
 		EXIT_STATUS quit_mode_;
