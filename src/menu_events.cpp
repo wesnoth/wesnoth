@@ -830,10 +830,6 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 			color = team::get_side_color(gui_->viewing_side());
 		}
 
-		if(old_label != NULL && label == "") {
-			label = " ";
-		}
-
 		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if(res) {
 			resources::recorder->add_label(res);

@@ -168,13 +168,19 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 	{
 		// Found old checking if need to erase it
 		if(text.str().empty()) {
+
+			current_label->second.update_info(
+				text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
+
+			res = &current_label->second;
+
 			// Erase the old label.
 			current_label_map->second.erase(current_label);
 
 			// Restore the global label in the same spot, if any.
 			if(terrain_label* global_label = get_label_private(loc, "")) {
-				global_label->recalculate();
-			}
+			 	global_label->recalculate();
+			 }
 		} else {
 			current_label->second.update_info(
 				text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
@@ -194,7 +200,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			global_label->recalculate();
 		}
 	}
-
+	
 	categories_dirty = true;
 	return res;
 }
