@@ -93,8 +93,12 @@ void mouse_handler::set_side(int side_number)
 
 int mouse_handler::drag_threshold() const
 {
-	// TODO: Use physical screen size.
-	return 14;
+    // Function uses window resolution as an estimate of users perception of distance
+    // Tune this variable if necessary:
+    const unsigned threshold_1080p = 14; // threshold number of pixels for 1080p
+    double screen_diagonal = std::hypot(gui2::settings::screen_width,gui2::settings::screen_height);
+    const double scale_factor = threshold_1080p / std::hypot(1080,1920);
+    return static_cast<int>(screen_diagonal * scale_factor);
 }
 
 void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, map_location new_hex)

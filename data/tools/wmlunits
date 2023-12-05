@@ -43,11 +43,15 @@ def shell_out(wesnoth_exe, com):
             return os.path.normpath(p.stdout.strip())
     return ""
 
-def move(f, t, name):
+def symlink(f, t, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
-        shutil.move(os.path.join(f, name + ".cfg"), t)
+        os.symlink(os.path.join(f, name + ".cfg"), os.path.join(t, name + ".cfg"))
+    os.symlink(os.path.join(f, name), os.path.join(t, name))
 
-    shutil.move(os.path.join(f, name), t)
+def rm_symlink(f, name):
+    if os.path.exists(os.path.join(f, name + ".cfg")):
+        os.remove(os.path.join(f, name + ".cfg"))
+    os.remove(os.path.join(f, name))
 
 _info = {}
 def get_info(addon):
@@ -303,10 +307,10 @@ def list_contents():
         except OSError:
             pass
         version = get_version(addon)
-        move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), addon)
+        symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), addon)
         all_dependencies = get_all_dependencies(addon)
         for d in all_dependencies:
-            move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
+            symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
         try:
             info = search(batchlist, addon)
             if info.get("version", "") == version and info.get("parsed", False) is True:
@@ -338,9 +342,9 @@ def list_contents():
                 ef.write("\n</INTERNAL ERROR>\n")
             print("failed")
         finally:
-            move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, addon)
+            rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), addon)
             for d in all_dependencies:
-                move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, d)
+                rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), d)
 
     yaml.safe_dump(batchlist, open(filename, "w"),
                    encoding="utf-8", default_flow_style=False)
@@ -432,12 +436,12 @@ def batch_process():
             worked = True
         else:
             try:
-                move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), name)
+                symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), name)
                 worked = True
             except FileNotFoundError:
                 worked = False
             for d in addon.get("dependencies", []):
-                move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
+                symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
         d = os.path.join(options.output, name)
         try:
             os.makedirs(d)
@@ -497,9 +501,9 @@ def batch_process():
                 ef.write("\n</INTERNAL ERROR>\n")
         finally:
             if name != "mainline":
-                move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, name)
+                rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), name)
                 for d in addon.get("dependencies", []):
-                    move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, d)
+                    rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), d)
 
         addon["parsed"] = True
 
