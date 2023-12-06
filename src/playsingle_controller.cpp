@@ -431,7 +431,8 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 
 		play_scenario_main_loop();
 
-		if(is_observer()) {
+		// TODO: would it be better if the is_networked_mp() check was done in is_observer() ?
+		if(is_networked_mp() && is_observer()) {
 			return level_result::type::observer_end;
 		}
 		return level_result::get_enum(get_end_level_data().test_result).value_or(get_end_level_data().is_victory ? level_result::type::victory : level_result::type::defeat);
