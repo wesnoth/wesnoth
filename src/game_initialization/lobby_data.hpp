@@ -99,6 +99,7 @@ struct game_info
 	bool shuffle_sides;
 	bool use_map_settings;
 	bool private_replay;
+	// TODO: what does it do? it doesn't seem to be used.
 	bool verified;
 	bool password_required;
 	bool have_era;
