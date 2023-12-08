@@ -256,7 +256,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
-		if(level_cfg) {
+		if(!level_cfg) {
 			level_cfg = game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]).ptr();
 		}
 
