@@ -159,14 +159,13 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 	themes_ = theme::get_basic_theme_info();
 
 	std::vector<config> options;
-	for(const auto& theme : themes_) {
-		options.emplace_back("label", theme.name, "tooltip", theme.description);
+	std::size_t current_theme = 0;
+	for(std::size_t i = 0; i < themes_.size(); ++i) {
+		options.emplace_back("label", themes_[i].name, "tooltip", themes_[i].description);
+		if(themes_[i].id == preferences::theme()) {
+			current_theme = i;
+		}
 	}
-
-	const unsigned current_theme = std::distance(themes_.begin(),
-		std::find_if(themes_.begin(), themes_.end(), [](const auto& theme) {
-			return theme.id == preferences::theme();
-		}));
 
 	theme_list.set_values(options, current_theme);
 }
