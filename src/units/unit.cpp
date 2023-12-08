@@ -1792,7 +1792,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 
 	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
 	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
-		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
+		return ((*i.ability_cfg)["max_value"].empty() || !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res));
 	});
 
 	if(!resistance_abilities.empty()) {
