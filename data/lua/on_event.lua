@@ -2,6 +2,20 @@
 -- so you have to call this function from a toplevel lua tag or from a preload event.
 -- It is also not possible to use this for first_time_only=yes events.
 
+-- This api used to be the default way to add events from lua (with its own implementation in lua
+-- based on game_events.on_event). Now its just calls game_evets.add, in particular because otherwise the
+-- priority parammter wouldn't work accord the differnt implmentaions..
+-- Still kept now for compatibility and because it has an easier to
+-- use interface meaning you can easily write in a lua file:
+--
+-- on_event("moveto", 10, function(ec)
+--   ...
+-- end)
+--
+-- which is imo more convenient than the interace wesnoth.game_events.add or wesnoth.game_events.add_repeating offers
+-- even though its at this point technicially equivalent to the later.
+
+
 return function(eventname, priority, fcn)
 	if type(priority) == "function" then
 		fcn = priority
