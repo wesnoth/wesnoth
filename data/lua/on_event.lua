@@ -7,7 +7,7 @@ return function(eventname, priority, fcn)
 		fcn = priority
 		priority = 0
 	end
-	
+
 	wesnoth.game_events.add{
 		name = eventname,
 		priority = priority,
