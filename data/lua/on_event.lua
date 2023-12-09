@@ -3,10 +3,10 @@
 -- It is also not possible to use this for first_time_only=yes events.
 
 -- This api used to be the default way to add events from lua (with its own implementation in lua
--- based on game_events.on_event). Now its just calls game_evets.add, in particular because otherwise the
--- priority parammter wouldn't work accord the differnt implmentaions..
--- Still kept now for compatibility and because it has an easier to
--- use interface meaning you can easily write in a lua file:
+-- based on game_events.on_event). Now it just calls game_evets.add, because otherwise the
+-- priority parammter wouldn't work across the differnt implmentaions.
+-- Still kept for compatibility and because it has an easier to
+-- use interface. Meaning you can easily write in a lua file:
 --
 -- on_event("moveto", 10, function(ec)
 --   ...
