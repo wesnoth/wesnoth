@@ -418,6 +418,10 @@ void saved_game::expand_mp_events()
 				load_non_scenario("resource", id, pos);
 			}
 		}
+
+		auto lua_tags =  starting_point_.child_range("lua");
+		std::stable_sort(lua_tags.begin(), lua_tags.end(), [](const config& c1, const config& c2) { return c1["priority"].to_int() > c2["priority"].to_int(); });
+
 		starting_point_["has_mod_events"] = true;
 		starting_point_["loaded_resources"] = utils::join(loaded_resources);
 	}
