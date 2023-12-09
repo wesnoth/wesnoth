@@ -13,7 +13,7 @@
 -- end)
 --
 -- which is imo more convenient than the interace wesnoth.game_events.add or wesnoth.game_events.add_repeating offers
--- even though its at this point technicially equivalent to the later.
+-- even though its at this point technically equivalent to the later.
 
 
 return function(eventname, priority, fcn)
