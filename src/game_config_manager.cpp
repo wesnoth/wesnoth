@@ -562,6 +562,7 @@ void game_config_manager::load_addons_cfg()
 			config umc_cfg;
 			cache_.get_config(main_cfg, umc_cfg, validator.get());
 
+			umc_cfg.add_child("resource", config{"id", "load_addon_" + addon_id});
 			static const std::set<std::string> tags_with_addon_id {
 				"era",
 				"modification",
