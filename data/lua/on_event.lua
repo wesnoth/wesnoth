@@ -4,7 +4,7 @@
 
 -- This api used to be the default way to add events from lua (with its own implementation in lua
 -- based on game_events.on_event). Now it just calls game_evets.add, because otherwise the
--- priority parammter wouldn't work across the differnt implmentaions.
+-- priority parameter wouldn't work across the different implementations.
 -- Still kept for compatibility and because it has an easier to
 -- use interface. Meaning you can easily write in a lua file:
 --
@@ -12,8 +12,8 @@
 --   ...
 -- end)
 --
--- which is imo more convenient than the interace wesnoth.game_events.add or wesnoth.game_events.add_repeating offers
--- even though its at this point technically equivalent to the later.
+-- which is imo more convenient than the interface wesnoth.game_events.add or wesnoth.game_events.add_repeating offers
+-- even though its at this point technically equivalent to the latter.
 
 
 return function(eventname, priority, fcn)
