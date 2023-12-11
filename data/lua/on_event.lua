@@ -19,7 +19,7 @@
 return function(eventname, priority, fcn)
 	if type(priority) == "function" then
 		fcn = priority
-		priority = 0
+		priority = 0.5
 	end
 
 	wesnoth.game_events.add{
