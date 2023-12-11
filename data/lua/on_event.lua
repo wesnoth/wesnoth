@@ -25,6 +25,7 @@ return function(eventname, priority, fcn)
 	wesnoth.game_events.add{
 		name = eventname,
 		priority = priority,
+		first_time_only = false,
 		action = function()
 			context = wesnoth.current.event_context
 			wesnoth.experimental.game_events.set_undoable(true)
