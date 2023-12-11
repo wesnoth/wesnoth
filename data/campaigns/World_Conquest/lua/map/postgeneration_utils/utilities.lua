@@ -243,9 +243,9 @@ end
 
 -- creates roads, faster than wct_iterate_roads_to
 -- creates for each tile that mactches a f_src a road
--- to a tile that macthes @a f_dest of possible,
--- roads have a maximum length of @a radius and can only be
--- placed on tiles that match @a f_dest
+-- to a tile that macthes @a f_dest if possible.
+-- Roads have a maximum length of @a radius and can only be
+-- placed on tiles that match @a f_validpath
 function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius)
 	local src_tiles = map:find(f_src)
 	local dest_tiles = map:find(f_dest)
