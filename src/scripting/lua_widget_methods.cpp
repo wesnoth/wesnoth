@@ -285,6 +285,9 @@ static int intf_set_dialog_callback(lua_State* L)
 	if(!wd) {
 		throw std::invalid_argument("the widget has no window assigned");
 	}
+	if(!lua_isfunction(L, 2)) {
+		return luaL_argerror(L, 2, "callback must be a function");
+	}
 
 	lua_pushvalue(L, 2);
 	bool already_exists = luaW_setwidgetcallback(L, w, wd, "callback");
