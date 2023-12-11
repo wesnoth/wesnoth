@@ -980,7 +980,7 @@ int main(int argc, char** argv)
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> terminal_arg_switches = {
-			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
+		"-D", "--diff", "-p", "--preprocess", "-P", "--patch",
 			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
