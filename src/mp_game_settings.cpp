@@ -164,7 +164,7 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	}
 
 	cfg["name"]	= name;
-	cfg["require"] = required;
+	cfg["required"] = required;
 	for(const auto& item : content) {
 		config& c = cfg.add_child("content");
 		c["id"] = item.id;
