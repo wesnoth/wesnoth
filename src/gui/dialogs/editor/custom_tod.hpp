@@ -60,6 +60,7 @@ public:
 
 	/** Return current schedule */
 	const std::vector<time_of_day> get_schedule();
+
 	/** Register callback for update */
 	void register_callback(std::function<void(std::vector<time_of_day>)>);
 
@@ -89,7 +90,7 @@ private:
 	/* Callback for color sliders */
 	void color_slider_callback(COLOR_TYPE type);
 
-    /* Update map and schedule in realtime */
+	/* Update map and schedule in realtime */
 	std::function<void(std::vector<time_of_day>)> update_map_and_schedule_;
 
 	void update_tod_display();

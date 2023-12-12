@@ -247,10 +247,12 @@ void editor_controller::custom_tods_dialog()
 	tod_dlg.register_callback(update_func);
 
 	/* Autogenerate schedule id and name in case the user doesn't give any. */
+	// TODO : sch_id and sch_name should be translatable
 	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	std::string sch_id = "custom-"+std::to_string(current_millis);
 	std::string sch_name = "Custom Schedule "+std::to_string(current_millis);
 
+	// TODO : Needs better error handling
 	/* Show dialog and update current schedule */
 	if(tod_dlg.show()) {
 		/* Save the new schedule */
