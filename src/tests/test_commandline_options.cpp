@@ -392,4 +392,26 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.with_replay);
 }
 
+BOOST_AUTO_TEST_CASE (test_log_domain_severity_override_order)
+{
+	std::vector<std::string> args {
+		"wesnoth",
+		"--log-error=gui/draw",
+		"--log-info=all,gui/general",
+		"--log-debug=gui/*",
+		"--log-none=all,gui/general,gui/draw",
+		"--log-error=gui/general"};
+
+	commandline_options co(args);
+
+	BOOST_CHECK(co.log->at(0).first == lg::severity::LG_ERROR && co.log->at(0).second == "gui/draw");
+	BOOST_CHECK(co.log->at(1).first == lg::severity::LG_INFO && co.log->at(1).second == "all");
+	BOOST_CHECK(co.log->at(2).first == lg::severity::LG_INFO && co.log->at(2).second == "gui/general");
+	BOOST_CHECK(co.log->at(3).first == lg::severity::LG_DEBUG && co.log->at(3).second == "gui/*");
+	BOOST_CHECK(co.log->at(4).first == lg::severity::LG_NONE && co.log->at(4).second == "all");
+	BOOST_CHECK(co.log->at(5).first == lg::severity::LG_NONE && co.log->at(5).second == "gui/general");
+	BOOST_CHECK(co.log->at(6).first == lg::severity::LG_NONE && co.log->at(6).second == "gui/draw");
+	BOOST_CHECK(co.log->at(7).first == lg::severity::LG_ERROR && co.log->at(7).second == "gui/general");
+}
+
 BOOST_AUTO_TEST_SUITE_END()
