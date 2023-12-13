@@ -45,6 +45,9 @@ private:
 
 	std::string& schedule_id_;
 	std::string& schedule_name_;
+
+	/* Callback for enabling or disabling OK button */
+	void button_state_change();
 };
 
 

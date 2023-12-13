@@ -122,7 +122,8 @@ void editor_controller::init_tods(const game_config_view& game_config)
 	for (const config &schedule : game_config.child_range("editor_times")) {
 
 		const std::string& schedule_id = schedule["id"];
-		const std::string& schedule_name = schedule["name"];
+		/* Use schedule id as the name if schedule name is empty */
+		const std::string& schedule_name = schedule["name"].empty() ? schedule["id"] : schedule["name"];
 		if (schedule_id.empty()) {
 			ERR_ED << "Missing ID attribute in a TOD Schedule.";
 			continue;
@@ -132,7 +133,6 @@ void editor_controller::init_tods(const game_config_view& game_config)
 		if (times == tods_.end()) {
 			std::pair<tods_map::iterator, bool> new_times =
 				tods_.emplace(schedule_id, std::pair(schedule_name, std::vector<time_of_day>()));
-
 			times = new_times.first;
 		} else {
 			ERR_ED << "Duplicate TOD Schedule identifiers.";
@@ -246,11 +246,11 @@ void editor_controller::custom_tods_dialog()
 						std::placeholders::_1));
 	tod_dlg.register_callback(update_func);
 
-	/* Autogenerate schedule id and name in case the user doesn't give any. */
-	// TODO : sch_id and sch_name should be translatable
+	/* Autogenerate schedule id */
+	// TODO : sch_name should be translatable
 	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-	std::string sch_id = "custom-"+std::to_string(current_millis);
-	std::string sch_name = "Custom Schedule "+std::to_string(current_millis);
+	std::string sch_id = current_addon_id_+"-custom-"+std::to_string(current_millis);
+	std::string sch_name;
 
 	// TODO : Needs better error handling
 	/* Show dialog and update current schedule */
@@ -269,15 +269,12 @@ void editor_controller::custom_tods_dialog()
 		} else {
 			/* Check if the id entered is same as any of the existing ids
 			 * If so, replace */
+			// TODO : Notify the user if they enter an already existing schedule ID
 			for (auto map_elem : tods_) {
 				if (sch_id == map_elem.first) {
 					sch_id = "custom-"+std::to_string(current_millis);
 				}
 			}
-		}
-
-		if (sch_name.empty()) {
-			sch_name = "Custom Schedule "+std::to_string(current_millis);
 		}
 
 		tods_.emplace(sch_id, std::pair(sch_name, schedule));

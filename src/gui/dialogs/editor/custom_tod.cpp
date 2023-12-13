@@ -125,8 +125,8 @@ void custom_tod::pre_show(window& window)
 			std::bind(&custom_tod::do_delete_tod, this));
 
 	connect_signal_mouse_left_click(
-				find_widget<button>(&window, "preview", false),
-				std::bind(&custom_tod::preview_schedule, this));
+			find_widget<button>(&window, "preview", false),
+			std::bind(&custom_tod::preview_schedule, this));
 
 	connect_signal_notify_modified(
 			find_widget<slider>(&window, "lawful_bonus", false),
