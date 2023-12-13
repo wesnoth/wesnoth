@@ -132,7 +132,7 @@ void editor_controller::init_tods(const game_config_view& game_config)
 		tods_map::iterator times = tods_.find(schedule_id);
 		if (times == tods_.end()) {
 			std::pair<tods_map::iterator, bool> new_times =
-				tods_.emplace(schedule_id, std::pair(schedule_name, std::vector<time_of_day>()));
+			tods_.emplace(schedule_id, std::pair(schedule_name, std::vector<time_of_day>()));
 			times = new_times.first;
 		} else {
 			ERR_ED << "Duplicate TOD Schedule identifiers.";
@@ -249,7 +249,7 @@ void editor_controller::custom_tods_dialog()
 	/* Autogenerate schedule id */
 	// TODO : sch_name should be translatable
 	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-	std::string sch_id = current_addon_id_+"-custom-"+std::to_string(current_millis);
+	std::string sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
 	std::string sch_name;
 
 	// TODO : Needs better error handling
@@ -265,14 +265,14 @@ void editor_controller::custom_tods_dialog()
 
 		/* In case the ID or Name field is blank and user presses OK */
 		if (sch_id.empty()) {
-			sch_id = "custom-"+std::to_string(current_millis);
+			sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
 		} else {
 			/* Check if the id entered is same as any of the existing ids
 			 * If so, replace */
 			// TODO : Notify the user if they enter an already existing schedule ID
 			for (auto map_elem : tods_) {
 				if (sch_id == map_elem.first) {
-					sch_id = "custom-"+std::to_string(current_millis);
+					sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
 				}
 			}
 		}
