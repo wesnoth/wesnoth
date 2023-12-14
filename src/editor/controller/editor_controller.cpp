@@ -31,6 +31,7 @@
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
+#include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -121,7 +122,8 @@ void editor_controller::init_tods(const game_config_view& game_config)
 	for (const config &schedule : game_config.child_range("editor_times")) {
 
 		const std::string& schedule_id = schedule["id"];
-		const std::string& schedule_name = schedule["name"];
+		/* Use schedule id as the name if schedule name is empty */
+		const std::string& schedule_name = schedule["name"].empty() ? schedule["id"] : schedule["name"];
 		if (schedule_id.empty()) {
 			ERR_ED << "Missing ID attribute in a TOD Schedule.";
 			continue;
@@ -131,7 +133,6 @@ void editor_controller::init_tods(const game_config_view& game_config)
 		if (times == tods_.end()) {
 			std::pair<tods_map::iterator, bool> new_times =
 				tods_.emplace(schedule_id, std::pair(schedule_name, std::vector<time_of_day>()));
-
 			times = new_times.first;
 		} else {
 			ERR_ED << "Duplicate TOD Schedule identifiers.";
@@ -231,13 +232,66 @@ void editor_controller::custom_tods_dialog()
 	}
 
 	tod_manager& manager = *get_current_map_context().get_time_manager();
+	std::vector<time_of_day> prev_schedule = manager.times();
 
-	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time())) {
-		// TODO save the new tod here
+	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time());
+
+	/* Register callback to the dialog so that the map changes can be
+	 * previewed in real time.
+	 */
+	std::function<void(std::vector<time_of_day>)> update_func(
+				std::bind(
+						&editor::editor_controller::update_map_schedule,
+						this,
+						std::placeholders::_1));
+	tod_dlg.register_callback(update_func);
+
+	/* Autogenerate schedule id */
+	// TODO : sch_name should be translatable
+	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+	std::string sch_id = current_addon_id_+"-schedule";
+	std::string sch_name;
+
+	// TODO : Needs better error handling
+	/* Show dialog and update current schedule */
+	if(tod_dlg.show()) {
+		/* Save the new schedule */
+		std::vector<time_of_day> schedule = tod_dlg.get_schedule();
+		if(!gui2::dialogs::tod_new_schedule::execute(sch_id, sch_name)) {
+			/* User pressed Cancel. Restore old schedule */
+			update_map_schedule(prev_schedule);
+			return;
+		}
+
+		/* In case the ID or Name field is blank and user presses OK */
+		if (sch_id.empty()) {
+			sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
+		} else {
+			/* Check if the id entered is same as any of the existing ids
+			 * If so, replace */
+			// TODO : Notify the user if they enter an already existing schedule ID
+			for (auto map_elem : tods_) {
+				if (sch_id == map_elem.first) {
+					sch_id = current_addon_id_+"-schedule-"+std::to_string(current_millis);
+				}
+			}
+		}
+
+		tods_.emplace(sch_id, std::pair(sch_name, schedule));
+		get_current_map_context().replace_schedule(schedule);
+		get_current_map_context().save_schedule(sch_id, sch_name);
+		gui_->update_tod();
+		context_manager_->refresh_all();
+	} else {
+		/* Restore old schedule */
+		update_map_schedule(prev_schedule);
 	}
+}
 
+void editor_controller::update_map_schedule(std::vector<time_of_day> schedule)
+{
+	get_current_map_context().replace_schedule(schedule);
 	gui_->update_tod();
-
 	context_manager_->refresh_all();
 }
 
@@ -298,7 +352,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_SCROLL_RIGHT:
 			return true; //general hotkeys we can always do
 
-		case hotkey::HOTKEY_UNIT_LIST:
+		case HOTKEY_UNIT_LIST:
 			return !get_current_map_context().units().empty();
 
 		case HOTKEY_STATUS_TABLE:
@@ -330,13 +384,16 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			return get_current_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_QUIT_TO_DESKTOP:
-		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
+
+		// Only enable when editing a scenario
+		case HOTKEY_EDITOR_CUSTOM_TODS:
+			return !get_current_map_context().is_pure_map();
 
 		case HOTKEY_EDITOR_PBL:
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
@@ -530,17 +587,17 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_movement_coding()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_terrain_coding()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_draw_units()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (preferences::minimap_draw_terrain()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_ZOOM_DEFAULT:
-		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_NULL:
 		switch (active_menu_) {
@@ -601,14 +658,14 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 
 bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
-	SCOPE_ED;
 	using namespace hotkey;
+	HOTKEY_COMMAND command = cmd.hotkey_command;
+	SCOPE_ED;
 	int index = cmd.index;
 
 	// nothing here handles release; fall through to base implementation
 	if (!press) {
-		return hotkey::command_executor::do_execute_command(cmd, press, release);
+		return command_executor::do_execute_command(cmd, press, release);
 	}
 
 	switch (command) {

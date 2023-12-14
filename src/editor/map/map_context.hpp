@@ -316,13 +316,18 @@ public:
 	 * Saves the map under the current filename. Filename must be valid.
 	 * May throw an exception on failure.
 	 */
-	bool save_map();
+	void save_map();
 
 	/**
 	 * Saves the scenario under the current filename. Filename must be valid.
 	 * May throw an exception on failure.
 	 */
-	bool save_scenario();
+	void save_scenario();
+
+	/**
+	 * Save custom time of day schedule in the utils directory.
+	 */
+	void save_schedule(const std::string& schedule_id, const std::string& schedule_name);
 
 	/**
 	 * Convert an old-style editor scenario config to a config with a top level [multiplayer] tag.

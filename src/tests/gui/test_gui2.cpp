@@ -60,6 +60,7 @@
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
+#include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
@@ -636,6 +637,10 @@ BOOST_AUTO_TEST_CASE(tooltip_test_tooltip_large)
 BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
 {
 	test_tip("tooltip");
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_tod_new_schedule)
+{
+	test<tod_new_schedule>();
 }
 
 // execute last - checks that there aren't any unaccounted for GUIs
@@ -1397,6 +1402,18 @@ struct dialog_tester<surrender_quit>
 	surrender_quit* create()
 	{
 		return new surrender_quit();
+	}
+};
+
+template<>
+struct dialog_tester<tod_new_schedule>
+{
+	std::string id = "id";
+	std::string name = "name";
+	dialog_tester() {}
+	tod_new_schedule* create()
+	{
+		return new tod_new_schedule(id, name);
 	}
 };
 
