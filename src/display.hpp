@@ -52,7 +52,6 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
-#include "filesystem.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "gui/core/top_level_drawable.hpp"
