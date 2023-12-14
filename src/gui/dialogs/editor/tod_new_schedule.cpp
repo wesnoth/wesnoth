@@ -43,10 +43,16 @@ void tod_new_schedule::pre_show(window& win) {
 	connect_signal_notify_modified(
 		find_widget<text_box>(&win, "name_box", false),
 		std::bind(&tod_new_schedule::button_state_change, this));
+	connect_signal_notify_modified(
+		find_widget<text_box>(&win, "id_box", false),
+		std::bind(&tod_new_schedule::button_state_change, this));
 }
 
 void tod_new_schedule::button_state_change() {
-	if (find_widget<text_box>(get_window(), "name_box", false).get_value().empty()) {
+	if (
+		find_widget<text_box>(get_window(), "id_box", false).get_value().empty()
+		|| find_widget<text_box>(get_window(), "name_box", false).get_value().empty())
+	{
 		find_widget<button>(get_window(), "ok", false).set_active(false);
 	} else {
 		find_widget<button>(get_window(), "ok", false).set_active(true);
