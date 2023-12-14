@@ -6,7 +6,9 @@
      * Fix macro argument in translatable string
  ### Editor
  ### Multiplayer
+   * Fix Add-on version check error #4055 
  ### Lua API
+   * units.remove_modifications can now remove multiple types of modifications.
  ### Packaging
  ### Terrain
  ### Translations
@@ -15,6 +17,8 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fix various assertion failures on invalid input 
+   * Fix end credits not showing when a scenario has no [side]s #8090
 
 ## Version 1.17.23
  ### Campaigns
@@ -40,6 +44,9 @@
    * Fixed occasional bad rendering for blurred/translucent areas
    * Significantly reduced CPU usage when a dialog is open
    * Avoid an assert in `replay::add_start_if_not_there_yet` with corrupt files (issue #7154)
+   * Fix Leaders sometimes being removed in controller=null sides in mp campaigns (#7886)
+   * fix [store_reachable_locations] when the player has shroud #7891
+
 
 ## Version 1.17.22
  ### Campaigns
@@ -76,6 +83,7 @@
    * The implementation of `[allow_undo]` has changed, the behavior should be the same.
  ### Miscellaneous and Bug Fixes
    * Asset copyright tracking is now handled in a .csv file, and sanity checked during CI builds.
+   * Various fixes to World Conquest multiplayer campaign.
 
 ## Version 1.17.21
  ### Campaigns
