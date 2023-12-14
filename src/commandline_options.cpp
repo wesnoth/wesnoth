@@ -64,8 +64,7 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 
 
 commandline_options::commandline_options(const std::vector<std::string>& args)
-	:
-	, campaign()
+	: campaign()
 	, campaign_difficulty()
 	, campaign_scenario()
 	, campaign_skip_story(false)
