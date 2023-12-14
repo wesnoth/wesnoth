@@ -706,7 +706,6 @@ void team_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "village_gold");
 	add_input(inputs, "village_support");
 	add_input(inputs, "recall_cost");
-	add_input(inputs, "name");
 	add_input(inputs, "is_human");
 	add_input(inputs, "is_ai");
 	add_input(inputs, "is_network");
