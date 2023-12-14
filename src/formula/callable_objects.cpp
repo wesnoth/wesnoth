@@ -435,6 +435,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.level());
 	} else if(key == "total_movement" || key == "max_moves" || key == "moves") {
 		return variant(u_.movement());
+	} else if(key == "undead") {
+		return variant(u_.musthave_status("unpoisonable") && u_.musthave_status("undrainable") && u_.musthave_status("unplagueable"));
 	} else if(key == "unpoisonable") {
 		return variant(u_.musthave_status("unpoisonable"));
 	} else if(key == "unslowable") {
