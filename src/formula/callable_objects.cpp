@@ -769,6 +769,10 @@ variant team_callable::get_value(const std::string& key) const
 		return variant(team_.flag_icon());
 	} else if(key == "team_name") {
 		return variant(team_.team_name());
+	} else if(key == "faction") {
+		return variant(team_.faction());
+	} else if(key == "faction_name") {
+		return variant(team_.faction_name());
 	} else if(key == "color") {
 		return variant(team_.color());
 	} else if(key == "share_vision") {
