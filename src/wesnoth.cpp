@@ -74,16 +74,6 @@
 #include <boost/iostreams/categories.hpp>   // for input, output
 #include <boost/iostreams/copy.hpp>         // for copy
 
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4456)
-#pragma warning(disable : 4458)
-#endif
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
