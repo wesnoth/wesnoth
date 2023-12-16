@@ -172,9 +172,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			current_label->second.update_info(
 				text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
 
-			res = &current_label->second;
+			res = add_label(*this, text, creator, team_name, loc, color, visible_in_fog, visible_in_shroud, immutable, category, tooltip);
 
-			// Erase the old label.
 			current_label_map->second.erase(current_label);
 
 			// Restore the global label in the same spot, if any.
