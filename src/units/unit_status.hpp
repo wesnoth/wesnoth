@@ -46,6 +46,9 @@ class unit_status
 	// persistent statuses are usualyl applied by object
 	// nonpersistent statuses get removed whna unit heals,
 	bool persistent_;
+
+	static boost::container::flat_set<unit_status> data_;
+
 	bool visible() const { return !icon_.empty(); };
 public:
 	unit_status(const config& cfg);
@@ -53,7 +56,6 @@ public:
 
 	static void reset_statuses(std::set<std::string>& ss);
 	static void heal_statuses(std::set<std::string>& ss);
-	static boost::container::flat_set<unit_status> data_;
 	friend bool operator<(const unit_status& a1, const unit_status& a2) {
 		return true;//a1.id_ < a2.id_;
 	}
