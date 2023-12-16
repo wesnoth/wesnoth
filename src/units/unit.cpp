@@ -52,6 +52,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
+#include "units/unit_status.hpp"
 #include "utils/config_filters.hpp"
 #include "variable.hpp" // for vconfig, etc
 
@@ -908,6 +909,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	image_mods_.clear();
 	overlays_.clear();
 	ellipse_.reset();
+	unit_status::reset_statuses(states_);
 
 	// Clear modification-related caches
 	modification_descriptions_.clear();
