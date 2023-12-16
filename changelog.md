@@ -12,7 +12,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Bulgarian, Finnish, German, Polish, Slovak
+   * Updated translations: British English, Bulgarian, Finnish, French, German, Polish, Slovak
  ### Units
  ### User interface
  ### WML Engine
