@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-16 00:58 UTC\n"
-"PO-Revision-Date: 2022-06-03 18:17+0200\n"
+"PO-Revision-Date: 2023-12-04 10:46+0100\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: Language: pl_PL\n"
 "Language: pl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [campaign]: id=Tutorial
@@ -48,14 +48,12 @@ msgstr "Początkujący"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Ukończono samouczek"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "Trening bitewny"
+msgstr "Ukończ Trening bitewny"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -1882,6 +1880,9 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"Kiedy przesuwasz jednostkę, wartości procentowe przy kursorze wskazują "
+"obronę terenową jednostki na tym polu. Im wyższa wartość, tym mniejsza "
+"szansa, że jednostka zostanie trafiona."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
@@ -2444,7 +2445,6 @@ msgstr ""
 "klawiszem <b>u</b>."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2452,7 +2452,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<big>Kliknij myszą lub naciśnij spację, aby kontynuować...</big>"
+"<big>Kliknij przycisk myszy lub naciśnij spację, aby kontynuować...</big>"
 
 #~ msgid ""
 #~ "Certain unit types have special <i>abilities</i>. Unlike traits, which "
