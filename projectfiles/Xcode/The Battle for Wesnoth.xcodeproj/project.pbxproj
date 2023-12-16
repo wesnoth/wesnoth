@@ -611,6 +611,7 @@
 		49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49478712172FF6F8002B7ABA /* tristate_button.cpp */; };
 		4E19429E82899A42A73BBE91 /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
 		508C40A885166B2E3F4245F4 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
+		5ABF40A0AC5E357DDAF6C895 /* unit_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447543E0B2D63157D5D95EAD /* unit_status.cpp */; };
 		620A386E15E9364E00A4F513 /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386215E9364E00A4F513 /* attack.cpp */; };
 		620A386F15E9364E00A4F513 /* create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386415E9364E00A4F513 /* create.cpp */; };
 		620A387015E9364F00A4F513 /* heal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386615E9364E00A4F513 /* heal.cpp */; };
@@ -650,6 +651,7 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		63574D2F8DD1D1D236718237 /* unit_status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447543E0B2D63157D5D95EAD /* unit_status.cpp */; };
 		6D574EACA3483ABEE72819F0 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
 		7BFC4DF5BFF8CF75855BA662 /* prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67044415B63F5888193BD7A6 /* prompt.cpp */; };
 		7FDF4E8D9C94E7DA8F41F7BB /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
@@ -1549,6 +1551,7 @@
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		20E644DC98F26C756364EC2C /* choose_addon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = choose_addon.cpp; sourceTree = "<group>"; };
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
+		447543E0B2D63157D5D95EAD /* unit_status.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = unit_status.cpp; path = unit_status.cpp; sourceTree = "<group>"; };
 		460D897824DC7830000B1ABC /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cpp; path = ../../src/server/wesnothd/game.cpp; sourceTree = SOURCE_ROOT; };
 		460D897924DC7830000B1ABC /* ban.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ban.hpp; path = ../../src/server/wesnothd/ban.hpp; sourceTree = SOURCE_ROOT; };
 		460D897A24DC7830000B1ABC /* player_network.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player_network.hpp; path = ../../src/server/wesnothd/player_network.hpp; sourceTree = SOURCE_ROOT; };
@@ -4522,6 +4525,7 @@
 				B55999780EC62181008DD061 /* udisplay.hpp */,
 				B559997F0EC62181008DD061 /* unit.cpp */,
 				B559997E0EC62181008DD061 /* unit.hpp */,
+				447543E0B2D63157D5D95EAD /* unit_status.cpp */,
 			);
 			path = units;
 			sourceTree = "<group>";
@@ -5842,6 +5846,7 @@
 				0554467DB5FE99D85ABCDCA0 /* edit_pbl_translation.cpp in Sources */,
 				8C704B6F99C824A4073EEBEE /* prompt.cpp in Sources */,
 				DF974010BB46B844E83F7DDA /* tod_new_schedule.cpp in Sources */,
+				63574D2F8DD1D1D236718237 /* unit_status.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6519,6 +6524,7 @@
 				EBB44A70837B84A928CB6424 /* edit_pbl_translation.cpp in Sources */,
 				7BFC4DF5BFF8CF75855BA662 /* prompt.cpp in Sources */,
 				C93048A9AE576B6AD016DFA4 /* tod_new_schedule.cpp in Sources */,
+				5ABF40A0AC5E357DDAF6C895 /* unit_status.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
