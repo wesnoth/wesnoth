@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2023-10-08 11:46+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,15 +268,15 @@ msgstr "Lefel:"
 msgid "Cost: "
 msgstr "Cost:"
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Gwall sy'n rhaid ei drwsio"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Ydych chi eisiau gadael go iawn?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -284,7 +284,7 @@ msgstr ""
 "Ydych chi eisiau gadael go iawn? Byddwch yn colli unrhyw newidiadau i'r map "
 "ers ei gadw ddiwethaf."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -292,23 +292,23 @@ msgstr ""
 "Ydych chi eisiau gadael go iawn? Newidiwyd y mapiau canlynol a byddwch yn "
 "colli unrhyw newidiadau ers eu cadw ddiwethaf:"
 
-#: src/editor/controller/editor_controller.cpp:229
+#: src/editor/controller/editor_controller.cpp:230
 msgid "No editor time-of-day found."
 msgstr "Ni chafwyd hyd i adeg-o'r-dydd."
 
-#: src/editor/controller/editor_controller.cpp:1197
+#: src/editor/controller/editor_controller.cpp:1254
 msgid "Change Unit ID"
 msgstr "Newid ID yr uned"
 
-#: src/editor/controller/editor_controller.cpp:1198
+#: src/editor/controller/editor_controller.cpp:1255
 msgid "ID:"
 msgstr "ID"
 
-#: src/editor/controller/editor_controller.cpp:1214
+#: src/editor/controller/editor_controller.cpp:1271
 msgid "Rename Unit"
 msgstr "Ailenwi'r Uned"
 
-#: src/editor/controller/editor_controller.cpp:1215
+#: src/editor/controller/editor_controller.cpp:1272
 msgid "Name:"
 msgstr "Enw:"
 
@@ -316,11 +316,11 @@ msgstr "Enw:"
 msgid "Load Map"
 msgstr "Llwytho Map"
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
 msgid "New Map"
 msgstr "Map Newydd"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
 msgid "New Scenario"
 msgstr "Senario Newydd"
 
@@ -433,19 +433,19 @@ msgstr "Chwaraewr $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Mae maint y map targed yn wahanol i'r map presennol"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:183
 msgid "File not found"
 msgstr "Ni chafwyd hyd i'r ffeil"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:190
 msgid "Empty file"
 msgstr "Ffeil gwag"
 
-#: src/editor/map/map_context.cpp:195
+#: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:241
+#: src/editor/map/map_context.cpp:242
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -453,20 +453,20 @@ msgstr ""
 "Mae golwg senario ar ffeil y map, ond nid yw'r maes map_data yn cyfeirio at "
 "ffeil sy'n bodoli"
 
-#: src/editor/map/map_context.cpp:260
+#: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
 msgid "Error"
 msgstr "Gwall"
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:273
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -478,19 +478,20 @@ msgstr ""
 "Mae golwg senario ar ffeil y map, ond nid yw'r maes map_data yn cyfeirio at "
 "ffeil sy'n bodoli"
 
-#: src/editor/map/map_context.cpp:287
+#: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:815
+#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
+#: src/editor/map/map_context.cpp:886
 msgid "Could not save the scenario: $msg"
 msgstr "Nid oedd modd cadw'r senario: $msg"
 
-#: src/editor/map/map_context.cpp:850
+#: src/editor/map/map_context.cpp:917
 msgid "Could not save into scenario"
 msgstr "Nid oedd modd cadw i'r senario"
 
-#: src/editor/map/map_context.cpp:860
+#: src/editor/map/map_context.cpp:927
 msgid "Could not save the map: $msg"
 msgstr "Nid oedd modd cadw'r map: $msg"
 
@@ -553,14 +554,14 @@ msgstr "Cmd + clic: copïo'r dirwedd"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + clic: copïo'r dirwedd"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:95
 msgid "Clipboard support not found, contact your packager"
 msgstr "Nid yw'r clipfwrdd wedi'i gefnogi, cysylltwch â'ch pecynnydd"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:158
+#: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Choose File"
 msgstr "Dewis Ffeil"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:159
+#: src/gui/dialogs/editor/custom_tod.cpp:164
 msgid "Select"
 msgstr "Dewis"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -359,7 +359,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Atres colaboradors"
 
 #. [about]
-#: data/core/about.cfg:1851
+#: data/core/about.cfg:1855
 msgid "Bots"
 msgstr "Robots"
 
@@ -573,82 +573,82 @@ msgid "Polish Translation"
 msgstr "Traducció al polac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1400
+#: data/core/about_i18n.cfg:1404
 msgid "Portuguese Translation"
 msgstr "Traducció al portugués"
 
 #. [about]
-#: data/core/about_i18n.cfg:1414
+#: data/core/about_i18n.cfg:1418
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portugués (Brasil)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1472
+#: data/core/about_i18n.cfg:1476
 msgid "Romanian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1480
+#: data/core/about_i18n.cfg:1484
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about_i18n.cfg:1587
+#: data/core/about_i18n.cfg:1591
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1596
+#: data/core/about_i18n.cfg:1600
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1615
+#: data/core/about_i18n.cfg:1619
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1647
+#: data/core/about_i18n.cfg:1651
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslové"
 
 #. [about]
-#: data/core/about_i18n.cfg:1663
+#: data/core/about_i18n.cfg:1667
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1753
+#: data/core/about_i18n.cfg:1757
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1798
+#: data/core/about_i18n.cfg:1802
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1823
+#: data/core/about_i18n.cfg:1827
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1839
+#: data/core/about_i18n.cfg:1843
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
 #. [about]
-#: data/core/about_i18n.cfg:1852
+#: data/core/about_i18n.cfg:1856
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al chinenc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1871
+#: data/core/about_i18n.cfg:1875
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -656,7 +656,7 @@ msgstr "Traducció al polac"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1880
+#: data/core/about_i18n.cfg:1884
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "Traducció al chinenc"
@@ -5202,7 +5202,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Alvanços"
 
-#: src/actions/attack.cpp:584 src/actions/attack.cpp:1373
+#: src/actions/attack.cpp:584 src/actions/attack.cpp:1375
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "L'era seleccionada no és vàlida"
@@ -6143,7 +6143,7 @@ msgstr ""
 "Borrar els mensages del chat.\n"
 "\n"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:565
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
@@ -6185,7 +6185,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:513
+#: src/game_config.cpp:516
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
@@ -7866,7 +7866,7 @@ msgstr "Color no vàlit"
 msgid "prompt^Command:"
 msgstr "Orde:"
 
-#: src/mouse_events.cpp:1215
+#: src/mouse_events.cpp:1219
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7874,13 +7874,13 @@ msgid ""
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/mouse_events.cpp:1310
+#: src/mouse_events.cpp:1314
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Atacant"
 
-#: src/mouse_events.cpp:1310
+#: src/mouse_events.cpp:1314
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -8030,7 +8030,7 @@ msgstr "No hi ha objectius"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:448
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -8039,7 +8039,7 @@ msgstr ""
 "S'ha produït una desconexió de la ret i la partida no pot continuar. ¿Vols "
 "guardar la partida?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -8047,7 +8047,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "¿Estàs segur de que vols suprimir esta partida?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8096,7 +8096,7 @@ msgstr ""
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:542
+#: src/playsingle_controller.cpp:543
 msgid "It is now $name|’s turn"
 msgstr "És la tanda de $name|."
 
@@ -9070,17 +9070,17 @@ msgstr "lleal"
 msgid "female^neutral"
 msgstr "no morta"
 
-#: src/units/unit.cpp:1992
+#: src/units/unit.cpp:2000
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1998
+#: src/units/unit.cpp:2006
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2008
+#: src/units/unit.cpp:2016
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9088,25 +9088,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:2014
+#: src/units/unit.cpp:2022
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2018
+#: src/units/unit.cpp:2026
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2031
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2027
+#: src/units/unit.cpp:2035
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9115,13 +9115,13 @@ msgid_plural ""
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2042
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2500
+#: src/units/unit.cpp:2508
 msgid "$effect_description per level"
 msgstr "$effect_description per nivell"
 
