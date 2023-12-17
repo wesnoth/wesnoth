@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Fix_Xcode_Dependencies
-# Martin Hrubý (hrubymar10), 2016 - 2020, 2022
+# Martin Hrubý (hrubymar10), 2016 - 2020, 2022-2023
 # Victor Sergienko (singalen), 2018
 #
 
@@ -29,7 +29,7 @@ time_interval_to_string() {
 }
 
 get_mcs() {
-  git clone -b "1.17" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-1.17"
+  git clone -b "1.18" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-1.18"
 }
 ###/Functions
 
@@ -58,25 +58,25 @@ mkdir -p "temp" || exit
 cd "temp" || exit
 rm -rf MacCompileStuff-master
 
-if ! [ -d "MacCompileStuff-1.17" ]; then
+if ! [ -d "MacCompileStuff-1.18" ]; then
   get_mcs
 else
-  cd "MacCompileStuff-1.17"
+  cd "MacCompileStuff-1.18"
   git pull --depth 5
   if ! [ $? -eq 0 ]; then
     echo 'Error: MacCompileStuff is too far from the local commit. Clonning again...' >&2
     cd ".." || exit
-    rm -rf "MacCompileStuff-1.17"
+    rm -rf "MacCompileStuff-1.18"
     get_mcs
   fi
 fi
 cd "${MY_PATH}" || exit
 
 rm -f "Headers"
-ln -s "temp/MacCompileStuff-1.17/Headers"
+ln -s "temp/MacCompileStuff-1.18/Headers"
 
 rm -f "lib"
-ln -s "temp/MacCompileStuff-1.17/lib"
+ln -s "temp/MacCompileStuff-1.18/lib"
 
 echo "==> DONE ..."
 echo
