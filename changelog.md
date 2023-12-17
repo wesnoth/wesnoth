@@ -1,6 +1,4 @@
-## Version 1.17.23+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.24
  ### Campaigns
    * Winds of Fate
      * Fix macro argument in translatable string
@@ -19,13 +17,8 @@
    * Fix Add-on version check error #4055 
  ### Lua API
    * units.remove_modifications can now remove multiple types of modifications.
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Bulgarian, Finnish, French, German, Polish, Slovak
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fix various assertion failures on invalid input 
    * Fix end credits not showing when a scenario has no [side]s #8090
