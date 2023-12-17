@@ -5233,6 +5233,9 @@
 							};
 						};
 					};
+					B5BB6B4A0F890FBA00444FBF = {
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "The Battle for Wesnoth" */;
@@ -6628,6 +6631,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -6645,6 +6649,8 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
+					"-Wl",
+					"-ld_classic",
 				);
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -6683,7 +6689,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N5CYW96P9T;
+				DEVELOPMENT_TEAM = P7YF26GARW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6692,8 +6698,6 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -6716,6 +6720,8 @@
 					"-lbz2",
 					"-lreadline",
 					"-llua",
+					"-Wl",
+					"-ld_classic",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
@@ -6743,8 +6749,9 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = N5CYW96P9T;
+				DEVELOPMENT_TEAM = P7YF26GARW;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
@@ -6974,8 +6981,11 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -6997,6 +7007,7 @@
 				OTHER_CFLAGS = "-Wall";
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.wesnothd;
 				PRODUCT_NAME = wesnothd;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -7016,8 +7027,11 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
@@ -7037,6 +7051,7 @@
 				OTHER_CFLAGS = "-Wall";
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.wesnothd;
 				PRODUCT_NAME = wesnothd;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = "";
 			};
 			name = Release;
@@ -7072,8 +7087,6 @@
 					"HAVE_HISTORY=1",
 					"LOAD_REVISION=1",
 				);
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -7095,6 +7108,8 @@
 					"-lbz2",
 					"-lreadline",
 					"-llua",
+					"-Wl",
+					"-ld_classic",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
@@ -7132,8 +7147,6 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -7156,6 +7169,8 @@
 					"-lbz2",
 					"-lreadline",
 					"-llua",
+					"-Wl",
+					"-ld_classic",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
@@ -7200,6 +7215,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -7231,6 +7247,8 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
+					"-Wl",
+					"-ld_classic",
 				);
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -7258,6 +7276,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -7275,6 +7294,8 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
+					"-Wl",
+					"-ld_classic",
 				);
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
