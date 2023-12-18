@@ -182,6 +182,24 @@ namespace
 			++cur;
 		}
 	}
+
+	auto stats_storage_resetter(unit& u)
+	{
+		int hitpoints = u.hitpoints();
+		int moves = u.movement_left();
+		int experience= u.experience();
+		bool slowed= u.get_state(unit::STATE_SLOWED);
+		bool poisoned= u.get_state(unit::STATE_POISONED);
+		return [=, &u] () {
+			//u.set_movement(std::min(u.total_movement(), moves));
+			u.set_movement(moves);
+			//u.set_hitpoints(std::min(u.max_hitpoints(), hitpoints));
+			u.set_hitpoints(hitpoints);
+			u.set_experience(experience);
+			u.set_state(unit::STATE_SLOWED, slowed && u.get_state("unslowable"));
+			u.set_state(unit::STATE_POISONED, poisoned && u.get_state("unpoisonable"));
+		};
+	}
 } // end anon namespace
 
 /**
@@ -1220,8 +1238,7 @@ void unit::expire_modifications(const std::string& duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
 	const unit_type* rebuild_from = nullptr;
-	int hp = hit_points_;
-	int mp = movement_;
+	auto ss = stats_storage_resetter(*this);
 	// Loop through all types of modifications.
 	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
@@ -1248,8 +1265,7 @@ void unit::expire_modifications(const std::string& duration)
 	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
-		hit_points_ = hp;
-		movement_ = std::min(mp, max_movement_);
+		ss();
 	}
 }
 
