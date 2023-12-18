@@ -1809,18 +1809,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	if(!resistance_abilities.empty()) {
 		unit_abilities::effect resist_effect(resistance_abilities, 100-res);
 
-		unit_ability_list resistance_max_value;
-		resistance_max_value.append_if(resistance_abilities, [&](const unit_ability& i) {
-			return (*i.ability_cfg).has_attribute("max_value");
-		});
-		if(!resistance_max_value.empty()){
-			res = 100 - std::min<int>(
-				resist_effect.get_composite_value(),
-				resistance_max_value.highest("max_value").first
-			);
-		} else {
-			res = 100 - resist_effect.get_composite_value();
-		}
+		res = 100 - resist_effect.get_composite_value();
 	}
 
 	return res;
