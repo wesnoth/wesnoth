@@ -2031,7 +2031,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 			}
 		}
 
-		if(wham == EFFECT_CLAMP_MIN_MAX){
+		if(wham == EFFECT_DEFAULT || wham == EFFECT_CUMULABLE){
 			if(cfg.has_attribute("max_value")){
 				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
 			}
