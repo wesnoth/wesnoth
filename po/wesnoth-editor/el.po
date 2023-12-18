@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2014-03-12 10:36+0100\n"
 "Last-Translator: galicae <nikolaspapadop@yahoo.com>\n"
 "Language-Team: none\n"
@@ -271,15 +271,15 @@ msgstr ""
 msgid "Cost: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Σοβαρό σφάλμα"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Θελετα πραγματικά να αποχωρήσετε;"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -291,7 +291,7 @@ msgstr ""
 "Θελετα πραγματικά να αποχωρήσετε; Τροποποιήσεις στον χάρτη μετά την "
 "τελευταία αποθήκευση δεν θα αποθηκευτούν!"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -299,23 +299,23 @@ msgstr ""
 "Θελετα πραγματικά να αποχωρήσετε; Οι ακόλουθοι χάρτες ειχαν τροποποιηθεί και "
 "όλες οι τροποποιήσεις στον χάρτη μετά την τελευταία αποθήκευση θα χαθούν!"
 
-#: src/editor/controller/editor_controller.cpp:229
+#: src/editor/controller/editor_controller.cpp:230
 msgid "No editor time-of-day found."
 msgstr "Δεν βρέθηκε επεξεργαστής ωρας."
 
-#: src/editor/controller/editor_controller.cpp:1197
+#: src/editor/controller/editor_controller.cpp:1254
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1198
+#: src/editor/controller/editor_controller.cpp:1255
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1214
+#: src/editor/controller/editor_controller.cpp:1271
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1215
+#: src/editor/controller/editor_controller.cpp:1272
 msgid "Name:"
 msgstr ""
 
@@ -323,13 +323,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Νέος Χάρτης)"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -461,21 +461,21 @@ msgstr ""
 "To μέγεθος του επιλεγμένου χάρτη είναι διαφορετικό απο αυτό του τρέχοντος "
 "χαρτη"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:183
 msgid "File not found"
 msgstr "Αρχείο δεν βρέθηκε"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:190
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Άδειο αρχείο χάρτη"
 
-#: src/editor/map/map_context.cpp:195
+#: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:241
+#: src/editor/map/map_context.cpp:242
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -483,20 +483,20 @@ msgstr ""
 "Ο χάρτης μοιάζει σε χάρτη με σενάριο, αλλά η τιμή map_data δεν παραπέμπει σε "
 "ένα υπάρχον αρχείο"
 
-#: src/editor/map/map_context.cpp:260
+#: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
 msgid "Error"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:273
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -508,21 +508,22 @@ msgstr ""
 "Ο χάρτης μοιάζει σε χάρτη με σενάριο, αλλά η τιμή map_data δεν παραπέμπει σε "
 "ένα υπάρχον αρχείο"
 
-#: src/editor/map/map_context.cpp:287
+#: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:815
+#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
+#: src/editor/map/map_context.cpp:886
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
 
-#: src/editor/map/map_context.cpp:850
+#: src/editor/map/map_context.cpp:917
 msgid "Could not save into scenario"
 msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης ως χάρτης με σενάριο"
 
-#: src/editor/map/map_context.cpp:860
+#: src/editor/map/map_context.cpp:927
 msgid "Could not save the map: $msg"
 msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
 
@@ -585,15 +586,15 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:95
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:158
+#: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Choose File"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:159
+#: src/gui/dialogs/editor/custom_tod.cpp:164
 msgid "Select"
 msgstr ""
 

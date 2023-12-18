@@ -24,6 +24,7 @@
 
 #include <boost/program_options/options_description.hpp>
 #include <map>
+#include "log.hpp"
 
 namespace campaignd {
 
@@ -61,7 +62,7 @@ public:
 	/** True if --logdomains was passed. */
 	bool show_log_domains;
 	/** Log domain/severity configuration. */
-	std::map<std::string, int> log_domain_levels;
+	std::map<std::string, lg::severity> log_domain_levels;
 	/** Whether to use higher precision for log timestamps. */
 	bool log_precise_timestamps;
 	/** Whether to report timing information for server requests. */

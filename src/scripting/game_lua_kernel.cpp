@@ -3825,14 +3825,23 @@ static int intf_remove_modifications(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
 	config filter = luaW_checkconfig(L, 2);
-	std::string tag = luaL_optstring(L, 3, "object");
+	std::vector<std::string> tags;
+	if(lua_isstring(L, 3)) {
+		tags.push_back(lua_check<std::string>(L, 3));
+	} else if (lua_istable(L, 3)){
+		tags = lua_check<std::vector<std::string>>(L, 3);
+	} else {
+		tags.push_back("object");
+	}
 	//TODO
 	if(filter.attribute_count() == 1 && filter.all_children_count() == 0 && filter.attribute_range().front().first == "duration") {
 		u.expire_modifications(filter["duration"]);
 	} else {
-		for(config& obj : u.get_modifications().child_range(tag)) {
-			if(obj.matches(filter)) {
-				obj["duration"] = "now";
+		for(const std::string& tag : tags) {
+			for(config& obj : u.get_modifications().child_range(tag)) {
+				if(obj.matches(filter)) {
+					obj["duration"] = "now";
+				}
 			}
 		}
 		u.expire_modifications("now");

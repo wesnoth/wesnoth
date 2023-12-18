@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -361,7 +361,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Öðruvísi aðstandendur"
 
 #. [about]
-#: data/core/about.cfg:1851
+#: data/core/about.cfg:1855
 msgid "Bots"
 msgstr "Þjarkar"
 
@@ -573,82 +573,82 @@ msgid "Polish Translation"
 msgstr "Pólsk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1400
+#: data/core/about_i18n.cfg:1404
 msgid "Portuguese Translation"
 msgstr "Portúgölsk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1414
+#: data/core/about_i18n.cfg:1418
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portúgölsk (Brazil) þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1472
+#: data/core/about_i18n.cfg:1476
 msgid "Romanian Translation"
 msgstr "Rúmensk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1480
+#: data/core/about_i18n.cfg:1484
 msgid "Russian Translation"
 msgstr "Rússnesk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1587
+#: data/core/about_i18n.cfg:1591
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Galisísk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1596
+#: data/core/about_i18n.cfg:1600
 msgid "Serbian Translation"
 msgstr "Serbísk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1615
+#: data/core/about_i18n.cfg:1619
 msgid "Slovak Translation"
 msgstr "Slóvakísk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1647
+#: data/core/about_i18n.cfg:1651
 msgid "Slovenian Translation"
 msgstr "Slóvensk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1663
+#: data/core/about_i18n.cfg:1667
 msgid "Spanish Translation"
 msgstr "Spænsk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1753
+#: data/core/about_i18n.cfg:1757
 msgid "Swedish Translation"
 msgstr "Sænsk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1798
+#: data/core/about_i18n.cfg:1802
 msgid "Turkish Translation"
 msgstr "Tyrknesk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1823
+#: data/core/about_i18n.cfg:1827
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Rúmensk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1839
+#: data/core/about_i18n.cfg:1843
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensísk (suður Katalónsk) þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1852
+#: data/core/about_i18n.cfg:1856
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Kínverk þýðing"
 
 #. [about]
-#: data/core/about_i18n.cfg:1871
+#: data/core/about_i18n.cfg:1875
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -656,7 +656,7 @@ msgstr "Pólsk þýðing"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1880
+#: data/core/about_i18n.cfg:1884
 msgid "RACV’s Translation"
 msgstr "RACV þýðing"
 
@@ -5119,7 +5119,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Eflingar"
 
-#: src/actions/attack.cpp:584 src/actions/attack.cpp:1373
+#: src/actions/attack.cpp:584 src/actions/attack.cpp:1375
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Ógilt tímabil valið"
@@ -6094,7 +6094,7 @@ msgstr ""
 "Hreinsa spjall skilaboð.\n"
 "\n"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:565
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
 msgid "The Battle for Wesnoth"
 msgstr "Bardaginn um Wesnoth"
 
@@ -6136,7 +6136,7 @@ msgstr "%d. %b"
 msgid "%b %d %Y"
 msgstr "%d. %b '%y"
 
-#: src/game_config.cpp:513
+#: src/game_config.cpp:516
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
@@ -7823,7 +7823,7 @@ msgstr "Ógildur litur"
 msgid "prompt^Command:"
 msgstr "Skipun:"
 
-#: src/mouse_events.cpp:1215
+#: src/mouse_events.cpp:1219
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7831,13 +7831,13 @@ msgid ""
 msgstr ""
 "Þú verður að hafa leiðtoga í hásætinu til að ráða eða endurkalla einingar."
 
-#: src/mouse_events.cpp:1310
+#: src/mouse_events.cpp:1314
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Árásaraðili"
 
-#: src/mouse_events.cpp:1310
+#: src/mouse_events.cpp:1314
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -7986,7 +7986,7 @@ msgstr "Engin markmið til staðar"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Afturkallar hreyfingar enn ekki sentar til miðlara."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:448
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7995,7 +7995,7 @@ msgstr ""
 "Tenging hefur dottið niður og leikurinn getur ekki haldið áfram. Viltu vista "
 "leikin?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -8003,7 +8003,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Ertu viss um að þú viljir eyða þessum leik?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8045,7 +8045,7 @@ msgstr ""
 msgid "The game is over."
 msgstr "Leik lokið."
 
-#: src/playsingle_controller.cpp:542
+#: src/playsingle_controller.cpp:543
 msgid "It is now $name|’s turn"
 msgstr "Nú er lota $name|"
 
@@ -9011,17 +9011,17 @@ msgstr "dygg"
 msgid "female^neutral"
 msgstr "hlutlaus"
 
-#: src/units/unit.cpp:1992
+#: src/units/unit.cpp:2000
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1998
+#: src/units/unit.cpp:2006
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2008
+#: src/units/unit.cpp:2016
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9029,25 +9029,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "hverja lotu"
 msgstr[1] "hverja lotu"
 
-#: src/units/unit.cpp:2014
+#: src/units/unit.cpp:2022
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2018
+#: src/units/unit.cpp:2026
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2031
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2027
+#: src/units/unit.cpp:2035
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9056,13 +9056,13 @@ msgid_plural ""
 msgstr[0] "hverja lotu"
 msgstr[1] "hverja lotu"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2042
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2500
+#: src/units/unit.cpp:2508
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"

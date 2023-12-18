@@ -44,10 +44,100 @@ Building:
       - src/SConscript
       - src/SConstruct
 
-Campaign:
+Campaign AToTB:
   - changed-files:
     - any-glob-to-any-file:
-      - data/campaigns/**/*
+      - data/campaigns/Two_Brothers/**
+
+Campaign DW:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Dead_Water/**
+
+Campaign DM:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Delfadors_Memoirs/**
+
+Campaign DiD:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Descent_Into_Darkness/**
+
+Campaign EI:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Eastern_Invasion/**
+
+Campaign HttT:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Heir_To_The_Throne/**
+
+Campaign LoW:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Legend_of_Wesmere/**
+
+Campaign L:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Liberty/**
+
+Campaign NR:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Northern_Rebirth/**
+
+Campaign SoF:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Sceptre_of_Fire/**
+
+Campaign SotA:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Secrets_of_the_Ancients/**
+
+Campaign SotBE:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Son_Of_The_Black_Eye/**
+
+Campaign THoT:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_Hammer_of_Thursagan/**
+
+Campaign TRoW:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_Rise_Of_Wesnoth/**
+
+Campaign TSG:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/The_South_Guard/**
+
+Campaign Tutorial:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/tutorial/**
+
+Campaign UtBS:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Under_the_Burning_Suns/**
+
+Campaign WoF:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/Winds_of_Fate/**
+
+Campaign WC:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/World_Conquest/**
 
 CMake:
   - changed-files:

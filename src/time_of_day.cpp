@@ -50,18 +50,18 @@ time_of_day::time_of_day()
 {
 }
 
-void time_of_day::write(config& cfg) const
+void time_of_day::write(config& cfg, std::string textdomain) const
 {
 	cfg["lawful_bonus"] = lawful_bonus;
 	cfg["red"] = color.r;
 	cfg["green"] = color.g;
 	cfg["blue"] = color.b;
 	cfg["image"] = image;
-	cfg["name"] = name;
+	cfg["name"] = textdomain.empty() ? name : t_string(name, textdomain);
 	cfg["id"] = id;
 
 	// Optional keys
-	cfg["description"].write_if_not_empty(description);
+	cfg["description"].write_if_not_empty(textdomain.empty() ? description : t_string(description, textdomain));
 	cfg["mask"].write_if_not_empty(image_mask);
 	cfg["sound"].write_if_not_empty(sounds);
 }

@@ -352,7 +352,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		defines_map.emplace(define, preproc_define(define));
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
-	lg::set_strict_severity(0);
+	lg::set_strict_severity(lg::severity::LG_ERROR);
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
 	read(result, *stream, &validator);
@@ -372,7 +372,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
 			const std::string log_domain = log_pair.second;
-			const int severity = log_pair.first;
+			const lg::severity severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
 				PLAIN_LOG << "unknown log domain: " << log_domain;
 				return 2;
@@ -491,7 +491,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_logdomains(*cmdline_opts.logdomains);
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
 		return 0;
 	}
 

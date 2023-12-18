@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2023-08-25 08:27+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -265,15 +265,15 @@ msgstr "Level: "
 msgid "Cost: "
 msgstr "Cost: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Fatal error"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -281,7 +281,7 @@ msgstr ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -289,23 +289,23 @@ msgstr ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 
-#: src/editor/controller/editor_controller.cpp:229
+#: src/editor/controller/editor_controller.cpp:230
 msgid "No editor time-of-day found."
 msgstr "No editor time-of-day found."
 
-#: src/editor/controller/editor_controller.cpp:1197
+#: src/editor/controller/editor_controller.cpp:1254
 msgid "Change Unit ID"
 msgstr "Change Unit ID"
 
-#: src/editor/controller/editor_controller.cpp:1198
+#: src/editor/controller/editor_controller.cpp:1255
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1214
+#: src/editor/controller/editor_controller.cpp:1271
 msgid "Rename Unit"
 msgstr "Rename Unit"
 
-#: src/editor/controller/editor_controller.cpp:1215
+#: src/editor/controller/editor_controller.cpp:1272
 msgid "Name:"
 msgstr "Name:"
 
@@ -313,11 +313,11 @@ msgstr "Name:"
 msgid "Load Map"
 msgstr "Load Map"
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
 msgid "New Map"
 msgstr "New Map"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
 msgid "New Scenario"
 msgstr "New Scenario"
 
@@ -423,19 +423,19 @@ msgstr "Player $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "The size of the target map is different from the current map"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:183
 msgid "File not found"
 msgstr "File not found"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:190
 msgid "Empty file"
 msgstr "Empty file"
 
-#: src/editor/map/map_context.cpp:195
+#: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
 msgstr "File does not have .map or .cfg extension"
 
-#: src/editor/map/map_context.cpp:241
+#: src/editor/map/map_context.cpp:242
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -443,20 +443,20 @@ msgstr ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 
-#: src/editor/map/map_context.cpp:260
+#: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr "Found the characters '<<' indicating inline lua is present - aborting"
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
 msgid "Error"
 msgstr "Error"
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "Failed to load the scenario, attempting to load only the map."
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:273
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -464,19 +464,20 @@ msgstr ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 
-#: src/editor/map/map_context.cpp:287
+#: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
 msgstr "Unable to parse file to find map data"
 
-#: src/editor/map/map_context.cpp:815
+#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
+#: src/editor/map/map_context.cpp:886
 msgid "Could not save the scenario: $msg"
 msgstr "Could not save the scenario: $msg"
 
-#: src/editor/map/map_context.cpp:850
+#: src/editor/map/map_context.cpp:917
 msgid "Could not save into scenario"
 msgstr "Could not save into scenario"
 
-#: src/editor/map/map_context.cpp:860
+#: src/editor/map/map_context.cpp:927
 msgid "Could not save the map: $msg"
 msgstr "Could not save the map: $msg"
 
@@ -539,15 +540,15 @@ msgstr "Cmd + click: copy terrain"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + click: copy terrain"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:95
 msgid "Clipboard support not found, contact your packager"
 msgstr "Clipboard support not found, contact your packager"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:158
+#: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Choose File"
 msgstr "Choose File"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:159
+#: src/gui/dialogs/editor/custom_tod.cpp:164
 msgid "Select"
 msgstr "Select"
 

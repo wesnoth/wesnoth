@@ -152,7 +152,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
-		if(addon.has_attribute("id") && addon["require"].to_bool(false)) {
+		if(addon.has_attribute("id") && addon["required"].to_bool(false)) {
 			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
 				required_addon r;
 				r.addon_id = addon["id"].str();
@@ -256,7 +256,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
-		if(level_cfg) {
+		if(!level_cfg) {
 			level_cfg = game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]).ptr();
 		}
 
@@ -413,7 +413,7 @@ game_info::addon_req game_info::check_addon_version_compatibility(const config& 
 	}
 
 	if(auto game_req = game.find_child("addon", "id", local_item["addon_id"])) {
-		if(!game_req["require"].to_bool(false)) {
+		if(!game_req["required"].to_bool(false)) {
 			return addon_req::SATISFIED;
 		}
 

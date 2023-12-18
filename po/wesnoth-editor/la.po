@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 09:02-0500\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2013-06-23 02:19-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -271,15 +271,15 @@ msgstr "Ordo: "
 msgid "Cost: "
 msgstr "Impendium: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Error gravis"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Itane vis exire?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -289,7 +289,7 @@ msgid ""
 "lost."
 msgstr "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -297,23 +297,23 @@ msgstr ""
 "Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
 "servatumdelebuntur:"
 
-#: src/editor/controller/editor_controller.cpp:229
+#: src/editor/controller/editor_controller.cpp:230
 msgid "No editor time-of-day found."
 msgstr "Hora pro chartographia non inventa est."
 
-#: src/editor/controller/editor_controller.cpp:1197
+#: src/editor/controller/editor_controller.cpp:1254
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1198
+#: src/editor/controller/editor_controller.cpp:1255
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1214
+#: src/editor/controller/editor_controller.cpp:1271
 msgid "Rename Unit"
 msgstr "Nomen Novum Dare"
 
-#: src/editor/controller/editor_controller.cpp:1215
+#: src/editor/controller/editor_controller.cpp:1272
 msgid "Name:"
 msgstr "Nomen:"
 
@@ -321,13 +321,13 @@ msgstr "Nomen:"
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1049
+#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Scenario"
@@ -460,21 +460,21 @@ msgstr "Lusor $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:183
 msgid "File not found"
 msgstr "Fasciculus non inventus est"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:190
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Fasciculus inanis chartae"
 
-#: src/editor/map/map_context.cpp:195
+#: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:241
+#: src/editor/map/map_context.cpp:242
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -482,20 +482,20 @@ msgstr ""
 "Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
 "verum non indicat"
 
-#: src/editor/map/map_context.cpp:260
+#: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
 msgid "Error"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:265
+#: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:272
+#: src/editor/map/map_context.cpp:273
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -507,21 +507,22 @@ msgstr ""
 "Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
 "verum non indicat"
 
-#: src/editor/map/map_context.cpp:287
+#: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:815
+#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
+#: src/editor/map/map_context.cpp:886
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
-#: src/editor/map/map_context.cpp:850
+#: src/editor/map/map_context.cpp:917
 msgid "Could not save into scenario"
 msgstr "Non potest ut ad scaenarium servetur"
 
-#: src/editor/map/map_context.cpp:860
+#: src/editor/map/map_context.cpp:927
 msgid "Could not save the map: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
@@ -584,15 +585,15 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:95
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:158
+#: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Choose File"
 msgstr "Fasciculum eligere"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:159
+#: src/gui/dialogs/editor/custom_tod.cpp:164
 msgid "Select"
 msgstr ""
 

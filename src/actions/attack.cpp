@@ -1207,9 +1207,11 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	// for that unit, but let the other unit continue
 	if (attacker_stats->weapon == nullptr){
         attacker.n_attacks_ = 0;
+        attacker.orig_attacks_ = 0;
 	}
 	if (defender_stats->weapon == nullptr){
         defender.n_attacks_ = 0;
+        defender.orig_attacks_ = 0;
 	}
 
 	return true;

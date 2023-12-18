@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "formatter.hpp"
 #include "lexical_cast.hpp"
-#include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
 
 #include <boost/any.hpp>                // for any
@@ -246,11 +245,11 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	po::options_description logging_opts("Logging options");
 	logging_opts.add_options()
 		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits." IMPLY_TERMINAL)
-		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
-		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
-		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
-		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
-		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
+		("log-error", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
+		("log-warning", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
+		("log-info", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
+		("log-debug", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
+		("log-none", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in log output with more precision.")
 		("no-log-to-file", "log output is written only to standard error rather than to a file.")
 		("log-to-file", "log output is written to a file in addition to standard output/error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
@@ -314,7 +313,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 	po::variables_map vm;
 	const int parsing_style = po::command_line_style::default_style ^ po::command_line_style::allow_guessing;
-	po::store(po::command_line_parser(args_).options(all_).positional(positional).style(parsing_style).run(),vm);
+
+	const auto parsed_options = po::command_line_parser(args_)
+		.options(all_)
+		.positional(positional)
+		.style(parsing_style)
+		.run();
+
+	po::store(parsed_options, vm);
 
 	if(vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string>>());
@@ -386,16 +392,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		language = vm["language"].as<std::string>();
 	if(vm.count("load"))
 		load = vm["load"].as<std::string>();
-	if(vm.count("log-error"))
-		 parse_log_domains_(vm["log-error"].as<std::string>(),lg::err().get_severity());
-	if(vm.count("log-warning"))
-		 parse_log_domains_(vm["log-warning"].as<std::string>(),lg::warn().get_severity());
-	if(vm.count("log-info"))
-		 parse_log_domains_(vm["log-info"].as<std::string>(),lg::info().get_severity());
-	if(vm.count("log-debug"))
-		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug().get_severity());
-	if(vm.count("log-none"))
-		 parse_log_domains_(vm["log-none"].as<std::string>(),-1);
 	if(vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
 	if(vm.count("log-precise"))
@@ -547,9 +543,26 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		translation_percent = 0;
 	else if(vm.count("translations-over"))
 		translation_percent = std::clamp<unsigned int>(vm["translations-over"].as<unsigned int>(), 0, 100);
+
+	// Parse log domain severity following the command line order.
+	for (const auto& option : parsed_options.options) {
+		if (!option.value.empty()) {
+			if (option.string_key == "log-error") {
+				parse_log_domains_(option.value.front(),lg::err().get_severity());
+			} else if (option.string_key == "log-warning") {
+				parse_log_domains_(option.value.front(),lg::warn().get_severity());
+			} else if (option.string_key == "log-info") {
+				parse_log_domains_(option.value.front(),lg::info().get_severity());
+			} else if (option.string_key == "log-debug") {
+				parse_log_domains_(option.value.front(),lg::debug().get_severity());
+			} else if (option.string_key == "log-none") {
+				parse_log_domains_(option.value.front(),lg::severity::LG_NONE);
+			}
+		}
+	}
 }
 
-void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
+void commandline_options::parse_log_domains_(const std::string &domains_string, const lg::severity severity)
 {
 	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty()) {
 		if(!log) {
@@ -570,7 +583,7 @@ void commandline_options::parse_log_strictness (const std::string & severity) {
 		}
 	}
 	PLAIN_LOG << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging.";
-	lg::set_strict_severity(-1);
+	lg::set_strict_severity(lg::severity::LG_NONE);
 }
 
 void commandline_options::parse_resolution_ (const std::string& resolution_string)

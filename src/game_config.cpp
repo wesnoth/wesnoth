@@ -91,17 +91,20 @@ bool
 const bool& debug = debug_impl;
 
 void set_debug(bool new_debug) {
+    // TODO: remove severity static casts and fix issue #7894
 	if(debug_impl && !new_debug) {
 		// Turning debug mode off; decrease deprecation severity
-		int severity;
+		lg::severity severity;
 		if(lg::get_log_domain_severity("deprecation", severity)) {
-			lg::set_log_domain_severity("deprecation", severity - 2);
+            int severityInt = static_cast<int>(severity);
+			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt - 2));
 		}
 	} else if(!debug_impl && new_debug) {
 		// Turning debug mode on; increase deprecation severity
-		int severity;
+        lg::severity severity;
 		if(lg::get_log_domain_severity("deprecation", severity)) {
-			lg::set_log_domain_severity("deprecation", severity + 2);
+            int severityInt = static_cast<int>(severity);
+			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt + 2));
 		}
 	}
 	debug_impl = new_debug;

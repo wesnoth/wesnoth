@@ -3021,7 +3021,7 @@ int main(int argc, char** argv)
 			}
 
 			std::string s = val.substr(6, p - 6);
-			int severity;
+			lg::severity severity;
 
 			if(s == "error") {
 				severity = lg::err().get_severity();

@@ -95,7 +95,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config() const
+config tod_manager::to_config(std::string textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;
@@ -114,7 +114,10 @@ config tod_manager::to_config() const
 	}
 
 	for(const time_of_day& tod : times_) {
-		tod.write(cfg.add_child("time"));
+		// Don't write stub ToD
+		if(tod.id != "nulltod") {
+			tod.write(cfg.add_child("time"), textdomain);
+		}
 	}
 
 	for(const area_time_of_day& a_tod : areas_) {
@@ -131,7 +134,7 @@ config tod_manager::to_config() const
 		for(const time_of_day& tod : a_tod.times) {
 			// Don't write the stub default ToD if it happens to be present.
 			if(tod.id != "nulltod") {
-				tod.write(area.add_child("time"));
+				tod.write(area.add_child("time"), textdomain);
 			}
 		}
 

@@ -246,6 +246,13 @@ void config_attribute_value::write_if_not_empty(const std::string& v)
 	}
 }
 
+void config_attribute_value::write_if_not_empty(const t_string& v)
+{
+	if(!v.empty()) {
+		*this = v;
+	}
+}
+
 bool config_attribute_value::to_bool(bool def) const
 {
 	if(const yes_no* p = utils::get_if<yes_no>(&value_))

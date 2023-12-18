@@ -25,6 +25,7 @@
 #include "game_events/pump.hpp"
 
 #include "game_config.hpp"
+#include "game_version.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "log.hpp"
 #include "replay_helper.hpp"

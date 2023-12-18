@@ -134,7 +134,7 @@ static component *find_component(component *root, const std::string &path, path_
 	}
 
 	//match path elements in [modify_ai] tag
-	boost::regex re(R"""(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))""");
+	boost::regex re(R"(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))");
 	const int sub_matches[] {1,3,4};
 	boost::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
 	boost::sregex_token_iterator j;

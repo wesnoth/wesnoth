@@ -101,7 +101,7 @@ const std::string default_web_url = "https://add-ons.wesnoth.org/";
  * The text is intended for display on the client with Pango markup enabled and
  * sent by the server as-is, so it ought to be formatted accordingly.
  */
-const std::string default_license_notice = R"""(<span size='x-large'>General Rules</span>
+const std::string default_license_notice = R"(<span size='x-large'>General Rules</span>
 
 The current version of the server rules can be found at: https://r.wesnoth.org/t51347
 
@@ -117,7 +117,7 @@ All content within add-ons uploaded to this server must be licensed under the te
 <b>By uploading content to this server, you certify that you have the right to:</b>
 
   a) release all included art and audio explicitly denoted with a Creative Commons license in the prescribed manner under that license; <b>and</b>
-  b) release all other included content under the terms of the chosen versions of the GNU GPL.)""";
+  b) release all other included content under the terms of the chosen versions of the GNU GPL.)";
 
 bool timing_reports_enabled = false;
 
@@ -663,12 +663,12 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			}
 		}
 	} else if(ctl == "log") {
-		static const std::map<std::string, int> log_levels = {
+		static const std::map<std::string, lg::severity> log_levels = {
 			{ "error",   lg::err().get_severity() },
 			{ "warning", lg::warn().get_severity() },
 			{ "info",    lg::info().get_severity() },
 			{ "debug",   lg::debug().get_severity() },
-			{ "none",    -1 }
+			{ "none",    lg::severity::LG_NONE }
 		};
 
 		if(ctl.args_count() != 2) {
@@ -1995,12 +1995,12 @@ static int run_campaignd(int argc, char** argv)
 	}
 
 	if(cmdline.show_log_domains) {
-		std::cout << lg::list_logdomains("");
+		std::cout << lg::list_log_domains("");
 		return 0;
 	}
 
 	for(const auto& ldl : cmdline.log_domain_levels) {
-		if(!lg::set_log_domain_severity(ldl.first, ldl.second)) {
+		if(!lg::set_log_domain_severity(ldl.first, static_cast<lg::severity>(ldl.second))) {
 			PLAIN_LOG << "Unknown log domain: " << ldl.first;
 			return 2;
 		}

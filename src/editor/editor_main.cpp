@@ -19,6 +19,7 @@
 
 #include "gettext.hpp"
 #include "gui/dialogs/editor/choose_addon.hpp"
+#include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/message.hpp"
 #include "filesystem.hpp"
 #include "editor/action/action_base.hpp"
@@ -43,8 +44,13 @@ std::string initialize_addon()
 	}
 
 	if(addon_id == "///newaddon///") {
+		std::string& addon_id_new = addon_id;
 		std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 		addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
+		if (gui2::dialogs::prompt::execute(addon_id_new)) {
+			/* In case somebody enters a blank id and presses OK */
+			addon_id = addon_id_new.empty() ? "MyAwesomeAddon-"+std::to_string(current_millis) : addon_id_new;
+		}
 	}
 
 	if(addon_id == "mainline") {
@@ -92,7 +98,6 @@ std::string initialize_addon()
 				<< "    path=\"data/add-ons/" << addon_id << "/translations\"\n"
 				<< "[/textdomain]\n"
 				<< "\n"
-				<< "#ifdef MULTIPLAYER\n"
 				<< "[binary_path]\n"
 				<< "    path=data/add-ons/" << addon_id << "\n"
 				<< "[/binary_path]\n"
@@ -102,8 +107,7 @@ std::string initialize_addon()
 				<< "\n"
 				<< "[units]\n"
 				<< "    {~add-ons/" << addon_id << "/units}\n"
-				<< "[/units]\n"
-				<< "#endif\n";
+				<< "[/units]\n";
 	}
 
 	return addon_id;

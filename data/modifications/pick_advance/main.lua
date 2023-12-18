@@ -198,15 +198,14 @@ on_event("start", function()
 end)
 
 -- set "fresh_turn" for the moveto event at the start of each side turn
-local fresh_turn = false
 on_event("turn refresh", function()
-	fresh_turn = true
+	wml.variables.pa_fresh_turn = true
 end)
 
 -- the first time a unit moves at the start of each side's turn, check if there are any new units that need to be forced to make an advancement choice
 on_event("moveto", function()
-	if fresh_turn then
-		fresh_turn = false
+	if wml.variables.pa_fresh_turn then
+		wml.variables.pa_fresh_turn = nil
 		if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
 		for _, unit in ipairs(wesnoth.units.find_on_map { side = wesnoth.current.side }) do
 			if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
@@ -220,6 +219,7 @@ on_event("moveto", function()
 				initialize_unit(unit)
 			end
 		end
+		wesnoth.allow_undo(false)
 	end
 end)
 

@@ -48,7 +48,7 @@ void chat_handler::change_logging(const std::string& data) {
 	if (j == data.end()) return;
 	const std::string level(data.begin(), j);
 	const std::string domain(j + 1, data.end());
-	int severity;
+	lg::severity severity;
 	if (level == "error") severity = lg::err().get_severity();
 	else if (level == "warning") severity = lg::warn().get_severity();
 	else if (level == "info") severity = lg::info().get_severity();
