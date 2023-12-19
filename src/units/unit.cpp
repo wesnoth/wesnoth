@@ -262,7 +262,6 @@ unit::unit(const unit& o)
 	, attacks_left_(o.attacks_left_)
 	, max_attacks_(o.max_attacks_)
 	, states_(o.states_)
-	, known_boolean_states_(o.known_boolean_states_)
 	, variables_(o.variables_)
 	, events_(o.events_)
 	, filter_recall_(o.filter_recall_)
@@ -343,7 +342,6 @@ unit::unit(unit_ctor_t)
 	, attacks_left_(0)
 	, max_attacks_(0)
 	, states_()
-	, known_boolean_states_()
 	, variables_()
 	, events_()
 	, filter_recall_()
@@ -1313,12 +1311,6 @@ void unit::heal(int amount)
 const std::set<std::string> unit::get_states() const
 {
 	std::set<std::string> all_states = states_;
-	for(const auto& state : known_boolean_state_names_) {
-		if(get_state(state.second)) {
-			all_states.insert(state.first);
-		}
-	}
-
 	// Backwards compatibility for not_living. Don't remove before 1.12
 	if(all_states.count("undrainable") && all_states.count("unpoisonable") && all_states.count("unplagueable")) {
 		all_states.insert("not_living");
@@ -1327,12 +1319,8 @@ const std::set<std::string> unit::get_states() const
 	return all_states;
 }
 
-bool unit::get_state(const std::string& state) const
+bool unit::get_state(std::string_view state) const
 {
-	state_t known_boolean_state_id = get_known_boolean_state_id(state);
-	if(known_boolean_state_id!=STATE_UNKNOWN){
-		return get_state(known_boolean_state_id);
-	}
 
 	// Backwards compatibility for not_living. Don't remove before 1.12
 	if(state == "not_living") {
@@ -1342,49 +1330,11 @@ bool unit::get_state(const std::string& state) const
 			get_state("unplagueable");
 	}
 
-	return states_.find(state) != states_.end();
+	return states_.find(std::string(state)) != states_.end();
 }
 
-void unit::set_state(state_t state, bool value)
+void unit::set_state(std::string_view state, bool value)
 {
-	known_boolean_states_[state] = value;
-}
-
-bool unit::get_state(state_t state) const
-{
-	return known_boolean_states_[state];
-}
-
-unit::state_t unit::get_known_boolean_state_id(const std::string& state)
-{
-	auto i = known_boolean_state_names_.find(state);
-	if(i != known_boolean_state_names_.end()) {
-		return i->second;
-	}
-
-	return STATE_UNKNOWN;
-}
-
-std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
-	{"slowed",       STATE_SLOWED},
-	{"poisoned",     STATE_POISONED},
-	{"petrified",    STATE_PETRIFIED},
-	{"uncovered",    STATE_UNCOVERED},
-	{"not_moved",    STATE_NOT_MOVED},
-	{"unhealable",   STATE_UNHEALABLE},
-	{"guardian",     STATE_GUARDIAN},
-	{"invulnerable", STATE_INVULNERABLE},
-};
-
-void unit::set_state(const std::string& state, bool value)
-{
-	appearance_changed_ = true;
-	state_t known_boolean_state_id = get_known_boolean_state_id(state);
-	if(known_boolean_state_id != STATE_UNKNOWN) {
-		set_state(known_boolean_state_id, value);
-		return;
-	}
-
 	// Backwards compatibility for not_living. Don't remove before 1.12
 	if(state == "not_living") {
 		set_state("undrainable", value);
@@ -1393,9 +1343,9 @@ void unit::set_state(const std::string& state, bool value)
 	}
 
 	if(value) {
-		states_.insert(state);
+		states_.insert(std::string(state));
 	} else {
-		states_.erase(state);
+		states_.erase(std::string(state));
 	}
 }
 

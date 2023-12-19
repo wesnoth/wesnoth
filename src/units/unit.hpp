@@ -846,50 +846,34 @@ public:
 	 * @param state The status effect to check
 	 * @returns true if the unit is affected by the status effect
 	 */
-	bool get_state(const std::string& state) const;
+	bool get_state(std::string_view state) const;
 
 	/**
 	 * Set whether the unit is affected by a status effect
 	 * @param state The status effect to change
 	 * @param value Whether the unit should be affected by the status
 	 */
-	void set_state(const std::string& state, bool value);
+	void set_state(std::string_view state, bool value);
 
 	/**
 	 * Built-in status effects known to the engine
 	 */
-	enum state_t {
-		STATE_SLOWED = 0,   /** The unit is slowed - it moves slower and does less damage */
-		STATE_POISONED,     /** The unit is poisoned - it loses health each turn */
-		STATE_PETRIFIED,    /** The unit is petrified - it cannot move or be attacked */
-		STATE_UNCOVERED,    /** The unit is uncovered - it was hiding but has been spotted */
-		STATE_NOT_MOVED,    /** The unit has not moved @todo Explain better */
-		STATE_UNHEALABLE,   /** The unit cannot be healed */
-		STATE_GUARDIAN,     /** The unit is a guardian - it won't move unless a target is sighted */
-		STATE_INVULNERABLE, /** The unit is invulnerable - it cannot be hit by any attack */
-		NUMBER_OF_STATES,   /** To set the size of known_boolean_states_ */
-		STATE_UNKNOWN = -1  /** A status effect not known to the engine */
-	};
-
-	/**
-	 * Set whether the unit is affected by a status effect
-	 * @param state The status effect to change
-	 * @param value Whether the unit should be affected by the status
-	 */
-	void set_state(state_t state, bool value);
-
-	/**
-	 * Check if the unit is affected by a status effect
-	 * @param state The status effect to check
-	 * @returns true if the unit is affected by the status effect
-	 */
-	bool get_state(state_t state) const;
-
-	/**
-	 * Convert a string status effect ID to a built-in status effect ID
-	 * @returns the state_t representing the status, or STATE_UNKNOWN if it's not built-in
-	 */
-	static state_t get_known_boolean_state_id(const std::string& state);
+	/** The unit is slowed - it moves slower and does less damage */
+	static constexpr std::string_view STATE_SLOWED = "slowed";
+	/** The unit is poisoned - it loses health each turn */
+	static constexpr std::string_view STATE_POISONED = "poisoned";
+	/** The unit is petrified - it cannot move or be attacked */
+	static constexpr std::string_view STATE_PETRIFIED = "petrified";
+	/** The unit is uncovered - it was hiding but has been spotted */
+	static constexpr std::string_view STATE_UNCOVERED = "uncovered";
+	/** The unit has not moved @todo Explain better */
+	static constexpr std::string_view STATE_NOT_MOVED = "not_moved";
+	/** The unit cannot be healed */
+	static constexpr std::string_view STATE_UNHEALABLE = "unhealable";
+	/** The unit is a guardian - it won't move unless a target is sighted */
+	static constexpr std::string_view STATE_GUARDIAN = "guardian";
+	/** The unit is invulnerable - it cannot be hit by any attack */
+	static constexpr std::string_view STATE_INVULNERABLE = "invulnerable";
 
 	/**
 	 * Check if the unit has been poisoned
@@ -1934,11 +1918,6 @@ private:
 	int max_attacks_;
 
 	std::set<std::string> states_;
-
-	static const std::size_t num_bool_states = state_t::NUMBER_OF_STATES;
-
-	std::bitset<num_bool_states> known_boolean_states_;
-	static std::map<std::string, state_t> known_boolean_state_names_;
 
 	config variables_;
 	config events_;
