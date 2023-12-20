@@ -390,7 +390,6 @@ void wml_tag::expand(wml_tag& root)
 				super_refs_.emplace(super, super_tag);
 			}
 		}
-		// TODO: Warn if the super doesn't exist
 	}
 }
 

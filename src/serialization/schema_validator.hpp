@@ -83,7 +83,7 @@ private:
 
 protected:
 	using message_type = int;
-	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, SUPER_CYCLE, NEXT_ERROR };
+	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, MISSING_SUPER, SUPER_CYCLE, NEXT_ERROR };
 
 	/**
 	 * Messages are cached.
