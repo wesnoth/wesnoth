@@ -83,7 +83,7 @@ private:
 
 protected:
 	using message_type = int;
-	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, NEXT_ERROR };
+	enum { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, SUPER_CYCLE, NEXT_ERROR };
 
 	/**
 	 * Messages are cached.
@@ -164,6 +164,20 @@ protected:
 	bool have_active_tag() const;
 	bool is_valid() const {return config_read_;}
 	wml_type::ptr find_type(const std::string& type) const;
+
+private:
+	using derivation_graph_t = boost::adjacency_list<
+		boost::vecS,
+		boost::vecS,
+		boost::directedS,
+		std::pair<const wml_tag*, std::string>,
+		std::tuple<config, std::string, int>
+	>;
+
+	derivation_graph_t derivation_graph_;
+	std::map<const wml_tag*, derivation_graph_t::vertex_descriptor> derivation_map_;
+
+	void detect_derivation_cycles();
 };
 
 // A validator specifically designed for validating a schema

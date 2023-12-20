@@ -107,6 +107,7 @@ private:
 	template<typename T, typename Map> friend class iterator;
 	using tag_iterator = iterator<wml_tag>;
 	using key_iterator = iterator<wml_key>;
+	using super_iterator = iterator<const wml_tag*>;
 public:
 
 	wml_tag()
@@ -305,6 +306,10 @@ public:
 	boost::iterator_range<key_iterator> keys(const config& cfg_match) const
 	{
 		return {key_iterator(*this, cfg_match), key_iterator()};
+	}
+
+	boost::iterator_range<super_iterator> super(const config& cfg_match) const {
+		return {super_iterator(*this, cfg_match), super_iterator()};
 	}
 
 	const link_map& links() const
