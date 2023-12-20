@@ -156,7 +156,7 @@ const wml_key* wml_tag::find_key(const std::string& name, const config& match, b
 				}
 			}
 		}
-		for(auto& super_tag : super_refs_) {
+		for(auto& [_, super_tag] : super_refs_) {
 			if(const wml_key* found_key = super_tag->find_key(name, match, false, visited)) {
 				return found_key;
 			}
@@ -255,7 +255,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 				}
 			}
 		}
-		for(auto& super_tag : super_refs_) {
+		for(auto& [_, super_tag] : super_refs_) {
 			if(const wml_tag* found_tag = super_tag->find_tag(fullpath, root, match, false, visited)) {
 				return found_tag;
 			}
@@ -387,7 +387,7 @@ void wml_tag::expand(wml_tag& root)
 		wml_tag* super_tag = root.find_tag(super, root, config());
 		if(super_tag) {
 			if(super_tag != this) {
-				super_refs_.push_back(super_tag);
+				super_refs_.emplace(super, super_tag);
 			} else {
 				// TODO: Detect super cycles too!
 				//PLAIN_LOG << "the same" << super_tag->name_;
