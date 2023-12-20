@@ -141,28 +141,29 @@ static std::string wrong_value_error(const std::string& file,
 }
 
 static std::string inheritance_cycle_error(const std::string& file,
-		int line,
-		const std::string& tag,
-		const std::string& schema_name,
-		const std::string& value,
-		bool flag_exception)
+	int line,
+	const std::string& tag,
+	const std::string& schema_name,
+	const std::string& value,
+	bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Inheritance cycle from " << tag << " to " << value << " found\n" << at(file, line) << "\nwith schema " << schema_name << "\n";
+	ss << "Inheritance cycle from " << tag << " to " << value << " found\n"
+	   << at(file, line) << "\nwith schema " << schema_name << "\n";
 	print_output(ss.str(), flag_exception);
 	return ss.str();
 }
 
-static std::string missing_super_error(
-		const std::string& file,
-		int line,
-		const std::string& tag,
-		const std::string& schema_name,
-		const std::string& super,
-		bool flag_exception)
+static std::string missing_super_error(const std::string& file,
+	int line,
+	const std::string& tag,
+	const std::string& schema_name,
+	const std::string& super,
+	bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Super " << super << " not found. Needed by " << tag << "\n" << at(file, line) << "\nwith schema " << schema_name << "\n";
+	ss << "Super " << super << " not found. Needed by " << tag << "\n"
+	   << at(file, line) << "\nwith schema " << schema_name << "\n";
 	print_output(ss.str(), flag_exception);
 	return ss.str();
 }
@@ -362,46 +363,32 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	if(have_active_tag() && is_valid()) {
 		const wml_tag& active = active_tag();
 
-		if (&active == &root_) {
+		if(&active == &root_) {
 			detect_derivation_cycles();
 		} else {
 			// Build derivation graph
 			const auto super_tags = active.super(cfg);
 
-			for (const auto& [super_path, super_tag] : super_tags) {
-				if (derivation_map_.find(&active) == derivation_map_.end()) {
+			for(const auto& [super_path, super_tag] : super_tags) {
+				if(derivation_map_.find(&active) == derivation_map_.end()) {
 					derivation_map_.emplace(
-						&active,
-						boost::add_vertex({&active, active_tag_path()}, derivation_graph_)
-					);
+						&active, boost::add_vertex({&active, active_tag_path()}, derivation_graph_));
 				}
 
-				if (derivation_map_.find(super_tag) == derivation_map_.end()) {
-					derivation_map_.emplace(
-						super_tag,
-						boost::add_vertex({super_tag, super_path}, derivation_graph_)
-					);
+				if(derivation_map_.find(super_tag) == derivation_map_.end()) {
+					derivation_map_.emplace(super_tag, boost::add_vertex({super_tag, super_path}, derivation_graph_));
 				}
 
 				boost::add_edge(
-					derivation_map_[&active],
-					derivation_map_[super_tag],
-					{cfg, file, start_line},
-					derivation_graph_
-				);
+					derivation_map_[&active], derivation_map_[super_tag], {cfg, file, start_line}, derivation_graph_);
 			}
 
 			// Report missing super
 			const auto super_expected = utils::split(active.get_super());
 
 			for(const auto& expected : super_expected) {
-				const auto super_exists = std::any_of(
-					super_tags.begin(),
-					super_tags.end(),
-					[&] (const std::pair<std::string, const wml_tag*>& super) {
-						return super.first == expected;
-					}
-				);
+				const auto super_exists = std::any_of(super_tags.begin(), super_tags.end(),
+					[&](const std::pair<std::string, const wml_tag*>& super) { return super.first == expected; });
 
 				if(!super_exists) {
 					queue_message(cfg, MISSING_SUPER, file, start_line, 0, active_tag_path(), name_, expected);
@@ -433,12 +420,16 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	}
 }
 
-std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(const wml_tag* tag, const config& cfg) const {
+std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(
+	const wml_tag* tag, const config& cfg) const
+{
 	auto visited = std::vector<const wml_tag*>();
 	return find_mandatory_keys(tag, cfg, visited);
 }
 
-std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const {
+std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(
+	const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const
+{
 	// Return an empty optional if a super cycle is detected.
 	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
 		return std::nullopt;
@@ -453,7 +444,7 @@ std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_k
 		auto super_mandatory_keys = find_mandatory_keys(super_tag, cfg, visited);
 
 		// Return an empty optional if a super cycle is detected.
-		if (!super_mandatory_keys) {
+		if(!super_mandatory_keys) {
 			return std::nullopt;
 		}
 
@@ -463,7 +454,7 @@ std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_k
 
 	// Set or override the mandatory keys on the lowest level (the key itself).
 	for(const auto& key : tag->keys(cfg)) {
-		if (key.second.is_mandatory() || mandatory_keys.find(key.first) != mandatory_keys.end()) {
+		if(key.second.is_mandatory() || mandatory_keys.find(key.first) != mandatory_keys.end()) {
 			mandatory_keys[key.first] = key.second;
 		}
 	}
@@ -471,11 +462,13 @@ std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_k
 	return mandatory_keys;
 }
 
-void schema_validator::validate_mandatory_keys(const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file) {
+void schema_validator::validate_mandatory_keys(
+	const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file)
+{
 	const auto mandatory_keys = find_mandatory_keys(tag, cfg);
 
 	// Skip validation if a super cycle is detected.
-	if (!mandatory_keys) {
+	if(!mandatory_keys) {
 		return;
 	}
 
@@ -483,7 +476,14 @@ void schema_validator::validate_mandatory_keys(const wml_tag* tag, const config&
 	return validate_mandatory_keys(*mandatory_keys, tag, cfg, name, start_line, file, visited);
 }
 
-void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys, const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file, std::vector<const wml_tag*>& visited) {
+void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys,
+	const wml_tag* tag,
+	const config& cfg,
+	const std::string& name,
+	int start_line,
+	const std::string& file,
+	std::vector<const wml_tag*>& visited)
+{
 	// Skip validation if a super cycle is detected.
 	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
 		return;
@@ -501,27 +501,17 @@ void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_k
 	}
 }
 
-void schema_validator::detect_derivation_cycles() {
-	boost::depth_first_search(
-		derivation_graph_,
-		boost::visitor(utils::back_edge_detector([&] (const derivation_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(
-				derivation_map_.begin(),
-				derivation_map_.end(),
-				[&] (const auto& derivation) {
-					return derivation.second == boost::source(edge, derivation_graph_);
-				}
-			);
+void schema_validator::detect_derivation_cycles()
+{
+	boost::depth_first_search(derivation_graph_,
+		boost::visitor(utils::back_edge_detector([&](const derivation_graph_t::edge_descriptor edge) {
+			const auto source = std::find_if(derivation_map_.begin(), derivation_map_.end(),
+				[&](const auto& derivation) { return derivation.second == boost::source(edge, derivation_graph_); });
 
 			assert(source != derivation_map_.end());
 
-			const auto target = std::find_if(
-				derivation_map_.begin(),
-				derivation_map_.end(),
-				[&] (const auto& derivation) {
-					return derivation.second == boost::target(edge, derivation_graph_);
-				}
-			);
+			const auto target = std::find_if(derivation_map_.begin(), derivation_map_.end(),
+				[&](const auto& derivation) { return derivation.second == boost::target(edge, derivation_graph_); });
 
 			assert(target != derivation_map_.end());
 
@@ -531,8 +521,7 @@ void schema_validator::detect_derivation_cycles() {
 			const auto& [cfg, file, line] = derivation_graph_[edge];
 
 			queue_message(cfg, SUPER_CYCLE, file, line, 0, tag_path, name_, super_path);
-		}))
-	);
+		})));
 }
 
 void schema_validator::validate_key(
@@ -822,26 +811,16 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 				derivations_.emplace(full_path, super);
 
 				// Build derivation graph
-				if (schema_derivation_map_.find(full_path) == schema_derivation_map_.end()) {
-					schema_derivation_map_.emplace(
-						full_path,
-						boost::add_vertex(full_path, schema_derivation_graph_)
-					);
+				if(schema_derivation_map_.find(full_path) == schema_derivation_map_.end()) {
+					schema_derivation_map_.emplace(full_path, boost::add_vertex(full_path, schema_derivation_graph_));
 				}
 
-				if (schema_derivation_map_.find(super) == schema_derivation_map_.end()) {
-					schema_derivation_map_.emplace(
-						super,
-						boost::add_vertex(super, schema_derivation_graph_)
-					);
+				if(schema_derivation_map_.find(super) == schema_derivation_map_.end()) {
+					schema_derivation_map_.emplace(super, boost::add_vertex(super, schema_derivation_graph_));
 				}
 
-				boost::add_edge(
-					schema_derivation_map_[full_path],
-					schema_derivation_map_[super],
-					{cfg, ref},
-					schema_derivation_graph_
-				);
+				boost::add_edge(schema_derivation_map_[full_path], schema_derivation_map_[super], {cfg, ref},
+					schema_derivation_graph_);
 			}
 		} else if(condition_nesting_ == 0 && tag_name == "tag" && name == "name") {
 			tag_stack_.top() = value.str();
@@ -852,15 +831,14 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 
 void schema_self_validator::detect_schema_derivation_cycles()
 {
-	boost::depth_first_search(
-		schema_derivation_graph_,
-		boost::visitor(utils::back_edge_detector([&] (const schema_derivation_graph_t::edge_descriptor edge) {
+	boost::depth_first_search(schema_derivation_graph_,
+		boost::visitor(utils::back_edge_detector([&](const schema_derivation_graph_t::edge_descriptor edge) {
 			const auto& [cfg, ref] = schema_derivation_graph_[edge];
 			assert(cfg.has_attribute("super"));
 
-			queue_message(cfg, SUPER_LOOP, ref.file_, ref.line_, cfg.get("super")->str().find(ref.value_), ref.tag_, "super", ref.value_);
-		}))
-	);
+			queue_message(cfg, SUPER_LOOP, ref.file_, ref.line_, cfg.get("super")->str().find(ref.value_), ref.tag_,
+				"super", ref.value_);
+		})));
 }
 
 std::string schema_self_validator::current_path() const
