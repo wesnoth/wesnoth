@@ -335,7 +335,6 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		// Note the addon_id if this mod is required to play the game in mp.
 		std::string require_attr = "require_" + type;
 
-		// By default, eras have "require_era = true", and mods have "require_modification = false".
 		// anything with no addon_id is from mainline, and therefore isn't required in the sense that all players already have it
 		const std::string version_default = cfg["addon_id"].empty() ? game_config::wesnoth_version.str() : "";
 		config non_scenario;
