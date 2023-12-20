@@ -51,7 +51,7 @@ public:
 	using key_map  = std::map<std::string, wml_key>;
 	using link_map = std::map<std::string, std::string>;
 	using condition_list = std::vector<wml_condition>;
-	using super_list = std::vector<wml_tag*>;
+	using super_list = std::map<std::string, const wml_tag*>;
 private:
 	static void push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
