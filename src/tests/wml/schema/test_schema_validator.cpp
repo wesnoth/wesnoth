@@ -105,4 +105,52 @@ BOOST_AUTO_TEST_CASE( test_super_cycle_crashes_on_unknown_key )
 	);
 }
 
+BOOST_AUTO_TEST_CASE( test_super_missing )
+{
+	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_missing.cfg";
+	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle.cfg";
+
+	auto validator = schema_validation::schema_validator(schema_path, false);
+
+	validator.set_create_exceptions(true);
+
+	preproc_map defines_map;
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+
+	auto stream = preprocess_file(config_path, &defines_map);
+
+	config result;
+
+	BOOST_CHECK_EXCEPTION(
+		read(result, *stream, &validator),
+		wml_exception,
+		[] (const wml_exception& e) {
+			return boost::algorithm::contains(
+				e.dev_message,
+				"Super not/here not found. Needed by other/second"
+			);
+		}
+	);
+}
+
+BOOST_AUTO_TEST_CASE( test_super_missing_only_if_used )
+{
+	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_missing.cfg";
+	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle_only_if_used.cfg";
+
+	auto validator = schema_validation::schema_validator(schema_path, false);
+
+	validator.set_create_exceptions(true);
+
+	preproc_map defines_map;
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+
+	auto stream = preprocess_file(config_path, &defines_map);
+
+	config result;
+	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
+}
+
 BOOST_AUTO_TEST_SUITE_END()
