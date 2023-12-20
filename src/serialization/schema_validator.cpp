@@ -153,6 +153,20 @@ static std::string inheritance_cycle_error(const std::string& file,
 	return ss.str();
 }
 
+static std::string missing_super_error(
+		const std::string& file,
+		int line,
+		const std::string& tag,
+		const std::string& schema_name,
+		const std::string& super,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Super " << super << " not found. Needed by " << tag << "\n" << at(file, line) << "\nwith schema " << schema_name << "\n";
+	print_output(ss.str(), flag_exception);
+	return ss.str();
+}
+
 static void wrong_path_error(const std::string& file,
 		int line,
 		const std::string& tag,
@@ -376,6 +390,23 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 					derivation_graph_
 				);
 			}
+
+			// Report missing super
+			const auto super_expected = utils::split(active.get_super());
+
+			for(const auto& expected : super_expected) {
+				const auto super_exists = std::any_of(
+					super_tags.begin(),
+					super_tags.end(),
+					[&] (const std::pair<std::string, const wml_tag*>& super) {
+						return super.first == expected;
+					}
+				);
+
+				if(!super_exists) {
+					queue_message(cfg, MISSING_SUPER, file, start_line, 0, active_tag_path(), name_, expected);
+				}
+			}
 		}
 
 		for(const auto& tag : active.tags(cfg)) {
@@ -521,6 +552,9 @@ void schema_validator::print(message_info& el)
 		break;
 	case MISSING_KEY:
 		errors_.emplace_back(missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_));
+		break;
+	case MISSING_SUPER:
+		errors_.emplace_back(missing_super_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_));
 		break;
 	case SUPER_CYCLE:
 		errors_.emplace_back(inheritance_cycle_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_));
