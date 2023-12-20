@@ -21,6 +21,8 @@
 #include "serialization/schema/tag.hpp"
 #include "serialization/validator.hpp"
 
+#include <boost/graph/adjacency_list.hpp>
+#include <queue>
 #include <stack>
 #include <string>
 
@@ -201,6 +203,19 @@ private:
 
 	void print(message_info& message) override;
 	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, DUPLICATE_KEY, SUPER_LOOP, NEXT_ERROR };
+
+	using schema_derivation_graph_t = boost::adjacency_list<
+		boost::vecS,
+		boost::vecS,
+		boost::directedS,
+		std::string,
+		std::pair<config, reference>
+	>;
+
+	schema_derivation_graph_t schema_derivation_graph_;
+	std::map<std::string, schema_derivation_graph_t::vertex_descriptor> schema_derivation_map_;
+
+	void detect_schema_derivation_cycles();
 };
 
 } // namespace schema_validation{
