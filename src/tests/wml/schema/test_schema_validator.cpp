@@ -25,9 +25,9 @@
 #include "serialization/schema_validator.hpp"
 #include "wml_exception.hpp"
 
-BOOST_AUTO_TEST_SUITE( test_schema_validator )
+BOOST_AUTO_TEST_SUITE(test_schema_validator)
 
-BOOST_AUTO_TEST_CASE( test_super_cycle )
+BOOST_AUTO_TEST_CASE(test_super_cycle)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_cycle.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle.cfg";
@@ -45,19 +45,12 @@ BOOST_AUTO_TEST_CASE( test_super_cycle )
 
 	config result;
 
-	BOOST_CHECK_EXCEPTION(
-		read(result, *stream, &validator),
-		wml_exception,
-		[] (const wml_exception& e) {
-			return boost::algorithm::contains(
-				e.dev_message,
-				"Inheritance cycle from other/second to main/first found"
-			);
-		}
-	);
+	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+		return boost::algorithm::contains(e.dev_message, "Inheritance cycle from other/second to main/first found");
+	});
 }
 
-BOOST_AUTO_TEST_CASE( test_super_cycle_only_if_used )
+BOOST_AUTO_TEST_CASE(test_super_cycle_only_if_used)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_cycle.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle_only_if_used.cfg";
@@ -76,10 +69,11 @@ BOOST_AUTO_TEST_CASE( test_super_cycle_only_if_used )
 	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
 }
 
-BOOST_AUTO_TEST_CASE( test_super_cycle_crashes_on_unknown_key )
+BOOST_AUTO_TEST_CASE(test_super_cycle_crashes_on_unknown_key)
 {
-	constexpr auto schema_path =  "src/tests/wml/schema/test_schema_validator/test_schema_super_cycle.cfg";
-	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle_crashes_on_unknown_key.cfg";
+	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_cycle.cfg";
+	constexpr auto config_path
+		= "src/tests/wml/schema/test_schema_validator/test_super_cycle_crashes_on_unknown_key.cfg";
 
 	auto validator = schema_validation::schema_validator(schema_path, false);
 
@@ -93,19 +87,12 @@ BOOST_AUTO_TEST_CASE( test_super_cycle_crashes_on_unknown_key )
 
 	config result;
 
-	BOOST_CHECK_EXCEPTION(
-		read(result, *stream, &validator),
-		wml_exception,
-		[] (const wml_exception& e) {
-			return boost::algorithm::contains(
-				e.dev_message,
-				"Invalid key 'unknown=' in tag [first]"
-			);
-		}
-	);
+	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+		return boost::algorithm::contains(e.dev_message, "Invalid key 'unknown=' in tag [first]");
+	});
 }
 
-BOOST_AUTO_TEST_CASE( test_super_missing )
+BOOST_AUTO_TEST_CASE(test_super_missing)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_missing.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle.cfg";
@@ -122,19 +109,12 @@ BOOST_AUTO_TEST_CASE( test_super_missing )
 
 	config result;
 
-	BOOST_CHECK_EXCEPTION(
-		read(result, *stream, &validator),
-		wml_exception,
-		[] (const wml_exception& e) {
-			return boost::algorithm::contains(
-				e.dev_message,
-				"Super not/here not found. Needed by other/second"
-			);
-		}
-	);
+	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+		return boost::algorithm::contains(e.dev_message, "Super not/here not found. Needed by other/second");
+	});
 }
 
-BOOST_AUTO_TEST_CASE( test_super_missing_only_if_used )
+BOOST_AUTO_TEST_CASE(test_super_missing_only_if_used)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_missing.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle_only_if_used.cfg";
@@ -153,7 +133,7 @@ BOOST_AUTO_TEST_CASE( test_super_missing_only_if_used )
 	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
 }
 
-BOOST_AUTO_TEST_CASE( test_super_mandatory )
+BOOST_AUTO_TEST_CASE(test_super_mandatory)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_mandatory_missing.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_mandatory.cfg";
@@ -172,7 +152,7 @@ BOOST_AUTO_TEST_CASE( test_super_mandatory )
 	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
 }
 
-BOOST_AUTO_TEST_CASE( test_super_mandatory_missing )
+BOOST_AUTO_TEST_CASE(test_super_mandatory_missing)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_mandatory_missing.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_mandatory_missing.cfg";
@@ -189,19 +169,12 @@ BOOST_AUTO_TEST_CASE( test_super_mandatory_missing )
 
 	config result;
 
-	BOOST_CHECK_EXCEPTION(
-		read(result, *stream, &validator),
-		wml_exception,
-		[] (const wml_exception& e) {
-			return boost::algorithm::contains(
-				e.dev_message,
-				"Missing key 'id=' in tag [campaign]"
-			);
-		}
-	);
+	BOOST_CHECK_EXCEPTION(read(result, *stream, &validator), wml_exception, [](const wml_exception& e) {
+		return boost::algorithm::contains(e.dev_message, "Missing key 'id=' in tag [campaign]");
+	});
 }
 
-BOOST_AUTO_TEST_CASE( test_super_cycle_mandatory )
+BOOST_AUTO_TEST_CASE(test_super_cycle_mandatory)
 {
 	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_super_cycle_mandatory.cfg";
 	constexpr auto config_path = "src/tests/wml/schema/test_schema_validator/test_super_cycle_mandatory.cfg";

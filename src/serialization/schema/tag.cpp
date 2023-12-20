@@ -115,7 +115,7 @@ const wml_key* wml_tag::find_key(const std::string& name, const config& match, b
 const wml_key* wml_tag::find_key(const std::string& name, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const
 {
 	// Returns nullptr if a super cycle is detected.
-	if (std::find(visited.begin(), visited.end(), this) != visited.end()) {
+	if(std::find(visited.begin(), visited.end(), this) != visited.end()) {
 		return nullptr;
 	}
 
@@ -185,7 +185,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const
 {
 	// Returns nullptr if a super cycle is detected.
-	if (std::find(visited.begin(), visited.end(), this) != visited.end()) {
+	if(std::find(visited.begin(), visited.end(), this) != visited.end()) {
 		return nullptr;
 	}
 
@@ -232,7 +232,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 		return root.find_tag(it_links->second + "/" + next_path, root, match, false);
 	}
 
-	const auto it_fuzzy = std::find_if(tags_.begin(), tags_.end(), [&name](const tag_map::value_type& tag){
+	const auto it_fuzzy = std::find_if(tags_.begin(), tags_.end(), [&name](const tag_map::value_type& tag) {
 		if(!tag.second.fuzzy_) {
 			return false;
 		}
@@ -528,7 +528,8 @@ void wml_tag::super_iterator::init(const wml_tag& base_tag)
 }
 
 template<>
-void wml_tag::super_iterator::ensure_valid_or_end() {
+void wml_tag::super_iterator::ensure_valid_or_end()
+{
 	while(current == condition_queue.front()->super_refs_.end()) {
 		condition_queue.pop();
 		if(condition_queue.empty()) {
@@ -540,7 +541,8 @@ void wml_tag::super_iterator::ensure_valid_or_end() {
 	}
 }
 
-void wml_tag::push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag) {
+void wml_tag::push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag)
+{
 	for(const auto& condition : tag.conditions_) {
 		if(condition.matches(match)) {
 			q.push(&condition);

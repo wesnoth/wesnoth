@@ -25,13 +25,17 @@ namespace utils
  * The callback_ is called whenever a back edge is found.
  */
 template<typename Callback>
-class back_edge_detector : public boost::dfs_visitor<> {
+class back_edge_detector : public boost::dfs_visitor<>
+{
 public:
 	explicit back_edge_detector(Callback callback)
-		: callback_(std::move(callback)) {}
+		: callback_(std::move(callback))
+	{
+	}
 
 	template<typename Graph>
-	void back_edge(typename Graph::edge_descriptor edge, Graph&) {
+	void back_edge(typename Graph::edge_descriptor edge, Graph&)
+	{
 		static_assert(std::is_invocable_v<Callback, typename Graph::edge_descriptor>);
 		callback_(edge);
 	}

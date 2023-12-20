@@ -167,13 +167,11 @@ protected:
 	wml_type::ptr find_type(const std::string& type) const;
 
 private:
-	using derivation_graph_t = boost::adjacency_list<
-		boost::vecS,
+	using derivation_graph_t = boost::adjacency_list<boost::vecS,
 		boost::vecS,
 		boost::directedS,
 		std::pair<const wml_tag*, std::string>,
-		std::tuple<config, std::string, int>
-	>;
+		std::tuple<config, std::string, int>>;
 
 	derivation_graph_t derivation_graph_;
 	std::map<const wml_tag*, derivation_graph_t::vertex_descriptor> derivation_map_;
@@ -186,13 +184,21 @@ private:
 	 * The returned map can contain non-mandatory keys if they are overriden, please check the is_mandatory() result.
 	 */
 	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg) const;
-	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const;
+	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(
+		const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const;
 
 	/**
 	 * Validates that all mandatory keys for a tag are present.
 	 */
-	void validate_mandatory_keys(const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file);
-	void validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys, const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file, std::vector<const wml_tag*>& visited);
+	void validate_mandatory_keys(
+		const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file);
+	void validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys,
+		const wml_tag* tag,
+		const config& cfg,
+		const std::string& name,
+		int start_line,
+		const std::string& file,
+		std::vector<const wml_tag*>& visited);
 };
 
 // A validator specifically designed for validating a schema
@@ -233,13 +239,8 @@ private:
 	void print(message_info& message) override;
 	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, DUPLICATE_KEY, SUPER_LOOP, NEXT_ERROR };
 
-	using schema_derivation_graph_t = boost::adjacency_list<
-		boost::vecS,
-		boost::vecS,
-		boost::directedS,
-		std::string,
-		std::pair<config, reference>
-	>;
+	using schema_derivation_graph_t
+		= boost::adjacency_list<boost::vecS, boost::vecS, boost::directedS, std::string, std::pair<config, reference>>;
 
 	schema_derivation_graph_t schema_derivation_graph_;
 	std::map<std::string, schema_derivation_graph_t::vertex_descriptor> schema_derivation_map_;
