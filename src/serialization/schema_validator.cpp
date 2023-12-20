@@ -140,6 +140,19 @@ static std::string wrong_value_error(const std::string& file,
 	return ss.str();
 }
 
+static std::string inheritance_cycle_error(const std::string& file,
+		int line,
+		const std::string& tag,
+		const std::string& schema_name,
+		const std::string& value,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Inheritance cycle from " << tag << " to " << value << " found\n" << at(file, line) << "\nwith schema " << schema_name << "\n";
+	print_output(ss.str(), flag_exception);
+	return ss.str();
+}
+
 static void wrong_path_error(const std::string& file,
 		int line,
 		const std::string& tag,
@@ -334,6 +347,37 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	// Checking all elements counters.
 	if(have_active_tag() && is_valid()) {
 		const wml_tag& active = active_tag();
+
+		if (&active == &root_) {
+			detect_derivation_cycles();
+		} else {
+			// Build derivation graph
+			const auto super_tags = active.super(cfg);
+
+			for (const auto& [super_path, super_tag] : super_tags) {
+				if (derivation_map_.find(&active) == derivation_map_.end()) {
+					derivation_map_.emplace(
+						&active,
+						boost::add_vertex({&active, active_tag_path()}, derivation_graph_)
+					);
+				}
+
+				if (derivation_map_.find(super_tag) == derivation_map_.end()) {
+					derivation_map_.emplace(
+						super_tag,
+						boost::add_vertex({super_tag, super_path}, derivation_graph_)
+					);
+				}
+
+				boost::add_edge(
+					derivation_map_[&active],
+					derivation_map_[super_tag],
+					{cfg, file, start_line},
+					derivation_graph_
+				);
+			}
+		}
+
 		for(const auto& tag : active.tags(cfg)) {
 			int cnt = counter_.top()[tag.first].cnt;
 
@@ -363,6 +407,40 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 			}
 		}
 	}
+}
+
+void schema_validator::detect_derivation_cycles() {
+	boost::depth_first_search(
+		derivation_graph_,
+		boost::visitor(utils::back_edge_detector([&] (const derivation_graph_t::edge_descriptor edge) {
+			const auto source = std::find_if(
+				derivation_map_.begin(),
+				derivation_map_.end(),
+				[&] (const auto& derivation) {
+					return derivation.second == boost::source(edge, derivation_graph_);
+				}
+			);
+
+			assert(source != derivation_map_.end());
+
+			const auto target = std::find_if(
+				derivation_map_.begin(),
+				derivation_map_.end(),
+				[&] (const auto& derivation) {
+					return derivation.second == boost::target(edge, derivation_graph_);
+				}
+			);
+
+			assert(target != derivation_map_.end());
+
+			const auto& tag_path = derivation_graph_[source->second].second;
+			const auto& super_path = derivation_graph_[target->second].second;
+
+			const auto& [cfg, file, line] = derivation_graph_[edge];
+
+			queue_message(cfg, SUPER_CYCLE, file, line, 0, tag_path, name_, super_path);
+		}))
+	);
 }
 
 void schema_validator::validate_key(
@@ -443,6 +521,9 @@ void schema_validator::print(message_info& el)
 		break;
 	case MISSING_KEY:
 		errors_.emplace_back(missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_));
+		break;
+	case SUPER_CYCLE:
+		errors_.emplace_back(inheritance_cycle_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_));
 		break;
 	}
 }
