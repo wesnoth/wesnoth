@@ -429,12 +429,73 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 			queue_message(cfg, EXTRA_TAG, file, start_line, active.get_max_children(), "*", "", active.get_name());
 		}
 
-		// Checking if all mandatory keys are present
-		for(const auto& key : active.keys(cfg)) {
-			if(key.second.is_mandatory()) {
-				if(cfg.get(key.first) == nullptr) {
-					queue_message(cfg, MISSING_KEY, file, start_line, 0, name, key.first);
-				}
+		validate_mandatory_keys(&active, cfg, name, start_line, file);
+	}
+}
+
+std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(const wml_tag* tag, const config& cfg) const {
+	auto visited = std::vector<const wml_tag*>();
+	return find_mandatory_keys(tag, cfg, visited);
+}
+
+std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const {
+	// Return an empty optional if a super cycle is detected.
+	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+		return std::nullopt;
+	}
+
+	visited.push_back(tag);
+
+	auto mandatory_keys = std::map<std::string, wml_key>();
+
+	// Override super mandatory keys for each level from the highest one first.
+	for(const auto& [_, super_tag] : tag->super(cfg)) {
+		auto super_mandatory_keys = find_mandatory_keys(super_tag, cfg, visited);
+
+		// Return an empty optional if a super cycle is detected.
+		if (!super_mandatory_keys) {
+			return std::nullopt;
+		}
+
+		super_mandatory_keys->merge(mandatory_keys);
+		mandatory_keys.swap(*super_mandatory_keys);
+	}
+
+	// Set or override the mandatory keys on the lowest level (the key itself).
+	for(const auto& key : tag->keys(cfg)) {
+		if (key.second.is_mandatory() || mandatory_keys.find(key.first) != mandatory_keys.end()) {
+			mandatory_keys[key.first] = key.second;
+		}
+	}
+
+	return mandatory_keys;
+}
+
+void schema_validator::validate_mandatory_keys(const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file) {
+	const auto mandatory_keys = find_mandatory_keys(tag, cfg);
+
+	// Skip validation if a super cycle is detected.
+	if (!mandatory_keys) {
+		return;
+	}
+
+	auto visited = std::vector<const wml_tag*>();
+	return validate_mandatory_keys(*mandatory_keys, tag, cfg, name, start_line, file, visited);
+}
+
+void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys, const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file, std::vector<const wml_tag*>& visited) {
+	// Skip validation if a super cycle is detected.
+	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+		return;
+	}
+
+	visited.push_back(tag);
+
+	// Checking if all mandatory keys are present
+	for(const auto& key : mandatory_keys) {
+		if(key.second.is_mandatory()) {
+			if(cfg.get(key.first) == nullptr) {
+				queue_message(cfg, MISSING_KEY, file, start_line, 0, name, key.first);
 			}
 		}
 	}
