@@ -409,6 +409,7 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph")
 
     if env["system_lua"]:
         if env["PLATFORM"] == 'win32':
