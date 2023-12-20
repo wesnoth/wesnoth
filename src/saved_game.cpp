@@ -231,9 +231,9 @@ void saved_game::set_defaults()
 	};
 
 	if(auto campaign = game_config.find_child("campaign", "id", classification_.campaign)) {
-		// FIXME: The mp code could use `require_scenario` to check wheterh we ahve the addon in question installed.
-		//        But since [scenario]s are usually hidden behind `#ifdef CAMPAIGN_DEFINE ` it would be able to find them.
-		//        Investiage how this shoudl actually work.
+		// FIXME: The mp code could use `require_scenario` to check whether we have the addon in question installed.
+		//        But since [scenario]s are usually hidden behind `#ifdef CAMPAIGN_DEFINE` it would not be able to find them.
+		//        Investigate how this should actually work.
 		bool require_campaign = campaign["require_campaign"].to_bool(true);
 		starting_point_["require_scenario"] = require_campaign;
 	}
