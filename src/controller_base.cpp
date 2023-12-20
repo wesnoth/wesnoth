@@ -232,11 +232,32 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEWHEEL:
-#if defined(_WIN32) || defined(__APPLE__)
-		mh_base.mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
-#else
-		mh_base.mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
+		// Up and right are positive in SDL_MouseWheelEvent on all
+		// platforms:
+		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
+		// Except right is wrongly negative on X11 in SDL < 2.0.18:
+		//     https://github.com/libsdl-org/SDL/pull/4700
+		//     https://github.com/libsdl-org/SDL/commit/515b7e9
+		// and on Wayland in SDL < 2.0.20:
+		//     https://github.com/libsdl-org/SDL/commit/3e1b3bc
+		// Fixes issue #7404, which is a regression caused by pull #2481
+		// that fixed issue #2218.
+		{
+			int xmul = -1;
+#if !defined(_WIN32) && !defined(__APPLE__)
+			const char* video_driver = SDL_GetCurrentVideoDriver();
+			SDL_version ver;
+			SDL_GetVersion(&ver);
+			if(video_driver != nullptr && ver.major <= 2 && ver.minor <= 0) {
+				if(std::strcmp(video_driver, "x11") == 0 && ver.patch < 18) {
+					xmul = 1;
+				} else if(std::strcmp(video_driver, "wayland") == 0 && ver.patch < 20) {
+					xmul = 1;
+				}
+			}
 #endif
+			mh_base.mouse_wheel(xmul * event.wheel.x, event.wheel.y, is_browsing());
+		}
 		break;
 
 	case TIMER_EVENT:
