@@ -388,9 +388,6 @@ void wml_tag::expand(wml_tag& root)
 		if(super_tag) {
 			if(super_tag != this) {
 				super_refs_.emplace(super, super_tag);
-			} else {
-				// TODO: Detect super cycles too!
-				//PLAIN_LOG << "the same" << super_tag->name_;
 			}
 		}
 		// TODO: Warn if the super doesn't exist
@@ -520,6 +517,26 @@ void wml_tag::key_iterator::ensure_valid_or_end() {
 		}
 		const wml_tag& new_base = *condition_queue.front();
 		current = new_base.keys_.begin();
+		push_new_tag_conditions(new_base);
+	}
+}
+
+template<>
+void wml_tag::super_iterator::init(const wml_tag& base_tag)
+{
+	current = base_tag.super_refs_.begin();
+	condition_queue.push(&base_tag);
+}
+
+template<>
+void wml_tag::super_iterator::ensure_valid_or_end() {
+	while(current == condition_queue.front()->super_refs_.end()) {
+		condition_queue.pop();
+		if(condition_queue.empty()) {
+			return;
+		}
+		const wml_tag& new_base = *condition_queue.front();
+		current = new_base.super_refs_.begin();
 		push_new_tag_conditions(new_base);
 	}
 }
