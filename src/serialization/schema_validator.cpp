@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/back_edge_detector.hpp"
 #include "wml_exception.hpp"
 #include <tuple>
 
@@ -609,6 +610,8 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 			}
 			queue_message(dummy, WRONG_PATH, ref.file_, ref.line_, 0, ref.tag_, tag_name, ref.value_);
 		}
+
+		detect_schema_derivation_cycles();
 	}
 	schema_validator::validate(cfg, name, start_line, file);
 }
@@ -630,21 +633,58 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 			links_.emplace(current_path() + "/" + link_name, cfg["name"]);
 		} else if(tag_name == "tag" && name == "super") {
 			for(auto super : utils::split(cfg["super"])) {
-				referenced_tag_paths_.emplace_back(super, file, start_line, tag_name);
+				const auto full_path = current_path();
+
+				const auto& ref = referenced_tag_paths_.emplace_back(super, file, start_line, tag_name);
 				if(condition_nesting_ > 0) {
 					continue;
 				}
-				if(current_path() == super) {
+				if(full_path == super) {
 					queue_message(cfg, SUPER_LOOP, file, start_line, cfg["super"].str().find(super), tag_name, "super", super);
 					continue;
 				}
-				derivations_.emplace(current_path(), super);
+				derivations_.emplace(full_path, super);
+
+				// Build derivation graph
+				if (schema_derivation_map_.find(full_path) == schema_derivation_map_.end()) {
+					schema_derivation_map_.emplace(
+						full_path,
+						boost::add_vertex(full_path, schema_derivation_graph_)
+					);
+				}
+
+				if (schema_derivation_map_.find(super) == schema_derivation_map_.end()) {
+					schema_derivation_map_.emplace(
+						super,
+						boost::add_vertex(super, schema_derivation_graph_)
+					);
+				}
+
+				boost::add_edge(
+					schema_derivation_map_[full_path],
+					schema_derivation_map_[super],
+					{cfg, ref},
+					schema_derivation_graph_
+				);
 			}
 		} else if(condition_nesting_ == 0 && tag_name == "tag" && name == "name") {
 			tag_stack_.top() = value.str();
 			defined_tag_paths_.insert(current_path());
 		}
 	}
+}
+
+void schema_self_validator::detect_schema_derivation_cycles()
+{
+	boost::depth_first_search(
+		schema_derivation_graph_,
+		boost::visitor(utils::back_edge_detector([&] (const schema_derivation_graph_t::edge_descriptor edge) {
+			const auto& [cfg, ref] = schema_derivation_graph_[edge];
+			assert(cfg.has_attribute("super"));
+
+			queue_message(cfg, SUPER_LOOP, ref.file_, ref.line_, cfg.get("super")->str().find(ref.value_), ref.tag_, "super", ref.value_);
+		}))
+	);
 }
 
 std::string schema_self_validator::current_path() const
