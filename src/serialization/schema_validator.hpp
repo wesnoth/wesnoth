@@ -23,6 +23,7 @@
 
 #include <boost/graph/adjacency_list.hpp>
 #include <queue>
+#include <optional>
 #include <stack>
 #include <string>
 
@@ -178,6 +179,20 @@ private:
 	std::map<const wml_tag*, derivation_graph_t::vertex_descriptor> derivation_map_;
 
 	void detect_derivation_cycles();
+
+	/**
+	 * Collects all mandatory keys for a tag, including the super keys and overrides.
+	 *
+	 * The returned map can contain non-mandatory keys if they are overriden, please check the is_mandatory() result.
+	 */
+	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg) const;
+	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const;
+
+	/**
+	 * Validates that all mandatory keys for a tag are present.
+	 */
+	void validate_mandatory_keys(const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file);
+	void validate_mandatory_keys(const std::map<std::string, wml_key>& mandatory_keys, const wml_tag* tag, const config& cfg, const std::string& name, int start_line, const std::string& file, std::vector<const wml_tag*>& visited);
 };
 
 // A validator specifically designed for validating a schema
