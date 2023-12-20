@@ -55,7 +55,7 @@ public:
 private:
 	static void push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
-	class iterator : public boost::iterator_facade<iterator<T>, const typename Map::value_type, std::forward_iterator_tag>
+	class iterator : public boost::iterator_facade<iterator<T, Map>, const typename Map::value_type, std::forward_iterator_tag>
 	{
 		std::queue<const wml_tag*> condition_queue;
 		typename Map::const_iterator current;
