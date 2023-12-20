@@ -404,6 +404,12 @@ private:
 
 	/** Expands all "super", storing direct references for easier access. */
 	void expand(wml_tag& root);
+
+	/** Finds a key with super bookkeeping to handle super cycles. */
+	const wml_key* find_key(const std::string& name, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const;
+
+	/** Finds a tag with super bookkeeping to handle super cycles. */
+	const wml_tag* find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const;
 };
 
 /**
