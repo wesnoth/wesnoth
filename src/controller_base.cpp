@@ -232,6 +232,8 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEWHEEL:
+		// Down and right are positive in Wesnoth's map, but
+		// mouse_handler_base::mouse_wheel() inverts both axes.
 		// Up and right are positive in SDL_MouseWheelEvent on all
 		// platforms:
 		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
