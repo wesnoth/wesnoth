@@ -315,11 +315,12 @@ jobs:
   notification:
     runs-on: ubuntu-latest
     needs: [checks, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
-    if: failure() && github.event_name == 'push'
+    if: always()
 
     steps:
       - name: Discord Notification
         uses: rjstone/discord-webhook-notify@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
           severity: error
           webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
@@ -335,6 +336,7 @@ jobs:
           printf COMMIT_SUBJECT=%s "${MSG}" | head -n 1 >> "$GITHUB_ENV"
       - name: IRC Notification
         uses: rectalogic/notify-irc@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
           channel: ${{ vars.IRC_CHANNEL }}
           server: ${{ vars.IRC_SERVER }}
