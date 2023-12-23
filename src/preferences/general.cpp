@@ -784,22 +784,14 @@ void set_stop_music_in_background(bool ison)
 	preferences::set("stop_music_in_background", ison);
 }
 
-namespace {
-	double scroll = 0.2;
-}
-
 int scroll_speed()
 {
-	const int value = std::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
-	scroll = value/100.0;
-
-	return value;
+	return std::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
 }
 
 void set_scroll_speed(const int new_speed)
 {
 	prefs["scroll"] = new_speed;
-	scroll = new_speed / 100.0;
 }
 
 bool middle_click_scrolls()
