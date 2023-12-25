@@ -1,17 +1,6 @@
-## Version 1.16.10+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.16.11
  ### Translations
    * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Czech, French, Japanese, Polish, Slovak, Welsh
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
 
