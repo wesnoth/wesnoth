@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
 
 ## Version 1.16.10
  ### Campaigns
