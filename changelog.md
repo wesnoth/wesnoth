@@ -18,6 +18,8 @@
    * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Czech, French, Japanese, Polish, Slovak, Welsh
  ### Miscellaneous and Bug Fixes
    * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
+   * Fix "Something is wrong with the addon version check database supporting the multiplayer lobby".
+     Note that It also required the host of the game to use wesnoth 1.16.11
 
 ## Version 1.16.10
  ### Campaigns
