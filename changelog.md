@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wmllint now warns about `[kill]` tags containing `[filter]` tags
 
 ## Version 1.17.24
  ### Campaigns
