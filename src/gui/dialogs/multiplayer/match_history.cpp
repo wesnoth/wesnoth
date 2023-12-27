@@ -147,12 +147,19 @@ bool mp_match_history::update_display()
 		}
 
 		std::vector<std::string> player_list;
+		std::vector<std::string> player_faction_list;
 		for(const config& player : game.child_range("player")) {
-			player_list.emplace_back(player["name"].str()+": "+player["faction"].str());
+			player_list.emplace_back(font::unicode_bullet + " " + player["name"].str() + ":");
+			player_faction_list.emplace_back(player["faction"].str());
 		}
+
 		label* players = dynamic_cast<label*>(history_grid.find("players", false));
 		players->set_label(utils::join(player_list, "\n"));
-		players->set_visible(gui2::widget::visibility::invisible);
+
+		label* factions = dynamic_cast<label*>(history_grid.find("player_factions", false));
+		factions->set_label(utils::join(player_faction_list, "\n"));
+
+		history_grid.find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
 
 		label* modifications = dynamic_cast<label*>(history_grid.find("modifications", false));
 		const auto& children = game.child_range("modification");
@@ -160,7 +167,7 @@ bool mp_match_history::update_display()
 			std::vector<std::string> modifications_list;
 
 			for(const config& modification : game.child_range("modification")) {
-				modifications_list.emplace_back(modification["name"].str());
+				modifications_list.emplace_back(font::unicode_bullet + " " + modification["name"].str());
 			}
 
 			modifications->set_label(utils::join(modifications_list, "\n"));
@@ -263,29 +270,14 @@ void mp_match_history::tab_switch_callback()
 	for(unsigned i = 0; i < history_box->get_item_count(); i++) {
 		grid* history_grid = history_box->get_row_grid(i);
 		if(tab == 0) {
-			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("era_name", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("game_start", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("version", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<button*>(history_grid->find("replay_download", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("players", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("modifications", false))->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::invisible);
 		} else if(tab == 1) {
-			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("era_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("game_start", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("version", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<button*>(history_grid->find("replay_download", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("players", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("modifications", false))->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::visible);
+			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::invisible);
 		} else if(tab == 2) {
-			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("era_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("game_start", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("version", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<button*>(history_grid->find("replay_download", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("players", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("modifications", false))->set_visible(gui2::widget::visibility::visible);
+			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::visible);
 		}
 	}
 }
