@@ -53,6 +53,8 @@ mp_match_history::mp_match_history(const std::string& player_name, wesnothd_conn
 
 void mp_match_history::pre_show(window& win)
 {
+	win.set_enter_disabled(true);
+
 	button& newer_history = find_widget<button>(&win, "newer_history", false);
 	button& older_history = find_widget<button>(&win, "older_history", false);
 	connect_signal_mouse_left_click(newer_history, std::bind(&mp_match_history::newer_history_offset, this));
