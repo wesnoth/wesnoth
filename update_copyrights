@@ -58,14 +58,20 @@ added = []
 changed = []
 unchanged = []
 removed = []
+# Sanity-check that the input is in the same order as the output would be
+csvfile_needs_sorting = False
 
 with open(options.input) as csvfile:
     reader = csv.reader(csvfile)
+    previous_file = ""
     for row in reader:
         if row[0] == "Date":
             continue
 
         file = row[1]
+        if file < previous_file:
+            csvfile_needs_sorting = True
+        previous_file = file
 
         if not os.path.exists(file):
             removed.append(file)
@@ -104,10 +110,20 @@ else:
     for row in final_output:
         print(",".join(row))
 
+any_check_failed = False
 if len(removed) > 0:
+    any_check_failed = True
     print("There are "+str(len(removed))+" removed images")
 
 if len(added) > 0 or len(changed) > 0:
+    any_check_failed = True
     print("There are "+str(len(added))+" new images")
     print("There are "+str(len(changed))+" changed images")
+
+if csvfile_needs_sorting:
+    any_check_failed = True
+    print("The input file isn’t sorted by filename")
+    print("    Changed or newly added lines are put at the top for easy editing,\n    but you should run the tool again after editing to sort the file.")
+
+if any_check_failed:
     sys.exit(1)
