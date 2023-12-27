@@ -234,6 +234,9 @@ variant unit_callable::get_value(const std::string& key) const
 
 		return variant(res);
 	} else if(key == "abilities") {
+		deprecated_message("unit.abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.19"), "Use unit.ability_ids instead.");
+		return formula_callable::convert_vector(u_.get_ability_list());
+	} else if(key == "ability_ids") {
 		return formula_callable::convert_vector(u_.get_ability_list());
 	} else if(key == "hitpoints") {
 		return variant(u_.hitpoints());
@@ -355,6 +358,7 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "traits");
 	add_input(inputs, "attacks");
 	add_input(inputs, "abilities");
+	add_input(inputs, "ability_ids");
 	add_input(inputs, "hitpoints");
 	add_input(inputs, "max_hitpoints");
 	add_input(inputs, "experience");
@@ -412,6 +416,9 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "race") {
 		return variant(u_.race_id());
 	} else if(key == "abilities") {
+		deprecated_message("unittype.abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.19"), "Use unittype.ability_ids instead.");
+		return formula_callable::convert_vector(u_.get_ability_list());
+	} else if(key == "ability_ids") {
 		return formula_callable::convert_vector(u_.get_ability_list());
 	} else if(key == "traits") {
 		std::vector<variant> res;
@@ -463,6 +470,7 @@ void unit_type_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "race");
 	add_input(inputs, "alignment");
 	add_input(inputs, "abilities");
+	add_input(inputs, "ability_ids");
 	add_input(inputs, "traits");
 	add_input(inputs, "attacks");
 	add_input(inputs, "hitpoints");
