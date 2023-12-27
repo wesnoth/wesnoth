@@ -299,13 +299,13 @@ std::string unit_topic_generator::operator()() const {
 
 	ss << "<img>src='" << male_type.image();
 	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1200) ss << "~XBRZ(2)";
+	if (screen_width >= 1200) ss << "~SCALE_SHARP(144,144)";
 	ss << "' box='no'</img> ";
 
 	if (female_type.image() != male_type.image()) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1200) ss << "~XBRZ(2)";
+		if (screen_width >= 1200) ss << "~SCALE_SHARP(144,144)";
 		ss << "' box='no'</img> ";
 	}
 
