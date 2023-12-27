@@ -111,6 +111,21 @@ void mp_match_history::older_history_offset()
 	}
 }
 
+namespace
+{
+std::string key_with_fallback(const config::attribute_value& val)
+{
+	// Note that using the fallback arg of str() doesn't work since the value is set,
+	// it's just set as an empty string, and the fallback is only returned if the value
+	// is actually unset.
+	if(std::string s = val.str(); !s.empty()) {
+		return s;
+	} else {
+		return font::unicode_em_dash;
+	}
+}
+};
+
 bool mp_match_history::update_display()
 {
 	const config history = request_history();
@@ -131,11 +146,11 @@ bool mp_match_history::update_display()
 		widget_data row;
 		grid& history_grid = history_box->add_row(row);
 
-		dynamic_cast<label*>(history_grid.find("game_name", false))->set_label(game["game_name"].str());
-		dynamic_cast<label*>(history_grid.find("scenario_name", false))->set_label(game["scenario_name"].str());
-		dynamic_cast<label*>(history_grid.find("era_name", false))->set_label("<span color='#baac7d'>"+_("Era: ")+"</span>"+game["era_name"].str());
-		dynamic_cast<label*>(history_grid.find("game_start", false))->set_label(game["game_start"].str()+_(" UTC+0"));
-		dynamic_cast<label*>(history_grid.find("version", false))->set_label(game["version"].str());
+		dynamic_cast<label*>(history_grid.find("game_name", false))->set_label(key_with_fallback(game["game_name"]));
+		dynamic_cast<label*>(history_grid.find("scenario_name", false))->set_label(key_with_fallback(game["scenario_name"]));
+		dynamic_cast<label*>(history_grid.find("era_name", false))->set_label("<span color='#baac7d'>" + _("Era: ") + "</span>" + key_with_fallback(game["era_name"]));
+		dynamic_cast<label*>(history_grid.find("game_start", false))->set_label(key_with_fallback(game["game_start"]) + _(" UTC+0"));
+		dynamic_cast<label*>(history_grid.find("version", false))->set_label(key_with_fallback(game["version"]));
 
 		button* replay_download = dynamic_cast<button*>(history_grid.find("replay_download", false));
 		std::string replay_url = game["replay_url"].str();
