@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2023-02-14 17:45+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -2466,7 +2466,7 @@ msgstr "Profiel"
 #. [label]
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
-#: data/gui/window/title_screen.cfg:259 src/hotkey/hotkey_command.cpp:97
+#: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
 #, fuzzy
 #| msgid "Advancements"
 msgid "Achievements"
@@ -2501,7 +2501,7 @@ msgstr "Sla wachtwoord lokaal op (versleuteld)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:471
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_choose_addon.cfg:217
@@ -2520,10 +2520,10 @@ msgstr "Sla wachtwoord lokaal op (versleuteld)"
 #: data/gui/window/select_orb_colors.cfg:181
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
-#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:180
-#: src/gui/dialogs/message.cpp:187
+#: data/gui/window/theme_list.cfg:142 data/gui/window/tod_new_schedule.cfg:127
+#: data/gui/window/unit_advance.cfg:191 data/gui/window/unit_create.cfg:294
+#: data/gui/window/wml_error.cfg:162 data/gui/window/wml_message.cfg:444
+#: src/gui/dialogs/message.cpp:180 src/gui/dialogs/message.cpp:187
 msgid "OK"
 msgstr "Ok"
 
@@ -2535,7 +2535,7 @@ msgstr "Ok"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
 #: data/gui/window/campaign_difficulty.cfg:234
-#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
+#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:484
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
 #: data/gui/window/editor_choose_addon.cfg:231
@@ -2565,9 +2565,9 @@ msgstr "Ok"
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
-#: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:305
-#: data/gui/window/unit_recall.cfg:462 data/gui/window/unit_recruit.cfg:243
-#: src/hotkey/hotkey_command.cpp:79
+#: data/gui/window/tod_new_schedule.cfg:139 data/gui/window/unit_attack.cfg:233
+#: data/gui/window/unit_create.cfg:305 data/gui/window/unit_recall.cfg:462
+#: data/gui/window/unit_recruit.cfg:243 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -2746,7 +2746,7 @@ msgstr "Labels:"
 #: data/gui/window/addon_manager.cfg:870
 #: data/gui/window/editor_edit_pbl.cfg:257
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:489
+#: data/gui/window/title_screen.cfg:491
 msgid "Language"
 msgstr "Taal"
 
@@ -2972,7 +2972,7 @@ msgstr "Laaste"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
-#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:192
+#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:193
 msgid "Previous"
 msgstr "Vorige"
 
@@ -2983,7 +2983,7 @@ msgstr "Vorige pagina"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
-#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:207
+#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:208
 msgid "Next"
 msgstr "Volgende"
 
@@ -3051,64 +3051,75 @@ msgstr "Verander Tijdschema"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#. [label]: id=id_label
 #: data/gui/window/custom_tod.cfg:177
 #: data/gui/window/editor_edit_scenario.cfg:106
 #: data/gui/window/folder_create.cfg:72 data/gui/window/game_save.cfg:72
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
+#: data/gui/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:186
 #: src/gui/dialogs/unit_recall.cpp:324
 msgid "Name:"
 msgstr "Naam:"
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:204
+#. [grid]
+#: data/gui/window/custom_tod.cfg:205 data/gui/window/editor_edit_pbl.cfg:151
+#: data/gui/window/editor_edit_pbl_translation.cfg:99
+#: data/gui/window/editor_edit_scenario.cfg:140
+msgid "Description:"
+msgstr "Beschrijving:"
+
+#. [label]
+#. [label]: id=id_label
+#: data/gui/window/custom_tod.cfg:232 data/gui/window/tod_new_schedule.cfg:46
 msgid "ID:"
 msgstr "ID:"
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:285
+#: data/gui/window/custom_tod.cfg:313
 msgid "Image:"
 msgstr "Afbeelding:"
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:286
+#: data/gui/window/custom_tod.cfg:314
 msgid "Mask:"
 msgstr "Masker:"
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:287
+#: data/gui/window/custom_tod.cfg:315
 msgid "Sound:"
 msgstr "Geluid:"
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:316
+#: data/gui/window/custom_tod.cfg:344
 msgid "Lawful Bonus:"
 msgstr "Gezagsgetrouwe Bonus:"
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:339
+#: data/gui/window/custom_tod.cfg:367
 msgid "Red:"
 msgstr "Rood:"
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:340
+#: data/gui/window/custom_tod.cfg:368
 msgid "Green:"
 msgstr "Groen:"
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:341
+#: data/gui/window/custom_tod.cfg:369
 msgid "Blue:"
 msgstr "Blauw:"
 
 #. [button]: id=new
-#: data/gui/window/custom_tod.cfg:405
+#: data/gui/window/custom_tod.cfg:433
 msgid "New ToD"
 msgstr "Nieuw TvdD"
 
 #. [button]: id=delete
-#: data/gui/window/custom_tod.cfg:418
+#: data/gui/window/custom_tod.cfg:446
 msgid "Delete ToD"
 msgstr "Verwijder TvdD"
 
@@ -3250,14 +3261,6 @@ msgstr ""
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
 msgstr ""
-
-#. [grid]
-#. [label]
-#: data/gui/window/editor_edit_pbl.cfg:151
-#: data/gui/window/editor_edit_pbl_translation.cfg:99
-#: data/gui/window/editor_edit_scenario.cfg:140
-msgid "Description:"
-msgstr "Beschrijving:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
@@ -3776,7 +3779,7 @@ msgstr "Uitgevoerd spoor"
 #. [button]: id=quit_without_surrender
 #. [grid]
 #: data/gui/window/formula_debugger.cfg:234
-#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
+#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:263
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -3898,7 +3901,7 @@ msgstr ""
 
 #. [button]: id=ok
 #. [grid]
-#: data/gui/window/game_load.cfg:638 data/gui/window/title_screen.cfg:255
+#: data/gui/window/game_load.cfg:638 data/gui/window/title_screen.cfg:257
 msgid "Load"
 msgstr "Laden"
 
@@ -4342,7 +4345,7 @@ msgstr "Aankondigingen"
 #. [label]: id=title
 #. [grid]
 #: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
-#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:258
+#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
 msgstr "Instellingen"
@@ -5140,7 +5143,7 @@ msgstr "Aanpassingen"
 #. [widget]: id=label
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
-#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:254
+#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
 #: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Multiplayer"
@@ -5268,7 +5271,7 @@ msgid "Advanced"
 msgstr "Geavanceerd"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:468
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:470
 msgid "Display the game version and build information"
 msgstr "Toon spelversie en bouwinformatie"
 
@@ -5443,7 +5446,7 @@ msgstr "Sneltoets"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:828
+#: src/gui/dialogs/preferences_dialog.cpp:827
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -5456,7 +5459,7 @@ msgstr "Beschikbaar in spel"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:829
+#: src/gui/dialogs/preferences_dialog.cpp:828
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -5469,7 +5472,7 @@ msgstr "Beschikbaar in editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:830
+#: src/gui/dialogs/preferences_dialog.cpp:829
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6093,37 +6096,37 @@ msgstr "Kies Thema"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:176 src/hotkey/hotkey_command.cpp:283
+#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:283
 msgid "Help"
 msgstr "Help"
 
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:177
+#: data/gui/window/title_screen.cfg:178
 msgid "Show Battle for Wesnoth help"
 msgstr "Toon Strijd om Wesnoth help"
 
 #. [button]: id=previous_tip
-#: data/gui/window/title_screen.cfg:193
+#: data/gui/window/title_screen.cfg:194
 msgid "Show previous tip of the day"
 msgstr "Toon vorige tip van de dag"
 
 #. [button]: id=next_tip
-#: data/gui/window/title_screen.cfg:208
+#: data/gui/window/title_screen.cfg:209
 msgid "Show next tip of the day"
 msgstr "Toon volgende tip van de dag"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:253
+#: data/gui/window/title_screen.cfg:255
 msgid "Campaigns"
 msgstr "Veldtochten"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:253
+#: data/gui/window/title_screen.cfg:255
 msgid "Start a new single player campaign"
 msgstr "Begin een nieuwe veldtocht voor één speler"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:254
+#: data/gui/window/title_screen.cfg:256
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6131,61 +6134,61 @@ msgstr ""
 "Speel multiplayer (hotseat, LAN, Internet) of een scenario tegen de computer"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:255
+#: data/gui/window/title_screen.cfg:257
 msgid "Load a saved game"
 msgstr "Laad een opgeslagen spel"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:256
+#: data/gui/window/title_screen.cfg:258
 msgid "Add-ons"
 msgstr "Add-ons"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:256
+#: data/gui/window/title_screen.cfg:258
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 "Download veldtochten, tijdperken of kaartverzamelingen gemaakt door "
 "gebruikers"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:257
+#: data/gui/window/title_screen.cfg:259
 msgid "Map Editor"
 msgstr "Kaarteditor"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:257
+#: data/gui/window/title_screen.cfg:259
 msgid "Start the map editor"
 msgstr "Start de kaarteditor"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:258
+#: data/gui/window/title_screen.cfg:260
 msgid "Configure the game’s settings"
 msgstr "Configureer de instellingen van het spel"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:259
+#: data/gui/window/title_screen.cfg:261
 #, fuzzy
 #| msgid "View: Each Team"
 msgid "View achievements"
 msgstr "Toon: Ieder Team"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:260
+#: data/gui/window/title_screen.cfg:262
 msgid "Credits"
 msgstr "Aftiteling"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:260
+#: data/gui/window/title_screen.cfg:262
 msgid "View the credits"
 msgstr "Bekijk de aftiteling"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:261
+#: data/gui/window/title_screen.cfg:263
 msgid "Quit the game"
 msgstr "Verlaat het spel"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:490
+#: data/gui/window/title_screen.cfg:492
 msgid "Change the language"
 msgstr "Verander de taal"
 
@@ -6308,7 +6311,7 @@ msgstr "Rekruteren"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:209
-#: src/gui/dialogs/preferences_dialog.cpp:254
+#: src/gui/dialogs/preferences_dialog.cpp:253
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Fout"
@@ -7275,7 +7278,7 @@ msgid "yes"
 msgstr "ja"
 
 #: src/gui/dialogs/game_version_dialog.cpp:101
-#: src/gui/dialogs/title_screen.cpp:362
+#: src/gui/dialogs/title_screen.cpp:378
 msgid "Version $version"
 msgstr "Versie $version"
 
@@ -7618,33 +7621,33 @@ msgstr "Wachten op spelers om hun facties te kiezen..."
 msgid "The End"
 msgstr "Het Einde"
 
-#: src/gui/dialogs/preferences_dialog.cpp:180
+#: src/gui/dialogs/preferences_dialog.cpp:179
 msgid "friend"
 msgstr "vriend"
 
-#: src/gui/dialogs/preferences_dialog.cpp:185
+#: src/gui/dialogs/preferences_dialog.cpp:184
 msgid "ignored"
 msgstr "genegeerd"
 
-#: src/gui/dialogs/preferences_dialog.cpp:239
-#: src/gui/dialogs/preferences_dialog.cpp:296
+#: src/gui/dialogs/preferences_dialog.cpp:238
+#: src/gui/dialogs/preferences_dialog.cpp:295
 msgid "No username specified"
 msgstr "Geen gebruikersnaam gespecificeerd"
 
-#: src/gui/dialogs/preferences_dialog.cpp:254
+#: src/gui/dialogs/preferences_dialog.cpp:253
 msgid "Invalid username"
 msgstr "Ongeldige gebruikersnaam"
 
-#: src/gui/dialogs/preferences_dialog.cpp:301
+#: src/gui/dialogs/preferences_dialog.cpp:300
 msgid "Not on friends or ignore lists"
 msgstr "Niet op vrienden- of negeerlijst"
 
-#: src/gui/dialogs/preferences_dialog.cpp:874
-#: src/gui/dialogs/preferences_dialog.cpp:938
+#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:937
 msgid "No hotkey selected"
 msgstr "Geen sneltoets geselecteerd"
 
-#: src/gui/dialogs/preferences_dialog.cpp:902
+#: src/gui/dialogs/preferences_dialog.cpp:901
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7653,15 +7656,15 @@ msgstr ""
 "b>”.\n"
 "Wil je het opnieuw toewijzen aan “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:908
+#: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "Reassign Hotkey"
 msgstr "Sneltoets opnieuw toewijzen"
 
-#: src/gui/dialogs/preferences_dialog.cpp:925
+#: src/gui/dialogs/preferences_dialog.cpp:924
 msgid "All hotkeys have been reset to their default values."
 msgstr "Alle sneltoetsen zijn hersteld naar de standaard waarden."
 
-#: src/gui/dialogs/preferences_dialog.cpp:925
+#: src/gui/dialogs/preferences_dialog.cpp:924
 msgid "Hotkeys Reset"
 msgstr "Sneltoetsen Herstellen"
 
@@ -7748,7 +7751,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Schermafbeelding"
 
-#: src/gui/dialogs/title_screen.cpp:455 src/hotkey/hotkey_command.cpp:301
+#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -8161,7 +8164,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Klik verwerpen heeft een 'click_verwerpen' of 'ok' knop nodig."
 
 #: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
-#: src/tests/gui/test_gui2.cpp:721
+#: src/tests/gui/test_gui2.cpp:726
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Kon een dialoog niet laten zien, omdat het niet op het scherm paste."
 

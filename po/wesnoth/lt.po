@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
+"POT-Creation-Date: 2023-12-16 20:59-0600\n"
 "PO-Revision-Date: 2019-03-28 22:12+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -354,7 +354,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Įvairūs talkininkai"
 
 #. [about]
-#: data/core/about.cfg:1851
+#: data/core/about.cfg:1855
 msgid "Bots"
 msgstr "Botai"
 
@@ -561,77 +561,77 @@ msgid "Polish Translation"
 msgstr "Lenkų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1400
+#: data/core/about_i18n.cfg:1404
 msgid "Portuguese Translation"
 msgstr "Portugalų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1414
+#: data/core/about_i18n.cfg:1418
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalų (Brazilijos) vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1472
+#: data/core/about_i18n.cfg:1476
 msgid "Romanian Translation"
 msgstr "Rumunų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1480
+#: data/core/about_i18n.cfg:1484
 msgid "Russian Translation"
 msgstr "Rusų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1587
+#: data/core/about_i18n.cfg:1591
 msgid "Scottish Gaelic Translation"
 msgstr "Škotų gėlų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1596
+#: data/core/about_i18n.cfg:1600
 msgid "Serbian Translation"
 msgstr "Serbų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1615
+#: data/core/about_i18n.cfg:1619
 msgid "Slovak Translation"
 msgstr "Slovakų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1647
+#: data/core/about_i18n.cfg:1651
 msgid "Slovenian Translation"
 msgstr "Slovėnų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1663
+#: data/core/about_i18n.cfg:1667
 msgid "Spanish Translation"
 msgstr "Ispanų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1753
+#: data/core/about_i18n.cfg:1757
 msgid "Swedish Translation"
 msgstr "Švedų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1798
+#: data/core/about_i18n.cfg:1802
 msgid "Turkish Translation"
 msgstr "Turkų vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1823
+#: data/core/about_i18n.cfg:1827
 msgid "Ukrainian Translation"
 msgstr "Ukrainiečių vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1839
+#: data/core/about_i18n.cfg:1843
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensų (pietų Katalonų) vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1852
+#: data/core/about_i18n.cfg:1856
 msgid "Vietnamese Translation"
 msgstr "Vietnamiečių vertimas"
 
 #. [about]
-#: data/core/about_i18n.cfg:1871
+#: data/core/about_i18n.cfg:1875
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -639,7 +639,7 @@ msgstr "Lenkų vertimas"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1880
+#: data/core/about_i18n.cfg:1884
 msgid "RACV’s Translation"
 msgstr "RACV vertimas"
 
@@ -5093,7 +5093,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "tobulėjimo pasirinkimo"
 
-#: src/actions/attack.cpp:584 src/actions/attack.cpp:1373
+#: src/actions/attack.cpp:584 src/actions/attack.cpp:1375
 msgid "An invalid attacker weapon got selected."
 msgstr "Pasirinktas netinkamas puolančiojo ginklas."
 
@@ -5980,7 +5980,7 @@ msgstr ""
 msgid "Chat message"
 msgstr "Pokalbio žinutė"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:565
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
 msgid "The Battle for Wesnoth"
 msgstr "Mūšis dėl Vesnoto"
 
@@ -6018,7 +6018,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%Y %b %d"
 
-#: src/game_config.cpp:513
+#: src/game_config.cpp:516
 #, fuzzy
 msgid "Invalid color in range: "
 msgstr "Netinkamas spalvos intervalas: "
@@ -7610,7 +7610,7 @@ msgstr "Netinkama vietovė"
 msgid "prompt^Command:"
 msgstr "Komanda:"
 
-#: src/mouse_events.cpp:1215
+#: src/mouse_events.cpp:1219
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7618,14 +7618,14 @@ msgid ""
 msgstr ""
 "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti karius."
 
-#: src/mouse_events.cpp:1310
+#: src/mouse_events.cpp:1314
 #, fuzzy
 #| msgid "Attack"
 #| msgid_plural "Attacks"
 msgid "No Attacks"
 msgstr "Ataka"
 
-#: src/mouse_events.cpp:1310
+#: src/mouse_events.cpp:1314
 msgid "This unit has no usable weapons."
 msgstr "Šis karys neturi tinkamų ginklų."
 
@@ -7771,7 +7771,7 @@ msgstr "Nėra jokių tikslų"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Atšaukiami dar neperduoti serveriui ėjimai."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:448
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7779,7 +7779,7 @@ msgstr ""
 "Nutrūko tinklo ryšys ir žaidimas negali tęstis. Ar norite išsaugoti šį "
 "žaidimą?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
 #| msgid "Do you really want to surrender the game?"
 msgid ""
@@ -7787,7 +7787,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Ar tikrai norite pasiduoti šiame žaidime?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
 #| msgid "The game has been saved."
 msgid ""
@@ -7836,7 +7836,7 @@ msgstr ""
 msgid "The game is over."
 msgstr "Žaidimas baigtas."
 
-#: src/playsingle_controller.cpp:542
+#: src/playsingle_controller.cpp:543
 msgid "It is now $name|’s turn"
 msgstr "Dabar $name| ėjimas"
 
@@ -8738,15 +8738,15 @@ msgstr "prieblandos"
 msgid "female^neutral"
 msgstr "neutrali"
 
-#: src/units/unit.cpp:1992
+#: src/units/unit.cpp:2000
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1998
+#: src/units/unit.cpp:2006
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> GT"
 
-#: src/units/unit.cpp:2008
+#: src/units/unit.cpp:2016
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
@@ -8755,22 +8755,22 @@ msgstr[1] "per ėjimą"
 msgstr[2] "per ėjimą"
 msgstr[3] "per ėjimą"
 
-#: src/units/unit.cpp:2014
+#: src/units/unit.cpp:2022
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:2018
+#: src/units/unit.cpp:2026
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2031
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:2027
+#: src/units/unit.cpp:2035
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8779,12 +8779,12 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> atakos per ėjimą"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> atakų per ėjimą"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> ataka per ėjimą"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2042
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:2500
+#: src/units/unit.cpp:2508
 msgid "$effect_description per level"
 msgstr "$effect_description lygiui"
 

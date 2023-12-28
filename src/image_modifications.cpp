@@ -35,11 +35,11 @@ static lg::log_domain log_display("display");
 namespace image {
 
 /** Adds @a mod to the queue (unless mod is nullptr). */
-void modification_queue::push(modification * mod)
+void modification_queue::push(std::unique_ptr<modification> mod)
 {
 	// Null pointers do not get stored. (Shouldn't happen, but just in case.)
 	if(mod != nullptr) {
-		priorities_[mod->priority()].emplace_back(mod);
+		priorities_[mod->priority()].push_back(std::move(mod));
 	}
 }
 
@@ -78,7 +78,7 @@ modification * modification_queue::top() const
 namespace {
 
 /** A function used to parse modification arguments */
-using mod_parser = std::function<modification*(const std::string&)>;
+using mod_parser = std::function<std::unique_ptr<modification>(const std::string&)>;
 
 /** A map of all registered mod parsers
  *
@@ -94,7 +94,7 @@ std::map<std::string, mod_parser> mod_parsers;
  * @return A pointer to the decoded modification object
  * @retval nullptr if the string is invalid or a parser isn't found
  */
-modification* decode_modification(const std::string& encoded_mod)
+std::unique_ptr<modification> decode_modification(const std::string& encoded_mod)
 {
 	std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
 
@@ -141,10 +141,8 @@ modification_queue modification::decode(const std::string& encoded_mods)
 	modification_queue mods;
 
 	for(const std::string& encoded_mod : utils::parenthetical_split(encoded_mods, '~')) {
-		modification* mod = decode_modification(encoded_mod);
-
-		if(mod) {
-			mods.push(mod);
+		if(auto mod = decode_modification(encoded_mod)) {
+			mods.push(std::move(mod));
 		}
 	}
 
@@ -624,9 +622,9 @@ struct parse_mod_registration
  * @param args_var The name for the string argument provided
  */
 #define REGISTER_MOD_PARSER(type, args_var)                                                           \
-    static modification* parse_##type##_mod(const std::string&);                                      \
+    static std::unique_ptr<modification> parse_##type##_mod(const std::string&);                      \
     static parse_mod_registration parse_##type##_mod_registration_aux(#type, &parse_##type##_mod);    \
-    static modification* parse_##type##_mod(const std::string& args_var)                              \
+    static std::unique_ptr<modification> parse_##type##_mod(const std::string& args_var)              \
 
 // Color-range-based recoloring
 REGISTER_MOD_PARSER(TC, args)
@@ -668,7 +666,7 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	return new rc_modification(rc_map);
+	return std::make_unique<rc_modification>(rc_map);
 }
 
 // Team-color-based color range selection and recoloring
@@ -697,7 +695,7 @@ REGISTER_MOD_PARSER(RC, args)
 		rc_map.clear();
 	}
 
-	return new rc_modification(rc_map);
+	return std::make_unique<rc_modification>(rc_map);
 }
 
 // Palette switch
@@ -720,7 +718,7 @@ REGISTER_MOD_PARSER(PAL, args)
 			rc_map[old_palette[i]] = new_palette[i];
 		}
 
-		return new rc_modification(rc_map);
+		return std::make_unique<rc_modification>(rc_map);
 	} catch(const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing PAL function: "
@@ -738,7 +736,7 @@ REGISTER_MOD_PARSER(FL, args)
 	bool horiz = (args.empty() || args.find("horiz") != std::string::npos);
 	bool vert = (args.find("vert") != std::string::npos);
 
-	return new fl_modification(horiz, vert);
+	return std::make_unique<fl_modification>(horiz, vert);
 }
 
 // Rotations
@@ -749,19 +747,19 @@ REGISTER_MOD_PARSER(ROTATE, args)
 
 	switch(s) {
 		case 0:
-			return new rotate_modification();
+			return std::make_unique<rotate_modification>();
 			break;
 		case 1:
-			return new rotate_modification(
+			return std::make_unique<rotate_modification>(
 				lexical_cast_default<int>(slice_params[0]));
 			break;
 		case 2:
-			return new rotate_modification(
+			return std::make_unique<rotate_modification>(
 				lexical_cast_default<int>(slice_params[0]),
 				lexical_cast_default<int>(slice_params[1]));
 			break;
 		case 3:
-			return new rotate_modification(
+			return std::make_unique<rotate_modification>(
 				lexical_cast_default<int>(slice_params[0]),
 				lexical_cast_default<int>(slice_params[1]),
 				lexical_cast_default<int>(slice_params[2]));
@@ -773,7 +771,7 @@ REGISTER_MOD_PARSER(ROTATE, args)
 // Grayscale
 REGISTER_MOD_PARSER(GS, )
 {
-	return new gs_modification;
+	return std::make_unique<gs_modification>();
 }
 
 // Black and white
@@ -792,7 +790,7 @@ REGISTER_MOD_PARSER(BW, args)
 			ERR_DP << "~BW() argument out of range 0 - 255";
 			return nullptr;
 		}  else {
-			return new bw_modification(threshold);
+			return std::make_unique<bw_modification>(threshold);
 		}
 	} catch (const std::invalid_argument&) {
 		ERR_DP << "unsupported argument in ~BW() function";
@@ -803,7 +801,7 @@ REGISTER_MOD_PARSER(BW, args)
 // Sepia
 REGISTER_MOD_PARSER(SEPIA, )
 {
-	return new sepia_modification;
+	return std::make_unique<sepia_modification>();
 }
 
 // Negative
@@ -816,7 +814,7 @@ REGISTER_MOD_PARSER(NEG, args)
 			// apparently -1 may be a magic number
 			// but this is the threshold value required
 			// to fully invert a channel
-			return new negative_modification(-1,-1,-1);
+			return std::make_unique<negative_modification>(-1, -1, -1);
 			break;
 		case 1:
 			try {
@@ -825,7 +823,7 @@ REGISTER_MOD_PARSER(NEG, args)
 					ERR_DP << "unsupported argument value in ~NEG() function";
 					return nullptr;
 				} else {
-					return new negative_modification(threshold, threshold, threshold);
+					return std::make_unique<negative_modification>(threshold, threshold, threshold);
 				}
 			} catch (const std::invalid_argument&) {
 				ERR_DP << "unsupported argument value in ~NEG() function";
@@ -841,7 +839,7 @@ REGISTER_MOD_PARSER(NEG, args)
 					ERR_DP << "unsupported argument value in ~NEG() function";
 					return nullptr;
 				} else {
-					return new negative_modification(thresholdRed, thresholdGreen, thresholdBlue);
+					return std::make_unique<negative_modification>(thresholdRed, thresholdGreen, thresholdBlue);
 				}
 			} catch (const std::invalid_argument&) {
 				ERR_DP << "unsupported argument value in ~NEG() function";
@@ -859,13 +857,13 @@ REGISTER_MOD_PARSER(NEG, args)
 // Plot Alpha
 REGISTER_MOD_PARSER(PLOT_ALPHA, )
 {
-	return new plot_alpha_modification;
+	return std::make_unique<plot_alpha_modification>();
 }
 
 // Wipe Alpha
 REGISTER_MOD_PARSER(WIPE_ALPHA, )
 {
-	return new wipe_alpha_modification;
+	return std::make_unique<wipe_alpha_modification>();
 }
 
 // Adjust Alpha
@@ -880,7 +878,7 @@ REGISTER_MOD_PARSER(ADJUST_ALPHA, args)
 		return nullptr;
 	}
 
-	return new adjust_alpha_modification(params.at(0));
+	return std::make_unique<adjust_alpha_modification>(params.at(0));
 }
 
 // Adjust Channels
@@ -895,7 +893,7 @@ REGISTER_MOD_PARSER(CHAN, args)
 		return nullptr;
 	}
 
-	return new adjust_channels_modification(params);
+	return std::make_unique<adjust_channels_modification>(params);
 }
 
 // Color-shift
@@ -920,7 +918,7 @@ REGISTER_MOD_PARSER(CS, args)
 		b = lexical_cast_default<int>(factors[2]);
 	}
 
-	return new cs_modification(r, g, b);
+	return std::make_unique<cs_modification>(r, g , b);
 }
 
 // Color blending
@@ -946,7 +944,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 		opacity /= 100.0f;
 	}
 
-	return new blend_modification(
+	return std::make_unique<blend_modification>(
 		lexical_cast_default<int>(params[0]),
 		lexical_cast_default<int>(params[1]),
 		lexical_cast_default<int>(params[2]),
@@ -978,7 +976,7 @@ REGISTER_MOD_PARSER(CROP, args)
 		slice_rect.h = lexical_cast_default<uint16_t, const std::string&>(slice_params[3]);
 	}
 
-	return new crop_modification(slice_rect);
+	return std::make_unique<crop_modification>(slice_rect);
 }
 
 static bool check_image(const image::locator& img, std::stringstream & message)
@@ -1019,7 +1017,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 		return nullptr;
 	surface surf = get_surface(img);
 
-	return new blit_modification(surf, x, y);
+	return std::make_unique<blit_modification>(surf, x, y);
 }
 
 // Mask
@@ -1052,7 +1050,7 @@ REGISTER_MOD_PARSER(MASK, args)
 		return nullptr;
 	surface surf = get_surface(img);
 
-	return new mask_modification(surf, x, y);
+	return std::make_unique<mask_modification>(surf, x, y);
 }
 
 // Light
@@ -1065,7 +1063,7 @@ REGISTER_MOD_PARSER(L, args)
 
 	surface surf = get_surface(args);
 
-	return new light_modification(surf);
+	return std::make_unique<light_modification>(surf);
 }
 
 // Scale
@@ -1087,7 +1085,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_exact_modification(w, h, "SCALE", false);
+	return std::make_unique<scale_exact_modification>(w, h, "SCALE", false);
 }
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
@@ -1108,7 +1106,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_exact_modification(w, h, "SCALE_SHARP", true);
+	return std::make_unique<scale_exact_modification>(w, h, "SCALE_SHARP", true);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
@@ -1129,7 +1127,7 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_into_modification(w, h, "SCALE_INTO", false);
+	return std::make_unique<scale_into_modification>(w, h, "SCALE_INTO", false);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
@@ -1150,7 +1148,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return new scale_into_modification(w, h, "SCALE_INTO_SHARP", true);
+	return std::make_unique<scale_into_modification>(w, h, "SCALE_INTO_SHARP", true);
 }
 
 // xBRZ
@@ -1161,7 +1159,7 @@ REGISTER_MOD_PARSER(XBRZ, args)
 		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
 	}
 
-	return new xbrz_modification(z);
+	return std::make_unique<xbrz_modification>(z);
 }
 
 // scale
@@ -1170,8 +1168,7 @@ REGISTER_MOD_PARSER(XBRZ, args)
 REGISTER_MOD_PARSER(BL, args)
 {
 	const int depth = std::max<int>(0, lexical_cast_default<int>(args));
-
-	return new bl_modification(depth);
+	return std::make_unique<bl_modification>(depth);
 }
 
 // Opacity-shift
@@ -1188,7 +1185,7 @@ REGISTER_MOD_PARSER(O, args)
 		num /= 100.0f;
 	}
 
-	return new o_modification(num);
+	return std::make_unique<o_modification>(num);
 }
 
 //
@@ -1199,24 +1196,21 @@ REGISTER_MOD_PARSER(O, args)
 REGISTER_MOD_PARSER(R, args)
 {
 	const int r = lexical_cast_default<int>(args);
-
-	return new cs_modification(r,0,0);
+	return std::make_unique<cs_modification>(r,0,0);
 }
 
 // Green component color-shift
 REGISTER_MOD_PARSER(G, args)
 {
 	const int g = lexical_cast_default<int>(args);
-
-	return new cs_modification(0,g,0);
+	return std::make_unique<cs_modification>(0,g,0);
 }
 
 // Blue component color-shift
 REGISTER_MOD_PARSER(B, args)
 {
 	const int b = lexical_cast_default<int>(args);
-
-	return new cs_modification(0,0,b);
+	return std::make_unique<cs_modification>(0,0,b);
 }
 
 REGISTER_MOD_PARSER(NOP, )
@@ -1247,7 +1241,7 @@ REGISTER_MOD_PARSER(BG, args)
 		c[i] = lexical_cast_default<int>(factors[i]);
 	}
 
-	return new background_modification(color_t(c[0], c[1], c[2], c[3]));
+	return std::make_unique<background_modification>(color_t(c[0], c[1], c[2], c[3]));
 }
 
 // Channel swap
@@ -1322,7 +1316,7 @@ REGISTER_MOD_PARSER(SWAP, args)
 		}
 	}
 
-	return new swap_modification(redValue, greenValue, blueValue, alphaValue);
+	return std::make_unique<swap_modification>(redValue, greenValue, blueValue, alphaValue);
 }
 
 } // end anon namespace

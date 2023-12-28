@@ -1393,6 +1393,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if closer == "variation" and "variation_id" not in attributes:
         print('"%s", line %d: [variation] is missing required variation_id attribute' % \
               (filename, lineno))
+    if closer == "filter" and "kill" in ancestors:
+        print('"%s", line %d: [kill] should have an inline StandardUnitFilter instead of using [filter]' % \
+              (filename, lineno))
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"

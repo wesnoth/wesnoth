@@ -29,6 +29,7 @@
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp" // for resources::gamedata conversion variable_set
+#include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
