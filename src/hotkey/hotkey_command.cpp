@@ -173,6 +173,8 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 	{ HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
+	{ HOTKEY_EDITOR_EDIT_UNIT, "editor-edit-unit", N_("Edit"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+
 	{ HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Time Schedule Editor"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, scope_editor, HKCAT_SCENARIO, "" },

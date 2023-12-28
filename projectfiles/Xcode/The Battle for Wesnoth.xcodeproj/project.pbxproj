@@ -19,6 +19,7 @@
 		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D4594633BF3F8A06D6AE752F /* prompt.hpp */; };
+		2D054DAC96B381305EA83ED6 /* gender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B215445395F7DB3A4BF4BA9F /* gender.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		36D74F7F8D7655ACCABE562D /* edit_pbl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FA542D78393E8FF067775DA /* edit_pbl.cpp */; };
 		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
@@ -650,9 +651,12 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		66DA406CB60C1594544A6D94 /* edit_unit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F26240FEA81CA0863600A7A7 /* edit_unit.hpp */; };
 		6D574EACA3483ABEE72819F0 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
+		7A4E407187ED448727B648A4 /* edit_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F4B5EB619199FDBA61E21 /* edit_unit.cpp */; };
 		7BFC4DF5BFF8CF75855BA662 /* prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67044415B63F5888193BD7A6 /* prompt.cpp */; };
 		7FDF4E8D9C94E7DA8F41F7BB /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
+		835B4DDBAFDD7217F72881B1 /* edit_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D4F4B5EB619199FDBA61E21 /* edit_unit.cpp */; };
 		867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
 		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8C704B6F99C824A4073EEBEE /* prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67044415B63F5888193BD7A6 /* prompt.cpp */; };
@@ -1259,6 +1263,7 @@
 		C0454A6592DCD67D93323D9C /* edit_pbl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */; };
 		C93048A9AE576B6AD016DFA4 /* tod_new_schedule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C61F473D9AC43768A445E218 /* tod_new_schedule.cpp */; };
 		C9D14DC39B87182A00397A3D /* choose_addon.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9A141EAAE90E98B6F6171D6 /* choose_addon.hpp */; };
+		CE1B4F5ABEAA6331A14F5E82 /* edit_unit.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F26240FEA81CA0863600A7A7 /* edit_unit.hpp */; };
 		DF974010BB46B844E83F7DDA /* tod_new_schedule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C61F473D9AC43768A445E218 /* tod_new_schedule.cpp */; };
 		E2F24C0CBC863C3DC8A041EF /* edit_pbl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */; };
 		E79249078ACE777D1E219DED /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
@@ -1429,6 +1434,7 @@
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
 		F6E34C7CBC418F214B43BC39 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
+		F9294044ABCDB5C2FDE9DE2E /* gender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B215445395F7DB3A4BF4BA9F /* gender.hpp */; };
 		FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
 /* End PBXBuildFile section */
 
@@ -2087,6 +2093,7 @@
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
 		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
 		5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = tod_new_schedule.hpp; path = tod_new_schedule.hpp; sourceTree = "<group>"; };
+		5D4F4B5EB619199FDBA61E21 /* edit_unit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = edit_unit.cpp; path = edit_unit.cpp; sourceTree = "<group>"; };
 		620A386215E9364E00A4F513 /* attack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack.cpp; sourceTree = "<group>"; };
 		620A386315E9364E00A4F513 /* attack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = attack.hpp; sourceTree = "<group>"; };
 		620A386415E9364E00A4F513 /* create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = create.cpp; sourceTree = "<group>"; };
@@ -2368,6 +2375,7 @@
 		95EB8A51287A02B800B09F95 /* draw_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_manager.hpp; sourceTree = "<group>"; };
 		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
 		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
+		B215445395F7DB3A4BF4BA9F /* gender.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gender.hpp; path = gender.hpp; sourceTree = "<group>"; };
 		B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = edit_pbl.hpp; sourceTree = "<group>"; };
 		B508D191100146E300B12852 /* engine_fai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_fai.cpp; sourceTree = "<group>"; };
 		B508D192100146E300B12852 /* engine_fai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine_fai.hpp; sourceTree = "<group>"; };
@@ -2919,6 +2927,7 @@
 		ECFB9FA7193BFAD900146ED0 /* carryover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = carryover.cpp; sourceTree = "<group>"; };
 		ECFB9FA9193BFB4B00146ED0 /* game_board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_board.cpp; sourceTree = "<group>"; };
 		ECFB9FAB193BFB6E00146ED0 /* rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rect.cpp; sourceTree = "<group>"; };
+		F26240FEA81CA0863600A7A7 /* edit_unit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = edit_unit.hpp; path = edit_unit.hpp; sourceTree = "<group>"; };
 		F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_notification.mm; path = ../../src/desktop/apple_notification.mm; sourceTree = "<group>"; };
 		F40A13BD1A3AA56800C4D071 /* apple_notification.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_notification.hpp; path = ../../src/desktop/apple_notification.hpp; sourceTree = "<group>"; };
 		F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_end_exceptions.cpp; sourceTree = "<group>"; };
@@ -3441,6 +3450,7 @@
 				91B621AC1B76B05700B00E0F /* xBRZ */,
 				09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */,
 				27764FB68F02032F1C0B6748 /* statistics_record.cpp */,
+				B215445395F7DB3A4BF4BA9F /* gender.hpp */,
 			);
 			name = src;
 			path = ../../src;
@@ -3896,6 +3906,8 @@
 				C679447D91FD3623CC852FF8 /* edit_pbl_translation.hpp */,
 				C61F473D9AC43768A445E218 /* tod_new_schedule.cpp */,
 				5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */,
+				5D4F4B5EB619199FDBA61E21 /* edit_unit.cpp */,
+				F26240FEA81CA0863600A7A7 /* edit_unit.hpp */,
 			);
 			path = editor;
 			sourceTree = "<group>";
@@ -5081,6 +5093,8 @@
 				9B4B41D29C90B05F03DE21B0 /* edit_pbl_translation.hpp in Headers */,
 				44CA4F8598147FDAE871B7CB /* prompt.hpp in Headers */,
 				FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */,
+				CE1B4F5ABEAA6331A14F5E82 /* edit_unit.hpp in Headers */,
+				F9294044ABCDB5C2FDE9DE2E /* gender.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5093,6 +5107,8 @@
 				02A44BEAA567595C902031CF /* edit_pbl_translation.hpp in Headers */,
 				172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */,
 				7FDF4E8D9C94E7DA8F41F7BB /* tod_new_schedule.hpp in Headers */,
+				66DA406CB60C1594544A6D94 /* edit_unit.hpp in Headers */,
+				2D054DAC96B381305EA83ED6 /* gender.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5842,6 +5858,7 @@
 				0554467DB5FE99D85ABCDCA0 /* edit_pbl_translation.cpp in Sources */,
 				8C704B6F99C824A4073EEBEE /* prompt.cpp in Sources */,
 				DF974010BB46B844E83F7DDA /* tod_new_schedule.cpp in Sources */,
+				835B4DDBAFDD7217F72881B1 /* edit_unit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6519,6 +6536,7 @@
 				EBB44A70837B84A928CB6424 /* edit_pbl_translation.cpp in Sources */,
 				7BFC4DF5BFF8CF75855BA662 /* prompt.cpp in Sources */,
 				C93048A9AE576B6AD016DFA4 /* tod_new_schedule.cpp in Sources */,
+				7A4E407187ED448727B648A4 /* edit_unit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
