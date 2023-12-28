@@ -1427,7 +1427,7 @@ template<>
 struct dialog_tester<editor_edit_unit>
 {
 	config cfg;
-	
+
 	dialog_tester() {}
 	editor_edit_unit* create()
 	{
