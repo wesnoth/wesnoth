@@ -65,8 +65,8 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
                 local regen_amount = 0
                 if abilities then
                     for regenerates in wml.child_range(abilities, "regenerate") do
-                        if (regenerates.value or 0) > regen_amount then
-                            regen_amount = regenerates.value
+                        if (tonumber(regenerates.value) or 0) > regen_amount then
+                            regen_amount = tonumber(regenerates.value)
                         end
                     end
                 end
@@ -114,7 +114,7 @@ function retreat_functions.get_healing_locations(possible_healers)
             local cure = 0
             local abilities = wml.get_child(u.__cfg, "abilities") or {}
             for ability in wml.child_range(abilities, "heals") do
-                heal_amount = ability.value or 0
+                heal_amount = (tonumber(ability.value) or 0)
                 if ability.poison == "slowed" then
                     cure = 1
                 elseif ability.poison == "cured" then
