@@ -786,7 +786,8 @@ if not access(fifodir, F_OK):
     env.Alias("install-wesnothd", fifodir)
 if env["systemd"]:
     env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.service", "lib/systemd/system")
-    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd/tmpfiles.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd/sysusers.conf", "lib/sysusers.d")
 
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
