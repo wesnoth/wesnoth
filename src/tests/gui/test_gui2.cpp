@@ -1426,12 +1426,12 @@ struct dialog_tester<tod_new_schedule>
 template<>
 struct dialog_tester<editor_edit_unit>
 {
-	game_config_view game_config_view_ = game_config_view::wrap(main_config);
+	config cfg;
 	
 	dialog_tester() {}
 	editor_edit_unit* create()
 	{
-		return new editor_edit_unit(game_config_view_, "test_addon");
+		return new editor_edit_unit(game_config_view::wrap(cfg), "test_addon");
 	}
 };
 

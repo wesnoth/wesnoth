@@ -40,6 +40,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <boost/filesystem.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <iostream>
 #include <sstream>
@@ -178,10 +179,6 @@ void editor_edit_unit::pre_show(window& win) {
 		std::bind(&editor_edit_unit::update_image, this, "attack_image"));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&win, "load", false),
-		std::bind(&editor_edit_unit::load_unit_type, this));
-
-	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "load_movetype", false),
 		std::bind(&editor_edit_unit::load_movetype, this));
 
@@ -282,53 +279,58 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 		.set_read_only(true);
 
 	if (dlg.show()) {
-		/* Create SDL surface to get width and height of image */
-		SDL_Surface * img_surf = IMG_Load(&*dlg.path().begin());
-
 		std::string images_dir = filesystem::get_core_images_dir();
 		std::string addons_dir = filesystem::get_current_editor_dir(addon_id_) + "/images";
 		std::stringstream path;
 
-		if (dlg.path().find(images_dir) != std::string::npos) {
-			path << dlg.path().replace(0, images_dir.size()+1, "");
-			/* Scale if too big */
-			if (img_surf->w > 300) {
-				int w = (img_surf->w > 200) ? 200 : img_surf->w;
-				int h = (img_surf->h > 200) ? 200 : img_surf->h;
-				path << "~SCALE(" << w << "," << h << ")";
+		if ((dlg.path().find(images_dir) == std::string::npos)
+				&& (dlg.path().find(addons_dir) == std::string::npos)) {
+			/* choosen file is outside wesnoth's images dir,
+			 * copy image to addons directory */
+			std::string filename = boost::filesystem::path(dlg.path()).filename().string();
+
+			if (id_stem == "unit_image") {
+				path << addons_dir + "/units/" + filename;
+			} else if ((id_stem == "portrait_image")||(id_stem == "small_profile_image")) {
+				path << addons_dir + "/portraits/" + filename;
+			} else if (id_stem == "attack_image") {
+				path << addons_dir + "/attacks/" + filename;
 			}
-			find_widget<text_box>(get_window(), "path_"+id_stem, false).set_value(path.str());
-			update_image(id_stem);
-		} else if (dlg.path().find(addons_dir) != std::string::npos) {
-			path << dlg.path().replace(0, addons_dir.size()+1, "");
-			if (img_surf->w > 200) {
-				int w = (img_surf->w > 200) ? 200 : img_surf->w;
-				int h = (img_surf->h > 200) ? 200 : img_surf->h;
-				path << "~SCALE(" << w << "," << h << ")";
-			}
-			find_widget<text_box>(get_window(), "path_"+id_stem, false).set_value(path.str());
-			update_image(id_stem);
+			filesystem::copy_file(dlg.path(), path.str());
 		} else {
-			/* choosen file is outside wesnoth's images dir */
-			// TODO : copy image to addons directory
-			std::cerr << "File outside game data directory." << std::endl;
+			path << dlg.path();
 		}
+
+		/* Scale if too big by attaching ~SCALE()
+		 * Create SDL surface to get width and height of image.
+		 * &*dlg.path().begin() is used to convert std::string to char*
+		 */
+		SDL_Surface * img_surf = IMG_Load(&*dlg.path().begin());
+		int w, h;
+		bool big_image;
+		if (img_surf->w > 300) {
+			w = (img_surf->w > 200) ? 200 : img_surf->w;
+			h = (img_surf->h > 200) ? 200 : img_surf->h;
+			big_image = true;
+		} else {
+			big_image = false;
+		}
+
+		if (path.str().find(images_dir) != std::string::npos) {
+			// Image in Wesnoth core dir
+			path.str(path.str().replace(0, images_dir.size()+1, ""));
+		} else if (path.str().find(addons_dir) != std::string::npos) {
+			// Image in addons dir
+			path.str(path.str().replace(0, addons_dir.size()+1, ""));
+		}
+
+		if (big_image) {
+			path << "~SCALE(" << w << "," << h << ")";
+		}
+		find_widget<text_box>(get_window(), "path_"+id_stem, false).set_value(path.str());
+		update_image(id_stem);
 	}
 
-}
-
-void editor_edit_unit::load_unit_type() {
-	gui2::dialogs::file_dialog dlg;
-		dlg.set_title(_("Choose File"))
-			.set_ok_label(_("Select"))
-			.set_path("data/core/units")
-			.set_read_only(true);
-
-	if (dlg.show()) {
-		config utype;
-		read(utype, *(preprocess_file(dlg.path())));
-		std::cout<<utype.debug()<<std::endl;
-	}
 }
 
 void editor_edit_unit::save_unit_type() {
