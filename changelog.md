@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
  ### Editor
  ### Multiplayer
  ### Lua API
