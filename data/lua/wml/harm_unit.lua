@@ -160,6 +160,10 @@ function wml_actions.harm_unit(cfg)
 
 			wesnoth.interface.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
 
+			local award_kill_xp = experience == "kill" or experience == true
+			local award_primary_hit_xp = experience == "hit" or experience == "primary_hit" or experience == true
+			local award_secondary_hit_xp = experience == "hit" or experience == "secondary_hit" or experience == true
+
 			local function calc_xp( level ) -- to calculate the experience in case of kill
 				if level == 0 then return math.ceil(wesnoth.game_config.kill_experience / 2)
 				else return level * wesnoth.game_config.kill_experience end
@@ -168,11 +172,15 @@ function wml_actions.harm_unit(cfg)
 			if experience ~= false and harmer and harmer.valid
 				and wesnoth.sides.is_enemy( unit_to_harm.side, harmer.side )
 			then
-				if kill ~= false and unit_to_harm.hitpoints <= 0 then
+				if kill ~= false and unit_to_harm.hitpoints <= 0 and award_kill_xp then
 					harmer.experience = harmer.experience + calc_xp( unit_to_harm.level )
 				else
-					unit_to_harm.experience = unit_to_harm.experience + harmer.level
-					harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
+					if award_primary_hit_xp then
+						unit_to_harm.experience = unit_to_harm.experience + harmer.level
+					end
+					if award_secondary_hit_xp then
+						harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
+					end
 				end
 			end
 
