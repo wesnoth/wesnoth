@@ -197,10 +197,10 @@ function wml_actions.harm_unit(cfg)
 				if kill ~= false and unit_to_harm.hitpoints <= 0 and xp_mode.kill then
 					harmer.experience = harmer.experience + calc_xp( unit_to_harm.level )
 				else
-					if xp_mode.attack then
+					if xp_mode.defend then
 						unit_to_harm.experience = unit_to_harm.experience + harmer.level
 					end
-					if xp_mode.defend then
+					if xp_mode.attack then
 						harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
 					end
 				end
