@@ -240,6 +240,9 @@ unit::unit(const unit& o)
 	, experience_(o.experience_)
 	, max_experience_(o.max_experience_)
 	, level_(o.level_)
+	, check_number_advancement_(o.check_number_advancement_)
+	, check_number_trait_(o.check_number_trait_)
+	, check_number_object_(o.check_number_object_)
 	, recall_cost_(o.recall_cost_)
 	, canrecruit_(o.canrecruit_)
 	, recruit_list_(o.recruit_list_)
@@ -321,6 +324,9 @@ unit::unit(unit_ctor_t)
 	, experience_(0)
 	, max_experience_(1)
 	, level_(0)
+	, check_number_advancement_(0)
+	, check_number_trait_(0)
+	, check_number_object_(0)
 	, recall_cost_(-1)
 	, canrecruit_(false)
 	, recruit_list_()
@@ -1241,6 +1247,15 @@ void unit::expire_modifications(const std::string& duration)
 				}
 
 				modifications_.remove_child(mod_name, j);
+				if(mod_name == "advance" || mod_name == "advancement"){
+					--check_number_advancement_;
+				}
+				if(mod_name == "trait"){
+					--check_number_trait_;
+				}
+				if(mod_name == "object"){
+					--check_number_object_;
+				}
 			}
 		}
 	}
@@ -2564,6 +2579,16 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		add_trait_description(mod, description);
 	}
 
+	if(mod_type == "advance" || mod_type == "advancement"){
+		++check_number_advancement_;
+	}
+	if(mod_type == "trait"){
+		++check_number_trait_;
+	}
+	if(mod_type == "object"){
+		++check_number_object_;
+	}
+
 	//NOTE: if not a trait, description is currently not used
 }
 
@@ -2595,6 +2620,9 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 
 	variables_.clear_children("mods");
+	check_number_advancement_ = 0;
+	check_number_trait_= 0;
+	check_number_object_ = 0;
 	if(modifications_.has_child("advance")) {
 		deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
 	}

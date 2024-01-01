@@ -246,6 +246,12 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "level" || key == "full") {
 		// This allows writing "upkeep == full"
 		return variant(u_.level());
+	} else if(key == "advancements_applied") {
+		return variant(u_.check_number_advancement());
+	} else if(key == "traits_applied") {
+		return variant(u_.check_number_trait());
+	} else if(key == "objects_applied") {
+		return variant(u_.check_number_object());
 	} else if(key == "total_movement" || key == "max_moves") {
 		return variant(u_.total_movement());
 	} else if(key == "movement_left" || key == "moves") {
@@ -360,6 +366,9 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "experience");
 	add_input(inputs, "max_experience");
 	add_input(inputs, "level");
+	add_input(inputs, "advancements_applied");
+	add_input(inputs, "traits_applied");
+	add_input(inputs, "objects_applied");
 	add_input(inputs, "moves");
 	add_input(inputs, "max_moves");
 	add_input(inputs, "attacks_left");

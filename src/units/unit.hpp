@@ -570,6 +570,20 @@ public:
 		level_ = level;
 	}
 
+	/** The number of modification aplied to unitby advancement, trait or object */
+	std::size_t check_number_advancement() const
+	{
+		return check_number_advancement_;
+	}
+	std::size_t check_number_trait() const
+	{
+		return check_number_trait_;
+	}
+	std::size_t check_number_object() const
+	{
+		return check_number_object_;
+	}
+
 	/** The ID of the variation of this unit's type. */
 	const std::string& variation() const
 	{
@@ -1902,6 +1916,10 @@ private:
 	int max_experience_;
 
 	int level_;
+
+	std::size_t check_number_advancement_;
+	std::size_t check_number_trait_;
+	std::size_t check_number_object_;
 
 	int recall_cost_;
 	bool canrecruit_;
