@@ -191,6 +191,7 @@ unit_callable::unit_callable(const unit& u) : loc_(u.get_location()), u_(u)
 
 variant unit_callable::get_value(const std::string& key) const
 {
+
 	if(key == "x") {
 		if(loc_ == map_location::null_location()) {
 			return variant();
@@ -256,6 +257,16 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.max_attacks());
 	} else if(key == "traits") {
 		return formula_callable::convert_vector(u_.get_traits_list());
+	} else if(key == "advancements_taken") {
+		return formula_callable::convert_vector(u_.get_advancements_list());
+	} else if(key == "objects") {
+		return formula_callable::convert_vector(u_.get_objects_list());
+	} else if(key == "traits_count") {
+		return variant(u_.traits_count());
+	} else if(key == "advancements_taken_count") {
+		return variant(u_.advancements_count());
+	} else if(key == "objects_count") {
+		return variant(u_.objects_count());
 	} else if(key == "extra_recruit") {
 		return formula_callable::convert_vector(u_.recruits());
 	} else if(key == "advances_to") {
@@ -353,6 +364,11 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "canrecruit");
 	add_input(inputs, "undead");
 	add_input(inputs, "traits");
+	add_input(inputs, "advancements_taken");
+	add_input(inputs, "objects");
+	add_input(inputs, "traits_count");
+	add_input(inputs, "advancements_taken_count");
+	add_input(inputs, "objects_count");
 	add_input(inputs, "attacks");
 	add_input(inputs, "abilities");
 	add_input(inputs, "hitpoints");
