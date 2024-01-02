@@ -1115,12 +1115,31 @@ public:
 		return trait_nonhidden_ids_;
 	}
 
+	/** Gets a list of the modification this unit currently has.
+	 * @param mod_type type of modification.
+	 * @returns                   A list of modification IDs.
+	 */
+	std::vector<std::string> get_modifications_list(const std::string& mod_type) const;
+
 	/**
 	 * Gets a list of the traits this unit currently has, including hidden traits.
 	 *
 	 * @returns                   A list of trait IDs.
 	 */
-	std::vector<std::string> get_traits_list() const;
+	std::vector<std::string> get_traits_list() const
+	{
+		return get_modifications_list("trait");
+	}
+
+	std::vector<std::string> get_objects_list() const
+	{
+		return get_modifications_list("object");
+	}
+
+	std::vector<std::string> get_advancements_list() const
+	{
+		return get_modifications_list("advancement");
+	}
 
 	/**
 	 * Register a trait's name and its description for the UI's use.
@@ -1515,6 +1534,29 @@ public:
 	 * @return The total number of modifications of that type and ID.
 	 */
 	std::size_t modification_count(const std::string& type, const std::string& id) const;
+
+	/**
+	 * Count modifications of a particular type.
+	 * @param type The type of modification to count.
+	 *             Valid values are "advancement", "trait", "object"
+	 * @return The total number of modifications of that type.
+	 */
+	std::size_t modification_count(const std::string& type) const;
+
+	std::size_t traits_count() const
+	{
+		return modification_count("trait");
+	}
+
+	std::size_t objects_count() const
+	{
+		return modification_count("object");
+	}
+
+	std::size_t advancements_count() const
+	{
+		return modification_count("advancement");
+	}
 
 	/**
 	 * Add a new modification to the unit.
