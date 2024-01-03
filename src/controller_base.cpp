@@ -233,6 +233,9 @@ void controller_base::handle_event(const SDL_Event& event)
 		// Right and down are positive in Wesnoth's map.
 		// Right and up are positive in SDL_MouseWheelEvent on all platforms:
 		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
+#if defined(_WIN32) || defined(__APPLE__)
+		mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
+#else
 		// Except right is wrongly negative on X11 in SDL < 2.0.18:
 		//     https://github.com/libsdl-org/SDL/pull/4700
 		//     https://github.com/libsdl-org/SDL/commit/515b7e9
@@ -241,9 +244,6 @@ void controller_base::handle_event(const SDL_Event& event)
 		// Fixes issues #3362 and #7404, which are a regression caused by pull #2481 that fixed issue #2218.
 		{
 			static int xmul = 0;
-#if defined(_WIN32) || defined(__APPLE__)
-			xmul = 1;
-#else
 			if(xmul == 0) {
 				xmul = 1;
 				const char* video_driver = SDL_GetCurrentVideoDriver();
@@ -257,9 +257,9 @@ void controller_base::handle_event(const SDL_Event& event)
 					}
 				}
 			}
-#endif
 			mh_base.mouse_wheel(xmul * event.wheel.x, -event.wheel.y, is_browsing());
 		}
+#endif
 		break;
 
 	case TIMER_EVENT:
