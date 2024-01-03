@@ -84,6 +84,9 @@ private:
 	/** Callback for loading movetype data in UI */
 	void load_movetype();
 
+	/** Pseudo-combobox callback, to be removed when a real editable combobox exists */
+	void combobox_set_value(std::string id_stem);
+
 	/** Callback for resistance list */
 	void update_resistances();
 	void store_resistances();

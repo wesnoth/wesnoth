@@ -70,6 +70,16 @@ public:
 		return text_.get_length();
 	}
 
+	std::vector<std::string> get_lines()
+	{
+		return text_.get_lines();
+	}
+
+	unsigned get_lines_count() const
+	{
+		return text_.get_lines_count();
+	}
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**

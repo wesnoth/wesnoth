@@ -97,7 +97,7 @@ pango_text::pango_text()
 	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
-	pango_layout_set_line_spacing(layout_.get(), 1.3f);
+	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
@@ -204,7 +204,13 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 
 	// Go the wanted line.
 	if(line != 0) {
-		if(pango_layout_get_line_count(layout_.get()) >= static_cast<int>(line)) {
+// 		Doesn't seem right -- babaissarkar
+//
+//		if(pango_layout_get_line_count(layout_.get()) >= static_cast<int>(line)) {
+//			return point(0, 0);
+//		}
+
+		if(static_cast<int>(line) >= pango_layout_get_line_count(layout_.get())) {
 			return point(0, 0);
 		}
 
@@ -972,6 +978,11 @@ int get_max_height(unsigned size, font::family_class fclass, pango_text::FONT_ST
 		.set_font_style(style)
 		.set_font_size(size)
 		.get_max_glyph_height();
+}
+
+float get_line_spacing_factor() {
+	// For now hardcoded here, can be changed later if necessary. -- babaissarkar
+	return 1.3f;
 }
 
 } // namespace font

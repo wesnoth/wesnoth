@@ -224,6 +224,8 @@ public:
 	 */
 	std::vector<std::string> get_lines() const;
 
+	unsigned get_lines_count() const { return pango_layout_get_line_count(layout_.get()); };
+
 	/**
 	 * Gets the length of the text in bytes.
 	 *
@@ -487,6 +489,9 @@ pango_text& get_text_renderer();
  *                                ascent and descent lengths.
  */
 int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+
+/* Returns the default line spacing factor */
+float get_line_spacing_factor();
 
 } // namespace font
 

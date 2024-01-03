@@ -19,6 +19,7 @@
 		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D4594633BF3F8A06D6AE752F /* prompt.hpp */; };
+		179D4E93A08C5A67B071C6C1 /* spinbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4214F3DA80B54080C4B548F /* spinbox.cpp */; };
 		2D054DAC96B381305EA83ED6 /* gender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B215445395F7DB3A4BF4BA9F /* gender.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		36D74F7F8D7655ACCABE562D /* edit_pbl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FA542D78393E8FF067775DA /* edit_pbl.cpp */; };
@@ -1424,6 +1425,7 @@
 		ECFB9FA8193BFAD900146ED0 /* carryover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FA7193BFAD900146ED0 /* carryover.cpp */; };
 		ECFB9FAA193BFB4B00146ED0 /* game_board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FA9193BFB4B00146ED0 /* game_board.cpp */; };
 		ECFB9FAC193BFB6E00146ED0 /* rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FAB193BFB6E00146ED0 /* rect.cpp */; };
+		F13D4C33BAA4CB9E9AACFCC2 /* spinbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4214F3DA80B54080C4B548F /* spinbox.cpp */; };
 		F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */ = {isa = PBXBuildFile; fileRef = F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */; };
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
@@ -2715,6 +2717,7 @@
 		C679447D91FD3623CC852FF8 /* edit_pbl_translation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = edit_pbl_translation.hpp; sourceTree = "<group>"; };
 		D4594633BF3F8A06D6AE752F /* prompt.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = prompt.hpp; sourceTree = "<group>"; };
 		D9A141EAAE90E98B6F6171D6 /* choose_addon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = choose_addon.hpp; sourceTree = "<group>"; };
+		E4214F3DA80B54080C4B548F /* spinbox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spinbox.cpp; path = spinbox.cpp; sourceTree = "<group>"; };
 		EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_attribute_value.cpp; sourceTree = "<group>"; };
 		EC0341E01ECF46FE000F2E2B /* config_attribute_value.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_attribute_value.hpp; sourceTree = "<group>"; };
 		EC0680231EA920A300EEE03B /* random_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_deterministic.cpp; sourceTree = "<group>"; };
@@ -4074,6 +4077,7 @@
 				46F92D342174F6A300602C1C /* window_private.hpp */,
 				46F92D2E2174F6A300602C1C /* window.cpp */,
 				46F92D472174F6A300602C1C /* window.hpp */,
+				E4214F3DA80B54080C4B548F /* spinbox.cpp */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -5880,6 +5884,7 @@
 				8C704B6F99C824A4073EEBEE /* prompt.cpp in Sources */,
 				DF974010BB46B844E83F7DDA /* tod_new_schedule.cpp in Sources */,
 				835B4DDBAFDD7217F72881B1 /* edit_unit.cpp in Sources */,
+				179D4E93A08C5A67B071C6C1 /* spinbox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6558,6 +6563,7 @@
 				7BFC4DF5BFF8CF75855BA662 /* prompt.cpp in Sources */,
 				C93048A9AE576B6AD016DFA4 /* tod_new_schedule.cpp in Sources */,
 				7A4E407187ED448727B648A4 /* edit_unit.cpp in Sources */,
+				F13D4C33BAA4CB9E9AACFCC2 /* spinbox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6661,15 +6667,15 @@
 					"$(PROJECT_DIR)/Headers/SDL2",
 					"$(PROJECT_DIR)/Headers/harfbuzz",
 				);
+				LD_CLASSIC_1000 = "";
+				LD_CLASSIC_1100 = "";
+				LD_CLASSIC_1200 = "";
+				LD_CLASSIC_1300 = "";
+				LD_CLASSIC_1400 = "";
+				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				"LD_CLASSIC_1000" = "";
-				"LD_CLASSIC_1100" = "";
-				"LD_CLASSIC_1200" = "";
-				"LD_CLASSIC_1300" = "";
-				"LD_CLASSIC_1400" = "";
-				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -6735,16 +6741,16 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				LD_CLASSIC_1000 = "";
+				LD_CLASSIC_1100 = "";
+				LD_CLASSIC_1200 = "";
+				LD_CLASSIC_1300 = "";
+				LD_CLASSIC_1400 = "";
+				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = "-Wall";
 				OTHER_CPLUSPLUSFLAGS = "-Wall";
-				"LD_CLASSIC_1000" = "";
-				"LD_CLASSIC_1100" = "";
-				"LD_CLASSIC_1200" = "";
-				"LD_CLASSIC_1300" = "";
-				"LD_CLASSIC_1400" = "";
-				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -7130,15 +7136,15 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				LD_CLASSIC_1000 = "";
+				LD_CLASSIC_1100 = "";
+				LD_CLASSIC_1200 = "";
+				LD_CLASSIC_1300 = "";
+				LD_CLASSIC_1400 = "";
+				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_CFLAGS = "-Wall";
 				OTHER_CPLUSPLUSFLAGS = "-Wall";
-				"LD_CLASSIC_1000" = "";
-				"LD_CLASSIC_1100" = "";
-				"LD_CLASSIC_1200" = "";
-				"LD_CLASSIC_1300" = "";
-				"LD_CLASSIC_1400" = "";
-				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -7196,16 +7202,16 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				LD_CLASSIC_1000 = "";
+				LD_CLASSIC_1100 = "";
+				LD_CLASSIC_1200 = "";
+				LD_CLASSIC_1300 = "";
+				LD_CLASSIC_1400 = "";
+				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = "-Wall";
 				OTHER_CPLUSPLUSFLAGS = "-Wall";
-				"LD_CLASSIC_1000" = "";
-				"LD_CLASSIC_1100" = "";
-				"LD_CLASSIC_1200" = "";
-				"LD_CLASSIC_1300" = "";
-				"LD_CLASSIC_1400" = "";
-				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -7281,17 +7287,17 @@
 					"$(PROJECT_DIR)/Headers/SDL2",
 					"$(PROJECT_DIR)/Headers/harfbuzz",
 				);
+				LD_CLASSIC_1000 = "";
+				LD_CLASSIC_1100 = "";
+				LD_CLASSIC_1200 = "";
+				LD_CLASSIC_1300 = "";
+				LD_CLASSIC_1400 = "";
+				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-Wall";
-				"LD_CLASSIC_1000" = "";
-				"LD_CLASSIC_1100" = "";
-				"LD_CLASSIC_1200" = "";
-				"LD_CLASSIC_1300" = "";
-				"LD_CLASSIC_1400" = "";
-				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
@@ -7336,15 +7342,15 @@
 					"$(PROJECT_DIR)/Headers/SDL2",
 					"$(PROJECT_DIR)/Headers/harfbuzz",
 				);
+				LD_CLASSIC_1000 = "";
+				LD_CLASSIC_1100 = "";
+				LD_CLASSIC_1200 = "";
+				LD_CLASSIC_1300 = "";
+				LD_CLASSIC_1400 = "";
+				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				"LD_CLASSIC_1000" = "";
-				"LD_CLASSIC_1100" = "";
-				"LD_CLASSIC_1200" = "";
-				"LD_CLASSIC_1300" = "";
-				"LD_CLASSIC_1400" = "";
-				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",

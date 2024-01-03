@@ -1427,11 +1427,21 @@ template<>
 struct dialog_tester<editor_edit_unit>
 {
 	config cfg;
-
+	game_config_view view;
+	
 	dialog_tester() {}
 	editor_edit_unit* create()
 	{
-		return new editor_edit_unit(game_config_view::wrap(cfg), "test_addon");
+		config& units = cfg.add_child("units");
+		cfg.add_child("race");
+		config& movetype = units.add_child("movetype");
+		movetype["name"] = "Test Movetype";
+		movetype.add_child("defense");
+		movetype.add_child("resistance");
+		movetype.add_child("movement_costs");
+		view = game_config_view::wrap(cfg);
+		return new editor_edit_unit(view, "test_addon");
+		//return new editor_edit_unit(game_config_view::wrap(test_gui2_fixture::main_config), "test_addon");
 	}
 };
 
