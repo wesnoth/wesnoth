@@ -95,6 +95,17 @@ public:
 		return values_[selected_]["label"];
 	}
 
+	/** Selects the row whose label equals the given string */
+	void set_selected_from_string(std::string label, bool fire_event = false)
+	{
+		for (unsigned i = 0; i < values_.size(); ++i) {
+			if(values_.at(i)["label"] == label) {
+				set_selected(i, fire_event);
+				break;
+			}
+		}
+	}
+
 	/** Returns the entire config object for the selected row. */
 	const ::config& get_value_config() const
 	{

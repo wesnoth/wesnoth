@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "units/types.hpp"
+#include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
@@ -119,6 +120,8 @@ void editor_edit_unit::pre_show(window& win) {
 	}
 
 	menu_button& resistances = find_widget<menu_button>(&win, "resistances_list", false);
+	menu_button& attack_types = find_widget<menu_button>(&win, "attack_type_list", false);
+
 	const config& resistances_attr = game_config_
 				.mandatory_child("units")
 				.mandatory_child("movetype")
@@ -129,11 +132,9 @@ void editor_edit_unit::pre_show(window& win) {
 
 	if (resistances_list_.size() > 0) {
 		resistances.set_values(resistances_list_);
+		attack_types.set_values(resistances_list_);
 		res_toggles_.resize(resistances_list_.size());
 	}
-
-	menu_button& attack_types = find_widget<menu_button>(&win, "attack_type_list", false);
-	attack_types.set_values(resistances_list_);
 
 	menu_button& usage_types = find_widget<menu_button>(&win, "usage_list", false);
 	usage_type_list_.emplace_back("label", _("scout"));
@@ -179,6 +180,10 @@ void editor_edit_unit::pre_show(window& win) {
 		std::bind(&editor_edit_unit::update_image, this, "attack_image"));
 
 	connect_signal_mouse_left_click(
+		find_widget<button>(&win, "load_unit_type", false),
+			std::bind(&editor_edit_unit::load_unit_type, this));
+
+	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "load_movetype", false),
 		std::bind(&editor_edit_unit::load_movetype, this));
 
@@ -202,7 +207,6 @@ void editor_edit_unit::pre_show(window& win) {
 		find_widget<toggle_button>(&win, "defense_checkbox", false),
 		std::bind(&editor_edit_unit::enable_defense_slider, this));
 
-
 	connect_signal_notify_modified(
 		find_widget<slider>(&win, "movement_costs_slider", false),
 		std::bind(&editor_edit_unit::store_movement_costs, this));
@@ -213,9 +217,21 @@ void editor_edit_unit::pre_show(window& win) {
 		find_widget<toggle_button>(&win, "movement_costs_checkbox", false),
 		std::bind(&editor_edit_unit::enable_movement_slider, this));
 
-	enable_resistances_slider();
+	if (!res_toggles_.empty()) {
+		enable_resistances_slider();
+	}
+
+	if (!def_toggles_.empty()) {
 	enable_defense_slider();
+	}
+
+	if (!move_toggles_.empty()) {
 	enable_movement_slider();
+	}
+
+	connect_signal_notify_modified(
+		find_widget<menu_button>(&win, "atk_list", false),
+		std::bind(&editor_edit_unit::select_attack, this));
 
 	connect_signal_notify_modified(
 		find_widget<text_box>(&win, "name_box", false),
@@ -308,7 +324,7 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 		SDL_Surface * img_surf = IMG_Load(&*dlg.path().begin());
 		int w, h;
 		bool big_image;
-		if (img_surf->w > 300) {
+		if (img_surf->w > 200) {
 			w = (img_surf->w > 200) ? 200 : img_surf->w;
 			h = (img_surf->h > 200) ? 200 : img_surf->h;
 			big_image = true;
@@ -324,13 +340,84 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 			path.str(path.str().replace(0, addons_dir.size()+1, ""));
 		}
 
+		path.seekp(0, std::ios_base::end);
 		if (big_image) {
 			path << "~SCALE(" << w << "," << h << ")";
 		}
+
 		find_widget<text_box>(get_window(), "path_"+id_stem, false).set_value(path.str());
 		update_image(id_stem);
 	}
 
+}
+
+void editor_edit_unit::load_unit_type() {
+	gui2::dialogs::unit_create dlg_uc;
+	if (dlg_uc.show()) {
+		const unit_type *type = unit_types.find(dlg_uc.choice());
+
+		stacked_widget& page = find_widget<stacked_widget>(get_window(), "page", false);
+		page.select_layer(0);
+		find_widget<text_box>(get_window(), "id_box", false).set_value(type->id());
+		find_widget<text_box>(get_window(), "name_box", false).set_value(type->type_name());
+		find_widget<slider>(get_window(), "level_box", false).set_value(type->level());
+		find_widget<slider>(get_window(), "cost_slider", false).set_value(type->cost());
+		find_widget<text_box>(get_window(), "adv_box", false).set_value(utils::join(type->advances_to()));
+		find_widget<slider>(get_window(), "hp_slider", false).set_value(type->hitpoints());
+		find_widget<slider>(get_window(), "xp_slider", false).set_value(type->experience_needed());
+		find_widget<slider>(get_window(), "move_slider", false).set_value(type->movement());
+		find_widget<text_box>(get_window(), "desc_box", false).set_value(type->unit_description());
+		find_widget<text_box>(get_window(), "adv_box", false).set_value(utils::join(type->advances_to(), ", "));
+		find_widget<text_box>(get_window(), "path_unit_image", false).set_value(type->image());
+		find_widget<text_box>(get_window(), "path_portrait_image", false).set_value(type->big_profile());
+
+		for (const auto& gender : type->genders())
+		{
+			if (gender == unit_race::GENDER::MALE) {
+				find_widget<toggle_button>(get_window(), "gender_male", false).set_value(true);
+			}
+
+			if (gender == unit_race::GENDER::FEMALE) {
+				find_widget<toggle_button>(get_window(), "gender_female", false).set_value(true);
+			}
+		}
+
+		find_widget<menu_button>(get_window(), "race_list", false).set_selected_from_string(type->race_id());
+		find_widget<menu_button>(get_window(), "alignment_list", false).set_selected_from_string(unit_alignments::get_string(type->alignment()));
+
+		update_image("unit_image");
+
+		page.select_layer(1);
+		find_widget<text_box>(get_window(), "path_small_profile_image", false).set_value(type->small_profile());
+//		find_widget<menu_button>(get_window(), "movetype_list", false).set_selected(type->movement_type());
+		find_widget<menu_button>(get_window(), "usage_list", false).set_selected_from_string(type->usage());
+
+		update_image("small_profile_image");
+
+		page.select_layer(2);
+		attacks_.clear();
+		for(const auto& atk : type->attacks())
+		{
+			config attack;
+			boost::dynamic_bitset<> enabled(specials_list_.size());
+			attack["id"] = atk.id();
+			attack["name"] = atk.name();
+			attack["icon"] = atk.icon();
+			attack["range"] = atk.range();
+			attack["damage"] = atk.damage();
+			attack["number"] = atk.num_attacks();
+			attack["type"] = atk.type();
+			attacks_.push_back(std::make_pair(enabled, attack));
+		}
+
+		selected_attack_ = 1;
+		update_attacks();
+		update_index();
+
+		page.select_layer(0);
+	}
+
+	// FIXME: Complete this.
 }
 
 void editor_edit_unit::save_unit_type() {
@@ -351,7 +438,7 @@ void editor_edit_unit::save_unit_type() {
 	utype["name"] = t_string(find_widget<text_box>(get_window(), "name_box", false).get_value(), current_textdomain);
 	utype["image"] = find_widget<text_box>(get_window(), "path_unit_image", false).get_value();
 	utype["profile"] = find_widget<text_box>(get_window(), "path_portrait_image", false).get_value();
-	utype["level"] = find_widget<text_box>(get_window(), "level_box", false).get_value();
+	utype["level"] = find_widget<slider>(get_window(), "level_box", false).get_value();
 	utype["advances_to"] = find_widget<text_box>(get_window(), "adv_box", false).get_value();
 	utype["hitpoints"] = find_widget<slider>(get_window(), "hp_slider", false).get_value();
 	utype["experience"] = find_widget<slider>(get_window(), "xp_slider", false).get_value();
@@ -506,8 +593,8 @@ void editor_edit_unit::store_attack() {
 	attack["name"] = find_widget<text_box>(get_window(), "atk_name_box", false).get_value();
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
 	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
-	attack["damage"] = find_widget<text_box>(get_window(), "dmg_box", false).get_value();
-	attack["number"] = find_widget<text_box>(get_window(), "dmg_num_box", false).get_value();
+	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
+	attack["number"] = find_widget<slider>(get_window(), "dmg_num_box", false).get_value();
 	if (find_widget<toggle_button>(get_window(), "range_melee", false).get_value()) {
 		attack["range"] = "melee";
 	}
@@ -529,8 +616,8 @@ void editor_edit_unit::update_attacks() {
 	find_widget<text_box>(get_window(), "atk_name_box", false).set_value(attack["name"]);
 	find_widget<text_box>(get_window(), "path_attack_image", false).set_value(attack["icon"]);
 	update_image("attack_image");
-	find_widget<text_box>(get_window(), "dmg_box", false).set_value(attack["damage"]);
-	find_widget<text_box>(get_window(), "dmg_num_box", false).set_value(attack["number"]);
+	find_widget<slider>(get_window(), "dmg_box", false).set_value(attack["damage"]);
+	find_widget<slider>(get_window(), "dmg_num_box", false).set_value(attack["number"]);
 
 	if (attack["range"] == "melee") {
 		find_widget<toggle_button>(get_window(), "range_melee", false).set_value(true);
@@ -541,12 +628,15 @@ void editor_edit_unit::update_attacks() {
 		find_widget<toggle_button>(get_window(), "range_ranged", false).set_value(true);
 	}
 
-	for (unsigned int i = 0; i < resistances_list_.size(); i++) {
-		if (resistances_list_.at(i)["label"] == attack["type"]) {
-			find_widget<menu_button>(get_window(), "attack_type_list", false).set_value(i);
-			break;
-		}
-	}
+//	for (unsigned int i = 0; i < resistances_list_.size(); i++) {
+//		if (resistances_list_.at(i)["label"] == attack["type"]) {
+//			find_widget<menu_button>(get_window(), "attack_type_list", false).set_value(i);
+//			break;
+//		}
+//	}
+
+	find_widget<menu_button>(get_window(), "attack_type_list", false).set_selected_from_string(attack["type"]);
+
 
 	find_widget<multimenu_button>(get_window(), "weapon_specials_list", false)
 		.select_options(attacks_.at(selected_attack_-1).first);
@@ -572,6 +662,15 @@ void editor_edit_unit::update_index() {
 		find_widget<button>(get_window(), "atk_next", false).set_active(true);
 	}
 
+
+	if (attacks_.size() > 0) {
+		std::vector<config> atk_name_list;
+		for(const auto& atk_data : attacks_) {
+			atk_name_list.emplace_back("label", atk_data.second["name"]);
+		}
+		find_widget<menu_button>(get_window(), "atk_list", false).set_values(atk_name_list);
+	}
+
 	//Set index
 	const std::string new_index_str = formatter() << selected_attack_ << "/" << attacks_.size();
 	find_widget<label>(get_window(), "atk_number", false).set_label(new_index_str);
@@ -586,8 +685,8 @@ void editor_edit_unit::add_attack() {
 	attack["name"] = find_widget<text_box>(get_window(), "atk_name_box", false).get_value();
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
 	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
-	attack["damage"] = find_widget<text_box>(get_window(), "dmg_box", false).get_value();
-	attack["number"] = find_widget<text_box>(get_window(), "dmg_num_box", false).get_value();
+	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
+	attack["number"] = find_widget<slider>(get_window(), "dmg_num_box", false).get_value();
 	if (find_widget<toggle_button>(get_window(), "range_melee", false).get_value()) {
 		attack["range"] = "melee";
 	}
@@ -651,6 +750,12 @@ void editor_edit_unit::prev_attack() {
 		update_attacks();
 	}
 
+	update_index();
+}
+
+void editor_edit_unit::select_attack() {
+	selected_attack_ = find_widget<menu_button>(get_window(), "atk_list", false).get_value()+1;
+	update_attacks();
 	update_index();
 }
 

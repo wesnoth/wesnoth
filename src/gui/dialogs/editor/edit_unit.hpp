@@ -107,6 +107,7 @@ private:
 	void update_index();
 	void next_attack();
 	void prev_attack();
+	void select_attack();
 
 	/** Callback when an tab item in the "page" listbox is selected */
 	void on_page_select();
