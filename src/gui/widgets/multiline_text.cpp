@@ -224,7 +224,7 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 	line_no_ = line;
 
 	const auto& lines = get_lines();
-	for (int i = 0; i < line_no_; ++i) {
+	for (unsigned int i = 0; i < line_no_; ++i) {
 		offset += lines.at(i).size() + i;
 	}
 
