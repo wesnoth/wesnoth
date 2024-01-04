@@ -1106,7 +1106,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
 		return std::make_unique<scale_modification>(*size, "SCALE_INTO_SHARP", mode);
 	} else {
-		ERR_DP << "no arguments passed to the ~SCALE_INTO() function";
+		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function";
 		return nullptr;
 	}
 }
