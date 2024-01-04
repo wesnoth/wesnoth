@@ -462,63 +462,39 @@ surface light_modification::operator()(const surface& src) const {
 
 surface scale_modification::operator()(const surface& src) const
 {
-	std::pair<int,int> sz = calculate_size(src);
+	point size = target_size_;
 
-	if(nn_) {
-		return scale_surface_sharp(src, sz.first, sz.second);
-	} else {
-		return scale_surface_legacy(src, sz.first, sz.second);
-	}
-}
-
-std::pair<int,int> scale_exact_modification::calculate_size(const surface& src) const
-{
-	const int old_w = src->w;
-	const int old_h = src->h;
-	int w = get_w();
-	int h = get_h();
-
-	if(w <= 0) {
-		if(w < 0) {
+	if(size.x <= 0) {
+		if(size.x < 0) {
 			ERR_DP << "width of " << fn_ << " is negative - resetting to original width";
 		}
-		w = old_w;
+		size.x = src->w;
 	}
 
-	if(h <= 0) {
-		if(h < 0) {
+	if(size.y <= 0) {
+		if(size.y < 0) {
 			ERR_DP << "height of " << fn_ << " is negative - resetting to original height";
 		}
-		h = old_h;
+		size.y = src->h;
 	}
 
-	return {w, h};
-}
+	if(flags_ & PRESERVE_ASPECT_RATIO) {
+		const auto ratio = std::min(
+			static_cast<long double>(size.x) / src->w,
+			static_cast<long double>(size.y) / src->h
+		);
 
-std::pair<int,int> scale_into_modification::calculate_size(const surface& src) const
-{
-	const int old_w = src->w;
-	const int old_h = src->h;
-	long double w = get_w();
-	long double h = get_h();
-
-	if(w <= 0) {
-		if(w < 0) {
-			ERR_DP << "width of SCALE_INTO is negative - resetting to original width";
-		}
-		w = old_w;
+		size = {
+			static_cast<int>(src->w * ratio),
+			static_cast<int>(src->h * ratio)
+		};
 	}
 
-	if(h <= 0) {
-		if(h < 0) {
-			ERR_DP << "height of SCALE_INTO is negative - resetting to original height";
-		}
-		h = old_h;
+	if(flags_ & SCALE_SHARP) {
+		return scale_surface_sharp(src, size.x, size.y);
+	} else {
+		return scale_surface_legacy(src, size.x, size.y);
 	}
-
-	long double ratio = std::min(w / old_w, h / old_h);
-
-	return {static_cast<int>(old_w * ratio), static_cast<int>(old_h * ratio)};
 }
 
 surface xbrz_modification::operator()(const surface& src) const
@@ -1077,15 +1053,15 @@ REGISTER_MOD_PARSER(SCALE, args)
 		return nullptr;
 	}
 
-	int w = 0, h = 0;
-
-	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+	point size{0, 0};
+	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
 
 	if(s > 1) {
-		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return std::make_unique<scale_exact_modification>(w, h, "SCALE", false);
+	constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::FIT_TO_SIZE;
+	return std::make_unique<scale_modification>(size, "SCALE", mode);
 }
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
@@ -1098,15 +1074,15 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 		return nullptr;
 	}
 
-	int w = 0, h = 0;
-
-	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+	point size{0, 0};
+	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
 
 	if(s > 1) {
-		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return std::make_unique<scale_exact_modification>(w, h, "SCALE_SHARP", true);
+	constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::FIT_TO_SIZE;
+	return std::make_unique<scale_modification>(size, "SCALE_SHARP", mode);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
@@ -1119,15 +1095,15 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 		return nullptr;
 	}
 
-	int w = 0, h = 0;
-
-	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+	point size{0, 0};
+	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
 
 	if(s > 1) {
-		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return std::make_unique<scale_into_modification>(w, h, "SCALE_INTO", false);
+	constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::PRESERVE_ASPECT_RATIO;
+	return std::make_unique<scale_modification>(size, "SCALE_INTO", mode);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
@@ -1140,15 +1116,15 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 		return nullptr;
 	}
 
-	int w = 0, h = 0;
-
-	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+	point size{0, 0};
+	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
 
 	if(s > 1) {
-		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	return std::make_unique<scale_into_modification>(w, h, "SCALE_INTO_SHARP", true);
+	constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
+	return std::make_unique<scale_modification>(size, "SCALE_INTO_SHARP", mode);
 }
 
 // xBRZ
