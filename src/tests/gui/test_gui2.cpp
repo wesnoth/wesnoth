@@ -1428,7 +1428,7 @@ struct dialog_tester<editor_edit_unit>
 {
 	config cfg;
 	game_config_view view;
-	
+
 	dialog_tester() {}
 	editor_edit_unit* create()
 	{
