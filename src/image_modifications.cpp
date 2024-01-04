@@ -1042,15 +1042,16 @@ REGISTER_MOD_PARSER(L, args)
 	return std::make_unique<light_modification>(surf);
 }
 
-// Scale
-REGISTER_MOD_PARSER(SCALE, args)
+namespace
+{
+/** Common helper function to parse scaling IPF inputs. */
+std::optional<point> parse_scale_args(const std::string& args)
 {
 	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE() function";
-		return nullptr;
+		return std::nullopt;
 	}
 
 	point size{0, 0};
@@ -1060,71 +1061,54 @@ REGISTER_MOD_PARSER(SCALE, args)
 		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
 	}
 
-	constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::FIT_TO_SIZE;
-	return std::make_unique<scale_modification>(size, "SCALE", mode);
+	return size;
+}
+
+} // namespace
+
+// Scale
+REGISTER_MOD_PARSER(SCALE, args)
+{
+	if(auto size = parse_scale_args(args)) {
+		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::FIT_TO_SIZE;
+		return std::make_unique<scale_modification>(*size, "SCALE", mode);
+	} else {
+		ERR_DP << "no arguments passed to the ~SCALE() function";
+		return nullptr;
+	}
 }
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
 {
-	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = scale_params.size();
-
-	if(s == 0 || (s == 1 && scale_params[0].empty())) {
+	if(auto size = parse_scale_args(args)) {
+		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::FIT_TO_SIZE;
+		return std::make_unique<scale_modification>(*size, "SCALE_SHARP", mode);
+	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function";
 		return nullptr;
 	}
-
-	point size{0, 0};
-	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
-
-	if(s > 1) {
-		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
-	}
-
-	constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::FIT_TO_SIZE;
-	return std::make_unique<scale_modification>(size, "SCALE_SHARP", mode);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
 {
-	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = scale_params.size();
-
-	if(s == 0 || (s == 1 && scale_params[0].empty())) {
+	if(auto size = parse_scale_args(args)) {
+		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::PRESERVE_ASPECT_RATIO;
+		return std::make_unique<scale_modification>(*size, "SCALE_INTO", mode);
+	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO() function";
 		return nullptr;
 	}
-
-	point size{0, 0};
-	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
-
-	if(s > 1) {
-		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
-	}
-
-	constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::PRESERVE_ASPECT_RATIO;
-	return std::make_unique<scale_modification>(size, "SCALE_INTO", mode);
 }
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 {
-	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = scale_params.size();
-
-	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function";
+	if(auto size = parse_scale_args(args)) {
+		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
+		return std::make_unique<scale_modification>(*size, "SCALE_INTO_SHARP", mode);
+	} else {
+		ERR_DP << "no arguments passed to the ~SCALE_INTO() function";
 		return nullptr;
 	}
-
-	point size{0, 0};
-	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
-
-	if(s > 1) {
-		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
-	}
-
-	constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
-	return std::make_unique<scale_modification>(size, "SCALE_INTO_SHARP", mode);
 }
 
 // xBRZ
