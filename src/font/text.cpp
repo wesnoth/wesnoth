@@ -980,11 +980,6 @@ int get_max_height(unsigned size, font::family_class fclass, pango_text::FONT_ST
 		.get_max_glyph_height();
 }
 
-float get_line_spacing_factor() {
-	// For now hardcoded here, can be changed later if necessary. -- babaissarkar
-	return 1.3f;
-}
-
 } // namespace font
 
 namespace std

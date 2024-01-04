@@ -490,8 +490,9 @@ pango_text& get_text_renderer();
  */
 int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
-/* Returns the default line spacing factor */
-float get_line_spacing_factor();
+/* Returns the default line spacing factor
+ * For now hardcoded here */
+constexpr float get_line_spacing_factor() { return 1.3f; };
 
 } // namespace font
 
