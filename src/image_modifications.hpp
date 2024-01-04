@@ -434,10 +434,10 @@ class scale_modification : public modification
 public:
 	// Bit-unique scaling flags
 	enum SCALE_FLAGS : uint8_t {
-		SCALE_LINEAR = 0u,
-		SCALE_SHARP = 1u,
-		FIT_TO_SIZE = 2u,
-		PRESERVE_ASPECT_RATIO = 4u
+		SCALE_LINEAR          = 0b00000,
+		SCALE_SHARP           = 0b00001,
+		FIT_TO_SIZE           = 0b00010,
+		PRESERVE_ASPECT_RATIO = 0b00100,
 	};
 
 	scale_modification(point target_size, const std::string& fn, uint8_t flags)
