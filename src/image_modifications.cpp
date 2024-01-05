@@ -1104,7 +1104,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 }
 
 // xBRZ
-REGISTER_MOD_PARSER(XBRZ, args)
+REGISTER_MOD_PARSER(XBRZ, )
 {
 	deprecated_message("~XBRZ()", DEP_LEVEL::REMOVED, {1, 17, 25}, "The ~XBRZ() IPF has been removed. Use ~SCALE_SHARP() instead");
 	return nullptr;
