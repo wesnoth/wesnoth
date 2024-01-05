@@ -233,7 +233,7 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 }
 
 unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
-	unsigned i = 0, line_start = 0, line_end = 0, line_no;
+	unsigned i = 0, line_start = 0, line_end = 0, line_no = 0;
 	if ( offset <= get_length() ) {
 		for(const auto& line : get_lines()) {
 			line_start = line_end;

@@ -84,7 +84,7 @@ void editor_edit_unit::pre_show(window& win) {
 	alignments.set_values(align_list_);
 
 	menu_button& races = find_widget<menu_button>(&win, "race_list", false);
-//	combobox& race_box = find_widget<combobox>(&win, "race_box", false);
+	combobox& race_box = find_widget<combobox>(&win, "race_box", false);
 
 	for(const race_map::value_type &i : unit_types.races()) {
 		const std::string& race_name = i.second.id();
@@ -93,7 +93,7 @@ void editor_edit_unit::pre_show(window& win) {
 
 	if (race_list_.size() > 0) {
 		races.set_values(race_list_);
-//		race_box.set_values(race_list_);
+		race_box.set_values(race_list_);
 	}
 
 	menu_button& movetypes = find_widget<menu_button>(&win, "movetype_list", false);

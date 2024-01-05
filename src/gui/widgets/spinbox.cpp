@@ -155,10 +155,9 @@ void spinbox::signal_handler_left_button_down(const event::ui_event event, bool&
 
 	int x = get_x() + this->get_size().x;
 	int mx = get_mouse_position().x;
-	std::cout << x << "," << mx << std::endl;
-	if ((mx <= x) && (mx >= x-25)) {
+	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
 		next();
-	} else if ((mx <= get_x()+25) && (mx >= get_x())) {
+	} else if ((mx <= get_x()+ICON_SIZE) && (mx >= get_x())) {
 		prev();
 	}
 

@@ -59,19 +59,6 @@ public:
 
 	unsigned selected_;
 
-	/** Saves the text in the widget to the history. */
-	void save_to_history()
-	{
-		history_.push(get_value());
-	}
-
-	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	void set_history(const std::string& id)
-	{
-		history_ = text_history::get_history(id, true);
-	}
-
 	void set_max_input_length(const std::size_t length)
 	{
 		max_input_length_ = length;
@@ -126,11 +113,14 @@ protected:
 	void handle_mouse_selection(point mouse, const bool start_selection);
 
 private:
-	/** The history text for this widget. */
-	text_history history_;
 
 	/** The maximum length of the text input. */
 	std::size_t max_input_length_;
+
+	/** Size of the dropdown icon
+	 * TODO : Should be dynamically loaded from image
+	 */
+	unsigned const ICON_SIZE = 25;
 
 	/**
 	 * The x offset in the widget where the text starts.
@@ -169,43 +159,23 @@ private:
 	/**
 	 * Inherited from text_box_base.
 	 *
-	 * Unmodified                 Unhandled.
+	 * Unmodified                 Handled.
 	 * Control                    Ignored.
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
-	{
-	}
+	void handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled) override;
 
 	/**
 	 * Inherited from text_box_base.
 	 *
-	 * Unmodified                 Unhandled.
+	 * Unmodified                 Handled.
 	 * Control                    Ignored.
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
-	{
-	}
+	void handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled) override;
 
-	/**
-	 * Goes one item up in the history.
-	 *
-	 * @returns                   True if there's a history, false otherwise.
-	 */
-	bool history_up();
-
-	/**
-	 * Goes one item down in the history.
-	 *
-	 * @returns                   True if there's a history, false otherwise.
-	 */
-	bool history_down();
-
-	/** Inherited from text_box_base. */
-	void handle_key_tab(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;

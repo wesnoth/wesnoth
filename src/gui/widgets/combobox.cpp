@@ -30,6 +30,7 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
+
 namespace gui2
 {
 
@@ -41,7 +42,6 @@ combobox::combobox(const implementation::builder_styled_widget& builder)
 	: text_box_base(builder, type())
 	, values_()
 	, selected_(0)
-	, history_()
 	, max_input_length_(0)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
@@ -75,7 +75,7 @@ void combobox::place(const point& origin, const point& size)
 	// Inherited.
 	styled_widget::place(origin, size);
 
-	set_maximum_width(get_text_maximum_width());
+	set_maximum_width(get_text_maximum_width()-ICON_SIZE);
 	set_maximum_height(get_text_maximum_height(), false);
 
 	set_maximum_length(max_input_length_);
@@ -135,7 +135,7 @@ void combobox::update_canvas()
 
 	/***** Set in all canvases *****/
 
-	const int max_width = get_text_maximum_width();
+	const int max_width = get_text_maximum_width() - ICON_SIZE;
 	const int max_height = get_text_maximum_height();
 
 	for(auto & tmp : get_canvases())
@@ -243,48 +243,28 @@ void combobox::update_offsets()
 	update_canvas();
 }
 
-bool combobox::history_up()
-{
-	if(!history_.get_enabled()) {
-		return false;
-	}
-
-	const std::string str = history_.up(get_value());
-	if(!str.empty()) {
-		set_value(str);
-	}
-	return true;
-}
-
-bool combobox::history_down()
-{
-	if(!history_.get_enabled()) {
-		return false;
-	}
-
-	const std::string str = history_.down(get_value());
-	if(!str.empty()) {
-		set_value(str);
-	}
-	return true;
-}
-
-void combobox::handle_key_tab(SDL_Keymod modifier, bool& handled)
-{
-	if(modifier & KMOD_CTRL) {
-		if(!(modifier & KMOD_SHIFT)) {
-			handled = history_up();
-		} else {
-			handled = history_down();
-		}
-	}
-}
-
 void combobox::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 {
 	handled = true;
-
 	set_value("");
+}
+
+void combobox::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
+{
+	DBG_GUI_E << LOG_SCOPE_HEADER;
+	handled = true;
+	if (selected_ > 1) {
+		set_selected(selected_ - 1, true);
+	}
+}
+
+void combobox::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
+{
+	DBG_GUI_E << LOG_SCOPE_HEADER;
+	handled = true;
+	if (selected_ < values_.size()-1) {
+		set_selected(selected_ + 1, true);
+	}
 }
 
 void combobox::set_values(const std::vector<::config>& values, unsigned selected)
@@ -342,12 +322,12 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 	/* get_x() is the left border
 	 * this->get_size().x is the size of this widget
 	 * so get_x() + this->get_size().x is the right border
-	 * 25 is the size of the left/right arrow icons. */
+	 * ICON_SIZE is the size of the icon. */
 
-	int x = get_x() + this->get_size().x;
-	int mx = get_mouse_position().x;
+	unsigned x = get_x() + this->get_size().x;
+	unsigned mx = get_mouse_position().x;
 
-	if ((mx <= x) && (mx >= x-25)) {
+	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
 		// If a button has a retval do the default handling.
 		dialogs::drop_down_menu droplist(this, values_, selected_, false);
 
@@ -424,7 +404,6 @@ namespace implementation
 
 builder_combobox::builder_combobox(const config& cfg)
 	: builder_styled_widget(cfg)
-	, history(cfg["history"])
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
@@ -437,10 +416,6 @@ std::unique_ptr<widget> builder_combobox::build() const
 
 	// A combobox doesn't have a label but a text
 	widget->set_value(label_string);
-
-	if(!history.empty()) {
-		widget->set_history(history);
-	}
 
 	widget->set_max_input_length(max_input_length);
 	widget->set_hint_data(hint_text, hint_image);
