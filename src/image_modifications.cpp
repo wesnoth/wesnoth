@@ -17,6 +17,7 @@
 
 #include "color.hpp"
 #include "config.hpp"
+#include "deprecation.hpp"
 #include "game_config.hpp"
 #include "picture.hpp"
 #include "lexical_cast.hpp"
@@ -495,15 +496,6 @@ surface scale_modification::operator()(const surface& src) const
 	} else {
 		return scale_surface_legacy(src, size.x, size.y);
 	}
-}
-
-surface xbrz_modification::operator()(const surface& src) const
-{
-	if(z_ == 1) {
-		return src;
-	}
-
-	return scale_surface_xbrz(src, z_);
 }
 
 /*
@@ -1114,15 +1106,9 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	int z = lexical_cast_default<int, const std::string &>(args);
-	if(z < 1 || z > 5) {
-		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
-	}
-
-	return std::make_unique<xbrz_modification>(z);
+	deprecated_message("~XBRZ()", DEP_LEVEL::REMOVED, {1, 17, 25}, "The ~XBRZ() IPF has been removed. Use ~SCALE_SHARP() instead");
+	return nullptr;
 }
-
-// scale
 
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
