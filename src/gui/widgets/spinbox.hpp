@@ -85,14 +85,14 @@ public:
 	{
 		// Allow negatives?
 		if (get_value() > 0) {
-			set_value(get_value() - 1);
+			set_value(get_value() - step_size_);
 		}
 	}
 
 	void next()
 	{
 		// No max value
-		set_value(get_value() + 1);
+		set_value(get_value() + step_size_);
 	}
 
 

@@ -137,9 +137,6 @@ void multiline_text::update_canvas()
 
 	/***** Set in all canvases *****/
 
-	std::cout << "row :" << line_no_ <<  std::endl;
-	std::cout << "offset :" << get_selection_start() << std::endl;
-
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
 
@@ -225,10 +222,8 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 
 	const auto& lines = get_lines();
 	for (unsigned int i = 0; i < line_no_; ++i) {
-		offset += lines.at(i).size() + i;
+		offset += lines.at(i).size() + 1;
 	}
-
-	std::cout << "(handle_mouse_selection) offset : " << offset << "line : " << line << std::endl;
 
 	set_cursor(offset, !start_selection);
 
@@ -237,29 +232,31 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 	dragging_ |= start_selection;
 }
 
-void multiline_text::set_line_no_from_offset()
-{
-	unsigned selection_offset = get_selection_start(), i = 0, line_start = 0, line_end = 0;
-
-	if ( selection_offset <= get_length() ) {
+unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
+	unsigned i = 0, line_start = 0, line_end = 0, line_no;
+	if ( offset <= get_length() ) {
 		for(const auto& line : get_lines()) {
 			line_start = line_end;
-			line_end += line.size() + i;
-			if ((selection_offset > line_start) && (selection_offset <= line_end)) {
-				line_no_ = i;
+			line_end += line.size() + 1;
+			if ((offset > line_start) && (offset <= line_end)) {
+				line_no = i;
 				break;
 			} else {
 				i++;
 			}
 		}
 	}
+	return line_no;
+}
 
-	std::cout << selection_offset << "->" << line_no_ << std::endl;
+void multiline_text::set_line_no_from_offset()
+{
+	line_no_ = get_line_no_from_offset(get_selection_start());
 }
 
 unsigned multiline_text::get_sel_height()
 {
-	return line_no_ * text_height_ * font::get_line_spacing_factor();
+	return get_line_no_from_offset(get_selection_start() + get_selection_length()) * text_height_ * font::get_line_spacing_factor();
 }
 
 void multiline_text::update_offsets()
@@ -332,47 +329,49 @@ void multiline_text::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handle
 	set_value("");
 }
 
-void multiline_text::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
+void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 
 	set_line_no_from_offset();
-	size_t count = get_selection_start();
+	size_t offset = get_selection_start();
 	size_t offset_change = get_lines().at(line_no_).size() + 1;
 
 	if (line_no_ < get_lines_count()-1) {
 		line_no_ ++;
-		count += offset_change;
-		set_selection_start(count);
+		offset += offset_change;
+		offset += get_selection_length();
+		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 
-	std::cout << "row :" << line_no_ << " ";
-	std::cout << "offset :" << count << std::endl;
+//	std::cout << "row :" << line_no_ << " ";
+//	std::cout << "offset :" << count << std::endl;
 
 	update_canvas();
 	queue_redraw();
 }
 
-void multiline_text::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
+void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 
 	set_line_no_from_offset();
-	size_t count = get_selection_start();
+	size_t offset = get_selection_start();
 	size_t offset_change = get_lines().at(line_no_).size() + 1;
 
 	if (line_no_ > 0) {
 		line_no_ --;
-		count -= offset_change;
-		set_selection_start(count);
+		offset -= offset_change;
+		offset += get_selection_length();
+		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 
-	std::cout << "row :" << line_no_ <<  " ";
-	std::cout << "offset :" << count << std::endl;
+//	std::cout << "row :" << line_no_ <<  " ";
+//	std::cout << "offset :" << count << std::endl;
 
 	update_canvas();
 	queue_redraw();

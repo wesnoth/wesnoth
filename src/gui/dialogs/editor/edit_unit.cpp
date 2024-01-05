@@ -43,7 +43,7 @@
 #include "serialization/preprocessor.hpp"
 
 #include <SDL2/SDL.h>
-#include <SDL_image.h>
+#include <SDL2/SDL_image.h>
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <iostream>

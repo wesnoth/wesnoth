@@ -165,6 +165,7 @@ private:
 
 	/** utility function to calculate and set line_no_ from offset */
 	void set_line_no_from_offset();
+	unsigned get_line_no_from_offset(unsigned offset);
 
 	/** Get height of selection */
 	unsigned get_sel_height();
