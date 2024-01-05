@@ -64,21 +64,6 @@ inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst,
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
-/** Scale a surface using xBRZ algorithm
- *  @param surf		     The source surface
- *  @param z                 The scaling factor. Should be an integer 2-5 (1 is tolerated).
- *  @return		     The scaled surface
- */
-surface scale_surface_xbrz(const surface & surf, std::size_t z);
-
-/** Scale a surface using the nearest neighbor algorithm (provided by xBRZ lib)
- *  @param surf		     The sources surface
- *  @param w		     The width of the resulting surface.
- *  @param h		     The height of the resulting surface.
- *  @return		     The rescaled surface.
- */
-surface scale_surface_nn(const surface & surf, int w, int h);
-
 /** Scale a surface using alpha-weighted modified bilinear filtering
  *  Note: causes artifacts with alpha gradients, for example in some portraits
  *  @param surf              The source surface.
@@ -271,4 +256,3 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
  */
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
-
