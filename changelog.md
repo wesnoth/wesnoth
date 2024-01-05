@@ -2,16 +2,20 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: British English, French, Slovak
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wmllint now warns about `[kill]` tags containing `[filter]` tags
 
 ## Version 1.17.24
  ### Campaigns

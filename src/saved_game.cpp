@@ -21,8 +21,7 @@
  *	  This is present in all savefiles
  *
  *  - [statistics]
- *    This is present in all savefiles but it's not handled by playcampaign/play_controller/saved_game.
- *    It's handled by savegame.cpp
+ *    This is present in all savefiles.
  *
  *  - [snapshot]
  *    If a savegame was saved during a scenario this contains a snapshot of the game at the point when

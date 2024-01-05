@@ -6646,11 +6646,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				"LD_CLASSIC_1000" = "";
+				"LD_CLASSIC_1100" = "";
+				"LD_CLASSIC_1200" = "";
+				"LD_CLASSIC_1300" = "";
+				"LD_CLASSIC_1400" = "";
+				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-Wl",
-					"-ld_classic",
+					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -6715,13 +6721,19 @@
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = "-Wall";
 				OTHER_CPLUSPLUSFLAGS = "-Wall";
+				"LD_CLASSIC_1000" = "";
+				"LD_CLASSIC_1100" = "";
+				"LD_CLASSIC_1200" = "";
+				"LD_CLASSIC_1300" = "";
+				"LD_CLASSIC_1400" = "";
+				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-lreadline",
 					"-llua",
 					"-Wl",
-					"-ld_classic",
+					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
@@ -7103,13 +7115,19 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_CFLAGS = "-Wall";
 				OTHER_CPLUSPLUSFLAGS = "-Wall";
+				"LD_CLASSIC_1000" = "";
+				"LD_CLASSIC_1100" = "";
+				"LD_CLASSIC_1200" = "";
+				"LD_CLASSIC_1300" = "";
+				"LD_CLASSIC_1400" = "";
+				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-lreadline",
 					"-llua",
 					"-Wl",
-					"-ld_classic",
+					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
@@ -7164,13 +7182,19 @@
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = "-Wall";
 				OTHER_CPLUSPLUSFLAGS = "-Wall";
+				"LD_CLASSIC_1000" = "";
+				"LD_CLASSIC_1100" = "";
+				"LD_CLASSIC_1200" = "";
+				"LD_CLASSIC_1300" = "";
+				"LD_CLASSIC_1400" = "";
+				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-lreadline",
 					"-llua",
 					"-Wl",
-					"-ld_classic",
+					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
@@ -7244,11 +7268,17 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-Wall";
+				"LD_CLASSIC_1000" = "";
+				"LD_CLASSIC_1100" = "";
+				"LD_CLASSIC_1200" = "";
+				"LD_CLASSIC_1300" = "";
+				"LD_CLASSIC_1400" = "";
+				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-Wl",
-					"-ld_classic",
+					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -7291,11 +7321,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				"LD_CLASSIC_1000" = "";
+				"LD_CLASSIC_1100" = "";
+				"LD_CLASSIC_1200" = "";
+				"LD_CLASSIC_1300" = "";
+				"LD_CLASSIC_1400" = "";
+				"LD_CLASSIC_1500" = "-ld_classic";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",
 					"-Wl",
-					"-ld_classic",
+					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

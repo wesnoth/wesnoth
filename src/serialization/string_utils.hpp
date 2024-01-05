@@ -111,16 +111,6 @@ std::set<std::string> split_set(std::string_view val, const char c = ',', const 
 std::vector<std::string> quoted_split(const std::string& val, char c= ',', int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
 
 /**
- * Splits a (comma-)separated string into a set of pieces.
- * See split() for the meanings of the parameters.
- */
-inline std::set<std::string> set_split(const std::string& val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)
-{
-	std::vector<std::string> vec_split = split(val, c, flags);
-	return std::set< std::string >(vec_split.begin(), vec_split.end());
-}
-
-/**
  * Splits a string based on two separators into a map.
  *
  * Major: the separator between elements of the map

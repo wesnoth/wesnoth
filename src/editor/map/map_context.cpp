@@ -316,7 +316,7 @@ void map_context::set_side_setup(editor_team_info& info)
 
 	team& t = teams_[info.side - 1];
 	t.change_team(info.id, info.name);
-	t.set_recruits(utils::set_split(info.recruit_list, ','));
+	t.set_recruits(utils::split_set(info.recruit_list, ','));
 	t.have_leader(!info.no_leader);
 	t.change_controller(info.controller);
 	t.set_gold(info.gold);
@@ -485,7 +485,7 @@ void map_context::load_scenario()
 		teams_.emplace_back();
 		teams_.back().build(side, map_);
 		if(!side["recruit"].str().empty()) {
-			teams_.back().set_recruits(utils::set_split(side["recruit"], ','));
+			teams_.back().set_recruits(utils::split_set(side["recruit"].str(), ','));
 		}
 	}
 
