@@ -795,7 +795,6 @@
 		91A215131CAD677400927AEA /* tooltips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999830EC62181008DD061 /* tooltips.cpp */; };
 		91A215151CAD687A00927AEA /* video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999650EC62181008DD061 /* video.cpp */; };
 		91A215211CAD689800927AEA /* wml_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999430EC62181008DD061 /* wml_exception.cpp */; };
-		91A215221CAD696900927AEA /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
 		91A215241CAD698900927AEA /* exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246F18F30DB700FC1EEF /* exception.cpp */; };
 		91A215251CAD698900927AEA /* rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FAB193BFB6E00146ED0 /* rect.cpp */; };
 		91A215261CAD698900927AEA /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C58D19423426003B0F5E /* utils.cpp */; };
@@ -1298,7 +1297,6 @@
 		EC2F601A1A048E220018C9D6 /* multiplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600A1A048E210018C9D6 /* multiplayer.cpp */; };
 		EC2F601B1A048E220018C9D6 /* playcampaign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600B1A048E210018C9D6 /* playcampaign.cpp */; };
 		EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
-		EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
 		EC3863641EB6286E0048B0C8 /* lua_audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3863621EB6286E0048B0C8 /* lua_audio.cpp */; };
 		EC386CF1195119AA006004ED /* animation_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC386CEF195119A9006004ED /* animation_component.cpp */; };
 		EC387E6C195AFB1F00FC0342 /* game_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E68195AFB1F00FC0342 /* game_data.cpp */; };
@@ -2285,7 +2283,6 @@
 		91B621AA1B76AC9600B00E0F /* overlay.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = overlay.hpp; sourceTree = "<group>"; };
 		91B621AB1B76AD0500B00E0F /* replay_recorder_base.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = replay_recorder_base.hpp; sourceTree = "<group>"; };
 		91B621AD1B76B06E00B00E0F /* config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = config.hpp; sourceTree = "<group>"; };
-		91B621AE1B76B06E00B00E0F /* xbrz.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = xbrz.hpp; sourceTree = "<group>"; };
 		91B621AF1B76B1BC00B00E0F /* shroud_clearing_action.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shroud_clearing_action.hpp; sourceTree = "<group>"; };
 		91B621B01B76B1C200B00E0F /* undo_action.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = undo_action.hpp; sourceTree = "<group>"; };
 		91B621B11B76B1C800B00E0F /* undo_dismiss_action.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = undo_dismiss_action.hpp; sourceTree = "<group>"; };
@@ -2746,7 +2743,6 @@
 		EC2F600A1A048E210018C9D6 /* multiplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multiplayer.cpp; sourceTree = "<group>"; };
 		EC2F600B1A048E210018C9D6 /* playcampaign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playcampaign.cpp; sourceTree = "<group>"; };
 		EC2F600C1A048E220018C9D6 /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singleplayer.cpp; sourceTree = "<group>"; };
-		EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xbrz.cpp; sourceTree = "<group>"; };
 		EC3863621EB6286E0048B0C8 /* lua_audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_audio.cpp; sourceTree = "<group>"; };
 		EC3863631EB6286E0048B0C8 /* lua_audio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_audio.hpp; sourceTree = "<group>"; };
 		EC386CEF195119A9006004ED /* animation_component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = animation_component.cpp; sourceTree = "<group>"; };
@@ -3453,7 +3449,6 @@
 				B55999430EC62181008DD061 /* wml_exception.cpp */,
 				B55999420EC62181008DD061 /* wml_exception.hpp */,
 				9197972726199F54001E8133 /* wml_separators.hpp */,
-				91B621AC1B76B05700B00E0F /* xBRZ */,
 				09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */,
 				27764FB68F02032F1C0B6748 /* statistics_record.cpp */,
 			);
@@ -4390,16 +4385,6 @@
 				91B621CE1B76B44700B00E0F /* singleplayer.hpp */,
 			);
 			path = game_initialization;
-			sourceTree = "<group>";
-		};
-		91B621AC1B76B05700B00E0F /* xBRZ */ = {
-			isa = PBXGroup;
-			children = (
-				91B621AD1B76B06E00B00E0F /* config.hpp */,
-				EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */,
-				91B621AE1B76B06E00B00E0F /* xbrz.hpp */,
-			);
-			path = xBRZ;
 			sourceTree = "<group>";
 		};
 		91BE78361DD8F5DE00528C21 /* spirit_po */ = {
@@ -5817,7 +5802,6 @@
 				ECF0F80323A09933004A2011 /* lua_wml.cpp in Sources */,
 				EC44E383181DDAF90037A62F /* wmi_manager.cpp in Sources */,
 				B5599AD30EC62181008DD061 /* wml_exception.cpp in Sources */,
-				EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */,
 				91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */,
 				46F92E152174F6A400602C1C /* mp_options_helper.cpp in Sources */,
 				91B621BA1B76B2C900B00E0F /* version.cpp in Sources */,
@@ -6365,7 +6349,6 @@
 				4649B87F20288DC300827CFB /* random_synced.cpp in Sources */,
 				91A215211CAD689800927AEA /* wml_exception.cpp in Sources */,
 				46F92E082174F6A400602C1C /* campaign_difficulty.cpp in Sources */,
-				91A215221CAD696900927AEA /* xbrz.cpp in Sources */,
 				91A215241CAD698900927AEA /* exception.cpp in Sources */,
 				91A215251CAD698900927AEA /* rect.cpp in Sources */,
 				91A215261CAD698900927AEA /* utils.cpp in Sources */,
