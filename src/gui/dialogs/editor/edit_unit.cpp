@@ -236,13 +236,6 @@ void editor_edit_unit::pre_show(window& win) {
 	enable_movement_slider();
 	}
 
-//	connect_signal_notify_modified(
-//		find_widget<menu_button>(&win, "race_list", false),
-//		std::bind(&editor_edit_unit::combobox_set_value, this, "race"));
-//	connect_signal_notify_modified(
-//		find_widget<menu_button>(&win, "alignment_list", false),
-//		std::bind(&editor_edit_unit::combobox_set_value, this, "alignment"));
-
 	connect_signal_notify_modified(
 		find_widget<menu_button>(&win, "atk_list", false),
 		std::bind(&editor_edit_unit::select_attack, this));

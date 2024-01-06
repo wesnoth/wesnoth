@@ -1307,8 +1307,12 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		}
 	}
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
-		set_retval(retval::OK);
-		handled = true;
+		if (mod & KMOD_SHIFT) {
+			handled = false;
+		} else {
+			set_retval(retval::OK);
+			handled = true;
+		}
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
 		set_retval(retval::CANCEL);
 		handled = true;

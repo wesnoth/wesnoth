@@ -644,7 +644,11 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if (modifier & KMOD_SHIFT) {
+				insert_char("\n");
+			}
+
+			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
 				return;
 			}
 			// The IME will handle it, we just need to make sure nothing else handles it too.
