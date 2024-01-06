@@ -19,24 +19,9 @@
 /*
 **  Wesnoth Lua Configuration
 **
-**  If at all possible, Wesnoth should use the stock, unmodified Lua source
-**  kit.
-**
-**  This file contains the cross-platform compile-time changes. Platform
-**  maintainers should consult wesnoth_lua_config.md for guidance on building
-**  Lua for Wesnoth on their platform using their toolset.
-**
-**  Lua comes with a number of configuration options, such as backward
-**  compatibility with earlier versions. In the original source kit, the
-**  intention is these be set as compile-time options. For Wesnoth, place
-**  them here to better ensure consistency.
-**
-**  In addition, there are specific non-standard changes which Wesnoth
-**  requires. Those changes, if at all possible, should appear here. This
-**  will reduce (hopefully, actually eliminate) any changes to the Lua
-**  source kit. If that is not possible, be sure to describe the changes
-**  needed, including a brief rationale and commit hashes, in
-**  wesnoth_lua_config.md
+**  Wesnoth must use the stock, unmodified Lua source kit, to remain compatible
+**  with using system copies of Lua.  Please avoid making incompatible changes
+**  here.
 */
 
 
@@ -58,6 +43,10 @@
 
 /*  Push std::exception::what() strings onto the Lua stack for use by
  *  luaW_pcall().
+ *
+ *  LUAI_THROW() and LUAI_TRY() are internal Lua macros that may not always
+ *  exist and can't be defined for system copies of Lua, so don't rely on them
+ *  for anything more important.
  */
 
 #include <cassert>

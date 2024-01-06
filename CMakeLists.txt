@@ -29,12 +29,6 @@ endfunction()
 # Options
 #
 
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
-	message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
-else()
-	message("-- Lua submodule found.")
-endif()
-
 # Adhere to GNU filesystem layout conventions
 include(GNUInstallDirs)
 
@@ -59,6 +53,26 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
 set(BOOST_VERSION "1.67")
+
+if(NOT WIN32)
+	set(Lua_FIND_VERSION_MAJOR 5)
+	set(Lua_FIND_VERSION_MINOR 4)
+	option(ENABLE_SYSTEM_LUA "Enable use of system Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} (compiled as C++)" OFF)
+endif()
+if(ENABLE_SYSTEM_LUA)
+	set(Lua_FIND_VERSION_EXACT ON)
+	set(Lua_FIND_VERSION_COUNT 2)
+	include(FindLua)
+	if(NOT LUA_FOUND)
+		message(FATAL_ERROR "Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} C++ not found. Try setting 'LUA_DIR'.")
+	endif()
+else()
+	if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
+		message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+	else()
+		message("-- Lua submodule found.")
+	endif()
+endif()
 
 # set what std version to use
 if(NOT CXX_STD)
@@ -88,7 +102,7 @@ find_package(Python)
 
 find_package(X11)
 
-if(NOT WIN32)
+if(NOT WIN32 AND NOT ENABLE_SYSTEM_LUA)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
 endif()
