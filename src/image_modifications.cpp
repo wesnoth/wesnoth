@@ -31,6 +31,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace image {
 
@@ -465,17 +466,15 @@ surface scale_modification::operator()(const surface& src) const
 	point size = target_size_;
 
 	if(size.x <= 0) {
-		if(size.x < 0) {
-			ERR_DP << "width of " << fn_ << " is negative - resetting to original width";
-		}
 		size.x = src->w;
+	} else if(flags_ & X_BY_FACTOR) {
+		size.x = src->w * (static_cast<double>(size.x) / 100);
 	}
 
 	if(size.y <= 0) {
-		if(size.y < 0) {
-			ERR_DP << "height of " << fn_ << " is negative - resetting to original height";
-		}
 		size.y = src->h;
+	} else if(flags_ & Y_BY_FACTOR) {
+		size.y = src->h * (static_cast<double>(size.y) / 100);
 	}
 
 	if(flags_ & PRESERVE_ASPECT_RATIO) {
@@ -1044,24 +1043,44 @@ REGISTER_MOD_PARSER(L, args)
 
 namespace
 {
-/** Common helper function to parse scaling IPF inputs. */
-std::optional<point> parse_scale_args(const std::string& args)
+std::pair<int, bool> parse_scale_value(std::string_view arg)
 {
-	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = scale_params.size();
+	if(const std::size_t pos = arg.rfind('%'); pos != std::string_view::npos) {
+		return { lexical_cast_default<int, std::string_view>(arg.substr(0, pos)), true };
+	} else {
+		return { lexical_cast_default<int, std::string_view>(arg), false };
+	}
+}
 
-	if(s == 0 || (s == 1 && scale_params[0].empty())) {
+/** Common helper function to parse scaling IPF inputs. */
+std::optional<std::pair<point, uint8_t>> parse_scale_args(const std::string& args)
+{
+	const std::vector<std::string> scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::size_t num_args = scale_params.size();
+
+	if(num_args == 0 || (num_args == 1 && scale_params[0].empty())) {
 		return std::nullopt;
 	}
 
-	point size{0, 0};
-	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
+	uint8_t flags = 0;
+	std::array<int, 2> parsed_sizes{0,0};
 
-	if(s > 1) {
-		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
+	for(unsigned i = 0; i < std::min<unsigned>(2, num_args); ++i) {
+		const auto& [size, relative] = parse_scale_value(scale_params[i]);
+
+		if(size < 0) {
+			ERR_DP << "Negative size passed to scaling IPF. Original image dimension will be used instead";
+			continue;
+		}
+
+		parsed_sizes[i] = size;
+
+		if(relative) {
+			flags |= (i == 0 ? scale_modification::X_BY_FACTOR : scale_modification::Y_BY_FACTOR);
+		}
 	}
 
-	return size;
+	return std::pair{point{parsed_sizes[0], parsed_sizes[1]}, flags};
 }
 
 } // namespace
@@ -1069,9 +1088,9 @@ std::optional<point> parse_scale_args(const std::string& args)
 // Scale
 REGISTER_MOD_PARSER(SCALE, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::FIT_TO_SIZE;
-		return std::make_unique<scale_modification>(*size, "SCALE", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE() function";
 		return nullptr;
@@ -1080,9 +1099,9 @@ REGISTER_MOD_PARSER(SCALE, args)
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::FIT_TO_SIZE;
-		return std::make_unique<scale_modification>(*size, "SCALE_SHARP", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function";
 		return nullptr;
@@ -1091,9 +1110,9 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::PRESERVE_ASPECT_RATIO;
-		return std::make_unique<scale_modification>(*size, "SCALE_INTO", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO() function";
 		return nullptr;
@@ -1102,9 +1121,9 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
-		return std::make_unique<scale_modification>(*size, "SCALE_INTO_SHARP", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function";
 		return nullptr;
@@ -1117,12 +1136,10 @@ REGISTER_MOD_PARSER(XBRZ, args)
 	int z = lexical_cast_default<int, const std::string &>(args);
 	if(z < 1 || z > 5) {
 		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
-	}
+}
 
 	return std::make_unique<xbrz_modification>(z);
 }
-
-// scale
 
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
