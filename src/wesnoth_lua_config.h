@@ -42,19 +42,6 @@
 
 
 /*
-**  Standard Lua options.
-*/
-
-/*  Wesnoth definitions for compatibility
- *  No longer needed in C++, included only for Lua runtime.
- */
-#define LUA_COMPAT_5_2
-#define LUA_COMPAT_5_1
-#define LUA_COMPAT_FLOATSTRING
-
-
-
-/*
 **  Wesnoth-specific modifications.
 */
 
