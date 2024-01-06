@@ -31,7 +31,7 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multiline_text.hpp"
 #include "gui/widgets/multimenu_button.hpp"
-#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/spinbox.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -789,7 +789,7 @@ void editor_edit_unit::update_wml_view() {
 
 	generated_wml = wml_stream.str();
 
-	find_widget<scroll_label>(get_window(), "wml_view", false).set_label(generated_wml);
+	find_widget<scroll_text>(get_window(), "wml_view", false).set_label(generated_wml);
 }
 
 void editor_edit_unit::update_image(const std::string& id_stem) {

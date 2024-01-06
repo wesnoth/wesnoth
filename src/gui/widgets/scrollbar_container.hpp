@@ -448,6 +448,10 @@ protected:
 	 */
 	virtual void handle_key_right_arrow(SDL_Keymod modifier, bool& handled);
 
+protected:
+	/** The builder needs to call us so we do our setup. */
+	void finalize_setup(); // FIXME make protected
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -493,9 +497,6 @@ private:
 	 * The visible area for the content needs to be updated when scrolling.
 	 */
 	SDL_Rect content_visible_area_;
-
-	/** The builder needs to call us so we do our setup. */
-	void finalize_setup(); // FIXME make protected
 
 	/**
 	 * Function for the subclasses to do their setup.

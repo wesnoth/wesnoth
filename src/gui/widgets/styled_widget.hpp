@@ -233,7 +233,7 @@ public:
 		return label_;
 	}
 
-	virtual void set_label(const t_string& label);
+	virtual void set_label(const t_string& text);
 
 	virtual void set_use_markup(bool use_markup);
 

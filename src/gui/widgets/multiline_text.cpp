@@ -159,6 +159,8 @@ void multiline_text::update_canvas()
 		tmp.set_variable("selection_height", wfl::variant(get_sel_height()));
 		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
 
+		tmp.set_variable("rows_shown", wfl::variant(rows_shown_));
+
 		tmp.set_variable("composition_offset", wfl::variant(comp_start_offset));
 		tmp.set_variable("composition_width", wfl::variant(comp_end_offset - comp_start_offset));
 
@@ -256,7 +258,10 @@ void multiline_text::set_line_no_from_offset()
 
 unsigned multiline_text::get_sel_height()
 {
-	return get_line_no_from_offset(get_selection_start() + get_selection_length()) * text_height_ * font::get_line_spacing_factor();
+	/** Height of the selected area. Return zero if nothing selected. */
+	return get_selection_length() > 0
+		? get_line_no_from_offset(get_selection_start() + get_selection_length()) * text_height_ * font::get_line_spacing_factor()
+		: 0;
 }
 
 void multiline_text::update_offsets()
@@ -313,14 +318,19 @@ bool multiline_text::history_down()
 
 void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 {
+	handled = true;
+
 	if(modifier & KMOD_CTRL) {
 		if(!(modifier & KMOD_SHIFT)) {
 			handled = history_up();
 		} else {
 			handled = history_down();
 		}
+	} else {
+		insert_char("\t");
 	}
 }
+
 
 void multiline_text::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 {
@@ -369,9 +379,6 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 		offset += get_selection_length();
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
-
-//	std::cout << "row :" << line_no_ <<  " ";
-//	std::cout << "offset :" << count << std::endl;
 
 	update_canvas();
 	queue_redraw();
@@ -459,6 +466,7 @@ builder_multiline_text::builder_multiline_text(const config& cfg)
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
+	, rows_shown(cfg["rows_shown"])
 {
 }
 
@@ -475,6 +483,7 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 
 	widget->set_max_input_length(max_input_length);
 	widget->set_hint_data(hint_text, hint_image);
+	widget->set_rows_shown(rows_shown);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";

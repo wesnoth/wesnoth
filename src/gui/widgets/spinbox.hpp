@@ -129,7 +129,7 @@ private:
 	/** Size of the dropdown icon
 	 * TODO : Should be dynamically loaded from image
 	 */
-	unsigned const ICON_SIZE = 25;
+	int const ICON_SIZE = 25;
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;

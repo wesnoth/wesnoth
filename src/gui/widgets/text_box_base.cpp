@@ -24,6 +24,8 @@
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
 
+#include <iostream>
+
 #include <functional>
 
 #include <limits>
@@ -153,8 +155,13 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		queue_redraw();
 
 	} else {
-		assert(offset <= text_.get_length());
-		selection_start_ = offset;
+		// doesn't work for scroll_text
+//		assert(offset <= text_.get_length());
+		if (offset <= text_.get_length()) {
+			selection_start_ = offset;
+		} else {
+			selection_start_ = 0;
+		}
 		selection_length_ = 0;
 
 		update_canvas();
@@ -594,6 +601,13 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_clear_line(modifier, handled);
 			break;
 
+		case SDLK_l:
+			// ENTER does not work and fires OK on the dialog instead
+			if(modifier & KMOD_CTRL) {
+				insert_char("\n");
+			}
+			break;
+
 		case SDLK_DELETE:
 			handle_key_delete(modifier, handled);
 			break;
@@ -643,6 +657,10 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			}
 			interrupt_composition();
 			handled = true;
+			break;
+
+		case SDLK_TAB:
+			handle_key_tab(modifier, handled);
 			break;
 
 		default:
