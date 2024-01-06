@@ -1,13 +1,19 @@
 #if defined(__clang__)
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wold-style-cast"
-    #include "modules/lua/lualib.h"
-    #pragma clang diagnostic pop
 #elif defined(__GNUG__)
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wold-style-cast"
+#endif
+
+#if defined(HAVE_SYSTEM_LUA)
+    #include "lualib.h"
+#else
     #include "modules/lua/lualib.h"
+#endif
+
+#if defined(__clang__)
+    #pragma clang diagnostic pop
+#elif defined(__GNUG__)
     #pragma GCC diagnostic pop
-#elif defined(_MSC_VER)
-    #include "modules/lua/lualib.h"
 #endif
