@@ -491,7 +491,7 @@ private:
 	 */
 	virtual void handle_key_tab(SDL_Keymod /*modifier*/, bool& /*handled*/)
 	{
-	};
+	}
 
 protected:
 	virtual void handle_commit(bool& handled,

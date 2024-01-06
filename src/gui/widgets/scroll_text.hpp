@@ -126,7 +126,7 @@ private:
 
 	PangoAlignment text_alignment_;
 
-	bool link_aware_;
+//	bool link_aware_;
 
 	void finalize_subclass() override;
 
