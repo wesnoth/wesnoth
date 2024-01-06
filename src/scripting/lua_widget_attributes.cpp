@@ -609,10 +609,8 @@ int impl_widget_dir(lua_State* L)
 		}
 	}
 	// Add the gui.widget methods
-	luaW_getglobal(L, "dir");
 	luaW_getglobal(L, "gui", "widget");
-	lua_call(L, 1, 1);
-	auto methods = lua_check<std::vector<std::string>>(L, -1);
+	auto methods = luaW_get_attributes(L, -1);
 	keys.insert(keys.end(), methods.begin(), methods.end());
 	lua_push(L, keys);
 	return 1;

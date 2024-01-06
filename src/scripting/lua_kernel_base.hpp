@@ -144,3 +144,5 @@ private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
 };
+
+std::vector<std::string> luaW_get_attributes(lua_State* L, int idx);
