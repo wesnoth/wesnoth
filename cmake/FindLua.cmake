@@ -5,10 +5,7 @@
 FindLua
 -------
 
-Locate Lua library.
-
-.. versionadded:: 3.18
-  Support for Lua 5.4.
+Locate Lua library compiled as C++ code.
 
 This module defines:
 
@@ -27,20 +24,38 @@ This module defines:
 ``LUA_VERSION_PATCH``
   the patch version of Lua
 
-Note that the expected include convention is
+Note that the expected include convention for Wesnoth source files is
 
 ::
 
-  #include "lua.h"
+  #include "lua/wrapper_lua.h"
+  #include "lua/wrapper_lualib.h"
+  #include "lua/wrapper_lauxlib.h"
 
 and not
 
 ::
 
   #include <lua/lua.h>
+  #include <lua/lualib.h>
+  #include <lua/lauxlib.h>
 
-This is because, the lua location is not standardized and may exist in
-locations other than lua/
+nor
+
+::
+
+  #include "lua.h"
+  #include "lualib.h"
+  #include "lauxlib.h"
+
+This is because Wesnoth can be configured to use either its Lua submodule or a
+system copy of Lua, so wrapper headers exist to include the correct headers.
+
+When compiled as C++, Lua_ handles errors with exceptions.  Wesnoth_ requires
+this.
+
+.. _Lua: https://github.com/lua/lua/blob/9be74cc/ldo.c#L47
+.. _Wesnoth: https://github.com/wesnoth/wesnoth/commit/e4d0ae0
 #]=======================================================================]
 
 cmake_policy(PUSH)  # Policies apply to functions at definition-time
@@ -193,12 +208,21 @@ _lua_find_header()
 _lua_get_header_version()
 unset(_lua_append_versions)
 
+# Add new names here when found in distributions.
+# Debian since lua5.2 5.2.3-2 uses luaX.Y-c++:
+#   https://salsa.debian.org/lua-team/lua5.2/-/commit/fa2dc77c
+# Arch since lua 5.4.4-4 uses lua++-X.Y:
+#   https://gitlab.archlinux.org/archlinux/packaging/packages/lua/-/commit/4e97e19d
 if (LUA_VERSION_STRING)
   set(_lua_library_names
-    lua${LUA_VERSION_MAJOR}${LUA_VERSION_MINOR}
-    lua${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}
-    lua-${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}
-    lua.${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}
+    lua${LUA_VERSION_MAJOR}${LUA_VERSION_MINOR}-c++
+    lua${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}-c++
+    lua-${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}-c++
+    lua.${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}-c++
+    lua++${LUA_VERSION_MAJOR}${LUA_VERSION_MINOR}
+    lua++${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}
+    lua++-${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}
+    lua++.${LUA_VERSION_MAJOR}.${LUA_VERSION_MINOR}
     )
 endif ()
 
