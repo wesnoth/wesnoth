@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2023-11-08 17:57+0100\n"
+"PO-Revision-Date: 2024-01-04 11:45+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -214,15 +214,20 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
+#, fuzzy
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "Changer la taille des caractères (expérimental)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
+#, fuzzy
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"Changer d'échelle du texte partant de la taille standard pour la résolution "
+"de votre écran. Attention agrandir le texte peut mener à des problèmes avec "
+"le panneau latéral dans le jeu."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
@@ -5421,11 +5426,15 @@ msgstr "<i>― Sir Gweddry de Westin, 627 ap. W.</i>"
 
 #. [tip]
 #: data/tips.cfg:257
+#, fuzzy
 msgid ""
 "The cleansing waters of an oasis will heal the injured. The fiery ichor of "
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"Les eaux purifiantes de l'oasis guérissent les blessures. L'ichor ardent du "
+"monde souterrain entrave ceux inaptes à voler, mais illumine les ténèbres "
+"pour ceux qui volent au-dessus."
 
 #. [tip]
 #: data/tips.cfg:258
@@ -5589,14 +5598,19 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(appuyez sur $hotkey pour poursuivre le mouvement)"
 
 #: src/actions/undo.cpp:413
+#, fuzzy
 msgid "Redo Error"
-msgstr ""
+msgstr "Erreur lors du refaire"
 
 #: src/actions/undo.cpp:414
+#, fuzzy
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
+"La pile de refaire est désynchronisée. La cause la plus commune est une "
+"sauvegarde corrompue ou un problème de code WML dans l'extension ou l'ère. "
+"Détails :"
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
@@ -5924,10 +5938,13 @@ msgid "Incorrect add-on passphrase."
 msgstr "Phrase de passe incorrecte pour l'extension."
 
 #: src/addon/validation.cpp:397
+#, fuzzy
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
 msgstr ""
+"L'utilisateur n'est pas enregistré sur les forums alors que "
+"l'authentification est requise."
 
 #: src/addon/validation.cpp:401
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -6045,10 +6062,13 @@ msgstr ""
 "Les informations de l'extension contiennent une séquence UTF-8 invalide."
 
 #: src/addon/validation.cpp:503
+#, fuzzy
 msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"L'attribut  'forum_auth' de l'extension ne correspond pas à celui défini "
+"précédemment."
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
@@ -6067,9 +6087,12 @@ msgid "Empty add-on version list on the server."
 msgstr "La liste des extensions du serveur est vide."
 
 #: src/addon/validation.cpp:528
+#, fuzzy
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr ""
+"Le support pour l'attribut  'forum_auth' dans le fichier pbl n'est pas "
+"activé sur ce serveur."
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
@@ -6997,8 +7020,9 @@ msgid "New Add-on"
 msgstr "Nouvelle extension"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
+#, fuzzy
 msgid "Mainline"
-msgstr ""
+msgstr "Jeu de base"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline multiplayer scenarios"
@@ -7042,20 +7066,25 @@ msgid "Era: "
 msgstr "Ère :"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:135
+#, fuzzy
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:230
 msgid "No game history found."
 msgstr "Aucun historique de parties trouvé."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:243
+#, fuzzy
 msgid "Request timed out."
-msgstr ""
+msgstr "La requête a dépassé le délais d'expiration."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:253
+#, fuzzy
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
+"La requête a rencontré une erreur imprévue. Merci de consulter le fichier de "
+"journalisation."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -8063,12 +8092,14 @@ msgid "Download error"
 msgstr "Erreur de téléchargement"
 
 #: src/network_download_file.cpp:68
+#, fuzzy
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Confirmation pour écraser"
 
 #: src/network_download_file.cpp:68
+#, fuzzy
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "Voulez-vous écraser le fichier existant ?"
 
 #: src/network_download_file.cpp:81
 msgid "Download complete"
@@ -8097,9 +8128,12 @@ msgstr "temps restant pour ce tour"
 msgid "current local time"
 msgstr "heure locale"
 
+# 'bug' est non-traduit dans les chaînes existantes.
+# "Remonter" comme dans une traduction existante
 #: src/play_controller.cpp:565
+#, fuzzy
 msgid "Trying to create a corrupt file, please report this bug"
-msgstr ""
+msgstr "Tentative de création d'un fichier corrompu. Merci de remonter ce bug."
 
 #: src/play_controller.cpp:1050
 msgid ""
@@ -8347,10 +8381,13 @@ msgid "unhealable: "
 msgstr "insoignable : "
 
 #: src/reports.cpp:358
+#, fuzzy
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
+"Cette unité ne peut être soignée. Elle ne peut être soignée ni par des "
+"soigneurs, ni dans un village et ne récupère pas en cas de repos."
 
 #: src/reports.cpp:361
 msgid "invulnerable: "
@@ -8982,20 +9019,24 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Ce moment de la journée est bidon !"
 
 #: src/units/abilities.cpp:970
+#, fuzzy
 msgid "Owned: "
-msgstr ""
+msgstr "Propre :"
 
 #: src/units/abilities.cpp:973
+#, fuzzy
 msgid "Taught: "
-msgstr ""
+msgstr "Partagée :"
 
 #: src/units/abilities.cpp:976
+#, fuzzy
 msgid "Taught: (by an enemy): "
-msgstr ""
+msgstr "Partagée par l'ennemi :"
 
 #: src/units/abilities.cpp:989
+#, fuzzy
 msgid "Used by opponent: "
-msgstr ""
+msgstr "Partagée avec l'ennemi :"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:473
@@ -9184,11 +9225,16 @@ msgid "$year AF"
 msgstr "$year ap. C."
 
 #: src/wesnoth.cpp:814
+#, fuzzy
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"La création de fichiers de journalisation dans le répertoire $logdir. Cela "
+"peut être dû à des droits d'accès incorrects pour le répertoire, une "
+"configuration de l'antivirus ou l'utilisation de OneDrive pour la gestion du "
+"répertoire 'Mes Documents'."
 
 #: src/wesnoth.cpp:815
 msgid "Logging Failure"

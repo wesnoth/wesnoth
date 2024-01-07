@@ -47,8 +47,6 @@ class pane : public widget
 public:
 	struct item
 	{
-		item(item&&) = default;
-
 		unsigned id;
 		std::map<std::string, std::string> tags;
 

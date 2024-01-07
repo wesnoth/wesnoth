@@ -56,6 +56,8 @@ with contextlib.suppress(FileNotFoundError):
 csv_data = {}
 added = []
 changed = []
+# Already mentioned in the CSV file, but lacking something in either the license or author fields
+incomplete = []
 unchanged = []
 removed = []
 # Sanity-check that the input is in the same order as the output would be
@@ -92,14 +94,17 @@ for root, _, files in os.walk(options.repo):
                 csv_data[file][5] = do_git(file)
                 csv_data[file][6] = hash
                 changed.append(csv_data[file])
+            elif csv_data[file][2].strip() == "" or csv_data[file][3].strip() == "":
+                incomplete.append(csv_data[file])
             else:
                 unchanged.append(csv_data[file])
 
 added.sort(key=itemgetter(1))
 changed.sort(key=itemgetter(1))
+incomplete.sort(key=itemgetter(1))
 unchanged.sort(key=itemgetter(1))
 
-final_output = added + changed + unchanged
+final_output = added + changed + incomplete + unchanged
 
 if options.output != "":
     with open(options.output, 'w') as f:
@@ -115,15 +120,20 @@ if len(removed) > 0:
     any_check_failed = True
     print("There are "+str(len(removed))+" removed images")
 
-if len(added) > 0 or len(changed) > 0:
+if len(added) > 0 or len(changed) > 0 or len(incomplete) > 0:
     any_check_failed = True
     print("There are "+str(len(added))+" new images")
     print("There are "+str(len(changed))+" changed images")
+    print("There are "+str(len(incomplete))+" images that lack license or author information")
+    if options.output != "":
+        print("These are at the top of the output for easy editing, run the tool again after editing to sort the file")
 
 if csvfile_needs_sorting:
     any_check_failed = True
     print("The input file isn’t sorted by filename")
-    print("    Changed or newly added lines are put at the top for easy editing,\n    but you should run the tool again after editing to sort the file.")
+
+    if options.output != "" and final_output == unchanged:
+        print("The new output file is correctly sorted")
 
 if any_check_failed:
     sys.exit(1)

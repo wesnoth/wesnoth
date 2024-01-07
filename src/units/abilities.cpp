@@ -970,9 +970,11 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Owned: "));
 
 	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
+	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: "));
 
 	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
+	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: (by an enemy): "));
 
 
