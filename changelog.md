@@ -4,6 +4,7 @@
  ### Campaigns
    * Eastern Invasion
      * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
+     * Fix macros in translatable strings, because they prevent translation. (issue #8225)
  ### Editor
  ### Multiplayer
  ### Lua API
