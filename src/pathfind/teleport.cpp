@@ -43,19 +43,19 @@ namespace {
 // This constructor is *only* meant for loading from saves
 teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(cfg["reversed"].to_bool(false)), id_(cfg["id"])
 {
-	assert(cfg.has_attribute("id"));
-	assert(cfg.has_attribute("reversed"));
+	VALIDATE(cfg.has_attribute("id"), _("config should have the 'id' attribute."));
+	VALIDATE(cfg.has_attribute("reversed"), _("config should have the 'reversed' attribute."));
 
-	assert(cfg_.child_count("source") == 1);
-	assert(cfg_.child_count("target") == 1);
-	assert(cfg_.child_count("filter") == 1);
+	VALIDATE(cfg_.child_count("source") == 1, _("config should have one 'source' child."));
+	VALIDATE(cfg_.child_count("target") == 1, _("config should have one 'target' child."));
+	VALIDATE(cfg_.child_count("filter") == 1, _("config should have one 'filter' child."));
 }
 
 teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get_config()), reversed_(reversed), id_()
 {
-	assert(cfg_.child_count("source") == 1);
-	assert(cfg_.child_count("target") == 1);
-	assert(cfg_.child_count("filter") == 1);
+	VALIDATE(cfg_.child_count("source") == 1, _("config should have one 'source' child."));
+	VALIDATE(cfg_.child_count("target") == 1, _("config should have one 'target' child."));
+	VALIDATE(cfg_.child_count("filter") == 1, _("config should have one 'filter' child."));
 	if (cfg["id"].empty()) {
 		id_ = resources::tunnels->next_unique_id();
 	} else {
