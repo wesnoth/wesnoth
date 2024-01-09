@@ -41,14 +41,12 @@ menu::menu(const std::vector<std::string>& items,
 : scrollarea(auto_join), silent_(false),
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
-  heading_height_(-1),
   selected_(0), click_selects_(click_selects), out_(false),
   previous_button_(true), show_result_(false),
   double_clicked_(false),
   num_selects_(true),
   ignore_next_doubleclick_(false),
-  last_was_doubleclick_(false), use_ellipsis_(false),
-  highlight_heading_(-1)
+  last_was_doubleclick_(false), use_ellipsis_(false)
 {
 	style_ = (menu_style) ? menu_style : &default_style;
 	style_->init();
@@ -63,11 +61,6 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 {
 	for(std::vector<std::string>::const_iterator itor = items.begin();
 	    itor != items.end(); ++itor) {
-
-		if(itor->empty() == false && (*itor)[0] == HEADING_PREFIX) {
-			heading_ = utils::quoted_split(itor->substr(1),COLUMN_SEPARATOR, !strip_spaces);
-			continue;
-		}
 
 		const std::size_t id = items_.size();
 		item_pos_.push_back(id);
@@ -99,7 +92,7 @@ void menu::update_scrollbar_grip_height()
 
 void menu::update_size()
 {
-	int h = heading_height();
+	int h = 0;
 	for(std::size_t i = get_position(),
 	    i_end = std::min(items_.size(), i + max_items_onscreen());
 	    i < i_end; ++i)
@@ -137,17 +130,6 @@ void menu::set_inner_location(const SDL_Rect& /*rect*/)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
-}
-
-void menu::set_heading(const std::vector<std::string>& heading)
-{
-	itemRects_.clear();
-	column_widths_.clear();
-
-	heading_ = heading;
-	max_items_ = -1;
-
-	queue_redraw();
 }
 
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
@@ -207,7 +189,7 @@ std::size_t menu::max_items_onscreen() const
 			max_height_ == -1
 				? (video::game_canvas_size().y * 66) / 100
 				: max_height_
-		) - heading_height();
+		);
 
 	std::vector<int> heights;
 	std::size_t n;
@@ -430,12 +412,6 @@ void menu::handle_event(const SDL_Event& event)
 				move_selection_to(item);
 			}
 		}
-
-		const int heading_item = hit_heading(event.motion.x,event.motion.y);
-		if(heading_item != highlight_heading_) {
-			highlight_heading_ = heading_item;
-			invalidate_heading();
-		}
 	}
 }
 
@@ -488,7 +464,6 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 			if (image_size.x && image_size.y) {
 				int w = image_size.x;
 				int h = image_size.y;
-				adjust_image_bounds(w, h);
 				res.w += w;
 				res.h = std::max<int>(h, res.h);
 			}
@@ -519,10 +494,6 @@ void menu::style::draw_row_bg(menu& /*menu_ref*/, const std::size_t /*row_index*
 		rgb = selected_rgb_;
 		alpha = selected_alpha_;
 		break;
-	case HEADING_ROW:
-		rgb = heading_rgb_;
-		alpha = heading_alpha_;
-		break;
 	}
 
 	// FIXME: make this clearer
@@ -540,12 +511,10 @@ void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SD
 	draw_row_bg(menu_ref, row_index, rect, type);
 
 	SDL_Rect minirect = rect;
-	if(type != HEADING_ROW) {
-		minirect.x += thickness_;
-		minirect.y += thickness_;
-		minirect.w -= 2*thickness_;
-		minirect.h -= 2*thickness_;
-	}
+	minirect.x += thickness_;
+	minirect.y += thickness_;
+	minirect.w -= 2*thickness_;
+	minirect.h -= 2*thickness_;
 	menu_ref.draw_row(row_index, minirect, type);
 }
 
@@ -575,7 +544,6 @@ bool menu::item_ends_with_image(const std::string& item) const
 const std::vector<int>& menu::column_widths() const
 {
 	if(column_widths_.empty()) {
-		column_widths_item(heading_,column_widths_);
 		for(std::size_t row = 0; row != items_.size(); ++row) {
 			column_widths_item(items_[row].fields,column_widths_);
 		}
@@ -584,10 +552,10 @@ const std::vector<int>& menu::column_widths() const
 	return column_widths_;
 }
 
-void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)
+void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
-	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
+	const std::vector<std::string>& row = items_[row_index].fields;
 	rect area = video::game_canvas();
 	rect column = inner_location();
 	const std::vector<int>& widths = column_widths();
@@ -604,13 +572,6 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 		if(lang_rtl) {
 			xpos -= widths[i];
 		}
-		if(type == HEADING_ROW) {
-			rect draw_rect {xpos, loc.y, widths[i], loc.h };
-
-			if(highlight_heading_ == int(i)) {
-				draw::fill(draw_rect, {255,255,255,77});
-			}
-		}
 
 		const int last_x = xpos;
 		column.w = widths[i];
@@ -624,7 +585,6 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 				const texture img = image::get_texture(image_name);
 				int img_w = img.w();
 				int img_h = img.h();
-				style_->adjust_image_bounds(img_w, img_h);
 				const int remaining_width = max_width_ < 0 ? area.w :
 				std::min<int>(max_width_, ((lang_rtl)? xpos - loc.x : loc.x + loc.w - xpos));
 				if(img && img_w <= remaining_width
@@ -642,12 +602,11 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 
 				const auto text_size = font::pango_line_size(str, style_->get_font_size());
 				const std::size_t y = loc.y + (loc.h - text_size.second)/2;
-				const std::size_t padding = 2;
 				rect text_loc = column;
 				text_loc.w = loc.w - (xpos - loc.x) - 2 * style_->get_thickness();
 				text_loc.h = text_size.second;
 				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
-					(type == HEADING_ROW ? xpos+padding : xpos), y);
+					xpos, y);
 
 				xpos += dir * (text_size.first + 5);
 			}
@@ -661,10 +620,6 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 
 void menu::draw_contents()
 {
-	SDL_Rect heading_rect = inner_location();
-	heading_rect.h = heading_height();
-	style_->draw_row(*this,0,heading_rect,HEADING_ROW);
-
 	for(std::size_t i = 0; i != item_pos_.size(); ++i) {
 		style_->draw_row(*this,item_pos_[i],get_item_rect(i),
 			 (!out_ && item_pos_[i] == selected_) ? SELECTED_ROW : NORMAL_ROW);
@@ -697,17 +652,6 @@ int menu::hit_column(int x) const
 	return j;
 }
 
-int menu::hit_heading(int x, int y) const
-{
-	const std::size_t height = heading_height();
-	const SDL_Rect& loc = inner_location();
-	if(y >= loc.y && static_cast<std::size_t>(y) < loc.y + height) {
-		return hit_column(x);
-	} else {
-		return -1;
-	}
-}
-
 SDL_Rect menu::get_item_rect(int item) const
 {
 	return get_item_rect_internal(item_pos_[item]);
@@ -727,7 +671,7 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 
 	const SDL_Rect& loc = inner_location();
 
-	int y = loc.y + heading_height();
+	int y = loc.y;
 	if (item != first_item_on_screen) {
 		const SDL_Rect& prev = get_item_rect_internal(item-1);
 		y = prev.y + prev.h;
@@ -768,15 +712,6 @@ std::size_t menu::get_item_height_internal(const std::vector<std::string>& item)
 	return res;
 }
 
-std::size_t menu::heading_height() const
-{
-	if(heading_height_ == -1) {
-		heading_height_ = int(get_item_height_internal(heading_));
-	}
-
-	return std::min<unsigned int>(heading_height_,max_height_);
-}
-
 std::size_t menu::get_item_height(int) const
 {
 	if(item_height_ != -1)
@@ -806,13 +741,6 @@ void menu::invalidate_row_pos(std::size_t pos)
 	}
 
 	invalidate_row(items_[pos].id);
-}
-
-void menu::invalidate_heading()
-{
-	rect heading_rect = inner_location();
-	heading_rect.h = heading_height();
-	queue_redraw(heading_rect);
 }
 
 }
