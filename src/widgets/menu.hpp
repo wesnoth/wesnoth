@@ -108,38 +108,9 @@ public:
 		std::size_t id;
 	};
 
-	class sorter
-	{
-	public:
-		virtual ~sorter() {}
-		virtual bool column_sortable(int column) const = 0;
-		virtual bool less(int column, const item& row1, const item& row2) const = 0;
-	};
-
-	class basic_sorter : public sorter
-	{
-	public:
-		basic_sorter();
-		virtual ~basic_sorter() {}
-
-		basic_sorter& set_alpha_sort(int column);
-		basic_sorter& set_numeric_sort(int column);
-		basic_sorter& set_id_sort(int column);
-		basic_sorter& set_redirect_sort(int column, int to);
-		basic_sorter& set_position_sort(int column, const std::vector<int>& pos);
-	protected:
-		virtual bool column_sortable(int column) const;
-		virtual bool less(int column, const item& row1, const item& row2) const;
-
-	private:
-		std::set<int> alpha_sort_, numeric_sort_, id_sort_;
-		std::map<int,int> redirect_sort_;
-		std::map<int,std::vector<int>> pos_sort_;
-	};
-
 	menu(const std::vector<std::string>& items,
 	     bool click_selects=false, int max_height=-1, int max_width=-1,
-		 const sorter* sorter_obj=nullptr, style *menu_style=nullptr, const bool auto_join=true);
+		 style *menu_style=nullptr, const bool auto_join=true);
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~menu();
@@ -149,11 +120,6 @@ public:
 	void move_selection(std::size_t id);
 	void move_selection_keeping_viewport(std::size_t id);
 	void reset_selection();
-
-	// allows user to change_item while running (dangerous)
-	void change_item(int pos1,int pos2,const std::string& str);
-
-	virtual void erase_item(std::size_t index);
 
 	void set_heading(const std::vector<std::string>& heading);
 
@@ -188,13 +154,6 @@ public:
 
 	// scrollarea override
 	void scroll(unsigned int pos) override;
-
-	//currently, menus do not manage the memory of their sorter
-	//this should be changed to a more object-oriented approach
-	void set_sorter(sorter *s);
-	void sort_by(int column);
-	int get_sort_by() const {return sortby_;}
-	bool get_sort_reversed() const {return sortreversed_;}
 
 protected:
 	bool item_ends_with_image(const std::string& item) const;
@@ -279,9 +238,6 @@ private:
 	//ellipsis calculation is slightly off, so default to false
 	bool use_ellipsis_;
 
-	const sorter* sorter_;
-	int sortby_;
-	bool sortreversed_;
 	int highlight_heading_;
 
 	/**
@@ -289,10 +245,6 @@ private:
 	 * remain at the item edges.
 	 */
 	void fill_items(const std::vector<std::string>& items, bool strip_spaces);
-
-	void do_sort();
-	void recalculate_pos();
-	void assert_pos();
 
 	void update_size();
 	enum SELECTION_MOVE_VIEWPORT { MOVE_VIEWPORT, NO_MOVE_VIEWPORT };

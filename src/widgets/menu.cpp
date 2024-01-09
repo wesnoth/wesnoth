@@ -35,121 +35,9 @@
 
 namespace gui {
 
-menu::basic_sorter::basic_sorter()
-	: alpha_sort_()
-	, numeric_sort_()
-	, id_sort_()
-	, redirect_sort_()
-	, pos_sort_()
-{
-	set_id_sort(-1);
-}
-
-menu::basic_sorter& menu::basic_sorter::set_alpha_sort(int column)
-{
-	alpha_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_numeric_sort(int column)
-{
-	numeric_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
-{
-	id_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_redirect_sort(int column, int to)
-{
-	if(column != to) {
-		redirect_sort_.emplace(column, to);
-	}
-
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_position_sort(int column, const std::vector<int>& pos)
-{
-	pos_sort_[column] = pos;
-	return *this;
-}
-
-bool menu::basic_sorter::column_sortable(int column) const
-{
-	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
-	if(redirect != redirect_sort_.end()) {
-		return column_sortable(redirect->second);
-	}
-
-	return alpha_sort_.count(column) == 1 || numeric_sort_.count(column) == 1 ||
-		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1;
-}
-
-bool menu::basic_sorter::less(int column, const item& row1, const item& row2) const
-{
-	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
-	if(redirect != redirect_sort_.end()) {
-		return less(redirect->second,row1,row2);
-	}
-
-	if(id_sort_.count(column) == 1) {
-		return row1.id < row2.id;
-	}
-
-	if(column < 0 || column >= int(row2.fields.size())) {
-		return false;
-	}
-
-	if(column >= int(row1.fields.size())) {
-		return true;
-	}
-
-	const std::string& item1 = row1.fields[column];
-	const std::string& item2 = row2.fields[column];
-
-	if(alpha_sort_.count(column) == 1) {
-		std::string::const_iterator begin1 = item1.begin(), end1 = item1.end(),
-		                            begin2 = item2.begin(), end2 = item2.end();
-		while(begin1 != end1 && is_wml_separator(*begin1)) {
-			++begin1;
-		}
-
-		while(begin2 != end2 && is_wml_separator(*begin2)) {
-			++begin2;
-		}
-
-		return std::lexicographical_compare(begin1,end1,begin2,end2,utils::chars_less_insensitive);
-	} else if(numeric_sort_.count(column) == 1) {
-		int val_1 = lexical_cast_default<int>(item1, 0);
-		int val_2 = lexical_cast_default<int>(item2, 0);
-
-		return val_1 > val_2;
-	}
-
-	const std::map<int,std::vector<int>>::const_iterator itor = pos_sort_.find(column);
-	if(itor != pos_sort_.end()) {
-		const std::vector<int>& pos = itor->second;
-		if(row1.id >= pos.size()) {
-			return false;
-		}
-
-		if(row2.id >= pos.size()) {
-			return true;
-		}
-
-		return pos[row1.id] < pos[row2.id];
-	}
-
-	return false;
-}
-
 menu::menu(const std::vector<std::string>& items,
 		bool click_selects, int max_height, int max_width,
-		const sorter* sorter_obj, style *menu_style, const bool auto_join)
+		style *menu_style, const bool auto_join)
 : scrollarea(auto_join), silent_(false),
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
@@ -160,7 +48,7 @@ menu::menu(const std::vector<std::string>& items,
   num_selects_(true),
   ignore_next_doubleclick_(false),
   last_was_doubleclick_(false), use_ellipsis_(false),
-  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
+  highlight_heading_(-1)
 {
 	style_ = (menu_style) ? menu_style : &default_style;
 	style_->init();
@@ -200,69 +88,7 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 		}
 	}
 
-	if(sortby_ >= 0) {
-		do_sort();
-	}
 	update_size();
-}
-
-namespace {
-
-class sort_func
-{
-public:
-	sort_func(const menu::sorter& pred, int column) : pred_(&pred), column_(column)
-	{}
-
-	bool operator()(const menu::item& a, const menu::item& b) const
-	{
-		return pred_->less(column_,a,b);
-	}
-
-private:
-	const menu::sorter* pred_;
-	int column_;
-};
-
-}
-
-void menu::do_sort()
-{
-	if(sorter_ == nullptr || sorter_->column_sortable(sortby_) == false) {
-		return;
-	}
-
-	const int selectid = selection();
-
-	std::stable_sort(items_.begin(), items_.end(), sort_func(*sorter_, sortby_));
-	if (sortreversed_)
-		std::reverse(items_.begin(), items_.end());
-
-	recalculate_pos();
-
-	if(selectid >= 0 && selectid < int(item_pos_.size())) {
-		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
-	}
-
-	queue_redraw();
-}
-
-void menu::recalculate_pos()
-{
-	std::size_t sz = items_.size();
-	item_pos_.resize(sz);
-	for(std::size_t i = 0; i != sz; ++i)
-		item_pos_[items_[i].id] = i;
-	assert_pos();
-}
-
-void menu::assert_pos()
-{
-	std::size_t sz = items_.size();
-	assert(item_pos_.size() == sz);
-	for(std::size_t n = 0; n != sz; ++n) {
-		assert(item_pos_[n] < sz && n == items_[item_pos_[n]].id);
-	}
 }
 
 void menu::update_scrollbar_grip_height()
@@ -311,46 +137,6 @@ void menu::set_inner_location(const SDL_Rect& /*rect*/)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
-}
-
-void menu::change_item(int pos1, int pos2,const std::string& str)
-{
-	if(pos1 < 0 || pos1 >= int(item_pos_.size()) ||
-		pos2 < 0 || pos2 >= int(items_[item_pos_[pos1]].fields.size())) {
-		return;
-	}
-
-	items_[item_pos_[pos1]].fields[pos2] = str;
-	queue_redraw();
-}
-
-void menu::erase_item(std::size_t index)
-{
-	std::size_t nb_items = items_.size();
-	if (index >= nb_items)
-		return;
-	--nb_items;
-
-	clear_item(nb_items);
-
-	// fix ordered positions of items
-	std::size_t pos = item_pos_[index];
-	item_pos_.erase(item_pos_.begin() + index);
-	items_.erase(items_.begin() + pos);
-	for(std::size_t i = 0; i != nb_items; ++i) {
-		std::size_t &n1 = item_pos_[i], &n2 = items_[i].id;
-		if (n1 > pos) --n1;
-		if (n2 > index) --n2;
-	}
-	assert_pos();
-
-	if (selected_ >= nb_items)
-		selected_ = nb_items - 1;
-
-	update_scrollbar_grip_height();
-	adjust_viewport_to_selection();
-	itemRects_.clear();
-	queue_redraw();
 }
 
 void menu::set_heading(const std::vector<std::string>& heading)
@@ -632,13 +418,6 @@ void menu::handle_event(const SDL_Event& event)
 			}
 		}
 
-
-		if(sorter_ != nullptr) {
-			const int heading = hit_heading(x,y);
-			if(heading >= 0 && sorter_->column_sortable(heading)) {
-				sort_by(heading);
-			}
-		}
 	} else if(!mouse_locked() && event.type == SDL_MOUSEMOTION) {
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
@@ -689,38 +468,6 @@ void menu::set_numeric_keypress_selection(bool value)
 
 void menu::scroll(unsigned int)
 {
-	itemRects_.clear();
-	queue_redraw();
-}
-
-void menu::set_sorter(sorter *s)
-{
-	if(sortby_ >= 0) {
-		//clear an existing sort
-		sort_by(-1);
-	}
-	sorter_ = s;
-	sortreversed_ = false;
-	sortby_ = -1;
-}
-
-void menu::sort_by(int column)
-{
-	const bool already_sorted = (column == sortby_);
-
-	if(already_sorted) {
-		if(sortreversed_ == false) {
-			sortreversed_ = true;
-		} else {
-			sortreversed_ = false;
-			sortby_ = -1;
-		}
-	} else {
-		sortby_ = column;
-		sortreversed_ = false;
-	}
-
-	do_sort();
 	itemRects_.clear();
 	queue_redraw();
 }
@@ -837,14 +584,6 @@ const std::vector<int>& menu::column_widths() const
 	return column_widths_;
 }
 
-void menu::clear_item(int item)
-{
-	SDL_Rect rect = get_item_rect(item);
-	if (rect.w == 0)
-		return;
-	queue_redraw(rect);
-}
-
 void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
@@ -870,8 +609,6 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 
 			if(highlight_heading_ == int(i)) {
 				draw::fill(draw_rect, {255,255,255,77});
-			} else if(sortby_ == int(i)) {
-				draw::fill(draw_rect, {255,255,255,26});
 			}
 		}
 
@@ -911,18 +648,6 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 				text_loc.h = text_size.second;
 				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
-
-				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const texture sort_tex(image::get_texture(
-						image::locator{sortreversed_ ? "buttons/sliders/slider_arrow_blue.png"
-													 : "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"}));
-					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
-						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
-						const int sort_y = loc.y + loc.h/2 - sort_tex.h()/2;
-						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
-						draw::blit(sort_tex, dest);
-					}
-				}
 
 				xpos += dir * (text_size.first + 5);
 			}
