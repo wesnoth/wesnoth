@@ -32,7 +32,7 @@ class menu : public scrollarea
 {
 public:
 
-	enum ROW_TYPE { NORMAL_ROW, SELECTED_ROW, HEADING_ROW };
+	enum ROW_TYPE { NORMAL_ROW, SELECTED_ROW };
 	//basic menu style
 	class style
 	{
@@ -44,8 +44,6 @@ public:
 		virtual SDL_Rect item_size(const std::string& item) const;
 		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
-		void scale_images(int max_width, int max_height);
-		void adjust_image_bounds(int& w, int& h) const;
 		std::size_t get_font_size() const;
 		std::size_t get_cell_padding() const;
 		std::size_t get_thickness() const;
@@ -55,9 +53,8 @@ public:
 		std::size_t cell_padding_;
 		std::size_t thickness_;  //additional cell padding for style use only
 
-		int normal_rgb_, selected_rgb_, heading_rgb_;
-		double normal_alpha_, selected_alpha_, heading_alpha_;
-		int max_img_w_, max_img_h_;
+		int normal_rgb_, selected_rgb_;
+		double normal_alpha_, selected_alpha_;
 	};
 
 	//image-border selection style
@@ -65,8 +62,8 @@ public:
 	{
 	public:
 		imgsel_style(const std::string &img_base, bool has_bg,
-								 int normal_rgb, int selected_rgb, int heading_rgb,
-								 double normal_alpha, double selected_alpha, double heading_alpha);
+								 int normal_rgb, int selected_rgb,
+								 double normal_alpha, double selected_alpha);
 		virtual ~imgsel_style();
 
 		virtual SDL_Rect item_size(const std::string& item) const;
@@ -86,8 +83,8 @@ public:
 		bool has_background_;
 		bool initialized_;
 		bool load_failed_;
-		int normal_rgb2_, selected_rgb2_, heading_rgb2_;
-		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
+		int normal_rgb2_, selected_rgb2_;
+		double normal_alpha2_, selected_alpha2_;
 	};
 
 	friend class style;
@@ -120,8 +117,6 @@ public:
 	void move_selection(std::size_t id);
 	void move_selection_keeping_viewport(std::size_t id);
 	void reset_selection();
-
-	void set_heading(const std::vector<std::string>& heading);
 
 	/**
 	 * Set new items to show and redraw/recalculate everything. If
@@ -171,16 +166,11 @@ protected:
 
 	int hit_column(int x) const;
 
-	int hit_heading(int x, int y) const;
-
 	void invalidate_row(std::size_t id);
 	void invalidate_row_pos(std::size_t pos);
-	void invalidate_heading();
 
 private:
 	std::size_t max_items_onscreen() const;
-
-	std::size_t heading_height() const;
 
 	int max_height_, max_width_;
 	mutable int max_items_, item_height_;
@@ -190,9 +180,6 @@ private:
 
 	std::vector<item> items_;
 	std::vector<std::size_t> item_pos_;
-
-	std::vector<std::string> heading_;
-	mutable int heading_height_;
 
 	mutable std::vector<int> column_widths_;
 
@@ -237,8 +224,6 @@ private:
 
 	//ellipsis calculation is slightly off, so default to false
 	bool use_ellipsis_;
-
-	int highlight_heading_;
 
 	/**
 	 * Set new items to show. If strip_spaces is false, spaces will
