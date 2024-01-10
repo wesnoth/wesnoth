@@ -46,7 +46,6 @@ scroll_text::scroll_text(const implementation::builder_scroll_text& builder)
 	, state_(ENABLED)
 	, wrap_on_(builder.wrap_on)
 	, text_alignment_(builder.text_alignment)
-	, link_aware_(builder.link_aware)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&scroll_text::signal_handler_left_button_down, this, std::placeholders::_2),
@@ -146,10 +145,16 @@ void scroll_text::finalize_subclass()
 	assert(text);
 
 	text->set_label(get_label());
-//	text->set_can_wrap(wrap_on_);
 	text->set_text_alignment(text_alignment_);
-//	text->set_link_aware(link_aware_);
 	text->set_use_markup(get_use_markup());
+	
+	connect_signal_notify_modified(*text,
+		std::bind(&scroll_text::update, this));
+}
+
+void scroll_text::update()
+{
+	queue_redraw();
 }
 
 void scroll_text::set_can_wrap(bool /*can_wrap*/)

@@ -53,6 +53,12 @@ class multiline_text : public text_box_base
 
 public:
 	explicit multiline_text(const implementation::builder_styled_widget& builder);
+	
+	/** See @ref widget::can_wrap. */
+	virtual bool can_wrap() const override
+	{
+		return true;
+	}
 
 	/** Saves the text in the widget to the history. */
 	void save_to_history()
@@ -169,6 +175,8 @@ private:
 
 	/** Get height of selection */
 	unsigned get_sel_height();
+	/** Get y coordinate of selection */
+	unsigned get_sel_start_y();
 
 	/**
 	 * Inherited from text_box_base.
@@ -221,6 +229,8 @@ private:
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
+
+	std::string mark_highlight_area();
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

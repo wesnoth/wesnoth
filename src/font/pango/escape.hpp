@@ -55,6 +55,9 @@ inline std::string semi_escape_text(const std::string & text)
 	for(const char c : text) {
 		if(c == '&') {
 			ss << "&amp;";
+		} else if(c == '<') {
+			/* escape < so selection works */
+			ss << "&lt;";
 		} else {
 			ss << c;
 		}

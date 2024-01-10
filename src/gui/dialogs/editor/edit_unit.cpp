@@ -31,9 +31,10 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multiline_text.hpp"
 #include "gui/widgets/multimenu_button.hpp"
+#include "gui/widgets/multiline_text.hpp"
 #include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/slider.hpp"
-#include "gui/widgets/spinbox.hpp"
+#include "gui/widgets/spinner.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -362,13 +363,14 @@ void editor_edit_unit::load_unit_type() {
 		const unit_type *type = unit_types.find(dlg_uc.choice());
 		find_widget<text_box>(get_window(), "id_box", false).set_value(type->id());
 		find_widget<text_box>(get_window(), "name_box", false).set_value(type->type_name());
-		find_widget<spinbox>(get_window(), "level_box", false).set_value(type->level());
+		find_widget<spinner>(get_window(), "level_box", false).set_value(type->level());
 		find_widget<slider>(get_window(), "cost_slider", false).set_value(type->cost());
 		find_widget<text_box>(get_window(), "adv_box", false).set_value(utils::join(type->advances_to()));
 		find_widget<slider>(get_window(), "hp_slider", false).set_value(type->hitpoints());
 		find_widget<slider>(get_window(), "xp_slider", false).set_value(type->experience_needed());
 		find_widget<slider>(get_window(), "move_slider", false).set_value(type->movement());
-		find_widget<multiline_text>(get_window(), "desc_box", false).set_value(type->unit_description());
+		find_widget<scroll_text>(get_window(), "desc_box", false).set_value(type->unit_description());
+//		find_widget<multiline_text>(get_window(), "desc_box", false).set_value(type->unit_description());
 		find_widget<combobox>(get_window(), "race_box", false).set_value(type->race_id());
 		find_widget<text_box>(get_window(), "alignment_box", false).set_value(unit_alignments::get_string(type->alignment()));
 	}
@@ -394,13 +396,14 @@ void editor_edit_unit::save_unit_type() {
 	utype["name"] = t_string(find_widget<text_box>(get_window(), "name_box", false).get_value(), current_textdomain);
 	utype["image"] = find_widget<text_box>(get_window(), "path_unit_image", false).get_value();
 	utype["profile"] = find_widget<text_box>(get_window(), "path_portrait_image", false).get_value();
-	utype["level"] = find_widget<spinbox>(get_window(), "level_box", false).get_value();
+	utype["level"] = find_widget<spinner>(get_window(), "level_box", false).get_value();
 	utype["advances_to"] = find_widget<text_box>(get_window(), "adv_box", false).get_value();
 	utype["hitpoints"] = find_widget<slider>(get_window(), "hp_slider", false).get_value();
 	utype["experience"] = find_widget<slider>(get_window(), "xp_slider", false).get_value();
 	utype["cost"] = find_widget<slider>(get_window(), "cost_slider", false).get_value();
 	utype["movement"] = find_widget<slider>(get_window(), "move_slider", false).get_value();
-	utype["description"] = t_string(find_widget<multiline_text>(get_window(), "desc_box", false).get_value(), current_textdomain);
+	utype["description"] = t_string(find_widget<scroll_text>(get_window(), "desc_box", false).get_value(), current_textdomain);
+//	utype["description"] = t_string(find_widget<multiline_text>(get_window(), "desc_box", false).get_value(), current_textdomain);
 	utype["race"] = find_widget<combobox>(get_window(), "race_box", false).get_value();
 	utype["alignment"] = find_widget<text_box>(get_window(), "alignment_box", false).get_value();
 

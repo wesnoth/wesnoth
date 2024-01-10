@@ -89,7 +89,7 @@ void multiline_text::update_canvas()
 
 	// Set the cursor info.
 	const unsigned start = get_selection_start();
-	const int length = get_selection_length();
+	const int length = static_cast<int>(get_selection_length());
 
 	// Set the cursor info.
 	const unsigned edit_start = get_composition_start();
@@ -110,14 +110,22 @@ void multiline_text::update_canvas()
 	// Set the selection info
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
-	if(length == 0) {
+	unsigned start_offset_y = 0;
+	unsigned end_offset_y = 0;
+	if(static_cast<int>(get_selection_length()) == 0) {
 		// No nothing.
 	} else if(length > 0) {
+//	} else {
 		start_offset = get_cursor_position(start).x;
 		end_offset = get_cursor_position(start + length).x;
+		start_offset_y = get_cursor_position(start).y;
+		end_offset_y = get_cursor_position(start + length).y;
+//	}
 	} else {
 		start_offset = get_cursor_position(start + length).x;
 		end_offset = get_cursor_position(start).x;
+		start_offset_y = get_cursor_position(start + length).y;
+		end_offset_y = get_cursor_position(start).y;
 	}
 
 	// Set the composition info
@@ -135,6 +143,13 @@ void multiline_text::update_canvas()
 
 	set_line_no_from_offset();
 
+	std::cout << "row :" << line_no_ << " ";
+	std::cout << "offset :" << get_selection_start() << std::endl;
+	std::cout << "sel start :" << get_selection_start() << std::endl;
+	std::cout << "sel length :" << static_cast<int>(get_selection_length()) << std::endl;
+	
+	std::cout << start_offset << "," << end_offset << " ";
+
 	/***** Set in all canvases *****/
 
 	const int max_width = get_text_maximum_width();
@@ -143,20 +158,26 @@ void multiline_text::update_canvas()
 	for(auto & tmp : get_canvases())
 	{
 
-		tmp.set_variable("text", wfl::variant(get_value()));
+		tmp.set_variable("text", wfl::variant(mark_highlight_area()));
 		tmp.set_variable("text_x_offset", wfl::variant(text_x_offset_));
 		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
 
-		tmp.set_variable("cursor_offset",
+		tmp.set_variable("cursor_offset_x",
 						 wfl::variant(get_cursor_position(start + length).x));
 		tmp.set_variable("cursor_offset_y",
 						 wfl::variant(get_cursor_position(start + length).y));
 
-		tmp.set_variable("selection_offset", wfl::variant(start_offset));
+//		tmp.set_variable("selection_start_y", wfl::variant(get_sel_start_y()));
+//		tmp.set_variable("selection_offset", wfl::variant(start_offset));
 		tmp.set_variable("selection_width", wfl::variant(end_offset - start_offset));
-		tmp.set_variable("selection_height", wfl::variant(get_sel_height()));
+//		tmp.set_variable("selection_height", wfl::variant(end_offset_y - start_offset_y));
+		tmp.set_variable("selection_height", wfl::variant(end_offset_y>start_offset_y ? end_offset_y-start_offset_y : start_offset_y-end_offset_y ));
+
+		tmp.set_variable("selection_start_x", wfl::variant(start_offset));
+		tmp.set_variable("selection_start_y", wfl::variant(start_offset_y));
+
 		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
 
 		tmp.set_variable("rows_shown", wfl::variant(rows_shown_));
@@ -167,6 +188,33 @@ void multiline_text::update_canvas()
 		tmp.set_variable("hint_text", wfl::variant(hint_text_));
 		tmp.set_variable("hint_image", wfl::variant(hint_image_));
 	}
+}
+
+std::string multiline_text::mark_highlight_area()
+{
+	unsigned start = get_selection_start();
+	int len = static_cast<int>(get_selection_length());
+	if (len < 0)
+	{
+		start += len;
+		len = -len;
+	}
+
+	if(len == 0) {
+		return get_value();
+	}
+
+	std::cout << "start :" << start << "len :" << len << std::endl;
+
+	std::string text = get_value();
+	std::string span_start = "<span bgcolor='#153580'>";
+	std::cout << text << std::endl;
+	utf8::insert(text, start, span_start);
+	utf8::insert(text, start+len+span_start.size(), "</span>");
+
+	std::cout << text << std::endl;
+
+	return text;
 }
 
 void multiline_text::delete_char(const bool before_cursor)
@@ -240,7 +288,7 @@ unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
 		for(const auto& line : get_lines()) {
 			line_start = line_end;
 			line_end += line.size() + 1;
-			if ((offset > line_start) && (offset <= line_end)) {
+			if ((offset >= line_start) && (offset <= line_end-1)) {
 				line_no = i;
 				break;
 			} else {
@@ -260,8 +308,14 @@ unsigned multiline_text::get_sel_height()
 {
 	/** Height of the selected area. Return zero if nothing selected. */
 	return get_selection_length() > 0
-		? get_line_no_from_offset(get_selection_start() + get_selection_length()) * text_height_ * font::get_line_spacing_factor()
+		? get_line_no_from_offset(get_selection_length()) * text_height_ * font::get_line_spacing_factor()
 		: 0;
+}
+
+unsigned multiline_text::get_sel_start_y()
+{
+	/** Y coordinate of selection start */
+	return get_line_no_from_offset(get_selection_start()) * text_height_ * font::get_line_spacing_factor();
 }
 
 void multiline_text::update_offsets()
@@ -269,7 +323,7 @@ void multiline_text::update_offsets()
 	const auto conf = cast_config_to<multiline_text_definition>();
 	assert(conf);
 
-	text_height_ = font::get_max_height(get_text_font_size());
+	text_height_ = font::get_max_height(get_text_font_size(), get_font_family());
 
 	wfl::map_formula_callable variables;
 	variables.add("height", wfl::variant(get_height()));
@@ -351,13 +405,14 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	if (line_no_ < get_lines_count()-1) {
 		line_no_ ++;
-		offset += offset_change;
-		offset += get_selection_length();
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 
-//	std::cout << "row :" << line_no_ << " ";
-//	std::cout << "offset :" << count << std::endl;
+	offset += offset_change;
+	offset += get_selection_length();
+
+	if (offset <= get_length()) {
+		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+	}
 
 	update_canvas();
 	queue_redraw();
@@ -375,8 +430,13 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 	if (line_no_ > 0) {
 		line_no_ --;
-		offset -= offset_change;
-		offset += get_selection_length();
+	}
+
+	offset -= offset_change;
+	offset += get_selection_length();
+
+	/* offset is unsigned int */
+	if (offset <= get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 

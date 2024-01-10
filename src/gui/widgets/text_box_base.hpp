@@ -229,6 +229,17 @@ protected:
 		return text_.get_column_line(position);
 	}
 
+	font::family_class get_font_family()
+	{
+		return font_family_;
+	}
+
+	void set_font_family(font::family_class fclass)
+	{
+		font_family_ = fclass;
+		text_.set_family_class(font_family_);
+	}
+
 	void set_font_size(const unsigned font_size)
 	{
 		text_.set_font_size(font_size);
@@ -312,6 +323,9 @@ private:
 
 	/** The text entered in the widget. */
 	font::pango_text text_;
+
+	/** font family */
+	font::family_class font_family_;
 
 	/** Cached version of the text without any pending IME modifications. */
 	std::string text_cached_;
