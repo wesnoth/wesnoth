@@ -154,21 +154,22 @@ void scroll_text::finalize_subclass()
 
 void scroll_text::update()
 {
-	queue_redraw();
+	//queue_redraw();
 }
 
-void scroll_text::set_can_wrap(bool /*can_wrap*/)
+void scroll_text::set_can_wrap(bool can_wrap)
 {
 //	multiline_text* text = get_internal_text_box();
 //	assert(text);
 //
-//	wrap_on_ = can_wrap;
+	wrap_on_ = can_wrap;
 //	lbl->set_can_wrap(wrap_on_);
 }
 
 bool scroll_text::can_wrap() const
 {
-	return wrap_on_;
+//	return wrap_on_;
+	return true;
 }
 
 void scroll_text::signal_handler_left_button_down(const event::ui_event event)

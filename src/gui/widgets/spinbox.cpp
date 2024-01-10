@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2023 - 2023
+	Copyright (C) 2008 - 2023
+	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,18 +17,18 @@
 
 #include "gui/widgets/spinbox.hpp"
 
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/button.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/core/log.hpp"
-#include "gui/widgets/styled_widget.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/helper.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-
-#include "sound.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include <iostream>
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -37,171 +38,113 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-REGISTER_WIDGET(spinbox)
+REGISTER_WIDGET(spinner)
 
-spinbox::spinbox(const implementation::builder_spinbox& builder)
-	: styled_widget(builder, type())
-	  , state_(ENABLED)
-	  , minimum_value_(0)
-	  , step_size_(1)
+spinner::spinner(const implementation::builder_spinner& builder)
+	: container_base(builder, type())
+	, state_(ENABLED)
+	, step_size_(1)
 {
-	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-				&spinbox::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
-
-	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&spinbox::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
-	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&spinbox::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
-
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&spinbox::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
-	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&spinbox::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&spinbox::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
+		std::bind(&spinner::signal_handler_left_button_down, this, std::placeholders::_2),
+		event::dispatcher::back_pre_child);
 
-	set_value(0);
+
+//	grid* grid_ = find_widget<grid>(this, "_content_grid", false, true);
+//	button* btn_prev = find_widget<button>(grid_, "_prev", false, true);
+//	connect_signal_mouse_left_click(*btn_prev,
+//		std::bind(&spinner::prev, this));
 }
 
-void spinbox::set_active(const bool active)
+text_box* spinner::get_internal_text_box()
 {
-	if(get_active() != active) {
-		set_state(active ? ENABLED : DISABLED);
+	return find_widget<text_box>(this, "_text", false, true);
+}
+
+void spinner::set_value(const int val)
+{
+	text_box* edit_area = get_internal_text_box();
+	if (edit_area != nullptr) {
+		edit_area->set_value(std::to_string(val));
 	}
 }
 
-bool spinbox::get_active() const
+int spinner::get_value()
+{
+	/* Return 0 if invalid.
+	 * TODO: give visual indication of wrong value
+	 */
+	int val;
+	try {
+		text_box* edit_area = get_internal_text_box();
+		if (edit_area != nullptr) {
+			val = stoi(edit_area->get_value());
+		} else {
+			val = 0;
+		}
+	} catch(std::invalid_argument const& ex) {
+		val = 0;
+	} catch(std::out_of_range const& ex) {
+		val = 0;
+	}
+
+	return val;
+}
+
+void spinner::finalize_setup()
+{
+	button* btn_prev = find_widget<button>(this, "_prev", false, true);
+	button* btn_next = find_widget<button>(this, "_next", false, true);
+	connect_signal_mouse_left_click(*btn_prev, std::bind(&spinner::prev, this));
+	connect_signal_mouse_left_click(*btn_next, std::bind(&spinner::next, this));
+}
+
+void spinner::set_self_active(const bool active)
+{
+	state_ = active ? ENABLED : DISABLED;
+}
+
+bool spinner::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-void spinbox::set_state(const state_t state)
-{
-	if(state != state_) {
-		state_ = state;
-		queue_redraw();
-	}
-}
-
-
-unsigned spinbox::get_state() const
+unsigned spinner::get_state() const
 {
 	return state_;
 }
 
-void spinbox::signal_handler_sdl_key_down(const event::ui_event event, bool& handled, const SDL_Keycode key, SDL_Keymod /*modifier*/)
+bool spinner::can_wrap() const
+{
+	return true;
+}
+
+void spinner::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	set_state(FOCUSED);
-	handled = true;
-
-	std::cout << "Event key down" << std::endl;
-
-	switch(key) {
-	case SDLK_DOWN:
-	case SDLK_LEFT:
-		prev();
-		queue_redraw();
-		break;
-
-	case SDLK_UP:
-	case SDLK_RIGHT:
-		next();
-		queue_redraw();
-		break;
-
-	default:
-		break;
-	}
+	get_window()->keyboard_capture(this);
 }
-
-void spinbox::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
-{
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
-	if(state_ != FOCUSED) {
-		set_state(HOVERED);
-	}
-
-	handled = true;
-}
-
-void spinbox::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
-{
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
-	if(state_ != FOCUSED) {
-		set_state(ENABLED);
-	}
-
-	handled = true;
-}
-
-void spinbox::signal_handler_left_button_down(const event::ui_event event, bool& handled)
-{
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
-	window* window = get_window();
-	if(window) {
-		window->mouse_capture();
-		window->keyboard_capture(this);
-	}
-
-	/* get_x() is the left border
-	 * this->get_size().x is the size of this widget
-	 * so get_x() + this->get_size().x is the right border
-	 * 25 is the size of the left/right arrow icons. */
-
-	int x = get_x() + this->get_size().x;
-	int mx = get_mouse_position().x;
-	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
-		next();
-	} else if ((mx <= get_x()+ICON_SIZE) && (mx >= get_x())) {
-		prev();
-	}
-
-	set_state(FOCUSED);
-	handled = true;
-}
-
-void spinbox::signal_handler_left_button_up(const event::ui_event event, bool& handled)
-{
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
-	set_state(FOCUSED);
-	handled = true;
-}
-
-void spinbox::signal_handler_left_button_click(const event::ui_event event, bool& handled)
-{
-	assert(get_window());
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
-	sound::play_UI_sound(settings::sound_button_click);
-
-	handled = true;
-}
-
 
 // }---------- DEFINITION ---------{
 
-spinbox_definition::spinbox_definition(const config& cfg)
+spinner_definition::spinner_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing spinbox " << id;
+	DBG_GUI_P << "Parsing spinner " << id;
 
 	load_resolutions<resolution>(cfg);
 }
 
-spinbox_definition::resolution::resolution(const config& cfg)
-	: resolution_definition(cfg)
+spinner_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum state_t in spinbox.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for spinbox")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for spinbox")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for spinbox")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_hovered", _("Missing required state for spinbox")));
+	// Note the order should be the same as the enum state_t is spinner.hpp.
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll label control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll label control")));
+
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for scroll label control"));
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -209,16 +152,22 @@ spinbox_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_spinbox::builder_spinbox(const config& cfg)
-	: builder_styled_widget(cfg)
+builder_spinner::builder_spinner(const config& cfg)
+	: implementation::builder_styled_widget(cfg)
 {
 }
 
-std::unique_ptr<widget> builder_spinbox::build() const
+std::unique_ptr<widget> builder_spinner::build() const
 {
-	auto widget = std::make_unique<spinbox>(*this);
+	auto widget = std::make_unique<spinner>(*this);
 
-	DBG_GUI_G << "Window builder: placed spinbox '" << id
+	const auto conf = widget->cast_config_to<spinner_definition>();
+	assert(conf);
+
+	widget->init_grid(*conf->grid);
+	widget->finalize_setup();
+
+	DBG_GUI_G << "Window builder: placed spinner '" << id
 			  << "' with definition '" << definition << "'.";
 
 	return widget;

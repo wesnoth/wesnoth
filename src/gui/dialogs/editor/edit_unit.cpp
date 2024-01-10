@@ -34,7 +34,7 @@
 #include "gui/widgets/multiline_text.hpp"
 #include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/slider.hpp"
-#include "gui/widgets/spinner.hpp"
+#include "gui/widgets/spinbox.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
