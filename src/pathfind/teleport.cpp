@@ -27,7 +27,7 @@
 #include "units/unit.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
-#include <wml_exception.hpp>
+#include "wml_exception.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
@@ -45,8 +45,8 @@ namespace {
 // This constructor is *only* meant for loading from saves
 teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(cfg["reversed"].to_bool(false)), id_(cfg["id"])
 {
-	VALIDATE(cfg.has_attribute("id"), missing_mandatory_wml_key("cfg", "id"));
-	VALIDATE(cfg.has_attribute("reversed"), missing_mandatory_wml_key("cfg", "reversed"));
+	VALIDATE(cfg.has_attribute("id"), missing_mandatory_wml_key("tunnel", "id"));
+	VALIDATE(cfg.has_attribute("reversed"), missing_mandatory_wml_key("tunnel", "reversed"));
 
 	VALIDATE(cfg_.child_count("source") == 1, _("config should have one 'source' child."));
 	VALIDATE(cfg_.child_count("target") == 1, _("config should have one 'target' child."));
