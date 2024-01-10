@@ -24,6 +24,8 @@
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
 
+#include <iostream>
+
 #include <functional>
 #include <memory>
 #include <string>
@@ -290,6 +292,7 @@ public:
 	 */
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 	{
+		std::cout << highlight_start_offset_ << "," << highlight_end_offset_ << std::endl;
 		highlight_start_offset_ = start_offset;
 		highlight_end_offset_ = end_offset;
 		highlight_color_ = color;

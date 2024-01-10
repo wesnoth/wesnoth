@@ -348,13 +348,27 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 				return false;
 			}
 		} else {
-			/*
-			 * pango_layout_set_text after pango_layout_set_markup might
-			 * leave the layout in an undefined state regarding markup so
-			 * clear it unconditionally.
-			 */
-			pango_layout_set_attributes(layout_.get(), nullptr);
-			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
+			if (highlight_start_offset_ != highlight_end_offset_) {
+				/** Highlight */
+				PangoAttrList *attribute_list = pango_attr_list_new();
+				PangoAttribute *attr = pango_attr_background_new(5397, 13621, 20560);
+				attr->start_index = highlight_start_offset_;
+				attr->end_index = highlight_end_offset_;
+				pango_attr_list_insert(attribute_list, attr);
+
+				pango_layout_set_attributes(layout_.get(), attribute_list);
+				pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
+				pango_attr_list_unref(attribute_list);
+			} else {
+				/*
+				 * pango_layout_set_text after pango_layout_set_markup might
+				 * leave the layout in an undefined state regarding markup so
+				 * clear it unconditionally.
+				 */
+				pango_layout_set_attributes(layout_.get(), nullptr);
+				pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
+			}
+
 		}
 		text_ = narrow;
 		length_ = wide.size();
@@ -1000,6 +1014,9 @@ std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 	boost::hash_combine(hash, t.alignment_);
 	boost::hash_combine(hash, t.ellipse_mode_);
 	boost::hash_combine(hash, t.add_outline_);
+	boost::hash_combine(hash, t.highlight_start_offset_);
+	boost::hash_combine(hash, t.highlight_end_offset_);
+	boost::hash_combine(hash, t.highlight_color_.to_rgba_bytes());
 
 	return hash;
 }

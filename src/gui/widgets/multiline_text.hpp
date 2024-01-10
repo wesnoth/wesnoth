@@ -230,8 +230,6 @@ private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
-	std::string mark_highlight_area();
-
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_mouse_motion(const event::ui_event event,
@@ -283,8 +281,6 @@ public:
 
 	t_string hint_text;
 	std::string hint_image;
-
-	int rows_shown;
 };
 
 } // namespace implementation

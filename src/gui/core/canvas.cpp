@@ -409,6 +409,8 @@ text_shape::text_shape(const config& cfg)
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
+	, highlight_start_(cfg["highlight_start"], 0)
+	, highlight_end_(cfg["highlight_end"], 0)
 {
 	if(!font_size_.has_formula()) {
 		VALIDATE(font_size_(), _("Text has a font size of 0."));
@@ -435,6 +437,14 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
+
+	if (variables.has_key("highlight_start") && variables.has_key("highlight_end"))
+	{
+		int hs = variables.query_value("highlight_start").as_int();
+		int he = variables.query_value("highlight_end").as_int();
+		text_renderer.set_highlight_area(hs, he, color_t::from_rgb_string("21, 53, 80"));
+	}
+
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))

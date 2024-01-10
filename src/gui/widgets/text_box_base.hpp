@@ -80,6 +80,11 @@ public:
 		return text_.get_lines_count();
 	}
 
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+	{
+		text_.set_highlight_area(start_offset, end_offset, color);
+	}
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**

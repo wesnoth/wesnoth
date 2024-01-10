@@ -130,12 +130,8 @@ private:
 
 	PangoAlignment text_alignment_;
 
-//	bool link_aware_;
-	void update();
-
 	void finalize_subclass() override;
 
-//	label* get_internal_label();
 	multiline_text* get_internal_text_box();
 
 public:

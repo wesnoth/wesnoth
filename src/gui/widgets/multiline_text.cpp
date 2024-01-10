@@ -17,6 +17,7 @@
 
 #include "gui/widgets/multiline_text.hpp"
 
+#include "color.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
@@ -107,27 +108,6 @@ void multiline_text::update_canvas()
 	}
 	set_ellipse_mode(ellipse_mode);
 
-	// Set the selection info
-	unsigned start_offset = 0;
-	unsigned end_offset = 0;
-	unsigned start_offset_y = 0;
-	unsigned end_offset_y = 0;
-	if(static_cast<int>(get_selection_length()) == 0) {
-		// No nothing.
-	} else if(length > 0) {
-//	} else {
-		start_offset = get_cursor_position(start).x;
-		end_offset = get_cursor_position(start + length).x;
-		start_offset_y = get_cursor_position(start).y;
-		end_offset_y = get_cursor_position(start + length).y;
-//	}
-	} else {
-		start_offset = get_cursor_position(start + length).x;
-		end_offset = get_cursor_position(start).x;
-		start_offset_y = get_cursor_position(start + length).y;
-		end_offset_y = get_cursor_position(start).y;
-	}
-
 	// Set the composition info
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
@@ -143,13 +123,6 @@ void multiline_text::update_canvas()
 
 	set_line_no_from_offset();
 
-	std::cout << "row :" << line_no_ << " ";
-	std::cout << "offset :" << get_selection_start() << std::endl;
-	std::cout << "sel start :" << get_selection_start() << std::endl;
-	std::cout << "sel length :" << static_cast<int>(get_selection_length()) << std::endl;
-	
-	std::cout << start_offset << "," << end_offset << " ";
-
 	/***** Set in all canvases *****/
 
 	const int max_width = get_text_maximum_width();
@@ -158,29 +131,26 @@ void multiline_text::update_canvas()
 	for(auto & tmp : get_canvases())
 	{
 
-		tmp.set_variable("text", wfl::variant(mark_highlight_area()));
+		tmp.set_variable("text", wfl::variant(get_value()));
 		tmp.set_variable("text_x_offset", wfl::variant(text_x_offset_));
 		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
+
+		if (length < 0) {
+			tmp.set_variable("highlight_start", wfl::variant(start+length));
+			tmp.set_variable("highlight_end", wfl::variant(start));
+		} else {
+			tmp.set_variable("highlight_start", wfl::variant(start));
+			tmp.set_variable("highlight_end", wfl::variant(start+length));
+		}
 
 		tmp.set_variable("cursor_offset_x",
 						 wfl::variant(get_cursor_position(start + length).x));
 		tmp.set_variable("cursor_offset_y",
 						 wfl::variant(get_cursor_position(start + length).y));
 
-//		tmp.set_variable("selection_start_y", wfl::variant(get_sel_start_y()));
-//		tmp.set_variable("selection_offset", wfl::variant(start_offset));
-		tmp.set_variable("selection_width", wfl::variant(end_offset - start_offset));
-//		tmp.set_variable("selection_height", wfl::variant(end_offset_y - start_offset_y));
-		tmp.set_variable("selection_height", wfl::variant(end_offset_y>start_offset_y ? end_offset_y-start_offset_y : start_offset_y-end_offset_y ));
-
-		tmp.set_variable("selection_start_x", wfl::variant(start_offset));
-		tmp.set_variable("selection_start_y", wfl::variant(start_offset_y));
-
 		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
-
-		tmp.set_variable("rows_shown", wfl::variant(rows_shown_));
 
 		tmp.set_variable("composition_offset", wfl::variant(comp_start_offset));
 		tmp.set_variable("composition_width", wfl::variant(comp_end_offset - comp_start_offset));
@@ -188,33 +158,6 @@ void multiline_text::update_canvas()
 		tmp.set_variable("hint_text", wfl::variant(hint_text_));
 		tmp.set_variable("hint_image", wfl::variant(hint_image_));
 	}
-}
-
-std::string multiline_text::mark_highlight_area()
-{
-	unsigned start = get_selection_start();
-	int len = static_cast<int>(get_selection_length());
-	if (len < 0)
-	{
-		start += len;
-		len = -len;
-	}
-
-	if(len == 0) {
-		return get_value();
-	}
-
-	std::cout << "start :" << start << "len :" << len << std::endl;
-
-	std::string text = get_value();
-	std::string span_start = "<span bgcolor='#153580'>";
-	std::cout << text << std::endl;
-	utf8::insert(text, start, span_start);
-	utf8::insert(text, start+len+span_start.size(), "</span>");
-
-	std::cout << text << std::endl;
-
-	return text;
 }
 
 void multiline_text::delete_char(const bool before_cursor)
@@ -255,7 +198,6 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 	// FIXME we don't test for overflow in width
 	if(mouse.x < static_cast<int>(text_x_offset_)
 	   || mouse.y < static_cast<int>(text_y_offset_)
-//	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
 	   || mouse.y >= static_cast<int>(text_y_offset_ + get_lines_count() * font::get_line_spacing_factor() * text_height_)) {
 		return;
 	}
@@ -526,7 +468,6 @@ builder_multiline_text::builder_multiline_text(const config& cfg)
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
-	, rows_shown(cfg["rows_shown"])
 {
 }
 
@@ -543,7 +484,6 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 
 	widget->set_max_input_length(max_input_length);
 	widget->set_hint_data(hint_text, hint_image);
-	widget->set_rows_shown(rows_shown);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";
