@@ -212,9 +212,9 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 	}
 }
 
-SDL_Rect menu::imgsel_style::item_size(const std::string& item) const
+SDL_Rect menu::imgsel_style::item_size(const indented_menu_item& imi) const
 {
-	SDL_Rect bounds = style::item_size(item);
+	SDL_Rect bounds = style::item_size(imi);
 
 	bounds.w += 2 * thickness_;
 	bounds.h += 2 * thickness_ + 4;
