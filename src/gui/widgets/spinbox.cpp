@@ -79,10 +79,10 @@ int spinner::get_value()
 			val = 0;
 			invalid_ = true;
 		}
-	} catch(std::invalid_argument const& ex) {
+	} catch(std::invalid_argument const& /*ex*/) {
 		val = 0;
 		invalid_ = true;
-	} catch(std::out_of_range const& ex) {
+	} catch(std::out_of_range const& /*ex*/) {
 		val = 0;
 		invalid_ = true;
 	}

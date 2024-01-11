@@ -849,7 +849,7 @@ void editor_edit_unit::write() {
 	// Write to file
 	try {
 		filesystem::write_file(unit_path, generated_wml);
-	} catch(const filesystem::io_exception& e) {
+	} catch(const filesystem::io_exception& /*e*/) {
 		// TODO : Needs an error message
 	}
 }
