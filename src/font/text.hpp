@@ -174,6 +174,8 @@ public:
 	point get_cursor_position(
 		const unsigned column, const unsigned line = 0) const;
 
+	int get_byte_offset(int column);
+
 	/**
 	 * Get maximum length.
 	 *

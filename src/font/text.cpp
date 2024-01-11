@@ -193,6 +193,32 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
+int pango_text::get_byte_offset(int column)
+{
+	// First we need to determine the byte offset, if more routines need it it
+	// would be a good idea to make it a separate function.
+	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
+		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
+
+	// Go the wanted column.
+	for(std::size_t i = 0; i < column; ++i) {
+		if(!pango_layout_iter_next_char(itor.get())) {
+			// It seems that the documentation is wrong and causes and off by
+			// one error... the result should be false if already at the end of
+			// the data when started.
+			if(i + 1 == column) {
+				break;
+			}
+			// We are beyond data.
+//			return point(0, 0);
+		}
+	}
+
+	// Get the byte offset
+	const int offset = pango_layout_iter_get_index(itor.get());
+	return offset;
+}
+
 point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
 {
 	this->recalculate();

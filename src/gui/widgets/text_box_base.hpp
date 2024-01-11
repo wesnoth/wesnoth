@@ -80,6 +80,11 @@ public:
 		return text_.get_lines_count();
 	}
 
+	int get_byte_offset(const int column)
+	{
+		return text_.get_byte_offset(column);
+	}
+
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 	{
 		text_.set_highlight_area(start_offset, end_offset, color);
