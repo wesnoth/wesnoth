@@ -44,16 +44,11 @@ spinner::spinner(const implementation::builder_spinner& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
 	, step_size_(1)
+	, invalid_(false)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&spinner::signal_handler_left_button_down, this, std::placeholders::_2),
 		event::dispatcher::back_pre_child);
-
-
-//	grid* grid_ = find_widget<grid>(this, "_content_grid", false, true);
-//	button* btn_prev = find_widget<button>(grid_, "_prev", false, true);
-//	connect_signal_mouse_left_click(*btn_prev,
-//		std::bind(&spinner::prev, this));
 }
 
 text_box* spinner::get_internal_text_box()
@@ -79,13 +74,17 @@ int spinner::get_value()
 		text_box* edit_area = get_internal_text_box();
 		if (edit_area != nullptr) {
 			val = stoi(edit_area->get_value());
+			invalid_ = false;
 		} else {
 			val = 0;
+			invalid_ = true;
 		}
 	} catch(std::invalid_argument const& ex) {
 		val = 0;
+		invalid_ = true;
 	} catch(std::out_of_range const& ex) {
 		val = 0;
+		invalid_ = true;
 	}
 
 	return val;

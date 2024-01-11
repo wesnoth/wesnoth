@@ -87,13 +87,22 @@ public:
 		// Allow negatives?
 		if (get_value() > 0) {
 			set_value(get_value() - step_size_);
+		} else {
+			if (invalid_) {
+				set_value(0);
+			}
 		}
 	}
 
 	void next()
 	{
-		// No max value
-		set_value(get_value() + step_size_);
+		int val = get_value();
+		if (!invalid_) {
+			// No max value
+			set_value(val + step_size_);
+		} else {
+			set_value(0);
+		}
 	}
 
 private:
@@ -118,12 +127,13 @@ private:
 	 */
 	state_t state_;
 
-//	void finalize_subclass() override;
 	/** The grid that holds the content. */
 	std::unique_ptr<grid> content_grid_;
 
-
 	int step_size_;
+
+	/** If the entered data is invalid. */
+	bool invalid_;
 
 	text_box* get_internal_text_box();
 
