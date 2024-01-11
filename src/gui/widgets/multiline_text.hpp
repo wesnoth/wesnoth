@@ -53,7 +53,7 @@ class multiline_text : public text_box_base
 
 public:
 	explicit multiline_text(const implementation::builder_styled_widget& builder);
-	
+
 	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override
 	{

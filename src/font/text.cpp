@@ -374,7 +374,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 				 */
 				pango_layout_set_attributes(layout_.get(), nullptr);
 			}
-			
+
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
 

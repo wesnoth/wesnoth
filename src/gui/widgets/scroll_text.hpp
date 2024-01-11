@@ -77,7 +77,7 @@ public:
 	void set_value(const t_string& label) {
 		set_label(label);
 	}
-	
+
 	std::string get_value();
 
 	/** See @ref styled_widget::set_text_alignment. */

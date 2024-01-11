@@ -281,7 +281,7 @@ public:
 	pango_text& set_link_color(const color_t& color);
 
 	pango_text& set_add_outline(bool do_add);
-	
+
 	/**
 	 * Mark a specific portion of text for highlighting. Used for selection box.
 	 * BGColor is set in set_text(), this just marks the area to be colored.
@@ -393,7 +393,7 @@ private:
 
 	/** Length of the text. */
 	mutable std::size_t length_;
-	
+
 	unsigned highlight_start_offset_;
 	unsigned highlight_end_offset_;
 	color_t	highlight_color_;
