@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <optional>
 #include <map>
 #include <set>
 
@@ -28,6 +29,25 @@ namespace image{
 
 namespace gui {
 
+/**
+ * The only kind of row still supported by the menu class.
+ *
+ * If comparing to 1.17.24 or before, these three items were held as a single string, thus a single member
+ * of the "fields" and a single "column" of the multi-column support.
+ */
+struct indented_menu_item
+{
+	/** An amount of blank space at the start of the row, measured in tab-stops (so 1 is around 4 en-widths) */
+	int indent_level;
+	/** If non-empty, a picture to display before the text */
+	std::string icon;
+	std::string text;
+};
+
+/**
+ * Superclass of the help_menu, which displays the left-hand pane of the GUI1 help browser.
+ * Historically a more generic class, but now only used for that singular purpose.
+ */
 class menu : public scrollarea
 {
 public:
@@ -41,7 +61,7 @@ public:
 		virtual ~style();
 		virtual void init() {}
 
-		virtual SDL_Rect item_size(const std::string& item) const;
+		virtual SDL_Rect item_size(const indented_menu_item& imi) const;
 		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		std::size_t get_font_size() const;
@@ -66,7 +86,7 @@ public:
 								 double normal_alpha, double selected_alpha);
 		virtual ~imgsel_style();
 
-		virtual SDL_Rect item_size(const std::string& item) const;
+		virtual SDL_Rect item_size(const indented_menu_item& imi) const;
 		virtual void draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
@@ -94,18 +114,15 @@ public:
 
 	struct item
 	{
-		item() : fields(), id(0)
-		{}
-
-		item(const std::vector<std::string>& fields, std::size_t id)
+		item(const indented_menu_item& fields, std::size_t id)
 			: fields(fields), id(id)
 		{}
 
-		std::vector<std::string> fields;
+		indented_menu_item fields;
 		std::size_t id;
 	};
 
-	menu(const std::vector<std::string>& items,
+	menu(
 	     bool click_selects=false, int max_height=-1, int max_width=-1,
 		 style *menu_style=nullptr, const bool auto_join=true);
 
@@ -119,13 +136,11 @@ public:
 	void reset_selection();
 
 	/**
-	 * Set new items to show and redraw/recalculate everything. If
-	 * strip_spaces is false, spaces will remain at the item edges. If
-	 * keep_viewport is true, the menu tries to keep the selection at
-	 * the same position as it were before the items were set.
+	 * Set new items to show and redraw/recalculate everything. The menu tries
+	 * to keep the selection at the same position as it were before the items
+	 * were set.
 	 */
-	virtual void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
-				   bool keep_viewport=false);
+	virtual void set_items(const std::vector<indented_menu_item>& items, std::optional<std::size_t> selected);
 
 	/**
 	 * Set a new max height for this menu. Note that this does not take
@@ -151,12 +166,11 @@ public:
 	void scroll(unsigned int pos) override;
 
 protected:
-	bool item_ends_with_image(const std::string& item) const;
 	virtual void handle_event(const SDL_Event& event) override;
 	void set_inner_location(const SDL_Rect& rect) override;
 
 	bool requires_event_focus(const SDL_Event *event=nullptr) const override;
-	const std::vector<int>& column_widths() const;
+	int widest_row_width() const;
 	virtual void draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 	style *style_;
@@ -164,7 +178,16 @@ protected:
 
 	int hit(int x, int y) const;
 
-	int hit_column(int x) const;
+	/**
+	 * Returns true if a mouse-click with the given x-coordinate, and an
+	 * appropriate y-coordinate would lie within the indent or icon part of
+	 * the given row.
+	 *
+	 * The unusual combination of arguments fit with this being called when
+	 * handling a mouse event, where we already know which row was selected,
+	 * and are just inquiring a bit more about the details of that row.
+	 */
+	bool hit_on_indent_or_icon(std::size_t row_index, int x) const;
 
 	void invalidate_row(std::size_t id);
 	void invalidate_row_pos(std::size_t pos);
@@ -181,7 +204,10 @@ private:
 	std::vector<item> items_;
 	std::vector<std::size_t> item_pos_;
 
-	mutable std::vector<int> column_widths_;
+	/**
+	 * Cached return value of widest_row_width(), calculated on demand when calling that function.
+	 */
+	mutable std::optional<int> widest_row_width_;
 
 	std::size_t selected_;
 	bool click_selects_;
@@ -193,16 +219,13 @@ private:
 
 	bool double_clicked_;
 
-	void column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const;
-
-	void clear_item(int item);
 	void draw_contents() override;
 
 	mutable std::map<int,SDL_Rect> itemRects_;
 
 	SDL_Rect get_item_rect(int item) const;
 	SDL_Rect get_item_rect_internal(std::size_t pos) const;
-	std::size_t get_item_height_internal(const std::vector<std::string>& item) const;
+	std::size_t get_item_height_internal(const indented_menu_item& imi) const;
 	std::size_t get_item_height(int item) const;
 	int items_start() const;
 
@@ -226,10 +249,9 @@ private:
 	bool use_ellipsis_;
 
 	/**
-	 * Set new items to show. If strip_spaces is false, spaces will
-	 * remain at the item edges.
+	 * Set new items to show.
 	 */
-	void fill_items(const std::vector<std::string>& items, bool strip_spaces);
+	void fill_items(const std::vector<indented_menu_item>& imi);
 
 	void update_size();
 	enum SELECTION_MOVE_VIEWPORT { MOVE_VIEWPORT, NO_MOVE_VIEWPORT };

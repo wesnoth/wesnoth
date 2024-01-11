@@ -33,11 +33,18 @@
 
 #include <numeric>
 
+namespace {
+	/**
+	 * For converting indented_menu_item.indent_level into a width in pixels.
+	 * The text size might change, so instead of caching a value pango_line_size
+	 * is called repeatedly with this as an argument.
+	 */
+	const std::string indent_string{"    "};
+};
+
 namespace gui {
 
-menu::menu(const std::vector<std::string>& items,
-		bool click_selects, int max_height, int max_width,
-		style *menu_style, const bool auto_join)
+menu::menu(bool click_selects, int max_height, int max_width, style *menu_style, const bool auto_join)
 : scrollarea(auto_join), silent_(false),
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
@@ -50,35 +57,19 @@ menu::menu(const std::vector<std::string>& items,
 {
 	style_ = (menu_style) ? menu_style : &default_style;
 	style_->init();
-	fill_items(items, true);
+	fill_items({});
 }
 
 menu::~menu()
 {
 }
 
-void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
+void menu::fill_items(const std::vector<indented_menu_item>& items)
 {
-	for(std::vector<std::string>::const_iterator itor = items.begin();
-	    itor != items.end(); ++itor) {
-
+	for(const auto& itor : items) {
 		const std::size_t id = items_.size();
 		item_pos_.push_back(id);
-		const item new_item(utils::quoted_split(*itor, COLUMN_SEPARATOR, !strip_spaces),id);
-		items_.push_back(new_item);
-
-		//make sure there is always at least one item
-		if(items_.back().fields.empty()) {
-			items_.back().fields.push_back(" ");
-		}
-
-		//if the first character in an item is an asterisk,
-		//it means this item should be selected by default
-		std::string& first_item = items_.back().fields.front();
-		if(first_item.empty() == false && first_item[0] == DEFAULT_ITEM) {
-			selected_ = id;
-			first_item.erase(first_item.begin());
-		}
+		items_.emplace_back(itor, id);
 	}
 
 	update_size();
@@ -103,8 +94,7 @@ void menu::update_size()
 	}
 
 	use_ellipsis_ = false;
-	const std::vector<int>& widths = column_widths();
-	int w = std::accumulate(widths.begin(), widths.end(), 0);
+	int w = widest_row_width();
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
 	w = std::max(w, width());
@@ -132,34 +122,32 @@ void menu::set_inner_location(const SDL_Rect& /*rect*/)
 	update_scrollbar_grip_height();
 }
 
-void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
+void menu::set_items(const std::vector<indented_menu_item>& items, std::optional<std::size_t> selected)
 {
-
 	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
 	items_.clear();
 	item_pos_.clear();
 	itemRects_.clear();
-	column_widths_.clear();
+	widest_row_width_.reset();
 	//undrawn_items_.clear();
 	max_items_ = -1; // Force recalculation of the max items.
 	item_height_ = -1; // Force recalculation of the item height.
 
-	if (!keep_viewport || selected_ >= items.size()) {
+	if(selected) {
+		selected_ = *selected;
+	} else {
 		selected_ = 0;
 	}
 
-	fill_items(items, strip_spaces);
-	if(!keep_viewport) {
-		set_position(0);
-	} else if(scrolled_to_max) {
+	fill_items(items);
+	if(scrolled_to_max) {
 		set_position(get_max_position());
 	}
 
 	update_scrollbar_grip_height();
 
-	if(!keep_viewport) {
-		adjust_viewport_to_selection();
-	}
+	adjust_viewport_to_selection();
+
 	queue_redraw();
 }
 
@@ -175,7 +163,7 @@ void menu::set_max_width(const int new_max_width)
 {
 	max_width_ = new_max_width;
 	itemRects_.clear();
-	column_widths_.clear();
+	widest_row_width_.reset();
 	update_size();
 }
 
@@ -194,6 +182,9 @@ std::size_t menu::max_items_onscreen() const
 	std::vector<int> heights;
 	std::size_t n;
 	for(n = 0; n != items_.size(); ++n) {
+		// The for loop, sort and sum around this are unnecessary, because
+		// get_item_height has ignored its argument since Wesnoth 0.6.99.1.
+		// It caches and returns the height of the tallest item.
 		heights.push_back(get_item_height(n));
 	}
 
@@ -448,34 +439,30 @@ void menu::scroll(unsigned int)
 	queue_redraw();
 }
 
-SDL_Rect menu::style::item_size(const std::string& item) const {
+SDL_Rect menu::style::item_size(const indented_menu_item& imi) const {
 	SDL_Rect res {0,0,0,0};
-	std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
-	for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-		 it != img_text_items.end(); ++it) {
-		if (res.w > 0 || res.h > 0) {
-			// Not the first item, add the spacing.
-			res.w += 5;
-		}
-		const std::string str = *it;
-		if (!str.empty() && str[0] == IMAGE_PREFIX) {
-			const std::string image_name(str.begin()+1,str.end());
-			const point image_size = image::get_size(image_name);
-			if (image_size.x && image_size.y) {
-				int w = image_size.x;
-				int h = image_size.y;
-				res.w += w;
-				res.h = std::max<int>(h, res.h);
-			}
-		}
-		else {
-			const SDL_Rect area {0,0,10000,10000};
-			const SDL_Rect font_size =
-				font::pango_draw_text(false, area, get_font_size(),
-					font::NORMAL_COLOR, str, 0, 0);
-			res.w += font_size.w;
-			res.h = std::max<int>(font_size.h, res.h);
-		}
+
+	res.w = imi.indent_level * font::pango_line_size(indent_string, get_font_size()).first;
+
+	if (!imi.icon.empty()) {
+		// Not the first item, add the spacing.
+		res.w += 5;
+
+		const texture img = image::get_texture(imi.icon);
+		res.w += img.w();
+		res.h = std::max<int>(img.h(), res.h);
+	}
+
+	if (!imi.text.empty()) {
+		// Not the first item, add the spacing.
+		res.w += 5;
+
+		const SDL_Rect area {0,0,10000,10000};
+		const SDL_Rect font_size =
+			font::pango_draw_text(false, area, get_font_size(),
+				font::NORMAL_COLOR, imi.text, 0, 0);
+		res.w += font_size.w;
+		res.h = std::max<int>(font_size.h, res.h);
 	}
 	return res;
 }
@@ -518,103 +505,77 @@ void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SD
 	menu_ref.draw_row(row_index, minirect, type);
 }
 
-
-
-void menu::column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const
+int menu::widest_row_width() const
 {
-	for(std::size_t col = 0; col != row.size(); ++col) {
-		const SDL_Rect res = style_->item_size(row[col]);
-		std::size_t text_trailing_space = (item_ends_with_image(row[col])) ? 0 : style_->get_cell_padding();
-
-		if(col == widths.size()) {
-			widths.push_back(res.w + text_trailing_space);
-		} else if(static_cast<std::size_t>(res.w) > widths[col] - text_trailing_space) {
-			widths[col] = res.w + text_trailing_space;
+	if(!widest_row_width_) {
+		int widest = 0;
+		for(const auto& row : items_) {
+			const SDL_Rect size = style_->item_size(row.fields);
+			widest = std::max(widest, size.w);
 		}
-	}
-}
-
-bool menu::item_ends_with_image(const std::string& item) const
-{
-	std::string::size_type pos = item.find_last_of(IMG_TEXT_SEPARATOR);
-	pos = (pos == std::string::npos) ? 0 : pos+1;
-	return(item.size() > pos && item.at(pos) == IMAGE_PREFIX);
-}
-
-const std::vector<int>& menu::column_widths() const
-{
-	if(column_widths_.empty()) {
-		for(std::size_t row = 0; row != items_.size(); ++row) {
-			column_widths_item(items_[row].fields,column_widths_);
-		}
+		// Assume there's text at the end of the item, and add padding accordingly.
+		widest_row_width_ = static_cast<int>(widest + style_->get_cell_padding());
 	}
 
-	return column_widths_;
+	return *widest_row_width_;
+}
+
+bool menu::hit_on_indent_or_icon(std::size_t row_index, int x) const
+{
+	if(row_index >= items_.size()) {
+		return false;
+	}
+
+	// The virtual method item_size() is overloaded by imgsel_style::item_size(),
+	// which adds borders on both sides. Call it twice and remove one side's padding.
+	const auto& imi = items_[row_index].fields;
+	int width_used_so_far = style_->item_size({imi.indent_level, imi.icon, ""}).w;
+	width_used_so_far -= style_->item_size({0, "", ""}).w / 2;
+
+	const SDL_Rect& loc = inner_location();
+	if (current_language_rtl()) {
+		// inner_location() already takes account of the scrollbar width
+		return x > loc.x + loc.w - width_used_so_far;
+	}
+	return x < loc.x + width_used_so_far;
 }
 
 void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
-	const std::vector<std::string>& row = items_[row_index].fields;
+	const auto& imi = items_[row_index].fields;
 	rect area = video::game_canvas();
-	rect column = inner_location();
-	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
-	int dir = (lang_rtl) ? -1 : 1;
 
-	int xpos = loc.x;
-	if(lang_rtl) {
-		xpos += loc.w;
+	// There's nothing to draw for the indent, just mark the space as used
+	int width_used_so_far = imi.indent_level * font::pango_line_size(indent_string, style_->get_font_size()).first;
+
+	if (!imi.icon.empty()) {
+		const texture img = image::get_texture(imi.icon);
+		int img_w = img.w();
+		int img_h = img.h();
+		const int remaining_width = max_width_ < 0 ? area.w : std::min<int>(max_width_, loc.w - width_used_so_far);
+		if(img && img_w <= remaining_width && loc.y + img_h < area.h) {
+			const std::size_t y = loc.y + (loc.h - img_h)/2;
+			const std::size_t x = loc.x + (lang_rtl ? loc.w - width_used_so_far - img_w : width_used_so_far);
+			draw::blit(img, {int(x), int(y), img_w, img_h});
+
+			// If there wasn't space for the icon, it doesn't get drawn, nor does the width get used.
+			// If it is drawn, add 5 pixels of padding.
+			width_used_so_far += img_w + 5;
+		}
 	}
 
-	for(std::size_t i = 0; i != row.size(); ++i) {
-
-		if(lang_rtl) {
-			xpos -= widths[i];
-		}
-
-		const int last_x = xpos;
-		column.w = widths[i];
-		std::string str = row[i];
-		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
-		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-			 it != img_text_items.end(); ++it) {
-			str = *it;
-			if (!str.empty() && str[0] == IMAGE_PREFIX) {
-				const std::string image_name(str.begin()+1,str.end());
-				const texture img = image::get_texture(image_name);
-				int img_w = img.w();
-				int img_h = img.h();
-				const int remaining_width = max_width_ < 0 ? area.w :
-				std::min<int>(max_width_, ((lang_rtl)? xpos - loc.x : loc.x + loc.w - xpos));
-				if(img && img_w <= remaining_width
-				&& loc.y + img_h < area.h) {
-					const std::size_t y = loc.y + (loc.h - img_h)/2;
-					const std::size_t w = img_w + 5;
-					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					draw::blit(img, {int(x), int(y), img_w, img_h});
-					if(!lang_rtl)
-						xpos += w;
-					column.w -= w;
-				}
-			} else {
-				column.x = xpos;
-
-				const auto text_size = font::pango_line_size(str, style_->get_font_size());
-				const std::size_t y = loc.y + (loc.h - text_size.second)/2;
-				rect text_loc = column;
-				text_loc.w = loc.w - (xpos - loc.x) - 2 * style_->get_thickness();
-				text_loc.h = text_size.second;
-				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
-					xpos, y);
-
-				xpos += dir * (text_size.first + 5);
-			}
-		}
-		if(lang_rtl)
-			xpos = last_x;
-		else
-			xpos = last_x + widths[i];
+	// Expected to be non-empty, but I guess a unit type could have a blank name
+	if (!imi.text.empty()) {
+		const auto text_size = font::pango_line_size(imi.text, style_->get_font_size());
+		const std::size_t x = loc.x + (lang_rtl ? std::max(0, loc.w - width_used_so_far - text_size.first) : width_used_so_far);
+		const std::size_t y = loc.y + (loc.h - text_size.second)/2;
+		rect text_loc = loc;
+		text_loc.w = loc.w - (width_used_so_far) - 2 * style_->get_thickness();
+		text_loc.h = text_size.second;
+		font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, imi.text,
+			x, y);
 	}
 }
 
@@ -638,18 +599,6 @@ int menu::hit(int x, int y) const
 	}
 
 	return -1;
-}
-
-int menu::hit_column(int x) const
-{
-	const std::vector<int>& widths = column_widths();
-	int j = -1, j_end = widths.size();
-	for(x -= location().x; x >= 0; x -= widths[j]) {
-		if(++j == j_end) {
-			return -1;
-		}
-	}
-	return j;
 }
 
 SDL_Rect menu::get_item_rect(int item) const
@@ -701,25 +650,22 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 	return res;
 }
 
-std::size_t menu::get_item_height_internal(const std::vector<std::string>& item) const
+std::size_t menu::get_item_height_internal(const indented_menu_item& imi) const
 {
-	std::size_t res = 0;
-	for(std::vector<std::string>::const_iterator i = item.begin(); i != item.end(); ++i) {
-		SDL_Rect rect = style_->item_size(*i);
-		res = std::max<int>(rect.h,res);
-	}
-
-	return res;
+	return style_->item_size(imi).h;
 }
 
 std::size_t menu::get_item_height(int) const
 {
+	// This could probably return the height of a single line of Pango text, plus
+	// padding. However, keeping compatibility with the current numbers means
+	// less unknowns about what the numbers should actually be.
 	if(item_height_ != -1)
 		return std::size_t(item_height_);
 
 	std::size_t max_height = 0;
-	for(std::size_t n = 0; n != items_.size(); ++n) {
-		max_height = std::max<int>(max_height,get_item_height_internal(items_[n].fields));
+	for(const auto& item : items_) {
+		max_height = std::max<int>(max_height,get_item_height_internal(item.fields));
 	}
 
 	return item_height_ = max_height;
