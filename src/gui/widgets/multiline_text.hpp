@@ -218,9 +218,6 @@ private:
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
 
-	int rows_shown_ = 3;
-	void set_rows_shown(int rows) { rows_shown_ = rows; };
-
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();

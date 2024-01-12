@@ -144,10 +144,10 @@ void scroll_text::finalize_subclass()
 	multiline_text* text = get_internal_text_box();
 	assert(text);
 
+	text->set_editable(is_editable());
 	text->set_label(get_label());
 	text->set_text_alignment(text_alignment_);
 	text->set_use_markup(get_use_markup());
-	text->set_editable(is_editable());
 }
 
 void scroll_text::set_can_wrap(bool can_wrap)
@@ -214,12 +214,12 @@ std::unique_ptr<widget> builder_scroll_text::build() const
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+	widget->set_editable(editable);
 
 	const auto conf = widget->cast_config_to<scroll_text_definition>();
 	assert(conf);
 
 	widget->init_grid(*conf->grid);
-	widget->set_editable(editable);
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '" << id

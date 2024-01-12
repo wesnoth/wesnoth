@@ -80,7 +80,7 @@ public:
 		return text_.get_lines_count();
 	}
 
-	int get_byte_offset(const int column)
+	int get_byte_offset(const unsigned column) const
 	{
 		return text_.get_byte_offset(column);
 	}
@@ -141,6 +141,7 @@ public:
 	void set_editable(bool editable)
 	{
 		editable_ = editable;
+		update_canvas();
 	}
 
 	bool is_editable()

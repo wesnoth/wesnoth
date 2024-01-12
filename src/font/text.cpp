@@ -193,7 +193,7 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
-int pango_text::get_byte_offset(int column)
+int pango_text::get_byte_offset(const unsigned column) const
 {
 	// First we need to determine the byte offset, if more routines need it it
 	// would be a good idea to make it a separate function.

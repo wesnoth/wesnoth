@@ -137,6 +137,8 @@ void multiline_text::update_canvas()
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
 
+		tmp.set_variable("editable", wfl::variant(is_editable()));
+
 		if (length < 0) {
 			tmp.set_variable("highlight_start", wfl::variant(get_byte_offset(start+length)));
 			tmp.set_variable("highlight_end", wfl::variant(get_byte_offset(start)));
