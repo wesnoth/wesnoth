@@ -2530,7 +2530,6 @@ void game_lua_kernel::put_unit_helper(const map_location& loc)
 		game_display_->invalidate(loc);
 	}
 
-	units().erase(loc);
 	resources::whiteboard->on_kill_unit();
 }
 
@@ -2581,6 +2580,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 
 		unit_ptr u = unit::create(cfg, true, vcfg);
+		units().erase(loc);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
