@@ -221,7 +221,7 @@ public:
 	/**
 	 * Requests to close the window.
 	 *
-	 * This request is not always honored, and so callers must account for the window remaining open.
+	 * This request is not always honored immediately, and so callers must account for the window remaining open.
 	 * For example, when overriding draw_manager's update() method.
 	 */
 	void close()
