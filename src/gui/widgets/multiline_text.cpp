@@ -162,6 +162,10 @@ void multiline_text::update_canvas()
 
 void multiline_text::delete_char(const bool before_cursor)
 {
+	if(!is_editable()) {
+		return;
+	}
+
 	if(before_cursor) {
 		set_cursor(get_selection_start() - 1, false);
 	}
@@ -173,7 +177,7 @@ void multiline_text::delete_char(const bool before_cursor)
 
 void multiline_text::delete_selection()
 {
-	if(get_selection_length() == 0) {
+	if(get_selection_length() == 0 || (!is_editable()) ) {
 		return;
 	}
 
@@ -315,6 +319,11 @@ bool multiline_text::history_down()
 void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 {
 	handled = true;
+
+	if(!is_editable())
+	{
+		return;
+	}
 
 	if(modifier & KMOD_CTRL) {
 		if(!(modifier & KMOD_SHIFT)) {
@@ -468,6 +477,7 @@ builder_multiline_text::builder_multiline_text(const config& cfg)
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
+	, editable(cfg["editable"].to_bool(true))
 {
 }
 
@@ -475,6 +485,8 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 {
 	auto widget = std::make_unique<multiline_text>(*this);
 
+
+	widget->set_editable(editable);
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);
 

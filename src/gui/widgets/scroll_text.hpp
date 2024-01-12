@@ -104,6 +104,16 @@ public:
 
 	void set_link_aware(bool /*l*/);
 
+	void set_editable(bool editable)
+	{
+		editable_ = editable;
+	}
+
+	bool is_editable()
+	{
+		return editable_;
+	}
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -129,6 +139,8 @@ private:
 	bool wrap_on_;
 
 	PangoAlignment text_alignment_;
+
+	bool editable_;
 
 	void finalize_subclass() override;
 
@@ -181,6 +193,7 @@ struct builder_scroll_text : public builder_styled_widget
 	bool wrap_on;
 	const PangoAlignment text_alignment;
 	bool link_aware;
+	bool editable;
 };
 
 } // namespace implementation

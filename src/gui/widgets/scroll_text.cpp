@@ -147,6 +147,7 @@ void scroll_text::finalize_subclass()
 	text->set_label(get_label());
 	text->set_text_alignment(text_alignment_);
 	text->set_use_markup(get_use_markup());
+	text->set_editable(is_editable());
 }
 
 void scroll_text::set_can_wrap(bool can_wrap)
@@ -199,6 +200,7 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 	, wrap_on(cfg["wrap"].to_bool(true))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(false))
+	, editable(cfg["editable"].to_bool(true))
 {
 	/** Horizontal scrollbar default to auto. AUTO_VISIBLE_FIRST_RUN doesn't work. */
 	if (horizontal_scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
@@ -217,6 +219,7 @@ std::unique_ptr<widget> builder_scroll_text::build() const
 	assert(conf);
 
 	widget->init_grid(*conf->grid);
+	widget->set_editable(editable);
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '" << id

@@ -138,6 +138,16 @@ public:
 	 */
 	void set_selection(std::size_t start, int length);
 
+	void set_editable(bool editable)
+	{
+		editable_ = editable;
+	}
+
+	bool is_editable()
+	{
+		return editable_;
+	}
+
 protected:
 	/** Get length of composition text by IME **/
 	size_t get_composition_length() const;
@@ -351,6 +361,9 @@ private:
 	 * * selection_len_ == 0 means no selection.
 	 */
 	int selection_length_;
+
+	/** If this text_box_base is editable */
+	bool editable_;
 
 	// Values to support input method editors
 	bool ime_composing_;
