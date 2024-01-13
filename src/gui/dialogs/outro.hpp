@@ -48,10 +48,9 @@ private:
 
 	virtual void post_show(window& window) override;
 
-	void draw_callback();
-
 	std::vector<std::string> text_;
-	std::vector<std::string>::iterator current_text_;
+	std::string current_text_;
+	std::size_t text_index_;
 
 	unsigned int duration_;
 	int fade_step_;
