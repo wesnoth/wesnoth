@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2024-01-04 11:45+0100\n"
+"PO-Revision-Date: 2024-01-12 18:36+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -5600,7 +5600,7 @@ msgstr "(appuyez sur $hotkey pour poursuivre le mouvement)"
 #: src/actions/undo.cpp:413
 #, fuzzy
 msgid "Redo Error"
-msgstr "Erreur lors du refaire"
+msgstr "Erreur de ré-exécution"
 
 #: src/actions/undo.cpp:414
 #, fuzzy
@@ -5608,7 +5608,7 @@ msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
-"La pile de refaire est désynchronisée. La cause la plus commune est une "
+"La pile de ré-exécution est désynchronisée. La cause la plus commune est une "
 "sauvegarde corrompue ou un problème de code WML dans l'extension ou l'ère. "
 "Détails :"
 
@@ -6067,7 +6067,7 @@ msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
-"L'attribut  'forum_auth' de l'extension ne correspond pas à celui défini "
+"L'attribut 'forum_auth' de l'extension ne correspond pas à celui défini "
 "précédemment."
 
 #: src/addon/validation.cpp:512
@@ -6091,8 +6091,8 @@ msgstr "La liste des extensions du serveur est vide."
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr ""
-"Le support pour l'attribut  'forum_auth' dans le fichier pbl n'est pas "
-"activé sur ce serveur."
+"Le support pour l'attribut 'forum_auth' dans le fichier pbl n'est pas activé "
+"sur ce serveur."
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
@@ -9021,29 +9021,30 @@ msgstr "Ce moment de la journée est bidon !"
 #: src/units/abilities.cpp:970
 #, fuzzy
 msgid "Owned: "
-msgstr "Propre :"
+msgstr "Possédée : "
 
 #: src/units/abilities.cpp:973
 #, fuzzy
 msgid "Taught: "
-msgstr "Partagée :"
+msgstr "Partagée : "
 
 #: src/units/abilities.cpp:976
 #, fuzzy
 msgid "Taught: (by an enemy): "
-msgstr "Partagée par l'ennemi :"
+msgstr "Partagée par l'ennemi : "
 
 #: src/units/abilities.cpp:989
 #, fuzzy
 msgid "Used by opponent: "
-msgstr "Partagée avec l'ennemi :"
+msgstr "Partagée avec l'ennemi : "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:473
+#, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> dégât"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> dégâts"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> de dégâts"
 
 #: src/units/attack_type.cpp:482
 msgid "$number damage"
@@ -9830,11 +9831,13 @@ msgstr "Options du tableau blanc"
 #~ msgid "+$boost| moves"
 #~ msgstr "+$boost| mouvements"
 
+#, fuzzy
 #~ msgid "$range|: +$boost| damage"
-#~ msgstr "$range| : +$boost| dégâts"
+#~ msgstr "$range| : +$boost| de dégâts"
 
+#, fuzzy
 #~ msgid "$range|: +1 damage per level"
-#~ msgstr "$range| : +1 dégât par niveau"
+#~ msgstr "$range| : +1 de dégât par niveau"
 
 #~ msgid "+$hitpoints| hitpoints"
 #~ msgstr "+$hitpoints| points de vie"
@@ -9866,8 +9869,9 @@ msgstr "Options du tableau blanc"
 #~ msgid "melee: optional charge"
 #~ msgstr "corps à corps : charge facultative"
 
+#, fuzzy
 #~ msgid "$range|: arcane and +25% damage"
-#~ msgstr "$range| : arcane et +25% dégâts"
+#~ msgstr "$range| : arcane et +25% de dégâts"
 
 #~ msgid "World Conquest 1p"
 #~ msgstr "Conquête du monde 1 joueur"
