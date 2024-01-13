@@ -123,7 +123,7 @@ void editor_edit_pbl::pre_show(window& win)
 	multimenu_button& dependencies = find_widget<multimenu_button>(&win, "dependencies", false);
 	std::vector<config> addons_list;
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs_, filesystem::name_mode::FILE_NAME_ONLY);
-	if(dirs_.size() > 0) {
+	if(dirs_.size() > 0 && std::find(dirs_.begin(), dirs_.end(), current_addon_) != dirs_.end()) {
 		dirs_.erase(std::remove(dirs_.begin(), dirs_.end(), current_addon_));
 	}
 
