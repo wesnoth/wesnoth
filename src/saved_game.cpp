@@ -343,7 +343,7 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		non_scenario["name"] = cfg["addon_title"].str("mainline");
 		non_scenario["version"] = cfg["addon_version"].str(version_default);
 		non_scenario["min_version"] = cfg["addon_min_version"];
-		non_scenario["required"] = cfg[require_attr].to_bool(true);
+		non_scenario["required"] = cfg[require_attr].to_bool(!cfg["addon_id"].empty());
 		config& content = non_scenario.add_child("content");
 		content["id"] = id;
 		content["name"] = cfg["addon_title"].str(cfg["name"].str(""));
