@@ -201,7 +201,7 @@ function wml_actions.harm_unit(cfg)
 					end
 				else
 					if xp_mode.defend then
-						unit_to_harm.experience = unit_to_harm.experience + harmer.level
+						unit_to_harm.experience = unit_to_harm.experience + wesnoth.game_config.combat_experience * harmer.level
 					end
 					if xp_mode.attack then
 						harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
