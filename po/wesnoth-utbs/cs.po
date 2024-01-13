@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-11-20 17:23 UTC\n"
-"PO-Revision-Date: 2023-10-30 22:19+0100\n"
+"PO-Revision-Date: 2023-12-02 19:27+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -52,6 +52,10 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"Poznámka: Toto tažení mění některé standardní mechanismy jako střídání dne "
+"a noci, náklady na povolávání a obecný přístup k úrovním obtížnosti. "
+"Quenothští elfové mají jednotky, které dokážou útočit několikrát za kolo, "
+"a další, jež se mohou po útoku přesunout."
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
@@ -5812,7 +5816,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1577
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1578
 msgid "Dwarf High Guard"
-msgstr "Vysoká trpasličí stráž"
+msgstr "Nejvyšší trpasličí stráž"
 
 #. [message]: speaker=Dwarf Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1596
@@ -15001,7 +15005,7 @@ msgstr "magie"
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
 msgid "defeated"
-msgstr ""
+msgstr "poražený"
 
 #. [unit_type]: id=Divine Avatar, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
@@ -15679,155 +15683,141 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:52
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:404
 msgid "Swordsmanship Training"
-msgstr ""
+msgstr "Šermířský výcvik"
 
 #. [advancement]: id=strong_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:73
-#, fuzzy
-#| msgid "true strike"
 msgid "Strong Strikes"
-msgstr "úder pravdy"
+msgstr "Silné údery"
 
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:90
 msgid "Swordsman"
-msgstr ""
+msgstr "Šermíř"
 
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:112
-#, fuzzy
-#| msgid "Haunt"
 msgid "Taunt"
-msgstr "Strašidlo"
+msgstr "Výsměch"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
 msgid "Stronger Grip"
-msgstr ""
+msgstr "Silnější úchop"
 
 #. [advancement]: id=overwhelming_power
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:255
 msgid "Overwhelming Power"
-msgstr ""
+msgstr "Nesmírná síla"
 
 #. [advancement]: id=stamina_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:280
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
 msgid "Stamina Training"
-msgstr ""
+msgstr "Výcvik výdrže"
 
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:295
 msgid "Endurance Training"
-msgstr ""
+msgstr "Vytrvalostní průprava"
 
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:315
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:621
-#, fuzzy
-#| msgid "Troll Skirmisher"
 msgid "Skirmisher"
-msgstr "Trollí rváč"
+msgstr "Rváč"
 
 #. [advancement]: id=training_with_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:334
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:640
-#, fuzzy
-#| msgid "Talking with Trolls"
 msgid "Training with Bolas"
-msgstr "Rozhovor s trolly"
+msgstr "Výcvik s bolou"
 
 #. [advancement]: id=slow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:354
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:676
 msgid "Slow"
-msgstr ""
+msgstr "Pomalu"
 
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:374
 msgid "Opportunist"
-msgstr ""
+msgstr "Prospěchář"
 
 #. [advancement]: id=inspiring
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:388
 msgid "Inspiring"
-msgstr ""
+msgstr "Povzbuzující"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:425
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "Přesné údery"
 
 #. [advancement]: id=faster_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:442
-#, fuzzy
-#| msgid "true strike"
 msgid "Faster Strikes"
-msgstr "úder pravdy"
+msgstr "Rychlejší údery"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:454
 msgid "Sword Dance"
-msgstr ""
+msgstr "Mečový tanec"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:473
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "Výcvik lukostřelby"
 
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:490
 msgid "Quickdraw"
-msgstr ""
+msgstr "Rychlé natažení"
 
 #. [advancement]: id=ranger
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:502
-#, fuzzy
-#| msgid "Quenoth Ranger"
 msgid "Ranger"
-msgstr "Quenothský hraničář"
+msgstr "Hraničář"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:520
 msgid "Rain of Arrows"
-msgstr ""
+msgstr "Déšť šípů"
 
 #. [advancement]: id=toxic_rain
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:549
 msgid "Toxic Rain"
-msgstr ""
+msgstr "Jedovatý déšť"
 
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:566
 msgid "Twin Arrows"
-msgstr ""
+msgstr "Dvojité šípy"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:595
 msgid "Footwork"
-msgstr ""
+msgstr "Práce nohou"
 
 #. [advancement]: id=run_by_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:664
 msgid "Run By (Bolas)"
-msgstr ""
+msgstr "Únik (bola)"
 
 #. [advancement]: id=bolaship
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:696
-#, fuzzy
-#| msgid "bolas"
 msgid "Bolaship"
-msgstr "bola"
+msgstr "Zručnost s bolou"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:709
 msgid "Herbalism"
-msgstr ""
+msgstr "Bylinkářství"
 
 #. [advancement]: id=run_by_sword_and_bow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:727
 msgid "Run By (Sword and Bow)"
-msgstr ""
+msgstr "Únik (meč a luk)"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:860
@@ -16091,12 +16081,6 @@ msgid "This attack uses 6 attacks"
 msgstr "Tento útok užívá 6 útoků"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
-#, fuzzy
-#| msgid ""
-#| "This attack is the first verse of the Song of Sun Ascension, which "
-#| "progresses by one verse each turn this unit uses a song verse attack. "
-#| "When the last verse is sung or the song sequence is broken due to not "
-#| "attacking for a turn, the song starts again from the first verse."
 msgid ""
 "This attack is the first verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -16105,17 +16089,12 @@ msgid ""
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
 "Tento útok je první slokou Písně východu slunce, která postupuje o jednu "
-"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
-"kole neútočilo, začíná píseň znovu od první sloky."
+"sloku každé kolo, kdy tato jednotka použije útok slokou písně.\n"
+"\n"
+"Jakmile je zazpíván poslední verš nebo je sled písně přerušen z důvodu, že "
+"se v daném kole neútočilo, začíná píseň znovu od první sloky."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
-#, fuzzy
-#| msgid ""
-#| "This attack is the second verse of the Song of Sun Ascension, which "
-#| "progresses by one verse each turn this unit uses a song verse attack. "
-#| "When the last verse is sung or the song sequence is broken due to not "
-#| "attacking for a turn, the song starts again from the first verse."
 msgid ""
 "This attack is the second verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -16124,17 +16103,12 @@ msgid ""
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
 "Tento útok je druhou slokou Písně východu slunce, která postupuje o jednu "
-"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
-"kole neútočilo, začíná píseň znovu od první sloky."
+"sloku každé kolo, kdy tato jednotka použije útok slokou písně.\n"
+"\n"
+"Pokud to byla sloka poslední nebo když je sled písně přerušen z důvodu, že "
+"se v daném kole neútočilo, začíná píseň znovu od první sloky."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
-#, fuzzy
-#| msgid ""
-#| "This attack is the third verse of the Song of Sun Ascension, which "
-#| "progresses by one verse each turn this unit uses a song verse attack. "
-#| "When the last verse is sung or the song sequence is broken due to not "
-#| "attacking for a turn, the song starts again from the first verse."
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -16144,9 +16118,11 @@ msgid ""
 "Using this song will also grant illuminates for three turns."
 msgstr ""
 "Tento útok je třetí slokou Písně východu slunce, která postupuje o jednu "
-"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
-"kole neútočilo, začíná píseň znovu od první sloky."
+"sloku každé kolo, kdy tato jednotka použije útok slokou písně.\n"
+"\n"
+"V dalším kole začíná píseň znovu od první sloky.\n"
+"\n"
+"Užití písně dává také po tři kola schopnost osvětlení."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
 msgid "first verse"
@@ -16163,18 +16139,13 @@ msgstr "třetí sloka"
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
-#, fuzzy
-#| msgid "third verse"
 msgid "third verse illuminates"
-msgstr "třetí sloka"
+msgstr "třetí sloka osvětluje"
 
-# Kontextuálně správnější než žízeň, originál kulhá.
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#, fuzzy
-#| msgid "female^thirst"
 msgid "female^third verse illuminates"
-msgstr "žíznivá"
+msgstr "třetí sloka osvětluje"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
@@ -16185,6 +16156,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Když je tato schopnost po užití útoku vtělené slunce aktivní, osvětluje tato "
+"jednotka okolí po dobu tří kol.\n"
+"\n"
+"Všechny jednotky sousedící s touto jednotkou budou bojovat, jako by byl "
+"soumrak, když je noc, a jako by byl den, když je soumrak."
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
@@ -16193,6 +16169,8 @@ msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
 msgstr ""
+"Osvětlení zvyšuje úroveň světla na přilehlých polích. Tento účinek trvá tři "
+"kola po aktivaci."
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
@@ -16221,21 +16199,14 @@ msgstr ""
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
-#, fuzzy
-#| msgid ""
-#| "This attack is the third verse of the Song of Sun Ascension, which "
-#| "progresses by one verse each turn this unit uses a song verse attack. "
-#| "When the last verse is sung or the song sequence is broken due to not "
-#| "attacking for a turn, the song starts again from the first verse."
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension. After using it, "
 "the first verse is available in the next turn. Furthermore, invoking this "
 "attack will grant illumination for three turns."
 msgstr ""
-"Tento útok je třetí slokou Písně východu slunce, která postupuje o jednu "
-"sloku každé kolo, kdy tato jednotka použije útok slokou písně. Jakmile je "
-"zazpíván poslední verš nebo je sled písně přerušen z důvodu, že se v daném "
-"kole neútočilo, začíná píseň znovu od první sloky."
+"Tento útok je třetí slokou Písně východu slunce. Po jejím použití je "
+"v příštím kole dostupná první sloka. Vyvolání tohoto útoku dá navíc po tři "
+"kola osvětlení."
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
@@ -16264,6 +16235,9 @@ msgid ""
 "when the first verse was sung in the previous turn. If this was the last "
 "verse, then the first verse will be available in the next turn."
 msgstr ""
+"Toto je druhá sloka Písně východu slunce. Je dostupná pouze tehdy, když byla "
+"v předchozím kole zazpívána první sloka. Pokud to byla poslední sloka, pak "
+"bude první sloka k mání v dalším kole."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:612
 msgid ""
@@ -16472,7 +16446,7 @@ msgstr "omámená"
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1375
 msgid "opportunist"
-msgstr ""
+msgstr "prospěchář"
 
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1376
@@ -16480,44 +16454,42 @@ msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
 msgstr ""
+"Tato schopnost umožňuje Kalehovi útočit na nepřátele jedním úderem bolou, "
+"když opustí jeho oblast kontroly."
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1448
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunt"
-msgstr "Strašidlo"
+msgstr "výsměch"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1449
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr ""
+"Vysmívá se nepříteli, a tím ho nutí, aby se po dobu jednoho kola pokoušel na "
+"Kaleha zaútočit."
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1484
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunted"
-msgstr "Strašidlo"
+msgstr "po výsměchu"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1485
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
+"Této jednotce se Kaleh vysmál, bude se na něj snažit po dobu jednoho kola "
+"útočit."
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1494
-#, fuzzy
-#| msgid "Pulsing Spire"
 msgid "inspire"
-msgstr "Pulzující kužel"
+msgstr "povzbuzuje"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1495
-#, fuzzy
-#| msgid "female^support"
 msgid "female^inspire"
-msgstr "podporující"
+msgstr "povzbuzuje"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1496
@@ -16526,6 +16498,10 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
+"Tato jednotka může povzbuzovat vlastní sousedící jednotky k lepším bojovým "
+"výkonům. Tyto sousedící jednotky na stejné nebo nižší úrovni uštědří o 25 % "
+"větší poškození a k tomu o dalších 25 % za každou úroveň, o kterou jsou níže "
+"než jednotka povzbuzující."
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1497
@@ -16533,82 +16509,72 @@ msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+"Přítomnost této jednotky povzbuzuje vlastní sousedící jednotky, které tak "
+"způsobují svými útoky větší poškození. To však platí pouze pro jednotky na "
+"stejné nebo nižší úrovni."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1508
 msgid "cooldown 1"
-msgstr ""
+msgstr "zklidnění 1"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1511
 msgid "cooldown 2"
-msgstr ""
+msgstr "zklidnění 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1514
 msgid "After using this attack, you can't use it during your next turn."
-msgstr ""
+msgstr "Po užití tohoto útoku jej nemůžeš použít v dalším kole."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1517
 msgid "After using this attack, you can't use it during your next two turns."
-msgstr ""
+msgstr "Po užití tohoto útoku jej nemůžeš použít během následujících dvou kol."
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1577
 msgid "pierce"
-msgstr ""
+msgstr "průpich"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1578
-#, fuzzy
-#| msgid ""
-#| "This weapon, when used offensively, also deals damage to a unit behind "
-#| "the target."
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
-"Pokud je tato zbraň užita ofenzivně, způsobuje zranění i jednotce za cílem."
+"Pokud je tato zbraň užita ofenzivně, může způsobit zranění i jednotce za "
+"cílem."
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1640
 msgid "puncture"
-msgstr ""
+msgstr "průraz"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1641
-#, fuzzy
-#| msgid ""
-#| "This weapon, when used offensively, also deals damage to a unit behind "
-#| "the target."
 msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
-"Pokud je tato zbraň užita ofenzivně, způsobuje zranění i jednotce za cílem."
+"Pokud je tato zbraň užita ofenzivně, může způsobit zranění i dvěma jednotkám "
+"za cílem."
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1716
 msgid "rain of arrows"
-msgstr ""
+msgstr "déšť šípů"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1717
-#, fuzzy
-#| msgid ""
-#| "This weapon, when used offensively, also deals damage to a unit behind "
-#| "the target."
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
-"Pokud je tato zbraň užita ofenzivně, způsobuje zranění i jednotce za cílem."
+"Pokud je tato zbraň užita ofenzivně, může způsobit zranění i jednotce za "
+"cílem a všem jednotkám s jednotkou za cílem sousedícím."
 
-# jojo, velmi volný překlad ;-)
-# ale myslím, že i tak sedí
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1824
-#, fuzzy
-#| msgid "Good riddance."
 msgid "sword dance"
-msgstr "A je po něm!"
+msgstr "mečový tanec"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1825
@@ -16616,6 +16582,8 @@ msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
 msgstr ""
+"Pokaždé, když Nym zasáhne nepřítele, získá až do konce boje +10 % přesnosti "
+"a 10 % vykrývání."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -17692,27 +17660,3 @@ msgstr "Hrad duchů"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Tvrz duchů"
-
-#~ msgid "Hunter"
-#~ msgstr "Lovec"
-
-#~ msgid "Leader"
-#~ msgstr "Vůdce"
-
-#~ msgid "Warrior (choose only one): specialize in melee combat"
-#~ msgstr "Válečník (lze vybrat jen jedno): specializace v boji zblízka"
-
-#~ msgid "Warrior (choose only one): specialize in archery"
-#~ msgstr "Válečník (lze vybrat jen jedno): specializace v lukostřelbě"
-
-#~ msgid "Hunter (choose only one): specialize in surprise attacks"
-#~ msgstr "Lovec (lze vybrat jen jedno): specializace v překvapivých útocích"
-
-#~ msgid "Hunter (choose only one): specialize in skirmishing"
-#~ msgstr "Lovec (lze vybrat jen jedno): specializace v průbojnosti"
-
-#~ msgid "Leader (choose only one): specialize in supporting allies"
-#~ msgstr "Vůdce (lze vybrat jen jedno): specializace v podpoře spojenců"
-
-#~ msgid "Leader (choose only one): specialize in distracting enemies"
-#~ msgstr "Vůdce (lze vybrat jen jedno): specializace v rozptylování nepřátel"

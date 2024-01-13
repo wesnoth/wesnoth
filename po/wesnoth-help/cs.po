@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2023-11-04 10:48+0100\n"
+"PO-Revision-Date: 2023-12-02 19:34+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -5754,10 +5754,9 @@ msgstr ""
 "Průbojnost umožňuje těmto jednotkám ignorovat oblasti kontroly nepřátelských "
 "jednotek, což jim dovoluje se mezi nimi volně pohybovat."
 
-# blbé, ale jak jinak to udělat?
 #: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr "Osvětlení zvyšuje stupeň osvětlení na přilehlých polích."
+msgstr "Osvětlení zvyšuje úroveň světla na přilehlých polích."
 
 #: data/core/macros/special-notes.cfg:46
 msgid ""
@@ -6658,7 +6657,7 @@ msgstr ""
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "nezemský"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
@@ -6666,6 +6665,8 @@ msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"Tento útok v sobě skládá nezemský druh zranění se zraněním použité zbraně, "
+"takže odolnost proti nezemskému uživatele nepoškozuje."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
@@ -6673,6 +6674,8 @@ msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"Tato jednotka může použít nezemský druh zranění, pokud je na něj protivník "
+"citlivější při porovnání se zbraní, na kterou je použit."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -7989,6 +7992,21 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"Krkavci jsou obvykle mrchožrouti, kteří se často sdružují s lovci nebo "
+"dravci v naději, že se budou podílet na kořisti. Nemají tak silný zobák ani "
+"drápy jako gryfové nebo dravci, ale přesto mohou být hrozbou díky své "
+"inteligenci a schopnosti rozpoznat jakoukoli výhodu.\n"
+"\n"
+"Po bitvě jsou mrtví a ranění pro krkavce hostinou, proto jsou krkavci pro "
+"spojence poražených pohoršením, ale někteří vítězové je považují za součást "
+"válečných obřadů. Násilí a velké počty, kterými se vyznačují skřeti i lidé, "
+"vedou v této souvislosti krkavce a tyto rasy k neustálé vzájemné spolupráci. "
+"Z tohoto důvodu se tito ptáci stali postavami bájí, podobenství a pověr "
+"spojených s válkou.\n"
+"\n"
+"Jako inteligentní mrchožrouti nepotřebují krkavci k přežití události války. "
+"Někteří zemědělci se snaží krkavce udržet dál od čerstvě zasetých semen, ale "
+"jiní jsou rádi, že jsou nablízku jako hlídky."
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
