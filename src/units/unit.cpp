@@ -202,8 +202,8 @@ namespace
 				u.set_attacks(attacks);
 			}
 			u.set_experience(experience);
-			u.set_state(unit::STATE_SLOWED, slowed && u.get_state("unslowable"));
-			u.set_state(unit::STATE_POISONED, poisoned && u.get_state("unpoisonable"));
+			u.set_state(unit::STATE_SLOWED, slowed && !u.get_state("unslowable"));
+			u.set_state(unit::STATE_POISONED, poisoned && !u.get_state("unpoisonable"));
 		};
 	}
 } // end anon namespace
