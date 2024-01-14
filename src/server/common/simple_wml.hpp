@@ -154,6 +154,8 @@ public:
 	node* child(const char* name);
 	const node* child(const char* name) const;
 
+	node& child_or_add(const char* name);
+
 	const child_list& children(const char* name) const;
 
 	const string_span& first_child() const;
