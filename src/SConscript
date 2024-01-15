@@ -148,9 +148,9 @@ def WesnothProgram(env, target, source, can_build, **kw):
 
     if can_build:
         if env["use_srcdir"] == True:
-            bin = env.Program(target + build_suffix, source, **kw)
+            bin = env.Program(target, source, **kw)
         else:
-            bin = env.Program("#/" + target + build_suffix, source, **kw)
+            bin = env.Program("#/" + target, source, **kw)
         env.Alias(target, bin)
     else:
         bin = env.Alias(target, [], error_action)

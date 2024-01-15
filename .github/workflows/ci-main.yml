@@ -51,8 +51,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { tool: scons, cc: gcc,   cxx: g++,     cfg: release, lto: true  }
-          - { tool: cmake, cc: clang, cxx: clang++, cfg: debug,   lto: false }
+          - { tool: scons, cc: gcc,   cxx: g++,     cfg: debug,   lto: false }
+          - { tool: cmake, cc: clang, cxx: clang++, cfg: release, lto: true  }
     runs-on: ubuntu-latest
     container:
       image: wesnoth/wesnoth:2204-master
@@ -70,16 +70,19 @@ jobs:
     steps:
       - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
-# wesnothd and campaignd should be buildable without SDL2 being present
+# 1) wesnothd and campaignd should be buildable without SDL2 being present
+# 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         id: build # needed to check step outcome
         run: |
           case $TOOL in
             scons)
               build() {
+                ldconfig
                 scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
                   extra_flags_config="-pipe" strict=true forum_user_handler=true \
-                  nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time
+                  nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time \
+                  glibcxx_debug=true glibcxx_assertions=true
               }
               build wesnoth boost_unit_tests
 
@@ -89,10 +92,14 @@ jobs:
               ;;
             cmake)
               build() {
+                ldconfig
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 .
               }
+              rm -R /usr/local/lib/cmake
+              rm /usr/local/lib/libboost*
+              rm -R /usr/local/include/boost
               build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
               make conftests
               make VERBOSE=1 -j2
@@ -118,7 +125,7 @@ jobs:
         run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
         if: success() || steps.build.outcome == 'success'
-        run: ./run_wml_tests -g -c -t 20
+        run: ./run_wml_tests -g -c -t 20 -bt 1000
       - name: Run play tests
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/play_test_executor.sh
