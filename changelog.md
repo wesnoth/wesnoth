@@ -12,6 +12,7 @@
  ### Translations
    * Updated translations: Arabic, British English, Czech, Finnish, French, German, Italian, Slovak
  ### Units
+   * New fish and bug zombie variations
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
