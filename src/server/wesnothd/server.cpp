@@ -2440,7 +2440,7 @@ void server::status_handler(
 	// If a simple username is given we'll check for its IP instead.
 	if(utils::isvalid_username(parameters)) {
 		for(const auto& player : player_connections_) {
-			if(utf8::lowercase(parameters) == utf8::lowercase(player.info().name())) {
+			if(parameters == player.name()) {
 				parameters = player.client_ip();
 				found_something = true;
 				break;
