@@ -17,7 +17,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "serialization/string_utils.hpp"
 #include "game_version.hpp"
 #include "game_config_manager.hpp"
 
