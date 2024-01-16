@@ -766,8 +766,7 @@ private:
 
 	/**
 	 * Function which should be called every time a player ends their turn
-	 * (i.e. [end_turn] received). This will update the 'turn' attribute for
-	 * the game's description when appropriate.
+	 * (i.e. [end_turn] received).
 	 *
 	 * @param new_side The side number whose turn to move it has become.
 	 */
