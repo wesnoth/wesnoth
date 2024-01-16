@@ -437,17 +437,6 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 				dst_pixels[ydst * dst->w + xdst] = src_pixels[ysrc * src_w + xsrc];
 			}
 		}
-
-		// In case format of the src surface is not the same as the default format for dst
-		// convert all pixels to the correct format
-		if(surf->format != dst->format) {
-			const int ok
-				= SDL_ConvertPixels(w, h, surf->format->format, src_pixels, 0, dst->format->format, dst_pixels, 0);
-			if(ok != 0) {
-				PLAIN_LOG << "Error converting pixel format";
-				return nullptr;
-			}
-		}
 	}
 
 	return dst;
