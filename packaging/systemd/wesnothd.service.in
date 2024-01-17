@@ -23,8 +23,7 @@ ExecStopPost=/bin/rm -f @FIFO_DIR@/socket
 
 SyslogIdentifier=Wesnothd@BINARY_SUFFIX@
 WorkingDirectory=@FIFO_DIR@
-User=_wesnoth
-Group=_wesnoth
+User=wesnoth
 
 # Additional security-related features
 # (when using the -c option, do not use ProtectHome)
