@@ -3,9 +3,6 @@ set -e #Error if any line errors
 set -m #Enable job control
 set -v #Print shell commands as they are read
 
-if [ -f ./wesnoth ]; then client="./wesnoth"; else client="./wesnoth-debug"; fi
-if [ -f ./wesnothd ]; then server="./wesnothd"; else server="./wesnothd-debug"; fi
-
 TIMEOUT_TIME=300
 LOOP_TIME=6
 
