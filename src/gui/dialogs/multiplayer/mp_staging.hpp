@@ -84,6 +84,12 @@ private:
 	{
 		state_changed_ = true;
 	}
+	
+	/** for Ctrl+Enter handling */
+	void signal_handler_sdl_key_down(const event::ui_event event,
+										 bool& handled,
+										 const SDL_Keycode key,
+										 SDL_Keymod modifier);
 
 	ng::connect_engine& connect_engine_;
 
