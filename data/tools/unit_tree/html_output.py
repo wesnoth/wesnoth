@@ -960,7 +960,7 @@ class HTMLOutput:
                                 accuracy = attack.get_text_val("accuracy", default="0")
                                 parry = attack.get_text_val("parry", default="0")
                                 if accuracy != "0":
-                                    s.append(cleantext("accuracy "+accuracy+"%"))
+                                    s.append("accuracy "+accuracy+"%")
                                 if parry != "0":
                                     s.append(cleantext("parry "+parry+"%"))
                                 if s:
