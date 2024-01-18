@@ -1235,6 +1235,12 @@ class HTMLOutput:
                         else:
                             error_message("Warning: Weapon special %s has no name for %s.\n" %
                                           (special.name.decode("utf8"), uid))
+                accuracy = attack.get_text_val("accuracy", default=0)
+                parry = attack.get_text_val("parry", default=0)
+                if accuracy != 0:
+                    s.append("accuracy "+str(accuracy)+"%")
+                if parry != 0:
+                    s.append("parry "+str(parry)+"%")
                 if s:
                     write('<td>(%s)</td>' % ', '.join(s))
                 write('</tr>')
