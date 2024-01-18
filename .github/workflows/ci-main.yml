@@ -72,6 +72,8 @@ jobs:
 
 # 1) wesnothd and campaignd should be buildable without SDL2 being present
 # 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
+# 3) mariadbpp currently has a deprecation warning that causes strict builds to fail
+#    scons doesn't build it for the wesnoth client and the boost tests, but cmake apparently does
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         id: build # needed to check step outcome
         run: |
@@ -100,7 +102,7 @@ jobs:
               rm -R /usr/local/lib/cmake
               rm /usr/local/lib/libboost*
               rm -R /usr/local/include/boost
-              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true -DENABLE_STRICT_COMPILATION=true
+              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true -DENABLE_STRICT_COMPILATION=false
               make conftests
               make VERBOSE=1 -j2
 
