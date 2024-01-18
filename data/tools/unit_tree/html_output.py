@@ -962,7 +962,7 @@ class HTMLOutput:
                                 if accuracy != "0":
                                     s.append("accuracy "+accuracy+"%")
                                 if parry != "0":
-                                    s.append(cleantext("parry "+parry+"%"))
+                                    s.append("parry "+parry+"%")
                                 if s:
                                     s = ", ".join(s)
                                     write(" (%s)" % cleantext(s, quote=False))
