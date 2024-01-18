@@ -76,7 +76,7 @@ void mp_staging::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 
-	// Ctrl+Enter triggers 'I'm Ready' (ok) button
+	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 		&mp_staging::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 

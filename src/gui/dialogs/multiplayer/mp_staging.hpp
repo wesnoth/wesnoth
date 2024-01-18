@@ -85,7 +85,7 @@ private:
 		state_changed_ = true;
 	}
 
-	/** for Ctrl+Enter handling */
+	/** for Ctrl+G handling */
 	void signal_handler_sdl_key_down(const event::ui_event /*event*/,
 										 bool& handled,
 										 const SDL_Keycode key,
