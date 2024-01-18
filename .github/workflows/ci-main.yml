@@ -260,7 +260,11 @@ jobs:
         run: scons translations build=release --debug=time nls=true jobs=2
       - name: Build wesnoth and unit tests
         working-directory: projectfiles/Xcode
-        run: xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+        run: |
+          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+          # xcodebuild or maybe clang do not appear to fail properly when input files cannot be found; double check executables were produced
+          [ -x "build/$CFG/The Battle for Wesnoth.app" ] || { printf 'Failed to build wesnoth executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/unit_tests" ] || { printf 'Failed to build unit test executable!\n' >&2; exit 1; }
       - name: Create disk image
         working-directory: projectfiles/Xcode
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
