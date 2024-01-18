@@ -177,7 +177,7 @@ function wml_actions.harm_unit(cfg)
 				elseif opt == 'kill' then
 					xp_mode.kill = true
 				elseif not (opt == 'no' or opt == 'false') then
-					wml.error('Invalid [harm_unit] experience, list of values can contain: yes, kill, fight, attack, defend, no')
+					wml.error('Invalid [harm_unit] experience: should be boolean or a list of one or more of the following: kill, fight, attack, defend')
 				end
 				-- with 'no' or 'false' preserve previous value
 			end
