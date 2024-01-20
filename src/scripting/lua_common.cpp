@@ -1140,6 +1140,8 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 		/*
 		 * When an exception is thrown which doesn't derive from
 		 * std::exception m will be nullptr pointer.
+		 * When adding a new conditional branch, remember to log the
+		 * error with ERR_LUA or ERR_WML.
 		 */
 		char const *m = lua_tostring(L, -1);
 		if(m) {
@@ -1156,12 +1158,14 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 #pragma warning (pop)
 #endif
 					e = em;
+				ERR_LUA << std::string(m, e ? e - m : strlen(m));
 				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 			} else {
 				ERR_LUA << m;
 				chat_message("Lua error", m);
 			}
 		} else {
+			ERR_LUA << "Lua caught unknown exception";
 			chat_message("Lua caught unknown exception", "");
 		}
 		lua_pop(L, 1);
