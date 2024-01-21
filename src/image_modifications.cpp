@@ -120,11 +120,13 @@ std::unique_ptr<modification> decode_modification(const std::string& encoded_mod
 modification::imod_exception::imod_exception(const std::stringstream& message_stream)
 	: message(message_stream.str())
 {
+	this->store();
 }
 
 modification::imod_exception::imod_exception(const std::string& message)
 	: message(message)
 {
+	this->store();
 }
 
 /** Decodes the modification string

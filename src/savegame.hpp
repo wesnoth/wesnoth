@@ -88,6 +88,7 @@ public:
 		: lua_jailbreak_exception()
 		, data_(data)
 	{
+		this->store();
 	}
 	load_game_metadata data_;
 private:

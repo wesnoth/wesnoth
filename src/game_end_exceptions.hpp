@@ -42,6 +42,7 @@ public:
 		: lua_jailbreak_exception()
 		, std::exception()
 	{
+		this->store();
 	}
 	const char * what() const noexcept { return "return_to_play_side_exception"; }
 private:
@@ -59,6 +60,7 @@ public:
 		: lua_jailbreak_exception()
 		, std::exception()
 	{
+		this->store();
 	}
 	const char * what() const noexcept { return "quit_game_exception"; }
 private:

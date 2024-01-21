@@ -40,6 +40,7 @@ public:
 		: std::logic_error("GUI2 ITERATOR: " + message)
 		, lua_jailbreak_exception()
 	{
+		this->store();
 	}
 
 private:
@@ -58,6 +59,7 @@ public:
 		: std::range_error("GUI2 ITERATOR: " + message)
 		, lua_jailbreak_exception()
 	{
+		this->store();
 	}
 
 private:

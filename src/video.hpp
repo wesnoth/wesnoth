@@ -320,6 +320,7 @@ public:
 	quit()
 		: lua_jailbreak_exception()
 	{
+		this->store();
 	}
 
 private:

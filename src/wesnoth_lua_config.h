@@ -56,12 +56,8 @@
 #include <string.h>
 #define strcoll(a,b) strcmp(a,b)
 
-/*  We need to rethrow exceptions.
- *
- *  The stock Lua catch(...) consumes the exception. We need to re-throw
- *  it so. This allows the inner function (in C++ -> Lua -> C++) to pass
- *  back information about the exception, instead of reclassifying all
- *  exceptions to a single Lua status code.
+/*  Push std::exception::what() strings onto the Lua stack for use by
+ *  luaW_pcall().
  */
 
 #include <cassert>
@@ -75,8 +71,7 @@
 	try { \
 		try { \
 			a \
-		} catch(const lua_jailbreak_exception &e) { \
-			e.store(); \
+		} catch(const lua_jailbreak_exception &) { \
 			throw; \
 		} catch(const std::exception &e) { \
 			lua_pushstring(L, e.what()); \
