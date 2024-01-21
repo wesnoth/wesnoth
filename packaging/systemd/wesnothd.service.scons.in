@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 ExecStart=%bindir/wesnothd
-User=wesnoth
+User=_wesnoth
+Group=_wesnoth
 
 [Install]
 WantedBy=multi-user.target
