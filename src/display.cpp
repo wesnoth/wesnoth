@@ -156,7 +156,7 @@ display::display(const display_context* dc,
 	, halo_man_()
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
-	, currentTeam_(0)
+	, currentTeam_(1)
 	, dont_show_all_(false)
 	, xpos_(0)
 	, ypos_(0)
@@ -194,7 +194,7 @@ display::display(const display_context* dc,
 	, animate_map_(true)
 	, animate_water_(true)
 	, flags_()
-	, activeTeam_(0)
+	, activeTeam_(1)
 	, drawing_buffer_()
 	, map_screenshot_(false)
 	, reach_map_()
@@ -358,7 +358,7 @@ texture display::get_flag(const map_location& loc)
 
 void display::set_team(std::size_t teamindex, bool show_everything)
 {
-	assert(teamindex < dc_->teams().size());
+	assert(dc_->teams().has_index(teamindex));
 	currentTeam_ = teamindex;
 	if(!show_everything) {
 		labels().set_team(&dc_->teams()[teamindex]);
@@ -375,7 +375,7 @@ void display::set_team(std::size_t teamindex, bool show_everything)
 
 void display::set_playing_team(std::size_t teamindex)
 {
-	assert(teamindex < dc_->teams().size());
+	assert(dc_->teams().has_index(teamindex));
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }
@@ -1758,7 +1758,7 @@ void display::draw_minimap_units()
 			auto status = orb_status::allied;
 			if(dc_->teams()[currentTeam_].is_enemy(side)) {
 				status = orb_status::enemy;
-			} else if(currentTeam_ + 1 == static_cast<unsigned>(side)) {
+			} else if(currentTeam_ == static_cast<unsigned>(side)) {
 				status = dc_->unit_orb_status(u);
 			} else {
 				// no-op, status is already set to orb_status::allied;
@@ -2738,7 +2738,7 @@ void display::draw_hex(const map_location& loc)
 					bool item_visible_for_team = true;
 					if(dont_show_all_ && !ov.team_name.empty()) {
 						// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-						const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+						const std::string& current_team_name = get_teams()[viewing_side()].team_name();
 						const std::vector<std::string>& current_team_names = utils::split(current_team_name);
 						const std::vector<std::string>& team_names = utils::split(ov.team_name);
 

@@ -34,7 +34,7 @@ std::unique_ptr<editor_action> editor_action_village::perform(map_context& mc) c
 		return nullptr;
 	}
 
-	std::vector<team>& teams = mc.teams();
+	auto& teams = mc.teams();
 
 	try {
 		if(teams.at(side_number_).owns_village(loc_)) {
@@ -58,7 +58,7 @@ std::unique_ptr<editor_action> editor_action_village::perform(map_context& mc) c
 
 void editor_action_village::perform_without_undo(map_context& mc) const
 {
-	std::vector<team>& teams = mc.teams();
+	auto& teams = mc.teams();
 
 	for(team& t : teams) {
 		if(t.owns_village(loc_)) {

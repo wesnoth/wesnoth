@@ -182,7 +182,7 @@ bool simulated_synced_command(){
 
 // Helper functions.
 void helper_check_village(const map_location& loc, int side){
-	std::vector<team> &teams = resources::gameboard->teams();
+	auto& teams = resources::gameboard->teams();
 	team *t = static_cast<unsigned>(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
 	if(t && t->owns_village(loc)){
 		return;
@@ -192,7 +192,7 @@ void helper_check_village(const map_location& loc, int side){
 
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i){
+	for(auto i = teams.begin(); i != teams.end(); ++i){
 		int i_side = std::distance(teams.begin(), i) + 1;
 		if(!t || has_leader || t->is_enemy(i_side)){
 			if(i->owns_village(loc)){

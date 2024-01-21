@@ -1636,7 +1636,7 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 bool backstab_check(const map_location& attacker_loc,
 		const map_location& defender_loc,
 		const unit_map& units,
-		const std::vector<team>& teams)
+		const team_list& teams)
 {
 	const unit_map::const_iterator defender = units.find(defender_loc);
 	if(defender == units.end()) {

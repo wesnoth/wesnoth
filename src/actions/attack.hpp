@@ -26,8 +26,7 @@
 #include "attack_prediction.hpp"
 #include "units/ptr.hpp"
 #include "units/unit_alignments.hpp"
-
-#include <vector>
+#include "utils/ordinal_list.hpp"
 
 struct map_location;
 class team;
@@ -36,6 +35,7 @@ class unit_type;
 class unit;
 class unit_map;
 class gamemap;
+using team_list = utils::ordinal_list<team>;
 
 /** Calculates the number of blows resulting from swarm. */
 inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp, unsigned max_hp)
@@ -310,4 +310,4 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 bool backstab_check(const map_location& attacker_loc,
 		const map_location& defender_loc,
 		const unit_map& units,
-		const std::vector<team>& teams);
+		const team_list& teams);

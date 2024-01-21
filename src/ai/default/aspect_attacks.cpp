@@ -147,7 +147,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 
 	const gamemap& map_ = resources::gameboard->map();
 	unit_map& units_ = resources::gameboard->units();
-	const std::vector<team>& teams_ = resources::gameboard->teams();
+	const auto& teams_ = resources::gameboard->teams();
 
 	const std::size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {

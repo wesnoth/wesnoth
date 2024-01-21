@@ -139,7 +139,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
-	std::vector<team> &teams = resources::gameboard->teams();
+	auto& teams = resources::gameboard->teams();
 	team *t = static_cast<unsigned>(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
 	if (t && t->owns_village(loc)) {
 		return game_events::pump_result_t();
@@ -152,7 +152,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	int old_owner_side = 0;
 	// We strip the village off all other sides, unless it is held by an ally
 	// and our side is already defeated (and thus we can't occupy it)
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+	for(auto i = teams.begin(); i != teams.end(); ++i) {
 		int i_side = std::distance(teams.begin(), i) + 1;
 		if (!t || not_defeated || t->is_enemy(i_side)) {
 			if(i->owns_village(loc)) {
@@ -353,7 +353,7 @@ namespace { // Private helpers for move_unit()
 		: spectator_(move_spectator)
 		, skip_sighting_(skip_sightings)
 		, skip_ally_sighting_(skip_ally_sightings)
-		, playing_team_is_viewing_(display::get_singleton()->playing_team() == display::get_singleton()->viewing_team() || display::get_singleton()->show_everything())
+		, playing_team_is_viewing_(display::get_singleton()->playing_side() == display::get_singleton()->viewing_side() || display::get_singleton()->show_everything())
 		, route_(route)
 		, begin_(route.begin())
 		, full_end_(route.end())

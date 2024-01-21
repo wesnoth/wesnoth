@@ -103,10 +103,10 @@ public:
 
 	const gamemap& get_map() const { return dc_->map(); }
 
-	const std::vector<team>& get_teams() const {return dc_->teams();}
+	const team_list& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
-	std::size_t playing_team() const { return activeTeam_; }
+	std::size_t playing_side() const { return activeTeam_; }
 
 	bool team_valid() const;
 
@@ -116,15 +116,7 @@ public:
 	 *
 	 * For players, it will be their side (or one of them, if they control multiple sides).
 	 *
-	 * The value returned is a 0-based index into the vector returned by get_teams().
-	 */
-	std::size_t viewing_team() const { return currentTeam_; }
-	/**
-	 * The 1-based equivalent of the 0-based viewing_team() function. This is the side-number that
-	 * WML uses.
-	 *
-	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI
-	 * class).
+	 * This is the side-number that WML uses.
 	 */
 	int viewing_side() const { return static_cast<int>(currentTeam_ + 1); }
 
@@ -215,7 +207,7 @@ public:
 
 	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
 	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
-	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
+//	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
 	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
 
 	/**

@@ -1474,7 +1474,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 	}
 
-	if(current_team().is_enemy(static_cast<int>(gui().viewing_team() + 1)) && it->invisible(it->get_location())) {
+	if(current_team().is_enemy(static_cast<int>(gui().viewing_side())) && it->invisible(it->get_location())) {
 		return false;
 	}
 
@@ -1538,12 +1538,12 @@ void mouse_handler::set_current_paths(const pathfind::paths& new_paths)
 
 team& mouse_handler::viewing_team()
 {
-	return pc_.get_teams()[gui().viewing_team()];
+	return pc_.get_teams()[gui().viewing_side()];
 }
 
 const team& mouse_handler::viewing_team() const
 {
-	return pc_.get_teams()[gui().viewing_team()];
+	return pc_.get_teams()[gui().viewing_side()];
 }
 
 team& mouse_handler::current_team()

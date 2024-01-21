@@ -18,6 +18,7 @@
 #include "game_config.hpp"
 #include "preferences/general.hpp"
 #include "serialization/compression.hpp"
+#include "utils/ordinal_list.hpp"
 
 #include <set>
 #include <vector>
@@ -26,6 +27,7 @@ class game_board;
 class gamemap;
 class team;
 class unit_map;
+using team_list = utils::ordinal_list<team>;
 
 namespace preferences
 {
@@ -247,7 +249,7 @@ bool confirm_no_moves();
 
 // Add all recruitable units as encountered so that information
 // about them are displayed to the user in the help system.
-void encounter_recruitable_units(const std::vector<team>& teams);
+void encounter_recruitable_units(const team_list& teams);
 
 // Add all units that exist at the start to the encountered units so
 // that information about them are displayed to the user in the help
@@ -255,7 +257,7 @@ void encounter_recruitable_units(const std::vector<team>& teams);
 void encounter_start_units(const unit_map& units);
 
 // Add all units that are recallable as encountered units.
-void encounter_recallable_units(std::vector<team>& teams);
+void encounter_recallable_units(const team_list& teams);
 
 // Add all terrains on the map as encountered terrains.
 void encounter_map_terrain(const gamemap& map);

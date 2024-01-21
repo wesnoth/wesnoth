@@ -84,7 +84,7 @@ namespace {
 	POISON_STATUS poison_progress(int side, const unit & patient,
 	                              std::vector<unit *> & healers)
 	{
-		const std::vector<team> &teams = resources::gameboard->teams();
+		const auto& teams = resources::gameboard->teams();
 		unit_map &units = resources::gameboard->units();
 
 		POISON_STATUS curing = POISON_NORMAL;
@@ -125,7 +125,7 @@ namespace {
 			// Healers on the current side can cure poison (for any side).
 			// Allies of the current side can slow poison (for the current side).
 			// Enemies of the current side can do nothing.
-			if ( teams[cure_side-1].is_enemy(side) )
+			if ( teams[cure_side].is_enemy(side) )
 				continue;
 
 			// Allied healers can only slow poison, not cure it.

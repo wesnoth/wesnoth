@@ -18,6 +18,7 @@
 #include "scripting/lua_kernel_base.hpp" // for lua_kernel_base
 
 #include "game_events/action_wml.hpp"   // for wml_action, etc
+#include "utils/ordinal_list.hpp"
 
 #include <stack>
 #include <string>                       // for string
@@ -41,6 +42,7 @@ class game_data;
 class tod_manager;
 class play_controller;
 class reports;
+using team_list = utils::ordinal_list<team>;
 
 struct map_location;
 typedef int (*lua_CFunction) (lua_State *L);
@@ -197,7 +199,7 @@ class game_lua_kernel : public lua_kernel_base
 
 public:
 	game_board & board();
-	std::vector<team> & teams();
+	team_list& teams();
 	const gamemap & map() const;
 	game_display * get_display() const { return game_display_; }
 	/**

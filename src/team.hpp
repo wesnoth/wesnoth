@@ -26,6 +26,7 @@
 #include "side_proxy_controller.hpp"
 #include "team_shared_vision.hpp"
 #include "units/ptr.hpp"
+#include "utils/ordinal_list.hpp"
 
 #include <set>
 
@@ -35,7 +36,7 @@
 class game_data;
 class gamemap;
 struct color_t;
-
+using team_list = utils::ordinal_list<class team>;
 
 namespace wb {
 	class side_actions;
@@ -401,8 +402,8 @@ public:
 
 private:
 
-	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
-	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
+	const std::vector<const shroud_map*>& ally_shroud(const team_list& teams) const;
+	const std::vector<const shroud_map*>& ally_fog(const team_list& teams) const;
 
 	int gold_;
 	std::set<map_location> villages_;

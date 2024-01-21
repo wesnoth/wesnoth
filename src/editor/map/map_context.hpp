@@ -122,7 +122,6 @@ public:
 
 	// Import symbols from base class.
 	using display_context::units;
-	using display_context::teams;
 	using display_context::map;
 
 	/** Const units accessor. */
@@ -138,13 +137,13 @@ public:
 	}
 
 	/** Const teams accessor. */
-	virtual const std::vector<team>& teams() const override
+	virtual const team_list& teams() const override
 	{
 		return teams_;
 	}
 
 	/** Local non-const overload of @ref teams */
-	std::vector<team>& teams()
+	team_list& teams()
 	{
 		return teams_;
 	}
@@ -508,7 +507,7 @@ private:
 
 	map_labels labels_;
 	unit_map units_;
-	std::vector<team> teams_;
+	team_list teams_;
 	std::vector<std::string> lbl_categories_;
 	std::unique_ptr<tod_manager> tod_manager_;
 	mp_game_settings mp_settings_;

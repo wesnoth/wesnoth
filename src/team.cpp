@@ -675,7 +675,7 @@ bool team::fogged(const map_location& loc) const
 	return fog_.shared_value(ally_fog(resources::gameboard->teams()), loc.wml_x(), loc.wml_y());
 }
 
-const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
+const std::vector<const shroud_map*>& team::ally_shroud(const team_list& teams) const
 {
 	if(ally_shroud_.empty()) {
 		for(std::size_t i = 0; i < teams.size(); ++i) {
@@ -688,7 +688,7 @@ const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>&
 	return ally_shroud_;
 }
 
-const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
+const std::vector<const shroud_map*>& team::ally_fog(const team_list& teams) const
 {
 	if(ally_fog_.empty()) {
 		for(std::size_t i = 0; i < teams.size(); ++i) {

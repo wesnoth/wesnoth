@@ -23,7 +23,12 @@
 
 const team& display_context::get_team(int side) const
 {
-	return teams().at(side - 1);
+	return teams().at(side);
+}
+
+bool display_context::has_team(int side) const
+{
+	return teams().has_index(side);
 }
 
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
@@ -118,10 +123,10 @@ orb_status display_context::unit_orb_status(const unit& u) const
 
 int display_context::village_owner(const map_location& loc) const
 {
-	const std::vector<team> & t = teams();
-	for(std::size_t i = 0; i != t.size(); ++i) {
+	const auto& t = teams();
+	for(std::size_t i = 1; i <= t.size(); ++i) {
 		if(t[i].owns_village(loc))
-			return i + 1;
+			return i;
 	}
 	return 0;
 }

@@ -18,9 +18,13 @@
 #include "units/orb_status.hpp"
 #include "units/ptr.hpp"
 #include <string>
+#include <type_traits>
 #include <vector>
+#include "boost/range.hpp"
+#include "utils/ordinal_list.hpp"
 
 class team;
+using team_list = utils::ordinal_list<team>;
 class gamemap;
 class unit_map;
 
@@ -34,21 +38,16 @@ struct map_location;
 class display_context
 {
 public:
-	virtual const std::vector<team> & teams() const = 0;
+	virtual const team_list& teams() const = 0;
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
 	virtual std::vector<std::string> & hidden_label_categories() = 0;
-
-	/** This getter takes a 1-based side number, not a 0-based team number. */
+	
+	[[deprecated("Use teams() instead")]]
 	const team& get_team(int side) const;
-
-	// this one is only a template function to prevent compilation erros when class team is an incomplete type.
-	template<typename T = void>
-	bool has_team(int side) const
-	{
-		return side > 0 && side <= static_cast<int>(teams().size());
-	}
+	[[deprecated("Use teams().has_index instead")]]
+	bool has_team(int side) const;
 
 	// Helper for is_visible_to_team
 
