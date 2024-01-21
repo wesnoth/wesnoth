@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
 "PO-Revision-Date: 2023-12-04 12:57+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -92,19 +92,19 @@ msgid "female^illuminates"
 msgstr "valaisee"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "hoivaa +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:639
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "hoivaa +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:640
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -122,28 +122,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:644
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:683
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:713
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Tämä yksikkö kykenee perustason hoivaamiseen ja hidastamaan nestehukan "
 "vaikutusta."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "hoivaa +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:663
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "hoivaa +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:664
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -163,17 +163,17 @@ msgstr ""
 "lääkitsijältä tai kylässä."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:692
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 msgid "heals +12"
 msgstr "hoivaa 12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
 msgid "female^heals +12"
 msgstr "hoivaa +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -192,7 +192,7 @@ msgstr ""
 "lääkitsijältä tai kylässä."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -5448,6 +5448,7 @@ msgid ""
 msgstr ""
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
 #: data/core/macros/special-notes.cfg:122
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
