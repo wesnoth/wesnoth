@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2023
+	Copyright (C) 2020 - 2024
 	by Steve Cotton <steve@octalot.co.uk>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

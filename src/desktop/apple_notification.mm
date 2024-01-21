@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Google Inc.
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
