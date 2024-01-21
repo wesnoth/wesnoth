@@ -1,6 +1,4 @@
 ## Version 1.17.24+dev
- ### Add-ons client
- ### Add-ons server
  ### Campaigns
    * Eastern Invasion
      * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
@@ -8,11 +6,6 @@
    * Winds of Fate
      * Made the epilogue more vague about events on the Green Isle
      * Removed part of epilogue suggesting a Drake-led war around 120YW
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Czech, Finnish, French, German, Italian, Slovak
  ### Units
@@ -21,7 +14,6 @@
    * Added hotkeys for various menu items and ThemeWML buttons in Map Editor
    * Added shortcut Ctrl+G for 'I'm Ready' button in mp_staging dialog (Addresses issue #8250)
    * Fix the left pane of the help browser’s layout for right-to-left languages (Arabic and Hebrew) (issue #8205)
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wmllint now warns about `[kill]` tags containing `[filter]` tags
    * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8137)
