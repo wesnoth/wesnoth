@@ -453,7 +453,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 				savegame::savegame::YES_NO);
 		}
 
-		if(dynamic_cast<const ingame_wesnothd_error*>(&e)) {
+		if(dynamic_cast<const ingame_wesnothd_error*>(&e) || dynamic_cast<const leavegame_wesnothd_error*>(&e)) {
 			return level_result::type::quit;
 		} else {
 			throw;

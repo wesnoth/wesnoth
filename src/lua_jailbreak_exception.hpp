@@ -85,9 +85,9 @@ private:
  */
 #define IMPLEMENT_LUA_JAILBREAK_EXCEPTION(type)                      \
 	                                                                 \
-	virtual type* clone() const { return new type(*this); }          \
+	virtual type* clone() const final { return new type(*this); }    \
 	                                                                 \
-	virtual void execute()                                           \
+	virtual void execute() final                                     \
 	{                                                                \
 		type exception(dynamic_cast<type&>(*jailbreak_exception));   \
 		throw exception;                                             \

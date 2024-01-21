@@ -96,7 +96,7 @@
 		, const std::string& dev_message = "");
 
 /** Helper class, don't construct this directly. */
-struct wml_exception
+struct wml_exception final
 	: public lua_jailbreak_exception
 {
 	wml_exception(const std::string& user_msg, const std::string& dev_msg)
