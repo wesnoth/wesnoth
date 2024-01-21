@@ -103,6 +103,7 @@ struct wml_exception final
 		: user_message(user_msg)
 		, dev_message(dev_msg)
 	{
+		this->store();
 	}
 
 	~wml_exception() noexcept {}

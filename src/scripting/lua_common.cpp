@@ -1116,9 +1116,12 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 
 	int error_handler_index = lua_gettop(L) - nArgs - 1;
 
+	++lua_jailbreak_exception::jail_depth;
+
 	// Call the function.
 	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 
+	--lua_jailbreak_exception::jail_depth;
 	lua_jailbreak_exception::rethrow();
 
 	// Remove the error handler.

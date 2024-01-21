@@ -31,7 +31,10 @@ class saved_game;
 
 struct reset_gamestate_exception final : public lua_jailbreak_exception, public std::exception
 {
-	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
+	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s)
+	{
+		this->store();
+	}
 	std::shared_ptr<config> level;
 	std::shared_ptr<config> stats_;
 	bool start_replay;

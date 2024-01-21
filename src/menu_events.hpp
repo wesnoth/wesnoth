@@ -40,6 +40,11 @@ class mouse_handler;
 
 struct fallback_ai_to_human_exception final : public lua_jailbreak_exception
 {
+	fallback_ai_to_human_exception() : lua_jailbreak_exception()
+	{
+		this->store();
+	}
+
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(fallback_ai_to_human_exception)
 };
 
