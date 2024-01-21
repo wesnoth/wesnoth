@@ -1,4 +1,19 @@
-## Version 1.17.24+dev
+## Version 1.17.25+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.25
  ### Campaigns
    * Eastern Invasion
      * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
