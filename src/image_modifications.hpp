@@ -63,7 +63,7 @@ class modification
 public:
 
 	/** Exception thrown by the operator() when an error occurs. */
-	struct imod_exception
+	struct imod_exception final
 		: public lua_jailbreak_exception
 	{
 		/**

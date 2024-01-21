@@ -33,7 +33,7 @@ namespace gui2::iteration
  *
  * Invalid means the initial state at_end() == true.
  */
-class logic_error : public std::logic_error, public lua_jailbreak_exception
+class logic_error final : public std::logic_error, public lua_jailbreak_exception
 {
 public:
 	explicit logic_error(const std::string& message)
@@ -51,7 +51,7 @@ private:
  *
  * Invalid means the initial state at_end() == true.
  */
-class range_error : public std::range_error, public lua_jailbreak_exception
+class range_error final : public std::range_error, public lua_jailbreak_exception
 {
 public:
 	explicit range_error(const std::string& message)

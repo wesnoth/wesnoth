@@ -34,7 +34,7 @@ class config;
  * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
  * Never thrown during replays.
  */
-class return_to_play_side_exception : public lua_jailbreak_exception, public std::exception
+class return_to_play_side_exception final : public lua_jailbreak_exception, public std::exception
 {
 public:
 
@@ -49,7 +49,7 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(return_to_play_side_exception)
 };
 
-class quit_game_exception
+class quit_game_exception final
 	: public lua_jailbreak_exception
 	, public std::exception
 {

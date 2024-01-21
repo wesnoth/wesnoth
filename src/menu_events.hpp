@@ -38,7 +38,7 @@ namespace events
 class mouse_handler;
 }
 
-struct fallback_ai_to_human_exception : public lua_jailbreak_exception
+struct fallback_ai_to_human_exception final : public lua_jailbreak_exception
 {
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(fallback_ai_to_human_exception)
 };
