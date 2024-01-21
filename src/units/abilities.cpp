@@ -528,6 +528,7 @@ const std::vector<std::string> unit::halo_or_icon_abilities(const std::string& i
 
 void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 {
+	callable.add("weapon", wfl::variant(std::make_shared<wfl::attack_type_callable>(*this)));
 	if(unit_const_ptr & att = is_attacker_ ? self_ : other_) {
 		callable.add("attacker", wfl::variant(std::make_shared<wfl::unit_callable>(*att)));
 	}
