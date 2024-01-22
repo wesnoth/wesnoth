@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-16 00:58 UTC\n"
-"PO-Revision-Date: 2023-05-13 12:37+0300\n"
+"PO-Revision-Date: 2023-12-09 12:25+0100\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -53,7 +53,7 @@ msgstr "Tutoriaali suoritettu loppuun"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
 msgid "Complete the Battle Training."
-msgstr "Suorita taistelukoulutus loppuun"
+msgstr "Suorita taistelukoulutus loppuun."
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -89,7 +89,7 @@ msgstr "Li’sar"
 #. or https://discord.gg/battleforwesnoth.
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
 msgid "Wesnoth Tutorial — Part I"
-msgstr "Wesnoth-tutoriaali - Ensimmäinen osa"
+msgstr "Wesnoth-tutoriaali - Osa I"
 
 #. [side]: type=Fighter, id=student
 #. [side]
@@ -154,8 +154,8 @@ msgid ""
 msgstr ""
 "Tämä on kaksiosainen tutoriaali, joka on tarkoitettu uusille pelaajille. "
 "Ensimmäinen osa opettaa sinulle liikkumisen, hyökkäämisen, parantamisen ja "
-"värväämisen perusteet. Ensin sinun täytyy valita sankarisi (molemmat "
-"sankarit pelaavat samoin)."
+"värväämisen perusteet. Ensin valitset sankarisi (molemmat sankarit pelaavat "
+"samoin)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
@@ -195,7 +195,8 @@ msgstr "Napsauta Li'saria"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:319
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
-"Peruaksesi viimeisen siirtosi, paina <b>u</b> tai käytä hiiren valikkoa."
+"Peru viimeisen siirtosi painamalla <b>u</b> tai käytä valikkoa hiiren "
+"oikealla."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:359
@@ -213,13 +214,13 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
-"Kun valitset tai viet osoittimen yksikön päälle, tässä tapauksessa Konrad, "
+"Kun valitset tai viet osoittimen yksikön päälle, tässä tapauksessa Konradin, "
 "paikat joihin hän voi liikkua on korostettu. Kaikilla yksiköillä on tietty "
-"määrä <i>liikkumispisteitä</i>, jotka kertovat montako heksaa kyseinen "
-"yksikkö voi liikkua joka vuoro. Normaalisti yhden heksan liikkuminen "
-"tasamaalla käyttää yhden liikkumispisteen. Liikkuaksesi napsauta Konradia ja "
-"seuraavaksi määränpäätäsi. (Voit painaa <b>u</b> peruuttaaksesi siirtosi, "
-"jos liikut väärään paikkaan.)"
+"määrä <i>liikkumispisteitä</i>, jotka sanelevat montako heksaa yksikkö voi "
+"liikkua joka vuorolla. Normaalisti yhden heksan liikkuminen tasamaalla "
+"käyttää yhden liikkumispisteen. Liiku napsauttamalla Konradia ja sitten "
+"määränpäätäsi. (Voit painaa <b>u</b> peruaksesi siirtosi, jos liikut väärään "
+"paikkaan.)"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
@@ -233,11 +234,11 @@ msgid ""
 msgstr ""
 "Kun valitset tai viet hiiren yksikön päälle, tässä tapauksessa Li'sar, "
 "paikat joihin hän voi liikkua on korostettu. Kaikilla yksiköillä on tietty "
-"määrä <i>liikkumispisteitä</i>, jotka kertovat montako heksaa kyseinen "
-"yksikkö voi liikkua joka vuoro. Normaalisti yhden heksan liikkuminen "
-"tasamaalla käyttää yhden liikkumispisteen. Liikkuaksesi napsauta Li'saria ja "
-"seuraavaksi määränpäätäsi. (Voit painaa <b>u</b> peruuttaaksesi siirtosi, "
-"jos liikut väärään paikkaan.)"
+"määrä <i>liikkumispisteitä</i>, jotka sanelevat montako heksaa yksikkö voi "
+"liikkua joka vuoro. Normaalisti yhden heksan liikkuminen tasamaalla käyttää "
+"yhden liikkumispisteen. Liiku napsauttamalla Li'saria ja sitten "
+"määränpäätäsi. (Voit painaa <b>u</b> peruaksesi siirtosi, jos liikut väärään "
+"paikkaan.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:375
@@ -262,17 +263,17 @@ msgstr "Hyvää huomenta, Delfador! Onko jo aika tapella?"
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
 msgid "Um, well..."
-msgstr "Öh, noo..."
+msgstr "Öh, tuota..."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:405
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr "Oletko löytänyt minulle vastustajaksi örkin? Tai kenties peikon?"
+msgstr "Oletko löytänyt minulle vastustajaksi örkin? Vai peikon?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr "Oletko löytänyt minulle vastustajaksi örkin? Tai kenties peikon?"
+msgstr "Oletko löytänyt minulle vastustajaksi örkin? Vai peikon?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
@@ -300,7 +301,7 @@ msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
 msgstr ""
-"Nuori mies, sinulla on 32 elämäpistettä ja miekka. Olen melko varma "
+"Nuori mies, sinulla on $student_hp elämäpistettä ja miekka. Olen melko varma "
 "voitostasi."
 
 #. [message]: speaker=Delfador
@@ -309,8 +310,8 @@ msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"Nuori neiti, sinulla on 32 elämäpistettä ja miekka. Olen melko varma "
-"voitostasi."
+"Nuori neiti, sinulla on $student_hp elämäpistettä ja miekka. Olen melko "
+"varma voitostasi."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:492
@@ -325,8 +326,8 @@ msgid ""
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"Hyökätäksesi harjoittelunuken kimppuun, sinun täytyy ensin valita hyökkääjä "
-"(Konrad) ja sitten kohde (harjoittelunukke). Saat selityksen hyökkäyksen "
+"Hyökkää harjoittelunuken kimppuun valitsemalla ensin hyökkääjä (Konrad) ja "
+"sitten kohde (harjoittelunukke). Saat kuvauksen hyökkäyksen "
 "yksityiskohdista. Napsauta <b>Hyökkää</b> kun olet valmis."
 
 #. [hint_message]
@@ -336,8 +337,8 @@ msgid ""
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"Hyökätäksesi harjoittelunuken kimppuun, sinun täytyy ensin valita hyökkääjä "
-"(Li'sar) ja sitten kohde (harjoittelunukke). Saat selityksen hyökkäyksen "
+"Hyökkää harjoittelunuken kimppuun valitsemalla ensin hyökkääjä (Li'sar) ja "
+"sitten kohde (harjoittelunukke). Saat kuvauksen hyökkäyksen "
 "yksityiskohdista. Napsauta <b>Hyökkää</b> kun olet valmis."
 
 #. [disallow_end_turn]
@@ -354,7 +355,7 @@ msgstr "Hei! Tämä harjoittelunukke lyö takaisin!"
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
 msgid "Hmm, perhaps we should have started with a doll."
-msgstr "Hmm, ehkä meidän olisi pitänyt aloittaa tavallisella nukella."
+msgstr "Hmm, ehkä meidän olisi pitänyt aloittaa leikkinukella."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
@@ -422,10 +423,10 @@ msgid ""
 "chances. If it hits every time, you’ll drop from $student_hp to "
 "$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"Aivan niin. Se on maaginen harjoittelunukke. Tällä harjoittelunukella on "
-"viisi mahdollisuutta lyödä sinua, kolme vahinkoa iskua kohti. Jos se osuu "
-"joka kerta, elämäpisteesi putoavat $student_hp pisteestä $future_hp "
-"pisteeseen. Valmistaudu!"
+"Aivan. Se on maaginen harjoittelunukke. Sillä on viisi lyöntimahdollisuutta, "
+"ja jos se osuu, se tekee kolme pistettä vahinkoa. Jos se osuu joka kerta, "
+"elämäpisteesi putoavat $student_hp pisteestä $future_hp pisteeseen. "
+"Valmistaudu!"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:587
@@ -471,7 +472,7 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:625
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "Ai! Apua! Minulla on vain $student_hp elämäpistettä jäljellä!"
+msgstr "Ai! Minut pitää parantaa! Enää $student_hp elämäpistettä jäljellä!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:626
@@ -516,9 +517,10 @@ msgid ""
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
 "Valloitit kylän! Se kantaa nyt sinun lippuasi ja on lisätty "
-"kokonaiskylämäärääsi (talokuvake ruudun yläreunassa). Kylät tuottavat "
-"kultapaloja, joita tarvitaan yksikköjen värväämiseen. Jokaisella vuorolla "
-"saat kaksi kultapalaa, sekä yhden jokaista omistamaasi kylää kohden."
+"kokonaiskylämäärääsi (talokuvake ruudun yläreunassa näyttää, montako kylää "
+"on hallinnassasi). Kylät tuottavat kultaa, jota tarvitaan yksikköjen "
+"värväämiseen. Joka vuorolla saat kaksi kultapalaa, sekä yhden jokaista "
+"omistamaasi kylää kohden."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
@@ -537,7 +539,7 @@ msgid ""
 "hitpoints."
 msgstr ""
 "Koska aloitit vuorosi kylässä, parannuit hieman! Kylät parantavat 8 "
-"elämäpisteen verran kerran vuorossa, tai tarpeeksi täyttääkseen kaikki "
+"elämäpisteen verran kerran vuorossa, tai riittävästi täyttämään kaikki "
 "elämäpisteet, kumpi vain on vähemmän. Sinun tapauksessasi, paranuit "
 "$student_hp_heal_amount elämäpistettä."
 
@@ -598,10 +600,10 @@ msgid ""
 msgstr ""
 "Aina kun olet <i>linnakkeessa</i>, voit <i>värvätä</i> yksiköitä sitä "
 "ympäröiviin linnaruutuihin napsauttamalla hiiren oikeaa painiketta ja "
-"valitsemalla <b>Värvää</b>. Huomioi että vasta värvätyt yksiköt eivät voi "
-"liikkua tai hyökätä sillä vuorolla kun ne on värvätty, joten voit käyttää "
-"niitä vasta ensi vuorolla. Tässä skenaariossa sinulla on valittavana vain "
-"yksi yksikkö, haltiasoturi."
+"valitsemalla <b>Värvää</b>. Huomaa, että vasta värvätyt yksiköt eivät voi "
+"liikkua tai hyökätä sillä vuorolla, jolloin ne on värvätty, joten voit "
+"käyttää niitä vasta ensi vuorolla. Tässä skenaariossa sinulla on valittavana "
+"vain yksi yksikkö, haltiasoturi."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:746
@@ -622,12 +624,12 @@ msgid ""
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
-"Muista tutkia uusien yksiköiden <i>piirteitä</i>. Ne ovat listattuna rodun "
-"alapuolella sivupalkissa. Piirteet voivat vaikuttaa kuinka käytät "
-"joukkojasi. Esimerkiksi yksiköt, joilla on <i>nopea</i> piirre, voivat "
+"Muista tutkia uusien värvättyjen <i>piirteitä</i>. Ne ovat listattuna rodun "
+"alapuolella sivupalkissa. Piirteet voivat hieman vaikuttaa kuinka käytät "
+"joukkojasi. Esimerkiksi yksiköt, joilla on <i>nopea</i>-piirre, voivat "
 "liikkua ylimääräisen heksan verran joka vuoro, ja yksiköt, joilla on "
-"<i>älykäs</i> piirre, tarvitsevat 20% vähemmän kokemusta noustakseen tason "
-"ylemmäksi."
+"<i>älykäs</i>-piirre, tarvitsevat 20% vähemmän kokemusta noustakseen "
+"tasoissa."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:807
@@ -651,14 +653,13 @@ msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
 msgstr ""
-"Hei, harjoittelunukke parantui juuri kaksi elämäpistettä! Minun on parasta "
+"Hei, harjoittelunukke parantui juuri 2 elämäpistettä! Minun on parasta "
 "hyökätä välittömästi!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:822
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr ""
-"Kyllä vain. Jos yksikkö on toimettomana koko vuoron, se paranee hitaasti."
+msgstr "Kyllä vain. Jos yksikkö ei tee mitään vuorollaan, se paranee hitaasti."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
@@ -666,8 +667,8 @@ msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
 msgstr ""
-"Ennen kuin lähetät soturisi taisteluun harjoittelunukkea vastaan, sinun "
-"tulisi tietää, että niillä on kaksi erilaista hyökkäystä..."
+"Ennen kuin lähetät soturisi harjoittelunuken kimppuun, sinun tulisi tietää, "
+"että niillä on kaksi erilaista hyökkäystä..."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:832
@@ -693,7 +694,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:841
 msgid "Attack the quintain with your fighters"
-msgstr "Hyökkää nukkea vastaan haltiasoturilla"
+msgstr "Hyökkää nukkea vastaan taistelijoillasi"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
@@ -702,9 +703,9 @@ msgid ""
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
 "help."
 msgstr ""
-"Nyt et varmaan tee mitään tyhmää, kuten ryntää harjoittelunuken kimppuun "
-"omin päin, vai mitä? Käytä ensin värväämiäsi taistelijoita. Heistä on "
-"sinulle vielä paljon apua."
+"Nyt et kai tee mitään tyhmää, kuten rynnätä harjoittelunuken kimppuun taas "
+"omin päin, vai mitä? Käytä ensin värväämiäsi taistelijoita. Heistä on vielä "
+"paljon apua."
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
@@ -728,7 +729,8 @@ msgid ""
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
 "Haltiasoturi tavallisesti tekee 5x4 vahinkoa miekallaan, mutta tällä "
-"haltialla on <i>vahva</i> piirre, joka nostattaa sen tekemää vahinkoa."
+"haltialla on <i>vahva</i> piirre, joka nostattaa sen tekemää "
+"lähitaisteluvahinkoa."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:905
@@ -755,7 +757,7 @@ msgstr ""
 "Haltiasi käytti jousta, joka on <i>kaukotaisteluhyökkäys</i> (4x3; 4 "
 "vahinkopistettä, 3 hyökkäystä). Harjoittelunukella ei ole "
 "kaukotaisteluhyökkäystä, vaan ainoastaan lähitaisteluhyökkäys, joten se ei "
-"voinut puolustautua ollenkaan."
+"voinut puolustautua."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
@@ -764,8 +766,7 @@ msgid ""
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
 "Haltiasoturi tekee tavallisesti 3x3 vahinkoa jousellaan, mutta tällä "
-"haltialla on <i>taitava</i> piirre, joka nostattaa sen kaukotaistelun "
-"tekemää vahinkoa."
+"haltialla on <i>taitava</i> piirre, joka nostattaa sen kaukotaisteluvahinkoa."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:936
@@ -777,7 +778,7 @@ msgstr ""
 "Haltiasi käytti jousta, joka on <i>kaukotaisteluhyökkäys</i> (3x3; 3 "
 "vahinkopistettä, 3 hyökkäystä). Harjoittelunukella ei ole "
 "kaukotaisteluhyökkäystä, vaan ainoastaan lähitaisteluhyökkäys, joten se ei "
-"voinut puolustautua ollenkaan."
+"voinut puolustautua."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
@@ -801,8 +802,8 @@ msgstr "Yksikköjen kuvaukset"
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"Tarkan kuvauksen yksiköstä saat, kun napsautat sen kohdalla hiiren oikeaa "
-"painiketta ja valitset <b>”Yksikön kuvaus”</b>."
+"Kuvauksen yksiköstä saat napsauttamalla sitä hiiren oikealla painikkeella ja "
+"valitsemalla <b>”Yksikön kuvaus”</b>."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:987
@@ -816,9 +817,9 @@ msgid ""
 "needed. Take special care of units with the highest <i>experience points "
 "(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
-"Muista siirtää haavoittuneet yksiköt kyliin paranemaan ja värvää lisää "
-"yksiköitä, jos tarve vaatii. Pidä erityisesti huolta yksiköistä, joilla on "
-"paljon <i>kokemuspisteitä (KP)</i>, jotta ne voivat ylentyä."
+"Muista siirtää haavoittuneet yksiköt kyliin ja värvätä lisää yksiköitä "
+"tarvittaessa. Pidä erityisesti huolta yksiköistä, joilla on paljon "
+"<i>kokemuspisteitä (KP)</i>, jotta ne voivat ylentyä ja tulla vahvemmiksi."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:997
@@ -831,13 +832,13 @@ msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
 msgstr ""
-"Jokainen omistamasi kylä <i>ylläpitää</i> yhden yksikön ilmaiseksi. Loput "
+"Jokainen hallitsemasi kylä <i>ylläpitää</i> yhden yksikön ilmaiseksi. Loput "
 "yksiköt maksavat sinulle yhden kultapalan vuorossa."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1008
 msgid "You had really better finish off that quintain."
-msgstr "Sinun olisi nyt todella parempi lopettaa tuo harjoittelunukke."
+msgstr "Sinun olisi nyt todella parasta hoidella tuo harjoittelunukke."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1017
@@ -856,7 +857,7 @@ msgstr ""
 "Kun yksikkö saa riittävästi kokemusta (<i>kokemuspylväs</i>, jos saatavilla, "
 "on <i>elämäpylvään</i> <b>oikealla</b> puolella), se ylenee seuraavalle "
 "tasolle. Haltiasotureilla on kaksi ylenemisvaihtoehtoa, joista voit valita "
-"kumman haluat. Huomaa, että tason kaksi yksiköiden ylläpito maksaa kaksi "
+"kumman haluat. Huomaa, että toisen tason yksiköiden ylläpito maksaa kaksi "
 "kertaa niin paljon kuin ensimmäisen tason yksiköiden."
 
 #. [hint_message]
@@ -875,11 +876,13 @@ msgid ""
 "which always has a 70% chance of hitting no matter what terrain their "
 "targets occupy."
 msgstr ""
-"Valittuasi yksikön näet prosenttilukemia erilaisille maastoruuduille. "
-"Suurempi prosenttiluku tarkoittaa helpompaa puolustautumista. Esimerkiksi "
-"<i>puolustus</i> on hyvä linnoissa ja kylissä, mutta huono joissa. "
-"Harjoittelunukkejen hyökkäykset ovat tosin <i>maagisia</i>, joten niillä on "
-"70% mahdollisuus osua sinuun riippumatta siitä, missä seisot."
+"Aina kun yksikkösi on valittuna, näet prosenttilukemia kun liikutat "
+"osoitinta maastoruuduilla. Mitä isompi prosenttiluku, sitä suurempi "
+"<i>puolustus</i> yksiköllä on sen tyyppisessä maastossa. Esimerkiksi "
+"useimmilla yksiköillä on hyvä puolustus linnoissa ja kylissä, mutta huono "
+"joissa. Joidenkin yksiköiden, kuten harjoitusnukkejen, hyökkäykset ovat "
+"<i>maagisia</i>, joten niillä on aina 70% mahdollisuus osua riippumatta "
+"siitä, missä niiden kohde seisoo."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1041
@@ -904,8 +907,8 @@ msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
 msgstr ""
-"Kyllä vain, saat kokemusta taistelemalla, etenkin, jos onnistut tappamaan "
-"vihollisen. Kerää tarpeeksi kokemusta, niin tulet voimakkaammaksi."
+"Kyllä vain, saat kokemusta taistelemalla, etenkin vihollisen tappamisesta. "
+"Kerää tarpeeksi kokemusta, niin tulet voimakkaammaksi."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1089
@@ -937,7 +940,7 @@ msgid ""
 "should be able to kill them one at a time."
 msgstr ""
 "Nämä nuket hyökkäävät vain, jos olet yhden ruudun päässä niistä. Sinun "
-"pitäisi pystyä tuhoamaan ne yksi kerrallaan."
+"pitäisi kyetä tuhoamaan ne yksi kerrallaan."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1167
@@ -945,7 +948,7 @@ msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
-"Noh, uskoakseni osaan jo perusteet. Eteenpäin! Ehkä pääsen seuraavaksi "
+"No, uskoakseni osaan jo perusteet. Eteenpäin! Ehkä pääsen seuraavaksi "
 "oikeaan taisteluun?"
 
 #. [message]: speaker=student
@@ -954,8 +957,8 @@ msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
-"Noh, uskoakseni osaan jo perusteet. Eteenpäin! Ehkä pääsen seuraavaksi "
-"oikeaan taisteluun?"
+"No, taidan osata jo perusteet. Eteenpäin! Ehkä pääsen seuraavaksi oikeaan "
+"taisteluun?"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1183
@@ -971,16 +974,16 @@ msgid ""
 "enemies. When you’re finished, click the <b>End Scenario</b> button to go on "
 "to the next scenario in the campaign."
 msgstr ""
-"Voittoilmoituksen jälkeen kartta harmaantuu, kertoen skenaarion "
-"loppumisesta; tätä kutsutaan <i>tarkastelutilaksi</i> Voit vielä tarkastella "
+"Voittoilmoituksen jälkeen kartta harmaantuu, mikä ilmaisee skenaarion "
+"loppumista; tätä kutsutaan <i>tarkastelutilaksi</i> Voit vielä tarkastella "
 "viimeisiä asemia, joukkojesi kuntoa ja mahdollisia selviytyneitä vihollisia. "
-"Kun olet valmis, napsauta <b>Lopeta skenaario</b> jatkaaksesi seuraavan "
-"skenaarioon kampanjassa."
+"Kun olet valmis, jatka seuraavan skenaarioon kampanjassa napsauttamalla "
+"<b>Lopeta skenaario</b>."
 
 #. [scenario]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
 msgid "Wesnoth Tutorial — Part II"
-msgstr "Wesnoth-tutoriaali - Toinen osa"
+msgstr "Wesnoth-tutoriaali - Osa II"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
@@ -1076,8 +1079,8 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
-"Tervetuloa takaisin! Tämä on kaksiosaisen tutoriaalin toinen osa. Toinen "
-"osio opettaa sinua veteraanijoukkojen kutsumisesta, erikoistaidoista, "
+"Tervetuloa takaisin! Tämä on kaksiosaisen tutoriaalin toinen osa. Toinen osa "
+"opettaa sinua veteraanijoukkojen kutsumisesta, erikoistaidoista, "
 "hyökkäystaidoista, ylläpidosta ja tuloista, pitkän matkan liikkumisesta, "
 "aluehallinnasta ja vuorokauden ajoista."
 
@@ -1110,8 +1113,7 @@ msgstr ""
 "Tämä ei ole leikkiä Konrad! Örkit ovat leiriytyneet joen toiselle puolelle. "
 "Tämä on haltioiden maata. Ne ovat hölmöjä tullessaan tänne, sillä me haltiat "
 "olemme nopeita ja hyviä taistelemaan metsissä. Sinun on kukistettava heidän "
-"johtajansa, jotta he eivät häiritsisi meitä enää uudelleen. Minä neuvon "
-"sinua."
+"johtajansa, jotta he eivät uhkaa meitä enää. Minä neuvon sinua."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
@@ -1124,8 +1126,7 @@ msgstr ""
 "Tämä ei ole leikkiä Li'sar! Örkit ovat leiriytyneet joen toiselle puolelle. "
 "Tämä on haltioiden maata. Ne ovat hölmöjä tullessaan tänne, sillä me haltiat "
 "olemme nopeita ja hyviä taistelemaan metsissä. Sinun on kukistettava heidän "
-"johtajansa, jotta he eivät häiritsisi meitä enää uudelleen. Minä neuvon "
-"sinua."
+"johtajansa, jotta he eivät uhkaa meitä enää. Minä neuvon sinua."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
@@ -1152,8 +1153,8 @@ msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
 msgstr ""
-"Siihen mennessä heidän johtajansa on jo ehtinyt värvätä lisää yksiköitä. Hän "
-"lähettää ne meidän kimppuumme, jolloin alkaa oikea taistelu."
+"Tuolloin heidän johtajansa on jo värvännyt lisää yksiköitä, joita hän "
+"lähettää kimppuumme. Silloin alkaa oikea taistelu."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
@@ -1163,11 +1164,11 @@ msgid ""
 "the north; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"Näetkö tuon tummansinisen veden? Se on liian syvää kummankaan puolen "
-"ylitettäväksi. Örkit voisivat kahlata hitaasti pohjoisessa olevan "
-"vaaleansinisen, kapean ja matalan kaistaleen läpi, mutta me voisimme ennen "
-"heitä miehittää rannan ja pakottaa heidät taistelemaan huonosta asemasta, "
-"vedestä, kun taas meillä olisi metsä suojanamme."
+"Näetkö tuon tummansinisen veden? Se on liian syvää kummallekaan "
+"ylitettäväksi. Örkit voisivat kahlata hitaasti vaaleansinisen, kapean ja "
+"matalan kaistaleen läpi pohjoisessa, mutta me voisimme ennen heitä miehittää "
+"rannan ja pakottaa heidät taistelemaan vedestä, huonosta asemasta, kun taas "
+"meillä olisi metsä suojanamme."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
@@ -1221,7 +1222,7 @@ msgid ""
 msgstr ""
 "Huomaan, että sinulla on veteraanijoukkoja harjoituksestasi! Sinun pitäisi "
 "<i>kutsua</i> heidät, niin aloitat taistelun hiukan kokeneemmilla "
-"yksiköillä. Mieti tarkasti tosin, jos yksiköllä on liian vähän kokemusta, "
+"yksiköillä. Mieti tosin tarkasti. Jos yksiköllä on liian vähän kokemusta, "
 "saattaa olla parempi värvätä vain uusi."
 
 #. [message]: speaker=Galdrad
@@ -1230,8 +1231,8 @@ msgid ""
 "Some of your units have also managed to level up. They’re even more "
 "formidable, so you should recall them as well."
 msgstr ""
-"Osa yksiköistäsi on edennyt seuraavalle tasolle. He ovat voimakkaampia, "
-"sinun kannattaisi kutsua heidät myös."
+"Osa yksiköistäsi on noussut seuraavalle tasolle. He ovat voimakkaampia, "
+"joten sinun kannattaisi kutsua heidät myös."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:285
@@ -1265,9 +1266,9 @@ msgstr ""
 "Uusien yksiköiden värväämisen lisäksi voit myös <i>kutsua</i> kokeneempia "
 "veteraaneja edellisistä skenaarioista 20 kultapalan hinnalla. Voit rakentaa "
 "mahtavan armeijan monen skenaarion aikana kutsumalla korkeatasoisimpia "
-"joukkojasi tai niitä, joilla on hyvät piirteet ja erikoistaidot. Kutsuaksesi "
-"veteraaniyksikön, napsauta hiiren oikealla näppäimellä linnaa, kun "
-"komentajasi on linnakkeessa, ja valitse <i>Kutsu veteraaniyksikkö</i>. "
+"joukkojasi tai niitä, joilla on hyvät piirteet ja erikoistaidot. Kutsu "
+"veteraaniyksikkö napsauttamalla hiiren oikealla näppäimellä linnaa "
+"komentajasi ollessa linnakkeessa, ja valitse <i>Kutsu veteraaniyksikkö</i>. "
 "Muista myös värvätä uusia joukkoja veteraaniyksiköiden kutsumisen lisäksi."
 
 #. [message]: speaker=Galdrad
@@ -1306,14 +1307,14 @@ msgid ""
 msgstr ""
 "Shamaanilla on kyky <i>parantaa</i> ympärillään olevia ystävällisiä "
 "yksiköitä. Hänellä on myös erikoishyökkäys, joka <i>hidastaa</i> vihollisia, "
-"puolittaen niiden tekemän vahingon seuraavan vuoron ajaksi. Hän on kuitenkin "
+"puolittaen niiden tekemän vahingon yhden vuoron ajaksi. Hän on kuitenkin "
 "fyysisesti muita yksiköitä heikompi, joten ole varovainen, kun lähetät hänet "
 "taisteluun."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:320
 msgid "The <i>Heal</i> Ability"
-msgstr "<i>Hoivaus</i> erikoistaito"
+msgstr "<i>Hoivaus</i>-erikoistaito"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
@@ -1327,11 +1328,11 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
-"Jokaisen vuoron alussa ystävälliset yksiköt haltiashamaanin vieressä "
-"parantuvat 4 elämäpistettä, mikä on puolet siitä, mitä kylät parantavat. "
-"Haltiashamaani ei saa kokemuspisteitä hoivaamisesta, vain taistelusta, mutta "
-"hänen kehittämisensä on kannattavaa, sillä hänen toinen tasonsa, "
-"Haltiadruidin, hoivaustaidot vastaavat kylän parantamista.\n"
+"Joka vuoron alussa ystävälliset yksiköt haltiashamaanin vieressä paranevat 4 "
+"elämäpisteen verran, mikä on puolet siitä, mitä kylät parantavat. "
+"Haltiashamaani ei saa kokemusta hoivaamisesta, vain taistelusta, mutta hänen "
+"kehittämisensä on kannattavaa, sillä hänen toisen tason, Haltiadruidin, "
+"hoivaustaidot vastaavat kylän parantamista.\n"
 "\n"
 "Yksityiskohtainen selostus hoivaamisesta löytyy ohjeen (pikanäppäin <b>F1</"
 "b>) osiosta <i>Pelaaminen</i>."
@@ -1357,10 +1358,10 @@ msgstr ""
 "Hyökkäystaidot tekevät joistakin hyökkäyksistä voimakkaampia. "
 "Haltiashamaanilla on hidastus sidontahyökkäyksessään. Kun tämä hyökkäys osuu "
 "viholliseen, se puolittaa vihollisen tekemän vahingon yhden vuoron ajaksi. "
-"Muita hyökkäystaitoja on ensi-isku, joka antaa puolustajalle tilaisuuden "
-"iskeä ensin, ja maaginen, joka antaa pysyvän 70% mahdollisuuden osua.\n"
+"Muita hyökkäystaitoja ovat ensi-isku, jonka avulla puolustaja iskee ensin, "
+"ja maaginen, joka antaa pysyvän 70% mahdollisuuden osua.\n"
 "\n"
-"Täysi lista hyökkäys-, erikoistaidoista sekä piirteistä löytyy ohjeesta "
+"Täysi lista hyökkäys- ja erikoistaidoista sekä piirteistä löytyy ohjeesta "
 "(pikanäppäin <b>F1</b>)."
 
 #. [message]: speaker=narrator
@@ -1381,13 +1382,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
-"Nyt sinulla on kaksi parantajaa. Yksi yksikkö voi saada parannusta vain "
-"yhdeltä parantajalta. Yksikköä parannetaan vain 4 elämäpisteellä, vaikka "
-"molemmat haltiashamaanit olisivat sen vieressä.\n"
+"Nyt sinulla on kaksi parantajaa. Joka yksikkö voi kuitenkin saada parannusta "
+"vain yhdeltä parantajalta. Yksikköä parannetaan vain 4 elämäpisteellä, "
+"vaikka molemmat shamaanit olisivat sen vieressä.\n"
 "\n"
 "Jos toinen shamaaneista kehittyy haltiadruidiksi, sitten hän pystyy "
 "parantamaan haavoittuneita yksiköitä 8 elämäpisteen verran. Monen parantajan "
-"vieressä olevaa yksikköä, parantaa vain edistynein parantaja."
+"vieressä olevaa yksikköä, parantaa kaikkein edistynein parantaja."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1398,11 +1399,10 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
-"Nyt sinulla on kaksi parantajaa. Haltiadruidisi voi parantaa haavoittuneita "
-"yksiköitä 8 elämäpisteen verran, kun taas haltiashamaani vain 4 "
-"elämäpistettä. Jokainen yksikkö voi saada parannusta vain yhdeltä "
-"parantajalta. Monen parantajan vieressä olevaa yksikköä parantaa vain "
-"edistynein parantaja."
+"Nyt sinulla on kaksi parantajaa. Druidisi voi parantaa viereisiä yksiköitä 8 "
+"elämäpisteen verran, kun taas shamaani vain 4 pisteen verran. Jokainen "
+"yksikkö voi saada parannusta vain yhdeltä parantajalta. Monen parantajan "
+"vieressä olevaa yksikköä parantaa vain edistynein parantaja."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
@@ -1425,10 +1425,10 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
-"Usean parantajan omistaminen sallii niiden parantavan toisiaan tai parantaa "
-"eri alueilla taistelukentällä. Se sallii myös taktikointia. 2 elämäpisteen "
-"lepoparantuminen voidaan yhdistää muihin parannuskeinoihin, joten joskus voi "
-"olla parempi liikuttaa parantajaa kuin haavoittunutta yksikköä."
+"Usean parantajan omistaminen sallii heidän parantavan toisiaan tai eri "
+"alueilla taistelukentällä. Se sallii myös taktikointia. 2 elämäpisteen "
+"lepoparantuminen voidaan yhdistää muihin parannuskeinoihin, joten joskus on "
+"parempi liikuttaa parantajaa kuin haavoittunutta yksikköä."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:401
@@ -1444,10 +1444,10 @@ msgid ""
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
 "Toisin kuin haltiasoturi, jolla on vahvat lähitaisteluhyökkäykset, "
-"jousihaltialla on vahvat kaukotaisteluhyökkäykset. Jos vihollisella on "
-"vahvat lähitaisteluhyökkäykset, on viisasta hyökätä tämän kimppuun "
-"kaukotaisteluhyökkäyksellä. Tämä sallii yksiköittesi ottaa vähemmän vahinkoa "
-"vihollisten vastaiskuista."
+"jousihaltialla on vahvat kaukotaisteluhyökkäykset. On viisasta hyökätä "
+"vahvalla kaukotaisteluhyökkäyksellä vihollisia, joilla on vahvat "
+"lähitaisteluhyökkäykset, ja toisinpäin. Tämä mahdollistaa yksiköittesi ottaa "
+"vähemmän vahinkoa vihollisten vastaiskuista."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
@@ -1455,8 +1455,8 @@ msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
 msgstr ""
-"Huomaan, että suosit haltiashamaaneja. Ne parantavat kyllä hyvin, mutta "
-"niiden hyökkäystaidot ovat heikompia."
+"Olet totisesti mieltynyt haltiashamaaneihin. Ne toki parantavat paljon, "
+"mutta niiden hyökkäyksillä ei ole paljon potentiaalia."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:439
@@ -1464,8 +1464,8 @@ msgid ""
 "While none of your recruited units can move yet, you still can. You need "
 "more income; there are some villages near the keep you can capture."
 msgstr ""
-"On totta, että yksikään värväämistäsi yksiköistä ei voi liikkua vielä, mutta "
-"sinä voit. Tarvitset lisätuloja. Lähellä on kyliä, jotka voit vallata."
+"Vaikka yksikään värväämistäsi yksiköistä ei voi liikkua vielä, sinä kyllä "
+"voit. Tarvitset lisätuloja. Lähellä on kyliä, jotka voit vallata."
 
 #. [event]
 #. [on_undo]
@@ -1485,8 +1485,7 @@ msgstr "Et ole vielä vallannut kylää!"
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"Unohdit värvätä joukkoja! Voit painaa <b>u</b> peruuttaaksesi viimeisen "
-"siirtosi."
+"Unohdit värvätä joukkoja! Voit painaa <b>u</b> peruaksesi viimeisen siirtosi."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:480
@@ -1499,8 +1498,8 @@ msgid ""
 "Excellent! As Delfador mentioned earlier, each captured village will support "
 "one unit and provide you with 1 extra gold per turn."
 msgstr ""
-"Loistavaa! Kuten Delfador kertoikin aiemmin, jokainen vallattu kylä pystyy "
-"ylläpitämään yhtä yksikköä ja tuottamaan sinulle yhden kultapalan joka vuoro."
+"Loistavaa! Kuten Delfador kertoi aiemmin, jokainen vallattu kylä ylläpitää "
+"yhtä yksikköä ja tuottaa sinulle 1 kultapalan joka vuorolla."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
@@ -1516,13 +1515,12 @@ msgid ""
 "per turn. Be careful, as owning too many units can cause you to have "
 "negative income and lose gold each turn!"
 msgstr ""
-"Saat joka vuoro 2 kultapalaa, ja lisäksi yhden kultapalan jokaista "
-"omistamaasi kylääsi kohden. Kuitenkin joukkojen <i>ylläpito</i> vähennetään "
-"tuloistasi. Tason yksi yksiköiden ylläpito maksaa 1 kultapalan, kun taas "
-"tason kaksi yksiköiden maksaa 2 kultapalaa. Voit ylläpitää yhtä paljon "
-"joukkoja, kuin sinulla on kyliä, sen jälkeen sinun täytyy maksaa "
-"ylläpidosta. Liian monen yksikön omistaminen maksaa sinulle, ja alat "
-"menettämään rahaa joka vuoro!"
+"Saat joka vuorolla 2 kultapalaa, ja lisäksi yhden kultapalan jokaisesta "
+"omistamastasi kylästäsi. Joukkojen <i>ylläpito</i> kuitenkin vähennetään "
+"tuloista. Voit ylläpitää yhtä paljon joukkoja kuin sinulla on kyliä. Sen "
+"jälkeen sinun täytyy maksaa ylläpidosta 1 kultapala joka vuorolla. Liian "
+"monen yksikön omistaminen voi aiheuttaa tulojesi heikkenemisen, jolloin "
+"menetät kultaa joka vuorolla!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:557
@@ -1530,8 +1528,7 @@ msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Unohdit vallata kylän! Voit painaa <b>u</b> peruuttaaksesi viimeisimmän "
-"siirtosi."
+"Unohdit vallata kylän! Voit painaa <b>u</b> peruaksesi viimeisimmän siirtosi."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:576
@@ -1539,8 +1536,8 @@ msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Nuori mies, nyt on tullut aika neuvotella strategiasta. Yksikkösi ovat "
-"valmiina hyökkäämään ja örkkijohtaja on aloittanut joukkojensa kokoamisen."
+"Nuori mies, nyt on tullut aika puhua strategiasta. Yksikkösi ovat valmiina "
+"hyökkäämään ja örkkijohtaja on aloittanut joukkojensa kokoamisen."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:581
@@ -1548,8 +1545,8 @@ msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Nuori neiti, nyt on tullut aika neuvotella strategiasta. Yksikkösi ovat "
-"valmiina hyökkäämään ja örkkijohtaja on aloittanut joukkojensa kokoamisen."
+"Nuori neiti, nyt on tullut aika puhua strategiasta. Yksikkösi ovat valmiina "
+"hyökkäämään ja örkkijohtaja on aloittanut joukkojensa kokoamisen."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1579,7 +1576,7 @@ msgid ""
 "there; your Fighters will only suffer a 40% chance of being hit in return, "
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
-"Niin sinä voisit. Mutta haltioilla (ja örkeillä) on huono <i>puolustus</i> "
+"Niin voisit. Mutta haltioilla (ja örkeillä) on huono <i>puolustus</i> "
 "vedessä. Olisit haavoittuvainen ylittäessäsi kahlaamoa hitaasti ja "
 "vihollisella olisi aina 80% mahdollisuus osua sinuun. Koska haltioilla on "
 "hyvä puolustus metsässä, neuvoisin sinua ottamaan suojaa metsästä ja "
@@ -1603,8 +1600,7 @@ msgstr ""
 msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
-"Selvä on. Silta se sitten on, mutta minun täytyy olla varovainen "
-"ylittäessäni sitä."
+"Selvä on. Silta sitten, mutta minun täytyy olla varovainen ylittäessäni sitä."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
@@ -1625,12 +1621,12 @@ msgid ""
 "villages on this side of the river. You should secure them for income and "
 "healing."
 msgstr ""
-"Tuo örkkisotilas tukkii yhä tiemme. Hänellä ei ole kaukotaistelua, joten "
-"jousiampujasi voisivat hyökätä sen kimppuun olematta itse suuressa vaarassa. "
+"Tuo örkkisotilas tukkii yhä tiemme. Hänellä ei ole kaukotaisteluhyökkäystä, "
+"joten jousiampujasi voisivat hyökätä sen kimppuun pienellä riskillä. "
 "Valitettavasti joukkosi eivät yllä sen luo vielä, mutta sinun ei kannata "
 "vain odotella! Liikuta joukkojasi niin, että ne voivat hyökätä seuraavalla "
-"vuorolla. Joen tällä puolen on muitakin kyliä. Sinun kannattaisi vallata ne "
-"tuloja ja parannus mahdollisuuksia varten."
+"vuorolla. Joen tällä puolen on muitakin kyliä. Sinun pitäisi vallata ne "
+"tuloja ja parantamista varten."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:610
@@ -1646,17 +1642,16 @@ msgid ""
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"Voit lähettää yksikön paikkaan, jonka saavuttamiseen kuluu useampi vuoro. "
-"Valitse yksikkö ja klikkaa sitten kohdetta. Numero kertoo, kuinka monta "
-"vuoroa kohteen saavuttaminen yksiköltä vie."
+"Voit käskeä yksikön siirtymään useamman vuoron ajaksi valitsemalla yksikkö "
+"ja napsauttamalla määränpäätä. Numero ilmaisee, montako vuoroa kestää päästä "
+"kohteeseen."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:616
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
-"Taidan pysytellä linnakkeen lähellä, jotta voin värvätä lisää joukkoja "
-"tarvittaessa."
+"Taidan pysytellä linnakkeen lähellä, jotta voin värvätä lisää yksiköitä."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:617
@@ -1675,10 +1670,9 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
-"Olet oppinut hyvin Konrad. On todellakin hyvä idea pitää komentajasi "
-"turvassa ja suojeltuna pelin alussa. Pelitilanne voi muuttua nopeasti, etkä "
-"halua joutua liian kauas linnakkeestasi, jolloin et voisi värvätä lisää "
-"joukkoja."
+"Olet oppinut hyvin Konrad. On kyllä hyvä idea pitää komentajasi turvassa ja "
+"suojeltuna pelin alussa. Taistelutilanne voi muuttua nopeasti, etkä halua "
+"joutua liian kauas linnakkeestasi, jolloin et voi värvätä lisäjoukkoja."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:628
@@ -1688,10 +1682,9 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
-"Olet oppinut hyvin Li'sar. On todellakin hyvä idea pitää komentajasi "
-"turvassa ja suojeltuna pelin alussa. Pelitilanne voi muuttua nopeasti, etkä "
-"halua joutua liian kauas linnakkeestasi, jolloin et voisi värvätä lisää "
-"joukkoja."
+"Olet oppinut hyvin Li'sar. On kyllä hyvä idea pitää komentajasi turvassa ja "
+"suojeltuna pelin alussa. Taistelutilanne voi muuttua nopeasti, etkä halua "
+"joutua liian kauas linnakkeestasi, jolloin et voi värvätä lisäjoukkoja."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:698
@@ -1707,7 +1700,7 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
-"Saarella sijaitsevan örkin olisi pitänyt liikkua sillalle, jotta hänen "
+"Saarella sijaitsevan örkin oli tarkoitus liikkua sillalle, jotta hänen "
 "kimppuunsa olisi voinut hyökätä usealla haltialla kerralla. Jotain on mennyt "
 "pieleen tutoriaalin ennalta suunnitellussa toiminnossa, joka tekee "
 "skenaariosta paljon haastavamman.\n"
@@ -1717,7 +1710,7 @@ msgstr ""
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "Tracking Enemy Movement"
-msgstr "Vastustajan liikkeiden jäljittäminen"
+msgstr "Vihollisen liikkeiden jäljittäminen"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
@@ -1727,7 +1720,7 @@ msgid ""
 "command from the <b>Actions</b> menu."
 msgstr ""
 "Näet minne vihollinen voi liikkua pitämällä hiiren osoitinta yksikön päällä. "
-"Näet vihollisten kaikki mahdolliset liikkeet kerralla, valitsemalla "
+"Voit nähdä vihollisten kaikki mahdolliset liikkeet kerralla valitsemalla "
 "<b>Toiminnot</b> ja <b>Näytä vihollisen liikkeet</b>."
 
 #. [event]
@@ -1754,10 +1747,10 @@ msgid ""
 "i> and cannot move further that turn. To move your troops onto that island "
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
-"Ei. Heti kun liikut vihollisyksikön viereen, olet <i>Yksikön hallitsemalla "
-"alueella (YHA)</i>, etkä voi enää liikkua samalla vuorolla. Liikuttaaksesi "
-"joukkoja saarelle sinun on tapettava örkki, ellet halua kiertää sitä "
-"kahlaamalla hitaasti veden kautta."
+"Ei. Kun liikut vihollisyksikön viereen, olet <i>Yksikön hallitsemalla "
+"alueella (YHA)</i>, etkä voi enää liikkua samalla vuorolla. Jotta siirrät "
+"joukkosi saarelle ilman kahlaamista hitaasti veden kautta, sinun on "
+"tapettava örkki."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:740
@@ -1775,11 +1768,10 @@ msgid ""
 "if you have limited manpower."
 msgstr ""
 "Heksat yksikön ympärillä ovat <i>Yksikon hallitsemaa aluetta (YHA)</i>. Kun "
-"vihollisen yksikkö tulee yksikön hallitsemalle alueelle, se menettää kaikki "
-"liikkumispisteensä, eikä voi liikkua enää sillä vuorolla (Poikkeuksena "
-"eritysitaito <i>kahakointi</i>, jonka avulla yksikön hallitsema alue ei "
-"vaikuta kahakoitsijaan). Hallittua aluetta voidaan käyttää estämään "
-"vihollisyksiköitä etenemästä, esimerkiksi kyliin, vaikka sinulla olisikin "
+"vihollisyksikkö tulee tälle alueelle, se ei voi liikkua enää sillä vuorolla "
+"(paitsi yksiköt, joilla on eritysitaito <i>kahakointi</i>, jolloin hallittu "
+"alue ei vaikuta). Näillä voi luoda motituksia, joilla vahvempia vihollisia "
+"estetään pääsemästä avainkohteisiin, kuten kyliin, vaikka sinulla olisikin "
 "vain vähän joukkoja."
 
 #. [message]: speaker=student
@@ -1789,9 +1781,9 @@ msgid ""
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"Toivottavasti selviän vastahyökkäyksestä, mikäli joukkoni eivät pysty "
-"hoitelemaan tätä örkkisotilasta tällä vuorolla. Minun kannattaisi komentaa "
-"ne valtaamaan lisää kyliä ja siirtymään lähemmäksi seuraavaa vuoroa varten."
+"Toivottavasti selviän vastahyökkäyksestä, mikäli joukkoni eivät voi hoidella "
+"tätä örkkisotilasta tällä vuorolla. Minun pitäisi komentaa heidät valtaamaan "
+"lisää kyliä ja siirtymään lähemmäksi seuraavaa vuoroa varten."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:768
@@ -1809,7 +1801,7 @@ msgid ""
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
-"Toivottavasti joukkoni selviävät vastahyökkäyksestä, jos en saa tätä "
+"Toivottavasti joukkoni selviävät vastahyökkäyksestä, mikäli en saa tätä "
 "örkkisotilasta hoideltua tällä vuorolla. Minun on parempi vallata lisää "
 "kyliä, ja liikuttaa kaikkia joukkojani lähemmäksi seuraavaa vuoroa varten."
 
@@ -1828,8 +1820,8 @@ msgid ""
 "One fewer orc to deal with, and our way across the bridge is clear! I also "
 "gained experience from striking the killing blow!"
 msgstr ""
-"Yksi örkki vähemmän, ja reitti sillan yli on vapaa! Ansaitsin myös hiukan "
-"kokemusta iskiessäni viimeisen iskun!"
+"Yksi örkki vähemmän, ja reitti sillan yli on selvä! Sain myös kokemusta "
+"tehtyäni viimeisen iskun!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:816
@@ -1837,7 +1829,7 @@ msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
 msgstr ""
-"Yksi örkki vähemmän, ja reitti sillan yli on vapaa! Ansaitsin myös hiukan "
+"Yksi örkki vähemmän, ja reitti sillan yli on selvä! Ansaitsin myös hiukan "
 "kokemusta iskiessäni viimeisen iskun!"
 
 #. [message]: speaker=Galdrad
@@ -1848,8 +1840,8 @@ msgid ""
 "will overwhelm you with their numbers."
 msgstr ""
 "Ole varovainen! Kun olet sillalla, olet altis hyökkäyksille monesta "
-"suunnasta. Vaikka örkeillä onkin huono puolustus vedessä, ne murskaavat "
-"sinut suurella ylivoimallaan."
+"suunnasta. Vaikka örkeillä onkin huono puolustus vedessä, ne jyräävät sinut "
+"suurella ylivoimallaan."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
@@ -1860,9 +1852,9 @@ msgid ""
 "good defense."
 msgstr ""
 "Hyvin tehty! Saaren kylä on nyt meidän hallussamme. Voit tehdä örkkejä "
-"vastaan puolustuslinjan puiden suojaan. Örkit voivat ylittää joen siltaa "
-"pitkin vain yksi kerrallaan, ja sinä olet heitä vastassa maastossa, joka "
-"antaa hyvän puolustuksen."
+"vastaan puolustuslinjan puiden avulla. Örkit voivat ylittää joen vain siltaa "
+"pitkin yksi kerrallaan ilman kahlaamista, ja sinä olet heitä vastassa "
+"hyvassä puolustusasemassa."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:865
@@ -1891,8 +1883,9 @@ msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"Pysy lähellä linnakettasi! Sinun on oltava linnakkeessa värvätäksesi lisää "
-"yksiköitä, ja epäilen, ettei örkkijohtaja anna sinun käyttää omaansa!"
+"Olet menossa kauas linnakeestasi! Sinun ehkä tarvitsee värvätä lisää "
+"yksiköitä, ja epäilen, ettei örkkijohtaja anna sinun käyttää omaansa! "
+"Varoasti!"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
@@ -1901,8 +1894,8 @@ msgid ""
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
 "Kun yksikköä siirretään, näytetyt prosentit kuvaavat yksikön puolustusta "
-"kyseisellä heksalla. Mitä suurempi luku on, sitä epätodennäköisempää on, "
-"että yksikköön osutaan."
+"kyseisellä heksalla. Mitä suurempi luku, sitä epätodennäköisempää on, että "
+"yksikköön osutaan."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
@@ -1912,8 +1905,8 @@ msgid ""
 "choose will benefit from the village’s healing, too."
 msgstr ""
 "Meidän täytyy vallata tuo kylä, koska muuten örkit valtaavat sen pian! "
-"Liikuta yksikkösi kylään, estääksesi örkkejä valtaamasta sitä. Yksikkö jolla "
-"valtaat kylän, hyötyy kylässä parantumisesta myös."
+"Siirrä yksikkösi kylään, jotta estät örkkejä valtaamasta sitä. Yksikkö, "
+"jolla valtaat kylän, hyötyy myös kylässä parantumisesta."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
@@ -1925,9 +1918,10 @@ msgid ""
 "day."
 msgstr ""
 "Varovasti! Nyt on yö. Örkit ovat <i>kaoottisia</i>. Se tarkoittaa, että "
-"niiden hyökkäykset ovat 25% voimakkaampia yöllä ja 25% heikompia päivällä. "
-"Sinä olet <i>lainkuuliainen</i>, eli voimakkaampi päivällä. Haltiat ovat "
-"<i>neutraaleja</i>, joihin yö ja päivä eivät vaikuta."
+"niiden hyökkäykset ovat 25% voimakkaampia yöllä ja 25% heikompia päivällä, "
+"mikä on huomattava ero. Sinä olet <i>lainkuuliainen</i>, eli voimakkaampi "
+"päivällä ja heikompi yöllä. Haltiat ovat <i>neutraaleja</i>, joihin "
+"vuorokaudenaika ei vaikuta."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
@@ -1944,11 +1938,11 @@ msgid ""
 "current time of day and who has the advantage."
 msgstr ""
 "Skenaarion aikana vuorokauden aika vaihtuu vuorojen kuluessa. Yksiköllä voi "
-"olla yksi neljästä eri <i>suuntautumisesta</i>, yksikkö voi olla "
-"lainkuuliainen, neutraali, kaoottinen tai liminaalinen. Jokaisella "
-"suuntautumisella on hyvät ja huonot puolensa eri vuorokauden aikoina. Voit "
-"viedä hiiren pikkukartan alapuolella olevan taivaskuvan päälle nähdäksesi "
-"nykyisen vuorokauden ajan ja ketkä ovat vahvoilla tai heikoilla."
+"olla yksi neljästä eri <i>suuntautumisesta</i>: lainkuuliainen, neutraali, "
+"kaoottinen tai liminaalinen. Jokaisella suuntautumisella on hyvät ja huonot "
+"puolensa vuorokauden ajasta riippuen. Voit viedä hiiren taivaskuvan päälle "
+"pikkukartan alapuolella, niin näet nykyisen vuorokauden ajan ja ketkä ovat "
+"vahvoilla."
 
 #. [then]
 #. [else]
@@ -2011,10 +2005,10 @@ msgid ""
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
-"Tilastotaulukko kertoo yksityiskohtia osapuolten nykytilasta ja "
-"aloitustilasta. Sumu ja huntu vaikuttavattilastoihin, ja joskus osapuoli "
-"saattaa olla piilotettu. On kuitenkin hyödyllistä vilkaista tätä taulukkoa "
-"skenaarion alussa. Saat sen esille <b>Valikosta</b>."
+"Tilastotaulukko kertoo yksityiskohtia osapuolten nyky- ja aloitustilasta. "
+"Sumu ja huntu vaikuttavat tilastoihin, ja joskus osapuoli saattaa olla "
+"piilotettu. On kuitenkin hyödyllistä vilkaista tätä taulukkoa skenaarion "
+"alussa. Saat sen esille <b>Valikosta</b>."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
@@ -2028,10 +2022,9 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
-"Pitämällä <b>shift</b> painettuna, voit kasvattaa liikkumisen ja "
-"taisteluiden animaatioita nopeammiksi. <b>Kiihdytyskertoimen</b> nopeutta "
-"voi muokata ja asettaa oletuksena käyttöön <b>Asetuksista</b>, <b>Yleiset</"
-"b> välilehdeltä."
+"Pitämällä <b>shift</b> painettuna voit nopeuttaa liikkumis- ja "
+"taisteluanimaatioita. <b>Kiihdytyskertoimen</b> nopeutta voi muokata ja "
+"asettaa oletuksena käyttöön <b>Asetuksista</b>, <b>Yleiset</b>-välilehdeltä."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1028
@@ -2045,9 +2038,9 @@ msgid ""
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
 "b> menu."
 msgstr ""
-"Sinun tarvitsee vain kukistaa örkkien johtaja tässä skenaariossa. Skenaarion "
-"tavoitteet näkyvät kohdasta <b>Skenaarion tavoitteet</b>, joka löytyy "
-"<b>Valikosta</b>."
+"Tässä skenaariossa sinun tarvitsee vain kukistaa örkkijohtaja voittaaksesi. "
+"Skenaarion voittoehdot näkyvät kohdasta <b>Skenaarion tavoitteet</b>, joka "
+"löytyy <b>Valikosta</b>."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1038
@@ -2057,12 +2050,12 @@ msgstr "Kiirehdi ja kukista örkit ennen kuin ne vahvistuvat!"
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 msgid "I have enough gold to recruit more units!"
-msgstr "Minulla on tarpeeksi rahaa, millä värvätä lisää joukkoja!"
+msgstr "Minulla on tarpeeksi kultaa värväämään lisää yksiköitä!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1067
 msgid "female^I have enough gold to recruit more units!"
-msgstr "Minulla on tarpeeksi rahaa, jolla värvätä lisää joukkoja!"
+msgstr "Minulla on tarpeeksi kultaa värväämään lisää joukkoja!"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1076
@@ -2076,7 +2069,7 @@ msgid ""
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
 "Muista värvätä lisäjoukkoja tilanteen vaatiessa. Jousihaltiat ovat erityisen "
-"tehokkaita örkkisotilaita, susiratsastajia ja heidän johtajaansa vastaan."
+"tehokkaita örkkisotilaita, susiratsastajia ja örkkijohtajaa vastaan."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1116
@@ -2093,8 +2086,8 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
-"Jos tämä yksikkö saa 8 kokemuspistettä lisää, se etenee seuraavalle tasolle. "
-"Minkä tahansa yksikön tappaminen riittää! Älä anna tämän yksikön kuolla!"
+"Tämä yksikkö on noin yhden tapon (8 kokemuspisteen) päässä tasonnoususta! "
+"Älä anna hänen kuolla!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1178
@@ -2103,7 +2096,7 @@ msgid ""
 "The village heals him each turn and provides good defense."
 msgstr ""
 "Heidän johtajansa on liikkunut tuohon kylään! Hän ei olekaan niin tyhmä kuin "
-"luulin. Kylä parantaa häntä joka vuoro ja antaa lisäksi hyvän "
+"luulin. Kylä parantaa häntä joka vuorolla ja antaa lisäksi hyvän "
 "puolustusaseman."
 
 #. [event]
@@ -2134,10 +2127,10 @@ msgid ""
 "important to decide which units you want to advance, and give those units "
 "the best chances to gain experience."
 msgstr ""
-"Olet lähellä tappaa heidän johtajansa! Se yksikkö, joka antaa hänelle "
-"viimeisen iskun, saa 16 kokemuspistettä, sillä johtaja on tason kaksi "
-"yksikkö. Kampanjoissa on tärkeää valita, mitä yksikköä haluat kehittää, ja "
-"antaa näille yksiköille parhaat tilaisuudet kokemuspisteiden saamiseen."
+"Olet lähellä tappaa heidän johtajansa! Koska hän on tasolla kaksi, yksikkö, "
+"joka viimeistelee hänet, saa 16 kokemuspistettä. Kampanjoissa on tärkeää "
+"päättää, mitä yksikköä haluaa kehittää ja antaa näille yksiköille parhaat "
+"tilaisuudet saada kokemusta."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1222
@@ -2150,8 +2143,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
-"Kampanjassa sinulla saattaa olla kymmenen tai kaksikymmentä skenaariota "
-"aikaa rakentaa armeijasi, mutta tämä tutoriaali päättyy, kun olet kukistanut "
+"Kampanjassa sinulla voi olla kymmenen tai kaksikymmentä skenaariota aikaa "
+"rakentaa armeijasi, mutta tämä tutoriaali päättyy, kun olet kukistanut "
 "Thragin."
 
 #. [message]: speaker=Galdrad
@@ -2169,8 +2162,8 @@ msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
 msgstr ""
-"$unit.name|, tulemme kaipaamaan häntä. Hänellä nimittäin oli $unit."
-"experience kokemuspistettä, joten hän olisi pian ylentynyt tasolle kaksi."
+"$unit.name|, tulemme kaipaamaan häntä. Hänellä oli $unit.experience "
+"kokemuspistettä, joten hän olisi pian ylentynyt tasolle kaksi."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1285
@@ -2178,8 +2171,8 @@ msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr ""
-"$unit.name|, tulemme kaipaamaan häntä. Mutta mieluummin hän kuin joku "
-"kokeneista yksiköistämme!"
+"$unit.name|, tulemme kaipaamaan häntä, mutta hän ei ainakaan ollut joku "
+"kokeneista joukoustamme!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
@@ -2187,8 +2180,8 @@ msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr ""
-"$unit.name|, tulemme kaipaamaan häntä. Mutta mieluummin hän kuin joku "
-"kokeneista yksiköistämme!"
+"$unit.name|, tulemme kaipaamaan häntä, mutta hän ei ainakaan ollut joku "
+"kokeneista joukoustamme!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
@@ -2196,8 +2189,8 @@ msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Tason kaksi yksiköt ovat voimakkaita, mutta eivät voittamattomia. Hyvästi, "
-"$unit.name|."
+"Korkeamman tason yksiköt ovat vahvoja, mutta eivät haavoittumattomia. "
+"Hyvästi, $unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1322
@@ -2213,8 +2206,8 @@ msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
-"Varo örkkijohtajaa! Hän voi tehdä jopa 36 elämäpistettä vahinkoa yöllä! "
-"Hyökkää mahdollisimman monella yksiköllä samaan aikaan ja mieluiten päivällä."
+"Varo örkkijohtajaa! Hän voi tehdä jopa 36 pistettä vahinkoa öisin! Hyökkää "
+"monella yksiköllä yhtä aikaa ja päivällä."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -2226,12 +2219,11 @@ msgid ""
 "always has a 70% chance to hit, but it is not as powerful as the similar "
 "attack wielded by the Elvish Sorceress."
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Kykenen "
-"hoivaamaan 8 elämäpisteen verran vuorossa 4 sijaan, ja pystyn myös "
-"parantamaan myrkytyksen, jos kylää ei ole lähettyvillä! Olen myös saanut "
-"uuden <i>maagisen</i> hyökkäyksen, joka tarkoittaa, että sillä on 70% "
-"mahdollisuus osua, mutta se ei ole yhtä tehokas hyökkäys kuin "
-"haltiavelhottaren vastaava hyökkäys."
+"Uudelle tasolle yleneminen on parantanut minut täysin! Pystyn hoivaamaan 8 "
+"elämäpisteen verran vuorossa 4 sijaan, ja voin myös parantaa myrkytyksen, "
+"jos kylää ei ole lähettyvillä! Olen myös saanut uuden <i>maagisen</i> "
+"hyökkäyksen, mikä tarkoittaa, että sillä on aina 70% mahdollisuus osua, "
+"mutta se ei ole yhtä tehokas kuin haltiavelhottaren vastaava hyökkäys."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -2242,10 +2234,10 @@ msgid ""
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! En voi enää "
-"hoivata läheisiä yksiköitä, mutta sen sijaan minulla on uusi, voimakkaampi "
-"keijutulihyökkäys, joka tuottaa 7 vahinkoa joka iskulla 4 iskun ajan. Se on "
-"myös <i>maaginen</i> hyökkäys, joka tarkoittaa, että sillä on 70% "
+"Uudelle tasolle yleneminen on parantanut minut täysin! En voi enää hoivata "
+"viereisiä yksiköitä, mutta sen sijaan minulla on uusi, voimakas "
+"keijutulihyökkäys, joka tekee 7 pistettä vahinkoa 4 iskulla. Se on myös "
+"<i>maaginen</i> hyökkäys, mikä tarkoittaa, että sillä on aina 70% "
 "mahdollisuus osua."
 
 #. [message]: speaker=unit
@@ -2256,10 +2248,10 @@ msgid ""
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Minulla on aina "
-"60% mahdollisuus osua <i>Tarkk’ampuja</i>-erikoistaidollani ja teen 9 "
-"elämäpistettä vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua "
-"vaikeasti osuttavia vihollisia vastaan."
+"Uudelle tasolle yleneminen on parantanut minut täysin! Minulla on aina 60% "
+"mahdollisuus osua <i>Tarkk’ampuja</i>-erikoistaidollani ja teen 9 pistettä "
+"vahinkoa jokaisella 4 hyökkäykselläni. Käytä minua vaikeasti osuttavia "
+"vihollisia vastaan."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1379
@@ -2269,10 +2261,10 @@ msgid ""
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Minulla on aina "
-"60% mahdollisuus osua <i>Tarkk’ampuja</i>-erikoistaidollani ja teen 9 "
-"elämäpisteen verran vahinkoa jokaisella neljällä hyökkäykselläni. Käytä "
-"minua vaikeasti osuttavia vihollisia vastaan."
+"Seuraavalle tasolle yleneminen on parantanut minut täysin! Hyökätessäni "
+"minulla on aina 60% mahdollisuus osua <i>Tarkk’ampuja</i>-erikoistaidollani "
+"ja teen 9 pistettä vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua "
+"vaikeasti osuttaviin vihollisia vastaan."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1392
@@ -2281,10 +2273,10 @@ msgid ""
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
 "enemies can only see me if they are right next to me."
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen hyvä "
-"taistelemaan sekä miekalla että jousella ja minulla on myös erikoistaito: "
-"<i>Väijytys</i>. Voin piileskellä metsissä eivätkä viholliset huomaa minua "
-"ennen kuin olen heidän nenänsä edessä."
+"Uudelle tasolle yleneminen on parantanut minut täysin! Olen hyvä sekä miekan "
+"että jousen kanssa, ja minulla on erikoistaito: <i>Väijytys</i>. Voin "
+"piileskellä metsissä, joissa viholliset huomaavat minut vain, jos he ovat "
+"aivan vieressäni."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1393
@@ -2293,10 +2285,10 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen hyvä "
-"taistelemaan sekä miekalla että jousella, ja minulla on myös erikoistaito, "
-"<i>Väijytys</i>. Voin piileskellä metsissä, eivätkä viholliset huomaa minua "
-"ennen kuin olen heidän nenänsä edessä."
+"Uudelle tasolle yleneminen on parantanut minut täysin! Olen hyvä sekä miekan "
+"että jousen kanssa, ja minulla on myös erikoistaito, <i>Väijytys</i>. Voin "
+"piileskellä metsissä, jossa viholliset huomaavat minut vain, jos he ovat "
+"aivan vieressäni."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1407
@@ -2306,12 +2298,11 @@ msgid ""
 "than the Elvish Hero, but my ability allows my allies to fight better. First "
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen hyvä "
-"taistelemaan sekä miekalla että jousella ja minulla on myös erikoistaito: "
-"<i>Johtaja</i>. Teen vähemmän vahinkoa kuin haltiasankari, mutta "
-"erikoistaitoni sallii liittolaisteni taistelevan paremmin. Tason yksi "
-"yksiköt tekevät ympärilläni 25% enemmän vahinkoa, joten sinun on syytä "
-"sijoittaa minut huolellisesti!"
+"Uudellle tasolle yleneminen on parantanut minut täysin! Olen hyvä sekä "
+"miekan että jousen kanssa, ja minulla on erikoistaito: <i>Johtaja</i>. Teen "
+"vähemmän vahinkoa kuin haltiasankari, mutta erikoistaitoni avulla "
+"liittolaiseni taistelevat paremmin. Ensimmäisen tason yksiköt ympärilläni "
+"tekevät 25% enemmän vahinkoa, joten sijoita minut tarkoin!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1420
@@ -2321,11 +2312,10 @@ msgid ""
 "abilities of the Elvish Captain, my superior fighting skills allow my "
 "attacks to do more damage!"
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen erityisen "
-"taitava miekan kanssa. Minulla on neljä hyökkäystä, joista jokainen tekee 8 "
-"elämäpistettä vahinkoa. Vaikka minulla ei ole haltiakapteenin johtajan "
-"erikoistaitoja, minun ylivoimaiset taistelutaidot sallivat minun tuottaa "
-"lisää vahinkoa!"
+"Uudelle tasolle yleneminen on parantanut minut täysin! Olen erityisen hyvä "
+"miekan kanssa, ja teen 8 pistettä vahinkoa 4 hyökkäyksellä. Vaikka minulla "
+"ei ole haltiakapteenin johtamiskykyä, ylivoimaiset taistelutaitoni antavat "
+"minun tehdä enemmän vahinkoa!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1433
@@ -2335,11 +2325,10 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen erityisen "
-"taitava miekan kanssa. Minulla on neljä hyökkäystä, joista jokainen tekee 9 "
-"elämäpistettä vahinkoa. Vaikka minulla ei ole mitään erikoistaitoja, minun "
-"taistelutaidot sallivat minun voittaa örkit tuottamalla niille enemmän "
-"vahinkoa!"
+"Uudelle tasolle yleneminen on parantanut minut täysin! Olen tullut "
+"paremmaksi miekan käytössä. Teen 9 pistettä vahinkoa 4 hyökkäyksellä. Vaikka "
+"minulla ei ole mitään erikoistaitoja, taistelutaitoni avulla nujerran örkit "
+"tekemällä niille enemmän vahinkoa!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1434
@@ -2349,26 +2338,26 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen erityisen "
-"taitava miekan kanssa. Minulla on neljä hyökkäystä, joista jokainen tekee 9 "
-"elämäpistettä vahinkoa. Vaikka minulla ei ole mitään erikoistaitoja, minun "
-"taistelutaidot auttavat minua voittamaan örkit, tuottamalla niille enemmän "
-"vahinkoa!"
+"Seuraavalle tasolle yleneminen on parantanut minut täysin! Olen parempi "
+"miekan kanssa, ja teen neljä hyökkäystä, jotka tekevät 9 pistettä vahinkoa. "
+"Vaikka minulla ei ole erikoistaitoja, taistelutaitoni auttavat minua "
+"voittamaan örkit tekemällä niille enemmän vahinkoa!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1443
 msgid "You took too long! Now we’ll never be rid of these orcs!"
-msgstr "Tuhlasit aikaa! Emme nyt pääse koskaan eroon näistä örkeistä!"
+msgstr ""
+"Sinulla kesti liian kauan! Nyt emme pääse koskaan eroon näistä örkeistä!"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1459
 msgid "That... was foolish. Next time I should be more careful."
-msgstr "Tuo oli... huolimatonta. Ensi kerralla minun pitäisi olla valppaampi."
+msgstr "Tuo oli... hölmöä. Ensi kerralla minun pitäisi olla varovaisempi."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1460
 msgid "female^That... was foolish. Next time I should be more careful."
-msgstr "Tuo oli... huolimatonta. Ensi kerralla minun pitäisi olla valppaampi."
+msgstr "Tuo oli... hölmöä. Ensi kerralla minun pitäisi olla valppaampi."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
@@ -2393,13 +2382,13 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
-"Voit lukea pelin ohjetta, jos sinun täytyy joskus virkistää muistiasi pelin "
-"mekaniikoista."
+"Voit myös lukea pelinsisäistä ohjetta, jos sinun täytyy milloinkaan "
+"virkistää muistiasi pelimekaniikoista."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
-msgstr "Soturi"
+msgstr "Taistelija"
 
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
@@ -2410,9 +2399,9 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Nuoret ja röyhkeät taistelijat hyökkäävät miekalla ja ovat haavoittuvaisia "
+"Nuoret ja röyhkeät taistelijat hyökkäävät miekoin ja ovat haavoittuvaisia "
 "vihollisten hyökkäyksiä vastaan. He voivat kuitenkin harjaantua suuriksi "
-"sotureiksi jonakin päivänä."
+"sotureiksi jonain päivänä."
 
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
@@ -2430,9 +2419,8 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
-"Harjoittelunukkeja käytetään miekkailun ja kaksintaistelun "
-"harjoittelemiseen. Olisi erittäin epätodennäköistä, että sellainen hyökkäisi "
-"kimppuun."
+"Harjoittelunukkeja käytetään miekkailun ja turnajaisten harjoittelemiseen. "
+"Olisi erittäin epätodennäköistä, että sellainen hyökkäisi kimppuun."
 
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
@@ -2477,7 +2465,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<big>Paina hiiren vasenta painiketta tai välilyöntiä jatkaaksesi...</big>"
+"<big>Jatka painamalla hiiren painiketta tai välilyöntiä...</big>"
 
 #~ msgid ""
 #~ "Remember to retreat your wounded units to villages. Healers can only heal "

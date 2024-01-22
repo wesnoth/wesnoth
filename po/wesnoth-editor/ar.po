@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2022-06-15 11:47+0100\n"
+"PO-Revision-Date: 2024-01-04 16:05+0100\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Bookmarks: 32,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [brush]: id=brush-1
@@ -37,12 +37,12 @@ msgstr "محيط 2 سداسي"
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr "خط سداسي شمال غربي - جنوب شرقي "
+msgstr "خط سداسي شمال غربي - جنوب شرقي"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 msgid "Hex Line SW-NE"
-msgstr "خط سداسي جنوب غربي - شمال شرقي "
+msgstr "خط سداسي جنوب غربي - شمال شرقي"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -121,10 +121,8 @@ msgstr "خاص"
 
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
-#, fuzzy
-#| msgid "Fill Selection"
 msgid "elevation"
-msgstr "ملء المنتقى"
+msgstr "ارتفاع"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -185,7 +183,7 @@ msgstr "خريطة"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:88
 msgid "Unit Facing"
-msgstr "اتجاه صور الوحدات"
+msgstr "اتجاه-صور-الوحدات"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
@@ -200,7 +198,7 @@ msgstr "النافذة"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "إضافة"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -249,23 +247,23 @@ msgstr "تعيين الجدول الزمني"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Identifier: "
-msgstr "المعرف"
+msgstr "المعرف "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Name: "
-msgstr "اسم:"
+msgstr "اسم: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Type: "
-msgstr "النوع:"
+msgstr "النوع: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Level: "
-msgstr "المستوى:"
+msgstr "المستوى: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:70
 msgid "Cost: "
-msgstr "التكلفة:"
+msgstr "التكلفة: "
 
 #: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
@@ -289,7 +287,7 @@ msgid ""
 "since the last save will be lost:"
 msgstr ""
 "حقيقة تريد المغادرة؟ ستفقد التغييرات التي تم إجراؤها على هذه الخرائط منذ آخر "
-"عملية حفظ."
+"عملية حفظ:"
 
 #: src/editor/controller/editor_controller.cpp:230
 msgid "No editor time-of-day found."
@@ -362,29 +360,29 @@ msgstr "خطأ في تحميل الخريطة"
 
 #: src/editor/map/context_manager.cpp:689
 msgid "Save Map As"
-msgstr "حفظ الخريطة ك:"
+msgstr "حفظ الخريطة ك"
 
 #: src/editor/map/context_manager.cpp:700
 #: src/editor/map/context_manager.cpp:902
 msgid "This map is already open."
-msgstr "هذه الخريطة مفتوحة بطبعها"
+msgstr "هذه الخريطة مفتوحة بطبعها."
 
 #: src/editor/map/context_manager.cpp:721
 msgid "Save Scenario As"
-msgstr "حفظ السيناريو ك:"
+msgstr "حفظ السيناريو ك"
 
 #: src/editor/map/context_manager.cpp:733
 msgid "This scenario is already open."
-msgstr "هذا السيناريو مفتوح بطبعه"
+msgstr "هذا السيناريو مفتوح بطبعه."
 
 #: src/editor/map/context_manager.cpp:767
 msgid "No random map generators found."
-msgstr "لا يوجد مولد خرائط عشوائية"
+msgstr "لا يوجد مولد خرائط عشوائية."
 
 #: src/editor/map/context_manager.cpp:780
 #: src/editor/map/context_manager.cpp:785
 msgid "Map creation failed."
-msgstr "فشل إعداد الخريطة"
+msgstr "فشل إعداد الخريطة."
 
 #: src/editor/map/context_manager.cpp:800
 msgid "Unsaved Changes"
@@ -396,11 +394,11 @@ msgstr "هل ترغب بحذف كل التغييرات المحدثة على ا�
 
 #: src/editor/map/context_manager.cpp:863
 msgid "Scenario saved."
-msgstr "سيناريو تم تسجيله"
+msgstr "سيناريو تم تسجيله."
 
 #: src/editor/map/context_manager.cpp:878
 msgid "Map saved."
-msgstr "خريطة تم تسجيلها"
+msgstr "خريطة تم تسجيلها."
 
 #: src/editor/map/context_manager.cpp:951
 msgid "Loaded embedded map data"
@@ -412,14 +410,8 @@ msgid "Map loaded from scenario"
 msgstr "تم تحميل الخريطة من السيناريو"
 
 #: src/editor/map/context_manager.cpp:955
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"ملف الخريطة المشار إليه الذي تم تحميله:\n"
-"$new"
+msgstr "تحميل الخريطة المؤشرة:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -440,7 +432,7 @@ msgstr "ملف فارغ"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "ملف لا يحمل نسق .cfg او .map"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -451,7 +443,7 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
+msgstr "وجود علامة '<<' يعني ان الخريطة تحمل كودا بلغة lua . إيقاف  التحميل"
 
 #: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
@@ -460,13 +452,9 @@ msgstr "خطأ"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "فشل تحميل السيناريو. محاولة تحميل الخريطة فقط."
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -475,7 +463,7 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "عدم قدرة على إيجاد معلومات الخريطة"
 
 #: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
 #: src/editor/map/map_context.cpp:886
@@ -524,7 +512,7 @@ msgstr "حذف"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr "الزر الأيسر:"
+msgstr "الزر الأيسر: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "

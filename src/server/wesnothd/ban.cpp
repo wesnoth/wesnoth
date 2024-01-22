@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

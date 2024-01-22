@@ -7,30 +7,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2008-05-31 16:55-0000\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"PO-Revision-Date: 2024-01-04 15:50+0100\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural= n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
-msgstr ""
+msgstr "تحت الأرض"
 
 #. [label]
 #. [trait]: id=undead
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
 #: data/core/macros/traits.cfg:55
 msgid "undead"
-msgstr ""
+msgstr "ميت حي"
 
 #. [label]
 #. [chance]
@@ -39,7 +40,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/data/training.cfg:285
 #: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
 msgid "fearless"
-msgstr ""
+msgstr "لا يخاف"
 
 #. [label]
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
@@ -51,7 +52,7 @@ msgstr ""
 #: data/core/macros/weapon_specials.cfg:41
 #: data/core/macros/weapon_specials.cfg:52
 msgid "plague"
-msgstr ""
+msgstr "محدي"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
@@ -68,14 +69,14 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
 #: data/core/macros/abilities.cfg:130
 msgid "steadfast"
-msgstr ""
+msgstr "صامد"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:131
 msgid "female^steadfast"
-msgstr ""
+msgstr "صامدة"
 
 #. [illuminates]: id=illumination_song_verse
 #. [illuminates]: id=illumination
@@ -83,22 +84,22 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
 #: data/core/macros/abilities.cfg:238
 msgid "female^illuminates"
-msgstr ""
+msgstr "منيرة"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
-msgstr ""
+msgstr "يشفي +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:639
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
-msgstr ""
+msgstr "تشفي +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:640
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -110,26 +111,26 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:644
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:683
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:713
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
-msgstr ""
+msgstr "يشفي +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:663
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
-msgstr ""
+msgstr "تشفي +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:664
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -141,17 +142,17 @@ msgid ""
 msgstr ""
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:692
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 msgid "heals +12"
-msgstr ""
+msgstr "يشفي +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
 msgid "female^heals +12"
-msgstr ""
+msgstr "تشفي +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -163,7 +164,7 @@ msgid ""
 msgstr ""
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -176,7 +177,7 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
-msgstr ""
+msgstr "انتقال"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
@@ -184,147 +185,147 @@ msgstr ""
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
-msgstr ""
+msgstr "تجديد"
 
 #. [chance]
 #. [trait]: id=healthy
 #: data/campaigns/World_Conquest/resources/data/training.cfg:257
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
-msgstr ""
+msgstr "دائما تشفى"
 
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
 #: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
-msgstr ""
+msgstr "طعن"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
 #: data/core/macros/abilities.cfg:387
 msgid "feeding"
-msgstr ""
+msgstr "تغذي"
 
 #. [chance]
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/data/training.cfg:527
 #: data/core/macros/abilities.cfg:199
 msgid "leadership"
-msgstr ""
+msgstr "قيادة"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
 #: data/core/macros/abilities.cfg:285
 msgid "ambush"
-msgstr ""
+msgstr "كمين"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
 msgid "Castle"
-msgstr ""
+msgstr "قصر"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
 msgid "Cave"
-msgstr ""
+msgstr "كهف"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
 #: data/core/macros/abilities.cfg:346
 msgid "concealment"
-msgstr ""
+msgstr "تخفي"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
 #: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
-msgstr ""
+msgstr "امتصاص"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
 msgid "firststrike"
-msgstr ""
+msgstr "سباق"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
 msgid "Forest"
-msgstr ""
+msgstr "غابة"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
 msgid "Frozen"
-msgstr ""
+msgstr "متجمد"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
 msgid "Hills"
-msgstr ""
+msgstr "تلال"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
 #: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
-msgstr ""
+msgstr "قانص"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "بُسْتان الفُطر"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
 #: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
 msgid "nightstalk"
-msgstr ""
+msgstr "تسلل"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
 #: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
-msgstr ""
+msgstr "سم"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
 msgid "Sand"
-msgstr ""
+msgstr "رمال"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
 #: data/core/macros/abilities.cfg:219
 msgid "skirmisher"
-msgstr ""
+msgstr "مناوش"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
 #: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
-msgstr ""
+msgstr "مبطئ"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
 msgid "Swamp"
-msgstr ""
+msgstr "مستنقع"
 
 #. [heals]: id=curing
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
 #: data/core/macros/abilities.cfg:61
 msgid "cures"
-msgstr ""
+msgstr "علاج"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "تعديل خرائط وسيناريو"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 msgid "Terrain Editor"
-msgstr ""
+msgstr "تعديل الارضية"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 msgid "Scenario Editor"
-msgstr ""
+msgstr "تعديل سيناريو"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr ""
+msgstr "أدوات تلوين"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -4182,6 +4183,7 @@ msgid ""
 msgstr ""
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
 #: data/core/macros/special-notes.cfg:122
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
@@ -5449,17 +5451,17 @@ msgstr ""
 #. [race]: id=monster
 #: data/core/units.cfg:296
 msgid "race^Monster"
-msgstr ""
+msgstr "وحش"
 
 #. [race]: id=monster
 #: data/core/units.cfg:297
 msgid "race+female^Monster"
-msgstr ""
+msgstr "وحش"
 
 #. [race]: id=monster
 #: data/core/units.cfg:298
 msgid "race^Monsters"
-msgstr ""
+msgstr "وحوش"
 
 #. [race]: id=monster
 #: data/core/units.cfg:299
@@ -5472,17 +5474,17 @@ msgstr ""
 #. [race]: id=naga
 #: data/core/units.cfg:306
 msgid "race^Naga"
-msgstr ""
+msgstr "أفعوان"
 
 #. [race]: id=naga
 #: data/core/units.cfg:307
 msgid "race^Nagini"
-msgstr ""
+msgstr "أفعوانة"
 
 #. [race]: id=naga
 #: data/core/units.cfg:308
 msgid "race^Nagas"
-msgstr ""
+msgstr "الأفعوانيون"
 
 #. [race]: id=naga
 #: data/core/units.cfg:309
@@ -5505,17 +5507,17 @@ msgstr ""
 #. [race]: id=ogre
 #: data/core/units.cfg:317
 msgid "race^Ogre"
-msgstr ""
+msgstr "غول"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:318
 msgid "race+female^Ogre"
-msgstr ""
+msgstr "سعلاة"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:319
 msgid "race^Ogres"
-msgstr ""
+msgstr "غيلان"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:320
@@ -5539,17 +5541,17 @@ msgstr ""
 #. [race]: id=orc
 #: data/core/units.cfg:328
 msgid "race^Orc"
-msgstr ""
+msgstr "أورك"
 
 #. [race]: id=orc
 #: data/core/units.cfg:329
 msgid "race+female^Orc"
-msgstr ""
+msgstr "أورك"
 
 #. [race]: id=orc
 #: data/core/units.cfg:330
 msgid "race^Orcs"
-msgstr ""
+msgstr "الاوركا"
 
 #. [race]: id=orc
 #: data/core/units.cfg:331
@@ -5617,17 +5619,17 @@ msgstr ""
 #. [race]: id=raven
 #: data/core/units.cfg:351
 msgid "race^Raven"
-msgstr ""
+msgstr "غراب"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
 msgid "race+female^Raven"
-msgstr ""
+msgstr "غرابة"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
 msgid "race^Ravens"
-msgstr ""
+msgstr "غربان"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -5652,17 +5654,17 @@ msgstr ""
 #. [race]: id=troll
 #: data/core/units.cfg:365
 msgid "race^Troll"
-msgstr ""
+msgstr "تروف"
 
 #. [race]: id=troll
 #: data/core/units.cfg:366
 msgid "race+female^Troll"
-msgstr ""
+msgstr "ترول"
 
 #. [race]: id=troll
 #: data/core/units.cfg:367
 msgid "race^Trolls"
-msgstr ""
+msgstr "الترول"
 
 #. [race]: id=troll
 #: data/core/units.cfg:368
@@ -5706,17 +5708,17 @@ msgstr ""
 #. [race]: id=undead
 #: data/core/units.cfg:388
 msgid "race^Undead"
-msgstr ""
+msgstr "ميت-حي"
 
 #. [race]: id=undead
 #: data/core/units.cfg:389
 msgid "race+female^Undead"
-msgstr ""
+msgstr "ميتة-حية"
 
 #. [race]: id=undead
 #: data/core/units.cfg:390
 msgid "race+plural^Undead"
-msgstr ""
+msgstr "الموتى-الأحياء"
 
 #. [race]: id=undead
 #: data/core/units.cfg:391
@@ -5758,17 +5760,17 @@ msgstr ""
 #. [race]: id=wolf
 #: data/core/units.cfg:404
 msgid "race^Wolf"
-msgstr ""
+msgstr "ذئب"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:405
 msgid "race+female^Wolf"
-msgstr ""
+msgstr "ذئبة"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:406
 msgid "race^Wolves"
-msgstr ""
+msgstr "ذئب"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:407
@@ -5785,12 +5787,12 @@ msgstr ""
 #. [race]: id=wose
 #: data/core/units.cfg:416
 msgid "race^Wose"
-msgstr ""
+msgstr "ووز"
 
 #. [race]: id=wose
 #: data/core/units.cfg:417
 msgid "race^Woses"
-msgstr ""
+msgstr "الووز"
 
 #. [race]: id=wose
 #: data/core/units.cfg:418
@@ -5836,30 +5838,30 @@ msgstr ""
 
 #: data/lua/feeding.lua:30 data/lua/feeding.lua:43
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 لنقاط الحياة القصوى"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "في صدمة: هذه الوحدة مصدومة ولا يمكنها بالتالي تفعيل منطقة سيطرة."
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
 msgid "female^stunned"
-msgstr ""
+msgstr "مصدومة"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "مصدوم"
 
 #: src/help/help.cpp:211
 msgid "Close"
-msgstr ""
+msgstr "غلق"
 
 #: src/help/help.cpp:215
 msgid "Help"
-msgstr ""
+msgstr "المساعدة"
 
 #: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
@@ -5867,16 +5869,16 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "الأفضل في"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "الأسوء في"
 
 #: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
-msgstr ""
+msgstr "القرى تمكن الوحدات الموجودة عليها من التعافي من السموم او الشفاء."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -5905,7 +5907,7 @@ msgstr ""
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
-msgstr ""
+msgstr "هذا قصر يمكن أن يستعمله قائد ليجند منه وحدات نحو قلاع مرتبطة به."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -5917,169 +5919,169 @@ msgstr ""
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:600
 msgid "Special Notes:"
-msgstr ""
+msgstr "ملاحظات:"
 
 #: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
-msgstr ""
+msgstr "الارضية الأساس: "
 
 #: src/help/help_topic_generators.cpp:213
 msgid "Movement properties: "
-msgstr ""
+msgstr "خصائص الحركة: "
 
 #: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
-msgstr ""
+msgstr "خصائص الدفاع: "
 
 #: src/help/help_topic_generators.cpp:297
 msgid "Level"
-msgstr ""
+msgstr "المستوى"
 
 #: src/help/help_topic_generators.cpp:357
 msgid "Advances from: "
-msgstr ""
+msgstr "يتطور من: "
 
 #: src/help/help_topic_generators.cpp:359
 msgid "Advances to: "
-msgstr ""
+msgstr "يتطور إلى: "
 
 #: src/help/help_topic_generators.cpp:388
 msgid "Base unit: "
-msgstr ""
+msgstr "الوحدة الأساس: "
 
 #: src/help/help_topic_generators.cpp:393
 msgid "Base units: "
-msgstr ""
+msgstr "الوحدات الأساس: "
 
 #: src/help/help_topic_generators.cpp:411
 msgid "Variations: "
-msgstr ""
+msgstr "التنويعات: "
 
 #: src/help/help_topic_generators.cpp:435
 msgid "race^Miscellaneous"
-msgstr ""
+msgstr "غير قياسي"
 
 #: src/help/help_topic_generators.cpp:437
 msgid "Race: "
-msgstr ""
+msgstr "العرق: "
 
 #: src/help/help_topic_generators.cpp:507
 msgid "Abilities: "
-msgstr ""
+msgstr "القدرات: "
 
 #: src/help/help_topic_generators.cpp:533
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "القدرات المقبولة: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:563
 msgid "HP:"
-msgstr ""
+msgstr "الحياة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:567
 msgid "Moves:"
-msgstr ""
+msgstr "الحركات:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:572
 msgid "Vision:"
-msgstr ""
+msgstr "الرؤية:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:578
 msgid "Jamming:"
-msgstr ""
+msgstr "القفز:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:583
 msgid "Cost:"
-msgstr ""
+msgstr "الكلفة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:587
 msgid "Alignment:"
-msgstr ""
+msgstr "التوجه:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:594
 msgid "Required XP:"
-msgstr ""
+msgstr "التجربة:"
 
 #: src/help/help_topic_generators.cpp:612
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "الهجمات"
 
 #: src/help/help_topic_generators.cpp:619
 msgid "unit help^Name"
-msgstr ""
+msgstr "الاسم"
 
 #: src/help/help_topic_generators.cpp:620
 msgid "Strikes"
-msgstr ""
+msgstr "الضربات"
 
 #: src/help/help_topic_generators.cpp:621
 msgid "Range"
-msgstr ""
+msgstr "المدى"
 
 #: src/help/help_topic_generators.cpp:622
 msgid "Type"
-msgstr ""
+msgstr "النوع"
 
 #: src/help/help_topic_generators.cpp:623
 msgid "Special"
-msgstr ""
+msgstr "الخاصية"
 
 #: src/help/help_topic_generators.cpp:698
 msgid "Resistances"
-msgstr ""
+msgstr "الدفاعات"
 
 #: src/help/help_topic_generators.cpp:702
 msgid "Attack Type"
-msgstr ""
+msgstr "نوع الهجوم"
 
 #: src/help/help_topic_generators.cpp:703
 msgid "Resistance"
-msgstr ""
+msgstr "المقاومة"
 
 #: src/help/help_topic_generators.cpp:733
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "مغير الأرض"
 
 #: src/help/help_topic_generators.cpp:737
 msgid "Terrain"
-msgstr ""
+msgstr "الارضية"
 
 #: src/help/help_topic_generators.cpp:738
 msgid "Defense"
-msgstr ""
+msgstr "الدفاع"
 
 #: src/help/help_topic_generators.cpp:739
 msgid "Movement Cost"
-msgstr ""
+msgstr "كلفة الحركة"
 
 #: src/help/help_topic_generators.cpp:743
 msgid "Defense Cap"
-msgstr ""
+msgstr "حد الدفاع"
 
 #: src/help/help_topic_generators.cpp:748
 msgid "Vision Cost"
-msgstr ""
+msgstr "كلفة الرؤية"
 
 #: src/help/help_topic_generators.cpp:752
 msgid "Jamming Cost"
-msgstr ""
+msgstr "كلفة القفز"

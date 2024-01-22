@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2023
+	Copyright (C) 2012 - 2024
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

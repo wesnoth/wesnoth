@@ -222,6 +222,34 @@
 0 test_attacks_used
 0 no_duplicate_advancements
 0 add_advancement
+0 harm_unit_survivable_experience_no
+0 harm_unit_survivable_experience_unset
+0 harm_unit_survivable_experience_yes
+0 harm_unit_kill_no_experience_attack
+0 harm_unit_kill_no_experience_attack_defend
+0 harm_unit_kill_no_experience_attack_kill
+0 harm_unit_kill_no_experience_defend
+0 harm_unit_kill_no_experience_defend_kill
+0 harm_unit_kill_no_experience_fight
+0 harm_unit_kill_no_experience_kill
+0 harm_unit_kill_no_experience_no_attack_defend_kill
+0 harm_unit_kill_no_experience_no
+0 harm_unit_kill_no_experience_unset
+0 harm_unit_kill_no_experience_yes
+0 harm_unit_kill_split_experience_attack
+0 harm_unit_kill_split_experience_attack_defend
+0 harm_unit_kill_split_experience_attack_kill
+0 harm_unit_kill_split_experience_defend
+0 harm_unit_kill_split_experience_defend_kill
+0 harm_unit_kill_split_experience_fight
+0 harm_unit_kill_split_experience_kill
+0 harm_unit_kill_split_experience_no_attack_defend_kill
+0 harm_unit_kill_split_experience_no
+0 harm_unit_kill_split_experience_unset
+0 harm_unit_kill_split_experience_yes
+0 harm_unit_kill_yes_experience_no
+0 harm_unit_kill_yes_experience_unset
+0 harm_unit_kill_yes_experience_yes
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -456,6 +484,7 @@
 0 order_of_variable_events3
 0 premature_end_turn1
 2 premature_end_turn2
+0 events_test_priority_in_same_name
 0 events_test_priority_vs_origin
 0 events_test_same_priority
 0 events_test_multi_int
@@ -502,7 +531,7 @@
 0 heal_two_cumulative_mixed_same_id
 0 heal_two_cumulative_mixed_unique_id
 0 heal_max_value
-# regenerate abilities tests
+# regenerate ability tests
 0 regenerate_positive_value
 0 regenerate_negative_value
 0 regenerate_zero
@@ -535,7 +564,7 @@
 0 regenerate_two_cumulative_mixed_same_id
 0 regenerate_two_cumulative_mixed_unique_id
 0 regenerate_max_value
-# resistance abilities tests
+# resistance ability tests
 0 resistance_negative_value
 0 resistance_zero
 0 resistance_add
@@ -574,7 +603,7 @@
 0 resistance_no_max_value
 0 resistance_no_value_no_max_value
 0 resistance_no_value_no_max_value_add
-# leadership abilities tests
+# leadership ability tests
 0 leadership_negative_value
 0 leadership_zero
 0 leadership_add
@@ -605,7 +634,7 @@
 0 leadership_max_value
 0 leadership_active_on_offense
 0 leadership_active_on_defense
-# illuminates abilities tests
+# illuminates ability tests
 0 illuminates_active_on_defense
 0 illuminates_active_on_offense
 0 illuminates_add
@@ -649,6 +678,58 @@
 0 illuminates_value_day_capped
 0 illuminates_value_night
 0 illuminates_value_deep
+# skirmisher ability tests
+0 skirmisher
+0 no_skirmisher
+0 skirmisher_adjacent_enemies
+0 skirmisher_adjacent
+# hides ability tests
+0 hides_self
+0 hides_nobody
+# teleport ability tests
+0 teleport_simple
+0 no_teleport
+0 teleport_no_tunnel
+0 teleport_adjacent_allies
+0 tunnel_filter_teleport_unit
+0 tunnel_target_teleport_unit_fail
+0 tunnel_target_teleport_unit_succeed
+0 tunnel_source_teleport_unit_fail
+0 tunnel_source_teleport_unit_succeed
+# attacks ability tests
+9 attacks_negative_value
+0 attacks_zero
+0 attacks_add
+0 attacks_add_divide
+0 attacks_add_multiply
+0 attacks_add_sub
+0 attacks_affect_self_no
+0 attacks_affect_enemies
+0 attacks_affect_everybody
+0 attacks_divide
+0 attacks_high_fraction
+0 attacks_low_fraction
+0 attacks_multiply
+0 attacks_multiply_divide
+0 attacks_multiply_fraction
+0 attacks_no_value
+0 attacks_sub
+0 attacks_sub_divide
+0 attacks_sub_multiply
+0 attacks_wfl_other
+0 attacks_wfl_self
+0 attacks_two_cumulative_yes_same_id
+0 attacks_two_cumulative_yes_unique_id
+0 attacks_two_cumulative_no_same_id
+0 attacks_two_cumulative_no_unique_id
+0 attacks_two_cumulative_mixed_same_id
+0 attacks_two_cumulative_mixed_unique_id
+0 attacks_max_value
+0 attacks_overwrite_specials_one_side
+0 attacks_overwrite_specials_both_sides
+0 attacks_overwrite_specials_two_both_sides
+0 attacks_overwrite_specials_two_one_side
+0 attacks_overwrite_specials_mixed
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated

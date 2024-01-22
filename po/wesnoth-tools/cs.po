@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2023-06-17 06:57+0200\n"
+"PO-Revision-Date: 2023-11-22 23:39+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -23,6 +23,8 @@ msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
 msgstr ""
+"Spustit GUI.pyw v daném jazyce. Jako kód jazyka je očekáván název národního "
+"prostředí, úplný seznam nalezneš na gettext.wesnoth.org."
 
 #: data/tools/GUI.pyw:87 data/tools/GUI.pyw:101 data/tools/GUI.pyw:1404
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1496 data/tools/GUI.pyw:1525
@@ -33,15 +35,12 @@ msgstr "Chyba"
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
 #: data/tools/GUI.pyw:89
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "`{0}` folder not found. Please run the GUI.pyw executable packaged with "
-#| "the Wesnoth installation."
+#, python-brace-format
 msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
 "Wesnoth installation."
 msgstr ""
-"Složka `{0}` nebyla nalezena. Spusť prosím soubor GUI.pyw přibalený "
+"Adresář „{0}“ nebyl nalezen. Spusť prosím program GUI.pyw přibalený "
 "k instalaci Wesnothu."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
@@ -77,16 +76,12 @@ msgid "Paste"
 msgstr "Vložit"
 
 #: data/tools/GUI.pyw:460
-#, fuzzy
-#| msgid "Select all"
 msgid "Select All"
 msgstr "Vybrat vše"
 
 #: data/tools/GUI.pyw:533
-#, fuzzy
-#| msgid "Directory"
 msgid "Working directory"
-msgstr "Adresář"
+msgstr "Pracovní adresář"
 
 #: data/tools/GUI.pyw:545 data/tools/GUI.pyw:588
 msgid "Browse..."
@@ -95,11 +90,11 @@ msgstr "Procházet..."
 #. TRANSLATORS: Clear button for clearing the directory text box.
 #: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
 msgid "Clear"
-msgstr ""
+msgstr "Vymazat"
 
 #: data/tools/GUI.pyw:645
 msgid "wmllint mode"
-msgstr "režim wmllint"
+msgstr "Režim wmllint"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
 #: data/tools/GUI.pyw:652 data/tools/GUI.pyw:1072
@@ -109,18 +104,16 @@ msgstr "Normální"
 #. TRANSLATORS: Tooltip explanation for normal run mode.
 #: data/tools/GUI.pyw:661 data/tools/GUI.pyw:1081
 msgid "Perform conversion and save changes to file"
-msgstr ""
+msgstr "Provést převod a uložit změny do souboru"
 
 #: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
 msgid "Dry run"
-msgstr ""
+msgstr "Zkouška nanečisto"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
-#, fuzzy
-#| msgid "Revert conversions using *.bak files"
 msgid "Perform conversion without saving changes to file"
-msgstr "Vrátit převod pomocí souborů *.bak"
+msgstr "Provést převod bez uložení změn do souboru"
 
 #: data/tools/GUI.pyw:676
 msgid "Clean"
@@ -128,10 +121,8 @@ msgstr "Uklidit"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
 #: data/tools/GUI.pyw:685
-#, fuzzy
-#| msgid "Delete *.bak files"
 msgid "Delete back-up files"
-msgstr "Odstranit soubory *.bak"
+msgstr "Odstranit záložní soubory"
 
 #: data/tools/GUI.pyw:688
 msgid "Diff"
@@ -148,26 +139,22 @@ msgstr "Vrátit"
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
 #: data/tools/GUI.pyw:709
-#, fuzzy
-#| msgid "Revert conversions using *.bak files"
 msgid "Revert conversions using back-up files"
-msgstr "Vrátit převod pomocí souborů *.bak"
+msgstr "Vrátit převod pomocí záložních souborů"
 
 #: data/tools/GUI.pyw:712 data/tools/GUI.pyw:1096
 msgid "Verbosity level"
-msgstr ""
+msgstr "Úroveň upovídanosti"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:720 data/tools/GUI.pyw:1104
 msgid "Terse"
-msgstr ""
+msgstr "Stručný"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:731
-#, fuzzy
-#| msgid "List changes"
 msgid "Show changes"
-msgstr "Vypsat změny"
+msgstr "Ukázat změny"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:741
@@ -186,17 +173,17 @@ msgstr "Možnosti wmllint"
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
 #: data/tools/GUI.pyw:768
 msgid "Convert EOL characters to Unix format"
-msgstr ""
+msgstr "Převod znaků konce řádku do unixového formátu"
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:779
 msgid "Do not warn about tags without side= keys"
-msgstr ""
+msgstr "Neupozorňovat na značky postrádající klíč side="
 
 #: data/tools/GUI.pyw:788
 msgid "Disable checks for unknown units"
-msgstr ""
+msgstr "Vypnout kontroly neznámých jednotek"
 
 #: data/tools/GUI.pyw:797
 msgid "Disable spellchecking"
@@ -204,7 +191,7 @@ msgstr "Zakázat kontrolu pravopisu"
 
 #: data/tools/GUI.pyw:806
 msgid "Skip core directory"
-msgstr ""
+msgstr "Přeskočit základní adresář"
 
 #: data/tools/GUI.pyw:833
 msgid "wmlscope options"
@@ -212,11 +199,11 @@ msgstr "Možnosti wmlscope"
 
 #: data/tools/GUI.pyw:845
 msgid "Check for duplicate macro definitions"
-msgstr ""
+msgstr "Kontrolovat duplicitní definice maker"
 
 #: data/tools/GUI.pyw:854
 msgid "Check for duplicate resource files"
-msgstr ""
+msgstr "Kontrolovat duplicitní soubory zdrojů"
 
 #: data/tools/GUI.pyw:863
 msgid "Make definition list"
@@ -228,15 +215,15 @@ msgstr "Vypsat soubory, které budou zpracovány"
 
 #: data/tools/GUI.pyw:881
 msgid "Report unresolved macro references"
-msgstr ""
+msgstr "Hlásit nevyřešené odkazy na makra"
 
 #: data/tools/GUI.pyw:890
 msgid "Extract help from macro definition comments"
-msgstr ""
+msgstr "Vytáhnout nápovědu z komentářů k definicím maker"
 
 #: data/tools/GUI.pyw:899
 msgid "Report all macros with untyped formals"
-msgstr ""
+msgstr "Hlásit všechna makra s neotypovanými strukturami"
 
 #: data/tools/GUI.pyw:908
 msgid "Show progress"
@@ -244,39 +231,39 @@ msgstr "Zobrazit průběh"
 
 #: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
 msgid "Exclude file names matching regular expression:"
-msgstr ""
+msgstr "Vyloučit názvy souborů odpovídající regulárnímu výrazu:"
 
 #: data/tools/GUI.pyw:946
 msgid "Exclude file names not matching regular expression:"
-msgstr ""
+msgstr "Vyloučit názvy souborů, které neodpovídají regulárnímu výrazu:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
 #: data/tools/GUI.pyw:966
 msgid "Report only on macros referenced in exactly n files:"
-msgstr ""
+msgstr "Hlásit pouze makra, na která se odkazuje přesně n souborů:"
 
 #: data/tools/GUI.pyw:986
 msgid "Report macro definitions and usages in file:"
-msgstr ""
+msgstr "Hlásit definice a použití maker v souboru:"
 
 #: data/tools/GUI.pyw:1004
 msgid "Allow unused macros with names matching regular expression:"
-msgstr ""
+msgstr "Povolit nepoužívaná makra s názvy odpovídajícími regulárnímu výrazu:"
 
 #: data/tools/GUI.pyw:1066
 msgid "wmlindent mode"
-msgstr "režim wmlindent"
+msgstr "Režim wmlindent"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1114
 msgid "Verbose"
-msgstr ""
+msgstr "Upovídaný"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1124
 msgid "Report unchanged files"
-msgstr ""
+msgstr "Hlásit nezměněné soubory"
 
 #: data/tools/GUI.pyw:1133
 msgid "wmlindent options"
@@ -284,21 +271,15 @@ msgstr "Možnosti wmlindent"
 
 #. TRANSLATORS: Option to run 'quietly'.
 #: data/tools/GUI.pyw:1160
-#, fuzzy
-#| msgid "wmlindent mode"
 msgid "Quiet mode"
-msgstr "režim wmlindent"
+msgstr "Tichý režim"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
 #: data/tools/GUI.pyw:1168
-#, fuzzy
-#| msgid "Do not generate output"
 msgid "Do not generate output messages"
-msgstr "Nevytvářet výstup"
+msgstr "Nevytvářet výstupní zprávy"
 
 #: data/tools/GUI.pyw:1188
-#, fuzzy
-#| msgid "Output dir:"
 msgid "Output directory:"
 msgstr "Výstupní adresář:"
 
@@ -389,6 +370,9 @@ msgid ""
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
+"Není vybrán žádný adresář.\n"
+"\n"
+"Prosím vyber adresář nebo vypni možnost „Přeskočit základní adresář“."
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
 msgid ""
@@ -397,6 +381,9 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"Ve výběru rozšíření vybrán základní adresář nebo jeden z jeho podadresářů.\n"
+"\n"
+"Nástroj bude spuštěn pouze v základním adresáři Wesnothu."
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
 #: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
@@ -410,17 +397,18 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"Není vybrán žádný adresář.\n"
+"\n"
+"Nástroj bude spuštěn pouze v základním adresáři Wesnothu."
 
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
 #: data/tools/GUI.pyw:1585
-#, fuzzy
-#| msgid "The selected directory does not exists"
 msgid "The selected directory does not exist."
-msgstr "Vybraný adresář neexistuje"
+msgstr "Vybraný adresář neexistuje."
 
 #: data/tools/GUI.pyw:1496
 msgid "Invalid value. Value must be an integer in the range 0-999."
-msgstr ""
+msgstr "Neplatná hodnota. Hodnota musí být celé číslo v rozsahu 0-999."
 
 #: data/tools/GUI.pyw:1554
 msgid ""
@@ -428,6 +416,9 @@ msgid ""
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
+"Není vybrán žádný adresář.\n"
+"\n"
+"Nástroj bude spuštěn v základním adresáři Wesnothu."
 
 #: data/tools/GUI.pyw:1580
 msgid ""
@@ -435,13 +426,14 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"Není vybrán žádný adresář.\n"
+"\n"
+"Nástroj nebude spuštěn."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1592
-#, fuzzy
-#| msgid "Overwrite confirmation"
 msgid "Overwrite Confirmation"
-msgstr "Potvrdit přepsání"
+msgstr "Potvrzení přepsání"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1594
@@ -450,6 +442,8 @@ msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
+"Soubor {0} už existuje.\n"
+"Chceš ho přepsat?"
 
 #: data/tools/GUI.pyw:1599
 msgid ""
@@ -457,6 +451,9 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"Není vybrán žádný výstupní soubor.\n"
+"\n"
+"Nástroj se nespustí."
 
 #: data/tools/GUI.pyw:1628
 #, python-brace-format
@@ -465,6 +462,9 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
+"Při provádění {0} došlo k chybě.\n"
+"\n"
+"Kód chyby: {1}"
 
 #: data/tools/GUI.pyw:1639
 msgid "Text file"
@@ -480,10 +480,16 @@ msgid ""
 "\n"
 "{2}"
 msgstr ""
+"Chyba při zápisu do:\n"
+"{0}\n"
+"\n"
+"Kód chyby: {1}\n"
+"\n"
+"{2}"
 
 #: data/tools/GUI.pyw:1664
 msgid "About Maintenance Tools GUI"
-msgstr ""
+msgstr "O grafickém uživatelském rozhraní nástrojů údržby"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1666
@@ -499,11 +505,17 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
+"© Elvish_Hunter, 2014-2016\n"
+"\n"
+"Verze: {0}\n"
+"\n"
+"Součást projektu The Battle for Wesnoth, vydáno pod licencí GNU GPL v2.\n"
+"\n"
+"Ikony jsou převzaty z projektu Tango Desktop (http://tango.freedesktop.org) "
+"a jsou vydány pro volné užití (public domain)."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1680
-#, fuzzy
-#| msgid "Exit confirmation"
 msgid "Exit Confirmation"
 msgstr "Potvrzení ukončení"
 
@@ -512,24 +524,5 @@ msgid "Do you really want to quit?"
 msgstr "Opravdu chceš skončit?"
 
 #: data/tools/GUI.pyw:1973
-#, fuzzy
-#| msgid ""
-#| "This application must be placed into the wesnoth/data/tools directory"
 msgid "This application must be placed into the wesnoth/data/tools directory."
 msgstr "Tato aplikace musí být umístěna do adresáře wesnoth/data/tools."
-
-#~ msgid "LANGUAGE"
-#~ msgstr "JAZYK"
-
-#~ msgid ""
-#~ "Launch GUI.pyw in the given language. Language code must follow ISO 15897 "
-#~ "(e.g. en_GB)."
-#~ msgstr ""
-#~ "Spustit GUI.pyw v daném jazyce. Kód jazyka musí odpovídat normě ISO 15897 "
-#~ "(např. cs_CZ)."
-
-#~ msgid "Perform file conversion"
-#~ msgstr "Provést převod souborů"
-
-#~ msgid "Do not perform changes"
-#~ msgstr "Neprovádět změny"

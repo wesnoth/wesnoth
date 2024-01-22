@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -75,6 +75,10 @@ void mp_staging::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
+
+	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
+		&mp_staging::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 
 	//
 	// Set title and status widget states
@@ -567,6 +571,28 @@ void mp_staging::network_handler()
 	}
 
 	state_changed_ = false;
+}
+
+void mp_staging::signal_handler_sdl_key_down(const event::ui_event /*event*/,
+										 bool& handled,
+										 const SDL_Keycode key,
+										 SDL_Keymod modifier)
+{
+    handled = true;
+
+    #ifdef __APPLE__
+        // Idiomatic modifier key in macOS computers.
+        const SDL_Keycode modifier_key = KMOD_GUI;
+    #else
+        // Idiomatic modifier key in Microsoft desktop environments. Common in
+        // GNU/Linux as well, to some extent.
+        const SDL_Keycode modifier_key = KMOD_CTRL;
+    #endif
+
+    if ((key == SDLK_g) && (modifier & modifier_key)) {
+        get_window()->set_retval(retval::OK);
+        return;
+    }
 }
 
 void mp_staging::post_show(window& window)

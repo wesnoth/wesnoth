@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2023
+	Copyright (C) 2004 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

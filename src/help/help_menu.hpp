@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,15 +51,16 @@ public:
 private:
 	/** Information about an item that is visible in the menu. */
 	struct visible_item {
-		visible_item(const section *_sec, const std::string &visible_string, int level);
-		visible_item(const topic *_t, const std::string &visible_string, int level);
+		visible_item(const section *_sec, int level);
+		visible_item(const topic *_t, int level);
 		// Invariant, one if these should be nullptr. The constructors
 		// enforce it.
 		const topic *t;
 		const section *sec;
-		std::string visible_string;
+		gui::indented_menu_item get_menu_item(const help_menu& parent) const;
+		/** Indentation level, always one more than the parent section. */
 		int level;
-		bool operator==(const visible_item &vis_item) const;
+		bool operator==(const visible_item &sec) const;
 		bool operator==(const section &sec) const;
 		bool operator==(const topic &t) const;
 	};
@@ -68,7 +69,7 @@ private:
 	void update_visible_items(const section &top_level, unsigned starting_level=0);
 
 	/** Return true if the section is expanded. */
-	bool expanded(const section &sec);
+	bool expanded(const section &sec) const;
 
 	/** Mark a section as expanded. Do not update the visible items or anything. */
 	void expand(const section &sec);
@@ -84,10 +85,10 @@ private:
 	 * menu-string at the specified level.
 	 */
 	std::string indent_list(const std::string &icon, const unsigned level);
-	/** Return the string to use as the menu-string for sections at the specified level. */
-	std::string get_string_to_show(const section &sec, const unsigned level);
-	/** Return the string to use as the menu-string for topics at the specified level. */
-	std::string get_string_to_show(const topic &topic, const unsigned level);
+	/** Return the data to use with the superclass's set_items() for sections at the specified level. */
+	gui::indented_menu_item get_item_to_show(const section &sec, const unsigned level);
+	/** Return the data to use with the superclass's set_items() for topics at the specified level. */
+	gui::indented_menu_item get_item_to_show(const topic &topic, const unsigned level);
 
 	/** Draw the currently visible items. */
 	void display_visible_items();

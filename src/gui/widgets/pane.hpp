@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2023
+	Copyright (C) 2012 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,8 +47,6 @@ class pane : public widget
 public:
 	struct item
 	{
-		item(item&&) = default;
-
 		unsigned id;
 		std::map<std::string, std::string> tags;
 

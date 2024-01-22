@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
 "PO-Revision-Date: 2018-05-16 07:08+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -2465,7 +2465,7 @@ msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (prema «$hotkey» para máis información)"
 
 #. [button]: id=search
-#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:446
+#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
 msgid "Search"
 msgstr "Busca"
 
@@ -2590,7 +2590,7 @@ msgstr "Mensaxes na cola"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:459 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:601 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -4548,7 +4548,7 @@ msgstr "Configuración"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr ""
 
@@ -5297,7 +5297,7 @@ msgstr "Sala de espera da partida"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
 msgid "Waiting for players to join..."
 msgstr "Agardando a que se unan xogadores…"
 
@@ -5323,7 +5323,7 @@ msgid "Login:"
 msgstr "Usuario:"
 
 #. [button]: id=replay_download
-#: data/gui/window/mp_match_history.cfg:144
+#: data/gui/window/mp_match_history.cfg:159
 #, fuzzy
 #| msgid "Downloads"
 msgid "Download"
@@ -5332,13 +5332,32 @@ msgstr "Descargas"
 # Úsase para referirse a «modificacións» seleccionadas na pantalla de selección dunha campaña para unha partida dun só xogador.
 #. [label]: id=players
 #. [label]: id=modifications
-#: data/gui/window/mp_match_history.cfg:161
-#: data/gui/window/mp_match_history.cfg:178
+#: data/gui/window/mp_match_history.cfg:185
+#: data/gui/window/mp_match_history.cfg:223
 msgid "None"
 msgstr "Ningunha"
 
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:375
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:388
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "Xogadores:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "Modificacións"
+
 #. [label]
-#: data/gui/window/mp_match_history.cfg:328
+#: data/gui/window/mp_match_history.cfg:450
 #, fuzzy
 #| msgid "Players:"
 msgid "Player:"
@@ -5347,44 +5366,25 @@ msgstr "Xogadores:"
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
 #. [text_box]: id=search_content
-#: data/gui/window/mp_match_history.cfg:340
-#: data/gui/window/mp_match_history.cfg:382
-#: data/gui/window/mp_match_history.cfg:406
+#: data/gui/window/mp_match_history.cfg:462
+#: data/gui/window/mp_match_history.cfg:506
+#: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:351
+#: data/gui/window/mp_match_history.cfg:474
 #, fuzzy
 #| msgid "Contents"
 msgid "Content Type:"
 msgstr "Contido"
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:370
+#: data/gui/window/mp_match_history.cfg:494
 #, fuzzy
 #| msgid "Team name:"
 msgid "Game name:"
 msgstr "Nome do equipo:"
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:561
-msgid "Info"
-msgstr ""
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:574
-#, fuzzy
-#| msgid "Players:"
-msgid "Players"
-msgstr "Xogadores:"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:587
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
-msgid "Modifications"
-msgstr "Modificacións"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7678,7 +7678,7 @@ msgid "lua console"
 msgstr "Consola de Lua"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
 msgid "Random"
 msgstr "Aleatorio"
 
@@ -7900,7 +7900,7 @@ msgid "empty"
 msgstr "baleiro"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
 #, fuzzy
 #| msgid "Quit game"
 msgid "this game"
@@ -7916,11 +7916,11 @@ msgstr "Sala de espera"
 msgid "Game"
 msgstr "Partidas"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
 msgstr "Agardando a que os xogadores seleccionen facción…"
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:48
 msgid "The End"
 msgstr "Fin"
 
