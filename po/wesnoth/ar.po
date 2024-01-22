@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2023-04-28 14:40+0200\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"PO-Revision-Date: 2024-01-10 23:15+0100\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -112,7 +112,7 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"عدد الدقائق قبل محو الرسائل. ضع رقم صفر لإيقاف محو الرسائل القديمة آليا"
+"عدد الدقائق قبل محو الرسائل. ضع رقم صفر لإيقاف محو الرسائل القديمة آليا."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
@@ -136,7 +136,7 @@ msgid ""
 "that have been encountered will be shown."
 msgstr ""
 "إظهار كل الوحدات في صفحة المساعدة (يتطلب ذلك إعادة فتح اللعبة). إذا لم تقم "
-"بإختيار فسيتم عرض الوحدات التي اعترضتك في صفحة المساعدة"
+"بإختيار فسيتم عرض الوحدات التي اعترضتك في صفحة المساعدة."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:109
@@ -167,7 +167,7 @@ msgstr "الألوان المعتادة للكرات الخاصة للوحدات
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:134
 msgid "Logging"
-msgstr ""
+msgstr "التسجيل"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:140
@@ -193,11 +193,14 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
+"إظهار التحذيرات بشأن واجهة برمجة التطبيقات المهملة في منطقة الدردشة داخل "
+"اللعبة. ستظل هذه الرسائل معروضة في السجل، حتى لو تم تعطيلها. بالإضافة إلى "
+"ذلك، يتحكم مجال سجل الإهمال في عدد الرسائل المطبوعة."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "مقياس حجم الخط (تجريبي)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -205,11 +208,13 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"يقوم بتحجيم كل النص لأعلى أو لأسفل من الحجم القياسي للدقة الخاصة بك. تحذير: "
+"قد يؤدي تغيير حجم النص إلى حدوث مشكلات في الشريط الجانبي داخل اللعبة."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "مهلة قطع اتصال الخادم"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -240,7 +245,7 @@ msgstr "رمح العاصفة الثلاثي"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:236
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
-msgstr "الذهب المحتفظ به"
+msgstr "الذهب المحتفظ به:"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
@@ -248,7 +253,7 @@ msgstr "الذهب المحتفظ به"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:388
 msgid "Notes:"
-msgstr "ملاحظات"
+msgstr "ملاحظات:"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:691
@@ -303,57 +308,57 @@ msgid "Programming"
 msgstr "برمجة"
 
 #. [about]
-#: data/core/about.cfg:271
+#: data/core/about.cfg:282
 msgid "General Purpose Administration and Coordination"
 msgstr "الأهداف العامة، الإدارة والتنسيق"
 
 #. [about]
-#: data/core/about.cfg:308
+#: data/core/about.cfg:319
 msgid "Internationalization Managers"
 msgstr "فريق النشر العالمي"
 
 #. [about]
-#: data/core/about.cfg:333
+#: data/core/about.cfg:344
 msgid "Trailers"
 msgstr "العرض الترويجي"
 
 #. [about]
-#: data/core/about.cfg:349
+#: data/core/about.cfg:360
 msgid "Artwork and Graphics"
 msgstr "الجانب الفني والرسومات"
 
 #. [about]
-#: data/core/about.cfg:807
+#: data/core/about.cfg:818
 msgid "Music"
 msgstr "الموسيقى"
 
 #. [about]
-#: data/core/about.cfg:844
+#: data/core/about.cfg:855
 msgid "Sound Effects"
 msgstr "التأثيرات الصوتية"
 
 #. [about]
-#: data/core/about.cfg:868
+#: data/core/about.cfg:879
 msgid "Campaign Design"
 msgstr "تصميم الحملة"
 
 #. [about]
-#: data/core/about.cfg:959
+#: data/core/about.cfg:970
 msgid "Multiplayer Maps and Balancing"
 msgstr "اللعب الجماعي: الخرائط والتوازن"
 
 #. [about]
-#: data/core/about.cfg:1008
+#: data/core/about.cfg:1019
 msgid "Packagers"
 msgstr "تجميع المكونات الاعلامية"
 
 #. [about]
-#: data/core/about.cfg:1115
+#: data/core/about.cfg:1126
 msgid "Miscellaneous Contributors"
 msgstr "مشاركون في مجالات غير محددة"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1872
 msgid "Bots"
 msgstr "مداخل"
 
@@ -453,190 +458,188 @@ msgid "Finnish Translation"
 msgstr "الترجمة الفنلندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:579
+#: data/core/about_i18n.cfg:582
 msgid "French Translation"
 msgstr "الترجمة الفرنسية"
 
 #. [about]
-#: data/core/about_i18n.cfg:747
+#: data/core/about_i18n.cfg:750
 msgid "Friulian Translation"
 msgstr "الترجمة الى الفريوليان"
 
 #. [about]
-#: data/core/about_i18n.cfg:751
+#: data/core/about_i18n.cfg:754
 msgid "Galician Translation"
 msgstr "الترجمة الغالية"
 
 #. [about]
-#: data/core/about_i18n.cfg:787
+#: data/core/about_i18n.cfg:790
 msgid "German Translation"
 msgstr "الترجمة الجرمانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:900
+#: data/core/about_i18n.cfg:903
 msgid "Greek Translation"
 msgstr "الترجمة اليونانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:943
+#: data/core/about_i18n.cfg:946
 msgid "Hebrew Translation"
 msgstr "الترجمة العبرية"
 
 #. [about]
-#: data/core/about_i18n.cfg:956
+#: data/core/about_i18n.cfg:959
 msgid "Hungarian Translation"
 msgstr "الترجمة الهنغارية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1017
+#: data/core/about_i18n.cfg:1020
 msgid "Icelandic Translation"
 msgstr "الترجمة الايسلندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1027
+#: data/core/about_i18n.cfg:1030
 msgid "Indonesian Translation"
 msgstr "الترجمة الاندونيسية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1055
+#: data/core/about_i18n.cfg:1058
 msgid "Irish Translation"
 msgstr "الترجمة الايرلندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1062
+#: data/core/about_i18n.cfg:1065
 msgid "Italian Translation"
 msgstr "الترجمة الايطالية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1109
+#: data/core/about_i18n.cfg:1112
 msgid "Japanese Translation"
 msgstr "الترجمة اليابانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1202
+#: data/core/about_i18n.cfg:1205
 msgid "Korean Translation"
 msgstr "الترجمة الكورية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1210
+#: data/core/about_i18n.cfg:1213
 msgid "Latin Translation"
 msgstr "الترجمة اللاتينية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1236
+#: data/core/about_i18n.cfg:1239
 msgid "Latvian Translation"
 msgstr "الترجمة اللاتفية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1251
+#: data/core/about_i18n.cfg:1254
 msgid "Lithuanian Translation"
 msgstr "الترجمة الليتوانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1276
+#: data/core/about_i18n.cfg:1279
 msgid "Macedonian Translation"
 msgstr "الترجمة المقدونية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1283
+#: data/core/about_i18n.cfg:1286
 msgid "Marathi Translation"
 msgstr "الترجمة إلى الماراثي"
 
 #. [about]
-#: data/core/about_i18n.cfg:1292
+#: data/core/about_i18n.cfg:1295
 msgid "Norwegian Translation"
 msgstr "الترجمة النرويجية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1317
+#: data/core/about_i18n.cfg:1320
 msgid "Old English Translation"
 msgstr "الترجمة البريطانية القديمة"
 
 #. [about]
-#: data/core/about_i18n.cfg:1335
+#: data/core/about_i18n.cfg:1338
 msgid "Polish Translation"
 msgstr "الترجمة البولونية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1404
+#: data/core/about_i18n.cfg:1413
 msgid "Portuguese Translation"
 msgstr "الترجمة البرتغالية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1418
+#: data/core/about_i18n.cfg:1427
 msgid "Portuguese (Brazil) Translation"
 msgstr "الترجمة البرتغالية البرازيلية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1476
+#: data/core/about_i18n.cfg:1485
 msgid "Romanian Translation"
 msgstr "الترجمة الرومانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1484
+#: data/core/about_i18n.cfg:1493
 msgid "Russian Translation"
 msgstr "الترجمة الروسية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1591
+#: data/core/about_i18n.cfg:1600
 msgid "Scottish Gaelic Translation"
 msgstr "الترجمة الاسكتلاندية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1600
+#: data/core/about_i18n.cfg:1609
 msgid "Serbian Translation"
 msgstr "الترجمة الصربية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1619
+#: data/core/about_i18n.cfg:1628
 msgid "Slovak Translation"
 msgstr "الترجمة السلوفاكية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1651
+#: data/core/about_i18n.cfg:1660
 msgid "Slovenian Translation"
 msgstr "الترجمة السلوفينية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1667
+#: data/core/about_i18n.cfg:1676
 msgid "Spanish Translation"
 msgstr "الترجمة الاسبانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1757
+#: data/core/about_i18n.cfg:1766
 msgid "Swedish Translation"
 msgstr "الترجمة السويدية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1802
+#: data/core/about_i18n.cfg:1811
 msgid "Turkish Translation"
 msgstr "الترجمة التركية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1827
+#: data/core/about_i18n.cfg:1836
 msgid "Ukrainian Translation"
 msgstr "الترجمة الاوكرانية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1843
+#: data/core/about_i18n.cfg:1852
 msgid "Valencian (southern Catalan) Translation"
 msgstr "الترجمة الفالنسية الكاتالونية الجنوبية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1856
+#: data/core/about_i18n.cfg:1865
 msgid "Vietnamese Translation"
 msgstr "الترجمة الفيتنامية"
 
 #. [about]
-#: data/core/about_i18n.cfg:1875
-#, fuzzy
-#| msgid "Polish Translation"
+#: data/core/about_i18n.cfg:1884
 msgid "Welsh Translation"
-msgstr "الترجمة البولونية"
+msgstr "الترجمة الويلزية"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1884
+#: data/core/about_i18n.cfg:1893
 msgid "RACV’s Translation"
 msgstr "الترجمة إلى راكف"
 
@@ -769,22 +772,22 @@ msgstr "صندوق"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "فرع"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "الفرع العاري"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
 msgid "Brazier"
-msgstr ""
+msgstr "شمعدان"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
 msgid "Lit Brazier"
-msgstr ""
+msgstr "شمعدان"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -911,7 +914,7 @@ msgstr "كومة صغيرة من المال"
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:448
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "حزمة الحبوب"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
@@ -969,7 +972,7 @@ msgstr "علم أورك"
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:532 data/core/editor/items.cfg:539
 msgid "Ornate"
-msgstr ""
+msgstr "مزخرف"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:546
@@ -1062,7 +1065,7 @@ msgstr "رمح"
 #. [item]: id=spear-fancy2
 #: data/core/editor/items.cfg:658 data/core/editor/items.cfg:665
 msgid "Fancy Spear"
-msgstr ""
+msgstr "الرمح الفاخر"
 
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
@@ -1089,12 +1092,12 @@ msgstr "صولجان سحري"
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
 msgid "Magic Wand"
-msgstr ""
+msgstr "العصا السحرية"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
 msgid "Plain Staff"
-msgstr ""
+msgstr "صولجان مستقيم"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1113,7 +1116,7 @@ msgstr "رمح العاصفة الثلاثي"
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:749 data/core/editor/items.cfg:756
 msgid "Bale of Straw"
-msgstr ""
+msgstr "حزمة من القش"
 
 #. [item]: id=sword
 #. [item]: id=sword2
@@ -1169,7 +1172,7 @@ msgstr "عصا نار غير مشتعلة"
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
 msgid "Scenery"
-msgstr ""
+msgstr "المشهد"
 
 #. [item]: id=castle-ruins
 #. [item]: id=castle-ruins2
@@ -1177,67 +1180,67 @@ msgstr ""
 #: data/core/editor/items.cfg:847 data/core/editor/items.cfg:853
 #: data/core/editor/items.cfg:859
 msgid "Castle Ruins"
-msgstr ""
+msgstr "قلعة أثرية"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:865
 msgid "Magic Circle"
-msgstr ""
+msgstr "دائرة سحرية"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:871
 msgid "Glowing Magic Circle"
-msgstr ""
+msgstr "دائرة سحرية لامعة"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:877
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "بوابة أقزام مغلقة"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:885
 msgid "Campfire"
-msgstr ""
+msgstr "نار مخيّم"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:892
 msgid "Flames"
-msgstr ""
+msgstr "نيران"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:898
 msgid "Rusty Gate South East"
-msgstr ""
+msgstr "بوابة خشبية جنوب شرق"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:905
 msgid "Rusty Gate South West"
-msgstr ""
+msgstr "بوابة خشبية جنوب غرب"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:912
 msgid "Ice Pack"
-msgstr ""
+msgstr "كومة ثلج"
 
 #. [item]: id=leanto
 #: data/core/editor/items.cfg:918
 msgid "Lean-to"
-msgstr ""
+msgstr "العجاف"
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:924
 msgid "Lighthouse"
-msgstr ""
+msgstr "منارة"
 
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:932
 msgid "Mausoleum"
-msgstr ""
+msgstr "ضريح"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:939
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "منجم مهجور"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1246,39 +1249,39 @@ msgstr ""
 #: data/core/editor/items.cfg:946 data/core/editor/items.cfg:953
 #: data/core/editor/items.cfg:960 data/core/editor/items.cfg:967
 msgid "Monolith"
-msgstr ""
+msgstr "ضريح"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:974
 msgid "Empty Nest"
-msgstr ""
+msgstr "عش فارغ"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:980
 msgid "Full Nest"
-msgstr ""
+msgstr "عش مليئ"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:986
 msgid "Leaning Oak"
-msgstr ""
+msgstr "سنديانة"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:993 data/core/editor/items.cfg:1000
 msgid "Pine Tree"
-msgstr ""
+msgstr "صنوبر حلبي"
 
 #. [item]: id=rock-cairn
 #. [item]: id=rock-cairn2
 #: data/core/editor/items.cfg:1035 data/core/editor/items.cfg:1043
 msgid "Rock Cairn"
-msgstr ""
+msgstr "صخر منقوش"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:1051
 msgid "Rubble"
-msgstr ""
+msgstr "حطام"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1290,7 +1293,7 @@ msgstr ""
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081 data/core/editor/items.cfg:1087
 msgid "Rune"
-msgstr ""
+msgstr "رمز روني"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1302,7 +1305,7 @@ msgstr ""
 #: data/core/editor/items.cfg:1105 data/core/editor/items.cfg:1111
 #: data/core/editor/items.cfg:1117 data/core/editor/items.cfg:1123
 msgid "Glowing Rune"
-msgstr ""
+msgstr "رمز روني لامع"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
@@ -1311,28 +1314,28 @@ msgstr ""
 #: data/core/editor/items.cfg:1129 data/core/editor/items.cfg:1318
 #: data/core/editor/items.cfg:1324 data/core/editor/items.cfg:1330
 msgid "Shipwreck"
-msgstr ""
+msgstr "حطام سفينة"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:1134
 msgid "Signpost"
-msgstr ""
+msgstr "لوحة اشارة"
 
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:1141
 msgid "Slab"
-msgstr ""
+msgstr "بلاطة"
 
 #. [item]: id=snowbits
 #. [item]: id=snowbits2
 #: data/core/editor/items.cfg:1147 data/core/editor/items.cfg:1153
 msgid "Piles of Snow"
-msgstr ""
+msgstr "كومة ثلج"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:1160
 msgid "Summoning Center"
-msgstr ""
+msgstr "دائرة استدعاء"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1344,12 +1347,12 @@ msgstr ""
 #: data/core/editor/items.cfg:1178 data/core/editor/items.cfg:1184
 #: data/core/editor/items.cfg:1190 data/core/editor/items.cfg:1196
 msgid "Summoning Circle"
-msgstr ""
+msgstr "دائرة استدعاء"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:1202
 msgid "Temple"
-msgstr ""
+msgstr "معبد"
 
 #. [item]: id=temple-cracked1
 #. [item]: id=temple-cracked2
@@ -1357,37 +1360,37 @@ msgstr ""
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
 msgid "Ruined Temple"
-msgstr ""
+msgstr "معبد مهدم"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "خيمة حمراء"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:1237
 msgid "Ruined Tent"
-msgstr ""
+msgstr "خيمة بالية"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:1243
 msgid "Weapons Shop Tent"
-msgstr ""
+msgstr "خيمة بيع أسلحة"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:1251
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "باب سري مغلق"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:1257
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "باب سري مفتوح"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:1263
 msgid "Trash Pile"
-msgstr ""
+msgstr "كومة بقايا"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1396,32 +1399,32 @@ msgstr ""
 #: data/core/editor/items.cfg:1270 data/core/editor/items.cfg:1277
 #: data/core/editor/items.cfg:1284 data/core/editor/items.cfg:1291
 msgid "Burned Human Village"
-msgstr ""
+msgstr "مدينة بشرية محترقة"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:1297
 msgid "Well"
-msgstr ""
+msgstr "بئر"
 
 #. [item]: id=whirlpool
 #: data/core/editor/items.cfg:1303
 msgid "Whirlpool"
-msgstr ""
+msgstr "دوامة"
 
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:1311
 msgid "Windmill"
-msgstr ""
+msgstr "طاحونة هواء"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:23
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr ""
+msgstr "اطلب من $ai_controller_unit.name الانتقال هنا"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:77
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
-msgstr ""
+msgstr "اطلب $ally_leader.name (زعيم الجانب $ally_leader.side) للانتقال هنا"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:111
@@ -1429,6 +1432,8 @@ msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
 msgstr ""
+"في هذا السيناريو، يمكنك إصدار تعليمات إلى جانب الحلفاء عن طريق النقر بزر "
+"الماوس الأيمن على الوحدة التي تنتمي إليه."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -1437,14 +1442,14 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:134
 #: data/core/macros/ai_controller.cfg:141
 msgid "Instruct ally"
-msgstr ""
+msgstr "وجه تعليمات للذكاء الصناعي الحليف"
 
 #. [overview_message_has_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:135
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (الجانب $ally_side|) يقوم بتنفيذ التعليمات التالية:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:142
@@ -1452,31 +1457,33 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (الجانب $ally_side|) لم يتم إعطاء أي تعليمات ويعمل بشكل "
+"طبيعي."
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:149
 msgid "Be more aggressive"
-msgstr ""
+msgstr "كن اكثر عدونية"
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:150
 msgid "aggressive."
-msgstr ""
+msgstr "حدواني."
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:167
 msgid "Be more defensive"
-msgstr ""
+msgstr "كن اكثر دفاعا"
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:168
 msgid "defensive."
-msgstr ""
+msgstr "دفاعي."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:179
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "ركز على هزيمة..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:180
@@ -1484,6 +1491,8 @@ msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
+"التركيز على هزيمة $ai_controller.side_$ally_side|_current_settings."
+"focus_on_enemy.side_description|."
 
 #. [then]
 #. [else]
@@ -1492,19 +1501,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:388
 #: data/core/macros/ai_controller.cfg:394
 msgid "Side $temp_i"
-msgstr ""
+msgstr "الجانب $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:255
 #: data/core/macros/ai_controller.cfg:396
 msgid "side $temp_i"
-msgstr ""
+msgstr "الجانب $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:270
 #: data/core/macros/ai_controller.cfg:411
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr ""
+msgstr "الجانب $temp_i ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:296
@@ -1512,12 +1521,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:838
 #: data/core/macros/ai_controller.cfg:929
 msgid "Back"
-msgstr ""
+msgstr "عودة"
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:315
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "ركز على حماية..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:316
@@ -1525,36 +1534,38 @@ msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
+"التركيز على حماية $ai_controller.side_$ally_side|_current_settings.protect."
+"side_description|."
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:473
 msgid "Defend a location..."
-msgstr ""
+msgstr "دافع عن المنطقة..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:489
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "انقر بالزر الأيمن لتحديد المنطقة"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:496
 msgid "Defend this location"
-msgstr ""
+msgstr "دافع عن هذا المكان"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:513
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "التركيز على الدفاع عن المنطقة المحيطة بـ $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:555
 msgid "Location selection canceled"
-msgstr ""
+msgstr "تم إلغاء تحديد الموقع"
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:570
 msgid "Clear objective orders"
-msgstr ""
+msgstr "امسح كل الاوامر"
 
 #. [revoke_objective_orders]
 #. [revoke_behavior_orders]
@@ -1564,17 +1575,17 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:714
 #: data/core/macros/ai_controller.cfg:725
 msgid "none set."
-msgstr ""
+msgstr "لا إعدادات موضوعة."
 
 #. [revoke_behavior_orders]
 #: data/core/macros/ai_controller.cfg:583
 msgid "Clear behavior orders"
-msgstr ""
+msgstr "امسح أوامر التصرف"
 
 #. [revoke_all_orders]
 #: data/core/macros/ai_controller.cfg:597
 msgid "Clear all orders"
-msgstr ""
+msgstr "امسح كل الاوامر"
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:765
@@ -1584,169 +1595,183 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behavior_description"
 msgstr ""
+"الهدف: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"السلوك: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:781
 msgid "Set objective..."
-msgstr ""
+msgstr "حدد الأهداف..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:872
 msgid "Set behavior..."
-msgstr ""
+msgstr "حدد التصرف..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:977
 msgid "Exit"
-msgstr ""
+msgstr "مغادرة"
 
 #: data/core/macros/ai_controller.cfg:1114
 msgid "Set special orders..."
-msgstr ""
+msgstr "تعيين أوامر خاصة..."
 
 #: data/core/macros/ai_controller.cfg:1115
 msgid "Move leader to..."
-msgstr ""
+msgstr "نقل القائد إلى..."
 
 #: data/core/macros/ai_controller.cfg:1116
 msgid "Right-click to select a location to move leader to"
-msgstr ""
+msgstr "انقر بزر الماوس الأيمن لتحديد موقع لنقل القائد إليه"
 
 #: data/core/macros/ai_controller.cfg:1117
 msgid "Move leader here"
-msgstr ""
+msgstr "حرك القائد هنا"
 
 #: data/core/macros/ai_controller.cfg:1118
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "نقل القائد إلى $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1119
 msgid "Clear special orders"
-msgstr ""
+msgstr "مسح الطلبات الخاصة"
 
 #: data/core/macros/ai_controller.cfg:1120
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
+"خاص: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:35
 msgid "This unit has been renamed to: "
-msgstr ""
+msgstr "تمت إعادة تسمية هذه الوحدة إلى: "
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
-msgstr ""
+msgstr "مكافأة إنهاء مبكر."
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
-msgstr ""
+msgstr "لا توجد مكافأة إنهاء مبكر."
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "لن يتم نقل الذهب إلى السيناريو التالي."
 
 #: data/core/macros/deprecated-utils.cfg:64
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"تم نقل 100% من الذهب إلى السيناريو التالي."
 
 #: data/core/macros/deprecated-utils.cfg:69
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"تم نقل 40% من الذهب إلى السيناريو التالي."
 
 #: data/core/macros/deprecated-utils.cfg:74
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"تم نقل 20% من الذهب إلى السيناريو التالي."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
+msgstr "لقد عثرت على بئر التمنيات. ماذا تريد أن تتمناه؟"
 
 #. [option]
 #: data/core/macros/items.cfg:26
 msgid "A swift victory"
-msgstr ""
+msgstr "انتصار سريع"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:34
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
-msgstr ""
+msgstr "بهذه العملة الذهبية، أتمنى أن تنتهي هذه المعركة بانتصار سريع وآمن."
 
 #. [option]
 #: data/core/macros/items.cfg:40
 msgid "Lots of gold"
-msgstr ""
+msgstr "الكثير من الذهب"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:48
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
+msgstr "أتمنى أن تُعاد لي هذه العملة الذهبية بعشرة أضعاف."
 
 #. [option]
 #: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "السلام في جميع أنحاء ويسنوث."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
+msgstr "الشيء الوحيد الذي يستحق التمني هو السلام في جميع أنحاء الأرض."
 
 #. [option]
 #: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
-msgstr ""
+msgstr "لا تتمنى أمنية."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:209
 msgid "Potion of Healing"
-msgstr ""
+msgstr "جرعة الشفاء"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:212
 msgid "A feeling of well-being overwhelms the drinker."
-msgstr ""
+msgstr "شعور بالرفاهية يغمر الشارب."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:213
 msgid "You are not worthy of healing."
-msgstr ""
+msgstr "أنت لا تستحق الشفاء."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:252
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr ""
+msgstr "السم يتسرب عبر عروق هذه الوحدة في هذه اللحظة بالذات."
 
 #: data/core/macros/items.cfg:281
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
+"رش هذا الماء على الأسلحة المشاجرة يمنحها نوع الضرر <i>السحري</i> حتى نهاية "
+"السيناريو الحالي.هل يجب على $unit.name استخدامه؟"
 
 #: data/core/macros/items.cfg:282
 msgid "holy water^Take it"
-msgstr ""
+msgstr "خذها"
 
 #: data/core/macros/items.cfg:283
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "اتركه"
 
 #: data/core/macros/items.cfg:284
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr ""
+msgstr "$unit.name لا يحتاج إلى هذا الماء المقدس."
 
 #. [object]
 #: data/core/macros/items.cfg:289
@@ -1754,90 +1779,92 @@ msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
+"هذه المياه ستجعل أسلحة المشاجرة ذات نوع الضرر <i>السحري</i> حتى نهاية "
+"السيناريو الحالي."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:335
 msgid "Potion of Strength"
-msgstr ""
+msgstr "جرعة القوة"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:338
 msgid "Strength is given to the drinker."
-msgstr ""
+msgstr "القوة تعطى للشارب."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:380
 msgid "Potion of Decay"
-msgstr ""
+msgstr "جرعة الاضمحلال"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:383
 msgid "This poor unit drank something really bad."
-msgstr ""
+msgstr "هذه الوحدة المسكينة شربت شيئًا سيئًا حقًا."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:419
 msgid "Ring of Regeneration"
-msgstr ""
+msgstr "حلقة التجديد"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:422
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "هذا الخاتم سوف يشفي حامله قليلاً في كل دورة."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:460
 msgid "Ring of Slowness"
-msgstr ""
+msgstr "حلقة البطء"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:463
 msgid "The bearer of this ring is slowed."
-msgstr ""
+msgstr "تباطأ حامل هذا الخاتم."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:499
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "صولجان السرعة"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:502
 msgid "This staff will grant the bearer swift movement."
-msgstr ""
+msgstr "هذه العصا ستمنح حاملها حركة سريعة."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:503
 msgid "Only magical beings can wield such an object."
-msgstr ""
+msgstr "الكائنات السحرية فقط هي التي يمكنها استخدام مثل هذا الشيء."
 
 #: data/core/macros/items.cfg:547
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "هل يجب على $unit.name التقاط رمح ثلاثي الشعب؟"
 
 #: data/core/macros/items.cfg:548
 msgid "storm trident^Take it"
-msgstr ""
+msgstr "خذه"
 
 #: data/core/macros/items.cfg:549
 msgid "storm trident^Leave it"
-msgstr ""
+msgstr "اتركه"
 
 #: data/core/macros/items.cfg:550
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
-msgstr ""
+msgstr "$unit.name لا يمكنه استخدام رمح ثلاثي الشعب."
 
 #. [object]
 #: data/core/macros/items.cfg:555
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr ""
+msgstr "هذا الرمح الثلاثي يمنح المخلوقات القدرة على رمي البرق على أعدائهم."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:583
 msgid "sceptre of fire"
-msgstr ""
+msgstr "صولجان النار"
 
 #: data/core/macros/names.cfg:19
 msgid ""
@@ -1851,6 +1878,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
+"إيغار، إلتش، غاآش، غادي إين، جاكري أوم، جاليك، جالش، جارادين، جارشين، جارك، "
+"جارلان، جارلين أون، جاروتين، جارتلو، جاروشي، جاشينار، جاسول، جاوشي، جاوستون، "
+"جيجشي، جيلكا كون، جيلكنيك، جيلان، غيشاري، غوست، غرادا، غرايت إهن، غراشين، "
+"غرافلان، غراغ، غريلنيت، غرين أون، غريث، جريبل، غريدا، غريش، غرون إهن، كا، "
+"خان إيه، كاريغان، كاري كون، كارون، كاسك، كيغريد ,كيراث إهن، كيراث كور، كلاش، "
+"كون جاراشي، كراج، كرال أون، كران كور، كراش، كراسلار، كرينلي، كروغن، كون، ماه "
+"توا، مارجيان، مار إيلديان، ماركان، ماركينوس، مار أون، مارا ديليك ,ماريتو،"
+"ماريتوس،ميركوش،ميريتوس جارك،موروست،المر،أوماتاكي،ريشان،فاشيت،فيلنيك،فيرالون،"
+"فيرامو،فيراث،فيرديت،فيركون،فيرلين،فيرماد،فيرتيك،فلادنير"
 
 #: data/core/macros/names.cfg:20
 msgid ""
@@ -1858,6 +1894,9 @@ msgid ""
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
+"ألين كا، أليناش مال، أشيرت، أوجينيت كا، أوجلان، داميل، ديل، ديملا، دينسيل، "
+"إيشي، أولاثي، إيماج، أوماجرا، أورا كا، أوريدين، أوريدا، أوشيبي، فالين، "
+"فالنيرا، فالنيت، فيليسك، فيرا، فيلين كا ، فيشتار، فوشتين"
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:22
@@ -1882,6 +1921,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:38
+#, fuzzy
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -1927,6 +1967,53 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas، Aigaithil، Aigaithing، Aigaithol، Aigalas، Aigaling، Aigalis، "
+"Aigalol، Aigalsil، Aigatas، Aigatis، Aigatlos، Aigatsil، Aigatsol، Aigatus، "
+"Aigcatas، Aigcatil، Aigcating، Aigcatis، Aigcatsil، Aigcatsol، Aigcatus، "
+"Aigdring، Aigdris، Aigdrlos، إيغدرسيل،إيغدروسول،إيجدوراس،إيغدورلوس،إيغدورسول،"
+"إيجثينج،إيجثايس،إيجثاسيل،إيجثوس،أليثاس،أليثيس،أليثلوس،عليثول،عليثسول،أليثوس،"
+"ألالاس،ألاليل،ألالول،ألسول،ألالوس،ألاتاس،ألاتيل،ألاتينج،ألاتلوس،ألاتسيل، "
+"ألكاتيل، ألكاتيس، ألكاتلوس، ألكاتسيل، ألدراس، ألدريل، ألدرينغ، ألدريس، "
+"ألدرلوس، ألدرول، ألدروسول، ألدوراس، ألدورلوس، ألدورول، ألثاس، ألثيل، "
+"ألثالوس، ألثول، ألثاسيل، ألثاسول، ألثوس، أنايثاس، أنايثيل، أنايثينج، "
+"أنايثيس، أنايثسيل، أنايثوس، أناليل، أنالوس، أنالول، أنالسيل، أنالوس، أناتاس، "
+"أناتينغ، أناتيس، أناتول، أناتسول، أنكاتاس، أنكاتيل، أنكاتول، أنكاتوس، "
+"أندريل، أندريس، أندرلوس، أندروس، أندوريل، أندورول، أندورسول، أندوروس، أنثاس، "
+"أنثاينج، أنثايس، أنثاول، أنثاسيل، أنثاسول، أنثاوس، أوجايثاس، أوجايثينج، "
+"أوجايثسيل، أوجايثوس، أوجالاس، أوجالينج، أوجالول، أوجاتينج، أوجاتلوس، "
+"أوجاتول، أوجاتسيل، أوجاتسول، أوجكاتاس، أوجكاتيل، أوجكاتيس، أوجكاتول، "
+"أوجكاتسيل، أوجكاتوس، أوغدراس، أوغدريس، أوغديرسل، أوغدروس، أوغدوراس، "
+"أوغدوريل، أوغدورينغ، أوغدورول، أوغدورسول، أوغدوروس، أوغتيل، أوغثايس، "
+"أوغثالوس، أوغثاول، دوليثيل، دوليثينغ، دوليثلوس، دوليثسيل، دوليثسول، دولالاس، "
+"دولالينغ، دولاليس، دولالسيل، دولاتيل، دولاتينغ، دولاتول , دولاتسول، دولاتوس، "
+"دولكاتيل، دولكاتينج، دولكاتلوس، دولكاتول، دولكاتسيل، دولكاتسول، دولدريل، "
+"دولدريس، دولدرلوس، دولدرول، دولدرسيل، دولدروس، دولدوراس، دولدورينغ، "
+"دولدورسيل، دولدوروس، دولثالوس، دولثاسيل، دولثاسول، دولتهاوس، جلاميثيل، "
+"جلاميثيس، جلاميثول، جلاميثسول،جلاماليل،جلاملينج،جلاماليس،جلامالوس،جلامالسيل،"
+"جلامالوس،جلاماتيل،جلاماتوس،جلامكاتاس،جلامكاتيل،جلامكاتينج،جلامكاتسيل،"
+"جلامكاتوس،جلامدراس،جلامريل،جلامدرلوس،جلامدرسول،جلامدوراس،جلامدوريل،"
+"جلامدورينج،جلامدوريس،جلامدورسول ،جلامثا جلامثول, جلامثاسيل، جلامثاسول، "
+"جلامثاوس، جلومين، جوميثاس، جوماثيل، جومايثول، جوميثسول، جوماليل، جوماليس، "
+"جومالوس، جوماتاس، جوماتيل، جوماتينج، جوماتيس، جوماتلوس، جوماتول، جومكاتيل، "
+"جومكاتيس، جومكاتلوس، جومدراس، جومدريل، جومدرينج، جومدريس، جودرول، Gomdrsil ، "
+"Gomduris ، Gomdurlos ، Gomdursil ، Gomdursol ، Gomdurus ، Gomthaas ، "
+"Gomthalos ، Gomthasol ، Naraithil ، Naraithing ، Naraithol ، Naraiths ، "
+"Naraithsol ، naraithus ، naralas ، naralus ، naralus ، naralus ، naralus ، "
+"narlus ، narlus ، narlus ، narlus ، narlus ، narlus ، narlus narlus ، narlus "
+"narlus ، narlus narlus ، narlus nar. ating ، narcatis ، narcatol ، "
+"ناركاتسيل، ناركاتسول، ناردراس، ناردريل، ناردرينغ، ناردريس، ناردرول، "
+"ناردرسيل، ناردروسول، ناردروس، ناردوراس، ناردوريل، ناردورول، نارثالوس، "
+"نارثول، بيليثاس، بيليثيل، بيليثينغ، بيليثيس، بيليثلوس، بيليثول، بيليثسيل، "
+"بيليثسول، بيلاليل، بيلينغ، بيلاليس، بيلالسيل، بيلالسول، بيلالوس، بيلاتيل، "
+"بيلاتينغ، بيلاتيس، بيلاتول، بيلاتسيل، بيلاتوس، بيلكاتينغ، بيلكاتلوس، "
+"بيلكاتول، بيلكاتسيل، بيلدراس، بيلدريل، بيلدروسول، بيلدروس، بيلدوريل، "
+"بيلدورينغ، بيلدوريس، بيلدورول، بيلدورسول، بيلدوروس، بلثاس , بيلتهايل، "
+"بيلثاسيل، تريثيثاس، تريثيثيل، تريثيثيس، تريثيثلوس، تريثيثول، تريثيثسيل، "
+"تريثيثسول، تريثيثوس، تريثاليس، تريثالول، تريثاتاس، تريثاتيل، تريثاتلوس، "
+"تريثاتسول، تريثكاتلوس، تريثكاتوس، تريثدريل، تريثدرينغ، تريثدريس ،ترايثدرلوس،"
+"ترايثدرول،ترايثدروسول، تريثدروس، تريثدوريل، تريثدورينغ، تريثدورلوس، "
+"تريثدورول، تريثدورسيل، تريثدوروس، تريثثاس، تريثثيل، تريثثينج، تريثثاسول، "
+"تريثثاوس"
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:40
@@ -1943,6 +2030,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:51
+#, fuzzy
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -2002,8 +2090,69 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
+"Amadrieriand، Amáril، Amelad، Ameldor، Amendel، Ameng، Amilmaldur، "
+"Amilmalith، Amilmandir، Amind، Amiol، Amiorion، Amittharion، Amóldor، "
+"Amorfimir، Amorfir، Amowyn، Amulas، Amundil، Anan، Anebrin، Anebrir، "
+"Anémbor، Anénduil، Anerion، أنيلاد، أنيل جاوين، أنيلمامبور، أنيلماريان، "
+"أنيور، أنيثراندويل، أنول، أنون، أنورفينج، أنونديل، بيلان، بيلانديل، "
+"بيلاراندل، بيليل، بيلين، بيليل غانديل، بيليلماند، بيليلمانج، بيليونديل، "
+"بيليريل، بيليثرالدور، بيليثروين، بيلولد، Belómir،Belondel،Belyrion،"
+"Cadriembor،Cadrieriand،Cálad،Caladrielas،Calándel،Caldur،Cáldur،Calebrindel،"
+"Calebrindir،Calénduil،Calil-Gandir،Calil-Gawyn،Calioriand،Caliril،Calónduil،"
+"Caloril،Cándir،Canduil،Caraldur،Carang، Célad،Celadrieriand،Celang،Celaral،"
+"Celarandil،Celariand،Celebririon،Celelas،Celendel،Celér،Celilmalas،Celiondir،"
+"Celior،Celiorion،Celong،Celór،Cel... , سيثرالدور، سيثراند، سيثرانديل، "
+"سيثراريل، كول، كورفيل، كورفيلدور، كوين، كون، كوندير، سيلاس، ديلان، ديلاند، "
+"ديلانديل، ديلارالدور، ديلاريل، ديلاوين، ديلينج، ديليمدور، ديليول، ديليثرار، "
+"ديلوين، ديلولدور، ديلورفيلد، ديلورفيليث، Delorion،Delundil،Eäradriandel،"
+"Eäradrier،Eäránduil،Eäraralad،Eärebrindel،Eäréldor،Eäreng،Eärérion،"
+"Eärithrandil،Eäromir،Eärorfiriand،Eäryldur،Eäryriand،Eladrieng،Elálith،"
+"Elland،Elandil،Elebrildor،Ebrendel،Elebrir إيل، إليلاس، إليمبور، إليمير، "
+"إلين، إليل-غاريل، إليمالدور، إليومير، إليونديل، إلولاس، إلولاس، إيلور، "
+"إلورفيلد، إلرادرين، إلراليث، إلران، إلريلدور، إلريلماند، إلريولدور، "
+"إلريوليث، إلريثراليث، إلريثراندويل، إلرورفير، إلفال، إلفاندير، إلفارامير، "
+"إلفاوين، إلفيبريند، إلفيبريندل،إلفيليث،إلفيمير،إلفيريون،إلفيل-غاريون،"
+"إلفيلمالدور،إلفيلماريل،إلفيولدور،إلفومبور،إلفوندويل،إلفورفيمير،إلفورفيرياند،"
+"إلفورفيريل،إلفورياند،إلفوند،إلدور،إليريون،إوامبور،إيواندويل،إيوار،إيوارالدور،"
+"إيواران،إيوارار،E أوارياند, Eowarion،Eowebrind،Eowémir،Eowil-Garion،Eowimbor،"
+"Eowiomir،Eowithrawyn،Eowóldur،Eoworfildor،Eowówyn،Eowylas،Fadriendel،Fandel،"
+"Farandir،Fawyn،Fendel،Fer،Filman،Fioril،Fithraril،Forfilas،Fyrion،Gadriendil،"
+"Gadrieng، جالادريلدور، جالالاد، جالالاس، جالاليث، جالار، جاليلاس، جاليلدور، "
+"جاليليث، جاليمبور، جاليثرياند، جالولدور، جالدور، جالور، جالوريون، جامبور، "
+"غان، جاندويل، جارالدور، جاراريل، جلعاد، جيريل، جيل غاندل، جيل جانج، جيومبور، "
+"جيثرال، جيثرالاد، جلادرينديل، جلال، جلامبور، جلانديل، جلارانج، جلاراريل، "
+"جليمال، جليمير، جليور، جلولاس، جلودور، جلومير، جلون، جلول، جولاد، جور، "
+"جامبور، جيل، جيمبور، جين، هارياند، هارياند، هيبريل، هيمير، هندويل، هيلاس، "
+"هيل غاريون، هيلمارياند، هيونغ، هيريون، هيثراندل، هورفيلد، هورفيندل، هوندل، "
+"هيمير، هيرون، هيوين، إيسادرينج، إيساندير، إيسارانديل، إيزار، إيسيلاس، إيسير، "
+"إيسيلمانديل، إيسيريون، إيسيثرال، Isól،Isóndel،Isóng،Isorfilad،Isorfindir،"
+"Isuwyn،Isyndel،Legal،Legaran،Legémir،Legéril،Legilad،Legil-Gal،Legiondel،"
+"Legithralith،Legorfindil،Legorfirion،Legówyn،Legyl،Legyn،Linduilas،"
+"Lómadrieril،Lómarand،Lómariand، Lómebrilad،Lómebrind،Lómémbor،Lómilmaril،"
+"Lómiriand،Lómorfindil،Lómowyn،Madrieril،Maldur،Mánduil،Maraldur،Mebrin،Méng،"
+"Mérion،Miolith،Miomir،Mithrand،Mondir،Móndir،Morfilas،Morfin،Morfiriand،"
+"Mylith،Nadrieldor،Nalith، نان، نيل، نيل جالاس، نيل جاليث، نيل جار، نيلمار، "
+"نونديل، نورفيلدور، نورفيليث، نورفينديل، نورفيندير، نومبور، نيلدور، "
+"بادريرياند، بادريريل، بامير، بارالدور، بارارياند، بيلمالاد، بيندير، بور، "
+"بورفيلدور، بومبور، بيلدور، ريبر، ريندير، ريلمانديل، ريثرانديل، رول، رولدور، "
+"رولدور، رولدور، روفيلدور، روفينديل، روين، رين، سادريلاس، سيبرين، سيبريريل، "
+"سيند، سيل غال، سولاد، سورفيند، سورياند، تادريندير، تارال، Taraldur،Táriand،"
+"Tendel،Téwyn،Thradrieriand،Thrambor،Thraral،Threbring،Thrélad،Thréldur،Thril-"
+"Gamir،Thril-Gandir،Thril-Gar،Thrilmandel،Thrimir،Thrion،Thrithran،Throlas،"
+"Thrón،Thróng،Thrund،Thryriand، تيل غان، تيلمالاد، تيلمالاس، تيناندير، "
+"تينرامبور، تينارارياند، تينين، تينيل-غاندويل، تينلماند، تينلماوين، تينمير، "
+"تينينديل، تينثرار، تينولدور، تينوند، تينورفيند، تينورفيرياند، تينورياند، "
+"تينووين، تينون، تينيل، تيون، تولاس، تورفيلدور، توين، تيلاد، أونادرييلدور، "
+"أونادريير، أونال، أونالاس، أونالاس، أونارالدور، أوناريل، أوناريون، أونبرين، "
+"أونيبريند، أونلدور، أونيل، أونيل غان، أونيوليث، أونيوريل، أونوليث، أونومبور، "
+"أونديل، أونودير، أونورفيلدور، أونورفيريل، Unorfiwyn،Unulad،Uradrielas،"
+"Uradrierion،Urálas،Urálith،Urambor،Urér،Uril-Gambor،Urilmalith،Uróldor،"
+"Urorfildor،Urul،Urymir،Válad،Ván،Vándel،Vandir،Varalas،Vararion،Vebril،"
+"Vebrilas،Vebrinduil،Vel، فيليث، المجلد، فولاس، فولدور، فونديل، فورفين، "
+"فورفينديل، فولاس، فولدور، فوندويل، فيلاس، فيلدور"
 
 #: data/core/macros/names.cfg:52
+#, fuzzy
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -2070,6 +2219,71 @@ msgid ""
 "Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
 "Vówien"
 msgstr ""
+"Amadrielia، Amadrielindë، Amadriendra، Amadriewen، Amarang، Amebrilindë، "
+"Amedë، Améthien، Amewien، Amil-Gadith، Amil-Garith، Amilmadia، Amiolith، "
+"Amionia، Amithraniel، Amithrawien، Amiwen، Amodë، Amorfilith، Amorith، "
+"Amulia، Amuviel، Amuwen، أناليا، أنانغ، أناركليا، أناثين، أنبرينيل، "
+"أنيلماريث، أنينغ، أنيوريث، أنوفيان، أنوندرا، أنوثيل، أنوثين، أنيليندي، "
+"أنيثين، أنيوين، بيلاكليا، بيلادريليث، بيلادريوين، بيلادريوين، بيلارانيا، "
+"بيلارافيل، بيليبريندرا، بيليندرا، بيليوليا، بيليثرانييل، بيليثراوييل، "
+"بيليثراويين، أدناه، بيلوليندي، كادي، كادريوين، كالادرينج، كالاندرا، كالانج، "
+"كالانيا، كالبريوين، كالوين، كالويل، كاليل جاليث، كاليلماليث، كاليثراكليا، "
+"كالونيل، كالورفينيل، كالوين، كالوكليا، سيكليا، سيلادي، سيلا ليا سيلاليندي, "
+"Celarandra،Celarith،Celárith،Celebriniel،Celebriviel،Celelith،Celéng،"
+"Celerith،Celidien،Celilith،Celindë،Celiodë،Celioniel،Celith،Celithradith،"
+"Celódith،Celorfilindë،Celorfing،Celorfiwien،Celówien،سيليليا،Cethien،Cing ، "
+"سيثراليث، سيثرانيا، سيثراوين، كوليندي، كورفيفيل، سيديا، ديلارث، ديلبرينيا، "
+"ديليثين، ديليل جانييل، ديليوين، ديليثراثيل، ديلوندرا، ديلورفيليندي، "
+"ديلورفيثيين، ديلوفييل، ديليديان، إراديريديان، إيرانييل، إيراراوين، إيريليا، "
+"إيرينيا، إيروين، إيريويل، إيرلمادي، إيرلماثين، إيريوليث، إيريثرانج، "
+"إيرورفيوين، إيرودي، إلادريدا، إلادرييليا، إلاراويل، إليبريندرا، إليدا، إليث، "
+"إليل-جانج، إليلماليا، إليلماويين، إليثراكليا، إليثراديين، إيلوندرا، "
+"إلورفينج، إليرفيثين، إلراديرييث، إلرانيا، إليبريديث، إلريثيل، إلريليندي ،"
+"إلريلماندرا، Elrilmathien،Elrithiel،Elrithradith،Elriwen،Elródith،Elrorfidia،"
+"Eluviel،Elvádia،Elvania،Elvil-Gawien،Elvilmathiel،Elviniel،Elviondra،"
+"Elvithrang،Elvithrang،Elvowien،Elvyniel،Elvyviel،Elynia،Elywen،Eowalia،"
+"Eowarawien،Eowathiel،Eo ويبريديث, Eowedith،Eowidien،Eowil-Galindë،Eowilindë،"
+"Eowiowien،Eowylia،Eowyniel،Fadriedith،Fadrielia،Fadriendra،Fadrienia،Falindë،"
+"Fáthiel،Fathien،Fáien،Feclya،Féthiel،Fil-Galia،Fil-Gathiel،Fil-Gawien،"
+"Filmaclya، فيونييل،فودي،فوليندي،فوليندي،جادريكليا،جادريفييل،جالادريثيين،"
+"جالاندرا،جالارانيال،جالبريليا،جالبريندرا،جاليدي،جاليدين،جاليويل،جاليل جانيا،"
+"جاليماديا،جاليوتيل،جاليثراثين،جالوليا،جالوليندي،جالورفيويل،G ألوثيل، جالوين، "
+"جالوندرا، جالينيل، جاثيان، جافيل، جيبريرث، جوين، جيل جاوين، جيليا، جيونيل، "
+"جيوفيل، جوين، جيثرانيا، جيثراوييل، جلاليا، جليبريثيان، جليندرا، جليلماديين، "
+"جليلماوييل، جليثيل، جلوكليا، جلوديث، جلورفيليث، جلوفييل، جلوييل، جوكليا، "
+"غودين، جوليا، جوليندي، جوفيل، هاراوييل، هافيل، هاوين، هيكليا، هيديا، هيليث، "
+"هيوين، هيل جانيا، هيودي، هيوين، هوديا، هوديا، هورفينيا، هورفيوين، هوتيل، "
+"هوكليا، هونيا، هوثين، هيكليا، هيثيل، هيثيان،إيسادرينج،إيساوين،إيزبريدين،"
+"إيسيبرينيا،إيسنددرا،إيسينج،إيسيفيل،إيسيل-غاريث،إيسيليندا،إيسيثرادي،"
+"إيسيثراديان،إيسيثرارث،إيزثراوييل،إيزوثين،ليجادي،ليجادين،ليجادريكليا،"
+"ليجادريديه،ليجادرينيل،ليجاراكليا،ليجبري ليا، ليجيليث، ليجينج، Legéniel،"
+"Legethiel،Legidia،Legil-Galindë،Legilmadith،Legilmawiel،Legithralindë،"
+"Legithrandra،Legithrania،Legolith،Legondra،Legorfidë،Lómániel،Lómebriclya،"
+"Lómebriniel،Lómedia،Lómeniel،Lómiclya،Lómilindë،Lómilmathiel،Lómilmawiel، "
+"لوميثراد، لوميثراريث، لومودي، Lómolith ، Lómóndra ، Lómorfing ، Lómorith ، "
+"Lómudia ، Lómulindë ، Lómuniel ، Lómuthiel ، Lómynia ، Lómythien ، Mádia ، "
+"Madriclya ، Maraclya ، MeBriael ، MeClya ، Medien ، Milathial ، Milithial ، "
+"Milithiel ، Milithiel ، Milithiel ، Milithiel ، Milithiel ، Milathiel ، "
+"Milithiel ، ë ، ميثراليندي، مودى، موديا، مونيل، مورفيليندي، مونيا، ميندرا، "
+"ميويل، نارانيا، نارانيال، نافييل، ناوين، نيوين، نيل جانج، نيلماديا، نيودين، "
+"نيوليا، نيوثين، نيثرانييل، نيثرارث، نوين، نيديث، باديا، بادريديث، باراليندا، "
+"باراندرا، باوين، بيبريدين، بيل غاديا، بيل غاديان، بيليندي، بيندرا، بونغ، "
+"بورفيندرا، بورفيوين، بوفيل، بوليا، بوثين، رينيل، ريفييل، ريل غاوين، ريندرا، "
+"ريوثين، رونغ، رورففييل، سادريينيا، Sadrierith،ساليندي،سانغ،ساراديث،ساراندرا،"
+"Sédith،سيندرا،Sethien،Silmaclya،Silmathiel،Sioclya،Siorith،Sithrang،"
+"Sithrawen،Soniel،Sothiel،Sothien،Syniel،Tadrierith،Tang،Taradien،Tarathiel،"
+"Tathiel،Terith،Thradia، Thrália،Thraraviel،Threbriniel،Thredien،Thrérith،"
+"Thridith،Thrinia،Thrithradia،Thrithrandra،Thrithraniel،Throlith،Throng،"
+"Throthiel،Thrulith،Thruthien،Thryng،Til-Gandra،Tilmaclya،Tilmaviel،Tináclya،"
+"Tinadriethien،Tinálindë،Tinaraniel،T إيناراثين, Tinawiel،Tinebrithiel،"
+"Tinerith،Tinil-Gania،Tinil-Gawiel،Tiniolith،Tinithrathiel،Tinóng،Tinorfilith،"
+"Tinorfithien،Tinudia،Tiorith،Tithrathien،Tówiel،Tuniel،Unadrieng،Unáthien،"
+"Unebridë،Unénia،Unil-Gadia،Unilmadia،Unindra، Uniodë،Uniolia،Uniong،Unionia،"
+"Unóndra،Unorfiwen،Unulindë،Unuviel،Unynia،Uraclya،Uradriedia،Uránia،Urárith،"
+"Urebriclya،Ureclya،Urilmadia،Urilmawiel،Uriolia،Urithralindë،Uruthien،"
+"Uryrith،Vadrierith،Vadrieviel،Vadriewen،Var أويل, فيبريثين، فيل غاندرا، "
+"فيولينده، فيوويل، فيثرانغ، فيثرانيال، فيويل، فوديا، فونغ، فورفيكليا، "
+"فورفينج، فورفيريث، فورفيويل، فوين"
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:54
@@ -2117,11 +2331,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:88
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "جراا، جراا، جري، كاا، كاش، كيسشه، كورو، كرا، كو، كاا، كزوو"
 
 #: data/core/macros/names.cfg:89
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr ""
+msgstr "كاسا، كايا، كييا، كيرا، كورا"
 
 #. Generator for male gryphon names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:91
@@ -2144,6 +2358,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:107
+#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -2193,8 +2408,12 @@ msgid ""
 "Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
 "Yrynyc,Yryrcyn"
 msgstr ""
+"أدراسين,أدراينفان,أدراير,أدرايرسين,أدرارين,أدريدري,أدريدري,أدريجوين,أدرينيك,"
+"أدريودراي,أدريودين,أدريونيك,أدريورسين,أدريران,أدريبرين,أدريدين,أدروكسين,"
+"أدرورين,أدرونفان,أدرروسين,أدريلين,أدرينفان,إيثاسين,إيثادري"
 
 #: data/core/macros/names.cfg:108
+#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -2242,6 +2461,55 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"ألابريلا، ألابريلا، ألانيفر، ألالا، ألونا، ألاريان، ألياكلا، أليانيفر، "
+"أليرا، أليركا، ألينا، ألنغوين، أليلونا، ألينغوين، ألولا، ألونا، ألورا، "
+"ألوبريلا، ألونيفر، ألوريان، ألوسا، ألوكا، ألويليرا، ألوليان، ألونا، "
+"اليبريللا، ألينويك، أليرا، أليريان، بريدا، براسا، برافيان، بريابريلا، بريل، "
+"بريالا، بريلونا، برينا، بريل، بريليرا، بريرا، بريركا، بريريان، بريلا، "
+"بريركا، بروبريلا، بروليرا، برونا، برونويك، برورا، بروكا، برونجوين، بروريان، "
+"برورا، بريكلا، برينويك، كايلا، كاينا، كاينجوين، كايفيان، كول، كالا، كاسا، "
+"سيالونا، سيرا، سيريان، سيبريلا، سيكلا، سينويك، سيرا، سيسا، كلاكلا، كلايلا، "
+"كلايليان، كلينويك، كلالا، كلاليرا، كلارا، كلاركا، كلافيان، كليكلا، كليل، "
+"كليليان، كلينا، كلينويك، كلينويك، كلبريلا، كليل، كليليرا، كليليان، كلينويك، "
+"كليسا، كلوبريلا، كلوليرا، كلونا، كلونجوين، كلونجوين، كلوركا، كلوفيان، كلودا، "
+"كلولا، كلويان، كلايدا، كليلا، كورا، كوريان، كوكلا، كودا، كوريان، كودا، "
+"كولونا، كونغوين، كوفيان، سيددا، سيلا، سيليرا، سيليان، سينفير، سيفيان، ديدا، "
+"ديليان، داينجوين، دينويك، دالا، داليرا، دانغوين، دارا، داسا، ديانويك، ديسا، "
+"ديلا، ديفيان، ديكلا، دينيفر، ديسا، دوليرا، دوليرا، دولونا، دوبريللا، دودا، "
+"دونا، دونويك، دورا، ديبريلا، ديدا، دايسا، إيلاكلا، إيلدا، إيلايل، إيلونا، "
+"إليسا، Elaevyan، Elallyra، Elalonna، Elara، Elavyan، Elealla، Eleanoic، "
+"Elearka، Elenoic، Elerka، Elivyan، Elulonna، Elurka، Elwllyra، Elwlonna، "
+"Elwngwen، Elwra، Elycla، Elyllyra، Elyngwen، Elyniver، Elyrka، Gwaera، "
+"Gwaessa، Gwangwen، Gweacla، Gwedda، Gwerka، Gwicla، Gwirka، Gwobrylla، "
+"Gwoll، Gwona، Gwongwen، Gwonoic، Gworyan، Gwullyra، Gwussa، Gwwcla، Gwwna، "
+"Gwwvyan، Gwycla، Gwydda، Heldra، Jacla، Jaena، Jaerka، Jaevyan، Jalyan، "
+"Jana، جاركا، جاسا، جابريلا، جيلا، جانويك، جينيفر، جيريان، جيسا، جول، جولا، "
+"جونا، جونجوين، جونويك، جورا، جوركا، جوفيان، جودا، جولي، جولينا، جورا، جول، "
+"جوليان، جايكلا، جينيفر، جينويك، جيركا، جيفيان، لاينيفر، لاينويك، لاريان، "
+"لانجوين، لاركا، لاسا، ليلونا، ليليان، ليدا، ليلونا، ليليان، لينغوين، ليركا، "
+"ليسا، ليدا، ليل، لينا، ليركا، ليريان، ليفيان، لوكلا، لودا، لوليرا، Lolonna،"
+"Lulla،Lulyan،Lungwen،Lunoic،Luryan،Lwcla،Lwlla،Lwnoic،Lwryan،Lycla،Lylla،"
+"Lylyan،Lyna،Lynoic،Maecla،Maeniver،Mavyan،Meacla،Mealyan،Meana،Meangwen،"
+"Meanoic،Medda،Melonna، Mengwen، Meniver، Meradda، Meraecla، Meraelyan، "
+"Merall، Merallyra، Meralonna، Merana، Meranoic، Merealonna، Mereangwen، "
+"Mereaniver، Merebrylla، Merella، Merengwen، Meressa، Merilyan، Merina، "
+"Merinoic، Merissa، Merivyan، Merolla، Merolyan، Merona، Meroniver، "
+"Merubrylla، Merudda، Merurka، Merwlla، Merwnoic، Merwryan، Merydda، "
+"Merylyan، Messa، Milonna، Molyan، Moniver، Mossa، Mudda، Mullyra، Mulyan، "
+"Muryan، Mwbrylla، Mwlyan، Mwngwen، Mwnoic، Mycla، Myll، Mylla، ميرا، Myvyan، "
+"Nabrylla، Naebrilla، Naecla، Naell، Nalyan، Nangwen، Nealla، Neallyra، "
+"Nealonna، Neavyan، نيرا، نيسا، نينويك، نيريان، نيفيان، نوبريلا، نولا، "
+"نونويك، نوركا، نوريان، نوكلا، نولا، نوليان، نونغوين،Nuvyan،Nwllyra،Nwryan،"
+"Nwvyan،Nybrylla،Nyll،Nylyan،Nyryan،Nyssa،Nyvyan،Raebrylla،Raera،Raerka،"
+"Ralonna،Rara،Rarka،Rassa،Reacla،Realla،Reana،Reangwen،Rella،Relyan،Rengwen، "
+"Rerka، Revyan، Rilonna، Rilyan، Rirka، Rora، Rucla، Ruryan، Rwdda، Rwlla، "
+"Rwllyra، Rwlonna، Rwngwen، Rybrylla، Ryna، Ryngwen، Saell، Saellyra، "
+"Saeniver، Saerka، Saessa، Sallyra، Sanoic، Sara، Sassa، Searka،Sena،Senoic،"
+"Sera،Silonna،Sira،Siryan،Sona،Sorka،Subrylla،Sull،Sulonna،Sulyan،Sura،Sussa،"
+"Swlla،Swlyan،Swngwen،Swnoic،Swvyan،Syllyra،Sylyan،Syssa،Ysacla،Ysaenoic، "
+"Ysaerka،Ysanoic،Yseacla،Ysealonna،Ysealyan،Ysedda،Ysell،Yselonna،Ysilyan،"
+"Ysinoic،Ysodda،Ysongwen،Ysonoic،Ysura،Yswniver،Ysycla،Ysylla،Ysylyan،Ysyrka،"
+"Ysyssa"
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:110
@@ -2364,6 +2632,71 @@ msgid ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
+"أبان، عباس، عبود، عبد العدل، عبد الأحد، عبد العليم، عبد العالي، عبد العظيم، "
+"عبد العزيز، عبد البادي، عبد الباعث، عبد الباقي، عبد الباري، عبد البر، عبد "
+"البصير، عبد الباسط، عبد الفتاح، عبد الغفار، عبد الغفور، عبد الغني، عبد "
+"الهادي، عبد الحافظ، عبد الحكم، عبد الحكيم، عبد الحليم، عبد الحميد، عبد- حق، "
+"عبد الحسيب، عبد الحي، عبد الجبار، عبد الجليل، عبد الكريم، عبد الخبير، عبد "
+"الخالق، عبد اللطيف، عبد الملك، عبد المجيد، عبد المتين، عبد المبدع، عبد "
+"المغني، عبد المهيمن، عبد المحصي، عبد المحيي، عبد المعيد، عبد المعز، عبد "
+"المجيب، عبد المؤمن، عبد المؤمن، عبد المقدم، عبد المقتدر، عبد المصور، عبد "
+"المتعال، عبد نافع، عبد الناصر، عبد الناصر، عبد النور، عبد القادر، عبد "
+"القهار، عبد القوي، عبد القيوم، عبد القدوس، عبد الرافع، عبد الرحيم، عبد "
+"الرحمن، عبد الرشيد، عبد الرؤوف، عبد الرزاق، عبد الشكور، عبد التواب، عبد "
+"الودود، عبد الوهاب، عبد الواحد، عبد الواجد، عبد الوكيل، عبد الولي، عبد "
+"الولي، عبد الوارث، عبد زاهر، عبد الله، عابد، عابدين، أبو بكر، أبي الخير، "
+"عادل، أدهم، أديب، عدلي، عدنان، عفيف، أحمد، عجيب، عاكف، عقيل، أكرم، علاء، "
+"علاء الدين، آل عباس، علاء الدين، البراء، الحكم، الحارث، الحسن، الحسين، علي، "
+"عليم، المهدي، الصافي، ألطاف، الطير، الطيب، التيجاني، الطفيل، عميد، عميد، "
+"أمين، عامر، عامر، أمجد، عمار، عمرو، أنس، أنيس، عنترة، أنور، عقيل، عرفان، "
+"عارف، عارف، أسد، أسعد، أسديل، أشرف، آصف، عاصم، أسود، عطاء، عطاء الله، عطاء "
+"الرحمن، أثيل، أثير، عاطف، عوض، عوف، أوس، أواب، أيهم، أيمن، أيسر، أيوب، عزة، "
+"عزب، الأزهر، عظيم، عزيز، عزام، بديع، بديع الزمان، بدر، بدر الدين، بدري، "
+"بهاء، بهي الدين، بهيج، بحر، بكر، بكري، بليغ، بندر، بركة، برير، بشار، باسل، "
+"باسم، بسام، بايزيد، بيحص، بلال، بشر، بولس، بديل، برهان، بشر، بطرس، دابير، "
+"داني ,درويش,داوود,ذكر,ذكي,ذكوان,ذو الفقار,ضرار,ضياء,ضياء الدين,دقاق,فادي,"
+"فاضل,فضل,فضل الله,فهد,فهد,فهمي,فيصل,فايز,فاخر,فخر الدين ,فخري,فقيه,فلاح,فالح,"
+"فرج,فرحان,فريد,فارق,فارق,فارس,فاروق,فتح,فتحي,فاتح,فاتن,فواز,فوزان,فوزي,فياض,"
+"فيران,فدا,فكري,فراس,فؤاد,فضيل ,جمال,غيث,غالي,غالب,غانم,غسان,غوث,غزوان,غياث,"
+"حباب,حبيب,حداد,هادي,حافظ,حكيم,حكيم,حليم,همال,حماس,حمدان,حمدي,حامد,حميم,حمزة,"
+"هناء ,هنائي,حنبل,هاني,حنيف,هناد,حارس,حارث,هارون,هاشم,حسن,حاتم,حيدر,هيثم,حيان,"
+"حازم,هلال,حلمي,هشام,هود,هداد,حذافة,حذيفة,همام,حسين,حسام ,حسام الدين,إبراهيم,"
+"عيد,إدريس,إحسان,احتشام,عكرمة,إلياس,عماد,عماد الدين,عمران,امتياز,إنعام,إقبال,"
+"عرفان,عيسى,عصام,إسحاق,إسماعيل,إياد,إياس,عز الدين,جبار,جبر,جابر,جاد الله,جعفر,"
+"جل,جلال,جلال الدين,جليل,جمال,جمال الدين,جميل,جرير,جاسم,جول,جون,جواد,جودة,"
+"جوهر,جبران ,جبريل,جبير,جول,جمعة,جنيد,جوين,كدر,قادين,قادر,كحيل,قال,كمال,كامل,"
+"كرم,كردال,كاريف,كريم,كاسب,قاسم,كاتب,كاظم,خلف,خلدون,خالد,خليل ,خليل الله,خالص,"
+"الخطيب,خير الدين,خيري,خوري,خلوص,خزيمة,قتيبة,لبيب,لبلاب,لطيف,ليث,لؤي لبيد,"
+"لقمان,لوط,لطفي,معد,مدني,محبوب,مهدي,محفوظ ,ماهر,محجوب,محمود,محروس,ميمون,مجد,"
+"مجدي,مجد الدين,ماجد,ماكين,مالك,ممدوح,مأمون,معين,مندور,منصور,مرجوب,مارد,معروف,"
+"مروان,مرزوق,مشعل,مشهور, مسرور، مسعود، ميسون، ميسرة، مظهر، مازن، محمد، مهران، "
+"مهيار، مكايل، مقداد، مصباح، مشعل، مياز، معاذ، معاوية، مؤيد، مبارك، مبين، "
+"مضر، مدثر، مفيد، مفلح، مهاب، مهير، محمد، مهنا، مهند، محب، محب، محسن، مهتدي، "
+"محيي الدين، معين، معز، مجاب، مجاهد، مكرم، مخلص، مختار، ملهم، ملحم، معمر، "
+"مؤمن، ممتاز، منهيد، منذر، منيب، منيف ,منير,مؤنس,منجد,منصف,منتصر,مراد,مريد,"
+"مرشد,مرتضى,موسى,مصعب,مساعد,مشتاق,مصلح,مسلم,مصطفى,مطوع,معتصم,متولي,معتز,مثنى,"
+"معطي,موفق,ميسر,مظفر ,مسممل,نبهان,نابغة,نبيه,نبيل,نذير,نديم,نادر,نافع,ناهد,"
+"ناائل,نعيم,ناجي,نجيب, نجد,نجار,نجم الدين,نعمان,نمير,نشأة,نشأت,نشوان,نصيب, "
+"ناصح، نسيم، ناصر، ناصر الدين، نصر، نصري، نصوح، نواف، نوفل، نايف، نزيه، ناظم، "
+"نظمي، نبراس، نضال، نجاد، نمر، نزار، نعيم، نوح، نهيد، نمير، نعمان، نور الدين، "
+"نوري، نصرة، نصرت، عمر، أورهان، عثمان، قاسم، قيس، قدامة، قصي، قتادة، قتيبة، "
+"قطب، قطز، رباح، ربيع، راضي، رافع، رافع، رفيق، راغب، الرحمن، رائد، رائف،ريس،"
+"رجاء،رجب،راجي،راجح،راكين،رامي،رامي،رامز،رمزي،راني،رشاد،رشيد،راسيل،راسين،رسمي،"
+"رسول،راتب،رؤوف،ريحان،ريان،رزين،رضا،رضوان، رحاب، رياض، رزق، روحي، رشد، رشدي، "
+"رويد، سعد، سعادة، ساب، صبيح، صابر، صبري، سعد، سعد الدين، سداد، سديد، صادق، "
+"سعدون، سعيد، صافي، صافي، صفي ال. دين,صفوح,صفوة,صفوت,صفوان,صاحب,ساهر,سهل,صائب,"
+"سيف,سيف الدين,ساجد,سجاد,صخر,صلاح,صلاح الدين,سلامة,صالح,سالم,سلمان,سامي,سامح, "
+"سمير، سمان، صقر، سارية، ساطي، سعود، سيد، شعبان، شادي، شادين، شافي، شفيق، "
+"شاهد، شاهين، شهير، شكيب، شاكر، شمس الدين، شمال، شامل، شميم، شرف، شريف، شوقي ,"
+"شهاب,شهاب الدين,شهد,شعيب,شكري,شميل,الصديق,سنان,سراج,سراج الدين,سفيان,صبحي,"
+"سفيان,صهيب,سهيل,سهيم,سليمان,سمرة,سراقة,سعود,طاهر,تحسين ، تيم الله، تاج، تاج "
+"الدين، طلال، طالب، تميم، تمير، تمام، تمام، تقي، طريف، طارق، تسليم، توفيق، "
+"التوحيد، تيم الله، تيسير، طيب، ثابت،ثامر، ثاقب، ثواب، ثوبان، عبيدة، عبيد، "
+"أبي، عديل، عدي، عمر، عمارة، عمير، عروة، أوسيم، أسامة، عتبة، أثال، عثمان، "
+"وضاح، وادي، وديد، وفيق، وهاب، وهاب، وحيد، وائل، وجدي، واجد، وجيه، وكيل، "
+"وليد، وليد، ولي الله، ولي الدين، وقار، وقاص، ورد، واصف، واصل، وسيم، وزير، "
+"يحيى، يمان، يعقوب، يسر، ياسين، ياسر، يزن، يزيد،يونس،يوشع،يسري،يوسف،ظفر،ظافر،"
+"زاهد،ظاهر،زيد،زعيم،زين،ظريف،زكريا،زكي،زكوان،زياد،زبير،زهير"
 
 #: data/core/macros/names.cfg:145
 msgid ""
@@ -2377,6 +2710,14 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"أبيهة،عفاف،عائشة،أجدة،علية،أميرة،الشرقات،عتيكا،عزرا،بثينة،بشرى،شيماء،سينثيا،"
+"دلال،داليا،إليانا،أسماء،فريدة،فاطمة،فيروز،حبيبة،حفصة،هجرة،حليمة، حميدة،حنيفة،"
+"حواء،حياة،حصة،ابتسام،ابتسام،إنعام،جميلة،جواهر،جينا،جمانة،كارينا،كريمة،كاتيا،"
+"خديجة،خيرونيسا،خولة،خولة،لمى،لمياء،لطيفة،ليال،ليان،ليلى، لينا، لولوة، مديحة، "
+"مها، مهمونة، مي، مليكة، مروة، مريم، مايا، ميسون، ميليسا، نادية، نفيسة، نهلة، "
+"نائلة، نجاة، نسيم، نسرين، نجلاء، نزهة، نيوشا، قسطينا، رحيمة، رنا، رشيدة،ريم،"
+"رقية،سعدية،صبيحة،صفية،سحر،سعيدة،ساجدة،صخرة،سلمى،سميرة،سارة،شهد،شذى،شيرين،"
+"شميلة،سمية،تسليمة،أم،يارا،ياسمين،زهرة،زكية،زينب"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:147
@@ -2428,6 +2769,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:179
+#, fuzzy
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -2440,6 +2782,17 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixta، Anexir، Anitraz، Arix، Axiz، Bzz'Kza، Chamil، Cleezi، Clezz، "
+"Fazzis، Fizztrax، Flixta، Flizzil، Frikes، Frizzle، Hasz، Heffez، "
+"Hertrazzir، Hesz، Hezzir، Hezzis، Hix، Inexis، Irix، Jezzix، Jizz، Kaliez، "
+"Kepzs، Kernix، Kersezz، Kertrasz، Kerx، Kerxenix، Kezz، Klexaz، Klezyx، "
+"Krarax، Krenarex، Krex، Krinex، Krisess، Laizix، Lazki، Lixeez، Merax، "
+"Mexiss، Moxanzz، Naxisz، Nix، Pekzs،Plaxis،Plesix،Presch،Sailik،Salanix،"
+"Salik،Sandix،Saprazz،Satras،Skalix،Skandix،Skazix،Skeely،Skeezix،Sklizle،"
+"Skrez،Slizilx،Sprizz،Ssexur،Ssizer،Ssorix،Sszasz،Sterizz،Talerez، Tarex، "
+"Tarnix، Tezzaz، Tirasch، Tirax، Tirix، Trezz، Venezz، Vriss، Waks، Xaffrasz، "
+"Xartrez، Xasz، Xaztex، Xerxix، Xirasz، Xirr، Xirtras، Xirtrez، Xirz، "
+"Zandler، Zedrix، Zilrix، Zizzasz، Zslap، زالكز، زوبدي"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:181
@@ -2463,6 +2816,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"أبسو، أبزو، أيجايون، ألاستين، أبالالا، أبام، أبسو، أريماتا، أتلاهوا، أتلاوا، "
+"بارينثوس، دخان، ديلان، إلكمار، إمبر، إنكي، فارو، هابيك، إيكاتيري، جام، جين، "
+"كينيلاو، كولولو، لابونا، لاوت، لير، لير، لود، ماكارا، ماوي، ميليسيرتيس، "
+"ميمير، ناتات، نيتشتان، نبتون، نيريوس، نيثون، نجورد، نوادا، نود، نوديمود، "
+"نون، أوسيانوس، أوكينوس، فورسيس، بونتوس، بوبوا، بوسيدون، بروتيوس، راجا، راو،"
+"روروا،ريوجين،سيلا،سينيلاو،سيسيوتل،تاجالوا،تانوا،تانجالوا،تانجاروا،ثاوماس،"
+"تيكيتيكي،تيني،تينيلو،تينيراو،تونيوها،تريتون،فيزي،فودنيك،فوروكاسا"
 
 #: data/core/macros/names.cfg:191
 msgid ""
@@ -2471,6 +2831,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"أغلوفيم، أمفيتريت، أفروديت، أرييل، أتارجاتيس، كاليبسو، دلفين، ديرسيتو، "
+"ديكتينا، إلكترا، جالاتيا، هيميروبا، جينغو، ليوكوسيا، ليجيا، لوري لاماريس، "
+"ماما واتا، مارينا، ميراندا، ميريام، مولبي، بارثينوب، بيلاجيا، بيسينو، ران، "
+"سيدنا، ستيلا ماريس، ثيلكسيبيا، تيرغاتا، فاتيا، فيد آفا، فين إيمو، فيتي إيما"
 
 #. Generator for merman names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:193
@@ -2496,6 +2860,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:209
+#, fuzzy
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -2504,8 +2869,16 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"أبراكساس، أليس، أميل، أكسميل، بلانال، بلي، بلو، بريس، بريس، غاكسمول، غريم، "
+"غريس، غريسيلي، هايلوس، هاينوس، هاركسوس، هوزيل، إينالوس، إيني، إيسال، كليزيل، "
+"كراس، كريزكبس، كزاب، لاميس، Lameii،Lexpek،Liness،Lobor،Maissol،Malinos،"
+"Milbor،Mileii،Nildloss،Oxpeii،Poniaz،Psell،Pson،Pzakp،Reii،Sassal،Saxil،"
+"Saxrireii،Sekol،Silas،Skell،Skepz،Slell،Snol،Soill، سوركول، سريل، تريكسوز، "
+"فيلايل، فيسال، فلانيس، إكسابراك، إكساماليل، شيناس، إكسناموس، إكسوبكون، "
+"زالسب، زليك، زبسيك، زسيكب"
 
 #: data/core/macros/names.cfg:210
+#, fuzzy
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -2515,6 +2888,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliasse، Amailis، Axmailia، Blai، Blanalai، Bli، Bliana، Brassas، Brissal، "
+"Gaxmail، Griama، Grissa، Grissilai، Haila، Haina، Harxias، Huzi، Inai، "
+"Inalai، Issalai، Klez، Kras، Krezkps، Kzap، Lamai، لامايسا، ليكسبيك، ليابرا، "
+"ليلين، ليناسا، مايسا، مالينا، ميلا، ميلبرا، نيلدلاسي، أوكسبل، بونيازال، "
+"بسال، بسن، بزاكب، ريا، سال، ساساليا، ساكسيالا، ساكسريريا، سيك، سكال، سكيبز، "
+"سلا، سنيليا، Srak، Sral، Szak، Trixzed، Vilaila، Vissalai، Vlanissa، Xabrak، "
+"Xamalia، Xina، Xinasia، Xnamas، Xopkne، Zalsp، Zlek، Zpsek، Zsekp"
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:212
@@ -2549,6 +2929,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"اكوارك،اكورت،اكزالك،اركارم،باركوك،بلوكار،بوركوك،بوكاك،بولروك،كوركار،ديلكاك،"
+"غاركوك،غنوك،غوروك،غراك،غورك،غورم،كالكنيكس،كارك،كربوك،كارجناك،كارتيراك،كايراك،"
+"كلكرار،كيرتا، كيلكرار، كينغروك، كيرك، كلود، كوكان، كولك، كوماك، كورجناك، "
+"كورك، كوروك، كراماك، كروج، كروكراك، كروموك، كوكنوك، كوركور، كورماك، ماكرون، "
+"ماركاك، ماركوك، ميرنيك، نارجاك، أولك، أوركوت، ريكناك، تاكولاك، ترابوك، "
+"تراكون، أوركار، أوركارك"
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:228
@@ -2561,6 +2947,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:236
+#, fuzzy
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -2595,6 +2982,40 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"بادوش، باجار، باغديش، باراغ، بارباغ، بارت، باشناق، بيديش، بيدوش، بيك، بيلج، "
+"بيلو، بينك، بينك، بيول، بيرت، بوغار، بوغديش، بوجدوش، بوجور، بوك، بولج، بونج، "
+"بورج، بورك، بورت،بوشناق،بودوش،بوغديش،بوك،بوناك،بونج،بانك،بوراج،بورج،بورك،"
+"بورك،إراداش،إراديش،إراديش،إيراغدوش،إيراجور،إيراناك،إرانج،إراراج،إرارج،إرارت،"
+"إريجدوش،إريك،إريناك، Eriol،Erirag،Erirbag،Erirg،Erirt،Erishnak،Eriurk،"
+"Erogdish،Erogdush،Erok،Erong،Eronk،Erorbag،Erudish،Erudush،Erugar،Erugdush،"
+"Erulo،Erunk،Eruol،Erurag،Eruurk،Gadash،Gagar،Gagdush، جاجور، جالو، جاناك، "
+"جانك، جول، جاراج، غاشناك، جيجور، جيناك، جينك، جينك، جيرت، جوغديش، جوجدوش، "
+"جونج، جورك، جورت، جوشناك، جراداش، جراجار، جراجور، جراك، جراج، جرالو، جراناك، "
+"جراول، جرارباج، جريداش، جريديش، جريدوش، جريجار، جريجور، جريلج، جريلو، جرينك، "
+"جريراج، جريرج، جريرك، جريشناك، جروديش، جروجار، جروجديش، جروك، جرولغ، جرونج، "
+"جرونك، جروراج، جروج، جروك، جرورت، غروشناك،غروداش،غروغار،غروغديش،غرغدوش،غروك،"
+"غرولو،غرونك،غرول،غرورغ،غرورك،غررت،غرورك،غوغديش،غوغدوش،جولج،غولو،غوناك،جورباج،"
+"جورت،غوشناق،حداش،هاديش،هادوش،هاجر، هاجدوش، هاجور، هاك، هالج، هانك، هاشناق، "
+"هيداش، هيديش، هيدوش، هجدوش، هيلغ، هناك، هينج، هينك، هيول، حراج، هيرج، هودوش، "
+"هوجر، هوجور، هونج، هول، هورباج، هورك، هورت، هوشناق،هوداش،هوديش،هوجور،هوك،"
+"هولج،هولو،هونك،هول،هوراج،هورباغ،هورك،هوشناق،هورك،باغديش،باجور،بالج،بالو،بول،"
+"باراج،باشناك،بيدوش،بيغديش،بيجدوش،بيلج، بيناك، بينك، بيرباغ، بوداش، بوديش، "
+"بودوش، بوغديش، بولج، بورباغ، بورغ، لحم الخنزير، بورت، بوشناك، براديش، "
+"براغدوش، براغور، برالغ، برالو، برانغ، براول، براغ، برارباج، براغ، برارك، "
+"برارت، براشناك،براورك،بريديش،بريجار،بريجديش،بريجور،بريج،بريلو،بريناك،بريول،"
+"بريرباج،بريرج،بريرت،بريورك،بروداش،بروديش،برودوش،برلوج،برولو،بروناك،برونج،"
+"برونك،برول،بروك،بروديش، بروجار، بروغديش، بروك، بروناك، برنك، برورج، برورك، "
+"برورك، بوك، بولج، بولو، بوناك، بونج، بانك، بوراج، بورباج، بورج، بورك، راداش، "
+"راجار، راغديش، راك، رانج، رانك، راول، راراج، رارباج، رارك، راشناق، راورك، "
+"ريجور، ريك، ريلغ، ريناك، رينك، ريرج، ريرك، روديش، رودوش، روغديش، روك، رولو، "
+"روناك، روداش، روغار، روغديش، روك، رونغ، روول، روراج، روشناك،فاداش،فاديش،"
+"فادوش،فاك،فالو،فانك،فاراج،فارباج،فيجار،فيجديش،حيوية،فيلج،فيلو،فينك،فيراج،"
+"فيرت،فيشناك،فوغديش،فوجور،فوناك،فونج،فورج،فورك،فوشناك، فورك، فراداش، Vragar، "
+"Vragdush، Vragor، Vralo، Vrang، Vrarbag، Vrarg، Vrart، Vraurk، Vridash، "
+"Vridish، Vrigor، Vrik، Vrinak، Vring، Vrirt، Vrishnak، Vriurk، Vrodash، "
+"Vrodish، Vrogar، Vrogor، Vrolo، فرونج، فرورج، فرورك، فروديش، فروجدوش، فرولج، "
+"فرونج، فروول، فرورج، فرورت، فرورك، فوديش، فوك، فولج، فولو، فوناك، فوراج، "
+"فورباج، فورج، فوشناك"
 
 #. Generator for orc names
 #: data/core/macros/names.cfg:238
@@ -2620,6 +3041,11 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,هاك,هاسك,هوث,عناق باه,هو كاه, كاك، كراك، كروج، كوب، كوه، "
+"لوك، لوك، ناك، نوك كار، باغ، ريك، روك، روك، سارك، شاك، شوف، ستوه، تارغ، ثوغ، "
+"ثروف، ثور، توهغ، تورج، تروك، تسوك ,توه، توك روه، أوغ، Üh، أورغ، أورغ، أورك، "
+"فاك، زوغ، زوغ"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:252
@@ -2635,6 +3061,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:263
+#, fuzzy
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -2649,6 +3076,18 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"بلوديبالمن،بولادرومبادروم،بولولدلمان،بومبمبومجونتور،بومتانبومكنتون،"
+"بومتنبومتونوم،بريجالاد،بريمدبوب،برينباسنودنيم،بريندومادوك،برومانتندرونور،"
+"برومبيندوبلون،برومينارونوم،برومدلبروك،بومبادادابوم،بودومدنلول،كارنيميري،"
+"دابومداب أوتام، دامانتونجونور، دانمونلولبام، ديبوندبيمون، ديلمدولمديلوم، "
+"ديبلمبومندي، دولمانومبيل، درونجنوبليمدو، Dulmandarook،Dulwulmendom،"
+"Dumdumdumatum،Elmaroomadrum،Grelmadrumbumadum،Gulladroamadoak،Gumabeladrelm،"
+"Laffalialomdium،Landunwonbam،Lassemista،Lefnublemdde،Libleddnumm،"
+"Lolmandindel،Monlamwimdan،Muldondindal،Mundionalafla،Mundumblemdum،"
+"Munnamdulbon،Nan ميلدالدوم، نونمالديلدون، أوروفارني، بامبيدرومني، "
+"بومتامكومتروبوم، ريثرامكامهان، تانتونديرنينتان، تمتونديمبين، تمتونونجيتم، "
+"توندينكونتنكون، ترومبادوم، تمتنتانتارون، تومتونونجاتوم، تومتومغامتومتوم، "
+"وونرونمالدين، وودادونوبل"
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:265
@@ -2667,10 +3106,13 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:275
+#, fuzzy
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
+"بال، كام، كورن، ديل، إيرل، إل، فوكس، فرين، جل، هيل، هيكس، هول، هوكس، إيل، "
+"كين، نام، نيس، نيو، أول، أولد، أولف، أول، أوكس، روك"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:277
@@ -2693,20 +3135,20 @@ msgstr "هدية إكمال اللعبة قبل نهاية الأدوار"
 
 #: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
-msgstr "هدف موازي"
+msgstr "هدف موازي:"
 
 #: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
-msgstr "هدية تحقيق الهدف الموازي"
+msgstr "هدية تحقيق الهدف الموازي:"
 
 #: data/core/macros/objective-utils.cfg:35
 msgid "Optional objective:"
-msgstr "أهداف اختيارية"
+msgstr "أهداف اختيارية:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
-msgstr "هذا السيناريو الأخير في هذه الحملة"
+msgstr "هذا السيناريو الأخير في هذه الحملة."
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:67
@@ -2719,176 +3161,178 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"قد لا يتمكن مشغل الكمبيوتر من تشغيل الجانب $side_number بشكل صحيح في هذا "
+"السيناريو."
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:157
 msgid "Battle Epic"
-msgstr ""
+msgstr "ملحمة المعركة"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:163
 msgid "Battle Music"
-msgstr ""
+msgstr "موسيقى المعركة"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:169
 msgid "Breaking the Chains"
-msgstr ""
+msgstr "كسر السلاسل"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:175
 msgid "Casualties of War"
-msgstr ""
+msgstr "ضحايا الحرب"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:181
 msgid "Elf Land"
-msgstr ""
+msgstr "أرض العفريت"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:187
 msgid "Elvish theme"
-msgstr ""
+msgstr "موضوع الجن"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:193
 msgid "Frantic"
-msgstr ""
+msgstr "محموم"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:199
 msgid "Heroes Rite"
-msgstr ""
+msgstr "طقوس الأبطال"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:205
 msgid "Into the Shadows"
-msgstr ""
+msgstr "في الظلال"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:211
 msgid "Journey’s End"
-msgstr ""
+msgstr "نهاية الرحلة"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:217
 msgid "Knalgan Theme"
-msgstr ""
+msgstr "موضوع كنالجان"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:223
 msgid "The Knolls of Doldesh"
-msgstr ""
+msgstr "ربوات دولش"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:229
 msgid "Legends of the North"
-msgstr ""
+msgstr "أساطير الشمال"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:235
 msgid "Love Theme"
-msgstr ""
+msgstr "موضوع الحب"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:241
 msgid "Loyalists"
-msgstr ""
+msgstr "الموالون"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:247
 msgid "Over the Northern Mountains"
-msgstr ""
+msgstr "فوق الجبال الشمالية"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:253
 msgid "Northerners"
-msgstr ""
+msgstr "الشماليون"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:259
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "نونك ديمتيس"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:265
 msgid "Revelation"
-msgstr ""
+msgstr "الوحي"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:271
 msgid "Sad"
-msgstr ""
+msgstr "حزين"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:277
 msgid "Siege of Laurelmor"
-msgstr ""
+msgstr "حصار لوريلمور"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:283
 msgid "Silvan Sanctuary"
-msgstr ""
+msgstr "محمية سيلفان"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:289
 msgid "Suspense"
-msgstr ""
+msgstr "تشويق"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
-msgstr ""
+msgstr "شلالات المدينة"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:301
 msgid "The Dangerous Symphony"
-msgstr ""
+msgstr "السيمفونية الخطرة"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:307
 msgid "The Deep Path"
-msgstr ""
+msgstr "الطريق العميق"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:313
 msgid "The King is Dead"
-msgstr ""
+msgstr "الملك مات"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
-msgstr ""
+msgstr "العبور"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:325
 msgid "Traveling Minstrels"
-msgstr ""
+msgstr "المنشدون المسافرون"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:331
 msgid "Underground"
-msgstr ""
+msgstr "تحت الأرض"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:337
 msgid "Vengeful Pursuit"
-msgstr ""
+msgstr "مطاردة انتقامية"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:343
 msgid "Still Another Wanderer"
-msgstr ""
+msgstr "لا يزال متجولًا آخر"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:349
 msgid "Weight of Revenge"
-msgstr ""
+msgstr "ثقل الانتقام"
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "تسترد قطع الذهب $amount_gold."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -2967,7 +3411,7 @@ msgstr "أبيض"
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:100 data/core/team-colors.cfg:294
 msgid "Teal"
-msgstr ""
+msgstr "البط البري"
 
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
@@ -3091,7 +3535,7 @@ msgstr "ويسنوث (قياسي)"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr "لب ويسنوث القياسي"
+msgstr "لب ويسنوث القياسي."
 
 #. [language]
 #: data/english.cfg:3
@@ -3121,6 +3565,10 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
+"الوحدات النهارية تقاتل بشكل أفضل أثناء النهار، وأسوأ في الليل.\n"
+"\n"
+"النهار: 25% ضرر\n"
+"الليل: −25% ضرر"
 
 #. [language]
 #: data/english.cfg:12
@@ -3128,7 +3576,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"الوحدات المحايدة لا تتأثر بتوقيت اليوم فهي تقاتل في الليل والنهار نفس المستوى"
+"الوحدات المحايدة لا تتأثر بتوقيت اليوم فهي تقاتل في الليل والنهار نفس "
+"المستوى."
 
 #. [language]
 #: data/english.cfg:13
@@ -3138,6 +3587,10 @@ msgid ""
 "Day: −25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"الوحدات الليلية تقاتل بشكل أفضل في الليل، وأسوأ خلال النهار.\n"
+"\n"
+"النهار: −25% ضرر\n"
+"الليل: 25% ضرر"
 
 #. [language]
 #: data/english.cfg:17
@@ -3146,6 +3599,9 @@ msgid ""
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
+"الوحدات الحدية تقاتل بشكل أفضل خلال أوقات الشفق من اليوم.\n"
+"\n"
+"الشفق: 25% ضرر"
 
 #. [language]
 #: data/english.cfg:31
@@ -3374,38 +3830,38 @@ msgstr "لقطة"
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
 msgid "Lato"
-msgstr ""
+msgstr "لاتو"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:29
 msgid "DejaVu Sans Mono"
-msgstr ""
+msgstr "ديجافو بلا مونو"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "ضوء لاتو"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "أولدانيا ADF Std"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:32
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
+msgstr "(ملاحظة: يجب عليك استخدام $replacement بدلاً من ذلك في الكود الجديد)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:38 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
+msgstr "مستوى الإهمال $level غير صالح (يجب أن يكون 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:879
 msgid "Invalid deprecation level (should be 1-4)"
-msgstr ""
+msgstr "مستوى الإهمال غير صالح (يجب أن يكون 1-4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -3458,28 +3914,28 @@ msgstr "مدخل"
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:76
 msgid "Victory:"
-msgstr "نصر"
+msgstr "نصر:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:37
 msgid "Defeat:"
-msgstr "قياسي"
+msgstr "الهزيمة:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "بقي هذا الدور فقط"
+msgstr[1] "بقي دور إضافي فقط"
+msgstr[2] "بقي دوران اضافيان فقط"
+msgstr[3] "ب($remaining_turns دورا باقيا)"
+msgstr[4] "ب($remaining_turns دورة باقية)"
+msgstr[5] "ب($remaining_turns دورا باقيا)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr ""
+msgstr "$percent|% من الذهب تم ترحيله إلى السيناريو التالي."
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:6
@@ -3488,12 +3944,6 @@ msgstr "التخطيط المسبق"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
-#, fuzzy
-#| msgid ""
-#| "When playing a multiplayer game, you do not control what a unit advances "
-#| "to if it advances on another player's turn. With this modification you "
-#| "can set what your units advance to beforehand, either for a specific unit "
-#| "or for all units of the same type."
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
 "if it advances on another player’s turn. With this modification you can set "
@@ -3501,7 +3951,7 @@ msgid ""
 "units of the same type."
 msgstr ""
 "عند اللعب الجماعي  لا يمكنك التحكم في مسار تطور وحدتك عندما تتطور أثناء دور "
-"لاعب آخر. بهذا الاختيار يمكنك مسبقا تخطيط مسار تطور وحداتك"
+"لاعب آخر. بهذا الاختيار يمكنك مسبقا تخطيط مسار تطور وحداتك."
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -3516,6 +3966,9 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"سيتم طرح سؤال عليك حول اختيار التقدم كلما ظهرت وحدة لم تحدد بعد.\n"
+"\n"
+"قد تقوم بعض العصور والسيناريوهات بتمكين هذا الخيار تلقائيًا."
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:36
@@ -3622,7 +4075,7 @@ msgstr "إستكمال اللعب"
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:515
 msgid "Exit the replay mode and continue playing normally."
-msgstr "الخروج من إعادة العرض ومواصلة اللعب بطريقة عادية"
+msgstr "الخروج من إعادة العرض ومواصلة اللعب بطريقة عادية."
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:527 data/themes/_initial.cfg:667
@@ -3682,14 +4135,12 @@ msgstr "المشهد القياسي"
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr "تحميل دور"
+msgstr "تحميل دور..."
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "لعب دور"
+msgstr "إعادة لعب دور..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -3714,7 +4165,7 @@ msgstr "نقاط الحركة"
 #. [label]: id=label-def
 #: data/themes/default.cfg:189
 msgid "def"
-msgstr ""
+msgstr "دف"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:408
@@ -3727,11 +4178,13 @@ msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
+"استخدم قائمة <i>المناطق</i> الخاصة بمحرر الخريطة لتحديد المناطق التي سيتم "
+"تناولها لاحقًا بواسطة الحدث أو ترميز الذكاء الاصطناعي."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr ""
+msgstr "<i>― دليل تصميم ويسنوث</i>"
 
 #. [tip]
 #: data/tips.cfg:8
@@ -3739,6 +4192,8 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
+"في محرر الخرائط، حدد <i>سيناريو جديد</i> في القائمة <i>ملف</i> للاستفادة من "
+"الميزات المتقدمة."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -3746,6 +4201,8 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
+"السيناريوهات المحفوظة من المحرر في مجلدها الافتراضي يمكن تحديدها في قسم "
+"<i>السيناريوهات المخصصة</i> في شاشة 'إنشاء لعبة' متعددة اللاعبين."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -3753,11 +4210,13 @@ msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
+"لا تهمل اكتساب خبرة قائدك! أنت بحاجة إلى الحفاظ عليه آمنًا، ولكن إذا دللته "
+"كثيرًا فقد يكون أضعف من أن ينجو من المعارك المستقبلية."
 
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr ""
+msgstr "<i>― الساحر العظيم دلفادور، 516YW</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -3767,6 +4226,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"في قائمة <b>الإجراءات</b>، يمكنك تحديد <b>إظهار تحركات العدو</b> لتسليط "
+"الضوء على جميع السداسيات التي يمكن لخصمك التحرك إليها (بافتراض بقاء وحداتك "
+"في مكانها). استخدم هذا للتأكد من أن العدو لا يمكنه الوصول إلى وحداتك الضعيفة "
+"أو المصابة في دوره التالي."
 
 #. [tip]
 #: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
@@ -3778,7 +4241,7 @@ msgstr ""
 #: data/tips.cfg:206 data/tips.cfg:214 data/tips.cfg:234 data/tips.cfg:242
 #: data/tips.cfg:250 data/tips.cfg:266 data/tips.cfg:271 data/tips.cfg:276
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr ""
+msgstr "<i>― دليل ويسنوث التكتيكي</i>"
 
 #. [tip]
 #: data/tips.cfg:24
@@ -3787,11 +4250,14 @@ msgid ""
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
+"تحتاج الوحدات ذات السمة <i>الذكية</i> إلى نقاط خبرة أقل للارتقاء إلى المستوى "
+"الأعلى. في بداية الحملة، حاول توجيه ضربات قاتلة لهذه الوحدات حتى تتمكن من "
+"الحصول على بعض القوات رفيعة المستوى في وقت أقرب."
 
 #. [tip]
 #: data/tips.cfg:25
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr ""
+msgstr "<i>― الملك كونراد، 536 ي.و</i>"
 
 #. [tip]
 #: data/tips.cfg:28
@@ -3801,11 +4267,14 @@ msgid ""
 "will restrict it to one hex of movement in any direction. Unfortunately, you "
 "must completely surround skirmishers to immobilize them."
 msgstr ""
+"تكتيك التطويق قوي جدًا، خاصة ضد الخصوم السريعين. من خلال وضع وحدتين على "
+"جانبين متقابلين من العدو، فإن مناطق سيطرتهما ستقيده بحركة واحدة في أي اتجاه. "
+"لسوء الحظ، يجب عليك محاصرة المناوشات بالكامل لشل حركتهم."
 
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr ""
+msgstr "<i>― مذكرات جويدري، 627YW</i>"
 
 #. [tip]
 #: data/tips.cfg:32
@@ -3815,6 +4284,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
+"يمكنك الوصول إلى أوامر <b>التجنيد</b> و<b>الاستدعاء</b> عن طريق النقر بزر "
+"الماوس الأيمن على بلاط القلعة. سيتيح لك ذلك اختيار الشكل السداسي الدقيق الذي "
+"تضع فيه الوحدة. إن وضع الوحدات بحكمة قد يتيح لك أحيانًا الوصول إلى القرية في "
+"وقت مبكر."
 
 #. [tip]
 #: data/tips.cfg:36
@@ -3823,6 +4296,8 @@ msgid ""
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
 "you are doing in comparison."
 msgstr ""
+"توجد بعض شاشات التلخيص المفيدة في القائمة الرئيسية: على سبيل المثال، <b>جدول "
+"الحالة</b> سيتيح لك معرفة أداء أعدائك، وكيف هو أدائك بالمقارنة."
 
 #. [tip]
 #: data/tips.cfg:40
@@ -3831,11 +4306,14 @@ msgid ""
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
+"تحصل الوحدات ذات السمة <i>السريعة</i> على نقطة حركة إضافية لكل دورة. قد يكون "
+"هذا مهمًا جدًا عند التحرك عبر التضاريس الصعبة مثل المياه أو الكهوف. يمكن أن "
+"يحدث فرقًا بين القدرة على تحريك سداسي واحد أو اثنين."
 
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:218 data/tips.cfg:230
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr ""
+msgstr "<i>― اللورد الأعلى كالينز، 470YW</i>"
 
 #. [tip]
 #: data/tips.cfg:44
@@ -3844,6 +4322,8 @@ msgid ""
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
+"بعد تشغيل بعض السيناريوهات، اقرأ قسم <b>أسلوب اللعب</b> في شاشة <b>المساعدة</"
+"b> بعناية. تصبح التفاصيل مهمة عندما تصبح السيناريوهات أكثر صعوبة!"
 
 #. [tip]
 #: data/tips.cfg:48
@@ -3852,6 +4332,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"عادةً ما يكون من الأفضل بدء السيناريو التالي في حملة بوحدات ذات مستوى أدنى "
+"على وشك الارتقاء إلى المستوى الأعلى بدلاً من تلك الوحدات نفسها في مستوى أعلى."
 
 #. [tip]
 #: data/tips.cfg:52
@@ -3859,11 +4341,13 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"على www.wesnoth.org يمكنك العثور على أدلة الإستراتيجية والدعم الفني وتاريخ "
+"Wesnoth وغير ذلك الكثير."
 
 #. [tip]
 #: data/tips.cfg:53
 msgid "<i>― The Wesnoth Community</i>"
-msgstr ""
+msgstr "<i>― مجتمع ويسنوث</i>"
 
 #. [tip]
 #: data/tips.cfg:56
@@ -3872,24 +4356,28 @@ msgid ""
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
+"الوحدات<i>النهارية</i> تقاتل بشكل أفضل في النهار، والوحدات <i>الليلية</i> "
+"تقاتل بشكل أفضل في الليل. <i>المحايدة</i> لا تتأثر الوحدات بالوقت من اليوم. "
+"تقاتل الوحدات <i>الحدودية</i> النادرة بشكل أفضل أثناء الشفق."
 
 #. [tip]
 #: data/tips.cfg:57
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr ""
+"<i>― الملخص الملكي لمصطلحات المعركة: المجلد الثاني (أعيد طبعه 221YW)</i>"
 
 #. [tip]
 #: data/tips.cfg:60
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr ""
+msgstr "قد تفشل الخطة السليمة إذا قمت بالهجوم في الوقت الخطأ من اليوم."
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
 #: data/tips.cfg:222
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr ""
+msgstr "<i>― هالدريك الثاني، 42YW، دليل التحليل التكتيكي: المجلد الأول</i>"
 
 #. [tip]
 #: data/tips.cfg:64
@@ -3899,6 +4387,10 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
+"إذا كنت تلعب مع <b>الظلام</b> أو <b>ضباب المعركة</b> نشط، فلن تعرف ما الذي "
+"تواجهه. في هذه الحالة، تستحق وحدات الاستطلاع بعيدة المدى تكلفتها. حاول "
+"اختيار الكشافة التي يمكنها التحرك بسهولة عبر التضاريس المحيطة، لأن الوحدات "
+"لا يمكنها الرؤية إلا بقدر ما يمكنها التحرك في دورة واحدة."
 
 #. [tip]
 #: data/tips.cfg:68
@@ -3909,6 +4401,11 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
+"هناك ستة أنواع من الهجوم: <i>المخترق</i>، <i>الشفرة</i>، <i>الصادم</i>، "
+"<i>الناري</i>، <i>البارد</i> > و<i>الغامض</i>. الوحدات المختلفة لديها نقاط "
+"ضعف ضد أنواع مختلفة من الهجمات. انقر بزر الماوس الأيمن على الوحدة وحدد "
+"<b>وصف الوحدة</b> لمعرفة الهجمات التي تقاومها والهجمات التي ستؤثر عليها بشكل "
+"أكبر."
 
 #. [tip]
 #: data/tips.cfg:72
@@ -3918,6 +4415,9 @@ msgid ""
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
+"إن التضاريس التي تشغلها وحداتك هي العامل الرئيسي الذي يحدد احتمالية إصابتها. "
+"يتم عرض التصنيف الدفاعي للوحدة المحددة حاليًا في التضاريس المحددة حاليًا في "
+"الزاوية اليمنى العليا من الشاشة."
 
 #. [tip]
 #: data/tips.cfg:76
@@ -3928,6 +4428,10 @@ msgid ""
 "poison will not be removed unless the unit regenerates, or begins a turn in "
 "a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 msgstr ""
+"ستفقد الوحدات المسمومة ثماني نقاط إصابة في كل دور حتى تصبح على بعد نقطة "
+"واحدة من الموت. ثم سيبقون على عتبة الموت حتى تتم إزالة السم. يمكن للمعالجين "
+"منع الوحدة المسمومة من التدهور، ولكن لن تتم إزالة السم إلا إذا تجدد الوحدة، "
+"أو بدأت دورة في قرية، أو في واحة، أو بجوار وحدة تتمتع بقدرة <i>الشفاء</i>."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -3936,6 +4440,9 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
+"يمكنك إعادة استخدام الوحدات من السيناريو السابق عن طريق تحديد <b>استدعاء</b> "
+"من قائمة <b>الإجراءات</b>. ومن خلال استدعاء نفس الوحدات مرارًا وتكرارًا، يمكنك "
+"بناء جيش قوي وذو خبرة."
 
 #. [tip]
 #: data/tips.cfg:84
@@ -3960,7 +4467,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:89
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr ""
+msgstr "<i>― هالدريك الثاني، 43YW، دليل التحليل التكتيكي: المجلد الثاني</i>"
 
 #. [tip]
 #: data/tips.cfg:92
@@ -3968,6 +4475,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
+"الوحدات المتمركزة في القرى إما ستعالج ثماني نقاط إصابة في بداية دورها، أو "
+"ستتعافى من التسمم."
 
 #. [tip]
 #: data/tips.cfg:96
@@ -3993,11 +4502,14 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
+"تميل الوحدات الراجلة إلى الدفاع بشكل أفضل في القرى والقلاع مقارنة بأنواع "
+"التضاريس الأخرى، في حين أن معظم الوحدات الراجلة لا تكتسب أي مزايا دفاعية من "
+"القرى أو القلاع."
 
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:185
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr ""
+msgstr "<i>― السير كيلان، 498YW</i>"
 
 #. [tip]
 #: data/tips.cfg:108
@@ -4006,11 +4518,14 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"الوحدات المعتمدة على الخيول تقاوم بشكل عام الهجمات بالأسلحة البيضاء أو "
+"الأسلحة الصادمة، ولكنها عرضة للهجمات بالأسلحة الثاقبة، بما في ذلك الأقواس "
+"والرماح."
 
 #. [tip]
 #: data/tips.cfg:109
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr ""
+msgstr "<i>― السير كيلان، 502YW</i>"
 
 #. [tip]
 #: data/tips.cfg:112
@@ -4041,6 +4556,8 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"إذا تعرضت للهجوم من عدة اتجاهات، فقد يكون من الجيد إرسال وحدات مستهلكة في "
+"بعض الاتجاهات لتأخير وحدات العدو."
 
 #. [tip]
 #: data/tips.cfg:128
@@ -4051,7 +4568,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:129
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr ""
+msgstr "<i>― منلدور، 123YW</i>"
 
 #. [tip]
 #: data/tips.cfg:132
@@ -4077,6 +4594,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
+"الهياكل العظمية مقاومة للهجمات الثاقبة والشفرات والهجمات الباردة ولكنها عرضة "
+"لهجمات الصدام والنار والهجمات السحرية."
 
 #. [tip]
 #: data/tips.cfg:144
@@ -4106,17 +4625,17 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:153
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr ""
+msgstr "<i>― كاي لاوديس، 623YW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
 msgid "Use lines of troops to screen your injured units while they recover."
-msgstr ""
+msgstr "استخدم خطوط القوات لفحص الوحدات المصابة أثناء تعافيها."
 
 #. [tip]
 #: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr ""
+msgstr "<i>― الأميرة ليزار، 515 سنة</i>"
 
 #. [tip]
 #: data/tips.cfg:160
@@ -4124,6 +4643,8 @@ msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
+"إذا قمت بتحريك وحدة، لكن لم تهاجم أو تكتشف أي معلومات إضافية، يمكنك التراجع "
+"عن حركتك بالضغط على <b>u</b>."
 
 #. [tip]
 #: data/tips.cfg:164
@@ -4131,6 +4652,8 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"يمكنك معرفة المدى الذي يمكن أن تتحرك به وحدات العدو عن طريق تحريك مؤشر "
+"الفأرة فوقها."
 
 #. [tip]
 #: data/tips.cfg:168
@@ -4138,11 +4661,13 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"استخدم المعالجين لدعم هجماتك - سيفوزون بمعاركك دون الحاجة إلى مهاجمة أي شيء "
+"بأنفسهم."
 
 #. [tip]
 #: data/tips.cfg:169 data/tips.cfg:210
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr ""
+msgstr "<i>― لفافة شانتال، 516YW</i>"
 
 #. [tip]
 #: data/tips.cfg:172
@@ -4150,23 +4675,25 @@ msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
+"الهجوم <i>البطيء</i> يجعل وحدات العدو تتحرك بشكل أبطأ ويقلل الضرر الذي تسببه "
+"في جميع الهجمات إلى النصف حتى ينهوا الدور."
 
 #. [tip]
 #: data/tips.cfg:176
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr ""
+msgstr "هجمات<i>غامضة</i> قوية جدًا ضد الموتى الأحياء."
 
 #. [tip]
 #: data/tips.cfg:177
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr ""
+msgstr "<i>― الحكيم العظيم داسين، 626YW</i>"
 
 #. [tip]
 #: data/tips.cfg:180
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
-msgstr ""
+msgstr "يتم شفاء الوحدات عندما تتقدم في المستوى. إستخدم هذا المعطى بحكمة."
 
 #. [tip]
 #: data/tips.cfg:184
@@ -4174,6 +4701,7 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"من الأفضل استخدام وحدات الشحن ضد الأعداء الذين يمكنهم قتلهم بضربة واحدة."
 
 #. [tip]
 #: data/tips.cfg:188
@@ -4196,7 +4724,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:193
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr ""
+msgstr "<i>― الملكة ليزار، 528 سنة</i>"
 
 #. [tip]
 #. Whiteboard is another name for the Planning Mode
@@ -4207,8 +4735,8 @@ msgid ""
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
 "لا يمكن التراجع عن خطوة قمت بها اذا نتج عنها كشف سداسي كان مغطى بالضباب او "
-"الظلام. استعمل خيار 'تأخير كشف ظلام الخريطة' او نظام التخطيط المسبق للابقاء "
-"عن إمكانية التراجع"
+"الظلام. استعمل خيار 'تأخير كشف ظلام الخريطة' او نظام التخطيط المسبق للإبقاء "
+"عن إمكانية التراجع."
 
 #. [tip]
 #: data/tips.cfg:201
@@ -4273,7 +4801,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― اللورد هامل من كنالجا</i>"
 
 #. [tip]
 #: data/tips.cfg:229
@@ -4320,7 +4848,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:246
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr ""
+msgstr "<i>― الملكة أشفير، 503YW</i>"
 
 #. [tip]
 #: data/tips.cfg:249
@@ -4334,11 +4862,14 @@ msgid ""
 "<i>Cures</i>, or <i>Nightstalk</i>. Obtaining those units early can make a "
 "big difference in a campaign."
 msgstr ""
+"تتمتع بعض الوحدات ذات المستوى الأعلى بقدرات لا تضاهى مثل <i>القيادة</i>، أو "
+"<i>الشفاء</i>، أو <i>التسلل</i>. الحصول على هذه الوحدات مبكرا في الحملة له "
+"أثر كبير."
 
 #. [tip]
 #: data/tips.cfg:254
 msgid "<i>― Sir Gerrick of Westin, 607YW</i>"
-msgstr ""
+msgstr "<i>― السير جيريك من ويستن، 607YW</i>"
 
 #. [tip]
 #: data/tips.cfg:257
@@ -4351,7 +4882,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:258
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr ""
+msgstr "<i>― جورلاك المهيمن، 3YW</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -4364,7 +4895,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr ""
+msgstr "<i>― اللورد تالين من كنالجا، 538 سنة</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -4396,63 +4927,63 @@ msgstr ""
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:259
 msgid "waiting for^an advancement choice"
-msgstr ""
+msgstr "اختيار التقدم"
 
 #: src/actions/attack.cpp:584 src/actions/attack.cpp:1375
 msgid "An invalid attacker weapon got selected."
-msgstr ""
+msgstr "تم اختيار سلاح مهاجم غير صالح."
 
 #: src/actions/create.cpp:342
 msgid "You do not have a leader to recall with."
-msgstr ""
+msgstr "ليس لديك قائد لاعادة الاستدعاء."
 
 #: src/actions/create.cpp:346
 msgid "None of your leaders are able to recall that unit."
-msgstr ""
+msgstr "لا أحد من قادتك قادر على استدعاء تلك الوحدة."
 
 #: src/actions/create.cpp:350
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr ""
+msgstr "يجب أن يكون لديك قائد في القصر قادر على استدعاء تلك الوحدة."
 
 #: src/actions/create.cpp:354
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr ""
+msgstr "لا توجد بلاطات قلعة شاغرة لاستدعاء الوحدة."
 
 #: src/actions/create.cpp:364 src/actions/create.cpp:500
 msgid "An unrecognized error has occurred."
-msgstr ""
+msgstr "حدث خطأ غير معروف."
 
 #: src/actions/create.cpp:478
 msgid "You do not have a leader to recruit with."
-msgstr ""
+msgstr "ليس لديك قائد لتجنيد وحدات."
 
 #: src/actions/create.cpp:482
 msgid "None of your leaders are able to recruit this unit."
-msgstr ""
+msgstr "لا أحد من قادتك قادر على تجنيد هذه الوحدة."
 
 #: src/actions/create.cpp:486
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr ""
+msgstr "يجب أن يكون لديك قائد في القصر قادر على تجنيد الوحدة."
 
 #: src/actions/create.cpp:490
 msgid "There are no vacant castle tiles in which to recruit the unit."
-msgstr ""
+msgstr "لا توجد قلعة شاغرة لتجنيد الوحدة."
 
 #: src/actions/heal.cpp:273
 msgid "cured"
-msgstr ""
+msgstr "شفي"
 
 #: src/actions/heal.cpp:273
 msgid "female^cured"
-msgstr ""
+msgstr "شفيت"
 
 #: src/actions/move.cpp:611
 msgid "Ambushed!"
-msgstr ""
+msgstr "كمين!"
 
 #: src/actions/move.cpp:1111
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "فشل النقل الآني! لا يوجد مكان خالي"
 
 #. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1127
@@ -4508,13 +5039,11 @@ msgstr[5] ""
 
 #: src/actions/move.cpp:1157
 msgid "(press $hotkey to keep moving)"
-msgstr ""
+msgstr "(اضغط على $hotkey لمتابعة التحرك)"
 
 #: src/actions/undo.cpp:413
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "خطأ في اللعبة"
+msgstr "خطأ في التراجع"
 
 #: src/actions/undo.cpp:414
 msgid ""
@@ -4524,11 +5053,11 @@ msgstr ""
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
-msgstr ""
+msgstr "الاتصال بـ $server_address|..."
 
 #: src/addon/client.cpp:128
 msgid "Downloading list of add-ons..."
-msgstr ""
+msgstr "جاري تحميل قائمة الإضافات..."
 
 #: src/addon/client.cpp:149
 msgid "Requesting distribution terms..."
@@ -4591,7 +5120,7 @@ msgstr ""
 
 #: src/addon/client.cpp:350 src/addon/client.cpp:711
 msgid "Add-ons Manager"
-msgstr ""
+msgstr "إدارة قائمة الإضافات"
 
 #: src/addon/client.cpp:350
 msgid "Installing add-on <i>$addon_title</i>..."
@@ -4602,6 +5131,8 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
+"الإضافة <i>$addon_title</i> بها ملف أو دليل يحتوي على أحرف غير صالحة ولا "
+"يمكن نشرها."
 
 #: src/addon/client.cpp:367 src/addon/client.cpp:393
 msgid ""
@@ -4609,9 +5140,9 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr ""
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:249
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "خطأ أثناء بدء تشغيل الخادم:"
 
 #: src/addon/client.cpp:481
 msgid ""
@@ -4629,7 +5160,7 @@ msgstr[5] ""
 
 #: src/addon/client.cpp:490
 msgid "Broken Dependencies"
-msgstr ""
+msgstr "الإضافات المرتبطة تالفة"
 
 #: src/addon/client.cpp:530
 msgid ""
@@ -4647,7 +5178,7 @@ msgstr[5] ""
 
 #: src/addon/client.cpp:534
 msgid "Dependencies Installation Failed"
-msgstr ""
+msgstr "فشل في تنزيل الإضافات التابعة"
 
 #: src/addon/client.cpp:557
 msgid ""
@@ -4657,72 +5188,72 @@ msgstr ""
 
 #: src/addon/client.cpp:561
 msgid "Publishing information file (.pbl)"
-msgstr ""
+msgstr "نشر ملف المعلومات (.pbl)"
 
 #: src/addon/client.cpp:565
 msgid "Version control system (VCS) information"
-msgstr ""
+msgstr "معلومات نظام التحكم في الإصدار (VCS)"
 
 #: src/addon/client.cpp:569
 msgid "Do you really wish to continue?"
-msgstr ""
+msgstr "هل ترغب حقا في الاستمرار؟"
 
 #: src/addon/client.cpp:571 src/addon/manager_ui.cpp:171
 #: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
-msgstr ""
+msgstr "تأكيد"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "حملة"
 
 #: src/addon/info.cpp:255
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "سيناريو"
 
 #: src/addon/info.cpp:257
 msgid "addon_type^SP/MP Campaign"
-msgstr ""
+msgstr "حملة متعددة/فردية اللعب"
 
 #: src/addon/info.cpp:259
 msgid "addon_type^MP era"
-msgstr ""
+msgstr "عصر متعدد اللاعبين"
 
 #: src/addon/info.cpp:261
 msgid "addon_type^MP faction"
-msgstr ""
+msgstr "اتحاد متعدد اللاعبين"
 
 #: src/addon/info.cpp:263
 msgid "addon_type^MP map-pack"
-msgstr ""
+msgstr "مجموعة خرائط متعددة اللاعبين"
 
 #: src/addon/info.cpp:265
 msgid "addon_type^MP scenario"
-msgstr ""
+msgstr "سيناريو متعدد اللاعبين"
 
 #: src/addon/info.cpp:267
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "حملة متعددة اللاعبين"
 
 #: src/addon/info.cpp:269
 msgid "addon_type^Modification"
-msgstr ""
+msgstr "تغييرات"
 
 #: src/addon/info.cpp:271
 msgid "addon_type^Core"
-msgstr ""
+msgstr "لب"
 
 #: src/addon/info.cpp:273
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "إضافات تابعة"
 
 #: src/addon/info.cpp:275
 msgid "addon_type^Other"
-msgstr ""
+msgstr "مختلفات"
 
 #: src/addon/info.cpp:277
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(غير مصنف)"
 
 #: src/addon/info.cpp:314
 msgid "unit_byte^B"
@@ -4730,17 +5261,17 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:81 src/addon/manager_ui.cpp:322
 msgid "Network communication error."
-msgstr ""
+msgstr "خطأ في الاتصال بالشبكة."
 
 #: src/addon/manager_ui.cpp:84 src/addon/manager_ui.cpp:325
 msgid "Remote host disconnected."
-msgstr ""
+msgstr "تم قطع اتصال المضيف البعيد."
 
 #: src/addon/manager_ui.cpp:87 src/addon/manager_ui.cpp:328
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr ""
+msgstr "حدثت مشكلة أثناء محاولة إنشاء الملفات اللازمة لتثبيت هذه الإضافة."
 
 #: src/addon/manager_ui.cpp:96 src/addon/manager_ui.cpp:337
 msgid ""
@@ -4749,14 +5280,18 @@ msgid ""
 "File: $path\n"
 "Error message: $msg"
 msgstr ""
+"تعذرت قراءة الملف المحلي الذي يحتوي على معلومات النشر الإضافية.\n"
+"\n"
+"الملف: $path\n"
+"رسالة الخطأ: $msg"
 
 #: src/addon/manager_ui.cpp:104 src/addon/manager_ui.cpp:343
 msgid "The add-ons server address specified is not valid."
-msgstr ""
+msgstr "عنوان خادم الوظائف الإضافية المحدد غير صالح."
 
 #: src/addon/manager_ui.cpp:117
 msgid "You have no add-ons installed."
-msgstr ""
+msgstr "ليس لديك أية إضافات مثبتة."
 
 #: src/addon/manager_ui.cpp:166
 msgid "Are you sure you want to remove the following installed add-on?"
@@ -4814,26 +5349,27 @@ msgstr[5] ""
 
 #: src/addon/manager_ui.cpp:268
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
+msgstr "حدث خطأ أثناء تنزيل قائمة الإضافات من الخادم."
 
 #: src/addon/manager_ui.cpp:315
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
+"تعذر العثور على الإضافة المطابقة للمعرفات $addon_ids على خادم الإضافات."
 
 #: src/addon/validation.cpp:389
 msgid "Success."
-msgstr ""
+msgstr "النجاح."
 
 #: src/addon/validation.cpp:393
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "عبارة مرور الإضافة غير صحيحة."
 
 #: src/addon/validation.cpp:397
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
-msgstr ""
+msgstr "تم طلب مصادقة المنتدى لمستخدم غير مسجل في المنتديات."
 
 #: src/addon/validation.cpp:401
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -4841,23 +5377,23 @@ msgstr ""
 
 #: src/addon/validation.cpp:405
 msgid "Attempted to upload an update pack for a non-existent add-on."
-msgstr ""
+msgstr "تمت محاولة تحميل حزمة تحديث لإضافة غير موجودة."
 
 #: src/addon/validation.cpp:414
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "لم يتم توفير أي معلومات إضافة من قبل العميل."
 
 #: src/addon/validation.cpp:418
 msgid "Invalid upload pack."
-msgstr ""
+msgstr "حزمة التحميل غير صالحة."
 
 #: src/addon/validation.cpp:422
 msgid "Invalid add-on name."
-msgstr ""
+msgstr "اسم الإضافة غير صالح."
 
 #: src/addon/validation.cpp:426
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "احرف تنسيق في اسم الإضافة."
 
 #: src/addon/validation.cpp:430
 msgid ""
@@ -4879,145 +5415,150 @@ msgid ""
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
+"تحتوي الإضافة على ملفات أو أحرف بها حالات تعارض.\n"
+"\n"
+"لا يجوز أن تكون الأسماء الموجودة في نفس الدليل عبارة عن إصدارات مختلفة عن "
+"بعضها البعض."
 
 #: src/addon/validation.cpp:446
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "يحتوي اسم الإضافة على تسلسل UTF-8 غير صالح."
 
 #: src/addon/validation.cpp:455
 msgid "No add-on title specified."
-msgstr ""
+msgstr "لم يتم تحديد عنوان الإضافة."
 
 #: src/addon/validation.cpp:459
 msgid "No add-on author/maintainer name specified."
-msgstr ""
+msgstr "لم يتم تحديد اسم المؤلف/المشرف على الإضافة."
 
 #: src/addon/validation.cpp:463
 msgid "No add-on version specified."
-msgstr ""
+msgstr "لم يتم تحديد إصدار الإضافة."
 
 #: src/addon/validation.cpp:467
 msgid "No add-on description specified."
-msgstr ""
+msgstr "لم يتم تحديد وصف الإضافة."
 
 #: src/addon/validation.cpp:471
 msgid "No add-on author/maintainer email specified."
-msgstr ""
+msgstr "لم يتم تحديد بريد إلكتروني للمؤلف/المشرف على الإضافة."
 
 #: src/addon/validation.cpp:475
 msgid "Missing passphrase."
-msgstr ""
+msgstr "عبارة المرور مفقودة."
 
 #: src/addon/validation.cpp:479
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "احرف تنسيق في عنوان الإضافة."
 
 #: src/addon/validation.cpp:483
 msgid "Invalid or unspecified add-on type."
-msgstr ""
+msgstr "نوع الإضافة غير صالح أو غير محدد."
 
 #: src/addon/validation.cpp:487
 msgid "Version number not greater than the latest uploaded version."
-msgstr ""
+msgstr "رقم الإصدار ليس أكبر من الإصدار الأخير الذي تم تحميله."
 
 #: src/addon/validation.cpp:491
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "معرف موضوع التعليقات ليس رقمًا."
 
 #: src/addon/validation.cpp:495
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "موضوع الملاحظات غير موجود."
 
 #: src/addon/validation.cpp:499
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "تحتوي معلومات نشر الوظيفة الإضافية على تسلسل UTF-8 غير صالح."
 
 #: src/addon/validation.cpp:503
 msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"خاصية forum_auth الخاصة بالوظيفة الإضافية لا تتطابق مع ما تم تحميله مسبقًا."
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
-msgstr ""
+msgstr "خطأ غير محدد في الخادم."
 
 #: src/addon/validation.cpp:516
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "الخادم في وضع القراءة فقط."
 
 #: src/addon/validation.cpp:520
 msgid "Corrupted server add-ons list."
-msgstr ""
+msgstr "قائمة الوظائف الإضافية للخادم تالفة."
 
 #: src/addon/validation.cpp:524
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "قائمة إصدارات الإضافات الفارغة على الخادم."
 
 #: src/addon/validation.cpp:528
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
-msgstr ""
+msgstr "لا يدعم هذا الخادم استخدام خاصية forum_auth في pbl الخاص بك."
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "فشل التحقق من الصحة غير محدد."
 
 #: src/carryover_show_gold.cpp:55
 msgid "Scenario Report"
-msgstr ""
+msgstr "تقرير السيناريو"
 
 #: src/carryover_show_gold.cpp:57
 msgid "Victory"
-msgstr ""
+msgstr "انتصار"
 
 #: src/carryover_show_gold.cpp:58
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "لقد خرجت منتصرا!"
 
 #: src/carryover_show_gold.cpp:60
 msgid "Defeat"
-msgstr ""
+msgstr "الهزيمة"
 
 #: src/carryover_show_gold.cpp:61
 msgid "You have been defeated!"
-msgstr ""
+msgstr "لقد هُزمت!"
 
 #: src/carryover_show_gold.cpp:97
 msgid "Remaining gold: "
-msgstr ""
+msgstr "الذهب المتبقي: "
 
 #: src/carryover_show_gold.cpp:101
 msgid "Turns finished early: "
-msgstr ""
+msgstr "الأدوار المتبقية: "
 
 #: src/carryover_show_gold.cpp:102
 msgid " per turn"
-msgstr ""
+msgstr " لكل دور"
 
 #: src/carryover_show_gold.cpp:102
 msgid "Early finish bonus: "
-msgstr ""
+msgstr "مكافأة النهاية المبكرة: "
 
 #: src/carryover_show_gold.cpp:103
 msgid "Total bonus: "
-msgstr ""
+msgstr "إجمالي المكافأة: "
 
 #: src/carryover_show_gold.cpp:106
 msgid "Total gold: "
-msgstr ""
+msgstr "إجمالي الذهب: "
 
 #: src/carryover_show_gold.cpp:110
 msgid "Carryover percentage: "
-msgstr ""
+msgstr "نسبة الترحيل: "
 
 #: src/carryover_show_gold.cpp:114
 msgid "Bonus gold: "
-msgstr ""
+msgstr "مكافأة الذهب: "
 
 #: src/carryover_show_gold.cpp:116
 msgid "Retained gold: "
-msgstr ""
+msgstr "الذهب المحتجز: "
 
 #: src/carryover_show_gold.cpp:129
 msgid ""
@@ -5061,35 +5602,35 @@ msgstr[5] ""
 
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
-msgstr ""
+msgstr "تم الإضافة إلى قائمة التجاهل: $nick"
 
 #: src/chat_command_handler.cpp:82
 msgid "ignores list"
-msgstr ""
+msgstr "قائمة التجاهل"
 
 #: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
 msgid "Invalid username: $nick"
-msgstr ""
+msgstr "اسم المستخدم غير صالح: $nick"
 
 #: src/chat_command_handler.cpp:101
 msgid "Added to friends list: $nick"
-msgstr ""
+msgstr "تم الإضافة إلى قائمة الأصدقاء: $nick"
 
 #: src/chat_command_handler.cpp:101
 msgid "friends list"
-msgstr ""
+msgstr "قائمة الأصدقاء"
 
 #: src/chat_command_handler.cpp:117
 msgid "Removed from list: $nick"
-msgstr ""
+msgstr "تمت الإزالة من القائمة: $nick"
 
 #: src/chat_command_handler.cpp:117
 msgid "friends and ignores list"
-msgstr ""
+msgstr "قائمة الأصدقاء والمتجاهلين"
 
 #: src/chat_command_handler.cpp:127
 msgid "version"
-msgstr ""
+msgstr "الإصدار"
 
 #: src/chat_command_handler.cpp:139
 msgid "nick registration"
@@ -5097,7 +5638,7 @@ msgstr ""
 
 #: src/chat_command_handler.cpp:139
 msgid "requesting information for user $nick"
-msgstr ""
+msgstr "طلب معلومات للمستخدم $nick"
 
 #: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
@@ -5105,7 +5646,7 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:58 src/menu_events.cpp:1195
 msgid "(admin only)"
-msgstr ""
+msgstr "(المسؤول فقط)"
 
 #: src/chat_command_handler.hpp:74
 msgid ""
@@ -5125,7 +5666,7 @@ msgstr ""
 #: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
 #: src/chat_command_handler.hpp:119
 msgid "<nickname>"
-msgstr ""
+msgstr "<الاسم المستعار>"
 
 #: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -5133,7 +5674,7 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "ركلة لاعب أو مراقب."
 
 #: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
@@ -5145,7 +5686,7 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr ""
+msgstr "كتم/إلغاء كتم صوت كافة المراقبين."
 
 #: src/chat_command_handler.hpp:92
 msgid ""
@@ -5183,19 +5724,19 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "تغيير مستوى السجل لمجال السجل."
 
 #: src/chat_command_handler.hpp:109
 msgid "Add a nickname to your ignores list."
-msgstr ""
+msgstr "أضف لقبًا إلى قائمة التجاهل الخاصة بك."
 
 #: src/chat_command_handler.hpp:111
 msgid "Add a nickname to your friends list."
-msgstr ""
+msgstr "أضف لقبًا إلى قائمة أصدقائك."
 
 #: src/chat_command_handler.hpp:113
 msgid "Remove a nickname from your ignores or friends list."
-msgstr ""
+msgstr "قم بإزالة اللقب من قائمة التجاهل أو قائمة الأصدقاء."
 
 #: src/chat_command_handler.hpp:115
 msgid "<N>"
@@ -5207,31 +5748,31 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:117
 msgid "Display version information."
-msgstr ""
+msgstr "عرض معلومات الإصدار."
 
 #: src/chat_command_handler.hpp:119
 msgid "Request information about a nickname."
-msgstr ""
+msgstr "طلب معلومات حول اللقب."
 
 #: src/chat_command_handler.hpp:121 src/menu_events.cpp:1245
 msgid "Clear chat history."
-msgstr ""
+msgstr "مسح سجل الدردشة."
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "مستوى التصحيح غير معروف: '$level'."
 
 #: src/chat_events.cpp:62 src/chat_events.cpp:71
 msgid "error"
-msgstr ""
+msgstr "خطأ"
 
 #: src/chat_events.cpp:69
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "مجال تصحيح غير معروف: '$domain'."
 
 #: src/chat_events.cpp:79
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "المجال المحول: '$domain' إلى المستوى: '$level'."
 
 #: src/chat_events.cpp:148
 msgid "whisper to $receiver"
@@ -5239,39 +5780,39 @@ msgstr ""
 
 #: src/chat_events.cpp:155
 msgid "whisper: $sender"
-msgstr ""
+msgstr "همس: $sender"
 
 #: src/deprecation.cpp:40
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "تم إهمال $elem إلى أجل غير مسمى."
 
 #: src/deprecation.cpp:47
 msgid "$elem has been deprecated and may be removed in version $version."
-msgstr ""
+msgstr "تم إهمال $elem وقد تتم إزالته في الإصدار $version."
 
 #: src/deprecation.cpp:49
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr ""
+msgstr "تم إهمال $elem ويمكن إزالته في أي وقت."
 
 #: src/deprecation.cpp:56
 msgid "$elem has been deprecated and will be removed in version $version."
-msgstr ""
+msgstr "تم إهمال $elem وستتم إزالته في الإصدار $version."
 
 #: src/deprecation.cpp:61
 msgid "$elem has been deprecated and removed."
-msgstr ""
+msgstr "تم إهمال $elem وإزالته."
 
 #: src/desktop/notifications.cpp:78
 msgid "Chat message"
-msgstr ""
+msgstr "رسالة دردشة"
 
 #: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "ملحمة ويسنوث"
 
 #: src/font/text_formatting.cpp:52
 msgid "Invalid Color"
-msgstr ""
+msgstr "لون غير صالح"
 
 #. TRANSLATORS: 24-hour time, eg '13:59'
 #: src/format_time_summary.cpp:48
@@ -5305,58 +5846,58 @@ msgstr ""
 
 #: src/game_config.cpp:516
 msgid "Invalid color in range: "
-msgstr ""
+msgstr "لون غير صالح في النطاق: "
 
 #: src/game_config_manager.cpp:246 src/game_config_manager.cpp:256
 #: src/game_config_manager.cpp:268
 msgid "Error validating data core."
-msgstr ""
+msgstr "خطأ في التحقق من صحة البيانات الأساسية."
 
 #: src/game_config_manager.cpp:247
 msgid "Found a core without id attribute."
-msgstr ""
+msgstr "تم العثور على نواة بدون سمة المعرف."
 
 #: src/game_config_manager.cpp:248 src/game_config_manager.cpp:259
 #: src/game_config_manager.cpp:272
 msgid "Skipping the core."
-msgstr ""
+msgstr "تخطي النواة."
 
 #: src/game_config_manager.cpp:257 src/game_config_manager.cpp:269
 #: src/game_config_manager.cpp:292
 msgid "Core ID: "
-msgstr ""
+msgstr "المعرف الأساسي: "
 
 #: src/game_config_manager.cpp:258
 msgid "The ID is already in use."
-msgstr ""
+msgstr "المعرف قيد الاستخدام بالفعل."
 
 #: src/game_config_manager.cpp:270
 msgid "Core Path: "
-msgstr ""
+msgstr "المسار الأساسي: "
 
 #: src/game_config_manager.cpp:271
 msgid "File not found."
-msgstr ""
+msgstr "لم يتم العثور على الملف."
 
 #: src/game_config_manager.cpp:291 src/game_config_manager.cpp:303
 msgid "Error loading core data."
-msgstr ""
+msgstr "خطأ في تحميل البيانات الأساسية."
 
 #: src/game_config_manager.cpp:293
 msgid "Error loading the core with named id."
-msgstr ""
+msgstr "خطأ في تحميل المركز بالمعرف المسمى."
 
 #: src/game_config_manager.cpp:294
 msgid "Falling back to the default core."
-msgstr ""
+msgstr "الرجوع إلى النواة الافتراضية."
 
 #: src/game_config_manager.cpp:304
 msgid "Can't locate the default core."
-msgstr ""
+msgstr "لا يمكن تحديد موقع المركز الافتراضي."
 
 #: src/game_config_manager.cpp:305
 msgid "The game will now exit."
-msgstr ""
+msgstr "سيتم الآن الخروج من اللعبة."
 
 #: src/game_config_manager.cpp:366
 msgid ""
@@ -5387,7 +5928,7 @@ msgstr ""
 
 #: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr ""
+msgstr "بدلاً من ذلك، استخدم الماكرو الذي يحمل نفس الاسم في علامة [campaign]"
 
 #: src/game_config_manager.cpp:639
 msgid "The following add-on had errors and could not be loaded:"
@@ -5412,36 +5953,36 @@ msgstr[5] ""
 
 #: src/game_events/pump.cpp:392 src/game_launcher.cpp:960
 msgid "Error: "
-msgstr ""
+msgstr "خطأ: "
 
 #: src/game_events/pump.cpp:394
 msgid "Warning: "
-msgstr ""
+msgstr "تحذير: "
 
 #: src/game_events/pump.cpp:396
 msgid "Debug: "
-msgstr ""
+msgstr "وضع تصحيح الأخطاء: "
 
 #: src/game_events/pump.cpp:398
 msgid "Info: "
-msgstr ""
+msgstr "معلومات: "
 
 #: src/game_initialization/configure_engine.cpp:64
 msgid "$login|’s game"
-msgstr ""
+msgstr "لعبة $login|"
 
 #: src/game_initialization/connect_engine.cpp:102
 msgid "Team"
-msgstr ""
+msgstr "فريق"
 
 #: src/game_initialization/connect_engine.cpp:950
 msgid "Anonymous player"
-msgstr ""
+msgstr "لاعب مجهول"
 
 #: src/game_initialization/connect_engine.cpp:955
 #: src/game_initialization/connect_engine.cpp:1253
 msgid "Computer Player"
-msgstr ""
+msgstr "مشغل الكمبيوتر"
 
 #: src/game_initialization/connect_engine.cpp:997
 msgid "$playername $side"
@@ -5449,44 +5990,44 @@ msgstr ""
 
 #: src/game_initialization/connect_engine.cpp:1249
 msgid "Network Player"
-msgstr ""
+msgstr "مشغل الشبكة"
 
 #: src/game_initialization/connect_engine.cpp:1252
 msgid "Local Player"
-msgstr ""
+msgstr "لاعب محلي"
 
 #: src/game_initialization/connect_engine.cpp:1254
 msgid "Nobody"
-msgstr ""
+msgstr "لا أحد"
 
 #: src/game_initialization/connect_engine.cpp:1257
 msgid "Reserved"
-msgstr ""
+msgstr "محجوز"
 
 #: src/game_initialization/create_engine.cpp:77
 #: src/game_initialization/create_engine.cpp:669
 msgid "Map could not be loaded: "
-msgstr ""
+msgstr "تعذر تحميل الخريطة. "
 
 #: src/game_initialization/create_engine.cpp:81
 msgid "Map could not be loaded."
-msgstr ""
+msgstr "تعذر تحميل الخريطة."
 
 #: src/game_initialization/create_engine.cpp:98
 msgid "not available."
-msgstr ""
+msgstr "غير متوفر."
 
 #: src/game_initialization/create_engine.cpp:153
 msgid "Custom map."
-msgstr ""
+msgstr "خريطة مخصصة."
 
 #: src/game_initialization/depcheck.cpp:492
 msgid "Failed to resolve dependencies"
-msgstr ""
+msgstr "فشل في حل التبعيات"
 
 #: src/game_initialization/depcheck.cpp:492
 msgid "OK"
-msgstr ""
+msgstr "حسنا"
 
 #: src/game_initialization/depcheck.cpp:517
 msgid "Scenario can't be activated. Some dependencies are missing: "
@@ -5495,7 +6036,7 @@ msgstr ""
 #: src/game_initialization/depcheck.cpp:571
 #: src/game_initialization/depcheck.cpp:694
 msgid "No compatible eras found."
-msgstr ""
+msgstr "لم يتم العثور على عصور متوافقة."
 
 #: src/game_initialization/depcheck.cpp:586
 msgid "Era can't be activated. Some dependencies are missing: "
@@ -5504,7 +6045,7 @@ msgstr ""
 #: src/game_initialization/depcheck.cpp:639
 #: src/game_initialization/depcheck.cpp:731
 msgid "No compatible scenarios found."
-msgstr ""
+msgstr "لم يتم العثور على سيناريوهات متوافقة."
 
 #: src/game_initialization/depcheck.cpp:668
 msgid ""
@@ -5515,31 +6056,31 @@ msgstr ""
 #: src/game_initialization/depcheck.hpp:309
 #: src/game_initialization/depcheck.hpp:321
 msgid "A component"
-msgstr ""
+msgstr "مكون"
 
 #: src/game_initialization/flg_manager.cpp:212
 msgid "Only random sides in the current era."
-msgstr ""
+msgstr "الجوانب العشوائية فقط في العصر الحالي."
 
 #: src/game_initialization/flg_manager.cpp:234
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "غير قادر على العثور على نوع قائد للفصيل $faction"
 
 #: src/game_initialization/flg_manager.cpp:257
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr ""
+msgstr "لا يمكن الحصول على الأجناس للزعيم $leader غير الصالح"
 
 #: src/game_initialization/lobby_data.cpp:163
 msgid "Missing addon: $name"
-msgstr ""
+msgstr "الملحق مفقود: $name"
 
 #: src/game_initialization/lobby_data.cpp:165
 msgid "Missing addon: $id"
-msgstr ""
+msgstr "الملحق مفقود: $id"
 
 #: src/game_initialization/lobby_data.cpp:197
 msgid "Unknown era"
-msgstr ""
+msgstr "عصر غير معروف"
 
 #: src/game_initialization/lobby_data.cpp:264
 #: src/game_initialization/lobby_data.cpp:298
@@ -5548,7 +6089,7 @@ msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
-msgstr ""
+msgstr "السيناريو البعيد"
 
 #: src/game_initialization/lobby_data.cpp:305
 #: src/game_initialization/lobby_data.cpp:331
@@ -5557,11 +6098,11 @@ msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
-msgstr ""
+msgstr "سيناريو غير معروف"
 
 #: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
-msgstr ""
+msgstr "لعبة معاد تحميلها"
 
 #: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
@@ -5575,20 +6116,20 @@ msgstr[5] ""
 
 #: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "كامل"
 
 #: src/game_initialization/lobby_data.cpp:379
 #: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:658
 msgid "Turn"
-msgstr ""
+msgstr "دور"
 
 #: src/game_initialization/lobby_data.cpp:394
 msgid "vision^none"
-msgstr ""
+msgstr "لا شيء"
 
 #: src/game_initialization/lobby_data.cpp:403
 msgid "time limit^none"
-msgstr ""
+msgstr "لا شيء"
 
 #: src/game_initialization/lobby_data.cpp:447
 msgid ""
@@ -5604,11 +6145,11 @@ msgstr ""
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
-msgstr ""
+msgstr "هزيمة زعيم (قادة) العدو"
 
 #: src/game_initialization/mp_game_utils.cpp:103
 msgid "Cannot find era '$era'"
-msgstr ""
+msgstr "لا يمكن العثور على العصر '$era'"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
@@ -5622,7 +6163,7 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "حلقة إعادة التوجيه من جانب الخادم"
 
 #: src/game_initialization/multiplayer.cpp:335
 msgid ""
@@ -5633,11 +6174,11 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "هل تريد المتابعة؟"
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
-msgstr ""
+msgstr "تحذير"
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid ""
@@ -5646,7 +6187,7 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
-msgstr ""
+msgstr "يجب عليك تسجيل الدخول أولا."
 
 #: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
@@ -5748,7 +6289,7 @@ msgstr ""
 #: src/game_initialization/playcampaign.cpp:218
 #: src/playsingle_controller.cpp:369
 msgid "Game Over"
-msgstr ""
+msgstr "انتهت اللعبة"
 
 #: src/game_initialization/playcampaign.cpp:219
 msgid "This scenario has ended. Do you want to continue the campaign?"
@@ -5760,7 +6301,7 @@ msgstr ""
 
 #: src/game_initialization/singleplayer.cpp:44
 msgid "No campaigns are available."
-msgstr ""
+msgstr "لا توجد حملات متاحة."
 
 #: src/game_launcher.cpp:719 src/game_launcher.cpp:738 src/replay.cpp:666
 msgid "The file you have tried to load is corrupt"
@@ -5822,68 +6363,66 @@ msgstr ""
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
-msgstr ""
+msgstr "إضافة جديدة"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
-msgstr ""
+msgstr "الخط الرئيسي"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline multiplayer scenarios"
-msgstr ""
+msgstr "سيناريوهات متعددة اللاعبين في الخط الرئيسي"
 
 #: src/gui/dialogs/game_stats.hpp:42
 msgid "No visible sides found."
-msgstr ""
+msgstr "لم يتم العثور على جوانب مرئية."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 msgid "Selected Game"
-msgstr ""
+msgstr "لعبة مختارة"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 msgid "Lobby"
-msgstr ""
+msgstr "الردهة"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 msgid "Other Games"
-msgstr ""
+msgstr "ألعاب أخرى"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
-#: src/gui/dialogs/multiplayer/match_history.cpp:90
+#: src/gui/dialogs/multiplayer/match_history.cpp:92
 msgid "Match History — $player"
-msgstr ""
-
-#: src/gui/dialogs/multiplayer/match_history.cpp:68
-#, fuzzy
-#| msgid "End Scenario"
-msgid "Scenario"
-msgstr "إنهاء سيناريو"
-
-#: src/gui/dialogs/multiplayer/match_history.cpp:69
-msgid "Era"
-msgstr ""
+msgstr "تاريخ المباراة — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
+msgid "Scenario"
+msgstr "سيناريو"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:71
+msgid "Era"
+msgstr "العصر"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:72
 msgid "Modification"
-msgstr ""
+msgstr "التعديل"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:134
+#: src/gui/dialogs/multiplayer/match_history.cpp:151
 msgid "Era: "
-msgstr ""
+msgstr "العصر: "
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:135
+#: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:230
+#: src/gui/dialogs/multiplayer/match_history.cpp:254
 msgid "No game history found."
-msgstr ""
+msgstr "لم يتم العثور على تاريخ اللعبة."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:243
+#: src/gui/dialogs/multiplayer/match_history.cpp:267
 msgid "Request timed out."
-msgstr ""
+msgstr "انتهت مهلة الطلب."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:253
+#: src/gui/dialogs/multiplayer/match_history.cpp:277
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 
@@ -5921,33 +6460,31 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 #: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
-#, fuzzy
-#| msgid "With specials: "
 msgid "Other aspects: "
-msgstr "مع خاصية:"
+msgstr "خواص أخرى: "
 
 #: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
 #: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
 msgid "Weapon: "
-msgstr "السلاح:"
+msgstr "السلاح: "
 
 #: src/gui/dialogs/unit_attack.cpp:191 src/gui/dialogs/unit_attack.cpp:204
 #: src/reports.cpp:195
 msgid "Type: "
-msgstr "الصنف:"
+msgstr "الصنف: "
 
 #: src/gui/dialogs/unit_attack.cpp:192 src/gui/dialogs/unit_attack.cpp:205
 #: src/reports.cpp:823 src/reports.cpp:1087
 msgid "Damage: "
-msgstr "الضرر:"
+msgstr "الضرر: "
 
 #: src/gui/dialogs/unit_attack.cpp:193 src/gui/dialogs/unit_attack.cpp:206
 #: src/reports.cpp:844
 msgid "Attacks: "
-msgstr "عدد الهجمات:"
+msgstr "عدد الهجمات: "
 
 #: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 msgid "Chance to hit: "
@@ -5963,7 +6500,7 @@ msgstr ""
 
 #: src/gui/widgets/status_label_helper.hpp:37
 msgid "yes"
-msgstr ""
+msgstr "نعم"
 
 #: src/help/help_browser.cpp:158
 msgid "Reference to unknown topic: "
@@ -6027,7 +6564,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:705
 msgid "Recruits"
-msgstr ""
+msgstr "المجندين"
 
 #: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
@@ -6035,7 +6572,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
-msgstr ""
+msgstr "عرق غير مصنف"
 
 #: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
@@ -6106,10 +6643,8 @@ msgid "Replay from Start"
 msgstr ""
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "لعب دور"
+msgstr "اعادة اللعب انطلاقا من دور "
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -6124,10 +6659,8 @@ msgid "Planning mode deactivated!"
 msgstr ""
 
 #: src/hotkey/hotkey_handler_sp.cpp:322
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you want to load it anyway?"
-msgstr "هل ترغب حقا في المغادرة"
+msgstr "هل ترغب حقا في التحميل؟"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
 msgid "The file you have tried to load has no replay information. "
@@ -6139,35 +6672,35 @@ msgstr ""
 
 #: src/language.cpp:115
 msgid "System default language"
-msgstr ""
+msgstr "لغة النظام القياسية"
 
 #: src/map/location.cpp:166
 msgid "North"
-msgstr ""
+msgstr "شمال"
 
 #: src/map/location.cpp:168
 msgid "North East"
-msgstr ""
+msgstr "شمال شرق"
 
 #: src/map/location.cpp:170
 msgid "North West"
-msgstr ""
+msgstr "شمال غرب"
 
 #: src/map/location.cpp:172
 msgid "South"
-msgstr ""
+msgstr "الجنوب"
 
 #: src/map/location.cpp:174
 msgid "South East"
-msgstr ""
+msgstr "الجنوب الشرقي"
 
 #: src/map/location.cpp:176
 msgid "South West"
-msgstr ""
+msgstr "الجنوب الغربي"
 
 #: src/map_command_handler.hpp:188
 msgid "This command is currently unavailable."
-msgstr ""
+msgstr "هذا الأمر غير متوفر حاليًا."
 
 #: src/map_command_handler.hpp:225
 msgid ""
@@ -6180,10 +6713,12 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"أمر غير معروف '$command'، جرب $help_command للحصول على قائمة بالأوامر "
+"المتاحة."
 
 #: src/map_command_handler.hpp:246
 msgid "Error:"
-msgstr ""
+msgstr "خطأ:"
 
 #: src/map_command_handler.hpp:252
 msgid ""
@@ -6203,30 +6738,32 @@ msgstr ""
 
 #: src/map_command_handler.hpp:302
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "الوسيطة المفقودة $arg_id"
 
 #: src/map_command_handler.hpp:355
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"الأوامر المتوفرة $flags_description:\n"
+"$list_of_commands"
 
 #: src/map_command_handler.hpp:355 src/map_command_handler.hpp:356
 #: src/map_command_handler.hpp:396
 msgid "help"
-msgstr ""
+msgstr "مساعدة"
 
 #: src/map_command_handler.hpp:356
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "اكتب $help_command <command> لمزيد من المعلومات."
 
 #: src/map_command_handler.hpp:372
 msgid " No help available."
-msgstr ""
+msgstr " لا توجد تعليمات متاحة."
 
 #: src/map_command_handler.hpp:379 src/map_command_handler.hpp:382
 msgid "Usage:"
-msgstr ""
+msgstr "الاستعمال:"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
@@ -6242,27 +6779,27 @@ msgstr[5] ""
 
 #: src/menu_events.cpp:166
 msgid "Save Map As"
-msgstr ""
+msgstr "حفظ الخريطة ك"
 
 #: src/menu_events.cpp:177
 msgid "Map saved."
-msgstr ""
+msgstr "خريطة تم تسجيلها."
 
 #: src/menu_events.cpp:181
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "تعذر حفظ الخريطة: $msg"
 
 #: src/menu_events.cpp:209
 msgid "Message:"
-msgstr ""
+msgstr "الرسالة:"
 
 #: src/menu_events.cpp:211
 msgid "Send to observers only"
-msgstr ""
+msgstr "إرسال للمراقبين فقط"
 
 #: src/menu_events.cpp:212
 msgid "Send to allies only"
-msgstr ""
+msgstr "إرسال إلى الحلفاء فقط"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
@@ -6285,7 +6822,7 @@ msgstr ""
 
 #: src/menu_events.cpp:286
 msgid "No unit recruited."
-msgstr ""
+msgstr "لم يتم تجنيد أي وحدة."
 
 #: src/menu_events.cpp:311
 msgid "Internal error. Please report this as a bug! Details:\n"
@@ -6322,7 +6859,7 @@ msgstr ""
 
 #: src/menu_events.cpp:413
 msgid "No unit recalled."
-msgstr ""
+msgstr "لم يتم استدعاء أي وحدة."
 
 #: src/menu_events.cpp:430
 msgid "You must have at least 1 gold piece to recall a unit."
@@ -6336,7 +6873,7 @@ msgstr[5] ""
 
 #: src/menu_events.cpp:576
 msgid "You cannot end your turn yet!"
-msgstr ""
+msgstr "لا يمكنك إنهاء دورك بعد!"
 
 #: src/menu_events.cpp:591
 msgid ""
@@ -6353,15 +6890,15 @@ msgstr ""
 
 #: src/menu_events.cpp:666
 msgid "Rename Unit"
-msgstr ""
+msgstr "إعادة تسمية الوحدة"
 
 #: src/menu_events.cpp:667
 msgid "Name:"
-msgstr ""
+msgstr "اسم:"
 
 #: src/menu_events.cpp:843
 msgid "Clear Labels"
-msgstr ""
+msgstr "محو اللصائق"
 
 #: src/menu_events.cpp:844
 msgid "Are you sure you want to clear map labels?"
@@ -6789,10 +7326,8 @@ msgid ""
 msgstr ""
 
 #: src/mouse_events.cpp:1314
-#, fuzzy
-#| msgid "Attacks: "
 msgid "No Attacks"
-msgstr "عدد الهجمات:"
+msgstr "لا هجمات"
 
 #: src/mouse_events.cpp:1314
 msgid "This unit has no usable weapons."
@@ -6927,7 +7462,7 @@ msgstr[5] ""
 
 #: src/play_controller.cpp:1247
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr "حالما يتم اصلاح الحملة، ستضطر لإعادة آخر سيناريو لعبتهفيها"
+msgstr "حالما يتم اصلاح الحملة، ستضطر لإعادة آخر سيناريو لعبته فيها."
 
 #: src/play_controller.cpp:1356
 msgid "No objectives available"
@@ -6935,7 +7470,7 @@ msgstr "لا أهداف محددة"
 
 #: src/playmp_controller.cpp:163
 msgid "Undoing moves not yet transmitted to the server."
-msgstr "الحركات التي تم التراجع عنها لم ترسل بعد للسيرفر"
+msgstr "الحركات التي تم التراجع عنها لم ترسل بعد للسيرفر."
 
 #: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:448
 msgid ""
@@ -6984,12 +7519,13 @@ msgid ""
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
-"هذا الدور الجماعي يستخدم نظام احتمالات عشوائي مختلف عن نظام اللعبة المعتاد. "
-"إذا لم تكن على دراية بذلك فهذا يعني أن احد الأطراف يغش أو أن اللعبة بهذا كسر"
+"تستخدم هذه اللعبة متعددة اللاعبين وضعًا عشوائيًا بديلاً، إذا كنت لا تعرف معنى "
+"هذه الرسالة، فمن المرجح أن شخصًا ما يقوم بالغش أو قام شخص ما بإعادة تحميل "
+"لعبة مكسورة."
 
 #: src/playsingle_controller.cpp:369
 msgid "The game is over."
-msgstr "اللعبة انتهت"
+msgstr "اللعبة انتهت."
 
 #: src/playsingle_controller.cpp:543
 msgid "It is now $name|’s turn"
@@ -7031,11 +7567,11 @@ msgstr "المغادرة"
 
 #: src/quit_confirmation.cpp:90
 msgid "Do you really want to quit?"
-msgstr "هل ترغب حقا في المغادرة"
+msgstr "هل ترغب حقا في المغادرة؟"
 
 #: src/reports.cpp:174 src/savegame.cpp:429
 msgid "Name: "
-msgstr "الاسم:"
+msgstr "الاسم: "
 
 #: src/reports.cpp:198
 msgid "Special Notes:"
@@ -7043,7 +7579,7 @@ msgstr "ملاحظات خاصة:"
 
 #: src/reports.cpp:221
 msgid "Race: "
-msgstr "العرق:"
+msgstr "العرق: "
 
 #: src/reports.cpp:240
 msgid "Side: <b>$side_name</b> ($color_name)"
@@ -7051,11 +7587,11 @@ msgstr ""
 
 #: src/reports.cpp:318
 msgid "Trait: "
-msgstr "الصفات الشخصية:"
+msgstr "الصفات الشخصية: "
 
 #: src/reports.cpp:341
 msgid "invisible: "
-msgstr "غير مرئي:"
+msgstr "غير مرئي: "
 
 #: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -7063,7 +7599,7 @@ msgstr "هذه الوحدة غير مرئية. لا يمكن رؤيتها أو �
 
 #: src/reports.cpp:345
 msgid "slowed: "
-msgstr "تم ابطائه:"
+msgstr "تم ابطائه: "
 
 #: src/reports.cpp:346
 msgid ""
@@ -7071,11 +7607,11 @@ msgid ""
 "attacking and its movement cost is doubled."
 msgstr ""
 "هذه الوحدة تم ابطائها. هجماتها لها نصف المفعول وتنقلها يحتاج ضعف نقاط الحركة "
-"المعتادة"
+"المعتادة."
 
 #: src/reports.cpp:349
 msgid "poisoned: "
-msgstr "تم تسميمها:"
+msgstr "تم تسميمها: "
 
 #: src/reports.cpp:350
 msgid ""
@@ -7088,21 +7624,19 @@ msgid ""
 msgstr ""
 "هذه الوحدة تم تسميمها. ستخسر 8 نقاط حياة حتى يتم علاجها من وحدة حليفة لها "
 "قدرة علاج السم أو بالبقاء في مدينة لمدة دور. السم لن يقتل الوحدة ولن تنزل "
-"نقاط حياتها إلى ما تحت نقطة واحدة"
+"نقاط حياتها إلى ما تحت نقطة واحدة."
 
 #: src/reports.cpp:353
 msgid "petrified: "
-msgstr "تم تجميدها:"
+msgstr "تم تجميدها: "
 
 #: src/reports.cpp:354
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "هذه الوحدة تم تجميدها ولا يمكنها بالتالي التحرك أو الهجوم."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "غير قابل للشفاء"
+msgstr "غير قابل للشفاء "
 
 #: src/reports.cpp:358
 msgid ""
@@ -7111,29 +7645,24 @@ msgid ""
 msgstr ""
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "غير مرئي:"
+msgstr "غير قابل للاصابة: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr "هذه الوحدة غير مرئية. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
+msgstr "هذه الوحدة منيعة. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
 
 #: src/reports.cpp:440
 msgid "Ability: "
-msgstr "القدرات:"
+msgstr "القدرات: "
 
 #: src/reports.cpp:442 src/reports.cpp:997
 msgid " (inactive)"
-msgstr "(غير مفعل)"
+msgstr " (غير مفعل)"
 
 #: src/reports.cpp:510
 msgid "Resistances: "
-msgstr "المقاومة:"
+msgstr "المقاومة: "
 
 #: src/reports.cpp:512
 msgid "(Att / Def)"
@@ -7141,23 +7670,23 @@ msgstr "(الهجوم/الدفاع)"
 
 #: src/reports.cpp:543
 msgid "Experience Modifier: "
-msgstr "تغيير الخبرة اللازمة:"
+msgstr "تغيير الخبرة اللازمة: "
 
 #: src/reports.cpp:593
 msgid "Terrain: "
-msgstr "الارضية:"
+msgstr "الارضية: "
 
 #: src/reports.cpp:610
 msgid "maximum^max."
-msgstr "الاقصى"
+msgstr "الأقصى."
 
 #: src/reports.cpp:610
 msgid "minimum^min."
-msgstr "الادنى"
+msgstr "الأدنى."
 
 #: src/reports.cpp:615
 msgid "Defense: "
-msgstr "الدفاع:"
+msgstr "الدفاع: "
 
 #: src/reports.cpp:650 src/reports.cpp:651
 msgid "vision:"
@@ -7169,59 +7698,59 @@ msgstr "القفز:"
 
 #: src/reports.cpp:685
 msgid "Movement Costs:"
-msgstr "تكلفة الحركة"
+msgstr "تكلفة الحركة:"
 
 #: src/reports.cpp:827
 msgid "Base damage: "
-msgstr "الضرر القاعدي:"
+msgstr "الضرر القاعدي: "
 
 #: src/reports.cpp:829 src/reports.cpp:863 src/reports.cpp:873
 msgid "With specials: "
-msgstr "مع خاصية:"
+msgstr "مع خاصية: "
 
 #: src/reports.cpp:832
 msgid "Time of day: "
-msgstr "وقت اليوم:"
+msgstr "وقت اليوم: "
 
 #: src/reports.cpp:836
 msgid "Leadership: "
-msgstr "القيادة:"
+msgstr "القيادة: "
 
 #: src/reports.cpp:840
 msgid "Slowed: "
-msgstr "تم ابطائه:"
+msgstr "تم ابطائه: "
 
 #: src/reports.cpp:848
 msgid "Max swarm bonus: "
-msgstr "الحد الاقصى للعزم:"
+msgstr "الحد الاقصى للعزم: "
 
 #: src/reports.cpp:849 src/reports.cpp:868
 msgid "Swarm: "
-msgstr "العزم:"
+msgstr "العزم: "
 
 #: src/reports.cpp:850 src/reports.cpp:861 src/reports.cpp:872
 msgid "Base attacks: "
-msgstr "عدد الهجمات القاعدي:"
+msgstr "عدد الهجمات القاعدي: "
 
 #: src/reports.cpp:856
 msgid "Specials: "
-msgstr "الخاصية:"
+msgstr "الخاصية: "
 
 #: src/reports.cpp:866
 msgid "Subject to swarm: "
-msgstr "موضوع العزم:"
+msgstr "موضوع العزم: "
 
 #: src/reports.cpp:900
 msgid "Weapon range: "
-msgstr "مجال السلاح:"
+msgstr "مجال السلاح: "
 
 #: src/reports.cpp:901
 msgid "Damage type: "
-msgstr "نوع الضرر:"
+msgstr "نوع الضرر: "
 
 #: src/reports.cpp:902
 msgid "Damage versus: "
-msgstr "ضرر ضد:"
+msgstr "ضرر ضد: "
 
 #: src/reports.cpp:964
 msgid "Accuracy:"
@@ -7233,7 +7762,7 @@ msgstr "التحدي:"
 
 #: src/reports.cpp:995
 msgid "Weapon special: "
-msgstr "خاصية السلاح:"
+msgstr "خاصية السلاح: "
 
 #: src/reports.cpp:1070
 msgid "weapon^None"
@@ -7246,12 +7775,12 @@ msgstr "الضرر الجملي"
 #: src/reports.cpp:1163
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "هجمة"
+msgstr[1] "هجمة"
+msgstr[2] "هجمتان"
+msgstr[3] "هجمات"
+msgstr[4] "هجوما"
+msgstr[5] "هجمة"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1171
@@ -7260,7 +7789,7 @@ msgstr ""
 
 #: src/reports.cpp:1175
 msgid "This unit can attack multiple times per turn."
-msgstr "هذه الوحدة يمكنها الهجوم عدة مرات في الدور الواحد"
+msgstr "هذه الوحدة يمكنها الهجوم عدة مرات في الدور الواحد."
 
 #: src/reports.cpp:1267
 msgid "Time of day schedule:"
@@ -7272,19 +7801,19 @@ msgstr "توقيت اليوم:"
 
 #: src/reports.cpp:1317 src/reports.cpp:1371
 msgid "Lawful units: "
-msgstr "الوحدات النهارية:"
+msgstr "الوحدات النهارية: "
 
 #: src/reports.cpp:1319 src/reports.cpp:1373
 msgid "Neutral units: "
-msgstr "الوحدات المحايدة"
+msgstr "الوحدات المحايدة "
 
 #: src/reports.cpp:1320 src/reports.cpp:1374
 msgid "Chaotic units: "
-msgstr "الوحدات الليلية"
+msgstr "الوحدات الليلية "
 
 #: src/reports.cpp:1322 src/reports.cpp:1376
 msgid "Liminal units: "
-msgstr "الوحدات الفجرية"
+msgstr "الوحدات الفجرية "
 
 #: src/reports.cpp:1435
 msgid "Turn Number"
@@ -7294,7 +7823,7 @@ msgstr "رقم الدور"
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "عند تجاوز عدد الأدوار الاقصى المحدد تنتهي اللعبة"
+msgstr "عند تجاوز عدد الأدوار الاقصى المحدد تنتهي اللعبة."
 
 #: src/reports.cpp:1462
 msgid "Gold"
@@ -7303,11 +7832,11 @@ msgstr "الذهب"
 #: src/reports.cpp:1462
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
-msgstr "كمية الذهب المتوفرة لتجنيد وصيانة الوحدات"
+msgstr "كمية الذهب المتوفرة لتجنيد وصيانة الوحدات."
 
 #: src/reports.cpp:1481
 msgid "The fraction of known villages that your side has captured."
-msgstr "عدد المدن التي يسيطر عليها طرفك"
+msgstr "عدد المدن التي يسيطر عليها طرفك."
 
 #: src/reports.cpp:1481
 msgid "Villages"
@@ -7315,7 +7844,7 @@ msgstr "المدن"
 
 #: src/reports.cpp:1486
 msgid "The total number of units on your side."
-msgstr "عدد الوحدات في طرفك"
+msgstr "عدد الوحدات في طرفك."
 
 #: src/reports.cpp:1486
 msgid "Units"
@@ -7358,7 +7887,7 @@ msgstr "البطارية"
 
 #: src/reports.cpp:1795
 msgid "Countdown until your turn automatically ends."
-msgstr "ميقات يحدد الزمن قبل نهاية دورك آليا"
+msgstr "ميقات يحدد الزمن قبل نهاية دورك آليا."
 
 #: src/reports.cpp:1795
 msgid "Turn Countdown"
@@ -7462,7 +7991,7 @@ msgstr ""
 
 #: src/savegame.cpp:573
 msgid "Save Replay"
-msgstr ""
+msgstr "حفظ الإعادة"
 
 #: src/savegame.cpp:602
 msgid "Could not auto save the game. Please save the game manually."
@@ -7470,7 +7999,7 @@ msgstr ""
 
 #: src/savegame.cpp:652
 msgid "Save Game"
-msgstr ""
+msgstr "حفظ اللعبة"
 
 #: src/savegame.cpp:666
 msgid "Game state is corrupted"
@@ -7634,7 +8163,7 @@ msgstr ""
 
 #: src/synced_commands.cpp:430
 msgid "Details:"
-msgstr ""
+msgstr "التفاصيل:"
 
 #: src/synced_commands.cpp:433
 msgid "Do you wish to save the game before continuing?"
@@ -7700,20 +8229,20 @@ msgid "This Time of Day is only a Stub!"
 msgstr ""
 
 #: src/units/abilities.cpp:970
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "تم ابطائه:"
+msgstr "يملكه: "
 
-#: src/units/abilities.cpp:973
+#. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+#: src/units/abilities.cpp:974
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:976
+#. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+#: src/units/abilities.cpp:978
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:989
+#: src/units/abilities.cpp:991
 msgid "Used by opponent: "
 msgstr ""
 
@@ -7826,7 +8355,7 @@ msgstr[5] ""
 
 #: src/units/helper.cpp:59
 msgid "Level: "
-msgstr ""
+msgstr "المستوى: "
 
 #: src/units/helper.cpp:62
 msgid "Advancements:"
@@ -7858,12 +8387,11 @@ msgstr "ظلامي"
 
 #: src/units/types.cpp:842
 msgid "female^lawful"
-msgstr "نهاري"
+msgstr "نهارية"
 
 #: src/units/types.cpp:842
-#, fuzzy
 msgid "female^liminal"
-msgstr "محايدة"
+msgstr "فجرية"
 
 #: src/units/types.cpp:842
 msgid "female^neutral"
@@ -7875,7 +8403,7 @@ msgstr ""
 
 #: src/units/unit.cpp:2006
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent</span> نقطة حياة"
 
 #: src/units/unit.cpp:2016
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -7889,15 +8417,15 @@ msgstr[5] ""
 
 #: src/units/unit.cpp:2022
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent</span> الرؤية"
 
 #: src/units/unit.cpp:2026
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent</span> تشويش"
 
 #: src/units/unit.cpp:2031
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent</span> نقطة خبرة  للتقدم"
 
 #: src/units/unit.cpp:2035
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -7912,11 +8440,11 @@ msgstr[5] ""
 
 #: src/units/unit.cpp:2042
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent</span> تكلفة الاستدعاء"
 
 #: src/units/unit.cpp:2508
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$effect_description لكل مستوى"
 
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
@@ -7947,11 +8475,11 @@ msgstr ""
 
 #: src/wesnoth.cpp:815
 msgid "Logging Failure"
-msgstr ""
+msgstr "فشل التسجيل"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
-msgstr "مفصول عن السيرفر"
+msgstr "مفصول عن السيرفر."
 
 #: src/whiteboard/manager.cpp:1121
 msgid "SHOW ALL allies’ plans"
@@ -7967,7 +8495,7 @@ msgstr "إظهار مخططات اللاعب $player"
 
 #: src/whiteboard/manager.cpp:1138
 msgid "Hide plans for $player"
-msgstr " إخفاء مخططات اللاعب $player"
+msgstr "إخفاء مخططات اللاعب $player"
 
 #: src/whiteboard/manager.cpp:1141
 msgid "Whiteboard Options"

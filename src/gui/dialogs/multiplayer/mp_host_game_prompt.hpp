@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2023
+	Copyright (C) 2012 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/

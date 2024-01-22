@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2023
+	Copyright (C) 2005 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -109,16 +109,6 @@ std::set<std::string> split_set(std::string_view val, const char c = ',', const 
  * @todo Why not change split()? That would change the methods post condition.
  */
 std::vector<std::string> quoted_split(const std::string& val, char c= ',', int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
-
-/**
- * Splits a (comma-)separated string into a set of pieces.
- * See split() for the meanings of the parameters.
- */
-inline std::set<std::string> set_split(const std::string& val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES)
-{
-	std::vector<std::string> vec_split = split(val, c, flags);
-	return std::set< std::string >(vec_split.begin(), vec_split.end());
-}
 
 /**
  * Splits a string based on two separators into a map.

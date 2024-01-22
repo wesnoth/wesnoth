@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2023-11-21 08:17+0100\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"PO-Revision-Date: 2024-01-05 19:14+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -99,19 +99,19 @@ msgid "female^illuminates"
 msgstr "illumination"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "soins +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:639
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "soins +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:640
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -130,28 +130,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:644
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:683
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:713
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Cette unité est capable de prodiguer des soins de base et de ralentir la "
 "déshydratation."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "soins +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:663
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "soins +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:664
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -171,17 +171,17 @@ msgstr ""
 "trouver un village ou une unité avec la capacité de guérison."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:692
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 msgid "heals +12"
 msgstr "soins +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
 msgid "female^heals +12"
 msgstr "soins +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -201,7 +201,7 @@ msgstr ""
 "trouver un village ou une unité avec la capacité de guérison."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -1085,24 +1085,35 @@ msgstr "Changer l'identifiant de l'extension"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
+#, fuzzy
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
 "in. This will only rename that folder and update any references to it in the "
 "_main.cfg file. Any other place will need to be updated manually."
 msgstr ""
+"L'identifiant d'une extension correspond au nom du répertoire où elle est "
+"stockée. Cette fonction permet de renommer le répertoire et les références à "
+"l'identifiant se trouvant dans le fichier _main.cfg, toutes les références "
+"dans les autres fichiers devant être changées manuellement."
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:329
+#, fuzzy
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Éditeur pour la publication d'extensions"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:330
+#, fuzzy
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
 "publishing an add-on to the add-ons server for other players to download. "
 "The Validate button will check whether all required fields have valid values."
 msgstr ""
+"Le fichier _server.pbl est nécessaire pour la publication sur le serveur "
+"d'extensions en vue les partager avec d'autres joueurs. Cette fonction "
+"permet de constituer le fichier pbl et le bouton « Valider » exécutera les "
+"contrôles pour vérifier que tous les champs ont un contenu valide."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:338
@@ -5994,11 +6005,13 @@ msgstr ""
 "terrain."
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
 #: data/core/macros/special-notes.cfg:122
+#, fuzzy
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
-msgstr ""
+msgstr "Notes spéciales :"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6716,40 +6729,58 @@ msgstr ""
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
+#, fuzzy
 msgid "stun"
-msgstr ""
+msgstr "étourdissant"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
+#, fuzzy
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"Cette attaque frappe si fort qu'elle assomme l'adversaire et lui fait perdre "
+"sa zone de contrôle. Les effets se dispersent au prochain tour de "
+"l'adversaire."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
+"Cette unité peut étourdir ses ennemis, leur faisant perdre leur zone de "
+"contrôle."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
+#, fuzzy
 msgid "arcane"
-msgstr ""
+msgstr "arcane"
 
+# L'anglais n'est pas clair, mais la chaîne suivante clarifie un peu le sujet.
+# Le traduction est basée sur une compréhension de la capacité plutôt qu'une traduction littérale.
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
+#, fuzzy
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"Cette attaque combine son type de dommage avec le type arcane afin que ses "
+"dégâts ne soient pas réduits par la résistance du défenseur au type de "
+"dommage original."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
+#, fuzzy
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"Cette unité peut opter pour le type de dommage arcane pour cette attaque si "
+"son adversaire est particulièrement sensible à l'arcane."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -8413,18 +8444,21 @@ msgstr "+1 PV max"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
+#, fuzzy
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "étourdi : cette unité est étourdie. Elle a perdu sa zone de contrôle."
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
+#, fuzzy
 msgid "female^stunned"
-msgstr ""
+msgstr "étourdie"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
+#, fuzzy
 msgid "stunned"
-msgstr ""
+msgstr "étourdi"
 
 #: src/help/help.cpp:211
 msgid "Close"

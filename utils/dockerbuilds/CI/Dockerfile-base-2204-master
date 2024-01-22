@@ -18,9 +18,15 @@ RUN apt install -y -qq asciidoc dos2unix xsltproc po4a docbook-xsl language-pack
 RUN locale-gen en_US.UTF-8
 
 # misc
-RUN apt install -y -qq libpng16-16 libpng-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev moreutils ca-certificates libcurl4-openssl-dev
+RUN apt install -y -qq libpng16-16 libpng-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev moreutils ca-certificates libcurl4-openssl-dev liblua5.4-dev
 
 # programs
 RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang lld doxygen graphviz lua-check
 
 WORKDIR /home/wesnoth-travis
+
+# build another copy of boost with _GLIBCXX_DEBUG enabled, since program options requires this
+COPY boost_1_74_0.tar.gz .
+RUN tar -xvzf boost_1_74_0.tar.gz && cd boost_1_74_0 && ./bootstrap.sh --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,test && ./b2 -j2 variant=debug install cxxflags='-fstack-protector-strong' define=_GLIBCXX_DEBUG=1 define=_FORTIFY_SOURCE=2 address-model=64
+RUN rm -R /home/wesnoth-travis/boost_1_74_0
+RUN rm /home/wesnoth-travis/boost_1_74_0.tar.gz

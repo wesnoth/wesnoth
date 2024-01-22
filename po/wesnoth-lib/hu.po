@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
 "PO-Revision-Date: 2020-05-09 23:50+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2450,7 +2450,7 @@ msgid " (Press ‘$hotkey’ for more information)"
 msgstr "(Nyomd meg a(z) '$hotkey' billentyűt további információért)"
 
 #. [button]: id=search
-#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:446
+#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
 msgid "Search"
 msgstr "Keresés"
 
@@ -2573,7 +2573,7 @@ msgstr "Kézbesítetlen üzenetek"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:459 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:601 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -4501,7 +4501,7 @@ msgstr "Beállítások"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr ""
 
@@ -5242,7 +5242,7 @@ msgstr "Játékcsarnok"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
 msgid "Waiting for players to join..."
 msgstr "Várakozás a játékosok csatlakozására..."
 
@@ -5267,7 +5267,7 @@ msgid "Login:"
 msgstr "Bejelentkezés:"
 
 #. [button]: id=replay_download
-#: data/gui/window/mp_match_history.cfg:144
+#: data/gui/window/mp_match_history.cfg:159
 #, fuzzy
 #| msgid "Downloads"
 msgid "Download"
@@ -5275,15 +5275,34 @@ msgstr "Letöltések"
 
 #. [label]: id=players
 #. [label]: id=modifications
-#: data/gui/window/mp_match_history.cfg:161
-#: data/gui/window/mp_match_history.cfg:178
+#: data/gui/window/mp_match_history.cfg:185
+#: data/gui/window/mp_match_history.cfg:223
 #, fuzzy
 #| msgid "url^None"
 msgid "None"
 msgstr "Nincs"
 
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:375
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:388
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "Játékosok:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "Módosítók"
+
 #. [label]
-#: data/gui/window/mp_match_history.cfg:328
+#: data/gui/window/mp_match_history.cfg:450
 #, fuzzy
 #| msgid "Players:"
 msgid "Player:"
@@ -5292,45 +5311,26 @@ msgstr "Játékosok:"
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
 #. [text_box]: id=search_content
-#: data/gui/window/mp_match_history.cfg:340
-#: data/gui/window/mp_match_history.cfg:382
-#: data/gui/window/mp_match_history.cfg:406
+#: data/gui/window/mp_match_history.cfg:462
+#: data/gui/window/mp_match_history.cfg:506
+#: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
 msgstr ""
 
 # Tartalom?
 #. [label]
-#: data/gui/window/mp_match_history.cfg:351
+#: data/gui/window/mp_match_history.cfg:474
 #, fuzzy
 #| msgid "Contents"
 msgid "Content Type:"
 msgstr "Tartalom"
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:370
+#: data/gui/window/mp_match_history.cfg:494
 #, fuzzy
 #| msgid "Team name:"
 msgid "Game name:"
 msgstr "Csapat neve:"
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:561
-msgid "Info"
-msgstr ""
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:574
-#, fuzzy
-#| msgid "Players:"
-msgid "Players"
-msgstr "Játékosok:"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:587
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
-msgid "Modifications"
-msgstr "Módosítók"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7592,7 +7592,7 @@ msgid "lua console"
 msgstr "lua konzol"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
 msgid "Random"
 msgstr "Véletlen"
 
@@ -7805,7 +7805,7 @@ msgid "empty"
 msgstr "üres"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
 msgid "this game"
 msgstr "ez a játék"
 
@@ -7819,11 +7819,11 @@ msgstr "Játékcsarnok"
 msgid "Game"
 msgstr "Játékok"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
 msgstr "Várakozás, amíg a játékosok szövetséget választanak..."
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:48
 msgid "The End"
 msgstr "VÉGE"
 

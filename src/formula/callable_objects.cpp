@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -435,6 +435,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.level());
 	} else if(key == "total_movement" || key == "max_moves" || key == "moves") {
 		return variant(u_.movement());
+	} else if(key == "undead") {
+		return variant(u_.musthave_status("unpoisonable") && u_.musthave_status("undrainable") && u_.musthave_status("unplagueable"));
 	} else if(key == "unpoisonable") {
 		return variant(u_.musthave_status("unpoisonable"));
 	} else if(key == "unslowable") {
@@ -704,7 +706,6 @@ void team_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "village_gold");
 	add_input(inputs, "village_support");
 	add_input(inputs, "recall_cost");
-	add_input(inputs, "name");
 	add_input(inputs, "is_human");
 	add_input(inputs, "is_ai");
 	add_input(inputs, "is_network");
@@ -768,6 +769,10 @@ variant team_callable::get_value(const std::string& key) const
 		return variant(team_.flag_icon());
 	} else if(key == "team_name") {
 		return variant(team_.team_name());
+	} else if(key == "faction") {
+		return variant(team_.faction());
+	} else if(key == "faction_name") {
+		return variant(team_.faction_name());
 	} else if(key == "color") {
 		return variant(team_.color());
 	} else if(key == "share_vision") {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 
 #pragma once
 
+#include <functional>
 #include <map>
 #include <string>
 #include <vector>
@@ -59,7 +60,7 @@ private:
 	{
 		std::queue<const wml_tag*> condition_queue;
 		typename Map::const_iterator current;
-		const config& match;
+		std::reference_wrapper<const config> match;
 	public:
 		// Construct a begin iterator
 		iterator(const wml_tag& base_tag, const config& match) : match(match)
@@ -81,7 +82,7 @@ private:
 		}
 		void push_new_tag_conditions(const wml_tag& tag)
 		{
-			wml_tag::push_new_tag_conditions(condition_queue, match, tag);
+			wml_tag::push_new_tag_conditions(condition_queue, match.get(), tag);
 		}
 		bool equal(const iterator<T, Map>& other) const
 		{

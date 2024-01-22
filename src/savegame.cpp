@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

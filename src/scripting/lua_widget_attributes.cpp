@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -609,10 +609,8 @@ int impl_widget_dir(lua_State* L)
 		}
 	}
 	// Add the gui.widget methods
-	luaW_getglobal(L, "dir");
 	luaW_getglobal(L, "gui", "widget");
-	lua_call(L, 1, 1);
-	auto methods = lua_check<std::vector<std::string>>(L, -1);
+	auto methods = luaW_get_attributes(L, -1);
 	keys.insert(keys.end(), methods.begin(), methods.end());
 	lua_push(L, keys);
 	return 1;
