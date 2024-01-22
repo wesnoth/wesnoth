@@ -266,7 +266,7 @@ void editor_edit_unit::pre_show(window& win) {
 		std::bind(&editor_edit_unit::prev_attack, this));
 
 	update_index();
-	
+
 	// Setup tabs
 	listbox& selector = find_widget<listbox>(&win, "tabs", false);
 	connect_signal_notify_modified(selector,

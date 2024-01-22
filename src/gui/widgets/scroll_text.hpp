@@ -144,7 +144,7 @@ private:
 	bool editable_;
 
 	void finalize_subclass() override;
-	
+
 	void refresh()
 	{
 //		multiline_text* text = get_internal_text_box();
@@ -159,7 +159,7 @@ private:
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
-	
+
 	multiline_text* get_internal_text_box();
 
 private:
