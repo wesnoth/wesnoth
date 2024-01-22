@@ -51,7 +51,6 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, text_changed_callback_()
 {
 	auto cfg = get_control(control_type, builder.definition);
-//	text_.set_family_class(cfg->text_font_family);
 	set_font_family(cfg->text_font_family);
 
 #ifdef __unix__
@@ -157,8 +156,6 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		queue_redraw();
 
 	} else {
-		// doesn't work for scroll_text
-//		assert(offset <= text_.get_length());
 		if (offset <= text_.get_length()) {
 			selection_start_ = offset;
 		} else {
@@ -640,12 +637,15 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_x:
-			if( !(modifier & modifier_key) || !is_editable() ) {
+			if( !(modifier & modifier_key) ) {
 				return;
 			}
 
 			copy_selection(false);
-			delete_selection();
+
+			if ( is_editable() ) {
+				delete_selection();
+			}
 			handled = true;
 			break;
 
@@ -660,15 +660,18 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
-			if ((modifier & KMOD_SHIFT) && is_editable()) {
-				insert_char("\n");
-			}
 
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
-				return;
+//			if(!is_composing()) {
+//				return;
+//			}
+
+			// If pressed with modifier, let the subclass handle it
+			if (modifier != 0) {
+				handled = false;
+				handle_key_enter(modifier, handled);
+			} else {
+				handled = true;
 			}
-			// The IME will handle it, we just need to make sure nothing else handles it too.
-			handled = true;
 			break;
 
 		case SDLK_ESCAPE:
@@ -680,10 +683,6 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_TAB:
-			if(!is_editable())
-			{
-				return;
-			}
 			handle_key_tab(modifier, handled);
 			break;
 

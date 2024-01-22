@@ -266,7 +266,7 @@ void editor_edit_unit::pre_show(window& win) {
 		std::bind(&editor_edit_unit::prev_attack, this));
 
 	update_index();
-
+	
 	// Setup tabs
 	listbox& selector = find_widget<listbox>(&win, "tabs", false);
 	connect_signal_notify_modified(selector,
@@ -369,13 +369,15 @@ void editor_edit_unit::load_unit_type() {
 		find_widget<slider>(get_window(), "hp_slider", false).set_value(type->hitpoints());
 		find_widget<slider>(get_window(), "xp_slider", false).set_value(type->experience_needed());
 		find_widget<slider>(get_window(), "move_slider", false).set_value(type->movement());
-		find_widget<scroll_text>(get_window(), "desc_box", false).set_value(type->unit_description());
+		find_widget<scroll_text>(get_window(), "desc_box", false).set_label(type->unit_description());
 //		find_widget<multiline_text>(get_window(), "desc_box", false).set_value(type->unit_description());
 		find_widget<combobox>(get_window(), "race_box", false).set_value(type->race_id());
 		find_widget<text_box>(get_window(), "alignment_box", false).set_value(unit_alignments::get_string(type->alignment()));
 	}
 
 	// FIXME: Complete this.
+	get_window()->invalidate_layout();
+	get_window()->queue_redraw();
 }
 
 void editor_edit_unit::save_unit_type() {

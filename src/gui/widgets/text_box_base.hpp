@@ -531,6 +531,18 @@ private:
 	{
 	}
 
+	/**
+	 * Enter key.
+	 *
+	 * Unmodified                 Handled by Window.
+	 * Control                    Implementation defined.
+	 * Shift                      Implementation defined.
+	 * Alt                        Implementation defined.
+	 */
+	virtual void handle_key_enter(SDL_Keymod /*modifier*/, bool& /*handled*/)
+	{
+	}
+
 protected:
 	virtual void handle_commit(bool& handled,
 									const std::string& unicode);

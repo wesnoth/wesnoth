@@ -450,7 +450,7 @@ protected:
 
 protected:
 	/** The builder needs to call us so we do our setup. */
-	void finalize_setup(); // FIXME make protected
+	void finalize_setup();
 
 private:
 	/**

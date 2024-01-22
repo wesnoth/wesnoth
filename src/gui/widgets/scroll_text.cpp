@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2023
-	by Mark de Wever <koraq@xs4all.nl>
+	Copyright (C) 2008 - 2024
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -44,7 +44,7 @@ REGISTER_WIDGET(scroll_text)
 scroll_text::scroll_text(const implementation::builder_scroll_text& builder)
 	: scrollbar_container(builder, type())
 	, state_(ENABLED)
-	, wrap_on_(builder.wrap_on)
+	, wrap_on_(true)
 	, text_alignment_(builder.text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -148,6 +148,7 @@ void scroll_text::finalize_subclass()
 	text->set_label(get_label());
 	text->set_text_alignment(text_alignment_);
 	text->set_use_markup(get_use_markup());
+	connect_signal_notify_modified(*text, std::bind(&scroll_text::refresh, this));
 }
 
 void scroll_text::set_can_wrap(bool can_wrap)
@@ -197,7 +198,6 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, wrap_on(cfg["wrap"].to_bool(true))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(false))
 	, editable(cfg["editable"].to_bool(true))

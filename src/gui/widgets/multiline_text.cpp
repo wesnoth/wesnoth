@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2023
-	by Mark de Wever <koraq@xs4all.nl>
+	Copyright (C) 2008 - 2024
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -335,6 +335,15 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 		}
 	} else {
 		insert_char("\t");
+	}
+}
+
+void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
+{
+	handled = true;
+
+	if (is_editable() && modifier != 0) {
+		insert_char("\n");
 	}
 }
 

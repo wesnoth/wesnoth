@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2023
-	by Mark de Wever <koraq@xs4all.nl>
+	Copyright (C) 2008 - 2024
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "gui/widgets/spinbox.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/button.hpp"
+#include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
@@ -92,8 +92,8 @@ int spinner::get_value()
 
 void spinner::finalize_setup()
 {
-	button* btn_prev = find_widget<button>(this, "_prev", false, true);
-	button* btn_next = find_widget<button>(this, "_next", false, true);
+	repeating_button* btn_prev = find_widget<repeating_button>(this, "_prev", false, true);
+	repeating_button* btn_next = find_widget<repeating_button>(this, "_next", false, true);
 	connect_signal_mouse_left_click(*btn_prev, std::bind(&spinner::prev, this));
 	connect_signal_mouse_left_click(*btn_next, std::bind(&spinner::next, this));
 }

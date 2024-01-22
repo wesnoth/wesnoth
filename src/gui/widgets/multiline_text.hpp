@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2023
-	by Mark de Wever <koraq@xs4all.nl>
+	Copyright (C) 2008 - 2024
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@ struct builder_multiline_text;
 /**
  * @ingroup GUIWidgetWML
  *
- * Class for a multiline text area.
+ * Base class for a multiline text area.
  *
  * The resolution for a text box also contains the following keys:
  * Key          |Type                                    |Default  |Description
@@ -214,6 +214,9 @@ private:
 
 	/** Inherited from text_box_base. */
 	void handle_key_tab(SDL_Keymod modifier, bool& handled) override;
+
+	/** Inherited from text_box_base. */
+	void handle_key_enter(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;

@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2023
-	by Mark de Wever <koraq@xs4all.nl>
+	Copyright (C) 2008 - 2024
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
+#include "gui/widgets/window.hpp"
 
 #include "gui/widgets/multiline_text.hpp"
 
@@ -143,12 +144,23 @@ private:
 	bool editable_;
 
 	void finalize_subclass() override;
-
-	multiline_text* get_internal_text_box();
+	
+	void refresh()
+	{
+//		multiline_text* text = get_internal_text_box();
+//		assert(text);
+//		text->set_label(text->get_value());
+//		get_window()->invalidate_layout();
+//		get_window()->queue_redraw();
+//		scroll_vertical_scrollbar(scrollbar_base::END);
+		//TODO scroll based on cursor position
+	}
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
+	
+	multiline_text* get_internal_text_box();
 
 private:
 	/***** ***** ***** inherited ****** *****/
@@ -190,7 +202,6 @@ struct builder_scroll_text : public builder_styled_widget
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
-	bool wrap_on;
 	const PangoAlignment text_alignment;
 	bool link_aware;
 	bool editable;
