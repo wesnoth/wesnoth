@@ -24,7 +24,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 
 	local end_credits = cfg.end_credits
 	if end_credits ~= nil then
-		wesnoth.set_end_campaign_credits(end_credits)
+		wesnoth.scenario.show_credits = end_credits
 	end
 
 	local side_results = {}
