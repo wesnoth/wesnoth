@@ -320,8 +320,6 @@ bool multiline_text::history_down()
 
 void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 {
-	handled = true;
-
 	if(!is_editable())
 	{
 		return;
@@ -334,6 +332,7 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 			handled = history_down();
 		}
 	} else {
+		handled = true;
 		insert_char("\t");
 	}
 }

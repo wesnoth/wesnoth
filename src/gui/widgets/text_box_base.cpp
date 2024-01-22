@@ -665,17 +665,11 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 //				return;
 //			}
 
-			// If pressed with modifier, let the subclass handle it
-			if (modifier != 0) {
-				handled = false;
-				handle_key_enter(modifier, handled);
-			} else {
-				handled = true;
-			}
+			handle_key_enter(modifier, handled);
 			break;
 
 		case SDLK_ESCAPE:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if(!is_composing() || (modifier != 0)) {
 				return;
 			}
 			interrupt_composition();

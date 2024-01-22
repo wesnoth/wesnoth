@@ -43,6 +43,7 @@
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/container_base.hpp"
+#include "gui/widgets/multiline_text.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/grid.hpp"
@@ -1307,12 +1308,15 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		}
 	}
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
-		if (mod == 0) {
-			set_retval(retval::OK);
-			handled = true;
-		} else {
+		if (mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)) {
 			// Don't handle if modifier is pressed
 			handled = false;
+		} else {
+			// Only trigger if enter is not coming from multiline text
+			if (dynamic_cast<multiline_text*>(event_distributor_->keyboard_focus()) == nullptr) {
+				set_retval(retval::OK);
+				handled = true;
+			}
 		}
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
 		set_retval(retval::CANCEL);
