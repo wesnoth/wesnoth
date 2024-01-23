@@ -123,6 +123,8 @@ void multiline_text::update_canvas()
 
 	set_line_no_from_offset();
 
+	std::cout << "start : " << start << " line : " << line_no_ << std::endl;
+
 	/***** Set in all canvases *****/
 
 	const int max_width = get_text_maximum_width();
@@ -223,11 +225,26 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 		offset += lines.at(i).size() + 1;
 	}
 
+	std::cout << "(mouse) column : " << offset << "line : " << line_no_ << std::endl;
+
 	set_cursor(offset, !start_selection);
 
 	update_canvas();
 	queue_redraw();
 	dragging_ |= start_selection;
+}
+
+unsigned multiline_text::get_line_end_offset(unsigned line_no) {
+	// Should be cached if needed
+	return get_line_start_offset(line_no) + get_lines().at(line_no).size();
+}
+
+unsigned multiline_text::get_line_start_offset(unsigned line_no) {
+	if (line_no > 0) {
+		return get_line_end_offset(line_no-1) + 1;
+	} else {
+		return 0;
+	}
 }
 
 unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
@@ -362,18 +379,23 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	set_line_no_from_offset();
 	size_t offset = get_selection_start();
-	size_t offset_change = get_lines().at(line_no_).size() + 1;
 
 	if (line_no_ < get_lines_count()-1) {
-		line_no_ ++;
+		offset = offset
+				- get_line_start_offset(line_no_)
+				+ get_line_start_offset(line_no_+1);
+
+		if (offset > get_line_end_offset(line_no_+1)) {
+			offset = get_line_end_offset(line_no_+1);
+		}
 	}
 
-	offset += offset_change;
 	offset += get_selection_length();
 
 	if (offset <= get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
+	set_line_no_from_offset();
 
 	update_canvas();
 	queue_redraw();
@@ -387,19 +409,24 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 	set_line_no_from_offset();
 	size_t offset = get_selection_start();
-	size_t offset_change = get_lines().at(line_no_).size() + 1;
 
 	if (line_no_ > 0) {
-		line_no_ --;
+		offset = offset
+				- get_line_start_offset(line_no_)
+				+ get_line_start_offset(line_no_-1);
+
+		if (offset > get_line_end_offset(line_no_-1)) {
+			offset = get_line_start_offset(line_no_-1);
+		}
 	}
 
-	offset -= offset_change;
 	offset += get_selection_length();
 
 	/* offset is unsigned int */
 	if (offset <= get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
+	set_line_no_from_offset();
 
 	update_canvas();
 	queue_redraw();

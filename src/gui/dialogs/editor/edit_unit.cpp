@@ -376,7 +376,6 @@ void editor_edit_unit::load_unit_type() {
 	}
 
 	// FIXME: Complete this.
-	get_window()->invalidate_layout();
 	get_window()->queue_redraw();
 }
 

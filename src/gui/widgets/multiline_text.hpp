@@ -105,13 +105,15 @@ protected:
 	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
-		goto_end_of_data(select);
+		set_line_no_from_offset();
+		set_cursor(get_line_end_offset(line_no_), select);
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_start_of_line(const bool select = false) override
 	{
-		goto_start_of_data(select);
+		set_line_no_from_offset();
+		set_cursor(get_line_start_offset(line_no_), select);
 	}
 
 	/** Inherited from text_box_base. */
@@ -172,6 +174,13 @@ private:
 	/** utility function to calculate and set line_no_ from offset */
 	void set_line_no_from_offset();
 	unsigned get_line_no_from_offset(unsigned offset);
+
+	/** Utility function to calculate the offset of the end of the line
+	 */
+	unsigned get_line_end_offset(unsigned line_no);
+	/** Utility function to calculate the offset of the end of the line
+	 */
+	unsigned get_line_start_offset(unsigned line_no);
 
 	/** Get height of selection */
 	unsigned get_sel_height();

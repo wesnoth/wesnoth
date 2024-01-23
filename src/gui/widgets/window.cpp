@@ -1307,15 +1307,18 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 			}
 		}
 	}
-	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
+	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
 		if (mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)) {
 			// Don't handle if modifier is pressed
 			handled = false;
 		} else {
-			// Only trigger if enter is not coming from multiline text
-			if (dynamic_cast<multiline_text*>(event_distributor_->keyboard_focus()) == nullptr) {
+			// Trigger window OK button only if Enter enabled,
+			// otherwise pass handling to widget
+			if (!enter_disabled_) {
 				set_retval(retval::OK);
 				handled = true;
+			} else {
+				handled = false;
 			}
 		}
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {

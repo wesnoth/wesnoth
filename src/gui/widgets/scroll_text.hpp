@@ -147,13 +147,14 @@ private:
 
 	void refresh()
 	{
-//		multiline_text* text = get_internal_text_box();
-//		assert(text);
+		multiline_text* text = get_internal_text_box();
+		assert(text);
 //		text->set_label(text->get_value());
 //		get_window()->invalidate_layout();
 //		get_window()->queue_redraw();
 //		scroll_vertical_scrollbar(scrollbar_base::END);
 		//TODO scroll based on cursor position
+		get_window()->queue_redraw();
 	}
 
 public:

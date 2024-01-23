@@ -75,6 +75,8 @@ void scroll_text::set_label(const t_string& label)
 			place(get_origin(), get_size());
 		}
 	}
+
+	get_window()->invalidate_layout();
 }
 
 std::string scroll_text::get_value()
