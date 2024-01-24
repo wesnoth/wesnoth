@@ -30,6 +30,7 @@
 #include "wml_exception.hpp"
 
 #include <functional>
+#include <iostream>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -151,6 +152,21 @@ void scroll_text::finalize_subclass()
 	text->set_text_alignment(text_alignment_);
 	text->set_use_markup(get_use_markup());
 	connect_signal_notify_modified(*text, std::bind(&scroll_text::refresh, this));
+}
+
+
+void scroll_text::refresh() {
+	multiline_text* text = get_internal_text_box();
+	assert(text);
+
+	if (text->scroll_down_) {
+		if (text->get_line_no() > 1) {
+			scroll_vertical_scrollbar(scrollbar_base::HALF_JUMP_FORWARD);
+		}
+	} else {
+		scroll_vertical_scrollbar(scrollbar_base::HALF_JUMP_BACKWARDS);
+	}
+	get_window()->queue_redraw();
 }
 
 void scroll_text::set_can_wrap(bool can_wrap)

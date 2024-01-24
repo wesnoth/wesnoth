@@ -17,6 +17,7 @@
 
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/window.hpp"
 
 namespace gui2
 {
@@ -91,6 +92,13 @@ public:
 		set_value("");
 	}
 
+	unsigned get_line_no() {
+		set_line_no_from_offset();
+		return line_no_;
+	}
+
+	bool scroll_down_ = true;
+
 protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -121,9 +129,6 @@ protected:
 
 	/** Inherited from text_box_base. */
 	void delete_selection() override;
-
-	/** Inherited from text_box_base. */
-//	void insert_char(const std::string& unicode) override;
 
 	void handle_mouse_selection(point mouse, const bool start_selection);
 
@@ -182,10 +187,12 @@ private:
 	 */
 	unsigned get_line_start_offset(unsigned line_no);
 
-	/** Get height of selection */
-	unsigned get_sel_height();
-	/** Get y coordinate of selection */
-	unsigned get_sel_start_y();
+	/** Update layout. To be called when text size changes */
+	void update_layout() {
+		set_label(get_value());
+		get_window()->invalidate_layout();
+	}
+
 
 	/**
 	 * Inherited from text_box_base.

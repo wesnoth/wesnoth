@@ -19,7 +19,6 @@
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
-#include "gui/widgets/window.hpp"
 
 #include "gui/widgets/multiline_text.hpp"
 
@@ -145,17 +144,7 @@ private:
 
 	void finalize_subclass() override;
 
-	void refresh()
-	{
-		multiline_text* text = get_internal_text_box();
-		assert(text);
-//		text->set_label(text->get_value());
-//		get_window()->invalidate_layout();
-//		get_window()->queue_redraw();
-//		scroll_vertical_scrollbar(scrollbar_base::END);
-		//TODO scroll based on cursor position
-		get_window()->queue_redraw();
-	}
+	void refresh();
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

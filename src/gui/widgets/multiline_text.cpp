@@ -123,8 +123,6 @@ void multiline_text::update_canvas()
 
 	set_line_no_from_offset();
 
-	std::cout << "start : " << start << " line : " << line_no_ << std::endl;
-
 	/***** Set in all canvases *****/
 
 	const int max_width = get_text_maximum_width();
@@ -225,8 +223,6 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 		offset += lines.at(i).size() + 1;
 	}
 
-	std::cout << "(mouse) column : " << offset << "line : " << line_no_ << std::endl;
-
 	set_cursor(offset, !start_selection);
 
 	update_canvas();
@@ -267,20 +263,6 @@ unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
 void multiline_text::set_line_no_from_offset()
 {
 	line_no_ = get_line_no_from_offset(get_selection_start());
-}
-
-unsigned multiline_text::get_sel_height()
-{
-	/** Height of the selected area. Return zero if nothing selected. */
-	return get_selection_length() > 0
-		? get_line_no_from_offset(get_selection_length()) * text_height_ * font::get_line_spacing_factor()
-		: 0;
-}
-
-unsigned multiline_text::get_sel_start_y()
-{
-	/** Y coordinate of selection start */
-	return get_line_no_from_offset(get_selection_start()) * text_height_ * font::get_line_spacing_factor();
 }
 
 void multiline_text::update_offsets()
@@ -351,6 +333,8 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 	} else {
 		handled = true;
 		insert_char("\t");
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -360,6 +344,11 @@ void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 
 	if (is_editable() && modifier != 0) {
 		insert_char("\n");
+
+		scroll_down_ = true;
+		update_layout();
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -397,6 +386,10 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 	}
 	set_line_no_from_offset();
 
+	scroll_down_ = true;
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	update_canvas();
 	queue_redraw();
 }
@@ -427,6 +420,10 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 	set_line_no_from_offset();
+
+	scroll_down_ = false;
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	update_canvas();
 	queue_redraw();
