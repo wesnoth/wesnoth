@@ -94,8 +94,9 @@ void spinner::finalize_setup()
 {
 	repeating_button* btn_prev = find_widget<repeating_button>(this, "_prev", false, true);
 	repeating_button* btn_next = find_widget<repeating_button>(this, "_next", false, true);
-	connect_signal_mouse_left_click(*btn_prev, std::bind(&spinner::prev, this));
-	connect_signal_mouse_left_click(*btn_next, std::bind(&spinner::next, this));
+	btn_prev->connect_signal_mouse_left_down(std::bind(&spinner::prev, this));
+	btn_next->connect_signal_mouse_left_down(std::bind(&spinner::next, this));
+
 }
 
 void spinner::set_self_active(const bool active)

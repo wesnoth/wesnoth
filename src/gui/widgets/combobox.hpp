@@ -239,6 +239,9 @@ public:
 
 	t_string hint_text;
 	std::string hint_image;
+
+private:
+	std::vector<::config> options_;
 };
 
 } // namespace implementation

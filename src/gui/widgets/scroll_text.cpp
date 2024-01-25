@@ -45,7 +45,7 @@ REGISTER_WIDGET(scroll_text)
 scroll_text::scroll_text(const implementation::builder_scroll_text& builder)
 	: scrollbar_container(builder, type())
 	, state_(ENABLED)
-	, wrap_on_(true)
+	, wrap_on_(false)
 	, text_alignment_(builder.text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -154,17 +154,27 @@ void scroll_text::finalize_subclass()
 	connect_signal_notify_modified(*text, std::bind(&scroll_text::refresh, this));
 }
 
-
+/* Used for moving scrollbars.
+   Has to be called from signal notify_modified, otherwise
+   doesn't work after invalidate_layout. */
 void scroll_text::refresh() {
 	multiline_text* text = get_internal_text_box();
 	assert(text);
 
-	if (text->scroll_down_) {
-		if (text->get_line_no() > 1) {
-			scroll_vertical_scrollbar(scrollbar_base::HALF_JUMP_FORWARD);
-		}
+	if (text->scroll_horiz_ == scrollbar_base::BEGIN
+			|| text->scroll_horiz_ == scrollbar_base::END) {
+		scroll_horizontal_scrollbar(text->scroll_horiz_);
+		text->scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
+	}
+
+	if (text->scroll_vert_ == scrollbar_base::BEGIN
+			|| text->scroll_vert_ == scrollbar_base::END) {
+		scroll_vertical_scrollbar(text->scroll_vert_);
+		text->scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
 	} else {
-		scroll_vertical_scrollbar(scrollbar_base::HALF_JUMP_BACKWARDS);
+		if (text->get_line_no() > 0) {
+			scroll_vertical_scrollbar(text->scroll_vert_);
+		}
 	}
 	get_window()->queue_redraw();
 }
@@ -176,7 +186,7 @@ void scroll_text::set_can_wrap(bool can_wrap)
 
 bool scroll_text::can_wrap() const
 {
-	return true;
+	return false;
 }
 
 void scroll_text::signal_handler_left_button_down(const event::ui_event event)

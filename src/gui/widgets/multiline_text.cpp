@@ -98,16 +98,6 @@ void multiline_text::update_canvas()
 
 	set_maximum_length(max_input_length_);
 
-	PangoEllipsizeMode ellipse_mode = PANGO_ELLIPSIZE_NONE;
-	if(!can_wrap()) {
-		if((start + length) > (get_length() / 2)) {
-			ellipse_mode = PANGO_ELLIPSIZE_START;
-		} else {
-			ellipse_mode = PANGO_ELLIPSIZE_END;
-		}
-	}
-	set_ellipse_mode(ellipse_mode);
-
 	// Set the composition info
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
@@ -151,8 +141,6 @@ void multiline_text::update_canvas()
 						 wfl::variant(get_cursor_position(start + length).x));
 		tmp.set_variable("cursor_offset_y",
 						 wfl::variant(get_cursor_position(start + length).y));
-
-		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
 
 		tmp.set_variable("composition_offset", wfl::variant(comp_start_offset));
 		tmp.set_variable("composition_width", wfl::variant(comp_end_offset - comp_start_offset));
@@ -345,7 +333,7 @@ void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 	if (is_editable() && modifier != 0) {
 		insert_char("\n");
 
-		scroll_down_ = true;
+		scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
 		update_layout();
 
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
@@ -386,7 +374,7 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 	}
 	set_line_no_from_offset();
 
-	scroll_down_ = true;
+	scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
@@ -421,7 +409,7 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 	}
 	set_line_no_from_offset();
 
-	scroll_down_ = false;
+	scroll_vert_ = scrollbar_base::HALF_JUMP_BACKWARDS;
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 

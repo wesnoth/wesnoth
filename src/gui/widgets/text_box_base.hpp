@@ -169,7 +169,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the end of the data?
 	 */
-	void goto_end_of_data(const bool select = false)
+	virtual void goto_end_of_data(const bool select = false)
 	{
 		set_cursor(text_.get_length(), select);
 	}

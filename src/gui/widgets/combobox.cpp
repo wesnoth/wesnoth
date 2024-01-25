@@ -407,7 +407,11 @@ builder_combobox::builder_combobox(const config& cfg)
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
+	, options_()
 {
+	for(const auto& option : cfg.child_range("option")) {
+		options_.push_back(option);
+	}
 }
 
 std::unique_ptr<widget> builder_combobox::build() const
@@ -416,6 +420,10 @@ std::unique_ptr<widget> builder_combobox::build() const
 
 	// A combobox doesn't have a label but a text
 	widget->set_value(label_string);
+
+	if(!options_.empty()) {
+		widget->set_values(options_);
+	}
 
 	widget->set_max_input_length(max_input_length);
 	widget->set_hint_data(hint_text, hint_image);

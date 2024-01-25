@@ -18,6 +18,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/scrollbar_container.hpp"
 
 namespace gui2
 {
@@ -58,7 +59,7 @@ public:
 	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override
 	{
-		return true;
+		return false;
 	}
 
 	/** Saves the text in the widget to the history. */
@@ -97,7 +98,8 @@ public:
 		return line_no_;
 	}
 
-	bool scroll_down_ = true;
+	scrollbar_base::scroll_mode scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
+	scrollbar_base::scroll_mode scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
 
 protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -115,6 +117,8 @@ protected:
 	{
 		set_line_no_from_offset();
 		set_cursor(get_line_end_offset(line_no_), select);
+		scroll_horiz_ = scrollbar_base::END;
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 
 	/** Inherited from text_box_base. */
@@ -122,6 +126,15 @@ protected:
 	{
 		set_line_no_from_offset();
 		set_cursor(get_line_start_offset(line_no_), select);
+		scroll_horiz_ = scrollbar_base::BEGIN;
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
+
+	/** Inherited from text_box_base. */
+	void goto_end_of_data(const bool select = false) override
+	{
+		set_cursor(get_length(), select);
+		scroll_vert_ = scrollbar_base::END;
 	}
 
 	/** Inherited from text_box_base. */
