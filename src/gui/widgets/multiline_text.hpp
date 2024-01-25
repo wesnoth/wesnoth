@@ -135,6 +135,17 @@ protected:
 	{
 		set_cursor(get_length(), select);
 		scroll_vert_ = scrollbar_base::END;
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
+
+	/** Inherited from text_box_base. */
+	void goto_start_of_data(const bool select = false) override
+	{
+		set_cursor(0, select);
+		scroll_vert_ = scrollbar_base::BEGIN;
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 
 	/** Inherited from text_box_base. */

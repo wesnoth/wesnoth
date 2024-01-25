@@ -188,7 +188,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the beginning of the data?
 	 */
-	void goto_start_of_data(const bool select = false)
+	virtual void goto_start_of_data(const bool select = false)
 	{
 		set_cursor(0, select);
 	}
