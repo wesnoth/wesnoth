@@ -935,7 +935,7 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left);
+						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
 

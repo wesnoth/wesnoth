@@ -229,15 +229,8 @@ private:
  */
 struct temporary_unit_mover
 {
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst);
-	temporary_unit_mover(game_board& b, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(game_board& b, const map_location& src,
-	                     const map_location& dst);
-	virtual  ~temporary_unit_mover();
+	temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves, bool stand);
+	virtual ~temporary_unit_mover();
 
 private:
 	unit_map& m_;
@@ -245,4 +238,5 @@ private:
 	const map_location dst_;
 	int old_moves_;
 	unit_ptr temp_;
+	bool stand_;
 };

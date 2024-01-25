@@ -20,6 +20,7 @@
 #include "preferences/game.hpp"
 #include "recall_list_manager.hpp"
 #include "units/unit.hpp"
+#include "units/animation_component.hpp"
 #include "utils/general.hpp"
 
 #include <set>
@@ -470,12 +471,13 @@ temporary_unit_remover::~temporary_unit_remover()
  * the unit is moved (and restored to its previous value upon this object's
  * destruction).
  */
-temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves)
+temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves, bool stand)
 	: m_(m)
 	, src_(src)
 	, dst_(dst)
 	, old_moves_(-1)
 	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
+	, stand_(stand)
 {
 	auto [iter, success] = m_.move(src_, dst_);
 
@@ -483,48 +485,10 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 	if(success) {
 		old_moves_ = iter->movement_left(true);
 		iter->set_movement(new_moves);
+		if(stand_) {
+			m_.find_unit_ptr(dst_)->anim_comp().set_standing();
+		}
 	}
-}
-
-temporary_unit_mover::temporary_unit_mover(
-	game_board& b, const map_location& src, const map_location& dst, int new_moves)
-	: m_(b.units_)
-	, src_(src)
-	, dst_(dst)
-	, old_moves_(-1)
-	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
-{
-	auto [iter, success] = m_.move(src_, dst_);
-
-	// Set the movement.
-	if(success) {
-		old_moves_ = iter->movement_left(true);
-		iter->set_movement(new_moves);
-	}
-}
-
-/**
- * Constructor
- * This version does not change (nor restore) the unit's movement.
- */
-temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst)
-	: m_(m)
-	, src_(src)
-	, dst_(dst)
-	, old_moves_(-1)
-	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
-{
-	m_.move(src_, dst_);
-}
-
-temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src, const map_location& dst)
-	: m_(b.units_)
-	, src_(src)
-	, dst_(dst)
-	, old_moves_(-1)
-	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
-{
-	m_.move(src_, dst_);
 }
 
 temporary_unit_mover::~temporary_unit_mover()
@@ -535,6 +499,9 @@ temporary_unit_mover::~temporary_unit_mover()
 		// Restore the movement?
 		if(success && old_moves_ >= 0) {
 			iter->set_movement(old_moves_);
+			if(stand_) {
+				m_.find_unit_ptr(src_)->anim_comp().set_standing();
+			}
 		}
 
 		// Restore the extracted unit?
