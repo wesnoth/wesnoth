@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2024-01-04 16:27+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-01-22 14:37+0100\n"
+"Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/tools/GUI.pyw:77
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
@@ -242,33 +242,33 @@ msgstr "تجاوز الملفات ذات الأسماء الغير  المعتا
 #. files'.
 #: data/tools/GUI.pyw:966
 msgid "Report only on macros referenced in exactly n files:"
-msgstr ""
+msgstr "الإبلاغ فقط عن وحدات الماكرو المشار إليها في ملفات n بالضبط:"
 
 #: data/tools/GUI.pyw:986
 msgid "Report macro definitions and usages in file:"
-msgstr ""
+msgstr "الإبلاغ عن تعريفات واستخدامات الماكرو في الملف:"
 
 #: data/tools/GUI.pyw:1004
 msgid "Allow unused macros with names matching regular expression:"
-msgstr ""
+msgstr "السماح بوحدات الماكرو غير المستخدمة بأسماء تطابق التعبير العادي:"
 
 #: data/tools/GUI.pyw:1066
 msgid "wmlindent mode"
-msgstr ""
+msgstr "وضع wmlindent"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1114
 msgid "Verbose"
-msgstr ""
+msgstr "مطوَّل"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1124
 msgid "Report unchanged files"
-msgstr ""
+msgstr "الإبلاغ عن الملفات التي لم تتغير"
 
 #: data/tools/GUI.pyw:1133
 msgid "wmlindent options"
-msgstr ""
+msgstr "خيارات wmlindent"
 
 #. TRANSLATORS: Option to run 'quietly'.
 #: data/tools/GUI.pyw:1160
@@ -278,32 +278,32 @@ msgstr "الوضع الصامت"
 #. TRANSLATORS: Tooltip explanation for quiet option.
 #: data/tools/GUI.pyw:1168
 msgid "Do not generate output messages"
-msgstr ""
+msgstr "لا تنشئ رسائل المخرجات"
 
 #: data/tools/GUI.pyw:1188
 msgid "Output directory:"
-msgstr ""
+msgstr "دليل المخرجات :"
 
 #: data/tools/GUI.pyw:1194
 msgid "Options"
-msgstr ""
+msgstr "الخيارات"
 
 #: data/tools/GUI.pyw:1199
 msgid "Scan subdirectories"
-msgstr ""
+msgstr "مسح الدلائل الفرعية"
 
 #: data/tools/GUI.pyw:1204
 msgid "Show optional warnings"
-msgstr ""
+msgstr "إظهار التحذيرات الاختيارية"
 
 #. TRANSLATORS: Also called "Needs work".
 #: data/tools/GUI.pyw:1210
 msgid "Mark all strings as fuzzy"
-msgstr ""
+msgstr "ضع علامة على جميع السلاسل على أنها غامضة"
 
 #: data/tools/GUI.pyw:1214
 msgid "Advanced options"
-msgstr ""
+msgstr "خيارات متقدمة"
 
 #: data/tools/GUI.pyw:1218
 msgid "Package version"
@@ -371,6 +371,9 @@ msgid ""
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
+"لم يتم تحديد أي دليل.\n"
+"\n"
+"الرجاء تحديد دليل أو تعطيل خيار \"تخطي الدليل الأساسي\"."
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
 msgid ""
@@ -379,6 +382,10 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"تم تحديد الدليل الأساسي أو أحد أدلةه الفرعية في مربع تحديد الوظيفة "
+"الإضافية.\n"
+"\n"
+"سيتم تشغيل الأداة فقط على دليل ويسنوث الأساسي."
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
 #: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
@@ -428,6 +435,8 @@ msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
+"الملف {0} موجود بالفعل.\n"
+"هل تريد الكتابة فوقه؟"
 
 #: data/tools/GUI.pyw:1599
 msgid ""
@@ -435,6 +444,9 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"لم يتم تحديد ملف المخرجات.\n"
+"\n"
+"لن يتم تشغيل الأداة."
 
 #: data/tools/GUI.pyw:1628
 #, python-brace-format
@@ -443,6 +455,9 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
+"حدث خطأ أثناء تنفيذ {0}.\n"
+"\n"
+"رمز الخطأ: {1}"
 
 #: data/tools/GUI.pyw:1639
 msgid "Text file"
@@ -458,6 +473,12 @@ msgid ""
 "\n"
 "{2}"
 msgstr ""
+"حدث خطأ أثناء الكتابة إلى:\n"
+"{0}\n"
+"\n"
+"رمز الخطأ: {1}\n"
+"\n"
+"{2}"
 
 #: data/tools/GUI.pyw:1664
 msgid "About Maintenance Tools GUI"
@@ -477,6 +498,13 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
+"© Elvish_Hunter, 2014-2016\n"
+"\n"
+"الإصدار: {0}\n"
+"\n"
+"جزء من مشروع The Battle for Wesnoth وتم إصداره بموجب ترخيص GNU GPL v2\n"
+"\n"
+"الأيقونات مأخوذة من مشروع (http://tango.freedesktop.org)"
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1680
