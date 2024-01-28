@@ -4,7 +4,6 @@
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 2 of the License, or
 	(at your option) any later version.
 	This program is distributed in the hope that it will be useful,
@@ -56,8 +55,14 @@ class multiline_text : public text_box_base
 public:
 	explicit multiline_text(const implementation::builder_styled_widget& builder);
 
+	/** See @ref widget::set_can_wrap. */
+//	void set_can_wrap(bool can_wrap)
+//	{
+//		wrap_ = can_wrap;
+//	}
+
 	/** See @ref widget::can_wrap. */
-	virtual bool can_wrap() const override
+	bool can_wrap() const override
 	{
 		return false;
 	}
@@ -93,9 +98,15 @@ public:
 		set_value("");
 	}
 
-	unsigned get_line_no() {
+	unsigned get_line_no()
+	{
 		set_line_no_from_offset();
 		return line_no_;
+	}
+
+	point get_cursor_pos()
+	{
+		return get_cursor_position(get_selection_start());
 	}
 
 	scrollbar_base::scroll_mode scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
@@ -113,28 +124,54 @@ protected:
 	virtual void update_canvas() override;
 
 	/** Inherited from text_box_base. */
+	void insert_char(const std::string& unicode)
+	{
+		text_box_base::insert_char(unicode);
+
+		if (unicode == "\n") {
+			scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
+			update_layout();
+		}
+	}
+
+	/** Inherited from text_box_base. */
+	void set_cursor(const std::size_t offset, const bool select)
+	{
+		text_box_base::set_cursor(offset, select);
+		set_line_no_from_offset();
+
+		// Whenever cursor moves, this tells scroll_text to update the scrollbars
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
+
+	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
 		set_line_no_from_offset();
-		set_cursor(get_line_end_offset(line_no_), select);
 		scroll_horiz_ = scrollbar_base::END;
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		set_cursor(get_line_end_offset(line_no_), select);
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_start_of_line(const bool select = false) override
 	{
 		set_line_no_from_offset();
-		set_cursor(get_line_start_offset(line_no_), select);
 		scroll_horiz_ = scrollbar_base::BEGIN;
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		set_cursor(get_line_start_offset(line_no_), select);
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_end_of_data(const bool select = false) override
 	{
-		set_cursor(get_length(), select);
-		scroll_vert_ = scrollbar_base::END;
+		text_box_base::goto_end_of_data(select);
+
+		if (get_lines_count() > 1) {
+			scroll_vert_ = scrollbar_base::END;
+		} else {
+			// Only one line of text in this case
+			scroll_horiz_ = scrollbar_base::END;
+			scroll_vert_ = scrollbar_base::BEGIN;
+		}
 
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
@@ -142,10 +179,17 @@ protected:
 	/** Inherited from text_box_base. */
 	void goto_start_of_data(const bool select = false) override
 	{
-		set_cursor(0, select);
+		text_box_base::goto_start_of_data(select);
 		scroll_vert_ = scrollbar_base::BEGIN;
 
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
+
+	/** Inherited from text_box_base. */
+	void paste_selection(const bool mouse)
+	{
+		text_box_base::paste_selection(mouse);
+		update_layout();
 	}
 
 	/** Inherited from text_box_base. */
@@ -196,6 +240,9 @@ private:
 
 	/** Image (such as a magnifying glass) that accompanies the help text. */
 	std::string hint_image_;
+
+	/** Wrapping */
+	bool wrap_;
 
 	/** Line number of text */
 	unsigned line_no_;
@@ -323,6 +370,7 @@ public:
 	std::string hint_image;
 
 	bool editable;
+	bool wrap;
 };
 
 } // namespace implementation

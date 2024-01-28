@@ -144,6 +144,9 @@ private:
 
 	void finalize_subclass() override;
 
+	/** Used for moving scrollbars.
+	    Has to be called from signal notify_modified, otherwise
+	    doesn't work after invalidate_layout. */
 	void refresh();
 
 public:

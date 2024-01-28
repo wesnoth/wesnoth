@@ -85,6 +85,11 @@ public:
 		return text_.get_byte_offset(column);
 	}
 
+	int get_line_start(const unsigned line) const
+	{
+		return text_.get_line_start_offset(line);
+	}
+
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 	{
 		text_.set_highlight_area(start_offset, end_offset, color);
@@ -207,7 +212,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the new position?
 	 */
-	void set_cursor(const std::size_t offset, const bool select);
+	virtual void set_cursor(const std::size_t offset, const bool select);
 
 	/**
 	 * Inserts a character at the cursor.

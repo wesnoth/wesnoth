@@ -154,9 +154,6 @@ void scroll_text::finalize_subclass()
 	connect_signal_notify_modified(*text, std::bind(&scroll_text::refresh, this));
 }
 
-/* Used for moving scrollbars.
-   Has to be called from signal notify_modified, otherwise
-   doesn't work after invalidate_layout. */
 void scroll_text::refresh() {
 	multiline_text* text = get_internal_text_box();
 	assert(text);
@@ -165,6 +162,13 @@ void scroll_text::refresh() {
 			|| text->scroll_horiz_ == scrollbar_base::END) {
 		scroll_horizontal_scrollbar(text->scroll_horiz_);
 		text->scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
+	} else {
+		const point& cursor_pos = text->get_cursor_pos();
+		const SDL_Rect& visible_area = content_visible_area();
+
+//		std::cout << "c.x = " << cursor_pos.x << " c.y = " << cursor_pos.y << std::endl;
+//		std::cout << "r.x = " << visible_area.x << " r.y = " << visible_area.y << std::endl;
+//		std::cout << "r.w = " << visible_area.w << " r.h = " << visible_area.h << std::endl;
 	}
 
 	if (text->scroll_vert_ == scrollbar_base::BEGIN
@@ -172,8 +176,12 @@ void scroll_text::refresh() {
 		scroll_vertical_scrollbar(text->scroll_vert_);
 		text->scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
 	} else {
-		if (text->get_line_no() > 0) {
+		if (text->get_line_no() > 1) {
 			scroll_vertical_scrollbar(text->scroll_vert_);
+		} else if (text->get_line_no() > text->get_lines_count() - 1) {
+			scroll_vertical_scrollbar(scrollbar_base::END);
+		} else {
+			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		}
 	}
 	get_window()->queue_redraw();

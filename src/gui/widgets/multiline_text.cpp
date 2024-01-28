@@ -49,6 +49,7 @@ multiline_text::multiline_text(const implementation::builder_styled_widget& buil
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
+	, wrap_(true)
 	, line_no_(0)
 {
 	set_wants_mouse_left_double_click();
@@ -114,6 +115,8 @@ void multiline_text::update_canvas()
 	set_line_no_from_offset();
 
 	/***** Set in all canvases *****/
+
+	std::cout << "offset : " << get_selection_start() << " line : " << line_no_ << std::endl;
 
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
@@ -204,12 +207,9 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 		return;
 	}
 
-	line_no_ = line;
+	offset += get_line_start_offset(line);
 
-	const auto& lines = get_lines();
-	for (unsigned int i = 0; i < line_no_; ++i) {
-		offset += lines.at(i).size() + 1;
-	}
+	line_no_ = get_line_no_from_offset(offset);
 
 	set_cursor(offset, !start_selection);
 
@@ -220,10 +220,15 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 
 unsigned multiline_text::get_line_end_offset(unsigned line_no) {
 	// Should be cached if needed
-	return get_line_start_offset(line_no) + get_lines().at(line_no).size();
+	std::string line = get_lines().at(line_no);
+	// Get correct number of characters to move for multibyte utf8 string.
+	int line_size = utf8::size(line);
+	std::cout << "end : " << line_no << std::endl;
+	return get_line_start_offset(line_no) + line_size;
 }
 
 unsigned multiline_text::get_line_start_offset(unsigned line_no) {
+	std::cout << "start : " << line_no << std::endl;
 	if (line_no > 0) {
 		return get_line_end_offset(line_no-1) + 1;
 	} else {
@@ -232,17 +237,13 @@ unsigned multiline_text::get_line_start_offset(unsigned line_no) {
 }
 
 unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
-	unsigned i = 0, line_start = 0, line_end = 0, line_no = 0;
-	if ( offset <= get_length() ) {
-		for(const auto& line : get_lines()) {
-			line_start = line_end;
-			line_end += line.size() + 1;
-			if ((offset >= line_start) && (offset <= line_end-1)) {
-				line_no = i;
-				break;
-			} else {
-				i++;
-			}
+	unsigned line_start = 0, line_end = 0, line_no = 0;
+	for(unsigned i = 0; i < get_lines_count(); i++) {
+		line_start = get_line_start_offset(i);
+		line_end = get_line_end_offset(i);
+		if ((offset >= line_start) && (offset <= line_end)) {
+			line_no = i;
+			break;
 		}
 	}
 	return line_no;
@@ -321,8 +322,6 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 	} else {
 		handled = true;
 		insert_char("\t");
-
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -330,13 +329,8 @@ void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 {
 	handled = true;
 
-	if (is_editable() && modifier != 0) {
+	if (is_editable() && (modifier & KMOD_SHIFT)) {
 		insert_char("\n");
-
-		scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-		update_layout();
-
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -369,14 +363,11 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	offset += get_selection_length();
 
+	scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
+
 	if (offset <= get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
-	set_line_no_from_offset();
-
-	scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	update_canvas();
 	queue_redraw();
@@ -397,21 +388,18 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 				+ get_line_start_offset(line_no_-1);
 
 		if (offset > get_line_end_offset(line_no_-1)) {
-			offset = get_line_start_offset(line_no_-1);
+			offset = get_line_end_offset(line_no_-1);
 		}
 	}
 
 	offset += get_selection_length();
 
+	scroll_vert_ = scrollbar_base::HALF_JUMP_BACKWARDS;
+
 	/* offset is unsigned int */
 	if (offset <= get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
-	set_line_no_from_offset();
-
-	scroll_vert_ = scrollbar_base::HALF_JUMP_BACKWARDS;
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	update_canvas();
 	queue_redraw();
@@ -500,6 +488,7 @@ builder_multiline_text::builder_multiline_text(const config& cfg)
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
 	, editable(cfg["editable"].to_bool(true))
+	, wrap(cfg["wrap"].to_bool(true))
 {
 }
 
@@ -509,6 +498,7 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 
 
 	widget->set_editable(editable);
+//	widget->set_can_wrap(wrap);
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);
 
