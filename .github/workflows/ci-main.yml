@@ -51,8 +51,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { tool: scons, cc: gcc,   cxx: g++,     cfg: release, lto: true  }
-          - { tool: cmake, cc: clang, cxx: clang++, cfg: debug,   lto: false }
+          - { tool: scons, cc: gcc,   cxx: g++,     cfg: debug,   lto: false }
+          - { tool: cmake, cc: clang, cxx: clang++, cfg: release, lto: true  }
     runs-on: ubuntu-latest
     container:
       image: wesnoth/wesnoth:2204-master
@@ -70,36 +70,45 @@ jobs:
     steps:
       - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
-# wesnothd and campaignd should be buildable without SDL2 being present
+# 1) wesnothd and campaignd should be buildable without SDL2 being present
+# 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
+# 3) mariadbpp currently has a deprecation warning that causes strict builds to fail
+#    scons doesn't build it for the wesnoth client and the boost tests, but cmake apparently does
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         id: build # needed to check step outcome
         run: |
           case $TOOL in
             scons)
               build() {
+                ldconfig
                 scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
-                  extra_flags_config="-pipe" strict=true forum_user_handler=true \
-                  nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time
+                  extra_flags_config="-pipe" forum_user_handler=true \
+                  nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time \
+                  glibcxx_debug=true glibcxx_assertions=true
               }
-              build wesnoth boost_unit_tests
+              build strict=true wesnoth boost_unit_tests
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-              build wesnothd campaignd
+              build strict=false wesnothd campaignd
               ;;
             cmake)
               build() {
+                ldconfig
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
-                  -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
+                  -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 .
               }
-              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
+              rm -R /usr/local/lib/cmake
+              rm /usr/local/lib/libboost*
+              rm -R /usr/local/include/boost
+              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true -DENABLE_STRICT_COMPILATION=false
               make conftests
               make VERBOSE=1 -j2
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-              build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false
+              build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false -DENABLE_STRICT_COMPILATION=false
               make VERBOSE=1 -j2
               ;;
           esac
@@ -118,7 +127,7 @@ jobs:
         run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
         if: success() || steps.build.outcome == 'success'
-        run: ./run_wml_tests -g -c -t 20
+        run: ./run_wml_tests -g -c -t 20 -bt 1000
       - name: Run play tests
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/play_test_executor.sh
@@ -251,7 +260,11 @@ jobs:
         run: scons translations build=release --debug=time nls=true jobs=2
       - name: Build wesnoth and unit tests
         working-directory: projectfiles/Xcode
-        run: xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+        run: |
+          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+          # xcodebuild or maybe clang do not appear to fail properly when input files cannot be found; double check executables were produced
+          [ -x "build/$CFG/The Battle for Wesnoth.app" ] || { printf 'Failed to build wesnoth executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/unit_tests" ] || { printf 'Failed to build unit test executable!\n' >&2; exit 1; }
       - name: Create disk image
         working-directory: projectfiles/Xcode
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"

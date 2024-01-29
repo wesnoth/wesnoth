@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -86,7 +86,7 @@ int show_message_dialog(lua_State* L)
 			t_string short_opt;
 			config opt;
 			if(luaW_totstring(L, -1, short_opt)) {
-				opt["description"] = short_opt;
+				opt["label"] = short_opt;
 			} else if(!luaW_toconfig(L, -1, opt)) {
 				std::ostringstream error;
 				error << "expected array of config and/or translatable strings, but index ";

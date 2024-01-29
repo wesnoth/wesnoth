@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Patrick Parker <patrick_x99@hotmail.com>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -28,27 +28,26 @@ namespace gui {
 
 	//static initializations
 menu::imgsel_style menu::bluebg_style("dialogs/selection", true,
-										   0x000000, 0x000000, 0x333333,
-										   0.35, 0.0, 0.3);
+										   0x000000, 0x000000,
+										   0.35, 0.0);
 
 menu::style &menu::default_style = menu::bluebg_style;
 
 	//constructors
 menu::style::style() : font_size_(font::SIZE_NORMAL),
 		cell_padding_(font::SIZE_NORMAL * 3/5), thickness_(0),
-		normal_rgb_(0x000000), selected_rgb_(0x000099), heading_rgb_(0x333333),
-		normal_alpha_(0.2),  selected_alpha_(0.6), heading_alpha_(0.3),
-		max_img_w_(-1), max_img_h_(-1)
+		normal_rgb_(0x000000), selected_rgb_(0x000099),
+		normal_alpha_(0.2),  selected_alpha_(0.6)
 {}
 
 menu::style::~style()
 {}
 menu::imgsel_style::imgsel_style(const std::string &img_base, bool has_bg,
-								 int normal_rgb, int selected_rgb, int heading_rgb,
-								 double normal_alpha, double selected_alpha, double heading_alpha)
+								 int normal_rgb, int selected_rgb,
+								 double normal_alpha, double selected_alpha)
 								 : img_base_(img_base), has_background_(has_bg),  initialized_(false), load_failed_(false),
-								 normal_rgb2_(normal_rgb), selected_rgb2_(selected_rgb), heading_rgb2_(heading_rgb),
-								 normal_alpha2_(normal_alpha), selected_alpha2_(selected_alpha), heading_alpha2_(heading_alpha)
+								 normal_rgb2_(normal_rgb), selected_rgb2_(selected_rgb),
+								 normal_alpha2_(normal_alpha), selected_alpha2_(selected_alpha)
 {}
 menu::imgsel_style::~imgsel_style()
 {}
@@ -56,28 +55,6 @@ menu::imgsel_style::~imgsel_style()
 std::size_t menu::style::get_font_size() const { return font_size_; }
 std::size_t menu::style::get_cell_padding() const { return cell_padding_; }
 std::size_t menu::style::get_thickness() const { return thickness_; }
-
-void menu::style::scale_images(int max_width, int max_height)
-{
-	max_img_w_ = max_width;
-	max_img_h_ = max_height;
-}
-
-void menu::style::adjust_image_bounds(int& w, int& h) const
-{
-	int scale = 100;
-	if(max_img_w_ > 0 && w > max_img_w_) {
-		scale = (max_img_w_ * 100) / w;
-	}
-	if(max_img_h_ > 0 && h > max_img_h_) {
-		scale = std::min<int>(scale, ((max_img_h_ * 100) / h));
-	}
-	if(scale != 100)
-	{
-		w = (scale * w)/100;
-		h = (scale * h)/100;
-	}
-}
 
 bool menu::imgsel_style::load_image(const std::string &img_sub)
 {
@@ -116,8 +93,6 @@ bool menu::imgsel_style::load_images()
 				normal_alpha_ = normal_alpha2_;
 				selected_rgb_ = selected_rgb2_;
 				selected_alpha_ = selected_alpha2_;
-				heading_rgb_ = heading_rgb2_;
-				heading_alpha_ = heading_alpha2_;
 
 				load_failed_ = false;
 			}
@@ -237,9 +212,9 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 	}
 }
 
-SDL_Rect menu::imgsel_style::item_size(const std::string& item) const
+SDL_Rect menu::imgsel_style::item_size(const indented_menu_item& imi) const
 {
-	SDL_Rect bounds = style::item_size(item);
+	SDL_Rect bounds = style::item_size(imi);
 
 	bounds.w += 2 * thickness_;
 	bounds.h += 2 * thickness_ + 4;

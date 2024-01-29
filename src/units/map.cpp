@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -14,6 +14,7 @@
 	See the COPYING file for more details.
 */
 
+#include "display.hpp"
 #include "log.hpp"
 #include "units/id.hpp"
 #include "units/unit.hpp"
@@ -125,6 +126,8 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 		lmap_.emplace(src, uit);
 		return std::pair(make_unit_iterator(uit), false);
 	}
+
+	display::get_singleton()->invalidate(src);
 
 	self_check();
 

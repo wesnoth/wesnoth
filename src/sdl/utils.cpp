@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -395,27 +395,26 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 surface scale_surface_sharp(const surface& surf, int w, int h)
 {
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
+	assert(SDL_ALPHA_TRANSPARENT == 0);
 
-	if(surf == nullptr)
+	if(surf == nullptr) {
 		return nullptr;
-
+	}
 	if(w == surf->w && h == surf->h) {
 		return surf;
 	}
+
 	assert(w >= 0);
 	assert(h >= 0);
-
-	surface dst(w,h);
-
-	if (w == 0 || h ==0) {
-		PLAIN_LOG << "Create an empty image";
-		return dst;
-	}
-
-	if(surf == nullptr || dst == nullptr) {
+	surface dst(w, h);
+	if(dst == nullptr) {
 		PLAIN_LOG << "Could not create surface to scale onto";
 		return nullptr;
+	}
+
+	if(w == 0 || h == 0) {
+		PLAIN_LOG << "Creating an empty image";
+		return dst;
 	}
 
 	{
@@ -425,56 +424,18 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 		const uint32_t* const src_pixels = src_lock.pixels();
 		uint32_t* const dst_pixels = dst_lock.pixels();
 
-		float xratio = static_cast<float>(surf->w) / w;
-		float yratio = static_cast<float>(surf->h) / h;
+		const int src_w = surf->w;
+		const int src_h = surf->h;
 
-		float ysrc = 0.0f;
-		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			float xsrc = 0.0f;
-			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				float red = 0.0f, green = 0.0f, blue = 0.0f, alpha = 0.0f;
-
-				float summation = 0.0f;
-
-				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
-				// which we want to derive the pixel from
-				for(float xloc = xsrc; xloc < xsrc+xratio; xloc += 1) {
-					const float xsize = std::min<float>(std::floor(xloc+1)-xloc,xsrc+xratio-xloc);
-
-					for(float yloc = ysrc; yloc < ysrc+yratio; yloc += 1) {
-						const int xsrcint = std::max<int>(0,std::min<int>(surf->w-1,static_cast<int>(xsrc)));
-						const int ysrcint = std::max<int>(0,std::min<int>(surf->h-1,static_cast<int>(ysrc)));
-						const float ysize = std::min<float>(std::floor(yloc+1)-yloc,ysrc+yratio-yloc);
-
-						uint8_t r,g,b,a;
-
-						SDL_GetRGBA(src_pixels[ysrcint*surf->w + xsrcint],surf->format,&r,&g,&b,&a);
-						float value = xsize * ysize;
-						summation += value;
-						if (!a) continue;
-						value *= a;
-						alpha += value;
-						red += r * value;
-						green += g * value;
-						blue += b * value;
-					}
-				}
-
-				if (alpha != 0) {
-					red = red / alpha + 0.5f;
-					green = green / alpha + 0.5f;
-					blue = blue / alpha + 0.5f;
-					alpha = alpha / summation + 0.5f;
-				}
-
-				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(
-				dst->format
-				, static_cast<uint8_t>(red)
-				, static_cast<uint8_t>(green)
-				, static_cast<uint8_t>(blue)
-				, static_cast<uint8_t>(alpha));
+		const float xratio = static_cast<float>(src_w) / static_cast<float>(w);
+		const float yratio = static_cast<float>(src_h) / static_cast<float>(h);
+		for(int ydst = 0; ydst != h; ++ydst) {
+			for(int xdst = 0; xdst != w; ++xdst) {
+				// Project dst pixel to a single corresponding src pixel by scale and simply take it
+				const int xsrc = std::floor(static_cast<float>(xdst) * xratio);
+				const int ysrc = std::floor(static_cast<float>(ydst) * yratio);
+				dst_pixels[ydst * dst->w + xdst] = src_pixels[ysrc * src_w + xsrc];
 			}
-
 		}
 	}
 

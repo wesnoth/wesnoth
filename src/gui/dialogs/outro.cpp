@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,6 +36,7 @@ outro::outro(const game_classification& info)
 	: modal_dialog(window_id())
 	, text_()
 	, current_text_()
+	, text_index_(0)
 	, duration_(info.end_text_duration)
 	, fade_step_(0)
 	, fading_in_(true)
@@ -84,7 +85,7 @@ outro::outro(const game_classification& info)
 		}
 	}
 
-	current_text_ = text_.begin();
+	current_text_ = text_[0];
 
 	if(!duration_) {
 		duration_ = 3500; // 3.5 seconds
@@ -94,11 +95,16 @@ outro::outro(const game_classification& info)
 void outro::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
+	window.get_canvas(0).set_variable("outro_text", wfl::variant(current_text_));
 }
 
 void outro::update()
 {
+	// window doesn't immediately close, keep returning until it does
+	if(text_index_ >= text_.size()) {
+		return;
+	}
+
 	/* If we've faded fully in...
 	 *
 	 * NOTE: we want fading to take around half a second. Given this function runs about every 3 frames, we
@@ -118,16 +124,16 @@ void outro::update()
 
 	// If we've faded fully out...
 	if(!fading_in_ && fade_step_ < 0) {
-		std::advance(current_text_, 1);
-
 		// ...and we've just showed the last text bit, close the window.
-		if(current_text_ == text_.end()) {
+		text_index_++;
+		if(text_index_ >= text_.size()) {
 			window::close();
 			return;
 		}
+		current_text_ = text_[text_index_];
 
 		// ...else show the next bit.
-		window_canvas.set_variable("outro_text", wfl::variant(*current_text_));
+		window_canvas.set_variable("outro_text", wfl::variant(current_text_));
 
 		fading_in_ = true;
 		fade_step_ = 0;

@@ -8,13 +8,13 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2023.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-17 02:59 UTC\n"
-"PO-Revision-Date: 2023-10-21 15:41+0200\n"
+"POT-Creation-Date: 2024-01-21 01:57 UTC\n"
+"PO-Revision-Date: 2023-11-21 18:33+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -178,7 +178,7 @@ msgstr "fionda"
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
-#: data/core/units/monsters/Shadow_Jumping_Spider.cfg:54
+#: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
 #: data/core/units/monsters/Water_Serpent.cfg:42
 #: data/core/units/monsters/Wolf.cfg:48
 #: data/core/units/monsters/Wolf_Dire.cfg:33
@@ -301,7 +301,7 @@ msgstr "mazzafrusto"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:878
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:932
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -327,7 +327,6 @@ msgstr "mazzafrusto"
 #: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:88
 #: data/core/units/orcs/Leader.cfg:27
-#: data/core/units/undead/Skele_Death_Squire.cfg:32
 msgid "sword"
 msgstr "spada"
 
@@ -400,7 +399,7 @@ msgstr "tempesta gelida"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:891
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:945
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -436,7 +435,7 @@ msgstr "arco"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
-#: data/core/units/monsters/Elder_Falcon.cfg:41
+#: data/core/units/monsters/Elder_Falcon.cfg:75
 #: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
@@ -558,9 +557,9 @@ msgstr "maledizione"
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
 #: data/core/units/monsters/Crocodile.cfg:159
-#: data/core/units/monsters/Dragonfly.cfg:30
-#: data/core/units/monsters/Dragonfly_Grand.cfg:31
-#: data/core/units/monsters/Dragonfly_Naiad.cfg:61
+#: data/core/units/monsters/Dragonfly.cfg:31
+#: data/core/units/monsters/Dragonfly_Grand.cfg:32
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:62
 #: data/core/units/monsters/Fire_Dragon.cfg:33
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -571,9 +570,13 @@ msgstr "maledizione"
 #: data/core/units/monsters/Wild_Wyvern.cfg:97
 #: data/core/units/undead/Corpse_Ghast.cfg:27
 #: data/core/units/undead/Corpse_Soulless.cfg:154
-#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Soulless.cfg:170
+#: data/core/units/undead/Corpse_Soulless.cfg:254
+#: data/core/units/undead/Corpse_Soulless.cfg:331
 #: data/core/units/undead/Corpse_Walking.cfg:155
-#: data/core/units/undead/Corpse_Walking.cfg:295
+#: data/core/units/undead/Corpse_Walking.cfg:171
+#: data/core/units/undead/Corpse_Walking.cfg:255
+#: data/core/units/undead/Corpse_Walking.cfg:332
 msgid "bite"
 msgstr "morso"
 
@@ -724,12 +727,13 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:52
+#: data/core/units/undead/Skele_Bone_Knight.cfg:66
+#: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:52
+#: data/core/units/undead/Skeleton_Rider.cfg:85
 msgid "axe"
 msgstr "ascia"
 
@@ -1037,49 +1041,49 @@ msgid "bolas"
 msgstr "bolas"
 
 #. [effect]: type=blade
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:124
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:156
 msgid "taunting strike"
-msgstr ""
+msgstr "colpo provocatorio"
 
 #. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:145
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:182
 msgid "Run By (Taunting strike)"
-msgstr ""
+msgstr "In corsa (colpo provocatorio)"
 
 #. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:158
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:200
 msgid "Strength Training"
 msgstr "Allenamento della Forza"
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:170
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:212
 msgid "Bowmanship Training"
 msgstr "Addestramento arceria"
 
 #. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:187
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:229
 msgid "Strong Shots"
 msgstr "Colpi potenti"
 
 #. [advancement]: id=Bowman
 #. [unit_type]: id=Bowman, race=human
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:199
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:241
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "Arciere"
 
 #. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:216
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:258
 msgid "Piercing Shot"
 msgstr "Colpo Penetrante"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:224
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:266
 msgid "piercing shot"
 msgstr "colpo penetrante"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:528
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
 msgid "Rain of arrows"
 msgstr "Pioggia di frecce"
 
@@ -1241,10 +1245,8 @@ msgstr "alabarda"
 
 #. [female]
 #: data/core/units/drakes/Arbiter.cfg:174
-#, fuzzy
-#| msgid "Drake Arbiter"
 msgid "female^Drake Arbiter"
-msgstr "Drago Arbitro"
+msgstr "Dragonessa Arbitro"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
@@ -1288,10 +1290,8 @@ msgstr "respiro infuocato"
 
 #. [female]
 #: data/core/units/drakes/Armageddon.cfg:65
-#, fuzzy
-#| msgid "Armageddon Drake"
 msgid "female^Armageddon Drake"
-msgstr "Drago dell’Apocalisse"
+msgstr "Dragonessa dell’Apocalisse"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
@@ -1325,10 +1325,8 @@ msgstr "artiglio da guerra"
 
 #. [female]
 #: data/core/units/drakes/Blademaster.cfg:61
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "female^Drake Blademaster"
-msgstr "Drago Maestro di Lame"
+msgstr "Dragonessa Maestra di Lame"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -1350,10 +1348,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Burner.cfg:67
-#, fuzzy
-#| msgid "female^Dune Burner"
 msgid "female^Drake Burner"
-msgstr "Inceneritrice delle Dune"
+msgstr "Dragonessa Inceneritrice"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -1391,10 +1387,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Clasher.cfg:111
-#, fuzzy
-#| msgid "Drake Clasher"
 msgid "female^Drake Clasher"
-msgstr "Drago Distruttore"
+msgstr "Dragonessa Distruttrice"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
@@ -1429,10 +1423,8 @@ msgstr "tridente"
 
 #. [female]
 #: data/core/units/drakes/Enforcer.cfg:119
-#, fuzzy
-#| msgid "Drake Enforcer"
 msgid "female^Drake Enforcer"
-msgstr "Drago Vigilante"
+msgstr "Dragonessa Vigilante"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -1462,10 +1454,8 @@ msgstr "lama da guerra"
 
 #. [female]
 #: data/core/units/drakes/Fighter.cfg:64
-#, fuzzy
-#| msgid "Drake Fighter"
 msgid "female^Drake Fighter"
-msgstr "Drago Combattente"
+msgstr "Dragonessa Combattente"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -1490,10 +1480,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Fire.cfg:62
-#, fuzzy
-#| msgid "Fire Drake"
 msgid "female^Fire Drake"
-msgstr "Drago di Fuoco"
+msgstr "Dragonessa di Fuoco"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -1521,10 +1509,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Flameheart.cfg:66
-#, fuzzy
-#| msgid "Drake Flameheart"
 msgid "female^Drake Flameheart"
-msgstr "Drago Cuore di Fiamma"
+msgstr "Dragonessa Cuore di Fiamma"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -1549,10 +1535,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Flare.cfg:65
-#, fuzzy
-#| msgid "Drake Flare"
 msgid "female^Drake Flare"
-msgstr "Drago Splendente"
+msgstr "Dragonessa Splendente"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -1599,10 +1583,8 @@ msgstr "colpo"
 
 #. [female]
 #: data/core/units/drakes/Glider.cfg:66
-#, fuzzy
-#| msgid "Drake Glider"
 msgid "female^Drake Glider"
-msgstr "Drago Leggero"
+msgstr "Dragonessa Leggera"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -1632,10 +1614,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Hurricane.cfg:101
-#, fuzzy
-#| msgid "Hurricane Drake"
 msgid "female^Hurricane Drake"
-msgstr "Drago degli Uragani"
+msgstr "Dragonessa degli Uragani"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -1660,10 +1640,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Inferno.cfg:64
-#, fuzzy
-#| msgid "Inferno Drake"
 msgid "female^Inferno Drake"
-msgstr "Drago Infernale"
+msgstr "Dragonessa Infernale"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -1688,10 +1666,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Sky.cfg:98
-#, fuzzy
-#| msgid "Sky Drake"
 msgid "female^Sky Drake"
-msgstr "Drago del Cielo"
+msgstr "Dragonessa del Cielo"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1718,10 +1694,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Thrasher.cfg:118
-#, fuzzy
-#| msgid "Drake Thrasher"
 msgid "female^Drake Thrasher"
-msgstr "Drago Massacratore"
+msgstr "Dragonessa Massacratrice"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
@@ -1760,10 +1734,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Warden.cfg:175
-#, fuzzy
-#| msgid "Drake Warden"
 msgid "female^Drake Warden"
-msgstr "Drago Custode"
+msgstr "Dragonessa Custode"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1790,10 +1762,8 @@ msgstr ""
 
 #. [female]
 #: data/core/units/drakes/Warrior.cfg:58
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "female^Drake Warrior"
-msgstr "Drago Guerriero"
+msgstr "Drago Guerriera"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
@@ -4165,15 +4135,6 @@ msgstr "Fante Goblin"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "In any race, there are always those rare individuals who, by stroke of "
-#| "bad luck, are born much smaller and weaker than the rest of their kind. "
-#| "For Orcs, however, such occurrences are extraordinarily common, with "
-#| "there usually being several runts born in each litter. Known as "
-#| "‘Goblins’, these sickly creatures nearly always live short, brutal lives, "
-#| "most used merely as fodder against an enemy of their larger siblings' "
-#| "choosing while equipped with only the crudest of spears."
 msgid ""
 "In any race, there are always those rare individuals who, by stroke of bad "
 "luck, are born much smaller and weaker than the rest of their kind. For "
@@ -4187,9 +4148,9 @@ msgstr ""
 "più gracili e deboli dei loro simili. Per gli orchi, invece, queste "
 "occasionali nascite sono straordinariamente comuni, dato che ad ogni "
 "cucciolata ne nascono diversi. Conosciuti come “Goblin”, queste creature "
-"malaticce hanno sempre una vita breve e travagliata, venendo utilizzati dai "
-"loro fratelli maggiori come carne da macello contro i nemici, munendoli "
-"soltanto di rozze lance."
+"malaticce hanno sempre una vita breve e travagliata, venendo la maggior "
+"parte di loro utilizzata dai loro fratelli maggiori come carne da macello "
+"contro i nemici, munendoli soltanto di rozze lance."
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
@@ -6159,7 +6120,7 @@ msgstr "tocco della naiade"
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr "Lanciere Nereide"
+msgstr "Nereide Lanciere"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:17
@@ -6367,16 +6328,6 @@ msgstr "Formica Gigante Regina"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. The queens are not royalty as "
-#| "many other races would understand, but they are the heart of any "
-#| "functioning nest and will be defended at all costs. As the nest core, "
-#| "they must be capable tacticians, and as a target of rival nests, they "
-#| "must also be deft warriors. The typical human or orc that finds an "
-#| "audience with an Ant Queen can expect a very short continued existence - "
-#| "and if their flesh is warm and nourishing, they can host an ant egg."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. The queens are not royalty as many "
@@ -6388,14 +6339,14 @@ msgid ""
 "nourishing, they can host an ant egg."
 msgstr ""
 "Le Formiche Giganti sono piuttosto comuni in quasi tutti gli ambienti, dalle "
-"caverne della terra più profonde alle cime delle montagne più alte. Le loro "
-"regine non sono così regali come quelle di molte altre razze, ma sono il "
-"cuore pulsante di ogni nido operativo e verranno difese ad ogni costo. In "
-"quanto cuore del nico, devono possedere abilità tattiche e, avendo come "
-"bersaglio i nidi rivali, devono essere anche abili guerriere. Il tipico "
-"essere umano o orco che trova udienza con una Formica Regina può aspettarsi "
-"una esistenza molto breve - e se la sua carne è tiepida e nutriente, può "
-"ospitare una uovo di formica."
+"più profonde caverne della terra alle più alte cime delle montagne. Le "
+"regine non sono così regali come vengono considerate quelle di molte altre "
+"razze, ma sono il cuore pulsante di ogni nido operativo e verranno difese ad "
+"ogni costo. In quanto cuore del nido, devono possedere abilità tattiche e, "
+"avendo come bersaglio i nidi rivali, devono essere anche abili guerriere. Il "
+"tipico essere umano o orco che trova udienza con una Formica Regina può "
+"aspettarsi una esistenza molto breve — e se la sua carne è tiepida e "
+"nutriente, può ospitare una uovo di formica."
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
@@ -6454,8 +6405,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:399
-#: data/core/units/undead/Corpse_Walking.cfg:400
+#: data/core/units/undead/Corpse_Soulless.cfg:436
+#: data/core/units/undead/Corpse_Walking.cfg:437
 msgid "tusk"
 msgstr "zanna"
 
@@ -6533,7 +6484,7 @@ msgstr ""
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
-msgstr "Lucertola delle Paludi"
+msgstr "Lucertola Palustre"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:122
@@ -6545,12 +6496,12 @@ msgid ""
 "adopted a ‘two legs bad’ outlook and do not hesitate to avenge their "
 "ancestors."
 msgstr ""
-"Le paludi sono ambienti vibranti, ma spesso non amichevoli per umani o "
-"orchi. Le Lucertole delle Paludi sono uno dei più grandi pericoli, con le "
-"loro potenti mascelle e la pelle corazzata. Nonostante il loro aspetto "
-"primitivo, queste lucertole non sono stupide e, dopo generazioni in cui sono "
-"state cacciate per le loro pelli, hanno adottato una atteggiamento "
-"minaccioso \"su due zampe\" e non esitano a vendicare i loro antenati."
+"Le paludi sono ambienti vibranti, ma spesso poco amichevoli per umani o "
+"orchi. Le Lucertole Palustri sono uno dei pericoli più grandi, con le loro "
+"potenti mascelle e la pelle corazzata. Nonostante il loro aspetto primitivo, "
+"queste lucertole non sono stupide e, dopo generazioni in cui sono state "
+"cacciate per le loro pelli, hanno adottato una atteggiamento minaccioso \"su "
+"due zampe\" e non esitano a vendicare i loro antenati."
 
 #. [special_note]
 #: data/core/units/monsters/Crocodile.cfg:124
@@ -6652,7 +6603,7 @@ msgstr ""
 "gigante."
 
 #. [attack]: type=pierce
-#: data/core/units/monsters/Dragonfly_Grand.cfg:43
+#: data/core/units/monsters/Dragonfly_Grand.cfg:44
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
 msgid "sting"
@@ -6683,7 +6634,7 @@ msgid "Elder Falcon"
 msgstr "Falcone Anziano"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/monsters/Elder_Falcon.cfg:18
+#: data/core/units/monsters/Elder_Falcon.cfg:19
 msgid ""
 "Elder Falcons bear the telltale scars of veteran warriors from protecting "
 "their masters, their bodies proof of repeated dives into a swirling melee. "
@@ -6698,7 +6649,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/monsters/Elder_Falcon.cfg:50
+#: data/core/units/monsters/Elder_Falcon.cfg:84
 #: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:86
 #: data/core/units/monsters/Raven_Harbinger.cfg:96
 #: data/core/units/monsters/Raven_Omen.cfg:86
@@ -7287,21 +7238,6 @@ msgstr "Roc"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:20
-#, fuzzy
-#| msgid ""
-#| "In remote desert mountains, far from any city or settlement, enormous "
-#| "raptors are rumoured to nest in the lofty crags.  Travellers and nomads "
-#| "claim to have witnessed livestock and grown men snatched into the sky "
-#| "without warning by these monsters.  While one should not place much faith "
-#| "in the accounts of the desert roamers, they are less fantastical than the "
-#| "drunken lies of sailors who claim to have witnessed full-rigged ships, "
-#| "attempting to navigate the narrow straights between the sheer cliffs "
-#| "where nothing can grow, sunk by giant eagles dropping large rocks.\n"
-#| "\n"
-#| "Whatever kernel of truth is in these tall tales, there is no denying that "
-#| "the desert is a dangerous place, and both traders and armies do sometimes "
-#| "disappear when trying to cross the harsh ranges.  If you must traverse "
-#| "the great deserts, keep an eye to the sky."
 msgid ""
 "In remote desert mountains, far from any city or settlement, enormous "
 "raptors are rumoured to nest in the lofty crags. Travellers and nomads claim "
@@ -7324,8 +7260,8 @@ msgstr ""
 "nei resoconti di qualche vagabondo del deserto, essi sono meno fantasiosi "
 "delle frottole di qualche marinaio ubriaco che afferma di aver visto navi "
 "completamente equipaggiate, tentare di navigare lungo degli angusti passaggi "
-"fra le scogliere a picco dove non può cresce nulla, affondate da aquile "
-"gigantesche che lasciano cadere grandi massi.\n"
+"fra le scogliere a picco dove non può cresce nulla e finire affondate da "
+"aquile gigantesche che lasciano cadere grandi massi.\n"
 "\n"
 "Qualunque sia il nocciolo di verità in fondo a queste storie, non si può "
 "negare che il deserto sia un posto pericolo, e che sia i mercanti che gli "
@@ -7474,20 +7410,6 @@ msgstr "Ragno Saltaombra"
 
 #. [unit_type]: id=Shadow Jumping Spider, race=monster
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:29
-#, fuzzy
-#| msgid ""
-#| "Unlike the feared Giant Spider, that uses poison and webs to catch prey, "
-#| "the Shadow Jumper relies on speed and the element of surprise.  These "
-#| "stealthy, keen-eyed hunters creep to within striking distance, then "
-#| "pounce with a piercing bite that is said to punch through steel.  Once "
-#| "they have pierced their victim's defenses, the spiders take what "
-#| "nourishment is available, feeding in a manner as fast and remorseless as "
-#| "befits their nature.\n"
-#| "\n"
-#| "These giant jumping spiders often hunt in the same dark caverns as their "
-#| "web-weaving cousins, but they also prowl the forest canopy, ambushing "
-#| "happless wanderers on the ground below.  While they prefer the shadows, "
-#| "they are perfectly capable of hunting in the broad daylight."
 msgid ""
 "Unlike the feared Giant Spider that uses poison and webs to catch prey, the "
 "Shadow Jumper relies on speed and the element of surprise. These stealthy, "
@@ -7694,6 +7616,7 @@ msgstr ""
 "lontano dalle montagne dove si dice abitino anche il più dubbioso della loro "
 "esistenza."
 
+# Il Dirk è un tipo di pugnale
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
@@ -8940,120 +8863,136 @@ msgstr "Formica"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:159
 #: data/core/units/undead/Corpse_Walking.cfg:160
+#, fuzzy
+#| msgid "wc_variation^Bat"
+msgid "wc_variation^Bug"
+msgstr "Pipistrello"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:175
+#: data/core/units/undead/Corpse_Walking.cfg:176
 msgid "wc_variation^Drake"
 msgstr "Drago"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:174
-#: data/core/units/undead/Corpse_Walking.cfg:175
+#: data/core/units/undead/Corpse_Soulless.cfg:190
+#: data/core/units/undead/Corpse_Walking.cfg:191
 msgid "wc_variation^Dwarf"
 msgstr "Nano"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:187
-#: data/core/units/undead/Corpse_Walking.cfg:188
+#: data/core/units/undead/Corpse_Soulless.cfg:203
+#: data/core/units/undead/Corpse_Walking.cfg:204
 msgid "wc_variation^Falcon"
 msgstr "Falcone"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:222
-#: data/core/units/undead/Corpse_Walking.cfg:223
+#: data/core/units/undead/Corpse_Soulless.cfg:238
+#: data/core/units/undead/Corpse_Walking.cfg:239
+#, fuzzy
+#| msgid "wc_variation^Wose"
+msgid "wc_variation^Fish"
+msgstr "Wose"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:259
+#: data/core/units/undead/Corpse_Walking.cfg:260
 msgid "wc_variation^Goblin"
 msgstr "Goblin"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:232
-#: data/core/units/undead/Corpse_Walking.cfg:256
+#: data/core/units/undead/Corpse_Soulless.cfg:269
+#: data/core/units/undead/Corpse_Walking.cfg:293
 msgid "wc_variation^Horse"
 msgstr "Cavallo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:241
-#: data/core/units/undead/Corpse_Walking.cfg:265
+#: data/core/units/undead/Corpse_Soulless.cfg:278
+#: data/core/units/undead/Corpse_Walking.cfg:302
 msgid "wc_variation^Mounted"
 msgstr "a Cavallo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:250
-#: data/core/units/undead/Corpse_Walking.cfg:274
+#: data/core/units/undead/Corpse_Soulless.cfg:287
+#: data/core/units/undead/Corpse_Walking.cfg:311
 msgid "wc_variation^Beast-Rider"
 msgstr "Cavalcabestie"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:259
-#: data/core/units/undead/Corpse_Walking.cfg:233
+#: data/core/units/undead/Corpse_Soulless.cfg:296
+#: data/core/units/undead/Corpse_Walking.cfg:270
 msgid "wc_variation^Gryphon"
 msgstr "Grifone"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:282
-#: data/core/units/undead/Corpse_Walking.cfg:283
+#: data/core/units/undead/Corpse_Soulless.cfg:319
+#: data/core/units/undead/Corpse_Walking.cfg:320
 msgid "wc_variation^Rat"
 msgstr "Ratto"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:299
-#: data/core/units/undead/Corpse_Walking.cfg:300
+#: data/core/units/undead/Corpse_Soulless.cfg:336
+#: data/core/units/undead/Corpse_Walking.cfg:337
 msgid "wc_variation^Saurian"
 msgstr "Sauro"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:309
-#: data/core/units/undead/Corpse_Walking.cfg:310
+#: data/core/units/undead/Corpse_Soulless.cfg:346
+#: data/core/units/undead/Corpse_Walking.cfg:347
 msgid "wc_variation^Scorpion"
 msgstr "Scorpione"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:327
-#: data/core/units/undead/Corpse_Walking.cfg:328
+#: data/core/units/undead/Corpse_Soulless.cfg:364
+#: data/core/units/undead/Corpse_Walking.cfg:365
 msgid "wc_variation^Scuttler"
 msgstr "Orrido"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:336
-#: data/core/units/undead/Corpse_Walking.cfg:337
+#: data/core/units/undead/Corpse_Soulless.cfg:373
+#: data/core/units/undead/Corpse_Walking.cfg:374
 msgid "wc_variation^Spider"
 msgstr "Aracnide"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:345
-#: data/core/units/undead/Corpse_Walking.cfg:346
+#: data/core/units/undead/Corpse_Soulless.cfg:382
+#: data/core/units/undead/Corpse_Walking.cfg:383
 msgid "wc_variation^Serpent"
 msgstr "Serpente"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:364
-#: data/core/units/undead/Corpse_Walking.cfg:365
+#: data/core/units/undead/Corpse_Soulless.cfg:401
+#: data/core/units/undead/Corpse_Walking.cfg:402
 msgid "wc_variation^Swimmer"
 msgstr "Acquatico"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:382
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:419
+#: data/core/units/undead/Corpse_Walking.cfg:420
 msgid "wc_variation^Troll"
 msgstr "Troll"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:391
-#: data/core/units/undead/Corpse_Walking.cfg:392
+#: data/core/units/undead/Corpse_Soulless.cfg:428
+#: data/core/units/undead/Corpse_Walking.cfg:429
 msgid "wc_variation^Boar"
 msgstr "Cinghiale"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:404
-#: data/core/units/undead/Corpse_Walking.cfg:405
+#: data/core/units/undead/Corpse_Soulless.cfg:441
+#: data/core/units/undead/Corpse_Walking.cfg:442
 msgid "wc_variation^Wose"
 msgstr "Wose"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:416
-#: data/core/units/undead/Corpse_Walking.cfg:417
+#: data/core/units/undead/Corpse_Soulless.cfg:453
+#: data/core/units/undead/Corpse_Walking.cfg:454
 msgid "wc_variation^Wolf"
 msgstr "Lupo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:429
-#: data/core/units/undead/Corpse_Walking.cfg:430
+#: data/core/units/undead/Corpse_Soulless.cfg:466
+#: data/core/units/undead/Corpse_Walking.cfg:467
 msgid "wc_variation^Bat"
 msgstr "Pipistrello"
 
@@ -9282,7 +9221,7 @@ msgid "Bone Knight"
 msgstr "Cavaliere d’ossa"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:45
+#: data/core/units/undead/Skele_Bone_Knight.cfg:59
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -9293,7 +9232,7 @@ msgstr ""
 "da una empio rituale magico, al solo scopo di spargere terrore e distruzione."
 
 #. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:62
+#: data/core/units/undead/Skele_Bone_Knight.cfg:76
 msgid "trample"
 msgstr "calpestamento"
 
@@ -9484,7 +9423,7 @@ msgid "Skeleton Rider"
 msgstr "Scheletro Cavaliere"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:45
+#: data/core/units/undead/Skeleton_Rider.cfg:78
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "

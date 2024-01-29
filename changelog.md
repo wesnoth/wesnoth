@@ -1,21 +1,39 @@
-## Version 1.17.24+dev
+## Version 1.17.25+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
-   * Eastern Invasion
-     * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, French, Slovak
+   * Updated translations: Arabic, British English, French
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+
+## Version 1.17.25
+ ### Campaigns
+   * Eastern Invasion
+     * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
+     * Fix macros in translatable strings, because they prevent translation. (issue #8225)
+   * Winds of Fate
+     * Made the epilogue more vague about events on the Green Isle
+     * Removed part of epilogue suggesting a Drake-led war around 120YW
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, Finnish, French, German, Italian, Slovak
+ ### Units
+   * New fish and bug zombie variations
+ ### User interface
+   * Added hotkeys for various menu items and ThemeWML buttons in Map Editor
+   * Added shortcut Ctrl+G for 'I'm Ready' button in mp_staging dialog (Addresses issue #8250)
+   * Fix the left pane of the help browser’s layout for right-to-left languages (Arabic and Hebrew) (issue #8205)
+ ### Miscellaneous and Bug Fixes
    * wmllint now warns about `[kill]` tags containing `[filter]` tags
+   * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8137)
+   * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
 
 ## Version 1.17.24
  ### Campaigns

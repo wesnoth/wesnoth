@@ -160,19 +160,52 @@ function wml_actions.harm_unit(cfg)
 
 			wesnoth.interface.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
 
+			local xp_mode = {kill=false, attack=false, defend=false}
+			local experience_split = tostring(experience):split()
+			for _,opt in ipairs(experience_split) do
+				if opt == 'true' or opt == 'yes' or opt == 'nil' then
+					xp_mode.kill = true
+					xp_mode.attack = true
+					xp_mode.defend = true
+				elseif opt == 'fight' then
+					xp_mode.attack = true
+					xp_mode.defend = true
+				elseif opt == 'attack' then
+					xp_mode.attack = true
+				elseif opt == 'defend' then
+					xp_mode.defend = true
+				elseif opt == 'kill' then
+					xp_mode.kill = true
+				elseif not (opt == 'no' or opt == 'false') then
+					wml.error('Invalid [harm_unit] experience: should be boolean or a list of one or more of the following: kill, fight, attack, defend')
+				end
+				-- with 'no' or 'false' preserve previous value
+			end
+			if #experience_split == 0 then
+				xp_mode = {kill=true, attack=true, defend=true}
+			end
+
 			local function calc_xp( level ) -- to calculate the experience in case of kill
 				if level == 0 then return math.ceil(wesnoth.game_config.kill_experience / 2)
 				else return level * wesnoth.game_config.kill_experience end
 			end
 
-			if experience ~= false and harmer and harmer.valid
+			if harmer and harmer.valid
 				and wesnoth.sides.is_enemy( unit_to_harm.side, harmer.side )
 			then
-				if kill ~= false and unit_to_harm.hitpoints <= 0 then
-					harmer.experience = harmer.experience + calc_xp( unit_to_harm.level )
+				if unit_to_harm.hitpoints <= 0 then
+					if xp_mode.kill then
+						harmer.experience = harmer.experience + calc_xp( unit_to_harm.level )
+					elseif xp_mode.attack then
+						harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
+					end
 				else
-					unit_to_harm.experience = unit_to_harm.experience + harmer.level
-					harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
+					if xp_mode.defend then
+						unit_to_harm.experience = unit_to_harm.experience + wesnoth.game_config.combat_experience * harmer.level
+					end
+					if xp_mode.attack then
+						harmer.experience = harmer.experience + wesnoth.game_config.combat_experience * unit_to_harm.level
+					end
 				end
 			end
 
@@ -190,11 +223,11 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			-- both units may no longer be alive at this point, so double check
-			if experience ~= false and unit_to_harm and unit_to_harm.valid then
+			if xp_mode.defend and unit_to_harm and unit_to_harm.valid then
 				unit_to_harm:advance(toboolean(animate), fire_event ~= false)
 			end
 
-			if experience ~= false and harmer and harmer.valid then
+			if (xp_mode.attack or xp_mode.kill) and harmer and harmer.valid then
 				harmer:advance(toboolean(animate), fire_event ~= false)
 			end
 		end

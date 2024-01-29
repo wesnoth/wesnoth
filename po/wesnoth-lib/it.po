@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2023.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2023-10-21 23:11+0200\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"PO-Revision-Date: 2023-11-21 19:40+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2339,13 +2339,11 @@ msgstr "Deprecato"
 
 #. [settings]
 #: data/gui/default.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Premi '$hotkey' per ulteriori informazioni)"
 
 #. [button]: id=search
-#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:446
+#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
 msgid "Search"
 msgstr "Ricerca"
 
@@ -2466,7 +2464,7 @@ msgstr "Messaggi in attesa"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:459 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:601 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2671,7 +2669,7 @@ msgstr "Scaricamenti:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:299
 msgid "date^Uploaded:"
-msgstr "Ultimo invio:"
+msgstr "Invio:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:329
@@ -3342,7 +3340,7 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
-"L’ID numerico del post di una discussione sul forum di Wesnoth dovwei "
+"L’ID numerico del post di una discussione sul forum di Wesnoth dove i "
 "giocatori possono postare i loro feedback."
 
 #. [grid]
@@ -3375,7 +3373,7 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
-"Lista, separata da virgloa, di utenze del forum di altre persone autorizzate "
+"Lista, separata da virgole, di utenze del forum di altre persone autorizzate "
 "ad inviare aggiornamenti di questa estensione."
 
 #. [grid]
@@ -4369,7 +4367,7 @@ msgstr "Preferenze"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Storia della partita"
 
@@ -5069,7 +5067,7 @@ msgstr "Lobby di Gioco"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
 msgid "Waiting for players to join..."
 msgstr "In attesa che giocatori arrivino..."
 
@@ -5094,57 +5092,57 @@ msgid "Login:"
 msgstr "Login:"
 
 #. [button]: id=replay_download
-#: data/gui/window/mp_match_history.cfg:144
+#: data/gui/window/mp_match_history.cfg:159
 msgid "Download"
 msgstr "Scarica"
 
 #. [label]: id=players
 #. [label]: id=modifications
-#: data/gui/window/mp_match_history.cfg:161
-#: data/gui/window/mp_match_history.cfg:178
+#: data/gui/window/mp_match_history.cfg:185
+#: data/gui/window/mp_match_history.cfg:223
 msgid "None"
 msgstr "Nessuno"
 
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:375
+msgid "Info"
+msgstr "Info"
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:388
+msgid "Players"
+msgstr "Giocatori"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "Modifiche"
+
 #. [label]
-#: data/gui/window/mp_match_history.cfg:328
+#: data/gui/window/mp_match_history.cfg:450
 msgid "Player:"
 msgstr "Giocatore:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
 #. [text_box]: id=search_content
-#: data/gui/window/mp_match_history.cfg:340
-#: data/gui/window/mp_match_history.cfg:382
-#: data/gui/window/mp_match_history.cfg:406
+#: data/gui/window/mp_match_history.cfg:462
+#: data/gui/window/mp_match_history.cfg:506
+#: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr "gli asterischi corrispondo a tutti i caratteri"
+msgstr "Gli asterischi corrispondo a tutti i caratteri"
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:351
+#: data/gui/window/mp_match_history.cfg:474
 msgid "Content Type:"
-msgstr "Tipo di contenuto"
+msgstr "Tipo di contenuto:"
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:370
+#: data/gui/window/mp_match_history.cfg:494
 msgid "Game name:"
 msgstr "Nome partita:"
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:561
-msgid "Info"
-msgstr "Info"
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:574
-msgid "Players"
-msgstr "Giocatori"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:587
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
-msgid "Modifications"
-msgstr "Modifiche"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5229,15 +5227,11 @@ msgstr "* required fields"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "Cambia il controllore della squadra"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
 msgstr "Cambia il comportamento della IA della squadra"
 
@@ -5481,7 +5475,7 @@ msgstr "Disponibile nell’editor"
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:829
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5586,7 +5580,7 @@ msgid ""
 "community-made add-ons"
 msgstr ""
 "Cambia il tema dell’interfaccia in gioco. Nelle estensioni create dalla "
-"comunità si possono trovare temi aggiuntivi."
+"comunità si possono trovare temi aggiuntivi"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
@@ -5839,10 +5833,6 @@ msgstr "Trova e imposta il percorso al server MG per ospitare partite su LAN"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
@@ -5852,10 +5842,6 @@ msgstr ""
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
@@ -6712,7 +6698,7 @@ msgid ""
 "entirely"
 msgstr ""
 "Modifica la casualità nelle meccaniche di combattimento, o la rimuove "
-"interamente."
+"interamente"
 
 #: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Survival"
@@ -6924,10 +6910,8 @@ msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilità attaccante vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:354
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Campagne"
+msgstr "Campagne Mancanti"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
@@ -6938,6 +6922,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth normalmente include più di 15 campagne principali, anche senza aver "
+"installato nulla dal server delle estensioni. Se hai installato il gioco "
+"tramite un gestore di pacchetti del tuo sistema operativo, probabilmente ci "
+"sono uno o più pacchetti aggiuntivi per installare tutti i dati del gioco."
 
 #: src/gui/dialogs/campaign_selection.cpp:395
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
@@ -7380,7 +7368,7 @@ msgid "lua console"
 msgstr "console lua"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
 msgid "Random"
 msgstr "Casuale"
 
@@ -7589,7 +7577,7 @@ msgid "empty"
 msgstr "vuoto"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
 msgid "this game"
 msgstr "questa partita"
 
@@ -7601,11 +7589,11 @@ msgstr "Lobby"
 msgid "Game"
 msgstr "Partita"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
 msgstr "In attesa che i giocatori scelgano le fazioni..."
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:48
 msgid "The End"
 msgstr "Fine"
 

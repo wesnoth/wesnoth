@@ -1,10 +1,29 @@
 #!/usr/bin/env python3
 # encoding: utf-8
-# A script for adding source files to the Battle for Wesnoth project.
 
 # known issues:
 # xcode - if a file already exists in 'wesnoth' target, then it incorrectly thinks it also exists in the 'tests' target even though the tests build will fail
 
+"""
+Add files to the specified build targets, supporting
+CMake, SCons, Xcode and the Code::Blocks projects.
+
+Valid build targets are:
+ * "wesnoth" - the main game (default if no target is specified)
+ * "wesnothd" - the wesnoth server
+ * "campaignd"
+ * "lua"
+ * "tests" - boost unit tests
+
+The files will be added to:
+ * the lists used by CMake and SCons in "source_lists"
+ * the Xcode project
+ * The Code::Blocks project
+
+This only supports files inside the "src" directory.
+"""
+
+import argparse
 import sys
 import inspect
 import pathlib
@@ -15,29 +34,9 @@ except:
     print('\n'.join((
         'This script requires the "pbxproj" module.',
         'Install it using "pip install pbxproj"',
+        'optionally setting up a python3-venv first.',
     )))
     exit(1)
-
-USAGE = f"""USAGE: {sys.argv[0]} <file> [target ...]
-
-Adds <file> to the specified build targets.
-
-Valid build targets are:
- * "wesnoth" - the main game
- * "wesnothd" - the wesnoth server
- * "campaignd"
- * "lua"
- * "tests" - boost unit tests
-
-If no build target is specified, "wesnoth" is assumed.
-
-The file will be added to:
- * the lists used by CMake and SCons in "source_lists"
- * the Xcode project
- * The Code::Blocks project
-
-This only supports files inside the "src" directory.
-"""
 
 #=========#
 # Globals #
@@ -161,7 +160,7 @@ def add_to_source_list(filename, source_list):
     sl_lines.sort()
     open(source_list_file, 'w').writelines(sl_lines)
 
-def add_to_source_lists(filename, target):
+def add_to_source_lists(filename, targets):
     translated_targets = [source_list_target_translations[t] for t in targets]
     print(" source_list targets:", translated_targets)
     for t in translated_targets:
@@ -219,28 +218,35 @@ def add_to_code_blocks(filename, targets):
 #======#
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     # a file argument is mandatory
-    if len(sys.argv) < 2:
-        print(USAGE)
+    ap.add_argument("filename", action="store", nargs="+",
+        help="the .cpp and .hpp files to add")
+    ap.add_argument("--target", action="store", nargs=1,
+        default=["wesnoth"],
+        help="which build targets to add the file to")
+    # By default, recognise --help too
+    options = ap.parse_args()
+
+    # Bail out if someone uses the old syntax of "add_source_file src/foo.cpp campaignd"
+    if len(options.filename) == 2 and not options.filename[1].count('.'):
+        print("The usage has changed, targets now need to be given using --target name")
         exit(1)
-    
-    filename = pathlib.PurePath(sys.argv[1])
-    targets = sys.argv[2:]
-    
-    # the default target is "wesnoth"
-    if not targets: targets = ["wesnoth"]
-    
-    # this only works on files in "src/".
-    # if it started with "src/", remove it.
-    parts = filename.parts
-    if parts[0] == "src":
-        filename = pathlib.PurePath(*parts[1:])
-    
-    # note: this does not currently check whether or not the file exists,
-    # and does not currently work with file paths relative to elsewhere.
-    # it could be made to do that.
-    
-    print(f"adding '{filename}' to targets: {targets}")
-    add_to_xcode(filename, targets)
-    add_to_source_lists(filename, targets)
-    add_to_code_blocks(filename, targets)
+
+    for filename in options.filename:
+        filename = pathlib.PurePath(filename)
+
+        # this only works on files in "src/".
+        # if it started with "src/", remove it.
+        parts = filename.parts
+        if parts[0] == "src":
+            filename = pathlib.PurePath(*parts[1:])
+
+        # note: this does not currently check whether or not the file exists,
+        # and does not currently work with file paths relative to elsewhere.
+        # it could be made to do that.
+
+        print(f"adding '{filename}' to targets: {options.target}")
+        add_to_xcode(filename, options.target)
+        add_to_source_lists(filename, options.target)
+        add_to_code_blocks(filename, options.target)

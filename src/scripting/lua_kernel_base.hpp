@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -144,3 +144,5 @@ private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
 };
+
+std::vector<std::string> luaW_get_attributes(lua_State* L, int idx);

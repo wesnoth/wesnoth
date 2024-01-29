@@ -202,9 +202,7 @@ Important switches include:
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant
-                    binaries will be copied with -debug suffix
     build=profile   build with instrumentation for a supported profiler
-                    binaries will be copied with -profile suffix
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -688,9 +686,6 @@ if env["use_srcdir"] == True:
 else:
     build_dir = os.path.join("$build_dir", build)
 
-if build == "release" : build_suffix = ""
-else                  : build_suffix = "-" + build
-Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
 binary_nodes = [eval(binary) for binary in binaries]
@@ -786,7 +781,8 @@ if not access(fifodir, F_OK):
     env.Alias("install-wesnothd", fifodir)
 if env["systemd"]:
     env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.service", "lib/systemd/system")
-    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.tmpfiles.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.sysusers.conf", "lib/sysusers.d")
 
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
@@ -795,7 +791,7 @@ env.InstallBinary(campaignd)
 install = env.Alias('install', [])
 for installable in ('wesnoth',
                     'wesnothd', 'campaignd'):
-    if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
+    if os.path.exists(installable) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
 
 #

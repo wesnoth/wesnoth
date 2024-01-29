@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -517,8 +517,11 @@ static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
 		case LUA_TFUNCTION:
 			lua_pushvalue(L, 1);
 			lua_push(L, keys);
-			lua_call(L, 2, 1);
-			keys = lua_check<std::vector<std::string>>(L, -1);
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+				keys = lua_check<std::vector<std::string>>(L, -1);
+			} else {
+				lua_warning(L, "wesnoth.print_attributes: __dir metamethod raised an error", false);
+			}
 			break;
 		case LUA_TTABLE:
 			auto dir_keys = lua_check<std::vector<std::string>>(L, -1);
@@ -576,8 +579,11 @@ static int impl_get_dir_suffix(lua_State*L)
  * This function does the actual work of grabbing all the attribute names.
  * It's a separate function so that it can be used by tab-completion as well.
  */
-static std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
+std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 {
+	if(idx < 0 && idx >= -lua_gettop(L)) {
+		idx = lua_absindex(L, idx);
+	}
 	std::vector<std::string> keys;
 	if(lua_istable(L, idx)) {
 		// Walk the metatable chain (as long as __index is a table)...
