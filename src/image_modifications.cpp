@@ -195,6 +195,11 @@ surface gs_modification::operator()(const surface& src) const
 	return greyscale_image(src);
 }
 
+surface crop_transparency_modification::operator()(const surface& src) const
+{
+	return get_non_transparent_portion(src);
+}
+
 surface bw_modification::operator()(const surface& src) const
 {
 	return monochrome_image(src, threshold_);
@@ -748,6 +753,12 @@ REGISTER_MOD_PARSER(ROTATE, args)
 REGISTER_MOD_PARSER(GS, )
 {
 	return std::make_unique<gs_modification>();
+}
+
+// crop transparent padding
+REGISTER_MOD_PARSER(CROP_TRANSPARENCY, )
+{
+	return std::make_unique<crop_transparency_modification>();
 }
 
 // Black and white

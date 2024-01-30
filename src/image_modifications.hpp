@@ -225,6 +225,15 @@ public:
 };
 
 /**
+ * Crop transparent padding (CROP_TRANSPARENCY) modification.
+ */
+class crop_transparency_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
  * Black and white (BW) modification.
  */
 class bw_modification : public modification
