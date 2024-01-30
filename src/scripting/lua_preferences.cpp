@@ -16,7 +16,7 @@
 #include "scripting/lua_preferences.hpp"
 
 #include "config.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "preferences/advanced.hpp"
 #include "preferences/general.hpp"
 #include "scripting/lua_common.hpp"

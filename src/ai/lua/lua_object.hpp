@@ -22,7 +22,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 #include "map/location.hpp"
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"

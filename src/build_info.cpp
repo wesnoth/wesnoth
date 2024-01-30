@@ -34,7 +34,7 @@
 #include <fstream>
 #include <iomanip>
 
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

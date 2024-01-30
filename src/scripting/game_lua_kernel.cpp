@@ -126,7 +126,7 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
+#include "lua/wrapper_lauxlib.h"        // for luaL_checkinteger, lua_setfield, etc
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"

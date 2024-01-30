@@ -59,8 +59,8 @@
 #include <vector>
 #include <numeric>
 
-#include "lua/lauxlib.h"
-#include "lua/lualib.h"
+#include "lua/wrapper_lauxlib.h"
+#include "lua/wrapper_lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 static lg::log_domain log_user("scripting/lua/user");

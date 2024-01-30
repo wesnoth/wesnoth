@@ -21,7 +21,7 @@
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_unit_type.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "variable.hpp"

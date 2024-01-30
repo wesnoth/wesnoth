@@ -33,7 +33,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <unordered_map>
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 static lg::log_domain log_scripting_lua_mapgen("scripting/lua/mapgen");
 #define LOG_LMG LOG_STREAM(info, log_scripting_lua_mapgen)
