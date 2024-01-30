@@ -226,14 +226,14 @@ public:
 	/**
 	 * Scrolls the vertical scrollbar by pixel.
 	 *
-	 * @param scroll              The position to scroll to.
+	 * @param pixels              The number of pixels the bar scrolls by.
 	 */
 	void scroll_vertical_scrollbar_by(const int pixels);
 
 	/**
 	 * Scrolls the horizontal scrollbar by pixel.
 	 *
-	 * @param scroll              The position to scroll to.
+	 * @param pixels              The number of pixels the bar scrolls by.
 	 */
 	void scroll_horizontal_scrollbar_by(const int pixels);
 

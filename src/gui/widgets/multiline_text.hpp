@@ -55,12 +55,6 @@ class multiline_text : public text_box_base
 public:
 	explicit multiline_text(const implementation::builder_styled_widget& builder);
 
-	/** See @ref widget::set_can_wrap. */
-//	void set_can_wrap(bool can_wrap)
-//	{
-//		wrap_ = can_wrap;
-//	}
-
 	/** See @ref widget::can_wrap. */
 	bool can_wrap() const override
 	{
@@ -148,7 +142,7 @@ protected:
 	virtual void update_canvas() override;
 
 	/** Inherited from text_box_base. */
-	void insert_char(const std::string& unicode)
+	void insert_char(const std::string& unicode) override
 	{
 		text_box_base::insert_char(unicode);
 
@@ -212,7 +206,7 @@ protected:
 	}
 
 	/** Inherited from text_box_base. */
-	void paste_selection(const bool mouse)
+	void paste_selection(const bool mouse) override
 	{
 		text_box_base::paste_selection(mouse);
 		update_layout();
@@ -266,9 +260,6 @@ private:
 
 	/** Image (such as a magnifying glass) that accompanies the help text. */
 	std::string hint_image_;
-
-	/** Wrapping */
-	bool wrap_;
 
 	/** Line number of text */
 	unsigned line_num_;
