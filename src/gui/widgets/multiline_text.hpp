@@ -100,13 +100,37 @@ public:
 
 	unsigned get_line_no()
 	{
-		set_line_no_from_offset();
-		return line_no_;
+		set_line_num_from_offset();
+		return line_num_;
 	}
 
 	point get_cursor_pos()
 	{
 		return get_cursor_position(get_selection_start());
+	}
+
+	int get_line_end_pos()
+	{
+		return get_cursor_position(get_line_end_offset(line_num_)).x;
+	}
+
+	unsigned get_char_width()
+	{
+		unsigned offset = get_selection_start();
+		if (scroll_horiz_ == scrollbar_base::HALF_JUMP_FORWARD) {
+			return offset < get_length()
+				? get_cursor_position(offset+1).x - get_cursor_position(offset).x
+				: get_cursor_position(offset).x - get_cursor_position(offset-1).x;
+		} else {
+			return offset > 0
+				? get_cursor_position(offset).x - get_cursor_position(offset-1).x
+				: get_cursor_position(offset+1).x - get_cursor_position(offset).x;
+		}
+	}
+
+	unsigned get_line_height()
+	{
+		return get_cursor_position(0, 1).y - get_cursor_position(0, 0).y;
 	}
 
 	scrollbar_base::scroll_mode scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
@@ -135,29 +159,31 @@ protected:
 	}
 
 	/** Inherited from text_box_base. */
-	void set_cursor(const std::size_t offset, const bool select)
+	void set_cursor(const std::size_t offset, const bool select, const bool autoscroll = true)
 	{
 		text_box_base::set_cursor(offset, select);
-		set_line_no_from_offset();
+		set_line_num_from_offset();
 
-		// Whenever cursor moves, this tells scroll_text to update the scrollbars
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		if (autoscroll) {
+			// Whenever cursor moves, this tells scroll_text to update the scrollbars
+			fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		}
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
-		set_line_no_from_offset();
+		set_line_num_from_offset();
 		scroll_horiz_ = scrollbar_base::END;
-		set_cursor(get_line_end_offset(line_no_), select);
+		set_cursor(get_line_end_offset(line_num_), select);
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_start_of_line(const bool select = false) override
 	{
-		set_line_no_from_offset();
+		set_line_num_from_offset();
 		scroll_horiz_ = scrollbar_base::BEGIN;
-		set_cursor(get_line_start_offset(line_no_), select);
+		set_cursor(get_line_start_offset(line_num_), select);
 	}
 
 	/** Inherited from text_box_base. */
@@ -245,11 +271,11 @@ private:
 	bool wrap_;
 
 	/** Line number of text */
-	unsigned line_no_;
+	unsigned line_num_;
 
-	/** utility function to calculate and set line_no_ from offset */
-	void set_line_no_from_offset();
-	unsigned get_line_no_from_offset(unsigned offset);
+	/** utility function to calculate and set line_num_ from offset */
+	void set_line_num_from_offset();
+	unsigned get_line_num_from_offset(unsigned offset);
 
 	/** Utility function to calculate the offset of the end of the line
 	 */
@@ -284,6 +310,36 @@ private:
 	 * Alt                        Ignored.
 	 */
 	void handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled) override;
+
+	/**
+	 * Inherited from text_box_base.
+	 *
+	 * Unmodified                 Handled.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
+	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override
+	{
+		text_box_base::handle_key_left_arrow(modifier, handled);
+		scroll_horiz_ = scrollbar_base::HALF_JUMP_BACKWARDS;
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
+
+	/**
+	 * Inherited from text_box_base.
+	 *
+	 * Unmodified                 Handled.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
+	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override
+	{
+		text_box_base::handle_key_right_arrow(modifier, handled);
+		scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
 
 	/**
 	 * Goes one item up in the history.

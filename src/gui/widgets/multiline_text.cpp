@@ -50,7 +50,7 @@ multiline_text::multiline_text(const implementation::builder_styled_widget& buil
 	, text_height_(0)
 	, dragging_(false)
 	, wrap_(true)
-	, line_no_(0)
+	, line_num_(0)
 {
 	set_wants_mouse_left_double_click();
 
@@ -112,11 +112,9 @@ void multiline_text::update_canvas()
 		comp_end_offset = get_cursor_position(edit_start).x;
 	}
 
-	set_line_no_from_offset();
+	set_line_num_from_offset();
 
 	/***** Set in all canvases *****/
-
-	std::cout << "offset : " << get_selection_start() << " line : " << line_no_ << std::endl;
 
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
@@ -209,9 +207,10 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 
 	offset += get_line_start_offset(line);
 
-	line_no_ = get_line_no_from_offset(offset);
+	line_num_ = get_line_num_from_offset(offset);
 
-	set_cursor(offset, !start_selection);
+	// moving scrollbars during click causes viewport to jump
+	set_cursor(offset, !start_selection, false);
 
 	update_canvas();
 	queue_redraw();
@@ -223,12 +222,10 @@ unsigned multiline_text::get_line_end_offset(unsigned line_no) {
 	std::string line = get_lines().at(line_no);
 	// Get correct number of characters to move for multibyte utf8 string.
 	int line_size = utf8::size(line);
-	std::cout << "end : " << line_no << std::endl;
 	return get_line_start_offset(line_no) + line_size;
 }
 
 unsigned multiline_text::get_line_start_offset(unsigned line_no) {
-	std::cout << "start : " << line_no << std::endl;
 	if (line_no > 0) {
 		return get_line_end_offset(line_no-1) + 1;
 	} else {
@@ -236,7 +233,7 @@ unsigned multiline_text::get_line_start_offset(unsigned line_no) {
 	}
 }
 
-unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
+unsigned multiline_text::get_line_num_from_offset(unsigned offset) {
 	unsigned line_start = 0, line_end = 0, line_no = 0;
 	for(unsigned i = 0; i < get_lines_count(); i++) {
 		line_start = get_line_start_offset(i);
@@ -249,9 +246,9 @@ unsigned multiline_text::get_line_no_from_offset(unsigned offset) {
 	return line_no;
 }
 
-void multiline_text::set_line_no_from_offset()
+void multiline_text::set_line_num_from_offset()
 {
-	line_no_ = get_line_no_from_offset(get_selection_start());
+	line_num_ = get_line_num_from_offset(get_selection_start());
 }
 
 void multiline_text::update_offsets()
@@ -348,16 +345,16 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 
-	set_line_no_from_offset();
+	set_line_num_from_offset();
 	size_t offset = get_selection_start();
 
-	if (line_no_ < get_lines_count()-1) {
+	if (line_num_ < get_lines_count()-1) {
 		offset = offset
-				- get_line_start_offset(line_no_)
-				+ get_line_start_offset(line_no_+1);
+				- get_line_start_offset(line_num_)
+				+ get_line_start_offset(line_num_+1);
 
-		if (offset > get_line_end_offset(line_no_+1)) {
-			offset = get_line_end_offset(line_no_+1);
+		if (offset > get_line_end_offset(line_num_+1)) {
+			offset = get_line_end_offset(line_num_+1);
 		}
 	}
 
@@ -379,16 +376,16 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 
-	set_line_no_from_offset();
+	set_line_num_from_offset();
 	size_t offset = get_selection_start();
 
-	if (line_no_ > 0) {
+	if (line_num_ > 0) {
 		offset = offset
-				- get_line_start_offset(line_no_)
-				+ get_line_start_offset(line_no_-1);
+				- get_line_start_offset(line_num_)
+				+ get_line_start_offset(line_num_-1);
 
-		if (offset > get_line_end_offset(line_no_-1)) {
-			offset = get_line_end_offset(line_no_-1);
+		if (offset > get_line_end_offset(line_num_-1)) {
+			offset = get_line_end_offset(line_num_-1);
 		}
 	}
 

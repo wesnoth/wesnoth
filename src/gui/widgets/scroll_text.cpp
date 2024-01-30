@@ -158,17 +158,31 @@ void scroll_text::refresh() {
 	multiline_text* text = get_internal_text_box();
 	assert(text);
 
-	if (text->scroll_horiz_ == scrollbar_base::BEGIN
-			|| text->scroll_horiz_ == scrollbar_base::END) {
+	if (text->scroll_horiz_ == scrollbar_base::BEGIN) {
 		scroll_horizontal_scrollbar(text->scroll_horiz_);
 		text->scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
+	} else if (text->scroll_horiz_ == scrollbar_base::END) {
+		// scroll to the end of line instead of end of scrolling range
+		// cursor is already set at the end of the line by multiline_text
+		const point& cursor_pos = text->get_cursor_pos();
+		scroll_horizontal_scrollbar_by(cursor_pos.x - 10);
+
+		text->scroll_horiz_ = scrollbar_base::HALF_JUMP_BACKWARDS;
 	} else {
 		const point& cursor_pos = text->get_cursor_pos();
 		const SDL_Rect& visible_area = content_visible_area();
+		int line_end_pos = text->get_line_end_pos();
+		int scrollbar_width = vertical_scrollbar()->get_size().x;
 
-//		std::cout << "c.x = " << cursor_pos.x << " c.y = " << cursor_pos.y << std::endl;
-//		std::cout << "r.x = " << visible_area.x << " r.y = " << visible_area.y << std::endl;
-//		std::cout << "r.w = " << visible_area.w << " r.h = " << visible_area.h << std::endl;
+		if (text->scroll_horiz_ == scrollbar_base::HALF_JUMP_FORWARD) {
+			if (cursor_pos.x > visible_area.w - scrollbar_width) {
+				scroll_horizontal_scrollbar_by(text->get_char_width());
+			}
+		} else {
+			if (cursor_pos.x < line_end_pos - visible_area.w + scrollbar_width) {
+				scroll_horizontal_scrollbar_by(-static_cast<int>(text->get_char_width()));
+			}
+		}
 	}
 
 	if (text->scroll_vert_ == scrollbar_base::BEGIN
@@ -177,7 +191,12 @@ void scroll_text::refresh() {
 		text->scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
 	} else {
 		if (text->get_line_no() > 1) {
-			scroll_vertical_scrollbar(text->scroll_vert_);
+			//scroll_vertical_scrollbar(text->scroll_vert_);
+			if (text->scroll_vert_ == scrollbar_base::HALF_JUMP_FORWARD) {
+				scroll_vertical_scrollbar_by(text->get_line_height());
+			} else {
+				scroll_vertical_scrollbar_by(-static_cast<int>(text->get_line_height()));
+			}
 		} else if (text->get_line_no() > text->get_lines_count() - 1) {
 			scroll_vertical_scrollbar(scrollbar_base::END);
 		} else {
@@ -194,7 +213,7 @@ void scroll_text::set_can_wrap(bool can_wrap)
 
 bool scroll_text::can_wrap() const
 {
-	return false;
+	return true;
 }
 
 void scroll_text::signal_handler_left_button_down(const event::ui_event event)

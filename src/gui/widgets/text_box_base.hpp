@@ -85,11 +85,6 @@ public:
 		return text_.get_byte_offset(column);
 	}
 
-	int get_line_start(const unsigned line) const
-	{
-		return text_.get_line_start_offset(line);
-	}
-
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 	{
 		text_.set_highlight_area(start_offset, end_offset, color);
@@ -430,7 +425,7 @@ private:
 	 * Alt                        Ignored.
 	 */
 	virtual void handle_key_clear_line(SDL_Keymod modifier, bool& handled) = 0;
-
+protected:
 	/**
 	 * Left arrow key pressed.
 	 *
@@ -453,6 +448,7 @@ private:
 	 */
 	virtual void handle_key_right_arrow(SDL_Keymod modifier, bool& handled);
 
+private:
 	/**
 	 * Home key pressed.
 	 *

@@ -149,6 +149,16 @@ private:
 	    doesn't work after invalidate_layout. */
 	void refresh();
 
+	unsigned get_horizontal_position() {
+		assert(horizontal_scrollbar());
+		return horizontal_scrollbar()->get_positioner_offset();
+	}
+
+	unsigned get_vertical_position() {
+		assert(vertical_scrollbar());
+		return vertical_scrollbar()->get_positioner_offset();
+	}
+
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();

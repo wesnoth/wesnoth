@@ -224,6 +224,20 @@ public:
 	void scroll_horizontal_scrollbar(const scrollbar_base::scroll_mode scroll);
 
 	/**
+	 * Scrolls the vertical scrollbar by pixel.
+	 *
+	 * @param scroll              The position to scroll to.
+	 */
+	void scroll_vertical_scrollbar_by(const int pixels);
+
+	/**
+	 * Scrolls the horizontal scrollbar by pixel.
+	 *
+	 * @param scroll              The position to scroll to.
+	 */
+	void scroll_horizontal_scrollbar_by(const int pixels);
+
+	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
 	 * Maybe also make protected or private and add a friend.
 	 */
@@ -524,10 +538,14 @@ private:
 	 */
 	virtual void set_content_size(const point& origin, const point& size);
 
-	/** Helper function which needs to be called after the scollbar moved. */
+	/** Helper function which needs to be called after the scollbar moves by item. */
 	void scrollbar_moved();
 
 public:
+	/** To be called after the scollbar moves manually (by pixel) to move the viewport.
+	 *  Shitfs the viewport origin pixels_x left and pixels_y right.*/
+	void move_viewport(const int pixels_x, const int pixels_y);
+
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
 
