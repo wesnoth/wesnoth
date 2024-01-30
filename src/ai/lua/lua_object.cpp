@@ -24,7 +24,7 @@
 #include "scripting/lua_common.hpp"
 #include "resources.hpp"
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 namespace ai {
 

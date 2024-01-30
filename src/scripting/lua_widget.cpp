@@ -25,7 +25,7 @@
 #include "scripting/push_check.hpp"
 
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 #include <type_traits>
 

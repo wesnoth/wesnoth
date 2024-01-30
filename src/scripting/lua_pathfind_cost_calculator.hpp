@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 #include "map/location.hpp"
 #include "pathfind/pathfind.hpp"
 
