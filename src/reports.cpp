@@ -83,7 +83,7 @@ static config image_report(const std::string &image,
 using font::span_color;
 
 static void add_status(config &r,
-	char const *path, char const *desc1, char const *desc2)
+	const std::string& path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
 	s << translation::gettext(desc1) << translation::gettext(desc2);
