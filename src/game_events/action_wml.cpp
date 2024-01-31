@@ -848,6 +848,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 		        << cfg.get_config().debug();
+	} else if (cfg.get_children("source").size() > 1 ||
+		cfg.get_children("target").size() > 1 ||
+		cfg.get_children("filter").size() > 1) {
+		ERR_WML << "[tunnel] should have exactly one of each mandatory tag:\n"
+		        << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
