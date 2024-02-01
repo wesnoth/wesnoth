@@ -49,7 +49,6 @@ multiline_text::multiline_text(const implementation::builder_styled_widget& buil
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
-	, wrap_(true)
 	, line_num_(0)
 {
 	set_wants_mouse_left_double_click();
@@ -324,9 +323,8 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 
 void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 {
-	handled = true;
-
-	if (is_editable() && (modifier & KMOD_SHIFT)) {
+	if (is_editable() && ((modifier & KMOD_SHIFT)||(modifier == 0))) {
+		handled = true;
 		insert_char("\n");
 	}
 }
