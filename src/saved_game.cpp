@@ -321,7 +321,7 @@ void saved_game::check_require_scenario()
 	config& content = scenario.add_child("content");
 	content["id"] = starting_point_["id"];
 	content["name"] = starting_point_["name"];
-	// TODO: would it be better if this ued the actual tagname ([multiplayer]/[scenario]) instead of always using [scenario] 
+	// TODO: would it be better if this ued the actual tagname ([multiplayer]/[scenario]) instead of always using [scenario]?
 	content["type"] = "scenario";
 
 	mp_settings_.update_addon_requirements(scenario);
