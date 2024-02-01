@@ -179,7 +179,7 @@ private:
 
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
-	
+
 	/** Update the mouse cursor based on whether it is over button area or text area */
 	void update_mouse_cursor();
 
