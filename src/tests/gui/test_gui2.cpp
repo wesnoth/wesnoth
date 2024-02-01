@@ -56,7 +56,6 @@
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
-#include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
@@ -642,11 +641,6 @@ BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_tod_new_schedule)
 {
 	test<tod_new_schedule>();
-}
-
-BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_unit)
-{
-	test<editor_edit_unit>();
 }
 
 // execute last - checks that there aren't any unaccounted for GUIs
@@ -1420,28 +1414,6 @@ struct dialog_tester<tod_new_schedule>
 	tod_new_schedule* create()
 	{
 		return new tod_new_schedule(id, name);
-	}
-};
-
-template<>
-struct dialog_tester<editor_edit_unit>
-{
-	config cfg;
-	game_config_view view;
-
-	dialog_tester() {}
-	editor_edit_unit* create()
-	{
-		config& units = cfg.add_child("units");
-		cfg.add_child("race");
-		config& movetype = units.add_child("movetype");
-		movetype["name"] = "Test Movetype";
-		movetype.add_child("defense");
-		movetype.add_child("resistance");
-		movetype.add_child("movement_costs");
-		view = game_config_view::wrap(cfg);
-		return new editor_edit_unit(view, "test_addon");
-		//return new editor_edit_unit(game_config_view::wrap(test_gui2_fixture::main_config), "test_addon");
 	}
 };
 

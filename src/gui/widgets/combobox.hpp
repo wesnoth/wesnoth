@@ -179,6 +179,9 @@ private:
 
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
+	
+	/** Update the mouse cursor based on whether it is over button area or text area */
+	void update_mouse_cursor();
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -190,6 +193,7 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
+	void signal_handler_mouse_enter(const event::ui_event /*event*/, bool& /*handled*/);
 	void signal_handler_mouse_motion(const event::ui_event event,
 									 bool& handled,
 									 const point& coordinate);

@@ -24,6 +24,7 @@
 #include "preferences/game.hpp"
 #include "serialization/unicode.hpp"
 #include <functional>
+#include "cursor.hpp"
 #include "wml_exception.hpp"
 #include "gettext.hpp"
 
@@ -60,6 +61,8 @@ combobox::combobox(const implementation::builder_styled_widget& builder)
 			&combobox::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
 			&combobox::signal_handler_left_button_double_click, this, std::placeholders::_2, std::placeholders::_3));
+	connect_signal<event::MOUSE_ENTER>(
+			std::bind(&combobox::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 
 	const auto conf = cast_config_to<combobox_definition>();
 	assert(conf);
@@ -301,6 +304,24 @@ void combobox::set_selected(unsigned selected, bool fire_event)
 	}
 }
 
+void combobox::update_mouse_cursor()
+{
+	unsigned x = get_x() + this->get_size().x;
+	unsigned mx = get_mouse_position().x;
+
+	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
+		cursor::set(cursor::NORMAL);
+	} else {
+		cursor::set(cursor::IBEAM);
+	}
+}
+
+void combobox::signal_handler_mouse_enter(const event::ui_event /*event*/,
+											   bool& /*handled*/)
+{
+	update_mouse_cursor();
+}
+
 void combobox::signal_handler_mouse_motion(const event::ui_event event,
 											bool& handled,
 											const point& coordinate)
@@ -309,6 +330,8 @@ void combobox::signal_handler_mouse_motion(const event::ui_event event,
 
 	if(dragging_) {
 		handle_mouse_selection(coordinate, false);
+	} else {
+		update_mouse_cursor();
 	}
 
 	handled = true;
