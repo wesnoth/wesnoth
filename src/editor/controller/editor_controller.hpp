@@ -92,9 +92,6 @@ class editor_controller : public controller_base,
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
 
-		/** Show Unit Editor dialog */
-		void unit_editor_dialog();
-
 		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void custom_tods_dialog();
 

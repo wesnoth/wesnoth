@@ -30,7 +30,6 @@
 #include "preferences/editor.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
-#include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/message.hpp"
@@ -225,14 +224,6 @@ bool editor_controller::quit_confirm()
 	return quit_confirmation::show_prompt(message);
 }
 
-void editor_controller::unit_editor_dialog()
-{
-	gui2::dialogs::editor_edit_unit unit_dlg(game_config_, current_addon_id_);
-	if (unit_dlg.show()) {
-		unit_dlg.write();
-	}
-}
-
 void editor_controller::custom_tods_dialog()
 {
 	if (tods_.empty()) {
@@ -400,8 +391,6 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
-		// Only enable when editing a scenario
-		case HOTKEY_EDITOR_EDIT_UNIT:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 			return !get_current_map_context().is_pure_map();
 
@@ -810,9 +799,6 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_all_maps(true);
 			do_quit_ = true;
 			quit_mode_ = EXIT_RELOAD_DATA;
-			return true;
-		case HOTKEY_EDITOR_EDIT_UNIT:
-			unit_editor_dialog();
 			return true;
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 			custom_tods_dialog();
