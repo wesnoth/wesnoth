@@ -37,10 +37,8 @@
 #include <iterator>
 #include <map>
 #include <string>
-#include <utility>
 #include <vector>
 #include <type_traits>
-#include <memory>
 
 /**
  * Variant for storing WML attributes.
