@@ -236,7 +236,7 @@ void playmp_controller::linger()
 			// reimplement parts of play_side()
 			turn_data_.send_data();
 			play_linger_turn();
-			after_human_turn();
+			turn_data_.send_data();
 			LOG_NG << "finished human turn";
 		} catch(const savegame::load_game_exception&) {
 			LOG_NG << "caught load-game-exception";
