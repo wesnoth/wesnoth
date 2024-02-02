@@ -451,7 +451,7 @@ private:
 	/** Start and end offsets for highlight */
 	typed_formula<int> highlight_start_;
 	typed_formula<int> highlight_end_;
-	/** highlight color */
+	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;
 };
 

@@ -20,7 +20,6 @@
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D4594633BF3F8A06D6AE752F /* prompt.hpp */; };
 		179D4E93A08C5A67B071C6C1 /* spinbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4214F3DA80B54080C4B548F /* spinbox.cpp */; };
-		2D054DAC96B381305EA83ED6 /* gender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B215445395F7DB3A4BF4BA9F /* gender.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		36D74F7F8D7655ACCABE562D /* edit_pbl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FA542D78393E8FF067775DA /* edit_pbl.cpp */; };
 		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
@@ -1445,7 +1444,6 @@
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
 		F6E34C7CBC418F214B43BC39 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
-		F9294044ABCDB5C2FDE9DE2E /* gender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B215445395F7DB3A4BF4BA9F /* gender.hpp */; };
 		FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
 /* End PBXBuildFile section */
 
@@ -2393,7 +2391,6 @@
 		95EB8A51287A02B800B09F95 /* draw_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_manager.hpp; sourceTree = "<group>"; };
 		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
 		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
-		B215445395F7DB3A4BF4BA9F /* gender.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gender.hpp; path = gender.hpp; sourceTree = "<group>"; };
 		B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = edit_pbl.hpp; sourceTree = "<group>"; };
 		B508D191100146E300B12852 /* engine_fai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = engine_fai.cpp; sourceTree = "<group>"; };
 		B508D192100146E300B12852 /* engine_fai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = engine_fai.hpp; sourceTree = "<group>"; };
@@ -3473,7 +3470,6 @@
 				91B621AC1B76B05700B00E0F /* xBRZ */,
 				09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */,
 				27764FB68F02032F1C0B6748 /* statistics_record.cpp */,
-				B215445395F7DB3A4BF4BA9F /* gender.hpp */,
 			);
 			name = src;
 			path = ../../src;
@@ -5122,7 +5118,6 @@
 				9B4B41D29C90B05F03DE21B0 /* edit_pbl_translation.hpp in Headers */,
 				44CA4F8598147FDAE871B7CB /* prompt.hpp in Headers */,
 				FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */,
-				F9294044ABCDB5C2FDE9DE2E /* gender.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5135,7 +5130,6 @@
 				02A44BEAA567595C902031CF /* edit_pbl_translation.hpp in Headers */,
 				172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */,
 				7FDF4E8D9C94E7DA8F41F7BB /* tod_new_schedule.hpp in Headers */,
-				2D054DAC96B381305EA83ED6 /* gender.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

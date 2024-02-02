@@ -391,6 +391,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
+		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 			return !get_current_map_context().is_pure_map();
 
