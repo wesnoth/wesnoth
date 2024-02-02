@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -3066,7 +3066,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 			if (used_ellipsis) goto skip_element;
 
 			// Draw an image element.
-			texture img(image::get_texture(t));
+			texture img(image::get_texture(t+"~CROP_TRANSPARENCY()"));
 
 			if (!img) {
 				ERR_DP << "could not find image for report: '" << t << "'";

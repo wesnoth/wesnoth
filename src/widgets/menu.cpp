@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,236 +33,46 @@
 
 #include <numeric>
 
+namespace {
+	/**
+	 * For converting indented_menu_item.indent_level into a width in pixels.
+	 * The text size might change, so instead of caching a value pango_line_size
+	 * is called repeatedly with this as an argument.
+	 */
+	const std::string indent_string{"    "};
+};
+
 namespace gui {
 
-menu::basic_sorter::basic_sorter()
-	: alpha_sort_()
-	, numeric_sort_()
-	, id_sort_()
-	, redirect_sort_()
-	, pos_sort_()
-{
-	set_id_sort(-1);
-}
-
-menu::basic_sorter& menu::basic_sorter::set_alpha_sort(int column)
-{
-	alpha_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_numeric_sort(int column)
-{
-	numeric_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
-{
-	id_sort_.insert(column);
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_redirect_sort(int column, int to)
-{
-	if(column != to) {
-		redirect_sort_.emplace(column, to);
-	}
-
-	return *this;
-}
-
-menu::basic_sorter& menu::basic_sorter::set_position_sort(int column, const std::vector<int>& pos)
-{
-	pos_sort_[column] = pos;
-	return *this;
-}
-
-bool menu::basic_sorter::column_sortable(int column) const
-{
-	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
-	if(redirect != redirect_sort_.end()) {
-		return column_sortable(redirect->second);
-	}
-
-	return alpha_sort_.count(column) == 1 || numeric_sort_.count(column) == 1 ||
-		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1;
-}
-
-bool menu::basic_sorter::less(int column, const item& row1, const item& row2) const
-{
-	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
-	if(redirect != redirect_sort_.end()) {
-		return less(redirect->second,row1,row2);
-	}
-
-	if(id_sort_.count(column) == 1) {
-		return row1.id < row2.id;
-	}
-
-	if(column < 0 || column >= int(row2.fields.size())) {
-		return false;
-	}
-
-	if(column >= int(row1.fields.size())) {
-		return true;
-	}
-
-	const std::string& item1 = row1.fields[column];
-	const std::string& item2 = row2.fields[column];
-
-	if(alpha_sort_.count(column) == 1) {
-		std::string::const_iterator begin1 = item1.begin(), end1 = item1.end(),
-		                            begin2 = item2.begin(), end2 = item2.end();
-		while(begin1 != end1 && is_wml_separator(*begin1)) {
-			++begin1;
-		}
-
-		while(begin2 != end2 && is_wml_separator(*begin2)) {
-			++begin2;
-		}
-
-		return std::lexicographical_compare(begin1,end1,begin2,end2,utils::chars_less_insensitive);
-	} else if(numeric_sort_.count(column) == 1) {
-		int val_1 = lexical_cast_default<int>(item1, 0);
-		int val_2 = lexical_cast_default<int>(item2, 0);
-
-		return val_1 > val_2;
-	}
-
-	const std::map<int,std::vector<int>>::const_iterator itor = pos_sort_.find(column);
-	if(itor != pos_sort_.end()) {
-		const std::vector<int>& pos = itor->second;
-		if(row1.id >= pos.size()) {
-			return false;
-		}
-
-		if(row2.id >= pos.size()) {
-			return true;
-		}
-
-		return pos[row1.id] < pos[row2.id];
-	}
-
-	return false;
-}
-
-menu::menu(const std::vector<std::string>& items,
-		bool click_selects, int max_height, int max_width,
-		const sorter* sorter_obj, style *menu_style, const bool auto_join)
+menu::menu(bool click_selects, int max_height, int max_width, style *menu_style, const bool auto_join)
 : scrollarea(auto_join), silent_(false),
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
-  heading_height_(-1),
   selected_(0), click_selects_(click_selects), out_(false),
   previous_button_(true), show_result_(false),
   double_clicked_(false),
   num_selects_(true),
   ignore_next_doubleclick_(false),
-  last_was_doubleclick_(false), use_ellipsis_(false),
-  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
+  last_was_doubleclick_(false), use_ellipsis_(false)
 {
 	style_ = (menu_style) ? menu_style : &default_style;
 	style_->init();
-	fill_items(items, true);
+	fill_items({});
 }
 
 menu::~menu()
 {
 }
 
-void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
+void menu::fill_items(const std::vector<indented_menu_item>& items)
 {
-	for(std::vector<std::string>::const_iterator itor = items.begin();
-	    itor != items.end(); ++itor) {
-
-		if(itor->empty() == false && (*itor)[0] == HEADING_PREFIX) {
-			heading_ = utils::quoted_split(itor->substr(1),COLUMN_SEPARATOR, !strip_spaces);
-			continue;
-		}
-
+	for(const auto& itor : items) {
 		const std::size_t id = items_.size();
 		item_pos_.push_back(id);
-		const item new_item(utils::quoted_split(*itor, COLUMN_SEPARATOR, !strip_spaces),id);
-		items_.push_back(new_item);
-
-		//make sure there is always at least one item
-		if(items_.back().fields.empty()) {
-			items_.back().fields.push_back(" ");
-		}
-
-		//if the first character in an item is an asterisk,
-		//it means this item should be selected by default
-		std::string& first_item = items_.back().fields.front();
-		if(first_item.empty() == false && first_item[0] == DEFAULT_ITEM) {
-			selected_ = id;
-			first_item.erase(first_item.begin());
-		}
+		items_.emplace_back(itor, id);
 	}
 
-	if(sortby_ >= 0) {
-		do_sort();
-	}
 	update_size();
-}
-
-namespace {
-
-class sort_func
-{
-public:
-	sort_func(const menu::sorter& pred, int column) : pred_(&pred), column_(column)
-	{}
-
-	bool operator()(const menu::item& a, const menu::item& b) const
-	{
-		return pred_->less(column_,a,b);
-	}
-
-private:
-	const menu::sorter* pred_;
-	int column_;
-};
-
-}
-
-void menu::do_sort()
-{
-	if(sorter_ == nullptr || sorter_->column_sortable(sortby_) == false) {
-		return;
-	}
-
-	const int selectid = selection();
-
-	std::stable_sort(items_.begin(), items_.end(), sort_func(*sorter_, sortby_));
-	if (sortreversed_)
-		std::reverse(items_.begin(), items_.end());
-
-	recalculate_pos();
-
-	if(selectid >= 0 && selectid < int(item_pos_.size())) {
-		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
-	}
-
-	queue_redraw();
-}
-
-void menu::recalculate_pos()
-{
-	std::size_t sz = items_.size();
-	item_pos_.resize(sz);
-	for(std::size_t i = 0; i != sz; ++i)
-		item_pos_[items_[i].id] = i;
-	assert_pos();
-}
-
-void menu::assert_pos()
-{
-	std::size_t sz = items_.size();
-	assert(item_pos_.size() == sz);
-	for(std::size_t n = 0; n != sz; ++n) {
-		assert(item_pos_[n] < sz && n == items_[item_pos_[n]].id);
-	}
 }
 
 void menu::update_scrollbar_grip_height()
@@ -273,7 +83,7 @@ void menu::update_scrollbar_grip_height()
 
 void menu::update_size()
 {
-	int h = heading_height();
+	int h = 0;
 	for(std::size_t i = get_position(),
 	    i_end = std::min(items_.size(), i + max_items_onscreen());
 	    i < i_end; ++i)
@@ -284,8 +94,7 @@ void menu::update_size()
 	}
 
 	use_ellipsis_ = false;
-	const std::vector<int>& widths = column_widths();
-	int w = std::accumulate(widths.begin(), widths.end(), 0);
+	int w = widest_row_width();
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
 	w = std::max(w, width());
@@ -313,85 +122,32 @@ void menu::set_inner_location(const SDL_Rect& /*rect*/)
 	update_scrollbar_grip_height();
 }
 
-void menu::change_item(int pos1, int pos2,const std::string& str)
+void menu::set_items(const std::vector<indented_menu_item>& items, std::optional<std::size_t> selected)
 {
-	if(pos1 < 0 || pos1 >= int(item_pos_.size()) ||
-		pos2 < 0 || pos2 >= int(items_[item_pos_[pos1]].fields.size())) {
-		return;
-	}
-
-	items_[item_pos_[pos1]].fields[pos2] = str;
-	queue_redraw();
-}
-
-void menu::erase_item(std::size_t index)
-{
-	std::size_t nb_items = items_.size();
-	if (index >= nb_items)
-		return;
-	--nb_items;
-
-	clear_item(nb_items);
-
-	// fix ordered positions of items
-	std::size_t pos = item_pos_[index];
-	item_pos_.erase(item_pos_.begin() + index);
-	items_.erase(items_.begin() + pos);
-	for(std::size_t i = 0; i != nb_items; ++i) {
-		std::size_t &n1 = item_pos_[i], &n2 = items_[i].id;
-		if (n1 > pos) --n1;
-		if (n2 > index) --n2;
-	}
-	assert_pos();
-
-	if (selected_ >= nb_items)
-		selected_ = nb_items - 1;
-
-	update_scrollbar_grip_height();
-	adjust_viewport_to_selection();
-	itemRects_.clear();
-	queue_redraw();
-}
-
-void menu::set_heading(const std::vector<std::string>& heading)
-{
-	itemRects_.clear();
-	column_widths_.clear();
-
-	heading_ = heading;
-	max_items_ = -1;
-
-	queue_redraw();
-}
-
-void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
-{
-
 	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
 	items_.clear();
 	item_pos_.clear();
 	itemRects_.clear();
-	column_widths_.clear();
+	widest_row_width_.reset();
 	//undrawn_items_.clear();
 	max_items_ = -1; // Force recalculation of the max items.
 	item_height_ = -1; // Force recalculation of the item height.
 
-	if (!keep_viewport || selected_ >= items.size()) {
+	if(selected) {
+		selected_ = *selected;
+	} else {
 		selected_ = 0;
 	}
 
-	fill_items(items, strip_spaces);
-	if(!keep_viewport) {
-		set_position(0);
-	} else if(scrolled_to_max) {
+	fill_items(items);
+	if(scrolled_to_max) {
 		set_position(get_max_position());
 	}
 
 	update_scrollbar_grip_height();
 
-	if(!keep_viewport) {
-		adjust_viewport_to_selection();
-	}
+	adjust_viewport_to_selection();
+
 	queue_redraw();
 }
 
@@ -407,7 +163,7 @@ void menu::set_max_width(const int new_max_width)
 {
 	max_width_ = new_max_width;
 	itemRects_.clear();
-	column_widths_.clear();
+	widest_row_width_.reset();
 	update_size();
 }
 
@@ -421,11 +177,14 @@ std::size_t menu::max_items_onscreen() const
 			max_height_ == -1
 				? (video::game_canvas_size().y * 66) / 100
 				: max_height_
-		) - heading_height();
+		);
 
 	std::vector<int> heights;
 	std::size_t n;
 	for(n = 0; n != items_.size(); ++n) {
+		// The for loop, sort and sum around this are unnecessary, because
+		// get_item_height has ignored its argument since Wesnoth 0.6.99.1.
+		// It caches and returns the height of the tallest item.
 		heights.push_back(get_item_height(n));
 	}
 
@@ -632,13 +391,6 @@ void menu::handle_event(const SDL_Event& event)
 			}
 		}
 
-
-		if(sorter_ != nullptr) {
-			const int heading = hit_heading(x,y);
-			if(heading >= 0 && sorter_->column_sortable(heading)) {
-				sort_by(heading);
-			}
-		}
 	} else if(!mouse_locked() && event.type == SDL_MOUSEMOTION) {
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
@@ -650,12 +402,6 @@ void menu::handle_event(const SDL_Event& event)
 			if (item != -1) {
 				move_selection_to(item);
 			}
-		}
-
-		const int heading_item = hit_heading(event.motion.x,event.motion.y);
-		if(heading_item != highlight_heading_) {
-			highlight_heading_ = heading_item;
-			invalidate_heading();
 		}
 	}
 }
@@ -693,67 +439,30 @@ void menu::scroll(unsigned int)
 	queue_redraw();
 }
 
-void menu::set_sorter(sorter *s)
-{
-	if(sortby_ >= 0) {
-		//clear an existing sort
-		sort_by(-1);
-	}
-	sorter_ = s;
-	sortreversed_ = false;
-	sortby_ = -1;
-}
-
-void menu::sort_by(int column)
-{
-	const bool already_sorted = (column == sortby_);
-
-	if(already_sorted) {
-		if(sortreversed_ == false) {
-			sortreversed_ = true;
-		} else {
-			sortreversed_ = false;
-			sortby_ = -1;
-		}
-	} else {
-		sortby_ = column;
-		sortreversed_ = false;
-	}
-
-	do_sort();
-	itemRects_.clear();
-	queue_redraw();
-}
-
-SDL_Rect menu::style::item_size(const std::string& item) const {
+SDL_Rect menu::style::item_size(const indented_menu_item& imi) const {
 	SDL_Rect res {0,0,0,0};
-	std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
-	for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-		 it != img_text_items.end(); ++it) {
-		if (res.w > 0 || res.h > 0) {
-			// Not the first item, add the spacing.
-			res.w += 5;
-		}
-		const std::string str = *it;
-		if (!str.empty() && str[0] == IMAGE_PREFIX) {
-			const std::string image_name(str.begin()+1,str.end());
-			const point image_size = image::get_size(image_name);
-			if (image_size.x && image_size.y) {
-				int w = image_size.x;
-				int h = image_size.y;
-				adjust_image_bounds(w, h);
-				res.w += w;
-				res.h = std::max<int>(h, res.h);
-			}
-		}
-		else {
-			const SDL_Rect area {0,0,10000,10000};
-			const SDL_Rect font_size =
-				font::pango_draw_text(false, area, get_font_size(),
-					font::NORMAL_COLOR, str, 0, 0);
-			res.w += font_size.w;
-			res.h = std::max<int>(font_size.h, res.h);
-		}
+
+	res.w = imi.indent_level * font::pango_line_size(indent_string, get_font_size()).first;
+
+	if (!imi.icon.empty()) {
+		// Not the first item, add the spacing.
+		res.w += 5;
+
+		const texture img = image::get_texture(imi.icon);
+		res.w += img.w();
+		res.h = std::max<int>(img.h(), res.h);
+	}
+
+	if (!imi.text.empty()) {
+		// Not the first item, add the spacing.
+		res.w += 5;
+
+		const SDL_Rect area {0,0,10000,10000};
+		const SDL_Rect font_size =
+			font::pango_draw_text(false, area, get_font_size(),
+				font::NORMAL_COLOR, imi.text, 0, 0);
+		res.w += font_size.w;
+		res.h = std::max<int>(font_size.h, res.h);
 	}
 	return res;
 }
@@ -772,10 +481,6 @@ void menu::style::draw_row_bg(menu& /*menu_ref*/, const std::size_t /*row_index*
 		rgb = selected_rgb_;
 		alpha = selected_alpha_;
 		break;
-	case HEADING_ROW:
-		rgb = heading_rgb_;
-		alpha = heading_alpha_;
-		break;
 	}
 
 	// FIXME: make this clearer
@@ -793,153 +498,89 @@ void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SD
 	draw_row_bg(menu_ref, row_index, rect, type);
 
 	SDL_Rect minirect = rect;
-	if(type != HEADING_ROW) {
-		minirect.x += thickness_;
-		minirect.y += thickness_;
-		minirect.w -= 2*thickness_;
-		minirect.h -= 2*thickness_;
-	}
+	minirect.x += thickness_;
+	minirect.y += thickness_;
+	minirect.w -= 2*thickness_;
+	minirect.h -= 2*thickness_;
 	menu_ref.draw_row(row_index, minirect, type);
 }
 
-
-
-void menu::column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const
+int menu::widest_row_width() const
 {
-	for(std::size_t col = 0; col != row.size(); ++col) {
-		const SDL_Rect res = style_->item_size(row[col]);
-		std::size_t text_trailing_space = (item_ends_with_image(row[col])) ? 0 : style_->get_cell_padding();
-
-		if(col == widths.size()) {
-			widths.push_back(res.w + text_trailing_space);
-		} else if(static_cast<std::size_t>(res.w) > widths[col] - text_trailing_space) {
-			widths[col] = res.w + text_trailing_space;
+	if(!widest_row_width_) {
+		int widest = 0;
+		for(const auto& row : items_) {
+			const SDL_Rect size = style_->item_size(row.fields);
+			widest = std::max(widest, size.w);
 		}
-	}
-}
-
-bool menu::item_ends_with_image(const std::string& item) const
-{
-	std::string::size_type pos = item.find_last_of(IMG_TEXT_SEPARATOR);
-	pos = (pos == std::string::npos) ? 0 : pos+1;
-	return(item.size() > pos && item.at(pos) == IMAGE_PREFIX);
-}
-
-const std::vector<int>& menu::column_widths() const
-{
-	if(column_widths_.empty()) {
-		column_widths_item(heading_,column_widths_);
-		for(std::size_t row = 0; row != items_.size(); ++row) {
-			column_widths_item(items_[row].fields,column_widths_);
-		}
+		// Assume there's text at the end of the item, and add padding accordingly.
+		widest_row_width_ = static_cast<int>(widest + style_->get_cell_padding());
 	}
 
-	return column_widths_;
+	return *widest_row_width_;
 }
 
-void menu::clear_item(int item)
+bool menu::hit_on_indent_or_icon(std::size_t row_index, int x) const
 {
-	SDL_Rect rect = get_item_rect(item);
-	if (rect.w == 0)
-		return;
-	queue_redraw(rect);
+	if(row_index >= items_.size()) {
+		return false;
+	}
+
+	// The virtual method item_size() is overloaded by imgsel_style::item_size(),
+	// which adds borders on both sides. Call it twice and remove one side's padding.
+	const auto& imi = items_[row_index].fields;
+	int width_used_so_far = style_->item_size({imi.indent_level, imi.icon, ""}).w;
+	width_used_so_far -= style_->item_size({0, "", ""}).w / 2;
+
+	const SDL_Rect& loc = inner_location();
+	if (current_language_rtl()) {
+		// inner_location() already takes account of the scrollbar width
+		return x > loc.x + loc.w - width_used_so_far;
+	}
+	return x < loc.x + width_used_so_far;
 }
 
-void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)
+void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
-	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
+	const auto& imi = items_[row_index].fields;
 	rect area = video::game_canvas();
-	rect column = inner_location();
-	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
-	int dir = (lang_rtl) ? -1 : 1;
 
-	int xpos = loc.x;
-	if(lang_rtl) {
-		xpos += loc.w;
+	// There's nothing to draw for the indent, just mark the space as used
+	int width_used_so_far = imi.indent_level * font::pango_line_size(indent_string, style_->get_font_size()).first;
+
+	if (!imi.icon.empty()) {
+		const texture img = image::get_texture(imi.icon);
+		int img_w = img.w();
+		int img_h = img.h();
+		const int remaining_width = max_width_ < 0 ? area.w : std::min<int>(max_width_, loc.w - width_used_so_far);
+		if(img && img_w <= remaining_width && loc.y + img_h < area.h) {
+			const std::size_t y = loc.y + (loc.h - img_h)/2;
+			const std::size_t x = loc.x + (lang_rtl ? loc.w - width_used_so_far - img_w : width_used_so_far);
+			draw::blit(img, {int(x), int(y), img_w, img_h});
+
+			// If there wasn't space for the icon, it doesn't get drawn, nor does the width get used.
+			// If it is drawn, add 5 pixels of padding.
+			width_used_so_far += img_w + 5;
+		}
 	}
 
-	for(std::size_t i = 0; i != row.size(); ++i) {
-
-		if(lang_rtl) {
-			xpos -= widths[i];
-		}
-		if(type == HEADING_ROW) {
-			rect draw_rect {xpos, loc.y, widths[i], loc.h };
-
-			if(highlight_heading_ == int(i)) {
-				draw::fill(draw_rect, {255,255,255,77});
-			} else if(sortby_ == int(i)) {
-				draw::fill(draw_rect, {255,255,255,26});
-			}
-		}
-
-		const int last_x = xpos;
-		column.w = widths[i];
-		std::string str = row[i];
-		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
-		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-			 it != img_text_items.end(); ++it) {
-			str = *it;
-			if (!str.empty() && str[0] == IMAGE_PREFIX) {
-				const std::string image_name(str.begin()+1,str.end());
-				const texture img = image::get_texture(image_name);
-				int img_w = img.w();
-				int img_h = img.h();
-				style_->adjust_image_bounds(img_w, img_h);
-				const int remaining_width = max_width_ < 0 ? area.w :
-				std::min<int>(max_width_, ((lang_rtl)? xpos - loc.x : loc.x + loc.w - xpos));
-				if(img && img_w <= remaining_width
-				&& loc.y + img_h < area.h) {
-					const std::size_t y = loc.y + (loc.h - img_h)/2;
-					const std::size_t w = img_w + 5;
-					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					draw::blit(img, {int(x), int(y), img_w, img_h});
-					if(!lang_rtl)
-						xpos += w;
-					column.w -= w;
-				}
-			} else {
-				column.x = xpos;
-
-				const auto text_size = font::pango_line_size(str, style_->get_font_size());
-				const std::size_t y = loc.y + (loc.h - text_size.second)/2;
-				const std::size_t padding = 2;
-				rect text_loc = column;
-				text_loc.w = loc.w - (xpos - loc.x) - 2 * style_->get_thickness();
-				text_loc.h = text_size.second;
-				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
-					(type == HEADING_ROW ? xpos+padding : xpos), y);
-
-				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const texture sort_tex(image::get_texture(
-						image::locator{sortreversed_ ? "buttons/sliders/slider_arrow_blue.png"
-													 : "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"}));
-					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
-						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
-						const int sort_y = loc.y + loc.h/2 - sort_tex.h()/2;
-						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
-						draw::blit(sort_tex, dest);
-					}
-				}
-
-				xpos += dir * (text_size.first + 5);
-			}
-		}
-		if(lang_rtl)
-			xpos = last_x;
-		else
-			xpos = last_x + widths[i];
+	// Expected to be non-empty, but I guess a unit type could have a blank name
+	if (!imi.text.empty()) {
+		const auto text_size = font::pango_line_size(imi.text, style_->get_font_size());
+		const std::size_t x = loc.x + (lang_rtl ? std::max(0, loc.w - width_used_so_far - text_size.first) : width_used_so_far);
+		const std::size_t y = loc.y + (loc.h - text_size.second)/2;
+		rect text_loc = loc;
+		text_loc.w = loc.w - (width_used_so_far) - 2 * style_->get_thickness();
+		text_loc.h = text_size.second;
+		font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, imi.text,
+			x, y);
 	}
 }
 
 void menu::draw_contents()
 {
-	SDL_Rect heading_rect = inner_location();
-	heading_rect.h = heading_height();
-	style_->draw_row(*this,0,heading_rect,HEADING_ROW);
-
 	for(std::size_t i = 0; i != item_pos_.size(); ++i) {
 		style_->draw_row(*this,item_pos_[i],get_item_rect(i),
 			 (!out_ && item_pos_[i] == selected_) ? SELECTED_ROW : NORMAL_ROW);
@@ -958,29 +599,6 @@ int menu::hit(int x, int y) const
 	}
 
 	return -1;
-}
-
-int menu::hit_column(int x) const
-{
-	const std::vector<int>& widths = column_widths();
-	int j = -1, j_end = widths.size();
-	for(x -= location().x; x >= 0; x -= widths[j]) {
-		if(++j == j_end) {
-			return -1;
-		}
-	}
-	return j;
-}
-
-int menu::hit_heading(int x, int y) const
-{
-	const std::size_t height = heading_height();
-	const SDL_Rect& loc = inner_location();
-	if(y >= loc.y && static_cast<std::size_t>(y) < loc.y + height) {
-		return hit_column(x);
-	} else {
-		return -1;
-	}
 }
 
 SDL_Rect menu::get_item_rect(int item) const
@@ -1002,7 +620,7 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 
 	const SDL_Rect& loc = inner_location();
 
-	int y = loc.y + heading_height();
+	int y = loc.y;
 	if (item != first_item_on_screen) {
 		const SDL_Rect& prev = get_item_rect_internal(item-1);
 		y = prev.y + prev.h;
@@ -1032,34 +650,22 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 	return res;
 }
 
-std::size_t menu::get_item_height_internal(const std::vector<std::string>& item) const
+std::size_t menu::get_item_height_internal(const indented_menu_item& imi) const
 {
-	std::size_t res = 0;
-	for(std::vector<std::string>::const_iterator i = item.begin(); i != item.end(); ++i) {
-		SDL_Rect rect = style_->item_size(*i);
-		res = std::max<int>(rect.h,res);
-	}
-
-	return res;
-}
-
-std::size_t menu::heading_height() const
-{
-	if(heading_height_ == -1) {
-		heading_height_ = int(get_item_height_internal(heading_));
-	}
-
-	return std::min<unsigned int>(heading_height_,max_height_);
+	return style_->item_size(imi).h;
 }
 
 std::size_t menu::get_item_height(int) const
 {
+	// This could probably return the height of a single line of Pango text, plus
+	// padding. However, keeping compatibility with the current numbers means
+	// less unknowns about what the numbers should actually be.
 	if(item_height_ != -1)
 		return std::size_t(item_height_);
 
 	std::size_t max_height = 0;
-	for(std::size_t n = 0; n != items_.size(); ++n) {
-		max_height = std::max<int>(max_height,get_item_height_internal(items_[n].fields));
+	for(const auto& item : items_) {
+		max_height = std::max<int>(max_height,get_item_height_internal(item.fields));
 	}
 
 	return item_height_ = max_height;
@@ -1081,13 +687,6 @@ void menu::invalidate_row_pos(std::size_t pos)
 	}
 
 	invalidate_row(items_[pos].id);
-}
-
-void menu::invalidate_heading()
-{
-	rect heading_rect = inner_location();
-	heading_rect.h = heading_height();
-	queue_redraw(heading_rect);
 }
 
 }

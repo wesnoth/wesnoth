@@ -1728,7 +1728,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                 if "add-ons" in filename:
                     if campaign_rank < 300:
                         print(errlead + "rank for add-on campaigns should be greater than or equal to 300")
-                else:
+                elif "campaigns" in filename:
                     if campaign_rank >= 300 or (campaign_rank % 5) != 0:
                         print(errlead + "rank for mainline campaigns should be a multiple of 5 between 0 and 299 (included)")  
             except ValueError:
@@ -3629,6 +3629,11 @@ directory.""")
                 line = line.replace("[unit]", "[unit_type]")
                 line = line.replace("[+unit]", "[+unit_type]")
                 line = line.replace("[/unit]", "[/unit_type]")
+
+        # putting the ignore check here to allow setting the post15 flag
+        if "wmllint: ignore" in original:
+            return original
+
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.

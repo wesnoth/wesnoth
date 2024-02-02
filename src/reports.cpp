@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -83,7 +83,7 @@ static config image_report(const std::string &image,
 using font::span_color;
 
 static void add_status(config &r,
-	char const *path, char const *desc1, char const *desc2)
+	const std::string& path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
 	s << translation::gettext(desc1) << translation::gettext(desc2);

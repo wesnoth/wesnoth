@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -230,6 +230,9 @@ void saved_game::set_defaults()
 	};
 
 	if(auto campaign = game_config.find_child("campaign", "id", classification_.campaign)) {
+		// FIXME: The mp code could use `require_scenario` to check whether we have the addon in question installed.
+		//        But since [scenario]s are usually hidden behind `#ifdef CAMPAIGN_DEFINE` it would not be able to find them.
+		//        Investigate how this should actually work.
 		bool require_campaign = campaign["require_campaign"].to_bool(true);
 		starting_point_["require_scenario"] = require_campaign;
 	}
@@ -318,6 +321,7 @@ void saved_game::check_require_scenario()
 	config& content = scenario.add_child("content");
 	content["id"] = starting_point_["id"];
 	content["name"] = starting_point_["name"];
+	// TODO: would it be better if this used the actual tagname ([multiplayer]/[scenario]) instead of always using [scenario]?
 	content["type"] = "scenario";
 
 	mp_settings_.update_addon_requirements(scenario);
@@ -330,9 +334,7 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		// Note the addon_id if this mod is required to play the game in mp.
 		std::string require_attr = "require_" + type;
 
-		// By default, eras have "require_era = true", and mods have "require_modification = false".
 		// anything with no addon_id is from mainline, and therefore isn't required in the sense that all players already have it
-		const bool require_default = cfg["addon_id"].empty() ? false : type == "era";
 		const std::string version_default = cfg["addon_id"].empty() ? game_config::wesnoth_version.str() : "";
 		config non_scenario;
 		// if there's no addon_id, then this isn't an add-on
@@ -340,7 +342,7 @@ void saved_game::load_non_scenario(const std::string& type, const std::string& i
 		non_scenario["name"] = cfg["addon_title"].str("mainline");
 		non_scenario["version"] = cfg["addon_version"].str(version_default);
 		non_scenario["min_version"] = cfg["addon_min_version"];
-		non_scenario["required"] = cfg[require_attr].to_bool(require_default);
+		non_scenario["required"] = cfg[require_attr].to_bool(!cfg["addon_id"].empty());
 		config& content = non_scenario.add_child("content");
 		content["id"] = id;
 		content["name"] = cfg["addon_title"].str(cfg["name"].str(""));

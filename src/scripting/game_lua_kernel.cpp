@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -2530,7 +2530,6 @@ void game_lua_kernel::put_unit_helper(const map_location& loc)
 		game_display_->invalidate(loc);
 	}
 
-	units().erase(loc);
 	resources::whiteboard->on_kill_unit();
 }
 
@@ -2581,6 +2580,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 
 		unit_ptr u = unit::create(cfg, true, vcfg);
+		units().erase(loc);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
@@ -4650,10 +4650,16 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	int x = luaL_checkinteger(L, 1), y = luaL_checkinteger(L, 2);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
 
 	if (game_display_) {
 		game_display_->scroll(x, y, true);
+
+		lua_remove(L, 1);
+		lua_remove(L, 1);
+		lua_push(L, 25);
+		intf_delay(L);
 	}
 
 	return 0;

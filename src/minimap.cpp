@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -186,7 +186,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					// Despite its name, game_config::team_rgb_range isn't just team colors,
 					// it has "red", "lightblue", "cave", "reef", "fungus", etc.
 					color_t col;
-					std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_info.id());
+					auto it = game_config::team_rgb_range.find(terrain_info.id());
 					if (it == game_config::team_rgb_range.end()) {
 						col = color_t(0,0,0,0);
 					} else

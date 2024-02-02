@@ -1,10 +1,29 @@
 #!/usr/bin/env python3
 # encoding: utf-8
-# A script for adding source files to the Battle for Wesnoth project.
 
 # known issues:
 # xcode - if a file already exists in 'wesnoth' target, then it incorrectly thinks it also exists in the 'tests' target even though the tests build will fail
 
+"""
+Add files to the specified build targets, supporting
+CMake, SCons, Xcode and the Code::Blocks projects.
+
+Valid build targets are:
+ * "wesnoth" - the main game (default if no target is specified)
+ * "wesnothd" - the wesnoth server
+ * "campaignd"
+ * "lua"
+ * "tests" - boost unit tests
+
+The files will be added to:
+ * the lists used by CMake and SCons in "source_lists"
+ * the Xcode project
+ * The Code::Blocks project
+
+This only supports files inside the "src" directory.
+"""
+
+import argparse
 import sys
 import inspect
 import pathlib
@@ -15,29 +34,9 @@ except:
     print('\n'.join((
         'This script requires the "pbxproj" module.',
         'Install it using "pip install pbxproj"',
+        'optionally setting up a python3-venv first.',
     )))
     exit(1)
-
-USAGE = f"""USAGE: {sys.argv[0]} <file> [target ...]
-
-Adds <file> to the specified build targets.
-
-Valid build targets are:
- * "wesnoth" - the main game
- * "wesnothd" - the wesnoth server
- * "campaignd"
- * "lua"
- * "tests" - boost unit tests
-
-If no build target is specified, "wesnoth" is assumed.
-
-The file will be added to:
- * the lists used by CMake and SCons in "source_lists"
- * the Xcode project
- * The Code::Blocks project
-
-This only supports files inside the "src" directory.
-"""
 
 #=========#
 # Globals #
@@ -91,18 +90,18 @@ def add_to_xcode(filename, targets):
         "The Battle for Wesnoth.xcodeproj",
         "project.pbxproj",
     )
-    
+
     project = pbxproj.XcodeProject.load(projectfile)
-    
+
     translated_targets = [item for t in targets for item in xcode_target_translations[t]]
     translated_targets = list(set(translated_targets))
     print(" xcode targets:", translated_targets)
-    
+
     for tname in translated_targets:
         if not project.get_target_by_name(tname):
             raise Exception(
                 f"Could not find target '{tname}' in Xcode project file")
-    
+
     # groups are organized by directory structure under "src"
     src_groups = project.get_groups_by_name("src")
     if len(src_groups) != 1:
@@ -115,7 +114,7 @@ def add_to_xcode(filename, targets):
             groupname = parent_group.get_name()
             raise Exception(f"problem finding '{d}' group in '{groupname}'")
         parent_group = found_groups[0]
-    
+
     # if the group already has an entry with the same filename, loudly skip.
     # note: this doesn't allow adding to targets one at a time.
     # a new file should be added to all targets at once...
@@ -124,7 +123,7 @@ def add_to_xcode(filename, targets):
     if project.get_files_by_name(filename.name, parent=parent_group):
         print("  '"+filename.name+"' already found in Xcode project '"+",".join(translated_targets)+"', skipping")
         return
-    
+
     # force is True here because otherwise a duplicate filename in
     # a different place will block addition of the new file.
     # the rest is just to match existing project file structure.
@@ -134,7 +133,7 @@ def add_to_xcode(filename, targets):
         parent=parent_group,
         target_name=translated_targets,
     )
-    
+
     # that's done, save the file
     project.save()
     return
@@ -147,7 +146,7 @@ def add_to_source_list(filename, source_list):
     source_list_file = rootdir.joinpath("source_lists", source_list)
     sl_lines = open(source_list_file).readlines()
     file_line = filename.as_posix() + '\n'
-    
+
     # we only need source files in the source_lists, not header files
     if filename.suffix != ".cpp":
         return
@@ -156,12 +155,12 @@ def add_to_source_list(filename, source_list):
     if file_line in sl_lines:
         print(f"  '{filename}' already found in '{source_list}', skipping")
         return
-    
+
     sl_lines.append(file_line)
     sl_lines.sort()
     open(source_list_file, 'w').writelines(sl_lines)
 
-def add_to_source_lists(filename, target):
+def add_to_source_lists(filename, targets):
     translated_targets = [source_list_target_translations[t] for t in targets]
     print(" source_list targets:", translated_targets)
     for t in translated_targets:
@@ -178,18 +177,18 @@ def add_to_code_blocks_target(filename, target):
         f"{target}.cbp",
     )
     cbp_lines = open(cbp_file).readlines()
-    
+
     filename_for_cbp = pathlib.PurePath(
         "..", "..", "src", filename
     ).as_posix()
-    
+
     elem = f"\t\t<Unit filename=\"{filename_for_cbp}\" />\n"
-    
+
     # if the target already has an entry with the same filename, loudly skip
     if elem in cbp_lines:
         print(f"  '{filename}' already found in '{target}.cbp', skipping")
         return
-    
+
     # find an appropriate line to add before/after
     index = 0
     for line in cbp_lines:
@@ -201,7 +200,7 @@ def add_to_code_blocks_target(filename, target):
             break
         index += 1
     cbp_lines.insert(index, elem)
-    
+
     open(cbp_file, 'w').writelines(cbp_lines)
 
 def add_to_code_blocks(filename, targets):
@@ -209,38 +208,94 @@ def add_to_code_blocks(filename, targets):
     print(" code::blocks targets:", translated_targets)
     for t in translated_targets:
         add_to_code_blocks_target(filename, t)
-        # if there's also an .hpp file, add that too
-        hpp = filename.with_suffix(".hpp")
-        if rootdir.joinpath("src", hpp).exists():
-            add_to_code_blocks_target(hpp, t)
+
+def sanity_check_existing_cpp_hpp(filenames):
+    """
+    If we're adding a .cpp file, check whether a .hpp should be added too, etc.
+    Only the files named on the command line are added, this exits if the check fails.
+    """
+    any_check_failed = False
+    for filename in filenames:
+        if filenames.count(filename) > 1:
+            print(f"ERROR: File '{filename}' given multiple times")
+            any_check_failed = True
+
+        if not rootdir.joinpath("src", filename).exists():
+            print(f"WARN: File '{filename}' does not exist")
+            any_check_failed = True
+
+        spouse = None
+        if filename.suffix == ".cpp":
+            spouse = filename.with_suffix(".hpp")
+        elif filename.suffix == ".hpp":
+            spouse = filename.with_suffix(".cpp")
+
+        if rootdir.joinpath("src", spouse).exists() and not filenames.count(spouse):
+            print(f"WARN: Requested to add '{filename}', should '{spouse}' be added too?")
+            any_check_failed = True
+
+        if any_check_failed:
+            break
+
+    if any_check_failed:
+        print("ERROR: Not making changes, as checks failed and --no-checks option was not used.")
+        exit(1)
+
+def canonicalise_filenames(original_filenames):
+    """
+    The script supports giving the filenames with or without the "src/" prefix.
+
+    Strip the "src/" if present, functions that need it will add it again later.
+    """
+    filenames = []
+
+    # If src/src/ exists, the filenames become ambiguous. No need to support that.
+    if rootdir.joinpath("src", "src").exists():
+        print("Please don't add a file or directory called src/src.")
+        exit(1)
+
+    for filename in options.filename:
+        filename = pathlib.PurePath(filename)
+        parts = filename.parts
+        if parts[0] == "src":
+            filename = pathlib.PurePath(*parts[1:])
+        else:
+            filename = pathlib.PurePath(*parts)
+        filenames.append(filename)
+
+    return filenames
 
 #======#
 # main #
 #======#
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     # a file argument is mandatory
-    if len(sys.argv) < 2:
-        print(USAGE)
-        exit(1)
-    
-    filename = pathlib.PurePath(sys.argv[1])
-    targets = sys.argv[2:]
-    
-    # the default target is "wesnoth"
-    if not targets: targets = ["wesnoth"]
-    
-    # this only works on files in "src/".
-    # if it started with "src/", remove it.
-    parts = filename.parts
-    if parts[0] == "src":
-        filename = pathlib.PurePath(*parts[1:])
-    
-    # note: this does not currently check whether or not the file exists,
-    # and does not currently work with file paths relative to elsewhere.
-    # it could be made to do that.
-    
-    print(f"adding '{filename}' to targets: {targets}")
-    add_to_xcode(filename, targets)
-    add_to_source_lists(filename, targets)
-    add_to_code_blocks(filename, targets)
+    ap.add_argument("filename", action="store", nargs="+",
+        help="the .cpp and .hpp files to add")
+    ap.add_argument("--target", action="store", nargs=1,
+        default=["wesnoth"],
+        help="which build targets to add the file to")
+    ap.add_argument("--no-checks", action="store_true",
+        help="do not check whether the files exist, etc")
+    # By default, recognise --help too
+    options = ap.parse_args()
+
+    # Bail out if someone uses the old syntax of "add_source_file src/foo.cpp campaignd"
+    if not options.no_checks:
+        if len(options.filename) == 2 and not options.filename[1].count('.'):
+            print("The usage has changed, targets now need to be given using --target name")
+            exit(1)
+
+    # Convert the names to pathlib.PurePath objects without leading "src/"
+    filenames = canonicalise_filenames(options.filename)
+
+    if not options.no_checks:
+        sanity_check_existing_cpp_hpp(filenames)
+
+    for filename in filenames:
+        print(f"adding '{filename}' to targets: {options.target}")
+        add_to_xcode(filename, options.target)
+        add_to_source_lists(filename, options.target)
+        add_to_code_blocks(filename, options.target)

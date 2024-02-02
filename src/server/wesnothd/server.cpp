@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -2440,7 +2440,7 @@ void server::status_handler(
 	// If a simple username is given we'll check for its IP instead.
 	if(utils::isvalid_username(parameters)) {
 		for(const auto& player : player_connections_) {
-			if(utf8::lowercase(parameters) == utf8::lowercase(player.info().name())) {
+			if(parameters == player.name()) {
 				parameters = player.client_ip();
 				found_something = true;
 				break;

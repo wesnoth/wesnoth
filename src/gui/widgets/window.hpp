@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2023
+	Copyright (C) 2007 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -221,8 +221,8 @@ public:
 	/**
 	 * Requests to close the window.
 	 *
-	 * At the moment the request is always honored but that might change in the
-	 * future.
+	 * This request is not always honored immediately, and so callers must account for the window remaining open.
+	 * For example, when overriding draw_manager's update() method.
 	 */
 	void close()
 	{

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -658,7 +658,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
-	resources::game_events->pump().fire("unit_placed", current_loc);
+	std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire("unit_placed", current_loc));
 	if(!new_unit_itor.valid()) {
 		return place_recruit_result { true, 0, false };
 	}
