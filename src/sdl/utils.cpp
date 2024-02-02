@@ -1848,7 +1848,6 @@ struct not_alpha
 };
 
 }
-
 surface get_non_transparent_portion(const surface &surf)
 {
 	if(surf == nullptr)
