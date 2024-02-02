@@ -416,8 +416,6 @@ private:
 	 */
 	void check_next_scenario_is_known();
 
-	bool victory_when_enemies_defeated_;
-	bool remove_from_carryover_on_defeat_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 

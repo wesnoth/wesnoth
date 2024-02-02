@@ -97,8 +97,6 @@ static void copy_persistent(const config& src, config& dst)
 	static const std::set<std::string> attrs {
 		"description",
 		"name",
-		"victory_when_enemies_defeated",
-		"remove_from_carryover_on_defeat",
 		"disallow_recall",
 		"experience_modifier",
 		"require_scenario",
@@ -166,8 +164,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, did_tod_sound_this_turn_(false)
 	, map_start_()
 	, start_faded_(start_faded)
-	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
-	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
 	, defeat_music_()
 	, scope_(hotkey::scope_game)
@@ -988,7 +984,7 @@ void play_controller::check_victory()
 		found_network_player,
 		invalidate_all,
 		not_defeated,
-		remove_from_carryover_on_defeat_
+		gamestate().remove_from_carryover_on_defeat_
 	);
 
 	if(invalidate_all) {
@@ -1006,11 +1002,11 @@ void play_controller::check_victory()
 		}
 	}
 
-	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_;
+	DBG_EE << "victory_when_enemies_defeated: " << gamestate().victory_when_enemies_defeated_;
 	DBG_EE << "found_player: " << found_player;
 	DBG_EE << "found_network_player: " << found_network_player;
 
-	if(!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
+	if(!gamestate().victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
