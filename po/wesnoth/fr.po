@@ -214,13 +214,11 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
-#, fuzzy
 msgid "Font size scale (experimental)"
 msgstr "Changer la taille des caractères (expérimental)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
-#, fuzzy
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
@@ -5426,7 +5424,6 @@ msgstr "<i>― Sir Gweddry de Westin, 627 ap. W.</i>"
 
 #. [tip]
 #: data/tips.cfg:257
-#, fuzzy
 msgid ""
 "The cleansing waters of an oasis will heal the injured. The fiery ichor of "
 "the underworld hinders the flightless, while offering illumination in "
@@ -5598,12 +5595,10 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(appuyez sur $hotkey pour poursuivre le mouvement)"
 
 #: src/actions/undo.cpp:413
-#, fuzzy
 msgid "Redo Error"
 msgstr "Erreur de ré-exécution"
 
 #: src/actions/undo.cpp:414
-#, fuzzy
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -5668,7 +5663,6 @@ msgstr ""
 "exister avec des casses différentes pour une même chaîne de caractères."
 
 #: src/addon/client.cpp:211
-#, fuzzy
 msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
@@ -5941,7 +5935,6 @@ msgid "Incorrect add-on passphrase."
 msgstr "Phrase de passe incorrecte pour l'extension."
 
 #: src/addon/validation.cpp:397
-#, fuzzy
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
@@ -6065,7 +6058,6 @@ msgstr ""
 "Les informations de l'extension contiennent une séquence UTF-8 invalide."
 
 #: src/addon/validation.cpp:503
-#, fuzzy
 msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
@@ -6090,7 +6082,6 @@ msgid "Empty add-on version list on the server."
 msgstr "La liste des extensions du serveur est vide."
 
 #: src/addon/validation.cpp:528
-#, fuzzy
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr ""
@@ -7023,7 +7014,6 @@ msgid "New Add-on"
 msgstr "Nouvelle extension"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
-#, fuzzy
 msgid "Mainline"
 msgstr "Jeu de base"
 
@@ -7069,7 +7059,6 @@ msgid "Era: "
 msgstr "Ère :"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:152
-#, fuzzy
 msgid " UTC+0"
 msgstr " UTC+0"
 
@@ -7078,12 +7067,10 @@ msgid "No game history found."
 msgstr "Aucun historique de parties trouvé."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:267
-#, fuzzy
 msgid "Request timed out."
 msgstr "La requête a dépassé le délais d'expiration."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:277
-#, fuzzy
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 "La requête a rencontré une erreur imprévue. Merci de consulter le fichier de "
@@ -8095,12 +8082,10 @@ msgid "Download error"
 msgstr "Erreur de téléchargement"
 
 #: src/network_download_file.cpp:68
-#, fuzzy
 msgid "Confirm overwrite"
 msgstr "Confirmation pour écraser"
 
 #: src/network_download_file.cpp:68
-#, fuzzy
 msgid "Overwrite existing file?"
 msgstr "Voulez-vous écraser le fichier existant ?"
 
@@ -8134,7 +8119,6 @@ msgstr "heure locale"
 # 'bug' est non-traduit dans les chaînes existantes.
 # "Remonter" comme dans une traduction existante
 #: src/play_controller.cpp:565
-#, fuzzy
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr "Tentative de création d'un fichier corrompu. Merci de remonter ce bug."
 
@@ -8384,7 +8368,6 @@ msgid "unhealable: "
 msgstr "insoignable : "
 
 #: src/reports.cpp:358
-#, fuzzy
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
@@ -9022,30 +9005,25 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Ce moment de la journée est bidon !"
 
 #: src/units/abilities.cpp:970
-#, fuzzy
 msgid "Owned: "
 msgstr "Possédée : "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:974
-#, fuzzy
 msgid "Taught: "
 msgstr "Partagée : "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:978
-#, fuzzy
 msgid "Taught: (by an enemy): "
 msgstr "Partagée par l'ennemi : "
 
 #: src/units/abilities.cpp:991
-#, fuzzy
 msgid "Used by opponent: "
 msgstr "Partagée avec l'ennemi : "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:473
-#, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> dégât"
@@ -9231,7 +9209,6 @@ msgid "$year AF"
 msgstr "$year ap. C."
 
 #: src/wesnoth.cpp:814
-#, fuzzy
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "

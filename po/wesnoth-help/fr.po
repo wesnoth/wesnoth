@@ -1085,7 +1085,6 @@ msgstr "Changer l'identifiant de l'extension"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
-#, fuzzy
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
 "in. This will only rename that folder and update any references to it in the "
@@ -1098,13 +1097,11 @@ msgstr ""
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:329
-#, fuzzy
 msgid "Add-on Publishing Editor"
 msgstr "Éditeur pour la publication d'extensions"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:330
-#, fuzzy
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
 "publishing an add-on to the add-ons server for other players to download. "
@@ -6007,7 +6004,6 @@ msgstr ""
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
 #. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
 #: data/core/macros/special-notes.cfg:122
-#, fuzzy
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
@@ -6729,13 +6725,11 @@ msgstr ""
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
-#, fuzzy
 msgid "stun"
 msgstr "étourdissant"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
-#, fuzzy
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -6746,7 +6740,6 @@ msgstr ""
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -6755,7 +6748,6 @@ msgstr ""
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
-#, fuzzy
 msgid "arcane"
 msgstr "arcane"
 
@@ -6763,7 +6755,6 @@ msgstr "arcane"
 # Le traduction est basée sur une compréhension de la capacité plutôt qu'une traduction littérale.
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
-#, fuzzy
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -6774,7 +6765,6 @@ msgstr ""
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
-#, fuzzy
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8444,19 +8434,16 @@ msgstr "+1 PV max"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
-#, fuzzy
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr "étourdi : cette unité est étourdie. Elle a perdu sa zone de contrôle."
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
 msgid "female^stunned"
 msgstr "étourdie"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
-#, fuzzy
 msgid "stunned"
 msgstr "étourdi"
 
