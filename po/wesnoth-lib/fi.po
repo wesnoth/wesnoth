@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-01-20 19:57-0600\n"
-"PO-Revision-Date: 2023-01-05 16:34+0200\n"
+"PO-Revision-Date: 2024-01-21 14:30+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2465,10 +2465,8 @@ msgstr "Profiili"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Ylennykset"
+msgstr "Saavutukset"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2477,10 +2475,8 @@ msgstr "Vahvista"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Uudelleennimeä"
+msgstr "Käyttäjänimi:"
 
 #. [label]
 #. [grid]
@@ -2685,10 +2681,8 @@ msgstr "Sivusto:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -2762,8 +2756,6 @@ msgstr "Lisäosamanageri"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Lisäosan tiedot"
 
@@ -4083,10 +4075,8 @@ msgstr "Loki:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Kuvankaappaus"
+msgstr "Kuvakaappaukset:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:171
@@ -4142,19 +4132,17 @@ msgstr "Kopioi koko raportti leikepöydälle"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Avaa lokitiedosto"
+msgstr "Lokitiedosto"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Avaa lokitiedoston, joka saattaa sisältää hyödyllistä virhetilatietoa"
+msgstr ""
+"Avaa nykyisen istunnon lokitiedoston, joka saattaa sisältää hyödyllistä vian "
+"etsintä tietoa."
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4256,10 +4244,8 @@ msgstr "Ladataan..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Yleiset"
+msgstr "Yleinen aula"
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:86
