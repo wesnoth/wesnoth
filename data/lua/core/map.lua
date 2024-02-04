@@ -302,7 +302,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if new_ter == '' or type(new_ter) ~= 'string' then error('set_terrain: expected terrain string') end
 		if replace_if_failed then
 			mode = mode or 'both'
-			new_ter = wesnoth.map.replace_if_failed(new_ter, mode, true)
+			new_ter = wesnoth.map.replace_if_failed(new_ter, mode)
 		elseif mode == 'both' or mode == 'base' or mode == 'overlay' then
 			new_ter = wesnoth.map['replace_' .. mode](new_ter)
 		elseif mode ~= nil then
