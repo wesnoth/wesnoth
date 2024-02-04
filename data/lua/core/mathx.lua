@@ -90,7 +90,7 @@ end
 
 ---Randomize the order of an array
 ---@param t any[]
----@param random_func fun(a:number,b:number):number
+---@param random_func? fun(a:number,b:number):number
 function mathx.shuffle(t, random_func)
 	random_func = random_func or mathx.random
 	-- since tables are passed by reference, this is an in-place shuffle

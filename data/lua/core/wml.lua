@@ -62,6 +62,7 @@ end
 ---@param name? string Tag to search for.
 ---@param filter WML A WML filter to match against
 ---@return WML? #The WML table of the child tag
+---@return integer? #The overall index of the child tag
 function wml.find_child(cfg, name, filter)
 	ensure_config(cfg)
 	if filter == nil then

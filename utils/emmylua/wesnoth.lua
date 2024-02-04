@@ -10,6 +10,10 @@ function wesnoth.kernel_type() end
 function wesnoth.dofile(path, ...) end
 
 ---@class tstring : string
+tstring = {}
+
+tstring.format = string.format
+tstring.vformat = stringx.vformat
 
 ---Constructs a textdomain, which can be called to create translatable strings.
 ---@param domain string The textdomain name
@@ -119,7 +123,7 @@ function wesnoth.ms_since_init() end
 
 ---Output a deprecated message
 ---@param element_name string The name of the element being deprecated
----@param level '1'|'2'|'3'|'4' The deprecation level
+---@param level 1|2|3|4 The deprecation level
 ---@param version string|nil The earliest version the element may be removed in
 ---@param detail_message string An additional message describing the deprecation and usually indicating a replacement
 function wesnoth.deprecated_message(element_name, level, version, detail_message) end
