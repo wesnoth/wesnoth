@@ -1046,10 +1046,7 @@ function ai_helper.split_location_list_to_strings(list)
         locsx[i] = loc[1]
         locsy[i] = loc[2]
     end
-    locsx = table.concat(locsx, ",")
-    locsy = table.concat(locsy, ",")
-
-    return locsx, locsy
+    return table.concat(locsx, ","), table.concat(locsy, ",")
 end
 
 ---Returns a location set of hexes to be avoided by the AI. Information about

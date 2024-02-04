@@ -116,8 +116,7 @@ function wml_actions.store_unit_type_ids(cfg)
 		table.insert(types, k)
 	end
 	table.sort(types)
-	types = table.concat(types, ',')
-	wml.variables[cfg.variable or "unit_type_ids"] = types
+	wml.variables[cfg.variable or "unit_type_ids"] = table.concat(types, ',')
 end
 
 function wml_actions.store_unit_type(cfg)
