@@ -15,14 +15,17 @@
 
 local micro_ai_self_data = {}
 
+---Modify data [micro_ai] tags
+---@param self_data WMLTable The AI's self data
+---@param ai_id string The id of the Micro AI
+---@param action # The action to perform
+---| '"delete"'
+---| '"set"'
+---| '"insert"'
+---@param vars_table table<string,string|boolean|number> Table of key=value pairs with the variables to be set or inserted.
+---If this is set for action="delete", then only the keys in vars_table are deleted,
+---otherwise the entire [micro_ai] tag is deleted
 function micro_ai_self_data.modify_mai_self_data(self_data, ai_id, action, vars_table)
-    -- Modify data [micro_ai] tags
-    -- @ai_id (string): the id of the Micro AI
-    -- @action (string): "delete", "set" or "insert"
-    -- @vars_table: table of key=value pairs with the variables to be set or inserted
-    --   if this is set for @action="delete", then only the keys in @vars_table are deleted,
-    --   otherwise the entire [micro_ai] tag is deleted
-
     -- Always delete the respective [micro_ai] tag, if it exists
     local existing_table
     for i,mai in ipairs(self_data, "micro_ai") do
@@ -70,12 +73,15 @@ function micro_ai_self_data.set_mai_self_data(self_data, ai_id, vars_table)
     micro_ai_self_data.modify_mai_self_data(self_data, ai_id, "set", vars_table)
 end
 
+---Get the content of the data [micro_ai] tag for the given ai_id
+---@param self_data WMLTable The AI's self data
+---@param ai_id string The id of the Micro AI
+---@param key? string Specific key to search for
+---@return boolean|string|number|WMLTag|nil result value of key, or table of data, or nil if key not found
+---  - If tag is found: value of key if key parameter is given, otherwise
+---    table of key=value pairs (including the ai_id key)
+---  - If no such tag is found: nil (if key is set), otherwise empty table
 function micro_ai_self_data.get_mai_self_data(self_data, ai_id, key)
-    -- Get the content of the data [micro_ai] tag for the given @ai_id
-    -- Return value:
-    --   - If tag is found: value of key if @key parameter is given, otherwise
-    --     table of key=value pairs (including the ai_id key)
-    --   - If no such tag is found: nil (if @key is set), otherwise empty table
 
     for mai in wml.child_range(self_data, "micro_ai") do
         if (mai.ai_id == ai_id) then
