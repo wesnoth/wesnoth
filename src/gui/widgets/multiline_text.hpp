@@ -148,8 +148,9 @@ protected:
 
 		if (unicode == "\n") {
 			scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-			update_layout();
 		}
+
+		update_layout();
 	}
 
 	/** Inherited from text_box_base. */

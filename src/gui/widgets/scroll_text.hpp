@@ -100,10 +100,6 @@ public:
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
 
-	void set_text_alpha(unsigned short /*alpha*/);
-
-	void set_link_aware(bool /*l*/);
-
 	void set_editable(bool editable)
 	{
 		editable_ = editable;
@@ -159,6 +155,12 @@ private:
 		return vertical_scrollbar()->get_positioner_offset();
 	}
 
+	void place(const point& origin, const point& size) {
+		scrollbar_container::place(origin, size);
+
+		scroll_horizontal_scrollbar(scrollbar_base::END);
+	}
+
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
@@ -206,7 +208,6 @@ struct builder_scroll_text : public builder_styled_widget
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	const PangoAlignment text_alignment;
-	bool link_aware;
 	bool editable;
 };
 

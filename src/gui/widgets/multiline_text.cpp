@@ -126,6 +126,7 @@ void multiline_text::update_canvas()
 		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
+		tmp.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 
 		tmp.set_variable("editable", wfl::variant(is_editable()));
 
@@ -183,6 +184,8 @@ void multiline_text::delete_selection()
 	std::string tmp = get_value();
 	set_value(utf8::erase(tmp, start, len));
 	set_cursor(start, false);
+
+	update_layout();
 }
 
 void multiline_text::handle_mouse_selection(point mouse, const bool start_selection)

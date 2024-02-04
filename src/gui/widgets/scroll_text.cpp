@@ -64,9 +64,6 @@ multiline_text* scroll_text::get_internal_text_box()
 
 void scroll_text::set_label(const t_string& label)
 {
-	// Inherit.
-//	styled_widget::set_label(label);
-
 	if(multiline_text* widget = get_internal_text_box()) {
 		widget->set_value(label);
 		widget->set_label(label);
@@ -76,8 +73,6 @@ void scroll_text::set_label(const t_string& label)
 			place(get_origin(), get_size());
 		}
 	}
-
-	get_window()->invalidate_layout();
 }
 
 std::string scroll_text::get_value()
@@ -109,22 +104,6 @@ void scroll_text::set_use_markup(bool use_markup)
 	if(multiline_text* widget = get_internal_text_box()) {
 		widget->set_use_markup(use_markup);
 	}
-}
-
-void scroll_text::set_text_alpha(unsigned short /*alpha*/)
-{
-//	if(multiline_text* widget = get_internal_text_box()) {
-//		widget->set_text_alpha(alpha);
-//	}
-}
-
-void scroll_text::set_link_aware(bool /*l*/)
-{
-//	link_aware_ = l;
-//
-//	if(multiline_text* widget = get_internal_text_box()) {
-//		widget->set_link_aware(l);
-//	}
 }
 
 void scroll_text::set_self_active(const bool active)
@@ -254,7 +233,6 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
-	, link_aware(cfg["link_aware"].to_bool(false))
 	, editable(cfg["editable"].to_bool(true))
 {
 	/** Horizontal scrollbar default to auto. AUTO_VISIBLE_FIRST_RUN doesn't work. */
@@ -270,6 +248,7 @@ std::unique_ptr<widget> builder_scroll_text::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 	widget->set_editable(editable);
+	widget->set_text_alignment(text_alignment);
 
 	const auto conf = widget->cast_config_to<scroll_text_definition>();
 	assert(conf);
