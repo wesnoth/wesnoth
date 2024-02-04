@@ -1183,7 +1183,7 @@ function ai_helper.get_visible_units(viewing_side, filter)
     table.insert(filter_plus_vision, wml.tag.filter_vision { side = viewing_side, visible = 'yes' })
 
     local units = {}
-    local all_units = wesnoth.units.find_on_map()
+    local all_units = wesnoth.units.find_on_map{}
     for _,unit in ipairs(all_units) do
         if unit:matches(filter_plus_vision) then
             table.insert(units, unit)
@@ -1238,7 +1238,7 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     end
 
     local enemies = {}
-    local all_units = wesnoth.units.find_on_map()
+    local all_units = wesnoth.units.find_on_map{}
     for _,unit in ipairs(all_units) do
         if wesnoth.sides.is_enemy(side, unit.side)
            and (not unit.status.petrified)
@@ -1746,7 +1746,7 @@ function ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if wesnoth.sides[viewing_side].shroud then
         local extracted_units = {}
         if (not cfg) or (not cfg.ignore_units) then
-            local all_units = wesnoth.units.find_on_map()
+            local all_units = wesnoth.units.find_on_map{}
             for _,u in ipairs(all_units) do
                 if (u.id ~= unit.id) and (u.side ~= viewing_side)
                     and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, u))
@@ -1933,7 +1933,7 @@ function ai_helper.find_path_with_avoid(unit, x, y, avoid_map, options)
         return nil, ai_helper.no_path
     end
 
-    local all_units = wesnoth.units.find_on_map()
+    local all_units = wesnoth.units.find_on_map{}
     local ally_map, enemy_map = LS.create(), LS.create()
     for _,u in ipairs(all_units) do
         if (u.id ~= unit.id) and ai_helper.is_visible_unit(wesnoth.current.side, u) then
@@ -2175,7 +2175,7 @@ function ai_helper.get_attacks(units, cfg)
 
     -- Note: the remainder is optimized for speed, so we only get_units once,
     -- do not use WML filters, etc.
-    local all_units = wesnoth.units.find_on_map()
+    local all_units = wesnoth.units.find_on_map{}
 
     local enemy_map, my_unit_map, other_unit_map = LS.create(), LS.create(), LS.create()
     for i,unit in ipairs(all_units) do
