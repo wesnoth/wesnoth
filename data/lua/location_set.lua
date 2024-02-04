@@ -430,7 +430,7 @@ function methods:to_wml_var(name, mode)
 		elseif wml.valid{value = v} then
 			wml.variables[string.format("%s[%d]", name, i)] = {value = v}
 		elseif type(v) ~= 'boolean' then
-			warning('Location set value could not be converted to a WML variable:', v)
+			warn('Location set value could not be converted to a WML variable:', v)
 		end
 		wml.variables[string.format("%s[%d].x", name, i)] = x
 		wml.variables[string.format("%s[%d].y", name, i)] = y
