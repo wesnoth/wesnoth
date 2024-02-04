@@ -378,6 +378,9 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 		---@param count? integer|string A range list
 		---@return terrain_filter_tag
 		adjacent =  function(f, adj, count)
+			if type(adj) == 'table' then
+				adj = stringx.join(',', adj)
+			end
 			return { "adjacent",  f, adjacent = adj, count = count }
 		end,
 		---Match hexes from a separate list.
