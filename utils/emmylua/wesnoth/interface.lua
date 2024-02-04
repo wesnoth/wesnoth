@@ -2,7 +2,8 @@
 
 ---Freeze the game for a specified time
 ---@param ms number
-function wesnoth.interface.delay(ms) end
+---@param accel? boolean Whether to apply the current acceleration factor
+function wesnoth.interface.delay(ms, accel) end
 
 ---Deselect the active hex, if any
 function wesnoth.interface.deselect_hex() end
@@ -15,8 +16,10 @@ function wesnoth.interface.highlight_hex(loc) end
 ---Animate a floating label on a hex
 ---@param loc location
 ---@param text tstring
+---@param color? color|string
 ---@overload fun(x:integer, y:integer, text:tstring)
-function wesnoth.interface.float_label(loc, text) end
+---@overload fun(x:integer, y:integer, text:tstring, color:color|string)
+function wesnoth.interface.float_label(loc, text, color) end
 
 ---Get the currently-selected unit, the one displayed in the sidebar
 ---@return unit
@@ -63,7 +66,7 @@ function wesnoth.interface.scroll(dx, dy) end
 function wesnoth.interface.zoom(factor, relative) end
 
 ---Set the skip messages flag
----@param skip boolean
+---@param skip? boolean
 function wesnoth.interface.skip_messages(skip) end
 
 ---Check if messages are being skipped
@@ -71,8 +74,9 @@ function wesnoth.interface.skip_messages(skip) end
 function wesnoth.interface.is_skipping_messages() end
 
 ---Add a message to the onscreen chat
----@param speaker? string
+---@param speaker string
 ---@param message string
+---@overload fun(message:string)
 function wesnoth.interface.add_chat_message(speaker, message) end
 
 ---Clear all messages in the onscreen chat

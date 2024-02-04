@@ -4,7 +4,6 @@
 -- that exist in Wesnoth.
 
 std_print = print
-wesnoth.require = require
 os = {}
 debug = {}
 

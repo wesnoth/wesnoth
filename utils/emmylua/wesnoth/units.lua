@@ -136,8 +136,11 @@ function wesnoth.units.matches(unit, filter, context) end
 ---Place or move a unit on the map
 ---@param unit unit
 ---@param loc? location
+---@param fire_event? boolean
 ---@overload fun(unit:unit, x:integer, y:integer)
-function wesnoth.units.to_map(unit, loc) end
+---@overload fun(unit:unit, x:integer, y:integer, fire_event:boolean)
+---@overload fun(unit:unit, fire_event:boolean)
+function wesnoth.units.to_map(unit, loc, fire_event) end
 
 ---Place a unit on a recall lists
 ---@param unit unit
@@ -152,7 +155,10 @@ function wesnoth.units.transform(unit, to_type, to_variation) end
 
 ---Select the unit, as if it had been clicked with the mouse
 ---@param unit unit
-function wesnoth.units.select(unit) end
+---@param highlight? boolean
+---@param fire_event? boolean
+---@overload fun(unit_x:integer, unit_y:integer, highlight?:boolean, fire_event?:boolean)
+function wesnoth.units.select(unit, highlight, fire_event) end
 
 ---Test if the unit is affected by an ability
 ---@param unit unit
@@ -275,5 +281,7 @@ function wesnoth.units.create_weapon(cfg) end
 ---@param ignore_passability boolean
 ---@param clear_shroud boolean
 ---@param animate boolean
+---@overload fun(unit:unit, x:integer, y:integer, ignore_passability:boolean, clear_shroud:boolean, animate:boolean)
+function wesnoth.units.teleport(unit, target, ignore_passability, clear_shroud, animate) end
 
 wesnoth.units.get_hovered = wesnoth.interface.get_displayed_unit

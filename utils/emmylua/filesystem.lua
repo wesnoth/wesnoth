@@ -9,8 +9,9 @@ function filesystem.read_file(path) end
 
 ---Check if a file exists
 ---@param path string
+---@param real_file? boolean If true, the file must be a real file and not for example a directory.
 ---@return boolean
-function filesystem.have_file(path) end
+function filesystem.have_file(path, real_file) end
 
 ---Resolve a file path relative to the current script
 ---@param path string

@@ -67,18 +67,26 @@ function wesnoth.game_events.add_wml(event) end
 
 ---Fire an event by name
 ---@param name string The event to fire
----@param first? location|unit The primary location or unit of the event
----@param second? location|unit The secondary location or unit of the event
+---@param first? location The primary location or unit of the event
+---@param second? location The secondary location or unit of the event
 ---@param data? WMLTable Additional data to pass to the event
 ---@return boolean #Indicates whether the event was handled or not
+---@overload fun(name:string, x1:integer, y1:integer, data?:WMLTable):boolean
+---@overload fun(name:string, x1:integer, y1:integer, x2:integer, y2:integer, data?:WMLTable):boolean
+---@overload fun(name:string, first:location, x2:integer, y2:integer, data?:WMLTable):boolean
+---@overload fun(name:string, x1:integer, y1:integer, second:location, data?:WMLTable):boolean
 function wesnoth.game_events.fire(name, first, second, data) end
 
 ---Fire an event by ID
 ---@param id string The event to fire
----@param first? location|unit The primary location or unit of the event
----@param second? location|unit The secondary location or unit of the event
+---@param first? location The primary location or unit of the event
+---@param second? location The secondary location or unit of the event
 ---@param data? WMLTable Additional data to pass to the event
 ---@return boolean #Indicates whether the event was handled or not
+---@overload fun(id:string, x1:integer, y1:integer, data?:WMLTable):boolean
+---@overload fun(id:string, x1:integer, y1:integer, x2:integer, y2:integer, data?:WMLTable):boolean
+---@overload fun(id:string, first:location, x2:integer, y2:integer, data?:WMLTable):boolean
+---@overload fun(id:string, x1:integer, y1:integer, second:location, data?:WMLTable):boolean
 function wesnoth.game_events.fire_by_id(id, first, second, data) end
 
 ---Remove an event handler by ID

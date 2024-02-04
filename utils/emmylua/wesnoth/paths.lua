@@ -2,6 +2,8 @@
 
 wesnoth.paths = {}
 
+---@alias path_function fun(x:integer, y:integer, cost:integer):integer
+
 ---@class path_options
 ---@field max_cost integer
 ---@field ignore_units boolean
@@ -10,7 +12,7 @@ wesnoth.paths = {}
 ---@field width integer
 ---@field height integer
 ---@field include_borders boolean
----@field calculate fun(x:integer, y:integer, cost:integer):integer
+---@field calculate path_function
 
 ---Find a good path between two hexes
 ---@param start location
@@ -21,14 +23,18 @@ wesnoth.paths = {}
 ---@overload fun(x1:integer, y1:integer, finish:location, options:path_options):location[],integer
 ---@overload fun(start:location, x2:integer, y2:integer, options:path_options):location[],integer
 ---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer, options:path_options):location[],integer
+---@overload fun(start:location, finish:location, calc:path_function):location[],integer
+---@overload fun(x1:integer, y1:integer, finish:location, calc:path_function):location[],integer
+---@overload fun(start:location, x2:integer, y2:integer, calc:path_function):location[],integer
+---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer, calc:path_function):location[],integer
 function wesnoth.paths.find_path(start, finish, options) end
 
 ---Find a vacant hex as close as possible
----@param x integer
----@param y integer
----@param unit unit
+---@param loc location
+---@param unit? unit
 ---@return integer x, integer y
-function wesnoth.paths.find_vacant_hex(x, y, unit) end
+---@overload fun(x:integer, y:integer, unit:unit):integer,integer
+function wesnoth.paths.find_vacant_hex(loc, unit) end
 
 ---@class reach_options
 ---@field additional_turns integer
@@ -38,7 +44,7 @@ function wesnoth.paths.find_vacant_hex(x, y, unit) end
 
 ---Get all locations a unit can reach
 ---@param unit unit
----@param options reach_options
+---@param options? reach_options
 ---@return location[]
 function wesnoth.paths.find_reach(unit, options) end
 

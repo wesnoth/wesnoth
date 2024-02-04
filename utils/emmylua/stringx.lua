@@ -39,7 +39,7 @@ string.join_map = stringx.join_map
 
 ---Substitute variables into a format string
 ---@param format string|tstring
----@param values table<string, string|tstring>
+---@param values table<string, string|tstring|number>
 ---@return string|tstring
 function stringx.vformat(format, values) end
 string.vformat = stringx.vformat

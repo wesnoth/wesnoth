@@ -60,8 +60,8 @@ function gui.show_popup(title, message, image) end
 ---| "'yes_no'" #Two buttons labelled Yes and No
 ---@param title tstring A title string for the dialog
 ---@param message tstring The message to show
----@param button string|gui_prompt_button_type The button label
----@param markup boolean Whether to parse Pango markup
+---@param button? string|gui_prompt_button_type The button label
+---@param markup? boolean Whether to parse Pango markup
 ---@return boolean #false if No or Cancel was clicked, otherwise true
 function gui.show_prompt(title, message, button, markup) end
 

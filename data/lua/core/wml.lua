@@ -436,7 +436,6 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	---@param var string Name of the variable to store
 	---@param t WML[] An array of WML tables
 	---@param context? WMLVariableContext Where to store the variable
-	---@return WML[] #A table containing all the variables (starting at index 1)
 	function wml.array_access.set(var, t, context)
 		context = resolve_variable_context(context, "set_variable_array")
 		context.set(var)
