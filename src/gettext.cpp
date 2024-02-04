@@ -17,9 +17,7 @@
 #include "filesystem.hpp"
 
 #include <algorithm>
-#include <iomanip>
 #include <iterator>
-#include <fstream>
 #include <locale>
 #include <map>
 #include <boost/locale.hpp>

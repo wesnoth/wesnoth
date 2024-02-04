@@ -28,11 +28,8 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "utils/general.hpp"
 
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>

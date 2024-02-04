@@ -19,7 +19,6 @@
 #include <boost/random/random_device.hpp>
 
 #include <cassert>
-#include <cstdlib>
 #include <limits>
 #include <random>
 
