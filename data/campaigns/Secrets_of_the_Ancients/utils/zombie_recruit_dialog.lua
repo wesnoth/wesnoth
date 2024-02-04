@@ -9,7 +9,7 @@ local recruitedType
 local recruitCost
 
 local zombies = wml.array_access.get("zombies")
-local sides = wesnoth.sides.find()
+local sides = wesnoth.sides.find{}
 
 local zombie_recruit_dialog = wml.load "campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg"
 
