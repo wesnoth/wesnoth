@@ -1489,6 +1489,7 @@ function ai_helper.can_reach(unit, x, y, cfg)
     local ignore_visibility = cfg and cfg.ignore_visibility
 
     -- Is there a visible unit at the goal hex?
+    ---@type unit?
     local unit_in_way = wesnoth.units.get(x, y)
     if unit_in_way and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
         unit_in_way = nil
@@ -1558,6 +1559,7 @@ function ai_helper.get_reachmap(unit, cfg)
         if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
             is_available = false
         else
+            ---@type unit?
             local unit_in_way = wesnoth.units.get(loc[1], loc[2])
             if unit_in_way and (unit_in_way.id == unit.id) then
                 unit_in_way = nil
