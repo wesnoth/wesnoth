@@ -6,6 +6,8 @@ To enable in Visual Studio Code, install [this Lua plugin](https://marketplace.v
 
 ```json
 "Lua.runtime.version": "Lua 5.4",
+"Lua.type.weakNilCheck": true,
+"Lua.type.weakUnionCheck": true,
 "Lua.workspace.library": [
   "./utils/emmylua"
 ],
