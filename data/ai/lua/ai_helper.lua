@@ -1382,9 +1382,9 @@ function ai_helper.get_dst_src_units(units, cfg)
         end
 
         for _,loc in ipairs(reach) do
-            local tmp_dst = dstsrc:get(loc[1], loc[2]) or {}
+            local tmp_dst = dstsrc:get(loc) or {}
             table.insert(tmp_dst, { x = unit.x, y = unit.y })
-            dstsrc:insert(loc[1], loc[2], tmp_dst)
+            dstsrc:insert(loc, tmp_dst)
         end
     end
 
@@ -1500,20 +1500,20 @@ function ai_helper.next_hop(unit, x, y, cfg)
     end
 
     -- If none of the hexes are unoccupied, use current position as default
-    local next_hop, nh_cost = { unit.x, unit.y }, 0
-    local next_hop_ideal = { unit.x, unit.y }
+    local next_hop, nh_cost = unit.loc, 0
+    local next_hop_ideal = unit.loc
 
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
     for i = 2,#path do
-        if (not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(path[i][1], path[i][2])) then
-            local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
+        if (not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(path[i])) then
+            local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i].x, path[i].y, cfg)
 
             if sub_cost <= unit.moves then
                 -- Check for unit in way only if cfg.ignore_units is not set
                 local unit_in_way
                 if (not cfg) or (not cfg.ignore_units) then
-                    unit_in_way = wesnoth.units.get(path[i][1], path[i][2])
+                    unit_in_way = wesnoth.units.get(path[i])
                     if unit_in_way and (not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)) then
                         unit_in_way = nil
                     end
@@ -1539,18 +1539,18 @@ function ai_helper.next_hop(unit, x, y, cfg)
 
     local fan_out = cfg and cfg.fan_out
     if (fan_out == nil) then fan_out = true end
-    if fan_out and ((next_hop[1] ~= next_hop_ideal[1]) or (next_hop[2] ~= next_hop_ideal[2]))
+    if fan_out and ((next_hop.x ~= next_hop_ideal.x) or (next_hop.y ~= next_hop_ideal.y))
     then
         -- If we cannot get to the ideal next hop, try fanning out instead
         local reach = wesnoth.paths.find_reach(unit, cfg)
 
         -- Need the reach map of the unit from the ideal next hop hex
         -- There will always be another unit there, otherwise we would not have gotten here
-        local unit_in_way = wesnoth.units.get(next_hop_ideal[1], next_hop_ideal[2])
+        local unit_in_way = wesnoth.units.get(next_hop_ideal)
         unit_in_way:extract()
         local old_x, old_y = unit.x, unit.y
         unit:extract()
-        unit:to_map(next_hop_ideal[1], next_hop_ideal[2])
+        unit:to_map(next_hop_ideal)
         local inverse_reach = wesnoth.paths.find_reach(unit, { ignore_units = true }) -- no ZoC
         unit:extract()
         unit:to_map(old_x, old_y)
@@ -1563,8 +1563,8 @@ function ai_helper.next_hop(unit, x, y, cfg)
             -- We want the moves left for moving into the opposite direction in which the reach map was calculated
             local terrain2 = wesnoth.current.map[r]
             local move_cost = unit:movement_on(terrain2)
-            local inverse_cost = r[3] + move_cost - move_cost_endpoint
-            inverse_reach_map:insert(r[1], r[2], inverse_cost)
+            local inverse_cost = r.moves_left + move_cost - move_cost_endpoint
+            inverse_reach_map:insert(r, inverse_cost)
         end
 
         local units
@@ -1578,15 +1578,15 @@ function ai_helper.next_hop(unit, x, y, cfg)
 
         -- Do not move farther away, but if next_hop is out of reach from next_hop_ideal,
         -- anything in reach is better -> set to -infinity in that case.
-        local max_rating = inverse_reach_map:get(next_hop[1], next_hop[2]) or - math.huge
+        local max_rating = inverse_reach_map:get(next_hop) or - math.huge
         for _,loc in ipairs(reach) do
-            if (not unit_map:get(loc[1], loc[2]))
-                and ((not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(loc[1], loc[2])))
+            if (not unit_map:get(loc))
+                and ((not cfg) or (not cfg.avoid_map) or (not cfg.avoid_map:get(loc)))
             then
-                local rating = inverse_reach_map:get(loc[1], loc[2]) or - math.huge
+                local rating = inverse_reach_map:get(loc) or - math.huge
                 if (rating > max_rating) then
                     max_rating = rating
-                    next_hop = { loc[1], loc[2] } -- eliminating the third argument
+                    next_hop.x, next_hop.y = loc.x, loc.y -- eliminating the third argument
                 end
             end
         end
@@ -1678,11 +1678,11 @@ function ai_helper.get_reachmap(unit, cfg)
     local initial_reach = wesnoth.paths.find_reach(unit, cfg)
     for _,loc in ipairs(initial_reach) do
         local is_available = true
-        if cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2]) then
+        if cfg and cfg.avoid_map and cfg.avoid_map:get(loc) then
             is_available = false
         else
             ---@type unit?
-            local unit_in_way = wesnoth.units.get(loc[1], loc[2])
+            local unit_in_way = wesnoth.units.get(loc)
             if unit_in_way and (unit_in_way.id == unit.id) then
                 unit_in_way = nil
             end
@@ -1700,7 +1700,7 @@ function ai_helper.get_reachmap(unit, cfg)
         end
 
         if is_available then
-            reachmap:insert(loc[1], loc[2], loc[3])
+            reachmap:insert(loc, loc.moves_left)
         end
     end
 
@@ -2038,25 +2038,27 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     local reach = wesnoth.paths.find_reach(unit, cfg)
     local reach_map = LS.create()
 
-    local max_rating, best_hex = - math.huge, nil
+    local max_rating = - math.huge
+    ---@type location?
+    local best_hex = nil
     for _,loc in ipairs(reach) do
-        local unit_in_way = wesnoth.units.get(loc[1], loc[2])
+        local unit_in_way = wesnoth.units.get(loc)
         if (not unit_in_way)       -- also excludes current hex
             or ((not ignore_visibility) and (not ai_helper.is_visible_unit(viewing_side, unit_in_way)))
         then
-            local avoid_this_hex = cfg and cfg.avoid_map and cfg.avoid_map:get(loc[1], loc[2])
+            local avoid_this_hex = cfg and cfg.avoid_map and cfg.avoid_map:get(loc)
             if (not avoid_this_hex) then
-                local rating = loc[3]  -- also disfavors hexes next to visible enemy units for which loc[3] = 0
+                local rating = loc.moves_left  -- also disfavors hexes next to visible enemy units for which loc[3] = 0
 
                 if dx then
-                    rating = rating + (loc[1] - unit.x) * dx * 0.01
-                    rating = rating + (loc[2] - unit.y) * dy * 0.01
+                    rating = rating + (loc.x - unit.x) * dx * 0.01
+                    rating = rating + (loc.y - unit.y) * dy * 0.01
                 end
 
-                if cfg.labels then reach_map:insert(loc[1], loc[2], rating) end
+                if cfg.labels then reach_map:insert(loc, rating) end
 
                 if (rating > max_rating) then
-                    max_rating, best_hex = rating, { loc[1], loc[2] }
+                    max_rating, best_hex = rating, loc
                 end
             end
         end
@@ -2064,7 +2066,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     if cfg.labels then ai_helper.put_labels(reach_map) end
 
     if best_hex then
-        ai_helper.checked_move(ai, unit, best_hex[1], best_hex[2])
+        ai_helper.checked_move(ai, unit, best_hex.x, best_hex.y)
     end
 end
 
@@ -2219,28 +2221,28 @@ function ai_helper.get_attacks(units, cfg)
     for _,unit in ipairs(units) do
         wesnoth.interface.handle_user_interact()
         local reach
-        if reaches:get(unit.x, unit.y) then
-            reach = reaches:get(unit.x, unit.y)
+        if reaches:get(unit) then
+            reach = reaches:get(unit)
         else
             reach = wesnoth.paths.find_reach(unit, cfg)
-            reaches:insert(unit.x, unit.y, reach)
+            reaches:insert(unit, reach)
         end
 
         for _,loc in ipairs(reach) do
-            if attack_hex_map:get(loc[1], loc[2]) then
+            if attack_hex_map:get(loc) then
                 local add_target = true
                 local attack_hex_occupied = false
 
                 -- If another unit of same side is on this hex:
-                if my_unit_map:get(loc[1], loc[2]) and ((loc[1] ~= unit.x) or (loc[2] ~= unit.y)) then
+                if my_unit_map:get(loc) and ((loc.x ~= unit.x) or (loc.y ~= unit.y)) then
                     attack_hex_occupied = true
                     add_target = false
 
                     if cfg.include_occupied then -- Test whether it can move out of the way
-                        local unit_in_way = all_units[my_unit_map:get(loc[1], loc[2])]
+                        local unit_in_way = all_units[my_unit_map:get(loc)]
                         local uiw_reach
-                        if reaches:get(unit_in_way.x, unit_in_way.y) then
-                            uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
+                        if reaches:get(unit_in_way) then
+                            uiw_reach = reaches:get(unit_in_way)
                         else
                             uiw_reach = wesnoth.paths.find_reach(unit_in_way, cfg)
                             reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
@@ -2251,7 +2253,7 @@ function ai_helper.get_attacks(units, cfg)
                         -- unit that is moving out of the way of the initial unit (etc.).
                         for _,uiw_loc in ipairs(uiw_reach) do
                             -- Unit in the way of the unit in the way
-                            local uiw_uiw = wesnoth.units.get(uiw_loc[1], uiw_loc[2])
+                            local uiw_uiw = wesnoth.units.get(uiw_loc)
                             if (not uiw_uiw)
                                 or ((not ignore_visibility) and (not ai_helper.is_visible_unit(side, uiw_uiw)))
                             then
@@ -2263,11 +2265,11 @@ function ai_helper.get_attacks(units, cfg)
                 end
 
                 if add_target then
-                    for _,target in ipairs(attack_hex_map:get(loc[1], loc[2])) do
+                    for _,target in ipairs(attack_hex_map:get(loc)) do
                         local att_stats, def_stats
                         if cfg.simulate_combat then
                             local unit_dst = unit:clone()
-                            unit_dst.x, unit_dst.y = loc[1], loc[2]
+                            unit_dst.x, unit_dst.y = loc.x, loc.y
 
                             local enemy = all_units[target.i]
                             att_stats, def_stats = wesnoth.simulate_combat(unit_dst, enemy)
@@ -2275,7 +2277,7 @@ function ai_helper.get_attacks(units, cfg)
 
                         table.insert(attacks, {
                             src = { x = unit.x, y = unit.y },
-                            dst = { x = loc[1], y = loc[2] },
+                            dst = { x = loc.x, y = loc.y },
                             target = { x = target.x, y = target.y },
                             att_stats = att_stats,
                             def_stats = def_stats,
