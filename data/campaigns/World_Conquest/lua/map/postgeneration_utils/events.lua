@@ -111,8 +111,8 @@ function wct_castle_expansion_side(side_num)
 	if keep_loc == nil then
 		return
 	end
-	local castle = map:find_in_radius({keep_loc}, 1, wesnoth.map.filter(f.terrain("C*,K*")))
-	local keep_area = map:find_in_radius({keep_loc}, 2, wesnoth.map.filter(f.all()))
+	local castle = map:find_in_radius(keep_loc, 1, wesnoth.map.filter(f.terrain("C*,K*")))
+	local keep_area = map:find_in_radius(keep_loc, 2, wesnoth.map.filter(f.all()))
 
 	local candidates = get_locations {
 		filter = f.all(
