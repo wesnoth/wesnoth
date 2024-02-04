@@ -182,6 +182,30 @@ namespace
 			++cur;
 		}
 	}
+
+	auto stats_storage_resetter(unit& u, bool clamp = false)
+	{
+		int hitpoints = u.hitpoints();
+		int moves = u.movement_left();
+		int attacks = u.attacks_left(true);
+		int experience= u.experience();
+		bool slowed= u.get_state(unit::STATE_SLOWED);
+		bool poisoned= u.get_state(unit::STATE_POISONED);
+		return [=, &u] () {
+			if(clamp) {
+				u.set_movement(std::min(u.total_movement(), moves));
+				u.set_hitpoints(std::min(u.max_hitpoints(), hitpoints));
+				u.set_attacks(std::min(u.max_attacks(), attacks));
+			} else {
+				u.set_movement(moves);
+				u.set_hitpoints(hitpoints);
+				u.set_attacks(attacks);
+			}
+			u.set_experience(experience);
+			u.set_state(unit::STATE_SLOWED, slowed && !u.get_state("unslowable"));
+			u.set_state(unit::STATE_POISONED, poisoned && !u.get_state("unpoisonable"));
+		};
+	}
 } // end anon namespace
 
 /**
@@ -887,11 +911,12 @@ std::vector<std::string> unit::get_traits_list() const
 /**
  * Advances this unit to the specified type.
  * Experience is left unchanged.
- * Current hit point total is left unchanged unless it would violate max HP.
+ * Current hitpoints/movement/attacks_left is left unchanged unless it would violate their maximum.
  * Assumes gender_ and variation_ are set to their correct values.
  */
 void unit::advance_to(const unit_type& u_type, bool use_traits)
 {
+	auto ss = stats_storage_resetter(*this, true);
 	appearance_changed_ = true;
 	// For reference, the type before this advancement.
 	const unit_type& old_type = type();
@@ -994,20 +1019,10 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
-	if(get_state("unpoisonable")) {
-		set_state(STATE_POISONED, false);
-	}
-	if(get_state("unslowable")) {
-		set_state(STATE_SLOWED, false);
-	}
+	// Make sure apply_modifications() didn't attempt to heal the unit (for example if the unit has a default amla.).
+	ss();
 	if(get_state("unpetrifiable")) {
 		set_state(STATE_PETRIFIED, false);
-	}
-
-	// Now that modifications are done modifying the maximum hit points,
-	// enforce this maximum.
-	if(hit_points_ > max_hit_points_) {
-		hit_points_ = max_hit_points_;
 	}
 
 	// In case the unit carries EventWML, apply it now
@@ -1220,8 +1235,6 @@ void unit::expire_modifications(const std::string& duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
 	const unit_type* rebuild_from = nullptr;
-	int hp = hit_points_;
-	int mp = movement_;
 	// Loop through all types of modifications.
 	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
@@ -1248,8 +1261,6 @@ void unit::expire_modifications(const std::string& duration)
 	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
-		hit_points_ = hp;
-		movement_ = std::min(mp, max_movement_);
 	}
 }
 
