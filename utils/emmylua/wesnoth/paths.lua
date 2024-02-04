@@ -5,14 +5,14 @@ wesnoth.paths = {}
 ---@alias path_function fun(x:integer, y:integer, cost:integer):integer
 
 ---@class path_options
----@field max_cost integer
----@field ignore_units boolean
----@field ignore_teleport boolean
----@field viewing_side integer
----@field width integer
----@field height integer
----@field include_borders boolean
----@field calculate path_function
+---@field max_cost? integer
+---@field ignore_units? boolean
+---@field ignore_teleport? boolean
+---@field viewing_side? integer
+---@field width? integer
+---@field height? integer
+---@field include_borders? boolean
+---@field calculate? path_function
 
 ---Find a good path between two hexes
 ---@param start location
@@ -37,10 +37,10 @@ function wesnoth.paths.find_path(start, finish, options) end
 function wesnoth.paths.find_vacant_hex(loc, unit) end
 
 ---@class reach_options
----@field additional_turns integer
----@field ignore_units boolean
----@field ignore_teleport boolean
----@field viewing_side integer
+---@field additional_turns? integer
+---@field ignore_units? boolean
+---@field ignore_teleport? boolean
+---@field viewing_side? integer
 
 ---Get all locations a unit can reach
 ---@param unit unit

@@ -122,14 +122,14 @@ function wesnoth.map.terrain_mask(map, pivot, mask, options) end
 
 ---@class label_info : location
 ---@field text tstring
----@field team_name string
----@field color color|integer[]
----@field visible_in_fog boolean
----@field visible_in_shroud boolean
----@field immutable boolean
----@field category string|tstring
----@field tooltip tstring
----@field side integer
+---@field team_name? string
+---@field color? color|integer[]
+---@field visible_in_fog? boolean
+---@field visible_in_shroud? boolean
+---@field immutable? boolean
+---@field category? string|tstring
+---@field tooltip? tstring
+---@field side? integer
 
 ---Place a label on the map
 ---@param label_info label_info
