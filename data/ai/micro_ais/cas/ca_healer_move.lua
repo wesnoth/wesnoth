@@ -14,7 +14,7 @@ function ca_healer_move:evaluation(cfg, data)
     local all_healers = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         ability = "healing",
-        { "and", wml.get_child(cfg, "filter") }
+        wml.tag["and"] ( wml.get_child(cfg, "filter") )
     }
 
     local healers, healers_noMP = {}, {}
@@ -32,7 +32,7 @@ function ca_healer_move:evaluation(cfg, data)
 
     local all_healees = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
-        { "and", wml.get_child(cfg, "filter_second") }
+        wml.tag["and"] ( wml.get_child(cfg, "filter_second") )
     }
 
     local healees, healees_MP = {}, {}

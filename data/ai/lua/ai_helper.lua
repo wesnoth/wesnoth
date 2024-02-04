@@ -882,14 +882,14 @@ function ai_helper.get_closest_location(hex, location_filter, unit, avoid_map)
         local loc_filter = {}
         if (radius == 0) then
             loc_filter = {
-                { "and", { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius } },
-                { "and", location_filter }
+                wml.tag["and"] { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius },
+                wml.tag["and"] ( location_filter )
             }
         else
             loc_filter = {
-                { "and", { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius } },
-                { "not", { x = hex[1], y = hex[2], radius = radius - 1 } },
-                { "and", location_filter }
+                wml.tag["and"] { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius },
+                wml.tag["not"] { x = hex[1], y = hex[2], radius = radius - 1 },
+                wml.tag["and"] ( location_filter )
             }
         end
 
@@ -1138,7 +1138,7 @@ end
 ---@return unit[]
 function ai_helper.get_live_units(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
-    return wesnoth.units.find_on_map { { "not", { status = "petrified" } }, { "and", filter } }
+    return wesnoth.units.find_on_map { wml.tag["not"] { status = "petrified" }, wml.tag["and"] ( filter ) }
 end
 
 ---Find units who can move that match the specified filter.
@@ -1153,9 +1153,9 @@ function ai_helper.get_units_with_moves(filter, exclude_guardians)
         exclude_status = exclude_status .. ',guardian'
     end
     return wesnoth.units.find_on_map {
-        { "and", { formula = "moves > 0" } },
-        { "not", { status = exclude_status } },
-        { "and", filter }
+        wml.tag["and"] { formula = "moves > 0" },
+        wml.tag["not"] { status = exclude_status },
+        wml.tag["and"] ( filter )
     }
 end
 
@@ -1165,9 +1165,9 @@ end
 function ai_helper.get_units_with_attacks(filter)
     -- Note: the order of the filters and the [and] tags are important for speed reasons
     return wesnoth.units.find_on_map {
-        { "and", { formula = "attacks_left > 0 and size(attacks) > 0" } },
-        { "not", { status = "petrified" } },
-        { "and", filter }
+        wml.tag["and"] { formula = "attacks_left > 0 and size(attacks) > 0" },
+        wml.tag["not"] { status = "petrified" },
+        wml.tag["and"] ( filter )
     }
 end
 
@@ -1202,7 +1202,7 @@ function ai_helper.is_visible_unit(viewing_side, unit)
 
     if (not unit) then return false end
 
-    if unit:matches({ { "filter_vision", { side = viewing_side, visible = 'no' } } }) then
+    if unit:matches({ wml.tag.filter_vision { side = viewing_side, visible = 'no' } }) then
         return false
     end
 
@@ -1228,12 +1228,13 @@ function ai_helper.get_attackable_enemies(filter, side, cfg)
     ai_helper.check_viewing_side(viewing_side)
     local ignore_visibility = cfg and cfg.ignore_visibility
 
+    ---@type WMLTable
     local filter_plus_vision = {}
     if filter then filter_plus_vision = ai_helper.table_copy(filter) end
     if (not ignore_visibility) then
         filter_plus_vision = {
-            { "and", filter_plus_vision },
-            { "filter_vision", { side = viewing_side, visible = 'yes' } }
+            wml.tag["and"] ( filter_plus_vision ),
+            wml.tag.filter_vision { side = viewing_side, visible = 'yes' }
         }
     end
 
@@ -1408,7 +1409,7 @@ end
 function ai_helper.get_enemy_dst_src(enemies, cfg)
     if (not enemies) then
         enemies = wesnoth.units.find_on_map {
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
+            wml.tag.filter_side { wml.tag.enemy_of { side = wesnoth.current.side} }
         }
     end
 
@@ -1567,9 +1568,9 @@ function ai_helper.next_hop(unit, x, y, cfg)
 
         local units
         if ignore_visibility then
-            units = wesnoth.units.find_on_map({ { "not", { id = unit.id } } })
+            units = wesnoth.units.find_on_map({ wml.tag["not"] { id = unit.id } })
         else
-            units = ai_helper.get_visible_units(viewing_side, { { "not", { id = unit.id } } })
+            units = ai_helper.get_visible_units(viewing_side, { wml.tag["not"] { id = unit.id } })
         end
         local unit_map = LS.create()
         for _,u in ipairs(units) do unit_map:insert(u.x, u.y, u.id) end

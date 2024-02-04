@@ -96,7 +96,7 @@ function wml_actions.modify_unit(cfg)
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
-	wml_actions.store_unit { {"filter", filter}, variable = unit_variable }
+	wml_actions.store_unit { wml.tag.filter(filter), variable = unit_variable }
 	local max_index = wml.variables[unit_variable .. ".length"] - 1
 
 	local this_unit <close> = utils.scoped_var("this_unit")
