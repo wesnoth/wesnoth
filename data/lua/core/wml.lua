@@ -1,4 +1,5 @@
 --[========[Config Manipulation Functions]========]
+---@diagnostic disable: deprecated
 print("Loading WML module...")
 
 local function ensure_config(cfg)
