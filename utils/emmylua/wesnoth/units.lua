@@ -57,6 +57,7 @@
 ---Defines an individual unit
 ---@class unit : wesnoth.units, location
 ---@field valid "'map'"|"'recall'"|"'private'"|nil
+---@field loc? location
 ---@field id? string
 ---@field side integer
 ---@field type string
