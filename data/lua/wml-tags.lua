@@ -69,7 +69,7 @@ function wml_actions.chat(cfg)
 	local observable = cfg.observable ~= false
 
 	if observable then
-		local all_sides = wesnoth.sides.find()
+		local all_sides = wesnoth.sides.find{}
 		local has_human_side = false
 		for index, side in ipairs(all_sides) do
 			if side.controller == "human" and side.is_local then
