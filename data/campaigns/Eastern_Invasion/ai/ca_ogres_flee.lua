@@ -19,7 +19,7 @@ function ca_ogres_flee:execution()
     }
 
     -- Need the enemy map and enemy attack map if avoid_enemies is set
-    local enemies = wesnoth.units.find_on_map {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
+    local enemies = wesnoth.units.find_on_map { wml.tag.filter_side { wml.tag.enemy_of {side = wesnoth.current.side} } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
     local max_rating, best_hex, best_unit = - math.huge, nil, nil

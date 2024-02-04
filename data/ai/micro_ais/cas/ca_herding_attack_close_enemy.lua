@@ -4,7 +4,7 @@ local M = wesnoth.map
 local function get_sheep(cfg)
     local sheep = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
-        { "and", wml.get_child(cfg, "filter_second") }
+        wml.tag["and"] ( wml.get_child(cfg, "filter_second") )
     }
     return sheep
 end
@@ -12,16 +12,19 @@ end
 local function get_dogs(cfg)
     local dogs = AH.get_units_with_attacks {
         side = wesnoth.current.side,
-        { "and", wml.get_child(cfg, "filter") }
+        wml.tag["and"] ( wml.get_child(cfg, "filter") )
     }
     return dogs
 end
 
 local function get_enemies(cfg, radius)
     local enemies = AH.get_attackable_enemies {
-        { "filter_location",
-            { radius = radius,
-            { "filter", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter_second") } } } }
+        wml.tag.filter_location {
+            radius = radius,
+            wml.tag.filter {
+                side = wesnoth.current.side,
+                wml.tag["and"] ( wml.get_child(cfg, "filter_second") )
+            }
         }
     }
     return enemies
