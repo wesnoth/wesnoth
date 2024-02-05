@@ -1129,7 +1129,6 @@ void play_controller::play_slice_catch()
 void play_controller::start_game()
 {
 	if(gamestate().in_phase(game_data::PRELOAD)) {
-		map_start_ = map_location();
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
 
