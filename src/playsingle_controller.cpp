@@ -836,6 +836,8 @@ void playsingle_controller::on_replay_end(bool is_unit_test)
 			e.is_victory = false;
 			set_end_level_data(e);
 		}
+	} else {
+		replay_controller_->stop_replay();
 	}
 }
 

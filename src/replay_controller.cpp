@@ -176,9 +176,6 @@ void replay_controller::play_side_impl()
 				if(res == REPLAY_FOUND_END_TURN) {
 					return;
 				}
-				if(res == REPLAY_RETURN_AT_END) {
-					stop_replay();
-				}
 				if(res == REPLAY_FOUND_INIT_TURN)
 				{
 					stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());
