@@ -130,12 +130,12 @@ final_output = added + changed + incomplete + update + unchanged
 
 if options.output != "":
     with open(options.output, 'w') as f:
-        f.write("Date,File,License,Author - Real Name(other name);Real Name(other name);etc,Notes,Needs Update,MD5\n")
-        for row in final_output:
-            f.write(",".join(row)+"\n")
+        writer = csv.writer(f, lineterminator="\n")
+        writer.writerow(["Date", "File", "License", "Author - Real Name(other name);Real Name(other name);etc", "Notes", "Needs Update", "MD5"])
+        writer.writerows(final_output)
 else:
-    for row in final_output:
-        print(",".join(row))
+    writer = csv.writer(sys.stdout, lineterminator="\n")
+    writer.writerows(final_output)
 
 any_check_failed = False
 if len(removed) > 0:
