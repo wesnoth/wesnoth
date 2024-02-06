@@ -66,7 +66,13 @@ with contextlib.suppress(FileNotFoundError):
     os.remove(options.output)
 
 csv_data = {}
+# Too few fields
+missing_fields = []
+# Too many fields, possibly due to an unquoted comma
+extra_fields = []
+# New images
 added = []
+# Changed images
 changed = []
 # Already mentioned in the CSV file, but lacking something in either the license or author fields
 incomplete = []
@@ -106,6 +112,10 @@ for root, _, files in os.walk(options.repo):
 
             if not file in csv_data:
                 added.append(["", file, "", "", "", do_git(file), hash])
+            elif len(csv_data[file]) < 7:
+                missing_fields.append(csv_data[file])
+            elif len(csv_data[file]) > 7:
+                extra_fields.append(csv_data[file])
             elif csv_data[file][5] != "":
                 update.append(csv_data[file])
             elif csv_data[file][6] != hash:
@@ -120,13 +130,15 @@ for root, _, files in os.walk(options.repo):
             else:
                 unchanged.append(csv_data[file])
 
+missing_fields.sort(key=itemgetter(1))
+extra_fields.sort(key=itemgetter(1))
 added.sort(key=itemgetter(1))
 changed.sort(key=itemgetter(1))
 incomplete.sort(key=itemgetter(1))
 update.sort(key=itemgetter(1))
 unchanged.sort(key=itemgetter(1))
 
-final_output = added + changed + incomplete + update + unchanged
+final_output = missing_fields + extra_fields + added + changed + incomplete + update + unchanged
 
 if options.output != "":
     with open(options.output, 'w') as f:
@@ -142,8 +154,10 @@ if len(removed) > 0:
     any_check_failed = True
     print("There are "+str(len(removed))+" removed images")
 
-if len(added) > 0 or len(changed) > 0 or len(incomplete) > 0 or len(update) > 0:
+if len(missing_fields) > 0 or len(extra_fields) > 0 or len(added) > 0 or len(changed) > 0 or len(incomplete) > 0 or len(update) > 0:
     any_check_failed = True
+    print("There are "+str(len(missing_fields))+" rows with too few fields")
+    print("There are "+str(len(extra_fields))+" rows with too many fields, possibly due to an unquoted comma")
     print("There are "+str(len(added))+" new images")
     print("There are "+str(len(changed))+" changed images")
     print("There are "+str(len(incomplete))+" images that lack license or author information")
