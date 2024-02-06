@@ -690,16 +690,18 @@ end
 ---@return location?
 function ai_helper.find_opposite_hex_adjacent(hex, center_hex)
     -- If the two input hexes are not adjacent, return nil
-    if (M.distance_between(hex[1], hex[2], center_hex[1], center_hex[2]) ~= 1) then return nil end
+    if (M.distance_between(hex, center_hex) ~= 1) then return nil end
 
     -- Finding the opposite x position is easy
-    local opp_x = center_hex[1] + (center_hex[1] - hex[1])
+    local opp_x = center_hex.x + (center_hex.x - hex.x)
 
     -- y is slightly more tricky, because of the hexagonal shape, but there's a trick
     -- that saves us from having to build in a lot of if statements
     -- Among the adjacent hexes, it is the one with the correct x, and y _different_ from hex[2]
     for xa,ya in wesnoth.current.map:iter_adjacent(center_hex) do
-        if (xa == opp_x) and (ya ~= hex[2]) then return { xa, ya } end
+        if (xa == opp_x) and (ya ~= hex.y) then
+            return wesnoth.named_tuple({ xa, ya }, { 'x', 'y' })
+        end
     end
 
     return nil
@@ -713,17 +715,17 @@ end
 ---@return location
 function ai_helper.find_opposite_hex(hex, center_hex)
     -- Finding the opposite x position is easy
-    local opp_x = center_hex[1] + (center_hex[1] - hex[1])
+    local opp_x = center_hex.x + (center_hex.x - hex.x)
 
     -- Going to "square geometry" for y coordinate
-    local y_sq = hex[2] * 2 - (hex[1] % 2)
-    local yc_sq = center_hex[2] * 2 - (center_hex[1] % 2)
+    local y_sq = hex.y * 2 - (hex.x % 2)
+    local yc_sq = center_hex.y * 2 - (center_hex.x % 2)
 
     -- Now the same equation as for x can be used for y
     local opp_y = yc_sq + (yc_sq - y_sq)
     opp_y = math.floor((opp_y + 1) / 2)
 
-    return {opp_x, opp_y}
+    return wesnoth.named_tuple({opp_x, opp_y}, {'x', 'y'})
 end
 
 ---Returns true if hex1 and hex2 are opposite from each other with respect to @center_hex
@@ -734,7 +736,7 @@ end
 function ai_helper.is_opposite_adjacent(hex1, hex2, center_hex)
     local opp_hex = ai_helper.find_opposite_hex_adjacent(hex1, center_hex)
 
-    if opp_hex and (opp_hex[1] == hex2[1]) and (opp_hex[2] == hex2[2]) then return true end
+    if opp_hex and (opp_hex.x == hex2.x) and (opp_hex.y == hex2.y) then return true end
     return false
 end
 
@@ -777,12 +779,13 @@ function ai_helper.get_named_loc_xy(param_core, cfg, required_for)
             wml.error("Location is not on map: " .. param_x .. ',' .. param_y .. ' = ' .. x .. ',' .. y .. " " .. (required_for or ''))
         end
 
-        return { x, y }
+        return wesnoth.named_tuple({ x, y }, { 'x', 'y' })
     end
 
     if required_for then
         wml.error(required_for .. " requires either " .. param_loc .. "= or " .. param_x .. "/" .. param_y .. "= keys")
     end
+    return nil
 end
 
 ---Same as ai_helper.get_named_loc_xy, except that it takes comma separated
@@ -882,13 +885,13 @@ function ai_helper.get_closest_location(hex, location_filter, unit, avoid_map)
         local loc_filter = {}
         if (radius == 0) then
             loc_filter = {
-                wml.tag["and"] { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius },
+                wml.tag["and"] { x = hex.x, y = hex.y, include_borders = include_borders, radius = radius },
                 wml.tag["and"] ( location_filter )
             }
         else
             loc_filter = {
-                wml.tag["and"] { x = hex[1], y = hex[2], include_borders = include_borders, radius = radius },
-                wml.tag["not"] { x = hex[1], y = hex[2], radius = radius - 1 },
+                wml.tag["and"] { x = hex.x, y = hex.y, include_borders = include_borders, radius = radius },
+                wml.tag["not"] { x = hex.x, y = hex.y, radius = radius - 1 },
                 wml.tag["and"] ( location_filter )
             }
         end
@@ -897,7 +900,7 @@ function ai_helper.get_closest_location(hex, location_filter, unit, avoid_map)
 
         if avoid_map then
             for i = #locs,1,-1 do
-                if avoid_map:get(locs[i][1], locs[i][2]) then
+                if avoid_map:get(locs[i]) then
                     table.remove(locs, i)
                 end
             end
@@ -1043,8 +1046,8 @@ end
 function ai_helper.split_location_list_to_strings(list)
     local locsx, locsy = {}, {}
     for i,loc in ipairs(list) do
-        locsx[i] = loc[1]
-        locsy[i] = loc[2]
+        locsx[i] = loc.x
+        locsy[i] = loc.y
     end
     locsx = table.concat(locsx, ",")
     locsy = table.concat(locsy, ",")
