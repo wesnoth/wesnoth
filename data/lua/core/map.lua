@@ -384,11 +384,24 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 			return { "adjacent",  f, adjacent = adj, count = count }
 		end,
 		---Match hexes from a separate list.
-		---Specify the list in the second argument to wesnoth.map.filter()
-		---@param terrain string
+		---When passing a locset_ref, specify the list
+		---in the second argument to wesnoth.map.filter()
+		---
+		---For example:
+		---```
+		---local M = wesnoth.map.create(128, 128, 'Gg')
+		---local f = wesnoth.map.filter_tags
+		---local found = M:find(f.find_in("choices"), {choices = {{1,2}, {5,6}}})
+		---```
+		---@param x integer
+		---@param y integer
 		---@return terrain_filter_tag
-		find_in =  function(terrain)
-			return { "find_in", terrain }
+		---@overload fun(xs:string, ys:string):terrain_filter_tag
+		---@overload fun(loc:location):terrain_filter_tag
+		---@overload fun(locs:location[]):terrain_filter_tag
+		---@overload fun(locset_ref:string):terrain_filter_tag
+		find_in = function(x, y)
+			return { "find_in", x, y }
 		end,
 		---Match hexes within a given distance
 		---@param r integer
