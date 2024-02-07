@@ -107,6 +107,11 @@ public:
 	{
 		return get_cursor_position(get_line_end_offset(line_num_)).x;
 	}
+	
+	point get_text_end_pos()
+	{
+		return get_cursor_position(get_length());
+	}
 
 	unsigned get_char_width()
 	{
@@ -161,7 +166,7 @@ protected:
 
 		if (autoscroll) {
 			// Whenever cursor moves, this tells scroll_text to update the scrollbars
-			fire(event::NOTIFY_MODIFIED, *this, nullptr);
+			update_layout();
 		}
 	}
 
@@ -169,7 +174,6 @@ protected:
 	void goto_end_of_line(const bool select = false) override
 	{
 		set_line_num_from_offset();
-		scroll_horiz_ = scrollbar_base::END;
 		set_cursor(get_line_end_offset(line_num_), select);
 	}
 
@@ -177,7 +181,6 @@ protected:
 	void goto_start_of_line(const bool select = false) override
 	{
 		set_line_num_from_offset();
-		scroll_horiz_ = scrollbar_base::BEGIN;
 		set_cursor(get_line_start_offset(line_num_), select);
 	}
 
