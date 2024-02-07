@@ -22,6 +22,7 @@
 #include "map/map.hpp"
 #include "pathutils_impl.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_formula_bridge.hpp"
 #include "scripting/push_check.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
@@ -552,14 +553,8 @@ public:
 	{
 		LOG_LMG << "creating formula filter";
 		lua_geti(L, -1, 2);
-		std::string code = std::string(luaW_tostring(L, -1));
+		formula_ = luaW_check_formula(L, 1, true);
 		lua_pop(L, 1);
-
-		try {
-			formula_ = std::make_unique<wfl::formula>(code);
-		} catch(const wfl::formula_error& e) {
-			ERR_LMG << "formula error" << e.what();
-		}
 	}
 	bool matches(const gamemap_base&, map_location l) override
 	{
@@ -573,7 +568,7 @@ public:
 			return false;
 		}
 	}
-	std::unique_ptr<wfl::formula> formula_;
+	lua_formula_bridge::fpointer formula_;
 };
 
 // todo: maybe invent a general macro for this string_switch implementation.
