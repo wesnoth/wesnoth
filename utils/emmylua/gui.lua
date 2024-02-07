@@ -212,7 +212,7 @@ function gui.widget.add_item(widget, position) end
 ---@param count integer
 ---@return widget
 ---@return integer
-function gui.widget.add_item_of_tpe(widget, category, position, count) end
+function gui.widget.add_item_of_type(widget, category, position, count) end
 
 ---Remove items from a container widget
 ---@param widget widget
