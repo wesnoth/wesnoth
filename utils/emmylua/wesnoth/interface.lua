@@ -132,5 +132,5 @@ function wesnoth.interface.color_adjust(red, green, blue) end
 ---@param duration integer How long the fade takes to apply, in milliseconds
 function wesnoth.interface.screen_fade(color, duration) end
 
----@type table<string, fun()>
+---@type table<string, fun():WML>
 wesnoth.game_display = {}
