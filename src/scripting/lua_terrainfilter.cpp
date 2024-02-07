@@ -167,6 +167,7 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 		res.insert(single);
 		return res;
 	}
+	if(!lua_istable(L, index)) return res;
 	lua_pushvalue(L, index);
 	size_t len = lua_rawlen(L, -1);
 	for(size_t i = 0; i != len; ++i) {
@@ -673,7 +674,7 @@ int intf_mg_get_locations(lua_State* L)
 	const auto f = luaW_check_mgfilter(L, 2, true);
 	location_set res;
 	LOG_LMG <<  "map:get_locations vaidargs";
-	if(lua_istable(L, 3)) {
+	if(!lua_isnone(L, 3)) {
 		LOG_LMG <<  "map:get_locations some locations";
 		location_set s = luaW_to_locationset(L, 3);
 		LOG_LMG <<  "map:get_locations #args = " << s.size();
