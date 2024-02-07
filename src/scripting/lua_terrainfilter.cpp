@@ -50,7 +50,7 @@ private:
 	std::string errormessage_;
 };
 
-using knows_sets_t = std::map<std::string, std::set<map_location>>;
+using known_sets_t = std::map<std::string, std::set<map_location>>;
 using offset_list_t = std::vector<std::pair<int, int>>;
 using std::string_view;
 using dynamic_bitset  = boost::dynamic_bitset<>;
@@ -194,12 +194,12 @@ public:
 //build_filter impl
 namespace {
 
-std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_sets_t& ks);
+std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, known_sets_t& ks);
 
 class con_filter : public filter_impl
 {
 public:
-	con_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	con_filter(lua_State* L, int res_index, known_sets_t& ks)
 		:list_()
 	{
 		LOG_LMG << "creating con filter";
@@ -216,7 +216,7 @@ public:
 class and_filter : public con_filter
 {
 public:
-	and_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	and_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: con_filter(L, res_index, ks)
 	{
 		LOG_LMG << "created and filter";
@@ -237,7 +237,7 @@ public:
 class or_filter : public con_filter
 {
 public:
-	or_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	or_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: con_filter(L, res_index, ks)
 	{
 		LOG_LMG << "created or filter";
@@ -258,7 +258,7 @@ public:
 class nand_filter : public con_filter
 {
 public:
-	nand_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	nand_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: con_filter(L, res_index, ks)
 	{
 		LOG_LMG << "created nand filter";
@@ -279,7 +279,7 @@ public:
 class nor_filter : public con_filter
 {
 public:
-	nor_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	nor_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: con_filter(L, res_index, ks)
 	{
 		LOG_LMG << "created nor filter";
@@ -300,7 +300,7 @@ public:
 class cached_filter : public filter_impl
 {
 public:
-	cached_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	cached_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: filter_()
 		, cache_()
 	{
@@ -337,7 +337,7 @@ public:
 class x_filter : public filter_impl
 {
 public:
-	x_filter(lua_State* L, int /*res_index*/, knows_sets_t&)
+	x_filter(lua_State* L, int /*res_index*/, known_sets_t&)
 		: filter_()
 	{
 		LOG_LMG << "creating x filter";
@@ -357,7 +357,7 @@ public:
 class y_filter : public filter_impl
 {
 public:
-	y_filter(lua_State* L, int /*res_index*/, knows_sets_t&)
+	y_filter(lua_State* L, int /*res_index*/, known_sets_t&)
 	: filter_()
 	{
 		LOG_LMG << "creating y filter";
@@ -379,7 +379,7 @@ public:
 class onborder_filter : public filter_impl
 {
 public:
-	onborder_filter(lua_State*, int /*res_index*/, knows_sets_t&)
+	onborder_filter(lua_State*, int /*res_index*/, known_sets_t&)
 	{
 		LOG_LMG << "creating onborder filter";
 	}
@@ -394,7 +394,7 @@ public:
 class terrain_filter : public filter_impl
 {
 public:
-	terrain_filter(lua_State* L, int /*res_index*/, knows_sets_t&)
+	terrain_filter(lua_State* L, int /*res_index*/, known_sets_t&)
 	: filter_()
 	{
 		LOG_LMG << "creating terrain filter";
@@ -420,7 +420,7 @@ static const offset_list_t odd_offsets_default = {{1 , -1}, {1 , 0}, {0 , 1}, {-
 class adjacent_filter : public filter_impl
 {
 public:
-	adjacent_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	adjacent_filter(lua_State* L, int res_index, known_sets_t& ks)
 	: filter_()
 	{
 		LOG_LMG << "creating adjacent filter";
@@ -467,7 +467,7 @@ public:
 class findin_filter : public filter_impl
 {
 public:
-	findin_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	findin_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: set_(nullptr)
 	{
 		LOG_LMG << "creating findin filter";
@@ -476,7 +476,7 @@ public:
 		lua_pop(L, 1);
 
 		//TODO: c++14: use heterogenous lookup.
-		auto insert_res = ks.insert(knows_sets_t::value_type{id, {}});
+		auto insert_res = ks.insert(known_sets_t::value_type{id, {}});
 		if(insert_res.second && res_index > 0) {
 			// istable(L, res_index) was already checked.
 			if(luaW_tableget(L, res_index, id.c_str())) {
@@ -501,7 +501,7 @@ class radius_filter : public filter_impl
 {
 public:
 
-	radius_filter(lua_State* L, int res_index, knows_sets_t& ks)
+	radius_filter(lua_State* L, int res_index, known_sets_t& ks)
 		: radius_()
 		, filter_radius_()
 		, filter_()
@@ -549,7 +549,7 @@ public:
 class formula_filter : public filter_impl
 {
 public:
-	formula_filter(lua_State* L, int, knows_sets_t&)
+	formula_filter(lua_State* L, int, known_sets_t&)
 		: formula_()
 	{
 		LOG_LMG << "creating formula filter";
@@ -591,7 +591,7 @@ static const std::unordered_map<std::string, filter_keys> keys {
 	{ "radius", F_RADIUS }
 };
 
-std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_sets_t& ks)
+std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, known_sets_t& ks)
 {
 	LOG_LMG << "buildfilter: start";
 	if(!lua_istable(L, -1)) {
