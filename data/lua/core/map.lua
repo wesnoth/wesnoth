@@ -412,7 +412,13 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 		---@return terrain_filter_tag
 		is_loc = function(loc)
 			return f.all(f.x(loc[1]), f.y(loc[2]))
-		end
+		end,
+		---Match terrain by Wesnoth Formula Language
+		---@param formula string|formula
+		---@return terrain_filter_tag
+		formula = function(formula)
+			return { "formula", formula }
+		end,
 	}
 
 	-- More map module stuff
