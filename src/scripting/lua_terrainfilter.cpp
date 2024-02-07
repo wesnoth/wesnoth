@@ -471,10 +471,52 @@ public:
 		: set_(nullptr)
 	{
 		LOG_LMG << "creating findin filter";
-		lua_geti(L, -1, 2);
-		std::string id = std::string(luaW_tostring(L, -1));
-		lua_pop(L, 1);
+		int idx = lua_absindex(L, -1);
+		switch(lua_geti(L, idx, 2)) {
+		case LUA_TTABLE:
+			// Also accepts a single location of the form {x,y} or {x=x,y=y}
+			init_from_inline_set(luaW_to_locationset(L, -1));
+			break;
+		case LUA_TNUMBER:
+			lua_geti(L, idx, 3);
+			init_from_single_loc(luaL_checkinteger(L, -2), luaL_checkinteger(L, -1));
+			break;
+		case LUA_TSTRING:
+			if(lua_geti(L, idx, 3) == LUA_TSTRING) {
+				init_from_ranges(luaL_checkstring(L, -2), luaL_checkstring(L, -1));
+			} else {
+				init_from_named_set(L, luaL_checkstring(L, -1), res_index, ks);
+			}
+			break;
+		}
+		lua_settop(L, idx);
+	}
 
+	void init_from_inline_set(const location_set& locs) {
+		inline_ = locs;
+		set_ = &inline_;
+	}
+
+	void init_from_single_loc(int x, int y) {
+		map_location loc(x, y, wml_loc());
+		inline_.insert(loc);
+		set_ = &inline_;
+	}
+
+	void init_from_ranges(const std::string& xs, const std::string& ys) {
+		auto xvals = utils::parse_ranges_unsigned(xs), yvals = utils::parse_ranges_unsigned(ys);
+		// TODO: Probably error if they're different sizes?
+		for(size_t i = 0; i < std::min(xvals.size(), yvals.size()); i++) {
+			for(int x = xvals[i].first; x <= xvals[i].second; x++) {
+				for(int y = yvals[i].first; y <= yvals[i].second; y++) {
+					inline_.insert(map_location(x, y, wml_loc()));
+				}
+			}
+		}
+		set_ = &inline_;
+	}
+
+	void init_from_named_set(lua_State* L, const std::string& id, int res_index, known_sets_t& ks) {
 		//TODO: c++14: use heterogenous lookup.
 		auto insert_res = ks.insert(known_sets_t::value_type{id, {}});
 		if(insert_res.second && res_index > 0) {
@@ -495,6 +537,7 @@ public:
 		return false;
 	}
 	const location_set* set_;
+	location_set inline_;
 };
 
 class radius_filter : public filter_impl
