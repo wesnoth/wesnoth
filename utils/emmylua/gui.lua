@@ -208,10 +208,11 @@ function gui.widget.add_item(widget, position) end
 ---Add an item to a heterogenous container widget
 ---@param widget widget
 ---@param category string
----@param position? integer
+---@param position integer
+---@param count integer
 ---@return widget
 ---@return integer
-function gui.widget.add_item_of_tpe(widget, category, position) end
+function gui.widget.add_item_of_tpe(widget, category, position, count) end
 
 ---Remove items from a container widget
 ---@param widget widget
