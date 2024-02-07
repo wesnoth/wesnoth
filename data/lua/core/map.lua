@@ -419,6 +419,12 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 		formula = function(formula)
 			return { "formula", formula }
 		end,
+		---Match any hex not on the playable area of the map,
+		---ie hexes on the border.
+		---@return terrain_filter_tag
+		onborder = function()
+			return { "onborder" }
+		end,
 	}
 
 	-- More map module stuff

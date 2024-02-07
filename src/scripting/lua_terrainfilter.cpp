@@ -572,7 +572,7 @@ public:
 };
 
 // todo: maybe invent a general macro for this string_switch implementation.
-enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, F_TERRAIN, F_RADIUS, F_FORMULA, F_CACHED };
+enum filter_keys { F_AND, F_OR, F_NAND, F_NOR, F_X, F_Y, F_FIND_IN, F_ADJACENT, F_TERRAIN, F_RADIUS, F_FORMULA, F_ONBORDER, F_CACHED };
 // todo: c++20: perhaps enable heterogenous lookup.
 static const std::unordered_map<std::string, filter_keys> keys {
 	{ "all", F_AND },
@@ -586,6 +586,7 @@ static const std::unordered_map<std::string, filter_keys> keys {
 	{ "terrain", F_TERRAIN },
 	{ "cached", F_CACHED },
 	{ "formula", F_FORMULA },
+	{ "onborder", F_ONBORDER },
 	{ "radius", F_RADIUS }
 };
 
@@ -631,6 +632,8 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, knows_set
 		return std::make_unique<cached_filter>(L, res_index, ks);
 	case F_FORMULA:
 		return std::make_unique<formula_filter>(L, res_index, ks);
+	case F_ONBORDER:
+		return std::make_unique<onborder_filter>(L, res_index, ks);
 	default:
 		throw "invalid filter key enum";
 	}
