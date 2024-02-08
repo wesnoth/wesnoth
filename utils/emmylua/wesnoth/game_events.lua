@@ -98,5 +98,5 @@ function wesnoth.game_events.remove(id) end
 function wesnoth.game_events.set_undoable(can_undo) end
 
 ---Add undo actions for the current event
----@param actions WML|fun(ctx):boolean The undo actions, either as ActionWML or a Lua function.
+---@param actions WML|fun(ctx) The undo actions, either as ActionWML or a Lua function.
 function wesnoth.game_events.add_undo_actions(actions) end
