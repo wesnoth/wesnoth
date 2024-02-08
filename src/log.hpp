@@ -53,7 +53,6 @@
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
 #include <optional>
-#include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
 #include <string>
 #include <utility>
 #include <ctime>

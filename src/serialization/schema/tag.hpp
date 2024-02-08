@@ -28,7 +28,6 @@
 #include <queue>
 
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/range/iterator.hpp>
 #include "config.hpp"
 #include "serialization/schema/key.hpp"
 

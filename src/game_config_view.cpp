@@ -17,8 +17,6 @@
 #include "config.hpp"
 #include "log.hpp"
 
-#include <boost/range/iterator_range.hpp>
-
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)

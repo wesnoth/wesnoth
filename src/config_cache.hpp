@@ -21,7 +21,6 @@
 #pragma once
 
 #include <cassert>
-#include <list>
 #include <memory>
 
 #include "serialization/preprocessor.hpp"
@@ -186,8 +185,6 @@ protected:
 
 	void set_force_invalid_cache(bool);
 };
-
-class fake_transaction;
 
 /**
  * Used to share macros between cache objects

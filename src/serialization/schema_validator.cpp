@@ -16,7 +16,6 @@
 #include "serialization/schema_validator.hpp"
 
 #include "filesystem.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
