@@ -116,11 +116,17 @@ function wesnoth.map.parse_bitmap(data) end
 ---@field replace_if_failed boolean
 ---@field use_old boolean
 
+---@class terrain_mask_options
+---@field is_odd? boolean
+---@field ignore_special_location? boolean
+---@field rules? terrain_mask_rule[]
+
 ---Overlays a terrain mask onto a map
 ---@param map terrain_map
 ---@param pivot location
 ---@param mask string
----@param options {is_odd?:boolean, ignore_special_location?:boolean, rules?:terrain_mask_rule[]}
+---@param options terrain_mask_options
+---@overload fun(map:terrain_map, pivot_x:integer, pivot_y:integer, mask:string, options:terrain_mask_options)
 function wesnoth.map.terrain_mask(map, pivot, mask, options) end
 
 ---@class label_info : location
