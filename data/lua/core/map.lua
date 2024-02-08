@@ -324,6 +324,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			end
 			return n
 		end,
+		---@diagnostic disable-next-line: redundant-return-value
 		__pairs = function(_) return pairs(wesnoth.current.map.special_locations) end,
 	}), 'Note: the length operator has been removed')
 

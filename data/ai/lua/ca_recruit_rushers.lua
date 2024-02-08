@@ -33,7 +33,7 @@ local function ca_castle_switch()
     -- Avoid going through the __cfg above every time the evaluation function
     -- is called if the castle switch CA does not exist
     local dummy_castle_switch = {}
-    function dummy_castle_switch:evaluation() return 0 end
+    function dummy_castle_switch:evaluation(cfg, data, filter_own, leader) return 0 end
     return dummy_castle_switch
 end
 
