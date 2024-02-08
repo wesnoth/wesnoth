@@ -232,7 +232,7 @@ function animator:clear() end
 ---@field value? number|number[]
 ---@field with_bars? boolean
 ---@field text? tstring
----@field color? color
+---@field color? color|color_list
 ---@field primary? unit_weapon
 ---@field secondary? unit_weapon
 

@@ -150,6 +150,11 @@ wesnoth.custom_synced_commands = {}
 ---@field g integer
 ---@field b integer
 ---@field a integer
+---@class color_list
+---@field [1] integer
+---@field [2] integer
+---@field [3] integer
+---@field [4] integer?
 ---@class color_range
 ---@field mid color
 ---@field min color

@@ -3,6 +3,9 @@
 ---@class location
 ---@field x integer
 ---@field y integer
+---@class loc_list
+---@field [1] integer
+---@field [2] integer
 
 ---@class location_triple : location
 ---@field value any
