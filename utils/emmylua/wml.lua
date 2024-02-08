@@ -22,6 +22,9 @@
 ---@field tag string
 ---@field contents WML
 
+---A table that can be used to look up WML variables, both scalar and containers.
+---@alias WMLVariableProxy table<string, string|number|boolean|WMLTable>
+
 ---@class wml
 ---@field all_variables WMLTable
 wml = {}

@@ -40,7 +40,7 @@
 ---@field faction_name tstring
 ---@field chose_random boolean
 ---@field lost boolean
----@field variables table<string, WML>
+---@field variables WMLVariableProxy
 ---@field __cfg WMLTable
 
 ---@class wesnoth.sides

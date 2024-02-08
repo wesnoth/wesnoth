@@ -98,7 +98,7 @@
 ---@field advances_to? string[]
 ---@field advancements? WMLTable[]
 ---@field status? table<string, boolean>
----@field variables? table<string, WML>
+---@field variables? WMLVariableProxy
 ---@field attacks? unit_weapon[]
 ---@field traits? string[]
 ---@field abilities? string[]

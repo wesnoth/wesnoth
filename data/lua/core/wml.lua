@@ -311,7 +311,6 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	end
 
 	-- Get and set variables via wml.variables[variable_path]
-	---@alias WMLVariableProxy table<string, string|number|boolean|WMLTable>
 	---@type WMLVariableProxy
 	wml.variables = setmetatable({}, {
 		__metatable = "WML variables",
