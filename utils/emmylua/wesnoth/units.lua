@@ -231,7 +231,7 @@ function animator:clear() end
 ---@field facing? location
 ---@field value? number|number[]
 ---@field with_bars? boolean
----@field text? tstring
+---@field text? tstring|number
 ---@field color? color|color_list
 ---@field primary? unit_weapon
 ---@field secondary? unit_weapon
@@ -239,7 +239,7 @@ function animator:clear() end
 ---Add a unit to the animation
 ---@param unit unit
 ---@param flag string
----@param hits boolean
+---@param hits "'hit'"|"'miss'"|"'kill'"
 ---@param params unit_animator_params
 function animator:add(unit, flag, hits, params) end
 
