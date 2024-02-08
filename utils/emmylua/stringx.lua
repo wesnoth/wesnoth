@@ -47,12 +47,14 @@ string.vformat = stringx.vformat
 ---Formats a list using natural language in the form "a, b, and c"
 ---@param empty tstring
 ---@param strings tstring[]
+---@return tstring
 function stringx.format_conjunct_list(empty, strings) end
 string.format_conjunct_list = stringx.format_conjunct_list
 
 ---Formats a list using natural language in the form "a, b, or c"
 ---@param empty tstring
 ---@param strings tstring[]
+---@return tstring
 function stringx.format_disjunct_list(empty, strings) end
 string.format_disjunct_list = stringx.format_disjunct_list
 
