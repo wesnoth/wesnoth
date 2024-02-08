@@ -21,7 +21,7 @@ res.quick_4mp_leaders = function(args)
 	end
 end
 
-res.turns_over_advantage = function()
+res.turns_over_advantage = function(title)
 	local show_turns_over_advantage = wml.variables["show_turns_over_advantage"]
 	if show_turns_over_advantage == nil then
 		show_turns_over_advantage = wesnoth.scenario.mp_settings and (wesnoth.scenario.mp_settings.mp_campaign == "")
@@ -97,6 +97,8 @@ res.turns_over_advantage = function()
 	-- if #winning_sides==0, then every side either has no units or has a negative score
 
 	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-	local a, b = gui.show_popup(_ "dialog^Turns Over", side_comparison)
+	title = title or _ "dialog^Turns Over"
+	local a, b = gui.show_popup(title, side_comparison)
+	return winning_sides
 end
 return res
