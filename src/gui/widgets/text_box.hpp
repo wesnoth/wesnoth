@@ -351,7 +351,7 @@ public:
 
 	t_string hint_text;
 	std::string hint_image;
-	
+
 	bool editable;
 };
 

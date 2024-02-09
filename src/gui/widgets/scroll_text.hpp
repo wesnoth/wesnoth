@@ -160,7 +160,7 @@ private:
 
 		if(multiline_text* widget = get_internal_text_box()) {
 			const SDL_Rect& visible_area = content_visible_area();
-			
+
 			if (widget->get_cursor_pos().x >= (widget->get_line_end_pos() - visible_area.w/2.0)) {
 				scroll_horizontal_scrollbar(scrollbar_base::END);
 			} else if (widget->get_cursor_pos().x < visible_area.w/2.0) {
@@ -168,7 +168,7 @@ private:
 			} else {
 				scroll_horizontal_scrollbar_by(widget->get_cursor_pos().x - visible_area.w/2.0);
 			}
-			
+
 			if (widget->get_cursor_pos().y >= (widget->get_text_end_pos().y - visible_area.h/2.0)) {
 				scroll_vertical_scrollbar(scrollbar_base::END);
 			} else if (widget->get_cursor_pos().y < visible_area.h/2.0) {

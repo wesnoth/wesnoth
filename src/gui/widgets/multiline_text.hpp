@@ -107,7 +107,7 @@ public:
 	{
 		return get_cursor_position(get_line_end_offset(line_num_)).x;
 	}
-	
+
 	point get_text_end_pos()
 	{
 		return get_cursor_position(get_length());
