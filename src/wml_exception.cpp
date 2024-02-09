@@ -78,16 +78,7 @@ std::string missing_mandatory_wml_key(
 		, const std::string& primary_value)
 {
 	utils::string_map symbols;
-	if(!section.empty()) {
-		if(section[0] == '[') {
-			symbols["section"] = section;
-		} else {
-			WRN_NG << __func__
-					<< " parameter 'section' should contain brackets."
-					<< " Added them.";
-			symbols["section"] = "[" + section + "]";
-		}
-	}
+	symbols["section"] = section;
 	symbols["key"] = key;
 	if(!primary_key.empty()) {
 		assert(!primary_value.empty());
