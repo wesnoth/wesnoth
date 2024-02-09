@@ -132,11 +132,12 @@ private:
 /**
  * Returns a standard message for a missing wml key.
  *
- * @param section                 The section is which the key should appear
- *                                (this should include the section brackets).
- *                                It may contain parent sections to make it
- *                                easier to find the wanted sections. They are
- *                                listed like [parent][child][section].
+ * @param section                 The section in which the key should appear.
+ *                                Shouldn't include leading or trailing brackets,
+ *                                as they're already in the translatable string;
+ *                                but if it has to include brackets in the middle,
+ *                                for example "parent][child][section", then it
+ *                                seems reasonable include the outer ones too.
  * @param key                     The omitted key.
  * @param primary_key             The primary key of the section.
  * @param primary_value           The value of the primary key (mandatory if
