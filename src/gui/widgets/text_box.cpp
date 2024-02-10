@@ -202,6 +202,7 @@ void text_box::update_canvas()
 		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
+		tmp.set_variable("editable", wfl::variant(is_editable()));
 
 		tmp.set_variable("cursor_offset",
 						 wfl::variant(get_cursor_position(start + length).x));
