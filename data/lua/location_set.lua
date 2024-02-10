@@ -11,11 +11,17 @@ local function revindex(p)
 	return x, p - x * 16384 - 2000
 end
 
----@alias location_set_operation fun(x:integer, y:integer, value:any):boolean
+---@alias location_set_operation fun(x:integer, y:integer, value:any):boolean|nil
 ---@alias location_set_resolver fun(x:integer, y:integer, old:any, new:any):any
+
 ---A set of locations, with an optional associated value for each one.
----@class location_set
+---@class location_set : { [location]: any }
 ---@field values table<integer, any>
+---@operator bnot:location_set
+---@operator band:location_set
+---@operator bor:location_set
+---@operator bxor:location_set
+---@operator sub:location_set
 local methods = {}
 local locset_meta = {}
 
@@ -101,8 +107,8 @@ function methods:clear()
 end
 
 ---Look up a location in the set
----@overload fun(x:integer, y:integer):any
----@overload fun(loc:location):any
+---@overload fun(set:location_set, x:integer, y:integer):any
+---@overload fun(set:location_set, loc:location):any
 function methods:get(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -404,7 +410,7 @@ end
 
 ---Store the set in a WML variable
 ---@param name string
----@param mode "'always_clear'"|"'append'"|"'replace'"
+---@param mode? "'always_clear'"|"'append'"|"'replace'"
 function methods:to_wml_var(name, mode)
 	mode = mode or "always_clear"
 	local is_explicit_index = name[-1] == "]"

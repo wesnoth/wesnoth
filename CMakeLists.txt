@@ -70,7 +70,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # forbid defaulting to gnu++NN instead of c++NN
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(OpenSSL 3.0 REQUIRED)
+find_package(OpenSSL 1.0 REQUIRED)
 
 if(APPLE)
 	find_library(APPKIT_LIBRARY AppKit REQUIRED)
@@ -189,6 +189,18 @@ if(NOT MSVC)
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
+	endif()
+
+	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU"
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 14)
+		# GCC-13 added this new warning, and included it in -Wextra,
+		# however in GCC-13 it has a lot of false positives.
+		#
+		# It's likely to generate false postives with GCC-14 too, but
+		# I'm using a narrow version check as GCC-14 is still in dev.
+		# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Wno-dangling-reference")
 	endif()
 
 ### Set strict compiler flags.

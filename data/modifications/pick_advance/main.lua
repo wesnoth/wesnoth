@@ -142,6 +142,9 @@ function pickadvance.pick_advance(unit)
 	if dialog_result.is_game_override then
 		local key = "pickadvance_side" .. unit.side .. "_" .. orig_options_sanitized
 		wml.variables[key] = table.concat(dialog_result.game_override, ",")
+		for _, u in ipairs(wesnoth.units.find_on_map{side=unit.side, type=unit.type}) do
+			set_advances(u, dialog_result.unit_override)
+		end
 	end
 end
 

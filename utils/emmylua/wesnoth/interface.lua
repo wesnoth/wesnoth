@@ -2,7 +2,8 @@
 
 ---Freeze the game for a specified time
 ---@param ms number
-function wesnoth.interface.delay(ms) end
+---@param accel? boolean Whether to apply the current acceleration factor
+function wesnoth.interface.delay(ms, accel) end
 
 ---Deselect the active hex, if any
 function wesnoth.interface.deselect_hex() end
@@ -15,8 +16,10 @@ function wesnoth.interface.highlight_hex(loc) end
 ---Animate a floating label on a hex
 ---@param loc location
 ---@param text tstring
+---@param color? color|string
 ---@overload fun(x:integer, y:integer, text:tstring)
-function wesnoth.interface.float_label(loc, text) end
+---@overload fun(x:integer, y:integer, text:tstring, color:color|string)
+function wesnoth.interface.float_label(loc, text, color) end
 
 ---Get the currently-selected unit, the one displayed in the sidebar
 ---@return unit
@@ -63,7 +66,7 @@ function wesnoth.interface.scroll(dx, dy) end
 function wesnoth.interface.zoom(factor, relative) end
 
 ---Set the skip messages flag
----@param skip boolean
+---@param skip? boolean
 function wesnoth.interface.skip_messages(skip) end
 
 ---Check if messages are being skipped
@@ -71,8 +74,9 @@ function wesnoth.interface.skip_messages(skip) end
 function wesnoth.interface.is_skipping_messages() end
 
 ---Add a message to the onscreen chat
----@param speaker? string
+---@param speaker string
 ---@param message string
+---@overload fun(message:string)
 function wesnoth.interface.add_chat_message(speaker, message) end
 
 ---Clear all messages in the onscreen chat
@@ -81,16 +85,16 @@ function wesnoth.interface.clear_chat_messages() end
 ---@alias horizontal_align "'left'"|"'center'"|"'right'"
 ---@alias vertical_align "'top'"|"'center'"|"'bottom'"
 ---@class overlay_text_options
----@field size integer The default font size
----@field max_width integer|string The maximum width in which to display the text, as either a pixel width or a percentage (a string ending in %); if longer, it will be word-wrapped
----@field color string|integer[] The default text colour as either a hex string or an RGB triple
----@field bgcolor string|integer[] The default background colour as either a hex string or an RGB triple; the default is no background (fully transparent)
----@field bgalpha integer Alpha value for the background, in the range [0,255]; defaults to 255 if a bgcolor is specified
----@field duration integer|"'unlimited'" How long the text should be displayed, in milliseconds
----@field fade_time integer This is how long it takes to fade out when the label is removed, either explicitly or because the duration expired
----@field location location The screen location of the text, relative to the specified anchor (default: center of the screen)
----@field halign horizontal_align How the text should be anchored horizontally to the screen
----@field valign vertical_align How the text should be anchored vertically to the screen
+---@field size? integer The default font size
+---@field max_width? integer|string The maximum width in which to display the text, as either a pixel width or a percentage (a string ending in %); if longer, it will be word-wrapped
+---@field color? string|integer[] The default text colour as either a hex string or an RGB triple
+---@field bgcolor? string|integer[] The default background colour as either a hex string or an RGB triple; the default is no background (fully transparent)
+---@field bgalpha? integer Alpha value for the background, in the range [0,255]; defaults to 255 if a bgcolor is specified
+---@field duration? integer|"'unlimited'" How long the text should be displayed, in milliseconds
+---@field fade_time? integer This is how long it takes to fade out when the label is removed, either explicitly or because the duration expired
+---@field location? location The screen location of the text, relative to the specified anchor (default: center of the screen)
+---@field halign? horizontal_align How the text should be anchored horizontally to the screen
+---@field valign? vertical_align How the text should be anchored vertically to the screen
 
 ---Add overlay text on the screen
 ---@param text string|tstring The text to display. Supports Pango markup.
@@ -128,5 +132,5 @@ function wesnoth.interface.color_adjust(red, green, blue) end
 ---@param duration integer How long the fade takes to apply, in milliseconds
 function wesnoth.interface.screen_fade(color, duration) end
 
----@type table<string, fun()>
+---@type table<string, fun():WML>
 wesnoth.game_display = {}

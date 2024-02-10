@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -199,7 +199,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
 
-		resize_needed = !content_resize_request();
+		resize_needed = !content_resize_request(true);
 	}
 
 	if(resize_needed) {

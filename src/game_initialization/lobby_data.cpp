@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -205,7 +205,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		mod_info.emplace_back(cfg["name"].str(), true);
 		info_stream << ' ' << mod_info.back().first;
 
-		if(cfg["require_modification"].to_bool(false)) {
+		if(cfg["require_modification"].to_bool(true)) {
 			if(auto mod = game_config.find_child("modification", "id", cfg["id"])) {
 				addon_req result = check_addon_version_compatibility(*mod, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -253,7 +253,7 @@ static int impl_vconfig_get(lua_State *L)
 		}
 		for (int j = 1; i != i_end; ++i, ++j)
 		{
-			lua_createtable(L, 2, 0);
+			luaW_push_namedtuple(L, {"tag", "contents"});
 			lua_pushstring(L, i.get_key().c_str());
 			lua_rawseti(L, -2, 1);
 			luaW_pushvconfig(L, i.get_child());

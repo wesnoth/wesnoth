@@ -1,11 +1,13 @@
 ---@meta
 
+---@alias WMLValue number | boolean | string | tstring
+
 ---A WML table is a table consisting of an array part and string keys.
 ---
 ---String key values can be any of number | boolean | string | (string|boolean|number)[]
 ---
 ---Array values are of type WMLTag
----@class WMLTable
+---@class WMLTable : { [string]: WMLValue | WMLValue[], [integer]: WMLTag }
 ---A read-only WML table that auto-substitutes WML variables when read.
 ---@class vconfig
 ---@field __literal WMLTable
@@ -97,6 +99,11 @@ function wml.interpolate(vcfg, vars) end
 ---@param cfg WML
 ---@return vconfig
 function wml.tovconfig(cfg) end
+
+---Evaluates a table of ConditionalWML
+---@param cfg WML
+---@return boolean
+function wml.eval_conditional(cfg) end
 
 ---@deprecated
 ---@return WMLTable

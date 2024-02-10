@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,9 +17,7 @@
 #include "filesystem.hpp"
 
 #include <algorithm>
-#include <iomanip>
 #include <iterator>
-#include <fstream>
 #include <locale>
 #include <map>
 #include <boost/locale.hpp>

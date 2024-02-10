@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1029,7 +1029,7 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int /*leve
 		for (const std::string &variation_id : type.variations()) {
 			// TODO: Do we apply encountered stuff to variations?
 			const unit_type &var_type = type.get_variation(variation_id);
-			const std::string topic_name = var_type.type_name() + "\n" + var_type.variation_name();
+			const std::string topic_name = var_type.variation_name();
 			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
 
 			topic var_topic(topic_name, var_ref, "");

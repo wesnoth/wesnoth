@@ -202,9 +202,7 @@ Important switches include:
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant
-                    binaries will be copied with -debug suffix
     build=profile   build with instrumentation for a supported profiler
-                    binaries will be copied with -profile suffix
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -331,6 +329,15 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 if "gcc" in env["TOOLS"]:
     env.AppendUnique(CCFLAGS = Split("-Wall -Wextra"))
     env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++" + env["cxx_std"]))
+
+    # GCC-13 added this new warning, and included it in -Wextra,
+    # however in GCC-13 it has a lot of false positives.
+    #
+    # It's likely to generate false postives with GCC-14 too, but
+    # I'm using a narrow version check as GCC-14 is still in dev.
+    # See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+    if "CXXVERSION" in env and env["CXXVERSION"].startswith("13."):
+      env.AppendUnique(CXXFLAGS = "-Wno-dangling-reference")
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
@@ -688,9 +695,6 @@ if env["use_srcdir"] == True:
 else:
     build_dir = os.path.join("$build_dir", build)
 
-if build == "release" : build_suffix = ""
-else                  : build_suffix = "-" + build
-Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
 binary_nodes = [eval(binary) for binary in binaries]
@@ -786,7 +790,8 @@ if not access(fifodir, F_OK):
     env.Alias("install-wesnothd", fifodir)
 if env["systemd"]:
     env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.service", "lib/systemd/system")
-    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.tmpfiles.conf", "lib/tmpfiles.d")
+    env.InstallData("prefix", "wesnothd", "#packaging/systemd/wesnothd.sysusers.conf", "lib/sysusers.d")
 
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
@@ -795,7 +800,7 @@ env.InstallBinary(campaignd)
 install = env.Alias('install', [])
 for installable in ('wesnoth',
                     'wesnothd', 'campaignd'):
-    if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
+    if os.path.exists(installable) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
 
 #

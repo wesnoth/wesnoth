@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -26,9 +26,6 @@
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>
-#include <cstring>
-#include <deque>
-#include <functional>
 #include <istream>
 
 static lg::log_domain log_config("config");

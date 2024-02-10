@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,8 +16,6 @@
 #include "game_config_view.hpp"
 #include "config.hpp"
 #include "log.hpp"
-
-#include <boost/range/iterator_range.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)

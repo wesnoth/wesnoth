@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2023
+	Copyright (C) 2005 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,7 +21,6 @@
 
 #include "serialization/binary_or_text.hpp"
 
-#include "config.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "wesconfig.h"

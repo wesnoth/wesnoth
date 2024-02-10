@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2023-01-05 16:34+0200\n"
+"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"PO-Revision-Date: 2024-01-21 14:30+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2322,7 +2322,7 @@ msgid " (Press ‘$hotkey’ for more information)"
 msgstr "(Paina '$hotkey' tietääksesi enemmän)"
 
 #. [button]: id=search
-#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:446
+#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
 msgid "Search"
 msgstr "Etsi"
 
@@ -2443,7 +2443,7 @@ msgstr "Viestitys"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:459 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:601 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2465,10 +2465,8 @@ msgstr "Profiili"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Ylennykset"
+msgstr "Saavutukset"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2477,10 +2475,8 @@ msgstr "Vahvista"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Uudelleennimeä"
+msgstr "Käyttäjänimi:"
 
 #. [label]
 #. [grid]
@@ -2685,10 +2681,8 @@ msgstr "Sivusto:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -2762,8 +2756,6 @@ msgstr "Lisäosamanageri"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Lisäosan tiedot"
 
@@ -4083,10 +4075,8 @@ msgstr "Loki:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Kuvankaappaus"
+msgstr "Kuvakaappaukset:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:171
@@ -4142,19 +4132,17 @@ msgstr "Kopioi koko raportti leikepöydälle"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Avaa lokitiedosto"
+msgstr "Lokitiedosto"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Avaa lokitiedoston, joka saattaa sisältää hyödyllistä virhetilatietoa"
+msgstr ""
+"Avaa nykyisen istunnon lokitiedoston, joka saattaa sisältää hyödyllistä vian "
+"etsintä tietoa."
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4256,10 +4244,8 @@ msgstr "Ladataan..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Yleiset"
+msgstr "Yleinen aula"
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:86
@@ -4359,7 +4345,7 @@ msgstr "Asetukset"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Otteluhistoria"
 
@@ -5051,7 +5037,7 @@ msgstr "Peliaula"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
 msgid "Waiting for players to join..."
 msgstr "Odotetaan pelaajien liittyvän..."
 
@@ -5076,7 +5062,7 @@ msgid "Login:"
 msgstr "Käyttäjänimi:"
 
 #. [button]: id=replay_download
-#: data/gui/window/mp_match_history.cfg:144
+#: data/gui/window/mp_match_history.cfg:159
 #, fuzzy
 #| msgid "Downloads"
 msgid "Download"
@@ -5084,15 +5070,34 @@ msgstr "Latauksia"
 
 #. [label]: id=players
 #. [label]: id=modifications
-#: data/gui/window/mp_match_history.cfg:161
-#: data/gui/window/mp_match_history.cfg:178
+#: data/gui/window/mp_match_history.cfg:185
+#: data/gui/window/mp_match_history.cfg:223
 #, fuzzy
 #| msgid "None"
 msgid "None"
 msgstr "tyhjää"
 
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:375
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:388
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "Pelaajia:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "Muunnelmat"
+
 #. [label]
-#: data/gui/window/mp_match_history.cfg:328
+#: data/gui/window/mp_match_history.cfg:450
 #, fuzzy
 #| msgid "Players:"
 msgid "Player:"
@@ -5101,44 +5106,25 @@ msgstr "Pelaajia:"
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
 #. [text_box]: id=search_content
-#: data/gui/window/mp_match_history.cfg:340
-#: data/gui/window/mp_match_history.cfg:382
-#: data/gui/window/mp_match_history.cfg:406
+#: data/gui/window/mp_match_history.cfg:462
+#: data/gui/window/mp_match_history.cfg:506
+#: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:351
+#: data/gui/window/mp_match_history.cfg:474
 #, fuzzy
 #| msgid "Content"
 msgid "Content Type:"
 msgstr "Sisältö"
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:370
+#: data/gui/window/mp_match_history.cfg:494
 #, fuzzy
 #| msgid "Team name:"
 msgid "Game name:"
 msgstr "Joukkueen nimi:"
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:561
-msgid "Info"
-msgstr ""
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:574
-#, fuzzy
-#| msgid "Players:"
-msgid "Players"
-msgstr "Pelaajia:"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:587
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
-msgid "Modifications"
-msgstr "Muunnelmat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7390,7 +7376,7 @@ msgid "lua console"
 msgstr "lua-konsoli"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
 msgid "Random"
 msgstr "Satunnainen"
 
@@ -7594,7 +7580,7 @@ msgid "empty"
 msgstr "tyhjä"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
 msgid "this game"
 msgstr "tämä peli"
 
@@ -7608,11 +7594,11 @@ msgstr "Aula"
 msgid "Game"
 msgstr "Pelit"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to choose factions..."
 msgstr "Odotetaan pelaajien ryhmien valintaa..."
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:48
 msgid "The End"
 msgstr "Loppu"
 

@@ -520,6 +520,8 @@ function ai_helper.split(str, sep)
     return fields
 end
 
+ai_helper.split = wesnoth.deprecate_api('ai_helper.split', 'stringx.split', 3, '1.20', ai_helper.split)
+
 --------- Location set related helper functions ----------
 
 function ai_helper.get_LS_xy(index)
@@ -698,7 +700,7 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
     if (param_core ~= '') then param_loc = param_core .. '_loc' end
     local cfg_loc = cfg[param_loc]
     if cfg_loc then
-        local loc_ids = ai_helper.split(cfg_loc, ",")
+        local loc_ids = stringx.split(cfg_loc, ",")
         for _,loc_id in ipairs(loc_ids) do
             local tmp_cfg = {}
             tmp_cfg[param_loc] = loc_id
@@ -712,8 +714,8 @@ function ai_helper.get_multi_named_locs_xy(param_core, cfg, required_for)
     if (param_core ~= '') then param_x, param_y = param_core .. '_x', param_core .. '_y' end
     local cfg_x, cfg_y = cfg[param_x], cfg[param_y]
     if cfg_x and cfg_y then
-        local xs = ai_helper.split(cfg_x, ",")
-        local ys = ai_helper.split(cfg_y, ",")
+        local xs = stringx.split(cfg_x, ",")
+        local ys = stringx.split(cfg_y, ",")
         if (#xs ~= #ys) then
             wml.error("Coordinate lists need to have same number of elements: " .. param_x .. ' and ' .. param_y)
         end

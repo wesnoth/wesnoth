@@ -11,9 +11,9 @@ end
 
 ---Read a location from the front of a variable argument list.
 ---@alias read_location_count
----| '0' #Indicates no location was found.
----| '1' #A location-like object was found - either an array of two integers, or a table or userdata with x and y keys.
----| '2' #Two integer arguments were found and interpreted as the x and y coordinates respectively.
+---| 0 #Indicates no location was found.
+---| 1 #A location-like object was found - either an array of two integers, or a table or userdata with x and y keys.
+---| 2 #Two integer arguments were found and interpreted as the x and y coordinates respectively.
 ---@return location|nil #The location, if one was found, or nil otherwise
 ---@return read_location_count count #The number of arguments used to extract the location.
 function wesnoth.map.read_location(...)
@@ -92,9 +92,9 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 
 	---Iterate over on-map hexes adjacent to a given hex.
 	---@param map terrain_map
-	---@return fun()
-	---@overload fun(map:terrain_map, loc:location)
-	---@overload fun(map:terrain_map, x:integer, y:integer)
+	---@return fun():integer?,integer?
+	---@overload fun(map:terrain_map, loc:location) : fun():integer?,integer?
+	---@overload fun(map:terrain_map, x:integer, y:integer) : fun():integer?,integer?
 	function wesnoth.map.iter_adjacent(map, ...)
 		local where, n = wesnoth.map.read_location(...)
 		if n == 0 then error('wesnoth.map.iter_adjacent: missing location') end
@@ -116,9 +116,7 @@ end
 
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---Represents a reference to a single hex on the map
-	---@class terrain_hex
-	---@field x integer
-	---@field y integer
+	---@class terrain_hex : location
 	---@field fogged boolean Whether the hex is fogged
 	---@field shrouded boolean Whether the hex is shrouded
 	---@field team_label? string|tstring The label on this hex visible to the current team
@@ -250,7 +248,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	---Get a label placed by a specific side
 	---@param who integer
-	---@return label_info
+	---@return label_info?
 	function hex_methods:label_for(who)
 		return wesnoth.map.get_label(self.x, self.y, who)
 	end
@@ -374,9 +372,9 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 			return { "notall", ... }
 		end,
 		---Match adjacent hexes
-		---@param f terrain_filter
-		---@param adj direction[]
-		---@param count integer|string A range list
+		---@param f terrain_filter_tag
+		---@param adj? direction[]|string
+		---@param count? integer|string A range list
 		---@return terrain_filter_tag
 		adjacent =  function(f, adj, count)
 			return { "adjacent",  f, adjacent = adj, count = count }
@@ -391,7 +389,7 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 		---Match hexes within a given distance
 		---@param r integer
 		---@param f terrain_filter_tag
-		---@param f_r terrain_filter_tag
+		---@param f_r? terrain_filter_tag
 		---@return terrain_filter_tag
 		radius =  function(r, f, f_r)
 			return { "radius", r, f, filter_radius = f_r}

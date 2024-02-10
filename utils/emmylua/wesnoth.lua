@@ -10,6 +10,10 @@ function wesnoth.kernel_type() end
 function wesnoth.dofile(path, ...) end
 
 ---@class tstring : string
+tstring = {}
+
+tstring.format = string.format
+tstring.vformat = stringx.vformat
 
 ---Constructs a textdomain, which can be called to create translatable strings.
 ---@param domain string The textdomain name
@@ -17,7 +21,7 @@ function wesnoth.dofile(path, ...) end
 function wesnoth.textdomain(domain) end
 
 ---Logs a message to the console
----@param logger "'info'"|"'debug'"|"'warning'"|"'error'"|"'wml'"
+---@param logger "'info'"|"'debug'"|"'dbg'"|"'warning'"|"'warn'"|"'wrn'"|"'error'"|"'err'"|"'wml'"
 ---@param message string
 ---@param in_chat? boolean
 ---@overload fun(message:string, in_chat?:boolean)
@@ -32,6 +36,9 @@ function wesnoth.log(logger, message, in_chat) end
 ---@return stats_evaluation defender_stats
 ---@return weapon_evaluation attacker_weapon
 ---@return weapon_evaluation defender_weapon
+---@overload fun(attacker:unit, defender:unit):stats_evaluation,stats_evaluation,weapon_evaluation,weapon_evaluation
+---@overload fun(attacker:unit, attacker_weapon:integer, defender:unit):stats_evaluation,stats_evaluation,weapon_evaluation,weapon_evaluation
+---@overload fun(attacker:unit, defender:unit, defender_weapon:integer):stats_evaluation,stats_evaluation,weapon_evaluation,weapon_evaluation
 function wesnoth.simulate_combat(attacker, attacker_weapon, defender, defender_weapon) end
 
 ---@class stats_evaluation
@@ -73,13 +80,15 @@ function wesnoth.name_generator(type, definition) end
 ---@return fun():string
 function wesnoth.name_generator(type, definition, chain_size, max_length) end
 
+---@alias formula fun(variables:WML):any
+
 ---Compile a WFL formula into a Lua function
 ---@param formula string A WFL formula
----@return fun(variables:WML):any
+---@return formula
 function wesnoth.compile_formula(formula) end
 
 ---Evaluate a WFL formula
----@param formula string A WFL formula
+---@param formula string|formula A WFL formula
 ---@param variables WML Table defining WFL variables.
 ---@return any
 function wesnoth.eval_formula(formula, variables) end
@@ -119,7 +128,7 @@ function wesnoth.ms_since_init() end
 
 ---Output a deprecated message
 ---@param element_name string The name of the element being deprecated
----@param level '1'|'2'|'3'|'4' The deprecation level
+---@param level 1|2|3|4 The deprecation level
 ---@param version string|nil The earliest version the element may be removed in
 ---@param detail_message string An additional message describing the deprecation and usually indicating a replacement
 function wesnoth.deprecated_message(element_name, level, version, detail_message) end
@@ -208,6 +217,7 @@ wesnoth.races = {}
 ---@field turns integer
 ---@field next string|nil
 ---@field id string
+---@field name tstring
 ---@field defeat_music string[]
 ---@field victory_music string[]
 ---@field show_credits boolean

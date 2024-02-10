@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2023
+	Copyright (C) 2015 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -176,7 +176,6 @@ void replay_controller::play_side_impl()
 				if(res == REPLAY_FOUND_END_TURN) {
 					return;
 				}
-				// TODO: how can this be the case when we just checked for "resources::recorder->at_end()" above?
 				if(res == REPLAY_RETURN_AT_END) {
 					stop_replay();
 				}

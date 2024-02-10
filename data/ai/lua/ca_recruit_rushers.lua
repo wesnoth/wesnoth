@@ -150,13 +150,13 @@ local function analyze_enemy_unit(enemy_type, ally_type)
                             defense = tonumber(mod.value) or 0
                         end
                     elseif mod.add then
-                        defense = defense + tonumber(mod.add) or 0
+                        defense = defense + (tonumber(mod.add) or 0)
                     elseif mod.sub then
-                        defense = defense - tonumber(mod.sub) or 0
+                        defense = defense - (tonumber(mod.sub) or 0)
                     elseif mod.multiply then
-                        defense = defense * tonumber(mod.multiply) or 0
+                        defense = defense * (tonumber(mod.multiply) or 0)
                     elseif mod.divide then
-                        defense = defense / tonumber(mod.divide) or 0
+                        defense = defense / (tonumber(mod.divide) or 1)
                     end
                 end
 
@@ -169,7 +169,7 @@ local function analyze_enemy_unit(enemy_type, ally_type)
                     if tonumber(mod.multiply) then
                         special_multiplier = special_multiplier * tonumber(mod.multiply)
                     end
-                    if tonumber(mod.divide) then
+                    if tonumber(mod.divide) and tonumber(mod.divide) ~= 0 then
                         special_multiplier = special_multiplier / tonumber(mod.divide)
                     end
                     if tonumber(mod.add) then

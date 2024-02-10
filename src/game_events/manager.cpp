@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -208,18 +208,14 @@ void manager::execute_on_events(const std::string& event_id, manager::event_func
 {
 	const std::string standardized_event_id = event_handlers::standardize_name(event_id);
 	const game_data* gd = resources::gamedata;
-	auto& active_handlers = event_handlers_->get_active();
-
-	// Save the end outside the loop so the end point remains constant,
-	// even if new events are added to the queue.
-	const unsigned saved_end = active_handlers.size();
-
+	// Copy the list so that new events added during processing are not executed.
+	auto active_handlers = event_handlers_->get_active();
 
 	{
 		// Ensure that event handlers won't be cleaned up while we're iterating them.
 		event_handler_list_lock lock;
 
-		for (unsigned i = 0; i < saved_end; ++i) {
+		for (unsigned i = 0; i < active_handlers.size(); ++i) {
 			handler_ptr handler = nullptr;
 
 			try {

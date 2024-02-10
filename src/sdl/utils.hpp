@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -257,7 +257,7 @@ surface rotate_90_surface(const surface &surf, bool clockwise);
 surface flip_surface(const surface &surf);
 surface flop_surface(const surface &surf);
 
-SDL_Rect get_non_transparent_portion(const surface &surf);
+surface get_non_transparent_portion(const surface &surf);
 
 /**
  * Helper methods for setting/getting a single pixel in an image.

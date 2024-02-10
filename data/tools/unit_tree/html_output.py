@@ -957,9 +957,15 @@ class HTMLOutput:
                                         sname = T(special, "name")
                                         if sname:
                                             s.append(sname)
+                                accuracy = attack.get_text_val("accuracy", default="0")
+                                parry = attack.get_text_val("parry", default="0")
+                                if accuracy != "0":
+                                    s.append("accuracy "+accuracy+"%")
+                                if parry != "0":
+                                    s.append("parry "+parry+"%")
+                                if s:
                                     s = ", ".join(s)
-                                    if s:
-                                        write(" (%s)" % cleantext(s, quote=False))
+                                    write(" (%s)" % cleantext(s, quote=False))
                             write('</div>')
 
                         write('</div>')
@@ -1232,9 +1238,12 @@ class HTMLOutput:
                         sname = T(special, "name")
                         if sname:
                             s.append(cleantext(sname, quote=False))
-                        else:
-                            error_message("Warning: Weapon special %s has no name for %s.\n" %
-                                          (special.name.decode("utf8"), uid))
+                accuracy = attack.get_text_val("accuracy", default="0")
+                parry = attack.get_text_val("parry", default="0")
+                if accuracy != "0":
+                    s.append(cleantext("accuracy "+accuracy+"%"))
+                if parry != "0":
+                    s.append(cleantext("parry "+parry+"%"))
                 if s:
                     write('<td>(%s)</td>' % ', '.join(s))
                 write('</tr>')

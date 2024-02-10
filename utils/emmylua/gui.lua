@@ -60,8 +60,8 @@ function gui.show_popup(title, message, image) end
 ---| "'yes_no'" #Two buttons labelled Yes and No
 ---@param title tstring A title string for the dialog
 ---@param message tstring The message to show
----@param button string|gui_prompt_button_type The button label
----@param markup boolean Whether to parse Pango markup
+---@param button? string|gui_prompt_button_type The button label
+---@param markup? boolean Whether to parse Pango markup
 ---@return boolean #false if No or Cancel was clicked, otherwise true
 function gui.show_prompt(title, message, button, markup) end
 
@@ -208,10 +208,11 @@ function gui.widget.add_item(widget, position) end
 ---Add an item to a heterogenous container widget
 ---@param widget widget
 ---@param category string
----@param position? integer
+---@param position integer
+---@param count integer
 ---@return widget
 ---@return integer
-function gui.widget.add_item_of_tpe(widget, category, position) end
+function gui.widget.add_item_of_type(widget, category, position, count) end
 
 ---Remove items from a container widget
 ---@param widget widget

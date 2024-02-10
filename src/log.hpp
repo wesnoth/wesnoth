@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2023
+	Copyright (C) 2004 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -53,7 +53,6 @@
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
 #include <optional>
-#include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
 #include <string>
 #include <utility>
 #include <ctime>
