@@ -426,7 +426,7 @@ builder_text_box::builder_text_box(const config& cfg)
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
-	, editable(cfg["editable"].to_bool())
+	, editable(cfg["editable"].to_bool(true))
 {
 }
 
