@@ -417,7 +417,15 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
 {
 	if (game_display_) {
-		return lua_gui2::show_gamestate_inspector(luaW_checkvconfig(L, 1), gamedata(), game_state_);
+		vconfig cfg = vconfig::unconstructed_vconfig();
+		std::string name;
+		if(luaW_tovconfig(L, 1, cfg)) {
+			name = cfg["name"].str();
+			deprecated_message("gui.show_inspector(cfg)", DEP_LEVEL::INDEFINITE, {1, 19, 0}, "Instead of {name = 'title' }, pass just 'title'.");
+		} else {
+			name = luaL_optstring(L, 1, "");
+		}
+		return lua_gui2::show_gamestate_inspector(name, gamedata(), game_state_);
 	}
 	return 0;
 }

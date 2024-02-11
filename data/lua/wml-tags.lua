@@ -751,7 +751,7 @@ function wml_actions.remove_event(cfg)
 end
 
 function wml_actions.inspect(cfg)
-	gui.show_inspector(cfg)
+	gui.show_inspector(cfg.name)
 end
 
 function wml_actions.label( cfg )
