@@ -367,9 +367,8 @@ void manager::try_modifications(const std::vector<std::string>& ids, bool force)
 	}
 }
 
-void manager::try_modification_by_index(int index, bool activate, bool force)
+void manager::try_modification_by_id(const std::string& id, bool activate, bool force)
 {
-	std::string id = depinfo_.mandatory_child("modification", index)["id"];
 	std::vector<std::string> mods_copy = mods_;
 
 	if(activate) {
