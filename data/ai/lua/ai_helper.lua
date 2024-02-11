@@ -1155,6 +1155,8 @@ function ai_helper.get_units_with_moves(filter, exclude_guardians)
         exclude_status = exclude_status .. ',guardian'
     end
     return wesnoth.units.find_on_map {
+        -- TODO: Should this also check for a case where the unit can't move because of terrain?
+        -- That is, all adjacent terrains have a movement cost higher than the unit's moves left.
         wml.tag["and"] { formula = "moves > 0" },
         wml.tag["not"] { status = exclude_status },
         wml.tag["and"] ( filter )
@@ -2087,6 +2089,7 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
             x, y = x.x, x.y
         end
     end
+    -- TODO: Use read_location above (and in many other places as well)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
@@ -2534,6 +2537,7 @@ function ai_helper.get_unit_time_of_day_bonus(alignment, lawful_bonus)
         elseif (alignment == 'chaotic') then
             multiplier = (1 - lawful_bonus / 100.)
         elseif (alignment == 'liminal') then
+            -- TODO: I think this is wrong?
             multiplier = (1 - math.abs(lawful_bonus) / 100.)
         end
     end
