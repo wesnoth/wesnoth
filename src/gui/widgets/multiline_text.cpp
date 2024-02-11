@@ -361,8 +361,6 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	offset += get_selection_length();
 
-	scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-
 	if (offset <= get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
@@ -391,8 +389,6 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 	}
 
 	offset += get_selection_length();
-
-	scroll_vert_ = scrollbar_base::HALF_JUMP_BACKWARDS;
 
 	/* offset is unsigned int */
 	if (offset <= get_length()) {

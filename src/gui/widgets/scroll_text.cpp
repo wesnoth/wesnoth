@@ -130,59 +130,37 @@ void scroll_text::finalize_subclass()
 	text->set_label(get_label());
 	text->set_text_alignment(text_alignment_);
 	text->set_use_markup(get_use_markup());
-	connect_signal_notify_modified(*text, std::bind(&scroll_text::refresh, this));
 }
 
-void scroll_text::refresh() {
-	multiline_text* text = get_internal_text_box();
-	assert(text);
+void scroll_text::place(const point& origin, const point& size) {
+	scrollbar_container::place(origin, size);
 
-	if (text->scroll_horiz_ == scrollbar_base::BEGIN) {
-		scroll_horizontal_scrollbar(text->scroll_horiz_);
-		text->scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
-	} else if (text->scroll_horiz_ == scrollbar_base::END) {
-		// scroll to the end of line instead of end of scrolling range
-		// cursor is already set at the end of the line by multiline_text
-		const point& cursor_pos = text->get_cursor_pos();
-		scroll_horizontal_scrollbar_by(cursor_pos.x - 10);
-
-		text->scroll_horiz_ = scrollbar_base::HALF_JUMP_BACKWARDS;
-	} else {
-		const point& cursor_pos = text->get_cursor_pos();
+	if(multiline_text* widget = get_internal_text_box()) {
 		const SDL_Rect& visible_area = content_visible_area();
-		int line_end_pos = text->get_line_end_pos();
-		int scrollbar_width = vertical_scrollbar()->get_size().x;
 
-		if (text->scroll_horiz_ == scrollbar_base::HALF_JUMP_FORWARD) {
-			if (cursor_pos.x > visible_area.w - scrollbar_width) {
-				scroll_horizontal_scrollbar_by(text->get_char_width());
-			}
+		if (widget->get_cursor_pos().x < visible_area.w/2.0) {
+			scroll_horizontal_scrollbar(scrollbar_base::BEGIN);
 		} else {
-			if (cursor_pos.x < line_end_pos - visible_area.w + scrollbar_width) {
-				scroll_horizontal_scrollbar_by(-static_cast<int>(text->get_char_width()));
-			}
+			scroll_horizontal_scrollbar_by(widget->get_cursor_pos().x - visible_area.w/2.0);
 		}
-	}
 
-	if (text->scroll_vert_ == scrollbar_base::BEGIN
-			|| text->scroll_vert_ == scrollbar_base::END) {
-		scroll_vertical_scrollbar(text->scroll_vert_);
-		text->scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-	} else {
-		if (text->get_line_no() > 1) {
-			//scroll_vertical_scrollbar(text->scroll_vert_);
-			if (text->scroll_vert_ == scrollbar_base::HALF_JUMP_FORWARD) {
-				scroll_vertical_scrollbar_by(text->get_line_height());
+		if (widget->get_cursor_pos().y >= (widget->get_text_end_pos().y - visible_area.h/2.0)) {
+			if (widget->get_lines_count() > 1) {
+				scroll_vertical_scrollbar(scrollbar_base::END);
 			} else {
-				scroll_vertical_scrollbar_by(-static_cast<int>(text->get_line_height()));
+				scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 			}
-		} else if (text->get_line_no() > text->get_lines_count() - 1) {
-			scroll_vertical_scrollbar(scrollbar_base::END);
+		} else if (widget->get_cursor_pos().y < visible_area.h/2.0) {
+			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		} else {
+			scroll_vertical_scrollbar_by(widget->get_cursor_pos().y - visible_area.h/2.0);
+		}
+
+		if (widget->get_length() == 0) {
+			scroll_horizontal_scrollbar(scrollbar_base::BEGIN);
 			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		}
 	}
-	get_window()->queue_redraw();
 }
 
 void scroll_text::set_can_wrap(bool can_wrap)

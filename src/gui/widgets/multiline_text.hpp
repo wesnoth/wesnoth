@@ -113,28 +113,6 @@ public:
 		return get_cursor_position(get_length());
 	}
 
-	unsigned get_char_width()
-	{
-		unsigned offset = get_selection_start();
-		if (scroll_horiz_ == scrollbar_base::HALF_JUMP_FORWARD) {
-			return offset < get_length()
-				? get_cursor_position(offset+1).x - get_cursor_position(offset).x
-				: get_cursor_position(offset).x - get_cursor_position(offset-1).x;
-		} else {
-			return offset > 0
-				? get_cursor_position(offset).x - get_cursor_position(offset-1).x
-				: get_cursor_position(offset+1).x - get_cursor_position(offset).x;
-		}
-	}
-
-	unsigned get_line_height()
-	{
-		return get_cursor_position(0, 1).y - get_cursor_position(0, 0).y;
-	}
-
-	scrollbar_base::scroll_mode scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
-	scrollbar_base::scroll_mode scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-
 protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -150,11 +128,6 @@ protected:
 	void insert_char(const std::string& unicode) override
 	{
 		text_box_base::insert_char(unicode);
-
-		if (unicode == "\n") {
-			scroll_vert_ = scrollbar_base::HALF_JUMP_FORWARD;
-		}
-
 		update_layout();
 	}
 
@@ -188,25 +161,14 @@ protected:
 	void goto_end_of_data(const bool select = false) override
 	{
 		text_box_base::goto_end_of_data(select);
-
-		if (get_lines_count() > 1) {
-			scroll_vert_ = scrollbar_base::END;
-		} else {
-			// Only one line of text in this case
-			scroll_horiz_ = scrollbar_base::END;
-			scroll_vert_ = scrollbar_base::BEGIN;
-		}
-
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		update_layout();
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_start_of_data(const bool select = false) override
 	{
 		text_box_base::goto_start_of_data(select);
-		scroll_vert_ = scrollbar_base::BEGIN;
-
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		update_layout();
 	}
 
 	/** Inherited from text_box_base. */
@@ -317,8 +279,7 @@ private:
 	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override
 	{
 		text_box_base::handle_key_left_arrow(modifier, handled);
-		scroll_horiz_ = scrollbar_base::HALF_JUMP_BACKWARDS;
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		update_layout();
 	}
 
 	/**
@@ -332,8 +293,7 @@ private:
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override
 	{
 		text_box_base::handle_key_right_arrow(modifier, handled);
-		scroll_horiz_ = scrollbar_base::HALF_JUMP_FORWARD;
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		update_layout();
 	}
 
 	/**
