@@ -116,6 +116,7 @@ function wesnoth.units.advance(unit, animate, fire_events) end
 
 ---Creates a copy of the unit
 ---@param unit unit
+---@return unit
 function wesnoth.units.clone(unit) end
 
 ---Erases the unit from the map

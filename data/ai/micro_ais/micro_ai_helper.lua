@@ -228,7 +228,7 @@ end
 
 ---Delete the aspects defined in aspect_parms from the AI of the specified side.
 ---@param side integer The side to modify.
----@param aspect_parms ai_parm[] The aspects to delete.
+---@param aspect_parms aspect_parm[] The aspects to delete.
 function micro_ai_helper.delete_aspects(side, aspect_parms)
     for _,parms in ipairs(aspect_parms) do
         wesnoth.sides.delete_ai_component(side, "aspect[attacks].facet[" .. parms.facet.id .. "]")

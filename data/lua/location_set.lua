@@ -129,8 +129,8 @@ function methods:insert(...)
 end
 
 ---Remove a location from the set
----@overload fun(x:integer, y:integer)
----@overload fun(loc:location|unit)
+---@overload fun(self:location_set, x:integer, y:integer)
+---@overload fun(self:location_set, loc:location|unit)
 function methods:remove(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then

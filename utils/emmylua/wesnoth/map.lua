@@ -225,7 +225,7 @@ function wesnoth.map.generate(width, height, options) end
 ---@param height integer
 ---@param options heightgen_options
 ---@return table<integer, integer>
-function wesnoth.map.generate(width, height, options) end
+function wesnoth.map.generate_height_map(width, height, options) end
 
 ---Get the hex reached by travelling in the specified direction
 ---@param from location
