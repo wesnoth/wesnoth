@@ -30,7 +30,6 @@
 #include <boost/iostreams/tee.hpp>
 
 #include <map>
-#include <sstream>
 #include <ctime>
 #include <mutex>
 #include <iostream>

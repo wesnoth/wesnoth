@@ -16,17 +16,11 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/drawing.hpp"
-
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
-
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "gettext.hpp"
 #include "wml_exception.hpp"
-
-#include <functional>
 
 namespace gui2
 {

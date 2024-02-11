@@ -21,10 +21,7 @@
 #include "utils/math.hpp"
 #include "game_version.hpp"
 
-#include <SDL2/SDL.h>
-
 #include <cstdlib>
-#include <map>
 #include <string>
 
 namespace sdl

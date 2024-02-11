@@ -17,8 +17,6 @@
 #include "actions/move.hpp" //get_village
 #include "resources.hpp"
 #include "team.hpp"
-#include "log.hpp"
-#include "units/udisplay.hpp"
 #include "game_board.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"

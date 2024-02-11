@@ -16,7 +16,6 @@
 #include "achievements.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "serialization/parser.hpp"

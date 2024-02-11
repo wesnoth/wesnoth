@@ -21,8 +21,6 @@
 #pragma once
 
 struct map_location;
-class  replay;
-class  unit;
 
 #include "units/map.hpp"
 #include "game_events/fwd.hpp"

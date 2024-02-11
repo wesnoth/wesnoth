@@ -19,7 +19,6 @@
  */
 
 #include "sdl/utils.hpp"
-#include "sdl/rect.hpp"
 #include "color.hpp"
 #include "log.hpp"
 #include "xBRZ/xbrz.hpp"

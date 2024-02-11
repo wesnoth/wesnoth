@@ -16,9 +16,7 @@
 #include "sdl/window.hpp"
 
 #include "sdl/exception.hpp"
-#include "sdl/input.hpp"
 #include "sdl/surface.hpp"
-#include "sdl/utils.hpp"
 
 #include <SDL2/SDL_render.h>
 
