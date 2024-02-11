@@ -252,7 +252,7 @@ end
 ---@param y integer
 ---@param move_type string
 ---@return ai_result
-function ai_helper.checked_move_core(ai, unit, x, y, move_type)
+local function checked_move_core(ai, unit, x, y, move_type)
     local check = ai.check_move(unit, x, y)
 
     if (not check.ok) then
@@ -278,7 +278,7 @@ end
 ---@param y integer
 ---@return ai_result
 function ai_helper.checked_move_full(ai, unit, x, y)
-    return ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
+    return checked_move_core(ai, unit, x, y, 'ai.move_full')
 end
 
 ---Check if a move is viable, and execute it if it is.
@@ -289,7 +289,7 @@ end
 ---@param y integer
 ---@return ai_result
 function ai_helper.checked_move(ai, unit, x, y)
-    return ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
+    return checked_move_core(ai, unit, x, y, 'ai.move')
 end
 
 ---Check if a recruit is viable, and execute it if it is.
@@ -2305,7 +2305,7 @@ end
 ---@param combos table?
 ---@param attacks ai_attack[]
 ---@return table<integer, integer>[]
-function add_next_attack_combo_level(combos, attacks)
+local function add_next_attack_combo_level(combos, attacks)
     -- Important: function needs to make a copy of the input array, otherwise original is changed
 
     -- Set up the array, if this is the first recursion level
@@ -2344,7 +2344,7 @@ function add_next_attack_combo_level(combos, attacks)
 
     local combos_next_level = {}
     if combos_this_level[1] then  -- If moves were found for this level, also find those for the next level
-        combos_next_level = ai_helper.add_next_attack_combo_level(combos_this_level, attacks)
+        combos_next_level = add_next_attack_combo_level(combos_this_level, attacks)
     end
 
     -- Finally, combine this level and next level combos
@@ -2373,7 +2373,7 @@ function ai_helper.get_attack_combos_full(units, enemy, cfg)
     if (not attacks[1]) then return {} end
 
     -- This recursive function does all the work:
-    local combos = ai_helper.add_next_attack_combo_level(nil, attacks)
+    local combos = add_next_attack_combo_level(nil, attacks)
 
     return combos
 end
