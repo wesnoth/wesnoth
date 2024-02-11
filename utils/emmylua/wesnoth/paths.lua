@@ -27,6 +27,11 @@ wesnoth.paths = {}
 ---@overload fun(x1:integer, y1:integer, finish:location, calc:path_function):location[],integer
 ---@overload fun(start:location, x2:integer, y2:integer, calc:path_function):location[],integer
 ---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer, calc:path_function):location[],integer
+-- Mapgen overloads
+---@overload fun(start:location, finish:location, location, calc:path_function, width:integer, height:integer):location[],integer
+---@overload fun(x1:integer, y1:integer, finish:location, location, calc:path_function, width:integer, height:integer):location[],integer
+---@overload fun(start:location, x2:integer, y2:integer, location, calc:path_function, width:integer, height:integer):location[],integer
+---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer, location, calc:path_function, width:integer, height:integer):location[],integer
 function wesnoth.paths.find_path(start, finish, options) end
 
 ---Find a vacant hex as close as possible
