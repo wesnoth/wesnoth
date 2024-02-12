@@ -174,6 +174,16 @@ public:
 	point get_cursor_position(
 		const unsigned column, const unsigned line = 0) const;
 
+	/**
+	 * Gets the correct number of columns to move the cursor
+	 * from Pango. Needed in case the text contains multibyte
+	 * characters. Return value == column if the text has no
+	 * multibyte characters.
+	 *
+	 * @param column              The column offset of the cursor.
+	 *
+	 * @returns                   Corrected column offset.
+	 */
 	int get_byte_offset(const unsigned column) const;
 
 	/**
@@ -228,6 +238,12 @@ public:
 	 */
 	std::vector<std::string> get_lines() const;
 
+	/**
+	 * Get number of lines in the text.
+	 *
+	 * @returns                   The number of lines in the text.
+	 *
+	 */
 	unsigned get_lines_count() const { return pango_layout_get_line_count(layout_.get()); };
 
 	/**
@@ -288,8 +304,8 @@ public:
 	* Mark a specific portion of text for highlighting. Used for selection box.
 	* BGColor is set in set_text(), this just marks the area to be colored.
 	* Markup not used because the user may enter their own markup or special characters
-	* @param start_offset        Offset where selection/highlight starts
- 	* @param end_offset          Offset where selection/highlight ends
+	* @param start_offset        Column offset of the cursor where selection/highlight starts
+ 	* @param end_offset          Column offset of the cursor where selection/highlight ends
  	* @param color               Highlight color
 	*/
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)

@@ -543,7 +543,7 @@ private:
 
 public:
 	/** To be called after the scollbar moves manually (by pixel) to move the viewport.
-	 *  Shitfs the viewport origin pixels_x left and pixels_y right.*/
+	 *  Shifts the viewport origin pixels_x left and pixels_y right.*/
 	void move_viewport(const int pixels_x, const int pixels_y);
 
 	/** Static type getter that does not rely on the widget being constructed. */

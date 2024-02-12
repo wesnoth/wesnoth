@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2023 - 2024
 	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -139,7 +139,7 @@ spinner_definition::spinner_definition(const config& cfg)
 spinner_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum state_t is spinner.hpp.
+	// Note the order should be the same as the enum state_t is spinbox.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll label control")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll label control")));
 

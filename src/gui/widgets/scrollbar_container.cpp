@@ -27,7 +27,6 @@
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
 
-#include <iostream>
 #include <algorithm>
 #include <functional>
 

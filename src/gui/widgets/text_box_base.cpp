@@ -24,8 +24,6 @@
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
 
-#include <iostream>
-
 #include <functional>
 
 #include <limits>
@@ -661,6 +659,8 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
 
+//	TODO: check if removing the following check causes any side effects
+//	To be removed if there aren't any text rendering problems.
 //			if(!is_composing()) {
 //				return;
 //			}
