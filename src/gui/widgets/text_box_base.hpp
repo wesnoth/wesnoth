@@ -67,7 +67,7 @@ public:
 
 	/**
 	 * Wrapper function, returns length of the text in pango column offsets.
-	 * See @ref pango_text::get_length.
+	 * See @ref font::pango_text::get_length.
 	 */
 	std::size_t get_length() const
 	{
@@ -76,7 +76,7 @@ public:
 
 	/**
 	 * Wrapper function, returns a vector with the lines.
-	 * See @ref pango_text::get_lines.
+	 * See @ref font::pango_text::get_lines.
 	 */
 	std::vector<std::string> get_lines()
 	{
@@ -85,7 +85,7 @@ public:
 
 	/**
 	 * Wrapper function, return number of lines.
-	 * See @ref pango_text::get_lines_count.
+	 * See @ref font::pango_text::get_lines_count.
 	 */
 	unsigned get_lines_count() const
 	{
@@ -94,7 +94,7 @@ public:
 
 	/**
 	 * Wrapper function, returns corrected column offset from pango.
-	 * See @ref pango_text::get_byte_offset.
+	 * See @ref font::pango_text::get_byte_offset.
 	 */
 	int get_byte_offset(const unsigned column) const
 	{
@@ -104,7 +104,7 @@ public:
 	/**
 	 * Wrapper function, sets the area between column start and end
 	 * offset to be highlighted in a specific color.
-	 * See @ref pango_text::set_highlight_area.
+	 * See @ref font::pango_text::set_highlight_area.
 	 */
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 	{

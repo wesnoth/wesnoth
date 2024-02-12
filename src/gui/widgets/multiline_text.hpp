@@ -47,6 +47,7 @@ struct builder_multiline_text;
  * -------------|------------------------------------|---------|-----------
  * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the text box.
  * history      | @ref guivartype_string "string"    |""       |The name of the history for the text box. A history saves the data entered in a text box between the games. With the up and down arrow it can be accessed. To create a new history item just add a new unique name for this field and the engine will handle the rest.
+ * editable     | @ref guivartype_bool "bool"        |"true"   |If the contents of the text box can be edited.
  */
 class multiline_text : public text_box_base
 {
