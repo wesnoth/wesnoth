@@ -375,7 +375,6 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 			pango_attr_list_insert(attribute_list, attr);
 
 			pango_layout_set_attributes(layout_.get(), attribute_list);
-			//pango_attr_list_unref(attribute_list);
 		}
 
 		if(markedup) {
