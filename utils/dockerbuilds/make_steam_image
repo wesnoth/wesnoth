@@ -1,4 +1,6 @@
-#!/bin/sh -xe
+#!/bin/sh
+
+set -xeu
 
 VALVEFILE=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-sniper-sysroot.Dockerfile
 VALVETAR=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-sniper-sysroot.tar.gz
