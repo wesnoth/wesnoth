@@ -39,9 +39,11 @@ From the repository root, change directory to the lua submodule, and checkout ve
         $ cd src/modules/lua
         $ git checkout tags/v5.4.4
 
-## 4) Update SCons and CMake
+## 4) Update SCons, CMake, and CI
 
 In CMakeLists.txt, update `set(Lua_FIND_VERSION_MAJOR 5)` and `set(Lua_FIND_VERSION_MINOR 4)`. In SConstruct, update `lua_ver = "5.4"` (i.e. "MAJOR.MINOR").
+
+In .github/workflows/codeql.yml, update `liblua5.4-dev`.
 
 Remember to review the source kit for added and removed files, and change the SCons and CMake configuration, as needed.
 Both build systems' build lists are in `~/wesnoth/source_lists/lua`.
