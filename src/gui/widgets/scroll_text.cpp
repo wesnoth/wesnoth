@@ -217,7 +217,7 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 	if (horizontal_scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
 		horizontal_scrollbar_mode = scrollbar_container::AUTO_VISIBLE;
 	}
-	
+
 	if (vertical_scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
 		vertical_scrollbar_mode = scrollbar_container::AUTO_VISIBLE;
 	}
