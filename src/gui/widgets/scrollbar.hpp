@@ -179,13 +179,13 @@ public:
 		return pixels_per_step_;
 	}
 
-protected:
-	void finalize_setup();
-
 	unsigned get_positioner_offset() const
 	{
 		return positioner_offset_;
 	}
+
+protected:
+	void finalize_setup();
 
 	unsigned get_positioner_length() const
 	{
