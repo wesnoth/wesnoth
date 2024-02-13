@@ -29,7 +29,7 @@ namespace dialogs
  * Key               |Type              |Mandatory|Description
  * ------------------|------------------|---------|-----------
  * name              | text_box         |yes      |The name of the add-on displayed on the UI.
- * description       | text_box         |yes      |The add-on's description.
+ * description       | scroll_text      |yes      |The add-on's description.
  * icon              | text_box         |yes      |The add-on's icon.
  * author            | text_box         |yes      |The author of the add-on. When using forum_auth, this must be a forum username.
  * version           | text_box         |yes      |The add-on's version.
