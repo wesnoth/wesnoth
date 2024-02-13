@@ -54,11 +54,17 @@ struct builder_spinner;
  * ID (return value)|Type                            |Default  |Description
  * -----------------|--------------------------------|---------|-----------
  * _content_grid    | @ref guivartype_grid "grid"    |mandatory|A grid which should contain a text_box and two buttons.
- * _prev            | @ref guivartype_button "button"|mandatory|The previous button, clicking on it decreases value by 1.
- * _next            | @ref guivartype_button "button"|mandatory|The next button, clicking on it increases value by 1.
+ *
+ * Description of necessary widgets contained inside _content_grid :
+ *
+ * ID (return value)|Type                            |Default  |Description
+ * -----------------|--------------------------------|---------|-----------
+ * _text            | @ref gui2::text_box            |mandatory|The text_box that shows the value.
+ * _prev            | @ref gui2::button              |mandatory|The previous button, clicking on it decreases value by 1.
+ * _next            | @ref gui2::button              |mandatory|The next button, clicking on it increases value by 1.
  * The following states exist:
- * * state_enabled - the scroll label is enabled.
- * * state_disabled - the scroll label is disabled.
+ * * state_enabled - the spinner is enabled.
+ * * state_disabled - the spinner is disabled.
  */
 class spinner : public container_base
 {

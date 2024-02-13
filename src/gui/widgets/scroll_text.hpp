@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2023 - 2024
 	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,8 +40,7 @@ struct builder_scroll_text;
  *
  * Scrollable text area
  *
- * This version shows a scrollbar if the text gets too long and has some scrolling features.
- * In general this widget is slower as the normal label so the normal label should be preferred.
+ * A multiline text area that shows a scrollbar if the text gets too long.
  *
  * Key          |Type                        |Default  |Description
  * -------------|----------------------------|---------|-----------
@@ -51,16 +50,23 @@ struct builder_scroll_text;
  *
  * ID (return value)|Type                        |Default  |Description
  * -----------------|----------------------------|---------|-----------
- * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one label widget.
+ * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one multiline_text widget.
  * _scrollbar_grid  | @ref guivartype_grid "grid"|mandatory|A grid for the scrollbar (Merge with listbox info.)
+ *
+ * Description of necessary widgets contained inside _content_grid :
+ *
+ * ID (return value)|Type                            |Default  |Description
+ * -----------------|--------------------------------|---------|-----------
+ * _text            | @ref gui2::text_box            |mandatory|The text_box that shows the value.
  * The following states exist:
- * * state_enabled - the scroll label is enabled.
- * * state_disabled - the scroll label is disabled.
- * List with the scroll label specific variables:
+ * * state_enabled - the scroll text is enabled.
+ * * state_disabled - the scroll text is disabled.
+ * List with the scrollbar container specific variables:
  * Key                      |Type                                            |Default     |Description
  * -------------------------|------------------------------------------------|------------|-----------
  * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
  * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
+ * editable                 | @ref guivartype_bool "bool"                    |"true"      |If the contents of included multiline_text can be edited.
  */
 class scroll_text : public scrollbar_container
 {
