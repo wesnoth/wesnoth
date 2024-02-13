@@ -42,8 +42,8 @@ struct builder_spinner;
  *
  * Spinner widget.
  *
- * This version shows a scrollbar if the text gets too long and has some scrolling features.
- * In general this widget is slower as the normal label so the normal label should be preferred.
+ * A widget with a text_box and two button (named _prev and _next) that allows user to increase
+ * or decrease the numeric value inside the text_box. Non-numeric values are considered as zero.
  *
  * Key          |Type                        |Default  |Description
  * -------------|----------------------------|---------|-----------
@@ -51,9 +51,11 @@ struct builder_spinner;
  *
  * TODO: we need one definition for a vertical scrollbar since this is the second time we use it.
  *
- * ID (return value)|Type                        |Default  |Description
- * -----------------|----------------------------|---------|-----------
- * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one label widget.
+ * ID (return value)|Type                            |Default  |Description
+ * -----------------|--------------------------------|---------|-----------
+ * _content_grid    | @ref guivartype_grid "grid"    |mandatory|A grid which should contain a text_box and two buttons.
+ * _prev            | @ref guivartype_button "button"|mandatory|The previous button, clicking on it decreases value by 1.
+ * _next            | @ref guivartype_button "button"|mandatory|The next button, clicking on it increases value by 1.
  * The following states exist:
  * * state_enabled - the scroll label is enabled.
  * * state_disabled - the scroll label is disabled.

@@ -15,7 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/spinbox.hpp"
+#include "gui/widgets/spinner.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/repeating_button.hpp"
@@ -139,7 +139,7 @@ spinner_definition::spinner_definition(const config& cfg)
 spinner_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum state_t is spinbox.hpp.
+	// Note the order should be the same as the enum state_t is spinner.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll label control")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll label control")));
 
