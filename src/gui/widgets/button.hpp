@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/clickable_item.hpp"
@@ -135,8 +134,6 @@ struct button_definition : public styled_widget_definition
 };
 
 // }---------- BUILDER -----------{
-
-class styled_widget;
 
 namespace implementation
 {

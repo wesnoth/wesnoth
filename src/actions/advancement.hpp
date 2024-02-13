@@ -19,19 +19,14 @@
 
 #pragma once
 
-struct map_location;
-class  team;
 class  unit;
 class  config;
 
 #include "map/location.hpp"
-#include "units/attack_type.hpp"
 #include "units/ptr.hpp"
-#include "units/race.hpp"
 #include "utils/variant.hpp"
 
 #include <string>
-#include <vector>
 
 /**
 	advances the unit at loc if it has enough experience, maximum 20 times.

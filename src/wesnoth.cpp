@@ -19,7 +19,6 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
-#include "editor/editor_main.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -37,18 +36,14 @@
 #include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
-#include "picture.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
-#include "preferences/general.hpp"      // for core_id, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp" // for exception
-#include "sdl/rect.hpp"
 #include "serialization/binary_or_text.hpp" // for config_writer
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
-#include "serialization/unicode_cast.hpp"
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "formula/string_utils.hpp" // VGETTEXT
@@ -125,12 +120,6 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-
-class end_level_exception;
-namespace game
-{
-struct error;
-}
 
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)

@@ -22,7 +22,6 @@
 
 #pragma once
 
-#include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"
 #include "units/ptr.hpp"
 #include "units/unit_alignments.hpp"
