@@ -326,9 +326,9 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 
 void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 {
-	if (is_editable() && ((modifier & KMOD_SHIFT)||(modifier == 0))) {
-		handled = true;
+	if (is_editable() && !(modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
 		insert_char("\n");
+		handled = true;
 	}
 }
 
@@ -490,9 +490,7 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 {
 	auto widget = std::make_unique<multiline_text>(*this);
 
-
 	widget->set_editable(editable);
-//	widget->set_can_wrap(wrap);
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);
 
