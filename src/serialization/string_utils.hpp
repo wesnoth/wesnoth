@@ -98,6 +98,8 @@ void split_foreach(std::string_view s, char sep, const int flags, const F& f)
 std::vector<std::string> split(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 std::set<std::string> split_set(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
+std::vector<std::string_view> split_view(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+
 /**
  * This function is identical to split(), except it does not split when it otherwise would if the
  * previous character was identical to the parameter 'quote' (i.e. it does not split quoted commas).

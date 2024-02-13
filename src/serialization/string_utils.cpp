@@ -99,6 +99,15 @@ std::set<std::string> split_set(std::string_view s, char sep, const int flags)
 	return res;
 }
 
+std::vector<std::string_view> split_view(std::string_view s, const char sep, const int flags)
+{
+	std::vector<std::string_view> res;
+	split_foreach(s, sep, flags, [&](std::string_view item) {
+		res.push_back(item);
+	});
+	return res;
+}
+
 std::vector<std::string> square_parenthetical_split(const std::string& val,
 		const char separator, const std::string& left,
 		const std::string& right,const int flags)
