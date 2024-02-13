@@ -6,4 +6,4 @@ Update cmake/FindLua.cmake from <https://gitlab.kitware.com/cmake/cmake/-/raw/ma
 
 In CMakeLists.txt, update `set(Lua_FIND_VERSION_MAJOR 5)` and `set(Lua_FIND_VERSION_MINOR 4)`. In SConstruct, update `lua_ver = "5.4"`.
 
-In .github/workflows/codeql.yml, update `liblua5.4-dev`.
+In .github/workflows/codeql.yml and utils/dockerbuilds/CI/Dockerfile-base-2204-master, update `liblua5.4-dev`.
