@@ -30,7 +30,6 @@
 #include "wml_exception.hpp"
 
 #include <functional>
-#include <iostream>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -47,6 +46,8 @@ scroll_text::scroll_text(const implementation::builder_scroll_text& builder)
 	, state_(ENABLED)
 	, wrap_on_(false)
 	, text_alignment_(builder.text_alignment)
+	, editable_(true)
+	, max_size_(point(0,0))
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&scroll_text::signal_handler_left_button_down, this, std::placeholders::_2),
@@ -134,8 +135,9 @@ void scroll_text::finalize_subclass()
 
 void scroll_text::place(const point& origin, const point& size) {
 	scrollbar_container::place(origin, size);
+	multiline_text* widget = get_internal_text_box();
 
-	if(multiline_text* widget = get_internal_text_box()) {
+	if(widget) {
 		const SDL_Rect& visible_area = content_visible_area();
 
 		if (widget->get_cursor_pos().x < visible_area.w/2.0) {
@@ -161,6 +163,8 @@ void scroll_text::place(const point& origin, const point& size) {
 			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		}
 	}
+	
+	set_max_size(widget->get_config_default_size());
 }
 
 void scroll_text::set_can_wrap(bool can_wrap)
