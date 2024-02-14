@@ -884,8 +884,9 @@ void display::create_buttons()
 		return;
 	}
 
-	menu_buttons_.clear();
-	action_buttons_.clear();
+	// Keep the old buttons around until we're done so we can check the previous state.
+	std::vector<std::shared_ptr<gui::button>> menu_work;
+	std::vector<std::shared_ptr<gui::button>> action_work;
 
 	DBG_DP << "creating menu buttons...";
 	for(const auto& menu : theme_.menus()) {
@@ -906,7 +907,7 @@ void display::create_buttons()
 			b->enable(b_prev->enabled());
 		}
 
-		menu_buttons_.push_back(std::move(b));
+		menu_work.push_back(std::move(b));
 	}
 
 	DBG_DP << "creating action buttons...";
@@ -927,13 +928,16 @@ void display::create_buttons()
 			}
 		}
 
-		action_buttons_.push_back(std::move(b));
+		action_work.push_back(std::move(b));
 	}
 
 	if (prevent_draw_) {
 		// buttons start hidden in this case
 		hide_buttons();
 	}
+
+	menu_buttons_ = std::move(menu_work);
+	action_buttons_ = std::move(action_work);
 
 	layout_buttons();
 	DBG_DP << "buttons created";
