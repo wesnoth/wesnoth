@@ -619,7 +619,7 @@ REGISTER_MOD_PARSER(TC, args)
 
 	const int side_n = utils::from_chars<int>(params[0]).value_or(-1);
 	if(side_n < 1) {
-		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function";
+		ERR_DP << "Invalid side (" << params[0] << ") passed to the ~TC() function";
 		return nullptr;
 	}
 
