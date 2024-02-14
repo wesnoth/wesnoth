@@ -143,7 +143,7 @@ private:
 	PangoAlignment text_alignment_;
 
 	bool editable_;
-	
+
 	point max_size_;
 
 	void finalize_subclass() override;
@@ -164,23 +164,23 @@ private:
 	}
 
 	void place(const point& origin, const point& size);
-	
+
 	/** See @ref widget::calculate_best_size. */
 	point calculate_best_size() const override
 	{
 		point calc_size = scrollbar_container::calculate_best_size();
-		
+
 		if ((calc_size.x > max_size_.x) && (max_size_.x != 0)) {
 			calc_size.x = max_size_.x;
 		}
-		
+
 		if ((calc_size.y > max_size_.y) && (max_size_.y != 0)) {
 			calc_size.y = max_size_.y;
 		}
-		
+
 		return calc_size;
 	}
-	
+
 	void set_max_size(point max_size)
 	{
 		/***** get vertical scrollbar size *****/
@@ -192,7 +192,7 @@ private:
 		const point horizontal_scrollbar = get_horizontal_scrollbar_grid()->get_visible() == widget::visibility::invisible
 			? point()
 			: get_horizontal_scrollbar_grid()->get_best_size();
-		
+
 		// padding = 3
 		max_size_ = point(max_size.x + vertical_scrollbar.x + 3, max_size.y + horizontal_scrollbar.y + 3);
 	}

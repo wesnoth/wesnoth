@@ -163,7 +163,7 @@ void scroll_text::place(const point& origin, const point& size) {
 			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		}
 	}
-	
+
 	set_max_size(widget->get_config_default_size());
 }
 
