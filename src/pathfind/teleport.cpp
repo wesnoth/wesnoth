@@ -18,7 +18,6 @@
 #include "display_context.hpp"
 #include "filter_context.hpp"
 #include "game_board.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
@@ -48,16 +47,16 @@ teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(cfg["re
 	VALIDATE(cfg.has_attribute("id"), missing_mandatory_wml_key("tunnel", "id"));
 	VALIDATE(cfg.has_attribute("reversed"), missing_mandatory_wml_key("tunnel", "reversed"));
 
-	VALIDATE(cfg_.child_count("source") == 1, _("The tunnel should have only one 'source' child."));
-	VALIDATE(cfg_.child_count("target") == 1, _("The tunnel should have only one 'target' child."));
-	VALIDATE(cfg_.child_count("filter") == 1, _("The tunnel should have only one 'filter' child."));
+	VALIDATE(cfg_.child_count("source") == 1, "The tunnel should have only one 'source' child.");
+	VALIDATE(cfg_.child_count("target") == 1, "The tunnel should have only one 'target' child.");
+	VALIDATE(cfg_.child_count("filter") == 1, "The tunnel should have only one 'filter' child.");
 }
 
 teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get_config()), reversed_(reversed), id_()
 {
-	VALIDATE(cfg_.child_count("source") == 1, _("The tunnel should have only one 'source' child."));
-	VALIDATE(cfg_.child_count("target") == 1, _("The tunnel should have only one 'target' child."));
-	VALIDATE(cfg_.child_count("filter") == 1, _("The tunnel should have only one 'filter' child."));
+	VALIDATE(cfg_.child_count("source") == 1, "The tunnel should have only one 'source' child.");
+	VALIDATE(cfg_.child_count("target") == 1, "The tunnel should have only one 'target' child.");
+	VALIDATE(cfg_.child_count("filter") == 1, "The tunnel should have only one 'filter' child.");
 	if (cfg["id"].empty()) {
 		id_ = resources::tunnels->next_unique_id();
 	} else {
