@@ -19,15 +19,21 @@
 namespace utils
 {
 template<typename T>
-std::optional<T> from_chars(std::string_view str)
+std::enable_if_t<std::is_integral_v<T>, std::optional<T>>
+from_chars(std::string_view str, int base = 10)
 {
 	T result {};
-	const auto [_, ec] = std::from_chars(str.data(), str.data() + str.size(), result);
-
-	if(ec == std::errc{}) {
-		return result;
-	} else {
-		return std::nullopt;
-	}
+	const auto [_, ec] = std::from_chars(str.data(), str.data() + str.size(), result, base);
+	return ec == std::errc{} ? std::make_optional(result) : std::nullopt;
 }
+
+template<typename T>
+std::enable_if_t<std::is_floating_point_v<T>, std::optional<T>>
+from_chars(std::string_view str, std::chars_format fmt = std::chars_format::general)
+{
+	T result {};
+	const auto [_, ec] = std::from_chars(str.data(), str.data() + str.size(), result, fmt);
+	return ec == std::errc{} ? std::make_optional(result) : std::nullopt;
+}
+
 } // namespace utils
