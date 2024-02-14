@@ -19,7 +19,6 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "picture.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
@@ -618,7 +617,7 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	const int side_n = lexical_cast_default<int>(params[0], -1);
+	const int side_n = utils::from_chars<int>(params[0]).value_or(-1);
 	if(side_n < 1) {
 		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function";
 		return nullptr;
@@ -724,27 +723,22 @@ REGISTER_MOD_PARSER(FL, args)
 REGISTER_MOD_PARSER(ROTATE, args)
 {
 	const auto slice_params = utils::split_view(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = slice_params.size();
 
-	switch(s) {
+	switch(slice_params.size()) {
 		case 0:
 			return std::make_unique<rotate_modification>();
-			break;
 		case 1:
 			return std::make_unique<rotate_modification>(
-				lexical_cast_default<int>(slice_params[0]));
-			break;
+				utils::from_chars<int>(slice_params[0]).value_or(0));
 		case 2:
 			return std::make_unique<rotate_modification>(
-				lexical_cast_default<int>(slice_params[0]),
-				lexical_cast_default<int>(slice_params[1]));
-			break;
+				utils::from_chars<int>(slice_params[0]).value_or(0),
+				utils::from_chars<int>(slice_params[1]).value_or(0));
 		case 3:
 			return std::make_unique<rotate_modification>(
-				lexical_cast_default<int>(slice_params[0]),
-				lexical_cast_default<int>(slice_params[1]),
-				lexical_cast_default<int>(slice_params[2]));
-			break;
+				utils::from_chars<int>(slice_params[0]).value_or(0),
+				utils::from_chars<int>(slice_params[1]).value_or(0),
+				utils::from_chars<int>(slice_params[2]).value_or(0));
 	}
 	return nullptr;
 }
@@ -894,13 +888,13 @@ REGISTER_MOD_PARSER(CS, args)
 
 	int r = 0, g = 0, b = 0;
 
-	r = lexical_cast_default<int>(factors[0]);
+	r = utils::from_chars<int>(factors[0]).value_or(0);
 
 	if(s > 1 ) {
-		g = lexical_cast_default<int>(factors[1]);
+		g = utils::from_chars<int>(factors[0]).value_or(0);
 	}
 	if(s > 2 ) {
-		b = lexical_cast_default<int>(factors[2]);
+		b = utils::from_chars<int>(factors[0]).value_or(0);
 	}
 
 	return std::make_unique<cs_modification>(r, g , b);
@@ -921,18 +915,18 @@ REGISTER_MOD_PARSER(BLEND, args)
 	const std::string_view::size_type p100_pos = opacity_str.find('%');
 
 	if(p100_pos == std::string::npos)
-		opacity = lexical_cast_default<float>(opacity_str);
+		opacity = utils::from_chars<float>(opacity_str).value_or(0.0f);
 	else {
 		// make multiplier
 		const std::string_view parsed_field = opacity_str.substr(0, p100_pos);
-		opacity = lexical_cast_default<float>(parsed_field);
+		opacity = utils::from_chars<float>(parsed_field).value_or(0.0f);
 		opacity /= 100.0f;
 	}
 
 	return std::make_unique<blend_modification>(
-		lexical_cast_default<int>(params[0]),
-		lexical_cast_default<int>(params[1]),
-		lexical_cast_default<int>(params[2]),
+		utils::from_chars<int>(params[0]).value_or(0),
+		utils::from_chars<int>(params[1]).value_or(0),
+		utils::from_chars<int>(params[2]).value_or(0),
 		opacity);
 }
 
@@ -949,16 +943,16 @@ REGISTER_MOD_PARSER(CROP, args)
 
 	SDL_Rect slice_rect { 0, 0, 0, 0 };
 
-	slice_rect.x = lexical_cast_default<int16_t, std::string_view>(slice_params[0]);
+	slice_rect.x = utils::from_chars<int16_t>(slice_params[0]).value_or(0);
 
 	if(s > 1) {
-		slice_rect.y = lexical_cast_default<int16_t, std::string_view>(slice_params[1]);
+		slice_rect.y = utils::from_chars<int16_t>(slice_params[1]).value_or(0);
 	}
 	if(s > 2) {
-		slice_rect.w = lexical_cast_default<uint16_t, std::string_view>(slice_params[2]);
+		slice_rect.w = utils::from_chars<int16_t>(slice_params[2]).value_or(0);
 	}
 	if(s > 3) {
-		slice_rect.h = lexical_cast_default<uint16_t, std::string_view>(slice_params[3]);
+		slice_rect.h = utils::from_chars<int16_t>(slice_params[3]).value_or(0);
 	}
 
 	return std::make_unique<crop_modification>(slice_rect);
@@ -991,8 +985,8 @@ REGISTER_MOD_PARSER(BLIT, args)
 	int x = 0, y = 0;
 
 	if(s == 3) {
-		x = lexical_cast_default<int>(param[1]);
-		y = lexical_cast_default<int>(param[2]);
+		x = utils::from_chars<int>(param[1]).value_or(0);
+		y = utils::from_chars<int>(param[2]).value_or(0);
 	}
 
 	const image::locator img(param[0]);
@@ -1019,8 +1013,8 @@ REGISTER_MOD_PARSER(MASK, args)
 	int x = 0, y = 0;
 
 	if(s == 3) {
-		x = lexical_cast_default<int>(param[1]);
-		y = lexical_cast_default<int>(param[2]);
+		x = utils::from_chars<int>(param[1]).value_or(0);
+		y = utils::from_chars<int>(param[2]).value_or(0);
 	}
 
 	if(x < 0 || y < 0) {
@@ -1063,10 +1057,10 @@ std::optional<point> parse_scale_args(std::string_view args)
 	}
 
 	point size{0, 0};
-	size.x = lexical_cast_default<int, std::string_view>(scale_params[0]);
+	size.x = utils::from_chars<int>(scale_params[0]).value_or(0);
 
 	if(s > 1) {
-		size.y = lexical_cast_default<int, std::string_view>(scale_params[1]);
+		size.y = utils::from_chars<int>(scale_params[1]).value_or(0);
 	}
 
 	return size;
@@ -1122,7 +1116,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	int z = lexical_cast_default<int, std::string_view>(args);
+	int z = utils::from_chars<int>(args).value_or(0);
 	if(z < 1 || z > 5) {
 		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
 	}
@@ -1135,7 +1129,7 @@ REGISTER_MOD_PARSER(XBRZ, args)
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
 {
-	const int depth = std::max<int>(0, lexical_cast_default<int>(args));
+	const int depth = std::max<int>(0, utils::from_chars<int>(args).value_or(0));
 	return std::make_unique<bl_modification>(depth);
 }
 
@@ -1145,11 +1139,11 @@ REGISTER_MOD_PARSER(O, args)
 	const std::string::size_type p100_pos = args.find('%');
 	float num = 0.0f;
 	if(p100_pos == std::string::npos) {
-		num = lexical_cast_default<float, std::string_view>(args);
+		num = utils::from_chars<float>(args).value_or(0.0f);
 	} else {
 		// make multiplier
 		const std::string_view parsed_field = args.substr(0, p100_pos);
-		num = lexical_cast_default<float, std::string_view>(parsed_field);
+		num = utils::from_chars<float>(parsed_field).value_or(0.0f);
 		num /= 100.0f;
 	}
 
@@ -1163,22 +1157,22 @@ REGISTER_MOD_PARSER(O, args)
 // Red component color-shift
 REGISTER_MOD_PARSER(R, args)
 {
-	const int r = lexical_cast_default<int>(args);
-	return std::make_unique<cs_modification>(r,0,0);
+	const int r = utils::from_chars<int>(args).value_or(0);
+	return std::make_unique<cs_modification>(r, 0, 0);
 }
 
 // Green component color-shift
 REGISTER_MOD_PARSER(G, args)
 {
-	const int g = lexical_cast_default<int>(args);
-	return std::make_unique<cs_modification>(0,g,0);
+	const int g = utils::from_chars<int>(args).value_or(0);
+	return std::make_unique<cs_modification>(0, g, 0);
 }
 
 // Blue component color-shift
 REGISTER_MOD_PARSER(B, args)
 {
-	const int b = lexical_cast_default<int>(args);
-	return std::make_unique<cs_modification>(0,0,b);
+	const int b = utils::from_chars<int>(args).value_or(0);
+	return std::make_unique<cs_modification>(0, 0, b);
 }
 
 REGISTER_MOD_PARSER(NOP, )
@@ -1206,7 +1200,7 @@ REGISTER_MOD_PARSER(BG, args)
 	const auto factors = utils::split_view(args, ',');
 
 	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
-		c[i] = lexical_cast_default<int>(factors[i]);
+		c[i] = utils::from_chars<int>(factors[i]).value_or(0);
 	}
 
 	return std::make_unique<background_modification>(color_t(c[0], c[1], c[2], c[3]));
