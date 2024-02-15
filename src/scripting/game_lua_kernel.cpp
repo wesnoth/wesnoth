@@ -1243,7 +1243,7 @@ static int intf_get_resource(lua_State *L)
 		return 1;
 	}
 	else {
-		return luaL_argerror(L, 1, ("Cannot find ressource with id '" + m + "'").c_str());
+		return luaL_argerror(L, 1, ("Cannot find resource with id '" + m + "'").c_str());
 	}
 }
 
