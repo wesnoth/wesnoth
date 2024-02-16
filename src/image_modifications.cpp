@@ -950,10 +950,10 @@ REGISTER_MOD_PARSER(CROP, args)
 		slice_rect.y = utils::from_chars<int16_t>(slice_params[1]).value_or(0);
 	}
 	if(s > 2) {
-		slice_rect.w = utils::from_chars<int16_t>(slice_params[2]).value_or(0);
+		slice_rect.w = utils::from_chars<uint16_t>(slice_params[2]).value_or(0);
 	}
 	if(s > 3) {
-		slice_rect.h = utils::from_chars<int16_t>(slice_params[3]).value_or(0);
+		slice_rect.h = utils::from_chars<uint16_t>(slice_params[3]).value_or(0);
 	}
 
 	return std::make_unique<crop_modification>(slice_rect);
