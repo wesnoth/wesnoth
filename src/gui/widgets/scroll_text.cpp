@@ -162,10 +162,43 @@ void scroll_text::place(const point& origin, const point& size) {
 			scroll_horizontal_scrollbar(scrollbar_base::BEGIN);
 			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		}
+		
+		set_max_size(widget->get_config_default_size());
+	}
+}
+
+point scroll_text::calculate_best_size() const
+{
+	point calc_size = scrollbar_container::calculate_best_size();
+
+	if ((calc_size.x > max_size_.x) && (max_size_.x != 0)) {
+		calc_size.x = max_size_.x;
 	}
 
-	set_max_size(widget->get_config_default_size());
+	if ((calc_size.y > max_size_.y) && (max_size_.y != 0)) {
+		calc_size.y = max_size_.y;
+	}
+
+	return calc_size;
 }
+
+void scroll_text::set_max_size(point max_size)
+{
+	// ------ get vertical scrollbar size ------
+	const point vertical_scrollbar = get_vertical_scrollbar_grid()->get_visible() == widget::visibility::invisible
+		? point()
+		: get_vertical_scrollbar_grid()->get_best_size();
+
+	// ------ get horizontal scrollbar size ------
+	const point horizontal_scrollbar = get_horizontal_scrollbar_grid()->get_visible() == widget::visibility::invisible
+		? point()
+		: get_horizontal_scrollbar_grid()->get_best_size();
+
+	// padding = 3
+	max_size_ = point(max_size.x + vertical_scrollbar.x + 3, max_size.y + horizontal_scrollbar.y + 3);
+}
+
+
 
 void scroll_text::set_can_wrap(bool can_wrap)
 {
@@ -189,7 +222,7 @@ void scroll_text::signal_handler_left_button_down(const event::ui_event event)
 scroll_text_definition::scroll_text_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing scroll label " << id;
+	DBG_GUI_P << "Parsing scroll text " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -198,10 +231,10 @@ scroll_text_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_text.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll label control")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll label control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll text control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll text control")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for scroll label control"));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for scroll text control"));
 	grid = std::make_shared<builder_grid>(child);
 }
 
@@ -217,7 +250,7 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, editable(cfg["editable"].to_bool(true))
 {
-	/** Horizontal scrollbar default to auto. AUTO_VISIBLE_FIRST_RUN doesn't work. */
+	// Scrollbar default to auto. AUTO_VISIBLE_FIRST_RUN doesn't work.
 	if (horizontal_scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
 		horizontal_scrollbar_mode = scrollbar_container::AUTO_VISIBLE;
 	}
@@ -242,7 +275,7 @@ std::unique_ptr<widget> builder_scroll_text::build() const
 	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
 
-	DBG_GUI_G << "Window builder: placed scroll label '" << id
+	DBG_GUI_G << "Window builder: placed scroll text '" << id
 			  << "' with definition '" << definition << "'.";
 
 	return widget;
