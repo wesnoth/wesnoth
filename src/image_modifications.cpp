@@ -19,6 +19,7 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "picture.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
@@ -915,11 +916,11 @@ REGISTER_MOD_PARSER(BLEND, args)
 	const std::string_view::size_type p100_pos = opacity_str.find('%');
 
 	if(p100_pos == std::string::npos)
-		opacity = utils::from_chars<float>(opacity_str).value_or(0.0f);
+		opacity = lexical_cast_default<float>(opacity_str);
 	else {
 		// make multiplier
 		const std::string_view parsed_field = opacity_str.substr(0, p100_pos);
-		opacity = utils::from_chars<float>(parsed_field).value_or(0.0f);
+		opacity = lexical_cast_default<float>(parsed_field);
 		opacity /= 100.0f;
 	}
 
@@ -1139,11 +1140,11 @@ REGISTER_MOD_PARSER(O, args)
 	const std::string::size_type p100_pos = args.find('%');
 	float num = 0.0f;
 	if(p100_pos == std::string::npos) {
-		num = utils::from_chars<float>(args).value_or(0.0f);
+		num = lexical_cast_default<float, std::string_view>(args);
 	} else {
 		// make multiplier
 		const std::string_view parsed_field = args.substr(0, p100_pos);
-		num = utils::from_chars<float>(parsed_field).value_or(0.0f);
+		num = lexical_cast_default<float, std::string_view>(parsed_field);
 		num /= 100.0f;
 	}
 
