@@ -30,11 +30,11 @@ function res.turns_over_advantage()
 		return
 	end
 	local _ = wesnoth.textdomain "wesnoth-multiplayer"
-	
+
 	local winning_sides, side_results = res.calc_turns_over_advantage()
-	
+
 	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-	res.show_turns_over_advantage(_ "dialog^Turns Over", winning_sides, side_results)
+	res.show_turns_over_advantage(winning_sides, side_results, _ "dialog^Turns Over")
 end
 
 ---@class side_result
@@ -63,7 +63,7 @@ function res.calc_turns_over_advantage(income_factor)
 
 	local winning_sides = {}
 	local total_score = -1
-	
+
 	---@type sides_score_table
 	local side_outcomes = {}
 	for side, team in all_sides() do
@@ -103,10 +103,11 @@ function res.calc_turns_over_advantage(income_factor)
 end
 
 ---Show the turns over advantage popup.
----@param winning_sides integer The list of sides who tied for first place
+---@param winning_sides integer[] The list of sides who tied for first place
 ---@param side_results sides_score_table The table of each side's score calculations
 ---@param title tstring The title to display in the popup
 function res.show_turns_over_advantage(winning_sides, side_results, title)
+	local _ = wesnoth.textdomain "wesnoth-multiplayer"
 	---@type tstring
 	local side_comparison = ""
 	local winners_color = "#000000"
@@ -124,7 +125,7 @@ function res.show_turns_over_advantage(winning_sides, side_results, title)
 			side_comparison = side_comparison .. side_text:vformat{side_color = side_color, side_number = side, income = outcome.income, units = outcome.num_units, gold = outcome.gold, total = outcome.total} .. "\n"
 		end
 	end
-	
+
 	if #winning_sides == 1 then
 		-- po: In the end-of-match summary, there's a single side that's won.
 		local comparison_text = _ "<span foreground='$side_color'>Side $side_number</span> has the advantage."
