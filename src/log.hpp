@@ -72,11 +72,11 @@ const std::string out_log_file_suffix = ".out.log";
 // Maximum number of older log files to keep intact. Other files are deleted.
 // Note that this count does not include the current log file!
 // double for Windows due to the separate .log and .out.log files
+const unsigned max_logs = 8
 #ifdef _WIN32
-const unsigned max_logs = 16;
-#else
-const unsigned max_logs = 8;
+*2
 #endif
+;
 
 enum class severity
 {
