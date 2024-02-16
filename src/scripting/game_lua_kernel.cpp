@@ -420,7 +420,15 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
 {
 	if (game_display_) {
-		return lua_gui2::show_gamestate_inspector(luaW_checkvconfig(L, 1), gamedata(), game_state_);
+		vconfig cfg = vconfig::unconstructed_vconfig();
+		std::string name;
+		if(luaW_tovconfig(L, 1, cfg)) {
+			name = cfg["name"].str();
+			deprecated_message("gui.show_inspector(cfg)", DEP_LEVEL::INDEFINITE, {1, 19, 0}, "Instead of {name = 'title' }, pass just 'title'.");
+		} else {
+			name = luaL_optstring(L, 1, "");
+		}
+		return lua_gui2::show_gamestate_inspector(name, gamedata(), game_state_);
 	}
 	return 0;
 }
@@ -2387,11 +2395,19 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			} else {
 				auto vec = lua_check<std::vector<int>>(L, -1);
 				if(vec.size() != 3) {
-					return luaL_error(L, "floating label text color should be a hex string or an array of 3 integers");
+					int idx = lua_absindex(L, -1);
+					if(luaW_tableget(L, idx, "r") && luaW_tableget(L, idx, "g") && luaW_tableget(L, idx, "b")) {
+						color.r = luaL_checkinteger(L, -3);
+						color.g = luaL_checkinteger(L, -2);
+						color.b = luaL_checkinteger(L, -1);
+					} else {
+						return luaL_error(L, "floating label text color should be a hex string, an array of 3 integers, or a table with r,g,b keys");
+					}
+				} else {
+					color.r = vec[0];
+					color.g = vec[1];
+					color.b = vec[2];
 				}
-				color.r = vec[0];
-				color.g = vec[1];
-				color.b = vec[2];
 			}
 		}
 		if(luaW_tableget(L, 2, "bgcolor")) {
@@ -2400,11 +2416,19 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			} else {
 				auto vec = lua_check<std::vector<int>>(L, -1);
 				if(vec.size() != 3) {
-					return luaL_error(L, "floating label background color should be a hex string or an array of 3 integers");
+					int idx = lua_absindex(L, -1);
+					if(luaW_tableget(L, idx, "r") && luaW_tableget(L, idx, "g") && luaW_tableget(L, idx, "b")) {
+						bgcolor.r = luaL_checkinteger(L, -3);
+						bgcolor.g = luaL_checkinteger(L, -2);
+						bgcolor.b = luaL_checkinteger(L, -1);
+					} else {
+						return luaL_error(L, "floating label background color should be a hex string, an array of 3 integers, or a table with r,g,b keys");
+					}
+				} else {
+					bgcolor.r = vec[0];
+					bgcolor.g = vec[1];
+					bgcolor.b = vec[2];
 				}
-				bgcolor.r = vec[0];
-				bgcolor.g = vec[1];
-				bgcolor.b = vec[2];
 				bgcolor.a = ALPHA_OPAQUE;
 			}
 			if(luaW_tableget(L, 2, "bgalpha")) {

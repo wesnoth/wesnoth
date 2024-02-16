@@ -15,7 +15,7 @@ function ca_recruit_random:evaluation(cfg)
     end
 
     -- Find all connected castle hexes
-    local castle_map = LS.of_pairs({ { leader.x, leader.y } })
+    local castle_map = LS.of_pairs({ leader })
     local new_castle_hex_found = true
 
     while new_castle_hex_found do

@@ -48,7 +48,7 @@ local function status_anim_update(is_undo)
         -- find all units on map with ability = diversion but not status.diversion = true
         local div_candidates = wesnoth.units.find_on_map({
                 ability = "diversion",
-                {"not", { status = "diversion" }}
+                wml.tag["not"] { status = "diversion" }
                 })
         -- for those that pass the filter now, change status and fire animation
         for index, ec_unit in ipairs(div_candidates) do

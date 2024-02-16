@@ -16,7 +16,7 @@ end
 
 ---A set of locations, with an optional associated value for each one.
 ---@class location_set : { [location]: any }
----@field values table<integer, any>
+---@field private values table<integer, any>
 ---@operator bnot:location_set
 ---@operator band:location_set
 ---@operator bor:location_set
@@ -430,7 +430,7 @@ function methods:to_wml_var(name, mode)
 		elseif wml.valid{value = v} then
 			wml.variables[string.format("%s[%d]", name, i)] = {value = v}
 		elseif type(v) ~= 'boolean' then
-			warning('Location set value could not be converted to a WML variable:', v)
+			warn('Location set value could not be converted to a WML variable:', v)
 		end
 		wml.variables[string.format("%s[%d].x", name, i)] = x
 		wml.variables[string.format("%s[%d].y", name, i)] = y

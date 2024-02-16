@@ -75,7 +75,8 @@ function gui.show_story(story, title) end
 function gui.show_help(topic) end
 
 ---Open the gamestate inspector
-function gui.show_inspector() end
+---@param title? string A title to be displayed in the inspector. Can be used to disambiguate where it was called from.
+function gui.show_inspector(title) end
 
 ---Open the in-game Lua console
 function gui.show_lua_console() end

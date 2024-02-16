@@ -8,8 +8,8 @@ local function get_units_target(cfg)
     }
 
     local target = wesnoth.units.find_on_map {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
-        { "and", wml.get_child(cfg, "filter_second") }
+        wml.tag.filter_side { wml.tag.enemy_of { side = wesnoth.current.side } },
+        wml.tag["and"] ( wml.get_child(cfg, "filter_second") )
     }[1]
 
     return units, target

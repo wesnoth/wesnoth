@@ -27,9 +27,9 @@ function wesnoth.map.read_location(...)
 		else
 			return nil, 0
 		end
-		return {x = x, y = y}, 1
+		return wesnoth.named_tuple({x, y}, {'x', 'y'}), 1
 	elseif type(x) == 'number' and type(y) == 'number' then
-		return {x = x, y = y}, 2
+		return wesnoth.named_tuple({x, y}, {'x', 'y'}), 2
 	end
 	return nil, 0
 end
@@ -269,9 +269,13 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@return terrain_hex
 	---@overload fun(loc:location):terrain_hex
 	function wesnoth.map.get(x, y)
+		-- Make the linter assume the location is non-nil.
+		-- It's not smart enough to realize that n==0 means that loc is non-nil.
+		---@type location
 		local loc, n = wesnoth.map.read_location(x, y)
 		if n == 0 then error('Missing or invalid coordinate') end
-		return setmetatable(loc, hex_mt)
+		---@diagnostic disable-next-line: return-type-mismatch
+		return setmetatable({x = loc.x, y = loc.y}, hex_mt)
 	end
 
 	local find_locations = wesnoth.map.find
@@ -279,7 +283,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param cfg WML
 	---@param ref_unit? unit
 	---@return terrain_hex[]
-	function wesnoth.map.find(cfg, ref_unit)
+	function wesnoth.map.find(cfg, ref_unit) ---@diagnostic disable-line: duplicate-set-field
 		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
@@ -302,7 +306,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		if new_ter == '' or type(new_ter) ~= 'string' then error('set_terrain: expected terrain string') end
 		if replace_if_failed then
 			mode = mode or 'both'
-			new_ter = wesnoth.map.replace_if_failed(new_ter, mode, true)
+			new_ter = wesnoth.map.replace_if_failed(new_ter, mode)
 		elseif mode == 'both' or mode == 'base' or mode == 'overlay' then
 			new_ter = wesnoth.map['replace_' .. mode](new_ter)
 		elseif mode ~= nil then

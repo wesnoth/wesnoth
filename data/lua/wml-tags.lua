@@ -69,7 +69,7 @@ function wml_actions.chat(cfg)
 	local observable = cfg.observable ~= false
 
 	if observable then
-		local all_sides = wesnoth.sides.find()
+		local all_sides = wesnoth.sides.find{}
 		local has_human_side = false
 		for index, side in ipairs(all_sides) do
 			if side.controller == "human" and side.is_local then
@@ -116,8 +116,7 @@ function wml_actions.store_unit_type_ids(cfg)
 		table.insert(types, k)
 	end
 	table.sort(types)
-	types = table.concat(types, ',')
-	wml.variables[cfg.variable or "unit_type_ids"] = types
+	wml.variables[cfg.variable or "unit_type_ids"] = table.concat(types, ',')
 end
 
 function wml_actions.store_unit_type(cfg)
@@ -752,7 +751,7 @@ function wml_actions.remove_event(cfg)
 end
 
 function wml_actions.inspect(cfg)
-	gui.show_inspector(cfg)
+	gui.show_inspector(cfg.name)
 end
 
 function wml_actions.label( cfg )
@@ -990,8 +989,8 @@ function wml_actions.terrain_mask(cfg)
 		-- tile to the northwest from the specified hex.
 		-- todo: deprecate this strange behaviour or at least not make it
 		--       the default behaviour anymore.
-		local new_loc = wesnoth.map.get_direction({x, y}, "nw")
-		x, y = new_loc[1], new_loc[2]
+		local new_loc = wesnoth.map.get_direction(x, y, "nw")
+		x, y = new_loc.x, new_loc.y
 	end
 	local rules = {}
 	for rule in wml.child_range(cfg, 'rule') do
@@ -1002,7 +1001,7 @@ function wml_actions.terrain_mask(cfg)
 		resolved = resolved:sub(6) -- strip off 'data/' prefix
 		mask = filesystem.read_file(resolved)
 	end
-	wesnoth.current.map:terrain_mask({x, y}, mask, {
+	wesnoth.current.map:terrain_mask(x, y, mask, {
 		is_odd = is_odd,
 		rules = rules,
 		ignore_special_locations = cfg.ignore_special_locations,
