@@ -29,12 +29,8 @@ function res.turns_over_advantage()
 	if not show_turns_over_advantage then
 		return
 	end
-	local _ = wesnoth.textdomain "wesnoth-multiplayer"
-
 	local winning_sides, side_results = res.calc_turns_over_advantage()
-
-	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-	res.show_turns_over_advantage(winning_sides, side_results, _ "dialog^Turns Over")
+	res.show_turns_over_advantage(winning_sides, side_results)
 end
 
 ---@class side_result
@@ -89,7 +85,6 @@ function res.calc_turns_over_advantage(income_factor)
 					total = total
 				}
 				if total > total_score then
-					-- winners_color = side_color
 					winning_sides = {side}
 					total_score = total
 				elseif total == total_score then
@@ -105,12 +100,11 @@ end
 ---Show the turns over advantage popup.
 ---@param winning_sides integer[] The list of sides who tied for first place
 ---@param side_results sides_score_table The table of each side's score calculations
----@param title tstring The title to display in the popup
+---@param title? tstring The title to display in the popup
 function res.show_turns_over_advantage(winning_sides, side_results, title)
 	local _ = wesnoth.textdomain "wesnoth-multiplayer"
 	---@type tstring
 	local side_comparison = ""
-	local winners_color = "#000000"
 	for side = 1, #wesnoth.sides do
 		local outcome = side_results[side]
 		local side_color = wesnoth.colors[wesnoth.sides[side].color].pango_color
@@ -127,9 +121,11 @@ function res.show_turns_over_advantage(winning_sides, side_results, title)
 	end
 
 	if #winning_sides == 1 then
+		local side = winning_sides[1]
+		local side_color = wesnoth.colors[wesnoth.sides[side].color].pango_color
 		-- po: In the end-of-match summary, there's a single side that's won.
 		local comparison_text = _ "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], side_color = winners_color}
+		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{side_number = winning_sides[1], side_color = side_color}
 	elseif #winning_sides == 2 then
 		-- po: In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 		-- Separated from the three-or-more text in case a language differentiates "two sides" vs "three sides".
@@ -142,6 +138,8 @@ function res.show_turns_over_advantage(winning_sides, side_results, title)
 		side_comparison = side_comparison .. "\n" .. comparison_text:vformat{winners = winners}
 	end
 	-- if #winning_sides==0, then every side either has no units or has a negative score
+	-- po: "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
+	title = title or _ "dialog^Turns Over"
 	gui.show_popup(title, side_comparison)
 end
 return res
