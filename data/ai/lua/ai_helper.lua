@@ -252,7 +252,7 @@ end
 ---@param y integer
 ---@param move_type string
 ---@return ai_result
-function checked_move_core(ai, unit, x, y, move_type)
+function ai_helper.checked_move_core(ai, unit, x, y, move_type)
     local check = ai.check_move(unit, x, y)
 
     if (not check.ok) then
