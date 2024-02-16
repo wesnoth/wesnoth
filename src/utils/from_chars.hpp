@@ -19,15 +19,12 @@
 namespace utils
 {
 template<typename T>
-std::optional<T> from_chars(std::string_view str)
+std::optional<T> from_chars(std::string_view str, int base = 10)
 {
+	static_assert(std::is_integral_v<T>, "Float support for charconv incomplete on current build requirements");
 	T result {};
-	const auto [_, ec] = std::from_chars(str.data(), str.data() + str.size(), result);
-
-	if(ec == std::errc{}) {
-		return result;
-	} else {
-		return std::nullopt;
-	}
+	const auto [_, ec] = std::from_chars(str.data(), str.data() + str.size(), result, base);
+	return ec == std::errc{} ? std::make_optional(result) : std::nullopt;
 }
+
 } // namespace utils
