@@ -2,6 +2,9 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Heir to the Throne
+     * Add decorations and map embellishments to S16, S19a and S22 (PR #8243)
+     * Use swamp terrain instead of sand for S19b (PR #8243)
  ### Editor
  ### Multiplayer
  ### Lua API
