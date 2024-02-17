@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Under_the_Burning_Suns-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-01-21 01:57 UTC\n"
-"PO-Revision-Date: 2022-10-17 10:26+0800\n"
+"PO-Revision-Date: 2024-01-23 21:11+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -128,8 +128,8 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"déshydraté : Cette unité est déshydratée. Elle va perdre 4 PV et aura 1 "
-"point de dommage de moins chaque tour pendant la journée, sauf si un "
+"déshydraté : Cette unité est déshydratée. Elle va perdre $dehydration PV et "
+"aura 1 point de dégâts de moins chaque tour pendant la journée, sauf si un "
 "guérisseur l'en empêche ou si elle est guérie par l'eau d'une oasis.\n"
 "\n"
 "Les unités ne peuvent être tuées ou réduite à n'infliger aucun dommage à "
@@ -2688,7 +2688,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Wounded Elven Scout"
 msgid "Wounded Scout"
-msgstr "Éclaireur elfe blessé"
+msgstr "Éclaireur blessé"
 
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -3318,7 +3318,7 @@ msgstr "Lac Naga"
 #, fuzzy
 #| msgid "Lake Naga"
 msgid "female^Lake Naga"
-msgstr "Lac Naga"
+msgstr "Naga des lacs"
 
 #. [message]: speaker=Orac
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:602
@@ -9995,7 +9995,7 @@ msgstr ""
 #, fuzzy
 #| msgid "You don’t know where to find your master?"
 msgid "You don’t know where to find your leader?"
-msgstr "Vous ne savez pas où trouver votre maîtresse ?"
+msgstr "Vous ne savez pas où trouver votre chef ?"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4641
@@ -10673,7 +10673,7 @@ msgid ""
 "carefully. Now our search is hopeless."
 msgstr ""
 "Non, trop d'ondins sont morts ! Il n'y en a plus assez pour retrouver "
-"l'endroit où est leur maîtresse. Nous aurions dû les protéger avec plus "
+"l'endroit où est leur chef. Nous aurions dû les protéger avec plus "
 "d'attention. Notre quête est sans espoir maintenant."
 
 #. [message]: speaker=Kaleh
@@ -10689,7 +10689,7 @@ msgid ""
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
 "Trop d'ondins sont morts ! Même si nous secourons les autres, il n'y en aura "
-"plus assez pour retrouver l'endroit où est leur maîtresse. Nous aurions dû "
+"plus assez pour retrouver l'endroit où est leur chef. Nous aurions dû "
 "protéger les ondins avec plus d'attention. Notre quête est sans espoir "
 "maintenant."
 
@@ -11738,8 +11738,8 @@ msgid ""
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
 "Merci. Et je n'ai pas non plus oublié la promesse faite à mes amis ondins. "
-"Si c'est possible, j'aimerais rencontrer votre maîtresse. Votre conduite "
-"honore votre peuple et moi, au moins, je vous fais confiance."
+"Si c'est possible, j'aimerais rencontrer votre chef. Votre conduite honore "
+"votre peuple et moi, au moins, je vous fais confiance."
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2349
@@ -11816,7 +11816,7 @@ msgid ""
 "bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
 "Avant de prendre ma décision, j'ai juste une question : comment vous, les "
-"ondins, comptiez-vous nous amener à votre maîtresse vivant au fond des mers ?"
+"ondins, comptiez-vous nous amener à votre chef vivant au fond des mers ?"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2469
@@ -15807,10 +15807,11 @@ msgstr ""
 "pour son élégance et sa polyvalence comparées aux autres armes de mêlée. "
 "Récemment, cependant, la raréfaction de l'approvisionnement pour les forges "
 "a réduit la capacité à forger des épées, nécessitant le façonnage d'armes "
-"bon marché, facilement réparables. Les Combattants de Quenoth sont très "
-"doués en groupes coordonnés, lorsqu'ils peuvent compenser le manque d'armes "
-"sophistiquées en formant des rangs de lances capable de repousser n'importe "
-"quel assaut frontal."
+"bon marché, facilement réparables. Pour compenser la baisse de qualité de "
+"leur armement, les elfes de Quenoth ont developpé des modes d'utilisation "
+"très flexibles. Dans les étendues de sable dégagées, un guérrier est formé à "
+"porter son attention sur plusieurs ennemis à la fois, qu'ils soient "
+"brigands, animaux sauvages ou mort-vivants."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -16393,7 +16394,7 @@ msgstr ""
 #, fuzzy
 #| msgid "true strike"
 msgid "Strong Strikes"
-msgstr "frappe vértiable"
+msgstr "Frappes puissantes"
 
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:122
@@ -16405,7 +16406,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Haunt"
 msgid "Taunt"
-msgstr "Maudit"
+msgstr "Moquerie"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:284
@@ -16434,7 +16435,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Troll Skirmisher"
 msgid "Skirmisher"
-msgstr "Tirailleur troll"
+msgstr "Tirailleur"
 
 #. [advancement]: id=training_with_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:376
@@ -16442,7 +16443,7 @@ msgstr "Tirailleur troll"
 #, fuzzy
 #| msgid "Talking with Trolls"
 msgid "Training with Bolas"
-msgstr "Discussion avec les trolls"
+msgstr "Entraînement au bolas"
 
 #. [advancement]: id=slow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:396
@@ -16470,14 +16471,14 @@ msgstr ""
 #, fuzzy
 #| msgid "true strike"
 msgid "Faster Strikes"
-msgstr "frappe vértiable"
+msgstr "Frappes rapides"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:501
 #, fuzzy
 #| msgid "Second Dawn"
 msgid "Sword Dance"
-msgstr "Deuxième aube"
+msgstr "Danse d'épées"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
@@ -16494,7 +16495,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Desert Ranger"
 msgid "Ranger"
-msgstr "Rôdeur du désert"
+msgstr "Rôdeur"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:572
@@ -16526,7 +16527,7 @@ msgstr ""
 #, fuzzy
 #| msgid "bolas"
 msgid "Bolaship"
-msgstr "bolas"
+msgstr "Bolas d'élite"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:758
@@ -16841,7 +16842,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Second Dusk"
 msgid "second verse"
-msgstr "Deuxième crépuscule"
+msgstr "Deuxième couplet"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "third verse"
@@ -16858,7 +16859,7 @@ msgstr ""
 #, fuzzy
 #| msgid "female^thirst"
 msgid "female^third verse illuminates"
-msgstr "assoiffée"
+msgstr "troisième couplet d'illumitation"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
@@ -17157,7 +17158,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Haunt"
 msgid "taunt"
-msgstr "Maudit"
+msgstr "moquerie"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
@@ -17169,7 +17170,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Haunt"
 msgid "taunted"
-msgstr "Maudit"
+msgstr "moqué"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1522
@@ -17181,14 +17182,14 @@ msgstr ""
 #, fuzzy
 #| msgid "Pulsing Spire"
 msgid "inspire"
-msgstr "Pointe palpitante"
+msgstr "inspiration"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1532
 #, fuzzy
 #| msgid "female^support"
 msgid "female^inspire"
-msgstr "soutien"
+msgstr "inspiration"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
@@ -17262,7 +17263,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Good riddance."
 msgid "sword dance"
-msgstr "Bon débarras."
+msgstr "danse d'épées"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
@@ -17414,11 +17415,12 @@ msgid ""
 msgstr ""
 "Remarque : cette campagne n'est probablement pas la plus facile pour un "
 "débutant. Elle s'éloigne de certains standards de Wesnoth, comme les "
-"caractéristiques des elfes et le cycle des jours et des nuits. L'accent est "
-"mis sur l'ambiance, les scénarios sont souvent longs et les objectifs "
-"changent au fur et à mesure. Pour ces raisons, nous vous conseillons "
-"fortement de sauvegarder votre partie au milieu du scénario pour ne pas tout "
-"perdre et avoir à recommencer si vous êtes bloqué."
+"caractéristiques des elfes, le cycle des jours et des nuits, les coûts de "
+"rappel et plus généralement les niveaux de difficulté. L'accent est mis sur "
+"l'ambiance, les scénarios sont souvent longs et les objectifs changent au "
+"fur et à mesure. Pour ces raisons, nous vous conseillons fortement de "
+"sauvegarder votre partie au milieu du scénario pour ne pas tout perdre et "
+"avoir à recommencer si vous êtes bloqué."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
@@ -18162,10 +18164,10 @@ msgstr ""
 "notre déesse, je ne me souviens pas que Zhul ait mentionné d'autres races "
 "l'adorant après le Grand Déclin, mais il est possible que les choses aient "
 "changé. Ses ordres n'ont pas de sens ; elle ne ressemble pas du tout à la "
-"déesse dont Zhul m'a parlé. Et de quoi parlait Esanoo ? Comment sa maîtresse "
-"connaissait-elle « Yechnagoth » et « Zhangor » ? Si Eloh ne veut pas "
-"m'aider, alors j'ai vraiment besoin d'une réponse. Je prie tous les autres "
-"dieux restant de ne pas conduire mon peuple dans un piège..."
+"déesse dont Zhul m'a parlé. Et de quoi parlait Esanoo ? Comment son chef "
+"connaissait-il « Yechnagoth » et « Zhangor » ? Si Eloh ne veut pas m'aider, "
+"alors j'ai vraiment besoin d'une réponse. Je prie tous les autres dieux "
+"restant de ne pas conduire mon peuple dans un piège..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:174
@@ -18288,9 +18290,8 @@ msgid ""
 "success, for they steered us straight towards the setting sun."
 msgstr ""
 "Cet après-midi là, trois des ondins s'assirent en cercle et accomplirent "
-"leur rituel pour déterminer l'emplacement de leur maîtresse. Ce fut "
-"apparemment un succès car ils nous emmenèrent droit dans la direction du "
-"soleil couchant."
+"leur rituel pour déterminer l'emplacement de leur chef. Ce fut apparemment "
+"un succès car ils nous emmenèrent droit dans la direction du soleil couchant."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:206
