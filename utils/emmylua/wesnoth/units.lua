@@ -57,6 +57,7 @@
 ---Defines an individual unit
 ---@class unit : wesnoth.units, location
 ---@field valid "'map'"|"'recall'"|"'private'"|nil
+---@field loc location
 ---@field id string
 ---@field side integer
 ---@field type string
@@ -97,7 +98,7 @@
 ---@field advances_to string[]
 ---@field advancements WMLTable[]
 ---@field status table<string, boolean>
----@field variables table<string, WML>
+---@field variables WMLVariableProxy
 ---@field attacks unit_weapon[]
 ---@field traits string[]
 ---@field abilities string[]
@@ -115,6 +116,7 @@ function wesnoth.units.advance(unit, animate, fire_events) end
 
 ---Creates a copy of the unit
 ---@param unit unit
+---@return unit
 function wesnoth.units.clone(unit) end
 
 ---Erases the unit from the map
@@ -134,13 +136,16 @@ function wesnoth.units.extract(unit) end
 function wesnoth.units.matches(unit, filter, context) end
 
 ---Place or move a unit on the map
----@param unit unit
+---@param unit unit|WML
 ---@param loc? location
----@overload fun(unit:unit, x:integer, y:integer)
-function wesnoth.units.to_map(unit, loc) end
+---@param fire_event? boolean
+---@overload fun(unit:unit|WML, x:integer, y:integer)
+---@overload fun(unit:unit|WML, x:integer, y:integer, fire_event:boolean)
+---@overload fun(unit:unit|WML, fire_event:boolean)
+function wesnoth.units.to_map(unit, loc, fire_event) end
 
 ---Place a unit on a recall lists
----@param unit unit
+---@param unit unit|WML
 ---@param side? integer
 function wesnoth.units.to_recall(unit, side) end
 
@@ -152,7 +157,10 @@ function wesnoth.units.transform(unit, to_type, to_variation) end
 
 ---Select the unit, as if it had been clicked with the mouse
 ---@param unit unit
-function wesnoth.units.select(unit) end
+---@param highlight? boolean
+---@param fire_event? boolean
+---@overload fun(unit_x:integer, unit_y:integer, highlight?:boolean, fire_event?:boolean)
+function wesnoth.units.select(unit, highlight, fire_event) end
 
 ---Test if the unit is affected by an ability
 ---@param unit unit
@@ -221,18 +229,18 @@ function animator:run() end
 function animator:clear() end
 
 ---@class unit_animator_params
----@field facing location
----@field value number|number[]
----@field with_bars boolean
----@field text tstring
----@field color color
----@field primary unit_weapon
----@field secondary unit_weapon
+---@field facing? location
+---@field value? number|number[]
+---@field with_bars? boolean
+---@field text? tstring|number
+---@field color? color|color_list
+---@field primary? unit_weapon
+---@field secondary? unit_weapon
 
 ---Add a unit to the animation
 ---@param unit unit
 ---@param flag string
----@param hits boolean
+---@param hits "'hit'"|"'miss'"|"'kill'"
 ---@param params unit_animator_params
 function animator:add(unit, flag, hits, params) end
 
@@ -275,5 +283,7 @@ function wesnoth.units.create_weapon(cfg) end
 ---@param ignore_passability boolean
 ---@param clear_shroud boolean
 ---@param animate boolean
+---@overload fun(unit:unit, x:integer, y:integer, ignore_passability:boolean, clear_shroud:boolean, animate:boolean)
+function wesnoth.units.teleport(unit, target, ignore_passability, clear_shroud, animate) end
 
 wesnoth.units.get_hovered = wesnoth.interface.get_displayed_unit

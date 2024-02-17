@@ -28,11 +28,8 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "utils/general.hpp"
 
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
@@ -643,6 +640,8 @@ static void setup_user_data_dir()
 	create_directory_if_missing(get_saves_dir());
 	create_directory_if_missing(get_wml_persist_dir());
 	create_directory_if_missing(get_logs_dir());
+
+	lg::move_log_file();
 }
 
 #ifdef _WIN32

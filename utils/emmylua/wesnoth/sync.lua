@@ -6,6 +6,7 @@
 ---@param ai_fcn? fun():WMLTable
 ---@param for_side? integer[]
 ---@return WMLTable
+---@overload fun(fcn: (fun():WMLTable), ai_fcn?: (fun():WMLTable), for_side?:integer[]):WMLTable
 function wesnoth.sync.evaluate_single(description, fcn, ai_fcn, for_side) end
 
 ---Evaluate an expression on multiple clients and synchronize the results to all clients

@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include "lua/lualib.h"
+#include "lua/wrapper_lualib.h"
 
 void ds(lua_State *L, const bool verbose_table = true);
 

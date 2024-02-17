@@ -19,16 +19,13 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/viewport.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
@@ -199,7 +196,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
 
-		resize_needed = !content_resize_request();
+		resize_needed = !content_resize_request(true);
 	}
 
 	if(resize_needed) {

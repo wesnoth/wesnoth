@@ -2,15 +2,19 @@
 
 filesystem = {}
 
+---@class directory_listing : string[]
+---@field ndirs integer
+
 ---Read a text file into memory, or list files in a directory
 ---@param path string
----@return string|string[]
+---@return string|directory_listing
 function filesystem.read_file(path) end
 
----Check if a file exists
+---Check if a file exists and whether
 ---@param path string
+---@param real_file? boolean If true, the file must be a real file and not for example a directory.
 ---@return boolean
-function filesystem.have_file(path) end
+function filesystem.have_file(path, real_file) end
 
 ---Resolve a file path relative to the current script
 ---@param path string

@@ -24,26 +24,17 @@
 #include "game_display.hpp"          // for game_display
 #include "gui/dialogs/transient_message.hpp"
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
-#include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
 #include "mouse_handler_base.hpp"       // for command_disabler
-#include "preferences/general.hpp"
-#include "recall_list_manager.hpp"   // for recall_list_manager
 #include "replay.hpp"                // for recorder, replay
-#include "replay_helper.hpp"         // for replay_helper
 #include "resources.hpp"             // for screen, teams, units, etc
 #include "synced_context.hpp"        // for set_scontext_synced
 #include "team.hpp"                  // for team
-#include "units/unit.hpp"                  // for unit
-#include "units/animation_component.hpp"
 #include "units/id.hpp"
-#include "units/map.hpp"              // for unit_map, etc
 #include "units/ptr.hpp"      // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"               // for unit_type, unit_type_data, etc
 #include "whiteboard/manager.hpp"    // for manager
 
-#include "actions/create.hpp"                   // for find_recall_location, etc
-#include "actions/move.hpp"                   // for get_village
 #include "actions/vision.hpp"           // for clearer_info, etc
 #include "actions/shroud_clearing_action.hpp"
 #include "actions/undo_dismiss_action.hpp"
@@ -54,8 +45,6 @@
 
 #include <algorithm>                    // for reverse
 #include <cassert>                      // for assert
-#include <ostream>                      // for operator<<, basic_ostream, etc
-#include <set>                          // for set
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

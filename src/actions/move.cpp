@@ -47,7 +47,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <deque>
-#include <map>
 #include <set>
 
 static lg::log_domain log_engine("engine");

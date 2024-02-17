@@ -50,7 +50,7 @@
 #include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
+#include "lua/wrapper_lauxlib.h"        // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)

@@ -314,12 +314,13 @@ struct error : public game::error
 };
 
 /** Type that can be thrown as an exception to quit to desktop. */
-class quit : public lua_jailbreak_exception
+class quit final : public lua_jailbreak_exception
 {
 public:
 	quit()
 		: lua_jailbreak_exception()
 	{
+		this->store();
 	}
 
 private:

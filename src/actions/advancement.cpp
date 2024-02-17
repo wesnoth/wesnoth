@@ -36,11 +36,8 @@
 #include "synced_user_choice.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include "units/abilities.hpp"
 #include "units/animation_component.hpp"
-#include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
-#include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
 

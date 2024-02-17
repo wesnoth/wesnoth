@@ -59,8 +59,8 @@
 #include <vector>
 #include <numeric>
 
-#include "lua/lauxlib.h"
-#include "lua/lualib.h"
+#include "lua/wrapper_lauxlib.h"
+#include "lua/wrapper_lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 static lg::log_domain log_user("scripting/lua/user");
@@ -302,6 +302,22 @@ static int intf_load(lua_State* L)
 	return 1;
 }
 
+/**
+ * Wrapper for pcall and xpcall functions to rethrow jailbreak exceptions
+ */
+static int intf_pcall(lua_State *L)
+{
+	lua_CFunction function = lua_tocfunction(L, lua_upvalueindex(1));
+	assert(function); // The upvalue should be Lua's pcall or xpcall, or else something is very wrong.
+
+	int nRets = function(L);
+
+	// If a jailbreak exception was stored while running (x)pcall, rethrow it so Lua doesn't continue.
+	lua_jailbreak_exception::rethrow();
+
+	return nRets;
+}
+
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
@@ -339,7 +355,7 @@ static int intf_name_generator(lua_State *L)
 			if(lua_istable(L, 2)) {
 				input = lua_check<std::vector<std::string>>(L, 2);
 			} else {
-				input = utils::parenthetical_split(luaW_checktstring(L, 2), ',');
+				input = utils::parenthetical_split(luaW_checktstring(L, 2).str(), ',');
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
@@ -832,6 +848,15 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "load");
 	lua_pushnil(L);
 	lua_setglobal(L, "loadstring");
+
+	// Wrap the pcall and xpcall functions
+	cmd_log_ << "Wrapping pcall and xpcall functions...\n";
+	lua_getglobal(L, "pcall");
+	lua_pushcclosure(L, intf_pcall, 1);
+	lua_setglobal(L, "pcall");
+	lua_getglobal(L, "xpcall");
+	lua_pushcclosure(L, intf_pcall, 1);
+	lua_setglobal(L, "xpcall");
 
 	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.

@@ -66,7 +66,7 @@ _pending_cinfo = {
 # type of pending wmlinfo:
 # it can be None or it can have an actual value.
 # Possible actual values are: 'speaker', 'id', 'role', 'description',
-#                             'condition', 'type', or 'race'
+#                             'condition', 'type', 'race' or 'gender'
 _pending_winfotype = None
 
 # ----------

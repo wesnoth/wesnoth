@@ -15,7 +15,7 @@
 #include "lua_audio.hpp"
 
 #include "log.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "sound.hpp"

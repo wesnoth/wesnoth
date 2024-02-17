@@ -53,7 +53,6 @@
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
 #include <optional>
-#include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
 #include <string>
 #include <utility>
 #include <ctime>
@@ -63,14 +62,21 @@
 
 namespace lg {
 
-// Prefix and extension for log files. This is used both to generate the unique
-// log file name during startup and to find old files to delete.
+// Prefix and extension for log files.
+// This is used to find old files to delete.
 const std::string log_file_prefix = "wesnoth-";
 const std::string log_file_suffix = ".log";
+// stdout file for Windows
+const std::string out_log_file_suffix = ".out.log";
 
 // Maximum number of older log files to keep intact. Other files are deleted.
 // Note that this count does not include the current log file!
-const unsigned max_logs = 8;
+// double for Windows due to the separate .log and .out.log files
+const unsigned max_logs = 8
+#ifdef _WIN32
+*2
+#endif
+;
 
 enum class severity
 {
@@ -130,12 +136,46 @@ std::string list_log_domains(const std::string& filter);
 void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
+
+/**
+ * Do the initial redirection to a log file if the logs directory is writable.
+ * Also performs log rotation to delete old logs.
+ * NOTE: This runs before command line arguments are processed.
+ *       Therefore the log file is initially written under the default userdata directory
+ */
 void set_log_to_file();
+/**
+ * Move the log file to another directory.
+ * Used if a custom userdata directory is given as a command line option to move it to the new location.
+ */
+void move_log_file();
+/**
+ * Checks that a dummy file can be written to and deleted from the logs directory.
+ */
 void check_log_dir_writable();
+/**
+ * Returns the result set by check_log_dir_writable().
+ * Will not be set if called before log redirection is done.
+ *
+ * @return true if the log directory is writable, false otherwise.
+ */
 std::optional<bool> log_dir_writable();
 
+/**
+ * Use the defined prefix and suffix to determine if a filename is a log file.
+ *
+ * @return true if it's a log file, false otherwise
+ */
 bool is_not_log_file(const std::string& filename);
+/**
+ * Check how many log files exist and delete the oldest when there's too many.
+ */
 void rotate_logs(const std::string& log_dir);
+/**
+ * Generate a unique file name using the current timestamp and a randomly generated number.
+ *
+ * @return A unique file name to use for the current log file.
+ */
 std::string unique_log_filename();
 
 // A little "magic" to surround the logging operation in a mutex.
@@ -189,8 +229,7 @@ void precise_timestamps(bool);
 std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 std::string get_timespan(const std::time_t& t);
 std::string sanitize_log(const std::string& logstr);
-std::string& get_log_file_path();
-void set_log_file_path(const std::string& path);
+std::string get_log_file_path();
 
 logger &err(), &warn(), &info(), &debug();
 log_domain& general();

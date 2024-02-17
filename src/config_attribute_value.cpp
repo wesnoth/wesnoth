@@ -26,9 +26,6 @@
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>
-#include <cstring>
-#include <deque>
-#include <functional>
 #include <istream>
 
 static lg::log_domain log_config("config");

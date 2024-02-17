@@ -26,6 +26,18 @@ import sys
 # [6] = current md5 hash
 ##
 
+##
+# Add new licenses to this list:
+# Avoid things like "GNU GPL v2+;CC BY-SA 4.0", unless you mean to dual license
+# under either GNU GPL v2+ or CC BY-SA 4.0.  GNU GPL v2+ and CC BY-SA 4.0 (e.g.
+# a GNU GPL v2+ file with CC BY-SA 4.0 modifications) isn't legally possible.
+##
+known_licenses = (
+        "CC BY-SA 4.0",
+        "CC0",
+        "GNU GPL v2+",
+        )
+
 def do_git(file):
     return str(check_output(["git", "log", "-1", "--format=%ad", "--date=format:%Y/%m/%d", file]), 'UTF-8').rstrip('\n')
 
@@ -54,14 +66,24 @@ with contextlib.suppress(FileNotFoundError):
     os.remove(options.output)
 
 csv_data = {}
+# Too few fields
+missing_fields = []
+# Too many fields, possibly due to an unquoted comma
+extra_fields = []
+# New images
 added = []
+# Changed images
 changed = []
 # Already mentioned in the CSV file, but lacking something in either the license or author fields
 incomplete = []
+# Already mentioned in the CSV file, but have something in the needs update field
+update = []
 unchanged = []
 removed = []
 # Sanity-check that the input is in the same order as the output would be
 csvfile_needs_sorting = False
+# Sanity-check for known licenses
+unknown_licenses = []
 
 with open(options.input) as csvfile:
     reader = csv.reader(csvfile)
@@ -90,41 +112,56 @@ for root, _, files in os.walk(options.repo):
 
             if not file in csv_data:
                 added.append(["", file, "", "", "", do_git(file), hash])
+            elif len(csv_data[file]) < 7:
+                missing_fields.append(csv_data[file])
+            elif len(csv_data[file]) > 7:
+                extra_fields.append(csv_data[file])
+            elif csv_data[file][5] != "":
+                update.append(csv_data[file])
             elif csv_data[file][6] != hash:
                 csv_data[file][5] = do_git(file)
                 csv_data[file][6] = hash
                 changed.append(csv_data[file])
             elif csv_data[file][2].strip() == "" or csv_data[file][3].strip() == "":
                 incomplete.append(csv_data[file])
+            elif not csv_data[file][2] in known_licenses:
+                unknown_licenses.append(csv_data[file][2])
+                incomplete.append(csv_data[file])
             else:
                 unchanged.append(csv_data[file])
 
+missing_fields.sort(key=itemgetter(1))
+extra_fields.sort(key=itemgetter(1))
 added.sort(key=itemgetter(1))
 changed.sort(key=itemgetter(1))
 incomplete.sort(key=itemgetter(1))
+update.sort(key=itemgetter(1))
 unchanged.sort(key=itemgetter(1))
 
-final_output = added + changed + incomplete + unchanged
+final_output = missing_fields + extra_fields + added + changed + incomplete + update + unchanged
 
 if options.output != "":
     with open(options.output, 'w') as f:
-        f.write("Date,File,License,Author - Real Name(other name);Real Name(other name);etc,Notes,Needs Update,MD5\n")
-        for row in final_output:
-            f.write(",".join(row)+"\n")
+        writer = csv.writer(f, lineterminator="\n")
+        writer.writerow(["Date", "File", "License", "Author - Real Name(other name);Real Name(other name);etc", "Notes", "Needs Update", "MD5"])
+        writer.writerows(final_output)
 else:
-    for row in final_output:
-        print(",".join(row))
+    writer = csv.writer(sys.stdout, lineterminator="\n")
+    writer.writerows(final_output)
 
 any_check_failed = False
 if len(removed) > 0:
     any_check_failed = True
     print("There are "+str(len(removed))+" removed images")
 
-if len(added) > 0 or len(changed) > 0 or len(incomplete) > 0:
+if len(missing_fields) > 0 or len(extra_fields) > 0 or len(added) > 0 or len(changed) > 0 or len(incomplete) > 0 or len(update) > 0:
     any_check_failed = True
+    print("There are "+str(len(missing_fields))+" rows with too few fields")
+    print("There are "+str(len(extra_fields))+" rows with too many fields, possibly due to an unquoted comma")
     print("There are "+str(len(added))+" new images")
     print("There are "+str(len(changed))+" changed images")
     print("There are "+str(len(incomplete))+" images that lack license or author information")
+    print("There are "+str(len(update))+" images that need updated information")
     if options.output != "":
         print("These are at the top of the output for easy editing, run the tool again after editing to sort the file")
 
@@ -134,6 +171,11 @@ if csvfile_needs_sorting:
 
     if options.output != "" and final_output == unchanged:
         print("The new output file is correctly sorted")
+
+if len(unknown_licenses) > 0:
+    any_check_failed = True
+    print("Unknown licenses:")
+    print("    " + "\n    ".join(unknown_licenses))
 
 if any_check_failed:
     sys.exit(1)

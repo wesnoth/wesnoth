@@ -18,6 +18,7 @@
 
 #include "ai/configuration.hpp"
 #include "chat_log.hpp"
+#include "formula/string_utils.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "game_config.hpp"
@@ -79,6 +80,14 @@ void mp_staging::pre_show(window& window)
 	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 		&mp_staging::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
+	std::stringstream tooltip;
+    tooltip << vgettext_impl("wesnoth", "Hotkey(s): ",  {{}});
+    #ifdef __APPLE__
+        tooltip << "cmd+g";
+    #else
+        tooltip << "ctrl+g";
+    #endif
+	find_widget<button>(get_window(), "ok", false).set_tooltip(tooltip.str());
 
 	//
 	// Set title and status widget states

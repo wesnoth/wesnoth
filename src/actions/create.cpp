@@ -30,7 +30,6 @@
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
 #include "preferences/game.hpp"
-#include "game_data.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -38,7 +37,6 @@
 #include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
-#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_checkup.hpp"
@@ -658,7 +656,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
-	resources::game_events->pump().fire("unit_placed", current_loc);
+	std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire("unit_placed", current_loc));
 	if(!new_unit_itor.valid()) {
 		return place_recruit_result { true, 0, false };
 	}

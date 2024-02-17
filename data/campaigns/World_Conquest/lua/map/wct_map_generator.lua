@@ -55,7 +55,7 @@ local function run_postgeneration(map_data, id, scenario_content, nplayers, nhum
 	local fun = wesnoth.dofile(string.format("./postgeneration/%s", postgenfile))
 	fun()
 	print_time("postegen end")
-	wct_fix_impassible_item_spawn(_G.map)
+	wct_fix_impassible_item_spawn()
 	local map = _G.map.data
 	_G.map = nil
 	_G.prestart_event = nil
@@ -75,5 +75,5 @@ function wct_map_generator(default_id, postgen_id, length, villages, castle, ite
 	end
 end
 
-function world_conquest_tek_scenario_res()
+function world_conquest_tek_scenario_res(a, b, c)
 end

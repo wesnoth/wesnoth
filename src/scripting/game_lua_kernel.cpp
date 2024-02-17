@@ -126,7 +126,7 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
+#include "lua/wrapper_lauxlib.h"        // for luaL_checkinteger, lua_setfield, etc
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -1243,7 +1243,7 @@ static int intf_get_resource(lua_State *L)
 		return 1;
 	}
 	else {
-		return luaL_argerror(L, 1, ("Cannot find ressource with id '" + m + "'").c_str());
+		return luaL_argerror(L, 1, ("Cannot find resource with id '" + m + "'").c_str());
 	}
 }
 
@@ -4057,25 +4057,25 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 					new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
 					has_lua_filter = true;
 				} else {
-#define READ_ONE_FILTER(key) \
+#define READ_ONE_FILTER(key, tag) \
 					do { \
 						if(luaW_tableget(L, filterIdx, key)) { \
 							if(lua_isstring(L, -1)) { \
 								filters.add_child("insert_tag", config{ \
-									"name", "filter_" key, \
+									"name", tag, \
 									"variable", luaL_checkstring(L, -1) \
 								}); \
 							} else { \
-								filters.add_child("filter_" key, luaW_checkconfig(L, -1)); \
+								filters.add_child(tag, luaW_checkconfig(L, -1)); \
 							} \
 						} \
 					} while(false);
-					READ_ONE_FILTER("condition");
-					READ_ONE_FILTER("side");
-					READ_ONE_FILTER("unit");
-					READ_ONE_FILTER("attack");
-					READ_ONE_FILTER("second_unit");
-					READ_ONE_FILTER("second_attack");
+					READ_ONE_FILTER("condition", "filter_condition");
+					READ_ONE_FILTER("side", "filter_side");
+					READ_ONE_FILTER("unit", "filter");
+					READ_ONE_FILTER("attack", "filter_attack");
+					READ_ONE_FILTER("second_unit", "filter_second");
+					READ_ONE_FILTER("second_attack", "filter_second_attack");
 #undef READ_ONE_FILTER
 					if(luaW_tableget(L, filterIdx, "formula")) {
 						filters["filter_formula"] = luaL_checkstring(L, -1);

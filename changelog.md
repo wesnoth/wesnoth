@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, French
+   * Updated translations: Arabic, British English, Czech, Finnish, French
  ### Units
  ### User interface
  ### WML Engine
@@ -270,7 +270,7 @@
      * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13.
      * Ancient Wose - cost changed from 48 to 50.
      * Merman Entangler - cost changed from 46 to 42.
-     * Javelineer - cost changed from 48 to 55.
+     * Merman Javelineer - cost changed from 48 to 55.
      * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148.
    * Undead:
      * Skeleton - xp changed from 35 to 39.

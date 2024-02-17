@@ -24,7 +24,7 @@
 #include "ai/manager.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "resources.hpp"

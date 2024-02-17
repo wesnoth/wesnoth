@@ -16,11 +16,7 @@
 #pragma once
 
 #include "gui/widgets/styled_widget.hpp"
-
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
-
-class config;
 
 namespace gui2
 {
