@@ -163,7 +163,7 @@ private:
 		return vertical_scrollbar()->get_positioner_offset();
 	}
 
-	void place(const point& origin, const point& size);
+	void place(const point& origin, const point& size) override;
 
 	/** See @ref widget::calculate_best_size. */
 	point calculate_best_size() const override;
