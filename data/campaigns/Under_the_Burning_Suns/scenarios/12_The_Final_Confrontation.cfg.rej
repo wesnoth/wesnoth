@@ -1,0 +1,83 @@
+***************
+*** 913,929 ****
+          # Start spawning minions, increasing the number each turn.
+          {VARIABLE number_minions_to_spawn 1}
+          [event]
+-             name="turn $($turn_number+{ON_DIFFICULTY 2 2 1})"
+              delayed_variable_substitution=no
+              {VARIABLE number_minions_to_spawn 2}
+          [/event]
+          [event]
+-             name="turn $($turn_number+{ON_DIFFICULTY 4 3 3})"
+              delayed_variable_substitution=no
+              {VARIABLE number_minions_to_spawn 3}
+          [/event]
+          [event]
+-             name="turn $($turn_number+{ON_DIFFICULTY 6 5 5})"
+              delayed_variable_substitution=no
+              {VARIABLE number_minions_to_spawn 4}
+          [/event]
+--- 914,930 ----
+          # Start spawning minions, increasing the number each turn.
+          {VARIABLE number_minions_to_spawn 1}
+          [event]
++             name="turn $($turn_number+{ON_DIFFICULTY 3 2 1})"
+              delayed_variable_substitution=no
+              {VARIABLE number_minions_to_spawn 2}
+          [/event]
+          [event]
++             name="turn $($turn_number+{ON_DIFFICULTY 5 4 3})"
+              delayed_variable_substitution=no
+              {VARIABLE number_minions_to_spawn 3}
+          [/event]
+          [event]
++             name="turn $($turn_number+{ON_DIFFICULTY 7 6 5})"
+              delayed_variable_substitution=no
+              {VARIABLE number_minions_to_spawn 4}
+          [/event]
+***************
+*** 1049,1060 ****
+              value=$stored_alien.hitpoints
+          [/set_variable]
+  
+-         #        [modify_unit]
+-         #            [filter]
+-         #                type=Central Body
+-         #            [/filter]
+-         #            hitpoints=$this_unit.max_hitpoints
+-         #        [/modify_unit]
+  
+          [if]
+              [variable]
+--- 1050,1063 ----
+              value=$stored_alien.hitpoints
+          [/set_variable]
+  
++ #ifdef __UNUSED__
++         [modify_unit]
++             [filter]
++                 type=Central Body
++             [/filter]
++             hitpoints=$this_unit.max_hitpoints
++         [/modify_unit]
++ #endif
+  
+          [if]
+              [variable]
+***************
+*** 1154,1160 ****
+                  id=$victim_id
+              [/filter]
+  
+-             amount={ON_DIFFICULTY 10 11 12}
+              alignment=chaotic
+              damage_type=fire
+              kill=yes
+--- 1157,1163 ----
+                  id=$victim_id
+              [/filter]
+  
++             amount={ON_DIFFICULTY 8 9 10}
+              alignment=chaotic
+              damage_type=fire
+              kill=yes

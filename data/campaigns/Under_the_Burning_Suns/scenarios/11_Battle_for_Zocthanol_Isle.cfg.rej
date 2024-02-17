@@ -1,0 +1,129 @@
+***************
+*** 15,21 ****
+      {EXTRA_SCENARIO_MUSIC "heroes_rite.ogg"}
+  
+      victory_when_enemies_defeated=no
+-     {TURNS 44 40 36}
+  
+      {TWO_SUNS_DEFAULT_SCHEDULE}
+  
+--- 15,21 ----
+      {EXTRA_SCENARIO_MUSIC "heroes_rite.ogg"}
+  
+      victory_when_enemies_defeated=no
++     {TURNS 48 42 36}
+  
+      {TWO_SUNS_DEFAULT_SCHEDULE}
+  
+***************
+*** 61,68 ****
+          id=Kaleh
+          type=Quenoth Youth
+          canrecruit=yes
+-         gold=200
+-         {NO_INCOME}
+          controller=human
+          shroud=yes
+          fog=yes
+--- 61,68 ----
+          id=Kaleh
+          type=Quenoth Youth
+          canrecruit=yes
++         {GOLD 220 210 200}
++         {INCOME 3 2 1}
+          controller=human
+          shroud=yes
+          fog=yes
+***************
+*** 122,129 ****
+          id=Kelur
+          name= _ "Kelur"
+          canrecruit=yes
+-         {GOLD 125 150 150}
+-         {INCOME 15 17 19}
+          controller=ai
+          team_name=eloh_ally
+          user_team_name=_"Eloh Cultists"
+--- 122,129 ----
+          id=Kelur
+          name= _ "Kelur"
+          canrecruit=yes
++         {GOLD 100 125 150}
++         {INCOME 10 14 18}
+          controller=ai
+          team_name=eloh_ally
+          user_team_name=_"Eloh Cultists"
+***************
+*** 159,166 ****
+              {TRAIT_STRONG}
+              {TRAIT_RESILIENT}
+          [/modifications]
+-         {GOLD 125 150 150}
+-         {INCOME 15 17 19}
+          controller=ai
+          team_name=eloh_ally
+          user_team_name=_"Eloh Cultists"
+--- 159,166 ----
+              {TRAIT_STRONG}
+              {TRAIT_RESILIENT}
+          [/modifications]
++         {GOLD 100 125 150}
++         {INCOME 10 14 18}
+          controller=ai
+          team_name=eloh_ally
+          user_team_name=_"Eloh Cultists"
+***************
+*** 684,691 ****
+  
+          [modify_side]
+              side=7
+-             {INCOME 7 9 11}
+-             {GOLD 75 95 115}
+          [/modify_side]
+  
+          [unit]
+--- 688,695 ----
+  
+          [modify_side]
+              side=7
++             {INCOME 6 8 10}
++             {GOLD 70 90 110}
+          [/modify_side]
+  
+          [unit]
+***************
+*** 702,709 ****
+  
+          [modify_side]
+              side=8
+-             {INCOME 9 11 13}
+-             {GOLD 75 95 115}
+          [/modify_side]
+      [/event]
+  
+--- 706,713 ----
+  
+          [modify_side]
+              side=8
++             {INCOME 8 10 12}
++             {GOLD 70 90 110}
+          [/modify_side]
+      [/event]
+  
+***************
+*** 1217,1223 ****
+          [/message]
+  
+          [gold]
+-             amount=150
+              side=1
+          [/gold]
+      [/event]
+--- 1235,1241 ----
+          [/message]
+  
+          [gold]
++             amount={ON_DIFFICULTY 170 160 150}
+              side=1
+          [/gold]
+      [/event]
