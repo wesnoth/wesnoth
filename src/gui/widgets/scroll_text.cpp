@@ -135,9 +135,8 @@ void scroll_text::finalize_subclass()
 
 void scroll_text::place(const point& origin, const point& size) {
 	scrollbar_container::place(origin, size);
-	multiline_text* widget = get_internal_text_box();
 
-	if(widget) {
+	if(multiline_text* widget = get_internal_text_box()) {
 		const SDL_Rect& visible_area = content_visible_area();
 
 		if (widget->get_cursor_pos().x < visible_area.w/2.0) {
@@ -162,7 +161,7 @@ void scroll_text::place(const point& origin, const point& size) {
 			scroll_horizontal_scrollbar(scrollbar_base::BEGIN);
 			scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 		}
-		
+
 		set_max_size(widget->get_config_default_size());
 	}
 }
