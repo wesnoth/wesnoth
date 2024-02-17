@@ -101,7 +101,7 @@ public:
 	 */
 	virtual bool can_wrap() const override;
 
-private:
+protected:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 

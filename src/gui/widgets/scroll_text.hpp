@@ -144,6 +144,8 @@ private:
 
 	bool editable_;
 
+	point max_size_;
+
 	void finalize_subclass() override;
 
 	/** Used for moving scrollbars.
@@ -162,6 +164,12 @@ private:
 	}
 
 	void place(const point& origin, const point& size);
+
+	/** See @ref widget::calculate_best_size. */
+	point calculate_best_size() const override;
+
+	/** Sets the size of the text beyond which scrollbars should be visible. */
+	void set_max_size(point max_size);
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
