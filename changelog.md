@@ -25,6 +25,7 @@
      * Windows requires a compile-time change to Lua, so must use the in-tree Lua submodule.
  ### Terrain
  ### Translations
+   * New translation: Bengali
    * Updated translations: Arabic, British English, Czech, Finnish, French
  ### Units
    * War Harbinger: +3 HP (29 -> 32), XP to 100, cost +2g (41 -> 43), removed forest and village dodge modifiers
