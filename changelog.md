@@ -2,20 +2,47 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * Many minor bugfixes
    * Heir to the Throne
+     * Fix S17 to ensure the starting castle always has 6 hexes for recruiting (PR #8314)
+     * Clarify S11's objectives by editing the map (no string changes) (PR #8326)
      * Add decorations and map embellishments to S16, S19a and S22 (PR #8243)
      * Use swamp terrain instead of sand for S19b (PR #8243)
+   * Under the Burning Suns
+     * Improve continuity between events that can be triggered in various orders.
+     * Adjust Fighter unit line for easier early leveling and more late game staying power.
+   * World Conquest
+     * Fix the Bezoar artifact (issue #6513)
  ### Editor
  ### Multiplayer
+   * Assume that all players need a copy of an add-on, by defaulting `require_modification`/`require_campaign` to `yes` (PR #8135)
  ### Lua API
+   * Added documentation for linting and IDE support
  ### Packaging
+   * Add CMake and SCons options to use an already installed copy of Lua 5.4 (PR #8234)
+     * The system copy of Lua must be compiled as C++ rather than C, as Wesnoth uses C++ exceptions.
+     * Windows requires a compile-time change to Lua, so must use the in-tree Lua submodule.
  ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Czech, Finnish, French
  ### Units
+   * War Harbinger: +3 HP (29 -> 32), XP to 100, cost +2g (41 -> 43), removed forest and village dodge modifiers
+   * Dark Omen: removed forest and village dodge modifiers
+   * Raven: removed forest and village dodge modifiers
  ### User interface
+   * New multiline textbox and numerical spinner widgets (PR #8199)
  ### WML Engine
+   * Added a composite hero/leader ellipse, in case an author forgets to `UNMAKE_HERO` when converting to a leader (PR #8375)
+   * `[event]name=unit_placed` is now non-undoable by default (issue #7780)
+   * `[scroll]` now includes a delay, this was needed for visual effects such as the `QUAKE` macro
  ### Miscellaneous and Bug Fixes
+   * Fix some logs not being included in the logfile (issue #8108)
+   * Multiple fixes to handling of Lua errors, some of which could cause a crash (PR #8234)
+   * When WML specifies a unit or unit type’s gender, automatically include that in the .po files as a translation hint
+   * Make sure `transform_unit` doesn't heal the unit when removing objects (PR #8147)
+   * Fixed bugs in the rushers recruit AI (issue #8297)
+   * Savefiles now include the ID of the core in use
 
 ## Version 1.17.25
  ### Campaigns
