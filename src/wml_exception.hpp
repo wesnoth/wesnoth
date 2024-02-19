@@ -130,7 +130,7 @@ private:
 };
 
 /**
- * Returns a standard message for a missing wml key.
+ * Returns a standard message for a missing wml key (attribute).
  *
  * @param section                 The section in which the key should appear.
  *                                Shouldn't include leading or trailing brackets,
@@ -150,3 +150,16 @@ std::string missing_mandatory_wml_key(
 		, const std::string& key
 		, const std::string& primary_key = ""
 		, const std::string& primary_value = "");
+
+/**
+ * Returns a standard message for a missing wml child (tag).
+ *
+ * @param section                 The section in which the child should appear.
+ *                                Same meaning as for missing_mandatory_wml_key().
+ * @param tag                     The omitted tag.
+ *
+ * @returns                       The error message.
+ */
+std::string missing_mandatory_wml_tag(
+		  const std::string& section
+		, const std::string& tag);
