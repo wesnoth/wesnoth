@@ -132,7 +132,7 @@ protected:
 		update_layout();
 	}
 
-	/** Inherited from text_box_base, defaults the autoscroll argument to true. */
+	/** Inherited from text_box_base */
 	void set_cursor(const std::size_t offset, const bool select) override
 	{
 		text_box_base::set_cursor(offset, select);
