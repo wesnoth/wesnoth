@@ -24,6 +24,8 @@
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
 
+#include <iostream>
+
 #include <functional>
 
 #include <limits>

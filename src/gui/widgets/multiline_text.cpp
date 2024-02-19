@@ -212,7 +212,7 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 	line_num_ = get_line_num_from_offset(offset);
 
 	// moving scrollbars during click causes viewport to jump
-	set_cursor(offset, !start_selection, false);
+	set_cursor(offset, !start_selection, true);
 
 	update_canvas();
 	queue_redraw();

@@ -132,7 +132,7 @@ public:
 	/**
 	 * Exchanges a child in the grid.
 	 *
-	 * It replaced the child with a certain id with the new widget but doesn't
+	 * It replaces the child with a certain id with the new widget but doesn't
 	 * touch the other settings of the child.
 	 *
 	 * @param id                  The id of the widget to free.
