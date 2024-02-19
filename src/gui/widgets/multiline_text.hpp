@@ -132,16 +132,13 @@ protected:
 		update_layout();
 	}
 
-	/** Inherited from text_box_base. */
-	void set_cursor(const std::size_t offset, const bool select, const bool autoscroll = true)
+	/** Inherited from text_box_base */
+	void set_cursor(const std::size_t offset, const bool select) override
 	{
 		text_box_base::set_cursor(offset, select);
 		set_line_num_from_offset();
-
-		if (autoscroll) {
-			// Whenever cursor moves, this tells scroll_text to update the scrollbars
-			update_layout();
-		}
+		// Whenever cursor moves, this tells scroll_text to update the scrollbars
+		update_layout();
 	}
 
 	/** Inherited from text_box_base. */
