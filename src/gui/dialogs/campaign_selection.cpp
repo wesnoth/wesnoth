@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -384,6 +384,7 @@ void campaign_selection::pre_show(window& window)
 			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
 
 			mod_states_.push_back(active);
+			mod_ids_.emplace_back(mod->id);
 		}
 
 		mods_menu.set_values(mod_menu_values);
@@ -485,7 +486,7 @@ void campaign_selection::mod_toggled()
 
 	for(unsigned i = 0; i < mod_states_.size(); i++) {
 		if(mod_states_[i]) {
-			engine_.toggle_mod(i);
+			engine_.toggle_mod(mod_ids_[i]);
 		}
 	}
 

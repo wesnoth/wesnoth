@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -157,9 +157,9 @@ namespace game_config
 	 * Colors defined by WML [color_range] tags. In addition to team colors such as "red" and
 	 * "blue", this also contains the colors used on the minimap for "cave", "fungus" etc.
 	 */
-	extern std::map<std::string, color_range> team_rgb_range;
-	extern std::map<std::string, t_string> team_rgb_name;
-	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
+	extern std::map<std::string, color_range, std::less<>> team_rgb_range;
+	extern std::map<std::string, t_string, std::less<>> team_rgb_name;
+	extern std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
 
 	extern std::vector<std::string> default_colors;
 
@@ -187,8 +187,8 @@ namespace game_config
 
 	void add_color_info(const game_config_view& v);
 	void reset_color_info();
-	const std::vector<color_t>& tc_info(const std::string& name);
-	const color_range& color_info(const std::string& name);
+	const std::vector<color_t>& tc_info(std::string_view name);
+	const color_range& color_info(std::string_view name);
 
 	/**
 	 * Return a color corresponding to the value val

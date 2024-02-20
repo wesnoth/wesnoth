@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -20,11 +20,9 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 

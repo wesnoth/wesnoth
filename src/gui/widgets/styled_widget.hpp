@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -233,7 +233,7 @@ public:
 		return label_;
 	}
 
-	virtual void set_label(const t_string& label);
+	virtual void set_label(const t_string& text);
 
 	virtual void set_use_markup(bool use_markup);
 

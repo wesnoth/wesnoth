@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {

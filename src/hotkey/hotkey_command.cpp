@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -405,7 +405,7 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 	}
 
 	// Record the cleanup handler
-	cleanup_ = [i = iter] { registered_hotkeys.erase(i); };
+	cleanup_ = [id] { registered_hotkeys.erase(id); };
 }
 
 wml_hotkey_record::~wml_hotkey_record()

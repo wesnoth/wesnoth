@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2014-06-03 21:37+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -266,13 +266,13 @@ msgstr "Hoàng tử Haldric"
 msgid "Haldric"
 msgstr "Haldric"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:44
 msgid "Wesfolk Leader"
 msgstr "Lãnh tụ Wesfolk"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:59
 msgid "Wesfolk"
@@ -753,7 +753,7 @@ msgstr "Vậy ta sẽ gọi ngươi là gì?"
 msgid "The Lady Outlaw will do."
 msgstr "Cứ gọi là nữ tướng cướp."
 
-#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type, gender=female
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
@@ -1179,20 +1179,20 @@ msgid "Cleon"
 msgstr "Cleon"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Lollyra
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:61
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:114
 msgid "Cultists"
 msgstr "Tín đồ giáo phái"
 
-#. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:68
 msgid "Lollyra"
 msgstr "Lollyra"
 
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:94
 msgid "Clurka"
 msgstr "Clurka"
@@ -2425,7 +2425,7 @@ msgstr ""
 msgid "Bah, have it your way!"
 msgstr "Thôi được rồi!"
 
-#. [unit]: id=Lady Jessene, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:264
 msgid "Lady Jessene"
 msgstr "Nàng Jessene"
@@ -7424,12 +7424,12 @@ msgstr ""
 msgid "shadow wave"
 msgstr ""
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
 msgstr "Chỉ huy quý tộc"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
@@ -7444,12 +7444,12 @@ msgstr ""
 "người chỉ huy sử dụng kiếm thành thạo nhất, mặc dù họ cũng mang theo cung để "
 "sử dụng khi cần thiết. Nếu người chỉ huy bị mất, trận chiến cũng bại theo."
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
 msgstr "Đấu sĩ quý tộc"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
 #, fuzzy
 #| msgid ""
@@ -7465,12 +7465,12 @@ msgstr ""
 "trước đòn tấn công từ xa của kẻ thù. Tuy nhiên, họ có tiềm năng trở thành "
 "những người chỉ huy vĩ đại vào một ngày nào đó."
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
 msgstr "Chủ tướng quý tộc"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -7483,12 +7483,12 @@ msgstr ""
 "tướng sở hữu năng lực lãnh đạo, và cải thiện khả năng chiến đấu của tất cả "
 "các đơn vị lân cận có cấp độ thấp hơn."
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
 msgstr "Thanh niên quý tộc"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
@@ -7502,12 +7502,12 @@ msgstr ""
 msgid "training sword"
 msgstr "kiếm luyện tập"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
 msgid "female^Vampire Lady"
 msgstr "Nữ quái ma cà rồng"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -7537,12 +7537,12 @@ msgstr ""
 "cai quản và bảo vệ thần dân. Các vị vua có thể điều phối đòn tấn công của "
 "các đơn vị cấp 1 và 2, do đó tăng hiệu quả chiến đấu của chúng."
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
 msgid "female^Wesfolk Lady"
 msgstr "Nữ quái Wesfolk"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -7558,12 +7558,12 @@ msgstr ""
 "nghiệm quý báu. Những kinh nghiệm này, cũng như tài lãnh đạo bẩm sinh của "
 "cô, tiếp tục tăng theo thời gian."
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
 msgid "female^Wesfolk Leader"
 msgstr "Lãnh tụ Wesfolk"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:22
 #, fuzzy
 #| msgid ""
@@ -7587,12 +7587,12 @@ msgstr ""
 "nghiệm quý báu. Những kinh nghiệm này, cũng như tài lãnh đạo bẩm sinh của "
 "cô, tiếp tục tăng theo thời gian."
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
 msgstr "Nữ du đãng Wesfolk"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:21
 #, fuzzy
 #| msgid ""

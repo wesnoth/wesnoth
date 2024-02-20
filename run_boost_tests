@@ -4,7 +4,7 @@
 This script runs a sequence of C++ unit test scenarios.
 """
 
-import argparse, enum, os, re, subprocess, sys
+import argparse, os, subprocess, sys
 
 def get_tests(filename):
     test_list = []

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Dmitry Kovalenko <nephro.wes@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 #include "map/location.hpp"
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"

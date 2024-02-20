@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,17 +16,11 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/drawing.hpp"
-
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
-
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "gettext.hpp"
 #include "wml_exception.hpp"
-
-#include <functional>
 
 namespace gui2
 {

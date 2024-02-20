@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,7 +38,7 @@ std::vector<std::string> images_general;
 
 void gather_images(const config& from, std::vector<std::string>& to)
 {
-	const auto& im = utils::parenthetical_split(from["images"], ',');
+	const auto& im = utils::parenthetical_split(from["images"].str(), ',');
 	to.insert(to.end(), im.begin(), im.end());
 }
 

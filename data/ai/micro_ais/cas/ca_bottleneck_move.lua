@@ -1,4 +1,5 @@
 local LS = wesnoth.require "location_set"
+---@type ai_helper_lib
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
@@ -26,6 +27,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
             dummy_unit.x, dummy_unit.y = x, y
 
             -- Find lowest movement cost to own front-line hexes
+            ---@type number, location[]?
             local min_cost, best_path = math.huge, nil
             map:iter(function(xm, ym, v)
                 local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
@@ -35,6 +37,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
             end)
 
             -- And the same to the enemy front line
+            ---@type number, location[]?
             local min_cost_enemy, best_path_enemy = math.huge, nil
             enemy_map:iter(function(xm, ym, v)
                 local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
@@ -321,6 +324,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
     for _,enemy in ipairs(enemies) do
         for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
             if BD_is_my_territory:get(xa, ya) then
+                ---@type unit?
                 local unit_in_way = wesnoth.units.get(xa, ya)
                 if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                     unit_in_way = nil
@@ -439,6 +443,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
         BD_bottleneck_moves_done = true
     else
         -- If there's another unit in the best location, moving it out of the way becomes the best move
+        ---@type unit?
         local unit_in_way = wesnoth.units.find_on_map { x = best_hex[1], y = best_hex[2],
             { "not", { id = best_unit.id } }
         }[1]

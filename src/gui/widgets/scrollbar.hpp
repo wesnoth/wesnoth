@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -179,13 +179,13 @@ public:
 		return pixels_per_step_;
 	}
 
-protected:
-	void finalize_setup();
-
 	unsigned get_positioner_offset() const
 	{
 		return positioner_offset_;
 	}
+
+protected:
+	void finalize_setup();
 
 	unsigned get_positioner_length() const
 	{

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2023
+	Copyright (C) 2018 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 #include "game_board.hpp"
 #include "play_controller.hpp"
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)

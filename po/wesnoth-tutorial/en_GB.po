@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-04-17 07:45+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -79,7 +79,7 @@ msgstr "Konrad"
 #. [lua]: wml_actions.select_character
 #. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
-#: data/campaigns/tutorial/lua/character_selection.lua:24
+#: data/campaigns/tutorial/lua/character_selection.lua:25
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -2352,7 +2352,7 @@ msgid "Fighter"
 msgstr "Fighter"
 
 #. [unit_type]: id=Fighter, race=human
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2364,7 +2364,7 @@ msgstr ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Fighter"
@@ -2389,7 +2389,7 @@ msgid "Warrior"
 msgstr "Warrior"
 
 #. [unit_type]: id=Warrior, race=human
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""
@@ -2399,7 +2399,7 @@ msgstr ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
 msgid "female^Warrior"
 msgstr "Warrior"

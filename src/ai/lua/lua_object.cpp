@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Dmitry Kovalenko <nephro.wes@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,7 @@
 #include "scripting/lua_common.hpp"
 #include "resources.hpp"
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 namespace ai {
 

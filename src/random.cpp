@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include <boost/random/random_device.hpp>
 
 #include <cassert>
-#include <cstdlib>
 #include <limits>
 #include <random>
 

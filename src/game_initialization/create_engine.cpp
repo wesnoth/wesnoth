@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -548,12 +548,12 @@ void create_engine::set_current_era_index(const std::size_t index, bool force)
 	dependency_manager_->try_era_by_index(index, force);
 }
 
-bool create_engine::toggle_mod(int index, bool force)
+bool create_engine::toggle_mod(const std::string& id, bool force)
 {
 	force |= state_.classification().type != campaign_type::type::multiplayer;
 
-	bool is_active = dependency_manager_->is_modification_active(index);
-	dependency_manager_->try_modification_by_index(index, !is_active, force);
+	bool is_active = dependency_manager_->is_modification_active(id);
+	dependency_manager_->try_modification_by_id(id, !is_active, force);
 
 	state_.classification().active_mods = dependency_manager_->get_modifications();
 
@@ -791,7 +791,6 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 				extras.push_back(std::move(new_extras_metadata));
 			}
 			else {
-				//TODO: use a more visible error message.
 				ERR_CF << "found " << extra_name << " with id=" << extra["id"] << " twice";
 			}
 		}

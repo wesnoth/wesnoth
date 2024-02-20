@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 #include "random.hpp"
 #include "SDL2/SDL_timer.h" // for SDL_GetTicks
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 #include <cstdio>
 #include <cmath>

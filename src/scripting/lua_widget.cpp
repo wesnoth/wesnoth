@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,7 @@
 #include "scripting/push_check.hpp"
 
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 #include <type_traits>
 

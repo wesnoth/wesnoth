@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #pragma once
 
 #include <cassert>
-#include <list>
 #include <memory>
 
 #include "serialization/preprocessor.hpp"
@@ -186,8 +185,6 @@ protected:
 
 	void set_force_invalid_cache(bool);
 };
-
-class fake_transaction;
 
 /**
  * Used to share macros between cache objects

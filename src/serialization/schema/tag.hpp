@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,6 @@
 #include <queue>
 
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/range/iterator.hpp>
 #include "config.hpp"
 #include "serialization/schema/key.hpp"
 

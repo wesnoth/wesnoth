@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -46,34 +46,39 @@ struct wesnothd_rejected_client_error : public game::error
  * This means we cannot continue with the game but we can stay connected to wesnothd and start a new game.
  * TODO: find a short name
  */
-struct ingame_wesnothd_error : public wesnothd_error, public lua_jailbreak_exception
+struct ingame_wesnothd_error final : public wesnothd_error, public lua_jailbreak_exception
 {
 	ingame_wesnothd_error(const std::string& error)
 		: wesnothd_error(error)
 	{
+		this->store();
 	}
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ingame_wesnothd_error)
 };
 
-struct leavegame_wesnothd_error : ingame_wesnothd_error
+struct leavegame_wesnothd_error final : public wesnothd_error, public lua_jailbreak_exception
 {
 	leavegame_wesnothd_error(const std::string& error)
-		: ingame_wesnothd_error(error)
+		: wesnothd_error(error)
 	{
+		this->store();
 	}
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(leavegame_wesnothd_error)
 };
 
 /**
  * An error occurred inside the underlying network communication code (boost asio)
  * TODO: find a short name
  */
-struct wesnothd_connection_error : public wesnothd_error, public lua_jailbreak_exception
+struct wesnothd_connection_error final : public wesnothd_error, public lua_jailbreak_exception
 {
 	wesnothd_connection_error(const boost::system::error_code& error, const std::string& msg = "")
 		: wesnothd_error(error.message())
 		, user_message(msg)
 	{
+		this->store();
 	}
 
 	/** User-friendly and potentially translated message for use in the UI. */

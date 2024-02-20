@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -314,12 +314,13 @@ struct error : public game::error
 };
 
 /** Type that can be thrown as an exception to quit to desktop. */
-class quit : public lua_jailbreak_exception
+class quit final : public lua_jailbreak_exception
 {
 public:
 	quit()
 		: lua_jailbreak_exception()
 	{
+		this->store();
 	}
 
 private:

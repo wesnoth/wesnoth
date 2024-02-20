@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -367,7 +367,7 @@ public:
 	const std::vector<extras_metadata_ptr>& get_const_extras_by_type(const MP_EXTRA extra_type) const;
 	std::vector<extras_metadata_ptr>& get_extras_by_type(const MP_EXTRA extra_type);
 
-	bool toggle_mod(int index, bool force = false);
+	bool toggle_mod(const std::string& id, bool force = false);
 
 	bool generator_assigned() const;
 	bool generator_has_settings() const;

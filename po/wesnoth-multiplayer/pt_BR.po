@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-01-13 17:10-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -198,9 +198,9 @@ msgstr ""
 "Essa era ainda se encontra em desenvolvimento. Se encontrar algum problema "
 "com ela, por favor entre em contato conosco pelo fórum."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
-#: data/multiplayer/eras.lua:53
+#: data/multiplayer/eras.lua:113
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
@@ -208,9 +208,9 @@ msgstr ""
 "<span strikethrough='true' foreground='$side_color'>Lado $side_number</"
 "span>:  Perdeu todas as suas unidades"
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, any side that still has units left
-#: data/multiplayer/eras.lua:69
+#: data/multiplayer/eras.lua:118
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
@@ -220,29 +220,29 @@ msgstr ""
 "= $income  Pontuação de unidades = $units  Ouro = $gold\n"
 "Total: <b>$total</b>"
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:84
+#: data/multiplayer/eras.lua:127
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr ""
 "<span foreground='$side_color'>Lado $side_number</span> tem a vantagem."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:89
+#: data/multiplayer/eras.lua:132
 msgid "Sides $side_number and $other_side_number are tied."
 msgstr "Os lados $side_number and $other_side_number estão empatados."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:94
+#: data/multiplayer/eras.lua:137
 msgid "Sides $winners are tied."
 msgstr "Os lados $winners estão empatados."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-#: data/multiplayer/eras.lua:100
+#: data/multiplayer/eras.lua:142
 msgid "dialog^Turns Over"
 msgstr "Os Turnos Acabaram"
 
@@ -1937,7 +1937,7 @@ msgstr ""
 msgid "Statue of Sulla"
 msgstr "Estátua de Sulla"
 
-#. [unit]
+#. [unit]: gender=female
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "

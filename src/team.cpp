@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -948,7 +948,7 @@ bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 const color_range team::get_side_color_range(int side)
 {
 	std::string index = get_side_color_id(side);
-	std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(index);
+	auto gp = game_config::team_rgb_range.find(index);
 
 	if(gp != game_config::team_rgb_range.end()) {
 		return (gp->second);

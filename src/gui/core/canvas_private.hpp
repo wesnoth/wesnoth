@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2023
+	Copyright (C) 2007 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -447,6 +447,12 @@ private:
 
 	/** The maximum height for the text. */
 	typed_formula<int> maximum_height_;
+
+	/** Start and end offsets for highlight */
+	typed_formula<int> highlight_start_;
+	typed_formula<int> highlight_end_;
+	/** The color to be used for highlighting */
+	typed_formula<color_t> highlight_color_;
 };
 
 }

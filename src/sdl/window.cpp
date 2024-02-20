@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,9 +16,7 @@
 #include "sdl/window.hpp"
 
 #include "sdl/exception.hpp"
-#include "sdl/input.hpp"
 #include "sdl/surface.hpp"
-#include "sdl/utils.hpp"
 
 #include <SDL2/SDL_render.h>
 

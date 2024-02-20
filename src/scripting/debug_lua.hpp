@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include "lua/lualib.h"
+#include "lua/wrapper_lualib.h"
 
 void ds(lua_State *L, const bool verbose_table = true);
 

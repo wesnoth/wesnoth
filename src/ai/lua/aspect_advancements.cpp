@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Felix Bauer <fehlxb+wesnoth@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,7 @@
 #include "ai/lua/aspect_advancements.hpp"
 
 #include "log.hpp"                // for LOG_STREAM, logger, etc
-#include "lua/lauxlib.h"                // for luaL_ref, LUA_REFNIL, lua_isstring, etc
+#include "lua/wrapper_lauxlib.h"        // for luaL_ref, LUA_REFNIL, lua_isstring, etc
 #include "map/location.hpp"             // for map_location
 #include "serialization/string_utils.hpp"  // for split
 #include "units/unit.hpp"

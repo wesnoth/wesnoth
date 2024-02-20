@@ -32,11 +32,11 @@ jobs:
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
     steps:
-    - { name: Checkout repository, uses: actions/checkout@v3, with: { submodules: "recursive" } }
+    - { name: Checkout repository, uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -54,12 +54,12 @@ jobs:
           libboost-serialization1.74-dev libboost-locale1.74-dev libboost-regex1.74-dev libboost-random1.74-dev \
           libboost-program-options1.74-dev libboost-thread1.74-dev libboost-context1.74-dev libboost-test-dev \
           libboost-coroutine1.74-dev libasio-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libvorbis-dev \
-          libpango1.0-dev libssl-dev libcurl4-openssl-dev
+          libpango1.0-dev libssl-dev libcurl4-openssl-dev liblua5.4-dev
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+      uses: github/codeql-action/autobuild@v3
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"

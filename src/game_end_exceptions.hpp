@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -34,7 +34,7 @@ class config;
  * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
  * Never thrown during replays.
  */
-class return_to_play_side_exception : public lua_jailbreak_exception, public std::exception
+class return_to_play_side_exception final : public lua_jailbreak_exception, public std::exception
 {
 public:
 
@@ -42,6 +42,7 @@ public:
 		: lua_jailbreak_exception()
 		, std::exception()
 	{
+		this->store();
 	}
 	const char * what() const noexcept { return "return_to_play_side_exception"; }
 private:
@@ -49,7 +50,7 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(return_to_play_side_exception)
 };
 
-class quit_game_exception
+class quit_game_exception final
 	: public lua_jailbreak_exception
 	, public std::exception
 {
@@ -59,6 +60,7 @@ public:
 		: lua_jailbreak_exception()
 		, std::exception()
 	{
+		this->store();
 	}
 	const char * what() const noexcept { return "quit_game_exception"; }
 private:

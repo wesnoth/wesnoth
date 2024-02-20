@@ -100,6 +100,7 @@ function wml_actions.store_gold(cfg)
 	if team then wml.variables[cfg.variable or "gold"] = team.gold end
 end
 
+---@diagnostic disable-next-line: redundant-parameter
 function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		wml.error "[clear_variable] missing required name= attribute."
@@ -454,6 +455,8 @@ function wml_actions.capture_village(cfg)
 	local locs = wesnoth.map.find(cfg)
 
 	for i, loc in ipairs(locs) do
+		-- The fire_event parameter doesn't currently exist but probably should someday
+		---@diagnostic disable-next-line : redundant-parameter
 		wesnoth.map.set_owner(loc[1], loc[2], side, fire_event)
 	end
 end

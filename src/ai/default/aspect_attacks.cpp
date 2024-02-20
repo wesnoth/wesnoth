@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,7 @@
 #include "ai/manager.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "resources.hpp"

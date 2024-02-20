@@ -29,12 +29,6 @@ endfunction()
 # Options
 #
 
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
-	message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
-else()
-	message("-- Lua submodule found.")
-endif()
-
 # Adhere to GNU filesystem layout conventions
 include(GNUInstallDirs)
 
@@ -60,6 +54,26 @@ option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
 set(BOOST_VERSION "1.67")
 
+if(NOT WIN32)
+	set(Lua_FIND_VERSION_MAJOR 5)
+	set(Lua_FIND_VERSION_MINOR 4)
+	option(ENABLE_SYSTEM_LUA "Enable use of system Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} (compiled as C++)" OFF)
+endif()
+if(ENABLE_SYSTEM_LUA)
+	set(Lua_FIND_VERSION_EXACT ON)
+	set(Lua_FIND_VERSION_COUNT 2)
+	include(FindLua)
+	if(NOT LUA_FOUND)
+		message(FATAL_ERROR "Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} C++ not found. Try setting 'LUA_DIR'.")
+	endif()
+else()
+	if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
+		message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+	else()
+		message("-- Lua submodule found.")
+	endif()
+endif()
+
 # set what std version to use
 if(NOT CXX_STD)
 	set(CXX_STD "17")
@@ -70,7 +84,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # forbid defaulting to gnu++NN instead of c++NN
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(OpenSSL 3.0 REQUIRED)
+find_package(OpenSSL 1.0 REQUIRED)
 
 if(APPLE)
 	find_library(APPKIT_LIBRARY AppKit REQUIRED)
@@ -88,7 +102,7 @@ find_package(Python)
 
 find_package(X11)
 
-if(NOT WIN32)
+if(NOT WIN32 AND NOT ENABLE_SYSTEM_LUA)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
 endif()
@@ -189,6 +203,18 @@ if(NOT MSVC)
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
+	endif()
+
+	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU"
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 14)
+		# GCC-13 added this new warning, and included it in -Wextra,
+		# however in GCC-13 it has a lot of false positives.
+		#
+		# It's likely to generate false postives with GCC-14 too, but
+		# I'm using a narrow version check as GCC-14 is still in dev.
+		# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Wno-dangling-reference")
 	endif()
 
 ### Set strict compiler flags.

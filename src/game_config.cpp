@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -140,11 +140,11 @@ std::vector<color_t> red_green_scale_text;
 static std::vector<color_t> blue_white_scale;
 static std::vector<color_t> blue_white_scale_text;
 
-std::map<std::string, color_range> team_rgb_range;
+std::map<std::string, color_range, std::less<>> team_rgb_range;
 // Map [color_range]id to [color_range]name, or "" if no name
-std::map<std::string, t_string> team_rgb_name;
+std::map<std::string, t_string, std::less<>> team_rgb_name;
 
-std::map<std::string, std::vector<color_t>> team_rgb_colors;
+std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
 
 std::vector<std::string> default_colors;
 
@@ -501,7 +501,7 @@ void reset_color_info()
 	team_rgb_range.clear();
 }
 
-const color_range& color_info(const std::string& name)
+const color_range& color_info(std::string_view name)
 {
 	auto i = team_rgb_range.find(name);
 	if(i != team_rgb_range.end()) {
@@ -521,7 +521,7 @@ const color_range& color_info(const std::string& name)
 	return color_info(name);
 }
 
-const std::vector<color_t>& tc_info(const std::string& name)
+const std::vector<color_t>& tc_info(std::string_view name)
 {
 	auto i = team_rgb_colors.find(name);
 	if(i != team_rgb_colors.end()) {

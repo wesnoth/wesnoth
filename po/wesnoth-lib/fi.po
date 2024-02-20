@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2023-01-05 16:34+0200\n"
+"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"PO-Revision-Date: 2024-01-21 14:30+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2322,7 +2322,7 @@ msgid " (Press ‘$hotkey’ for more information)"
 msgstr "(Paina '$hotkey' tietääksesi enemmän)"
 
 #. [button]: id=search
-#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:446
+#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
 msgid "Search"
 msgstr "Etsi"
 
@@ -2409,7 +2409,7 @@ msgstr "Päivitä lisäosa"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:645
-#: src/gui/widgets/addon_list.cpp:265
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Julkaise lisäosa"
 
@@ -2443,7 +2443,7 @@ msgstr "Viestitys"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:459 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:601 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2465,10 +2465,8 @@ msgstr "Profiili"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Ylennykset"
+msgstr "Saavutukset"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2477,10 +2475,8 @@ msgstr "Vahvista"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Uudelleennimeä"
+msgstr "Käyttäjänimi:"
 
 #. [label]
 #. [grid]
@@ -2662,7 +2658,7 @@ msgstr "Päivitetty:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:560
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:559
 msgid "No description available."
 msgstr "Ei kuvausta."
 
@@ -2685,10 +2681,8 @@ msgstr "Sivusto:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -2762,8 +2756,6 @@ msgstr "Lisäosamanageri"
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Lisäosan tiedot"
 
@@ -2948,7 +2940,7 @@ msgstr "Pelaa"
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
-#: src/gui/dialogs/editor/edit_pbl.cpp:191
+#: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "Difficulty"
 msgstr "Vaikeusaste:"
 
@@ -4083,10 +4075,8 @@ msgstr "Loki:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Kuvankaappaus"
+msgstr "Kuvakaappaukset:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:171
@@ -4142,19 +4132,17 @@ msgstr "Kopioi koko raportti leikepöydälle"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Avaa lokitiedosto"
+msgstr "Lokitiedosto"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Avaa lokitiedoston, joka saattaa sisältää hyödyllistä virhetilatietoa"
+msgstr ""
+"Avaa nykyisen istunnon lokitiedoston, joka saattaa sisältää hyödyllistä vian "
+"etsintä tietoa."
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4256,10 +4244,8 @@ msgstr "Ladataan..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Yleiset"
+msgstr "Yleinen aula"
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:86
@@ -4359,7 +4345,7 @@ msgstr "Asetukset"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Otteluhistoria"
 
@@ -5051,7 +5037,7 @@ msgstr "Peliaula"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:517
 msgid "Waiting for players to join..."
 msgstr "Odotetaan pelaajien liittyvän..."
 
@@ -5076,7 +5062,7 @@ msgid "Login:"
 msgstr "Käyttäjänimi:"
 
 #. [button]: id=replay_download
-#: data/gui/window/mp_match_history.cfg:144
+#: data/gui/window/mp_match_history.cfg:159
 #, fuzzy
 #| msgid "Downloads"
 msgid "Download"
@@ -5084,15 +5070,34 @@ msgstr "Latauksia"
 
 #. [label]: id=players
 #. [label]: id=modifications
-#: data/gui/window/mp_match_history.cfg:161
-#: data/gui/window/mp_match_history.cfg:178
+#: data/gui/window/mp_match_history.cfg:185
+#: data/gui/window/mp_match_history.cfg:223
 #, fuzzy
 #| msgid "None"
 msgid "None"
 msgstr "tyhjää"
 
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:375
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:388
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "Pelaajia:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:401
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "Muunnelmat"
+
 #. [label]
-#: data/gui/window/mp_match_history.cfg:328
+#: data/gui/window/mp_match_history.cfg:450
 #, fuzzy
 #| msgid "Players:"
 msgid "Player:"
@@ -5101,44 +5106,25 @@ msgstr "Pelaajia:"
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
 #. [text_box]: id=search_content
-#: data/gui/window/mp_match_history.cfg:340
-#: data/gui/window/mp_match_history.cfg:382
-#: data/gui/window/mp_match_history.cfg:406
+#: data/gui/window/mp_match_history.cfg:462
+#: data/gui/window/mp_match_history.cfg:506
+#: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:351
+#: data/gui/window/mp_match_history.cfg:474
 #, fuzzy
 #| msgid "Content"
 msgid "Content Type:"
 msgstr "Sisältö"
 
 #. [label]
-#: data/gui/window/mp_match_history.cfg:370
+#: data/gui/window/mp_match_history.cfg:494
 #, fuzzy
 #| msgid "Team name:"
 msgid "Game name:"
 msgstr "Joukkueen nimi:"
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:561
-msgid "Info"
-msgstr ""
-
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:574
-#, fuzzy
-#| msgid "Players:"
-msgid "Players"
-msgstr "Pelaajia:"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:587
-#: src/gui/dialogs/multiplayer/lobby.cpp:433
-msgid "Modifications"
-msgstr "Muunnelmat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6387,11 +6373,11 @@ msgid "operating_system^<unknown>"
 msgstr "<tuntematon>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:691
+#: src/filesystem.cpp:690
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<suhteellinen polku joka ei ala pisteellä>"
 
-#: src/filesystem.cpp:694
+#: src/filesystem.cpp:693
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -6400,11 +6386,11 @@ msgstr ""
 "kenoviivalla"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:759 src/filesystem.cpp:781
+#: src/filesystem.cpp:758 src/filesystem.cpp:780
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<suhteellinen polku>"
 
-#: src/filesystem.cpp:762 src/filesystem.cpp:784
+#: src/filesystem.cpp:761 src/filesystem.cpp:783
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6422,11 +6408,11 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1763
+#: src/filesystem.cpp:1762
 msgid "language code for localized resources^en_US"
 msgstr "fi"
 
-#: src/font/text.cpp:842
+#: src/font/text.cpp:886
 #, fuzzy
 #| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
@@ -6530,7 +6516,7 @@ msgstr[1] "$num sekuntit"
 msgid "Image doesn't fit on canvas."
 msgstr "Kuva ei sovi kankaaseen."
 
-#: src/gui/core/canvas.cpp:414
+#: src/gui/core/canvas.cpp:417
 msgid "Text has a font size of 0."
 msgstr "Tekstillä on fonttikoko 0."
 
@@ -6544,8 +6530,8 @@ msgstr "Tilannetta tai piirtoaluetta ei ole määritetty."
 msgid "No resolution defined."
 msgstr "Resoluutiota ei ole määritetty."
 
-#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
+#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
 #: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
@@ -6724,19 +6710,19 @@ msgstr "Maastonmuokkaus"
 msgid "addon_tag^Players can change the terrain"
 msgstr "Pelaajat voivat muokkaa maastoa"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Ei asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Julkaistu, ei asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Julkaistu"
 
@@ -6764,23 +6750,23 @@ msgstr "Asennettu ($local_version|), vanhentunut palvelimessa"
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Julkaistu ($local_version| asennettu), vanhentunut palvelimessa"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Asennettu, ei valmis julkaisuun"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Valmis julkaisuun"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Asennettu, rikki"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Julkaistu, rikki"
 
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Tuntematon"
 
@@ -6925,7 +6911,7 @@ msgid ""
 "game data."
 msgstr ""
 
-#: src/gui/dialogs/campaign_selection.cpp:395
+#: src/gui/dialogs/campaign_selection.cpp:396
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "Ei muunnelmia"
@@ -6971,110 +6957,110 @@ msgstr ""
 "Nykyinen valittu muunnelma ei ole yhteensopiva kokoonpanosi kanssa.\n"
 "Ole hyvä ja valitse yhteensopivampi."
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:172
+#: src/gui/dialogs/editor/edit_pbl.cpp:173
 #, fuzzy
 #| msgid "Forest"
 msgid "Core"
 msgstr "metsä"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:173
+#: src/gui/dialogs/editor/edit_pbl.cpp:174
 #, fuzzy
 #| msgid "Campaign"
 msgid "Campaign"
 msgstr "Kampanjat"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:174
+#: src/gui/dialogs/editor/edit_pbl.cpp:175
 #, fuzzy
 #| msgid "Campaign"
 msgid "Hybrid Campaign"
 msgstr "Kampanjat"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:175
+#: src/gui/dialogs/editor/edit_pbl.cpp:176
 #, fuzzy
 #| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
 msgstr "Moninpelikampanja"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:176
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
 #, fuzzy
 #| msgid "Scenario start"
 msgid "Scenario"
 msgstr "Skenaarion tavoitteet"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:177
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
 #, fuzzy
 #| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
 msgstr "Moninpelihälytykset"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:178
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
 #, fuzzy
 #| msgid "Action"
 msgid "Faction"
 msgstr "Toiminto"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:179
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "Era"
 msgstr "Aikakausi"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:180
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Map Pack"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:181
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
 #, fuzzy
 #| msgid "Modifications"
 msgid "Modification"
 msgstr "Muunnelmat"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:182
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Media"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:183
+#: src/gui/dialogs/editor/edit_pbl.cpp:184
 #, fuzzy
 #| msgid "Other Games"
 msgid "Other"
 msgstr "Muut pelit"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:189
+#: src/gui/dialogs/editor/edit_pbl.cpp:190
 #, fuzzy
 #| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Yhteistyö"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:190
+#: src/gui/dialogs/editor/edit_pbl.cpp:191
 #, fuzzy
 #| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Kosmeettinen"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:192
+#: src/gui/dialogs/editor/edit_pbl.cpp:193
 msgid "RNG"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:193
+#: src/gui/dialogs/editor/edit_pbl.cpp:194
 #, fuzzy
 #| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Eloonjäänti"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:194
+#: src/gui/dialogs/editor/edit_pbl.cpp:195
 #, fuzzy
 #| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "Maastonmuokkaus"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:373
+#: src/gui/dialogs/editor/edit_pbl.cpp:374
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:373
+#: src/gui/dialogs/editor/edit_pbl.cpp:374
 msgid "Success"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:403
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose an icon"
@@ -7390,7 +7376,7 @@ msgid "lua console"
 msgstr "lua-konsoli"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:501
 msgid "Random"
 msgstr "Satunnainen"
 
@@ -7540,36 +7526,36 @@ msgstr "Satunnaiset kartat"
 msgid "No games found."
 msgstr "Pelejä ei löytynyt."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
 msgid "No eras found."
 msgstr "Aikakausia ei löytynyt."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:239
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
 msgid "No eras found"
 msgstr "Aikakausia ei löytynyt"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:506
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:505
 msgid "No eras available for this game."
 msgstr "Aikakautta ei valittu tälle pelille."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
 msgid "number of players^$min to $max"
 msgstr "$min–$max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:821
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
 msgstr "Valitulla pelillä ei ole osapuolia!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game cannot be created."
 msgstr "Valittua peliä ei voida luoda."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
 msgstr "Valitse aloitusskenaario"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Select at which point to begin this campaign."
 msgstr "Valitse mistä kohtaa kampanjaa aloitetaan."
 
@@ -7594,7 +7580,7 @@ msgid "empty"
 msgstr "tyhjä"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:114
 msgid "this game"
 msgstr "tämä peli"
 
@@ -7608,11 +7594,11 @@ msgstr "Aula"
 msgid "Game"
 msgstr "Pelit"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:518
 msgid "Waiting for players to choose factions..."
 msgstr "Odotetaan pelaajien ryhmien valintaa..."
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:48
 msgid "The End"
 msgstr "Loppu"
 
@@ -7802,40 +7788,40 @@ msgstr "Vapauta yksikkö"
 msgid "No default gui defined."
 msgstr "Vakiokäyttöliittymää ei ole määritetty."
 
-#: src/gui/widgets/addon_list.cpp:119
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "Asennettu, päivitettävissä"
 
-#: src/gui/widgets/addon_list.cpp:119
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "Julkaistu, päivitettävissä"
 
-#: src/gui/widgets/addon_list.cpp:123
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "Asennettu, vanhentunut palvelimella"
 
-#: src/gui/widgets/addon_list.cpp:123
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "Julkaistu, vanhentunut palvelimella"
 
-#: src/gui/widgets/addon_list.cpp:296
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Poista lisäosa palvelimesta"
 
-#: src/gui/widgets/button.cpp:164 src/gui/widgets/button.cpp:165
-#: src/gui/widgets/button.cpp:166 src/gui/widgets/button.cpp:167
+#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
+#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
 msgid "Missing required state for button"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:299
+#: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
 msgstr "yksityisviesti henkilölle $receiver"
 
-#: src/gui/widgets/chatbox.cpp:383
+#: src/gui/widgets/chatbox.cpp:381
 msgid "Joined <i>$name</i>"
 msgstr "Liityttiin <i>$name</i>"
 
-#: src/gui/widgets/chatbox.cpp:389
+#: src/gui/widgets/chatbox.cpp:387
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -7843,19 +7829,19 @@ msgstr ""
 "Yksityisviestittely <i>$name</i> kanssa aloitettu. Jos et halua vastaanottaa "
 "viestejä tältä pelaajalta, kirjoita <i>/ignore $name</i>"
 
-#: src/gui/widgets/chatbox.cpp:657
+#: src/gui/widgets/chatbox.cpp:655
 msgid "Missing required background for chatbox"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:658
+#: src/gui/widgets/chatbox.cpp:656
 msgid "Missing required foreground for chatbox"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:660
+#: src/gui/widgets/chatbox.cpp:658
 msgid "Missing required grid for chatbox"
 msgstr ""
 
-#: src/gui/widgets/drawing.cpp:119
+#: src/gui/widgets/drawing.cpp:113
 msgid "Missing [draw] in drawing"
 msgstr ""
 
@@ -7863,62 +7849,62 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Pakollista widgettiä ”$id” ei ole määritetty."
 
-#: src/gui/widgets/horizontal_scrollbar.cpp:133
-#: src/gui/widgets/horizontal_scrollbar.cpp:134
-#: src/gui/widgets/horizontal_scrollbar.cpp:135
-#: src/gui/widgets/horizontal_scrollbar.cpp:136
+#: src/gui/widgets/horizontal_scrollbar.cpp:128
+#: src/gui/widgets/horizontal_scrollbar.cpp:129
+#: src/gui/widgets/horizontal_scrollbar.cpp:130
+#: src/gui/widgets/horizontal_scrollbar.cpp:131
 msgid "Missing required state for horizontal scrollbar"
 msgstr ""
 
-#: src/gui/widgets/image.cpp:115
+#: src/gui/widgets/image.cpp:112
 msgid "Missing required state for image control"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:127
+#: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
 msgstr "Linkkien avaamista ei tueta, ota yhteyttä paketoijaan"
 
-#: src/gui/widgets/label.cpp:145
+#: src/gui/widgets/label.cpp:141
 msgid "Open link?"
 msgstr "Avaa linkki?"
 
-#: src/gui/widgets/label.cpp:176
+#: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
 msgstr "Linkki kopioitu!"
 
-#: src/gui/widgets/label.cpp:241 src/gui/widgets/label.cpp:242
+#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
 msgid "Missing required state for text label control"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/listbox.cpp:711
+#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
+#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "’list_data’:lla täytyy olla sama määrä kolumneja kuin ’list_definition’:lla."
 
-#: src/gui/widgets/listbox.cpp:771 src/gui/widgets/listbox.cpp:814
-#: src/gui/widgets/listbox.cpp:857 src/gui/widgets/scrollbar_panel.cpp:92
+#: src/gui/widgets/listbox.cpp:768 src/gui/widgets/listbox.cpp:811
+#: src/gui/widgets/listbox.cpp:854 src/gui/widgets/scrollbar_panel.cpp:92
 msgid "No list defined."
 msgstr "Listaa ei ole määritetty."
 
-#: src/gui/widgets/listbox.cpp:776 src/gui/widgets/listbox.cpp:819
-#: src/gui/widgets/listbox.cpp:862
+#: src/gui/widgets/listbox.cpp:773 src/gui/widgets/listbox.cpp:816
+#: src/gui/widgets/listbox.cpp:859
 msgid "A 'list_definition' should contain one row."
 msgstr "’list_definition’:lla pitäisi olla yksi rivi."
 
-#: src/gui/widgets/matrix.cpp:188
+#: src/gui/widgets/matrix.cpp:185
 msgid "Missing [content] in [matrix_definition]"
 msgstr ""
 
-#: src/gui/widgets/matrix.cpp:191 src/gui/widgets/matrix.cpp:192
+#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
 msgid "Missing required state for matrix definition"
 msgstr ""
 
-#: src/gui/widgets/matrix.cpp:210
+#: src/gui/widgets/matrix.cpp:207
 msgid "Missing [main] in [matrix]"
 msgstr ""
 
@@ -7934,6 +7920,15 @@ msgstr ""
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Ruudukkoa ei ole määritetty."
+
+#: src/gui/widgets/multiline_text.cpp:466
+#: src/gui/widgets/multiline_text.cpp:467
+#: src/gui/widgets/multiline_text.cpp:468
+#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
+#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
+#: src/gui/widgets/text_box.cpp:414
+msgid "Missing required state for editable text box"
+msgstr ""
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -8033,11 +8028,6 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 "Löydettiin käyttöliittymäkomponentti, jota varten on vinkki, mutta ei "
 "työkaluvihjettä."
-
-#: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
-#: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
-msgid "Missing required state for editable text box"
-msgstr ""
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
@@ -8150,15 +8140,15 @@ msgstr ""
 msgid "Missing [widget] in [viewport]"
 msgstr ""
 
-#: src/gui/widgets/window.cpp:430
+#: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Linkitetyllä ’$id’-ryhmällä on useampia määritelmiä."
 
-#: src/gui/widgets/window.cpp:910
+#: src/gui/widgets/window.cpp:911
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Hylkäys klikkaamalla tarvitsee 'click_dismiss' tai 'ok' -painikkeen."
 
-#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
+#: src/gui/widgets/window.cpp:936 src/gui/widgets/window.cpp:973
 #: src/tests/gui/test_gui2.cpp:726
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Valintaikkunan näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
@@ -9025,7 +9015,7 @@ msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Raportoidessasi ohjelmavirhettä sisällytä seuraava virheviesti raporttiin:"
 
-#: src/wml_exception.cpp:98
+#: src/wml_exception.cpp:89
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -9033,7 +9023,7 @@ msgstr ""
 "Alueella ’[$section]’ jossa ’$primary_key| = $primary_value’, pakollinen "
 "avain $key| ei ole asetettu."
 
-#: src/wml_exception.cpp:101
+#: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 

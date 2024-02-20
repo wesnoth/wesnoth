@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,10 +36,7 @@ namespace implementation
 struct builder_listbox;
 struct builder_horizontal_listbox;
 struct builder_grid_listbox;
-struct builder_styled_widget;
 }
-
-class generator_base;
 
 /** The listbox class. */
 class listbox : public scrollbar_container

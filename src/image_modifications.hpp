@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,7 +63,7 @@ class modification
 public:
 
 	/** Exception thrown by the operator() when an error occurs. */
-	struct imod_exception
+	struct imod_exception final
 		: public lua_jailbreak_exception
 	{
 		/**
@@ -219,6 +219,15 @@ private:
  * Grayscale (GS) modification.
  */
 class gs_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Crop transparent padding (CROP_TRANSPARENCY) modification.
+ */
+class crop_transparency_modification : public modification
 {
 public:
 	virtual surface operator()(const surface& src) const;

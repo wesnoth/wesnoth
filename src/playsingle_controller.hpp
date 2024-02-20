@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -29,9 +29,12 @@
 class replay_controller;
 class saved_game;
 
-struct reset_gamestate_exception : public lua_jailbreak_exception, public std::exception
+struct reset_gamestate_exception final : public lua_jailbreak_exception, public std::exception
 {
-	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
+	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s)
+	{
+		this->store();
+	}
 	std::shared_ptr<config> level;
 	std::shared_ptr<config> stats_;
 	bool start_replay;

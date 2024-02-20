@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Karol Nowak <grzywacz@sul.uni.lodz.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

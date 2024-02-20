@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,7 +44,7 @@
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)

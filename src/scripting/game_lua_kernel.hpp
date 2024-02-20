@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,8 +135,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
 	int intf_float_label(lua_State *L);
-	int intf_set_end_campaign_credits(lua_State *L);
-	int intf_set_end_campaign_text(lua_State *L);
 	int intf_clear_menu_item(lua_State *L);
 	int intf_create_side(lua_State *L);
 	int intf_set_menu_item(lua_State *L);

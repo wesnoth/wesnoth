@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2023
+	Copyright (C) 2005 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -94,11 +94,11 @@ void split_foreach(std::string_view s, char sep, const int flags, const F& f)
 	});
 }
 
-
-
 /** Splits a (comma-)separated string into a vector of pieces. */
 std::vector<std::string> split(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 std::set<std::string> split_set(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
+
+std::vector<std::string_view> split_view(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
  * This function is identical to split(), except it does not split when it otherwise would if the
@@ -149,10 +149,10 @@ std::map<std::string, std::string> map_split(
  * RETURNS: {"a", "b", "c", "d", "e", "f{g}", "h"}
  */
 std::vector< std::string > parenthetical_split(
-	const std::string& val,
+	std::string_view val,
 	const char separator = 0,
-	const std::string& left = "(",
-	const std::string& right = ")",
+	std::string_view left = "(",
+	std::string_view right = ")",
 	const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "serialization/schema_validator.hpp"
 
 #include "filesystem.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"

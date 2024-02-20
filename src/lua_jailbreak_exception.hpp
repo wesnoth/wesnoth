@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,18 @@
 /**
  * Base class for exceptions that want to be thrown 'through' lua.
  *
- * Classes inheriting from this class need to use the @ref
- * IMPLEMENT_LUA_JAILBREAK_EXCEPTION macro in the class definition.
+ * Classes derived from this class <b>must call `this->store()` in all of their
+ * constructors</b> and use the @ref IMPLEMENT_LUA_JAILBREAK_EXCEPTION macro
+ * in the class definition. No other classes may derive from classes derived
+ * from this class.
  */
 class lua_jailbreak_exception
 {
 public:
 	virtual ~lua_jailbreak_exception() noexcept {}
+
+	/** Depth of recursive luaW_pcall_internal() function calls. */
+	static int jail_depth;
 
 	/** Stores a copy the current exception to be rethrown. */
 	void store() const noexcept;
@@ -85,9 +90,9 @@ private:
  */
 #define IMPLEMENT_LUA_JAILBREAK_EXCEPTION(type)                      \
 	                                                                 \
-	virtual type* clone() const { return new type(*this); }          \
+	virtual type* clone() const final { return new type(*this); }    \
 	                                                                 \
-	virtual void execute()                                           \
+	virtual void execute() final                                     \
 	{                                                                \
 		type exception(dynamic_cast<type&>(*jailbreak_exception));   \
 		throw exception;                                             \

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -48,10 +48,9 @@ private:
 
 	virtual void post_show(window& window) override;
 
-	void draw_callback();
-
 	std::vector<std::string> text_;
-	std::vector<std::string>::iterator current_text_;
+	std::string current_text_;
+	std::size_t text_index_;
 
 	unsigned int duration_;
 	int fade_step_;

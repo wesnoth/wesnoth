@@ -1,14 +1,13 @@
-# English translations for PACKAGE package.
-# Copyright (C) 2023 Wesnoth development team
+# Shavian English translations for PACKAGE package.
+# Copyright (C) 2024 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-11-20 11:23-0600\n"
-"PO-Revision-Date: 2023-05-29 16:27-0500\n"
+"PO-Revision-Date: 2024-02-11 13:09-0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en@shaw\n"
@@ -19,7 +18,7 @@ msgstr ""
 
 #: data/tools/GUI.pyw:77
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
-msgstr "Open a Graphical User Interface (GUI) to WML Tools"
+msgstr ""
 
 #: data/tools/GUI.pyw:81
 msgid ""
@@ -32,26 +31,21 @@ msgstr ""
 #: data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1585 data/tools/GUI.pyw:1628
 #: data/tools/GUI.pyw:1647 data/tools/GUI.pyw:1973
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
 #: data/tools/GUI.pyw:89
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "`{0}` folder not found. Please run the GUI.pyw executable packaged with "
-#| "the Wesnoth installation."
+#, python-brace-format
 msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
 "Wesnoth installation."
 msgstr ""
-"`{0}` folder not found. Please run the GUI.pyw executable packaged with the "
-"Wesnoth installation."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
 #: data/tools/GUI.pyw:103
 #, python-brace-format
 msgid "Locale {0} not recognized."
-msgstr "Locale {0} not recognized."
+msgstr ""
 
 #. TRANSLATORS: {0} is the name of command being executed.
 #: data/tools/GUI.pyw:378
@@ -60,435 +54,355 @@ msgid ""
 "Running: {0}\n"
 "Please wait..."
 msgstr ""
-"Running: {0}\n"
-"Please wait..."
 
 #: data/tools/GUI.pyw:392
 msgid "Terminate script"
-msgstr "Terminate script"
+msgstr ""
 
 #: data/tools/GUI.pyw:443
 msgid "Cut"
-msgstr "Cut"
+msgstr ""
 
 #: data/tools/GUI.pyw:448
 msgid "Copy"
-msgstr "Copy"
+msgstr ""
 
 #: data/tools/GUI.pyw:454
 msgid "Paste"
-msgstr "Paste"
+msgstr ""
 
 #: data/tools/GUI.pyw:460
-#, fuzzy
-#| msgid "Select all"
 msgid "Select All"
-msgstr "Select all"
+msgstr ""
 
 #: data/tools/GUI.pyw:533
-#, fuzzy
-#| msgid "Skip core directory"
 msgid "Working directory"
-msgstr "Skip core directory"
+msgstr ""
 
 #: data/tools/GUI.pyw:545 data/tools/GUI.pyw:588
 msgid "Browse..."
-msgstr "Browse..."
+msgstr ""
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
 #: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
 msgid "Clear"
-msgstr "Clear"
+msgstr ""
 
 #: data/tools/GUI.pyw:645
 msgid "wmllint mode"
-msgstr "wmllint mode"
+msgstr ""
 
 #. TRANSLATORS: Normal run mode for the WML tool.
 #: data/tools/GUI.pyw:652 data/tools/GUI.pyw:1072
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
 #: data/tools/GUI.pyw:661 data/tools/GUI.pyw:1081
-#, fuzzy
-#| msgid "Report macro definitions and usages in file"
 msgid "Perform conversion and save changes to file"
-msgstr "Report macro definitions and usages in file"
+msgstr ""
 
 #: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
 msgid "Dry run"
-msgstr "Dry run"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
-#, fuzzy
-#| msgid "Revert conversions using *.bak files"
 msgid "Perform conversion without saving changes to file"
-msgstr "Revert conversions using *.bak files"
+msgstr ""
 
 #: data/tools/GUI.pyw:676
 msgid "Clean"
-msgstr "Clean"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
 #: data/tools/GUI.pyw:685
-#, fuzzy
-#| msgid "Delete *.bak files"
 msgid "Delete back-up files"
-msgstr "Delete *.bak files"
+msgstr ""
 
 #: data/tools/GUI.pyw:688
 msgid "Diff"
-msgstr "Diff"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
 #: data/tools/GUI.pyw:697
 msgid "Show differences in converted files"
-msgstr "Show differences in converted files"
+msgstr ""
 
 #: data/tools/GUI.pyw:700
 msgid "Revert"
-msgstr "Revert"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
 #: data/tools/GUI.pyw:709
-#, fuzzy
-#| msgid "Revert conversions using *.bak files"
 msgid "Revert conversions using back-up files"
-msgstr "Revert conversions using *.bak files"
+msgstr ""
 
 #: data/tools/GUI.pyw:712 data/tools/GUI.pyw:1096
 msgid "Verbosity level"
-msgstr "Verbosity level"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:720 data/tools/GUI.pyw:1104
 msgid "Terse"
-msgstr "Terse"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:731
-#, fuzzy
-#| msgid "List changes"
 msgid "Show changes"
-msgstr "List changes"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:741
 msgid "Name files before processing"
-msgstr "Name files before processing"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:751
 msgid "Show parse details"
-msgstr "Show parse details"
+msgstr ""
 
 #: data/tools/GUI.pyw:760
 msgid "wmllint options"
-msgstr "wmllint options"
+msgstr ""
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
 #: data/tools/GUI.pyw:768
-#, fuzzy
-#| msgid "Convert EOL characters to Unix style"
 msgid "Convert EOL characters to Unix format"
-msgstr "Convert EOL characters to Unix style"
+msgstr ""
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:779
-#, fuzzy
-#| msgid "Don't warn about tags without side= keys"
 msgid "Do not warn about tags without side= keys"
-msgstr "Don't warn about tags without side= keys"
+msgstr ""
 
 #: data/tools/GUI.pyw:788
 msgid "Disable checks for unknown units"
-msgstr "Disable checks for unknown units"
+msgstr ""
 
 #: data/tools/GUI.pyw:797
 msgid "Disable spellchecking"
-msgstr "Disable spellchecking"
+msgstr ""
 
 #: data/tools/GUI.pyw:806
 msgid "Skip core directory"
-msgstr "Skip core directory"
+msgstr ""
 
 #: data/tools/GUI.pyw:833
 msgid "wmlscope options"
-msgstr "wmlscope options"
+msgstr ""
 
 #: data/tools/GUI.pyw:845
 msgid "Check for duplicate macro definitions"
-msgstr "Check for duplicate macro definitions"
+msgstr ""
 
 #: data/tools/GUI.pyw:854
 msgid "Check for duplicate resource files"
-msgstr "Check for duplicate resource files"
+msgstr ""
 
 #: data/tools/GUI.pyw:863
 msgid "Make definition list"
-msgstr "Make definition list"
+msgstr ""
 
 #: data/tools/GUI.pyw:872
 msgid "List files that will be processed"
-msgstr "List files that will be processed"
+msgstr ""
 
 #: data/tools/GUI.pyw:881
 msgid "Report unresolved macro references"
-msgstr "Report unresolved macro references"
+msgstr ""
 
 #: data/tools/GUI.pyw:890
 msgid "Extract help from macro definition comments"
-msgstr "Extract help from macro definition comments"
+msgstr ""
 
 #: data/tools/GUI.pyw:899
 msgid "Report all macros with untyped formals"
-msgstr "Report all macros with untyped formals"
+msgstr ""
 
 #: data/tools/GUI.pyw:908
 msgid "Show progress"
-msgstr "Show progress"
+msgstr ""
 
 #: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
-#, fuzzy
-#| msgid "Exclude files matching regexp:"
 msgid "Exclude file names matching regular expression:"
-msgstr "Exclude files matching regexp:"
+msgstr ""
 
 #: data/tools/GUI.pyw:946
-#, fuzzy
-#| msgid "Exclude files not matching regexp:"
 msgid "Exclude file names not matching regular expression:"
-msgstr "Exclude files not matching regexp:"
+msgstr ""
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
 #: data/tools/GUI.pyw:966
-#, fuzzy
-#| msgid ""
-#| "Report only on macros referenced\n"
-#| "in exactly n files:"
 msgid "Report only on macros referenced in exactly n files:"
 msgstr ""
-"Report only on macros referenced\n"
-"in exactly n files:"
 
 #: data/tools/GUI.pyw:986
-#, fuzzy
-#| msgid "Report macro definitions and usages in file"
 msgid "Report macro definitions and usages in file:"
-msgstr "Report macro definitions and usages in file"
+msgstr ""
 
 #: data/tools/GUI.pyw:1004
-#, fuzzy
-#| msgid "Allow unused macros with names matching regexp:"
 msgid "Allow unused macros with names matching regular expression:"
-msgstr "Allow unused macros with names matching regexp:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1066
 msgid "wmlindent mode"
-msgstr "wmlindent mode"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1114
 msgid "Verbose"
-msgstr "Verbose"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1124
 msgid "Report unchanged files"
-msgstr "Report unchanged files"
+msgstr ""
 
 #: data/tools/GUI.pyw:1133
 msgid "wmlindent options"
-msgstr "wmlindent options"
+msgstr ""
 
 #. TRANSLATORS: Option to run 'quietly'.
 #: data/tools/GUI.pyw:1160
-#, fuzzy
-#| msgid "wmlindent mode"
 msgid "Quiet mode"
-msgstr "wmlindent mode"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
 #: data/tools/GUI.pyw:1168
-#, fuzzy
-#| msgid "Do not generate output"
 msgid "Do not generate output messages"
-msgstr "Do not generate output"
+msgstr ""
 
 #: data/tools/GUI.pyw:1188
-#, fuzzy
-#| msgid "Output dir:"
 msgid "Output directory:"
-msgstr "Output dir:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1194
 msgid "Options"
-msgstr "Options"
+msgstr ""
 
 #: data/tools/GUI.pyw:1199
 msgid "Scan subdirectories"
-msgstr "Scan subdirectories"
+msgstr ""
 
 #: data/tools/GUI.pyw:1204
 msgid "Show optional warnings"
-msgstr "Show optional warnings"
+msgstr ""
 
 #. TRANSLATORS: Also called "Needs work".
 #: data/tools/GUI.pyw:1210
 msgid "Mark all strings as fuzzy"
-msgstr "Mark all strings as fuzzy"
+msgstr ""
 
 #: data/tools/GUI.pyw:1214
 msgid "Advanced options"
-msgstr "Advanced options"
+msgstr ""
 
 #: data/tools/GUI.pyw:1218
 msgid "Package version"
-msgstr "Package version"
+msgstr ""
 
 #: data/tools/GUI.pyw:1235
 msgid "Initial textdomain:"
-msgstr "Initial textdomain:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1281 data/tools/GUI.pyw:1387
 msgid "Run wmllint"
-msgstr "Run wmllint"
+msgstr ""
 
 #: data/tools/GUI.pyw:1288
 msgid "Save as text..."
-msgstr "Save as text..."
+msgstr ""
 
 #: data/tools/GUI.pyw:1295
 msgid "Clear output"
-msgstr "Clear output"
+msgstr ""
 
 #: data/tools/GUI.pyw:1302
 msgid "About..."
-msgstr "About..."
+msgstr ""
 
 #: data/tools/GUI.pyw:1309
 msgid "Exit"
-msgstr "Exit"
+msgstr ""
 
 #: data/tools/GUI.pyw:1325 data/tools/GUI.pyw:1459
 msgid "wmllint"
-msgstr "wmllint"
+msgstr ""
 
 #: data/tools/GUI.pyw:1329 data/tools/GUI.pyw:1531
 msgid "wmlscope"
-msgstr "wmlscope"
+msgstr ""
 
 #: data/tools/GUI.pyw:1333 data/tools/GUI.pyw:1567
 msgid "wmlindent"
-msgstr "wmlindent"
+msgstr ""
 
 #: data/tools/GUI.pyw:1337 data/tools/GUI.pyw:1617
 msgid "wmlxgettext"
-msgstr "wmlxgettext"
+msgstr ""
 
 #: data/tools/GUI.pyw:1340
 msgid "Output"
-msgstr "Output"
+msgstr ""
 
 #: data/tools/GUI.pyw:1390
 msgid "Run wmlscope"
-msgstr "Run wmlscope"
+msgstr ""
 
 #: data/tools/GUI.pyw:1393
 msgid "Run wmlindent"
-msgstr "Run wmlindent"
+msgstr ""
 
 #: data/tools/GUI.pyw:1396
 msgid "Run wmlxgettext"
-msgstr "Run wmlxgettext"
+msgstr ""
 
 #: data/tools/GUI.pyw:1404
-#, fuzzy
-#| msgid ""
-#| "wmllint cannot run because there is no directory selected.\n"
-#| "\n"
-#| "Please select a directory or disable the \"Skip core directory\" option"
 msgid ""
 "No directory selected.\n"
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
-"wmllint cannot run because there is no directory selected.\n"
-"\n"
-"Please select a directory or disable the \"Skip core directory\" option"
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
-#, fuzzy
-#| msgid ""
-#| "You selected the core directory or one of its subdirectories in the add-"
-#| "on selection box.\n"
-#| "\n"
-#| "wmllint will be run only on the Wesnoth core directory"
 msgid ""
 "Core directory or one of its subdirectories selected in the add-on selection "
 "box.\n"
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
-"You selected the core directory or one of its subdirectories in the add-on "
-"selection box.\n"
-"\n"
-"wmllint will be run only on the Wesnoth core directory"
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
 #: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
 #: data/tools/GUI.pyw:1599
 msgid "Warning"
-msgstr "Warning"
+msgstr ""
 
 #: data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1519
-#, fuzzy
-#| msgid ""
-#| "You didn't select a directory.\n"
-#| "\n"
-#| "wmllint will be run only on the Wesnoth core directory"
 msgid ""
 "No directory selected.\n"
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
-"You didn't select a directory.\n"
-"\n"
-"wmllint will be run only on the Wesnoth core directory"
 
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
 #: data/tools/GUI.pyw:1585
-#, fuzzy
-#| msgid "The selected directory does not exists"
 msgid "The selected directory does not exist."
-msgstr "The selected directory does not exists"
+msgstr ""
 
 #: data/tools/GUI.pyw:1496
-#, fuzzy
-#| msgid ""
-#| "You typed an invalid value. Value must be an integer in the range 0-999"
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr ""
-"You typed an invalid value. Value must be an integer in the range 0-999"
 
 #: data/tools/GUI.pyw:1554
-#, fuzzy
-#| msgid ""
-#| "You didn't select a directory.\n"
-#| "\n"
-#| "wmlindent will be run on the Wesnoth core directory"
 msgid ""
 "No directory selected.\n"
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
-"You didn't select a directory.\n"
-"\n"
-"wmlindent will be run on the Wesnoth core directory"
 
 #: data/tools/GUI.pyw:1580
 msgid ""
@@ -499,23 +413,16 @@ msgstr ""
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1592
-#, fuzzy
-#| msgid "Overwrite confirmation"
 msgid "Overwrite Confirmation"
-msgstr "Overwrite confirmation"
+msgstr ""
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1594
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "File {} already exists.\n"
-#| "Do you want to overwrite it?"
+#, python-brace-format
 msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"File {} already exists.\n"
-"Do you want to overwrite it?"
 
 #: data/tools/GUI.pyw:1599
 msgid ""
@@ -531,13 +438,10 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
-"There was an error while executing {0}.\n"
-"\n"
-"Error code: {1}"
 
 #: data/tools/GUI.pyw:1639
 msgid "Text file"
-msgstr "Text file"
+msgstr ""
 
 #: data/tools/GUI.pyw:1647
 #, python-brace-format
@@ -549,32 +453,14 @@ msgid ""
 "\n"
 "{2}"
 msgstr ""
-"Error while writing to:\n"
-"{0}\n"
-"\n"
-"Error code: {1}\n"
-"\n"
-"{2}"
 
 #: data/tools/GUI.pyw:1664
-#, fuzzy
-#| msgid "About Maintenance tools GUI"
 msgid "About Maintenance Tools GUI"
-msgstr "About Maintenance tools GUI"
+msgstr ""
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1666
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "© Elvish_Hunter, 2014-2016\n"
-#| "\n"
-#| "Version: {}\n"
-#| "\n"
-#| "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
-#| "license\n"
-#| "\n"
-#| "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
-#| "org), and are released in the Public Domain"
+#, python-brace-format
 msgid ""
 "© Elvish_Hunter, 2014-2016\n"
 "\n"
@@ -586,94 +472,16 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
-"© Elvish_Hunter, 2014-2016\n"
-"\n"
-"Version: {}\n"
-"\n"
-"Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
-"license\n"
-"\n"
-"Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
-"org), and are released in the Public Domain"
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1680
-#, fuzzy
-#| msgid "Exit confirmation"
 msgid "Exit Confirmation"
-msgstr "Exit confirmation"
+msgstr ""
 
 #: data/tools/GUI.pyw:1681
 msgid "Do you really want to quit?"
-msgstr "Do you really want to quit?"
+msgstr ""
 
 #: data/tools/GUI.pyw:1973
-#, fuzzy
-#| msgid ""
-#| "This application must be placed into the wesnoth/data/tools directory"
 msgid "This application must be placed into the wesnoth/data/tools directory."
-msgstr "This application must be placed into the wesnoth/data/tools directory"
-
-#~ msgid "LANGUAGE"
-#~ msgstr "LANGUAGE"
-
-#~ msgid ""
-#~ "Launch GUI.pyw in the given language. Language code must follow ISO 15897 "
-#~ "(e.g. en_GB)."
-#~ msgstr ""
-#~ "Launch GUI.pyw in the given language. Language code must follow ISO 15897 "
-#~ "(e.g. en_GB)."
-
-#~ msgid "Directory"
-#~ msgstr "Directory"
-
-#~ msgid "Perform file conversion"
-#~ msgstr "Perform file conversion"
-
-#~ msgid "Do not perform changes"
-#~ msgstr "Do not perform changes"
-
-#~ msgid ""
-#~ "Exclude files\n"
-#~ "matching regexp:"
-#~ msgstr ""
-#~ "Exclude files\n"
-#~ "matching regexp:"
-
-#~ msgid ""
-#~ "You selected the core directory or one of its subdirectories in the add-"
-#~ "on selection box.\n"
-#~ "\n"
-#~ "wmlscope will be run only on the Wesnoth core directory"
-#~ msgstr ""
-#~ "You selected the core directory or one of its subdirectories in the add-"
-#~ "on selection box.\n"
-#~ "\n"
-#~ "wmlscope will be run only on the Wesnoth core directory"
-
-#~ msgid ""
-#~ "You didn't select a directory.\n"
-#~ "\n"
-#~ "wmlscope will be run only on the Wesnoth core directory"
-#~ msgstr ""
-#~ "You didn't select a directory.\n"
-#~ "\n"
-#~ "wmlscope will be run only on the Wesnoth core directory"
-
-#~ msgid ""
-#~ "You didn't select a directory.\n"
-#~ "\n"
-#~ "wmlxgettext won't be run"
-#~ msgstr ""
-#~ "You didn't select a directory.\n"
-#~ "\n"
-#~ "wmlxgettext won't be run"
-
-#~ msgid ""
-#~ "You didn't select an output file.\n"
-#~ "\n"
-#~ "wmlxgettext won't be run"
-#~ msgstr ""
-#~ "You didn't select an output file.\n"
-#~ "\n"
-#~ "wmlxgettext won't be run"
+msgstr ""

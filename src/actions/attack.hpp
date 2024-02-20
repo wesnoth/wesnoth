@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 
 #pragma once
 
-#include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"
 #include "units/ptr.hpp"
 #include "units/unit_alignments.hpp"
