@@ -32,7 +32,6 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
-#define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace image {
 
@@ -1139,7 +1138,7 @@ REGISTER_MOD_PARSER(XBRZ, args)
 	int z = utils::from_chars<int>(args).value_or(0);
 	if(z < 1 || z > 5) {
 		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
-}
+	}
 
 	return std::make_unique<xbrz_modification>(z);
 }
