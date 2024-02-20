@@ -1,6 +1,4 @@
-## Version 1.17.25+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.26
  ### Campaigns
    * Eastern Invasion
      * Many minor bugfixes
@@ -14,7 +12,6 @@
      * Adjust Fighter unit line for easier early leveling and more late game staying power.
    * World Conquest
      * Fix the Bezoar artifact (issue #6513)
- ### Editor
  ### Multiplayer
    * Assume that all players need a copy of an add-on, by defaulting `require_modification`/`require_campaign` to `yes` (PR #8135)
  ### Lua API
@@ -23,7 +20,6 @@
    * Add CMake and SCons options to use an already installed copy of Lua 5.4 (PR #8234)
      * The system copy of Lua must be compiled as C++ rather than C, as Wesnoth uses C++ exceptions.
      * Windows requires a compile-time change to Lua, so must use the in-tree Lua submodule.
- ### Terrain
  ### Translations
    * New translation: Bengali
    * Updated translations: Arabic, British English, Czech, Finnish, French
