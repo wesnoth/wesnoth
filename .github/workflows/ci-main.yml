@@ -31,6 +31,9 @@ jobs:
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh; git status; git diff --exit-code
+      - name: WML missing images check
+        if: success() || failure()
+        run: utils/CI/check_wml_images.sh
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
