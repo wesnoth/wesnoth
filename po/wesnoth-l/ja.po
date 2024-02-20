@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-17 04:13 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
 "Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -364,7 +364,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant, id=Harper
+#. [unit]: type=Footpad_Peasant, id=Harper, gender=female
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:240
 msgid "Harper"
 msgstr "Harper"
@@ -638,7 +638,7 @@ msgstr ""
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
@@ -983,7 +983,7 @@ msgstr ""
 "らあいつが正しそうだ。ワシは責任ある身だ、皆のためになんとかしなきゃならん。"
 "前を向き、山のように積み上がった問題と向き合うのだ……"
 
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
 msgid "Relana"
 msgstr "Relana"
@@ -3378,12 +3378,12 @@ msgstr ""
 "Wesnoth の辺境に点在する村々は、通常それぞれの村の年長者の一団によって導かれ"
 "ます。彼らは村で最も知恵がある経験豊富な者たちです。"
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:53
 msgid "Senior Village Elder"
 msgstr "村の大年寄"
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:57
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -3395,7 +3395,7 @@ msgstr ""
 "しへの責任をその双肩に担っています。州の役人は法的な権威と世俗的な権威が合致"
 "するように、村の大年寄を村長に選ぶ傾向があります。"
 
-#. [female]
+#. [female]: gender=female
 #: data/campaigns/Liberty/units/Villagers.cfg:59
 msgid "female^Senior Village Elder"
 msgstr "村の大年寄"

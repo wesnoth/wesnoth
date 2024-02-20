@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-21 01:57 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-09-10 09:11+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -275,7 +275,7 @@ msgstr "连枷"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Clan_Captain.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
-#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:15
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
@@ -301,7 +301,7 @@ msgstr "连枷"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:932
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:933
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -373,6 +373,47 @@ msgstr "长剑"
 msgid "morning star"
 msgstr "晨星锤"
 
+#. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:18
+#: data/core/units/humans/Horse_Paladin.cfg:4
+msgid "Paladin"
+msgstr "圣骑士"
+
+#. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
+#: data/core/units/humans/Horse_Paladin.cfg:20
+msgid ""
+"Knights of the highest virtue, Paladins have sworn their strength not to "
+"king and crown, but to ideals themselves; of chivalry, and the stewardship "
+"of everything that is good. They may serve in the armies of the world, but "
+"their first loyalties often lie with groups of their own making; secret, "
+"monastic orders that cross political and cultural boundaries. Rulers are "
+"sometimes wary of them, for the paladins’ loyalty is only as strong as the "
+"liege’s apparent virtue. This has led the more darkly ambitious to either "
+"attempt to defame and disperse these groups, or more rarely, to conjure "
+"elaborate deceptions to keep these otherwise staunchly loyal troops in "
+"service.\n"
+"\n"
+"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
+"that champion most armies, but they are first-class fighters nonetheless. "
+"Additionally, their wisdom and piety grants these warrior monks certain "
+"curious abilities; a paladin is very powerful in fighting magical or "
+"unnatural things, and most have some skill at medicine and healing."
+msgstr ""
+"在所有骑士之中，圣骑士拥有最高尚的品性，他们宣誓，并不把自己的力量献给国王与"
+"王权，而是献给理想本身：骑士精神，以及对一切美好事物的护卫。他们也许会服务于"
+"世俗的军队，但却首先效忠于他们自己的团体：超越了政治与文化边界的神秘的僧侣教"
+"团。统治者有时对他们很提防，因为圣骑士的忠心是以君主们自身显而易见的品德为限"
+"的。居心叵测的人因此造谣中伤或者驱散这些团体，或者更少见的情况是，他们靠着精"
+"心策划的诡计让这些忠贞不二的圣骑士为他们服务。\n"
+"\n"
+"通常来说，完全的圣骑士不像统帅军队的“高阶骑士”那般令人畏惧，但他们也仍然是一"
+"等一的战士。此外，他们的智慧和虔诚赋予了这些武士僧侣们奇特的力量：同魔法的或"
+"非自然的事物战斗时，圣骑士非常强大，而且他们中的绝大部分人都会一些医术，有治"
+"疗的能力。"
+
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Ogre_Ancient.cfg:35
 #: data/campaigns/Eastern_Invasion/units/Ogre_Great.cfg:32
@@ -399,7 +440,7 @@ msgstr "冷冻风暴"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:945
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:946
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -440,7 +481,7 @@ msgstr "弓"
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
 #: data/core/units/monsters/Jinn.cfg:91
-#: data/core/units/monsters/Raven_Harbinger.cfg:87
+#: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
@@ -521,7 +562,7 @@ msgid "Ancient Lich"
 msgstr "上古巫妖"
 
 #. [unit_type]: id=Sacrifice, race=human
-#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Necromancer, gender=male,female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -946,8 +987,8 @@ msgstr ""
 "少。"
 
 # what is a shyde?
-#. [unit_type]: id=Autumn Shyde, race=elf
-#. [unit_type]: id=Elvish Shyde, race=elf
+#. [unit_type]: id=Autumn Shyde, race=elf, gender=female
+#. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1015,44 +1056,44 @@ msgid "taunting strike"
 msgstr ""
 
 #. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:182
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:183
 msgid "Run By (Taunting strike)"
 msgstr ""
 
 #. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:200
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:201
 msgid "Strength Training"
 msgstr ""
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:212
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:213
 msgid "Bowmanship Training"
 msgstr ""
 
 #. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:229
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
 msgid "Strong Shots"
 msgstr ""
 
 #. [advancement]: id=Bowman
-#. [unit_type]: id=Bowman, race=human
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:241
+#. [unit_type]: id=Bowman, race=human, gender=male
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "弓手"
 
 #. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:258
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:259
 msgid "Piercing Shot"
 msgstr ""
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:266
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:267
 msgid "piercing shot"
 msgstr ""
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:581
 msgid "Rain of arrows"
 msgstr ""
 
@@ -1160,12 +1201,12 @@ msgstr ""
 "运输船是有良好武装的舰船，用于运送部队。到达海岸后，它们即能放下所装载的部队"
 "去战斗。"
 
-#. [unit_type]: id=Drake Arbiter, race=drake
+#. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
 msgstr "龙人仲裁者"
 
-#. [unit_type]: id=Drake Arbiter, race=drake
+#. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
@@ -1197,19 +1238,19 @@ msgstr "与其他龙人相比，龙人仲裁者对“穿刺”攻击的抗性更
 msgid "halberd"
 msgstr "戟"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Arbiter.cfg:174
 #, fuzzy
 #| msgid "Drake Arbiter"
 msgid "female^Drake Arbiter"
 msgstr "龙人仲裁者"
 
-#. [unit_type]: id=Armageddon Drake, race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "末日龙战士"
 
-#. [unit_type]: id=Armageddon Drake, race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:20
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -1242,19 +1283,19 @@ msgstr "战爪"
 msgid "fire breath"
 msgstr "火焰吐息"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Armageddon.cfg:65
 #, fuzzy
 #| msgid "Armageddon Drake"
 msgid "female^Armageddon Drake"
 msgstr "末日龙战士"
 
-#. [unit_type]: id=Drake Blademaster, race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "龙人剑圣"
 
-#. [unit_type]: id=Drake Blademaster, race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
@@ -1277,19 +1318,19 @@ msgstr ""
 msgid "war talon"
 msgstr "战争利爪"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Blademaster.cfg:61
 #, fuzzy
 #| msgid "Drake Blademaster"
 msgid "female^Drake Blademaster"
 msgstr "龙人剑圣"
 
-#. [unit_type]: id=Drake Burner, race=drake
+#. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "龙人灼烧者"
 
-#. [unit_type]: id=Drake Burner, race=drake
+#. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:18
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -1301,19 +1342,19 @@ msgstr ""
 "拥有了喷吐火焰的能力。这一能力再加上他们高大的身材和可怕的爪子，使得灼烧者成"
 "为战斗中致命的对手。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Burner.cfg:67
 #, fuzzy
 #| msgid "female^Dune Burner"
 msgid "female^Drake Burner"
 msgstr "沙丘灼烧者"
 
-#. [unit_type]: id=Drake Clasher, race=drake
+#. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "龙人冲击者"
 
-#. [unit_type]: id=Drake Clasher, race=drake
+#. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:19
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
@@ -1337,19 +1378,19 @@ msgstr ""
 "战斗。这使得他们非常擅长“解决”与其他龙人之间的领土争端，也非常擅长强制执行本"
 "部落的法律。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Clasher.cfg:111
 #, fuzzy
 #| msgid "Drake Clasher"
 msgid "female^Drake Clasher"
 msgstr "龙人冲击者"
 
-#. [unit_type]: id=Drake Enforcer, race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "龙人执行者"
 
-#. [unit_type]: id=Drake Enforcer, race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
@@ -1372,19 +1413,19 @@ msgstr ""
 msgid "trident"
 msgstr "三叉戟"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Enforcer.cfg:119
 #, fuzzy
 #| msgid "Drake Enforcer"
 msgid "female^Drake Enforcer"
 msgstr "龙人执行者"
 
-#. [unit_type]: id=Drake Fighter, race=drake
+#. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "龙人战士"
 
-#. [unit_type]: id=Drake Fighter, race=drake
+#. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:18
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
@@ -1402,19 +1443,19 @@ msgstr ""
 msgid "war blade"
 msgstr "战刃"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Fighter.cfg:64
 #, fuzzy
 #| msgid "Drake Fighter"
 msgid "female^Drake Fighter"
 msgstr "龙人战士"
 
-#. [unit_type]: id=Fire Drake, race=drake
+#. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "火焰龙战士"
 
-#. [unit_type]: id=Fire Drake, race=drake
+#. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
@@ -1427,19 +1468,19 @@ msgstr ""
 "用白银来装饰自己的铠甲。尽管他们只是刚刚开始将自己的生命献给体内熊熊燃烧的火"
 "焰，但那火焰的力量已然穿透了皮肤，将他们的龙鳞灼烧成了灰红色。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Fire.cfg:62
 #, fuzzy
 #| msgid "Fire Drake"
 msgid "female^Fire Drake"
 msgstr "火焰龙战士"
 
-#. [unit_type]: id=Drake Flameheart, race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "龙人熔火之心"
 
-#. [unit_type]: id=Drake Flameheart, race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:19
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
@@ -1456,19 +1497,19 @@ msgstr ""
 "略。熔火之心与部落领袖争夺权力的事情只会偶尔发生，而且仅仅是在他确信自己会得"
 "到部下们的支持时。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Flameheart.cfg:66
 #, fuzzy
 #| msgid "Drake Flameheart"
 msgid "female^Drake Flameheart"
 msgstr "龙人熔火之心"
 
-#. [unit_type]: id=Drake Flare, race=drake
+#. [unit_type]: id=Drake Flare, race=drake, gender=male,female
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "龙人闪耀者"
 
-#. [unit_type]: id=Drake Flare, race=drake
+#. [unit_type]: id=Drake Flare, race=drake, gender=male,female
 #: data/core/units/drakes/Flare.cfg:18
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
@@ -1482,19 +1523,19 @@ msgstr ""
 "耀者作为领袖，但人们所见的闪耀者更多的时候还是在领导着小型的作战部队，或者靠"
 "着微妙的手法来调停纷争。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Flare.cfg:65
 #, fuzzy
 #| msgid "Drake Flare"
 msgid "female^Drake Flare"
 msgstr "龙人闪耀者"
 
-#. [unit_type]: id=Drake Glider, race=drake
+#. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "龙人滑翔者"
 
-#. [unit_type]: id=Drake Glider, race=drake
+#. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:19
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
@@ -1526,19 +1567,19 @@ msgstr ""
 msgid "slam"
 msgstr "猛击"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Glider.cfg:66
 #, fuzzy
 #| msgid "Drake Glider"
 msgid "female^Drake Glider"
 msgstr "龙人滑翔者"
 
-#. [unit_type]: id=Hurricane Drake, race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "飓风龙战士"
 
-#. [unit_type]: id=Hurricane Drake, race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
@@ -1554,19 +1595,19 @@ msgstr ""
 "敌不备。他们被——很勉强地——允许与其他阶层的新手一起训练，这使得他们的战斗技能"
 "得到了提升，但飓风龙战士最强大的优势仍然是速度与飞行能力。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Hurricane.cfg:101
 #, fuzzy
 #| msgid "Hurricane Drake"
 msgid "female^Hurricane Drake"
 msgstr "飓风龙战士"
 
-#. [unit_type]: id=Inferno Drake, race=drake
+#. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "地狱龙战士"
 
-#. [unit_type]: id=Inferno Drake, race=drake
+#. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
@@ -1580,19 +1621,19 @@ msgstr ""
 "量使用，他们的龙鳞已经全然变为了红色。“飓风龙战士们实际上就是龙”——他们被战火"
 "风蚀的红金相间的战甲大大增强了这种幻觉。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Inferno.cfg:64
 #, fuzzy
 #| msgid "Inferno Drake"
 msgid "female^Inferno Drake"
 msgstr "地狱龙战士"
 
-#. [unit_type]: id=Sky Drake, race=drake
+#. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "天空龙战士"
 
-#. [unit_type]: id=Sky Drake, race=drake
+#. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:18
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
@@ -1605,19 +1646,19 @@ msgstr ""
 "联系的尊敬。作为狩猎行动的首领，他们经常会长时间远离家园。每一位天空龙战士都"
 "会尽力捕捉尽可能多的猎物并带回家，为获得部落的尊敬而互相竞争。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Sky.cfg:98
 #, fuzzy
 #| msgid "Sky Drake"
 msgid "female^Sky Drake"
 msgstr "天空龙战士"
 
-#. [unit_type]: id=Drake Thrasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
 msgstr "龙人痛击者"
 
-#. [unit_type]: id=Drake Thrasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
@@ -1632,19 +1673,19 @@ msgstr ""
 "盔和那下面厚重的头骨都是武器。痛击者非常乐意履行本阶层的义务，只要这能够在战"
 "场上达成就好。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Thrasher.cfg:118
 #, fuzzy
 #| msgid "Drake Thrasher"
 msgid "female^Drake Thrasher"
 msgstr "龙人痛击者"
 
-#. [unit_type]: id=Drake Warden, race=drake
+#. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "龙人守望者"
 
-#. [unit_type]: id=Drake Warden, race=drake
+#. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
@@ -1668,19 +1709,19 @@ msgid ""
 "attacks."
 msgstr "与其他龙人相比，龙人守望者对“穿刺”攻击的抗性更高。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Warden.cfg:175
 #, fuzzy
 #| msgid "Drake Warden"
 msgid "female^Drake Warden"
 msgstr "龙人守望者"
 
-#. [unit_type]: id=Drake Warrior, race=drake
+#. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "龙人武士"
 
-#. [unit_type]: id=Drake Warrior, race=drake
+#. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
@@ -1695,7 +1736,7 @@ msgstr ""
 "他们穿着被陶瓷片覆盖的皮甲，在手背上绑着传统的战刃参加战斗，这就是他们延续了"
 "几百年的战斗方式。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
 #, fuzzy
 #| msgid "Drake Warrior"
@@ -1807,12 +1848,12 @@ msgstr ""
 msgid "scimitar"
 msgstr "弯刀"
 
-#. [unit_type]: id=Dune Burner, race=dunefolk
+#. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:8
 msgid "Dune Burner"
 msgstr "沙丘灼烧者"
 
-#. [unit_type]: id=Dune Burner, race=dunefolk
+#. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:21
 msgid ""
 "An oft forgotten hazard of traversing the desert is the freezing cold that "
@@ -1834,7 +1875,7 @@ msgstr ""
 msgid "tar bomb"
 msgstr "焦油炸弹"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Burner.cfg:98
 msgid "female^Dune Burner"
 msgstr "沙丘灼烧者"
@@ -1923,12 +1964,12 @@ msgstr ""
 "险家们不再仅仅作为探测敌人的侦察兵，他们的技能熟练到可以成为有效的侧卫或强大"
 "的奇袭者。"
 
-#. [unit_type]: id=Dune Falconer, race=dunefolk
+#. [unit_type]: id=Dune Falconer, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Falconer.cfg:15
 msgid "female^Dune Falconer"
 msgstr "沙丘驯隼师"
 
-#. [unit_type]: id=Dune Falconer, race=dunefolk
+#. [unit_type]: id=Dune Falconer, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Falconer.cfg:39
 msgid ""
 "While well respected among the dunefolk, the art of falconry is relatively "
@@ -1959,12 +2000,12 @@ msgstr ""
 msgid "falcon"
 msgstr "隼"
 
-#. [unit_type]: id=Dune Firetrooper, race=dunefolk
+#. [unit_type]: id=Dune Firetrooper, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
 msgstr "沙丘火炎兵"
 
-#. [unit_type]: id=Dune Firetrooper, race=dunefolk
+#. [unit_type]: id=Dune Firetrooper, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Firetrooper.cfg:22
 msgid ""
 "By refining Sanbaar sap through a very specific distillation process, it "
@@ -1988,17 +2029,17 @@ msgstr ""
 msgid "flamethrower"
 msgstr "火焰喷射器"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
 msgstr "沙丘火炎兵"
 
-#. [unit_type]: id=Dune Harrier, race=dunefolk
+#. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:8
 msgid "female^Dune Harrier"
 msgstr "沙丘鹞骑"
 
-#. [unit_type]: id=Dune Harrier, race=dunefolk
+#. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:25
 msgid ""
 "While harriers can fulfill a similar role to striders in hampering enemy "
@@ -2255,12 +2296,12 @@ msgstr ""
 "的技能，轻而易举地便能用于战争。他们最擅长在清晨或者傍晚战斗的特性，是因为在"
 "沙漠中，那些是温度最合适于居住的时段。"
 
-#. [unit_type]: id=Dune Scorcher, race=dunefolk
+#. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:9
 msgid "Dune Scorcher"
 msgstr "沙丘焦燃者"
 
-#. [unit_type]: id=Dune Scorcher, race=dunefolk
+#. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:22
 msgid ""
 "The scorcher’s moniker is derived not from the destruction they wreak on "
@@ -2276,17 +2317,17 @@ msgstr ""
 "泡着他们的武器的极易挥发的椮巴树液烧伤。他们将烧伤视为工作带来的骄傲。这些弓"
 "箭手很喜欢在战场上点燃大面积的火焰，尽管这有时也会导致意外的友军误伤。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Scorcher.cfg:95
 msgid "female^Dune Scorcher"
 msgstr "沙丘焦燃者"
 
-#. [unit_type]: id=Dune Skirmisher, race=dunefolk
+#. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:8
 msgid "female^Dune Skirmisher"
 msgstr "沙丘散兵"
 
-#. [unit_type]: id=Dune Skirmisher, race=dunefolk
+#. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:21
 msgid ""
 "Born and raised out on the open sands, skirmishers are accustomed to the "
@@ -2305,12 +2346,12 @@ msgstr ""
 "过敌人的防线，又能避开各种形式的攻击。这些技能使散兵成为高效的潜入破坏者，能"
 "够切断逃跑路线和补给线，暗杀关键单位，或将敌人方阵包夹在不利位置。"
 
-#. [unit_type]: id=Dune Sky Hunter, race=dunefolk
+#. [unit_type]: id=Dune Sky Hunter, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
 msgid "female^Dune Sky Hunter"
 msgstr "沙丘天空猎手"
 
-#. [unit_type]: id=Dune Sky Hunter, race=dunefolk
+#. [unit_type]: id=Dune Sky Hunter, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Sky_Hunter.cfg:39
 msgid ""
 "Often mistaken for young Rocs, desert eagles are large, majestic birds of "
@@ -2427,12 +2468,12 @@ msgstr ""
 "圣”。这不是正式头衔，也算不上什么赞美或者荣誉，但这仍然是对那些准备为保护他们"
 "的兄弟而作为无名烈士牺牲的人的一种适当认可。"
 
-#. [unit_type]: id=Dune Strider, race=dunefolk
+#. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:8
 msgid "female^Dune Strider"
 msgstr "沙丘迅骑"
 
-#. [unit_type]: id=Dune Strider, race=dunefolk
+#. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:21
 msgid ""
 "The power of any Dunefolk assault is inhibited by one major drawback: "
@@ -2893,12 +2934,12 @@ msgstr ""
 msgid "Dwarvish Ulfserker"
 msgstr "矮人狂狼战士"
 
-#. [unit_type]: id=Elvish Archer, race=elf
+#. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "精灵弓箭手"
 
-#. [unit_type]: id=Elvish Archer, race=elf
+#. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:19
 msgid ""
 "As primarily foragers and hunters, most elves learn to become proficient "
@@ -2916,17 +2957,17 @@ msgstr ""
 "会携带弓箭作为他们偏爱的武器。虽然不及他们的人类和兽人对应者这么强壮，精灵弓"
 "箭手仍然是很高效的战斗员，尤其是当他们在自家森林的安全护卫之下作战时。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Archer.cfg:80
 msgid "female^Elvish Archer"
 msgstr "精灵弓箭手"
 
-#. [unit_type]: id=Elvish Avenger, race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "精灵复仇者"
 
-#. [unit_type]: id=Elvish Avenger, race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:20
 msgid ""
 "The curious name of the Elvish ‘Avengers’ comes from a tactic often employed "
@@ -2949,7 +2990,7 @@ msgid ""
 "like sand, water, and mountains."
 msgstr "精灵复仇者们游历甚广，擅长穿越沙地、水面和山地等恶劣地形。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Avenger.cfg:96
 msgid "female^Elvish Avenger"
 msgstr "精灵复仇者"
@@ -3003,12 +3044,12 @@ msgstr ""
 "名副其实的战场冠军，无情地斩杀敌人。这些精灵花了一辈子的时间完善自己地剑术，"
 "他们异常危险，永远不该被低估。"
 
-#. [unit_type]: id=Elvish Druid, race=elf
+#. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "精灵德鲁伊"
 
-#. [unit_type]: id=Elvish Druid, race=elf
+#. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:19
 msgid ""
 "Some elves choose to deepen their connection to the corporeal world, thereby "
@@ -3037,12 +3078,12 @@ msgstr ""
 msgid "ensnare"
 msgstr "诱捕"
 
-#. [unit_type]: id=Elvish Enchantress, race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "精灵女附魔师"
 
-#. [unit_type]: id=Elvish Enchantress, race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:19
 msgid ""
 "In the context of Elven magic, the notion of enchanting is a little bit "
@@ -3168,12 +3209,12 @@ msgstr ""
 "这些领主是不是位于指挥链条的顶端，他们的睿智在维持精灵的繁荣统治方面都是非常"
 "宝贵的。"
 
-#. [unit_type]: id=Elvish Lady, race=elf
+#. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:4
 msgid "female^Elvish Lady"
 msgstr "精灵女领主"
 
-#. [unit_type]: id=Elvish Lady, race=elf
+#. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
 "Usually strongly connected with the earthly aspect of Elven magic, noble "
@@ -3232,12 +3273,12 @@ msgstr ""
 "强大的韦弥尔精灵，在每个新世代都会选举新的领主。在这两种情况下，贵族的地位都"
 "很少是绝对的，人们期望他们通过交涉和智慧而不是武力来领导。"
 
-#. [unit_type]: id=Elvish Marksman, race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf, gender=male,female
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "精灵精准射手"
 
-#. [unit_type]: id=Elvish Marksman, race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf, gender=male,female
 #: data/core/units/elves/Marksman.cfg:19
 msgid ""
 "Elves have an intimate connection to the world of faerie, which innately "
@@ -3263,7 +3304,7 @@ msgstr ""
 msgid "longbow"
 msgstr "长弓"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Marksman.cfg:89
 msgid "female^Elvish Marksman"
 msgstr "精灵精准射手"
@@ -3349,12 +3390,12 @@ msgstr ""
 
 # 在”灼热双日之下“战役中，单位”Quenoth Ranger“的描述中特别提到，把这些奎诺单位称为”Ranger“并不准确，因为”Quenoth Ranger“和曾经拥有同样“Ranger”头衔的那些“自然探险家”并没有多少相同之处。
 # 为了在中文中体现出这种“不合适”，“Ranger”的译文必须含有“自然探险家”要素。因此，其译文从“游侠”改为“巡林者”。
-#. [unit_type]: id=Elvish Ranger, race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "精灵巡林者"
 
-#. [unit_type]: id=Elvish Ranger, race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:19
 msgid ""
 "The silent watchers of the forests, Elvish rangers are masters of stealth "
@@ -3381,7 +3422,7 @@ msgid ""
 "sand, water, and mountains."
 msgstr "精灵游侠们游历甚广，擅长穿越沙地、水面和山地等恶劣地形。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Ranger.cfg:95
 msgid "female^Elvish Ranger"
 msgstr "精灵游侠"
@@ -3442,12 +3483,12 @@ msgstr ""
 "更快机动的能力。精灵侦察兵通常被用作信使或支援单位，擅长在各个巡逻队之间迅速"
 "传递信息，必要时他们也会成为这些部队的援军。"
 
-#. [unit_type]: id=Elvish Shaman, race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "精灵萨满"
 
-#. [unit_type]: id=Elvish Shaman, race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:19
 msgid ""
 "With a little training, an elf’s inherent affinity with the natural world "
@@ -3465,12 +3506,12 @@ msgstr ""
 "具有非凡而众所周知的能力。这些萨满天性虔诚和平，很少参与战斗，而是用自己的魔"
 "法指挥大地本身来阻碍敌人，或让他们无法作乱。"
 
-#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "精灵神射手"
 
-#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:20
 msgid ""
 "Though not a formal title, ‘Sharpshooter’ is the epithet given to the most "
@@ -3490,12 +3531,12 @@ msgstr ""
 "再挨一两下也无法存活。精灵神射手已将他们的技艺磨练到了极致，是无可争辩的箭术"
 "大师。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Sharpshooter.cfg:81
 msgid "female^Elvish Sharpshooter"
 msgstr "精灵神射手"
 
-#. [unit_type]: id=Elvish Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/core/units/elves/Shyde.cfg:22
 msgid ""
 "As an elf maiden entwines herself more and more with nature, the essence of "
@@ -3518,12 +3559,12 @@ msgstr ""
 msgid "faerie touch"
 msgstr "仙境之触"
 
-#. [unit_type]: id=Elvish Sorceress, race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "精灵女巫"
 
-#. [unit_type]: id=Elvish Sorceress, race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:19
 msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
@@ -3545,12 +3586,12 @@ msgstr ""
 "这是精灵女巫最容易掌握的技能之一。虽然奥术火焰是奥术的相当肤浅的应用形式，但"
 "精灵们还是高度重视，并小心翼翼地利用它。"
 
-#. [unit_type]: id=Elvish Sylph, race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf, gender=female
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "精灵风仙子"
 
-#. [unit_type]: id=Elvish Sylph, race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf, gender=female
 #: data/core/units/elves/Sylph.cfg:21
 msgid ""
 "Tremendously powerful in unfathomable ways, the sage-like Sylphs are masters "
@@ -3878,43 +3919,6 @@ msgstr ""
 "来迅速的灭亡。长枪轻骑兵擅长追击那些犯下错误散开阵型的步兵，以及撕裂防御阵"
 "线。然而，他们在防御战中的作用有限。"
 
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:4
-msgid "Paladin"
-msgstr "圣骑士"
-
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:20
-msgid ""
-"Knights of the highest virtue, Paladins have sworn their strength not to "
-"king and crown, but to ideals themselves; of chivalry, and the stewardship "
-"of everything that is good. They may serve in the armies of the world, but "
-"their first loyalties often lie with groups of their own making; secret, "
-"monastic orders that cross political and cultural boundaries. Rulers are "
-"sometimes wary of them, for the paladins’ loyalty is only as strong as the "
-"liege’s apparent virtue. This has led the more darkly ambitious to either "
-"attempt to defame and disperse these groups, or more rarely, to conjure "
-"elaborate deceptions to keep these otherwise staunchly loyal troops in "
-"service.\n"
-"\n"
-"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-"that champion most armies, but they are first-class fighters nonetheless. "
-"Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a paladin is very powerful in fighting magical or "
-"unnatural things, and most have some skill at medicine and healing."
-msgstr ""
-"在所有骑士之中，圣骑士拥有最高尚的品性，他们宣誓，并不把自己的力量献给国王与"
-"王权，而是献给理想本身：骑士精神，以及对一切美好事物的护卫。他们也许会服务于"
-"世俗的军队，但却首先效忠于他们自己的团体：超越了政治与文化边界的神秘的僧侣教"
-"团。统治者有时对他们很提防，因为圣骑士的忠心是以君主们自身显而易见的品德为限"
-"的。居心叵测的人因此造谣中伤或者驱散这些团体，或者更少见的情况是，他们靠着精"
-"心策划的诡计让这些忠贞不二的圣骑士为他们服务。\n"
-"\n"
-"通常来说，完全的圣骑士不像统帅军队的“高阶骑士”那般令人畏惧，但他们也仍然是一"
-"等一的战士。此外，他们的智慧和虔诚赋予了这些武士僧侣们奇特的力量：同魔法的或"
-"非自然的事物战斗时，圣骑士非常强大，而且他们中的绝大部分人都会一些医术，有治"
-"疗的能力。"
-
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
@@ -3936,7 +3940,7 @@ msgstr ""
 "绝大部分的步兵，特别是那些游离于队形之外的步兵，但是要小心矛兵和弓箭手。骑师"
 "们目标很大，对他们来说是诱人的活靶子。"
 
-#. [unit_type]: id=Bowman, race=human
+#. [unit_type]: id=Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -4235,12 +4239,12 @@ msgstr ""
 "的军阀而言，也多多少少缺失一点耐伤能力——但他们的学识更加丰富，军事战略的训练"
 "更加深入，要弥补这一缺陷是远远足够了。"
 
-#. [unit_type]: id=Longbowman, race=human
+#. [unit_type]: id=Longbowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "长弓手"
 
-#. [unit_type]: id=Longbowman, race=human
+#. [unit_type]: id=Longbowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Longbowman.cfg:19
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -4253,12 +4257,12 @@ msgstr ""
 "动，而且如果瞄不准的话，增加的射程和威力也是白费。长弓手把他们的武器看成是自"
 "豪的勋章，大多数弓手也都渴望有朝一日能使用长弓。"
 
-#. [unit_type]: id=Master Bowman, race=human
+#. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "大师弓手"
 
-#. [unit_type]: id=Master Bowman, race=human
+#. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -4458,12 +4462,12 @@ msgid ""
 "and ‘impact’ attacks."
 msgstr "与其他保王党人相比，剑士对“刃器”和“冲击”攻击的抗性更高。"
 
-#. [unit_type]: id=Mage, race=human
+#. [unit_type]: id=Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "法师"
 
-#. [unit_type]: id=Mage, race=human
+#. [unit_type]: id=Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage.cfg:19
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
@@ -4504,17 +4508,17 @@ msgstr ""
 msgid "missile"
 msgstr "魔法飞弹"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage.cfg:159
 msgid "female^Mage"
 msgstr "法师"
 
-#. [unit_type]: id=Arch Mage, race=human
+#. [unit_type]: id=Arch Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "大法师"
 
-#. [unit_type]: id=Arch Mage, race=human
+#. [unit_type]: id=Arch Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Arch.cfg:18
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
@@ -4553,7 +4557,7 @@ msgstr "与其他法师相比，大法师对“火焰”攻击的抗性更高。
 msgid "fireball"
 msgstr "火球"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Arch.cfg:109
 msgid "female^Arch Mage"
 msgstr "大法师"
@@ -4575,17 +4579,17 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:35
-#: data/core/units/monsters/Raven_Harbinger.cfg:104
-#: data/core/units/monsters/Raven_Omen.cfg:94
+#: data/core/units/monsters/Raven_Harbinger.cfg:100
+#: data/core/units/monsters/Raven_Omen.cfg:90
 msgid "lightning"
 msgstr "闪电"
 
-#. [unit_type]: id=Great Mage, race=human
+#. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "伟大法师"
 
-#. [unit_type]: id=Great Mage, race=human
+#. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:19
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
@@ -4616,17 +4620,17 @@ msgid ""
 "attacks."
 msgstr "与其他法师相比，伟大法师对“火焰”攻击的抗性更高。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Great.cfg:90
 msgid "female^Great Mage"
 msgstr "伟大法师"
 
-#. [unit_type]: id=Red Mage, race=human
+#. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "红袍法师"
 
-#. [unit_type]: id=Red Mage, race=human
+#. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:18
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
@@ -4657,17 +4661,17 @@ msgid ""
 "attacks."
 msgstr "与其他法师相比，红袍法师对“火焰”攻击的抗性更高。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Red.cfg:98
 msgid "female^Red Mage"
 msgstr "红袍法师"
 
-#. [unit_type]: id=Silver Mage, race=human
+#. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "银袍法师"
 
-#. [unit_type]: id=Silver Mage, race=human
+#. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:19
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
@@ -4707,17 +4711,17 @@ msgid ""
 "highly resistant to non-physical damage."
 msgstr "银袍法师与他们的魔法体质协调一致，因而对非物理攻击有很高的抗性。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Silver.cfg:163
 msgid "female^Silver Mage"
 msgstr "银袍法师"
 
-#. [unit_type]: id=White Mage, race=human
+#. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "白袍法师"
 
-#. [unit_type]: id=White Mage, race=human
+#. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:18
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
@@ -4744,17 +4748,17 @@ msgid ""
 "attacks."
 msgstr "与其他法师相比，白袍法师对“奥术”攻击的抗性更高。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_White.cfg:105
 msgid "female^White Mage"
 msgstr "白袍法师"
 
-#. [unit_type]: id=Mage of Light, race=human
+#. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "光明法师"
 
-#. [unit_type]: id=Mage of Light, race=human
+#. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:19
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
@@ -4776,17 +4780,17 @@ msgid ""
 "attacks."
 msgstr "与其他法师相比，光明法师对“奥术”攻击的抗性更高。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_of_Light.cfg:101
 msgid "female^Mage of Light"
 msgstr "光明法师"
 
-#. [unit_type]: id=Outlaw, race=human
+#. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "游寇"
 
-#. [unit_type]: id=Outlaw, race=human
+#. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former ‘footpads’ rise up in the ranks of their "
@@ -4802,17 +4806,17 @@ msgstr ""
 "笑他们的武器，他们自己却很清楚它们的致命威力，同时也深知其弹药来源相当广泛。"
 "大白天作战让游寇有点儿不适应，他们还是喜欢在夜幕掩护之下行动。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
 msgstr "游寇"
 
-#. [unit_type]: id=Assassin, race=human
+#. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "刺客"
 
-#. [unit_type]: id=Assassin, race=human
+#. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:19
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
@@ -4834,7 +4838,7 @@ msgstr ""
 msgid "throwing knives"
 msgstr "飞刀"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Assassin.cfg:101
 msgid "female^Assassin"
 msgstr "刺客"
@@ -4857,12 +4861,12 @@ msgstr ""
 "得力武器，虽然缺少手腕或者智力低下，但确实很擅长把受害者揍到跪地求饶。像所有"
 "其他的游寇一样，他们在大白天打斗的话会很不自在，但很习惯于在晚上工作。"
 
-#. [unit_type]: id=Footpad, race=human
+#. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "走卒"
 
-#. [unit_type]: id=Footpad, race=human
+#. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
 "These petty criminals are often derisively called ‘footpads’ by their "
@@ -4877,17 +4881,17 @@ msgstr ""
 "战斗中对他们的帮助很大。他们尽管武器很烂，却擅长骚扰敌人，特别是在夜幕的掩护"
 "之下。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Footpad.cfg:89
 msgid "female^Footpad"
 msgstr "走卒"
 
-#. [unit_type]: id=Fugitive, race=human
+#. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "亡命徒"
 
-#. [unit_type]: id=Fugitive, race=human
+#. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -4897,7 +4901,7 @@ msgstr ""
 "因为他们的残忍和逃避追捕的能力，这些老练的犯罪分子恶名昭彰。当组成小团体时他"
 "们很危险，但是这显然无法和守法的军队所能派遣来对付他们的士兵数量相比。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:80
 msgid "female^Fugitive"
 msgstr "亡命徒"
@@ -4920,12 +4924,12 @@ msgstr ""
 "帮小弟和雇主的敌人作战。他们通常在人烟稀少的公路上或者死寂的夜晚里发动袭击，"
 "在这类遭遇战方面的经验使得他们成为白刃战中的致命对手。"
 
-#. [unit_type]: id=Rogue, race=human
+#. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "飞贼"
 
-#. [unit_type]: id=Rogue, race=human
+#. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:18
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
@@ -4939,7 +4943,7 @@ msgstr ""
 "家的惊险场面，从而练就了战斗中的各种技巧。他们是使用刀具的高手，飞刀也掷得很"
 "准。由于长时间在夜晚潜行，他们更适合在黑暗中战斗。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Rogue.cfg:78
 msgid "female^Rogue"
 msgstr "飞贼"
@@ -4962,12 +4966,12 @@ msgstr ""
 "棒沉重的一头来过活的人们被称作“无赖”。如果有足够的运气和经验的话，有时他们也"
 "能躲过那些为他们的大多数同僚所准备的牢房或者死亡。"
 
-#. [unit_type]: id=Thief, race=human
+#. [unit_type]: id=Thief, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "盗贼"
 
-#. [unit_type]: id=Thief, race=human
+#. [unit_type]: id=Thief, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Thief.cfg:18
 msgid ""
 "For as long as anyone can remember, the members of the various ‘guilds’ of "
@@ -4984,7 +4988,7 @@ msgstr ""
 "轻快，又擅长使用匕首。在战斗中，他们乐于使用不那么光明正大的战术，也不屑于“公"
 "平的交手”。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Thief.cfg:147
 msgid "female^Thief"
 msgstr "盗贼"
@@ -5007,12 +5011,12 @@ msgstr ""
 "的农民。他们为了活命而成为了暴徒。但无论背景如何，他们都有着用大木棒敲打受害"
 "者脑袋的嗜好。"
 
-#. [unit_type]: id=Peasant, race=human
+#. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "农民"
 
-#. [unit_type]: id=Peasant, race=human
+#. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:18
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -5030,12 +5034,12 @@ msgstr ""
 msgid "pitchfork"
 msgstr "干草叉"
 
-#. [unit_type]: id=Royal Warrior, race=human
+#. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:8
 msgid "Royal Warrior"
 msgstr "皇家武士"
 
-#. [unit_type]: id=Royal Warrior, race=human
+#. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:25
 msgid ""
 "The kings and princes of human nobility are still often trained rigorously "
@@ -5050,12 +5054,12 @@ msgstr ""
 "精湛，以至于会引起一些矮人工匠的嫉妒。这些贵族很擅长在身着重甲时行动，他们可"
 "以快速穿过战场，比他们镀金的板甲所暗示的要快得多。"
 
-#. [unit_type]: id=Woodsman, race=human
+#. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "山民"
 
-#. [unit_type]: id=Woodsman, race=human
+#. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:18
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
@@ -5208,12 +5212,12 @@ msgid ""
 "situation, even merfolk with no weapons or training can be dangerous."
 msgstr ""
 
-#. [unit_type]: id=Mermaid Diviner, race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "人鱼占卜师"
 
-#. [unit_type]: id=Mermaid Diviner, race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:22
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
@@ -5228,12 +5232,12 @@ msgstr ""
 "螺旋的骑士们在Alavynne的岸边被重重包围，惨遭屠戮，只剩下最后一人，但他们第二"
 "天却又全部起身上马，终于铺就了血色公爵的末路。"
 
-#. [unit_type]: id=Mermaid Enchantress, race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman, gender=female
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "人鱼魔女"
 
-#. [unit_type]: id=Mermaid Enchantress, race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman, gender=female
 #: data/core/units/merfolk/Enchantress.cfg:18
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
@@ -5335,12 +5339,12 @@ msgstr ""
 "人鱼用矛捕鱼的技能很容易运用到战争中来，特别是用来对付那些不适应水战的敌人。"
 "在战局需要时，很多从事捕鱼工作的人鱼都会志愿加入军队。"
 
-#. [unit_type]: id=Mermaid Initiate, race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman, gender=female
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "人鱼魔法学徒"
 
-#. [unit_type]: id=Mermaid Initiate, race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman, gender=female
 #: data/core/units/merfolk/Initiate.cfg:18
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
@@ -5402,12 +5406,12 @@ msgstr ""
 "鱼时很无用，但在作战或者捕捉过于接近岸边的猎物时则很有用。大棒也用于战斗，却"
 "几乎没有从捕鱼方面借鉴什么，因为它们已经足够致命了。"
 
-#. [unit_type]: id=Mermaid Priestess, race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman, gender=female
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "人鱼女祭司"
 
-#. [unit_type]: id=Mermaid Priestess, race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman, gender=female
 #: data/core/units/merfolk/Priestess.cfg:21
 msgid ""
 "Among merfolk, mysticism is generally left to the mermaids, who are more "
@@ -5421,12 +5425,12 @@ msgstr ""
 "变为可能的技艺。她们的虔诚也赐予了她们某些力量，以保护她们的族人免受魔法或非"
 "自然事物的侵扰。"
 
-#. [unit_type]: id=Mermaid Siren, race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman, gender=female
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "人鱼女妖"
 
-#. [unit_type]: id=Mermaid Siren, race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman, gender=female
 #: data/core/units/merfolk/Siren.cfg:19
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
@@ -5918,9 +5922,9 @@ msgstr ""
 #. [attack]: type=blade
 #. [attack]: type=pierce
 #: data/core/units/monsters/Elder_Falcon.cfg:84
-#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:86
-#: data/core/units/monsters/Raven_Harbinger.cfg:96
-#: data/core/units/monsters/Raven_Omen.cfg:86
+#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:82
+#: data/core/units/monsters/Raven_Harbinger.cfg:92
+#: data/core/units/monsters/Raven_Omen.cfg:82
 #: data/core/units/monsters/Roc.cfg:64
 msgid "beak"
 msgstr "喙"
@@ -6193,12 +6197,12 @@ msgstr ""
 msgid "hooves"
 msgstr "踢击"
 
-#. [unit_type]: id=Black Horse, race=horse
+#. [unit_type]: id=Black Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Black.cfg:14
 msgid "Black Horse"
 msgstr "乌骏"
 
-#. [unit_type]: id=Black Horse, race=horse
+#. [unit_type]: id=Black Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Black.cfg:34
 msgid ""
 "The true nature of Black Horses is impossible to discern, but the fire in "
@@ -6225,12 +6229,12 @@ msgstr "乌骁"
 msgid "female^Black Nightmare"
 msgstr "乌魇"
 
-#. [unit_type]: id=Dark Horse
+#. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
 msgid "Dark Horse"
 msgstr "黯骏"
 
-#. [unit_type]: id=Dark Horse
+#. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:40
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
@@ -6745,12 +6749,12 @@ msgstr ""
 "他们遭遇的人。这足以让怀疑雪人是否存在的人在据说有雪人居住的山脉之中，不敢走"
 "得太远了。"
 
-#. [unit_type]: id=Naga Dirkfang, race=naga
+#. [unit_type]: id=Naga Dirkfang, race=naga, gender=male,female
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
 msgstr "娜迦刃牙武士"
 
-#. [unit_type]: id=Naga Dirkfang, race=naga
+#. [unit_type]: id=Naga Dirkfang, race=naga, gender=male,female
 #: data/core/units/nagas/Dirkfang.cfg:18
 msgid ""
 "In contrast to the heavily melee-focused style of their northern brethren, "
@@ -6773,17 +6777,17 @@ msgstr ""
 msgid "chakri"
 msgstr "查克里刃环"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
 msgstr "娜迦刃牙武士"
 
-#. [unit_type]: id=Naga Fighter, race=naga
+#. [unit_type]: id=Naga Fighter, race=naga, gender=male,female
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "娜迦战士"
 
-#. [unit_type]: id=Naga Fighter, race=naga
+#. [unit_type]: id=Naga Fighter, race=naga, gender=male,female
 #: data/core/units/nagas/Fighter.cfg:18
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -6797,7 +6801,7 @@ msgstr ""
 "事实上无法进入的完整世界。然而，他们并非真正的海洋生物，无法在水中呼吸，所以"
 "对深渊心怀恐惧。他们小巧，而且有点脆弱，但常常比他们的对手更灵活。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Fighter.cfg:49
 msgid "Nagini Fighter"
 msgstr "娜迦战士"
@@ -6863,12 +6867,12 @@ msgstr ""
 "资深的娜迦卫士能在近战中能高效地使盾，故而很难从岗位上引开他们。这种战术对远"
 "程攻击毫无作用，但在这种情况下，娜迦通常可以寻找更好的地形优势。"
 
-#. [unit_type]: id=Naga Myrmidon, race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "娜迦忠勇武士"
 
-#. [unit_type]: id=Naga Myrmidon, race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:20
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -6881,12 +6885,12 @@ msgstr ""
 "们不仅长得像蛇，攻速也和蛇一样快，并能以优雅的舞步躲开攻击。他们在任何开阔的"
 "地形上都是强大的敌手，善于游泳的特质更是在水中赋予他们致命的机动性。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Myrmidon.cfg:48
 msgid "Nagini Myrmidon"
 msgstr "娜迦忠勇武士"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Myrmidon.cfg:50
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
@@ -6899,12 +6903,12 @@ msgstr ""
 "们不仅长得像蛇，攻速也和蛇一样快，并能以优雅的舞步躲开攻击。她们在任何开阔的"
 "地形上都是强大的敌手，善于游泳的特质更是在水中赋予她们致命的机动性。"
 
-#. [unit_type]: id=Naga Ophidian, race=naga
+#. [unit_type]: id=Naga Ophidian, race=naga, gender=male,female
 #: data/core/units/nagas/Ophidian.cfg:4
 msgid "Naga Ophidian"
 msgstr "娜迦蛇身武士"
 
-#. [unit_type]: id=Naga Ophidian, race=naga
+#. [unit_type]: id=Naga Ophidian, race=naga, gender=male,female
 #: data/core/units/nagas/Ophidian.cfg:18
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
@@ -6939,17 +6943,17 @@ msgstr "弯刃"
 msgid "jarid"
 msgstr "贾里德标枪"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
 msgstr "娜迦蛇身武士"
 
-#. [unit_type]: id=Naga Ringcaster, race=naga
+#. [unit_type]: id=Naga Ringcaster, race=naga, gender=male,female
 #: data/core/units/nagas/Ringcaster.cfg:4
 msgid "Naga Ringcaster"
 msgstr "娜迦刃环使"
 
-#. [unit_type]: id=Naga Ringcaster, race=naga
+#. [unit_type]: id=Naga Ringcaster, race=naga, gender=male,female
 #: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
@@ -6968,17 +6972,17 @@ msgstr ""
 msgid "chakram"
 msgstr "查克拉姆刃环"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
 msgstr "娜迦刃环使"
 
-#. [unit_type]: id=Naga Sicarius, race=naga
+#. [unit_type]: id=Naga Sicarius, race=naga, gender=male,female
 #: data/core/units/nagas/Sicarius.cfg:4
 msgid "Naga Sicarius"
 msgstr "娜迦影刃武士"
 
-#. [unit_type]: id=Naga Sicarius, race=naga
+#. [unit_type]: id=Naga Sicarius, race=naga, gender=male,female
 #: data/core/units/nagas/Sicarius.cfg:19
 msgid ""
 "While they sometimes still stand in as sellswords for potential Dunefolk "
@@ -7004,17 +7008,17 @@ msgstr ""
 "自己确实处于危险之中时，他们就会很好地利用自己的狡猾来预见到敌人的许多攻击，"
 "并在关键时刻使用他们沉重的弯刀来偏转对方的攻击或分散其注意力。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
 msgstr "娜迦影刃武士"
 
-#. [unit_type]: id=Naga Warrior, race=naga
+#. [unit_type]: id=Naga Warrior, race=naga, gender=male,female
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "娜迦武士"
 
-#. [unit_type]: id=Naga Warrior, race=naga
+#. [unit_type]: id=Naga Warrior, race=naga, gender=male,female
 #: data/core/units/nagas/Warrior.cfg:18
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -7028,12 +7032,12 @@ msgstr ""
 "刀的方式完全不同于兽人或其他种族：他们开始学习利用自己蛇形的身体闪转腾挪来躲"
 "避攻击。这使他们在陆地上很强大，但水的阻力却大大影响了他们闪躲的能力。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Warrior.cfg:46
 msgid "Nagini Warrior"
 msgstr "娜迦武士"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Warrior.cfg:48
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -7047,12 +7051,12 @@ msgstr ""
 "双刀的方式完全不同于兽人或其他种族：她们开始学习利用自己蛇形的身体闪转腾挪来"
 "躲避攻击。这使她们在陆地上很强大，但水的阻力却大大影响了她们闪躲的能力。"
 
-#. [unit_type]: id=Naga Zephyr, race=naga
+#. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:4
 msgid "Naga Zephyr"
 msgstr "娜迦灵风武士"
 
-#. [unit_type]: id=Naga Zephyr, race=naga
+#. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
@@ -7121,7 +7125,7 @@ msgstr ""
 "虽然在古老传说的驱使下，追随泽法遗志的精英武士们专注于投掷刃环，但这并不意味"
 "着他们在肉搏战中很弱，因为不平衡的查克拉姆可以用尖刺和小刀片来加强。\n"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
 msgstr "娜迦灵风武士"
@@ -7448,12 +7452,12 @@ msgstr ""
 "在近战范围内与敌人交手。虽然这一战术相当粗暴，但对这些战士来说仍然很是有效。"
 "他们缺乏训练和技巧，无法采用更复杂的策略。"
 
-#. [unit_type]: id=Saurian Ambusher, race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "female^Saurian Ambusher"
 msgstr "蜥蜴人伏击士"
 
-#. [unit_type]: id=Saurian Ambusher, race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:18
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
@@ -7485,12 +7489,12 @@ msgstr ""
 "法。虽然这些能力并不被人们所了解，但却——确定无疑地——被那些遭到这种能力攻击的"
 "人们所畏惧。"
 
-#. [unit_type]: id=Saurian Flanker, race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "female^Saurian Flanker"
 msgstr "蜥蜴人侧击士"
 
-#. [unit_type]: id=Saurian Flanker, race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:19
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
@@ -7503,14 +7507,14 @@ msgstr ""
 "蜴人战士在保持其高机动性的前提下仍然可以成为相当强大的斗士。这在战场上令人生"
 "畏，粗心的敌人很快就会发现，他们的支援部队被这些生物从侧面偷袭了。"
 
-#. [unit_type]: id=Saurian Javelineer, race=lizard
+#. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:4
 #, fuzzy
 #| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
 msgstr "蜥蜴人侧击士"
 
-#. [unit_type]: id=Saurian Javelineer, race=lizard
+#. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
 msgid ""
 "After years of combat practice, saurians warriors that are the most talented "
@@ -7539,14 +7543,14 @@ msgstr ""
 "们的“社会”作用如何，他们所拥有的诡异魔法毋庸置疑地强大。万一遇到他们时务必提"
 "高警惕。"
 
-#. [unit_type]: id=Saurian Prophet, race=lizard
+#. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:4
 #, fuzzy
 #| msgid "Saurian Oracle"
 msgid "Saurian Prophet"
 msgstr "蜥蜴人先知"
 
-#. [unit_type]: id=Saurian Prophet, race=lizard
+#. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:19
 #, fuzzy
 #| msgid ""
@@ -7588,12 +7592,12 @@ msgstr ""
 "蜥蜴人以拥有诡异的能力著称，那是一些游走于魔法和秘术之间的技艺。很明显，他们"
 "中有些人熟练掌握了某种医术，不论何时只要战斗发生，这种能力就会大有助益。"
 
-#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "female^Saurian Skirmisher"
 msgstr "蜥蜴人散兵"
 
-#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:18
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
@@ -7616,14 +7620,14 @@ msgstr ""
 msgid "Saurian Soothsayer"
 msgstr "蜥蜴人预言者"
 
-#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:4
 #, fuzzy
 #| msgid "female^Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
 msgstr "蜥蜴人散兵"
 
-#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:18
 msgid ""
 "Some saurians with particularly good aim prefer to aid their allies from the "
@@ -7996,12 +8000,12 @@ msgstr ""
 "物常常会在历史上留下黑暗而血腥的一章，而在那样的危急时刻，唯有最神勇的英雄们"
 "那不懈的努力，才没让上古巫妖的崛起成为笼罩万世的阴影的先声。"
 
-#. [unit_type]: id=Dark Adept, race=human
+#. [unit_type]: id=Dark Adept, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "黑暗狂徒"
 
-#. [unit_type]: id=Dark Adept, race=human
+#. [unit_type]: id=Dark Adept, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:22
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
@@ -8022,17 +8026,17 @@ msgstr ""
 "\n"
 "在这种身体条件下，他们唯一的武器，便是自己如此专注地学习的技艺。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Adept.cfg:160
 msgid "female^Dark Adept"
 msgstr "黑暗狂徒"
 
-#. [unit_type]: id=Dark Sorcerer, race=human
+#. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "黑暗巫师"
 
-#. [unit_type]: id=Dark Sorcerer, race=human
+#. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
 msgid ""
 "The dread inspired by black magic is enhanced by the secrecy and fell rumors "
@@ -8062,12 +8066,12 @@ msgstr ""
 "何暴君都梦寐以求的忠诚，同时，这对那些哪怕对权力只有着一点点渴望的人，都有着"
 "无与伦比的吸引力。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:145
 msgid "Dark Sorceress"
 msgstr "黑暗巫师"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:149
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -8124,7 +8128,7 @@ msgstr ""
 "是仅仅有所增加而已。但既然这种问题有提出来的价值，那么这个事实本身就足以证明"
 "死灵教团所取得的成果有多么大了。"
 
-#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Necromancer, gender=male,female, race=human
 #: data/core/units/undead/Necromancer.cfg:22
 msgid ""
 "One of the pinnacles of what is considered ‘black magic’ is the art of "
@@ -8141,7 +8145,7 @@ msgstr ""
 "\n"
 "从各个方面来说，在欺骗死神以得到至高奖赏的道路上，这一能力都是重要的第一步。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necromancer.cfg:152
 msgid "female^Necromancer"
 msgstr "死灵法师"

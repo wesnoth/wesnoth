@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-10-21 17:55+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -263,13 +263,13 @@ msgstr "Principe Haldric"
 msgid "Haldric"
 msgstr "Haldric"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:44
 msgid "Wesfolk Leader"
 msgstr "Comandante Wesfolk"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:59
 msgid "Wesfolk"
@@ -729,7 +729,7 @@ msgstr "Come ti posso chiamare?"
 msgid "The Lady Outlaw will do."
 msgstr "Signora dei fuorilegge andrà bene."
 
-#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type, gender=female
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
@@ -1147,20 +1147,20 @@ msgid "Cleon"
 msgstr "Cleon"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Lollyra
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:61
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:114
 msgid "Cultists"
 msgstr "Settari"
 
-#. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:68
 msgid "Lollyra"
 msgstr "Lollyra"
 
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:94
 msgid "Clurka"
 msgstr "Clurka"
@@ -2347,7 +2347,7 @@ msgstr ""
 msgid "Bah, have it your way!"
 msgstr "Bah! Fa’ come vuoi!"
 
-#. [unit]: id=Lady Jessene, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:264
 msgid "Lady Jessene"
 msgstr "Lady Jessene"
@@ -7196,12 +7196,12 @@ msgstr "tempesta gelida"
 msgid "shadow wave"
 msgstr "onda oscura"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
 msgstr "Nobile comandante"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
@@ -7217,12 +7217,12 @@ msgstr ""
 "spade, tuttavia hanno anche un arco da usare nel momento del bisogno. Se il "
 "comandante viene ucciso la battaglia è perduta."
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
 msgstr "Nobile combattente"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
@@ -7233,12 +7233,12 @@ msgstr ""
 "sono vulnerabili agli attacchi a distanza dei nemici. Ciò nonostante hanno "
 "il potenziale per divenire un giorno grandi comandanti."
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
 msgstr "Nobile signore"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -7252,12 +7252,12 @@ msgstr ""
 "forniscono un incremento negli attacchi di tutte le unità di livello "
 "inferiore posizionate negli esagoni adiacenti."
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
 msgstr "Giovane nobile"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
@@ -7271,12 +7271,12 @@ msgstr ""
 msgid "training sword"
 msgstr "spada di legno"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
 msgid "female^Vampire Lady"
 msgstr "Dama vampira"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -7305,12 +7305,12 @@ msgstr ""
 "governare e proteggere le loro unità. I re possono coordinare gli attacchi "
 "delle unità di livello 1 e 2, aumentando la loro efficienza in combattimento."
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
 msgid "female^Wesfolk Lady"
 msgstr "Dama Wesfolk"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -7326,12 +7326,12 @@ msgstr ""
 "acquisito ampia esperienza sui campi di battaglia, che continua a crescere "
 "nel tempo, così come la sua naturale attitudine al comando."
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
 msgid "female^Wesfolk Leader"
 msgstr "Comandante Wesfolk"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:22
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -7347,12 +7347,12 @@ msgstr ""
 "acquisito ampia esperienza sui campi di battaglia, che continua a crescere "
 "nel tempo, così come la sua naturale attitudine al comando."
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
 msgstr "Esule Wesfolk"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "

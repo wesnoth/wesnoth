@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-17 04:13 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-10-19 10:30+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -354,7 +354,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant, id=Harper
+#. [unit]: type=Footpad_Peasant, id=Harper, gender=female
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:240
 msgid "Harper"
 msgstr "Harper"
@@ -617,7 +617,7 @@ msgstr ""
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
@@ -954,7 +954,7 @@ msgstr ""
 "But, she’d be right, I has me a responsibility to our people. Got a lot of "
 "trouble ahead of us..."
 
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
 msgid "Relana"
 msgstr "Relana"
@@ -3262,12 +3262,12 @@ msgstr ""
 "guided by a group of elders, who are the village’s wisest and most "
 "experienced residents."
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:53
 msgid "Senior Village Elder"
 msgstr "Senior Village Elder"
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:57
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -3280,7 +3280,7 @@ msgstr ""
 "their shoulders. Provincial officials tend to choose senior village elders "
 "as magistrates so that legal and customary authority will coincide."
 
-#. [female]
+#. [female]: gender=female
 #: data/campaigns/Liberty/units/Villagers.cfg:59
 msgid "female^Senior Village Elder"
 msgstr "Senior Village Elder"
