@@ -203,8 +203,9 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		//
 		if(preferences_minimap_draw_villages) {
 			for(const map_location& loc : map.villages()) {
-				// Check needed for mp create dialog
-				const int side_num = resources::gameboard ? resources::gameboard->village_owner(loc) : 0;
+				if(is_blindfolded || (vw && (vw->shrouded(loc) || vw->fogged(loc)))) {
+					continue;
+				}
 
 				color_t col(255, 255, 255);
 
@@ -214,7 +215,10 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 					col = iter->second.min();
 				}
 
-				if(!fogged(loc) && side_num > 0) {
+				// Check needed for mp create dialog
+				const int side_num = resources::gameboard ? resources::gameboard->village_owner(loc) : 0;
+
+				if(side_num > 0) {
 					if(preferences_minimap_unit_coding || !vw) {
 						col = team::get_minimap_color(side_num);
 					} else {
