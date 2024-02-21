@@ -131,7 +131,6 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						const std::string base_file = "terrain/" + terrain_info.minimap_image() + ".png";
 						const texture& tile = image::get_texture(base_file); // image::HEXED
 
-						// TODO: handle fog (was a -50, -50, -50 adjust) and highlight (was a 50, 50, 50 adjust).
 						draw::blit(tile, dest);
 
 						// NOTE: we skip the overlay when base is missing (to avoid hiding the error)
@@ -143,6 +142,20 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 							// TODO: crop/center overlays?
 							draw::blit(overlay, dest);
+						}
+
+						// FIXME: use shaders instead of textures for this once we can actually do that
+
+						if(fogged(loc)) {
+							// Hex-shaped texture to apply #000000 at 40% opacity
+							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png");
+							draw::blit(fog_overlay, dest);
+						}
+
+						if(highlighted) {
+							// Hex-shaped texture to apply #ffffff at 40% opacity
+							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png");
+							draw::blit(fog_overlay, dest);
 						}
 					}
 				} else {
