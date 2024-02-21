@@ -371,7 +371,7 @@ if env["prereqs"]:
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
 
     have_server_prereqs = (\
-        conf.CheckCPlusPlus(gcc_version = "7") & \
+        conf.CheckCPlusPlus(gcc_version = "8") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
