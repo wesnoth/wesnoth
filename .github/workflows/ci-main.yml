@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ 1.18 ]
   pull_request:
-    branches: [ master ]
+    branches: [ 1.18 ]
   workflow_dispatch:
 
 jobs:
@@ -69,7 +69,7 @@ jobs:
         SDL_VIDEODRIVER: dummy
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
 # 1) wesnothd and campaignd should be buildable without SDL2 being present
 # 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
@@ -144,7 +144,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Steam Runtime
         run: |
@@ -162,7 +162,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: MinGW Crosscompile
         run: |
@@ -193,7 +193,7 @@ jobs:
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -222,7 +222,7 @@ jobs:
        CLICOLOR_FORCE: 1
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -250,7 +250,7 @@ jobs:
       CFG: ${{ matrix.cfg }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -297,7 +297,7 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
         run: echo IMAGE_VERSION=%ImageVersion%>> %GITHUB_ENV%
