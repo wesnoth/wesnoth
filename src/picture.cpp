@@ -218,10 +218,6 @@ parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 
 } // end anon namespace
 
-mini_terrain_cache_map mini_terrain_cache;
-mini_terrain_cache_map mini_fogged_terrain_cache;
-mini_terrain_cache_map mini_highlighted_terrain_cache;
-
 void flush_cache()
 {
 	for(surface_cache& cache : surfaces_) {
@@ -236,14 +232,9 @@ void flush_cache()
 	textures_.clear();
 	textures_hexed_.clear();
 	texture_tod_colored_.clear();
-	mini_terrain_cache.clear();
-	mini_fogged_terrain_cache.clear();
-	mini_highlighted_terrain_cache.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
 }
-
-
 
 locator locator::clone(const std::string& mods) const
 {

@@ -163,12 +163,6 @@ typedef cache_type<surface> surface_cache;
 typedef cache_type<texture> texture_cache;
 typedef cache_type<bool> bool_cache;
 
-typedef std::map<t_translation::terrain_code, surface> mini_terrain_cache_map;
-
-extern mini_terrain_cache_map mini_terrain_cache;
-extern mini_terrain_cache_map mini_fogged_terrain_cache;
-extern mini_terrain_cache_map mini_highlighted_terrain_cache;
-
 /**
  * Type used to store color information of central and adjacent hexes.
  *
