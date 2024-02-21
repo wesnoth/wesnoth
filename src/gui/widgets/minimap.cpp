@@ -96,7 +96,10 @@ void minimap::set_map_data(const std::string& map_data)
 bool minimap::impl_draw_background()
 {
 	if(map_) {
-		image::render_minimap(get_width(), get_height(), *map_, nullptr, nullptr, nullptr, true);
+		if(const auto drawer = image::prep_minimap_for_rendering(*map_, nullptr, nullptr, nullptr, true)) {
+			const auto [w, h] = get_size();
+			drawer({ 0, 0, w, h });
+		}
 	}
 	return true;
 }

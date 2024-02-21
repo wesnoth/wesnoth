@@ -290,8 +290,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	return minimap;
 }
 
-void render_minimap(unsigned dst_w,
-		unsigned dst_h,
+std::function<rect(rect)> prep_minimap_for_rendering(
 		const gamemap& map,
 		const team* vw,
 		const unit_map* units,
@@ -314,12 +313,12 @@ void render_minimap(unsigned dst_w,
 
 	// No map!
 	if(map_width == 0 || map_height == 0) {
-		return;
+		return nullptr;
 	}
 
 	// Nothing to draw!
 	if(!preferences_minimap_draw_villages && !preferences_minimap_draw_terrain) {
-		return;
+		return nullptr;
 	}
 
 	const display* disp = display::get_singleton();
@@ -353,7 +352,7 @@ void render_minimap(unsigned dst_w,
 	// scale the whole result down the desired destination texture size.
 	texture minimap(map_width, map_height, SDL_TEXTUREACCESS_TARGET);
 	if(!minimap) {
-		return;
+		return nullptr;
 	}
 
 	{
@@ -525,24 +524,32 @@ void render_minimap(unsigned dst_w,
 		}
 	}
 
-	point raw_size = minimap.get_raw_size();
-
-	const double wratio = dst_w * 1.0 / raw_size.x;
-	const double hratio = dst_h * 1.0 / raw_size.y;
-
-	const double ratio = std::min<double>(wratio, hratio);
-
-	// TODO: maybe add arguments so we can set render origin?
-	// Finally, render the composited minimap texture (scaled down) to the render target,
-	// which should be the passed texture.
-	draw::blit(minimap, {
-		0,
-		0,
-		static_cast<int>(raw_size.x * ratio),
-		static_cast<int>(raw_size.y * ratio)
-	});
-
 	DBG_DP << "done generating minimap";
+
+	return [minimap](rect dst) {
+		const auto [raw_w, raw_h] = minimap.get_raw_size();
+
+		// Check which dimensions needs to be shrunk more
+		const double scale_ratio = std::min<double>(
+			dst.w * 1.0 / raw_w,
+			dst.h * 1.0 / raw_h
+		);
+
+		// Preserve map aspect ratio within the requested area
+		const int scaled_w = static_cast<int>(raw_w * scale_ratio);
+		const int scaled_h = static_cast<int>(raw_h * scale_ratio);
+
+		// Attempt to center the map in the requested area
+		dst.x = std::max(dst.x, dst.x + (dst.w - scaled_w) / 2);
+		dst.y = std::max(dst.y, dst.y + (dst.h - scaled_h) / 2);
+		dst.w = scaled_w;
+		dst.h = scaled_h;
+
+		draw::blit(minimap, dst);
+
+		// Let the caller know where the minimap *actually* ended up being drawn
+		return dst;
+	};
 }
 
 }
