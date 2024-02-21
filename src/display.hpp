@@ -742,7 +742,7 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	texture minimap_;
+	std::function<rect(rect)> minimap_renderer_;
 	SDL_Rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;
