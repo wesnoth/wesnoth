@@ -65,20 +65,7 @@ public:
 
 	void set_map_data(const std::string& map_data);
 
-	std::string get_map_data() const
-	{
-		return map_data_;
-	}
-
-	const std::string& map_data() const
-	{
-		return map_data_;
-	}
-
 private:
-	/** The map data to be used to generate the map. */
-	std::string map_data_;
-
 	/** Game map generated from the provided data. */
 	std::unique_ptr<gamemap> map_;
 

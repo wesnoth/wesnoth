@@ -52,7 +52,6 @@ REGISTER_WIDGET(minimap)
 
 minimap::minimap(const implementation::builder_minimap& builder)
 	: styled_widget(builder, type())
-	, map_data_()
 {
 }
 
@@ -78,15 +77,10 @@ bool minimap::disable_click_dismiss() const
 
 void minimap::set_map_data(const std::string& map_data)
 {
-	if(map_data == map_data_) {
-		return;
-	}
-
-	map_data_ = map_data;
 	queue_redraw();
 
 	try {
-		map_ = std::make_unique<gamemap>(map_data_);
+		map_ = std::make_unique<gamemap>(map_data);
 	} catch(const incorrect_map_format_error& e) {
 		map_.reset(nullptr);
 		ERR_CF << "Error while loading the map: " << e.message;
