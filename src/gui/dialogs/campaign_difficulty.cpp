@@ -100,28 +100,26 @@ void campaign_difficulty::pre_show(window& window)
 			list.select_last_row();
 		}
 
-		styled_widget &widget = find_widget<styled_widget>(&grid, "victory", false);
-		if(&widget) {
+		styled_widget& widget = find_widget<styled_widget>(&grid, "victory", false);
+		if(preferences::is_campaign_completed(campaign_id_, d["define"])) {
 			// Use different laurels according to the difficulty level, following the
 			// pre-existing convention established in campaign_selection class.
 			// Assumes ascending order of difficulty.
-			if(preferences::is_campaign_completed(campaign_id_, d["define"])) {
-				if(difficulty_count == 0) {
-					widget.set_label(game_config::images::victory_laurel_easy);
-				}
+			if(difficulty_count == 0) {
+				widget.set_label(game_config::images::victory_laurel_easy);
+			}
 
-				else if(difficulty_count + 1 >= difficulty_max) {
-					widget.set_label(game_config::images::victory_laurel_hardest);
-				}
-
-				else {
-					widget.set_label(game_config::images::victory_laurel);
-				}
+			else if(difficulty_count + 1 >= difficulty_max) {
+				widget.set_label(game_config::images::victory_laurel_hardest);
 			}
 
 			else {
-				widget.set_visible(widget::visibility::hidden);
+				widget.set_label(game_config::images::victory_laurel);
 			}
+		}
+
+		else {
+			widget.set_visible(widget::visibility::hidden);
 		}
 
 		difficulty_count++;
