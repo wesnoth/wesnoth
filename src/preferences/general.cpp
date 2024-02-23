@@ -504,7 +504,7 @@ int font_scaled(int size)
 
 int keepalive_timeout()
 {
-	return prefs["keepalive_timeout"].to_int(20);
+	return prefs["keepalive_timeout"].to_int(60);
 }
 
 void keepalive_timeout(int seconds)
