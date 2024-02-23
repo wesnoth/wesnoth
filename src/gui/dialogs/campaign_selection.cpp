@@ -37,6 +37,7 @@
 #include "lexical_cast.hpp"
 #include "preferences/game.hpp"
 
+#include <iostream>
 #include <functional>
 #include "utils/irdya_datetime.hpp"
 
@@ -228,9 +229,13 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		}
 	}
 
+	boost::dynamic_bitset<> vals = find_widget<multimenu_button>(this, "filter_completion", false).get_toggle_states();
+
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
-		if(show_items[i]) {
+		bool completed = preferences::is_campaign_completed(levels[i]->data()["id"]);
+
+		if( show_items[i] && (( (!completed) && vals[0] ) || (completed && vals[1])) ) {
 			add_campaign_to_tree(levels[i]->data());
 
 			if (!exists_in_filtered_result) {
@@ -319,6 +324,13 @@ void campaign_selection::pre_show(window& window)
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
+
+	multimenu_button& filter_comp = find_widget<multimenu_button>(&window, "filter_completion", false);
+	connect_signal_notify_modified(filter_comp,
+		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
+	for (unsigned j = 0; j < filter_comp.num_options(); j++) {
+		filter_comp.select_option(j);
+	}
 
 	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
 		const config& campaign = level->data();
