@@ -105,21 +105,16 @@ void campaign_difficulty::pre_show(window& window)
 		if(preferences::is_campaign_completed(campaign_id_, d["define"])) {
 			// Use different laurels according to the difficulty level, following the
 			// pre-existing convention established in campaign_selection class.
-			// Assumes ascending order of difficulty.
-			if(difficulty_count == 0) {
-				widget.set_label(game_config::images::victory_laurel_easy);
-			}
-
-			else if(difficulty_count + 1 >= difficulty_max) {
+			// Assumes ascending order of difficulty and gold laurel is set first
+			// in case there is only one difficulty setting.
+			if(difficulty_count + 1 >= difficulty_max) {
 				widget.set_label(game_config::images::victory_laurel_hardest);
-			}
-
-			else {
+			} else if(difficulty_count == 0) {
+				widget.set_label(game_config::images::victory_laurel_easy);
+			} else {
 				widget.set_label(game_config::images::victory_laurel);
 			}
-		}
-
-		else {
+		} else {
 			widget.set_visible(widget::visibility::hidden);
 		}
 
