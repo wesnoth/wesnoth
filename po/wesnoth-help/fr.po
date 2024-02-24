@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-19 20:52-0600\n"
-"PO-Revision-Date: 2024-01-05 19:14+0100\n"
+"PO-Revision-Date: 2024-02-15 21:01+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -791,6 +791,11 @@ msgid ""
 msgstr ""
 "Précipices et gorges\n"
 "\n"
+"Les gorges, précipices et variation similaires se comportent souvent comme "
+"une surcouche standard et peuvent être utilisées comme telles. Cependant "
+"pour les surfaces plus grandes de la carte où vous voulez peut-être placer "
+"d'autres surcouches de terrain, il vous faudra les combiner avec les "
+"« marqueurs » décrits plus loin."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
@@ -799,11 +804,13 @@ msgstr "<bold>text='Élévation submergée'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
+#, fuzzy
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Marqueur d'élévation à placer"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
+#, fuzzy
 msgid ""
 "Raised elevation editor palette icon\n"
 "\n"
@@ -819,9 +826,25 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"Icône de surélévation de la palette de l'éditeur\n"
+"\n"
+"Ces marqueurs peuivent être utilisés pour surélever ou abaisser une zone de "
+"la carte en laissant la possibilité d'utiliser les autres surcouches de "
+"terrain comme les forêts. Après avoir placé un de ces marqueurs-flèches, la "
+"totalité de la zone est couverte d'un nuage coloré suivant un code. Ni les "
+"marqueurs-flèches ni le nuage ne seront visibles en dehors de l'éditeur. La "
+"zone couverte du nuage aura à sa frontière une dénivellation qui montrera "
+"qu'elle se trouve plus haut (ou bas) que les cases adjacentes.\n"
+"\n"
+"Il y a deux marqueurs d'élévation et deux marqueurs de dépression qui "
+"permettent de définir au total cinq niveaux (haut, plus haut, normal, bas, "
+"plus bas). Cependant, placer de manière contiguë deux zones qui sont "
+"séparées de deux niveaux ou plus ne résultera pas en une dénivellation plus "
+"importante.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:192
+#, fuzzy
 msgid ""
 "editor^<bold>text='How to Use'</bold>\n"
 "\n"
@@ -840,15 +863,37 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"<bold>text='Notice d'utilisation'</bold>\n"
+"\n"
+"Les marqueurs-flèches ne sont pas utilisables isolément, mais combinés avec "
+"les terrains de type précipices ou gorges, des zones de la carte peuvent "
+"être inondées.\n"
+"\n"
+"Voici une illustration de comment les utiliser :\n"
+"1.  Sélectionner le terrain Gorges(^Qhh) de la palette de l'éditeur et "
+"utiliser le pinceau d'une case pour couvrir une zone vide d'une carte "
+"couverte d'herbe.\n"
+"2.  Placer le marqueur-flèche vers le haut (^_mh) sur une case à "
+"l'interieure de la zone (mais pas sur la frontière Gorges-Plat).\n"
+"3.  La zone devient alors surélevée, et de nouveaux terrains peuvent être "
+"ajoutés à la zone tant que les surcouches flèche et gorges sont conservées.\n"
+"\n"
+"Le graphisme utilisé pour illustrer la dénivellation est déterminé par le "
+"terrain de base de la case.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:203
+#, fuzzy
 msgid ""
 "editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
 "have their terrain codes changed, or any other properties affected, so "
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='Note aux auteurs de scénarios: les cases innondées gardent "
+"leur code original et toutes les propriétés associées ce qui rend difficile "
+"la sélection de cases sur base de leur élévation.' italic='yes' font_size=10 "
+"</format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:208
@@ -1185,6 +1230,7 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:351
+#, fuzzy
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
 "scenarios you create. This can be an existing add-on or a brand new add-on. "
@@ -1194,6 +1240,13 @@ msgid ""
 "scenario mode is required in order for your maps to be selectable during "
 "game creation."
 msgstr ""
+"Dans les deux modes, le programme vous demandera de choisir une extension à "
+"utiliser pour les scénarios que vous créez. Ça peut être une extension "
+"existante ou une nouvelle extension. Si vous optez pour une nouvelle "
+"extension, elle recevra tous les fichiers et l'arborescence de répertoires "
+"nécessaires ainsi qu'un identifiant par défaut. Si vous n'éditez pas un "
+"scénario existant, vous devez choisir le mode « scénario » afin que votre "
+"carte soit sélectionnable lors de la création de la partie."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:353
@@ -1364,6 +1417,7 @@ msgstr "Utilisation d'un fichier séparé pour les évènements WML"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:415
+#, fuzzy
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1395,6 +1449,37 @@ msgid ""
 "  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
 "the additional cfg file"
 msgstr ""
+"En chargeant un fichier .cfg, l'éditeur de scenario peut interpréter les "
+"fichiers générés par l'éditeur de scénario mais il est probablement que des "
+"erreurs arrivent si les fichiers ont été modifiés à la main.\n"
+"\n"
+"Une option est d'ajouter le code WML manuellement dans une nouveau fichier ."
+"cfg et d'inclure les fichiers générés par l'éditeur en utilisant une "
+"commande du préprocesseur WML. Ce fichier séparé contient le tag [scenario] "
+"et le code WML écrit à la main comme les [event]. Suivant cette méthode, la "
+"structure des fichiers de l'extension ressemblera à ceci:\n"
+"\n"
+"<header>text='Exemple'</header>\n"
+"Si votre extension respecte la grammaire du code WML de la version 1.18 ou "
+"postérieure, il est préférable d'utiliser dans un scenario l'attribut "
+"include_file pour inclure un fichier .cfg contenant un code WML "
+"additionnel.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ utiliser “[binary_path]” pour ajouter au répertoire de données binaires "
+"les répertoires de l'extension, qui entraînera que “map_file” cherchera les "
+"cartes dans le répertoire “maps”\n"
+"• maps/first.map\n"
+" ◦ c'est le fichier .map créé par l'éditeur de scénario après sauvegarde en "
+"mode scénario\n"
+"• scenarios/other.cfg\n"
+"  ◦ c'est le fichier .cfg contenant tout le code WML que l'éditeur de "
+"scénario ne sait pas interpréter\n"
+"• scenarios/first.cfg\n"
+"  ◦ dans la directive [scenario], utiliser “map_file=\"first.map\"” pour "
+"charger le fichier de la carte\n"
+"  ◦ dans la directive [scenario], utiliser “include_file=\"other.cfg\"” pour "
+"charger le fichier .cfg additionnel"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:438
@@ -8109,8 +8194,10 @@ msgstr "Corbeau"
 msgid "race^Ravens"
 msgstr "Corbeaux"
 
+# Essayer d'éviter d'associer "bec" et "gryphon"
 #. [race]: id=raven
 #: data/core/units.cfg:354
+#, fuzzy
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8128,6 +8215,23 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"Les corbeaux sont des charognards qui suivent souvent les prédateurs et "
+"autres chasseurs dans l'espoir de partager les carcasses. Leur bec n'est "
+"guère dangereux et leurs griffes sont bien moins puissantes que celles des "
+"gryphons et des rapaces, mais ils restent une menace grâce à leur "
+"intelligence et leur opportunisme.\n"
+"\n"
+"Au lendemain des batailles, les corbeaux font un festin des cadavres et des "
+"blessés ce qui porte préjudice aux vaincus et leurs alliés mais fait partie "
+"du rituel martial pour les vainqueurs. L'omniprésence et la sauvagerie "
+"propre aux races humaine et orque font qu'elles traînent les nuées de "
+"corbeaux comme de fidèles compagnons sur lesquels elles ont de nombreuses "
+"chansons, fables et superstitions de guerre.\n"
+"\n"
+"Ces charognards sont suffisamment intelligents pour ne pas dépendre de la "
+"mort des champs de bataille pour survivre. Ils peuvent harceler les paysans "
+"pour piquer leurs nouvelles semailles, si bien que certains s'en accommodent "
+"et se servent des corbeaux pour faire le guet."
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
