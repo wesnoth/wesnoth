@@ -234,10 +234,26 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
 		bool completed = preferences::is_campaign_completed(levels[i]->data()["id"]);
+		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
+		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
-		if( show_items[i] && (( (!completed) && vals[0] ) || (completed && vals[1])) ) {
+		std::cout << levels[i]->data().debug() << std::endl << std::endl;
+
+		// Check for non-completion on every difficulty save the first.
+		const bool only_first_completed = difficulties.size() > 1 &&
+			std::none_of(difficulties.begin() + 1, difficulties.end(), did_complete_at);
+		const bool completed_easy = only_first_completed && did_complete_at(difficulties.front());
+		const bool completed_hardest = !difficulties.empty() && did_complete_at(difficulties.front());
+		const bool completed_mid = completed && !completed_hardest && !completed_easy;
+
+		if( show_items[i] && (
+					( (!completed) && vals[0] )
+				 || ( completed && vals[1] )
+				 || ( completed_hardest && vals[2] )
+				 || ( completed_easy && vals[4] )
+				 || ( completed_mid && vals[3])
+				 )) {
 			add_campaign_to_tree(levels[i]->data());
-
 			if (!exists_in_filtered_result) {
 				exists_in_filtered_result = levels[i]->id() == was_selected;
 			}
