@@ -324,6 +324,9 @@ std::string unit_topic_generator::operator()() const {
 		sz = 400;
 	}
 
+	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
+	sz *= preferences::pixel_scale();
+
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {
 		ss << "<img>src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
