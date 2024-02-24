@@ -248,10 +248,10 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 		if( show_items[i] && (
 					( (!completed) && vals[0] )
-				 || ( completed && vals[1] )
-				 || ( completed_hardest && vals[2] )
-				 || ( completed_easy && vals[4] )
-				 || ( completed_mid && vals[3])
+				 || ( completed && vals[4] )
+				 || ( completed_hardest && vals[3] )
+				 || ( completed_easy && vals[1] )
+				 || ( completed_mid && vals[2])
 				 )) {
 			add_campaign_to_tree(levels[i]->data());
 			if (!exists_in_filtered_result) {
