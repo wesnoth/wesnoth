@@ -85,7 +85,7 @@ csvfile_needs_sorting = False
 # Sanity-check for known licenses
 unknown_licenses = []
 
-with open(options.input) as csvfile:
+with open(options.input, encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
     previous_file = ""
     for row in reader:
