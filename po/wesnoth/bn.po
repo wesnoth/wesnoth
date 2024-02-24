@@ -1,24 +1,22 @@
-# #-#-#-#-#  wesnoth.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# Bengali translations for PACKAGE package.
+# #-#-#-#-#  wesnoth  #-#-#-#-#
+# Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2024.
-#
+# Subhraman Sarkar <suvrax@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 22:05+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"PO-Revision-Date: 2024-02-21 09:49+0530\n"
+"Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
+"Language-Team: Bengali < >\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"#-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  wesnoth  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -28,62 +26,62 @@ msgstr ""
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
 msgid "Compress saved games"
-msgstr ""
+msgstr "সঞ্চিত খেলাগুলিকে কমপ্রেস করুন"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "স্বাভাবিক কমপ্রেসন, দ্রুততর"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "সর্বোৎকৃষ্ট কমপ্রেসন, ধীর"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr ""
+msgstr "না"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "বড় সাধারণ টেক্স ফাইল"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "নিশ্চিতভাবে সঞ্চিত খেলা মুছে ফেলতে চান?"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Mouse scrolling"
-msgstr ""
+msgstr "মাউস স্ক্রোল"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Middle-click scrolling"
-msgstr ""
+msgstr "মিডল-ক্লিক স্ক্রোল"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "মাউস উইন্ডো থেকে বেরিয়ে গেলেও স্ক্রোল করো"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Show combat"
-msgstr ""
+msgstr "লড়াই দেখান"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
@@ -100,7 +98,7 @@ msgstr ""
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
-msgstr ""
+msgstr "অ্যাকশন বা ইউনিট সরানোর সময় মানচিত্র ইউনিটের কাছে সরে যাবে কী না?"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
@@ -113,21 +111,23 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
+"খেলার ভিতরে চ্যাট বার্তা মুছে ফেলার আগে যত মিনিট অপেক্ষা করতে হবে । নিস্ক্রিয় করার "
+"জন্য 0 বসান ।"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "12-ঘন্টার ঘড়ি ব্যবহার করুন"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
-msgstr ""
+msgstr "অন্য সংস্করণ থেকে সঞ্চিত খেলাগুলো খুলবেন?"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "সাহায্যে সব প্রকারের ইউনিট দেখান"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:102
@@ -135,6 +135,8 @@ msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
+"সাহায্যে সব প্রকারের ইউনিট দেখান (পুনরায় শুরু করা প্রয়োজনীয়) । নিস্ক্রিয় করা থাকলে "
+"শুধু ইতিমধ্যে দেখা ইউনিটগুলি দেখানো হবে ।"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:109
@@ -150,27 +152,27 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
-msgstr ""
+msgstr "রঙিন কারসার দেখান"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
-msgstr ""
+msgstr "রঙিন মাউস কারসার ব্যবহার করুন"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
-msgstr ""
+msgstr "গোলকের রঙ পছন্দ করুন"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:134
 msgid "Logging"
-msgstr ""
+msgstr "লগ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "মন্টে-কার্লো সিমুলেশন ব্যবহার করে ক্ষতি গণনা করা হবে?"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:141
@@ -195,7 +197,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "হরফ আকার স্কেল করুন (গবেষণামূলক)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -203,11 +205,13 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"আপনার স্বাভাবিক রেসোলিউসনের থেকে সকল লেখা বড় বা ছোটো করুন । সতর্কবার্তা: লেখা বড় "
+"করার কারণে খেলার মধ্যে থাকা সাইডবারে সমস্যা তৈরী হতে পারে ।"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "সার্ভার বিচ্ছিন্ন হওয়ার সময়সীমা"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -216,6 +220,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"সার্ভার বিচ্ছিন্ন হওয়া বোঝার আগে কতক্ষণ অপেক্ষা করতে হবে । যদি আপনি বর্তমানে "
+"মাল্টিপ্লেয়ার সার্ভারে লগ-ইন করে আছেন, তাহলে এটিকে সক্রিয় করার জন্য আপনাকে লগ-আউট "
+"করে পুনরায় লগ-ইন করতে হবে ।"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -223,13 +230,13 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
 msgid "poisoned"
-msgstr ""
+msgstr "বিষাক্ত"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
 #: data/core/macros/items.cfg:559
 msgid "storm trident"
-msgstr ""
+msgstr "ঝঞ্ঝার ত্রিশূল"
 
 #. [objectives]
 #. [lua]: generate_objectives
@@ -249,64 +256,64 @@ msgstr ""
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:691
 msgid "Close"
-msgstr ""
+msgstr "বন্ধ"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
 #: data/english.cfg:26
 msgid "blade"
-msgstr ""
+msgstr "ধারালো অস্ত্র"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
 #: data/english.cfg:29
 msgid "fire"
-msgstr ""
+msgstr "অগ্নি"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
 #: data/english.cfg:30
 msgid "cold"
-msgstr ""
+msgstr "শীতল"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
 #: data/english.cfg:27
 msgid "pierce"
-msgstr ""
+msgstr "ভেদ্য"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
 #: data/english.cfg:28
 msgid "impact"
-msgstr ""
+msgstr "ভোঁতা অস্ত্র"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
 #: data/english.cfg:22
 msgid "melee"
-msgstr ""
+msgstr "নিকট"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
 #: data/english.cfg:23
 msgid "ranged"
-msgstr ""
+msgstr "দূর"
 
 #. [about]
 #: data/core/about.cfg:4
 msgid "Programming"
-msgstr ""
+msgstr "প্রোগ্রামিং"
 
 #. [about]
 #: data/core/about.cfg:282
 msgid "General Purpose Administration and Coordination"
-msgstr ""
+msgstr "সাধারণ প্রশাসনা এবং সমণ্বয় সাধন"
 
 #. [about]
 #: data/core/about.cfg:319
 msgid "Internationalization Managers"
-msgstr ""
+msgstr "ইন্টারন্যাশনালইজেশন ম্যানেজার"
 
 #. [about]
 #: data/core/about.cfg:344
@@ -316,12 +323,12 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:360
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "ছবি এবং গ্রাফিক্স"
 
 #. [about]
 #: data/core/about.cfg:818
 msgid "Music"
-msgstr ""
+msgstr "গান"
 
 #. [about]
 #: data/core/about.cfg:855
@@ -341,7 +348,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:1019
 msgid "Packagers"
-msgstr ""
+msgstr "প্যাকেজার"
 
 #. [about]
 #: data/core/about.cfg:1131
@@ -351,7 +358,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:1882
 msgid "Bots"
-msgstr ""
+msgstr "বট-সমূহ"
 
 #. [about]
 #: data/core/about_i18n.cfg:6
@@ -637,94 +644,94 @@ msgstr ""
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:6
 msgid "Items"
-msgstr ""
+msgstr "বস্তু"
 
 #. [item]: id=altar_evil
 #: data/core/editor/items.cfg:12
 msgid "Evil Altar"
-msgstr ""
+msgstr "অমঙ্গলসূচক বেদী"
 
 #. [item]: id=altar
 #: data/core/editor/items.cfg:19
 msgid "Altar"
-msgstr ""
+msgstr "বেদী"
 
 #. [item]: id=ankh-necklace
 #. [item]: id=ankh-necklace2
 #: data/core/editor/items.cfg:26 data/core/editor/items.cfg:33
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "আন্খ্ হার"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:40
 msgid "Anvil"
-msgstr ""
+msgstr "নেহাই"
 
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:47
 msgid "Archery Target"
-msgstr ""
+msgstr "ধনুর্বিদ্যার লক্ষ্যবস্তু"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:54
 msgid "Golden Armor"
-msgstr ""
+msgstr "সোনালী বর্ম"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:61
 msgid "Armor"
-msgstr ""
+msgstr "বর্ম"
 
 #. [item]: id=axe
 #. [item]: id=axe2
 #: data/core/editor/items.cfg:68 data/core/editor/items.cfg:75
 msgid "Axe"
-msgstr ""
+msgstr "কুঠার"
 
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "ছোটো কুঠার"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "ছুঁড়ে মারার কুঠার"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
 msgid "Blue Ball"
-msgstr ""
+msgstr "নীল গোলক"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:103
 msgid "Green Ball"
-msgstr ""
+msgstr "সবুজ গোলক"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:110
 msgid "Magenta Ball"
-msgstr ""
+msgstr "ম্যাজেন্টা গোলক"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:117
 msgid "Barrel"
-msgstr ""
+msgstr "পিপে"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:124
 msgid "Bomb"
-msgstr ""
+msgstr "বোমা"
 
 #. [item]: id=bones
 #: data/core/editor/items.cfg:131
 msgid "Bones"
-msgstr ""
+msgstr "হাড়"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:138
 msgid "Bonestack"
-msgstr ""
+msgstr "হাড়ের স্তুপ"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -735,143 +742,143 @@ msgstr ""
 #: data/core/editor/items.cfg:159 data/core/editor/items.cfg:166
 #: data/core/editor/items.cfg:173
 msgid "Book"
-msgstr ""
+msgstr "বই"
 
 #. [item]: id=bow
 #. [item]: id=bow2
 #: data/core/editor/items.cfg:180 data/core/editor/items.cfg:187
 msgid "Bow"
-msgstr ""
+msgstr "ধনুক"
 
 #. [item]: id=bow-crystal
 #. [item]: id=bow-crystal2
 #: data/core/editor/items.cfg:194 data/core/editor/items.cfg:201
 msgid "Crystal Bow"
-msgstr ""
+msgstr "স্ফটিক ধনুক"
 
 #. [item]: id=bow-elven
 #. [item]: id=bow-elven2
 #: data/core/editor/items.cfg:208 data/core/editor/items.cfg:215
 msgid "Elven Bow"
-msgstr ""
+msgstr "এল্ফ ধনুক"
 
 #. [item]: id=box
 #: data/core/editor/items.cfg:222
 msgid "Box"
-msgstr ""
+msgstr "বাক্স"
 
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "শাখা"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "পত্রহীন শাখা"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
 msgid "Brazier"
-msgstr ""
+msgstr "অঙ্গারপাত্র"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
 msgid "Lit Brazier"
-msgstr ""
+msgstr "আলোকিত অঙ্গারপাত্র"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
 #: data/core/editor/items.cfg:258 data/core/editor/items.cfg:265
 msgid "Buckler"
-msgstr ""
+msgstr "ছোটো ঢাল"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:272
 msgid "Burial"
-msgstr ""
+msgstr "সমাধি"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:279
 msgid "Cage"
-msgstr ""
+msgstr "খাঁচা"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
 msgid "Closed Chest"
-msgstr ""
+msgstr "বন্ধ সিন্দুক"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
 msgid "Open Chest"
-msgstr ""
+msgstr "খোলা সিন্দুক"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "বন্ধ সাধারণ সিন্দুক"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:308
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "খোলা সাধারণ সিন্দুক"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:315
 msgid "Green Cloak"
-msgstr ""
+msgstr "সবুজ ক্লোক"
 
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "মুগুর"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
 msgid "Closed Coffin"
-msgstr ""
+msgstr "বন্ধ কফিন"
 
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
 msgid "Open Coffin"
-msgstr ""
+msgstr "খোলা কফিন"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "ক্রস-বো"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "ছুরি"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
 msgid "Poison Dagger"
-msgstr ""
+msgstr "বিষাক্ত ছুরি"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "বিষাক্ত ছুরি (পরিস্কার)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
 msgid "Dragon Statue"
-msgstr ""
+msgstr "ড্রাগন মূর্তি"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:379
 msgid "Flaming Sword"
-msgstr ""
+msgstr "জ্বলন্ত তলোয়ার"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
 msgid "Unenchanted Flaming Sword"
-msgstr ""
+msgstr "জাদুমুক্ত জ্বলন্ত তলোয়ার"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -880,146 +887,146 @@ msgstr ""
 #: data/core/editor/items.cfg:393 data/core/editor/items.cfg:400
 #: data/core/editor/items.cfg:407 data/core/editor/items.cfg:414
 msgid "Flower"
-msgstr ""
+msgstr "ফুল"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:421
 msgid "Go Here Overlay"
-msgstr ""
+msgstr "এখানে যাও অভিলেপন"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:427
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "স্বর্ণমুদ্রার বড় স্তুপ"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:434
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "স্বর্ণমুদ্রার স্তুপ"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:441
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "স্বর্ণমুদ্রার ছোটো স্তুপ"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:448
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "শষ্যের আঁটি"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
 msgid "Hammer"
-msgstr ""
+msgstr "হাতুড়ি"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
 msgid "Runic Hammer"
-msgstr ""
+msgstr "জাদুচিহ্নিত হাতুড়ি"
 
 #. [item]: id=holy-water
 #. [object]
 #: data/core/editor/items.cfg:469 data/core/macros/items.cfg:286
 msgid "Holy Water"
-msgstr ""
+msgstr "পবিত্র জল"
 
 #. [item]: id=key
 #. [item]: id=key2
 #: data/core/editor/items.cfg:476 data/core/editor/items.cfg:483
 msgid "Key"
-msgstr ""
+msgstr "চাবি"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
 msgid "Dark Key"
-msgstr ""
+msgstr "অমঙ্গলজনক চাবি"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
 msgid "Leather Pack"
-msgstr ""
+msgstr "চামড়ার মোড়ক"
 
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "গদা"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
 msgid "Bone Necklace"
-msgstr ""
+msgstr "হাড়ের হার"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
 msgid "Stone Necklace"
-msgstr ""
+msgstr "পাথরের হার"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
 msgid "Orcish Flag"
-msgstr ""
+msgstr "ওর্ক পতাকা"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:532 data/core/editor/items.cfg:539
 msgid "Ornate"
-msgstr ""
+msgstr "অলঙ্কৃত"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:546
 msgid "Blue Potion"
-msgstr ""
+msgstr "নীল তরল"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
 msgid "Green Potion"
-msgstr ""
+msgstr "সবুজ তরল"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:560
 msgid "Gray Potion"
-msgstr ""
+msgstr "ধুসর তরল"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
 #: data/core/editor/items.cfg:567 data/core/macros/items.cfg:249
 msgid "Poison"
-msgstr ""
+msgstr "বিষ"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:574
 msgid "Red Potion"
-msgstr ""
+msgstr "লাল তরল"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:581
 msgid "Yellow Potion"
-msgstr ""
+msgstr "হলুদ তরল"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:588
 msgid "Brown Ring"
-msgstr ""
+msgstr "বাদামী আংটি"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:595
 msgid "Golden Ring"
-msgstr ""
+msgstr "সোনালি আংটি"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:602
 msgid "Red Ring"
-msgstr ""
+msgstr "লাল আংটি"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:609
 msgid "Silver Ring"
-msgstr ""
+msgstr "রুপালি আংটি"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:616
 msgid "White Ring"
-msgstr ""
+msgstr "সাদা আংটি"
 
 #. [item]: id=rock
 #. [item]: id=rock1
@@ -1030,70 +1037,70 @@ msgstr ""
 #: data/core/editor/items.cfg:1014 data/core/editor/items.cfg:1021
 #: data/core/editor/items.cfg:1028
 msgid "Rock"
-msgstr ""
+msgstr "পাথর"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:630
 msgid "Scarecrow"
-msgstr ""
+msgstr "কাকতাড়ুয়া"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:637
 msgid "Sceptre of Fire"
-msgstr ""
+msgstr "অগ্নি-রাজদন্ড"
 
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "গুলতি"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
 msgid "Spear"
-msgstr ""
+msgstr "বর্শা"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
 #: data/core/editor/items.cfg:658 data/core/editor/items.cfg:665
 msgid "Fancy Spear"
-msgstr ""
+msgstr "শৌখিন বর্শা"
 
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "জ্যাভেলিন"
 
 #. [item]: id=staff
 #. [item]: id=staff2
 #: data/core/editor/items.cfg:679 data/core/editor/items.cfg:686
 msgid "Staff"
-msgstr ""
+msgstr "দন্ড"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
 msgid "Druid Staff"
-msgstr ""
+msgstr "যাজক দন্ড"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
 #: data/core/editor/items.cfg:700 data/core/editor/items.cfg:707
 msgid "Magic Staff"
-msgstr ""
+msgstr "জাদুদন্ড"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
 msgid "Magic Wand"
-msgstr ""
+msgstr "জাদুদন্ড"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
 msgid "Plain Staff"
-msgstr ""
+msgstr "সাধারণ দন্ড"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
 msgid "Stone Tablet"
-msgstr ""
+msgstr "পাথরের ফলক"
 
 #. [item]: id=storm-trident
 #. [item]: id=storm-trident2
@@ -1101,29 +1108,29 @@ msgstr ""
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
 #: data/core/macros/items.cfg:552
 msgid "Storm Trident"
-msgstr ""
+msgstr "ঝঞ্ঝার ত্রিশূল"
 
 #. [item]: id=straw-bale1
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:749 data/core/editor/items.cfg:756
 msgid "Bale of Straw"
-msgstr ""
+msgstr "খড়ের আঁটি"
 
 #. [item]: id=sword
 #. [item]: id=sword2
 #: data/core/editor/items.cfg:763 data/core/editor/items.cfg:770
 msgid "Sword"
-msgstr ""
+msgstr "তলোয়ার"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
 msgid "Holy Sword"
-msgstr ""
+msgstr "পবিত্র তলোয়ার"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
 msgid "Short Sword"
-msgstr ""
+msgstr "ছোটো তলোয়ার"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
@@ -1133,37 +1140,37 @@ msgstr ""
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "আন্খ মাদুলি"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "হাড়ের মাদুলি"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
 msgid "Stone Talisman"
-msgstr ""
+msgstr "পাথরের মাদুলি"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "বজ্রদন্ড"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "জ্বলন্ত মশাল"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "নিভে যাওয়া মশাল"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
 msgid "Scenery"
-msgstr ""
+msgstr "দৃশ্য"
 
 #. [item]: id=castle-ruins
 #. [item]: id=castle-ruins2
@@ -1171,42 +1178,42 @@ msgstr ""
 #: data/core/editor/items.cfg:847 data/core/editor/items.cfg:853
 #: data/core/editor/items.cfg:859
 msgid "Castle Ruins"
-msgstr ""
+msgstr "দূর্গের ধ্বংসাবশেষ"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:865
 msgid "Magic Circle"
-msgstr ""
+msgstr "জাদুবৃত্ত"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:871
 msgid "Glowing Magic Circle"
-msgstr ""
+msgstr "আলোকিত জাদুবৃত্ত"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:877
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "ডোয়ার্ফদের বন্ধ দরজা"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:885
 msgid "Campfire"
-msgstr ""
+msgstr "ক্যাম্পফায়ার"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:892
 msgid "Flames"
-msgstr ""
+msgstr "অগ্নিশিখা"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:898
 msgid "Rusty Gate South East"
-msgstr ""
+msgstr "দক্ষিণ-পূর্ব মরচে পড়া দরজা"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:905
 msgid "Rusty Gate South West"
-msgstr ""
+msgstr "দক্ষিণ-পশ্চিম মরচে পড়া দরজা"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:912
@@ -1221,17 +1228,17 @@ msgstr ""
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:924
 msgid "Lighthouse"
-msgstr ""
+msgstr "আলোকস্তম্ভ"
 
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:932
 msgid "Mausoleum"
-msgstr ""
+msgstr "সমাধি-মন্দির"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:939
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "অব্যবহৃত খনি"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1240,39 +1247,39 @@ msgstr ""
 #: data/core/editor/items.cfg:946 data/core/editor/items.cfg:953
 #: data/core/editor/items.cfg:960 data/core/editor/items.cfg:967
 msgid "Monolith"
-msgstr ""
+msgstr "প্রস্তরস্তম্ভ"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:974
 msgid "Empty Nest"
-msgstr ""
+msgstr "শূন্য পাখির বাসা"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:980
 msgid "Full Nest"
-msgstr ""
+msgstr "পূর্ণ পাখির বাসা"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:986
 msgid "Leaning Oak"
-msgstr ""
+msgstr "হেলে যাওয়া ওক"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:993 data/core/editor/items.cfg:1000
 msgid "Pine Tree"
-msgstr ""
+msgstr "পাইন বৃক্ষ"
 
 #. [item]: id=rock-cairn
 #. [item]: id=rock-cairn2
 #: data/core/editor/items.cfg:1035 data/core/editor/items.cfg:1043
 msgid "Rock Cairn"
-msgstr ""
+msgstr "অসংলগ্ন পাথরের স্তুপ"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:1051
 msgid "Rubble"
-msgstr ""
+msgstr "আলগা পাথরের স্তুপ"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1284,7 +1291,7 @@ msgstr ""
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081 data/core/editor/items.cfg:1087
 msgid "Rune"
-msgstr ""
+msgstr "জাদুচিহ্ন"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1296,7 +1303,7 @@ msgstr ""
 #: data/core/editor/items.cfg:1105 data/core/editor/items.cfg:1111
 #: data/core/editor/items.cfg:1117 data/core/editor/items.cfg:1123
 msgid "Glowing Rune"
-msgstr ""
+msgstr "আলোকিত জাদুচিহ্ন"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
@@ -1305,7 +1312,7 @@ msgstr ""
 #: data/core/editor/items.cfg:1129 data/core/editor/items.cfg:1318
 #: data/core/editor/items.cfg:1324 data/core/editor/items.cfg:1330
 msgid "Shipwreck"
-msgstr ""
+msgstr "জাহাজডুবি"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:1134
@@ -1315,18 +1322,18 @@ msgstr ""
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:1141
 msgid "Slab"
-msgstr ""
+msgstr "ফলক"
 
 #. [item]: id=snowbits
 #. [item]: id=snowbits2
 #: data/core/editor/items.cfg:1147 data/core/editor/items.cfg:1153
 msgid "Piles of Snow"
-msgstr ""
+msgstr "বরফের স্তুপ"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:1160
 msgid "Summoning Center"
-msgstr ""
+msgstr "আবাহনের কেন্দ্র"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1338,12 +1345,12 @@ msgstr ""
 #: data/core/editor/items.cfg:1178 data/core/editor/items.cfg:1184
 #: data/core/editor/items.cfg:1190 data/core/editor/items.cfg:1196
 msgid "Summoning Circle"
-msgstr ""
+msgstr "আবাহনের বৃত্ত"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:1202
 msgid "Temple"
-msgstr ""
+msgstr "মন্দির"
 
 #. [item]: id=temple-cracked1
 #. [item]: id=temple-cracked2
@@ -1351,37 +1358,37 @@ msgstr ""
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
 msgid "Ruined Temple"
-msgstr ""
+msgstr "ধ্বংসপ্রাপ্ত মন্দির"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "শৌখিন তাঁবু"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:1237
 msgid "Ruined Tent"
-msgstr ""
+msgstr "ভাঙা তাঁবু"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:1243
 msgid "Weapons Shop Tent"
-msgstr ""
+msgstr "অস্ত্র বিক্রয়ের তাঁবু"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:1251
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "বন্ধ গুপ্ত দরজা"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:1257
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "খোলা গুপ্ত দরজা"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:1263
 msgid "Trash Pile"
-msgstr ""
+msgstr "নোংরার স্তুপ"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1390,22 +1397,22 @@ msgstr ""
 #: data/core/editor/items.cfg:1270 data/core/editor/items.cfg:1277
 #: data/core/editor/items.cfg:1284 data/core/editor/items.cfg:1291
 msgid "Burned Human Village"
-msgstr ""
+msgstr "জ্বলে যাওয়া মানুষের গ্রাম"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:1297
 msgid "Well"
-msgstr ""
+msgstr "কূপ"
 
 #. [item]: id=whirlpool
 #: data/core/editor/items.cfg:1303
 msgid "Whirlpool"
-msgstr ""
+msgstr "জলের ঘূর্ণি"
 
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:1311
 msgid "Windmill"
-msgstr ""
+msgstr "বায়ুকল"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:23
@@ -1450,27 +1457,27 @@ msgstr ""
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:149
 msgid "Be more aggressive"
-msgstr ""
+msgstr "আরও আক্রমণাত্মক হও"
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:150
 msgid "aggressive."
-msgstr ""
+msgstr "আক্রমণাত্মক"
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:167
 msgid "Be more defensive"
-msgstr ""
+msgstr "আরও রক্ষণাত্মক হও"
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:168
 msgid "defensive."
-msgstr ""
+msgstr "রক্ষণাত্মক"
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:179
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "পরাজিত করার ওপর মনোনিবেশ করো..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:180
@@ -1478,6 +1485,8 @@ msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
+"$ai_controller.side_$ally_side|_current_settings.focus_on_enemy."
+"side_description|-কে পরাজিত করার ওপর মনোনিবেশ করো ।"
 
 #. [then]
 #. [else]
@@ -1486,19 +1495,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:388
 #: data/core/macros/ai_controller.cfg:394
 msgid "Side $temp_i"
-msgstr ""
+msgstr "$temp_i পক্ষ"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:255
 #: data/core/macros/ai_controller.cfg:396
 msgid "side $temp_i"
-msgstr ""
+msgstr "$temp_i পক্ষ"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:270
 #: data/core/macros/ai_controller.cfg:411
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr ""
+msgstr "$temp_i পক্ষ ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:296
@@ -1506,12 +1515,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:838
 #: data/core/macros/ai_controller.cfg:929
 msgid "Back"
-msgstr ""
+msgstr "পিছনে"
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:315
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "রক্ষা করার ওপর মনোনিবেশ করো..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:316
@@ -1592,7 +1601,7 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:977
 msgid "Exit"
-msgstr ""
+msgstr "প্রস্থান"
 
 #: data/core/macros/ai_controller.cfg:1114
 msgid "Set special orders..."
@@ -1622,7 +1631,7 @@ msgstr ""
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
-msgstr ""
+msgstr "বিশেষ নির্দেশ মুছুন ।"
 
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:35
@@ -1632,35 +1641,41 @@ msgstr ""
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
-msgstr ""
+msgstr "দ্রুত শেষ করার অতিরিক্ত পুরষ্কার আছে ।"
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
-msgstr ""
+msgstr "দ্রুত শেষ করার অতিরিক্ত পুরষ্কার নেই।"
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "স্বর্ণ পরবর্তী ঘটনাক্রমে যাবে না ।"
 
 #: data/core/macros/deprecated-utils.cfg:64
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"শেষের সময় থাকা স্বর্ণের 100% পরবর্তী ঘটনাক্রমে যাবে ।"
 
 #: data/core/macros/deprecated-utils.cfg:69
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"শেষের সময় থাকা স্বর্ণের 40% পরবর্তী ঘটনাক্রমে যাবে ।"
 
 #: data/core/macros/deprecated-utils.cfg:74
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"শেষের সময় থাকা স্বর্ণের 20% পরবর্তী ঘটনাক্রমে যাবে ।"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -1682,7 +1697,7 @@ msgstr ""
 #. [option]
 #: data/core/macros/items.cfg:40
 msgid "Lots of gold"
-msgstr ""
+msgstr "প্রচুর সোনা"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:48
@@ -2679,11 +2694,11 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
-msgstr ""
+msgstr "দান শেষ"
 
 #: data/core/macros/objective-utils.cfg:20
 msgid "(early finish bonus)"
-msgstr ""
+msgstr "(দ্রুত শেষ করার অতিরিক্ত পুরস্কার)"
 
 #: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
@@ -2691,7 +2706,7 @@ msgstr ""
 
 #: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
-msgstr ""
+msgstr "অতিরিক্ত উদ্দেশ্য:"
 
 #: data/core/macros/objective-utils.cfg:35
 msgid "Optional objective:"
@@ -2700,12 +2715,12 @@ msgstr ""
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
-msgstr ""
+msgstr "এটা শেষ ঘটনাক্রম ।"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:67
 msgid "No turn limit"
-msgstr ""
+msgstr "দানের কোনো সীমা নেই ।"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -2888,74 +2903,74 @@ msgstr ""
 #. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:246
 msgid "Red"
-msgstr ""
+msgstr "লাল"
 
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:21
 msgid "Light Red"
-msgstr ""
+msgstr "হালকা লাল"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:27
 msgid "Dark Red"
-msgstr ""
+msgstr "ঘন লাল"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
 #: data/core/team-colors.cfg:33 data/core/team-colors.cfg:252
 msgid "Blue"
-msgstr ""
+msgstr "নীল"
 
 #. [color_range]: id=lightblue
 #: data/core/team-colors.cfg:40
 msgid "Light blue"
-msgstr ""
+msgstr "হালকা নীল"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
 #: data/core/team-colors.cfg:46 data/core/team-colors.cfg:258
 msgid "Green"
-msgstr ""
+msgstr "সবুজ"
 
 #. [color_range]: id=brightgreen
 #: data/core/team-colors.cfg:53
 msgid "Bright green"
-msgstr ""
+msgstr "উজ্জ্বল সবুজ"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
 #: data/core/team-colors.cfg:59 data/core/team-colors.cfg:264
 msgid "Purple"
-msgstr ""
+msgstr "বেগুনী"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
 #: data/core/team-colors.cfg:66 data/core/team-colors.cfg:276
 msgid "Black"
-msgstr ""
+msgstr "কালো"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
 #: data/core/team-colors.cfg:73 data/core/team-colors.cfg:288
 msgid "Brown"
-msgstr ""
+msgstr "বাদামী"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
 #: data/core/team-colors.cfg:80 data/core/team-colors.cfg:270
 msgid "Orange"
-msgstr ""
+msgstr "কমলা"
 
 #. [color_range]: id=brightorange
 #: data/core/team-colors.cfg:87
 msgid "Bright orange"
-msgstr ""
+msgstr "উজ্জ্বল কমলা"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
 #: data/core/team-colors.cfg:93 data/core/team-colors.cfg:282
 msgid "White"
-msgstr ""
+msgstr "সাদা"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
@@ -2966,12 +2981,12 @@ msgstr ""
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "সোনালী"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
 msgid "Dark blue"
-msgstr ""
+msgstr "ঘন নীল"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -2981,78 +2996,78 @@ msgstr ""
 #. [color_range]: id=shallow_water
 #: data/core/team-colors.cfg:129
 msgid "Shallow water"
-msgstr ""
+msgstr "অগভীর জল"
 
 #. [color_range]: id=deep_water
 #: data/core/team-colors.cfg:135
 msgid "Deep water"
-msgstr ""
+msgstr "গভীর জল"
 
 #. [color_range]: id=swamp_water
 #: data/core/team-colors.cfg:141
 msgid "Swamp water"
-msgstr ""
+msgstr "জলাভূমির জল"
 
 #. [color_range]: id=flat
 #: data/core/team-colors.cfg:147
 msgid "Flat"
-msgstr ""
+msgstr "সমতল"
 
 #. [color_range]: id=hills
 #: data/core/team-colors.cfg:153
 msgid "Hills"
-msgstr ""
+msgstr "পাহাড়"
 
 #. [color_range]: id=mountains
 #: data/core/team-colors.cfg:159
 msgid "Mountains"
-msgstr ""
+msgstr "পর্বত"
 
 #. [color_range]: id=forest
 #: data/core/team-colors.cfg:165
 msgid "Forest"
-msgstr ""
+msgstr "অরণ্য"
 
 #. [color_range]: id=sand
 #: data/core/team-colors.cfg:171
 msgid "Sand"
-msgstr ""
+msgstr "বালি"
 
 #. [color_range]: id=frozen
 #: data/core/team-colors.cfg:177
 msgid "Frozen"
-msgstr ""
+msgstr "বরফ"
 
 #. [color_range]: id=cave
 #: data/core/team-colors.cfg:183
 msgid "Cave"
-msgstr ""
+msgstr "গুহা"
 
 #. [color_range]: id=fungus
 #: data/core/team-colors.cfg:189
 msgid "Fungus"
-msgstr ""
+msgstr "ছত্রাক"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:188
 msgid "Village"
-msgstr ""
+msgstr "গ্রাম"
 
 #. [color_range]: id=castle
 #: data/core/team-colors.cfg:201
 msgid "Castle"
-msgstr ""
+msgstr "প্রাসাদ"
 
 #. [color_range]: id=keep
 #: data/core/team-colors.cfg:207
 msgid "Keep"
-msgstr ""
+msgstr "দূর্গ"
 
 #. [color_range]: id=rails
 #: data/core/team-colors.cfg:213
 msgid "Rail"
-msgstr ""
+msgstr "রেললাইন"
 
 #. [color_range]: id=unwalkable
 #: data/core/team-colors.cfg:219
@@ -3062,13 +3077,13 @@ msgstr ""
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:225
 msgid "Impassable"
-msgstr ""
+msgstr "অনতিক্রম্য"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
-msgstr ""
+msgstr "কুয়াশা"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
@@ -3090,17 +3105,17 @@ msgstr ""
 #. [language]
 #: data/english.cfg:3
 msgid "Easy"
-msgstr ""
+msgstr "সহজ"
 
 #. [language]
 #: data/english.cfg:4
 msgid "Medium"
-msgstr ""
+msgstr "স্বাভাবিক"
 
 #. [language]
 #: data/english.cfg:5
 msgid "Hard"
-msgstr ""
+msgstr "কঠিন"
 
 #. [language]
 #: data/english.cfg:6
@@ -3122,6 +3137,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"নিরপেক্ষ ইউনিটরা দিন বা রাত্রির দ্বারা প্রভাবিত হয় না, এবং দুই সময়েই সমানভাবে "
+"লড়াই করতে পারে ।"
 
 #. [language]
 #: data/english.cfg:13
@@ -3143,7 +3160,7 @@ msgstr ""
 #. [language]
 #: data/english.cfg:31
 msgid "arcane"
-msgstr ""
+msgstr "অলৌকিক"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3350,39 +3367,39 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:84
 msgid "Yes"
-msgstr ""
+msgstr "হ্যাঁ"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:95
 msgid "No"
-msgstr ""
+msgstr "না"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
-msgstr ""
+msgstr "স্ক্রিনশট"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
 msgid "Lato"
-msgstr ""
+msgstr "Lohit Bengali"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:29
 msgid "DejaVu Sans Mono"
-msgstr ""
+msgstr "Lohit Bengali"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:30
 msgid "Lato Light"
-msgstr ""
+msgstr "Lohit Bengali"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:31
 msgid "Oldania ADF Std"
-msgstr ""
+msgstr "Lohit Bengali"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:32
@@ -3404,31 +3421,31 @@ msgstr ""
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
 msgid "female^poisoned"
-msgstr ""
+msgstr "বিষক্রিয়া"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
 msgid "female^slowed"
-msgstr ""
+msgstr "ধীরগতি"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
 msgid "slowed"
-msgstr ""
+msgstr "ধীরগতি"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
 msgid "female^petrified"
-msgstr ""
+msgstr "প্রস্তরীভূত"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
 msgid "petrified"
-msgstr ""
+msgstr "প্রস্তরীভূত"
 
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128
@@ -3451,29 +3468,29 @@ msgstr ""
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:76
 msgid "Victory:"
-msgstr ""
+msgstr "জয়:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:37
 msgid "Defeat:"
-msgstr ""
+msgstr "পরাজয়:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(শুধু এই দান বাকি)"
+msgstr[1] "($remaining_turns দান বাকি)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr ""
+msgstr "$percent|% স্বর্ণ পরবর্তী ঘটনাক্রমে নিয়ে যাওয়া যাবে ।"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:6
 msgid "Plan Unit Advance"
-msgstr ""
+msgstr "ইউনিটের উন্নয়ন পরিকল্পনা করুন"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
@@ -3483,6 +3500,10 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"মাল্টিপ্লেয়ার খেলার সময় আপনার ইউনিট অন্য খেলোয়াড়ের দানে উন্নীত হলে তা আপনার "
+"নিয়ন্ত্রণে থাকে না । এই পরিবর্তনের মাধ্যমে আপনি নির্দিষ্ট করতে পারেন যে আপনার "
+"ইউনিট কোন ইউনিটে উন্নীত হবে, হয় একটি নির্দিষ্ট ইউনিটের জন্য বা একই প্রকারের সকল "
+"ইউনিটের জন্য ।"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
@@ -3518,22 +3539,22 @@ msgstr ""
 #. [toggle_button]: id=apply_to_all
 #: data/modifications/pick_advance/gui/pick_advance.cfg:118
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "এই প্রকারের সকল ইউনিটের ওপর প্রয়োগ করুন"
 
 #. [button]
 #: data/modifications/pick_advance/gui/pick_advance.cfg:134
 msgid "Save"
-msgstr ""
+msgstr "সঞ্চয়"
 
 #. [button]: id=cancel
 #: data/modifications/pick_advance/gui/pick_advance.cfg:143
 msgid "Cancel"
-msgstr ""
+msgstr "বাতিল"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 msgid "replay^Play"
-msgstr ""
+msgstr "চালান"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413 data/themes/_initial.cfg:573
@@ -3543,12 +3564,12 @@ msgstr ""
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:427
 msgid "replay^Stop"
-msgstr ""
+msgstr "থামান"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
 msgid "pause after current move"
-msgstr ""
+msgstr "বর্তমান দানের পর থামান"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:443
@@ -3558,47 +3579,47 @@ msgstr ""
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444 data/themes/_initial.cfg:601
 msgid "reset to beginning"
-msgstr ""
+msgstr "শুরুতে নিয়ে যান"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:459 data/themes/_initial.cfg:614
 msgid "Next Turn"
-msgstr ""
+msgstr "পরবর্তী দান"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:615
 msgid "play turn"
-msgstr ""
+msgstr "দান চালান"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:475 data/themes/_initial.cfg:628
 msgid "Next Side"
-msgstr ""
+msgstr "পরবর্তী পক্ষ"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:476 data/themes/_initial.cfg:629
 msgid "play side turn"
-msgstr ""
+msgstr "পক্ষের দান চালান"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:490 data/themes/_initial.cfg:642
 msgid "Next Move"
-msgstr ""
+msgstr "পরের দান"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:491 data/themes/_initial.cfg:643
 msgid "play single move"
-msgstr ""
+msgstr "একটি দান চালান"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:503 data/themes/_initial.cfg:655
 msgid "Point of view"
-msgstr ""
+msgstr "দৃষ্টিকোণ"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:514
 msgid "Continue Play"
-msgstr ""
+msgstr "চালু করুন"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:515
@@ -3608,27 +3629,27 @@ msgstr ""
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:527 data/themes/_initial.cfg:667
 msgid "Skip animation"
-msgstr ""
+msgstr "অ্যানিমেশন এড়িয়ে যান"
 
 #. [label]: id=replay-label
 #: data/themes/_initial.cfg:557
 msgid "Replay"
-msgstr ""
+msgstr "পুনরায় চালান"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:572
 msgid "Play"
-msgstr ""
+msgstr "চালান"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:586
 msgid "Stop"
-msgstr ""
+msgstr "থামান"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:587
 msgid "pause"
-msgstr ""
+msgstr "সাময়িকভাবে থামান"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:600
@@ -3638,67 +3659,67 @@ msgstr ""
 #. [menu]: id=menu-main
 #: data/themes/cutscene.cfg:37 data/themes/default.cfg:91
 msgid "Menu"
-msgstr ""
+msgstr "মেনু"
 
 #. [action]: id=button-endturn
 #: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
-msgstr ""
+msgstr "দান শেষ"
 
 #. [action]: id=button-endturn
 #: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
-msgstr ""
+msgstr "ঘটনাক্রম শেষ"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "ডিফল্ট"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
 msgid "The default theme"
-msgstr ""
+msgstr "ডিফল্ট থিম"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr ""
+msgstr "দানে চলে যান..."
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
 msgid "Replay Turn..."
-msgstr ""
+msgstr "দান পুনরায় চালান..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
 msgid "Actions"
-msgstr ""
+msgstr "কাজগুলি"
 
 #. [label]: id=label-hp
 #: data/themes/default.cfg:164
 msgid "HP"
-msgstr ""
+msgstr "জীবন"
 
 #. [label]: id=label-xp
 #: data/themes/default.cfg:173
 msgid "XP"
-msgstr ""
+msgstr "অভিজ্ঞতা"
 
 #. [label]: id=label-mp
 #: data/themes/default.cfg:181
 msgid "MP"
-msgstr ""
+msgstr "স্থানান্তর"
 
 #. [label]: id=label-def
 #: data/themes/default.cfg:189
 msgid "def"
-msgstr ""
+msgstr "সুরক্ষা"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
-msgstr ""
+msgstr "পর্যায়"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4424,7 +4445,7 @@ msgstr ""
 
 #: src/actions/move.cpp:610
 msgid "Ambushed!"
-msgstr ""
+msgstr "আক্রান্ত!"
 
 #: src/actions/move.cpp:1110
 msgid "Failed teleport! Exit not empty"
@@ -4455,16 +4476,16 @@ msgstr ""
 #: src/actions/move.cpp:1136
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "শত্রু ইউনিট দেখা গিয়েছে!"
+msgstr[1] "$enemies সংখ্যক শত্রু ইউনিট দেখা গিয়েছে!"
 
 #. TRANSLATORS: Only friends sighted -- good message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
 #: src/actions/move.cpp:1141
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "মিত্র ইউনিট দেখা গিয়েছে!"
+msgstr[1] "$friends মিত্র ইউনিট দেখা গিয়েছে!"
 
 #: src/actions/move.cpp:1156
 msgid "(press $hotkey to keep moving)"
@@ -4482,11 +4503,11 @@ msgstr ""
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
-msgstr ""
+msgstr "$server_address|-এ যোগাযোগ করা হচ্ছে..."
 
 #: src/addon/client.cpp:128
 msgid "Downloading list of add-ons..."
-msgstr ""
+msgstr "অ্যাড-অনের তালিকা ডাউনলোড করা হচ্ছে..."
 
 #: src/addon/client.cpp:149
 msgid "Requesting distribution terms..."
@@ -4553,7 +4574,7 @@ msgstr ""
 
 #: src/addon/client.cpp:350
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr ""
+msgstr "<i>$addon_title</i> ইনস্টল করা হচ্ছে..."
 
 #: src/addon/client.cpp:362 src/addon/client.cpp:388
 msgid ""
@@ -4615,24 +4636,24 @@ msgstr ""
 
 #: src/addon/client.cpp:569
 msgid "Do you really wish to continue?"
-msgstr ""
+msgstr "আপনি কী সত্যিই এগিয়ে যেতে চান?"
 
 #: src/addon/client.cpp:571 src/addon/manager_ui.cpp:171
 #: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
-msgstr ""
+msgstr "নিশ্চিত করুন"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "অভিযান"
 
 #: src/addon/info.cpp:255
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "ঘটনাক্রম"
 
 #: src/addon/info.cpp:257
 msgid "addon_type^SP/MP Campaign"
-msgstr ""
+msgstr "এক/বহু খেলোয়াড়ের জন্য অভিযান"
 
 #: src/addon/info.cpp:259
 msgid "addon_type^MP era"
@@ -4656,7 +4677,7 @@ msgstr ""
 
 #: src/addon/info.cpp:269
 msgid "addon_type^Modification"
-msgstr ""
+msgstr "পরিবর্তন"
 
 #: src/addon/info.cpp:271
 msgid "addon_type^Core"
@@ -4706,7 +4727,7 @@ msgstr ""
 
 #: src/addon/manager_ui.cpp:117
 msgid "You have no add-ons installed."
-msgstr ""
+msgstr "আপনার কোনো অ্যাড-অন ইনস্টল করা নেই ।"
 
 #: src/addon/manager_ui.cpp:166
 msgid "Are you sure you want to remove the following installed add-on?"
@@ -4733,8 +4754,8 @@ msgstr[1] ""
 #: src/addon/manager_ui.cpp:209
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "অ্যাড-অন মুছে ফেলা হয়েছে"
+msgstr[1] "অ্যাড-অনগুলি মুছে ফেলা হয়েছে"
 
 #: src/addon/manager_ui.cpp:211
 msgid "The following add-on was successfully deleted:"
@@ -4753,11 +4774,11 @@ msgstr ""
 
 #: src/addon/validation.cpp:389
 msgid "Success."
-msgstr ""
+msgstr "সফল"
 
 #: src/addon/validation.cpp:393
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "ভুল অ্যাড-অন পাসফ্রেজ ।"
 
 #: src/addon/validation.cpp:397
 msgid ""
@@ -4899,55 +4920,55 @@ msgstr ""
 
 #: src/carryover_show_gold.cpp:57
 msgid "Victory"
-msgstr ""
+msgstr "জয়"
 
 #: src/carryover_show_gold.cpp:58
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "আপনি জয়ী হয়েছেন!"
 
 #: src/carryover_show_gold.cpp:60
 msgid "Defeat"
-msgstr ""
+msgstr "পরাজয়"
 
 #: src/carryover_show_gold.cpp:61
 msgid "You have been defeated!"
-msgstr ""
+msgstr "আপনি পরাজিত হয়েছেন!"
 
 #: src/carryover_show_gold.cpp:97
 msgid "Remaining gold: "
-msgstr ""
+msgstr "অবশিষ্ট স্বর্ণ:"
 
 #: src/carryover_show_gold.cpp:101
 msgid "Turns finished early: "
-msgstr ""
+msgstr "যত দান আগে শেষ হয়েছে:"
 
 #: src/carryover_show_gold.cpp:102
 msgid " per turn"
-msgstr ""
+msgstr " প্রত্যেক দান"
 
 #: src/carryover_show_gold.cpp:102
 msgid "Early finish bonus: "
-msgstr ""
+msgstr "আগে শেষ করার পুরস্কার:"
 
 #: src/carryover_show_gold.cpp:103
 msgid "Total bonus: "
-msgstr ""
+msgstr "মোট অতিরিক্ত পুরস্কার:"
 
 #: src/carryover_show_gold.cpp:106
 msgid "Total gold: "
-msgstr ""
+msgstr "মোট স্বর্ণ:"
 
 #: src/carryover_show_gold.cpp:110
 msgid "Carryover percentage: "
-msgstr ""
+msgstr "যে শতাংশ নিয়ে যাওয়া হবে:"
 
 #: src/carryover_show_gold.cpp:114
 msgid "Bonus gold: "
-msgstr ""
+msgstr "অতিরিক্ত স্বর্ণ:"
 
 #: src/carryover_show_gold.cpp:116
 msgid "Retained gold: "
-msgstr ""
+msgstr "স্বর্ণ রয়েছে:"
 
 #: src/carryover_show_gold.cpp:129
 msgid ""
@@ -4956,16 +4977,16 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "আপনি পরবর্তী ঘটনাক্রম ন্যূনতম সোনার ওপরে আরও $gold নিয়ে শুরু করবেন ।"
+msgstr[1] "আপনি পরবর্তী ঘটনাক্রম ন্যূনতম সোনার ওপরে আরও $gold নিয়ে শুরু করবেন ।"
 
 #: src/carryover_show_gold.cpp:136
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "আপনি পরবর্তী ঘটনাক্রম ন্যূনতম সোনা নিয়ে শুরু করবেন ।"
+msgstr[1] "আপনি পরবর্তী ঘটনাক্রম ন্যূনতম সোনা নিয়ে শুরু করবেন ।"
 
 #: src/carryover_show_gold.cpp:143
 msgid ""
@@ -4975,7 +4996,11 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
+"আপনি পরবর্তী ঘটনাক্রম $gold বা ন্যূনতম সোনা, এদের মধ্যে যা বেশী, তা নিয়ে শুরু করবেন "
+"।"
 msgstr[1] ""
+"আপনি পরবর্তী ঘটনাক্রম $gold বা ন্যূনতম সোনা, এদের মধ্যে যা বেশী, তা নিয়ে শুরু করবেন "
+"।"
 
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
@@ -5322,11 +5347,11 @@ msgstr[1] ""
 
 #: src/game_events/pump.cpp:392 src/game_launcher.cpp:960
 msgid "Error: "
-msgstr ""
+msgstr "ত্রুটি:"
 
 #: src/game_events/pump.cpp:394
 msgid "Warning: "
-msgstr ""
+msgstr "সতর্কবার্তা:"
 
 #: src/game_events/pump.cpp:396
 msgid "Debug: "
@@ -5334,7 +5359,7 @@ msgstr ""
 
 #: src/game_events/pump.cpp:398
 msgid "Info: "
-msgstr ""
+msgstr "তথ্য:"
 
 #: src/game_initialization/configure_engine.cpp:64
 msgid "$login|’s game"
@@ -5342,7 +5367,7 @@ msgstr ""
 
 #: src/game_initialization/connect_engine.cpp:102
 msgid "Team"
-msgstr ""
+msgstr "দল"
 
 #: src/game_initialization/connect_engine.cpp:950
 msgid "Anonymous player"
@@ -5396,7 +5421,7 @@ msgstr ""
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "OK"
-msgstr ""
+msgstr "ঠিক আছে"
 
 #: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
@@ -5486,7 +5511,7 @@ msgstr ""
 #: src/game_initialization/lobby_data.cpp:379
 #: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:658
 msgid "Turn"
-msgstr ""
+msgstr "দান"
 
 #: src/game_initialization/lobby_data.cpp:394
 msgid "vision^none"
@@ -5539,11 +5564,11 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "আপনি কী এগিয়ে যেতে চান?"
 
 #: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
-msgstr ""
+msgstr "সতর্কবার্তা"
 
 #: src/game_initialization/multiplayer.cpp:409
 msgid ""
@@ -5552,7 +5577,7 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
-msgstr ""
+msgstr "আপনার লগ-ইন করা আবশ্যিক ।"
 
 #: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
@@ -5654,19 +5679,19 @@ msgstr ""
 #: src/game_initialization/playcampaign.cpp:218
 #: src/playsingle_controller.cpp:369
 msgid "Game Over"
-msgstr ""
+msgstr "খেলা শেষ"
 
 #: src/game_initialization/playcampaign.cpp:219
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr ""
+msgstr "এই ঘটনাক্রম শেষ । আপনি কী অভিযানটি খেলা চালিয়ে যেতে চান?"
 
 #: src/game_initialization/playcampaign.cpp:287
 msgid "Unknown scenario: '$scenario|'"
-msgstr ""
+msgstr "অজানা ঘটনাক্রম: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:44
 msgid "No campaigns are available."
-msgstr ""
+msgstr "কোনো অভিযান নেই ।"
 
 #: src/game_launcher.cpp:719 src/game_launcher.cpp:738 src/replay.cpp:666
 msgid "The file you have tried to load is corrupt"
@@ -5720,19 +5745,19 @@ msgstr[1] ""
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "Create a new add-on"
-msgstr ""
+msgstr "অ্যাড-অন তৈরী করুন"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
-msgstr ""
+msgstr "নতুন অ্যাড-অন"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
-msgstr ""
+msgstr "মূল"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline multiplayer scenarios"
-msgstr ""
+msgstr "মূল মাল্টিপ্লেয়ার ঘটনাক্রম"
 
 #: src/gui/dialogs/game_stats.hpp:42
 msgid "No visible sides found."
@@ -5748,7 +5773,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 msgid "Other Games"
-msgstr ""
+msgstr "অন্যান্য খেলা"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
 #: src/gui/dialogs/multiplayer/match_history.cpp:92
@@ -5757,11 +5782,11 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
 msgid "Scenario"
-msgstr ""
+msgstr "ঘটনাক্রম"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:71
 msgid "Era"
-msgstr ""
+msgstr "যুগ"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:72
 msgid "Modification"
@@ -5769,7 +5794,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:151
 msgid "Era: "
-msgstr ""
+msgstr "যুগ:"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid " UTC+0"
@@ -5817,11 +5842,11 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "You"
-msgstr ""
+msgstr "আপনি"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "Error"
-msgstr ""
+msgstr "ত্রুটি"
 
 #: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
 msgid "Other aspects: "
@@ -5830,38 +5855,38 @@ msgstr ""
 #: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
 #: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
 msgid "Weapon: "
-msgstr ""
+msgstr "অস্ত্র: "
 
 #: src/gui/dialogs/unit_attack.cpp:191 src/gui/dialogs/unit_attack.cpp:204
 #: src/reports.cpp:195
 msgid "Type: "
-msgstr ""
+msgstr "প্রকৃতি: "
 
 #: src/gui/dialogs/unit_attack.cpp:192 src/gui/dialogs/unit_attack.cpp:205
 #: src/reports.cpp:823 src/reports.cpp:1087
 msgid "Damage: "
-msgstr ""
+msgstr "ক্ষতি: "
 
 #: src/gui/dialogs/unit_attack.cpp:193 src/gui/dialogs/unit_attack.cpp:206
 #: src/reports.cpp:844
 msgid "Attacks: "
-msgstr ""
+msgstr "আঘাতসংখ্যা: "
 
 #: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 msgid "Chance to hit: "
-msgstr ""
+msgstr "আঘাতের সম্ভাবনা: "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
-msgstr ""
+msgstr "কোনো ইউনিট খুঁজে পাওয়া যায়নি ।"
 
 #: src/gui/widgets/status_label_helper.hpp:37
 msgid "no"
-msgstr ""
+msgstr "না"
 
 #: src/gui/widgets/status_label_helper.hpp:37
 msgid "yes"
-msgstr ""
+msgstr "হ্যাঁ"
 
 #: src/help/help_browser.cpp:158
 msgid "Reference to unknown topic: "
@@ -5869,11 +5894,11 @@ msgstr ""
 
 #: src/help/help_impl.cpp:406
 msgid "Only available during a scenario."
-msgstr ""
+msgstr "শুধুমাত্র ঘটনাক্রমের সময়েই পাওয়া যাবে ।"
 
 #: src/help/help_impl.cpp:407 src/help/help_impl.cpp:443
 msgid "Time of Day Schedule"
-msgstr ""
+msgstr "দৈনিক সময়সূচী"
 
 #: src/help/help_impl.cpp:434
 msgid "Lawful Bonus:"
@@ -5893,7 +5918,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:438
 msgid "Schedule"
-msgstr ""
+msgstr "সময়সূচী"
 
 #: src/help/help_impl.cpp:530
 msgid "<header>text='Units with this special attack'</header>"
@@ -5905,7 +5930,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:624
 msgid "Era:"
-msgstr ""
+msgstr "যুগ:"
 
 #: src/help/help_impl.cpp:632
 msgid "Factions"
@@ -5913,7 +5938,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:680
 msgid "Races: "
-msgstr ""
+msgstr "জাতিসমূহ:"
 
 #: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
@@ -5921,7 +5946,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:696
 msgid "Leaders"
-msgstr ""
+msgstr "দলনেতা"
 
 #: src/help/help_impl.cpp:705
 msgid "Recruits"
@@ -5929,15 +5954,15 @@ msgstr ""
 
 #: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
-msgstr ""
+msgstr "কোনো বর্ণনা নেই ।"
 
 #: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
-msgstr ""
+msgstr "বিভিন্ন"
 
 #: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
-msgstr ""
+msgstr "স্বভাব: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
@@ -5969,59 +5994,59 @@ msgstr ""
 
 #: src/hotkey/command_executor.cpp:405
 msgid "Do you really want to surrender the game?"
-msgstr ""
+msgstr "আপনি কি সত্যিই আত্মসমর্পণ করতে চান?"
 
 #: src/hotkey/command_executor.cpp:405
 msgid "Surrender"
-msgstr ""
+msgstr "আত্মসমর্পণ"
 
 #: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
-msgstr ""
+msgstr "মানচিত্রের স্ক্রিনশট"
 
 #: src/hotkey/hotkey_handler.cpp:237
 msgid "(press $hk to disable)"
-msgstr ""
+msgstr "($hk টিপে নিস্ক্রিয় করুন)"
 
 #: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
-msgstr ""
+msgstr "বর্ধিত গতি সক্রিয়!"
 
 #: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
-msgstr ""
+msgstr "বর্ধিত গতি নিস্ক্রিয়!"
 
 #: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Start"
-msgstr ""
+msgstr "শুরুতে ফিরে যান"
 
 #: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Turn "
-msgstr ""
+msgstr "দানে ফিরে যান : দান "
 
 #: src/hotkey/hotkey_handler.cpp:457
 msgid "Replay from Start"
-msgstr ""
+msgstr "শুরু থেকে পুনরায় খেলুন"
 
 #: src/hotkey/hotkey_handler.cpp:457
 msgid "Replay from Turn "
-msgstr ""
+msgstr "এখান থেকে খেলুন : দান "
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
-msgstr ""
+msgstr "($hotkey টিপে নিস্ক্রিয় করুন)"
 
 #: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
-msgstr ""
+msgstr "পরিকল্পনা মোড সক্রিয়"
 
 #: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
-msgstr ""
+msgstr "পরিকল্পনা মোড নিস্ক্রিয়"
 
 #: src/hotkey/hotkey_handler_sp.cpp:322
 msgid "Do you want to load it anyway?"
-msgstr ""
+msgstr "আপনি কী তবুও এটা খুলতে চান?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
 msgid "The file you have tried to load has no replay information. "
@@ -6033,41 +6058,43 @@ msgstr ""
 
 #: src/language.cpp:115
 msgid "System default language"
-msgstr ""
+msgstr "সিস্টেমের স্বাভাবিক ভাষা"
 
 #: src/map/location.cpp:166
 msgid "North"
-msgstr ""
+msgstr "উত্তর"
 
 #: src/map/location.cpp:168
 msgid "North East"
-msgstr ""
+msgstr "উত্তর পূর্ব"
 
 #: src/map/location.cpp:170
 msgid "North West"
-msgstr ""
+msgstr "উত্তর পশ্চিম"
 
 #: src/map/location.cpp:172
 msgid "South"
-msgstr ""
+msgstr "দক্ষিণ"
 
 #: src/map/location.cpp:174
 msgid "South East"
-msgstr ""
+msgstr "দক্ষিণ পূর্ব"
 
 #: src/map/location.cpp:176
 msgid "South West"
-msgstr ""
+msgstr "দক্ষিণ পশ্চিম"
 
 #: src/map_command_handler.hpp:188
 msgid "This command is currently unavailable."
-msgstr ""
+msgstr "এই কমান্ডটি এই মুহূর্তে ব্যবহার করা যাবে না ।"
 
 #: src/map_command_handler.hpp:225
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
+"অজানা কমান্ড '$command', আপনি কী '$command_proposal' ব্যবহার করতে চান? আপনি "
+"$help_command ব্যবহার করে ব্যবহারযোগ্য কমান্ডের তালিকা পেতে পারেন ।"
 
 #: src/map_command_handler.hpp:229
 msgid ""
@@ -6077,13 +6104,15 @@ msgstr ""
 
 #: src/map_command_handler.hpp:246
 msgid "Error:"
-msgstr ""
+msgstr "ত্রুটি:"
 
 #: src/map_command_handler.hpp:252
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"ব্যবহার করা যাবে সেই সকল কমান্ডের তালিকা এবং কমান্ডটির সাহায্য । \"help all\" "
+"ব্যবহার করে যে কমান্ডগুলি ব্যবহার করা যাবে না সেগুলি দেখানো যাবে ।"
 
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
@@ -6108,19 +6137,19 @@ msgstr ""
 #: src/map_command_handler.hpp:355 src/map_command_handler.hpp:356
 #: src/map_command_handler.hpp:396
 msgid "help"
-msgstr ""
+msgstr "সাহায্য"
 
 #: src/map_command_handler.hpp:356
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "সাহায্যের জন্য $help_command <command> লিখুন ।"
 
 #: src/map_command_handler.hpp:372
 msgid " No help available."
-msgstr ""
+msgstr "কোনো সাহায্য নেই ।"
 
 #: src/map_command_handler.hpp:379 src/map_command_handler.hpp:382
 msgid "Usage:"
-msgstr ""
+msgstr "ব্যবহার:"
 
 #. TRANSLATORS: alternative names for command-line commands, only shown if
 #. there is at least one of them.
@@ -6132,19 +6161,19 @@ msgstr[1] ""
 
 #: src/menu_events.cpp:166
 msgid "Save Map As"
-msgstr ""
+msgstr "মানচিত্র সঞ্চয় করুন"
 
 #: src/menu_events.cpp:177
 msgid "Map saved."
-msgstr ""
+msgstr "মানচিত্র সঞ্চিত ।"
 
 #: src/menu_events.cpp:181
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "মানচিত্র সঞ্চয় করা যায়নি: $msg"
 
 #: src/menu_events.cpp:209
 msgid "Message:"
-msgstr ""
+msgstr "বার্তা:"
 
 #: src/menu_events.cpp:211
 msgid "Send to observers only"
@@ -6162,16 +6191,16 @@ msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ত্রুটি: আপনার তালিকায় অজানা ইউনিট রয়েছে: $unknown_ids"
+msgstr[1] "ত্রুটি: আপনার তালিকায় একাধিক অজানা ইউনিট রয়েছে: $unknown_ids"
 
 #: src/menu_events.cpp:276
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "আপনার কাছে নিয়োগ করার মতো কোনো ইউনিট নেই ।"
 
 #: src/menu_events.cpp:286
 msgid "No unit recruited."
-msgstr ""
+msgstr "কোনো ইউনিট নিয়োগ করা হয়নি ।"
 
 #: src/menu_events.cpp:311
 msgid "Internal error. Please report this as a bug! Details:\n"
@@ -6201,6 +6230,8 @@ msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
 msgstr ""
+"পুনরায় ডাকার মতো কোনো সেনা নেই.\n"
+"(পূর্বের ঘটনাক্রম থেকে অভিজ্ঞ বেঁচে থাকা সেনা থাকা জরুরী ।)"
 
 #: src/menu_events.cpp:401
 msgid "You currently can't recall at the highlighted location."
@@ -6208,7 +6239,7 @@ msgstr ""
 
 #: src/menu_events.cpp:413
 msgid "No unit recalled."
-msgstr ""
+msgstr "কোনো ইউনিট পুনরায় ডাকা হয়নি"
 
 #: src/menu_events.cpp:430
 msgid "You must have at least 1 gold piece to recall a unit."
@@ -6235,11 +6266,11 @@ msgstr ""
 
 #: src/menu_events.cpp:666
 msgid "Rename Unit"
-msgstr ""
+msgstr "ইউনিটের নাম পরিবর্তন"
 
 #: src/menu_events.cpp:667
 msgid "Name:"
-msgstr ""
+msgstr "নাম:"
 
 #: src/menu_events.cpp:843
 msgid "Clear Labels"
@@ -6251,7 +6282,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1046
 msgid "Search"
-msgstr ""
+msgstr "খোঁজ"
 
 #: src/menu_events.cpp:1186
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
@@ -6309,7 +6340,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1240
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "খেলার থিম পাল্টান ।"
 
 #: src/menu_events.cpp:1242
 msgid "<side> <nickname>"
@@ -6347,15 +6378,15 @@ msgstr ""
 
 #: src/menu_events.cpp:1251
 msgid "Save game."
-msgstr ""
+msgstr "খেলা সঞ্চয় করুন ।"
 
 #: src/menu_events.cpp:1253
 msgid "Quit game."
-msgstr ""
+msgstr "খেলা থেকে বেরিয়ে যান ।"
 
 #: src/menu_events.cpp:1256
 msgid "Save and quit."
-msgstr ""
+msgstr "সঞ্চয় করে বেরিয়ে যান ।"
 
 #: src/menu_events.cpp:1258
 msgid "Ignore replay errors."
@@ -6399,11 +6430,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1271
 msgid "Turn debug mode on."
-msgstr ""
+msgstr "ডিবাগ মোড সক্রিয় করুন ।"
 
 #: src/menu_events.cpp:1272
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "ডিবাগ মোড নিস্ক্রিয় করুন ।"
 
 #: src/menu_events.cpp:1274 src/menu_events.cpp:1278
 msgid "<command>[;<command>...]"
@@ -6411,7 +6442,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1274
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "লুয়া স্টেটমেন্ট চালান ।"
 
 #: src/menu_events.cpp:1276
 msgid "Grant higher privileges to Lua scripts."
@@ -6427,7 +6458,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1281
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "খেলার অবস্থা পরিদর্শক চালু করুন"
 
 #: src/menu_events.cpp:1283
 msgid "<name>[=<command>]"
@@ -6443,7 +6474,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1285
 msgid "Set a scenario variable."
-msgstr ""
+msgstr "ঘটনাক্রমে একটি চলরাশি সেট করুন ।"
 
 #: src/menu_events.cpp:1286
 msgid "<var>"
@@ -6451,7 +6482,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1286
 msgid "Show a scenario variable."
-msgstr ""
+msgstr "ঘটনাক্রমের একটি চলরাশি দেখান ।"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1289
@@ -6462,11 +6493,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1296
 msgid "Discover all units in help."
-msgstr ""
+msgstr "সাহায্যে সকল ইউনিট দেখান ।"
 
 #: src/menu_events.cpp:1297
 msgid "'Undiscover' all units in help."
-msgstr ""
+msgstr "সাহায্যে সকল ইউনিট 'না দেখা' করুন"
 
 #: src/menu_events.cpp:1298
 msgid "<unit type id>"
@@ -6474,15 +6505,15 @@ msgstr ""
 
 #: src/menu_events.cpp:1298
 msgid "Create a unit."
-msgstr ""
+msgstr "ইউনিট সৃষ্টি করুন ।"
 
 #: src/menu_events.cpp:1299
 msgid "Toggle fog for the current player."
-msgstr ""
+msgstr "বর্তমান খেলোয়াড়ের জন্য কুয়াশা সক্রিয়/নিস্ক্রিয় করুন ।"
 
 #: src/menu_events.cpp:1300
 msgid "Toggle shroud for the current player."
-msgstr ""
+msgstr "বর্তমান খেলোয়াড়ের জন্য আচ্ছাদন সক্রিয়/নিস্ক্রিয় করুন ।"
 
 #: src/menu_events.cpp:1301
 msgid "<amount>"
@@ -6490,7 +6521,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1301
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "বর্তমান খেলোয়াড়কে স্বর্ণ দিন ।"
 
 #: src/menu_events.cpp:1302
 msgid "<event name>"
@@ -6662,7 +6693,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2128 src/menu_events.cpp:2154
 msgid "prompt^Command:"
-msgstr ""
+msgstr "কমান্ড"
 
 #: src/mouse_events.cpp:1219
 msgid ""
@@ -6676,7 +6707,7 @@ msgstr ""
 
 #: src/mouse_events.cpp:1314
 msgid "This unit has no usable weapons."
-msgstr ""
+msgstr "এই ইউনিটটির কাছে কোনো ব্যবহারযোগ্য অস্ত্র নেই ।"
 
 #: src/mp_ui_alerts.cpp:88
 msgid "A game ($name|, $scenario|) has been created"
@@ -6685,7 +6716,7 @@ msgstr ""
 #: src/mp_ui_alerts.cpp:89 src/mp_ui_alerts.cpp:104 src/mp_ui_alerts.cpp:119
 #: src/mp_ui_alerts.cpp:194 src/mp_ui_alerts.cpp:205
 msgid "Wesnoth"
-msgstr ""
+msgstr "ওয়েসনথ"
 
 #: src/mp_ui_alerts.cpp:104
 msgid "A player has joined"
@@ -6895,35 +6926,35 @@ msgstr ""
 
 #: src/quit_confirmation.cpp:55
 msgid "Quit"
-msgstr ""
+msgstr "প্রস্থান"
 
 #: src/quit_confirmation.cpp:90
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "আপনি কী সত্যিই বন্ধ করতে চান?"
 
 #: src/reports.cpp:174 src/savegame.cpp:429
 msgid "Name: "
-msgstr ""
+msgstr "নাম: "
 
 #: src/reports.cpp:198
 msgid "Special Notes:"
-msgstr ""
+msgstr "বিশেষ টীকা:"
 
 #: src/reports.cpp:221
 msgid "Race: "
-msgstr ""
+msgstr "জাতি: "
 
 #: src/reports.cpp:240
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "দল: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:318
 msgid "Trait: "
-msgstr ""
+msgstr "বৈশিষ্ট্য: "
 
 #: src/reports.cpp:341
 msgid "invisible: "
-msgstr ""
+msgstr "অদৃশ্য: "
 
 #: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -6931,7 +6962,7 @@ msgstr ""
 
 #: src/reports.cpp:345
 msgid "slowed: "
-msgstr ""
+msgstr "ধীরগতি: "
 
 #: src/reports.cpp:346
 msgid ""
@@ -6941,7 +6972,7 @@ msgstr ""
 
 #: src/reports.cpp:349
 msgid "poisoned: "
-msgstr ""
+msgstr "বিষ: "
 
 #: src/reports.cpp:350
 msgid ""
@@ -6955,7 +6986,7 @@ msgstr ""
 
 #: src/reports.cpp:353
 msgid "petrified: "
-msgstr ""
+msgstr "প্রস্তরীভূত: "
 
 #: src/reports.cpp:354
 msgid "This unit has been petrified. It may not move or attack."
@@ -6963,7 +6994,7 @@ msgstr ""
 
 #: src/reports.cpp:357
 msgid "unhealable: "
-msgstr ""
+msgstr "অচিকিৎসনীয়: "
 
 #: src/reports.cpp:358
 msgid ""
@@ -6973,7 +7004,7 @@ msgstr ""
 
 #: src/reports.cpp:361
 msgid "invulnerable: "
-msgstr ""
+msgstr "অনাক্রম্য: "
 
 #: src/reports.cpp:362
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
@@ -6981,19 +7012,19 @@ msgstr ""
 
 #: src/reports.cpp:440
 msgid "Ability: "
-msgstr ""
+msgstr "দক্ষতা: "
 
 #: src/reports.cpp:442 src/reports.cpp:997
 msgid " (inactive)"
-msgstr ""
+msgstr " (নিস্ক্রিয়)"
 
 #: src/reports.cpp:510
 msgid "Resistances: "
-msgstr ""
+msgstr "প্রতিরোধ: "
 
 #: src/reports.cpp:512
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(আক্র / সুর)"
 
 #: src/reports.cpp:543
 msgid "Experience Modifier: "
@@ -7001,23 +7032,23 @@ msgstr ""
 
 #: src/reports.cpp:593
 msgid "Terrain: "
-msgstr ""
+msgstr "ভূমি: "
 
 #: src/reports.cpp:610
 msgid "maximum^max."
-msgstr ""
+msgstr "সর্বোচ্চ"
 
 #: src/reports.cpp:610
 msgid "minimum^min."
-msgstr ""
+msgstr "সর্বনিম্ন"
 
 #: src/reports.cpp:615
 msgid "Defense: "
-msgstr ""
+msgstr "সুরক্ষা: "
 
 #: src/reports.cpp:650 src/reports.cpp:651
 msgid "vision:"
-msgstr ""
+msgstr "দৃষ্টি:"
 
 #: src/reports.cpp:655 src/reports.cpp:656
 msgid "jamming:"
@@ -7025,7 +7056,7 @@ msgstr ""
 
 #: src/reports.cpp:685
 msgid "Movement Costs:"
-msgstr ""
+msgstr "স্থানান্তরের মূল্য:"
 
 #: src/reports.cpp:827
 msgid "Base damage: "
@@ -7037,11 +7068,11 @@ msgstr ""
 
 #: src/reports.cpp:832
 msgid "Time of day: "
-msgstr ""
+msgstr "দিনের সময়: "
 
 #: src/reports.cpp:836
 msgid "Leadership: "
-msgstr ""
+msgstr "নেতৃত্ব: "
 
 #: src/reports.cpp:840
 msgid "Slowed: "
@@ -7314,7 +7345,7 @@ msgstr ""
 
 #: src/savegame.cpp:573
 msgid "Save Replay"
-msgstr ""
+msgstr "রিপ্লে সঞ্চয় করুন"
 
 #: src/savegame.cpp:602
 msgid "Could not auto save the game. Please save the game manually."
@@ -7322,7 +7353,7 @@ msgstr ""
 
 #: src/savegame.cpp:652
 msgid "Save Game"
-msgstr ""
+msgstr "খেলা সঞ্চয় করুন"
 
 #: src/savegame.cpp:666
 msgid "Game state is corrupted"
@@ -7654,35 +7685,35 @@ msgstr ""
 
 #: src/units/types.cpp:841
 msgid "chaotic"
-msgstr ""
+msgstr "বিশৃঙ্খল"
 
 #: src/units/types.cpp:841
 msgid "lawful"
-msgstr ""
+msgstr "নৈতিক"
 
 #: src/units/types.cpp:841
 msgid "liminal"
-msgstr ""
+msgstr "মধ্যবর্তী"
 
 #: src/units/types.cpp:841
 msgid "neutral"
-msgstr ""
+msgstr "নিরপেক্ষ"
 
 #: src/units/types.cpp:842
 msgid "female^chaotic"
-msgstr ""
+msgstr "বিশৃঙ্খল"
 
 #: src/units/types.cpp:842
 msgid "female^lawful"
-msgstr ""
+msgstr "নৈতিক"
 
 #: src/units/types.cpp:842
 msgid "female^liminal"
-msgstr ""
+msgstr "মধ্যবর্তী"
 
 #: src/units/types.cpp:842
 msgid "female^neutral"
-msgstr ""
+msgstr "নিরপেক্ষ"
 
 #: src/units/unit.cpp:2011
 msgid "$attack_list|: $effect_description"
