@@ -8,4 +8,4 @@ RUN apt-get install -y scons libreadline-dev expect-dev
 
 RUN wget --max-redirect 3 https://boostorg.jfrog.io/artifactory/main/release/$BOOST_VERSION/source/boost_$BOOST_VERSION_.tar.gz
 RUN mkdir -p /src/boost && tar zxf boost_${BOOST_VERSION_}.tar.gz -C /src/boost --strip-components=1
-RUN cd /src/boost && ./bootstrap.sh --with-libraries=iostreams,regex,system,filesystem,program_options,random,locale,context,coroutine && ./b2 toolset=gcc-10 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
+RUN cd /src/boost && ./bootstrap.sh --with-libraries=iostreams,regex,system,filesystem,program_options,random,locale,context,coroutine,graph && ./b2 toolset=gcc-10 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
