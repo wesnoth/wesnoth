@@ -199,6 +199,18 @@ private:
 		int start_line,
 		const std::string& file,
 		std::vector<const wml_tag*>& visited);
+
+	using link_graph_t = boost::adjacency_list<boost::vecS,
+		boost::vecS,
+		boost::directedS,
+		std::string>;
+
+	using link_graph_map_t = std::map<const wml_type_alias*,
+		link_graph_t::vertex_descriptor>;
+
+	void detect_link_cycles(const std::string& filename);
+	void collect_link_source(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type);
+	void collect_link_target(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type, const wml_type_alias* alias);
 };
 
 // A validator specifically designed for validating a schema

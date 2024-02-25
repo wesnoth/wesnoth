@@ -18,9 +18,11 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/schema/type.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/back_edge_detector.hpp"
 #include "wml_exception.hpp"
+#include <boost/graph/adjacency_list.hpp>
 #include <tuple>
 
 namespace schema_validation
@@ -150,6 +152,19 @@ static std::string inheritance_cycle_error(const std::string& file,
 	std::ostringstream ss;
 	ss << "Inheritance cycle from " << tag << " to " << value << " found\n"
 	   << at(file, line) << "\nwith schema " << schema_name << "\n";
+	print_output(ss.str(), flag_exception);
+	return ss.str();
+}
+
+static std::string link_cycle_error(const std::string& file,
+	int line,
+	const std::string& tag,
+	const std::string& value,
+	bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Link cycle from " << tag << " to " << value << " found\n"
+	   << at(file, line);
 	print_output(ss.str(), flag_exception);
 	return ss.str();
 }
@@ -285,8 +300,73 @@ bool schema_validator::read_config_file(const std::string& filename)
 		}
 	}
 
+	detect_link_cycles(filename);
+
 	config_read_ = true;
 	return true;
+}
+
+void schema_validator::detect_link_cycles(const std::string& filename) {
+	link_graph_t link_graph;
+	link_graph_map_t link_map;
+
+	for (auto [type_name, type] : types_) {
+		collect_link_source(link_graph, link_map, type_name, type.get());
+	}
+
+	boost::depth_first_search(link_graph,
+		boost::visitor(utils::back_edge_detector([&](const link_graph_t::edge_descriptor edge) {
+			const auto source = std::find_if(link_map.begin(), link_map.end(),
+				[&](const auto& link) { return link.second == boost::source(edge, link_graph); });
+
+			assert(source != link_map.end());
+
+			const auto target = std::find_if(link_map.begin(), link_map.end(),
+				[&](const auto& link) { return link.second == boost::target(edge, link_graph); });
+
+			assert(target != link_map.end());
+
+			const auto& alias_type = link_graph[source->second];
+			const auto& link_type = link_graph[target->second];
+
+			throw abstract_validator::error(link_cycle_error(filename, 0, alias_type, link_type, false));
+		})));
+}
+
+void schema_validator::collect_link_source(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type) {
+	if (auto alias = dynamic_cast<const wml_type_alias*>(type)) {
+		auto it = types_.find(alias->link());
+
+		if (it != types_.end()) {
+			collect_link_target(link_graph, link_map, alias->link(), it->second.get(), alias);
+		}
+	} else if (auto composite = dynamic_cast<const wml_type_composite*>(type)) {
+		for(auto elem : composite->subtypes()) {
+			collect_link_source(link_graph, link_map, type_name, elem.get());
+		}
+	}
+}
+
+void schema_validator::collect_link_target(link_graph_t& link_graph, link_graph_map_t& link_map, const std::string& type_name, const wml_type* type, const wml_type_alias* alias) {
+	if (auto link = dynamic_cast<const wml_type_alias*>(type)) {
+		if (link_map.find(alias) == link_map.end()) {
+			link_map.emplace(
+				alias,
+				boost::add_vertex(type_name, link_graph));
+		}
+
+		if (link_map.find(link) == link_map.end()) {
+			link_map.emplace(
+				link,
+				boost::add_vertex(alias->link(), link_graph));
+		}
+
+		boost::add_edge(link_map[alias], link_map[link], link_graph);
+	} else if (auto composite = dynamic_cast<const wml_type_composite*>(type)) {
+		for(auto elem : composite->subtypes()) {
+			collect_link_target(link_graph, link_map, type_name, elem.get(), alias);
+		}
+	}
 }
 
 /*
