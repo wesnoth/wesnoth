@@ -827,25 +827,13 @@ point get_size(const locator& i_locator, bool skip_cache)
 
 bool is_in_hex(const locator& i_locator)
 {
-	bool result;
-	{
-		if(i_locator.in_cache(in_hex_info_)) {
-			result = i_locator.locate_in_cache(in_hex_info_);
-		} else {
-			const surface image(get_surface(i_locator, UNSCALED));
-
-			bool res = in_mask_surface(image, get_hexmask());
-
-			i_locator.add_to_cache(in_hex_info_, res);
-
-			// std::cout << "in_hex : " << i_locator.get_filename()
-			//		<< " " << (res ? "yes" : "no") << "\n";
-
-			result = res;
-		}
+	if(auto cached_val = i_locator.copy_from_cache(in_hex_info_)) {
+		return *cached_val;
 	}
 
-	return result;
+	bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
+	i_locator.add_to_cache(in_hex_info_, res);
+	return res;
 }
 
 bool is_empty_hex(const locator& i_locator)
