@@ -666,8 +666,11 @@ filter::~filter()
 
 }
 
-static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen::filter& f)
+int intf_mg_get_locations(lua_State* L)
 {
+	LOG_LMG <<  "map:get_locations";
+	gamemap_base& m = luaW_checkterrainmap(L, 1);
+	const auto f = luaW_check_mgfilter(L, 2, true);
 	location_set res;
 	LOG_LMG <<  "map:get_locations vaidargs";
 	if(lua_istable(L, 3)) {
@@ -675,7 +678,7 @@ static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen
 		location_set s = luaW_to_locationset(L, 3);
 		LOG_LMG <<  "map:get_locations #args = " << s.size();
 		for (const map_location& l : s) {
-			if(f.matches(m, l)) {
+			if(f->matches(m, l)) {
 				res.insert(l);
 			}
 		}
@@ -683,7 +686,7 @@ static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen
 	else {
 		LOG_LMG <<  "map:get_locations all locations";
 		m.for_each_loc([&](map_location l) {
-			if(f.matches(m, l)) {
+			if(f->matches(m, l)) {
 				res.insert(l);
 			}
 		});
@@ -694,37 +697,20 @@ static int intf_mg_get_locations_part2(lua_State* L, gamemap_base& m, lua_mapgen
 	return 1;
 
 }
-int intf_mg_get_locations(lua_State* L)
-{
-	//todo: create filter form table if needed
-	LOG_LMG <<  "map:get_locations";
-	gamemap_base& m = luaW_checkterrainmap(L, 1);
-	if(luaW_is_mgfilter(L, 2)) {
-		lua_mapgen::filter& f = luaW_check_mgfilter(L, 2);
-		return intf_mg_get_locations_part2(L, m, f);
-	}
-	else if (lua_istable(L, 2)) {
-		lua_mapgen::filter f(L, 2, 0);
-		return intf_mg_get_locations_part2(L, m, f);
-	}
-	else {
-		return luaW_type_error(L, 2, "terrainfilter");
-	}
-}
 
 int intf_mg_get_tiles_radius(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	location_set s = luaW_to_locationset(L, 2);
 	int r = luaL_checkinteger(L, 3);
-	lua_mapgen::filter& f = luaW_check_mgfilter(L, 4);
+	const auto f = luaW_check_mgfilter(L, 4, true);
 	location_set res;
 	get_tiles_radius(std::move(s), r, res,
 		[&](const map_location& l) {
 			return m.on_board_with_border(l);
 		},
 		[&](const map_location& l) {
-			return f.matches(m, l);
+			return f->matches(m, l);
 		}
 	);
 	luaW_push_locationset(L, res);
@@ -745,10 +731,17 @@ lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index)
 	return nullptr;
 }
 
-lua_mapgen::filter& luaW_check_mgfilter(lua_State *L, int index)
+lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
 {
 	if(luaW_is_mgfilter(L, index)) {
-		return *static_cast<lua_mapgen::filter*>(lua_touserdata(L, index));
+		lua_mapgen::filter_ptr ptr;
+		ptr.get_deleter() = [](lua_mapgen::filter*) {}; // don't delete the Lua-held filter pointer
+		ptr.reset(static_cast<lua_mapgen::filter*>(lua_touserdata(L, index)));
+		return ptr;
+	}
+	if(allow_compile && lua_istable(L, index)) {
+		auto f = std::make_unique<lua_mapgen::filter>(L, index, 0);
+		return f;
 	}
 	luaW_type_error(L, index, "terrainfilter");
 	throw "luaW_type_error didn't throw";
@@ -799,7 +792,7 @@ int intf_terrainfilter_create(lua_State *L)
  */
 static int impl_terrainfilter_get(lua_State *L)
 {
-	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
+	auto f = luaW_check_mgfilter(L, 1);
 	UNUSED(f);
 	return 0;
 }
@@ -812,7 +805,7 @@ static int impl_terrainfilter_get(lua_State *L)
  */
 static int impl_terrainfilter_set(lua_State *L)
 {
-	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
+	auto f = luaW_check_mgfilter(L, 1);
 	UNUSED(f);
 	char const *m = luaL_checkstring(L, 2);
 	std::string err_msg = "unknown modifiable property of map: ";
@@ -826,7 +819,7 @@ static int impl_terrainfilter_set(lua_State *L)
  */
 static int intf_clearcache(lua_State *L)
 {
-	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
+	auto f = luaW_check_mgfilter(L, 1);
 	UNUSED(f);
 	return 0;
 }
@@ -835,8 +828,8 @@ static int intf_clearcache(lua_State *L)
  */
 static int impl_terrainfilter_collect(lua_State *L)
 {
-	lua_mapgen::filter& f = luaW_check_mgfilter(L, 1);
-	f.~filter();
+	auto f = luaW_check_mgfilter(L, 1);
+	f->~filter();
 	return 0;
 }
 
