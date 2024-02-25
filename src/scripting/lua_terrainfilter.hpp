@@ -43,7 +43,7 @@ namespace lua_mapgen
 
 		~filter();
 
-		bool matches(const gamemap_base& m, map_location l);
+		bool matches(const gamemap_base& m, map_location l) const;
 		//todo: add a clear cache function.
 	private:
 		std::map<std::string, std::set<map_location>> known_sets_;
