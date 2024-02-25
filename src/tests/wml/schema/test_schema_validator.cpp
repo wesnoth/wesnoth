@@ -193,4 +193,13 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_mandatory)
 	BOOST_CHECK_NO_THROW(read(result, *stream, &validator));
 }
 
+BOOST_AUTO_TEST_CASE(test_schema_link_cycle)
+{
+	constexpr auto schema_path = "src/tests/wml/schema/test_schema_validator/test_schema_link_cycle.cfg";
+
+	BOOST_CHECK_EXCEPTION(schema_validation::schema_validator(schema_path, false), abstract_validator::error, [](const abstract_validator::error& e) {
+		return boost::algorithm::contains(e.message, "Link cycle from");
+	});
+}
+
 BOOST_AUTO_TEST_SUITE_END()
