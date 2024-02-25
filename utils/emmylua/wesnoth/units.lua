@@ -103,7 +103,12 @@
 ---@field traits string[]
 ---@field abilities string[]
 ---@field animations string[]
----@field __cfg WMLTable
+---@field __cfg unit_wml
+
+---Defines an individual unit in contexts where units can be created
+---@class unit_wml : WMLTag[]
+---@field type string
+---@field side integer
 
 ---@class wesnoth.units
 wesnoth.units = {}
@@ -136,13 +141,15 @@ function wesnoth.units.extract(unit) end
 function wesnoth.units.matches(unit, filter, context) end
 
 ---Place or move a unit on the map
----@param unit unit|WML
+---@param unit unit_wml|unit
 ---@param loc? location
 ---@param fire_event? boolean
----@overload fun(unit:unit|WML, x:integer, y:integer)
----@overload fun(unit:unit|WML, x:integer, y:integer, fire_event:boolean)
----@overload fun(unit:unit|WML, fire_event:boolean)
+---@overload fun(unit:unit_wml|unit, x:integer, y:integer)
+---@overload fun(unit:unit_wml|unit, x:integer, y:integer, fire_event:boolean)
+---@overload fun(unit:unit_wml|unit, fire_event:boolean)
 function wesnoth.units.to_map(unit, loc, fire_event) end
+
+wesnoth.units.to_map{type = 'a', side = 1}
 
 ---Place a unit on a recall lists
 ---@param unit unit|WML
