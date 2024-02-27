@@ -8,7 +8,8 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: German
+   * Updated translations: Bengali, British English, French, German
+   * Added new font "Lohit-Bengali.ttf" to support Bengali translation
  ### Units
  ### User interface
  ### WML Engine

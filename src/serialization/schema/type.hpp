@@ -69,6 +69,7 @@ class wml_type_alias : public wml_type {
 public:
 	wml_type_alias(const std::string& name, const std::string& link) : wml_type(name), link_(link) {}
 	bool matches(const config_attribute_value& value, const map& type_map) const override;
+	const std::string& link() const {return link_;}
 };
 
 /**
@@ -84,6 +85,7 @@ public:
 	{
 		subtypes_.push_back(type);
 	}
+	const std::vector<std::shared_ptr<wml_type>>& subtypes() const {return subtypes_;}
 };
 
 /**

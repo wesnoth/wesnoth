@@ -451,8 +451,12 @@ private:
 	/** Start and end offsets for highlight */
 	typed_formula<int> highlight_start_;
 	typed_formula<int> highlight_end_;
+
 	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;
+
+	/** Whether to apply a text outline. */
+	typed_formula<bool> outline_;
 };
 
 }

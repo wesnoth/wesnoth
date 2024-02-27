@@ -587,7 +587,12 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 		item["label"] = game->name();
 		data.emplace("game_name", item);
 
-		list.add_row(data);
+		grid& rg = list.add_row(data);
+
+		auto& icon = find_widget<image>(&rg, "game_icon", false);
+		if(icon.get_label().empty()) {
+			icon.set_visible(gui2::widget::visibility::invisible);
+		}
 	}
 
 	if(!level.empty() && !list.get_rows_shown().empty()) {

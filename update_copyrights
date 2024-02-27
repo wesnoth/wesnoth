@@ -85,7 +85,7 @@ csvfile_needs_sorting = False
 # Sanity-check for known licenses
 unknown_licenses = []
 
-with open(options.input) as csvfile:
+with open(options.input, encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
     previous_file = ""
     for row in reader:
@@ -166,7 +166,6 @@ if len(missing_fields) > 0 or len(extra_fields) > 0 or len(added) > 0 or len(cha
         print("These are at the top of the output for easy editing, run the tool again after editing to sort the file")
 
 if csvfile_needs_sorting:
-    any_check_failed = True
     print("The input file isn’t sorted by filename")
 
     if options.output != "" and final_output == unchanged:
