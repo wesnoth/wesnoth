@@ -2440,7 +2440,6 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
-
 	bool generate_description = mod["generate_description"].to_bool(true);
 
 	config* target = nullptr;
@@ -2450,7 +2449,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		target->remove_children("effect");
 	}
 
-	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
 	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
@@ -2496,11 +2494,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				}
 				if(!times) {
 					description += description_component;
-				}
-				if(!was_poisoned && get_state(STATE_POISONED)) {
-					set_poisoned = true;
-				} else if(was_poisoned && !get_state(STATE_POISONED)) {
-					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
