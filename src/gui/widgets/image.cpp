@@ -25,7 +25,6 @@
 #include "wml_exception.hpp"
 #include "gettext.hpp"
 
-
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
@@ -109,7 +108,7 @@ image_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in image.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for image control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("image_definition][resolution", "state_enabled")));
 }
 
 // }---------- BUILDER -----------{

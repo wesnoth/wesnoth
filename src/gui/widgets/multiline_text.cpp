@@ -463,10 +463,10 @@ multiline_text_definition::resolution::resolution(const config& cfg)
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in multiline_text.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for editable text box")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for editable text box")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for editable text box")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_hovered", _("Missing required state for editable text box")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("multiline_text_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("multiline_text_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("multiline_text_definition][resolution", "state_focused")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_hovered", missing_mandatory_wml_tag("multiline_text_definition][resolution", "state_hovered")));
 }
 
 // }---------- BUILDER -----------{

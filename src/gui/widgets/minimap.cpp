@@ -27,7 +27,6 @@
 #include "map/exception.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
-#include "gettext.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
 #include <functional>
@@ -112,7 +111,7 @@ minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for minimap control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("minimap_definition][resolution", "state_enabled")));
 }
 
 // }---------- BUILDER -----------{
