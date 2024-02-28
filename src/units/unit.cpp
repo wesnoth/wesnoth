@@ -2453,7 +2453,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
 		if(target) {
-			//Store effects only after they are added to avoid double applying effects on advance.
+			//Store effects only after they are added to avoid double applying effects on advance with apply_to=variation.
 			target->add_child("effect", effect);
 		}
 		// Apply SUF.
