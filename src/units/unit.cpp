@@ -2480,8 +2480,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(times) {
 			while (times > 0) {
 				times --;
-
-				bool was_poisoned = get_state(STATE_POISONED);
 				std::string description_component;
 				if(resources::lua_kernel) {
 					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
