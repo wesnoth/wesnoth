@@ -110,7 +110,7 @@ builder_drawing::builder_drawing(const config& cfg)
 	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
-	, draw(VALIDATE_WML_CHILD(cfg, "draw", _("Missing [draw] in drawing")))
+	, draw(VALIDATE_WML_CHILD(cfg, "draw", missing_mandatory_wml_tag("drawing", "draw")))
 {
 	assert(!draw.empty());
 }
