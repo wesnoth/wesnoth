@@ -243,7 +243,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		const bool only_first_completed = difficulties.size() > 1 &&
 			std::none_of(difficulties.begin() + 1, difficulties.end(), did_complete_at);
 		const bool completed_easy = only_first_completed && did_complete_at(difficulties.front());
-		const bool completed_hardest = !difficulties.empty() && did_complete_at(difficulties.front());
+		const bool completed_hardest = !difficulties.empty() && did_complete_at(difficulties.back());
 		const bool completed_mid = completed && !completed_hardest && !completed_easy;
 
 		if( show_items[i] && (
