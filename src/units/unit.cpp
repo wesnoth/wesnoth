@@ -2467,6 +2467,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		int times = effect["times"].to_int(1);
 		t_string description;
 
+		if(no_add && (apply_to == "type" || apply_to == "variation")) {
+			continue;
+		}
+
 		if(effect["times"] == "per level") {
 			if(effect["apply_to"] == "level") {
 				WRN_UT << "[effect] times=per level is not allowed with apply_to=level, using default value of 1";
