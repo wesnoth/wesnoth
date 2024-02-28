@@ -229,7 +229,8 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		}
 	}
 
-	boost::dynamic_bitset<> vals = find_widget<multimenu_button>(this, "filter_completion", false).get_toggle_states();
+	// List of which options has been selected in the completion filter multimenu_button
+	boost::dynamic_bitset<> filter_comp_options = find_widget<multimenu_button>(this, "filter_completion", false).get_toggle_states();
 
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
@@ -247,11 +248,11 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		const bool completed_mid = completed && !completed_hardest && !completed_easy;
 
 		if( show_items[i] && (
-					( (!completed) && vals[0] )
-				 || ( completed && vals[4] )
-				 || ( completed_hardest && vals[3] )
-				 || ( completed_easy && vals[1] )
-				 || ( completed_mid && vals[2])
+					( (!completed) && filter_comp_options[0] )       // Selects all campaigns not finished by player
+				 || ( completed && filter_comp_options[4] )          // Selects all campaigns finished by player
+				 || ( completed_hardest && filter_comp_options[3] )  // Selects campaigns completed in hardest difficulty
+				 || ( completed_easy && filter_comp_options[1] )     // Selects campaigns completed in easiest difficulty
+				 || ( completed_mid && filter_comp_options[2])       // Selects campaigns completed in any other difficulty
 				 )) {
 			add_campaign_to_tree(levels[i]->data());
 			if (!exists_in_filtered_result) {
