@@ -1020,6 +1020,7 @@ void play_controller::check_victory()
 	DBG_EE << "throwing end level exception...";
 	// Also proceed to the next scenario when another player survived.
 	end_level_data el_data;
+	el_data.transient.reveal_map = reveal_map_default();
 	el_data.proceed_to_next_level = found_player || found_network_player;
 	el_data.is_victory = found_player;
 	set_end_level_data(el_data);
@@ -1042,6 +1043,11 @@ void play_controller::process_oos(const std::string& msg) const
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, ignore_replay_errors_);
 	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
+}
+
+bool play_controller::reveal_map_default() const
+{
+	return saved_game_.classification().get_tagname() == "multiplayer";
 }
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
@@ -1321,6 +1327,7 @@ void play_controller::check_time_over()
 		}
 
 		end_level_data e;
+		e.transient.reveal_map = reveal_map_default();
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);

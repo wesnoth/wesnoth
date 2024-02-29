@@ -1652,7 +1652,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 		data.prescenario_save = cfg["save"].to_bool(true);
 		data.replay_save = cfg["replay_save"].to_bool(true);
 		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
-		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
+		data.transient.reveal_map = cfg["reveal_map"].to_bool(play_controller_.reveal_map_default());
 		data.is_victory = cfg["result"] == level_result::victory;
 		data.test_result = cfg["test_result"].str();
 		play_controller_.set_end_level_data(data);

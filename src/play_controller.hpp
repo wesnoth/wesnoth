@@ -111,6 +111,8 @@ public:
 	 */
 	virtual void process_oos(const std::string& msg) const;
 
+	bool reveal_map_default() const;
+
 	void set_end_level_data(const end_level_data& data)
 	{
 		gamestate().end_level_data_ = data;
