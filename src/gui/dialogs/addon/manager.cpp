@@ -325,7 +325,18 @@ void addon_manager::pre_show(window& window)
 	if(addr_visible) {
 		auto addr_box = dynamic_cast<styled_widget*>(addr_visible->find("server_addr", false));
 		if(addr_box) {
-			addr_box->set_label(client_.addr());
+			if(!client_.server_id().empty()) {
+				auto full_id = formatter()
+					<< client_.addr() << ' '
+					<< font::unicode_em_dash << ' '
+					<< client_.server_id();
+				if(game_config::debug && !client_.server_version().empty()) {
+					full_id << " (" << client_.server_version() << ')';
+				}
+				addr_box->set_label(full_id.str());
+			} else {
+				addr_box->set_label(client_.addr());
+			}
 		}
 	}
 
