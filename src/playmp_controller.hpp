@@ -20,7 +20,7 @@
 #include "syncmp_handler.hpp"
 
 struct mp_game_metadata;
-class playmp_controller : public playsingle_controller, public syncmp_handler
+class playmp_controller : public playsingle_controller
 {
 public:
 	playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info);
@@ -28,8 +28,8 @@ public:
 	void maybe_linger() override;
 	void process_oos(const std::string& err_msg) const override;
 
-	void pull_remote_choice() override;
-	void send_user_choice() override;
+	void receive_actions() override;
+	void send_actions() override;
 	void surrender(int side_number);
 
 	class hotkey_handler;
@@ -66,5 +66,13 @@ protected:
 	blindfold blindfold_;
 private:
 	void process_network_data(bool chat_only = false);
+
+	/// Helper to send our actions to the server
+	/// Used by turn_data_
+	replay_network_sender replay_sender_;
+	/// Used by turn_data_
+	playturn_network_adapter network_reader_;
+	/// Helper to read and execute (in particular replay data/ user actions ) messsages from the server
+	turn_info turn_data_;
 	mp_game_metadata* mp_info_;
 };

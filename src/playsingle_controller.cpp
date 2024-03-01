@@ -67,9 +67,6 @@ static lg::log_domain log_enginerefac("enginerefac");
 playsingle_controller::playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay)
 	: play_controller(level, state_of_game, skip_replay, true) // start faded
 	, cursor_setter_(cursor::NORMAL)
-	, replay_sender_(*resources::recorder)
-	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
-	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_requested_(false)
 	, ai_fallback_(false)
 	, replay_controller_()
@@ -650,7 +647,7 @@ void playsingle_controller::play_ai_turn()
 	}
 
 	undo_stack().clear();
-	turn_data_.send_data();
+	send_actions();
 
 	try {
 		try {
@@ -672,7 +669,7 @@ void playsingle_controller::play_ai_turn()
 		require_end_turn();
 	}
 
-	turn_data_.sync_network();
+	send_actions();
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();

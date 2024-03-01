@@ -46,6 +46,9 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 	: playsingle_controller(level, state_of_game, mp_info && mp_info->skip_replay)
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
+	, replay_sender_(*resources::recorder)
+	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
+	, turn_data_(replay_sender_, network_reader_)
 	, mp_info_(mp_info)
 {
 	// upgrade hotkey handler to the mp (network enabled) version
@@ -420,7 +423,7 @@ void playmp_controller::surrender(int side_number)
 	turn_data_.send_data();
 }
 
-void playmp_controller::pull_remote_choice()
+void playmp_controller::receive_actions()
 {
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_TURN);
@@ -435,7 +438,7 @@ void playmp_controller::pull_remote_choice()
 	}
 }
 
-void playmp_controller::send_user_choice()
+void playmp_controller::send_actions()
 {
 	turn_data_.send_data();
 }

@@ -101,13 +101,6 @@ protected:
 
 	const cursor::setter cursor_setter_;
 
-	/// Helper to send our actions to the server
-	/// Used by turn_data_
-	replay_network_sender replay_sender_;
-	/// Used by turn_data_
-	playturn_network_adapter network_reader_;
-	/// Helper to read and execute (in particular replay data/ user actions ) messsages from the server
-	turn_info turn_data_;
 	/// true iff the user has pressed the end turn button this turn.
 	/// (or wants to end linger mode, which is implemented via the same button)
 	bool end_turn_requested_;

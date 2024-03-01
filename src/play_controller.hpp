@@ -290,6 +290,11 @@ public:
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
 
+	/// Sends replay [command]s to the server
+	virtual void send_actions() { }
+	/// Reads and executes replay [command]s from the server
+	virtual void receive_actions() { }
+
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
 	virtual bool receive_from_wesnothd(config&) const { return false; }

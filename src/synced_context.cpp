@@ -227,14 +227,14 @@ int synced_context::get_unit_id_diff()
 
 void synced_context::pull_remote_user_input()
 {
-	syncmp_registry::pull_remote_choice();
+	resources::controller->receive_actions();
 }
 
 // TODO: this is now also used for normal actions, maybe it should be renamed.
 void synced_context::send_user_choice()
 {
 	assert(undo_blocked());
-	syncmp_registry::send_user_choice();
+	resources::controller->send_actions();
 }
 
 std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
