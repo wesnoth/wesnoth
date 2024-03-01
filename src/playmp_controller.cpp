@@ -239,7 +239,7 @@ void playmp_controller::play_network_turn()
 	end_turn_enable(false);
 	send_actions();
 
-	while(!gamestate().in_phase(game_data::TURN_ENDED) && !is_regular_game_end() && !player_type_changed_) {
+	while(!should_return_to_play_side()) {
 		if(!network_processing_stopped_) {
 			process_network_data();
 			if(!mp_info_ || mp_info_->current_turn == turn()) {
