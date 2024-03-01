@@ -575,6 +575,12 @@ void playsingle_controller::update_gui_linger()
 		gui_->set_game_mode(game_display::LINGER);
 		// change the end-turn button text from "End Turn" to "End Scenario"
 		gui_->get_theme().refresh_title2("button-endturn", "title2");
+
+		if(get_end_level_data().transient.reveal_map) {
+			// Change the view of all players and observers
+			// to see the whole map regardless of shroud and fog.
+			update_gui_to_player(gui_->viewing_team(), true);
+		}
 	} else {
 		gui_->set_game_mode(game_display::RUNNING);
 		// change the end-turn button text from "End Scenario" to "End Turn"
