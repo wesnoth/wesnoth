@@ -47,13 +47,11 @@ protected:
 	void stop_network();
 
 	virtual void play_human_turn() override;
-	virtual void play_linger_turn();
 	virtual void after_human_turn() override;
 	virtual void play_network_turn() override;
 	virtual void do_idle_notification() override;
 	virtual void play_idle_loop() override;
 
-	void linger();
 	/** Wait for the host to upload the next scenario. */
 	void wait_for_upload();
 

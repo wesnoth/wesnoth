@@ -99,27 +99,6 @@ void playmp_controller::remove_blindfold()
 	}
 }
 
-void playmp_controller::play_linger_turn()
-{
-	send_actions();
-	if(replay_controller_.get() != nullptr) {
-		// We have probably been using the mp "back to turn" feature
-		// We continue play since we have reached the end of the replay.
-		replay_controller_.reset();
-	}
-
-	while( gamestate().in_phase(game_data::GAME_ENDED) && !end_turn_requested_) {
-		config cfg;
-		if(network_reader_.read(cfg)) {
-			if(process_network_data_impl(cfg) == turn_info::PROCESS_END_LINGER) {
-				end_turn();
-			}
-		}
-
-		play_slice();
-	}
-}
-
 void playmp_controller::play_human_turn()
 {
 	LOG_NG << "playmp::play_human_turn...";
@@ -210,32 +189,6 @@ void playmp_controller::play_idle_loop()
 
 		send_actions();
 	}
-}
-
-void playmp_controller::linger()
-{
-	LOG_NG << "beginning end-of-scenario linger";
-
-	// End all unit moves
-	gamestate().board_.set_all_units_user_end_turn();
-
-	update_gui_linger();
-
-	assert(is_regular_game_end());
-
-	bool quit;
-	do {
-		quit = true;
-		{
-			// reimplement parts of play_side()
-			send_actions();
-			play_linger_turn();
-			send_actions();
-			LOG_NG << "finished human turn";
-		}
-	} while(!quit);
-
-	LOG_NG << "ending end-of-scenario linger";
 }
 
 void playmp_controller::wait_for_upload()
@@ -365,7 +318,14 @@ void playmp_controller::do_idle_notification()
 
 void playmp_controller::maybe_linger()
 {
+	if(replay_controller_.get() != nullptr) {
+		// We have probably been using the mp "back to turn" feature
+		// We continue play since we have reached the end of the replay.
+		replay_controller_.reset();
+	}
+
 	// mouse_handler expects at least one team for linger mode to work.
+	send_actions();
 	assert(is_regular_game_end());
 	if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless()) {
 		const bool has_next_scenario
@@ -407,7 +367,7 @@ void playmp_controller::receive_actions()
 
 void playmp_controller::play_slice(bool is_delay_enabled)
 {
-	if(!is_linger_mode() && !is_replay() && !network_processing_stopped_) {
+	if(!is_replay() && !network_processing_stopped_) {
 		// receive chat during animations and delay
 		process_network_data(true);
 		// cannot use send_actions() here.
@@ -441,9 +401,11 @@ bool playmp_controller::receive_from_wesnothd(config& cfg) const
 
 void playmp_controller::process_network_data(bool chat_only)
 {
-	if(gamestate().in_phase(game_data::TURN_ENDED)  || is_regular_game_end() || player_type_changed_) {
+	if(gamestate().in_phase(game_data::TURN_ENDED) || player_type_changed_) {
 		return;
 	}
+
+	chat_only |= is_regular_game_end();
 
 	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
 	config cfg;
@@ -461,7 +423,11 @@ void playmp_controller::process_network_data(bool chat_only)
 	} else if(res == turn_info::PROCESS_END_TURN) {
 	} else if(res == turn_info::PROCESS_END_LEVEL) {
 	} else if(res == turn_info::PROCESS_END_LINGER) {
-		replay::process_error("Received unexpected next_scenario during the game");
+		if(!is_linger_mode()) {
+			replay::process_error("Received unexpected next_scenario during the game");
+		} else {
+			end_turn();
+		}
 	}
 }
 
@@ -520,7 +486,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(cons
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
 	else if (cfg.has_child("notify_next_scenario")) {
-		if(chat_only) {
+		if(!is_linger_mode()) {
 			return turn_info::PROCESS_CANNOT_HANDLE;
 		}
 		return turn_info::PROCESS_END_LINGER;
