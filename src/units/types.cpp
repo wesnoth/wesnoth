@@ -838,13 +838,34 @@ bool unit_type::resistance_filter_matches(
 
 std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static const unit_alignments::sized_array<t_string> male_names {_("lawful"), _("neutral"), _("chaotic"), _("liminal")};
-	static const unit_alignments::sized_array<t_string> female_names {_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")};
-
 	if(gender == unit_race::FEMALE) {
-		return female_names[static_cast<int>(align)];
+		switch(align)
+		{
+			case unit_alignments::type::lawful:
+				return _("female^lawful");
+			case unit_alignments::type::neutral:
+				return _("female^neutral");
+			case unit_alignments::type::chaotic:
+				return _("female^chaotic");
+			case unit_alignments::type::liminal:
+				return _("female^liminal");
+			default:
+				return _("female^lawful");
+		}
 	} else {
-		return male_names[static_cast<int>(align)];
+		switch(align)
+		{
+			case unit_alignments::type::lawful:
+				return _("lawful");
+			case unit_alignments::type::neutral:
+				return _("neutral");
+			case unit_alignments::type::chaotic:
+				return _("chaotic");
+			case unit_alignments::type::liminal:
+				return _("liminal");
+			default:
+				return _("lawful");
+		}
 	}
 }
 
