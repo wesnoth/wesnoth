@@ -430,6 +430,27 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 	playsingle_controller::play_slice(is_delay_enabled);
 }
 
+bool playmp_controller::is_networked_mp() const
+{
+	return mp_info_ != nullptr;
+}
+
+void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) const
+{
+	if(mp_info_ != nullptr) {
+		mp_info_->connection.send_data(cfg);
+	}
+}
+
+bool playmp_controller::receive_from_wesnothd(config& cfg) const
+{
+	if(mp_info_ != nullptr) {
+		return mp_info_->connection.receive_data(cfg);
+	} else {
+		return false;
+	}
+}
+
 void playmp_controller::process_network_data(bool chat_only)
 {
 	if(gamestate().in_phase(game_data::TURN_ENDED)  || is_regular_game_end() || player_type_changed_) {
@@ -453,26 +474,5 @@ void playmp_controller::process_network_data(bool chat_only)
 	} else if(res == turn_info::PROCESS_END_LEVEL) {
 	} else if(res == turn_info::PROCESS_END_LINGER) {
 		replay::process_error("Received unexpected next_scenario during the game");
-	}
-}
-
-bool playmp_controller::is_networked_mp() const
-{
-	return mp_info_ != nullptr;
-}
-
-void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) const
-{
-	if(mp_info_ != nullptr) {
-		mp_info_->connection.send_data(cfg);
-	}
-}
-
-bool playmp_controller::receive_from_wesnothd(config& cfg) const
-{
-	if(mp_info_ != nullptr) {
-		return mp_info_->connection.receive_data(cfg);
-	} else {
-		return false;
 	}
 }
