@@ -226,9 +226,7 @@ void playsingle_controller::play_some()
 	}
 
 	if (gamestate().in_phase(game_data::GAME_ENDED)) {
-		if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless()) {
-			end_turn_requested_ = true;
-		}
+		end_turn_requested_ = !get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless();
 		maybe_linger();
 	}
 }
