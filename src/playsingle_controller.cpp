@@ -665,7 +665,6 @@ void playsingle_controller::play_ai_turn()
 		}
 	} catch(...) {
 		DBG_NG << "Caught exception playing ai turn: " << utils::get_unknown_exception_type();
-		turn_data_.sync_network();
 		throw;
 	}
 
