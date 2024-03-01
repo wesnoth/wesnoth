@@ -20,12 +20,15 @@
 #include "countdown_clock.hpp"
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
+#include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_end_exceptions.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "hotkey/hotkey_handler_mp.hpp"
 #include "log.hpp"
+#include "map/label.hpp"
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences/game.hpp"
@@ -37,10 +40,14 @@
 #include "synced_context.hpp"
 #include "video.hpp" // only for faked
 #include "wesnothd_connection.hpp"
+#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
+static lg::log_domain log_network("network");
+
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NW LOG_STREAM(err, log_network)
 
 playmp_controller::playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info)
 	: playsingle_controller(level, state_of_game, mp_info && mp_info->skip_replay)
@@ -48,14 +55,11 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
-	, turn_data_(replay_sender_, network_reader_)
 	, mp_info_(mp_info)
 {
 	// upgrade hotkey handler to the mp (network enabled) version
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_));
 
-	// turn_data_.set_host(is_host);
-	turn_data_.host_transfer().attach_handler(this);
 	if(!mp_info || mp_info->current_turn <= turn()) {
 		skip_replay_ = false;
 	}
@@ -67,12 +71,6 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 
 playmp_controller::~playmp_controller()
 {
-	// halt and cancel the countdown timer
-	try {
-		turn_data_.host_transfer().detach_handler(this);
-	} catch(...) {
-		DBG_NG << "Caught exception in playmp_controller destructor: " << utils::get_unknown_exception_type();
-	}
 }
 
 void playmp_controller::start_network()
@@ -103,7 +101,7 @@ void playmp_controller::remove_blindfold()
 
 void playmp_controller::play_linger_turn()
 {
-	turn_data_.send_data();
+	send_actions();
 	if(replay_controller_.get() != nullptr) {
 		// We have probably been using the mp "back to turn" feature
 		// We continue play since we have reached the end of the replay.
@@ -113,7 +111,7 @@ void playmp_controller::play_linger_turn()
 	while( gamestate().in_phase(game_data::GAME_ENDED) && !end_turn_requested_) {
 		config cfg;
 		if(network_reader_.read(cfg)) {
-			if(turn_data_.process_network_data(cfg) == turn_info::PROCESS_END_LINGER) {
+			if(process_network_data_impl(cfg) == turn_info::PROCESS_END_LINGER) {
 				end_turn();
 			}
 		}
@@ -190,7 +188,7 @@ void playmp_controller::play_human_turn()
 			throw;
 		}
 
-		turn_data_.send_data();
+		send_actions();
 	}
 }
 
@@ -210,7 +208,7 @@ void playmp_controller::play_idle_loop()
 			throw;
 		}
 
-		turn_data_.send_data();
+		send_actions();
 	}
 }
 
@@ -230,9 +228,9 @@ void playmp_controller::linger()
 		quit = true;
 		{
 			// reimplement parts of play_side()
-			turn_data_.send_data();
+			send_actions();
 			play_linger_turn();
-			turn_data_.send_data();
+			send_actions();
 			LOG_NG << "finished human turn";
 		}
 	} while(!quit);
@@ -242,7 +240,7 @@ void playmp_controller::linger()
 
 void playmp_controller::wait_for_upload()
 {
-	turn_data_.send_data();
+	send_actions();
 	// If the host is here we'll never leave since we wait for the host to
 	// upload the next scenario.
 	assert(!is_host());
@@ -251,7 +249,7 @@ void playmp_controller::wait_for_upload()
 	gui2::dialogs::loading_screen::display([&]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
 		while(true) {
-			auto res = turn_data_.process_network_data_from_reader();
+			auto res = process_network_data_from_reader();
 			if(res == turn_info::PROCESS_END_LINGER) {
 				return;
 			} else if (res != turn_info::PROCESS_CONTINUE) {
@@ -286,7 +284,7 @@ void playmp_controller::after_human_turn()
 	playsingle_controller::after_human_turn();
 
 	// send one more time to make sure network is up-to-date.
-	turn_data_.send_data();
+	send_actions();
 }
 
 void playmp_controller::play_network_turn()
@@ -294,7 +292,7 @@ void playmp_controller::play_network_turn()
 	LOG_NG << "is networked...";
 
 	end_turn_enable(false);
-	turn_data_.send_data();
+	send_actions();
 
 	while(!gamestate().in_phase(game_data::TURN_ENDED) && !is_regular_game_end() && !player_type_changed_) {
 		if(!network_processing_stopped_) {
@@ -306,7 +304,7 @@ void playmp_controller::play_network_turn()
 
 		play_slice_catch();
 		if(!network_processing_stopped_) {
-			turn_data_.send_data();
+			send_actions();
 		}
 	}
 
@@ -347,15 +345,9 @@ void playmp_controller::handle_generic_event(const std::string& name)
 {
 	if(name == "ai_user_interact") {
 		playsingle_controller::handle_generic_event(name);
-		turn_data_.send_data();
+		send_actions();
 	} else if(name == "ai_gamestate_changed") {
-		turn_data_.send_data();
-	} else if(name == "host_transfer") {
-		assert(mp_info_);
-		mp_info_->is_host = true;
-		if(is_linger_mode()) {
-			end_turn_enable(true);
-		}
+		send_actions();
 	}
 }
 bool playmp_controller::is_host() const
@@ -394,12 +386,12 @@ void playmp_controller::surrender(int side_number)
 {
 	undo_stack().clear();
 	resources::recorder->add_surrender(side_number);
-	turn_data_.send_data();
+	send_actions();
 }
 
 void playmp_controller::receive_actions()
 {
-	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
+	turn_info::PROCESS_DATA_RESULT res = sync_network();
 	assert(res != turn_info::PROCESS_END_TURN);
 
 	if(res == turn_info::PROCESS_END_LINGER) {
@@ -412,18 +404,14 @@ void playmp_controller::receive_actions()
 	}
 }
 
-void playmp_controller::send_actions()
-{
-	turn_data_.send_data();
-}
 
 void playmp_controller::play_slice(bool is_delay_enabled)
 {
 	if(!is_linger_mode() && !is_replay() && !network_processing_stopped_) {
 		// receive chat during animations and delay
 		process_network_data(true);
-		// cannot use turn_data_.send_data() here.
-		// todo: why? The checks in turn_data_.send_data() should be safe enouth.
+		// cannot use send_actions() here.
+		// todo: why? The checks in send_actions() should be safe enouth.
 		replay_sender_.sync_non_undoable();
 	}
 
@@ -461,9 +449,9 @@ void playmp_controller::process_network_data(bool chat_only)
 	config cfg;
 
 	if(!resources::recorder->at_end()) {
-		res = turn_info::replay_to_process_data_result(do_replay());
+		res = replay_to_process_data_result(do_replay());
 	} else if(network_reader_.read(cfg)) {
-		res = turn_data_.process_network_data(cfg, chat_only);
+		res = process_network_data_impl(cfg, chat_only);
 	}
 
 	if(res == turn_info::PROCESS_CANNOT_HANDLE) {
@@ -474,5 +462,351 @@ void playmp_controller::process_network_data(bool chat_only)
 	} else if(res == turn_info::PROCESS_END_LEVEL) {
 	} else if(res == turn_info::PROCESS_END_LINGER) {
 		replay::process_error("Received unexpected next_scenario during the game");
+	}
+}
+
+turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(const config& cfg, bool chat_only)
+{
+	// the simple wesnothserver implementation in wesnoth was removed years ago.
+	assert(cfg.all_children_count() == 1);
+	assert(cfg.attribute_range().empty());
+	if(!resources::recorder->at_end())
+	{
+		ERR_NW << "processing network data while still having data on the replay.";
+	}
+
+	if (const auto message = cfg.optional_child("message"))
+	{
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
+				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
+				preferences::message_bell());
+	}
+	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
+	{
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
+				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
+				preferences::message_bell());
+	}
+	else if (auto observer = cfg.optional_child("observer") )
+	{
+		game_display::get_singleton()->get_chat_manager().add_observer(observer["name"]);
+	}
+	else if (auto observer_quit = cfg.optional_child("observer_quit"))
+	{
+		game_display::get_singleton()->get_chat_manager().remove_observer(observer_quit["name"]);
+	}
+	else if (cfg.has_child("leave_game")) {
+		const bool has_reason = cfg.mandatory_child("leave_game").has_attribute("reason");
+		throw leavegame_wesnothd_error(has_reason ? cfg.mandatory_child("leave_game")["reason"].str() : "");
+	}
+	else if (auto turn = cfg.optional_child("turn"))
+	{
+		return process_network_turn_impl(*turn, chat_only);
+	}
+	else if (cfg.has_child("whiteboard"))
+	{
+		set_scontext_unsynced scontext;
+		resources::whiteboard->process_network_data(cfg);
+	}
+	else if (auto change = cfg.optional_child("change_controller"))
+	{
+		if(change->empty()) {
+			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty.";
+			return turn_info::PROCESS_CONTINUE;
+		}
+
+		const int side = change["side"].to_int();
+		const bool is_local = change["is_local"].to_bool();
+		const std::string player = change["player"];
+		const std::string controller_type = change["controller"];
+		const std::size_t index = side - 1;
+		if(index >= gamestate().board_.teams().size()) {
+			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change->debug();
+			return turn_info::PROCESS_CONTINUE;
+		}
+
+		const team & tm = gamestate().board_.teams().at(index);
+		const bool was_local = tm.is_local();
+
+		gamestate().board_.side_change_controller(side, is_local, player, controller_type);
+
+		if (!was_local && tm.is_local()) {
+			on_not_observer();
+		}
+
+		// TODO: can we replace this with just a call to play_controller::update_viewing_player() ?
+		auto disp_set_team = [](int side_index) {
+			const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
+			display::get_singleton()->set_team(side_index);
+
+			if(side_changed) {
+				display::get_singleton()->queue_rerender();
+			}
+		};
+
+		if (gamestate().board_.is_observer() || (gamestate().board_.teams())[display::get_singleton()->playing_team()].is_local_human()) {
+			disp_set_team(display::get_singleton()->playing_team());
+		} else if (tm.is_local_human()) {
+			disp_set_team(side - 1);
+		}
+
+		resources::whiteboard->on_change_controller(side,tm);
+
+		display::get_singleton()->labels().recalculate_labels();
+
+		const bool restart = game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
+		return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+	}
+
+	else if (auto side_drop_c = cfg.optional_child("side_drop"))
+	{
+		// Only the host receives this message when a player leaves/disconnects.
+		const int  side_drop = side_drop_c["side_num"].to_int(0);
+		std::size_t index = side_drop -1;
+
+		bool restart = side_drop == game_display::get_singleton()->playing_side();
+
+		if (index >= gamestate().board_.teams().size()) {
+			ERR_NW << "unknown side " << side_drop << " is dropping game";
+			throw ingame_wesnothd_error("");
+		}
+
+		auto ctrl = side_controller::get_enum(side_drop_c["controller"].str());
+		if(!ctrl) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"];
+			throw ingame_wesnothd_error("");
+		}
+
+		if (ctrl == side_controller::type::ai) {
+			gamestate().board_.side_drop_to(side_drop, *ctrl);
+			return restart ? turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+		}
+		//null controlled side cannot be dropped because they aren't controlled by anyone.
+		else if (ctrl != side_controller::type::human) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << side_controller::get_string(*ctrl);
+			throw ingame_wesnothd_error("");
+		}
+
+		int action = 0;
+		int first_observer_option_idx = 0;
+		int control_change_options = 0;
+		bool has_next_scenario = !resources::gamedata->next_scenario().empty() && resources::gamedata->next_scenario() != "null";
+
+		std::vector<std::string> observers;
+		std::vector<const team *> allies;
+		std::vector<std::string> options;
+
+		const team &tm = gamestate().board_.teams()[index];
+
+		for (const team &t : gamestate().board_.teams()) {
+			if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
+				&& t.current_player() != tm.current_player()) {
+				allies.push_back(&t);
+			}
+		}
+
+		// We want to give host chance to decide what to do for side
+		if (!is_linger_mode() || has_next_scenario) {
+			utils::string_map t_vars;
+
+			//get all allies in as options to transfer control
+			for (const team *t : allies) {
+				//if this is an ally of the dropping side and it is not us (choose local player
+				//if you want that) and not ai or empty and if it is not the dropping side itself,
+				//get this team in as well
+				t_vars["player"] = t->current_player();
+				options.emplace_back(VGETTEXT("Give control to their ally $player", t_vars));
+				control_change_options++;
+			}
+
+			first_observer_option_idx = options.size();
+
+			//get all observers in as options to transfer control
+			for (const std::string &screen_observers : game_display::get_singleton()->observers()) {
+				t_vars["player"] = screen_observers;
+				options.emplace_back(VGETTEXT("Give control to observer $player", t_vars));
+				observers.push_back(screen_observers);
+				control_change_options++;
+			}
+
+			options.emplace_back(_("Replace with AI"));
+			options.emplace_back(_("Replace with local player"));
+			options.emplace_back(_("Set side to idle"));
+			options.emplace_back(_("Save and abort game"));
+
+			t_vars["player"] = tm.current_player();
+			t_vars["side_drop"] = std::to_string(side_drop);
+			const std::string gettext_message =  VGETTEXT("$player who controlled side $side_drop has left the game. What do you want to do?", t_vars);
+			gui2::dialogs::simple_item_selector dlg("", gettext_message, options);
+			dlg.set_single_button(true);
+			dlg.show();
+			action = dlg.selected_index();
+
+			// If esc was pressed, default to setting side to idle
+			if (action == -1) {
+				action = control_change_options + 2;
+			}
+		} else {
+			// Always set leaving side to idle if in linger mode and there is no next scenario
+			action = 2;
+		}
+
+		if (action < control_change_options) {
+			// Grant control to selected ally
+			// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
+			gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
+
+			if (action < first_observer_option_idx) {
+				send_change_side_controller(side_drop, allies[action]->current_player());
+			} else {
+				send_change_side_controller(side_drop, observers[action - first_observer_option_idx]);
+			}
+
+			return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+		} else {
+			action -= control_change_options;
+
+			//make the player an AI, and redo this turn, in case
+			//it was the current player's team who has just changed into
+			//an AI.
+			switch(action) {
+				case 0:
+					on_not_observer();
+					gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::ai);
+
+					return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+
+				case 1:
+					on_not_observer();
+					gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::human);
+
+					return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+				case 2:
+					gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
+
+					return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+
+				case 3:
+					//The user pressed "end game". Don't throw a network error here or he will get
+					//thrown back to the title screen.
+					do_autosave();
+					throw_quit_game_exception();
+				default:
+					break;
+			}
+		}
+	}
+
+	// The host has ended linger mode in a campaign -> enable the "End scenario" button
+	// and tell we did get the notification.
+	else if (cfg.has_child("notify_next_scenario")) {
+		if(chat_only) {
+			return turn_info::PROCESS_CANNOT_HANDLE;
+		}
+		return turn_info::PROCESS_END_LINGER;
+	}
+
+	//If this client becomes the new host, notify the play_controller object about it
+	else if (cfg.has_child("host_transfer")) {
+		mp_info_->is_host = true;
+		if(is_linger_mode()) {
+			end_turn_enable(true);
+		}
+	}
+	else
+	{
+		ERR_NW << "found unknown command:\n" << cfg.debug();
+	}
+
+	return turn_info::PROCESS_CONTINUE;
+}
+
+turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(const config& t, bool chat_only)
+{
+	//t can contain a [command] or a [upload_log]
+	assert(t.all_children_count() == 1);
+
+	if(!t.child_or_empty("command").has_child("speak") && chat_only) {
+		return turn_info::PROCESS_CANNOT_HANDLE;
+	}
+	/** @todo FIXME: Check what commands we execute when it's our turn! */
+
+	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
+	resources::recorder->add_config(t, replay::MARK_AS_SENT);
+	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
+	return retv;
+}
+
+
+turn_info::PROCESS_DATA_RESULT playmp_controller::sync_network()
+{
+	//there should be nothing left on the replay and we should get turn_info::PROCESS_CONTINUE back.
+	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
+	if(is_networked_mp()) {
+
+		//receive data first, and then send data. When we sent the end of
+		//the AI's turn, we don't want there to be any chance where we
+		//could get data back pertaining to the next turn.
+		config cfg;
+		while( (retv == turn_info::PROCESS_CONTINUE) &&  network_reader_.read(cfg)) {
+			retv = process_network_data_impl(cfg);
+			cfg.clear();
+		}
+		send_actions();
+	}
+	return retv;
+}
+
+void playmp_controller::send_actions()
+{
+	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::undo_blocked();
+	if ( !send_everything ) {
+		replay_sender_.sync_non_undoable();
+	} else {
+		replay_sender_.commit_and_sync();
+	}
+}
+
+turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_from_reader()
+{
+	config cfg;
+	while(this->network_reader_.read(cfg))
+	{
+		turn_info::PROCESS_DATA_RESULT res = process_network_data_impl(cfg);
+		if(res != turn_info::PROCESS_CONTINUE)
+		{
+			return res;
+		}
+		cfg.clear();
+	}
+	return turn_info::PROCESS_CONTINUE;
+}
+
+
+
+void playmp_controller::send_change_side_controller(int side, const std::string& player)
+{
+	config cfg;
+	config& change = cfg.add_child("change_controller");
+	change["side"] = side;
+	change["player"] = player;
+	send_to_wesnothd(cfg);
+}
+
+turn_info::PROCESS_DATA_RESULT playmp_controller::replay_to_process_data_result(REPLAY_RETURN replayreturn)
+{
+	switch(replayreturn)
+	{
+	case REPLAY_RETURN_AT_END:
+		return turn_info::PROCESS_CONTINUE;
+	case REPLAY_FOUND_DEPENDENT:
+		return turn_info::PROCESS_FOUND_DEPENDENT;
+	case REPLAY_FOUND_END_TURN:
+		return turn_info::PROCESS_END_TURN;
+	case REPLAY_FOUND_END_LEVEL:
+		return turn_info::PROCESS_END_LEVEL;
+	default:
+		assert(false);
+		throw "found invalid REPLAY_RETURN";
 	}
 }

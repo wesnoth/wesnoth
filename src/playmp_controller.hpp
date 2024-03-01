@@ -66,13 +66,18 @@ protected:
 	blindfold blindfold_;
 private:
 	void process_network_data(bool chat_only = false);
+	turn_info::PROCESS_DATA_RESULT process_network_data_impl(const config& cfg, bool chat_only = false);
+	turn_info::PROCESS_DATA_RESULT process_network_turn_impl(const config& t, bool chat_only = false);
+	turn_info::PROCESS_DATA_RESULT sync_network();
+
+	turn_info::PROCESS_DATA_RESULT process_network_data_from_reader();
+	void send_change_side_controller(int side, const std::string& player);
+	static turn_info::PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 
 	/// Helper to send our actions to the server
 	/// Used by turn_data_
 	replay_network_sender replay_sender_;
 	/// Used by turn_data_
 	playturn_network_adapter network_reader_;
-	/// Helper to read and execute (in particular replay data/ user actions ) messsages from the server
-	turn_info turn_data_;
 	mp_game_metadata* mp_info_;
 };
