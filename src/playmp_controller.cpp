@@ -240,10 +240,6 @@ void playmp_controller::linger()
 			play_linger_turn();
 			turn_data_.send_data();
 			LOG_NG << "finished human turn";
-		} catch(const savegame::load_game_exception&) {
-			LOG_NG << "caught load-game-exception";
-			// this should not happen, the option to load a game is disabled
-			throw;
 		} catch(const leavegame_wesnothd_error& e) {
 			scoped_savegame_snapshot snapshot(*this);
 			savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
