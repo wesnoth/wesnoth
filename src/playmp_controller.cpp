@@ -228,28 +228,12 @@ void playmp_controller::linger()
 	bool quit;
 	do {
 		quit = true;
-		try {
+		{
 			// reimplement parts of play_side()
 			turn_data_.send_data();
 			play_linger_turn();
 			turn_data_.send_data();
 			LOG_NG << "finished human turn";
-		} catch(const leavegame_wesnothd_error& e) {
-			scoped_savegame_snapshot snapshot(*this);
-			savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
-
-			if(e.message == "") {
-				save.save_game_interactive(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),
-					savegame::savegame::YES_NO);
-			} else {
-				save.save_game_interactive(
-					_("This game has been ended.\nReason: ") + e.message + _("\nDo you want to save the game?"),
-					savegame::savegame::YES_NO);
-			}
-			throw;
-		} catch(const ingame_wesnothd_error&) {
-			LOG_NG << "caught network-error-exception";
-			quit = false;
 		}
 	} while(!quit);
 
