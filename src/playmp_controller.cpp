@@ -351,13 +351,7 @@ void playmp_controller::surrender(int side_number)
 
 void playmp_controller::receive_actions()
 {
-	turn_info::PROCESS_DATA_RESULT res = sync_network();
-	assert(res != turn_info::PROCESS_END_TURN);
-
-	if(res == turn_info::PROCESS_END_LINGER) {
-		// Probably some bad OOS, but there is currently no way to recover from this.
-		throw ingame_wesnothd_error("");
-	}
+	sync_network();
 }
 
 
