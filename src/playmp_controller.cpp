@@ -358,10 +358,6 @@ void playmp_controller::receive_actions()
 		// Probably some bad OOS, but there is currently no way to recover from this.
 		throw ingame_wesnothd_error("");
 	}
-
-	if(res == turn_info::PROCESS_RESTART_TURN) {
-		player_type_changed_ = true;
-	}
 }
 
 
@@ -418,8 +414,6 @@ void playmp_controller::process_network_data(bool chat_only)
 
 	if(res == turn_info::PROCESS_CANNOT_HANDLE) {
 		network_reader_.push_front(std::move(cfg));
-	} else if(res == turn_info::PROCESS_RESTART_TURN) {
-		player_type_changed_ = true;
 	} else if(res == turn_info::PROCESS_END_TURN) {
 	} else if(res == turn_info::PROCESS_END_LEVEL) {
 	} else if(res == turn_info::PROCESS_END_LINGER) {
@@ -476,11 +470,11 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(cons
 	}
 	else if (auto change = cfg.optional_child("change_controller"))
 	{
-		return process_network_change_controller_impl(*change);
+		process_network_change_controller_impl(*change);
 	}
 	else if (auto side_drop_c = cfg.optional_child("side_drop"))
 	{
-		return process_network_side_drop_impl(*side_drop_c);
+		process_network_side_drop_impl(*side_drop_c);
 	}
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
@@ -523,13 +517,13 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(cons
 	return retv;
 }
 
-turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_side_drop_impl(const config& side_drop_c)
+void playmp_controller::process_network_side_drop_impl(const config& side_drop_c)
 {
 	// Only the host receives this message when a player leaves/disconnects.
 	const int  side_drop = side_drop_c["side_num"].to_int(0);
 	std::size_t index = side_drop -1;
 
-	bool restart = side_drop == game_display::get_singleton()->playing_side();
+	player_type_changed_ |= side_drop == game_display::get_singleton()->playing_side();
 
 	if (index >= gamestate().board_.teams().size()) {
 		ERR_NW << "unknown side " << side_drop << " is dropping game";
@@ -544,7 +538,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_side_drop_impl
 
 	if (ctrl == side_controller::type::ai) {
 		gamestate().board_.side_drop_to(side_drop, *ctrl);
-		return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+		return;
 	}
 	//null controlled side cannot be dropped because they aren't controlled by anyone.
 	else if (ctrl != side_controller::type::human) {
@@ -626,8 +620,6 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_side_drop_impl
 		} else {
 			send_change_side_controller(side_drop, observers[action - first_observer_option_idx]);
 		}
-
-		return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
 	} else {
 		action -= control_change_options;
 
@@ -639,17 +631,17 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_side_drop_impl
 				on_not_observer();
 				gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::ai);
 
-				return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+				return;
 
 			case 1:
 				on_not_observer();
 				gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::human);
 
-				return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+				return;
 			case 2:
 				gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
 
-				return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+				return;
 
 			case 3:
 				//The user pressed "end game". Don't throw a network error here or he will get
@@ -660,15 +652,14 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_side_drop_impl
 				break;
 		}
 	}
-	return turn_info::PROCESS_CONTINUE;
 }
 
-turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_change_controller_impl(const config& change)
+void playmp_controller::process_network_change_controller_impl(const config& change)
 {
 
 	if(change.empty()) {
 		ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty.";
-		return turn_info::PROCESS_CONTINUE;
+		return;
 	}
 
 	const int side = change["side"].to_int();
@@ -678,7 +669,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_change_control
 	const std::size_t index = side - 1;
 	if(index >= gamestate().board_.teams().size()) {
 		ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug();
-		return turn_info::PROCESS_CONTINUE;
+		return;
 	}
 
 	const team & tm = gamestate().board_.teams().at(index);
@@ -710,8 +701,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_change_control
 
 	display::get_singleton()->labels().recalculate_labels();
 
-	const bool restart = game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
-	return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+	player_type_changed_ |=  game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
 }
 
 turn_info::PROCESS_DATA_RESULT playmp_controller::sync_network()

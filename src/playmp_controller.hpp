@@ -66,8 +66,8 @@ private:
 	void process_network_data(bool chat_only = false);
 	turn_info::PROCESS_DATA_RESULT process_network_data_impl(const config& cfg, bool chat_only = false);
 	turn_info::PROCESS_DATA_RESULT process_network_turn_impl(const config& t, bool chat_only = false);
-	turn_info::PROCESS_DATA_RESULT process_network_side_drop_impl(const config& t);
-	turn_info::PROCESS_DATA_RESULT process_network_change_controller_impl(const config& );
+	void process_network_side_drop_impl(const config& t);
+	void process_network_change_controller_impl(const config& );
 	turn_info::PROCESS_DATA_RESULT sync_network();
 
 	turn_info::PROCESS_DATA_RESULT process_network_data_from_reader();
