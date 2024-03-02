@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"POT-Creation-Date: 2024-03-02 16:44-0600\n"
 "PO-Revision-Date: 2008-01-21 18:54+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -1751,8 +1751,8 @@ msgstr "Κανόνες του Παιχνιδιού"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:500
 msgid "Traits"
 msgstr "Χαρακτηριστικά "
 
@@ -6627,7 +6627,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
+#: src/help/help_topic_generators.cpp:603
 #, fuzzy
 #| msgid "Special"
 msgid "Special Notes:"
@@ -6655,48 +6655,48 @@ msgstr ""
 msgid "Level"
 msgstr "επίπεδο"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
 msgstr "Προάχθηκε από:"
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:362
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "Προάχθηκε από:"
 
-#: src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:391
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "Μορφολογία Εδάφους"
 
-#: src/help/help_topic_generators.cpp:393
+#: src/help/help_topic_generators.cpp:396
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "Μορφολογία Εδάφους"
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:414
 #, fuzzy
 msgid "Variations: "
 msgstr "Παράταξη"
 
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:438
 #, fuzzy
 #| msgid "race^Merman"
 msgid "race^Miscellaneous"
 msgstr "Γοργόνος"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:440
 msgid "Race: "
 msgstr "Φυλή:"
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:510
 msgid "Abilities: "
 msgstr "Ικανότητες: "
 
-#: src/help/help_topic_generators.cpp:533
+#: src/help/help_topic_generators.cpp:536
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Ικανότητες: "
@@ -6704,7 +6704,7 @@ msgstr "Ικανότητες: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:566
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -6713,7 +6713,7 @@ msgstr "βαθμοί υγείας"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:570
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -6722,21 +6722,21 @@ msgstr "Κινήσεις: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:575
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:581
 msgid "Jamming:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -6745,7 +6745,7 @@ msgstr "Κόστος:"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:590
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -6754,79 +6754,79 @@ msgstr "Νοοτροπία: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
+#: src/help/help_topic_generators.cpp:597
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Απαιτούμενη εμπειρία: "
 
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:615
 #, fuzzy
 #| msgid "unit help^Name"
 msgid "unit help^Attacks"
 msgstr "Name"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "unit help^Name"
 msgstr "Name"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Strikes"
 msgstr "Χτυπήματα"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Range"
 msgstr "απόσταση βολής"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:625
 msgid "Type"
 msgstr "Τύπος"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:626
 msgid "Special"
 msgstr "Ειδικά "
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:701
 msgid "Resistances"
 msgstr "Αντιστάσεις"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:705
 msgid "Attack Type"
 msgstr "Τύπος Επίθεσης"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistance"
 msgstr "Αντίσταση"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:736
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Συντελεστές Μορφολογίας Εδάφους"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:740
 msgid "Terrain"
 msgstr "Μορφολογία Εδάφους"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:741
 msgid "Defense"
 msgstr "Άμυνα"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:742
 msgid "Movement Cost"
 msgstr "Κόστος κίνησης"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:746
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Άμυνα"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:755
 msgid "Jamming Cost"
 msgstr ""
 

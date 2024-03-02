@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"POT-Creation-Date: 2024-03-02 16:44-0600\n"
 "PO-Revision-Date: 2024-02-12 22:26+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -2476,7 +2476,7 @@ msgstr "Fermer"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:618
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr "Profil"
@@ -4277,61 +4277,63 @@ msgid "General Lobby"
 msgstr "Vestibule général"
 
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:86
+#. Games which were created by a bot, there's discussion about the meaning and
+#. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
+#: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
 msgstr "Appariement"
 
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:138
+#: data/gui/window/lobby_main.cfg:140
 msgid "Games"
 msgstr "Parties"
 
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:257
+#: data/gui/window/lobby_main.cfg:259
 msgid "Requires a password to join"
 msgstr "Nécessite un mot de passe"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:446
+#: data/gui/window/lobby_main.cfg:448
 msgid "Vacant slots"
 msgstr "Places restantes"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:447
+#: data/gui/window/lobby_main.cfg:449
 msgid "Only show games with vacant slots"
 msgstr "Affiche uniquement les parties avec des places vacantes"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:459
+#: data/gui/window/lobby_main.cfg:461
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Amis"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:460
+#: data/gui/window/lobby_main.cfg:462
 msgid "Only show games with friends"
 msgstr "Affiche uniquement les parties avec vos amis"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:472
+#: data/gui/window/lobby_main.cfg:474
 msgid "Blocked players"
 msgstr "Joueurs bloqués"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:473
+#: data/gui/window/lobby_main.cfg:475
 msgid "Show games that include players you have blocked"
 msgstr "Affiche les parties incluant des joueurs que vous avez bloqués"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:485
+#: data/gui/window/lobby_main.cfg:487
 msgid "Invert filter"
 msgstr "Inverser le filtre"
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
+#: data/gui/window/lobby_main.cfg:512 data/gui/window/lobby_main.cfg:784
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -4343,21 +4345,21 @@ msgstr "Créer un jeu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: data/gui/window/lobby_main.cfg:532 data/gui/window/lobby_main.cfg:796
 #: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "Join"
 msgstr "Rejoindre"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: data/gui/window/lobby_main.cfg:544 data/gui/window/lobby_main.cfg:819
 #: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr "Observer"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
+#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:807
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr "Annonces"
@@ -4366,7 +4368,7 @@ msgstr "Annonces"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
+#: data/gui/window/lobby_main.cfg:571 data/gui/window/lobby_main.cfg:772
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
@@ -4374,43 +4376,43 @@ msgstr "Préférences"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
+#: data/gui/window/lobby_main.cfg:629 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Historique des matchs"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
+#: data/gui/window/lobby_main.cfg:646 data/gui/window/lobby_main.cfg:746
 msgid "Log Out"
 msgstr "Déconnexion"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:666 data/gui/window/lobby_main.cfg:834
 msgid "Normal Replays"
 msgstr "Rejouer à vitesse normale"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
+#: data/gui/window/lobby_main.cfg:670 data/gui/window/lobby_main.cfg:838
 msgid "Quick Replays"
 msgstr "Rejouer en accéléré"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
+#: data/gui/window/lobby_main.cfg:671 data/gui/window/lobby_main.cfg:839
 msgid "Skip quickly to the active turn when observing"
 msgstr "En tant qu'observateur, passer rapidement au tour en cours"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
+#: data/gui/window/lobby_main.cfg:675 data/gui/window/lobby_main.cfg:843
 msgid "Enter Blindfolded"
 msgstr "Entrer les yeux bandés"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
+#: data/gui/window/lobby_main.cfg:676 data/gui/window/lobby_main.cfg:844
 msgid "Do not show the map until given control of a side"
 msgstr ""
 "Ne pas afficher la carte tant que le contrôle d'un camp n'a pas été donné"
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
+#: data/gui/window/lobby_main.cfg:734 data/gui/window/lobby_main.cfg:957
 msgid "Multiplayer Lobby"
 msgstr "Vestibule multijoueur"
 
@@ -6560,9 +6562,9 @@ msgid "No resolution defined."
 msgstr "Aucune résolution définie."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
-#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
-#: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/multi_page.cpp:177 src/gui/widgets/panel.cpp:133
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Aucune grille définie."
 
@@ -7823,12 +7825,6 @@ msgstr "Publiée, obsolète sur le serveur"
 msgid "Delete add-on from server"
 msgstr "Supprimer l'extension du serveur"
 
-#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
-#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
-#, fuzzy
-msgid "Missing required state for button"
-msgstr "État du bouton requis manquant"
-
 #: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
 msgstr "chuchoter à $receiver"
@@ -7845,42 +7841,9 @@ msgstr ""
 "Une conversation privée avec <i>\"$name\"</i> a débuté. Si vous ne voulez "
 "pas recevoir les messages de cet utilisateur, tapez <i>/ignore $name</i>"
 
-#: src/gui/widgets/chatbox.cpp:655
-#, fuzzy
-msgid "Missing required background for chatbox"
-msgstr "Fond de la zone de discussion requis manquant"
-
-#: src/gui/widgets/chatbox.cpp:656
-#, fuzzy
-msgid "Missing required foreground for chatbox"
-msgstr "Front de la zone de discussion requis manquant"
-
-#: src/gui/widgets/chatbox.cpp:658
-#, fuzzy
-msgid "Missing required grid for chatbox"
-msgstr "Grille de la zone de discussion requise manquante"
-
-#: src/gui/widgets/drawing.cpp:113
-#, fuzzy
-msgid "Missing [draw] in drawing"
-msgstr "[draw] pour le dessin requis manquant"
-
 #: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Le widget obligatoire « $id » n'a pas été défini."
-
-#: src/gui/widgets/horizontal_scrollbar.cpp:128
-#: src/gui/widgets/horizontal_scrollbar.cpp:129
-#: src/gui/widgets/horizontal_scrollbar.cpp:130
-#: src/gui/widgets/horizontal_scrollbar.cpp:131
-#, fuzzy
-msgid "Missing required state for horizontal scrollbar"
-msgstr "État de la coulisse horizontale requis manquant"
-
-#: src/gui/widgets/image.cpp:112
-#, fuzzy
-msgid "Missing required state for image control"
-msgstr "État du contrôle de l'image requis manquant"
 
 #: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
@@ -7894,16 +7857,6 @@ msgstr "Ouvrir le lien ?"
 #: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
 msgstr "Lien copié !"
-
-#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
-#, fuzzy
-msgid "Missing required state for text label control"
-msgstr "État du contrôle du texte requis manquant"
-
-#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
-#, fuzzy
-msgid "Missing required state for listbox"
-msgstr "État de la liste requis manquant"
 
 #: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
 msgid ""
@@ -7921,45 +7874,9 @@ msgstr "Aucune liste définie."
 msgid "A 'list_definition' should contain one row."
 msgstr "Une « list_definition » doit contenir au moins une ligne."
 
-#: src/gui/widgets/matrix.cpp:185
-#, fuzzy
-msgid "Missing [content] in [matrix_definition]"
-msgstr "[content] dans le [matrix_definition] requis manquant"
-
-#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
-#, fuzzy
-msgid "Missing required state for matrix definition"
-msgstr "État de la définition de matrice requis manquant"
-
-#: src/gui/widgets/matrix.cpp:207
-#, fuzzy
-msgid "Missing [main] in [matrix]"
-msgstr "[main] dans le [matrix] requis manquant"
-
-#: src/gui/widgets/menu_button.cpp:234 src/gui/widgets/menu_button.cpp:235
-#: src/gui/widgets/menu_button.cpp:236 src/gui/widgets/menu_button.cpp:237
-#, fuzzy
-msgid "Missing required state for menu button"
-msgstr "État du bouton de menu manquant"
-
-#: src/gui/widgets/minimap.cpp:118
-#, fuzzy
-msgid "Missing required state for minimap control"
-msgstr "État du contrôle de la mini-carte requis manquant"
-
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Aucune page définie."
-
-#: src/gui/widgets/multiline_text.cpp:466
-#: src/gui/widgets/multiline_text.cpp:467
-#: src/gui/widgets/multiline_text.cpp:468
-#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
-#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
-#: src/gui/widgets/text_box.cpp:414
-#, fuzzy
-msgid "Missing required state for editable text box"
-msgstr "État de la zone de texte éditable requis manquant"
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -7979,70 +7896,9 @@ msgstr[1] "$excess autres"
 msgid "multimenu^None Selected"
 msgstr "Aucune sélection"
 
-#: src/gui/widgets/multimenu_button.cpp:252
-#: src/gui/widgets/multimenu_button.cpp:253
-#: src/gui/widgets/multimenu_button.cpp:254
-#: src/gui/widgets/multimenu_button.cpp:255
-#, fuzzy
-msgid "Missing required state for multimenu button"
-msgstr "État du bouton de multi-menu requis manquant"
-
-#: src/gui/widgets/pane.cpp:361
-#, fuzzy
-msgid "Missing [item_definition] in [pane]"
-msgstr "[item_definition] dans le [pane] requis manquant"
-
 #: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
 msgstr "Il faut au moins 1 élément parallèle."
-
-#: src/gui/widgets/panel.cpp:119
-#, fuzzy
-msgid "Missing required background for panel definition"
-msgstr "Fond de la définition du panneau requis manquant"
-
-#: src/gui/widgets/panel.cpp:120
-#, fuzzy
-msgid "Missing required foreground for panel definition"
-msgstr "Front de la définition du panneau requis manquant"
-
-#: src/gui/widgets/progress_bar.cpp:96
-#, fuzzy
-msgid "Missing required state for progress bar"
-msgstr "État de la barre d'ascenceur requis manquant"
-
-#: src/gui/widgets/repeating_button.cpp:184
-#: src/gui/widgets/repeating_button.cpp:185
-#: src/gui/widgets/repeating_button.cpp:186
-#: src/gui/widgets/repeating_button.cpp:187
-#, fuzzy
-msgid "Missing required state for repeating button"
-msgstr "État du bouton en répétition requis manquant"
-
-#: src/gui/widgets/scroll_label.cpp:180 src/gui/widgets/scroll_label.cpp:181
-#, fuzzy
-msgid "Missing required state for scroll label control"
-msgstr "État du contrôle du label de coulisse requis manquant"
-
-#: src/gui/widgets/scroll_label.cpp:183
-#, fuzzy
-msgid "No grid defined for scroll label control"
-msgstr "Grille du contrôle du label de coulisse requise manquante"
-
-#: src/gui/widgets/scrollbar_panel.cpp:70
-#, fuzzy
-msgid "Missing required background for scrollbar panel"
-msgstr "Fond du panneau de coulisse requis manquant"
-
-#: src/gui/widgets/scrollbar_panel.cpp:71
-#, fuzzy
-msgid "Missing required foreground for scrollbar panel"
-msgstr "Front du panneau de coulisse requis manquant"
-
-#: src/gui/widgets/scrollbar_panel.cpp:73
-#, fuzzy
-msgid "Missing required grid for scrollbar panel"
-msgstr "Grille du panneau de coulisse requise manquante"
 
 #: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
@@ -8051,12 +7907,6 @@ msgstr "Taille incorrecte."
 #: src/gui/widgets/size_lock.cpp:124
 msgid "No widget defined."
 msgstr "Aucun widget défini."
-
-#: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
-#: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
-#, fuzzy
-msgid "Missing required state for slider"
-msgstr "État de la glissière requis manquant"
 
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
@@ -8072,27 +7922,6 @@ msgstr "Aucune pile de couches définie."
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Widget avec une aide contextuelle sans support détecté."
 
-#: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
-#: src/gui/widgets/toggle_button.cpp:216
-#, fuzzy
-msgid "Missing required state for toggle button"
-msgstr "État du bouton de bascule requis manquant"
-
-#: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
-#: src/gui/widgets/toggle_panel.cpp:304
-#, fuzzy
-msgid "Missing required state for toggle panel"
-msgstr "État du panneau de bascule requis manquant"
-
-#: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
-#, fuzzy
-msgid "Missing required state for tree view"
-msgstr "État de l'affichage en arbre requis manquant"
-
-#: src/gui/widgets/tree_view.cpp:271
-msgid "No grid defined for tree view"
-msgstr "Pas de grille définie pour l'arborescence."
-
 #: src/gui/widgets/tree_view.cpp:291
 msgid "No nodes defined for a tree view."
 msgstr "Pas de nœuds définis dans l'arborescence."
@@ -8100,10 +7929,6 @@ msgstr "Pas de nœuds définis dans l'arborescence."
 #: src/gui/widgets/tree_view.cpp:326
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]identifiant « root » réservé pour l'implémentation."
-
-#: src/gui/widgets/tree_view.cpp:330
-msgid "No node defined."
-msgstr "Aucun nœud défini."
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -8160,34 +7985,6 @@ msgstr "PM : "
 #: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "Capacités"
-
-#: src/gui/widgets/unit_preview_pane.cpp:611
-#, fuzzy
-msgid "Missing required background for unit preview pane"
-msgstr "Fond du panneau d'aperçu d'unité requis manquant"
-
-#: src/gui/widgets/unit_preview_pane.cpp:612
-#, fuzzy
-msgid "Missing required foreground for unit preview pane"
-msgstr "Front du panneau d'aperçu d'unité requis manquant"
-
-#: src/gui/widgets/unit_preview_pane.cpp:614
-#, fuzzy
-msgid "Missing required grid for unit preview pane"
-msgstr "Grille du panneau d'aperçu d'unité requise manquante"
-
-#: src/gui/widgets/vertical_scrollbar.cpp:123
-#: src/gui/widgets/vertical_scrollbar.cpp:124
-#: src/gui/widgets/vertical_scrollbar.cpp:125
-#: src/gui/widgets/vertical_scrollbar.cpp:126
-#, fuzzy
-msgid "Missing required state for vertical scrollbar"
-msgstr "État de la coulisse verticale requis manquant"
-
-#: src/gui/widgets/viewport.cpp:172
-#, fuzzy
-msgid "Missing [widget] in [viewport]"
-msgstr "[widget] dans le [viewport] requis manquant"
 
 #: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
@@ -9084,6 +8881,152 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
+
+#, fuzzy
+#~ msgid "Missing required state for button"
+#~ msgstr "État du bouton requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required background for chatbox"
+#~ msgstr "Fond de la zone de discussion requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required foreground for chatbox"
+#~ msgstr "Front de la zone de discussion requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required grid for chatbox"
+#~ msgstr "Grille de la zone de discussion requise manquante"
+
+#, fuzzy
+#~ msgid "Missing [draw] in drawing"
+#~ msgstr "[draw] pour le dessin requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for horizontal scrollbar"
+#~ msgstr "État de la coulisse horizontale requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for image control"
+#~ msgstr "État du contrôle de l'image requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for text label control"
+#~ msgstr "État du contrôle du texte requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for listbox"
+#~ msgstr "État de la liste requis manquant"
+
+#, fuzzy
+#~ msgid "Missing [content] in [matrix_definition]"
+#~ msgstr "[content] dans le [matrix_definition] requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for matrix definition"
+#~ msgstr "État de la définition de matrice requis manquant"
+
+#, fuzzy
+#~ msgid "Missing [main] in [matrix]"
+#~ msgstr "[main] dans le [matrix] requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for menu button"
+#~ msgstr "État du bouton de menu manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for minimap control"
+#~ msgstr "État du contrôle de la mini-carte requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for editable text box"
+#~ msgstr "État de la zone de texte éditable requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for multimenu button"
+#~ msgstr "État du bouton de multi-menu requis manquant"
+
+#, fuzzy
+#~ msgid "Missing [item_definition] in [pane]"
+#~ msgstr "[item_definition] dans le [pane] requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required background for panel definition"
+#~ msgstr "Fond de la définition du panneau requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required foreground for panel definition"
+#~ msgstr "Front de la définition du panneau requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for progress bar"
+#~ msgstr "État de la barre d'ascenceur requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for repeating button"
+#~ msgstr "État du bouton en répétition requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for scroll label control"
+#~ msgstr "État du contrôle du label de coulisse requis manquant"
+
+#, fuzzy
+#~ msgid "No grid defined for scroll label control"
+#~ msgstr "Grille du contrôle du label de coulisse requise manquante"
+
+#, fuzzy
+#~ msgid "Missing required background for scrollbar panel"
+#~ msgstr "Fond du panneau de coulisse requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required foreground for scrollbar panel"
+#~ msgstr "Front du panneau de coulisse requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required grid for scrollbar panel"
+#~ msgstr "Grille du panneau de coulisse requise manquante"
+
+#, fuzzy
+#~ msgid "Missing required state for slider"
+#~ msgstr "État de la glissière requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for toggle button"
+#~ msgstr "État du bouton de bascule requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for toggle panel"
+#~ msgstr "État du panneau de bascule requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required state for tree view"
+#~ msgstr "État de l'affichage en arbre requis manquant"
+
+#~ msgid "No grid defined for tree view"
+#~ msgstr "Pas de grille définie pour l'arborescence."
+
+#~ msgid "No node defined."
+#~ msgstr "Aucun nœud défini."
+
+#, fuzzy
+#~ msgid "Missing required background for unit preview pane"
+#~ msgstr "Fond du panneau d'aperçu d'unité requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required foreground for unit preview pane"
+#~ msgstr "Front du panneau d'aperçu d'unité requis manquant"
+
+#, fuzzy
+#~ msgid "Missing required grid for unit preview pane"
+#~ msgstr "Grille du panneau d'aperçu d'unité requise manquante"
+
+#, fuzzy
+#~ msgid "Missing required state for vertical scrollbar"
+#~ msgstr "État de la coulisse verticale requis manquant"
+
+#, fuzzy
+#~ msgid "Missing [widget] in [viewport]"
+#~ msgstr "[widget] dans le [viewport] requis manquant"
 
 #~ msgid "Resolution:"
 #~ msgstr "Résolution :"

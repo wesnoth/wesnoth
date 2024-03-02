@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"POT-Creation-Date: 2024-03-02 16:44-0600\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -4102,7 +4102,7 @@ msgstr "Fechar"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:618
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr "Perfil"
@@ -7034,7 +7034,9 @@ msgid "General Lobby"
 msgstr "Geral"
 
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:86
+#. Games which were created by a bot, there's discussion about the meaning and
+#. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
+#: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
 msgstr ""
 
@@ -7043,7 +7045,7 @@ msgstr ""
 # File: data/gui/default/window/lobby_main.cfg, line: 109
 # File: data/gui/default/window/lobby_main.cfg, line: 109
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:138
+#: data/gui/window/lobby_main.cfg:140
 msgid "Games"
 msgstr "Jogos"
 
@@ -7052,7 +7054,7 @@ msgstr "Jogos"
 # File: data/gui/default/window/lobby_main.cfg, line: 177
 # File: data/gui/default/window/lobby_main.cfg, line: 177
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:257
+#: data/gui/window/lobby_main.cfg:259
 msgid "Requires a password to join"
 msgstr "É necessário senha para entrar"
 
@@ -7061,12 +7063,12 @@ msgstr "É necessário senha para entrar"
 # File: data/gui/default/window/lobby_main.cfg, line: 598
 # File: data/gui/default/window/lobby_main.cfg, line: 598
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:446
+#: data/gui/window/lobby_main.cfg:448
 msgid "Vacant slots"
 msgstr "Slots vagos"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:447
+#: data/gui/window/lobby_main.cfg:449
 msgid "Only show games with vacant slots"
 msgstr "Mostrar apenas jogos com slots vazios"
 
@@ -7076,13 +7078,13 @@ msgstr "Mostrar apenas jogos com slots vazios"
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:459
+#: data/gui/window/lobby_main.cfg:461
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Amigos"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:460
+#: data/gui/window/lobby_main.cfg:462
 msgid "Only show games with friends"
 msgstr "Mostrar apenas jogos com amigos"
 
@@ -7091,12 +7093,12 @@ msgstr "Mostrar apenas jogos com amigos"
 # File: data/gui/default/window/editor_set_starting_position.cfg, line: 50
 # File: data/gui/default/window/editor_set_starting_position.cfg, line: 50
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:472
+#: data/gui/window/lobby_main.cfg:474
 msgid "Blocked players"
 msgstr "Jogadores Bloqueados"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:473
+#: data/gui/window/lobby_main.cfg:475
 msgid "Show games that include players you have blocked"
 msgstr "Mostar jogos que incluím jogadores que você bloqueou"
 
@@ -7105,7 +7107,7 @@ msgstr "Mostar jogos que incluím jogadores que você bloqueou"
 # File: data/gui/default/window/lobby_main.cfg, line: 604
 # File: data/gui/default/window/lobby_main.cfg, line: 604
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:485
+#: data/gui/window/lobby_main.cfg:487
 msgid "Invert filter"
 msgstr "Inverter filtro"
 
@@ -7119,7 +7121,7 @@ msgstr "Inverter filtro"
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
+#: data/gui/window/lobby_main.cfg:512 data/gui/window/lobby_main.cfg:784
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -7138,7 +7140,7 @@ msgstr "Criar Jogo"
 # File: data/gui/default/window/lobby_main.cfg, line: 692
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: data/gui/window/lobby_main.cfg:532 data/gui/window/lobby_main.cfg:796
 #: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "Join"
 msgstr "Entrar"
@@ -7152,7 +7154,7 @@ msgstr "Entrar"
 # File: data/gui/default/window/lobby_main.cfg, line: 698
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: data/gui/window/lobby_main.cfg:544 data/gui/window/lobby_main.cfg:819
 #: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr "Observar"
@@ -7163,7 +7165,7 @@ msgstr "Observar"
 # File: src/game_preferences_display.cpp, line: 205
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
+#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:807
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr "Anúncios"
@@ -7185,7 +7187,7 @@ msgstr "Anúncios"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
+#: data/gui/window/lobby_main.cfg:571 data/gui/window/lobby_main.cfg:772
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
@@ -7193,7 +7195,7 @@ msgstr "Preferências"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
+#: data/gui/window/lobby_main.cfg:629 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "Histórico de Partidas"
 
@@ -7202,7 +7204,7 @@ msgstr "Histórico de Partidas"
 # File: src/hotkeys.cpp, line: 80
 # File: src/hotkeys.cpp, line: 80
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
+#: data/gui/window/lobby_main.cfg:646 data/gui/window/lobby_main.cfg:746
 msgid "Log Out"
 msgstr "Terminar Sessão"
 
@@ -7211,7 +7213,7 @@ msgstr "Terminar Sessão"
 # File: src/hotkeys.cpp, line: 91
 # File: src/hotkeys.cpp, line: 91
 #. [option]
-#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:666 data/gui/window/lobby_main.cfg:834
 msgid "Normal Replays"
 msgstr "Replays Normais"
 
@@ -7220,22 +7222,22 @@ msgstr "Replays Normais"
 # File: data/gui/default/window/lobby_main.cfg, line: 704
 # File: data/gui/default/window/lobby_main.cfg, line: 704
 #. [option]
-#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
+#: data/gui/window/lobby_main.cfg:670 data/gui/window/lobby_main.cfg:838
 msgid "Quick Replays"
 msgstr "Replays Rápidos"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
+#: data/gui/window/lobby_main.cfg:671 data/gui/window/lobby_main.cfg:839
 msgid "Skip quickly to the active turn when observing"
 msgstr "Pular rapidamente para o turno atual quando estiver observando"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
+#: data/gui/window/lobby_main.cfg:675 data/gui/window/lobby_main.cfg:843
 msgid "Enter Blindfolded"
 msgstr "Entrar às cegas"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
+#: data/gui/window/lobby_main.cfg:676 data/gui/window/lobby_main.cfg:844
 msgid "Do not show the map until given control of a side"
 msgstr "Não mostar o mapa até ter controle de um dos lados"
 
@@ -7244,7 +7246,7 @@ msgstr "Não mostar o mapa até ter controle de um dos lados"
 # File: data/gui/default/window/lobby_main.cfg, line: 567
 # File: data/gui/default/window/lobby_main.cfg, line: 567
 #. [label]
-#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
+#: data/gui/window/lobby_main.cfg:734 data/gui/window/lobby_main.cfg:957
 msgid "Multiplayer Lobby"
 msgstr "Saguão Multiplayer"
 
@@ -10337,9 +10339,9 @@ msgstr "Nenhuma resolução definida."
 # File: src/gui/auxiliary/window_builder/panel.cpp, line: 35
 # File: src/gui/auxiliary/window_builder/toggle_panel.cpp, line: 38
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
-#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
-#: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/multi_page.cpp:177 src/gui/widgets/panel.cpp:133
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Nenhuma grade definida."
 
@@ -12297,11 +12299,6 @@ msgstr "Publicado, desatualizado no servidor"
 msgid "Delete add-on from server"
 msgstr "Deletar add-on do servidor"
 
-#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
-#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
-msgid "Missing required state for button"
-msgstr ""
-
 #
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
@@ -12326,22 +12323,6 @@ msgstr ""
 "Conversa privada com <i>“$name”</i> aberta. Se você não quer receber "
 "mensagens desse jogador, digite <i>/ignore $name</i>"
 
-#: src/gui/widgets/chatbox.cpp:655
-msgid "Missing required background for chatbox"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:656
-msgid "Missing required foreground for chatbox"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:658
-msgid "Missing required grid for chatbox"
-msgstr ""
-
-#: src/gui/widgets/drawing.cpp:113
-msgid "Missing [draw] in drawing"
-msgstr ""
-
 #
 # File: src/gui/widgets/helper.cpp, line: 116
 # File: src/gui/widgets/helper.cpp, line: 116
@@ -12349,17 +12330,6 @@ msgstr ""
 #: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Widget Obrigatório '$id' não foi definido."
-
-#: src/gui/widgets/horizontal_scrollbar.cpp:128
-#: src/gui/widgets/horizontal_scrollbar.cpp:129
-#: src/gui/widgets/horizontal_scrollbar.cpp:130
-#: src/gui/widgets/horizontal_scrollbar.cpp:131
-msgid "Missing required state for horizontal scrollbar"
-msgstr ""
-
-#: src/gui/widgets/image.cpp:112
-msgid "Missing required state for image control"
-msgstr ""
 
 #: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
@@ -12373,14 +12343,6 @@ msgstr "Abrir Link?"
 #: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
 msgstr "Link copiado!"
-
-#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
-msgid "Missing required state for text label control"
-msgstr ""
-
-#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
-msgid "Missing required state for listbox"
-msgstr ""
 
 #
 # File: src/gui/auxiliary/window_builder/horizontal_listbox.cpp, line: 66
@@ -12424,27 +12386,6 @@ msgstr "Nenhuma lista definida."
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' deve conter uma linha."
 
-#: src/gui/widgets/matrix.cpp:185
-msgid "Missing [content] in [matrix_definition]"
-msgstr ""
-
-#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
-msgid "Missing required state for matrix definition"
-msgstr ""
-
-#: src/gui/widgets/matrix.cpp:207
-msgid "Missing [main] in [matrix]"
-msgstr ""
-
-#: src/gui/widgets/menu_button.cpp:234 src/gui/widgets/menu_button.cpp:235
-#: src/gui/widgets/menu_button.cpp:236 src/gui/widgets/menu_button.cpp:237
-msgid "Missing required state for menu button"
-msgstr ""
-
-#: src/gui/widgets/minimap.cpp:118
-msgid "Missing required state for minimap control"
-msgstr ""
-
 #
 # File: src/gui/auxiliary/window_builder/multi_page.cpp, line: 38
 # File: src/gui/auxiliary/window_builder/multi_page.cpp, line: 38
@@ -12452,15 +12393,6 @@ msgstr ""
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Nenhuma página definida."
-
-#: src/gui/widgets/multiline_text.cpp:466
-#: src/gui/widgets/multiline_text.cpp:467
-#: src/gui/widgets/multiline_text.cpp:468
-#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
-#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
-#: src/gui/widgets/text_box.cpp:414
-msgid "Missing required state for editable text box"
-msgstr ""
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -12480,17 +12412,6 @@ msgstr[1] "Excesso outros"
 msgid "multimenu^None Selected"
 msgstr "Nenhum Selecionado"
 
-#: src/gui/widgets/multimenu_button.cpp:252
-#: src/gui/widgets/multimenu_button.cpp:253
-#: src/gui/widgets/multimenu_button.cpp:254
-#: src/gui/widgets/multimenu_button.cpp:255
-msgid "Missing required state for multimenu button"
-msgstr ""
-
-#: src/gui/widgets/pane.cpp:361
-msgid "Missing [item_definition] in [pane]"
-msgstr ""
-
 #
 # File: src/gui/auxiliary/window_builder/pane.cpp, line: 35
 # File: src/gui/auxiliary/window_builder/pane.cpp, line: 35
@@ -12498,45 +12419,6 @@ msgstr ""
 #: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
 msgstr "Necessita de ao menos 1 item paralelo."
-
-#: src/gui/widgets/panel.cpp:119
-msgid "Missing required background for panel definition"
-msgstr ""
-
-#: src/gui/widgets/panel.cpp:120
-msgid "Missing required foreground for panel definition"
-msgstr ""
-
-#: src/gui/widgets/progress_bar.cpp:96
-msgid "Missing required state for progress bar"
-msgstr ""
-
-#: src/gui/widgets/repeating_button.cpp:184
-#: src/gui/widgets/repeating_button.cpp:185
-#: src/gui/widgets/repeating_button.cpp:186
-#: src/gui/widgets/repeating_button.cpp:187
-msgid "Missing required state for repeating button"
-msgstr ""
-
-#: src/gui/widgets/scroll_label.cpp:180 src/gui/widgets/scroll_label.cpp:181
-msgid "Missing required state for scroll label control"
-msgstr ""
-
-#: src/gui/widgets/scroll_label.cpp:183
-msgid "No grid defined for scroll label control"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:70
-msgid "Missing required background for scrollbar panel"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:71
-msgid "Missing required foreground for scrollbar panel"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:73
-msgid "Missing required grid for scrollbar panel"
-msgstr ""
 
 #
 # File: src/game_preferences_display.cpp, line: 960
@@ -12563,11 +12445,6 @@ msgstr "Tamanho inválido."
 msgid "No widget defined."
 msgstr "Nenhum wdget definido."
 
-#: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
-#: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
-msgid "Missing required state for slider"
-msgstr ""
-
 #
 # File: src/gui/auxiliary/window_builder/slider.cpp, line: 65
 # File: src/gui/auxiliary/window_builder/slider.cpp, line: 65
@@ -12592,30 +12469,6 @@ msgstr "Nenhuma pilha de camadas defnida."
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Encontrado widget com helptip e sem tooltip."
 
-#: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
-#: src/gui/widgets/toggle_button.cpp:216
-msgid "Missing required state for toggle button"
-msgstr ""
-
-#: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
-#: src/gui/widgets/toggle_panel.cpp:304
-msgid "Missing required state for toggle panel"
-msgstr ""
-
-#: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
-msgid "Missing required state for tree view"
-msgstr ""
-
-#
-# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
-# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
-# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
-#: src/gui/widgets/tree_view.cpp:271
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
-msgid "No grid defined for tree view"
-msgstr "Nenhum nó definido para visualização de árvore."
-
 #
 # File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
 # File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
@@ -12631,14 +12484,6 @@ msgstr "Nenhum nó definido para visualização de árvore."
 #: src/gui/widgets/tree_view.cpp:326
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]id 'raíz reservado para implementação."
-
-#
-# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 89
-# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 89
-# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 89
-#: src/gui/widgets/tree_view.cpp:330
-msgid "No node defined."
-msgstr "Nenhum nó definido."
 
 #
 # File: src/gui/widgets/tree_view_node.cpp, line: 104
@@ -12710,29 +12555,6 @@ msgstr "PM: "
 #: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "Habilidades"
-
-#: src/gui/widgets/unit_preview_pane.cpp:611
-msgid "Missing required background for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:612
-msgid "Missing required foreground for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:614
-msgid "Missing required grid for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/vertical_scrollbar.cpp:123
-#: src/gui/widgets/vertical_scrollbar.cpp:124
-#: src/gui/widgets/vertical_scrollbar.cpp:125
-#: src/gui/widgets/vertical_scrollbar.cpp:126
-msgid "Missing required state for vertical scrollbar"
-msgstr ""
-
-#: src/gui/widgets/viewport.cpp:172
-msgid "Missing [widget] in [viewport]"
-msgstr ""
 
 #
 # File: src/gui/auxiliary/window_builder.cpp, line: 99
@@ -14436,6 +14258,22 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Na seção '[$section|]', a chave obrigatória '$key|' não está definida."
+
+#
+# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
+# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
+# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 45
+#, fuzzy
+#~| msgid "No nodes defined for a tree view."
+#~ msgid "No grid defined for tree view"
+#~ msgstr "Nenhum nó definido para visualização de árvore."
+
+#
+# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 89
+# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 89
+# File: src/gui/auxiliary/window_builder/tree_view.cpp, line: 89
+#~ msgid "No node defined."
+#~ msgstr "Nenhum nó definido."
 
 #
 # File: src/game_preferences_display.cpp, line: 198

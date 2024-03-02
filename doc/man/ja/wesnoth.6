@@ -132,17 +132,15 @@ gzip フォーマットのファイルを展開して .gz という拡張子を�
 定義済のログ領域のリストを表示して終了する。(\fIfilter\fPが指定されたら反映される)
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+ログ出力がファイルにリダイレクトされるのを抑制する。ログファイルは userdata フォルダ下の logs ディレクトリに作成される。
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+Windowsの場合に \-\-no\-log\-to\-file と共に使用すると、出力は CONOUT ではなく cerr/cout
+に書き込まれる。それ以外は何もしない。
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 ゲームの fps を設定。値は \fB1\fP から \fB1000\fP を指定でき、デフォルト値はモニターのリフレッシュレートである。
@@ -244,9 +242,8 @@ GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き�
 検証エラーは致命的なエラーとして扱う。
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+小さなテストシナリオを実行する。テストシナリオは \fB[test]\fP WMLタグで定義されている必要がある。 デフォルトは \fBtest\fP。
+\fB[micro_ai]\fP のデモンストレーションは \fBmicro_ai_test\fP で開始できる。
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 言語の基準翻訳率を I に設定する。言語の翻訳率が \fIpercent\fP を越えている場合のみ、ゲーム内の言語リストに表示される。有効な値は 0 から

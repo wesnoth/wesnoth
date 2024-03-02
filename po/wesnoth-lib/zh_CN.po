@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"POT-Creation-Date: 2024-03-02 16:44-0600\n"
 "PO-Revision-Date: 2023-09-10 09:01+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2401,7 +2401,7 @@ msgstr "关闭"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:618
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr "档案"
@@ -4195,61 +4195,63 @@ msgid "General Lobby"
 msgstr "通用"
 
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:86
+#. Games which were created by a bot, there's discussion about the meaning and
+#. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
+#: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
 msgstr ""
 
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:138
+#: data/gui/window/lobby_main.cfg:140
 msgid "Games"
 msgstr "游戏"
 
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:257
+#: data/gui/window/lobby_main.cfg:259
 msgid "Requires a password to join"
 msgstr "需要密码才能加入游戏"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:446
+#: data/gui/window/lobby_main.cfg:448
 msgid "Vacant slots"
 msgstr "空闲位置"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:447
+#: data/gui/window/lobby_main.cfg:449
 msgid "Only show games with vacant slots"
 msgstr "只显示有空闲位置的游戏"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:459
+#: data/gui/window/lobby_main.cfg:461
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "好友"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:460
+#: data/gui/window/lobby_main.cfg:462
 msgid "Only show games with friends"
 msgstr "只显示有好友的游戏"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:472
+#: data/gui/window/lobby_main.cfg:474
 msgid "Blocked players"
 msgstr "拉黑的玩家"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:473
+#: data/gui/window/lobby_main.cfg:475
 msgid "Show games that include players you have blocked"
 msgstr "显示包含有你已拉黑的玩家的游戏"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:485
+#: data/gui/window/lobby_main.cfg:487
 msgid "Invert filter"
 msgstr "反转过滤条件"
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
+#: data/gui/window/lobby_main.cfg:512 data/gui/window/lobby_main.cfg:784
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -4261,21 +4263,21 @@ msgstr "创建游戏"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: data/gui/window/lobby_main.cfg:532 data/gui/window/lobby_main.cfg:796
 #: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "Join"
 msgstr "加入"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: data/gui/window/lobby_main.cfg:544 data/gui/window/lobby_main.cfg:819
 #: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr "观察"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
+#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:807
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr "公告"
@@ -4284,7 +4286,7 @@ msgstr "公告"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
+#: data/gui/window/lobby_main.cfg:571 data/gui/window/lobby_main.cfg:772
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
@@ -4292,42 +4294,42 @@ msgstr "首选项"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
+#: data/gui/window/lobby_main.cfg:629 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "匹配历史"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
+#: data/gui/window/lobby_main.cfg:646 data/gui/window/lobby_main.cfg:746
 msgid "Log Out"
 msgstr "登出"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:666 data/gui/window/lobby_main.cfg:834
 msgid "Normal Replays"
 msgstr "普通回放"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
+#: data/gui/window/lobby_main.cfg:670 data/gui/window/lobby_main.cfg:838
 msgid "Quick Replays"
 msgstr "快速回放"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
+#: data/gui/window/lobby_main.cfg:671 data/gui/window/lobby_main.cfg:839
 msgid "Skip quickly to the active turn when observing"
 msgstr "进行观察时，快速跳进至活动回合"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
+#: data/gui/window/lobby_main.cfg:675 data/gui/window/lobby_main.cfg:843
 msgid "Enter Blindfolded"
 msgstr "蒙眼进入"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
+#: data/gui/window/lobby_main.cfg:676 data/gui/window/lobby_main.cfg:844
 msgid "Do not show the map until given control of a side"
 msgstr "直到获得某一阵营的控制权之前，不显示地图"
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
+#: data/gui/window/lobby_main.cfg:734 data/gui/window/lobby_main.cfg:957
 msgid "Multiplayer Lobby"
 msgstr "多人游戏大厅"
 
@@ -6441,9 +6443,9 @@ msgid "No resolution defined."
 msgstr "没有已定义的分辨率。"
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
-#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
-#: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/multi_page.cpp:177 src/gui/widgets/panel.cpp:133
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "没有已定义的网格。"
 
@@ -7702,11 +7704,6 @@ msgstr "已发布，服务器上的版本已过时"
 msgid "Delete add-on from server"
 msgstr "从服务器上删除附加组件"
 
-#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
-#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
-msgid "Missing required state for button"
-msgstr ""
-
 #: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
 msgstr "对$receiver|说悄悄话"
@@ -7723,36 +7720,9 @@ msgstr ""
 "和<b>$name</b>的悄悄话开始。如果你不希望收到来自此玩家的消息，请输入<b>/"
 "ignore $name</b>"
 
-#: src/gui/widgets/chatbox.cpp:655
-msgid "Missing required background for chatbox"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:656
-msgid "Missing required foreground for chatbox"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:658
-msgid "Missing required grid for chatbox"
-msgstr ""
-
-#: src/gui/widgets/drawing.cpp:113
-msgid "Missing [draw] in drawing"
-msgstr ""
-
 #: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "必须的界面构件“$id|”尚未定义。"
-
-#: src/gui/widgets/horizontal_scrollbar.cpp:128
-#: src/gui/widgets/horizontal_scrollbar.cpp:129
-#: src/gui/widgets/horizontal_scrollbar.cpp:130
-#: src/gui/widgets/horizontal_scrollbar.cpp:131
-msgid "Missing required state for horizontal scrollbar"
-msgstr ""
-
-#: src/gui/widgets/image.cpp:112
-msgid "Missing required state for image control"
-msgstr ""
 
 #: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
@@ -7765,14 +7735,6 @@ msgstr "打开链接？"
 #: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
 msgstr "已复制链接！"
-
-#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
-msgid "Missing required state for text label control"
-msgstr ""
-
-#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
-msgid "Missing required state for listbox"
-msgstr ""
 
 #: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
 msgid ""
@@ -7789,39 +7751,9 @@ msgstr "没有已定义的列表。"
 msgid "A 'list_definition' should contain one row."
 msgstr "每个“list_definition”（列表定义）应该至少有一行。"
 
-#: src/gui/widgets/matrix.cpp:185
-msgid "Missing [content] in [matrix_definition]"
-msgstr ""
-
-#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
-msgid "Missing required state for matrix definition"
-msgstr ""
-
-#: src/gui/widgets/matrix.cpp:207
-msgid "Missing [main] in [matrix]"
-msgstr ""
-
-#: src/gui/widgets/menu_button.cpp:234 src/gui/widgets/menu_button.cpp:235
-#: src/gui/widgets/menu_button.cpp:236 src/gui/widgets/menu_button.cpp:237
-msgid "Missing required state for menu button"
-msgstr ""
-
-#: src/gui/widgets/minimap.cpp:118
-msgid "Missing required state for minimap control"
-msgstr ""
-
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "没有已定义的页面。"
-
-#: src/gui/widgets/multiline_text.cpp:466
-#: src/gui/widgets/multiline_text.cpp:467
-#: src/gui/widgets/multiline_text.cpp:468
-#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
-#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
-#: src/gui/widgets/text_box.cpp:414
-msgid "Missing required state for editable text box"
-msgstr ""
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -7841,59 +7773,9 @@ msgstr[1] "及另$excess|个"
 msgid "multimenu^None Selected"
 msgstr "未选中"
 
-#: src/gui/widgets/multimenu_button.cpp:252
-#: src/gui/widgets/multimenu_button.cpp:253
-#: src/gui/widgets/multimenu_button.cpp:254
-#: src/gui/widgets/multimenu_button.cpp:255
-msgid "Missing required state for multimenu button"
-msgstr ""
-
-#: src/gui/widgets/pane.cpp:361
-msgid "Missing [item_definition] in [pane]"
-msgstr ""
-
 #: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
 msgstr "还需要至少一件并行的物品。"
-
-#: src/gui/widgets/panel.cpp:119
-msgid "Missing required background for panel definition"
-msgstr ""
-
-#: src/gui/widgets/panel.cpp:120
-msgid "Missing required foreground for panel definition"
-msgstr ""
-
-#: src/gui/widgets/progress_bar.cpp:96
-msgid "Missing required state for progress bar"
-msgstr ""
-
-#: src/gui/widgets/repeating_button.cpp:184
-#: src/gui/widgets/repeating_button.cpp:185
-#: src/gui/widgets/repeating_button.cpp:186
-#: src/gui/widgets/repeating_button.cpp:187
-msgid "Missing required state for repeating button"
-msgstr ""
-
-#: src/gui/widgets/scroll_label.cpp:180 src/gui/widgets/scroll_label.cpp:181
-msgid "Missing required state for scroll label control"
-msgstr ""
-
-#: src/gui/widgets/scroll_label.cpp:183
-msgid "No grid defined for scroll label control"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:70
-msgid "Missing required background for scrollbar panel"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:71
-msgid "Missing required foreground for scrollbar panel"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:73
-msgid "Missing required grid for scrollbar panel"
-msgstr ""
 
 #: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
@@ -7902,11 +7784,6 @@ msgstr "无效尺寸。"
 #: src/gui/widgets/size_lock.cpp:124
 msgid "No widget defined."
 msgstr "没有已定义的界面构件。"
-
-#: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
-#: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
-msgid "Missing required state for slider"
-msgstr ""
 
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
@@ -7920,26 +7797,6 @@ msgstr "没有已定义的堆栈层次。"
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "发现有帮助提示但却没有提示小标签的界面构件。"
 
-#: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
-#: src/gui/widgets/toggle_button.cpp:216
-msgid "Missing required state for toggle button"
-msgstr ""
-
-#: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
-#: src/gui/widgets/toggle_panel.cpp:304
-msgid "Missing required state for toggle panel"
-msgstr ""
-
-#: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
-msgid "Missing required state for tree view"
-msgstr ""
-
-#: src/gui/widgets/tree_view.cpp:271
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
-msgid "No grid defined for tree view"
-msgstr "没有已定义的树状视图节点。"
-
 #: src/gui/widgets/tree_view.cpp:291
 msgid "No nodes defined for a tree view."
 msgstr "没有已定义的树状视图节点。"
@@ -7947,10 +7804,6 @@ msgstr "没有已定义的树状视图节点。"
 #: src/gui/widgets/tree_view.cpp:326
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[节点]ID‘root’是保留给游戏实现专用的。"
-
-#: src/gui/widgets/tree_view.cpp:330
-msgid "No node defined."
-msgstr "没有已定义的节点。"
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -8007,29 +7860,6 @@ msgstr "移动："
 #: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "能力"
-
-#: src/gui/widgets/unit_preview_pane.cpp:611
-msgid "Missing required background for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:612
-msgid "Missing required foreground for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:614
-msgid "Missing required grid for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/vertical_scrollbar.cpp:123
-#: src/gui/widgets/vertical_scrollbar.cpp:124
-#: src/gui/widgets/vertical_scrollbar.cpp:125
-#: src/gui/widgets/vertical_scrollbar.cpp:126
-msgid "Missing required state for vertical scrollbar"
-msgstr ""
-
-#: src/gui/widgets/viewport.cpp:172
-msgid "Missing [widget] in [viewport]"
-msgstr ""
 
 #: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
@@ -8911,6 +8741,14 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有设定值。"
+
+#, fuzzy
+#~| msgid "No nodes defined for a tree view."
+#~ msgid "No grid defined for tree view"
+#~ msgstr "没有已定义的树状视图节点。"
+
+#~ msgid "No node defined."
+#~ msgstr "没有已定义的节点。"
 
 #~ msgid "By:"
 #~ msgstr "作者："

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"POT-Creation-Date: 2024-03-02 16:44-0600\n"
 "PO-Revision-Date: 2009-06-15 15:03-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -2425,7 +2425,7 @@ msgstr "Loka"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:618
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr ""
@@ -4356,64 +4356,66 @@ msgid "General Lobby"
 msgstr "Ræsa"
 
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:86
+#. Games which were created by a bot, there's discussion about the meaning and
+#. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
+#: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
 msgstr ""
 
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:138
+#: data/gui/window/lobby_main.cfg:140
 #, fuzzy
 msgid "Games"
 msgstr "Nafn"
 
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:257
+#: data/gui/window/lobby_main.cfg:259
 msgid "Requires a password to join"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:446
+#: data/gui/window/lobby_main.cfg:448
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:447
+#: data/gui/window/lobby_main.cfg:449
 msgid "Only show games with vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:459
+#: data/gui/window/lobby_main.cfg:461
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 #, fuzzy
 msgid "Friends"
 msgstr "Vinalisti"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:460
+#: data/gui/window/lobby_main.cfg:462
 msgid "Only show games with friends"
 msgstr ""
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:472
+#: data/gui/window/lobby_main.cfg:474
 #, fuzzy
 msgid "Blocked players"
 msgstr "Spilarar:"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:473
+#: data/gui/window/lobby_main.cfg:475
 msgid "Show games that include players you have blocked"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:485
+#: data/gui/window/lobby_main.cfg:487
 msgid "Invert filter"
 msgstr ""
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
+#: data/gui/window/lobby_main.cfg:512 data/gui/window/lobby_main.cfg:784
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -4425,7 +4427,7 @@ msgstr "Búa til leik"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: data/gui/window/lobby_main.cfg:532 data/gui/window/lobby_main.cfg:796
 #: src/gui/dialogs/multiplayer/lobby.cpp:872
 #, fuzzy
 msgid "Join"
@@ -4433,14 +4435,14 @@ msgstr "Innskráning"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: data/gui/window/lobby_main.cfg:544 data/gui/window/lobby_main.cfg:819
 #: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr ""
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
+#: data/gui/window/lobby_main.cfg:559 data/gui/window/lobby_main.cfg:807
 #: data/gui/window/server_info.cfg:168
 #, fuzzy
 #| msgid "sound^Advanced Options"
@@ -4451,7 +4453,7 @@ msgstr "Frekari stillingar"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
+#: data/gui/window/lobby_main.cfg:571 data/gui/window/lobby_main.cfg:772
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
@@ -4459,47 +4461,47 @@ msgstr "Stillingar"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
+#: data/gui/window/lobby_main.cfg:629 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr ""
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
+#: data/gui/window/lobby_main.cfg:646 data/gui/window/lobby_main.cfg:746
 #, fuzzy
 #| msgid "Zoom Out"
 msgid "Log Out"
 msgstr "Þysja út"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:666 data/gui/window/lobby_main.cfg:834
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "Vista endurinningu"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
+#: data/gui/window/lobby_main.cfg:670 data/gui/window/lobby_main.cfg:838
 #, fuzzy
 msgid "Quick Replays"
 msgstr "spilari"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
+#: data/gui/window/lobby_main.cfg:671 data/gui/window/lobby_main.cfg:839
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
+#: data/gui/window/lobby_main.cfg:675 data/gui/window/lobby_main.cfg:843
 msgid "Enter Blindfolded"
 msgstr ""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
+#: data/gui/window/lobby_main.cfg:676 data/gui/window/lobby_main.cfg:844
 msgid "Do not show the map until given control of a side"
 msgstr ""
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
+#: data/gui/window/lobby_main.cfg:734 data/gui/window/lobby_main.cfg:957
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Fjölspilun"
@@ -6753,9 +6755,9 @@ msgid "No resolution defined."
 msgstr "Engin upplausn skilgreind."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
-#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
-#: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/multi_page.cpp:177 src/gui/widgets/panel.cpp:133
+#: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
+#: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Engin grind skilgreind."
 
@@ -8058,11 +8060,6 @@ msgstr ""
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
-#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
-msgid "Missing required state for button"
-msgstr ""
-
 #: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
 msgstr ""
@@ -8077,36 +8074,9 @@ msgid ""
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:655
-msgid "Missing required background for chatbox"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:656
-msgid "Missing required foreground for chatbox"
-msgstr ""
-
-#: src/gui/widgets/chatbox.cpp:658
-msgid "Missing required grid for chatbox"
-msgstr ""
-
-#: src/gui/widgets/drawing.cpp:113
-msgid "Missing [draw] in drawing"
-msgstr ""
-
 #: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Viðmósthluturinn '$id' hefur ekki verið skilgreind."
-
-#: src/gui/widgets/horizontal_scrollbar.cpp:128
-#: src/gui/widgets/horizontal_scrollbar.cpp:129
-#: src/gui/widgets/horizontal_scrollbar.cpp:130
-#: src/gui/widgets/horizontal_scrollbar.cpp:131
-msgid "Missing required state for horizontal scrollbar"
-msgstr ""
-
-#: src/gui/widgets/image.cpp:112
-msgid "Missing required state for image control"
-msgstr ""
 
 #: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
@@ -8118,14 +8088,6 @@ msgstr ""
 
 #: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
-msgstr ""
-
-#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
-msgid "Missing required state for text label control"
-msgstr ""
-
-#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
-msgid "Missing required state for listbox"
 msgstr ""
 
 #: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
@@ -8143,40 +8105,10 @@ msgstr "Enginn listi skilgreindur."
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' ætti að innihalda eina röð."
 
-#: src/gui/widgets/matrix.cpp:185
-msgid "Missing [content] in [matrix_definition]"
-msgstr ""
-
-#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
-msgid "Missing required state for matrix definition"
-msgstr ""
-
-#: src/gui/widgets/matrix.cpp:207
-msgid "Missing [main] in [matrix]"
-msgstr ""
-
-#: src/gui/widgets/menu_button.cpp:234 src/gui/widgets/menu_button.cpp:235
-#: src/gui/widgets/menu_button.cpp:236 src/gui/widgets/menu_button.cpp:237
-msgid "Missing required state for menu button"
-msgstr ""
-
-#: src/gui/widgets/minimap.cpp:118
-msgid "Missing required state for minimap control"
-msgstr ""
-
 #: src/gui/widgets/multi_page.cpp:196
 #, fuzzy
 msgid "No page defined."
 msgstr "Engin grind skilgreind."
-
-#: src/gui/widgets/multiline_text.cpp:466
-#: src/gui/widgets/multiline_text.cpp:467
-#: src/gui/widgets/multiline_text.cpp:468
-#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
-#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
-#: src/gui/widgets/text_box.cpp:414
-msgid "Missing required state for editable text box"
-msgstr ""
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -8196,58 +8128,8 @@ msgstr[1] ""
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/multimenu_button.cpp:252
-#: src/gui/widgets/multimenu_button.cpp:253
-#: src/gui/widgets/multimenu_button.cpp:254
-#: src/gui/widgets/multimenu_button.cpp:255
-msgid "Missing required state for multimenu button"
-msgstr ""
-
-#: src/gui/widgets/pane.cpp:361
-msgid "Missing [item_definition] in [pane]"
-msgstr ""
-
 #: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
-msgstr ""
-
-#: src/gui/widgets/panel.cpp:119
-msgid "Missing required background for panel definition"
-msgstr ""
-
-#: src/gui/widgets/panel.cpp:120
-msgid "Missing required foreground for panel definition"
-msgstr ""
-
-#: src/gui/widgets/progress_bar.cpp:96
-msgid "Missing required state for progress bar"
-msgstr ""
-
-#: src/gui/widgets/repeating_button.cpp:184
-#: src/gui/widgets/repeating_button.cpp:185
-#: src/gui/widgets/repeating_button.cpp:186
-#: src/gui/widgets/repeating_button.cpp:187
-msgid "Missing required state for repeating button"
-msgstr ""
-
-#: src/gui/widgets/scroll_label.cpp:180 src/gui/widgets/scroll_label.cpp:181
-msgid "Missing required state for scroll label control"
-msgstr ""
-
-#: src/gui/widgets/scroll_label.cpp:183
-msgid "No grid defined for scroll label control"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:70
-msgid "Missing required background for scrollbar panel"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:71
-msgid "Missing required foreground for scrollbar panel"
-msgstr ""
-
-#: src/gui/widgets/scrollbar_panel.cpp:73
-msgid "Missing required grid for scrollbar panel"
 msgstr ""
 
 #: src/gui/widgets/size_lock.cpp:89
@@ -8262,11 +8144,6 @@ msgstr "Ógilt notendanafn"
 msgid "No widget defined."
 msgstr "Enginn listi skilgreindur."
 
-#: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
-#: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
-msgid "Missing required state for slider"
-msgstr ""
-
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
 msgstr "Talan value_labels og values passa ekki."
@@ -8280,26 +8157,6 @@ msgstr "Enginn listi skilgreindur."
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 
-#: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
-#: src/gui/widgets/toggle_button.cpp:216
-msgid "Missing required state for toggle button"
-msgstr ""
-
-#: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
-#: src/gui/widgets/toggle_panel.cpp:304
-msgid "Missing required state for toggle panel"
-msgstr ""
-
-#: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
-msgid "Missing required state for tree view"
-msgstr ""
-
-#: src/gui/widgets/tree_view.cpp:271
-#, fuzzy
-#| msgid "No grid defined."
-msgid "No grid defined for tree view"
-msgstr "Engin grind skilgreind."
-
 #: src/gui/widgets/tree_view.cpp:291
 msgid "No nodes defined for a tree view."
 msgstr ""
@@ -8307,11 +8164,6 @@ msgstr ""
 #: src/gui/widgets/tree_view.cpp:326
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr ""
-
-#: src/gui/widgets/tree_view.cpp:330
-#, fuzzy
-msgid "No node defined."
-msgstr "Engin grind skilgreind."
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -8369,29 +8221,6 @@ msgstr ""
 #: src/gui/widgets/unit_preview_pane.cpp:400
 #: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:611
-msgid "Missing required background for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:612
-msgid "Missing required foreground for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/unit_preview_pane.cpp:614
-msgid "Missing required grid for unit preview pane"
-msgstr ""
-
-#: src/gui/widgets/vertical_scrollbar.cpp:123
-#: src/gui/widgets/vertical_scrollbar.cpp:124
-#: src/gui/widgets/vertical_scrollbar.cpp:125
-#: src/gui/widgets/vertical_scrollbar.cpp:126
-msgid "Missing required state for vertical scrollbar"
-msgstr ""
-
-#: src/gui/widgets/viewport.cpp:172
-msgid "Missing [widget] in [viewport]"
 msgstr ""
 
 #: src/gui/widgets/window.cpp:431
@@ -9404,6 +9233,15 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Í hluta '[$section|]', lykilinn '$key|' er ekki stilltur."
+
+#, fuzzy
+#~| msgid "No grid defined."
+#~ msgid "No grid defined for tree view"
+#~ msgstr "Engin grind skilgreind."
+
+#, fuzzy
+#~ msgid "No node defined."
+#~ msgstr "Engin grind skilgreind."
 
 #, fuzzy
 #~| msgid "Change Resolution"
