@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2023
 # k konami, 2024
+# RatArmy, 2024
 #
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
-"Last-Translator: k konami, 2024\n"
+"Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -528,6 +528,10 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
+#, fuzzy
+#| msgid ""
+#| "log output is written to a file in addition to standard output/error. "
+#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file in addition to standard output/error. "
 "Cancels the effect of --no-log-to-file whether implicit or explicit."
@@ -1481,6 +1485,9 @@ msgstr "著作権"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -2040,15 +2047,14 @@ msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
-#, fuzzy
 msgid ""
 "The ID of the server when using the database functionality to store game "
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
 "ゲーム情報を保存するためにデータベース機能を使用する場合のサーバーのID。一般"
-"的には、1.16 や 1.17 のように、接続したクライアントアプリの <メジャー番号>.<"
-"マイナー番号> で構成されるバージョン番号。"
+"的には、1.16 や 1.17 のように、接続したクライアントアプリの メジャー番号.マイ"
+"ナー番号 で構成されるバージョン番号。"
 
 #. type: SS
 #: doc/man/wesnothd.6:189
