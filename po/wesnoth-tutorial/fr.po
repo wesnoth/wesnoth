@@ -1343,6 +1343,7 @@ msgstr "Le capacité <i>Soin</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
+#, fuzzy
 msgid ""
 "At the start of each turn, allied units adjacent to a Shaman will recover 4 "
 "hitpoints, which is only half of the amount that a village would provide. "
@@ -1354,12 +1355,12 @@ msgid ""
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Au début de chaque tour, les unités alliées adjacentes à une chamane "
-"récupère 4 points de vie, soit seulement la moitié de ce qu'offre un "
+"récupèrent 4 points de vie, soit seulement la moitié de ce qu'offre un "
 "village. La Chamane ne gagne pas d'expérience lors du soin, seulement en "
 "combattant, mais son avancement est rétributif : son deuxième niveau, "
 "Druidesse elfe, permet la même récupération de point qu'un village.\n"
 "\n"
-"Une explication détaillée du soin est disponible dans la section <i>Jeu<i> "
+"Une explication détaillée du soin est disponible dans la section <i>Jeu</i> "
 "de l'aide (raccourci par défaut : <b>F1</b>)."
 
 # "Capacité" et "Attaque spéciale" sont les termes employés dans l'aide en ligne du jeu.
@@ -1370,6 +1371,7 @@ msgstr "Attaques spéciales"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
+#, fuzzy
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1384,7 +1386,7 @@ msgstr ""
 "Les attaques spéciales sont des modificateurs qui rendent certaines attaques "
 "plus puissantes. En l'occurrence, le modificateur Ralentissement est ainsi "
 "associé à l'attaque Enchevêtrement de la chamane. Lorsque cette attaque "
-"touche un ennemi, elle divise par deux les dégât que celui-ci infligera "
+"touche un ennemi, elle divise par deux les dégâts que celui-ci infligera "
 "durant un tour entier. Il existe d'autres modificateurs tels que "
 "l'Initiative, qui permet à l'unité possédant l'attaque associée de toujours "
 "frapper en premier lors d'un échange de coups, et Magique, qui donne à "
@@ -1588,20 +1590,22 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
+#, fuzzy
 msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
-"Galdrad, si je passe par le gué je pourrais me faufiler jusqu'à son donjon "
+"Galdrad, si je passe par le gué, je pourrai me faufiler jusqu'à son donjon "
 "et l'éliminer rapidement."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
+#, fuzzy
 msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
-"Galdrad, si je passe par le gué je pourrais me faufiler jusqu'à son donjon "
+"Galdrad, si je passe par le gué, je pourrai me faufiler jusqu'à son donjon "
 "et l'éliminer rapidement."
 
 #. [message]: speaker=Galdrad
@@ -1637,20 +1641,22 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:603
+#, fuzzy
 msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
 "Très bien. Nous passerons donc par le pont, mais je surveillerai le passage "
-"à l'est."
+"au nord."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
+#, fuzzy
 msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
 msgstr ""
 "Très bien. Nous passerons donc par le pont, mais je surveillerai le passage "
-"à l'est."
+"au nord."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:607
@@ -1808,6 +1814,7 @@ msgstr "Zone de contrôle"
 # J'ai laissé de côté le "immediately" mais c'est illustré graphiquement quand on joue le tuto.
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:742
+#, fuzzy
 msgid ""
 "The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
 "When an enemy unit enters those hexes, they cannot move any further that "
@@ -1818,9 +1825,9 @@ msgid ""
 msgstr ""
 "Les hex entourant une unité forment sa <i>Zone de Contrôle</i>. Lorsqu'une "
 "unité ennemie entre dans l'un de ces hex, elle ne peut plus se déplacer "
-"jusqu'au tour suivant. (Les unités possédant la capacité <i>tirailleur</i> "
+"jusqu'au tour suivant (les unités possédant la capacité <i>tirailleur</i> "
 "représentent une exception et ne sont pas affectées par les zones de "
-"contrôle.) Cette zone peut être utilisée pour barrer la route aux ennemis et "
+"contrôle). Cette zone peut être utilisée pour barrer la route aux ennemis et "
 "protéger des endroits stratégiques tels que les villages, même avec un "
 "nombre limité de troupes."
 
@@ -2008,6 +2015,7 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:971
+#, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Shamans can only heal 4 "
 "hitpoints per turn, while villages can heal them faster at 8 per turn.\n"
@@ -2021,13 +2029,13 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
-"Pensez à protéger vos unités blessées dans un village. Les chamanes ne peut "
-"restaurer que 4 points de vie par tour, alors que les villages peuvent "
-"soigner 8 points par tour.\n"
+"Pensez à protéger vos unités blessées dans un village. Les chamanes ne "
+"peuvent restaurer que 4 points de vie par tour, alors que les villages "
+"peuvent soigner 8 points par tour.\n"
 "\n"
 "Les différentes sources de soin ne se combinent généralement pas. Si une "
 "unité commence son tour à côté de plusieurs soigneurs, ou sur un village "
-"adjacent à un soigneur, elle ne sera soigné qu'une seule fois.\n"
+"adjacent à un soigneur, elle ne sera soignée qu'une seule fois.\n"
 "\n"
 "Le soin par l'inaction est une exception à cette règle : si une unité ne "
 "fait rien pendant un tour, elle recevra 2 points de vie en plus des autres "
@@ -2057,18 +2065,20 @@ msgstr ""
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+#, fuzzy
 msgid "Status Table"
-msgstr "Fenêtre d'état"
+msgstr "Fenêtre Statut"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#, fuzzy
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
-"La fenêtre d'état décrit la situation actuelle des différents camps ainsi "
+"La fenêtre Statut décrit la situation actuelle des différents camps ainsi "
 "que les conditions initiales du scénario. Le contenu du tableau est affecté "
 "par le brouillard de guerre et le voile noir ; un camp peut également être "
 "masqué parfois. Il est souvent utile de consulter ce tableau au début d'un "
@@ -2081,15 +2091,15 @@ msgstr "Accélérer les animations"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
+#, fuzzy
 msgid ""
 "Holding down <b>shift</b> will make the animations for moving and fighting "
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
 "Maintenir la touche <b>Majuscule</b> rendra les animations de déplacement et "
-"de combat plus rapide. Le <i>facteur d’accélération</i> peut être défini et "
-"activer par défaut dans le menu <i>préférences</i> de l'onglet <i>Général</"
-"i>."
+"de combat plus rapides. Le <i>facteur d’accélération</i> peut être défini et "
+"activé par défaut dans l'onglet <i>Général</i> des <i>Préférences</i>."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1028
