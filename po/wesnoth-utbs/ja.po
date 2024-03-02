@@ -1,15 +1,15 @@
 #
 # Translators:
-# k konami, 2022
 # RatArmy, 2023
+# k konami, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2021-06-26 08:34+0000\n"
-"Last-Translator: RatArmy, 2023\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -51,6 +51,10 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"注意：このキャンペーンでは昼夜のサイクル、召喚コスト、難易度による一般的な設"
+"定などにおいて標準の仕組みとは異なっています。Quenoth エルフはターンあたりで"
+"数回攻撃できるユニットもありますし、その他のユニットには攻撃後の移動が可能な"
+"ものもあります。"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
@@ -114,13 +118,6 @@ msgstr "それと、ここで言及し忘れた全ての貢献者にも感謝を
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -128,11 +125,12 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"脱水症：このユニットは脱水症状を示しています。日中は、ターンごとに HP を 4 と"
-"攻撃力を 1 失います。ヒーラーは症状の進行を抑えることが可能で、オアシスの水は"
-"症状を取り除くことができます。\n"
+"脱水状態：このユニットは脱水状態にあります。ヒーラーによる治療やオアシスの水"
+"で治癒されない限り $dehydration HP を失って、日中には毎ターン 1 ずつ HP を失"
+"います。\n"
 "\n"
-"ユニットが脱水症状で死ぬことはなく、攻撃ダメージが 0 になることもありません。"
+"脱水状態になることでユニットは死亡しませんが、ダメージを受けなくなるようにす"
+"ることもできません。"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
@@ -954,7 +952,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1365
 msgid ""
 "Impudent girl, you should not speak so to your elders, or to your betters."
-msgstr "生意気な小娘め。年上や目上の者にそのような口を聞くべきではない。"
+msgstr "生意気な小娘め。年上や目上の者にそのような口をきくべきではない。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1370
@@ -1147,9 +1145,9 @@ msgid ""
 msgstr ""
 "俺はかなり昔、若かった時にこの砂漠を越えたことがある。悪しき死霊使いがここの"
 "廃墟に潜んでいて、アンデッドの軍隊を作っていた。俺たちはそいつに大規模な攻撃"
-"をしかけたのだ。あれはひどい戦いだった。特に夜になって以降は。それでも奴の魔"
-"法をもってしても、我々を止めることはできず、ついにやつの首も胴体と離ればなれ"
-"になった。ああ、これももうずいぶん昔のことなのだな……"
+"をしかけたのだ。あれはひどい戦いだった。特に夜になって以降は。だが、奴の魔法"
+"をもってしても我々を止めることはできず、ついにやつの首も胴体と離ればなれに"
+"なった。ああ、あれももうずいぶん昔のことなのだな……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:293
@@ -2261,16 +2259,12 @@ msgstr ""
 #. probably just because of the nearby undead, not some prophetic vision. Neither Garak nor a first-time
 #. player know that the scenario will extend the night indefinitely until the enemies are defeated.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#, fuzzy
-#| msgid ""
-#| "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
-#| "will end here one way or another."
 msgid ""
 "I had a dream this night Kaleh, full of gloom and darkness. My journey will "
 "end here one way or another."
 msgstr ""
-"Kaleh、俺はさっき夢を見たのだ。闇で真っ黒に塗りつぶされた憂鬱な夢をな。……俺の"
-"旅はここで終わる、そういうことだろう。"
+"俺は夜に夢を見たんだよ、Kaleh 。陰鬱で闇に満ちた夢をな。いずれにしても俺の旅"
+"はここで終わるだろう。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
@@ -2304,7 +2298,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "Garak の耐性が防御時のみ 20 % 増加します。"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
@@ -2601,10 +2595,8 @@ msgstr ""
 
 #. ['A unit’s name, should be short.']
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1540
-#, fuzzy
-#| msgid "Wounded Elven Scout"
 msgid "Wounded Scout"
-msgstr "負傷したエルフの斥候"
+msgstr "負傷した斥候"
 
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -3057,6 +3049,9 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
+"この地についていうと、Garak は教えてくれないんだけどね、この辺りの地形は、昨"
+"夜オークから手に入れた地図と完璧に一致するのよ！この先にオークの野営地があ"
+"るってことね。気づかれずに忍び込めればいいんだけど。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
@@ -3184,6 +3179,8 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
+"ほんの数歩踏み入れただけでも、アタシ達がここにいることが付近のゴブリンにはバ"
+"レちゃってる！敵地でコソコソするのは容易じゃないってことよ。"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:541
@@ -3212,8 +3209,6 @@ msgstr "湖ナーガ"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
-#, fuzzy
-#| msgid "Lake Naga"
 msgid "female^Lake Naga"
 msgstr "湖ナーガ"
 
@@ -3937,10 +3932,8 @@ msgstr "うわ。"
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
-#, fuzzy
-#| msgid "Kaleh, I think you should come up and see this."
 msgid "Whoa. Kaleh, you have to come see this."
-msgstr "Kaleh、こっちへ来て、これを見てくれ。"
+msgstr "うわ。Kaleh、この光景、ほら、見ておかないと。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
@@ -5580,7 +5573,7 @@ msgstr "しかし軍曹殿──"
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:665
 msgid "Did I give you permissions to speak? Did I?"
-msgstr "誰が口を利いて良いと言った？お前はバカか？"
+msgstr "誰が口をきいて良いと言った？お前はバカか？"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:670
@@ -9648,10 +9641,8 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4650
-#, fuzzy
-#| msgid "You don’t know where to find your master?"
 msgid "You don’t know where to find your leader?"
-msgstr "あなたの主がどこに居るかが分からないのですか？"
+msgstr "自分の主がどこに隠れているか、ご存知ないのですか？"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4655
@@ -10300,35 +10291,25 @@ msgstr "そうですね、その通りです。お許しを。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1103
-#, fuzzy
-#| msgid ""
-#| "No, too many merfolk have died! There are not enough of them left to "
-#| "divine the location of their master. We should have protected the merfolk "
-#| "more carefully. Now our search is hopeless."
 msgid ""
 "No, too many merfolk have died! There are not enough of them left to divine "
 "the location of their leader. We should have protected the merfolk more "
 "carefully. Now our search is hopeless."
 msgstr ""
-"何てことだ、あまりに多くのマーフォークを死なせてしまった！もはや彼らの主の位"
-"置を知るために必要な人数が残ってない。もっと慎重に彼らを守らなければならな"
-"かったのだ。こうなっては探索は無理だ。"
+"いや、マーフォークがこんなに死んでしまったんだ！その主の居場所を占うには数が"
+"少なすぎる。もっと慎重にマーフォークを守るべきだったな。これでは、探索は絶望"
+"的だ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1110
-#, fuzzy
-#| msgid ""
-#| "Too many merfolk have died! Even if we save the rest, there will not be "
-#| "enough for them to divine the location of their master. We should have "
-#| "protected the merfolk more carefully. Now our search is hopeless."
 msgid ""
 "Too many merfolk have died! Even if we save the rest, there will not be "
 "enough for them to divine the location of their leader. We should have "
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
-"あまりに多くのマーフォークが死んでしまった！たとえ残り全てを救っても、彼らの"
-"主の居場所を知るのに十分な人数がいない。もっと慎重に彼らを守るべきだった。こ"
-"れではもう探索は無理だ。"
+"いや、マーフォークがこんなに死んでしまったんだ！残り全員を救い出せたとして"
+"も、彼らの主の居場所を占うには数が少なすぎる。もっと慎重にマーフォークを守る"
+"べきだったな。これでは、探索は絶望的だ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1136
@@ -11333,19 +11314,14 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2345
-#, fuzzy
-#| msgid ""
-#| "Thank you. And I have also not forgotten the pledge I made to our merfolk "
-#| "friends. If it is possible, I would like to meet with your master. Your "
-#| "conduct is a testament to your people, and I, at least, trust you."
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your leader. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
-"感謝する。そして、私はマーフォークの友人との約束も忘れてはいない。可能なら"
-"ば、あなた方の主と会いたい。あなた方の行動はあなた方を信じるに足る証拠として"
-"十分だと思う。だから。少なくとも私はあなた方を信頼する。"
+"感謝する。それに、マーフォークの友たちに誓ったことだって忘れてはいない。でき"
+"ることなら、あなたたちの主に是非会ってみたい。あなたの振る舞いこそが、あなた"
+"の民のことを証明している。少なくとも私はあなたたちを信頼している。"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2349
@@ -11413,16 +11389,13 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2462
-#, fuzzy
-#| msgid ""
-#| "Before I decide, I have just one question: How did you merfolk plan on "
-#| "bringing us to meet your master, if she dwells far beneath the sea?"
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
-"決断する前に一つ質問が。あなたたちマーフォークの主が海の奥深くに隠れていると"
-"して、私たちをどうやって会わせるつもりだったのですか？"
+"決断する前に、1つ訊きたいことがあるのです。あなたたちマーフォークは、一体どう"
+"やって私達を主のもとへ連れて行くつもりだったのです？彼女は海の奥底にいるかも"
+"知れないのに？"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2469
@@ -15113,7 +15086,7 @@ msgstr "魔法"
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
 msgid "defeated"
-msgstr ""
+msgstr "敗北"
 
 #. [unit_type]: id=Divine Avatar, gender=female, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
@@ -15171,8 +15144,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "砂嵐"
 
@@ -15207,16 +15178,6 @@ msgstr "Quenoth の戦士"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15228,11 +15189,13 @@ msgid ""
 "his attention between multiple enemies, be they brigand, wild creature, or "
 "undead."
 msgstr ""
-"遙か昔、繁栄の時代にはエルフの戦士は剣を好んで使っていました。他の武器よりも"
-"優美で汎用的であったためです。ですが、最近は鍛冶素材の不足のために剣の鍛造は"
-"ままならず、安価で修理も容易な武器への切り替えを余儀なくされています。"
-"Quenoth の戦士（Quenoth Fighter）は集団で戦うことに秀でており、近くの仲間と一"
-"緒に槍衾を組むことで洗練された武器が無くとも戦線を維持することができます。"
+"遠い昔、今よりも繁栄していた頃、エルフの戦士たちは他の近接武器よりも気品のあ"
+"る汎用的な武器として剣の使用を好みました。しかし近年、鍛造用の物資が不足した"
+"ことで刃物製造の機会も減少していて、安価かつ、より修理が容易な武器製造が必要"
+"となっています。そうした質の低下を補うため、Quenoth 族は、より一層柔軟な使い"
+"方を選択しました。砂地の平原では、兵士が山賊や野生動物、アンデッド等の複数の"
+"敵の中にあっても、同時に注意を向けられるような眼識を磨くように訓練されていま"
+"す。"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15478,16 +15441,6 @@ msgstr "Quenoth の太陽の歌手"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Faerie and elven magic have oft been aptly associated with life, from "
-#| "which they draw the majority of their power. However, with the death of "
-#| "much of Irdya’s flora, the Quenoth Elves were forced to seek another "
-#| "source for their sorcery. In time, they learned to harness the power of "
-#| "the suns Sela and Naia - the twin stars that had razed the forests of "
-#| "Irdya to ashes, yet still spring forth the energy required for sparking "
-#| "life. Those who master this new magic sing of the dual nature of these "
-#| "embodiments of fire: flames that are both life and life’s demise."
 msgid ""
 "Faerie and elven magic have oft been aptly associated with life, from which "
 "they draw the majority of their power. However, with the death of much of "
@@ -15498,24 +15451,25 @@ msgid ""
 "this new magic sing of the dual nature of these embodiments of fire: flames "
 "that are both life and life’s demise."
 msgstr ""
-"妖精やエルフの魔法は、その力の根源である生命と密接な関係を持ってきました。し"
-"かしながら、 Irdya の植物の大量死により、Quenoth のエルフは魔力の源を他に求め"
-"ざるを得なかったのです。やがて彼女らは、二つの太陽 Sela と Naia から力を引き"
-"出す術を学びました。かつて Irdya の森を灰にした二つの太陽ですが、生命の躍動に"
-"必要なエネルギーをほとばしらせてもいます。この新たな魔術を習得した者は、炎の"
-"持つ二面性、即ち、生と死の両面を歌い上げるのです。"
+"妖精やエルフの魔術は、しばしば生命と結び付けられてきました。そこから彼らの力"
+"の多くを引き出しています。しかし、Irdya の植物群の多くが死に絶え、Quenoth の"
+"エルフは魔術の源として別のものを探さざるを得ませんでした。折よく、Sela と "
+"Naia という2つの恒星が放つ力を利用する方法を学びました。この、Irdya の森を灰"
+"と化してしまった双子の星は、その後も、生命を生み出すに十分なエネルギーを発し"
+"ていました。彼らは、炎が生命の素であるとともに死滅ももたらすという二つの自然"
+"摂理を賛美しているのです。"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
 msgid "sun invocation"
-msgstr ""
+msgstr "太陽召喚"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "太陽光線"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15546,7 +15500,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
 msgid "sun incarnate"
-msgstr ""
+msgstr "太陽の化身"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -15778,155 +15732,141 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:84
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:452
 msgid "Swordsmanship Training"
-msgstr ""
+msgstr "剣術の訓練"
 
 #. [advancement]: id=strong_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:105
-#, fuzzy
-#| msgid "true strike"
 msgid "Strong Strikes"
-msgstr "真の一撃"
+msgstr "Strong Strikes"
 
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:122
 msgid "Swordsman"
-msgstr ""
+msgstr "Swordsman"
 
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:144
-#, fuzzy
-#| msgid "Haunt"
 msgid "Taunt"
-msgstr "ホーント"
+msgstr "嘲笑"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:285
 msgid "Stronger Grip"
-msgstr ""
+msgstr "握力の強化"
 
 #. [advancement]: id=overwhelming_power
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:298
 msgid "Overwhelming Power"
-msgstr ""
+msgstr "圧倒的な強さ"
 
 #. [advancement]: id=stamina_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:323
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:634
 msgid "Stamina Training"
-msgstr ""
+msgstr "スタミナ強化の訓練"
 
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:338
 msgid "Endurance Training"
-msgstr ""
+msgstr "耐久力の強化訓練"
 
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:358
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:675
-#, fuzzy
-#| msgid "Troll Skirmisher"
 msgid "Skirmisher"
-msgstr "トロルの散兵"
+msgstr "散兵"
 
 #. [advancement]: id=training_with_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:377
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:694
-#, fuzzy
-#| msgid "Talking with Trolls"
 msgid "Training with Bolas"
-msgstr "トロルとの対話"
+msgstr "投げ縄の訓練"
 
 #. [advancement]: id=slow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:397
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:726
 msgid "Slow"
-msgstr ""
+msgstr "鈍重"
 
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:417
 msgid "Opportunist"
-msgstr ""
+msgstr "日和見主義"
 
 #. [advancement]: id=inspiring
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:436
 msgid "Inspiring"
-msgstr ""
+msgstr "感銘を与える"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:473
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "打撃精度の向上"
 
 #. [advancement]: id=faster_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:490
-#, fuzzy
-#| msgid "true strike"
 msgid "Faster Strikes"
-msgstr "真の一撃"
+msgstr "打撃速度の向上"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:502
 msgid "Sword Dance"
-msgstr ""
+msgstr "剣の舞"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "弓術の訓練"
 
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:543
 msgid "Quickdraw"
-msgstr ""
+msgstr "早弓"
 
 #. [advancement]: id=ranger
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
-#, fuzzy
-#| msgid "Quenoth Ranger"
 msgid "Ranger"
-msgstr "Quenoth のレンジャー"
+msgstr "レンジャー"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
 msgid "Rain of Arrows"
-msgstr ""
+msgstr "矢の雨"
 
 #. [advancement]: id=toxic_rain
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:602
 msgid "Toxic Rain"
-msgstr ""
+msgstr "毒の雨"
 
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:620
 msgid "Twin Arrows"
-msgstr ""
+msgstr "ツインアロー"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:649
 msgid "Footwork"
-msgstr ""
+msgstr "フットワーク"
 
 #. [advancement]: id=run_by_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:714
 msgid "Run By (Bolas)"
-msgstr ""
+msgstr "（投げ縄の）装備"
 
 #. [advancement]: id=bolaship
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:746
-#, fuzzy
-#| msgid "bolas"
 msgid "Bolaship"
-msgstr "ボーラ"
+msgstr "投げ縄術"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:759
 msgid "Herbalism"
-msgstr ""
+msgstr "薬草学"
 
 #. [advancement]: id=run_by_sword_and_bow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:777
 msgid "Run By (Sword and Bow)"
-msgstr ""
+msgstr "（剣と弓の）装備"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, gender=male,female, description={QUENOTH_YOUTH_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:910
@@ -16146,51 +16086,51 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
 msgid "uses 1 attack"
-msgstr ""
+msgstr "攻撃１回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
 msgid "uses 2 attacks"
-msgstr ""
+msgstr "攻撃２回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
 msgid "uses 3 attacks"
-msgstr ""
+msgstr "攻撃３回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 msgid "uses 4 attacks"
-msgstr ""
+msgstr "攻撃４回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 msgid "uses 5 attacks"
-msgstr ""
+msgstr "攻撃５回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 msgid "uses 6 attacks"
-msgstr ""
+msgstr "攻撃６回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 msgid "This attack uses 1 attack"
-msgstr ""
+msgstr "この攻撃は攻撃１回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
 msgid "This attack uses 2 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃２回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
 msgid "This attack uses 3 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃３回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
 msgid "This attack uses 4 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃４回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
 msgid "This attack uses 5 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃５回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
 msgid "This attack uses 6 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃６回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
@@ -16200,6 +16140,11 @@ msgid ""
 "When the last verse is sung or the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"この攻撃は「黎明の歌」の第１小節で、このユニットがこの小節攻撃を使用するター"
+"ンごとに１小節先へ進みます。\n"
+"\n"
+"最後の小節が歌われるか、1ターン攻撃しないことで歌の流れが途切れた場合は、歌は"
+"最初の小節から再び始まります。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
 msgid ""
@@ -16209,6 +16154,11 @@ msgid ""
 "If this was the last verse or when the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"この攻撃は「黎明の歌」の第２小節で、このユニットがこの小節攻撃を使用するター"
+"ンごとに１小節先へ進みます。\n"
+"\n"
+"もしこれが歌の最後の小節の場合か、1ターン攻撃しないことで歌の流れが途切れた場"
+"合は、歌は最初の小節から再び始まります。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
 msgid ""
@@ -16219,31 +16169,35 @@ msgid ""
 "\n"
 "Using this song will also grant illuminates for three turns."
 msgstr ""
+"この攻撃は「黎明の歌」の第３小節で、このユニットがこの小節攻撃を使用するター"
+"ンごとに１小節先へ進みます。\n"
+"\n"
+"次のターンでは、歌は第１小節から始まります。\n"
+"\n"
+"この歌を歌うことで、３ターンの間は「照明」能力の効果を発揮します。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
 msgid "first verse"
-msgstr ""
+msgstr "第１小節"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
 msgid "second verse"
-msgstr ""
+msgstr "第２小節"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "third verse"
-msgstr ""
+msgstr "第３小節"
 
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
 msgid "third verse illuminates"
-msgstr ""
+msgstr "第３小節が「照明」効果をもたらします"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#, fuzzy
-#| msgid "female^thirst"
 msgid "female^third verse illuminates"
-msgstr "脱水症状"
+msgstr "第３小節が「照明」効果をもたらします"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
@@ -16254,6 +16208,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"「太陽の化身」での攻撃後にこの能力が有効な場合は、このユニットは３ターンの間"
+"「照明」能力の効果を発揮します。\n"
+"\n"
+"このユニットに隣接しているユニットは、夜間なら夕暮れであるかのように、夜明"
+"け・夕暮れなら日中であるかのように戦います。"
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
@@ -16262,22 +16221,23 @@ msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
 msgstr ""
+"照明は隣接するエリアの照度を増加させます。この効果は３ターンだけ持続します。"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "once per turn"
-msgstr ""
+msgstr "１ターンに１回"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 msgid "This attack can be used offensively only once per turn"
-msgstr ""
+msgstr "この攻撃は１ターンに１回だけ、攻撃的に使用可能です"
 
 #. [dummy]: id=nova
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 msgid "nova"
-msgstr ""
+msgstr "NOVA"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
@@ -16285,6 +16245,8 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
+"この武器を攻撃的に使用して命中すると、放った人に隣接するすべてのユニットにダ"
+"メージを与えます。"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
@@ -16293,17 +16255,20 @@ msgid ""
 "the first verse is available in the next turn. Furthermore, invoking this "
 "attack will grant illumination for three turns."
 msgstr ""
+"この攻撃は「黎明の歌」の第３小節です。攻撃後、次のターンでは第１小節が使用可"
+"能になります。さらに、この攻撃を行うことで３ターンの間は「照明」能力の効果が"
+"加わります。"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
 msgid "This unit has wide-area attacks centered on the caster."
-msgstr ""
+msgstr "このユニットは周囲の広範囲を攻撃する手段を備えています。"
 
 #. [dummy]: id=ray
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:488
 msgid "ray"
-msgstr ""
+msgstr "光線"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
@@ -16311,6 +16276,8 @@ msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
+"この武器が攻撃時に使用されると、その背後にいる１ユニットにもダメージを与えま"
+"す。"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:491
@@ -16319,23 +16286,26 @@ msgid ""
 "when the first verse was sung in the previous turn. If this was the last "
 "verse, then the first verse will be available in the next turn."
 msgstr ""
+"この攻撃は「黎明の歌」の第２小節です。直前のターンで第１小節での攻撃が行われ"
+"ときだけ使用可能です。これが最終小節の場合、次のターンでは第１小節を使用する"
+"ことができます。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
-msgstr ""
+msgstr "ターン開始時、このユニットは周囲のユニットの移動力を１増加させます"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:651
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
-msgstr ""
+msgstr "ターン開始時、このユニットは周囲のユニットの移動力を２増加させます"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
 msgid "tailwind +"
-msgstr ""
+msgstr "追い風 +"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
@@ -16520,7 +16490,7 @@ msgstr "目潰し！"
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1411
 msgid "opportunist"
-msgstr ""
+msgstr "日和見主義"
 
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1412
@@ -16528,44 +16498,41 @@ msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
 msgstr ""
+"この能力があると、 Kaleh の ZOC（支配領域）から離れる敵に対して１回の攻撃を行"
+"えるようになります。"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1485
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunt"
-msgstr "ホーント"
+msgstr "嘲笑"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr ""
+"「嘲笑」することで、敵に対して１ターンだけ Kaleh を攻撃させようとします。"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1521
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunted"
-msgstr "ホーント"
+msgstr "被嘲笑"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1522
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
+"このユニットは Kaleh から嘲笑された状態にあり、Kaleh を１ターン攻撃しようとし"
+"ます。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1531
-#, fuzzy
-#| msgid "Pulsing Spire"
 msgid "inspire"
-msgstr "脈動する尖塔"
+msgstr "感銘"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1532
-#, fuzzy
-#| msgid "female^support"
 msgid "female^inspire"
-msgstr "支援"
+msgstr "感銘"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
@@ -16574,6 +16541,9 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
+"このユニットは隣接する味方のユニットを鼓舞し、攻撃力を増加させることができま"
+"す。このユニットと同一レベル以下のユニットは、敵への攻撃ダメージが25%増加し、"
+"レベル差に応じて更に25%ずつダメージが増加します。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1534
@@ -16581,27 +16551,29 @@ msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+"このユニットの存在は、隣接する味方のユニットが戦闘で与えるダメージを増加させ"
+"ます。但し、このユニットと同一レベル以下のユニットに対してのみ有効です。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
 msgid "cooldown 1"
-msgstr ""
+msgstr "冷却１"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
 msgid "cooldown 2"
-msgstr ""
+msgstr "冷却２"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
 msgid "After using this attack, you can't use it during your next turn."
-msgstr ""
+msgstr "この攻撃を行なった直後のターンでは、この攻撃は使用できません。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
 msgid "After using this attack, you can't use it during your next two turns."
-msgstr ""
+msgstr "この攻撃を行なった直後の２ターンでは、この攻撃は使用できません。"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1614
 msgid "pierce"
-msgstr ""
+msgstr "刺突"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1615
@@ -16609,11 +16581,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
+"この武器を攻撃時に使用すると、その背後にいる１ユニットにもダメージを与えるこ"
+"とができます。"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1684
 msgid "puncture"
-msgstr ""
+msgstr "穿刺"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1685
@@ -16621,11 +16595,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
+"この武器を攻撃時に使用すると、その背後にいる２ユニットにもダメージを与えま"
+"す。"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1767
 msgid "rain of arrows"
-msgstr ""
+msgstr "矢の雨"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1768
@@ -16633,13 +16609,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
+"この武器を攻撃時に使用すると、その背後にいる１ユニットと、後方に隣接するユ"
+"ニットにもダメージを与えます。"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1888
-#, fuzzy
-#| msgid "Good riddance."
 msgid "sword dance"
-msgstr "やれやれ、やっとうるさいのがいなくなったな。"
+msgstr "剣の舞"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
@@ -16647,6 +16623,8 @@ msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
 msgstr ""
+"Nym の攻撃が敵に命中するたびに、彼女は命中率+10%、回避率+10%を戦闘終了まで獲"
+"得します。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -16771,15 +16749,6 @@ msgstr "+$amount XP"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Note: This campaign is probably not appropriate for beginners. It changes "
-#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
-#| "cycle. This campaign emphasizes role-playing elements and tends to have "
-#| "longer scenarios with objectives that change in the middle. For these "
-#| "reasons, we strongly suggest that you occasionally save your game mid-"
-#| "scenario, so you won’t lose all your progress if you get stuck and have "
-#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -16789,13 +16758,13 @@ msgid ""
 "that you occasionally save your game mid-scenario, so you won’t lose all "
 "your progress if you get stuck and have to start over."
 msgstr ""
-"メモ：このキャンペーンはおそらく初心者がプレイするのには適していないでしょ"
-"う。なぜなら、エルフのユニット構成や昼夜のサイクルのような、Wesnoth の標準設"
-"定がいくつか変更されているからです。そして、このキャンペーンではロールプレイ"
-"ングの要素が強く、個々のシナリオも比較的長く、さらにはシナリオ途中で目標が変"
-"更されることもあります。そのため、シナリオ途中で適宜ゲームを保存することを強"
-"くお勧めします。そうすれば、ハマってしまってやり直さなければならなくなった時"
-"に、全てを無駄にせずに済むでしょう。"
+"注意：このキャンペーンは、初心者には不向きかもしれません。Wesnoth 標準のルー"
+"ルが一部変更されており、例えばエルフのステータスや昼夜サイクル、召喚コストや"
+"難易度の扱いなどが異なっています。また、ロールプレーイングの要素も強調されて"
+"おり、シナリオの途中で勝利条件が変更されることでプレイ時間が長くなりがちで"
+"す。こうした理由から、シナリオの途中で時々ファイルセーブしておくことを強く推"
+"奨します。そうすれば、途中で行き詰まって最初からプレイし直すことになっても、"
+"プレイ状態をすべて失うようなことにならずに済むでしょう。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
@@ -17452,20 +17421,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Which brings me to the other alien concept I was trying to comprehend: "
-#| "our goddess Eloh. What was her plan? Why did she want me to surrender to "
-#| "the humans? Do the humans worship her as well? The humans seem so brutish "
-#| "and vile, that I can’t imagine them worshiping the same god as us. I "
-#| "thought Eloh was just our god, I don’t remember Zhul mentioning any other "
-#| "races worshiping her after the Great Fall, though perhaps things had "
-#| "changed in the intervening years. Her commands don’t make any sense; she "
-#| "doesn’t seem at all like the goddess Zhul told me about. And what was "
-#| "Esanoo talking about? How did his master know about ‘Yechnagoth’ and "
-#| "‘Zhangor’? If Eloh won’t help me, then I desperately need some answers. I "
-#| "pray to whatever gods may be left that I’m not leading my people into a "
-#| "trap..."
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -17479,18 +17434,17 @@ msgid ""
 "won’t help me, then I desperately need some answers. I pray to whatever gods "
 "may be left that I’m not leading my people into a trap..."
 msgstr ""
-"その驚きは、私が思考を巡らせていた別の異質なものを思い起こさせた。我々の女神"
-"たる Eloh のことを。彼女の計画は何だったのだろう？何故人間に降伏させようとし"
-"たのか？人間達も彼女を崇拝しているのだろうか？人間達はとても粗野で下品に見え"
-"たため、彼らが我々と同じ神を崇拝しているとは思えなかった。それというのも、"
-"「大いなる滅び」以後、他の種族が彼女を崇拝していると Zhul から聞いたことはな"
-"いので、私は Eloh は我々だけの神だと思っていたのだ。もちろん、崩壊後の長い年"
-"月で何か変化があったのかもしれないが。しかし、それでも彼女の命令は合点がいか"
-"ない。どうしても Zhul が常々語ってくれた女神が彼女とは思えなかった。そして "
-"Esanoo の話だ。どうして彼の主は『Yechnagoth』と『Zhangor』を知っているのだろ"
-"うか？Eloh が私を助けてくれないならば、私がなんとしてでも何らかの答えを探すし"
-"かない。この時私は、自分が同胞を罠に導いていないと保証してくれるのならば、ど"
-"んな神にでも祈りを捧げても良い、そう思っていた……"
+"そのことは、私が理解しようとしていたもう一つの異質なことを呼び覚ました。女神 "
+"Eloh のことだ。彼女の目論見は何だったのだろう？なぜ、私が人間に降伏することを"
+"望んだのか？人間たちも彼女を崇拝しているのだろうか？人間はひどく野蛮で下劣そ"
+"うだし、私達と同じ神を崇拝しているとはとても思えない。Eloh は私達だけの神だと"
+"思っていたが、あの「大いなる滅び」のあと、彼女を崇拝する他の種族のことなど "
+"Zhul は話していなかったと思うが、年月がたって事情が変化したのかもしれない。彼"
+"女の命令にはピンとこないし、Zhul が話していた女神とは全然違う気がする。それ"
+"と、Esanoo が話していたのは何のことだろう？ 彼のリーダーは、どうやって "
+"'Yechnagoth' と 'Zhangor' のことを知ったのだろう？ もし Eloh が助けてくれない"
+"なら、私が何とかして答えを見つけなければ。自分の仲間を罠へ引き込まないよう"
+"に、残りのどんな神々だろうが祈りを捧げるしかない..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:174
@@ -17599,19 +17553,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
-#, fuzzy
-#| msgid ""
-#| "That afternoon three of the merfolk sat in a circle and performed their "
-#| "ritual to determine the location of their master. Apparently it was a "
-#| "success, for they steered us straight towards the setting sun."
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their leader. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
-"ある午後、3 人のマーフォークが主の位置を調べるために、円座して儀式を執り行っ"
-"た。やがて、沈む夕日の方へ向かう方向に舵を切るように言ったので、儀式は成功し"
-"たのだと思う。"
+"その日の午後、マーフォーク３名が車座になって、主の居場所を特定する儀式を執り"
+"行った。どうやら成功したようで、沈みゆく夕日へとまっすぐに舵を切った。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:206
@@ -17750,43 +17698,3 @@ msgstr "幻の城"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "幻の城の主塔"
-
-#~ msgid "Hunter"
-#~ msgstr "ハンター"
-
-#~ msgid "Leader"
-#~ msgstr "リーダー"
-
-#~ msgid "Warrior (choose only one): specialize in melee combat"
-#~ msgstr "勇士 (どちらか一つだけを選択可): 近接戦闘に特化"
-
-#~ msgid "Warrior (choose only one): specialize in archery"
-#~ msgstr "勇士 (どちらか一つだけを選択可): 弓術に特化"
-
-#~ msgid "Hunter (choose only one): specialize in surprise attacks"
-#~ msgstr "ハンター (どちらか一つだけを選択可): 奇襲に特化"
-
-#~ msgid "Hunter (choose only one): specialize in skirmishing"
-#~ msgstr "ハンター (どちらか一つだけ選択可): 散兵能力に特化"
-
-#~ msgid "Leader (choose only one): specialize in supporting allies"
-#~ msgstr "リーダー (どちらか一つだけ選択可): 仲間の支援に特化"
-
-#~ msgid "Leader (choose only one): specialize in distracting enemies"
-#~ msgstr "リーダー (どちらか一つだけ選択可): 撹乱能力に特化"
-
-#, fuzzy
-#~| msgid "female^distract"
-#~ msgid "female^steadfast"
-#~ msgstr "撹乱"
-
-#~ msgid "Skeleton Rider"
-#~ msgstr "スケルトンライダー"
-
-#~ msgid ""
-#~ "Once great warriors across the plains, these mounted riders atop their "
-#~ "skeletal horses were raised from the sands by unholy magic to spread fear "
-#~ "and destruction."
-#~ msgstr ""
-#~ "かつて平野を駆け巡った偉大な戦士、スケルトンライダー（Skeleton Rider）は恐"
-#~ "怖と破壊を撒き散らすために不浄な魔法によって砂地から蘇りました。"

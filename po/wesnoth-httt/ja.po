@@ -1,14 +1,14 @@
 #
 # Translators:
-# RatArmy, 2023
+# RatArmy, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: RatArmy, 2023\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -6023,10 +6023,8 @@ msgstr "Konrad を洞窟まで移動させる"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-#, fuzzy
-#| msgid "Rescue the sergeant"
 msgid "Rescue the lieutenant"
-msgstr "軍曹を救助する"
+msgstr "副官を救助する"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:154
@@ -6349,15 +6347,11 @@ msgstr "一番遠くにある断崖の頂上に誰かいる！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
-#, fuzzy
-#| msgid ""
-#| "It is a young human sergeant, barely more than a boy. He appears badly "
-#| "hurt but still alive."
 msgid ""
 "It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
-"若い人間の軍曹です。ほとんど少年と言っていい。酷く傷ついているようですが、ま"
+"若い人間の士官です。ほとんど少年と言っていい。酷く傷ついているようですが、ま"
 "だ生きています。"
 
 #. [message]: speaker=unit
@@ -6432,18 +6426,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
-#, fuzzy
-#| msgid ""
-#| "Our main goal remains to survive ourselves, but if we can spare the "
-#| "troops, we might try to rescue the sergeant stranded on the cliff. "
-#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the officer stranded on the cliff. However, I make no "
 "promises."
 msgstr ""
 "私たちの重要な目標は私たち自身が生き残る事です。でも、もし部隊を割く事ができ"
-"るなら、断崖に取り残されている軍曹の救助に挑戦してみましょう。とはいえ、約束"
+"るなら、断崖に取り残されている士官の救助に挑戦してみましょう。とはいえ、約束"
 "はできません。"
 
 #. [message]: speaker=Li'sar
@@ -6482,16 +6471,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
-#, fuzzy
-#| msgid ""
-#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
 "healers to help you, young lieutenant."
 msgstr ""
 "私は Li'sar 王女、私たちは味方よ。私たちに加わり、ヒーラーが助けにいくまで"
-"待っていてください。若い軍曹さん。"
+"待っていてください。若い士官さん。"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:850
@@ -7455,11 +7440,6 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
-#, fuzzy
-#| msgid ""
-#| "Upon finishing the book, $unit.name| has a much greater understanding of "
-#| "the forest, its nature and ways, and all the creatures within it. "
-#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
 "$unit.name| becomes entranced and greatly gains affinity with the forest, "
 "its nature and ways, and all the creatures within it. He feels he will "
@@ -7467,17 +7447,12 @@ msgid ""
 "the last page was turned, the book crumbled to dust."
 msgstr ""
 "本を読み終えると、$unit.name| の森に関する理解はたいへん深くなっていました。"
-"その生態と、森のなかの全ての生き物について。残念なことに、最後のページをめく"
-"ると、本は砕けて塵となってしまいました。"
+"その生態と、森のなかの全ての生き物について。彼は一度基礎を身につければすぐに"
+"熟練できそうだと感じました。残念なことに、最後のページをめくると、本は砕けて"
+"塵となってしまいました。"
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
-#, fuzzy
-#| msgid ""
-#| "female^Upon finishing the book, $unit.name| has a much greater "
-#| "understanding of the forest, its nature and ways, and all the creatures "
-#| "within it. Unfortunately, as the last page was turned, the book crumbled "
-#| "to dust."
 msgid ""
 "female^$unit.name| becomes entranced and greatly gains affinity with the "
 "forest, its nature and ways, and all the creatures within it. She feels she "
@@ -7485,8 +7460,9 @@ msgid ""
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
 "本を読み終えると、$unit.name| の森に関する理解はたいへん深くなっていました。"
-"その生態と、森のなかの全ての生き物について。残念なことに、最後のページをめく"
-"ると、本は砕けて塵となってしまいました。"
+"その生態と、森のなかの全ての生き物について。彼女は一度基礎を身につければすぐ"
+"に熟練できそうだと感じました。残念なことに、最後のページをめくると、本は砕け"
+"て塵となってしまいました。"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
@@ -8984,10 +8960,8 @@ msgstr ""
 
 #. [unit_type]: id=Injured Lieutenant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
-#, fuzzy
-#| msgid "Injured Sergeant"
 msgid "Injured Lieutenant"
-msgstr "負傷した軍曹"
+msgstr "負傷した副官"
 
 #. [variation]
 #. [unit_type]: id=Lord
