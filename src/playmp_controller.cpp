@@ -510,191 +510,11 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(cons
 	}
 	else if (auto change = cfg.optional_child("change_controller"))
 	{
-		if(change->empty()) {
-			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty.";
-			return turn_info::PROCESS_CONTINUE;
-		}
-
-		const int side = change["side"].to_int();
-		const bool is_local = change["is_local"].to_bool();
-		const std::string player = change["player"];
-		const std::string controller_type = change["controller"];
-		const std::size_t index = side - 1;
-		if(index >= gamestate().board_.teams().size()) {
-			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change->debug();
-			return turn_info::PROCESS_CONTINUE;
-		}
-
-		const team & tm = gamestate().board_.teams().at(index);
-		const bool was_local = tm.is_local();
-
-		gamestate().board_.side_change_controller(side, is_local, player, controller_type);
-
-		if (!was_local && tm.is_local()) {
-			on_not_observer();
-		}
-
-		// TODO: can we replace this with just a call to play_controller::update_viewing_player() ?
-		auto disp_set_team = [](int side_index) {
-			const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
-			display::get_singleton()->set_team(side_index);
-
-			if(side_changed) {
-				display::get_singleton()->queue_rerender();
-			}
-		};
-
-		if (gamestate().board_.is_observer() || (gamestate().board_.teams())[display::get_singleton()->playing_team()].is_local_human()) {
-			disp_set_team(display::get_singleton()->playing_team());
-		} else if (tm.is_local_human()) {
-			disp_set_team(side - 1);
-		}
-
-		resources::whiteboard->on_change_controller(side,tm);
-
-		display::get_singleton()->labels().recalculate_labels();
-
-		const bool restart = game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
-		return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+		return process_network_change_controller_impl(*change);
 	}
-
 	else if (auto side_drop_c = cfg.optional_child("side_drop"))
 	{
-		// Only the host receives this message when a player leaves/disconnects.
-		const int  side_drop = side_drop_c["side_num"].to_int(0);
-		std::size_t index = side_drop -1;
-
-		bool restart = side_drop == game_display::get_singleton()->playing_side();
-
-		if (index >= gamestate().board_.teams().size()) {
-			ERR_NW << "unknown side " << side_drop << " is dropping game";
-			throw ingame_wesnothd_error("");
-		}
-
-		auto ctrl = side_controller::get_enum(side_drop_c["controller"].str());
-		if(!ctrl) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"];
-			throw ingame_wesnothd_error("");
-		}
-
-		if (ctrl == side_controller::type::ai) {
-			gamestate().board_.side_drop_to(side_drop, *ctrl);
-			return restart ? turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
-		}
-		//null controlled side cannot be dropped because they aren't controlled by anyone.
-		else if (ctrl != side_controller::type::human) {
-			ERR_NW << "unknown controller type issued from server on side drop: " << side_controller::get_string(*ctrl);
-			throw ingame_wesnothd_error("");
-		}
-
-		int action = 0;
-		int first_observer_option_idx = 0;
-		int control_change_options = 0;
-		bool has_next_scenario = !resources::gamedata->next_scenario().empty() && resources::gamedata->next_scenario() != "null";
-
-		std::vector<std::string> observers;
-		std::vector<const team *> allies;
-		std::vector<std::string> options;
-
-		const team &tm = gamestate().board_.teams()[index];
-
-		for (const team &t : gamestate().board_.teams()) {
-			if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
-				&& t.current_player() != tm.current_player()) {
-				allies.push_back(&t);
-			}
-		}
-
-		// We want to give host chance to decide what to do for side
-		if (!is_linger_mode() || has_next_scenario) {
-			utils::string_map t_vars;
-
-			//get all allies in as options to transfer control
-			for (const team *t : allies) {
-				//if this is an ally of the dropping side and it is not us (choose local player
-				//if you want that) and not ai or empty and if it is not the dropping side itself,
-				//get this team in as well
-				t_vars["player"] = t->current_player();
-				options.emplace_back(VGETTEXT("Give control to their ally $player", t_vars));
-				control_change_options++;
-			}
-
-			first_observer_option_idx = options.size();
-
-			//get all observers in as options to transfer control
-			for (const std::string &screen_observers : game_display::get_singleton()->observers()) {
-				t_vars["player"] = screen_observers;
-				options.emplace_back(VGETTEXT("Give control to observer $player", t_vars));
-				observers.push_back(screen_observers);
-				control_change_options++;
-			}
-
-			options.emplace_back(_("Replace with AI"));
-			options.emplace_back(_("Replace with local player"));
-			options.emplace_back(_("Set side to idle"));
-			options.emplace_back(_("Save and abort game"));
-
-			t_vars["player"] = tm.current_player();
-			t_vars["side_drop"] = std::to_string(side_drop);
-			const std::string gettext_message =  VGETTEXT("$player who controlled side $side_drop has left the game. What do you want to do?", t_vars);
-			gui2::dialogs::simple_item_selector dlg("", gettext_message, options);
-			dlg.set_single_button(true);
-			dlg.show();
-			action = dlg.selected_index();
-
-			// If esc was pressed, default to setting side to idle
-			if (action == -1) {
-				action = control_change_options + 2;
-			}
-		} else {
-			// Always set leaving side to idle if in linger mode and there is no next scenario
-			action = 2;
-		}
-
-		if (action < control_change_options) {
-			// Grant control to selected ally
-			// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-			gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
-
-			if (action < first_observer_option_idx) {
-				send_change_side_controller(side_drop, allies[action]->current_player());
-			} else {
-				send_change_side_controller(side_drop, observers[action - first_observer_option_idx]);
-			}
-
-			return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
-		} else {
-			action -= control_change_options;
-
-			//make the player an AI, and redo this turn, in case
-			//it was the current player's team who has just changed into
-			//an AI.
-			switch(action) {
-				case 0:
-					on_not_observer();
-					gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::ai);
-
-					return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
-
-				case 1:
-					on_not_observer();
-					gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::human);
-
-					return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
-				case 2:
-					gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
-
-					return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
-
-				case 3:
-					//The user pressed "end game". Don't throw a network error here or he will get
-					//thrown back to the title screen.
-					do_autosave();
-					throw_quit_game_exception();
-				default:
-					break;
-			}
-		}
+		return process_network_side_drop_impl(*side_drop_c);
 	}
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
@@ -737,6 +557,196 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(cons
 	return retv;
 }
 
+turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_side_drop_impl(const config& side_drop_c)
+{
+	// Only the host receives this message when a player leaves/disconnects.
+	const int  side_drop = side_drop_c["side_num"].to_int(0);
+	std::size_t index = side_drop -1;
+
+	bool restart = side_drop == game_display::get_singleton()->playing_side();
+
+	if (index >= gamestate().board_.teams().size()) {
+		ERR_NW << "unknown side " << side_drop << " is dropping game";
+		throw ingame_wesnothd_error("");
+	}
+
+	auto ctrl = side_controller::get_enum(side_drop_c["controller"].str());
+	if(!ctrl) {
+		ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"];
+		throw ingame_wesnothd_error("");
+	}
+
+	if (ctrl == side_controller::type::ai) {
+		gamestate().board_.side_drop_to(side_drop, *ctrl);
+		return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+	}
+	//null controlled side cannot be dropped because they aren't controlled by anyone.
+	else if (ctrl != side_controller::type::human) {
+		ERR_NW << "unknown controller type issued from server on side drop: " << side_controller::get_string(*ctrl);
+		throw ingame_wesnothd_error("");
+	}
+
+	int action = 0;
+	int first_observer_option_idx = 0;
+	int control_change_options = 0;
+	bool has_next_scenario = !resources::gamedata->next_scenario().empty() && resources::gamedata->next_scenario() != "null";
+
+	std::vector<std::string> observers;
+	std::vector<const team *> allies;
+	std::vector<std::string> options;
+
+	const team &tm = gamestate().board_.teams()[index];
+
+	for (const team &t : gamestate().board_.teams()) {
+		if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
+			&& t.current_player() != tm.current_player()) {
+			allies.push_back(&t);
+		}
+	}
+
+	// We want to give host chance to decide what to do for side
+	if (!is_linger_mode() || has_next_scenario) {
+		utils::string_map t_vars;
+
+		//get all allies in as options to transfer control
+		for (const team *t : allies) {
+			//if this is an ally of the dropping side and it is not us (choose local player
+			//if you want that) and not ai or empty and if it is not the dropping side itself,
+			//get this team in as well
+			t_vars["player"] = t->current_player();
+			options.emplace_back(VGETTEXT("Give control to their ally $player", t_vars));
+			control_change_options++;
+		}
+
+		first_observer_option_idx = options.size();
+
+		//get all observers in as options to transfer control
+		for (const std::string &screen_observers : game_display::get_singleton()->observers()) {
+			t_vars["player"] = screen_observers;
+			options.emplace_back(VGETTEXT("Give control to observer $player", t_vars));
+			observers.push_back(screen_observers);
+			control_change_options++;
+		}
+
+		options.emplace_back(_("Replace with AI"));
+		options.emplace_back(_("Replace with local player"));
+		options.emplace_back(_("Set side to idle"));
+		options.emplace_back(_("Save and abort game"));
+
+		t_vars["player"] = tm.current_player();
+		t_vars["side_drop"] = std::to_string(side_drop);
+		const std::string gettext_message =  VGETTEXT("$player who controlled side $side_drop has left the game. What do you want to do?", t_vars);
+		gui2::dialogs::simple_item_selector dlg("", gettext_message, options);
+		dlg.set_single_button(true);
+		dlg.show();
+		action = dlg.selected_index();
+
+		// If esc was pressed, default to setting side to idle
+		if (action == -1) {
+			action = control_change_options + 2;
+		}
+	} else {
+		// Always set leaving side to idle if in linger mode and there is no next scenario
+		action = 2;
+	}
+
+	if (action < control_change_options) {
+		// Grant control to selected ally
+		// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
+		gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
+
+		if (action < first_observer_option_idx) {
+			send_change_side_controller(side_drop, allies[action]->current_player());
+		} else {
+			send_change_side_controller(side_drop, observers[action - first_observer_option_idx]);
+		}
+
+		return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+	} else {
+		action -= control_change_options;
+
+		//make the player an AI, and redo this turn, in case
+		//it was the current player's team who has just changed into
+		//an AI.
+		switch(action) {
+			case 0:
+				on_not_observer();
+				gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::ai);
+
+				return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+
+			case 1:
+				on_not_observer();
+				gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::human);
+
+				return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+			case 2:
+				gamestate().board_.side_drop_to(side_drop, side_controller::type::human, side_proxy_controller::type::idle);
+
+				return restart?turn_info::PROCESS_RESTART_TURN:turn_info::PROCESS_CONTINUE;
+
+			case 3:
+				//The user pressed "end game". Don't throw a network error here or he will get
+				//thrown back to the title screen.
+				do_autosave();
+				throw_quit_game_exception();
+			default:
+				break;
+		}
+	}
+	return turn_info::PROCESS_CONTINUE;
+}
+
+turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_change_controller_impl(const config& change)
+{
+
+	if(change.empty()) {
+		ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty.";
+		return turn_info::PROCESS_CONTINUE;
+	}
+
+	const int side = change["side"].to_int();
+	const bool is_local = change["is_local"].to_bool();
+	const std::string player = change["player"];
+	const std::string controller_type = change["controller"];
+	const std::size_t index = side - 1;
+	if(index >= gamestate().board_.teams().size()) {
+		ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug();
+		return turn_info::PROCESS_CONTINUE;
+	}
+
+	const team & tm = gamestate().board_.teams().at(index);
+	const bool was_local = tm.is_local();
+
+	gamestate().board_.side_change_controller(side, is_local, player, controller_type);
+
+	if (!was_local && tm.is_local()) {
+		on_not_observer();
+	}
+
+	// TODO: can we replace this with just a call to play_controller::update_viewing_player() ?
+	auto disp_set_team = [](int side_index) {
+		const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
+		display::get_singleton()->set_team(side_index);
+
+		if(side_changed) {
+			display::get_singleton()->queue_rerender();
+		}
+	};
+
+	if (gamestate().board_.is_observer() || (gamestate().board_.teams())[display::get_singleton()->playing_team()].is_local_human()) {
+		disp_set_team(display::get_singleton()->playing_team());
+	} else if (tm.is_local_human()) {
+		disp_set_team(side - 1);
+	}
+
+	resources::whiteboard->on_change_controller(side,tm);
+
+	display::get_singleton()->labels().recalculate_labels();
+
+	const bool restart = game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
+	return restart ? turn_info::PROCESS_RESTART_TURN : turn_info::PROCESS_CONTINUE;
+}
 
 turn_info::PROCESS_DATA_RESULT playmp_controller::sync_network()
 {
