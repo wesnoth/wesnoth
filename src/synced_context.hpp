@@ -209,6 +209,7 @@ public:
 		undo_commands_.clear();
 	}
 
+	static bool ignore_undo();
 private:
 	/** Weather we are in a synced move, in a user_choice, or none of them. */
 	static inline synced_state state_ = synced_context::UNSYNCED;

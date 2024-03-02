@@ -364,6 +364,13 @@ void synced_context::add_undo_commands(int idx, const config& args, const game_e
 	undo_commands_.emplace_front(idx, args, ctx);
 }
 
+bool synced_context::ignore_undo()
+{
+	auto& ct = resources::controller->current_team();
+	// Ai doesn't undo stuff, disabling the undo stack allows us to send moves to other clients sooner.
+	return ct.is_ai() && ct.auto_shroud_updates();
+}
+
 set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
 	, old_rng_(randomness::generator)
