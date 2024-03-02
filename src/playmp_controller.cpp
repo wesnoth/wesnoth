@@ -52,6 +52,7 @@ static lg::log_domain log_network("network");
 playmp_controller::playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info)
 	: playsingle_controller(level, state_of_game, mp_info && mp_info->skip_replay)
 	, network_processing_stopped_(false)
+	, next_scenario_notified_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
@@ -194,20 +195,11 @@ void playmp_controller::play_idle_loop()
 void playmp_controller::wait_for_upload()
 {
 	send_actions();
-	// If the host is here we'll never leave since we wait for the host to
-	// upload the next scenario.
-	assert(!is_host());
-	// TODO: should we handle the case that we become the ho0st because the host disconnectes here?a
 
 	gui2::dialogs::loading_screen::display([&]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
-		while(true) {
-			auto res = process_network_data_from_reader();
-			if(res == turn_info::PROCESS_END_LINGER) {
-				return;
-			} else if (res != turn_info::PROCESS_CONTINUE) {
-				throw quit_game_exception();
-			}
+		while(!next_scenario_notified_ && !is_host()) {
+			process_network_data();
 			SDL_Delay(10);
 			gui2::dialogs::loading_screen::spin();
 		}
@@ -391,29 +383,26 @@ bool playmp_controller::receive_from_wesnothd(config& cfg) const
 
 void playmp_controller::process_network_data(bool chat_only)
 {
-	if(gamestate().in_phase(game_data::TURN_ENDED) || player_type_changed_) {
-		return;
-	}
-
+	//Don't exceute the next turns actions.
+	chat_only |= gamestate().in_phase(game_data::TURN_ENDED);
 	chat_only |= is_regular_game_end();
+	chat_only |= player_type_changed_;
 
-	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
 	config cfg;
 
 	if(!resources::recorder->at_end()) {
-		res = replay_to_process_data_result(do_replay());
+		// This should never do anything, the only case where
+		// process_network_data_impl put something on the recorder
+		// without immidiately exceuting it are user choices which cannot be exceuted by do_replay()
+		do_replay();
+	} else if (next_scenario_notified_) {
+		//Do nothing, Otherwise we might risk getting data that belongs to the next scenario.
 	} else if(network_reader_.read(cfg)) {
-		res = process_network_data_impl(cfg, chat_only);
-	}
-
-	if(res == turn_info::PROCESS_CANNOT_HANDLE) {
-		network_reader_.push_front(std::move(cfg));
-	} else if(res == turn_info::PROCESS_END_TURN) {
-	} else if(res == turn_info::PROCESS_END_LEVEL) {
-	} else if(res == turn_info::PROCESS_END_LINGER) {
-		if(!is_linger_mode()) {
-			replay::process_error("Received unexpected next_scenario during the game");
-		} else {
+		auto res = process_network_data_impl(cfg, chat_only);
+		if(res == turn_info::PROCESS_CANNOT_HANDLE) {
+			network_reader_.push_front(std::move(cfg));
+		}
+		if(next_scenario_notified_) {
 			end_turn();
 		}
 	}
@@ -474,10 +463,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(cons
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
 	else if (cfg.has_child("notify_next_scenario")) {
-		if(!is_linger_mode()) {
-			return turn_info::PROCESS_CANNOT_HANDLE;
-		}
-		return turn_info::PROCESS_END_LINGER;
+		next_scenario_notified_ = true;
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it

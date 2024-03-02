@@ -56,6 +56,7 @@ protected:
 	void wait_for_upload();
 
 	mutable bool network_processing_stopped_;
+	bool next_scenario_notified_;
 
 	virtual void on_not_observer() override;
 	virtual bool is_host() const override;
