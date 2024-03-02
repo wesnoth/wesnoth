@@ -352,6 +352,7 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 {
 	if(!is_replay() && !network_processing_stopped_) {
 		// receive chat during animations and delay
+		// But don't execute turn data during animations etc.
 		process_network_data(true);
 		// cannot use send_actions() here.
 		// todo: why? The checks in send_actions() should be safe enouth.
@@ -692,6 +693,18 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 void playmp_controller::send_actions()
 {
+	/**
+	 * TODO: currently this function is called rather randomly at various places
+	 *       Figure out a consitent rule when this should be called.
+	 * Obviously it makes sense to
+	 * 1) Send chat and similar messages immidiately
+	 *    (currently done in play_slice)
+	 * 2) Send other actions as soon as we know that they cannot be undone
+	 * 2.1) When an action ends the scenario
+	 * 2.2) Some actions can never be undone
+	 * 2.3) depndent commands cannot be undone on their own.
+	 * 3.4) Other things.
+	 */
 	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::undo_blocked();
 	if ( !send_everything ) {
 		replay_sender_.sync_non_undoable();
