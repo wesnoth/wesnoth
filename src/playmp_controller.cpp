@@ -651,21 +651,7 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 		on_not_observer();
 	}
 
-	// TODO: can we replace this with just a call to play_controller::update_viewing_player() ?
-	auto disp_set_team = [](int side_index) {
-		const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
-		display::get_singleton()->set_team(side_index);
-
-		if(side_changed) {
-			display::get_singleton()->queue_rerender();
-		}
-	};
-
-	if (gamestate().board_.is_observer() || (gamestate().board_.teams())[display::get_singleton()->playing_team()].is_local_human()) {
-		disp_set_team(display::get_singleton()->playing_team());
-	} else if (tm.is_local_human()) {
-		disp_set_team(side - 1);
-	}
+	update_viewing_player();
 
 	resources::whiteboard->on_change_controller(side,tm);
 
