@@ -676,23 +676,6 @@ void playmp_controller::send_actions()
 	}
 }
 
-playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_from_reader()
-{
-	config cfg;
-	while(this->network_reader_.read(cfg))
-	{
-		PROCESS_DATA_RESULT res = process_network_data_impl(cfg);
-		if(res != PROCESS_DATA_RESULT::CONTINUE)
-		{
-			return res;
-		}
-		cfg.clear();
-	}
-	return PROCESS_DATA_RESULT::CONTINUE;
-}
-
-
-
 void playmp_controller::send_change_side_controller(int side, const std::string& player)
 {
 	config cfg;

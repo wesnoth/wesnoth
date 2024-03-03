@@ -95,8 +95,6 @@ private:
 	/// Handle incoming [change_controller] from the multiplayer server
 	void process_network_change_controller_impl(const config& );
 
-	PROCESS_DATA_RESULT process_network_data_from_reader();
-
 	/// Send [change_controller] to the multiplayer server
 	void send_change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
