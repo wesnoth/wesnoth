@@ -53,7 +53,6 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 	, network_processing_stopped_(false)
 	, next_scenario_notified_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
-	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
 	, mp_info_(mp_info)
 {
@@ -337,9 +336,9 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 		// receive chat during animations and delay
 		// But don't execute turn data during animations etc.
 		process_network_data(true);
-		// cannot use send_actions() here.
-		// todo: why? The checks in send_actions() should be safe enouth.
-		replay_sender_.sync_non_undoable();
+		// send_actions() makes sure that no actions that can
+		// still be undone is sent.
+		send_actions();
 	}
 
 	playsingle_controller::play_slice(is_delay_enabled);
@@ -662,11 +661,18 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 void playmp_controller::send_actions()
 {
+	if(!is_networked_mp()) {
+		return;
+	}
+
+	resources::whiteboard->send_network_data();
+
 	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::undo_blocked();
-	if ( !send_everything ) {
-		replay_sender_.sync_non_undoable();
-	} else {
-		replay_sender_.commit_and_sync();
+	const replay::DATA_TYPE data_type = send_everything ? replay::ALL_DATA : replay::NON_UNDO_DATA;
+
+	config data = resources::recorder->get_unsent_commands(data_type);
+	if (!data.empty()) {
+		send_to_wesnothd(config{ "turn", data});
 	}
 }
 

@@ -181,6 +181,7 @@ chat_msg::~chat_msg()
 
 replay::replay(replay_recorder_base& base)
 	: base_(&base)
+	, sent_upto_(base.size())
 	, message_locations()
 {}
 
@@ -393,11 +394,10 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 	return message_log;
 }
 
-config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type) const
+config replay::get_unsent_commands(DATA_TYPE data_type)
 {
 	config res;
-
-	for (int cmd = cmd_start; cmd < cmd_end; ++cmd)
+	for (int cmd = sent_upto_; cmd < ncommands(); ++cmd)
 	{
 		config &c = command(cmd);
 		//prevent creating 'blank' attribute values during checks
@@ -405,10 +405,12 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type) c
 		if ((data_type == ALL_DATA || !cc["undo"].to_bool(true)) && !cc["sent"].to_bool(false))
 		{
 			res.add_child("command", c);
-			if (data_type == NON_UNDO_DATA) c["sent"] = true;
+			c["sent"] = true;
 		}
 	}
-
+	if(data_type == ALL_DATA) {
+		sent_upto_ = ncommands();
+	}
 	return res;
 }
 
@@ -912,44 +914,5 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		if (auto child = cfg->optional_child("verify")) {
 			verify(resources::gameboard->units(), *child);
 		}
-	}
-}
-
-replay_network_sender::replay_network_sender(replay& obj) : obj_(obj), upto_(obj_.ncommands())
-{
-}
-
-replay_network_sender::~replay_network_sender()
-{
-	try {
-	} catch (...) {}
-}
-
-void replay_network_sender::sync_non_undoable()
-{
-	if(resources::controller->is_networked_mp()) {
-		resources::whiteboard->send_network_data();
-
-		config cfg;
-		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands(),replay::NON_UNDO_DATA));
-		if(data.empty() == false) {
-			resources::controller->send_to_wesnothd(cfg);
-		}
-	}
-}
-
-void replay_network_sender::commit_and_sync()
-{
-	if(resources::controller->is_networked_mp()) {
-		resources::whiteboard->send_network_data();
-
-		config cfg;
-		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
-
-		if(data.empty() == false) {
-			resources::controller->send_to_wesnothd(cfg);
-		}
-
-		upto_ = obj_.ncommands();
 	}
 }

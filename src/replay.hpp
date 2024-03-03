@@ -105,7 +105,7 @@ public:
 	//undoable data includes moves such as placing a label or speaking, which is
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
-	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA) const;
+	config get_unsent_commands(DATA_TYPE data_type);
 
 	void undo();
 	/*
@@ -158,6 +158,7 @@ private:
 	 */
 	config& add_nonundoable_command();
 	replay_recorder_base* base_;
+	int sent_upto_;
 	std::vector<int> message_locations;
 };
 
@@ -178,16 +179,3 @@ REPLAY_ACTION_TYPE get_replay_action_type(const config& command);
 REPLAY_RETURN do_replay(bool one_move = false);
 
 REPLAY_RETURN do_replay_handle(bool one_move = false);
-
-class replay_network_sender
-{
-public:
-	replay_network_sender(replay& obj);
-	~replay_network_sender();
-
-	void sync_non_undoable();
-	void commit_and_sync();
-private:
-	replay& obj_;
-	int upto_;
-};

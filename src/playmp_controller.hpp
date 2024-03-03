@@ -91,10 +91,7 @@ private:
 	void send_change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 
-	/// Helper to send our actions to the server
-	/// Used by turn_data_
-	replay_network_sender replay_sender_;
-	/// Used by turn_data_
+	/// Helper to preprocess infoming network data.
 	playturn_network_adapter network_reader_;
 	mp_game_metadata* mp_info_;
 };
