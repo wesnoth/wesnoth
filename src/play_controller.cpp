@@ -447,6 +447,9 @@ void play_controller::do_init_side()
 {
 	{ // Block for set_scontext_synced
 		set_scontext_synced sync;
+
+		synced_context::block_undo();
+
 		log_scope("player turn");
 		// In case we might end up calling sync:network during the side turn events,
 		// and we don't want do_init_side to be called when a player drops.
@@ -562,8 +565,9 @@ void play_controller::finish_side_turn_events()
 
 	{ // Block for set_scontext_synced
 		set_scontext_synced sync(1);
-		// Ending the turn commits all moves.
-		undo_stack().clear();
+		// Also clears the undo stack.
+		synced_context::block_undo();
+
 		gamestate().board_.end_turn(current_side());
 		const std::string turn_num = std::to_string(turn());
 		const std::string side_num = std::to_string(current_side());
@@ -1133,6 +1137,9 @@ void play_controller::start_game()
 
 		set_scontext_synced sync;
 
+		// So that the code knows it can send choices immidiateley
+		// todo: im not sure whetrh this is actually needed.
+		synced_context::block_undo();
 		fire_prestart();
 		if(is_regular_game_end()) {
 			return;

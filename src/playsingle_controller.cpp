@@ -650,7 +650,6 @@ void playsingle_controller::play_ai_turn()
 	}
 
 	undo_stack().clear();
-	send_actions();
 
 	try {
 		try {
@@ -672,7 +671,6 @@ void playsingle_controller::play_ai_turn()
 		require_end_turn();
 	}
 
-	send_actions();
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();

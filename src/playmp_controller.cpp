@@ -166,8 +166,6 @@ void playmp_controller::play_human_turn()
 			DBG_NG << "Caught exception while playing a side: " << utils::get_unknown_exception_type();
 			throw;
 		}
-
-		send_actions();
 	}
 }
 
@@ -186,8 +184,6 @@ void playmp_controller::play_idle_loop()
 			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
 			throw;
 		}
-
-		send_actions();
 	}
 }
 
@@ -226,9 +222,6 @@ void playmp_controller::after_human_turn()
 
 	// Normal post-processing for human turns (clear undos, end the turn, etc.)
 	playsingle_controller::after_human_turn();
-
-	// send one more time to make sure network is up-to-date.
-	send_actions();
 }
 
 void playmp_controller::play_network_turn()
@@ -236,7 +229,6 @@ void playmp_controller::play_network_turn()
 	LOG_NG << "is networked...";
 
 	end_turn_enable(false);
-	send_actions();
 
 	while(!should_return_to_play_side()) {
 		if(!network_processing_stopped_) {
@@ -247,9 +239,6 @@ void playmp_controller::play_network_turn()
 		}
 
 		play_slice_catch();
-		if(!network_processing_stopped_) {
-			send_actions();
-		}
 	}
 
 	LOG_NG << "finished networked...";
@@ -287,12 +276,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const
 
 void playmp_controller::handle_generic_event(const std::string& name)
 {
-	if(name == "ai_user_interact") {
-		playsingle_controller::handle_generic_event(name);
-		send_actions();
-	} else if(name == "ai_gamestate_changed") {
-		send_actions();
-	}
+	playsingle_controller::handle_generic_event(name);
 }
 bool playmp_controller::is_host() const
 {
@@ -692,18 +676,6 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 void playmp_controller::send_actions()
 {
-	/**
-	 * TODO: currently this function is called rather randomly at various places
-	 *       Figure out a consitent rule when this should be called.
-	 * Obviously it makes sense to
-	 * 1) Send chat and similar messages immidiately
-	 *    (currently done in play_slice)
-	 * 2) Send other actions as soon as we know that they cannot be undone
-	 * 2.1) When an action ends the scenario
-	 * 2.2) Some actions can never be undone
-	 * 2.3) depndent commands cannot be undone on their own.
-	 * 3.4) Other things.
-	 */
 	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::undo_blocked();
 	if ( !send_everything ) {
 		replay_sender_.sync_non_undoable();

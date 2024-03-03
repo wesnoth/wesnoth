@@ -207,6 +207,9 @@ void synced_context::set_is_simultaneous()
 void synced_context::block_undo(bool do_block)
 {
 	is_undo_blocked_ |= do_block;
+	resources::undo_stack->clear();
+	// Since the action cannot be undone, send it immidiately to the other players.
+	resources::controller->send_actions();
 }
 
 bool synced_context::undo_blocked()
