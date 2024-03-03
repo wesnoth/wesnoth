@@ -82,16 +82,28 @@ private:
 	 * @param unsync_only if false (default) this can exceute synced (gamestate changing) turn commands (recall, move, etc.)
 	 */
 	void process_network_data(bool unsync_only = false);
+
+	/// Check for and Handle incoming data from the multiplayer server
 	PROCESS_DATA_RESULT process_network_data_impl(const config& cfg, bool chat_only = false);
+
+	/// Handle incoming [turn] from the multiplayer server
 	PROCESS_DATA_RESULT process_network_turn_impl(const config& t, bool chat_only = false);
+
+	/// Handle incoming [side_drop] from the multiplayer server
 	void process_network_side_drop_impl(const config& t);
+
+	/// Handle incoming [change_controller] from the multiplayer server
 	void process_network_change_controller_impl(const config& );
 
 	PROCESS_DATA_RESULT process_network_data_from_reader();
+
+	/// Send [change_controller] to the multiplayer server
 	void send_change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 
 	/// Helper to preprocess infoming network data.
 	playturn_network_adapter network_reader_;
+	/// Information about our connection to the multiplayer server.
+	/// null when we are not connected to the multiplayer server
 	mp_game_metadata* mp_info_;
 };
