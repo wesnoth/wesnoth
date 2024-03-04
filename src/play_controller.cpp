@@ -521,6 +521,8 @@ void play_controller::do_init_side()
 		gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	}
 
+	statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
+
 	init_side_end();
 
 	if(!is_skipping_replay() && current_team().get_scroll_to_leader()) {
@@ -1292,10 +1294,6 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		//TODO: this resets the "current turn" statistics whenever the controller changes,
-		//  in particular whenever a game is reloaded, wouldn't it be better if this was
-		//  only done, when a sides turn actually ends?
-		statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
 
 		play_side_impl();
 
