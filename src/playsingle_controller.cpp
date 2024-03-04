@@ -473,9 +473,9 @@ void playsingle_controller::play_side_impl()
 			require_end_turn();
 		}
 
-		before_human_turn();
 
 		if(!end_turn_requested_) {
+			before_human_turn();
 			play_human_turn();
 		}
 
