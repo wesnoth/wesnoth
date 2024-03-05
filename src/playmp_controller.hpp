@@ -64,18 +64,32 @@ protected:
 
 	blindfold blindfold_;
 private:
+	enum class PROCESS_DATA_RESULT
+	{
+		CONTINUE,
+		RESTART_TURN,
+		END_TURN,
+		/** When the host uploaded the next scenario this is returned. */
+		END_LINGER,
+		/** When we couldn't process the network data because we found a dependent command, this should only happen if we were called playmp_controller::from handle_generic_event -> sync_network*/
+		FOUND_DEPENDENT,
+		/** when we couldn't handle the given action currently. */
+		CANNOT_HANDLE,
+		/** We found a player action in the replay that caused the game to end*/
+		END_LEVEL
+	};
 	/**
 	 * @param unsync_only if false (default) this can exceute synced (gamestate changing) turn commands (recall, move, etc.)
 	 */
 	void process_network_data(bool unsync_only = false);
-	turn_info::PROCESS_DATA_RESULT process_network_data_impl(const config& cfg, bool chat_only = false);
-	turn_info::PROCESS_DATA_RESULT process_network_turn_impl(const config& t, bool chat_only = false);
+	PROCESS_DATA_RESULT process_network_data_impl(const config& cfg, bool chat_only = false);
+	PROCESS_DATA_RESULT process_network_turn_impl(const config& t, bool chat_only = false);
 	void process_network_side_drop_impl(const config& t);
 	void process_network_change_controller_impl(const config& );
 
-	turn_info::PROCESS_DATA_RESULT process_network_data_from_reader();
+	PROCESS_DATA_RESULT process_network_data_from_reader();
 	void send_change_side_controller(int side, const std::string& player);
-	static turn_info::PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
+	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 
 	/// Helper to send our actions to the server
 	/// Used by turn_data_

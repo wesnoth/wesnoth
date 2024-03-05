@@ -21,7 +21,6 @@
 #include "cursor.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "playturn_network_adapter.hpp"
-#include "playturn.hpp"
 #include "replay.hpp"
 
 #include <exception>

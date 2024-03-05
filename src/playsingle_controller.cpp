@@ -36,7 +36,6 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "playturn.hpp"
 #include "preferences/game.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"

@@ -30,7 +30,6 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "mp_ui_alerts.hpp"
-#include "playturn.hpp"
 #include "preferences/game.hpp"
 #include "preferences/general.hpp"
 #include "replay_helper.hpp"
@@ -401,7 +400,7 @@ void playmp_controller::process_network_data(bool unsync_only)
 		//Do nothing, Otherwise we might risk getting data that belongs to the next scenario.
 	} else if(network_reader_.read(cfg)) {
 		auto res = process_network_data_impl(cfg, unsync_only);
-		if(res == turn_info::PROCESS_CANNOT_HANDLE) {
+		if(res == PROCESS_DATA_RESULT::CANNOT_HANDLE) {
 			network_reader_.push_front(std::move(cfg));
 		}
 		if(next_scenario_notified_) {
@@ -410,7 +409,7 @@ void playmp_controller::process_network_data(bool unsync_only)
 	}
 }
 
-turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(const config& cfg, bool chat_only)
+playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(const config& cfg, bool chat_only)
 {
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(cfg.all_children_count() == 1);
@@ -480,10 +479,10 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(cons
 		ERR_NW << "found unknown command:\n" << cfg.debug();
 	}
 
-	return turn_info::PROCESS_CONTINUE;
+	return PROCESS_DATA_RESULT::CONTINUE;
 }
 
-turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(const config& t, bool chat_only)
+playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(const config& t, bool chat_only)
 {
 	//t can contain a [command] or a [upload_log]
 	assert(t.all_children_count() == 1);
@@ -491,7 +490,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(cons
 	if(auto command = t.optional_child("command")) {
 		auto commandtype = get_replay_action_type(*command);
 		if(chat_only && (commandtype == REPLAY_ACTION_TYPE::SYNCED || commandtype == REPLAY_ACTION_TYPE::INVALID) ) {
-			return turn_info::PROCESS_CANNOT_HANDLE;
+			return PROCESS_DATA_RESULT::CANNOT_HANDLE;
 		}
 		if (commandtype == REPLAY_ACTION_TYPE::SYNCED && current_team().is_local()) {
 			// Executing those is better than OOS, also the server checks that other players don't send actions while it's not their turn.
@@ -500,7 +499,7 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(cons
 	}
 	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
 	resources::recorder->add_config(t, replay::MARK_AS_SENT);
-	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
+	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
 	return retv;
 }
 
@@ -713,19 +712,19 @@ void playmp_controller::send_actions()
 	}
 }
 
-turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_data_from_reader()
+playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_from_reader()
 {
 	config cfg;
 	while(this->network_reader_.read(cfg))
 	{
-		turn_info::PROCESS_DATA_RESULT res = process_network_data_impl(cfg);
-		if(res != turn_info::PROCESS_CONTINUE)
+		PROCESS_DATA_RESULT res = process_network_data_impl(cfg);
+		if(res != PROCESS_DATA_RESULT::CONTINUE)
 		{
 			return res;
 		}
 		cfg.clear();
 	}
-	return turn_info::PROCESS_CONTINUE;
+	return PROCESS_DATA_RESULT::CONTINUE;
 }
 
 
@@ -739,18 +738,18 @@ void playmp_controller::send_change_side_controller(int side, const std::string&
 	send_to_wesnothd(cfg);
 }
 
-turn_info::PROCESS_DATA_RESULT playmp_controller::replay_to_process_data_result(REPLAY_RETURN replayreturn)
+playmp_controller::PROCESS_DATA_RESULT playmp_controller::replay_to_process_data_result(REPLAY_RETURN replayreturn)
 {
 	switch(replayreturn)
 	{
 	case REPLAY_RETURN_AT_END:
-		return turn_info::PROCESS_CONTINUE;
+		return PROCESS_DATA_RESULT::CONTINUE;
 	case REPLAY_FOUND_DEPENDENT:
-		return turn_info::PROCESS_FOUND_DEPENDENT;
+		return PROCESS_DATA_RESULT::FOUND_DEPENDENT;
 	case REPLAY_FOUND_END_TURN:
-		return turn_info::PROCESS_END_TURN;
+		return PROCESS_DATA_RESULT::END_TURN;
 	case REPLAY_FOUND_END_LEVEL:
-		return turn_info::PROCESS_END_LEVEL;
+		return PROCESS_DATA_RESULT::END_LEVEL;
 	default:
 		assert(false);
 		throw "found invalid REPLAY_RETURN";
