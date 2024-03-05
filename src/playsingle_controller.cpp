@@ -230,6 +230,33 @@ void playsingle_controller::play_some()
 	}
 }
 
+void playsingle_controller::play_side()
+{
+	do {
+		if(std::find_if(get_teams().begin(), get_teams().end(), [](const team& t) { return !t.is_empty(); }) == get_teams().end()){
+			throw game::game_error("The scenario has no (non-empty) sides defined");
+		}
+		update_viewing_player();
+
+		maybe_do_init_side();
+		if(is_regular_game_end()) {
+			return;
+		}
+		// This flag can be set by derived classes (in overridden functions).
+		player_type_changed_ = false;
+
+
+		play_side_impl();
+
+		if(is_regular_game_end()) {
+			return;
+		}
+	} while(player_type_changed_);
+
+	// Keep looping if the type of a team (human/ai/networked) has changed mid-turn
+	sync_end_turn();
+}
+
 void playsingle_controller::finish_side_turn()
 {
 	if(is_regular_game_end()) {
@@ -766,11 +793,36 @@ void playsingle_controller::sync_end_turn()
 	}
 }
 
+bool playsingle_controller::is_team_visible(int team_num, bool observer) const
+{
+	const team& t = gamestate().board_.get_team(team_num);
+	if(observer) {
+		return !t.get_disallow_observers() && !t.is_empty();
+	} else {
+		return t.is_local_human() && !t.is_idle();
+	}
+}
+
+int playsingle_controller::find_viewing_side() const
+{
+	const int num_teams = get_teams().size();
+	const bool observer = is_observer();
+
+	for(int i = 0; i < num_teams; i++) {
+		const int team_num = modulo(current_side() + i, num_teams, 1);
+		if(is_team_visible(team_num, observer)) {
+			return team_num;
+		}
+	}
+
+	return 0;
+}
+
 void playsingle_controller::update_viewing_player()
 {
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
-	} else if(int side_num = play_controller::find_viewing_side()) {
+	} else if(int side_num = find_viewing_side()) {
 		if(side_num != gui_->viewing_side() || gui_->show_everything()) {
 			update_gui_to_player(side_num - 1);
 		}

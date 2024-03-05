@@ -272,10 +272,6 @@ public:
 
 	void maybe_throw_return_to_play_side() const;
 
-	virtual void play_side_impl() {}
-
-	void play_side();
-
 	team& current_team();
 	const team& current_team() const;
 
@@ -338,12 +334,9 @@ protected:
 	void textbox_move_vertically(bool up);
 	void tab();
 
-
-	bool is_team_visible(int team_num, bool observer) const;
 public:
 	/** returns 0 if no such team was found. */
-	int find_viewing_side() const;
-
+	virtual int find_viewing_side() const = 0;
 private:
 	const int ticks_;
 

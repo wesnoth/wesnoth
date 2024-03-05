@@ -60,6 +60,7 @@ public:
 	///                   also true if no non-empty side was found.
 	ses_result skip_empty_sides(int side_num);
 	void play_some();
+	void play_side();
 	void finish_side_turn();
 	void do_end_level();
 	void play_scenario_main_loop();
@@ -85,7 +86,7 @@ public:
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
 protected:
-	virtual void play_side_impl() override;
+	void play_side_impl();
 	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
@@ -111,6 +112,9 @@ protected:
 	void linger();
 	void update_gui_linger();
 	void sync_end_turn() override;
+	bool is_team_visible(int team_num, bool observer) const;
+	/** returns 0 if no such team was found. */
+	int find_viewing_side() const override;
 	void update_viewing_player() override;
 	void reset_replay();
 };
