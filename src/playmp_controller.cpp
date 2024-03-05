@@ -368,13 +368,19 @@ void playmp_controller::process_network_data(bool unsync_only)
 	if(!resources::recorder->at_end()) {
 		// This should never do anything, the only case where
 		// process_network_data_impl put something on the recorder
-		// without immidiately exceuting it are user choices which cannot be exceuted by do_replay()
+		// without immidiately exceuting it are user choices which
+		// cannot be exceuted by do_replay()
 		do_replay();
 	} else if (next_scenario_notified_) {
 		//Do nothing, Otherwise we might risk getting data that belongs to the next scenario.
 	} else if(network_reader_.read(cfg)) {
 		auto res = process_network_data_impl(cfg, unsync_only);
 		if(res == PROCESS_DATA_RESULT::CANNOT_HANDLE) {
+			// chat_only=true, but we received a non-chat command, probably belonging to the next
+			// action when we are still exceuting the previous one.
+			// save the incoming data for later.
+			// Note: With this approach, incoming [turn] that we cannot handle also blocks other
+			// incoming data, like [change_controller].
 			network_reader_.push_front(std::move(cfg));
 		}
 		if(next_scenario_notified_) {
@@ -471,7 +477,8 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_turn_i
 			ERR_NW << "Received a synced remote user action during our own turn";
 		}
 	}
-	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
+
+	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> receive_actions -> ... -> handle_turn
 	resources::recorder->add_config(t, replay::MARK_AS_SENT);
 	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
 	return retv;
