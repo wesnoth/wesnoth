@@ -2449,7 +2449,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		target->remove_children("effect");
 	}
 
-	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
 		if(target) {
