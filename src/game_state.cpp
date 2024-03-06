@@ -392,6 +392,10 @@ const game_events::wmi_manager& game_state::get_wml_menu_items() const
 	return this->events_manager_->wml_menu_items();
 }
 
+bool game_state::has_next_scenario() const
+{
+	return !gamedata_.next_scenario().empty() && gamedata_.next_scenario() != "null";
+}
 
 namespace
 {

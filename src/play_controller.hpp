@@ -245,6 +245,8 @@ public:
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
 	bool is_replay() const { return get_replay_controller() != nullptr; }
 
+	replay& recorder() const { return *replay_; }
+
 	t_string get_scenario_name() const
 	{
 		return level_["name"].t_str();

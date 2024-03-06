@@ -205,7 +205,7 @@ void playmp_controller::after_human_turn()
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
 
-		resources::recorder->add_countdown_update(new_time, current_side());
+		recorder().add_countdown_update(new_time, current_side());
 	}
 
 	LOG_NG << "playmp::after_human_turn...";
@@ -293,9 +293,7 @@ void playmp_controller::maybe_linger()
 	send_actions();
 	assert(is_regular_game_end());
 	if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless()) {
-		const bool has_next_scenario
-			= !gamestate().gamedata_.next_scenario().empty() && gamestate().gamedata_.next_scenario() != "null";
-		if(!is_host() && has_next_scenario) {
+		if(!is_host() && gamestate().has_next_scenario()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario
 			// before we attempt to download it.
@@ -310,7 +308,7 @@ void playmp_controller::maybe_linger()
 void playmp_controller::surrender(int side_number)
 {
 	undo_stack().clear();
-	resources::recorder->add_surrender(side_number);
+	recorder().add_surrender(side_number);
 	send_actions();
 }
 
@@ -365,7 +363,7 @@ void playmp_controller::process_network_data(bool unsync_only)
 
 	config cfg;
 
-	if(!resources::recorder->at_end()) {
+	if(!recorder().at_end()) {
 		// This should never do anything, the only case where
 		// process_network_data_impl put something on the recorder
 		// without immidiately exceuting it are user choices which
@@ -394,7 +392,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(cfg.all_children_count() == 1);
 	assert(cfg.attribute_range().empty());
-	if(!resources::recorder->at_end())
+	if(!recorder().at_end())
 	{
 		ERR_NW << "processing network data while still having data on the replay.";
 	}
@@ -430,7 +428,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 	else if (cfg.has_child("whiteboard"))
 	{
 		set_scontext_unsynced scontext;
-		resources::whiteboard->process_network_data(cfg);
+		get_whiteboard()->process_network_data(cfg);
 	}
 	else if (auto change = cfg.optional_child("change_controller"))
 	{
@@ -479,7 +477,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_turn_i
 	}
 
 	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> receive_actions -> ... -> handle_turn
-	resources::recorder->add_config(t, replay::MARK_AS_SENT);
+	recorder().add_config(t, replay::MARK_AS_SENT);
 	do_replay();
 	return PROCESS_DATA_RESULT::CONTINUE;
 }
@@ -516,7 +514,7 @@ void playmp_controller::process_network_side_drop_impl(const config& side_drop_c
 	int action = 0;
 	int first_observer_option_idx = 0;
 	int control_change_options = 0;
-	bool has_next_scenario = !resources::gamedata->next_scenario().empty() && resources::gamedata->next_scenario() != "null";
+	bool has_next_scenario = gamestate().has_next_scenario();
 
 	std::vector<std::string> observers;
 	std::vector<const team *> allies;
@@ -650,7 +648,7 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 	update_viewing_player();
 
-	resources::whiteboard->on_change_controller(side,tm);
+	get_whiteboard()->on_change_controller(side,tm);
 
 	display::get_singleton()->labels().recalculate_labels();
 
@@ -663,12 +661,12 @@ void playmp_controller::send_actions()
 		return;
 	}
 
-	resources::whiteboard->send_network_data();
+	get_whiteboard()->send_network_data();
 
-	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::undo_blocked();
+	const bool send_everything = synced_context::is_unsynced() ? !undo_stack().can_undo() : synced_context::undo_blocked();
 	const replay::DATA_TYPE data_type = send_everything ? replay::ALL_DATA : replay::NON_UNDO_DATA;
 
-	config data = resources::recorder->get_unsent_commands(data_type);
+	config data = recorder().get_unsent_commands(data_type);
 	if (!data.empty()) {
 		send_to_wesnothd(config{ "turn", data});
 	}
