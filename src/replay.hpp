@@ -43,6 +43,18 @@ private:
 	std::time_t time_;
 };
 
+enum class REPLAY_ACTION_TYPE
+{
+	// Chat and similar actions that don't change the gamestate
+	UNSYNCED,
+	// Local choices
+	DEPENDENT,
+	// Commands the invoke a synced user actions
+	SYNCED,
+	// The actions has a wrong format.
+	INVALID
+};
+
 class replay
 {
 public:
@@ -158,6 +170,9 @@ enum REPLAY_RETURN
 	REPLAY_FOUND_END_MOVE,
 	REPLAY_FOUND_END_LEVEL
 };
+
+REPLAY_ACTION_TYPE get_replay_action_type(const config& command);
+
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
 REPLAY_RETURN do_replay(bool one_move = false);

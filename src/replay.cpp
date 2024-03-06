@@ -680,6 +680,21 @@ static void show_oos_error_error_function(const std::string& message)
 	replay::process_error(message);
 }
 
+REPLAY_ACTION_TYPE get_replay_action_type(const config& command)
+{
+	if(command.all_children_count() != 1) {
+		return REPLAY_ACTION_TYPE::INVALID;
+	}
+	auto child = command.all_children_range().front();
+	if(child.key == "speak" || child.key == "label" || child.key == "surrender" || child.key == "clear_labels" || child.key == "rename" || child.key == "countdown_update") {
+		return REPLAY_ACTION_TYPE::UNSYNCED;
+	}
+	if(command["dependent"].to_bool(false)) {
+		return REPLAY_ACTION_TYPE::DEPENDENT;
+	}
+	return REPLAY_ACTION_TYPE::SYNCED;
+}
+
 REPLAY_RETURN do_replay(bool one_move)
 {
 	log_scope("do replay");

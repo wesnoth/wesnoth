@@ -343,7 +343,8 @@ void playmp_controller::surrender(int side_number)
 
 void playmp_controller::receive_actions()
 {
-	sync_network();
+	process_network_data();
+	send_actions();
 }
 
 
@@ -381,12 +382,12 @@ bool playmp_controller::receive_from_wesnothd(config& cfg) const
 	}
 }
 
-void playmp_controller::process_network_data(bool chat_only)
+void playmp_controller::process_network_data(bool unsync_only)
 {
 	//Don't exceute the next turns actions.
-	chat_only |= gamestate().in_phase(game_data::TURN_ENDED);
-	chat_only |= is_regular_game_end();
-	chat_only |= player_type_changed_;
+	unsync_only |= gamestate().in_phase(game_data::TURN_ENDED);
+	unsync_only |= is_regular_game_end();
+	unsync_only |= player_type_changed_;
 
 	config cfg;
 
@@ -398,7 +399,7 @@ void playmp_controller::process_network_data(bool chat_only)
 	} else if (next_scenario_notified_) {
 		//Do nothing, Otherwise we might risk getting data that belongs to the next scenario.
 	} else if(network_reader_.read(cfg)) {
-		auto res = process_network_data_impl(cfg, chat_only);
+		auto res = process_network_data_impl(cfg, unsync_only);
 		if(res == turn_info::PROCESS_CANNOT_HANDLE) {
 			network_reader_.push_front(std::move(cfg));
 		}
@@ -486,11 +487,16 @@ turn_info::PROCESS_DATA_RESULT playmp_controller::process_network_turn_impl(cons
 	//t can contain a [command] or a [upload_log]
 	assert(t.all_children_count() == 1);
 
-	if(!t.child_or_empty("command").has_child("speak") && chat_only) {
-		return turn_info::PROCESS_CANNOT_HANDLE;
+	if(auto command = t.optional_child("command")) {
+		auto commandtype = get_replay_action_type(*command);
+		if(chat_only && (commandtype == REPLAY_ACTION_TYPE::SYNCED || commandtype == REPLAY_ACTION_TYPE::INVALID) ) {
+			return turn_info::PROCESS_CANNOT_HANDLE;
+		}
+		if (commandtype == REPLAY_ACTION_TYPE::SYNCED && current_team().is_local()) {
+			// Executing those is better than OOS, also the server checks that other players don't send actions while it's not their turn.
+			ERR_NW << "Received a synced remote user action during our own turn";
+		}
 	}
-	/** @todo FIXME: Check what commands we execute when it's our turn! */
-
 	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
 	resources::recorder->add_config(t, replay::MARK_AS_SENT);
 	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
@@ -681,26 +687,7 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 	display::get_singleton()->labels().recalculate_labels();
 
-	player_type_changed_ |=  game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
-}
-
-turn_info::PROCESS_DATA_RESULT playmp_controller::sync_network()
-{
-	//there should be nothing left on the replay and we should get turn_info::PROCESS_CONTINUE back.
-	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
-	if(is_networked_mp()) {
-
-		//receive data first, and then send data. When we sent the end of
-		//the AI's turn, we don't want there to be any chance where we
-		//could get data back pertaining to the next turn.
-		config cfg;
-		while( (retv == turn_info::PROCESS_CONTINUE) &&  network_reader_.read(cfg)) {
-			retv = process_network_data_impl(cfg);
-			cfg.clear();
-		}
-		send_actions();
-	}
-	return retv;
+	player_type_changed_ |= game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
 }
 
 void playmp_controller::send_actions()
