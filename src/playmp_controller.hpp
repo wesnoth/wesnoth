@@ -67,16 +67,8 @@ private:
 	enum class PROCESS_DATA_RESULT
 	{
 		CONTINUE,
-		RESTART_TURN,
-		END_TURN,
-		/** When the host uploaded the next scenario this is returned. */
-		END_LINGER,
-		/** When we couldn't process the network data because we found a dependent command, this should only happen if we were called playmp_controller::from handle_generic_event -> sync_network*/
-		FOUND_DEPENDENT,
 		/** when we couldn't handle the given action currently. */
-		CANNOT_HANDLE,
-		/** We found a player action in the replay that caused the game to end*/
-		END_LEVEL
+		CANNOT_HANDLE
 	};
 	/**
 	 * @param unsync_only if false (default) this can exceute synced (gamestate changing) turn commands (recall, move, etc.)
@@ -97,7 +89,6 @@ private:
 
 	/// Send [change_controller] to the multiplayer server
 	void send_change_side_controller(int side, const std::string& player);
-	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 
 	/// Helper to preprocess infoming network data.
 	playturn_network_adapter network_reader_;

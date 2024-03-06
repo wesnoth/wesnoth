@@ -480,8 +480,8 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_turn_i
 
 	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> receive_actions -> ... -> handle_turn
 	resources::recorder->add_config(t, replay::MARK_AS_SENT);
-	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
-	return retv;
+	do_replay();
+	return PROCESS_DATA_RESULT::CONTINUE;
 }
 
 void playmp_controller::process_network_side_drop_impl(const config& side_drop_c)
@@ -681,22 +681,4 @@ void playmp_controller::send_change_side_controller(int side, const std::string&
 	change["side"] = side;
 	change["player"] = player;
 	send_to_wesnothd(cfg);
-}
-
-playmp_controller::PROCESS_DATA_RESULT playmp_controller::replay_to_process_data_result(REPLAY_RETURN replayreturn)
-{
-	switch(replayreturn)
-	{
-	case REPLAY_RETURN_AT_END:
-		return PROCESS_DATA_RESULT::CONTINUE;
-	case REPLAY_FOUND_DEPENDENT:
-		return PROCESS_DATA_RESULT::FOUND_DEPENDENT;
-	case REPLAY_FOUND_END_TURN:
-		return PROCESS_DATA_RESULT::END_TURN;
-	case REPLAY_FOUND_END_LEVEL:
-		return PROCESS_DATA_RESULT::END_LEVEL;
-	default:
-		assert(false);
-		throw "found invalid REPLAY_RETURN";
-	}
 }
