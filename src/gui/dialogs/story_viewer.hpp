@@ -74,6 +74,11 @@ private:
 	void halt_fade_draw();
 
 	void flag_stack_as_dirty();
+	
+	// Manually close the dialog, since widget with id=cancel is not a button
+	void close() {
+		set_retval(retval::CANCEL);
+	}
 
 	storyscreen::controller controller_;
 

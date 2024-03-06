@@ -23,6 +23,8 @@
 #include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -86,11 +88,18 @@ void story_viewer::pre_show(window& window)
 
 	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
+	
+	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel", false),
+		std::bind(&story_viewer::close, this));
+	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsleft", false),
+		std::bind(&story_viewer::close, this));
+	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsright", false),
+		std::bind(&story_viewer::close, this));
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
+	connect_signal_mouse_left_click(find_widget<image>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
+	connect_signal_mouse_left_click(find_widget<image>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
 	// Tell the game display not to draw
@@ -115,7 +124,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<button>(get_window(), "back", false).set_active(part_index_ != 0);
+	find_widget<image>(get_window(), "prev", false).set_active(part_index_ != 0);
 
 	//
 	// Music and sound
