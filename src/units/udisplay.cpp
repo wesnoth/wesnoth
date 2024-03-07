@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
+#include "play_controller.hpp"
 #include "color.hpp"
 #include "sound.hpp"
 #include "terrain/filter.hpp"
@@ -166,8 +167,7 @@ int move_unit_between(const map_location& a,
 
 bool do_not_show_anims(display* disp)
 {
-
-	return !disp || video::headless();
+	return !disp || video::headless() || resources::controller->is_skipping_replay();
 }
 
 } // end anon namespace
