@@ -312,6 +312,9 @@ void story_viewer::display_part()
 
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
 
+	// Hardcoded max width, should be made customizable
+	// preferably as an key to [part]
+	text_label.set_text_max_width(1000);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
