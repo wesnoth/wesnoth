@@ -228,9 +228,8 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 		case hotkey::HOTKEY_RECALL:
 			return (!browse() || whiteboard_manager_->is_active()) && !linger() && !events::commands_disabled;
 		case hotkey::HOTKEY_ENDTURN:
-			//TODO: Its unclear to me under which cirumstances the other clients can remain in linger mode
-			//      when the host pressed scenario, some codes suggest that tha can be the case some don't.
-			return (!browse() || (linger() && playsingle_controller_.is_host())) && !events::commands_disabled;
+			//playmp_controller::hotkey_handler checks whether we are the host.
+			return (!browse() || linger()) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
 			return !linger()
