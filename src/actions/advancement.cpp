@@ -121,7 +121,7 @@ namespace
 		// When the unit advances, it fades to white, and then switches
 		// to the new unit, then fades back to the normal color
 
-		if (animate && !video::headless()) {
+		if (animate && !video::headless() && !resources::controller->is_skipping_replay()) {
 			unit_animator animator;
 			bool with_bars = true;
 			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
@@ -142,7 +142,7 @@ namespace
 		u = resources::gameboard->units().find(loc);
 		game_display::get_singleton()->invalidate_unit();
 
-		if (animate && u != resources::gameboard->units().end() && !video::headless()) {
+		if (animate && u != resources::gameboard->units().end() && !video::headless() && !resources::controller->is_skipping_replay()) {
 			unit_animator animator;
 			animator.add_animation(u.get_shared_ptr(), "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
