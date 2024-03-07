@@ -2442,14 +2442,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 {
 	bool generate_description = mod["generate_description"].to_bool(true);
 
+	config* target = nullptr;
+
 	if(no_add == false) {
-		modifications_.add_child(mod_type, mod);
+		target = &modifications_.add_child(mod_type, mod);
+		target->remove_children("effect");
 	}
 
-	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
-	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
+		if(target) {
+			//Store effects only after they are added to avoid double applying effects on advance with apply_to=variation.
+			target->add_child("effect", effect);
+		}
 		// Apply SUF.
 		if(auto afilter = effect.optional_child("filter")) {
 			assert(resources::filter_con);
@@ -2460,6 +2465,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		const std::string& apply_to = effect["apply_to"];
 		int times = effect["times"].to_int(1);
 		t_string description;
+
+		if(no_add && (apply_to == "type" || apply_to == "variation")) {
+			continue;
+		}
 
 		if(effect["times"] == "per level") {
 			if(effect["apply_to"] == "level") {
@@ -2474,20 +2483,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(times) {
 			while (times > 0) {
 				times --;
-
-				bool was_poisoned = get_state(STATE_POISONED);
-				// Apply unit type/variation changes last to avoid double applying effects on advance.
-				if(apply_to == "type") {
-					set_poisoned = false;
-					type_effect = effect;
-					continue;
-				}
-				if(apply_to == "variation") {
-					set_poisoned = false;
-					variation_effect = effect;
-					continue;
-				}
-
 				std::string description_component;
 				if(resources::lua_kernel) {
 					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
@@ -2500,11 +2495,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				}
 				if(!times) {
 					description += description_component;
-				}
-				if(!was_poisoned && get_state(STATE_POISONED)) {
-					set_poisoned = true;
-				} else if(was_poisoned && !get_state(STATE_POISONED)) {
-					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2522,33 +2512,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(!description.empty()) {
 			effects_description.push_back(description);
 		}
-	}
-	// Apply variations -- only apply if we are adding this for the first time.
-	if((!type_effect.empty() || !variation_effect.empty()) && no_add == false) {
-		if(!type_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(type_effect["apply_to"], *this, type_effect, true);
-			} else if(builtin_effects.count(type_effect["apply_to"])) {
-				apply_builtin_effect(type_effect["apply_to"], type_effect);
-				description = describe_builtin_effect(type_effect["apply_to"], type_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(!variation_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(variation_effect["apply_to"], *this, variation_effect, true);
-			} else if(builtin_effects.count(variation_effect["apply_to"])) {
-				apply_builtin_effect(variation_effect["apply_to"], variation_effect);
-				description = describe_builtin_effect(variation_effect["apply_to"], variation_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(set_poisoned)
-			// An effect explicitly set the poisoned state, and this
-			// should override the unit being immune to poison.
-			set_state(STATE_POISONED, true);
 	}
 
 	t_string description;
