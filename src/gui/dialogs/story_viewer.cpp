@@ -88,7 +88,7 @@ void story_viewer::pre_show(window& window)
 
 	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
-	
+
 	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel", false),
 		std::bind(&story_viewer::close, this));
 	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsleft", false),
