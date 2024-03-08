@@ -210,6 +210,37 @@ static int intf_find_widget(lua_State* L)
 
 namespace
 {
+	int number_of_items(gui2::listbox& mp)
+	{
+		return mp.get_item_count();
+	}
+	int number_of_items(gui2::multi_page& mp)
+	{
+		return mp.get_page_count();
+	}
+
+	int number_of_items(gui2::tree_view_node& mp)
+	{
+		return mp.count_children();
+	}
+
+	int number_of_items(gui2::tree_view& mp)
+	{
+		return number_of_items(mp.get_root_node());
+	}
+
+	template<typename TWidget>
+	void fix_index(lua_State* L, int arg, TWidget& w, int& index)
+	{
+		int max = number_of_items(w);
+		if(index == 0) {
+			index = max;
+		}
+		if(index < 0 || index > max) {
+			luaL_argerror(L, arg, "widget child index out of range");
+		}
+	}
+
 	void remove_treeview_node(gui2::tree_view_node& node, std::size_t pos, int number)
 	{
 		//Not tested yet.
@@ -238,15 +269,18 @@ static int intf_remove_dialog_item(lua_State* L)
 	int pos = luaL_checkinteger(L, 2) - 1;
 	int number = luaL_checkinteger(L, 3);
 
-	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
-	{
-		list->remove_row(pos, number);
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
+		fix_index(L, 2, *list, pos);
+		list->remove_row(pos - 1, number);
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-		multi_page->remove_page(pos, number);
+		fix_index(L, 2, *multi_page, pos);
+		multi_page->remove_page(pos - 1, number);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
-		remove_treeview_node(tree_view->get_root_node(), pos, number);
+		fix_index(L, 2, *tree_view, pos);
+		remove_treeview_node(tree_view->get_root_node(), pos - 1, number);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
-		remove_treeview_node(*tree_view_node, pos, number);
+		fix_index(L, 2, *tree_view_node, pos);
+		remove_treeview_node(*tree_view_node, pos - 1, number);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
@@ -374,11 +408,14 @@ static int intf_add_item_of_type(lua_State* L)
 	static const gui2::widget_data data;
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {
-		res = &twn->add_child(node_type, data, insert_pos);
+		fix_index(L, 2, *twn, insert_pos);
+		res = &twn->add_child(node_type, data, insert_pos - 1);
 	} else if(gui2::tree_view* tw = dynamic_cast<gui2::tree_view*>(w)) {
-		res = &tw->get_root_node().add_child(node_type, data, insert_pos);
+		fix_index(L, 2, *tw, insert_pos);
+		res = &tw->get_root_node().add_child(node_type, data, insert_pos - 1);
 	} else if(gui2::multi_page* mp = dynamic_cast<gui2::multi_page*>(w)) {
-		res = &mp->add_page(node_type, insert_pos, data);
+		fix_index(L, 2, *mp, insert_pos);
+		res = &mp->add_page(node_type, insert_pos - 1, data);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
