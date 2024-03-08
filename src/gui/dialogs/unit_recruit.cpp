@@ -79,11 +79,18 @@ void unit_recruit::filter_text_changed(const std::string& text)
 			const unit_type* type = recruit_list_[i];
 			if(!type) continue;
 
+			auto default_gender = !type->genders().empty()
+				? type->genders().front() : unit_race::MALE;
+			const auto* race = type->race();
+
 			// List of possible match criteria for this unit type. Empty values will
 			// never match.
 			auto criteria = std::make_tuple(
 				(game_config::debug ? type->id() : ""),
-				type->type_name()
+				type->type_name(),
+				unit_type::alignment_description(type->alignment(), default_gender),
+				(race ? race->name(default_gender) : ""),
+				(race ? race->plural_name() : "")
 			);
 
 			bool found = false;
