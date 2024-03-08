@@ -94,6 +94,7 @@ void unit_recruit::filter_text_changed(const std::string& text)
 			auto criteria = std::make_tuple(
 				(game_config::debug ? type->id() : ""),
 				type->type_name(),
+				std::to_string(type->level()),
 				unit_type::alignment_description(type->alignment(), default_gender),
 				(race ? race->name(default_gender) : ""),
 				(race ? race->plural_name() : "")
