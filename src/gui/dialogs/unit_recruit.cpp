@@ -79,13 +79,21 @@ void unit_recruit::filter_text_changed(const std::string& text)
 			const unit_type* type = recruit_list_[i];
 			if(!type) continue;
 
+			// List of possible match criteria for this unit type. Empty values will
+			// never match.
+			auto criteria = std::make_tuple(
+				(game_config::debug ? type->id() : ""),
+				type->type_name()
+			);
+
 			bool found = false;
 			for(const auto & word : words)
 			{
 				// Search for the name in the local language.
 				// In debug mode, also search for the type id.
-				found = (game_config::debug && translation::ci_search(type->id(), word)) ||
-				        translation::ci_search(type->type_name(), word);
+				std::apply([&](auto&&... criterion) {
+					found = (translation::ci_search(criterion, word) || ...);
+				}, criteria);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
