@@ -37,6 +37,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
+#include "units/types.hpp"
 #include <functional>
 #include "whiteboard/manager.hpp"
 
@@ -257,7 +258,11 @@ void unit_recall::pre_show(window& window)
 
 		// Since the table widgets use heavy formatting, we save a bare copy
 		// of certain options to filter on.
-		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level());
+		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level())
+			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
+		if(const auto* race = unit->race()) {
+			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
+		}
 
 		if(recallable) {
 			// This is to allow filtering for recallable units by typing "vvv" in the search box.
