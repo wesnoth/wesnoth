@@ -650,8 +650,6 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 	get_whiteboard()->on_change_controller(side,tm);
 
-	display::get_singleton()->labels().recalculate_labels();
-
 	player_type_changed_ |= game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
 }
 
