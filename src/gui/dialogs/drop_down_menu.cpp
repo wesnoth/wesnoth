@@ -86,6 +86,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, items_(items.begin(), items.end())
 	, button_pos_(parent->get_rectangle())
 	, selected_item_(selected_item)
+	, selected_item_pos_(-1, -1)
 	, use_markup_(parent->get_use_markup())
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
@@ -242,7 +243,17 @@ void drop_down_menu::pre_show(window& window)
 
 void drop_down_menu::post_show(window& window)
 {
-	selected_item_ = find_widget<listbox>(&window, "list", true).get_selected_row();
+	const listbox& list = find_widget<listbox>(&window, "list", true);
+	selected_item_ = list.get_selected_row();
+	if(selected_item_ != -1) {
+		const grid* row_grid = list.get_row_grid(selected_item_);
+		if(row_grid) {
+			selected_item_pos_.x = row_grid->get_x();
+			selected_item_pos_.y = row_grid->get_y();
+		}
+	} else {
+		selected_item_pos_.x = selected_item_pos_.y = -1;
+	}
 }
 
 boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
