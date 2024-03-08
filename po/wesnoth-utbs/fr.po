@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Under_the_Burning_Suns-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2024-02-16 17:42+0100\n"
+"PO-Revision-Date: 2024-03-06 17:00+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -45,7 +45,6 @@ msgstr ""
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:22
-#, fuzzy
 msgid ""
 "Note: This campaign changes some standard mechanics, such as the day/night "
 "cycle, recall costs and general approach to the difficulty levels. The "
@@ -2372,7 +2371,6 @@ msgstr ""
 #. [resistance]: id=garak_steadfast
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
 msgid "Garak’s resistances are increased by 20% when defending."
 msgstr "Les résistances de Garak agmentent de 20 % en défense."
 
@@ -2394,7 +2392,6 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:730
-#, fuzzy
 msgid "true strike"
 msgstr "frappe véritable"
 
@@ -3144,17 +3141,16 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:370
-#, fuzzy
 msgid ""
 "Speaking of these lands, we may not have Garak to guide us, but all the "
 "terrain in this area perfectly matches the map we got from the orcs last "
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
-"Dans ces territoires, l'aide de Garak pour nous guider n'est pas disponible "
-"mais les terrains aux alentours correspondent bien de la carte que nous "
-"avons pris des orcs hier ! Elle marque un camp orc juste droit devant. Peut-"
-"être qu'on pourrait s'en approcher sans éveiller l'alerte..."
+"Dans ces contrées, Garak n'est plus là pour nous guider mais les terrains "
+"aux alentours correspondent bien à la carte que nous avons prise aux orcs "
+"hier ! Elle marque un camp orc juste droit devant. Peut-être qu'on pourrait "
+"s'en approcher sans éveiller l'alerte..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
@@ -3282,13 +3278,12 @@ msgstr "Les gobelins sont si prévisibles."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:516
-#, fuzzy
 msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
-"À peine quelques pas en avant, les gobelins sont déjà prévenus de notre "
-"arrivée ! C'est toujours difficile de se mouvoir dans les contrées d'un "
+"Juste quelques pas à l'intérieur et les gobelins sont déjà prévenus de notre "
+"arrivée ! C'est toujours difficile de se mouvoir sur le territoire d'un "
 "autre."
 
 #. [event]
@@ -15663,7 +15658,6 @@ msgstr "magique"
 #. [variation]
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
-#, fuzzy
 msgid "defeated"
 msgstr "perdu"
 
@@ -16064,14 +16058,12 @@ msgstr ""
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
-#, fuzzy
 msgid "sun invocation"
 msgstr "invocation solaire"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
-#, fuzzy
 msgid "sun ray"
 msgstr "rayon solaire"
 
@@ -16107,7 +16099,6 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
-#, fuzzy
 msgid "sun incarnate"
 msgstr "incarnation solaire"
 
@@ -16353,10 +16344,10 @@ msgstr ""
 "rapide et à la volonté farouche. Sa bonne humeur est une réelle bénédiction "
 "pendant les heures difficiles."
 
+# Avancement sans précondition, ajouter "entraînement ..."
 #. [advancement]: id=swordsmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:84
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:452
-#, fuzzy
 msgid "Swordsmanship Training"
 msgstr "Entraînement à l'épée"
 
@@ -16365,76 +16356,77 @@ msgstr "Entraînement à l'épée"
 msgid "Strong Strikes"
 msgstr "Frappes puissantes"
 
+# Avancement avec précondition
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:122
-#, fuzzy
 msgid "Swordsman"
 msgstr "Escrime"
 
+# Avancement avec précondition
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:144
 msgid "Taunt"
 msgstr "Moquerie"
 
+# Avancement avec précondition
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:285
-#, fuzzy
 msgid "Stronger Grip"
 msgstr "Fermeté"
 
 #. [advancement]: id=overwhelming_power
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:298
-#, fuzzy
 msgid "Overwhelming Power"
 msgstr "Force abondante"
 
+# Avancement sans précondition, ajouter "entraînement ..."
 #. [advancement]: id=stamina_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:323
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:634
-#, fuzzy
 msgid "Stamina Training"
 msgstr "Entraînement à l'énergie"
 
+# Avec précondition
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:338
-#, fuzzy
 msgid "Endurance Training"
-msgstr "Entraînement à l'endurance"
+msgstr "Endurance"
 
+# Avancement avec précondition
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:358
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:675
 msgid "Skirmisher"
 msgstr "Tirailleur"
 
+# Avancement sans précondition, ajouter "entraînement ..."
 #. [advancement]: id=training_with_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:377
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:694
 msgid "Training with Bolas"
 msgstr "Entraînement au bolas"
 
+# Avancement avec précondition
 #. [advancement]: id=slow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:397
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:726
-#, fuzzy
 msgid "Slow"
 msgstr "Ralentissement"
 
+# Avancement avec précondition
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:417
-#, fuzzy
 msgid "Opportunist"
 msgstr "Opportunisme"
 
+# Avancement avec précondition
 #. [advancement]: id=inspiring
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:436
-#, fuzzy
 msgid "Inspiring"
 msgstr "Inspiration"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:473
-#, fuzzy
 msgid "Accurate Strikes"
 msgstr "Frappes précises"
 
@@ -16448,15 +16440,14 @@ msgstr "Frappes rapides"
 msgid "Sword Dance"
 msgstr "Danse d'épées"
 
+# Avancement sans précondition, ajouter "entraînement ..."
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
-#, fuzzy
 msgid "Bowmanship Training"
 msgstr "Entraînement à l'archerie"
 
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:543
-#, fuzzy
 msgid "Quickdraw"
 msgstr "Allure"
 
@@ -16467,33 +16458,28 @@ msgstr "Rôdeur"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
-#, fuzzy
 msgid "Rain of Arrows"
 msgstr "Pluie de flèches"
 
 #. [advancement]: id=toxic_rain
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:602
-#, fuzzy
 msgid "Toxic Rain"
 msgstr "Pluie toxique"
 
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:620
-#, fuzzy
 msgid "Twin Arrows"
 msgstr "Double flèches"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:649
-#, fuzzy
 msgid "Footwork"
 msgstr "Sûreté"
 
 #. [advancement]: id=run_by_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:714
-#, fuzzy
 msgid "Run By (Bolas)"
-msgstr "Esquive au bolas"
+msgstr "Échappée au bolas"
 
 #. [advancement]: id=bolaship
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:746
@@ -16502,15 +16488,13 @@ msgstr "Bolas d'élite"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:759
-#, fuzzy
 msgid "Herbalism"
 msgstr "Botanique"
 
 #. [advancement]: id=run_by_sword_and_bow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:777
-#, fuzzy
 msgid "Run By (Sword and Bow)"
-msgstr "Esquive à l'arc et épée"
+msgstr "Échappée à l'arc et épée"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, gender=male,female, description={QUENOTH_YOUTH_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:910
@@ -16732,67 +16716,54 @@ msgstr ""
 "découvrir au cours du jeu pour accéder à sa description."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
-#, fuzzy
 msgid "uses 1 attack"
 msgstr "consomme une attaque"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
-#, fuzzy
 msgid "uses 2 attacks"
 msgstr "consomme deux attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
-#, fuzzy
 msgid "uses 3 attacks"
 msgstr "consomme trois attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
-#, fuzzy
 msgid "uses 4 attacks"
 msgstr "consomme quatre attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-#, fuzzy
 msgid "uses 5 attacks"
 msgstr "consomme cinq attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
-#, fuzzy
 msgid "uses 6 attacks"
 msgstr "consomme six attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#, fuzzy
 msgid "This attack uses 1 attack"
 msgstr "Cette attaque réduit de 1 le nombre d'attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
-#, fuzzy
 msgid "This attack uses 2 attacks"
 msgstr "Cette attaque réduit de 2 le nombre d'attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
-#, fuzzy
 msgid "This attack uses 3 attacks"
 msgstr "Cette attaque réduit de 3 le nombre d'attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
-#, fuzzy
 msgid "This attack uses 4 attacks"
 msgstr "Cette attaque réduit de 4 le nombre d'attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
-#, fuzzy
 msgid "This attack uses 5 attacks"
 msgstr "Cette attaque réduit de 5 le nombre d'attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
-#, fuzzy
 msgid "This attack uses 6 attacks"
 msgstr "Cette attaque réduit de 6 le nombre d'attaques"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
-#, fuzzy
 msgid ""
 "This attack is the first verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -16800,7 +16771,7 @@ msgid ""
 "When the last verse is sung or the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
-"Cette attaque est le premier couplet de la chanson de l'ascension du soleil, "
+"Cette attaque est le premier couplet de la chanson de l'ascension du soleil "
 "et elle progresse au couplet suivant chaque fois que l'attaque est "
 "utilisée.\n"
 "\n"
@@ -16808,7 +16779,6 @@ msgstr ""
 "manque d'attaque, la chanson recommence au premier couplet."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
-#, fuzzy
 msgid ""
 "This attack is the second verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -16816,15 +16786,14 @@ msgid ""
 "If this was the last verse or when the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
-"Cette attaque est le deuxième couplet de la chanson de l'ascension du "
-"soleil, et elle progresse au couplet suivant chaque fois que l'attaque est "
+"Cette attaque est le deuxième couplet de la chanson de l'ascension du soleil "
+"et elle progresse au couplet suivant chaque fois que l'attaque est "
 "utilisée.\n"
 "\n"
 "Quand le dernier couplet est utilisé ou que la séquence est interrompue par "
 "manque d'attaque, la chanson recommence au premier couplet."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
-#, fuzzy
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension, which "
 "progresses by one verse each turn this unit uses a song verse attack.\n"
@@ -16834,33 +16803,28 @@ msgid ""
 "Using this song will also grant illuminates for three turns."
 msgstr ""
 "Cette attaque est le troisième couplet de la chanson de l'ascension du "
-"soleil, et elle progresse au couplet suivant chaque fois que l'attaque est "
+"soleil et elle progresse au couplet suivant chaque fois que l'attaque est "
 "utilisée.\n"
 "\n"
 "La chanson recommence au premier couplet au tour prochain.\n"
 "\n"
-"De plus, elle octroye le pouvoir d'illumination pour trois tours."
+"De plus, elle octroie le pouvoir d'illumination pour trois tours."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
-#, fuzzy
 msgid "first verse"
 msgstr "premier couplet"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid "Second Dusk"
 msgid "second verse"
 msgstr "deuxième couplet"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
-#, fuzzy
 msgid "third verse"
 msgstr "troisième couplet"
 
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
-#, fuzzy
 msgid "third verse illuminates"
 msgstr "troisième couplet d'illumitation"
 
@@ -16871,7 +16835,6 @@ msgstr "troisième couplet d'illumination"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
-#, fuzzy
 msgid ""
 "When this ability is active after using the sun incarnate attack, this unit "
 "illuminates the surrounding area for three turns.\n"
@@ -16888,7 +16851,6 @@ msgstr ""
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:351
-#, fuzzy
 msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
@@ -16898,13 +16860,11 @@ msgstr ""
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
-#, fuzzy
 msgid "once per turn"
 msgstr "une fois par tour"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
-#, fuzzy
 msgid "This attack can be used offensively only once per turn"
 msgstr ""
 "Cette attaque ne peut être utilisée offensivement qu'une fois par tour."
@@ -16912,13 +16872,11 @@ msgstr ""
 #. [dummy]: id=nova
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
-#, fuzzy
 msgid "nova"
 msgstr "nova"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
-#, fuzzy
 msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
@@ -16928,7 +16886,6 @@ msgstr ""
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
-#, fuzzy
 msgid ""
 "This attack is the third verse of the Song of Sun Ascension. After using it, "
 "the first verse is available in the next turn. Furthermore, invoking this "
@@ -16940,7 +16897,6 @@ msgstr ""
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
-#, fuzzy
 msgid "This unit has wide-area attacks centered on the caster."
 msgstr ""
 "Les dégats de cette attaque sont répartis sur une zone centrée sur l'unité "
@@ -16949,23 +16905,20 @@ msgstr ""
 #. [dummy]: id=ray
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:488
-#, fuzzy
 msgid "ray"
 msgstr "rayonnement"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
-#, fuzzy
 msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
-"Utilisée offensivement cette attaque inflige aussi des dégats à une unité "
-"derrière la cible."
+"Utilisée offensivement cette attaque inflige aussi des dégats à une unité se "
+"trouvant derrière la cible."
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:491
-#, fuzzy
 msgid ""
 "This is the second verse of the Song of Sun Ascension. It is available only "
 "when the first verse was sung in the previous turn. If this was the last "
@@ -16977,7 +16930,6 @@ msgstr ""
 "tour."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
-#, fuzzy
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
@@ -16985,7 +16937,6 @@ msgstr ""
 "Augmente de 1 les points de mouvement des unités adjacentes au début du tour."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:651
-#, fuzzy
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
@@ -16994,9 +16945,8 @@ msgstr ""
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
-#, fuzzy
 msgid "tailwind +"
-msgstr "vent en poupe +"
+msgstr "vent de dos +"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
@@ -17179,26 +17129,22 @@ msgstr "Le coût d'entretien des unités alliées adjacentes est diminué de 1."
 # Le nom de l'effet (label flottant)
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:941
-#, fuzzy
 msgid "dazed"
 msgstr "troublé"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:942
-#, fuzzy
 msgid "female^dazed"
 msgstr "troublée"
 
 # Le nom d'une capacité
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1411
-#, fuzzy
 msgid "opportunist"
 msgstr "opportunisme"
 
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1412
-#, fuzzy
 msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
@@ -17213,7 +17159,6 @@ msgstr "moquerie"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
-#, fuzzy
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr "Moque l'ennemi pour le faire attaquer Kaleh durant un tour."
 
@@ -17224,11 +17169,10 @@ msgstr "moqué"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1522
-#, fuzzy
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
 "Cette unité est moquée par Kaleh et elle l'attaquera en représailles durant "
-"ce tour."
+"un tour."
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1531
@@ -17242,7 +17186,6 @@ msgstr "inspiration"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
-#, fuzzy
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
@@ -17254,7 +17197,6 @@ msgstr ""
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1534
-#, fuzzy
 msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
@@ -17263,75 +17205,66 @@ msgstr ""
 "inférieur qui lui sont adjacentes à faire plus de dégâts au combat."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
-#, fuzzy
 msgid "cooldown 1"
-msgstr "refroidissement 1"
+msgstr "recharge 1"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
-#, fuzzy
 msgid "cooldown 2"
-msgstr "refroidissement 2"
+msgstr "recharge 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
-#, fuzzy
 msgid "After using this attack, you can't use it during your next turn."
 msgstr "Cette attaque ne peut pas être utilisée le tour suivant l'attaque."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
-#, fuzzy
 msgid "After using this attack, you can't use it during your next two turns."
 msgstr ""
 "Cette attaque ne peut pas être utilisée les deux tours suivants l'attaque."
 
-# C'est une capacité
+# C'est une attaque spéciale
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1614
-#, fuzzy
 msgid "pierce"
-msgstr "perforant"
+msgstr "perforation"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1615
-#, fuzzy
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
 "Utilisée offensivement cette attaque peut aussi infliger des dégats à "
-"l'unité derrière la cible."
+"l'unité se trouvant derrière la cible."
 
-# C'est une capacité
+# C'est une attaque spéciale
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1684
-#, fuzzy
 msgid "puncture"
 msgstr "percement"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1685
-#, fuzzy
 msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
 "Utilisée offensivement cette attaque peut aussi infliger des dégats à deux "
-"unités derrière la cible."
+"unités se trouvant derrière la cible."
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1767
-#, fuzzy
 msgid "rain of arrows"
 msgstr "pluie de flèches"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1768
-#, fuzzy
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
-"Utilisée offensivement cette attaque peut aussi infliger des dégats à "
-"l'unité derrière la cible et toutes les unités qui lui sont adjacentes."
+"Utilisée offensivement cette attaque peut aussi infliger des dégats à une "
+"unité se trouvant derrière la cible et toutes les unités qui lui sont "
+"adjacentes."
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1888
@@ -17341,7 +17274,6 @@ msgstr "danse d'épées"
 # « précision » et « parade » sont 2 capacités du domaine #wesnoth
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
-#, fuzzy
 msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
