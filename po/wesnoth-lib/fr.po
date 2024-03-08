@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-02 16:44-0600\n"
-"PO-Revision-Date: 2024-02-12 22:26+0100\n"
+"PO-Revision-Date: 2024-03-06 15:53+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -1023,8 +1023,6 @@ msgstr "Mur de caverne terreux naturel"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1423
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
 msgstr "Mur de caverne endommagé"
 
@@ -1101,15 +1099,11 @@ msgstr "Mur de pierre envahis par la végétation"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
 msgstr "Mur de pierre endommagé"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1562
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
 msgstr "Mur en ruine"
 
@@ -3205,7 +3199,6 @@ msgstr "Sélection de l'extension"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
-#, fuzzy
 msgid ""
 "Choose an add-on to be associated with the current editor session. If the "
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
@@ -3213,7 +3206,7 @@ msgid ""
 msgstr ""
 "Choisir une extension à lier avec la session courante de l'éditeur. Si "
 "l'option 'Nouvelle extension' est sélectionnée, l'identifiant correspondant "
-"peut être fourni via l'action 'Changer l'identifiant de l'extension'."
+"peut être spécifié via l'action 'Changer l'identifiant de l'extension'."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
@@ -3227,7 +3220,6 @@ msgstr "Afficher tout"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
-#, fuzzy
 msgid "Whether to show all installed add-ons or only your add-ons"
 msgstr ""
 "Choix d'afficher toutes les extensions installées ou seulement les vôtres"
@@ -4606,7 +4598,6 @@ msgstr "Arrivée d'un joueur"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:184
-#, fuzzy
 msgid "When a player joins the lobby or game"
 msgstr "Lorsqu'un joueur rejoint le vestibule ou la partie"
 
@@ -5116,22 +5107,18 @@ msgstr "Télécharger"
 #. [label]: id=modifications
 #: data/gui/window/mp_match_history.cfg:185
 #: data/gui/window/mp_match_history.cfg:223
-#, fuzzy
 msgid "None"
 msgstr "Vide"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:375
-#, fuzzy
 msgid "Info"
 msgstr "Informations"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Joueurs :"
+msgstr "Joueurs"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5523,7 +5510,6 @@ msgstr "Multiplicateur d'échelle de pixels :"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
 msgid "Change the game window size"
 msgstr "Changer la taille de la fenêtre"
 
@@ -5574,7 +5560,6 @@ msgstr ""
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:145
-#, fuzzy
 msgid "Limit FPS"
 msgstr "Limiter le nombre d'image par seconde"
 
@@ -5608,7 +5593,6 @@ msgstr "Indicateurs de dégâts au combat"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr ""
 "Affiche les valeurs de dégâts et de guérison en surimpression sur les unités"
@@ -6552,8 +6536,6 @@ msgid "Text has a font size of 0."
 msgstr "Le texte a une taille de police de 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
 msgstr "Aucune zone de dessin définie."
 

@@ -780,7 +780,6 @@ msgstr "<bold>text='Surcouches directes'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
-#, fuzzy
 msgid ""
 "Bluffs and Gulch\n"
 "\n"
@@ -804,13 +803,11 @@ msgstr "<bold>text='Élévation submergée'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
-#, fuzzy
 msgid "Raised elevation on-map marker"
 msgstr "Marqueur d'élévation à placer"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
-#, fuzzy
 msgid ""
 "Raised elevation editor palette icon\n"
 "\n"
@@ -844,7 +841,6 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:192
-#, fuzzy
 msgid ""
 "editor^<bold>text='How to Use'</bold>\n"
 "\n"
@@ -873,8 +869,8 @@ msgstr ""
 "1.  Sélectionner le terrain Gorges(^Qhh) de la palette de l'éditeur et "
 "utiliser le pinceau d'une case pour couvrir une zone vide d'une carte "
 "couverte d'herbe.\n"
-"2.  Placer le marqueur-flèche vers le haut (^_mh) sur une case à "
-"l'interieure de la zone (mais pas sur la frontière Gorges-Plat).\n"
+"2.  Placer le marqueur-flèche vers le haut (^_mh) sur une case à l'intérieur "
+"de la zone (mais pas sur la frontière Gorges-Plat).\n"
 "3.  La zone devient alors surélevée, et de nouveaux terrains peuvent être "
 "ajoutés à la zone tant que les surcouches flèche et gorges sont conservées.\n"
 "\n"
@@ -883,7 +879,6 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:203
-#, fuzzy
 msgid ""
 "editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
 "have their terrain codes changed, or any other properties affected, so "
@@ -1230,7 +1225,6 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:351
-#, fuzzy
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
 "scenarios you create. This can be an existing add-on or a brand new add-on. "
@@ -1241,7 +1235,7 @@ msgid ""
 "game creation."
 msgstr ""
 "Dans les deux modes, le programme vous demandera de choisir une extension à "
-"utiliser pour les scénarios que vous créez. Ça peut être une extension "
+"utiliser pour les scénarios que vous créez. Cela peut être une extension "
 "existante ou une nouvelle extension. Si vous optez pour une nouvelle "
 "extension, elle recevra tous les fichiers et l'arborescence de répertoires "
 "nécessaires ainsi qu'un identifiant par défaut. Si vous n'éditez pas un "
@@ -1417,7 +1411,6 @@ msgstr "Utilisation d'un fichier séparé pour les évènements WML"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:415
-#, fuzzy
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1467,8 +1460,8 @@ msgstr ""
 "\n"
 "• _main.cfg:\n"
 "  ◦ utiliser “[binary_path]” pour ajouter au répertoire de données binaires "
-"les répertoires de l'extension, qui entraînera que “map_file” cherchera les "
-"cartes dans le répertoire “maps”\n"
+"les répertoires de l'extension, ce qui entraînera que “map_file” cherchera "
+"les cartes dans le répertoire “maps”\n"
 "• maps/first.map\n"
 " ◦ c'est le fichier .map créé par l'éditeur de scénario après sauvegarde en "
 "mode scénario\n"
@@ -3197,7 +3190,6 @@ msgstr "Sauvegarder-recharger"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -3208,7 +3200,7 @@ msgstr ""
 "Les réussites aléatoires font partie de Wesnoth, les attaques peuvent "
 "échouer et les unités peuvent mourir faute de chance. Cela fait entièrement "
 "partie du jeu. Revenir à un tour précédent pour essayer une autre stratégie "
-"permet d'apprendre à mieux jouer, mais nous vous déconseillons  de recharger "
+"permet d'apprendre à mieux jouer, mais nous vous déconseillons de recharger "
 "pour tenter à nouveau la même stratégie en espérant avoir plus de chance."
 
 #. [topic]: id=saveload
@@ -3228,7 +3220,6 @@ msgstr ""
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
-#, fuzzy
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -3247,7 +3238,6 @@ msgstr ""
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
-#, fuzzy
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -3291,7 +3281,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:311
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3302,7 +3291,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Lorsque vous débuter le jeu, vous allez perdre quelques scénarios. C'est "
+"Lorsque vous débutez le jeu, vous allez perdre quelques scénarios. C'est "
 "normal et cela fait partie de l'apprentissage. Lorsque cela arrive, essayez "
 "d'apprendre de vos erreurs : regardez le film du jeu, essayez de comprendre "
 "ce que vous avez mal fait, <ref>dst='saveload' text='recommencez le "
@@ -3321,7 +3310,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3350,7 +3338,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3398,7 +3385,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3412,9 +3398,9 @@ msgstr ""
 "\n"
 "\n"
 "• Mauvaise gestion de l'or. Dans les niveaux de difficultés élevés, la "
-"gestion de l'or — capturer des villages pour accroitre votre revenu et "
-"utiliser des unités de faibles niveaux ou de nouvelles recrues pour limiter "
-"la dépense — devient importante. Si vous utilisez beaucoup d'unités de haut "
+"gestion de l'or — capturer des villages pour accroître votre revenu et "
+"utiliser des unités de faible niveau ou de nouvelles recrues pour limiter la "
+"dépense — devient importante. Si vous utilisez beaucoup d'unités de haut "
 "niveau, vous gagnerez facilement mais vous n'aurez pas assez d'or pour le "
 "prochain scénario."
 
@@ -3431,7 +3417,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3460,7 +3445,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -8206,7 +8190,6 @@ msgstr "Corbeaux"
 # Essayer d'éviter d'associer "bec" et "gryphon"
 #. [race]: id=raven
 #: data/core/units.cfg:354
-#, fuzzy
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
