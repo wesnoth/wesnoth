@@ -6,10 +6,10 @@
 # Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2022, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-08-06 00:24+0200\n"
+"PO-Revision-Date: 2024-03-04 17:34+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -6172,10 +6172,8 @@ msgstr "Führt Konrad zur Höhle"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-#, fuzzy
-#| msgid "Rescue the sergeant"
 msgid "Rescue the lieutenant"
-msgstr "Rettet den Feldwebel"
+msgstr "Rettet den Leutnant"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:154
@@ -6512,15 +6510,11 @@ msgstr "Ich sehe jemanden auf der Spitze dieser Klippe."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
-#, fuzzy
-#| msgid ""
-#| "It is a young human sergeant, barely more than a boy. He appears badly "
-#| "hurt but still alive."
 msgid ""
 "It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
-"Es ist ein junger Feldwebel, fast noch ein Junge. Er ist schwer verletzt, "
+"Es ist ein junger Offizier, fast noch ein Junge. Er ist schwer verletzt, "
 "aber noch am Leben."
 
 #. [message]: speaker=unit
@@ -6597,18 +6591,13 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
-#, fuzzy
-#| msgid ""
-#| "Our main goal remains to survive ourselves, but if we can spare the "
-#| "troops, we might try to rescue the sergeant stranded on the cliff. "
-#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the officer stranded on the cliff. However, I make no "
 "promises."
 msgstr ""
 "Unser Hauptziel bleibt unverändert, aber wenn ich Truppen erübrigen kann, "
-"werde ich versuchen, den Feldwebel zu retten. Aber ich mache keine "
+"werde ich versuchen, den Offizier zu retten. Aber ich mache keine "
 "Versprechungen."
 
 #. [message]: speaker=Li'sar
@@ -6651,16 +6640,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
-#, fuzzy
-#| msgid ""
-#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
 "healers to help you, young lieutenant."
 msgstr ""
 "Ich bin Prinzessin Li’sar und wir sind Verbündete. Schließt Euch uns an. "
-"Unsere Heiler werden sich um Eure Verletzungen kümmern, junger Feldwebel."
+"Unsere Heiler werden sich um Eure Verletzungen kümmern, junger Leutnant."
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:850
@@ -7659,40 +7644,31 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
-#, fuzzy
-#| msgid ""
-#| "Upon finishing the book, $unit.name| has a much greater understanding of "
-#| "the forest, its nature and ways, and all the creatures within it. "
-#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
 "$unit.name| becomes entranced and greatly gains affinity with the forest, "
 "its nature and ways, and all the creatures within it. He feels he will "
 "quickly become more experienced once reaching the surface. Unfortunately, as "
 "the last page was turned, the book crumbled to dust."
 msgstr ""
-"Nach dem bloßen Durchblättern des Buches verstand $unit.name| die Natur des "
-"Waldes schon viel besser und nahm sich vor, das Werk in ruhigen Stunden "
-"durchzulesen. Leider zerfiel es zu Holzmehl, als es nach der letzten Seite "
-"wieder zugeklappt wurde …"
+"$unit.name| ist hingerissen von den Geschichten und versteht nun den Wald, "
+"die Kreaturen darin, die Natur und ihre Wege sehr viel besser. Er ist "
+"sicher, dass er schnell mehr Erfahrung erwerben wird, wenn ihr zurück an der "
+"Oberfläche seid. Leider zerfiel das Buch zu Holzmehl, als es nach der "
+"letzten Seite wieder zugeklappt wurde …"
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
-#, fuzzy
-#| msgid ""
-#| "female^Upon finishing the book, $unit.name| has a much greater "
-#| "understanding of the forest, its nature and ways, and all the creatures "
-#| "within it. Unfortunately, as the last page was turned, the book crumbled "
-#| "to dust."
 msgid ""
 "female^$unit.name| becomes entranced and greatly gains affinity with the "
 "forest, its nature and ways, and all the creatures within it. She feels she "
 "will quickly become more experienced once reaching the surface. "
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
-"Nach dem bloßen Durchblättern des Buches verstand $unit.name| die Natur des "
-"Waldes schon viel besser und nahm sich vor, das Werk in ruhigen Stunden "
-"durchzulesen. Leider zerfiel es zu Holzmehl, als es nach der letzten Seite "
-"wieder zugeklappt wurde …"
+"$unit.name| ist hingerissen von den Geschichten und versteht nun den Wald, "
+"die Kreaturen darin, die Natur und ihre Wege sehr viel besser. Sie ist "
+"sicher, dass sie schnell mehr Erfahrung erwerben wird, wenn ihr zurück an "
+"der Oberfläche seid. Leider zerfiel das Buch zu Holzmehl, als es nach der "
+"letzten Seite wieder zugeklappt wurde …"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
@@ -9241,10 +9217,8 @@ msgstr ""
 
 #. [unit_type]: id=Injured Lieutenant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
-#, fuzzy
-#| msgid "Injured Sergeant"
 msgid "Injured Lieutenant"
-msgstr "Verwundeter Feldwebel"
+msgstr "Verwundeter Leutnant"
 
 #. [variation]
 #. [unit_type]: id=Lord
