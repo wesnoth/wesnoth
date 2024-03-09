@@ -89,12 +89,20 @@ void story_viewer::pre_show(window& window)
 	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
+	// text_layout=bottom set
 	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel", false),
 		std::bind(&story_viewer::close, this));
 	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsleft", false),
 		std::bind(&story_viewer::close, this));
 	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsright", false),
 		std::bind(&story_viewer::close, this));
+	// text_layout=top set
+	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel2", false),
+			std::bind(&story_viewer::close, this));
+	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsleft2", false),
+			std::bind(&story_viewer::close, this));
+	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsright2", false),
+			std::bind(&story_viewer::close, this));
 
 	connect_signal_mouse_left_click(find_widget<image>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
@@ -273,14 +281,45 @@ void story_viewer::display_part()
 
 	std::string new_panel_mode;
 
+	// Based on story dialog position, show one set of cancel button,
+	// and hide the other set.
+	label& cancel = find_widget<label>(get_window(), "cancel", false);
+	label& cancel2 = find_widget<label>(get_window(), "cancel2", false);
+	gui2::image& dlft = find_widget<gui2::image>(get_window(), "dotsleft", false);
+	gui2::image& dlft2 = find_widget<gui2::image>(get_window(), "dotsleft2", false);
+	gui2::image& drht = find_widget<gui2::image>(get_window(), "dotsright", false);
+	gui2::image& drht2 = find_widget<gui2::image>(get_window(), "dotsright2", false);
+
 	switch(current_part_->story_text_location()) {
+
 		case storyscreen::part::BLOCK_TOP:
+			cancel.set_visible(widget::visibility::invisible);
+			dlft.set_visible(widget::visibility::invisible);
+			drht.set_visible(widget::visibility::invisible);
+			cancel2.set_visible(widget::visibility::visible);
+			dlft2.set_visible(widget::visibility::visible);
+			drht2.set_visible(widget::visibility::visible);
+
 			new_panel_mode = "top";
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
+			cancel.set_visible(widget::visibility::visible);
+			dlft.set_visible(widget::visibility::visible);
+			drht.set_visible(widget::visibility::visible);
+			cancel2.set_visible(widget::visibility::invisible);
+			dlft2.set_visible(widget::visibility::invisible);
+			drht2.set_visible(widget::visibility::invisible);
+
 			new_panel_mode = "center";
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
+			cancel.set_visible(widget::visibility::visible);
+			dlft.set_visible(widget::visibility::visible);
+			drht.set_visible(widget::visibility::visible);
+			cancel2.set_visible(widget::visibility::invisible);
+			dlft2.set_visible(widget::visibility::invisible);
+			drht2.set_visible(widget::visibility::invisible);
+
 			new_panel_mode = "bottom";
 			break;
 	}
@@ -314,7 +353,9 @@ void story_viewer::display_part()
 
 	// Hardcoded max width, should be made customizable
 	// preferably as an key to [part]
-	text_label.set_text_max_width(1000);
+	unsigned win_width_4 = get_window()->get_size().x/4;
+	unsigned best_text_width = (win_width_4 > 1000) ? 1000 : win_width_4;
+	text_label.set_text_max_width(best_text_width);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
