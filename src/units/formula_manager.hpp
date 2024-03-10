@@ -20,7 +20,6 @@
 #include<string>
 
 class config;
-class unit;
 
 class unit_formula_manager {
 public:

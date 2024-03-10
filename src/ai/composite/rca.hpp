@@ -144,7 +144,6 @@ private:
 
 typedef std::shared_ptr<candidate_action> candidate_action_ptr;
 
-class candidate_action_factory;
 
 class candidate_action_factory{
 	bool is_duplicate(const std::string &name);

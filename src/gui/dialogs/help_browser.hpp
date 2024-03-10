@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-class game_config_view;
 
 namespace gui2::dialogs
 {

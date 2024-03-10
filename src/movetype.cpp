@@ -20,10 +20,8 @@
 
 #include "movetype.hpp"
 
-#include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "terrain/translation.hpp"
 #include "units/types.hpp" // for attack_type
 

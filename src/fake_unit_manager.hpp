@@ -19,7 +19,6 @@
 
 class display;
 class unit;
-class fake_unit_ptr;
 
 /** Manages a list of fake units for the display object. */
 class fake_unit_manager {

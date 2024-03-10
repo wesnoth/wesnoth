@@ -22,14 +22,12 @@
 #include <stack>
 #include <string>                       // for string
 
-class config;
 class game_config_view;
 class unit;
 class vconfig;
 namespace ai { class engine_lua; }
 namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
-namespace game_events { struct queued_event; }
 
 class game_display;
 class game_state;

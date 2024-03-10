@@ -15,7 +15,6 @@
 #include "countdown_clock.hpp"
 
 #include "team.hpp"
-#include "saved_game.hpp"
 #include "preferences/general.hpp"
 #include "sound.hpp"
 

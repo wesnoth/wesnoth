@@ -26,7 +26,6 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 class label;
-class spacer;
 
 namespace implementation
 {

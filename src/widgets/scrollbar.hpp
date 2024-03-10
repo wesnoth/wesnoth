@@ -20,7 +20,6 @@
 
 namespace gui {
 
-class scrollarea;
 
 /** Scrollbar */
 class scrollbar : public widget

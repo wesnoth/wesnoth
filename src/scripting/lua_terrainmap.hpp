@@ -14,17 +14,12 @@
 
 #pragma once
 
-#include <cstddef>
 #include <string>
-#include "scripting/lua_common.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
-#include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 
 struct lua_State;
-class lua_unit;
-struct map_location;
 
 // Unlike the original gamemap, this offers 'raw' access to the data.
 // The original gamemap uses terrain type data.

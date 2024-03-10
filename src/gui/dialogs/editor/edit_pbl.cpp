@@ -32,13 +32,11 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "serialization/base64.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 
-#include <boost/algorithm/string/replace.hpp>
 
 namespace gui2::dialogs
 {

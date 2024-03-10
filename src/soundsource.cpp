@@ -14,7 +14,6 @@
 */
 
 #include "display.hpp"
-#include "log.hpp"
 #include "random.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"

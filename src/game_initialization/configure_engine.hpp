@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "gettext.hpp"
 #include "mp_game_settings.hpp"
 #include "saved_game.hpp"
 

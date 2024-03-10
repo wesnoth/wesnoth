@@ -21,7 +21,6 @@
 #include <vector>
 
 namespace ai {
-	class readonly_context_impl;
 }
 
 /** This class encapsulates the recall list of a team. */

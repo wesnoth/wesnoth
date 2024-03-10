@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "tstring.hpp"
 
-#include <functional>
 #include <string>
 #include <vector>
 

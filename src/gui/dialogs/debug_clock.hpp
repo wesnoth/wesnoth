@@ -18,7 +18,6 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/core/top_level_drawable.hpp"
 
 namespace gui2
 {

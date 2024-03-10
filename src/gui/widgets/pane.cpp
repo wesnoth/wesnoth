@@ -25,8 +25,6 @@
 #include "utils/const_clone.hpp"
 #include "gui/core/event/message.hpp"
 #include "gettext.hpp"
-#include "lexical_cast.hpp"
-#include "sdl/rect.hpp"
 
 #include <functional>
 

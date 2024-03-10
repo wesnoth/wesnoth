@@ -30,7 +30,6 @@
 #include "resources.hpp"
 #include "scripting/lua_unit.hpp"
 #include "team.hpp"
-#include "tod_manager.hpp"
 #include "units/filter.hpp"
 #include "units/unit.hpp"
 

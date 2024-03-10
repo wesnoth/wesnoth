@@ -16,18 +16,13 @@
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_attributes.hpp"
 
-#include "log.hpp"
 #include "gui/widgets/widget.hpp"
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_unit.hpp"
-#include "scripting/lua_unit_type.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "scripting/push_check.hpp"
 
 
-#include "lua/wrapper_lauxlib.h"
 
-#include <type_traits>
 
 static const char widgetKey[] = "widget";
 static char widgetdataKey[] = "widgetdata";

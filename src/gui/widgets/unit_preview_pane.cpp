@@ -23,8 +23,6 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
@@ -41,7 +39,6 @@
 #include "team.hpp"
 #include "terrain/movement.hpp"
 #include "terrain/type_data.hpp"
-#include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
 #include "units/unit.hpp"

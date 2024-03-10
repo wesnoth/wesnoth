@@ -18,16 +18,10 @@
 
 #include "game_end_exceptions.hpp"
 
-#include <memory>
-#include <sstream>
 #include <set>
 #include <string>
 
 class saved_game;
-class terrain_type_data;
-class team;
-class playsingle_controller;
-class config;
 class wesnothd_connection;
 
 struct mp_game_metadata

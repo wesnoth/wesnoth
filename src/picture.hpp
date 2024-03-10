@@ -19,7 +19,6 @@
 #include "terrain/translation.hpp"
 
 #include <optional>
-#include <unordered_map>
 
 class surface;
 class texture;

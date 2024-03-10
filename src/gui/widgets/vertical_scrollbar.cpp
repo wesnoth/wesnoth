@@ -17,10 +17,8 @@
 
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
-#include <functional>
 
 namespace gui2
 {

@@ -18,13 +18,9 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "quit_confirmation.hpp"
 
-#include "gui/dialogs/message.hpp"
-#include "game_end_exceptions.hpp"
-#include "gettext.hpp"
 
 
 #include <functional>

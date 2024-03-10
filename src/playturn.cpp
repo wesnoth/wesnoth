@@ -37,11 +37,9 @@
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"       // for manager
-#include "widgets/button.hpp"           // for button
 
 #include <cassert>                      // for assert
 #include <ctime>                        // for time
-#include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector
 
 static lg::log_domain log_network("network");

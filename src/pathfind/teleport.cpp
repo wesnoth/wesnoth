@@ -20,7 +20,6 @@
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
-#include "serialization/string_utils.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"

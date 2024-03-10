@@ -23,7 +23,6 @@
 
 #include "editor/action/action_item.hpp"
 
-#include "editor/map/map_context.hpp"
 
 namespace editor
 {

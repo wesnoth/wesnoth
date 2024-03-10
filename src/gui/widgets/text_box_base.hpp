@@ -27,7 +27,6 @@ namespace gui2
 {
 namespace implementation
 {
-	struct builder_styled_widget;
 }
 
 /**

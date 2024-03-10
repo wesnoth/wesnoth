@@ -16,7 +16,6 @@
 #include "gui/dialogs/game_delete.hpp"
 
 #include "preferences/game.hpp"
-#include "gui/widgets/settings.hpp"
 
 namespace gui2::dialogs
 {

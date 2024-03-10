@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "editor/controller/editor_controller.hpp"
 #include "time_of_day.hpp"
 
 #include <vector>
@@ -24,7 +23,6 @@
 
 namespace gui2
 {
-class slider;
 
 namespace dialogs
 {

@@ -20,12 +20,10 @@
 
 #include "addon/validation.hpp"
 
-#include "display.hpp"
 #include "editor/map/context_manager.hpp"
 #include "editor/map/map_context.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "game_board.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"

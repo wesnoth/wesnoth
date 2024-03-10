@@ -23,7 +23,6 @@
 
 #include "log.hpp"
 #include "random.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 

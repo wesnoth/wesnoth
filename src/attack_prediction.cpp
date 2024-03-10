@@ -32,17 +32,13 @@
 
 #include "actions/attack.hpp"
 #include "game_config.hpp"
-#include "log.hpp"
 #include "preferences/general.hpp"
 #include "random.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <array>
 #include <cfloat>
-#include <cmath>
 #include <memory>
 #include <numeric>
-#include <sstream>
 
 #if defined(BENCHMARK) || defined(CHECK)
 #include <chrono>

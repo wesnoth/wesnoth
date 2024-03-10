@@ -27,7 +27,6 @@
 #include "map/map.hpp"
 #include "preferences/general.hpp"
 #include "resources.hpp"
-#include "sdl/utils.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"

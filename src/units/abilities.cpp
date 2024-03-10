@@ -41,9 +41,7 @@
 #include "formula/function_gamestate.hpp"
 #include "deprecation.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
-#include <string_view>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

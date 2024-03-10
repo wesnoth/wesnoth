@@ -19,7 +19,6 @@
 #include "editor/action/action_item.hpp"
 
 #include "editor/editor_display.hpp"
-#include "tooltips.hpp"
 #include "gettext.hpp"
 
 #include "map/location.hpp"

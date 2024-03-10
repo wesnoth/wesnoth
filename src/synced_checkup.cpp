@@ -15,7 +15,6 @@
 
 #include "synced_checkup.hpp"
 #include "log.hpp"
-#include "replay.hpp"
 #include "synced_user_choice.hpp"
 
 static lg::log_domain log_replay("replay");

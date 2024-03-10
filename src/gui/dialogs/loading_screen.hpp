@@ -14,14 +14,12 @@
 
 #pragma once
 
-#include "gui/core/top_level_drawable.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include "events.hpp"
 #include "tstring.hpp"
 
 #include <atomic>
-#include <chrono>
 #include <future>
 #include <map>
 #include <optional>

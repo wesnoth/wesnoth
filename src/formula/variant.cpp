@@ -16,14 +16,11 @@
 #include <cassert>
 #include <cmath>
 #include <cstring>
-#include <cassert>
-#include <cmath>
 #include <memory>
 #include <stack>
 
 #include "formatter.hpp"
 #include "formula/function.hpp"
-#include "utils/math.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");

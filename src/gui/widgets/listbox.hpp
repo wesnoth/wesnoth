@@ -23,7 +23,6 @@
 
 #include "preferences/general.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 #include <functional>
 
 namespace gui2

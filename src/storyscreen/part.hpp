@@ -23,7 +23,6 @@
 #include "storyscreen/parser.hpp"
 
 #include <string>
-#include <utility>
 #include <vector>
 
 class config;

@@ -22,12 +22,9 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/addon_list.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
 namespace gui2
 {
-class text_box_base;
-class text_box;
 class selectable_item;
 class button;
 class stacked_widget;

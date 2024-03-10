@@ -52,7 +52,6 @@
 
 #include "lua/wrapper_lauxlib.h"
 
-struct lua_State;
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)

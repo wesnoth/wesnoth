@@ -27,7 +27,6 @@
 #include "config.hpp"                   // for config
 #include "formula/callable.hpp"         // for formula_callable, etc
 #include "formula/formula_fwd.hpp"              // for const_formula_ptr, etc
-#include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
 #include "units/map.hpp"
 #include <set>                          // for multiset
@@ -36,12 +35,10 @@
 #include <vector>                       // for vector
 
 namespace ai { class ai_context; }
-namespace pathfind { struct plain_route; }  // lines 57-57
 struct map_location;
 
 namespace wfl {
 	struct formula_error;
-	class variant;
 }
 
 namespace wfl {

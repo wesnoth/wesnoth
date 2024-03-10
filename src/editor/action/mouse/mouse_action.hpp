@@ -16,9 +16,7 @@
 #pragma once
 
 #include "editor/action/action_base.hpp"
-#include "editor/map/editor_map.hpp"
 #include "theme.hpp"
-#include "editor/palette/editor_palettes.hpp"
 #include "editor/palette/terrain_palettes.hpp"
 #include "editor/palette/location_palette.hpp"
 #include "editor/palette/empty_palette.hpp"

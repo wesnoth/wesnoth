@@ -15,12 +15,9 @@
 
 #include "hotkey/hotkey_handler.hpp"
 
-#include "actions/create.hpp"
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
-#include "game_errors.hpp"
-#include "game_events/menu_item.hpp"
 #include "game_events/wmi_manager.hpp"
 #include "preferences/game.hpp"
 #include "game_state.hpp"
@@ -29,9 +26,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
-#include "preferences/display.hpp"
 #include "savegame.hpp"
-#include "saved_game.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>

@@ -34,14 +34,11 @@
 class game_launcher;
 namespace ai { class unit_advancements_aspect; }  // lines 45-45
 namespace ai { class ai_composite; }  // lines 45-45
-namespace ai { class ai_context; }  // lines 42-42
 namespace ai { class component; }  // lines 43-43
 namespace ai { class default_ai_context; }  // lines 41-41
 namespace ai { class readonly_context; }  // lines 39-39
 namespace ai { class readwrite_context; }  // lines 40-40
 namespace ai { class side_context; }  // lines 38-38
-namespace events { class generic_event; }
-namespace events { class observer; }
 
 namespace ai
 {

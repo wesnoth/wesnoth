@@ -21,10 +21,8 @@
 #include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <pango/pango.h>
 #include <pango/pangocairo.h>
 
-#include <iostream>
 
 #include <functional>
 #include <memory>
@@ -35,7 +33,6 @@
  * Note: This is the cairo-pango code path, not the SDL_TTF code path.
  */
 
-struct language_def;
 struct point;
 
 namespace font {

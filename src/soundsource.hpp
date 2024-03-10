@@ -26,7 +26,6 @@ class display;
 namespace soundsource {
 
 class sourcespec;
-class manager;
 
 /*
  * Sound source is an object on a map (a location) which has one or more

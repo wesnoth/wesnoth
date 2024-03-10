@@ -22,7 +22,6 @@ class config;
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "tod_manager.hpp"
-#include "units/id.hpp"
 
 class game_display;
 class play_controller;
@@ -30,11 +29,9 @@ class game_lua_kernel;
 class reports;
 
 namespace game_events { class manager; class wmi_manager; }
-namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
 
-namespace wb { class manager; }
 
 namespace actions { class undo_list; }
 

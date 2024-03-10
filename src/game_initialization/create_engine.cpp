@@ -17,7 +17,6 @@
 
 #include "filesystem.hpp"
 #include "game_config_manager.hpp"
-#include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "game_initialization/component_availability.hpp"
 #include "generators/map_create.hpp"
@@ -25,17 +24,14 @@
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
-#include "minimap.hpp"
 #include "saved_game.hpp"
 #include "side_controller.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <sstream>
-#include <cctype>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

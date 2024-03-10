@@ -18,7 +18,6 @@
 #include "ai/game_info.hpp"
 #include "actions/attack.hpp"
 #include "formula/callable_objects.hpp"
-#include "formula/formula.hpp"
 #include "formula/callable.hpp"
 
 namespace ai {

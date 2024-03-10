@@ -28,7 +28,6 @@
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "reports.hpp"
-#include "resources.hpp"
 #include "color.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -39,12 +38,9 @@
 #include "units/unit_alignments.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <cassert>
 #include <ctime>
 #include <iomanip>
-#include <boost/dynamic_bitset.hpp>
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")

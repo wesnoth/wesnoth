@@ -27,7 +27,6 @@
 #include "sdl/texture.hpp"
 #include "sdl/rect.hpp"
 
-namespace wfl { class variant; }
 struct point;
 
 namespace gui2

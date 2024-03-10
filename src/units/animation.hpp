@@ -23,7 +23,6 @@
 #include "units/ptr.hpp"
 #include "units/strike_result.hpp"
 
-class unit;
 
 class unit_animation
 {

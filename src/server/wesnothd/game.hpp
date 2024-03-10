@@ -16,12 +16,10 @@
 #pragma once
 
 #include "mt_rng.hpp"
-#include "server/wesnothd/player.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
 #include "side_controller.hpp"
 
-#include <map>
 #include <optional>
 #include <vector>
 

@@ -21,8 +21,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 
-#include "desktop/clipboard.hpp"
-#include "desktop/open.hpp"
 
 #include "help/help.hpp"
 #include "gettext.hpp"
@@ -37,10 +35,6 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/credentials.hpp"
@@ -55,10 +49,8 @@
 #include "config.hpp"
 
 #include <functional>
-#include <iomanip>
 #include <set>
 #include <sstream>
-#include <stdexcept>
 
 namespace gui2::dialogs
 {

@@ -18,8 +18,6 @@
 #include "config.hpp"
 #include "hash.hpp"
 #include "log.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/base64.hpp"
 #include "filesystem.hpp"
 #include "utils/scope_exit.hpp"
 
@@ -41,13 +39,8 @@
 #ifndef _WIN32
 #include <boost/asio/read_until.hpp>
 #endif
-#include <boost/asio/write.hpp>
 
-#include <array>
-#include <ctime>
-#include <functional>
 #include <queue>
-#include <sstream>
 #include <string>
 #include <iostream>
 
@@ -660,7 +653,6 @@ std::string server_base::hash_password(const std::string& pw, const std::string&
 }
 
 // This is just here to get it to build without the deprecation_message function
-#include "game_version.hpp"
 #include "deprecation.hpp"
 
 std::string deprecated_message(const std::string&, DEP_LEVEL, const version_info&, const std::string&) {return "";}

@@ -17,7 +17,6 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/scrollbar_container.hpp"
 
 namespace gui2
 {

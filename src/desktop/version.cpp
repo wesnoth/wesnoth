@@ -21,7 +21,6 @@
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "serialization/unicode.hpp"
 
 #include <cstring>
 

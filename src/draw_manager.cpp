@@ -23,12 +23,10 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>
 #include <vector>
-#include <map>
 
 static lg::log_domain log_draw_man("draw/manager");
 #define ERR_DM LOG_STREAM(err, log_draw_man)

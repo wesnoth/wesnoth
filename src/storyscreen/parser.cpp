@@ -18,7 +18,6 @@
 #include "game_data.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/pump.hpp"
-#include "log.hpp"
 #include "resources.hpp"
 #include "variable.hpp"
 #include "deprecation.hpp"

@@ -25,7 +25,6 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
-#include <cassert>
 #include <array>
 #include <limits>
 #include <optional>
