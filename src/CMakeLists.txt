@@ -265,6 +265,7 @@ if(ENABLE_GAME)
 		SDL2::SDL2
 		SDL2::SDL2main
 		CURL::libcurl
+		fmt
 	)
 	if(MSVC)
 		target_link_libraries(wesnoth SDL2_image::SDL2_image)

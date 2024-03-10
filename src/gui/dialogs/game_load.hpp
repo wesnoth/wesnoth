@@ -86,8 +86,6 @@ private:
 
 	std::vector<savegame::save_info> games_;
 	const game_config_view& cache_config_;
-
-	std::vector<std::string> last_words_;
 };
 } // namespace dialogs
 } // namespace gui2
