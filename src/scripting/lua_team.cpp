@@ -85,6 +85,7 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("share_vision", team_shared_vision::get_string(t.share_vision()));
 	return_float_attrib("carryover_bonus", t.carryover_bonus());
 	return_int_attrib("carryover_percentage", t.carryover_percentage());
+	return_int_attrib("carryover_gold", t.carryover_gold());
 	return_bool_attrib("carryover_add", t.carryover_add());
 	return_bool_attrib("lost", t.lost());
 	return_bool_attrib("persistent", t.persistent());
@@ -196,6 +197,7 @@ static int impl_side_set(lua_State *L)
 	});
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
 	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
+	modify_int_attrib("carryover_gold", t.set_carryover_gold(value));
 	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
 	modify_bool_attrib("lost", t.set_lost(value));
 	modify_bool_attrib("persistent", t.set_persistent(value));
