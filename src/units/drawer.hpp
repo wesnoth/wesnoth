@@ -27,6 +27,7 @@
 #include "map/location.hpp"
 #include "sdl/rect.hpp"
 #include "utils/math.hpp"
+#include "utils/ordinal_list.hpp"
 
 #include <map>
 #include <vector>
@@ -36,6 +37,7 @@ class display_context;
 class gamemap;
 namespace halo { class manager; }
 class team;
+using team_list = utils::ordinal_list<team>;
 class unit;
 
 struct color_t;
@@ -52,7 +54,7 @@ private:
 	display & disp;
 	const display_context & dc;
 	const gamemap & map;
-	const std::vector<team> & teams;
+	const team_list& teams;
 	halo::manager & halo_man;
 	std::size_t viewing_team;
 	std::size_t playing_team;

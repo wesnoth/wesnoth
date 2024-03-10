@@ -962,7 +962,7 @@ bool confirm_no_moves()
 	return confirmation == "no_moves" || confirmation.empty();
 }
 
-void encounter_recruitable_units(const std::vector<team>& teams)
+void encounter_recruitable_units(const team_list& teams)
 {
 	for(const team& help_team : teams) {
 		help_team.log_recruitable();
@@ -977,7 +977,7 @@ void encounter_start_units(const unit_map& units)
 	}
 }
 
-static void encounter_recallable_units(const std::vector<team>& teams)
+void encounter_recallable_units(const team_list& teams)
 {
 	for(const team& t : teams) {
 		for(const unit_const_ptr u : t.recall_list()) {

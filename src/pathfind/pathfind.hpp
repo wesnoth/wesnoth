@@ -20,17 +20,20 @@
 
 #pragma once
 
+#include "map/location.hpp"
+#include "movetype.hpp"
+#include "utils/ordinal_list.hpp"
+
+#include <vector>
+#include <map>
+#include <set>
+
 class gamemap;
 class team;
 class unit;
 class unit_type;
 class game_board;
-#include "map/location.hpp"
-#include "movetype.hpp"
-
-#include <vector>
-#include <map>
-#include <set>
+using team_list = utils::ordinal_list<team>;
 
 namespace pathfind {
 
@@ -204,7 +207,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost = false);
 struct shortest_path_calculator : cost_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
-		const std::vector<team> &teams, const gamemap &map,
+		const team_list &teams, const gamemap &map,
 		bool ignore_unit = false, bool ignore_defense_ = false,
 		bool see_all = false);
 	virtual double cost(const map_location& loc, const double so_far) const;
@@ -212,7 +215,7 @@ struct shortest_path_calculator : cost_calculator
 private:
 	const unit& unit_;
 	const team& viewing_team_;
-	const std::vector<team>& teams_;
+	const team_list& teams_;
 	const gamemap& map_;
 	const int movement_left_;
 	const int total_movement_;

@@ -399,7 +399,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
+		for(auto i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
 			vars.emplace_back(std::make_shared<team_callable>(*i));
 		}
 		return variant(vars);

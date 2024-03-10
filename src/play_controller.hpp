@@ -151,12 +151,12 @@ public:
 		return *gamestate().end_level_data_;
 	}
 
-	std::vector<team>& get_teams()
+	team_list& get_teams()
 	{
 		return gamestate().board_.teams();
 	}
 
-	const std::vector<team>& get_teams() const
+	const team_list& get_teams() const
 	{
 		return gamestate().board_.teams();
 	}

@@ -129,7 +129,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	unit_map &units_ = resources::gameboard->units();
 	unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();
-	std::vector<team> teams_ = resources::gameboard->teams();
+	auto& teams_ = resources::gameboard->teams();
 	const bool has_leader = leader != units_.end();
 
 	std::vector<target> targets;
@@ -177,9 +177,9 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 			assert(map_.on_board(*t));
 			bool ally_village = false;
-			for (std::size_t i = 0; i != teams_.size(); ++i)
+			for(std::size_t i = 1; i <= teams_.size(); ++i)
 			{
-				if (!current_team().is_enemy(i + 1) && teams_[i].owns_village(*t)) {
+				if (!current_team().is_enemy(i) && teams_[i].owns_village(*t)) {
 					ally_village = true;
 					break;
 				}

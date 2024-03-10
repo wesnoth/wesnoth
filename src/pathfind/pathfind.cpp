@@ -681,7 +681,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*(i+1)]);
 
-		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_team()];
+		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_side()];
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -730,7 +730,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 }
 
 shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
-		const std::vector<team>& teams, const gamemap& map,
+		const team_list& teams, const gamemap& map,
 		bool ignore_unit, bool ignore_defense, bool see_all)
 	: unit_(u), viewing_team_(t), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),

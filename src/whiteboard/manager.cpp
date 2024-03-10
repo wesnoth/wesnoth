@@ -82,7 +82,8 @@ manager::manager():
 		key_poller_(new CKey),
 		hidden_unit_hexes_(),
 		net_buffer_(resources::gameboard->teams().size()),
-		team_plans_hidden_(resources::gameboard->teams().size()),
+		// Reserve 1 extra index in the bitset so we can ignore index 0 and have the indices match the side numbers.
+		team_plans_hidden_(resources::gameboard->teams().size()+1),
 		units_owning_moves_()
 {
 	if(preferences::hide_whiteboard()) {
@@ -380,9 +381,9 @@ void manager::update_plan_hiding(std::size_t team_index)
 		{
 			//make sure only appropriate teams are hidden
 			if(!t.is_network_human())
-				team_plans_hidden_[t.side()-1] = false;
+				team_plans_hidden_[t.side()] = false;
 
-			if(t.is_enemy(team_index+1) || team_plans_hidden_[t.side()-1])
+			if(t.is_enemy(team_index) || team_plans_hidden_[t.side()])
 				t.get_side_actions()->hide();
 			else
 				t.get_side_actions()->show();
@@ -1131,8 +1132,7 @@ void manager::options_dlg()
 		allies.push_back(&t);
 
 		t_vars["player"] = t.current_player();
-		std::size_t t_index = t.side()-1;
-		if(team_plans_hidden_[t_index])
+		if(team_plans_hidden_[t.side()])
 			options.emplace_back(VGETTEXT("Show plans for $player", t_vars));
 		else
 			options.emplace_back(VGETTEXT("Hide plans for $player", t_vars));
@@ -1149,18 +1149,18 @@ void manager::options_dlg()
 	{
 	case 0:
 		for(team* t : allies) {
-			team_plans_hidden_[t->side()-1]=false;
+			team_plans_hidden_[t->side()]=false;
 		}
 		break;
 	case 1:
 		for(team* t : allies) {
-			team_plans_hidden_[t->side()-1]=true;
+			team_plans_hidden_[t->side()]=true;
 		}
 		break;
 	default:
 		if(selection > 1)
 		{
-			std::size_t t_index = allies[selection-2]->side()-1;
+			std::size_t t_index = allies[selection-2]->side();
 			//toggle ...
 			bool hidden = team_plans_hidden_[t_index];
 			team_plans_hidden_[t_index] = !hidden;

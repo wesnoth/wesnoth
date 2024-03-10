@@ -567,9 +567,9 @@ void scoped_recall_unit::activate()
 {
 	assert(resources::gameboard);
 
-	const std::vector<team>& teams = resources::gameboard->teams();
+	const auto& teams = resources::gameboard->teams();
 
-	std::vector<team>::const_iterator team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id_or_number() == player_; });
+	auto team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id_or_number() == player_; });
 
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {

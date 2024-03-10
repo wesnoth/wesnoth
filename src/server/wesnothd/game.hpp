@@ -20,6 +20,7 @@
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
 #include "side_controller.hpp"
+#include "utils/ordinal_list.hpp"
 
 #include <map>
 #include <optional>
@@ -30,7 +31,7 @@
 namespace wesnothd
 {
 typedef std::vector<player_iterator> user_vector;
-typedef std::vector<std::optional<player_iterator>> side_vector;
+typedef utils::ordinal_list<std::optional<player_iterator>> side_vector;
 class server;
 
 class game

@@ -591,14 +591,13 @@ void shroud_clearer::invalidate_after_clear()
  */
 std::vector<int> get_sides_not_seeing(const unit & target)
 {
-	const std::vector<team> & teams = resources::gameboard->teams();
+	const auto& teams = resources::gameboard->teams();
 	std::vector<int> not_seeing;
 
 	std::size_t team_size = teams.size();
-	for ( std::size_t i = 0; i != team_size; ++i)
+	for(std::size_t i = 1; i <= team_size; ++i)
 		if ( !target.is_visible_to_team(teams[i], false) )
-			// not_see contains side numbers; i is a team index, so add 1.
-			not_seeing.push_back(i+1);
+			not_seeing.push_back(i);
 
 	return not_seeing;
 }
@@ -627,29 +626,33 @@ game_events::pump_result_t actor_sighted(const unit & target, const std::vector<
  * 5) Sides that do not use fog or shroud CAN get sighted events.
  */
 {
-	const std::vector<team> & teams = resources::gameboard->teams();
+	const auto& teams = resources::gameboard->teams();
 	const std::size_t teams_size = teams.size();
 	const map_location & target_loc = target.get_location();
 
 	// Determine the teams that (probably) should get events.
+	// Allocate 1 extra bit so we can ignore index 0 and use the 1-based side number as the index.
 	boost::dynamic_bitset<> needs_event;
-	needs_event.resize(teams_size, cache == nullptr);
+	needs_event.resize(teams_size + 1, cache == nullptr);
+	needs_event[0] = false;
 	if ( cache != nullptr ) {
 		// Flag just the sides in the cache as needing events.
 		for (int side : *cache)
-			needs_event[side-1] = true;
+			needs_event[side] = true;
 	}
 	// Exclude the target's own team.
 	needs_event[target.side()-1] = false;
 	// Exclude those teams that cannot see the target.
-	for ( std::size_t i = 0; i != teams_size; ++i )
+	for(std::size_t i = 1; i <= teams_size; ++i) {
 		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], false);
+	}
 
 	// Cache "jamming".
-	std::vector< std::map<map_location, int>> jamming_cache(teams_size);
-	for ( std::size_t i = 0; i != teams_size; ++i )
+	utils::ordinal_list<std::map<map_location, int>> jamming_cache(teams_size);
+	for(std::size_t i = 1; i <= teams_size; ++i) {
 		if ( needs_event[i] )
 			create_jamming_map(jamming_cache[i], teams[i]);
+	}
 
 	// Look for units that can be used as the second unit in sighted events.
 	std::vector<const unit *> second_units(teams_size, nullptr);

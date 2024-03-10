@@ -40,7 +40,7 @@ namespace wb {
 
 std::size_t viewer_team()
 {
-	return display::get_singleton()->viewing_team();
+	return display::get_singleton()->viewing_side();
 }
 
 int viewer_side()
@@ -51,7 +51,7 @@ int viewer_side()
 side_actions_ptr viewer_actions()
 {
 	side_actions_ptr side_actions =
-			resources::gameboard->teams()[display::get_singleton()->viewing_team()].get_side_actions();
+			resources::gameboard->teams()[display::get_singleton()->viewing_side()].get_side_actions();
 	return side_actions;
 }
 
@@ -115,7 +115,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 		return nullptr;
 	}
 	//use global method get_visible_unit
-	return resources::gameboard->get_visible_unit(hex, resources::gameboard->get_team(viewer_side), false);
+	return resources::gameboard->get_visible_unit(hex, resources::gameboard->teams().at(viewer_side), false);
 }
 
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
@@ -132,7 +132,7 @@ int path_cost(const std::vector<map_location>& path, const unit& u)
 	if(path.size() < 2)
 		return 0;
 
-	const team& u_team = resources::gameboard->get_team(u.side());
+	const team& u_team = resources::gameboard->teams().at(u.side());
 	const map_location& dest = path.back();
 	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
@@ -226,7 +226,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 
 std::deque<action_ptr> find_actions_of(const unit& target)
 {
-	return resources::gameboard->get_team(target.side()).get_side_actions()->actions_of(target);
+	return resources::gameboard->teams().at(target.side()).get_side_actions()->actions_of(target);
 }
 
 } //end namespace wb

@@ -51,7 +51,7 @@ namespace events {
  **/
 class game_board : public display_context
 {
-	std::vector<team> teams_;
+	team_list teams_;
 	std::vector<std::string> labels_;
 
 	std::unique_ptr<gamemap> map_;
@@ -83,12 +83,12 @@ public:
 	game_board(const config& level);
 	virtual ~game_board();
 
-	virtual const std::vector<team>& teams() const override
+	virtual const team_list& teams() const override
 	{
 		return teams_;
 	}
 
-	std::vector<team>& teams()
+	team_list& teams()
 	{
 		return teams_;
 	}
@@ -97,7 +97,7 @@ public:
 
 	team& get_team(int i)
 	{
-		return teams_.at(i - 1);
+		return teams_.at(i);
 	}
 
 	virtual const gamemap& map() const override

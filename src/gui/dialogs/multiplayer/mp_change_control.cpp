@@ -152,7 +152,7 @@ void mp_change_control::highlight_side_nick()
 	for(const std::string& nick : nicks_) {
 		std::string label_str = "";
 
-		if(selected_side_ <= static_cast<unsigned int>(teams.size()) && teams.at(selected_side_).current_player() == nick) {
+		if(teams.has_index(selected_side_) && teams.at(selected_side_).current_player() == nick) {
 			label_str = formatter() << "<b>" << nick << "</b>";
 		} else {
 			label_str = nick;

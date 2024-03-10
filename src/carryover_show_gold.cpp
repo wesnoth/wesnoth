@@ -40,7 +40,7 @@ void carryover_show_gold(game_state& state, bool hidden, bool is_observer, bool 
 	const end_level_data& end_level = *state.end_level_data_;
 	const bool is_victory = end_level.is_victory;
 	// We need to write the carryover amount to the team that's why we need non const
-	std::vector<team>& teams = board.teams();
+	auto& teams = board.teams();
 
 	// maybe this can be the case for scenario that only contain a story and end during the prestart event ?
 	if(teams.size() < 1) {
