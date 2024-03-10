@@ -1380,10 +1380,52 @@ int attack_type::composite_value(const unit_ability_list& abil_list, int base_va
 	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
 }
 
-static bool overwrite_special_affects(const config& special)
-{
-	const std::string& apply_to = special["overwrite_specials"];
-	return (apply_to == "one_side" || apply_to == "both_sides");
+namespace{//contain functions used by overwrite_specials below.
+	bool overwrite_matches_simple_filter(const unit& u, const config & cfg, const config & filter, const std::string& tag_name)
+	{
+		//check special_id_active and experimental_filter_special_active. Return false if not matches
+		const std::set<std::string> filter_special_id_active = utils::split_set(filter["special_id_active"].str());
+		if ( !filter_special_id_active.empty() && filter_special_id_active.count(cfg["id"].str()) == 0 )
+			return false;
+
+		if(auto sub_filter_special = filter.optional_child("experimental_filter_specials")) {
+			if(!u.ability_matches_filter(cfg, tag_name, *sub_filter_special)) {
+				return false;
+			}
+		}
+
+		// Passed all tests.
+		return true;
+	}
+
+	static bool overwrite_matches_filter(const unit& u, const config& cfg, const config& filter, const std::string& tag_name)
+	{
+		// Handle the basic filter.
+		bool matches = overwrite_matches_simple_filter(u, cfg, filter, tag_name);
+
+		// Handle [and], [or], and [not] with in-order precedence
+		for (const config::any_child condition : filter.all_children_range() )
+		{
+			// Handle [and]
+			if ( condition.key == "and" )
+				matches = matches && overwrite_matches_filter(u, cfg, condition.cfg, tag_name);
+
+			// Handle [or]
+			else if ( condition.key == "or" )
+				matches = matches || overwrite_matches_filter(u, cfg, condition.cfg, tag_name);
+
+			// Handle [not]
+			else if ( condition.key == "not" )
+				matches = matches && !overwrite_matches_filter(u, cfg, condition.cfg, tag_name);
+		}
+
+		return matches;
+	}
+	static bool overwrite_special_affects(const config& special)
+	{
+		const std::string& apply_to = special["overwrite_specials"];
+		return (apply_to == "one_side" || apply_to == "both_sides");
+	}
 }
 
 unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const
@@ -1457,13 +1499,8 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 
 		// check whether the current overwriter is disabled due to a filter
 		bool special_matches = true;
-		if(overwrite_specials){
-			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
-			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				if(self_){
-					special_matches = (*self_).ability_matches_filter(cfg, tag_name, *overwrite_filter);
-				}
-			}
+		if(overwrite_specials && is_overwritable && one_side_overwritable){
+			special_matches = overwrite_matches_filter(*self_, cfg, *overwrite_specials, tag_name);
 		}
 
 		// if the cfg being checked should be overwritten
