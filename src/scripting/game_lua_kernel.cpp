@@ -368,7 +368,7 @@ static int impl_add_animation(lua_State* L)
 
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
-	if(video::headless() || !resources::controller->is_skipping_replay()) {
+	if(video::headless() || resources::controller->is_skipping_replay()) {
 		return 0;
 	}
 	events::command_disabler command_disabler;

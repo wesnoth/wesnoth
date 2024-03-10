@@ -2,7 +2,8 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2024.
 # Tereza Žejdlová, 2020.
 #
 msgid ""
@@ -10,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-12-02 19:27+0100\n"
+"PO-Revision-Date: 2024-02-15 16:47+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -18,6 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -16272,12 +16274,12 @@ msgstr "Tato jednotka dokáže procházet pevnými zdmi."
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
 msgid "teaching"
-msgstr "učení"
+msgstr "vyučující"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:785
 msgid "female^teaching"
-msgstr "učení"
+msgstr "vyučující"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:786
@@ -16286,9 +16288,9 @@ msgid ""
 "all the units of the same side adjacent to it. If no suitable unit is "
 "adjacent, its experience just goes back to zero."
 msgstr ""
-"Na začátku každého kola tato jednotka přerozděluje své body zkušenosti všem "
-"jednotkám své strany, které se nacházejí vedle ní. Pokud s ní nesousedí "
-"žádná vhodná jednotka, její zkušenost se vrátí zpět na nulu."
+"Na začátku každého kola tato jednotka přerozdělí své zkušenosti všem "
+"sousedícím spřáteleným jednotkám. Pokud s ní žádná vhodná jednotka "
+"nesousedí, její zkušenost se pouze sníží na nulu."
 
 #. [attacks]: id=shock
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:795
