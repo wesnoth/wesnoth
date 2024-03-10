@@ -53,10 +53,6 @@ public:
 	/** True if the --validate or any of the --validate-*  options are given. */
 	bool any_validation_option() const;
 
-	/** Non-empty if --bunzip2 was given on the command line. Uncompresses a .bz2 file and exits. */
-	std::optional<std::string> bunzip2;
-	/** Non-empty if --bzip2 was given on the command line. Compresses a file to .bz2 and exits. */
-	std::optional<std::string> bzip2;
 	/** Non-empty if --campaign was given on the command line. ID of the campaign we want to start. */
 	std::optional<std::string> campaign;
 	/** Non-empty if --campaign-difficulty was given on the command line. Numerical difficulty of the campaign to be played. Dependent on --campaign. */
@@ -97,10 +93,6 @@ public:
 	bool fps;
 	/** True if --fullscreen was given on the command line. Starts Wesnoth in fullscreen mode. */
 	bool fullscreen;
-	/** Non-empty if --gunzip was given on the command line. Uncompresses a .gz file and exits. */
-	std::optional<std::string> gunzip;
-	/** Non-empty if --gzip was given on the command line. Compresses a file to .gz and exits. */
-	std::optional<std::string> gzip;
 	/** True if --help was given on the command line. Prints help and exits. */
 	bool help;
 	/** Non-empty if --language was given on the command line. Sets the language for this session. */
