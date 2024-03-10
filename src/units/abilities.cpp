@@ -1169,17 +1169,23 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 }
 
 //Functions used for change damage_type list with damage
-static std::vector<std::string> damage_type_list(const unit_ability_list& abil_list, const std::string& type)
+static std::vector<std::string> damage_type_list(const unit_ability_list& abil_list, const std::string& type, unit_const_ptr& u, bool is_alternative)
 {
 	std::vector<std::string> type_list;
 	for(auto& i : abil_list) {
-		if(!(*i.ability_cfg)[type].str().empty()){
+		if(is_alternative && !(*i.ability_cfg)[type].str().empty()){
+			auto ret = std::find(type_list.begin(), type_list.end(), (*i.ability_cfg)[type].str());
+			if(ret == type_list.end()){
+				type_list.push_back((*i.ability_cfg)[type].str());
+			}
+		} else if(!(*i.ability_cfg)[type].str().empty()){
 			type_list.push_back((*i.ability_cfg)[type].str());
 		}
 	}
 	if(type_list.size() >= 2){
+		//if resistance against two types of the list are equals, maintain alphabetical order
 		std::sort(type_list.begin(), type_list.end());
-		if(type_list.size() >= 3){
+		if(!is_alternative && type_list.size() >= 3){
 			std::unordered_map<std::string, unsigned int> type_count;
 			for( const std::string& character : type_list ){
 				type_count[character]++;
@@ -1187,6 +1193,15 @@ static std::vector<std::string> damage_type_list(const unit_ability_list& abil_l
 			std::sort( std::begin( type_list ) , std::end( type_list ) , [&]( const std::string& rhs , const std::string& lhs ){
 				return type_count[lhs] < type_count[rhs];
 			});
+		}
+		if(is_alternative){
+			if(u){
+				std::sort( std::begin( type_list ) , std::end( type_list ) , [&]( const std::string& rhs , const std::string& lhs ){
+					return (*u).movement_type().resistance_against(lhs) < (*u).movement_type().resistance_against(rhs);
+				});
+			} else {
+				type_list.clear();
+			}
 		}
 	}
 	return type_list;
@@ -1202,8 +1217,8 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 		return {type(), ""};
 	}
 
-	std::vector<std::string> type_list = damage_type_list(abil_list, "replacement_type");
-	std::vector<std::string> added_type_list = damage_type_list(abil_list, "alternative_type");
+	std::vector<std::string> type_list = damage_type_list(abil_list, "replacement_type", other_, false);
+	std::vector<std::string> added_type_list = damage_type_list(abil_list, "alternative_type", other_, true);
 	std::string type_damage, sec_type_damage;
 	type_damage = !type_list.empty() ? type_list.front() : type();
 	sec_type_damage = !added_type_list.empty() ? added_type_list.front() : "";
