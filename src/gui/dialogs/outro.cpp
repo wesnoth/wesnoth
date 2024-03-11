@@ -26,8 +26,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <cmath>
-
 namespace
 {
 
@@ -45,16 +43,15 @@ outro::outro(const game_classification& info)
 	: modal_dialog(window_id())
 	, alpha_queue_()
 	, text_()
-	, current_text_()
 	, text_index_(0)
 {
 	// 3.5 seconds by default
 	const auto show_duration = info.end_text_duration > 0 ? std::chrono::milliseconds{info.end_text_duration} : 3500ms;
 
 	alpha_queue_ = {
-		{0,   255, FADE_DURATION, utils::ease_out_cubic},
-		{255, 255, show_duration, utils::ease_out_cubic},
-		{255, 0,   FADE_DURATION, utils::ease_out_cubic},
+		{0,   255, FADE_DURATION, utils::easing::cubic_ease_in},
+		{255, 255, show_duration, utils::easing::linear_interpolation},
+		{255, 0,   FADE_DURATION, utils::easing::cubic_ease_out},
 	};
 
 	alpha_queue_.on_complete(std::bind(&outro::advance_text, this));
@@ -101,18 +98,12 @@ outro::outro(const game_classification& info)
 			}
 		}
 	}
-
-	current_text_ = text_[0];
-
-	if(!duration_) {
-		duration_ = 3500; // 3.5 seconds
-	}
 }
 
 void outro::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant(current_text_));
+	window.get_canvas(0).set_variable("outro_text", wfl::variant(text_[0]));
 }
 
 void outro::update()
@@ -123,28 +114,7 @@ void outro::update()
 	}
 
 	canvas& window_canvas = window::get_canvas(0);
-
-	// If we've faded fully out...
-	if(!fading_in_ && fade_alpha_ == 0) {
-		// ...and we've just showed the last text bit, close the window.
-		text_index_++;
-		if(text_index_ >= text_.size()) {
-			window::close();
-			return;
-		}
-
-		// ...else show the next bit.
-		window_canvas.set_variable("outro_text", wfl::variant{current_text()});
-
-		fading_in_ = true;
-
-		remove_timer(timer_id_);
-		timer_id_ = 0;
-
-		fade_start_ = SDL_GetTicks();
-	}
-
-	window_canvas.set_variable("fade_alpha", wfl::variant(fade_alpha_));
+	window_canvas.set_variable("fade_alpha", wfl::variant(alpha_queue_.value()));
 	window_canvas.update_size_variables();
 
 	queue_redraw();
@@ -156,7 +126,7 @@ void outro::advance_text()
 	text_index_++;
 
 	if(text_index_ < text_.size()) {
-		window::get_canvas(0).set_variable("outro_text", wfl::variant{current_text()});
+		window::get_canvas(0).set_variable("outro_text", wfl::variant{text_[text_index_]});
 	} else {
 		window::close();
 	}

@@ -54,7 +54,6 @@ private:
 	utils::tweened_value_queue alpha_queue_;
 
 	std::vector<std::string> text_;
-	std::string current_text_;
 	std::size_t text_index_;
 };
 
