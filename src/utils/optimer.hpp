@@ -92,10 +92,10 @@ private:
  *
  * @note The resulting output does <b>not</b> include a time unit suffix.
  */
-template<typename OpTimerType>
-inline std::ostream& operator<<(std::ostream& o, const OpTimerType& tm)
+template<typename... OptimerArgs>
+inline std::ostream& operator<<(std::ostream& o, const optimer<OptimerArgs...>& tm)
 {
-	o << std::chrono::duration_cast<typename OpTimerType::resolution>(tm.elapsed()).count();
+	o << std::chrono::duration_cast<decltype(tm)::resolution>(tm.elapsed()).count();
 	return o;
 }
 
