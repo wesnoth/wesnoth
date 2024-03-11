@@ -29,14 +29,11 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "side_filter.hpp"
-#include "units/map.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
 #include "video.hpp" // only for faked
 #include "whiteboard/manager.hpp"
 
-#include <iomanip>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

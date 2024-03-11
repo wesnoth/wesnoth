@@ -15,12 +15,10 @@
 */
 
 #include "log.hpp"
-#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 
 #include <queue>
-#include <map>
 
 static lg::log_domain log_engine("engine");
 #define LOG_PF LOG_STREAM(info, log_engine)

@@ -17,7 +17,6 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_common.hpp"
 
-#include "serialization/string_utils.hpp"
 #include "serialization/schema_validator.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -25,7 +24,7 @@
 
 #include <fstream>
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 namespace lua_wml {
 

@@ -1,16 +1,15 @@
 #
 # Translators:
-# RatArmy, 2021
-# h22, 2022
-# k konami, 2022
+# RatArmy, 2023
+# k konami, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
-"PO-Revision-Date: 2021-06-26 08:33+0000\n"
-"Last-Translator: k konami, 2022\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: k konami, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -49,14 +48,12 @@ msgstr "初心者"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "チュートリアルを完了しました"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "戦闘訓練"
+msgstr "戦闘訓練を完了しました"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -80,7 +77,7 @@ msgstr "Konrad"
 #. [lua]: wml_actions.select_character
 #. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
-#: data/campaigns/tutorial/lua/character_selection.lua:24
+#: data/campaigns/tutorial/lua/character_selection.lua:25
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -1830,6 +1827,9 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"ユニットを移動させるときに表示されるパーセンテージは、そのヘクス（六角形のマ"
+"ス）での、敵からの攻撃に対する回避率です。数値が高いほど攻撃のダメージを受け"
+"にくくなります。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
@@ -2302,7 +2302,7 @@ msgid "Fighter"
 msgstr "戦士"
 
 #. [unit_type]: id=Fighter, race=human
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2313,7 +2313,7 @@ msgstr ""
 "剣術を身に着けた、若く向こう見ずな戦士です。敵から身を守ることには慣れていま"
 "せんが、いつの日か偉大な戦士となる素質を秘めています。"
 
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "女戦士"
@@ -2338,7 +2338,7 @@ msgid "Warrior"
 msgstr "勇士"
 
 #. [unit_type]: id=Warrior, race=human
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""
@@ -2347,7 +2347,7 @@ msgid ""
 msgstr ""
 "経験を積み、剣術の技を磨き上げた戦士は強力な勇士（Warrior）となります。"
 
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
 msgid "female^Warrior"
 msgstr "勇士"

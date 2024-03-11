@@ -20,11 +20,9 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -654,10 +652,10 @@ chatbox_definition::chatbox_definition(const config& cfg)
 chatbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", _("Missing required background for chatbox")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", _("Missing required foreground for chatbox")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("chatbox_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("chatbox_definition][resolution", "foreground")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("Missing required grid for chatbox"));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("chatbox_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 // }---------- BUILDER -----------{

@@ -24,7 +24,6 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
 
 namespace gui2::dialogs
 {

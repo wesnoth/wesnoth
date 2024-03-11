@@ -21,9 +21,7 @@
 #include "game_board.hpp"
 #include "game_classification.hpp"
 #include "game_data.hpp"
-#include "game_end_exceptions.hpp"
 #include "log.hpp"
-#include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
 #include "random.hpp"
 #include "random_deterministic.hpp"
@@ -37,8 +35,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
-#include <cstdlib>
-#include <iomanip>
 #include <sstream>
 
 static lg::log_domain log_replay("replay");

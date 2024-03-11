@@ -35,9 +35,6 @@
 #include <vector>
 
 struct color_t;
-class surface;
-class texture;
-struct SDL_Texture;
 
 namespace draw
 {

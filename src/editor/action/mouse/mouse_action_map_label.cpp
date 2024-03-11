@@ -20,7 +20,6 @@
 
 #include "editor/editor_display.hpp"
 #include "editor/controller/editor_controller.hpp"
-#include "editor/map/context_manager.hpp"
 
 #include "gui/dialogs/editor/edit_label.hpp"
 

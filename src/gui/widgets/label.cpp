@@ -20,11 +20,8 @@
 #include "gui/core/log.hpp"
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
@@ -34,7 +31,6 @@
 
 #include <functional>
 #include <string>
-#include <sstream>
 
 namespace gui2
 {
@@ -238,8 +234,8 @@ label_definition::resolution::resolution(const config& cfg)
 	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for text label control")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for text label control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("label_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("label_definition][resolution", "state_disabled")));
 }
 
 // }---------- BUILDER -----------{

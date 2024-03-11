@@ -35,7 +35,6 @@ namespace implementation {
 
 // ------------ WIDGET -----------{
 
-class tree_view_node;
 
 /**
  * @ingroup GUIWidgetWML

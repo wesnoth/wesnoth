@@ -25,7 +25,6 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
-#include <cassert>
 #include <array>
 #include <limits>
 #include <optional>
@@ -95,6 +94,15 @@ std::set<std::string> split_set(std::string_view s, char sep, const int flags)
 	std::set<std::string> res;
 	split_foreach(s, sep, flags, [&](std::string_view item) {
 		res.emplace(item);
+	});
+	return res;
+}
+
+std::vector<std::string_view> split_view(std::string_view s, const char sep, const int flags)
+{
+	std::vector<std::string_view> res;
+	split_foreach(s, sep, flags, [&](std::string_view item) {
+		res.push_back(item);
 	});
 	return res;
 }
@@ -299,19 +307,16 @@ std::map<std::string, std::string> map_split(
 	return res;
 }
 
-std::vector<std::string> parenthetical_split(const std::string& val,
-		const char separator, const std::string& left,
-		const std::string& right,const int flags)
+std::vector<std::string> parenthetical_split(std::string_view val,
+		const char separator, std::string_view left,
+		std::string_view right,const int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
 	bool in_parenthesis = false;
 
-	std::string lp=left;
-	std::string rp=right;
-
-	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2;
+	std::string_view::const_iterator i1 = val.begin();
+	std::string_view::const_iterator i2;
 	if (flags & STRIP_SPACES) {
 		while (i1 != val.end() && portable_isspace(*i1))
 			++i1;
@@ -355,8 +360,8 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 			continue;
 		}
 		bool found=false;
-		for(std::size_t i=0; i < lp.size(); i++){
-			if (*i2 == lp[i]){
+		for(std::size_t i=0; i < left.size(); i++){
+			if (*i2 == left[i]){
 				if (!separator && part.empty()){
 					std::string new_val(i1, i2);
 					if (flags & STRIP_SPACES)
@@ -367,7 +372,7 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 				}else{
 					++i2;
 				}
-				part.push_back(rp[i]);
+				part.push_back(right[i]);
 				found=true;
 				break;
 			}

@@ -15,7 +15,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/text_box_base.hpp"
 
 class unit_type;
 class team;

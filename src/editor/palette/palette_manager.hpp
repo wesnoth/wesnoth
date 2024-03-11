@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "editor/palette/common_palette.hpp"
 
 #include "editor/palette/empty_palette.hpp"
 #include "editor/palette/terrain_palettes.hpp"

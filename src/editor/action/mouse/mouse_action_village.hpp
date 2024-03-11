@@ -18,7 +18,6 @@
 #include "editor/action/mouse/mouse_action.hpp"
 
 class CKey;
-class empty_palette;
 
 namespace editor {
 

@@ -14,7 +14,6 @@
 
 #include "actions/undo_dismiss_action.hpp"
 #include "game_board.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

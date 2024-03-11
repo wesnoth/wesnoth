@@ -19,7 +19,6 @@
  */
 
 #include "sdl/utils.hpp"
-#include "sdl/rect.hpp"
 #include "color.hpp"
 #include "log.hpp"
 #include "xBRZ/xbrz.hpp"
@@ -1848,7 +1847,6 @@ struct not_alpha
 };
 
 }
-
 surface get_non_transparent_portion(const surface &surf)
 {
 	if(surf == nullptr)

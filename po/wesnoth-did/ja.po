@@ -1,17 +1,14 @@
 #
 # Translators:
-# tamanegi, 2021
-# h22, 2022
-# k konami, 2022
-# RatArmy, 2023
+# RatArmy, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: RatArmy, 2023\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -107,76 +104,74 @@ msgstr "その他"
 #. [achievement]: id=did_rat_eater
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:10
 msgid "A Big Hunk of Flesh"
-msgstr ""
+msgstr "大きな肉塊"
 
 #. [achievement]: id=did_rat_eater
 #. the achievements are somewhat written as if from Malin's point of view which is why there's some weird and sometimes quirky flavor in them
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:12
 msgid "Feed a Ghoul way too many rats."
-msgstr ""
+msgstr "おびただしい数のネズミをグールに喰らわせろ。"
 
 #. [achievement]: id=did_drogan
 #. you can interpret this as a Harry Potter reference or you can think about it as Malin making fun of Drogan's country accent, or you can take artistic liberty with the translation
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:19
-#, fuzzy
-#| msgid "Death of Drogan"
 msgid "Yer a Ghoul, Drogan"
-msgstr "Drogan の死"
+msgstr "お前はグールだ、Drogan"
 
 #. [achievement]: id=did_drogan
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:20
 msgid "Make that arrogant jerk Drogan into just another one of your minions."
-msgstr ""
+msgstr "傲慢で役立たずの Drogan を我が軍の一兵卒に変えてしまえ。"
 
 #. [achievement]: id=did_sushi
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:26
 msgid "High Grade Sushi"
-msgstr ""
+msgstr "高級寿司"
 
 #. [achievement]: id=did_sushi
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:27
 msgid "Upgrade a normal swimmer zombie into a super zombie."
-msgstr ""
+msgstr "水棲生物のゾンビをスーパーゾンビにアップグレードせよ。"
 
 #. [achievement]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:33
 msgid "Drunken Fist Style"
-msgstr ""
+msgstr "酔拳"
 
 #. [achievement]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:34
 msgid "Make the drunken sailor zombie drink some poorly aged rum."
-msgstr ""
+msgstr "酔っ払いの船乗りゾンビに年代物のラム酒を飲ませろ。"
 
 #. [achievement]: id=did_monolith
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:40
 msgid "A Monolith of Stone"
-msgstr ""
+msgstr "石のモノリス"
 
 #. [achievement]: id=did_monolith
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:41
 msgid "Find and explore all eight unique monoliths in a single playthrough."
-msgstr ""
+msgstr "一度のキャンペーンプレイで8個のモノリスすべてを見つけろ。"
 
 #. [achievement]: id=did_reflection
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:48
 msgid "Am I the Bad Guy?"
-msgstr ""
+msgstr "僕が悪だってのか？"
 
 #. [achievement]: id=did_reflection
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:49
 msgid "Reflect on all of your doings. Did you learn anything from them?"
-msgstr ""
+msgstr "己の行いを振り返れ。そこから何か学べたか？"
 
 #. [achievement]: id=did_tentacle
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:55
 msgid "Fish are Friends not Food"
-msgstr ""
+msgstr "魚は友達、食べ物じゃない"
 
 #. [achievement]: id=did_tentacle
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:56
 msgid "Find and eat Inky in the secret underground squid village."
-msgstr ""
+msgstr "秘密の地下イカ村でInkyを探して食べてしまえ。"
 
 #. [scenario]: id=01_Saving_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:5
@@ -3191,7 +3186,7 @@ msgstr "屋内"
 msgid "Find Lady Karae"
 msgstr "Karae 卿を探す"
 
-#. [unit]: type=Silver Mage, id=Lady Karae
+#. [unit]: type=Silver Mage, id=Lady Karae, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:177
 msgid "Lady Karae"
 msgstr "Karae 卿"
@@ -3209,10 +3204,8 @@ msgstr "番人"
 #. Unit name
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:265
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:347
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^Guard"
-msgstr "不具"
+msgstr "番人"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:419
@@ -3453,8 +3446,6 @@ msgstr "守衛"
 #. Book guards
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:53
-#, fuzzy
-#| msgid "Guardian"
 msgid "female^Guardian"
 msgstr "守衛"
 
@@ -3470,10 +3461,8 @@ msgstr "魔術師"
 
 #. [command]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^Mage"
-msgstr "不具"
+msgstr "魔術師"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:467
@@ -3884,10 +3873,8 @@ msgstr "……いや、そんなことをしてもしょうがないな……"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:605
-#, fuzzy
-#| msgid "He seems to be drinking the remains of the wine in the cargo hold."
 msgid "He seems to be drinking the remains of the rum in the cargo hold."
-msgstr "こいつは荷物の中にあったワインを飲んでいたようだな。"
+msgstr "積荷に残っていたラム酒を飲んでいるのか。"
 
 #. [unit]: type=Paladin, id=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:665
@@ -5336,7 +5323,7 @@ msgstr "愚かな勇者"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:965
 msgid "That was quite the nightmare..."
-msgstr ""
+msgstr "あれはひどい悪夢であった..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:969
@@ -5344,11 +5331,13 @@ msgid ""
 "...unless it was not one? No. No no no. I don’t even want to think about "
 "that."
 msgstr ""
+"... あれで終わりでないとしたら？いやだ。いやだいやだいやだ。もう思い出したく"
+"はない。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:973
 msgid "I need to go slaughter some foolish heroes to purge that from my mind."
-msgstr ""
+msgstr "愚かな英雄どもを始末してあのことは忘れよう。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:989
@@ -5463,7 +5452,7 @@ msgstr "リッチの邪悪な力と関連があるかもしれん！燃やして
 msgid "<small>(faking pain)</small> Aaargh!"
 msgstr "<small>（わざと苦しんで）</small>ぐあああ！"
 
-#. [message]: role=unit
+#. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1187
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1215
 msgid "It’s not catching fire!"
@@ -5620,7 +5609,7 @@ msgid "A monolith of black stone, cold and brittle to the touch."
 msgstr ""
 "黒い石のモノリスです。手で触れると、まるで拒むかのような冷たさを感じます。"
 
-#. [unit]: type=Cuttle Fish, id=Inky
+#. [unit]: type=Cuttle Fish, id=Inky, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1399
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:558
 msgid "female^Inky"
@@ -5646,20 +5635,18 @@ msgstr "また会ったな、イカよ。"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1452
 msgid "Get these tentacles off of me!"
-msgstr ""
+msgstr "触手を離すのだ！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1465
 msgid "Release me at once you oversized piece of calamari— eeeeaaaaaaaaa!"
-msgstr ""
+msgstr "いったん離せこの巨大イカフライ — ぁぁぁぁあああああああああ！"
 
 #. [message]: speaker=narrator
 #. Mal Keshar is sinking...
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1470
-#, fuzzy
-#| msgid "<i>It’s... so... cold...</i>"
 msgid "<i>Blub... blub... blub...</i>"
-msgstr "<i>さむ…… い…… </i>"
+msgstr "<i>ブクブクブク...</i>"
 
 #. [message]: speaker=Inky
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1495
@@ -6040,19 +6027,17 @@ msgstr "私はオークとの戦いに負けてしまったのか！"
 #. [scenario]: id=11_Squidville
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:5
 msgid "Squidville"
-msgstr ""
+msgstr "イカの村"
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:41
-#, fuzzy
-#| msgid "teamname^Void"
 msgid "teamname^Squid"
-msgstr "なし"
+msgstr "イカ"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:118
 msgid "This cuttlefish will not escape me any longer! Hunt her down!"
-msgstr ""
+msgstr "もう逃さんぞ、イカよ！捕まえるのだ！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:152
@@ -6060,33 +6045,33 @@ msgid ""
 "Right, I got dragged down here without any of my minions. I suppose I will "
 "have to do this myself."
 msgstr ""
+"なるほど、ここに引き込まれる際に軍勢から引き離されたか。私自身でやらねばなら"
+"ないようだ。"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:161
 msgid "Hunt down Inky"
-msgstr ""
+msgstr "Inky を捕まえろ"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:217
-#, fuzzy
-#| msgid "Why are these bats chasing me?"
 msgid "Why are these tentacles so large..?"
-msgstr "コウモリが何故追って来るんだ？"
+msgstr "なぜこれらの触手はここまで大きいのだ...？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:230
 msgid "(<i>huff huff huff</i>)"
-msgstr ""
+msgstr "（<i>スー スー スー</i>）"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:250
 msgid "I can see... the colors of the universe..!"
-msgstr ""
+msgstr "見える... 宇宙の色が...！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:269
 msgid "The stars go whirly whirl and turn into..."
-msgstr ""
+msgstr "星がまわるまわる... "
 
 #. [message]: speaker=Mal Keshar
 #. He's high so basically this is gibberish describing mushrooms
@@ -6094,22 +6079,22 @@ msgstr ""
 msgid ""
 "... glowy mushrooms lighting up this dank gloom, blue and green, loomy "
 "bloomy big shroomy..."
-msgstr ""
+msgstr "... 輝くキノコが湿った暗闇を照らす、青、緑、不気味な鮮やかキノコ..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:289
 msgid "... hi hi ho ho the shrooms go marching lo..."
-msgstr ""
+msgstr "... やあやあほーほーキノコの行進だ..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:293
 msgid "... wait for me shroomies..!"
-msgstr ""
+msgstr "... 待ってくれよキノコたち...！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:324
 msgid "(<i>huff huff</i>)"
-msgstr ""
+msgstr "（<i>スー スー</i>）"
 
 #. [message]: speaker=Mal Keshar
 #. He breaks the fourth wall here because he's enlightened from the shrooms of course, so he talks directly to the player
@@ -6122,16 +6107,22 @@ msgid ""
 "entertainment? How revolting. I hope your sick enjoyment at my predicament "
 "is worth it, you monster."
 msgstr ""
+"... 待てよ、私は何をしているのだ？スケルトンには味覚も嗅覚もないし食事もしな"
+"い。キノコは私には効かない。おまえは私を愚かだと思うか？私は娯楽のために雇わ"
+"れた悪役の類に過ぎないのか？サディスティックな高次元の力のようなものが、私の"
+"ような哀れで古びた孤独なリッチたちをエンターテイメントのためだけにこんなにも"
+"苦しめるのか？なんと不快なことか。私の苦しみによって生まれるおまえの病的な喜"
+"びに価値があることを願うよ、この怪物め。"
 
 #. [floating_text]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:352
 msgid "ENLIGHTENED"
-msgstr ""
+msgstr "覚醒"
 
 #. [unit]: type=Necrophage Necron, id=Necron
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:390
 msgid "Necron"
-msgstr ""
+msgstr "Necron"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:400
@@ -6140,16 +6131,18 @@ msgid ""
 "disgusting. Maybe I can send it to a quick death against all those Foolish "
 "Heroes."
 msgstr ""
+"... なんと恐ろしい肉の山か。グールとして見ても、これは遥かに不快だ。これなら"
+"ば愚かな英雄たちをすみやかに滅ぼすことができるかもしれない。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:428
 msgid "You are not the creature I seek!"
-msgstr ""
+msgstr "おまえは私が求める生物ではない！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:467
 msgid "Oh for the love of... not these slimy things again..."
-msgstr ""
+msgstr "頼む... もうこのヌルつくものはやめてくれ..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:499
@@ -6157,58 +6150,57 @@ msgid ""
 "... wait a second, is this creature even supposed to live in this kind of "
 "habitat?"
 msgstr ""
+"... まて、このタイプの住居にこのような生物が生息しているのはおかしくないか？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:531
 msgid "The creatures down here keep getting stranger and stranger."
-msgstr ""
+msgstr "ここの生物は進めば進むほど奇妙になっていくな。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:572
 msgid "Aha!"
-msgstr ""
+msgstr "おお！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:576
 msgid "Finally, I have found you! Now hold still for just a moment..."
-msgstr ""
+msgstr "ようやく見つけたぞ！少しの間じっとしていろよ..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:597
 msgid "Ha! I have you now!"
-msgstr ""
+msgstr "ハ！今からおまえは私のものだ！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:610
 msgid "... what’s that sound?"
-msgstr ""
+msgstr "... 何の音だ？"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:636
 msgid "Where did you come from? Get off of me!"
-msgstr ""
+msgstr "おまえはどこから来た？私を放せ！"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:675
 msgid "Uh oh."
-msgstr ""
+msgstr "なんということだ。"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:714
-#, fuzzy
-#| msgid "Let’s get out of here."
 msgid "I’m getting out of here!"
-msgstr "さあ、ここから出よう。"
+msgstr "ここから脱出せねば！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:739
 msgid "Aaargh, so many tentacles! Aieeeeee!!!"
-msgstr ""
+msgstr "ぐああ、触手が多すぎる！あぁぁぁぁぁぁぁ！！！"
 
 #. [story]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:749
 msgid "Bad Ending"
-msgstr ""
+msgstr "バッドエンド"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:751
@@ -6218,13 +6210,15 @@ msgid ""
 "no more than a few decorative elements around the watery backdrop of the "
 "village of squids for all eternity."
 msgstr ""
+"不幸にも、Mal Keshar は触手の大群に圧倒されました。彼の壮大な執着が砕け散ると"
+"ともに、彼の骨の残滓はイカ村の水景に永遠に佇むささいな装飾品となりました。"
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "見習い魔術師"
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:17
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
@@ -6243,12 +6237,12 @@ msgstr ""
 msgid "magic blast"
 msgstr "魔力弾"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "見習い降霊術師"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:16
 msgid ""
 "Under Darken Volk’s tutelage, Malin has become adept at wielding necromancy "
@@ -6279,12 +6273,12 @@ msgstr ""
 "か未だにそれを近接戦闘に用いています。しかし、その向上した魔力の腕前は短剣の"
 "錆を補ってなお余りあるものです。"
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "辺境の女男爵"
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
@@ -6303,7 +6297,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Ghast2.cfg:29
 msgid "bite"
-msgstr ""
+msgstr "噛みつき"
 
 #. [advancement]: id=mal_keshar_amla_melee
 #. [advancement]: id=eidolon_baneblade
@@ -6485,7 +6479,7 @@ msgstr "消費の能力を獲得します"
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Necrophage2.cfg:18
 msgid "claws"
-msgstr ""
+msgstr "かぎ爪"
 
 #. [advancement]
 #: data/campaigns/Descent_Into_Darkness/units/Spectral_Servant.cfg:79
@@ -6647,15 +6641,12 @@ msgstr "魂裂"
 #. [dummy]: id=did_soul_rend
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:335
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:336
-#, fuzzy
-#| msgid ""
-#| "Every turn, this unit loses 5 hitpoints, but drains 4 hitpoints from each "
-#| "adjacent enemy."
 msgid ""
 "Every turn, this unit loses 3 hitpoints, but drains 6 hitpoints from each "
 "adjacent enemy."
 msgstr ""
-"毎ターンこのユニットは 5 HP 失いますが、周囲の敵から 4 HP ずつ奪い取ります。"
+"毎ターン、このユニットは HP を 3 失いますが、隣接する敵から HP を 6 吸収しま"
+"す。"
 
 #. [damage]: id=did_malevolence
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:432
@@ -6702,19 +6693,17 @@ msgstr "隣接敵ユニットの与えるダメージが 40% 減少します。"
 #. [teleport]: id=did_enlightened
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:492
 msgid "enlightened"
-msgstr ""
+msgstr "覚者"
 
 #. [teleport]: id=did_enlightened
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:493
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^enlightened"
-msgstr "不具"
+msgstr "覚者"
 
 #. [teleport]: id=did_enlightened
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:494
 msgid "This unit can teleport between mushroom groves."
-msgstr ""
+msgstr "このユニットはキノコの森の間を瞬間移動できます。"
 
 #. [heal_on_hit]: id=did_vitalize1
 #. [heal_on_hit]: id=did_vitalize2
@@ -6770,19 +6759,14 @@ msgstr "死体発射"
 
 #. [attacks]: id=did_corpse_launcher
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:570
-#, fuzzy
-#| msgid ""
-#| "On offense, enemies cannot retaliate against this attack. This attack "
-#| "consumes 3 HP from each nearby allied corpse to deal 11 impact damage "
-#| "(per corpse) to the target on top of this attack’s base damage."
 msgid ""
 "On offense, enemies cannot retaliate against this attack. This attack "
 "consumes 3 HP from each nearby allied corpse to deal 15 impact damage (per "
 "corpse) to the target on top of this attack’s base damage."
 msgstr ""
-"攻撃時に使うと、敵ユニットは反撃できません。隣接する友軍の死体が 3 HP を失い"
-"ますが、隣接する死体 1 体あたり 11 の打撃ダメージが基本ダメージ値に追加されま"
-"す。"
+"攻撃時、敵は反撃できません。この攻撃はこのユニットに隣接する同盟の死体たちの "
+"HP を3ずつ消費することで、攻撃対象への打撃ダメージを死体 1 体につき 15 上乗せ"
+"します。"
 
 #. [leadership]: id=did_consumption
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:696
@@ -6861,52 +6845,50 @@ msgstr "ターン開始時にこのユニットに隣接する敵ユニットは
 #. [plague]: id=ghoulfication, type=Ghoul
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1039
 msgid "ghoulfication"
-msgstr ""
+msgstr "グール化"
 
 #. [plague]: id=ghoulfication, type=Ghoul
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1040
 msgid "When a unit is killed by this attack, it turns into a ghoul."
-msgstr ""
+msgstr "この攻撃によって倒されたユニットはグールになります。"
 
 #. [dummy]: id=did_starving
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1048
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1049
 msgid "starving"
-msgstr ""
+msgstr "飢餓"
 
 #. [dummy]: id=did_starving
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1050
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1051
 msgid "This unit loses 1 hitpoint every turn."
-msgstr ""
+msgstr "このユニットは毎ターン 1 HP を失います。"
 
 #. [leadership]: id=masochism1
 #. [leadership]: id=masochism2
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1094
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1106
-#, fuzzy
-#| msgid "Schism"
 msgid "masochism"
-msgstr "別行動"
+msgstr "マゾヒズム"
 
 #. [leadership]: id=masochism1
 #. [leadership]: id=masochism2
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1095
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1107
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^masochism"
-msgstr "不具"
+msgstr "マゾヒズム"
 
 #. [leadership]: id=masochism1
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1096
 msgid "This unit gains up to 50% damage as its hitpoints are reduced."
 msgstr ""
+"このユニットは自身の HP が低いほど与えるダメージが上昇します（最大 50%）。"
 
 #. [leadership]: id=masochism2
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1108
 msgid "This unit gains up to 100% damage as its hitpoints are reduced."
 msgstr ""
+"このユニットは自身の HP が低いほど与えるダメージが上昇します（最大 100%）。"
 
 #. [resistance]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1120
@@ -7033,14 +7015,12 @@ msgstr "死の雲の能力を獲得します"
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1029
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1056
 msgid "Gain increasing damage as hitpoints are reduced"
-msgstr ""
+msgstr "HP が減少するほど与えるダメージが増加するようになります"
 
 #. [advancement]: id=necron_ghoulfication
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1083
-#, fuzzy
-#| msgid "Gain the ability to hide allied units"
 msgid "Gains the ability to turn enemies into ghouls"
-msgstr "友軍ユニットを隠れされる能力を獲得します"
+msgstr "敵をグールにする能力を獲得します"
 
 #. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:44

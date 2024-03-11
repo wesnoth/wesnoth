@@ -24,7 +24,6 @@
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
 
-#include "lua/lauxlib.h"
 
 #include <type_traits>
 

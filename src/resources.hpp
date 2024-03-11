@@ -16,7 +16,6 @@
 #pragma once
 
 #include <memory>
-#include <vector>
 
 class game_board;
 class game_data;
@@ -25,16 +24,13 @@ class game_lua_kernel;
 class play_controller;
 class fake_unit_manager;
 class tod_manager;
-class unit_map;
 class persist_manager;
 class game_classification;
-struct mp_game_settings;
 class replay;
 namespace actions { class undo_list; }
 
 namespace game_events { class manager; }
 
-namespace halo { class manager; }
 
 namespace soundsource { class manager; }
 

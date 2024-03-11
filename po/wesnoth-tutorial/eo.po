@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2020-06-16 17:34+0200\n"
 "Last-Translator: Luther Thompson <luther@librem.one>\n"
 "Language-Team: none\n"
@@ -72,7 +72,7 @@ msgstr "Konrado"
 #. [lua]: wml_actions.select_character
 #. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
-#: data/campaigns/tutorial/lua/character_selection.lua:24
+#: data/campaigns/tutorial/lua/character_selection.lua:25
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -2459,7 +2459,7 @@ msgid "Fighter"
 msgstr "Batalisto"
 
 #. [unit_type]: id=Fighter, race=human
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2470,7 +2470,7 @@ msgstr ""
 "Junaj kaj aŭdacaj, Batalistoj estas lertaj kun glavoj kaj estas vundebla de "
 "atakoj el malamikoj. Tamen, ili havas eblecon iĝi militistegojn iutage."
 
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Batalantino"
@@ -2495,7 +2495,7 @@ msgid "Warrior"
 msgstr "Militisto"
 
 #. [unit_type]: id=Warrior, race=human
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""
@@ -2505,7 +2505,7 @@ msgstr ""
 "Per pli sperto, Batalistoj akrigis sian lerton kun la glavo kaj iĝis "
 "potencojn Militistojn."
 
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
 msgid "female^Warrior"
 msgstr "Militisto"

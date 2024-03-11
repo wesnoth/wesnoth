@@ -24,7 +24,6 @@
 #include "units/map.hpp"
 
 class unit;
-class vconfig;
 class unit_filter;
 
 namespace game_events

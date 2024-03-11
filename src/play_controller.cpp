@@ -21,8 +21,6 @@
 
 #include "play_controller.hpp"
 
-#include "actions/advancement.hpp"
-#include "actions/create.hpp"
 #include "actions/heal.hpp"
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
@@ -41,16 +39,13 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_handler.hpp"
-#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "pathfind/teleport.hpp"
 #include "preferences/credentials.hpp"
-#include "preferences/display.hpp"
 #include "preferences/game.hpp"
 #include "random.hpp"
 #include "replay.hpp"
-#include "reports.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
@@ -61,8 +56,6 @@
 #include "soundsource.hpp"
 #include "statistics.hpp"
 #include "synced_context.hpp"
-#include "tooltips.hpp"
-#include "units/id.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "utils/general.hpp"
@@ -97,8 +90,6 @@ static void copy_persistent(const config& src, config& dst)
 	static const std::set<std::string> attrs {
 		"description",
 		"name",
-		"victory_when_enemies_defeated",
-		"remove_from_carryover_on_defeat",
 		"disallow_recall",
 		"experience_modifier",
 		"require_scenario",
@@ -166,8 +157,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, did_tod_sound_this_turn_(false)
 	, map_start_()
 	, start_faded_(start_faded)
-	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
-	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
 	, defeat_music_()
 	, scope_(hotkey::scope_game)
@@ -988,7 +977,7 @@ void play_controller::check_victory()
 		found_network_player,
 		invalidate_all,
 		not_defeated,
-		remove_from_carryover_on_defeat_
+		gamestate().remove_from_carryover_on_defeat_
 	);
 
 	if(invalidate_all) {
@@ -1006,11 +995,11 @@ void play_controller::check_victory()
 		}
 	}
 
-	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_;
+	DBG_EE << "victory_when_enemies_defeated: " << gamestate().victory_when_enemies_defeated_;
 	DBG_EE << "found_player: " << found_player;
 	DBG_EE << "found_network_player: " << found_network_player;
 
-	if(!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
+	if(!gamestate().victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
@@ -1133,7 +1122,6 @@ void play_controller::play_slice_catch()
 void play_controller::start_game()
 {
 	if(gamestate().in_phase(game_data::PRELOAD)) {
-		map_start_ = map_location();
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
 

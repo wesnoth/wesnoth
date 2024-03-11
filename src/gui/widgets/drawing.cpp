@@ -16,17 +16,11 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/drawing.hpp"
-
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
-
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "gettext.hpp"
 #include "wml_exception.hpp"
-
-#include <functional>
 
 namespace gui2
 {
@@ -116,7 +110,7 @@ builder_drawing::builder_drawing(const config& cfg)
 	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
-	, draw(VALIDATE_WML_CHILD(cfg, "draw", _("Missing [draw] in drawing")))
+	, draw(VALIDATE_WML_CHILD(cfg, "draw", missing_mandatory_wml_tag("drawing", "draw")))
 {
 	assert(!draw.empty());
 }

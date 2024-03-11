@@ -19,7 +19,6 @@
 #include "gui/widgets/group.hpp"
 
 #include <string>
-#include <vector>
 
 namespace gui2::dialogs
 {

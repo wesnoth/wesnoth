@@ -17,20 +17,16 @@
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
-#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
@@ -210,13 +206,12 @@ void mp_create_game::pre_show(window& win)
 
 		toggle_button& mog_toggle = find_widget<toggle_button>(row_grid, "mod_active_state", false);
 
-		const int i = mod_list_->get_item_count() - 1;
 		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
 		}
 
-		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, i, &mog_toggle));
+		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, mod->id, &mog_toggle));
 	}
 
 	// No mods, hide the header
@@ -378,7 +373,7 @@ void mp_create_game::pre_show(window& win)
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
 
 	plugins_context_->set_callback("select_mod",   [this](const config& cfg) {
-		on_mod_toggle(cfg["index"].to_int(), nullptr);
+		on_mod_toggle(cfg["id"].str(), nullptr);
 	}, true);
 
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
@@ -523,14 +518,14 @@ void mp_create_game::on_tab_select()
 	find_widget<stacked_widget>(get_window(), "pager", false).select_layer(i);
 }
 
-void mp_create_game::on_mod_toggle(const int index, toggle_button* sender)
+void mp_create_game::on_mod_toggle(const std::string id, toggle_button* sender)
 {
-	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(index))) {
+	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(id))) {
 		ERR_MP << "ignoring on_mod_toggle that is already set";
 		return;
 	}
 
-	create_engine_.toggle_mod(index);
+	create_engine_.toggle_mod(id);
 
 	sync_with_depcheck();
 
@@ -588,7 +583,12 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 		item["label"] = game->name();
 		data.emplace("game_name", item);
 
-		list.add_row(data);
+		grid& rg = list.add_row(data);
+
+		auto& icon = find_widget<image>(&rg, "game_icon", false);
+		if(icon.get_label().empty()) {
+			icon.set_visible(gui2::widget::visibility::invisible);
+		}
 	}
 
 	if(!level.empty() && !list.get_rows_shown().empty()) {

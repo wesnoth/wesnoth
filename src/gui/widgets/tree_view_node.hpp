@@ -24,7 +24,6 @@ namespace gui2
 {
 
 namespace implementation {
-	struct tree_node;
 }
 
 class selectable_item;

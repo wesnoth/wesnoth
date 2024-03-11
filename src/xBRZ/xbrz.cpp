@@ -41,7 +41,6 @@
 #include <cmath>
 #include <algorithm>
 
-#include <functional>
 
 namespace
 {

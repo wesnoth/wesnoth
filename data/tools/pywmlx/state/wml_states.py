@@ -207,7 +207,7 @@ class WmlTagState:
 
 class WmlGetinfState:
     def __init__(self):
-        rx = ( r'\s*(speaker|id|role|description|condition|type|race)' +
+        rx = ( r'\s*(speaker|id|role|description|condition|type|race|gender)' +
                r'\s*=\s*(.*)' )
         self.regex = re.compile(rx, re.I)
         self.iffail = 'wml_str01'

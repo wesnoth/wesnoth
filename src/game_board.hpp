@@ -18,7 +18,6 @@
 #include "display_context.hpp"
 #include "side_controller.hpp"
 #include "team.hpp"
-#include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
@@ -28,11 +27,8 @@
 #include <vector>
 
 class config;
-class gamemap;
 
 namespace events {
-	class mouse_handler;
-	class menu_handler;
 }
 
 /**

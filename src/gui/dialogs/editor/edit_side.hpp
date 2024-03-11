@@ -19,7 +19,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "side_controller.hpp"
-#include "team.hpp"
 
 namespace gui2
 {

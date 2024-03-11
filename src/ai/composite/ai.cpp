@@ -25,7 +25,6 @@
 #include "ai/composite/property_handler.hpp"
 #include "ai/composite/stage.hpp"
 #include "ai/configuration.hpp"
-#include "ai/manager.hpp"
 #include "actions/attack.hpp"
 #include "log.hpp"
 

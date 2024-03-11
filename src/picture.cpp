@@ -20,13 +20,10 @@
 
 #include "picture.hpp"
 
-#include "config.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
@@ -34,10 +31,8 @@
 
 #include <SDL2/SDL_image.h>
 
-#include <functional>
 
 #include <boost/algorithm/string.hpp>
-#include <boost/functional/hash_fwd.hpp>
 
 #include <array>
 #include <set>
@@ -218,10 +213,6 @@ parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 
 } // end anon namespace
 
-mini_terrain_cache_map mini_terrain_cache;
-mini_terrain_cache_map mini_fogged_terrain_cache;
-mini_terrain_cache_map mini_highlighted_terrain_cache;
-
 void flush_cache()
 {
 	for(surface_cache& cache : surfaces_) {
@@ -236,14 +227,9 @@ void flush_cache()
 	textures_.clear();
 	textures_hexed_.clear();
 	texture_tod_colored_.clear();
-	mini_terrain_cache.clear();
-	mini_fogged_terrain_cache.clear();
-	mini_highlighted_terrain_cache.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
 }
-
-
 
 locator locator::clone(const std::string& mods) const
 {
@@ -836,25 +822,13 @@ point get_size(const locator& i_locator, bool skip_cache)
 
 bool is_in_hex(const locator& i_locator)
 {
-	bool result;
-	{
-		if(i_locator.in_cache(in_hex_info_)) {
-			result = i_locator.locate_in_cache(in_hex_info_);
-		} else {
-			const surface image(get_surface(i_locator, UNSCALED));
-
-			bool res = in_mask_surface(image, get_hexmask());
-
-			i_locator.add_to_cache(in_hex_info_, res);
-
-			// std::cout << "in_hex : " << i_locator.get_filename()
-			//		<< " " << (res ? "yes" : "no") << "\n";
-
-			result = res;
-		}
+	if(auto cached_val = i_locator.copy_from_cache(in_hex_info_)) {
+		return *cached_val;
 	}
 
-	return result;
+	bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
+	i_locator.add_to_cache(in_hex_info_, res);
+	return res;
 }
 
 bool is_empty_hex(const locator& i_locator)

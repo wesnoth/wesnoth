@@ -24,14 +24,12 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
 #include "units/animation_component.hpp"
 #include "game_version.hpp"
 #include "deprecation.hpp"
 
-#include "lua/lauxlib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)

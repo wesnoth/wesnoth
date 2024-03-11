@@ -21,10 +21,8 @@
 
 #include "scrollarea.hpp"
 
-class texture;
 
 namespace image{
-	class locator;
 }
 
 namespace gui {

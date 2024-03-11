@@ -16,7 +16,6 @@
 #include "fake_unit_manager.hpp"
 
 #include "display.hpp"
-#include "fake_unit_ptr.hpp"
 #include "log.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"

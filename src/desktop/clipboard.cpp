@@ -14,8 +14,6 @@
 */
 
 #include "desktop/clipboard.hpp"
-#include "serialization/unicode.hpp"
-#include <algorithm>
 
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_clipboard.h>

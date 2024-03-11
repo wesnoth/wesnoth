@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-11-11 20:46+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -77,7 +77,7 @@ msgstr "Konrad"
 #. [lua]: wml_actions.select_character
 #. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
-#: data/campaigns/tutorial/lua/character_selection.lua:24
+#: data/campaigns/tutorial/lua/character_selection.lua:25
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -1354,12 +1354,12 @@ msgid ""
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Au début de chaque tour, les unités alliées adjacentes à une chamane "
-"récupère 4 points de vie, soit seulement la moitié de ce qu'offre un "
+"récupèrent 4 points de vie, soit seulement la moitié de ce qu'offre un "
 "village. La Chamane ne gagne pas d'expérience lors du soin, seulement en "
 "combattant, mais son avancement est rétributif : son deuxième niveau, "
 "Druidesse elfe, permet la même récupération de point qu'un village.\n"
 "\n"
-"Une explication détaillée du soin est disponible dans la section <i>Jeu<i> "
+"Une explication détaillée du soin est disponible dans la section <i>Jeu</i> "
 "de l'aide (raccourci par défaut : <b>F1</b>)."
 
 # "Capacité" et "Attaque spéciale" sont les termes employés dans l'aide en ligne du jeu.
@@ -1384,7 +1384,7 @@ msgstr ""
 "Les attaques spéciales sont des modificateurs qui rendent certaines attaques "
 "plus puissantes. En l'occurrence, le modificateur Ralentissement est ainsi "
 "associé à l'attaque Enchevêtrement de la chamane. Lorsque cette attaque "
-"touche un ennemi, elle divise par deux les dégât que celui-ci infligera "
+"touche un ennemi, elle divise par deux les dégâts que celui-ci infligera "
 "durant un tour entier. Il existe d'autres modificateurs tels que "
 "l'Initiative, qui permet à l'unité possédant l'attaque associée de toujours "
 "frapper en premier lors d'un échange de coups, et Magique, qui donne à "
@@ -1592,7 +1592,7 @@ msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
-"Galdrad, si je passe par le gué je pourrais me faufiler jusqu'à son donjon "
+"Galdrad, si je passe par le gué, je pourrai me faufiler jusqu'à son donjon "
 "et l'éliminer rapidement."
 
 #. [message]: speaker=student
@@ -1601,7 +1601,7 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
-"Galdrad, si je passe par le gué je pourrais me faufiler jusqu'à son donjon "
+"Galdrad, si je passe par le gué, je pourrai me faufiler jusqu'à son donjon "
 "et l'éliminer rapidement."
 
 #. [message]: speaker=Galdrad
@@ -1641,7 +1641,7 @@ msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
 "Très bien. Nous passerons donc par le pont, mais je surveillerai le passage "
-"à l'est."
+"au nord."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
@@ -1650,7 +1650,7 @@ msgid ""
 "crossing."
 msgstr ""
 "Très bien. Nous passerons donc par le pont, mais je surveillerai le passage "
-"à l'est."
+"au nord."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:607
@@ -1818,9 +1818,9 @@ msgid ""
 msgstr ""
 "Les hex entourant une unité forment sa <i>Zone de Contrôle</i>. Lorsqu'une "
 "unité ennemie entre dans l'un de ces hex, elle ne peut plus se déplacer "
-"jusqu'au tour suivant. (Les unités possédant la capacité <i>tirailleur</i> "
+"jusqu'au tour suivant (les unités possédant la capacité <i>tirailleur</i> "
 "représentent une exception et ne sont pas affectées par les zones de "
-"contrôle.) Cette zone peut être utilisée pour barrer la route aux ennemis et "
+"contrôle). Cette zone peut être utilisée pour barrer la route aux ennemis et "
 "protéger des endroits stratégiques tels que les villages, même avec un "
 "nombre limité de troupes."
 
@@ -1944,7 +1944,6 @@ msgstr ""
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
-#, fuzzy
 msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
@@ -2021,13 +2020,13 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
-"Pensez à protéger vos unités blessées dans un village. Les chamanes ne peut "
-"restaurer que 4 points de vie par tour, alors que les villages peuvent "
-"soigner 8 points par tour.\n"
+"Pensez à protéger vos unités blessées dans un village. Les chamanes ne "
+"peuvent restaurer que 4 points de vie par tour, alors que les villages "
+"peuvent soigner 8 points par tour.\n"
 "\n"
 "Les différentes sources de soin ne se combinent généralement pas. Si une "
 "unité commence son tour à côté de plusieurs soigneurs, ou sur un village "
-"adjacent à un soigneur, elle ne sera soigné qu'une seule fois.\n"
+"adjacent à un soigneur, elle ne sera soignée qu'une seule fois.\n"
 "\n"
 "Le soin par l'inaction est une exception à cette règle : si une unité ne "
 "fait rien pendant un tour, elle recevra 2 points de vie en plus des autres "
@@ -2058,7 +2057,7 @@ msgstr ""
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
 msgid "Status Table"
-msgstr "Fenêtre d'état"
+msgstr "Fenêtre Statut"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
@@ -2068,7 +2067,7 @@ msgid ""
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
-"La fenêtre d'état décrit la situation actuelle des différents camps ainsi "
+"La fenêtre Statut décrit la situation actuelle des différents camps ainsi "
 "que les conditions initiales du scénario. Le contenu du tableau est affecté "
 "par le brouillard de guerre et le voile noir ; un camp peut également être "
 "masqué parfois. Il est souvent utile de consulter ce tableau au début d'un "
@@ -2087,9 +2086,8 @@ msgid ""
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
 "Maintenir la touche <b>Majuscule</b> rendra les animations de déplacement et "
-"de combat plus rapide. Le <i>facteur d’accélération</i> peut être défini et "
-"activer par défaut dans le menu <i>préférences</i> de l'onglet <i>Général</"
-"i>."
+"de combat plus rapides. Le <i>facteur d’accélération</i> peut être défini et "
+"activé par défaut dans l'onglet <i>Général</i> des <i>Préférences</i>."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1028
@@ -2462,7 +2460,7 @@ msgid "Fighter"
 msgstr "Combattant"
 
 #. [unit_type]: id=Fighter, race=human
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2474,7 +2472,7 @@ msgstr ""
 "aux attaques ennemies. Ils ont néanmoins le potentiel de devenir un jour de "
 "grands guerriers."
 
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Combattante"
@@ -2499,7 +2497,7 @@ msgid "Warrior"
 msgstr "Guerrier"
 
 #. [unit_type]: id=Warrior, race=human
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""
@@ -2509,7 +2507,7 @@ msgstr ""
 "Avec plus d'expérience, les Combattants ont aiguisé leurs aptitudes à l'épée "
 "et sont devenus des Guerriers."
 
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
 msgid "female^Warrior"
 msgstr "Guerrière"

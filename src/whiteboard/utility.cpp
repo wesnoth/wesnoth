@@ -17,8 +17,6 @@
  * @file
  */
 
-#include <algorithm>
-#include <iterator>
 #include <limits>
 
 #include "whiteboard/utility.hpp"
@@ -26,7 +24,6 @@
 #include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 
-#include "actions/create.hpp"
 #include "display.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"

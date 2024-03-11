@@ -39,26 +39,16 @@
 #include "tod_manager.hpp"        // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
 #include "units/unit.hpp"               // for unit
-#include "units/formula_manager.hpp"  // for unit_formula_manager
 #include "units/ptr.hpp"                 // for unit_ptr
 #include "units/types.hpp"
 #include "formula/formula.hpp"  // for formula_error, formula, etc
 #include "map/location.hpp"  // for map_location, etc
-#include "ai/actions.hpp"               // for recall_result, etc
-#include "ai/manager.hpp"               // for manager
-#include "ai/composite/contexts.hpp"
-#include "ai/composite/stage.hpp"  // for stage
-#include "ai/default/contexts.hpp"  // for attack_analysis
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
 #include "utils/variant.hpp"
 
-#include <cassert>                     // for assert
 #include <ctime>                       // for time
-#include <map>                          // for multimap<>::const_iterator, etc
-#include <sstream>                      // for operator<<, basic_ostream, etc
-#include <stack>                        // for stack
 #include <vector>                       // for vector, allocator, etc
 
 static lg::log_domain log_formula_ai("ai/engine/fai");

@@ -20,10 +20,9 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_common.hpp" // for new(L)
 
-#include <new>
 #include <string>
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
 static lg::log_domain log_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_lua)

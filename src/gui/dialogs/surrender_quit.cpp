@@ -14,7 +14,6 @@
 */
 
 #include "gui/dialogs/surrender_quit.hpp"
-#include "../widgets/settings.hpp"
 
 
 namespace gui2::dialogs

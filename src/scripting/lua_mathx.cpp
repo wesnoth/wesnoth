@@ -14,14 +14,10 @@
 
 #include "scripting/lua_mathx.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "random.hpp"
-#include "SDL2/SDL_timer.h" // for SDL_GetTicks
 
-#include "lua/lauxlib.h"
 
-#include <cstdio>
 #include <cmath>
 
 namespace lua_mathx {

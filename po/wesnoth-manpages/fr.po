@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
 "POT-Creation-Date: 2023-06-17 23:20-0500\n"
-"PO-Revision-Date: 2022-11-24 10:27+0800\n"
+"PO-Revision-Date: 2024-03-06 16:10+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -571,10 +571,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-to-file>"
 msgid "B<--no-log-to-file>"
-msgstr "B<--log-to-file>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
@@ -582,12 +580,12 @@ msgid ""
 "prevents redirecting logged output to a file. Log files are created in the "
 "logs directory under the userdata folder."
 msgstr ""
+"Ne crée pas de fichier de journalisation. Les fichiers de journalisation se "
+"trouvent dans le répertoire « log » en-dessous de « userdata »."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:195
-#, fuzzy, no-wrap
-#| msgid "B<--log-to-file>"
 msgid "B<--log-to-file>"
 msgstr "B<--log-to-file>"
 
@@ -597,14 +595,14 @@ msgid ""
 "log output is written to a file in addition to standard output/error. "
 "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgstr ""
+"Un fichier de journalisation est créé en supplément des sorties standards "
+"output/error. Annule l'effet du --no-log-to-file implicite ou donné "
+"explicitement."
 
-# type: TP
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -612,6 +610,9 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"Quand --no-log-to-file est spécifiée sous Windows, les écritures de "
+"journalisation apparaissent dans les cerr/cout au lieu de CONOUT. Sans effet "
+"sinon."
 
 # type: TP
 #. type: TP
@@ -692,8 +693,6 @@ msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"runs the game without any delays for graphic benchmarking. This is \n"
-"automatically enabled by B<--nogui>.\n"
 "Lance le jeu sans pause pour mesurer les performances graphiques. Cette "
 "option est activée automatiquement par B<--nogui>."
 
@@ -965,7 +964,7 @@ msgid ""
 "outputs to a .png file. Image path functions are documented at https://wiki."
 "wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"prend une « chaîne de caractères de chemin Wesnoth » valide, avec une "
+"Prend une « chaîne de caractères de chemin Wesnoth » valide, avec une "
 "fonction de chemin d'image, puis produit un fichier .png. Les fonctions de "
 "chemin d'image sont documentées à l'adresse : https://wiki.wesnoth.org/"
 "ImagePathFunctionWML."
@@ -1043,7 +1042,7 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
-"se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au "
+"Se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au "
 "premier serveur paramétré dans les préférences. Exemple : B<--server> "
 "B<server.wesnoth.org>."
 
@@ -1080,21 +1079,14 @@ msgstr "B<-t[>I<identifiant scénario>B<],\\ --test[>I<=identifiant scénario>B<
 
 #. type: Plain text
 #: doc/man/wesnoth.6:358
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
-"Lance un petit scénario de test. Ce scénario devrait être définit avec un "
-"tag WML B<[test]>. Celui par défaut est B<[test]>. Une démonstration de la "
-"fonctionnalité B<[micro_ai]> peut être lancé avec B<micro_ai_test>.  "
-"Implique B<--nogui>."
+"Lance un petit scénario de test. Ce scénario devrait être défini avec un tag "
+"WML B<[test]>. Celui par défaut est B<test>. Une démonstration de la "
+"fonctionnalité B<[micro_ai]> peut être lancée avec B<micro_ai_test>."
 
 #. type: TP
 #: doc/man/wesnoth.6:358
@@ -1140,7 +1132,7 @@ msgid ""
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
 "lua the same permissions as the wesnoth executable."
 msgstr ""
-"rend le package B<package> disponible aux scripts Lua, ainsi ils peuvent "
+"Rend le package B<package> disponible aux scripts Lua, ainsi ils peuvent "
 "charger n'importe quel package. Ne faites cela qu'avec des scripts de "
 "confiance ! Cette action donne aux scripts Lua les mêmes permissions que "
 "l'exécutable de Wesnoth."
@@ -1668,12 +1660,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2225,42 +2214,39 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:167
-#, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
 msgstr ""
+"Utilise TLS. Si activée, les trois options suivantes doivent être spécifiées."
 
 #. type: TP
 #: doc/man/wesnothd.6:170
-#, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr "La chaîne du certificat TLS au format .pem "
 
 #. type: TP
 #: doc/man/wesnothd.6:173
-#, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr "La clé privée TLS au format .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
-#, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -2268,6 +2254,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+"Le paramètre DH de TLS au format .pem. À générer par  B<openssl dhparam -out "
+"nom_de_fichier.pem 4096>"
 
 # type: TP
 #. type: TP
@@ -2296,9 +2284,8 @@ msgstr "Exemple : B<versions_accepted=\"*\"> autorise tout type de version."
 
 #. type: TP
 #: doc/man/wesnothd.6:185
-#, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
@@ -2307,6 +2294,9 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"L'identifiant ID du serveur quand la sauvegarde en base de données des "
+"informations des parties est activée. Souvent les nombres majeur et mineur "
+"de la version des clients qui est acceptée : 1.18, 1.16..."
 
 # type: SS
 #. type: SS
@@ -2611,6 +2601,9 @@ msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
+"Le nom de la table de la base de données où les instants de connexion et "
+"déconnexion sont stockés. Permet aussi de trouver les adresses IP "
+"correspondant aux joueurs."
 
 # type: TP
 #. type: TP

@@ -29,11 +29,9 @@
 #include <map>
 #include <string>
 
-class  config;
 class  vconfig;
 
 namespace t_translation {
-	struct terrain_code;
 }
 
 

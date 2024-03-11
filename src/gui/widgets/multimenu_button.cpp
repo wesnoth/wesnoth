@@ -19,8 +19,6 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
-#include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -249,10 +247,10 @@ multimenu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in multimenu_button.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for multimenu button")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for multimenu button")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", _("Missing required state for multimenu button")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for multimenu button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("multimenu_button_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("multimenu_button_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("multimenu_button_definition][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("multimenu_button_definition][resolution", "state_focused")));
 }
 
 // }---------- BUILDER -----------{

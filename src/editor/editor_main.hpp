@@ -17,7 +17,6 @@
 
 #include <string>
 
-class config;
 
 namespace editor {
 

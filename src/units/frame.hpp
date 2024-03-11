@@ -74,7 +74,6 @@ struct frame_parameters
 /**
  * Easily build frame parameters with the serialized constructors
  */
-class frame_parsed_parameters;
 class frame_builder
 {
 public:

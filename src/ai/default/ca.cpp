@@ -21,9 +21,7 @@
 #include "ai/default/ca.hpp"
 #include "ai/actions.hpp"
 #include "ai/manager.hpp"
-#include "ai/composite/engine.hpp"
 #include "ai/composite/rca.hpp"
-#include "ai/composite/stage.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
@@ -35,7 +33,6 @@
 #include "pathfind/teleport.hpp"
 
 #include <numeric>
-#include <boost/dynamic_bitset.hpp>
 
 #include <SDL2/SDL_timer.h>
 

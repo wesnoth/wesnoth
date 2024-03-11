@@ -47,7 +47,6 @@
 #include "mouse_handler_base.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
-#include "playsingle_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -56,7 +55,6 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
-#include "whiteboard/manager.hpp"
 
 namespace ai {
 

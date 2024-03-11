@@ -19,12 +19,10 @@
 #include "gui/sort_order.hpp"
 #include "terrain/translation.hpp"
 
-#include <utility>
 
 struct point;
 
 namespace hotkey {
-	class hotkey_item;
 }
 
 namespace preferences {

@@ -18,13 +18,11 @@
 #include "game_config.hpp"              // for menu_contract, menu_expand
 #include "help/help_impl.hpp"                // for section, topic, topic_list, etc
 #include "sound.hpp"                    // for play_UI_sound
-#include "wml_separators.hpp"           // for IMG_TEXT_SEPARATOR, etc
 #include "sdl/input.hpp"                // for get_mouse_state
 
 #include <algorithm>                    // for find
 #include <list>                         // for _List_const_iterator, etc
 #include <utility>                      // for pair
-#include <SDL2/SDL.h>
 
 namespace help {
 

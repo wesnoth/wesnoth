@@ -17,13 +17,10 @@
 
 #include "gui/dialogs/lua_interpreter.hpp"
 
-#include "gui/auxiliary/field.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/window_builder.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -37,7 +34,6 @@
 #include "scripting/game_lua_kernel.hpp"	//needed for the WHICH_KERNEL version of display
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
-#include "serialization/unicode.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 

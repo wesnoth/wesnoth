@@ -14,8 +14,6 @@
 
 #include "replay_controller.hpp"
 
-#include "game_config_manager.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -167,19 +165,13 @@ void replay_controller::play_side_impl()
 			}
 			else {
 				REPLAY_RETURN res = do_replay(true);
-				if(res == REPLAY_FOUND_END_MOVE) {
-					stop_condition_->move_done();
-				}
 				if(controller_.is_regular_game_end()) {
 					return;
 				}
 				if(res == REPLAY_FOUND_END_TURN) {
 					return;
 				}
-				// TODO: how can this be the case when we just checked for "resources::recorder->at_end()" above?
-				if(res == REPLAY_RETURN_AT_END) {
-					stop_replay();
-				}
+				stop_condition_->move_done();
 				if(res == REPLAY_FOUND_INIT_TURN)
 				{
 					stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());

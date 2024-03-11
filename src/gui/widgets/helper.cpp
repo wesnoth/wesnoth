@@ -23,11 +23,9 @@
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
 #include "gui/widgets/settings.hpp"
-#include "sdl/rect.hpp"
 #include "tstring.hpp"
 #include "sdl/input.hpp" // get_mouse_location
 
-#include <SDL2/SDL.h>
 
 namespace gui2
 {

@@ -25,7 +25,6 @@
 
 namespace ai {
 
-class ai_composite;
 
 class stage : public virtual ai_context_proxy, public component {
 public:

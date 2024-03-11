@@ -17,12 +17,10 @@
 
 #include "desktop/paths.hpp"
 
-#include "game_config.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
-#include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
 #if !defined(_WIN32) && !defined(__APPLE__)
@@ -33,7 +31,6 @@
 
 // For username stuff on Unix:
 #include <pwd.h>
-#include <sys/types.h>
 
 #else // _WIN32
 

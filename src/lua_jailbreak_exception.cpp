@@ -17,6 +17,7 @@
 
 #include <cassert>
 
+int lua_jailbreak_exception::jail_depth = 0;
 lua_jailbreak_exception *lua_jailbreak_exception::jailbreak_exception = nullptr;
 
 void lua_jailbreak_exception::store() const noexcept
@@ -27,6 +28,9 @@ void lua_jailbreak_exception::store() const noexcept
 	 * lua_jailbreak_exception::rethrow() or a logic error in the code.
 	 */
 	assert(!jailbreak_exception);
+	if (jail_depth == 0) {
+		return;
+	}
 
 	jailbreak_exception = this->clone();
 }
@@ -47,7 +51,9 @@ void lua_jailbreak_exception::rethrow()
 	try {
 		jailbreak_exception->execute();
 	} catch(...) {
-		clear();
+		if (jail_depth == 0) {
+			clear();
+		}
 		throw;
 	}
 

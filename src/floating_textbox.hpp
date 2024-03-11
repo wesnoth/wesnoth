@@ -26,7 +26,6 @@ class game_display;
 
 namespace gui{
 
-	class button;
 
 	enum TEXTBOX_MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
 		        TEXTBOX_COMMAND, TEXTBOX_AI };

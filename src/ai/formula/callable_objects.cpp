@@ -14,7 +14,6 @@
 */
 
 #include "ai/formula/ai.hpp"
-#include "attack_prediction.hpp"
 #include "game_board.hpp"
 #include "ai/formula/callable_objects.hpp"
 #include "ai/composite/contexts.hpp"

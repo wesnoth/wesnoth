@@ -16,8 +16,6 @@
 #include "help/help_browser.hpp"
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
 #include "font/constants.hpp"           // for relative_size
-#include "gettext.hpp"                  // for _
-#include "gui/dialogs/transient_message.hpp"
 #include "help/help_text_area.hpp"      // for help_text_area
 #include "help/help_impl.hpp"                // for find_topic, hidden_symbol, etc
 #include "key.hpp"                      // for CKey
@@ -25,7 +23,6 @@
 #include "sdl/rect.hpp"
 #include "sdl/input.hpp"                // for get_mouse_state
 
-struct SDL_Rect;
 
 namespace help {
 

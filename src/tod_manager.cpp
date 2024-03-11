@@ -16,9 +16,7 @@
 #include "tod_manager.hpp"
 
 #include "actions/attack.hpp"
-#include "display_context.hpp"
 #include "game_data.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
@@ -30,7 +28,6 @@
 #include "units/unit_alignments.hpp"
 
 #include <algorithm>
-#include <functional>
 #include <iterator>
 
 static lg::log_domain log_engine("engine");

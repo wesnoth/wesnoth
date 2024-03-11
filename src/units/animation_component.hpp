@@ -22,7 +22,6 @@
 
 class config;
 class unit;
-class unit_drawer;
 class unit_type;
 
 class unit_animation_component

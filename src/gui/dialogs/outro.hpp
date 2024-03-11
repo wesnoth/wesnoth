@@ -53,7 +53,8 @@ private:
 	std::size_t text_index_;
 
 	unsigned int duration_;
-	int fade_step_;
+	int fade_alpha_;
+	uint32_t fade_start_;
 
 	bool fading_in_;
 

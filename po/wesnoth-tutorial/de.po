@@ -4,20 +4,21 @@
 #  Rhonda D'Vine <rhonda@deb.at>, 2006, 2008 - 2009, 2011, 2014, 2018, 2021
 #  HaJo Gurt <gurt@gmx.de>, 2007
 #  Tobias 'SonIcco' Schönau <tobias.schoenau@eagerbyte.com>, 2009
+#  Johannes Löhnert <loehnert.kde@gmx.de>, 2024
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
-"PO-Revision-Date: 2022-01-12 20:44+0100\n"
-"Last-Translator: Rhonda D'Vine <rhonda@deb.at>\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-03-03 12:27+0100\n"
+"Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -49,14 +50,12 @@ msgstr "Sehr einfach"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Training abgeschlossen"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "Kampftraining"
+msgstr "Schließt das Kampftraining ab."
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -80,7 +79,7 @@ msgstr "Konrad"
 #. [lua]: wml_actions.select_character
 #. [modify_side]
 #: data/campaigns/tutorial/gui/character_selection.cfg:70
-#: data/campaigns/tutorial/lua/character_selection.lua:24
+#: data/campaigns/tutorial/lua/character_selection.lua:25
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -1284,8 +1283,8 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
-"Neben der Möglichkeit, in jedem Szenario neue Einheiten auszubilden, kannst "
-"du auch erfahrene Veteranen aus früheren Szenarien für einen Preis von 20 "
+"Neben der Möglichkeit, in jedem Szenario neue Einheiten auszubilden, könnt "
+"Ihr auch erfahrene Veteranen aus früheren Szenarien für einen Preis von 20 "
 "Gold <i>einberufen</i>. Dies erlaubt es Euch, über mehrere Szenarien hinweg "
 "mächtige Truppen aufzubauen, indem Ihr die Einheiten mit der meisten "
 "Erfahrung oder einer guten Kombination von Charakteristiken oder "
@@ -1828,7 +1827,7 @@ msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Wenn eine Eurer Schamaninen direkt hinter einer Einheit steht, wird sie sie "
+"Wenn eine Eurer Schamaninnen direkt hinter einer Einheit steht, wird sie sie "
 "am Anfang des nächsten Zuges um 4 Lebenspunkte heilen."
 
 # XXX - female shaman -- two strings needed
@@ -1841,8 +1840,8 @@ msgid ""
 msgstr ""
 "Ich hoffe, meine Einheiten überleben den Gegenangriff, wenn ich den Ork "
 "nicht schon diesen Zug zur Strecke bringen kann. Ich nehme besser weitere "
-"Dörfer ein und lasse meine übrigen Einheiten weiter auf den Gegner "
-"zumarschieren."
+"Dörfer ein und lasse meine übrigen Einheiten weiter auf den Gegner zu "
+"marschieren."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
@@ -1878,9 +1877,9 @@ msgid ""
 "multiple directions! Even though the orcs have low defense in water, they "
 "will overwhelm you with their numbers."
 msgstr ""
-"Seid vorsichtig: Wenn ihr auf der Brücke steht, seid ihr Angriffen aus "
-"mehreren Richtungen ausgesetzt! Obwohl die Verteidigung der Orks im Wasser "
-"niedrig ist, werden sie dich überrennen."
+"Sei vorsichtig: Wenn du auf der Brücke steht, bist du Angriffen aus mehreren "
+"Richtungen ausgesetzt! Obwohl die Verteidigung der Orks im Wasser niedrig "
+"ist, werden sie dich überrennen."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
@@ -1933,6 +1932,9 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"Die Prozentzahl, die beim Bewegen einer Einheit angezeigt wird, ist der "
+"Verteidigungswert der Einheit auf diesem Feld. Je höher die Zahl ist, um so "
+"wahrscheinlicher entgeht die Einheit einem Angriff."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
@@ -2433,7 +2435,7 @@ msgid "Fighter"
 msgstr "Kämpfer"
 
 #. [unit_type]: id=Fighter, race=human
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
 #: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
@@ -2445,7 +2447,7 @@ msgstr ""
 "Schlacht und sind leicht verletzbar. Jedoch wohnt ihnen das Potenzial inne, "
 "eines Tages große Krieger zu werden."
 
-#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Kämpferin"
@@ -2471,7 +2473,7 @@ msgid "Warrior"
 msgstr "Krieger"
 
 #. [unit_type]: id=Warrior, race=human
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:19
 #: data/campaigns/tutorial/units/Warrioress.cfg:21
 msgid ""
@@ -2481,7 +2483,7 @@ msgstr ""
 "Durch Erfahrung haben Kämpfer ihre Fähigkeiten verbessert und sind zu "
 "Kriegern aufgestiegen."
 
-#. [unit_type]: id=Warrioress, race=human
+#. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
 msgid "female^Warrior"
 msgstr "Kriegerin"

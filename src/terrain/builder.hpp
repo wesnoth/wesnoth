@@ -21,7 +21,6 @@
 #pragma once
 
 #include "animated.hpp"
-#include "game_config.hpp"
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 

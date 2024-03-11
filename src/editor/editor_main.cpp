@@ -20,11 +20,8 @@
 #include "gettext.hpp"
 #include "gui/dialogs/editor/choose_addon.hpp"
 #include "gui/dialogs/prompt.hpp"
-#include "gui/dialogs/message.hpp"
 #include "filesystem.hpp"
 #include "editor/action/action_base.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
 
 lg::log_domain log_editor("editor");
 

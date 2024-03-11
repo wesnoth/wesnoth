@@ -18,8 +18,6 @@
 #include "gui/widgets/viewport.hpp"
 
 #include "gui/auxiliary/iterator/walker.hpp"
-#include "gui/core/log.hpp"
-#include "config.hpp"
 #include "gettext.hpp"
 #include "utils/const_clone.hpp"
 #include "wml_exception.hpp"
@@ -169,7 +167,7 @@ namespace implementation
 
 builder_viewport::builder_viewport(const config& cfg)
 	: builder_widget(cfg)
-	, widget_(create_widget_builder(VALIDATE_WML_CHILD(cfg, "widget", _("Missing [widget] in [viewport]"))))
+	, widget_(create_widget_builder(VALIDATE_WML_CHILD(cfg, "widget", missing_mandatory_wml_tag("viewport", "widget"))))
 {
 }
 

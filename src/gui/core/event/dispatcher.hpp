@@ -21,11 +21,9 @@
 
 #include <SDL2/SDL_events.h>
 
-#include <cassert>
 #include <functional>
 #include <list>
 #include <map>
-#include <type_traits>
 
 struct point;
 

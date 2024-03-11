@@ -32,7 +32,6 @@
 namespace wb
 {
 
-class move;
 
 /**
  * Datastructure holding the actions of a side on multiple turns.

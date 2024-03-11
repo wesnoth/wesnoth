@@ -33,7 +33,6 @@
 
 #pragma once
 
-class config;
 class fake_unit_manager;
 class terrain_builder;
 class map_labels;
@@ -43,7 +42,6 @@ class team;
 struct overlay;
 
 namespace halo {
-	class manager;
 }
 
 namespace wb {
@@ -71,7 +69,6 @@ namespace wb {
 #include <functional>
 #include <chrono>
 #include <cstdint>
-#include <deque>
 #include <list>
 #include <map>
 #include <memory>
@@ -742,7 +739,7 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	texture minimap_;
+	std::function<rect(rect)> minimap_renderer_;
 	SDL_Rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;

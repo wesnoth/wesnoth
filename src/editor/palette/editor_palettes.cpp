@@ -19,10 +19,8 @@
 
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
-#include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
-#include "units/types.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"
 

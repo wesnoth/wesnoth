@@ -19,7 +19,6 @@
  */
 
 #include "ai/lua/engine_lua.hpp"
-#include "ai/composite/ai.hpp"
 #include "ai/composite/goal.hpp"
 #include "ai/composite/rca.hpp"
 #include "ai/composite/stage.hpp"

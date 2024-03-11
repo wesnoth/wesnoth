@@ -20,7 +20,6 @@
 
 #pragma once
 
-#include <vector>
 
 class ai_testing{
 public:

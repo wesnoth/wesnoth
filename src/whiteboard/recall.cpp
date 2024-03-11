@@ -19,21 +19,16 @@
 
 #include "whiteboard/recall.hpp"
 
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 #include "whiteboard/visitor.hpp"
 
-#include "actions/create.hpp"
 #include "display.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
-#include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "replay_helper.hpp"
-#include "statistics.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "units/filter.hpp"

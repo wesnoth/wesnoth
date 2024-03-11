@@ -15,10 +15,8 @@
 
 #pragma once
 
-#include "gui/core/notifier.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
-#include <functional>
 
 namespace gui2
 {

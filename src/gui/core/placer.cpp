@@ -19,7 +19,6 @@
 #include "gui/core/placer/horizontal_list.hpp"
 #include "gui/core/placer/vertical_list.hpp"
 
-#include <cassert>
 #include <stdexcept>
 
 namespace gui2

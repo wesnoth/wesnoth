@@ -22,7 +22,6 @@
 
 #include "replay.hpp"
 
-#include "actions/undo.hpp"
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "game_data.hpp"

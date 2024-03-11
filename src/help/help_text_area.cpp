@@ -29,7 +29,6 @@
 #include "serialization/parser.hpp"     // for read, write
 
 #include <algorithm>                    // for max, min, find_if
-#include <ostream>                      // for operator<<, stringstream, etc
 #include <vector>                       // for vector, etc
 
 static lg::log_domain log_display("display");

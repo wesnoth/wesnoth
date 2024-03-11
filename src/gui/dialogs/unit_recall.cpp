@@ -18,16 +18,13 @@
 
 #include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/log.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
@@ -38,13 +35,11 @@
 #include "resources.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
-#include "units/types.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include <functional>
 #include "whiteboard/manager.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)

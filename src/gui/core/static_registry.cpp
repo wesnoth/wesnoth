@@ -16,7 +16,6 @@
 #include "gui/core/static_registry.hpp"
 
 #include "gui/core/log.hpp"
-#include <functional>
 
 #include <map>
 #include <set>

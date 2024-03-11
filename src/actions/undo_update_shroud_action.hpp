@@ -15,7 +15,6 @@
 #pragma once
 
 #include "undo_action.hpp"
-#include "units/ptr.hpp"
 
 namespace actions
 {

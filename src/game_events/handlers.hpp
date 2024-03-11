@@ -28,7 +28,6 @@
 
 #include <string>
 
-class game_data;
 class game_lua_kernel;
 class variable_set;
 

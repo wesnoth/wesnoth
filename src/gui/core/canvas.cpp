@@ -409,6 +409,10 @@ text_shape::text_shape(const config& cfg)
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
+	, highlight_start_(cfg["highlight_start"], 0)
+	, highlight_end_(cfg["highlight_end"], 0)
+	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
+	, outline_(cfg["outline"], false)
 {
 	if(!font_size_.has_formula()) {
 		VALIDATE(font_size_(), _("Text has a font size of 0."));
@@ -436,6 +440,8 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 	font::pango_text& text_renderer = font::get_text_renderer();
 
+	text_renderer.set_highlight_area(highlight_start_(variables), highlight_end_(variables), highlight_color_(variables));
+
 	text_renderer
 		.set_link_aware(link_aware_(variables))
 		.set_link_color(link_color_(variables))
@@ -451,7 +457,8 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
 				: PANGO_ELLIPSIZE_END)
-		.set_characters_per_line(characters_per_line_);
+		.set_characters_per_line(characters_per_line_)
+		.set_add_outline(outline_(variables));
 
 	wfl::map_formula_callable local_variables(variables);
 	const auto [tw, th] = text_renderer.get_size();

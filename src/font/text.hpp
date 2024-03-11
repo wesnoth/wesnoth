@@ -21,8 +21,8 @@
 #include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <pango/pango.h>
 #include <pango/pangocairo.h>
+
 
 #include <functional>
 #include <memory>
@@ -33,7 +33,6 @@
  * Note: This is the cairo-pango code path, not the SDL_TTF code path.
  */
 
-struct language_def;
 struct point;
 
 namespace font {
@@ -173,6 +172,18 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
+	 * Gets the correct number of columns to move the cursor
+	 * from Pango. Needed in case the text contains multibyte
+	 * characters. Return value == column if the text has no
+	 * multibyte characters.
+	 *
+	 * @param column              The column offset of the cursor.
+	 *
+	 * @returns                   Corrected column offset.
+	 */
+	int get_byte_offset(const unsigned column) const;
+
+	/**
 	 * Get maximum length.
 	 *
 	 * @returns                   The maximum length of the text. The length of text
@@ -223,6 +234,14 @@ public:
 	 *       least once.
 	 */
 	std::vector<std::string> get_lines() const;
+
+	/**
+	 * Get number of lines in the text.
+	 *
+	 * @returns                   The number of lines in the text.
+	 *
+	 */
+	unsigned get_lines_count() const { return pango_layout_get_line_count(layout_.get()); };
 
 	/**
 	 * Gets the length of the text in bytes.
@@ -277,6 +296,21 @@ public:
 	pango_text& set_link_color(const color_t& color);
 
 	pango_text& set_add_outline(bool do_add);
+
+	/**
+	* Mark a specific portion of text for highlighting. Used for selection box.
+	* BGColor is set in set_text(), this just marks the area to be colored.
+	* Markup not used because the user may enter their own markup or special characters
+	* @param start_offset        Column offset of the cursor where selection/highlight starts
+ 	* @param end_offset          Column offset of the cursor where selection/highlight ends
+ 	* @param color               Highlight color
+	*/
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+	{
+		highlight_start_offset_ = start_offset;
+		highlight_end_offset_ = end_offset;
+		highlight_color_ = color;
+	}
 
 private:
 
@@ -374,6 +408,10 @@ private:
 
 	/** Length of the text. */
 	mutable std::size_t length_;
+
+	unsigned highlight_start_offset_;
+	unsigned highlight_end_offset_;
+	color_t	highlight_color_;
 
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
@@ -487,6 +525,10 @@ pango_text& get_text_renderer();
  *                                ascent and descent lengths.
  */
 int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+
+/* Returns the default line spacing factor
+ * For now hardcoded here */
+constexpr float get_line_spacing_factor() { return 1.3f; };
 
 } // namespace font
 
