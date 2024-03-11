@@ -16,6 +16,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "utils/tweened_value.hpp"
 
 class game_classification;
 
@@ -48,17 +49,13 @@ private:
 
 	virtual void post_show(window& window) override;
 
+	void advance_text();
+
+	utils::tweened_value_queue alpha_queue_;
+
 	std::vector<std::string> text_;
 	std::string current_text_;
 	std::size_t text_index_;
-
-	unsigned int duration_;
-	int fade_alpha_;
-	uint32_t fade_start_;
-
-	bool fading_in_;
-
-	std::size_t timer_id_;
 };
 
 } // namespace dialogs
