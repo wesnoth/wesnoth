@@ -48,8 +48,12 @@ private:
 
 	virtual void post_show(window& window) override;
 
+	const std::string& current_text() const
+	{
+		return text_[text_index_];
+	}
+
 	std::vector<std::string> text_;
-	std::string current_text_;
 	std::size_t text_index_;
 
 	unsigned int duration_;
