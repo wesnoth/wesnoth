@@ -43,6 +43,7 @@ REGISTER_DIALOG(outro)
 outro::outro(const game_classification& info)
 	: modal_dialog(window_id())
 	, text_()
+	, current_text_()
 	, text_index_(0)
 	, duration_(info.end_text_duration)
 	, fade_alpha_(0)
@@ -93,6 +94,8 @@ outro::outro(const game_classification& info)
 		}
 	}
 
+	current_text_ = text_[0];
+
 	if(!duration_) {
 		duration_ = 3500; // 3.5 seconds
 	}
@@ -101,7 +104,7 @@ outro::outro(const game_classification& info)
 void outro::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant{current_text()});
+	window.get_canvas(0).set_variable("outro_text", wfl::variant(current_text_));
 }
 
 void outro::update()
@@ -138,9 +141,10 @@ void outro::update()
 			window::close();
 			return;
 		}
+		current_text_ = text_[text_index_];
 
 		// ...else show the next bit.
-		window_canvas.set_variable("outro_text", wfl::variant{current_text()});
+		window_canvas.set_variable("outro_text", wfl::variant(current_text_));
 
 		fading_in_ = true;
 
