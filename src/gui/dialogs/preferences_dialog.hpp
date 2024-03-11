@@ -25,9 +25,6 @@
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
-namespace hotkey {
-}
-
 //struct theme_info;
 
 namespace preferences {

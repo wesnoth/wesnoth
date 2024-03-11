@@ -28,9 +28,6 @@
 
 class config;
 
-namespace events {
-}
-
 /**
  *
  * Game board class.

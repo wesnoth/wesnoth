@@ -41,8 +41,6 @@ class reports;
 class team;
 struct overlay;
 
-namespace halo {
-}
 
 namespace wb {
 	class manager;

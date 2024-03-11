@@ -20,9 +20,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-}
 
 /**
  * A generic container base class.

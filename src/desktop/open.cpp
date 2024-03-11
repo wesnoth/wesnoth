@@ -16,6 +16,7 @@
 #include "desktop/open.hpp"
 
 #include "log.hpp"
+#include "serialization/unicode.hpp"
 
 #if defined(_X11) || defined(__APPLE__)
 

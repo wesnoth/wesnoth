@@ -49,16 +49,7 @@ namespace game_events {
 	class wml_event_pump;
 } // namespace game_events
 
-namespace soundsource {
-} // namespace soundsource
-
 class statistics_t;
-
-namespace pathfind {
-}
-
-namespace tooltips {
-} // namespace tooltips
 
 namespace wb {
 	class manager; // whiteboard manager

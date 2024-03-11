@@ -25,9 +25,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-}
 
 /**
  * Abstract base class for text items.

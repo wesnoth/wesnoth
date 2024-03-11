@@ -23,9 +23,6 @@
 namespace gui2
 {
 
-namespace implementation {
-}
-
 class selectable_item;
 class tree_view;
 

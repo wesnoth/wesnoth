@@ -21,10 +21,6 @@
 
 #include "scrollarea.hpp"
 
-
-namespace image{
-}
-
 namespace gui {
 
 /**

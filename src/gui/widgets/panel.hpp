@@ -22,9 +22,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-}
 
 // ------------ WIDGET -----------{
 

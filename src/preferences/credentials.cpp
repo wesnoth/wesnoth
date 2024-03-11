@@ -15,6 +15,7 @@
 #include "credentials.hpp"
 
 #include "preferences/general.hpp"
+#include "serialization/unicode.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"

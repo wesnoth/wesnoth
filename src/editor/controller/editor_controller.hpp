@@ -28,10 +28,6 @@
 
 #include "sound_music_track.hpp"
 
-
-namespace tooltips {
-}
-
 namespace font {
 struct floating_label_context;
 }

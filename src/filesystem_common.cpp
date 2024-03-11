@@ -13,6 +13,7 @@
 */
 
 #include "filesystem.hpp"
+#include "wesconfig.h"
 
 #include "config.hpp"
 #include "log.hpp"

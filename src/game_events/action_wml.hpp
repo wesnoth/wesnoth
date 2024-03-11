@@ -31,10 +31,6 @@
 
 class  vconfig;
 
-namespace t_translation {
-}
-
-
 namespace game_events
 {
 	struct queued_event;

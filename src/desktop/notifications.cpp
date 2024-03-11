@@ -15,6 +15,7 @@
 
 #include "desktop/notifications.hpp"
 
+#include "gettext.hpp"
 
 #include "video.hpp" // window_has_flags()
 

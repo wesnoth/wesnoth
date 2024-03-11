@@ -26,11 +26,6 @@
 
 #include <boost/regex.hpp>
 
-namespace pathfind {
-
-
-} //of namespace pathfind
-
 namespace ai {
 
 static lg::log_domain log_ai_component("ai/component");
