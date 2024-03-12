@@ -341,6 +341,14 @@ void story_viewer::display_part()
 	if(part_text.empty() || !has_background) {
 		// No text or no background for this part, hide the background layer.
 		text_stack.select_layer(LAYER_TEXT);
+		
+		// Show the bottom skip button
+		cancel.set_visible(widget::visibility::invisible);
+		dlft.set_visible(widget::visibility::invisible);
+		drht.set_visible(widget::visibility::invisible);
+		cancel2.set_visible(widget::visibility::visible);
+		dlft2.set_visible(widget::visibility::visible);
+		drht2.set_visible(widget::visibility::visible);
 	} else if(text_stack.current_layer() != -1)  {
 		// If the background layer was previously hidden, re-show it.
 		text_stack.select_layer(-1);
@@ -354,7 +362,7 @@ void story_viewer::display_part()
 	// Hardcoded max width, should be made customizable
 	// preferably as an key to [part]
 	unsigned win_width_4 = get_window()->get_size().x/4;
-	unsigned best_text_width = (win_width_4 > 1000) ? 1000 : win_width_4;
+	unsigned best_text_width = (4*win_width_4 > 1000) ? 1000 : win_width_4;
 	text_label.set_text_max_width(best_text_width);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
