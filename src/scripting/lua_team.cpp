@@ -26,7 +26,6 @@
 
 #include <string>
 
-#include "lua/wrapper_lauxlib.h"
 
 /**
  * Implementation for a lua reference to a team,

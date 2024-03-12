@@ -15,7 +15,6 @@
 
 #include "help/help_impl.hpp"
 
-#include "about.hpp"                    // for get_text
 #include "actions/attack.hpp"           // for time_of_day bonus
 #include "display.hpp"                  // for display
 #include "display_context.hpp"          // for display_context

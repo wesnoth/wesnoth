@@ -22,7 +22,6 @@
 #include "ai/formula/ai.hpp"
 
 #include "formula/formula.hpp"
-#include "formula/function.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_ai("ai/stage/side_formulas");

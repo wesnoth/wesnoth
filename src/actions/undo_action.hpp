@@ -18,7 +18,6 @@
 #include <optional>
 #include "map/location.hpp"
 #include "synced_context.hpp"
-#include "game_events/pump.hpp" // for queued_event
 #include "config.hpp"
 
 namespace actions {

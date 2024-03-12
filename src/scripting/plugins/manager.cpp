@@ -16,7 +16,6 @@
 #include "scripting/plugins/manager.hpp"
 
 #include "scripting/application_lua_kernel.hpp"
-#include "scripting/plugins/context.hpp"
 #include <cassert>
 #include <stdexcept>
 #include <string>

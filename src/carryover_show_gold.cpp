@@ -15,15 +15,11 @@
 
 #include "carryover_show_gold.hpp"
 
-#include "config.hpp"
 #include "log.hpp"
 #include "team.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/message.hpp"
-#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/retval.hpp"
 #include "formula/string_utils.hpp"
 #include "map/map.hpp"
 #include <cassert>

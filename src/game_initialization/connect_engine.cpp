@@ -27,13 +27,10 @@
 #include "map/map.hpp"
 #include "mt_rng.hpp"
 #include "side_controller.hpp"
-#include "tod_manager.hpp"
 #include "team.hpp"
-#include "wesnothd_connection.hpp"
 
 #include <array>
 #include <cstdlib>
-#include <ctime>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)

@@ -19,7 +19,6 @@
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {

@@ -23,7 +23,6 @@
 
 class vconfig;
 
-#include "config.hpp"
 
 namespace game_events
 {

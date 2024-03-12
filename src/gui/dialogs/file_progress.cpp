@@ -24,10 +24,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/progress_bar.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <chrono>
 
 namespace gui2::dialogs {
 

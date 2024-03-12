@@ -18,13 +18,9 @@
 #include "gui/widgets/scroll_label.hpp"
 
 #include "gui/widgets/label.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"

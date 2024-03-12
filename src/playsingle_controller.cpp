@@ -26,7 +26,6 @@
 #include "ai/testing.hpp"
 #include "display_chat_manager.hpp"
 #include "carryover_show_gold.hpp"
-#include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
@@ -34,13 +33,11 @@
 #include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/hotkey_handler_sp.hpp"
-#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
 #include "playturn.hpp"
 #include "preferences/game.hpp"
-#include "random_deterministic.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -49,14 +46,11 @@
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
-#include "statistics.hpp"
 #include "synced_context.hpp"
-#include "units/unit.hpp"
 #include "video.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)

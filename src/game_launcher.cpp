@@ -25,7 +25,6 @@
 #include "game_classification.hpp" // for game_classification, etc
 #include "game_config.hpp"         // for path, no_delay, revision, etc
 #include "game_config_manager.hpp" // for game_config_manager
-#include "game_initialization/create_engine.hpp"
 #include "game_initialization/multiplayer.hpp"  // for start_client, etc
 #include "game_initialization/playcampaign.hpp" // for play_game, etc
 #include "game_initialization/singleplayer.hpp" // for sp_create_mode
@@ -35,11 +34,8 @@
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp" // for show error message
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
-#include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" // for host game prompt
-#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"      // for show_debug_clock_button
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
-#include "gui/widgets/retval.hpp"            // for window, etc
 #include "gui/widgets/settings.hpp"          // for new_widgets
 #include "language.hpp"                      // for language_def, etc
 #include "log.hpp"                           // for LOG_STREAM, logger, general, etc
@@ -51,7 +47,6 @@
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
-#include "serialization/string_utils.hpp" // for split
 #include "tstring.hpp"       // for operator==, operator!=
 #include "video.hpp"
 #include "wesnothd_connection_error.hpp"
@@ -66,13 +61,11 @@
 #include <new>
 #include <utility> // for pair
 
-#include <SDL2/SDL.h> // for SDL_INIT_JOYSTICK, etc
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
 
-struct incorrect_map_format_error;
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)

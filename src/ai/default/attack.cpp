@@ -21,7 +21,6 @@
 #include "ai/manager.hpp"
 #include "ai/default/contexts.hpp"
 #include "ai/actions.hpp"
-#include "ai/formula/ai.hpp"
 #include "ai/composite/contexts.hpp"
 
 #include "actions/attack.hpp"

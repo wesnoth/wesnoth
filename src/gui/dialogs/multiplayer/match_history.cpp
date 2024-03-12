@@ -14,9 +14,7 @@
 
 #include "gui/dialogs/multiplayer/match_history.hpp"
 
-#include "desktop/open.hpp"
 #include "formula/string_utils.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"

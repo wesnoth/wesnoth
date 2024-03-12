@@ -17,14 +17,11 @@
 #include "gui/dialogs/end_credits.hpp"
 
 #include "about.hpp"
-#include "config.hpp"
 #include "game_config.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 

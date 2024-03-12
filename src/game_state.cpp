@@ -31,11 +31,9 @@
 #include "synced_context.hpp"
 #include "teambuilder.hpp"
 #include "units/unit.hpp"
-#include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "side_controller.hpp"
 
-#include <functional>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>

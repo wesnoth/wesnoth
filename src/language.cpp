@@ -22,7 +22,6 @@
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
 
-#include <stdexcept>
 #include <clocale>
 
 #ifdef _WIN32

@@ -20,9 +20,7 @@
 #include "whiteboard/attack.hpp"
 
 #include "whiteboard/visitor.hpp"
-#include "whiteboard/utility.hpp"
 
-#include "arrow.hpp"
 #include "config.hpp"
 #include "draw.hpp"
 #include "fake_unit_ptr.hpp"

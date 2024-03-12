@@ -16,9 +16,6 @@
 #pragma once
 
 #include <ctime>
-#include <set>
-#include <deque>
-#include <functional>
 #include <vector>
 #include <string>
 

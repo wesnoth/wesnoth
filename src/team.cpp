@@ -29,7 +29,6 @@
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
-#include "preferences/game.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"

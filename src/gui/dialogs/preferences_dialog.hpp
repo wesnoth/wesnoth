@@ -15,10 +15,8 @@
 */
 #pragma once
 
-#include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "preferences/advanced.hpp"
 #include "preferences/game.hpp"
@@ -27,11 +25,6 @@
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
-namespace hotkey {
-	struct hotkey_command;
-}
-
-struct point;
 //struct theme_info;
 
 namespace preferences {
@@ -62,7 +55,6 @@ namespace gui2
 
 class listbox;
 class menu_button;
-class slider;
 class text_box;
 
 namespace dialogs

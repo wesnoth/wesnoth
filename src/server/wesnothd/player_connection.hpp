@@ -17,11 +17,9 @@
 
 #include "server/wesnothd/player.hpp"
 #include "server/common/server_base.hpp"
-#include "server/common/simple_wml.hpp"
 
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/mem_fun.hpp>
-#include <boost/multi_index/member.hpp>
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index_container.hpp>
 

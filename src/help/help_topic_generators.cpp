@@ -34,7 +34,6 @@
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "video.hpp"                    // for game_canvas_size
 
-#include <map>                          // for map, etc
 #include <optional>
 #include <set>
 

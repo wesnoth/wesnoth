@@ -23,7 +23,6 @@
 /**
  * Helper class for translatable strings.
  */
-class t_string;
 class t_string_base
 {
 public:

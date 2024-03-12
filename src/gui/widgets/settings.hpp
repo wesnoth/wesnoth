@@ -29,8 +29,6 @@
 namespace gui2
 {
 
-class gui_definition;
-class game_tip;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;

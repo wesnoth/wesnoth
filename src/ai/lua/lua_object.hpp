@@ -31,7 +31,6 @@
 #include "ai/default/contexts.hpp"
 #include "ai/lua/aspect_advancements.hpp"
 
-#include <iterator>
 #include <string>
 #include <vector>
 

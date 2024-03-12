@@ -17,7 +17,6 @@
 
 #include "desktop/paths.hpp"
 
-#include "game_config.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -33,7 +32,6 @@
 
 // For username stuff on Unix:
 #include <pwd.h>
-#include <sys/types.h>
 
 #else // _WIN32
 

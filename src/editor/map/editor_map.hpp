@@ -19,7 +19,6 @@
 
 #include "map/map.hpp"
 
-#include <deque>
 
 namespace editor {
 

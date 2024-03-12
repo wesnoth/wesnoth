@@ -28,7 +28,6 @@
 
 #include "color.hpp"
 #include "editor/action/action.hpp"
-#include "map/map.hpp"
 
 namespace editor
 {

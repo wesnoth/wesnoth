@@ -21,9 +21,7 @@
 #include "color.hpp"
 #include "utils/optional_reference.hpp"
 
-#include <functional>
 
-class config;
 
 namespace gui2
 {

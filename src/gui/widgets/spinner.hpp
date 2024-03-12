@@ -22,15 +22,12 @@
 
 #include "gui/widgets/text_box.hpp"
 
-#include <iostream>
 
 namespace gui2
 {
 
 // ------------ WIDGET -----------{
 
-class label;
-class spacer;
 
 namespace implementation
 {

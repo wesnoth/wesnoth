@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/text_box_base.hpp"
 
 #include "game_initialization/create_engine.hpp"
 

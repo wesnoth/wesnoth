@@ -21,8 +21,6 @@
 #include "map_settings.hpp"
 #include "tod_manager.hpp"
 
-#include <cassert>
-#include <sstream>
 
 namespace ng
 {

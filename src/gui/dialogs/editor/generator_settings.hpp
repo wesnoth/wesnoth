@@ -20,7 +20,6 @@
 namespace gui2
 {
 
-class label;
 
 namespace dialogs
 {

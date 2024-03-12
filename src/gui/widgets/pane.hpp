@@ -33,7 +33,6 @@ namespace implementation
 struct builder_pane;
 } // namespace implementation
 
-class grid;
 
 /**
  * @ingroup GUIWidgetWML

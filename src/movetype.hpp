@@ -87,7 +87,6 @@ public:
 
 	// Forward declaration so that terrain_info can friend the
 	// swap(terrain_defense, terrain_defense) function
-	class terrain_defense;
 
 private:
 

@@ -20,13 +20,9 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "team.hpp"
 
-#include <memory>
 #include <string>
 #include <vector>
 
-class display;
-class team;
-struct team_data;
 
 namespace gui2::dialogs
 {

@@ -20,7 +20,6 @@
 #include "game_initialization/random_faction_mode.hpp"
 #include "game_initialization/saved_game_mode.hpp"
 #include "game_version.hpp"
-#include "gettext.hpp"
 
 #include <optional>
 

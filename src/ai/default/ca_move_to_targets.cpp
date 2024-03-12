@@ -20,7 +20,6 @@
 
 #include "ai/default/ca_move_to_targets.hpp"
 
-#include "ai/composite/ai.hpp"
 #include "ai/actions.hpp"
 #include "game_board.hpp"
 #include "log.hpp"

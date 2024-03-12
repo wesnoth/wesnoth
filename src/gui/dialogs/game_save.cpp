@@ -18,10 +18,6 @@
 #include "gui/dialogs/game_save.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/field.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 
 namespace gui2::dialogs
 {

@@ -16,12 +16,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "sdl/rect.hpp"
 #include <optional>
 
 #include <boost/dynamic_bitset.hpp>
 
-#include <functional>
 
 class config;
 

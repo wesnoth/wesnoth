@@ -37,7 +37,6 @@
 #include "synced_context.hpp"
 #include "video.hpp" // only for faked
 #include "wesnothd_connection.hpp"
-#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)

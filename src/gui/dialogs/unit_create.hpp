@@ -22,14 +22,11 @@
 #include <string>
 #include <vector>
 
-class display;
 class unit_type;
 
 namespace gui2
 {
 
-class menu_button;
-class text_box_base;
 
 namespace dialogs
 {

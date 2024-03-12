@@ -25,13 +25,11 @@
 #include "game_launcher.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
-#include "gui/core/timer.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
-#include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
@@ -54,7 +52,6 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "sdl/surface.hpp"
-#include "sdl/utils.hpp"
 #include "video.hpp"
 
 #include <algorithm>

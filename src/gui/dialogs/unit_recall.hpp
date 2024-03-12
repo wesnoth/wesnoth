@@ -15,11 +15,8 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/group.hpp"
-#include "units/race.hpp"
 #include "units/ptr.hpp"
 
-#include <memory>
 #include <string>
 #include <vector>
 
@@ -28,7 +25,6 @@ class team;
 namespace gui2
 {
 
-class text_box_base;
 
 namespace dialogs
 {

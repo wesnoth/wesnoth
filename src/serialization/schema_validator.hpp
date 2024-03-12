@@ -22,12 +22,10 @@
 #include "serialization/validator.hpp"
 
 #include <boost/graph/adjacency_list.hpp>
-#include <queue>
 #include <optional>
 #include <stack>
 #include <string>
 
-class config;
 
 /** @file
  *  One of the realizations of serialization/validator.hpp abstract validator.

@@ -28,12 +28,10 @@
 #include "preferences/game.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
-#include "gui/dialogs/transient_message.hpp"
 #include "help/help_browser.hpp"        // for help_browser
 #include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "sdl/surface.hpp"              // for surface
 #include "show_dialog.hpp"              // for dialog_frame, etc
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "units/unit.hpp"               // for unit
@@ -43,9 +41,7 @@
 
 #include <cassert>                      // for assert
 #include <algorithm>                    // for min
-#include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
-#include <SDL2/SDL.h>
 
 
 static lg::log_domain log_display("display");

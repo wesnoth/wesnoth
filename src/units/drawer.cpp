@@ -27,7 +27,6 @@
 #include "map/map.hpp"
 #include "picture.hpp"
 #include "preferences/game.hpp"
-#include "sdl/surface.hpp"
 #include "team.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"

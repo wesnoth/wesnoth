@@ -17,8 +17,6 @@
 
 #include "statistics_record.hpp"
 
-class config;
-class config_writer;
 class unit;
 #include <string>
 #include <map>

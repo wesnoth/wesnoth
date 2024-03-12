@@ -21,19 +21,16 @@
  */
 
 #include "log.hpp"
-#include <fcntl.h>
 #include "filesystem.hpp"
 #include "mt_rng.hpp"
 
 #include <boost/algorithm/string.hpp>
-#include <boost/iostreams/stream.hpp>
 
 #include <map>
 #include <ctime>
 #include <mutex>
 #include <iostream>
 #include <iomanip>
-#include <sys/stat.h>
 
 #ifdef _WIN32
 #include <io.h>

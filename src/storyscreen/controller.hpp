@@ -29,7 +29,6 @@
 namespace storyscreen
 {
 class part;
-class floating_image;
 
 class controller : private story_parser
 {

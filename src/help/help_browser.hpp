@@ -23,7 +23,6 @@
 #include "widgets/button.hpp"           // for button
 #include "widgets/widget.hpp"           // for widget
 
-struct SDL_Rect;
 
 namespace help {
 

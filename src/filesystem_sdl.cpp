@@ -12,7 +12,6 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_rwops.h>
 
 #include "filesystem.hpp"
