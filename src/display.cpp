@@ -22,7 +22,6 @@
 
 #include "arrow.hpp"
 #include "color.hpp"
-#include "cursor.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
@@ -30,11 +29,8 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
@@ -49,7 +45,6 @@
 #include "terrain/builder.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
@@ -59,7 +54,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include <SDL2/SDL_image.h>
 
 #include <algorithm>
 #include <array>

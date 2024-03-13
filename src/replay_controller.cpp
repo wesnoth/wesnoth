@@ -14,8 +14,6 @@
 
 #include "replay_controller.hpp"
 
-#include "game_config_manager.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"

@@ -28,7 +28,6 @@
 namespace wfl {
 
 class formula_debugger;
-class debug_info;
 class formula_expression;
 class formula;
 class formula_callable;

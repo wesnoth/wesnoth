@@ -26,7 +26,6 @@
 #include <vector>                       // for vector
 #include <SDL2/SDL_events.h>                 // for SDL_MouseButtonEvent
 
-class game_display;
 class battle_context;  // lines 23-23
 class play_controller;
 class team;

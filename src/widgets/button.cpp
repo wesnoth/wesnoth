@@ -20,7 +20,6 @@
 #include "draw.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
-#include "game_errors.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "font/sdl_ttf_compat.hpp"

@@ -16,7 +16,6 @@
 #pragma once
 
 #include "hotkey_command.hpp"
-#include "game_end_exceptions.hpp"
 
 #include <SDL2/SDL_events.h>
 

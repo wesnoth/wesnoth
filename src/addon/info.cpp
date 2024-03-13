@@ -15,7 +15,6 @@
 
 #include "addon/info.hpp"
 
-#include "addon/manager.hpp"
 #include "config.hpp"
 #include "font/pango/escape.hpp"
 #include "gettext.hpp"

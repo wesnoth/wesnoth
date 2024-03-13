@@ -23,7 +23,6 @@
 #include "gui/widgets/window_private.hpp"
 
 #include "config.hpp"
-#include "cursor.hpp"
 #include "draw.hpp"
 #include "events.hpp"
 #include "formula/callable.hpp"
@@ -39,11 +38,9 @@
 #include "gui/core/layout_exception.hpp"
 #include "sdl/point.hpp"
 #include "gui/core/window_builder.hpp"
-#include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/container_base.hpp"
-#include "gui/widgets/multiline_text.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/grid.hpp"
@@ -55,10 +52,7 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "preferences/general.hpp"
-#include "preferences/display.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp" // only for toggle_fullscreen
@@ -69,11 +63,7 @@
 #include <functional>
 
 #include <algorithm>
-#include <iterator>
-#include <stdexcept>
 
-namespace wfl { class function_symbol_table; }
-namespace gui2 { class button; }
 
 static lg::log_domain log_gui("gui/layout");
 #define ERR_GUI  LOG_STREAM(err, log_gui)

@@ -18,7 +18,6 @@
 
 #include "actions/attack.hpp"                // for battle_context, etc
 #include "actions/move.hpp"                  // for move_and_record
-#include "actions/undo.hpp"                  // for undo_list
 #include "config.hpp"                        // for config
 #include "cursor.hpp"                        // for set, CURSOR_TYPE::NORMAL, etc
 #include "game_board.hpp"                    // for game_board, etc
@@ -27,7 +26,6 @@
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/dialogs/unit_attack.hpp"       // for unit_attack
 #include "gui/widgets/settings.hpp"          // for new_widgets
-#include "language.hpp"                      // for string_table, symbol_table
 #include "log.hpp"                           // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                       // for gamemap
 #include "pathfind/teleport.hpp"             // for get_teleport_locations, etc
@@ -47,7 +45,6 @@
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
-#include <ostream>     // for operator<<, basic_ostream, etc
 #include <string>      // for string, operator<<, etc
 
 static lg::log_domain log_engine("engine");

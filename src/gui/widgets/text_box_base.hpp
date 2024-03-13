@@ -25,10 +25,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-	struct builder_styled_widget;
-}
 
 /**
  * Abstract base class for text items.

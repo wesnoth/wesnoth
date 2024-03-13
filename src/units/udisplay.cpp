@@ -15,7 +15,6 @@
 
 #include "units/udisplay.hpp"
 
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
@@ -26,10 +25,8 @@
 #include "play_controller.hpp"
 #include "color.hpp"
 #include "sound.hpp"
-#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
-#include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/scope_exit.hpp"
 #include "video.hpp"

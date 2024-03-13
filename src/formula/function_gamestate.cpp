@@ -24,7 +24,6 @@
 #include "units/unit.hpp"
 #include "play_controller.hpp"
 #include "tod_manager.hpp"
-#include "resources.hpp"
 
 namespace wfl {
 

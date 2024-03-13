@@ -24,7 +24,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
-#include "video.hpp"
 
 namespace gui2
 {

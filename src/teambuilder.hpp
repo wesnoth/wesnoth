@@ -18,7 +18,6 @@
 #include "config.hpp"
 
 #include <deque>
-#include <memory>
 #include <set>
 #include <string>
 #include <vector>

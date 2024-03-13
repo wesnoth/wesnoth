@@ -86,10 +86,8 @@
 #include "scripting/push_check.hpp"
 #include "synced_commands.hpp"
 #include "color.hpp"                // for surface
-#include "sdl/surface.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
-#include "soundsource.hpp"
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
@@ -126,7 +124,6 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/wrapper_lauxlib.h"        // for luaL_checkinteger, lua_setfield, etc
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"

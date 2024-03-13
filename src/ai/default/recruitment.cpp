@@ -27,7 +27,6 @@
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map/map.hpp"

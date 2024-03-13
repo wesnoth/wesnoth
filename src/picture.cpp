@@ -20,13 +20,10 @@
 
 #include "picture.hpp"
 
-#include "config.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
@@ -34,10 +31,8 @@
 
 #include <SDL2/SDL_image.h>
 
-#include <functional>
 
 #include <boost/algorithm/string.hpp>
-#include <boost/functional/hash_fwd.hpp>
 
 #include <array>
 #include <set>

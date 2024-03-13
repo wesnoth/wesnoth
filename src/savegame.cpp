@@ -13,13 +13,10 @@
 	See the COPYING file for more details.
 */
 
-#include <boost/iostreams/filter/gzip.hpp>
 
 #include "savegame.hpp"
 
-#include "carryover.hpp"
 #include "cursor.hpp"
-#include "format_time_summary.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -34,7 +31,6 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/retval.hpp"
-#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "persist_manager.hpp"
 #include "preferences/game.hpp"
@@ -42,11 +38,9 @@
 #include "save_index.hpp"
 #include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "video.hpp" // only for faked
 
-#include <algorithm>
 #include <iomanip>
 
 static lg::log_domain log_engine("engine");

@@ -533,7 +533,6 @@ private:
 
 // }---------- BUILDER -----------{
 
-class styled_widget;
 
 namespace implementation
 {

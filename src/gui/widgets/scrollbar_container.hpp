@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "gui/core/notifiee.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/scrollbar.hpp"
 

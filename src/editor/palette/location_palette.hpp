@@ -17,7 +17,6 @@
 
 #include "editor/editor_display.hpp"
 #include "editor/palette/common_palette.hpp"
-#include "editor/palette/tristate_button.hpp"
 
 class location_palette_item;
 class location_palette_button;

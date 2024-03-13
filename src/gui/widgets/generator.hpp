@@ -25,7 +25,6 @@ namespace gui2
 {
 struct builder_grid;
 
-class generator_base;
 class grid;
 
 /**

@@ -21,8 +21,6 @@
 #include "draw.hpp"
 #include "font/constants.hpp"
 #include "picture.hpp"
-#include "lexical_cast.hpp"
-#include "sdl/utils.hpp"
 
 namespace gui {
 

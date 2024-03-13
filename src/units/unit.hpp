@@ -23,12 +23,10 @@
 #include "units/race.hpp"
 #include "utils/variant.hpp"
 
-#include <boost/dynamic_bitset_fwd.hpp>
 
 #include <bitset>
 #include <optional>
 
-class display;
 class team;
 class unit_animation_component;
 class unit_formula_manager;

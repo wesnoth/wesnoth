@@ -17,7 +17,6 @@
 
 #include "gui/core/event/handler.hpp"
 
-#include "draw_manager.hpp"
 #include "events.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/timer.hpp"
@@ -27,8 +26,6 @@
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
-#include "serialization/unicode_cast.hpp"
-#include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
 
 #include <cassert>

@@ -24,7 +24,6 @@
 #include "resources.hpp"
 #include "variable.hpp"
 
-#include <cassert>
 
 //TODO: remove LOG_PERSIST, ERR_PERSIST from persist_context.hpp to .cpp files.
 #define DBG_PERSIST LOG_STREAM(debug, log_persist)

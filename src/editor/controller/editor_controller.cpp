@@ -36,7 +36,6 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_list.hpp"
-#include "gui/widgets/retval.hpp"
 #include "wml_exception.hpp"
 
 #include "resources.hpp"
@@ -45,15 +44,11 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
-#include "game_board.hpp"
-#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
-#include "preferences/display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
-#include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 

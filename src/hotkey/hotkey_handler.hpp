@@ -27,7 +27,6 @@ namespace events { class menu_handler; }
 namespace events { class mouse_handler; }
 namespace game_events { class wml_menu_item; }
 
-class game_display;
 class game_state;
 class saved_game;
 

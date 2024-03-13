@@ -20,13 +20,11 @@
  * Unicode support functions.
  */
 
-#include "serialization/ucs4_convert_impl.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "serialization/unicode.hpp"
 
 #include "log.hpp"
 
-#include <cassert>
 #include <limits>
 
 static lg::log_domain log_engine("engine");

@@ -26,7 +26,6 @@
 #include <vector>
 
 class surface;
-class texture;
 
 namespace video
 {

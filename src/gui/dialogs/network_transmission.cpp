@@ -19,12 +19,9 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2::dialogs

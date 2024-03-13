@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "color.hpp"
 
 namespace gui2::dialogs
 {

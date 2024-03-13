@@ -16,18 +16,13 @@
 #pragma once
 
 #include "game_events/pump.hpp" // for queued_event
-#include "generic_event.hpp"
 #include "mouse_handler_base.hpp"
 #include "random.hpp"
-#include "random_synced.hpp"
-#include "replay.hpp"
 #include "synced_checkup.hpp"
 #include "synced_commands.hpp"
 
 #include <deque>
-#include <functional>
 
-class config;
 
 // only static methods.
 class synced_context

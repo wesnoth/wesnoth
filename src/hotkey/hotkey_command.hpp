@@ -20,9 +20,7 @@
 
 #include <bitset>
 #include <functional>
-#include <list>
 #include <map>
-#include <vector>
 
 class config;
 

@@ -19,13 +19,7 @@
 
 #include "game_config_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
@@ -33,10 +27,8 @@
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
-#include "gui/widgets/listbox.hpp"
 #endif
 
-#include "help/help.hpp"
 
 namespace gui2::dialogs
 {

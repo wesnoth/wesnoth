@@ -28,7 +28,6 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/general.hpp"
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -50,13 +49,10 @@
 #include <algorithm>
 #include <cassert>
 #include <cerrno>
-#include <csignal>
 #include <cstdlib>
 #include <functional>
 #include <iostream>
-#include <iomanip>
 #include <map>
-#include <queue>
 #include <set>
 #include <sstream>
 #include <vector>

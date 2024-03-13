@@ -26,7 +26,6 @@
 
 #include "config.hpp"
 #include "scripting/push_check.hpp"
-#include "scripting/lua_unit.hpp"
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
 #include "log.hpp"
@@ -36,10 +35,8 @@
 
 #include <cstring>
 #include <iterator>                     // for distance, advance
-#include <new>                          // for operator new
 #include <string>                       // for string, basic_string
 
-#include "lua/wrapper_lauxlib.h"
 
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";

@@ -18,7 +18,6 @@
  * @file
  */
 
-#include "ai/composite/ai.hpp"
 #include "ai/composite/aspect.hpp"
 #include "ai/composite/goal.hpp"
 #include "ai/composite/rca.hpp"

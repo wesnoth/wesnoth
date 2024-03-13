@@ -23,7 +23,6 @@
 #include <set>
 #include <map>
 
-struct addon_info_translation;
 struct addon_info;
 class config;
 typedef std::map<std::string, addon_info> addons_list;

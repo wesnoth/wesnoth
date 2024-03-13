@@ -27,9 +27,6 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class label;
-class spacer;
-
 namespace implementation
 {
 struct builder_scroll_text;

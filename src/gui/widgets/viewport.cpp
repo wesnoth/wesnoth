@@ -18,8 +18,6 @@
 #include "gui/widgets/viewport.hpp"
 
 #include "gui/auxiliary/iterator/walker.hpp"
-#include "gui/core/log.hpp"
-#include "config.hpp"
 #include "gettext.hpp"
 #include "utils/const_clone.hpp"
 #include "wml_exception.hpp"

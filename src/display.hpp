@@ -33,7 +33,6 @@
 
 #pragma once
 
-class config;
 class fake_unit_manager;
 class terrain_builder;
 class map_labels;
@@ -42,9 +41,6 @@ class reports;
 class team;
 struct overlay;
 
-namespace halo {
-	class manager;
-}
 
 namespace wb {
 	class manager;
@@ -71,7 +67,6 @@ namespace wb {
 #include <functional>
 #include <chrono>
 #include <cstdint>
-#include <deque>
 #include <list>
 #include <map>
 #include <memory>

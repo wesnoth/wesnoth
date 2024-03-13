@@ -19,9 +19,7 @@
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/settings.hpp"
 
-#include <functional>
 
 namespace gui2::dialogs
 {

@@ -29,7 +29,6 @@
 #include "units/conditional_type.hpp"
 #include "units/ptr.hpp"
 
-#include "display_context.hpp"
 #include "filter_context.hpp"
 #include "units/map.hpp"
 #include "variable.hpp"
@@ -39,9 +38,6 @@
 
 class filter_context;
 class unit;
-class config;
-class vconfig;
-struct map_location;
 
 
 

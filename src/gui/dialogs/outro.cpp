@@ -21,9 +21,7 @@
 #include "formula/variant.hpp"
 #include "game_classification.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include <cmath>

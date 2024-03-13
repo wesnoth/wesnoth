@@ -32,7 +32,6 @@
 #include "gettext.hpp"
 #include "utils/math.hpp"
 
-#include <cassert>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

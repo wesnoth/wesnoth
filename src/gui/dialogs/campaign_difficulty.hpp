@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
-#include <vector>
 
 namespace gui2::dialogs
 {

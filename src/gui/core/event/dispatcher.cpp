@@ -17,8 +17,6 @@
 
 #include "gui/core/event/dispatcher_private.hpp"
 
-#include "gui/core/event/message.hpp"
-#include "gui/core/log.hpp"
 
 namespace gui2
 {

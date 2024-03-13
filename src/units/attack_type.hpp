@@ -20,10 +20,8 @@
 #include "config.hpp"
 #include <string>
 #include <vector>
-#include <cassert>
 
 #include <boost/iterator/indirect_iterator.hpp>
-#include <boost/range/iterator_range.hpp>
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr

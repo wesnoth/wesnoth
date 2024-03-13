@@ -23,7 +23,6 @@
 #include "ai/formula/ai.hpp"
 
 #include "formula/formula.hpp"
-#include "formula/function.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"

@@ -23,14 +23,10 @@
 #include "map/location.hpp"
 
 #include <ctime>
-#include <deque>
 #include <iterator>
-#include <map>
-#include <set>
 class replay_recorder_base;
 class terrain_label;
 class config;
-struct time_of_day;
 
 class chat_msg {
 public:

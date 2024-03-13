@@ -122,7 +122,6 @@ public:
 	wfl::variant execute_self(wfl::variant ctxt) override;
 };
 
-class default_ai_context;
 class default_ai_context : public virtual readwrite_context{
 public:
 

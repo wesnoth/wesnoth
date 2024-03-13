@@ -26,7 +26,6 @@
 
 #include <boost/asio/connect.hpp>
 #include <boost/asio/read.hpp>
-#include <boost/asio/write.hpp>
 
 #include <cstdint>
 #include <deque>

@@ -21,10 +21,7 @@
 #include "utils/general.hpp"
 
 #include <functional>
-#include <iterator>
 #include <map>
-#include <sstream>
-#include <utility>
 #include <vector>
 #include <boost/range/iterator_range.hpp>
 

@@ -26,7 +26,6 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
@@ -35,7 +34,6 @@
 #include "preferences/game.hpp"
 #include "wml_exception.hpp"
 
-#include <iterator>
 
 #include <boost/algorithm/string.hpp>
 
