@@ -1634,7 +1634,13 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		// check whether the current overwriter is disabled due to a filter
 		bool special_matches = true;
 		if(overwrite_specials){
-			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
+			auto overwrite_filter = (*overwrite_specials).optional_child("filter_specials");
+			if(!overwrite_filter){
+				overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
+				if(overwrite_filter){
+					deprecated_message("experimental_filter_specials", DEP_LEVEL::INDEFINITE, "", "Use filter_specials instead.");
+				}
+			}
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
 				special_matches = special_matches_filter(cfg, tag_name, *overwrite_filter);
 			}
