@@ -1888,6 +1888,91 @@ bool attack_type::special_matches_filter(const config & cfg, const std::string& 
 	return common_matches_filter(cfg, tag_name, filter);
 }
 
+bool attack_type::has_special_with_filter(const config & filter) const
+{
+	using namespace utils::config_filters;
+	for(const config::any_child entry : specials().all_children_range()) {
+		if(special_matches_filter(entry.cfg, entry.key, filter)){
+			if ( special_active(entry.cfg, AFFECT_SELF, entry.key) ) {
+				return true;
+			}
+		}
+	}
+	// Skip checking the opponent's attack?
+	if(!other_attack_){
+		return false;
+	}
+
+	for(const config::any_child entry : other_attack_->specials().all_children_range()) {
+		if(other_attack_->special_matches_filter(entry.cfg, entry.key, filter)){
+			if ( other_attack_->special_active(entry.cfg, AFFECT_OTHER, entry.key) ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+bool attack_type::has_ability_with_filter(const config & filter) const
+{
+	const unit_map& units = get_unit_map();
+	if(self_){
+		for(const config::any_child entry : (*self_).abilities().all_children_range()) {
+			if(self_->ability_matches_filter(entry.cfg, entry.key, filter) && check_self_abilities(entry.cfg, entry.key)){
+				return true;
+			}
+		}
+
+		const auto adjacent = get_adjacent_tiles(self_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == self_.get() )
+				continue;
+
+			for(const config::any_child entry : it->abilities().all_children_range()) {
+				if(it->ability_matches_filter(entry.cfg, entry.key, filter) && check_adj_abilities(entry.cfg, entry.key, i , *it)){
+					return true;
+				}
+			}
+		}
+	}
+
+	if(other_){
+		for(const config::any_child entry : (*other_).abilities().all_children_range()) {
+			if(other_->ability_matches_filter(entry.cfg, entry.key, filter) && check_self_abilities_impl(other_attack_, shared_from_this(), entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.key)){
+				return true;
+			}
+		}
+
+		const auto adjacent = get_adjacent_tiles(other_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == other_.get() )
+				continue;
+
+			for(const config::any_child entry : it->abilities().all_children_range()) {
+				if(it->ability_matches_filter(entry.cfg, entry.key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.key)){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool attack_type::has_special_or_ability_with_filter(const config & filter) const
+{
+	if(range().empty()){
+		return false;
+	}
+	return (has_special_with_filter(filter) || has_ability_with_filter(filter));
+}
+
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  const std::string& filter_self) const
 {
