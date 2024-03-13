@@ -35,6 +35,7 @@
 #include "units/abilities.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
+#include "utils/config_filters.hpp"
 #include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -1519,9 +1520,7 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		if(overwrite_specials){
 			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				if(self_){
-					special_matches = (*self_).ability_matches_filter(cfg, tag_name, *overwrite_filter);
-				}
+				special_matches = special_matches_filter(cfg, tag_name, *overwrite_filter);
 			}
 		}
 
@@ -1737,6 +1736,208 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
+
+namespace
+{
+	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
+	{
+		using namespace utils::config_filters;
+
+		if(!filter["affect_adjacent"].empty()){
+			bool adjacent = cfg.has_child("affect_adjacent");
+			if(filter["affect_adjacent"].to_bool() != adjacent){
+				return false;
+			}
+		}
+
+		if(!bool_matches_if_present(filter, cfg, "affect_self", true))
+			return false;
+
+		if(!bool_or_empty(filter, cfg, "affect_allies"))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+			return false;
+
+		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "id", ""))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "apply_to", "self"))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		//for damage only
+		if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
+			return false;
+
+		//for plague only
+		if(!string_matches_if_present(filter, cfg, "type", ""))
+			return false;
+
+		if(!filter["value"].empty()){
+			if(tag_name == "drains"){
+				if(!int_matches_if_present(filter, cfg, "value", 50)){
+					return false;
+				}
+			} else if(tag_name == "berserk"){
+				if(!int_matches_if_present(filter, cfg, "value", 1)){
+					return false;
+				}
+			} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+				if(!int_matches_if_present(filter, cfg, "value" , 0)){
+					return false;
+				}
+			} else {
+				if(!int_matches_if_present(filter, cfg, "value")){
+					return false;
+				}
+			}
+		}
+
+		if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+			return false;
+
+		if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "multiply"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "divide"))
+			return false;
+
+		//the wml_filter is used in cases where the attribute we are looking for is not
+		//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
+		//If the checked set does not exactly match the content of the capability, the function returns a false response.
+		auto fwml = filter.optional_child("filter_wml");
+		if (fwml){
+			if(!cfg.matches(*fwml)){
+				return false;
+			}
+		}
+
+		// Passed all tests.
+		return true;
+	}
+
+	static bool common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter)
+	{
+		// Handle the basic filter.
+		bool matches = matches_ability_filter(cfg, tag_name, filter);
+
+		// Handle [and], [or], and [not] with in-order precedence
+		for (const config::any_child condition : filter.all_children_range() )
+		{
+			// Handle [and]
+			if ( condition.key == "and" )
+				matches = matches && common_matches_filter(cfg, tag_name, condition.cfg);
+
+			// Handle [or]
+			else if ( condition.key == "or" )
+				matches = matches || common_matches_filter(cfg, tag_name, condition.cfg);
+
+			// Handle [not]
+			else if ( condition.key == "not" )
+				matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg);
+		}
+
+		return matches;
+	}
+}
+
+bool unit::ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+{
+	return common_matches_filter(cfg, tag_name, filter);
+}
+
+bool attack_type::special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+{
+	return common_matches_filter(cfg, tag_name, filter);
+}
+
+bool attack_type::has_special_or_ability_with_filter(const config & filter) const
+{
+	for(const config::any_child entry : specials().all_children_range()) {
+		if(special_matches_filter(entry.cfg, entry.key, filter)){
+			if ( special_active(entry.cfg, AFFECT_SELF, entry.key) ) {
+				return true;
+			}
+		}
+	}
+	// Skip checking the opponent's attack?
+	if(other_attack_){
+		for(const config::any_child entry : other_attack_->specials().all_children_range()) {
+			if(other_attack_->special_matches_filter(entry.cfg, entry.key, filter)){
+				if ( other_attack_->special_active(entry.cfg, AFFECT_OTHER, entry.key) ) {
+					return true;
+				}
+			}
+		}
+	}
+
+	const unit_map& units = get_unit_map();
+	if(self_){
+		for(const config::any_child entry : (*self_).abilities().all_children_range()) {
+			if(self_->ability_matches_filter(entry.cfg, entry.key, filter) && check_self_abilities(entry.cfg, entry.key)){
+				return true;
+			}
+		}
+
+		const auto adjacent = get_adjacent_tiles(self_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == self_.get() )
+				continue;
+
+			for(const config::any_child entry : it->abilities().all_children_range()) {
+				if(it->ability_matches_filter(entry.cfg, entry.key, filter) && check_adj_abilities(entry.cfg, entry.key, i , *it)){
+					return true;
+				}
+			}
+		}
+	}
+
+	if(other_){
+		for(const config::any_child entry : (*other_).abilities().all_children_range()) {
+			if(other_->ability_matches_filter(entry.cfg, entry.key, filter) && check_self_abilities_impl(other_attack_, shared_from_this(), entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.key)){
+				return true;
+			}
+		}
+
+		const auto adjacent = get_adjacent_tiles(other_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == other_.get() )
+				continue;
+
+			for(const config::any_child entry : it->abilities().all_children_range()) {
+				if(it->ability_matches_filter(entry.cfg, entry.key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.key)){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
 
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  const std::string& filter_self) const
