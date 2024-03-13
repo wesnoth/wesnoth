@@ -160,10 +160,11 @@ private:
 	 * @param cfg config of ability checked
 	 * @param tag_name le type of ability who is checked
 	 * @param filter config contain list of attribute who are researched in cfg
+	 * @param tag_name_optional boolean variable, if false, using of tag_name in filter is mandatory
 	 *
 	 * @return true if all attribute with ability checked
 	 */
-	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional = false) const;
 	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that don't own
 	 * the overwrite_specials attributes.

@@ -1525,7 +1525,7 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		if(overwrite_specials){
 			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				special_matches = special_matches_filter(cfg, tag_name, *overwrite_filter);
+				special_matches = special_matches_filter(cfg, tag_name, *overwrite_filter, true);
 			}
 		}
 
@@ -1744,9 +1744,23 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 
 namespace
 {
-	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
+	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
 	{
 		using namespace utils::config_filters;
+
+		//in the filter call from an ability using overwrite_specials=[overwrite][experiemental_filter_specials]
+		//the checked tag_name will always be the same as that of the ability calling the function
+		//and the use of tag_name is not mandatory, otherwise the fact of not using it will return a false response
+		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+		if(tag_name_optional){
+			if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+				return false;
+			}
+		} else {
+			if ( filter_type.empty() || std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+				return false;
+			}
+		}
 
 		if(!filter["affect_adjacent"].empty()){
 			bool adjacent = cfg.has_child("affect_adjacent");
@@ -1765,10 +1779,6 @@ namespace
 			return false;
 
 		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
-			return false;
-
-		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
-		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "id", ""))
@@ -1847,25 +1857,25 @@ namespace
 		return true;
 	}
 
-	static bool common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter)
+	static bool common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
 	{
 		// Handle the basic filter.
-		bool matches = matches_ability_filter(cfg, tag_name, filter);
+		bool matches = matches_ability_filter(cfg, tag_name, filter, tag_name_optional);
 
 		// Handle [and], [or], and [not] with in-order precedence
 		for (const config::any_child condition : filter.all_children_range() )
 		{
 			// Handle [and]
 			if ( condition.key == "and" )
-				matches = matches && common_matches_filter(cfg, tag_name, condition.cfg);
+				matches = matches && common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
 
 			// Handle [or]
 			else if ( condition.key == "or" )
-				matches = matches || common_matches_filter(cfg, tag_name, condition.cfg);
+				matches = matches || common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
 
 			// Handle [not]
 			else if ( condition.key == "not" )
-				matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg);
+				matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
 		}
 
 		return matches;
@@ -1874,12 +1884,12 @@ namespace
 
 bool unit::ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
 {
-	return common_matches_filter(cfg, tag_name, filter);
+	return common_matches_filter(cfg, tag_name, filter, false);
 }
 
-bool attack_type::special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+bool attack_type::special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional) const
 {
-	return common_matches_filter(cfg, tag_name, filter);
+	return common_matches_filter(cfg, tag_name, filter, tag_name_optional);
 }
 
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
