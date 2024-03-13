@@ -201,6 +201,7 @@ jobs:
         run: |
           # write to an ignored filename so the build is not marked as modified
           jq '.modules |= map(select(.name == "wesnoth").sources[0]={"type":"dir","path":"."}) | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
+          echo Flatpak > data/dist
           flatpak-builder --force-clean --default-branch=ci --disable-rofiles-fuse wesnoth-app wesnoth-manifest.json
           flatpak build-export export wesnoth-app ci
           flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth ci --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
