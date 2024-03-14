@@ -218,6 +218,16 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 		return false;
 
 
+	//the wml_filter is used in cases where the attribute we are looking for is not
+	//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
+	//If the checked set does not exactly match the content of the capability, the function returns a false response.
+	auto fwml = filter.optional_child("filter_wml");
+	if (fwml){
+		if(!cfg.matches(*fwml)){
+			return false;
+		}
+	}
+
 	// Passed all tests.
 	return true;
 }
