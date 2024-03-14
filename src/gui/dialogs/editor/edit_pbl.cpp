@@ -265,6 +265,10 @@ config editor_edit_pbl::create_cfg()
 
 	if(find_widget<toggle_button>(get_window(), "forum_auth", false).get_value_bool()) {
 		cfg["forum_auth"] = true;
+
+		if(const std::string& secondary_authors = find_widget<text_box>(get_window(), "secondary_authors", false).get_value(); !secondary_authors.empty()) {
+			cfg["secondary_authors"] = secondary_authors;
+		}
 	} else {
 		if(const std::string& email = find_widget<text_box>(get_window(), "email", false).get_value(); !email.empty()) {
 			cfg["email"] = email;
@@ -288,7 +292,7 @@ config editor_edit_pbl::create_cfg()
 	std::vector<std::string> chosen_tags;
 	for(unsigned i = 0; i < tag_states.size(); i++) {
 		if(tag_states[i] == 1) {
-			chosen_tags.emplace_back(dirs_[i]);
+			chosen_tags.emplace_back(tag_values[i]);
 		}
 	}
 	if(chosen_tags.size() > 0) {
