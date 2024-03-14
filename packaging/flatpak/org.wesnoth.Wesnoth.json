@@ -72,6 +72,12 @@
                     "type": "git",
                     "path": "/usr/src/wesnoth/master",
                     "branch": "master"
+                },
+                {
+                     "type": "shell",
+                     "commands": [
+                          "echo Flatpak > data/dist"
+                     ]
                 }
             ]
         }
