@@ -607,7 +607,7 @@ const std::string& get_version_path_suffix()
 			if(!bfs::exists(old_saves_dir)) {
 				LOG_FS << "Apple developer's userdata migration: symlinking " << old_saves_dir.string() << " to " << new_saves_dir.string();
 				bfs::create_symlink(new_saves_dir, old_saves_dir);
-			} else if(!bfs::symbolic_link_exists(old_saves_dir)) {
+			} else if(!bfs::is_symlink(old_saves_dir)) {
 				ERR_FS << "Apple developer's userdata migration: Problem! Old (non-containerized) directory " << old_saves_dir.string() << " is not a symlink. Your savegames are scattered around 2 locations.";
 			}
 			return;
