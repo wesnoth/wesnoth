@@ -281,7 +281,7 @@ void story_viewer::display_part()
 
 	std::string new_panel_mode;
 
-	// Based on story dialog position, show one set of cancel button,
+	// Based on story dialog position, show one set of cancel buttons,
 	// and hide the other set.
 	label& cancel = find_widget<label>(get_window(), "cancel", false);
 	label& cancel2 = find_widget<label>(get_window(), "cancel2", false);
