@@ -500,7 +500,7 @@ void server::load_config()
 	if(versions.empty() == false) {
 		accepted_versions_ = utils::split(versions);
 	} else {
-		accepted_versions_.push_back("1.18.*");
+		accepted_versions_.push_back(game_config::wesnoth_version.str());
 		accepted_versions_.push_back("test");
 	}
 
