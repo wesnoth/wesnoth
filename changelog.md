@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bengali, British English, Chinese (Traditional), Czech, French, German, Italian, Japanese, Polish, Spanish
+   * Updated translations: Bengali, British English, Chinese (Traditional), Czech, Dutch, French, German, Italian, Japanese, Polish, Spanish
    * Added new font "Lohit-Bengali.ttf" to support Bengali translation
  ### Units
  ### User interface
