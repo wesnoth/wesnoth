@@ -1,23 +1,23 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2020 Wesnoth development team
+# Copyright (C) 2005-2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 李昆融 <likwueron@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-19 20:52-0600\n"
-"PO-Revision-Date: 2022-07-14 16:27+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"PO-Revision-Date: 2024-03-17 03:50+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -100,7 +100,7 @@ msgstr "跟隨單位行動"
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
-msgstr "選擇當單位行動時，地圖是否跟隨移動。"
+msgstr "選擇當單位行動時，地圖是否跟隨移動"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
@@ -147,7 +147,7 @@ msgstr "編輯器中最近使用的檔案之最大數量"
 #: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
-msgstr "在編輯器中「最近使用的檔案」選單中顯示的最大數目。"
+msgstr "在編輯器中「最近使用的檔案」選單中顯示的最大數目"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:120
@@ -157,7 +157,7 @@ msgstr "顯示游標顏色"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
-msgstr "使用滑鼠游標顏色。"
+msgstr "使用滑鼠游標顏色"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:128
@@ -179,7 +179,7 @@ msgstr "允許使用蒙地卡羅方法來計算傷害值"
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
-msgstr "允許計算傷害視窗模擬戰鬥來替代精確的機率計算器。"
+msgstr "允許計算傷害視窗模擬戰鬥來替代精確的機率計算器"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:148
@@ -210,10 +210,8 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "連線逾時"
+msgstr "伺服器連線逾時"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -632,10 +630,8 @@ msgstr "越南語翻譯團隊"
 
 #. [about]
 #: data/core/about_i18n.cfg:1891
-#, fuzzy
-#| msgid "Polish Translation"
 msgid "Welsh Translation"
-msgstr "波蘭文翻譯"
+msgstr "威爾斯文翻譯"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
@@ -4252,12 +4248,6 @@ msgstr "計劃單位升級"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
-#, fuzzy
-#| msgid ""
-#| "When playing a multiplayer game, you do not control what a unit advances "
-#| "to if it advances on another player's turn. With this modification you "
-#| "can set what your units advance to beforehand, either for a specific unit "
-#| "or for all units of the same type."
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
 "if it advances on another player’s turn. With this modification you can set "
@@ -4265,7 +4255,7 @@ msgid ""
 "units of the same type."
 msgstr ""
 "當進行一場多人遊戲時，如果你的單位是在其他玩家的回合升級，你無法控制該單位要"
-"怎麼升級。透過這個修改，你可以事先設定你的單位要怎麼升級，可以針對一個特定的"
+"怎麼升級。透過這個設定，你可以事先設定你的單位要怎麼升級，可以針對一個特定的"
 "單位，或是一次對相同類型的所有單位進行設定。"
 
 #. [checkbox]: id=pickadvance_force_choice
@@ -4301,7 +4291,7 @@ msgstr "計劃升級"
 #: data/modifications/pick_advance/gui/pick_advance.cfg:53
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr "這個升級是目前這個類型的所有單位的預設。"
+msgstr "這個升級是目前這個類型的所有單位的預設"
 
 #. [toggle_button]: id=apply_to_all
 #: data/modifications/pick_advance/gui/pick_advance.cfg:118
@@ -4451,14 +4441,12 @@ msgstr "預設主題"
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr "讀取回合……"
+msgstr "讀取回合…"
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "播放回合"
+msgstr "播放回合..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -5220,10 +5208,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>― 康拉德 國王，536 YW</i>"
+msgstr "<i>― 戈拉克 族長，3 YW</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5376,10 +5362,8 @@ msgid "(press $hotkey to keep moving)"
 msgstr "（按 $hotkey 鍵繼續移動）"
 
 #: src/actions/undo.cpp:402
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "遊戲錯誤"
+msgstr "回復錯誤"
 
 #: src/actions/undo.cpp:403
 msgid ""
@@ -5466,10 +5450,8 @@ msgid "Add-ons Manager"
 msgstr "模組管理員"
 
 #: src/addon/client.cpp:350
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr "正在傳送模組<i>$addon_title</i>……"
+msgstr "正在安裝模組<i>$addon_title</i>…"
 
 #: src/addon/client.cpp:362 src/addon/client.cpp:388
 msgid ""
@@ -6676,14 +6658,12 @@ msgstr[1] ""
 "選中的模組有以下依賴模組，但它們目前是舊版或尚未安裝。你希望安裝它並繼續嗎？"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
-#, fuzzy
-#| msgid "Create a unit."
 msgid "Create a new add-on"
-msgstr "建立一個單位。"
+msgstr "建立一個新模組"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
-msgstr ""
+msgstr "新模組"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
@@ -6698,22 +6678,16 @@ msgid "No visible sides found."
 msgstr "找不到可見的陣營。"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
-#, fuzzy
-#| msgid "Save Game"
 msgid "Selected Game"
-msgstr "儲存遊戲"
+msgstr "選擇遊戲"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
-#, fuzzy
-#| msgid "In lobby"
 msgid "Lobby"
-msgstr "在大廳"
+msgstr "大廳"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
-#, fuzzy
-#| msgid "Save Game"
 msgid "Other Games"
-msgstr "儲存遊戲"
+msgstr "其他遊戲"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
 #: src/gui/dialogs/multiplayer/match_history.cpp:92
@@ -6721,16 +6695,12 @@ msgid "Match History — $player"
 msgstr "對戰歷史 $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "結束章節"
+msgstr "章節"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:71
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "時代："
+msgstr "時代"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:72
 #, fuzzy
@@ -6739,24 +6709,20 @@ msgid "Modification"
 msgstr "資料改動"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:151
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
 msgstr "時代："
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:254
-#, fuzzy
-#| msgid "No units found."
 msgid "No game history found."
-msgstr "沒有找到單位。"
+msgstr "沒有紀錄。"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:267
 msgid "Request timed out."
-msgstr ""
+msgstr "請求逾時。"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:277
 msgid "Request encountered an unexpected error, please check the logs."
@@ -6890,7 +6856,7 @@ msgstr "派系"
 
 #: src/help/help_impl.cpp:680
 msgid "Races: "
-msgstr "首領"
+msgstr "首領："
 
 #: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
@@ -6919,16 +6885,12 @@ msgstr "立場："
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1149
-#, fuzzy
-#| msgid ""
-#| "This is a group of units, all of whom are <ref>dst='$topic_id' "
-#| "text='$help_taxonomy'</ref>"
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 "這是一個單位群組，其中的所有單位都是<ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>。"
 
 #: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
@@ -6983,16 +6945,12 @@ msgid "Back to Turn "
 msgstr "回到回合"
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "Ready to start!"
 msgid "Replay from Start"
-msgstr "準備開始！"
+msgstr "重頭開始"
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "播放回合"
+msgstr "從回合開始"
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -7007,10 +6965,8 @@ msgid "Planning mode deactivated!"
 msgstr "計劃模式已關閉！"
 
 #: src/hotkey/hotkey_handler_sp.cpp:322
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
-msgstr "你想繼續嗎？"
+msgstr "您想繼續讀取嗎？"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
@@ -7755,10 +7711,8 @@ msgid "Download complete"
 msgstr ""
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "遊戲已儲存。"
+msgstr "此檔案已被下載。"
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8857,6 +8811,9 @@ msgstr "對$player|隱藏計劃"
 #: src/whiteboard/manager.cpp:1141
 msgid "Whiteboard Options"
 msgstr "白板選項"
+
+#~ msgid "Bengali Translation"
+#~ msgstr "孟加拉文翻譯"
 
 #~ msgid "Availability: "
 #~ msgstr "可用性："
