@@ -96,6 +96,7 @@ void story_viewer::pre_show(window& window)
 		std::bind(&story_viewer::close, this));
 	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsright", false),
 		std::bind(&story_viewer::close, this));
+
 	// text_layout=top set
 	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel2", false),
 			std::bind(&story_viewer::close, this));
@@ -106,7 +107,6 @@ void story_viewer::pre_show(window& window)
 
 	connect_signal_mouse_left_click(find_widget<image>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-
 	connect_signal_mouse_left_click(find_widget<image>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
@@ -281,44 +281,38 @@ void story_viewer::display_part()
 
 	std::string new_panel_mode;
 
-	// Based on story dialog position, show one set of cancel button,
-	// and hide the other set.
-	label& cancel = find_widget<label>(get_window(), "cancel", false);
-	label& cancel2 = find_widget<label>(get_window(), "cancel2", false);
-	gui2::image& dlft = find_widget<gui2::image>(get_window(), "dotsleft", false);
-	gui2::image& dlft2 = find_widget<gui2::image>(get_window(), "dotsleft2", false);
-	gui2::image& drht = find_widget<gui2::image>(get_window(), "dotsright", false);
-	gui2::image& drht2 = find_widget<gui2::image>(get_window(), "dotsright2", false);
-
 	switch(current_part_->story_text_location()) {
 
 		case storyscreen::part::BLOCK_TOP:
-			cancel.set_visible(widget::visibility::invisible);
-			dlft.set_visible(widget::visibility::invisible);
-			drht.set_visible(widget::visibility::invisible);
-			cancel2.set_visible(widget::visibility::visible);
-			dlft2.set_visible(widget::visibility::visible);
-			drht2.set_visible(widget::visibility::visible);
+			set_skip_button_visibility(storyscreen::part::BLOCK_TOP);
+//			cancel.set_visible(widget::visibility::invisible);
+//			dlft.set_visible(widget::visibility::invisible);
+//			drht.set_visible(widget::visibility::invisible);
+//			cancel2.set_visible(widget::visibility::visible);
+//			dlft2.set_visible(widget::visibility::visible);
+//			drht2.set_visible(widget::visibility::visible);
 
 			new_panel_mode = "top";
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
-			cancel.set_visible(widget::visibility::visible);
-			dlft.set_visible(widget::visibility::visible);
-			drht.set_visible(widget::visibility::visible);
-			cancel2.set_visible(widget::visibility::invisible);
-			dlft2.set_visible(widget::visibility::invisible);
-			drht2.set_visible(widget::visibility::invisible);
+			set_skip_button_visibility(storyscreen::part::BLOCK_MIDDLE);
+//			cancel.set_visible(widget::visibility::visible);
+//			dlft.set_visible(widget::visibility::visible);
+//			drht.set_visible(widget::visibility::visible);
+//			cancel2.set_visible(widget::visibility::invisible);
+//			dlft2.set_visible(widget::visibility::invisible);
+//			drht2.set_visible(widget::visibility::invisible);
 
 			new_panel_mode = "center";
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
-			cancel.set_visible(widget::visibility::visible);
-			dlft.set_visible(widget::visibility::visible);
-			drht.set_visible(widget::visibility::visible);
-			cancel2.set_visible(widget::visibility::invisible);
-			dlft2.set_visible(widget::visibility::invisible);
-			drht2.set_visible(widget::visibility::invisible);
+			set_skip_button_visibility(storyscreen::part::BLOCK_BOTTOM);
+//			cancel.set_visible(widget::visibility::visible);
+//			dlft.set_visible(widget::visibility::visible);
+//			drht.set_visible(widget::visibility::visible);
+//			cancel2.set_visible(widget::visibility::invisible);
+//			dlft2.set_visible(widget::visibility::invisible);
+//			drht2.set_visible(widget::visibility::invisible);
 
 			new_panel_mode = "bottom";
 			break;
@@ -339,6 +333,9 @@ void story_viewer::display_part()
 	const std::string& part_text = current_part_->text();
 
 	if(part_text.empty() || !has_background) {
+		// Move skip button to the bottom so that it doesn't interfere with the image
+		set_skip_button_visibility(storyscreen::part::BLOCK_TOP);
+
 		// No text or no background for this part, hide the background layer.
 		text_stack.select_layer(LAYER_TEXT);
 	} else if(text_stack.current_layer() != -1)  {
@@ -378,6 +375,38 @@ void story_viewer::display_part()
 	//       drawing was finished. Might be worth looking into restoring that.
 	if(!floating_images.empty()) {
 		draw_floating_image(floating_images.begin(), part_index_);
+	}
+}
+
+// Based on story dialog position, show one set of cancel button,
+// and hide the other set.
+void story_viewer::set_skip_button_visibility(storyscreen::part::BLOCK_LOCATION alignment) {
+	label& cancel = find_widget<label>(get_window(), "cancel", false);
+	label& cancel2 = find_widget<label>(get_window(), "cancel2", false);
+	gui2::image& dlft = find_widget<gui2::image>(get_window(), "dotsleft", false);
+	gui2::image& dlft2 = find_widget<gui2::image>(get_window(), "dotsleft2", false);
+	gui2::image& drht = find_widget<gui2::image>(get_window(), "dotsright", false);
+	gui2::image& drht2 = find_widget<gui2::image>(get_window(), "dotsright2", false);
+
+	switch(alignment) {
+	case storyscreen::part::BLOCK_TOP:
+		// Skip is at the bottom of the dialog
+		cancel.set_visible(widget::visibility::invisible);
+		dlft.set_visible(widget::visibility::invisible);
+		drht.set_visible(widget::visibility::invisible);
+		cancel2.set_visible(widget::visibility::visible);
+		dlft2.set_visible(widget::visibility::visible);
+		drht2.set_visible(widget::visibility::visible);
+		break;
+
+	default:
+		// Skip is at the top of the dialog
+		cancel.set_visible(widget::visibility::visible);
+		dlft.set_visible(widget::visibility::visible);
+		drht.set_visible(widget::visibility::visible);
+		cancel2.set_visible(widget::visibility::invisible);
+		dlft2.set_visible(widget::visibility::invisible);
+		drht2.set_visible(widget::visibility::invisible);
 	}
 }
 
