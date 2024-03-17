@@ -233,14 +233,15 @@ namespace
 	// The caller still have to subtract 1 when passing the index to c++
 	// (0-based) functions
 	template<typename TWidget>
-	void fix_index(lua_State* L, int arg, TWidget& w, bool for_insertion, int& index)
+	void check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, int& index)
 	{
 		int nitems = number_of_items(w);
 		// index == nitems + 1 -> insert at the end.
 		int max = for_insertion ? nitems + 1 : nitems;
 
-		// 0 means insert at end.
+		// 0 means the user didnt specify a value, so insert at end.
 		if(index == 0) {
+			assert(for_insertion);
 			index = nitems + 1;
 		}
 		// todo: does a "negative indicies to "
@@ -277,17 +278,21 @@ static int intf_remove_dialog_item(lua_State* L)
 	int pos = luaL_checkinteger(L, 2);
 	int number = luaL_checkinteger(L, 3);
 
+	if(pos <= 0) {
+		return luaL_argerror(L, 2, "index must be positive");
+	}
+
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
-		fix_index(L, 2, *list, false, pos);
+		check_index(L, 2, *list, false, pos);
 		list->remove_row(pos - 1, number);
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-		fix_index(L, 2, *multi_page,false, pos);
+		check_index(L, 2, *multi_page,false, pos);
 		multi_page->remove_page(pos - 1, number);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
-		fix_index(L, 2, *tree_view, false, pos);
+		check_index(L, 2, *tree_view, false, pos);
 		remove_treeview_node(tree_view->get_root_node(), pos - 1, number);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
-		fix_index(L, 2, *tree_view_node, false, pos);
+		check_index(L, 2, *tree_view_node, false, pos);
 		remove_treeview_node(*tree_view_node, pos - 1, number);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -412,17 +417,20 @@ static int intf_add_item_of_type(lua_State* L)
 	int insert_pos = 0;
 	if(lua_isnumber(L, 3)) {
 		insert_pos = luaL_checkinteger(L, 3);
+		if(insert_pos <= 0) {
+			return luaL_argerror(L, 3, "index must be positive");
+		}
 	}
 	static const gui2::widget_data data;
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {
-		fix_index(L, 2, *twn, true, insert_pos);
+		check_index(L, 2, *twn, true, insert_pos);
 		res = &twn->add_child(node_type, data, insert_pos - 1);
 	} else if(gui2::tree_view* tw = dynamic_cast<gui2::tree_view*>(w)) {
-		fix_index(L, 2, *tw, true, insert_pos);
+		check_index(L, 2, *tw, true, insert_pos);
 		res = &tw->get_root_node().add_child(node_type, data, insert_pos - 1);
 	} else if(gui2::multi_page* mp = dynamic_cast<gui2::multi_page*>(w)) {
-		fix_index(L, 2, *mp, true, insert_pos);
+		check_index(L, 2, *mp, true, insert_pos);
 		res = &mp->add_page(node_type, insert_pos - 1, data);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
