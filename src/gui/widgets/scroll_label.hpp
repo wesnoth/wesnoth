@@ -94,7 +94,7 @@ public:
 	void set_text_alpha(unsigned short alpha);
 
 	void set_link_aware(bool l);
-	
+
 	void set_text_max_width(int max_width) {
 		label* text_label = get_internal_label();
 		if (text_label) {
