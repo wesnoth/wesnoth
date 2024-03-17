@@ -1041,7 +1041,7 @@ int main(int argc, char** argv)
 	// write_to_log_file means that writing to the log file will be done, if true.
 	// if false, output will be written to the terminal
 	// on windows, if wesnoth was not started from a console, then it will allocate one
-	bool write_to_log_file = true;
+	bool write_to_log_file = !getenv("WESNOTH_NO_LOG_FILE");
 	[[maybe_unused]]
 	bool no_con = false;
 
