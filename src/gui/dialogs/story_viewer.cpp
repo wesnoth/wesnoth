@@ -285,34 +285,16 @@ void story_viewer::display_part()
 
 		case storyscreen::part::BLOCK_TOP:
 			set_skip_button_visibility(storyscreen::part::BLOCK_TOP);
-//			cancel.set_visible(widget::visibility::invisible);
-//			dlft.set_visible(widget::visibility::invisible);
-//			drht.set_visible(widget::visibility::invisible);
-//			cancel2.set_visible(widget::visibility::visible);
-//			dlft2.set_visible(widget::visibility::visible);
-//			drht2.set_visible(widget::visibility::visible);
 
 			new_panel_mode = "top";
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
 			set_skip_button_visibility(storyscreen::part::BLOCK_MIDDLE);
-//			cancel.set_visible(widget::visibility::visible);
-//			dlft.set_visible(widget::visibility::visible);
-//			drht.set_visible(widget::visibility::visible);
-//			cancel2.set_visible(widget::visibility::invisible);
-//			dlft2.set_visible(widget::visibility::invisible);
-//			drht2.set_visible(widget::visibility::invisible);
 
 			new_panel_mode = "center";
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
 			set_skip_button_visibility(storyscreen::part::BLOCK_BOTTOM);
-//			cancel.set_visible(widget::visibility::visible);
-//			dlft.set_visible(widget::visibility::visible);
-//			drht.set_visible(widget::visibility::visible);
-//			cancel2.set_visible(widget::visibility::invisible);
-//			dlft2.set_visible(widget::visibility::invisible);
-//			drht2.set_visible(widget::visibility::invisible);
 
 			new_panel_mode = "bottom";
 			break;
