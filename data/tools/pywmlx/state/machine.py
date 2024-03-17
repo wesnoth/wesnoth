@@ -162,7 +162,7 @@ class PendingPlural:
 
     def addline(self, value, isfirstline=False):
         if self.pluraltype != 3:
-            value = re.sub('\\\s*$', '', value)
+            value = re.sub(r'\s*$', '', value)
         else:
             value = value.replace('\\', r'\\')
         if isfirstline:
@@ -203,7 +203,7 @@ class PendingLuaString:
 
     def addline(self, value, isfirstline=False):
         if self.luatype != 'luastr3':
-            value = re.sub('\\\s*$', '', value)
+            value = re.sub(r'\s*$', '', value)
         else:
             value = value.replace('\\', r'\\')
         if isfirstline:
