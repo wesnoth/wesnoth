@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-02 16:44-0600\n"
+"POT-Creation-Date: 2024-03-17 19:07-0500\n"
 "PO-Revision-Date: 2023-02-14 17:45+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -2419,7 +2419,7 @@ msgstr "Publiceer add-on"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1006
+#: src/gui/dialogs/addon/manager.cpp:1017
 msgid "Uninstall add-on"
 msgstr "Verwijder add-on"
 
@@ -2706,7 +2706,7 @@ msgstr "Afhankelijkheden:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1084
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1095
 msgid "addon_dependencies^None"
 msgstr "Geen"
 
@@ -2719,7 +2719,7 @@ msgstr "Vertalingen:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1098
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1109
 msgid "translations^None"
 msgstr "Geen"
 
@@ -2762,8 +2762,8 @@ msgstr "Add-ons Beheerder"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
-#: src/gui/dialogs/addon/manager.cpp:814
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:551
+#: src/gui/dialogs/addon/manager.cpp:825
 msgid "Add-on Details"
 msgstr "Add-on Details"
 
@@ -3060,7 +3060,7 @@ msgstr "Verander Tijdschema"
 #: data/gui/window/screenshot_notification.cfg:120
 #: data/gui/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:186
-#: src/gui/dialogs/unit_recall.cpp:324
+#: src/gui/dialogs/unit_recall.cpp:328
 msgid "Name:"
 msgstr "Naam:"
 
@@ -3126,7 +3126,7 @@ msgstr "Verwijder TvdD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/addon/manager.cpp:990 src/gui/dialogs/file_dialog.cpp:306
 #: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "Bevestig"
@@ -6778,43 +6778,43 @@ msgstr "Gepubliceerd, beschadigd"
 msgid "addon_state^Unknown"
 msgstr "Onbekend"
 
-#: src/gui/dialogs/addon/manager.cpp:433
+#: src/gui/dialogs/addon/manager.cpp:444
 msgid "ascending"
 msgstr "oplodend"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "oldest to newest"
 msgstr "oldest to newest"
 
-#: src/gui/dialogs/addon/manager.cpp:438
+#: src/gui/dialogs/addon/manager.cpp:449
 msgid "descending"
 msgstr "aflopend"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:440
+#: src/gui/dialogs/addon/manager.cpp:451
 msgid "newest to oldest"
 msgstr "nieuwste naar oudste"
 
-#: src/gui/dialogs/addon/manager.cpp:537
+#: src/gui/dialogs/addon/manager.cpp:548
 msgid "addons^Back to List"
 msgstr "Terug naar Lijst"
 
-#: src/gui/dialogs/addon/manager.cpp:549
+#: src/gui/dialogs/addon/manager.cpp:560
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Een fout geconstateerd tijdens het downloaden van de add-on lijst van de "
 "server"
 
-#: src/gui/dialogs/addon/manager.cpp:587
+#: src/gui/dialogs/addon/manager.cpp:598
 msgid "No Add-ons Available"
 msgstr "Geen Add-ons Beschikbaar"
 
-#: src/gui/dialogs/addon/manager.cpp:587
+#: src/gui/dialogs/addon/manager.cpp:598
 msgid "There are no add-ons available for download from this server."
 msgstr "Er zijn geen add-ons beschikbaar om te downloaden van deze server."
 
-#: src/gui/dialogs/addon/manager.cpp:856
+#: src/gui/dialogs/addon/manager.cpp:867
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6822,15 +6822,15 @@ msgstr ""
 "De volgende add-on lijkt lokaal gepubliceerd of opgeslagen te zijn, en zal "
 "niet verwijderd worden:"
 
-#: src/gui/dialogs/addon/manager.cpp:864
+#: src/gui/dialogs/addon/manager.cpp:875
 msgid "The following add-on could not be deleted properly:"
 msgstr "De volgende add-on kon niet correct verwijderd worden:"
 
-#: src/gui/dialogs/addon/manager.cpp:918
+#: src/gui/dialogs/addon/manager.cpp:929
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: src/gui/dialogs/addon/manager.cpp:919
+#: src/gui/dialogs/addon/manager.cpp:930
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6838,30 +6838,30 @@ msgstr ""
 "Deze versie van deze add-on is groter of gelijk aan de versie die nu "
 "geüpload wordt. Weet je zeker dat je door wil gaan?"
 
-#: src/gui/dialogs/addon/manager.cpp:937
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:942
+#: src/gui/dialogs/addon/manager.cpp:953
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Ongeldig icon-pad. Zorg ervoor dat het pad naar de juiste afbeelding "
 "verwijst."
 
-#: src/gui/dialogs/addon/manager.cpp:945 src/gui/dialogs/addon/manager.cpp:987
+#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:998
 msgid "The server responded with an error:"
 msgstr "De server reageerde met een foutmelding:"
 
-#: src/gui/dialogs/addon/manager.cpp:948
+#: src/gui/dialogs/addon/manager.cpp:959
 msgid "The add-on was rejected by the server:"
 msgstr "De add-on was afgewezen door de server:"
 
-#: src/gui/dialogs/addon/manager.cpp:963 src/gui/dialogs/addon/manager.cpp:990
+#: src/gui/dialogs/addon/manager.cpp:974 src/gui/dialogs/addon/manager.cpp:1001
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "Reactie"
 
-#: src/gui/dialogs/addon/manager.cpp:975
+#: src/gui/dialogs/addon/manager.cpp:986
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6870,25 +6870,25 @@ msgstr ""
 "uploadaantallen op de add-ons server zullen ook verwijderd worden. Wil je "
 "toch doorgaan?"
 
-#: src/gui/dialogs/addon/manager.cpp:1007
+#: src/gui/dialogs/addon/manager.cpp:1018
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Weet je zeker dat je '$addon|' wil verwijderen?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1038
+#: src/gui/dialogs/addon/manager.cpp:1049
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d-%m-%Y %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1040
+#: src/gui/dialogs/addon/manager.cpp:1051
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%d-%m-%Y %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1101
+#: src/gui/dialogs/addon/manager.cpp:1112
 msgid "url^None"
 msgstr "Geen"
 
@@ -7069,15 +7069,15 @@ msgstr "Overleven"
 msgid "Terraforming"
 msgstr "Terreinaanpassing"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:374
+#: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:374
+#: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "Success"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:404
+#: src/gui/dialogs/editor/edit_pbl.cpp:408
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose an icon"
@@ -7619,7 +7619,7 @@ msgstr "Spellen"
 msgid "Waiting for players to choose factions..."
 msgstr "Wachten op spelers om hun facties te kiezen..."
 
-#: src/gui/dialogs/outro.cpp:48
+#: src/gui/dialogs/outro.cpp:57
 msgid "The End"
 msgstr "Het Einde"
 
@@ -7776,33 +7776,33 @@ msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 "Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit."
 
-#: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/unit_recall.cpp:327 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Eenheid Hernoemen"
 
-#: src/gui/dialogs/unit_recall.cpp:359
+#: src/gui/dialogs/unit_recall.cpp:363
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Deze eenheid is loyaal en heeft geen onderhoud nodig."
 
-#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
-#: src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:364 src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:374
 msgid "Do you really want to dismiss him?"
 msgstr "Weet je zeker dat je hem wil ontslaan?"
 
-#: src/gui/dialogs/unit_recall.cpp:361 src/gui/dialogs/unit_recall.cpp:366
-#: src/gui/dialogs/unit_recall.cpp:371
+#: src/gui/dialogs/unit_recall.cpp:365 src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:375
 msgid "Do you really want to dismiss her?"
 msgstr "Weet je zeker dat je haar wil ontslaan?"
 
-#: src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:368
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Deze eenheid is ervaren en heeft al promotie gehad."
 
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:373
 msgid "This unit is close to advancing a level."
 msgstr "Deze eenheid is bijna gepromoveerd."
 
-#: src/gui/dialogs/unit_recall.cpp:375
+#: src/gui/dialogs/unit_recall.cpp:379
 msgid "Dismiss Unit"
 msgstr "Ontsla Eenheid"
 

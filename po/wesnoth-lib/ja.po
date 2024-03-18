@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-02 16:44-0600\n"
+"POT-Creation-Date: 2024-03-17 19:07-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -2364,7 +2364,7 @@ msgstr "アドオンの公開"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1006
+#: src/gui/dialogs/addon/manager.cpp:1017
 msgid "Uninstall add-on"
 msgstr "アドオンのアンインストール"
 
@@ -2645,7 +2645,7 @@ msgstr "必要なもの："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1084
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1095
 msgid "addon_dependencies^None"
 msgstr "なし"
 
@@ -2658,7 +2658,7 @@ msgstr "翻訳："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1098
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1109
 msgid "translations^None"
 msgstr "なし"
 
@@ -2701,8 +2701,8 @@ msgstr "アドオンマネージャー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
-#: src/gui/dialogs/addon/manager.cpp:814
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:551
+#: src/gui/dialogs/addon/manager.cpp:825
 msgid "Add-on Details"
 msgstr "アドオンの詳細"
 
@@ -2999,7 +2999,7 @@ msgstr "タイムスケジュールの編集"
 #: data/gui/window/screenshot_notification.cfg:120
 #: data/gui/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:186
-#: src/gui/dialogs/unit_recall.cpp:324
+#: src/gui/dialogs/unit_recall.cpp:328
 msgid "Name:"
 msgstr "名前："
 
@@ -3065,7 +3065,7 @@ msgstr "時刻の削除"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/addon/manager.cpp:990 src/gui/dialogs/file_dialog.cpp:306
 #: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "確認"
@@ -6674,42 +6674,42 @@ msgstr "公開済み、破損"
 msgid "addon_state^Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/addon/manager.cpp:433
+#: src/gui/dialogs/addon/manager.cpp:444
 msgid "ascending"
 msgstr "昇順"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "oldest to newest"
 msgstr "古い順"
 
-#: src/gui/dialogs/addon/manager.cpp:438
+#: src/gui/dialogs/addon/manager.cpp:449
 msgid "descending"
 msgstr "降順"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:440
+#: src/gui/dialogs/addon/manager.cpp:451
 msgid "newest to oldest"
 msgstr "新しい順"
 
-#: src/gui/dialogs/addon/manager.cpp:537
+#: src/gui/dialogs/addon/manager.cpp:548
 msgid "addons^Back to List"
 msgstr "リストに"
 
-#: src/gui/dialogs/addon/manager.cpp:549
+#: src/gui/dialogs/addon/manager.cpp:560
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "サーバーからアドオン一覧をダウンロードしている間にエラーが発生しました。"
 
-#: src/gui/dialogs/addon/manager.cpp:587
+#: src/gui/dialogs/addon/manager.cpp:598
 msgid "No Add-ons Available"
 msgstr "アドオンはありません"
 
-#: src/gui/dialogs/addon/manager.cpp:587
+#: src/gui/dialogs/addon/manager.cpp:598
 msgid "There are no add-ons available for download from this server."
 msgstr "このサーバーからダウンロード可能なアドオンはありません。"
 
-#: src/gui/dialogs/addon/manager.cpp:856
+#: src/gui/dialogs/addon/manager.cpp:867
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6717,15 +6717,15 @@ msgstr ""
 "以下のアドオンは、アドオンの公開情報やバージョン情報をローカルに保存していま"
 "す。これらのアドオンはアンインストールされません。"
 
-#: src/gui/dialogs/addon/manager.cpp:864
+#: src/gui/dialogs/addon/manager.cpp:875
 msgid "The following add-on could not be deleted properly:"
 msgstr "以下のアドオンを正常に削除できませんでした。"
 
-#: src/gui/dialogs/addon/manager.cpp:918
+#: src/gui/dialogs/addon/manager.cpp:929
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:919
+#: src/gui/dialogs/addon/manager.cpp:930
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6733,29 +6733,29 @@ msgstr ""
 "アップロードされるアドオンのバージョンは、リモートにあるアドオンのバージョン"
 "以下の値となっています。 それでも続けますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:937
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr "forum_auth が使用された場合には passphrase 属性は存在できません。"
 
-#: src/gui/dialogs/addon/manager.cpp:942
+#: src/gui/dialogs/addon/manager.cpp:953
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "アイコンのパスが無効です。 有効な画像が存在するパスを指定してください。"
 
-#: src/gui/dialogs/addon/manager.cpp:945 src/gui/dialogs/addon/manager.cpp:987
+#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:998
 msgid "The server responded with an error:"
 msgstr "サーバーが返したエラー："
 
-#: src/gui/dialogs/addon/manager.cpp:948
+#: src/gui/dialogs/addon/manager.cpp:959
 msgid "The add-on was rejected by the server:"
 msgstr "アドオンはサーバーから拒否されました："
 
-#: src/gui/dialogs/addon/manager.cpp:963 src/gui/dialogs/addon/manager.cpp:990
+#: src/gui/dialogs/addon/manager.cpp:974 src/gui/dialogs/addon/manager.cpp:1001
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "応答"
 
-#: src/gui/dialogs/addon/manager.cpp:975
+#: src/gui/dialogs/addon/manager.cpp:986
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6763,21 +6763,21 @@ msgstr ""
 "「$addon|」 を削除するとアドオンサーバー上のダウンロード・アップロード回数も"
 "完全に消去されます。 続行しますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:1007
+#: src/gui/dialogs/addon/manager.cpp:1018
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "「$addon|」をアンインストールしますか？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1038
+#: src/gui/dialogs/addon/manager.cpp:1049
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1040
+#: src/gui/dialogs/addon/manager.cpp:1051
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1101
+#: src/gui/dialogs/addon/manager.cpp:1112
 msgid "url^None"
 msgstr "なし"
 
@@ -6936,15 +6936,15 @@ msgstr "サバイバル"
 msgid "Terraforming"
 msgstr "地形変更"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:374
+#: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "No validation errors"
 msgstr "検証エラーはありません"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:374
+#: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "Success"
 msgstr "成功"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:404
+#: src/gui/dialogs/editor/edit_pbl.cpp:408
 msgid "Choose an icon"
 msgstr "アイコンの選択"
 
@@ -7479,7 +7479,7 @@ msgstr "ゲーム"
 msgid "Waiting for players to choose factions..."
 msgstr "プレイヤーが党派を選択中..."
 
-#: src/gui/dialogs/outro.cpp:48
+#: src/gui/dialogs/outro.cpp:57
 msgid "The End"
 msgstr "The End"
 
@@ -7628,33 +7628,33 @@ msgstr ""
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "ゴールドが不足しているため、このユニットを召還することはできません。"
 
-#: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/unit_recall.cpp:327 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/gui/dialogs/unit_recall.cpp:359
+#: src/gui/dialogs/unit_recall.cpp:363
 msgid "This unit is loyal and requires no upkeep."
 msgstr "忠義ユニットには維持費が必要ありません。"
 
-#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
-#: src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:364 src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:374
 msgid "Do you really want to dismiss him?"
 msgstr "本当に彼を解雇しますか？"
 
-#: src/gui/dialogs/unit_recall.cpp:361 src/gui/dialogs/unit_recall.cpp:366
-#: src/gui/dialogs/unit_recall.cpp:371
+#: src/gui/dialogs/unit_recall.cpp:365 src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:375
 msgid "Do you really want to dismiss her?"
 msgstr "本当に彼女を解雇しますか？"
 
-#: src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:368
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "このユニットは熟練しており、高レベルです。"
 
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:373
 msgid "This unit is close to advancing a level."
 msgstr "レベルアップが近いユニットです。"
 
-#: src/gui/dialogs/unit_recall.cpp:375
+#: src/gui/dialogs/unit_recall.cpp:379
 msgid "Dismiss Unit"
 msgstr "ユニットの解雇"
 
