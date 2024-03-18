@@ -1,3 +1,18 @@
+## Version 1.18.0+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.18.0
  ### Add-ons client
    * The add-ons server identifier (e.g. 1.18) is now displayed on the bottom left after the
