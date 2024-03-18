@@ -6,6 +6,8 @@
  ### Multiplayer
  ### Lua API
  ### Packaging
+ ### Security Fixes
+   * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
  ### Terrain
  ### Translations
    * Updated translations: Czech, German, Italian
@@ -13,6 +15,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8158)
 
 ## Version 1.16.11
  ### Translations
