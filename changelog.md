@@ -957,6 +957,14 @@
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
 
+## Version 1.16.12
+ ### Security Fixes
+   * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
+ ### Translations
+   * Updated translations: Czech, German, Italian
+ ### Miscellaneous and Bug Fixes
+   * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8158)
+
 ## Version 1.16.11
  ### Translations
    * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Czech, French, Japanese, Polish, Slovak, Welsh
