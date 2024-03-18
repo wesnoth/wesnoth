@@ -78,7 +78,7 @@ private:
 	// set which set of skip buttons (top or bottom) is visible
 	void set_skip_button_visibility(storyscreen::part::BLOCK_LOCATION alignment);
 
-	// Manually close the dialog, since widget with id=cancel is not a button
+	// manual dialog closing function for cancel2
 	void close() {
 		set_retval(retval::CANCEL);
 	}

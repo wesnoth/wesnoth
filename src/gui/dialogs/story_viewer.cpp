@@ -90,24 +90,16 @@ void story_viewer::pre_show(window& window)
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
 	// text_layout=bottom set
-	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel", false),
-		std::bind(&story_viewer::close, this));
-	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsleft", false),
-		std::bind(&story_viewer::close, this));
-	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsright", false),
-		std::bind(&story_viewer::close, this));
+//	connect_signal_mouse_left_click(find_widget<button>(&window, "cancel", false),
+//		std::bind(&story_viewer::close, this));
 
 	// text_layout=top set
-	connect_signal_mouse_left_click(find_widget<label>(&window, "cancel2", false),
-			std::bind(&story_viewer::close, this));
-	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsleft2", false),
-			std::bind(&story_viewer::close, this));
-	connect_signal_mouse_left_click(find_widget<image>(&window, "dotsright2", false),
+	connect_signal_mouse_left_click(find_widget<button>(&window, "cancel2", false),
 			std::bind(&story_viewer::close, this));
 
-	connect_signal_mouse_left_click(find_widget<image>(&window, "next", false),
+	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-	connect_signal_mouse_left_click(find_widget<image>(&window, "prev", false),
+	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
 	// Tell the game display not to draw
@@ -132,7 +124,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<image>(get_window(), "prev", false).set_active(part_index_ != 0);
+	find_widget<button>(get_window(), "prev", false).set_active(part_index_ != 0);
 
 	//
 	// Music and sound
@@ -332,9 +324,9 @@ void story_viewer::display_part()
 
 	// Hardcoded max width, should be made customizable
 	// preferably as an key to [part]
-	unsigned win_width_4 = get_window()->get_size().x/4;
-	unsigned best_text_width = (win_width_4 > 1000) ? 1000 : win_width_4;
-	text_label.set_text_max_width(best_text_width);
+	unsigned win_width = get_window()->get_size().x;
+	unsigned best_text_width = (win_width < 1000) ? win_width/2.0 : 1000;
+	text_label.set_text_max_width(best_text_width);	
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
@@ -363,32 +355,20 @@ void story_viewer::display_part()
 // Based on story dialog position, show one set of cancel button,
 // and hide the other set.
 void story_viewer::set_skip_button_visibility(storyscreen::part::BLOCK_LOCATION alignment) {
-	label& cancel = find_widget<label>(get_window(), "cancel", false);
-	label& cancel2 = find_widget<label>(get_window(), "cancel2", false);
-	gui2::image& dlft = find_widget<gui2::image>(get_window(), "dotsleft", false);
-	gui2::image& dlft2 = find_widget<gui2::image>(get_window(), "dotsleft2", false);
-	gui2::image& drht = find_widget<gui2::image>(get_window(), "dotsright", false);
-	gui2::image& drht2 = find_widget<gui2::image>(get_window(), "dotsright2", false);
+	button& cancel = find_widget<button>(get_window(), "cancel", false);
+	button& cancel2 = find_widget<button>(get_window(), "cancel2", false);
 
 	switch(alignment) {
 	case storyscreen::part::BLOCK_TOP:
 		// Skip is at the bottom of the dialog
 		cancel.set_visible(widget::visibility::invisible);
-		dlft.set_visible(widget::visibility::invisible);
-		drht.set_visible(widget::visibility::invisible);
 		cancel2.set_visible(widget::visibility::visible);
-		dlft2.set_visible(widget::visibility::visible);
-		drht2.set_visible(widget::visibility::visible);
 		break;
 
 	default:
 		// Skip is at the top of the dialog
 		cancel.set_visible(widget::visibility::visible);
-		dlft.set_visible(widget::visibility::visible);
-		drht.set_visible(widget::visibility::visible);
 		cancel2.set_visible(widget::visibility::invisible);
-		dlft2.set_visible(widget::visibility::invisible);
-		drht2.set_visible(widget::visibility::invisible);
 	}
 }
 
