@@ -1,27 +1,19 @@
-## Version 1.17.26+dev
+## Version 1.18.0
  ### Add-ons client
    * The add-ons server identifier (e.g. 1.18) is now displayed on the bottom left after the
      server address. If debug mode is enabled the server software version is also shown.
- ### Add-ons server
  ### Campaigns
    * Secrets of the Ancients
      * S16: Keep Crelanu within his ring of protective holy waters (issue #8361)
- ### Editor
  ### Multiplayer
    * Fixed some old paths to unit images being used in Aethermaw (issue #8432)
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Bengali, British English, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Polish, Spanish
    * Added new font "Lohit-Bengali.ttf" to support Bengali translation
- ### Units
  ### User interface
    * Added unit type level as a filter criterion in the Recruit Unit dialog.
    * Added unit race and alignment as additional filter criteria in the Recall Unit dialog.
    * Fixed timing issue with the outro screen's text fading effect that made it so fast as to be unnoticeable on many hardware configurations.
- ### WML Engine
- ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.26
  ### Campaigns
