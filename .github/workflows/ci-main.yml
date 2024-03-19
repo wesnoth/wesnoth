@@ -121,7 +121,7 @@ jobs:
           for opt in config data userconfig userdata
           do
             output=$(./wesnoth --nobanner --"$opt"-path)
-            if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!' "$opt" >&2; exit 1; fi
+            if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi
             printf '%s-path: %s\n' "$opt" "$output"
           done
       - name: WML validation
