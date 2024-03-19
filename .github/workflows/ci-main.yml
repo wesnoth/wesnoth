@@ -193,14 +193,13 @@ jobs:
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: "recursive"
+      - { uses: actions/checkout@v4, with: { submodules: "recursive", fetch-depth: 500, fetch-tags: true } }
 
       - name: Flatpak
         run: |
           # write to an ignored filename so the build is not marked as modified
           jq '.modules |= map(select(.name == "wesnoth").sources[0]={type:"dir",path:"."})' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
+          git config --global --add safe.directory "$PWD"
           branch=$(git describe)
           flatpak-builder --force-clean --default-branch="$branch" --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
           flatpak build-export export wesnoth-app "$branch"
