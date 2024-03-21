@@ -1460,7 +1460,7 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		if(overwrite_specials){
 			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				special_matches = common_matches_filter(cfg, tag_name, *overwrite_filter);
+				special_matches = common_matches_filter(cfg, tag_name, *overwrite_filter, true);
 			}
 		}
 
