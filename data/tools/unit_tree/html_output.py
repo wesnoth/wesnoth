@@ -50,7 +50,7 @@ RESISTANCES = [
     ("arcane", "attacks/faerie-fire.png")
 ]
 
-WESMERE_CSS_VERSION = "1.1.1"
+WESMERE_CSS_VERSION = "1.2.0"
 WESMERE_CSS_PREFIX = "https://www.wesnoth.org"
 
 WESMERE_HEADER = '''\
