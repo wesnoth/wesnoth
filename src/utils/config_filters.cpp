@@ -148,9 +148,6 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
 		return false;
 
-	if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
-		return false;
-
 	if(!string_matches_if_present(filter, cfg, "id", ""))
 		return false;
 
@@ -160,16 +157,6 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 		return false;
 
-	//for damage_type only
-	if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
-		return false;
-
-	if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
-		return false;
-
-	//for plague only
-	if(!string_matches_if_present(filter, cfg, "type", ""))
-		return false;
 
 	//the value attribute can, depending on the type of ability checked,
 	//have a different default value or even not have one at all, hence the need to check the different cases,
