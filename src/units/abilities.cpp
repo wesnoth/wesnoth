@@ -1223,6 +1223,60 @@ int attack_type::modified_damage() const
 	return damage_value;
 }
 
+std::pair<unit_alignments::type, int> attack_type::specials_alignment(bool no_check) const
+{
+	if(no_check){
+		return {(*self_).alignment(), 1};
+	}
+	unit_ability_list align_list = get_specials_and_abilities("attack_alignment");
+	if(align_list.empty()){
+		return {(*self_).alignment(), 1};
+	}
+	const std::set<std::string> checking_alignment = {"neutral", "lawful", "chaotic", "liminal"};
+	std::map<std::string, unit_ability_list> lists;
+	std::map<std::string, bool> is_customised;
+	for(const auto& i : align_list) {
+		if(checking_alignment.count((*i.ability_cfg)["alignment"].str()) != 0){
+			const auto& alignment = (*i.ability_cfg)["alignment"].str();
+			lists[alignment].emplace_back(i);
+			if(!is_customised[alignment]){
+				if(!(*i.ability_cfg)["value"].empty() || !(*i.ability_cfg)["add"].empty() || !(*i.ability_cfg)["sub"].empty() || !(*i.ability_cfg)["multiply"].empty() || !(*i.ability_cfg)["divide"].empty()){
+					is_customised[alignment] = true;
+				}
+			}
+		}
+	}
+	if(lists.empty()){
+		return {(*self_).alignment(), 1};
+	}
+	int count_liminal = lists["liminal"].size();
+	int count_chaotic = lists["chaotic"].size();
+	int count_lawful = lists["lawful"].size();
+	int count_neutral = lists["neutral"].size();
+	std::string str_alignment;
+	if(count_liminal > 0 && count_liminal >= count_chaotic && count_liminal >= count_lawful && count_liminal >= count_neutral){
+		str_alignment = "liminal";
+	}
+	else if((count_neutral > 0 && count_neutral > count_chaotic && count_neutral > count_lawful) || (count_lawful > 0 && count_lawful == count_chaotic)){
+		str_alignment = "neutral";
+	}
+	else if( count_lawful > 0 && count_lawful > count_chaotic){
+		str_alignment = "lawful";
+	}
+	else if( count_chaotic > 0 && count_chaotic > count_lawful){
+		str_alignment = "chaotic";
+	}
+
+	unit_alignments::type alignment = (*self_).alignment();
+	auto new_align = unit_alignments::get_enum(str_alignment);
+	if(new_align) {
+		alignment = *new_align;
+	}
+	int align_value = is_customised[str_alignment] ? (std::max(0, composite_value(lists[str_alignment], 100))/100) : 1;
+
+	return {alignment, align_value};
+}
+
 
 namespace { // Helpers for attack_type::special_active()
 

@@ -131,13 +131,13 @@ void unit_attack::pre_show(window& window)
 
 		const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 		std::string attw_specials = attacker_weapon.weapon_specials();
-		std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
+		std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage", "attack_alignment"});
 		std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
 		std::string attw_specials_cth = attacker_weapon.weapon_specials_value({"chance_to_hit"});
 		std::string attw_specials_others = attacker_weapon.weapon_specials_value(checking_tags_other);
 		bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0 && defender_weapon.num_attacks() == 0 && defender.chance_to_hit == 0);
 		std::string defw_specials = defender_attack ? defender_weapon.weapon_specials() : "";
-		std::string defw_specials_dmg = defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage"}) : "";
+		std::string defw_specials_dmg = defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage", "attack_alignment"}) : "";
 		std::string defw_specials_atk = defender_attack ? defender_weapon.weapon_specials_value({"attacks", "swarm"}) : "";
 		std::string defw_specials_cth = defender_attack ? defender_weapon.weapon_specials_value({"chance_to_hit"}) : "";
 		std::string defw_specials_others = defender_attack ? defender_weapon.weapon_specials_value(checking_tags_other) : "";

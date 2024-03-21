@@ -186,8 +186,10 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	int damage_multiplier = 100;
 
 	// Time of day bonus.
-	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
+	std::pair<unit_alignments::type, int> alignment = weapon->specials_alignment();
+	int tod_bonus = combat_modifier(
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment.first, u.is_fearless());
+	damage_multiplier += alignment.second * tod_bonus;
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);

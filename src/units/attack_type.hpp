@@ -25,6 +25,7 @@
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
+#include "units/unit_alignments.hpp"
 
 class unit_ability_list;
 class unit_type;
@@ -82,6 +83,10 @@ public:
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
+
+	/** Returns alignment used in [attack_alignment] and percentage of alignment bonus. If no such specials are active, it returns the unit's alignment.
+	 */
+	std::pair<unit_alignments::type, int> specials_alignment(bool no_check = false) const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,

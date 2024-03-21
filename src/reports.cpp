@@ -786,8 +786,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		int specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
-		damage_multiplier += tod_bonus;
+		std::pair<unit_alignments::type, int> alignment = weapon->specials_alignment();
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), alignment.first, u.is_fearless());
+		damage_multiplier += alignment.second * tod_bonus;
 		int leader_bonus = under_leadership(u, hex, weapon);
 		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;

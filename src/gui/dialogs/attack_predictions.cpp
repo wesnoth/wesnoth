@@ -224,8 +224,10 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Time of day modifier.
 	const unit& u = *attacker.unit_;
 
-	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
-		u.get_location(), u.alignment(), u.is_fearless());
+	std::pair<unit_alignments::type, int> alignment = weapon->specials_alignment();
+	int tod_bonus = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
+		u.get_location(), alignment.first, u.is_fearless());
+	const int tod_modifier = alignment.second * tod_bonus;
 
 	if(tod_modifier != 0) {
 		set_label_helper("tod_modifier", utils::signed_percent(tod_modifier));
