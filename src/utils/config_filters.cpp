@@ -129,8 +129,22 @@ bool utils::config_filters::bool_or_empty(const config& filter, const config& cf
 	return is_matches;
 }
 
-bool utils::config_filters::matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
+bool utils::config_filters::matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
 {
+
+	//in the filter call from an ability using overwrite_specials=[overwrite][experiemental_filter_specials]
+	//the checked tag_name will always be the same as that of the ability calling the function
+	//and the use of tag_name is not mandatory, otherwise the fact of not using it will return a false response
+	const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+	if(tag_name_optional){
+		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+			return false;
+		}
+	} else {
+		if ( filter_type.empty() || std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+			return false;
+		}
+	}
 
 	if(!filter["affect_adjacent"].empty()){
 		bool adjacent = cfg.has_child("affect_adjacent");
@@ -151,10 +165,6 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 	if(!bool_matches_if_present(filter, cfg, "cumulative", false))
 		return false;
 
-	const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
-	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
-		return false;
-
 	if(!string_matches_if_present(filter, cfg, "id", ""))
 		return false;
 
@@ -163,7 +173,6 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 
 	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 		return false;
-
 
 	//the value attribute can, depending on the type of ability checked,
 	//have a different default value or even not have one at all, hence the need to check the different cases,
@@ -204,7 +213,6 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 	if(!double_matches_if_present(filter, cfg, "divide"))
 		return false;
 
-
 	//the wml_filter is used in cases where the attribute we are looking for is not
 	//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
 	//If the checked set does not exactly match the content of the capability, the function returns a false response.
@@ -219,25 +227,25 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 	return true;
 }
 
-bool utils::config_filters::common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter)
+bool utils::config_filters::common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
 {
 	// Handle the basic filter.
-	bool matches = matches_ability_filter(cfg, tag_name, filter);
+	bool matches = matches_ability_filter(cfg, tag_name, filter, tag_name_optional);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && common_matches_filter(cfg, tag_name, condition.cfg);
+			matches = matches && common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || common_matches_filter(cfg, tag_name, condition.cfg);
+			matches = matches || common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg);
+			matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
 	}
 
 	return matches;
