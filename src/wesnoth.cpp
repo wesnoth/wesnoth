@@ -398,6 +398,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
+		PLAIN_LOG << "Starting with directory: '" << datadir << "'";
 #ifdef _WIN32
 		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
 		if(datadir.c_str()[1] == ':') {
@@ -409,9 +410,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			game_config::path = filesystem::get_cwd() + '/' + datadir;
 		}
 
+		PLAIN_LOG << "Now have with directory: '" << game_config::path << "'";
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(!cmdline_opts.nobanner) {
-			PLAIN_LOG << "Overriding data directory with " << game_config::path;
+			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 
 		if(!filesystem::is_directory(game_config::path)) {
