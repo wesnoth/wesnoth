@@ -621,7 +621,7 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
-	if(!file_exists(user_data_dir)) {
+	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
 
