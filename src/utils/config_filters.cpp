@@ -122,6 +122,21 @@ bool utils::config_filters::bool_or_empty(const config& filter, const config& cf
 	return is_matches;
 }
 
+
+//if filter["value"]="default" then this function check if abilitie using default value or if cfg["value] equals todefault value.
+//if abilitie don't have default value then return false because none default value exist for match
+static bool default_value(const config & filter, const config & cfg, std::optional<int> def)
+{
+	if(!filter.has_attribute("value") || filter["value"] != "default") {
+		return true;
+	}
+	if(!def){
+		return false;
+	}
+	int default_value = def ? (*def) : 0;
+	return (cfg["value"].to_int(default_value) == default_value);
+}
+
 bool utils::config_filters::matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
 {
 
@@ -175,22 +190,16 @@ bool utils::config_filters::matches_ability_filter(const config & cfg, const std
 	//or because the default value of [damage] is the base value of the attack which is not fixed,
 	//either because the 'dummy' abilities are not hardcoded and have no default value
 	if(!filter["value"].empty()){
+		std::optional<int> def = NULL;
 		if(tag_name == "drains"){
-			if(!int_matches_if_present(filter, cfg, "value", 50)){
-				return false;
-			}
+			def = 50;
 		} else if(tag_name == "berserk"){
-			if(!int_matches_if_present(filter, cfg, "value", 1)){
-				return false;
-			}
+			def = 1;
 		} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
-			if(!int_matches_if_present(filter, cfg, "value" , 0)){
-				return false;
-			}
-		} else {
-			if(!int_matches_if_present(filter, cfg, "value")){
-				return false;
-			}
+			def = 0;
+		}
+		if(!default_value(filter, cfg, def) || !int_matches_if_present(filter, cfg, "value" , def)){
+			return false;
 		}
 	}
 
