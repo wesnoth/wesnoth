@@ -324,7 +324,8 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
-	sz *= preferences::pixel_scale();
+	// can't use the preferences value since it may be different than the actual value
+	sz *= video::get_pixel_scale();
 
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {
