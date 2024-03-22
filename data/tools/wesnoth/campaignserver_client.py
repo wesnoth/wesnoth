@@ -35,6 +35,7 @@ class CampaignClient:
 
     # Deactivated servers.
     deactivated = (
+        ("15017", "1.17.x"),
         ("15015", "1.15.x"),
         ("15008", "1.13.x"),
         ("15007", "1.12.x"),
