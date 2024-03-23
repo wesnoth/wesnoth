@@ -321,6 +321,7 @@ void unit_type::build_help_index(
 
 	// Set the movement type.
 	const std::string move_type = cfg["movement_type"];
+	movement_type_id_ = move_type;
 	const movement_type_map::const_iterator find_it = mv_types.find(move_type);
 
 	if(find_it != mv_types.end()) {

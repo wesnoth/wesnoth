@@ -185,6 +185,7 @@ public:
 	const std::string& flag_rgb() const;
 
 	const_attack_itors attacks() const;
+	const std::string movement_type_id() const {return movement_type_id_; }
 	const movetype & movement_type() const { return movement_type_; }
 
 	int experience_needed(bool with_acceleration=true) const;
@@ -368,6 +369,7 @@ private:
 
 	unit_alignments::type alignment_;
 
+	std::string movement_type_id_;
 	movetype movement_type_;
 
 	config possible_traits_;
@@ -392,6 +394,7 @@ public:
 
 	const unit_type_map &types() const { return types_; }
 	const race_map &races() const { return races_; }
+	const movement_type_map &movement_types() const { return movement_types_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
 	void set_config(const game_config_view &cfg);
 
