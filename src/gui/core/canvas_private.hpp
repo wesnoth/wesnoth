@@ -407,7 +407,7 @@ public:
 	 *
 	 * @param cfg                 The config object to define the text.
 	 */
-	explicit text_shape(const config& cfg);
+	explicit text_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
 	void draw(wfl::map_formula_callable& variables) override;
 
@@ -457,6 +457,9 @@ private:
 
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;
+
+	/** Any extra WFL actions to execute. */
+	wfl::formula actions_formula_;
 };
 
 }

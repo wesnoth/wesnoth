@@ -146,6 +146,13 @@ void story_viewer::display_part()
 	config cfg, image;
 
 	//
+	// put text and image widths into window canvas
+	//
+
+	canvas& btn_canvas = find_widget<gui2::button>(get_window(), "cancel", false).get_canvas(0);
+	//btn_canvas.
+
+	//
 	// Background images
 	//
 	bool has_background = false;
