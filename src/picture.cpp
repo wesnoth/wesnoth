@@ -353,7 +353,8 @@ static surface load_image_file(const image::locator& loc)
 	// Many images have been converted from PNG to WEBP format,
 	// but the old filename may still be saved in savegame files etc.
 	// If the file does not exist in ".png" format, also try ".webp".
-	if(location.empty() && filesystem::ends_with(name, ".png")) {
+	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
+	if(location.empty() && (filesystem::ends_with(name, ".png") || filesystem::ends_with(name, ".jpg"))) {
 		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
 		location = filesystem::get_binary_file_location("images", webp_name);
 		if(!location.empty()) {
