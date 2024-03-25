@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
  */
 
 #include "ai/lua/engine_lua.hpp"
-#include "ai/composite/ai.hpp"
 #include "ai/composite/goal.hpp"
 #include "ai/composite/rca.hpp"
 #include "ai/composite/stage.hpp"
@@ -334,8 +333,7 @@ void engine_lua::do_parse_stage_from_config( ai_context &context, const config &
 		return;
 	}
 
-	stage_ptr st_ptr(new lua_stage_wrapper(context,cfg,*lua_ai_context_));
-	if (st_ptr) {
+	if(auto st_ptr = std::make_shared<lua_stage_wrapper>(context, cfg, *lua_ai_context_)) {
 		st_ptr->on_create();
 		*b = st_ptr;
 	}

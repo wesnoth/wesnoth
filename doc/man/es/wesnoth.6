@@ -168,6 +168,15 @@ conteniendo \fIfiltro\fP si es indicado) y regresa
 evita redirigir la salida registrada a un archivo. Los archivos de registro
 se crean en el directorio de registros en la carpeta de datos de usuario.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
 debería estar entre \fB1\fP y \fB1000\fP, por omisión es índice de refresco del
@@ -464,7 +473,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

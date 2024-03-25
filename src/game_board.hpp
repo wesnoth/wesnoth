@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "display_context.hpp"
 #include "side_controller.hpp"
 #include "team.hpp"
-#include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
@@ -28,12 +27,6 @@
 #include <vector>
 
 class config;
-class gamemap;
-
-namespace events {
-	class mouse_handler;
-	class menu_handler;
-}
 
 /**
  *
@@ -229,15 +222,8 @@ private:
  */
 struct temporary_unit_mover
 {
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst);
-	temporary_unit_mover(game_board& b, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(game_board& b, const map_location& src,
-	                     const map_location& dst);
-	virtual  ~temporary_unit_mover();
+	temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves, bool stand);
+	virtual ~temporary_unit_mover();
 
 private:
 	unit_map& m_;
@@ -245,4 +231,5 @@ private:
 	const map_location dst_;
 	int old_moves_;
 	unit_ptr temp_;
+	bool stand_;
 };

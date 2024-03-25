@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
-#include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
@@ -35,7 +34,7 @@ namespace wesnothd
 class server : public server_base
 {
 public:
-	server(int port, bool keep_alive, const std::string& config_file, std::size_t, std::size_t);
+	server(int port, bool keep_alive, const std::string& config_file);
 
 	// We keep this flag for coroutines. Since they get their stack unwinding done after player_connections_
 	// is already destroyed they need to know to avoid calling remove_player() on invalid iterators.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "sound.hpp"
-#include "config.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
@@ -26,7 +25,6 @@
 #include <SDL2/SDL_mixer.h>
 
 #include <list>
-#include <sstream>
 #include <string>
 
 static lg::log_domain log_audio("audio");

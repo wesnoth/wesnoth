@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,10 +22,8 @@
 #include "font/sdl_ttf_compat.hpp" // for pango_line_width
 #include "lexical_cast.hpp"
 #include "overlay.hpp"
-#include "reports.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
-#include "units/map.hpp"
 #include "video.hpp"
 
 namespace wb {

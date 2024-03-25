@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2023
+	Copyright (C) 2004 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,16 +21,12 @@
  */
 
 #include "log.hpp"
-
 #include "filesystem.hpp"
 #include "mt_rng.hpp"
 
 #include <boost/algorithm/string.hpp>
-#include <boost/iostreams/stream.hpp>
-#include <boost/iostreams/tee.hpp>
 
 #include <map>
-#include <sstream>
 #include <ctime>
 #include <mutex>
 #include <iostream>
@@ -38,6 +34,10 @@
 
 #ifdef __ANDROID__
 #include <android/log.h>
+#endif
+
+#ifdef _WIN32
+#include <io.h>
 #endif
 
 static lg::log_domain log_setup("logsetup");
@@ -88,9 +88,14 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
+/** whether the current logs directory is writable */
 static std::optional<bool> is_log_dir_writable_ = std::nullopt;
+/** alternative stream to write data to */
 static std::ostream *output_stream_ = nullptr;
 
+/**
+ * @return std::cerr if the redirect_output_setter isn't being used, output_stream_ if it is
+ */
 static std::ostream& output()
 {
 #ifdef __ANDROID__
@@ -103,28 +108,25 @@ static std::ostream& output()
 	return std::cerr;
 }
 
-// custom deleter needed to reset cerr and cout
-// otherwise wesnoth segfaults on closing (such as clicking the Quit button on the main menu)
-// seems to be that there's a final flush done outside of wesnoth's code just before exiting
-// but at that point the output_file_ has already been cleaned up
-static std::unique_ptr<std::ostream, void(*)(std::ostream*)> output_file_(nullptr, [](std::ostream*){
-	std::cerr.rdbuf(nullptr);
-	std::cout.rdbuf(nullptr);
-});
+/** path to the current log file; does not include the extension */
 static std::string output_file_path_ = "";
+/** path to the current logs directory; may change after being initially set if a custom userdata directory is given on the command line */
+static std::string logs_dir_ = "";
 
 namespace lg {
 
-/** Helper function for rotate_logs. */
+std::ostringstream& operator<<(std::ostringstream& oss, const lg::severity severity)
+{
+    oss << static_cast<int>(severity);
+    return oss;
+}
+
 bool is_not_log_file(const std::string& fn)
 {
 	return !(boost::algorithm::istarts_with(fn, lg::log_file_prefix) &&
 			 boost::algorithm::iends_with(fn, lg::log_file_suffix));
 }
 
-/**
- * Deletes old log files from the log directory.
- */
 void rotate_logs(const std::string& log_dir)
 {
 	// if logging to file is disabled, don't rotate the logs
@@ -156,9 +158,6 @@ void rotate_logs(const std::string& log_dir)
 	}
 }
 
-/**
- * Generates a unique log file name.
- */
 std::string unique_log_filename()
 {
 	std::ostringstream o;
@@ -167,8 +166,7 @@ std::string unique_log_filename()
 
 	o << lg::log_file_prefix
 	  << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-")
-	  << rng.get_next_random()
-	  << lg::log_file_suffix;
+	  << rng.get_next_random();
 
 	return o.str();
 }
@@ -205,6 +203,62 @@ void check_log_dir_writable()
 	is_log_dir_writable_ = true;
 }
 
+void move_log_file()
+{
+	if(logs_dir_ == filesystem::get_logs_dir() || logs_dir_ == "") {
+		return;
+	}
+
+	check_log_dir_writable();
+
+	if(is_log_dir_writable_.value_or(false)) {
+#ifdef _WIN32
+		std::string old_path = output_file_path_;
+		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
+
+		// flush and close existing log files, since Windows doesn't allow moving open files
+		std::fflush(stderr);
+		std::cerr.flush();
+		if(!std::freopen("NUL", "a", stderr)) {
+			std::cerr << "Failed to close stderr log file: '" << old_path << "'";
+			// stderr is where basically all output goes through, so if that fails then don't attempt anything else
+			// moving just the stdout log would be pointless
+			return;
+		}
+		std::fflush(stdout);
+		std::cout.flush();
+		if(!std::freopen("NUL", "a", stdout)) {
+			std::cerr << "Failed to close stdout log file: '" << old_path << "'";
+		}
+
+		// move the .log and .out.log files
+		// stdout and stderr are set to NUL currently so nowhere to send info on failure
+		if(rename((old_path+lg::log_file_suffix).c_str(), (output_file_path_+lg::log_file_suffix).c_str()) == -1) {
+			return;
+		}
+		rename((old_path+lg::out_log_file_suffix).c_str(), (output_file_path_+lg::out_log_file_suffix).c_str());
+
+		// reopen to log files at new location
+		// stdout and stderr are still NUL if freopen fails, so again nowhere to send info on failure
+		std::fflush(stderr);
+		std::cerr.flush();
+		std::freopen((output_file_path_+lg::log_file_suffix).c_str(), "a", stderr);
+
+		std::fflush(stdout);
+		std::cout.flush();
+		std::freopen((output_file_path_+lg::out_log_file_suffix).c_str(), "a", stdout);
+#else
+		std::string old_path = get_log_file_path();
+		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
+
+		// non-Windows can just move the file
+		if(rename(old_path.c_str(), get_log_file_path().c_str()) == -1) {
+			std::cerr << "Failed to rename log file from '" << old_path << "' to '" << output_file_path_ << "'";
+		}
+#endif
+	}
+}
+
 void set_log_to_file()
 {
 	check_log_dir_writable();
@@ -213,14 +267,40 @@ void set_log_to_file()
 	// if the optional isn't set, then logging to file has been disabled, so don't try to do anything
 	if(is_log_dir_writable_.value_or(false)) {
 		// get the log file stream and assign cerr+cout to it
+		logs_dir_ = filesystem::get_logs_dir();
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
-		static std::unique_ptr<std::ostream> logfile { filesystem::ostream_file(output_file_path_) };
-		static std::ostream cerr_stream{std::cerr.rdbuf()};
-		//static std::ostream cout_stream{std::cout.rdbuf()};
-		auto cerr_tee { boost::iostreams::tee(*logfile, cerr_stream) };
-		output_file_.reset(new boost::iostreams::stream<decltype(cerr_tee)>{cerr_tee, 4096, 0});
-		std::cerr.rdbuf(output_file_.get()->rdbuf());
-		std::cout.rdbuf(output_file_.get()->rdbuf());
+
+		// IMPORTANT: apparently redirecting stderr/stdout will also redirect std::cerr/std::cout, but the reverse is not true
+		//            redirecting std::cerr/std::cout will *not* redirect stderr/stdout
+
+		// redirect stderr to file
+		std::fflush(stderr);
+		std::cerr.flush();
+		if(!std::freopen((output_file_path_+lg::log_file_suffix).c_str(), "w", stderr)) {
+			std::cerr << "Failed to redirect stderr to a file!";
+		}
+
+		// redirect stdout to file
+		// separate handling for Windows since dup2() just... doesn't work for GUI apps there apparently
+		// redirect to a separate file on Windows as well, since otherwise two streams independently writing to the same file can cause weirdness
+#ifdef _WIN32
+		std::fflush(stdout);
+		std::cout.flush();
+		if(!std::freopen((output_file_path_+lg::out_log_file_suffix).c_str(), "w", stdout)) {
+			std::cerr << "Failed to redirect stdout to a file!";
+		}
+#else
+		if(dup2(STDERR_FILENO, STDOUT_FILENO) == -1) {
+			std::cerr << "Failed to redirect stdout to a file!";
+		}
+#endif
+
+		// make stdout unbuffered - otherwise some output might be lost
+		// in practice shouldn't make much difference either way, given how little output goes through stdout/std::cout
+		if(setvbuf(stdout, NULL, _IONBF, 2) == -1) {
+			std::cerr << "Failed to set stdout to be unbuffered";
+		}
+
 		rotate_logs(filesystem::get_logs_dir());
 	}
 }
@@ -230,13 +310,9 @@ std::optional<bool> log_dir_writable()
 	return is_log_dir_writable_;
 }
 
-std::string& get_log_file_path()
+std::string get_log_file_path()
 {
-	return output_file_path_;
-}
-void set_log_file_path(const std::string& path)
-{
-	output_file_path_ = path;
+	return output_file_path_+lg::log_file_suffix;
 }
 
 redirect_output_setter::redirect_output_setter(std::ostream& stream)
@@ -250,33 +326,33 @@ redirect_output_setter::~redirect_output_setter()
 	output_stream_ = old_stream_;
 }
 
-typedef std::map<std::string, int> domain_map;
+typedef std::map<std::string, severity> domain_map;
 static domain_map *domains;
-static int strict_level_ = -1;
+static severity strict_level_ = severity::LG_NONE;
 void timestamps(bool t) { timestamp = t; }
 void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
 logger& err()
 {
-	static logger lg("error", 0);
+	static logger lg("error", severity::LG_ERROR);
 	return lg;
 }
 
 logger& warn()
 {
-	static logger lg("warning", 1);
+	static logger lg("warning", severity::LG_WARN);
 	return lg;
 }
 
 logger& info()
 {
-	static logger lg("info", 2);
+	static logger lg("info", severity::LG_INFO);
 	return lg;
 }
 
 logger& debug()
 {
-	static logger lg("debug", 3);
+	static logger lg("debug", severity::LG_DEBUG);
 	return lg;
 }
 
@@ -287,7 +363,7 @@ log_domain& general()
 	return dom;
 }
 
-log_domain::log_domain(char const *name, int severity)
+log_domain::log_domain(char const *name, severity severity)
 	: domain_(nullptr)
 {
 	// Indirection to prevent initialization depending on link order.
@@ -296,7 +372,7 @@ log_domain::log_domain(char const *name, int severity)
 	domain_->second = severity;
 }
 
-bool set_log_domain_severity(const std::string& name, int severity)
+bool set_log_domain_severity(const std::string& name, severity severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
@@ -320,7 +396,7 @@ bool set_log_domain_severity(const std::string& name, const logger &lg) {
 	return set_log_domain_severity(name, lg.get_severity());
 }
 
-bool get_log_domain_severity(const std::string& name, int &severity)
+bool get_log_domain_severity(const std::string& name, severity &severity)
 {
 	domain_map::iterator it = domains->find(name);
 	if (it == domains->end())
@@ -329,7 +405,7 @@ bool get_log_domain_severity(const std::string& name, int &severity)
 	return true;
 }
 
-std::string list_logdomains(const std::string& filter)
+std::string list_log_domains(const std::string& filter)
 {
 	std::ostringstream res;
 	for(logd &l : *domains) {
@@ -339,7 +415,7 @@ std::string list_logdomains(const std::string& filter)
 	return res.str();
 }
 
-void set_strict_severity(int severity) {
+void set_strict_severity(severity severity) {
 	strict_level_ = severity;
 }
 

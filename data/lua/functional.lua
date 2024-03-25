@@ -41,7 +41,7 @@ end
 ---@generic T
 ---@param input T[]
 ---@param condition fun(val:T):boolean
----@return T[]
+---@return T?
 function functional.find(input, condition)
 	for _,v in ipairs(input) do
 		if condition(v) then
@@ -55,8 +55,8 @@ end
 ---@generic V
 ---@param input table<K, V>
 ---@param condition fun(key:K, val:V):boolean
----@return K
----@return V
+---@return K?
+---@return V?
 function functional.find_map(input, condition)
 	for k,v in pairs(input) do
 		if condition(k,v) then
@@ -186,7 +186,7 @@ local known_operators = {
 ---@generic T
 ---@param input T[]
 ---@param operator string|fun(a:T, b:T):T
----@param identity? T
+---@param ... T The initial value of the accumulator, typically the identity element.
 ---@return T
 function functional.reduce(input, operator, ...)
 	local f <const> = known_operators[operator] or operator

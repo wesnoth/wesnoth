@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2023
+	Copyright (C) 2022 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -23,12 +23,10 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>
 #include <vector>
-#include <map>
 
 static lg::log_domain log_draw_man("draw/manager");
 #define ERR_DM LOG_STREAM(err, log_draw_man)
@@ -48,6 +46,7 @@ std::vector<rect> invalidated_regions_;
 bool drawing_ = false;
 bool tlds_need_tidying_ = false;
 uint32_t last_sparkle_ = 0;
+bool extra_pass_requested_ = false;
 } // namespace
 
 namespace draw_manager {
@@ -81,7 +80,7 @@ void invalidate_region(const rect& region)
 		if (region.contains(r)) {
 			// This region contains a previously invalidated region,
 			// might as well supercede it with this.
-			DBG_DM << "superceding previous invalidation " << r
+			DBG_DM << "superseding previous invalidation " << r
 				<< " with " << region;
 			//STREAMING_LOG << '\'';
 			r = region;
@@ -123,6 +122,11 @@ void invalidate_all()
 	invalidate_region(video::game_canvas());
 }
 
+void request_extra_render_pass()
+{
+	extra_pass_requested_ = true;
+}
+
 void sparkle()
 {
 	if (drawing_) {
@@ -153,7 +157,16 @@ void sparkle()
 	draw_manager::render();
 
 	// Draw to the screen.
-	if (draw_manager::expose()) {
+	bool drew_something = draw_manager::expose();
+
+	// If extra render passes are requested, render and draw again.
+	while (extra_pass_requested_) {
+		extra_pass_requested_ = false;
+		draw_manager::render();
+		drew_something |= draw_manager::expose();
+	}
+
+	if (drew_something) {
 		// We only need to flip the screen if something was drawn.
 		video::render_screen();
 	} else {
@@ -282,7 +295,7 @@ void deregister_drawable(top_level_drawable* tld)
 	auto it = std::find(vec.begin(), vec.end(), tld);
 	// Sanity check
 	if (it == vec.end()) {
-		WRN_DM << "attempted to deregister nonexistant TLD "
+		WRN_DM << "attempted to deregister nonexistent TLD "
 			<< static_cast<void*>(tld);
 		return;
 	}
@@ -299,7 +312,7 @@ void raise_drawable(top_level_drawable* tld)
 	auto it = std::find(vec.begin(), vec.end(), tld);
 	// Sanity check
 	if (it == vec.end()) {
-		ERR_DM << "attempted to raise nonexistant TLD "
+		ERR_DM << "attempted to raise nonexistent TLD "
 			<< static_cast<void*>(tld);
 		return;
 	}

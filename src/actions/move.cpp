@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,7 +47,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <deque>
-#include <map>
 #include <set>
 
 static lg::log_domain log_engine("engine");

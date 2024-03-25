@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -15,22 +15,17 @@
 */
 #pragma once
 
-#include "config.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "preferences/advanced.hpp"
 #include "preferences/game.hpp"
+#include "theme.hpp"
 
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
-namespace hotkey {
-	struct hotkey_command;
-}
-
-struct point;
+//struct theme_info;
 
 namespace preferences {
 	enum PREFERENCE_VIEW {
@@ -60,7 +55,6 @@ namespace gui2
 
 class listbox;
 class menu_button;
-class slider;
 class text_box;
 
 namespace dialogs
@@ -84,6 +78,7 @@ private:
 	void initialize_callbacks();
 	void initialize_tabs(listbox& selector);
 	void set_resolution_list(menu_button& res_list);
+	void set_theme_list(menu_button& theme_list);
 	listbox& setup_hotkey_list();
 
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
@@ -108,6 +103,7 @@ private:
 
 	/** Special callback functions */
 	void handle_res_select();
+	void handle_theme_select();
 	void fullscreen_toggle_callback();
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
@@ -119,6 +115,7 @@ private:
 	const preferences::advanced_pref_list& adv_preferences_;
 
 	std::vector<point> resolutions_;
+	std::vector<theme_info> themes_;
 
 	int last_selected_item_;
 

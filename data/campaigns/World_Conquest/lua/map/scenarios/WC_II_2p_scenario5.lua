@@ -12,7 +12,7 @@ local function get_enemy_data(enemy_power)
 		bonus_gold = 175,
 		sides = {
 			wct_enemy(4, 3, 9, 2, 0, 18, "$($wc2_difficulty.enemy_power-2)"),
-			wct_enemy(5, 2, 8, 0, 0, "$($wc2_difficulty.enemy_power*2-1)", (enemy_power)),
+			wct_enemy(5, 2, 8, 0, 0, "$($wc2_difficulty.enemy_power*2-1)", "$($wc2_difficulty.enemy_power-0)"),
 			wct_enemy(6, 3, 1, 7, 0, "$($wc2_difficulty.enemy_power*2-1)", "$($wc2_difficulty.enemy_power-1)"),
 			wct_enemy(7, 2, 1, 0, 0, "$($wc2_difficulty.enemy_power*2-1)", "$($wc2_difficulty.enemy_power-1)"),
 			wct_enemy(8, 2, 0, 2, 1, "$($wc2_difficulty.enemy_power*2-1)", 9),

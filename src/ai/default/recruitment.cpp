@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Felix Bauer
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,6 @@
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -933,11 +932,11 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 		double value_of_b = damage_to_a / (a_max_hp * b_cost);
 
 		if (value_of_a > value_of_b) {
-			return value_of_a / value_of_b;
+			retval = value_of_a / value_of_b;
 		} else if (value_of_a < value_of_b) {
-			return -value_of_b / value_of_a;
+			retval = -value_of_b / value_of_a;
 		} else {
-			return 0.;
+			retval = 0.;
 		}
 	}
 

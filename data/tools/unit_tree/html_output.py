@@ -50,7 +50,7 @@ RESISTANCES = [
     ("arcane", "attacks/faerie-fire.png")
 ]
 
-WESMERE_CSS_VERSION = "1.1.1"
+WESMERE_CSS_VERSION = "1.2.0"
 WESMERE_CSS_PREFIX = "https://www.wesnoth.org"
 
 WESMERE_HEADER = '''\
@@ -61,7 +61,6 @@ WESMERE_HEADER = '''\
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
 	<link rel="stylesheet" type="text/css" href="%(cssprefix)s/wesmere/css/wesmere-%(cssver)s.css" />
@@ -119,8 +118,8 @@ WESMERE_FOOTER = '''\
 
 <div id="footer"><div id="footer-content"><div>
 	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="https://status.wesnoth.org/">Site Status</a><br />
-	Copyright &copy; 2003&ndash;2021 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
-	Site design Copyright &copy; 2017&ndash;2021 by Iris Morelle.
+	Copyright &copy; 2003&ndash;2024 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
+	Site design Copyright &copy; 2017&ndash;2024 by Iris Morelle
 </div></div></div>
 
 </body></html>
@@ -957,9 +956,15 @@ class HTMLOutput:
                                         sname = T(special, "name")
                                         if sname:
                                             s.append(sname)
+                                accuracy = attack.get_text_val("accuracy", default="0")
+                                parry = attack.get_text_val("parry", default="0")
+                                if accuracy != "0":
+                                    s.append("accuracy "+accuracy+"%")
+                                if parry != "0":
+                                    s.append("parry "+parry+"%")
+                                if s:
                                     s = ", ".join(s)
-                                    if s:
-                                        write(" (%s)" % cleantext(s, quote=False))
+                                    write(" (%s)" % cleantext(s, quote=False))
                             write('</div>')
 
                         write('</div>')
@@ -1199,7 +1204,7 @@ class HTMLOutput:
                     error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                         icon, uid))
                     # core/images/units/elves-wood/shaman.png
-                    icon = os.path.join(PICS_LOCATION, "shaman..Y29yZS9pbWFnZXMvdW5pdHMvZWx2ZXMtd29vZA..png")
+                    icon = os.path.join(PICS_LOCATION, "shaman..Y29yZS9pbWFnZXMvdW5pdHMvZWx2ZXMtd29vZA.png")
                 else:
                     icon = os.path.join(PICS_LOCATION, image_add.id_name)
                 write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
@@ -1232,9 +1237,12 @@ class HTMLOutput:
                         sname = T(special, "name")
                         if sname:
                             s.append(cleantext(sname, quote=False))
-                        else:
-                            error_message("Warning: Weapon special %s has no name for %s.\n" %
-                                          (special.name.decode("utf8"), uid))
+                accuracy = attack.get_text_val("accuracy", default="0")
+                parry = attack.get_text_val("parry", default="0")
+                if accuracy != "0":
+                    s.append(cleantext("accuracy "+accuracy+"%"))
+                if parry != "0":
+                    s.append(cleantext("parry "+parry+"%"))
                 if s:
                     write('<td>(%s)</td>' % ', '.join(s))
                 write('</tr>')
@@ -1543,7 +1551,7 @@ def html_postprocess_all(batchlist):
 
     popup_eras_html.clear()
     popup_campaigns_html.clear()
-    
+
 
 def write_index(out_path):
     output = MyFile(os.path.join(out_path, "index.html"), "w")

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -203,7 +202,12 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 			}
 		}
 
-		ss << string_table["type_" + weapon->type()];
+		std::pair<std::string, std::string> types = weapon->damage_type();
+		std::string type_bis = types.second;
+		if (!type_bis.empty()) {
+			type_bis = ", " + string_table["type_" + type_bis];
+		}
+		ss << string_table["type_" + types.first] + type_bis;
 
 		set_label_helper("resis_label", ss.str());
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,12 +16,10 @@
 #pragma once
 
 #include "mt_rng.hpp"
-#include "server/wesnothd/player.hpp"
 #include "server/wesnothd/player_connection.hpp"
 #include "server/common/simple_wml.hpp"
 #include "side_controller.hpp"
 
-#include <map>
 #include <optional>
 #include <vector>
 
@@ -443,6 +441,11 @@ public:
 	void clear_history();
 
 	/**
+	 * Clears the history of recorded chat WML documents.
+	 */
+	void clear_chat_history();
+
+	/**
 	 * Records a WML document in the game's history.
 	 *
 	 * @param data The WML document to record.
@@ -715,6 +718,7 @@ private:
 	void send_observerjoins(std::optional<player_iterator> player = {});
 	void send_observerquit(player_iterator observer);
 	void send_history(player_iterator sock) const;
+	void send_chat_history(player_iterator sock) const;
 
 	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
@@ -858,6 +862,8 @@ private:
 
 	/** Replay data. */
 	mutable std::vector<std::unique_ptr<simple_wml::document>> history_;
+	/** Replay chat history data. */
+	mutable std::vector<std::unique_ptr<simple_wml::document>> chat_history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;

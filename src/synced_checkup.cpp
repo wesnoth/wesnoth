@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "synced_checkup.hpp"
 #include "log.hpp"
-#include "replay.hpp"
 #include "synced_user_choice.hpp"
 
 static lg::log_domain log_replay("replay");

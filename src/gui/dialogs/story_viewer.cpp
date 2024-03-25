@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,12 +20,10 @@
 #include "display.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -306,6 +304,9 @@ void story_viewer::display_part()
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
+
+	// Regenerate any background blur texture
+	panel_canvas.queue_reblur();
 
 	begin_fade_draw(true);
 	// if the previous page was skipped, it is possible that we already have a timer running.

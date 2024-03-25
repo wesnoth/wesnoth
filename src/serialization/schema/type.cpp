@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@
 
 #include "config.hpp"
 #include <optional>
+#include "utils/variant.hpp"
 
 struct is_translatable
 {
@@ -35,7 +36,7 @@ struct is_translatable
 	{
 		return true;
 	}
-	bool operator()(const std::monostate&) const
+	bool operator()(const utils::monostate&) const
 	{
 		return true;
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -86,10 +86,8 @@
 #include "scripting/push_check.hpp"
 #include "synced_commands.hpp"
 #include "color.hpp"                // for surface
-#include "sdl/surface.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
-#include "soundsource.hpp"
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
@@ -126,7 +124,6 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -371,7 +368,7 @@ static int impl_add_animation(lua_State* L)
 
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
-	if(video::headless()) {
+	if(video::headless() || resources::controller->is_skipping_replay()) {
 		return 0;
 	}
 	events::command_disabler command_disabler;
@@ -1243,7 +1240,7 @@ static int intf_get_resource(lua_State *L)
 		return 1;
 	}
 	else {
-		return luaL_argerror(L, 1, ("Cannot find ressource with id '" + m + "'").c_str());
+		return luaL_argerror(L, 1, ("Cannot find resource with id '" + m + "'").c_str());
 	}
 }
 
@@ -2530,7 +2527,6 @@ void game_lua_kernel::put_unit_helper(const map_location& loc)
 		game_display_->invalidate(loc);
 	}
 
-	units().erase(loc);
 	resources::whiteboard->on_kill_unit();
 }
 
@@ -2581,6 +2577,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 
 		unit_ptr u = unit::create(cfg, true, vcfg);
+		units().erase(loc);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
@@ -3825,14 +3822,23 @@ static int intf_remove_modifications(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
 	config filter = luaW_checkconfig(L, 2);
-	std::string tag = luaL_optstring(L, 3, "object");
+	std::vector<std::string> tags;
+	if(lua_isstring(L, 3)) {
+		tags.push_back(lua_check<std::string>(L, 3));
+	} else if (lua_istable(L, 3)){
+		tags = lua_check<std::vector<std::string>>(L, 3);
+	} else {
+		tags.push_back("object");
+	}
 	//TODO
 	if(filter.attribute_count() == 1 && filter.all_children_count() == 0 && filter.attribute_range().front().first == "duration") {
 		u.expire_modifications(filter["duration"]);
 	} else {
-		for(config& obj : u.get_modifications().child_range(tag)) {
-			if(obj.matches(filter)) {
-				obj["duration"] = "now";
+		for(const std::string& tag : tags) {
+			for(config& obj : u.get_modifications().child_range(tag)) {
+				if(obj.matches(filter)) {
+					obj["duration"] = "now";
+				}
 			}
 		}
 		u.expire_modifications("now");
@@ -3985,15 +3991,36 @@ static std::string read_event_name(lua_State* L, int idx)
 	}
 }
 
+/**
+ * Add undo actions for the current active event
+ * Arg 1: Either a table of ActionWML or a function to call
+ * Arg 2: (optional) If Arg 1 is a function, this is a WML table that will be passed to it
+ */
+int game_lua_kernel::intf_add_undo_actions(lua_State *L)
+{
+	config cfg;
+	if(luaW_toconfig(L, 1, cfg)) {
+		synced_context::add_undo_commands(cfg, get_event_info());
+	} else {
+		luaW_toconfig(L, 2, cfg);
+		synced_context::add_undo_commands(save_wml_event(1), cfg, get_event_info());
+	}
+	return 0;
+}
+
 /** Add a new event handler
  * Arg 1: Table of options.
  * name: Event to handle, as a string or list of strings
  * id: Event ID
  * menu_item: True if this is a menu item (an ID is required); this means removing the menu item will automatically remove this event. Default false.
  * first_time_only: Whether this event should fire again after the first time; default true.
+ * priority: Number that determines execution order. Events execute in order of decreasing priority, and secondarily in order of addition.
  * filter: Event filters as a config with filter tags, a table of the form {filter_type = filter_contents}, or a function
+ * filter_args: Arbitrary data that will be passed to the filter, if it is a function. Ignored if the filter is specified as WML or a table.
  * content: The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML.
  * action: The function to call when the event triggers. Defaults to wesnoth.wml_actions.command.
+ *
+ * Lua API: wesnoth.game_events.add
  */
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
@@ -4001,6 +4028,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	using namespace std::literals;
 	std::string name, id = luaW_table_get_def(L, 1, "id", ""s);
 	bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
+	double priority = luaW_table_get_def(L, 1, "priority", 0.);
 	if(luaW_tableget(L, 1, "name")) {
 		name = read_event_name(L, -1);
 	} else if(is_menu_item) {
@@ -4012,7 +4040,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	if(id.empty() && name.empty()) {
 		return luaL_argerror(L, 1, "either a name or id is required");
 	}
-	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, priority, is_menu_item);
 	if(new_handler.valid()) {
 		bool has_lua_filter = false;
 		new_handler->set_arguments(luaW_table_get_def(L, 1, "content", config{"__empty_lua_event", true}));
@@ -4026,25 +4054,25 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 					new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
 					has_lua_filter = true;
 				} else {
-#define READ_ONE_FILTER(key) \
+#define READ_ONE_FILTER(key, tag) \
 					do { \
 						if(luaW_tableget(L, filterIdx, key)) { \
 							if(lua_isstring(L, -1)) { \
 								filters.add_child("insert_tag", config{ \
-									"name", "filter_" key, \
+									"name", tag, \
 									"variable", luaL_checkstring(L, -1) \
 								}); \
 							} else { \
-								filters.add_child("filter_" key, luaW_checkconfig(L, -1)); \
+								filters.add_child(tag, luaW_checkconfig(L, -1)); \
 							} \
 						} \
 					} while(false);
-					READ_ONE_FILTER("condition");
-					READ_ONE_FILTER("side");
-					READ_ONE_FILTER("unit");
-					READ_ONE_FILTER("attack");
-					READ_ONE_FILTER("second_unit");
-					READ_ONE_FILTER("second_attack");
+					READ_ONE_FILTER("condition", "filter_condition");
+					READ_ONE_FILTER("side", "filter_side");
+					READ_ONE_FILTER("unit", "filter");
+					READ_ONE_FILTER("attack", "filter_attack");
+					READ_ONE_FILTER("second_unit", "filter_second");
+					READ_ONE_FILTER("second_attack", "filter_second_attack");
 #undef READ_ONE_FILTER
 					if(luaW_tableget(L, filterIdx, "formula")) {
 						filters["filter_formula"] = luaL_checkstring(L, -1);
@@ -4068,9 +4096,29 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	return 0;
 }
 
+/**
+ * Upvalue 1: The event function
+ * Upvalue 2: The undo function
+ * Arg 1: The event content
+ */
+int game_lua_kernel::cfun_undoable_event(lua_State* L)
+{
+	lua_pushvalue(L, lua_upvalueindex(1));
+	lua_push(L, 1);
+	luaW_pcall(L, 1, 0);
+	synced_context::add_undo_commands(lua_upvalueindex(2), get_event_info());
+	return 0;
+}
+
 /** Add a new event handler
  * Arg 1: Event to handle, as a string or list of strings; or menu item ID if this is a menu item
  * Arg 2: The function to call when the event triggers
+ * Arg 3: (optional) Event priority
+ * Arg 4: (optional, non-menu-items only) The function to call when the event is undone
+ *
+ * Lua API:
+ * - wesnoth.game_events.add_repeating
+ * - wesnoth.game_events.add_menu
  */
 template<bool is_menu_item>
 int game_lua_kernel::intf_add_event_simple(lua_State *L)
@@ -4078,14 +4126,19 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 	game_events::manager & man = *game_state_.events_manager_;
 	bool repeat = true;
 	std::string name = read_event_name(L, 1), id;
+	double priority = luaL_optnumber(L, 3, 0.);
 	if(name.empty()) {
 		return luaL_argerror(L, 1, "must not be empty");
 	}
 	if(is_menu_item) {
 		id = name;
 		name = "menu item " + name;
+	} else if(lua_absindex(L, -1) > 2 && lua_isfunction(L, -1)) {
+		// If undo is provided as a separate function, link them together into a single function
+		// The function can be either the 3rd or 4th argument.
+		lua_pushcclosure(L, &dispatch<&game_lua_kernel::cfun_undoable_event>, 2);
 	}
-	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, priority, is_menu_item);
 	if(new_handler.valid()) {
 		// An event with empty arguments is not added, so set some dummy arguments
 		new_handler->set_arguments(config{"__quick_lua_event", true});
@@ -4096,6 +4149,8 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 
 /** Add a new event handler
  * Arg: A full event specification as a WML config
+ *
+ * WML API: [event]
  */
 int game_lua_kernel::intf_add_event_wml(lua_State *L)
 {
@@ -4592,10 +4647,16 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	int x = luaL_checkinteger(L, 1), y = luaL_checkinteger(L, 2);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
 
 	if (game_display_) {
 		game_display_->scroll(x, y, true);
+
+		lua_remove(L, 1);
+		lua_remove(L, 1);
+		lua_push(L, 25);
+		intf_delay(L);
 	}
 
 	return 0;
@@ -4901,7 +4962,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
@@ -5269,6 +5329,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "remove", &dispatch<&game_lua_kernel::intf_remove_event> },
 		{ "fire", &dispatch2<&game_lua_kernel::intf_fire_event, false> },
 		{ "fire_by_id", &dispatch2<&game_lua_kernel::intf_fire_event, true> },
+		{ "add_undo_actions", &dispatch<&game_lua_kernel::intf_add_undo_actions> },
+		{ "set_undoable", &dispatch<&game_lua_kernel::intf_allow_undo >        },
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
@@ -5900,6 +5962,25 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 	lua_push(L, loc.wml_y());
 	luaW_pcall(L, 2, 0, false);
 	return;
+}
+
+bool game_lua_kernel::mouse_button_callback(const map_location& loc, const std::string &button, const std::string &event)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_button")) {
+		return false;
+	}
+
+	lua_push(L, loc.wml_x());
+	lua_push(L, loc.wml_y());
+	lua_push(L, button);
+	lua_push(L, event);
+
+	if (!luaW_pcall(L, 4, 1)) return false;
+	bool result = luaW_toboolean(L, -1);
+	lua_pop(L, 1);
+	return result;
 }
 
 void game_lua_kernel::select_hex_callback(const map_location& loc)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2023
+	Copyright (C) 2021 - 2024
 	by Iris Morelle <shadowm@wesnoth.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,11 +16,9 @@
 #include "font/sdl_ttf_compat.hpp"
 
 #include "draw.hpp"
-#include "font/standard_colors.hpp"
 #include "log.hpp"
 #include "sdl/point.hpp"
 #include "sdl/texture.hpp"
-#include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
 #include "tooltips.hpp"
 

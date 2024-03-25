@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2023
+	Copyright (C) 2012 - 2024
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -79,11 +79,11 @@ public:
 	/**
 	 * Tries to enable/disable a specific modification
 	 *
-	 * @param index     the index of the modification
+	 * @param id        the id of the modification
 	 * @param activate  activate or deactivate
 	 * @param force     whether to skip dependency check
 	 */
-	void try_modification_by_index(int index, bool activate, bool force = false);
+	void try_modification_by_id(const std::string& id, bool activate, bool force = false);
 
 	/**
 	 * Tries to set the selected era

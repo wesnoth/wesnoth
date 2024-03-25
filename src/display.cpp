@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,18 +22,15 @@
 
 #include "arrow.hpp"
 #include "color.hpp"
-#include "cursor.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
+#include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
@@ -48,7 +45,6 @@
 #include "terrain/builder.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
@@ -58,7 +54,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include <SDL2/SDL_image.h>
 
 #include <algorithm>
 #include <array>
@@ -164,7 +159,7 @@ display::display(const display_context* dc,
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
-	, minimap_(nullptr)
+	, minimap_renderer_(nullptr)
 	, minimap_location_(sdl::empty_rect)
 	, redraw_background_(false)
 	, invalidateAll_(true)
@@ -790,7 +785,10 @@ surface display::screenshot(bool map_screenshot)
 
 	map_screenshot_ = true;
 
+	DBG_DP << "invalidating region for map screenshot";
 	invalidate_locations_in_rect(map_area());
+
+	DBG_DP << "drawing map screenshot";
 	draw();
 
 	map_screenshot_ = false;
@@ -800,6 +798,7 @@ surface display::screenshot(bool map_screenshot)
 	ypos_ = old_ypos;
 
 	// Read rendered pixels back as an SDL surface.
+	LOG_DP << "reading pixels for map screenshot";
 	return video::read_pixels();
 }
 
@@ -879,8 +878,9 @@ void display::create_buttons()
 		return;
 	}
 
-	menu_buttons_.clear();
-	action_buttons_.clear();
+	// Keep the old buttons around until we're done so we can check the previous state.
+	std::vector<std::shared_ptr<gui::button>> menu_work;
+	std::vector<std::shared_ptr<gui::button>> action_work;
 
 	DBG_DP << "creating menu buttons...";
 	for(const auto& menu : theme_.menus()) {
@@ -901,7 +901,7 @@ void display::create_buttons()
 			b->enable(b_prev->enabled());
 		}
 
-		menu_buttons_.push_back(std::move(b));
+		menu_work.push_back(std::move(b));
 	}
 
 	DBG_DP << "creating action buttons...";
@@ -922,8 +922,16 @@ void display::create_buttons()
 			}
 		}
 
-		action_buttons_.push_back(std::move(b));
+		action_work.push_back(std::move(b));
 	}
+
+	if (prevent_draw_) {
+		// buttons start hidden in this case
+		hide_buttons();
+	}
+
+	menu_buttons_ = std::move(menu_work);
+	action_buttons_ = std::move(action_work);
 
 	layout_buttons();
 	DBG_DP << "buttons created";
@@ -949,6 +957,26 @@ void display::draw_buttons()
 	//		btn->draw();
 	//	}
 	//}
+}
+
+void display::hide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide();
+	}
+	for (auto& button : action_buttons_) {
+		button->hide();
+	}
+}
+
+void display::unhide_buttons()
+{
+	for (auto& button : menu_buttons_) {
+		button->hide(false);
+	}
+	for (auto& button : action_buttons_) {
+		button->hide(false);
+	}
 }
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
@@ -1276,6 +1304,9 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 
 void display::drawing_buffer_commit()
 {
+	DBG_DP << "committing drawing buffer"
+	       << " with " << drawing_buffer_.size() << " items";
+
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
@@ -1629,11 +1660,12 @@ void display::recalculate_minimap()
 		return;
 	}
 
-	minimap_ = texture(image::getMinimap(
-		area.w, area.h, get_map(),
+	minimap_renderer_ = image::prep_minimap_for_rendering(
+		get_map(),
 		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
-	));
+	);
 
 	redraw_minimap();
 }
@@ -1651,7 +1683,7 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(!minimap_) {
+	if(!minimap_renderer_) {
 		ERR_DP << "trying to draw null minimap";
 		return;
 	}
@@ -1661,23 +1693,15 @@ void display::draw_minimap()
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
 
-	// Update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
-	minimap_location_.w = minimap_.w();
-	minimap_location_.h = minimap_.h();
-
-	// Draw the minimap.
-	if (minimap_) {
-		draw::blit(minimap_, minimap_location_);
-	}
+	// Draw the minimap and update its location for mouse and units functions
+	minimap_location_ = std::invoke(minimap_renderer_, area);
 
 	draw_minimap_units();
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_.w() / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_.h() / (get_map().h()*hex_size());
+	double xscaling = 1.0 * minimap_location_.w / (get_map().w() * hex_width());
+	double yscaling = 1.0 * minimap_location_.h / (get_map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1883,6 +1907,12 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	if(validate_value_and_set_index) {
 		zoom_index_ = get_zoom_levels_index (new_zoom);
 		new_zoom = zoom_levels[zoom_index_];
+	}
+
+	if((new_zoom / 4) * 4 != new_zoom) {
+		WRN_DP << "set_zoom forcing zoom " << new_zoom
+			<< " which is not a multiple of 4."
+			<< " This will likely cause graphical glitches.";
 	}
 
 	const SDL_Rect& outside_area = map_outside_area();
@@ -2211,6 +2241,21 @@ double display::turbo_speed() const
 		return 1.0;
 }
 
+void display::set_prevent_draw(bool pd)
+{
+	prevent_draw_ = pd;
+	if (!pd) {
+		// ensure buttons are visible
+		unhide_buttons();
+	}
+}
+
+bool display::get_prevent_draw()
+{
+	return prevent_draw_;
+}
+
+
 void display::fade_tod_mask(
 	const std::string& old_mask,
 	const std::string& new_mask)
@@ -2354,7 +2399,7 @@ void display::draw()
 	set_scontext_unsynced leave_synced_context;
 
 	// This isn't the best, but also isn't important enough to do better.
-	if(redraw_background_) {
+	if(redraw_background_ && !map_screenshot_) {
 		DBG_DP << "display::draw redraw background";
 		render_map_outside_area();
 		draw_manager::invalidate_region(map_outside_area());
@@ -2444,11 +2489,9 @@ void display::render()
 	// update the minimap texture, if necessary
 	// TODO: highdpi - high DPI minimap
 	const rect& area = minimap_area();
-	if(!area.empty() &&
-		(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h))
-	{
+	if(!area.empty() && !minimap_renderer_) {
 		recalculate_minimap();
-		if(!minimap_) {
+		if(!minimap_renderer_) {
 			ERR_DP << "error creating minimap";
 			return;
 		}
@@ -2649,7 +2692,7 @@ void display::draw_hex(const map_location& loc)
 		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
 		num_images_fg = terrain_image_vector_.size();
 
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -3093,7 +3136,7 @@ void display::invalidate_all()
 
 bool display::invalidate(const map_location& loc)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	bool tmp;
@@ -3103,7 +3146,7 @@ bool display::invalidate(const map_location& loc)
 
 bool display::invalidate(const std::set<map_location>& locs)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
@@ -3146,7 +3189,7 @@ bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 {
-	if(invalidateAll_)
+	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
 	DBG_DP << "invalidating locations in " << rect;

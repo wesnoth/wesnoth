@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
 
-#include <stdexcept>
 #include <clocale>
 
 #ifdef _WIN32
@@ -395,5 +394,3 @@ bool init_strings(const game_config_view& cfg)
 	}
 	return load_strings(true);
 }
-
-/* vim:set encoding=utf-8: */

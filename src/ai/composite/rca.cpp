@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,8 +18,6 @@
  * @file
  */
 
-#include "ai/composite/ai.hpp"
-#include "ai/composite/engine.hpp"
 #include "ai/composite/rca.hpp"
 #include "log.hpp"
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,9 +21,7 @@
 #include "game_board.hpp"
 #include "game_classification.hpp"
 #include "game_data.hpp"
-#include "game_end_exceptions.hpp"
 #include "log.hpp"
-#include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
 #include "random.hpp"
 #include "random_deterministic.hpp"
@@ -37,8 +35,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
-#include <cstdlib>
-#include <iomanip>
 #include <sstream>
 
 static lg::log_domain log_replay("replay");
@@ -356,6 +352,16 @@ config synced_context::ask_server_choice(const server_choice& sch)
 void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
 {
 	undo_commands_.emplace_front(commands, ctx);
+}
+
+void synced_context::add_undo_commands(int idx, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(idx, ctx);
+}
+
+void synced_context::add_undo_commands(int idx, const config& args, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(idx, args, ctx);
 }
 
 set_scontext_synced_base::set_scontext_synced_base()

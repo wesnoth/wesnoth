@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "ai/configuration.hpp"
-#include "cursor.hpp"
 #include "events.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"

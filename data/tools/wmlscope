@@ -508,7 +508,7 @@ directories are given, all files under the current directory are checked.""")
             print("# Invocation: %s" % " ".join(sys.argv))
             print("# Working directory: %s" % os.getcwd())
             starttime = time.time()
-        xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel, progress)
+        xref = CrossRefLister(dirpath=dirpath, filelist=None, exclude="|".join(exclude), warnlevel=warnlevel, progress=progress)
         if not extracthelp:
             print("#Cross-reference time: %d seconds" % (time.time()-starttime))
         if extracthelp:

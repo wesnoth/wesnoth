@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2023
+	Copyright (C) 2021 - 2024
 	by Iris Morelle <shadowm@wesnoth.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,10 +24,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/progress_bar.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <chrono>
 
 namespace gui2::dialogs {
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -343,8 +343,8 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 		return;
 	}
 
-	std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
-	std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
+	auto res = std::make_shared<config>(savegame.child_or_empty("snapshot"));
+	auto stats = std::make_shared<config>(savegame.child_or_empty("statistics"));
 	throw reset_gamestate_exception(res, stats, false);
 }
 

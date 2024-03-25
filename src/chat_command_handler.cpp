@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
-#include "preferences/display.hpp"
 #include "preferences/game.hpp"
 
 namespace events {

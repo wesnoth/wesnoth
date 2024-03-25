@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "events.hpp"
 #include "gui/core/top_level_drawable.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 
 #include <string>
 

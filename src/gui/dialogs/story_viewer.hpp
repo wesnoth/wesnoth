@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-#include "config.hpp"
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -20,13 +20,11 @@
  * Unicode support functions.
  */
 
-#include "serialization/ucs4_convert_impl.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "serialization/unicode.hpp"
 
 #include "log.hpp"
 
-#include <cassert>
 #include <limits>
 
 static lg::log_domain log_engine("engine");

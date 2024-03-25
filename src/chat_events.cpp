@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,11 +17,8 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
 #include "preferences/credentials.hpp"
-#include "preferences/general.hpp"
-#include "preferences/game.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -48,7 +45,7 @@ void chat_handler::change_logging(const std::string& data) {
 	if (j == data.end()) return;
 	const std::string level(data.begin(), j);
 	const std::string domain(j + 1, data.end());
-	int severity;
+	lg::severity severity;
 	if (level == "error") severity = lg::err().get_severity();
 	else if (level == "warning") severity = lg::warn().get_severity();
 	else if (level == "info") severity = lg::info().get_severity();

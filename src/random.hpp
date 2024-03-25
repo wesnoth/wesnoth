@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include <cstdlib> //needed for RAND_MAX
 #include <cstdint>
 #include <iterator> //needed for std::distance
 #include <limits>

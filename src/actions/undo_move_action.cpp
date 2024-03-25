@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,10 +13,8 @@
 */
 
 #include "actions/undo_move_action.hpp"
-#include "actions/move.hpp"
 
 #include "resources.hpp"
-#include "replay.hpp"
 #include "units/map.hpp"
 #include "units/animation_component.hpp"
 #include "log.hpp"
@@ -24,7 +22,6 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "game_board.hpp"
-#include "map/map.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -62,6 +59,25 @@ void move_action::write(config & cfg) const
 }
 
 /**
+ * Reset halo of adjacent units when undo move.
+ */
+static void reset_adjacent(bool& halo_adjacent, unit_map& units, const map_location& loc)
+{
+	if(halo_adjacent){
+		unit_map::iterator u = units.find(loc);
+		const auto adjacent = get_adjacent_tiles(loc);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == &*u )
+				continue;
+			it->anim_comp().set_standing();
+		}
+	}
+}
+
+/**
  * Undoes this action.
  * @return true on success; false on an error.
  */
@@ -91,8 +107,17 @@ bool move_action::undo(int)
 
 	// Move the unit.
 	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
+	bool halo_adjacent = false;
+	for (const config::any_child sp : u->abilities().all_children_range()){
+		if(!(sp.cfg)["halo_image"].empty() && (sp.cfg).has_child("affect_adjacent")){
+			halo_adjacent = true;
+			break;
+		}
+	}
+	reset_adjacent(halo_adjacent, units, rev_route.front());
 	units.move(u->get_location(), rev_route.back());
 	unit::clear_status_caches();
+	reset_adjacent(halo_adjacent, units, rev_route.back());
 
 	// Restore the unit's old state.
 	u = units.find(rev_route.back());

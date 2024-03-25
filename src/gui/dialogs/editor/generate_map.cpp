@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,10 +20,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "generators/map_generator.hpp"
 #include "lexical_cast.hpp"

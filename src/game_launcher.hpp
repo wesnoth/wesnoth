@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,7 +31,6 @@
 #include <vector>                       // for vector
 
 class commandline_options;
-class config;
 
 struct jump_to_campaign_info
 {

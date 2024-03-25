@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
-#include "variable.hpp"
 
 
 // This file is in the game_events namespace.

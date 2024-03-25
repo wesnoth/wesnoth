@@ -3,14 +3,14 @@
 # Anežka Bubeníčková <masozravapalma@gmail.com>, 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-21 03:01 UTC\n"
-"PO-Revision-Date: 2023-05-11 21:44+0200\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-02-19 22:25+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1826,31 +1826,31 @@ msgid "I’ve got you!"
 msgstr "A mám tě!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2113
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2118
 msgid "I’ve done it! I’ve learned to summon the souls of the dead!"
 msgstr "Zvládl jsem to! Naučil jsem se vyvolávat duše mrtvých!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2118
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2123
 msgid ""
 "So you have, and you even managed to regain control of it when it slipped "
 "out of your grasp. Well done. Now pay heed. A necromancer’s first ghost is "
 "often special — use it carefully, and it will serve you well. Let it escape "
 "your control again, and it will be lost to you forever."
 msgstr ""
-"Zvládnul jsi to. A dokonce se ti podařilo nad ní znovu získat kontrolu, když "
-"se z ní vysmekl. Výborně.\n"
-"A teď mě pozorně poslouchej. První duch nekromanta je často výjimečný. "
-"Používej ho opatrně a dobře ti poslouží. Nenech ho znovu uniknout tvé "
-"kontrole, nebo ho navždy ztratíš."
+"Zvládl jsi to. A dokonce se ti podařilo nad ním znovu získat kontrolu, když "
+"se vysmekl z tvého sevření. Výborně.\n"
+"A teď mě pozorně poslouchej. První duch nekromanta je často výjimečný. "
+"Používej ho opatrně a dobře ti poslouží. Nenech ho znovu uniknout své "
+"nadvládě, nebo ho navždy ztratíš."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2123
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2128
 msgid "I see. I won’t make the same mistake twice."
 msgstr "Chápu. Neudělám dvakrát stejnou chybu."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2128
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2133
 msgid ""
 "We shall see. You have done well enough so far, but I still have much more "
 "to teach you. Come, we have work to do."
@@ -3204,7 +3204,7 @@ msgstr "Uvnitř"
 msgid "Find Lady Karae"
 msgstr "Najdi lady Karu"
 
-#. [unit]: type=Silver Mage, id=Lady Karae
+#. [unit]: type=Silver Mage, id=Lady Karae, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:177
 msgid "Lady Karae"
 msgstr "Lady Kara"
@@ -3222,10 +3222,8 @@ msgstr "Stráž"
 #. Unit name
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:265
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:347
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^Guard"
-msgstr "zmrzačená"
+msgstr "Stráž"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:419
@@ -3467,10 +3465,8 @@ msgstr "Strážce"
 #. Book guards
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:53
-#, fuzzy
-#| msgid "Guardian"
 msgid "female^Guardian"
-msgstr "Strážce"
+msgstr "Strážkyně"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:207
@@ -3484,10 +3480,8 @@ msgstr "Mág"
 
 #. [command]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^Mage"
-msgstr "zmrzačená"
+msgstr "Čarodějka"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:467
@@ -4125,7 +4119,7 @@ msgstr "... vůbec nic..."
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:33
 msgid "<i>“To become a lich, one must first die.”</i>"
-msgstr "<i>„Kdo se chce stát lichem, musí nejprve zemřít.“</i>"
+msgstr "<i>„Aby se člověk stal lichem, musí nejprve zemřít.“</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:37
@@ -5366,19 +5360,19 @@ msgstr "Bláhový hrdina"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:965
 msgid "That was quite the nightmare..."
-msgstr ""
+msgstr "To byl mimořádně zlý sen..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:969
 msgid ""
 "...unless it was not one? No. No no no. I don’t even want to think about "
 "that."
-msgstr ""
+msgstr "... ledaže by to nebyl sen? Ne. Ne, ne, ne. Na to nechci ani pomyslet."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:973
 msgid "I need to go slaughter some foolish heroes to purge that from my mind."
-msgstr ""
+msgstr "Musím jít povraždit pár bláhových hrdinů, abych si vyčistil hlavu."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:989
@@ -5496,7 +5490,7 @@ msgstr "Může být spojen s lichovo mocí! Zkus jej spálit."
 msgid "<small>(faking pain)</small> Aaargh!"
 msgstr "<small>(předstírá bolest)</small> Aaargh!"
 
-#. [message]: role=unit
+#. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1187
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1215
 msgid "It’s not catching fire!"
@@ -5657,7 +5651,7 @@ msgstr ""
 msgid "A monolith of black stone, cold and brittle to the touch."
 msgstr "Monolit z černého kamene, na dotek chladný a křehký."
 
-#. [unit]: type=Cuttle Fish, id=Inky
+#. [unit]: type=Cuttle Fish, id=Inky, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1399
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:558
 msgid "female^Inky"
@@ -5683,12 +5677,12 @@ msgstr "Znovu se setkáme, chapadlatá."
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1452
 msgid "Get these tentacles off of me!"
-msgstr ""
+msgstr "Sundej ze mě ta chapadla!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1465
 msgid "Release me at once you oversized piece of calamari— eeeeaaaaaaaaa!"
-msgstr ""
+msgstr "Okamžitě mě pusť, ty přerostlý mořský plode— ííjáááá!"
 
 #. [message]: speaker=narrator
 #. Mal Keshar is sinking...
@@ -6088,7 +6082,7 @@ msgstr "Krakatice"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:118
 msgid "This cuttlefish will not escape me any longer! Hunt her down!"
-msgstr ""
+msgstr "Tahle sépie už mi neunikne! Ulovte ji!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:152
@@ -6096,11 +6090,13 @@ msgid ""
 "Right, I got dragged down here without any of my minions. I suppose I will "
 "have to do this myself."
 msgstr ""
+"Jasně, stáhlo mě to sem dolů bez mých pohůnků. Předpokládám, že to budu "
+"muset udělat sám."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:161
 msgid "Hunt down Inky"
-msgstr ""
+msgstr "Ulov Inkyho"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:217
@@ -6110,17 +6106,17 @@ msgstr "Proč jsou ta chapadla tak velká...?"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:230
 msgid "(<i>huff huff huff</i>)"
-msgstr ""
+msgstr "(<i>čichám čichám čichám</i>)"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:250
 msgid "I can see... the colors of the universe..!"
-msgstr ""
+msgstr "Vidím... barvy vesmíru...!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:269
 msgid "The stars go whirly whirl and turn into..."
-msgstr ""
+msgstr "Hvězdy víří a mění se v..."
 
 #. [message]: speaker=Mal Keshar
 #. He's high so basically this is gibberish describing mushrooms
@@ -6145,7 +6141,7 @@ msgstr "... houbičky, počkejte na mě...!"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:324
 msgid "(<i>huff huff</i>)"
-msgstr ""
+msgstr "(<i>čichám čichám</i>)"
 
 #. [message]: speaker=Mal Keshar
 #. He breaks the fourth wall here because he's enlightened from the shrooms of course, so he talks directly to the player
@@ -6172,7 +6168,7 @@ msgstr "OSVÍCENÝ"
 #. [unit]: type=Necrophage Necron, id=Necron
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:390
 msgid "Necron"
-msgstr ""
+msgstr "Nekron"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:400
@@ -6181,58 +6177,61 @@ msgid ""
 "disgusting. Maybe I can send it to a quick death against all those Foolish "
 "Heroes."
 msgstr ""
+"... to je ale strašná hromada masa. I na požírače mrtvých je to víc než "
+"nechutné. Možná bych to mohl poslat na rychlou smrt proti všem těm hloupým "
+"hrdinům."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:428
 msgid "You are not the creature I seek!"
-msgstr ""
+msgstr "Ty nejsi ten tvor, kterého hledám!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:467
 msgid "Oh for the love of... not these slimy things again..."
-msgstr ""
+msgstr "Pro lásku... tyhle slizké věci už ne..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:499
 msgid ""
 "... wait a second, is this creature even supposed to live in this kind of "
 "habitat?"
-msgstr ""
+msgstr "... počkat, může ten tvor vůbec žít v takovém prostředí?"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:531
 msgid "The creatures down here keep getting stranger and stranger."
-msgstr ""
+msgstr "Tvorové tady dole jsou stále podivnější a podivnější."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:572
 msgid "Aha!"
-msgstr ""
+msgstr "Aha!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:576
 msgid "Finally, I have found you! Now hold still for just a moment..."
-msgstr ""
+msgstr "Konečně jsem tě našel! Teď se chvíli nehýbej..."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:597
 msgid "Ha! I have you now!"
-msgstr ""
+msgstr "Ha! Teď tě mám!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:610
 msgid "... what’s that sound?"
-msgstr ""
+msgstr "... co je to za zvuk?"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:636
 msgid "Where did you come from? Get off of me!"
-msgstr ""
+msgstr "Kde ses tu vzal? Slez ze mě!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:675
 msgid "Uh oh."
-msgstr ""
+msgstr "O ou."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:714
@@ -6242,12 +6241,12 @@ msgstr "Mizím odsud!"
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:739
 msgid "Aaargh, so many tentacles! Aieeeeee!!!"
-msgstr ""
+msgstr "Aaargh, tolik chapadel! Ajííí!!!"
 
 #. [story]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:749
 msgid "Bad Ending"
-msgstr ""
+msgstr "Špatný konec"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:751
@@ -6257,13 +6256,16 @@ msgid ""
 "no more than a few decorative elements around the watery backdrop of the "
 "village of squids for all eternity."
 msgstr ""
+"Naneštěstí pro něj byl Mal Keshar přemožen hordou chapadel. Jeho iluze "
+"o vznešenosti byly zničeny a jeho kostěné pozůstatky se navždy staly jen "
+"několika ozdobnými prvky na pozadí vodní vesnice chobotnic."
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "Mág učedník"
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:17
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
@@ -6282,12 +6284,12 @@ msgstr ""
 msgid "magic blast"
 msgstr "magická vlna"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "Nekromant učedník"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:16
 msgid ""
 "Under Darken Volk’s tutelage, Malin has become adept at wielding necromancy "
@@ -6319,12 +6321,12 @@ msgstr ""
 "pro boj na blízko, možná ale více na památku než jako účinnou zbraň. Jeho "
 "vzrůstající magické síly to ale více než vynahrazují."
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "Baronka z pohraničí"
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "
@@ -6346,7 +6348,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Ghast2.cfg:29
 msgid "bite"
-msgstr ""
+msgstr "kousnutí"
 
 #. [advancement]: id=mal_keshar_amla_melee
 #. [advancement]: id=eidolon_baneblade
@@ -6416,7 +6418,7 @@ msgstr "Vysávat ze sousedících nepřátel životy, ale každé kolo životy z
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:350
 #: data/campaigns/Descent_Into_Darkness/units/Spectral_Servant.cfg:357
 msgid "touch"
-msgstr "dotyk"
+msgstr "dotek"
 
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:223
@@ -6536,7 +6538,7 @@ msgstr "Získává schopnost sžírání"
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Necrophage2.cfg:18
 msgid "claws"
-msgstr ""
+msgstr "drápy"
 
 #. [advancement]
 #: data/campaigns/Descent_Into_Darkness/units/Spectral_Servant.cfg:79
@@ -6700,11 +6702,11 @@ msgstr "rozervanost"
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:335
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:336
 msgid ""
-"Every turn, this unit loses 5 hitpoints, but drains 4 hitpoints from each "
+"Every turn, this unit loses 3 hitpoints, but drains 6 hitpoints from each "
 "adjacent enemy."
 msgstr ""
-"Každé kolo tato jednotka ztrácí 5 životů, ale z každé sousedící nepřátelské "
-"jednotky vysává 4 životy."
+"Každé kolo tato jednotka ztrácí 3 životy, ale z každé sousedící nepřátelské "
+"jednotky vysává 6 životů."
 
 #. [damage]: id=did_malevolence
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:432
@@ -6917,24 +6919,24 @@ msgstr ""
 #. [plague]: id=ghoulfication, type=Ghoul
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1039
 msgid "ghoulfication"
-msgstr ""
+msgstr "zžírání"
 
 #. [plague]: id=ghoulfication, type=Ghoul
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1040
 msgid "When a unit is killed by this attack, it turns into a ghoul."
-msgstr ""
+msgstr "Když je jednotka zabita tímto útokem, promění se na požírače mrtvých."
 
 #. [dummy]: id=did_starving
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1048
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1049
 msgid "starving"
-msgstr ""
+msgstr "hladovění"
 
 #. [dummy]: id=did_starving
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1050
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1051
 msgid "This unit loses 1 hitpoint every turn."
-msgstr ""
+msgstr "Tato jednotka ztrácí každé kolo 1 bod zdraví."
 
 #. [leadership]: id=masochism1
 #. [leadership]: id=masochism2
@@ -6953,12 +6955,12 @@ msgstr "masochismus"
 #. [leadership]: id=masochism1
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1096
 msgid "This unit gains up to 50% damage as its hitpoints are reduced."
-msgstr ""
+msgstr "Jak této jednotce ubývá zdraví, způsobuje až o 50 % větší zranění."
 
 #. [leadership]: id=masochism2
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1108
 msgid "This unit gains up to 100% damage as its hitpoints are reduced."
-msgstr ""
+msgstr "Jak této jednotce ubývá zdraví, způsobuje až o 100 % větší zranění."
 
 #. [resistance]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1120
@@ -7088,7 +7090,7 @@ msgstr "Získává schopnost oblak smrti"
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1029
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1056
 msgid "Gain increasing damage as hitpoints are reduced"
-msgstr ""
+msgstr "Získat rostoucí sílu útoku při ubývajícím zdraví"
 
 #. [advancement]: id=necron_ghoulfication
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1083

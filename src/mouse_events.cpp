@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -18,7 +18,6 @@
 
 #include "actions/attack.hpp"                // for battle_context, etc
 #include "actions/move.hpp"                  // for move_and_record
-#include "actions/undo.hpp"                  // for undo_list
 #include "config.hpp"                        // for config
 #include "cursor.hpp"                        // for set, CURSOR_TYPE::NORMAL, etc
 #include "game_board.hpp"                    // for game_board, etc
@@ -27,7 +26,6 @@
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/dialogs/unit_attack.hpp"       // for unit_attack
 #include "gui/widgets/settings.hpp"          // for new_widgets
-#include "language.hpp"                      // for string_table, symbol_table
 #include "log.hpp"                           // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                       // for gamemap
 #include "pathfind/teleport.hpp"             // for get_teleport_locations, etc
@@ -47,7 +45,6 @@
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
-#include <ostream>     // for operator<<, basic_ostream, etc
 #include <string>      // for string, operator<<, etc
 
 static lg::log_domain log_engine("engine");
@@ -93,8 +90,12 @@ void mouse_handler::set_side(int side_number)
 
 int mouse_handler::drag_threshold() const
 {
-	// TODO: Use physical screen size.
-	return 14;
+    // Function uses window resolution as an estimate of users perception of distance
+    // Tune this variable if necessary:
+    const unsigned threshold_1080p = 14; // threshold number of pixels for 1080p
+    double screen_diagonal = std::hypot(gui2::settings::screen_width,gui2::settings::screen_height);
+    const double scale_factor = threshold_1080p / std::hypot(1080,1920);
+    return static_cast<int>(screen_diagonal * scale_factor);
 }
 
 void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, map_location new_hex)
@@ -597,6 +598,43 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	}
 }
 
+// Hook for notifying lua game kernel of mouse button events. We pass button as
+// a serpaate argument than the original SDL event in order to manage touch
+// emulation (e.g., long touch = right click) and such.
+bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
+									   map_location loc, bool click)
+{
+	static const std::array<const std::string, 6> buttons = {
+		"",
+		"left",		// SDL_BUTTON_LEFT
+		"middle",	// SDL_BUTTON_MIDDLE
+		"right",	// SDL_BUTTON_RIGHT
+		"mouse4",	// SDL_BUTTON_X1
+		"mouse5"	// SDL_BUTTON_X2
+	};
+
+	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
+		return false;
+	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+		return false;
+	}
+
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->mouse_button_callback(loc, buttons[button], (event.state == SDL_RELEASED ? "up" : "down"));
+
+		// Are we being asked to send a click event?
+		if (click) {
+			// Was both the up and down on the same map tile?
+			if (loc != drag_from_hex_) {
+				return false;
+			}
+			// We allow this event to be consumed, but not up/down
+			return lk->mouse_button_callback(loc, buttons[button], "click");
+		}
+	}
+	return false;
+}
+
 unit_map::iterator mouse_handler::selected_unit()
 {
 	unit_map::iterator res = find_unit(selected_hex_);
@@ -894,7 +932,7 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
-						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left);
+						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
 					}
 
@@ -1270,7 +1308,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	if(bc_vector.empty()) {
-		gui2::show_transient_message("No Attacks", _("This unit has no usable weapons."));
+		gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
 
 		return -1;
 	}

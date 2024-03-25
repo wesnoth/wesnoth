@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,9 +21,7 @@
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 #include "units/types.hpp"
-#include "resources.hpp"
 #include "play_controller.hpp"
-#include "saved_game.hpp"
 
 namespace unit_helper {
 

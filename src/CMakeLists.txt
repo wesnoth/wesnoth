@@ -48,6 +48,12 @@ if(CMAKE_SYSTEM_NAME STREQUAL "SunOS")
 	set(common-external-libs ${common-external-libs} socket)
 endif()
 
+if(ENABLE_SYSTEM_LUA)
+	add_compile_definitions(HAVE_SYSTEM_LUA=1)
+	include_directories( SYSTEM ${LUA_INCLUDE_DIR} )
+	set(common-external-libs ${common-external-libs} ${LUA_LIBRARIES})
+endif()
+
 set(game-external-libs
 	${common-external-libs}
 	${PANGOCAIRO_LIBRARIES}
@@ -68,39 +74,49 @@ if(HISTORY_FOUND)
 endif()
 
 # get source lists
-GetSources("lua" lua_sources)
+if(NOT ENABLE_SYSTEM_LUA)
+	GetSources("lua" lua_sources)
+endif()
 GetSources("libwesnoth_sdl" wesnoth_sdl_sources)
 GetSources("libwesnoth_widgets" wesnoth_widget-sources)
 GetSources("libwesnoth" wesnoth_game_sources)
 GetSources("libwesnoth_core" wesnoth_core_sources)
 GetSources("wesnoth" wesnoth_sources)
 
-# Inject a header into the Lua sources for Wesnoth-specific changes
-# makedepend won't see it so we have to specifically add it as a dependency.
-file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
-set_source_files_properties(${lua_sources} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
+if(NOT ENABLE_SYSTEM_LUA)
+	# Inject a header into the Lua sources for Wesnoth-specific changes
+	# makedepend won't see it so we have to specifically add it as a dependency.
+	file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
+	set_source_files_properties(${lua_sources} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
+endif()
 
 if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
 endif()
 
-set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
-
-# We explicitly want lua compiled as C++ version
-if(MSVC)
-	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
-	# silence an implicit bitshift conversion warning
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334 /TP")
-else()
-	set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -x c++ -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
+if(NOT ENABLE_SYSTEM_LUA)
+	set_source_files_properties(${lua_sources} PROPERTIES LANGUAGE CXX)
 endif()
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	# silence a Clang specific warning due to extra parenthesis in if statements
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-parentheses-equality")
-	# silence a Clang specific warning when compiling the lua code
-	set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
+if(NOT ENABLE_SYSTEM_LUA)
+	# We explicitly want lua compiled as C++ version
+	if(MSVC)
+		set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "/FI\"${wesnoth_lua_config}\"")
+		# silence an implicit bitshift conversion warning
+		set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " /wd4334 /TP")
+	else()
+		set_source_files_properties(${lua_sources} PROPERTIES COMPILE_FLAGS "-include \"${wesnoth_lua_config}\" -x c++ -Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow")
+	endif()
+endif()
+
+if(NOT ENABLE_SYSTEM_LUA)
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		# silence a Clang specific warning due to extra parenthesis in if statements
+		set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-parentheses-equality")
+		# silence a Clang specific warning when compiling the lua code
+		set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
+	endif()
 endif()
 
 # On apple only

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,12 +18,10 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "format_time_summary.hpp"
-#include "game_end_exceptions.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
-#include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
 

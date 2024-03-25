@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,10 +26,8 @@
 #include "gui/core/log.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
-#include "video.hpp"
 #include "wml_exception.hpp"
 #include <functional>
 
@@ -431,17 +429,22 @@ int styled_widget::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void styled_widget::impl_draw_background()
+bool styled_widget::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_.str()) << "' size "
 			  << get_rectangle() << ".";
 
+	if(!get_canvas(get_state()).update_blur(get_rectangle())) {
+		return false;
+	}
 	get_canvas(get_state()).draw();
+	return true;
 }
 
-void styled_widget::impl_draw_foreground()
+bool styled_widget::impl_draw_foreground()
 {
 	/* DO NOTHING */
+	return true;
 }
 
 point styled_widget::get_best_text_size(point minimum_size, point maximum_size) const

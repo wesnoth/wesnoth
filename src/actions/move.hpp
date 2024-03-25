@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,6 @@
 #pragma once
 
 struct map_location;
-class  replay;
-class  unit;
 
 #include "units/map.hpp"
 #include "game_events/fwd.hpp"

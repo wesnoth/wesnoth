@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2023
+	Copyright (C) 2018 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,17 +14,13 @@
 
 #pragma once
 
-#include <cstddef>
 #include <string>
 #include <memory>
 #include <map>
 #include <set>
 #include "map/map.hpp"
 
-#include "scripting/lua_common.hpp"
 struct lua_State;
-struct map_location;
-class mapgen_gamemap;
 class filter_impl;
 namespace lua_mapgen
 {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Guorui Xi <kevin.xgr@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 
 #include "ai/game_info.hpp"
 
-#include "lua/aspect_advancements.hpp"
 
 class unit_type;
 

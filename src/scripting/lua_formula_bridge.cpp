@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2023
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,13 +15,12 @@
 #include "scripting/lua_formula_bridge.hpp"
 
 #include "game_board.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_unit_type.hpp"
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "variable.hpp"

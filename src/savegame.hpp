@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -80,7 +80,7 @@ struct load_game_metadata
 * Exception used to signal that the user has decided to abortt a game,
 * and to load another game instead.
 */
-class load_game_exception
+class load_game_exception final
 	: public lua_jailbreak_exception, public std::exception
 {
 public:
@@ -88,6 +88,7 @@ public:
 		: lua_jailbreak_exception()
 		, data_(data)
 	{
+		this->store();
 	}
 	load_game_metadata data_;
 private:

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,7 +87,6 @@ public:
 
 	// Forward declaration so that terrain_info can friend the
 	// swap(terrain_defense, terrain_defense) function
-	class terrain_defense;
 
 private:
 

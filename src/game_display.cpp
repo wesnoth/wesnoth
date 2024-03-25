@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,24 +20,18 @@
 
 #include "game_display.hpp"
 
-#include "gettext.hpp"
-#include "wesconfig.h"
 
 #include "cursor.hpp"
 #include "display_chat_manager.hpp"
 #include "fake_unit_manager.hpp"
-#include "fake_unit_ptr.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
 #include "preferences/game.hpp"
-#include "halo.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "map/label.hpp"
 #include "font/standard_colors.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
-#include "sdl/utils.hpp"
 #include "tod_manager.hpp"
 #include "color.hpp"
 #include "synced_context.hpp"
@@ -77,6 +71,7 @@ game_display::game_display(game_board& board,
 	, attack_indicator_dst_()
 	, route_()
 	, displayedUnitHex_()
+	, first_turn_(true)
 	, in_game_(false)
 	, chat_man_(new display_chat_manager(*this))
 	, mode_(RUNNING)
@@ -95,10 +90,7 @@ game_display::~game_display()
 
 void game_display::new_turn()
 {
-	static bool first_turn = true;
-
-	// We want to skip this on the first run of this function
-	if(!first_turn) {
+	if(!first_turn_) {
 		const time_of_day& tod = resources::tod_manager->get_time_of_day();
 		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
 
@@ -107,7 +99,7 @@ void game_display::new_turn()
 		}
 	}
 
-	first_turn = false;
+	first_turn_ = false;
 
 	update_tod();
 }

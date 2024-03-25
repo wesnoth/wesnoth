@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Tommy Schmitz
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

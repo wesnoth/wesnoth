@@ -1289,6 +1289,35 @@ linechanges = (
         ("portraits/monsters/big-icemonax.png", "portraits/monsters/big-icemonax.webp"),
         ("portraits/monsters/ogre.png", "portraits/monsters/ogre.webp"),
 
+        # grouping of sprites sharing a color map in 1.17.4
+        # bats
+        ("units/undead/bat-", "units/bats/bat-"),
+        ("units/undead/bloodbat-", "units/bats/bloodbat-"),
+        ("units/undead/dreadbat-", "units/bats/dreadbat-"),
+        # spirits
+        ("units/undead/ghost-", "units/undead-spirit/ghost-"),
+        ("units/undead/wraith-", "units/undead-spirit/wraith-"),
+        ("units/undead/shadow-", "units/undead-spirit/shadow-"),
+        ("units/undead/spectre", "units/undead-spirit/spectre"),
+        ("units/undead/nightgaunt", "units/undead-spirit/nightgaunt"),
+        # nagas
+        ("units/nagas/fighter.png", "units/nagas/fighter/fighter.png"),
+        ("units/nagas/fighter-", "units/nagas/fighter/fighter-"),
+        ("units/nagas/warrior", "units/nagas/fighter/warrior"),
+        ("units/nagas/myrmidon", "units/nagas/fighter/myrmidon"),
+        ("units/nagas/guardian.png", "units/nagas/guardian/guardian.png"),
+        ("units/nagas/guardian-", "units/nagas/guardian/guardian-"),
+        ("units/nagas/warden", "units/nagas/guardian/warden"),
+        ("units/nagas/sentinel", "units/nagas/guardian/sentinel"),
+        ("units/nagas/dirkfang", "units/nagas/mixed/dirkfang"),
+        ("units/nagas/ringcaster", "units/nagas/mixed/ringcaster"),
+        ("units/nagas/ophidian", "units/nagas/mixed/ophidian"),
+        ("units/nagas/sicarius", "units/nagas/mixed/sicarius"),
+        ("units/nagas/zephyr", "units/nagas/mixed/zephyr"),
+
+        # introduced in wesnoth 1.17.19
+        ("units/elves-wood/fighter.png", "units/elves-wood/fighter/fighter.png"),
+
         )
 
 # helper function to reduce code duplication and allow easy checking
@@ -1363,6 +1392,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
               (filename, lineno, closer))
     if closer == "variation" and "variation_id" not in attributes:
         print('"%s", line %d: [variation] is missing required variation_id attribute' % \
+              (filename, lineno))
+    if closer == "filter" and "kill" in ancestors:
+        print('"%s", line %d: [kill] should have an inline StandardUnitFilter instead of using [filter]' % \
               (filename, lineno))
 
 def within(tag):
@@ -1696,9 +1728,9 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                 if "add-ons" in filename:
                     if campaign_rank < 300:
                         print(errlead + "rank for add-on campaigns should be greater than or equal to 300")
-                else:
-                    if campaign_rank >= 300 or (campaign_rank % 5) != 0:
-                        print(errlead + "rank for mainline campaigns should be a multiple of 5 between 0 and 299 (included)")  
+                elif "campaigns" in filename:
+                    if campaign_rank >= 300:
+                        print(errlead + "rank for mainline campaigns should be between 0 and 299 (included)")  
             except ValueError:
                 print(errlead + "rank must be a numeric value")
 
@@ -3597,6 +3629,11 @@ directory.""")
                 line = line.replace("[unit]", "[unit_type]")
                 line = line.replace("[+unit]", "[+unit_type]")
                 line = line.replace("[/unit]", "[/unit_type]")
+
+        # putting the ignore check here to allow setting the post15 flag
+        if "wmllint: ignore" in original:
+            return original
+
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,14 +14,12 @@
 
 #pragma once
 
-#include "gui/core/top_level_drawable.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include "events.hpp"
 #include "tstring.hpp"
 
 #include <atomic>
-#include <chrono>
 #include <future>
 #include <map>
 #include <optional>

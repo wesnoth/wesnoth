@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,8 +18,6 @@
 #include "editor/editor_display.hpp"
 #include "editor/editor_main.hpp"
 #include "editor/map/context_manager.hpp"
-#include "editor/map/map_context.hpp"
-#include "editor/map/map_fragment.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "controller_base.hpp"
@@ -30,27 +28,19 @@
 
 #include "sound_music_track.hpp"
 
-class map_generator;
-
-namespace tooltips {
-class manager;
-}
-
 namespace font {
 struct floating_label_context;
 }
 
 namespace editor {
 
-class editor_map;
-
-std::string get_left_button_function();
 
 enum menu_type {
 	MAP,
 	LOAD_MRU,
 	PALETTE,
 	AREA,
+	ADDON,
 	SIDE,
 	TIME,
 	LOCAL_TIME,
@@ -80,7 +70,7 @@ class editor_controller : public controller_base,
 		 * to the map can be retrieved between the main loop's end and the controller's
 		 * destruction.
 		 */
-		editor_controller();
+		editor_controller(bool clear_id);
 
 		~editor_controller();
 
@@ -90,14 +80,14 @@ class editor_controller : public controller_base,
 		/** Takes a screenshot **/
 		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.png");
 
-		/** Process a hotkey quit command */
-		void hotkey_quit();
-
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
 
 		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void custom_tods_dialog();
+
+		/** Updates schedule and the map display */
+		void update_map_schedule(std::vector<time_of_day> schedule);
 
 		/** Save the map, open dialog if not named yet. */
 		void save_map() override {context_manager_->save_map();}
@@ -144,8 +134,6 @@ class editor_controller : public controller_base,
 
 		/** Export the WML-compatible list of selected tiles to the system clipboard */
 		void export_selection_coords();
-
-		void update_mouse_action_highlights();
 
 		/** Save the current selection to the active area. */
 		void save_area();
@@ -211,9 +199,6 @@ class editor_controller : public controller_base,
 		/** init background music for the editor */
 		void init_music(const game_config_view& game_config);
 
-		/** Load editor-specific tooltips */
-		void load_tooltips();
-
 		/** Reload images */
 		void refresh_image_cache();
 
@@ -248,6 +233,8 @@ class editor_controller : public controller_base,
 		/* managers */
 	public:
 		const std::unique_ptr<context_manager> context_manager_;
+
+		static std::string current_addon_id_;
 	private:
 		std::unique_ptr<editor_toolkit> toolkit_;
 		tooltips::manager tooltip_manager_;

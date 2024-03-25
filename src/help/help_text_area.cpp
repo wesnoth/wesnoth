@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,7 +29,6 @@
 #include "serialization/parser.hpp"     // for read, write
 
 #include <algorithm>                    // for max, min, find_if
-#include <ostream>                      // for operator<<, stringstream, etc
 #include <vector>                       // for vector, etc
 
 static lg::log_domain log_display("display");

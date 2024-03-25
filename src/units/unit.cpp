@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,10 +29,8 @@
 #include "game_board.hpp"           // for game_board
 #include "game_config.hpp"          // for add_color_info, etc
 #include "game_data.hpp"
-#include "game_errors.hpp"         // for game_error
 #include "game_events/manager.hpp" // for add_events
 #include "game_version.hpp"
-#include "gettext.hpp" // for N_
 #include "lexical_cast.hpp"
 #include "log.hpp"                       // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
@@ -40,27 +38,22 @@
 #include "random.hpp"                    // for generator, rng
 #include "resources.hpp"                 // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
-#include "side_filter.hpp"               // for side_filter
 #include "synced_context.hpp"
 #include "team.hpp"                      // for team, get_teams, etc
-#include "terrain/filter.hpp"            // for terrain_filter
 #include "units/abilities.hpp"           // for effect, filter_base_matches
-#include "units/animation.hpp"           // for unit_animation
 #include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
 #include "units/formula_manager.hpp" // for unit_formula_manager
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
+#include "utils/config_filters.hpp"
 #include "variable.hpp" // for vconfig, etc
 
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
-#include <functional>
 #include <iterator>                     // for back_insert_iterator, etc
-#include <new>                          // for operator new
-#include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string_view>
 
 namespace t_translation { struct terrain_code; }
@@ -180,6 +173,30 @@ namespace
 			WRN_UT << "Unknown attribute '" << cur->first << "' discarded.";
 			++cur;
 		}
+	}
+
+	auto stats_storage_resetter(unit& u, bool clamp = false)
+	{
+		int hitpoints = u.hitpoints();
+		int moves = u.movement_left();
+		int attacks = u.attacks_left(true);
+		int experience= u.experience();
+		bool slowed= u.get_state(unit::STATE_SLOWED);
+		bool poisoned= u.get_state(unit::STATE_POISONED);
+		return [=, &u] () {
+			if(clamp) {
+				u.set_movement(std::min(u.total_movement(), moves));
+				u.set_hitpoints(std::min(u.max_hitpoints(), hitpoints));
+				u.set_attacks(std::min(u.max_attacks(), attacks));
+			} else {
+				u.set_movement(moves);
+				u.set_hitpoints(hitpoints);
+				u.set_attacks(attacks);
+			}
+			u.set_experience(experience);
+			u.set_state(unit::STATE_SLOWED, slowed && !u.get_state("unslowable"));
+			u.set_state(unit::STATE_POISONED, poisoned && !u.get_state("unpoisonable"));
+		};
 	}
 } // end anon namespace
 
@@ -886,11 +903,12 @@ std::vector<std::string> unit::get_traits_list() const
 /**
  * Advances this unit to the specified type.
  * Experience is left unchanged.
- * Current hit point total is left unchanged unless it would violate max HP.
+ * Current hitpoints/movement/attacks_left is left unchanged unless it would violate their maximum.
  * Assumes gender_ and variation_ are set to their correct values.
  */
 void unit::advance_to(const unit_type& u_type, bool use_traits)
 {
+	auto ss = stats_storage_resetter(*this, true);
 	appearance_changed_ = true;
 	// For reference, the type before this advancement.
 	const unit_type& old_type = type();
@@ -993,20 +1011,10 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
-	if(get_state("unpoisonable")) {
-		set_state(STATE_POISONED, false);
-	}
-	if(get_state("unslowable")) {
-		set_state(STATE_SLOWED, false);
-	}
+	// Make sure apply_modifications() didn't attempt to heal the unit (for example if the unit has a default amla.).
+	ss();
 	if(get_state("unpetrifiable")) {
 		set_state(STATE_PETRIFIED, false);
-	}
-
-	// Now that modifications are done modifying the maximum hit points,
-	// enforce this maximum.
-	if(hit_points_ > max_hit_points_) {
-		hit_points_ = max_hit_points_;
 	}
 
 	// In case the unit carries EventWML, apply it now
@@ -1219,8 +1227,6 @@ void unit::expire_modifications(const std::string& duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
 	const unit_type* rebuild_from = nullptr;
-	int hp = hit_points_;
-	int mp = movement_;
 	// Loop through all types of modifications.
 	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
@@ -1247,8 +1253,6 @@ void unit::expire_modifications(const std::string& duration)
 	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
-		hit_points_ = hp;
-		movement_ = std::min(mp, max_movement_);
 	}
 }
 
@@ -1420,79 +1424,12 @@ void unit::remove_ability_by_id(const std::string& ability)
 	}
 }
 
-static bool bool_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, bool def)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	return filter[attribute].to_bool() == cfg[attribute].to_bool(def);
-}
-
-static bool string_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, const std::string& def)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	const std::vector<std::string> filter_attribute = utils::split(filter[attribute]);
-	return ( std::find(filter_attribute.begin(), filter_attribute.end(), cfg[attribute].str(def)) != filter_attribute.end() );
-}
-
-static bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	if(cfg[attribute].empty() && (attribute == "add" || attribute == "sub")){
-		if(attribute == "add"){
-			return in_ranges<int>(-cfg["sub"].to_int(0), utils::parse_ranges(filter[attribute].str()));
-		} else if(attribute == "sub"){
-			return in_ranges<int>(-cfg["add"].to_int(0), utils::parse_ranges(filter[attribute].str()));
-		} else {
-			return false;
-		}
-	}
-	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges(filter[attribute].str()));
-}
-
-static bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	return in_ranges<double>(cfg[attribute].to_double(1), utils::parse_ranges_real(filter[attribute].str()));
-}
-
-static bool type_value_if_present(const config& filter, const config& cfg)
-{
-	if(filter["type_value"].empty()) {
-		return true;
-	}
-
-	std::string cfg_type_value;
-	const std::vector<std::string> filter_attribute = utils::split(filter["type_value"]);
-	if(!cfg["value"].empty()){
-		cfg_type_value ="value";
-	} else if(!cfg["add"].empty()){
-		cfg_type_value ="add";
-	} else if(!cfg["sub"].empty()){
-		cfg_type_value ="sub";
-	} else if(!cfg["multiply"].empty()){
-		cfg_type_value ="multiply";
-	} else if(!cfg["divide"].empty()){
-		cfg_type_value ="divide";
-	}
-	return ( std::find(filter_attribute.begin(), filter_attribute.end(), cfg_type_value) != filter_attribute.end() );
-}
-
 static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 {
+	using namespace utils::config_filters;
+
 	if(!filter["affect_adjacent"].empty()){
-		auto cfg_adjacent = cfg.optional_child("affect_adjacent");
-		bool adjacent = cfg_adjacent ? true : false;;
+		bool adjacent = cfg.has_child("affect_adjacent");
 		if(filter["affect_adjacent"].to_bool() != adjacent){
 			return false;
 		}
@@ -1501,7 +1438,7 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!bool_matches_if_present(filter, cfg, "affect_self", true))
 		return false;
 
-	if(!bool_matches_if_present(filter, cfg, "affect_allies", true))
+	if(!bool_or_empty(filter, cfg, "affect_allies"))
 		return false;
 
 	if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
@@ -1526,22 +1463,47 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 		return false;
 
-	if(!int_matches_if_present(filter, cfg, "value"))
+	//for damage only
+	if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
 		return false;
 
-	if(!int_matches_if_present(filter, cfg, "add"))
+	if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
 		return false;
 
-	if(!int_matches_if_present(filter, cfg, "sub"))
+	//for plague only
+	if(!string_matches_if_present(filter, cfg, "type", ""))
+		return false;
+
+	if(!filter["value"].empty()){
+		if(tag_name == "drains"){
+			if(!int_matches_if_present(filter, cfg, "value", 50)){
+				return false;
+			}
+		} else if(tag_name == "berserk"){
+			if(!int_matches_if_present(filter, cfg, "value", 1)){
+				return false;
+			}
+		} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+			if(!int_matches_if_present(filter, cfg, "value" , 0)){
+				return false;
+			}
+		} else {
+			if(!int_matches_if_present(filter, cfg, "value")){
+				return false;
+			}
+		}
+	}
+
+	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+		return false;
+
+	if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
 		return false;
 
 	if(!double_matches_if_present(filter, cfg, "multiply"))
 		return false;
 
 	if(!double_matches_if_present(filter, cfg, "divide"))
-		return false;
-
-	if(!type_value_if_present(filter, cfg))
 		return false;
 
 	// Passed all tests.
@@ -1829,7 +1791,7 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 
 int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	int res = movement_type_.resistance_against(damage_name);
+	int res = opp_weapon ? movement_type_.resistance_against(*opp_weapon) : movement_type_.resistance_against(damage_name);
 
 	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
 	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
@@ -1839,10 +1801,18 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	if(!resistance_abilities.empty()) {
 		unit_abilities::effect resist_effect(resistance_abilities, 100-res);
 
-		res = 100 - std::min<int>(
-			resist_effect.get_composite_value(),
-			resistance_abilities.highest("max_value").first
-		);
+		unit_ability_list resistance_max_value;
+		resistance_max_value.append_if(resistance_abilities, [&](const unit_ability& i) {
+			return (*i.ability_cfg).has_attribute("max_value");
+		});
+		if(!resistance_max_value.empty()){
+			res = 100 - std::min<int>(
+				resist_effect.get_composite_value(),
+				resistance_max_value.highest("max_value").first
+			);
+		} else {
+			res = 100 - resist_effect.get_composite_value();
+		}
 	}
 
 	return res;
@@ -2236,7 +2206,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		if(increase.empty() == false) {
-			experience_ = utils::apply_modifier(experience_, increase, 1);
+			experience_ = utils::apply_modifier(experience_, increase, 0);
 		}
 	} else if(apply_to == "max_experience") {
 		const std::string& increase = effect["increase"];
@@ -2292,12 +2262,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
-			deprecated_message("[effect]apply_to=remove_ability [abilities]", DEP_LEVEL::INDEFINITE, "", "Use [filter_ability] instead in [effect]apply_to=remove_ability");
 			for(const config::any_child ab : ab_effect->all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
-		if(auto fab_effect = effect.optional_child("filter_ability")) {
+		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
 			remove_ability_by_attribute(*fab_effect);
 		}
 	} else if(apply_to == "image_mod") {
@@ -2465,14 +2434,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 {
 	bool generate_description = mod["generate_description"].to_bool(true);
 
+	config* target = nullptr;
+
 	if(no_add == false) {
-		modifications_.add_child(mod_type, mod);
+		target = &modifications_.add_child(mod_type, mod);
+		target->remove_children("effect");
 	}
 
-	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
-	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
+		if(target) {
+			//Store effects only after they are added to avoid double applying effects on advance with apply_to=variation.
+			target->add_child("effect", effect);
+		}
 		// Apply SUF.
 		if(auto afilter = effect.optional_child("filter")) {
 			assert(resources::filter_con);
@@ -2483,6 +2457,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		const std::string& apply_to = effect["apply_to"];
 		int times = effect["times"].to_int(1);
 		t_string description;
+
+		if(no_add && (apply_to == "type" || apply_to == "variation")) {
+			continue;
+		}
 
 		if(effect["times"] == "per level") {
 			if(effect["apply_to"] == "level") {
@@ -2497,20 +2475,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(times) {
 			while (times > 0) {
 				times --;
-
-				bool was_poisoned = get_state(STATE_POISONED);
-				// Apply unit type/variation changes last to avoid double applying effects on advance.
-				if(apply_to == "type") {
-					set_poisoned = false;
-					type_effect = effect;
-					continue;
-				}
-				if(apply_to == "variation") {
-					set_poisoned = false;
-					variation_effect = effect;
-					continue;
-				}
-
 				std::string description_component;
 				if(resources::lua_kernel) {
 					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
@@ -2523,11 +2487,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				}
 				if(!times) {
 					description += description_component;
-				}
-				if(!was_poisoned && get_state(STATE_POISONED)) {
-					set_poisoned = true;
-				} else if(was_poisoned && !get_state(STATE_POISONED)) {
-					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2545,33 +2504,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(!description.empty()) {
 			effects_description.push_back(description);
 		}
-	}
-	// Apply variations -- only apply if we are adding this for the first time.
-	if((!type_effect.empty() || !variation_effect.empty()) && no_add == false) {
-		if(!type_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(type_effect["apply_to"], *this, type_effect, true);
-			} else if(builtin_effects.count(type_effect["apply_to"])) {
-				apply_builtin_effect(type_effect["apply_to"], type_effect);
-				description = describe_builtin_effect(type_effect["apply_to"], type_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(!variation_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(variation_effect["apply_to"], *this, variation_effect, true);
-			} else if(builtin_effects.count(variation_effect["apply_to"])) {
-				apply_builtin_effect(variation_effect["apply_to"], variation_effect);
-				description = describe_builtin_effect(variation_effect["apply_to"], variation_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(set_poisoned)
-			// An effect explicitly set the poisoned state, and this
-			// should override the unit being immune to poison.
-			set_state(STATE_POISONED, true);
 	}
 
 	t_string description;

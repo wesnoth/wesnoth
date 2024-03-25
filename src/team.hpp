@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,11 +25,9 @@
 #include "side_controller.hpp"
 #include "side_proxy_controller.hpp"
 #include "team_shared_vision.hpp"
-#include "units/ptr.hpp"
 
 #include <set>
 
-#include <cstdint>
 #include <boost/dynamic_bitset.hpp>
 
 class game_data;

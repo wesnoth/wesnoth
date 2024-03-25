@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	by Chris Beck<render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "font/font_config.hpp"
-#include "font/font_description.hpp"
 #include "font/error.hpp"
 
 #include "config.hpp"
@@ -22,21 +21,12 @@
 #include "tstring.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp"
 
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/unicode.hpp"
-#include "preferences/general.hpp"
 
-#include <list>
-#include <set>
-#include <stack>
 #include <sstream>
-#include <vector>
 
-#include <cairo-features.h>
 
 #include <fontconfig/fontconfig.h>
 

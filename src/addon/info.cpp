@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2023
+	Copyright (C) 2012 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "addon/info.hpp"
 
-#include "addon/manager.hpp"
 #include "config.hpp"
 #include "font/pango/escape.hpp"
 #include "gettext.hpp"

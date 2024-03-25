@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "ai/formula/ai.hpp"
-#include "attack_prediction.hpp"
 #include "game_board.hpp"
 #include "ai/formula/callable_objects.hpp"
 #include "ai/composite/contexts.hpp"

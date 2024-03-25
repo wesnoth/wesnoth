@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,12 +16,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "sdl/rect.hpp"
 #include <optional>
 
 #include <boost/dynamic_bitset.hpp>
 
-#include <functional>
 
 class config;
 

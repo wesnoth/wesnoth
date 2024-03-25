@@ -69,7 +69,8 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
                       "random" : "random/random_number_generator.hpp",
                       "system" : "system/error_code.hpp",
                       "context" : "context/continuation.hpp",
-                      "coroutine" : "coroutine/coroutine.hpp" }
+                      "coroutine" : "coroutine/coroutine.hpp",
+                      "graph" : "graph/graph_traits.hpp" }
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")

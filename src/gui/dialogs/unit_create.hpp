@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,14 +22,11 @@
 #include <string>
 #include <vector>
 
-class display;
 class unit_type;
 
 namespace gui2
 {
 
-class menu_button;
-class text_box_base;
 
 namespace dialogs
 {

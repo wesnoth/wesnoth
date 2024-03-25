@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
@@ -117,6 +116,7 @@ file_dialog::file_dialog()
 	, bookmark_paths_()
 	, current_bookmark_()
 	, user_bookmarks_begin_()
+	, extra_paths_()
 {
 }
 
@@ -192,8 +192,10 @@ void file_dialog::pre_show(window& window)
 	// Push hard-coded bookmarks.
 	//
 
-	std::vector<desktop::path_info> bookmarks = desktop::game_paths();
-	const auto& sys_paths = desktop::system_paths();
+	extra_paths_.emplace(desktop::GAME_CORE_DATA_DIR);
+	extra_paths_.emplace(desktop::GAME_USER_DATA_DIR);
+	std::vector<desktop::path_info> bookmarks = desktop::game_paths(extra_paths_);
+	const auto& sys_paths = desktop::system_paths({desktop::SYSTEM_ALL_DRIVES, desktop::SYSTEM_USER_PROFILE, desktop::SYSTEM_ROOTFS});
 	bookmarks.insert(bookmarks.end(), sys_paths.begin(), sys_paths.end());
 
 	bookmark_paths_.clear();

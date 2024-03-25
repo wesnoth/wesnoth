@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2023
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,13 +27,10 @@
 #include "map/map.hpp"
 #include "mt_rng.hpp"
 #include "side_controller.hpp"
-#include "tod_manager.hpp"
 #include "team.hpp"
-#include "wesnothd_connection.hpp"
 
 #include <array>
 #include <cstdlib>
-#include <ctime>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
@@ -1075,7 +1072,7 @@ config side_engine::new_config() const
 			(*leader)["type"] = flg_.current_leader();
 			(*leader)["gender"] = flg_.current_gender();
 			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"];
-		} else {
+		} else if(!controller_lock_) {
 			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
 			(*leader)["type"] = "null";
 			(*leader)["gender"] = "null";

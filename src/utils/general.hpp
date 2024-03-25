@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 
 #include <algorithm>
 #include <cctype>
-#include <functional>
 #include <string>
 
 namespace utils
@@ -104,6 +103,16 @@ template<typename Container, typename Predicate>
 void erase_if(Container& container, const Predicate& predicate)
 {
 	container.erase(std::remove_if(container.begin(), container.end(), predicate), container.end());
+}
+
+/**
+ * Convenience wrapper for using std::sort on a container.
+ *
+ */
+template<typename Container, typename Predicate>
+void sort_if(Container& container, const Predicate& predicate)
+{
+	std::sort(container.begin(), container.end(), predicate);
 }
 
 } // namespace utils

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -74,7 +74,6 @@ struct frame_parameters
 /**
  * Easily build frame parameters with the serialized constructors
  */
-class frame_parsed_parameters;
 class frame_builder
 {
 public:

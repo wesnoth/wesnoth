@@ -5,17 +5,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2023
+# tamanegi, 2024
+# k konami, 2024
+# RatArmy, 2024
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
-"PO-Revision-Date: 2021-06-26 08:32+0000\n"
-"Last-Translator: RatArmy, 2023\n"
-"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: RatArmy, 2024\n"
+"Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +63,7 @@ msgstr "柵"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3332 data/core/terrain.cfg:3333
+#: data/core/terrain.cfg:3376 data/core/terrain.cfg:3377
 msgid "Deep Water"
 msgstr "深水"
 
@@ -85,7 +87,7 @@ msgstr "熱帯の深水"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:3291 data/core/terrain.cfg:3292
+#: data/core/terrain.cfg:3335 data/core/terrain.cfg:3336
 msgid "Shallow Water"
 msgstr "浅瀬"
 
@@ -129,8 +131,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:3247
-#: data/core/terrain.cfg:3248
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:3291
+#: data/core/terrain.cfg:3292
 msgid "Coastal Reef"
 msgstr "岩礁"
 
@@ -154,17 +156,15 @@ msgstr "熱帯の岩礁"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:134 data/core/terrain.cfg:149
-#: data/core/terrain.cfg:160 data/core/terrain.cfg:3275
-#: data/core/terrain.cfg:3276
+#: data/core/terrain.cfg:160 data/core/terrain.cfg:3319
+#: data/core/terrain.cfg:3320
 msgid "Swamp"
 msgstr "沼地"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "ヤシ林"
+msgstr "海藻の森"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -237,8 +237,8 @@ msgstr "乾いた荒地"
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:252 data/core/terrain.cfg:263
 #: data/core/terrain.cfg:273 data/core/terrain.cfg:283
-#: data/core/terrain.cfg:293 data/core/terrain.cfg:1033
-#: data/core/terrain.cfg:1043
+#: data/core/terrain.cfg:293 data/core/terrain.cfg:1043
+#: data/core/terrain.cfg:1053
 msgid "Road"
 msgstr "道"
 
@@ -264,10 +264,8 @@ msgstr "綺麗な石畳"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
-#, fuzzy
-#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "砂浜"
+msgstr "岩混じりの砂地"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -312,7 +310,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:340 data/core/terrain.cfg:3234
+#: data/core/terrain.cfg:340 data/core/terrain.cfg:3278
 msgid "Sand"
 msgstr "砂地"
 
@@ -323,7 +321,7 @@ msgstr "砂浜"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:345 data/core/terrain.cfg:3238
+#: data/core/terrain.cfg:345 data/core/terrain.cfg:3282
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -436,14 +434,12 @@ msgstr "鉄の柵"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:534
 msgid "Palisade"
-msgstr ""
+msgstr "杭の柵"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "木の橋"
+msgstr "木杭の柵"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -463,7 +459,7 @@ msgstr "花咲く睡蓮"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:573
 msgid "Seashells"
-msgstr ""
+msgstr "貝殻"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:584
@@ -475,28 +471,33 @@ msgstr "ゴミ"
 msgid "Remains"
 msgstr "残骸"
 
+#. [terrain_type]: id=wall_windows
+#: data/core/terrain.cfg:603
+msgid "Window"
+msgstr "窓"
+
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
 #. [terrain_type]: id=great_tree_dead
 #. [terrain_type]: id=great_tree_dead_oak
-#: data/core/terrain.cfg:606 data/core/terrain.cfg:607
-#: data/core/terrain.cfg:618 data/core/terrain.cfg:630
-#: data/core/terrain.cfg:642
+#: data/core/terrain.cfg:616 data/core/terrain.cfg:617
+#: data/core/terrain.cfg:628 data/core/terrain.cfg:640
+#: data/core/terrain.cfg:652
 msgid "Great Tree"
 msgstr "大木"
 
 #. [terrain_type]: id=great_tree_snowy
-#: data/core/terrain.cfg:619
+#: data/core/terrain.cfg:629
 msgid "Snowy Great Tree"
 msgstr "雪積もる大木"
 
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:631
+#: data/core/terrain.cfg:641
 msgid "Dead Great Tree"
 msgstr "枯れた大木"
 
 #. [terrain_type]: id=great_tree_dead_oak
-#: data/core/terrain.cfg:643
+#: data/core/terrain.cfg:653
 msgid "Dead Great Oak Tree"
 msgstr "枯れたオークの大木"
 
@@ -516,90 +517,90 @@ msgstr "枯れたオークの大木"
 #. [terrain_type]: id=mixed_forest_winter
 #. [terrain_type]: id=mixed_forest_winter_snow
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:654 data/core/terrain.cfg:666
-#: data/core/terrain.cfg:678 data/core/terrain.cfg:690
-#: data/core/terrain.cfg:702 data/core/terrain.cfg:714
-#: data/core/terrain.cfg:726 data/core/terrain.cfg:738
-#: data/core/terrain.cfg:750 data/core/terrain.cfg:762
-#: data/core/terrain.cfg:774 data/core/terrain.cfg:786
-#: data/core/terrain.cfg:798 data/core/terrain.cfg:810
-#: data/core/terrain.cfg:822 data/core/terrain.cfg:3358
-#: data/core/terrain.cfg:3359
+#: data/core/terrain.cfg:664 data/core/terrain.cfg:676
+#: data/core/terrain.cfg:688 data/core/terrain.cfg:700
+#: data/core/terrain.cfg:712 data/core/terrain.cfg:724
+#: data/core/terrain.cfg:736 data/core/terrain.cfg:748
+#: data/core/terrain.cfg:760 data/core/terrain.cfg:772
+#: data/core/terrain.cfg:784 data/core/terrain.cfg:796
+#: data/core/terrain.cfg:808 data/core/terrain.cfg:820
+#: data/core/terrain.cfg:832 data/core/terrain.cfg:3402
+#: data/core/terrain.cfg:3403
 msgid "Forest"
 msgstr "森"
 
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:655
+#: data/core/terrain.cfg:665
 msgid "Tropical Forest"
 msgstr "熱帯林"
 
 #. [terrain_type]: id=rainforest
-#: data/core/terrain.cfg:667
+#: data/core/terrain.cfg:677
 msgid "Rainforest"
 msgstr "雨林"
 
 #. [terrain_type]: id=palm_desert_forest
-#: data/core/terrain.cfg:679
+#: data/core/terrain.cfg:689
 msgid "Palm Forest"
 msgstr "ヤシ林"
 
 #. [terrain_type]: id=palm_forest
-#: data/core/terrain.cfg:691
+#: data/core/terrain.cfg:701
 msgid "Dense Palm Forest"
 msgstr "ヤシの密林"
 
 #. [terrain_type]: id=savanna_forest
-#: data/core/terrain.cfg:703
+#: data/core/terrain.cfg:713
 msgid "Savanna"
 msgstr "サバンナ"
 
 #. [terrain_type]: id=pine_forest
-#: data/core/terrain.cfg:715
+#: data/core/terrain.cfg:725
 msgid "Pine Forest"
 msgstr "松林"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:727
+#: data/core/terrain.cfg:737
 msgid "Snowy Pine Forest"
 msgstr "雪の松林"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:739
+#: data/core/terrain.cfg:749
 msgid "Summer Deciduous Forest"
 msgstr "夏の落葉樹林"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:751
+#: data/core/terrain.cfg:761
 msgid "Fall Deciduous Forest"
 msgstr "秋の落葉樹林"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:763
+#: data/core/terrain.cfg:773
 msgid "Winter Deciduous Forest"
 msgstr "冬の落葉樹林"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:775
+#: data/core/terrain.cfg:785
 msgid "Snowy Deciduous Forest"
 msgstr "雪の落葉樹林"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:787
+#: data/core/terrain.cfg:797
 msgid "Summer Mixed Forest"
 msgstr "夏の混交林"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:799
+#: data/core/terrain.cfg:809
 msgid "Fall Mixed Forest"
 msgstr "秋の混交林"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:811
+#: data/core/terrain.cfg:821
 msgid "Winter Mixed Forest"
 msgstr "冬の混交林"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:823
+#: data/core/terrain.cfg:833
 msgid "Snowy Mixed Forest"
 msgstr "雪の混交林"
 
@@ -607,29 +608,29 @@ msgstr "雪の混交林"
 #. [terrain_type]: id=hills_dry
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:838 data/core/terrain.cfg:848
-#: data/core/terrain.cfg:868 data/core/terrain.cfg:3262
-#: data/core/terrain.cfg:3263
+#: data/core/terrain.cfg:848 data/core/terrain.cfg:858
+#: data/core/terrain.cfg:878 data/core/terrain.cfg:3306
+#: data/core/terrain.cfg:3307
 msgid "Hills"
 msgstr "丘"
 
 #. [terrain_type]: id=hills_regular
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:849
 msgid "Regular Hills"
 msgstr "普通の丘"
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:859
 msgid "Dry Hills"
 msgstr "乾いた丘"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:858
+#: data/core/terrain.cfg:868
 msgid "Dunes"
 msgstr "砂丘"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:869
+#: data/core/terrain.cfg:879
 msgid "Snow Hills"
 msgstr "雪の丘"
 
@@ -642,31 +643,31 @@ msgstr "雪の丘"
 #. [terrain_type]: id=cloud_snow
 #. [terrain_type]: id=cloud_desert
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:883 data/core/terrain.cfg:893
-#: data/core/terrain.cfg:903 data/core/terrain.cfg:914
-#: data/core/terrain.cfg:1337 data/core/terrain.cfg:1347
-#: data/core/terrain.cfg:1358 data/core/terrain.cfg:1368
-#: data/core/terrain.cfg:3318 data/core/terrain.cfg:3319
+#: data/core/terrain.cfg:893 data/core/terrain.cfg:903
+#: data/core/terrain.cfg:913 data/core/terrain.cfg:924
+#: data/core/terrain.cfg:1347 data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1368 data/core/terrain.cfg:1378
+#: data/core/terrain.cfg:3362 data/core/terrain.cfg:3363
 msgid "Mountains"
 msgstr "山"
 
 #. [terrain_type]: id=regular_mountains
-#: data/core/terrain.cfg:884
+#: data/core/terrain.cfg:894
 msgid "Regular Mountains"
 msgstr "普通の山"
 
 #. [terrain_type]: id=dry_mountains
-#: data/core/terrain.cfg:894
+#: data/core/terrain.cfg:904
 msgid "Dry Mountains"
 msgstr "乾いた山"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:904
+#: data/core/terrain.cfg:914
 msgid "Snowy Mountains"
 msgstr "雪山"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:915
+#: data/core/terrain.cfg:925
 msgid "Desert Mountains"
 msgstr "砂漠の山"
 
@@ -674,18 +675,18 @@ msgstr "砂漠の山"
 #. [terrain_type]: id=ancient_stone_floor
 #. [terrain_type]: id=regular_stone_floor_deprecated
 #. [terrain_type]: id=ancient_stone_floor_deprecated
-#: data/core/terrain.cfg:926 data/core/terrain.cfg:936
-#: data/core/terrain.cfg:3429 data/core/terrain.cfg:3440
+#: data/core/terrain.cfg:936 data/core/terrain.cfg:946
+#: data/core/terrain.cfg:3473 data/core/terrain.cfg:3484
 msgid "Stone Floor"
 msgstr "石の床"
 
 #. [terrain_type]: id=regular_stone_floor
-#: data/core/terrain.cfg:929
+#: data/core/terrain.cfg:939
 msgid "Basic Stone Floor"
 msgstr "普通の石の床"
 
 #. [terrain_type]: id=ancient_stone_floor
-#: data/core/terrain.cfg:939
+#: data/core/terrain.cfg:949
 msgid "Ancient Stone Floor"
 msgstr "古代の石の床"
 
@@ -694,79 +695,79 @@ msgstr "古代の石の床"
 #. [terrain_type]: id=rug3_floor
 #. [terrain_type]: id=rug_floor_deprecated
 #. [terrain_type]: id=rug2_floor_deprecated
-#: data/core/terrain.cfg:946 data/core/terrain.cfg:956
-#: data/core/terrain.cfg:966 data/core/terrain.cfg:3451
-#: data/core/terrain.cfg:3462
+#: data/core/terrain.cfg:956 data/core/terrain.cfg:966
+#: data/core/terrain.cfg:976 data/core/terrain.cfg:3495
+#: data/core/terrain.cfg:3506
 msgid "Rug"
 msgstr "敷物"
 
 #. [terrain_type]: id=rug_floor
-#: data/core/terrain.cfg:949
+#: data/core/terrain.cfg:959
 msgid "Royal Rug"
 msgstr "高貴な敷物"
 
 #. [terrain_type]: id=rug2_floor
-#: data/core/terrain.cfg:959
+#: data/core/terrain.cfg:969
 msgid "Normal Rug"
 msgstr "普通の敷物"
 
 #. [terrain_type]: id=rug3_floor
-#: data/core/terrain.cfg:969
+#: data/core/terrain.cfg:979
 msgid "Cave Rug"
 msgstr "洞窟の敷物"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:976
+#: data/core/terrain.cfg:986
 msgid "Wooden Floor"
 msgstr "木の床"
 
 #. [terrain_type]: id=wood_floor
-#: data/core/terrain.cfg:979
+#: data/core/terrain.cfg:989
 msgid "Basic Wooden Floor"
 msgstr "普通の木の床"
 
 #. [terrain_type]: id=old_wood_floor
 #. [terrain_type]: id=old_wood_floor_deprecated
-#: data/core/terrain.cfg:986 data/core/terrain.cfg:989
-#: data/core/terrain.cfg:3473
+#: data/core/terrain.cfg:996 data/core/terrain.cfg:999
+#: data/core/terrain.cfg:3517
 msgid "Old Wooden Floor"
 msgstr "古い木の床"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:1002
+#: data/core/terrain.cfg:1012
 msgid "Lit"
 msgstr "光"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:1003
+#: data/core/terrain.cfg:1013
 msgid "Beam of Light"
 msgstr "差し込む光"
 
 #. [terrain_type]: id=cave_floor
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:1013 data/core/terrain.cfg:1023
-#: data/core/terrain.cfg:3219 data/core/terrain.cfg:3220
+#: data/core/terrain.cfg:1023 data/core/terrain.cfg:1033
+#: data/core/terrain.cfg:3263 data/core/terrain.cfg:3264
 msgid "Cave"
 msgstr "洞窟"
 
 #. [terrain_type]: id=cave_floor
-#: data/core/terrain.cfg:1014
+#: data/core/terrain.cfg:1024
 msgid "Cave Floor"
 msgstr "洞窟の床"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:1024
+#: data/core/terrain.cfg:1034
 msgid "Earthy Cave Floor"
 msgstr "土色の洞窟の床"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:1034
+#: data/core/terrain.cfg:1044
 msgid "Dark Flagstones"
 msgstr "黒っぽい敷石"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:1044
+#: data/core/terrain.cfg:1054
 msgid "Cave Path"
 msgstr "洞窟の道"
 
@@ -774,14 +775,14 @@ msgstr "洞窟の道"
 #. [terrain_type]: id=fungus_beam_old
 #. [terrain_type]: id=fungus_grove
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1053 data/core/terrain.cfg:1072
-#: data/core/terrain.cfg:1092 data/core/terrain.cfg:1093
-#: data/core/terrain.cfg:1104
+#: data/core/terrain.cfg:1063 data/core/terrain.cfg:1082
+#: data/core/terrain.cfg:1102 data/core/terrain.cfg:1103
+#: data/core/terrain.cfg:1114
 msgid "Mushroom Grove"
 msgstr "キノコの森"
 
 #. [terrain_type]: id=fungus_grove_old
-#: data/core/terrain.cfg:1054
+#: data/core/terrain.cfg:1064
 msgid "Non-mixed Mushroom Grove"
 msgstr "非複合のキノコの森"
 
@@ -789,7 +790,7 @@ msgstr "非複合のキノコの森"
 #. [terrain_type]: id=fungus_beam_old
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
-#: data/core/terrain.cfg:1062 data/core/terrain.cfg:1082
+#: data/core/terrain.cfg:1072 data/core/terrain.cfg:1092
 msgid ""
 "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -811,7 +812,7 @@ msgstr ""
 #. [terrain_type]: id=fungus_beam_old
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
 #. this is only shown when the player opens the help by asking for the terrain description of a old mushroom terrain (^Uf or ^Ufi)
-#: data/core/terrain.cfg:1065 data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:1075 data/core/terrain.cfg:1095
 msgid ""
 "Dwarven tales describe different types of mushrooms — with some types the "
 "difficulty of walking on the spongy floor has no relation to the ground "
@@ -825,30 +826,30 @@ msgstr ""
 "みをベースとして計算されます。"
 
 #. [terrain_type]: id=fungus_beam_old
-#: data/core/terrain.cfg:1073
+#: data/core/terrain.cfg:1083
 msgid "Lit Non-mixed Mushroom Grove"
 msgstr "非複合の光り差すキノコの森"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1105
+#: data/core/terrain.cfg:1115
 msgid "Lit Mushroom Grove"
 msgstr "光り差すキノコの森"
 
 #. [terrain_type]: id=fungus_floor
-#: data/core/terrain.cfg:1117 data/core/terrain.cfg:1118
+#: data/core/terrain.cfg:1127 data/core/terrain.cfg:1128
 msgid "Mycelium"
 msgstr "菌糸体"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1127 data/core/terrain.cfg:1128
-#: data/core/terrain.cfg:1143
+#: data/core/terrain.cfg:1137 data/core/terrain.cfg:1138
+#: data/core/terrain.cfg:1153
 msgid "Rockbound Cave"
 msgstr "岩に囲まれた洞窟"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1133 data/core/terrain.cfg:1149
+#: data/core/terrain.cfg:1143 data/core/terrain.cfg:1159
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -874,81 +875,79 @@ msgstr ""
 "時折、洞窟の中には<italic>text='照らされている'</italic>場所があります。"
 
 #. [terrain_type]: id=earthy_rocky_cave
-#: data/core/terrain.cfg:1144
+#: data/core/terrain.cfg:1154
 msgid "Earthy Rockbound Cave"
 msgstr "土色の岩に囲まれた洞窟"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
 #. [terrain_type]: id=mine_railsdiag2
-#: data/core/terrain.cfg:1161 data/core/terrain.cfg:1173
-#: data/core/terrain.cfg:1186
+#: data/core/terrain.cfg:1171 data/core/terrain.cfg:1183
+#: data/core/terrain.cfg:1196
 msgid "Mine Rail"
 msgstr "鉱山のレール"
 
 #. [terrain_type]: id=high_border
-#: data/core/terrain.cfg:1206
+#: data/core/terrain.cfg:1216
 msgid "Bluff"
-msgstr ""
+msgstr "絶壁"
 
 #. [terrain_type]: id=high_canyon
-#: data/core/terrain.cfg:1216
+#: data/core/terrain.cfg:1226
 msgid "Gulch"
-msgstr ""
+msgstr "峡谷"
 
 #. [terrain_type]: id=high_canyon_obst
-#: data/core/terrain.cfg:1227
-#, fuzzy
-#| msgid "Unwalkable Overlay"
+#: data/core/terrain.cfg:1237
 msgid "Unwalkable Ravine"
-msgstr "歩行不能のオーバーレイ"
+msgstr "歩行不能の谷間"
 
 #. [terrain_type]: id=high_border_woods
-#: data/core/terrain.cfg:1240
+#: data/core/terrain.cfg:1250
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "樹木の茂る絶壁"
 
 #. [terrain_type]: id=high_canyon_woods
-#: data/core/terrain.cfg:1249
+#: data/core/terrain.cfg:1259
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "樹木の茂る峡谷"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1262 data/core/terrain.cfg:1273
-#: data/core/terrain.cfg:1284 data/core/terrain.cfg:1295
+#: data/core/terrain.cfg:1272 data/core/terrain.cfg:1283
+#: data/core/terrain.cfg:1294 data/core/terrain.cfg:1305
 msgid "Chasm"
 msgstr "裂け目"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1263
+#: data/core/terrain.cfg:1273
 msgid "Regular Chasm"
 msgstr "普通の裂け目"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1274
+#: data/core/terrain.cfg:1284
 msgid "Earthy Chasm"
 msgstr "土色の裂け目"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1285
+#: data/core/terrain.cfg:1295
 msgid "Ethereal Abyss"
 msgstr "神秘の裂け目"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1306
 msgid "Lava Chasm"
 msgstr "溶岩の裂け目"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1308 data/core/terrain.cfg:1309
+#: data/core/terrain.cfg:1318 data/core/terrain.cfg:1319
 msgid "Lava"
 msgstr "溶岩"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1315
+#: data/core/terrain.cfg:1325
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -964,125 +963,141 @@ msgstr ""
 "従って、秩序ユニットの攻撃力は上昇し、混沌ユニットの攻撃力は低下します。"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1322
+#: data/core/terrain.cfg:1332
 msgid "Volcano"
 msgstr "火山"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1338
+#: data/core/terrain.cfg:1348
 msgid "Regular Impassable Mountains"
 msgstr "普通の通れない山"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1348
+#: data/core/terrain.cfg:1358
 msgid "Dry Impassable Mountains"
 msgstr "乾いた通行不能の山"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1359
+#: data/core/terrain.cfg:1369
 msgid "Snowy Impassable Mountains"
 msgstr "雪の通れない山"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1369
+#: data/core/terrain.cfg:1379
 msgid "Desert Impassable Mountains"
 msgstr "砂漠の通れない山"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
+#. [terrain_type]: id=cavewall_damaged
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1379 data/core/terrain.cfg:1401
-#: data/core/terrain.cfg:1426
+#: data/core/terrain.cfg:1389 data/core/terrain.cfg:1411
+#: data/core/terrain.cfg:1422 data/core/terrain.cfg:1447
 msgid "Cave Wall"
 msgstr "洞窟の壁"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1380
+#: data/core/terrain.cfg:1390
 msgid "Natural Cave Wall"
 msgstr "自然な洞窟の壁"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1390 data/core/terrain.cfg:1391
-#: data/core/terrain.cfg:1464
+#: data/core/terrain.cfg:1400 data/core/terrain.cfg:1401
+#: data/core/terrain.cfg:1485
 msgid "Mine Wall"
 msgstr "鉱山の壁"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1402
+#: data/core/terrain.cfg:1412
 msgid "Natural Earthy Cave Wall"
 msgstr "自然な土色の洞窟の壁"
 
-#. [terrain_type]: id=wall_hedge
-#: data/core/terrain.cfg:1412
-msgid "Thick Hedges"
-msgstr ""
+#. [terrain_type]: id=cavewall_damaged
+#: data/core/terrain.cfg:1423
+msgid "Damaged Cave Wall"
+msgstr "傷付いた洞窟の壁"
 
 #. [terrain_type]: id=wall_hedge
-#: data/core/terrain.cfg:1413
-#, fuzzy
-#| msgid "Cave Wall"
+#: data/core/terrain.cfg:1433
+msgid "Thick Hedges"
+msgstr "分厚い生け垣"
+
+#. [terrain_type]: id=wall_hedge
+#: data/core/terrain.cfg:1434
 msgid "Hedges Wall"
-msgstr "洞窟の壁"
+msgstr "生け垣の壁"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
 #. [terrain_type]: id=wall_stone_clean
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1441 data/core/terrain.cfg:1451
-#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1497
+#. [terrain_type]: id=wall_stone_damaged
+#: data/core/terrain.cfg:1462 data/core/terrain.cfg:1472
+#: data/core/terrain.cfg:1507 data/core/terrain.cfg:1518
+#: data/core/terrain.cfg:1551
 msgid "Stone Wall"
 msgstr "石壁"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1452
+#: data/core/terrain.cfg:1473
 msgid "Lit Stone Wall"
 msgstr "照らされた石壁"
 
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1465
+#: data/core/terrain.cfg:1486
 msgid "Straight Mine Wall"
 msgstr "まっすぐな鉱山の壁"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1475
+#: data/core/terrain.cfg:1496
 msgid "Interior Wall"
 msgstr "屋内の壁"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1476
+#: data/core/terrain.cfg:1497
 msgid "Straight White Wall"
 msgstr "まっすぐな白い壁"
 
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1487
+#: data/core/terrain.cfg:1508
 msgid "Clean Stone Wall"
 msgstr "綺麗な石壁"
 
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1498
+#: data/core/terrain.cfg:1519
 msgid "Ancient Stone Wall"
 msgstr "古代の石壁"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1508
+#: data/core/terrain.cfg:1529
 msgid "Catacombs Wall"
 msgstr "地下墓地の壁"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1509
+#: data/core/terrain.cfg:1530
 msgid "Catacombs Stone Wall"
 msgstr "地下墓地の石壁"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1519
+#: data/core/terrain.cfg:1540
 msgid "Overgrown Wall"
 msgstr "蓊鬱な壁"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1520
+#: data/core/terrain.cfg:1541
 msgid "Overgrown Stone Wall"
 msgstr "蓊鬱な石壁"
+
+#. [terrain_type]: id=wall_stone_damaged
+#: data/core/terrain.cfg:1552
+msgid "Damaged Stone Wall"
+msgstr "傷付いた石壁"
+
+#. [terrain_type]: id=wall_stone_ruins
+#: data/core/terrain.cfg:1562
+msgid "Ruined Wall"
+msgstr "廃墟の壁"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1090,17 +1105,17 @@ msgstr "蓊鬱な石壁"
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1536 data/core/terrain.cfg:1549
-#: data/core/terrain.cfg:1563 data/core/terrain.cfg:1620
-#: data/core/terrain.cfg:1632 data/core/terrain.cfg:1645
+#: data/core/terrain.cfg:1580 data/core/terrain.cfg:1593
+#: data/core/terrain.cfg:1607 data/core/terrain.cfg:1664
+#: data/core/terrain.cfg:1676 data/core/terrain.cfg:1689
 msgid "Gate"
 msgstr "門"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
 #. [terrain_type]: id=portal_gate_rusty_n
-#: data/core/terrain.cfg:1537 data/core/terrain.cfg:1550
-#: data/core/terrain.cfg:1564
+#: data/core/terrain.cfg:1581 data/core/terrain.cfg:1594
+#: data/core/terrain.cfg:1608
 msgid "Rusty Gate"
 msgstr "錆びた門"
 
@@ -1110,49 +1125,49 @@ msgstr "錆びた門"
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1577 data/core/terrain.cfg:1590
-#: data/core/terrain.cfg:1604 data/core/terrain.cfg:1658
-#: data/core/terrain.cfg:1670 data/core/terrain.cfg:1683
+#: data/core/terrain.cfg:1621 data/core/terrain.cfg:1634
+#: data/core/terrain.cfg:1648 data/core/terrain.cfg:1702
+#: data/core/terrain.cfg:1714 data/core/terrain.cfg:1727
 msgid "Door"
 msgstr "扉"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
-#: data/core/terrain.cfg:1578 data/core/terrain.cfg:1591
-#: data/core/terrain.cfg:1605
+#: data/core/terrain.cfg:1622 data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1649
 msgid "Wooden Door"
 msgstr "木の扉"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1621 data/core/terrain.cfg:1633
-#: data/core/terrain.cfg:1646
+#: data/core/terrain.cfg:1665 data/core/terrain.cfg:1677
+#: data/core/terrain.cfg:1690
 msgid "Open Rusty Gate"
 msgstr "開いている錆びた門"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1659 data/core/terrain.cfg:1671
-#: data/core/terrain.cfg:1684
+#: data/core/terrain.cfg:1703 data/core/terrain.cfg:1715
+#: data/core/terrain.cfg:1728
 msgid "Open Wooden Door"
 msgstr "開いている木の扉"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1699
+#: data/core/terrain.cfg:1743
 msgid "Impassable Overlay"
 msgstr "通行不能のオーバーレイ"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1712
+#: data/core/terrain.cfg:1756
 msgid "Unwalkable Overlay"
 msgstr "歩行不能のオーバーレイ"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1724 data/core/terrain.cfg:3137
+#: data/core/terrain.cfg:1768 data/core/terrain.cfg:3181
 msgid "Void"
 msgstr "虚無"
 
@@ -1188,180 +1203,178 @@ msgstr "虚無"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1740 data/core/terrain.cfg:1753
-#: data/core/terrain.cfg:1766 data/core/terrain.cfg:1779
-#: data/core/terrain.cfg:1794 data/core/terrain.cfg:1807
-#: data/core/terrain.cfg:1822 data/core/terrain.cfg:1835
-#: data/core/terrain.cfg:1850 data/core/terrain.cfg:1863
-#: data/core/terrain.cfg:1876 data/core/terrain.cfg:1889
-#: data/core/terrain.cfg:1902 data/core/terrain.cfg:1915
-#: data/core/terrain.cfg:1928 data/core/terrain.cfg:1941
-#: data/core/terrain.cfg:1954 data/core/terrain.cfg:1967
-#: data/core/terrain.cfg:1980 data/core/terrain.cfg:1993
-#: data/core/terrain.cfg:2006 data/core/terrain.cfg:2021
-#: data/core/terrain.cfg:2034 data/core/terrain.cfg:2047
-#: data/core/terrain.cfg:2060 data/core/terrain.cfg:2073
-#: data/core/terrain.cfg:2086 data/core/terrain.cfg:2099
-#: data/core/terrain.cfg:2114 data/core/terrain.cfg:2127
-#: data/core/terrain.cfg:2145 data/core/terrain.cfg:3383
-#: data/core/terrain.cfg:3384
+#: data/core/terrain.cfg:1784 data/core/terrain.cfg:1797
+#: data/core/terrain.cfg:1810 data/core/terrain.cfg:1823
+#: data/core/terrain.cfg:1838 data/core/terrain.cfg:1851
+#: data/core/terrain.cfg:1866 data/core/terrain.cfg:1879
+#: data/core/terrain.cfg:1894 data/core/terrain.cfg:1907
+#: data/core/terrain.cfg:1920 data/core/terrain.cfg:1933
+#: data/core/terrain.cfg:1946 data/core/terrain.cfg:1959
+#: data/core/terrain.cfg:1972 data/core/terrain.cfg:1985
+#: data/core/terrain.cfg:1998 data/core/terrain.cfg:2011
+#: data/core/terrain.cfg:2024 data/core/terrain.cfg:2037
+#: data/core/terrain.cfg:2050 data/core/terrain.cfg:2065
+#: data/core/terrain.cfg:2078 data/core/terrain.cfg:2091
+#: data/core/terrain.cfg:2104 data/core/terrain.cfg:2117
+#: data/core/terrain.cfg:2130 data/core/terrain.cfg:2143
+#: data/core/terrain.cfg:2158 data/core/terrain.cfg:2171
+#: data/core/terrain.cfg:2189 data/core/terrain.cfg:3427
+#: data/core/terrain.cfg:3428
 msgid "Village"
 msgstr "村"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1785
 msgid "Adobe Village"
 msgstr "煉瓦の村"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1754
+#: data/core/terrain.cfg:1798
 msgid "Ruined Adobe Village"
 msgstr "煉瓦の廃村"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1767
+#: data/core/terrain.cfg:1811
 msgid "Desert Tent Village"
 msgstr "砂漠のテントの村"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1780
+#: data/core/terrain.cfg:1824
 msgid "Tent Village"
 msgstr "テントの村"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1795
+#: data/core/terrain.cfg:1839
 msgid "Orcish Village"
 msgstr "オークの村"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1808
+#: data/core/terrain.cfg:1852
 msgid "Snowy Orcish Village"
 msgstr "雪のオークの村"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1823
+#: data/core/terrain.cfg:1867
 msgid "Snowy Elven Village"
 msgstr "雪のエルフの村"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1836
+#: data/core/terrain.cfg:1880
 msgid "Elven Village"
 msgstr "エルフの村"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1851
+#: data/core/terrain.cfg:1895
 msgid "Cottage"
 msgstr "コテージ"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1864
+#: data/core/terrain.cfg:1908
 msgid "Snowy Cottage"
 msgstr "雪のコテージ"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1877
+#: data/core/terrain.cfg:1921
 msgid "Ruined Cottage"
 msgstr "廃コテージ"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1890
+#: data/core/terrain.cfg:1934
 msgid "Human City"
 msgstr "人間の都市"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1903
+#: data/core/terrain.cfg:1947
 msgid "Windmill Village"
 msgstr "風車の村"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1916
+#: data/core/terrain.cfg:1960
 msgid "Snowy Human City"
 msgstr "雪の人間の都市"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1929
+#: data/core/terrain.cfg:1973
 msgid "Ruined Human City"
 msgstr "人間の廃都市"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1942
+#: data/core/terrain.cfg:1986
 msgid "Hill Stone Village"
 msgstr "丘の石造りの村"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1955
+#: data/core/terrain.cfg:1999
 msgid "Snowy Hill Stone Village"
 msgstr "雪の丘の石造りの村"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1968
+#: data/core/terrain.cfg:2012
 msgid "Ruined Hill Stone Village"
 msgstr "丘の石造りの廃村"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1981
+#: data/core/terrain.cfg:2025
 msgid "Tropical Village"
 msgstr "熱帯の村"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1994
+#: data/core/terrain.cfg:2038
 msgid "Drake Village"
 msgstr "ドレークの村"
 
 #. [terrain_type]: id=drake_snow_village
-#: data/core/terrain.cfg:2007
-#, fuzzy
-#| msgid "Drake Village"
+#: data/core/terrain.cfg:2051
 msgid "Snowy Drake Village"
-msgstr "ドレークの村"
+msgstr "雪のドレークの村"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:2022
+#: data/core/terrain.cfg:2066
 msgid "Cave Village"
 msgstr "洞窟の村"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:2035
+#: data/core/terrain.cfg:2079
 msgid "Dwarven Village"
 msgstr "ドワーフの村"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:2048
+#: data/core/terrain.cfg:2092
 msgid "Hut"
 msgstr "小屋"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:2061
+#: data/core/terrain.cfg:2105
 msgid "Snowy Hut"
 msgstr "雪の小屋"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:2074
+#: data/core/terrain.cfg:2118
 msgid "Log Cabin"
 msgstr "丸太小屋"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:2087
+#: data/core/terrain.cfg:2131
 msgid "Snowy Log Cabin"
 msgstr "雪の丸太小屋"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:2100
+#: data/core/terrain.cfg:2144
 msgid "Igloo"
 msgstr "イグルー"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:2115
+#: data/core/terrain.cfg:2159
 msgid "Swamp Village"
 msgstr "沼地の村"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2128
+#: data/core/terrain.cfg:2172
 msgid "Merfolk Village"
 msgstr "マーフォークの村"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2129
+#: data/core/terrain.cfg:2173
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1382,7 +1395,7 @@ msgstr ""
 "避率が低下します。"
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:2146
+#: data/core/terrain.cfg:2190
 msgid "Village Overlay"
 msgstr "村のオーバーレイ"
 
@@ -1391,19 +1404,19 @@ msgstr "村のオーバーレイ"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2162 data/core/terrain.cfg:2163
-#: data/core/terrain.cfg:2174 data/core/terrain.cfg:2186
-#: data/core/terrain.cfg:2391 data/core/terrain.cfg:2403
+#: data/core/terrain.cfg:2206 data/core/terrain.cfg:2207
+#: data/core/terrain.cfg:2218 data/core/terrain.cfg:2230
+#: data/core/terrain.cfg:2435 data/core/terrain.cfg:2447
 msgid "Encampment"
 msgstr "野営地"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:2175
+#: data/core/terrain.cfg:2219
 msgid "Ruined Encampment"
 msgstr "野営地の廃墟"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:2187
+#: data/core/terrain.cfg:2231
 msgid "Snowy Encampment"
 msgstr "雪の野営地"
 
@@ -1422,69 +1435,69 @@ msgstr "雪の野営地"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2198 data/core/terrain.cfg:2210
-#: data/core/terrain.cfg:2222 data/core/terrain.cfg:2234
-#: data/core/terrain.cfg:2245 data/core/terrain.cfg:2257
-#: data/core/terrain.cfg:2269 data/core/terrain.cfg:2281
-#: data/core/terrain.cfg:2293 data/core/terrain.cfg:2305
-#: data/core/terrain.cfg:2317 data/core/terrain.cfg:2367
-#: data/core/terrain.cfg:2416 data/core/terrain.cfg:2732
-#: data/core/terrain.cfg:3302 data/core/terrain.cfg:3303
+#: data/core/terrain.cfg:2242 data/core/terrain.cfg:2254
+#: data/core/terrain.cfg:2266 data/core/terrain.cfg:2278
+#: data/core/terrain.cfg:2289 data/core/terrain.cfg:2301
+#: data/core/terrain.cfg:2313 data/core/terrain.cfg:2325
+#: data/core/terrain.cfg:2337 data/core/terrain.cfg:2349
+#: data/core/terrain.cfg:2361 data/core/terrain.cfg:2411
+#: data/core/terrain.cfg:2460 data/core/terrain.cfg:2776
+#: data/core/terrain.cfg:3346 data/core/terrain.cfg:3347
 msgid "Castle"
 msgstr "城"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:2199
+#: data/core/terrain.cfg:2243
 msgid "Orcish Castle"
 msgstr "オークの城"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:2211
+#: data/core/terrain.cfg:2255
 msgid "Snowy Orcish Castle"
 msgstr "雪のオークの城"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:2223
+#: data/core/terrain.cfg:2267
 msgid "Human Castle"
 msgstr "人間の城"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2235
+#: data/core/terrain.cfg:2279
 msgid "Snowy Human Castle"
 msgstr "雪の人間の城"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2246
+#: data/core/terrain.cfg:2290
 msgid "Elven Castle"
 msgstr "エルフの城"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2258
+#: data/core/terrain.cfg:2302
 msgid "Elven Castle Ruin"
 msgstr "エルフの荒城"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2270
+#: data/core/terrain.cfg:2314
 msgid "Winter Elven Castle"
 msgstr "冬のエルフの城"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2282
+#: data/core/terrain.cfg:2326
 msgid "Dwarven Underground Castle"
 msgstr "ドワーフの地下城"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2294
+#: data/core/terrain.cfg:2338
 msgid "Dwarven Castle"
 msgstr "ドワーフの城"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2306
+#: data/core/terrain.cfg:2350
 msgid "Dwarven Castle Ruins"
 msgstr "ドワーフの荒城"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2318
+#: data/core/terrain.cfg:2362
 msgid "Winter Dwarven Castle"
 msgstr "冬のドワーフの城"
 
@@ -1492,48 +1505,48 @@ msgstr "冬のドワーフの城"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2329 data/core/terrain.cfg:2341
-#: data/core/terrain.cfg:2354 data/core/terrain.cfg:2379
+#: data/core/terrain.cfg:2373 data/core/terrain.cfg:2385
+#: data/core/terrain.cfg:2398 data/core/terrain.cfg:2423
 msgid "Ruined Castle"
 msgstr "荒城"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2330
+#: data/core/terrain.cfg:2374
 msgid "Ruined Human Castle"
 msgstr "人間の荒城"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2342
+#: data/core/terrain.cfg:2386
 msgid "Sunken Human Ruin"
 msgstr "水没した人間の荒城"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2355
+#: data/core/terrain.cfg:2399
 msgid "Swamp Human Ruin"
 msgstr "沼地の人間の荒城"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2368
+#: data/core/terrain.cfg:2412
 msgid "Desert Castle"
 msgstr "砂漠の城"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2380
+#: data/core/terrain.cfg:2424
 msgid "Ruined Desert Castle"
 msgstr "砂漠の荒城"
 
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2392
+#: data/core/terrain.cfg:2436
 msgid "Troll Encampment"
 msgstr "トロルの野営地"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2404
+#: data/core/terrain.cfg:2448
 msgid "Aquatic Encampment"
 msgstr "水の野営地"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2417
+#: data/core/terrain.cfg:2461
 msgid "Aquatic Castle"
 msgstr "水の城"
 
@@ -1542,24 +1555,24 @@ msgstr "水の城"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2433 data/core/terrain.cfg:2457
-#: data/core/terrain.cfg:2470 data/core/terrain.cfg:2691
-#: data/core/terrain.cfg:2704
+#: data/core/terrain.cfg:2477 data/core/terrain.cfg:2501
+#: data/core/terrain.cfg:2514 data/core/terrain.cfg:2735
+#: data/core/terrain.cfg:2748
 msgid "Encampment Keep"
 msgstr "野営地の主塔"
 
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2445
+#: data/core/terrain.cfg:2489
 msgid "Ruined Encampment Keep"
 msgstr "野営地の主塔の廃墟"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2458
+#: data/core/terrain.cfg:2502
 msgid "Tall Encampment Keep"
 msgstr "野営地の高主塔"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2471
+#: data/core/terrain.cfg:2515
 msgid "Snowy Encampment Keep"
 msgstr "雪の野営地の主塔"
 
@@ -1577,68 +1590,68 @@ msgstr "雪の野営地の主塔"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2483 data/core/terrain.cfg:2496
-#: data/core/terrain.cfg:2509 data/core/terrain.cfg:2522
-#: data/core/terrain.cfg:2535 data/core/terrain.cfg:2548
-#: data/core/terrain.cfg:2561 data/core/terrain.cfg:2574
-#: data/core/terrain.cfg:2587 data/core/terrain.cfg:2600
-#: data/core/terrain.cfg:2613 data/core/terrain.cfg:2665
-#: data/core/terrain.cfg:2717 data/core/terrain.cfg:2745
+#: data/core/terrain.cfg:2527 data/core/terrain.cfg:2540
+#: data/core/terrain.cfg:2553 data/core/terrain.cfg:2566
+#: data/core/terrain.cfg:2579 data/core/terrain.cfg:2592
+#: data/core/terrain.cfg:2605 data/core/terrain.cfg:2618
+#: data/core/terrain.cfg:2631 data/core/terrain.cfg:2644
+#: data/core/terrain.cfg:2657 data/core/terrain.cfg:2709
+#: data/core/terrain.cfg:2761 data/core/terrain.cfg:2789
 msgid "Keep"
 msgstr "主塔"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2484
+#: data/core/terrain.cfg:2528
 msgid "Orcish Keep"
 msgstr "オークの主塔"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2497
+#: data/core/terrain.cfg:2541
 msgid "Snowy Orcish Keep"
 msgstr "雪のオークの主塔"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2510
+#: data/core/terrain.cfg:2554
 msgid "Human Castle Keep"
 msgstr "人間の城の主塔"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2523
+#: data/core/terrain.cfg:2567
 msgid "Snowy Human Castle Keep"
 msgstr "雪の人間の城の主塔"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2536
+#: data/core/terrain.cfg:2580
 msgid "Elven Castle Keep"
 msgstr "エルフの城の主塔"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2549
+#: data/core/terrain.cfg:2593
 msgid "Elven Keep Ruin"
 msgstr "エルフの廃墟の主塔"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2562
+#: data/core/terrain.cfg:2606
 msgid "Winter Elven Keep"
 msgstr "冬のエルフの主塔"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2575
+#: data/core/terrain.cfg:2619
 msgid "Dwarven Underground Keep"
 msgstr "ドワーフの地下主塔"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2588
+#: data/core/terrain.cfg:2632
 msgid "Dwarven Castle Keep"
 msgstr "ドワーフの城の主塔"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2601
+#: data/core/terrain.cfg:2645
 msgid "Dwarven Ruin Keep"
 msgstr "ドワーフの廃墟の主塔"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2614
+#: data/core/terrain.cfg:2658
 msgid "Winter Dwarven Keep"
 msgstr "冬のドワーフの主塔"
 
@@ -1646,58 +1659,58 @@ msgstr "冬のドワーフの主塔"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2626 data/core/terrain.cfg:2639
-#: data/core/terrain.cfg:2652 data/core/terrain.cfg:2678
+#: data/core/terrain.cfg:2670 data/core/terrain.cfg:2683
+#: data/core/terrain.cfg:2696 data/core/terrain.cfg:2722
 msgid "Ruined Keep"
 msgstr "廃墟の主塔"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2627
+#: data/core/terrain.cfg:2671
 msgid "Ruined Human Castle Keep"
 msgstr "人間の荒城の主塔"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2640
+#: data/core/terrain.cfg:2684
 msgid "Sunken Human Castle Keep"
 msgstr "水没した人間の荒城の主塔"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2653
+#: data/core/terrain.cfg:2697
 msgid "Swamp Human Castle Keep"
 msgstr "沼地の人間の荒城の主塔"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2666
+#: data/core/terrain.cfg:2710
 msgid "Desert Keep"
 msgstr "砂漠の主塔"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2679
+#: data/core/terrain.cfg:2723
 msgid "Ruined Desert Keep"
 msgstr "砂漠の廃墟の主塔"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2692
+#: data/core/terrain.cfg:2736
 msgid "Aquatic Encampment Keep"
 msgstr "水の野営地の主塔"
 
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2705
+#: data/core/terrain.cfg:2749
 msgid "Troll Encampment Keep"
 msgstr "トロルの野営地の主塔"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2718
+#: data/core/terrain.cfg:2762
 msgid "Aquatic Keep"
 msgstr "水の主塔"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2733
+#: data/core/terrain.cfg:2777
 msgid "Castle Overlay"
 msgstr "城のオーバーレイ"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2746
+#: data/core/terrain.cfg:2790
 msgid "Keep Overlay"
 msgstr "主塔のオーバーレイ"
 
@@ -1725,31 +1738,31 @@ msgstr "主塔のオーバーレイ"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2764 data/core/terrain.cfg:2779
-#: data/core/terrain.cfg:2792 data/core/terrain.cfg:2805
-#: data/core/terrain.cfg:2817 data/core/terrain.cfg:2830
-#: data/core/terrain.cfg:2845 data/core/terrain.cfg:2857
-#: data/core/terrain.cfg:2870 data/core/terrain.cfg:2885
-#: data/core/terrain.cfg:2897 data/core/terrain.cfg:2910
-#: data/core/terrain.cfg:2925 data/core/terrain.cfg:2937
-#: data/core/terrain.cfg:2951 data/core/terrain.cfg:2968
-#: data/core/terrain.cfg:2982 data/core/terrain.cfg:2996
-#: data/core/terrain.cfg:3010 data/core/terrain.cfg:3024
-#: data/core/terrain.cfg:3038 data/core/terrain.cfg:3052
-#: data/core/terrain.cfg:3066 data/core/terrain.cfg:3080
+#: data/core/terrain.cfg:2808 data/core/terrain.cfg:2823
+#: data/core/terrain.cfg:2836 data/core/terrain.cfg:2849
+#: data/core/terrain.cfg:2861 data/core/terrain.cfg:2874
+#: data/core/terrain.cfg:2889 data/core/terrain.cfg:2901
+#: data/core/terrain.cfg:2914 data/core/terrain.cfg:2929
+#: data/core/terrain.cfg:2941 data/core/terrain.cfg:2954
+#: data/core/terrain.cfg:2969 data/core/terrain.cfg:2981
+#: data/core/terrain.cfg:2995 data/core/terrain.cfg:3012
+#: data/core/terrain.cfg:3026 data/core/terrain.cfg:3040
+#: data/core/terrain.cfg:3054 data/core/terrain.cfg:3068
+#: data/core/terrain.cfg:3082 data/core/terrain.cfg:3096
+#: data/core/terrain.cfg:3110 data/core/terrain.cfg:3124
 msgid "Bridge"
 msgstr "橋"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2765 data/core/terrain.cfg:2780
-#: data/core/terrain.cfg:2793
+#: data/core/terrain.cfg:2809 data/core/terrain.cfg:2824
+#: data/core/terrain.cfg:2837
 msgid "Wooden Bridge"
 msgstr "木の橋"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2771
+#: data/core/terrain.cfg:2815
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1775,122 +1788,120 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2806 data/core/terrain.cfg:2818
-#: data/core/terrain.cfg:2831
+#: data/core/terrain.cfg:2850 data/core/terrain.cfg:2862
+#: data/core/terrain.cfg:2875
 msgid "Rotting Bridge"
 msgstr "朽ちた橋"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2846 data/core/terrain.cfg:2858
-#: data/core/terrain.cfg:2871
+#: data/core/terrain.cfg:2890 data/core/terrain.cfg:2902
+#: data/core/terrain.cfg:2915
 msgid "Basic Stone Bridge"
 msgstr "普通の石橋"
 
 #. [terrain_type]: id=snow_stone_bridge
 #. [terrain_type]: id=snow_stone_bridgediag1
 #. [terrain_type]: id=snow_stone_bridgediag2
-#: data/core/terrain.cfg:2886 data/core/terrain.cfg:2898
-#: data/core/terrain.cfg:2911
-#, fuzzy
-#| msgid "Basic Stone Bridge"
+#: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
+#: data/core/terrain.cfg:2955
 msgid "Snowy Stone Bridge"
-msgstr "普通の石橋"
+msgstr "雪の石橋"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2926 data/core/terrain.cfg:2938
-#: data/core/terrain.cfg:2952
+#: data/core/terrain.cfg:2970 data/core/terrain.cfg:2982
+#: data/core/terrain.cfg:2996
 msgid "Cave Chasm Bridge"
 msgstr "洞窟の裂け目の橋"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2969 data/core/terrain.cfg:2983
-#: data/core/terrain.cfg:2997
+#: data/core/terrain.cfg:3013 data/core/terrain.cfg:3027
+#: data/core/terrain.cfg:3041
 msgid "Hanging Bridge"
 msgstr "つり橋"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:3011 data/core/terrain.cfg:3025
-#: data/core/terrain.cfg:3039
+#: data/core/terrain.cfg:3055 data/core/terrain.cfg:3069
+#: data/core/terrain.cfg:3083
 msgid "Stone Chasm Bridge"
 msgstr "裂け目の石橋"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:3053 data/core/terrain.cfg:3067
-#: data/core/terrain.cfg:3081
+#: data/core/terrain.cfg:3097 data/core/terrain.cfg:3111
+#: data/core/terrain.cfg:3125
 msgid "Plank Bridge"
 msgstr "板橋"
 
 #. [terrain_type]: id=mark_high
-#: data/core/terrain.cfg:3096
+#: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "上昇マーカー"
 
 #. [terrain_type]: id=mark_high2
-#: data/core/terrain.cfg:3106
+#: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "上昇マーカー 2"
 
 #. [terrain_type]: id=mark_low
-#: data/core/terrain.cfg:3116
+#: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "下降マーカー"
 
 #. [terrain_type]: id=mark_low2
-#: data/core/terrain.cfg:3126
+#: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "下降マーカー 2"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:3138
+#: data/core/terrain.cfg:3182
 msgid "Off Map"
 msgstr "オフマップ"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:3148
+#: data/core/terrain.cfg:3192
 msgid "Fake Map Border"
 msgstr "フェイクマップボーダー"
 
 #. [terrain_type]: id=overlay_artplaceholder
-#: data/core/terrain.cfg:3158
+#: data/core/terrain.cfg:3202
 msgid "Art Placeholder"
-msgstr ""
+msgstr "アートのプレースホルダー"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:3170 data/gui/window/editor_edit_side.cfg:179
+#: data/core/terrain.cfg:3214 data/gui/window/editor_edit_side.cfg:206
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:405
 msgid "Shroud"
 msgstr "幕"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:3181
+#: data/core/terrain.cfg:3225
 msgid "Fake Shroud"
 msgstr "フェイクの幕"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:3192 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:3236 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "霧"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3207 data/core/terrain.cfg:3208
+#: data/core/terrain.cfg:3251 data/core/terrain.cfg:3252
 msgid "Fungus"
 msgstr "キノコ"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3211
+#: data/core/terrain.cfg:3255
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1913,7 +1924,7 @@ msgstr ""
 "20% となります。"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:3222
+#: data/core/terrain.cfg:3266
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1948,12 +1959,12 @@ msgstr ""
 "ほとんどのユニットは 20〜40% の回避率ですが、ドワーフは 50% となります。"
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:3235
+#: data/core/terrain.cfg:3279
 msgid "Sands"
 msgstr "砂地"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:3252
+#: data/core/terrain.cfg:3296
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1971,7 +1982,7 @@ msgstr ""
 "マーフォークとナーガは70%の回避率を得ます。"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:3266
+#: data/core/terrain.cfg:3310
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1992,7 +2003,7 @@ msgstr ""
 "の回避を楽しむことができるでしょう。"
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:3280
+#: data/core/terrain.cfg:3324
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -2013,7 +2024,7 @@ msgstr ""
 "60%の回避率を発揮することができます。"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:3293
+#: data/core/terrain.cfg:3337
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2035,7 +2046,7 @@ msgstr ""
 "なります。"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:3308
+#: data/core/terrain.cfg:3352
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2056,7 +2067,7 @@ msgstr ""
 "城内では、ほとんどのユニットは60%の回避率を得るでしょう。"
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3322
+#: data/core/terrain.cfg:3366
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2081,7 +2092,7 @@ msgstr ""
 "ほとんどのユニットは60%の回避率を得ることができ、ドワーフは70%にもなります。"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3334
+#: data/core/terrain.cfg:3378
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2098,12 +2109,12 @@ msgstr ""
 "マーフォークとナーガは50%の回避率と、十分な移動力を発揮できます。"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3345 data/core/terrain.cfg:3346
+#: data/core/terrain.cfg:3389 data/core/terrain.cfg:3390
 msgid "Flat"
 msgstr "平地"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3347
+#: data/core/terrain.cfg:3391
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -2123,7 +2134,7 @@ msgstr ""
 "多くのユニットは30〜40%の回避率を得ます。"
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3360
+#: data/core/terrain.cfg:3404
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2152,12 +2163,12 @@ msgstr ""
 "す。"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3370 data/core/terrain.cfg:3371
+#: data/core/terrain.cfg:3414 data/core/terrain.cfg:3415
 msgid "Frozen"
 msgstr "凍土"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3373
+#: data/core/terrain.cfg:3417
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2175,7 +2186,7 @@ msgstr ""
 "ほとんどのユニットは20〜40%の回避率を得ます。"
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3386
+#: data/core/terrain.cfg:3430
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2196,12 +2207,12 @@ msgstr ""
 "ほとんどのユニットは50〜60%の回避率となり、騎兵は40%となります。"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3396 data/core/terrain.cfg:3397
+#: data/core/terrain.cfg:3440 data/core/terrain.cfg:3441
 msgid "Impassable"
 msgstr "通行不能"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3399
+#: data/core/terrain.cfg:3443
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2214,12 +2225,12 @@ msgstr ""
 "も厚い石の壁は破壊できません。"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3406 data/core/terrain.cfg:3407
+#: data/core/terrain.cfg:3450 data/core/terrain.cfg:3451
 msgid "Unwalkable"
 msgstr "歩行不能"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3409
+#: data/core/terrain.cfg:3453
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2231,12 +2242,12 @@ msgstr ""
 "しょう。ゲーム中では、飛行できるユニットだけがこの地形を渡ることができます。"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3416 data/core/terrain.cfg:3417
+#: data/core/terrain.cfg:3460 data/core/terrain.cfg:3461
 msgid "Rails"
 msgstr "レール"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3419
+#: data/core/terrain.cfg:3463
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -2248,20 +2259,19 @@ msgstr ""
 #. [terrain_type]: id=rug_floor_deprecated
 #. [terrain_type]: id=rug2_floor_deprecated
 #. [terrain_type]: id=old_wood_floor_deprecated
-#: data/core/terrain.cfg:3432 data/core/terrain.cfg:3443
-#: data/core/terrain.cfg:3454 data/core/terrain.cfg:3465
-#: data/core/terrain.cfg:3476
-#, fuzzy
-#| msgid "Game created"
+#: data/core/terrain.cfg:3476 data/core/terrain.cfg:3487
+#: data/core/terrain.cfg:3498 data/core/terrain.cfg:3509
+#: data/core/terrain.cfg:3520
 msgid "Deprecated"
-msgstr "ゲームの作成"
+msgstr "非推奨"
 
 #. [settings]
 #: data/gui/default.cfg:23
-msgid " (Press '$hotkey' for more information)"
+msgid " (Press ‘$hotkey’ for more information)"
 msgstr "（詳しくは「 $hotkey 」を押してください）"
 
-#: data/gui/macros/_initial.cfg:363
+#. [button]: id=search
+#: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
 msgid "Search"
 msgstr "検索"
 
@@ -2346,7 +2356,7 @@ msgstr "アドオンのアップデート"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:645
-#: src/gui/widgets/addon_list.cpp:265
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "アドオンの公開"
 
@@ -2373,14 +2383,14 @@ msgstr "メッセージ待機中"
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:201
 #: data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:655
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:637
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:480 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:601 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2401,11 +2411,9 @@ msgstr "プロフィール"
 #. [label]
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
-#: data/gui/window/title_screen.cfg:257 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
+#: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
 msgid "Achievements"
-msgstr "レベルアップ"
+msgstr "実績"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2414,13 +2422,13 @@ msgstr "認証"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "名前を変更する"
+msgstr "ユーザー名："
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
+#. [grid]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/editor_edit_pbl.cfg:216
+#: data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2434,12 +2442,14 @@ msgstr "パスワードを暗号化して保存する"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:471
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
+#: data/gui/window/editor_choose_addon.cfg:217
 #: data/gui/window/editor_edit_label.cfg:301
+#: data/gui/window/editor_edit_pbl_translation.cfg:125
 #: data/gui/window/editor_edit_scenario.cfg:287
-#: data/gui/window/editor_edit_side.cfg:442 data/gui/window/file_dialog.cfg:437
+#: data/gui/window/editor_edit_side.cfg:469 data/gui/window/file_dialog.cfg:437
 #: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
 #: data/gui/window/migrate_version_selection.cfg:114
@@ -2447,13 +2457,14 @@ msgstr "パスワードを暗号化して保存する"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:181
+#: data/gui/window/mp_report.cfg:235 data/gui/window/prompt.cfg:86
+#: data/gui/window/select_orb_colors.cfg:181
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
-#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
-#: data/gui/window/unit_create.cfg:294 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:444 src/gui/dialogs/message.cpp:180
-#: src/gui/dialogs/message.cpp:187
+#: data/gui/window/theme_list.cfg:142 data/gui/window/tod_new_schedule.cfg:127
+#: data/gui/window/unit_advance.cfg:191 data/gui/window/unit_create.cfg:294
+#: data/gui/window/wml_error.cfg:162 data/gui/window/wml_message.cfg:444
+#: src/gui/dialogs/message.cpp:180 src/gui/dialogs/message.cpp:187
 msgid "OK"
 msgstr "OK"
 
@@ -2465,12 +2476,15 @@ msgstr "OK"
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
 #: data/gui/window/campaign_difficulty.cfg:234
-#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
+#: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:484
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
+#: data/gui/window/editor_choose_addon.cfg:231
 #: data/gui/window/editor_edit_label.cfg:315
+#: data/gui/window/editor_edit_pbl.cfg:475
+#: data/gui/window/editor_edit_pbl_translation.cfg:137
 #: data/gui/window/editor_edit_scenario.cfg:301
-#: data/gui/window/editor_edit_side.cfg:454
+#: data/gui/window/editor_edit_side.cfg:481
 #: data/gui/window/editor_generate_map.cfg:214
 #: data/gui/window/editor_new_map.cfg:126
 #: data/gui/window/editor_resize_map.cfg:282
@@ -2492,9 +2506,9 @@ msgstr "OK"
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
-#: data/gui/window/unit_attack.cfg:233 data/gui/window/unit_create.cfg:305
-#: data/gui/window/unit_recall.cfg:462 data/gui/window/unit_recruit.cfg:243
-#: src/hotkey/hotkey_command.cpp:79
+#: data/gui/window/tod_new_schedule.cfg:139 data/gui/window/unit_attack.cfg:233
+#: data/gui/window/unit_create.cfg:305 data/gui/window/unit_recall.cfg:462
+#: data/gui/window/unit_recruit.cfg:243 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -2555,7 +2569,9 @@ msgid "Traffic between the game and server is encrypted"
 msgstr "ゲームとサーバー間の通信は暗号化されています"
 
 #. [label]
+#. [grid]
 #: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:817
+#: data/gui/window/editor_edit_pbl.cfg:210
 msgid "Type:"
 msgstr "種類："
 
@@ -2589,12 +2605,14 @@ msgstr "アップデート時刻"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:560
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:559
 msgid "No description available."
 msgstr "解説はありません。"
 
 #. [label]: id=version_string
+#. [grid]
 #: data/gui/window/addon_manager.cfg:456
+#: data/gui/window/editor_edit_pbl.cfg:207
 msgid "Version:"
 msgstr "バージョン："
 
@@ -2610,8 +2628,6 @@ msgstr "ウェブサイト："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
 msgstr "ID："
 
@@ -2621,7 +2637,9 @@ msgid "Delete add-on"
 msgstr "アドオンの削除"
 
 #. [label]
+#. [grid]
 #: data/gui/window/addon_manager.cfg:698
+#: data/gui/window/editor_edit_pbl.cfg:208
 msgid "Dependencies:"
 msgstr "必要なもの："
 
@@ -2632,7 +2650,9 @@ msgid "addon_dependencies^None"
 msgstr "なし"
 
 #. [label]
+#. [label]: id=translations_label
 #: data/gui/window/addon_manager.cfg:733
+#: data/gui/window/editor_edit_pbl.cfg:228
 msgid "Translations:"
 msgstr "翻訳："
 
@@ -2645,7 +2665,7 @@ msgstr "なし"
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:770
 msgid "Filters on addon description, version, type or author"
-msgstr "アドオンの説明、バージョン、種類または作者でフィルターします"
+msgstr "アドオンの解説、バージョン、種類または作者でフィルターします"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:791
@@ -2653,15 +2673,19 @@ msgid "State:"
 msgstr "状態："
 
 #. [label]
+#. [grid]
 #: data/gui/window/addon_manager.cfg:844
+#: data/gui/window/editor_edit_pbl.cfg:209
 msgid "Tags:"
 msgstr "タグ："
 
 #. [label]
+#. [label]: id=translations_language
 #. [button]: id=language
 #: data/gui/window/addon_manager.cfg:870
+#: data/gui/window/editor_edit_pbl.cfg:257
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:487
+#: data/gui/window/title_screen.cfg:491
 msgid "Language"
 msgstr "言語"
 
@@ -2853,12 +2877,14 @@ msgstr "キャンペーンをプレイ"
 msgid "game^Play"
 msgstr "プレイ"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
+#: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "Difficulty"
 msgstr "難易度 "
 
@@ -2869,7 +2895,7 @@ msgstr "難易度選択："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:282
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
 msgid "Chat Log"
 msgstr "チャットログ"
 
@@ -2885,7 +2911,7 @@ msgstr "最後"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
-#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
+#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:193
 msgid "Previous"
 msgstr "前"
 
@@ -2896,7 +2922,7 @@ msgstr "前のページへ"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
-#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
+#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:208
 msgid "Next"
 msgstr "次"
 
@@ -2964,72 +2990,83 @@ msgstr "タイムスケジュールの編集"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
+#. [label]: id=id_label
 #: data/gui/window/custom_tod.cfg:177
 #: data/gui/window/editor_edit_scenario.cfg:106
 #: data/gui/window/folder_create.cfg:72 data/gui/window/game_save.cfg:72
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
+#: data/gui/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:186
 #: src/gui/dialogs/unit_recall.cpp:324
 msgid "Name:"
 msgstr "名前："
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:204
+#. [grid]
+#: data/gui/window/custom_tod.cfg:205 data/gui/window/editor_edit_pbl.cfg:151
+#: data/gui/window/editor_edit_pbl_translation.cfg:99
+#: data/gui/window/editor_edit_scenario.cfg:140
+msgid "Description:"
+msgstr "解説："
+
+#. [label]
+#. [label]: id=id_label
+#: data/gui/window/custom_tod.cfg:232 data/gui/window/tod_new_schedule.cfg:46
 msgid "ID:"
 msgstr "ID："
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:285
+#: data/gui/window/custom_tod.cfg:313
 msgid "Image:"
 msgstr "画像："
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:286
+#: data/gui/window/custom_tod.cfg:314
 msgid "Mask:"
 msgstr "マスク："
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:287
+#: data/gui/window/custom_tod.cfg:315
 msgid "Sound:"
 msgstr "サウンド："
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:316
+#: data/gui/window/custom_tod.cfg:344
 msgid "Lawful Bonus:"
 msgstr "秩序ボーナス："
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:339
+#: data/gui/window/custom_tod.cfg:367
 msgid "Red:"
 msgstr "赤："
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:340
+#: data/gui/window/custom_tod.cfg:368
 msgid "Green:"
 msgstr "緑："
 
 #. [grid]
-#: data/gui/window/custom_tod.cfg:341
+#: data/gui/window/custom_tod.cfg:369
 msgid "Blue:"
 msgstr "青："
 
 #. [button]: id=new
-#: data/gui/window/custom_tod.cfg:405
+#: data/gui/window/custom_tod.cfg:433
 msgid "New ToD"
 msgstr "新しい時刻"
 
 #. [button]: id=delete
-#: data/gui/window/custom_tod.cfg:418
+#: data/gui/window/custom_tod.cfg:446
 msgid "Delete ToD"
 msgstr "時刻の削除"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:303
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "確認"
 
@@ -3086,6 +3123,39 @@ msgid "Team only"
 msgstr "同盟軍だけに表示"
 
 #. [label]
+#: data/gui/window/editor_choose_addon.cfg:45
+msgid "Add-on selection"
+msgstr "アドオンの選択"
+
+#. [label]
+#: data/gui/window/editor_choose_addon.cfg:62
+msgid ""
+"Choose an add-on to be associated with the current editor session. If the "
+"New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
+"option."
+msgstr ""
+"現在のエディタのセッションに紐付けるアドオンを選択してください。「新しいアド"
+"オン」オプションを選択した場合は、その ID は「アドオン ID の変更」オプション"
+"から変更できます。"
+
+#. [label]: id=existing_addon_id
+#: data/gui/window/editor_choose_addon.cfg:98
+msgid "Add-on ID"
+msgstr "アドオンの ID"
+
+#. [label]
+#: data/gui/window/editor_choose_addon.cfg:172
+msgid "Show all"
+msgstr "全てを表示"
+
+#. [toggle_button]: id=show_all
+#: data/gui/window/editor_choose_addon.cfg:184
+msgid "Whether to show all installed add-ons or only your add-ons"
+msgstr ""
+"インストール済みの全てのアドオンを表示するか、あなたのアドオンだけを表示する"
+"かを切り替えます。"
+
+#. [label]
 #: data/gui/window/editor_edit_label.cfg:106
 msgid "Category:"
 msgstr "カテゴリ："
@@ -3116,6 +3186,228 @@ msgid "Visible in shroud"
 msgstr "幕中での視認"
 
 #. [label]: id=title
+#: data/gui/window/editor_edit_pbl.cfg:84
+msgid "Add-on Publishing Setup"
+msgstr "アドオン公開のセットアップ"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:150
+msgid "The name of the add-on displayed in-game."
+msgstr "ゲーム中で表示されるアドオンの名前です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:150
+msgid "Title:"
+msgstr "タイトル："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:151
+msgid "The description of the add-on to display in the add-ons manager."
+msgstr "アドオンマネージャーで表示される解説です。"
+
+#. [label]: id=icon_label
+#: data/gui/window/editor_edit_pbl.cfg:162
+msgid "Icon:"
+msgstr "アイコン："
+
+#. [button]: id=select_icon
+#: data/gui/window/editor_edit_pbl.cfg:182
+msgid "Select an icon file"
+msgstr "アイコンファイルを選択します。"
+
+#. [text_box]: id=icon
+#: data/gui/window/editor_edit_pbl.cfg:195
+msgid ""
+"The path to the icon image to display in the add-ons manager. Must be an "
+"image from mainline."
+msgstr ""
+"アドオンマネージャーで表示されるアイコン画像のパスです。メインラインに含まれ"
+"る画像でなければなりません。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:206
+msgid "Author:"
+msgstr "作者："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:206
+msgid ""
+"The author of this add-on. If forum authentication is used, this is your "
+"forum username."
+msgstr ""
+"アドオンの作者です。フォーラム認証を使用する場合には、フォーラム上でのあなた"
+"のユーザー名です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:207
+msgid "The add-on’s current version. This should be of the form X.Y.Z."
+msgstr "アドオンの現在のバージョンです。「 X.Y.Z 」の形式とするべきです。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:208
+msgid ""
+"A comma delimited list of the IDs of any other add-ons that this add-on "
+"depends on. The add-on ID is the folder name in your operating system’s file "
+"manager, not the add-on’s name."
+msgstr ""
+"このアドオンで必要となる他のアドオンの ID をカンマ区切りで並べてください。ア"
+"ドオンの ID とは、アドオンの名称ではなく OS のファイルマネージャーでのアドオ"
+"ンのフォルダ名です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:211
+msgid "Forum thread:"
+msgstr "フォーラムのスレッド："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:211
+msgid ""
+"The numeric topic ID of a thread on the Wesnoth forums where players can "
+"post feedback."
+msgstr ""
+"プレイヤーがフィードバックを送信するための、Wesnoth フォーラム上の スレッドの"
+"トピック ID（数値）です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:212
+msgid "Forum URL"
+msgstr "フォーラムの URL"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:212
+msgid "The full URL of your feedback thread on the forums."
+msgstr "フォーラム上でのフィードバックスレッドの完全な URL です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:213
+msgid "Forum Authentication:"
+msgstr "フォーラム認証："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:213
+msgid ""
+"Whether to use your forum username and password when uploading or to store "
+"your password and email address in the add-on’s _server.pbl."
+msgstr ""
+"アップロード時にあなたのフォーラムでのユーザー名とパスワードを使用するか、ア"
+"ドオンの _server.pbl にあなたのパスワードとユーザー名を格納するかを選択しま"
+"す。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:214
+msgid ""
+"Comma delimited list of forum usernames of other people who are allowed to "
+"upload updates for this add-on."
+msgstr ""
+"このアドオンのアップデートをアップロードできる他の人たちのフォーラム上での"
+"ユーザー名を、カンマ区切りで並べます。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:214
+msgid "Secondary Authors:"
+msgstr "副次的な作者たち："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:215
+msgid ""
+"An email address you can be contacted at in case of issues with your add-on."
+msgstr ""
+"あなたのアドオンに問題があった場合に、あなたに連絡を取るために使用されるメー"
+"ルアドレスです。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:215
+msgid "Email:"
+msgstr "メールアドレス："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:216
+msgid ""
+"The add-on’s current password. Using forum authentication is recommended "
+"instead since this password is not stored securely."
+msgstr ""
+"アドオンの現在のパスワードです。このパスワードは安全に格納されないため、代わ"
+"りにフォーラム認証を使用することをおすすめします。"
+
+#. [label]: id=translations_title
+#: data/gui/window/editor_edit_pbl.cfg:274
+msgid "Title"
+msgstr "タイトル"
+
+#. [label]: id=translations_description
+#: data/gui/window/editor_edit_pbl.cfg:291
+msgid "Description"
+msgstr "解説"
+
+#. [button]: id=translations_add
+#. [button]: id=server_add
+#: data/gui/window/editor_edit_pbl.cfg:406 data/gui/window/mp_connect.cfg:270
+msgid "Add"
+msgstr "追加"
+
+#. [button]: id=translations_delete
+#. [button]: id=delete_file
+#. [button]: id=delete
+#. [button]: id=server_delete
+#: data/gui/window/editor_edit_pbl.cfg:420 data/gui/window/file_dialog.cfg:339
+#: data/gui/window/game_load.cfg:623 data/gui/window/mp_connect.cfg:284
+msgid "Delete"
+msgstr "削除"
+
+#. [button]: id=validate
+#: data/gui/window/editor_edit_pbl.cfg:451
+msgid "Validate"
+msgstr "検証"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=save
+#: data/gui/window/editor_edit_pbl.cfg:463 data/gui/window/game_save.cfg:120
+#: data/gui/window/screenshot_notification.cfg:201
+#: src/gui/dialogs/file_dialog.cpp:183
+msgid "Save"
+msgstr "保存"
+
+#. [label]: id=title
+#: data/gui/window/editor_edit_pbl_translation.cfg:69
+msgid "Translation"
+msgstr "翻訳"
+
+#. [label]
+#: data/gui/window/editor_edit_pbl_translation.cfg:84
+msgid "* Required"
+msgstr "* 必須"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:97
+msgid "* Language:"
+msgstr "* 言語："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:97
+msgid ""
+"The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
+"(Simplified Chinese)."
+msgstr ""
+"sv（スウェーデン語）や zh_CN（簡体字中国語）のような、翻訳の POSIX ロケール名"
+"です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:98
+msgid "* Title:"
+msgstr "* タイトル："
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:98
+msgid "The translation of the add-on’s title."
+msgstr "アドオンタイトルの翻訳です。"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:99
+msgid "The translation of the add-on’s description."
+msgstr "アドオンの解説の翻訳です。"
+
+#. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
 msgid "Edit Scenario Settings"
 msgstr "シナリオ設定の編集"
@@ -3124,11 +3416,6 @@ msgstr "シナリオ設定の編集"
 #: data/gui/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
 msgstr "ID："
-
-#. [label]
-#: data/gui/window/editor_edit_scenario.cfg:140
-msgid "Description:"
-msgstr "解説："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3172,81 +3459,86 @@ msgstr "チームID："
 msgid "Team name:"
 msgstr "チーム名："
 
+#. [label]
+#: data/gui/window/editor_edit_side.cfg:164
+msgid "Recruit list:"
+msgstr "雇用リスト："
+
 #. [toggle_button]: id=no_leader
-#: data/gui/window/editor_edit_side.cfg:191
+#: data/gui/window/editor_edit_side.cfg:218
 msgid "No leader"
 msgstr "リーダー無し"
 
 #. [toggle_button]: id=fog
-#: data/gui/window/editor_edit_side.cfg:207
+#: data/gui/window/editor_edit_side.cfg:234
 msgid "Fog of war"
 msgstr "霧"
 
 #. [toggle_button]: id=hidden
-#: data/gui/window/editor_edit_side.cfg:219
+#: data/gui/window/editor_edit_side.cfg:246
 msgid "Hide in status table"
 msgstr "ステータステーブルに表示しない"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:248 data/gui/window/mp_staging.cfg:330
+#: data/gui/window/editor_edit_side.cfg:275 data/gui/window/mp_staging.cfg:330
 msgid "Gold:"
 msgstr "ゴールド："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:276
+#: data/gui/window/editor_edit_side.cfg:303
 #: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Gold per village:"
 msgstr "村あたりのゴールド："
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:304 data/gui/window/mp_staging.cfg:362
+#: data/gui/window/editor_edit_side.cfg:331 data/gui/window/mp_staging.cfg:362
 msgid "Income:"
 msgstr "収入："
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:332
+#: data/gui/window/editor_edit_side.cfg:359
 msgid "Support per village:"
 msgstr "村あたりの維持費の補助："
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:362
+#: data/gui/window/editor_edit_side.cfg:389
 msgid "Controller:"
 msgstr "コントローラー："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:71
+#: data/gui/window/editor_edit_side.cfg:399 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr "人間"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:374
+#: data/gui/window/editor_edit_side.cfg:401
 msgid "controller^AI only"
 msgstr "AIのみ"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:376
+#: data/gui/window/editor_edit_side.cfg:403
 msgid "controller^None"
 msgstr "無し"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:395
+#: data/gui/window/editor_edit_side.cfg:422
 msgid "Share Vision:"
 msgstr "視界の共有："
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:405
+#: data/gui/window/editor_edit_side.cfg:432
 msgid "vision^All"
 msgstr "全て"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:407
+#: data/gui/window/editor_edit_side.cfg:434
 msgid "vision^Shroud"
 msgstr "幕"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:409
+#: data/gui/window/editor_edit_side.cfg:436
 msgid "vision^None"
 msgstr "なし"
 
@@ -3366,14 +3658,6 @@ msgstr "現在のフォルダをブックマークに追加します"
 msgid "Removes the current bookmark"
 msgstr "選択中のブックマークを削除します"
 
-#. [button]: id=delete_file
-#. [button]: id=delete
-#. [button]: id=server_delete
-#: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:623
-#: data/gui/window/mp_connect.cfg:284
-msgid "Delete"
-msgstr "削除"
-
 #. [button]: id=new_dir
 #. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
@@ -3439,7 +3723,7 @@ msgstr "実行トレース"
 #. [button]: id=quit_without_surrender
 #. [grid]
 #: data/gui/window/formula_debugger.cfg:234
-#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:259
+#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:263
 msgid "Quit"
 msgstr "終了"
 
@@ -3560,7 +3844,7 @@ msgstr "セーブデータ中の、まだ未解決のユニットの移動命令
 
 #. [button]: id=ok
 #. [grid]
-#: data/gui/window/game_load.cfg:638 data/gui/window/title_screen.cfg:253
+#: data/gui/window/game_load.cfg:638 data/gui/window/title_screen.cfg:257
 msgid "Load"
 msgstr "再開"
 
@@ -3570,15 +3854,6 @@ msgstr "再開"
 #: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:106
 msgid "Save Game"
 msgstr "ゲームを保存"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=save
-#: data/gui/window/game_save.cfg:120
-#: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:182
-msgid "Save"
-msgstr "保存"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/window/game_save_oos.cfg:141
@@ -3745,71 +4020,73 @@ msgstr "ログ："
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "スクリーンショット"
-
-#. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:166
-msgid "Open Log File"
-msgstr "ログファイルを開く"
-
-#. [button]: id=open_stderr
-#: data/gui/window/game_version.cfg:167
-msgid "Opens the log file, which may contain useful debug information"
-msgstr "ログファイルを開きます。デバッグ情報が役に立つかもしれません。"
+msgstr "スクリーンショット："
 
 #. [label]
-#: data/gui/window/game_version.cfg:201
+#: data/gui/window/game_version.cfg:171
 msgid "library^Name"
 msgstr "名前"
 
 #. [label]
-#: data/gui/window/game_version.cfg:212
+#: data/gui/window/game_version.cfg:182
 msgid "library^Build version"
 msgstr "ビルドバージョン"
 
 #. [label]
-#: data/gui/window/game_version.cfg:224
+#: data/gui/window/game_version.cfg:194
 msgid "library^Runtime version"
 msgstr "ランタイムバージョン"
 
 #. [label]
-#: data/gui/window/game_version.cfg:305
+#: data/gui/window/game_version.cfg:275
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr "Wesnothのビルド時に選択された機能："
 
 #. [label]
-#: data/gui/window/game_version.cfg:459
+#: data/gui/window/game_version.cfg:429
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:538
+#: data/gui/window/game_version.cfg:508
 msgid "Paths"
 msgstr "パス"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:551
+#: data/gui/window/game_version.cfg:521
 msgid "Libraries"
 msgstr "ライブラリ"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:564
+#: data/gui/window/game_version.cfg:534
 msgid "Features"
 msgstr "機能"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:639
+#: data/gui/window/game_version.cfg:609
 msgid "page^Copy"
 msgstr "コピー"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:640
+#: data/gui/window/game_version.cfg:610
 msgid "Copy the full report to clipboard"
 msgstr "リポートを全てクリップボードにコピーします"
+
+#. [button]: id=open_stderr
+#: data/gui/window/game_version.cfg:622
+msgid "Log File"
+msgstr "ログファイル"
+
+#. [button]: id=open_stderr
+#: data/gui/window/game_version.cfg:623
+msgid ""
+"Opens the log file pertaining to the current session, which may contain "
+"useful debug information"
+msgstr ""
+"現在のセッションに紐付けられたログファイルを開きます。このファイルには有用な"
+"デバッグ情報が含まれている可能性があります。"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -3911,15 +4188,13 @@ msgstr "読み込み中..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "一般"
+msgstr "一般ロビー"
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:86
 msgid "Matchmaking"
-msgstr ""
+msgstr "マッチメイキング"
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:138
@@ -4007,14 +4282,14 @@ msgstr "アナウンスメント"
 #. [label]: id=title
 #. [grid]
 #: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
-#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
 msgstr "設定"
 
 #. [button]: id=view_match_history
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
 msgstr "マッチ履歴"
 
@@ -4367,11 +4642,6 @@ msgstr "アドレス："
 msgid "Address"
 msgstr "アドレス"
 
-#. [button]: id=server_add
-#: data/gui/window/mp_connect.cfg:270
-msgid "Add"
-msgstr "追加"
-
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
@@ -4390,7 +4660,7 @@ msgstr "ランダムな党派が選択された際にミラーマッチを許可
 #. [option]
 #: data/gui/window/mp_create_game.cfg:177
 msgid "Independent"
-msgstr ""
+msgstr "完全ランダム"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:178
@@ -4402,7 +4672,7 @@ msgstr ""
 #. [option]
 #: data/gui/window/mp_create_game.cfg:182
 msgid "No Mirror"
-msgstr ""
+msgstr "ミラーマッチ防止"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:183
@@ -4414,12 +4684,12 @@ msgstr ""
 #. [option]
 #: data/gui/window/mp_create_game.cfg:187
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "同盟ミラー防止"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:188
 msgid "No Ally Mirror: No two allied players will get the same faction"
-msgstr "同名ミラー防止：同盟関係にある陣営の党派が被らないようにします。"
+msgstr "同盟ミラー防止：同盟関係にある陣営の党派が被らないようにします。"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:330
@@ -4715,7 +4985,7 @@ msgstr "ゲームロビー"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:517
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加を待っています..."
 
@@ -4740,46 +5010,64 @@ msgid "Login:"
 msgstr "ログイン："
 
 #. [button]: id=replay_download
-#: data/gui/window/mp_match_history.cfg:144
-#, fuzzy
-#| msgid "Downloads"
+#: data/gui/window/mp_match_history.cfg:159
 msgid "Download"
-msgstr "ダウンロード数"
+msgstr "ダウンロード"
 
 #. [label]: id=players
 #. [label]: id=modifications
-#: data/gui/window/mp_match_history.cfg:161
-#: data/gui/window/mp_match_history.cfg:178
-#, fuzzy
-#| msgid "url^None"
+#: data/gui/window/mp_match_history.cfg:185
+#: data/gui/window/mp_match_history.cfg:223
 msgid "None"
 msgstr "なし"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:377
+#: data/gui/window/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "情報"
 
 #. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:390
-#, fuzzy
-#| msgid "Players:"
+#: data/gui/window/mp_match_history.cfg:388
 msgid "Players"
-msgstr "プレイヤー数："
+msgstr "プレイヤー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/mp_match_history.cfg:403
+#: data/gui/window/mp_match_history.cfg:401
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "Modifications"
 msgstr "Mod"
+
+#. [label]
+#: data/gui/window/mp_match_history.cfg:450
+msgid "Player:"
+msgstr "プレイヤー"
+
+#. [text_box]: id=search_player
+#. [text_box]: id=search_game_name
+#. [text_box]: id=search_content
+#: data/gui/window/mp_match_history.cfg:462
+#: data/gui/window/mp_match_history.cfg:506
+#: data/gui/window/mp_match_history.cfg:530
+msgid "Asterisks match all characters"
+msgstr "アスタリスクは全ての文字とマッチします。"
+
+#. [label]
+#: data/gui/window/mp_match_history.cfg:474
+msgid "Content Type:"
+msgstr "コンテンツの種類："
+
+#. [label]
+#: data/gui/window/mp_match_history.cfg:494
+msgid "Game name:"
+msgstr "ゲーム名："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [widget]: id=label
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
-#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
+#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
 #: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
@@ -4831,39 +5119,37 @@ msgstr "ローカルゲーム"
 #. [label]
 #: data/gui/window/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* 通報対象のプレイヤー："
 
 #. [label]
 #: data/gui/window/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* 通報の理由："
 
 #. [label]
 #: data/gui/window/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "起こった場所："
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "マップ情報"
+msgstr "追加情報："
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* 必須項目"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-msgid "Change the side's controller"
-msgstr "陣営のコントローラを変更します"
+msgid "Change the side’s controller"
+msgstr "陣営のコントローラーを変更します"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-msgid "Change the AI side's behaviour"
-msgstr "AI の挙動を変更します"
+msgid "Change the AI side’s behaviour"
+msgstr "AI 陣営の挙動を変更します"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
@@ -4901,7 +5187,7 @@ msgid "Advanced"
 msgstr "上級"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:466
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:470
 msgid "Display the game version and build information"
 msgstr "ゲームバージョンとビルド情報を表示する"
 
@@ -5075,7 +5361,7 @@ msgstr "ホットキー"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:801
+#: src/gui/dialogs/preferences_dialog.cpp:827
 msgid "game_hotkeys^G"
 msgstr "ゲ"
 
@@ -5088,7 +5374,7 @@ msgstr "ゲーム中"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:802
+#: src/gui/dialogs/preferences_dialog.cpp:828
 msgid "editor_hotkeys^E"
 msgstr "エ"
 
@@ -5101,7 +5387,7 @@ msgstr "エディタ"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:803
+#: src/gui/dialogs/preferences_dialog.cpp:829
 msgid "mainmenu_hotkeys^M"
 msgstr "タ"
 
@@ -5121,148 +5407,70 @@ msgid "Clear Hotkey"
 msgstr "ホットキーの消去"
 
 #. [label]
-#: data/gui/window/preferences/03_display.cfg:22
-msgid "Resolution:"
-msgstr "解像度："
+#: data/gui/window/preferences/03_display.cfg:15
+msgid "Window size:"
+msgstr "ウィンドウサイズ："
 
 #. [label]: id=help_text
-#: data/gui/window/preferences/03_display.cfg:46
+#: data/gui/window/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "ピクセル拡大倍率："
 
 #. [menu_button]: id=resolution_set
-#: data/gui/window/preferences/03_display.cfg:80
-msgid "Change the game resolution"
-msgstr "解像度を変更します"
+#: data/gui/window/preferences/03_display.cfg:73
+msgid "Change the game window size"
+msgstr "ゲームウィンドウのサイズを変更します"
 
 #. [slider]: id=pixel_scale_slider
-#: data/gui/window/preferences/03_display.cfg:94
+#: data/gui/window/preferences/03_display.cfg:87
 msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"グローバルで適用されるピクセル拡大倍率を設定します。ピクセル拡大倍率を 2 にす"
+"ると、全ての表示が 2 倍大きく見えるようになります。"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:109
+#: data/gui/window/preferences/03_display.cfg:102
 msgid "Full screen"
 msgstr "フルスクリーン"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/window/preferences/03_display.cfg:110
+#: data/gui/window/preferences/03_display.cfg:103
 msgid "Toggle between fullscreen and window mode"
 msgstr "フルスクリーンモード/ウィンドウモードを切り替えます"
 
 #. [toggle_button]: id=auto_pixel_scale
-#: data/gui/window/preferences/03_display.cfg:121
-msgid "Automatic pixel scale multiplier"
-msgstr ""
+#: data/gui/window/preferences/03_display.cfg:114
+msgid "pixel_scale_multiplier^Automatic scale"
+msgstr "自動倍率"
 
 #. [toggle_button]: id=auto_pixel_scale
-#: data/gui/window/preferences/03_display.cfg:122
+#: data/gui/window/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
-msgstr ""
-
-#. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:144
-msgid "Show floating labels"
-msgstr "フローティングラベルの表示"
-
-#. [toggle_button]: id=show_floating_labels
-#: data/gui/window/preferences/03_display.cfg:145
-msgid "Show damage and healing amounts above a unit"
-msgstr "ユニット上にダメージ・回復量を表示します"
-
-#. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:158
-msgid "Show team colors"
-msgstr "チームカラーの表示"
-
-#. [toggle_button]: id=show_ellipses
-#: data/gui/window/preferences/03_display.cfg:159
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr "ユニットの下に陣営ごとに異なる色付きの円を表示します"
-
-#. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:174
-msgid "Show grid"
-msgstr "グリッドの表示"
-
-#. [toggle_button]: id=show_grid
-#: data/gui/window/preferences/03_display.cfg:175
-msgid "Overlay a grid over the map"
-msgstr "マップ上にグリッドを表示します"
-
-#. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:190
-msgid "Animate map"
-msgstr "マップのアニメーション"
-
-#. [toggle_button]: id=animate_terrains
-#: data/gui/window/preferences/03_display.cfg:191
-msgid "Display animated terrain graphics"
-msgstr "地形グラフィックをアニメーションします"
-
-#. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:204
-msgid "Animate water"
-msgstr "水のアニメーション"
-
-#. [toggle_button]: id=animate_water
-#: data/gui/window/preferences/03_display.cfg:205
-msgid "Display animated water graphics (can be slow)"
-msgstr "水のグラフィックをアニメーションします（遅くなる可能性あり）"
-
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:218
-msgid "Show unit standing animations"
-msgstr "ユニットのスタンディングアニメーション"
-
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/window/preferences/03_display.cfg:219
-msgid "Continuously animate standing units on the battlefield"
-msgstr "戦場にいるユニットを常にアニメーションします"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:237
-msgid "Show unit idle animations"
-msgstr "待機中ユニットのアニメーション"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/window/preferences/03_display.cfg:238
-msgid "Play short random animations for idle units"
-msgstr "待機中のユニットをランダムにアニメーションします"
-
-#. [label]
-#: data/gui/window/preferences/03_display.cfg:261
-msgid "Frequency:"
-msgstr "頻度："
-
-#. [slider]: id=idle_anim_frequency
-#: data/gui/window/preferences/03_display.cfg:277
-msgid "Set the frequency of unit idle animations"
-msgstr "待機中ユニットのアニメーション頻度を設定します"
+msgstr "現在の解像度に基づいてピクセル拡大倍率を自動で選択します"
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:350
+#: data/gui/window/preferences/03_display.cfg:129
 msgid "VSync"
-msgstr ""
+msgstr "垂直同期"
 
 #. [toggle_button]: id=vsync
-#: data/gui/window/preferences/03_display.cfg:351
+#: data/gui/window/preferences/03_display.cfg:130
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"画面のリフレッシュレートとレンダリングを同期させることでティアリングを減少さ"
+"せます（適用するには再起動が必要です）"
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:364
+#: data/gui/window/preferences/03_display.cfg:145
 msgid "Limit FPS"
 msgstr "FPS 制限"
 
 #. [toggle_button]: id=fps_limiter
-#: data/gui/window/preferences/03_display.cfg:365
+#: data/gui/window/preferences/03_display.cfg:146
 msgid ""
 "Disabling this increases CPU usage, but may slightly improve performance "
 "(requires restart to take effect)"
@@ -5270,15 +5478,103 @@ msgstr ""
 "無効化するとCPU使用率が上がりますが、パフォーマンスが僅かに向上します（適用す"
 "るには再起動が必要です）"
 
-#. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:380
-msgid "Theme"
-msgstr "テーマ"
+#. [label]
+#: data/gui/window/preferences/03_display.cfg:168
+msgid "Interface theme:"
+msgstr "インターフェースのテーマ："
 
-#. [button]: id=choose_theme
-#: data/gui/window/preferences/03_display.cfg:381
-msgid "Change the in-game theme"
-msgstr "ゲーム時のテーマを変更します"
+#. [menu_button]: id=choose_theme
+#: data/gui/window/preferences/03_display.cfg:181
+msgid ""
+"Change the in-game interface theme. Additional themes may be provided by "
+"community-made add-ons"
+msgstr ""
+"ゲーム画面でのインターフェースのテーマを変更します。追加のテーマはコミュニ"
+"ティーによって作られたアドオンによって提供されるかもしれません。"
+
+#. [toggle_button]: id=show_floating_labels
+#: data/gui/window/preferences/03_display.cfg:200
+msgid "Combat damage indicators"
+msgstr "戦闘ダメージの表示"
+
+#. [toggle_button]: id=show_floating_labels
+#: data/gui/window/preferences/03_display.cfg:201
+msgid "Show amount of damage inflicted or healed as fading labels above units"
+msgstr ""
+"ダメージまたは回復量をユニットの上方にラベルとして表示します（ラベルは徐々に"
+"透明になって消えます）"
+
+#. [toggle_button]: id=show_ellipses
+#: data/gui/window/preferences/03_display.cfg:214
+msgid "Team color indicators"
+msgstr "チームカラーの表示"
+
+#. [toggle_button]: id=show_ellipses
+#: data/gui/window/preferences/03_display.cfg:215
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr "ユニットの下に陣営ごとに異なる色付きの円を表示します"
+
+#. [toggle_button]: id=show_grid
+#: data/gui/window/preferences/03_display.cfg:228
+msgid "Grid overlay"
+msgstr "グリッドのオーバーレイ"
+
+#. [toggle_button]: id=show_grid
+#: data/gui/window/preferences/03_display.cfg:229
+msgid "Overlay a grid over the map"
+msgstr "マップ上にグリッドを表示します"
+
+#. [toggle_button]: id=animate_terrains
+#: data/gui/window/preferences/03_display.cfg:263
+msgid "Animate map"
+msgstr "マップのアニメーション"
+
+#. [toggle_button]: id=animate_terrains
+#: data/gui/window/preferences/03_display.cfg:264
+msgid "Display animated terrain graphics"
+msgstr "地形グラフィックをアニメーションします"
+
+#. [toggle_button]: id=animate_water
+#: data/gui/window/preferences/03_display.cfg:277
+msgid "Animate water"
+msgstr "水のアニメーション"
+
+#. [toggle_button]: id=animate_water
+#: data/gui/window/preferences/03_display.cfg:278
+msgid "Display animated water graphics (can be slow)"
+msgstr "水のグラフィックをアニメーションします（遅くなる可能性あり）"
+
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/window/preferences/03_display.cfg:293
+msgid "Unit standing animations"
+msgstr "ユニットのスタンディングアニメーション"
+
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/window/preferences/03_display.cfg:294
+msgid "Continuously animate standing units on the battlefield"
+msgstr "戦場にいるユニットを常にアニメーションします"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/window/preferences/03_display.cfg:312
+msgid "Unit idle animations"
+msgstr "ユニットの待機アニメーション"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/window/preferences/03_display.cfg:313
+msgid "Play short random animations for idle units"
+msgstr "待機中のユニットをランダムにアニメーションします"
+
+#. [label]
+#: data/gui/window/preferences/03_display.cfg:336
+msgid "Frequency:"
+msgstr "頻度："
+
+#. [slider]: id=idle_anim_frequency
+#: data/gui/window/preferences/03_display.cfg:352
+msgid "Set the frequency of unit idle animations"
+msgstr "待機中ユニットのアニメーション頻度を設定します"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -5449,19 +5745,19 @@ msgstr ""
 #: data/gui/window/preferences/05_multiplayer.cfg:264
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
-"'player_name notes on friend')"
+"‘player_name notes on friend’)"
 msgstr ""
 "このユーザー名を友人リストに追加します（次のように入力するとオプションとして"
-"メモを追加することもできます。「ユーザー名 メモ」）"
+"メモを追加することもできます。「ユーザー名 そのユーザーに関するメモ」）"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
-"'player_name reason ignored')"
+"‘player_name reason ignored’)"
 msgstr ""
 "このユーザを無視リストに追加します（オプションとして理由も付加可能です。例："
-"player_name reason ignored）"
+"「プレイヤー名 無視の理由」）"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -5500,8 +5796,6 @@ msgstr "移動前のユニットに宝珠を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "移動途中のユニットに宝珠を表示"
 
@@ -5511,11 +5805,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"ユニットが戦闘不可かつ移動可の場合、移動前と移動済みの 2 色の宝珠を表示しま"
+"す。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "離脱中のユニットに 2 色の宝珠を使用"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5530,7 +5826,7 @@ msgstr "同盟軍のユニットに宝珠を表示"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "同盟軍のターン中、2 色の宝珠で移動を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5539,6 +5835,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"あなたの同盟軍のターン中、同盟軍のユニットは 2 色の宝珠を持ちます。1 つは同盟"
+"を示す宝珠の色で、もう 1 つはそのユニットが移動前か、移動中か、移動済みかを示"
+"します。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -5706,97 +6005,95 @@ msgstr "テーマ選択"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:280
+#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:283
 msgid "Help"
 msgstr "ヘルプ"
 
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:175
+#: data/gui/window/title_screen.cfg:178
 msgid "Show Battle for Wesnoth help"
 msgstr "Battle for Wesnothのヘルプを表示します"
 
 #. [button]: id=previous_tip
-#: data/gui/window/title_screen.cfg:191
+#: data/gui/window/title_screen.cfg:194
 msgid "Show previous tip of the day"
 msgstr "前のヒントを表示します"
 
 #. [button]: id=next_tip
-#: data/gui/window/title_screen.cfg:206
+#: data/gui/window/title_screen.cfg:209
 msgid "Show next tip of the day"
 msgstr "次のヒントを表示します"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:251
+#: data/gui/window/title_screen.cfg:255
 msgid "Campaigns"
 msgstr "キャンペーン"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:251
+#: data/gui/window/title_screen.cfg:255
 msgid "Start a new single player campaign"
 msgstr "一人プレイ用のキャンペーン（物語）を開始します"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:252
+#: data/gui/window/title_screen.cfg:256
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "他のプレイヤーやAIと対戦します"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:253
+#: data/gui/window/title_screen.cfg:257
 msgid "Load a saved game"
 msgstr "セーブデータを読み込みます"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:254
+#: data/gui/window/title_screen.cfg:258
 msgid "Add-ons"
 msgstr "アドオン"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:254
+#: data/gui/window/title_screen.cfg:258
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 "ユーザーが作成したキャンペーン、時代、マップパックなどをダウンロードします"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:255
+#: data/gui/window/title_screen.cfg:259
 msgid "Map Editor"
 msgstr "マップエディタ"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:255
+#: data/gui/window/title_screen.cfg:259
 msgid "Start the map editor"
 msgstr "マップエディタを起動します"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:256
+#: data/gui/window/title_screen.cfg:260
 msgid "Configure the game’s settings"
 msgstr "ゲームの設定を行います"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:257
-#, fuzzy
-#| msgid "View: Each Team"
+#: data/gui/window/title_screen.cfg:261
 msgid "View achievements"
-msgstr "視点：各チーム"
+msgstr "各キャンペーンやシナリオの達成状況を表示します "
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:258
+#: data/gui/window/title_screen.cfg:262
 msgid "Credits"
 msgstr "クレジット"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:258
+#: data/gui/window/title_screen.cfg:262
 msgid "View the credits"
 msgstr "クレジットを表示します"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:259
+#: data/gui/window/title_screen.cfg:263
 msgid "Quit the game"
 msgstr "ゲームを終了します"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:488
+#: data/gui/window/title_screen.cfg:492
 msgid "Change the language"
 msgstr "言語を変更します"
 
@@ -5917,7 +6214,7 @@ msgstr "雇用"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:209
-#: src/gui/dialogs/preferences_dialog.cpp:233
+#: src/gui/dialogs/preferences_dialog.cpp:253
 #: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "エラー"
@@ -5929,23 +6226,23 @@ msgstr "エラー"
 msgid "Details:"
 msgstr "情報："
 
-#: src/build_info.cpp:289
+#: src/build_info.cpp:287
 msgid "feature^Lua console completion"
 msgstr "Luaコンソールでの補完機能"
 
-#: src/build_info.cpp:296
+#: src/build_info.cpp:294
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus通知バックエンド"
 
-#: src/build_info.cpp:305
+#: src/build_info.cpp:303
 msgid "feature^Win32 notifications back end"
 msgstr "Win32通知バックエンド"
 
-#: src/build_info.cpp:311
+#: src/build_info.cpp:309
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa通知バックエンド"
 
-#: src/build_info.cpp:349 src/desktop/version.cpp:126
+#: src/build_info.cpp:347 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
 msgstr "<不明>"
 
@@ -5953,27 +6250,31 @@ msgstr "<不明>"
 msgid "filesystem_path_system^Volumes"
 msgstr "ボリューム"
 
-#: src/desktop/paths.cpp:202
+#: src/desktop/paths.cpp:211
 msgid "filesystem_path_game^Game executables"
 msgstr "ゲームプログラム"
 
-#: src/desktop/paths.cpp:206
+#: src/desktop/paths.cpp:215
 msgid "filesystem_path_game^Game data"
 msgstr "ゲームデータ"
 
-#: src/desktop/paths.cpp:210
+#: src/desktop/paths.cpp:219
 msgid "filesystem_path_game^User data"
 msgstr "ユーザーデータ"
 
-#: src/desktop/paths.cpp:214
+#: src/desktop/paths.cpp:223
 msgid "filesystem_path_game^User preferences"
 msgstr "ユーザ設定"
 
 #: src/desktop/paths.cpp:227
+msgid "filesystem_path_game^Editor maps"
+msgstr "エディタマップ"
+
+#: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
 msgstr "ホーム"
 
-#: src/desktop/paths.cpp:236
+#: src/desktop/paths.cpp:249
 msgid "filesystem_path_system^Root"
 msgstr "ルート"
 
@@ -5982,11 +6283,11 @@ msgid "operating_system^<unknown>"
 msgstr "<不明>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:689
+#: src/filesystem.cpp:690
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<ピリオド以外から始まる相対パス>"
 
-#: src/filesystem.cpp:692
+#: src/filesystem.cpp:693
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -5995,11 +6296,11 @@ msgstr ""
 "い。"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:757 src/filesystem.cpp:779
+#: src/filesystem.cpp:758 src/filesystem.cpp:780
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<相対パス>"
 
-#: src/filesystem.cpp:760 src/filesystem.cpp:782
+#: src/filesystem.cpp:761 src/filesystem.cpp:783
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6017,55 +6318,55 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1707
+#: src/filesystem.cpp:1762
 msgid "language code for localized resources^en_US"
 msgstr "ja"
 
-#: src/font/text.cpp:842
+#: src/font/text.cpp:886
 msgid "The text contains invalid Pango markup: "
 msgstr "テキストに無効な Pango マークアップが含まれています："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
-#: src/formula/string_utils.cpp:261
+#: src/formula/string_utils.cpp:265
 msgid "conjunct pair^$first and $second"
 msgstr "$first および $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
-#: src/formula/string_utils.cpp:264
+#: src/formula/string_utils.cpp:268
 msgid "conjunct start^$first, $second"
 msgstr "$first、$second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
-#: src/formula/string_utils.cpp:268
+#: src/formula/string_utils.cpp:272
 msgid "conjunct mid^$prefix, $next"
 msgstr "$prefix、$next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
-#: src/formula/string_utils.cpp:271
+#: src/formula/string_utils.cpp:275
 msgid "conjunct end^$prefix, and $last"
 msgstr "$prefix および $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
-#: src/formula/string_utils.cpp:279
+#: src/formula/string_utils.cpp:283
 msgid "disjunct pair^$first or $second"
 msgstr "$first または $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
-#: src/formula/string_utils.cpp:282
+#: src/formula/string_utils.cpp:286
 msgid "disjunct start^$first, $second"
 msgstr "$first、$second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
-#: src/formula/string_utils.cpp:286
+#: src/formula/string_utils.cpp:290
 msgid "disjunct mid^$prefix, $next"
 msgstr "$prefix、$next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
-#: src/formula/string_utils.cpp:289
+#: src/formula/string_utils.cpp:293
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix または $last"
 
-#: src/formula/string_utils.cpp:295 src/formula/string_utils.cpp:335
+#: src/formula/string_utils.cpp:299 src/formula/string_utils.cpp:339
 msgid "timespan^expired"
 msgstr "期限切れ"
 
@@ -6077,62 +6378,60 @@ msgstr "期限切れ"
 #. is the time unit (year, month, etc.) For example, for French you would
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
-#: src/formula/string_utils.cpp:309
+#: src/formula/string_utils.cpp:313
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num 年"
 
-#: src/formula/string_utils.cpp:310
+#: src/formula/string_utils.cpp:314
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num ヵ月"
 
-#: src/formula/string_utils.cpp:311
+#: src/formula/string_utils.cpp:315
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num 週間"
 
-#: src/formula/string_utils.cpp:312
+#: src/formula/string_utils.cpp:316
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num 日"
 
-#: src/formula/string_utils.cpp:313
+#: src/formula/string_utils.cpp:317
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num 時間"
 
-#: src/formula/string_utils.cpp:314
+#: src/formula/string_utils.cpp:318
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num 分"
 
-#: src/formula/string_utils.cpp:315
+#: src/formula/string_utils.cpp:319
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num 秒"
 
-#: src/gui/core/canvas.cpp:272
+#: src/gui/core/canvas.cpp:273
 msgid "Image doesn't fit on canvas."
 msgstr "画像がキャンバスに合いません。"
 
-#: src/gui/core/canvas.cpp:413
+#: src/gui/core/canvas.cpp:417
 msgid "Text has a font size of 0."
 msgstr "テキストのフォントサイズが 0 です。"
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "stateもしくはdraw sectionがひとつも設定されていません。"
+msgstr "state に対して draw section が定義されていません。"
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
 msgstr "解像度（resolution）が1つも定義されていません。"
 
-#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:176
-#: src/gui/widgets/panel.cpp:125 src/gui/widgets/size_lock.cpp:111
+#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
+#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
+#: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "グリッド（grid）が定義されていません。"
@@ -6152,7 +6451,7 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
 msgid "Completed"
-msgstr ""
+msgstr "完了率"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^All Add-ons"
@@ -6312,19 +6611,19 @@ msgstr "地形変更"
 msgid "addon_tag^Players can change the terrain"
 msgstr "地形に変更を加えます。"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "公開済み、未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "インストール済み"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "公開済み"
 
@@ -6353,23 +6652,23 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "公開済み（$local_version| インストール済み）、サーバー上に旧バージョン有り"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "インストール済み、公開準備未了"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "公開準備完了"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "インストール済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "公開済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "不明"
 
@@ -6434,7 +6733,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:937
 msgid "The passphrase attribute cannot be present when forum_auth is used."
-msgstr ""
+msgstr "forum_auth が使用された場合には passphrase 属性は存在できません。"
 
 #: src/gui/dialogs/addon/manager.cpp:942
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -6468,15 +6767,11 @@ msgstr "「$addon|」をアンインストールしますか？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1038
-#, fuzzy
-#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1040
-#, fuzzy
-#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
@@ -6504,14 +6799,32 @@ msgstr "攻撃側の耐性："
 msgid "Attacker vulnerability vs"
 msgstr "攻撃側の弱点："
 
+#: src/gui/dialogs/campaign_selection.cpp:354
+msgid "Missing Campaigns"
+msgstr "欠落したキャンペーン"
+
+#. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
 #: src/gui/dialogs/campaign_selection.cpp:365
+msgid ""
+"Wesnoth normally includes more than 15 mainline campaigns, even before "
+"installing any from the add-ons server. If you’ve installed the game via a "
+"package manager, there’s probably a separate package to install the complete "
+"game data."
+msgstr ""
+"アドオンサーバーでキャンペーンを 1 つもインストールしていなくとも、Wesnoth に"
+"は通常 15 以上のメインライン（公式）のキャンペーンが同梱されています。この"
+"ゲームをパッケージマネージャーによってインストールした場合、ゲームデータを完"
+"全に揃えるには別のパッケージが必要となるかもしれません。"
+
+#: src/gui/dialogs/campaign_selection.cpp:396
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "なし"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:141
-#: src/gui/dialogs/gamestate_inspector.cpp:416
+#: src/gui/dialogs/gamestate_inspector.cpp:418
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192
@@ -6552,6 +6865,87 @@ msgstr ""
 "現在選択されているModはあなたの設定と両立できません。\n"
 "矛盾の無いものを選んで下さい。"
 
+#: src/gui/dialogs/editor/edit_pbl.cpp:173
+msgid "Core"
+msgstr "コア"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:174
+msgid "Campaign"
+msgstr "キャンペーン"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:175
+msgid "Hybrid Campaign"
+msgstr "ハイブリッドキャンペーン"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:176
+msgid "Multiplayer Campaign"
+msgstr "マルチプレイヤーキャンペーン"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
+msgid "Scenario"
+msgstr "シナリオ"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
+msgid "Multiplayer Scenario"
+msgstr "マルチプレイヤーシナリオ"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
+msgid "Faction"
+msgstr "党派"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
+msgid "Era"
+msgstr "時代"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
+msgid "Map Pack"
+msgstr "マップパック"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
+msgid "Modification"
+msgstr "Mod"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
+msgid "Media"
+msgstr "メディア"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:184
+msgid "Other"
+msgstr "その他"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:190
+msgid "Cooperative"
+msgstr "協力"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:191
+msgid "Cosmetic"
+msgstr "外観"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:193
+msgid "RNG"
+msgstr "RNG"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:194
+msgid "Survival"
+msgstr "サバイバル"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:195
+msgid "Terraforming"
+msgstr "地形変更"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:374
+msgid "No validation errors"
+msgstr "検証エラーはありません"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:374
+msgid "Success"
+msgstr "成功"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
+msgid "Choose an icon"
+msgstr "アイコンの選択"
+
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
 msgstr "/1000 タイル"
@@ -6572,23 +6966,23 @@ msgstr "島"
 msgid "Find File"
 msgstr "ファイル探索"
 
-#: src/gui/dialogs/file_dialog.cpp:182
+#: src/gui/dialogs/file_dialog.cpp:183
 msgid "Open"
 msgstr "開く"
 
-#: src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:305
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "ファイルがすでに存在しています。上書きしますか？"
 
-#: src/gui/dialogs/file_dialog.cpp:326
+#: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
 msgstr "ファイル/フォルダ「 $path 」を作成できません。"
 
-#: src/gui/dialogs/file_dialog.cpp:332
+#: src/gui/dialogs/file_dialog.cpp:335
 msgid "The file or folder $path does not exist."
 msgstr "「 $path 」というファイル/フォルダは存在しません。"
 
-#: src/gui/dialogs/file_dialog.cpp:707
+#: src/gui/dialogs/file_dialog.cpp:710
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -6596,19 +6990,19 @@ msgstr ""
 "フォルダ「$path|」を作成できません。その場所への書き込み権限があるか確認して"
 "ください。"
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "以下のフォルダとその中身は完全に削除されます。"
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following file will be permanently deleted:"
 msgstr "以下のファイルは完全に削除されます。"
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:730
 msgid "Do you wish to continue?"
 msgstr "削除しますか？"
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:742
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6674,7 +7068,7 @@ msgstr "Wesnoth $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:235
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "アクティブ $active 、予約 $reserve"
 
 #: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
@@ -6729,10 +7123,8 @@ msgid "controller^Idle"
 msgstr "待機"
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "無し"
+msgstr "予約済み"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -6749,7 +7141,7 @@ msgid "yes"
 msgstr "はい"
 
 #: src/gui/dialogs/game_version_dialog.cpp:101
-#: src/gui/dialogs/title_screen.cpp:362
+#: src/gui/dialogs/title_screen.cpp:378
 msgid "Version $version"
 msgstr "バージョン $version"
 
@@ -6864,7 +7256,7 @@ msgid "lua console"
 msgstr "Luaコンソール"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:501
 msgid "Random"
 msgstr "ランダム"
 
@@ -6910,10 +7302,6 @@ msgstr "$game_name（時代： $era_name）"
 #: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "era_or_mod^not installed"
 msgstr "未インストール"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:426
-msgid "Era"
-msgstr "時代"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Reloaded:"
@@ -7019,36 +7407,36 @@ msgstr "ランダムマップ"
 msgid "No games found."
 msgstr "ゲームが存在しません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
 msgid "No eras found."
 msgstr "時代が存在しません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:239
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
 msgid "No eras found"
 msgstr "時代が存在しません"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:506
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:505
 msgid "No eras available for this game."
 msgstr "このゲームには時代を適用できません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
 msgid "number of players^$min to $max"
 msgstr "$min ～ $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:821
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
 msgstr "選択したゲームには陣営がありません！"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game cannot be created."
 msgstr "選択したゲームを作成できません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
 msgstr "開始シナリオの選択"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Select at which point to begin this campaign."
 msgstr "どこからキャンペーンを開始しますか？"
 
@@ -7073,7 +7461,7 @@ msgid "empty"
 msgstr "空"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:114
 msgid "this game"
 msgstr "このゲーム"
 
@@ -7082,46 +7470,44 @@ msgid "Lobby"
 msgstr "ロビー"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
 msgstr "ゲーム"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:518
 msgid "Waiting for players to choose factions..."
 msgstr "プレイヤーが党派を選択中..."
 
-#: src/gui/dialogs/outro.cpp:47
+#: src/gui/dialogs/outro.cpp:48
 msgid "The End"
 msgstr "The End"
 
-#: src/gui/dialogs/preferences_dialog.cpp:159
+#: src/gui/dialogs/preferences_dialog.cpp:179
 msgid "friend"
 msgstr "友人"
 
-#: src/gui/dialogs/preferences_dialog.cpp:164
+#: src/gui/dialogs/preferences_dialog.cpp:184
 msgid "ignored"
 msgstr "無視"
 
-#: src/gui/dialogs/preferences_dialog.cpp:218
-#: src/gui/dialogs/preferences_dialog.cpp:275
+#: src/gui/dialogs/preferences_dialog.cpp:238
+#: src/gui/dialogs/preferences_dialog.cpp:295
 msgid "No username specified"
 msgstr "ユーザー名が指定されていません"
 
-#: src/gui/dialogs/preferences_dialog.cpp:233
+#: src/gui/dialogs/preferences_dialog.cpp:253
 msgid "Invalid username"
 msgstr "無効なユーザ名です。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:280
+#: src/gui/dialogs/preferences_dialog.cpp:300
 msgid "Not on friends or ignore lists"
 msgstr "友人・無視リストに含まれていません"
 
-#: src/gui/dialogs/preferences_dialog.cpp:847
-#: src/gui/dialogs/preferences_dialog.cpp:911
+#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:937
 msgid "No hotkey selected"
 msgstr "ホットキーが選択されていません"
 
-#: src/gui/dialogs/preferences_dialog.cpp:875
+#: src/gui/dialogs/preferences_dialog.cpp:901
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7130,15 +7516,15 @@ msgstr ""
 "います。\n"
 "割り当てを「<b>$new_hotkey_action|</b>」に変更しますか？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:881
+#: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "Reassign Hotkey"
 msgstr "ホットキーの再割り当て"
 
-#: src/gui/dialogs/preferences_dialog.cpp:898
+#: src/gui/dialogs/preferences_dialog.cpp:924
 msgid "All hotkeys have been reset to their default values."
 msgstr "全てのホットキーはデフォルトの値にリセットされます。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:898
+#: src/gui/dialogs/preferences_dialog.cpp:924
 msgid "Hotkeys Reset"
 msgstr "ホットキーのリセット"
 
@@ -7183,8 +7569,6 @@ msgstr ""
 "括弧内の 2 つの数値の合計が実際に与えたまたは受けた攻撃の数となります。"
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "雇用"
 
@@ -7222,11 +7606,9 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/gui/dialogs/title_screen.cpp:455 src/hotkey/hotkey_command.cpp:298
-#, fuzzy
-#| msgid "Choose Starting Scenario"
+#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:301
 msgid "Choose Test Scenario"
-msgstr "開始シナリオの選択"
+msgstr "テストシナリオを選択"
 
 #: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
@@ -7278,40 +7660,40 @@ msgstr "ユニットの解雇"
 msgid "No default gui defined."
 msgstr "デフォルトの GUI が定義されていません。"
 
-#: src/gui/widgets/addon_list.cpp:119
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "インストール済み、アップデート有り"
 
-#: src/gui/widgets/addon_list.cpp:119
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "公開済み、アップデート有り"
 
-#: src/gui/widgets/addon_list.cpp:123
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "インストール済み、サーバー上に旧バージョン有り"
 
-#: src/gui/widgets/addon_list.cpp:123
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "公開済み、サーバー上に旧バージョン有り"
 
-#: src/gui/widgets/addon_list.cpp:296
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "サーバーからアドオンを削除します"
 
-#: src/gui/widgets/button.cpp:164 src/gui/widgets/button.cpp:165
-#: src/gui/widgets/button.cpp:166 src/gui/widgets/button.cpp:167
+#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
+#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
 msgid "Missing required state for button"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:299
+#: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
 msgstr "$receiver にささやく"
 
-#: src/gui/widgets/chatbox.cpp:383
+#: src/gui/widgets/chatbox.cpp:381
 msgid "Joined <i>$name</i>"
 msgstr "<i>$name</i> が参加"
 
-#: src/gui/widgets/chatbox.cpp:389
+#: src/gui/widgets/chatbox.cpp:387
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -7319,19 +7701,19 @@ msgstr ""
 "<i>$name</i>とのプライベートメッセージを開始しました。このプレイヤーからメッ"
 "セージを受け取りたくなければ、<i>/ignore $name</i>を入力してください。"
 
-#: src/gui/widgets/chatbox.cpp:657
+#: src/gui/widgets/chatbox.cpp:655
 msgid "Missing required background for chatbox"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:658
+#: src/gui/widgets/chatbox.cpp:656
 msgid "Missing required foreground for chatbox"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:660
+#: src/gui/widgets/chatbox.cpp:658
 msgid "Missing required grid for chatbox"
 msgstr ""
 
-#: src/gui/widgets/drawing.cpp:119
+#: src/gui/widgets/drawing.cpp:113
 msgid "Missing [draw] in drawing"
 msgstr ""
 
@@ -7339,64 +7721,64 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "必須widget 「 $id 」が定義されていません。"
 
-#: src/gui/widgets/horizontal_scrollbar.cpp:133
-#: src/gui/widgets/horizontal_scrollbar.cpp:134
-#: src/gui/widgets/horizontal_scrollbar.cpp:135
-#: src/gui/widgets/horizontal_scrollbar.cpp:136
+#: src/gui/widgets/horizontal_scrollbar.cpp:128
+#: src/gui/widgets/horizontal_scrollbar.cpp:129
+#: src/gui/widgets/horizontal_scrollbar.cpp:130
+#: src/gui/widgets/horizontal_scrollbar.cpp:131
 msgid "Missing required state for horizontal scrollbar"
 msgstr ""
 
-#: src/gui/widgets/image.cpp:115
+#: src/gui/widgets/image.cpp:112
 msgid "Missing required state for image control"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:127
+#: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "リンクを開く機能がサポートされていません。パッケージャーに連絡してください。"
 
-#: src/gui/widgets/label.cpp:145
+#: src/gui/widgets/label.cpp:141
 msgid "Open link?"
 msgstr "リンクを開きますか？"
 
-#: src/gui/widgets/label.cpp:176
+#: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
 msgstr "リンクをコピーしました！"
 
-#: src/gui/widgets/label.cpp:241 src/gui/widgets/label.cpp:242
+#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
 msgid "Missing required state for text label control"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/listbox.cpp:711
+#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
 msgid "Missing required state for listbox"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "「 list_data 」には「 list_definition 」と同じ数のcolumnがなければなりませ"
 "ん。"
 
-#: src/gui/widgets/listbox.cpp:771 src/gui/widgets/listbox.cpp:814
-#: src/gui/widgets/listbox.cpp:857 src/gui/widgets/scrollbar_panel.cpp:92
+#: src/gui/widgets/listbox.cpp:768 src/gui/widgets/listbox.cpp:811
+#: src/gui/widgets/listbox.cpp:854 src/gui/widgets/scrollbar_panel.cpp:92
 msgid "No list defined."
 msgstr "listが定義されていません。"
 
-#: src/gui/widgets/listbox.cpp:776 src/gui/widgets/listbox.cpp:819
-#: src/gui/widgets/listbox.cpp:862
+#: src/gui/widgets/listbox.cpp:773 src/gui/widgets/listbox.cpp:816
+#: src/gui/widgets/listbox.cpp:859
 msgid "A 'list_definition' should contain one row."
 msgstr "「 list_definition 」には単一のrowを含む必要があります。"
 
-#: src/gui/widgets/matrix.cpp:188
+#: src/gui/widgets/matrix.cpp:185
 msgid "Missing [content] in [matrix_definition]"
 msgstr ""
 
-#: src/gui/widgets/matrix.cpp:191 src/gui/widgets/matrix.cpp:192
+#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
 msgid "Missing required state for matrix definition"
 msgstr ""
 
-#: src/gui/widgets/matrix.cpp:210
+#: src/gui/widgets/matrix.cpp:207
 msgid "Missing [main] in [matrix]"
 msgstr ""
 
@@ -7405,13 +7787,22 @@ msgstr ""
 msgid "Missing required state for menu button"
 msgstr ""
 
-#: src/gui/widgets/minimap.cpp:117
+#: src/gui/widgets/minimap.cpp:118
 msgid "Missing required state for minimap control"
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "pageが定義されていません。"
+
+#: src/gui/widgets/multiline_text.cpp:466
+#: src/gui/widgets/multiline_text.cpp:467
+#: src/gui/widgets/multiline_text.cpp:468
+#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
+#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
+#: src/gui/widgets/text_box.cpp:414
+msgid "Missing required state for editable text box"
+msgstr ""
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -7426,14 +7817,14 @@ msgid_plural "$excess others"
 msgstr[0] "他 $excess"
 
 #: src/gui/widgets/multimenu_button.cpp:183
-#: src/gui/widgets/multimenu_button.cpp:239
+#: src/gui/widgets/multimenu_button.cpp:235
 msgid "multimenu^None Selected"
 msgstr "未選択"
 
-#: src/gui/widgets/multimenu_button.cpp:256
-#: src/gui/widgets/multimenu_button.cpp:257
-#: src/gui/widgets/multimenu_button.cpp:258
-#: src/gui/widgets/multimenu_button.cpp:259
+#: src/gui/widgets/multimenu_button.cpp:252
+#: src/gui/widgets/multimenu_button.cpp:253
+#: src/gui/widgets/multimenu_button.cpp:254
+#: src/gui/widgets/multimenu_button.cpp:255
 msgid "Missing required state for multimenu button"
 msgstr ""
 
@@ -7445,11 +7836,11 @@ msgstr ""
 msgid "Need at least 1 parallel item."
 msgstr "少なくとも1つのparallel itemが必要です。"
 
-#: src/gui/widgets/panel.cpp:111
+#: src/gui/widgets/panel.cpp:119
 msgid "Missing required background for panel definition"
 msgstr ""
 
-#: src/gui/widgets/panel.cpp:112
+#: src/gui/widgets/panel.cpp:120
 msgid "Missing required foreground for panel definition"
 msgstr ""
 
@@ -7505,14 +7896,9 @@ msgstr "value_labels と values の数が合いません。"
 msgid "No stack layers defined."
 msgstr "stack layerが定義されていません。"
 
-#: src/gui/widgets/styled_widget.cpp:603
+#: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "helptipがあるのにtooltipの無いwidgetが見つかりました。"
-
-#: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
-#: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
-msgid "Missing required state for editable text box"
-msgstr ""
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
@@ -7543,8 +7929,10 @@ msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]id「root」は実装のために予約されています。"
 
 #: src/gui/widgets/tree_view.cpp:330
+#, fuzzy
+#| msgid "No widget defined."
 msgid "No node defined."
-msgstr "nodeが定義されていません。"
+msgstr "widget が定義されていません。"
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -7625,16 +8013,16 @@ msgstr ""
 msgid "Missing [widget] in [viewport]"
 msgstr ""
 
-#: src/gui/widgets/window.cpp:430
+#: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
 msgstr "「 $id 」に結び付けられたグループに重複する定義があります。"
 
-#: src/gui/widgets/window.cpp:816
+#: src/gui/widgets/window.cpp:911
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Click dismissには「 click_dismiss 」または「 ok 」ボタンが必要です。"
 
-#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
-#: src/tests/gui/test_gui2.cpp:701
+#: src/gui/widgets/window.cpp:936 src/gui/widgets/window.cpp:973
+#: src/tests/gui/test_gui2.cpp:726
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "画面に合わないため、ダイアログの表示に失敗しました。"
 
@@ -8344,114 +8732,122 @@ msgid "Add New Area"
 msgstr "新たな領域の追加"
 
 #: src/hotkey/hotkey_command.cpp:270
+msgid "Add-on Publishing Editor"
+msgstr "アドオン公開エディタ"
+
+#: src/hotkey/hotkey_command.cpp:271
+msgid "Change Add-on ID"
+msgstr "アドオン ID の変更"
+
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Edit Scenario"
 msgstr "シナリオの編集"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Edit Side"
 msgstr "陣営の編集"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Remove Side"
 msgstr "陣営の削除"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Delay Shroud Updates"
 msgstr "幕の更新を遅らせる"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Update Shroud Now"
 msgstr "幕を今すぐ更新する"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:279
 msgid "Continue Interrupted Move"
 msgstr "中断された移動の続行"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Find Label or Unit"
 msgstr "ラベルまたはユニットの検索"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Speak to Ally"
 msgstr "同盟軍とチャット"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Speak to All"
 msgstr "全員とチャット"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Help about save-loading"
-msgstr "保存と再会に関するヘルプ"
+msgstr "保存と再開に関するヘルプ"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Hint: save-loading is unnecessary"
 msgstr "ヒント：保存と再開は不要です"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Enter Command"
 msgstr "コマンドの入力"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Custom Command"
 msgstr "カスタムコマンド"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Run Formula"
 msgstr "フォーミュラの実行"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Clear Chat"
 msgstr "チャットの消去"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Change Language"
 msgstr "言語の変更"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Refresh WML"
 msgstr "WMLのリフレッシュ"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Next Tip of the Day"
 msgstr "次のヒント"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Previous Tip of the Day"
 msgstr "前のヒント"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Start Campaign"
 msgstr "キャンペーンの開始"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Start Multiplayer Game"
 msgstr "マルチプレイヤーゲームの開始"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Manage Add-ons"
 msgstr "アドオンの管理"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Manage Cores"
 msgstr "コアの管理"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Start Editor"
 msgstr "エディタの起動"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Show Credits"
 msgstr "クレジットの表示"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Show Helptip"
 msgstr "ヘルプチップの表示"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Show Lua Console"
 msgstr "Luaコンソールの表示"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Unrecognized Command"
 msgstr "認識できないコマンド"
 
@@ -8493,7 +8889,7 @@ msgstr ""
 msgid "When reporting the bug please include the following error message :"
 msgstr "バグを報告する際には以下のエラーメッセージを含めてください："
 
-#: src/wml_exception.cpp:98
+#: src/wml_exception.cpp:89
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -8501,63 +8897,8 @@ msgstr ""
 "「 $primary_key| = $primary_value 」である「 [$section|] 」セクションにおいて"
 "必須のキー「 $key| 」が設定されていません。"
 
-#: src/wml_exception.cpp:101
+#: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
 "ん。"
-
-#~ msgid ""
-#~ "The key '$key' is deprecated and support will be removed in version "
-#~ "$removal_version."
-#~ msgstr ""
-#~ "キー「$key」は推奨されておらず、バージョン $removal_version でサポートが取"
-#~ "り除かれます。"
-
-#~ msgid ""
-#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
-#~ "'$deprecated_key' will be removed in version $removal_version."
-#~ msgstr ""
-#~ "キー「$deprecated_key」は「$key」に名前が変更されました。"
-#~ "「$deprecated_key」のサポートはバージョン$removal_versionで削除されます。"
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "離脱中のユニットに宝珠を表示"
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "移動前および移動途中の宝珠と同じ色が使用されます。"
-
-#~ msgid "By:"
-#~ msgstr "作者："
-
-#~ msgid "Gold Left:"
-#~ msgstr "所持ゴールド："
-
-#~ msgid "Active Troops:"
-#~ msgstr "マップ上の自軍ユニット："
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "召還可能ユニット："
-
-#~ msgid "Area to draw has negative size"
-#~ msgstr "負のサイズを持つ描画エリア"
-
-#~ msgid "Area to draw is larger than widget size"
-#~ msgstr "ウィジェットサイズよりも大きな描画エリア"
-
-#~ msgid "Selected Game"
-#~ msgstr "選択中のゲーム"
-
-#~ msgid "Other Games"
-#~ msgstr "他のゲーム"
-
-#~ msgid "Choose Test"
-#~ msgstr "テストの選択"
-
-#~ msgid "Start Test Scenario"
-#~ msgstr "テストシナリオの開始"
-
-#~ msgid ""
-#~ "A terrain with a string with more than 4 characters has been found, the "
-#~ "affected terrain is:"
-#~ msgstr "4 文字以上の文字列を持つ地形が見つかりました。影響する地形："

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,14 +17,11 @@
 
 #include "gui/core/event/distributor.hpp"
 
-#include "events.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/widget.hpp"
-#include "gui/widgets/window.hpp"
-#include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <array>

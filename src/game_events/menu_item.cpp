@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,6 +25,7 @@
 #include "game_events/pump.hpp"
 
 #include "game_config.hpp"
+#include "game_version.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "log.hpp"
 #include "replay_helper.hpp"
@@ -362,6 +363,7 @@ void wml_menu_item::update_command(const config& new_command)
 
 		command_["name"] = event_name_;
 		command_["first_time_only"] = false;
+		command_["priority"] = 0.;
 
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;

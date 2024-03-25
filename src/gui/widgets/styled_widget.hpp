@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -233,7 +233,7 @@ public:
 		return label_;
 	}
 
-	virtual void set_label(const t_string& label);
+	virtual void set_label(const t_string& text);
 
 	virtual void set_use_markup(bool use_markup);
 
@@ -459,10 +459,10 @@ public:
 
 protected:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background() override;
+	virtual bool impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground() override;
+	virtual bool impl_draw_foreground() override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
 	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
@@ -533,7 +533,6 @@ private:
 
 // }---------- BUILDER -----------{
 
-class styled_widget;
 
 namespace implementation
 {

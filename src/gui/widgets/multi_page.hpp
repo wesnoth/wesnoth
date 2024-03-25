@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -217,7 +217,7 @@ private:
 	builder_grid_map page_builders_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background() override;
+	virtual bool impl_draw_background() override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

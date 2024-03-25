@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,11 +27,9 @@
 #include "actions/attack.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
-#include "preferences/general.hpp"
 #include "preferences/game.hpp"
 #include "game_events/pump.hpp"
 #include "map/map.hpp"
-#include "units/helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"

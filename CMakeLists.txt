@@ -29,12 +29,6 @@ endfunction()
 # Options
 #
 
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
-	message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
-else()
-	message("-- Lua submodule found.")
-endif()
-
 # Adhere to GNU filesystem layout conventions
 include(GNUInstallDirs)
 
@@ -58,7 +52,27 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.66")
+set(BOOST_VERSION "1.67")
+
+if(NOT WIN32)
+	set(Lua_FIND_VERSION_MAJOR 5)
+	set(Lua_FIND_VERSION_MINOR 4)
+	option(ENABLE_SYSTEM_LUA "Enable use of system Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} (compiled as C++)" OFF)
+endif()
+if(ENABLE_SYSTEM_LUA)
+	set(Lua_FIND_VERSION_EXACT ON)
+	set(Lua_FIND_VERSION_COUNT 2)
+	include(FindLua)
+	if(NOT LUA_FOUND)
+		message(FATAL_ERROR "Lua ${Lua_FIND_VERSION_MAJOR}.${Lua_FIND_VERSION_MINOR} C++ not found. Try setting 'LUA_DIR'.")
+	endif()
+else()
+	if(NOT EXISTS "${CMAKE_SOURCE_DIR}/src/modules/lua/.git")
+		message(FATAL_ERROR "Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+	else()
+		message("-- Lua submodule found.")
+	endif()
+endif()
 
 # set what std version to use
 if(NOT CXX_STD)
@@ -79,15 +93,16 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
+find_package(Python)
 
 find_package(X11)
 
-if(NOT WIN32)
+if(NOT WIN32 AND NOT ENABLE_SYSTEM_LUA)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
 endif()
@@ -188,6 +203,18 @@ if(NOT MSVC)
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized -Wno-unused-lambda-capture")
+	endif()
+
+	if(CMAKE_CXX_COMPILER_ID MATCHES "GNU"
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13
+			AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 14)
+		# GCC-13 added this new warning, and included it in -Wextra,
+		# however in GCC-13 it has a lot of false positives.
+		#
+		# It's likely to generate false postives with GCC-14 too, but
+		# I'm using a narrow version check as GCC-14 is still in dev.
+		# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+		set(COMPILER_FLAGS "${COMPILER_FLAGS} -Wno-dangling-reference")
 	endif()
 
 ### Set strict compiler flags.
@@ -447,7 +474,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=_WIN32_WINNT_WIN7 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+	add_definitions(-D_WIN32_WINNT=0x0601 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
@@ -557,7 +584,7 @@ endif()
 
 add_subdirectory(doc)
 
-if(GETTEXT_FOUND AND ENABLE_NLS)
+if(GETTEXT_FOUND AND Python_FOUND AND ENABLE_NLS)
 	add_subdirectory(po)
 endif()
 

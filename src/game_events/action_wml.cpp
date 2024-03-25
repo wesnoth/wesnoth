@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,42 +20,25 @@
  */
 
 #include "game_events/action_wml.hpp"
-#include "game_events/conditional_wml.hpp"
-#include "game_events/pump.hpp"
 
-#include "actions/attack.hpp"
 #include "actions/create.hpp"
-#include "actions/move.hpp"
-#include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
-#include "map/label.hpp"
 #include "pathfind/teleport.hpp"
 #include "pathfind/pathfind.hpp"
 #include "persist_var.hpp"
 #include "play_controller.hpp"
-#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"
-#include "replay.hpp"
-#include "random.hpp"
 #include "mouse_handler_base.hpp" // for events::commands_disabled
 #include "resources.hpp"
-#include "scripting/game_lua_kernel.hpp"
-#include "side_filter.hpp"
-#include "soundsource.hpp"
 #include "synced_context.hpp"
 #include "synced_user_choice.hpp"
 #include "team.hpp"
-#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
@@ -848,6 +831,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 		        << cfg.get_config().debug();
+	} else if (cfg.get_children("source").size() > 1 ||
+		cfg.get_children("target").size() > 1 ||
+		cfg.get_children("filter").size() > 1) {
+		ERR_WML << "[tunnel] should have exactly one of each mandatory tag:\n"
+		        << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
@@ -908,15 +896,6 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 	uc.add_unit(parsed_cfg, &cfg);
 
-}
-
-WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
-{
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_undo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_undo_commands(cfg.get_parsed_config(), event_info);
-	}
 }
 
 } // end namespace game_events

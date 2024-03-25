@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,9 +27,7 @@
 #include "side_filter.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
-#include "units/formula_manager.hpp"
 #include "units/types.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
 #include "formula/callable_objects.hpp"
@@ -151,9 +149,9 @@ struct unit_filter_adjacent : public unit_filter_base
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-6");
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count = cfg_["count"];
-		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges(i_count) : default_counts);
+		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
 	}
 
 	const unit_filter_compound child_;
@@ -603,7 +601,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["recall_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				for(auto cost : ranges) {
@@ -616,7 +614,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["level"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				for(auto lvl : ranges) {
@@ -629,7 +627,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["defense"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_defense = args.u.defense_modifier(args.context().get_disp_context().map().get_terrain(args.loc));
@@ -643,7 +641,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["movement_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.movement_cost(args.context().get_disp_context().map().get_terrain(args.loc));
@@ -657,7 +655,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["vision_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.vision_cost(args.context().get_disp_context().map().get_terrain(args.loc));
@@ -671,7 +669,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		);
 
 		create_attribute(literal["jamming_cost"],
-			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
 			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.jamming_cost(args.context().get_disp_context().map().get_terrain(args.loc));
@@ -707,7 +705,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					const wfl::unit_callable main(args.loc, args.u);
 					wfl::map_formula_callable callable(main.fake_ptr());
 					if (args.u2) {
-						std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*args.u2));
+						auto secondary = std::make_shared<wfl::unit_callable>(*args.u2);
 						callable.add("other", wfl::variant(secondary));
 						// It's not destroyed upon scope exit because the variant holds a reference
 					}
@@ -806,7 +804,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					return side_filter(c, args.fc).match(args.u.side());
 				});
 			}
-			else if (child.first == "filter_ability") {
+			else if (child.first == "experimental_filter_ability") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					for(const config::any_child ab : args.u.abilities().all_children_range()) {
 						if(args.u.ability_matches_filter(ab.cfg, ab.key, c.get_parsed_config())) {
@@ -816,7 +814,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					return false;
 				});
 			}
-			else if (child.first == "filter_ability_active") {
+			else if (child.first == "experimental_filter_ability_active") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!display::get_singleton()){
 						return false;

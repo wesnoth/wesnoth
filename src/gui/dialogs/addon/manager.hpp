@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,12 +22,9 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/addon_list.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
 namespace gui2
 {
-class text_box_base;
-class text_box;
 class selectable_item;
 class button;
 class stacked_widget;

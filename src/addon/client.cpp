@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -31,8 +31,6 @@
 #include "log.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
-#include "random.hpp"
-#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "utils/parse_network_address.hpp"

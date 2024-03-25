@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,21 +22,22 @@
 
 #include "replay.hpp"
 
-#include "actions/undo.hpp"
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
 #include "game_data.hpp"
+#include "gettext.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/location.hpp"
 #include "play_controller.hpp"
-#include "synced_context.hpp"
+#include "preferences/game.hpp"
+#include "replay_recorder_base.hpp"
 #include "resources.hpp"
+#include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
-#include "replay_recorder_base.hpp"
+#include "wml_exception.hpp"
 
 #include <array>
 #include <set>
@@ -661,7 +662,7 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 bool replay::add_start_if_not_there_yet()
 {
 	//this method would confuse the value of 'pos' otherwise
-	assert(base_->get_pos() == 0);
+	VALIDATE(base_->get_pos() == 0, _("The file you have tried to load is corrupt"));
 	//since pos is 0, at_end() is equivalent to empty()
 	if(at_end() || !base_->get_command_at(0).has_child("start"))
 	{

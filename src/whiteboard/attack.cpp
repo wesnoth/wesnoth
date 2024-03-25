@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,9 +20,7 @@
 #include "whiteboard/attack.hpp"
 
 #include "whiteboard/visitor.hpp"
-#include "whiteboard/utility.hpp"
 
-#include "arrow.hpp"
 #include "config.hpp"
 #include "draw.hpp"
 #include "fake_unit_ptr.hpp"

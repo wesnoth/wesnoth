@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023
+	Copyright (C) 2023 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <cmath>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -23,6 +23,7 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_data.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
@@ -31,6 +32,8 @@
 #include "preferences/game.hpp"
 #include "preferences/general.hpp"
 #include "preferences/lobby.hpp"
+#include "resources.hpp"
+#include "theme.hpp"
 #include "video.hpp"
 
 // Sub-dialog includes
@@ -51,8 +54,6 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
@@ -114,6 +115,7 @@ preferences_dialog::preferences_dialog(const PREFERENCE_VIEW initial_view)
 	: modal_dialog(window_id())
 	, adv_preferences_(preferences::get_advanced_preferences())
 	, resolutions_() // should be populated by set_resolution_list before use
+	, themes_() // populated by set_theme_list
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
@@ -148,6 +150,22 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 		resolutions_.begin(), resolutions_.end(), video::current_resolution()));
 
 	res_list.set_values(options, current_res);
+}
+
+void preferences_dialog::set_theme_list(menu_button& theme_list)
+{
+	themes_ = theme::get_basic_theme_info();
+
+	std::vector<config> options;
+	std::size_t current_theme = 0;
+	for(std::size_t i = 0; i < themes_.size(); ++i) {
+		options.emplace_back("label", themes_[i].name, "tooltip", themes_[i].description);
+		if(themes_[i].id == preferences::theme()) {
+			current_theme = i;
+		}
+	}
+
+	theme_list.set_values(options, current_theme);
 }
 
 widget_data preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
@@ -498,9 +516,13 @@ void preferences_dialog::initialize_callbacks()
 	register_bool("vsync", true, vsync, set_vsync);
 
 	/* SELECT THEME */
-	connect_signal_mouse_left_click(
-			find_widget<button>(this, "choose_theme", false),
-			std::bind(&show_theme_dialog));
+	menu_button& theme_list = find_widget<menu_button>(this, "choose_theme", false);
+	set_theme_list(theme_list);
+	connect_signal_notify_modified(theme_list,
+		std::bind(&preferences_dialog::handle_theme_select, this));
+	//connect_signal_mouse_left_click(
+	//		find_widget<button>(this, "choose_theme", false),
+	//		std::bind(&show_theme_dialog));
 
 	//
 	// SOUND PANEL
@@ -1100,6 +1122,21 @@ void preferences_dialog::handle_res_select()
 	if(video::set_resolution(resolutions_[res_list.get_value()])) {
 		set_resolution_list(res_list);
 	}
+}
+
+void preferences_dialog::handle_theme_select()
+{
+	menu_button& theme_list = find_widget<menu_button>(this, "choose_theme", false);
+
+	const auto selection = theme_list.get_value();
+	const auto& theme = themes_.at(selection);
+	auto* display = display::get_singleton();
+
+	preferences::set_theme(theme.id);
+	if(display && resources::gamedata && resources::gamedata->get_theme().empty()) {
+		display->set_theme(theme.id);
+	}
+
 }
 
 void preferences_dialog::on_page_select()

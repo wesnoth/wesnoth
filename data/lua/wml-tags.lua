@@ -12,9 +12,6 @@ Note: When adding new WML tags, unless they're very simple, it's preferred to
 add a new file in the "data/lua/wml" directory rather than implementing it in this file.
 The file will then automatically be loaded by the above require statement.
 
-Also note: The above on_load event needs to be registered before any other on_load events.
-That means before loading the WML tags via wesnoth.require "wml".
-
 ]]
 
 function wml_actions.sync_variable(cfg)
@@ -72,7 +69,7 @@ function wml_actions.chat(cfg)
 	local observable = cfg.observable ~= false
 
 	if observable then
-		local all_sides = wesnoth.sides.find()
+		local all_sides = wesnoth.sides.find{}
 		local has_human_side = false
 		for index, side in ipairs(all_sides) do
 			if side.controller == "human" and side.is_local then
@@ -103,6 +100,7 @@ function wml_actions.store_gold(cfg)
 	if team then wml.variables[cfg.variable or "gold"] = team.gold end
 end
 
+---@diagnostic disable-next-line: redundant-parameter
 function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		wml.error "[clear_variable] missing required name= attribute."
@@ -118,8 +116,7 @@ function wml_actions.store_unit_type_ids(cfg)
 		table.insert(types, k)
 	end
 	table.sort(types)
-	types = table.concat(types, ',')
-	wml.variables[cfg.variable or "unit_type_ids"] = types
+	wml.variables[cfg.variable or "unit_type_ids"] = table.concat(types, ',')
 end
 
 function wml_actions.store_unit_type(cfg)
@@ -457,6 +454,8 @@ function wml_actions.capture_village(cfg)
 	local locs = wesnoth.map.find(cfg)
 
 	for i, loc in ipairs(locs) do
+		-- The fire_event parameter doesn't currently exist but probably should someday
+		---@diagnostic disable-next-line : redundant-parameter
 		wesnoth.map.set_owner(loc[1], loc[2], side, fire_event)
 	end
 end
@@ -648,7 +647,11 @@ function wml_actions.put_to_recall_list(cfg)
 end
 
 function wml_actions.allow_undo(cfg)
-	wesnoth.allow_undo()
+	wesnoth.experimental.game_events.set_undoable(true)
+end
+
+function wml_actions.disallow_undo(cfg)
+	wesnoth.experimental.game_events.set_undoable(false)
 end
 
 function wml_actions.allow_end_turn(cfg)
@@ -1027,4 +1030,12 @@ function wml_actions.progress_achievement(cfg)
 	end
 
 	wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, tonumber(cfg.limit) or 999999999)
+end
+
+function wml_actions.on_undo(cfg)
+	if cfg.delayed_variable_substitution then
+		wesnoth.experimental.game_events.add_undo_actions(wml.literal(cfg));
+	else
+		wesnoth.experimental.game_events.add_undo_actions(wml.parsed(cfg));
+	end
 end

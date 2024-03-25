@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,11 +20,9 @@
 
 #include <pango/pango-layout.h>
 
-#include <cstdint>
 #include <string>
 #include <string_view>
 
-struct SDL_Rect;
 struct point;
 class t_string;
 

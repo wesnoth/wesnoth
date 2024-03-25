@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,11 @@
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <iterator>
 
 class game_config_view;
 
 //this module controls internationalization.
 
-class config;
 
 struct language_def
 {

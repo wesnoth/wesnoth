@@ -160,6 +160,15 @@ DiffWML в стандартный вывод или в файл, указанн�
 prevents redirecting logged output to a file. Log files are created in the
 logs directory under the userdata folder.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 граничное число кадров в секунду, которые может отобразить игра; значение
 должно лежать между \fB1\fP и \fB1000\fP, по умолчанию используется частота
@@ -451,7 +460,7 @@ data/multiplayer.cfg.
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

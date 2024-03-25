@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,9 +50,8 @@
 #include <boost/range/adaptors.hpp>
 #include <SDL2/SDL.h>
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 
-struct lua_State;
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,18 +19,15 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_rng.hpp"
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_terrainfilter.hpp"
 #include "scripting/lua_terrainmap.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
 
-#include <ostream>
 #include <string>
 #include <functional>
 
-#include "lua/lauxlib.h"
 #include "scripting/push_check.hpp"
 #include "generators/default_map_generator_job.hpp"
 
@@ -39,7 +36,6 @@ static lg::log_domain log_mapgen("mapgen");
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 #define DBG_NG LOG_STREAM(debug, log_mapgen)
 
-struct lua_State;
 
 
 // Template which allows to push member functions to the lua kernel into lua as C functions, using a shim

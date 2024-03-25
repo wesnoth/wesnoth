@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,14 +23,10 @@
 #include "map/location.hpp"
 
 #include <ctime>
-#include <deque>
 #include <iterator>
-#include <map>
-#include <set>
 class replay_recorder_base;
 class terrain_label;
 class config;
-struct time_of_day;
 
 class chat_msg {
 public:

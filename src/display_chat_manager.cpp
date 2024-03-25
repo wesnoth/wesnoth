@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "display_chat_manager.hpp"
 
-#include "desktop/notifications.hpp"
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()

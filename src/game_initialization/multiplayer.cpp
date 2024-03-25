@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2023
+	Copyright (C) 2007 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
-#include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -43,9 +42,7 @@
 #include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
 
-#include <fstream>
 #include <functional>
-#include <future>
 #include <optional>
 #include <thread>
 

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Wesnoth requires a compiler with sufficient C++17 support such as GCC 7 and
+Wesnoth requires a compiler with sufficient C++17 support such as GCC 8 and
 later, or a version of Clang with equivalent support.
 
 You'll need to have these libraries and their development headers installed in
@@ -18,6 +18,7 @@ order to build Wesnoth:
    * Program Options
    * System
    * Coroutine
+   * Graph
  * SDL2 libraries:
    * SDL2                      >= 2.0.10 (macOS: 2.0.22 due to needing https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30)
    * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)
@@ -75,9 +76,7 @@ See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/REA
 ### Windows
 Wesnoth uses CMake for project configuration and vcpkg for installing dependencies. See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio) for information on using Visual Studio with cmake. The first time it's run, vcpkg will build all the required dependencies which may take over an hour, however it will only need to be done once.
 
-NOTE 1: You will need a Windows implementation of pkg-config present in your PATH, such as [pkg-config-lite](https://sourceforge.net/projects/pkgconfiglite/).
-
-NOTE 2: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
+NOTE 1: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
 
 ## SCons Build
 

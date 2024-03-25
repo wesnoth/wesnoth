@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
-"PO-Revision-Date: 2023-01-14 14:59+0200\n"
+"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"PO-Revision-Date: 2024-03-16 23:36+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -208,7 +208,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "Fonttikoon skaalaus (kokeellinen)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -216,6 +216,8 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"Skaalaa kaikkea tekstejä ylös tai alas peruskoostaan resoluutiotasi varten. "
+"Varoitus: tekstin skaalaus voi aiheuttaa ongelmia pelin sivupalkissa."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
@@ -229,7 +231,7 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
-"Sekunttien määrä, ennen kuin yhteys katkeaa. Jos olet tällä hetkellä "
+"Sekuntien määrä ennen yhteyden katkeamista. Jos olet tällä hetkellä "
 "kirjautunut moninpelipalvelimelle, sinun on kirjauduttava ulos ja sitten "
 "takaisin sisään, jotta tämä asetus astuu voimaan."
 
@@ -237,13 +239,13 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1056
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
 msgid "poisoned"
 msgstr "myrkytetty"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "myrskyatrain"
 
@@ -263,7 +265,7 @@ msgid "Notes:"
 msgstr "Huomautus:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:691
 msgid "Close"
 msgstr "Sulje"
 
@@ -315,57 +317,57 @@ msgid "Programming"
 msgstr "Ohjelmointi"
 
 #. [about]
-#: data/core/about.cfg:271
+#: data/core/about.cfg:282
 msgid "General Purpose Administration and Coordination"
 msgstr "Yleinen ylläpito ja koordinaatio"
 
 #. [about]
-#: data/core/about.cfg:308
+#: data/core/about.cfg:319
 msgid "Internationalization Managers"
 msgstr "Kansainvälistyksen hallinnoijat"
 
 #. [about]
-#: data/core/about.cfg:333
+#: data/core/about.cfg:344
 msgid "Trailers"
 msgstr "Trailerit"
 
 #. [about]
-#: data/core/about.cfg:349
+#: data/core/about.cfg:360
 msgid "Artwork and Graphics"
 msgstr "Taide ja grafiikat"
 
 #. [about]
-#: data/core/about.cfg:807
+#: data/core/about.cfg:818
 msgid "Music"
 msgstr "Musiikki"
 
 #. [about]
-#: data/core/about.cfg:844
+#: data/core/about.cfg:855
 msgid "Sound Effects"
 msgstr "Ääniefektit"
 
 #. [about]
-#: data/core/about.cfg:868
+#: data/core/about.cfg:879
 msgid "Campaign Design"
 msgstr "Kampanjasuunnittelu"
 
 #. [about]
-#: data/core/about.cfg:959
+#: data/core/about.cfg:970
 msgid "Multiplayer Maps and Balancing"
 msgstr "Moninpelikartat ja tasapainotus"
 
 #. [about]
-#: data/core/about.cfg:1008
+#: data/core/about.cfg:1019
 msgid "Packagers"
 msgstr "Pakkaajat"
 
 #. [about]
-#: data/core/about.cfg:1115
+#: data/core/about.cfg:1131
 msgid "Miscellaneous Contributors"
 msgstr "Muut vaikuttajat"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1882
 msgid "Bots"
 msgstr "Botit"
 
@@ -395,253 +397,258 @@ msgid "Basque Translation"
 msgstr "Baskinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:65
+#: data/core/about_i18n.cfg:72
 msgid "Bulgarian Translation"
 msgstr "Bulgariankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:101
+#: data/core/about_i18n.cfg:108
 msgid "Catalan Translation"
 msgstr "Katalaaninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:147
+#: data/core/about_i18n.cfg:154
 msgid "Chinese Translation"
 msgstr "Kiinankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:241
+#: data/core/about_i18n.cfg:248
 msgid "Chinese (Taiwan) Translation"
 msgstr "Taiwaninkiinankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:254
+#: data/core/about_i18n.cfg:261
 msgid "Croatian Translation"
 msgstr "Kroatiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:264
+#: data/core/about_i18n.cfg:271
 msgid "Czech Translation"
 msgstr "Tšekinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:336
+#: data/core/about_i18n.cfg:343
 msgid "Danish Translation"
 msgstr "Tanskankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:367
+#: data/core/about_i18n.cfg:374
 msgid "Dutch Translation"
 msgstr "Hollanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:438
+#: data/core/about_i18n.cfg:445
 msgid "English (GB) Translation"
 msgstr "Brittienglanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:463
+#: data/core/about_i18n.cfg:470
 msgid "English (Shaw) Translation"
-msgstr "Eglanninkielinen(Shaw) käännös"
+msgstr "Englanninkielinen(Shaw) käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:481
+#: data/core/about_i18n.cfg:488
 msgid "Esperanto Translation"
 msgstr "Esperantonkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:500
+#: data/core/about_i18n.cfg:507
 msgid "Estonian Translation"
-msgstr "Eestinkielinen käännös"
+msgstr "Vironkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:510
+#: data/core/about_i18n.cfg:517
 msgid "Filipino Translation"
 msgstr "Filipinonkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:520
+#: data/core/about_i18n.cfg:527
 msgid "Finnish Translation"
 msgstr "Suomenkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:579
+#: data/core/about_i18n.cfg:589
 msgid "French Translation"
 msgstr "Ranskankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:744
+#: data/core/about_i18n.cfg:757
 msgid "Friulian Translation"
 msgstr "Friulinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:748
+#: data/core/about_i18n.cfg:761
 msgid "Galician Translation"
 msgstr "Galegonkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:784
+#: data/core/about_i18n.cfg:797
 msgid "German Translation"
 msgstr "Saksankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:897
+#: data/core/about_i18n.cfg:910
 msgid "Greek Translation"
 msgstr "Kreikankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:940
+#: data/core/about_i18n.cfg:953
 msgid "Hebrew Translation"
 msgstr "Hepreankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:953
+#: data/core/about_i18n.cfg:966
 msgid "Hungarian Translation"
 msgstr "Unkarinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1014
+#: data/core/about_i18n.cfg:1027
 msgid "Icelandic Translation"
 msgstr "Islanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1024
+#: data/core/about_i18n.cfg:1037
 msgid "Indonesian Translation"
 msgstr "Indonesiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1052
+#: data/core/about_i18n.cfg:1065
 msgid "Irish Translation"
 msgstr "Irlanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1059
+#: data/core/about_i18n.cfg:1072
 msgid "Italian Translation"
 msgstr "Italiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1106
+#: data/core/about_i18n.cfg:1119
 msgid "Japanese Translation"
 msgstr "Japaninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1199
+#: data/core/about_i18n.cfg:1212
 msgid "Korean Translation"
 msgstr "Koreankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1207
+#: data/core/about_i18n.cfg:1220
 msgid "Latin Translation"
 msgstr "Latinankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1233
+#: data/core/about_i18n.cfg:1246
 msgid "Latvian Translation"
 msgstr "Latviankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1248
+#: data/core/about_i18n.cfg:1261
 msgid "Lithuanian Translation"
 msgstr "Liettuankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1273
+#: data/core/about_i18n.cfg:1286
 msgid "Macedonian Translation"
 msgstr "Makedoniankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1280
+#: data/core/about_i18n.cfg:1293
 msgid "Marathi Translation"
 msgstr "Marathinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1289
+#: data/core/about_i18n.cfg:1302
 msgid "Norwegian Translation"
 msgstr "Norjankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1314
+#: data/core/about_i18n.cfg:1327
 msgid "Old English Translation"
 msgstr "Vanhan englanninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1332
+#: data/core/about_i18n.cfg:1345
 msgid "Polish Translation"
 msgstr "Puolankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1397
+#: data/core/about_i18n.cfg:1420
 msgid "Portuguese Translation"
 msgstr "Portugalinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1411
+#: data/core/about_i18n.cfg:1434
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasilianportugalinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1469
+#: data/core/about_i18n.cfg:1492
 msgid "Romanian Translation"
 msgstr "Romaniankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1477
+#: data/core/about_i18n.cfg:1500
 msgid "Russian Translation"
 msgstr "Venäjänkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1584
+#: data/core/about_i18n.cfg:1607
 msgid "Scottish Gaelic Translation"
 msgstr "Skotlantilaisen gaelinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1593
+#: data/core/about_i18n.cfg:1616
 msgid "Serbian Translation"
 msgstr "Serbiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1612
+#: data/core/about_i18n.cfg:1635
 msgid "Slovak Translation"
 msgstr "Slovakiankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1641
+#: data/core/about_i18n.cfg:1667
 msgid "Slovenian Translation"
 msgstr "Sloveniankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1683
 msgid "Spanish Translation"
 msgstr "Espanjankielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1747
+#: data/core/about_i18n.cfg:1773
 msgid "Swedish Translation"
 msgstr "Ruotsinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1792
+#: data/core/about_i18n.cfg:1818
 msgid "Turkish Translation"
 msgstr "Turkinkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1817
+#: data/core/about_i18n.cfg:1843
 msgid "Ukrainian Translation"
 msgstr "Ukrainankielen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1833
+#: data/core/about_i18n.cfg:1859
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciankatalaaninkielinen käännös"
 
 #. [about]
-#: data/core/about_i18n.cfg:1846
+#: data/core/about_i18n.cfg:1872
 msgid "Vietnamese Translation"
 msgstr "Vietnaminkielinen käännös"
 
 #. [about]
+#: data/core/about_i18n.cfg:1891
+msgid "Welsh Translation"
+msgstr "Kymrinkielinen käännös"
+
+#. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1900
 msgid "RACV’s Translation"
 msgstr "RACV:n käännös"
 
@@ -896,12 +903,12 @@ msgstr "Kukka"
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:421
 msgid "Go Here Overlay"
-msgstr "Mene tänne -päällys"
+msgstr "Mene tänne -peittävyys"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:427
 msgid "Large Pile of Gold Coins"
-msgstr "Suuri kasa kultakolikoita"
+msgstr "Iso kasa kultakolikoita"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:434
@@ -926,7 +933,7 @@ msgstr "Vasara"
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
 msgid "Runic Hammer"
-msgstr "Riimuinen vasara"
+msgstr "Riimuvasara"
 
 #. [item]: id=holy-water
 #. [object]
@@ -954,7 +961,7 @@ msgstr "Nahkareppu"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr "Nuija"
+msgstr "Helanuija"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
@@ -1090,7 +1097,7 @@ msgstr "Drudinsauva"
 #. [item]: id=staff-magic2
 #: data/core/editor/items.cfg:700 data/core/editor/items.cfg:707
 msgid "Magic Staff"
-msgstr "Lumottu kävelysauva"
+msgstr "Maaginen sauva"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
@@ -1111,7 +1118,7 @@ msgstr "Kivilaatta"
 #. [item]: id=storm-trident2
 #. [object]
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:552
 msgid "Storm Trident"
 msgstr "Myrskyjen kolmikärki"
 
@@ -1130,7 +1137,7 @@ msgstr "Miekka"
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
 msgid "Holy Sword"
-msgstr "Pyhämiekka"
+msgstr "Pyhä miekka"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
@@ -1268,7 +1275,7 @@ msgstr "Täysi pesä"
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:986
 msgid "Leaning Oak"
-msgstr "Nojaava tammi"
+msgstr "Kalteva tammi"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
@@ -1364,7 +1371,7 @@ msgstr "Temppeli"
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
 msgid "Ruined Temple"
-msgstr "Tuhoutunut temppeli"
+msgstr "Temppeliraunio"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -1403,7 +1410,7 @@ msgstr "Jätekasa"
 #: data/core/editor/items.cfg:1270 data/core/editor/items.cfg:1277
 #: data/core/editor/items.cfg:1284 data/core/editor/items.cfg:1291
 msgid "Burned Human Village"
-msgstr "Poltettu ihmisten kylä"
+msgstr "Poltettu ihmiskylä"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:1297
@@ -1552,7 +1559,7 @@ msgstr "Puolusta paikkaa..."
 #. [print]
 #: data/core/macros/ai_controller.cfg:489
 msgid "Right-click to select a location to defend"
-msgstr "Klikkaa hiiren oikealla näppäimellä haluamaasi puolustuspaikkaa"
+msgstr "Valitse puolustuspaikka oikealla hiiren napilla"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:496
@@ -1632,9 +1639,7 @@ msgstr "Siirrä johtaja..."
 
 #: data/core/macros/ai_controller.cfg:1116
 msgid "Right-click to select a location to move leader to"
-msgstr ""
-"Klikkaa hiiren oikealla näppäimellä valitaksesi paikan johtajasi "
-"siirtämiselle"
+msgstr "Valitse paikka johtajasi siirtämiselle hiiren oikealla napilla"
 
 #: data/core/macros/ai_controller.cfg:1117
 msgid "Move leader here"
@@ -1800,73 +1805,73 @@ msgstr ""
 "tehtävän loppuun asti."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:320
+#: data/core/macros/items.cfg:335
 msgid "Potion of Strength"
 msgstr "Voimajuoma"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:323
+#: data/core/macros/items.cfg:338
 msgid "Strength is given to the drinker."
 msgstr "Juoja saa voimaa."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:365
+#: data/core/macros/items.cfg:380
 msgid "Potion of Decay"
 msgstr "Mädätysjuoma"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:383
 msgid "This poor unit drank something really bad."
 msgstr "Tämä yksikköraukka joi jotain todella pahaa."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:404
+#: data/core/macros/items.cfg:419
 msgid "Ring of Regeneration"
 msgstr "Parantumisen sormus"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:407
+#: data/core/macros/items.cfg:422
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Tämä sormus parantaa kantajaansa hiukan joka vuoro."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:445
+#: data/core/macros/items.cfg:460
 msgid "Ring of Slowness"
 msgstr "Hitauden sormus"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:448
+#: data/core/macros/items.cfg:463
 msgid "The bearer of this ring is slowed."
 msgstr "Sormuksen kantaja hidastuu."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:499
 msgid "Staff of Swiftness"
 msgstr "Nopeuden sauva"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:487
+#: data/core/macros/items.cfg:502
 msgid "This staff will grant the bearer swift movement."
 msgstr "Tämä sauva antaa kantajalleen nopean liikkumisen."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:488
+#: data/core/macros/items.cfg:503
 msgid "Only magical beings can wield such an object."
 msgstr "Vain taikaolennot voivat käyttää tuollaista esinettä."
 
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:547
 msgid "Should $unit.name pick up the trident?"
 msgstr "Pitäisikö yksikön $unit.name ottaa kolmikärki?"
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:548
 msgid "storm trident^Take it"
 msgstr "Ota"
 
-#: data/core/macros/items.cfg:534
+#: data/core/macros/items.cfg:549
 msgid "storm trident^Leave it"
 msgstr "Jätä"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:550
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
@@ -1875,14 +1880,14 @@ msgstr ""
 "voi käyttää sitä."
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:555
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
 "Tämä kolmikärki antaa merenmiehelle kyvyn ampua vihollisiaan salamoilla."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:568
+#: data/core/macros/items.cfg:583
 msgid "sceptre of fire"
 msgstr "tulivaltikka"
 
@@ -3590,7 +3595,7 @@ msgid "Weight of Revenge"
 msgstr "Weight of Revenge"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Sait $amount_gold kultapalaa."
 
@@ -3762,7 +3767,7 @@ msgstr "Torni"
 #. [color_range]: id=rails
 #: data/core/team-colors.cfg:213
 msgid "Rail"
-msgstr "Kisko"
+msgstr "Raide"
 
 #. [color_range]: id=unwalkable
 #: data/core/team-colors.cfg:219
@@ -3827,8 +3832,8 @@ msgid ""
 msgstr ""
 "Lainkuuliaiset yksiköt taistelevat parhaiten päivällä, ja huonoiten yöllä.\n"
 "\n"
-"Päivä: +25% vahinkoon\n"
-"Yö: −25% vahinkoon"
+"Päivä: +25% vahinkoa\n"
+"Yö: −25% vahinkoa"
 
 #. [language]
 #: data/english.cfg:12
@@ -3847,8 +3852,8 @@ msgid ""
 msgstr ""
 "Kaoottiset yksiköt taistelevat parhaiten öisin, ja huonoiten päivällä.\n"
 "\n"
-"Päivä: −25% vahinkoon\n"
-"Yö: +25% vahinkoon"
+"Päivä: −25% vahinkoa\n"
+"Yö: +25% vahinkoa"
 
 #. [language]
 #: data/english.cfg:17
@@ -3859,7 +3864,7 @@ msgid ""
 msgstr ""
 "Hämärässä viihtyvät yksiköt taistelevat parhaiten hämärässä.\n"
 "\n"
-"Hämärä: +25% vahinkoon"
+"Hämärä: +25% vahinkoa"
 
 #. [language]
 #: data/english.cfg:31
@@ -4163,7 +4168,7 @@ msgstr "Ei"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr "Kuvankaappaus"
 
@@ -4200,37 +4205,37 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Viallinen poistotaso $level (pitäisi olla 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:882
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Viallinen poistotaso (pitäisi olla 1-4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1056
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
 msgid "female^poisoned"
 msgstr "myrkytetty"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
 msgid "female^slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
 msgid "slowed"
 msgstr "hidastettu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
 msgid "female^petrified"
 msgstr "kivetetty"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
 msgid "petrified"
 msgstr "kivetetty"
 
@@ -4283,7 +4288,7 @@ msgstr "Suunnittele yksikön ylennystä"
 #: data/modifications.cfg:7
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
-"if it advances on another player's turn. With this modification you can set "
+"if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
@@ -4454,12 +4459,12 @@ msgid "Menu"
 msgstr "Valikko"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Päätä skenaario"
 
@@ -4478,34 +4483,39 @@ msgstr "Tavallinen teema"
 msgid "Load Turn..."
 msgstr "Lataa vuoro..."
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+msgid "Replay Turn..."
+msgstr "Toista vuoro..."
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Toiminnot"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "EP"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "KP"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
-msgstr "MP"
+msgstr "LP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr "puol"
 
 # Yli 3 kirjaiminen käännös ei mahdu sivupaneeliin.
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:408
 msgid "statuspanel^lvl"
 msgstr "T"
 
@@ -4529,7 +4539,7 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Käyttääksesi kehittyneempiä ominaisuuksia valitse karttaeditorissa <i>Uusi "
+"Käytä kehittyneempiä ominaisuuksia valitsemalla karttaeditorissa <i>Uusi "
 "skenaario</i> <i>Tiedosto</i>-valikossa."
 
 #. [tip]
@@ -4548,14 +4558,14 @@ msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
-"Älä laiminlyö johtajasi kokemustasoa! Joudut pitämään hänet turvassa, mutta "
-"jos suojelet häntä liikaa, hän saattaa olla liian matalatasoinen "
-"selviytyäkseen tulevaisuudessa."
+"Älä laiminlyö johtajasi kokemuksen saantia! Joudut pitämään hänet turvassa, "
+"mutta jos hyysäät häntä liikaa, hän voi olla liian heikko selvitäkseen "
+"tulevista taisteluista."
 
 #. [tip]
 #: data/tips.cfg:17 data/tips.cfg:149
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Suurmaagi Delfador, 516 WV</i>"
+msgstr "<i>― Suurvelho Delfador, 516 WV</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -4567,7 +4577,7 @@ msgid ""
 msgstr ""
 "<b>Toiminnot</b>-valikosta voit valita <b>Näytä vihollisten liikkeet</b> "
 "korostaaksesi kaikki mahdolliset ruudut, joihin vastustajasi voi siirtyä "
-"(edellyttäen omien yksiköittesi pysyvän paikoillaan). Käytä tätä "
+"(edellyttäen omien yksiköidesi pysyvän paikoillaan). Käytä tätä "
 "varmistaaksesi, ettei vihollinen voi vuorollaan saavuttaa heikkoja tai "
 "vahingoittuneita yksiköitäsi."
 
@@ -4590,9 +4600,9 @@ msgid ""
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"<i>Älykäs</i>-ominaisuudella varustetut yksiköt vaativat vähemmän kokemusta "
-"kehittyäkseen. Yritä antaa kampanjan alkuvaiheessa viimeistelyiskut näillä "
-"yksiköillä, jotta saat korkeatasoisia yksiköitä nopeammin."
+"Yksiköt, joilla on <i>Älykäs</i>-piirre, vaativat vähemmän kokemusta "
+"ylentyäkseen. Yritä kampanjan alkuvaiheessa antaa tappoiskut näille "
+"yksiköille, jotta saat korkeatasoisia joukkoja varhain."
 
 #. [tip]
 #: data/tips.cfg:25
@@ -4608,10 +4618,10 @@ msgid ""
 "must completely surround skirmishers to immobilize them."
 msgstr ""
 "Kahdella yksiköllä ympäröinti on erittäin voimakas, varsinkin nopeita "
-"yksiköitä vastaan. Sijoittamalla kaksi yksikköä vastakkain vastustajan "
-"ympärille heidän aluekontrollinsa estää vastustajan yksikköä liikkumasta "
-"yhtä heksaa kauemmaksi. Jos kahakoitsijaa yrittää estää liikkumasta, se "
-"täytyy valitettavasti saartaa kokonaan."
+"yksiköitä vastaan. Sijoittamalla kaksi yksikköä vastakkain vihollisen "
+"ympärille heidän aluehallintansa rajoittaa vihollisyksikköä liikkumasta yhtä "
+"heksaa kauemmas. Kahakoitsijaa täytyy valitettavasti saartaa kokonaan niiden "
+"pysäyttämiseksi."
 
 #. [tip]
 #: data/tips.cfg:29 data/tips.cfg:141
@@ -4626,8 +4636,8 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Voit käyttää <b>Värvää</b>- ja <b>Kutsu veteraaniyksikkö</b>-komentoja "
-"klikkaamalla oikealla hiirennapilla jotain linnan ruutua. Näin voit päättää, "
+"Voit käyttää komentoja <b>Värvää</b> ja <b>Kutsu veteraaniyksikkö</b> "
+"klikkaamalla hiiren oikealla napilla jotain linnaruutua. Näin voit päättää, "
 "mihin ruutuun uuden yksikön haluat. Sijoittamalla uudet yksiköt viisaasti "
 "voit päästä joihinkin kyliin aikaisemmin."
 
@@ -4649,11 +4659,10 @@ msgid ""
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"<i>Nopea</i> ominaisuudella varustetut yksiköt voivat liikkua yhden "
-"ylimääräisen ruudun vuorossa. Tämä voi olla erittäin tärkeää silloin, kun "
-"liikutaan vaikean maaston läpi, kuten vedessä tai luolissa. Silloin nopea "
-"yksikkö voi joskus liikkua kaksi ruutua vuorossa toisten päästessä vain "
-"yhden."
+"Yksiköt, joilla on <i>Nopea</i>-piirre, voivat liikkua yhden ylimääräisen "
+"ruudun vuorossa. Tämä voi olla erittäin tärkeää silloin, kun liikutaan "
+"vaikean maaston läpi, kuten vedessä tai luolissa. Silloin on väliä, pystyykö "
+"liikkumaan yhden vai kaksi heksaa."
 
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:218 data/tips.cfg:230
@@ -4667,7 +4676,7 @@ msgid ""
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
 "harder!"
 msgstr ""
-"Muutaman tehtävän pelattuasi, lue <b>Ohjeesta</b> osio <b>Peli</b> "
+"Muutaman tehtävän pelattuasi lue <b>Ohjeesta</b> osio <b>Peli</b> "
 "huolellisesti. Yksityiskohdat tulevat tärkeämmiksi tehtävien muuttuessa "
 "haastavammiksi!"
 
@@ -4679,7 +4688,7 @@ msgid ""
 "higher level."
 msgstr ""
 "On yleensä parempi aloittaa kampanjan seuraava skenaario alemman tason "
-"yksiköillä, jotka ovat juuri kehittymässä, kuin samoilla korkeamman tason "
+"yksiköillä, jotka ovat juuri ylenemässä, kuin samoilla korkeamman tason "
 "yksiköillä."
 
 #. [tip]
@@ -4704,9 +4713,9 @@ msgid ""
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
 "<i>Lainkuuliaiset</i> yksiköt taistelevat parhaiten päivisin ja "
-"<i>kaoottiset</i> taas öisin. <i>Neutraalit</i> yksiköt taistelevat yhtä "
-"hyvin vuorokaudenajasta riippumatta. Jotkin harvat yksiköt taistelevat "
-"parhaiten aamu- ja iltahämärässä."
+"<i>kaoottiset</i> öisin. <i>Neutraaleihin</i> yksiköihin ei vuorokaudenaika "
+"vaikuta. Harvinaiset <i>liminaali</i>-yksiköt taistelevat parhaiten aamu- ja "
+"iltahämärässä."
 
 #. [tip]
 #: data/tips.cfg:57
@@ -4738,11 +4747,11 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Jos pelaat <i>sumulla</i> tai <i>hunnulla</i>, et näe mitä olet kohtaamassa. "
-"Tällaisessa tapauksessa pitkän matkan tiedustelijayksiköt ovat arvonsa "
-"väärtejä. Yritä valita tiedustelijat, jotka voivat helposti liikkua "
+"Jos pelaat <i>sumu</i> tai <i>huntu</i> aktiivisina, et näe, mitä olet "
+"kohtaamassa. Tällaisessa tapauksessa pitkän matkan tiedustelijayksiköt ovat "
+"arvonsa väärtejä. Yritä valita tiedustelijat, jotka voivat helposti liikkua "
 "ympäröivässä maastossa, koska yksiköt näkevät juuri niin pitkälle kuin "
-"voivat yhdessä kierroksessa liikkua."
+"voivat liikkua yhdessä vuorossa."
 
 #. [tip]
 #: data/tips.cfg:68
@@ -4755,9 +4764,9 @@ msgid ""
 msgstr ""
 "Hyökkäyksiä on kuutta tyyppiä: <i>lävistys</i>, <i>viilto</i>, <i>murskaus</"
 "i>, <i>tuli</i>, <i>kylmä</i> ja <i>salatiede</i>. Eri yksiköillä on "
-"heikkouksia erilaisia hyökkäyksiä vastaan. Klikkaa yksikköä hiiren oikealla "
-"napilla, valitse <i>Yksikön kuvaus</i> nähdäksesi, kuinka hyvin yksikkö "
-"vastustaa erilaisia hyökkäystyyppejä."
+"heikkouksia eri hyökkäystyypejä vastaan. Tarkasta yksikön vastustuskyky "
+"erilaisille hyökkäystyyppeille klikkaamalla yksikköä hiiren oikealla napilla "
+"ja valitsemalla <i>Yksikön kuvaus</i>."
 
 #. [tip]
 #: data/tips.cfg:72
@@ -4767,9 +4776,9 @@ msgid ""
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
-"Maasto, jossa yksikkösi on, on tärkein tekijä joka vaikuttaa vihollisten "
-"mahdollisuuteen osua yksikköösi taistelussa. Puolustusprosentti valitulle "
-"yksikölle valitussa maastossa näkyy ruudun oikeassa yläkulmassa."
+"Maasto, jossa yksikkösi on, on tärkein tekijä, joka vaikuttaa yksikön "
+"mahdollisuuteen saada osumaa. Puolustusarvo valitulla yksiköllä valitussa "
+"maastossa näkyy ruudun oikeassa yläkulmassa."
 
 #. [tip]
 #: data/tips.cfg:76
@@ -4781,10 +4790,10 @@ msgid ""
 "a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 msgstr ""
 "Myrkytetyt yksiköt menettävät kahdeksan elämäpistettä joka vuorolla, kunnes "
-"he ovat pisteen päästä kuolemasta. Ne jäävät kuoleman partaalle, kunnes "
-"myrkky on poistettu. Hoivaajat voivat estää myrkytetyn yksikön tilan "
-"huonontumisen, mutta myrkky ei katoa ennen kuin yksikkö uusiutuu, viettää "
-"vuoron kylässä tai <i>lääkitsemään</i> kykenevän yksikön vieressä."
+"ovat pisteen päässä kuolemasta. He jäävät kuoleman partaalle, kunnes myrkky "
+"on poistettu. Hoivaajat voivat estää myrkytettyä yksikköä heikentymästä, "
+"mutta myrkky ei poistu, paitsi jos yksikkö uusiutuu, viettää vuoron kylässä "
+"tai on <i>lääkitsemään</i> kykenevän yksikön vieressä."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -4793,8 +4802,8 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Voit käyttää yksiköitä aikaisemmista taisteluista <b>Kutsumalla "
-"veteraaniyksikön</b> <b>Toiminnot</b>-valikosta. Kutsumalla samat yksiköt "
+"Voit käyttää yksiköitä aiemmasta skenaariosta valitsemalla <b>Kutsu "
+"veteraaniyksikkö</b> <b>Toiminnot</b>-valikosta. Kutsumalla samat yksiköt "
 "yhä uudelleen voit luoda tehokkaan ja kokeneen armeijan."
 
 #. [tip]
@@ -4806,12 +4815,11 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Yksiköt <i>hallitsevat</i> kaikkia vieressään olevia heksoja. Jos yksikkö "
-"liikkuu vihollisen hallitsemaan heksaan, se ei voi liikkua enempää sillä "
-"vuorolla. Tämä tarkoittaa, että yksiköillä voi olla kaksi tyhjää heksaa "
-"välissään, ja silti ne muodostavat esteen viholliselle. (Tason 0 yksiköt "
-"ovat liian heikkoja hallitsemaan aluetta ja kahakoitsijat osaavat taitavasti "
-"välttää näiden alueiden vaikutukset.)"
+"Ykkös- ja ylempitasoisilla ysiköillä on <i>aluehallinta</i> kuudessa "
+"heksassa ympärillään. Jos yksikkö liikkuu vihollisen hallitsemaan heksaan, "
+"se ei voi liikkua edemmäs sillä vuorolla. Tämä tarkoittaa, että yksiköillä "
+"voi olla kaksi tyhjää heksaa välissään ja silti he muodostavat esteen "
+"viholliselle. Varo: kahakoitsijat pääsevät näistä aukoista."
 
 #. [tip]
 #: data/tips.cfg:88
@@ -4824,8 +4832,8 @@ msgid ""
 msgstr ""
 "Mahdollisuus osua yksikköön riippuu yleensä yksikön puolustustaidosta siinä "
 "maastossa, jossa se on. Maagisilla hyökkäyksillä on kuitenkin aina 70% "
-"mahdollisuus osua sekä hyökätessä että puolustaessa. <i>Tarkk’ampujilla</i> "
-"on aina vähintään 60% mahdollisuus osua hyökätessään omalla vuorollaan."
+"mahdollisuus osua. <i>Tarkk’ampuja</i>-kyvyllä on aina vähintään 60% "
+"mahdollisuus osua hyökätessään omalla vuorollaan."
 
 #. [tip]
 #: data/tips.cfg:89
@@ -4838,8 +4846,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Kylässä oleva yksikkö parantuu 8 elämäpisteellä vuoronsa alussa tai parantuu "
-"myrkytyksestä."
+"Kylässä oleva yksikkö joko parantuu 8 elämäpisteellä vuoronsa alussa tai "
+"vapautuu myrkytyksestä."
 
 #. [tip]
 #: data/tips.cfg:96
@@ -4848,7 +4856,7 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Älä siirrä loukkaantuneita yksiköitä, ellei sinun täydy – jätä heidät "
+"Älä siirrä loukkaantuneita yksiköitä, ellei ole pakko. Jätä heidät "
 "lepäämään. Lepäävät yksiköt parantuvat kahdella elämäpisteellä seuraavan "
 "vuoron alussa."
 
@@ -4861,9 +4869,9 @@ msgid ""
 "are not caught out by a surprise attack."
 msgstr ""
 "Kartoissa, joissa on käytössä <i>sumu</i> tai <i>huntu</i>, yksiköt näkevät "
-"vain niin kauas kuin minne pystyvät liikkumaan. Jos omistat tärkeitä mutta "
-"hitaita yksiköitä, voi olla hyödyllistä pitää ainakin yhtä nopeaa yksikköä "
-"niiden mukana jotta vihollinen ei yllätä niitä."
+"vain niin kauas kuin minne pystyvät liikkumaan. Jos sinulla on tärkeitä "
+"mutta hitaita yksiköitä, pidä ainakin yhtä nopeaa yksikköä niiden mukana, "
+"jottei vihollinen pääse yllättämään."
 
 #. [tip]
 #: data/tips.cfg:104
@@ -4872,9 +4880,8 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"Useimmat jalkaväkiyksiköt puolustavat paremmin linnoissa ja kylissä kuin "
-"muualla, kun taas ratsuväki ei yleensä saa puolustusetua kylistä ja "
-"linnoista."
+"Jalkaväkiyksiköt puolustavat paremmin linnoissa ja kylissä kuin muualla, kun "
+"taas ratsuväki ei yleensä saa puolustusetua kylistä ja linnoista."
 
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:185
@@ -4889,8 +4896,7 @@ msgid ""
 "and spears."
 msgstr ""
 "Ratsuyksiköt vastustavat yleensä hyvin viiltoja ja murjovia iskuja, mutta "
-"ovat heikkoja lävistäviä hyökkäyksiä, esimerkiksi jousia ja keihäitä, "
-"vastaan."
+"ovat heikkoja lävistäville hyökkäyksille, kuten jousille ja keihäille."
 
 #. [tip]
 #: data/tips.cfg:109
@@ -4905,9 +4911,9 @@ msgid ""
 "every level of the unit they kill, or four experience points for a zero-"
 "level opponent."
 msgstr ""
-"Yksikön tappaminen on paras tapa saada kokemusta. Yksikkö, joka antaa "
-"viimeisen iskun viholliselle, saa kahdeksan kokemuspistettä jokaisesta "
-"vihollisyksikön tasosta tai neljä kokemuspistettä 0-tason vastustajasta."
+"Tappoiskun tekeminen vihollisyksiköön on paras tapa saada kokemusta. "
+"Vihollisen tappanut yksikkö saa kahdeksan kokemuspistettä jokaisesta tapetun "
+"yksikön tasosta tai neljä kokemuspistettä 0-tason vastustajasta."
 
 #. [tip]
 #: data/tips.cfg:116
@@ -4925,7 +4931,7 @@ msgid ""
 "troops, wait for better conditions and then attack."
 msgstr ""
 "Kärsivällisyys on usein tärkeää. Sen sijaan, että hyökkäisit huonoissa "
-"olosuhteissa ja vähäisillä joukoilla, odota että tilanne paranee ja hyökkää "
+"olosuhteissa tai vähäisillä joukoilla, odota parempaa tilannetta ja hyökkää "
 "vasta sitten."
 
 #. [tip]
@@ -4934,15 +4940,15 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-"Jos kimppuusi hyökätään useammasta suunnasta, saattaa olla hyvä ajatus "
-"lähettää uhrattavia yksiköitä joihinkin suuntiin hidastamaan vihollista."
+"Jos kimppuusi hyökätään useasta suunnasta, voi olla hyvä ajatus lähettää "
+"uhrattavia yksiköitä joihinkin suuntiin hidastamaan vihollista."
 
 #. [tip]
 #: data/tips.cfg:128
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Älä pelkää vetäytyä ja järjestäytyä uudestaan – se on usein avain voittoon."
+"Älä pelkää vetäytyä ja järjestäytyä uudestaan. Se on usein avain voittoon."
 
 #. [tip]
 #: data/tips.cfg:129
@@ -4957,10 +4963,9 @@ msgid ""
 "remaining. You will usually earn more gold this way than through capturing "
 "villages and waiting for the turns to run out."
 msgstr ""
-"Useimmissa kampanjoissa saat kultabonuksen nopeasta voitosta. Bonuksen määrä "
-"riippuu kartalla olevien kylien ja jäljelle jääneiden vuorojen määrästä. "
-"Näin saat aina enemmän kultaa kuin valtaamalla kyliä ja odottamalla vuorojen "
-"loppumista."
+"Useimmissa kampanjoissa saat lisäkultaa nopeasta voitosta riippuen kartalla "
+"olevien kylien ja jäljelle jääneiden vuorojen määrästä. Näin saat aina "
+"enemmän kultaa kuin valtaamalla kyliä ja odottamalla vuorojen loppumista."
 
 #. [tip]
 #: data/tips.cfg:136
@@ -4971,9 +4976,9 @@ msgid ""
 "even capture an enemy’s keep and use that."
 msgstr ""
 "<i>Johtaja</i> voi kutsua ja värvätä yksiköitä missä tahansa linnakkeessa, "
-"ei vain siinä, jossa hän aloitti. Voit siis vallata linnakkeen viholliselta "
-"ja värvätä siellä, tai jos liittolaisesi haluavat tehdä tilaa, voit värvätä "
-"heidän linnakkeissaan."
+"ei pelkästään siinä, jossa hän aloitti. Joskus liittolaisesi voivat "
+"halukkasti tehdä tilaa, niin voit värvätä heidän linnakkeissaan, tai voit "
+"joskus jopa vallata vihollislinnakkeen ja värvätä siellä."
 
 #. [tip]
 #: data/tips.cfg:140
@@ -4991,10 +4996,10 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"Yksiköt, joilla on johtamiskyky, auttavat viereisiä alemman kokemustason "
-"yksiköitä taistelemaan paremmin. Näitä yksiköitä kannattaa liikutella ympäri "
-"taistelulinjoja antamassa taisteluetua suurelle määrälle matalan tason "
-"joukkoja."
+"Yksiköt, joilla on <i>johtamiskyky</i>, auttavat viereisiä, alemman tason "
+"saman puolen yksiköitä taistelemaan paremmin. Voit liikuttaa näitä yksiköitä "
+"ympäri taistelulinjoja antamaan etuja suurelle määrälle alempitasoisille "
+"joukoille."
 
 #. [tip]
 #: data/tips.cfg:148
@@ -5003,9 +5008,8 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"Yleensä on parasta olla jäämättä miehittämättömän kylän viereen. "
-"Vihollisyksikkö voi miehittää kylän ja hyökätä kylän tarjoamista "
-"puolustusasemista. Lisäksi se voi hyödyntää kylän parantavaa vaikutusta."
+"Vältä siirtoa tyhjän kylän viereen. Vihollisyksikkö voi siirtyä kylään ja "
+"hyökätä sieltä käsin hyödyntäen kylän suojaavaa ja parantavaa vaikutusta."
 
 #. [tip]
 #: data/tips.cfg:152
@@ -5016,10 +5020,9 @@ msgid ""
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
 "Kenelle tahansa pelaajalle kylien hallinta on usein avain voittoon. Voit "
-"käyttää tätä tietoa houkutellaksesi vihollisen ansaan jättämällä joitakin "
-"kyliä tyhjiksi. Muista kuitenkin, että vihollisen yksiköitä on paljon "
-"hankalampi ajaa pois kylistä. Suunnittele siirtosi tilanteen vaatimalla "
-"tavalla."
+"tällä tiedolla houkutella vihollisen ansaan jättämällä joitakin kyliä "
+"tyhjiksi. Muista kuitenkin, että vihollisyksiköitä on paljon hankalampi ajaa "
+"pois kylistä! Suunnittele siirtosi tilanteen mukaan."
 
 #. [tip]
 #: data/tips.cfg:153
@@ -5053,7 +5056,7 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Viedessäsi hiiren kursorin vihollisyksikön päälle, näet kuinka pitkälle se "
+"Viedessäsi hiiren osoittimen vihollisyksikön päälle näet, kuinka pitkälle se "
 "voi liikkua."
 
 #. [tip]
@@ -5063,7 +5066,7 @@ msgid ""
 "needing to attack anything themselves."
 msgstr ""
 "Hoivaajat tuovat sinulle voiton, vaikka eivät itse taistelisikaan. Käytä "
-"niitä hyökkäävien yksiköiden tukemiseen."
+"heitä hyökkäävien yksiköiden tukemiseen."
 
 #. [tip]
 #: data/tips.cfg:169 data/tips.cfg:210
@@ -5077,7 +5080,7 @@ msgid ""
 "they do on all attacks until they end a turn."
 msgstr ""
 "<i>Hidastus</i> hidastaa vihollisen liikettä ja puolittaa sen tekemän "
-"vahingon sen oman vuoron loppuun asti."
+"vahingon vuoron loppuun asti."
 
 #. [tip]
 #: data/tips.cfg:176
@@ -5088,7 +5091,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:177
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Suurvelho Dacyn, WV 626</i>"
+msgstr "<i>― Suurtietäjä Dacyn, WV 626</i>"
 
 #. [tip]
 #: data/tips.cfg:180
@@ -5096,8 +5099,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"Yksiköt paranevat noustessaan kokemustasolla. Viisaasti käytettynä tämä voi "
-"ratkaista voiton."
+"Yksiköt paranevat noustessaan kokemustason. Viisaasti käytettynä tämä voi "
+"muuttaa taistelun kulun."
 
 #. [tip]
 #: data/tips.cfg:184
@@ -5130,9 +5133,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Kehittääkseen pienitasoisia yksiköitä nopeasti, ryhmitä ne veteraanin kanssa "
-"ja käytä veteraania vahingoittamaan kohdetta tarpeeksi saadaksesi heikomman "
-"yksikön aiheuttamaan tappoiskun."
+"Kehitä matalatasoisia yksiköitä nopeasti ryhmittämällä heidät veteraanin "
+"kanssa ja käytämällä veteraania vahingoittamaan kohdetta tarpeeksi, jotta "
+"alempi yksikkö saa tappoiskun."
 
 #. [tip]
 #: data/tips.cfg:193
@@ -5147,7 +5150,7 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"Et voi peruuttaa siirtoa, joka on hälventänyt yhtään sumua tai huntua. Jos "
+"Et voi peruuttaa siirtoa, joka on hälventänyt sumua tai huntua. Jos "
 "tarvitset tällaisissa tilanteissa peruutustoimintoa, valitse <b>Viivytä "
 "peitteen päivitystä</b> tai käytä uutta suunnittelutyökalua."
 
@@ -5157,8 +5160,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
-"Jos vastustaja hyötyy harvinaisesta maastotyypistä enemmän kuin sinä, "
-"tällaisen maaston valloittaminen riistää vastustajalta sen hyödyt."
+"Jos vastustaja hyötyy harvinaisesta maastotyypistä sinua enemmän, tällaisen "
+"maaston miehitys vie vastustajalta sen hyödyt."
 
 #. [tip]
 #: data/tips.cfg:205
@@ -5167,7 +5170,7 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
-"Muutamilla yksiköillä on hyvä puolustus vedessä: hyökkääjien linja joen "
+"Muutamilla yksiköillä on hyvä puolustus vedessä. Hyökkääjien linja joen "
 "reunalla voi aiheuttaa suuria tappioita. Haltiat voivat käyttää metsänreunaa "
 "samaan tarkoitukseen ja kääpiöt vuoristoa."
 
@@ -5182,12 +5185,12 @@ msgid ""
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
 "<i>Hidastus</i> on todella voimakas kyky, koska sillä on niin paljon "
-"erilaisia vaikutuksia. Vihollisen epäkuolleiden käyttämä <i>elämän imeminen</"
-"i> puolittuu, <i>rynnäkkö</i> tai <i>selkäänpuukotus</i> eivät tee "
-"ylimääräistä vahinkoa, ja <i>taisteluhurmos</i> on heikompi. Nopeilla "
-"vihollisilla on täysi työ päästä pakoon ja hitaammat pääsevät tuskin "
-"liikkumaan. Omat yksikkösi kärsivät vähemmän vahinkoa vastaiskuista, jolloin "
-"ne on nopeampi hoivata taas täyteen kuntoon."
+"erilaisia vaikutuksia. Epäkuolleiden vihollisten käyttämä <i>elämänimu</i> "
+"puolittuu, <i>rynnäkkö</i> tai <i>selkäänpuukotus</i> eivät tee lisävahinkoa "
+"ja <i>taiston hurma</i> on heikompi. Nopeilla vihollisilla on täysi työ "
+"päästä pakoon ja hitaammat pääsevät tuskin liikkumaan. Omat yksikkösi "
+"kärsivät vähemmän vahinkoa vastaiskuista, jolloin ne on nopeampi parantaa "
+"taas täyteen kuntoon."
 
 #. [tip]
 #: data/tips.cfg:213
@@ -5197,10 +5200,11 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
-"Yksiköitä joilla on pieni määrä vahvoja hyökkäyksiä—kuten pimeän tuntijoita, "
-"hevosmiehiä, örkkisotureita tai ukkoskääpiöitä—kannattaa käyttää kahden tai "
-"kolmen ryhmissä. Näin saat yrittää uudelleen jos ensimmäinen vahva "
-"hyökkäyksesi epäonnistuu — mikä väistämättä ajoittain tapahtuukin."
+"Yksiköitä, joilla on pieni määrä vahvoja hyökkäyksiä — kuten pimeyden "
+"tuntijoita, hevosmiehiä, örkkisotureita tai ukkoskääpiöitä — kannattaa "
+"käyttää kahden tai kolmen ryhmissä. Näin saat yrittää uudelleen, jos "
+"ensimmäinen vahva hyökkäyksesi menee ohi, mikä väistämättä ajoittain "
+"tapahtuukin."
 
 #. [tip]
 #: data/tips.cfg:217
@@ -5210,11 +5214,11 @@ msgid ""
 "use leadership — or a strong or dextrous unit — whenever the extra point or "
 "two of damage makes a one-hit kill possible."
 msgstr ""
-"Yksiköt joilla on kolme hyökkäystä tai enemmän — etenkin maagisia "
+"Yksiköt, joilla on kolme hyökkäystä tai enemmän — etenkin maagisia "
 "hyökkäyksiä — sopivat hyvin sellaisten vihollisten tappamiseen, joilla on "
-"vain muutama elämäpiste jäljellä. Jos yksikölle olisi jäämässä vain yksi tai "
-"kaksi kestopistettä, harkitse voisitko käyttää johtamiskykyä tai kenties "
-"vahvaa taikka tarkkaa yksikköä tappamaan vihollisen yhdellä iskulla."
+"vain muutama elämäpiste jäljellä. Varmista, että käytät johtamiskykyä, "
+"taikka vahvaa tai taitavaa yksikköä, silloin kun yksi tai kaksi "
+"vahinkopistettä lisää mahdollistaa tappamisen kertaiskusta."
 
 #. [tip]
 #: data/tips.cfg:221
@@ -5223,9 +5227,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
-"Älä turhaan vapauta veteraaniyksiköitäsi palveluksesta, ei väliä sillä miten "
-"vähän kokemusta sillä on. Joskus kannattaa maksaa ylimääräistä saadakseen "
-"yksikön, jonka ominaisuudet ovat jo tiedossa."
+"Älä turhaan vapauta veteraaniyksiköitäsi palveluksesta, vaikka miten vähän "
+"kokemusta sillä on. Joskus kannattaa maksaa ylimääräistä saadakseen yksikön, "
+"jonka ominaisuudet ovat jo tiedossa."
 
 #. [tip]
 #: data/tips.cfg:225
@@ -5234,15 +5238,14 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
-"Kun jokin kestävä yksikkösi on haavoittunut pahoin, voit lähettää sen "
-"paranemaan kylään, joka on useamman vuoron päässä taistelusta. Siellä se voi "
-"parantua rauhassa (10 kestopisteen vuorovauhtia) ilman että se sitoo "
-"etulinjassa olevia kyliä."
+"Kun jokin kestävä yksikkösi on haavoittunut pahoin, lähetä se paranemaan "
+"kylään, joka on useamman vuoron päässä taistelusta. Siellä se voi parantua "
+"rauhassa (10 kestopistettä vuorossa) ilman että se sitoo etulinjan kyliä."
 
 #. [tip]
 #: data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― Hamel, Knalgan Lordi</i>"
+msgstr "<i>― Hamel, Knalgan Ylimys</i>"
 
 #. [tip]
 #: data/tips.cfg:229
@@ -5252,9 +5255,9 @@ msgid ""
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
 "Useamman ominaisuuden yhdistäminen voi olla viholliselle kuolettavaa. Vaikka "
-"vaatii jonkin verran työtä yhdistää sellaisia ominaisuuksia kuten "
-"<i>johtajuus</i>, <i>valaisu</i> tai <i>rynnäkkö</i> hidastettua vastustajaa "
-"vastaan, niiden tulokset voivat olla vaikuttavia."
+"vaatii jonkin verran työtä yhdistää ominaisuuksia, kuten <i>johtajuus</i>, "
+"<i>valaisu</i> tai <i>rynnäkkö</i> hidastettua vastustajaa vastaan, niiden "
+"tulokset voivat olla vaikuttavia."
 
 #. [tip]
 #: data/tips.cfg:233
@@ -5264,11 +5267,10 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
-"Vaikka aikainen lopetus antaakin ylimääräistä kultaa, ja vähentää "
-"viholliselta tilaisuuksia tappaa arvokkaita sotilaitasi, se tarkoittaa myös "
-"sitä, että yksikkösi eivät saa niin paljon tilaisuuksia hankkia kokemusta. "
-"Nämä molemmat asiat kannattaa ottaa huomioon kun miettii haluaako tehtävän "
-"lopettaa aikaisin."
+"Vaikka aikainen lopetus antaakin ylimääräistä kultaa ja vähentää "
+"viholliselta tilaisuuksia tappaa arvokkaita joukkojasi, se tarkoittaa myös "
+"sitä, että yksikkösi menettävät tilaisuuksia saada lisäkokemusta. Nämä asiat "
+"kannattaa ottaa huomioon kun miettii, haluaako tehtävän lopettaa aikaisin."
 
 #. [tip]
 #: data/tips.cfg:237
@@ -5279,11 +5281,11 @@ msgid ""
 "average. Plan for heavy losses, and take firm control of any hex where the "
 "land does favor you."
 msgstr ""
-"Jos joukkosi ovat heikkoja ja ympäriinsä karttaa, pidä hallussasi sellaiset "
-"alueet missä vihollinen voi hyökätä kimppuusi vain haitallisesta asemasta. "
-"Vältä paikkoja joissa oma puolustuksesi on huono ja vihollisesti "
+"Jos joukoillasi on heikko puolustus kaikkialla kartalla, miehitä alueet, "
+"joilla viholliset voivat hyökätä niin, että heilläkin on samat heikkoudet. "
+"Vältä paikkoja, joissa oma puolustuksesi on huono ja vihollisilla "
 "keskinkertainen. Varaudu raskaisiin tappioihin ja ota tiukasti hallintaan "
-"mikä tahansa ruutu, jossa maasto on sinulle edullinen."
+"mikä tahansa heksa, jossa maasto on sinulle suotuisa."
 
 #. [tip]
 #: data/tips.cfg:241
@@ -5293,9 +5295,8 @@ msgid ""
 "may be cheaper."
 msgstr ""
 "Joidenkin yksiköiden värvääminen voi maksaa enemmän kuin veteraaniyksikön "
-"värvääminen maksaa (20 kultakolikkoa). Kampanjassa sinun kannattaa aina "
-"tarkistaa, jos voit värvätä veteraaniyksikön uuden yksikön värväämisen "
-"sijaan."
+"kutsuminen (20 kultakolikkoa). Kampanjassa tarkasta aina, onko samantyppisen "
+"veteraaniyksikön kutsuminen halvempaa."
 
 #. [tip]
 #: data/tips.cfg:245
@@ -5303,7 +5304,7 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
-"Sinun täytyy hyväksyä joidenkin yksiköiden menetys. Ei ole epätavallista, "
+"Sinun täytyy hyväksyä joitain menetyksiä taistelussa. Ei ole epätavallista, "
 "että aloittelija menettää kyvyn nähdä tien voittoon, kun hän yrittää pitää "
 "jokaisen yksikön elossa."
 
@@ -5357,14 +5358,14 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
-"Jos yksikkö on sijoitettu kahden eri liittolaisen parantajien vierelle, "
+"Jos yksikkö on sijoitettu kahden eri liittolaisen parantajien viereen, "
 "yksikkö parannetaan kummankin osapuolen vuoroilla. Tällä tavalla yksikkö "
 "voidaan parantaa nopeammin kuin normaalisti."
 
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Tallinn, Knalgan Lordi, 538 WV</i>"
+msgstr "<i>― Tallinn, Knalgan Ylimys, 538 WV</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -5396,55 +5397,55 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
-"<i>Villit</i> yksiköt, kuten lepakot ja villieläimet, välttävät kyliä. Ne "
-"eivät saa mitään puolustushyötyä ollessaan kylässä, ne kuitenkin paranevat "
+"<i>Villit</i> yksiköt, kuten lepakot ja villieläimet, välttelevät kyliä. Ne "
+"eivät saa mitään puolustushyötyä ollessaan kylässä, vaikkakin paranevat "
 "kylissä normaalisti."
 
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:259
+#: src/actions/advancement.cpp:256
 msgid "waiting for^an advancement choice"
 msgstr "valintaa ylennyksistä"
 
-#: src/actions/attack.cpp:584 src/actions/attack.cpp:1373
+#: src/actions/attack.cpp:578 src/actions/attack.cpp:1369
 msgid "An invalid attacker weapon got selected."
 msgstr "Epäkelpo hyökkäysväline valittu."
 
-#: src/actions/create.cpp:342
+#: src/actions/create.cpp:340
 msgid "You do not have a leader to recall with."
 msgstr "Sinulla ei ole johtajaa, joka voisi kutsua."
 
-#: src/actions/create.cpp:346
+#: src/actions/create.cpp:344
 msgid "None of your leaders are able to recall that unit."
 msgstr "Kukaan johtajistasi ei voi kutsua sitä yksikköä."
 
-#: src/actions/create.cpp:350
+#: src/actions/create.cpp:348
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "Johtajasi täytyy olla linnakkeessa, jos haluat värvätä tai kutsua yksiköitä."
 
-#: src/actions/create.cpp:354
+#: src/actions/create.cpp:352
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon kutsua yksiköitä."
 
-#: src/actions/create.cpp:364 src/actions/create.cpp:500
+#: src/actions/create.cpp:362 src/actions/create.cpp:498
 msgid "An unrecognized error has occurred."
 msgstr "Tapahtui tuntematon virhe."
 
-#: src/actions/create.cpp:478
+#: src/actions/create.cpp:476
 msgid "You do not have a leader to recruit with."
 msgstr "Sinulla ei ole johtajaa, joka voisi värvätä."
 
-#: src/actions/create.cpp:482
+#: src/actions/create.cpp:480
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Kukaan johtajistasi ei voi kutsua tätä yksikköä."
 
-#: src/actions/create.cpp:486
+#: src/actions/create.cpp:484
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Johtajasi täytyy olla linnakkeessa, jos haluat värvätä yksiköitä."
 
-#: src/actions/create.cpp:490
+#: src/actions/create.cpp:488
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon värvätä."
 
@@ -5456,23 +5457,23 @@ msgstr "lääkitty"
 msgid "female^cured"
 msgstr "lääkitty"
 
-#: src/actions/move.cpp:611
+#: src/actions/move.cpp:610
 msgid "Ambushed!"
 msgstr "Väijytys!"
 
-#: src/actions/move.cpp:1111
+#: src/actions/move.cpp:1110
 msgid "Failed teleport! Exit not empty"
-msgstr "Epäonnistunut teleportti! Kohdekylä ei ole tyhjä"
+msgstr "Epäonnistunut kaukosiirto! Ulospääsy ei ole tyhjä"
 
 #. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1127
+#: src/actions/move.cpp:1126
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 ystävällinen"
 msgstr[1] "$friends ystävällistä"
 
 #. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1129
+#: src/actions/move.cpp:1128
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 vihollinen"
@@ -5480,13 +5481,13 @@ msgstr[1] "$enemies vihollista"
 
 #. TRANSLATORS: Both friends and enemies sighted -- neutral message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1132
+#: src/actions/move.cpp:1131
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Yksiköitä näköpiirissä! ($friendphrase, $enemyphrase)"
 
 #. TRANSLATORS: Only enemies sighted -- bad message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1137
+#: src/actions/move.cpp:1136
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vihollinen havaittu!"
@@ -5494,23 +5495,21 @@ msgstr[1] "$enemies vihollista havaittu!"
 
 #. TRANSLATORS: Only friends sighted -- good message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1142
+#: src/actions/move.cpp:1141
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Ystävä havaittu"
 msgstr[1] "$friends ystävää havaittu"
 
-#: src/actions/move.cpp:1157
+#: src/actions/move.cpp:1156
 msgid "(press $hotkey to keep moving)"
-msgstr "(paina $hotkey jatkaaksesi)"
+msgstr "(jatka painamalla $hotkey)"
 
-#: src/actions/undo.cpp:413
-#, fuzzy
-#| msgid "Game Error"
+#: src/actions/undo.cpp:402
 msgid "Redo Error"
-msgstr "Virhe pelissä"
+msgstr "Toistovirhe"
 
-#: src/actions/undo.cpp:414
+#: src/actions/undo.cpp:403
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -5622,7 +5621,7 @@ msgstr ""
 "Lisäosan <i>$addon_title</i> tiedoston tai hakemiston nimessä on ongelma, "
 "joka koskee suurten ja pienten merkkien konfliktia, eikä sitä voida asentaa."
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:249
 msgid "The server responded with an error:"
 msgstr "Palvelin vastasi virheellä:"
 
@@ -5681,7 +5680,7 @@ msgstr "Haluatko todella jatkaa?"
 #: src/addon/client.cpp:571 src/addon/manager_ui.cpp:171
 #: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
-msgstr "Varmista"
+msgstr "Vahvista"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Campaign"
@@ -5938,7 +5937,7 @@ msgstr "Versionumero ei suurempi kuin viimeisin lähetetty versio."
 
 #: src/addon/validation.cpp:491
 msgid "Feedback topic id is not a number."
-msgstr "Palauteaihe id ei ole numero."
+msgstr "Palauteaihe-id ei ole numero."
 
 #: src/addon/validation.cpp:495
 msgid "Feedback topic does not exist."
@@ -6292,7 +6291,7 @@ msgstr "$elem on vanhennettu ja poistettu."
 msgid "Chat message"
 msgstr "Viestien"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:560
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
@@ -6330,7 +6329,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:508
+#: src/game_config.cpp:516
 msgid "Invalid color in range: "
 msgstr "Virheellinen väri alueella: "
 
@@ -6437,7 +6436,7 @@ msgid_plural ""
 msgstr[0] "Ole hyvä ja raportoi tästä lisäosan tekijälle tai ylläpitäjälle."
 msgstr[1] "Ole hyvä ja raportoi tästä lisäosan tekijöille tai ylläpitäjille."
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:955
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:960
 msgid "Error: "
 msgstr "Virhe: "
 
@@ -6507,33 +6506,33 @@ msgstr "ei saatavilla."
 msgid "Custom map."
 msgstr "Mukautettu kartta."
 
-#: src/game_initialization/depcheck.cpp:492
+#: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
 msgstr "Epäonnistui ratkaisemaan riippuvuuksia"
 
-#: src/game_initialization/depcheck.cpp:492
+#: src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "OK"
 
-#: src/game_initialization/depcheck.cpp:517
+#: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr "Skenaariota ei voida aktivoida. Joitakin riippuvuuksia puuttuu: "
 
-#: src/game_initialization/depcheck.cpp:571
-#: src/game_initialization/depcheck.cpp:694
+#: src/game_initialization/depcheck.cpp:570
+#: src/game_initialization/depcheck.cpp:693
 msgid "No compatible eras found."
 msgstr "Yhteensopivia aikakausia ei löytynyt."
 
-#: src/game_initialization/depcheck.cpp:586
+#: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr "Aikakautta ei voida aktivoida. Joitakin riippuvuuksia puuttuu: "
 
-#: src/game_initialization/depcheck.cpp:639
-#: src/game_initialization/depcheck.cpp:731
+#: src/game_initialization/depcheck.cpp:638
+#: src/game_initialization/depcheck.cpp:730
 msgid "No compatible scenarios found."
 msgstr "Yhteensopivia skenaarioita ei löytynyt."
 
-#: src/game_initialization/depcheck.cpp:668
+#: src/game_initialization/depcheck.cpp:667
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -6577,7 +6576,7 @@ msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
-msgstr "Toisella koneella oleva skenaario"
+msgstr "Etäskenaario"
 
 #: src/game_initialization/lobby_data.cpp:305
 #: src/game_initialization/lobby_data.cpp:331
@@ -6755,7 +6754,7 @@ msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"VAROITUS: Paikalla on jo yksi asiakasohjelma, joka käyttää tätä nimimerkkiä, "
+"VAROITUS: On jo asiakasohjelma, joka käyttää tätä nimimerkkiä, "
 "sisäänkirjautuminen aiheuttaa tämän asiakasohjelman ulospotkimisen!"
 
 #: src/game_initialization/multiplayer.cpp:450
@@ -6770,20 +6769,20 @@ msgstr "Liian monta kirjautumisyritystä."
 msgid "Password hashing failed."
 msgstr "Salasanan tiivistys epäonnistui."
 
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:913
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata: "
 
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:915
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa: "
 
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:947
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:952
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata: "
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:912
-#: src/game_launcher.cpp:1028
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:917
+#: src/game_launcher.cpp:1038
 msgid "Map generator error: "
 msgstr "Kartanluontivirhe: "
 
@@ -6792,7 +6791,7 @@ msgid "Error while reading the WML: "
 msgstr "Virhe luettaessa WML:ää: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "Peli ohi"
 
@@ -6808,29 +6807,29 @@ msgstr "Tuntematon skenaario: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Yhtään kampanjaa ei ole saatavilla."
 
-#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
+#: src/game_launcher.cpp:719 src/game_launcher.cpp:738 src/replay.cpp:666
 msgid "The file you have tried to load is corrupt"
-msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
+msgstr "Tiedosto, jonka yritit avata, on vioittunut"
 
-#: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/game_launcher.cpp:721 src/game_launcher.cpp:740
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
+msgstr "Tiedosto, jonka yritit ladata, on vioittunut: '"
 
-#: src/game_launcher.cpp:724
+#: src/game_launcher.cpp:730
 msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
-#: src/game_launcher.cpp:726
+#: src/game_launcher.cpp:732
 msgid "File I/O Error while reading the game: '"
 msgstr "Pelitiedoston lukuvirhe: '"
 
-#: src/game_launcher.cpp:906
+#: src/game_launcher.cpp:911
 msgid "Error while starting server: "
 msgstr "Virhe käynnistäessä palvelinta: "
 
-#: src/game_launcher.cpp:928
+#: src/game_launcher.cpp:933
 msgid "Connection failed: "
 msgstr "Yhteys epäonnistui: "
 
@@ -6851,7 +6850,7 @@ msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Yhdistetty ryhmä '$id' tarvitsee 'fixed_width' tai 'fixed_height'-avaimen."
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6864,6 +6863,22 @@ msgstr[0] ""
 msgstr[1] ""
 "Valitsemallasi lisäosalla on seuraavia riippuvuuksia, jotka ovat "
 "vanhentuneita tai ei vielä asennettu. Haluatko asentaa ne ennen jatkamista?"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+msgid "Create a new add-on"
+msgstr "Luo lisäosa."
+
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+msgid "New Add-on"
+msgstr "Uusi lisäosia"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+msgid "Mainline"
+msgstr "Päälinja"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+msgid "Mainline multiplayer scenarios"
+msgstr "Päälinjan moninpeliskenaariot"
 
 #: src/gui/dialogs/game_stats.hpp:42
 msgid "No visible sides found."
@@ -6881,33 +6896,42 @@ msgstr "Aula"
 msgid "Other Games"
 msgstr "Muut pelit"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:92
 msgid "Match History — $player"
 msgstr "Pelihistoria — $player"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
-#, fuzzy
-#| msgid "Era:"
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+msgid "Scenario"
+msgstr "Skenaario"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:71
+msgid "Era"
+msgstr "Aikakausi"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:72
+msgid "Modification"
+msgstr "Muunnelma"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:151
 msgid "Era: "
-msgstr "Aikakausi:"
+msgstr "Aikakausi: "
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
-#, fuzzy
-#| msgid "No eras found."
+#: src/gui/dialogs/multiplayer/match_history.cpp:254
 msgid "No game history found."
-msgstr "Ei löydettyjä aikakausia."
+msgstr "Pelihistoria ei löytynyt."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:267
 msgid "Request timed out."
-msgstr ""
+msgstr "Pyyntö päättyi."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:277
 msgid "Request encountered an unexpected error, please check the logs."
-msgstr ""
+msgstr "Pyyntöön tuli odottamaton virhe, tarkista lokit."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -6945,32 +6969,33 @@ msgstr "Sinä"
 msgid "Error"
 msgstr "Virhe"
 
-#: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
-#, fuzzy
-#| msgid "Other Games"
+#: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
 msgid "Other aspects: "
-msgstr "Muut pelit"
+msgstr "Muut puolet: "
 
-#: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
-#: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
+#: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
+#: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
 msgid "Weapon: "
 msgstr "Ase: "
 
-#: src/gui/dialogs/unit_attack.cpp:171 src/gui/dialogs/unit_attack.cpp:182
-#: src/reports.cpp:823 src/reports.cpp:1077
+#: src/gui/dialogs/unit_attack.cpp:191 src/gui/dialogs/unit_attack.cpp:204
+#: src/reports.cpp:195
+msgid "Type: "
+msgstr "Tyyppi: "
+
+#: src/gui/dialogs/unit_attack.cpp:192 src/gui/dialogs/unit_attack.cpp:205
+#: src/reports.cpp:823 src/reports.cpp:1087
 msgid "Damage: "
 msgstr "Vahinko: "
 
-#: src/gui/dialogs/unit_attack.cpp:172 src/gui/dialogs/unit_attack.cpp:183
+#: src/gui/dialogs/unit_attack.cpp:193 src/gui/dialogs/unit_attack.cpp:206
 #: src/reports.cpp:844
 msgid "Attacks: "
 msgstr "Hyökkäyksiä: "
 
-#: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
-#, fuzzy
-#| msgid "Advances to: "
+#: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
 msgid "Chance to hit: "
-msgstr "Ylenee yksiköksi: "
+msgstr "Mahdollisuus osua: "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
@@ -7010,7 +7035,7 @@ msgstr "Kaoottisuusbonus:"
 
 #: src/help/help_impl.cpp:437
 msgid "Liminal Bonus:"
-msgstr "Hämäräbonus:"
+msgstr "Liminaalibonus:"
 
 #: src/help/help_impl.cpp:438
 msgid "Schedule"
@@ -7098,59 +7123,61 @@ msgstr "Haluatko varmasti luovuttaa pelin?"
 msgid "Surrender"
 msgstr "Luovuta"
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr "Kartan kuvankaappaus"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "(press $hk to disable)"
 msgstr "(paina $hk poistaaksesi käytöstä)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr "Nopeutettu peli käytössä!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr "Nopeutettu peli ei käytössä!"
 
-#: src/hotkey/hotkey_handler.cpp:427
-msgid "Back to Turn "
-msgstr "Takaisin vuoroon "
-
-#: src/hotkey/hotkey_handler.cpp:433
+#: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Start"
 msgstr "Takaisin alkuun"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147
-msgid "(press $hotkey to deactivate)"
-msgstr "(paina $hotkey poistaaksesi käytöstä)"
+#: src/hotkey/hotkey_handler.cpp:441
+msgid "Back to Turn "
+msgstr "Takaisin vuoroon "
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler.cpp:457
+msgid "Replay from Start"
+msgstr "Toista alusta"
+
+#: src/hotkey/hotkey_handler.cpp:457
+msgid "Replay from Turn "
+msgstr "Toista vuorosta "
+
+#: src/hotkey/hotkey_handler_sp.cpp:151
+msgid "(press $hotkey to deactivate)"
+msgstr "(poista käytöstä painamalla $hotkey )"
+
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "Suunnittelutila otettu käyttöön!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "Suunnittelutila poistettu käytöstä!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:317
-#, fuzzy
-#| msgid "Do you still want to download it?"
+#: src/hotkey/hotkey_handler_sp.cpp:322
 msgid "Do you want to load it anyway?"
 msgstr "Haluatko silti ladata sen?"
 
-#: src/hotkey/hotkey_handler_sp.cpp:333
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
+#: src/hotkey/hotkey_handler_sp.cpp:338
 msgid "The file you have tried to load has no replay information. "
-msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
+msgstr "Tiedostolla, jonka yritit avata, ei ole toistotietoa. "
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
+#: src/hotkey/hotkey_handler_sp.cpp:342
 msgid "The file you have tried to load is not from the current session."
-msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
+msgstr "Tiedosto, jonka yritit avata, ei ole nykyisestä sessiosta."
 
 #: src/language.cpp:115
 msgid "System default language"
@@ -7182,7 +7209,7 @@ msgstr "Lounas"
 
 #: src/map_command_handler.hpp:188
 msgid "This command is currently unavailable."
-msgstr "Et voi käyttää tätä komentoa nyt."
+msgstr "Tämä komento ei ole nyt käytettävissä."
 
 #: src/map_command_handler.hpp:225
 msgid ""
@@ -7209,9 +7236,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"Näyttää käytettävissä olevat komennot tai tarkan ohjeen yksittäiselle "
-"komennolle, riippuen parametristä. Käytä ”help all” -komentoa nähdäksesi nyt "
-"saavuttamattomissakin olevat komennot."
+"Käytettävissä olevat komennot ja komentokohtaiset ohjeet. Sisällytä tällä "
+"hetkellä ei käytettävissä olevat komennot komennolla ”help all”."
 
 #. TRANSLATORS: These are the arguments accepted by the "help" command,
 #. which are either "all" or the name of another command.
@@ -7327,7 +7353,7 @@ msgstr ""
 
 #: src/menu_events.cpp:333
 msgid "You do not have enough gold to recruit this unit."
-msgstr "Sinulla ei ole tarpeeksi kultaa yksikön värväämiseen."
+msgstr "Sinulla ei riitä kulta yksikön värväämiseen."
 
 #: src/menu_events.cpp:376
 msgid "You are separated from your soldiers and may not recall them."
@@ -7353,8 +7379,7 @@ msgstr "Ei värvättyä veteraaniyksikköä."
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] ""
-"Sinulla täytyy olla vähintään 1 kultapala voidaksesi kutsua yksikön takaisin "
-"palvelukseen."
+"Sinulla täytyy olla vähintään 1 kultapala kutsuaksesi veteraaniyksikön."
 msgstr[1] ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin palvelukseen."
@@ -7382,7 +7407,7 @@ msgstr ""
 
 #: src/menu_events.cpp:666
 msgid "Rename Unit"
-msgstr "Vaihda yksikön nimeä"
+msgstr "Vaihda yksikön nimi"
 
 #: src/menu_events.cpp:667
 msgid "Name:"
@@ -7811,14 +7836,14 @@ msgstr "Muuttujaa ei löytynyt"
 
 #: src/menu_events.cpp:1990
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
-msgstr ""
+msgstr "Virheenetsintäkomento 'unit: $unit' epäonnistui: yksikkö ei valittu."
 
 #: src/menu_events.cpp:2008
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"Suuntautumista '$alignment' ei ymmärretty. Täytyy olla lainkuuliainen, "
+"Vihreellinen suuntautuminen '$alignment'. Täytyy olla lainkuuliainen, "
 "neutraali, kaoottinen tai liminaali."
 
 #: src/menu_events.cpp:2034
@@ -7837,7 +7862,7 @@ msgstr "Virheellinen sijainti"
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1219
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7845,7 +7870,11 @@ msgstr ""
 "Niin kauan kun suunniteltuja värväyksiä tai kutsumisia on jäljellä, johtajaa "
 "ei voi siirtää pois linnakkeesta."
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1314
+msgid "No Attacks"
+msgstr "Ei hyökkäyksiä"
+
+#: src/mouse_events.cpp:1314
 msgid "This unit has no usable weapons."
 msgstr "Tällä yksiköllä ei ole käyttökelpoista asetta."
 
@@ -7884,44 +7913,36 @@ msgstr "Vuoro vaihtui"
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
-msgstr "Tapahtui virhe ladattaessa listaa lisäosista palvelimelta."
+msgstr ""
+"Tapahtui virhe ladattaessa tiedostoa. Tarkista pelilokit lisätietoja varten."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid "Download"
 msgid "Download error"
-msgstr "Lataa"
+msgstr "Latausvirhe"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Vahvista päällekirjoitus"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "Päällekirjoita olemassa oleva tiedosto?"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "Download"
 msgid "Download complete"
-msgstr "Lataa"
+msgstr "Lataus valmis"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "Peli on tallennettu."
+msgstr "Tiedosto on ladattu."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr "Maastoa jossa vähemmän kuin 1 liikkumiskulua kohdattu."
+msgstr "Maasto. jossa vähemmän kuin 1 liikkumiskulu. on kohdattu."
 
 #. TRANSLATORS:  In networked games, this text is shown for other
 #. clients, while they wait to receive the content of a global variable
@@ -7938,7 +7959,11 @@ msgstr "aikaa jäljellä nykyisellä vuorolla"
 msgid "current local time"
 msgstr "tämänhetkinen paikallinen aika"
 
-#: src/play_controller.cpp:1044
+#: src/play_controller.cpp:565
+msgid "Trying to create a corrupt file, please report this bug"
+msgstr "Yritetään luoda vioittunut tiedosto, ilmoita tästä virheestä."
+
+#: src/play_controller.cpp:1050
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7946,17 +7971,17 @@ msgstr ""
 "Peli on epätahdissa. On luultavasti parempi lopettaa kuin jatkaa. Haluatko "
 "tallentaa pelisi?"
 
-#: src/play_controller.cpp:1045
+#: src/play_controller.cpp:1051
 msgid "Error details:"
 msgstr "Virheen kuvaus:"
 
-#: src/play_controller.cpp:1224
+#: src/play_controller.cpp:1230
 msgid "Warning: broken campaign branches"
 msgstr "Varoitus: rikkinäisiä kampanjahaaroja"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1230
+#: src/play_controller.cpp:1236
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7966,7 +7991,7 @@ msgstr[0] "Seuraava skenaario puuttuu, et voi lopettaa tätä kampanjaa."
 msgstr[1] ""
 "Jotkut mahdollisista skenaarioista puuttuvat, et voi lopettaa tätä kampanjaa."
 
-#: src/play_controller.cpp:1237
+#: src/play_controller.cpp:1243
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7982,11 +8007,11 @@ msgstr[1] ""
 "skenaarioista:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1241
+#: src/play_controller.cpp:1247
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Kun tämä on korjattu, sinun on ladattava tämä skenaario uudestaan."
 
-#: src/play_controller.cpp:1350
+#: src/play_controller.cpp:1356
 msgid "No objectives available"
 msgstr "Tavoitteita ei tarjolla"
 
@@ -7994,14 +8019,14 @@ msgstr "Tavoitteita ei tarjolla"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:448
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8009,7 +8034,7 @@ msgstr ""
 "\n"
 "Haluatko tallentaa pelin?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8040,7 +8065,7 @@ msgid ""
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
-"Tämä osapuoli on joutotilassa. Jatkaaksesi peliä, sen täytyy määritellä "
+"Tämä osapuoli on joutotilassa. Jatkaaksesi peliä se täytyy määritellä "
 "toiselle ohjattavaksi. Voit esimerkiksi käyttää :droid, :control tai :"
 "give_control."
 
@@ -8058,11 +8083,11 @@ msgstr ""
 "viesti tarkoittaa, niin mitä todennäköisemmin joku on huijaamassa tai joku "
 "latasi uudelleen viallisen pelin."
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "Peli on ohi."
 
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:543
 msgid "It is now $name|’s turn"
 msgstr "Nyt on vuorossa $name"
 
@@ -8109,10 +8134,6 @@ msgstr "Haluatko todella lopettaa?"
 #: src/reports.cpp:174 src/savegame.cpp:429
 msgid "Name: "
 msgstr "Nimi: "
-
-#: src/reports.cpp:195
-msgid "Type: "
-msgstr "Tyyppi: "
 
 #: src/reports.cpp:198
 msgid "Special Notes:"
@@ -8165,10 +8186,10 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Tämä yksikkö on myrkytetty. Se menettää 8 EP joka vuoro, kunnes se saa "
+"Tämä yksikkö on myrkytetty. Se menettää 8 EP joka vuorolla, kunnes se saa "
 "parannusta kylästä tai ystävälliseltä yksiköltä, jolla on parannustaito.\n"
 "\n"
-"Myrkky ei tapa yksikköä, vaan jättää jäljelle vähintään 1 EP."
+"Myrkky ei tapa yksikköä, vaan jättää jäljelle vähintään 1 EP:n."
 
 #: src/reports.cpp:353
 msgid "petrified: "
@@ -8179,37 +8200,32 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "parantumaton"
+msgstr "parantumaton: "
 
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
+"Tämä yksikkö on parantumaton. Parantajat ja kylät eivät voi parantaa sitä "
+"eikä se saa hyötyä levosta."
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "näkymätön: "
+msgstr "haavoittumaton: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr ""
-"Tämä yksikkö on näkymätön. Vihollisyksiköt eivät näe sitä, eivätkä voi "
-"hyökätä sitä kohti."
+"Tämä yksikkö on haavoittumaton. Sitä ei voi vahingoittaa millään "
+"hyökkäyksellä."
 
 #: src/reports.cpp:440
 msgid "Ability: "
 msgstr "Erikoistaito: "
 
-#: src/reports.cpp:442 src/reports.cpp:987
+#: src/reports.cpp:442 src/reports.cpp:997
 msgid " (inactive)"
 msgstr " (epäaktiivinen)"
 
@@ -8275,7 +8291,7 @@ msgstr "Hidastettu: "
 
 #: src/reports.cpp:848
 msgid "Max swarm bonus: "
-msgstr "Maks. parvibonus: "
+msgstr "Maks. parvilisä: "
 
 #: src/reports.cpp:849 src/reports.cpp:868
 msgid "Swarm: "
@@ -8294,116 +8310,117 @@ msgstr "Erityiset: "
 msgid "Subject to swarm: "
 msgstr "Parven kohde: "
 
-#: src/reports.cpp:893
+#: src/reports.cpp:900
 msgid "Weapon range: "
 msgstr "Aseen kantama: "
 
-#: src/reports.cpp:894
+#: src/reports.cpp:901
 msgid "Damage type: "
 msgstr "Vahinkotyyppi: "
 
-#: src/reports.cpp:895
+#: src/reports.cpp:902
 msgid "Damage versus: "
 msgstr "Vahinko vastaan: "
 
-#: src/reports.cpp:954
+#: src/reports.cpp:964
 msgid "Accuracy:"
 msgstr "Tarkkuus:"
 
-#: src/reports.cpp:959
+#: src/reports.cpp:969
 msgid "Parry:"
 msgstr "Torjunta:"
 
-#: src/reports.cpp:985
+#: src/reports.cpp:995
 msgid "Weapon special: "
 msgstr "Aseen erikoisuus: "
 
-#: src/reports.cpp:1060
+#: src/reports.cpp:1070
 msgid "weapon^None"
 msgstr "Ei ole"
 
-#: src/reports.cpp:1089
+#: src/reports.cpp:1099
 msgid "Total damage"
 msgstr "Kokonaisvahinko"
 
-#: src/reports.cpp:1153
+#: src/reports.cpp:1163
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Hyökkäys"
 msgstr[1] "Hyökkäykset"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1161
+#: src/reports.cpp:1171
 msgid "Remaining: $left/$max"
 msgstr "Jäljellä: $left/$max"
 
-#: src/reports.cpp:1165
+#: src/reports.cpp:1175
 msgid "This unit can attack multiple times per turn."
 msgstr "Tämä yksikkö voi hyökätä monta kertaa vuoron aikana."
 
-#: src/reports.cpp:1257
+#: src/reports.cpp:1267
 msgid "Time of day schedule:"
 msgstr "Vuorokausiohjelma:"
 
-#: src/reports.cpp:1306
+#: src/reports.cpp:1316
 msgid "Time of day:"
 msgstr "Vuorokaudenaika:"
 
-#: src/reports.cpp:1307 src/reports.cpp:1361
+#: src/reports.cpp:1317 src/reports.cpp:1371
 msgid "Lawful units: "
 msgstr "Lainkuuliaiset yksiköt: "
 
-#: src/reports.cpp:1309 src/reports.cpp:1363
+#: src/reports.cpp:1319 src/reports.cpp:1373
 msgid "Neutral units: "
 msgstr "Neutraalit yksiköt: "
 
-#: src/reports.cpp:1310 src/reports.cpp:1364
+#: src/reports.cpp:1320 src/reports.cpp:1374
 msgid "Chaotic units: "
 msgstr "Kaoottiset yksiköt: "
 
-#: src/reports.cpp:1312 src/reports.cpp:1366
+#: src/reports.cpp:1322 src/reports.cpp:1376
 msgid "Liminal units: "
-msgstr "Hämäräyksiköt: "
+msgstr "Liminaaliyksiköt: "
 
-#: src/reports.cpp:1425
+#: src/reports.cpp:1435
 msgid "Turn Number"
 msgstr "Vuoronumero"
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1437
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
-"Kun peli saavuttaa vuoromäärän, jota merkataan toisella numerolla, se loppuu."
+"Kun peli saavuttaa vuoromäärän, jota ilmaistaan toisella numerolla, se "
+"loppuu."
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid "Gold"
 msgstr "Kultaa"
 
-#: src/reports.cpp:1452
+#: src/reports.cpp:1462
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Kultamäärä, joka on tällä hetkellä saatavilla yksiköiden värväämiseen ja "
 "ylläpitoon."
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "The fraction of known villages that your side has captured."
 msgstr "Osuus tunnetuista kylistä, jotka ovat sinun hallinnassasi."
 
-#: src/reports.cpp:1471
+#: src/reports.cpp:1481
 msgid "Villages"
 msgstr "Kylät"
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "The total number of units on your side."
-msgstr "Sinun puolellasi olevien yksiköiden kokonaismäärä."
+msgstr "Oman puolesi yksiköiden kokonaismäärä."
 
-#: src/reports.cpp:1476
+#: src/reports.cpp:1486
 msgid "Units"
 msgstr "Yksiköt"
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8417,15 +8434,15 @@ msgstr ""
 "määrä, sisältäen myös sen, jonka kylät korvaavat. Toisin sanoen se summa "
 "rahaa, joka vähennettäisiin, jos menettäisit kaikki kyläsi."
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1496
 msgid "Upkeep"
 msgstr "Ylläpito"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid "Net Income"
 msgstr "Nettotulo"
 
-#: src/reports.cpp:1523
+#: src/reports.cpp:1533
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8433,32 +8450,30 @@ msgstr ""
 "Nettosumma kultaa jonka saat tai menetät joka vuoro. Huomioon on otettu "
 "kontrolloiduista kylistä saatavat tulot ja armeijan ylläpidon kulut."
 
-#: src/reports.cpp:1691
+#: src/reports.cpp:1733
 msgid "Observers:"
 msgstr "Tarkkailijat:"
 
-#: src/reports.cpp:1733
+#: src/reports.cpp:1753
 msgid "Clock"
 msgstr "Kello"
 
-#: src/reports.cpp:1744
+#: src/reports.cpp:1764
 msgid "Battery"
 msgstr "Akku"
 
-#: src/reports.cpp:1775
+#: src/reports.cpp:1795
 msgid "Countdown until your turn automatically ends."
 msgstr "Laskuri vuorosi automaattiseen lopetukseen."
 
-#: src/reports.cpp:1775
+#: src/reports.cpp:1795
 msgid "Turn Countdown"
 msgstr "Vuorolaskuri"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %b %d %I.%M %p %Y"
+msgstr "%a %b %d %I.%M %p %Yz"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
@@ -8511,8 +8526,8 @@ msgstr ""
 "tässä versiossa.\n"
 "\n"
 "<b>Varoitus:</b> tallennukset kampanjoiden puolivälissä ovat erityisen "
-"alttiita virheille, ja sinun sietäisi joko pelata vanhalla versiolla tai "
-"aloittaa uudelleen kampanja. Vaikka tallennus näyttäisi latautuvan hyvin, "
+"alttiita virheille, ja sinun pitää joko pelata vanhalla versiolla tai "
+"aloittaa kampanja uudelleen. Vaikka tallennus näyttäisi latautuvan hyvin, "
 "hienovaraisimmat kohdat kuten pelitasapaino ja tarinan kehitys voivat "
 "häiriintyä. Vaikeustaso, haaste, <i>hauskuus</i> saattavat puuttua.\n"
 "\n"
@@ -8659,77 +8674,77 @@ msgstr "sijainnissa $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Arvo: '$value' Edellinen: '$previous_value'"
 
-#: src/serialization/string_utils.cpp:551
+#: src/serialization/string_utils.cpp:552
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:552
+#: src/serialization/string_utils.cpp:553
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:553
+#: src/serialization/string_utils.cpp:554
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:554
+#: src/serialization/string_utils.cpp:555
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:555
+#: src/serialization/string_utils.cpp:556
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:556
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:557
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:558
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_yocto^y"
 msgstr "y"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:596
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8781,7 +8796,7 @@ msgstr "syötettä"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1003
+#: src/team.cpp:1006
 msgid "“$color_id”"
 msgstr "“$color_id”"
 
@@ -8795,7 +8810,7 @@ msgstr "Vihollisen kylä"
 
 #: src/terrain/terrain.cpp:203
 msgid "Owned village"
-msgstr "Sinun kyläsi"
+msgstr "Oma kylä"
 
 #: src/theme.cpp:315
 msgid "border_size should be between 0.0 and 0.5."
@@ -8813,104 +8828,99 @@ msgstr "Tynkä päivänaika"
 msgid "This Time of Day is only a Stub!"
 msgstr "Tämä päivänaika on tynkä!"
 
-#: src/units/abilities.cpp:915
-#, fuzzy
-#| msgid "slowed: "
+#: src/units/abilities.cpp:970
 msgid "Owned: "
-msgstr "hidastettu: "
+msgstr "Omistettu: "
 
-#: src/units/abilities.cpp:918
+#. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+#: src/units/abilities.cpp:974
 msgid "Taught: "
-msgstr ""
+msgstr "Opetti: "
 
-#: src/units/abilities.cpp:921
+#. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+#: src/units/abilities.cpp:978
 msgid "Taught: (by an enemy): "
-msgstr ""
+msgstr "Opetti: (vihollisen toimesta): "
 
-#: src/units/abilities.cpp:934
+#: src/units/abilities.cpp:991
 msgid "Used by opponent: "
-msgstr ""
+msgstr "Vastustajan käyttämä: "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:461
+#: src/units/attack_type.cpp:473
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> vahinko"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> vahinkoa"
 
-#: src/units/attack_type.cpp:470
+#: src/units/attack_type.cpp:482
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number vahinko"
 msgstr[1] "$number vahinkoa"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:479
+#: src/units/attack_type.cpp:491
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> isku"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> iskua"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:488
+#: src/units/attack_type.cpp:500
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number isku"
 msgstr[1] "$number iskua"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:497
+#: src/units/attack_type.cpp:509
 msgid "$number| accuracy"
 msgstr "$number| tarkkuus"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:504
+#: src/units/attack_type.cpp:516
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> tarkkuus"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:511
+#: src/units/attack_type.cpp:523
 msgid "$number parry"
 msgstr "$number torjunta"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:518
+#: src/units/attack_type.cpp:530
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> torjunta"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:525
+#: src/units/attack_type.cpp:537
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number liikepiste"
 msgstr[1] "$number liikepistettä"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:534
+#: src/units/attack_type.cpp:546
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> liikepiste"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> liikepistettä"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:543
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
+#: src/units/attack_type.cpp:555
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number vahinko"
+msgstr[0] ""
+"$number hyökkäystä\n"
+"$number attacks used"
 msgstr[1] "$number vahinkoa"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:552
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
+#: src/units/attack_type.cpp:564
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> hyökkäys per vuoro"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> hyökkäystä"
 msgstr[1] ""
 "<span color=\"$color\">$number_or_percent</span> hyökkäystä per vuoro"
 
@@ -8958,33 +8968,33 @@ msgstr "liminaali"
 msgid "female^neutral"
 msgstr "neutraali"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2011
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2017
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> EP"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2027
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> liike"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> liikettä"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2033
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> näkö"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2037
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> häirintä"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2042
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> KP ylennykseen"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2046
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8992,11 +9002,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> hyökkäys per vuoro
 msgstr[1] ""
 "<span color=\"$color\">$number_or_percent</span> hyökkäystä per vuoro"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2053
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> maksu kutsuun"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2519
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
@@ -9020,18 +9030,19 @@ msgstr "$year eTu."
 msgid "$year AF"
 msgstr "$year jTu."
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:803
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"Ei pystytty luomaan lokitiedostoja hakemistoon $logdir. Tämä johtuu usein "
+"virheellisistä kansioiden oikeuksista, virusten torjuntaohjelman "
+"kansiorajoituksista tai OneDriven käyttämisestä Tiedostot-kansion hallintaan."
 
-#: src/wesnoth.cpp:815
-#, fuzzy
-#| msgid "Logging"
+#: src/wesnoth.cpp:804
 msgid "Logging Failure"
-msgstr "Kirjautuminen"
+msgstr "Kirjautumisvirhe"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
@@ -9219,11 +9230,6 @@ msgstr "Valkotaulun asetukset"
 #~ msgstr ""
 #~ "Tämä tallenne on pelin eri versiosta ($version_number|). Haluatko yrittää "
 #~ "ladata sen?"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Päätä skenaario"
 
 #, fuzzy
 #~| msgid "Preferences"
@@ -9570,11 +9576,6 @@ msgstr "Valkotaulun asetukset"
 #~| msgid "undead"
 #~ msgid "Undead"
 #~ msgstr "epäkuollut"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "Hyökkääjä"
 
 #, fuzzy
 #~| msgid "Choose weapon:"
@@ -10155,11 +10156,6 @@ msgstr "Valkotaulun asetukset"
 #~ "No eras available\n"
 #~ "for this game."
 #~ msgstr "Tässä pelissä ei ole vapaata puolta."
-
-#, fuzzy
-#~| msgid "Disable notifications"
-#~ msgid "Modifications:"
-#~ msgstr "Poista pelin ilmoitukset käytöstä."
 
 #~ msgid "Next"
 #~ msgstr "Seuraava"
@@ -11275,11 +11271,6 @@ msgstr "Valkotaulun asetukset"
 #~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Moninpeli"
-
-#, fuzzy
-#~| msgid "Remove Add-ons"
-#~ msgid "Manage Add-ons"
-#~ msgstr "Poista lisäosia"
 
 #, fuzzy
 #~| msgid "Start the map editor"
@@ -17116,9 +17107,6 @@ msgstr "Valkotaulun asetukset"
 
 #~ msgid "time left"
 #~ msgstr "aikaa jäljellä"
-
-#~ msgid "No multiplayer sides."
-#~ msgstr "Ei puolia."
 
 #~ msgid "TitleScreen button^More"
 #~ msgstr "Lisää"

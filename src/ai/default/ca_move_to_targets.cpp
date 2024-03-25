@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 
 #include "ai/default/ca_move_to_targets.hpp"
 
-#include "ai/composite/ai.hpp"
 #include "ai/actions.hpp"
 #include "game_board.hpp"
 #include "log.hpp"

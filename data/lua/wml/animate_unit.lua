@@ -68,6 +68,7 @@ local function add_animation(anim, cfg)
 
 		-- TODO: The last argument is currently unused
 		-- (should make the game not scroll if view locked or prefs disables it)
+		---@diagnostic disable-next-line: redundant-parameter
 		wesnoth.interface.scroll_to_hex(unit.x, unit.y, true, false, true, false)
 
 		local facing = wml.get_child(cfg, "facing")

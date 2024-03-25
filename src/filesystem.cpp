@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,16 +25,15 @@
 #include "deprecation.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "utils/general.hpp"
 
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
+#include <boost/process.hpp>
 #include "game_config_view.hpp"
 
 #ifdef _WIN32
@@ -69,6 +68,7 @@ static lg::log_domain log_filesystem("filesystem");
 #define WRN_FS LOG_STREAM(warn, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
+namespace bp = boost::process;
 namespace bfs = boost::filesystem;
 using boost::system::error_code;
 
@@ -89,8 +89,6 @@ std::string default_preferences_path = DEFAULT_PREFS_PATH;
 std::string default_preferences_path = "";
 #endif
 bool check_migration = false;
-
-std::string wesnoth_program_dir;
 
 const std::string observer_team_name = "observer";
 
@@ -444,6 +442,7 @@ void get_files_in_dir(const std::string& dir,
 	}
 
 	for(; di != end; ++di) {
+		ec.clear();
 		bfs::file_status st = di->status(ec);
 		if(ec) {
 			LOG_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message();
@@ -622,7 +621,7 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
-	if(!file_exists(user_data_dir)) {
+	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
 
@@ -633,14 +632,16 @@ static void setup_user_data_dir()
 	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
 
 	// Create user data and add-on directories
-	create_directory_if_missing(user_data_dir / "editor");
-	create_directory_if_missing(user_data_dir / "editor" / "maps");
-	create_directory_if_missing(user_data_dir / "editor" / "scenarios");
-	create_directory_if_missing(user_data_dir / "data");
-	create_directory_if_missing(user_data_dir / "data" / "add-ons");
-	create_directory_if_missing(user_data_dir / "saves");
-	create_directory_if_missing(user_data_dir / "persist");
-	create_directory_if_missing(filesystem::get_logs_dir());
+	create_directory_if_missing(get_legacy_editor_dir());
+	create_directory_if_missing(get_legacy_editor_dir() + "/maps");
+	create_directory_if_missing(get_legacy_editor_dir() + "/scenarios");
+	create_directory_if_missing(get_addons_data_dir());
+	create_directory_if_missing(get_addons_dir());
+	create_directory_if_missing(get_saves_dir());
+	create_directory_if_missing(get_wml_persist_dir());
+	create_directory_if_missing(get_logs_dir());
+
+	lg::move_log_file();
 }
 
 #ifdef _WIN32
@@ -788,6 +789,18 @@ void set_user_data_dir(std::string newprefdir)
 #endif /*_WIN32*/
 	setup_user_data_dir();
 	user_data_dir = normalize_path(user_data_dir.string(), true, true);
+}
+
+bool rename_dir(const std::string& old_dir, const std::string& new_dir)
+{
+	error_code ec;
+	bfs::rename(old_dir, new_dir, ec);
+
+	if(ec) {
+		ERR_FS << "Failed to rename directory '" << old_dir << "' to '" << new_dir << "'";
+		return false;
+	}
+	return true;
 }
 
 static void set_user_config_path(bfs::path newconfig)
@@ -989,18 +1002,34 @@ std::string get_exe_dir()
 	bfs::path exe(process_path);
 	return exe.parent_path().string();
 #else
+	// first check /proc
 	if(bfs::exists("/proc/")) {
 		bfs::path self_exe("/proc/self/exe");
 		error_code ec;
 		bfs::path exe = bfs::read_symlink(self_exe, ec);
-		if(ec) {
-			return std::string();
+		if(!ec) {
+			return exe.parent_path().string();
 		}
-
-		return exe.parent_path().string();
-	} else {
-		return get_cwd();
 	}
+
+	// check the PATH for wesnoth's location
+	// with version
+	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
+	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
+	bfs::path search = bp::search_path(exe).string();
+	if(!search.string().empty()) {
+		return search.parent_path().string();
+	}
+
+	// versionless
+	exe = filesystem::get_program_invocation("wesnoth");
+	search = bp::search_path(exe).string();
+	if(!search.string().empty()) {
+		return search.parent_path().string();
+	}
+
+	// return the current working directory
+	return get_cwd();
 #endif
 }
 
@@ -1063,6 +1092,32 @@ bool delete_file(const std::string& filename)
 	}
 
 	return ret;
+}
+
+std::vector<uint8_t> read_file_binary(const std::string& fname)
+{
+	std::ifstream file(fname, std::ios::binary);
+	std::vector<uint8_t> file_contents;
+
+	file_contents.reserve(file_size(fname));
+	file_contents.assign(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+
+	return file_contents;
+}
+
+std::string read_file_as_data_uri(const std::string& fname)
+{
+	std::vector<uint8_t> file_contents = filesystem::read_file_binary(fname);
+	utils::byte_string_view view = {file_contents.data(), file_contents.size()};
+	std::string name = filesystem::base_name(fname);
+	std::string img = "";
+
+	if(name.find(".") != std::string::npos) {
+		// convert to web-safe base64, since the + symbols will get stripped out when reading this back in later
+		img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(view);
+	}
+
+	return img;
 }
 
 std::string read_file(const std::string& fname)
@@ -1659,7 +1714,7 @@ std::string get_program_invocation(const std::string& program_name)
 #endif
 	);
 
-	return (bfs::path(game_config::wesnoth_program_dir) / real_program_name).string();
+	return real_program_name;
 }
 
 std::string sanitize_path(const std::string& path)
@@ -1714,6 +1769,21 @@ std::string get_localized_path(const std::string& file, const std::string& suff)
 		std::string loc_file = dir + "/" + "l10n" + "/" + lang + "/" + loc_base;
 		if(filesystem::file_exists(loc_file)) {
 			return loc_file;
+		}
+	}
+
+	return "";
+}
+
+std::string get_addon_id_from_path(const std::string& location)
+{
+	std::string full_path = normalize_path(location, true);
+	std::string addons_path = normalize_path(get_addons_dir(), true);
+
+	if(full_path.find(addons_path) == 0) {
+		bfs::path path(full_path.substr(addons_path.size()+1));
+		if(path.size() > 0) {
+			return path.begin()->string();
 		}
 	}
 

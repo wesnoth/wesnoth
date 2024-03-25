@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,11 +29,8 @@
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 
-#include "actions/create.hpp"
 #include "actions/undo.hpp"
 #include "arrow.hpp"
-#include "chat_events.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
@@ -54,7 +51,6 @@
 
 #include <functional>
 
-#include <sstream>
 
 namespace wb {
 

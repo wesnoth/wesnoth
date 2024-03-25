@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "hotkey/hotkey_item.hpp"
 
-#include <SDL2/SDL_keycode.h>
 
 #include <string>
 

@@ -3,6 +3,9 @@
 ---@class location
 ---@field x integer
 ---@field y integer
+---@class loc_list
+---@field [1] integer
+---@field [2] integer
 
 ---@class location_triple : location
 ---@field value any
@@ -18,7 +21,7 @@
 ---@class wesnoth.map
 wesnoth.map = {}
 
----@class terrain_map : wesnoth.map
+---@class terrain_map : wesnoth.map, {[location|loc_list]: string}
 ---@field width integer
 ---@field height integer
 ---@field playable_width integer
@@ -34,7 +37,7 @@ wesnoth.map = {}
 --- will first attempt to replace just the base or just the overlay, and if that produces an
 --- invalid combination, will instead replace both.
 ---@param terrain string
----@param mode 'base'|'overlay'
+---@param mode 'base'|'overlay'|'both'
 ---@return string
 function wesnoth.map.replace_if_failed(terrain, mode) end
 
@@ -55,7 +58,7 @@ function wesnoth.map.find_in_radius(map, center, radius, filter) end
 
 ---Parse a mapgen location filter
 ---@param filter terrain_filter_tag
----@param data table<string, location[]>
+---@param data? table<string, location[]>
 ---@return terrain_filter
 function wesnoth.map.filter(filter, data) end
 
@@ -113,23 +116,29 @@ function wesnoth.map.parse_bitmap(data) end
 ---@field replace_if_failed boolean
 ---@field use_old boolean
 
+---@class terrain_mask_options
+---@field is_odd? boolean
+---@field ignore_special_location? boolean
+---@field rules? terrain_mask_rule[]
+
 ---Overlays a terrain mask onto a map
 ---@param map terrain_map
 ---@param pivot location
 ---@param mask string
----@param options {is_odd?:boolean, ignore_special_location?:boolean, rules?:terrain_mask_rule[]}
+---@param options terrain_mask_options
+---@overload fun(map:terrain_map, pivot_x:integer, pivot_y:integer, mask:string, options:terrain_mask_options)
 function wesnoth.map.terrain_mask(map, pivot, mask, options) end
 
 ---@class label_info : location
 ---@field text tstring
----@field team_name string
----@field color color|integer[]
----@field visible_in_fog boolean
----@field visible_in_shroud boolean
----@field immutable boolean
----@field category string|tstring
----@field tooltip tstring
----@field side integer
+---@field team_name? string
+---@field color? color|integer[]
+---@field visible_in_fog? boolean
+---@field visible_in_shroud? boolean
+---@field immutable? boolean
+---@field category? string|tstring
+---@field tooltip? tstring
+---@field side? integer
 
 ---Place a label on the map
 ---@param label_info label_info
@@ -142,12 +151,15 @@ function wesnoth.map.remove_label(location) end
 ---Get the label on the given hex, if any
 ---@param location location
 ---@param side integer
----@return label_info|nil
+---@return label_info?
+---@overload fun(x:integer, y:integer, side:integer):label_info?
 function wesnoth.map.get_label(location, side) end
 
 ---Place a new time area on the map
+---@param id string
 ---@param filter WML
-function wesnoth.map.place_area(filter) end
+---@param schedule WML
+function wesnoth.map.place_area(id, filter, schedule) end
 
 ---Remove a time area from the map
 ---@param id string
@@ -162,11 +174,13 @@ function wesnoth.map.get_area(area) end
 ---Set the owner of a village hex
 ---@param loc location
 ---@param side integer
+---@overload fun(x:integer, y:integer, side:integer)
 function wesnoth.map.set_owner(loc, side) end
 
 ---Get the owner of a village hex
 ---@param loc location
 ---@return integer
+---@overload fun(x:integer, y:integer):integer
 function wesnoth.map.get_owner(loc) end
 
 ---Create a new game map
@@ -211,7 +225,7 @@ function wesnoth.map.generate(width, height, options) end
 ---@param height integer
 ---@param options heightgen_options
 ---@return table<integer, integer>
-function wesnoth.map.generate(width, height, options) end
+function wesnoth.map.generate_height_map(width, height, options) end
 
 ---Get the hex reached by travelling in the specified direction
 ---@param from location
@@ -219,6 +233,7 @@ function wesnoth.map.generate(width, height, options) end
 ---@param steps? integer
 ---@return location
 ---@overload fun(from_x:integer, from_y:integer, dir:direction):location
+---@overload fun(from_x:integer, from_y:integer, dir:direction, steps:integer):location
 function wesnoth.map.get_direction(from, dir, steps) end
 
 ---Get the direction you need to travel to get from one hex to another
@@ -240,6 +255,7 @@ function wesnoth.map.rotate_right_around_center(loc, center, angle) end
 ---Get a list of all potential adjacent hexes, including off-map locations
 ---@param loc location
 ---@return location n, location ne, location se, location s, location sw, location nw
+---@overload fun(x:integer, y:integer):location,location,location,location,location,location
 function wesnoth.map.get_adjacent_hexes(loc) end
 
 ---Get a list of all potential hexes within a given radius, including off-map locations
@@ -258,4 +274,7 @@ function wesnoth.map.are_hexes_adjacent(loc1, loc2) end
 ---@param loc1 location
 ---@param loc2 location
 ---@return integer
+---@overload fun(x1:integer, y1:integer, loc2:location):integer
+---@overload fun(loc1:location, x2:integer, y2:integer):integer
+---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer):integer``
 function wesnoth.map.distance_between(loc1, loc2) end

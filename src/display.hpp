@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,6 @@
 
 #pragma once
 
-class config;
 class fake_unit_manager;
 class terrain_builder;
 class map_labels;
@@ -42,9 +41,6 @@ class reports;
 class team;
 struct overlay;
 
-namespace halo {
-	class manager;
-}
 
 namespace wb {
 	class manager;
@@ -52,7 +48,6 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
-#include "filesystem.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "gui/core/top_level_drawable.hpp"
@@ -72,7 +67,6 @@ namespace wb {
 #include <functional>
 #include <chrono>
 #include <cstdint>
-#include <deque>
 #include <list>
 #include <map>
 #include <memory>
@@ -405,6 +399,11 @@ public:
 
 	void draw_buttons();
 
+	/** Hide theme buttons so they don't draw. */
+	void hide_buttons();
+	/** Unhide theme buttons so they draw again. */
+	void unhide_buttons();
+
 	/** Update the given report. Actual drawing is done in draw_report(). */
 	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
 
@@ -545,8 +544,8 @@ public:
 
 	/** Prevent the game display from drawing.
 	  * Used while story screen is showing to prevent flicker. */
-	void set_prevent_draw(bool pd) { prevent_draw_ = pd; }
-	bool get_prevent_draw() { return prevent_draw_; }
+	void set_prevent_draw(bool pd = true);
+	bool get_prevent_draw();
 
 private:
 	bool prevent_draw_ = false;
@@ -738,7 +737,7 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	texture minimap_;
+	std::function<rect(rect)> minimap_renderer_;
 	SDL_Rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;

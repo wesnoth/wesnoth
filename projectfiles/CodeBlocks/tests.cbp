@@ -606,10 +606,16 @@
 		<Unit filename="../../src/gui/dialogs/edit_label.hpp" />
 		<Unit filename="../../src/gui/dialogs/edit_text.cpp" />
 		<Unit filename="../../src/gui/dialogs/edit_text.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/choose_addon.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/choose_addon.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/custom_tod.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/custom_tod.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_label.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_label.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl_translation.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl_translation.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_scenario.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_scenario.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_side.cpp" />
@@ -624,6 +630,8 @@
 		<Unit filename="../../src/gui/dialogs/editor/resize_map.hpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.cpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.hpp" />
+		<Unit filename="../../src/gui/dialogs/prompt.cpp" />
+		<Unit filename="../../src/gui/dialogs/prompt.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.cpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_progress.cpp" />
@@ -1191,6 +1199,7 @@
 		<Unit filename="../../src/tests/test_commandline_options.cpp" />
 		<Unit filename="../../src/tests/test_config.cpp" />
 		<Unit filename="../../src/tests/test_config_cache.cpp" />
+		<Unit filename="../../src/tests/test_config_filters.cpp" />
 		<Unit filename="../../src/tests/test_filesystem.cpp" />
 		<Unit filename="../../src/tests/test_formula_core.cpp" />
 		<Unit filename="../../src/tests/test_formula_function.cpp" />
@@ -1202,6 +1211,7 @@
 		<Unit filename="../../src/tests/test_mp_connect.cpp" />
 		<Unit filename="../../src/tests/test_recall_list.cpp" />
 		<Unit filename="../../src/tests/test_rng.cpp" />
+		<Unit filename="../../src/tests/test_sdl.cpp" />
 		<Unit filename="../../src/tests/test_serialization.cpp" />
 		<Unit filename="../../src/tests/test_simple_wml.cpp" />
 		<Unit filename="../../src/tests/test_team.cpp" />
@@ -1217,6 +1227,8 @@
 		<Unit filename="../../src/tests/utils/wml_equivalence.cpp" />
 		<Unit filename="../../src/tests/utils/wml_equivalence.hpp" />
 		<Unit filename="../../src/tests/wml/test_macro_define.cpp" />
+		<Unit filename="../../src/tests/wml/schema/test_schema_validator.cpp" />
+		<Unit filename="../../src/tests/wml/schema/test_schema_self_validator.cpp" />
 		<Unit filename="../../src/theme.cpp" />
 		<Unit filename="../../src/theme.hpp" />
 		<Unit filename="../../src/time_of_day.cpp" />
@@ -1270,6 +1282,8 @@
 		<Unit filename="../../src/units/unit.hpp" />
 		<Unit filename="../../src/units/unit_alignments.hpp" />
 		<Unit filename="../../src/utils/any.hpp" />
+		<Unit filename="../../src/utils/config_filters.cpp" />
+		<Unit filename="../../src/utils/config_filters.hpp" />
 		<Unit filename="../../src/utils/const_clone.hpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.cpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,14 +49,18 @@
 #include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/editor/choose_addon.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/editor/edit_label.hpp"
+#include "gui/dialogs/editor/edit_pbl.hpp"
+#include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
+#include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/folder_create.hpp"
@@ -91,6 +95,7 @@
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
+#include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -405,6 +410,14 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_chat_log)
 {
 	test<chat_log>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_choose_addon)
+{
+	test<editor_choose_addon>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_prompt)
+{
+	test<prompt>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_core_selection)
 {
 	test<core_selection>();
@@ -424,6 +437,14 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_depcheck_select_new)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_edit_label)
 {
 	test<edit_label>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_pbl)
+{
+	test<editor_edit_pbl>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_pbl_translation)
+{
+	test<editor_edit_pbl_translation>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_edit_text)
 {
@@ -617,6 +638,10 @@ BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
 {
 	test_tip("tooltip");
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_tod_new_schedule)
+{
+	test<tod_new_schedule>();
+}
 
 // execute last - checks that there aren't any unaccounted for GUIs
 BOOST_AUTO_TEST_CASE(test_last)
@@ -733,9 +758,9 @@ struct dialog_tester<addon_connect>
 template<>
 struct dialog_tester<addon_license_prompt>
 {
-	std::string license_terms = R"""(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ante nibh, dignissim ullamcorper tristique eget, condimentum sit amet enim. Aenean dictum pulvinar lacinia. Etiam eleifend, leo sed efficitur consectetur, augue nulla ornare lectus, vitae molestie lacus risus vitae libero. Quisque odio nunc, porttitor eget fermentum sit amet, faucibus eu risus. Praesent sit amet lacus tortor. Suspendisse volutpat quam vitae ipsum fermentum, in vulputate metus egestas. Nulla id consequat ex. Nulla ac dignissim nisl, nec euismod lectus. Duis vitae dolor ornare, convallis justo in, porta dui.
+	std::string license_terms = R"(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ante nibh, dignissim ullamcorper tristique eget, condimentum sit amet enim. Aenean dictum pulvinar lacinia. Etiam eleifend, leo sed efficitur consectetur, augue nulla ornare lectus, vitae molestie lacus risus vitae libero. Quisque odio nunc, porttitor eget fermentum sit amet, faucibus eu risus. Praesent sit amet lacus tortor. Suspendisse volutpat quam vitae ipsum fermentum, in vulputate metus egestas. Nulla id consequat ex. Nulla ac dignissim nisl, nec euismod lectus. Duis vitae dolor ornare, convallis justo in, porta dui.
 
-Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas aliquam diam non eros convallis mattis. Proin rhoncus condimentum leo, sed condimentum magna. Phasellus cursus condimentum lacus, sed sodales lacus. Sed pharetra dictum metus, eget dictum nibh lobortis imperdiet. Nunc tempus sollicitudin bibendum. In porttitor interdum orci. Curabitur vitae nibh vestibulum, condimentum lectus quis, condimentum dui. In quis cursus nisl. Maecenas semper neque eu ipsum aliquam, id porta ligula lacinia. Integer sed blandit ex, eu accumsan magna.)""";
+Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas aliquam diam non eros convallis mattis. Proin rhoncus condimentum leo, sed condimentum magna. Phasellus cursus condimentum lacus, sed sodales lacus. Sed pharetra dictum metus, eget dictum nibh lobortis imperdiet. Nunc tempus sollicitudin bibendum. In porttitor interdum orci. Curabitur vitae nibh vestibulum, condimentum lectus quis, condimentum dui. In quis cursus nisl. Maecenas semper neque eu ipsum aliquam, id porta ligula lacinia. Integer sed blandit ex, eu accumsan magna.)";
 	addon_license_prompt* create()
 	{
 		return new addon_license_prompt(license_terms);
@@ -792,6 +817,26 @@ struct dialog_tester<chat_log>
 	chat_log* create()
 	{
 		return new chat_log(vcfg, r);
+	}
+};
+
+template<>
+struct dialog_tester<editor_choose_addon>
+{
+	std::string temp;
+	editor_choose_addon* create()
+	{
+		return new editor_choose_addon(temp);
+	}
+};
+
+template<>
+struct dialog_tester<prompt>
+{
+	std::string temp;
+	prompt* create()
+	{
+		return new prompt(temp);
 	}
 };
 
@@ -855,6 +900,29 @@ struct dialog_tester<editor_edit_label>
 	editor_edit_label* create()
 	{
 		return new editor_edit_label(label, immutable, fog, shroud, color, category);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_pbl>
+{
+	std::string temp;
+	std::string temp1;
+	editor_edit_pbl* create()
+	{
+		return new editor_edit_pbl(temp, temp1);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_pbl_translation>
+{
+	std::string temp1;
+	std::string temp2;
+	std::string temp3;
+	editor_edit_pbl_translation* create()
+	{
+		return new editor_edit_pbl_translation(temp1, temp2, temp3);
 	}
 };
 
@@ -1334,6 +1402,18 @@ struct dialog_tester<surrender_quit>
 	surrender_quit* create()
 	{
 		return new surrender_quit();
+	}
+};
+
+template<>
+struct dialog_tester<tod_new_schedule>
+{
+	std::string id = "id";
+	std::string name = "name";
+	dialog_tester() {}
+	tod_new_schedule* create()
+	{
+		return new tod_new_schedule(id, name);
 	}
 };
 

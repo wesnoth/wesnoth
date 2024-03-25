@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,6 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
-#include <climits>
 #include <ctime>
 #include <functional>
 #include <iosfwd>
@@ -42,7 +41,6 @@
 #include <memory>
 #include <string>
 #include <string_view>
-#include <type_traits>
 #include <utility>
 #include <vector>
 

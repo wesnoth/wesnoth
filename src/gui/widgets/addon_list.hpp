@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,13 +15,11 @@
 #pragma once
 
 #include "addon/info.hpp"
-#include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 #include <functional>
 #include <string>
 #include <vector>

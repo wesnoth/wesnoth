@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,23 +17,19 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "filesystem.hpp"
 #include "font/text_formatting.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/multimenu_button.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
-#include "lexical_cast.hpp"
 #include "preferences/game.hpp"
 
 #include <functional>
@@ -55,6 +51,12 @@ void campaign_selection::campaign_selected()
 
 	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
+
+		if(tree.selected_item()->id() == missing_campaign_) {
+			find_widget<button>(this, "ok", false).set_active(false);
+		} else {
+			find_widget<button>(this, "ok", false).set_active(true);
+		}
 
 		const int choice = std::distance(page_ids_.begin(), iter);
 		if(iter == page_ids_.end()) {
@@ -339,6 +341,29 @@ void campaign_selection::pre_show(window& window)
 		page_ids_.push_back(campaign["id"]);
 	}
 
+	std::vector<std::string> dirs;
+	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
+	if(dirs.size() <= 15) {
+		config missing;
+		missing["icon"] = "units/unknown-unit.png";
+		missing["name"] = _("Missing Campaigns");
+		missing["completed"] = false;
+		missing["id"] = missing_campaign_;
+
+		add_campaign_to_tree(missing);
+
+		widget_data data;
+		widget_item item;
+
+		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
+		data.emplace("description", item);
+
+		pages.add_page(data);
+		page_ids_.push_back(missing_campaign_);
+	}
+
 	//
 	// Set up Mods selection dropdown
 	//
@@ -354,6 +379,7 @@ void campaign_selection::pre_show(window& window)
 			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
 
 			mod_states_.push_back(active);
+			mod_ids_.emplace_back(mod->id);
 		}
 
 		mods_menu.set_values(mod_menu_values);
@@ -455,7 +481,7 @@ void campaign_selection::mod_toggled()
 
 	for(unsigned i = 0; i < mod_states_.size(); i++) {
 		if(mod_states_[i]) {
-			engine_.toggle_mod(i);
+			engine_.toggle_mod(mod_ids_[i]);
 		}
 	}
 

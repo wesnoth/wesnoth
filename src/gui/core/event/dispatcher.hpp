@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,11 +21,9 @@
 
 #include <SDL2/SDL_events.h>
 
-#include <cassert>
 #include <functional>
 #include <list>
 #include <map>
-#include <type_traits>
 
 struct point;
 

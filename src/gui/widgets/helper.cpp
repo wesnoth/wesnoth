@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,11 +23,9 @@
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
 #include "gui/widgets/settings.hpp"
-#include "sdl/rect.hpp"
 #include "tstring.hpp"
 #include "sdl/input.hpp" // get_mouse_location
 
-#include <SDL2/SDL.h>
 
 namespace gui2
 {

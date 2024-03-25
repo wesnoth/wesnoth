@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2023
+	Copyright (C) 2006 - 2024
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "units/animation.hpp"
 
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"

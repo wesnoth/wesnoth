@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "gui/dialogs/game_delete.hpp"
 
 #include "preferences/game.hpp"
-#include "gui/widgets/settings.hpp"
 
 namespace gui2::dialogs
 {

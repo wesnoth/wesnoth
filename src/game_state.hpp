@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@ class config;
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "tod_manager.hpp"
-#include "units/id.hpp"
 
 class game_display;
 class play_controller;
@@ -30,11 +29,9 @@ class game_lua_kernel;
 class reports;
 
 namespace game_events { class manager; class wmi_manager; }
-namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
 
-namespace wb { class manager; }
 
 namespace actions { class undo_list; }
 
@@ -61,6 +58,8 @@ public:
 	int next_player_number_;
 	/** True if healing should be done at the beginning of the next side turn */
 	bool do_healing_;
+	bool victory_when_enemies_defeated_;
+	bool remove_from_carryover_on_defeat_;
 
 	std::optional<end_level_data> end_level_data_;
 	// used to sync with the mpserver

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,11 +20,7 @@
 #include "preferences/credentials.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2::dialogs

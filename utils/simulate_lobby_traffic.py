@@ -37,7 +37,7 @@ server = subprocess.Popen(("wesnothd", "-p", str(PORT)), -1, None, DEVNULL, DEVN
 # Launch the clients
 clients = set()
 for i in range(NUM_CLIENTS):
-  clients.add(subprocess.Popen(("wesnoth", "--plugin=simulate-lobby-activity.lua", "--server=localhost:%d" % PORT, "--username=%d" % i, "--nogui"),
+  clients.add(subprocess.Popen(("wesnoth", "--plugin=utils/simulate-lobby-activity.lua", "--server=localhost:%d" % PORT, "--username=%d" % i, "--nogui"),
     -1, None, DEVNULL, DEVNULL, DEVNULL))
 
 input("done.\nPress Enter when you want to terminate all processes.")

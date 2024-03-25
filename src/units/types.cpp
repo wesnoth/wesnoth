@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,6 @@
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
 #include "units/unit.hpp"
-#include "utils/iterable_pair.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -838,13 +837,34 @@ bool unit_type::resistance_filter_matches(
 
 std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static const unit_alignments::sized_array<t_string> male_names {_("lawful"), _("neutral"), _("chaotic"), _("liminal")};
-	static const unit_alignments::sized_array<t_string> female_names {_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")};
-
 	if(gender == unit_race::FEMALE) {
-		return female_names[static_cast<int>(align)];
+		switch(align)
+		{
+			case unit_alignments::type::lawful:
+				return _("female^lawful");
+			case unit_alignments::type::neutral:
+				return _("female^neutral");
+			case unit_alignments::type::chaotic:
+				return _("female^chaotic");
+			case unit_alignments::type::liminal:
+				return _("female^liminal");
+			default:
+				return _("female^lawful");
+		}
 	} else {
-		return male_names[static_cast<int>(align)];
+		switch(align)
+		{
+			case unit_alignments::type::lawful:
+				return _("lawful");
+			case unit_alignments::type::neutral:
+				return _("neutral");
+			case unit_alignments::type::chaotic:
+				return _("chaotic");
+			case unit_alignments::type::liminal:
+				return _("liminal");
+			default:
+				return _("lawful");
+		}
 	}
 }
 
@@ -1367,7 +1387,9 @@ void unit_type::apply_scenario_fix(const config& cfg)
 	}
 	if(auto attr = cfg.get("add_advancement")) {
 		for(const auto& str : utils::split(attr->str())) {
-			advances_to_.push_back(str);
+			if(!utils::contains(advances_to_, str)) {
+				advances_to_.push_back(str);
+			}
 		}
 	}
 	if(auto attr = cfg.get("remove_advancement")) {

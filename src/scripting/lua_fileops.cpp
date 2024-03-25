@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,14 +16,11 @@
 #include "scripting/lua_fileops.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp" //for game_config::debug_lua
-#include "game_errors.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 #include "scripting/push_check.hpp"
 #include "picture.hpp"
 #include "sdl/point.hpp"
-#include "sdl/surface.hpp"
 
 #include <algorithm>
 #include <exception>

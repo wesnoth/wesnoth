@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2023
+	Copyright (C) 2015 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/

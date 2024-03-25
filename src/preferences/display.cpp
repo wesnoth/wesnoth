@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,12 +29,8 @@
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/file_dialog.hpp"
-#include "gui/dialogs/message.hpp"
-#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/retval.hpp"
-#include "log.hpp"
 #include "play_controller.hpp"
 #include "game_data.hpp"
 #include "resources.hpp"

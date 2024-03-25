@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,8 @@
 
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
-#include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
-#include "units/types.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2023
+	Copyright (C) 2011 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,6 @@
 #include "gui/core/gui_definition.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/modeless_dialog.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(warn, log_config)

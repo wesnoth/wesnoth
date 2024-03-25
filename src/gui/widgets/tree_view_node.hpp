@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,10 +22,6 @@
 
 namespace gui2
 {
-
-namespace implementation {
-	struct tree_node;
-}
 
 class selectable_item;
 class tree_view;

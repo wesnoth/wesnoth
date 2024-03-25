@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,10 +25,7 @@
 #pragma once
 
 #include "map/location.hpp"
-#include "sdl/rect.hpp"
-#include "utils/math.hpp"
 
-#include <map>
 #include <vector>
 
 class display;
@@ -38,10 +35,6 @@ namespace halo { class manager; }
 class team;
 class unit;
 
-struct color_t;
-struct SDL_Rect;
-struct point;
-class surface;
 
 class unit_drawer
 {

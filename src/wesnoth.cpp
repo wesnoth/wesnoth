@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
-#include "editor/editor_main.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -37,18 +36,14 @@
 #include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
-#include "picture.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
-#include "preferences/general.hpp"      // for core_id, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp" // for exception
-#include "sdl/rect.hpp"
 #include "serialization/binary_or_text.hpp" // for config_writer
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
-#include "serialization/unicode_cast.hpp"
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "formula/string_utils.hpp" // VGETTEXT
@@ -89,6 +84,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include <optional>
 
 #include <algorithm> // for transform
@@ -128,12 +124,6 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-
-class end_level_exception;
-namespace game
-{
-struct error;
-}
 
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
@@ -355,7 +345,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		defines_map.emplace(define, preproc_define(define));
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
-	lg::set_strict_severity(0);
+	lg::set_strict_severity(lg::severity::LG_ERROR);
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
 	read(result, *stream, &validator);
@@ -375,7 +365,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
 			const std::string log_domain = log_pair.second;
-			const int severity = log_pair.first;
+			const lg::severity severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
 				PLAIN_LOG << "unknown log domain: " << log_domain;
 				return 2;
@@ -412,6 +402,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
+		PLAIN_LOG << "Starting with directory: '" << datadir << "'";
 #ifdef _WIN32
 		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
 		if(datadir.c_str()[1] == ':') {
@@ -423,9 +414,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			game_config::path = filesystem::get_cwd() + '/' + datadir;
 		}
 
+		PLAIN_LOG << "Now have with directory: '" << game_config::path << "'";
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(!cmdline_opts.nobanner) {
-			PLAIN_LOG << "Overriding data directory with " << game_config::path;
+			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 
 		if(!filesystem::is_directory(game_config::path)) {
@@ -494,7 +486,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_logdomains(*cmdline_opts.logdomains);
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
 		return 0;
 	}
 
@@ -506,7 +498,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		srand(*cmdline_opts.rng_seed);
 	}
 
-	if(cmdline_opts.screenshot || cmdline_opts.render_image) {
+	if(cmdline_opts.render_image) {
 		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
@@ -754,7 +746,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	srand(std::time(nullptr));
 
 	commandline_options cmdline_opts = commandline_options(args);
-	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
 
 	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {
@@ -1059,7 +1050,7 @@ int main(int argc, char** argv)
 	// write_to_log_file means that writing to the log file will be done, if true.
 	// if false, output will be written to the terminal
 	// on windows, if wesnoth was not started from a console, then it will allocate one
-	bool write_to_log_file = true;
+	bool write_to_log_file = !getenv("WESNOTH_NO_LOG_FILE");
 	[[maybe_unused]]
 	bool no_con = false;
 
@@ -1164,6 +1155,18 @@ int main(int argc, char** argv)
 					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 				}
 				game_config::path = std::move(auto_dir);
+			} else if(game_config::path.empty()) {
+				bool data_dir_specified = false;
+				for(int i=0;i<argc;i++) {
+					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
+						data_dir_specified = true;
+						break;
+					}
+				}
+				if (!data_dir_specified) {
+					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+					return 1;
+				}
 			}
 		}
 

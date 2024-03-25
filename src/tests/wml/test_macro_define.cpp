@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2023
+	Copyright (C) 2020 - 2024
 	by CrawlCycle <73139676+CrawlCycle@users.noreply.github.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

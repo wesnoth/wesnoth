@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022 - 2023
+	Copyright (C) 2022 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
 #include "color.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // sdl::runtime_at_least
 #include "video.hpp"
@@ -37,6 +36,16 @@ static SDL_Renderer* renderer()
 /**************************************/
 /* basic drawing and pixel primatives */
 /**************************************/
+
+void draw::clear()
+{
+	DBG_D << "clear";
+	SDL_BlendMode b;
+	SDL_GetRenderDrawBlendMode(renderer(), &b);
+	SDL_SetRenderDrawBlendMode(renderer(), SDL_BLENDMODE_NONE);
+	fill(0, 0, 0, 0);
+	SDL_SetRenderDrawBlendMode(renderer(), b);
+}
 
 void draw::fill(
 	const SDL_Rect& area,
@@ -577,7 +586,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	, viewport_()
 {
 	// Validate we can render to this texture.
-	assert(t.get_access() == SDL_TEXTUREACCESS_TARGET);
+	assert(!t || t.get_access() == SDL_TEXTUREACCESS_TARGET);
 
 	if (!renderer()) {
 		WRN_D << "can't set render target with null renderer";
@@ -587,7 +596,11 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	target_ = video::get_render_target();
 	SDL_RenderGetViewport(renderer(), &viewport_);
 
-	video::force_render_target(t);
+	if (t) {
+		video::force_render_target(t);
+	} else {
+		video::reset_render_target();
+	}
 }
 
 draw::render_target_setter::~render_target_setter()
@@ -602,7 +615,11 @@ draw::render_target_setter::~render_target_setter()
 
 draw::render_target_setter draw::set_render_target(const texture& t)
 {
-	DBG_D << "setting render target to "
-	      << t.w() << 'x' << t.h() << " texture";
+	if (t) {
+		DBG_D << "setting render target to "
+		      << t.w() << 'x' << t.h() << " texture";
+	} else {
+		DBG_D << "setting render target to main render buffer";
+	}
 	return draw::render_target_setter(t);
 }

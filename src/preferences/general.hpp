@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,13 +19,7 @@
 #include "gui/sort_order.hpp"
 #include "terrain/translation.hpp"
 
-#include <utility>
-
 struct point;
-
-namespace hotkey {
-	class hotkey_item;
-}
 
 namespace preferences {
 
@@ -325,5 +319,15 @@ namespace preferences {
 	 * @param sub_id The ID of the sub-achievement within the achievement.
 	 */
 	void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id);
+
+	/**
+	 * @param addon_id The chosen addon id from the editor to store in the preferences.
+	 */
+	void set_editor_chosen_addon(const std::string& addon_id);
+
+	/**
+	 * @return The most recently selected add-on id from the editor. May be an empty string.
+	 */
+	std::string editor_chosen_addon();
 
 } // end namespace preferences

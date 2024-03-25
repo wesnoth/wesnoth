@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gettext.hpp"
-#include "map/location.hpp"
 #include "movetype.hpp"
 #include "units/unit_alignments.hpp"
 #include "units/race.hpp"
@@ -31,9 +30,7 @@
 #include <string>
 #include <vector>
 
-class unit_ability_list;
 class unit_animation;
-class game_config_view;
 
 typedef std::map<std::string, movetype> movement_type_map;
 

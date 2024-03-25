@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,6 +35,7 @@
 
 namespace gui2
 {
+
 namespace
 {
 
@@ -972,6 +973,22 @@ void scrollbar_container::scroll_horizontal_scrollbar(const scrollbar_base::scro
 	scrollbar_moved();
 }
 
+void scrollbar_container::scroll_vertical_scrollbar_by(const int pixels)
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll_by(pixels);
+	move_viewport(0, pixels);
+}
+
+void scrollbar_container::scroll_horizontal_scrollbar_by(const int pixels)
+{
+	assert(horizontal_scrollbar_);
+
+	horizontal_scrollbar_->scroll_by(pixels);
+	move_viewport(pixels, 0);
+}
+
 void scrollbar_container::handle_key_home(SDL_Keymod /*modifier*/, bool& handled)
 {
 	assert(vertical_scrollbar_ && horizontal_scrollbar_);
@@ -1057,7 +1074,6 @@ void scrollbar_container::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& 
 void scrollbar_container::scrollbar_moved()
 {
 	// Init.
-	assert(content_ && content_grid_);
 	assert(vertical_scrollbar_ && horizontal_scrollbar_);
 
 	/*** Update the content location. ***/
@@ -1069,7 +1085,15 @@ void scrollbar_container::scrollbar_moved()
 		? 0
 		: vertical_scrollbar_->get_item_position() * vertical_scrollbar_->get_step_size();
 
-	const point content_origin {content_->get_x() - x_offset, content_->get_y() - y_offset};
+	move_viewport(x_offset, y_offset);
+}
+
+void scrollbar_container::move_viewport(const int pixels_x, const int pixels_y)
+{
+	// Init.
+	assert(content_ && content_grid_);
+
+	const point content_origin {content_->get_x() - pixels_x, content_->get_y() - pixels_y};
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_rectangle(content_visible_area_);

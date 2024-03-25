@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2023
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -13,14 +13,11 @@
 	See the COPYING file for more details.
 */
 
-#include "gui/core/canvas.hpp"
-#include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
@@ -31,10 +28,8 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "config.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
@@ -42,12 +37,8 @@
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_attributes.hpp"
 #include "serialization/string_utils.hpp"
-#include "tstring.hpp"
-#include "game_data.hpp"
-#include "game_state.hpp"
 
 #include <functional>
-#include "serialization/string_utils.hpp"
 
 #include <boost/preprocessor/cat.hpp>
 
@@ -55,7 +46,6 @@
 #include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -609,10 +599,8 @@ int impl_widget_dir(lua_State* L)
 		}
 	}
 	// Add the gui.widget methods
-	luaW_getglobal(L, "dir");
 	luaW_getglobal(L, "gui", "widget");
-	lua_call(L, 1, 1);
-	auto methods = lua_check<std::vector<std::string>>(L, -1);
+	auto methods = luaW_get_attributes(L, -1);
 	keys.insert(keys.end(), methods.begin(), methods.end());
 	lua_push(L, keys);
 	return 1;

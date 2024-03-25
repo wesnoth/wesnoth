@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,8 +22,6 @@
 
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/name_generator_factory.hpp"
 

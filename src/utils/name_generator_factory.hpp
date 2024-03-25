@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	by Marius Spix
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

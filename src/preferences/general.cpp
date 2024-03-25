@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -504,7 +504,7 @@ int font_scaled(int size)
 
 int keepalive_timeout()
 {
-	return prefs["keepalive_timeout"].to_int(10);
+	return prefs["keepalive_timeout"].to_int(20);
 }
 
 void keepalive_timeout(int seconds)
@@ -784,22 +784,14 @@ void set_stop_music_in_background(bool ison)
 	preferences::set("stop_music_in_background", ison);
 }
 
-namespace {
-	double scroll = 0.2;
-}
-
 int scroll_speed()
 {
-	const int value = std::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
-	scroll = value/100.0;
-
-	return value;
+	return std::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
 }
 
 void set_scroll_speed(const int new_speed)
 {
 	prefs["scroll"] = new_speed;
-	scroll = new_speed / 100.0;
 }
 
 bool middle_click_scrolls()
@@ -1208,6 +1200,16 @@ void set_sub_achievement(const std::string& content_for, const std::string& id, 
 
 	ach.add_child("in_progress", set_progress);
 	prefs.add_child("achievements", ach);
+}
+
+void set_editor_chosen_addon(const std::string& addon_id)
+{
+	prefs["editor_chosen_addon"] = addon_id;
+}
+
+std::string editor_chosen_addon()
+{
+	return prefs["editor_chosen_addon"];
 }
 
 } // end namespace preferences

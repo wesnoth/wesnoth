@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,12 +15,10 @@
 
 #pragma once
 
-class surface;
 
 #include "cursor.hpp"
 #include "floating_label.hpp"
 #include "gui/core/top_level_drawable.hpp"
-#include "tooltips.hpp"
 #include "widgets/button.hpp"
 
 namespace gui

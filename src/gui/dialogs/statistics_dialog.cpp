@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2023
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,6 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
@@ -238,7 +237,7 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 		unit_types.build_unit_type(defender_type, unit_type::BUILD_STATUS::FULL);
 
 		battle_context_unit_stats defender_bc(&defender_type, nullptr, false, nullptr, nullptr, 0 /* not used */);
-		std::unique_ptr<combatant> current_defender(new combatant(defender_bc));
+		auto current_defender = std::make_unique<combatant>(defender_bc);
 
 		for(const auto& i : by_cth) {
 			int cth = i.first;

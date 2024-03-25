@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,17 +15,13 @@
 
 #include "video.hpp"
 
-#include "display.hpp"
 #include "draw_manager.hpp"
-#include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
 #include "picture.hpp"
 #include "preferences/general.hpp"
-#include "sdl/input.hpp"
 #include "sdl/point.hpp"
 #include "sdl/texture.hpp"
-#include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
 #include "widgets/menu.hpp" // for bluebg_style.unload_images
@@ -74,7 +70,7 @@ namespace video
 void render_screen(); // exposed and used only in draw_manager.cpp
 
 // Internal functions
-static void init_window();
+static void init_window(bool hidden=false);
 static void init_test_window();
 static void init_fake();
 static void init_test();
@@ -98,11 +94,14 @@ void init(fake type)
 	case fake::none:
 		init_window();
 		break;
-	case fake::window:
+	case fake::no_window:
 		init_fake();
 		break;
-	case fake::draw:
+	case fake::no_draw:
 		init_test();
+		break;
+	case fake::hide_window:
+		init_window(true);
 		break;
 	default:
 		throw error("unrecognized fake type passed to video::init");
@@ -151,6 +150,7 @@ bool testing()
 
 void init_fake()
 {
+	LOG_DP << "running headless";
 	headless_ = true;
 	refresh_rate_ = 1;
 	game_canvas_size_ = {800,600};
@@ -291,6 +291,9 @@ bool update_framebuffer()
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
 			render_texture_.reset();
+		} else {
+			// This isn't currently used, but ensure it's accurate anyway.
+			render_texture_.set_draw_size(lsize);
 		}
 	}
 	if (!render_texture_) {
@@ -348,7 +351,7 @@ void init_test_window()
 	update_test_framebuffer();
 }
 
-void init_window()
+void init_window(bool hidden)
 {
 	// Position
 	const int x = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
@@ -369,6 +372,11 @@ void init_window()
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 	} else if(preferences::maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
+	}
+
+	if(hidden) {
+		LOG_DP << "hiding main window";
+		window_flags |= SDL_WINDOW_HIDDEN;
 	}
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
@@ -519,6 +527,11 @@ void clear_render_target()
 	force_render_target({});
 }
 
+void reset_render_target()
+{
+	force_render_target(render_texture_);
+}
+
 texture get_render_target()
 {
 	// This should always be up-to-date, but assert for sanity.
@@ -561,7 +574,7 @@ void render_screen()
 	SDL_RenderPresent(*window);
 
 	// Reset the render target to the render texture.
-	force_render_target(render_texture_);
+	reset_render_target();
 }
 
 surface read_pixels(SDL_Rect* r)

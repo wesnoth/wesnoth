@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,9 +20,7 @@
 
 #include <bitset>
 #include <functional>
-#include <list>
 #include <map>
-#include <vector>
 
 class config;
 
@@ -190,6 +188,10 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_AREA_ADD,
 	HOTKEY_EDITOR_AREA_SAVE,
 	HOTKEY_EDITOR_AREA_RENAME,
+
+	// Addons
+	HOTKEY_EDITOR_PBL,
+	HOTKEY_EDITOR_CHANGE_ADDON_ID,
 
 	// Scenario
 	HOTKEY_EDITOR_SCENARIO_EDIT,

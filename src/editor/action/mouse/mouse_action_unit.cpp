@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,12 +20,10 @@
 
 #include "editor/editor_display.hpp"
 #include "formula/string_utils.hpp"
-#include "gui/dialogs/unit_create.hpp"
 #include "tooltips.hpp"
 #include "gettext.hpp"
 
 #include "map/location.hpp"
-#include "sdl/rect.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"

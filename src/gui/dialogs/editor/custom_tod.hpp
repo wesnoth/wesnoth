@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2023
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,10 @@
 #include "time_of_day.hpp"
 
 #include <vector>
+#include <functional>
 
 namespace gui2
 {
-class slider;
 
 namespace dialogs
 {
@@ -56,6 +56,15 @@ public:
 	using string_pair = std::pair<std::string, std::string>;
 	using tod_attribute_getter = std::function<string_pair(const time_of_day&)>;
 
+	/** Return current schedule */
+	const std::vector<time_of_day> get_schedule();
+
+	/** Register callback for update */
+	void register_callback(std::function<void(std::vector<time_of_day>)>);
+
+	/** enum used in identifying sliders */
+	enum COLOR_TYPE {COLOR_R, COLOR_G, COLOR_B};
+
 private:
 	virtual const std::string& window_id() const override;
 
@@ -70,10 +79,17 @@ private:
 	void do_new_tod();
 	void do_delete_tod();
 
+	/** Callback for preview button */
+	void preview_schedule();
+
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
 	void select_file(const std::string& default_dir);
 
-	void color_slider_callback();
+	/* Callback for color sliders */
+	void color_slider_callback(COLOR_TYPE type);
+
+	/* Update map and schedule in realtime */
+	std::function<void(std::vector<time_of_day>)> update_map_and_schedule_;
 
 	void update_tod_display();
 
@@ -85,6 +101,9 @@ private:
 	void update_selected_tod_info();
 
 	void copy_to_clipboard_callback(tod_attribute_getter getter);
+
+	/** Update current TOD with values from the GUI */
+	void update_schedule();
 
 	/** Available time_of_days */
 	std::vector<time_of_day> times_;

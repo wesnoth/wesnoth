@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2023
+	Copyright (C) 2007 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -91,6 +91,17 @@ void invalidate_region(const rect& region);
 
 /** Mark the entire screen as requiring redraw. */
 void invalidate_all();
+
+/**
+ * Request an extra render pass.
+ *
+ * This is used for blur effects, which need to first render what's
+ * underneath so that it can be blurred.
+ *
+ * There is not currently any limit to the number of extra render passes,
+ * but do try to keep it finite.
+ */
+void request_extra_render_pass();
 
 /**
  * Ensure that everything which needs to be drawn is drawn.

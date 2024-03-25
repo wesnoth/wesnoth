@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,10 +17,8 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
 #include "terrain/terrain.hpp"
 
-#include <set>
 
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general())

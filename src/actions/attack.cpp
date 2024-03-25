@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2023
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,9 +23,6 @@
 #include "actions/advancement.hpp"
 #include "actions/vision.hpp"
 
-#include "ai/lua/aspect_advancements.hpp"
-#include "formula/callable_objects.hpp"
-#include "formula/formula.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
@@ -41,13 +38,10 @@
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_checkup.hpp"
-#include "synced_user_choice.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/abilities.hpp"
 #include "units/animation_component.hpp"
-#include "units/helper.hpp"
-#include "units/filter.hpp"
 #include "units/map.hpp"
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
@@ -1207,9 +1201,11 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	// for that unit, but let the other unit continue
 	if (attacker_stats->weapon == nullptr){
         attacker.n_attacks_ = 0;
+        attacker.orig_attacks_ = 0;
 	}
 	if (defender_stats->weapon == nullptr){
         defender.n_attacks_ = 0;
+        defender.orig_attacks_ = 0;
 	}
 
 	return true;
