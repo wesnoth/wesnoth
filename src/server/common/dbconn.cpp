@@ -139,7 +139,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "  GROUP_CONCAT(CONCAT(player.USER_NAME, ':', player.FACTION)) as PLAYERS, "
 "  IFNULL(scenario.NAME, '') as SCENARIO_NAME, "
 "  IFNULL(era.NAME, '') as ERA_NAME, "
-"  IFNULL(GROUP_CONCAT(distinct mods.NAME), '') as MODIFICATION_NAMES, "
+"  IFNULL((select GROUP_CONCAT(distinct mods.NAME) from "+db_game_content_info_table_+" mods where mods.TYPE = 'modification' and mods.INSTANCE_UUID = game.INSTANCE_UUID and mods.GAME_ID = game.GAME_ID), '') as MODIFICATION_NAMES, "
 "  case "
 "  when game.PUBLIC = 1 and game.INSTANCE_VERSION != 'trunk' "
 "  then concat('https://replays.wesnoth.org/', substring(game.INSTANCE_VERSION, 1, 4), '/', year(game.END_TIME), '/', lpad(month(game.END_TIME), 2, '0'), '/', lpad(day(game.END_TIME), 2, '0'), '/', game.REPLAY_NAME) "
@@ -153,25 +153,25 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "  else 'trunk' "
 "  end as VERSION "
 "from "+db_game_player_info_table_+" player , "+db_game_content_info_table_+" scenario , "+db_game_content_info_table_+" era , "+db_game_info_table_+" game ";
-	// using a left join when searching by modification won't exclude anything
-	game_history_query += search_content_type == 2 && !search_content.empty() ? "inner join " : "left join ";
-	game_history_query += db_game_content_info_table_+" mods "
-"   on mods.TYPE = 'modification' "
-"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and mods.GAME_ID = game.GAME_ID ";
 	// modification id optional parameter
-	if(search_content_type == 2)
+	if(search_content_type == 2 && !search_content.empty())
 	{
-		if(!search_content.empty())
-		{
-			game_history_query += "and mods.ID like ? ";
+		game_history_query += ", "+db_game_content_info_table_+" mods "
+"  where mods.TYPE = 'modification' "
+"  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
+"  and mods.GAME_ID = game.GAME_ID "
+"  and mods.ID like ? ";
 
-			utils::to_sql_wildcards(search_content, false);
-			params.emplace_back(search_content);
-		}
+		utils::to_sql_wildcards(search_content, false);
+		params.emplace_back(search_content);
+	}
+	else
+	{
+		// put the where clause with an always true condition here so I don't need to check again a couple lines down whether it needs "where" vs "and"
+		game_history_query += "where 1=1 ";
 	}
 
-	game_history_query += "where exists "
+	game_history_query += "and exists "
 "  ( "
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
@@ -205,30 +205,24 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	}
 
 	// scenario id optional parameter
-	if(search_content_type == 0)
+	if(search_content_type == 0 && !search_content.empty())
 	{
-		if(!search_content.empty())
-		{
-			game_history_query += "and scenario.ID like ? ";
+		game_history_query += "and scenario.ID like ? ";
 
-			utils::to_sql_wildcards(search_content, false);
-			params.emplace_back(search_content);
-		}
+		utils::to_sql_wildcards(search_content, false);
+		params.emplace_back(search_content);
 	}
 
 	// era id optional parameter
-	if(search_content_type == 1)
+	if(search_content_type == 1 && !search_content.empty())
 	{
-		if(!search_content.empty())
-		{
-			game_history_query += "and era.ID like ? ";
+		game_history_query += "and era.ID like ? ";
 
-			utils::to_sql_wildcards(search_content, false);
-			params.emplace_back(search_content);
-		}
+		utils::to_sql_wildcards(search_content, false);
+		params.emplace_back(search_content);
 	}
 
-	game_history_query += "group by game.INSTANCE_UUID, game.GAME_ID "
+	game_history_query += "group by game.INSTANCE_UUID, game.GAME_ID, SCENARIO_NAME, ERA_NAME "
 "order by game.START_TIME desc "
 "limit 11 offset ? ";
 		params.emplace_back(offset);
