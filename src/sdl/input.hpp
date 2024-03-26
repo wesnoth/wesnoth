@@ -30,7 +30,7 @@ namespace sdl
 /**
  * A wrapper for SDL_GetMouseState that gives coordinates in draw space.
  */
-uint32_t get_mouse_state(int *x, int *y);
+uint32_t get_mouse_state(float* x, float* y);
 
 /** Returns the current mouse button mask */
 uint32_t get_mouse_button_mask();

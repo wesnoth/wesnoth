@@ -239,10 +239,10 @@ protected:
 	bool dragging_right_;
 
 	/** Drag start position x */
-	int drag_from_x_;
+	float drag_from_x_;
 
 	/** Drag start position y */
-	int drag_from_y_;
+	float drag_from_y_;
 
 	/** Drag start or mouse-down map location */
 	map_location drag_from_hex_;

@@ -177,7 +177,11 @@ int show_story(lua_State* L) {
 int show_menu(lua_State* L) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
 	SDL_Rect pos {1,1,1,1};
-	sdl::get_mouse_state(&pos.x, &pos.y);
+	float x;
+	float y;
+	sdl::get_mouse_state(&x, &y);
+	pos.x = x;
+	pos.y = y;
 
 	int initial = -1;
 	bool markup = false;

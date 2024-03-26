@@ -92,12 +92,10 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		};
 	};
 
-	// We want to draw the minimap with NN scaling.
-	set_texture_scale_quality("nearest");
-
 	// Create a temp texture a bit larger than we want. This allows us to compose the minimap and then
 	// scale the whole result down the desired destination texture size.
 	texture minimap(map_width, map_height, SDL_TEXTUREACCESS_TARGET);
+	SDL_SetTextureScaleMode(minimap, SDL_SCALEMODE_NEAREST);
 	if(!minimap) {
 		return nullptr;
 	}

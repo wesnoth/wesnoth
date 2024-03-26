@@ -582,20 +582,11 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	const auto& current_driver = video::current_driver();
 	auto drivers = video::enumerate_drivers();
 
-	const auto& dpi = video::get_dpi();
-	std::string dpi_report;
-
-	dpi_report = dpi.first == 0.0f || dpi.second == 0.0f ?
-				 "<unknown>" :
-				 geometry_to_string(dpi.first, dpi.second);
-
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
 	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
 	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
-	fmt.insert("Screen dpi", dpi_report);
-
 	const auto& renderer_report = video::renderer_report();
 
 	for(const auto& info : renderer_report) {
@@ -624,8 +615,6 @@ list_formatter sound_settings_report_internal(const std::string& heading = "")
 		{ SDL_AUDIO_U8,     "unsigned 8 bit" },
 		{ SDL_AUDIO_S8,     "signed 8 bit" },
 		// 16 bits
-		{ AUDIO_U16LSB, "unsigned 16 bit little-endian" },
-		{ AUDIO_U16MSB, "unsigned 16 bit big-endian" },
 		{ SDL_AUDIO_S16LE, "signed 16 bit little-endian" },
 		{ SDL_AUDIO_S16BE, "signed 16 bit big-endian" },
 		// 32 bits

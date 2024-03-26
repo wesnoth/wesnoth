@@ -90,7 +90,8 @@ void help_browser::update_location(const SDL_Rect&)
 void help_browser::process_event()
 {
 	CKey key;
-	int mousex, mousey;
+	float mousex;
+	float mousey;
 	sdl::get_mouse_state(&mousex,&mousey);
 
 	// Fake focus functionality for the menu, only process it if it has focus.
@@ -186,7 +187,7 @@ void help_browser::handle_event(const SDL_Event &event)
 
 void help_browser::update_cursor()
 {
-	int mousex, mousey;
+	float mousex, mousey;
 	sdl::get_mouse_state(&mousex,&mousey);
 	const std::string ref = text_area_.ref_at(mousex, mousey);
 	if (!ref.empty() && !ref_cursor_) {

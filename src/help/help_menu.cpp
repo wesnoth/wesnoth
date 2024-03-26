@@ -123,7 +123,7 @@ void help_menu::select_topic(const topic &t)
 int help_menu::process()
 {
 	int res = menu::process();
-	int mousex, mousey;
+	float mousex, mousey;
 	sdl::get_mouse_state(&mousex, &mousey);
 
 	if (!visible_items_.empty()

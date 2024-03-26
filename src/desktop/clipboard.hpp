@@ -42,8 +42,6 @@ void copy_to_clipboard(const std::string& text, const bool mouse);
  */
 std::string copy_from_clipboard(const bool mouse);
 
-void handle_system_event(const SDL_Event& ev);
-
 /**
  * Whether wesnoth was compiled with support for a clipboard.
  */

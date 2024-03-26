@@ -24,14 +24,13 @@ namespace sdl
 {
 
 window::window(const std::string& title,
-				 const int x,
-				 const int y,
+				 const int,
+				 const int,
 				 const int w,
 				 const int h,
 				 const uint32_t window_flags,
 				 const uint32_t render_flags)
-	: window_(SDL_CreateWindow(
-		title.c_str(), x, y, w, h, window_flags | SDL_WINDOW_HIDDEN))
+	: window_(SDL_CreateWindow(title.c_str(), w, h, window_flags | SDL_WINDOW_HIDDEN))
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
 	if(!window_) {
@@ -50,7 +49,7 @@ window::window(const std::string& title,
 	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
 #endif
 
-	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
+	if(!SDL_CreateRenderer(window_, nullptr, render_flags)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
@@ -63,10 +62,6 @@ window::window(const std::string& title,
 	if(info.num_texture_formats == 0) {
 		throw exception("The renderer has no texture information available.\n",
 						 false);
-	}
-
-	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
-		throw exception("Render-to-texture not supported or enabled!", false);
 	}
 
 	// Set default blend mode to blend.
@@ -128,7 +123,7 @@ void window::maximize()
 
 void window::to_window()
 {
-	SDL_SetWindowFullscreen(window_, 0);
+	SDL_SetWindowFullscreen(window_, false);
 }
 
 void window::restore()
@@ -138,7 +133,7 @@ void window::restore()
 
 void window::full_screen()
 {
-	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	SDL_SetWindowFullscreen(window_, true);
 }
 
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -183,7 +178,10 @@ int window::get_display_index()
 void window::set_logical_size(int w, int h)
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
-	SDL_SetRenderLogicalPresentation(r, w, h);
+	// Non-integer scales are not currently supported.
+	// This option makes things neater when window size is not a perfect
+	// multiple of logical size, which can happen when manually resizing.
+	SDL_SetRenderLogicalPresentation(r, w, h, SDL_LOGICAL_PRESENTATION_INTEGER_SCALE, SDL_SCALEMODE_LINEAR);
 }
 
 void window::set_logical_size(const point& p)
@@ -195,14 +193,18 @@ point window::get_logical_size() const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	int w, h;
-	SDL_GetRenderLogicalPresentation(r, &w, &h);
+	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
+	SDL_ScaleMode scale_mode = SDL_SCALEMODE_LINEAR;
+	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode, &scale_mode);
 	return {w, h};
 }
 
 void window::get_logical_size(int& w, int& h) const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
-	SDL_GetRenderLogicalPresentation(r, &w, &h);
+	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
+	SDL_ScaleMode scale_mode = SDL_SCALEMODE_LINEAR;
+	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode, &scale_mode);
 }
 
 uint32_t window::pixel_format()

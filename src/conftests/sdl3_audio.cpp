@@ -17,6 +17,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_mixer/SDL_mixer.h>
+#include <iostream>
 
 int main(int, char** argv)
 {
@@ -25,7 +26,11 @@ int main(int, char** argv)
         return (EXIT_FAILURE);
     }
 
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
+    SDL_AudioSpec spec;
+    spec.freq = 44100;
+    spec.format = MIX_DEFAULT_FORMAT;
+    spec.channels = 2;
+    if (Mix_OpenAudio(0, &spec) == -1) {
         fprintf(stdout, "Cannot initialize SDL Mixer: %s\\n", Mix_GetError());
         return (EXIT_FAILURE);
     }
