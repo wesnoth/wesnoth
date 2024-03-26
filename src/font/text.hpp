@@ -305,12 +305,7 @@ public:
  	* @param end_offset          Column offset of the cursor where selection/highlight ends
  	* @param color               Highlight color
 	*/
-	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
-	{
-		highlight_start_offset_ = start_offset;
-		highlight_end_offset_ = end_offset;
-		highlight_color_ = color;
-	}
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
 
 private:
 
@@ -412,6 +407,15 @@ private:
 	unsigned highlight_start_offset_;
 	unsigned highlight_end_offset_;
 	color_t	highlight_color_;
+	
+	/**
+	 * Global pango attribute list. All attributes in this list
+	 * will be applied one by one to the text
+	 */
+	PangoAttrList* global_attribute_list_;
+	
+	/** Hash for the global_attribute_list_ */
+	std::size_t attrib_hash_ = 0;
 
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
