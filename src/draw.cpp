@@ -33,6 +33,16 @@ static SDL_Renderer* renderer()
 	return video::get_renderer();
 }
 
+SDL_FRect rect_to_frect(const SDL_Rect& rect)
+{
+	SDL_FRect frect;
+	frect.h = rect.h;
+	frect.w = rect.w;
+	frect.x = rect.x;
+	frect.y = rect.y;
+	return frect;
+}
+
 /**************************************/
 /* basic drawing and pixel primatives */
 /**************************************/
@@ -53,7 +63,8 @@ void draw::fill(
 {
 	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
-	SDL_RenderFillRect(renderer(), &area);
+	SDL_FRect frect = rect_to_frect(area);
+	SDL_RenderFillRect(renderer(), &frect);
 }
 
 void draw::fill(
@@ -88,7 +99,8 @@ void draw::fill(const color_t& c)
 void draw::fill(const SDL_Rect& area)
 {
 	DBG_D << "fill " << area;
-	SDL_RenderFillRect(renderer(), &area);
+	SDL_FRect frect = rect_to_frect(area);
+	SDL_RenderFillRect(renderer(), &frect);
 }
 
 void draw::fill()
@@ -153,7 +165,8 @@ void draw::rect(const SDL_Rect& rect)
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
-	SDL_RenderRect(renderer(), &rect);
+	SDL_FRect frect = rect_to_frect(rect);
+	SDL_RenderRect(renderer(), &frect);
 }
 
 void draw::rect(const SDL_Rect& rect,
@@ -164,7 +177,8 @@ void draw::rect(const SDL_Rect& rect,
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
-	SDL_RenderRect(renderer(), &rect);
+	SDL_FRect frect = rect_to_frect(rect);
+	SDL_RenderRect(renderer(), &frect);
 }
 
 void draw::rect(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b)
@@ -193,7 +207,7 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 	SDL_RenderLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
-void draw::points(const std::vector<SDL_Point>& points)
+void draw::points(const std::vector<SDL_FPoint>& points)
 {
 	DBG_D << points.size() << " points";
 	SDL_RenderPoints(renderer(), points.data(), points.size());
@@ -223,18 +237,33 @@ void draw::circle(int cx, int cy, int r, uint8_t octants)
 	int x = r;
 	int y = 0;
 
-	std::vector<SDL_Point> points;
+	std::vector<SDL_FPoint> points;
+	while(y <= x) {
+		if(octants & 0x04) {
+			points.push_back({static_cast<float>(cx + x), static_cast<float>(cy + y)});
+		}
+		if(octants & 0x02) {
+			points.push_back({static_cast<float>(cx + x), static_cast<float>(cy - y)});
+		}
+		if(octants & 0x20) {
+			points.push_back({static_cast<float>(cx - x), static_cast<float>(cy + y)});
+		}
+		if(octants & 0x40) {
+			points.push_back({static_cast<float>(cx - x), static_cast<float>(cy - y)});
+		}
 
-	while(!(y > x)) {
-		if(octants & 0x04) points.push_back({cx + x, cy + y});
-		if(octants & 0x02) points.push_back({cx + x, cy - y});
-		if(octants & 0x20) points.push_back({cx - x, cy + y});
-		if(octants & 0x40) points.push_back({cx - x, cy - y});
-
-		if(octants & 0x08) points.push_back({cx + y, cy + x});
-		if(octants & 0x01) points.push_back({cx + y, cy - x});
-		if(octants & 0x10) points.push_back({cx - y, cy + x});
-		if(octants & 0x80) points.push_back({cx - y, cy - x});
+		if(octants & 0x08) {
+			points.push_back({static_cast<float>(cx + y), static_cast<float>(cy + x)});
+		}
+		if(octants & 0x01) {
+			points.push_back({static_cast<float>(cx + y), static_cast<float>(cy - x)});
+		}
+		if(octants & 0x10) {
+			points.push_back({static_cast<float>(cx - y), static_cast<float>(cy + x)});
+		}
+		if(octants & 0x80) {
+			points.push_back({static_cast<float>(cx - y), static_cast<float>(cy - x)});
+		}
 
 		d += 2 * y + 1;
 		++y;
@@ -316,7 +345,14 @@ void draw::blit(const texture& tex, const SDL_Rect& dst)
 	if (!tex) { DBG_D << "null blit"; return; }
 	DBG_D << "blit " << dst;
 
-	SDL_RenderTexture(renderer(), tex, tex.src(), &dst);
+	const SDL_Rect* rect = tex.src();
+	SDL_FRect fdst = rect_to_frect(dst);
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTexture(renderer(), tex, &frect, &fdst);
+	} else {
+		SDL_RenderTexture(renderer(), tex, nullptr, &fdst);
+	}
 }
 
 void draw::blit(const texture& tex)
@@ -324,14 +360,20 @@ void draw::blit(const texture& tex)
 	if (!tex) { DBG_D << "null blit"; return; }
 	DBG_D << "blit";
 
-	SDL_RenderTexture(renderer(), tex, tex.src(), nullptr);
+	const SDL_Rect* rect = tex.src();
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTexture(renderer(), tex, &frect, nullptr);
+	} else {
+		SDL_RenderTexture(renderer(), tex, nullptr, nullptr);
+	}
 }
 
 
-static SDL_RendererFlip get_flip(bool flip_h, bool flip_v)
+static SDL_FlipMode get_flip(bool flip_h, bool flip_v)
 {
 	// This should be easier than it is.
-	return static_cast<SDL_RendererFlip>(
+	return static_cast<SDL_FlipMode>(
 		static_cast<int>(flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE)
 		| static_cast<int>(flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE)
 	);
@@ -351,8 +393,15 @@ void draw::flipped(
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
 	      << ") to " << dst;
 
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderTextureRotated(renderer(), tex, tex.src(), &dst, 0.0, nullptr, flip);
+	SDL_FlipMode flip = get_flip(flip_h, flip_v);
+	const SDL_Rect* rect = tex.src();
+	SDL_FRect fdst = rect_to_frect(dst);
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTextureRotated(renderer(), tex, rect ? &frect : nullptr, &fdst, 0.0, nullptr, flip);
+	} else {
+		SDL_RenderTextureRotated(renderer(), tex, nullptr, &fdst, 0.0, nullptr, flip);
+	}
 }
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
@@ -360,8 +409,14 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')';
 
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderTextureRotated(renderer(), tex, tex.src(), nullptr, 0.0, nullptr, flip);
+	SDL_FlipMode flip = get_flip(flip_h, flip_v);
+	const SDL_Rect* rect = tex.src();
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTextureRotated(renderer(), tex, rect ? &frect : nullptr, nullptr, 0.0, nullptr, flip);
+	} else {
+		SDL_RenderTextureRotated(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
+	}
 }
 
 
@@ -419,7 +474,7 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 		bool hf = false;
 		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
 			if (mirrored) {
-				SDL_RendererFlip flip = get_flip(hf, vf);
+				SDL_FlipMode flip = get_flip(hf, vf);
 				SDL_RenderTextureRotated(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
 			} else {
 				SDL_RenderTexture(renderer(), tex, nullptr, &t);

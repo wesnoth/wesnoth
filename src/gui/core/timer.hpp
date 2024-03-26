@@ -30,9 +30,8 @@
 
 #pragma once
 
+#include <cstdint>
 #include <functional>
-
-#include <SDL3/SDL_types.h>
 
 namespace gui2
 {

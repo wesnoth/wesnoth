@@ -636,7 +636,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		selstart_ = selend_ = -1;
 	}
 
-	int mousex, mousey;
+	float mousex, mousey;
 	const uint8_t mousebuttons = sdl::get_mouse_state(&mousex,&mousey);
 	if(!(mousebuttons & SDL_BUTTON(1))) {
 		grabmouse_ = false;

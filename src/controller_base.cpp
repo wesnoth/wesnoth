@@ -63,8 +63,8 @@ controller_base::~controller_base()
 void controller_base::long_touch_callback(int x, int y)
 {
 	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
-		int x_now;
-		int y_now;
+		float x_now;
+		float y_now;
 		uint32_t mouse_state = sdl::get_mouse_state(&x_now, &y_now);
 
 #ifdef MOUSE_TOUCH_EMULATION
@@ -266,8 +266,6 @@ void controller_base::handle_event(const SDL_Event& event)
 		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
 		break;
 
-	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
-	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}
@@ -445,7 +443,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	bool was_scrolling = scrolling_;
 
-	int mousex, mousey;
+	float mousex, mousey;
 	uint8_t mouse_flags = sdl::get_mouse_state(&mousex, &mousey);
 
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);

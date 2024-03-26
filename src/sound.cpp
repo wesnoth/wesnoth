@@ -381,23 +381,6 @@ static std::string pick_one(const std::string& files)
 	return ids[choice];
 }
 
-namespace
-{
-struct audio_lock
-{
-	audio_lock()
-	{
-		SDL_LockAudio();
-	}
-
-	~audio_lock()
-	{
-		SDL_UnlockAudio();
-	}
-};
-
-} // end of anonymous namespace
-
 namespace sound
 {
 // Removes channel-chunk and channel-id mapping
@@ -448,7 +431,11 @@ bool init_sound()
 	}
 
 	if(!mix_ok) {
-		if(Mix_OpenAudio(prefs::get().sample_rate(), MIX_DEFAULT_FORMAT, 2, prefs::get().sound_buffer_size()) == -1) {
+		SDL_AudioSpec spec;
+		spec.freq = preferences::sample_rate();
+		spec.format = MIX_DEFAULT_FORMAT;
+		spec.channels = 2;
+		if(Mix_OpenAudio(0, &spec) == -1) {
 			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError();
 			return false;
@@ -645,18 +632,13 @@ static void play_new_music()
 		return;
 	}
 
-	std::string filename = current_track->file_path();
-	if(auto localized = filesystem::get_localized_path(filename)) {
-		filename = localized.value();
-	}
+	const std::string localized = filesystem::get_localized_path(current_track->file_path());
+	const std::string& filename = localized.empty() ? current_track->file_path() : localized;
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache";
-
-		filesystem::rwops_ptr rwops = filesystem::make_read_RWops(filename);
-		// SDL takes ownership of rwops
-		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops.release(), MUS_NONE, true), &Mix_FreeMusic);
+		const std::shared_ptr<Mix_Music> music(Mix_LoadMUS_IO(SDL_IOFromFile(filename.c_str(), "rb"), SDL_TRUE), &Mix_FreeMusic);
 
 		if(music == nullptr) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError();
@@ -824,9 +806,9 @@ music_muter::music_muter()
 void music_muter::handle_window_event(const SDL_Event& event)
 {
 	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
-		if(event.window.event == SDL_EVENT_WINDOW_FOCUS_GAINED) {
+		if(event.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
 			Mix_ResumeMusic();
-		} else if(event.window.event == SDL_EVENT_WINDOW_FOCUS_LOST) {
+		} else if(event.type == SDL_EVENT_WINDOW_FOCUS_LOST) {
 			if(Mix_PlayingMusic()) {
 				Mix_PauseMusic();
 			}
@@ -875,7 +857,6 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(int id, unsigned int distance)
 {
-	audio_lock lock;
 	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
 		if(channel_ids[ch] != id) {
 			continue;
@@ -891,7 +872,6 @@ void reposition_sound(int id, unsigned int distance)
 
 bool is_sound_playing(int id)
 {
-	audio_lock lock;
 	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
 }
 
@@ -943,9 +923,8 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		const auto filename = filesystem::get_binary_file_location("sounds", file);
 		const auto localized = filesystem::get_localized_path(filename.value_or(""));
 
-		if(filename) {
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.value_or(filename.value()));
-			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
+		if(!filename.empty()) {
+			temp_chunk.set_data(Mix_LoadWAV_IO(SDL_IOFromFile(filename.c_str(), "rb"), SDL_TRUE));
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'.";
 			throw chunk_load_exception();
@@ -973,8 +952,6 @@ static void play_sound_internal(const std::string& files,
 	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
 		return;
 	}
-
-	audio_lock lock;
 
 	// find a free channel in the desired group
 	int channel = Mix_GroupAvailable(group);

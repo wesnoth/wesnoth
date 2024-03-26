@@ -382,19 +382,19 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			if (event.motion.state != 0)
 #endif
 			{
-				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+				mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
-				mouse_button_down({event.button.x, event.button.y}, button);
+				mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
-				mouse_button_up({event.button.x, event.button.y}, button);
+				mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
 			}
 			break;
 
@@ -436,21 +436,16 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			key_down(event);
 			break;
 
-		case SDL_WINDOWEVENT:
-			switch(event.window.event) {
-				// Always precedes SDL_EVENT_WINDOW_RESIZED, but the latter does not always
-				// happen; in particular when we change the game resolution via
-				// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
-				case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
-					video_resize(video::game_canvas_size());
-					break;
+		// Always precedes SDL_EVENT_WINDOW_RESIZED, but the latter does not always
+		// happen; in particular when we change the game resolution via
+		// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
+		case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+			video_resize(video::game_canvas_size());
+			break;
 
-				case SDL_EVENT_WINDOW_MOUSE_ENTER:
-				case SDL_EVENT_WINDOW_FOCUS_GAINED:
-					activate();
-					break;
-			}
-
+		case SDL_EVENT_WINDOW_MOUSE_ENTER:
+		case SDL_EVENT_WINDOW_FOCUS_GAINED:
+			activate();
 			break;
 
 		case SDL_EVENT_TEXT_INPUT:
@@ -484,23 +479,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 				touch_down(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
-
-		case SDL_MULTIGESTURE:
-			{
-				point c = video::game_canvas_size();
-				touch_multi_gesture(
-					point(event.mgesture.x * c.x, event.mgesture.y * c.y),
-					event.mgesture.dTheta, event.mgesture.dDist,
-					event.mgesture.numFingers
-				);
-			}
-			break;
-
-#if(defined(_X11) && !defined(SDL_PLATFORM_APPLE)) || defined(_WIN32)
-		case SDL_SYSWMEVENT:
-			/* DO NOTHING */
-			break;
-#endif
 
 		// Silently ignored events.
 		case SDL_EVENT_KEY_UP:

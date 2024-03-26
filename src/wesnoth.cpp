@@ -702,10 +702,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-#if(defined(_X11) && !defined(SDL_PLATFORM_APPLE)) || defined(_WIN32)
-	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
-#endif
-
 	gui2::init();
 	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;

@@ -92,9 +92,9 @@ void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, c
 
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 {
-	int x, y;
+	float x, y;
 	sdl::get_mouse_state(&x, &y);
-	mouse_motion(x, y, browse, true, loc);
+	mouse_motion(static_cast<int>(x), static_cast<int>(y), browse, true, loc);
 }
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
@@ -130,8 +130,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
+	float mx = static_cast<float>(drag_from_x_); // some default value to prevent unlikely SDL bug
+	float my = static_cast<float>(drag_from_y_);
 
 	if(is_dragging() && !dragging_started_) {
 		Uint32 mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&mx, &my) : 0;
@@ -356,7 +356,7 @@ void mouse_handler_base::left_drag_end(int /*x*/, int /*y*/, const bool browse)
 
 void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 {
-	int x, y;
+	float x, y;
 	sdl::get_mouse_state(&x, &y);
 
 	int movex = scrollx * prefs::get().scroll_speed();

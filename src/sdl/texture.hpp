@@ -217,14 +217,3 @@ private:
 	bool has_src_ = false; /**< true iff the source rect is valid */
 	rect src_; /**< uninitialized by default. */
 };
-
-/**
- * Sets the texture scale quality. Note this should be called *before* a texture
- * is created, since the hint has no effect on existing textures or render ops.
- *
- * @param value               The scaling mode. Use either "linear" or "nearest".
- */
-inline void set_texture_scale_quality(const char* value)
-{
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, value);
-}

@@ -502,9 +502,9 @@ void pump()
 
 		++poll_count;
 
-		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT && (
-			temp_event.window.event == SDL_EVENT_WINDOW_MOUSE_ENTER ||
-			temp_event.window.event == SDL_EVENT_WINDOW_FOCUS_GAINED)
+		if(!begin_ignoring && (
+			temp_event.type == SDL_EVENT_WINDOW_MOUSE_ENTER ||
+			temp_event.type == SDL_EVENT_WINDOW_FOCUS_GAINED)
 		) {
 			begin_ignoring = poll_count;
 		} else if(begin_ignoring > 0 && is_input(temp_event)) {
@@ -591,26 +591,25 @@ void pump()
 		}
 #endif
 
-		switch(event.type) {
-		case SDL_WINDOWEVENT:
-			switch(event.window.event) {
-			case SDL_EVENT_WINDOW_MOUSE_ENTER:
-			case SDL_EVENT_WINDOW_FOCUS_GAINED:
-				cursor::set_focus(1);
-				break;
+		if(event.type >= SDL_EVENT_WINDOW_FIRST && event.type <= SDL_EVENT_WINDOW_LAST) {
+			switch(event.type) {
+				case SDL_EVENT_WINDOW_MOUSE_ENTER:
+				case SDL_EVENT_WINDOW_FOCUS_GAINED:
+					cursor::set_focus(1);
+					break;
 
-			case SDL_EVENT_WINDOW_MOUSE_LEAVE:
-			case SDL_EVENT_WINDOW_FOCUS_LOST:
-				cursor::set_focus(1);
-				break;
+				case SDL_EVENT_WINDOW_MOUSE_LEAVE:
+				case SDL_EVENT_WINDOW_FOCUS_LOST:
+					cursor::set_focus(1);
+					break;
 
-			// Size changed is called before resized.
-			// We can ensure the video framebuffer is valid here.
-			case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
-				LOG_DP << "events/SIZE_CHANGED "
-					<< event.window.data1 << 'x' << event.window.data2;
-				video::update_buffers(false);
-				break;
+				// Size changed is called before resized.
+				// We can ensure the video framebuffer is valid here.
+				case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+					LOG_DP << "events/SIZE_CHANGED "
+						<< event.window.data1 << 'x' << event.window.data2;
+					video::update_buffers(false);
+					break;
 
 			// Resized comes after size_changed.
 			// Here we can trigger any watchers for resize events.
@@ -623,12 +622,12 @@ void pump()
 				prefs::get().set_resolution(video::window_size());
 				break;
 
-			// Once everything has had a chance to respond to the resize,
-			// an expose is triggered to display the changed content.
-			case SDL_EVENT_WINDOW_EXPOSED:
-				LOG_DP << "events/EXPOSED";
-				draw_manager::invalidate_all();
-				break;
+				// Once everything has had a chance to respond to the resize,
+				// an expose is triggered to display the changed content.
+				case SDL_EVENT_WINDOW_EXPOSED:
+					LOG_DP << "events/EXPOSED";
+					draw_manager::invalidate_all();
+					break;
 
 			case SDL_EVENT_WINDOW_MAXIMIZED:
 				LOG_DP << "events/MAXIMIZED";
@@ -648,7 +647,9 @@ void pump()
 
 			// This event was just distributed, don't re-distribute.
 			continue;
+		}
 
+		switch(event.type) {
 		case SDL_EVENT_MOUSE_MOTION: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
@@ -694,7 +695,9 @@ void pump()
 		}
 #endif
 
-#if defined _WIN32
+#ifdef _WIN32
+// TODO: needs to be replaced with https://wiki.libsdl.org/SDL3/SDL_SetWindowsMessageHook
+// syswm stuff has been removed overall, so windows_tray_notification::handle_system_event is also generally invalid
 		case SDL_SYSWMEVENT: {
 			windows_tray_notification::handle_system_event(event);
 			break;
@@ -760,8 +763,7 @@ void raise_resize_event()
 {
 	point size = video::window_size();
 	SDL_Event event;
-	event.window.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED;
+	event.type = SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED;
 	event.window.windowID = 0; // We don't check this anyway... I think...
 	event.window.data1 = size.x;
 	event.window.data2 = size.y;

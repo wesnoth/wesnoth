@@ -219,11 +219,6 @@ bool update_framebuffer()
 	// Make sure we're getting values from the native window.
 	SDL_SetRenderTarget(*window, nullptr);
 
-	// Non-integer scales are not currently supported.
-	// This option makes things neater when window size is not a perfect
-	// multiple of logical size, which can happen when manually resizing.
-	SDL_RenderSetIntegerScale(*window, SDL_TRUE);
-
 	// Find max valid pixel scale at current output size.
 	point osize(window->get_output_size());
 	int max_scale = std::min(
@@ -337,13 +332,9 @@ void init_test_window()
 	window_flags |= SDL_WINDOW_HIDDEN;
 	// The actual window won't be used, as we'll be rendering to texture.
 
-	uint32_t renderer_flags = 0;
-	renderer_flags |= SDL_RENDERER_TARGETTEXTURE;
-	// All we need is to be able to render to texture.
-
 	window.reset(new sdl::window(
 		"", 0, 0, test_resolution_.x, test_resolution_.y,
-		window_flags, renderer_flags
+		window_flags, 0
 	));
 
 	update_test_framebuffer();
@@ -366,9 +357,7 @@ void init_window(bool hidden)
 	window_flags |= SDL_WINDOW_RESIZABLE;
 	window_flags |= SDL_WINDOW_HIGH_PIXEL_DENSITY;
 
-	if(prefs::get().fullscreen()) {
-		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-	} else if(prefs::get().maximized()) {
+	if(preferences::maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
@@ -377,7 +366,7 @@ void init_window(bool hidden)
 		window_flags |= SDL_WINDOW_HIDDEN;
 	}
 
-	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
+	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED;
 
 	if(prefs::get().vsync()) {
 		LOG_DP << "VSYNC on";
@@ -386,6 +375,16 @@ void init_window(bool hidden)
 
 	// Initialize window
 	window.reset(new sdl::window("", x, y, w, h, window_flags, renderer_flags));
+	if(preferences::fullscreen()) {
+		SDL_DisplayMode mode;
+		mode.format = SDL_PIXELFORMAT_UNKNOWN;
+		mode.w = w;
+		mode.h = h;
+		mode.refresh_rate = 0;
+		mode.driverdata = 0;
+
+		SDL_SetWindowFullscreenMode(*window, &mode);
+	}
 
 	// It is assumed that this function is only ever called once.
 	// If that is no longer true, then you should clean things up.
@@ -395,9 +394,8 @@ void init_window(bool hidden)
 
 	window->set_minimum_size(pref_constants::min_window_width, pref_constants::min_window_height);
 
-	SDL_DisplayMode currentDisplayMode;
-	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
-	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
+	const SDL_DisplayMode* currentDisplayMode = SDL_GetCurrentDisplayMode(window->get_display_index());
+	refresh_rate_ = currentDisplayMode->refresh_rate != 0 ? currentDisplayMode->refresh_rate : 60;
 
 	update_framebuffer();
 }
@@ -610,8 +608,7 @@ surface read_pixels(SDL_Rect* r)
 	rect o = to_output(r_clipped);
 
 	// Create surface and read pixels
-	surface s(o.w, o.h);
-	SDL_RenderReadPixels(*window, &o, s->format->format, s->pixels, s->pitch);
+	surface s = SDL_RenderReadPixels(*window, &o);
 	return s;
 }
 
@@ -686,7 +683,7 @@ static bool window_has_flags(uint32_t flags)
 
 bool window_is_visible()
 {
-	return window_has_flags(SDL_WINDOW_SHOWN);
+	return !window_has_flags(SDL_WINDOW_HIDDEN);
 }
 
 bool window_has_focus()
@@ -709,7 +706,8 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	const int display_index = window->get_display_index();
 
-	const int modes = SDL_GetNumDisplayModes(display_index);
+	int modes;
+	SDL_GetFullscreenDisplayModes(display_index, &modes);
 	if(modes <= 0) {
 		PLAIN_LOG << "No modes supported";
 		return result;
@@ -721,21 +719,6 @@ std::vector<point> get_available_resolutions(const bool include_current)
 	// pop up as a display mode of its own.
 	SDL_Rect bounds;
 	SDL_GetDisplayBounds(display_index, &bounds);
-
-	SDL_DisplayMode mode;
-
-	for(int i = 0; i < modes; ++i) {
-		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
-			// Exclude any results outside the range of the current DPI.
-			if(mode.w > bounds.w && mode.h > bounds.h) {
-				continue;
-			}
-
-			if(mode.w >= min_res.x && mode.h >= min_res.y) {
-				result.emplace_back(mode.w, mode.h);
-			}
-		}
-	}
 
 	if(std::find(result.begin(), result.end(), min_res) == result.end()) {
 		result.push_back(min_res);
@@ -759,33 +742,22 @@ point current_resolution()
 	return point(window->get_size()); // Convert from plain SDL_Point
 }
 
-bool is_fullscreen()
-{
-	if (testing_) {
-		return true;
-	}
-	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
-}
-
 void set_fullscreen(bool fullscreen)
 {
 	if (headless_ || testing_) {
 		return;
 	}
 
-	// Only do anything if the current value differs from the desired value
-	if (window && is_fullscreen() != fullscreen) {
-		if (fullscreen) {
-			window->full_screen();
-		} else if (prefs::get().maximized()) {
-			window->to_window();
-			window->maximize();
-		} else {
-			window->to_window();
-			window->restore();
-		}
-		update_buffers();
+	if (fullscreen) {
+		window->full_screen();
+	} else if (preferences::maximized()) {
+		window->to_window();
+		window->maximize();
+	} else {
+		window->to_window();
+		window->restore();
 	}
+	update_buffers();
 
 	// Update the config value in any case.
 	prefs::get().set_fullscreen(fullscreen);
@@ -836,26 +808,6 @@ void update_buffers(bool autoupdate)
 	if(update_framebuffer() && autoupdate) {
 		draw_manager::invalidate_all();
 	}
-}
-
-std::pair<float, float> get_dpi()
-{
-	float hdpi = 0.0f, vdpi = 0.0f;
-	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
-#ifdef TARGET_OS_OSX
-		// SDL 2.0.12 changes SDL_GetDisplayDPI. Function now returns DPI
-		// multiplied by screen's scale factor. This part of code reverts
-		// this multiplication.
-		//
-		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
-		if(sdl::get_version() >= version_info{2, 0, 12}) {
-			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
-			hdpi /= scale_factor;
-			vdpi /= scale_factor;
-		}
-#endif
-	}
-	return { hdpi, vdpi };
 }
 
 std::vector<std::pair<std::string, std::string>> renderer_report()

@@ -1224,9 +1224,9 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 		return nullptr;
 	}
 
-	std::size_t sbpp = surf->format->BytesPerPixel;
+	std::size_t sbpp = surf->format->bytes_per_pixel;
 	std::size_t spitch = surf->pitch;
-	std::size_t rbpp = res->format->BytesPerPixel;
+	std::size_t rbpp = res->format->bytes_per_pixel;
 	std::size_t rpitch = res->pitch;
 
 	// compute the areas to copy

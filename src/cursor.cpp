@@ -164,13 +164,13 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 
 manager::manager()
 {
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor();
 	set();
 }
 
 manager::~manager()
 {
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor();
 }
 
 void set(CURSOR_TYPE type)
@@ -190,7 +190,7 @@ void set(CURSOR_TYPE type)
 	// if (cursor_image != nullptr && cursor_image != SDL_GetCursor())
 	SDL_SetCursor(cursor_image);
 
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor();
 }
 
 void set_dragging(bool drag)

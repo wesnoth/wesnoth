@@ -153,7 +153,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 
 	if (event.type == SDL_EVENT_MOUSE_WHEEL) {
 		const SDL_MouseWheelEvent &ev = event.wheel;
-		int x, y;
+		float x, y;
 		sdl::get_mouse_state(&x, &y);
 		if (inner_location().contains(x, y)) {
 			if (ev.y > 0) {

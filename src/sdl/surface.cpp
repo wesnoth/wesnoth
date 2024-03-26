@@ -18,7 +18,7 @@
 #include "sdl/rect.hpp"
 
 const SDL_PixelFormat surface::neutral_pixel_format = []() {
-	return *SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888)->format;
+	return *SDL_CreateSurface(1, 1, SDL_PIXELFORMAT_ARGB8888)->format;
 }();
 
 surface::surface(SDL_Surface* surf)
@@ -34,14 +34,14 @@ surface::surface(int w, int h)
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
-	surface_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, neutral_pixel_format.BitsPerPixel, neutral_pixel_format.format);
+	surface_ = SDL_CreateSurface(w, h, neutral_pixel_format.format);
 }
 
 bool surface::is_neutral() const
 {
 	return surface_
 		&& SDL_ISPIXELFORMAT_INDEXED(surface_->format->format) == SDL_FALSE
-		&&  surface_->format->BytesPerPixel == 4
+		&&  surface_->format->bytes_per_pixel == 4
 		&&  surface_->format->Rmask == SDL_RED_MASK
 		&& (surface_->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
 }
@@ -49,7 +49,7 @@ bool surface::is_neutral() const
 surface& surface::make_neutral()
 {
 	if(surface_ && !is_neutral()) {
-		SDL_Surface* res = SDL_ConvertSurface(surface_, &neutral_pixel_format, 0);
+		SDL_Surface* res = SDL_ConvertSurface(surface_, &neutral_pixel_format);
 
 		// Ensure we don't leak memory with the old surface.
 		free_surface();
@@ -63,7 +63,7 @@ surface& surface::make_neutral()
 surface surface::clone() const
 {
 	// Use SDL_ConvertSurface to make a copy
-	return surface(SDL_ConvertSurface(surface_, &neutral_pixel_format, 0));
+	return surface(SDL_ConvertSurface(surface_, &neutral_pixel_format));
 }
 
 void surface::assign_surface_internal(SDL_Surface* surf)
@@ -89,7 +89,7 @@ std::ostream& operator<<(std::ostream& stream, const surface& surf)
 		stream << "<invalid surface>";
 	} else {
 		stream << "{ " << surf->w << 'x' << surf->h << '@'
-			   << unsigned(surf->format->BitsPerPixel) << "bpp"
+			   << unsigned(surf->format->bits_per_pixel) << "bpp"
 			   << (surf->format->palette ? " indexed" : "")
 			   << " clip_rect=[" << surf->clip_rect
 			   << "] refcount=" << surf->refcount

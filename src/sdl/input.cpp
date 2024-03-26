@@ -24,7 +24,7 @@
 namespace sdl
 {
 
-uint32_t get_mouse_state(int *x, int *y)
+uint32_t get_mouse_state(float* x, float* y)
 {
 	uint32_t buttons = SDL_GetMouseState(x, y);
 
@@ -53,9 +53,10 @@ uint32_t get_mouse_button_mask()
 
 point get_mouse_location()
 {
-	point p;
-	get_mouse_state(&p.x, &p.y);
-	return p;
+	float x;
+	float y;
+	get_mouse_state(&x, &y);
+	return {static_cast<int>(x), static_cast<int>(y)};
 }
 
 unsigned get_mods()

@@ -53,16 +53,6 @@ namespace filesystem {
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
 
-struct sdl_rwops_deleter
-{
-	void operator()(SDL_IOStream*) const noexcept;
-};
-
-using rwops_ptr = std::unique_ptr<SDL_IOStream, sdl_rwops_deleter>;
-
-rwops_ptr make_read_RWops(const std::string &path);
-rwops_ptr make_write_RWops(const std::string &path);
-
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
 	io_exception() : game::error("") {}

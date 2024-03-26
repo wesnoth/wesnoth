@@ -429,7 +429,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	std::string id = items[res]["id"];
 	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
 	if (submenu) {
-		int y,x;
+		float y,x;
 		sdl::get_mouse_state(&x,&y);
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {

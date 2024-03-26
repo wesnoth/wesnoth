@@ -317,8 +317,7 @@ bool locator::operator<(const locator& a) const
 // Load overlay image and compose it with the original surface.
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
-	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
-	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+	surface ovr_surf = IMG_Load_IO(SDL_IOFromFile(ovr_file.c_str(), "rb"), true);
 	if(!ovr_surf) {
 		return;
 	}
@@ -356,8 +355,7 @@ static surface load_image_file(const image::locator& loc)
 				location = loc_location.value();
 			}
 
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location.value());
-			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+			res = IMG_Load_IO(SDL_IOFromFile(location.c_str(), "rb"), true);
 
 			// If there was no standalone localized image, check if there is an overlay.
 			if(res && !loc_location) {
@@ -461,14 +459,13 @@ static surface load_image_data_uri(const image::locator& loc)
 		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
 	} else {
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
-		filesystem::rwops_ptr rwops{SDL_IOFromConstMem(image_data.data(), image_data.size())};
 
 		if(image_data.empty()) {
 			ERR_IMG << "Invalid encoding in data URI";
 		} else if(parsed.mime == "image/png") {
-			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
+			surf = IMG_LoadTyped_IO(SDL_IOFromConstMem(image_data.data(), image_data.size()), true, "PNG");
 		} else if(parsed.mime == "image/jpeg") {
-			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
+			surf = IMG_LoadTyped_IO(SDL_IOFromConstMem(image_data.data(), image_data.size()), true, "JPG");
 		} else {
 			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
 		}
@@ -895,14 +892,14 @@ save_result save_image(const surface& surf, const std::string& filename)
 	if(boost::algorithm::ends_with(filename, ".jpeg") || boost::algorithm::ends_with(filename, ".jpg") || boost::algorithm::ends_with(filename, ".jpe")) {
 		LOG_IMG << "Writing a JPG image to " << filename;
 
-		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
+		const int err = IMG_SaveJPG_IO(surf, SDL_IOFromFile(filename.c_str(), "rb"), true, 75);
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
 	if(boost::algorithm::ends_with(filename, ".png")) {
 		LOG_IMG << "Writing a PNG image to " << filename;
 
-		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops
+		const int err = IMG_SavePNG_IO(surf, SDL_IOFromFile(filename.c_str(), "rb"), true);
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 

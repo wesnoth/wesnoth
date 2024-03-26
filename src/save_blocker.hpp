@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <SDL3/SDL_Mutex.h>
+#include <SDL3/SDL_mutex.h>
 
 #include <cassert>
 
