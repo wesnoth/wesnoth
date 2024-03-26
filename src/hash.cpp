@@ -26,7 +26,7 @@ extern "C" {
 #include "crypt_blowfish/crypt_blowfish.h"
 }
 
-#ifndef __APPLE__
+#ifndef SDL_PLATFORM_APPLE
 
 #include <openssl/evp.h>
 
@@ -64,7 +64,7 @@ namespace utils {
 
 md5::md5(const std::string& input) {
 
-#ifndef __APPLE__
+#ifndef SDL_PLATFORM_APPLE
 	EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
 	unsigned int md5_digest_len = EVP_MD_size(EVP_md5());
 	assert(utils::md5::DIGEST_SIZE == md5_digest_len);

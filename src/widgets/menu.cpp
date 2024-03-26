@@ -308,7 +308,7 @@ bool menu::requires_event_focus(const SDL_Event* event) const
 		return true;
 	}
 
-	if(event->type == SDL_KEYDOWN) {
+	if(event->type == SDL_EVENT_KEY_DOWN) {
 		SDL_Keycode key = event->key.keysym.sym;
 		if (!click_selects_) {
 			switch(key) {
@@ -337,17 +337,17 @@ void menu::handle_event(const SDL_Event& event)
 	if (height()==0 || hidden())
 		return;
 
-	if(event.type == SDL_KEYDOWN) {
+	if(event.type == SDL_EVENT_KEY_DOWN) {
 		// Only pass key events if we have the focus
 		if (focus(&event))
 			key_press(event.key.keysym.sym);
-	} else if(!mouse_locked() && ((event.type == SDL_MOUSEBUTTONDOWN &&
+	} else if(!mouse_locked() && ((event.type == SDL_EVENT_MOUSE_BUTTON_DOWN &&
 	         (event.button.button == SDL_BUTTON_LEFT || event.button.button == SDL_BUTTON_RIGHT)) ||
 	         event.type == DOUBLE_CLICK_EVENT)) {
 
 		int x = 0;
 		int y = 0;
-		if(event.type == SDL_MOUSEBUTTONDOWN) {
+		if(event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
 			x = event.button.x;
 			y = event.button.y;
 		} else {
@@ -387,7 +387,7 @@ void menu::handle_event(const SDL_Event& event)
 			}
 		}
 
-	} else if(!mouse_locked() && event.type == SDL_MOUSEMOTION) {
+	} else if(!mouse_locked() && event.type == SDL_EVENT_MOUSE_MOTION) {
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
 			const bool out = (item == -1);

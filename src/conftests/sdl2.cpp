@@ -12,7 +12,7 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #define STR(x) STR_(x)
 #define STR_(x) #x

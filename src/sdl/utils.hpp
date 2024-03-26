@@ -37,7 +37,7 @@ version_info get_version();
 bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
 
 /**
- * Fill a rectangle on a given surface. Alias for SDL_FillRect.
+ * Fill a rectangle on a given surface. Alias for SDL_FillSurfaceRect.
  *
  * @param dst                     The surface to operate on.
  * @param dst_rect                The rectangle to fill.
@@ -45,7 +45,7 @@ bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
  */
 inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const uint32_t color)
 {
-	SDL_FillRect(dst, dst_rect, color);
+	SDL_FillSurfaceRect(dst, dst_rect, color);
 }
 
 } // namespace sdl

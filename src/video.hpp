@@ -21,7 +21,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_render.h>
 
 #include <vector>
 

@@ -18,7 +18,7 @@
 #include "events.hpp"
 #include "gui/core/log.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <map>
 #include <mutex>

@@ -18,7 +18,7 @@
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
 
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_render.h>
 
 namespace sdl
 {
@@ -41,7 +41,7 @@ window::window(const std::string& title,
 #ifdef _WIN32
 	// SDL uses Direct3D v9 by default on Windows systems. However, returning
 	// from the Windows lock screen causes issues with rendering. Resolution
-	// is either to rebuild render textures on the SDL_RENDER_TARGETS_RESET
+	// is either to rebuild render textures on the SDL_EVENT_RENDER_TARGETS_RESET
 	// event or use an alternative renderer that does not have this issue.
 	// Suitable options are Direct3D v11+ or OpenGL.
 	// See https://github.com/wesnoth/wesnoth/issues/8038 for details.
@@ -111,7 +111,7 @@ SDL_Point window::get_size()
 SDL_Point window::get_output_size()
 {
 	SDL_Point res;
-	SDL_GetRendererOutputSize(*this, &res.x, &res.y);
+	SDL_GetCurrentRenderOutputSize(*this, &res.x, &res.y);
 
 	return res;
 }
@@ -177,13 +177,13 @@ void window::set_minimum_size(int min_w, int min_h)
 
 int window::get_display_index()
 {
-	return SDL_GetWindowDisplayIndex(window_);
+	return SDL_GetDisplayForWindow(window_);
 }
 
 void window::set_logical_size(int w, int h)
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
-	SDL_RenderSetLogicalSize(r, w, h);
+	SDL_SetRenderLogicalPresentation(r, w, h);
 }
 
 void window::set_logical_size(const point& p)
@@ -195,14 +195,14 @@ point window::get_logical_size() const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	int w, h;
-	SDL_RenderGetLogicalSize(r, &w, &h);
+	SDL_GetRenderLogicalPresentation(r, &w, &h);
 	return {w, h};
 }
 
 void window::get_logical_size(int& w, int& h) const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
-	SDL_RenderGetLogicalSize(r, &w, &h);
+	SDL_GetRenderLogicalPresentation(r, &w, &h);
 }
 
 uint32_t window::pixel_format()

@@ -53,7 +53,7 @@ struct cursor_data
 // macOS needs 16x16 b&w cursors. TODO: is that still the case?
 //
 std::array<cursor_data, cursor::NUM_CURSORS> available_cursors {{
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	{ nullptr, boost::indeterminate, "normal.png",          "normal.png",      0, 0  },
 	{ nullptr, boost::indeterminate, "wait-alt.png",        "wait.png",        0, 0  },
 	{ nullptr, boost::indeterminate, "ibeam.png",           "ibeam.png",       14, 14 },
@@ -95,7 +95,7 @@ SDL_Cursor* create_cursor(surface surf)
 
 	// The width must be a multiple of 8 (SDL requirement)
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	std::size_t cursor_width = 16;
 #else
 	std::size_t cursor_width = surf->w;
@@ -146,12 +146,12 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 			const surface& surf(image::get_surface(color_prefix + data.image_color));
 
 			// Construct a temporary ptr to provide a new deleter.
-			data.cursor = cursor_ptr_t(SDL_CreateColorCursor(surf, data.hot_x, data.hot_y), SDL_FreeCursor);
+			data.cursor = cursor_ptr_t(SDL_CreateColorCursor(surf, data.hot_x, data.hot_y), SDL_DestroyCursor);
 		} else {
 			const surface& surf(image::get_surface(bw_prefix + data.image_bw));
 
 			// Construct a temporary ptr to provide a new deleter.
-			data.cursor = cursor_ptr_t(create_cursor(surf), SDL_FreeCursor);
+			data.cursor = cursor_ptr_t(create_cursor(surf), SDL_DestroyCursor);
 		}
 
 		data.is_color = use_color;
