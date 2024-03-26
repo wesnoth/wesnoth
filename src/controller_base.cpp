@@ -267,8 +267,6 @@ void controller_base::handle_event(const SDL_Event& event)
 		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
 		break;
 
-	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
-	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}

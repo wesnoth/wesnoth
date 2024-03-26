@@ -116,11 +116,7 @@ base_manager::~base_manager()
  */
 void prefs_event_handler::handle_window_event(const SDL_Event& event)
 {
-
-	// Safety check to make sure this is a window event
-	if (event.type != SDL_WINDOWEVENT) return;
-
-	switch(event.window.event) {
+	switch(event.type) {
 	case SDL_EVENT_WINDOW_RESIZED:
 		_set_resolution(video::window_size());
 

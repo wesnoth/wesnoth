@@ -26,7 +26,21 @@ namespace sdl
 
 uint32_t get_mouse_state(int *x, int *y)
 {
-	uint32_t buttons = SDL_GetMouseState(x, y);
+	float* fx = nullptr;
+	float f1;
+	if(x != nullptr) {
+		f1 = static_cast<float>(*x);
+		fx = &f1;
+	}
+
+	float* fy = nullptr;
+	float f2;
+	if(y != nullptr) {
+		f2 = static_cast<float>(*y);
+		fy = &f2;
+	}
+
+	uint32_t buttons = SDL_GetMouseState(fx, fy);
 
 	if (video::headless()) {
 		return buttons;
