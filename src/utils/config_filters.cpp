@@ -121,3 +121,134 @@ bool utils::config_filters::bool_or_empty(const config& filter, const config& cf
 	}
 	return is_matches;
 }
+
+
+//if filter["value"]="default" then this function check if abilitie using default value or if cfg["value] equals todefault value.
+//if abilitie don't have default value then return false because none default value exist for match
+static bool default_value(const config & filter, const config & cfg, std::optional<int> def)
+{
+	if(!filter.has_attribute("value") || filter["value"] != "default") {
+		return true;
+	}
+	if(!def){
+		return false;
+	}
+	int default_value = def ? (*def) : 0;
+	return (cfg["value"].to_int(default_value) == default_value);
+}
+
+bool utils::config_filters::matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
+{
+
+	//in the filter call from an ability using overwrite_specials=[overwrite][experiemental_filter_specials]
+	//the checked tag_name will always be the same as that of the ability calling the function
+	//and the use of tag_name is not mandatory, otherwise the fact of not using it will return a false response
+	const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+	if(tag_name_optional){
+		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+			return false;
+		}
+	} else {
+		if ( filter_type.empty() || std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+			return false;
+		}
+	}
+
+	if(!filter["affect_adjacent"].empty()){
+		bool adjacent = cfg.has_child("affect_adjacent");
+		if(filter["affect_adjacent"].to_bool() != adjacent){
+			return false;
+		}
+	}
+
+	if(!bool_matches_if_present(filter, cfg, "affect_self", true))
+		return false;
+
+	if(!bool_or_empty(filter, cfg, "affect_allies"))
+		return false;
+
+	if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
+		return false;
+
+	if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "id", ""))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "apply_to", "self"))
+		return false;
+
+	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+		return false;
+
+	//the value attribute can, depending on the type of ability checked,
+	//have a different default value or even not have one at all, hence the need to check the different cases,
+	//for example if the ability is "drains" then if the value sought is 50, the filter will match if value=50 or is not explicitly encoded.
+	//Conversely, if the type is "damage" or "dummy" but no 'value' attribute is present
+	//then no match will be possible regardless of whether the value is sought,
+	//or because the default value of [damage] is the base value of the attack which is not fixed,
+	//either because the 'dummy' abilities are not hardcoded and have no default value
+	if(!filter["value"].empty()){
+		std::optional<int> def = NULL;
+		if(tag_name == "drains"){
+			def = 50;
+		} else if(tag_name == "berserk"){
+			def = 1;
+		} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+			def = 0;
+		}
+		if(!default_value(filter, cfg, def) || !int_matches_if_present(filter, cfg, "value" , def)){
+			return false;
+		}
+	}
+
+	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+		return false;
+
+	if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
+		return false;
+
+	if(!double_matches_if_present(filter, cfg, "multiply"))
+		return false;
+
+	if(!double_matches_if_present(filter, cfg, "divide"))
+		return false;
+
+	//the wml_filter is used in cases where the attribute we are looking for is not
+	//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
+	//If the checked set does not exactly match the content of the capability, the function returns a false response.
+	auto fwml = filter.optional_child("filter_wml");
+	if (fwml){
+		if(!cfg.matches(*fwml)){
+			return false;
+		}
+	}
+
+	// Passed all tests.
+	return true;
+}
+
+bool utils::config_filters::common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
+{
+	// Handle the basic filter.
+	bool matches = matches_ability_filter(cfg, tag_name, filter, tag_name_optional);
+
+	// Handle [and], [or], and [not] with in-order precedence
+	for (const config::any_child condition : filter.all_children_range() )
+	{
+		// Handle [and]
+		if ( condition.key == "and" )
+			matches = matches && common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
+
+		// Handle [or]
+		else if ( condition.key == "or" )
+			matches = matches || common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
+
+		// Handle [not]
+		else if ( condition.key == "not" )
+			matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
+	}
+
+	return matches;
+}
