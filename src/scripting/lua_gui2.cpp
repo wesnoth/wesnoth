@@ -192,7 +192,12 @@ int switch_theme(lua_State* L) {
  */
 int show_menu(lua_State* L) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
-	rect pos{ sdl::get_mouse_location(), {1, 1} };
+	SDL_Rect pos {1,1,1,1};
+	float x;
+	float y;
+	sdl::get_mouse_state(&x, &y);
+	pos.x = x;
+	pos.y = y;
 
 	int initial = -1;
 	bool markup = false;

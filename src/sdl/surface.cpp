@@ -17,6 +17,8 @@
 #include "color.hpp"
 #include "sdl/rect.hpp"
 
+const SDL_PixelFormat neutral_format = SDL_PIXELFORMAT_ARGB8888;
+
 #include <utility>
 
 namespace
@@ -31,14 +33,23 @@ void add_refcount(surface& surf)
 void free_surface(surface& surf)
 {
 	if(surf) {
-		SDL_FreeSurface(surf);
+		SDL_DestroySurface(surf);
 	}
 }
 
 void make_neutral(surface& surf)
 {
-	if(surf && surf->format->format != SDL_PIXELFORMAT_ARGB8888) {
-		surf = surf.clone();
+	if(surf) {
+		const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surf->format);
+
+		bool is_neutral = SDL_ISPIXELFORMAT_INDEXED(surf->format) == false
+			&&  details->bytes_per_pixel == 4
+			&&  details->Rmask == SDL_RED_MASK
+			&& (details->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
+
+		if(!is_neutral) {
+			surf = surf.clone();
+		}
 	}
 }
 
@@ -57,7 +68,7 @@ surface::surface(int w, int h)
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
-	surface_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL_PIXELFORMAT_ARGB8888);
+	surface_ = SDL_CreateSurface(w, h, neutral_format);
 }
 
 surface::surface(const surface& s)
@@ -97,7 +108,7 @@ surface& surface::operator=(surface&& s) noexcept
 surface surface::clone() const
 {
 	// Use SDL_ConvertSurfaceFormat to make a copy
-	return surface(SDL_ConvertSurfaceFormat(surface_, SDL_PIXELFORMAT_ARGB8888, 0));
+	return surface(SDL_ConvertSurface(surface_, neutral_format));
 }
 
 std::size_t surface::area() const
@@ -112,11 +123,12 @@ std::ostream& operator<<(std::ostream& stream, const surface& surf)
 	} else if(!surf->format) {
 		stream << "<invalid surface>";
 	} else {
+		const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surf->format);
+
 		stream << "{ " << surf->w << 'x' << surf->h << '@'
-			   << unsigned(surf->format->BitsPerPixel) << "bpp"
-			   << (surf->format->palette ? " indexed" : "")
-			   << " clip_rect=[" << surf->clip_rect
-			   << "] refcount=" << surf->refcount
+			   << details->bits_per_pixel << "bpp"
+			   << (SDL_GetSurfacePalette(surf)->colors ? " indexed" : "")
+			   << " refcount=" << surf->refcount
 			   << " }";
 	}
 
