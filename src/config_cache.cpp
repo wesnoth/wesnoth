@@ -41,7 +41,7 @@ namespace
 
 void add_builtin_defines(preproc_map& target)
 {
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	target["APPLE"] = preproc_define();
 #endif
 

@@ -32,7 +32,7 @@
 
 #include <functional>
 
-#include <SDL2/SDL_types.h>
+#include <SDL3/SDL_types.h>
 
 namespace gui2
 {

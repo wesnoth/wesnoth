@@ -31,7 +31,7 @@ extern "C" int _putenv(const char*);
 #endif
 #endif
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 #include <cerrno>
 #endif
 
@@ -225,7 +225,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 #ifndef _WIN32
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	//if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
 	//	ERR_G << "setenv LANG failed: " << strerror(errno);
 	//}

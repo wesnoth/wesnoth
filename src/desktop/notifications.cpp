@@ -23,7 +23,7 @@
 #include "desktop/dbus_features.hpp"
 #endif
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 #include "desktop/apple_notification.hpp"
 #endif
 
@@ -35,7 +35,7 @@ namespace desktop {
 
 namespace notifications {
 
-#if !(defined(HAVE_LIBDBUS) || defined(__APPLE__) || defined(_WIN32))
+#if !(defined(HAVE_LIBDBUS) || defined(SDL_PLATFORM_APPLE) || defined(_WIN32))
 
 bool available() { return false; }
 
@@ -46,7 +46,7 @@ void send(const std::string& /*owner*/, const std::string& /*message*/, type /*t
 
 bool available()
 {
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	return apple_notifications::available();
 #else
 	return true;
@@ -64,7 +64,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	dbus::send_notification(owner, message, t == CHAT);
 #endif
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	apple_notifications::send_notification(owner, message, t);
 #endif
 

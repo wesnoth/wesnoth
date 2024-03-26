@@ -826,7 +826,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 	// If the user has pressed 1 through 9, we want to show
 	// how far the unit can move in that many turns
 	if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9') {
-		const int new_path_turns = (event.type == SDL_KEYDOWN) ? event.key.keysym.sym - '1' : 0;
+		const int new_path_turns = (event.type == SDL_EVENT_KEY_DOWN) ? event.key.keysym.sym - '1' : 0;
 
 		if(new_path_turns != mouse_handler_.get_path_turns()) {
 			mouse_handler_.set_path_turns(new_path_turns);

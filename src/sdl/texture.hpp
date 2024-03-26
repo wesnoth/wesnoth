@@ -17,8 +17,8 @@
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 
-#include <SDL2/SDL_hints.h>
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_hints.h>
+#include <SDL3/SDL_render.h>
 
 #include <memory>
 

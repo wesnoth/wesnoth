@@ -77,7 +77,7 @@ void surface::assign_surface_internal(SDL_Surface* surf)
 void surface::free_surface()
 {
 	if(surface_) {
-		SDL_FreeSurface(surface_);
+		SDL_DestroySurface(surface_);
 	}
 }
 

@@ -18,8 +18,8 @@
 #include "sdl/point.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_mouse.h>
-#include <SDL2/SDL_keyboard.h>
+#include <SDL3/SDL_mouse.h>
+#include <SDL3/SDL_keyboard.h>
 
 namespace sdl
 {
@@ -63,22 +63,22 @@ unsigned get_mods()
 	unsigned mods = SDL_GetModState();
 
 	// Filter for only the mods we use: shift, ctrl, alt, gui
-	mods &= KMOD_SHIFT | KMOD_CTRL | KMOD_ALT | KMOD_GUI;
+	mods &= SDL_KMOD_SHIFT | SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI;
 
 	// Set both left and right modifiers if either is active
-	if(mods & KMOD_SHIFT) {
-		mods |= KMOD_SHIFT;
+	if(mods & SDL_KMOD_SHIFT) {
+		mods |= SDL_KMOD_SHIFT;
 	}
 
-	if(mods & KMOD_CTRL) {
-		mods |= KMOD_CTRL;
+	if(mods & SDL_KMOD_CTRL) {
+		mods |= SDL_KMOD_CTRL;
 	}
 
-	if(mods & KMOD_ALT)
-		mods |= KMOD_ALT;
+	if(mods & SDL_KMOD_ALT)
+		mods |= SDL_KMOD_ALT;
 
-	if(mods & KMOD_GUI) {
-		mods |= KMOD_GUI;
+	if(mods & SDL_KMOD_GUI) {
+		mods |= SDL_KMOD_GUI;
 	}
 
 	return mods;

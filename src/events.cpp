@@ -39,7 +39,7 @@
 #include <utility>
 #include <vector>
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
@@ -503,8 +503,8 @@ void pump()
 		++poll_count;
 
 		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT && (
-			temp_event.window.event == SDL_WINDOWEVENT_ENTER ||
-			temp_event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
+			temp_event.window.event == SDL_EVENT_WINDOW_MOUSE_ENTER ||
+			temp_event.window.event == SDL_EVENT_WINDOW_FOCUS_GAINED)
 		) {
 			begin_ignoring = poll_count;
 		} else if(begin_ignoring > 0 && is_input(temp_event)) {
@@ -533,7 +533,7 @@ void pump()
 #ifdef MOUSE_TOUCH_EMULATION
 		switch (event.type) {
 			// TODO: Implement SDL_MULTIGESTURE. Some day.
-			case SDL_MOUSEMOTION:
+			case SDL_EVENT_MOUSE_MOTION:
 				if(event.motion.which != SDL_TOUCH_MOUSEID && event.motion.state == 0) {
 					return;
 				}
@@ -543,10 +543,10 @@ void pump()
 					// Events are given by SDL in draw space
 					point c = video::game_canvas_size();
 
-					// TODO: Check if SDL_FINGERMOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
+					// TODO: Check if SDL_EVENT_FINGER_MOTION is actually signaled for COMPLETE motions (I doubt, but tbs)
 					SDL_Event touch_event;
-					touch_event.type = SDL_FINGERMOTION;
-					touch_event.tfinger.type = SDL_FINGERMOTION;
+					touch_event.type = SDL_EVENT_FINGER_MOTION;
+					touch_event.tfinger.type = SDL_EVENT_FINGER_MOTION;
 					touch_event.tfinger.timestamp = event.motion.timestamp;
 					touch_event.tfinger.touchId = 1;
 					touch_event.tfinger.fingerId = 1;
@@ -561,8 +561,8 @@ void pump()
 					event.motion.which = SDL_TOUCH_MOUSEID;
 				}
 				break;
-			case SDL_MOUSEBUTTONDOWN:
-			case SDL_MOUSEBUTTONUP:
+			case SDL_EVENT_MOUSE_BUTTON_DOWN:
+			case SDL_EVENT_MOUSE_BUTTON_UP:
 				if(event.button.button == SDL_BUTTON_RIGHT)
 				{
 					event.button.button = SDL_BUTTON_LEFT;
@@ -572,7 +572,7 @@ void pump()
 					point c = video::game_canvas_size();
 
 					SDL_Event touch_event;
-					touch_event.type = (event.type == SDL_MOUSEBUTTONDOWN) ? SDL_FINGERDOWN : SDL_FINGERUP;
+					touch_event.type = (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) ? SDL_EVENT_FINGER_DOWN : SDL_EVENT_FINGER_UP;
 					touch_event.tfinger.type = touch_event.type;
 					touch_event.tfinger.timestamp = event.button.timestamp;
 					touch_event.tfinger.touchId = 1;
@@ -594,19 +594,19 @@ void pump()
 		switch(event.type) {
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
-			case SDL_WINDOWEVENT_ENTER:
-			case SDL_WINDOWEVENT_FOCUS_GAINED:
+			case SDL_EVENT_WINDOW_MOUSE_ENTER:
+			case SDL_EVENT_WINDOW_FOCUS_GAINED:
 				cursor::set_focus(1);
 				break;
 
-			case SDL_WINDOWEVENT_LEAVE:
-			case SDL_WINDOWEVENT_FOCUS_LOST:
+			case SDL_EVENT_WINDOW_MOUSE_LEAVE:
+			case SDL_EVENT_WINDOW_FOCUS_LOST:
 				cursor::set_focus(1);
 				break;
 
 			// Size changed is called before resized.
 			// We can ensure the video framebuffer is valid here.
-			case SDL_WINDOWEVENT_SIZE_CHANGED:
+			case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
 				LOG_DP << "events/SIZE_CHANGED "
 					<< event.window.data1 << 'x' << event.window.data2;
 				video::update_buffers(false);
@@ -615,7 +615,7 @@ void pump()
 			// Resized comes after size_changed.
 			// Here we can trigger any watchers for resize events.
 			// Video settings such as game_canvas_size() will be correct.
-			case SDL_WINDOWEVENT_RESIZED:
+			case SDL_EVENT_WINDOW_RESIZED:
 				LOG_DP << "events/RESIZED "
 					<< event.window.data1 << 'x' << event.window.data2;
 				info.resize_dimensions.first = event.window.data1;
@@ -625,21 +625,21 @@ void pump()
 
 			// Once everything has had a chance to respond to the resize,
 			// an expose is triggered to display the changed content.
-			case SDL_WINDOWEVENT_EXPOSED:
+			case SDL_EVENT_WINDOW_EXPOSED:
 				LOG_DP << "events/EXPOSED";
 				draw_manager::invalidate_all();
 				break;
 
-			case SDL_WINDOWEVENT_MAXIMIZED:
+			case SDL_EVENT_WINDOW_MAXIMIZED:
 				LOG_DP << "events/MAXIMIZED";
 				prefs::get().set_maximized(true);
 				break;
-			case SDL_WINDOWEVENT_RESTORED:
+			case SDL_EVENT_WINDOW_RESTORED:
 				LOG_DP << "events/RESTORED";
 				prefs::get().set_maximized(prefs::get().fullscreen());
 				break;
-			case SDL_WINDOWEVENT_SHOWN:
-			case SDL_WINDOWEVENT_MOVED:
+			case SDL_EVENT_WINDOW_SHOWN:
+			case SDL_EVENT_WINDOW_MOVED:
 				// Not used.
 				break;
 			}
@@ -649,19 +649,19 @@ void pump()
 			// This event was just distributed, don't re-distribute.
 			continue;
 
-		case SDL_MOUSEMOTION: {
+		case SDL_EVENT_MOUSE_MOTION: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
 			process_tooltip_strings(event.motion.x, event.motion.y);
 			break;
 		}
 
-		case SDL_MOUSEBUTTONDOWN: {
+		case SDL_EVENT_MOUSE_BUTTON_DOWN: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
 			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
 				static const int DoubleClickTime = 500;
-#ifdef __IPHONEOS__
+#ifdef SDL_PLATFORM_IOS
 				static const int DoubleClickMaxMove = 15;
 #else
 				static const int DoubleClickMaxMove = 3;
@@ -682,10 +682,10 @@ void pump()
 			break;
 		}
 
-#ifndef __APPLE__
-		case SDL_KEYDOWN: {
+#ifndef SDL_PLATFORM_APPLE
+		case SDL_EVENT_KEY_DOWN: {
 			if(event.key.keysym.sym == SDLK_F4 &&
-				(event.key.keysym.mod == KMOD_RALT || event.key.keysym.mod == KMOD_LALT)
+				(event.key.keysym.mod == SDL_KMOD_RALT || event.key.keysym.mod == SDL_KMOD_LALT)
 			) {
 				quit_confirmation::quit_to_desktop();
 				continue; // this event is already handled
@@ -701,7 +701,7 @@ void pump()
 		}
 #endif
 
-		case SDL_QUIT: {
+		case SDL_EVENT_QUIT: {
 			quit_confirmation::quit_to_desktop();
 			continue; // this event is already handled.
 		}
@@ -761,7 +761,7 @@ void raise_resize_event()
 	point size = video::window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_SIZE_CHANGED;
+	event.window.event = SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED;
 	event.window.windowID = 0; // We don't check this anyway... I think...
 	event.window.data1 = size.x;
 	event.window.data2 = size.y;

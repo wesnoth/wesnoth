@@ -65,7 +65,7 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
@@ -502,9 +502,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 		if(cmdline_opts.validate_with) {
 			schema_path = *cmdline_opts.validate_with;
 			if(!filesystem::file_exists(schema_path)) {
-				if(auto check = filesystem::get_wml_location(schema_path)) {
-					schema_path = check.value();
-				} else {
+				auto check = filesystem::get_wml_location(schema_path);
+				if(!filesystem::file_exists(check)) {
 					PLAIN_LOG << "Could not find schema file: " << schema_path;
 				}
 			} else {
@@ -538,7 +537,7 @@ static int process_command_args(commandline_options& cmdline_opts)
  */
 static void init_locale()
 {
-#if defined _WIN32 || defined __APPLE__
+#if defined _WIN32 || defined SDL_PLATFORM_APPLE
 	setlocale(LC_ALL, "English");
 #else
 	std::setlocale(LC_ALL, "C");
@@ -703,7 +702,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-#if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
+#if(defined(_X11) && !defined(SDL_PLATFORM_APPLE)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
@@ -909,7 +908,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #define error_exit(res) return res
 #endif
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
@@ -946,12 +945,12 @@ int main(int argc, char** argv)
 		}
 		atexit(SDL_Quit);
 
-		// Mac's touchpad generates touch events too.
-		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
-		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+	// Mac's touchpad generates touch events too.
+	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
+#if defined(SDL_PLATFORM_APPLE) && !defined(SDL_PLATFORM_IOS)
+	SDL_EventState(SDL_EVENT_FINGER_MOTION, SDL_DISABLE);
+	SDL_EventState(SDL_EVENT_FINGER_DOWN, SDL_DISABLE);
+	SDL_EventState(SDL_EVENT_FINGER_UP, SDL_DISABLE);
 #endif
 
 		// declare this here so that it will always be at the front of the event queue.

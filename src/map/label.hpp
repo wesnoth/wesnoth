@@ -20,7 +20,7 @@
 #include "map/location.hpp"
 #include "tstring.hpp"
 
-#include <SDL2/SDL_rect.h>
+#include <SDL3/SDL_rect.h>
 #include <map>
 #include <string>
 

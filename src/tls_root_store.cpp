@@ -18,7 +18,7 @@
 
 #ifdef _WIN32
 #include <wincrypt.h>
-#elif defined(__APPLE__)
+#elif defined(SDL_PLATFORM_APPLE)
 #include <Security/Security.h>
 #endif
 
@@ -53,7 +53,7 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 	CertCloseStore(hStore, 0);
 
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif defined(__APPLE__)
+#elif defined(SDL_PLATFORM_APPLE)
 	X509_STORE *store = X509_STORE_new();
 	CFArrayRef certs = NULL;
 	// copy all system certs

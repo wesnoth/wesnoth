@@ -29,7 +29,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
-#include <SDL2/SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 
 
 #include <boost/algorithm/string.hpp>
@@ -461,7 +461,7 @@ static surface load_image_data_uri(const image::locator& loc)
 		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
 	} else {
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
-		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size())};
+		filesystem::rwops_ptr rwops{SDL_IOFromConstMem(image_data.data(), image_data.size())};
 
 		if(image_data.empty()) {
 			ERR_IMG << "Invalid encoding in data URI";

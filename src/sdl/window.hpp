@@ -22,7 +22,7 @@
 
 #include "sdl/point.hpp"
 
-#include <SDL2/SDL_video.h>
+#include <SDL3/SDL_video.h>
 
 #include <string>
 
@@ -176,7 +176,7 @@ public:
 	 * will be scaled as if the window were also of this size. For best
 	 * results this should be an integer fraction of the window size.
 	 *
-	 * This is a wrapper for SDL_RenderSetLogicalSize.
+	 * This is a wrapper for SDL_SetRenderLogicalPresentation.
 	 *
 	 * @param w              Width of the window's rendering surface
 	 * @param h              Height of the window's rendering surface

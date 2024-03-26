@@ -23,7 +23,7 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <algorithm>
 #include <vector>

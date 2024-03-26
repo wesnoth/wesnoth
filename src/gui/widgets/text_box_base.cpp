@@ -359,7 +359,7 @@ void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
 	if(offset >= 0) {
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+		set_cursor(offset, (modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -371,7 +371,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
 	if(offset <= (get_use_markup() ? utf8::size(plain_text()) : text_.get_length())) {
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+		set_cursor(offset, (modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -380,10 +380,10 @@ void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(modifier & KMOD_CTRL) {
-		goto_start_of_data((modifier & KMOD_SHIFT) != 0);
+	if(modifier & SDL_KMOD_CTRL) {
+		goto_start_of_data((modifier & SDL_KMOD_SHIFT) != 0);
 	} else {
-		goto_start_of_line((modifier & KMOD_SHIFT) != 0);
+		goto_start_of_line((modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -392,10 +392,10 @@ void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(modifier & KMOD_CTRL) {
-		goto_end_of_data((modifier & KMOD_SHIFT) != 0);
+	if(modifier & SDL_KMOD_CTRL) {
+		goto_end_of_data((modifier & SDL_KMOD_SHIFT) != 0);
 	} else {
-		goto_end_of_line((modifier & KMOD_SHIFT) != 0);
+		goto_end_of_line((modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -455,7 +455,7 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 }
 
 /**
- * SDL_TEXTEDITING handler. See example at https://wiki.libsdl.org/Tutorials/TextInput
+ * SDL_EVENT_TEXT_EDITING handler. See example at https://wiki.libsdl.org/Tutorials/TextInput
  */
 void text_box_base::handle_editing(bool& handled, const std::string& unicode, int32_t start, int32_t len)
 {
@@ -532,13 +532,13 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
  * cut and paste, the text box behavior as a whole gets consistent with default
  * macOS hotkey idioms.
  */
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	// Idiomatic modifier key in macOS computers.
-	const SDL_Keycode modifier_key = KMOD_GUI;
+	const SDL_Keycode modifier_key = SDL_KMOD_GUI;
 #else
 	// Idiomatic modifier key in Microsoft desktop environments. Common in
 	// GNU/Linux as well, to some extent.
-	const SDL_Keycode modifier_key = KMOD_CTRL;
+	const SDL_Keycode modifier_key = SDL_KMOD_CTRL;
 #endif
 
 	switch(key) {
@@ -593,7 +593,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_u:
-			if( !(modifier & KMOD_CTRL) || !is_editable() ) {
+			if( !(modifier & SDL_KMOD_CTRL) || !is_editable() ) {
 				return;
 			}
 
@@ -655,7 +655,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_ESCAPE:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if(!is_composing() || (modifier & (SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI | SDL_KMOD_SHIFT))) {
 				return;
 			}
 			interrupt_composition();

@@ -102,7 +102,7 @@ std::unique_ptr<editor_action> mouse_action::key_event(
 		}
 		return nullptr;
 	}
-	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
+	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_EVENT_KEY_UP) {
 		return nullptr;
 	}
 	std::unique_ptr<editor_action> a;
@@ -137,7 +137,7 @@ bool mouse_action::has_shift_modifier() const
 
 bool mouse_action::has_ctrl_modifier() const
 {
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 	return key_[SDLK_RGUI] || key_[SDLK_LGUI];
 #else
 	return key_[SDLK_RCTRL] || key_[SDLK_LCTRL];

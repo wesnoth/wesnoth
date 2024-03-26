@@ -21,8 +21,8 @@
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
 
-#include <SDL2/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL3/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL3/SDL_sound.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include <list>
 #include <string>
@@ -824,9 +824,9 @@ music_muter::music_muter()
 void music_muter::handle_window_event(const SDL_Event& event)
 {
 	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
-		if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
+		if(event.window.event == SDL_EVENT_WINDOW_FOCUS_GAINED) {
 			Mix_ResumeMusic();
-		} else if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
+		} else if(event.window.event == SDL_EVENT_WINDOW_FOCUS_LOST) {
 			if(Mix_PlayingMusic()) {
 				Mix_PauseMusic();
 			}
