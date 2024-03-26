@@ -1789,11 +1789,9 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+int unit::resistance_ability(unit_ability_list resistance_abilities, const std::string& damage_name, bool attacker) const
 {
-	int res = opp_weapon ? movement_type_.resistance_against(*opp_weapon) : movement_type_.resistance_against(damage_name);
-
-	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	int res = movement_type_.resistance_against(damage_name);
 	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
 		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
 	});
@@ -1814,7 +1812,23 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 			res = 100 - resist_effect.get_composite_value();
 		}
 	}
+	return res;
+}
 
+int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	std::pair<std::string, std::string> types;
+	if(opp_weapon){
+		types = opp_weapon->damage_type();
+	} else{
+		types.first = damage_name;
+	}
+
+	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	int res = resistance_ability(resistance_abilities, types.first, attacker);
+	if(!(types.second).empty()){
+		res = std::max(res , resistance_ability(resistance_abilities, types.second, attacker));
+	}
 	return res;
 }
 

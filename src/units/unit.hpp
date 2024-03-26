@@ -1054,6 +1054,8 @@ public:
 private:
 	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
 
+	int resistance_ability(unit_ability_list resistance_abilities, const std::string& damage_name, bool attacker) const;
+
 	/**
 	 * @}
 	 * @defgroup unit_trait Trait and upkeep functions
