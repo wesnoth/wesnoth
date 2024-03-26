@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <SDL2/SDL_rect.h>
+#include <SDL3/SDL_rect.h>
 
 #include <iosfwd>
 #include <tuple>

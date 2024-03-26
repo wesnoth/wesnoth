@@ -342,6 +342,11 @@ bool game_launcher::init_video()
 		video::set_window_icon(icon);
 	}
 #endif
+
+#ifndef __ANDROID__
+	SDL_StartTextInput(video::get_window());
+#endif
+
 	return true;
 }
 

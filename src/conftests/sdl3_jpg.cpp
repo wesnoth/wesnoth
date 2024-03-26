@@ -12,12 +12,14 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL.h>
+#include <SDL3_image/SDL_image.h>
+#include <stdlib.h>
 
-int main(int, char**)
+int main(int, char** argv)
 {
-    SDL_Init(0);
-    SDL_Quit();
-
-    return 0;
+    SDL_IOStream *src = SDL_IOFromFile(argv[1], "rb");
+    if (src == nullptr) {
+        exit(2);
+    }
+    exit(!IMG_isJPG(src));
 }

@@ -23,8 +23,8 @@
 #include "video.hpp"
 
 #include <boost/math/constants/constants.hpp>
-
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_rect.h>
+#include <SDL3/SDL_render.h>
 
 static lg::log_domain log_draw("draw");
 #define DBG_D LOG_STREAM(debug, log_draw)
@@ -33,6 +33,16 @@ static lg::log_domain log_draw("draw");
 static SDL_Renderer* renderer()
 {
 	return video::get_renderer();
+}
+
+SDL_FRect rect_to_frect(const SDL_Rect& rect)
+{
+	SDL_FRect frect;
+	frect.h = rect.h;
+	frect.w = rect.w;
+	frect.x = rect.x;
+	frect.y = rect.y;
+	return frect;
 }
 
 /**************************************/
@@ -55,7 +65,8 @@ void draw::fill(
 {
 	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
-	SDL_RenderFillRect(renderer(), &area);
+	SDL_FRect frect = rect_to_frect(area);
+	SDL_RenderFillRect(renderer(), &frect);
 }
 
 void draw::fill(
@@ -91,13 +102,14 @@ void draw::fill(const SDL_FRect& rect, const color_t& c)
 {
 	DBG_D << "sub-pixel fill";
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
-	SDL_RenderFillRectF(renderer(), &rect);
+	SDL_RenderFillRect(renderer(), &rect);
 }
 
 void draw::fill(const ::rect& area)
 {
 	DBG_D << "fill " << area;
-	SDL_RenderFillRect(renderer(), &area);
+	SDL_FRect frect = rect_to_frect(area);
+	SDL_RenderFillRect(renderer(), &frect);
 }
 
 void draw::fill()
@@ -162,7 +174,8 @@ void draw::rect(const ::rect& rect)
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
-	SDL_RenderDrawRect(renderer(), &rect);
+	SDL_FRect frect = rect_to_frect(rect);
+	SDL_RenderRect(renderer(), &frect);
 }
 
 void draw::rect(const ::rect& rect,
@@ -173,7 +186,8 @@ void draw::rect(const ::rect& rect,
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
-	SDL_RenderDrawRect(renderer(), &rect);
+	SDL_FRect frect = rect_to_frect(rect);
+	SDL_RenderRect(renderer(), &frect);
 }
 
 void draw::rect(const ::rect& rect, uint8_t r, uint8_t g, uint8_t b)
@@ -190,7 +204,7 @@ void draw::line(int from_x, int from_y, int to_x, int to_y)
 {
 	DBG_D << "line from (" << from_x << ',' << from_y
 	      << ") to (" << to_x << ',' << to_y << ')';
-	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
+	SDL_RenderLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
 void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
@@ -199,22 +213,22 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 	      << ") to (" << to_x << ',' << to_y
 	      << ") with colour " << c;
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
-	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
+	SDL_RenderLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
-void draw::points(const std::vector<::point>& points)
+void draw::points(const std::vector<SDL_FPoint>& points)
 {
 	// We cannot decay vector<point> to SDL_Point* unless the two types are the same size.
 	static_assert(sizeof(::point) == sizeof(SDL_Point));
 
 	DBG_D << points.size() << " points";
-	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
+	SDL_RenderPoints(renderer(), points.data(), points.size());
 }
 
 void draw::point(int x, int y)
 {
 	DBG_D << "point (" << x << ',' << y << ')';
-	SDL_RenderDrawPoint(renderer(), x, y);
+	SDL_RenderPoint(renderer(), x, y);
 }
 
 void draw::circle(int cx, int cy, int r, const color_t& c, uint8_t octants)
@@ -235,25 +249,26 @@ void draw::circle(int cx, int cy, int r, uint8_t octants)
 	int x = r;
 	int y = 0;
 
-	std::vector<::point> points;
+	std::vector<SDL_FPoint> points;
 
-	while(!(y > x)) {
-		if(octants & 0x04) points.push_back({cx + x, cy + y});
-		if(octants & 0x02) points.push_back({cx + x, cy - y});
-		if(octants & 0x20) points.push_back({cx - x, cy + y});
-		if(octants & 0x40) points.push_back({cx - x, cy - y});
+	if(octants & 0x08) {
+		points.push_back({static_cast<float>(cx + y), static_cast<float>(cy + x)});
+	}
+	if(octants & 0x01) {
+		points.push_back({static_cast<float>(cx + y), static_cast<float>(cy - x)});
+	}
+	if(octants & 0x10) {
+		points.push_back({static_cast<float>(cx - y), static_cast<float>(cy + x)});
+	}
+	if(octants & 0x80) {
+		points.push_back({static_cast<float>(cx - y), static_cast<float>(cy - x)});
+	}
 
-		if(octants & 0x08) points.push_back({cx + y, cy + x});
-		if(octants & 0x01) points.push_back({cx + y, cy - x});
-		if(octants & 0x10) points.push_back({cx - y, cy + x});
-		if(octants & 0x80) points.push_back({cx - y, cy - x});
-
-		d += 2 * y + 1;
-		++y;
-		if(d > 0) {
-			d += -2 * x + 2;
-			--x;
-		}
+	d += 2 * y + 1;
+	++y;
+	if(d > 0) {
+		d += -2 * x + 2;
+		--x;
 	}
 
 	draw::points(points);
@@ -400,7 +415,14 @@ void draw::blit(const texture& tex, const ::rect& dst)
 	if (!tex) { DBG_D << "null blit"; return; }
 	DBG_D << "blit " << dst;
 
-	SDL_RenderCopy(renderer(), tex, tex.src(), &dst);
+	const SDL_Rect* rect = tex.src();
+	SDL_FRect fdst = rect_to_frect(dst);
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTexture(renderer(), tex, &frect, &fdst);
+	} else {
+		SDL_RenderTexture(renderer(), tex, nullptr, &fdst);
+	}
 }
 
 void draw::blit(const texture& tex)
@@ -408,14 +430,20 @@ void draw::blit(const texture& tex)
 	if (!tex) { DBG_D << "null blit"; return; }
 	DBG_D << "blit";
 
-	SDL_RenderCopy(renderer(), tex, tex.src(), nullptr);
+	const SDL_Rect* rect = tex.src();
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTexture(renderer(), tex, &frect, nullptr);
+	} else {
+		SDL_RenderTexture(renderer(), tex, nullptr, nullptr);
+	}
 }
 
 
-static SDL_RendererFlip get_flip(bool flip_h, bool flip_v)
+static SDL_FlipMode get_flip(bool flip_h, bool flip_v)
 {
 	// This should be easier than it is.
-	return static_cast<SDL_RendererFlip>(
+	return static_cast<SDL_FlipMode>(
 		static_cast<int>(flip_h ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE)
 		| static_cast<int>(flip_v ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE)
 	);
@@ -435,8 +463,15 @@ void draw::flipped(
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
 	      << ") to " << dst;
 
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderCopyEx(renderer(), tex, tex.src(), &dst, 0.0, nullptr, flip);
+	SDL_FlipMode flip = get_flip(flip_h, flip_v);
+	const SDL_Rect* rect = tex.src();
+	SDL_FRect fdst = rect_to_frect(dst);
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTextureRotated(renderer(), tex, rect ? &frect : nullptr, &fdst, 0.0, nullptr, flip);
+	} else {
+		SDL_RenderTextureRotated(renderer(), tex, nullptr, &fdst, 0.0, nullptr, flip);
+	}
 }
 
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
@@ -444,8 +479,14 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')';
 
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
-	SDL_RenderCopyEx(renderer(), tex, tex.src(), nullptr, 0.0, nullptr, flip);
+	SDL_FlipMode flip = get_flip(flip_h, flip_v);
+	const SDL_Rect* rect = tex.src();
+	if(rect) {
+		SDL_FRect frect = rect_to_frect(*rect);
+		SDL_RenderTextureRotated(renderer(), tex, rect ? &frect : nullptr, nullptr, 0.0, nullptr, flip);
+	} else {
+		SDL_RenderTextureRotated(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
+	}
 }
 
 
@@ -503,46 +544,13 @@ void draw::tiled_highres(const texture& tex, const ::rect& dst,
 		bool hf = false;
 		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
 			if (mirrored) {
-				SDL_RendererFlip flip = get_flip(hf, vf);
-				SDL_RenderCopyExF(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
+				SDL_FlipMode flip = get_flip(hf, vf);
+				SDL_RenderTextureRotated(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
 			} else {
-				SDL_RenderCopyF(renderer(), tex, nullptr, &t);
+				SDL_RenderTexture(renderer(), tex, nullptr, &t);
 			}
 		}
 	}
-}
-
-void draw::smooth_shaded(const texture& tex, const ::rect& dst,
-	const SDL_Color& cTL, const SDL_Color& cTR,
-	const SDL_Color& cBL, const SDL_Color& cBR,
-	const SDL_FPoint& uvTL, const SDL_FPoint& uvTR,
-	const SDL_FPoint& uvBL, const SDL_FPoint& uvBR)
-{
-	const SDL_FPoint pTL{float(dst.x), float(dst.y)};
-	const SDL_FPoint pTR{float(dst.x + dst.w), float(dst.y)};
-	const SDL_FPoint pBL{float(dst.x), float(dst.y + dst.h)};
-	const SDL_FPoint pBR{float(dst.x + dst.w), float(dst.y + dst.h)};
-	std::array<SDL_Vertex,4> verts {
-		SDL_Vertex{pTL, cTL, uvTL},
-		SDL_Vertex{pTR, cTR, uvTR},
-		SDL_Vertex{pBL, cBL, uvBL},
-		SDL_Vertex{pBR, cBR, uvBR},
-	};
-	draw::smooth_shaded(tex, verts);
-}
-
-void draw::smooth_shaded(const texture& tex, const ::rect& dst,
-	const SDL_Color& cTL, const SDL_Color& cTR,
-	const SDL_Color& cBL, const SDL_Color& cBR)
-{
-	SDL_FPoint uv[4] = {
-		{0.f, 0.f}, // top left
-		{1.f, 0.f}, // top right
-		{0.f, 1.f}, // bottom left
-		{1.f, 1.f}, // bottom right
-	};
-	draw::smooth_shaded(tex, dst, cTL, cTR, cBL, cBR,
-		uv[0], uv[1], uv[2], uv[3]);
 }
 
 void draw::smooth_shaded(const texture& tex,
@@ -551,7 +559,8 @@ void draw::smooth_shaded(const texture& tex,
 	DBG_D << "smooth shade, verts:";
 	for (const SDL_Vertex& v : verts) {
 		DBG_D << "  {(" << v.position.x << ',' << v.position.y << ") "
-			<< v.color << " (" << v.tex_coord.x << ',' << v.tex_coord.y
+			<< v.color.r << "," << v.color.g << "," << v.color.b << "," << v.color.a
+			<< " (" << v.tex_coord.x << ',' << v.tex_coord.y
 			<< ")}";
 	}
 	int indices[6] = {0, 1, 2, 2, 1, 3};
@@ -600,7 +609,7 @@ void draw::force_clip(const ::rect& clip)
 	}
 	DBG_D << "forcing clip to " << clip;
 
-	SDL_RenderSetClipRect(renderer(), &clip);
+	SDL_SetRenderClipRect(renderer(), &clip);
 }
 
 rect draw::get_clip()
@@ -610,12 +619,12 @@ rect draw::get_clip()
 		return {};
 	}
 
-	if (!SDL_RenderIsClipEnabled(renderer())) {
+	if (!SDL_RenderClipEnabled(renderer())) {
 		return draw::get_viewport();
 	}
 
 	::rect clip;
-	SDL_RenderGetClipRect(renderer(), &clip);
+	SDL_GetRenderClipRect(renderer(), &clip);
 	return clip;
 }
 
@@ -624,7 +633,7 @@ bool draw::clip_enabled()
 	if (!renderer()) {
 		return false;
 	}
-	return SDL_RenderIsClipEnabled(renderer());
+	return SDL_RenderClipEnabled(renderer());
 }
 
 void draw::disable_clip()
@@ -632,7 +641,7 @@ void draw::disable_clip()
 	if (!renderer()) {
 		return;
 	}
-	SDL_RenderSetClipRect(renderer(), nullptr);
+	SDL_SetRenderClipRect(renderer(), nullptr);
 	DBG_D << "clip disabled";
 }
 
@@ -641,11 +650,11 @@ bool draw::null_clip()
 	if (!renderer()) {
 		return true;
 	}
-	if (!SDL_RenderIsClipEnabled(renderer())) {
+	if (!SDL_RenderClipEnabled(renderer())) {
 		return false;
 	}
 	::rect clip;
-	SDL_RenderGetClipRect(renderer(), &clip);
+	SDL_GetRenderClipRect(renderer(), &clip);
 	return clip.w <= 0 || clip.h <= 0;
 }
 
@@ -690,7 +699,7 @@ void draw::force_viewport(const ::rect& viewport)
 	}
 	DBG_D << "forcing viewport to " << viewport;
 
-	SDL_RenderSetViewport(renderer(), &viewport);
+	SDL_SetRenderViewport(renderer(), &viewport);
 }
 
 rect draw::get_viewport()
@@ -701,7 +710,7 @@ rect draw::get_viewport()
 	}
 
 	::rect viewport;
-	SDL_RenderGetViewport(renderer(), &viewport);
+	SDL_GetRenderViewport(renderer(), &viewport);
 
 	if (viewport == sdl::empty_rect) {
 		return video::draw_area();
@@ -723,8 +732,8 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	}
 
 	target_ = video::get_render_target();
-	SDL_RenderGetViewport(renderer(), &viewport_);
-	SDL_RenderGetClipRect(renderer(), &clip_);
+	SDL_GetRenderViewport(renderer(), &viewport_);
+	SDL_GetRenderClipRect(renderer(), &clip_);
 
 	if (t) {
 		video::force_render_target(t);
@@ -740,9 +749,9 @@ draw::render_target_setter::~render_target_setter()
 		return;
 	}
 	video::force_render_target(target_);
-	SDL_RenderSetViewport(renderer(), &viewport_);
+	SDL_SetRenderViewport(renderer(), &viewport_);
 	if(clip_ == sdl::empty_rect) return;
-	SDL_RenderSetClipRect(renderer(), &clip_);
+	SDL_SetRenderClipRect(renderer(), &clip_);
 }
 
 draw::render_target_setter draw::set_render_target(const texture& t)

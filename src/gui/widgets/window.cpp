@@ -126,7 +126,7 @@ const unsigned LAYOUT = 0;
  *
  * @return                        The new timer interval (always 0).
  */
-static uint32_t delay_event_callback(const uint32_t, void* event)
+static uint32_t delay_event_callback(void* event, SDL_TimerID, uint32_t)
 {
 	SDL_PushEvent(static_cast<SDL_Event*>(event));
 	delete static_cast<SDL_Event*>(event);
@@ -1288,7 +1288,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		}
 	}
 	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
-		if (mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)) {
+		if (mod & (SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI | SDL_KMOD_SHIFT)) {
 			// Don't handle if modifier is pressed
 			handled = false;
 		} else {
@@ -1309,7 +1309,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		widget* focus = event_distributor_->keyboard_focus();
 		auto iter = std::find(tab_order.begin(), tab_order.end(), focus);
 		do {
-			if(mod & KMOD_SHIFT) {
+			if(mod & SDL_KMOD_SHIFT) {
 				if(iter == tab_order.begin()) {
 					iter = tab_order.end();
 				}

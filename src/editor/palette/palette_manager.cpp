@@ -135,7 +135,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 
 	gui::widget::handle_event(event);
 
-	if (event.type == SDL_MOUSEMOTION) {
+	if (event.type == SDL_EVENT_MOUSE_MOTION) {
 		// If the mouse is inside the palette, give it focus.
 		if (location().contains(event.button.x, event.button.y)) {
 			if (!focus(&event)) {
@@ -154,7 +154,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 	const SDL_MouseButtonEvent &mouse_button_event = event.button;
 
 
-	if (event.type == SDL_MOUSEWHEEL) {
+	if (event.type == SDL_EVENT_MOUSE_WHEEL) {
 		if (event.wheel.y > 0) {
 			scroll_up();
 		} else if (event.wheel.y < 0) {
@@ -170,7 +170,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		}
 	}
 
-	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
+	if (mouse_button_event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
 		//set_dirty(true);
 //		draw(true);
 //		set_dirty(active_palette().mouse_click());

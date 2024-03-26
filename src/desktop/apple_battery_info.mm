@@ -18,10 +18,10 @@
 #include "apple_battery_info.hpp"
 
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
-#define __IPHONEOS__ (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
+#define SDL_PLATFORM_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
 #endif
 
-#if defined(__IPHONEOS__)
+#if defined(SDL_PLATFORM_IOS)
 
 #import <UIKit/UIDevice.h>
 
@@ -39,7 +39,7 @@ namespace battery_info {
 namespace apple {
 
 bool does_device_have_battery() {
-#if defined(__IPHONEOS__)
+#if defined(SDL_PLATFORM_IOS)
     UIDevice.currentDevice.batteryMonitoringEnabled = YES;
     if (UIDevice.currentDevice.batteryState == UIDeviceBatteryStateUnknown) {
         return false;
@@ -55,7 +55,7 @@ bool does_device_have_battery() {
 #endif
 }
 
-#if !defined(__IPHONEOS__)
+#if !defined(SDL_PLATFORM_IOS)
 inline NSDictionary* get_iops_battery_info() {
     //Code taken from https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/battery/internal.m
     CFTypeRef info = IOPSCopyPowerSourcesInfo();
@@ -84,7 +84,7 @@ inline NSDictionary* get_iops_battery_info() {
 #endif
 
 double get_battery_percentage() {
-#if defined(__IPHONEOS__)
+#if defined(SDL_PLATFORM_IOS)
     return UIDevice.currentDevice.batteryLevel * 100;
 #else
     //Code taken from https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/battery/internal.m

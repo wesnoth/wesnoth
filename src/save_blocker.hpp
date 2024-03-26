@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <SDL2/SDL_mutex.h>
+#include <SDL3/SDL_mutex.h>
 
 #include <cassert>
 
@@ -67,5 +67,5 @@ protected:
 private:
 	static play_controller *controller_;
 	static void (play_controller::*callback_)();
-	static SDL_sem* sem_;
+	static SDL_Semaphore* sem_;
 };

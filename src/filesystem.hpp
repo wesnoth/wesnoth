@@ -46,22 +46,12 @@ extern int cache_compression_level;
 
 class config;
 class game_config_view;
-struct SDL_RWops;
+struct SDL_IOStream;
 
 namespace filesystem {
 
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
-
-struct sdl_rwops_deleter
-{
-	void operator()(SDL_RWops*) const noexcept;
-};
-
-using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
-
-rwops_ptr make_read_RWops(const std::string &path);
-rwops_ptr make_write_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
