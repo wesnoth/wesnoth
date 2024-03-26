@@ -495,7 +495,7 @@ else()
 	add_compile_definitions(_WIN32_WINNT=0x0A00 _CRT_SECURE_NO_WARNINGS _WINSOCK_DEPRECATED_NO_WARNINGS NOMINMAX _MSVC_STL_HARDENING=1 _MSVC_STL_DESTRUCTOR_TOMBSTONES=1)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO /ENTRY:mainCRTStartup")
 	set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /NODEFAULTLIB:MSVCRT")
 
 # -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
@@ -544,18 +544,9 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
-	find_package(SDL2 2.0.18 REQUIRED)
-	if(NOT MSVC)
-		# for everything else, use pkgconfig
-		# SDL2_image and SDL2_mixer don't seem to have any cmake configuration available at all
-		pkg_check_modules(SDL2IMAGE REQUIRED SDL2_image>=2.0.2)
-		pkg_check_modules(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
-	else()
-		# for MSVC, vcpkg builds and provides custom SDL2-related modules for cmake to use, so use those
-		# this also fixes the issue with our previous FindSDL2* scripts incorrectly using the Release version of these libs instead of the Debug version
-		find_package(SDL2_image CONFIG REQUIRED)
-		find_package(SDL2_mixer CONFIG REQUIRED)
-	endif()
+	find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
+	find_package(SDL3_image CONFIG REQUIRED)
+	find_package(SDL3_mixer CONFIG REQUIRED)
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.50.0)
 	pkg_check_modules(PANGO REQUIRED pango>=1.50.0)

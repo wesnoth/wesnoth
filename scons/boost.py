@@ -67,7 +67,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
                       "iostreams" : "iostreams/constants.hpp",
                       "locale" : "locale/info.hpp",
                       "unit_test_framework" : "test/unit_test.hpp",
-                      "filesystem" : "filesystem/operations.hpp",
+                      "filesystem" : "filesystem.hpp",
                       "random" : "random/random_number_generator.hpp",
                       "system" : "system/error_code.hpp",
                       "context" : "context/continuation.hpp",
@@ -113,16 +113,29 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         }
         \n"""
 
-    test_program += """
-        // Workaround for sdl #defining main breaking non sdl programs
-        #ifdef main
-        #undef main
-        #endif
-        int main()
-        {
-            return 0;
-        }
-        \n"""
+    if boost_lib == "filesystem":
+        test_program += """
+            // Workaround for sdl #defining main breaking non sdl programs
+            #ifdef main
+            #undef main
+            #endif
+            int main()
+            {
+                boost::filesystem::path test_path(".");
+                return 0;
+            }
+            \n"""
+    else:
+        test_program += """
+            // Workaround for sdl #defining main breaking non sdl programs
+            #ifdef main
+            #undef main
+            #endif
+            int main()
+            {
+                return 0;
+            }
+            \n"""
     if context.TryLink(test_program, ".cpp"):
         context.Result("yes")
         return True

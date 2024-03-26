@@ -4,13 +4,13 @@
   "version": "0.0.1",
   "builtin-baseline": "432412eecac55981cf608cc12e5b4bd91768ec57",
   "dependencies": [
-    "sdl2",
+    "sdl3",
     {
-      "name": "sdl2-image",
-      "features": [ "libjpeg-turbo", "libwebp" ]
+      "name": "sdl3-image",
+      "features": [ "jpeg", "png", "webp" ]
     },
     "libwebp",
-    "sdl2-mixer",
+    "sdl3-mixer",
     "bzip2",
     "zlib",
     "pango",
@@ -25,6 +25,10 @@
     },
     {
       "name": "readline",
+      "platform": "osx"
+    },
+    {
+      "name": "wavpack",
       "platform": "osx"
     },
     "boost-filesystem",

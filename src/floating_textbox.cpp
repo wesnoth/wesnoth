@@ -21,9 +21,10 @@
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
 #include "preferences/preferences.hpp"
+#include "video.hpp"
 #include "log.hpp"
 
-#include <SDL2/SDL_keyboard.h>
+#include <SDL3/SDL_keyboard.h>
 #include <ctime>
 
 static lg::log_domain log_display("display");
@@ -56,7 +57,7 @@ void floating_textbox::close()
 
 #if defined(__ANDROID__) || defined(__IPHONEOS__)
 	// Hide onscreen keyboard
-	SDL_StopTextInput();
+	SDL_StopTextInput(video::get_window());
 #endif
 }
 
@@ -138,7 +139,7 @@ void floating_textbox::show(
 
 #if defined(__ANDROID__) || defined(__IPHONEOS__)
 	// Show onscreen keyboard
-	SDL_StartTextInput();
+	SDL_StartTextInput(video::get_window());
 #endif
 }
 

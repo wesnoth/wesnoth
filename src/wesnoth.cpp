@@ -67,7 +67,8 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL_main.h> // Provides platform-specific entrypoint, if applicable
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
@@ -100,10 +101,6 @@
 #include <windows.h>
 
 #endif // _WIN32
-
-#ifdef __ANDROID__
-#define main SDL_main
-#endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -443,11 +440,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	} else {
 #if defined(__ANDROID__) && !defined(WESNOTH_PATH)
-		if(const char* ext_path = SDL_AndroidGetExternalStoragePath()) {
+		if(const char* ext_path = SDL_GetAndroidExternalStoragePath()) {
 			game_config::path = ext_path + std::string("/gamedata");
 			PLAIN_LOG << "Determined game data directory: " << game_config::path;
 		} else {
-			PLAIN_LOG << "Cannot find game data directory, specify one with --data-dir. SDL_AndroidGetExternalStoragePath() failed: " << SDL_GetError();
+			PLAIN_LOG << "Cannot find game data directory, specify one with --data-dir. SDL_GetAndroidExternalStoragePath() failed: " << SDL_GetError();
 		}
 #endif
 		// if a pre-defined path does not exist this will empty it
@@ -502,7 +499,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.render_image) {
-		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
+		SDL_setenv_unsafe("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
 	if(cmdline_opts.strict_validation) {
@@ -794,10 +791,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-#if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
-	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
-#endif
-
 	gui2::init();
 	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
@@ -1024,27 +1017,18 @@ int main(int argc, char** argv)
 		}
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
-		// Is there a reason not to just use SDL_INIT_EVERYTHING?
-		if(SDL_Init(SDL_INIT_TIMER) < 0) {
-			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-			return (1);
-		}
 		atexit(SDL_Quit);
 
 		// Mac's touchpad generates touch events too.
 		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
-		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_MOTION, false);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_DOWN, false);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_UP, false);
 #endif
 
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
-
-#if !defined(__ANDROID__) && !defined(__IPHONEOS__)
-		SDL_StartTextInput();
-#endif
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {

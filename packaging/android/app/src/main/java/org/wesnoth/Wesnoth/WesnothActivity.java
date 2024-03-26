@@ -17,19 +17,91 @@ package org.wesnoth.Wesnoth;
 
 import java.io.File;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
-
+import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.content.pm.ActivityInfo;
+import android.graphics.Rect;
 import androidx.core.content.FileProvider;
 
 import org.libsdl.app.SDLActivity;
 
 public class WesnothActivity extends SDLActivity
 {
+	public static String getFullscreenResolution(Activity activity) {
+		int w, h;
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+			Rect bounds = activity.getWindowManager()
+					.getMaximumWindowMetrics().getBounds();
+			w = bounds.width();
+			h = bounds.height();
+		} else {
+			DisplayMetrics metrics = new DisplayMetrics();
+			activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+			w = metrics.widthPixels;
+			h = metrics.heightPixels;
+		}
+
+		return w + "x" + h;
+	}
+	
+	/**
+	 * FIXME For some reason SDL3 migration broke the resolution detection.
+	 * Workaround: calculate resolution in Java then pass it to Wesnoth.
+	 */
+	@Override
+	protected String[] getArguments() {
+		String resStr = "-r " + getFullscreenResolution(this);
+		return new String[] { resStr };
+	}
+
+	/**
+	 * Enforces immersive fullscreen on every focus gain.
+	 * Needed because system UI can reappear after notifications/dialogs.
+	 * API 30+: hides insets and extends content behind system bars.
+	 * API <30: uses legacy immersive sticky flags with layout flags to
+	 *           prevent gray padding where bars used to be.
+	 */
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		// hide system bars, navigation buttons, insets
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+				getWindow().setDecorFitsSystemWindows(false);
+				getWindow().getInsetsController().hide(
+					WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars()
+				);
+				getWindow().getInsetsController().setSystemBarsBehavior(
+					WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+				);
+			} else {
+				getWindow().getDecorView().setSystemUiVisibility(
+					View.SYSTEM_UI_FLAG_FULLSCREEN
+					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+					| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+				);
+			}
+		}
+	}
+
+	/** Enforce landscape orientation */
+	@Override
+	public void setOrientationBis(int w, int h, boolean resizable, String hint) {
+		SDLActivity.mSingleton.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+	}
 
 	// Needs to be inside an activity so we can use `startActivity`.
 	public void open(String url) {

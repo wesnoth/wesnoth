@@ -11,7 +11,7 @@ jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2404-sdl3
       options: --tty # docker create options
       env:
         CLICOLOR_FORCE: 1
@@ -60,7 +60,7 @@ jobs:
           - { cfg: release, tool: cmake, cc: clang, cxx: clang++, std: 17, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2404-sdl3
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
@@ -107,19 +107,20 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true -DENABLE_STRICT_COMPILATION=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" -DCMAKE_PREFIX_PATH="/usr/local/lib/cmake/SDL3;/usr/local/lib/cmake/SDL3_image;/usr/local/lib/cmake/SDL3_mixer" -S . -B .
               }
-              rm -R /usr/local/lib/cmake
+              # still need the rest of /usr/local/lib/cmake for SDL3 for now
+              rm -R /usr/local/lib/cmake/boost*
+              rm -R /usr/local/lib/cmake/Boost*
               rm /usr/local/lib/libboost*
               rm -R /usr/local/include/boost
               build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
-              make conftests
-              make VERBOSE=1 -j2
+              make -C . VERBOSE=1 -j2
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
               build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false
-              make VERBOSE=1 -j2
+              make -C . VERBOSE=1 -j2
               ;;
           esac
       - name: Check path options
@@ -207,7 +208,7 @@ jobs:
   flatpak:
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:flatpak-master
+      image: wesnoth/wesnoth:flatpak-sdl3
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
@@ -237,7 +238,7 @@ jobs:
   translations:
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2404-sdl3
       env:
        LANGUAGE: en_US.UTF-8
        LANG: en_US.UTF-8

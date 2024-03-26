@@ -47,7 +47,7 @@ namespace apple {
 
 #include "apple_video.hpp"
 
-#include <SDL2/SDL_keyboard.h>
+#include <SDL3/SDL_keyboard.h>
 
 #import <UIKit/UIKit.h>
 
