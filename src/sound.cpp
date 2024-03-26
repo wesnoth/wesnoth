@@ -23,11 +23,11 @@
 #include "utils/general.hpp"
 #include "utils/rate_counter.hpp"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL3/SDL.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include <list>
-#include <string>
+#include <mutex>
 #include <utility>
 
 static lg::log_domain log_audio("audio");
@@ -37,12 +37,20 @@ static lg::log_domain log_audio("audio");
 
 namespace sound
 {
-// Channel-chunk mapping lets us know, if we can safely free a given chunk
-static std::vector<Mix_Chunk*> channel_chunks;
+std::mutex soundsource_map_mutex;
+std::map<unsigned int, int> soundsource_map;
+	
+std::vector<std::shared_ptr<MIX_Track>> tracks;
+std::map<int, sound_tracks::type> track_map;
+// filename, audio
+std::map<std::string, std::shared_ptr<MIX_Audio>> music_cache;
+std::vector<std::string> music_cache_insertion_order;
 
-// Channel-id mapping for use with sound sources (to check if given source
-// is playing on a channel for fading/panning)
-static std::vector<int> channel_ids;
+std::map<std::string, std::shared_ptr<MIX_Audio>> sound_cache;
+std::vector<std::string> sound_cache_insertion_order;
+
+MIX_Mixer* mixer;
+std::size_t mixer_init_counter = 0;
 }
 
 using namespace std::chrono_literals;
@@ -55,115 +63,31 @@ utils::rate_counter music_refresh_rate{20};
 bool want_new_music = false;
 auto fade_out_time = 5000ms;
 bool no_fading = false;
-bool unload_music = false;
 
-// number of allocated channels,
-const std::size_t n_of_channels = 32;
+// number of allocated tracks,
+const std::size_t n_of_tracks = 32;
 
-// we need 2 channels, because we it for timer as well
-const std::size_t bell_channel = 0;
-const std::size_t timer_channel = 1;
+const std::size_t music_track_id = 0;
+// we need 2 tracks, because we it for timer as well
+const std::size_t bell_track_id = 1;
+const std::size_t timer_track_id = 2;
 
-// number of channels reserved for sound sources
-const std::size_t source_channels = 8;
-const std::size_t source_channel_start = timer_channel + 1;
-const std::size_t source_channel_last = source_channel_start + source_channels - 1;
-const std::size_t UI_sound_channels = 2;
-const std::size_t UI_sound_channel_start = source_channel_last + 1;
-const std::size_t UI_sound_channel_last = UI_sound_channel_start + UI_sound_channels - 1;
-const std::size_t n_reserved_channels = UI_sound_channel_last + 1; // sources, bell, timer and UI
+// number of tracks reserved for sound sources
+const std::size_t source_track_id_start = 3;
+const std::size_t source_track_id_last = 10;
 
-// Max number of sound chunks that we want to cache
-// Keep this above number of available channels to avoid busy-looping
-unsigned max_cached_chunks = 256;
+const std::size_t UI_sound_track_id_start = 11;
+const std::size_t UI_sound_track_id_last = 12;
 
-std::map<Mix_Chunk*, int> chunk_usage;
+const std::size_t n_reserved_tracks_id_start = 13;
+const std::size_t n_reserved_tracks_id_end = n_of_tracks;
+
+const std::size_t music_cache_limit = 30;
+const std::size_t sound_cache_limit = 500;
 } // end anon namespace
-
-static void increment_chunk_usage(Mix_Chunk* mcp)
-{
-	++(chunk_usage[mcp]);
-}
-
-static void decrement_chunk_usage(Mix_Chunk* mcp)
-{
-	if(mcp == nullptr) {
-		return;
-	}
-
-	std::map<Mix_Chunk*, int>::iterator this_usage = chunk_usage.find(mcp);
-	assert(this_usage != chunk_usage.end());
-	if(--(this_usage->second) == 0) {
-		Mix_FreeChunk(mcp);
-		chunk_usage.erase(this_usage);
-	}
-}
 
 namespace
 {
-class sound_cache_chunk
-{
-public:
-	sound_cache_chunk(const std::string& f)
-		: group(sound::NULL_CHANNEL)
-		, file(f)
-		, data_(nullptr)
-	{
-	}
-	sound_cache_chunk(const sound_cache_chunk& scc)
-		: group(scc.group)
-		, file(scc.file)
-		, data_(scc.data_)
-	{
-		increment_chunk_usage(data_);
-	}
-
-	~sound_cache_chunk()
-	{
-		decrement_chunk_usage(data_);
-	}
-
-	sound::channel_group group;
-	std::string file;
-
-	void set_data(Mix_Chunk* d)
-	{
-		increment_chunk_usage(d);
-		decrement_chunk_usage(data_);
-		data_ = d;
-	}
-
-	Mix_Chunk* get_data() const
-	{
-		return data_;
-	}
-
-	bool operator==(const sound_cache_chunk& scc) const
-	{
-		return file == scc.file;
-	}
-
-	bool operator!=(const sound_cache_chunk& scc) const
-	{
-		return !operator==(scc);
-	}
-
-	sound_cache_chunk& operator=(const sound_cache_chunk& scc)
-	{
-		file = scc.file;
-		group = scc.group;
-		set_data(scc.get_data());
-		return *this;
-	}
-
-private:
-	Mix_Chunk* data_;
-};
-
-std::list<sound_cache_chunk> sound_cache;
-typedef std::list<sound_cache_chunk>::iterator sound_cache_iterator;
-std::map<std::string, std::shared_ptr<Mix_Music>> music_cache;
-
 std::vector<std::string> played_before;
 
 //
@@ -189,12 +113,6 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 
 namespace sound
 {
-void flush_cache()
-{
-	sound_cache.clear();
-	music_cache.clear();
-}
-
 utils::optional<unsigned int> get_current_track_index()
 {
 	if(current_track_index >= current_track_list.size()){
@@ -380,32 +298,8 @@ static std::string pick_one(const std::string& files)
 	return ids[choice];
 }
 
-namespace
-{
-struct audio_lock
-{
-	audio_lock()
-	{
-		SDL_LockAudio();
-	}
-
-	~audio_lock()
-	{
-		SDL_UnlockAudio();
-	}
-};
-
-} // end of anonymous namespace
-
 namespace sound
 {
-// Removes channel-chunk and channel-id mapping
-static void channel_finished_hook(int channel)
-{
-	channel_chunks[channel] = nullptr;
-	channel_ids[channel] = -1;
-}
-
 std::string current_driver()
 {
 	const char* const drvname = SDL_GetCurrentAudioDriver();
@@ -427,11 +321,15 @@ std::vector<std::string> enumerate_drivers()
 
 driver_status driver_status::query()
 {
-	driver_status res{mix_ok, 0, 0, 0, 0};
+	driver_status res{mix_ok, 0, SDL_AUDIO_UNKNOWN, 0, 0};
 
 	if(mix_ok) {
-		Mix_QuerySpec(&res.frequency, &res.format, &res.channels);
+		SDL_AudioSpec* spec;
+		MIX_GetMixerFormat(mixer, spec);
 		res.chunk_size = prefs::get().sound_buffer_size();
+		res.frequency = spec->freq;
+		res.format = spec->format;
+		res.channels = spec->channels;
 	}
 
 	return res;
@@ -441,47 +339,82 @@ bool init_sound()
 {
 	LOG_AUDIO << "Initializing audio...";
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0) {
-		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1) {
+		if(!SDL_InitSubSystem(SDL_INIT_AUDIO)) {
+			ERR_AUDIO << "Could not initialize audio: " << SDL_GetError();
 			return false;
 		}
 	}
 
+	if(MIX_Init()) {
+		mixer_init_counter++;
+	} else {
+		ERR_AUDIO << "Could not initialize mixer: " << SDL_GetError();
+		return false;
+	}
+
 	if(!mix_ok) {
-		if(Mix_OpenAudio(prefs::get().sample_rate(), MIX_DEFAULT_FORMAT, 2, prefs::get().sound_buffer_size()) == -1) {
+		SDL_AudioSpec spec;
+		spec.freq = prefs::get().sample_rate();
+		spec.format = SDL_AUDIO_S16;
+		spec.channels = 2;
+		mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec);
+		if(!mixer) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError();
+			ERR_AUDIO << "Could not initialize audio: " << SDL_GetError();
 			return false;
 		}
 
 		mix_ok = true;
-		Mix_AllocateChannels(n_of_channels);
-		Mix_ReserveChannels(n_reserved_channels);
 
-		channel_chunks.clear();
-		channel_chunks.resize(n_of_channels, nullptr);
-		channel_ids.resize(n_of_channels, -1);
+		std::shared_ptr<MIX_Track> music_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
+		MIX_TagTrack(music_track.get(), sound_tracks::music);
+		tracks.push_back(music_track);
+		track_map.emplace(music_track_id, sound_tracks::type::music);
 
-		Mix_GroupChannel(bell_channel, SOUND_BELL);
-		Mix_GroupChannel(timer_channel, SOUND_TIMER);
-		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
-		Mix_GroupChannels(UI_sound_channel_start, UI_sound_channel_last, SOUND_UI);
-		Mix_GroupChannels(n_reserved_channels, n_of_channels - 1, SOUND_FX);
+		std::shared_ptr<MIX_Track> bell_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
+		MIX_TagTrack(bell_track.get(), sound_tracks::sound_bell);
+		tracks.push_back(bell_track);
+		track_map.emplace(bell_track_id, sound_tracks::type::sound_bell);
+		
+		std::shared_ptr<MIX_Track> sound_timer_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
+		MIX_TagTrack(sound_timer_track.get(), sound_tracks::sound_timer);
+		tracks.push_back(sound_timer_track);
+		track_map.emplace(timer_track_id, sound_tracks::type::sound_timer);
+
+		for(std::size_t i = source_track_id_start; i <= source_track_id_last; i++) {
+			std::shared_ptr<MIX_Track> sound_source_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
+			MIX_TagTrack(sound_source_track.get(), sound_tracks::sound_source);
+			tracks.push_back(sound_source_track);
+			track_map.emplace(i, sound_tracks::type::sound_source);
+		}
+
+		for(std::size_t i = UI_sound_track_id_start; i <= UI_sound_track_id_last; i++) {
+			std::shared_ptr<MIX_Track> sound_ui_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
+			MIX_TagTrack(sound_ui_track.get(), sound_tracks::sound_ui);
+			tracks.push_back(sound_ui_track);
+			track_map.emplace(i, sound_tracks::type::sound_ui);
+		}
+
+		for(std::size_t i = n_reserved_tracks_id_start; i <= n_reserved_tracks_id_end; i++) {
+			std::shared_ptr<MIX_Track> sound_fx_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
+			MIX_TagTrack(sound_fx_track.get(), sound_tracks::sound_fx);
+			tracks.push_back(sound_fx_track);
+			track_map.emplace(i, sound_tracks::type::sound_fx);
+		}
 
 		set_sound_volume(prefs::get().sound_volume());
 		set_UI_volume(prefs::get().ui_volume());
 		set_music_volume(prefs::get().music_volume());
 		set_bell_volume(prefs::get().bell_volume());
 
-		Mix_ChannelFinished(channel_finished_hook);
-
 		LOG_AUDIO << "Audio initialized.";
 
-		DBG_AUDIO << "Channel layout: " << n_of_channels << " channels (" << n_reserved_channels << " reserved)\n"
-		          << "    " << bell_channel << " - bell\n"
-		          << "    " << timer_channel << " - timer\n"
-		          << "    " << source_channel_start << ".." << source_channel_last << " - sound sources\n"
-		          << "    " << UI_sound_channel_start << ".." << UI_sound_channel_last << " - UI\n"
-		          << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects";
+		DBG_AUDIO << "Track layout: " << n_of_tracks << " tracks\n"
+		          << "    " << bell_track_id << " - bell\n"
+		          << "    " << timer_track_id << " - timer\n"
+		          << "    " << source_track_id_start << ".." << source_track_id_last << " - sound sources\n"
+		          << "    " << UI_sound_track_id_start << ".." << UI_sound_track_id_last << " - UI\n"
+		          << "    " << UI_sound_track_id_last + 1 << ".." << n_of_tracks - 1 << " - sound effects";
 
 		play_music();
 	}
@@ -491,27 +424,27 @@ bool init_sound()
 
 void close_sound()
 {
-	int frequency, channels;
-	uint16_t format;
-
 	if(mix_ok) {
 		stop_bell();
 		stop_UI_sound();
 		stop_sound();
-		sound_cache.clear();
 		stop_music();
 		mix_ok = false;
-
-		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
-		if(numtimesopened == 0) {
-			ERR_AUDIO << "Error closing audio device: " << Mix_GetError();
-		}
-
-		while(numtimesopened) {
-			Mix_CloseAudio();
-			--numtimesopened;
-		}
 	}
+
+	tracks.clear();
+
+	if(mixer) {
+		MIX_DestroyMixer(mixer);
+	}
+
+	// as per documentation, calling MIX_Init multiple times won't result in a failure
+	// MIX_Quit then needs to be called the same number of times to make it de-initialize
+	// so, make sure that always happens
+	for(std::size_t i = 0; i < mixer_init_counter; i++) {
+		MIX_Quit();
+	}
+	mixer_init_counter = 0;
 
 	if(SDL_WasInit(SDL_INIT_AUDIO) != 0) {
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
@@ -529,9 +462,7 @@ void reset_sound()
 
 	if(music || sound || bell || UI_sound) {
 		sound::close_sound();
-		if(!sound::init_sound()) {
-			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError();
-		}
+		sound::init_sound();
 
 		if(!music) {
 			sound::stop_music();
@@ -554,46 +485,33 @@ void reset_sound()
 void stop_music()
 {
 	if(mix_ok) {
-		Mix_FadeOutMusic(500);
-		Mix_HookMusicFinished([]() { unload_music = true; });
+		MIX_StopTrack(tracks[0].get(), MIX_TrackMSToFrames(tracks[music_track_id].get(), 500));
 	}
 }
 
 void stop_sound()
 {
 	if(mix_ok) {
-		Mix_HaltGroup(SOUND_SOURCES);
-		Mix_HaltGroup(SOUND_FX);
-
-		sound_cache.remove_if([](const sound_cache_chunk& c) {
-			return c.group == SOUND_SOURCES || c.group == SOUND_FX;
-		});
+		MIX_StopTag(mixer, sound_tracks::sound_source, 0);
+		MIX_StopTag(mixer, sound_tracks::sound_fx, 0);
 	}
 }
 
 /*
- * For the purpose of channel manipulation, we treat turn timer the same as bell
+ * For the purpose of track manipulation, we treat turn timer the same as bell
  */
 void stop_bell()
 {
 	if(mix_ok) {
-		Mix_HaltGroup(SOUND_BELL);
-		Mix_HaltGroup(SOUND_TIMER);
-
-		sound_cache.remove_if([](const sound_cache_chunk& c) {
-			return c.group == SOUND_BELL || c.group == SOUND_TIMER;
-		});
+		MIX_StopTag(mixer, sound_tracks::sound_bell, 0);
+		MIX_StopTag(mixer, sound_tracks::sound_timer, 0);
 	}
 }
 
 void stop_UI_sound()
 {
 	if(mix_ok) {
-		Mix_HaltGroup(SOUND_UI);
-
-		sound_cache.remove_if([](const sound_cache_chunk& c) {
-			return c.group == SOUND_UI;
-		});
+		MIX_StopTag(mixer, sound_tracks::sound_ui, 0);
 	}
 }
 
@@ -647,21 +565,8 @@ static void play_new_music()
 	}
 
 	std::string filename = current_track->file_path();
-
-	auto itor = music_cache.find(filename);
-	if(itor == music_cache.end()) {
-		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache";
-
-		filesystem::rwops_ptr rwops = filesystem::make_read_RWops(filename);
-		// SDL takes ownership of rwops
-		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops.release(), MUS_NONE, true), &Mix_FreeMusic);
-
-		if(music == nullptr) {
-			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError();
-			return;
-		}
-
-		itor = music_cache.emplace(filename, music).first;
+	if(auto localized = filesystem::get_localized_path(filename)) {
+		filename = localized.value();
 	}
 
 	LOG_AUDIO << "Playing track '" << filename << "'";
@@ -675,13 +580,38 @@ static void play_new_music()
 	// Do not remove this without ensuring that it does not block.
 	// If you don't want it to halt the music, ensure that fades are completed
 	// before attempting to play new music.
-	Mix_HaltMusic();
+	MIX_StopTrack(tracks[music_track_id].get(), 0);
+
+	std::shared_ptr<MIX_Audio> music;
+	if(music_cache.count(filename) != 0) {
+		music = music_cache[filename];
+		DBG_AUDIO << "cache hit for " << filename;
+	} else {
+		music.reset(MIX_LoadAudio(mixer, filename.c_str(), false), &MIX_DestroyAudio);
+		DBG_AUDIO << "cache miss for " << filename;
+	}
 
 	// Fade in the new music
-	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time.count());
-	if(res < 0) {
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " ";
+	MIX_SetTrackAudio(tracks[music_track_id].get(), music.get());
+
+	SDL_PropertiesID props = SDL_CreateProperties();
+	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
+	
+	if(!MIX_PlayTrack(tracks[music_track_id].get(), props)) {
+		ERR_AUDIO << "Could not play music: " << SDL_GetError() << " " << filename << " ";
+	} else if(music_cache.count(filename) == 0) {
+		music_cache.emplace(filename, music);
+		music_cache_insertion_order.emplace_back(filename);
+
+		if(music_cache.size() > music_cache_limit) {
+			std::string to_erase = music_cache_insertion_order[0];
+			DBG_AUDIO << "Uncaching music file " << to_erase;
+			music_cache_insertion_order.erase(music_cache_insertion_order.begin());
+			music_cache.erase(to_erase);
+		}
 	}
+
+	SDL_DestroyProperties(props);
 
 	want_new_music = false;
 }
@@ -693,7 +623,6 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	// stored in current_track_list.
 	//
 	// vultraz 5/8/2017
-	// vultraz 2025-07-19 function has been updated, can someone check again
 	//
 
 	auto track = sound::music_track::create(music_node);
@@ -752,16 +681,13 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process()
 {
-	if(Mix_FadingMusic() != MIX_NO_FADING) {
-		// Do not block everything while fading.
-		return;
-	}
-
 	if(prefs::get().music_on()) {
 		// TODO: rethink the music_thinker design, especially the use of fade_out_time
 		auto now = std::chrono::steady_clock::now();
 
-		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
+		bool is_playing = MIX_TrackPlaying(tracks[music_track_id].get());
+		bool is_paused = MIX_TrackPaused(tracks[music_track_id].get());
+		if(!music_start_time && !current_track_list.empty() && !is_playing && !is_paused) {
 			// Pick next track, add ending time to its start time.
 			set_previous_track(current_track);
 			current_track = choose_track();
@@ -775,23 +701,13 @@ void music_thinker::process()
 		}
 
 		if(want_new_music) {
-			if(Mix_PlayingMusic()) {
-				Mix_FadeOutMusic(fade_out_time.count());
+			if(MIX_TrackPlaying(tracks[music_track_id].get())) {
+				MIX_StopTrack(tracks[music_track_id].get(), MIX_TrackMSToFrames(tracks[music_track_id].get(), fade_out_time.count()));
 				return;
 			}
 
-			unload_music = false;
 			play_new_music();
 		}
-	}
-
-	if(unload_music) {
-		// The custom shared_ptr deleter (Mix_FreeMusic) will handle the freeing of each track.
-		music_cache.clear();
-
-		Mix_HookMusicFinished(nullptr);
-
-		unload_music = false;
 	}
 }
 
@@ -804,11 +720,13 @@ music_muter::music_muter()
 void music_muter::handle_window_event(const SDL_Event& event)
 {
 	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
-		if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
-			Mix_ResumeMusic();
-		} else if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
-			if(Mix_PlayingMusic()) {
-				Mix_PauseMusic();
+		if(event.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
+			MIX_ResumeTrack(tracks[music_track_id].get());
+			DBG_AUDIO << "resuming music";
+		} else if(event.type == SDL_EVENT_WINDOW_FOCUS_LOST) {
+			if(MIX_TrackPlaying(tracks[music_track_id].get())) {
+				MIX_PauseTrack(tracks[music_track_id].get());
+				DBG_AUDIO << "pausing music";
 			}
 		}
 	}
@@ -853,181 +771,174 @@ void write_music_play_list(config& snapshot)
 	}
 }
 
-void reposition_sound(int id, unsigned int distance)
+void reposition_sound(unsigned id, unsigned int distance)
 {
-	audio_lock lock;
-	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
-		if(channel_ids[ch] != id) {
+	for(unsigned ch = 0; ch < tracks.size(); ++ch) {
+		if(ch != id) {
 			continue;
 		}
 
-		if(distance >= DISTANCE_SILENT) {
-			Mix_HaltChannel(ch);
+		if(distance == DISTANCE_SILENT) {
+			MIX_StopTrack(tracks[ch].get(), 0);
 		} else {
-			Mix_SetDistance(ch, distance);
+			MIX_Point3D pos;
+			pos.x = 0;
+			pos.y = distance;
+			pos.z = 0;
+			MIX_SetTrack3DPosition(tracks[ch].get(), &pos);
 		}
 	}
 }
 
 bool is_sound_playing(int id)
 {
-	audio_lock lock;
-	return utils::contains(channel_ids, id);
+	return MIX_TrackPlaying(tracks[id].get());
 }
 
-void stop_sound(int id)
+void stop_sound(unsigned id)
 {
 	reposition_sound(id, DISTANCE_SILENT);
 }
 
-namespace
-{
-struct chunk_load_exception
-{
-};
-
-Mix_Chunk* load_chunk(const std::string& file, channel_group group)
-{
-	sound_cache_iterator it_bgn, it_end;
-	sound_cache_iterator it;
-
-	sound_cache_chunk temp_chunk(file); // search the sound cache on this key
-	it_bgn = sound_cache.begin();
-	it_end = sound_cache.end();
-	it = std::find(it_bgn, it_end, temp_chunk);
-
-	if(it != it_end) {
-		if(it->group != group) {
-			// cached item has been used in multiple sound groups
-			it->group = NULL_CHANNEL;
-		}
-
-		// splice the most recently used chunk to the front of the cache
-		sound_cache.splice(it_bgn, sound_cache, it);
-	} else {
-		// remove the least recently used chunk from cache if it's full
-		bool cache_full = (sound_cache.size() == max_cached_chunks);
-		while(cache_full && it != it_bgn) {
-			// make sure this chunk is not being played before freeing it
-			if(!utils::contains(channel_chunks, (--it)->get_data())) {
-				sound_cache.erase(it);
-				cache_full = false;
-			}
-		}
-
-		if(cache_full) {
-			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.";
-			throw chunk_load_exception();
-		}
-
-		temp_chunk.group = group;
-		const auto filename = filesystem::get_binary_file_location("sounds", file);
-		const auto localized = filesystem::get_localized_path(filename.value_or(""));
-
-		if(filename) {
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.value_or(filename.value()));
-			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
-		} else {
-			ERR_AUDIO << "Could not load sound file '" << file << "'.";
-			throw chunk_load_exception();
-		}
-
-		if(temp_chunk.get_data() == nullptr) {
-			ERR_AUDIO << "Could not load sound file '" << filename.value() << "': " << Mix_GetError();
-			throw chunk_load_exception();
-		}
-
-		sound_cache.push_front(temp_chunk);
-	}
-
-	return sound_cache.begin()->get_data();
-}
-
 using namespace std::chrono_literals;
 
+void add_to_sound_map(unsigned int sound_source_id, int track_index)
+{
+	std::scoped_lock lock(soundsource_map_mutex);
+	soundsource_map.emplace(sound_source_id, track_index);
+}
+
 void play_sound_internal(const std::string& files,
-		channel_group group,
+		sound_tracks::type group,
 		unsigned int repeats = 0,
 		unsigned int distance = 0,
-		int id = -1,
+		unsigned int soundsource_id = UINT_MAX,
 		const std::chrono::milliseconds& loop_ticks = 0ms,
 		const std::chrono::milliseconds& fadein_ticks = 0ms)
 {
-	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
+	if(files.empty() || (distance == DISTANCE_SILENT) || !mix_ok) {
 		return;
 	}
 
-	audio_lock lock;
-
-	// find a free channel in the desired group
-	int channel = Mix_GroupAvailable(group);
-	if(channel == -1) {
-		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.";
-		return;
+	if(group == sound_tracks::type::sound_source) {
+		if(soundsource_id != UINT_MAX) {
+			std::scoped_lock lock(soundsource_map_mutex);
+			if(soundsource_map.count(soundsource_id) > 0) {
+				return;
+			}
+		} else {
+			return;
+		}
 	}
 
-	Mix_Chunk* chunk;
+	int free_track = -1;
+	// find a free track in the desired group
+	for(const auto& track : sound::track_map) {
+		if(track.second == group && !MIX_TrackPlaying(tracks[track.first].get())) {
+			free_track = track.first;
+		}
+	}
+
+	if(free_track == -1) {
+		LOG_AUDIO << "All tracks dedicated to sound group(" << sound_tracks::get_string(group) << ") are busy, skipping.";
+		return;
+	}
+	DBG_AUDIO << "playing " << files << " on track " << free_track;
+
 	std::string file = pick_one(files);
-
-	try {
-		chunk = load_chunk(file, group);
-		assert(chunk);
-	} catch(const chunk_load_exception&) {
-		return;
-	}
+	const auto filename = filesystem::get_binary_file_location("sounds", file);
+	const auto localized = filesystem::get_localized_path(filename.value_or(""));
+	std::string real_path = localized.value_or(filename.value());
 
 	/*
 	 * This check prevents SDL_Mixer from blowing up on Windows when UI sound is played
 	 * in response to toggling the checkbox which disables sound.
 	 */
-	if(group != SOUND_UI) {
-		Mix_SetDistance(channel, distance);
+	if(group != sound_tracks::type::sound_timer) {
+		MIX_Point3D pos;
+		pos.x = 0;
+		pos.y = distance;
+		pos.z = 0;
+		MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
 	}
 
-	int res;
+	std::shared_ptr<MIX_Audio> sound;
+	if(sound_cache.count(real_path) != 0) {
+		sound = sound_cache[real_path];
+		DBG_AUDIO << "cache hit for " << real_path;
+	} else {
+		sound.reset(MIX_LoadAudio(mixer, real_path.c_str(), false), &MIX_DestroyAudio);
+		DBG_AUDIO << "cache miss for " << real_path;
+	}
+
+	MIX_SetTrackAudio(tracks[free_track].get(), sound.get());
+
+	SDL_PropertiesID props = SDL_CreateProperties();
+
+	bool res;
 	if(loop_ticks > 0ms) {
 		if(fadein_ticks > 0ms) {
-			res = Mix_FadeInChannelTimed(channel, chunk, -1, fadein_ticks.count(), loop_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_MAX_MILLISECONDS_NUMBER, loop_ticks.count());
 		} else {
-			res = Mix_PlayChannel(channel, chunk, -1);
-		}
-
-		if(res >= 0) {
-			Mix_ExpireChannel(channel, loop_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 		}
 	} else {
 		if(fadein_ticks > 0ms) {
-			res = Mix_FadeInChannel(channel, chunk, repeats, fadein_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
 		} else {
-			res = Mix_PlayChannel(channel, chunk, repeats);
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, repeats);
 		}
 	}
 
-	if(res < 0) {
-		ERR_AUDIO << "error playing sound effect: " << Mix_GetError();
+	res = MIX_PlayTrack(tracks[free_track].get(), props);
+
+	if(!res) {
+		ERR_AUDIO << "error playing sound effect " << real_path << " : " << SDL_GetError();
 		// still keep it in the sound cache, in case we want to try again later
 		return;
+	} else if(group == sound_tracks::type::sound_source) {
+		// first->first since emplace returns an iterator to a pair (what we actually want) and a boolean
+		// const_cast since the callback signature only accepts void*, not const void*
+		std::scoped_lock lock(soundsource_map_mutex);
+		unsigned int* key = const_cast<unsigned int*>(&(soundsource_map.emplace(soundsource_id, free_track).first->first));
+		DBG_AUDIO << "adding callback for soundsource id " << *key;
+		MIX_SetTrackStoppedCallback(tracks[free_track].get(), [](void* userdata, MIX_Track*){
+			std::scoped_lock lock(soundsource_map_mutex);
+			DBG_AUDIO << "in callback to erase soundsource mapping for id " << *static_cast<unsigned int*>(userdata);
+			soundsource_map.erase(*static_cast<unsigned int*>(userdata));
+		}, key);
+	}
+	
+	if(res && sound_cache.count(real_path) == 0) {
+		sound_cache.emplace(real_path, sound);
+		sound_cache_insertion_order.emplace_back(real_path);
+
+		if(sound_cache.size() > sound_cache_limit) {
+			std::string to_erase = sound_cache_insertion_order[0];
+			DBG_AUDIO << "Uncaching sound file " << to_erase;
+			sound_cache_insertion_order.erase(sound_cache_insertion_order.begin());
+			sound_cache.erase(to_erase);
+		}
 	}
 
-	channel_ids[channel] = id;
-
-	// reserve the channel's chunk from being freed, since it is playing
-	channel_chunks[res] = chunk;
+	SDL_DestroyProperties(props);
 }
 
 } // end anon namespace
 
-void play_sound(const std::string& files, channel_group group, unsigned int repeats)
+namespace sound {
+void play_sound(const std::string& files, sound_tracks::type group, unsigned int repeats)
 {
 	if(prefs::get().sound()) {
-		play_sound_internal(files, group, repeats);
+		sound::play_sound_internal(files, group, repeats);
 	}
 }
 
-void play_sound_positioned(const std::string& files, int id, int repeats, unsigned int distance)
+void play_sound_positioned(const std::string& files, int repeats, unsigned int distance, unsigned int id)
 {
 	if(prefs::get().sound()) {
-		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
+		sound::play_sound_internal(files, sound_tracks::type::sound_source, repeats, distance, id);
 	}
 }
 
@@ -1035,7 +946,7 @@ void play_sound_positioned(const std::string& files, int id, int repeats, unsign
 void play_bell(const std::string& files)
 {
 	if(prefs::get().turn_bell()) {
-		play_sound_internal(files, SOUND_BELL);
+		sound::play_sound_internal(files, sound_tracks::type::sound_bell);
 	}
 }
 
@@ -1043,7 +954,7 @@ void play_bell(const std::string& files)
 void play_timer(const std::string& files, const std::chrono::milliseconds& loop_ticks, const std::chrono::milliseconds& fadein_ticks)
 {
 	if(prefs::get().sound()) {
-		play_sound_internal(files, SOUND_TIMER, 0, 0, -1, loop_ticks, fadein_ticks);
+		sound::play_sound_internal(files, sound_tracks::type::sound_timer, 0, DISTANCE_NONE, UINT_MAX, loop_ticks, fadein_ticks);
 	}
 }
 
@@ -1051,14 +962,14 @@ void play_timer(const std::string& files, const std::chrono::milliseconds& loop_
 void play_UI_sound(const std::string& files)
 {
 	if(prefs::get().ui_sound_on()) {
-		play_sound_internal(files, SOUND_UI);
+		sound::play_sound_internal(files, sound_tracks::type::sound_ui);
 	}
 }
 
 int get_music_volume()
 {
 	if(mix_ok) {
-		return Mix_VolumeMusic(-1);
+		return MIX_SetTrackGain(sound::tracks[music_track_id].get(), -1);
 	}
 
 	return 0;
@@ -1067,19 +978,19 @@ int get_music_volume()
 void set_music_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > MIX_MAX_VOLUME) {
-			vol = MIX_MAX_VOLUME;
+		if(vol > 1.0f) {
+			vol = 1.0f;
 		}
 
-		Mix_VolumeMusic(vol);
+		MIX_SetTrackGain(sound::tracks[music_track_id].get(), vol);
 	}
 }
 
 int get_sound_volume()
 {
 	if(mix_ok) {
-		// Since set_sound_volume sets all main channels to the same, just return the volume of any main channel
-		return Mix_Volume(source_channel_start, -1);
+		// Since set_sound_volume sets all main tracks to the same, just return the volume of any main track
+		return MIX_SetTrackGain(sound::tracks[source_track_id_start].get(), -1);
 	}
 	return 0;
 }
@@ -1087,15 +998,14 @@ int get_sound_volume()
 void set_sound_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > MIX_MAX_VOLUME) {
-			vol = MIX_MAX_VOLUME;
+		if(vol > 1.0f) {
+			vol = 1.0f;
 		}
 
-		// Bell, timer and UI have separate channels which we can't set up from this
-		for(unsigned i = 0; i < n_of_channels; ++i) {
-			if(!(i >= UI_sound_channel_start && i <= UI_sound_channel_last) && i != bell_channel
-					&& i != timer_channel) {
-				Mix_Volume(i, vol);
+		// Bell, timer and UI have separate tracks which we can't set up from this
+		for(unsigned i = 0; i < n_of_tracks; ++i) {
+			if(!(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {
+				MIX_SetTrackGain(sound::tracks[i].get(), vol);
 			}
 		}
 	}
@@ -1107,26 +1017,34 @@ void set_sound_volume(int vol)
 void set_bell_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > MIX_MAX_VOLUME) {
-			vol = MIX_MAX_VOLUME;
+		if(vol > 1.0f) {
+			vol = 1.0f;
 		}
 
-		Mix_Volume(bell_channel, vol);
-		Mix_Volume(timer_channel, vol);
+		MIX_SetTrackGain(sound::tracks[bell_track_id].get(), vol);
+		MIX_SetTrackGain(sound::tracks[timer_track_id].get(), vol);
 	}
 }
 
 void set_UI_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > MIX_MAX_VOLUME) {
-			vol = MIX_MAX_VOLUME;
+		if(vol > 1.0f) {
+			vol = 1.0f;
 		}
 
-		for(unsigned i = UI_sound_channel_start; i <= UI_sound_channel_last; ++i) {
-			Mix_Volume(i, vol);
+		for(unsigned i = UI_sound_track_id_start; i <= UI_sound_track_id_last; ++i) {
+			MIX_SetTrackGain(sound::tracks[i].get(), vol);
 		}
 	}
+}
+
+void flush_cache()
+{
+	music_cache.clear();
+	music_cache_insertion_order.clear();
+	sound_cache.clear();
+	sound_cache_insertion_order.clear();
 }
 
 } // end namespace sound

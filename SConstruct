@@ -373,9 +373,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL2('2.0.18') & \
-            conf.CheckSDL2Mixer() & \
-            conf.CheckSDL2Image()
+            conf.CheckSDL3('3.1.0') & \
+            conf.CheckSDL3Mixer() & \
+            conf.CheckSDL3Image()
 
     if sys.platform == "msys":
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"

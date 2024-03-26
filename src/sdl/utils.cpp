@@ -39,22 +39,20 @@ static lg::log_domain log_display("display");
 
 version_info sdl::get_version()
 {
-	SDL_version sdl_version;
-	SDL_GetVersion(&sdl_version);
-	return version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+	int linked_sdl_version = SDL_GetVersion();
+	return version_info(SDL_VERSIONNUM_MAJOR(linked_sdl_version), SDL_VERSIONNUM_MINOR(linked_sdl_version), SDL_VERSIONNUM_MICRO(linked_sdl_version));
 }
 
 bool sdl::runtime_at_least(uint8_t major, uint8_t minor, uint8_t patch)
 {
-	SDL_version ver;
-	SDL_GetVersion(&ver);
-	if(ver.major < major) return false;
-	if(ver.major > major) return true;
+	int linked_sdl_version = SDL_GetVersion();
+	if(SDL_VERSIONNUM_MAJOR(linked_sdl_version) < major) return false;
+	if(SDL_VERSIONNUM_MAJOR(linked_sdl_version) > major) return true;
 	// major version equal
-	if(ver.minor < minor) return false;
-	if(ver.minor > minor) return true;
+	if(SDL_VERSIONNUM_MINOR(linked_sdl_version) < minor) return false;
+	if(SDL_VERSIONNUM_MINOR(linked_sdl_version) > minor) return true;
 	// major and minor version equal
-	if(ver.patch < patch) return false;
+	if(SDL_VERSIONNUM_MICRO(linked_sdl_version) < patch) return false;
 	return true;
 }
 
@@ -1109,9 +1107,11 @@ surface cut_surface(const surface &surf, const rect& r)
 		return nullptr;
 	}
 
-	std::size_t sbpp = surf->format->BytesPerPixel;
+	const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surf->format);
+
+	std::size_t sbpp = details->bytes_per_pixel;
 	std::size_t spitch = surf->pitch;
-	std::size_t rbpp = res->format->BytesPerPixel;
+	std::size_t rbpp = details->bytes_per_pixel;
 	std::size_t rpitch = res->pitch;
 
 	// compute the areas to copy
