@@ -12,15 +12,7 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL.h>
-
-#define STR(x) STR_(x)
-#define STR_(x) #x
-
-#if ! SDL_VERSION_ATLEAST(REQ_MAJOR, REQ_MINOR, REQ_PATCH)
-#pragma message "SDL version " STR(SDL_MAJOR_VERSION.SDL_MINOR_VERSION.SDL_PATCHLEVEL) " is older than required version " STR(REQ_MAJOR.REQ_MINOR.REQ_PATCH)
-#error SDL is too old!
-#endif
+#include <SDL3/SDL.h>
 
 int main(int, char**)
 {

@@ -30,7 +30,7 @@ namespace sdl
 /**
  * A wrapper for SDL_GetMouseState that gives coordinates in draw space.
  */
-uint32_t get_mouse_state(int *x, int *y);
+uint32_t get_mouse_state(float* x, float* y);
 
 /** Returns the current mouse button mask */
 uint32_t get_mouse_button_mask();
@@ -45,8 +45,8 @@ point get_mouse_location();
  * filtered out and will always be unset.
  *
  * Left and right keys are not distinguished. If either is detected, both
- * will be set. For example if only left shift is down, both KMOD_LSHIFT
- * and KMOD_RSHIFT will be set in the returned bitmask.
+ * will be set. For example if only left shift is down, both SDL_KMOD_LSHIFT
+ * and SDL_KMOD_RSHIFT will be set in the returned bitmask.
  *
  * @returns  A bitmask of SDL_Keymod values representing the active state.
  */
