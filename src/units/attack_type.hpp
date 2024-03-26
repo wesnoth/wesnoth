@@ -119,6 +119,15 @@ public:
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
 	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	/** remove special if matche condition
+	 * @param filter if special check with filter, it will be removed.
+	 */
+	void remove_special_by_filter(const config& filter);
+	/** check if special matche
+	 * @return True if special matche with filter and active.
+	 * @param filter if special check with filter, return true.
+	 */
+	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
 

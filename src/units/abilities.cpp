@@ -35,6 +35,7 @@
 #include "units/abilities.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
+#include "utils/config_filters.hpp"
 #include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -1422,6 +1423,7 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 
 bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, const config& cfg, const std::string& tag_name) const
 {
+	using namespace utils::config_filters;
 	if(overwriters.empty()){
 		return false;
 	}
@@ -1456,11 +1458,9 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		// check whether the current overwriter is disabled due to a filter
 		bool special_matches = true;
 		if(overwrite_specials){
-			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
+			auto overwrite_filter = (*overwrite_specials).optional_child("filter_specials");
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				if(self_){
-					special_matches = (*self_).ability_matches_filter(cfg, tag_name, *overwrite_filter);
-				}
+				special_matches = common_matches_filter(cfg, tag_name, *overwrite_filter, true);
 			}
 		}
 
@@ -1676,6 +1676,76 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
+
+bool attack_type::has_special_or_ability_with_filter(const config & filter) const
+{
+	using namespace utils::config_filters;
+	for(const config::any_child entry : specials().all_children_range()) {
+		if(common_matches_filter(entry.cfg, entry.key, filter)){
+			if ( special_active(entry.cfg, AFFECT_SELF, entry.key) ) {
+				return true;
+			}
+		}
+	}
+	// Skip checking the opponent's attack?
+	if(other_attack_){
+		for(const config::any_child entry : other_attack_->specials().all_children_range()) {
+			if(common_matches_filter(entry.cfg, entry.key, filter)){
+				if ( other_attack_->special_active(entry.cfg, AFFECT_OTHER, entry.key) ) {
+					return true;
+				}
+			}
+		}
+	}
+
+	const unit_map& units = get_unit_map();
+	if(self_){
+		for(const config::any_child entry : (*self_).abilities().all_children_range()) {
+			if(common_matches_filter(entry.cfg, entry.key, filter) && check_self_abilities(entry.cfg, entry.key)){
+				return true;
+			}
+		}
+
+		const auto adjacent = get_adjacent_tiles(self_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == self_.get() )
+				continue;
+
+			for(const config::any_child entry : it->abilities().all_children_range()) {
+				if(common_matches_filter(entry.cfg, entry.key, filter) && check_adj_abilities(entry.cfg, entry.key, i , *it)){
+					return true;
+				}
+			}
+		}
+	}
+
+	if(other_){
+		for(const config::any_child entry : (*other_).abilities().all_children_range()) {
+			if(common_matches_filter(entry.cfg, entry.key, filter) && check_self_abilities_impl(other_attack_, shared_from_this(), entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.key)){
+				return true;
+			}
+		}
+
+		const auto adjacent = get_adjacent_tiles(other_loc_);
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == other_.get() )
+				continue;
+
+			for(const config::any_child entry : it->abilities().all_children_range()) {
+				if(common_matches_filter(entry.cfg, entry.key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.key)){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
 
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  const std::string& filter_self) const

@@ -16,6 +16,8 @@
 
 #include "config.hpp"
 
+#include <set>
+
 /**
  * Utility functions for implementing [filter], [filter_ability], [filter_weapon], etc.
  *
@@ -68,5 +70,29 @@ bool string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def);
 
 bool bool_or_empty(const config& filter, const config& cfg, const std::string& attribute);
+
+/**
+ * matches_ability_filter, contain the list of attribut and sub filter checked,ignoring the
+ * complexities introduced by [and], [or], and [not].
+ *
+ * @param cfg config of ability checked
+ * @param tag_name le type of ability who is checked
+ * @param filter config contain list of attribute who are researched in cfg
+ * @param tag_name_optional boolean variable, if false, using of tag_name in filter is mandatory
+ *
+ * @return  whether or not @a cfg matches the given @a filter
+ */
+bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional = false);
+/**
+ * common_matches_filter
+ *
+ * @param cfg config of ability checked
+ * @param tag_name le type of ability who is checked
+ * @param filter config contain list of attribute who are researched in cfg
+ * @param tag_name_optional boolean variable, if false, using of tag_name in filter is mandatory
+ *
+ * @return true if all attribute or filter_wml matches with ability checked
+ */
+bool common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional = false);
 
 } // namespace utils::config_filters

@@ -30,6 +30,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "gettext.hpp"
+#include "utils/config_filters.hpp"
 #include "utils/math.hpp"
 
 
@@ -94,6 +95,19 @@ std::string attack_type::accuracy_parry_description() const
 	}
 
 	return s.str();
+}
+
+void attack_type::remove_special_by_filter(const config& filter)
+{
+	using namespace utils::config_filters;
+	config::all_children_iterator i = specials_.ordered_begin();
+	while (i != specials_.ordered_end()) {
+		if(common_matches_filter(i->cfg, i->key, filter)) {
+			i = specials_.erase(i);
+		} else {
+			++i;
+		}
+	}
 }
 
 /**
@@ -234,6 +248,14 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		}
 	}
 
+	//children filter_special_active are checked later,
+	//but only when the function doesn't return earlier
+	if(auto sub_filter_special = filter.optional_child("filter_special_active")) {
+		if(!attack.has_special_or_ability_with_filter(*sub_filter_special)) {
+			return false;
+		}
+	}
+
 	if (!filter_formula.empty()) {
 		try {
 			const wfl::attack_type_callable callable(attack);
@@ -299,6 +321,7 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
 	auto set_specials = cfg.optional_child("set_specials");
+	auto remove_specials = cfg.optional_child("remove_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -362,6 +385,10 @@ bool attack_type::apply_modification(const config& cfg)
 		for(const config::any_child value : set_specials->all_children_range()) {
 			specials_.add_child(value.key, value.cfg);
 		}
+	}
+
+	if(remove_specials) {
+		remove_special_by_filter(*remove_specials);
 	}
 
 	if(set_damage.empty() == false) {
