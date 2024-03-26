@@ -21,8 +21,8 @@ wesnoth.game_events.add_repeating("die", function()
 	end
 	local u_killer_cfg = u_killer.__cfg
 	for i,v in ipairs(wml.get_child(u_killer_cfg, "modifications"))do
-		if v[1] == "object" and v[2].feeding == true then
-			local effect = wml.get_child(v[2], "effect")
+		if v.tag == "object" and v.contents.feeding == true then
+			local effect = wml.get_child(v.contents, "effect")
 			effect.increase_total = effect.increase_total + 1
 			u_killer_cfg.max_hitpoints = u_killer_cfg.max_hitpoints + 1
 			u_killer_cfg.hitpoints = u_killer_cfg.hitpoints + 1

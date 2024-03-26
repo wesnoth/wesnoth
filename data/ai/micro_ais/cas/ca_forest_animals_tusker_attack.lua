@@ -48,7 +48,7 @@ function ca_forest_animals_tusker_attack:execution(cfg)
     local adj_tusklets = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         type = cfg.tusklet_type,
-        { "filter_adjacent", { id = target.id } }
+        wml.tag.filter_adjacent { id = target.id }
     }
 
     local best_hex = AH.find_best_move(attacker, function(x, y)

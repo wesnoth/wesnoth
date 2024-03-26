@@ -10,7 +10,7 @@ return function(cfg)
         x = herd_loc[1],
         y = herd_loc[2],
         radius = 999,
-        { "filter_radius", { { "not", location_filter } } }
+        wml.tag.filter_radius { wml.tag["not"] ( location_filter ) }
     })
 
     -- Then, also exclude hexes next to herding_perimeter; some of the functions work better like that

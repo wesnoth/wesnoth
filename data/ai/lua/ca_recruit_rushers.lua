@@ -392,8 +392,8 @@ local function init_data(leader)
     end
     -- Collect all possible enemy recruits and count them as virtual enemies
     local enemy_sides = wesnoth.sides.find({
-        { "enemy_of", {side = wesnoth.current.side} },
-        { "has_unit", { canrecruit = true }} })
+        wml.tag.enemy_of {side = wesnoth.current.side},
+        wml.tag.has_unit { canrecruit = true }})
     for i, side in ipairs(enemy_sides) do
         possible_enemy_recruit_count = possible_enemy_recruit_count + #(wesnoth.sides[side.side].recruit)
         for j, unit_type in ipairs(wesnoth.sides[side.side].recruit) do
@@ -679,7 +679,7 @@ local function find_best_recruit(attack_type_count, unit_attack_type_count, recr
     -- If no enemy is on the map, then we first use closest enemy start hex,
     -- and if that does not exist either, a location mirrored w.r.t the center of the map
     if not enemy_location then
-        local enemy_sides = wesnoth.sides.find({ { "enemy_of", {side = wesnoth.current.side} } })
+        local enemy_sides = wesnoth.sides.find({ wml.tag.enemy_of {side = wesnoth.current.side} })
         local min_dist = math.huge
         for _, side in ipairs(enemy_sides) do
             local enemy_start_hex = wesnoth.current.map.special_locations[side.side]
@@ -895,7 +895,7 @@ function ca_recruit_rushers:evaluation(cfg, data, filter_own)
     local leader = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         canrecruit = 'yes',
-        { "and", filter_own }
+        wml.tag["and"] ( filter_own )
     }[1]
 
     if (not leader) or (not wesnoth.terrain_types[wesnoth.current.map[leader]].keep) then
@@ -1069,7 +1069,7 @@ function ca_recruit_rushers:execution(cfg, data, filter_own)
     local leader = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
         canrecruit = 'yes',
-        { "and", filter_own }
+        wml.tag["and"] ( filter_own )
     }[1]
     repeat
         recruit_data.recruit.best_hex, recruit_data.recruit.target_hex = find_best_recruit_hex(leader, recruit_data)

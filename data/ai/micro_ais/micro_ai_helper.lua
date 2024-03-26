@@ -348,17 +348,17 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     for _,t in ipairs(cfg) do
         -- [filter] is always added to [micro_ai] tags inside a unit's [ai] tag,
         -- whether the specific MAI supports it or not
-        if (not showed_deprecation_message[cfg.ai_type]) and (t[1] ~= 'filter') then
+        if (not showed_deprecation_message[cfg.ai_type]) and (t.tag ~= 'filter') then
             local is_invalid = true
             for k_name in pairs(required_keys) do
-                if (t[1] == k_name) then
+                if (t.tag == k_name) then
                     is_invalid = false
                     break
                 end
             end
             if is_invalid then
                 for k_name in pairs(optional_keys) do
-                    if (t[1] == k_name) then
+                    if (t.tag == k_name) then
                         is_invalid = false
                         break
                     end
