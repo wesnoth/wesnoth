@@ -283,8 +283,10 @@ private:
 	typed_formula<int> maximum_height_;
 
 	/** Start and end offsets for highlight */
-	typed_formula<int> highlight_start_;
-	typed_formula<int> highlight_end_;
+	//typed_formula<int> highlight_start_;
+	//typed_formula<int> highlight_end_;
+	std::string highlight_start_;
+	std::string highlight_end_;
 
 	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;

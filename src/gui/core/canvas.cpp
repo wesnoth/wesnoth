@@ -409,8 +409,8 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
-	, highlight_start_(cfg["highlight_start"], 0)
-	, highlight_end_(cfg["highlight_end"], 0)
+	, highlight_start_(cfg["highlight_start"])
+	, highlight_end_(cfg["highlight_end"])
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
@@ -440,8 +440,14 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
+	std::vector<std::string> starts = utils::split(highlight_start_, ',');
+	std::vector<std::string> stops = utils::split(highlight_end_, ',');
 
-	text_renderer.set_highlight_area(highlight_start_(variables), highlight_end_(variables), highlight_color_(variables));
+	for(size_t i = 0; i < std::min(starts.size(), stops.size()); i++) {
+		typed_formula<int> hstart(starts.at(i));
+		typed_formula<int> hstop(stops.at(i));
+		text_renderer.set_highlight_area(hstart(variables), hstop(variables), highlight_color_(variables));
+	}
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
