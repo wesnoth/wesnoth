@@ -23,7 +23,7 @@
 #include "log.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_rect.h>
+#include <SDL3/SDL_rect.h>
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)

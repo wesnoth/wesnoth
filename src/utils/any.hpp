@@ -22,7 +22,7 @@
  * instead utilizes boost::any.
  */
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 #define USING_BOOST_ANY
 #endif
 

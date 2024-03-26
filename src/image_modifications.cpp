@@ -570,7 +570,7 @@ surface bl_modification::operator()(const surface& src) const
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = src.clone();
-	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
+	SDL_FillSurfaceRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
 	sdl_blit(src, nullptr, ret, nullptr);
 	return ret;

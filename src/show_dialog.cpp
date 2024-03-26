@@ -69,7 +69,7 @@ dialog_manager::~dialog_manager()
 	int mousex, mousey;
 	sdl::get_mouse_state(&mousex, &mousey);
 	SDL_Event pb_event;
-	pb_event.type = SDL_MOUSEMOTION;
+	pb_event.type = SDL_EVENT_MOUSE_MOTION;
 	pb_event.motion.state = 0;
 	pb_event.motion.x = mousex;
 	pb_event.motion.y = mousey;

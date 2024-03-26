@@ -31,7 +31,7 @@
 #include "game_version.hpp"
 #endif
 
-#include <SDL2/SDL_render.h> // SDL_Texture
+#include <SDL3/SDL_render.h> // SDL_Texture
 
 #include <cassert>
 #include <vector>
@@ -277,7 +277,7 @@ bool update_framebuffer()
 		LOG_DP << "  new wsize: " << wsize;
 		LOG_DP << "  new osize: " << osize;
 		float sx, sy;
-		SDL_RenderGetScale(*window, &sx, &sy);
+		SDL_GetRenderScale(*window, &sx, &sy);
 		LOG_DP << "  render scale: " << sx << ", " << sy;
 	}
 	// Cache it for easy access
@@ -366,7 +366,7 @@ void init_window(bool hidden)
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
-	window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+	window_flags |= SDL_WINDOW_HIGH_PIXEL_DENSITY;
 
 	if(preferences::fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
@@ -568,7 +568,7 @@ void render_screen()
 	clear_render_target();
 
 	// Copy the render texture to the window.
-	SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
+	SDL_RenderTexture(*window, render_texture_, nullptr, nullptr);
 
 	// Finalize and display the frame.
 	SDL_RenderPresent(*window);

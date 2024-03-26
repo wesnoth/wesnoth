@@ -45,8 +45,8 @@ point get_mouse_location();
  * filtered out and will always be unset.
  *
  * Left and right keys are not distinguished. If either is detected, both
- * will be set. For example if only left shift is down, both KMOD_LSHIFT
- * and KMOD_RSHIFT will be set in the returned bitmask.
+ * will be set. For example if only left shift is down, both SDL_KMOD_LSHIFT
+ * and SDL_KMOD_RSHIFT will be set in the returned bitmask.
  *
  * @returns  A bitmask of SDL_Keymod values representing the active state.
  */

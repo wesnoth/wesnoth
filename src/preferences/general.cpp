@@ -121,17 +121,17 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 	if (event.type != SDL_WINDOWEVENT) return;
 
 	switch(event.window.event) {
-	case SDL_WINDOWEVENT_RESIZED:
+	case SDL_EVENT_WINDOW_RESIZED:
 		_set_resolution(video::window_size());
 
 		break;
 
-	case SDL_WINDOWEVENT_MAXIMIZED:
+	case SDL_EVENT_WINDOW_MAXIMIZED:
 		_set_maximized(true);
 
 		break;
 
-	case SDL_WINDOWEVENT_RESTORED:
+	case SDL_EVENT_WINDOW_RESTORED:
 		_set_maximized(fullscreen() || false);
 
 		break;

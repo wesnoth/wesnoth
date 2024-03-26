@@ -22,7 +22,7 @@
  * instead utilizes boost::variant.
  */
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 #define USING_BOOST_VARIANT
 #endif
 
