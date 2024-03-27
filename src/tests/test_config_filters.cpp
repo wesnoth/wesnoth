@@ -84,6 +84,30 @@ BOOST_AUTO_TEST_CASE(test_int_add_sub_filter)
 	BOOST_ASSERT(int_matches_if_present_or_negative(sub_2_to_4, add_minus_3, "sub", "add"));
 }
 
+BOOST_AUTO_TEST_CASE(test_int_zero_or_default)
+{
+	config add_0 {"add", 0};
+	config value_0 {"value", 0};
+
+	BOOST_ASSERT(int_matches_if_present(value_0, add_0, "value", 0));
+	BOOST_ASSERT(!int_matches_if_present(value_0, add_0, "value", std::nullopt));
+
+	// Testing for behavior matching 1.18.0, not for desired behavior
+	BOOST_ASSERT(int_matches_if_present(value_0, add_0, "value"));
+}
+
+BOOST_AUTO_TEST_CASE(test_double_zero_or_default)
+{
+	config add_0 {"add", 0.0};
+	config value_0 {"value", 0.0};
+
+	BOOST_ASSERT(double_matches_if_present(value_0, add_0, "value", 0.0));
+	BOOST_ASSERT(!double_matches_if_present(value_0, add_0, "value", std::nullopt));
+
+	// Testing for behavior matching 1.18.0, not for desired behavior
+	BOOST_ASSERT(double_matches_if_present(value_0, add_0, "value"));
+}
+
 BOOST_AUTO_TEST_CASE(test_without_attribute_filter)
 {
 	config add_3 {"add", 3};
