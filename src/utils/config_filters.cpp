@@ -62,8 +62,10 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 		return false;
 	}
 
-	int value_def = def ? (*def) : 0;
-	return in_ranges<int>(cfg[attribute].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
+	if(def){
+		return in_ranges<int>(cfg[attribute].to_int(*def), utils::parse_ranges_int(filter[attribute].str()));
+	}
+	return in_ranges<int>(cfg[attribute].to_int(), utils::parse_ranges_int(filter[attribute].str()));
 }
 
 bool utils::config_filters::int_matches_if_present_or_negative(
@@ -79,8 +81,11 @@ bool utils::config_filters::int_matches_if_present_or_negative(
 		if(!cfg.has_attribute(opposite) && !def) {
 			return false;
 		}
-		int value_def = def ? (*def) : 0;
-		return in_ranges<int>(-cfg[opposite].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
+		if(def){
+			return in_ranges<int>(-cfg[opposite].to_int(*def), utils::parse_ranges_int(filter[attribute].str()));
+		} else if(cfg.has_attribute(opposite)){
+			return in_ranges<int>(-cfg[opposite].to_int(), utils::parse_ranges_int(filter[attribute].str()));
+		}
 	}
 
 	return false;
@@ -95,8 +100,10 @@ bool utils::config_filters::double_matches_if_present(const config& filter, cons
 		return false;
 	}
 
-	double value_def = def ? (*def) : 1;
-	return in_ranges<double>(cfg[attribute].to_double(value_def), utils::parse_ranges_real(filter[attribute].str()));
+	if(def){
+		return in_ranges<double>(cfg[attribute].to_double(*def), utils::parse_ranges_real(filter[attribute].str()));
+	}
+	return in_ranges<double>(cfg[attribute].to_double(), utils::parse_ranges_real(filter[attribute].str()));
 }
 
 bool utils::config_filters::bool_or_empty(const config& filter, const config& cfg, const std::string& attribute)
