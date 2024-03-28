@@ -34,7 +34,7 @@ static preproc_map setup_test_preproc_map()
 {
 	preproc_map defines_map;
 
-#if defined(__APPLE__)
+#if defined(SDL_PLATFORM_APPLE)
 	defines_map["APPLE"] = preproc_define();
 #endif
 

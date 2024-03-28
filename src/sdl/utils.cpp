@@ -35,14 +35,14 @@ static lg::log_domain log_display("display");
 
 version_info sdl::get_version()
 {
-	SDL_version sdl_version;
+	SDL_Version sdl_version;
 	SDL_GetVersion(&sdl_version);
 	return version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
 }
 
 bool sdl::runtime_at_least(uint8_t major, uint8_t minor, uint8_t patch)
 {
-	SDL_version ver;
+	SDL_Version ver;
 	SDL_GetVersion(&ver);
 	if(ver.major < major) return false;
 	if(ver.major > major) return true;
@@ -1458,9 +1458,9 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 		return nullptr;
 	}
 
-	std::size_t sbpp = surf->format->BytesPerPixel;
+	std::size_t sbpp = surf->format->bytes_per_pixel;
 	std::size_t spitch = surf->pitch;
-	std::size_t rbpp = res->format->BytesPerPixel;
+	std::size_t rbpp = res->format->bytes_per_pixel;
 	std::size_t rpitch = res->pitch;
 
 	// compute the areas to copy
@@ -1610,7 +1610,7 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel)
 {
-	const int bpp = surf->format->BytesPerPixel;
+	const int bpp = surf->format->bytes_per_pixel;
 	/* dst is the address to the pixel we want to set */
 	uint8_t* const dst = reinterpret_cast<uint8_t*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
 	switch (bpp) {
@@ -1641,7 +1641,7 @@ void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint3
 
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y)
 {
-	const int bpp = surf->format->BytesPerPixel;
+	const int bpp = surf->format->bytes_per_pixel;
 	/* p is the address to the pixel we want to retrieve */
 	const uint8_t* const src = reinterpret_cast<const uint8_t*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
 	switch (bpp) {

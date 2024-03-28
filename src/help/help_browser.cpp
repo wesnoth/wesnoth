@@ -134,7 +134,7 @@ void help_browser::handle_event(const SDL_Event &event)
 	gui::widget::handle_event(event);
 
 	SDL_MouseButtonEvent mouse_event = event.button;
-	if (event.type == SDL_MOUSEBUTTONDOWN) {
+	if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
 		if (mouse_event.button == SDL_BUTTON_LEFT) {
 			// Did the user click a cross-reference?
 			const int mousex = mouse_event.x;
@@ -179,7 +179,7 @@ void help_browser::handle_event(const SDL_Event &event)
 			}
 		}
 	}
-	else if (event.type == SDL_MOUSEMOTION) {
+	else if (event.type == SDL_EVENT_MOUSE_MOTION) {
 		update_cursor();
 	}
 }

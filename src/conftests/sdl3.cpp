@@ -12,14 +12,22 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL_image.h>
+#include <SDL3/SDL.h>
 #include <stdlib.h>
+#include <string>
 
 int main(int, char** argv)
 {
-    SDL_RWops *src = SDL_RWFromFile(argv[1], "rb");
-    if (src == NULL) {
-        exit(2);
+    int major = std::stoi(argv[1]);
+    int minor = std::stoi(argv[2]);
+    int patchlevel = std::stoi(argv[3]);
+
+    if(!SDL_VERSION_ATLEAST(major, minor, patchlevel)) {
+        exit(1);
     }
-    exit(!IMG_isJPG(src));
+
+    SDL_Init(0);
+    SDL_Quit();
+
+    return 0;
 }

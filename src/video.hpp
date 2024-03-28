@@ -21,7 +21,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_render.h>
 
 #include <vector>
 
@@ -335,11 +335,6 @@ private:
  * Provides diagnostic information about the current renderer for the @a build_info API.
  */
 std::vector<std::pair<std::string, std::string>> renderer_report();
-
-/**
- * Retrieves the current game screen DPI for the @a build_info API.
- */
-std::pair<float, float> get_dpi();
 
 
 /**************************/

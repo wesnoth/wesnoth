@@ -15,8 +15,8 @@
 
 #include "desktop/clipboard.hpp"
 
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_clipboard.h>
+#include <SDL3/SDL_events.h>
+#include <SDL3/SDL_clipboard.h>
 
 #define CLIPBOARD_FUNCS_DEFINED
 
@@ -44,10 +44,6 @@ std::string copy_from_clipboard(const bool)
 	const std::string result(clipboard);
 	SDL_free(clipboard);
 	return result;
-}
-
-void handle_system_event(const SDL_Event& /*event*/)
-{
 }
 
 bool available()
