@@ -27,6 +27,7 @@
 #include "sdl/texture.hpp"
 #include "sdl/rect.hpp"
 
+namespace wfl { class variant; }
 struct point;
 
 namespace gui2
@@ -155,6 +156,11 @@ public:
 		variables_.add(key, std::move(value));
 	}
 
+	wfl::variant get_variable(const std::string& key)
+	{
+		return variables_.query_value(key);
+	}
+
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<std::unique_ptr<shape>> shapes_;
@@ -183,6 +189,13 @@ private:
 
 	/** The full height of the canvas. */
 	unsigned h_;
+
+	/**
+	 * Relative positioning control variable.
+	 * Possible values : "right", "below", "none"
+	 */
+	std::string relative_pos_;
+	unsigned rel_x_, rel_y_;
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
