@@ -136,7 +136,7 @@ jobs:
       - name: Run MP tests
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
-      - name: Run unit tests
+      - name: Run Boost unit tests
         if: success() || steps.build.outcome == 'success'
         run: ./run_boost_tests
 
@@ -278,7 +278,7 @@ jobs:
       - name: Run WML tests
         if: matrix.cfg == 'Release'
         run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
-      - name: Run unit tests
+      - name: Run Boost unit tests
         run: ./run_boost_tests --path=projectfiles/Xcode/build/"$CFG" --executable=unit_tests
 
   windows:
@@ -325,6 +325,10 @@ jobs:
       - name: Run WML unit tests
         if: matrix.cfg == 'Release'
         run: python run_wml_tests -v -g -c -t 20 -p %CFG%/wesnoth.exe
+
+      - name: Run Boost unit tests
+        if: matrix.cfg == 'Release'
+        run: .\run_boost_tests -p %CFG%
 
 # run after all other jobs have completed to check overall build status
   notification:
