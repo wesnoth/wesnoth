@@ -49,6 +49,9 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, link_color_(color_t::from_hex_string("ffff00"))
 	, can_shrink_(builder.can_shrink)
 	, text_alpha_(ALPHA_OPAQUE)
+	, unparsed_text_()
+	, w_(0)
+	, h_(0)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
@@ -62,12 +65,10 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 
 void rich_label::update_canvas()
 {
-	// Inherit.
-	styled_widget::update_canvas();
-
 	for(canvas& tmp : get_canvases()) {
-		tmp.set_variable("x", wfl::variant(0));
-		tmp.set_variable("y", wfl::variant(0));
+		tmp.set_variable("pos_x", wfl::variant(0));
+		tmp.set_variable("pos_y", wfl::variant(0));
+		set_label(get_label());
 		tmp.set_cfg(text_dom_, true);
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}

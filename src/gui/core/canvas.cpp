@@ -39,6 +39,8 @@
 #include "video.hpp" // read_pixels_low_res, only used for blurring
 #include "wml_exception.hpp"
 
+#include <iostream>
+
 namespace gui2
 {
 
@@ -412,9 +414,14 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
+	, attr_start_(cfg["attr_start"])
+	, attr_end_(cfg["attr_end"])
+	, attr_name_(cfg["attr_name"])
+	, attr_color_(cfg["attr_color"])
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
 {
+
 	if(!font_size_.has_formula()) {
 		VALIDATE(font_size_(), _("Text has a font size of 0."));
 	}
@@ -440,6 +447,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
+
 	std::vector<std::string> starts = utils::split(highlight_start_, ',');
 	std::vector<std::string> stops = utils::split(highlight_end_, ',');
 
@@ -447,6 +455,43 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		typed_formula<int> hstart(starts.at(i));
 		typed_formula<int> hstop(stops.at(i));
 		text_renderer.set_highlight_area(hstart(variables), hstop(variables), highlight_color_(variables));
+	}
+
+	starts = utils::split(attr_start_, ',');
+	stops = utils::split(attr_end_, ',');
+	std::vector<std::string> styles = utils::split(attr_name_, ',');
+	std::vector<std::string> colors = utils::split(attr_color_, ',');
+
+	for(size_t i = 0, col_index = 0; i < std::min(starts.size(), stops.size()); i++) {
+		typed_formula<int> attr_start(starts.at(i));
+		typed_formula<int> attr_stop(stops.at(i));
+		if (styles.at(i) == "fgcolor") {
+			// Note that the color value is not the i-th item
+			// Using col_index so that we can get rid of excess commas
+			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
+			col_index++;
+		} else if (styles.at(i) == "bgcolor") {
+			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
+			col_index++;
+		} else {
+			font::pango_text::FONT_STYLE attr_style = decode_font_style(styles.at(i));
+			switch(attr_style)
+			{
+			case font::pango_text::STYLE_BOLD:
+				text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), PANGO_WEIGHT_BOLD);
+				break;
+			case font::pango_text::STYLE_ITALIC:
+				text_renderer.add_attribute_style(attr_start(variables), attr_stop(variables), PANGO_STYLE_ITALIC);
+				break;
+			case font::pango_text::STYLE_UNDERLINE:
+				text_renderer.add_attribute_underline(attr_start(variables), attr_stop(variables), PANGO_UNDERLINE_SINGLE);
+				break;
+			default:
+				// Unsupported formatting or normal text
+				text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), PANGO_WEIGHT_NORMAL);
+				text_renderer.add_attribute_style(attr_start(variables), attr_stop(variables), PANGO_STYLE_NORMAL);
+			}
+		}
 	}
 
 	text_renderer
@@ -516,6 +561,9 @@ canvas::canvas(canvas&& c) noexcept
 	, deferred_(c.deferred_)
 	, w_(c.w_)
 	, h_(c.h_)
+	, relative_pos_("none")
+	, rel_x_(0)
+	, rel_y_(0)
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 {

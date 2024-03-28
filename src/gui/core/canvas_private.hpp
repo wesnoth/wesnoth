@@ -283,13 +283,21 @@ private:
 	typed_formula<int> maximum_height_;
 
 	/** Start and end offsets for highlight */
-	//typed_formula<int> highlight_start_;
-	//typed_formula<int> highlight_end_;
 	std::string highlight_start_;
 	std::string highlight_end_;
 
 	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;
+
+	/** Generic start and end offsets for various attributes */
+	std::string attr_start_;
+	std::string attr_end_;
+
+	/** The attribute type */
+	std::string attr_name_;
+
+	/** attribute color, used for foreground color */
+	std::string attr_color_;
 
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;
