@@ -17,11 +17,13 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
+#include "font/standard_colors.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "help/help_impl.hpp"
 #include "serialization/parser.hpp"
 
-//#include <iostream>
+#include <iostream>
+#include <string>
 
 namespace gui2
 {
@@ -140,14 +142,22 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
+	const t_string& get_label() const
+	{
+		return unparsed_text_.empty() ? styled_widget::get_label() : unparsed_text_;
+	}
+
 	void set_label(const t_string& text) override
 	{
+		unparsed_text_ = text;
+		text_dom_.clear();
 //		styled_widget::set_label(text);
 		help::topic_text marked_up_text(text);
 		std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
 		for (size_t i = 0; i < parsed_text.size(); i++) {
+			bool last_entry = (i == parsed_text.size() - 1);
 			std::string line = parsed_text.at(i);
-//			std::cout << line << std::endl;
+			std::cout << "line :" << i << ", " << last_entry << std::endl;
 			if (!line.empty() && line.at(0) == '[') {
 //				std::cout << "wml" << std::endl;
 				config cfg;
@@ -157,29 +167,43 @@ public:
 //				std::cout << cfg.debug() << std::endl;
 
 				if (cfg.optional_child("ref")) {
-//					std::cout << "[ref]" << std::endl;
+					config& txt_r = default_text_config(cfg.mandatory_child("ref")["text"], last_entry);
+					txt_r["attr_name"] = "fgcolor";
+					txt_r["attr_start"] = "0";
+					txt_r["attr_end"] = txt_r["text"].str().size();
+					std::cout << "size : " << txt_r["text"].str().size() << std::endl;
+					txt_r["attr_color"] = font::YELLOW_COLOR.to_hex_string().substr(1, txt_r["text"].str().size());
 				} else if (cfg.optional_child("bold")) {
-//					std::cout << "[bold]" << std::endl;
-					config& txt = default_text_config(cfg.mandatory_child("bold")["text"]);
-					txt["font_style"] = "bold";
+					config& txt_b = default_text_config(cfg.mandatory_child("bold")["text"], last_entry);
+					txt_b["attr_name"] = "bold";
+					txt_b["attr_start"] = "0";
+					txt_b["attr_end"] = txt_b["text"].str().size();
 				} else if (cfg.optional_child("italic")) {
-//					std::cout << "[italic]" << std::endl;
-					config& txt = default_text_config(cfg.mandatory_child("italic")["text"]);
-					txt["font_style"] = "italic";
+					config& txt_i = default_text_config(cfg.mandatory_child("italic")["text"], last_entry);
+					txt_i["attr_name"] = "italic";
+					txt_i["attr_start"] = "0";
+					txt_i["attr_end"] = txt_i["text"].str().size();
 				} else if (cfg.optional_child("header")) {
-					config& txt = default_text_config(cfg.mandatory_child("header")["text"]);
-					txt["font_style"] = "bold";
-					txt["font_size"] = font::SIZE_TITLE;
-//					txt["highlight_start"] = "2,5";
-//					txt["highlight_end"] = "3,7";
-//					txt["highlight_color"] = "([255,255,0,0])";
+					config& txt_h = default_text_config(cfg.mandatory_child("header")["text"], last_entry);
+					txt_h["font_style"] = "bold";
+					txt_h["font_size"] = font::SIZE_TITLE;
+				} else if (cfg.optional_child("img")) {
+					config& img = text_dom_.add_child("image");
+					img["name"] = cfg.mandatory_child("img")["src"];
+					img["x"] = "(debug_print('[img] pos_x', pos_x))";
+					img["y"] = "(pos_y)";
+					img["h"] = "(image_height)";
+					img["w"] = "(image_width)";
+
+					if (last_entry) {
+						img["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+					} else {
+						img["actions"] = "([set_var('pos_x', pos_x+image_width)])";
+					}
+//					std::cout << img.debug() << std::endl;
 				}
-				//			} else if(line == "[img]") {
 				//			} else if(line == "[link]") {
 				//			} else if(line == "[jump]") {
-				//			} else if(line == "[bold]") {
-				//			} else if(line == "[italic]") {
-				//			} else if(line == "[header]") {
 				//			} else if(line == "[format]") {
 
 			} else {
@@ -187,6 +211,15 @@ public:
 			}
 		}
 	}
+
+//	point calculate_best_size() const
+//	{
+//		return point(w_, h_);
+//	}
+
+//	void place(const point& origin, const point& size) {
+//		styled_widget::place(origin, size);
+//	}
 
 private:
 	/**
@@ -243,17 +276,28 @@ private:
 	/** structure tree of the marked up text after parsing */
 	config text_dom_;
 
+	/** The unparsed/raw text */
+	t_string unparsed_text_;
+
+	/** Width and height of the canvas */
+	unsigned w_, h_;
+
 	/** template for canvas text config */
-	config& default_text_config(t_string text) {
+	config& default_text_config(t_string text, bool last_entry = false) {
 		config& txt = text_dom_.add_child("text");
 		txt["text"] = text;
 		txt["font_size"] = 20;
 		txt["color"] = "([186, 172, 125, 255])";
-		txt["x"] = "(x)";
-		txt["y"] = "(debug_print('y', y))";
+		txt["x"] = "(debug_print('[txt] pos_x', pos_x))";
+		txt["y"] = "(pos_y)";
 		txt["w"] = "(text_width)";
 		txt["h"] = "(text_height)";
-		txt["actions"] = "(set_var('y', y+text_height))";
+//		txt["actions"] = "([set_var('pos_x', pos_x+text_width), set_var('pos_y', pos_y+text_height)])";
+		if (last_entry) {
+			txt["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+		} else {
+			txt["actions"] = "([set_var('pos_x', pos_x+text_width)])";
+		}
 		return txt;
 	}
 

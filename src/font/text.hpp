@@ -307,6 +307,11 @@ public:
 	*/
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
 
+	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
+	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
+	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
+	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -408,6 +413,11 @@ private:
 	unsigned highlight_end_offset_;
 	color_t	highlight_color_;
 	
+	unsigned style_start_offset_;
+	unsigned style_end_offset_;
+	PangoStyle style_name_ = PANGO_STYLE_NORMAL;
+	PangoWeight weight_name_ = PANGO_WEIGHT_NORMAL;
+
 	/**
 	 * Global pango attribute list. All attributes in this list
 	 * will be applied one by one to the text
@@ -415,7 +425,7 @@ private:
 	PangoAttrList* global_attribute_list_;
 	
 	/** Hash for the global_attribute_list_ */
-	std::size_t attrib_hash_ = 0;
+	std::size_t attrib_hash_;
 
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
