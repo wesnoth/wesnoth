@@ -97,7 +97,7 @@ pango_text::pango_text()
 {
 	// Initialize global list
 	global_attribute_list_ = pango_attr_list_new();
-	
+
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_.get(), 72.0);
 
@@ -455,28 +455,33 @@ void pango_text::set_highlight_area(const unsigned start_offset, const unsigned 
 	highlight_start_offset_ = start_offset;
 	highlight_end_offset_ = end_offset;
 	highlight_color_ = color;
-	
+
 	if (highlight_start_offset_ != highlight_end_offset_) {
 		// Highlight
 		int col_r = highlight_color_.r / 255.0 * 65535.0;
 		int col_g = highlight_color_.g / 255.0 * 65535.0;
 		int col_b = highlight_color_.b / 255.0 * 65535.0;
-		
+
 		DBG_GUI_D << "highlight start : " << highlight_start_offset_ << "end : " << highlight_end_offset_;
 		DBG_GUI_D << "highlight color : " << col_r << "," << col_g << "," << col_b;
-		
+
 		PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
 		attr->start_index = highlight_start_offset_;
 		attr->end_index = highlight_end_offset_;
-		
+
 		// Update hash
 		boost::hash_combine(attrib_hash_, highlight_start_offset_);
 		boost::hash_combine(attrib_hash_, highlight_end_offset_);
 		boost::hash_combine(attrib_hash_, highlight_color_.to_rgba_bytes());
-		
+
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
 	}
+}
+
+void pango_text::clear_attribute_list() {
+	global_attribute_list_ = pango_attr_list_new();
+	pango_layout_set_attributes(layout_.get(), global_attribute_list_);
 }
 
 bool pango_text::set_text(const std::string& text, const bool markedup)
@@ -1159,7 +1164,7 @@ std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 	boost::hash_combine(hash, t.alignment_);
 	boost::hash_combine(hash, t.ellipse_mode_);
 	boost::hash_combine(hash, t.add_outline_);
-	
+
 	// Hash for the global attribute list
 	boost::hash_combine(hash, t.attrib_hash_);
 

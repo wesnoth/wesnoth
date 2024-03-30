@@ -311,6 +311,9 @@ public:
 	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
 	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
 	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+	
+	/** Clear all attributes */
+	void clear_attribute_list();
 
 private:
 
@@ -412,7 +415,7 @@ private:
 	unsigned highlight_start_offset_;
 	unsigned highlight_end_offset_;
 	color_t	highlight_color_;
-	
+
 	unsigned style_start_offset_;
 	unsigned style_end_offset_;
 	PangoStyle style_name_ = PANGO_STYLE_NORMAL;
@@ -423,7 +426,7 @@ private:
 	 * will be applied one by one to the text
 	 */
 	PangoAttrList* global_attribute_list_;
-	
+
 	/** Hash for the global_attribute_list_ */
 	std::size_t attrib_hash_;
 

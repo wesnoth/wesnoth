@@ -447,6 +447,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
+	text_renderer.clear_attribute_list();
 
 	std::vector<std::string> starts = utils::split(highlight_start_, ',');
 	std::vector<std::string> stops = utils::split(highlight_end_, ',');
