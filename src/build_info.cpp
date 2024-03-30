@@ -42,7 +42,7 @@
 #include <boost/predef.h>
 #include <boost/version.hpp>
 
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 #include <openssl/crypto.h>
 #include <openssl/opensslv.h>
 #endif
@@ -51,7 +51,7 @@
 
 #include <pango/pangocairo.h>
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 // apple_notification.mm uses Foundation.h, which is an Objective-C header;
 // but CoreFoundation.h is a C header which also defines these.
 #include <CoreFoundation/CoreFoundation.h>
@@ -84,7 +84,7 @@ std::string format_version(const SDL_Version& v)
 						<< static_cast<unsigned>(v.patch);
 }
 
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 
 std::string format_openssl_patch_level(uint8_t p)
 {
@@ -240,7 +240,7 @@ version_table_manager::version_table_manager()
 	// OpenSSL/libcrypto
 	//
 
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 	compiled[LIB_CRYPTO] = format_openssl_version(OPENSSL_VERSION_NUMBER);
 	linked[LIB_CRYPTO] = format_openssl_version(SSLeay());
 	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
@@ -302,11 +302,11 @@ version_table_manager::version_table_manager()
 	features.back().enabled = true;
 #endif
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 	// Always compiled in.
 	features.emplace_back(N_("feature^Cocoa notifications back end"));
 	features.back().enabled = true;
-#endif /* SDL_PLATFORM_APPLE */
+#endif /* __APPLE__ */
 }
 
 const std::string empty_version = "";

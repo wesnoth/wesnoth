@@ -19,7 +19,7 @@
 #include "desktop/windows_battery_info.hpp"
 #endif
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 #include "apple_battery_info.hpp"
 #endif
 
@@ -34,7 +34,7 @@ bool does_device_have_battery()
 {
 #if defined(_WIN32)
 	return windows_battery_info::does_device_have_battery();
-#elif defined(SDL_PLATFORM_APPLE)
+#elif defined(__APPLE__)
 	return desktop::battery_info::apple::does_device_have_battery();
 #elif defined(HAVE_LIBDBUS)
 	return dbus::does_device_have_battery();
@@ -47,7 +47,7 @@ double get_battery_percentage()
 {
 #if defined(_WIN32)
 	return windows_battery_info::get_battery_percentage();
-#elif defined(SDL_PLATFORM_APPLE)
+#elif defined(__APPLE__)
 	return desktop::battery_info::apple::get_battery_percentage();
 #elif defined(HAVE_LIBDBUS)
 	return dbus::get_battery_percentage();

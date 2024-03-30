@@ -13,7 +13,7 @@
 	See the COPYING file for more details.
 */
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 #include <TargetConditionals.h>
 #ifdef TARGET_OS_OSX
 
@@ -39,4 +39,4 @@ namespace apple {
 } // end namespace desktop
 
 #endif //end TARGET_OS_OSX
-#endif //end SDL_PLATFORM_APPLE
+#endif //end __APPLE__

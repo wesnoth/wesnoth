@@ -92,7 +92,7 @@ struct wesnoth_global_fixture {
 
 		// TODO: For some reason this fails on MacOS and prevents any tests from running
 		// It's not crucial to change the log levels though, so just skip over it.
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 		// Set more report as default
 		if(runtime_config::get<log_level>(runtime_config::btrt_log_level) == invalid_log_level)
 			unit_test_log.set_threshold_level(log_messages);

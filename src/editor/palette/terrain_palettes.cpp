@@ -231,7 +231,7 @@ std::string terrain_palette::get_help_string()
 	} else {
 		msg << _("Shift + left-click: paint base layer only") << " | ";
 	}
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 	msg << _("Cmd + click: copy terrain") << std::endl;
 #else
 	msg << _("Ctrl + click: copy terrain") << std::endl;

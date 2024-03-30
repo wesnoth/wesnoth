@@ -61,7 +61,7 @@
 #include <set>
 
 // Copied from boost::predef, as it's there only since 1.55.
-#if defined(SDL_PLATFORM_APPLE) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
 
 #define WESNOTH_BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
 #include <SDL3/SDL_filesystem.h>
@@ -631,7 +631,7 @@ const std::string& get_version_path_suffix()
 	return suffix;
 }
 
-#if defined(SDL_PLATFORM_APPLE) && !defined(SDL_PLATFORM_IOS)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	// Starting from Wesnoth 1.14.6, we have to use sandboxing function on macOS
 	// The problem is, that only signed builds can use sandbox. Unsigned builds
 	// would use other config directory then signed ones. So if we don't want
@@ -663,7 +663,7 @@ const std::string& get_version_path_suffix()
 
 static void setup_user_data_dir()
 {
-#if defined(SDL_PLATFORM_APPLE) && !defined(SDL_PLATFORM_IOS)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
 	if(!file_exists(user_data_dir / "logs")) {
@@ -865,7 +865,7 @@ std::string get_cache_dir()
 
 std::vector<other_version_dir> find_other_version_saves_dirs()
 {
-#if !defined(_WIN32) && !defined(_X11) && !defined(SDL_PLATFORM_APPLE)
+#if !defined(_WIN32) && !defined(_X11) && !defined(__APPLE__)
 	// By all means, this situation doesn't make sense
 	return {};
 #else
@@ -903,7 +903,7 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix) / "saves";
 #elif defined(_X11)
 		path = get_user_data_path().parent_path() / suffix / "saves";
-#elif defined(SDL_PLATFORM_APPLE)
+#elif defined(__APPLE__)
 		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix) / "saves";
 #endif
 

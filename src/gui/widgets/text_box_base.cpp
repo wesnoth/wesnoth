@@ -532,7 +532,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
  * cut and paste, the text box behavior as a whole gets consistent with default
  * macOS hotkey idioms.
  */
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 	// Idiomatic modifier key in macOS computers.
 	const SDL_Keycode modifier_key = SDL_KMOD_GUI;
 #else

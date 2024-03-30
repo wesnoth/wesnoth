@@ -683,7 +683,7 @@ void pump()
 			break;
 		}
 
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 		case SDL_EVENT_KEY_DOWN: {
 			if(event.key.keysym.sym == SDLK_F4 &&
 				(event.key.keysym.mod == SDL_KMOD_RALT || event.key.keysym.mod == SDL_KMOD_LALT)

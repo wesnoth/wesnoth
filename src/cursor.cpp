@@ -53,7 +53,7 @@ struct cursor_data
 // macOS needs 16x16 b&w cursors. TODO: is that still the case?
 //
 std::array<cursor_data, cursor::NUM_CURSORS> available_cursors {{
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 	{ nullptr, boost::indeterminate, "normal.png",          "normal.png",      0, 0  },
 	{ nullptr, boost::indeterminate, "wait-alt.png",        "wait.png",        0, 0  },
 	{ nullptr, boost::indeterminate, "ibeam.png",           "ibeam.png",       14, 14 },
@@ -95,7 +95,7 @@ SDL_Cursor* create_cursor(surface surf)
 
 	// The width must be a multiple of 8 (SDL requirement)
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 	std::size_t cursor_width = 16;
 #else
 	std::size_t cursor_width = surf->w;

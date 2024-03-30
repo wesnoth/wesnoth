@@ -398,7 +398,7 @@ void textbox::erase_selection()
 
 namespace {
 	const unsigned int copypaste_modifier =
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 		SDL_KMOD_LGUI | SDL_KMOD_RGUI
 #else
 		SDL_KMOD_CTRL

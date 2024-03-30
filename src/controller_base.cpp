@@ -233,7 +233,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		// Right and down are positive in Wesnoth's map.
 		// Right and up are positive in SDL_MouseWheelEvent on all platforms:
 		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
-#if defined(_WIN32) || defined(SDL_PLATFORM_APPLE)
+#if defined(_WIN32) || defined(__APPLE__)
 		mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 #else
 		// Except right is wrongly negative on X11 in SDL < 2.0.18:

@@ -52,7 +52,7 @@ public:
 
 	T& value() const
 	{
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 		return opt_.value().get();
 #else
 		if(opt_) {
