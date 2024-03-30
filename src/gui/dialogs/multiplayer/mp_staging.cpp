@@ -78,7 +78,7 @@ void mp_staging::pre_show(window& window)
 		&mp_staging::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 	std::stringstream tooltip;
     tooltip << vgettext_impl("wesnoth", "Hotkey(s): ",  {{}});
-    #ifdef SDL_PLATFORM_APPLE
+    #ifdef __APPLE__
         tooltip << "cmd+g";
     #else
         tooltip << "ctrl+g";
@@ -585,7 +585,7 @@ void mp_staging::signal_handler_sdl_key_down(const event::ui_event /*event*/,
 {
     handled = true;
 
-    #ifdef SDL_PLATFORM_APPLE
+    #ifdef __APPLE__
         // Idiomatic modifier key in macOS computers.
         const SDL_Keycode modifier_key = SDL_KMOD_GUI;
     #else

@@ -489,7 +489,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
  */
 static void init_locale()
 {
-#if defined _WIN32 || defined SDL_PLATFORM_APPLE
+#if defined _WIN32 || defined __APPLE__
 	setlocale(LC_ALL, "English");
 #else
 	std::setlocale(LC_ALL, "C");
@@ -897,7 +897,7 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 #define error_exit(res) return res
 #endif
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
@@ -996,7 +996,7 @@ int main(int argc, char** argv)
 
 	// Mac's touchpad generates touch events too.
 	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(SDL_PLATFORM_APPLE) && !defined(SDL_PLATFORM_IOS)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	SDL_EventState(SDL_EVENT_FINGER_MOTION, SDL_DISABLE);
 	SDL_EventState(SDL_EVENT_FINGER_DOWN, SDL_DISABLE);
 	SDL_EventState(SDL_EVENT_FINGER_UP, SDL_DISABLE);

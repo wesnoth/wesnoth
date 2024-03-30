@@ -13,7 +13,7 @@
 	See the COPYING file for more details.
 */
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 
 #include "desktop/apple_notification.hpp"
 
@@ -55,4 +55,4 @@ void send_cocoa_notification(const std::string& owner, const std::string& messag
 }
 
 }
-#endif //end SDL_PLATFORM_APPLE
+#endif //end __APPLE__

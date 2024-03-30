@@ -25,7 +25,7 @@
 #include <algorithm>
 #include <memory>
 
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 #include <openssl/evp.h>
 #include <openssl/err.h>
 #else
@@ -287,7 +287,7 @@ secure_buffer build_key(const std::string& server, const std::string& login)
  */
 static secure_buffer aes_encrypt(const secure_buffer& plaintext, const secure_buffer& key)
 {
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 	int update_length;
 	int extra_length;
 	int total_length;
@@ -378,7 +378,7 @@ static secure_buffer aes_encrypt(const secure_buffer& plaintext, const secure_bu
  */
 static secure_buffer aes_decrypt(const secure_buffer& encrypted, const secure_buffer& key)
 {
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 	int update_length;
 	int extra_length;
 	int total_length;

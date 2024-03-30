@@ -24,7 +24,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
-#if !defined(_WIN32) && !defined(SDL_PLATFORM_APPLE)
+#if !defined(_WIN32) && !defined(__APPLE__)
 #include <boost/filesystem.hpp>
 #endif
 
@@ -89,7 +89,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 		}
 	}
 
-#elif defined(SDL_PLATFORM_APPLE)
+#elif defined(__APPLE__)
 
 	// Probably as unreliable as /media|/mnt on other platforms, not worth
 	// examining in detail.

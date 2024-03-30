@@ -18,7 +18,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
-#if defined(_X11) || defined(SDL_PLATFORM_APPLE)
+#if defined(_X11) || defined(__APPLE__)
 
 #include <thread>
 
@@ -47,9 +47,9 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 {
 	LOG_DU << "open_object(): requested object: " << path_or_url;
 
-#if defined(_X11) || defined(SDL_PLATFORM_APPLE)
+#if defined(_X11) || defined(__APPLE__)
 
-#ifndef SDL_PLATFORM_APPLE
+#ifndef __APPLE__
 	LOG_DU << "open_object(): on X11, will use xdg-open";
 	const char launcher[] = "xdg-open";
 #else

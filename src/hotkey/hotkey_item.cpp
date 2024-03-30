@@ -65,7 +65,7 @@ const std::string hotkey_base::get_name() const
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	if(mod_ & SDL_KMOD_GUI) {
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 		ret += "cmd";
 #else
 		ret += "win";
@@ -433,7 +433,7 @@ std::string get_names(const std::string& id)
 	if(id == "quit") {
 		names.push_back("escape");
 	} else if(id == "quit-to-desktop") {
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 		names.push_back("cmd+q");
 #else
 		names.push_back("alt+F4");

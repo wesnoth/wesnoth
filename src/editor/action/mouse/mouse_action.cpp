@@ -137,7 +137,7 @@ bool mouse_action::has_shift_modifier() const
 
 bool mouse_action::has_ctrl_modifier() const
 {
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 	return key_[SDLK_RGUI] || key_[SDLK_LGUI];
 #else
 	return key_[SDLK_RCTRL] || key_[SDLK_LCTRL];

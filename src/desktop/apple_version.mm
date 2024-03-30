@@ -13,13 +13,13 @@
 	See the COPYING file for more details.
 */
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 
 #include "apple_version.hpp"
 
 #import "game_version.hpp"
 
-#if defined(SDL_PLATFORM_APPLE) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
 #define SDL_PLATFORM_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
 #endif
 
@@ -56,4 +56,4 @@ namespace apple {
 } // end namespace apple
 } // end namespace desktop
 
-#endif //end SDL_PLATFORM_APPLE
+#endif //end __APPLE__

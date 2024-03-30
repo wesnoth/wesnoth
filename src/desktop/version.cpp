@@ -25,11 +25,11 @@
 
 #include <cstring>
 
-#if defined(SDL_PLATFORM_APPLE) || defined(_X11)
+#if defined(__APPLE__) || defined(_X11)
 #include <sys/utsname.h>
 #endif
 
-#if defined(SDL_PLATFORM_APPLE)
+#if defined(__APPLE__)
 
 #include "apple_version.hpp"
 #include "serialization/string_utils.hpp"
@@ -215,7 +215,7 @@ std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
 
 std::string os_version()
 {
-#if defined(SDL_PLATFORM_APPLE) || defined(_X11)
+#if defined(__APPLE__) || defined(_X11)
 	// Some systems, e.g. SunOS, need "struct" here
 	struct utsname u;
 
@@ -224,7 +224,7 @@ std::string os_version()
 	}
 #endif
 
-#if defined(SDL_PLATFORM_APPLE)
+#if defined(__APPLE__)
 
 	//
 	// Standard Mac OS X version

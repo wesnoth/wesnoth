@@ -581,7 +581,7 @@ void wesnothd_connection::set_keepalive(int seconds)
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
-#elif defined(SDL_PLATFORM_APPLE) && defined(__MACH__)
+#elif defined(__APPLE__) && defined(__MACH__)
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &seconds, sizeof(seconds));
 #elif defined(_WIN32)
 	// these are in milliseconds for windows
