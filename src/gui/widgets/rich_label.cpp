@@ -68,6 +68,8 @@ void rich_label::update_canvas()
 	for(canvas& tmp : get_canvases()) {
 		tmp.set_variable("pos_x", wfl::variant(0));
 		tmp.set_variable("pos_y", wfl::variant(0));
+		tmp.set_variable("ih", wfl::variant(0));
+		tmp.set_variable("iw", wfl::variant(0));
 		set_label(get_label());
 		tmp.set_cfg(text_dom_, true);
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));

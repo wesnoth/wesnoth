@@ -190,13 +190,6 @@ private:
 	/** The full height of the canvas. */
 	unsigned h_;
 
-	/**
-	 * Relative positioning control variable.
-	 * Possible values : "right", "below", "none"
-	 */
-	std::string relative_pos_;
-	unsigned rel_x_, rel_y_;
-
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
 

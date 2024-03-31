@@ -157,7 +157,6 @@ public:
 		for (size_t i = 0; i < parsed_text.size(); i++) {
 			bool last_entry = (i == parsed_text.size() - 1);
 			std::string line = parsed_text.at(i);
-			std::cout << "line :" << i << ", " << last_entry << std::endl;
 			if (!line.empty() && line.at(0) == '[') {
 //				std::cout << "wml" << std::endl;
 				config cfg;
@@ -171,7 +170,6 @@ public:
 					txt_r["attr_name"] = "fgcolor";
 					txt_r["attr_start"] = "0";
 					txt_r["attr_end"] = txt_r["text"].str().size();
-					std::cout << "size : " << txt_r["text"].str().size() << std::endl;
 					txt_r["attr_color"] = font::YELLOW_COLOR.to_hex_string().substr(1, txt_r["text"].str().size());
 				} else if (cfg.optional_child("bold")) {
 					config& txt_b = default_text_config(cfg.mandatory_child("bold")["text"], last_entry);
@@ -190,7 +188,7 @@ public:
 				} else if (cfg.optional_child("img")) {
 					config& img = text_dom_.add_child("image");
 					img["name"] = cfg.mandatory_child("img")["src"];
-					img["x"] = "(debug_print('[img] pos_x', pos_x))";
+					img["x"] = "(pos_x)";
 					img["y"] = "(pos_y)";
 					img["h"] = "(image_height)";
 					img["w"] = "(image_width)";
@@ -198,8 +196,16 @@ public:
 					if (last_entry) {
 						img["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 					} else {
-						img["actions"] = "([set_var('pos_x', pos_x+image_width)])";
+						img["actions"] = "([set_var('pos_x', pos_x+image_width), set_var('ih', image_height), set_var('iw', image_width)])";
 					}
+
+//					config& rect = text_dom_.add_child("rectangle");
+//					rect["x"] = "(pos_x)";
+//					rect["y"] = "(pos_y)";
+//					rect["h"] = "(ih)";
+//					rect["w"] = "(iw)";
+//					rect["border_thickness"] = "1";
+//					rect["border_color"] = "255,255,255,255";
 //					std::cout << img.debug() << std::endl;
 				}
 				//			} else if(line == "[link]") {
@@ -211,15 +217,6 @@ public:
 			}
 		}
 	}
-
-//	point calculate_best_size() const
-//	{
-//		return point(w_, h_);
-//	}
-
-//	void place(const point& origin, const point& size) {
-//		styled_widget::place(origin, size);
-//	}
 
 private:
 	/**
@@ -292,7 +289,6 @@ private:
 		txt["y"] = "(pos_y)";
 		txt["w"] = "(text_width)";
 		txt["h"] = "(text_height)";
-//		txt["actions"] = "([set_var('pos_x', pos_x+text_width), set_var('pos_y', pos_y+text_height)])";
 		if (last_entry) {
 			txt["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 		} else {

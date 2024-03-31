@@ -562,9 +562,6 @@ canvas::canvas(canvas&& c) noexcept
 	, deferred_(c.deferred_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, relative_pos_("none")
-	, rel_x_(0)
-	, rel_y_(0)
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 {
