@@ -73,6 +73,7 @@
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
@@ -519,6 +520,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_game_save_oos)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_generator_settings)
 {
 	test<generator_settings>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_gui_test_dialog)
+{
+	test<gui_test_dialog>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
 {
@@ -1455,6 +1460,16 @@ struct dialog_tester<editor_edit_unit>
 		movetype.add_child("movement_costs");
 		view = game_config_view::wrap(cfg);
 		return new editor_edit_unit(view, "test_addon");
+	}
+};
+
+template<>
+struct dialog_tester<gui_test_dialog>
+{
+	dialog_tester() {}
+	gui_test_dialog* create()
+	{
+		return new gui_test_dialog();
 	}
 };
 

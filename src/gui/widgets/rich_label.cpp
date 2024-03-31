@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2024
+	by Subhraman Sarkar <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -61,6 +62,90 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
+}
+
+void rich_label::set_label(const t_string& text)
+{
+	unparsed_text_ = text;
+	text_dom_.clear();
+	help::topic_text marked_up_text(text);
+	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
+	for (size_t i = 0; i < parsed_text.size(); i++) {
+		bool last_entry = (i == parsed_text.size() - 1);
+		std::string line = parsed_text.at(i);
+		if (!line.empty() && line.at(0) == '[') {
+			config cfg;
+			std::istringstream stream(line);
+			::read(cfg, line);
+
+			if (cfg.optional_child("ref")) {
+				config& txt_r = default_text_config(cfg.mandatory_child("ref")["text"], last_entry);
+				txt_r["attr_name"] = "fgcolor";
+				txt_r["attr_start"] = "0";
+				txt_r["attr_end"] = txt_r["text"].str().size();
+				txt_r["attr_color"] = font::YELLOW_COLOR.to_hex_string().substr(1, txt_r["text"].str().size());
+			} else if (cfg.optional_child("bold")) {
+				config& txt_b = default_text_config(cfg.mandatory_child("bold")["text"], last_entry);
+				txt_b["attr_name"] = "bold";
+				txt_b["attr_start"] = "0";
+				txt_b["attr_end"] = txt_b["text"].str().size();
+			} else if (cfg.optional_child("italic")) {
+				config& txt_i = default_text_config(cfg.mandatory_child("italic")["text"], last_entry);
+				txt_i["attr_name"] = "italic";
+				txt_i["attr_start"] = "0";
+				txt_i["attr_end"] = txt_i["text"].str().size();
+			} else if (cfg.optional_child("header")) {
+				config& txt_h = default_text_config(cfg.mandatory_child("header")["text"], last_entry);
+				txt_h["font_style"] = "bold";
+				txt_h["font_size"] = font::SIZE_TITLE;
+			} else if (cfg.optional_child("img")) {
+				config& img = text_dom_.add_child("image");
+				img["name"] = cfg.mandatory_child("img")["src"];
+				img["x"] = "(pos_x)";
+				img["y"] = "(pos_y)";
+				img["h"] = "(image_height)";
+				img["w"] = "(image_width)";
+
+				if (last_entry) {
+					img["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+				} else {
+					img["actions"] = "([set_var('pos_x', pos_x+image_width), set_var('ih', image_height), set_var('iw', image_width)])";
+				}
+
+//					config& rect = text_dom_.add_child("rectangle");
+//					rect["x"] = "(pos_x)";
+//					rect["y"] = "(pos_y)";
+//					rect["h"] = "(ih)";
+//					rect["w"] = "(iw)";
+//					rect["border_thickness"] = "1";
+//					rect["border_color"] = "255,255,255,255";
+//					std::cout << img.debug() << std::endl;
+			}
+			//			} else if(line == "[link]") {
+			//			} else if(line == "[jump]") {
+			//			} else if(line == "[format]") {
+
+		} else {
+			default_text_config(line);
+		}
+	}
+}
+
+config& rich_label::default_text_config(t_string text, bool last_entry) {
+	config& txt = text_dom_.add_child("text");
+	txt["text"] = text;
+	txt["font_size"] = 20;
+	txt["color"] = "([186, 172, 125, 255])";
+	txt["x"] = "(pos_x)";
+	txt["y"] = "(pos_y)";
+	txt["w"] = "(text_width)";
+	txt["h"] = "(text_height)";
+	if (last_entry) {
+		txt["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+	} else {
+		txt["actions"] = "([set_var('pos_x', pos_x+text_width)])";
+	}
+	return txt;
 }
 
 void rich_label::update_canvas()
