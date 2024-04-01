@@ -32,7 +32,6 @@
 #include "gui/widgets/window.hpp"
 #include "preferences/game.hpp"
 
-#include <iostream>
 #include <functional>
 #include "utils/irdya_datetime.hpp"
 
@@ -232,8 +231,6 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		bool completed = preferences::is_campaign_completed(levels[i]->data()["id"]);
 		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
-
-		std::cout << levels[i]->data().debug() << std::endl << std::endl;
 
 		// Check for non-completion on every difficulty save the first.
 		const bool only_first_completed = difficulties.size() > 1 &&
