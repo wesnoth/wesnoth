@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2008 - 2024
-	by Mark de Wever <koraq@xs4all.nl>
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/combobox.hpp"
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
@@ -24,100 +24,47 @@
 #include "preferences/game.hpp"
 #include "serialization/unicode.hpp"
 #include <functional>
+#include "cursor.hpp"
 #include "wml_exception.hpp"
 #include "gettext.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
+
 namespace gui2
 {
 
 // ------------ WIDGET -----------{
 
-REGISTER_WIDGET(text_box)
+REGISTER_WIDGET(combobox)
 
-text_history text_history::get_history(const std::string& id,
-										 const bool enabled)
-{
-	std::vector<std::string>* vec = preferences::get_history(id);
-	return text_history(vec, enabled);
-}
-
-void text_history::push(const std::string& text)
-{
-	if(!enabled_) {
-		return;
-	} else {
-		if(!text.empty() && (history_->empty() || text != history_->back())) {
-			history_->push_back(text);
-		}
-
-		pos_ = history_->size();
-	}
-}
-
-std::string text_history::up(const std::string& text)
-{
-
-	if(!enabled_) {
-		return "";
-	} else if(pos_ == history_->size()) {
-		unsigned curr = pos_;
-		push(text);
-		pos_ = curr;
-	}
-
-	if(pos_ != 0) {
-		--pos_;
-	}
-
-	return get_value();
-}
-
-std::string text_history::down(const std::string& text)
-{
-	if(!enabled_) {
-		return "";
-	} else if(pos_ == history_->size()) {
-		push(text);
-	} else {
-		pos_++;
-	}
-
-	return get_value();
-}
-
-std::string text_history::get_value() const
-{
-	if(!enabled_ || pos_ == history_->size()) {
-		return "";
-	} else {
-		return history_->at(pos_);
-	}
-}
-
-text_box::text_box(const implementation::builder_styled_widget& builder)
+combobox::combobox(const implementation::builder_styled_widget& builder)
 	: text_box_base(builder, type())
-	, history_()
+	, values_()
+	, selected_(0)
 	, max_input_length_(0)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
 {
+	values_.emplace_back("label", this->get_label());
+
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_MOTION>(std::bind(
-			&text_box::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+			&combobox::signal_handler_mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&text_box::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
+			&combobox::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&text_box::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
+			&combobox::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
-			&text_box::signal_handler_left_button_double_click, this, std::placeholders::_2, std::placeholders::_3));
+			&combobox::signal_handler_left_button_double_click, this, std::placeholders::_2, std::placeholders::_3));
+	connect_signal<event::MOUSE_ENTER>(
+			std::bind(&combobox::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 
-	const auto conf = cast_config_to<text_box_definition>();
+	const auto conf = cast_config_to<combobox_definition>();
 	assert(conf);
 
 	set_font_size(get_text_font_size());
@@ -126,12 +73,12 @@ text_box::text_box(const implementation::builder_styled_widget& builder)
 	update_offsets();
 }
 
-void text_box::place(const point& origin, const point& size)
+void combobox::place(const point& origin, const point& size)
 {
 	// Inherited.
 	styled_widget::place(origin, size);
 
-	set_maximum_width(get_text_maximum_width());
+	set_maximum_width(get_text_maximum_width()-ICON_SIZE);
 	set_maximum_height(get_text_maximum_height(), false);
 
 	set_maximum_length(max_input_length_);
@@ -139,7 +86,7 @@ void text_box::place(const point& origin, const point& size)
 	update_offsets();
 }
 
-void text_box::update_canvas()
+void combobox::update_canvas()
 {
 	/***** Gather the info *****/
 
@@ -191,7 +138,7 @@ void text_box::update_canvas()
 
 	/***** Set in all canvases *****/
 
-	const int max_width = get_text_maximum_width();
+	const int max_width = get_text_maximum_width() - ICON_SIZE;
 	const int max_height = get_text_maximum_height();
 
 	for(auto & tmp : get_canvases())
@@ -202,8 +149,6 @@ void text_box::update_canvas()
 		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
-
-		tmp.set_variable("editable", wfl::variant(is_editable()));
 
 		tmp.set_variable("cursor_offset",
 						 wfl::variant(get_cursor_position(start + length).x));
@@ -220,7 +165,7 @@ void text_box::update_canvas()
 	}
 }
 
-void text_box::delete_char(const bool before_cursor)
+void combobox::delete_char(const bool before_cursor)
 {
 	if(before_cursor) {
 		set_cursor(get_selection_start() - 1, false);
@@ -231,7 +176,7 @@ void text_box::delete_char(const bool before_cursor)
 	delete_selection();
 }
 
-void text_box::delete_selection()
+void combobox::delete_selection()
 {
 	if(get_selection_length() == 0) {
 		return;
@@ -251,7 +196,7 @@ void text_box::delete_selection()
 	set_cursor(start, false);
 }
 
-void text_box::handle_mouse_selection(point mouse, const bool start_selection)
+void combobox::handle_mouse_selection(point mouse, const bool start_selection)
 {
 	mouse.x -= get_x();
 	mouse.y -= get_y();
@@ -275,9 +220,9 @@ void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 	dragging_ |= start_selection;
 }
 
-void text_box::update_offsets()
+void combobox::update_offsets()
 {
-	const auto conf = cast_config_to<text_box_definition>();
+	const auto conf = cast_config_to<combobox_definition>();
 	assert(conf);
 
 	text_height_ = font::get_max_height(get_text_font_size());
@@ -301,51 +246,83 @@ void text_box::update_offsets()
 	update_canvas();
 }
 
-bool text_box::history_up()
-{
-	if(!history_.get_enabled()) {
-		return false;
-	}
-
-	const std::string str = history_.up(get_value());
-	if(!str.empty()) {
-		set_value(str);
-	}
-	return true;
-}
-
-bool text_box::history_down()
-{
-	if(!history_.get_enabled()) {
-		return false;
-	}
-
-	const std::string str = history_.down(get_value());
-	if(!str.empty()) {
-		set_value(str);
-	}
-	return true;
-}
-
-void text_box::handle_key_tab(SDL_Keymod modifier, bool& handled)
-{
-	if(modifier & KMOD_CTRL) {
-		if(!(modifier & KMOD_SHIFT)) {
-			handled = history_up();
-		} else {
-			handled = history_down();
-		}
-	}
-}
-
-void text_box::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
+void combobox::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 {
 	handled = true;
-
 	set_value("");
 }
 
-void text_box::signal_handler_mouse_motion(const event::ui_event event,
+void combobox::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
+{
+	DBG_GUI_E << LOG_SCOPE_HEADER;
+	handled = true;
+	if (selected_ > 1) {
+		set_selected(selected_ - 1, true);
+	}
+}
+
+void combobox::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
+{
+	DBG_GUI_E << LOG_SCOPE_HEADER;
+	handled = true;
+	if (selected_ < values_.size()-1) {
+		set_selected(selected_ + 1, true);
+	}
+}
+
+void combobox::set_values(const std::vector<::config>& values, unsigned selected)
+{
+	assert(selected < values.size());
+	assert(selected_ < values_.size());
+
+	if(values[selected]["label"] != values_[selected_]["label"]) {
+		queue_redraw();
+	}
+
+	values_ = values;
+	selected_ = selected;
+
+//	set_label(values_[selected_]["label"]);
+	text_box_base::set_value(values_[selected_]["label"]);
+}
+
+void combobox::set_selected(unsigned selected, bool fire_event)
+{
+	assert(selected < values_.size());
+	assert(selected_ < values_.size());
+
+	if(selected != selected_) {
+		queue_redraw();
+	}
+
+	selected_ = selected;
+
+//	set_label(values_[selected_]["label"]);
+	text_box_base::set_value(values_[selected_]["label"]);
+	if (fire_event) {
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
+}
+
+void combobox::update_mouse_cursor()
+{
+	unsigned x = get_x() + this->get_size().x;
+	unsigned mx = get_mouse_position().x;
+
+	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
+		cursor::set(cursor::NORMAL);
+	} else {
+		cursor::set(cursor::IBEAM);
+	}
+}
+
+void combobox::signal_handler_mouse_enter(const event::ui_event /*event*/,
+											   bool& /*handled*/)
+{
+	update_mouse_cursor();
+}
+
+void combobox::signal_handler_mouse_motion(const event::ui_event event,
 											bool& handled,
 											const point& coordinate)
 {
@@ -353,29 +330,56 @@ void text_box::signal_handler_mouse_motion(const event::ui_event event,
 
 	if(dragging_) {
 		handle_mouse_selection(coordinate, false);
+	} else {
+		update_mouse_cursor();
 	}
 
 	handled = true;
 }
 
-void text_box::signal_handler_left_button_down(const event::ui_event event,
+void combobox::signal_handler_left_button_down(const event::ui_event event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	/*
-	 * Copied from the base class see how we can do inheritance with the new
-	 * system...
-	 */
-	get_window()->keyboard_capture(this);
-	get_window()->mouse_capture();
+	/* get_x() is the left border
+	 * this->get_size().x is the size of this widget
+	 * so get_x() + this->get_size().x is the right border
+	 * ICON_SIZE is the size of the icon. */
 
-	handle_mouse_selection(get_mouse_position(), true);
+	unsigned x = get_x() + this->get_size().x;
+	unsigned mx = get_mouse_position().x;
+
+	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
+		// If a button has a retval do the default handling.
+		dialogs::drop_down_menu droplist(this, values_, selected_, false);
+
+		if(droplist.show()) {
+			const int selected = droplist.selected_item();
+
+			// Safety check. If the user clicks a selection in the dropdown and moves their mouse away too
+			// quickly, selected_ could be set to -1. This returns in that case, preventing crashes.
+			if(selected < 0) {
+				return;
+			}
+
+			set_selected(selected, true);
+		}
+	} else {
+		/*
+		 * Copied from the base class see how we can do inheritance with the new
+		 * system...
+		 */
+		get_window()->keyboard_capture(this);
+		get_window()->mouse_capture();
+
+		handle_mouse_selection(get_mouse_position(), true);
+	}
 
 	handled = true;
 }
 
-void text_box::signal_handler_left_button_up(const event::ui_event event,
+void combobox::signal_handler_left_button_up(const event::ui_event event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
@@ -385,7 +389,7 @@ void text_box::signal_handler_left_button_up(const event::ui_event event,
 }
 
 void
-text_box::signal_handler_left_button_double_click(const event::ui_event event,
+combobox::signal_handler_left_button_double_click(const event::ui_event event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
@@ -396,20 +400,20 @@ text_box::signal_handler_left_button_double_click(const event::ui_event event,
 
 // }---------- DEFINITION ---------{
 
-text_box_definition::text_box_definition(const config& cfg)
+combobox_definition::combobox_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing text_box " << id;
+	DBG_GUI_P << "Parsing combobox " << id;
 
 	load_resolutions<resolution>(cfg);
 }
 
-text_box_definition::resolution::resolution(const config& cfg)
+combobox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, text_x_offset(cfg["text_x_offset"])
 	, text_y_offset(cfg["text_y_offset"])
 {
-	// Note the order should be the same as the enum state_t in text_box.hpp.
+	// Note the order should be the same as the enum state_t in combobox.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for editable text box")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for editable text box")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for editable text box")));
@@ -421,30 +425,31 @@ text_box_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_text_box::builder_text_box(const config& cfg)
+builder_combobox::builder_combobox(const config& cfg)
 	: builder_styled_widget(cfg)
-	, history(cfg["history"])
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
-	, editable(cfg["editable"].to_bool(true))
+	, options_()
 {
+	for(const auto& option : cfg.child_range("option")) {
+		options_.push_back(option);
+	}
 }
 
-std::unique_ptr<widget> builder_text_box::build() const
+std::unique_ptr<widget> builder_combobox::build() const
 {
-	auto widget = std::make_unique<text_box>(*this);
+	auto widget = std::make_unique<combobox>(*this);
 
-	// A textbox doesn't have a label but a text
+	// A combobox doesn't have a label but a text
 	widget->set_value(label_string);
 
-	if(!history.empty()) {
-		widget->set_history(history);
+	if(!options_.empty()) {
+		widget->set_values(options_);
 	}
 
 	widget->set_max_input_length(max_input_length);
 	widget->set_hint_data(hint_text, hint_image);
-	widget->set_editable(editable);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";
