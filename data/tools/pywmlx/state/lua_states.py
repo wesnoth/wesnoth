@@ -274,7 +274,7 @@ class LuaStr30:
 
 # Plural Idle 1:
 #  When argument 1 or 2 is expected
-#  Here we expect " ' or a [ which will say us what kind of string we will add.
+#  Here we expect " ' or a [ which will tell us what kind of string we will add.
 class LuaPlIdle1:
     def __init__(self):
         self.regex = None
