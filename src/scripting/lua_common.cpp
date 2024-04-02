@@ -26,7 +26,6 @@
 
 #include "config.hpp"
 #include "scripting/push_check.hpp"
-#include "scripting/lua_unit.hpp"
 #include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
 #include "log.hpp"
@@ -36,10 +35,8 @@
 
 #include <cstring>
 #include <iterator>                     // for distance, advance
-#include <new>                          // for operator new
 #include <string>                       // for string, basic_string
 
-#include "lua/lauxlib.h"
 
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";
@@ -253,7 +250,7 @@ static int impl_vconfig_get(lua_State *L)
 		}
 		for (int j = 1; i != i_end; ++i, ++j)
 		{
-			lua_createtable(L, 2, 0);
+			luaW_push_namedtuple(L, {"tag", "contents"});
 			lua_pushstring(L, i.get_key().c_str());
 			lua_rawseti(L, -2, 1);
 			luaW_pushvconfig(L, i.get_child());
@@ -1116,9 +1113,12 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 
 	int error_handler_index = lua_gettop(L) - nArgs - 1;
 
+	++lua_jailbreak_exception::jail_depth;
+
 	// Call the function.
 	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 
+	--lua_jailbreak_exception::jail_depth;
 	lua_jailbreak_exception::rethrow();
 
 	// Remove the error handler.
@@ -1140,6 +1140,8 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 		/*
 		 * When an exception is thrown which doesn't derive from
 		 * std::exception m will be nullptr pointer.
+		 * When adding a new conditional branch, remember to log the
+		 * error with ERR_LUA or ERR_WML.
 		 */
 		char const *m = lua_tostring(L, -1);
 		if(m) {
@@ -1156,12 +1158,14 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 #pragma warning (pop)
 #endif
 					e = em;
+				ERR_LUA << std::string(m, e ? e - m : strlen(m));
 				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 			} else {
 				ERR_LUA << m;
 				chat_message("Lua error", m);
 			}
 		} else {
+			ERR_LUA << "Lua caught unknown exception";
 			chat_message("Lua caught unknown exception", "");
 		}
 		lua_pop(L, 1);

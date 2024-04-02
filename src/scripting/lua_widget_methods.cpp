@@ -15,43 +15,31 @@
 
 #include "config.hpp"
 #include "gui/core/canvas.hpp"
-#include "gui/core/gui_definition.hpp"
 #include "gui/core/event/handler.hpp" // for open_window_stack
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/multimenu_button.hpp"
-#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
-#include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
-#include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_methods.hpp"
 #include "scripting/push_check.hpp"
-#include "serialization/string_utils.hpp"
-#include "tstring.hpp"
 #include "utils/scope_exit.hpp"
 #include <functional>
 
-#include <type_traits>
-#include <map>
-#include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)

@@ -34,9 +34,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
-class unit_animation;
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

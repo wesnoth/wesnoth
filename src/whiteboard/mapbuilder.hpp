@@ -23,7 +23,6 @@
 
 #include <list>
 
-#include "utility.hpp"
 
 struct unit_movement_resetter;
 

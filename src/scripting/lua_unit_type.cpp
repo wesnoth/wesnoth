@@ -23,7 +23,6 @@
 #include <string>
 #include <cstring>
 
-#include "lua/lauxlib.h"
 
 /**
  * Implementation for a lua reference to a unit_type.
@@ -176,6 +175,10 @@ static int impl_unit_type_next(lua_State* L)
 	}
 	lua_pushlstring(L, it->first.c_str(), it->first.size());
 	luaW_pushunittype(L, it->second);
+	if(!base) {
+		// Make sure the unit is built.
+		unit_types.build_unit_type(it->second, unit_type::FULL);
+	}
 	return 2;
 }
 

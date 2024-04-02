@@ -19,20 +19,14 @@
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
-#include "play_controller.hpp"
-#include "resources.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
-#include "whiteboard/manager.hpp"
 
 #include <functional>
 
@@ -85,13 +79,29 @@ void unit_recruit::filter_text_changed(const std::string& text)
 			const unit_type* type = recruit_list_[i];
 			if(!type) continue;
 
+			auto default_gender = !type->genders().empty()
+				? type->genders().front() : unit_race::MALE;
+			const auto* race = type->race();
+
+			// List of possible match criteria for this unit type. Empty values will
+			// never match.
+			auto criteria = std::make_tuple(
+				(game_config::debug ? type->id() : ""),
+				type->type_name(),
+				std::to_string(type->level()),
+				unit_type::alignment_description(type->alignment(), default_gender),
+				(race ? race->name(default_gender) : ""),
+				(race ? race->plural_name() : "")
+			);
+
 			bool found = false;
 			for(const auto & word : words)
 			{
 				// Search for the name in the local language.
 				// In debug mode, also search for the type id.
-				found = (game_config::debug && translation::ci_search(type->id(), word)) ||
-				        translation::ci_search(type->type_name(), word);
+				std::apply([&](auto&&... criterion) {
+					found = (translation::ci_search(criterion, word) || ...);
+				}, criteria);
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()

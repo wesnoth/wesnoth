@@ -24,7 +24,6 @@
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"

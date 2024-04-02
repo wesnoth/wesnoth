@@ -1,22 +1,22 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2020 Wesnoth development team
+# Copyright (C) 2005-2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2022-05-30 14:44+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"PO-Revision-Date: 2024-03-03 22:06+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [brush]: id=brush-1
@@ -122,7 +122,7 @@ msgstr "特殊"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "海拔"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -198,7 +198,7 @@ msgstr "視窗"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "模組"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -406,14 +406,8 @@ msgid "Map loaded from scenario"
 msgstr "已從章節中讀取地圖"
 
 #: src/editor/map/context_manager.cpp:955
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"已讀取引用的地圖檔案：\n"
-"$new"
+msgstr "已讀取引用的地圖檔案："
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -434,7 +428,7 @@ msgstr "空白檔案"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "不存在 .map 或 .cfg 副檔名的檔案"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -444,7 +438,7 @@ msgstr "這個地圖檔案像是一個章節，但是「map_data」的值連結�
 
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
+msgstr "發現字串 '<<' 表示內嵌 Lua 的存在 - 正在中止"
 
 #: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
@@ -453,21 +447,18 @@ msgstr "錯誤"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "章節讀取失敗，指讀取到地圖。"
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
-msgstr "這個地圖檔案像是一個章節，但是「map_data」的值連結到一個不存在的檔案"
+msgstr ""
+"這個地圖檔案像是一個章節，但是這個「map_file」的值連結到一個不存在的檔案"
 
 #: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "無法解析檔案來查找地圖資料"
 
 #: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
 #: src/editor/map/map_context.cpp:886

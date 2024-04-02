@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "gettext.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -26,7 +25,6 @@
 
 namespace gui2
 {
-class text_box_base;
 
 namespace dialogs
 {

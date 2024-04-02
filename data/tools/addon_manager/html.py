@@ -22,7 +22,7 @@ HTML_RESOURCES = (
     "asc.gif", "bg.gif", "desc.gif" # Used by style.css:
 )
 
-WESMERE_CSS_VERSION = "1.1.1"
+WESMERE_CSS_VERSION = "1.2.0"
 WESMERE_CSS_PREFIX = "https://www.wesnoth.org"
 
 WESMERE_HEADER = '''\
@@ -33,7 +33,6 @@ WESMERE_HEADER = '''\
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
     <link rel="icon" type="image/png" href="%(css_prefix)s/wesmere/img/favicon-32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="%(css_prefix)s/wesmere/img/favicon-16.png" sizes="16x16" />
     <link rel="stylesheet" type="text/css" href="%(css_prefix)s/wesmere/css/wesmere-%(css_version)s.css" />
@@ -111,8 +110,8 @@ WESMERE_FOOTER = '''\
 
 <div id="footer"><div id="footer-content"><div>
 	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="https://status.wesnoth.org/">Site Status</a><br />
-	Copyright &copy; 2003&ndash;2021 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
-	Site design Copyright &copy; 2017&ndash;2021 by Iris Morelle.
+	Copyright &copy; 2003&ndash;2024 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a><br />
+	Site design Copyright &copy; 2017&ndash;2024 by Iris Morelle
 </div></div></div>
 </body>
 </html>

@@ -96,13 +96,14 @@
 		, const std::string& dev_message = "");
 
 /** Helper class, don't construct this directly. */
-struct wml_exception
+struct wml_exception final
 	: public lua_jailbreak_exception
 {
 	wml_exception(const std::string& user_msg, const std::string& dev_msg)
 		: user_message(user_msg)
 		, dev_message(dev_msg)
 	{
+		this->store();
 	}
 
 	~wml_exception() noexcept {}
@@ -129,13 +130,14 @@ private:
 };
 
 /**
- * Returns a standard message for a missing wml key.
+ * Returns a standard message for a missing wml key (attribute).
  *
- * @param section                 The section is which the key should appear
- *                                (this should include the section brackets).
- *                                It may contain parent sections to make it
- *                                easier to find the wanted sections. They are
- *                                listed like [parent][child][section].
+ * @param section                 The section in which the key should appear.
+ *                                Shouldn't include leading or trailing brackets,
+ *                                as they're already in the translatable string;
+ *                                but if it has to include brackets in the middle,
+ *                                for example "parent][child][section", then it
+ *                                seems reasonable include the outer ones too.
  * @param key                     The omitted key.
  * @param primary_key             The primary key of the section.
  * @param primary_value           The value of the primary key (mandatory if
@@ -148,3 +150,16 @@ std::string missing_mandatory_wml_key(
 		, const std::string& key
 		, const std::string& primary_key = ""
 		, const std::string& primary_value = "");
+
+/**
+ * Returns a standard message for a missing wml child (tag).
+ *
+ * @param section                 The section in which the child should appear.
+ *                                Same meaning as for missing_mandatory_wml_key().
+ * @param tag                     The omitted tag.
+ *
+ * @returns                       The error message.
+ */
+std::string missing_mandatory_wml_tag(
+		  const std::string& section
+		, const std::string& tag);

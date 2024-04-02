@@ -26,7 +26,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "tooltips.hpp"
 
 #include <boost/regex.hpp>
 

@@ -20,12 +20,10 @@
 
 #include "addon/validation.hpp"
 
-#include "display.hpp"
 #include "editor/map/context_manager.hpp"
 #include "editor/map/map_context.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "game_board.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
@@ -207,11 +205,9 @@ std::size_t context_manager::modified_maps(std::string& message)
 
 void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
-	std::string fn = filesystem::directory_name(get_map_context().get_filename());
-	if(current_addon_ == "") {
+	std::string fn = get_map_context().get_filename();
+	if(fn.empty()) {
 		fn = filesystem::get_legacy_editor_dir()+"/maps";
-	} else if(fn.empty()) {
-		fn = filesystem::get_dir(filesystem::get_current_editor_dir(current_addon_) + "/maps");
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -678,10 +674,8 @@ void context_manager::resize_map_dialog()
 void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(current_addon_ == "") {
+	if(input_name.empty()) {
 		input_name = filesystem::get_legacy_editor_dir()+"/maps";
-	} else if(input_name.empty() || input_name.find("/maps") == std::string::npos) {
-		input_name = filesystem::get_dir(filesystem::get_current_editor_dir(current_addon_) +  + "/maps");
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -712,8 +706,8 @@ void context_manager::save_map_as_dialog()
 void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty() || input_name.find("/scenarios") == std::string::npos) {
-		input_name = filesystem::get_dir(filesystem::get_current_editor_dir(current_addon_) + "/scenarios");
+	if(input_name.empty()) {
+		input_name = filesystem::get_legacy_editor_dir()+"/scenarios";
 	}
 
 	gui2::dialogs::file_dialog dlg;

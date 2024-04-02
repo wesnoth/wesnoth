@@ -22,10 +22,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-struct builder_panel;
-}
 
 // ------------ WIDGET -----------{
 

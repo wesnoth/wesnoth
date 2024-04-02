@@ -21,10 +21,7 @@
 #include "utils/math.hpp"
 #include "game_version.hpp"
 
-#include <SDL2/SDL.h>
-
 #include <cstdlib>
-#include <map>
 #include <string>
 
 namespace sdl
@@ -257,7 +254,7 @@ surface rotate_90_surface(const surface &surf, bool clockwise);
 surface flip_surface(const surface &surf);
 surface flop_surface(const surface &surf);
 
-SDL_Rect get_non_transparent_portion(const surface &surf);
+surface get_non_transparent_portion(const surface &surf);
 
 /**
  * Helper methods for setting/getting a single pixel in an image.

@@ -28,14 +28,10 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
-#include "sdl/utils.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences/general.hpp"
 #include "video.hpp"
 
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/functional/hash_fwd.hpp>
 
 #include <cassert>
 #include <cstring>
@@ -97,7 +93,7 @@ pango_text::pango_text()
 	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
 	pango_layout_set_alignment(layout_.get(), alignment_);
 	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
-	pango_layout_set_line_spacing(layout_.get(), 1.3f);
+	pango_layout_set_line_spacing(layout_.get(), get_line_spacing_factor());
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
@@ -193,18 +189,41 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
+int pango_text::get_byte_offset(const unsigned column) const
+{
+	// First we need to determine the byte offset
+	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
+		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
+
+	// Go the wanted column.
+	for(std::size_t i = 0; i < column; ++i) {
+		if(!pango_layout_iter_next_char(itor.get())) {
+			// It seems that the documentation is wrong and causes and off by
+			// one error... the result should be false if already at the end of
+			// the data when started.
+			if(i + 1 == column) {
+				break;
+			}
+		}
+	}
+
+	// Get the byte offset
+	const int offset = pango_layout_iter_get_index(itor.get());
+	return offset;
+}
+
 point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
 {
 	this->recalculate();
 
-	// First we need to determine the byte offset, if more routines need it it
-	// would be a good idea to make it a separate function.
+	// Determing byte offset
 	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
 		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
 
 	// Go the wanted line.
 	if(line != 0) {
-		if(pango_layout_get_line_count(layout_.get()) >= static_cast<int>(line)) {
+
+		if(static_cast<int>(line) >= pango_layout_get_line_count(layout_.get())) {
 			return point(0, 0);
 		}
 
@@ -222,7 +241,7 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 			if(i + 1 == column) {
 				break;
 			}
-			// We are beyond data.
+			// Beyond data.
 			return point(0, 0);
 		}
 	}
@@ -337,19 +356,40 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 					<< " text '" << text
 					<< "' contains invalid utf-8, trimmed the invalid parts.";
 		}
+
+		if (highlight_start_offset_ != highlight_end_offset_) {
+			/** Highlight */
+			PangoAttrList *attribute_list = pango_attr_list_new();
+			int col_r = highlight_color_.r / 255.0 * 65535.0;
+			int col_g = highlight_color_.g / 255.0 * 65535.0;
+			int col_b = highlight_color_.b / 255.0 * 65535.0;
+			DBG_GUI_D << "highlight start : " << highlight_start_offset_ << "end : " << highlight_end_offset_;
+			DBG_GUI_D << "highlight rgb : " << col_r << "," << col_g << "," << col_b;
+			PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
+			attr->start_index = highlight_start_offset_;
+			attr->end_index = highlight_end_offset_;
+			pango_attr_list_insert(attribute_list, attr);
+
+			pango_layout_set_attributes(layout_.get(), attribute_list);
+		}
+
 		if(markedup) {
 			if(!this->set_markup(narrow, *layout_)) {
 				return false;
 			}
 		} else {
-			/*
-			 * pango_layout_set_text after pango_layout_set_markup might
-			 * leave the layout in an undefined state regarding markup so
-			 * clear it unconditionally.
-			 */
-			pango_layout_set_attributes(layout_.get(), nullptr);
+			if (highlight_start_offset_ == highlight_end_offset_) {
+				/*
+				 * pango_layout_set_text after pango_layout_set_markup might
+				 * leave the layout in an undefined state regarding markup so
+				 * clear it unconditionally.
+				 */
+				pango_layout_set_attributes(layout_.get(), nullptr);
+			}
+
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
+
 		text_ = narrow;
 		length_ = wide.size();
 		markedup_text_ = markedup;
@@ -994,6 +1034,9 @@ std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 	boost::hash_combine(hash, t.alignment_);
 	boost::hash_combine(hash, t.ellipse_mode_);
 	boost::hash_combine(hash, t.add_outline_);
+	boost::hash_combine(hash, t.highlight_start_offset_);
+	boost::hash_combine(hash, t.highlight_end_offset_);
+	boost::hash_combine(hash, t.highlight_color_.to_rgba_bytes());
 
 	return hash;
 }

@@ -21,8 +21,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 
-#include "desktop/clipboard.hpp"
-#include "desktop/open.hpp"
 
 #include "help/help.hpp"
 #include "gettext.hpp"
@@ -37,10 +35,6 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/credentials.hpp"
@@ -55,10 +49,8 @@
 #include "config.hpp"
 
 #include <functional>
-#include <iomanip>
 #include <set>
 #include <sstream>
-#include <stdexcept>
 
 namespace gui2::dialogs
 {
@@ -325,7 +317,18 @@ void addon_manager::pre_show(window& window)
 	if(addr_visible) {
 		auto addr_box = dynamic_cast<styled_widget*>(addr_visible->find("server_addr", false));
 		if(addr_box) {
-			addr_box->set_label(client_.addr());
+			if(!client_.server_id().empty()) {
+				auto full_id = formatter()
+					<< client_.addr() << ' '
+					<< font::unicode_em_dash << ' '
+					<< client_.server_id();
+				if(game_config::debug && !client_.server_version().empty()) {
+					full_id << " (" << client_.server_version() << ')';
+				}
+				addr_box->set_label(full_id.str());
+			} else {
+				addr_box->set_label(client_.addr());
+			}
 		}
 	}
 

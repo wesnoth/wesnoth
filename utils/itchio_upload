@@ -1,4 +1,6 @@
-#!/bin/sh -xe
+#!/bin/sh
+
+set -xeu
 
 # Run this script from directory containing windows installer(s)
 # passing needed version as argument

@@ -20,7 +20,6 @@
 
 #pragma once
 
-#include <set>
 
 class unit_map;
 class config;

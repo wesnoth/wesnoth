@@ -22,7 +22,6 @@
 #include "unicode_cast.hpp"
 
 #include <string>
-#include <vector>
 
 /**
  * For Win32 API.

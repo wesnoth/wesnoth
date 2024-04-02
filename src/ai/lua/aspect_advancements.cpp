@@ -16,17 +16,15 @@
 #include "ai/lua/aspect_advancements.hpp"
 
 #include "log.hpp"                // for LOG_STREAM, logger, etc
-#include "lua/lauxlib.h"                // for luaL_ref, LUA_REFNIL, lua_isstring, etc
+#include "lua/wrapper_lauxlib.h"        // for luaL_ref, LUA_REFNIL, lua_isstring, etc
 #include "map/location.hpp"             // for map_location
 #include "serialization/string_utils.hpp"  // for split
 #include "units/unit.hpp"
 #include "units/map.hpp"    // for unit_map::const_iterator, etc
 
-#include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, char_traits, etc
 #include <vector>                       // for vector
 
-struct lua_State;
 
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");

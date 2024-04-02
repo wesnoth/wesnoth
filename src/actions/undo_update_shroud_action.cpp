@@ -13,7 +13,6 @@
 */
 
 #include "actions/undo_update_shroud_action.hpp"
-#include "replay.hpp"
 
 namespace actions
 {

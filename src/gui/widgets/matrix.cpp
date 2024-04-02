@@ -25,9 +25,6 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
-
-#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -185,11 +182,11 @@ matrix_definition::matrix_definition(const config& cfg)
 
 matrix_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, content(new builder_grid(VALIDATE_WML_CHILD(cfg, "content", _("Missing [content] in [matrix_definition]"))))
+	, content(new builder_grid(VALIDATE_WML_CHILD(cfg, "content", missing_mandatory_wml_tag("matrix", "content"))))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for matrix definition")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for matrix definition")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("matrix_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("matrix_definition][resolution", "state_disabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -207,7 +204,7 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_bottom(nullptr)
 	, builder_left(nullptr)
 	, builder_right(nullptr)
-	, builder_main(create_widget_builder(VALIDATE_WML_CHILD(cfg, "main", _("Missing [main] in [matrix]"))))
+	, builder_main(create_widget_builder(VALIDATE_WML_CHILD(cfg, "main", missing_mandatory_wml_tag("matrix", "main"))))
 {
 	if(auto top = cfg.optional_child("top")) {
 		builder_top = std::make_shared<builder_grid>(*top);

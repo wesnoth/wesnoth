@@ -15,7 +15,6 @@
 
 #pragma once
 
-class surface;
 
 namespace cursor
 {

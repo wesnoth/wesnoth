@@ -20,7 +20,6 @@
 #include "editor/toolkit/brush.hpp"
 #include "hotkey/hotkey_command.hpp"
 
-class config;
 class game_config_view;
 namespace editor {
 

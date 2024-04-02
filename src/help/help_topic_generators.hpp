@@ -18,7 +18,6 @@
 #include "help_impl.hpp"
 
 #include <string>                       // for string
-#include <utility>                      // for pair
 #include <vector>                       // for vector
 class terrain_type;  // lines 20-20
 class unit_type;

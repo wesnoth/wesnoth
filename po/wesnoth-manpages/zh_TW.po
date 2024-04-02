@@ -6,18 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-17 23:20-0500\n"
-"PO-Revision-Date: 2022-05-30 16:00+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"PO-Revision-Date: 2024-03-10 21:41+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. type: TH
@@ -30,7 +30,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -242,11 +242,10 @@ msgstr "以指定 ID 的核心來覆寫被讀取的核心。"
 msgid "B<--data-dir>I<\\ directory>"
 msgstr "B<--data-dir>I<\\ directory>"
 
-# 原文缺少句號。
 #. type: Plain text
 #: doc/man/wesnoth.6:95
 msgid "overrides the data directory with the one specified"
-msgstr "以指定的目錄來覆寫資料目錄。"
+msgstr "以指定的目錄來覆寫資料目錄"
 
 #. type: TP
 #: doc/man/wesnoth.6:95
@@ -281,11 +280,10 @@ msgstr ""
 msgid "B<--debug-lua>"
 msgstr "B<--debug-lua>"
 
-# 原文缺少句號。
 #. type: Plain text
 #: doc/man/wesnoth.6:106
 msgid "enables some Lua debugging mechanisms"
-msgstr "啟用一些 Lua 偵錯機制。"
+msgstr "啟用一些 Lua 偵錯機制"
 
 #. type: TP
 #: doc/man/wesnoth.6:106
@@ -477,21 +475,19 @@ msgstr ""
 msgid "B<--logdomains[>I<=filter>B<]>"
 msgstr "B<--logdomains[>I<=filter>B<]>"
 
-# 原文缺少句號。
 #. type: Plain text
 #: doc/man/wesnoth.6:192
 msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
 msgstr ""
-"列出定義的日誌域（只列出包含 I<filter> 的日誌域，如果它有被使用的話）並退出。"
+"列出定義的日誌域（只列出包含 I<filter> 的日誌域，如果它有被使用的話）並退出"
 
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--no-log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
@@ -499,13 +495,13 @@ msgid ""
 "prevents redirecting logged output to a file. Log files are created in the "
 "logs directory under the userdata folder."
 msgstr ""
+"禁止將記錄輸出成檔案。 log 檔案原是建立在 userdata 的日誌目錄資料夾下。"
 
 #. type: TP
 #: doc/man/wesnoth.6:195
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
@@ -513,13 +509,14 @@ msgid ""
 "log output is written to a file in addition to standard output/error. "
 "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgstr ""
+"除了標準的匯出及錯誤外，日誌也會輸出成檔案。無論是隱含和明確都會取消 --no-"
+"log-to-file 的效果。"
 
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -527,6 +524,8 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"在 Windows 系統下，當使用 --no-log-to-file 時，會將輸出寫入 cerr/cout 而不是 "
+"CONOUT。否則，不會有任何作用。"
 
 #. type: TP
 #: doc/man/wesnoth.6:201
@@ -936,20 +935,13 @@ msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:358
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
 "在小型測試章節中執行遊戲。該章節應是有用一個 B<[test]> WML 標籤定義的章節。預"
-"設為 B<test>。B<[micro_ai]> 的展示功能可以用 B<micro_ai_test> 來啟動。隱含 "
-"B<--nogui>。"
+"設為 B<test>。B<[micro_ai]> 的展示功能可以用 B<micro_ai_test> 來啟動。"
 
 #. type: TP
 #: doc/man/wesnoth.6:358
@@ -1436,11 +1428,8 @@ msgstr "著作權"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "著作權 \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "著作權 \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:545 doc/man/wesnothd.6:304
@@ -1909,40 +1898,40 @@ msgstr "設置伺服器是否自動保存遊戲錄影。（預設值：B<false>�
 #: doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
-msgstr ""
+msgstr "啟用 TLS 時。 如果為 true，則還需要設定以下 3 個選項。"
 
 #. type: TP
 #: doc/man/wesnothd.6:170
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr "TLS 完整的信任鍊，格式為.pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr "TLS私鑰，格式為.pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -1950,6 +1939,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+"TLS Diffie-Hellman 參數，為.pem檔案。使用 B<openssl dhparam -out filename."
+"pem 4096>生成"
 
 #. type: TP
 #: doc/man/wesnothd.6:179
@@ -1976,7 +1967,7 @@ msgstr "例如：B<versions_accepted=\"*\"> 允許任意版本字串。"
 #: doc/man/wesnothd.6:185
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
@@ -1985,6 +1976,8 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"使用資料庫功能儲存遊戲資訊時伺服器的ID。 一般是接受客戶端的 major.minor 版"
+"本，例如1.16或1.17。"
 
 #. type: SS
 #: doc/man/wesnothd.6:189
@@ -2099,7 +2092,7 @@ msgstr ""
 "伺服器將以不提供任何暱稱註冊服務的方式來運行。所有額外的 "
 "B<forum_user_handler> 所需要用來運行的表格可以在韋諾的原始碼倉庫中的 "
 "table_definitions.sql 中被找到。需要啟用 MySQL 支援，以 cmake 來說要使用 "
-"B<ENABLE_MYSQL>；以 scons 來說要使用 B<forum_user_handler>。"
+"B<ENABLE_MYSQL>；以 scons 來說要使用 B<forum_user_handler>"
 
 #. type: TP
 #: doc/man/wesnothd.6:242
@@ -2153,16 +2146,12 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"phpbb 論壇中存放使用者資料的表格名稱。很可能是 E<lt>table-prefixE<gt>_users"
-"（例如：phpbb3_users）。"
+"phpbb 論壇中存放使用者資料的表單。很可能是 E<lt>table-prefixE<gt>_users（例"
+"如：phpbb3_users）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:257
@@ -2174,7 +2163,7 @@ msgstr "B<db_extra_table>"
 #: doc/man/wesnothd.6:260
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr "wesnothd 將在其中保存其自己的有關使用者資料的表格名稱。"
+msgstr "wesnothd 將在其中保存其自己的有關使用者資料的表格。"
 
 #. type: TP
 #: doc/man/wesnothd.6:260
@@ -2186,7 +2175,7 @@ msgstr "B<db_game_info_table>"
 #: doc/man/wesnothd.6:263
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr "wesnothd 將在其中保存其自己的有關遊戲資料的表格名稱。"
+msgstr "wesnothd 將在其中保存其自己的有關遊戲資料的表格。"
 
 #. type: TP
 #: doc/man/wesnothd.6:263
@@ -2199,7 +2188,7 @@ msgstr "B<db_game_player_info_table>"
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr "wesnothd 將在其中保存其自己的有關每場遊戲中的玩家資料的表格名稱。"
+msgstr "wesnothd 將在其中保存其自己的有關每場遊戲中的玩家資料的表格。"
 
 #. type: TP
 #: doc/man/wesnothd.6:266
@@ -2212,8 +2201,7 @@ msgstr "B<db_game_modification_info_table>"
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
-msgstr ""
-"wesnothd 將在其中保存其自己的有關每場遊戲中被使用的模組的資料的表格名稱。"
+msgstr "wesnothd 將在其中保存其自己的有關每場遊戲中被使用的模組的資料的表格。"
 
 #. type: TP
 #: doc/man/wesnothd.6:269
@@ -2223,74 +2211,58 @@ msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"phpbb 論壇中存放使用者群組資料的表格名稱。很可能是 E<lt>table-"
+"phpbb 論壇中存放使用者群組資料的表單。很可能是 E<lt>table-"
 "prefixE<gt>_user_group（例如：phpbb3_user_group）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
 msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
-msgstr ""
+msgstr "用於儲存登入/登出時間的表單。也用於將IP與使用者交互比對。"
 
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"phpbb 論壇中存放使用者資料的表格名稱。很可能是 E<lt>table-prefixE<gt>_users"
-"（例如：phpbb3_users）。"
+"phpbb 論壇中存放主題（帖子）資訊的表單。很可能是 E<lt>table-"
+"prefixE<gt>_topics（例如：phpbb3_topics）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"phpbb 論壇中存放使用者資料的表格名稱。很可能是 E<lt>table-prefixE<gt>_users"
-"（例如：phpbb3_users）。"
+"phpbb 論壇中存放封鎖使用者資料的表單。很可能是 E<lt>table-prefixE<gt>_banlist"
+"（例如：phpbb3_banlist）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:281

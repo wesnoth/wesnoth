@@ -16,7 +16,6 @@
 #include "hotkey/hotkey_handler_mp.hpp"
 
 #include "hotkey/hotkey_command.hpp"
-#include "hotkey/hotkey_item.hpp"
 #include "playsingle_controller.hpp"
 #include "playmp_controller.hpp"
 

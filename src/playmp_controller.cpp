@@ -37,7 +37,6 @@
 #include "synced_context.hpp"
 #include "video.hpp" // only for faked
 #include "wesnothd_connection.hpp"
-#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -236,7 +235,7 @@ void playmp_controller::linger()
 			// reimplement parts of play_side()
 			turn_data_.send_data();
 			play_linger_turn();
-			after_human_turn();
+			turn_data_.send_data();
 			LOG_NG << "finished human turn";
 		} catch(const savegame::load_game_exception&) {
 			LOG_NG << "caught load-game-exception";

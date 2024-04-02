@@ -36,10 +36,7 @@ namespace implementation
 struct builder_listbox;
 struct builder_horizontal_listbox;
 struct builder_grid_listbox;
-struct builder_styled_widget;
 }
-
-class generator_base;
 
 /** The listbox class. */
 class listbox : public scrollbar_container

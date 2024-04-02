@@ -35,8 +35,6 @@
 #include "gui/widgets/chatbox.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "log.hpp"

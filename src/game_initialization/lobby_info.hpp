@@ -20,7 +20,6 @@
 
 #include <boost/dynamic_bitset.hpp>
 
-#include <memory>
 
 namespace mp
 {

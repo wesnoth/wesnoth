@@ -29,10 +29,7 @@
 
 #include <set>
 
-class game_display;
-class game_data;
 class team;
-class unit;
 class replay;
 class replay_controller;
 class saved_game;
@@ -49,31 +46,16 @@ namespace font {
 }
 
 namespace game_events {
-	class manager;
 	class wml_event_pump;
-	class wml_menu_item;
 } // namespace game_events
 
-namespace soundsource {
-	class manager;
-} // namespace soundsource
-
 class statistics_t;
-
-namespace pathfind {
-	class manager;
-}
-
-namespace tooltips {
-	class manager;
-} // namespace tooltips
 
 namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
 
 // Holds gamestate related objects
-class game_state;
 
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
@@ -416,8 +398,6 @@ private:
 	 */
 	void check_next_scenario_is_known();
 
-	bool victory_when_enemies_defeated_;
-	bool remove_from_carryover_on_defeat_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 

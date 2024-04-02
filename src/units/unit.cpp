@@ -29,10 +29,8 @@
 #include "game_board.hpp"           // for game_board
 #include "game_config.hpp"          // for add_color_info, etc
 #include "game_data.hpp"
-#include "game_errors.hpp"         // for game_error
 #include "game_events/manager.hpp" // for add_events
 #include "game_version.hpp"
-#include "gettext.hpp" // for N_
 #include "lexical_cast.hpp"
 #include "log.hpp"                       // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
@@ -40,12 +38,9 @@
 #include "random.hpp"                    // for generator, rng
 #include "resources.hpp"                 // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
-#include "side_filter.hpp"               // for side_filter
 #include "synced_context.hpp"
 #include "team.hpp"                      // for team, get_teams, etc
-#include "terrain/filter.hpp"            // for terrain_filter
 #include "units/abilities.hpp"           // for effect, filter_base_matches
-#include "units/animation.hpp"           // for unit_animation
 #include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
 #include "units/formula_manager.hpp" // for unit_formula_manager
@@ -58,10 +53,7 @@
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
-#include <functional>
 #include <iterator>                     // for back_insert_iterator, etc
-#include <new>                          // for operator new
-#include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string_view>
 
 namespace t_translation { struct terrain_code; }
@@ -181,6 +173,30 @@ namespace
 			WRN_UT << "Unknown attribute '" << cur->first << "' discarded.";
 			++cur;
 		}
+	}
+
+	auto stats_storage_resetter(unit& u, bool clamp = false)
+	{
+		int hitpoints = u.hitpoints();
+		int moves = u.movement_left();
+		int attacks = u.attacks_left(true);
+		int experience= u.experience();
+		bool slowed= u.get_state(unit::STATE_SLOWED);
+		bool poisoned= u.get_state(unit::STATE_POISONED);
+		return [=, &u] () {
+			if(clamp) {
+				u.set_movement(std::min(u.total_movement(), moves));
+				u.set_hitpoints(std::min(u.max_hitpoints(), hitpoints));
+				u.set_attacks(std::min(u.max_attacks(), attacks));
+			} else {
+				u.set_movement(moves);
+				u.set_hitpoints(hitpoints);
+				u.set_attacks(attacks);
+			}
+			u.set_experience(experience);
+			u.set_state(unit::STATE_SLOWED, slowed && !u.get_state("unslowable"));
+			u.set_state(unit::STATE_POISONED, poisoned && !u.get_state("unpoisonable"));
+		};
 	}
 } // end anon namespace
 
@@ -887,11 +903,12 @@ std::vector<std::string> unit::get_traits_list() const
 /**
  * Advances this unit to the specified type.
  * Experience is left unchanged.
- * Current hit point total is left unchanged unless it would violate max HP.
+ * Current hitpoints/movement/attacks_left is left unchanged unless it would violate their maximum.
  * Assumes gender_ and variation_ are set to their correct values.
  */
 void unit::advance_to(const unit_type& u_type, bool use_traits)
 {
+	auto ss = stats_storage_resetter(*this, true);
 	appearance_changed_ = true;
 	// For reference, the type before this advancement.
 	const unit_type& old_type = type();
@@ -994,20 +1011,10 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
-	if(get_state("unpoisonable")) {
-		set_state(STATE_POISONED, false);
-	}
-	if(get_state("unslowable")) {
-		set_state(STATE_SLOWED, false);
-	}
+	// Make sure apply_modifications() didn't attempt to heal the unit (for example if the unit has a default amla.).
+	ss();
 	if(get_state("unpetrifiable")) {
 		set_state(STATE_PETRIFIED, false);
-	}
-
-	// Now that modifications are done modifying the maximum hit points,
-	// enforce this maximum.
-	if(hit_points_ > max_hit_points_) {
-		hit_points_ = max_hit_points_;
 	}
 
 	// In case the unit carries EventWML, apply it now
@@ -1220,8 +1227,6 @@ void unit::expire_modifications(const std::string& duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
 	const unit_type* rebuild_from = nullptr;
-	int hp = hit_points_;
-	int mp = movement_;
 	// Loop through all types of modifications.
 	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
@@ -1248,8 +1253,6 @@ void unit::expire_modifications(const std::string& duration)
 	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
-		hit_points_ = hp;
-		movement_ = std::min(mp, max_movement_);
 	}
 }
 
@@ -2203,7 +2206,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		if(increase.empty() == false) {
-			experience_ = utils::apply_modifier(experience_, increase, 1);
+			experience_ = utils::apply_modifier(experience_, increase, 0);
 		}
 	} else if(apply_to == "max_experience") {
 		const std::string& increase = effect["increase"];
@@ -2431,14 +2434,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 {
 	bool generate_description = mod["generate_description"].to_bool(true);
 
+	config* target = nullptr;
+
 	if(no_add == false) {
-		modifications_.add_child(mod_type, mod);
+		target = &modifications_.add_child(mod_type, mod);
+		target->remove_children("effect");
 	}
 
-	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
-	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
+		if(target) {
+			//Store effects only after they are added to avoid double applying effects on advance with apply_to=variation.
+			target->add_child("effect", effect);
+		}
 		// Apply SUF.
 		if(auto afilter = effect.optional_child("filter")) {
 			assert(resources::filter_con);
@@ -2449,6 +2457,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		const std::string& apply_to = effect["apply_to"];
 		int times = effect["times"].to_int(1);
 		t_string description;
+
+		if(no_add && (apply_to == "type" || apply_to == "variation")) {
+			continue;
+		}
 
 		if(effect["times"] == "per level") {
 			if(effect["apply_to"] == "level") {
@@ -2463,20 +2475,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(times) {
 			while (times > 0) {
 				times --;
-
-				bool was_poisoned = get_state(STATE_POISONED);
-				// Apply unit type/variation changes last to avoid double applying effects on advance.
-				if(apply_to == "type") {
-					set_poisoned = false;
-					type_effect = effect;
-					continue;
-				}
-				if(apply_to == "variation") {
-					set_poisoned = false;
-					variation_effect = effect;
-					continue;
-				}
-
 				std::string description_component;
 				if(resources::lua_kernel) {
 					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
@@ -2489,11 +2487,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				}
 				if(!times) {
 					description += description_component;
-				}
-				if(!was_poisoned && get_state(STATE_POISONED)) {
-					set_poisoned = true;
-				} else if(was_poisoned && !get_state(STATE_POISONED)) {
-					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2511,33 +2504,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(!description.empty()) {
 			effects_description.push_back(description);
 		}
-	}
-	// Apply variations -- only apply if we are adding this for the first time.
-	if((!type_effect.empty() || !variation_effect.empty()) && no_add == false) {
-		if(!type_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(type_effect["apply_to"], *this, type_effect, true);
-			} else if(builtin_effects.count(type_effect["apply_to"])) {
-				apply_builtin_effect(type_effect["apply_to"], type_effect);
-				description = describe_builtin_effect(type_effect["apply_to"], type_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(!variation_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(variation_effect["apply_to"], *this, variation_effect, true);
-			} else if(builtin_effects.count(variation_effect["apply_to"])) {
-				apply_builtin_effect(variation_effect["apply_to"], variation_effect);
-				description = describe_builtin_effect(variation_effect["apply_to"], variation_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(set_poisoned)
-			// An effect explicitly set the poisoned state, and this
-			// should override the unit being immune to poison.
-			set_state(STATE_POISONED, true);
 	}
 
 	t_string description;

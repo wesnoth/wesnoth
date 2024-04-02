@@ -23,7 +23,6 @@
 #include "display.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "preferences/game.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"

@@ -19,16 +19,13 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/viewport.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
@@ -199,7 +196,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
 
-		resize_needed = !content_resize_request();
+		resize_needed = !content_resize_request(true);
 	}
 
 	if(resize_needed) {
@@ -707,10 +704,10 @@ listbox_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for listbox")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for listbox")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_disabled")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined."));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("listbox_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

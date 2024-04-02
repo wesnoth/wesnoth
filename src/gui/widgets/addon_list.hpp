@@ -15,13 +15,11 @@
 #pragma once
 
 #include "addon/info.hpp"
-#include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 #include <functional>
 #include <string>
 #include <vector>

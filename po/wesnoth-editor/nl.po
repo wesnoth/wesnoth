@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2023-02-09 16:27+0100\n"
+"PO-Revision-Date: 2024-03-12 17:01+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: /home/koan/wesnoth\n"
 
 #. [brush]: id=brush-1
@@ -122,7 +122,7 @@ msgstr "speciaal"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "verhoging"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -198,7 +198,7 @@ msgstr "Venster"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -410,14 +410,8 @@ msgid "Map loaded from scenario"
 msgstr "Kaart geladen uit scenario"
 
 #: src/editor/map/context_manager.cpp:955
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Geladen gerefereerde kaartbestand:\n"
-"$new"
+msgstr "Geladen gerefereerde kaartbestand:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -438,7 +432,7 @@ msgstr "Leeg bestand"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "Bestand heeft geen .map of .cfg extensie"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -451,6 +445,7 @@ msgstr ""
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
+"De karakters '<<' zijn gevonden, dit duidt op een aanwezige lua - afbreken"
 
 #: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
@@ -459,23 +454,19 @@ msgstr "Fout"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "Niet gelukt om scenario te laden, probeer nu enkel de kaart te laden."
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
+"Het kaartbestand lijkt op een scenario, maar de map_file waarde wijst niet "
 "naar een bestaand bestand"
 
 #: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Niet in staat om bestand te verwerken om kaart data te vinden"
 
 #: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
 #: src/editor/map/map_context.cpp:886

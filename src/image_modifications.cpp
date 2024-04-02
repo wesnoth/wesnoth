@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
+#include "utils/from_chars.hpp"
 
 #include "formula/formula.hpp"
 #include "formula/callable.hpp"
@@ -37,10 +38,7 @@ namespace image {
 /** Adds @a mod to the queue (unless mod is nullptr). */
 void modification_queue::push(std::unique_ptr<modification> mod)
 {
-	// Null pointers do not get stored. (Shouldn't happen, but just in case.)
-	if(mod != nullptr) {
-		priorities_[mod->priority()].push_back(std::move(mod));
-	}
+	priorities_[mod->priority()].push_back(std::move(mod));
 }
 
 /** Removes the top element from the queue */
@@ -78,14 +76,14 @@ modification * modification_queue::top() const
 namespace {
 
 /** A function used to parse modification arguments */
-using mod_parser = std::function<std::unique_ptr<modification>(const std::string&)>;
+using mod_parser = std::function<std::unique_ptr<modification>(std::string_view)>;
 
 /** A map of all registered mod parsers
  *
  * The mapping is between the modification name and the parser function pointer
  * An example of an entry would be "TC" -> &parse_TC_mod
  */
-std::map<std::string, mod_parser> mod_parsers;
+std::map<std::string, mod_parser, std::less<>> mod_parsers;
 
 /** Decodes a single modification using an appropriate mod_parser
  *
@@ -96,22 +94,22 @@ std::map<std::string, mod_parser> mod_parsers;
  */
 std::unique_ptr<modification> decode_modification(const std::string& encoded_mod)
 {
-	std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
+	const std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
 
 	if(split.size() != 2) {
 		ERR_DP << "error parsing image modifications: " << encoded_mod;
 		return nullptr;
 	}
 
-	std::string mod_type = split[0];
-	std::string args = split[1];
+	const std::string& mod_type = split[0];
+	const std::string& args = split[1];
 
-	if(mod_parsers.find(mod_type) == mod_parsers.end()) {
+	if(const auto parser = mod_parsers.find(mod_type); parser != mod_parsers.end()) {
+		return std::invoke(parser->second, args);
+	} else {
 		ERR_DP << "unknown image function in path: " << mod_type;
 		return nullptr;
 	}
-
-	return mod_parsers[mod_type](args);
 }
 
 } // end anon namespace
@@ -120,11 +118,13 @@ std::unique_ptr<modification> decode_modification(const std::string& encoded_mod
 modification::imod_exception::imod_exception(const std::stringstream& message_stream)
 	: message(message_stream.str())
 {
+	this->store();
 }
 
 modification::imod_exception::imod_exception(const std::string& message)
 	: message(message)
 {
+	this->store();
 }
 
 /** Decodes the modification string
@@ -193,6 +193,11 @@ surface rotate_modification::operator()(const surface& src) const
 surface gs_modification::operator()(const surface& src) const
 {
 	return greyscale_image(src);
+}
+
+surface crop_transparency_modification::operator()(const surface& src) const
+{
+	return get_non_transparent_portion(src);
 }
 
 surface bw_modification::operator()(const surface& src) const
@@ -465,17 +470,15 @@ surface scale_modification::operator()(const surface& src) const
 	point size = target_size_;
 
 	if(size.x <= 0) {
-		if(size.x < 0) {
-			ERR_DP << "width of " << fn_ << " is negative - resetting to original width";
-		}
 		size.x = src->w;
+	} else if(flags_ & X_BY_FACTOR) {
+		size.x = src->w * (static_cast<double>(size.x) / 100);
 	}
 
 	if(size.y <= 0) {
-		if(size.y < 0) {
-			ERR_DP << "height of " << fn_ << " is negative - resetting to original height";
-		}
 		size.y = src->h;
+	} else if(flags_ & Y_BY_FACTOR) {
+		size.y = src->h * (static_cast<double>(size.y) / 100);
 	}
 
 	if(flags_ & PRESERVE_ASPECT_RATIO) {
@@ -598,14 +601,14 @@ struct parse_mod_registration
  * @param args_var The name for the string argument provided
  */
 #define REGISTER_MOD_PARSER(type, args_var)                                                           \
-    static std::unique_ptr<modification> parse_##type##_mod(const std::string&);                      \
+    static std::unique_ptr<modification> parse_##type##_mod(std::string_view);                        \
     static parse_mod_registration parse_##type##_mod_registration_aux(#type, &parse_##type##_mod);    \
-    static std::unique_ptr<modification> parse_##type##_mod(const std::string& args_var)              \
+    static std::unique_ptr<modification> parse_##type##_mod(std::string_view args_var)                \
 
 // Color-range-based recoloring
 REGISTER_MOD_PARSER(TC, args)
 {
-	std::vector<std::string> params = utils::split(args,',');
+	const auto params = utils::split_view(args,',');
 
 	if(params.size() < 2) {
 		ERR_DP << "too few arguments passed to the ~TC() function";
@@ -613,9 +616,9 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	const int side_n = lexical_cast_default<int>(params[0], -1);
+	const int side_n = utils::from_chars<int>(params[0]).value_or(-1);
 	if(side_n < 1) {
-		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function";
+		ERR_DP << "Invalid side (" << params[0] << ") passed to the ~TC() function";
 		return nullptr;
 	}
 
@@ -648,7 +651,7 @@ REGISTER_MOD_PARSER(TC, args)
 // Team-color-based color range selection and recoloring
 REGISTER_MOD_PARSER(RC, args)
 {
-	const std::vector<std::string> recolor_params = utils::split(args,'>');
+	const auto recolor_params = utils::split_view(args,'>');
 
 	if(recolor_params.size() <= 1) {
 		return nullptr;
@@ -677,7 +680,7 @@ REGISTER_MOD_PARSER(RC, args)
 // Palette switch
 REGISTER_MOD_PARSER(PAL, args)
 {
-	const std::vector<std::string> remap_params = utils::split(args,'>');
+	const auto remap_params = utils::split_view(args,'>');
 
 	if(remap_params.size() < 2) {
 		ERR_DP << "not enough arguments passed to the ~PAL() function: " << args;
@@ -718,28 +721,23 @@ REGISTER_MOD_PARSER(FL, args)
 // Rotations
 REGISTER_MOD_PARSER(ROTATE, args)
 {
-	const std::vector<std::string>& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = slice_params.size();
+	const auto slice_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 
-	switch(s) {
+	switch(slice_params.size()) {
 		case 0:
 			return std::make_unique<rotate_modification>();
-			break;
 		case 1:
 			return std::make_unique<rotate_modification>(
-				lexical_cast_default<int>(slice_params[0]));
-			break;
+				utils::from_chars<int>(slice_params[0]).value_or(0));
 		case 2:
 			return std::make_unique<rotate_modification>(
-				lexical_cast_default<int>(slice_params[0]),
-				lexical_cast_default<int>(slice_params[1]));
-			break;
+				utils::from_chars<int>(slice_params[0]).value_or(0),
+				utils::from_chars<int>(slice_params[1]).value_or(0));
 		case 3:
 			return std::make_unique<rotate_modification>(
-				lexical_cast_default<int>(slice_params[0]),
-				lexical_cast_default<int>(slice_params[1]),
-				lexical_cast_default<int>(slice_params[2]));
-			break;
+				utils::from_chars<int>(slice_params[0]).value_or(0),
+				utils::from_chars<int>(slice_params[1]).value_or(0),
+				utils::from_chars<int>(slice_params[2]).value_or(0));
 	}
 	return nullptr;
 }
@@ -750,28 +748,41 @@ REGISTER_MOD_PARSER(GS, )
 	return std::make_unique<gs_modification>();
 }
 
+// crop transparent padding
+REGISTER_MOD_PARSER(CROP_TRANSPARENCY, )
+{
+	return std::make_unique<crop_transparency_modification>();
+}
+
+// TODO: should this be made a more general util function?
+bool in_range(int val, int min, int max)
+{
+	return min <= val && val <= max;
+}
+
 // Black and white
 REGISTER_MOD_PARSER(BW, args)
 {
-	const std::vector<std::string>& params = utils::split(args, ',');
+	const auto params = utils::split_view(args, ',');
 
 	if(params.size() != 1) {
 		ERR_DP << "~BW() requires  exactly one argument";
 		return nullptr;
 	}
 
-	try {
-		int threshold = std::stoi(params[0]);
-		if(threshold < 0 || threshold > 255) {
-			ERR_DP << "~BW() argument out of range 0 - 255";
-			return nullptr;
-		}  else {
-			return std::make_unique<bw_modification>(threshold);
-		}
-	} catch (const std::invalid_argument&) {
+	// TODO: maybe get this directly as uint8_t?
+	const auto threshold = utils::from_chars<int>(params[0]);
+	if(!threshold) {
 		ERR_DP << "unsupported argument in ~BW() function";
 		return nullptr;
 	}
+
+	if(!in_range(*threshold, 0, 255)) {
+		ERR_DP << "~BW() argument out of range 0 - 255";
+		return nullptr;
+	}
+
+	return std::make_unique<bw_modification>(*threshold);
 }
 
 // Sepia
@@ -783,51 +794,42 @@ REGISTER_MOD_PARSER(SEPIA, )
 // Negative
 REGISTER_MOD_PARSER(NEG, args)
 {
-	const std::vector<std::string>& params = utils::split(args, ',');
+	const auto params = utils::split_view(args, ',');
 
-	switch (params.size()) {
-		case 0:
-			// apparently -1 may be a magic number
-			// but this is the threshold value required
-			// to fully invert a channel
-			return std::make_unique<negative_modification>(-1, -1, -1);
-			break;
-		case 1:
-			try {
-				int threshold = std::stoi(params[0]);
-				if(threshold < -1 || threshold > 255) {
-					ERR_DP << "unsupported argument value in ~NEG() function";
-					return nullptr;
-				} else {
-					return std::make_unique<negative_modification>(threshold, threshold, threshold);
-				}
-			} catch (const std::invalid_argument&) {
-				ERR_DP << "unsupported argument value in ~NEG() function";
-				return nullptr;
-			}
-			break;
-		case 3:
-			try {
-				int thresholdRed = std::stoi(params[0]);
-				int thresholdGreen = std::stoi(params[1]);
-				int thresholdBlue = std::stoi(params[2]);
-				if(thresholdRed < -1 || thresholdRed > 255 || thresholdGreen < -1 || thresholdGreen > 255 || thresholdBlue < -1 || thresholdBlue > 255) {
-					ERR_DP << "unsupported argument value in ~NEG() function";
-					return nullptr;
-				} else {
-					return std::make_unique<negative_modification>(thresholdRed, thresholdGreen, thresholdBlue);
-				}
-			} catch (const std::invalid_argument&) {
-				ERR_DP << "unsupported argument value in ~NEG() function";
-				return nullptr;
-			}
-			break;
-		default:
-			ERR_DP << "~NEG() requires 0, 1 or 3 arguments";
+	switch(params.size()) {
+	case 0:
+		// apparently -1 may be a magic number but this is the threshold
+		// value required to fully invert a channel
+		return std::make_unique<negative_modification>(-1, -1, -1);
+
+	case 1: {
+		const auto threshold = utils::from_chars<int>(params[0]);
+
+		if(threshold && in_range(*threshold, -1, 255)) {
+			return std::make_unique<negative_modification>(*threshold, *threshold, *threshold);
+		} else {
+			ERR_DP << "unsupported argument value in ~NEG() function";
 			return nullptr;
+		}
 	}
 
-	return nullptr;
+	case 3: {
+		const auto thR = utils::from_chars<int>(params[0]);
+		const auto thG = utils::from_chars<int>(params[1]);
+		const auto thB = utils::from_chars<int>(params[2]);
+
+		if(thR && thG && thB && in_range(*thR, -1, 255) && in_range(*thG, -1, 255) && in_range(*thB, -1, 255)) {
+			return std::make_unique<negative_modification>(*thR, *thG, *thB);
+		} else {
+			ERR_DP << "unsupported argument value in ~NEG() function";
+			return nullptr;
+		}
+	}
+
+	default:
+		ERR_DP << "~NEG() requires 0, 1 or 3 arguments";
+		return nullptr;
+	}
 }
 
 // Plot Alpha
@@ -875,7 +877,7 @@ REGISTER_MOD_PARSER(CHAN, args)
 // Color-shift
 REGISTER_MOD_PARSER(CS, args)
 {
-	std::vector<std::string> const factors = utils::split(args, ',');
+	const auto factors = utils::split_view(args, ',');
 	const std::size_t s = factors.size();
 
 	if(s == 0) {
@@ -885,13 +887,13 @@ REGISTER_MOD_PARSER(CS, args)
 
 	int r = 0, g = 0, b = 0;
 
-	r = lexical_cast_default<int>(factors[0]);
+	r = utils::from_chars<int>(factors[0]).value_or(0);
 
 	if(s > 1 ) {
-		g = lexical_cast_default<int>(factors[1]);
+		g = utils::from_chars<int>(factors[0]).value_or(0);
 	}
 	if(s > 2 ) {
-		b = lexical_cast_default<int>(factors[2]);
+		b = utils::from_chars<int>(factors[0]).value_or(0);
 	}
 
 	return std::make_unique<cs_modification>(r, g , b);
@@ -900,7 +902,7 @@ REGISTER_MOD_PARSER(CS, args)
 // Color blending
 REGISTER_MOD_PARSER(BLEND, args)
 {
-	const std::vector<std::string>& params = utils::split(args, ',');
+	const auto params = utils::split_view(args, ',');
 
 	if(params.size() != 4) {
 		ERR_DP << "~BLEND() requires exactly 4 arguments";
@@ -908,29 +910,29 @@ REGISTER_MOD_PARSER(BLEND, args)
 	}
 
 	float opacity = 0.0f;
-	const std::string& opacity_str = params[3];
-	const std::string::size_type p100_pos = opacity_str.find('%');
+	const std::string_view& opacity_str = params[3];
+	const std::string_view::size_type p100_pos = opacity_str.find('%');
 
 	if(p100_pos == std::string::npos)
 		opacity = lexical_cast_default<float>(opacity_str);
 	else {
 		// make multiplier
-		const std::string& parsed_field = opacity_str.substr(0, p100_pos);
+		const std::string_view parsed_field = opacity_str.substr(0, p100_pos);
 		opacity = lexical_cast_default<float>(parsed_field);
 		opacity /= 100.0f;
 	}
 
 	return std::make_unique<blend_modification>(
-		lexical_cast_default<int>(params[0]),
-		lexical_cast_default<int>(params[1]),
-		lexical_cast_default<int>(params[2]),
+		utils::from_chars<int>(params[0]).value_or(0),
+		utils::from_chars<int>(params[1]).value_or(0),
+		utils::from_chars<int>(params[2]).value_or(0),
 		opacity);
 }
 
 // Crop/slice
 REGISTER_MOD_PARSER(CROP, args)
 {
-	const std::vector<std::string>& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const auto slice_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 	const std::size_t s = slice_params.size();
 
 	if(s == 0 || (s == 1 && slice_params[0].empty())) {
@@ -940,16 +942,16 @@ REGISTER_MOD_PARSER(CROP, args)
 
 	SDL_Rect slice_rect { 0, 0, 0, 0 };
 
-	slice_rect.x = lexical_cast_default<int16_t, const std::string&>(slice_params[0]);
+	slice_rect.x = utils::from_chars<int16_t>(slice_params[0]).value_or(0);
 
 	if(s > 1) {
-		slice_rect.y = lexical_cast_default<int16_t, const std::string&>(slice_params[1]);
+		slice_rect.y = utils::from_chars<int16_t>(slice_params[1]).value_or(0);
 	}
 	if(s > 2) {
-		slice_rect.w = lexical_cast_default<uint16_t, const std::string&>(slice_params[2]);
+		slice_rect.w = utils::from_chars<uint16_t>(slice_params[2]).value_or(0);
 	}
 	if(s > 3) {
-		slice_rect.h = lexical_cast_default<uint16_t, const std::string&>(slice_params[3]);
+		slice_rect.h = utils::from_chars<uint16_t>(slice_params[3]).value_or(0);
 	}
 
 	return std::make_unique<crop_modification>(slice_rect);
@@ -982,8 +984,8 @@ REGISTER_MOD_PARSER(BLIT, args)
 	int x = 0, y = 0;
 
 	if(s == 3) {
-		x = lexical_cast_default<int>(param[1]);
-		y = lexical_cast_default<int>(param[2]);
+		x = utils::from_chars<int>(param[1]).value_or(0);
+		y = utils::from_chars<int>(param[2]).value_or(0);
 	}
 
 	const image::locator img(param[0]);
@@ -1010,8 +1012,8 @@ REGISTER_MOD_PARSER(MASK, args)
 	int x = 0, y = 0;
 
 	if(s == 3) {
-		x = lexical_cast_default<int>(param[1]);
-		y = lexical_cast_default<int>(param[2]);
+		x = utils::from_chars<int>(param[1]).value_or(0);
+		y = utils::from_chars<int>(param[2]).value_or(0);
 	}
 
 	if(x < 0 || y < 0) {
@@ -1037,31 +1039,50 @@ REGISTER_MOD_PARSER(L, args)
 		return nullptr;
 	}
 
-	surface surf = get_surface(args);
-
+	surface surf = get_surface(std::string{args}); // FIXME: string_view for image::locator::value
 	return std::make_unique<light_modification>(surf);
 }
 
 namespace
 {
-/** Common helper function to parse scaling IPF inputs. */
-std::optional<point> parse_scale_args(const std::string& args)
+std::pair<int, bool> parse_scale_value(std::string_view arg)
 {
-	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const std::size_t s = scale_params.size();
+	if(const std::size_t pos = arg.rfind('%'); pos != std::string_view::npos) {
+		return { utils::from_chars<int>(arg.substr(0, pos)).value_or(0), true };
+	} else {
+		return { utils::from_chars<int>(arg).value_or(0), false };
+	}
+}
 
-	if(s == 0 || (s == 1 && scale_params[0].empty())) {
+/** Common helper function to parse scaling IPF inputs. */
+std::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view args)
+{
+	const auto scale_params = utils::split_view(args, ',', utils::STRIP_SPACES);
+	const std::size_t num_args = scale_params.size();
+
+	if(num_args == 0 || (num_args == 1 && scale_params[0].empty())) {
 		return std::nullopt;
 	}
 
-	point size{0, 0};
-	size.x = lexical_cast_default<int, const std::string&>(scale_params[0]);
+	uint8_t flags = 0;
+	std::array<int, 2> parsed_sizes{0,0};
 
-	if(s > 1) {
-		size.y = lexical_cast_default<int, const std::string&>(scale_params[1]);
+	for(unsigned i = 0; i < std::min<unsigned>(2, num_args); ++i) {
+		const auto& [size, relative] = parse_scale_value(scale_params[i]);
+
+		if(size < 0) {
+			ERR_DP << "Negative size passed to scaling IPF. Original image dimension will be used instead";
+			continue;
+		}
+
+		parsed_sizes[i] = size;
+
+		if(relative) {
+			flags |= (i == 0 ? scale_modification::X_BY_FACTOR : scale_modification::Y_BY_FACTOR);
+		}
 	}
 
-	return size;
+	return std::pair{point{parsed_sizes[0], parsed_sizes[1]}, flags};
 }
 
 } // namespace
@@ -1069,9 +1090,9 @@ std::optional<point> parse_scale_args(const std::string& args)
 // Scale
 REGISTER_MOD_PARSER(SCALE, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::FIT_TO_SIZE;
-		return std::make_unique<scale_modification>(*size, "SCALE", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE() function";
 		return nullptr;
@@ -1080,9 +1101,9 @@ REGISTER_MOD_PARSER(SCALE, args)
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::FIT_TO_SIZE;
-		return std::make_unique<scale_modification>(*size, "SCALE_SHARP", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function";
 		return nullptr;
@@ -1091,9 +1112,9 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_LINEAR | scale_modification::PRESERVE_ASPECT_RATIO;
-		return std::make_unique<scale_modification>(*size, "SCALE_INTO", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO() function";
 		return nullptr;
@@ -1102,9 +1123,9 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 {
-	if(auto size = parse_scale_args(args)) {
+	if(auto params = parse_scale_args(args)) {
 		constexpr uint8_t mode = scale_modification::SCALE_SHARP | scale_modification::PRESERVE_ASPECT_RATIO;
-		return std::make_unique<scale_modification>(*size, "SCALE_INTO_SHARP", mode);
+		return std::make_unique<scale_modification>(params->first, mode | params->second);
 	} else {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function";
 		return nullptr;
@@ -1114,7 +1135,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	int z = lexical_cast_default<int, const std::string &>(args);
+	int z = utils::from_chars<int>(args).value_or(0);
 	if(z < 1 || z > 5) {
 		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
 	}
@@ -1122,12 +1143,10 @@ REGISTER_MOD_PARSER(XBRZ, args)
 	return std::make_unique<xbrz_modification>(z);
 }
 
-// scale
-
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
 {
-	const int depth = std::max<int>(0, lexical_cast_default<int>(args));
+	const int depth = std::max<int>(0, utils::from_chars<int>(args).value_or(0));
 	return std::make_unique<bl_modification>(depth);
 }
 
@@ -1137,11 +1156,11 @@ REGISTER_MOD_PARSER(O, args)
 	const std::string::size_type p100_pos = args.find('%');
 	float num = 0.0f;
 	if(p100_pos == std::string::npos) {
-		num = lexical_cast_default<float,const std::string&>(args);
+		num = lexical_cast_default<float, std::string_view>(args);
 	} else {
 		// make multiplier
-		const std::string parsed_field = args.substr(0, p100_pos);
-		num = lexical_cast_default<float,const std::string&>(parsed_field);
+		const std::string_view parsed_field = args.substr(0, p100_pos);
+		num = lexical_cast_default<float, std::string_view>(parsed_field);
 		num /= 100.0f;
 	}
 
@@ -1155,22 +1174,22 @@ REGISTER_MOD_PARSER(O, args)
 // Red component color-shift
 REGISTER_MOD_PARSER(R, args)
 {
-	const int r = lexical_cast_default<int>(args);
-	return std::make_unique<cs_modification>(r,0,0);
+	const int r = utils::from_chars<int>(args).value_or(0);
+	return std::make_unique<cs_modification>(r, 0, 0);
 }
 
 // Green component color-shift
 REGISTER_MOD_PARSER(G, args)
 {
-	const int g = lexical_cast_default<int>(args);
-	return std::make_unique<cs_modification>(0,g,0);
+	const int g = utils::from_chars<int>(args).value_or(0);
+	return std::make_unique<cs_modification>(0, g, 0);
 }
 
 // Blue component color-shift
 REGISTER_MOD_PARSER(B, args)
 {
-	const int b = lexical_cast_default<int>(args);
-	return std::make_unique<cs_modification>(0,0,b);
+	const int b = utils::from_chars<int>(args).value_or(0);
+	return std::make_unique<cs_modification>(0, 0, b);
 }
 
 REGISTER_MOD_PARSER(NOP, )
@@ -1195,10 +1214,10 @@ REGISTER_MOD_PARSER(RIGHT, )
 REGISTER_MOD_PARSER(BG, args)
 {
 	int c[4] { 0, 0, 0, SDL_ALPHA_OPAQUE };
-	std::vector<std::string> factors = utils::split(args, ',');
+	const auto factors = utils::split_view(args, ',');
 
 	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
-		c[i] = lexical_cast_default<int>(factors[i]);
+		c[i] = utils::from_chars<int>(factors[i]).value_or(0);
 	}
 
 	return std::make_unique<background_modification>(color_t(c[0], c[1], c[2], c[3]));
@@ -1207,7 +1226,7 @@ REGISTER_MOD_PARSER(BG, args)
 // Channel swap
 REGISTER_MOD_PARSER(SWAP, args)
 {
-	std::vector<std::string> params = utils::split(args, ',', utils::STRIP_SPACES);
+	const auto params = utils::split_view(args, ',', utils::STRIP_SPACES);
 
 	// accept 3 arguments (rgb) or 4 (rgba)
 	if(params.size() != 3 && params.size() != 4) {

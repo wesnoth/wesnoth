@@ -18,7 +18,6 @@
 #include "build_info.hpp"
 
 #include "desktop/version.hpp"
-#include "game_config.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -34,14 +33,12 @@
 #include <fstream>
 #include <iomanip>
 
-#include "lua/lua.h"
+#include "lua/wrapper_lua.h"
 
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
 #include <boost/algorithm/string.hpp>
-#include <boost/predef.h>
 #include <boost/version.hpp>
 
 #ifndef __APPLE__

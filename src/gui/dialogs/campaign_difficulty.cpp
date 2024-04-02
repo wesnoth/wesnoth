@@ -20,14 +20,12 @@
 #include "config.hpp"
 #include "deprecation.hpp"
 #include "font/text_formatting.hpp"
-#include "formatter.hpp"
 #include "game_version.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
-#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
@@ -68,6 +66,8 @@ void campaign_difficulty::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
+	unsigned difficulty_count = 0;
+	const unsigned difficulty_max = difficulties_.child_count("difficulty");
 	for(const config& d : difficulties_.child_range("difficulty")) {
 		widget_data data;
 		widget_item item;
@@ -99,10 +99,24 @@ void campaign_difficulty::pre_show(window& window)
 			list.select_last_row();
 		}
 
-		widget* widget = grid.find("victory", false);
-		if(widget && !preferences::is_campaign_completed(campaign_id_, d["define"])) {
-			widget->set_visible(widget::visibility::hidden);
+		styled_widget& widget = find_widget<styled_widget>(&grid, "victory", false);
+		if(preferences::is_campaign_completed(campaign_id_, d["define"])) {
+			// Use different laurels according to the difficulty level, following the
+			// pre-existing convention established in campaign_selection class.
+			// Assumes ascending order of difficulty and gold laurel is set first
+			// in case there is only one difficulty setting.
+			if(difficulty_count + 1 >= difficulty_max) {
+				widget.set_label(game_config::images::victory_laurel_hardest);
+			} else if(difficulty_count == 0) {
+				widget.set_label(game_config::images::victory_laurel_easy);
+			} else {
+				widget.set_label(game_config::images::victory_laurel);
+			}
+		} else {
+			widget.set_visible(widget::visibility::hidden);
 		}
+
+		difficulty_count++;
 	}
 }
 

@@ -25,7 +25,6 @@
 
 namespace gui2
 {
-class listbox;
 
 namespace dialogs
 {

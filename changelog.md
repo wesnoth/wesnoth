@@ -1,4 +1,4 @@
-## Version 1.17.25+dev
+## Version 1.19.0-dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -8,11 +8,55 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, French
+   * Updated translations: Arabic, Bengali, British English, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Polish, Spanish
+   * Added new font "Lohit-Bengali.ttf" to support Bengali translation
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+
+## Version 1.17.26
+ ### Campaigns
+   * Eastern Invasion
+     * Many minor bugfixes
+   * Heir to the Throne
+     * Fix S17 to ensure the starting castle always has 6 hexes for recruiting (PR #8314)
+     * Clarify S11's objectives by editing the map (no string changes) (PR #8326)
+     * Add decorations and map embellishments to S16, S19a and S22 (PR #8243)
+     * Use swamp terrain instead of sand for S19b (PR #8243)
+   * Under the Burning Suns
+     * Improve continuity between events that can be triggered in various orders.
+     * Adjust Fighter unit line for easier early leveling and more late game staying power.
+   * World Conquest
+     * Fix the Bezoar artifact (issue #6513)
+ ### Multiplayer
+   * Assume that all players need a copy of an add-on, by defaulting `require_modification`/`require_campaign` to `yes` (PR #8135)
+ ### Lua API
+   * Added documentation for linting and IDE support
+ ### Packaging
+   * Add CMake and SCons options to use an already installed copy of Lua 5.4 (PR #8234)
+     * The system copy of Lua must be compiled as C++ rather than C, as Wesnoth uses C++ exceptions.
+     * Windows requires a compile-time change to Lua, so must use the in-tree Lua submodule.
+ ### Translations
+   * New translation: Bengali
+   * Updated translations: Arabic, British English, Czech, Finnish, French
+ ### Units
+   * War Harbinger: +3 HP (29 -> 32), XP to 100, cost +2g (41 -> 43), removed forest and village dodge modifiers
+   * Dark Omen: removed forest and village dodge modifiers
+   * Raven: removed forest and village dodge modifiers
+ ### User interface
+   * New multiline textbox and numerical spinner widgets (PR #8199)
+ ### WML Engine
+   * Added a composite hero/leader ellipse, in case an author forgets to `UNMAKE_HERO` when converting to a leader (PR #8375)
+   * `[event]name=unit_placed` is now non-undoable by default (issue #7780)
+   * `[scroll]` now includes a delay, this was needed for visual effects such as the `QUAKE` macro
+ ### Miscellaneous and Bug Fixes
+   * Fix some logs not being included in the logfile (issue #8108)
+   * Multiple fixes to handling of Lua errors, some of which could cause a crash (PR #8234)
+   * When WML specifies a unit or unit type’s gender, automatically include that in the .po files as a translation hint
+   * Make sure `transform_unit` doesn't heal the unit when removing objects (PR #8147)
+   * Fixed bugs in the rushers recruit AI (issue #8297)
+   * Savefiles now include the ID of the core in use
 
 ## Version 1.17.25
  ### Campaigns
@@ -270,7 +314,7 @@
      * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13.
      * Ancient Wose - cost changed from 48 to 50.
      * Merman Entangler - cost changed from 46 to 42.
-     * Javelineer - cost changed from 48 to 55.
+     * Merman Javelineer - cost changed from 48 to 55.
      * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148.
    * Undead:
      * Skeleton - xp changed from 35 to 39.
@@ -897,6 +941,100 @@
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
+
+## Version 1.16.12
+ ### Security Fixes
+   * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
+ ### Translations
+   * Updated translations: Czech, German, Italian
+ ### Miscellaneous and Bug Fixes
+   * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8158)
+
+## Version 1.16.11
+ ### Translations
+   * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Czech, French, Japanese, Polish, Slovak, Welsh
+ ### Miscellaneous and Bug Fixes
+   * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
+   * Fix "Something is wrong with the addon version check database supporting the multiplayer lobby".
+     Note that It also required the host of the game to use wesnoth 1.16.11
+
+## Version 1.16.10
+ ### Campaigns
+   * Under the Burning Suns
+     * S03: Ensure all of Garak’s attacks are changed to fire type (issue #7774).
+     * Make the name of the dark assassin translatable again (PR #7675).
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fix lua error at victory after promoting a replacement commander (issue #7823).
+ ### Translations
+   * Updated translations: Arabic, Czech, French, Italian, Spanish, Portuguese (Brazil)
+ ### User interface
+   * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
+     as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
+   * Enable Whiteboard if the "enable planning mode on start" option is set (issue #7820).
+ ### Miscellaneous and Bug Fixes
+   * Fix compilation with Clang 16 (PR #7586).
+   * Fix crash in the Flatpak version when recruiting in Wayland (issue #7104).
+   * Fix the version dialog’s display on MacOS.
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite (issue #7149).
+
+## Version 1.16.9
+ ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7291)
+   * World Conquest
+     * Fixed rare lua error when a unit is killed.
+     * Fixed Bezoar Item.
+     * Fixed some items losing their effects in later scenarios.
+     * Fixed units losing hp when picking up an artifact
+     * Partially fixed "Promote to commander" (but required a further fix in 1.16.10)
+ ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn't always obscure the southmost hexes of the map. (issue #6422)
+ ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs (issue #7108).
+       * By default, they are now two-color during the ally’s turn.
+       * Added an advanced setting to always show them as single-color (the ally color).
+   * "Back to Turn" menu no longer crashes the game when used
+     After the game has ended. #4236
+ ### Translations
+   * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Turkish
+ ### User interface
+   * Improved the layout of the orb colors dialog, and added tooltips.
+ ### Miscellaneous and Bug Fixes
+   * Fixed Possible Crash when using planning mode #3768
+   * Fixed Possible OOS when using planning mode #7465
+   * Fixed game hanging when an enemy attacks a unit
+     with planned moves #5302
+   * Fixed custom effects implemented via wesnoth.effects
+     losing their effects in later scenarios.
+   * Fix Crash undo+redo error after reloading #7253
+   * Fix Crash when loading old replays #7253
+   * Fix Crash when a unit has bad animations replays #5032
+   * Postponed the removal of the `SPECIAL_NOTES` macro, which means there will be fewer log messages.
+   * `wesnoth_addon_manager` now supports SSL/TLS connection (using the `--secure` flag)
+   * `wesnoth_addon_manager` now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to `wesnoth_addon_manager` (retrieves and prints the add-ons server upload terms)
+   * w`esnoth_addon_manager` now supports the `--version` flag (reports the current Wesnoth version)
+   * Removed unused `--color` switch from `wesnoth_addon_manager`
+
+## Version 1.16.8
+ ### Editor
+   * Fixed: the unit tool crashes when placing a unit (issue #7296).
+ ### Translations
+   * Updated translations: Finnish, Spanish
+ ### Miscellaneous and Bug Fixes
+   * Make the log messages about "Skipping duplicate unit variation ID" say which `[unit_type]` is causing the error.
+
+## Version 1.16.7
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese, Polish, Portuguese (Brazil), Turkish
+ ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
+   * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
+   * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
+   * Fix a crash when an out-of-bounds side number is used in Lua’s `sync.evaluate_multiple` (PR #7222)
+   * Fixed special notes being duplicated when storing units (issue #7153).
 
 ## Version 1.16.6
  ### Translations

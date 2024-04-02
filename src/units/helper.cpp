@@ -21,9 +21,7 @@
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 #include "units/types.hpp"
-#include "resources.hpp"
 #include "play_controller.hpp"
-#include "saved_game.hpp"
 
 namespace unit_helper {
 

@@ -20,7 +20,6 @@
 #include "generators/lua_map_generator.hpp"
 #include "log.hpp"
 
-#include <cassert>
 #include <sstream>
 
 static lg::log_domain log_config("config");

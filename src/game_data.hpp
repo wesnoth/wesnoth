@@ -22,7 +22,6 @@
 #include "variable_info.hpp"
 
 class scoped_wml_variable;
-class t_string;
 
 class game_data  : public variable_set  {
 public:

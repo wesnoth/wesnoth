@@ -23,12 +23,10 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>
 #include <vector>
-#include <map>
 
 static lg::log_domain log_draw_man("draw/manager");
 #define ERR_DM LOG_STREAM(err, log_draw_man)
@@ -82,7 +80,7 @@ void invalidate_region(const rect& region)
 		if (region.contains(r)) {
 			// This region contains a previously invalidated region,
 			// might as well supercede it with this.
-			DBG_DM << "superceding previous invalidation " << r
+			DBG_DM << "superseding previous invalidation " << r
 				<< " with " << region;
 			//STREAMING_LOG << '\'';
 			r = region;
@@ -297,7 +295,7 @@ void deregister_drawable(top_level_drawable* tld)
 	auto it = std::find(vec.begin(), vec.end(), tld);
 	// Sanity check
 	if (it == vec.end()) {
-		WRN_DM << "attempted to deregister nonexistant TLD "
+		WRN_DM << "attempted to deregister nonexistent TLD "
 			<< static_cast<void*>(tld);
 		return;
 	}
@@ -314,7 +312,7 @@ void raise_drawable(top_level_drawable* tld)
 	auto it = std::find(vec.begin(), vec.end(), tld);
 	// Sanity check
 	if (it == vec.end()) {
-		ERR_DM << "attempted to raise nonexistant TLD "
+		ERR_DM << "attempted to raise nonexistent TLD "
 			<< static_cast<void*>(tld);
 		return;
 	}

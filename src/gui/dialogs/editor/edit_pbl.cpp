@@ -30,14 +30,13 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "serialization/base64.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 
-#include <boost/algorithm/string/replace.hpp>
 
 namespace gui2::dialogs
 {
@@ -111,7 +110,7 @@ void editor_edit_pbl::pre_show(window& win)
 	name->set_value(pbl["title"]);
 	win.keyboard_capture(name);
 
-	find_widget<text_box>(&win, "description", false).set_value(pbl["description"]);
+	find_widget<scroll_text>(&win, "description", false).set_value(pbl["description"]);
 	find_widget<text_box>(&win, "icon", false).set_value(pbl["icon"]);
 	if(!pbl["icon"].empty()) {
 		drawing& img = find_widget<drawing>(&win, "preview", false);
@@ -237,7 +236,7 @@ config editor_edit_pbl::create_cfg()
 	if(const std::string& name = find_widget<text_box>(get_window(), "name", false).get_value(); !name.empty()) {
 		cfg["title"] = name;
 	}
-	if(const std::string& description = find_widget<text_box>(get_window(), "description", false).get_value(); !description.empty()) {
+	if(const std::string& description = find_widget<scroll_text>(get_window(), "description", false).get_value(); !description.empty()) {
 		cfg["description"] = description;
 	}
 	if(const std::string& icon = find_widget<text_box>(get_window(), "icon", false).get_value(); !icon.empty()) {
@@ -264,6 +263,10 @@ config editor_edit_pbl::create_cfg()
 
 	if(find_widget<toggle_button>(get_window(), "forum_auth", false).get_value_bool()) {
 		cfg["forum_auth"] = true;
+
+		if(const std::string& secondary_authors = find_widget<text_box>(get_window(), "secondary_authors", false).get_value(); !secondary_authors.empty()) {
+			cfg["secondary_authors"] = secondary_authors;
+		}
 	} else {
 		if(const std::string& email = find_widget<text_box>(get_window(), "email", false).get_value(); !email.empty()) {
 			cfg["email"] = email;
@@ -287,7 +290,7 @@ config editor_edit_pbl::create_cfg()
 	std::vector<std::string> chosen_tags;
 	for(unsigned i = 0; i < tag_states.size(); i++) {
 		if(tag_states[i] == 1) {
-			chosen_tags.emplace_back(dirs_[i]);
+			chosen_tags.emplace_back(tag_values[i]);
 		}
 	}
 	if(chosen_tags.size() > 0) {

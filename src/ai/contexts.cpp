@@ -27,7 +27,6 @@
 #include "ai/composite/aspect.hpp"         // for typesafe_aspect, aspect, etc
 #include "ai/composite/engine.hpp"         // for engine, engine_factory, etc
 #include "ai/composite/goal.hpp"           // for goal
-#include "ai/composite/stage.hpp"       // for ministage
 #include "ai/game_info.hpp"             // for typesafe_aspect_ptr, etc
 #include "ai/lua/aspect_advancements.hpp"
 #include "ai/manager.hpp"                  // for manager
@@ -51,8 +50,6 @@
 #include "units/unit.hpp"                  // for unit
 #include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
-#include "units/ptr.hpp"                 // for unit_ptr
-#include "units/types.hpp"  // for attack_type, unit_type, etc
 #include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n

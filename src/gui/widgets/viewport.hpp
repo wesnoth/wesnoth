@@ -28,7 +28,6 @@ namespace implementation
 struct builder_viewport;
 } // namespace implementation
 
-class grid;
 
 /**
  * @ingroup GUIWidgetWML

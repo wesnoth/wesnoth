@@ -20,11 +20,9 @@
 
 #include <pango/pango-layout.h>
 
-#include <cstdint>
 #include <string>
 #include <string_view>
 
-struct SDL_Rect;
 struct point;
 class t_string;
 

@@ -9,6 +9,8 @@
 
 EnsureSConsVersion(0,98,3)
 
+lua_ver = "5.4"
+
 import os, sys, shutil, re, subprocess
 from glob import glob
 from subprocess import Popen, PIPE, call, check_output
@@ -101,6 +103,7 @@ opts.AddVariables(
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathVariable('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath),
     PathVariable('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
+    BoolVariable('system_lua', 'Enable use of system Lua ' + lua_ver + ' (compiled as C++, only for non-Windows systems).', False),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
     EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
@@ -312,7 +315,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool"]),
+    custom_tests = init_metasconf(env, ["cplusplus", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -329,6 +332,15 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 if "gcc" in env["TOOLS"]:
     env.AppendUnique(CCFLAGS = Split("-Wall -Wextra"))
     env.AppendUnique(CXXFLAGS = Split("-Werror=non-virtual-dtor -std=c++" + env["cxx_std"]))
+
+    # GCC-13 added this new warning, and included it in -Wextra,
+    # however in GCC-13 it has a lot of false positives.
+    #
+    # It's likely to generate false postives with GCC-14 too, but
+    # I'm using a narrow version check as GCC-14 is still in dev.
+    # See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110075
+    if "CXXVERSION" in env and env["CXXVERSION"].startswith("13."):
+      env.AppendUnique(CXXFLAGS = "-Wno-dangling-reference")
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
@@ -359,7 +371,7 @@ if env["prereqs"]:
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
 
     have_server_prereqs = (\
-        conf.CheckCPlusPlus(gcc_version = "7") & \
+        conf.CheckCPlusPlus(gcc_version = "8") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
@@ -397,12 +409,19 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph")
 
-    if not File("#/src/modules/lua/.git").rfile().exists():
-        have_client_prereqs = False
-        Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+    if env["system_lua"]:
+        if env["PLATFORM"] == 'win32':
+            Warning("System Lua cannot be used on Windows.")
+        if not conf.CheckLua(lua_ver):
+            have_client_prereqs = False
     else:
-        print("Lua submodule found.")
+        if not File("#/src/modules/lua/.git").rfile().exists():
+            have_client_prereqs = False
+            Warning("Lua submodule does not exist. You must run 'git submodule update --init --recursive' to initialize it.")
+        else:
+            print("Lua submodule found.")
 
     if not have_client_prereqs:
         Warning("Client prerequisites are not met. wesnoth cannot be built.")
@@ -481,6 +500,8 @@ for env in [test_env, client_env, env]:
     if os.path.isabs(env["build_dir"]):
         build_root = ""
     env.Prepend(CPPPATH = [build_root + "$build_dir", "#/src"])
+    if env["system_lua"]:
+        env.Append(CPPDEFINES = ["HAVE_SYSTEM_LUA"])
 
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 

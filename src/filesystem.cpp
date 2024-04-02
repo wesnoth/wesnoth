@@ -28,11 +28,8 @@
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "utils/general.hpp"
 
-#include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
@@ -610,7 +607,7 @@ const std::string& get_version_path_suffix()
 			if(!bfs::exists(old_saves_dir)) {
 				LOG_FS << "Apple developer's userdata migration: symlinking " << old_saves_dir.string() << " to " << new_saves_dir.string();
 				bfs::create_symlink(new_saves_dir, old_saves_dir);
-			} else if(!bfs::symbolic_link_exists(old_saves_dir)) {
+			} else if(!bfs::is_symlink(old_saves_dir)) {
 				ERR_FS << "Apple developer's userdata migration: Problem! Old (non-containerized) directory " << old_saves_dir.string() << " is not a symlink. Your savegames are scattered around 2 locations.";
 			}
 			return;
@@ -624,7 +621,7 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
-	if(!file_exists(user_data_dir)) {
+	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
 
@@ -643,6 +640,8 @@ static void setup_user_data_dir()
 	create_directory_if_missing(get_saves_dir());
 	create_directory_if_missing(get_wml_persist_dir());
 	create_directory_if_missing(get_logs_dir());
+
+	lg::move_log_file();
 }
 
 #ifdef _WIN32

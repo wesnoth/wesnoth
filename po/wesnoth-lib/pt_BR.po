@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"POT-Creation-Date: 2024-02-19 20:52-0600\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -4020,7 +4020,7 @@ msgstr "Atualizar add-on"
 #. [button]: id=single_publish
 #. [button]: id=publish
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:645
-#: src/gui/widgets/addon_list.cpp:265
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Publicar add-on"
 
@@ -4592,7 +4592,7 @@ msgstr "Atualizado:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:560
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:559
 msgid "No description available."
 msgstr "Nenhuma descrição disponível."
 
@@ -4973,7 +4973,7 @@ msgstr "Jogar"
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
-#: src/gui/dialogs/editor/edit_pbl.cpp:191
+#: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "Difficulty"
 msgstr "Dificuldade"
 
@@ -8189,7 +8189,7 @@ msgstr "Saguão do Jogo"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:508
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:517
 msgid "Waiting for players to join..."
 msgstr "Esperando jogadores entrarem..."
 
@@ -10117,11 +10117,11 @@ msgid "operating_system^<unknown>"
 msgstr "<desconhecido>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:691
+#: src/filesystem.cpp:690
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<caminho relativo que não começa com ponto final>"
 
-#: src/filesystem.cpp:694
+#: src/filesystem.cpp:693
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -10130,11 +10130,11 @@ msgstr ""
 "final e barra inversa"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:759 src/filesystem.cpp:781
+#: src/filesystem.cpp:758 src/filesystem.cpp:780
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<caminho relativo>"
 
-#: src/filesystem.cpp:762 src/filesystem.cpp:784
+#: src/filesystem.cpp:761 src/filesystem.cpp:783
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -10156,7 +10156,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1763
+#: src/filesystem.cpp:1762
 msgid "language code for localized resources^en_US"
 msgstr "pt_BR,pt"
 
@@ -10164,7 +10164,7 @@ msgstr "pt_BR,pt"
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
 # File: src/text.cpp, line: 734
-#: src/font/text.cpp:842
+#: src/font/text.cpp:886
 msgid "The text contains invalid Pango markup: "
 msgstr "Este texto contém marcação Pango inválida: "
 
@@ -10283,7 +10283,7 @@ msgstr "Imagem não cabe na tela."
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
 # File: src/gui/auxiliary/canvas.cpp, line: 1321
-#: src/gui/core/canvas.cpp:414
+#: src/gui/core/canvas.cpp:417
 msgid "Text has a font size of 0."
 msgstr "Tamanho de fonte do texto é 0."
 
@@ -10336,8 +10336,8 @@ msgstr "Nenhuma resolução definida."
 # File: src/gui/auxiliary/window_builder.cpp, line: 389
 # File: src/gui/auxiliary/window_builder/panel.cpp, line: 35
 # File: src/gui/auxiliary/window_builder/toggle_panel.cpp, line: 38
-#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/listbox.cpp:713 src/gui/widgets/multi_page.cpp:177
+#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:430
+#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/multi_page.cpp:177
 #: src/gui/widgets/panel.cpp:133 src/gui/widgets/size_lock.cpp:111
 #: src/gui/widgets/stacked_widget.cpp:225 src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
@@ -10591,7 +10591,7 @@ msgstr "Os jogadores podem alterar o terreno"
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Não instalado"
 
@@ -10599,7 +10599,7 @@ msgstr "Não instalado"
 # File: src/gui/dialogs/addon/description.cpp, line: 49
 # File: src/gui/dialogs/addon/description.cpp, line: 49
 # File: src/gui/dialogs/addon/description.cpp, line: 49
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Publicado, não instalado"
 
@@ -10607,7 +10607,7 @@ msgstr "Publicado, não instalado"
 # File: src/gui/dialogs/addon/description.cpp, line: 55
 # File: src/gui/dialogs/addon/description.cpp, line: 55
 # File: src/gui/dialogs/addon/description.cpp, line: 55
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Instalado"
 
@@ -10615,7 +10615,7 @@ msgstr "Instalado"
 # File: src/gui/dialogs/addon/description.cpp, line: 57
 # File: src/gui/dialogs/addon/description.cpp, line: 57
 # File: src/gui/dialogs/addon/description.cpp, line: 57
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Publicado"
 
@@ -10668,11 +10668,11 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "Publicado ($local_version| installed), versão do servidor desatualizada"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Instalado, não pronto para ser publicado"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Pronto para ser publicado"
 
@@ -10680,7 +10680,7 @@ msgstr "Pronto para ser publicado"
 # File: src/gui/dialogs/addon/description.cpp, line: 95
 # File: src/gui/dialogs/addon/description.cpp, line: 95
 # File: src/gui/dialogs/addon/description.cpp, line: 95
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Instalado, quebrado"
 
@@ -10688,7 +10688,7 @@ msgstr "Instalado, quebrado"
 # File: src/gui/dialogs/addon/description.cpp, line: 97
 # File: src/gui/dialogs/addon/description.cpp, line: 97
 # File: src/gui/dialogs/addon/description.cpp, line: 97
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Publicado, quebrado"
 
@@ -10696,7 +10696,7 @@ msgstr "Publicado, quebrado"
 # File: src/gui/dialogs/addon/description.cpp, line: 103
 # File: src/gui/dialogs/addon/description.cpp, line: 103
 # File: src/gui/dialogs/addon/description.cpp, line: 103
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Desconhecido"
 
@@ -10875,7 +10875,7 @@ msgstr ""
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/campaign_selection.cpp:395
+#: src/gui/dialogs/campaign_selection.cpp:396
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "Nenhum"
@@ -10990,7 +10990,7 @@ msgstr ""
 # File: data/core/terrain.cfg, line: 640
 # File: data/core/terrain.cfg, line: 652
 # File: data/core/terrain.cfg, line: 2311
-#: src/gui/dialogs/editor/edit_pbl.cpp:172
+#: src/gui/dialogs/editor/edit_pbl.cpp:173
 #, fuzzy
 #| msgid "Cores"
 msgid "Core"
@@ -11000,7 +11000,7 @@ msgstr "Módulos"
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
-#: src/gui/dialogs/editor/edit_pbl.cpp:173
+#: src/gui/dialogs/editor/edit_pbl.cpp:174
 msgid "Campaign"
 msgstr "Campanha"
 
@@ -11008,7 +11008,7 @@ msgstr "Campanha"
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
-#: src/gui/dialogs/editor/edit_pbl.cpp:174
+#: src/gui/dialogs/editor/edit_pbl.cpp:175
 #, fuzzy
 #| msgid "Campaign"
 msgid "Hybrid Campaign"
@@ -11018,7 +11018,7 @@ msgstr "Campanha"
 # File: src/game_preferences_display.cpp, line: 186
 # File: src/game_preferences_display.cpp, line: 186
 # File: src/game_preferences_display.cpp, line: 186
-#: src/gui/dialogs/editor/edit_pbl.cpp:175
+#: src/gui/dialogs/editor/edit_pbl.cpp:176
 #, fuzzy
 #| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
@@ -11028,7 +11028,7 @@ msgstr "Campanhas Multiplayer"
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
 # File: src/gui/dialogs/game_load.cpp, line: 312
-#: src/gui/dialogs/editor/edit_pbl.cpp:176
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
 msgid "Scenario"
 msgstr "Cenário"
 
@@ -11042,7 +11042,7 @@ msgstr "Cenário"
 # File: data/gui/default/window/mp_method_selection.cfg, line: 39
 # File: data/gui/default/window/title_screen.cfg, line: 258
 # File: src/gui/dialogs/game_load.cpp, line: 296
-#: src/gui/dialogs/editor/edit_pbl.cpp:177
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
 #, fuzzy
 #| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
@@ -11052,7 +11052,7 @@ msgstr "Alertas de Multiplayer"
 # File: src/hotkey_preferences_display.cpp, line: 251
 # File: src/hotkey_preferences_display.cpp, line: 251
 # File: src/hotkey_preferences_display.cpp, line: 251
-#: src/gui/dialogs/editor/edit_pbl.cpp:178
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
 #, fuzzy
 #| msgid "Action"
 msgid "Faction"
@@ -11062,12 +11062,12 @@ msgstr "Ação"
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
-#: src/gui/dialogs/editor/edit_pbl.cpp:179
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "Era"
 msgstr "Era"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:180
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Map Pack"
 msgstr ""
 
@@ -11075,13 +11075,13 @@ msgstr ""
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/editor/edit_pbl.cpp:181
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
 #, fuzzy
 #| msgid "Modifications"
 msgid "Modification"
 msgstr "Modificações"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:182
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Media"
 msgstr ""
 
@@ -11089,45 +11089,45 @@ msgstr ""
 # File: data/gui/default/window/lobby_main.cfg, line: 340
 # File: data/gui/default/window/lobby_main.cfg, line: 340
 # File: data/gui/default/window/lobby_main.cfg, line: 340
-#: src/gui/dialogs/editor/edit_pbl.cpp:183
+#: src/gui/dialogs/editor/edit_pbl.cpp:184
 #, fuzzy
 #| msgid "Other Games"
 msgid "Other"
 msgstr "Outros Jogos"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:189
+#: src/gui/dialogs/editor/edit_pbl.cpp:190
 #, fuzzy
 #| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Cooperativo"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:190
+#: src/gui/dialogs/editor/edit_pbl.cpp:191
 #, fuzzy
 #| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Cosmético"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:192
+#: src/gui/dialogs/editor/edit_pbl.cpp:193
 msgid "RNG"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:193
+#: src/gui/dialogs/editor/edit_pbl.cpp:194
 #, fuzzy
 #| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Sobrevivência"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:194
+#: src/gui/dialogs/editor/edit_pbl.cpp:195
 #, fuzzy
 #| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "Terraformação"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:373
+#: src/gui/dialogs/editor/edit_pbl.cpp:374
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:373
+#: src/gui/dialogs/editor/edit_pbl.cpp:374
 msgid "Success"
 msgstr ""
 
@@ -11135,7 +11135,7 @@ msgstr ""
 # File: src/preferences_display.cpp, line: 361
 # File: src/preferences_display.cpp, line: 357
 # File: src/preferences_display.cpp, line: 357
-#: src/gui/dialogs/editor/edit_pbl.cpp:403
+#: src/gui/dialogs/editor/edit_pbl.cpp:404
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose an icon"
@@ -11627,7 +11627,7 @@ msgid "lua console"
 msgstr "console lua"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:492
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:501
 msgid "Random"
 msgstr "Aleatório"
 
@@ -11857,36 +11857,36 @@ msgstr "Mapas Aleatórios"
 msgid "No games found."
 msgstr "Nenhuma partida encontrada."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
 msgid "No eras found."
 msgstr "Nenhuma era encontrada."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:239
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
 msgid "No eras found"
 msgstr "Nenhuma era encontrada"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:506
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:505
 msgid "No eras available for this game."
 msgstr "Nenhuma era disponível para este jogo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
 msgid "number of players^$min to $max"
 msgstr "$min a $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:821
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
 msgid "The selected game has no sides!"
 msgstr "O jogo selecionado não possui lados!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
 msgid "The selected game cannot be created."
 msgstr "O jogo selecionado não pode ser criado."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Choose Starting Scenario"
 msgstr "Escolha um Cenário Inicial"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
 msgid "Select at which point to begin this campaign."
 msgstr "Selecione onde deseja começar esta campanha."
 
@@ -11930,7 +11930,7 @@ msgstr "vazio"
 # File: data/gui/default/window/game_save_oos.cfg, line: 162
 # File: src/hotkeys.cpp, line: 112
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:105
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:114
 msgid "this game"
 msgstr "este jogo"
 
@@ -11952,7 +11952,7 @@ msgstr "Saguão"
 msgid "Game"
 msgstr "Jogos"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:518
 msgid "Waiting for players to choose factions..."
 msgstr "Esperando jogadres escolherem suas facções..."
 
@@ -12277,28 +12277,28 @@ msgstr "Dispensar Unidade"
 msgid "No default gui defined."
 msgstr "Nenhuma interface gráfica padrão definida."
 
-#: src/gui/widgets/addon_list.cpp:119
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "Instalado, atualizável"
 
-#: src/gui/widgets/addon_list.cpp:119
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "Publicado, atualizável"
 
-#: src/gui/widgets/addon_list.cpp:123
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "Instalado, desatualizado no servidor"
 
-#: src/gui/widgets/addon_list.cpp:123
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "Publicado, desatualizado no servidor"
 
-#: src/gui/widgets/addon_list.cpp:296
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Deletar add-on do servidor"
 
-#: src/gui/widgets/button.cpp:164 src/gui/widgets/button.cpp:165
-#: src/gui/widgets/button.cpp:166 src/gui/widgets/button.cpp:167
+#: src/gui/widgets/button.cpp:163 src/gui/widgets/button.cpp:164
+#: src/gui/widgets/button.cpp:165 src/gui/widgets/button.cpp:166
 msgid "Missing required state for button"
 msgstr ""
 
@@ -12306,11 +12306,11 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
-#: src/gui/widgets/chatbox.cpp:299
+#: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
 msgstr "sussurar para $receiver"
 
-#: src/gui/widgets/chatbox.cpp:383
+#: src/gui/widgets/chatbox.cpp:381
 msgid "Joined <i>$name</i>"
 msgstr "<i>$name</i> entrou"
 
@@ -12318,7 +12318,7 @@ msgstr "<i>$name</i> entrou"
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
-#: src/gui/widgets/chatbox.cpp:389
+#: src/gui/widgets/chatbox.cpp:387
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -12326,19 +12326,19 @@ msgstr ""
 "Conversa privada com <i>“$name”</i> aberta. Se você não quer receber "
 "mensagens desse jogador, digite <i>/ignore $name</i>"
 
-#: src/gui/widgets/chatbox.cpp:657
+#: src/gui/widgets/chatbox.cpp:655
 msgid "Missing required background for chatbox"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:658
+#: src/gui/widgets/chatbox.cpp:656
 msgid "Missing required foreground for chatbox"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:660
+#: src/gui/widgets/chatbox.cpp:658
 msgid "Missing required grid for chatbox"
 msgstr ""
 
-#: src/gui/widgets/drawing.cpp:119
+#: src/gui/widgets/drawing.cpp:113
 msgid "Missing [draw] in drawing"
 msgstr ""
 
@@ -12350,35 +12350,35 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Widget Obrigatório '$id' não foi definido."
 
-#: src/gui/widgets/horizontal_scrollbar.cpp:133
-#: src/gui/widgets/horizontal_scrollbar.cpp:134
-#: src/gui/widgets/horizontal_scrollbar.cpp:135
-#: src/gui/widgets/horizontal_scrollbar.cpp:136
+#: src/gui/widgets/horizontal_scrollbar.cpp:128
+#: src/gui/widgets/horizontal_scrollbar.cpp:129
+#: src/gui/widgets/horizontal_scrollbar.cpp:130
+#: src/gui/widgets/horizontal_scrollbar.cpp:131
 msgid "Missing required state for horizontal scrollbar"
 msgstr ""
 
-#: src/gui/widgets/image.cpp:115
+#: src/gui/widgets/image.cpp:112
 msgid "Missing required state for image control"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:127
+#: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Não há suporte para abertura de links, entre em contato com seu packager"
 
-#: src/gui/widgets/label.cpp:145
+#: src/gui/widgets/label.cpp:141
 msgid "Open link?"
 msgstr "Abrir Link?"
 
-#: src/gui/widgets/label.cpp:176
+#: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
 msgstr "Link copiado!"
 
-#: src/gui/widgets/label.cpp:241 src/gui/widgets/label.cpp:242
+#: src/gui/widgets/label.cpp:237 src/gui/widgets/label.cpp:238
 msgid "Missing required state for text label control"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:710 src/gui/widgets/listbox.cpp:711
+#: src/gui/widgets/listbox.cpp:707 src/gui/widgets/listbox.cpp:708
 msgid "Missing required state for listbox"
 msgstr ""
 
@@ -12392,7 +12392,7 @@ msgstr ""
 # File: src/gui/auxiliary/window_builder/horizontal_listbox.cpp, line: 66
 # File: src/gui/auxiliary/window_builder/listbox.cpp, line: 83
 # File: src/gui/auxiliary/window_builder/multi_page.cpp, line: 60
-#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:220
+#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' deve ter mesmo número de colunas que a 'list-definition'."
@@ -12407,8 +12407,8 @@ msgstr "'list_data' deve ter mesmo número de colunas que a 'list-definition'."
 # File: src/gui/auxiliary/window_builder/horizontal_listbox.cpp, line: 46
 # File: src/gui/auxiliary/window_builder/listbox.cpp, line: 60
 # File: src/gui/auxiliary/window_builder/scrollbar_panel.cpp, line: 41
-#: src/gui/widgets/listbox.cpp:771 src/gui/widgets/listbox.cpp:814
-#: src/gui/widgets/listbox.cpp:857 src/gui/widgets/scrollbar_panel.cpp:92
+#: src/gui/widgets/listbox.cpp:768 src/gui/widgets/listbox.cpp:811
+#: src/gui/widgets/listbox.cpp:854 src/gui/widgets/scrollbar_panel.cpp:92
 msgid "No list defined."
 msgstr "Nenhuma lista definida."
 
@@ -12419,20 +12419,20 @@ msgstr "Nenhuma lista definida."
 # File: src/gui/auxiliary/window_builder/listbox.cpp, line: 64
 # File: src/gui/auxiliary/window_builder/horizontal_listbox.cpp, line: 50
 # File: src/gui/auxiliary/window_builder/listbox.cpp, line: 64
-#: src/gui/widgets/listbox.cpp:776 src/gui/widgets/listbox.cpp:819
-#: src/gui/widgets/listbox.cpp:862
+#: src/gui/widgets/listbox.cpp:773 src/gui/widgets/listbox.cpp:816
+#: src/gui/widgets/listbox.cpp:859
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' deve conter uma linha."
 
-#: src/gui/widgets/matrix.cpp:188
+#: src/gui/widgets/matrix.cpp:185
 msgid "Missing [content] in [matrix_definition]"
 msgstr ""
 
-#: src/gui/widgets/matrix.cpp:191 src/gui/widgets/matrix.cpp:192
+#: src/gui/widgets/matrix.cpp:188 src/gui/widgets/matrix.cpp:189
 msgid "Missing required state for matrix definition"
 msgstr ""
 
-#: src/gui/widgets/matrix.cpp:210
+#: src/gui/widgets/matrix.cpp:207
 msgid "Missing [main] in [matrix]"
 msgstr ""
 
@@ -12452,6 +12452,15 @@ msgstr ""
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
 msgstr "Nenhuma página definida."
+
+#: src/gui/widgets/multiline_text.cpp:466
+#: src/gui/widgets/multiline_text.cpp:467
+#: src/gui/widgets/multiline_text.cpp:468
+#: src/gui/widgets/multiline_text.cpp:469 src/gui/widgets/text_box.cpp:411
+#: src/gui/widgets/text_box.cpp:412 src/gui/widgets/text_box.cpp:413
+#: src/gui/widgets/text_box.cpp:414
+msgid "Missing required state for editable text box"
+msgstr ""
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -12582,11 +12591,6 @@ msgstr "Nenhuma pilha de camadas defnida."
 #: src/gui/widgets/styled_widget.cpp:608
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Encontrado widget com helptip e sem tooltip."
-
-#: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
-#: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
-msgid "Missing required state for editable text box"
-msgstr ""
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
@@ -12734,7 +12738,7 @@ msgstr ""
 # File: src/gui/auxiliary/window_builder.cpp, line: 99
 # File: src/gui/auxiliary/window_builder.cpp, line: 99
 # File: src/gui/auxiliary/window_builder.cpp, line: 99
-#: src/gui/widgets/window.cpp:430
+#: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
 msgstr "O grupo linkado '$id' possui múltiplas definições."
 
@@ -12742,7 +12746,7 @@ msgstr "O grupo linkado '$id' possui múltiplas definições."
 # File: src/gui/widgets/window.cpp, line: 1035
 # File: src/gui/widgets/window.cpp, line: 1035
 # File: src/gui/widgets/window.cpp, line: 1035
-#: src/gui/widgets/window.cpp:910
+#: src/gui/widgets/window.cpp:911
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Clique dispensar precisa de um botão 'click_dismiss' ou 'ok'."
 
@@ -12756,7 +12760,7 @@ msgstr "Clique dispensar precisa de um botão 'click_dismiss' ou 'ok'."
 # File: src/gui/widgets/window.cpp, line: 1060
 # File: src/gui/widgets/window.cpp, line: 1100
 # File: src/tests/gui/test_gui2.cpp, line: 432
-#: src/gui/widgets/window.cpp:935 src/gui/widgets/window.cpp:972
+#: src/gui/widgets/window.cpp:936 src/gui/widgets/window.cpp:973
 #: src/tests/gui/test_gui2.cpp:726
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Falha ao exibir uma caixa de diálogo, que não cabe na tela."
@@ -14417,7 +14421,7 @@ msgstr "Quando relatar o bug, inclua a seguinte mensagem de erro :"
 # File: src/wml_exception.cpp, line: 96
 # File: src/wml_exception.cpp, line: 96
 # File: src/wml_exception.cpp, line: 96
-#: src/wml_exception.cpp:98
+#: src/wml_exception.cpp:89
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -14429,7 +14433,7 @@ msgstr ""
 # File: src/wml_exception.cpp, line: 99
 # File: src/wml_exception.cpp, line: 99
 # File: src/wml_exception.cpp, line: 99
-#: src/wml_exception.cpp:101
+#: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Na seção '[$section|]', a chave obrigatória '$key|' não está definida."
 

@@ -4,15 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2022
+# k konami, 2024
+# RatArmy, 2024
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-06-17 23:20-0500\n"
-"PO-Revision-Date: 2021-06-26 08:32+0000\n"
-"Last-Translator: RatArmy, 2022\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -506,10 +507,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--no-log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
@@ -517,13 +517,14 @@ msgid ""
 "prevents redirecting logged output to a file. Log files are created in the "
 "logs directory under the userdata folder."
 msgstr ""
+"ログ出力がファイルにリダイレクトされるのを抑制する。ログファイルは userdata "
+"フォルダ下の logs ディレクトリに作成される。"
 
 #. type: TP
 #: doc/man/wesnoth.6:195
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
@@ -531,13 +532,14 @@ msgid ""
 "log output is written to a file in addition to standard output/error. "
 "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgstr ""
+"ログ出力が、標準出力・標準エラーに加えてファイルに書き出される。暗黙的か明示"
+"的かに関わらず、--no-log-to-file の効果をキャンセルする。"
 
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -545,6 +547,8 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"Windowsの場合に --no-log-to-file と共に使用すると、出力は CONOUT ではなく "
+"cerr/cout に書き込まれる。それ以外は何もしない。"
 
 #. type: TP
 #: doc/man/wesnoth.6:201
@@ -966,20 +970,14 @@ msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:358
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
-"テストシナリオを実行する。テストシナリオではB<[test]> WML タグが定義されるべ"
-"きである。デフォルトではB<test>である。B<[micro_ai]> 機能のデモンストレーショ"
-"ンではB<micro_ai_test>と共に開始可能である。暗黙的に B<--nogui>が指定される。"
+"小さなテストシナリオを実行する。テストシナリオは B<[test]> WMLタグで定義され"
+"ている必要がある。 デフォルトは B<test>。  B<[micro_ai]> のデモンストレーショ"
+"ンは B<micro_ai_test> で開始できる。"
 
 #. type: TP
 #: doc/man/wesnoth.6:358
@@ -1483,12 +1481,9 @@ msgstr "著作権"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:545 doc/man/wesnothd.6:304
@@ -1968,40 +1963,42 @@ msgstr ""
 #: doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
 msgstr ""
+"TLSの使用を有効にする。trueの場合は、以下の3つのオプションも設定する必要があ"
+"る。"
 
 #. type: TP
 #: doc/man/wesnothd.6:170
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr ".pem形式のTLSフル証明書チェーン"
 
 #. type: TP
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr ".pem形式のTLS用秘密鍵"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -2009,6 +2006,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+".pemファイルとして生成される TLS DHパラメータ。　B<openssl dhparam -out "
+"filename.pem 4096> で生成する。"
 
 #. type: TP
 #: doc/man/wesnothd.6:179
@@ -2037,7 +2036,7 @@ msgstr ""
 #: doc/man/wesnothd.6:185
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
@@ -2046,6 +2045,9 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"ゲーム情報を保存するためにデータベース機能を使用する場合のサーバーのID。一般"
+"的には、1.16 や 1.17 のように、接続したクライアントアプリの メジャー番号.マイ"
+"ナー番号 で構成されるバージョン番号。"
 
 #. type: SS
 #: doc/man/wesnothd.6:189
@@ -2217,10 +2219,6 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2286,11 +2284,6 @@ msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2301,10 +2294,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2312,48 +2304,40 @@ msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
+"ログイン/ログアウトの回数を保存するためのDBテーブル名。または IP とユーザーの"
+"マッチングにも使用される。"
 
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"phpbbフォーラムがユーザーデータを保存するテーブル名。E<lt>table-"
-"prefixE<gt>_users （例：phpbb3_users）である可能性が高い。"
+"トピック（スレッド）情報をphpbbフォーラムが保存するテーブル名。 E<lt>table-"
+"prefixE<gt>_topics （例：phpbb3_user_group）である可能性が高い。"
 
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"phpbbフォーラムがユーザーデータを保存するテーブル名。E<lt>table-"
-"prefixE<gt>_users （例：phpbb3_users）である可能性が高い。"
+"ユーザーの入室禁止データをphpbbフォーラムが保存するテーブル名。E<lt>table-"
+"prefixE<gt>_banlist （例：phpbb3_banlist）である可能性が高い。"
 
 #. type: TP
 #: doc/man/wesnothd.6:281

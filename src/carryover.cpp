@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include <cassert>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)

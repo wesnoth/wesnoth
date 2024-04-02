@@ -1,23 +1,23 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2020 Wesnoth development team
+# Copyright (C) 2005-2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 # 曾筠鈞 <yunchuntseng@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-20 19:57-0600\n"
-"PO-Revision-Date: 2022-05-31 09:41+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"PO-Revision-Date: 2024-03-10 21:27+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [time]: id=underground
@@ -191,7 +191,7 @@ msgstr "這個單位有治療那些在他附近的單位的能力，也能減緩
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
@@ -199,7 +199,7 @@ msgstr "傳送"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -713,40 +713,23 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "編輯器地形覆蓋層圖形"
+msgstr "地形高度圖形"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"地圖在編輯器中的通常與它們在遊戲中的看起來相似。有一些例外情況，那就是在編輯"
-"器中使用了不同的圖形。此處描述的所有覆蓋層都可以在地形調色盤的「特殊」群組中"
-"找到。"
+"由於編輯器中的視覺輔助工具，外觀的高度效果在編輯器中看起來與遊戲中略有不同； "
+"這裡描述的所有疊加層都可以在地形調色盤的“高度”中找到。"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:175
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='進階'</bold>"
+msgstr "editor^<bold>text='疊加覆蓋層'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
@@ -758,24 +741,21 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"懸崖、峽谷\n"
+"\n"
+"懸崖、峽谷以及類似變化的地形，就像標準的地形覆蓋一樣，可以簡單地使用。然而，"
+"對於地圖上較大的區域，您可能希望允許使用其他覆蓋地形，因此您將需要將這些與下"
+"一節中描述的「標記」結合。"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='進階'</bold>"
+msgstr "editor^<bold>text='高度填充'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "地圖標記的上升高度"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
@@ -1853,7 +1833,7 @@ msgstr ""
 "\n"
 "<header>text='主要城市：'</header>\n"
 "    • 維爾丁：韋諾的首都。\n"
-"    • 奧爾德里爾：珍珠灣上的城市。\n"
+"    • 奧爾德里爾：珍珠灣旁的城市。\n"
 "    • 黑水港：珍珠灣南方的城市。\n"
 "    • 卡辛：位於灰森林跟大河中間。\n"
 "    • 丹唐克：韋諾最大的城市，位於王國的中心，就在維爾丁的西北方。\n"
@@ -4552,8 +4532,8 @@ msgstr "一般指令"
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with "
-#| "'/' (press 'm' first to open the chat line).\n"
+#| "them with ':' (as shown here) or via the chat by prefixing them with '/' "
+#| "(press 'm' first to open the chat line).\n"
 #| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -5600,15 +5580,12 @@ msgstr ""
 "被瘟疫奪走性命的敵人將會重新以非生的形式再次站起來，除非他們站在村莊上。"
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| "Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-"被瘟疫奪走性命的敵人將會重新以非生的形式再次站起來，除非他們站在村莊上。"
+"被某些令人驚恐的生態奪走性命的敵人將會成為幼蟲快速生長的營養成分，除非他們站"
+"在村莊上。"
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -6038,11 +6015,10 @@ msgstr ""
 msgid "female^fearless"
 msgstr "無畏"
 
-# 原文缺少句號。
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:254 data/core/macros/traits.cfg:271
 msgid "Fights normally during unfavorable times of day/night"
-msgstr "在不利的時段也能正常作戰。"
+msgstr "在不利的時段也能正常作戰"
 
 # 為求工整，不照原文翻。
 #. [trait]: id=fearless
@@ -6062,11 +6038,10 @@ msgstr "野性"
 msgid "female^feral"
 msgstr "野性"
 
-# 原文缺少句號。
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
-msgstr "在陸地上的村莊只能獲得50%的防禦。"
+msgstr "在陸地上的村莊只能獲得50%的防禦"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
@@ -6249,18 +6224,14 @@ msgstr "當被用於進攻時，這種攻擊總是至少有60%的命中率。"
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:100
 msgid "deflect"
-msgstr "偏轉"
+msgstr "打歪"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used defensively, this attack reduces the opponent's chance to hit "
-#| "by 10%."
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
-msgstr "當被用於防守時，這種攻擊總是至少有60%的命中率。"
+msgstr "當被用於防守時，這種攻擊會降低對手10%的命中率。"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:102
@@ -6363,7 +6334,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "擊暈"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6387,7 +6358,7 @@ msgstr ""
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "奧術"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
@@ -7619,24 +7590,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "矮人"
+msgstr "渡鴉"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "龍族"
+msgstr "渡鴉"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "矮人"
+msgstr "渡鴉"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -7657,6 +7622,17 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"渡鴉是常見的食腐動物，牠們常常與獵人或掠食者結伴同行，並希望分享獵物。它們沒"
+"有像獅鷲或猛禽那樣有強大的喙或爪子，但由於牠們的智力和識別優勢的能力，牠們仍"
+"然可能構成威脅。\n"
+"\n"
+"在戰鬥之後，死傷者為渡鴉提供了豐盛的饗宴，因此渡鴉對於敗者的盟友來說是一個討"
+"厭的存在，但有些勝者卻將牠們視為軍事儀式的一部分。半獸人和人類都以暴力和數量"
+"眾多而聞名，使得這兩個種族在這方便與渡鴨互動頻繁。因此，這些鳥類已成為與戰爭"
+"相關的寓言和迷信中的角色。\n"
+"\n"
+"作為聰明的食腐動物，渡鴉並不需要靠戰爭中的死者來生存。有些農民會努力阻止渡鴉"
+"接近新播的種子，但另一些農民卻樂於讓牠們充當崗哨。"
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
@@ -7923,19 +7899,17 @@ msgstr "+1 最大生命值"
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "暈眩：當單位進入暈眩狀態，將無法有效執行控制區域。"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "不死"
+msgstr "暈眩"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "暈眩"
 
 #: src/help/help.cpp:211
 msgid "Close"

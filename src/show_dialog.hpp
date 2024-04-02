@@ -15,12 +15,10 @@
 
 #pragma once
 
-class surface;
 
 #include "cursor.hpp"
 #include "floating_label.hpp"
 #include "gui/core/top_level_drawable.hpp"
-#include "tooltips.hpp"
 #include "widgets/button.hpp"
 
 namespace gui

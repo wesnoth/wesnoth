@@ -35,7 +35,7 @@ end
 ---Remove an item from the map
 ---@param x integer
 ---@param y integer
----@param name string
+---@param name? string
 function wesnoth.interface.remove_item(x, y, name)
 	local items = scenario_items:get(x, y)
 	if not items then return end

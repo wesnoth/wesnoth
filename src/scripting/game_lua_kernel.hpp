@@ -22,14 +22,12 @@
 #include <stack>
 #include <string>                       // for string
 
-class config;
 class game_config_view;
 class unit;
 class vconfig;
 namespace ai { class engine_lua; }
 namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
-namespace game_events { struct queued_event; }
 
 class game_display;
 class game_state;
@@ -135,8 +133,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
 	int intf_float_label(lua_State *L);
-	int intf_set_end_campaign_credits(lua_State *L);
-	int intf_set_end_campaign_text(lua_State *L);
 	int intf_clear_menu_item(lua_State *L);
 	int intf_create_side(lua_State *L);
 	int intf_set_menu_item(lua_State *L);

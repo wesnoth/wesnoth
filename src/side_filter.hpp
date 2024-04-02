@@ -17,13 +17,11 @@
 
 #include "variable.hpp"
 
-#include <set>
 #include <string>
 #include <vector>
 
 class config;
 class filter_context;
-class unit;
 class unit_filter;
 class team;
 

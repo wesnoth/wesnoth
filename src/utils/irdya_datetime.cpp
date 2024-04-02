@@ -15,10 +15,8 @@
 #include "utils/irdya_datetime.hpp"
 
 #include "formula/string_utils.hpp"
-#include "gettext.hpp"
 #include "tstring.hpp"
 
-#include <exception>
 
 using namespace utils;
 

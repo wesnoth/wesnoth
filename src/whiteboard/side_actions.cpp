@@ -19,14 +19,12 @@
 
 #include <set>
 #include <sstream>
-#include <iterator>
 
 #include "whiteboard/side_actions.hpp"
 
 #include "whiteboard/action.hpp"
 #include "whiteboard/attack.hpp"
 #include "whiteboard/manager.hpp"
-#include "whiteboard/mapbuilder.hpp"
 #include "whiteboard/move.hpp"
 #include "whiteboard/recall.hpp"
 #include "whiteboard/recruit.hpp"
@@ -34,12 +32,10 @@
 #include "whiteboard/highlighter.hpp"
 #include "whiteboard/utility.hpp"
 
-#include "actions/create.hpp"
 #include "actions/undo.hpp"
 #include "display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
-#include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"

@@ -40,7 +40,7 @@
 ---@field faction_name tstring
 ---@field chose_random boolean
 ---@field lost boolean
----@field variables table<string, WML>
+---@field variables WMLVariableProxy
 ---@field __cfg WMLTable
 
 ---@class wesnoth.sides
@@ -108,6 +108,7 @@ function wesnoth.sides.is_shrouded(side, location) end
 ---Replace the AI for the given side
 ---@param side integer|side
 ---@param file string
+---@overload fun(side:integer|side, ai_cfg:WML)
 function wesnoth.sides.switch_ai(side, file) end
 
 ---Add AI parameters for the given side
@@ -130,8 +131,7 @@ function wesnoth.sides.change_ai_component(side, path, component) end
 ---Remove a component from the given side's AI
 ---@param side integer|side
 ---@param path string
----@param component WML
-function wesnoth.sides.delete_ai_component(side, path, component) end
+function wesnoth.sides.delete_ai_component(side, path) end
 
 ---Get a specific side
 ---@param number integer

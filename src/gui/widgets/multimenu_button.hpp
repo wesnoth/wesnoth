@@ -16,16 +16,12 @@
 #pragma once
 
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
 
 #include "gui/dialogs/drop_down_menu.hpp"
 
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/widgets/selectable_item.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
-class config;
 
 namespace gui2
 {
@@ -223,7 +219,6 @@ struct multimenu_button_definition : public styled_widget_definition
 
 // }---------- BUILDER -----------{
 
-class styled_widget;
 
 namespace implementation
 {

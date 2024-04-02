@@ -12,8 +12,6 @@
 	See the COPYING file for more details.
 */
 
-#include <fstream>
-
 #include "filesystem.hpp"
 #include "wesconfig.h"
 

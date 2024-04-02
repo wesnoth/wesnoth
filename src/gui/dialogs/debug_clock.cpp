@@ -21,11 +21,9 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
 
-#include <functional>
 
 #include <ctime>
 

@@ -15,17 +15,13 @@
 
 #include "video.hpp"
 
-#include "display.hpp"
 #include "draw_manager.hpp"
-#include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
 #include "picture.hpp"
 #include "preferences/general.hpp"
-#include "sdl/input.hpp"
 #include "sdl/point.hpp"
 #include "sdl/texture.hpp"
-#include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
 #include "widgets/menu.hpp" // for bluebg_style.unload_images

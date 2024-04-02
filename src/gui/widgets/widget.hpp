@@ -24,7 +24,6 @@
 
 #include <string>
 
-class surface;
 
 namespace gui2
 {

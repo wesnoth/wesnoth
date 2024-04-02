@@ -22,7 +22,6 @@
 
 #include "arrow.hpp"
 #include "color.hpp"
-#include "cursor.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
@@ -30,11 +29,8 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
@@ -49,7 +45,6 @@
 #include "terrain/builder.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
@@ -59,7 +54,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include <SDL2/SDL_image.h>
 
 #include <algorithm>
 #include <array>
@@ -165,7 +159,7 @@ display::display(const display_context* dc,
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
-	, minimap_(nullptr)
+	, minimap_renderer_(nullptr)
 	, minimap_location_(sdl::empty_rect)
 	, redraw_background_(false)
 	, invalidateAll_(true)
@@ -884,8 +878,9 @@ void display::create_buttons()
 		return;
 	}
 
-	menu_buttons_.clear();
-	action_buttons_.clear();
+	// Keep the old buttons around until we're done so we can check the previous state.
+	std::vector<std::shared_ptr<gui::button>> menu_work;
+	std::vector<std::shared_ptr<gui::button>> action_work;
 
 	DBG_DP << "creating menu buttons...";
 	for(const auto& menu : theme_.menus()) {
@@ -906,7 +901,7 @@ void display::create_buttons()
 			b->enable(b_prev->enabled());
 		}
 
-		menu_buttons_.push_back(std::move(b));
+		menu_work.push_back(std::move(b));
 	}
 
 	DBG_DP << "creating action buttons...";
@@ -927,13 +922,16 @@ void display::create_buttons()
 			}
 		}
 
-		action_buttons_.push_back(std::move(b));
+		action_work.push_back(std::move(b));
 	}
 
 	if (prevent_draw_) {
 		// buttons start hidden in this case
 		hide_buttons();
 	}
+
+	menu_buttons_ = std::move(menu_work);
+	action_buttons_ = std::move(action_work);
 
 	layout_buttons();
 	DBG_DP << "buttons created";
@@ -1662,11 +1660,12 @@ void display::recalculate_minimap()
 		return;
 	}
 
-	minimap_ = texture(image::getMinimap(
-		area.w, area.h, get_map(),
+	minimap_renderer_ = image::prep_minimap_for_rendering(
+		get_map(),
 		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
-	));
+	);
 
 	redraw_minimap();
 }
@@ -1684,7 +1683,7 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(!minimap_) {
+	if(!minimap_renderer_) {
 		ERR_DP << "trying to draw null minimap";
 		return;
 	}
@@ -1694,23 +1693,15 @@ void display::draw_minimap()
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
 
-	// Update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
-	minimap_location_.w = minimap_.w();
-	minimap_location_.h = minimap_.h();
-
-	// Draw the minimap.
-	if (minimap_) {
-		draw::blit(minimap_, minimap_location_);
-	}
+	// Draw the minimap and update its location for mouse and units functions
+	minimap_location_ = std::invoke(minimap_renderer_, area);
 
 	draw_minimap_units();
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_.w() / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_.h() / (get_map().h()*hex_size());
+	double xscaling = 1.0 * minimap_location_.w / (get_map().w() * hex_width());
+	double yscaling = 1.0 * minimap_location_.h / (get_map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -2498,11 +2489,9 @@ void display::render()
 	// update the minimap texture, if necessary
 	// TODO: highdpi - high DPI minimap
 	const rect& area = minimap_area();
-	if(!area.empty() &&
-		(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h))
-	{
+	if(!area.empty() && !minimap_renderer_) {
 		recalculate_minimap();
-		if(!minimap_) {
+		if(!minimap_renderer_) {
 			ERR_DP << "error creating minimap";
 			return;
 		}

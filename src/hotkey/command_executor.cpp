@@ -20,28 +20,22 @@
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
-#include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/retval.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
-#include "game_end_exceptions.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
-#include "show_dialog.hpp"
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 #include "video.hpp" // toggle_fullscreen
 
-#include <functional>
 
-#include <SDL2/SDL_image.h>
 
-#include <cassert>
 #include <ios>
 #include <set>
 

@@ -18,13 +18,11 @@
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <iterator>
 
 class game_config_view;
 
 //this module controls internationalization.
 
-class config;
 
 struct language_def
 {

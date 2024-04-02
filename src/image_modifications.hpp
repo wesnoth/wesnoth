@@ -63,7 +63,7 @@ class modification
 public:
 
 	/** Exception thrown by the operator() when an error occurs. */
-	struct imod_exception
+	struct imod_exception final
 		: public lua_jailbreak_exception
 	{
 		/**
@@ -219,6 +219,15 @@ private:
  * Grayscale (GS) modification.
  */
 class gs_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Crop transparent padding (CROP_TRANSPARENCY) modification.
+ */
+class crop_transparency_modification : public modification
 {
 public:
 	virtual surface operator()(const surface& src) const;
@@ -438,12 +447,13 @@ public:
 		SCALE_SHARP           = 0b00001,
 		FIT_TO_SIZE           = 0b00010,
 		PRESERVE_ASPECT_RATIO = 0b00100,
+		X_BY_FACTOR           = 0b01000,
+		Y_BY_FACTOR           = 0b10000,
 	};
 
-	scale_modification(point target_size, const std::string& fn, uint8_t flags)
+	scale_modification(point target_size, uint8_t flags)
 		: target_size_(target_size)
 		, flags_(flags)
-		, fn_(fn)
 	{}
 
 	virtual surface operator()(const surface& src) const;
@@ -455,8 +465,6 @@ private:
 	point target_size_{0,0};
 
 	uint8_t flags_ = SCALE_LINEAR | FIT_TO_SIZE;
-
-	const std::string fn_ = "";
 };
 
 /**

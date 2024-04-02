@@ -15,10 +15,7 @@
 
 #pragma once
 
-#include "gui/core/notifier.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "sdl/rect.hpp"
-#include <functional>
 
 namespace gui2
 {
@@ -179,13 +176,13 @@ public:
 		return pixels_per_step_;
 	}
 
-protected:
-	void finalize_setup();
-
 	unsigned get_positioner_offset() const
 	{
 		return positioner_offset_;
 	}
+
+protected:
+	void finalize_setup();
 
 	unsigned get_positioner_length() const
 	{

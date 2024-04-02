@@ -24,7 +24,6 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "units/unit.hpp"
 #include "tod_manager.hpp"
 #include "game_version.hpp"
 

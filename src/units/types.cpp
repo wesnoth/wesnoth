@@ -28,7 +28,6 @@
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
 #include "units/unit.hpp"
-#include "utils/iterable_pair.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -322,6 +321,7 @@ void unit_type::build_help_index(
 
 	// Set the movement type.
 	const std::string move_type = cfg["movement_type"];
+	movement_type_id_ = move_type;
 	const movement_type_map::const_iterator find_it = mv_types.find(move_type);
 
 	if(find_it != mv_types.end()) {
@@ -838,13 +838,34 @@ bool unit_type::resistance_filter_matches(
 
 std::string unit_type::alignment_description(unit_alignments::type align, unit_race::GENDER gender)
 {
-	static const unit_alignments::sized_array<t_string> male_names {_("lawful"), _("neutral"), _("chaotic"), _("liminal")};
-	static const unit_alignments::sized_array<t_string> female_names {_("female^lawful"), _("female^neutral"), _("female^chaotic"), _("female^liminal")};
-
 	if(gender == unit_race::FEMALE) {
-		return female_names[static_cast<int>(align)];
+		switch(align)
+		{
+			case unit_alignments::type::lawful:
+				return _("female^lawful");
+			case unit_alignments::type::neutral:
+				return _("female^neutral");
+			case unit_alignments::type::chaotic:
+				return _("female^chaotic");
+			case unit_alignments::type::liminal:
+				return _("female^liminal");
+			default:
+				return _("female^lawful");
+		}
 	} else {
-		return male_names[static_cast<int>(align)];
+		switch(align)
+		{
+			case unit_alignments::type::lawful:
+				return _("lawful");
+			case unit_alignments::type::neutral:
+				return _("neutral");
+			case unit_alignments::type::chaotic:
+				return _("chaotic");
+			case unit_alignments::type::liminal:
+				return _("liminal");
+			default:
+				return _("lawful");
+		}
 	}
 }
 

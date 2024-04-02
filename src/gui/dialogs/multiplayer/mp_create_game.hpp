@@ -21,9 +21,7 @@
 
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/configure_engine.hpp"
-#include "mp_game_settings.hpp"
 
-class config;
 
 namespace gui2
 {
@@ -101,7 +99,7 @@ private:
 	void on_game_select();
 	void on_tab_select();
 	void on_era_select();
-	void on_mod_toggle(const int index, toggle_button* sender);
+	void on_mod_toggle(const std::string id, toggle_button* sender);
 	void on_random_faction_mode_select();
 
 	std::vector<std::string> get_active_mods();

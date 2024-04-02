@@ -17,7 +17,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
-class config;
 class saved_game;
 class wesnothd_connection;
 

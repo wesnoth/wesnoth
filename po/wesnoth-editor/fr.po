@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2022-04-17 21:07+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-02-12 21:24+0100\n"
+"Last-Translator: demario\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +126,7 @@ msgstr "spécial"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "élévation"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -203,7 +203,7 @@ msgstr "Fenêtre"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Extension"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -418,14 +418,8 @@ msgid "Map loaded from scenario"
 msgstr "Carte chargée depuis le scénario"
 
 #: src/editor/map/context_manager.cpp:955
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Fichier de carte référencée chargé :\n"
-"$new"
+msgstr "Fichier de carte référencée chargé :"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -448,7 +442,7 @@ msgstr "Fichier vide"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "Ce fichier n'a ni une extension .map ni .cfg"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -461,6 +455,8 @@ msgstr ""
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
+"Les caractères '<<' dans le fichier trahissent la présence de code lua – "
+"abandon"
 
 #: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
@@ -469,23 +465,19 @@ msgstr "Erreur"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "Le chargement du scénario a échoué, seule la carte sera chargée."
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Ce fichier ressemble à un scénario, mais la valeur de map_data n'indique pas "
-"un nom de fichier existant."
+"Ce fichier ressemble à un scénario, mais la valeur de map_file n'indique pas "
+"un fichier existant."
 
 #: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Les données de la carte n'ont pas pu être trouvées dans ce fichier"
 
 #: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
 #: src/editor/map/map_context.cpp:886

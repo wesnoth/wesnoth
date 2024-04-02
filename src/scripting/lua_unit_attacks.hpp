@@ -20,7 +20,6 @@
 #include "units/attack_type.hpp"
 
 struct lua_State;
-class lua_unit;
 
 void push_unit_attacks_table(lua_State* L, int idx);
 

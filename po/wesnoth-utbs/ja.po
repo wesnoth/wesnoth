@@ -1,15 +1,15 @@
 #
 # Translators:
-# k konami, 2022
 # RatArmy, 2023
+# k konami, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-21 01:57 UTC\n"
-"PO-Revision-Date: 2021-06-26 08:34+0000\n"
-"Last-Translator: RatArmy, 2023\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -51,6 +51,10 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"注意：このキャンペーンでは昼夜のサイクル、召喚コスト、難易度による一般的な設"
+"定などにおいて標準の仕組みとは異なっています。Quenoth エルフはターンあたりで"
+"数回攻撃できるユニットもありますし、その他のユニットには攻撃後の移動が可能な"
+"ものもあります。"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
@@ -114,13 +118,6 @@ msgstr "それと、ここで言及し忘れた全ての貢献者にも感謝を
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -128,11 +125,12 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"脱水症：このユニットは脱水症状を示しています。日中は、ターンごとに HP を 4 と"
-"攻撃力を 1 失います。ヒーラーは症状の進行を抑えることが可能で、オアシスの水は"
-"症状を取り除くことができます。\n"
+"脱水状態：このユニットは脱水状態にあります。ヒーラーによる治療やオアシスの水"
+"で治癒されない限り $dehydration HP を失って、日中には毎ターン 1 ずつ HP を失"
+"います。\n"
 "\n"
-"ユニットが脱水症状で死ぬことはなく、攻撃ダメージが 0 になることもありません。"
+"脱水状態になることでユニットは死亡しませんが、ダメージを受けなくなるようにす"
+"ることもできません。"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
@@ -254,42 +252,42 @@ msgstr "Garak の死"
 msgid "Death of Zhul"
 msgstr "Zhul の死"
 
-#. [value]: type=Quenoth Fighter
+#. [value]: type=Quenoth Fighter, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:181
 msgid "Lreu"
 msgstr "Lreu"
 
-#. [value]: type=Quenoth Fighter
+#. [value]: type=Quenoth Fighter, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:188
 msgid "Piyru"
 msgstr "Piyru"
 
-#. [value]: type=Quenoth Fighter
+#. [value]: type=Quenoth Fighter, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:193
 msgid "Feru"
 msgstr "Feru"
 
-#. [value]: type=Quenoth Scout
+#. [value]: type=Quenoth Scout, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:200
 msgid "Danu"
 msgstr "Danu"
 
-#. [value]: type=Quenoth Scout
+#. [value]: type=Quenoth Scout, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:205
 msgid "Hamuil"
 msgstr "Hamuil"
 
-#. [value]: type=Quenoth Scout
+#. [value]: type=Quenoth Scout, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:210
 msgid "Anioh"
 msgstr "Anioh"
 
-#. [value]: type=Tauroch Rider
+#. [value]: type=Tauroch Rider, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:215
 msgid "Vemuil"
 msgstr "Vemuil"
 
-#. [value]: type=Tauroch Rider
+#. [value]: type=Tauroch Rider, gender=male
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:220
 msgid "Taliu"
 msgstr "Taliu"
@@ -414,23 +412,23 @@ msgstr "Seil"
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:380
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:581
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh、Nym、助けてくれ！"
 
 #. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:385
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:581
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:802
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4560
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:586
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4574
 msgid "What in Uria’s name is that?"
 msgstr "あれは一体なんなの？"
 
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:391
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:587
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:592
 msgid ""
 "They came with the stones that fell from the sky. I know not what they are, "
 "but more seem to be emerging from the craters. If we don’t stop them there "
@@ -442,7 +440,7 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:396
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:592
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:597
 msgid "To battle, my friends! There are still those left who can fight."
 msgstr "戦うことのできる者達がまだ残っている。皆、戦うぞ！"
 
@@ -473,22 +471,22 @@ msgid "Raynor"
 msgstr "Raynor"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:468
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:473
 msgid "More of these muddy crawlies, let’s get rid of them with haste."
 msgstr "またこの奇怪な泥の怪物が出てきた。さっさと駆除してしまおう。"
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:553
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:558
 msgid "Jorazan"
 msgstr "Jorazan"
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:554
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:559
 msgid "Zyar"
 msgstr "Zyar"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:567
 msgid ""
 "This is our training ground. And look, there is Garak, the captain of the "
 "guard. He and his fighters have survived the night!"
@@ -497,17 +495,17 @@ msgstr ""
 "びたんだ！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:598
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:603
 msgid "But they are fighting many mud creatures. Quick, we must help them!"
 msgstr "彼等はたくさんの泥の怪物と戦っている。急いで彼等を助けなければ！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:626
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
 msgid "Ha! They’re destroyed at last."
 msgstr "よし！やっと連中を片付けたぞ。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:636
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
@@ -518,12 +516,12 @@ msgstr ""
 "大地に返さねば。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:656
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:665
 msgid "This bridge leads to the holy island at the center of our lake."
 msgstr "この橋を渡れば、湖の中央にある聖なる島に渡ることができる。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:670
 msgid ""
 "Hmmmm. Some of the druids that worship on the island may still be alive. We "
 "should go check."
@@ -532,14 +530,14 @@ msgstr ""
 "いいよね？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:675
 msgid ""
 "Be careful. The bridge is broken, so we’ll have to wade through the shallow "
 "water."
 msgstr "気をつけてくれ。橋が壊れているから、浅瀬を歩いて渡る必要がありそうだ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:707
 msgid ""
 "The great tree! It has been buried under the rocks. Our most holy sanctuary, "
 "defiled. Oh, Eloh, what shall we do?"
@@ -548,32 +546,32 @@ msgstr ""
 "まった。あぁ、Eloh よ、私達はどうすればよいのですか？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:709
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:712
 msgid "Is anyone still alive?"
 msgstr "誰か生き残った人はいないの？"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:722
 msgid "Ryoko"
 msgstr "Ryoko"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:721
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:724
 msgid "Yuni"
 msgstr "Yuni"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:725
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:728
 msgid "Finally! We were worried that no one else had survived."
 msgstr "やっと助けが！もう誰も生き残っていないのではないかと心配していました。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:730
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:733
 msgid "Mother priestess, are you all right?"
 msgstr "母なる司祭様、お怪我はありませんか？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:735
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:738
 msgid ""
 "There’s no time to stand on ceremony. I’m fine. I’m afraid only a few of us "
 "survived, but we will lend you what skills we have. Show me to those who "
@@ -584,12 +582,12 @@ msgstr ""
 "て下さい。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:740
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:743
 msgid "But the great tree, it has been destroyed!"
 msgstr "しかし、木が、偉大なる木が破壊されてしまいました！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:745
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:748
 msgid ""
 "All things of this world come to an end, but the power of Eloh endures. A "
 "new one shall grow in its place. Come now, let us see to the needs of our "
@@ -599,12 +597,12 @@ msgstr ""
 "新しい木が育つでしょう。さあ、私達にも手助けをさせて下さい。"
 
 #. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:765
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:774
 msgid "Deep One"
 msgstr "深きもの"
 
 #. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:766
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:775
 msgid ""
 "The Deep Ones are gigantic aquatic monsters that lurk in the dark places of "
 "the world. Rarely do they come to the surface, and when they do the best way "
@@ -618,7 +616,7 @@ msgstr ""
 "かけてきます。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:796
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:805
 msgid ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
 "swarm of tentacles the moment the first elf set foot off the island."
@@ -627,7 +625,7 @@ msgstr ""
 "そして触手の群れが襲い掛かってきました！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:817
 msgid ""
 "I felt a great darkness in this lake, but I knew not what it was. The "
 "falling rocks must have woken it from its sleep."
@@ -636,39 +634,39 @@ msgstr ""
 "た。降ってきた岩によって、眠りから目覚めたに違いありません。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:813
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:822
 msgid ""
 "Protect the priestesses, we shall send this monstrosity back to the depths "
 "it came from!"
 msgstr "尼達を守るのだ。この奇怪なモノを湖底に送り返すぞ！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:830
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:839
 msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "どうしてこの草地には何もいないんだ？サンドボック達はどこに？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:844
 msgid "Maybe they’re hiding in the stables. Let’s go check."
 msgstr "たぶんサンドボック小屋に隠れてるのよ。行って確認しましょう。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:873
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:882
 msgid "Naru"
 msgstr "Naru"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:886
 msgid "Is it safe to come out? I was so scared."
 msgstr "外に出ても大丈夫なのか？怖くて動けなかったんだ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:891
 msgid "Where are all the other dustboks?"
 msgstr "他のサンドボック達はどこに？"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:887
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:896
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
@@ -682,7 +680,7 @@ msgstr ""
 "だった。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:892
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:901
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
@@ -694,27 +692,27 @@ msgstr ""
 "もしれない。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:897
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:906
 msgid "We can only hope that hunting party returns soon."
 msgstr "狩猟隊が早く戻ってくれればいいんだけど。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:907
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:916
 msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgstr "おい、Nisen、岩はもう降り止んだ。出てきても大丈夫だ！"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:911
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:920
 msgid "Nisen"
 msgstr "Nisen"
 
 #. [message]: speaker=Nisen
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:922
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:931
 msgid "Oh, thank Eloh, I thought they would never stop."
 msgstr "ああ感謝します、Eloh よ。もう降り止むことはないのかと思っていたわ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1034
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1043
 msgid ""
 "Oh good, some elves have survived in this outer settlement. They’ve agreed "
 "to help us search for other survivors."
@@ -723,12 +721,12 @@ msgstr ""
 "言ってくれている。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1042
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1051
 msgid "The encampment is empty. I wonder what happened to the inhabitants?"
 msgstr "ここには誰もいない。何があったのだろうか？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1054
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1063
 msgid ""
 "This encampment has been abandoned. There are signs of a struggle and a few "
 "bloodstains but nothing else. I fear for those elves who lived out here."
@@ -737,12 +735,12 @@ msgstr ""
 "んでいたエルフはどうなったのだろう。"
 
 #. [unit]: type=Necromancer, type=Dark Sorcerer, id=Xanthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1102
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1111
 msgid "Xanthos"
 msgstr "Xanthos"
 
 #. [message]: speaker=Xanthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1122
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1131
 msgid ""
 "This place reeks of death, I could smell it from miles away. Oh, how I love "
 "it, it is the smell of power, the inevitable triumph of death over life. "
@@ -756,7 +754,7 @@ msgstr ""
 "だ！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1127
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1136
 msgid ""
 "His timing couldn’t be worse. I know that undead cultists often prey on "
 "small targets, but they haven’t had the guts to attack us for years. Why has "
@@ -767,7 +765,7 @@ msgstr ""
 "にこうも立て続けに試練を与えるのかしら？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1133
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1142
 msgid ""
 "Have some more faith, girl, the goddess does not send us more than we can "
 "handle. With Eloh’s grace we shall yet triumph over this pretender."
@@ -776,7 +774,7 @@ msgstr ""
 "ん。Eloh の恩寵があれば、彼奴の企てなぞたやすく打ち破れましょう。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1138
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1147
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our riders can easily defeat their skeleton armies."
@@ -785,7 +783,7 @@ msgstr ""
 "るし、騎兵ならばスケルトンの軍隊も容易に倒せるはずだ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1143
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1152
 msgid ""
 "I have heard of your kind, foul necromancer. You travel the sands, daring to "
 "bring back and enslave those who have passed on. But we will prove to you "
@@ -799,7 +797,7 @@ msgstr ""
 "Eloh と Quenoth エルフの怒りをとくと味わえ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1175
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1184
 msgid ""
 "Some of our people felt crowded in the village, and wanted to live out on "
 "the open sands. They thought they could flee to the safety of our walls if "
@@ -810,17 +808,17 @@ msgstr ""
 "なったのかを考えると、身震いせずにはいられなかった。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1204
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1213
 msgid "The necromancer is finally vanquished."
 msgstr "やっとあの死霊使いを打ち倒せた。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1209
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1218
 msgid "And at last the dead shall have their rest."
 msgstr "これで死者達も安息を迎えることができるでしょう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1220
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1229
 msgid ""
 "The necromancer is dead, but I don’t think we’ve explored the entire "
 "village. There may still be elves that need rescuing. We should go back and "
@@ -830,44 +828,44 @@ msgstr ""
 "フ達がいるかもしれないから、戻って確認しなければ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1237
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1246
 msgid ""
 "We’ve explored the village, and I think we’ve rescued the last of the "
 "survivors."
 msgstr "これで村を全て調査できたと思う。全ての生存者を救出できたはずだ。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1274
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1283
 msgid "Pythos"
 msgstr "Pythos"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1276
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1285
 msgid "Shea"
 msgstr "Shea"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1278
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1287
 msgid "Narn"
 msgstr "Narn"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1280
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1289
 msgid "Jokli"
 msgstr "Jokli"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1282
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1291
 msgid "Lyer"
 msgstr "Lyer"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1290
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1299
 msgid "Hail, is anyone still alive?"
 msgstr "よお、まだ生きてる奴はいるか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1295
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1304
 msgid ""
 "Yes, and we could certainly use your help. A necromancer has been attacking "
 "us, he intends to use our fallen comrades as fodder for his evil magics. "
@@ -878,7 +876,7 @@ msgstr ""
 "す。ところで、あなた達は今までどうしていたのですか？"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1300
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1309
 msgid ""
 "We were out far in the sands, searching for prey and roaming orcs. As soon "
 "as we saw the rock storm we raced back as fast as we could. I only wish we "
@@ -889,34 +887,34 @@ msgstr ""
 "たのだが。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1305
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1314
 msgid "No use crying over spilt water. But we’re sure glad you’re here now."
 msgstr ""
 "済んでしまったことは仕方ないわ。それでも、あなた達が無事に戻ってきてくれて本"
 "当に嬉しいわ。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1319
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1328
 msgid "It seems that we finally have some peace. But what do we do now?"
 msgstr "やっと一息つけそうね。でもこれからどうすればいいのかしら？"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1324
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1333
 msgid "Where is Tanuil and his family?"
 msgstr "Tanuil と彼の家族はどこだ？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1338
 msgid "The keep has been crushed by the rocks. We could find no survivors."
 msgstr "主塔は岩で破壊されていました。生存者は見つかりませんでした。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1334
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1343
 msgid "Too many have died this night."
 msgstr "あの夜だけであまりにも多くの者が亡くなりました。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1339
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1348
 msgid ""
 "Our village is in ruins. The walls that were built by our ancestors over "
 "generations have been demolished in a space of hours. Most of our dwellings "
@@ -928,7 +926,7 @@ msgstr ""
 "なっちゃった以上、もうここには居られない、それだけは確実ね。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1354
 msgid ""
 "You are a fool to despair. This has always been our home. The water here is "
 "good, we know this land. We can rebuild; Eloh willing, we can thrive again."
@@ -938,7 +936,7 @@ msgstr ""
 "ることもできよう。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1350
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1359
 msgid ""
 "Think for a moment. Who else has seen the rock storm? What other foes are "
 "coming to pick over the remains of our people? There is no mercy in the "
@@ -951,18 +949,18 @@ msgstr ""
 "よ。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1356
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1365
 msgid ""
 "Impudent girl, you should not speak so to your elders, or to your betters."
-msgstr "生意気な小娘め。年上や目上の者にそのような口を聞くべきではない。"
+msgstr "生意気な小娘め。年上や目上の者にそのような口をきくべきではない。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1361
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1370
 msgid "I have a right to speak my mind!"
 msgstr "なによ！アタシは思ったことを口にしただけよ！何か問題でもあるの？！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1367
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1376
 msgid ""
 "Peace, please calm yourselves. In chaos there is nothing but death and "
 "destruction. Even in this time of trial we must show our fortitude, and "
@@ -977,7 +975,7 @@ msgstr ""
 "リーダーの地位を引き継ぐべきでしょう。それでどうしますか、Kaleh？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1381
 msgid ""
 "Last night, before the rock storm, I heard a voice in my sleep. It sounded "
 "like sweet music, and somehow I knew it was Eloh. I still remember her exact "
@@ -1001,7 +999,7 @@ msgstr ""
 "てくれているのならば、私はそこに皆を連れていきましょう。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1377
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1386
 msgid ""
 "I fear what dangers lurk in the harsh sands and beyond to the north, but "
 "because you are our leader, I will follow where you go."
@@ -1010,7 +1008,7 @@ msgstr ""
 "安だ。しかし、お前が俺達のリーダーとなったのだから、俺はその決定に従おう。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1382
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1391
 msgid ""
 "Then let us collect what supplies we can from the wreckage and head north "
 "with great haste. Our home is protection no longer, we must find a new haven "
@@ -1021,7 +1019,7 @@ msgstr ""
 "りません。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1387
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1396
 msgid ""
 "What about the bodies of the dead? We can’t leave them to be torn by crows "
 "or desecrated by other dark mages."
@@ -1030,7 +1028,7 @@ msgstr ""
 "り、他の黒魔術師に汚されちゃうかもしれないわ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1393
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1402
 msgid ""
 "I agree, we should not forget our dead. We should build a huge pyre and burn "
 "them with proper ceremony, so that the smoke may carry them on to the next "
@@ -1040,7 +1038,7 @@ msgstr ""
 "を行った上で火葬しよう。そうすれば煙が彼等をあの世に運んでくれるだろう。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1407
 msgid ""
 "Kaleh, I don’t want to tarry longer than necessary, but I agree that we must "
 "see to the dead before we leave. Garak, you and your men start collecting "
@@ -1051,7 +1049,7 @@ msgstr ""
 "い。Nym、火葬を行うために油と木を探すのを手伝ってあげて下さい。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1403
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1412
 msgid ""
 "And so it was done. The dead were laid reverently on top of what little wood "
 "we could find. But the fire was big enough to burn the bodies to ashes and "
@@ -1067,7 +1065,7 @@ msgstr ""
 "落とした最初の者達だったが、彼らの後にはまだまだ多くの者達が続くのだ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1456
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1465
 msgid ""
 "What’s that to the north? It looks like even more undead! The rock storm "
 "must have attracted other necromancers. There’s no way we can defeat them "
@@ -1147,9 +1145,9 @@ msgid ""
 msgstr ""
 "俺はかなり昔、若かった時にこの砂漠を越えたことがある。悪しき死霊使いがここの"
 "廃墟に潜んでいて、アンデッドの軍隊を作っていた。俺たちはそいつに大規模な攻撃"
-"をしかけたのだ。あれはひどい戦いだった。特に夜になって以降は。それでも奴の魔"
-"法をもってしても、我々を止めることはできず、ついにやつの首も胴体と離ればなれ"
-"になった。ああ、これももうずいぶん昔のことなのだな……"
+"をしかけたのだ。あれはひどい戦いだった。特に夜になって以降は。だが、奴の魔法"
+"をもってしても我々を止めることはできず、ついにやつの首も胴体と離ればなれに"
+"なった。ああ、あれももうずいぶん昔のことなのだな……"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:293
@@ -1518,7 +1516,7 @@ msgstr ""
 "お前達が誰かは知らん。しかしそんなことはどうでもよい。何者であっても「黒手"
 "団」の力の前には無力と知れ！"
 
-#. [unit]: type=Red Mage, id=Elyssa
+#. [unit]: type=Red Mage, id=Elyssa, gender=female
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1043
 msgid "Elyssa"
 msgstr "Elyssa"
@@ -1748,7 +1746,7 @@ msgstr ""
 "監視されているんでしょう。あの辺りの砂丘には我々が思っているより多くの盗賊が"
 "潜んでいるかもしれません。"
 
-#. [unit]: id=Thorn, type=Outlaw
+#. [unit]: id=Thorn, type=Outlaw, gender=female
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1400
 msgid "Thorn"
 msgstr "Thorn"
@@ -2261,16 +2259,12 @@ msgstr ""
 #. probably just because of the nearby undead, not some prophetic vision. Neither Garak nor a first-time
 #. player know that the scenario will extend the night indefinitely until the enemies are defeated.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#, fuzzy
-#| msgid ""
-#| "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
-#| "will end here one way or another."
 msgid ""
 "I had a dream this night Kaleh, full of gloom and darkness. My journey will "
 "end here one way or another."
 msgstr ""
-"Kaleh、俺はさっき夢を見たのだ。闇で真っ黒に塗りつぶされた憂鬱な夢をな。……俺の"
-"旅はここで終わる、そういうことだろう。"
+"俺は夜に夢を見たんだよ、Kaleh 。陰鬱で闇に満ちた夢をな。いずれにしても俺の旅"
+"はここで終わるだろう。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
@@ -2304,7 +2298,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "Garak の耐性が防御時のみ 20 % 増加します。"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
@@ -2601,10 +2595,8 @@ msgstr ""
 
 #. ['A unit’s name, should be short.']
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1540
-#, fuzzy
-#| msgid "Wounded Elven Scout"
 msgid "Wounded Scout"
-msgstr "負傷したエルフの斥候"
+msgstr "負傷した斥候"
 
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -3057,6 +3049,9 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
+"この地についていうと、Garak は教えてくれないんだけどね、この辺りの地形は、昨"
+"夜オークから手に入れた地図と完璧に一致するのよ！この先にオークの野営地があ"
+"るってことね。気づかれずに忍び込めればいいんだけど。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
@@ -3184,6 +3179,8 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
+"ほんの数歩踏み入れただけでも、アタシ達がここにいることが付近のゴブリンにはバ"
+"レちゃってる！敵地でコソコソするのは容易じゃないってことよ。"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:541
@@ -3212,8 +3209,6 @@ msgstr "湖ナーガ"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
-#, fuzzy
-#| msgid "Lake Naga"
 msgid "female^Lake Naga"
 msgstr "湖ナーガ"
 
@@ -3450,7 +3445,7 @@ msgstr ""
 #. [unit]: type=Dark Assassin Cloaked, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:997
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2114
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2382
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2396
 msgid "Cloaked Figure"
 msgstr "覆面の人影"
 
@@ -3937,10 +3932,8 @@ msgstr "うわ。"
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
-#, fuzzy
-#| msgid "Kaleh, I think you should come up and see this."
 msgid "Whoa. Kaleh, you have to come see this."
-msgstr "Kaleh、こっちへ来て、これを見てくれ。"
+msgstr "うわ。Kaleh、この光景、ほら、見ておかないと。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
@@ -5295,7 +5288,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1645
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2344
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2358
 msgid "Crypt Guardian"
 msgstr "墓場の番人"
 
@@ -5580,7 +5573,7 @@ msgstr "しかし軍曹殿──"
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:665
 msgid "Did I give you permissions to speak? Did I?"
-msgstr "誰が口を利いて良いと言った？お前はバカか？"
+msgstr "誰が口をきいて良いと言った？お前はバカか？"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:670
@@ -6314,7 +6307,7 @@ msgstr "申し訳ないけど Kaleh、お別れの時が来たようだわ。"
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:471
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:464
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2058
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2072
 msgid "What?!"
 msgstr "えっ？！"
 
@@ -7169,32 +7162,32 @@ msgstr ""
 "ンネルが一番速かったが、もう水浸しだ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1065
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1072
 msgid "There must be another way out. There must!"
 msgstr "他にも道があるはずだ。必ず！"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1070
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1077
 msgid "There might be, but I don’t—"
 msgstr "あるにはあるが、あそこは……"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1075
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1082
 msgid "Then show us the way already! We’re running out of time."
 msgstr "あるんなら、さっさと言って！もう時間がないのよ！"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1080
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1087
 msgid "Fine. Just keep going west, but be careful."
 msgstr "…わかった。とにかく西へ向かえ、警戒だけは怠るな。"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1111
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1125
 msgid "Whoa, what is this place? It sure seems well protected."
 msgstr "うわっ、この場所は一体？強固に守られているけれど。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1117
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1131
 msgid ""
 "This is an ancient fortress. Who lived here I do not know, but it has been "
 "long since abandoned."
@@ -7203,7 +7196,7 @@ msgstr ""
 "だ。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1124
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1138
 msgid ""
 "Behold, we come now to an ancient fortress. Who lived here I do not know, "
 "but it has been long since abandoned."
@@ -7212,12 +7205,12 @@ msgstr ""
 "らく放棄されたままだ。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1131
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1145
 msgid "You’ve been this way before?"
 msgstr "前にここに来たことがあるの？"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1150
 msgid ""
 "Yes, but I didn’t explore very far. This foul place is still protected by "
 "wards and guards. It reeks of dark magic."
@@ -7226,12 +7219,12 @@ msgstr ""
 "衛に守られている。闇の魔法の臭いがプンプンするやつらだ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1141
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1155
 msgid "I wish there was another path, but it seems we have no choice."
 msgstr "他の道があればいいんだが、選択の余地はなさそうだな。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1146
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1160
 msgid ""
 "Wait. The chamber in front of us is probably trapped and well guarded. There "
 "is another way. When I explored here before, I found a secret passage that "
@@ -7247,25 +7240,25 @@ msgstr ""
 "重だからな。最終決定はお前に任せるぞ、Kaleh。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1173
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1187
 msgid ""
 "Hmmm, the entrance to the secret tunnel should be right around here "
 "somewhere."
 msgstr "むむむ、秘密のトンネルへの入り口がこの辺りにあったはずなんだが。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1178
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1195
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1192
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1209
 msgid "Got it!"
 msgstr "やったぞ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1185
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1199
 msgid "I think I see a door-shaped crack in this wall."
 msgstr "ここの壁面に扉の形をしたひび割れがある。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1190
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1204
 msgid ""
 "Good, that should be the entrance to the secret tunnel. Now just push hard "
 "inwards."
@@ -7273,7 +7266,7 @@ msgstr ""
 "それだ、それが秘密のトンネルの入り口だろう。奥に向かって強く押してみろ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1233
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1247
 msgid ""
 "Well, this is the end of the tunnel. Which means the other secret door "
 "should be right here."
@@ -7282,17 +7275,17 @@ msgstr ""
 "だ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1238
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1252
 msgid "Hold on, I think I’ve found it."
 msgstr "ちょっと待ってくれよ…… よし、これだな。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1245
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1259
 msgid "The passage just halts at a dead end."
 msgstr "道が行き止まりになっている。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1250
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1264
 msgid ""
 "You didn’t expect the other end to be left wide open did you? There should "
 "be another secret door hidden right in front of you."
@@ -7301,27 +7294,27 @@ msgstr ""
 "はずだ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1255
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1269
 msgid "Oh, right. Hold on, I think I’ve found it."
 msgstr "ああ、それもそうか。ちょっと待ってくれ…… よし、これだな。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1332
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1333
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1337
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1338
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1342
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1343
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1346
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1347
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1349
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1351
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1353
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1355
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1352
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1356
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1357
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1361
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1363
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1365
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1367
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1369
 msgid "Gate Guard"
 msgstr "門番"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1423
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1437
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7333,7 +7326,7 @@ msgstr ""
 "りの人員が配備されていたに違いない。さて Grog、どっちに行けばいいだろう？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1429
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1443
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7345,7 +7338,7 @@ msgstr ""
 "りの人員が配備されていたに違いない。さて Nog、どっちに行けばいいだろう？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1435
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1449
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7357,7 +7350,7 @@ msgstr ""
 "りの人員が配備されていたに違いない。さて Rogrimir、どっちに行けばいいだろう？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1441
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1455
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7369,7 +7362,7 @@ msgstr ""
 "りの人員が配備されていたに違いない。さて Jarl、どっちに行けばいいだろう？"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1447
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1461
 msgid ""
 "I don’t know. When I last came this way I got scared by all the runes and "
 "things moving in the shadows, and I explored no further."
@@ -7378,7 +7371,7 @@ msgstr ""
 "を切り上げたからな。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1454
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1468
 msgid ""
 "The many tracks left by countless feet clearly show that this fort must have "
 "once been heavily occupied, but now this area is empty, except for those two "
@@ -7393,7 +7386,7 @@ msgstr ""
 "うわけですまないが、どちらに行けばいいのか忠告することはできない。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1461
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1475
 msgid ""
 "Well, we can’t spend all day thinking about it. Pick a direction, Kaleh."
 msgstr ""
@@ -7401,7 +7394,7 @@ msgstr ""
 "くか決めてよ。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1466
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1480
 msgid ""
 "Wait, those runes are giving off a cool blue light and for some reason they "
 "don’t seem as threatening as the burning red ones we saw before. Perhaps "
@@ -7414,17 +7407,17 @@ msgstr ""
 "ん。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1509
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1523
 msgid "I feel refreshed and rejuvenated!"
 msgstr "気分が晴れて元気がよみがえってきた！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1530
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1544
 msgid "The rune is gone. I guess the magic only had limited uses."
 msgstr "ルーン文字が消えた。魔法の効力は限られたものだったのか。"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1564
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1578
 msgid ""
 "There isn’t much left of the furnishings of this room. I think it was some "
 "sort of storeroom, but it looks like scavengers have taken anything useful."
@@ -7433,7 +7426,7 @@ msgstr ""
 "有用なものを持ち去った後のようだ。"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1569
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1583
 msgid ""
 "Curse Uria! The water is rising over here as well. Already the western end "
 "of this chamber is flooded. And I think I see shapes rising out of the "
@@ -7444,7 +7437,7 @@ msgstr ""
 "ない。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1607
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1621
 msgid ""
 "This looks like a training hall. There are still a few old swords and spears "
 "lying in the corners. But otherwise it seems quite abandoned."
@@ -7453,12 +7446,12 @@ msgstr ""
 "れを除けば、放棄されて久しい様子だ。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1623
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1637
 msgid "Blessed Kali"
 msgstr "祝福された Kali"
 
 #. [message]: speaker=Blessed Kali
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1635
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1649
 msgid ""
 "All right you runts, let’s try this again. Pior, remember to swing your "
 "sword with your whole body, not just your arms."
@@ -7467,32 +7460,32 @@ msgstr ""
 "うことを忘れるな。"
 
 #. [message]: speaker=Novice Pior
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1640
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1654
 msgid "Yes, sir."
 msgstr "はい、教官殿。"
 
 #. [message]: speaker=Blessed Kali
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1645
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1659
 msgid "Dani, keep your feet moving. If you stand still you’re a dead man."
 msgstr "Dani、足を止めるな。動きを止めたら殺されてしまうぞ。"
 
 #. [message]: speaker=Novice Dani
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1650
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1664
 msgid "Right, sir."
 msgstr "わかりました、教官殿。"
 
 #. [message]: speaker=Blessed Kali
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1655
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1669
 msgid "Iona, try to vary your attacks more. You’re becoming too predictable."
 msgstr "Iona、攻撃にもっと変化をつけてみろ。動きが単調になっているぞ。"
 
 #. [message]: speaker=Novice Iona
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1674
 msgid "I’ll try, sir."
 msgstr "やってみます、教官殿。"
 
 #. [message]: speaker=Blessed Kali
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1679
 msgid ""
 "And remember, everyone, we’re going to keep practicing until I’m satisfied. "
 "So, ready... attack!"
@@ -7500,7 +7493,7 @@ msgstr ""
 "それから皆、忘れるな、私が納得するまで練習は終わらないぞ。では、構え…… 攻撃！"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1688
 msgid ""
 "Wait a minute, I don’t see any targets or practice dummies. Who are they "
 "supposed to be attacking?"
@@ -7509,7 +7502,7 @@ msgstr ""
 "かって攻撃するつもりだ？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1693
 msgid ""
 "I believe that would be us. But perhaps we can give them a few lessons in "
 "proper fighting style."
@@ -7518,7 +7511,7 @@ msgstr ""
 "やってもいいかもしれない。"
 
 #. [message]: speaker=Blessed Kali
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1718
 msgid ""
 "Come on! I ain’t going anywhere for the rest of the day, and unless you can "
 "fight better than that, neither are you. Now get your sorry behinds up off "
@@ -7530,12 +7523,12 @@ msgstr ""
 "もう一度最初からだ！お前たちのようなヘタレに私の目はごまかせんぞ！"
 
 #. [message]: speaker=Novice Pior
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1733
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1747
 msgid "Finally, we get to take a break. I am so sick of fighting practice."
 msgstr "ふう、やっと一息つけるよ。戦闘訓練はもううんざりだったんだ。"
 
 #. [message]: speaker=Novice Dani
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1752
 msgid ""
 "Kali’s just a hardass because he’s bitter that he never became a high priest."
 msgstr ""
@@ -7543,7 +7536,7 @@ msgstr ""
 "俺達に八つ当たりしてるんだよ。"
 
 #. [message]: speaker=Novice Iona
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1744
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1758
 msgid ""
 "Hey, c’mon, maybe we can grab some food from the kitchen before we have to "
 "go to prayers."
@@ -7551,14 +7544,14 @@ msgstr ""
 "おい、厨房に行こうぜ。お祈りに行く前に何かつまみぐいできるかもしれねぇし。"
 
 #. [message]: speaker=Novice Pior
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1763
 msgid "Good idea! I hope they let us go outside tomorrow; I so miss the sun."
 msgstr ""
 "そりゃいいな！それにしても明日こそ外に出してくれないかなあ… いい加減太陽が恋"
 "しくてたまらないよ。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1760
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1774
 msgid ""
 "Still lambasting those novices after all these years, that guy definitely "
 "had too much of a work ethic."
@@ -7567,7 +7560,7 @@ msgstr ""
 "の？あいつの勤労意欲の過剰っぷりは相当なものよね。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1765
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1779
 msgid ""
 "Sniff, who were those children? Why did they die, in the dark, so many years "
 "ago? May Eloh shine her eternal light upon their souls."
@@ -7577,7 +7570,7 @@ msgstr ""
 "うに。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1784
 msgid ""
 "The past is the past, and there’s nothing we can do about it. Right now we "
 "have our own people to worry about."
@@ -7586,22 +7579,22 @@ msgstr ""
 "いけません。"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1786
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1800
 msgid "Novice Dani"
 msgstr "見習い Dani"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1801
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1815
 msgid "Novice Iona"
 msgstr "見習い Iona"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1816
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1830
 msgid "Novice Pior"
 msgstr "見習い Pior"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1856
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1870
 msgid ""
 "This must have been the barracks. Remains of cots and beds litter the floor. "
 "Whatever happened here, it must have been sudden. Several skeletons still "
@@ -7612,27 +7605,27 @@ msgstr ""
 "もの骸骨がベッドに横たわったまま、永遠の眠りについている。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1861
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1862
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1865
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1867
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1871
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1875
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1876
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1879
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1881
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1885
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1889
 msgid "Restless Dead"
 msgstr "安息なき死者"
 
 #. [message]: type=Skeleton
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1896
 msgid "Revenge!"
 msgstr "復讐だ！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1887
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1901
 msgid "Well, so much for sleeping for eternity."
 msgstr "ええっと、なんでおとなしく永遠の眠りについていてくれないのかしらね？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1907
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1921
 msgid ""
 "Hey, what’s this? There seems to be an outline of a door in this wall. Maybe "
 "if I give it a push..."
@@ -7641,17 +7634,17 @@ msgstr ""
 "みたら……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1921
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1935
 msgid "What do you know? A secret door!"
 msgstr "まさか本当に？隠し扉だ！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1926
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1940
 msgid "Well, what’s behind the door?"
 msgstr "それで、扉の向こうには何が？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1931
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1945
 msgid ""
 "Uh oh. The path is blocked by another of those red glowing runes. I’m not "
 "sure crossing it would be a good idea."
@@ -7660,13 +7653,13 @@ msgstr ""
 "丈夫か？"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1990
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1991
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2004
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2005
 msgid "Failed Experiment"
 msgstr "実験失敗作"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1995
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2009
 msgid ""
 "This chamber seems to have been some sort of laboratory. The floor is "
 "littered with broken bottles and other strange equipment. What is more "
@@ -7683,17 +7676,17 @@ msgstr ""
 "ようだ。"
 
 #. [message]: speaker=Failed Experiment 1
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2000
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2014
 msgid "Graaww!"
 msgstr "グルルァァゥゥ！"
 
 #. [message]: speaker=Failed Experiment 2
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2005
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2019
 msgid "Make pain end!"
 msgstr "この苦痛を止めてくれ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2028
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2042
 msgid ""
 "In the center of this circle is a huge creature, with surging muscles and "
 "bloodshot eyes. I would think it was just a very big man, except for the "
@@ -7711,37 +7704,37 @@ msgstr ""
 "るからに体力自慢のデカブツに攻撃されるのは勘弁だが。"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2030
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2044
 msgid "Break the circle."
 msgstr "魔方陣を破る"
 
 #. [command]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2049
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2063
 msgid "Kromph"
 msgstr "Kromph"
 
 #. [message]: speaker=Kromph
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2053
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2067
 msgid "Master, what is your command?"
 msgstr "ご主人様、ご命令を。"
 
 #. [message]: speaker=Kromph
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2063
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2077
 msgid "Kromph need command. Command me!"
 msgstr "Kromph は命令なくして動けません。ご命令を！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2068
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2082
 msgid "Follow us. Attack our enemies."
 msgstr "アタシ達について来なさい。アタシ達の敵を討つのよ。"
 
 #. [message]: speaker=Kromph
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2073
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2087
 msgid "Yes, mistress. Kromph follow you. Kill enemies."
 msgstr "はい、お嬢様。Kromph はお供します。敵を殺します。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2078
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2092
 msgid ""
 "Quick thinking, Nym. It seems to be some sort of magical creation. Lucky "
 "that it thought we were its master."
@@ -7750,12 +7743,12 @@ msgstr ""
 "我々を主人と思ってくれて助かりました。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2083
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2097
 msgid "Looks like you have your own rather large pet, Nym."
 msgstr "こんな大きなペットができてよかったな、Nym。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2088
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2102
 msgid ""
 "It wouldn’t have been my first choice. But it could prove useful. I wonder "
 "what it likes to eat?"
@@ -7764,12 +7757,12 @@ msgstr ""
 "てくれるかもしれないわ。ところでこいつ、一体何を食べるのかしら？"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2094
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2108
 msgid "Leave that thing alone."
 msgstr "このままにしておく"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2126
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2140
 msgid ""
 "All the paths lead to this chamber. Is this just a dead end? It seems to be "
 "some sort of temple, but it has obviously been abandoned for a long time. "
@@ -7782,45 +7775,45 @@ msgstr ""
 "た血と砕けた骨からは嫌な予感しかしない。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2131
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2145
 msgid "I don’t like the smell of this place."
 msgstr "ここは嫌な臭いがするな。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2150
 msgid "I feel some sort of presence... Ugh... it makes my skin crawl."
 msgstr "何らかの存在を感じるのですが…… うっ…… 何か身の毛のよだつ感じがします。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2143
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2157
 msgid ""
 "Grog, I thought you said that you’d been here before? Where are we supposed "
 "to go from here?"
 msgstr "Grog、ここに来たことがあるのよね？どっちに行けばいいの？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2149
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2163
 msgid ""
 "Nog, I thought you said that you’d been here before? Where are we supposed "
 "to go from here?"
 msgstr "Nog、ここに来たことがあるのよね？どっちに行けばいいの？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2169
 msgid ""
 "Rogrimir, I thought you said that you’d been here before? Where are we "
 "supposed to go from here?"
 msgstr "Rogrimir、ここに来たことがあるのよね？どっちに行けばいいの？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2161
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2175
 msgid ""
 "Jarl, I thought you said that you’d been here before? Where are we supposed "
 "to go from here?"
 msgstr "Jarl、ここに来たことがあるのよね？どっちに行けばいいの？"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2167
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2181
 msgid ""
 "I never explored this deep into the complex. But every lair has to have a "
 "back door somewhere."
@@ -7829,7 +7822,7 @@ msgstr ""
 "だ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2172
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2186
 msgid ""
 "Well I refuse to give up. There must be some way out. Search everywhere, "
 "people."
@@ -7837,34 +7830,34 @@ msgstr ""
 "あきらめてたまるか。どこかに抜け道があるはずだ。皆、辺りを徹底的に探そう。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2184
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2185
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2187
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2198
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2199
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2201
 msgid "Ancient Guardian"
 msgstr "古代の守護者"
 
 #. [message]: speaker=Ancient Guardian 1
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2191
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2205
 msgid "Zantoff tharqan yur glit zarf!"
 msgstr "Zantoff tharqan yur glit zarf!"
 
 #. [message]: speaker=Ancient Guardian 2
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2196
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2210
 msgid "Uqtor dunil olgluck vara nir!"
 msgstr "Uqtor dunil olgluck vara nir!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2201
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2215
 msgid "It seems that the temple had some power left in it after all."
 msgstr "やはりこの寺院にはまだ何らかの力が残っていたようです。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2206
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2220
 msgid "I have no idea what they just said, but their meaning is quite clear."
 msgstr "何て言ったのかわからないけど、意図するところはよく分かるわね。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2211
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2225
 msgid ""
 "Actions speak louder than words, and I intend to send them back to whatever "
 "stygian pits they came from!"
@@ -7873,7 +7866,7 @@ msgstr ""
 "帰ってもらうまで！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2237
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2251
 msgid ""
 "What’s this? Hidden underneath the edge of the altar is an iron lever. It "
 "looks slightly rusted, but with some effort I could pull it. I have no idea "
@@ -7883,19 +7876,19 @@ msgstr ""
 "動かせそうだ。どうなるかわからないが、今の我々には選択の余地がほとんどない。"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2239
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2253
 msgid "Pull the lever."
 msgstr "レバーを引く。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2261
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2275
 msgid ""
 "What?! Two secret passages? What do you think this once was, a trap? Or "
 "possibly a back door?"
 msgstr "えっ？！秘密の通路が 2 つ？これは罠？それとも裏口？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2280
 msgid ""
 "I can’t even begin to fathom what these cultists were up to. But more "
 "importantly, which way do we go?"
@@ -7904,7 +7897,7 @@ msgstr ""
 "は、どちらに行くべきかを考えないといけません。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2277
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2291
 msgid ""
 "I think I hear the sound of rushing water down the western passage; it might "
 "already be flooding! It must connect back somehow to the other tunnels."
@@ -7913,7 +7906,7 @@ msgstr ""
 "どうにかしてもう一方のトンネルへ接続しなければ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2283
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2297
 msgid ""
 "Look, the western passage is already flooding! It must connect back somehow "
 "to the other tunnels."
@@ -7922,14 +7915,14 @@ msgstr ""
 "つながっていたようね。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2290
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2304
 msgid ""
 "There’s no time to ponder the history of this place. We’ve got to get out of "
 "here!"
 msgstr "この場所の歴史に思いを馳せている暇はないわ。早く抜け出さないと！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2295
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2309
 msgid ""
 "Right, the eastern passage it is. I have no idea where it goes, but with the "
 "water rising, soon anywhere will be better than here."
@@ -7938,17 +7931,17 @@ msgstr ""
 "ている以上、少なくともここに居るよりはマシだろう。"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2301
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2315
 msgid "Leave it alone."
 msgstr "放っておく。"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2331
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2345
 msgid "This looks like some kind of burial chamber."
 msgstr "ここは埋葬のための部屋のように見える。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2337
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2351
 msgid ""
 "Crypts like these are often heavily guarded, we would do well not to disturb "
 "the sarcophagi."
@@ -7957,7 +7950,7 @@ msgstr ""
 "いようにしないといけませんね。"
 
 #. [message]: speaker=Crypt Guardian
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2362
 msgid ""
 "I have long waited for fools such as yourselves to dare to disturb our rest, "
 "elf. Pay the price of all such defilers!"
@@ -7966,12 +7959,12 @@ msgstr ""
 "フめ。すべての冒涜の代償を支払わせてやろう！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2353
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2367
 msgid "Got any other timely advice, Zhul?"
 msgstr "もっとタイムリーな、何か他の助言はなかったのかしら、Zhul？"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2358
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2372
 msgid ""
 "We’re in luck, a fissure has opened up a crack in the northern wall. We may "
 "be able to escape that way."
@@ -7980,19 +7973,19 @@ msgstr ""
 "しれない。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2397
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2411
 msgid "You run, but you shall not escape death!"
 msgstr "せいぜい逃げろ、だが死から逃れることはできない！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2416
 msgid "In Eloh’s name, not you again. Must I fight you a third time?"
 msgstr ""
 "一体どうなって？こんなところでお前と会うとは。お前とは三度も戦わなければなら"
 "ないのか？"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2408
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2422
 msgid ""
 "You abandoned them, Kaleh, to eternal suffering and torment. And now you "
 "shall pay the price! You too shall watch the black waters consume those you "
@@ -8003,29 +7996,29 @@ msgstr ""
 "さぁ、闇を受け入れよ、Kaleh、あいつらもお前を歓迎しているぞ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2413
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2427
 msgid ""
 "Even you shall not stop me. You shall taste the might of the Quenoth Elves!"
 msgstr "お前に私を止めることはできない。Quenoth エルフの力を思い知るがいい！"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2419
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2433
 msgid "Ha! Foolish boy, you know nothing."
 msgstr "ハン！馬鹿な小僧だ。お前は何もわかっちゃいない。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2434
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2448
 msgid "Quick, grab him! Don’t let him escape again."
 msgstr "早く、あいつを捕まえろ！今度こそ逃がすな。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2440
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2454
 msgid "No, no, no more escaping. Please kill me, just make the pain end."
 msgstr ""
 "いやいや、もう逃げたりしない。どうか殺してくれ、この苦痛を終わらせてくれ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2445
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2459
 msgid ""
 "No, you have hounded me with your riddles for too long. I want some answers. "
 "Who are you? What’s behind that black mask?"
@@ -8035,19 +8028,19 @@ msgstr ""
 "もらおうか？"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2455
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2469
 msgid "Behold, Kaleh, your own worst enemy. Do you now see the irony?"
 msgstr ""
 "とくと見るがいい、Kaleh、お前のもっとも忌むべき敵の顔を。どうだ、これは結構な"
 "皮肉だろう？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2460
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2474
 msgid "Oh Eloh save us, it’s... it’s an elf."
 msgstr "ああ、なんてことなの。あいつは…… あいつはエルフ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2465
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2479
 msgid ""
 "Keratur, son of Tanuil. What in Eloh’s name are you doing here? How could "
 "you do this? We thought you were dead."
@@ -8056,7 +8049,7 @@ msgstr ""
 "はあなたが死んだとばかり思っていたのに。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2484
 msgid ""
 "Kaleh, we don’t have time for questions. The water is still rising and we "
 "must get our people to safety."
@@ -8065,7 +8058,7 @@ msgstr ""
 "避難させなくてはなりません。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2475
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2489
 msgid ""
 "No matter what you have done, you are one of us, Keratur, and I will not "
 "leave you here to die in the darkness. I will carry you myself if I have to."
@@ -8074,29 +8067,29 @@ msgstr ""
 "すわけにはいかない。なんなら私が背負っていく。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2495
 msgid "So be it. I care not."
 msgstr "好きにしろ。どうでも良いことだ。"
 
 #. [set_variable]
 #. Name of the dark assassin who uses "speaker=Cloaked Figure" when talking
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2497
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2511
 msgid "Keratur"
 msgstr "Keratur"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2532
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2546
 msgid "Look, daylight! I think we finally made it out of the caves!"
 msgstr "ああ、日の光だ！やっと洞窟から抜け出せた！"
 
 #. [message]: speaker=Nym
 #. Nym is blocked by deep water, and drowning is inevitable
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2576
 msgid "Kaleh? Zhul? I’m still stuck back here..."
 msgstr "Kaleh？Zhul？外に出して..."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2577
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2591
 msgid ""
 "What’s this? Someone has built an outpost at the end of the cave. Where are "
 "its occupants?"
@@ -8105,18 +8098,18 @@ msgstr ""
 "どこに？"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2589
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2603
 msgid "Kaleh, I think you should come up and see this."
 msgstr "Kaleh、こっちへ来て、これを見てくれ。"
 
 #. [message]: speaker=Kaleh
 #. Kaleh is blocked by deep water, and drowning is inevitable
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2613
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2627
 msgid "Ack, I’m surrounded by water!"
 msgstr "くそ、水に囲まれた！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2633
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2647
 msgid ""
 "Oh, Eloh. They’re all dead. Butchered. Quick, we have to clean this up, we "
 "don’t want the rest of our people to have to see such horror."
@@ -8125,12 +8118,12 @@ msgstr ""
 "けなければ。民にこんな惨状を見せるわけにはいかない。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2638
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2652
 msgid "Now, Keratur, I will have my answers. Did you have a hand in this?"
 msgstr "さて、Keratur、答えてもらおう。これをやったのはあなたなのか？"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2654
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2668
 msgid ""
 "They heard me and... and they got in the way. But they aren’t even elves, "
 "what do they matter?"
@@ -8139,12 +8132,12 @@ msgstr ""
 "ですらない、だからどうでもいいだろう？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2659
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2673
 msgid "You idiot—"
 msgstr "何をバカな──"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2664
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2678
 msgid ""
 "Quiet, Nym. But I still don’t understand how you got here. We were sure you "
 "were dead. We searched and searched, but never found your body."
@@ -8154,7 +8147,7 @@ msgstr ""
 "つけることはできなかったのだから。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2669
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2683
 msgid ""
 "Heh, heh, no you didn’t find me. I awoke trapped under the rubble, and when "
 "I finally escaped the village was deserted. Just the stink of death and "
@@ -8169,12 +8162,12 @@ msgstr ""
 "た…… 全てを……そう、全てを見せ付けやがった！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2688
 msgid "Watch what?"
 msgstr "見せつけた？一体何を？"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2693
 msgid ""
 "They brought some humans, bound up tight. So beautiful... she had flaming "
 "red hair... they cut her... I can still hear her screaming. But that was "
@@ -8187,12 +8180,12 @@ msgstr ""
 "血を砂の上に滴らせた。すると、耳に苦悶の叫びが聞こえてきた……"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2684
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2698
 msgid "From the humans?"
 msgstr "その人間たちの叫び声が？"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2689
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2703
 msgid ""
 "Faugh. No, I heard the screams of the dead, torn from their rest, their "
 "souls rose into the air howling in agony."
@@ -8200,13 +8193,13 @@ msgstr ""
 "フンッ、違う。聞こえたのは死者たちの叫びだ。安息を破られた魂の苦悶の咆哮だ。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2694
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2708
 msgid "But, but we burned the bodies so they couldn’t be raised."
 msgstr ""
 "そんな…… しかし、我々はそのようなことがないように遺体を火葬したのですよ。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2713
 msgid ""
 "Fool. That did not stop their dark power. Nothing could stop them. I felt "
 "the rush of flying spirits, and the unbearable cold, so cold. For a moment I "
@@ -8220,7 +8213,7 @@ msgstr ""
 "ふためいて砂丘を渡っていくのを笑っていた。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2718
 msgid ""
 "I was able to follow your trail, and I slipped among your people. No one "
 "noticed me, no I was too sneaky. And you wondered how I managed to follow "
@@ -8232,12 +8225,12 @@ msgstr ""
 "前に案内してもらったのさ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2709
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2723
 msgid "But why, why did you want to kill us?"
 msgstr "しかしなぜ、なぜ私達を殺そうと？"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2714
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2728
 msgid ""
 "You abandoned them! The pain, the agony, I still see their ghostly faces and "
 "hear their wails. And the necromancers kept chanting one name over and over: "
@@ -8254,17 +8247,17 @@ msgstr ""
 "すまない、私はただ、この痛みを止めたかったのだ。どうか許してくれ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2719
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2733
 msgid "I... I forgive you."
 msgstr "私は…… 私はあなたを許しましょう。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2724
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2738
 msgid "I do not fear death any more."
 msgstr "これでもう死を恐れなくて良い。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2737
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2751
 msgid ""
 "He’s dead. Rest in peace. Oh, what have I done? All our dead kin, desecrated "
 "and tormented for eternity."
@@ -8273,14 +8266,14 @@ msgstr ""
 "が同胞よ、あなた達が冒涜され、苦しみ続けているなんて。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2742
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2756
 msgid ""
 "As you said yourself, the past is the past, there is nothing you can do now."
 msgstr ""
 "あなたが先ほど言った通りでしょう。過去は過去、今できる事は何もありません。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2761
 msgid ""
 "Don’t blame yourself. You didn’t know. If we had stayed behind we too would "
 "have been killed by the undead; we could not have defended our village "
@@ -8291,7 +8284,7 @@ msgstr ""
 "ことは不可能なの。アタシ達にはどうしようもなかった。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2753
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2767
 msgid ""
 "That is small consolation. My deeds have turned to ashes in my mouth. Eloh "
 "forgive me. I did not know."
@@ -8301,7 +8294,7 @@ msgstr ""
 "え。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2764
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2778
 msgid ""
 "With your permission, Kaleh, I think I should go scout around a bit outside. "
 "We have no idea what lies out there. And I can sneak around unseen many "
@@ -8311,17 +8304,17 @@ msgstr ""
 "何があるか分からないし、アタシならうまく色々なところに潜入できると思うの。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2769
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2783
 msgid "You can go Nym, just be careful."
 msgstr "任せるよ、Nym。ただ気をつけてくれ。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2774
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2788
 msgid "I’m always careful. I’ll be back soon."
 msgstr "アタシは何時だって用心深いのよ。じゃあ、すぐに戻るから。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2791
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2805
 msgid ""
 "Well, at least we can use this outpost to rally our surviving troops. How "
 "many of our people made it out of the caves, Zhul?"
@@ -8330,7 +8323,7 @@ msgstr ""
 "が洞窟から逃げ延びられましたか？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2796
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2810
 msgid ""
 "We’re still trying to get a head count, but between the underground horrors "
 "and the water, we lost quite a few. Recruiting new warriors is going to be "
@@ -8342,7 +8335,7 @@ msgstr ""
 "方には感謝しかありません、こんなに多くの人を生き残らせてくれたのですから。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2803
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2817
 msgid ""
 "Well, Nym’s right, we don’t know what’s out there. So we should set up a "
 "perimeter guard around the cave mouth and start discovering what this side "
@@ -8352,7 +8345,7 @@ msgstr ""
 "警戒網を敷き、山脈のこちら側がどんな様子であるかを調べてみよう。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2847
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2861
 msgid ""
 "Look, the tunnel slopes sharply downwards to the left. And it’s big enough "
 "that it should divert most of the rising water."
@@ -8361,12 +8354,12 @@ msgstr ""
 "くる水もなんとかしてくれるだろう。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2852
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2866
 msgid "And I think I see a faint light off to the right."
 msgstr "それと、右の方からはほのかな光が見える気がする。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2857
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2871
 msgid ""
 "Could it be? Could we actually be almost out of this seemingly never-ending "
 "darkness?"
@@ -8374,7 +8367,7 @@ msgstr ""
 "本当ですか？本当に、この終わりなき闇のような場所から脱出できるのですか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2886
 msgid ""
 "Grog, thank you so much for leading us out of the caves. We never would have "
 "found our way without your help. But with the tunnels flooded, how are you "
@@ -8386,7 +8379,7 @@ msgstr ""
 "か？"
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2891
 msgid ""
 "Grog proud of little elves too. He would not have made it this far without "
 "all your help. Grog is surprised by your bravery and strength."
@@ -8395,7 +8388,7 @@ msgstr ""
 "た。Grog、お前たちの勇敢さと強さにびっくりした。"
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2896
 msgid ""
 "Truth is that Grog not know much of sunlight lands. Sun and stars are scary, "
 "everything is open, exposed, no safe places to hide. But Grog cannot go back "
@@ -8408,7 +8401,7 @@ msgstr ""
 "い行き場がない。"
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2887
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2901
 msgid ""
 "But Grog not afraid. Great leader told Grog to guide and protect elves, and "
 "Grog will keep his oath. Grog will follow elves wherever they may go and "
@@ -8422,7 +8415,7 @@ msgstr ""
 "見つけるかもしれない。でも今は、Grog、お前たちに仕えて守るを続ける。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2893
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2907
 msgid ""
 "Nog, thank you so much for leading us out of the caves. We never would have "
 "found our way without your help. But with the tunnels flooded, how are you "
@@ -8434,7 +8427,7 @@ msgstr ""
 "か？"
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2898
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2912
 msgid ""
 "Nog proud of little elves too. He would not have made it this far without "
 "all your help. Nog is surprised by your bravery and strength."
@@ -8443,7 +8436,7 @@ msgstr ""
 "た。Nog、お前たちの勇敢さと強さにびっくりした。"
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2903
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2917
 msgid ""
 "Truth is that Nog not know much of sunlight lands. Sun and stars are scary, "
 "everything is open, exposed, no safe places to hide. But Nog cannot go back "
@@ -8456,7 +8449,7 @@ msgstr ""
 "行き場がない。"
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2908
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2922
 msgid ""
 "But Nog not afraid. Great leader told Nog to guide and protect elves, and "
 "Nog will keep his oath. Nog will follow elves wherever they may go and "
@@ -8470,7 +8463,7 @@ msgstr ""
 "るかもしれない。でも今は、Nog、お前たちに仕えて守るを続ける。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2914
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2928
 msgid ""
 "Rogrimir, I want to thank you so much for guiding us out of the caves. We "
 "never would have found our way without your help. But with the tunnels "
@@ -8483,8 +8476,8 @@ msgstr ""
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2919
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2940
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2933
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2954
 msgid ""
 "Och, it is I who should be congratulating you, laddie. I showed you the way, "
 "but it was you and your people who defeated the many perils and obstacles to "
@@ -8496,8 +8489,8 @@ msgstr ""
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2924
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2945
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2938
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2959
 msgid ""
 "But truly I cannot return the way I came and even if there are other tunnels "
 "which lead back down to my homeland, I do not know where to search for them. "
@@ -8509,8 +8502,8 @@ msgstr ""
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2929
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2943
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2964
 msgid ""
 "But my king told me to protect you from all dangers, and I plan to keep that "
 "oath. I do not like the above ground, it is too open and exposed; I feel "
@@ -8529,7 +8522,7 @@ msgstr ""
 "にしよう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2935
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2949
 msgid ""
 "Jarl, I want to thank you so much for guiding us out of the caves. We never "
 "would have found our way without your help. But with the tunnels flooded, "
@@ -8541,7 +8534,7 @@ msgstr ""
 "か？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2956
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2970
 msgid ""
 "Your loyalty is a credit to your people. I am glad indeed to have you "
 "fighting by my side."
@@ -8550,7 +8543,7 @@ msgstr ""
 "に味方してくれることは、私にとっても非常に心強い。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2987
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3001
 msgid ""
 "Looks like the guards at this outpost had been saving away a bit of loot. I "
 "don’t suppose they’re going to mind anymore if we made use of it."
@@ -8559,7 +8552,7 @@ msgstr ""
 "ても、彼らが気にすることは無いだろう。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3121
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3135
 msgid ""
 "Praise Eloh, it is so good to be outside again. To see the sky stretching "
 "out above me, to feel the wind in my face..."
@@ -8568,22 +8561,22 @@ msgstr ""
 "がり、風が優しく顔をなでてくれる……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3151
 msgid ""
 "We made it. Outside look strange to Grog, Grog not used to big open spaces."
 msgstr ""
 "洞窟抜けた。Grog には、外は奇妙に見える。Grog、こんな広い所に慣れてない。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3143
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3157
 msgid ""
 "We made it. Outside look strange to Nog, Nog not used to big open spaces."
 msgstr ""
 "洞窟抜けた。Nog には、外は奇妙に見える。Nog、こんな広い所に慣れてない。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3149
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3163
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3169
 msgid ""
 "I think we finally made it outside. I’d forgotten how big the sky is and how "
 "windy it can be."
@@ -8592,12 +8585,12 @@ msgstr ""
 "か。完全に忘れてしまっていたな。"
 
 #. [message]: race=quenoth,elf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3169
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3183
 msgid "Can you see very far? Do you have any idea where we are?"
 msgstr "遠くには何か見えるか？俺達が何処に居るのかわからないか？"
 
 #. [message]: speaker=$talking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3188
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3202
 msgid ""
 "We’ve come out on the side of a mountain, overlooking a large valley. The "
 "land seems to be much the same as the foothills south of the mountains. The "
@@ -8614,7 +8607,7 @@ msgstr ""
 #. [unit]: type=Divine Avatar, id=Eloh
 #. [side]
 #. [unit]: type=Divine Incarnation, id=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3224
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3238
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1690
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1252
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:57
@@ -8625,39 +8618,39 @@ msgid "Eloh"
 msgstr "Eloh"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3242
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3256
 msgid "Kaleh, Kaleh, come to me."
 msgstr "Kaleh、Kaleh よ、私の元にお出でなさい。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3247
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3261
 msgid "What is the voice? It sounds so familiar."
 msgstr "この声は？良く知っている声のような気がする。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3252
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3266
 msgid "Come out so that I might see you. Your god calls to you."
 msgstr "出てきて私と会うのです。あなたの神が呼びかけているのですよ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3257
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3271
 msgid "Am I dreaming? Is this real? I’m coming, I’m coming."
 msgstr "これは夢か？それとも現実なのか？すぐに行きます、行きますとも。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3280
 msgid "Hail Kaleh, it is I, Eloh."
 msgstr "よく来ました Kaleh、私こそが Eloh です。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3273
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3287
 msgid "But I am not asleep? And yet I can see you? How is this possible?"
 msgstr ""
 "ここは夢の中ではないのに？私はどうして貴女に謁見できているのでしょう？このよ"
 "うなことができたのですか？"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3278
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3292
 msgid ""
 "Do you doubt my powers? You have come out of the darkness, and I appear unto "
 "you to congratulate you."
@@ -8667,14 +8660,14 @@ msgstr ""
 
 #. [message]: speaker=$talking_unit.id
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3293
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3310
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3307
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3324
 msgid "Kaleh, who are you talking to?"
 msgstr "Kaleh、そこに他に誰かが？"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3298
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3315
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3312
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3329
 msgid ""
 "For now, I appear only to you, for you, Kaleh, are special, you are the "
 "Chosen One."
@@ -8683,17 +8676,17 @@ msgstr ""
 "貴方は選ばれたのです。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3303
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3317
 msgid "$talking_unit.name, be quiet, I’ll explain it all later."
 msgstr "$talking_unit.name| 、ちょっと黙っててくれ、後で説明するから。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3320
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3334
 msgid "Be quiet Zhul, I’ll explain it all later."
 msgstr "Zhul、お静かに願います。後で説明いたしますので。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3327
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3341
 msgid ""
 "Yes, I have chosen you as the one to lead my people out of danger and death "
 "and into a life of eternal salvation. Crossing under the mountains was a "
@@ -8704,37 +8697,37 @@ msgstr ""
 "を示し……"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3350
 msgid "Kaleh, a quick question—"
 msgstr "Kaleh、ちょっといいか……"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3343
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3357
 msgid "Not now Grog, I’m busy."
 msgstr "Grog、後にしてくれないか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3349
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3363
 msgid "Not now Nog, I’m busy."
 msgstr "Nog、後にしてくれないか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3355
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3369
 msgid "Not now Rogrimir, I’m busy."
 msgstr "Rogrimir、後にしてくれないか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3361
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3375
 msgid "Not now Jarl, I’m busy."
 msgstr "Jarl、後にしてくれないか？"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3367
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3381
 msgid "What’s this? You did not kill the unbelievers?!"
 msgstr "これはどういうこと？貴方は異教徒を始末しなかったのですか？！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3379
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3393
 msgid ""
 "I am sorry I could not have fulfilled your command, but we found ourselves "
 "in the middle of a war. We were vastly outnumbered and we needed help. In "
@@ -8748,7 +8741,7 @@ msgstr ""
 "れたからこそ、私たちは生きてここまでたどり着けたのです。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3386
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3400
 msgid ""
 "I am sorry I could not have fulfilled your command, but we found ourselves "
 "in the middle of a war. We were vastly outnumbered and we needed help. In "
@@ -8761,7 +8754,7 @@ msgstr ""
 "れたからこそ、私たちは生きてここまでたどり着けたのです。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3393
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3407
 msgid ""
 "You were weak and foolish, but I forgive you. You must remember, Kaleh, that "
 "without my guidance, your people would have died out years ago. Believe in "
@@ -8772,7 +8765,7 @@ msgstr ""
 "救ってみせましょう。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3412
 msgid ""
 "Now, in the valley live a group of humans who have also seen the light. They "
 "may seem strange, but they are my obedient followers. You must trust them, "
@@ -8783,7 +8776,7 @@ msgstr ""
 "くれるでしょう。彼らに従えば、私の元へと導かれるのです。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3403
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3417
 msgid ""
 "What do you mean ‘lead you to me’? You are a god, don’t you exist "
 "everywhere? I thought you were going to show us our new home."
@@ -8793,7 +8786,7 @@ msgstr ""
 "して頂けると期待していたのですが。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3408
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3422
 msgid ""
 "Of course I am! Oh, how little you understand. Do not worry yourself with "
 "such distractions, come to me and all will be made clear."
@@ -8803,25 +8796,25 @@ msgstr ""
 
 #. [unit]: type=Human Commander, id=Sergeant Durstrag
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3416
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3551
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3430
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3565
 msgid "Sergeant Durstrag"
 msgstr "Durstrag 軍曹"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3417
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3418
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3419
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3420
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3562
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3563
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3564
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3565
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3431
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3432
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3433
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3434
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3577
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3578
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3579
 msgid "Human Guard"
 msgstr "人間の衛兵"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3424
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3438
 msgid ""
 "I saw the distress signal from the outpost on the bluff. Who in the Dark "
 "Lady’s name are you and what have you done with my men?"
@@ -8830,7 +8823,7 @@ msgstr ""
 "だ？そして俺の部下に何をした？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3429
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3443
 msgid ""
 "My name is Kaleh, and these are my people. We come from the south and "
 "unfortunately we found your men dead—"
@@ -8839,7 +8832,7 @@ msgstr ""
 "残念ですが、あなた方の兵士の死体を見つけて……"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3434
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3448
 msgid ""
 "Dead?! You ‘found’ them you say? You’ll pardon me if I don’t take you at "
 "your word. We haven’t seen elves for generations, but we remember your "
@@ -8852,12 +8845,12 @@ msgstr ""
 "俺達の家の玄関先で何をしようってんだ？"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3439
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3453
 msgid "Well, actually they were fleeing from—"
 msgstr "ふむ、実際に彼らは洪水から逃げて──"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3451
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3465
 msgid ""
 "A troll! This just gets better and better. We haven’t seen one of your kind "
 "up here for many years, but I have a long memory. I still remember the troll "
@@ -8868,7 +8861,7 @@ msgstr ""
 "もに襲撃されたことを覚えてるぜ！"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3458
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3472
 msgid ""
 "A dwarf! This just gets better and better. We haven’t seen one of your kind "
 "up here for many years, but we have long memories. I remember how your "
@@ -8881,12 +8874,12 @@ msgstr ""
 "は騙されねぇぞ！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3465
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3479
 msgid "Look, if you’ll just let me explain—"
 msgstr "聞いてくれ、詳しく説明させてもらえれば──"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3477
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3491
 msgid ""
 "Oh there is no need to explain, it’s pretty obvious what you’re up to. Here "
 "we have a whole legion of elves, consorting with trolls, sneaking up behind "
@@ -8897,7 +8890,7 @@ msgstr ""
 "たって侵略じゃねぇか。"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3498
 msgid ""
 "Oh there’s no need to explain, it’s pretty obvious what you’re up to. Here "
 "we have a whole legion of elves, consorting with dwarves, sneaking up behind "
@@ -8908,13 +8901,13 @@ msgstr ""
 "見たって侵略じゃねぇか。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3491
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3505
 msgid "No, no. You don’t understand! We were told you could help us."
 msgstr ""
 "ま、待ってくれ！誤解だ！私達はあなた方に助けてもらえると聞いていたのに。"
 
 #. [message]: type=Swordsman
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3497
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3511
 msgid ""
 "Sir, remember the edict passed down by councilman Noblis? About any "
 "foreigners spotted on the borders?"
@@ -8923,7 +8916,7 @@ msgstr ""
 "た場合の対応についてのものですが？"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3502
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3516
 msgid ""
 "I have no idea what you’re babbling about, elf, but you’re just lucky you "
 "caught me on a good day. You get to explain everything to the Iron Council. "
@@ -8935,12 +8928,12 @@ msgstr ""
 "場に送ってやる。おとなしくしてれば後はお偉方が良いようにしてくれるさ。"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3507
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3521
 msgid "Everything will be fine. Do as he says."
 msgstr "全て予定通りです。彼の言う通りになさい。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3512
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3526
 msgid ""
 "I am my own master. I will not be ordered around, not even by you, Eloh."
 msgstr ""
@@ -8948,7 +8941,7 @@ msgstr ""
 "女の命令であっても。"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3517
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3531
 msgid ""
 "What’s that, boy? Are you talking back to me? This isn’t a negotiation. You "
 "are on my land, and under my jurisdiction. Lay down your weapons and submit "
@@ -8959,7 +8952,7 @@ msgstr ""
 "ことになるぞ？"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3523
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3537
 msgid ""
 "Kaleh, I am Eloh, bearer of the staff of Ishtar and slayer of the demon-god "
 "Zhangor. Submit to him or I shall abandon your people to suffering and "
@@ -8973,7 +8966,7 @@ msgstr ""
 "もはや過酷な砂漠の太陽ほどすらも残っていませんよ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3529
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3543
 msgid ""
 "Then kill me if you must, but I will not give myself over to those who "
 "threaten me and my people. I have not come through peril and darkness just "
@@ -8984,7 +8977,7 @@ msgstr ""
 "ない。"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3534
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3548
 msgid ""
 "You dare defy me?! All who refuse to submit to the authority of the Iron "
 "Council shall be killed. By the Dark Lady, I shall not put up with this "
@@ -8996,7 +8989,7 @@ msgstr ""
 "どもを洞窟に追し返せ！"
 
 #. [message]: speaker=Eloh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3569
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3583
 msgid ""
 "You disappoint me, Kaleh. You are weak, and not worthy of my guidance... Do "
 "as you like, but know that while you may be the appointed leader of your "
@@ -9008,7 +9001,7 @@ msgstr ""
 "けたことを。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3580
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3594
 msgid ""
 "You are not the god I grew up with. You may be all-powerful, but I will not "
 "be your puppet. I am still their leader and as long as I draw breath I will "
@@ -9019,12 +9012,12 @@ msgstr ""
 "考えそれを成す。それが私の指導者としての義務だ。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3585
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3599
 msgid "Kaleh, would you mind telling me what in Uria’s name is going on."
 msgstr "Kaleh、一体何が起こっているのかを私に話してくれませんか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3590
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3604
 msgid ""
 "There’s no time. Right now we have to prepare ourselves for another battle. "
 "I’d better head back to the outpost and rally our troops. I fear a whole lot "
@@ -9035,7 +9028,7 @@ msgstr ""
 "す。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3595
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3609
 msgid ""
 "Well, now we’re really in for it. I hope you know what you’re doing, Kaleh."
 msgstr ""
@@ -9043,14 +9036,14 @@ msgstr ""
 "いますよね、Kaleh？"
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3604
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3618
 msgid ""
 "Grog no like humans either. They mean. But they sound great when they go "
 "squish."
 msgstr "Grog も人間嫌いだ。でもあいつら潰すと良い音する。"
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3610
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3624
 msgid ""
 "Nog no like humans either. They mean. But they sound great when they go "
 "squish."
@@ -9058,8 +9051,8 @@ msgstr "Nog も人間嫌いだ。でもあいつら潰すと良い音する。"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3616
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3622
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3630
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3636
 msgid ""
 "I never liked humans much anyway. I’ll be glad to be fighting something "
 "besides undead."
@@ -9068,22 +9061,22 @@ msgstr ""
 "しいところだな。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3690
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3704
 msgid "I’m back, Kaleh."
 msgstr "戻ったわ、Kaleh。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3695
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3709
 msgid "Ah! You scared me, Nym. I didn’t hear you coming."
 msgstr "おぉ！おどかさないでくれ、Nym。近づいてくるのが全然わからなかった。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3700
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3714
 msgid "Of course you didn’t. That’s why it’s called sneaking."
 msgstr "隠密行動なのよ、当然でしょ？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3705
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3719
 msgid ""
 "Anyway you’ve really gotten us into a mess. The good news is that the "
 "outpost isn’t guarded as heavily as you might think. The garrison seems only "
@@ -9096,12 +9089,12 @@ msgstr ""
 "められるなんて夢にも思ってなかったようね。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3710
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3724
 msgid "And what’s the bad news?"
 msgstr "それで悪い方は？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3715
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3729
 msgid ""
 "The bad news is that I overheard the commander ordering a special group of "
 "his men to get ready to ride north and summon reinforcements. It seems that "
@@ -9116,19 +9109,19 @@ msgstr ""
 "やられちゃうかも。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3720
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3734
 msgid ""
 "Then we’ll just have to make sure that no messenger escapes this valley to "
 "summon reinforcements."
 msgstr "ならば援軍要請の伝令は一人としてこの谷から逃すわけにはいかないな。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3786
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3800
 msgid "Undead Emissary"
 msgstr "アンデッドの使者"
 
 #. [message]: speaker=Undead Emissary
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3790
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3804
 msgid ""
 "Cursed elves, you tracked your filth through our halls and you defiled our "
 "sanctuary. You have besmirched our honor, and we will have our revenge. We "
@@ -9140,7 +9133,7 @@ msgstr ""
 "域を冒したことをせいぜい悔いるが良い！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3807
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3821
 msgid ""
 "Can’t the dead ever just stay dead? And aren’t they trapped by the flooded "
 "tunnels and caves?"
@@ -9149,7 +9142,7 @@ msgstr ""
 "下から出てこられるの？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3812
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3826
 msgid ""
 "Undead don’t have to breathe and I don’t think a little water is going to "
 "stop them. Besides, you saw how the ghost just flew through the rock; if "
@@ -9160,17 +9153,17 @@ msgstr ""
 "になったトンネルなんて障害に成り得ないと思いませんか？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3831
 msgid "Great. So now we’re fighting in a haunted valley."
 msgstr "そうね。おかげさまでアタシ達は幽霊の出る谷で戦うことになったのよね。"
 
 #. [unit]: type=Spectre, id=Undead Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3829
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3843
 msgid "Undead Leader"
 msgstr "アンデッドのリーダー"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3844
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3858
 msgid ""
 "I don’t understand. What are these humans doing here? I’ve never seen so "
 "many in one place before."
@@ -9179,7 +9172,7 @@ msgstr ""
 "居るところなんてこれまで見たことがない。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3849
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3863
 msgid ""
 "Humans aren’t just the bandits and outlaws you’re familiar with from the "
 "deserts, Kaleh. Remember that long ago the great human empire of Wesnoth "
@@ -9196,7 +9189,7 @@ msgstr ""
 "我々の内にあった闇、Eloh はそう仰っています。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3868
 msgid ""
 "But now is not a time for preaching. Humans once spread to many lands, and "
 "despite all the ravages of time, I have no doubt that at least a few of them "
@@ -9210,14 +9203,14 @@ msgstr ""
 "き残っていてくれたら喜ばしいのですが。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3859
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3873
 msgid "There might be other elves somewhere. We can’t be sure."
 msgstr ""
 "そうね、どこかに他のエルフが生き残っているかもね。滅んだと決まったわけじゃな"
 "いわ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3864
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3878
 msgid ""
 "No, we can’t. But for now we must deal with the problem at hand. Thank you "
 "for the information, Zhul; these humans are good fighters but they are no "
@@ -9230,14 +9223,14 @@ msgstr ""
 "けはしない。"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3902
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3916
 msgid ""
 "Send forth the messenger and his escort. Go north and bring help as soon as "
 "possible!"
 msgstr "伝令と護衛を外に出せ。さぁ北へ走れ、可能な限り早く援軍を連れて来い！"
 
 #. [unit]: type=Dragoon, id=messenger
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3918
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3932
 msgid "Human Messenger"
 msgstr "人間の伝令"
 
@@ -9245,27 +9238,27 @@ msgstr "人間の伝令"
 #. [unit]: type={ON_DIFFICULTY (Cavalryman) (Dragoon) (Dragoon)}
 #. [unit]: type={ON_DIFFICULTY (Spearman) (Javelineer) (Swordsman)}
 #. [unit]: type={ON_DIFFICULTY (Bowman) (Bowman) (Longbowman)}
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3927
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3936
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3945
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3954
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3941
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3959
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3968
 msgid "Human Escort"
 msgstr "人間の護衛"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3963
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3977
 msgid ""
 "If that messenger escapes the valley, we’ll be in trouble. We have to stop "
 "him!"
 msgstr "伝令を谷から逃すと面倒な事になる。あいつを止めなければ！"
 
 #. [message]: speaker=messenger
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3995
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4009
 msgid "No! I must get help!"
 msgstr "そんな！助けを呼ばなければならないのに！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4008
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4022
 msgid ""
 "Good. We’re safe for now. We just have to defeat Durstrag before he sends "
 "another messenger for reinforcements."
@@ -9274,14 +9267,14 @@ msgstr ""
 "だ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4044
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4058
 msgid ""
 "The messenger has escaped! He will surely return with reinforcements. We are "
 "doomed!"
 msgstr "伝令に逃げられた！確実に援軍を連れてくるだろう。私達の命運は尽きた！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4063
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4077
 msgid ""
 "Don’t worry. We’re not the monsters you seem to think we are. I will not "
 "kill you in cold blood."
@@ -9290,45 +9283,45 @@ msgstr ""
 "悲に殺すつもりも無い。"
 
 #. [message]: speaker=Sergeant Durstrag
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4068
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4082
 msgid "Faugh, boy, you know nothing! There are fates worse than death."
 msgstr ""
 "ふんっ、小僧、てめぇは何も分かっちゃいねぇ！死ぬよりひでぇ目、ってのもあるん"
 "だよ。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4079
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4093
 msgid "He killed himself rather than surrender to us!"
 msgstr "降伏より死を選んだのね！"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4084
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4098
 msgid "They killed Sergeant Durstrag! Run for your lives!"
 msgstr "Durstrag 軍曹が殺られた！死にたくなきゃ逃げろ！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4115
 msgid "The rest of the humans are fleeing."
 msgstr "残りの人間達は逃亡しています。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4106
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4120
 msgid ""
 "Let them go. We have won this battle and I am weary of all this bloodshed."
 msgstr "行かせてやるんだ。私達は勝利した。これ以上の虐殺は願い下げだ。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4111
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4125
 msgid "What was it that the human Durstrag was so afraid of?"
 msgstr "あの人間、Durstrag は何をあんなに恐れていたのでしょう？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4116
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4130
 msgid "I don’t know, but I fear we may find out."
 msgstr "分かりません。しかしいずれそれが何かを知ることになりそうな気がします。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4121
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4135
 msgid ""
 "You’re being very cryptic, Kaleh. Now that the battle is over would you care "
 "to explain to us who you were talking to back when we first met the humans?"
@@ -9337,17 +9330,17 @@ msgstr ""
 "ら、人間達に遭遇する前に誰と話していたのかを話してもらえますか？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4126
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4140
 msgid "No, not yet."
 msgstr "すまない、少し待って欲しい。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4131
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4145
 msgid "What’s wrong, Kaleh? Don’t you trust us?"
 msgstr "Kaleh、何が問題なの？あたし達を信頼できないっていうの？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4150
 msgid ""
 "Yes, yes of course I do. But it’s just a theory. I don’t want to say more "
 "until I have proof. Give me until tomorrow night, then I’ll tell you "
@@ -9358,7 +9351,7 @@ msgstr ""
 "てを話すから。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4141
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4155
 msgid ""
 "Very well. I’ve trusted your decisions and your leadership so far; I’ll wait "
 "a little longer."
@@ -9367,7 +9360,7 @@ msgstr ""
 "ら。少しくらいなら待ちましょう。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4146
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4160
 msgid ""
 "So what do we do now? The land seems to be about the same on the northern "
 "side of the mountains as it was on the south. And we can’t hang around here "
@@ -9379,7 +9372,7 @@ msgstr ""
 "くるでしょうし、谷には今もアンデットがはびこってるわ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4151
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4165
 msgid ""
 "Yes, I think the sooner we leave this valley the better. But we don’t know "
 "anything about the surrounding terrain. Without anyone to guide us, we have "
@@ -9393,7 +9386,7 @@ msgstr ""
 "数の民が亡くなっている。それを考えると、ここは慎重に行動するべきだろう。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4156
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4170
 msgid ""
 "When I was scouting around I think I saw a small oasis near the entrance to "
 "this valley. If we move out there we should be out of range of the undead. I "
@@ -9404,7 +9397,7 @@ msgstr ""
 "ら。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4161
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4175
 msgid ""
 "Indeed. Undead ghosts such as these are often bound to the places they died: "
 "the farther away they travel, the weaker they are. So if we move out of the "
@@ -9415,7 +9408,7 @@ msgstr ""
 "安全を得られるでしょう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4166
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4180
 msgid ""
 "Good, we’ll move our people out and camp by the oasis. Now, Nym, you know "
 "who our best scouts are; I want you to lead a few elves to do some "
@@ -9430,14 +9423,14 @@ msgstr ""
 "知りたいだけなんだ。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4185
 msgid "But hasn’t Eloh told you where to go and what dangers you face?"
 msgstr ""
 "しかし Eloh はどちらに行くべきか、どんな危機があるかを語られなかったのです"
 "か？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4176
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4190
 msgid ""
 "She was... rather vague. I know we’re supposed to generally go north, but I "
 "want more information before I commit us to a direction."
@@ -9446,7 +9439,7 @@ msgstr ""
 "は民を北へ向かわせる前に少しでも詳しい情報が欲しいのです。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4181
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4195
 msgid ""
 "Don’t you worry about us, Kaleh. We’ll be careful. I’ll organize five bands "
 "to scout out the nearby lands. We should be back in about half a day."
@@ -9455,7 +9448,7 @@ msgstr ""
 "囲を探索してみる。半日後には戻るから。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4186
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4200
 msgid ""
 "Good, until then we’ll settle around that oasis and set up as good a defense "
 "as we can. Until I know what’s out there, I’m not taking any chances."
@@ -9464,12 +9457,12 @@ msgstr ""
 "周囲に何があるか分かるまで、行動はしないつもりだ。"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4293
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4307
 msgid "Help, I’m drowning!"
 msgstr "助けて、溺れてしまう！"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4371
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4385
 msgid ""
 "Look, the water is pouring out the side tunnel into the valley! That’s a lot "
 "of water: it’s even creating a small river. I sure wouldn’t want to be "
@@ -9479,7 +9472,7 @@ msgstr ""
 "川までできている。今ですらこの水の氾濫の下流に居たいとは思わないな。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4395
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4409
 msgid ""
 "Look, up there in the valley. The water has poured out of the side tunnel "
 "and created a small river and lake. I’m glad we weren’t downstream of that "
@@ -9490,7 +9483,7 @@ msgstr ""
 "ろうな。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4409
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4423
 msgid ""
 "I can see human reinforcements arriving on the horizon. We’ll surely be "
 "overwhelmed now! If only we had moved faster."
@@ -9499,17 +9492,17 @@ msgstr ""
 "急いでここを離れるべきだったな。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4485
 msgid "Several hours pass..."
 msgstr "数時間後……"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4475
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4489
 msgid "Jezhar"
 msgstr "Jezhar"
 
 #. [message]: speaker=Dummy Unit7
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4494
 msgid ""
 "Eastern scouts, reporting back! If you like sand and hot dust, there’s "
 "plenty more out there! No water, or signs of others, we had to turn back."
@@ -9518,7 +9511,7 @@ msgstr ""
 "よ！水もその他の兆しもなく、戻らざるを得ませんでした。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4485
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4499
 msgid ""
 "No shame in that, Jezhar. Of all the scouts, only Tanstafaal and Nym have "
 "yet to return."
@@ -9526,68 +9519,68 @@ msgstr ""
 "Jezhar、ありがとう。斥候の中で、Tanstafaal と Nym だけが戻ってこないな。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4490
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4504
 msgid "And that has me worried. What if-"
 msgstr "それが心配なのです。もし..."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4515
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4529
 msgid "In Eloh’s name, Nym, you look terrible. Are you well?"
 msgstr "どうしたのです Nym、すごい怪我です、大丈夫ですか？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4520
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4534
 msgid "Yes. Just... let me... catch... my breath."
 msgstr "えぇ、でも…… ちょっと…… 休…… ませて。"
 
 #. [unit]: type=Merman Netcaster, id=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4537
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4551
 msgid "Esanoo"
 msgstr "Esanoo"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4555
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4569
 msgid "Water. Sweet water. By the gods, I thought my scales would fall off."
 msgstr "水、 生命の源だ！おお神よ、ウロコが乾き落ちるところかと思いました。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4565
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4579
 msgid "Relax, he’s a friend. Just let me explain."
 msgstr "落ち着いて。彼は友達なのよ。ちょっと説明させて。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4570
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4584
 msgid "You’re really beat up, Nym. Are you sure you’re fine?"
 msgstr "ひどい怪我だな、Nym。休まなくて大丈夫なのか？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4575
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4589
 msgid "I’m fine. But I found someone who really wanted to speak with you."
 msgstr "大丈夫よ。それにあなたと話したがってた人を見つけることができたわ。"
 
 #. [message]: speaker=$ally_id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4580
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4594
 msgid "He looks like a half-man half-fish."
 msgstr "半分がヒトで、半分は魚のように見える。"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4585
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4599
 msgid "Indeed. I come from the ocean, and long have I been looking for you."
 msgstr "ええそうです。私は海からやって来ました。長い間あなたを探していました。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4590
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4604
 msgid "The ocean? What are you talking about?"
 msgstr "海？何のことですか？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4595
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4609
 msgid "Don’t try to explain, Esanoo. We’ll have to show them instead."
 msgstr "説明しなくてもいいわよ、Esanoo。後で実物を見せてあげればいいから。"
 
 #. [message]: speaker=Esanoo
 #. Esanoo is a merman, his leader (Melusand) is female, and his brethren on this mission include a mix of genders.
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4601
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4615
 msgid ""
 "It’s not important. What’s important is that I am an emissary from one who "
 "much desires to speak with you, Kaleh. Despite the danger, our wise leader "
@@ -9598,12 +9591,12 @@ msgstr ""
 "を探し出すために私と仲間たちに乾いた陸地を捜索させていたのです。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4606
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4620
 msgid "There are more of you? Where are the others?"
 msgstr "他に誰かいるのですか？その者達はどこに？"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4625
 msgid ""
 "They have been captured by the foul humans. I just barely managed to hide "
 "and escape, with the help of your friend."
@@ -9612,12 +9605,12 @@ msgstr ""
 "けを借り、かろうじて隠れ、逃げることができたのです。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4616
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4630
 msgid "And why should we trust anything you say?"
 msgstr "ところで、あなたの言うことが真実だと証明できますか？"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4635
 msgid ""
 "Our leader thought you might be suspicious. She said that what we must talk "
 "with you about concerns the fate of your people. Apparently it concerns "
@@ -9629,14 +9622,14 @@ msgstr ""
 "と彼女は言っておりましたが？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4626
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4640
 msgid "Hmmmm... Yes, yes I think I do. I don’t know why, but I trust you."
 msgstr ""
 "むむむ…… うん、そうだな、分かる気がする。どういうことなのかはわからないが、私"
 "は貴方を信じよう。"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4631
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4645
 msgid ""
 "Thank you, Kaleh. Now I have a favor to ask of you. Our instructions were to "
 "find you and to bring you and your people to meet with our wise leader. The "
@@ -9647,14 +9640,12 @@ msgstr ""
 "て、私は主がどこに隠れているか知らないのです。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4636
-#, fuzzy
-#| msgid "You don’t know where to find your master?"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4650
 msgid "You don’t know where to find your leader?"
-msgstr "あなたの主がどこに居るかが分からないのですか？"
+msgstr "自分の主がどこに隠れているか、ご存知ないのですか？"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4641
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4655
 msgid ""
 "It’s complicated, and I don’t know how much I am allowed to tell you. My "
 "people are fighting a desperate war against... against a powerful foe. Many "
@@ -9679,7 +9670,7 @@ msgstr ""
 "はありますが……"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4646
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4660
 msgid ""
 "...It would be suicide for you to try to rescue them alone. Of course we "
 "will help you!"
@@ -9687,19 +9678,19 @@ msgstr ""
 "一人でやろうなんて単なる自殺行為よ。もちろん、アタシ達があなたを手伝うから。"
 
 #. [message]: speaker=Esanoo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4665
 msgid "Thank you, Nym. I am not very good at fighting on the dry ground."
 msgstr ""
 "ありがとうございます。私は、渇いた地面での戦いが余り得意ではないのです。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4656
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4670
 msgid ""
 "With you back, Nym, the only scouts yet to return are Tanstafaal’s group."
 msgstr "Nym は帰ってきたが、Tanstafaal たちはまだ戻っていない。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4675
 msgid ""
 "They were sent due north. From Esanoo’s description it sounds like they were "
 "headed right for the human settlement. I hope nothing bad has happened to "
@@ -9709,7 +9700,7 @@ msgstr ""
 "へ向かったことになるわね。何事も無ければ良いんだけど。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4680
 msgid ""
 "Things are coming to a head, Tanstafaal and our new friends are in trouble. "
 "Time is of the essence, so let’s move out as soon as possible."
@@ -10300,35 +10291,25 @@ msgstr "そうですね、その通りです。お許しを。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1103
-#, fuzzy
-#| msgid ""
-#| "No, too many merfolk have died! There are not enough of them left to "
-#| "divine the location of their master. We should have protected the merfolk "
-#| "more carefully. Now our search is hopeless."
 msgid ""
 "No, too many merfolk have died! There are not enough of them left to divine "
 "the location of their leader. We should have protected the merfolk more "
 "carefully. Now our search is hopeless."
 msgstr ""
-"何てことだ、あまりに多くのマーフォークを死なせてしまった！もはや彼らの主の位"
-"置を知るために必要な人数が残ってない。もっと慎重に彼らを守らなければならな"
-"かったのだ。こうなっては探索は無理だ。"
+"いや、マーフォークがこんなに死んでしまったんだ！その主の居場所を占うには数が"
+"少なすぎる。もっと慎重にマーフォークを守るべきだったな。これでは、探索は絶望"
+"的だ。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1110
-#, fuzzy
-#| msgid ""
-#| "Too many merfolk have died! Even if we save the rest, there will not be "
-#| "enough for them to divine the location of their master. We should have "
-#| "protected the merfolk more carefully. Now our search is hopeless."
 msgid ""
 "Too many merfolk have died! Even if we save the rest, there will not be "
 "enough for them to divine the location of their leader. We should have "
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
-"あまりに多くのマーフォークが死んでしまった！たとえ残り全てを救っても、彼らの"
-"主の居場所を知るのに十分な人数がいない。もっと慎重に彼らを守るべきだった。こ"
-"れではもう探索は無理だ。"
+"いや、マーフォークがこんなに死んでしまったんだ！残り全員を救い出せたとして"
+"も、彼らの主の居場所を占うには数が少なすぎる。もっと慎重にマーフォークを守る"
+"べきだったな。これでは、探索は絶望的だ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1136
@@ -11333,19 +11314,14 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2345
-#, fuzzy
-#| msgid ""
-#| "Thank you. And I have also not forgotten the pledge I made to our merfolk "
-#| "friends. If it is possible, I would like to meet with your master. Your "
-#| "conduct is a testament to your people, and I, at least, trust you."
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your leader. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
-"感謝する。そして、私はマーフォークの友人との約束も忘れてはいない。可能なら"
-"ば、あなた方の主と会いたい。あなた方の行動はあなた方を信じるに足る証拠として"
-"十分だと思う。だから。少なくとも私はあなた方を信頼する。"
+"感謝する。それに、マーフォークの友たちに誓ったことだって忘れてはいない。でき"
+"ることなら、あなたたちの主に是非会ってみたい。あなたの振る舞いこそが、あなた"
+"の民のことを証明している。少なくとも私はあなたたちを信頼している。"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2349
@@ -11413,16 +11389,13 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2462
-#, fuzzy
-#| msgid ""
-#| "Before I decide, I have just one question: How did you merfolk plan on "
-#| "bringing us to meet your master, if she dwells far beneath the sea?"
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
-"決断する前に一つ質問が。あなたたちマーフォークの主が海の奥深くに隠れていると"
-"して、私たちをどうやって会わせるつもりだったのですか？"
+"決断する前に、1つ訊きたいことがあるのです。あなたたちマーフォークは、一体どう"
+"やって私達を主のもとへ連れて行くつもりだったのです？彼女は海の奥底にいるかも"
+"知れないのに？"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2469
@@ -15078,12 +15051,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:56
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:72
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:28
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:42
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:55
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:69
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:71
 msgid "glaive"
 msgstr "グレイブ"
 
@@ -15113,14 +15086,14 @@ msgstr "魔法"
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
 msgid "defeated"
-msgstr ""
+msgstr "敗北"
 
-#. [unit_type]: id=Divine Avatar, race=quenoth
+#. [unit_type]: id=Divine Avatar, gender=female, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
 msgid "female^Divine Avatar"
 msgstr "神のアバター"
 
-#. [unit_type]: id=Divine Avatar, race=quenoth
+#. [unit_type]: id=Divine Avatar, gender=female, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:22
 msgid ""
 "Divine Avatars only appear in time of great need. Forms of the Gods "
@@ -15145,12 +15118,12 @@ msgstr ""
 "神の化身（Divine Incarnation）はこの世界で最も神の実際の存在に近いものである"
 "と言われています。彼らは神々しく、恐ろしい存在です。"
 
-#. [unit_type]: id=Quenoth Druid, race=quenoth
+#. [unit_type]: id=Quenoth Druid, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:5
 msgid "female^Quenoth Druid"
 msgstr "Quenoth のドルイド僧"
 
-#. [unit_type]: id=Quenoth Druid, race=quenoth
+#. [unit_type]: id=Quenoth Druid, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:24
 msgid ""
 "Worshippers of the Goddess of Light, Eloh, Druids are considered mysterious "
@@ -15171,8 +15144,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "砂嵐"
 
@@ -15207,16 +15178,6 @@ msgstr "Quenoth の戦士"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15228,11 +15189,13 @@ msgid ""
 "his attention between multiple enemies, be they brigand, wild creature, or "
 "undead."
 msgstr ""
-"遙か昔、繁栄の時代にはエルフの戦士は剣を好んで使っていました。他の武器よりも"
-"優美で汎用的であったためです。ですが、最近は鍛冶素材の不足のために剣の鍛造は"
-"ままならず、安価で修理も容易な武器への切り替えを余儀なくされています。"
-"Quenoth の戦士（Quenoth Fighter）は集団で戦うことに秀でており、近くの仲間と一"
-"緒に槍衾を組むことで洗練された武器が無くとも戦線を維持することができます。"
+"遠い昔、今よりも繁栄していた頃、エルフの戦士たちは他の近接武器よりも気品のあ"
+"る汎用的な武器として剣の使用を好みました。しかし近年、鍛造用の物資が不足した"
+"ことで刃物製造の機会も減少していて、安価かつ、より修理が容易な武器製造が必要"
+"となっています。そうした質の低下を補うため、Quenoth 族は、より一層柔軟な使い"
+"方を選択しました。砂地の平原では、兵士が山賊や野生動物、アンデッド等の複数の"
+"敵の中にあっても、同時に注意を向けられるような眼識を磨くように訓練されていま"
+"す。"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15291,12 +15254,12 @@ msgstr ""
 "まえば霧散してしまうことでしょう。彼らは祖先の狙撃手に劣らぬ速度と精度を持つ"
 "矢を放つのですから。それも全力で疾駆する馬上から。"
 
-#. [unit_type]: id=Quenoth Mystic, race=quenoth
+#. [unit_type]: id=Quenoth Mystic, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
 msgid "female^Quenoth Mystic"
 msgstr "Quenoth の神秘者"
 
-#. [unit_type]: id=Quenoth Mystic, race=quenoth
+#. [unit_type]: id=Quenoth Mystic, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:24
 msgid ""
 "Like their ancestors, Quenoth Mystics are those who devote themselves to the "
@@ -15336,8 +15299,8 @@ msgstr ""
 #. [attack]: type=impact
 #. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:382
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:383
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:700
 msgid "bolas"
 msgstr "ボーラ"
 
@@ -15411,12 +15374,12 @@ msgstr ""
 "負けない速度で疾走します。訓練を積んだ剣とスリングは敵を苦しめる上でも効果的"
 "な技術であるため、彼らは狩人や警備の際に力を発揮してくれることでしょう。"
 
-#. [unit_type]: id=Quenoth Shaman, race=quenoth
+#. [unit_type]: id=Quenoth Shaman, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
 msgid "female^Quenoth Shaman"
 msgstr "Quenoth の呪術師"
 
-#. [unit_type]: id=Quenoth Shaman, race=quenoth
+#. [unit_type]: id=Quenoth Shaman, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:24
 msgid ""
 "Like the elves of old, many Quenoth Elves seek to study the art of medicine "
@@ -15433,12 +15396,12 @@ msgstr ""
 "は資源に乏しい土地ではかけがえの無い技術です。この過酷な環境で植物を育てる技"
 "術のおかげで、人々は砂漠から緑が蘇るという希望を抱くこともできています。"
 
-#. [unit_type]: id=Quenoth Shyde, race=quenoth
+#. [unit_type]: id=Quenoth Shyde, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
 msgid "female^Quenoth Shyde"
 msgstr "Quenoth のシェード"
 
-#. [unit_type]: id=Quenoth Shyde, race=quenoth
+#. [unit_type]: id=Quenoth Shyde, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:25
 msgid ""
 "From the teachings of Analia, the healer of the Emerald Blossom:\n"
@@ -15471,23 +15434,13 @@ msgstr ""
 msgid "sand"
 msgstr "砂"
 
-#. [unit_type]: id=Quenoth Sun Singer, race=quenoth
+#. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
 msgid "female^Quenoth Sun Singer"
 msgstr "Quenoth の太陽の歌手"
 
-#. [unit_type]: id=Quenoth Sun Singer, race=quenoth
+#. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Faerie and elven magic have oft been aptly associated with life, from "
-#| "which they draw the majority of their power. However, with the death of "
-#| "much of Irdya’s flora, the Quenoth Elves were forced to seek another "
-#| "source for their sorcery. In time, they learned to harness the power of "
-#| "the suns Sela and Naia - the twin stars that had razed the forests of "
-#| "Irdya to ashes, yet still spring forth the energy required for sparking "
-#| "life. Those who master this new magic sing of the dual nature of these "
-#| "embodiments of fire: flames that are both life and life’s demise."
 msgid ""
 "Faerie and elven magic have oft been aptly associated with life, from which "
 "they draw the majority of their power. However, with the death of much of "
@@ -15498,31 +15451,32 @@ msgid ""
 "this new magic sing of the dual nature of these embodiments of fire: flames "
 "that are both life and life’s demise."
 msgstr ""
-"妖精やエルフの魔法は、その力の根源である生命と密接な関係を持ってきました。し"
-"かしながら、 Irdya の植物の大量死により、Quenoth のエルフは魔力の源を他に求め"
-"ざるを得なかったのです。やがて彼女らは、二つの太陽 Sela と Naia から力を引き"
-"出す術を学びました。かつて Irdya の森を灰にした二つの太陽ですが、生命の躍動に"
-"必要なエネルギーをほとばしらせてもいます。この新たな魔術を習得した者は、炎の"
-"持つ二面性、即ち、生と死の両面を歌い上げるのです。"
+"妖精やエルフの魔術は、しばしば生命と結び付けられてきました。そこから彼らの力"
+"の多くを引き出しています。しかし、Irdya の植物群の多くが死に絶え、Quenoth の"
+"エルフは魔術の源として別のものを探さざるを得ませんでした。折よく、Sela と "
+"Naia という2つの恒星が放つ力を利用する方法を学びました。この、Irdya の森を灰"
+"と化してしまった双子の星は、その後も、生命を生み出すに十分なエネルギーを発し"
+"ていました。彼らは、炎が生命の素であるとともに死滅ももたらすという二つの自然"
+"摂理を賛美しているのです。"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
 msgid "sun invocation"
-msgstr ""
+msgstr "太陽召喚"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "太陽光線"
 
-#. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
+#. [unit_type]: id=Quenoth Sun Sylph, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
 msgid "female^Quenoth Sun Sylph"
 msgstr "Quenoth の太陽のシルフ"
 
-#. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
+#. [unit_type]: id=Quenoth Sun Sylph, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:25
 msgid ""
 "In times past, those who stepped beyond the boundary of the worlds of elf "
@@ -15546,7 +15500,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
 msgid "sun incarnate"
-msgstr ""
+msgstr "太陽の化身"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -15776,165 +15730,151 @@ msgstr ""
 
 #. [advancement]: id=swordsmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:84
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:451
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:452
 msgid "Swordsmanship Training"
-msgstr ""
+msgstr "剣術の訓練"
 
 #. [advancement]: id=strong_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:105
-#, fuzzy
-#| msgid "true strike"
 msgid "Strong Strikes"
-msgstr "真の一撃"
+msgstr "Strong Strikes"
 
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:122
 msgid "Swordsman"
-msgstr ""
+msgstr "Swordsman"
 
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:144
-#, fuzzy
-#| msgid "Haunt"
 msgid "Taunt"
-msgstr "ホーント"
+msgstr "嘲笑"
 
 #. [advancement]: id=stronger_grip
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:284
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:285
 msgid "Stronger Grip"
-msgstr ""
+msgstr "握力の強化"
 
 #. [advancement]: id=overwhelming_power
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:297
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:298
 msgid "Overwhelming Power"
-msgstr ""
+msgstr "圧倒的な強さ"
 
 #. [advancement]: id=stamina_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:322
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:633
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:323
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:634
 msgid "Stamina Training"
-msgstr ""
+msgstr "スタミナ強化の訓練"
 
 #. [advancement]: id=endurance_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:337
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:338
 msgid "Endurance Training"
-msgstr ""
+msgstr "耐久力の強化訓練"
 
 #. [advancement]: id=skirmisher
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:357
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:674
-#, fuzzy
-#| msgid "Troll Skirmisher"
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:358
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:675
 msgid "Skirmisher"
-msgstr "トロルの散兵"
+msgstr "散兵"
 
 #. [advancement]: id=training_with_bolas
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:376
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:693
-#, fuzzy
-#| msgid "Talking with Trolls"
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:377
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:694
 msgid "Training with Bolas"
-msgstr "トロルとの対話"
+msgstr "投げ縄の訓練"
 
 #. [advancement]: id=slow
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:396
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:725
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:397
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:726
 msgid "Slow"
-msgstr ""
+msgstr "鈍重"
 
 #. [advancement]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:416
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:417
 msgid "Opportunist"
-msgstr ""
+msgstr "日和見主義"
 
 #. [advancement]: id=inspiring
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:435
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:436
 msgid "Inspiring"
-msgstr ""
+msgstr "感銘を与える"
 
 #. [advancement]: id=accurate_strikes
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:472
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:473
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "打撃精度の向上"
 
 #. [advancement]: id=faster_strikes
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:489
-#, fuzzy
-#| msgid "true strike"
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:490
 msgid "Faster Strikes"
-msgstr "真の一撃"
+msgstr "打撃速度の向上"
 
 #. [advancement]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:501
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:502
 msgid "Sword Dance"
-msgstr ""
+msgstr "剣の舞"
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "弓術の訓練"
 
 #. [advancement]: id=quickdraw
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:542
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:543
 msgid "Quickdraw"
-msgstr ""
+msgstr "早弓"
 
 #. [advancement]: id=ranger
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:554
-#, fuzzy
-#| msgid "Quenoth Ranger"
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
 msgid "Ranger"
-msgstr "Quenoth のレンジャー"
+msgstr "レンジャー"
 
 #. [advancement]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:572
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
 msgid "Rain of Arrows"
-msgstr ""
+msgstr "矢の雨"
 
 #. [advancement]: id=toxic_rain
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:601
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:602
 msgid "Toxic Rain"
-msgstr ""
+msgstr "毒の雨"
 
 #. [advancement]: id=twin_arrows
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:619
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:620
 msgid "Twin Arrows"
-msgstr ""
+msgstr "ツインアロー"
 
 #. [advancement]: id=footwork
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:648
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:649
 msgid "Footwork"
-msgstr ""
+msgstr "フットワーク"
 
 #. [advancement]: id=run_by_bolas
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:713
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:714
 msgid "Run By (Bolas)"
-msgstr ""
+msgstr "（投げ縄の）装備"
 
 #. [advancement]: id=bolaship
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:745
-#, fuzzy
-#| msgid "bolas"
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:746
 msgid "Bolaship"
-msgstr "ボーラ"
+msgstr "投げ縄術"
 
 #. [advancement]: id=herbalism
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:758
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:759
 msgid "Herbalism"
-msgstr ""
+msgstr "薬草学"
 
 #. [advancement]: id=run_by_sword_and_bow
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:776
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:777
 msgid "Run By (Sword and Bow)"
-msgstr ""
+msgstr "（剣と弓の）装備"
 
-#. [unit_type]: id=Quenoth Youth, race=quenoth, description={QUENOTH_YOUTH_DESCRIPTION}
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:909
+#. [unit_type]: id=Quenoth Youth, race=quenoth, gender=male,female, description={QUENOTH_YOUTH_DESCRIPTION}
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:910
 msgid "Quenoth Youth"
 msgstr "Quenoth の若者"
 
-#. [female]: description={NYM_DESCRIPTION}
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:964
+#. [female]: gender=female, description={NYM_DESCRIPTION}
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:965
 msgid "female^Quenoth Youth"
 msgstr "Quenoth の若者"
 
@@ -16146,51 +16086,51 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
 msgid "uses 1 attack"
-msgstr ""
+msgstr "攻撃１回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
 msgid "uses 2 attacks"
-msgstr ""
+msgstr "攻撃２回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
 msgid "uses 3 attacks"
-msgstr ""
+msgstr "攻撃３回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 msgid "uses 4 attacks"
-msgstr ""
+msgstr "攻撃４回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 msgid "uses 5 attacks"
-msgstr ""
+msgstr "攻撃５回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 msgid "uses 6 attacks"
-msgstr ""
+msgstr "攻撃６回分を使用"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 msgid "This attack uses 1 attack"
-msgstr ""
+msgstr "この攻撃は攻撃１回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
 msgid "This attack uses 2 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃２回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
 msgid "This attack uses 3 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃３回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
 msgid "This attack uses 4 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃４回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
 msgid "This attack uses 5 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃５回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
 msgid "This attack uses 6 attacks"
-msgstr ""
+msgstr "この攻撃は攻撃６回分を使用します"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
@@ -16200,6 +16140,11 @@ msgid ""
 "When the last verse is sung or the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"この攻撃は「黎明の歌」の第１小節で、このユニットがこの小節攻撃を使用するター"
+"ンごとに１小節先へ進みます。\n"
+"\n"
+"最後の小節が歌われるか、1ターン攻撃しないことで歌の流れが途切れた場合は、歌は"
+"最初の小節から再び始まります。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
 msgid ""
@@ -16209,6 +16154,11 @@ msgid ""
 "If this was the last verse or when the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"この攻撃は「黎明の歌」の第２小節で、このユニットがこの小節攻撃を使用するター"
+"ンごとに１小節先へ進みます。\n"
+"\n"
+"もしこれが歌の最後の小節の場合か、1ターン攻撃しないことで歌の流れが途切れた場"
+"合は、歌は最初の小節から再び始まります。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
 msgid ""
@@ -16219,31 +16169,35 @@ msgid ""
 "\n"
 "Using this song will also grant illuminates for three turns."
 msgstr ""
+"この攻撃は「黎明の歌」の第３小節で、このユニットがこの小節攻撃を使用するター"
+"ンごとに１小節先へ進みます。\n"
+"\n"
+"次のターンでは、歌は第１小節から始まります。\n"
+"\n"
+"この歌を歌うことで、３ターンの間は「照明」能力の効果を発揮します。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
 msgid "first verse"
-msgstr ""
+msgstr "第１小節"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
 msgid "second verse"
-msgstr ""
+msgstr "第２小節"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "third verse"
-msgstr ""
+msgstr "第３小節"
 
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
 msgid "third verse illuminates"
-msgstr ""
+msgstr "第３小節が「照明」効果をもたらします"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#, fuzzy
-#| msgid "female^thirst"
 msgid "female^third verse illuminates"
-msgstr "脱水症状"
+msgstr "第３小節が「照明」効果をもたらします"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
@@ -16254,6 +16208,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"「太陽の化身」での攻撃後にこの能力が有効な場合は、このユニットは３ターンの間"
+"「照明」能力の効果を発揮します。\n"
+"\n"
+"このユニットに隣接しているユニットは、夜間なら夕暮れであるかのように、夜明"
+"け・夕暮れなら日中であるかのように戦います。"
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
@@ -16262,22 +16221,23 @@ msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
 msgstr ""
+"照明は隣接するエリアの照度を増加させます。この効果は３ターンだけ持続します。"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "once per turn"
-msgstr ""
+msgstr "１ターンに１回"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 msgid "This attack can be used offensively only once per turn"
-msgstr ""
+msgstr "この攻撃は１ターンに１回だけ、攻撃的に使用可能です"
 
 #. [dummy]: id=nova
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 msgid "nova"
-msgstr ""
+msgstr "NOVA"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
@@ -16285,6 +16245,8 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
+"この武器を攻撃的に使用して命中すると、放った人に隣接するすべてのユニットにダ"
+"メージを与えます。"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
@@ -16293,17 +16255,20 @@ msgid ""
 "the first verse is available in the next turn. Furthermore, invoking this "
 "attack will grant illumination for three turns."
 msgstr ""
+"この攻撃は「黎明の歌」の第３小節です。攻撃後、次のターンでは第１小節が使用可"
+"能になります。さらに、この攻撃を行うことで３ターンの間は「照明」能力の効果が"
+"加わります。"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
 msgid "This unit has wide-area attacks centered on the caster."
-msgstr ""
+msgstr "このユニットは周囲の広範囲を攻撃する手段を備えています。"
 
 #. [dummy]: id=ray
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:488
 msgid "ray"
-msgstr ""
+msgstr "光線"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
@@ -16311,6 +16276,8 @@ msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
+"この武器が攻撃時に使用されると、その背後にいる１ユニットにもダメージを与えま"
+"す。"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:491
@@ -16319,23 +16286,26 @@ msgid ""
 "when the first verse was sung in the previous turn. If this was the last "
 "verse, then the first verse will be available in the next turn."
 msgstr ""
+"この攻撃は「黎明の歌」の第２小節です。直前のターンで第１小節での攻撃が行われ"
+"ときだけ使用可能です。これが最終小節の場合、次のターンでは第１小節を使用する"
+"ことができます。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
-msgstr ""
+msgstr "ターン開始時、このユニットは周囲のユニットの移動力を１増加させます"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:651
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
-msgstr ""
+msgstr "ターン開始時、このユニットは周囲のユニットの移動力を２増加させます"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
 msgid "tailwind +"
-msgstr ""
+msgstr "追い風 +"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
@@ -16520,7 +16490,7 @@ msgstr "目潰し！"
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1411
 msgid "opportunist"
-msgstr ""
+msgstr "日和見主義"
 
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1412
@@ -16528,44 +16498,41 @@ msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
 msgstr ""
+"この能力があると、 Kaleh の ZOC（支配領域）から離れる敵に対して１回の攻撃を行"
+"えるようになります。"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1485
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunt"
-msgstr "ホーント"
+msgstr "嘲笑"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr ""
+"「嘲笑」することで、敵に対して１ターンだけ Kaleh を攻撃させようとします。"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1521
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunted"
-msgstr "ホーント"
+msgstr "被嘲笑"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1522
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
+"このユニットは Kaleh から嘲笑された状態にあり、Kaleh を１ターン攻撃しようとし"
+"ます。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1531
-#, fuzzy
-#| msgid "Pulsing Spire"
 msgid "inspire"
-msgstr "脈動する尖塔"
+msgstr "感銘"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1532
-#, fuzzy
-#| msgid "female^support"
 msgid "female^inspire"
-msgstr "支援"
+msgstr "感銘"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
@@ -16574,6 +16541,9 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
+"このユニットは隣接する味方のユニットを鼓舞し、攻撃力を増加させることができま"
+"す。このユニットと同一レベル以下のユニットは、敵への攻撃ダメージが25%増加し、"
+"レベル差に応じて更に25%ずつダメージが増加します。"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1534
@@ -16581,27 +16551,29 @@ msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+"このユニットの存在は、隣接する味方のユニットが戦闘で与えるダメージを増加させ"
+"ます。但し、このユニットと同一レベル以下のユニットに対してのみ有効です。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
 msgid "cooldown 1"
-msgstr ""
+msgstr "冷却１"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
 msgid "cooldown 2"
-msgstr ""
+msgstr "冷却２"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
 msgid "After using this attack, you can't use it during your next turn."
-msgstr ""
+msgstr "この攻撃を行なった直後のターンでは、この攻撃は使用できません。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
 msgid "After using this attack, you can't use it during your next two turns."
-msgstr ""
+msgstr "この攻撃を行なった直後の２ターンでは、この攻撃は使用できません。"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1614
 msgid "pierce"
-msgstr ""
+msgstr "刺突"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1615
@@ -16609,11 +16581,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
+"この武器を攻撃時に使用すると、その背後にいる１ユニットにもダメージを与えるこ"
+"とができます。"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1684
 msgid "puncture"
-msgstr ""
+msgstr "穿刺"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1685
@@ -16621,11 +16595,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
+"この武器を攻撃時に使用すると、その背後にいる２ユニットにもダメージを与えま"
+"す。"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1767
 msgid "rain of arrows"
-msgstr ""
+msgstr "矢の雨"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1768
@@ -16633,13 +16609,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
+"この武器を攻撃時に使用すると、その背後にいる１ユニットと、後方に隣接するユ"
+"ニットにもダメージを与えます。"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1888
-#, fuzzy
-#| msgid "Good riddance."
 msgid "sword dance"
-msgstr "やれやれ、やっとうるさいのがいなくなったな。"
+msgstr "剣の舞"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
@@ -16647,6 +16623,8 @@ msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
 msgstr ""
+"Nym の攻撃が敵に命中するたびに、彼女は命中率+10%、回避率+10%を戦闘終了まで獲"
+"得します。"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -16771,15 +16749,6 @@ msgstr "+$amount XP"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Note: This campaign is probably not appropriate for beginners. It changes "
-#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
-#| "cycle. This campaign emphasizes role-playing elements and tends to have "
-#| "longer scenarios with objectives that change in the middle. For these "
-#| "reasons, we strongly suggest that you occasionally save your game mid-"
-#| "scenario, so you won’t lose all your progress if you get stuck and have "
-#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -16789,13 +16758,13 @@ msgid ""
 "that you occasionally save your game mid-scenario, so you won’t lose all "
 "your progress if you get stuck and have to start over."
 msgstr ""
-"メモ：このキャンペーンはおそらく初心者がプレイするのには適していないでしょ"
-"う。なぜなら、エルフのユニット構成や昼夜のサイクルのような、Wesnoth の標準設"
-"定がいくつか変更されているからです。そして、このキャンペーンではロールプレイ"
-"ングの要素が強く、個々のシナリオも比較的長く、さらにはシナリオ途中で目標が変"
-"更されることもあります。そのため、シナリオ途中で適宜ゲームを保存することを強"
-"くお勧めします。そうすれば、ハマってしまってやり直さなければならなくなった時"
-"に、全てを無駄にせずに済むでしょう。"
+"注意：このキャンペーンは、初心者には不向きかもしれません。Wesnoth 標準のルー"
+"ルが一部変更されており、例えばエルフのステータスや昼夜サイクル、召喚コストや"
+"難易度の扱いなどが異なっています。また、ロールプレーイングの要素も強調されて"
+"おり、シナリオの途中で勝利条件が変更されることでプレイ時間が長くなりがちで"
+"す。こうした理由から、シナリオの途中で時々ファイルセーブしておくことを強く推"
+"奨します。そうすれば、途中で行き詰まって最初からプレイし直すことになっても、"
+"プレイ状態をすべて失うようなことにならずに済むでしょう。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
@@ -17452,20 +17421,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Which brings me to the other alien concept I was trying to comprehend: "
-#| "our goddess Eloh. What was her plan? Why did she want me to surrender to "
-#| "the humans? Do the humans worship her as well? The humans seem so brutish "
-#| "and vile, that I can’t imagine them worshiping the same god as us. I "
-#| "thought Eloh was just our god, I don’t remember Zhul mentioning any other "
-#| "races worshiping her after the Great Fall, though perhaps things had "
-#| "changed in the intervening years. Her commands don’t make any sense; she "
-#| "doesn’t seem at all like the goddess Zhul told me about. And what was "
-#| "Esanoo talking about? How did his master know about ‘Yechnagoth’ and "
-#| "‘Zhangor’? If Eloh won’t help me, then I desperately need some answers. I "
-#| "pray to whatever gods may be left that I’m not leading my people into a "
-#| "trap..."
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -17479,18 +17434,17 @@ msgid ""
 "won’t help me, then I desperately need some answers. I pray to whatever gods "
 "may be left that I’m not leading my people into a trap..."
 msgstr ""
-"その驚きは、私が思考を巡らせていた別の異質なものを思い起こさせた。我々の女神"
-"たる Eloh のことを。彼女の計画は何だったのだろう？何故人間に降伏させようとし"
-"たのか？人間達も彼女を崇拝しているのだろうか？人間達はとても粗野で下品に見え"
-"たため、彼らが我々と同じ神を崇拝しているとは思えなかった。それというのも、"
-"「大いなる滅び」以後、他の種族が彼女を崇拝していると Zhul から聞いたことはな"
-"いので、私は Eloh は我々だけの神だと思っていたのだ。もちろん、崩壊後の長い年"
-"月で何か変化があったのかもしれないが。しかし、それでも彼女の命令は合点がいか"
-"ない。どうしても Zhul が常々語ってくれた女神が彼女とは思えなかった。そして "
-"Esanoo の話だ。どうして彼の主は『Yechnagoth』と『Zhangor』を知っているのだろ"
-"うか？Eloh が私を助けてくれないならば、私がなんとしてでも何らかの答えを探すし"
-"かない。この時私は、自分が同胞を罠に導いていないと保証してくれるのならば、ど"
-"んな神にでも祈りを捧げても良い、そう思っていた……"
+"そのことは、私が理解しようとしていたもう一つの異質なことを呼び覚ました。女神 "
+"Eloh のことだ。彼女の目論見は何だったのだろう？なぜ、私が人間に降伏することを"
+"望んだのか？人間たちも彼女を崇拝しているのだろうか？人間はひどく野蛮で下劣そ"
+"うだし、私達と同じ神を崇拝しているとはとても思えない。Eloh は私達だけの神だと"
+"思っていたが、あの「大いなる滅び」のあと、彼女を崇拝する他の種族のことなど "
+"Zhul は話していなかったと思うが、年月がたって事情が変化したのかもしれない。彼"
+"女の命令にはピンとこないし、Zhul が話していた女神とは全然違う気がする。それ"
+"と、Esanoo が話していたのは何のことだろう？ 彼のリーダーは、どうやって "
+"'Yechnagoth' と 'Zhangor' のことを知ったのだろう？ もし Eloh が助けてくれない"
+"なら、私が何とかして答えを見つけなければ。自分の仲間を罠へ引き込まないよう"
+"に、残りのどんな神々だろうが祈りを捧げるしかない..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:174
@@ -17599,19 +17553,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
-#, fuzzy
-#| msgid ""
-#| "That afternoon three of the merfolk sat in a circle and performed their "
-#| "ritual to determine the location of their master. Apparently it was a "
-#| "success, for they steered us straight towards the setting sun."
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their leader. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
-"ある午後、3 人のマーフォークが主の位置を調べるために、円座して儀式を執り行っ"
-"た。やがて、沈む夕日の方へ向かう方向に舵を切るように言ったので、儀式は成功し"
-"たのだと思う。"
+"その日の午後、マーフォーク３名が車座になって、主の居場所を特定する儀式を執り"
+"行った。どうやら成功したようで、沈みゆく夕日へとまっすぐに舵を切った。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:206
@@ -17750,43 +17698,3 @@ msgstr "幻の城"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "幻の城の主塔"
-
-#~ msgid "Hunter"
-#~ msgstr "ハンター"
-
-#~ msgid "Leader"
-#~ msgstr "リーダー"
-
-#~ msgid "Warrior (choose only one): specialize in melee combat"
-#~ msgstr "勇士 (どちらか一つだけを選択可): 近接戦闘に特化"
-
-#~ msgid "Warrior (choose only one): specialize in archery"
-#~ msgstr "勇士 (どちらか一つだけを選択可): 弓術に特化"
-
-#~ msgid "Hunter (choose only one): specialize in surprise attacks"
-#~ msgstr "ハンター (どちらか一つだけを選択可): 奇襲に特化"
-
-#~ msgid "Hunter (choose only one): specialize in skirmishing"
-#~ msgstr "ハンター (どちらか一つだけ選択可): 散兵能力に特化"
-
-#~ msgid "Leader (choose only one): specialize in supporting allies"
-#~ msgstr "リーダー (どちらか一つだけ選択可): 仲間の支援に特化"
-
-#~ msgid "Leader (choose only one): specialize in distracting enemies"
-#~ msgstr "リーダー (どちらか一つだけ選択可): 撹乱能力に特化"
-
-#, fuzzy
-#~| msgid "female^distract"
-#~ msgid "female^steadfast"
-#~ msgstr "撹乱"
-
-#~ msgid "Skeleton Rider"
-#~ msgstr "スケルトンライダー"
-
-#~ msgid ""
-#~ "Once great warriors across the plains, these mounted riders atop their "
-#~ "skeletal horses were raised from the sands by unholy magic to spread fear "
-#~ "and destruction."
-#~ msgstr ""
-#~ "かつて平野を駆け巡った偉大な戦士、スケルトンライダー（Skeleton Rider）は恐"
-#~ "怖と破壊を撒き散らすために不浄な魔法によって砂地から蘇りました。"

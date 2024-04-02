@@ -16,7 +16,6 @@
 #pragma once
 
 #include "config.hpp"
-#include "serialization/compression.hpp"
 
 namespace savegame
 {

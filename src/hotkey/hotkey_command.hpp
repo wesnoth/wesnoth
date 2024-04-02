@@ -20,9 +20,7 @@
 
 #include <bitset>
 #include <functional>
-#include <list>
 #include <map>
-#include <vector>
 
 class config;
 
@@ -121,6 +119,7 @@ enum HOTKEY_COMMAND {
 	/* Editor commands */
 	HOTKEY_EDITOR_CUSTOM_TODS,
 	HOTKEY_EDITOR_PARTIAL_UNDO,
+	HOTKEY_EDITOR_EDIT_UNIT,
 
 	// Palette
 	HOTKEY_EDITOR_PALETTE_ITEM_SWAP, HOTKEY_EDITOR_PALETTE_ITEMS_CLEAR,

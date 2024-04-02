@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-multiplayer\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2020-09-06 19:35+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -201,9 +201,9 @@ msgstr ""
 "Ez a korszak még mindig fejlesztés alatt áll, ezért kérünk, jelents minden "
 "felmerülő problémát."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
-#: data/multiplayer/eras.lua:53
+#: data/multiplayer/eras.lua:113
 #, fuzzy
 #| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
@@ -212,9 +212,9 @@ msgid ""
 msgstr ""
 "<span strikethrough='true' foreground='#%02x%02x%02x'>%d. csapat</span>"
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, any side that still has units left
-#: data/multiplayer/eras.lua:69
+#: data/multiplayer/eras.lua:118
 #, fuzzy
 #| msgid ""
 #| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
@@ -227,34 +227,34 @@ msgstr ""
 "<span foreground='#%02x%02x%02x'>%d. csapat</span>:  Bevételi pontszám = %d  "
 "Egység pontszám = %d  Arany = %d"
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:84
+#: data/multiplayer/eras.lua:127
 #, fuzzy
 #| msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr "A(z) <span foreground='%s'>%d. csapat</span> vezet."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:89
+#: data/multiplayer/eras.lua:132
 #, fuzzy
 #| msgid "Sides %s and %d are tied."
 msgid "Sides $side_number and $other_side_number are tied."
 msgstr "A(z) %s. és %d. oldalak döntetlenre állnak."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:94
+#: data/multiplayer/eras.lua:137
 #, fuzzy
 #| msgid "Sides %s and %d are tied."
 msgid "Sides $winners are tied."
 msgstr "A(z) %s. és %d. oldalak döntetlenre állnak."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-#: data/multiplayer/eras.lua:100
+#: data/multiplayer/eras.lua:142
 msgid "dialog^Turns Over"
 msgstr ""
 
@@ -2051,7 +2051,7 @@ msgstr ""
 msgid "Statue of Sulla"
 msgstr "Sulla szobra"
 
-#. [unit]
+#. [unit]: gender=female
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "

@@ -21,7 +21,6 @@
 
 #include "serialization/string_utils.hpp"
 
-#include <cstddef>
 #include <ctime>
 #include <string_view>
 

@@ -40,14 +40,12 @@
 #include <boost/asio/ssl.hpp>
 
 #include <condition_variable>
-#include <deque>
 #include <future>
 #include <list>
 #include <mutex>
 #include <queue>
 #include <thread>
 
-class config;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection

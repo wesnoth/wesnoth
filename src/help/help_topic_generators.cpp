@@ -34,7 +34,6 @@
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "video.hpp"                    // for game_canvas_size
 
-#include <map>                          // for map, etc
 #include <optional>
 #include <set>
 
@@ -299,13 +298,13 @@ std::string unit_topic_generator::operator()() const {
 
 	ss << "<img>src='" << male_type.image();
 	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1200) ss << "~SCALE_SHARP(144,144)";
+	if (screen_width >= 1200) ss << "~SCALE_SHARP(200%,200%)";
 	ss << "' box='no'</img> ";
 
 	if (female_type.image() != male_type.image()) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1200) ss << "~SCALE_SHARP(144,144)";
+		if (screen_width >= 1200) ss << "~SCALE_SHARP(200%,200%)";
 		ss << "' box='no'</img> ";
 	}
 
@@ -323,6 +322,10 @@ std::string unit_topic_generator::operator()() const {
 	} else if (screen_width >= 1920) {
 		sz = 400;
 	}
+
+	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
+	// can't use the preferences value since it may be different than the actual value
+	sz *= video::get_pixel_scale();
 
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {

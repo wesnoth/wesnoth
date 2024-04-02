@@ -35,7 +35,6 @@ enum controller {
 	CNTR_RESERVED,
 };
 
-class connect_engine;
 class side_engine;
 
 typedef std::shared_ptr<side_engine> side_engine_ptr;

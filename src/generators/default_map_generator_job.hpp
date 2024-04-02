@@ -20,14 +20,11 @@ class game_config_view;
 
 #include "default_map_generator.hpp"
 #include "map/location.hpp"
-#include "serialization/string_utils.hpp"
 #include "terrain/translation.hpp"
-#include "utils/name_generator.hpp"
 
 #include <random>
 #include <cstdint>
 #include <map>
-#include <memory>
 
 class default_map_generator_job
 {

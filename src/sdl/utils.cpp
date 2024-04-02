@@ -19,7 +19,6 @@
  */
 
 #include "sdl/utils.hpp"
-#include "sdl/rect.hpp"
 #include "color.hpp"
 #include "log.hpp"
 #include "xBRZ/xbrz.hpp"
@@ -30,6 +29,9 @@
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
+
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 version_info sdl::get_version()
 {
@@ -1845,16 +1847,18 @@ struct not_alpha
 };
 
 }
-
-SDL_Rect get_non_transparent_portion(const surface &surf)
+surface get_non_transparent_portion(const surface &surf)
 {
-	SDL_Rect res {0,0,0,0};
+	if(surf == nullptr)
+		return nullptr;
+
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
 		PLAIN_LOG << "failed to make neutral surface";
-		return res;
+		return nullptr;
 	}
 
+	SDL_Rect res {0,0,0,0};
 	const not_alpha calc;
 
 	surface_lock lock(nsurf);
@@ -1912,5 +1916,14 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 
 	res.w = nsurf->w - res.x - n;
 
-	return res;
+	surface cropped = get_surface_portion(nsurf, res);
+	if(cropped && res.w > 0 && res.h > 0) {
+		surface scaled = scale_surface(cropped, res.w, res.h);
+		if(scaled) {
+			return scaled;
+		}
+	}
+
+	ERR_DP << "Failed to either crop or scale the surface";
+	return nsurf;
 }

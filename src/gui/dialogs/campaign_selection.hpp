@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/text_box_base.hpp"
 
 #include "game_initialization/create_engine.hpp"
 
@@ -67,6 +66,7 @@ public:
 		, current_difficulty_()
 		, current_sorting_(RANK)
 		, currently_sorted_asc_(true)
+		, mod_ids_()
 	{
 	}
 
@@ -133,6 +133,8 @@ private:
 	std::vector<std::string> last_search_words_;
 
 	inline const static std::string missing_campaign_ = "////missing-campaign////";
+
+	std::vector<std::string> mod_ids_;
 };
 
 } // namespace dialogs

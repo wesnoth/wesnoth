@@ -15,11 +15,6 @@
 
 #pragma once
 
-struct lua_State;
-class lua_kernel_base;
-class vconfig;
-class game_data;
-class game_state;
 
 namespace lua_widget {
 

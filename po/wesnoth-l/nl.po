@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-17 04:13 UTC\n"
-"PO-Revision-Date: 2021-10-29 14:26+0200\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-03-12 21:48+0100\n"
+"Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch; Flemish <tybonzer@live.nl>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Liberty
 #. [achievement_group]
@@ -103,58 +103,56 @@ msgstr "Illustraties en Grafisch Ontwerp"
 #. [achievement]: id=liberty_or_death
 #: data/campaigns/Liberty/achievements.cfg:7
 msgid "Give Me Liberty or Give Me Death!"
-msgstr ""
+msgstr "Geef Mij Vrijheid of Geef Mij De Dood!"
 
 #. [achievement]: id=liberty_or_death
 #: data/campaigns/Liberty/achievements.cfg:8
 msgid "Complete Civil Disobedience with at least 3 peasants remaining."
-msgstr ""
+msgstr "Voltooi Burgerlijke Ongehoorzaamheid met minimaal 3 boeren levend."
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
 msgid "The Nameless General"
-msgstr ""
+msgstr "De Naamloze Generaal"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
 msgid "Find out the name of the general in Unlawful Orders."
-msgstr ""
+msgstr "Ontdek de naam van de generaal in Onrechtmatige Bevelen."
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
 msgid "Harper vs. Goliath"
-msgstr ""
+msgstr "Harper en Goliath"
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:22
 msgid "Defeat an Iron Mauler with Harper in Hide and Seek."
-msgstr ""
+msgstr "Versla een IJzermaler met Harper in Verstoppertje."
 
 #. [achievement]: id=liberty_hunter
 #. this is the achievement for the scenario The Hunters
 #: data/campaigns/Liberty/achievements.cfg:29
-#, fuzzy
 msgid "Perfect Hunter"
-msgstr "Boerenjager"
+msgstr "Prefecte Jager"
 
 #. [achievement]: id=liberty_hunter
 #: data/campaigns/Liberty/achievements.cfg:30
 msgid "Complete The Hunters with no losses"
-msgstr ""
+msgstr "Voltooi De Jagers zonder verliezen"
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:36
 msgid "Force of Arms is Pointless Without Strategy"
-msgstr ""
+msgstr "Wapenkracht is Zinloos Zonder Strategie"
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:37
 msgid "On Challenging difficulty, defeat Dommel in Glory."
-msgstr ""
+msgstr "Versla Dommel in Overwinning in de Uitdagende moeilijkheidsgraad."
 
 #. [scenario]: id=01_The_Raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
-#, fuzzy
 msgid "The Raid"
 msgstr "De Rooftocht"
 
@@ -361,7 +359,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant, id=Harper
+#. [unit]: type=Footpad_Peasant, id=Harper, gender=female
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:240
 #, fuzzy
 msgid "Harper"
@@ -580,7 +578,6 @@ msgstr ""
 
 #. [scenario]: id=02_Civil_Disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
-#, fuzzy
 msgid "Civil Disobedience"
 msgstr "Burgerlijke Ongehoorzaamheid"
 
@@ -612,7 +609,7 @@ msgstr ""
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
@@ -868,9 +865,8 @@ msgstr ""
 
 #. [scenario]: id=03_A_Strategy_of_Hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
-#, fuzzy
 msgid "A Strategy of Hope"
-msgstr "Een Strategie van Hoop"
+msgstr "Een Hoopvolle Strategie"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:17
@@ -914,7 +910,7 @@ msgid ""
 "trouble ahead of us..."
 msgstr ""
 
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
 #, fuzzy
 msgid "Relana"
@@ -1186,9 +1182,8 @@ msgstr ""
 
 #. [scenario]: id=04_Unlawful_Orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
-#, fuzzy
 msgid "Unlawful Orders"
-msgstr "Onwettige Bevelen"
+msgstr "Onrechtmatige Bevelen"
 
 #. [label]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:18
@@ -1535,7 +1530,6 @@ msgstr ""
 
 #. [scenario]: id=05_Hide_and_Seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
-#, fuzzy
 msgid "Hide and Seek"
 msgstr "Verstoppertje"
 
@@ -1799,7 +1793,6 @@ msgstr ""
 
 #. [scenario]: id=06_The_Hunters
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:4
-#, fuzzy
 msgid "The Hunters"
 msgstr "De Jagers"
 
@@ -2300,9 +2293,8 @@ msgstr ""
 
 #. [scenario]: id=07_Glory
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:4
-#, fuzzy
 msgid "Glory"
-msgstr "Triomf"
+msgstr "Overwinning"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:20
@@ -2733,7 +2725,6 @@ msgstr ""
 
 #. [scenario]: id=08_Epilogue
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:4
-#, fuzzy
 msgid "Liberty — Epilogue"
 msgstr "Vrijheid — Epiloog"
 
@@ -2969,13 +2960,13 @@ msgstr ""
 "Elk van de dorpen die Wesnoth rijk is wordt geleid door de wijste en meest "
 "ervaren inwoners van het dorp, de dorpsoudsten."
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:53
 #, fuzzy
 msgid "Senior Village Elder"
 msgstr "Ervaren Dorpsoudste"
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:57
 #, fuzzy
 msgid ""
@@ -2989,7 +2980,7 @@ msgstr ""
 "van de gemeenschap. Provinciale ambtenaren kiezen vaak ervaren dorpsoudsten "
 "als magistraten zodat de legale en traditionele autoriteit samenvallen."
 
-#. [female]
+#. [female]: gender=female
 #: data/campaigns/Liberty/units/Villagers.cfg:59
 #, fuzzy
 msgid "female^Senior Village Elder"

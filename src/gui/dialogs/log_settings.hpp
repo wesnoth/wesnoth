@@ -20,7 +20,6 @@
 
 namespace gui2
 {
-class text_box_base;
 
 namespace dialogs
 {

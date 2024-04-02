@@ -2,20 +2,21 @@
 # Christoph Lange <christoph.t.lange@googlemail.com>, 2009 - 2011.
 # slafochmed <>, 200?.
 # Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2022, 2023.
+# Johannes Löhnert <loehnert.kde@gmx.de>, 2024
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.14\n"
+"Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-21 00:47 UTC\n"
-"PO-Revision-Date: 2023-04-13 04:30+0200\n"
-"Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
+"PO-Revision-Date: 2024-03-03 09:07+0100\n"
+"Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:22
@@ -419,12 +420,6 @@ msgstr ""
 
 #. [message]: speaker=Methor
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:77
-#, fuzzy
-#| msgid ""
-#| "Delfador, your time as my apprentice is now almost over. You are a fully-"
-#| "trained mage, and may choose your own path in life. I hope, however, that "
-#| "you will take my advice, and enroll yourself in the service of King "
-#| "Garard. I have many contacts at the court and..."
 msgid ""
 "Delfador, your time as my apprentice is now almost over. You are a fully-"
 "trained mage and may choose your own path in life. I hope, however, that you "
@@ -434,8 +429,8 @@ msgstr ""
 "Delfador, deine Zeit als mein Lehrling geht ihrem Ende entgegen. Inzwischen "
 "bist du ein voll ausgebildeter Magier und musst deinen eigenen Weg gehen, "
 "dir eigene Ziele setzen. Ich hoffe sehr, dass du meinem Rat folgen wirst und "
-"in die Dienste von König Garard I. treten wirst. Ich habe gute Beziehungen "
-"zum Hof und…"
+"in die Dienste von König Garard treten wirst. Ich habe gute Beziehungen zum "
+"Hof und…"
 
 #. [message]: speaker=Grogor-Tuk
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:81
@@ -802,10 +797,8 @@ msgstr "Ihr müsst alle achtsamer denn je sein!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:216
-#, fuzzy
-#| msgid "Kill them all! For our murdered friend."
 msgid "Kill them all! For our slain friend."
-msgstr "Töte sie alle! Für unseren feige gemordeten Freund!"
+msgstr "Töte sie alle! Für unseren gemordeten Freund!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:228
@@ -1154,16 +1147,22 @@ msgid ""
 "suspicious strangers like me. But, since I’m feeling nice at the moment, I "
 "think I will actually keep my word and offer you some protection."
 msgstr ""
+"Wisst Ihr, Ihr solltet wirklich ein wenig vorsichtiger sein, bevor Ihr "
+"zwielichtigen Fremden wie mir Euer Gold überlasst. Aber da ich heute einen "
+"guten Tag habe, will ich ausnahmsweise mein Wort halten und Euch meinen "
+"Schutz anbieten."
 
 #. [message]: speaker=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:162
 msgid "Hey, what’s your problem, Garrath? I thought we had a deal!"
 msgstr ""
+"Hey, was habt Ihr für ein Problem, Garrath? Ich dachte, wir wären im "
+"Geschäft!"
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:166
 msgid "Yeah, well, I changed my mind."
-msgstr ""
+msgstr "Ja, also, ich habe meine Meinung geändert."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:184
@@ -1171,6 +1170,8 @@ msgid ""
 "...I’m not entirely sure what just happened here, but I guess I should be "
 "grateful?"
 msgstr ""
+"... Ich bin nicht ganz sicher was gerade passiert ist, aber vermutlich "
+"sollten wir dankbar sein?"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:188
@@ -1178,6 +1179,8 @@ msgid ""
 "While it appears fortune favored us this time, I fear for the travelers for "
 "whom this man does <i>not</i> keep his word..."
 msgstr ""
+"Wenngleich das Glück uns heute gewogen war, fürchte ich doch um die "
+"Reisenden, bei denen dieser Mann sein Wort <i>nicht</i> hält..."
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:193
@@ -1207,16 +1210,18 @@ msgid ""
 "Hey, that was one of <i>our</i> villages! Deal’s off; we’re no longer "
 "protecting you!"
 msgstr ""
+"Hey, das war eins von <i>unseren</i> Dörfern! Der Handel hat sich erledigt; "
+"wir schützen Euch nicht länger!"
 
 #. [message]: speaker=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:264
 msgid "So... does that mean that <i>our</i> deal is back on now, Garrath?"
-msgstr ""
+msgstr "So... heißt das, dass <i>unser</i> Handel nun wieder gilt, Garrath?"
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:268
 msgid "Fine, I guess..."
-msgstr ""
+msgstr "Meinetwegen soll es so sein..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:274
@@ -1224,52 +1229,58 @@ msgid ""
 "Wait, I’m sorry! I didn’t realize you were so attached to that village! "
 "Please give me a chance to make it up to you!"
 msgstr ""
+"Wartet, es tut mir Leid! Mir war nicht klar, wie sehr Ihr an jenem Dorf "
+"hängt! Bitte gebt mir die Gelegenheit, mich zu entschuldigen!"
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:278
 msgid ""
 "Well, I guess a little extra payment could persuade me to forgive you..."
 msgstr ""
+"Nun, ich schätze, eine kleine Bonuszahlung würde mich überzeugen, meinen "
+"Groll zu vergessen..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:293
 msgid "I’m afraid I don’t have much gold left..."
-msgstr ""
+msgstr "Ich fürchte, ich habe nicht mehr viel Gold übrig..."
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:297
 msgid "Oh well, too bad for you!"
-msgstr ""
+msgstr "Nun, welch ein Pech für Euch!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:308
 msgid "Well..."
-msgstr ""
+msgstr "Also..."
 
 #. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:310
 msgid "Here’s 20 more gold."
-msgstr ""
+msgstr "Hier sind weitere 20 Goldstücke."
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:323
 msgid "Pleasure doing business with you! Just don’t let it happen again!"
 msgstr ""
+"Ein Vergnügen, mit Euch Geschäfte zu machen! Gebt nur Acht, dass es nicht "
+"wieder vorkommt!"
 
 #. [message]: speaker=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:328
 msgid "Sheesh, Garrath, won’t you make up your mind already?!"
-msgstr ""
+msgstr "Meine Güte, Garrath, wollt Ihr euch endlich mal entscheiden?!"
 
 #. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:334
 msgid "Nope, I’m not giving you any more gold."
-msgstr ""
+msgstr "Nein, Ihr bekommt nicht noch mehr Gold."
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:338
 msgid "Suit yourself. Men, attack!"
-msgstr ""
+msgstr "Wie Ihr wollt. Männer, zum Angriff!"
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:363
@@ -1277,6 +1288,8 @@ msgid ""
 "Hey! You captured one of my villages again! I thought I told you to stop "
 "doing that!"
 msgstr ""
+"Hey! Ihr habt schon wieder eines meiner Dörfer erobert! Habe ich Euch nicht "
+"gesagt, dass Ihr damit aufhören sollt!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:367
@@ -1284,23 +1297,25 @@ msgid ""
 "Sorry! It’s a hard habit to break! Perhaps I can pay you again to make up "
 "for it?"
 msgstr ""
+"Vergebt mir! Es ist schwer, diese Angewohnheit abzulegen! Kann ich Euch "
+"vielleicht mit einigen weiteren Goldstücken besänftigen?"
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:372
 msgid "Nope, I’m through with your games! Men, attack!"
-msgstr ""
+msgstr "Vergesst es, ich habe die Spielchen satt! Männer, zum Angriff!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:381
 msgid ""
 "Oh well, I guess I should have listened when he said not to let it happen "
 "again..."
-msgstr ""
+msgstr "Nun ja, ich hätte wohl besser zuhören sollen, als er mich warnte..."
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:391
 msgid "Stop stealing my villages!"
-msgstr ""
+msgstr "Hört auf, meine Dörfer zu erobern!"
 
 #. [message]: speaker=Garrath
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:414
@@ -1308,17 +1323,21 @@ msgid ""
 "Hm, it looks like you don’t have any gold left. We’re not interested in you "
 "anymore; bye!"
 msgstr ""
+"Hm, es scheint, als ob Ihr kein Gold mehr habt. Damit seid ihr uninteressant "
+"für uns. Gehabt Euch wohl!"
 
 #. [message]: speaker=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:421
 msgid "What a fickle one, that Garrath..."
-msgstr ""
+msgstr "Dieser Garrath ist ein recht wankelmütiger Zeitgenosse..."
 
 #. [message]: speaker=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:439
 msgid ""
 "I’ll be taking back that money that your men “borrowed” from me now, Garrath!"
 msgstr ""
+"Dann nehme ich mir jetzt das Gold zurück, das Eure Männer von uns "
+"\"geliehen\" haben, Garrath!"
 
 #. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:469
@@ -1404,10 +1423,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:240
-#, fuzzy
-#| msgid "New Objective: Defeat all enemies"
 msgid "Destroy the stones and defeat all enemies"
-msgstr "Neues Missionsziel: Besiegt die gegnerischen Anführer"
+msgstr "Zerstört die Menhire und besiegt alle gegnerische Einheiten"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:258
@@ -1617,13 +1634,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:189
-#, fuzzy
-#| msgid ""
-#| "Ur-Thorodor, listen to me! We are not here to take your island. If you "
-#| "will let just me remain here, then I promise you, on behalf of King "
-#| "Garard, that no Wesnothian will set foot on your island without your "
-#| "permission again. As a token of good faith, I command my army to return "
-#| "to the mainland."
 msgid ""
 "Ur-Thorodor, listen to me! We are not here to take your island. If you will "
 "let me remain here, then I promise you, on behalf of King Garard, that no "
@@ -2426,12 +2436,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:218
-#, fuzzy
-#| msgid ""
-#| "Oh... well... very nice of you, but I don’t feel very fated. In fact, "
-#| "I’ve been positively blundering! I was just trying to defend my master "
-#| "Methor’s school against the orcs, and then to find out the source of the "
-#| "undead activity... and I have failed at both."
 msgid ""
 "Oh... well... very nice of you, but I don’t feel very fated. In fact, I’ve "
 "been positively blundering! I was just trying to defend my master Methor’s "
@@ -2441,8 +2445,8 @@ msgstr ""
 "Oh… ja… äußerst freundlich von euch, doch fühle ich mich keineswegs vom "
 "Schicksal gebeutelt. Um ehrlich zu sein, ich bin schlicht in etwas "
 "hineingeraten. Ich habe versucht, die Schule meines Meisters Methor gegen "
-"die Orks zu verteidigen und den Ursprung des Treibens von Untoten zu finden… "
-"und in beiden Fällen habe ich versagt."
+"die Orks zu verteidigen, danach hatte ich den Auftrag, den Ursprung des "
+"Treibens der Untoten zu finden… und in beiden Fällen habe ich versagt."
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:222
@@ -2649,7 +2653,7 @@ msgstr "Seid vorsichtig. Etwas stimmt nicht mit diesem Dorf…"
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:299
 msgid "There’s something there in the mist!"
-msgstr ""
+msgstr "Da bewegt sich etwas inmitten des Nebels!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:305
@@ -2665,13 +2669,12 @@ msgstr "Orks!"
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:326
 msgid "It seems there are orcs this far south after all. This is strange."
 msgstr ""
+"Anscheinend gibt es also doch Orks so weit im Süden. Dies ist eigenartig."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:330
-#, fuzzy
-#| msgid "Prepare to fight them! We must clear the Ford!"
 msgid "Prepare to fight them! We must keep the ford clear!"
-msgstr "Macht euch bereit! Wir müssen die Furt freikämpfen!"
+msgstr "Macht euch bereit! Wir müssen die Furt freihalten!"
 
 #. [message]: role=Commander
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:377
@@ -3032,16 +3035,13 @@ msgstr "Abmin"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:1026
-#, fuzzy
-#| msgid ""
-#| "They have unleashed a second wave. Soldiers, stand firm and send these "
-#| "abominations back to the darkness!"
 msgid ""
 "This unnatural night will surely bring another wave of the undead. Soldiers, "
 "stand firm and send these abominations back to the darkness!"
 msgstr ""
-"Sie haben eine zweite Angriffswelle gesandt. Soldaten, haltet stand und "
-"schickt diese Abscheulichkeiten zurück in die Dunkelheit!"
+"Diese unnatürliche Nacht wird sicher noch eine Welle aus Untoten bringen. "
+"Soldaten, haltet stand und schickt diese Abscheulichkeiten zurück in die "
+"Dunkelheit!"
 
 #. [message]: speaker=Upgar
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:1039
@@ -3264,16 +3264,12 @@ msgstr "Kalenz fällt in der Schlacht"
 
 #. [message]: speaker=Tan-drul
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:209
-#, fuzzy
-#| msgid ""
-#| "Kill these filthy elves! All warlords will then accept our leader, "
-#| "Zorlan, as king and he will reward you all!"
 msgid ""
 "Kill these filthy elves! Show all warlords the might of Zorlan! When they "
 "accept him as sovereign we will all be rewarded!"
 msgstr ""
-"Tötet diese stinkenden Elfen! Alle Kriegsherren werden dann Zorlan, unseren "
-"Anführer, als König anerkennen und er wird euch reich belohnen."
+"Tötet diese stinkenden Elfen! Zeigt den Kriegsherren werden Zorlans Macht! "
+"Wenn sie ihn als König anerkennen, werden wir reich belohnt werden!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:213
@@ -3376,25 +3372,20 @@ msgid ""
 "to her daughters and granddaughters. She thought it wise to share the least "
 "dangerous secrets of the Book."
 msgstr ""
+"Nein. Die Herstellung des heiligen Wassers war ein Geheimnis, das Cleodil an "
+"ihre Töchter und Enkelinnen weitergab. Sie hielt es für klug, einige der "
+"weniger gefährlichen Geheimnisse des Buches zu enthüllen."
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:287
-#, fuzzy
-#| msgid ""
-#| "No. But Cleodil gave some of the Book’s least dangerous secrets to her "
-#| "daughters, and so I had them from my mother. And I think I have found the "
-#| "one we have been awaiting since Cleodil accepted the guardianship of the "
-#| "Book. You know of what I speak."
 msgid ""
 "Returning to present matters, I believe I have found the one we have been "
 "awaiting ever since Lady Cleodil accepted guardianship of the Book. You know "
 "of what I speak."
 msgstr ""
-"Nein. Aber Cleodil gab einige der weniger gefährlichen Geheimnisse des "
-"Buches an ihre Töchter weiter und so habe ich sie wiederum von meiner Mutter "
-"gelernt. Davon abgesehen glaube ich, dass wir den einen, auf den wir so "
-"lange gewartet haben, gefunden haben. Cleodil hat das Wächteramt über das "
-"Buch angenommen. Ihr wisst, wovon ich spreche."
+"Davon abgesehen glaube ich, dass ich den Einen gefunden habe, auf den wir "
+"warteten, seit Cleodil das Wächteramt über das Buch annahm. Ihr wisst, wovon "
+"ich spreche."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:291
@@ -3532,10 +3523,8 @@ msgstr "Rkrin"
 
 #. [message]: role=enemy_speaker
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:211
-#, fuzzy
-#| msgid "We have more help!"
 msgid "We have reinforcements!"
-msgstr "Wir bekommen noch mehr Hilfe!"
+msgstr "Wir bekommen Verstärkung!"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:218
@@ -3569,10 +3558,8 @@ msgstr "Dert"
 
 #. [message]: role=enemy_speaker
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:240
-#, fuzzy
-#| msgid "And now even more help!"
 msgid "And now even more reinforcements!"
-msgstr "Und jetzt noch mehr Hilfe!"
+msgstr "Und jetzt noch mehr Verstärkung!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:261
@@ -3629,6 +3616,8 @@ msgstr "Enkelin, du sprichst aus, was ich denke. Möge es so sein."
 msgid ""
 "The elves have advanced much further than anticipated; Krumful, Unhul, arise!"
 msgstr ""
+"Diese Elfen sind viel weiter vorgedrungen als erwartet. Krumful, Unhul, "
+"heraus mit Euch!"
 
 #. [event]
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:336
@@ -3876,24 +3865,18 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:363
-#, fuzzy
-#| msgid ""
-#| "Chantal and I are sure of your quality. But be warned: there is a curse "
-#| "on this book. Crelanu fairly warned us that his arts would bring much woe "
-#| "down upon us. And so it proved, though at the time we had no other "
-#| "choice. The victories you win with it may cost you as dearly."
 msgid ""
 "You may have some doubts, but Chantal and I are sure of your quality. But be "
 "warned: there is a curse on this book. Crelanu fairly warned us that his "
 "arts would bring much woe down upon us. And so it proved, though at the time "
 "we had no other choice. The victories you win with it may cost you as dearly."
 msgstr ""
-"Chantal und ich sind uns in der Einschätzung eurer Fähigkeiten einig. Doch "
-"seid gewarnt, denn ein Fluch lastet auf diesem Buch. Crelanu warnte uns, "
-"dass dieses Buch viel Leid über uns bringen werde und hoch war der Preis, "
-"den wir für seinen Besitz seitdem zu zahlen hatten; doch hatten wir "
-"letztlich keine andere Wahl, als dies auf uns zu nehmen. Seid euch daher "
-"bewusst, dass euer Sieg euch Ähnliches abverlangen könnte."
+"Ihr magt an Euch zweifeln, doch Chantal und ich sind uns in der Einschätzung "
+"eurer Fähigkeiten einig. Doch seid gewarnt, denn ein Fluch lastet auf diesem "
+"Buch. Crelanu warnte uns, dass dieses Buch viel Leid über uns bringen werde "
+"und hoch war der Preis, den wir für seinen Besitz seitdem zu zahlen hatten; "
+"doch hatten wir letztlich keine andere Wahl, als dies auf uns zu nehmen. "
+"Seid euch daher bewusst, dass euer Sieg euch Ähnliches abverlangen könnte."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:367
@@ -4487,16 +4470,12 @@ msgstr ""
 
 #. [message]: speaker=Prepolur
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:212
-#, fuzzy
-#| msgid ""
-#| "Living men and dwarves are nearing. Rise, Portal Guard and slay the "
-#| "intruders!"
 msgid ""
 "Living men and dwarves are nearing. Rise, my fellow dead, and slay the "
 "intruders!"
 msgstr ""
-"Menschen und Zwerge nähern sich. Torwächter, erhebt euch und tötet die "
-"Eindringlinge!"
+"Menschen und Zwerge nähern sich. Erhebt euch, meine untoten Krieger, und "
+"tötet die Eindringlinge!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:216
@@ -4551,16 +4530,12 @@ msgstr "Was geht hier vor sich? Delfador? Dein Untergang erwartet dich!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:258
-#, fuzzy
-#| msgid ""
-#| "They have reinforcements. Hurry, we must close the portal before we are "
-#| "overrun!"
 msgid ""
 "(<i>To the dwarves</i>). Their master has arrived with reinforcements. "
 "Hurry, we must close the portal before we are overrun!"
 msgstr ""
-"Sie bekommen Verstärkung. Eilt euch! Wir müssen das Tor schließen, bevor sie "
-"uns überrennen!"
+"(<i>wendet sich an die Zwerge</i>). Er kam mit Verstärkung. Eilt euch! Wir "
+"müssen das Tor schließen, bevor sie uns überrennen!"
 
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:262
@@ -4589,6 +4564,9 @@ msgid ""
 "has been closed. By then, his power will have weakened, rendering him "
 "vulnerable."
 msgstr ""
+"Heute können wir ihn nicht besiegen. Ohne das Portal wird er mehr und mehr "
+"an Macht verlieren, aber es wird etwas Zeit dauern, bis er verwundbar "
+"geworden ist."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:354
@@ -4650,21 +4628,16 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:396
-#, fuzzy
-#| msgid ""
-#| "(<i>To the dwarves</i>). Now that the portal is closed, his power will "
-#| "start to weaken, but that doesn't help us now. Quickly, back in the "
-#| "tunnel! I will stay last to seal the entrance."
 msgid ""
 "(<i>To the dwarves</i>). Now that the portal is closed, his power will start "
 "to weaken. It will be some time until he is rendered vulnerable; at the "
 "moment, we must flee. Quickly, back to the tunnel! I will enter it last to "
 "seal the entrance."
 msgstr ""
-"<small>(<i>wendet sich an die Zwerge</i>)</small>\n"
-"Wo das Portal nun geschlossen ist, wird er mehr und mehr an Macht verlieren. "
-"Augenblicklich hilft uns das aber noch nicht weiter. Also geschwind zurück "
-"in die Tunnel! Ich gehe als Letzter und versperre den Eingang."
+"(<i>Wendet sich an die Zwerge</i>). Da das Portal nun geschlossen ist, wird "
+"er mehr und mehr an Macht verlieren. Es wird etwas Zeit dauern, bis er "
+"verwundbar geworden ist; jetzt müssen wir fliehen. Also geschwind zurück in "
+"die Tunnel! Ich gehe als Letzter und versperre den Eingang."
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:412
@@ -5076,6 +5049,8 @@ msgid ""
 "As a generation has passed, all your elvish units have gained a level and "
 "some experience."
 msgstr ""
+"Da eine Generation vergangen ist, haben all Eure Elfeneinheiten eine neue "
+"Stufe und etwas Erfahrung erhalten."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:165
@@ -5214,14 +5189,6 @@ msgstr "Konfrontation am Herrenhaus"
 #. personal use.
 #. The "Sceptre" spelling is intentional.
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:29
-#, fuzzy
-#| msgid ""
-#| "Upon his return to Weldyn, Delfador discovered that the queen had left "
-#| "with a strong escort to visit her family’s demesne and her ailing "
-#| "parents. Lionel, the King’s most trusted general, had been sent at "
-#| "Asheviere’s request on an errand to Knalga to retrieve the Sceptre of "
-#| "Fire. That mission would cost Lionel his life; and neither Lionel nor "
-#| "Delfador knew that Lionel’s mission had been compromised from the start."
 msgid ""
 "Upon his return to Weldyn, Delfador discovered that the Book was missing. "
 "The Queen had left with a strong escort to visit her family’s demesne and "
@@ -5230,13 +5197,13 @@ msgid ""
 "Fire. That mission would cost Lionel his life; and neither Lionel nor "
 "Delfador knew that Lionel’s mission had been compromised from the start."
 msgstr ""
-"Bei seiner Ankunft in Weldyn erfuhr Delfador, dass die Königin mit einer "
-"starken Eskorte zum Landgut ihrer Familie aufgebrochen war, um dort ihre "
-"kranken Eltern zu besuchen. Lionel, des Königs zuverlässigster General, war "
-"auf Geheiß Ashevieres nach Knalga gesandt worden, um das Zepter des Feuers "
-"wiederzufinden. Dieser Auftrag würde Lionel das Leben kosten; und weder "
-"Lionel noch Delfador wussten, dass sein Auftrag von Beginn an sabotiert "
-"wurde."
+"Bei seiner Ankunft in Weldyn erfuhr Delfador, dass das Buch verschwunden "
+"war. Die Königin war mit einer starken Eskorte zum Landgut ihrer Familie "
+"aufgebrochen, um dort ihre kranken Eltern zu besuchen. Lionel, des Königs "
+"zuverlässigster General, war auf Geheiß Ashevieres nach Knalga gesandt "
+"worden, um das Zepter des Feuers wiederzufinden. Dieser Auftrag würde Lionel "
+"das Leben kosten; und weder Lionel noch Delfador wussten, dass sein Auftrag "
+"von Beginn an sabotiert wurde."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:32
@@ -5508,14 +5475,6 @@ msgstr "Epilog"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_Epilogue.cfg:11
-#, fuzzy
-#| msgid ""
-#| "Delfador returned to Weldyn, but not before secreting the Book of Crelanu "
-#| "in a place known only to him. To his surprise, Asheviere made no further "
-#| "mention of the events in the manor. But not long after, orcish raids "
-#| "increased to a degree that threatened the Kingdom. The King mustered his "
-#| "armies to deal with the orcish menace, leading to the great battle at the "
-#| "Ford of Abez that was lost through betrayal."
 msgid ""
 "Delfador returned to Weldyn, but not before secreting the Book of Crelanu to "
 "a place known only to him. To his surprise, Asheviere made no mention of the "

@@ -19,10 +19,10 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "utils/math.hpp"
 #include "game_version.hpp"
-#include "wesconfig.h"
 #include "serialization/string_utils.hpp"
+
+#include <cmath>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -140,11 +140,11 @@ std::vector<color_t> red_green_scale_text;
 static std::vector<color_t> blue_white_scale;
 static std::vector<color_t> blue_white_scale_text;
 
-std::map<std::string, color_range> team_rgb_range;
+std::map<std::string, color_range, std::less<>> team_rgb_range;
 // Map [color_range]id to [color_range]name, or "" if no name
-std::map<std::string, t_string> team_rgb_name;
+std::map<std::string, t_string, std::less<>> team_rgb_name;
 
-std::map<std::string, std::vector<color_t>> team_rgb_colors;
+std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
 
 std::vector<std::string> default_colors;
 
@@ -501,7 +501,7 @@ void reset_color_info()
 	team_rgb_range.clear();
 }
 
-const color_range& color_info(const std::string& name)
+const color_range& color_info(std::string_view name)
 {
 	auto i = team_rgb_range.find(name);
 	if(i != team_rgb_range.end()) {
@@ -521,7 +521,7 @@ const color_range& color_info(const std::string& name)
 	return color_info(name);
 }
 
-const std::vector<color_t>& tc_info(const std::string& name)
+const std::vector<color_t>& tc_info(std::string_view name)
 {
 	auto i = team_rgb_colors.find(name);
 	if(i != team_rgb_colors.end()) {
@@ -548,7 +548,7 @@ color_t red_to_green(double val, bool for_text)
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
 	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
-	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
+	const int lvl = int(std::nearbyint((color_scale.size() - 1) * val_scaled));
 
 	return color_scale[lvl];
 }
@@ -558,7 +558,7 @@ color_t blue_to_white(double val, bool for_text)
 	const std::vector<color_t>& color_scale = for_text ? blue_white_scale_text : blue_white_scale;
 
 	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
-	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
+	const int lvl = int(std::nearbyint((color_scale.size() - 1) * val_scaled));
 
 	return color_scale[lvl];
 }

@@ -16,7 +16,6 @@
 
 #include "chat_events.hpp"
 #include "chat_log.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "gui/widgets/container_base.hpp"
 
