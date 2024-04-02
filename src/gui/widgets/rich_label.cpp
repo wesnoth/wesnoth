@@ -64,44 +64,78 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
+void rich_label::add_text_with_attribute(config& text_cfg, std::string text, bool last_entry, std::string attr_name, std::string extra_data) {
+	size_t start = text_cfg["text"].str().size();
+	text_cfg["text"] = text_cfg["text"].str() + text;
+	text_cfg["attr_name"] = (text_cfg["attr_name"].str().empty() ? "" : (text_cfg["attr_name"].str() + ",")) + attr_name;
+	text_cfg["attr_start"] = (text_cfg["attr_start"].str().empty() ? "" : (text_cfg["attr_start"].str() + ",")) +  std::to_string(start);
+	text_cfg["attr_end"] = (text_cfg["attr_end"].str().empty() ? "" : (text_cfg["attr_end"].str() + ",")) + std::to_string(text_cfg["text"].str().size());
+	if (!extra_data.empty()) {
+		text_cfg["attr_color"] = (text_cfg["attr_color"].str().empty() ? "" : (text_cfg["attr_color"].str() + ",")) + extra_data;
+	}
+	// Clear variables to stop them from growing too large
+	if (last_entry) {
+		text_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+	}
+}
+
 void rich_label::set_label(const t_string& text)
 {
 	unparsed_text_ = text;
 	text_dom_.clear();
 	help::topic_text marked_up_text(text);
 	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
+	config& text_cfg = default_text_config();
+
 	for (size_t i = 0; i < parsed_text.size(); i++) {
 		bool last_entry = (i == parsed_text.size() - 1);
+//		bool is_text = true;
 		std::string line = parsed_text.at(i);
+
 		if (!line.empty() && line.at(0) == '[') {
 			config cfg;
 			std::istringstream stream(line);
 			::read(cfg, line);
 
+			std::string text_buffer, attributes, starts, stops, colors;
+
 			if (cfg.optional_child("ref")) {
-				config& txt_r = default_text_config(cfg.mandatory_child("ref")["text"], last_entry);
-				txt_r["attr_name"] = "fgcolor";
-				txt_r["attr_start"] = "0";
-				txt_r["attr_end"] = txt_r["text"].str().size();
-				txt_r["attr_color"] = font::YELLOW_COLOR.to_hex_string().substr(1, txt_r["text"].str().size());
+
+				add_text_with_attribute(text_cfg, cfg.mandatory_child("ref")["text"], last_entry, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1, text_cfg["text"].str().size()));
+
 			} else if (cfg.optional_child("bold")) {
-				config& txt_b = default_text_config(cfg.mandatory_child("bold")["text"], last_entry);
-				txt_b["attr_name"] = "bold";
-				txt_b["attr_start"] = "0";
-				txt_b["attr_end"] = txt_b["text"].str().size();
+
+				add_text_with_attribute(text_cfg, cfg.mandatory_child("bold")["text"], last_entry, "bold");
+
 			} else if (cfg.optional_child("italic")) {
-				config& txt_i = default_text_config(cfg.mandatory_child("italic")["text"], last_entry);
-				txt_i["attr_name"] = "italic";
-				txt_i["attr_start"] = "0";
-				txt_i["attr_end"] = txt_i["text"].str().size();
+
+				add_text_with_attribute(text_cfg, cfg.mandatory_child("italic")["text"], last_entry, "italic");
+
 			} else if (cfg.optional_child("header")) {
-				config& txt_h = default_text_config(cfg.mandatory_child("header")["text"], last_entry);
-				txt_h["font_style"] = "bold";
-				txt_h["font_size"] = font::SIZE_TITLE;
+
+				size_t start = text_cfg["text"].str().size();
+				text_cfg["text"] = text_cfg["text"].str() + cfg.mandatory_child("header")["text"];
+				text_cfg["attr_name"] = (text_cfg["attr_name"].str().empty()? "" : (text_cfg["attr_name"].str() + ",")) + "fgcolor,fontsize";
+				text_cfg["attr_start"] = (text_cfg["attr_start"].str().empty()? "" : (text_cfg["attr_start"].str() + ",")) + std::to_string(start) + "," + std::to_string(start);
+				text_cfg["attr_end"] = (text_cfg["attr_end"].str().empty()? "" : (text_cfg["attr_end"].str() + ",")) + std::to_string(text_cfg["text"].str().size()) + "," + std::to_string(text_cfg["text"].str().size());
+				text_cfg["attr_color"] = (text_cfg["attr_color"].str().empty()? "" : (text_cfg["attr_color"].str() + ",")) + "baac7d," + std::to_string(font::SIZE_TITLE);
+
+				if (last_entry) {
+					text_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+				}
+
 			} else if (cfg.optional_child("img")) {
 				config& img = text_dom_.add_child("image");
 				img["name"] = cfg.mandatory_child("img")["src"];
-				img["x"] = "(pos_x)";
+				std::string align = cfg.mandatory_child("img")["align"];
+				//img["x"] = "(pos_x)";
+				if (align == "left") {
+					img["x"] = 0;
+				} else if (align == "right") {
+					img["x"] = "(width-image_width)";
+				} else {
+					img["x"] = "((width-image_width)/2.0)";
+				}
 				img["y"] = "(pos_y)";
 				img["h"] = "(image_height)";
 				img["w"] = "(image_width)";
@@ -109,7 +143,7 @@ void rich_label::set_label(const t_string& text)
 				if (last_entry) {
 					img["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 				} else {
-					img["actions"] = "([set_var('pos_x', pos_x+image_width), set_var('ih', image_height), set_var('iw', image_width)])";
+					img["actions"] = "([set_var('pos_y', pos_y+image_height), set_var('pos_x', 0)])";
 				}
 
 //					config& rect = text_dom_.add_child("rectangle");
@@ -126,24 +160,37 @@ void rich_label::set_label(const t_string& text)
 			//			} else if(line == "[format]") {
 
 		} else {
-			default_text_config(line);
+			text_cfg["text"] = text_cfg["text"].str() + line;
+			if (last_entry) {
+				text_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+			}
 		}
+		PLAIN_LOG << text_cfg.debug();
 	}
+
+//	point best_size = styled_widget::calculate_best_size();
+//	PLAIN_LOG << "best size : " << best_size.x << ", " << best_size.y;
+
+	// dynamically calculate these two
+	w_ = 500;
+	h_ = 500;
 }
 
 config& rich_label::default_text_config(t_string text, bool last_entry) {
 	config& txt = text_dom_.add_child("text");
 	txt["text"] = text;
-	txt["font_size"] = 20;
-	txt["color"] = "([186, 172, 125, 255])";
+	txt["font_size"] = 16;
+//	txt["color"] = "([186, 172, 125, 255])";
 	txt["x"] = "(pos_x)";
 	txt["y"] = "(pos_y)";
 	txt["w"] = "(text_width)";
 	txt["h"] = "(text_height)";
+// Test code
+	txt["maximum_width"] = "(width - pos_x)";
 	if (last_entry) {
 		txt["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 	} else {
-		txt["actions"] = "([set_var('pos_x', pos_x+text_width)])";
+		txt["actions"] = "([set_var('pos_x', pos_x+text_width), set_var('pos_y', pos_y+text_height)])";
 	}
 	return txt;
 }
@@ -155,7 +202,9 @@ void rich_label::update_canvas()
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("ih", wfl::variant(0));
 		tmp.set_variable("iw", wfl::variant(0));
-		set_label(get_label());
+		// Disable ellipsization so that text wrapping can work
+		tmp.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
+//		set_label(get_label());
 		tmp.set_cfg(text_dom_, true);
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}

@@ -144,6 +144,8 @@ public:
 		return unparsed_text_.empty() ? styled_widget::get_label() : unparsed_text_;
 	}
 
+	void add_text_with_attribute(config& text_cfg, std::string text, bool last_entry, std::string attr_name, std::string extra_data = "");
+
 	void set_label(const t_string& text) override;
 
 private:
@@ -208,7 +210,12 @@ private:
 	unsigned w_, h_;
 
 	/** template for canvas text config */
-	config& default_text_config(t_string text, bool last_entry = false);
+	config& default_text_config(t_string text = "", bool last_entry = false);
+
+	point calculate_best_size() const
+	{
+		return point(w_, h_);
+	}
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

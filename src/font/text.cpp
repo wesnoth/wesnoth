@@ -353,6 +353,29 @@ point pango_text::get_column_line(const point& position) const
 	}
 }
 
+void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
+{
+	highlight_start_offset_ = start_offset;
+	highlight_end_offset_ = end_offset;
+
+	if (highlight_start_offset_ != highlight_end_offset_) {
+		PangoAttribute *attr = pango_attr_size_new_absolute(PANGO_SCALE * size);
+		attr->start_index = highlight_start_offset_;
+		attr->end_index = highlight_end_offset_;
+
+		DBG_GUI_D << "attribute : size";
+		DBG_GUI_D << "attribute start : " << start_offset << " end : " << end_offset;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, highlight_start_offset_);
+		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, size);
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
 void pango_text::add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight)
 {
 	highlight_start_offset_ = start_offset;

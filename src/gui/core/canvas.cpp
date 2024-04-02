@@ -458,6 +458,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		text_renderer.set_highlight_area(hstart(variables), hstop(variables), highlight_color_(variables));
 	}
 
+	// TODO check the strings before parsing them
 	starts = utils::split(attr_start_, ',');
 	stops = utils::split(attr_end_, ',');
 	std::vector<std::string> styles = utils::split(attr_name_, ',');
@@ -466,6 +467,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	for(size_t i = 0, col_index = 0; i < std::min(starts.size(), stops.size()); i++) {
 		typed_formula<int> attr_start(starts.at(i));
 		typed_formula<int> attr_stop(stops.at(i));
+
 		if (styles.at(i) == "fgcolor") {
 			// Note that the color value is not the i-th item
 			// Using col_index so that we can get rid of excess commas
@@ -473,6 +475,9 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 			col_index++;
 		} else if (styles.at(i) == "bgcolor") {
 			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
+			col_index++;
+		} else if (styles.at(i) == "fontsize") {
+			text_renderer.add_attribute_size(attr_start(variables), attr_stop(variables), std::stoi(colors.at(col_index)));
 			col_index++;
 		} else {
 			font::pango_text::FONT_STYLE attr_style = decode_font_style(styles.at(i));
