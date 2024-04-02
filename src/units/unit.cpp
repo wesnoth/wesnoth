@@ -1812,6 +1812,7 @@ int unit::resistance_ability(unit_ability_list resistance_abilities, const std::
 			res = 100 - resist_effect.get_composite_value();
 		}
 	}
+
 	return res;
 }
 
@@ -1829,6 +1830,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	if(!(types.second).empty()){
 		res = std::max(res , resistance_ability(resistance_abilities, types.second, attacker));
 	}
+
 	return res;
 }
 
