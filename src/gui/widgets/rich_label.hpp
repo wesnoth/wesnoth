@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024
-	by Subhraman Sarkar <suvrax@gmail.com>
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -148,6 +148,8 @@ public:
 
 	void set_label(const t_string& text) override;
 
+	std::string get_label_link(const point & position) const;
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -210,7 +212,7 @@ private:
 	unsigned w_, h_;
 
 	/** template for canvas text config */
-	config& default_text_config(t_string text = "", bool last_entry = false);
+	void default_text_config(config* txt_ptr, t_string text = "", bool last_entry = false);
 
 	point calculate_best_size() const
 	{

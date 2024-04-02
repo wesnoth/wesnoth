@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024
-	by Subhraman Sarkar <suvrax@gmail.com>
+	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,6 @@
 
 #include <functional>
 #include <string>
-#include <iostream>
 
 namespace gui2
 {
@@ -85,7 +84,10 @@ void rich_label::set_label(const t_string& text)
 	text_dom_.clear();
 	help::topic_text marked_up_text(text);
 	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
-	config& text_cfg = default_text_config();
+
+	config* text_ptr = &(text_dom_.add_child("text"));
+//	config& text_cfg = *text_ptr;
+	default_text_config(text_ptr);
 
 	for (size_t i = 0; i < parsed_text.size(); i++) {
 		bool last_entry = (i == parsed_text.size() - 1);
@@ -101,34 +103,35 @@ void rich_label::set_label(const t_string& text)
 
 			if (cfg.optional_child("ref")) {
 
-				add_text_with_attribute(text_cfg, cfg.mandatory_child("ref")["text"], last_entry, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1, text_cfg["text"].str().size()));
+				add_text_with_attribute((*text_ptr), cfg.mandatory_child("ref")["text"], last_entry, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1, (*text_ptr)["text"].str().size()));
 
 			} else if (cfg.optional_child("bold")) {
 
-				add_text_with_attribute(text_cfg, cfg.mandatory_child("bold")["text"], last_entry, "bold");
+				add_text_with_attribute((*text_ptr), cfg.mandatory_child("bold")["text"], last_entry, "bold");
 
 			} else if (cfg.optional_child("italic")) {
 
-				add_text_with_attribute(text_cfg, cfg.mandatory_child("italic")["text"], last_entry, "italic");
+				add_text_with_attribute((*text_ptr), cfg.mandatory_child("italic")["text"], last_entry, "italic");
 
 			} else if (cfg.optional_child("header")) {
 
-				size_t start = text_cfg["text"].str().size();
-				text_cfg["text"] = text_cfg["text"].str() + cfg.mandatory_child("header")["text"];
-				text_cfg["attr_name"] = (text_cfg["attr_name"].str().empty()? "" : (text_cfg["attr_name"].str() + ",")) + "fgcolor,fontsize";
-				text_cfg["attr_start"] = (text_cfg["attr_start"].str().empty()? "" : (text_cfg["attr_start"].str() + ",")) + std::to_string(start) + "," + std::to_string(start);
-				text_cfg["attr_end"] = (text_cfg["attr_end"].str().empty()? "" : (text_cfg["attr_end"].str() + ",")) + std::to_string(text_cfg["text"].str().size()) + "," + std::to_string(text_cfg["text"].str().size());
-				text_cfg["attr_color"] = (text_cfg["attr_color"].str().empty()? "" : (text_cfg["attr_color"].str() + ",")) + "baac7d," + std::to_string(font::SIZE_TITLE);
+				size_t start = (*text_ptr)["text"].str().size();
+				(*text_ptr)["text"] = (*text_ptr)["text"].str() + cfg.mandatory_child("header")["text"];
+				(*text_ptr)["attr_name"] = ((*text_ptr)["attr_name"].str().empty()? "" : ((*text_ptr)["attr_name"].str() + ",")) + "fgcolor,fontsize";
+				(*text_ptr)["attr_start"] = ((*text_ptr)["attr_start"].str().empty()? "" : ((*text_ptr)["attr_start"].str() + ",")) + std::to_string(start) + "," + std::to_string(start);
+				(*text_ptr)["attr_end"] = ((*text_ptr)["attr_end"].str().empty()? "" : ((*text_ptr)["attr_end"].str() + ",")) + std::to_string((*text_ptr)["text"].str().size()) + "," + std::to_string((*text_ptr)["text"].str().size());
+				(*text_ptr)["attr_color"] = ((*text_ptr)["attr_color"].str().empty()? "" : ((*text_ptr)["attr_color"].str() + ",")) + "baac7d," + std::to_string(font::SIZE_TITLE);
 
 				if (last_entry) {
-					text_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 				}
 
 			} else if (cfg.optional_child("img")) {
+				(*text_ptr)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
+
 				config& img = text_dom_.add_child("image");
 				img["name"] = cfg.mandatory_child("img")["src"];
 				std::string align = cfg.mandatory_child("img")["align"];
-				//img["x"] = "(pos_x)";
 				if (align == "left") {
 					img["x"] = 0;
 				} else if (align == "right") {
@@ -146,6 +149,9 @@ void rich_label::set_label(const t_string& text)
 					img["actions"] = "([set_var('pos_y', pos_y+image_height), set_var('pos_x', 0)])";
 				}
 
+				text_ptr = &(text_dom_.add_child("text"));
+				default_text_config(text_ptr);
+
 //					config& rect = text_dom_.add_child("rectangle");
 //					rect["x"] = "(pos_x)";
 //					rect["y"] = "(pos_y)";
@@ -160,39 +166,37 @@ void rich_label::set_label(const t_string& text)
 			//			} else if(line == "[format]") {
 
 		} else {
-			text_cfg["text"] = text_cfg["text"].str() + line;
+			(*text_ptr)["text"] = (*text_ptr)["text"].str() + line;
 			if (last_entry) {
-				text_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+				(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 			}
 		}
-		PLAIN_LOG << text_cfg.debug();
 	}
 
 //	point best_size = styled_widget::calculate_best_size();
 //	PLAIN_LOG << "best size : " << best_size.x << ", " << best_size.y;
+	PLAIN_LOG << text_dom_.debug();
 
 	// dynamically calculate these two
 	w_ = 500;
 	h_ = 500;
 }
 
-config& rich_label::default_text_config(t_string text, bool last_entry) {
-	config& txt = text_dom_.add_child("text");
-	txt["text"] = text;
-	txt["font_size"] = 16;
-//	txt["color"] = "([186, 172, 125, 255])";
-	txt["x"] = "(pos_x)";
-	txt["y"] = "(pos_y)";
-	txt["w"] = "(text_width)";
-	txt["h"] = "(text_height)";
+void rich_label::default_text_config(config* txt_ptr, t_string text, bool last_entry) {
+	(*txt_ptr)["text"] = text;
+	(*txt_ptr)["font_size"] = 16;
+//	(*txt_ptr)["color"] = "([186, 172, 125, 255])";
+	(*txt_ptr)["x"] = "(pos_x)";
+	(*txt_ptr)["y"] = "(pos_y)";
+	(*txt_ptr)["w"] = "(text_width)";
+	(*txt_ptr)["h"] = "(text_height)";
 // Test code
-	txt["maximum_width"] = "(width - pos_x)";
+	(*txt_ptr)["maximum_width"] = "(width - pos_x)";
 	if (last_entry) {
-		txt["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
+		(*txt_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 	} else {
-		txt["actions"] = "([set_var('pos_x', pos_x+text_width), set_var('pos_y', pos_y+text_height)])";
+		(*txt_ptr)["actions"] = "([set_var('pos_y', pos_y+text_height)])";
 	}
-	return txt;
 }
 
 void rich_label::update_canvas()
@@ -252,19 +256,25 @@ void rich_label::set_state(const state_t state)
 	}
 }
 
+// TODO
+std::string rich_label::get_label_link(const point & position) const
+{
+	return "";
+}
+
 void rich_label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "rich_label click";
 
-	if (!get_link_aware()) {
-		return; // without marking event as "handled".
-	}
-
-	if (!desktop::open_object_is_supported()) {
-		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
-		handled = true;
-		return;
-	}
+//	if (!get_link_aware()) {
+//		return; // without marking event as "handled".
+//	}
+//
+//	if (!desktop::open_object_is_supported()) {
+//		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
+//		handled = true;
+//		return;
+//	}
 
 	point mouse = get_mouse_position();
 
@@ -281,7 +291,7 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 
 	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
 	if(res == gui2::retval::OK) {
-		desktop::open_object(link);
+//		desktop::open_object(link);
 	}
 
 	handled = true;
