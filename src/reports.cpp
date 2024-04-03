@@ -308,7 +308,7 @@ static config unit_traits(const unit* u)
 	config res;
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
-	const std::vector<std::string> &trait_ids = u->get_traits_list();
+	const std::vector<std::string> &trait_ids = u->trait_nonhidden_ids();
 	unsigned nb = traits.size();
 	for (unsigned i = 0; i < nb; ++i)
 	{
