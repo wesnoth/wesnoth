@@ -288,6 +288,7 @@ unit::unit(const unit& o)
 	, facing_(o.facing_)
 	, trait_names_(o.trait_names_)
 	, trait_descriptions_(o.trait_descriptions_)
+	, trait_nonhidden_ids_(o.trait_nonhidden_ids_)
 	, unit_value_(o.unit_value_)
 	, goto_(o.goto_)
 	, interrupted_move_(o.interrupted_move_)
@@ -369,6 +370,7 @@ unit::unit(unit_ctor_t)
 	, facing_(map_location::NDIRECTIONS)
 	, trait_names_()
 	, trait_descriptions_()
+	, trait_nonhidden_ids_()
 	, unit_value_()
 	, goto_()
 	, interrupted_move_()
@@ -920,6 +922,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// Reset the scalar values first
 	trait_names_.clear();
 	trait_descriptions_.clear();
+	trait_nonhidden_ids_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
@@ -2559,6 +2562,7 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	if(!name.empty()) {
 		trait_names_.push_back(name);
 		trait_descriptions_.push_back(description);
+		trait_nonhidden_ids_.push_back(trait["id"]);
 	}
 }
 
