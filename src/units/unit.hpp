@@ -1056,7 +1056,7 @@ private:
 
 	/**
 	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.
-	 * 
+	 *
 	 * @param resistance_abilities A list of resistance abilities that the unit has.
 	 * @param damage_name The name of the damage type, for example "blade".
 	 * @param attacker True if the unit is attacking, false if defending.
