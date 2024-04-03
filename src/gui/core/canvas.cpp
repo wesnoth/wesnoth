@@ -328,6 +328,14 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	local_variables.add("clip_x", wfl::variant(x));
 	local_variables.add("clip_y", wfl::variant(y));
 
+	if (variables.has_key("fake_draw") && variables.query_value("fake_draw").as_bool()) {
+		variables.add("image_original_width", wfl::variant(tex.w()));
+		variables.add("image_original_height", wfl::variant(tex.h()));
+		variables.add("image_width", wfl::variant(w ? w : tex.w()));
+		variables.add("image_height", wfl::variant(h ? h : tex.h()));
+		return;
+	}
+
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
@@ -524,6 +532,11 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// Translate text width and height back to draw-space, rounding up.
 	local_variables.add("text_width", wfl::variant(tw));
 	local_variables.add("text_height", wfl::variant(th));
+	if (variables.has_key("fake_draw") && variables.query_value("fake_draw").as_bool()) {
+		variables.add("text_width", wfl::variant(tw));
+		variables.add("text_height", wfl::variant(th));
+		return;
+	}
 
 	const int x = x_(local_variables);
 	const int y = y_(local_variables);

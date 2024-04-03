@@ -18,6 +18,7 @@
 #include "gui/widgets/styled_widget.hpp"
 
 #include "font/standard_colors.hpp"
+#include "gui/core/canvas_private.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "help/help_impl.hpp"
 #include "serialization/parser.hpp"
@@ -208,11 +209,18 @@ private:
 	/** The unparsed/raw text */
 	t_string unparsed_text_;
 
+	/** shapes used for size calculation */
+	std::unique_ptr<text_shape> tshape_;
+	std::unique_ptr<image_shape> ishape_;
+
 	/** Width and height of the canvas */
 	unsigned w_, h_;
 
 	/** template for canvas text config */
 	void default_text_config(config* txt_ptr, t_string text = "", bool last_entry = false);
+
+	point get_text_size(config text_cfg);
+	point get_image_size(config img_cfg);
 
 	point calculate_best_size() const
 	{

@@ -63,6 +63,27 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
+point rich_label::get_text_size(config text_cfg) {
+	wfl::action_function_symbol_table functions;
+	wfl::map_formula_callable variables;
+	variables.add("text", wfl::variant(text_cfg["text"].str()));
+	variables.add("width", wfl::variant(w_));
+	variables.add("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
+	variables.add("fake_draw", wfl::variant(true));
+	tshape_ = std::make_unique<gui2::text_shape>(text_cfg, functions);
+	tshape_->draw(variables);
+	return point(variables.query_value("text_width").as_int(), variables.query_value("text_height").as_int());
+}
+
+point rich_label::get_image_size(config img_cfg) {
+	wfl::action_function_symbol_table functions;
+	wfl::map_formula_callable variables;
+	variables.add("fake_draw", wfl::variant(true));
+	ishape_ = std::make_unique<gui2::image_shape>(img_cfg, functions);
+	ishape_->draw(variables);
+	return point(variables.query_value("image_width").as_int(), variables.query_value("image_height").as_int());
+}
+
 void rich_label::add_text_with_attribute(config& text_cfg, std::string text, bool last_entry, std::string attr_name, std::string extra_data) {
 	size_t start = text_cfg["text"].str().size();
 	text_cfg["text"] = text_cfg["text"].str() + text;
@@ -80,13 +101,15 @@ void rich_label::add_text_with_attribute(config& text_cfg, std::string text, boo
 
 void rich_label::set_label(const t_string& text)
 {
+	// Initial size
+	w_ = 800;
+	h_ = 0;
 	unparsed_text_ = text;
 	text_dom_.clear();
 	help::topic_text marked_up_text(text);
 	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
 
 	config* text_ptr = &(text_dom_.add_child("text"));
-//	config& text_cfg = *text_ptr;
 	default_text_config(text_ptr);
 
 	for (size_t i = 0; i < parsed_text.size(); i++) {
@@ -102,16 +125,32 @@ void rich_label::set_label(const t_string& text)
 			std::string text_buffer, attributes, starts, stops, colors;
 
 			if (cfg.optional_child("ref")) {
-
+				size_t start_offset = (*text_ptr)["text"].str().size();
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("ref")["text"], last_entry, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1, (*text_ptr)["text"].str().size()));
+				// Text size changed after addition of reference text
+				size_t end_offset = (*text_ptr)["text"].str().size();
+
+				// Render the text so that we can find out the rectangle inside which the link is located
+				point t_size = get_text_size(*text_ptr);
+				h_ += t_size.y;
+
+//				PLAIN_LOG << "ref start : " << start_offset << ", end : " << end_offset << std::endl;
+//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 
 			} else if (cfg.optional_child("bold")) {
 
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("bold")["text"], last_entry, "bold");
 
+				point t_size = get_text_size(*text_ptr);
+				h_ += t_size.y;
+//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
+
 			} else if (cfg.optional_child("italic")) {
 
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("italic")["text"], last_entry, "italic");
+				point t_size = get_text_size(*text_ptr);
+				h_ += t_size.y;
+//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 
 			} else if (cfg.optional_child("header")) {
 
@@ -120,11 +159,16 @@ void rich_label::set_label(const t_string& text)
 				(*text_ptr)["attr_name"] = ((*text_ptr)["attr_name"].str().empty()? "" : ((*text_ptr)["attr_name"].str() + ",")) + "fgcolor,fontsize";
 				(*text_ptr)["attr_start"] = ((*text_ptr)["attr_start"].str().empty()? "" : ((*text_ptr)["attr_start"].str() + ",")) + std::to_string(start) + "," + std::to_string(start);
 				(*text_ptr)["attr_end"] = ((*text_ptr)["attr_end"].str().empty()? "" : ((*text_ptr)["attr_end"].str() + ",")) + std::to_string((*text_ptr)["text"].str().size()) + "," + std::to_string((*text_ptr)["text"].str().size());
+				// TODO add font::GOLD_COLOR and remove hardcoded color value
 				(*text_ptr)["attr_color"] = ((*text_ptr)["attr_color"].str().empty()? "" : ((*text_ptr)["attr_color"].str() + ",")) + "baac7d," + std::to_string(font::SIZE_TITLE);
 
 				if (last_entry) {
 					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 				}
+
+				point t_size = get_text_size(*text_ptr);
+				h_ += t_size.y;
+//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 
 			} else if (cfg.optional_child("img")) {
 				(*text_ptr)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
@@ -149,6 +193,10 @@ void rich_label::set_label(const t_string& text)
 					img["actions"] = "([set_var('pos_y', pos_y+image_height), set_var('pos_x', 0)])";
 				}
 
+				point t_size = get_image_size(img);
+				PLAIN_LOG << "img width : " << t_size.x << ", height : " << t_size.y << std::endl;
+				h_ += t_size.y;
+
 				text_ptr = &(text_dom_.add_child("text"));
 				default_text_config(text_ptr);
 
@@ -170,22 +218,25 @@ void rich_label::set_label(const t_string& text)
 			if (last_entry) {
 				(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 			}
+
+			point t_size = get_text_size(*text_ptr);
+			h_ += t_size.y;
+//			PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 		}
 	}
 
 //	point best_size = styled_widget::calculate_best_size();
 //	PLAIN_LOG << "best size : " << best_size.x << ", " << best_size.y;
-	PLAIN_LOG << text_dom_.debug();
+//	PLAIN_LOG << text_dom_.debug();
 
 	// dynamically calculate these two
-	w_ = 500;
-	h_ = 500;
+//	w_ = styled_widget::calculate_best_size().x;
+//	h_ = styled_widget::calculate_best_size().y;
 }
 
 void rich_label::default_text_config(config* txt_ptr, t_string text, bool last_entry) {
 	(*txt_ptr)["text"] = text;
 	(*txt_ptr)["font_size"] = 16;
-//	(*txt_ptr)["color"] = "([186, 172, 125, 255])";
 	(*txt_ptr)["x"] = "(pos_x)";
 	(*txt_ptr)["y"] = "(pos_y)";
 	(*txt_ptr)["w"] = "(text_width)";
