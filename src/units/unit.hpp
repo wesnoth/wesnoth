@@ -1098,7 +1098,18 @@ public:
 	}
 
 	/**
-	 * Gets a list of the traits this unit currently has.
+	 * Gets the ids of the traits corresponding to those returned by trait_names() and
+	 * trait_descriptions(). Omits hidden traits, which are those with an empty name.
+	 *
+	 * @returns                   A list of trait IDs.
+	 */
+	std::vector<std::string> trait_nonhidden_ids() const
+	{
+		return trait_nonhidden_ids_;
+	}
+
+	/**
+	 * Gets a list of the traits this unit currently has, including hidden traits.
 	 *
 	 * @returns                   A list of trait IDs.
 	 */
@@ -1959,6 +1970,7 @@ protected:
 private:
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
+	std::vector<std::string> trait_nonhidden_ids_;
 
 	int unit_value_;
 	map_location goto_, interrupted_move_;
