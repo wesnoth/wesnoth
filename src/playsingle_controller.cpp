@@ -662,7 +662,6 @@ void playsingle_controller::play_ai_turn()
 	LOG_NG << "is ai...";
 
 	end_turn_enable(false);
-	gui_->recalculate_minimap();
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
@@ -697,11 +696,6 @@ void playsingle_controller::play_ai_turn()
 	if(!should_return_to_play_side()) {
 		require_end_turn();
 	}
-
-	gui_->recalculate_minimap();
-	gui_->invalidate_unit();
-	gui_->invalidate_game_status();
-	gui_->invalidate_all();
 }
 
 /**
