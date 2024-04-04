@@ -52,6 +52,8 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, unparsed_text_()
 	, w_(0)
 	, h_(0)
+	, x_(0)
+	, y_(0)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
@@ -125,32 +127,35 @@ void rich_label::set_label(const t_string& text)
 			std::string text_buffer, attributes, starts, stops, colors;
 
 			if (cfg.optional_child("ref")) {
-				size_t start_offset = (*text_ptr)["text"].str().size();
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("ref")["text"], last_entry, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1, (*text_ptr)["text"].str().size()));
-				// Text size changed after addition of reference text
-				size_t end_offset = (*text_ptr)["text"].str().size();
 
-				// Render the text so that we can find out the rectangle inside which the link is located
+				// find out the rectangle inside which the link is located
 				point t_size = get_text_size(*text_ptr);
-				h_ += t_size.y;
+				unsigned x2 = t_size.x;
+				rect link_rect = {static_cast<int>(x_), static_cast<int>(y_), static_cast<int>(x2-x_), static_cast<int>(h_-y_)};
 
-//				PLAIN_LOG << "ref start : " << start_offset << ", end : " << end_offset << std::endl;
-//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
+				links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
+
+				x_ = t_size.x;
+				y_ = h_;
+				h_ += t_size.y;
 
 			} else if (cfg.optional_child("bold")) {
 
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("bold")["text"], last_entry, "bold");
 
 				point t_size = get_text_size(*text_ptr);
+				x_ = t_size.x;
+				y_ = h_;
 				h_ += t_size.y;
-//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 
 			} else if (cfg.optional_child("italic")) {
 
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("italic")["text"], last_entry, "italic");
 				point t_size = get_text_size(*text_ptr);
+				x_ = t_size.x;
+				y_ = h_;
 				h_ += t_size.y;
-//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 
 			} else if (cfg.optional_child("header")) {
 
@@ -167,8 +172,9 @@ void rich_label::set_label(const t_string& text)
 				}
 
 				point t_size = get_text_size(*text_ptr);
+				x_ = t_size.x;
+				y_ = h_;
 				h_ += t_size.y;
-//				PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 
 			} else if (cfg.optional_child("img")) {
 				(*text_ptr)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
@@ -194,7 +200,7 @@ void rich_label::set_label(const t_string& text)
 				}
 
 				point t_size = get_image_size(img);
-				PLAIN_LOG << "img width : " << t_size.x << ", height : " << t_size.y << std::endl;
+				y_ = h_;
 				h_ += t_size.y;
 
 				text_ptr = &(text_dom_.add_child("text"));
@@ -220,18 +226,11 @@ void rich_label::set_label(const t_string& text)
 			}
 
 			point t_size = get_text_size(*text_ptr);
+			x_ = t_size.x;
+			y_ = h_;
 			h_ += t_size.y;
-//			PLAIN_LOG << "width : " << w_ << ", height : " << h_ << std::endl;
 		}
 	}
-
-//	point best_size = styled_widget::calculate_best_size();
-//	PLAIN_LOG << "best size : " << best_size.x << ", " << best_size.y;
-//	PLAIN_LOG << text_dom_.debug();
-
-	// dynamically calculate these two
-//	w_ = styled_widget::calculate_best_size().x;
-//	h_ = styled_widget::calculate_best_size().y;
 }
 
 void rich_label::default_text_config(config* txt_ptr, t_string text, bool last_entry) {
@@ -307,12 +306,6 @@ void rich_label::set_state(const state_t state)
 	}
 }
 
-// TODO
-std::string rich_label::get_label_link(const point & position) const
-{
-	return "";
-}
-
 void rich_label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "rich_label click";
@@ -332,18 +325,34 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	std::string link = get_label_link(mouse);
+	PLAIN_LOG << mouse.x << "," << mouse.y;
+	for (const auto& entry : links_) {
+		PLAIN_LOG << entry.first.x << "," << entry.first.y;
+		PLAIN_LOG << entry.first.w << "," << entry.first.h;
 
-	if (link.length() == 0) {
-		return ; // without marking event as "handled"
+		if (entry.first.contains(mouse)) {
+			DBG_GUI_E << "Clicked link! dst = " << entry.second;
+			if (link_handler_) {
+				link_handler_(entry.second);
+			} else {
+				DBG_GUI_E << "No registered link handler found";
+			}
+
+		}
 	}
 
-	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
+//	std::string link = get_label_link(mouse);
 
-	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
-	if(res == gui2::retval::OK) {
+//	if (link.length() == 0) {
+//		return ; // without marking event as "handled"
+//	}
+
+//	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
+
+//	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
+//	if(res == gui2::retval::OK) {
 //		desktop::open_object(link);
-	}
+//	}
 
 	handled = true;
 }

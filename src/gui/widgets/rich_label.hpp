@@ -149,8 +149,6 @@ public:
 
 	void set_label(const t_string& text) override;
 
-	std::string get_label_link(const point & position) const;
-
 private:
 	/**
 	 * Possible states of the widget.
@@ -214,13 +212,25 @@ private:
 	std::unique_ptr<image_shape> ishape_;
 
 	/** Width and height of the canvas */
-	unsigned w_, h_;
+	unsigned w_, h_, x_, y_;
 
 	/** template for canvas text config */
 	void default_text_config(config* txt_ptr, t_string text = "", bool last_entry = false);
 
+	/** size calculation functions */
 	point get_text_size(config text_cfg);
 	point get_image_size(config img_cfg);
+
+	/** link variables and functions */
+//	std::map<rect, std::string> links_;
+	std::vector<std::pair<rect, std::string>> links_;
+
+	std::function<void(std::string)> link_handler_;
+
+	void register_link_callback(std::function<void(std::string)> link_handler)
+	{
+		link_handler_ = link_handler;
+	}
 
 	point calculate_best_size() const
 	{
