@@ -362,13 +362,13 @@ void title_screen::init_callbacks()
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
-	
+
 	//
 	// GUI Test and Debug Window
 	//
 	register_button(*this, "test_dialog", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_gui_test_dialog, this));
-	
+
 	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
 	if(test_dialog) {
 		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
