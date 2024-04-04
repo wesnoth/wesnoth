@@ -149,6 +149,11 @@ public:
 
 	void set_label(const t_string& text) override;
 
+	void register_link_callback(std::function<void(std::string)> link_handler)
+	{
+		link_handler_ = link_handler;
+	}
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -222,15 +227,9 @@ private:
 	point get_image_size(config img_cfg);
 
 	/** link variables and functions */
-//	std::map<rect, std::string> links_;
 	std::vector<std::pair<rect, std::string>> links_;
 
 	std::function<void(std::string)> link_handler_;
-
-	void register_link_callback(std::function<void(std::string)> link_handler)
-	{
-		link_handler_ = link_handler;
-	}
 
 	point calculate_best_size() const
 	{

@@ -108,6 +108,7 @@ void rich_label::set_label(const t_string& text)
 	h_ = 0;
 	unparsed_text_ = text;
 	text_dom_.clear();
+	links_.clear();
 	help::topic_text marked_up_text(text);
 	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
 
