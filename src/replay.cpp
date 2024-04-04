@@ -630,6 +630,17 @@ config* replay::get_next_action()
 	return retv;
 }
 
+config* replay::peek_next_action()
+{
+	if (at_end())
+		return nullptr;
+
+	LOG_REPLAY << "up to replay action " << base_->get_pos() + 1 << '/' << ncommands();
+
+	config* retv = &command(base_->get_pos());
+	return retv;
+}
+
 
 bool replay::at_end() const
 {

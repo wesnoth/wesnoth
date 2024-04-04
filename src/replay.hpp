@@ -122,6 +122,7 @@ public:
 	void start_replay();
 	void revert_action();
 	config* get_next_action();
+	config* peek_next_action();
 
 	bool at_end() const;
 	void set_to_end();

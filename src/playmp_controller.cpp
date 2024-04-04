@@ -356,22 +356,28 @@ bool playmp_controller::receive_from_wesnothd(config& cfg) const
 
 void playmp_controller::process_network_data(bool unsync_only)
 {
-	//Don't exceute the next turns actions.
-	unsync_only |= gamestate().in_phase(game_data::TURN_ENDED);
-	unsync_only |= is_regular_game_end();
-	unsync_only |= player_type_changed_;
-
-	config cfg;
-
 	if(!recorder().at_end()) {
-		// This should never do anything, the only case where
-		// process_network_data_impl put something on the recorder
-		// without immidiately exceuting it are user choices which
-		// cannot be exceuted by do_replay()
-		do_replay();
+		auto commandtype = get_replay_action_type(*recorder().peek_next_action());
+		// the only cases where process_network_data_impl puts something on the recorder
+		// without immidiately exceuting it are user choices
+		if(commandtype != REPLAY_ACTION_TYPE::DEPENDENT) {
+			ERR_NW << "attempting to process network data while still having data on the replay.";
+		}
+		return;
 	} else if (next_scenario_notified_) {
 		//Do nothing, Otherwise we might risk getting data that belongs to the next scenario.
-	} else if(network_reader_.read(cfg)) {
+		return;
+	}
+
+	config cfg;
+	// we could replace this "if" with a "while" to process multiple actions without delay between them
+	if(network_reader_.read(cfg)) {
+
+		//Don't exceute the next turns actions.
+		unsync_only |= gamestate().in_phase(game_data::TURN_ENDED);
+		unsync_only |= is_regular_game_end();
+		unsync_only |= player_type_changed_;
+
 		auto res = process_network_data_impl(cfg, unsync_only);
 		if(res == PROCESS_DATA_RESULT::CANNOT_HANDLE) {
 			// chat_only=true, but we received a non-chat command, probably belonging to the next
@@ -380,6 +386,7 @@ void playmp_controller::process_network_data(bool unsync_only)
 			// Note: With this approach, incoming [turn] that we cannot handle also blocks other
 			// incoming data, like [change_controller].
 			network_reader_.push_front(std::move(cfg));
+			return;
 		}
 		if(next_scenario_notified_) {
 			end_turn();
