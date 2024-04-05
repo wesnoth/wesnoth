@@ -154,6 +154,12 @@ public:
 		link_handler_ = link_handler;
 	}
 
+	point get_column_line(const point& position) const
+	{
+//		PLAIN_LOG << "size, renderer :" << font::get_text_renderer().get_length();
+		return font::get_text_renderer().get_column_line(position);
+	}
+
 private:
 	/**
 	 * Possible states of the widget.

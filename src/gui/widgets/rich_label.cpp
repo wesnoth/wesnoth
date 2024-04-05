@@ -28,6 +28,7 @@
 #include "desktop/open.hpp"
 #include "help/help_impl.hpp"
 #include "gettext.hpp"
+#include "serialization/unicode.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>
@@ -114,10 +115,12 @@ void rich_label::set_label(const t_string& text)
 
 	config* text_ptr = &(text_dom_.add_child("text"));
 	default_text_config(text_ptr);
+	bool is_image = false;
+	point wrap_position;
+	point img_size;
 
 	for (size_t i = 0; i < parsed_text.size(); i++) {
 		bool last_entry = (i == parsed_text.size() - 1);
-//		bool is_text = true;
 		std::string line = parsed_text.at(i);
 
 		if (!line.empty() && line.at(0) == '[') {
@@ -137,7 +140,7 @@ void rich_label::set_label(const t_string& text)
 
 				links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
 
-				x_ = t_size.x;
+//				x_ = t_size.x;
 				y_ = h_;
 				h_ += t_size.y;
 
@@ -146,17 +149,20 @@ void rich_label::set_label(const t_string& text)
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("bold")["text"], last_entry, "bold");
 
 				point t_size = get_text_size(*text_ptr);
-				x_ = t_size.x;
+
 				y_ = h_;
 				h_ += t_size.y;
+
+				PLAIN_LOG << "(bold, 2) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 			} else if (cfg.optional_child("italic")) {
 
 				add_text_with_attribute((*text_ptr), cfg.mandatory_child("italic")["text"], last_entry, "italic");
 				point t_size = get_text_size(*text_ptr);
-				x_ = t_size.x;
+
 				y_ = h_;
 				h_ += t_size.y;
+				PLAIN_LOG << "(italic, 2) x :" << x_ << ", y :"  << y_ << ", h: " << h_;
 
 			} else if (cfg.optional_child("header")) {
 
@@ -173,7 +179,7 @@ void rich_label::set_label(const t_string& text)
 				}
 
 				point t_size = get_text_size(*text_ptr);
-				x_ = t_size.x;
+
 				y_ = h_;
 				h_ += t_size.y;
 
@@ -197,39 +203,71 @@ void rich_label::set_label(const t_string& text)
 				if (last_entry) {
 					img["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 				} else {
-					img["actions"] = "([set_var('pos_y', pos_y+image_height), set_var('pos_x', 0)])";
+//					img["actions"] = "([set_var('pos_y', pos_y+image_height), set_var('pos_x', 0)])";
+					img["actions"] = "([set_var('pos_x', pos_x + image_width + 5)])"; //Padding 5
 				}
 
-				point t_size = get_image_size(img);
+				img_size = get_image_size(img);
 				y_ = h_;
-				h_ += t_size.y;
+				h_ += img_size.y;
+				x_ += img_size.x;
+				is_image = true;
+				PLAIN_LOG << "x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 				text_ptr = &(text_dom_.add_child("text"));
 				default_text_config(text_ptr);
 
-//					config& rect = text_dom_.add_child("rectangle");
-//					rect["x"] = "(pos_x)";
-//					rect["y"] = "(pos_y)";
-//					rect["h"] = "(ih)";
-//					rect["w"] = "(iw)";
-//					rect["border_thickness"] = "1";
-//					rect["border_color"] = "255,255,255,255";
-//					std::cout << img.debug() << std::endl;
 			}
 			//			} else if(line == "[link]") {
 			//			} else if(line == "[jump]") {
 			//			} else if(line == "[format]") {
 
-		} else {
+		} else if (!line.empty()) {
 			(*text_ptr)["text"] = (*text_ptr)["text"].str() + line;
 			if (last_entry) {
 				(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
 			}
 
 			point t_size = get_text_size(*text_ptr);
-			x_ = t_size.x;
+
 			y_ = h_;
 			h_ += t_size.y;
+
+			PLAIN_LOG << "(text, 2) x :" << x_ << ", y :" << y_ << ", h: " << h_;
+			PLAIN_LOG << img_size.y << ", " << t_size.y;
+
+			if (img_size.y > 0) {
+				if (h_ > img_size.y) {
+//					PLAIN_LOG << "size, utf8 :" << utf8::size((*text_ptr)["text"].str());
+//					PLAIN_LOG << "size, string :" << (*text_ptr)["text"].str().size();
+
+					PLAIN_LOG << "Wrap needed";
+					wrap_position = get_column_line(point(w_, img_size.y));
+					PLAIN_LOG << "wrap x :" << wrap_position.x << ", wrap y :" << wrap_position.y;
+//					t_string removed_part = (*text_ptr)["text"].str().substr(wrap_position.x);
+//					(*text_ptr)["text"] = (*text_ptr)["text"].str().substr(0, wrap_position.x);
+
+					size_t len = 0;
+					for (int i = 0; i < wrap_position.y-1; i++) {
+						len += utf8::size(font::get_text_renderer().get_lines()[i]);
+					}
+
+					t_string* removed_part = new t_string((*text_ptr)["text"].str().substr(len));
+					(*text_ptr)["text"] = (*text_ptr)["text"].str().substr(0, len);
+
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + text_height + 5)])";
+
+					PLAIN_LOG << *removed_part;
+
+					text_ptr = &(text_dom_.add_child("text"));
+					default_text_config(text_ptr);
+
+					PLAIN_LOG << *removed_part;
+					(*text_ptr)["text"] = *removed_part;
+
+					PLAIN_LOG << text_dom_.debug();
+				}
+			}
 		}
 	}
 }
