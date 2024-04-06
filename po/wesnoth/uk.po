@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2019-04-18 00:31+0300\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
+"PO-Revision-Date: 2024-03-22 22:56+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -111,15 +111,11 @@ msgstr "Затримувати повідомлення в чаті"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:77
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Set to "
-#| "0 to disable"
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"Час очікування до очистки ігрового чату в хвилинах. 0 — відключити очищення"
+"Час очікування до очистки ігрового чату в хвилинах. 0 — відключити очищення."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
@@ -138,16 +134,12 @@ msgstr "Показувати в довідці всі типи бійців"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:102
-#, fuzzy
-#| msgid ""
-#| "Show all unit types in the help (requires restart). This does not alter "
-#| "the list of encountered units"
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
-"Показувати в довідці всі типи бійців (потрібен перезапуск). Не впливає на "
-"список бійців, що зустрічались"
+"Показувати в довідці всі типи бійців (потрібен перезапуск). Якщо вимкнено, "
+"будуть показуватися лише ті бійці, що зустрічались у грі."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:109
@@ -215,7 +207,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "Масштабування шрифту (експериментально)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -223,13 +215,14 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"Збільшує або зменшує розмір усіх шрифтів відносно стандартного для вашої "
+"роздільної здатності. Увага: Масштабування шрифту може створювати проблеми у "
+"відображенні бокової панелі."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Перевищена межа часу під'єднання"
+msgstr "Тайм-аут відключення від сервера"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -238,6 +231,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Кількість часу в секундах для реєстрації розриву з'єднання. Якщо ви на даний "
+"момент підключені до багатокористувацького сервера, необхідно вийти з нього, "
+"а потім увійти знову, для того щоб зміни набули чинності."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -382,10 +378,8 @@ msgstr "Переклад на африкаанс"
 
 #. [about]
 #: data/core/about_i18n.cfg:26
-#, fuzzy
-#| msgid "Greek Translation"
 msgid "Ancient Greek Translation"
-msgstr "Грецький переклад"
+msgstr "Давньогрецький переклад"
 
 #. [about]
 #: data/core/about_i18n.cfg:34
@@ -404,10 +398,8 @@ msgstr "Баскський переклад"
 
 #. [about]
 #: data/core/about_i18n.cfg:65
-#, fuzzy
-#| msgid "Bulgarian Translation"
 msgid "Bengali Translation"
-msgstr "Болгарський переклад"
+msgstr "Бенгальський переклад"
 
 #. [about]
 #: data/core/about_i18n.cfg:77
@@ -656,10 +648,8 @@ msgstr "В'єтнамський переклад"
 
 #. [about]
 #: data/core/about_i18n.cfg:1905
-#, fuzzy
-#| msgid "Polish Translation"
 msgid "Welsh Translation"
-msgstr "Польський переклад"
+msgstr "Валлійський переклад"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
@@ -717,12 +707,12 @@ msgstr "Сокира"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "Мала сокира"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Метальна сокира"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
@@ -796,12 +786,12 @@ msgstr "Коробка"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "Гілка"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "Гола гілка"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
@@ -810,10 +800,8 @@ msgstr "Жаровня"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Жаровня"
+msgstr "Запалена жаровня"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -833,18 +821,14 @@ msgstr "Клітка"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
-msgstr "Закрита проста скриня"
+msgstr "Закрита скриня"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
-msgstr "Відкрита проста скриня"
+msgstr "Відкрита скриня"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
@@ -864,7 +848,7 @@ msgstr "Зелений плащ"
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "Кийок"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
@@ -874,32 +858,28 @@ msgstr "Закрита домовина"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Закрита домовина"
+msgstr "Відкрита домовина"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "Арбалет"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "Кинджал"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Отрута"
+msgstr "Отруйний кинджал"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Отруйний кинджал (чистий)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
@@ -913,10 +893,8 @@ msgstr "Полум'яний меч"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Полум'яний меч"
+msgstr "Незачарований полум'яний меч"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -954,10 +932,8 @@ msgstr "Сніп з зерном"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Рунний молот"
+msgstr "Молот"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
@@ -978,10 +954,8 @@ msgstr "Ключ"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Темно-червоний"
+msgstr "Темний ключ"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
@@ -991,21 +965,17 @@ msgstr "Пакунок зі шкірами"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "Булава"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Намисто з анкхом"
+msgstr "Кістяне намисто"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Намисто з анкхом"
+msgstr "Намисто з каменів"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
@@ -1098,14 +1068,12 @@ msgstr "Вогняний Скіпетр"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "Праща"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Вишуканий спис"
+msgstr "Спис"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1116,7 +1084,7 @@ msgstr "Вишуканий спис"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "Дротик"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1126,10 +1094,8 @@ msgstr "Посох"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Магічний посох"
+msgstr "Посох друїда"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1139,17 +1105,13 @@ msgstr "Магічний посох"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Магічний посох"
+msgstr "Чарівна паличка"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Магічний посох"
+msgstr "Простий посох"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1178,56 +1140,48 @@ msgstr "Меч"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Меч"
+msgstr "Святий меч"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Меч"
+msgstr "Короткий меч"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Полум'яний меч"
+msgstr "Примарний меч"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Талісман з анкхом"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Кістяний талісман"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Кам'яна дощечка"
+msgstr "Кам'яний талісман"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "Громова палиця"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "Запалений факел"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Погашений факел"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
@@ -1419,10 +1373,8 @@ msgstr "Храм"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Зруйнований намет"
+msgstr "Зруйнований храм"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -1926,7 +1878,7 @@ msgstr ""
 #: data/core/macros/items.cfg:555
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "Цей тризуб дарує водяному силу стріляти блискавками у ворогів!"
+msgstr "Цей тризуб дарує водяному силу стріляти блискавками у ворогів."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:583
@@ -3614,7 +3566,7 @@ msgstr "Ви витягуєте $amount_gold золотих."
 #. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:246
 msgid "Red"
-msgstr "Червноний"
+msgstr "Червоний"
 
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:21
@@ -3696,10 +3648,8 @@ msgstr "Золотий"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark blue"
-msgstr "Темно-червоний"
+msgstr "Темно-синій"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
@@ -3870,21 +3820,14 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Порядні бійці краще б'ються вдень і гірше вночі.\n"
+"Тіньові бійці краще б'ються у сутінках\n"
 "\n"
-"День: +25% збитку\n"
-"Ніч: −25% збитку"
+"Сутінки: +25% шкоди"
 
 #. [language]
 #: data/english.cfg:31
@@ -4288,26 +4231,21 @@ msgstr "Поразка:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
-#, fuzzy
 msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
-msgstr[0] "(це останній хід)"
-msgstr[1] "(це останній хід)"
-msgstr[2] "(це останній хід)"
+msgstr[0] "(залишився $remaining_turns хід)"
+msgstr[1] "(залишилося $remaining_turns ходи)"
+msgstr[2] "(залишилося $remaining_turns ходів)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
-#, fuzzy
-#| msgid "%d%% of gold carried over to the next scenario."
 msgid "$percent|% of gold carried over to the next scenario."
-msgstr "В наступний сценарій переноситься %d%% золота."
+msgstr "В наступний сценарій переноситься $percent|% золота."
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:6
-#, fuzzy
-#| msgid "XP to advance"
 msgid "Plan Unit Advance"
-msgstr "ДВ для поліпшення"
+msgstr "Планування підвищення бійця"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
@@ -4317,13 +4255,14 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"У багатокористувацькій грі, ви не можете вибрати підвищення бійця, якщо воно "
+"відбулося не на вашому ході. Ця модифікація дозволяє запланувати підвищення "
+"заздалегідь, як для одного бійця, так і для всіх бійців цього типу."
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
-#, fuzzy
-#| msgid "No advancement"
 msgid "Force advancement planning"
-msgstr "Не просувається"
+msgstr "Примусове планування підвищення"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:14
@@ -4333,32 +4272,32 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"Гра буде пропонувати обрати заплановане підвищення кожного разу, коли "
+"з'явитися новий боєць.\n"
+"\n"
+"Деякі ери і сценарії автоматично вмикають цю опцію."
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:36
-#, fuzzy
-#| msgid "No advancement"
 msgid "No planned advancement"
-msgstr "Не просувається"
+msgstr "Немає запланованого підвищення"
 
 #. [label]
 #: data/modifications/pick_advance/gui/pick_advance.cfg:14
 #: data/modifications/pick_advance/main.lua:10
-#, fuzzy
-#| msgid "Advancements:"
 msgid "Plan Advancement"
-msgstr "Підвищення:"
+msgstr "Планування підвищення"
 
 #. [image]: id=global_icon
 #: data/modifications/pick_advance/gui/pick_advance.cfg:53
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr ""
+msgstr "Наразі це підвищення типове для всіх бійців цього типу"
 
 #. [toggle_button]: id=apply_to_all
 #: data/modifications/pick_advance/gui/pick_advance.cfg:118
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "Застосувати для всіх бійців цього типу"
 
 #. [button]
 #: data/modifications/pick_advance/gui/pick_advance.cfg:134
@@ -4372,10 +4311,8 @@ msgstr "Скасувати"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Play"
-msgstr "повтор"
+msgstr "Грати"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413 data/themes/_initial.cfg:573
@@ -4384,10 +4321,8 @@ msgstr "безперервний повтор"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:427
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Stop"
-msgstr "повтор"
+msgstr "Стоп"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
@@ -4396,10 +4331,8 @@ msgstr "зупинити після поточного ходу"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:443
-#, fuzzy
-#| msgid "replay"
 msgid "replay^Reset"
-msgstr "повтор"
+msgstr "Скинути"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444 data/themes/_initial.cfg:601
@@ -4508,17 +4441,13 @@ msgstr "Стандартна тема"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Load Turn..."
-msgstr "Завантажити гру..."
+msgstr "Завантажити хід..."
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "програти хід"
+msgstr "Передивитись хід..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -4552,10 +4481,6 @@ msgstr "рвнь"
 
 #. [tip]
 #: data/tips.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Use the map editor's <i>Areas</i> menu to define regions later addressed "
-#| "by event or ai coding."
 msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
@@ -4570,29 +4495,22 @@ msgstr "<i>― Проектний посібник Весноту</i>"
 
 #. [tip]
 #: data/tips.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use "
-#| "of advanced features."
 msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Створіть <i>Новий сценарій</i> з пункту <i>Файл</i> у редакторі і отримайте "
-"доступ до додаткових можливостей."
+"Виберіть <i>Новий сценарій</i> з пункту <i>Файл</i> у редакторі карт та "
+"отримайте доступ до додаткових можливостей."
 
 #. [tip]
 #: data/tips.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Scenarios saved from the editor in their default folder can be selected "
-#| "in the mp create screen's <i>User Scenarios</i> section."
 msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
 "Якщо ви у редакторі збережете сценарій у типову теку, то його можна буде "
-"завантажити у мультиплеєрі, вибравши розділ <i>Користувацькі сценарії</i>."
+"завантажити у мультиплеєрі, вибравши розділ <i>Користувацькі сценарії</i> на "
+"екрані створення гри."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4820,13 +4738,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Poisoned units will lose eight hitpoints every turn until they are one "
-#| "point from dying. They will then remain at death’s door until the poison "
-#| "is removed. Healers can prevent a poisoned unit from deteriorating, but "
-#| "the poison will not be removed unless the unit regenerates, or begins a "
-#| "turn in a village or next to a unit with the <i>Cures</i> ability."
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -4838,7 +4749,7 @@ msgstr ""
 "не залишиться лише одна одиниця. Вони будуть при смерті, поки отруєння не "
 "буде вилікуване. Цілителі можуть нейтралізувати дію отрути, але отрута "
 "залишиться до тих пір, поки боєць повністю не відновиться, або не пробуде "
-"хід в селі чи поряд з <i>лікарем</i>."
+"хід в селі, оазисі чи поряд з <i>лікарем</i>."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -5239,12 +5150,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:213
-#, fuzzy
-#| msgid ""
-#| "Try to operate units with a small number of powerful attacks—such as Dark "
-#| "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or "
-#| "threes. This gives you another try whenever your first devastating attack "
-#| "misses — as inevitably happens from time to time."
 msgid ""
 "Try to operate units with a small number of powerful attacks — such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers — in pairs or threes. "
@@ -5254,17 +5159,11 @@ msgstr ""
 "Прагніть використовувати бійців з невеликою кількість потужних атак, таких "
 "як Темні адепти, Вершники, Піхотинці орків, або Громовержці гномів, групами "
 "по два або по три. Це дасть Вам можливість спробувати атакувати повторно, "
-"якщо перша нищівна атака не дала ніякого ефекту - таке час від часу "
+"якщо перша нищівна атака не дала ніякого ефекту — таке час від часу "
 "трапляється."
 
 #. [tip]
 #: data/tips.cfg:217
-#, fuzzy
-#| msgid ""
-#| "Units with three or more attacks—especially magical attacks—are ideal for "
-#| "finishing off enemies with only a few hitpoints remaining. Be sure to use "
-#| "leadership—or a strong or dextrous unit—whenever the extra point or two "
-#| "of damage makes a one-hit kill possible."
 msgid ""
 "Units with three or more attacks — especially magical attacks — are ideal "
 "for finishing off enemies with only a few hitpoints remaining. Be sure to "
@@ -5273,7 +5172,7 @@ msgid ""
 msgstr ""
 "Бійці з трьома або більше атаками, особливо магічними, ідеально підходять "
 "для добивання ворогів, які вже майже мертві. Обов'язково використовуйте "
-"лідерство - або сильного чи спритного бійця - якщо завдяки одному-двом "
+"лідерство — або сильного чи спритного бійця — якщо завдяки одному-двом "
 "зайвим очкам шкоди Ви отримаєте можливість вбити ворога за один удар."
 
 #. [tip]
@@ -5396,13 +5295,13 @@ msgid ""
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"Цілющі води оазису лікують поранених. Вогняні рідини підземного світу "
+"зупиняють безкрилих, та освітлюють шлях для літаючих на."
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>― Король Конрад, 536 рік Е.В.</i>"
+msgstr "<i>― Домінант Горлак, 3 рік Е.В.</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5411,13 +5310,14 @@ msgid ""
 "be healed on both sides’ turns. This way, a unit can be healed faster than "
 "otherwise possible."
 msgstr ""
+"Якщо боєць розташованих поряд з двома союзними цілителями, то такий боєць "
+"буде лікуватися на на ходу кожного з них. Таким чином, можливо вилікувати "
+"бійця у найшвидший з можливих способів."
 
 #. [tip]
 #: data/tips.cfg:262
-#, fuzzy
-#| msgid "<i>― Lord Hamel of Knalga</i>"
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>― Хамель, Лорд Кналга</i>"
+msgstr "<i>― Таллін, Лорд Кналга, 538 Е.В.</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -5426,6 +5326,9 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
+"Затисніть <b>Shift</b> щоб прискорити анімації бою та пересування. "
+"<i>Величина прискорення</i> може бути задана у <i>Налаштуваннях</i> у "
+"розділі <i>Загальні</i>, типово ця опція ввімкнена."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5435,6 +5338,9 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
+"Чи знаєте ви, що можна змінити складність прямо посеред кампанії? При "
+"завантаженні збереження початку сценарію, виберіть опцію <i>Змінити "
+"складність</i> знизу екрану <i>Завантажити гру</i>."
 
 #. [tip]
 #: data/tips.cfg:275
@@ -5451,8 +5357,6 @@ msgstr ""
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:256
-#, fuzzy
-#| msgid "an advancement choice"
 msgid "waiting for^an advancement choice"
 msgstr "вибір підвищення"
 
@@ -5485,10 +5389,8 @@ msgid "You do not have a leader to recruit with."
 msgstr "У Вас немає лідера, який міг би вербувати бійців."
 
 #: src/actions/create.cpp:480
-#, fuzzy
-#| msgid "None of your leaders are able to recruit that unit."
 msgid "None of your leaders are able to recruit this unit."
-msgstr "Жоден з Ваших лідерів не може призвати цього бійця."
+msgstr "Жоден з ваших лідерів не може наймати цього бійця."
 
 #: src/actions/create.cpp:484
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -5559,16 +5461,16 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(натисніть $hotkey, щоб продовжити рух)"
 
 #: src/actions/undo.cpp:402
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "Помилка гри"
+msgstr "Помилка повтору"
 
 #: src/actions/undo.cpp:403
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
+"Помилка синхронізації черги повторів. Зазвичай причиною є пошкоджений файл "
+"збереження або помилка у WML коді сценарію чи ери. Деталі:"
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
@@ -5628,18 +5530,16 @@ msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
 msgstr ""
+"З'єднання з віддаленим сервером не є безпечним. Аддон <i>$addon_title</i> не "
+"може бути вивантажений."
 
 #: src/addon/client.cpp:224
-#, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
-msgstr "Запит умов розповсюдження..."
+msgstr "Запит індексу файлів..."
 
 #: src/addon/client.cpp:240
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
-msgstr "Відсилаю аддон <i>$addon_title</i>..."
+msgstr "Відсилаю оновлення аддону <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:261
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5658,10 +5558,8 @@ msgid "Add-ons Manager"
 msgstr "Менеджер Аддонів"
 
 #: src/addon/client.cpp:350
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr "Відсилаю аддон <i>$addon_title</i>..."
+msgstr "Встановлюю аддон <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:362 src/addon/client.cpp:388
 msgid ""
@@ -5889,19 +5787,17 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Сталася помилка при завантаженні списку аддонів з сервера."
 
 #: src/addon/manager_ui.cpp:315
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
-msgstr "Не можу знайти на цьому сервері аддон з індефікатором $addon_id|."
+msgstr "Не можу знайти на цьому сервері аддони з ідентифікаторами $addon_ids|."
 
 #: src/addon/validation.cpp:389
 msgid "Success."
-msgstr ""
+msgstr "Успіх."
 
 #: src/addon/validation.cpp:393
 msgid "Incorrect add-on passphrase."
-msgstr ""
+msgstr "Невірний пароль аддону."
 
 #: src/addon/validation.cpp:397
 msgid ""
@@ -5922,16 +5818,12 @@ msgid "No add-on data was supplied by the client."
 msgstr ""
 
 #: src/addon/validation.cpp:418
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid upload pack."
-msgstr "Невірне місце"
+msgstr "Невірне рий пакет для вивантаження"
 
 #: src/addon/validation.cpp:422
-#, fuzzy
-#| msgid "Invalid tag name"
 msgid "Invalid add-on name."
-msgstr "Неправильна назва тегу"
+msgstr "Неправильна назва аддону."
 
 #: src/addon/validation.cpp:426
 msgid "Formatting character in add-on name."
@@ -6031,21 +5923,19 @@ msgstr ""
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
-msgstr ""
+msgstr "Невстановлена помилка сервера."
 
 #: src/addon/validation.cpp:516
 msgid "Server is in read-only mode."
 msgstr ""
 
 #: src/addon/validation.cpp:520
-#, fuzzy
-#| msgid "You have no add-ons installed."
 msgid "Corrupted server add-ons list."
-msgstr "У Вас немає встановлених аддонів."
+msgstr "Список аддонів сервера пошкоджений."
 
 #: src/addon/validation.cpp:524
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "Список аддонів сервера пустий."
 
 #: src/addon/validation.cpp:528
 msgid ""
@@ -6054,7 +5944,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "Невстановлена помилка ідентифікації."
 
 #: src/carryover_show_gold.cpp:55
 msgid "Scenario Report"
@@ -6723,10 +6613,8 @@ msgid "Defeat enemy leader(s)"
 msgstr "Вбийте лідера(ів) противника"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Не вдалось знайти еру $era"
+msgstr "Не вдалось знайти еру '$era'"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
@@ -6800,34 +6688,30 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Цей сервер не дозволяє використовувати незареєстровані ніки."
 
 #: src/game_initialization/multiplayer.cpp:427
-#, fuzzy
-#| msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
-msgstr "Нік '$nick' заблокований на форумі цього серверу."
+msgstr ""
+"Нік '$nick' заблокований на форумі цього серверу на термін: $duration|."
 
 #: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Нік '$nick' заблокований на форумі цього серверу."
 
 #: src/game_initialization/multiplayer.cpp:433
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server’s forums for $duration|."
-msgstr "Ваша IP адреса заблокована на форумі цього серверу."
+msgstr ""
+"Ваша IP адреса заблокована на форумі цього серверу на термін: $duration|."
 
 #: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Ваша IP адреса заблокована на форумі цього серверу."
 
 #: src/game_initialization/multiplayer.cpp:439
-#, fuzzy
-#| msgid ""
-#| "The email address for the nickname ‘$nick’ is banned on this server’s "
-#| "forums."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
-msgstr "E-mail адреса для ніку '$nick' заблокована на форумі цього серверу."
+msgstr ""
+"E-mail адреса для ніку '$nick' заблокована на форумі цього серверу на "
+"термін: $duration|."
 
 #: src/game_initialization/multiplayer.cpp:441
 msgid ""
@@ -6857,7 +6741,7 @@ msgstr "Ви намагалися увійти надто багато разі�
 
 #: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
-msgstr ""
+msgstr "Хешування паролю не вдалося."
 
 #: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:913
 msgid "The game could not be loaded: "
@@ -6957,16 +6841,12 @@ msgstr[2] ""
 "спершу їх встановити?"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
-#, fuzzy
-#| msgid "Create a unit."
 msgid "Create a new add-on"
-msgstr "Створити бійця."
+msgstr "Створити новий аддон."
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
-#, fuzzy
-#| msgid "Update add-ons"
 msgid "New Add-on"
-msgstr "Оновити аддони"
+msgstr "Новий аддон"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
@@ -6981,22 +6861,16 @@ msgid "No visible sides found."
 msgstr "Не знайдено видимих сторін."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
-#, fuzzy
-#| msgid "Selected user: "
 msgid "Selected Game"
-msgstr "Вибраний користувач: "
+msgstr "Вибрана гра"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
-#, fuzzy
-#| msgid "Game Lobby"
 msgid "Lobby"
-msgstr "Фойє гри"
+msgstr "Фойє"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
-#, fuzzy
-#| msgid "Observe Game"
 msgid "Other Games"
-msgstr "Спостерігати за грою"
+msgstr "Інші ігри"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
 #: src/gui/dialogs/multiplayer/match_history.cpp:92
@@ -7008,10 +6882,8 @@ msgid "Scenario"
 msgstr "Сценарій"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:71
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Ера:"
+msgstr "Ера"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:72
 #, fuzzy
@@ -7020,10 +6892,8 @@ msgid "Modification"
 msgstr "Модифікації..."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:151
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
-msgstr "Ера:"
+msgstr "Ера: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid " UTC+0"
@@ -7132,16 +7002,12 @@ msgid "Only available during a scenario."
 msgstr "Доступно тільки під час сценарію."
 
 #: src/help/help_impl.cpp:407 src/help/help_impl.cpp:443
-#, fuzzy
-#| msgid "Time of day schedule:"
 msgid "Time of Day Schedule"
-msgstr "Розклад часу доби:"
+msgstr "Розклад часу доби"
 
 #: src/help/help_impl.cpp:434
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful Bonus:"
-msgstr "Порядні бійці: "
+msgstr "Бонус порядним:"
 
 #: src/help/help_impl.cpp:435
 #, fuzzy
@@ -7224,16 +7090,12 @@ msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Бійці з цією здібністю'</header>"
 
 #: src/help/help_impl.cpp:1156
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
-msgstr "<header>text='Бійці цієї раси'</header>"
+msgstr "<header>text='Група бійців цієї раси'</header>"
 
 #: src/help/help_impl.cpp:1165
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
-msgstr "<header>text='Бійці цієї раси'</header>"
+msgstr "<header>text='Бійці цієї групи'</header>"
 
 #: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
@@ -7301,7 +7163,6 @@ msgstr "Режим планування вимкнений!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
 msgstr "Ви хочете продовжити?"
 
@@ -7350,16 +7211,12 @@ msgid "This command is currently unavailable."
 msgstr "Ця команда наразі недоступна."
 
 #: src/map_command_handler.hpp:225
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
-"Команда '$command' невідома; щоб отримати список доступних команд, введіть "
-"$help_command."
+"Команда '$command' невідома; можливо малося на увазі '$command_proposal'? "
+"Щоб отримати список доступних команд, введіть $help_command."
 
 #: src/map_command_handler.hpp:229
 msgid ""
@@ -7425,9 +7282,9 @@ msgstr "Використання:"
 #: src/map_command_handler.hpp:394
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Псевдонім"
+msgstr[1] "Псевдоніми"
+msgstr[2] "Псевдоніми"
 
 #: src/menu_events.cpp:166
 msgid "Save Map As"
@@ -7529,14 +7386,11 @@ msgid "No unit recalled."
 msgstr "Немає бійців для заклику"
 
 #: src/menu_events.cpp:430
-#, fuzzy
-#| msgid "You must have at least 1 gold piece to recall a unit"
-#| msgid_plural "You must have at least $cost gold pieces to recall this unit"
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "У Вас має бути хоча би 1 золотий для заклику бійця"
-msgstr[1] "У Вас має бути хоча би $cost золотих для заклику бійця"
-msgstr[2] "У Вас має бути хоча би $cost золотих для заклику бійця"
+msgstr[0] "У Вас має бути хоча би 1 золотий для заклику бійця."
+msgstr[1] "У Вас має бути хоча би $cost золотих для заклику бійця."
+msgstr[2] "У Вас має бути хоча би $cost золотих для заклику бійця."
 
 #: src/menu_events.cpp:576
 msgid "You cannot end your turn yet!"
@@ -7627,14 +7481,12 @@ msgstr "Перемкнути сторону у/зі сплячого стану.
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1239
-#, fuzzy
-#| msgid "do not translate the on/off^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "[<сторона> [on/off]]"
 
 #: src/menu_events.cpp:1240
 msgid "Change the in-game theme."
-msgstr ""
+msgstr "Змінити музичну тему."
 
 #: src/menu_events.cpp:1242
 msgid "<side> <nickname>"
@@ -8088,10 +7940,8 @@ msgid "Overwrite existing file?"
 msgstr ""
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download complete"
-msgstr "Завантаження"
+msgstr "Завантаження завершено"
 
 #: src/network_download_file.cpp:81
 #, fuzzy
@@ -8179,12 +8029,12 @@ msgid ""
 msgstr "З'єднання обірване, гра не може бути продовжена. Хочете зберегти гру?"
 
 #: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
-#, fuzzy
-#| msgid "Do you really want to surrender the game?"
 msgid ""
 "\n"
 "Do you want to save the game?"
-msgstr "Ви дійсно хочете здатися?"
+msgstr ""
+"\n"
+"Ви хочете зберегти гру?"
 
 #: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:452
 #, fuzzy
@@ -8349,10 +8199,8 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Цей боєць паралізований. Він не може рухатися або атакувати."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "невиліковний"
+msgstr "невиліковний: "
 
 #: src/reports.cpp:358
 msgid ""
@@ -8361,10 +8209,8 @@ msgid ""
 msgstr ""
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "невидимий: "
+msgstr "невразливий: "
 
 #: src/reports.cpp:362
 #, fuzzy
@@ -8410,16 +8256,12 @@ msgid "Defense: "
 msgstr "Захист: "
 
 #: src/reports.cpp:650 src/reports.cpp:651
-#, fuzzy
-#| msgid "vision: "
 msgid "vision:"
-msgstr "бачення: "
+msgstr "огляд:"
 
 #: src/reports.cpp:655 src/reports.cpp:656
-#, fuzzy
-#| msgid "Warning: "
 msgid "jamming:"
-msgstr "Попередження: "
+msgstr "заглушення:"
 
 #: src/reports.cpp:685
 msgid "Movement Costs:"
@@ -8507,13 +8349,11 @@ msgstr[2] "Атак"
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
 #: src/reports.cpp:1171
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Залишок: $left/$max"
 
 #: src/reports.cpp:1175
-#, fuzzy
-#| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
-msgstr "Це не мережеве збереження."
+msgstr "Цей боєць може атакувати декілька разів за хід."
 
 #: src/reports.cpp:1267
 msgid "Time of day schedule:"
@@ -8544,14 +8384,12 @@ msgid "Turn Number"
 msgstr "Номер ходу"
 
 #: src/reports.cpp:1437
-#, fuzzy
-#| msgid ""
-#| "When the game reaches the number of turns indicated by the second number, "
-#| "it will end."
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr "Коли кількість ходів у цій грі досягне другого числа, гра закінчиться."
+msgstr ""
+"Коли кількість ходів у цій грі перевищить число ходів, вказане другим "
+"числом, гра закінчиться."
 
 #: src/reports.cpp:1462
 msgid "Gold"
@@ -8580,12 +8418,6 @@ msgid "Units"
 msgstr "Бійці"
 
 #: src/reports.cpp:1496
-#, fuzzy
-#| msgid ""
-#| "The expenses incurred at the end of every turn to maintain your army. The "
-#| "first number is the amount of gold that will be deducted. The second is "
-#| "the total cost of upkeep, including that covered by villages — in other "
-#| "words, the amount of gold that would be deducted if you lost all villages."
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8594,9 +8426,10 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 "Витрати на утримання армії, стягуються в кінці кожного ходу. Перше число — "
-"кількість золота, яка буде втрачена. Друге — загальні витрати на армію, "
-"включаючи утримання від сіл. Іншими словами — сума, яку ви будете платити, "
-"якщо втратите всі ваші села."
+"кількість золота, яка буде втрачена. Воно дорівнює сумі рівнів бійців, які "
+"не утримуються селами. Друге — загальні витрати на армію, включаючи "
+"утримання від сіл. Іншими словами — сума, яку ви будете платити, якщо "
+"втратите всі ваші села."
 
 #: src/reports.cpp:1496
 msgid "Upkeep"
@@ -8642,17 +8475,13 @@ msgstr "Таймер ходу"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %b %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:279 src/savegame.cpp:584
@@ -8953,7 +8782,7 @@ msgstr ""
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
 #: src/team.cpp:1006
 msgid "“$color_id”"
-msgstr ""
+msgstr "\"$color_id\""
 
 #: src/terrain/terrain.cpp:193
 msgid "Allied village"

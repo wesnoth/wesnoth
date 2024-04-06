@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2019-02-01 16:40+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
+"PO-Revision-Date: 2024-03-15 00:07+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -160,29 +160,17 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "зцілює +4"
+msgstr "зцілює +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "зцілює +4"
+msgstr "зцілює +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 #, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -359,10 +347,8 @@ msgstr "Редактор місцевості"
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Редактор карт/сценаріїв"
+msgstr "Редактор сценарію"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -741,10 +727,8 @@ msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:208
-#, fuzzy
-#| msgid "Terrain"
 msgid "Deprecated Terrain"
-msgstr "Місцевість"
+msgstr "Застаріла місцевість"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -892,10 +876,8 @@ msgstr ""
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:319
-#, fuzzy
-#| msgid "Using Add-ons"
 msgid "Change Add-on ID"
-msgstr "Використання Аддонів"
+msgstr "Змінити ID аддону"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
@@ -1276,7 +1258,7 @@ msgstr "<ref>dst='..geography' text='Географія'</ref>"
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Календар"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -4341,8 +4323,8 @@ msgstr "Основні команди"
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with "
-#| "'/' (press 'm' first to open the chat line).\n"
+#| "them with ':' (as shown here) or via the chat by prefixing them with '/' "
+#| "(press 'm' first to open the chat line).\n"
 #| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -4350,9 +4332,9 @@ msgid ""
 "‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
-"Ці команди можуть бути задані через командний рядок, ставлячи перед ними "
-"':' (як показано тут) або через чат, ставлячи перед ними '/' (спочатку "
-"натисніть 'm', щоб відкрити рядок чату).\n"
+"Ці команди можуть бути задані через командний рядок, ставлячи перед ними ':' "
+"(як показано тут) або через чат, ставлячи перед ними '/' (спочатку натисніть "
+"'m', щоб відкрити рядок чату).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -7651,10 +7633,8 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Гноми"
+msgstr "Ворон"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
@@ -7665,10 +7645,8 @@ msgstr "Дрейк"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Гноми"
+msgstr "Ворони"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -8081,15 +8059,13 @@ msgstr ""
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "мертва"
+msgstr "оглушена"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "оглушений"
 
 #: src/help/help.cpp:211
 msgid "Close"
@@ -8100,10 +8076,8 @@ msgid "Help"
 msgstr "Допомога"
 
 #: src/help/help.cpp:267 src/help/help.cpp:271
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
-msgstr "Синтаксична помилка при читанні довідки: "
+msgstr "Синтаксична помилка при читанні довідки:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
@@ -8153,16 +8127,8 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:603
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Спеціальні нотатки:"
+msgstr "Спеціальні нотатки:"
 
 #: src/help/help_topic_generators.cpp:193
 #, fuzzy
@@ -8181,30 +8147,24 @@ msgid "Defense properties: "
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:297
-#, fuzzy
-#| msgid "level"
 msgid "Level"
-msgstr "рівень"
+msgstr "Рівень"
 
 #: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
 msgstr "Просувається від: "
 
 #: src/help/help_topic_generators.cpp:362
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Просувається від: "
+msgstr "Просувається в: "
 
 #: src/help/help_topic_generators.cpp:391
 msgid "Base unit: "
-msgstr "Базовий боєць:"
+msgstr "Базовий боєць: "
 
 #: src/help/help_topic_generators.cpp:396
-#, fuzzy
-#| msgid "Base unit: "
 msgid "Base units: "
-msgstr "Базовий боєць:"
+msgstr "Базові бійці: "
 
 #: src/help/help_topic_generators.cpp:414
 msgid "Variations: "
@@ -8230,64 +8190,50 @@ msgstr "Поліпшення здібності: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:566
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "ЗД: "
+msgstr "ЗД:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:570
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Ходів: "
+msgstr "Ходів:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:575
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Бачення: "
+msgstr "Бачення:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:581
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Заклинювання: "
+msgstr "Заглушення:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:586
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Ціна: "
+msgstr "Ціна:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:590
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Групування: "
+msgstr "Тип:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:597
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "Необхідний ДВ: "
+msgstr "Необхідний ДВ:"
 
 #: src/help/help_topic_generators.cpp:615
 msgid "unit help^Attacks"
@@ -8344,10 +8290,8 @@ msgid "Movement Cost"
 msgstr "Ціна ходу"
 
 #: src/help/help_topic_generators.cpp:746
-#, fuzzy
-#| msgid "Defense"
 msgid "Defense Cap"
-msgstr "Захист"
+msgstr "Поріг захисту"
 
 #: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
