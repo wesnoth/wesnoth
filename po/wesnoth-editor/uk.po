@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2019-01-29 14:29+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
+"PO-Revision-Date: 2024-03-22 12:40+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -124,7 +124,7 @@ msgstr "особливе"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "підняття"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -200,7 +200,7 @@ msgstr "Вікно"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Аддон"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -249,7 +249,7 @@ msgstr "Призначити розклад часу доби"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Identifier: "
-msgstr "Індефікатор: "
+msgstr "Ідентифікатор: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Name: "
@@ -414,14 +414,8 @@ msgid "Map loaded from scenario"
 msgstr "Карту завантажено з сценарію"
 
 #: src/editor/map/context_manager.cpp:955
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Завантажено по посиланню файл карти:\n"
-"$new"
+msgstr "Завантажено по посиланню файл карти:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -466,15 +460,11 @@ msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Файл карти схожий на сценарій, але значення map_data не вказує на існуючий "
+"Файл карти схожий на сценарій, але значення map_file не вказує на існуючий "
 "файл"
 
 #: src/editor/map/map_context.cpp:288
@@ -547,11 +537,11 @@ msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + клік: копіювати ландшафт"
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + клік: копіювати ландшафт"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:95
 msgid "Clipboard support not found, contact your packager"
