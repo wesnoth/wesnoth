@@ -229,8 +229,10 @@ private:
 	void default_text_config(config* txt_ptr, t_string text = "", bool last_entry = false);
 
 	/** size calculation functions */
-	point get_text_size(config text_cfg);
+	point get_text_size(config text_cfg, unsigned width = 0);
 	point get_image_size(config img_cfg);
+
+	void update_positions(config text_cfg);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
