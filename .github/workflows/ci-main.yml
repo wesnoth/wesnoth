@@ -285,6 +285,8 @@ jobs:
         run: ./run_boost_tests --path=projectfiles/Xcode/build/"$CFG" --executable=unit_tests
 
   windows:
+    if: false # All vcpkg builds require xz. Disabled while vcpkg and xz upstreams discuss recovery from the backdoor.
+
     strategy:
       fail-fast: false
       matrix:
