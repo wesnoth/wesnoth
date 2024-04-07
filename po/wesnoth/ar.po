@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-19 20:52-0600\n"
-"PO-Revision-Date: 2024-03-30 21:46+0100\n"
+"PO-Revision-Date: 2024-04-03 12:01+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -7238,8 +7238,8 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
-"[all|<أمر>]\n"
-"“all” = عرض جميع الأوامر, <أمر> = اسم أمر محدد (يوفر المزيد من التفاصيل)"
+"[all|<command>]\n"
+"“all” = عرض جميع الأوامر, <command> = اسم أمر محدد (يوفر المزيد من التفاصيل)"
 
 #: src/map_command_handler.hpp:302
 msgid "Missing argument $arg_id"
@@ -7590,7 +7590,7 @@ msgstr "قم بإيقاف تشغيل وضع التصحيح."
 
 #: src/menu_events.cpp:1274 src/menu_events.cpp:1278
 msgid "<command>[;<command>...]"
-msgstr "<الأمر>[;<الأمر>...]"
+msgstr "<command>[;<command>...]"
 
 #: src/menu_events.cpp:1274
 msgid "Execute a Lua statement."
@@ -7614,7 +7614,7 @@ msgstr "قم بتشغيل مفتش حالة اللعبة"
 
 #: src/menu_events.cpp:1283
 msgid "<name>[=<command>]"
-msgstr "<الاسم>[=<الأمر>]"
+msgstr "<name>[=<command>]"
 
 #: src/menu_events.cpp:1283
 msgid "Set or show alias to a command"
@@ -7851,9 +7851,10 @@ msgstr "نوع الوحدة غير صالح"
 msgid "Invalid location"
 msgstr "موقع غير صالح"
 
+# #po: arabic try to force LtR reading of :الامر
 #: src/menu_events.cpp:2128 src/menu_events.cpp:2154
 msgid "prompt^Command:"
-msgstr "الأمر:"
+msgstr "command(امر تصحيح):"
 
 #: src/mouse_events.cpp:1219
 msgid ""

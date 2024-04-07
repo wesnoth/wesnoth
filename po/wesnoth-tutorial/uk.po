@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2019-02-01 16:41+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
+"PO-Revision-Date: 2024-03-22 12:36+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
 msgid "Battle Training"
-msgstr ""
+msgstr "Бойове тренування"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
@@ -32,7 +32,7 @@ msgstr ""
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
 #: data/campaigns/tutorial/achievements.cfg:3
 msgid "Tutorial"
-msgstr ""
+msgstr "Посібник"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
@@ -40,21 +40,23 @@ msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
 "time players."
 msgstr ""
+"Вивчіть основи гри у Веснот з цим посібником. Рекомендовано для тих, хто "
+"грає вперше."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
-msgstr ""
+msgstr "Початківець"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Завершено посібник"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
 msgid "Complete the Battle Training."
-msgstr ""
+msgstr "Завершено Бойове тренування"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -63,8 +65,6 @@ msgstr "Виберіть Героя"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who do you want to play?"
 msgid "Who do you want to play as?"
 msgstr "Ким би ви хотіли грати?"
 
@@ -136,7 +136,7 @@ msgstr "Дайте себе вбити"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
-msgstr ""
+msgstr "Ви не можете завершити свій хід, не навчившись ходити бійцями!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -160,12 +160,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -179,12 +173,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -357,7 +345,7 @@ msgstr ""
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:503
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
+msgstr "Ви не можете завершити свій хід, не атакувавши опудало!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:517
@@ -443,15 +431,6 @@ msgstr "Ходи"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:588
-#, fuzzy
-#| msgid ""
-#| "Every turn, each side in a scenario gets a chance to make their move. "
-#| "Once you’ve completed everything you wish to do this turn, click on the "
-#| "<b>End Turn</b> button in the bottom right of the screen. The other "
-#| "teams, whether controlled by the AI or other human players, will then "
-#| "make their move. Some scenarios must be completed in a certain number of "
-#| "turns. You can see what turn it is, and any applicable turn limit, next "
-#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -462,11 +441,11 @@ msgid ""
 "of the screen."
 msgstr ""
 "Кожного ходу кожна сторона отримує можливість зробити свій хід. Як тільки ви "
-"зробили все, що хотіли на цьому ходу, натисніть кнопку <b>Кінець</b> у "
-"нижньому правому кутку екрану. Після цього ходити будуть інші сторони, "
+"зробили все, що хотіли на цьому ходу, натисніть кнопку <b>Завершити хід</b> "
+"у нижньому правому кутку екрану. Після цього ходити будуть інші сторони, "
 "контрольовані іншими гравцями або комп'ютером. Деякі сценарії мають бути "
-"вийграні за певну кількість ходів. Ви дізнатися про те, який зараз хід і "
-"скільки їх залишилося, поглянувши на верхню панель поряд із прапорцем."
+"виграні за певну кількість ходів. Ви можете дізнатися про те, який зараз хід "
+"і скільки їх залишилося, поглянувши на верхню панель поряд із прапорцем."
 
 #. [event]
 #. [else]
@@ -481,7 +460,7 @@ msgstr "Завершіть ваш хід"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:614
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr ""
+msgstr "Ви не можете завершити свій хід, не навчившись лікувати бійців!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:625
@@ -544,7 +523,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr ""
+msgstr "Ви не можете завершити свій хід, не навчившись наймати бійців!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
@@ -606,13 +585,6 @@ msgstr "Вербування"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:743
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
-#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
-#| "Note that newly recruited units cannot act the turn you recruit them; you "
-#| "will be able to use them next turn. This scenario you have only one type "
-#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -638,13 +610,6 @@ msgstr "Риси"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:765
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, and units with the <i>intelligent</i> trait "
-#| "require 20% less experience to level up."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -662,7 +627,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:807
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr ""
+msgstr "Ви не можете завершити свій хід, не навчившись атакувати!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:816
@@ -690,10 +655,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
-#, fuzzy
-#| msgid ""
-#| "Before you send your fighters against the quintain, you should know they "
-#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -739,19 +700,13 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:895
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Твій ельф використав меч (5×4, або 5 одиниць пошкоджень, 4 атаки), тобто "
+"Твій ельф використав меч (6×4, або 6 одиниць пошкоджень, 4 атаки), тобто "
 "<i>ближню</i> атаку. Опудало захищалося в рукопашну (3×5, або 3 одиниць "
 "пошкоджень, 5 атаки). Атака луком здалеку була б безпечнішою."
 
@@ -761,6 +716,8 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Ельфійські воїни зазвичай наносять своїми мечами 5×4 шкоди, однак цей ельф "
+"має рису <i>сильний</i>, що збільшує шкоду ближніх атак."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:905
@@ -777,17 +734,12 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:926
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Твій ельф використав лук (3×3, або 3 одиниці пошкоджень, 3 атаки), тобто "
+"Твій ельф використав лук (4×3, або 4 одиниці пошкоджень, 3 атаки), тобто "
 "<i>дальню</i> атаку. У опудала нема далекобійної зброї, тому воно не змогло "
 "дати здачі."
 
@@ -797,6 +749,8 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Ельфійські воїни зазвичай наносять 3×3 шкоди при стрільбі з луку, однак цей "
+"ельф має рису <i>влучний</i>, що збільшує шкоду дальніх атак."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:936
@@ -826,9 +780,6 @@ msgstr "Опис бійця"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:978
-#, fuzzy
-#| msgid ""
-#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -1098,11 +1049,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
-#, fuzzy
-#| msgid ""
-#| "Welcome back! This is second part of the two-part tutorial. Part 2 will "
-#| "teach you about recalling units, abilities and weapon specials, income "
-#| "and upkeep, long-distance movement, zone of control, and time of day."
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
@@ -1132,12 +1078,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
-#, fuzzy
-#| msgid ""
-#| "This is no game, Konrad! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1151,12 +1091,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
-#, fuzzy
-#| msgid ""
-#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1198,13 +1132,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It’s too deep for either side to cross. The "
-#| "orcs could slowly wade through that narrow band of shallow lighter-blue "
-#| "water in the east; but we could stand on the shore and force them to "
-#| "fight us from the water, where they are exposed and we are protected by "
-#| "the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1213,8 +1140,8 @@ msgid ""
 msgstr ""
 "Бачиш цю темно-синю воду? Вона занадто глибока — ні ми, ні вони не зможемо "
 "по ній пройти. Вони можуть повільно йти по вузькій смужці мілководдя на "
-"сході(світло-синя вода); але ми можемо зайняти узбережжя і змусити їх битися "
-"у воді — так що вони будуть вразливі, ми ж — під захистом лісу."
+"півночі (світло-синя вода); але ми можемо зайняти узбережжя і змусити їх "
+"битися у воді — так що вони будуть вразливі, ми ж — під захистом лісу."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
@@ -1523,10 +1450,8 @@ msgstr "Захопіть село"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:445
-#, fuzzy
-#| msgid "Capture a village"
 msgid "You still have to capture a village!"
-msgstr "Захопіть село"
+msgstr "Вам все ще потрібно захопити село!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:477
@@ -1579,16 +1504,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:557
-#, fuzzy
-#| msgid ""
-#| "You moved to the wrong place! After this message, you can press <b>u</b> "
-#| "to undo, then try again."
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"Ви пішли не туди! Після цього повідомлення натисніть клавішу <b>u</b>, щоб "
-"скасувати хід, а потім спробуйте знову."
+"Ви забули захопити село! Натисніть клавішу <b>u</b>, щоб скасувати останнє "
+"переміщення."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:576
@@ -2070,7 +1991,7 @@ msgstr ""
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "Прискорення анімацій"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
@@ -2241,14 +2162,12 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
-#, fuzzy
-#| msgid ""
-#| "Higher level units are powerful, but not invulnerable. Goodbye, $unit."
-#| "name|."
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
-msgstr "Бійці високого рівня сильні, але не безсмертні! Прощай, $unit.name|."
+msgstr ""
+"Бійці високого рівня сильні, але не безсмертні! Нам буде тебе не вистачати, "
+"$unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1322
@@ -2500,7 +2419,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Воїн"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, gender=female, race=human
@@ -2513,8 +2432,6 @@ msgstr ""
 
 #. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
 msgstr "Воїтелька"
 
@@ -2533,15 +2450,12 @@ msgstr ""
 "на клавішу <b>u</b>."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
+"\n"
 "\n"
 "<big>Клацніть мишкою чи натисніть пробіл для продовження...</big>"
 
