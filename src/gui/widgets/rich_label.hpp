@@ -232,7 +232,7 @@ private:
 	/** template for canvas text config */
 	void default_text_config(config* txt_ptr, t_string text = "", bool last_entry = false);
 
-	void add_text_with_attribute(config& text_cfg, std::string text, bool last_entry, std::string attr_name = "", std::string extra_data = "");
+	void add_text_with_attribute(config& text_cfg, std::string text, std::string attr_name = "", std::string extra_data = "");
 
 	/** size calculation functions */
 	point get_text_size(config text_cfg, unsigned width = 0);
