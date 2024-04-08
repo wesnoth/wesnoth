@@ -157,6 +157,10 @@ void rich_label::set_label(const t_string& text)
 				config& img = text_dom_.add_child("image");
 				img["name"] = cfg.mandatory_child("img")["src"];
 				std::string align = cfg.mandatory_child("img")["align"];
+				if (align.empty()) {
+					align = "left";
+				}
+
 				bool floating = cfg.mandatory_child("img")["float"].to_bool();
 
 				PLAIN_LOG << "float :" << cfg.mandatory_child("img")["float"];
@@ -207,8 +211,8 @@ void rich_label::set_label(const t_string& text)
 					img_size.x = get_image_size(img).x;
 					img_size.y += get_image_size(img).y;
 				} else {
-//					img_size.x += get_image_size(img).x;
-//					img_size.y = get_image_size(img).y;
+					img_size.x += get_image_size(img).x;
+					img_size.y = get_image_size(img).y;
 				}
 
 				y_ = h_;
@@ -227,6 +231,9 @@ void rich_label::set_label(const t_string& text)
 			} else {
 				// reset image positioning
 				if (is_image) {
+					prev_txt_height_ +=img_size.y;
+					img_size = point(0,0);
+
 					PLAIN_LOG << "inserting break";
 					config& break_cfg = text_dom_.add_child("text");
 					default_text_config(&break_cfg);
@@ -311,6 +318,9 @@ void rich_label::set_label(const t_string& text)
 		} else if (!line.empty()) {
 			// reset image positioning
 			if (is_image) {
+				prev_txt_height_ += img_size.y;
+				img_size = point(0,0);
+
 				PLAIN_LOG << "inserting break";
 				config& break_cfg = text_dom_.add_child("text");
 				default_text_config(&break_cfg);
