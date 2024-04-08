@@ -442,40 +442,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		game_config::strict_lua = true;
 	}
 
-	if(cmdline_opts.gunzip) {
-		const std::string input_file(*cmdline_opts.gunzip);
-		if(!filesystem::is_gzip_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .gz file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 3);
-		gzip_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bunzip2) {
-		const std::string input_file(*cmdline_opts.bunzip2);
-		if(!filesystem::is_bzip2_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .bz2 file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 4);
-		bzip2_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.gzip) {
-		const std::string input_file(*cmdline_opts.gzip);
-		const std::string output_file(*cmdline_opts.gzip + ".gz");
-		gzip_encode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bzip2) {
-		const std::string input_file(*cmdline_opts.bzip2);
-		const std::string output_file(*cmdline_opts.bzip2 + ".bz2");
-		bzip2_encode(input_file, output_file);
-	}
-
 	if(cmdline_opts.help) {
 		std::cout << cmdline_opts;
 		return 0;
@@ -1077,8 +1043,8 @@ int main(int argc, char** argv)
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> terminal_arg_switches = {
-			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
-			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
+			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image", "--screenshot",
+			"-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
