@@ -145,8 +145,6 @@ public:
 		return unparsed_text_.empty() ? styled_widget::get_label() : unparsed_text_;
 	}
 
-	void add_text_with_attribute(config& text_cfg, std::string text, bool last_entry, std::string attr_name, std::string extra_data = "");
-
 	void set_label(const t_string& text) override;
 
 	void register_link_callback(std::function<void(std::string)> link_handler)
@@ -225,14 +223,22 @@ private:
 	/** Width and height of the canvas */
 	unsigned w_, h_, x_, y_;
 
+	/** Height of current text block */
+	unsigned txt_height_;
+
+	/** Height of all previous text blocks, combined */
+	unsigned prev_txt_height_;
+
 	/** template for canvas text config */
 	void default_text_config(config* txt_ptr, t_string text = "", bool last_entry = false);
+
+	void add_text_with_attribute(config& text_cfg, std::string text, bool last_entry, std::string attr_name = "", std::string extra_data = "");
 
 	/** size calculation functions */
 	point get_text_size(config text_cfg, unsigned width = 0);
 	point get_image_size(config img_cfg);
 
-	void update_positions(config text_cfg);
+	size_t get_split_location(int img_height);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
