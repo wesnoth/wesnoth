@@ -46,7 +46,7 @@ private:
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
+	playsingle_controller(const config& level, saved_game& state_of_game);
 
 	~playsingle_controller();
 	level_result::type play_scenario(const config& level);

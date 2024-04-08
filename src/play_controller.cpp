@@ -129,7 +129,7 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay, bool start_faded)
+play_controller::play_controller(const config& level, saved_game& state_of_game)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
@@ -151,12 +151,12 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
 	, statistics_context_(new statistics_t(state_of_game.statistics()))
 	, replay_(new replay(state_of_game.get_replay()))
-	, skip_replay_(skip_replay)
+	, skip_replay_(false)
 	, skip_story_(state_of_game.skip_story())
 	, did_autosave_this_turn_(true)
 	, did_tod_sound_this_turn_(false)
 	, map_start_()
-	, start_faded_(start_faded)
+	, start_faded_(true)
 	, victory_music_()
 	, defeat_music_()
 	, scope_(hotkey::scope_game)

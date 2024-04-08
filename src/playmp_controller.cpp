@@ -49,7 +49,7 @@ static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
 playmp_controller::playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info)
-	: playsingle_controller(level, state_of_game, mp_info && mp_info->skip_replay)
+	: playsingle_controller(level, state_of_game)
 	, network_processing_stopped_(false)
 	, next_scenario_notified_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
@@ -59,9 +59,7 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 	// upgrade hotkey handler to the mp (network enabled) version
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_));
 
-	if(!mp_info || mp_info->current_turn <= turn()) {
-		skip_replay_ = false;
-	}
+	skip_replay_ = mp_info && mp_info->skip_replay && mp_info->current_turn > turn();
 
 	if(gui_->is_blindfolded() && !is_observer()) {
 		blindfold_.unblind();
