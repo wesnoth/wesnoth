@@ -1335,6 +1335,7 @@ std::vector<std::string> parse_text(const std::string &text)
 {
 	std::vector<std::string> res;
 	bool last_char_escape = false;
+	bool found_slash = false;
 	const char escape_char = '\\';
 	std::stringstream ss;
 	std::size_t pos;
@@ -1362,31 +1363,53 @@ std::vector<std::string> parse_text(const std::string &text)
 			}
 			else if (state == ELEMENT_NAME) {
 				if (c == '/') {
-					std::string msg = "Erroneous / in element name.";
-					throw parse_error(msg);
+//					std::string msg = "Erroneous / in element name.";
+//					throw parse_error(msg);
+					found_slash = true;
 				}
 				else if (c == '>') {
 					// End of this name.
 					std::stringstream s;
-					const std::string element_name = ss.str();
+					std::string element_name = ss.str();
 					ss.str("");
-					s << "</" << element_name << ">";
-					const std::string end_element_name = s.str();
-					std::size_t end_pos = text.find(end_element_name, pos);
-					if (end_pos == std::string::npos) {
-						std::stringstream msg;
-						msg << "Unterminated element: " << element_name;
-						throw parse_error(msg.str());
+					PLAIN_LOG << "(parser) : " << element_name;
+
+					if (found_slash) {
+						// empty tag support
+						std::size_t attr_pos = element_name.find(" ");
+						std::string attrs = "";
+						if (attr_pos != std::string::npos) {
+							attrs = element_name.substr(attr_pos+1);
+							element_name = element_name.substr(0, attr_pos);
+						}
+						res.push_back(convert_to_wml(element_name, attrs));
+						found_slash = false;
+						pos = text.find(">", pos);
+					} else {
+						s << "</" << element_name << ">";
+						const std::string end_element_name = s.str();
+						std::size_t end_pos = text.find(end_element_name, pos);
+						if (end_pos == std::string::npos) {
+							std::stringstream msg;
+							msg << "Unterminated element: " << element_name;
+							throw parse_error(msg.str());
+						}
+						s.str("");
+						const std::string contents = text.substr(pos + 1, end_pos - pos - 1);
+						const std::string element = convert_to_wml(element_name, contents);
+						res.push_back(element);
+						pos = end_pos + end_element_name.size() - 1;
 					}
-					s.str("");
-					const std::string contents = text.substr(pos + 1, end_pos - pos - 1);
-					const std::string element = convert_to_wml(element_name, contents);
-					res.push_back(element);
-					pos = end_pos + end_element_name.size() - 1;
 					state = OTHER;
 				}
 				else {
-					ss << c;
+					if (found_slash) {
+						found_slash = false;
+						std::string msg = "Erroneous / in element name.";
+						throw parse_error(msg);
+					} else {
+						ss << c;
+					}
 				}
 			}
 			last_char_escape = false;

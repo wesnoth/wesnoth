@@ -132,13 +132,13 @@ void rich_label::set_label(const t_string& text)
 	help::topic_text marked_up_text(text);
 	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
 
-//	config* text_ptr = &(text_dom_.add_child("text"));
-//	default_text_config(text_ptr);
 	config* text_ptr = nullptr;
 
 	bool is_image = false;
 	point wrap_position;
 	point img_size;
+	unsigned col_width = 0;
+	unsigned max_col_height = 0;
 
 	for (size_t i = 0; i < parsed_text.size(); i++) {
 		bool last_entry = (i == parsed_text.size() - 1);
@@ -234,7 +234,7 @@ void rich_label::set_label(const t_string& text)
 					prev_txt_height_ +=img_size.y;
 					img_size = point(0,0);
 
-					PLAIN_LOG << "inserting break";
+//					PLAIN_LOG << "inserting break";
 					config& break_cfg = text_dom_.add_child("text");
 					default_text_config(&break_cfg);
 					break_cfg["text"] = " ";
@@ -298,12 +298,70 @@ void rich_label::set_label(const t_string& text)
 					PLAIN_LOG << "(header) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 
-					//			} else if(line == "[link]") {
-					//			} else if(line == "[jump]") {
-					//			} else if(line == "[format]") {
+//				} else if(line == "[link]") {
+//				} else if(line == "[format]") {
 
+				} else if(cfg.optional_child("table")) {
+					// setup column width
+					unsigned columns = cfg.mandatory_child("table")["col"].to_int();
+					col_width = w_/columns;
 
+					// start on a new line
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + if(ih > text_height, ih, text_height)), set_var('iw', width - pos_x - " + std::to_string(col_width) + "), set_var('ih', 0)])";
+					x_ = 0;
+					prev_txt_height_ += std::max(img_size.y, get_text_size(*text_ptr, w_ - img_size.x).y);
+					txt_height_ = 0;
+
+					PLAIN_LOG << "start table : " << "col=" << columns;
+					PLAIN_LOG << "col_width : " << col_width;
+
+					// new text block
+					text_ptr = &(text_dom_.add_child("text"));
+					default_text_config(text_ptr);
+
+				} else if(cfg.optional_child("jump")) {
+					if (col_width > 0) {
+						PLAIN_LOG << "new block/col";
+//						PLAIN_LOG << "text height : " << txt_height_;
+
+						max_col_height = std::max(max_col_height, txt_height_);
+						txt_height_ = 0;
+						x_ += col_width;
+						(*text_ptr)["actions"] = "([set_var('pos_x', pos_x + " + std::to_string(col_width) + "),"
+								+ " set_var('iw', width - pos_x - " + std::to_string(col_width) + ")])";
+
+						// new text block
+						text_ptr = &(text_dom_.add_child("text"));
+						default_text_config(text_ptr);
+					}
+				} else if( cfg.optional_child("break") || cfg.optional_child("br") ) {
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + "+ std::to_string(max_col_height) +"), set_var('iw', width - pos_x - " + std::to_string(col_width) + ")])";
+
+					x_ = 0;
+					prev_txt_height_ += max_col_height;
+					max_col_height = 0;
+					txt_height_ = 0;
+
+					// new text block
+					text_ptr = &(text_dom_.add_child("text"));
+					default_text_config(text_ptr);
+
+				} else if(cfg.optional_child("endtable")) {
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + "+ std::to_string(max_col_height) +"), set_var('iw', width - pos_x - " + std::to_string(col_width) + ")])";
+
+					col_width = 0;
+					x_ = 0;
+					prev_txt_height_ += max_col_height;
+					max_col_height = 0;
+					txt_height_ = 0;
+
+					// new text block
+					text_ptr = &(text_dom_.add_child("text"));
+					default_text_config(text_ptr);
+
+					PLAIN_LOG << "end table";
 				}
+
 
 				if (tmp_h > get_text_size(*text_ptr, w_ - img_size.x).y) {
 					tmp_h = 0;
@@ -313,6 +371,7 @@ void rich_label::set_label(const t_string& text)
 					img_size = point(0,0);
 					h_ = txt_height_ + prev_txt_height_;
 				}
+
 			}
 
 		} else if (!line.empty()) {
@@ -321,7 +380,7 @@ void rich_label::set_label(const t_string& text)
 				prev_txt_height_ += img_size.y;
 				img_size = point(0,0);
 
-				PLAIN_LOG << "inserting break";
+//				PLAIN_LOG << "inserting break";
 				config& break_cfg = text_dom_.add_child("text");
 				default_text_config(&break_cfg);
 				break_cfg["text"] = " ";
@@ -385,7 +444,7 @@ void rich_label::set_label(const t_string& text)
 	} // for loop ends
 //	PLAIN_LOG << "h :" << h_;
 
-	PLAIN_LOG << text_dom_.debug();
+//	PLAIN_LOG << text_dom_.debug();
 } // function ends
 
 void rich_label::default_text_config(config* txt_ptr, t_string text, bool last_entry) {
