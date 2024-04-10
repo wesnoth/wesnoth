@@ -304,17 +304,20 @@ const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
 /**
- * Parse a text string. Return a vector with the different parts of the
- * text. Each markup item is a separate part while the text between
- * markups are separate parts.
+ * Parse a xml style marked up text string. Return a vector with
+ * the different parts of the text. Each markup item and the text
+ * between markups are separate parts. Each line of returned vector
+ * is valid WML.
  */
 std::vector<std::string> parse_text(const std::string &text);
 
 /**
- * Convert the contents to wml attributes, surrounded within
- * [element_name]...[/element_name]. Return the resulting WML.
+ * Convert the contents to valid wml attributes, surrounded within
+ * [element_name]...[/element_name]. Contents are the text
+ * between start <element_name> and end </element_name> tags.
+ * Return the resulting WML.
  */
-std::string convert_to_wml(const std::string &element_name, const std::string &contents);
+std::string convert_to_wml(std::string &element_name, const std::string &contents);
 
 /**
  * Return the color the string represents. Return font::NORMAL_COLOR if

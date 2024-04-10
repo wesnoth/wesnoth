@@ -47,6 +47,7 @@
 #include "serialization/unicode.hpp"    // for iterator
 #include "color.hpp"
 
+#include <boost/algorithm/string.hpp>
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
 #include <iterator>                     // for back_insert_iterator, etc
@@ -1363,8 +1364,6 @@ std::vector<std::string> parse_text(const std::string &text)
 			}
 			else if (state == ELEMENT_NAME) {
 				if (c == '/') {
-//					std::string msg = "Erroneous / in element name.";
-//					throw parse_error(msg);
 					found_slash = true;
 				}
 				else if (c == '>') {
@@ -1372,7 +1371,6 @@ std::vector<std::string> parse_text(const std::string &text)
 					std::stringstream s;
 					std::string element_name = ss.str();
 					ss.str("");
-					PLAIN_LOG << "(parser) : " << element_name;
 
 					if (found_slash) {
 						// empty tag support
@@ -1427,17 +1425,23 @@ std::vector<std::string> parse_text(const std::string &text)
 	return res;
 }
 
-std::string convert_to_wml(const std::string &element_name, const std::string &contents)
+std::string convert_to_wml(std::string& element_name, const std::string& contents)
 {
 	std::stringstream ss;
 	bool in_quotes = false;
 	bool last_char_escape = false;
 	const char escape_char = '\\';
 	std::vector<std::string> attributes;
+	std::stringstream buff;
+
+	// Remove any leading and trailing space from element name
+	boost::algorithm::trim(element_name);
+
 	// Find the different attributes.
-	// No checks are made for the equal sign or something like that.
 	// Attributes are just separated by spaces or newlines.
 	// Attributes that contain spaces must be in single quotes.
+	// No equal key forces that token to be considered as plain text
+	// and it gets attached to the default 'text' key.
 	for (std::size_t pos = 0; pos < contents.size(); ++pos) {
 		const char c = contents[pos];
 		if (c == escape_char && !last_char_escape) {
@@ -1450,7 +1454,13 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 			}
 			else if ((c == ' ' || c == '\n') && !last_char_escape && !in_quotes) {
 				// Space or newline, end of attribute.
-				attributes.push_back(ss.str());
+				std::size_t eq_pos = ss.str().find("=");
+				if (eq_pos == std::string::npos) {
+					// no = sign found, assuming plain text
+					buff << " " << ss.str();
+				} else {
+					attributes.push_back(ss.str());
+				}
 				ss.str("");
 			}
 			else {
@@ -1459,27 +1469,47 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 			last_char_escape = false;
 		}
 	}
+
 	if (in_quotes) {
 		std::stringstream msg;
 		msg << "Unterminated single quote after: '" << ss.str() << "'";
 		throw parse_error(msg.str());
 	}
+
 	if (!ss.str().empty()) {
-		attributes.push_back(ss.str());
+		std::size_t eq_pos = ss.str().find("=");
+		if (eq_pos == std::string::npos) {
+			// no = sign found, assuming plain text
+			buff << " " << ss.str();
+		} else {
+			attributes.push_back(ss.str());
+		}
 	}
 	ss.str("");
 	// Create the WML.
 	ss << "[" << element_name << "]\n";
-	for (std::vector<std::string>::const_iterator it = attributes.begin();
-		 it != attributes.end(); ++it) {
-		ss << *it << "\n";
+	//for (std::vector<std::string>::const_iterator it = attributes.begin();
+	//	 it != attributes.end(); ++it) {
+	for (auto& elem : attributes) {
+		boost::algorithm::trim(elem);
+		ss << elem << "\n";
+	}
+
+	std::string text = buff.str();
+	boost::algorithm::trim(text);
+	if (!text.empty()) {
+		ss << "text=\"" << text << "\"\n";
 	}
 	ss << "[/" << element_name << "]\n";
+
+	buff.str("");
 	return ss.str();
 }
 
 color_t string_to_color(const std::string &cmp_str)
 {
+	// TODO needs a more generic mechanism
+	// so that more common color names are recognized
 	if (cmp_str == "green") {
 		return font::GOOD_COLOR;
 	}

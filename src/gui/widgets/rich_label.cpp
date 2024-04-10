@@ -102,10 +102,6 @@ void rich_label::add_text_with_attribute(config& text_cfg, std::string text, std
 			text_cfg["attr_color"] = (text_cfg["attr_color"].str().empty() ? "" : (text_cfg["attr_color"].str() + ",")) + extra_data;
 		}
 	}
-	// Clear variables to stop them from growing too large
-//	if (last_entry) {
-//		text_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
-//	}
 }
 
 size_t rich_label::get_split_location(int img_height) {
@@ -146,7 +142,7 @@ void rich_label::set_label(const t_string& text)
 
 		if (!line.empty() && line.at(0) == '[') {
 			config cfg;
-			std::istringstream stream(line);
+//			std::istringstream stream(line);
 			::read(cfg, line);
 
 			if (cfg.optional_child("img")) {
@@ -263,24 +259,31 @@ void rich_label::set_label(const t_string& text)
 					rect link_rect = {static_cast<int>(x_), static_cast<int>(y_), static_cast<int>(x2-x_), static_cast<int>(h_-y_)};
 					links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
 
-				} else if (cfg.optional_child("bold")) {
+				} else if (cfg.optional_child("bold")||cfg.optional_child("b")) {
 
-					add_text_with_attribute((*text_ptr), cfg.mandatory_child("bold")["text"], "bold");
+					if (cfg.optional_child("bold")) {
+						add_text_with_attribute((*text_ptr), cfg.mandatory_child("bold")["text"], "bold");
+					} else if (cfg.optional_child("b")) {
+						add_text_with_attribute((*text_ptr), cfg.mandatory_child("b")["text"], "bold");
+					}
 
 					PLAIN_LOG << "(bold) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
-				} else if (cfg.optional_child("italic")) {
+				} else if (cfg.optional_child("italic")||cfg.optional_child("i")) {
 
-					add_text_with_attribute((*text_ptr), cfg.mandatory_child("italic")["text"], "italic");
+					if (cfg.optional_child("italic")) {
+						add_text_with_attribute((*text_ptr), cfg.mandatory_child("italic")["text"], "italic");
+					} else if (cfg.optional_child("i")) {
+						add_text_with_attribute((*text_ptr), cfg.mandatory_child("i")["text"], "italic");
+					}
 
 					PLAIN_LOG << "(italic) x :" << x_ << ", y :"  << y_ << ", h: " << h_;
 
-				} else if (cfg.optional_child("header")) {
+				} else if (cfg.optional_child("header")||cfg.optional_child("h")) {
 					// Header starts in a new line/paragraph
 					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + if(ih > text_height, ih, text_height)), set_var('iw', 0), set_var('ih', 0)])";
 					x_ = 0;
 					prev_txt_height_ += std::max(img_size.y, get_text_size(*text_ptr, w_ - img_size.x).y);
-//					PLAIN_LOG << "header, pth :" << prev_txt_height_;
 					txt_height_ = 0;
 
 					// Header config
@@ -288,6 +291,11 @@ void rich_label::set_label(const t_string& text)
 					default_text_config(text_ptr);
 
 					size_t start = 0;
+					if (cfg.optional_child("header")) {
+						(*text_ptr)["text"] = cfg.mandatory_child("header")["text"];
+					} else if (cfg.optional_child("h")) {
+						(*text_ptr)["text"] = cfg.mandatory_child("h")["text"];
+					}
 					(*text_ptr)["text"] = cfg.mandatory_child("header")["text"];
 					(*text_ptr)["attr_name"] = "fgcolor,fontsize";
 					(*text_ptr)["attr_start"] = std::to_string(start) + "," + std::to_string(start);
@@ -304,10 +312,12 @@ void rich_label::set_label(const t_string& text)
 				} else if(cfg.optional_child("table")) {
 					// setup column width
 					unsigned columns = cfg.mandatory_child("table")["col"].to_int();
-					col_width = w_/columns;
+					unsigned width = cfg.mandatory_child("table")["width"].to_int();
+					width = width > 0 ? width : w_;
+					col_width = width/columns;
 
 					// start on a new line
-					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + if(ih > text_height, ih, text_height)), set_var('iw', width - pos_x - " + std::to_string(col_width) + "), set_var('ih', 0)])";
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + if(ih > text_height, ih, text_height)), set_var('tw', width - pos_x - " + std::to_string(col_width) + "), set_var('ih', 0)])";
 					x_ = 0;
 					prev_txt_height_ += std::max(img_size.y, get_text_size(*text_ptr, w_ - img_size.x).y);
 					txt_height_ = 0;
@@ -328,14 +338,14 @@ void rich_label::set_label(const t_string& text)
 						txt_height_ = 0;
 						x_ += col_width;
 						(*text_ptr)["actions"] = "([set_var('pos_x', pos_x + " + std::to_string(col_width) + "),"
-								+ " set_var('iw', width - pos_x - " + std::to_string(col_width) + ")])";
+								+ " set_var('tw', width - pos_x - " + std::to_string(col_width) + ")])";
 
 						// new text block
 						text_ptr = &(text_dom_.add_child("text"));
 						default_text_config(text_ptr);
 					}
 				} else if( cfg.optional_child("break") || cfg.optional_child("br") ) {
-					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + "+ std::to_string(max_col_height) +"), set_var('iw', width - pos_x - " + std::to_string(col_width) + ")])";
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + "+ std::to_string(max_col_height) +"), set_var('tw', width - pos_x - " + std::to_string(col_width) + ")])";
 
 					x_ = 0;
 					prev_txt_height_ += max_col_height;
@@ -347,7 +357,7 @@ void rich_label::set_label(const t_string& text)
 					default_text_config(text_ptr);
 
 				} else if(cfg.optional_child("endtable")) {
-					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + "+ std::to_string(max_col_height) +"), set_var('iw', width - pos_x - " + std::to_string(col_width) + ")])";
+					(*text_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + "+ std::to_string(max_col_height) +"), set_var('tw', 0)])";
 
 					col_width = 0;
 					x_ = 0;
@@ -451,10 +461,10 @@ void rich_label::default_text_config(config* txt_ptr, t_string text, bool last_e
 	(*txt_ptr)["text"] = text;
 	(*txt_ptr)["font_size"] = 16;
 	(*txt_ptr)["x"] = "(pos_x)";
-	(*txt_ptr)["y"] = "(debug_print('dtc, y', pos_y))";
+	(*txt_ptr)["y"] = "(pos_y)";
 	(*txt_ptr)["w"] = "(text_width)";
 	(*txt_ptr)["h"] = "(text_height)";
-	(*txt_ptr)["maximum_width"] = "(width - iw)";
+	(*txt_ptr)["maximum_width"] = "(width - iw - tw)";
 
 	if (last_entry) {
 		(*txt_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0)])";
