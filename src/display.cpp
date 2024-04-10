@@ -2221,14 +2221,14 @@ submerge_data display::get_submerge_data(const rect& dest, double submerge, cons
 	}
 
 	// Set up blit destinations
-	data.unsub_dest_ = dest;
+	data.unsub_dest = dest;
 	const int dest_sub_h = dest.h * submerge;
-	data.unsub_dest_.h -= dest_sub_h;
-	const int dest_y_mid = dest.y + data.unsub_dest_.h;
+	data.unsub_dest.h -= dest_sub_h;
+	const int dest_y_mid = dest.y + data.unsub_dest.h;
 
 	// Set up blit src regions
 	const int submersion_line = size.y * (1.0 - submerge);
-	data.unsub_src_ = {0, 0, size.x, submersion_line};
+	data.unsub_src = {0, 0, size.x, submersion_line};
 
 	// Set up shader vertices
 	const color_t c_mid(255, 255, 255, 0.3 * alpha);
@@ -2239,7 +2239,7 @@ submerge_data display::get_submerge_data(const rect& dest, double submerge, cons
 	const SDL_FPoint pMR{float(dest.x + dest.w), float(dest_y_mid)};
 	const SDL_FPoint pBL{float(dest.x), float(dest.y + dest.h)};
 	const SDL_FPoint pBR{float(dest.x + dest.w), float(dest.y + dest.h)};
-	data.alpha_verts_ = {
+	data.alpha_verts = {
 		SDL_Vertex{pML, c_mid, {0.0, float(1.0 - submerge)}},
 		SDL_Vertex{pMR, c_mid, {1.0, float(1.0 - submerge)}},
 		SDL_Vertex{pBL, c_bot, {0.0, 1.0}},
@@ -2247,12 +2247,12 @@ submerge_data display::get_submerge_data(const rect& dest, double submerge, cons
 	};
 
 	if(hreverse) {
-		for(SDL_Vertex& v : data.alpha_verts_) {
+		for(SDL_Vertex& v : data.alpha_verts) {
 			v.tex_coord.x = 1.0 - v.tex_coord.x;
 		}
 	}
 	if(vreverse) {
-		for(SDL_Vertex& v : data.alpha_verts_) {
+		for(SDL_Vertex& v : data.alpha_verts) {
 			v.tex_coord.y = 1.0 - v.tex_coord.y;
 		}
 	}
@@ -2753,13 +2753,13 @@ void display::draw_hex(const map_location& loc)
 							if(submerge > 0.0) {
 								// set clip for dry part
 								// smooth_shaded doesn't use the clip information so it's fine to set it up front
-								tex.set_src(data.unsub_src_);
+								tex.set_src(data.unsub_src);
 
 								// draw underwater part
-								draw::smooth_shaded(tex, data.alpha_verts_);
+								draw::smooth_shaded(tex, data.alpha_verts);
 							}
 							// draw dry part
-							draw::blit(tex, submerge > 0.0 ? data.unsub_dest_ : dest);
+							draw::blit(tex, submerge > 0.0 ? data.unsub_dest : dest);
 						});
 					}
 				}

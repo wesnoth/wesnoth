@@ -74,14 +74,9 @@ namespace wb {
 
 struct submerge_data
 {
-	submerge_data()
-	: unsub_src_()
-	, unsub_dest_()
-	, alpha_verts_() {}
-
-	rect unsub_src_;
-	rect unsub_dest_;
-	std::array<SDL_Vertex, 4> alpha_verts_;
+	rect unsub_src;
+	rect unsub_dest;
+	std::array<SDL_Vertex, 4> alpha_verts;
 };
 
 class gamemap;
