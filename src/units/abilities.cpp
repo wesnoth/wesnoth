@@ -1919,12 +1919,12 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, const std::string& type) :
+effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(0)
 {
 
-	int value_set = (type == "leadership") ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
+	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
@@ -1941,7 +1941,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, con
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if(type != "leadership"){
+		if(wham != EFFECT_CUMULABLE){
 			if (const config::attribute_value *v = cfg.get("value")) {
 				int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 					callable.add("base_value", wfl::variant(def));
@@ -1965,7 +1965,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, con
 			}
 		}
 
-		if(type == "resistance"){
+		if(wham == EFFECT_CLAMP_MIN_MAX){
 			if(cfg.has_attribute("max_value")){
 				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
 			}
@@ -2022,7 +2022,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, con
 		}
 	}
 
-	if((type != "leadership") && set_effect_max.type != NOT_USED) {
+	if((wham != EFFECT_CUMULABLE) && set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
