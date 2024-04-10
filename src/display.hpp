@@ -560,7 +560,7 @@ public:
 	 * @param size The size of its image.
 	 * @param alpha How transparent to make the submerged part.
 	 * @param hreverse Whether to flip the image horizontally.
-	 * @param ververse Whether to flip the image vertically.
+	 * @param vreverse Whether to flip the image vertically.
 	 * @return The data necessary for showing the submerged effect for units and map overlays (aka items).
 	 */
 	static submerge_data get_submerge_data(const rect& dest, double submerge, const point& size, uint8_t alpha, bool hreverse, bool vreverse);
