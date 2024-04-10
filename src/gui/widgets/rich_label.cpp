@@ -296,7 +296,6 @@ void rich_label::set_label(const t_string& text)
 					} else if (cfg.optional_child("h")) {
 						(*text_ptr)["text"] = cfg.mandatory_child("h")["text"];
 					}
-					(*text_ptr)["text"] = cfg.mandatory_child("header")["text"];
 					(*text_ptr)["attr_name"] = "fgcolor,fontsize";
 					(*text_ptr)["attr_start"] = std::to_string(start) + "," + std::to_string(start);
 					(*text_ptr)["attr_end"] =  std::to_string((*text_ptr)["text"].str().size()) + "," + std::to_string((*text_ptr)["text"].str().size());
