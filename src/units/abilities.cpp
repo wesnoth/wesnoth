@@ -600,16 +600,12 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 }
 
 template<typename TComp>
-std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
+unit_ability_list::half_pair unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
 {
 	if ( cfgs_.empty() ) {
-		return std::pair(def, map_location());
+		return half_pair{def};
 	}
-	// The returned location is the best non-cumulative one, if any,
-	// the best absolute cumulative one otherwise.
-	map_location best_loc;
 	bool only_cumulative = true;
-	int abs_max = 0;
 	int flat = 0;
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
@@ -620,22 +616,16 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 
 		if ((*p.ability_cfg)["cumulative"].to_bool()) {
 			stack += value;
-			if (value < 0) value = -value;
-			if (only_cumulative && !comp(value, abs_max)) {
-				abs_max = value;
-				best_loc = p.teacher_loc;
-			}
 		} else if (only_cumulative || comp(flat, value)) {
 			only_cumulative = false;
 			flat = value;
-			best_loc = p.teacher_loc;
 		}
 	}
-	return std::pair(flat + stack, best_loc);
+	return half_pair{flat + stack};
 }
 
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
+template unit_ability_list::half_pair unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
+template unit_ability_list::half_pair unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
 
 /*
  *
