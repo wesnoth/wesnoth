@@ -50,14 +50,6 @@ compártalas con otros.
 Muestra todas las traducciones en la lista de selección de idioma del juego,
 incluso si se considera que no están lo bastante completas.
 .TP 
-\fB\-\-bunzip2\fP\fI\ archivo_de_entrada.bz2\fP
-descomprime un archivo que debería estar en formato bzip2 y lo almacena sin
-el sufijo .bz2. El \fIarchivo_de_entrada.bz2\fP será eliminado.
-.TP 
-\fB\-\-bzip2\fP\fI\ archivo_de_entrada\fP
-comprime un archivo en formato bzip2, lo guarda como
-\fIarchivo_de_entrada\fP.bz2 y elimina \fIarchivo_de_entrada\fP.
-.TP 
 \fB\-c[\fP\fIid_de_campaña\fP\fB],\ \-\-campaign[\fP\fI=id_de_campaña\fP\fB]\fP
 va directamente a la campaña con el id \fIid_de_campaña\fP. Si no se especifica
 id aparecerá un menú de selección.
@@ -121,14 +113,6 @@ valores en un archivo del directorio userdata
 \fB\-f, \-\-fullscreen\fP
 ejecuta el juego en modo de pantalla completa.
 .TP 
-\fB\-\-gunzip\fP\fI\ archivo_de_entrada.gz\fP
-descomprime un archivo que debería estar en formato gzip y lo almacena sin
-el sufijo .gz. El \fIarchivo_de_entrada.gz\fP será eliminado.
-.TP 
-\fB\-\-gzip\fP\fI\ archivo_de_entrada\fP
-comprime un archivo en formato gzip, lo guarda como \fIarchivo_de_entrada\fP.gz
-y elimina \fIarchivo_de_entrada\fP.
-.TP 
 \fB\-h, \-\-help\fP
 muestra un resumen de las opciones de línea de comandos en la salida
 estándar, y regresa.
@@ -165,13 +149,13 @@ muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fIfiltro\fP si es indicado) y regresa
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-evita redirigir la salida registrada a un archivo. Los archivos de registro
-se crean en el directorio de registros en la carpeta de datos de usuario.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being

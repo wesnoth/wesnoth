@@ -48,14 +48,6 @@ s\ ostatními.
 V\ seznamu pro výběr jazyka uvnitř hry ukázat všechny překlady, i\ když jsou
 považovány za nedostatečně hotové.
 .TP 
-\fB\-\-bunzip2\fP\fI\ vstupní_soubor.bz2\fP
-dekomprimuje soubor, který by měl být ve formátu bzip2, a\ uloží jej bez
-přípony .bz2. Původní \fIvstupní_soubor.bz2\fP bude odstraněn.
-.TP 
-\fB\-\-bzip2\fP\fI\ vstupní_soubor\fP
-zkomprimuje soubor do formátu bzip2, uloží jej jako \fIvstupní_soubor\fP.bz2
-a\ odstraní \fIvstupní_soubor\fP.
-.TP 
 \fB\-c[\fP\fIid_tažení\fP\fB],\ \-\-campaign[\fP\fI=id_tažení\fP\fB]\fP
 rovnou spustí tažení s\ identifikátorem \fIid_tažení\fP. Pokud není zadán
 identifikátor, objeví se menu s\ výběrem.
@@ -117,14 +109,6 @@ a\ také tyto hodnoty zapisuje do souboru v\ adresáři s\ uživatelskými daty.
 \fB\-f, \-\-fullscreen\fP
 spouští hru v celoobrazovkovém režimu.
 .TP 
-\fB\-\-gunzip\fP\fI\ soubor_se_hrou\fP
-dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží
-jej bez koncovky .gz. Následně je \fIsoubor_se_hrou\fP smazán.
-.TP 
-\fB\-\-gzip\fP\fI\ soubor_se_hrou\fP
-komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží
-jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
-.TP 
 \fB\-h, \-\-help\fP
 zobrazí nápovědu k parametrům příkazové řádky a skončí.
 .TP 
@@ -157,13 +141,13 @@ vypíše definované oblasti zaznamenávání (pokud je použit \fIfiltr\fP, pak
 ty, které jej obsahují) a\ skončí.
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-zabrání přesměrování výstupu záznamů do souboru. Soubory se záznamy jsou
-vytvářeny v\ adresáři logs pod složkou s\ uživatelskými daty.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-výstup záznamů je kromě standardních výstupů output/error zapsán také do
-souboru. Ruší účinek volby \-\-no\-log\-to\-file ať už je vyjádřena přímo, nebo
-nepřímo.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 Ve Windows, pokud je použita spolu s\ \-\-no\-log\-to\-file, způsobí, že je výstup

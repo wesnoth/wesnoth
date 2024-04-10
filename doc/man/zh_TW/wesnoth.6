@@ -39,12 +39,6 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 \fB\-\-all\-translations\fP
 顯示所有在遊戲中的語言清單中的翻譯，即使它們被認為是不完整的。
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-解壓縮一個應該是 bzip2 格式的檔案，並儲存為名稱少了 .bz2 後綴的檔案。\fIinfile.bz2\fP 將被刪除。
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-用 bzip2 格式壓縮一個檔案，儲存為 \fIinfile\fP.bz2，並刪除 \fIinfile\fP。
-.TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 直接開啟 ID 為 \fIid_campaign\fP 的戰役。如果沒有指定 ID，將會出現選單。
 .TP 
@@ -70,7 +64,7 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 以指定 ID 的核心來覆寫被讀取的核心。
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
-以指定的目錄來覆寫資料目錄。
+以指定的目錄來覆寫資料目錄
 .TP 
 \fB\-\-data\-path\fP
 印出資料目錄的路徑並退出。
@@ -80,7 +74,7 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 http://www.wesnoth.org/wiki/CommandMode）。
 .TP 
 \fB\-\-debug\-lua\fP
-啟用一些 Lua 偵錯機制。
+啟用一些 Lua 偵錯機制
 .TP 
 \fB\-\-strict\-lua\fP
 不允許廢棄的Lua API的呼叫
@@ -97,12 +91,6 @@ http://www.wesnoth.org/wiki/CommandMode）。
 .TP 
 \fB\-f, \-\-fullscreen\fP
 以全螢幕模式運行遊戲。
-.TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-解壓縮一個應該是 gzip 格式的檔案，並儲存為名稱少了 .gz 後綴的檔案。\fIinfile.gz\fP 將被刪除。
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-用 gzip 格式壓縮一個檔案，儲存為 \fIinfile\fP.gz，並刪除 \fIinfile\fP。
 .TP 
 \fB\-h, \-\-help\fP
 顯示命令列選項的概要至標準輸出，然後退出。
@@ -125,20 +113,19 @@ http://www.wesnoth.org/wiki/CommandMode）。
 設定日誌記錄器的嚴格等級。任何訊息傳送至此等級的日誌域或是高的等級將導致單元測試失敗，不管勝利的結果。只有在和 \fB\-u\fP 一同使用時才會有效。
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
-列出定義的日誌域（只列出包含 \fIfilter\fP 的日誌域，如果它有被使用的話）並退出。
+列出定義的日誌域（只列出包含 \fIfilter\fP 的日誌域，如果它有被使用的話）並退出
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+在 Windows 系統下，當使用 \-\-no\-log\-to\-file 時，會將輸出寫入 cerr/cout 而不是 CONOUT。否則，不會有任何作用。
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 遊戲每秒能顯示的影格數，數值應在 \fB1\fP 至 \fB1000\fP 之間，預設為螢幕刷新率。
@@ -239,9 +226,8 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 驗證錯誤視為致命錯誤。
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+在小型測試章節中執行遊戲。該章節應是有用一個 \fB[test]\fP WML 標籤定義的章節。預設為 \fBtest\fP。\fB[micro_ai]\fP
+的展示功能可以用 \fBmicro_ai_test\fP 來啟動。
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 將判斷一個翻譯是否足夠完整以顯示在遊戲中的語言清單上的標準設定為 \fIpercent\fP。有效的數值為 0 至 100。
