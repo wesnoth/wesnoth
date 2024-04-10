@@ -1967,10 +1967,10 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, con
 
 		if(type == "resistance"){
 			if(cfg.has_attribute("max_value")){
-				max_value = max_value ? std::max(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
+				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
 			}
 			if(cfg.has_attribute("min_value")){
-				min_value = min_value ? std::min(*min_value, cfg["min_value"].to_int()) : cfg["min_value"].to_int();
+				min_value = min_value ? std::max(*min_value, cfg["min_value"].to_int()) : cfg["min_value"].to_int();
 			}
 		}
 
