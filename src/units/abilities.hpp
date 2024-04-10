@@ -25,8 +25,6 @@ bool filter_base_matches(const config& cfg, int def);
 
 enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
-enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_CLAMP_MIN_MAX=3 };
-
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(nullptr),
@@ -41,7 +39,22 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, const_attack_ptr attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
+		enum class extra_calculation_rules
+		{
+			none,
+			/**
+			 * TODO: what is the definition of this set of rules, which are only applied for leadership abilities?
+			 */
+			TODO_rename_lship,
+			/**
+			 * If any ability contributing to the effect has a min_value or max_value, limit the composite value to those bounds.
+			 *
+			 * Resistance abilities are an example for this.
+			 */
+			clamp_to_min_max,
+		};
+
+		effect(const unit_ability_list& list, int def, const_attack_ptr attacker = const_attack_ptr(), extra_calculation_rules ruleset = extra_calculation_rules::none);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;

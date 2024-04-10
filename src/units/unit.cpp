@@ -1796,7 +1796,7 @@ int unit::resistance_value(unit_ability_list resistance_list, const std::string&
 	});
 
 	if(!resistance_list.empty()) {
-		unit_abilities::effect resist_effect(resistance_list, 100-res, nullptr, unit_abilities::EFFECT_CLAMP_MIN_MAX);
+		unit_abilities::effect resist_effect(resistance_list, 100-res, nullptr, unit_abilities::effect::extra_calculation_rules::clamp_to_min_max);
 
 		res = 100 - resist_effect.get_composite_value();
 	}
