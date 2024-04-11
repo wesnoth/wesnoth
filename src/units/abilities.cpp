@@ -1978,6 +1978,8 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, eff
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
 
+	// used only for TODO_rename_lship, this is the sub of cumulative values
+	int stack = 0;
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
 	std::optional<int> max_value = std::nullopt;
@@ -1990,26 +1992,33 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, eff
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if(ruleset != extra_calculation_rules::TODO_rename_lship) {
-			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		if (const config::attribute_value *v = cfg.get("value")) {
+			int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				if(ruleset != extra_calculation_rules::TODO_rename_lship) {
+					// No idea if there's a reason not to include this for TODO_rename_lship, but get_extremum didn't
 					callable.add("base_value", wfl::variant(def));
-					return formula.evaluate(callable).as_int();
-				});
+				}
+				return formula.evaluate(callable).as_int();
+			});
 
-				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			if(extra_calculation_rules::TODO_rename_lship == ruleset && cfg["cumulative"].to_bool()) {
+				stack += value;
+			} else {
+				if(extra_calculation_rules::TODO_rename_lship != ruleset && cfg["cumulative"].to_bool()) {
+					value = std::max(def, value);
+				}
 				// FIXME: is this assert triggerable by WML?
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
-					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
-					set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					set_effect_min.set(SET, value, ability.ability_cfg, ability.teacher_loc);
+					set_effect_max.set(SET, value, ability.ability_cfg, ability.teacher_loc);
 				}
 				else {
-					if(value_cum > set_effect_max.value) {
-						set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					if(value > set_effect_max.value) {
+						set_effect_max.set(SET, value, ability.ability_cfg, ability.teacher_loc);
 					}
-					if(value_cum < set_effect_min.value) {
-						set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					if(value < set_effect_min.value) {
+						set_effect_min.set(SET, value, ability.ability_cfg, ability.teacher_loc);
 					}
 				}
 			}
@@ -2073,12 +2082,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, eff
 	}
 
 	int value_set = def;
-	if(extra_calculation_rules::TODO_rename_lship == ruleset) {
-		// this calls get_extremum(), which does a calculation different to, but not dissimilar to, the
-		// ones used for set_effect_max and set_effect_min in any ruleset other than TODO_rename_lship
-		value_set = std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0);
-	}
-	else if(set_effect_max.type != NOT_USED) {
+	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
@@ -2087,6 +2091,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, eff
 			effect_list_.push_back(set_effect_min);
 		}
 	}
+	value_set += stack; // TODO: should it override def, even if there are no non-cumulative abilities (no set_effect_max is NOT_USED)?
 
 	/* Do multiplication with floating point values rather than integers
 	 * We want two places of precision for each multiplier
