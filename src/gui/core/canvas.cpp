@@ -324,6 +324,12 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	const int x = x_(local_variables);
 	const int y = y_(local_variables);
 
+	// Useful for relative, grid like positioning
+	variables.add("prev_x", wfl::variant(x));
+	variables.add("prev_y", wfl::variant(y));
+	variables.add("prev_width", wfl::variant(w ? w : tex.w()));
+	variables.add("prev_height", wfl::variant(h ? h : tex.h()));
+
 	// used in gui/dialogs/story_viewer.cpp
 	local_variables.add("clip_x", wfl::variant(x));
 	local_variables.add("clip_y", wfl::variant(y));
@@ -532,6 +538,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// Translate text width and height back to draw-space, rounding up.
 	local_variables.add("text_width", wfl::variant(tw));
 	local_variables.add("text_height", wfl::variant(th));
+
 	if (variables.has_key("fake_draw") && variables.query_value("fake_draw").as_bool()) {
 		variables.add("text_width", wfl::variant(tw));
 		variables.add("text_height", wfl::variant(th));
@@ -543,6 +550,12 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const int w = w_(local_variables);
 	const int h = h_(local_variables);
 	rect dst_rect{x, y, w, h};
+
+	// Useful for relative, grid like positioning
+	variables.add("prev_x", wfl::variant(x));
+	variables.add("prev_y", wfl::variant(y));
+	variables.add("prev_width", wfl::variant(tw));
+	variables.add("prev_height", wfl::variant(th));
 
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
