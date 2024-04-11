@@ -72,6 +72,13 @@ namespace wb {
 #include <memory>
 #include <vector>
 
+struct submerge_data
+{
+	rect unsub_src;
+	rect unsub_dest;
+	std::array<SDL_Vertex, 4> alpha_verts;
+};
+
 class gamemap;
 
 /**
@@ -547,6 +554,17 @@ public:
 	void set_prevent_draw(bool pd = true);
 	bool get_prevent_draw();
 
+	/**
+	 * @param dest The original destination.
+	 * @param submerge How deep underwater it is.
+	 * @param size The size of its image.
+	 * @param alpha How transparent to make the submerged part.
+	 * @param hreverse Whether to flip the image horizontally.
+	 * @param vreverse Whether to flip the image vertically.
+	 * @return The data necessary for showing the submerged effect for units and map overlays (aka items).
+	 */
+	static submerge_data get_submerge_data(const rect& dest, double submerge, const point& size, uint8_t alpha, bool hreverse, bool vreverse);
+
 private:
 	bool prevent_draw_ = false;
 
@@ -841,8 +859,6 @@ public:
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
 	};
-
-	static void add_submerge_ipf_mod(std::string& image_path, int image_height, double submersion_amount, int shift = 0);
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.
