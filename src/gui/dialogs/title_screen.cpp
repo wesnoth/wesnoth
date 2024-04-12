@@ -27,6 +27,7 @@
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
+#include "gui/dialogs/community_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -342,6 +343,12 @@ void title_screen::init_callbacks()
 		std::bind(&title_screen::show_achievements, this));
 
 	//
+	// Community
+	//
+	register_button(*this, "community", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_community, this));
+
+	//
 	// Credits
 	//
 	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
@@ -482,6 +489,12 @@ void title_screen::show_achievements()
 {
 	achievements_dialog ach;
 	ach.show();
+}
+
+void title_screen::show_community()
+{
+	community_dialog dlg;
+	dlg.show();
 }
 
 void title_screen::button_callback_multiplayer()

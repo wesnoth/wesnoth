@@ -113,6 +113,8 @@ private:
 
 	void show_achievements();
 
+	void show_community();
+
 	void button_callback_multiplayer();
 
 	void button_callback_cores();
