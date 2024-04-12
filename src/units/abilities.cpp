@@ -1169,7 +1169,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 }
 
 //Functions used for change damage_type list with damage
-static std::vector<std::string> damage_type_list(const unit_ability_list& abil_list, const std::string& type)
+static std::optional<std::string> damage_type_opt(const unit_ability_list& abil_list, const std::string& type)
 {
 	std::vector<std::string> type_list;
 	for(auto& i : abil_list) {
@@ -1189,7 +1189,10 @@ static std::vector<std::string> damage_type_list(const unit_ability_list& abil_l
 			});
 		}
 	}
-	return type_list;
+	if(!type_list.empty()){
+		return type_list.front();
+	}
+	return std::nullopt;
 }
 
 /**
@@ -1202,15 +1205,13 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 		return {type(), ""};
 	}
 
-	std::vector<std::string> type_list = damage_type_list(abil_list, "replacement_type");
-	std::vector<std::string> added_type_list = damage_type_list(abil_list, "alternative_type");
-	std::string type_damage, sec_type_damage;
-	type_damage = !type_list.empty() ? type_list.front() : type();
-	sec_type_damage = !added_type_list.empty() ? added_type_list.front() : "";
-	if(!sec_type_damage.empty()){
-		sec_type_damage =  type_damage != sec_type_damage ? sec_type_damage: "";
+	std::optional<std::string> replacement_type = damage_type_opt(abil_list, "replacement_type");
+	std::optional<std::string> alternative_type = damage_type_opt(abil_list, "alternative_type");
+	std::string type_damage = replacement_type.value_or(type());
+	if(alternative_type && type_damage != *alternative_type){
+		return {type_damage, *alternative_type};
 	}
-	return {type_damage, sec_type_damage};
+	return {type_damage, ""};
 }
 
 
