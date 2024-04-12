@@ -1500,7 +1500,7 @@ std::string convert_to_wml(std::string& element_name, const std::string& content
 	if (!text.empty()) {
 		ss << "text=\"" << text << "\"\n";
 	}
-	ss << "[/" << element_name << "]\n";
+	ss << "[/" << element_name << "]";
 
 	buff.str("");
 	return ss.str();
