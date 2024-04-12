@@ -1169,7 +1169,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 }
 
 //Functions used for change damage_type list with damage
-static std::optional<std::string> damage_type_opt(const unit_ability_list& abil_list, const std::string& type)
+static std::optional<std::string> select_damage_type(const unit_ability_list& abil_list, const std::string& type)
 {
 	std::vector<std::string> type_list;
 	for(auto& i : abil_list) {
@@ -1205,8 +1205,8 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 		return {type(), ""};
 	}
 
-	std::optional<std::string> replacement_type = damage_type_opt(abil_list, "replacement_type");
-	std::optional<std::string> alternative_type = damage_type_opt(abil_list, "alternative_type");
+	std::optional<std::string> replacement_type = select_damage_type(abil_list, "replacement_type");
+	std::optional<std::string> alternative_type = select_damage_type(abil_list, "alternative_type");
 	std::string type_damage = replacement_type.value_or(type());
 	if(alternative_type && type_damage != *alternative_type){
 		return {type_damage, *alternative_type};
