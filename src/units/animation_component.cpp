@@ -34,7 +34,6 @@ int get_next_idle_time()
 		return INT_MAX;
 	}
 
-	// I really don't know why this negates the saved rate first
 	const double rate = std::pow(2.0, -preferences::idle_anim_rate() / 10.0);
 	return get_current_animation_tick()
 		+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * rate);
