@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2023-11-21 10:08+1100\n"
+"PO-Revision-Date: 2024-04-11 09:47+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -262,7 +262,7 @@ msgstr "Clean Grey Cobbles"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Gravel"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -2837,68 +2837,58 @@ msgstr "Sort in approximate chronological order of story events"
 #. [multimenu_button]: id=filter_completion
 #: data/gui/window/campaign_dialog.cfg:237
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Filter by campaign completion status"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:240
-#, fuzzy
-#| msgid "Completed"
 msgid "Not Completed"
-msgstr "Completed"
+msgstr "Not Completed"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/window/campaign_dialog.cfg:242
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Show campaigns not completed by player"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:246
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr "Completed"
+msgstr "Completed: Bronze"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:247
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Show campaigns completed at easiest difficulty"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:251
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Completed"
+msgstr "Completed: Silver"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:252
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Show campaigns completed at intermediate difficulties"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:256
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr "Completed"
+msgstr "Completed: Gold"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:257
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Show campaigns completed at hardest difficulty"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:261
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: All"
-msgstr "Completed"
+msgstr "Completed: All"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:262
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Show completed campaigns"
 
 #. [label]
 #. [label]: id=mods_header
@@ -2925,6 +2915,10 @@ msgid ""
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
+"\n"
+"Example: if you strike twice with 50% accuracy, you’re most likely to hit "
+"once and miss once, but might also hit twice or miss twice."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
@@ -2940,13 +2934,16 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Identical to Default RNG, except loading a saved game will not change the "
+"outcome of an attack.\n"
+"\n"
+"Example: you strike twice and get lucky, hitting both strikes. You then load "
+"an earlier save and make the same attack again. Both strikes will still hit."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
-#, fuzzy
-#| msgid "Predictable RNG"
 msgid "Reduced RNG"
-msgstr "Predictable RNG"
+msgstr "Reduced RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:366
@@ -2957,6 +2954,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Hits and misses are much more consistent. This tends to make small-scale "
+"engagements easier to plan.\n"
+"\n"
+"Example: if you strike three times with 50% accuracy, you will always hit at "
+"least once and miss at least once."
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:383
@@ -3245,10 +3247,8 @@ msgstr "Team only"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
-msgstr "Add-on selection"
+msgstr "Add-on Selection"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:64
@@ -3660,39 +3660,33 @@ msgstr "None"
 
 #. [button]: id=preview_
 #: data/gui/window/editor_edit_unit.cfg:98
-#, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Previous page"
+msgstr "Preview image"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_unit.cfg:143
-#, fuzzy
-#| msgid "Status"
 msgid "Stats"
-msgstr "Status"
+msgstr "Stats"
 
 #. [button]: id=load_unit_type
 #: data/gui/window/editor_edit_unit.cfg:187
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Load Unit Type"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:221
-#, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Image:"
+msgstr "Unit Image:"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:223
 msgid "Portrait:"
-msgstr ""
+msgstr "Portrait:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:234
 msgid "Level:"
-msgstr ""
+msgstr "Level:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:259 data/gui/window/mp_staging.cfg:189
@@ -3701,62 +3695,48 @@ msgstr "Gender:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:267
-#, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Random"
+msgstr "Male"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:268
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Female"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:283
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Advance Unit"
+msgstr "Advances to:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:309
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Race"
+msgstr "Race:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:361
 msgid "Alignment:"
-msgstr ""
+msgstr "Alignment:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:387
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "HP: "
+msgstr "HP:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:417
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "XP: "
+msgstr "XP:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:447
 msgid "Cost:"
-msgstr ""
+msgstr "Cost:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:477
-#, fuzzy
-#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr "Movement Costs:"
+msgstr "Movement:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3769,51 +3749,43 @@ msgstr "Attacks"
 
 #. [button]: id=atk_new
 #: data/gui/window/editor_edit_unit.cfg:599
-#, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Attack"
+msgstr "New Attack"
 
 #. [button]: id=atk_delete
 #: data/gui/window/editor_edit_unit.cfg:612
-#, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Select/Move/Attack"
+msgstr "Delete Attack"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:682
 msgid "Range:"
-msgstr ""
+msgstr "Range:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:694
 msgid "range^Melee"
-msgstr ""
+msgstr "Melee"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:695
 msgid "range^Ranged"
-msgstr ""
+msgstr "Ranged"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:736
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Damage"
+msgstr "Damage:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:763
-#, fuzzy
-#| msgid "Hits"
 msgid "Hits:"
-msgstr "Hits"
+msgstr "Hits:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:791
 msgid "Specials:"
-msgstr ""
+msgstr "Specials:"
 
 #. [label]: id=title
 #. [widget]: id=tab_label
@@ -3826,24 +3798,18 @@ msgstr "Advanced"
 
 #. [grid]: id=grid_atk
 #: data/gui/window/editor_edit_unit.cfg:848
-#, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
-msgstr "Profile"
+msgstr "Small Profile"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:859
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Abilities"
+msgstr "Abilities:"
 
 #. [label]: id=movetype_label
 #: data/gui/window/editor_edit_unit.cfg:885
-#, fuzzy
-#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "Content Type:"
+msgstr "Move Type:"
 
 #. [button]: id=load_movetype
 #. [button]: id=ok
@@ -3862,56 +3828,48 @@ msgstr "Movement Costs:"
 
 #. [label]: id=defense_label
 #: data/gui/window/editor_edit_unit.cfg:981
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Defender"
+msgstr "Defence:"
 
 #. [label]: id=resistance_label
 #: data/gui/window/editor_edit_unit.cfg:1034
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Resistances: "
+msgstr "Resistances:"
 
 #. [label]: id=usage_label
 #: data/gui/window/editor_edit_unit.cfg:1087
-#, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Image:"
+msgstr "AI Usage:"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1245
 msgid "/data/core/images/units/human-loyalists/general.png"
-msgstr ""
+msgstr "/data/core/images/units/human-loyalists/general.png"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1249
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Game Stats"
+msgstr "Main Stats"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1257
 msgid "/data/core/images/attacks/rectangular-shield.png"
-msgstr ""
+msgstr "/data/core/images/attacks/rectangular-shield.png"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1269
 msgid "/data/core/images/attacks/sword-human.png"
-msgstr ""
+msgstr "/data/core/images/attacks/sword-human.png"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1281
 msgid "/data/core/images/attacks/gaze.png"
-msgstr ""
+msgstr "/data/core/images/attacks/gaze.png"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1285
 msgid "WML View"
-msgstr ""
+msgstr "WML View"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4555,11 +4513,20 @@ msgid ""
 "suggest visiting the following page for more information and enabling all "
 "translations while you work on your contributions:"
 msgstr ""
+"<i>Battle for Wesnoth</i> relies on community submissions to provide an "
+"accessible game experience for players around the world. Because development "
+"of the main game can move faster than volunteer translators are able to keep "
+"up with, translations may drift behind or even become abandoned.\n"
+"\n"
+"If you are a first-time player, we recommend using a mostly-complete "
+"translation. If you are interested in translating the game yourself, we "
+"suggest visiting the following page for more information and enabling all "
+"translations while you work on your contributions:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:134
 msgid "Show work-in-progress or abandoned translations"
-msgstr ""
+msgstr "Show work-in-progress or abandoned translations"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -5521,10 +5488,8 @@ msgstr "* required fields"
 
 #. [label]
 #: data/gui/window/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Faction"
+msgstr "Faction:"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:243
@@ -7324,49 +7289,43 @@ msgstr "Choose an icon"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:82
 msgid "lawful"
-msgstr ""
+msgstr "lawful"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:83
 msgid "chaotic"
-msgstr ""
+msgstr "chaotic"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:84
 msgid "neutral"
-msgstr ""
+msgstr "neutral"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:85
 msgid "liminal"
-msgstr ""
+msgstr "liminal"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:145
 msgid "scout"
-msgstr ""
+msgstr "scout"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:146
-#, fuzzy
-#| msgid "Right"
 msgid "fighter"
-msgstr "Right"
+msgstr "fighter"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:147
-#, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Search"
+msgstr "archer"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:148
 msgid "mixed fighter"
-msgstr ""
+msgstr "mixed fighter"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:149
 msgid "healer"
-msgstr ""
+msgstr "healer"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:305
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Choose File"
-msgstr "Choose Player"
+msgstr "Choose File"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -8612,10 +8571,8 @@ msgid "Assign Local Time"
 msgstr "Assign Local Time"
 
 #: src/hotkey/hotkey_command.cpp:176
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Next Unit"
+msgstr "New Unit Type"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Time Schedule Editor"
