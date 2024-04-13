@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-18 00:07 UTC\n"
-"PO-Revision-Date: 2024-01-08 11:46+0100\n"
+"PO-Revision-Date: 2024-04-03 21:55+0200\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [editor_group]: id=eastern_invasion
 #. [campaign]: id=Eastern_Invasion
@@ -4904,34 +4904,28 @@ msgstr "Toto je naša rieka!"
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:637
 msgid "10 gold"
-msgstr ""
+msgstr "10 zlata"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:637
-#, fuzzy
-#| msgid "These {RACE} have a pile of {AMOUNT} gold pieces!"
 msgid "These dwarves have a pile of 10 gold pieces!"
-msgstr "Títo {RACE} majú hromadu {AMOUNT} zlatých!"
+msgstr "Títo trpaslíci majú hromadu desiatich zlatiek!"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:638
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:639
 msgid "20 gold"
-msgstr ""
+msgstr "20 zlata"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:638
-#, fuzzy
-#| msgid "These {RACE} have a pile of {AMOUNT} gold pieces!"
 msgid "These nagas have a pile of 20 gold pieces!"
-msgstr "Títo {RACE} majú hromadu {AMOUNT} zlatých!"
+msgstr "Títo hadi majú hromadu dvadsiatich zlatiek!"
 
 #. [scenario]: id=08_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:639
-#, fuzzy
-#| msgid "These {RACE} have a pile of {AMOUNT} gold pieces!"
 msgid "These orcs have a pile of 20 gold pieces!"
-msgstr "Títo {RACE} majú hromadu {AMOUNT} zlatých!"
+msgstr "Títo orkovia majú hromadu dvadsiatich zlatých!"
 
 #. [message]: speaker=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/08_Xenophobia.cfg:655
@@ -5150,16 +5144,12 @@ msgstr "Je zima, deň je kratší"
 #. The amount is likely between 2 and 10 per turn.
 #. With the current balancing it’s the same for every difficulty, starting at 2/turn and rising by 1 every 10 turns.
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:459
-#, fuzzy
-#| msgid ""
-#| "Living units take {AMOUNT} cold damage every turn. Damage increases every "
-#| "10 turns."
 msgid ""
 "Living units take $|frostbite_amount cold damage every turn. Damage "
 "increases every 10 turns."
 msgstr ""
-"Živé jednotky utrpia každé kolo {AMOUNT} poškodenia chladom. Poškodenie sa "
-"zvyšuje každých 10 kôl."
+"Živé jednotky utrpia každé kolo $|frostbite_amount poškodenia chladom. "
+"Poškodenie sa zvyšuje každých 10 kôl."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:474
@@ -6899,8 +6889,6 @@ msgstr ""
 #. [message]: role=escapee sidekick 0
 #. Female speaker talking to male deserter, also the huge enemies changed in 1.17 from trolls to orcs
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:673
-#, fuzzy
-#| msgid "What? Didn’t you see those huge orcs drag them away? It’s hopeless!"
 msgid ""
 "female^What? Didn’t you see those huge orcs drag them away? It’s hopeless!"
 msgstr ""
@@ -6959,10 +6947,6 @@ msgstr ""
 #. The speaker is female. The deserter, "escapee sidekick 2", will always be male.
 #. The other escapees, including the speaker, are 3 random units from the player's recall list.
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:764
-#, fuzzy
-#| msgid ""
-#| "$deserter_name, I don’t recognize you, and you look like you’ve been "
-#| "locked up longer than the rest of us. How did you get here?"
 msgid ""
 "female^$deserter_name, I don’t recognize you, and you look like you’ve been "
 "locked up longer than the rest of us. How did you get here?"
@@ -6990,8 +6974,6 @@ msgstr "(zamračene) Dezertér. Mali by sme ťa zavrieť späť do tvojej cely."
 #. [message]: role=escapee leader
 #. The speaker is female
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:776
-#, fuzzy
-#| msgid "(scowling) A deserter. We should lock you back in your cell."
 msgid "female^(scowling) A deserter. We should lock you back in your cell."
 msgstr "(zamračene) Dezertér. Mali by sme ťa zavrieť späť do tvojej cely."
 
@@ -7392,26 +7374,22 @@ msgstr "Ach och!"
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1644
 msgid "70 gold"
-msgstr ""
+msgstr "70 zlata"
 
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1644
-#, fuzzy
-#| msgid "You’ve pillaged {AMOUNT} orcish gold pieces!"
 msgid "You’ve pillaged 70 orcish gold pieces!"
-msgstr "Ulúpil si {AMOUNT} orkských zlatých!"
+msgstr "Ulúpil si 70 orkských zlatých!"
 
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1645
 msgid "115 gold"
-msgstr ""
+msgstr "115 zlata"
 
 #. [scenario]: id=11_Captured
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1645
-#, fuzzy
-#| msgid "You’ve pillaged {AMOUNT} orcish gold pieces!"
 msgid "You’ve pillaged 115 orcish gold pieces!"
-msgstr "Ulúpil si {AMOUNT} orkských zlatých!"
+msgstr "Ulúpil si 115 orkských zlatých!"
 
 #. [message]: speaker=unit
 #. goblin with a ring of invisibility
@@ -14025,36 +14003,26 @@ msgstr "Bežte za vlastné životy!"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Eastern_Invasion/utils/traits.cfg:88
-#, fuzzy
-#| msgid "Get me out of here!"
 msgid "female^Get me out of here!"
 msgstr "Dostaň ma odtiaľto!"
 
 #. [message]: speaker=narrator
 #. unit is male
 #: data/campaigns/Eastern_Invasion/utils/traits.cfg:107
-#, fuzzy
-#| msgid ""
-#| "The ‘deserter’ trait has caused ${UNIT}.name to flee back to your recall "
-#| "list."
 msgid ""
 "The ‘deserter’ trait has caused $unit.name to flee back to your recall list."
 msgstr ""
-"Vlastnosť „dezertér“ spôsobila, že ${UNIT}.name utiekol späť na váš zoznam "
-"na privolanie."
+"Vlastnosť „dezertér“ spôsobila, že $unit.name utiekol späť na tvoj zoznam na "
+"privolanie."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/traits.cfg:114
-#, fuzzy
-#| msgid ""
-#| "The ‘deserter’ trait has caused ${UNIT}.name to flee back to your recall "
-#| "list."
 msgid ""
 "female^The ‘deserter’ trait has caused $unit.name to flee back to your "
 "recall list."
 msgstr ""
-"Vlastnosť „dezertér“ spôsobila, že ${UNIT}.name utiekol späť na váš zoznam "
-"na privolanie."
+"Vlastnosť „dezertér“ spôsobila, že $unit.name utiekol späť na tvoj zoznam na "
+"privolanie."
 
 #. [trait]: id=mercenary
 #: data/campaigns/Eastern_Invasion/utils/traits.cfg:125
