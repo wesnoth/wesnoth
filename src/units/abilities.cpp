@@ -1168,31 +1168,31 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
-//Functions used for change damage_type list with damage
-static std::optional<std::string> select_damage_type(const unit_ability_list& abil_list, const std::string& type)
+static std::string select_damage_type(const unit_ability_list& abil_list, const std::string& key_name)
 {
-	std::vector<std::string> type_list;
+	std::unordered_map<std::string, unsigned int> type_count;
+	unsigned int max = 0;
 	for(auto& i : abil_list) {
-		if(!(*i.ability_cfg)[type].str().empty()){
-			type_list.push_back((*i.ability_cfg)[type].str());
-		}
-	}
-	if(type_list.size() >= 2){
-		std::sort(type_list.begin(), type_list.end());
-		if(type_list.size() >= 3){
-			std::unordered_map<std::string, unsigned int> type_count;
-			for( const std::string& character : type_list ){
-				type_count[character]++;
+		const config& c = *i.ability_cfg;
+		if(c.has_attribute(key_name)) {
+			std::string type = c[key_name].str();
+			unsigned int count = ++type_count[type];
+			if(count > max) {
+				max = count;
 			}
-			std::sort( std::begin( type_list ) , std::end( type_list ) , [&]( const std::string& rhs , const std::string& lhs ){
-				return type_count[lhs] < type_count[rhs];
-			});
 		}
 	}
-	if(!type_list.empty()){
-		return type_list.front();
+	if (type_count.empty()) return "";
+
+	std::vector<std::string> type_list;
+	for(auto& i : type_count) {
+		if(i.second == max) {
+			type_list.push_back(i.first);
+		}
 	}
-	return std::nullopt;
+	std::sort(type_list.begin(), type_list.end());
+
+	return type_list.front();
 }
 
 /**
@@ -1205,13 +1205,13 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 		return {type(), ""};
 	}
 
-	std::optional<std::string> replacement_type = select_damage_type(abil_list, "replacement_type");
-	std::optional<std::string> alternative_type = select_damage_type(abil_list, "alternative_type");
-	std::string type_damage = replacement_type.value_or(type());
-	if(alternative_type && type_damage != *alternative_type){
-		return {type_damage, *alternative_type};
+	std::string replacement_type = select_damage_type(abil_list, "replacement_type");
+	std::string alternative_type = select_damage_type(abil_list, "alternative_type");
+	std::string damage_type = replacement_type.empty() ? type() : replacement_type;
+	if(damage_type != alternative_type){
+		return {damage_type, alternative_type};
 	}
-	return {type_damage, ""};
+	return {damage_type, ""};
 }
 
 
