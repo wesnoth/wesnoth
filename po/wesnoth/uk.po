@@ -10,8 +10,9 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2024-03-22 22:56+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
+"PO-Revision-Date: 2024-04-10 14:37+0300\n"
+"Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
+"discord: amakri>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -2882,6 +2883,16 @@ msgid ""
 "Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,"
 "Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
+"Абіха, Афаф, Аіша, Аджда, Алія, Аміра, Ашракат, Атіка, Азра, Бутейна, Бушра, "
+"Хайма, Синтія, Далал, Далія, Еліана, Есма, Фаріда, Фатіма, Фейруз, Хабіба, "
+"Хафса, Хаджра, Халіма, Хаміда, Ханіфа, Хавва, Хаят, Хесса, Ібтісам, "
+"Ібтіссам, Інаам, Джаміла, Джавахір, Джена, Джумана, Каріна, Каріма, Катя, "
+"Хадіджа, Хайрунніса, Хавла, Хавла, Лама, Ламія, Латіфа, Лайал, Лаян, Лейла, "
+"Ліна, Лулва, Мадіха, Маха, Махмуна, Май, Маліка, Марва, Мар'ям, Майя, "
+"Майсун, Мелісса, Надя, Нафіса, Нахла, Наїла, Наджат, Насім, Насрін, Неджла, "
+"Нежа, Нюша, Кістіна, Рахіма, Рана, Рашида, Рім, Рукайя, Саадія, Сабіха, "
+"Сафія, Сахар, Саїда, Саджида, Сахра, Сальма, Саміра, Сара, Шахд, Шатха, "
+"Шеріне, Шумайла, Сумайя, Тасліма, Умм, Яра, Ясмін, Захра, Закія, Зайнаб"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:147
@@ -2900,6 +2911,20 @@ msgid ""
 "connector= al-| bin | ibn\n"
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{name_mid}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Дін|Сіф|Дін|Тай|Суд|Алі|Лут|Нух|Квайс|Німр|Джад|Башр|Ма'д|Нур|"
+"Фад|\n"
+"prefix=|Аб|Бас|Фат|Ґа|Ал|Ба|Джа|Га|Му|Ра|Раз|Абі|Ам|Ла|'Адж|Ала|'Ак|Фа|Ду|Ім|"
+"Ю|Мун|Ма|Ні|Джі|Му|Лаб|Луф|Міг|Мі|К'ю|Тал|Та|Са|За|Зі|Йас|Ва|Су|Ква|'Ікрі|Лу|"
+"Су|Оса|Раг|Саф|Да|Фай|Ніб|Наш\n"
+"suffix=аф|ал|ліх|байр|сур|бі|лах|ат|сім|ма|іх|іл|ік'ю|рай|мам|ман|йа|зід|"
+"рійа|айл|айр|ах|ен|ін|айд|уд|рах|вах|нан|ас|ір|ба|ні|йад|рас|зак'ю|гід|мал|"
+"кіб\n"
+"connector= аль-| бін | ібн\n"
+"centre=ʿ|ʾ|гі|са|кар|да|на|йа|тай|кі|гай|соу\n"
 
 #. Generator for female dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:158
@@ -2931,6 +2956,33 @@ msgid ""
 "riya|ail|air|ah|en|in|ayd|ud|rah|wah|nan|as|ir|ba|ni|yad|ras|zuq|hid|mal|"
 "kib\n"
 msgstr ""
+"\n"
+"main={name_long}|{prefix}{suffix}|{name_mid}{connector}{surname}\n"
+"name_mid={prefix}{suffix}|{name_short}\n"
+"surname={name_mid_male}|{name_mid}|{name_mid_male}\n"
+"name_long={prefix}{suffix}|{prefix}{centre}{suffix}\n"
+"name_short=Афаф|Аїда|Аля|Арій|Арва|Асма|Асра|Азра|Дуа|Фаджр|Хала|Хана|Хіба|"
+"Інас|Ісра|Ліна|Мона|Муна|Ніда|Німа|Нур|Рана|Рим|Руба|Руя|Рува|Сана|Сара|Суха|"
+"Туба|Узма|Зара\n"
+"prefix=Аб|Бас|Фат|Ґа|Ал|Ба|Джа|Га|Му|Ра|Раз|Абі|Ам|Ла|'Адж|Ала|'Ак|Фа|Ду|Ім|"
+"Йю|Мун|Ма|Ні|Джі|Му|Лаб|Луф|Міг|Мі|К'ю|Тал|Та|Са|За|Зі|Йас|Ва|Су|Ква|'Ікрі|"
+"Лу|Су|Оса|Раг|Саф|Да|Фай|Ніб|Наш\n"
+"suffix=а|аб|ад|аг|аф|ай|ал|ам|ан|ар|ас|ат|ай|аз|ад|іін|я|ідж|ін|ір|ла|ма|мас|"
+"н|на|наб|ні|р|ра|раа|ран|рат|ул|ур|уз|ва|йа|йаг|за|зі\n"
+"connector= аль-| ібна | бінт\n"
+"centre=ʿ|ʾ|гі|са|кар|да|на|йа|тай|кі|хай|соу\n"
+"\n"
+"These nonterminals are literally copied from the male names.\n"
+"name_mid_male={prefix_male}{suffix_male}|{name_short_male}\n"
+"name_short_male=Дін|Сіф|Дін|Тай|Суд|Алі|Лут|Нуг|Квайс|Німр|Джад|Башр|Лут|"
+"Ма'д|Нур|Фад|\n"
+"prefix_male=Аб|Бас|Фат|Ґа|Ал|Ба|Джа|Га|Му|Ра|Раз|Абі|Ам|Ла|'Адж|Ала|'Ак|Фа|"
+"Ду|Ім|Йю|Мун|Ма|Ні|Джі|Му|Лаб|Луф|Міг|Мі|К'ю|Тал|Та|Са|За|Зі|Йас|Ва|Су|"
+"Ква|'Ікрі|Лу|Су|Оса|Раг|Саф|Да|Фай|Ніб|Наш\n"
+"suffix=аф|ал|ліх|байр|сур|бі|лах|ат|сім|ма|іх|іл|ік'ю|рай|мам|ман|йа|зід|"
+"рійа|айл|айр|ах|ен|ін|айд|уд|рах|вах|нан|ас|ір|ба|ні|йад|рас|зак'ю|гід|мал|"
+"кіб\n"
+"\n"
 
 #: data/core/macros/names.cfg:179
 msgid ""
@@ -3251,7 +3303,7 @@ msgstr ""
 "Аг,Агх,Бог Ах,Борб,Браг Гох,Брок,Дак,Дрог,Фрок,Га,Гах,Гарк,Гнарф,Грар,Грокк,"
 "Грумф,Гулк,Хак,Хаск,Хот,Хуг Бах,Ху Ках,Как,Крак,Круг,Куб,Кух,Лок,Лук,Нак,Нук "
 "Кар,Паг,Рек,Рок,Рук,Сарк,Шак,Шуф,Стух,Тарг,Тог,Труф,Тур,Тог,Торг,Трок,Тух,"
-"Тук Рух,Угг,Йух,Ург,Ургх,Урк,Вак,Зог,Зууг"
+"Тук Рух,Угг,Юх,Ург,Ургх,Урк,Вак,Зог,Зууг"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:252
@@ -5816,22 +5868,25 @@ msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
 msgstr ""
+"Користувач спробував авторизуватися на сервері, не маючи профіля на форумі."
 
 #: src/addon/validation.cpp:401
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
+"Вивантаження відмовлено. Будь ласка, зверніться за допомогою до "
+"адміністратора серверу."
 
 #: src/addon/validation.cpp:405
 msgid "Attempted to upload an update pack for a non-existent add-on."
-msgstr ""
+msgstr "Була спроба вивантажити оновлення для неіснуючого аддону."
 
 #: src/addon/validation.cpp:414
 msgid "No add-on data was supplied by the client."
-msgstr ""
+msgstr "Клієнт не надав жодної інформації про аддон."
 
 #: src/addon/validation.cpp:418
 msgid "Invalid upload pack."
-msgstr "Невірне рий пакет для вивантаження"
+msgstr "Невірний пакет для вивантаження."
 
 #: src/addon/validation.cpp:422
 msgid "Invalid add-on name."
@@ -5839,7 +5894,7 @@ msgstr "Неправильна назва аддону."
 
 #: src/addon/validation.cpp:426
 msgid "Formatting character in add-on name."
-msgstr ""
+msgstr "Символ форматування в назві аддону."
 
 #: src/addon/validation.cpp:430
 msgid ""
@@ -5853,85 +5908,86 @@ msgid ""
 "Additionally, names may not be longer than 255 characters, contain '..', or "
 "end with '.'."
 msgstr ""
+"У деяких файлів чи тек аддону проблеми з назвами. \n"
+"\n"
+"Імена, в яких є пробіл, командні символи чи будь-які з нижче наведених, не "
+"дозволені:\n"
+"\n"
+"    \" * / : < > ? \\ | ~\n"
+"\n"
+"Також імена не можуть бути довшими за 255 символів та містити '..', or чи "
+"закінчуватися '.'."
 
 #: src/addon/validation.cpp:440
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> contains files or directories with case "
-#| "conflicts. File or directory names may not be differently-cased versions "
-#| "of the same string."
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
 "Names in the same directory may not be differently-cased versions of each "
 "other."
 msgstr ""
-"У деяких файлів чи тек аддону <i>$addon_title</i> проблема з розкладкою. "
+"У деяких файлів чи тек аддону <i>$addon_title</i> проблема з розкладкою. \n"
+"\n"
 "Ім'я файлів або тек не можуть відрізнятися лише великими та малими літерами."
 
 #: src/addon/validation.cpp:446
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "Ім'я аддону містить неправильну послідовність UTF-8."
 
 #: src/addon/validation.cpp:455
-#, fuzzy
-#| msgid "No add-ons to update"
 msgid "No add-on title specified."
-msgstr "Аддонів для оновлення немає"
+msgstr "Не вказано назву аддону."
 
 #: src/addon/validation.cpp:459
 msgid "No add-on author/maintainer name specified."
-msgstr ""
+msgstr "Не вказано ім'я автора/підтримувача аддону."
 
 #: src/addon/validation.cpp:463
 msgid "No add-on version specified."
-msgstr ""
+msgstr "Не вказано версію аддону."
 
 #: src/addon/validation.cpp:467
-#, fuzzy
-#| msgid "No description available."
 msgid "No add-on description specified."
-msgstr "Опису немає."
+msgstr "Не вказано опис аддону."
 
 #: src/addon/validation.cpp:471
 msgid "No add-on author/maintainer email specified."
-msgstr ""
+msgstr "Не було вказано пошту автора/підтримувача аддону."
 
 #: src/addon/validation.cpp:475
 msgid "Missing passphrase."
-msgstr ""
+msgstr "Відсутня кодова фраза."
 
 #: src/addon/validation.cpp:479
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "Символ форматування в назві аддону."
 
 #: src/addon/validation.cpp:483
-#, fuzzy
-#| msgid "Invalid unit type"
 msgid "Invalid or unspecified add-on type."
-msgstr "Недійсний тип бійця"
+msgstr "Недійсний чи невказаний тип аддону."
 
 #: src/addon/validation.cpp:487
 msgid "Version number not greater than the latest uploaded version."
-msgstr ""
+msgstr "Номер версії не перевищує останню завантажену версію."
 
 #: src/addon/validation.cpp:491
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "ID теми зворотнього зв'язку не є числом."
 
 #: src/addon/validation.cpp:495
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "Теми зворотнього зв'язку не існує."
 
 #: src/addon/validation.cpp:499
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
+"Інформація про публікацію аддону містить неправильну послідовність UTF-8."
 
 #: src/addon/validation.cpp:503
 msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"Атрибут forum_auth аддону не відповідає тому, що було завантажено раніше."
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
@@ -5939,7 +5995,7 @@ msgstr "Невстановлена помилка сервера."
 
 #: src/addon/validation.cpp:516
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "Сервер працює лише в режимі зчитування."
 
 #: src/addon/validation.cpp:520
 msgid "Corrupted server add-ons list."
@@ -5952,7 +6008,7 @@ msgstr "Список аддонів сервера пустий."
 #: src/addon/validation.cpp:528
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
-msgstr ""
+msgstr "Цей сервер не підтримує властивість forum_auth у вашому pbl."
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
@@ -6159,6 +6215,8 @@ msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
+"Відправити дані до серверу. Це може бути використано, щоб перевірити "
+"мережеве з'єднання та виявити відключення."
 
 #: src/chat_command_handler.hpp:94
 msgid ""
@@ -6177,16 +6235,12 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Відправити емоцію або персональну дію в чаті."
 
 #: src/chat_command_handler.hpp:101
-#, fuzzy
-#| msgid ""
-#| "Sends a private message. You cannot send private messages to players in a "
-#| "running game you observe or play in."
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
 "Відправити приватне повідомлення. Ви не можете відправляти приватні "
-"повідомлення гравцям що грають з вами або спостерігають."
+"повідомлення гравцям, що грають з вами або спостерігають."
 
 #: src/chat_command_handler.hpp:103
 msgid "<nickname> <message>"
@@ -6214,11 +6268,11 @@ msgstr "Видалити гравця із списку ігнору або сп
 
 #: src/chat_command_handler.hpp:115
 msgid "<N>"
-msgstr ""
+msgstr "<N>"
 
 #: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
-msgstr ""
+msgstr "Отримати випадкове число від 1 до N в чаті матчу лобі."
 
 #: src/chat_command_handler.hpp:117
 msgid "Display version information."
@@ -6254,7 +6308,7 @@ msgstr "прошептати до $receiver"
 
 #: src/chat_events.cpp:152
 msgid "whisper: $sender"
-msgstr "шёпіт: $sender"
+msgstr "шепіт: $sender"
 
 #: src/deprecation.cpp:39
 msgid "$elem has been deprecated indefinitely."
@@ -6405,10 +6459,14 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Помилка: [advancefrom] більше не працює. ‘$lower_level’ бійці не будуть "
+"здатні просунутися до ‘$higher_level’; будь ласка, попросіть автора аддону "
+"використовувати замість неї [modify_unit_type]."
 
 #: src/game_config_manager.cpp:443
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
+"замість цього, використовуйте macro з таким же іменем в тегу [campaign]"
 
 #: src/game_config_manager.cpp:638
 msgid "The following add-on had errors and could not be loaded:"
@@ -6474,7 +6532,7 @@ msgstr "Локальний гравець"
 
 #: src/game_initialization/connect_engine.cpp:1251
 msgid "Nobody"
-msgstr ""
+msgstr "Нікого"
 
 #: src/game_initialization/connect_engine.cpp:1254
 msgid "Reserved"
@@ -6630,7 +6688,7 @@ msgstr "Не вдалось знайти еру '$era'"
 
 #: src/game_initialization/multiplayer.cpp:234
 msgid "Invalid address specified for multiplayer server"
-msgstr ""
+msgstr "Вказано неправильну адресу багатокористувацького серверу"
 
 #: src/game_initialization/multiplayer.cpp:269
 msgid ""
@@ -6666,6 +6724,7 @@ msgstr "Попередження"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
+"Віддалений сервер запросив пароль, використовуючи незахищене з'єднання."
 
 #: src/game_initialization/multiplayer.cpp:408
 msgid "You must login first."
@@ -6854,7 +6913,7 @@ msgstr[2] ""
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "Create a new add-on"
-msgstr "Створити новий аддон."
+msgstr "Створити новий аддон"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
@@ -6862,11 +6921,11 @@ msgstr "Новий аддон"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
-msgstr ""
+msgstr "Основний вміст"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline multiplayer scenarios"
-msgstr ""
+msgstr "Основні багатокористувацькі сценарії"
 
 #: src/gui/dialogs/game_stats.hpp:38
 msgid "No visible sides found."
@@ -6887,7 +6946,7 @@ msgstr "Інші ігри"
 #: src/gui/dialogs/multiplayer/match_history.cpp:49
 #: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
-msgstr ""
+msgstr "Історія матчів — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:68
 msgid "Scenario"
@@ -6898,10 +6957,8 @@ msgid "Era"
 msgstr "Ера"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
-#, fuzzy
-#| msgid "Modifications..."
 msgid "Modification"
-msgstr "Модифікації..."
+msgstr "Модифікації"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:150
 msgid "Era: "
@@ -6909,21 +6966,19 @@ msgstr "Ера: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:151
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:253
-#, fuzzy
-#| msgid "No eras found."
 msgid "No game history found."
-msgstr "Ери не знайдені."
+msgstr "Історію матчів не знайдено."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:266
 msgid "Request timed out."
-msgstr ""
+msgstr "Час запиту сплив."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:276
 msgid "Request encountered an unexpected error, please check the logs."
-msgstr ""
+msgstr "Запит зустрів невідому помилку, будь ласка, перевірте звіт."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
@@ -6962,10 +7017,8 @@ msgid "Error"
 msgstr "Помилка"
 
 #: src/gui/dialogs/unit_attack.cpp:158 src/gui/dialogs/unit_attack.cpp:173
-#, fuzzy
-#| msgid "Observe Game"
 msgid "Other aspects: "
-msgstr "Спостерігати за грою"
+msgstr "Інші параметри: "
 
 #: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
 #: src/reports.cpp:818 src/reports.cpp:1082 src/reports.cpp:1094
@@ -6988,10 +7041,8 @@ msgid "Attacks: "
 msgstr "Атаки: "
 
 #: src/gui/dialogs/unit_attack.cpp:189 src/gui/dialogs/unit_attack.cpp:202
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Chance to hit: "
-msgstr "Просувається в: "
+msgstr "Шанс влучити: "
 
 #: src/gui/dialogs/unit_list.hpp:40
 msgid "No units found."
@@ -7022,22 +7073,16 @@ msgid "Lawful Bonus:"
 msgstr "Бонус порядним:"
 
 #: src/help/help_impl.cpp:434
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral Bonus:"
-msgstr "Нейтральні бійці: "
+msgstr "Бонус нейтральним:"
 
 #: src/help/help_impl.cpp:435
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
-msgstr "Хаотичні бійці: "
+msgstr "Бонус хаотичним:"
 
 #: src/help/help_impl.cpp:436
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal Bonus:"
-msgstr "Тіньові бійці: "
+msgstr "Бонус тіньовим:"
 
 #: src/help/help_impl.cpp:437
 msgid "Schedule"
@@ -7094,12 +7139,12 @@ msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
+"Це група бійців, кожен з яких <ref>dst='$topic_id' text='$help_taxonomy'</"
+"ref>."
 
 #: src/help/help_impl.cpp:1153
-#, fuzzy
-#| msgid "<header>text='Units with this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
-msgstr "<header>text='Бійці з цією здібністю'</header>"
+msgstr "<header>text='Підгрупи цих бійці всередині цього загону'</header>"
 
 #: src/help/help_impl.cpp:1155
 msgid "<header>text='Groups of units within this race'</header>"
@@ -7150,16 +7195,12 @@ msgid "Back to Turn "
 msgstr "Назад до ходу "
 
 #: src/hotkey/hotkey_handler.cpp:452
-#, fuzzy
-#| msgid "Ready to start!"
 msgid "Replay from Start"
-msgstr "Готово до старту!"
+msgstr "Продивитись з Початку"
 
 #: src/hotkey/hotkey_handler.cpp:452
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "програти хід"
+msgstr "Продивитись з Ходу"
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -7174,21 +7215,18 @@ msgid "Planning mode deactivated!"
 msgstr "Режим планування вимкнений!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:321
-#, fuzzy
 msgid "Do you want to load it anyway?"
 msgstr "Ви хочете продовжити?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:337
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
-msgstr "Файл, який Ви намагалися завантажити, пошкоджений"
+msgstr ""
+"Файл, який Ви намагалися завантажити, не має жодної інформації для "
+"перегляду. "
 
 #: src/hotkey/hotkey_handler_sp.cpp:341
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
-msgstr "Файл, який Ви намагалися завантажити, пошкоджений"
+msgstr "Файл, який Ви намагалися завантажити, не з цієї сесії."
 
 #: src/language.cpp:114
 msgid "System default language"
@@ -7259,6 +7297,9 @@ msgid ""
 "“all” = overview of all commands, <command> = name of a specific command "
 "(provides more detail)"
 msgstr ""
+"[all|<command>]\n"
+"“all” = переглянути всі команди, <command> = ім'я конкретної команди "
+"(виводить більш детальну інформацію)"
 
 #: src/map_command_handler.hpp:302
 msgid "Missing argument $arg_id"
@@ -7330,54 +7371,43 @@ msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
 "$unknown_ids"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Помилка: невідомий боєць у списку вербування: $unknown_ids"
+msgstr[1] "Помилка: невідомі бійці у списку вербування: $unknown_ids"
+msgstr[2] "Помилка: невідомі бійці у списку вербування: $unknown_ids"
 
 #: src/menu_events.cpp:269
 msgid "You have no units available to recruit."
 msgstr "Немає бійців для вербування."
 
 #: src/menu_events.cpp:279
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recruited."
-msgstr "Немає бійців для заклику"
+msgstr "Бійця не завербовано."
 
 #: src/menu_events.cpp:304
 msgid "Internal error. Please report this as a bug! Details:\n"
-msgstr ""
+msgstr "Внутрішня помилка. Будь ласка, повідомте про цей баг! Подробиці:\n"
 
 #: src/menu_events.cpp:310
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "Зараз ви не можете вербувати $unit_type_name."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:324
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "У вас замало золота щоб найняти цього бійця"
+msgstr ""
+"Зараз у режимі планування, у вас замало золота щоб найняти цього бійця."
 
 #: src/menu_events.cpp:326
-#, fuzzy
-#| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
-msgstr "У вас замало золота щоб найняти цього бійця"
+msgstr "У вас замало золота, щоб завербувати цього бійця."
 
 #: src/menu_events.cpp:369
-#, fuzzy
-#| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
-msgstr "Ви відокремлені від ваших солдатів і не можете їх закликати"
+msgstr "Ви відокремлені від ваших солдатів і не можете їх закликати."
 
 #: src/menu_events.cpp:390
-#, fuzzy
-#| msgid ""
-#| "There are no troops available to recall\n"
-#| "(You must have veteran survivors from a previous scenario)"
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7386,16 +7416,12 @@ msgstr ""
 "(У Вас мають бути бійці, що уціліли з минулого сценарію)"
 
 #: src/menu_events.cpp:394
-#, fuzzy
-#| msgid "You currently can't recall at the highlighted location"
 msgid "You currently can't recall at the highlighted location."
-msgstr "Зараз Ви не можете закликати на цьому полі"
+msgstr "Зараз Ви не можете закликати на цій клітинці."
 
 #: src/menu_events.cpp:406
-#, fuzzy
-#| msgid "No unit recalled"
 msgid "No unit recalled."
-msgstr "Немає бійців для заклику"
+msgstr "Бійця не закликано."
 
 #: src/menu_events.cpp:423
 msgid "You must have at least 1 gold piece to recall a unit."
@@ -7475,15 +7501,18 @@ msgid ""
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
+"[<side> [on/off/full]]\n"
+"“on” = включити, але зберегти видимість, “full” = якби воно повністю "
+"контролювалося іншим гравцем"
 
 #: src/menu_events.cpp:1225
 msgid "Change terrain type of current hex"
-msgstr ""
+msgstr "Змінити тип місцевості на цій клітинці"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
 #: src/menu_events.cpp:1227
 msgid "<terrain type> [both|base|overlay]"
-msgstr ""
+msgstr "<terrain type> [both|base|overlay]"
 
 #: src/menu_events.cpp:1228
 msgid "Switch a side to/from idle state."
@@ -7494,7 +7523,7 @@ msgstr "Перемкнути сторону у/зі сплячого стану.
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
 #: src/menu_events.cpp:1232
 msgid "command_idle^[<side> [on/off]]"
-msgstr "[<сторона> [on/off]]"
+msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:1233
 msgid "Change the in-game theme."
@@ -7502,7 +7531,7 @@ msgstr "Змінити музичну тему."
 
 #: src/menu_events.cpp:1235
 msgid "<side> <nickname>"
-msgstr "<сторона> <нік>"
+msgstr "<side> <нік>"
 
 #: src/menu_events.cpp:1235
 msgid "Assign control of a side to a different player or observer."
@@ -7514,7 +7543,7 @@ msgstr "Запитати статус оператора сторони."
 
 #: src/menu_events.cpp:1237
 msgid "<side>"
-msgstr "<сторона>"
+msgstr "<side>"
 
 #: src/menu_events.cpp:1239
 msgid "Debug foreground terrain."
@@ -7526,13 +7555,15 @@ msgstr "Відладка шарів місцевості під курсором
 
 #: src/menu_events.cpp:1242
 msgid "Display and log fps (Frames Per Second)."
-msgstr ""
+msgstr "Показувати та зберігати fsp(Кадри на секунду)"
 
 #: src/menu_events.cpp:1243
 msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Схоже на команду 'fps', але також змушує перемалювати все на екрані, а не "
+"лише те, що змінилося."
 
 #: src/menu_events.cpp:1244
 msgid "Save game."
@@ -7600,7 +7631,7 @@ msgstr "Вимкнути налагодження."
 
 #: src/menu_events.cpp:1267 src/menu_events.cpp:1271
 msgid "<command>[;<command>...]"
-msgstr "<команда>[;<команда>...]"
+msgstr "<command>[;<команда>...]"
 
 #: src/menu_events.cpp:1267
 msgid "Execute a Lua statement."
@@ -7624,7 +7655,7 @@ msgstr "Запустити Інспектор стану гри"
 
 #: src/menu_events.cpp:1276
 msgid "<name>[=<command>]"
-msgstr "<ім'я>[=<команда>]"
+msgstr "<name>[=<команда>]"
 
 #: src/menu_events.cpp:1276
 msgid "Set or show alias to a command"
@@ -7648,12 +7679,12 @@ msgstr "Показати змінну сценарію."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
 #: src/menu_events.cpp:1282
-#, fuzzy
-#| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
-msgstr "Поміняти змінну бійця. (Підтримуються лише ключі верхнього рівня.)"
+msgstr ""
+"Модифікувати змінну бійця. (Підтримуються лише ключі верхнього рівня та "
+"advances=<число>.)"
 
 #: src/menu_events.cpp:1289
 msgid "Discover all units in help."
@@ -7665,7 +7696,7 @@ msgstr "Згорнути всіх бійців в довідці."
 
 #: src/menu_events.cpp:1291
 msgid "<unit type id>"
-msgstr ""
+msgstr "<id типу бійця>"
 
 #: src/menu_events.cpp:1291
 msgid "Create a unit."
@@ -7681,17 +7712,15 @@ msgstr "Перемкнути пелену для поточного гравця
 
 #: src/menu_events.cpp:1294
 msgid "<amount>"
-msgstr ""
+msgstr "<кількість>"
 
 #: src/menu_events.cpp:1294
 msgid "Give gold to the current player."
 msgstr "Дати золота поточному гравцеві."
 
 #: src/menu_events.cpp:1295
-#, fuzzy
-#| msgid "<nickname>"
 msgid "<event name>"
-msgstr "<прізвисько>"
+msgstr "<ім'я події>"
 
 #: src/menu_events.cpp:1295
 msgid "Fire a game event."
@@ -7734,6 +7763,8 @@ msgid ""
 "It is not allowed to change a side from AI to human control when it's not "
 "your turn."
 msgstr ""
+"Не дозволено змінювати сторону з комп'ютерного противника на людину, якщо це "
+"не ваш хід."
 
 #: src/menu_events.cpp:1501 src/menu_events.cpp:1557
 msgid "Side '$side' controller is now controlled by: AI."
@@ -7748,26 +7779,22 @@ msgid "Side '$side' controller is now controlled by: human."
 msgstr "Сторона '$side' тепер контролюється: людиною."
 
 #: src/menu_events.cpp:1519
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already not droided."
-msgstr "Сторону '$side' вже перемкнуто на ПК."
+msgstr "Сторону '$side' вже не перемкнуто на ПК."
 
 #: src/menu_events.cpp:1523
 msgid ""
 "It is not allowed to change a side from human to AI control when it's not "
 "your turn."
 msgstr ""
+"Не дозволено змінювати сторону з людини на комп'ютерного противника, якщо це "
+"не ваш хід."
 
 #: src/menu_events.cpp:1533
-#, fuzzy
-#| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr "Сторона '$side' тепер контролюється: ПК."
 
 #: src/menu_events.cpp:1535
-#, fuzzy
-#| msgid "Side '$side' is already droided."
 msgid "Side '$side' is already fully AI controlled."
 msgstr "Сторону '$side' вже перемкнуто на ПК."
 
@@ -7775,6 +7802,7 @@ msgstr "Сторону '$side' вже перемкнуто на ПК."
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
+"Недопустима дія відносно сторони '$side'. Доступні варіанти: on, off, full."
 
 #: src/menu_events.cpp:1602
 msgid "Can't idle invalid side: '$side'."
@@ -7848,6 +7876,7 @@ msgstr "Змінна не знайдена"
 #: src/menu_events.cpp:1983
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Команда налагодження 'unit: $unit' провалилася: не вибрано жодного бійця."
 
 #: src/menu_events.cpp:2001
 msgid ""
@@ -7883,11 +7912,8 @@ msgstr ""
 "виклики."
 
 #: src/mouse_events.cpp:1311
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
 msgid "No Attacks"
-msgstr "Атака"
+msgstr "Нема атак"
 
 #: src/mouse_events.cpp:1311
 msgid "This unit has no usable weapons."
@@ -7895,7 +7921,7 @@ msgstr "У цього бійця немає відповідної зброї."
 
 #: src/mp_ui_alerts.cpp:88
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "Гру ($name|, $scenario|) було створено"
 
 #: src/mp_ui_alerts.cpp:89 src/mp_ui_alerts.cpp:104 src/mp_ui_alerts.cpp:119
 #: src/mp_ui_alerts.cpp:194 src/mp_ui_alerts.cpp:205
@@ -7928,38 +7954,33 @@ msgstr "Хід змінився"
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
-msgstr "Сталася помилка при завантаженні списку аддонів з сервера."
+msgstr ""
+"Сталася помилка при завантаженні файлу. Перевірте логи гри, щоб отримати "
+"додаткову інформацію."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download error"
-msgstr "Завантаження"
+msgstr "Помилка завантаження"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Підтвердити перезапис"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "Перезаписати існуючий файл?"
 
 #: src/network_download_file.cpp:81
 msgid "Download complete"
 msgstr "Завантаження завершено"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "Гру збережно."
+msgstr "Файл було завантажено."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -7970,7 +7991,7 @@ msgstr "Виявлена територія з ціною руху менше 1.
 #. from another player. This text will be embedded into a sentence.
 #: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
-msgstr ""
+msgstr "waiting for^глобальна змінна"
 
 #: src/play_controller.cpp:255
 msgid "time left for current turn"
@@ -7982,7 +8003,7 @@ msgstr "поточний місцевий час"
 
 #: src/play_controller.cpp:559
 msgid "Trying to create a corrupt file, please report this bug"
-msgstr ""
+msgstr "Спроба створити зламаний файл, будь ласка, повідомте про помилку"
 
 #: src/play_controller.cpp:1022
 msgid ""
@@ -7997,7 +8018,7 @@ msgstr "Деталі помилки:"
 
 #: src/play_controller.cpp:1209
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "Попередження: є зламані гілки кампаній"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -8007,9 +8028,11 @@ msgid ""
 msgid_plural ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
-msgstr[0] ""
+msgstr[0] "Наступний сценарій відсутній, ви не зможете пройти цю кампанію."
 msgstr[1] ""
+"Декілька наступних сценаріїв відсутні, ви не зможете пройти цю кампанію."
 msgstr[2] ""
+"Декілька наступних сценаріїв відсутні, ви не зможете пройти цю кампанію."
 
 #: src/play_controller.cpp:1222
 msgid ""
@@ -8019,12 +8042,18 @@ msgid_plural ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 msgstr[0] ""
+"Будь ласка, повідомте автору кампанії про відсутній сценарій:\n"
+"$unknown_list|"
 msgstr[1] ""
+"Будь ласка, повідомте автору кампанії про відсутні сценарії:\n"
+"$unknown_list|"
 msgstr[2] ""
+"Будь ласка, повідомте автору кампанії про відсутні сценарії:\n"
+"$unknown_list|"
 
 #: src/play_controller.cpp:1226
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "Коли це починять, вам необхідно буде перезапустити цей сценарій."
 
 #: src/play_controller.cpp:1305
 msgid "No objectives available"
@@ -8123,12 +8152,12 @@ msgstr ""
 "Ви хочете зберегти гру?"
 
 #: src/playsingle_controller.cpp:467
-#, fuzzy
-#| msgid "The game has been saved."
 msgid ""
 "This game has been ended.\n"
 "Reason: "
-msgstr "Гру збережно."
+msgstr ""
+"Гру було завершено.\n"
+"Причина: "
 
 #: src/playsingle_controller.cpp:558
 msgid "It is now $name|’s turn"
@@ -8147,10 +8176,8 @@ msgid "Name: "
 msgstr "Ім'я: "
 
 #: src/reports.cpp:194
-#, fuzzy
-#| msgid "Specials: "
 msgid "Special Notes:"
-msgstr "Особливості: "
+msgstr "Особливості:"
 
 #: src/reports.cpp:217
 msgid "Race: "
@@ -8158,7 +8185,7 @@ msgstr "Раса: "
 
 #: src/reports.cpp:236
 msgid "Side: <b>$side_name</b> ($color_name)"
-msgstr ""
+msgstr "Сторона: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:314
 msgid "Trait: "
@@ -8219,17 +8246,16 @@ msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
+"Цей боєць невиліковний. Його неможливо вилікувати лікарями чи селами, а "
+"також він не отримує бонусів від відпочинку."
 
 #: src/reports.cpp:357
 msgid "invulnerable: "
 msgstr "невразливий: "
 
 #: src/reports.cpp:358
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr "Цей боєць невидимий. Противник не може його побачити або атакувати."
+msgstr "Цей боєць невразливий. Його неможливо пошкодити жодною атакою."
 
 #: src/reports.cpp:436
 msgid "Ability: "
@@ -8305,7 +8331,7 @@ msgstr "Макс бонус рою: "
 
 #: src/reports.cpp:845 src/reports.cpp:864
 msgid "Swarm: "
-msgstr "Юрба: "
+msgstr "Роїтися: "
 
 #: src/reports.cpp:846 src/reports.cpp:857 src/reports.cpp:868
 msgid "Base attacks: "
@@ -8448,22 +8474,16 @@ msgid "Upkeep"
 msgstr "Утримання"
 
 #: src/reports.cpp:1529
-#, fuzzy
-#| msgid "Income"
 msgid "Net Income"
 msgstr "Прибуток"
 
 #: src/reports.cpp:1529
-#, fuzzy
-#| msgid ""
-#| "The amount of gold you gain each turn from your controlled villages, or "
-#| "the amount of gold you will lose each turn for unit upkeep."
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
-"Кількість золота, яку ви кожного ходу отримуєте від сіл, або втрачаєте за "
-"утримання бійців."
+"Кількість золота, яку ви отримуєте та втрачаєте кожного ходу, включаючи "
+"прибуток від захоплених сіл та плату за утримання бійців."
 
 #: src/reports.cpp:1729
 msgid "Observers:"
@@ -8535,6 +8555,20 @@ msgid ""
 "\n"
 "Do you wish to continue?"
 msgstr ""
+"Це збереження з іншої версії гри ($version_number|) і може не працювати з "
+"цією версією.\n"
+"\n"
+"<b>Попередження:</b> збереження в середині кампанії особливо схильні до "
+"збоїв, і вам слід або скористатися старою версією, або перезапустити "
+"кампанію. Навіть якщо збережена гра завантажується успішно, це може вплинути "
+"на більш тонкі аспекти, такі як баланс гри та розвиток сюжету. Складність, "
+"труднощі, <i>веселощі</i> можуть бути відсутніми.\n"
+"\n"
+"Наприклад, кампанія може бути збалансована з меншою кількістю ворогів у "
+"ранніх сценаріях, але очікується, що у вашому списку заклику буде відповідно "
+"менше досвіду в пізніх сценаріях.\n"
+"\n"
+"Бажаєте продовжити?"
 
 #: src/savegame.cpp:267 src/savegame.cpp:313
 msgid "Load Game"
@@ -8573,6 +8607,9 @@ msgid ""
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
+"Файли збереження не можуть закінчуватися крапкою, мати дві крапки або жоден "
+"з наступних символів:\n"
+"    \" * / : < > ? \\ | ~"
 
 #: src/savegame.cpp:483
 msgid "Saved"
@@ -8788,7 +8825,7 @@ msgstr[2] "чекаю на $desc від сторін $sides"
 #. This text will be embedded into a sentence.
 #: src/synced_user_choice.hpp:45
 msgid "waiting for^input"
-msgstr ""
+msgstr "ввід"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
@@ -8825,24 +8862,22 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Цей час доби - тільки заглушка!"
 
 #: src/units/abilities.cpp:968
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "уповільнений: "
+msgstr "Захоплений: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:972
 msgid "Taught: "
-msgstr ""
+msgstr "Навчений: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
-msgstr ""
+msgstr "Навчений: (ворогом): "
 
 #: src/units/abilities.cpp:989
 msgid "Used by opponent: "
-msgstr ""
+msgstr "Використано опонентом: "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:472
@@ -8913,26 +8948,19 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> очок руху"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:554
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number пошкодження"
-msgstr[1] "$number пошкодження"
-msgstr[2] "пошкодження"
+msgstr[0] "$number атаку використано"
+msgstr[1] "$number атаки використано"
+msgstr[2] "$number атак використано"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:563
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> атаки за хід"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> атак за хід"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак за хід"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> атаку використано"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки використано"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак використано"
 
 #: src/units/helper.cpp:57
 msgid "Level: "
@@ -8998,9 +9026,8 @@ msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> огляд"
 
 #: src/units/unit.cpp:2048
-#, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "<span color=\"$color\">$number_or_percent</span> заглушення"
+msgstr "<span color=\"$color\">$number_or_percent</span> оглушення"
 
 #: src/units/unit.cpp:2053
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
@@ -9048,12 +9075,13 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"Не вдалося створити файли логів в папці $logdir. Це зазвичай виникає через "
+"неправильні дозволи папок та антивірусні програми, що обмежують доступи до "
+"папок, або при використанні OneDrive для керування папкою My Documents."
 
 #: src/wesnoth.cpp:686
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Логування"
+msgstr "Логування провалено"
 
 #: src/wesnothd_connection.cpp:548
 msgid "Disconnected from server."

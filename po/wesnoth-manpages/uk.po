@@ -7,8 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "POT-Creation-Date: 2024-04-10 12:05-0500\n"
-"PO-Revision-Date: 2012-10-31 12:38+0200\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
+"PO-Revision-Date: 2024-04-05 15:40+0300\n"
+"Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
+"discord: amakri>\n"
 "Language-Team: none\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -28,7 +29,7 @@ msgstr "ВЕСНОТ"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -104,10 +105,9 @@ msgstr "ОПЦІЇ"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--all-translations>"
-msgstr "B<--strict-validation>"
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -115,13 +115,14 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"Показувати всі переклади у списку вибору мови в грі, навіть якщо вони "
+"вважаються недостатньо повними."
 
 #. type: TP
 #: doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
+#, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr "B<-c, --campaign \\ [E<lt>id_кампаніїE<gt>]>"
+msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:54
@@ -132,10 +133,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
+#, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr "B<--campaign-difficulty [E<lt>складністьE<gt>]>"
+msgstr "B<--campaign-difficulty[>I<=difficulty>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:58
@@ -148,10 +148,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:58
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
+#, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
-msgstr "B<--campaign-scenario E<lt>id_сценаріюE<gt>>"
+msgstr "B<--campaign-scenario>I<\\ id_scenario>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:61
@@ -166,7 +165,7 @@ msgstr ""
 #: doc/man/wesnoth.6:61
 #, no-wrap
 msgid "B<--campaign-skip-story>"
-msgstr ""
+msgstr "B<--campaign-skip-story>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:66
@@ -175,10 +174,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:66
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--clock>"
-msgstr "B<--nomusic>"
+msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
@@ -187,10 +185,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ назва>"
+msgstr "B<--config-dir>I<\\ name>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:73
@@ -199,8 +196,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:73
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--config-path>"
 msgstr "B<--config-path>"
 
@@ -213,10 +209,9 @@ msgstr "B<--path>"
 
 #. type: TP
 #: doc/man/wesnoth.6:77
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr "B<-e,\\ --editor>I<\\ файл>"
+msgstr "B<--core>I<\\ id_core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:80
@@ -227,10 +222,9 @@ msgstr "перевизначає теку даних вказаною текою
 
 #. type: TP
 #: doc/man/wesnoth.6:80
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
-msgstr "B<--data-dir E<lt>текаE<gt>>"
+msgstr "B<--data-dir>I<\\ directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:83
@@ -239,10 +233,9 @@ msgstr "перевизначає теку даних вказаною текою
 
 #. type: TP
 #: doc/man/wesnoth.6:83
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:86
@@ -274,10 +267,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:91
-#, fuzzy, no-wrap
-#| msgid "B<-d, --debug>"
+#, no-wrap
 msgid "B<--debug-lua>"
-msgstr "B<-d, --debug>"
+msgstr "B<--debug-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:94
@@ -286,10 +278,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:94
-#, fuzzy, no-wrap
-#| msgid "B<--strict-validation>"
+#, no-wrap
 msgid "B<--strict-lua>"
-msgstr "B<--strict-validation>"
+msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:97
@@ -300,7 +291,7 @@ msgstr ""
 #: doc/man/wesnoth.6:97
 #, no-wrap
 msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:103
@@ -312,10 +303,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:103
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
-msgstr "B<-e,\\ --editor>I<\\ файл>"
+msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:110
@@ -399,10 +389,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:132
-#, fuzzy, no-wrap
-#| msgid "B<-l,\\ --load>I<\\ file>"
+#, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
-msgstr "B<-l,\\ --load>I<\\ файл>"
+msgstr "B<-l,\\ --load>I<\\ файл>B<-L,\\ --language>I<\\ lang>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:139
@@ -436,10 +425,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--log-precise>"
-msgstr "B<--nogui>"
+msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:157
@@ -448,10 +436,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:157
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--log-strict>"
-msgstr "B<--nomusic>"
+msgstr "B<--log-strict>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:163
@@ -463,10 +450,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:163
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains\\ [filter]>"
+#, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
-msgstr "B<--logdomains\\ [фільтр]>"
+msgstr "B<--logdomains[>I<=filter>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:168
@@ -483,10 +469,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--no-log-to-file>"
-msgstr "B<--nomusic>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
@@ -498,10 +483,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:171
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--nomusic>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
@@ -512,10 +496,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:174
-#, fuzzy, no-wrap
-#| msgid "B<--nosound>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--nosound>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
@@ -526,10 +509,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:177
-#, fuzzy, no-wrap
-#| msgid "B<--max-fps>"
+#, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
-msgstr "B<--max-fps>"
+msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:184
@@ -567,10 +549,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:190
-#, fuzzy, no-wrap
-#| msgid "B<-t, --test>"
+#, no-wrap
 msgid "B<--mp-test>"
-msgstr "B<-t, --test>"
+msgstr "B<--mp-test>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:193
@@ -579,10 +560,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:193
-#, fuzzy, no-wrap
-#| msgid "B<--no-delay>"
+#, no-wrap
 msgid "B<--new-widgets>"
-msgstr "B<--no-delay>"
+msgstr "B<--new-widgets>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:196
@@ -594,10 +574,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:196
-#, fuzzy, no-wrap
-#| msgid "B<--no-delay>"
+#, no-wrap
 msgid "B<--nodelay>"
-msgstr "B<--no-delay>"
+msgstr "B<--nodelay>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:200
@@ -614,17 +593,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:200
-#, fuzzy, no-wrap
-#| msgid "B<--nosound>"
+#, no-wrap
 msgid "B<--noaddons>"
-msgstr "B<--nosound>"
+msgstr "B<--noaddons>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:203
-#, fuzzy
-#| msgid "disables caching of game data."
 msgid "disables loading of user addons."
-msgstr "вимикає кешування ігрових даних."
+msgstr "вимикає завантаження користувацьких аддонів."
 
 #. type: TP
 #: doc/man/wesnoth.6:203
@@ -652,10 +628,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:214
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--nobanner>"
-msgstr "B<--nocache>"
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:217
@@ -675,10 +650,9 @@ msgstr "стартує гру без музики."
 
 #. type: TP
 #: doc/man/wesnoth.6:220
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--noreplaycheck>"
-msgstr "B<--nocache>"
+msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:224
@@ -700,10 +674,9 @@ msgstr "стартує гру без звуку та музики."
 
 #. type: TP
 #: doc/man/wesnoth.6:227
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr "B<--gzip>I<\\ infile>"
+msgstr "B<--output>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:230
@@ -712,10 +685,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:230
-#, fuzzy, no-wrap
-#| msgid "B<--password>I<E<lt>passwordE<gt>>"
+#, no-wrap
 msgid "B<--password>I<\\ password>"
-msgstr "B<--password>I<E<lt>парольE<gt>>"
+msgstr "B<--password>I<\\ password>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:235
@@ -732,10 +704,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:235
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--plugin>I<\\ script>"
-msgstr "B<--gzip>I<\\ infile>"
+msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:242
@@ -747,10 +718,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-p, --preprocess E<lt>початковий файл/текаE<gt> E<lt>цільова текаE<gt>>"
+msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:247
@@ -762,10 +732,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:247
-#, fuzzy, no-wrap
-#| msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgstr "B<-p, --preprocess E<lt>початковий файл/текаE<gt> E<lt>цільова текаE<gt>>"
+msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:257
@@ -799,10 +768,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
+#, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
-msgstr "B<--preprocess-defines=ВИЗНАЧЕННЯ1,ВИЗНАЧЕННЯ2,ітд>"
+msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:264
@@ -822,10 +790,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:264
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
+#, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
-msgstr "B<--preprocess-input-macros E<lt>вхідний файлE<gt>>"
+msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:271
@@ -842,10 +809,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:271
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
+#, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
-msgstr "B<--preprocess-output-macros [E<lt>цільовий файлE<gt>]>"
+msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:282
@@ -884,7 +850,7 @@ msgstr "задає розширення екрану. Приклад: B<-r 800x6
 #: doc/man/wesnoth.6:287
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:290
@@ -896,10 +862,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:290
-#, fuzzy, no-wrap
-#| msgid "B<port>"
+#, no-wrap
 msgid "B<-R,\\ --report>"
-msgstr "B<port>"
+msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:293
@@ -910,10 +875,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:293
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
-msgstr "B<--config-dir>I<\\ назва>"
+msgstr "B<--rng-seed>I<\\ number>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:300
@@ -926,7 +890,7 @@ msgstr ""
 #: doc/man/wesnoth.6:300
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--screenshot>I<\\ map>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:307
@@ -936,10 +900,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:307
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--script>I<\\ file>"
-msgstr "B<--gzip>I<\\ infile>"
+msgstr "B<--script>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:312
@@ -948,10 +911,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:312
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [host]>"
+#, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
-msgstr "B<-s,\\ --server\\ [хост]>"
+msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:317
@@ -968,10 +930,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:317
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--showgui>"
-msgstr "B<--nogui>"
+msgstr "B<--showgui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:321
@@ -993,7 +954,7 @@ msgstr "помилки перевірки розглядаються як фат
 #: doc/man/wesnoth.6:324
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
-msgstr ""
+msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:334
@@ -1007,7 +968,7 @@ msgstr ""
 #: doc/man/wesnoth.6:334
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ percent>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:340
@@ -1018,10 +979,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:340
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
-msgstr "B<-e,\\ --editor>I<\\ файл>"
+msgstr "B<-u,\\ --unit>I<\\ scenario-id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:344
@@ -1030,10 +990,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:344
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--unsafe-scripts>"
-msgstr "B<--config-path>"
+msgstr "B<--unsafe-scripts>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:349
@@ -1045,10 +1004,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:349
-#, fuzzy, no-wrap
-#| msgid "B<--scenario=>I<value>"
+#, no-wrap
 msgid "B<-S,--use-schema>I<\\ path>"
-msgstr "B<--scenario=>I<значення>"
+msgstr "B<-S,--use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:353
@@ -1057,10 +1015,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:353
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ назва>"
+msgstr "B<--userconfig-dir>I<\\ name>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:364
@@ -1085,10 +1042,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:364
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:367
@@ -1097,10 +1053,9 @@ msgstr "виводить шлях теки налаштувань користу
 
 #. type: TP
 #: doc/man/wesnoth.6:367
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ назва>"
+msgstr "B<--userdata-dir>I<\\ name>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:376
@@ -1123,10 +1078,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:376
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:379
@@ -1137,10 +1091,9 @@ msgstr "виводить шлях теки налаштувань користу
 
 #. type: TP
 #: doc/man/wesnoth.6:379
-#, fuzzy, no-wrap
-#| msgid "B<--username>I<E<lt>usernameE<gt>>"
+#, no-wrap
 msgid "B<--username>I<\\ username>"
-msgstr "B<--username>I<E<lt>користувачE<gt>>"
+msgstr "B<--username>I<\\ username>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:384
@@ -1156,10 +1109,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:384
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr "B<--path>"
+msgstr "B<--validate>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:387
@@ -1170,7 +1122,7 @@ msgstr ""
 #: doc/man/wesnoth.6:387
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ addon_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:390
@@ -1179,10 +1131,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:390
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-core>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:393
@@ -1191,10 +1142,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:393
-#, fuzzy, no-wrap
-#| msgid "B<--validcache>"
+#, no-wrap
 msgid "B<--validate-schema \\ path>"
-msgstr "B<--validcache>"
+msgstr "B<--validate-schema \\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:396
@@ -1225,17 +1175,14 @@ msgstr "показує номер версії та виходить."
 
 #. type: TP
 #: doc/man/wesnoth.6:402
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:405
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
-msgstr "показує номер версії та виходить."
+msgstr "показує номер версії та більше нічого, потім виходить."
 
 #. type: TP
 #: doc/man/wesnoth.6:405
@@ -1278,10 +1225,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:421
-#, fuzzy, no-wrap
-#| msgid "B<--ai_config>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<число>B<=>I<значення>"
+msgstr "B<--ai-config>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:424
@@ -1292,10 +1238,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:424
-#, fuzzy, no-wrap
-#| msgid "B<--algorithm>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
-msgstr "B<--algorithm>I<число>B<=>I<значення>"
+msgstr "B<--algorithm>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:434
@@ -1308,10 +1253,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:434
-#, fuzzy, no-wrap
-#| msgid "B<--controller>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
-msgstr "B<--controller>I<число>B<=>I<значення>"
+msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:441
@@ -1328,10 +1272,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:441
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--era>I<\\ value>"
-msgstr "B<--era=>I<значення>"
+msgstr "B<--era>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:448
@@ -1369,7 +1312,7 @@ msgstr ""
 #: doc/man/wesnoth.6:452
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:455
@@ -1378,10 +1321,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:455
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--label>I<\\ label>"
-msgstr "B<--era=>I<значення>"
+msgstr "B<--label>I<\\ label>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:460
@@ -1390,10 +1332,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:460
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
-msgstr "B<--era=>I<значення>"
+msgstr "B<--multiplayer-repeat>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:467
@@ -1404,10 +1345,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:467
-#, fuzzy, no-wrap
-#| msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+#, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
-msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+msgstr "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:476
@@ -1422,10 +1362,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:476
-#, fuzzy, no-wrap
-#| msgid "B<--scenario=>I<value>"
+#, no-wrap
 msgid "B<--scenario>I<\\ value>"
-msgstr "B<--scenario=>I<значення>"
+msgstr "B<--scenario>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:480
@@ -1438,10 +1377,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:480
-#, fuzzy, no-wrap
-#| msgid "B<--side>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
-msgstr "B<--side>I<number>B<=>I<value>"
+msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:485
@@ -1454,10 +1392,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:485
-#, fuzzy, no-wrap
-#| msgid "B<--turns=>I<value>"
+#, no-wrap
 msgid "B<--turns>I<\\ value>"
-msgstr "B<--turns=>I<значення>"
+msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:488
@@ -1532,10 +1469,8 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:514 doc/man/wesnothd.6:297
-#, fuzzy
-#| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
-msgstr "Загляньте на офіційну сторінку: http://www.wesnoth.org/"
+msgstr "Завіиайие на офіційну сторінку: https://www.wesnoth.org/"
 
 #. type: SH
 #: doc/man/wesnoth.6:515 doc/man/wesnothd.6:298
@@ -1547,10 +1482,10 @@ msgstr "АВТОРСЬКІ ПРАВА"
 #: doc/man/wesnoth.6:518 doc/man/wesnothd.6:301
 #, fuzzy
 #| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Авторське право \\(co 2003-2011 Девід Уайт (David White) "
+"Авторське право \\(co 2003-2023 Девід Уайт (David White) "
 "E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
@@ -1583,10 +1518,8 @@ msgstr "ДИВ. ТАКОЖ"
 #.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
-#, fuzzy
-#| msgid "B<wesnothd>(6)."
 msgid "B<wesnothd>(6)"
-msgstr "B<wesnothd>(6)."
+msgstr "B<wesnothd>(6)"
 
 #. type: TH
 #: doc/man/wesnothd.6:16
@@ -1604,7 +1537,7 @@ msgstr "wesnothd"
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "Мережний демон мультиплеєру Битви за Веснот"
+msgstr "Мережний даемон мультиплеєру Битви за Веснот"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:23
@@ -1859,7 +1792,7 @@ msgstr ""
 #: doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:129
@@ -2048,7 +1981,7 @@ msgstr ""
 #: doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
@@ -2059,7 +1992,7 @@ msgstr ""
 #: doc/man/wesnothd.6:170
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
@@ -2070,7 +2003,7 @@ msgstr ""
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
@@ -2081,7 +2014,7 @@ msgstr ""
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -2133,16 +2066,12 @@ msgstr "Глобальні теги:"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:196
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> Тег, який вказує перенаправлення на сервер для певної версії "
-"клієнта."
+"клієнта. Не використовується, якщо B<versions_accepted> не встановлено."
 
 #. type: TP
 #: doc/man/wesnothd.6:197
@@ -2261,10 +2190,8 @@ msgstr "B<db_host>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
-msgstr "Назва хосту поштового сервера"
+msgstr "Назва хосту серверу бази даних"
 
 #. type: TP
 #: doc/man/wesnothd.6:245
@@ -2274,10 +2201,8 @@ msgstr "B<db_name>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid "The hostname of the mail server"
 msgid "The name of the database"
-msgstr "Назва хосту поштового сервера"
+msgstr "Назва бази даних"
 
 #. type: TP
 #: doc/man/wesnothd.6:248
@@ -2303,10 +2228,8 @@ msgstr "B<db_password>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:254
-#, fuzzy
-#| msgid "This user's password."
 msgid "This user's password"
-msgstr "Пароль цього користувача."
+msgstr "Пароль цього користувача"
 
 #. type: TP
 #: doc/man/wesnothd.6:254
@@ -2343,10 +2266,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:260
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:263
@@ -2356,10 +2278,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:263
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:266
@@ -2372,7 +2293,7 @@ msgstr ""
 #: doc/man/wesnothd.6:266
 #, no-wrap
 msgid "B<db_game_modification_info_table>"
-msgstr ""
+msgstr "B<db_game_modification_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:269
@@ -2383,10 +2304,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:269
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_user_group_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:272
@@ -2406,10 +2326,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2420,10 +2339,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:278
@@ -2443,10 +2361,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:281
@@ -2468,7 +2385,7 @@ msgstr ""
 #: doc/man/wesnothd.6:281
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:284
@@ -2503,31 +2420,23 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:308
-#, fuzzy
-#| msgid "B<wesnoth>(6)."
 msgid "B<wesnoth>(6)"
-msgstr "B<wesnoth>(6)."
+msgstr "B<wesnoth>(6)"
 
-#, fuzzy, no-wrap
-#~| msgid "B<--gunzip>I<\\ infile.gz>"
+#, no-wrap
 #~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--gunzip>I<\\ infile.gz>"
+#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
-#, fuzzy
-#~| msgid ""
-#~| "decompresses a file which should be in gzip format and stores it without "
-#~| "the .gz suffix. The I<infile.gz> will be removed."
 #~ msgid ""
 #~ "decompresses a file which should be in bzip2 format and stores it without "
 #~ "the .bz2 suffix. The I<infile.bz2> will be removed."
 #~ msgstr ""
-#~ "розпакувати файл, який повинен бути в форматі gzip і зберегти його без "
-#~ "розширення .gz. Файл I<infile.gz> буде видалений."
+#~ "розпакувати файл, який повинен бути в форматі bzip2 і зберегти його без "
+#~ "розширення .bz2 . Файл I<infile.bz2> буде видалено."
 
-#, fuzzy, no-wrap
-#~| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 #~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ infile>"
+#~ msgstr "B<--bzip2>I<\\ infile>"
 
 #, fuzzy
 #~| msgid ""
