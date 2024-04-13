@@ -10,8 +10,9 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2024-03-15 20:48+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
+"PO-Revision-Date: 2024-04-04 11:30+0300\n"
+"Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
+"discord: amakri>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -1104,17 +1105,13 @@ msgstr "Кам'яна стіна катакомб"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1540
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Заросла бруківка"
+msgstr "Заросла стіна"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1541
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Чиста кам'яна стіна"
+msgstr "Заросла кам'яна стіна"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
@@ -1352,10 +1349,8 @@ msgstr "Село дрейків"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2051
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Село дрейків"
+msgstr "Засніжене село дрейків"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2066
@@ -1380,12 +1375,12 @@ msgstr "Сніжний барак"
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:2118
 msgid "Log Cabin"
-msgstr "Дерев'яна будка"
+msgstr "Дерев'яна хатина"
 
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:2131
 msgid "Snowy Log Cabin"
-msgstr "Сніжна дерев'яна будка"
+msgstr "Засніжена дерев'яна хатина"
 
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:2144
@@ -2525,10 +2520,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Перейменувати"
+msgstr "Ім'я:"
 
 #. [label]
 #. [grid]
@@ -2663,7 +2656,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
 msgid "I Agree"
-msgstr ""
+msgstr "Погоджуюсь"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
@@ -2723,10 +2716,8 @@ msgstr "Версія:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/window/addon_manager.cfg:471
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Видалити аддон з серверу"
+msgstr "Обрати версію аддону"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:489
@@ -2901,10 +2892,8 @@ msgstr "Сортувати за повним ім'ям кампанії за а�
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:226
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Обмеження ходів:"
+msgstr "Хронологія"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:227
@@ -2963,17 +2952,17 @@ msgstr "Складність:"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:355
 msgid "Easy"
-msgstr "Легкий"
+msgstr "Легко"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:358
 msgid "Normal"
-msgstr "Нормальний"
+msgstr "Нормально"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:361
 msgid "Hard"
-msgstr "Важкий"
+msgstr "Важко"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:418
@@ -3000,7 +2989,7 @@ msgstr "Складність"
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
 msgid "Select difficulty:"
-msgstr "Виберіть рівень складності:"
+msgstr "Оберіть рівень складності:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3233,10 +3222,8 @@ msgstr "Лише команда"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on selection"
-msgstr "Деталі аддону"
+msgstr "Вибір аддону"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3248,10 +3235,8 @@ msgstr ""
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "Аддони"
+msgstr "ID аддону"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
@@ -3306,7 +3291,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Назва:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
@@ -3320,10 +3305,8 @@ msgstr "Іконка:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Скинути вибір"
+msgstr "Обрати файл іконки"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3428,10 +3411,8 @@ msgstr ""
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Опис:"
+msgstr "Опис"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3464,24 +3445,18 @@ msgstr "Зберегти"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Переклади:"
+msgstr "Переклад"
 
 #. [label]
 #: data/gui/window/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Потрібний пароль"
+msgstr "* Обов'язково"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Мова"
+msgstr "* Мова:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
@@ -3493,17 +3468,17 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Назва:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "Переклад назви аддону."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "Переклад опису аддону."
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -3559,10 +3534,8 @@ msgstr "Ім'я команди:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruit list:"
-msgstr "Новобранці:"
+msgstr "Список новобранців:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -3762,7 +3735,7 @@ msgstr "Видалити поточну закладку"
 #. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
-msgstr "Нова Тека"
+msgstr "Нова папка"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:391
@@ -4290,17 +4263,15 @@ msgstr "Завантаження..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Загальні"
+msgstr "Основне лобі"
 
 #. [widget]: id=tab_label
 #. Games which were created by a bot, there's discussion about the meaning and
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Матчмейкінг"
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:140
@@ -4320,7 +4291,7 @@ msgstr "Вільних місць"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/window/lobby_main.cfg:449
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Показувати лише ігри з вільними місцями"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
@@ -4332,7 +4303,7 @@ msgstr "Друзі"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/window/lobby_main.cfg:462
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Показувати лише ігри з друзями"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:474
@@ -4342,7 +4313,7 @@ msgstr "Заблоковані гравці"
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/window/lobby_main.cfg:475
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Показувати ігри, що включають заблокованих гравців"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/window/lobby_main.cfg:487
@@ -4397,7 +4368,7 @@ msgstr "Параметри"
 #. [label]: id=title
 #: data/gui/window/lobby_main.cfg:629 data/gui/window/mp_match_history.cfg:299
 msgid "Match History"
-msgstr ""
+msgstr "Історія матчів"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:646 data/gui/window/lobby_main.cfg:746
@@ -4533,27 +4504,27 @@ msgstr "Дерев'яна будка"
 #. [row]
 #: data/gui/window/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Debug"
 
 #. [row]
 #: data/gui/window/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Інформація"
 
 #. [row]
 #: data/gui/window/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Попередження"
 
 #. [row]
 #: data/gui/window/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Помилка"
 
 #. [row]
 #: data/gui/window/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "Нічого"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -7181,26 +7152,20 @@ msgid "The game data cache could not be purged."
 msgstr "Кеш даних гри не може бути повністю видаленим."
 
 #: src/gui/dialogs/game_load.cpp:75
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Збережені ігри"
+msgstr "Нема збережених ігор"
 
 #: src/gui/dialogs/game_load.cpp:75
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Немає доступних альтернативних відеорежимів"
+msgstr "Немає збережених ігор для завантаження."
 
 #: src/gui/dialogs/game_load.cpp:145
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "Теперішня версія"
 
 #: src/gui/dialogs/game_load.cpp:149
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Версія $version"
+msgstr "Веснот $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:235
@@ -7260,10 +7225,8 @@ msgid "controller^Idle"
 msgstr "Пусто"
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Порожньо"
+msgstr "Зарезервовано"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -7824,10 +7787,6 @@ msgid "Joined <i>$name</i>"
 msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:387
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -7844,10 +7803,8 @@ msgid "Opening links is not supported, contact your packager"
 msgstr "Відкриття посилань не підтримується, зв'яжіться з менеджером пакету"
 
 #: src/gui/widgets/label.cpp:141
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Посилання скопійовано!"
+msgstr "Відкрити посилання?"
 
 #: src/gui/widgets/label.cpp:172
 msgid "Copied link!"
