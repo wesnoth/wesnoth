@@ -138,12 +138,12 @@ void rich_label::set_label(const t_string& text)
 	unsigned col_width = 0;
 	unsigned max_col_height = 0;
 
-	PLAIN_LOG << parsed_text.size();
+//	PLAIN_LOG << parsed_text.size();
 	for (size_t i = 0; i < parsed_text.size(); i++) {
 		bool last_entry = (i == parsed_text.size() - 1);
 		std::string line = parsed_text.at(i);
 
-		PLAIN_LOG << "(" << line << "), " << i;
+//		PLAIN_LOG << "(" << line << "), " << i;
 
 		if (!line.empty() && line.at(0) == '[') {
 			config cfg;
@@ -172,14 +172,14 @@ void rich_label::set_label(const t_string& text)
 						(*curr_item)["x"] = "(width - image_width - pos_x)";
 					} else {
 						// left aligned images are default for now
-						(*curr_item)["x"] = "(debug_print('i, px', pos_x))";
+						(*curr_item)["x"] = "(pos_x)";
 					}
 				}
 
 				if (floating) {
 					(*curr_item)["y"] = "(img_y)";
 				} else {
-					(*curr_item)["y"] = "(debug_print('i, py', pos_y))";
+					(*curr_item)["y"] = "(pos_y)";
 				}
 				(*curr_item)["h"] = "(image_height)";
 				(*curr_item)["w"] = "(image_width)";
@@ -190,20 +190,20 @@ void rich_label::set_label(const t_string& text)
 				actions << "([";
 				if (floating) {
 					if (align == "left") {
-						actions << "set_var('pos_x', image_width)";
+						actions << "set_var('pos_x', image_width + 5)";
 					} else if (align == "right") {
 						actions << "set_var('pos_x', 0)";
 					}
-					actions << "," <<  "set_var('img_y', img_y + image_height)";
+					actions << "," <<  "set_var('img_y', img_y + image_height + 5)";
 				} else {
 					if (align == "left" && !break_line) {
-						actions << "set_var('pos_x', pos_x + image_width)";
+						actions << "set_var('pos_x', pos_x + image_width + 5)";
 					} else {
 						actions << "set_var('pos_x', 0)";
 					}
 				}
 				if (break_line) {
-					actions << "," << "set_var('pos_y', pos_y + image_height)";
+					actions << "," << "set_var('pos_y', pos_y + image_height + 5)";
 				}
 				actions << "])";
 
@@ -220,10 +220,11 @@ void rich_label::set_label(const t_string& text)
 					img_size.y = get_image_size(*curr_item).y;
 				}
 
-				h_ += get_image_size(*curr_item).y;
+				y_ = h_;
+				h_ += get_image_size(*curr_item).y + 7;
 
 				if (align == "left") {
-					x_ = img_size.x;
+					x_ = img_size.x + 5;
 				}
 
 				is_image = true;
@@ -347,7 +348,7 @@ void rich_label::set_label(const t_string& text)
 					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
 					PLAIN_LOG << "(br) " << max_col_height;
 					PLAIN_LOG << curr_item->debug();
-					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d), set_var('tw', width - pos_x - %d)])") % max_col_height % col_width);
+					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + 3), set_var('tw', width - pos_x - %d)])") % max_col_height % col_width);
 
 					//linebreak
 					x_ = 0;
@@ -362,6 +363,8 @@ void rich_label::set_label(const t_string& text)
 				} else if(cfg.optional_child("endtable")) {
 					PLAIN_LOG << "(endtable) " << max_col_height;
 					PLAIN_LOG << curr_item->debug();
+					max_col_height = std::max(max_col_height, txt_height_);
+					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
 					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d), set_var('tw', 0)])") % max_col_height);
 
 					//linebreak and reset col_width
@@ -376,13 +379,14 @@ void rich_label::set_label(const t_string& text)
 					}
 				}
 
-
+				// update text size and widget height
 				if (tmp_h > get_text_size(*curr_item, w_ - img_size.x).y) {
 					tmp_h = 0;
 				}
 				txt_height_ += get_text_size(*curr_item, w_ - img_size.x).y - tmp_h;
 				if (img_size.y < static_cast<int>(txt_height_+prev_txt_height_)) {
 					img_size = point(0,0);
+					y_ = h_;
 					h_ = txt_height_ + prev_txt_height_;
 				}
 
@@ -425,6 +429,7 @@ void rich_label::set_label(const t_string& text)
 				(*curr_item)["actions"] = "([set_var('pos_y', pos_y + prev_height)])";
 			}
 
+			// update text size and widget height
 			if (tmp_h > get_text_size(*curr_item, w_ - img_size.x).y) {
 				tmp_h = 0;
 			}
@@ -433,15 +438,16 @@ void rich_label::set_label(const t_string& text)
 
 			if (img_size.y < static_cast<int>(txt_height_+prev_txt_height_)) {
 				img_size = point(0,0);
+				y_ = h_;
 				h_ = txt_height_ + prev_txt_height_;
 			}
 
 			is_image = false;
 		}
 
-		if (curr_item) {
-			PLAIN_LOG << text_dom_.debug();
-		}
+//		if (curr_item) {
+//			PLAIN_LOG << text_dom_.debug();
+//		}
 
 		// reset all variables to zero, otherwise they grow infinitely
 		if (last_entry) {
@@ -450,17 +456,17 @@ void rich_label::set_label(const t_string& text)
 			break_cfg["text"] = " ";
 			break_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0), set_var('img_x', 0), set_var('img_y', 0)])";
 		}
-		//padding
-		h_ += 20;
-	} // for loop ends
-//	PLAIN_LOG << "h :" << h_;
 
-	PLAIN_LOG << text_dom_.debug();
+	} // for loop ends
+
+	// padding, avoids text from getting cut off at the bottom
+	h_ += 20;
+//	PLAIN_LOG << text_dom_.debug();
 } // function ends
 
 void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	// If text is empty, then it's a dummy block used only to
-	// execute the action and set variables. Make it non-empty
+	// execute the action and set variables. Make text non-empty
 	// so that canvas is forced to executed the actions.
 	(*txt_ptr)["text"] = text.empty() ? " " : text;
 	(*txt_ptr)["font_size"] = 16;
@@ -534,49 +540,26 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "rich_label click";
 
-//	if (!get_link_aware()) {
-//		return; // without marking event as "handled".
-//	}
-//
-//	if (!desktop::open_object_is_supported()) {
-//		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
-//		handled = true;
-//		return;
-//	}
-
 	point mouse = get_mouse_position();
 
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	PLAIN_LOG << mouse.x << "," << mouse.y;
+	PLAIN_LOG << "(mouse)" << mouse.x << "," << mouse.y;
 	for (const auto& entry : links_) {
 		PLAIN_LOG << entry.first.x << "," << entry.first.y;
-		PLAIN_LOG << entry.first.w << "," << entry.first.h;
+		PLAIN_LOG << entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h;
 
 		if (entry.first.contains(mouse)) {
-			DBG_GUI_E << "Clicked link! dst = " << entry.second;
+			PLAIN_LOG << "Clicked link! dst = " << entry.second;
 			if (link_handler_) {
 				link_handler_(entry.second);
 			} else {
-				DBG_GUI_E << "No registered link handler found";
+				PLAIN_LOG << "No registered link handler found";
 			}
 
 		}
 	}
-
-//	std::string link = get_label_link(mouse);
-
-//	if (link.length() == 0) {
-//		return ; // without marking event as "handled"
-//	}
-
-//	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
-
-//	const int res = show_message(_("Open link?"), link, dialogs::message::yes_no_buttons);
-//	if(res == gui2::retval::OK) {
-//		desktop::open_object(link);
-//	}
 
 	handled = true;
 }
