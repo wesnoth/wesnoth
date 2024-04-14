@@ -152,12 +152,6 @@ public:
 		link_handler_ = link_handler;
 	}
 
-	point get_column_line(const point& position) const
-	{
-//		PLAIN_LOG << "size, renderer :" << font::get_text_renderer().get_length();
-		return font::get_text_renderer().get_column_line(position);
-	}
-
 private:
 	/**
 	 * Possible states of the widget.
@@ -238,12 +232,24 @@ private:
 	point get_text_size(config text_cfg, unsigned width = 0);
 	point get_image_size(config img_cfg);
 
+	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0);
+
 	size_t get_split_location(int img_height);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
 
 	std::function<void(std::string)> link_handler_;
+
+	point get_column_line(const point& position) const
+	{
+		return font::get_text_renderer().get_column_line(position);
+	}
+
+	point get_xy_from_offset(const unsigned offset) const
+	{
+		return font::get_text_renderer().get_cursor_position(offset);
+	}
 
 	point calculate_best_size() const
 	{

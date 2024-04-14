@@ -70,6 +70,12 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 }
 
 point rich_label::get_text_size(config text_cfg, unsigned width) {
+	wfl::map_formula_callable variables = setup_text_renderer(text_cfg, width);
+	return point(variables.query_value("text_width").as_int(), variables.query_value("text_height").as_int());
+}
+
+wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsigned width) {
+	// Set up fake render to calculate text position
 	wfl::action_function_symbol_table functions;
 	wfl::map_formula_callable variables;
 	variables.add("text", wfl::variant(text_cfg["text"].str()));
@@ -78,7 +84,7 @@ point rich_label::get_text_size(config text_cfg, unsigned width) {
 	variables.add("fake_draw", wfl::variant(true));
 	tshape_ = std::make_unique<gui2::text_shape>(text_cfg, functions);
 	tshape_->draw(variables);
-	return point(variables.query_value("text_width").as_int(), variables.query_value("text_height").as_int());
+	return variables;
 }
 
 point rich_label::get_image_size(config img_cfg) {
@@ -132,6 +138,7 @@ void rich_label::set_label(const t_string& text)
 	config* curr_item = nullptr;
 
 	bool is_image = false;
+	bool floating = false;
 	bool new_text_block = false;
 	point wrap_position;
 	point img_size;
@@ -143,7 +150,7 @@ void rich_label::set_label(const t_string& text)
 		bool last_entry = (i == parsed_text.size() - 1);
 		std::string line = parsed_text.at(i);
 
-//		PLAIN_LOG << "(" << line << "), " << i;
+		PLAIN_LOG << "x :" << x_;
 
 		if (!line.empty() && line.at(0) == '[') {
 			config cfg;
@@ -151,7 +158,7 @@ void rich_label::set_label(const t_string& text)
 
 			if (cfg.optional_child("img")) {
 
-				bool floating = cfg.mandatory_child("img")["float"].to_bool();
+				floating = cfg.mandatory_child("img")["float"].to_bool();
 
 				curr_item = &(text_dom_.add_child("image"));
 				(*curr_item)["name"] = cfg.mandatory_child("img")["src"];
@@ -186,31 +193,6 @@ void rich_label::set_label(const t_string& text)
 
 				bool break_line = cfg.mandatory_child("img")["break"].to_bool();
 
-				std::stringstream actions;
-				actions << "([";
-				if (floating) {
-					if (align == "left") {
-						actions << "set_var('pos_x', image_width + 5)";
-					} else if (align == "right") {
-						actions << "set_var('pos_x', 0)";
-					}
-					actions << "," <<  "set_var('img_y', img_y + image_height + 5)";
-				} else {
-					if (align == "left" && !break_line) {
-						actions << "set_var('pos_x', pos_x + image_width + 5)";
-					} else {
-						actions << "set_var('pos_x', 0)";
-					}
-				}
-				if (break_line) {
-					actions << "," << "set_var('pos_y', pos_y + image_height + 5)";
-				}
-				actions << "])";
-
-				PLAIN_LOG << actions.str();
-				(*curr_item)["actions"] = actions.str();
-				actions.str("");
-
 				// Sizing
 				if (floating) {
 					img_size.x = get_image_size(*curr_item).x;
@@ -220,18 +202,48 @@ void rich_label::set_label(const t_string& text)
 					img_size.y = get_image_size(*curr_item).y;
 				}
 
+				std::stringstream actions;
+				actions << "([";
+				if (floating) {
+					if (align == "left") {
+						x_ = img_size.x + 5;
+						actions << "set_var('pos_x', image_width + 5)";
+					} else if (align == "right") {
+						x_ = 0;
+						actions << "set_var('pos_x', 0)";
+					}
+					actions << "," <<  "set_var('img_y', img_y + image_height + 5)";
+				} else {
+					if (align == "left" && !break_line) {
+						x_ += img_size.x + 5;
+						actions << "set_var('pos_x', pos_x + image_width + 5)";
+					} else {
+						x_ = 0;
+						actions << "set_var('pos_x', 0)";
+					}
+				}
+				if (break_line) {
+					actions << "," << "set_var('pos_y', pos_y + image_height + 5)";
+				}
+				actions << "])";
+
+				(*curr_item)["actions"] = actions.str();
+				actions.str("");
+
 				y_ = h_;
 				h_ += get_image_size(*curr_item).y + 7;
 
-				if (align == "left") {
-					x_ = img_size.x + 5;
-				}
+				//FIXME image could be in the middle of a text block
+//				if (align == "left") {
+//					x_ += img_size.x + 5;
+//				}
 
 				is_image = true;
 
 				PLAIN_LOG << "(img) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 			} else {
+				// TODO is h_ getting correctly added here?
 				if (curr_item == nullptr || new_text_block || is_image) {
 					curr_item = &(text_dom_.add_child("text"));
 					default_text_config(curr_item);
@@ -243,15 +255,33 @@ void rich_label::set_label(const t_string& text)
 				int tmp_h = get_text_size(*curr_item, w_ - img_size.x).y;
 
 				if (cfg.optional_child("ref")) {
-					add_text_with_attribute((*curr_item), cfg.mandatory_child("ref")["text"], "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1, (*curr_item)["text"].str().size()));
+					setup_text_renderer(*curr_item);
+					point t_start = get_xy_from_offset((*curr_item)["text"].str().size());
 
-					// Add links
-					point t_size = get_text_size(*curr_item);
-					unsigned x2 = t_size.x;
-					rect link_rect = {static_cast<int>(x_), static_cast<int>(y_), static_cast<int>(x2-x_), static_cast<int>(h_-y_)};
+					std::string link_text = cfg.mandatory_child("ref")["text"].str();
+					link_text = link_text.empty() ? cfg.mandatory_child("ref")["dst"] : link_text;
+
+					add_text_with_attribute((*curr_item), link_text, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1));
+
+					setup_text_renderer(*curr_item);
+					point t_end = get_xy_from_offset((*curr_item)["text"].str().size());
+					// TODO Needs to be adjusted if ref's font size is changed
+					t_end.y += font::get_max_height(font::SIZE_NORMAL);
+
+					// Add link
+					// TODO only works if text is on the right side of the image
+					rect link_rect = {
+							static_cast<int>(x_ + t_start.x),
+							static_cast<int>(prev_txt_height_ + t_start.y),
+							static_cast<int>(t_end.x - t_start.x),
+							static_cast<int>(t_end.y - t_start.y)
+					};
+
 					links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
 
-					is_image = false;
+//					is_image = false;
+
+					PLAIN_LOG << "(ref) x :" << x_ << "y :" << y_ << "h :" << h_ << " pth : " << prev_txt_height_;
 
 				} else if (cfg.optional_child("bold")||cfg.optional_child("b")) {
 
@@ -260,8 +290,6 @@ void rich_label::set_label(const t_string& text)
 					} else if (cfg.optional_child("b")) {
 						add_text_with_attribute((*curr_item), cfg.mandatory_child("b")["text"], "bold");
 					}
-
-					PLAIN_LOG << "(bold) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 					is_image = false;
 
@@ -273,14 +301,11 @@ void rich_label::set_label(const t_string& text)
 						add_text_with_attribute((*curr_item), cfg.mandatory_child("i")["text"], "italic");
 					}
 
-					PLAIN_LOG << "(italic) x :" << x_ << ", y :"  << y_ << ", h: " << h_;
-
 					is_image = false;
 
 				} else if (cfg.optional_child("header")||cfg.optional_child("h")) {
 					// Header starts in a new line/paragraph
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + item_height)])";
-					x_ = 0;
 					prev_txt_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
 					txt_height_ = 0;
 
@@ -296,15 +321,18 @@ void rich_label::set_label(const t_string& text)
 					}
 					(*curr_item)["attr_name"] = "fgcolor,fontsize";
 					(*curr_item)["attr_start"] = std::to_string(start) + "," + std::to_string(start);
-					(*curr_item)["attr_end"] =  std::to_string((*curr_item)["text"].str().size()) + "," + std::to_string((*curr_item)["text"].str().size());
-					// TODO add font::GOLD_COLOR and remove hardcoded color value
-					(*curr_item)["attr_color"] = "baac7d," + std::to_string(font::SIZE_TITLE);
+					(*curr_item)["attr_end"] =
+							std::to_string((*curr_item)["text"].str().size())
+							+ ","
+							+ std::to_string((*curr_item)["text"].str().size());
+					(*curr_item)["attr_color"] =
+							font::TITLE_COLOR.to_hex_string().substr(1)
+							+ ","
+							+ std::to_string(font::SIZE_TITLE);
 
-					PLAIN_LOG << "(header) x :" << x_ << ", y :" << y_ << ", h: " << h_;
-
+					prev_txt_height_ += get_text_size(*curr_item, w_ - img_size.x).y;
 					is_image = false;
 					new_text_block = true;
-
 
 //				} else if(line == "[link]") {
 //				} else if(line == "[format]") {
@@ -321,6 +349,8 @@ void rich_label::set_label(const t_string& text)
 					x_ = 0;
 					prev_txt_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
 					txt_height_ = 0;
+
+					new_text_block = true;
 
 					PLAIN_LOG << "start table : " << "col=" << columns;
 					PLAIN_LOG << "col_width : " << col_width;
@@ -379,6 +409,12 @@ void rich_label::set_label(const t_string& text)
 					}
 				}
 
+				if (x_ != 0) {
+					// update text positin if there is no line break
+					setup_text_renderer(*curr_item);
+					x_ = get_xy_from_offset((*curr_item)["text"].str().size()).x;
+				}
+
 				// update text size and widget height
 				if (tmp_h > get_text_size(*curr_item, w_ - img_size.x).y) {
 					tmp_h = 0;
@@ -393,6 +429,7 @@ void rich_label::set_label(const t_string& text)
 			}
 
 		} else if (!line.empty()) {
+			// TODO is h_ getting correctly added here?
 			// reset image positioning
 			if (curr_item == nullptr || new_text_block || is_image) {
 				curr_item = &(text_dom_.add_child("text"));
@@ -469,9 +506,9 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	// execute the action and set variables. Make text non-empty
 	// so that canvas is forced to executed the actions.
 	(*txt_ptr)["text"] = text.empty() ? " " : text;
-	(*txt_ptr)["font_size"] = 16;
-	(*txt_ptr)["x"] = "(debug_print('t, x :', pos_x))";
-	(*txt_ptr)["y"] = "(debug_print('t, y :', pos_y))";
+	(*txt_ptr)["font_size"] = font::SIZE_NORMAL;
+	(*txt_ptr)["x"] = "(pos_x)";
+	(*txt_ptr)["y"] = "(pos_y)";
 	(*txt_ptr)["w"] = "(text_width)";
 	(*txt_ptr)["h"] = "(text_height)";
 	(*txt_ptr)["maximum_width"] = "(width - tw - pos_x)";
@@ -485,8 +522,6 @@ void rich_label::update_canvas()
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("img_x", wfl::variant(0));
 		tmp.set_variable("img_y", wfl::variant(0));
-		tmp.set_variable("item_width", wfl::variant(0));
-		tmp.set_variable("item_height", wfl::variant(0));
 		// Disable ellipsization so that text wrapping can work
 		tmp.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 		tmp.set_cfg(text_dom_, true);
@@ -546,6 +581,7 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	mouse.y -= get_y();
 
 	PLAIN_LOG << "(mouse)" << mouse.x << "," << mouse.y;
+	PLAIN_LOG << "link count :" << links_.size();
 	for (const auto& entry : links_) {
 		PLAIN_LOG << entry.first.x << "," << entry.first.y;
 		PLAIN_LOG << entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h;
