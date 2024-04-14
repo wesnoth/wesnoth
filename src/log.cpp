@@ -279,7 +279,7 @@ std::optional<bool> log_dir_writable()
 
 std::string get_log_file_path()
 {
-	return output_file_path_+lg::log_file_suffix;
+	return output_file_path_.empty() ? "" : output_file_path_+lg::log_file_suffix;
 }
 
 redirect_output_setter::redirect_output_setter(std::ostream& stream)

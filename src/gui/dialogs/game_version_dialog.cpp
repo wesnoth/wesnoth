@@ -141,7 +141,7 @@ void game_version::pre_show(window& window)
 
 	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
 	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
-	stderr_button.set_active(!log_path_.empty());
+	stderr_button.set_active(!log_path_.empty() && filesystem::file_exists(log_path_));
 
 	//
 	// Build info tab.
