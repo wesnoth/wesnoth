@@ -261,7 +261,7 @@ void rich_label::set_label(const t_string& text)
 					std::string link_text = cfg.mandatory_child("ref")["text"].str();
 					link_text = link_text.empty() ? cfg.mandatory_child("ref")["dst"] : link_text;
 
-					add_text_with_attribute((*curr_item), link_text, "fgcolor", font::YELLOW_COLOR.to_hex_string().substr(1));
+					add_text_with_attribute((*curr_item), link_text, "color", font::YELLOW_COLOR.to_hex_string().substr(1));
 
 					setup_text_renderer(*curr_item);
 					point t_end = get_xy_from_offset((*curr_item)["text"].str().size());
@@ -319,7 +319,7 @@ void rich_label::set_label(const t_string& text)
 					} else if (cfg.optional_child("h")) {
 						(*curr_item)["text"] = cfg.mandatory_child("h")["text"];
 					}
-					(*curr_item)["attr_name"] = "fgcolor,fontsize";
+					(*curr_item)["attr_name"] = "color,size";
 					(*curr_item)["attr_start"] = std::to_string(start) + "," + std::to_string(start);
 					(*curr_item)["attr_end"] =
 							std::to_string((*curr_item)["text"].str().size())
@@ -336,6 +336,46 @@ void rich_label::set_label(const t_string& text)
 
 //				} else if(line == "[link]") {
 //				} else if(line == "[format]") {
+				} else if(cfg.optional_child("span")) {
+					config& span_cfg = cfg.mandatory_child("span");
+					size_t start = (*curr_item)["text"].str().size();
+					PLAIN_LOG << (*curr_item)["text"];
+					(*curr_item)["text"] = span_cfg["text"].str();
+					size_t end = (*curr_item)["text"].str().size();
+
+					PLAIN_LOG << span_cfg["text"];
+					PLAIN_LOG << (*curr_item)["text"];
+
+					std::stringstream attrs;
+					std::stringstream attr_start;
+					std::stringstream attr_end;
+					std::stringstream attr_data;
+
+					size_t i = 1;
+					for (const auto& attr : span_cfg.attribute_range()) {
+						if (attr.first != "text") {
+							PLAIN_LOG << attr.first << "," << attr.second;
+							attrs << attr.first;
+							attr_start << start;
+							attr_end << end;
+							attr_data << attr.second;
+							if (i != span_cfg.attribute_count() - 1) {
+								PLAIN_LOG << i << "," << span_cfg.attribute_count();
+								attrs << ",";
+								attr_start << ",";
+								attr_end << ",";
+								attr_data << ",";
+							}
+						}
+						i++;
+					}
+
+					(*curr_item)["attr_name"] = attrs.str();
+					(*curr_item)["attr_start"] = attr_start.str();
+					(*curr_item)["attr_end"] = attr_end.str();
+					(*curr_item)["attr_color"] = attr_data.str();
+
+					PLAIN_LOG << curr_item->debug();
 
 				} else if(cfg.optional_child("table")) {
 					// setup column width
@@ -502,10 +542,7 @@ void rich_label::set_label(const t_string& text)
 } // function ends
 
 void rich_label::default_text_config(config* txt_ptr, t_string text) {
-	// If text is empty, then it's a dummy block used only to
-	// execute the action and set variables. Make text non-empty
-	// so that canvas is forced to executed the actions.
-	(*txt_ptr)["text"] = text.empty() ? " " : text;
+	(*txt_ptr)["text"] = text;
 	(*txt_ptr)["font_size"] = font::SIZE_NORMAL;
 	(*txt_ptr)["x"] = "(pos_x)";
 	(*txt_ptr)["y"] = "(pos_y)";

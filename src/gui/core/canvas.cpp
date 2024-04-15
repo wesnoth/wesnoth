@@ -482,15 +482,15 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		typed_formula<int> attr_start(starts.at(i));
 		typed_formula<int> attr_stop(stops.at(i));
 
-		if (styles.at(i) == "fgcolor") {
+		if (styles.at(i) == "color"||styles.at(i) == "foreground") {
 			// Note that the color value is not the i-th item
 			// Using col_index so that we can get rid of excess commas
 			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
 			col_index++;
-		} else if (styles.at(i) == "bgcolor") {
+		} else if (styles.at(i) == "bgcolor"||styles.at(i) == "background") {
 			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
 			col_index++;
-		} else if (styles.at(i) == "fontsize") {
+		} else if (styles.at(i) == "font_size"||styles.at(i) == "size") {
 			text_renderer.add_attribute_size(attr_start(variables), attr_stop(variables), std::stoi(colors.at(col_index)));
 			col_index++;
 		} else {
