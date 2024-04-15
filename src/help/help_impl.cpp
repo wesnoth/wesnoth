@@ -1337,6 +1337,7 @@ std::vector<std::string> parse_text(const std::string &text)
 	std::vector<std::string> res;
 	bool last_char_escape = false;
 	bool found_slash = false;
+	bool in_quotes = false;
 	const char escape_char = '\\';
 	std::stringstream ss;
 	std::size_t pos;
@@ -1345,45 +1346,48 @@ std::vector<std::string> parse_text(const std::string &text)
 		const char c = text[pos];
 		if (c == escape_char && !last_char_escape) {
 			last_char_escape = true;
-		}
-		else {
+		} else {
 			if (state == OTHER) {
 				if (c == '<') {
 					if (last_char_escape) {
 						ss << c;
-					}
-					else {
+					} else {
 						res.push_back(ss.str());
 						ss.str("");
 						state = ELEMENT_NAME;
 					}
-				}
-				else {
+				} else {
 					ss << c;
 				}
-			}
-			else if (state == ELEMENT_NAME) {
-				if (c == '/') {
+			} else if (state == ELEMENT_NAME) {
+				if ((c == '/') && (!in_quotes)) {
 					found_slash = true;
-				}
-				else if (c == '>') {
-					// End of this name.
+				} else if (c == '\'') {
+					// toggle quoting
+					in_quotes = !in_quotes;
+				} else if (c == '>') {
+					in_quotes = false;
+
+					// end of this tag.
 					std::stringstream s;
 					std::string element_name = ss.str();
 					ss.str("");
 
+					// process any attributes in the start tag
+					std::size_t attr_pos = element_name.find(" ");
+					std::string attrs = "";
+					if (attr_pos != std::string::npos) {
+						attrs = element_name.substr(attr_pos+1);
+						element_name = element_name.substr(0, attr_pos);
+					}
+
 					if (found_slash) {
-						// empty tag support
-						std::size_t attr_pos = element_name.find(" ");
-						std::string attrs = "";
-						if (attr_pos != std::string::npos) {
-							attrs = element_name.substr(attr_pos+1);
-							element_name = element_name.substr(0, attr_pos);
-						}
+						// empty tag
 						res.push_back(convert_to_wml(element_name, attrs));
 						found_slash = false;
 						pos = text.find(">", pos);
 					} else {
+						// non-empty tag
 						s << "</" << element_name << ">";
 						const std::string end_element_name = s.str();
 						std::size_t end_pos = text.find(end_element_name, pos);
@@ -1393,14 +1397,13 @@ std::vector<std::string> parse_text(const std::string &text)
 							throw parse_error(msg.str());
 						}
 						s.str("");
-						const std::string contents = text.substr(pos + 1, end_pos - pos - 1);
+						const std::string contents = attrs + " " + text.substr(pos + 1, end_pos - pos - 1);
 						const std::string element = convert_to_wml(element_name, contents);
 						res.push_back(element);
 						pos = end_pos + end_element_name.size() - 1;
 					}
 					state = OTHER;
-				}
-				else {
+				} else {
 					if (found_slash) {
 						found_slash = false;
 						std::string msg = "Erroneous / in element name.";
