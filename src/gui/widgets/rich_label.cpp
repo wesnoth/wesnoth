@@ -336,7 +336,7 @@ void rich_label::set_label(const t_string& text)
 
 //				} else if(line == "[link]") {
 //				} else if(line == "[format]") {
-				} else if(cfg.optional_child("span")) {
+				} else if(cfg.optional_child("span")||cfg.optional_child("format")) {
 					config& span_cfg = cfg.mandatory_child("span");
 					size_t start = (*curr_item)["text"].str().size();
 					PLAIN_LOG << (*curr_item)["text"];
@@ -411,7 +411,6 @@ void rich_label::set_label(const t_string& text)
 						if (!is_image) {
 							new_text_block = true;
 						}
-
 					}
 				} else if( cfg.optional_child("break") || cfg.optional_child("br") ) {
 					max_col_height = std::max(max_col_height, txt_height_);
@@ -522,10 +521,6 @@ void rich_label::set_label(const t_string& text)
 			is_image = false;
 		}
 
-//		if (curr_item) {
-//			PLAIN_LOG << text_dom_.debug();
-//		}
-
 		// reset all variables to zero, otherwise they grow infinitely
 		if (last_entry) {
 			config& break_cfg = text_dom_.add_child("text");
@@ -538,7 +533,7 @@ void rich_label::set_label(const t_string& text)
 
 	// padding, avoids text from getting cut off at the bottom
 	h_ += 20;
-//	PLAIN_LOG << text_dom_.debug();
+
 } // function ends
 
 void rich_label::default_text_config(config* txt_ptr, t_string text) {

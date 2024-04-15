@@ -35,6 +35,7 @@
 #include "color.hpp"
 #include "exceptions.hpp"               // for error
 #include "font/constants.hpp"
+#include "font/standard_colors.hpp"
 #include "gettext.hpp"
 #include <optional>
 #include <list>                         // for list
@@ -318,12 +319,6 @@ std::vector<std::string> parse_text(const std::string &text);
  * Return the resulting WML.
  */
 std::string convert_to_wml(std::string &element_name, const std::string &contents);
-
-/**
- * Return the color the string represents. Return font::NORMAL_COLOR if
- * the string is empty or can't be matched against any other color.
- */
-color_t string_to_color(const std::string &s);
 
 /** Make a best effort to word wrap s. All parts are less than width. */
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);

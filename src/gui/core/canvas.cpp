@@ -31,6 +31,7 @@
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "font/standard_colors.hpp"
 #include "picture.hpp"
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
@@ -485,10 +486,10 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		if (styles.at(i) == "color"||styles.at(i) == "foreground") {
 			// Note that the color value is not the i-th item
 			// Using col_index so that we can get rid of excess commas
-			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
+			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), font::string_to_color(colors.at(col_index)));
 			col_index++;
 		} else if (styles.at(i) == "bgcolor"||styles.at(i) == "background") {
-			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), color_t::from_hex_string(colors.at(col_index)));
+			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), font::string_to_color(colors.at(col_index)));
 			col_index++;
 		} else if (styles.at(i) == "font_size"||styles.at(i) == "size") {
 			text_renderer.add_attribute_size(attr_start(variables), attr_stop(variables), std::stoi(colors.at(col_index)));

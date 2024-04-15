@@ -1509,32 +1509,6 @@ std::string convert_to_wml(std::string& element_name, const std::string& content
 	return ss.str();
 }
 
-color_t string_to_color(const std::string &cmp_str)
-{
-	// TODO needs a more generic mechanism
-	// so that more common color names are recognized
-	if (cmp_str == "green") {
-		return font::GOOD_COLOR;
-	}
-	if (cmp_str == "red") {
-		return font::BAD_COLOR;
-	}
-	if (cmp_str == "black") {
-		return font::BLACK_COLOR;
-	}
-	if (cmp_str == "yellow") {
-		return font::YELLOW_COLOR;
-	}
-	if (cmp_str == "white") {
-		return font::BIGMAP_COLOR;
-	}
-	// a #rrggbb color in pango format.
-	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return color_t::from_hex_string(cmp_str.substr(1));
-	}
-	return font::NORMAL_COLOR;
-}
-
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,
 		const unsigned width)
 {
