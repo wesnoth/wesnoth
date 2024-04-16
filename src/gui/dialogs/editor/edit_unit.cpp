@@ -77,13 +77,6 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 }
 
 void editor_edit_unit::pre_show(window& win) {
-	menu_button& alignments = find_widget<menu_button>(&win, "alignment_list", false);
-	// TODO:change alignments to existing translatable strings
-	align_list_.emplace_back("label", _("lawful"));
-	align_list_.emplace_back("label", _("chaotic"));
-	align_list_.emplace_back("label", _("neutral"));
-	align_list_.emplace_back("label", _("liminal"));
-	alignments.set_values(align_list_);
 
 	menu_button& races = find_widget<menu_button>(&win, "race_list", false);
 	for(const race_map::value_type &i : unit_types.races()) {
@@ -473,6 +466,8 @@ void editor_edit_unit::load_unit_type() {
 		update_index();
 
 		page.select_layer(0);
+		
+		button_state_change();
 	}
 }
 
@@ -695,14 +690,6 @@ void editor_edit_unit::update_attacks() {
 		find_widget<toggle_button>(get_window(), "range_ranged", false).set_value(true);
 	}
 
-//	for (unsigned int i = 0; i < resistances_list_.size(); i++) {
-//		if (resistances_list_.at(i)["label"] == attack["type"]) {
-//			find_widget<menu_button>(get_window(), "attack_type_list", false).set_value(i);
-//			break;
-//		}
-//	}
-
-//	find_widget<menu_button>(get_window(), "attack_type_list", false).set_selected_from_string(attack["type"]);
 	set_selected_from_string(
 			find_widget<menu_button>(get_window(), "attack_type_list", false),
 			resistances_list_,
@@ -876,14 +863,18 @@ void editor_edit_unit::update_wml_view() {
 
 	{
 		config_writer out(wml_stream, false);
-		//out.write(type_cfg_);
+
 		int level = 0;
 
 		out.open_child("unit_type");
 
 		level++;
 		for (const auto& attr : type_cfg_.mandatory_child("unit_type").attribute_range()) {
-			::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+//			::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+			for(int i = 0; i < level; i++) {
+				wml_stream << "\t";
+			}
+			wml_stream << attr.first << "=\"" << attr.second.str() << "\"\n";
 		}
 
 		// Abilities
@@ -1010,7 +1001,7 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 
 bool editor_edit_unit::check_id(std::string id) {
 	for(char c : id) {
-		if (!(std::isalnum(c) || c == '_')) {
+		if (!(std::isalnum(c) || c == '_' || c == ' ')) {
 			/* One bad char means entire id string is invalid */
 			return false;
 		}
