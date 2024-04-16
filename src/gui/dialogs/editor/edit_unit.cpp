@@ -466,7 +466,7 @@ void editor_edit_unit::load_unit_type() {
 		update_index();
 
 		page.select_layer(0);
-		
+
 		button_state_change();
 	}
 }
