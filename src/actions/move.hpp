@@ -99,6 +99,24 @@ private:
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 
 /**
+ * Teleports a unit across the board and enters the synced context.
+ */
+void teleport_unit_and_record(const map_location& teleport_from,
+	const map_location& teleport_to,
+	bool show_move = false,
+	move_unit_spectator* move_spectator = nullptr);
+
+/**
+ * Teleports a unit across the board.
+ * To be called from replay when we are already in the synced context.
+ */
+void teleport_unit_from_replay(
+	const std::vector<map_location> &steps,
+	bool continued_move,
+	bool skip_ally_sighted,
+	bool show_move);
+
+/**
  * Moves a unit across the board.
  * And enters the synced context.
  */
