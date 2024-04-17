@@ -20,10 +20,14 @@
 #include "display.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -85,10 +89,13 @@ void story_viewer::pre_show(window& window)
 	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
+	// text_layout=top set
+	connect_signal_mouse_left_click(find_widget<button>(&window, "cancel2", false),
+			std::bind(&story_viewer::close, this));
+
 	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
+	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
 	// Tell the game display not to draw
@@ -113,7 +120,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<button>(get_window(), "back", false).set_active(part_index_ != 0);
+	find_widget<button>(get_window(), "prev", false).set_active(part_index_ != 0);
 
 	//
 	// Music and sound
@@ -263,13 +270,20 @@ void story_viewer::display_part()
 	std::string new_panel_mode;
 
 	switch(current_part_->story_text_location()) {
+
 		case storyscreen::part::BLOCK_TOP:
+			set_skip_button_visibility(storyscreen::part::BLOCK_TOP);
+
 			new_panel_mode = "top";
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
+			set_skip_button_visibility(storyscreen::part::BLOCK_MIDDLE);
+
 			new_panel_mode = "center";
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
+			set_skip_button_visibility(storyscreen::part::BLOCK_BOTTOM);
+
 			new_panel_mode = "bottom";
 			break;
 	}
@@ -289,6 +303,9 @@ void story_viewer::display_part()
 	const std::string& part_text = current_part_->text();
 
 	if(part_text.empty() || !has_background) {
+		// Move skip button to the bottom so that it doesn't interfere with the image
+		set_skip_button_visibility(storyscreen::part::BLOCK_TOP);
+
 		// No text or no background for this part, hide the background layer.
 		text_stack.select_layer(LAYER_TEXT);
 	} else if(text_stack.current_layer() != -1)  {
@@ -301,6 +318,11 @@ void story_viewer::display_part()
 
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
 
+	// Hardcoded max width, should be made customizable
+	// preferably as an key to [part]
+	unsigned win_width = get_window()->get_size().x;
+	unsigned best_text_width = (win_width < 1500) ? win_width/2.0 : 1000;
+	text_label.set_text_max_width(best_text_width);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
@@ -323,6 +345,26 @@ void story_viewer::display_part()
 	//       drawing was finished. Might be worth looking into restoring that.
 	if(!floating_images.empty()) {
 		draw_floating_image(floating_images.begin(), part_index_);
+	}
+}
+
+// Based on story dialog position, show one set of cancel button,
+// and hide the other set.
+void story_viewer::set_skip_button_visibility(storyscreen::part::BLOCK_LOCATION alignment) {
+	button& cancel = find_widget<button>(get_window(), "cancel", false);
+	button& cancel2 = find_widget<button>(get_window(), "cancel2", false);
+
+	switch(alignment) {
+	case storyscreen::part::BLOCK_TOP:
+		// Skip is at the bottom of the dialog
+		cancel.set_visible(widget::visibility::invisible);
+		cancel2.set_visible(widget::visibility::visible);
+		break;
+
+	default:
+		// Skip is at the top of the dialog
+		cancel.set_visible(widget::visibility::visible);
+		cancel2.set_visible(widget::visibility::invisible);
 	}
 }
 

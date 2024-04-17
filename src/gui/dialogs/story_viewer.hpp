@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include "config.hpp"
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
@@ -73,6 +74,14 @@ private:
 	void halt_fade_draw();
 
 	void flag_stack_as_dirty();
+
+	// set which set of skip buttons (top or bottom) is visible
+	void set_skip_button_visibility(storyscreen::part::BLOCK_LOCATION alignment);
+
+	// manual dialog closing function for cancel2
+	void close() {
+		set_retval(retval::CANCEL);
+	}
 
 	storyscreen::controller controller_;
 
