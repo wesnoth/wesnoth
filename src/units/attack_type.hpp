@@ -98,7 +98,7 @@ public:
 	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
 	std::pair<std::string, std::string> damage_type() const;
 	/** @return A list of alternative_type damage types. */
-	std::vector<std::string> damage_alternative_type() const;
+	std::set<std::string> damage_alternative_type() const;
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage() const;

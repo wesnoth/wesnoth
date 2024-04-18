@@ -1168,14 +1168,13 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
-//functions for select damage type who must be returned for each attribute used in damage_type()
 static std::string select_replacement_type(const unit_ability_list& damage_type_list)
 {
 	std::unordered_map<std::string, unsigned int> type_count;
 	unsigned int max = 0;
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
-		if(!c["replacement_type"].empty()) {
+		if(c.has_attribute("replacement_type")) {
 			std::string type = c["replacement_type"].str();
 			unsigned int count = ++type_count[type];
 			if((count > max)) {
@@ -1193,28 +1192,25 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 		}
 	}
 
-	if(type_list.size() > 1){
-		std::sort(type_list.begin(), type_list.end());
-	}
+	if(!type_list.empty()) return "";
 
-	if(!type_list.empty()){
-		return type_list.front();
-	}
-	return "";
+	if(type_list.size() == 1) return type_list.front();
+	std::sort(type_list.begin(), type_list.end());
+
+	return type_list.front();
 }
 
 static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
 {
 	std::map<std::string, int> type_res;
-	//for don't have bug in showing in pre_attack window if opponent has resistance greater what 100% max_res shouldn't be initialised.
-	std::optional<int> max_res;
+	int max_res = INT_MIN;
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
-		if(!c["alternative_type"].empty()) {
+		if(c.has_attribute("alternative_type")) {
 			std::string type = c["alternative_type"].str();
-			if(!type_res[type]){
+			if(type_res.count(type) == 0){
 				type_res[type] = u.resistance_value(resistance_list, type);
-				max_res = max_res ? std::max(*max_res, type_res[type]) : type_res[type];
+				max_res = std::max(max_res, type_res[type]);
 			}
 		}
 	}
@@ -1222,19 +1218,17 @@ static std::string select_alternative_type(const unit_ability_list& damage_type_
 	if (type_res.empty()) return "";
 
 	std::vector<std::string> type_list;
-	if(max_res){
-		for(auto& i : type_res){
-			if(i.second == *max_res){
-				type_list.push_back(i.first);
-			}
+	for(auto& i : type_res){
+		if(i.second == max_res){
+			type_list.push_back(i.first);
 		}
-		std::sort(type_list.begin(), type_list.end());
 	}
+	if(!type_list.empty()) return "";
 
-	if(!type_list.empty()){
-		return type_list.front();
-	}
-	return "";
+	if(type_list.size() == 1) return type_list.front();
+	std::sort(type_list.begin(), type_list.end());
+
+	return type_list.front();
 }
 
 std::string attack_type::select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const
@@ -1271,7 +1265,7 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 	return {type_damage, ""};
 }
 
-std::vector<std::string> attack_type::damage_alternative_type() const
+std::set<std::string> attack_type::damage_alternative_type() const
 {
 	unit_ability_list damage_alternative_type_list = get_specials_and_abilities("damage_type");
 	if(damage_alternative_type_list.empty()){
@@ -1285,18 +1279,7 @@ std::vector<std::string> attack_type::damage_alternative_type() const
 		}
 	}
 
-	if (type_count.empty()) return {};
-
-	//move in vector for reorganize in alphabetical order
-	std::vector<std::string> type_list;
-	for(auto& i : type_count){
-		type_list.push_back(i);
-	}
-
-	if(type_list.size() > 1){
-		std::sort(type_list.begin(), type_list.end());
-	}
-	return type_list;
+	return type_count;
 }
 
 

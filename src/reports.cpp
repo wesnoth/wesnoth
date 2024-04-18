@@ -873,10 +873,10 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 
 		std::string range = string_table["range_" + at.range()];
 		std::string type = at.damage_type().first;
-		std::vector<std::string> alt_types = at.damage_alternative_type();
+		std::set<std::string> alt_types = at.damage_alternative_type();
 		std::string secondary_lang_type;
-		if (!alt_types.empty()) {
-			for(auto alt_t : alt_types){
+		for(auto alt_t : alt_types){
+			if(!alt_t.empty()){
 				secondary_lang_type += ", " + string_table["type_" + alt_t];
 			}
 		}
@@ -887,8 +887,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const std::string type_png = std::string("icons/profiles/") + type + ".png~SCALE_INTO(16,16)";
 		std::vector<std::string> secondary_types_png;
 		bool secondary_type_png_exist = false;
-		if (!alt_types.empty()) {
-			for(auto alt_t : alt_types){
+		for(auto alt_t : alt_types){
+			if(!alt_t.empty()){
 				secondary_types_png.push_back(std::string("icons/profiles/") + alt_t + ".png~SCALE_INTO(16,16)");
 				if(image::locator(alt_t).file_exists() && !secondary_type_png_exist) {secondary_type_png_exist=true;}
 			}
@@ -953,11 +953,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
 		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
 		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
-		if(!secondary_types_png.empty()){
-			for(auto sec_exist : secondary_types_png){
-				if(image::locator(sec_exist).file_exists()){
-					add_image(res, spacer + "~BLIT(" + sec_exist + ",0,5)", damage_versus.tooltip);
-				}
+		for(auto sec_exist : secondary_types_png){
+			if(image::locator(sec_exist).file_exists()){
+				add_image(res, spacer + "~BLIT(" + sec_exist + ",0,5)", damage_versus.tooltip);
 			}
 		}
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
