@@ -432,7 +432,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, attr_start_(cfg["attr_start"])
 	, attr_end_(cfg["attr_end"])
 	, attr_name_(cfg["attr_name"])
-	, attr_color_(cfg["attr_color"])
+	, attr_data_(cfg["attr_data"])
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
 {
@@ -477,7 +477,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	starts = utils::split(attr_start_, ',');
 	stops = utils::split(attr_end_, ',');
 	std::vector<std::string> styles = utils::split(attr_name_, ',');
-	std::vector<std::string> colors = utils::split(attr_color_, ',');
+	std::vector<std::string> colors = utils::split(attr_data_, ',');
 
 	for(size_t i = 0, col_index = 0; i < std::min(starts.size(), stops.size()); i++) {
 		typed_formula<int> attr_start(starts.at(i));

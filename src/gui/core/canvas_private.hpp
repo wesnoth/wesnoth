@@ -293,11 +293,18 @@ private:
 	std::string attr_start_;
 	std::string attr_end_;
 
-	/** The attribute type */
+	/**
+	 * The attribute type 
+	 * Possible values :
+	 *  color/foreground, bgcolor/background, font_size/size,
+	 *  bold, italic, underline
+	 * The first three require extra data
+	 * the color for the first two, and font size for the last
+	 */
 	std::string attr_name_;
 
-	/** attribute color, used for foreground color */
-	std::string attr_color_;
+	/** extra data for the attribute, if any */
+	std::string attr_data_;
 
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;

@@ -413,14 +413,9 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	unsigned highlight_start_offset_;
-	unsigned highlight_end_offset_;
+	unsigned attribute_start_offset_;
+	unsigned attribute_end_offset_;
 	color_t	highlight_color_;
-
-	unsigned style_start_offset_;
-	unsigned style_end_offset_;
-	PangoStyle style_name_ = PANGO_STYLE_NORMAL;
-	PangoWeight weight_name_ = PANGO_WEIGHT_NORMAL;
 
 	/**
 	 * Global pango attribute list. All attributes in this list

@@ -84,13 +84,9 @@ pango_text::pango_text()
 	, maximum_length_(std::string::npos)
 	, calculation_dirty_(true)
 	, length_(0)
-	, highlight_start_offset_(0)
-	, highlight_end_offset_(0)
+	, attribute_start_offset_(0)
+	, attribute_end_offset_(0)
 	, highlight_color_()
-	, style_start_offset_(0)
-	, style_end_offset_(0)
-	, style_name_(PANGO_STYLE_NORMAL)
-	, weight_name_(PANGO_WEIGHT_NORMAL)
 	, attrib_hash_(0)
 	, pixel_scale_(1)
 	, surface_buffer_()
@@ -355,20 +351,20 @@ point pango_text::get_column_line(const point& position) const
 
 void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
 {
-	highlight_start_offset_ = start_offset;
-	highlight_end_offset_ = end_offset;
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
 
-	if (highlight_start_offset_ != highlight_end_offset_) {
+	if (attribute_start_offset_ != attribute_end_offset_) {
 		PangoAttribute *attr = pango_attr_size_new_absolute(PANGO_SCALE * size);
-		attr->start_index = highlight_start_offset_;
-		attr->end_index = highlight_end_offset_;
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
 
 		DBG_GUI_D << "attribute : size";
 		DBG_GUI_D << "attribute start : " << start_offset << " end : " << end_offset;
 
 		// Update hash
-		boost::hash_combine(attrib_hash_, highlight_start_offset_);
-		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
 		boost::hash_combine(attrib_hash_, size);
 
 		// Insert all attributes
@@ -378,20 +374,20 @@ void pango_text::add_attribute_size(const unsigned start_offset, const unsigned 
 
 void pango_text::add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight)
 {
-	highlight_start_offset_ = start_offset;
-	highlight_end_offset_ = end_offset;
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
 
-	if (highlight_start_offset_ != highlight_end_offset_) {
+	if (attribute_start_offset_ != attribute_end_offset_) {
 		PangoAttribute *attr = pango_attr_weight_new(weight);
-		attr->start_index = highlight_start_offset_;
-		attr->end_index = highlight_end_offset_;
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
 
 		DBG_GUI_D << "attribute : weight";
 		DBG_GUI_D << "attribute start : " << start_offset << " end : " << end_offset;
 
 		// Update hash
-		boost::hash_combine(attrib_hash_, highlight_start_offset_);
-		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
 		boost::hash_combine(attrib_hash_, weight);
 
 		// Insert all attributes
@@ -401,21 +397,21 @@ void pango_text::add_attribute_weight(const unsigned start_offset, const unsigne
 
 void pango_text::add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style)
 {
-	highlight_start_offset_ = start_offset;
-	highlight_end_offset_ = end_offset;
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
 
-	if (highlight_start_offset_ != highlight_end_offset_) {
+	if (attribute_start_offset_ != attribute_end_offset_) {
 
 		PangoAttribute *attr = pango_attr_style_new(style);
-		attr->start_index = highlight_start_offset_;
-		attr->end_index = highlight_end_offset_;
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
 
 		DBG_GUI_D << "attribute : style";
-		DBG_GUI_D << "attribute start : " << highlight_start_offset_ << " end : " << highlight_end_offset_;
+		DBG_GUI_D << "attribute start : " << attribute_start_offset_ << " end : " << attribute_end_offset_;
 
 		// Update hash
-		boost::hash_combine(attrib_hash_, highlight_start_offset_);
-		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
 
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
@@ -424,20 +420,20 @@ void pango_text::add_attribute_style(const unsigned start_offset, const unsigned
 
 void pango_text::add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline)
 {
-	highlight_start_offset_ = start_offset;
-	highlight_end_offset_ = end_offset;
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
 
-	if (highlight_start_offset_ != highlight_end_offset_) {
+	if (attribute_start_offset_ != attribute_end_offset_) {
 		PangoAttribute *attr = pango_attr_underline_new(underline);
-		attr->start_index = highlight_start_offset_;
-		attr->end_index = highlight_end_offset_;
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
 
 		DBG_GUI_D << "attribute : underline";
 		DBG_GUI_D << "attribute start : " << start_offset << " end : " << end_offset;
 
 		// Update hash
-		boost::hash_combine(attrib_hash_, highlight_start_offset_);
-		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
 		boost::hash_combine(attrib_hash_, underline);
 
 		// Insert all attributes
@@ -448,10 +444,10 @@ void pango_text::add_attribute_underline(const unsigned start_offset, const unsi
 
 void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 {
-	highlight_start_offset_ = start_offset;
-	highlight_end_offset_ = end_offset;
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
 
-	if (highlight_start_offset_ != highlight_end_offset_) {
+	if (attribute_start_offset_ != attribute_end_offset_) {
 		int col_r = color.r / 255.0 * 65535.0;
 		int col_g = color.g / 255.0 * 65535.0;
 		int col_b = color.b / 255.0 * 65535.0;
@@ -461,12 +457,12 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute : fg color";
-		DBG_GUI_D << "attribute start : " << highlight_start_offset_ << " end : " << highlight_end_offset_;
+		DBG_GUI_D << "attribute start : " << attribute_start_offset_ << " end : " << attribute_end_offset_;
 		DBG_GUI_D << "color : " << col_r << "," << col_g << "," << col_b;
 
 		// Update hash
-		boost::hash_combine(attrib_hash_, highlight_start_offset_);
-		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
 		boost::hash_combine(attrib_hash_, color.to_rgba_bytes());
 
 		// Insert all attributes
@@ -475,26 +471,26 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 }
 
 void pango_text::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color) {
-	highlight_start_offset_ = start_offset;
-	highlight_end_offset_ = end_offset;
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
 	highlight_color_ = color;
 
-	if (highlight_start_offset_ != highlight_end_offset_) {
+	if (attribute_start_offset_ != attribute_end_offset_) {
 		// Highlight
 		int col_r = highlight_color_.r / 255.0 * 65535.0;
 		int col_g = highlight_color_.g / 255.0 * 65535.0;
 		int col_b = highlight_color_.b / 255.0 * 65535.0;
 
-		DBG_GUI_D << "highlight start : " << highlight_start_offset_ << "end : " << highlight_end_offset_;
+		DBG_GUI_D << "highlight start : " << attribute_start_offset_ << "end : " << attribute_end_offset_;
 		DBG_GUI_D << "highlight color : " << col_r << "," << col_g << "," << col_b;
 
 		PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
-		attr->start_index = highlight_start_offset_;
-		attr->end_index = highlight_end_offset_;
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
 
 		// Update hash
-		boost::hash_combine(attrib_hash_, highlight_start_offset_);
-		boost::hash_combine(attrib_hash_, highlight_end_offset_);
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
 		boost::hash_combine(attrib_hash_, highlight_color_.to_rgba_bytes());
 
 		// Insert all attributes
@@ -531,7 +527,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 				return false;
 			}
 		} else {
-			if (highlight_start_offset_ == highlight_end_offset_) {
+			if (attribute_start_offset_ == attribute_end_offset_) {
 				/*
 				 * pango_layout_set_text after pango_layout_set_markup might
 				 * leave the layout in an undefined state regarding markup so

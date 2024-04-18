@@ -106,7 +106,7 @@ void rich_label::add_text_with_attribute(config& text_cfg, std::string text, std
 		text_cfg["attr_start"] = (text_cfg["attr_start"].str().empty() ? "" : (text_cfg["attr_start"].str() + ",")) +  std::to_string(start);
 		text_cfg["attr_end"] = (text_cfg["attr_end"].str().empty() ? "" : (text_cfg["attr_end"].str() + ",")) + std::to_string(text_cfg["text"].str().size());
 		if (!extra_data.empty()) {
-			text_cfg["attr_color"] = (text_cfg["attr_color"].str().empty() ? "" : (text_cfg["attr_color"].str() + ",")) + extra_data;
+			text_cfg["attr_data"] = (text_cfg["attr_data"].str().empty() ? "" : (text_cfg["attr_data"].str() + ",")) + extra_data;
 		}
 	}
 }
@@ -120,7 +120,6 @@ size_t rich_label::get_split_location(int img_height) {
 	}
 	len += wrap_position.x;
 
-	PLAIN_LOG << "(gsl) : " << "ih : " << img_height << "len : " << len;
 	return len;
 }
 
@@ -145,12 +144,9 @@ void rich_label::set_label(const t_string& text)
 	unsigned col_width = 0;
 	unsigned max_col_height = 0;
 
-//	PLAIN_LOG << parsed_text.size();
 	for (size_t i = 0; i < parsed_text.size(); i++) {
 		bool last_entry = (i == parsed_text.size() - 1);
 		std::string line = parsed_text.at(i);
-
-		PLAIN_LOG << "x :" << x_;
 
 		if (!line.empty() && line.at(0) == '[') {
 			config cfg;
@@ -234,9 +230,6 @@ void rich_label::set_label(const t_string& text)
 				h_ += get_image_size(*curr_item).y + 7;
 
 				//FIXME image could be in the middle of a text block
-//				if (align == "left") {
-//					x_ += img_size.x + 5;
-//				}
 
 				is_image = true;
 
@@ -325,7 +318,7 @@ void rich_label::set_label(const t_string& text)
 							std::to_string((*curr_item)["text"].str().size())
 							+ ","
 							+ std::to_string((*curr_item)["text"].str().size());
-					(*curr_item)["attr_color"] =
+					(*curr_item)["attr_data"] =
 							font::TITLE_COLOR.to_hex_string().substr(1)
 							+ ","
 							+ std::to_string(font::SIZE_TITLE);
@@ -334,9 +327,9 @@ void rich_label::set_label(const t_string& text)
 					is_image = false;
 					new_text_block = true;
 
-//				} else if(line == "[link]") {
-//				} else if(line == "[format]") {
 				} else if(cfg.optional_child("span")||cfg.optional_child("format")) {
+					//TODO add bold, italic and underline
+				
 					config& span_cfg = cfg.mandatory_child("span");
 					size_t start = (*curr_item)["text"].str().size();
 					PLAIN_LOG << (*curr_item)["text"];
@@ -373,7 +366,7 @@ void rich_label::set_label(const t_string& text)
 					(*curr_item)["attr_name"] = attrs.str();
 					(*curr_item)["attr_start"] = attr_start.str();
 					(*curr_item)["attr_end"] = attr_end.str();
-					(*curr_item)["attr_color"] = attr_data.str();
+					(*curr_item)["attr_data"] = attr_data.str();
 
 					PLAIN_LOG << curr_item->debug();
 
