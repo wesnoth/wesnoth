@@ -1170,7 +1170,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 
 static std::string select_replacement_type(const unit_ability_list& damage_type_list)
 {
-	std::unordered_map<std::string, unsigned int> type_count;
+	std::map<std::string, unsigned int> type_count;
 	unsigned int max = 0;
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
