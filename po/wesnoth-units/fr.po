@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.16.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
 "PO-Revision-Date: 2024-02-13 18:32+0100\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org> \n"
@@ -275,6 +275,7 @@ msgstr "fléau d'armes"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:48
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
@@ -424,6 +425,12 @@ msgstr ""
 #: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
 msgid "cleaver"
 msgstr "hachoir"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/core/units/undead/Skele_Bone_Knight.cfg:77
+msgid "trample"
+msgstr "piétinement"
 
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
@@ -772,13 +779,13 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:66
+#: data/core/units/undead/Skele_Bone_Knight.cfg:67
 #: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:85
+#: data/core/units/undead/Skeleton_Rider.cfg:86
 msgid "axe"
 msgstr "hache"
 
@@ -3307,8 +3314,8 @@ msgstr ""
 "leur propre satisfaction. Naturellement, la plupart de ces guerriers vivent "
 "de courtes vies consacrées à perfectionner leur maîtrise de l’épée dans le "
 "but de conquérir les champs de bataille : seuls les plus talentueux sont "
-"capables de survivre à ces combats incessants et de gagner le titre de "
-"« Champion ». Ayant passé toute leur vie à accomplir des prouesses avec leur "
+"capables de survivre à ces combats incessants et de gagner le titre de « "
+"Champion ». Ayant passé toute leur vie à accomplir des prouesses avec leur "
 "épée, ces elfes sont exceptionnellement dangereux et ne doivent jamais être "
 "sous-estimés."
 
@@ -5532,14 +5539,14 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a ‘fair fight’."
 msgstr ""
-"Aussi longtemps que l'on se souvienne, les membres des différentes "
-"« guildes » des attrapeurs de rats qui sévissent dans toutes les grandes "
-"cités ont la curieuse pratique de décolorer leurs cheveux avec du citron "
-"jusqu'à ce qu'ils prennent une pâle couleur bleue. Ceci est audacieux, étant "
-"donné que leur profession les mène souvent dans des entreprises peu légales. "
-"Les voleurs ont de nombreux talents, lestes par nécessité et habiles au "
-"couteau. Ils utilisent avec bonheur des tactiques peu honorables en combat, "
-"ne voyant que peu d'intérêt aux combats « équitables »."
+"Aussi longtemps que l'on se souvienne, les membres des différentes « guildes "
+"» des attrapeurs de rats qui sévissent dans toutes les grandes cités ont la "
+"curieuse pratique de décolorer leurs cheveux avec du citron jusqu'à ce "
+"qu'ils prennent une pâle couleur bleue. Ceci est audacieux, étant donné que "
+"leur profession les mène souvent dans des entreprises peu légales. Les "
+"voleurs ont de nombreux talents, lestes par nécessité et habiles au couteau. "
+"Ils utilisent avec bonheur des tactiques peu honorables en combat, ne voyant "
+"que peu d'intérêt aux combats « équitables »."
 
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Thief.cfg:147
@@ -9133,7 +9140,7 @@ msgid "Bone Knight"
 msgstr "Saqued'os"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:59
+#: data/core/units/undead/Skele_Bone_Knight.cfg:60
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -9142,11 +9149,6 @@ msgstr ""
 "Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés sur "
 "le squelette de leur cheval sont sortis de la tombe par une magie impie pour "
 "semer la peur et la destruction."
-
-#. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:76
-msgid "trample"
-msgstr "piétinement"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -9334,7 +9336,7 @@ msgid "Skeleton Rider"
 msgstr "Squelette monté"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:78
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "

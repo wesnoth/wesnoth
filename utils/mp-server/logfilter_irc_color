@@ -1,25 +1,27 @@
-#!/bin/sed -f
-s/\t/ /g
+#!/bin/sed -Ef
+# 20221025 05:35:29 info server: 2601:243:4101:5740:4c58:4587:3b8e:d151   <nick> message
+s/	/ /g
 # skip over irregular lines
-/^[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [a-zA-Z]\+ [a-zA-Z]\+:/!d
+/^[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [[:alpha:]]+ [[:alpha:]]+:/!d
 # remove the timestamp and the IP
-s/^\(PREV: \|OLD: \|\)[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [a-zA-Z]\+ [a-zA-Z]\+: [0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+ /\1/
+#s/^\(PREV: \|OLD: \|\)[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [a-zA-Z]\+ [a-zA-Z]\+: [0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+ /\1/
+s/^(PREV: |OLD: |)[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [[:alpha:]]+ [[:alpha:]]+: [[:xdigit:].:]+ +/\1/
 s/ info server://
 s/""/"/g
 # reset t
 ta;:a
-/^<[a-zA-Z0-9_-]\+ .*>$\|^<[a-zA-Z0-9_-]\+>\|^[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] \(<server>\|Statistics:\) \|^[a-zA-Z0-9_-]\+ \(\(started\( reloaded\|\)\|advanced\|ended\) game: \|ended game: .* and disconnected.\)/!d
-s/^\([0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9]\) <server>/14\1 <05server14>05/;t
-s/^<\([a-zA-Z0-9_-]\+\) \(.*\)>$/14<12\1 \214>/;t
-s/^<\([a-zA-Z0-9_-]\+\)>/                      14<12\114>6/;talign
-s/^[a-zA-Z0-9_-]\+ started game: /03&/;t
-s/^\([a-zA-Z0-9_-]\+\) started reloaded game: /03\1 started reloaded game: /;t
-s/^[a-zA-Z0-9_-]\+ advanced game: /03&/;t
-s/^[a-zA-Z0-9_-]\+ ended game: /05&/;t
-s/^[a-zA-Z0-9_-]\+ \(has logged o\|.* and disconnected.\)/14&/;t
-s/^[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] Statistics:/14&/;t
+/^<[[:alnum:]_-]+ .*>$|^<[[:alnum:]_-]+>|^[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] (<server>|Statistics:) |^[[:alnum:]_-]+ ((started( reloaded|)|advanced|ended) game: |ended game: .* and disconnected\.)/!d
+s/^([0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9]) <server>/14\1 <05server14>05/;t
+s/^<([[:alnum:]_-]+) (.*)>$/14<12\1 \214>/;t
+s/^<([[:alnum:]_-]+)>/                      14<12\114>6/;talign
+s/^[[:alnum:]_-]+ started game: /03&/;t
+s/^([[:alnum:]_-]+) started reloaded game: /03\1 started reloaded game: /;t
+s/^[[:alnum:]_-]+ advanced game: /03&/;t
+s/^[[:alnum:]_-]+ ended game: /05&/;t
+s/^[[:alnum:]_-]+ (has logged o|.* and disconnected.)/14&/;t
+s/^[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] Statistics:/14&/;t
 b
 
-# right align with nick length of 20 in mind -> 22 spaces (20 + <>) -> .\{27\} (colors + <)
+# right align with nick length of 20 in mind -> 22 spaces (20 + <>) -> .{27} (colors + <)
 :align
-s/^ *\(.\{27\}14>\)/\1/
+s/^ *(.{27}14>)/\1/

@@ -66,23 +66,6 @@
 
 #include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
-#include <boost/iostreams/categories.hpp>   // for input, output
-#include <boost/iostreams/copy.hpp>         // for copy
-#include <boost/iostreams/filter/bzip2.hpp> // for bzip2_compressor, etc
-
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4456)
-#pragma warning(disable : 4458)
-#endif
-
-#include <boost/iostreams/filter/gzip.hpp> // for gzip_compressor, etc
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
-#include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include <optional>
@@ -136,75 +119,6 @@ static void safe_exit(int res)
 {
 	LOG_GENERAL << "exiting with code " << res;
 	exit(res);
-}
-
-// maybe this should go in a util file somewhere?
-template<typename filter>
-static void encode(const std::string& input_file, const std::string& output_file)
-{
-	try {
-		std::ifstream ifile(input_file.c_str(), std::ios_base::in | std::ios_base::binary);
-		ifile.peek(); // We need to touch the stream to set the eof bit
-
-		if(!ifile.good()) {
-			PLAIN_LOG << "Input file " << input_file
-					  << " is not good for reading. Exiting to prevent bzip2 from segfaulting";
-			safe_exit(1);
-		}
-
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out | std::ios_base::binary);
-
-		boost::iostreams::filtering_stream<boost::iostreams::output> stream;
-		stream.push(filter());
-		stream.push(ofile);
-
-		boost::iostreams::copy(ifile, stream);
-		ifile.close();
-
-		safe_exit(remove(input_file.c_str()));
-	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "IO error: " << e.what();
-	}
-}
-
-template<typename filter>
-static void decode(const std::string& input_file, const std::string& output_file)
-{
-	try {
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out | std::ios_base::binary);
-		std::ifstream ifile(input_file.c_str(), std::ios_base::in | std::ios_base::binary);
-
-		boost::iostreams::filtering_stream<boost::iostreams::input> stream;
-		stream.push(filter());
-		stream.push(ifile);
-
-		boost::iostreams::copy(stream, ofile);
-		ifile.close();
-
-		safe_exit(remove(input_file.c_str()));
-	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "IO error: " << e.what();
-	}
-}
-
-static void gzip_encode(const std::string& input_file, const std::string& output_file)
-{
-	encode<boost::iostreams::gzip_compressor>(input_file, output_file);
-}
-
-static void gzip_decode(const std::string& input_file, const std::string& output_file)
-{
-	decode<boost::iostreams::gzip_decompressor>(input_file, output_file);
-}
-
-static void bzip2_encode(const std::string& input_file, const std::string& output_file)
-{
-	encode<boost::iostreams::bzip2_compressor>(input_file, output_file);
-}
-
-static void bzip2_decode(const std::string& input_file, const std::string& output_file)
-{
-	decode<boost::iostreams::bzip2_decompressor>(input_file, output_file);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -440,40 +354,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.strict_lua) {
 		game_config::strict_lua = true;
-	}
-
-	if(cmdline_opts.gunzip) {
-		const std::string input_file(*cmdline_opts.gunzip);
-		if(!filesystem::is_gzip_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .gz file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 3);
-		gzip_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bunzip2) {
-		const std::string input_file(*cmdline_opts.bunzip2);
-		if(!filesystem::is_bzip2_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .bz2 file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 4);
-		bzip2_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.gzip) {
-		const std::string input_file(*cmdline_opts.gzip);
-		const std::string output_file(*cmdline_opts.gzip + ".gz");
-		gzip_encode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bzip2) {
-		const std::string input_file(*cmdline_opts.bzip2);
-		const std::string output_file(*cmdline_opts.bzip2 + ".bz2");
-		bzip2_encode(input_file, output_file);
 	}
 
 	if(cmdline_opts.help) {
@@ -1077,8 +957,8 @@ int main(int argc, char** argv)
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> terminal_arg_switches = {
-			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
-			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
+			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image", "--screenshot",
+			"-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {

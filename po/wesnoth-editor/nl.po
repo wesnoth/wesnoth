@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
+"POT-Creation-Date: 2024-04-10 12:06-0500\n"
 "PO-Revision-Date: 2024-03-12 17:01+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -215,65 +215,70 @@ msgstr "Lokale Tijd Toewijzen"
 msgid "Assign Local Time Schedule"
 msgstr "Lokaal Tijd Schema Toewijzen"
 
-#. [menu]: id=menu-editor-side
+#. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr "Kant"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:158
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "dorpen"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:174
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr "eenheden"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:453
+#: data/themes/editor.cfg:463
 msgid "Time Schedule Menu"
 msgstr "Tijd Schema Menu"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:474
 msgid "Playlist"
 msgstr "Afspeellijst"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:480
 msgid "Assign Time Schedule"
 msgstr "Wijs Tijd Schema Toe"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Identifier: "
 msgstr "Identificatie: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Name: "
 msgstr "Naam: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Type: "
 msgstr "Soort: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
 msgid "Level: "
 msgstr "Rang: "
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
 msgid "Cost: "
 msgstr "Kosten: "
 
-#: src/editor/controller/editor_controller.cpp:187
+#: src/editor/controller/editor_controller.cpp:183
 msgid "Fatal error"
 msgstr "Fatale fout"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:213
 msgid "Do you really want to quit?"
 msgstr "Wil je echt afsluiten?"
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:215
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -281,7 +286,7 @@ msgstr ""
 "Wil je echt afsluiten? Wijzigingen van de kaart sinds de laatste keer "
 "opslaan gaan verloren."
 
-#: src/editor/controller/editor_controller.cpp:221
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -289,132 +294,132 @@ msgstr ""
 "Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
 "wijzigingen sinds de laatste save gaan verloren:"
 
-#: src/editor/controller/editor_controller.cpp:230
+#: src/editor/controller/editor_controller.cpp:234
 msgid "No editor time-of-day found."
 msgstr "Geen editor tijd-van-dag gevonden."
 
-#: src/editor/controller/editor_controller.cpp:1254
+#: src/editor/controller/editor_controller.cpp:1262
 msgid "Change Unit ID"
 msgstr "Verander Eenheid ID"
 
-#: src/editor/controller/editor_controller.cpp:1255
+#: src/editor/controller/editor_controller.cpp:1263
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1271
+#: src/editor/controller/editor_controller.cpp:1279
 msgid "Rename Unit"
 msgstr "Hernoem Eenheid"
 
-#: src/editor/controller/editor_controller.cpp:1272
+#: src/editor/controller/editor_controller.cpp:1280
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/editor/map/context_manager.cpp:219
+#: src/editor/map/context_manager.cpp:215
 msgid "Load Map"
 msgstr "Laad Kaart"
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:311 src/editor/map/map_context.cpp:1110
 msgid "New Map"
 msgstr "Nieuwe Kaart"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:324 src/editor/map/map_context.cpp:1110
 msgid "New Scenario"
 msgstr "Nieuw Scenario"
 
-#: src/editor/map/context_manager.cpp:384
+#: src/editor/map/context_manager.cpp:380
 msgid "No Recent Files"
 msgstr "Geen Recente Bestanden"
 
-#: src/editor/map/context_manager.cpp:422
+#: src/editor/map/context_manager.cpp:418
 msgid "Unnamed Area"
 msgstr "Naamloos Gebied"
 
-#: src/editor/map/context_manager.cpp:453
+#: src/editor/map/context_manager.cpp:449
 msgid "New Side"
 msgstr "Nieuwe Kant"
 
-#: src/editor/map/context_manager.cpp:509
+#: src/editor/map/context_manager.cpp:505
 msgid "Apply Mask"
 msgstr "Pas Masker Toe"
 
-#: src/editor/map/context_manager.cpp:518
+#: src/editor/map/context_manager.cpp:514
 msgid "Error loading mask"
 msgstr "Fout bij het laden van het masker"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:534
 msgid "Identifier:"
 msgstr "Identificatie:"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:534
 msgid "Rename Area"
 msgstr "Hernoem Gebied"
 
-#: src/editor/map/context_manager.cpp:552
+#: src/editor/map/context_manager.cpp:548
 msgid "Choose Target Map"
 msgstr "Kies doelkaart"
 
-#: src/editor/map/context_manager.cpp:561
-#: src/editor/map/context_manager.cpp:959
+#: src/editor/map/context_manager.cpp:557
+#: src/editor/map/context_manager.cpp:953
 msgid "Error loading map"
 msgstr "Fout bij het laden van de kaart"
 
-#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:683
 msgid "Save Map As"
 msgstr "Sla Kaart Op Als"
 
-#: src/editor/map/context_manager.cpp:700
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:694
+#: src/editor/map/context_manager.cpp:896
 msgid "This map is already open."
 msgstr "Deze kaart is al geopend."
 
-#: src/editor/map/context_manager.cpp:721
+#: src/editor/map/context_manager.cpp:715
 msgid "Save Scenario As"
 msgstr "Sla Scenario Op Als"
 
-#: src/editor/map/context_manager.cpp:733
+#: src/editor/map/context_manager.cpp:727
 msgid "This scenario is already open."
 msgstr "Dit scenario is al geopend."
 
-#: src/editor/map/context_manager.cpp:767
+#: src/editor/map/context_manager.cpp:761
 msgid "No random map generators found."
 msgstr "Geen generator van willekeurige kaarten gevonden."
 
-#: src/editor/map/context_manager.cpp:780
-#: src/editor/map/context_manager.cpp:785
+#: src/editor/map/context_manager.cpp:774
+#: src/editor/map/context_manager.cpp:779
 msgid "Map creation failed."
 msgstr "Kaart aanmaken mislukt."
 
-#: src/editor/map/context_manager.cpp:800
+#: src/editor/map/context_manager.cpp:794
 msgid "Unsaved Changes"
 msgstr "Onopgeslagen wijzigingen"
 
-#: src/editor/map/context_manager.cpp:801
+#: src/editor/map/context_manager.cpp:795
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Wilt u alle wijzigingen sinds de laatste keer opslaan ongedaan maken?"
 
-#: src/editor/map/context_manager.cpp:863
+#: src/editor/map/context_manager.cpp:857
 msgid "Scenario saved."
 msgstr "Scenario opgeslagen."
 
-#: src/editor/map/context_manager.cpp:878
+#: src/editor/map/context_manager.cpp:872
 msgid "Map saved."
 msgstr "Kaart opgeslagen."
 
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:945
 msgid "Loaded embedded map data"
 msgstr "Ingebedde kaartgegevens geladen"
 
-#: src/editor/map/context_manager.cpp:952
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:946
+#: src/editor/map/context_manager.cpp:949
 msgid "Map loaded from scenario"
 msgstr "Kaart geladen uit scenario"
 
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:949
 msgid "Loaded referenced map file:"
 msgstr "Geladen gerefereerde kaartbestand:"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:119
+#: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "Speler $side_num"
 
@@ -422,19 +427,19 @@ msgstr "Speler $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "De grootte van de doelkaart verschilt van die van de huidige kaart"
 
-#: src/editor/map/map_context.cpp:183
+#: src/editor/map/map_context.cpp:181
 msgid "File not found"
 msgstr "Bestand niet gevonden"
 
-#: src/editor/map/map_context.cpp:190
+#: src/editor/map/map_context.cpp:188
 msgid "Empty file"
 msgstr "Leeg bestand"
 
-#: src/editor/map/map_context.cpp:196
+#: src/editor/map/map_context.cpp:194
 msgid "File does not have .map or .cfg extension"
 msgstr "Bestand heeft geen .map of .cfg extensie"
 
-#: src/editor/map/map_context.cpp:242
+#: src/editor/map/map_context.cpp:240
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -442,21 +447,21 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map/map_context.cpp:261
+#: src/editor/map/map_context.cpp:259
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 "De karakters '<<' zijn gevonden, dit duidt op een aanwezige lua - afbreken"
 
-#: src/editor/map/map_context.cpp:266
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/map/map_context.cpp:264
+#: src/editor/palette/location_palette.cpp:264
 msgid "Error"
 msgstr "Fout"
 
-#: src/editor/map/map_context.cpp:266
+#: src/editor/map/map_context.cpp:264
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "Niet gelukt om scenario te laden, probeer nu enkel de kaart te laden."
 
-#: src/editor/map/map_context.cpp:273
+#: src/editor/map/map_context.cpp:271
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -464,52 +469,52 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_file waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map/map_context.cpp:288
+#: src/editor/map/map_context.cpp:286
 msgid "Unable to parse file to find map data"
 msgstr "Niet in staat om bestand te verwerken om kaart data te vinden"
 
-#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
-#: src/editor/map/map_context.cpp:886
+#: src/editor/map/map_context.cpp:804 src/editor/map/map_context.cpp:843
+#: src/editor/map/map_context.cpp:884
 msgid "Could not save the scenario: $msg"
 msgstr "Opslaan van scenario mislukt: $msg"
 
-#: src/editor/map/map_context.cpp:917
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save into scenario"
 msgstr "Kaart opslaan in scenario mislukt"
 
-#: src/editor/map/map_context.cpp:927
+#: src/editor/map/map_context.cpp:925
 msgid "Could not save the map: $msg"
 msgstr "Kaart opslaan mislukt: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:52
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr "(Onbekende Groep)"
 
-#: src/editor/palette/editor_palettes.cpp:314
+#: src/editor/palette/editor_palettes.cpp:312
 msgid "(non-core)"
 msgstr "(niet-kern)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:313
 msgid "Will not work in game without extra care."
 msgstr "Zal niet in het spel werken zonder extra werk."
 
-#: src/editor/palette/location_palette.cpp:249
+#: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
 msgstr "Ga Naar"
 
-#: src/editor/palette/location_palette.cpp:256
+#: src/editor/palette/location_palette.cpp:255
 msgid "Add"
 msgstr "Voeg Toe"
 
-#: src/editor/palette/location_palette.cpp:258
+#: src/editor/palette/location_palette.cpp:257
 msgid "New Location Identifier"
 msgstr "Nieuwe Locatie Identificatie"
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:265
 msgid "Invalid location id"
 msgstr "Ongeldige locatie id"
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:272
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -540,15 +545,15 @@ msgstr "Cmd + klik: kopieer terrein"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + klik: kopieer terrein"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:95
+#: src/gui/dialogs/editor/custom_tod.cpp:94
 msgid "Clipboard support not found, contact your packager"
 msgstr "Klembordondersteuning niet gevonden, neem contact op met packager"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
+#: src/gui/dialogs/editor/custom_tod.cpp:162
 msgid "Choose File"
 msgstr "Kies Bestand"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:164
+#: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Select"
 msgstr "Selecteer"
 

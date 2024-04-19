@@ -50,14 +50,6 @@ con gli altri.
 Mostra tutte le traduzioni disponibili nella lista dei linguaggi di gioco,
 anche se non hanno un sufficiente livello di completezza.
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-decomprime un file che dev’essere in formato bzip2 e lo memorizza senza
-suffisso .bz2. Il file \fIinfile.bz2\fP sarà rimosso.
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-comprime un file in formato bzip2, lo memorizza come \fIinfile\fP.bz2 e rimuove
-\fIinfile\fP.
-.TP 
 \fB\-c[\fP\fIid_campagna\fP\fB],\ \-\-campaign[\fP\fI=id_campagna\fP\fB]\fP
 salta direttamente alla campagna con identificatore \fIid_campagna\fP. Apparirà
 un menu selezione se non si specifica alcun identificatore.
@@ -122,14 +114,6 @@ in un file nella directory dei dati utente.
 \fB\-f, \-\-fullscreen\fP
 esegue il gioco a tutto schermo.
 .TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-decomprime un file che dev’essere in formato gzip e lo memorizza senza
-suffisso .gz. Il file \fIinfile.gz\fP sarà rimosso.
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-comprime un file in formato gzip, lo memorizza come \fIinfile\fP.gz e rimuove
-\fIinfile\fP.
-.TP 
 \fB\-h, \-\-help\fP
 mostra un riepilogo delle opzioni tramite riga di comando verso un output
 standard ed esce.
@@ -166,12 +150,13 @@ fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 \fIfiltro\fP, se usata) e termina
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-impedisce il reindirizzamento dell’output registrato in un file. I log file
-vengono creati nella directory dei log nella cartella dati utente.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-il registro di output è scritto in un file addizionale oltre allo standard
-output/errore. Annulla l’effetto di \-\-no\-log\-to\-file implicito o esplicito.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 In ambiente Windows, quando usato in combinazione con \-\-no\-log\-to\-file,

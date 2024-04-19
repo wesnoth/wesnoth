@@ -1055,6 +1055,16 @@ private:
 	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
 
 	/**
+	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.
+	 *
+	 * @param resistance_abilities A list of resistance abilities that the unit has.
+	 * @param damage_name The name of the damage type, for example "blade".
+	 * @param attacker True if the unit is attacking, false if defending.
+	 * @return The resistance value for a unit with the provided resistance abilities to the provided damage type.
+	 */
+	int resistance_ability(unit_ability_list resistance_abilities, const std::string& damage_name, bool attacker) const;
+
+	/**
 	 * @}
 	 * @defgroup unit_trait Trait and upkeep functions
 	 * @{
@@ -1096,7 +1106,18 @@ public:
 	}
 
 	/**
-	 * Gets a list of the traits this unit currently has.
+	 * Gets the ids of the traits corresponding to those returned by trait_names() and
+	 * trait_descriptions(). Omits hidden traits, which are those with an empty name.
+	 *
+	 * @returns                   A list of trait IDs.
+	 */
+	std::vector<std::string> trait_nonhidden_ids() const
+	{
+		return trait_nonhidden_ids_;
+	}
+
+	/**
+	 * Gets a list of the traits this unit currently has, including hidden traits.
 	 *
 	 * @returns                   A list of trait IDs.
 	 */
@@ -1957,6 +1978,7 @@ protected:
 private:
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
+	std::vector<std::string> trait_nonhidden_ids_;
 
 	int unit_value_;
 	map_location goto_, interrupted_move_;

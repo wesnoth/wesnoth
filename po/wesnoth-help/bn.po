@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
-"PO-Revision-Date: 2024-03-21 20:11+0530\n"
+"POT-Creation-Date: 2024-04-10 12:05-0500\n"
+"PO-Revision-Date: 2024-03-28 12:58+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -63,6 +63,9 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
+"যখন একটি ইউনিট প্লেগ আক্রমণের দ্বারা নিহত হয়, তখন সেই ইউনিটটি প্লেগ আক্রমণকারী "
+"পক্ষের একটি চলমান শব ইউনিটে পাল্টে যায় । এটি না-মৃত বা গ্রামে দাঁড়িয়ে থাকা "
+"ইউনিটদের ওপর কার্যকরী নয় ।"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
@@ -116,6 +119,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
+"এই ইউনিটটি সাধারণ চিকিৎসা করতে পারে এবং জলের অভাবে হওয়া ক্ষতির প্রভাব কমাতে "
+"পারে ।"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
@@ -169,6 +174,8 @@ msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
+"এই ইউনিটটি নিজের চারপাশে থাকা ইউনিটগুলির চিকিৎসা করতে পারে, জলের অভাবে হওয়া "
+"ক্ষতি কমাতে পারে, এবং তাদেরকে বিষের প্রভাবমুক্ত করতে পারে ।"
 
 #. [artifact]
 #. [chance]
@@ -204,7 +211,7 @@ msgstr "পিছন থেকে আঘাত"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:387
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "খাওয়া"
 
@@ -231,7 +238,7 @@ msgstr "গুহা"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "গোপনীয়তা"
 
@@ -251,7 +258,7 @@ msgstr "অরণ্য"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
 msgid "Frozen"
-msgstr ""
+msgstr "বরফে ঢাকা"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
 msgid "Hills"
@@ -269,7 +276,7 @@ msgstr "ছত্রাকের অরণ্য"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr ""
 
@@ -433,7 +440,7 @@ msgstr "একই সরলরেখায় থাকা তিনটি ষড়�
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "ক্লিপবোর্ড এবং বসানোর টুল"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -838,6 +845,9 @@ msgid ""
 "in. This will only rename that folder and update any references to it in the "
 "_main.cfg file. Any other place will need to be updated manually."
 msgstr ""
+"অ্যাড অনের আইডি পাল্টাতে সাহায্য করে, যা সাধারণভাবে সেটির ফোল্ডারের নাম । এটি "
+"শুধুমাত্র ওই ফোল্ডারটির নাম এবং _main.cfg ফাইলে হওয়া এর উল্লেখগুলিকে পাল্টে দেবে । "
+"এছাড়া অন্যান্য স্থানে থাকা নাম বা উল্লেখগুলি আপনাকে নিজে পাল্টাতে হবে ।"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:329
@@ -851,6 +861,9 @@ msgid ""
 "publishing an add-on to the add-ons server for other players to download. "
 "The Validate button will check whether all required fields have valid values."
 msgstr ""
+"একটি অ্যাড অনকে অন্য খেলোয়াড়দের খেলার জন্য অ্যাড অন সার্ভারে প্রকাশনার জন্য "
+"প্রয়োজনীয় _server.pbl ফাইলটিকে বানাতে সাহায্য করে । পরীক্ষা বাটনটি পরীক্ষা করে "
+"দেখবে সকল ফিল্ডে সঠিক মান বসানো হয়েছে কী না ।"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:338
@@ -1181,13 +1194,13 @@ msgstr ""
 #. [time]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:47 data/core/macros/schedules.cfg:127
 msgid "Deep Underground"
-msgstr ""
+msgstr "গভীর ভূগর্ভ"
 
 #. [editor_times]: id=indoors
 #. [time]: id=indoors
 #: data/core/editor/time-of-day.cfg:53 data/core/macros/schedules.cfg:104
 msgid "Indoors"
-msgstr ""
+msgstr "অভ্যন্তর"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -1576,8 +1589,8 @@ msgstr "খেলা"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:500
 msgid "Traits"
 msgstr "বৈশিষ্ট্য"
 
@@ -1644,7 +1657,7 @@ msgstr ""
 #. [topic]: id=about_game
 #: data/core/help.cfg:106
 msgid "About the Game"
-msgstr ""
+msgstr "খেলাটির সম্পর্কে জানুন"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:107
@@ -3747,17 +3760,17 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:305
-msgid "burrow"
-msgstr ""
-
-#. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:306
-msgid "female^burrow"
-msgstr ""
+msgid "burrow"
+msgstr "গর্ত করা"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:307
+msgid "female^burrow"
+msgstr "গর্ত করা"
+
+#. [hides]: id=burrow
+#: data/core/macros/abilities.cfg:308
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -3768,7 +3781,7 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:330
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3778,12 +3791,12 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "গোপনীয়তা"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:350
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -3794,17 +3807,17 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:366
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "জলমগ্নতা"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:367
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
 msgstr "জলমগ্নতা"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:368
+#: data/core/macros/abilities.cfg:370
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -3814,12 +3827,12 @@ msgid ""
 msgstr ""
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:388
+#: data/core/macros/abilities.cfg:390
 msgid "female^feeding"
 msgstr "খাওয়া"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4022,12 +4035,16 @@ msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+"আত্মাদের ক্ষতির থেকে সুরক্ষা সাধারণের তুলনায় অনেকটাই আলাদা, এবং তারা জলের ওপর খুবই "
+"ধীরে চলে ।"
 
 #: data/core/macros/special-notes.cfg:12
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
+"এই ইউনিটটির অলৌকিক আক্রমণ জাদুনির্ভর জীবেদের প্রচন্ড ক্ষতি করে, এবং সাধারণ জীবদেরও "
+"কিছুটা ক্ষতি করে থাকে ।"
 
 #: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
@@ -4041,12 +4058,14 @@ msgstr "এই ইউনিটটি দ্রুত চিকিৎসা ক�
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
+"এই ইউনিটটি নিজের চারপাশে থাকা ইউনিটদের চিকিৎসা করতে পারে, এবং তাদের বিষের "
+"প্রভাবমুক্ত করতে পারে ।"
 
 #: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
+msgstr "এই ইউনিটটি নিজের চারপাশে থাকা ইউনিটদের বিষের প্রভাবমুক্ত করতে পারে ।"
 
 #: data/core/macros/special-notes.cfg:31
 msgid ""
@@ -4065,6 +4084,8 @@ msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
+"এই ইউনিটটির নেতৃত্ব পাশাপাশি থাকা একই দলের ইউনিটদের লড়াইয়ে অতিরিক্ত ক্ষতি করতে "
+"সাহায্য করে,যদিও এটি শুধুমাত্র কমপর্যায়ের ইউনিটদের ওপরেই কার্যকরী ।"
 
 #: data/core/macros/special-notes.cfg:40
 msgid ""
@@ -4074,40 +4095,46 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr "আলোকিতকরণ নিকটস্থ এলাকার আলোর পরিমাণ বাড়িয়ে দেয় ।"
 
 #: data/core/macros/special-notes.cfg:46
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
+"এই ইউনিটটি একটি দান খরচ করে নিজের দলের যেকোনো দুটি গ্রামের মধ্যে টেলিপোর্ট করতে "
+"পারে ।"
 
 #: data/core/macros/special-notes.cfg:49
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+"প্রতিপক্ষের কাছে না থাকলে বা আক্রমণ না করলে, বনাঞ্চলে এই ইউনিটটি নিজের অতর্কিত "
+"আক্রমণের দক্ষতার জন্য শত্রুদের কাছে দৃষ্টিতে অদৃশ্য হয়ে থাকতে পারে"
 
 #: data/core/macros/special-notes.cfg:52
 msgid "This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
+msgstr "এই ইউনিটটি নিজের উপস্থিতির কোনও চিহ্ন না রেখে, রাত্রে লুকিয়ে থাকতে পারে ।"
 
 #: data/core/macros/special-notes.cfg:55
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+"এই ইউনিটটি জলমগ্ন গ্রাম ব্যতীত অন্য সকল গ্রামে শত্রুদের চোখের আড়াল থেকে লুকিয়ে থাকতে "
+"পারে, শুধুমাত্র ঠিক পাশে থাকা শত্রু ছাড়া ।"
 
 #: data/core/macros/special-notes.cfg:58
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
-msgstr ""
+msgstr "এই ইউনিটটি গভীর জলে লুকিয়ে চলাফেরা করতে পারে, বায়ুর প্রয়োজন ছাড়াই ।"
 
 #: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
+msgstr "কোনো জীবন্ত ইউনিটকে মারলে এই ইউনিটটির সর্বোচ্চ জীবনসংখ্য 1 বৃদ্ধি পায় ।"
 
 #: data/core/macros/special-notes.cfg:64
 msgid ""
@@ -4518,7 +4545,7 @@ msgstr "বন্য"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
-msgstr ""
+msgstr "ভূমিতে থাকা গ্রামে শুধু 50% সুরক্ষা পায় ।"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
@@ -4545,6 +4572,8 @@ msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
 msgstr ""
+"<italic>text='দূর্বল'</italic> বৈশিষ্ট্যযুক্ত ইউনিটদের জীবনসংখ্যা এবং নিকট আক্রমণের "
+"ক্ষতি সাধারণের থেকে 1 কম হয় ।"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -4598,6 +4627,8 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
+"<italic>text='অল্পবুদ্ধি'</italic> ইউনিটেদের পরবর্তী পর্যায়ে উন্নীত হতে 20% বেশী "
+"অভিজ্ঞতা লাগে ।"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:359
@@ -4727,6 +4758,8 @@ msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
+"আক্রমণের জন্য ব্যবহার করা হলে, এই আক্রমণটি প্রতিপক্ষকে দ্বিগুণ ক্ষতি করে । তবে "
+"ব্যবহারকারী ইউনিটও প্রতিপক্ষের আক্রমণ থেকে দ্বিগুণ পরিমাণ ক্ষতিগ্রস্ত হয় ।"
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:153
@@ -4789,6 +4822,8 @@ msgstr ""
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
+"এই ইউনিটটি প্রতিপক্ষকে হতচকিত করে তাদের নিয়ন্ত্রণের ক্ষেত্রকে নিস্ক্রিয় করে দিতে "
+"পারে ।"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
@@ -5867,34 +5902,34 @@ msgstr "হতচকিত"
 msgid "stunned"
 msgstr "হতচকিত"
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "বন্ধ"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "সাহায্য"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:263 src/help/help.cpp:267
 msgid "Parse error when parsing help text:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:161
+#: src/help/help_topic_generators.cpp:160
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -5904,192 +5939,192 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:172
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:176
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:179
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
+#: src/help/help_topic_generators.cpp:183
+#: src/help/help_topic_generators.cpp:603
 msgid "Special Notes:"
 msgstr "বিশেষ তথ্য:"
 
-#: src/help/help_topic_generators.cpp:193
+#: src/help/help_topic_generators.cpp:192
 msgid "Base Terrain: "
 msgstr "মূল ভূমিরূপ:"
 
-#: src/help/help_topic_generators.cpp:213
+#: src/help/help_topic_generators.cpp:212
 msgid "Movement properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:216
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:296
 msgid "Level"
 msgstr "পর্যায়"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
 msgstr "উন্নীত হয়েছে: "
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:362
 msgid "Advances to: "
 msgstr "উন্নীত হবে: "
 
-#: src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:391
 msgid "Base unit: "
 msgstr "মূল ইউনিট: "
 
-#: src/help/help_topic_generators.cpp:393
+#: src/help/help_topic_generators.cpp:396
 msgid "Base units: "
 msgstr "মূল ইউনিটগুলি: "
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:414
 msgid "Variations: "
 msgstr "প্রকার: "
 
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:438
 msgid "race^Miscellaneous"
 msgstr "বিভিন্ন"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:440
 msgid "Race: "
 msgstr "জাতি: "
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:510
 msgid "Abilities: "
 msgstr "দক্ষতা: "
 
-#: src/help/help_topic_generators.cpp:533
+#: src/help/help_topic_generators.cpp:536
 msgid "Ability Upgrades: "
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:566
 msgid "HP:"
 msgstr "জীবন:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:570
 msgid "Moves:"
 msgstr "স্থানান্তর সংখ্যা:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:575
 msgid "Vision:"
 msgstr "দৃষ্টি:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:581
 msgid "Jamming:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:586
 msgid "Cost:"
 msgstr "মূল্য:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:590
 msgid "Alignment:"
 msgstr "স্বভাব:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
+#: src/help/help_topic_generators.cpp:597
 msgid "Required XP:"
 msgstr "প্রয়োজনীয় অভিজ্ঞতা:"
 
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:615
 msgid "unit help^Attacks"
 msgstr "আক্রমণসমূহ"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "unit help^Name"
 msgstr "নাম"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Strikes"
 msgstr "আঘাত সংখ্যা"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Range"
 msgstr "সীমা"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:625
 msgid "Type"
 msgstr "প্রকৃতি"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:626
 msgid "Special"
 msgstr "বিশেষত্ব"
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:701
 msgid "Resistances"
 msgstr "প্রতিরোধসমূহ"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:705
 msgid "Attack Type"
 msgstr "আক্রমণের প্রকৃতি"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistance"
 msgstr "প্রতিরোধ"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:736
 msgid "Terrain Modifiers"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:740
 msgid "Terrain"
 msgstr "ভূমি"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:741
 msgid "Defense"
 msgstr "সুরক্ষা"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:742
 msgid "Movement Cost"
 msgstr "স্থানান্তরের মূল্য"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense Cap"
 msgstr "সুরক্ষার সীমা"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
 msgstr "দৃষ্টিমূল্য"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:755
 msgid "Jamming Cost"
 msgstr ""

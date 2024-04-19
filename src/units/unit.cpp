@@ -288,6 +288,7 @@ unit::unit(const unit& o)
 	, facing_(o.facing_)
 	, trait_names_(o.trait_names_)
 	, trait_descriptions_(o.trait_descriptions_)
+	, trait_nonhidden_ids_(o.trait_nonhidden_ids_)
 	, unit_value_(o.unit_value_)
 	, goto_(o.goto_)
 	, interrupted_move_(o.interrupted_move_)
@@ -369,6 +370,7 @@ unit::unit(unit_ctor_t)
 	, facing_(map_location::NDIRECTIONS)
 	, trait_names_()
 	, trait_descriptions_()
+	, trait_nonhidden_ids_()
 	, unit_value_()
 	, goto_()
 	, interrupted_move_()
@@ -920,6 +922,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// Reset the scalar values first
 	trait_names_.clear();
 	trait_descriptions_.clear();
+	trait_nonhidden_ids_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
@@ -1789,30 +1792,35 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+int unit::resistance_ability(unit_ability_list resistance_abilities, const std::string& damage_name, bool attacker) const
 {
-	int res = opp_weapon ? movement_type_.resistance_against(*opp_weapon) : movement_type_.resistance_against(damage_name);
-
-	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	int res = movement_type_.resistance_against(damage_name);
 	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
 		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
 	});
 
 	if(!resistance_abilities.empty()) {
-		unit_abilities::effect resist_effect(resistance_abilities, 100-res);
+		unit_abilities::effect resist_effect(resistance_abilities, 100-res, nullptr, unit_abilities::EFFECT_CLAMP_MIN_MAX);
 
-		unit_ability_list resistance_max_value;
-		resistance_max_value.append_if(resistance_abilities, [&](const unit_ability& i) {
-			return (*i.ability_cfg).has_attribute("max_value");
-		});
-		if(!resistance_max_value.empty()){
-			res = 100 - std::min<int>(
-				resist_effect.get_composite_value(),
-				resistance_max_value.highest("max_value").first
-			);
-		} else {
-			res = 100 - resist_effect.get_composite_value();
-		}
+		res = 100 - resist_effect.get_composite_value();
+	}
+
+	return res;
+}
+
+int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	std::pair<std::string, std::string> types;
+	if(opp_weapon){
+		types = opp_weapon->damage_type();
+	} else{
+		types.first = damage_name;
+	}
+
+	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	int res = resistance_ability(resistance_abilities, types.first, attacker);
+	if(!(types.second).empty()){
+		res = std::max(res , resistance_ability(resistance_abilities, types.second, attacker));
 	}
 
 	return res;
@@ -2543,6 +2551,7 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	if(!name.empty()) {
 		trait_names_.push_back(name);
 		trait_descriptions_.push_back(description);
+		trait_nonhidden_ids_.push_back(trait["id"]);
 	}
 }
 

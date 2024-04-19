@@ -49,14 +49,6 @@ personalitzats, i compartiu\-los amb els altres.
 Mostra totes les traduccions a la llista de selecció de llengua del joc,
 fins i tot si es consideren massa incompletes.
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-descomprimeix un fitxer que hauria de tenir un format bzip2 i l'emmagatzema
-sense l'extensió .bz2. El \fIinfile.bz2\fP s'eliminarà.
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-comprimeix un fitxer en format bzip2, l'emmagatzema com a \fIinfile\fP.bz2 i
-elimina \fIinfile\fP.
-.TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 va directament a la campanya amb l'ID \fIid_campaign\fP.  Si no s'ha
 especificat cap ID, apareixerà un menú de selecció.
@@ -120,14 +112,6 @@ userdata directory.
 \fB\-f, \-\-fullscreen\fP
 executa el joc en mode de pantalla completa.
 .TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-descomprimeix un fitxer que hauria de tenir format gzip i l'emmagatzema
-sense l'extensió .gz. El \fIinfile.gz\fP s'eliminarà.
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-comprimeix un fitxer en format gzip, l'emmagatzema com a \fIinfile\fP.bz2 i
-elimina \fIinfile\fP.
-.TP 
 \fB\-h, \-\-help\fP
 mostra un resum de les opcions de la línia d'ordres a la sortida estàndard i
 surt.
@@ -163,13 +147,13 @@ llista els dominis de registre definits (només els que continguin \fIfilter\fP
 si s'escau) i surt
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being

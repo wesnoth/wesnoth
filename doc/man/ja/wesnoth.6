@@ -40,12 +40,6 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 \fB\-\-all\-translations\fP
 ゲーム内の言語選択リストに、翻訳率が低いものを含むすべての翻訳を表示する。
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-bzip2 フォーマットのファイルを展開して .bz2 という拡張子を除いたファイルに保存する。 \fIinfile.bz2\fP は削除される。
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-ファイルを bzip2 フォーマットで圧縮して \fIinfile\fP.bz2 に保存し、\fIinfile\fP を削除する。
-.TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 キャンペーンをID \fIid_campaign\fP で直接指定する。IDを指定しないと選択メニューが表示される。
 .TP 
@@ -99,12 +93,6 @@ FPSを画面の隅に表示し、ユーザーデータディレクトリ内の�
 \fB\-f, \-\-fullscreen\fP
 フルスクリーンモードでゲームを実行する。
 .TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保存する。 \fIinfile.gz\fP は削除される。
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-ファイルを gzip フォーマットで圧縮して \fIinfile\fP.gz に保存し、\fIinfile\fP を削除する。
-.TP 
 \fB\-h, \-\-help\fP
 標準出力にコマンドラインオプションの要約を表示して、終了する。
 .TP 
@@ -132,17 +120,17 @@ gzip フォーマットのファイルを展開して .gz という拡張子を�
 定義済のログ領域のリストを表示して終了する。(\fIfilter\fPが指定されたら反映される)
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+Windowsの場合に \-\-no\-log\-to\-file と共に使用すると、出力は CONOUT ではなく cerr/cout
+に書き込まれる。それ以外は何もしない。
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 ゲームの fps を設定。値は \fB1\fP から \fB1000\fP を指定でき、デフォルト値はモニターのリフレッシュレートである。
@@ -244,9 +232,8 @@ GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き�
 検証エラーは致命的なエラーとして扱う。
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+小さなテストシナリオを実行する。テストシナリオは \fB[test]\fP WMLタグで定義されている必要がある。 デフォルトは \fBtest\fP。
+\fB[micro_ai]\fP のデモンストレーションは \fBmicro_ai_test\fP で開始できる。
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 言語の基準翻訳率を I に設定する。言語の翻訳率が \fIpercent\fP を越えている場合のみ、ゲーム内の言語リストに表示される。有効な値は 0 から

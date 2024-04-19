@@ -17,6 +17,10 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
+struct language_def;
+
 namespace gui2::dialogs
 {
 
@@ -33,10 +37,7 @@ namespace gui2::dialogs
 class language_selection : public modal_dialog
 {
 public:
-	language_selection()
-		: modal_dialog(window_id())
-	{
-	}
+	language_selection();
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(language_selection)
@@ -47,6 +48,11 @@ private:
 	virtual void pre_show(window& window) override;
 
 	virtual void post_show(window& window) override;
+
+	void shown_filter_callback();
+
+	const std::vector<language_def> langs_;
+	boost::dynamic_bitset<> complete_langs_;
 };
 
 } // namespace dialogs

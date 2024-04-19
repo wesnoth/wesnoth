@@ -9,9 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2019-02-03 09:24+0200\n"
-"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail.com>\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"PO-Revision-Date: 2024-04-10 17:49+0300\n"
+"Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
+"discord: amakri>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -272,6 +273,7 @@ msgstr "ціп"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:48
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
@@ -419,6 +421,12 @@ msgstr ""
 #: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
 msgid "cleaver"
 msgstr "ніж м'ясника"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/core/units/undead/Skele_Bone_Knight.cfg:77
+msgid "trample"
+msgstr ""
 
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
@@ -772,13 +780,13 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:66
+#: data/core/units/undead/Skele_Bone_Knight.cfg:67
 #: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:85
+#: data/core/units/undead/Skeleton_Rider.cfg:86
 msgid "axe"
 msgstr "сокира"
 
@@ -1025,7 +1033,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr "Шида"
+msgstr "Ельфа шида"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
@@ -1279,10 +1287,8 @@ msgstr "алебарда"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Arbiter.cfg:174
-#, fuzzy
-#| msgid "Drake Arbiter"
 msgid "female^Drake Arbiter"
-msgstr "Дрейк суддя"
+msgstr "Дрейкиня суддя"
 
 #. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:4
@@ -1325,10 +1331,8 @@ msgstr "вогняний подих"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Armageddon.cfg:65
-#, fuzzy
-#| msgid "Armageddon Drake"
 msgid "female^Armageddon Drake"
-msgstr "Великий дрейк"
+msgstr "Велика дрейкиня"
 
 #. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:4
@@ -1361,10 +1365,8 @@ msgstr "кіготь війни"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Blademaster.cfg:61
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "female^Drake Blademaster"
-msgstr "Дрейк майстер клинка"
+msgstr "Дрейкиня майстер клинка"
 
 #. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:4
@@ -1386,10 +1388,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Burner.cfg:67
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Drake Burner"
-msgstr "Некромантка"
+msgstr "Дрейкиня палій"
 
 #. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:4
@@ -1424,10 +1424,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Clasher.cfg:111
-#, fuzzy
-#| msgid "Drake Clasher"
 msgid "female^Drake Clasher"
-msgstr "Дрейк боєць"
+msgstr "Дрейкиня боєць"
 
 #. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:4
@@ -1461,10 +1459,8 @@ msgstr "тризубець"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Enforcer.cfg:119
-#, fuzzy
-#| msgid "Drake Enforcer"
 msgid "female^Drake Enforcer"
-msgstr "Дрейк броненосець"
+msgstr "Дрейкиня броненосець"
 
 #. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:4
@@ -1493,10 +1489,8 @@ msgstr "клинок війни"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Fighter.cfg:64
-#, fuzzy
-#| msgid "Drake Fighter"
 msgid "female^Drake Fighter"
-msgstr "Дрейк воїн"
+msgstr "Дрейкиня воїн"
 
 #. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:4
@@ -1519,10 +1513,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Fire.cfg:62
-#, fuzzy
-#| msgid "Fire Drake"
 msgid "female^Fire Drake"
-msgstr "Вогняний дрейк"
+msgstr "Вогняна дрейкиня"
 
 #. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -1549,8 +1541,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Flameheart.cfg:66
-#, fuzzy
-#| msgid "Drake Flameheart"
 msgid "female^Drake Flameheart"
 msgstr "Полум'яне Серце"
 
@@ -1575,10 +1565,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Flare.cfg:65
-#, fuzzy
-#| msgid "Drake Flare"
 msgid "female^Drake Flare"
-msgstr "Дрейк Світоч"
+msgstr "Дрейкиня Світоч"
 
 #. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:4
@@ -1622,10 +1610,8 @@ msgstr "ляскіт"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Glider.cfg:66
-#, fuzzy
-#| msgid "Drake Glider"
 msgid "female^Drake Glider"
-msgstr "Планер"
+msgstr "Планерка"
 
 #. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -1653,10 +1639,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Hurricane.cfg:101
-#, fuzzy
-#| msgid "Hurricane Drake"
 msgid "female^Hurricane Drake"
-msgstr "Буревій"
+msgstr "Буревійка"
 
 #. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:4
@@ -1680,10 +1664,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Inferno.cfg:64
-#, fuzzy
-#| msgid "Inferno Drake"
 msgid "female^Inferno Drake"
-msgstr "Пекельний дрейк"
+msgstr "Пекельна дрейкиня"
 
 #. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:4
@@ -1715,10 +1697,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Sky.cfg:98
-#, fuzzy
-#| msgid "Sky Drake"
 msgid "female^Sky Drake"
-msgstr "Небесний дрейк"
+msgstr "Небесна дрейкиня"
 
 #. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:4
@@ -1743,10 +1723,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Thrasher.cfg:118
-#, fuzzy
-#| msgid "Drake Thrasher"
 msgid "female^Drake Thrasher"
-msgstr "Дрейк молотар"
+msgstr "Дрейкиня молотар"
 
 #. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:4
@@ -1780,10 +1758,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Warden.cfg:175
-#, fuzzy
-#| msgid "Drake Warden"
 msgid "female^Drake Warden"
-msgstr "Вартовий дрейк"
+msgstr "Вартова дрейкиня"
 
 #. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1809,10 +1785,8 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "female^Drake Warrior"
-msgstr "Дрейк вояка"
+msgstr "Дрейкиня вояка"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
@@ -1899,7 +1873,7 @@ msgstr ""
 #. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:8
 msgid "Dune Burner"
-msgstr ""
+msgstr "Палій дюн"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:21
@@ -1921,17 +1895,13 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "female^Necromancer"
 msgid "female^Dune Burner"
-msgstr "Некромантка"
+msgstr "Палійка дюн"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Elvish Captain"
 msgid "Dune Captain"
-msgstr "Ельфійський капітан"
+msgstr "Капітан дюн"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -2336,7 +2306,7 @@ msgstr ""
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
 msgid "Dune Soldier"
-msgstr ""
+msgstr "Солдат дюн"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
@@ -2552,10 +2522,8 @@ msgstr ""
 
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Wyvern Rider"
-msgstr "Вершник грифона"
+msgstr "Вершник виверни"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2655,10 +2623,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:4
-#, fuzzy
-#| msgid "Dwarvish Fighter"
 msgid "Dwarvish Miner"
-msgstr "Гном воїн"
+msgstr "Гном шахтар"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:17
@@ -2855,7 +2821,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/elves/Archer.cfg:80
 msgid "female^Elvish Archer"
-msgstr "Ельфійська лучниця"
+msgstr "Ельфа лучниця"
 
 #. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:4
@@ -2902,7 +2868,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/elves/Avenger.cfg:96
 msgid "female^Elvish Avenger"
-msgstr "Ельфійська месниця"
+msgstr "Ельфа месниця"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
@@ -2983,7 +2949,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr "Друїда"
+msgstr "Ельфа друїда"
 
 #. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:19
@@ -3010,7 +2976,7 @@ msgstr "пастка"
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr "Ельфійська чарівниця"
+msgstr "Ельфа чарівниця"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:19
@@ -3291,7 +3257,7 @@ msgstr "довгий лук"
 #. [female]: gender=female
 #: data/core/units/elves/Marksman.cfg:89
 msgid "female^Elvish Marksman"
-msgstr "Ельфійська стрілець"
+msgstr "Ельфа стрілець"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
@@ -3426,7 +3392,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/elves/Ranger.cfg:95
 msgid "female^Elvish Ranger"
-msgstr "Ельфійська ліснича"
+msgstr "Ельфа ліснича"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
@@ -3530,7 +3496,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Ельфійська шаманка"
+msgstr "Ельфа шаманка"
 
 #. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:19
@@ -3587,7 +3553,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/elves/Sharpshooter.cfg:81
 msgid "female^Elvish Sharpshooter"
-msgstr "Ельфійська снайпер"
+msgstr "Ельфа снайпер"
 
 #. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/core/units/elves/Shyde.cfg:22
@@ -3610,7 +3576,7 @@ msgstr "дотик феї"
 #. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr "Ельфійська чаклунка"
+msgstr "Ельфа чаклунка"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:19
@@ -5358,10 +5324,8 @@ msgstr "хвіст"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:4
-#, fuzzy
-#| msgid "Merman Triton"
 msgid "Merman Citizen"
-msgstr "Тритон"
+msgstr "Водяний міщанин"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:17
@@ -5749,10 +5713,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant"
-msgstr "Гігантський щур"
+msgstr "Мураха Велет"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:18
@@ -5774,10 +5736,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:9
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant Egg"
-msgstr "Гігантський щур"
+msgstr "Яйце мурахи велета"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
@@ -5791,10 +5751,8 @@ msgstr ""
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant Egg"
-msgstr "Вогняний дракон"
+msgstr "Яйце вогняної мурахи"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
@@ -5807,10 +5765,8 @@ msgstr ""
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant"
-msgstr "Вогняний дракон"
+msgstr "Вогняна мураха"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #. [unit_type]: id=Firebane Ant, race=monster
@@ -5828,17 +5784,13 @@ msgstr ""
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:90
 #: data/core/units/monsters/Ant_Firebane.cfg:79
 #: data/core/units/monsters/Ant_Firebomb.cfg:83
-#, fuzzy
-#| msgid "fireball"
 msgid "fire"
-msgstr "вогняна куля"
+msgstr "вогонь"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:11
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Fire Ant Queen"
-msgstr "Вогняний дракон"
+msgstr "Королева вогняних мурах"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:54
@@ -5873,10 +5825,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:4
-#, fuzzy
-#| msgid "Giant Rat"
 msgid "Giant Ant Queen"
-msgstr "Гігантський щур"
+msgstr "Королева мурах велетів"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
@@ -5893,10 +5843,8 @@ msgstr ""
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
-#, fuzzy
-#| msgid "Fire Dragon"
 msgid "Soldier Ant"
-msgstr "Вогняний дракон"
+msgstr "Мураха солдат"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
@@ -5910,7 +5858,7 @@ msgstr ""
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
-msgstr ""
+msgstr "Печерний ведмідь"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
@@ -5924,7 +5872,7 @@ msgstr ""
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "Лісовий кабан"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
@@ -5999,7 +5947,7 @@ msgstr ""
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
-msgstr ""
+msgstr "болотяна ящірка"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:122
@@ -6041,19 +5989,11 @@ msgstr ""
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
-#, fuzzy
-#| msgid "Cuttle Fish"
 msgid "Cuttlefish"
 msgstr "Каракатиця"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cuttle Fish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Cuttlefish are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
@@ -6129,7 +6069,7 @@ msgstr ""
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
 msgid "Elder Falcon"
-msgstr ""
+msgstr "Сокіл старійшина"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:19
@@ -6153,7 +6093,7 @@ msgstr ""
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:4
 msgid "Falcon"
-msgstr ""
+msgstr "Сокіл"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:19
@@ -6219,10 +6159,8 @@ msgstr "вогняні кігті"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
-#, fuzzy
-#| msgid "fire breath"
 msgid "Fire Wraith"
-msgstr "вогняний подих"
+msgstr "Вогняний дух"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
@@ -6470,17 +6408,13 @@ msgstr ""
 #. [female]
 #. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
 #: data/core/units/monsters/Horse_Black.cfg:100
-#, fuzzy
-#| msgid "female^Mage of Light"
 msgid "female^Black Nightmare"
-msgstr "Світла мага"
+msgstr "Чорна кобила"
 
 #. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
-#, fuzzy
-#| msgid "Dark Sorcerer"
 msgid "Dark Horse"
-msgstr "Чорнокнижник"
+msgstr "Чорний кінь"
 
 #. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:40
@@ -6492,24 +6426,18 @@ msgstr ""
 
 #. [male]
 #: data/core/units/monsters/Horse_Dark.cfg:88
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "male^Dark Horse"
-msgstr "Темна адептка"
+msgstr "Темний кінь"
 
 #. [female]
 #: data/core/units/monsters/Horse_Dark.cfg:92
-#, fuzzy
-#| msgid "female^Dark Adept"
 msgid "female^Dark Horse"
-msgstr "Темна адептка"
+msgstr "Темна кобила"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
-#, fuzzy
-#| msgid "Great Mage"
 msgid "Great Horse"
-msgstr "Великий маг"
+msgstr "Великий кінь"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -6522,10 +6450,8 @@ msgstr ""
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse_White.cfg:14
-#, fuzzy
-#| msgid "White Mage"
 msgid "White Horse"
-msgstr "Білий маг"
+msgstr "Білий кінь"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse_White.cfg:25
@@ -6568,7 +6494,7 @@ msgstr ""
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
 msgid "Jinn"
-msgstr ""
+msgstr "Джин"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:23
@@ -6596,22 +6522,16 @@ msgstr "блискавка"
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
 msgid "Kraken"
-msgstr ""
+msgstr "Кракен"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cuttle Fish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Krakens are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"Каракатиця — це гігантські морські створіння. Вони можуть схопити противника "
+"Кракени — це гігантські морські створіння. Вони можуть схопити противника "
 "сильними щупальцями, або з відстані плюнути отруйним чорнилом. Найкращий "
 "спосіб вижити при зустрічі з цими монстрами — залишатися на суші."
 
@@ -6711,10 +6631,8 @@ msgstr ""
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
-#, fuzzy
-#| msgid "Giant Scorpion"
 msgid "Rock Scorpion"
-msgstr "Гігантський скорпіон"
+msgstr "Кам'яний скорпіон"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
@@ -6771,10 +6689,8 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
 msgid "horn"
-msgstr "шпичаки"
+msgstr "ріг"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -7082,10 +6998,8 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/nagas/Guard_High.cfg:45
 #: data/core/units/nagas/Guard_Shield.cfg:43
-#, fuzzy
-#| msgid "shield bash"
 msgid "shield"
-msgstr "удар щитом"
+msgstr "щит"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
@@ -7660,10 +7574,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:4
-#, fuzzy
-#| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
-msgstr "Партизан"
+msgstr "Партизанка"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:18
@@ -7701,10 +7613,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
-msgstr "Фланговий яшір"
+msgstr "Флангова"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:19
@@ -7722,10 +7632,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:4
-#, fuzzy
-#| msgid "Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "Фланговий яшір"
+msgstr "Ящірка списоносець"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
@@ -7759,10 +7667,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:4
-#, fuzzy
-#| msgid "Saurian Oracle"
 msgid "Saurian Prophet"
-msgstr "Оракул"
+msgstr "Пророк"
 
 #. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:19
@@ -7810,10 +7716,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:4
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Saurian Skirmisher"
-msgstr "Ящір авангардист"
+msgstr "Авангардистка"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:18
@@ -7841,10 +7745,8 @@ msgstr "Ворожбит"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:4
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
-msgstr "Ящір авангардист"
+msgstr "Кидачка списів"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:18
@@ -8444,22 +8346,15 @@ msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Goblin Knight"
 msgid "Bone Knight"
-msgstr "Гоблінський лицар"
+msgstr "Костяний лицар"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:59
+#: data/core/units/undead/Skele_Bone_Knight.cfg:60
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
-msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:76
-msgid "trample"
 msgstr ""
 
 #. [unit_type]: id=Bone Shooter, race=undead
@@ -8646,7 +8541,7 @@ msgid "Skeleton Rider"
 msgstr "Скелет лучник"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:78
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
@@ -8857,14 +8752,12 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "Молодий лісовик"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
-#, fuzzy
-#| msgid "Troll Shaman"
 msgid "Wose Shaman"
-msgstr "Троль шаман"
+msgstr "Лісовик шаман"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21

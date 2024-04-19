@@ -204,6 +204,14 @@ void synced_context::set_is_simultaneous()
 	is_simultaneous_ = true;
 }
 
+void synced_context::block_undo(bool do_block)
+{
+	is_undo_blocked_ |= do_block;
+	resources::undo_stack->clear();
+	// Since the action cannot be undone, send it immidiately to the other players.
+	resources::controller->send_actions();
+}
+
 bool synced_context::undo_blocked()
 {
 	// this method should only works in a synced context.
@@ -213,6 +221,7 @@ bool synced_context::undo_blocked()
 	// if the game has ended, undoing is blocked.
 	// if the turn has ended undoing is blocked.
 	return is_simultaneous_
+	    || is_undo_blocked_
 	    || (randomness::generator->get_random_calls() != 0)
 	    || resources::controller->is_regular_game_end()
 	    || resources::gamedata->end_turn_forced();
@@ -227,14 +236,14 @@ int synced_context::get_unit_id_diff()
 
 void synced_context::pull_remote_user_input()
 {
-	syncmp_registry::pull_remote_choice();
+	resources::controller->receive_actions();
 }
 
 // TODO: this is now also used for normal actions, maybe it should be renamed.
 void synced_context::send_user_choice()
 {
 	assert(undo_blocked());
-	syncmp_registry::send_user_choice();
+	resources::controller->send_actions();
 }
 
 std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
@@ -364,6 +373,13 @@ void synced_context::add_undo_commands(int idx, const config& args, const game_e
 	undo_commands_.emplace_front(idx, args, ctx);
 }
 
+bool synced_context::ignore_undo()
+{
+	auto& ct = resources::controller->current_team();
+	// Ai doesn't undo stuff, disabling the undo stack allows us to send moves to other clients sooner.
+	return ct.is_ai() && ct.auto_shroud_updates();
+}
+
 set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
 	, old_rng_(randomness::generator)
@@ -375,6 +391,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneous();
+	synced_context::reset_block_undo();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
 

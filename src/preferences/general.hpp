@@ -106,8 +106,8 @@ namespace preferences {
 	bool idle_anim();
 	void set_idle_anim(const bool ison);
 
-	double idle_anim_rate();
-	void set_idle_anim_rate(const int rate);
+	int idle_anim_rate();
+	void set_idle_anim_rate(int rate);
 
 	std::string language();
 	void set_language(const std::string& s);

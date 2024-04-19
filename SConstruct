@@ -363,7 +363,7 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL2('2.0.10') & \
+            conf.CheckSDL2('2.0.18') & \
             conf.CheckSDL2Mixer() & \
             conf.CheckSDL2Image()
 

@@ -42,6 +42,7 @@
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
+#include "gui/dialogs/community_dialog.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
@@ -622,6 +623,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_double)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_community_dialog)
+{
+	test<community_dialog>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {

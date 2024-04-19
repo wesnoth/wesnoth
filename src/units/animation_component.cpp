@@ -26,6 +26,20 @@
 
 #include <set>
 
+namespace
+{
+int get_next_idle_time()
+{
+	if(!preferences::idle_anim()) {
+		return INT_MAX;
+	}
+
+	const double rate = std::pow(2.0, -preferences::idle_anim_rate() / 10.0);
+	return get_current_animation_tick()
+		+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * rate);
+}
+} // namespace
+
 const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const strike_result::type hit,
 		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
@@ -110,12 +124,7 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
-	if (preferences::idle_anim()) {
-		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * preferences::idle_anim_rate());
-	} else {
-		next_idling_ = INT_MAX;
-	}
+	next_idling_ = get_next_idle_time();
 }
 
 void unit_animation_component::refresh()
@@ -134,12 +143,7 @@ void unit_animation_component::refresh()
 	if (get_current_animation_tick() > next_idling_ + 1000)
 	{
 		// prevent all units animating at the same time
-		if (preferences::idle_anim()) {
-			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * preferences::idle_anim_rate());
-		} else {
-			next_idling_ = INT_MAX;
-		}
+		next_idling_ = get_next_idle_time();
 	} else {
 		set_idling();
 	}

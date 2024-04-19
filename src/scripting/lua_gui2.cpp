@@ -238,9 +238,9 @@ int show_lua_console(lua_State* /*L*/, lua_kernel_base* lk)
 	return 0;
 }
 
-int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state)
+int show_gamestate_inspector(const std::string& name, const game_data& data, const game_state& state)
 {
-	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
+	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, name);
 	return 0;
 }
 

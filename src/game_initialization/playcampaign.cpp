@@ -56,7 +56,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 		? state_.get_replay_starting_point()
 		: state_.get_starting_point();
 
-	playsingle_controller playcontroller(starting_point, state_, false);
+	playsingle_controller playcontroller(starting_point, state_);
 
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks());
 	if(is_replay_) {

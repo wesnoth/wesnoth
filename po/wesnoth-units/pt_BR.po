@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
 "PO-Revision-Date: 2023-01-06 17:50-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -474,6 +474,7 @@ msgstr "mangual"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:48
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
@@ -683,6 +684,12 @@ msgstr ""
 #: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
 msgid "cleaver"
 msgstr "cutelo"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/core/units/undead/Skele_Bone_Knight.cfg:77
+msgid "trample"
+msgstr ""
 
 #
 # File: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg, line: 44
@@ -1244,13 +1251,13 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:66
+#: data/core/units/undead/Skele_Bone_Knight.cfg:67
 #: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:85
+#: data/core/units/undead/Skeleton_Rider.cfg:86
 msgid "axe"
 msgstr "machado"
 
@@ -11306,16 +11313,11 @@ msgid "Bone Knight"
 msgstr "Góblin Cavaleiro"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:59
+#: data/core/units/undead/Skele_Bone_Knight.cfg:60
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
-msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:76
-msgid "trample"
 msgstr ""
 
 #
@@ -11550,7 +11552,7 @@ msgid "Skeleton Rider"
 msgstr "Esqueleto Arqueiro"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:78
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
