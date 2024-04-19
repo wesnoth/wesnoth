@@ -88,7 +88,7 @@ public:
 	                      unsigned & max_attacks) const;
 
 	/**
-	 * Select damage type who will be returned in damage_type() and resistance_of_damage_type functions
+	 * Select best damage type based on frequency count for replacement_type and based on highest damage for alternative_type.
 	 *
 	 * @param damage_type_list list of [damage_type] to check.
 	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
@@ -98,7 +98,7 @@ public:
 	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
 	std::pair<std::string, std::string> damage_type() const;
 	/** @return A list of alternative_type damage types. */
-	std::set<std::string> damage_alternative_type() const;
+	std::set<std::string> alternative_damage_types() const;
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage() const;

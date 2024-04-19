@@ -873,30 +873,25 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 
 		std::string range = string_table["range_" + at.range()];
 		std::string type = at.damage_type().first;
-		std::set<std::string> alt_types = at.damage_alternative_type();
-		std::string secondary_lang_type;
+		std::set<std::string> alt_types = at.alternative_damage_types();
+		std::string lang_type = string_table["type_" + type];
 		for(auto alt_t : alt_types){
-			if(!alt_t.empty()){
-				secondary_lang_type += ", " + string_table["type_" + alt_t];
-			}
+			lang_type += ", " + string_table["type_" + alt_t];
 		}
-		std::string lang_type = string_table["type_" + type] + secondary_lang_type;
 
 		// SCALE_INTO() is needed in case the 72x72 images/misc/missing-image.png is substituted.
 		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
 		const std::string type_png = std::string("icons/profiles/") + type + ".png~SCALE_INTO(16,16)";
 		std::vector<std::string> secondary_types_png;
-		bool secondary_type_png_exist = false;
+		bool secondary_type_png_exist = true;
 		for(auto alt_t : alt_types){
-			if(!alt_t.empty()){
-				secondary_types_png.push_back(std::string("icons/profiles/") + alt_t + ".png~SCALE_INTO(16,16)");
-				if(image::locator(alt_t).file_exists() && !secondary_type_png_exist) {secondary_type_png_exist=true;}
-			}
+			secondary_types_png.push_back(std::string("icons/profiles/") + alt_t + ".png~SCALE_INTO(16,16)");
+			if(!image::locator(alt_t).file_exists() && secondary_type_png_exist) {secondary_type_png_exist=false;}
 		}
 		const bool range_png_exists = image::locator(range_png).file_exists();
 		const bool type_png_exists = image::locator(type_png).file_exists();
 
-		if(!range_png_exists || !type_png_exists || (!secondary_type_png_exist && !secondary_lang_type.empty())) {
+		if(!range_png_exists || !type_png_exists || (!secondary_type_png_exist && !alt_types.empty())) {
 			str << span_color(font::weapon_details_color) << "  " << "  "
 				<< range << font::weapon_details_sep
 				<< lang_type << "</span>\n";

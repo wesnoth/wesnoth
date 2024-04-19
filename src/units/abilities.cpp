@@ -1192,10 +1192,7 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 		}
 	}
 
-	if(!type_list.empty()) return "";
-
-	if(type_list.size() == 1) return type_list.front();
-	std::sort(type_list.begin(), type_list.end());
+	if(type_list.empty()) return "";
 
 	return type_list.front();
 }
@@ -1223,10 +1220,7 @@ static std::string select_alternative_type(const unit_ability_list& damage_type_
 			type_list.push_back(i.first);
 		}
 	}
-	if(!type_list.empty()) return "";
-
-	if(type_list.size() == 1) return type_list.front();
-	std::sort(type_list.begin(), type_list.end());
+	if(type_list.empty()) return "";
 
 	return type_list.front();
 }
@@ -1265,21 +1259,19 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 	return {type_damage, ""};
 }
 
-std::set<std::string> attack_type::damage_alternative_type() const
+std::set<std::string> attack_type::alternative_damage_types() const
 {
 	unit_ability_list damage_alternative_type_list = get_specials_and_abilities("damage_type");
 	if(damage_alternative_type_list.empty()){
 		return {};
 	}
-	std::set<std::string> type_count;
+	std::set<std::string> damage_types;
 	for(auto& i : damage_alternative_type_list) {
 		const config& c = *i.ability_cfg;
-		if(!c["alternative_type"].empty() && type_count.count(c["alternative_type"].str()) == 0) {
-			type_count.insert(c["alternative_type"].str());
-		}
+		damage_types.insert(c["alternative_type"].str());
 	}
 
-	return type_count;
+	return damage_types;
 }
 
 
