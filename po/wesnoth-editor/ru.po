@@ -14,13 +14,13 @@
 # Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014.
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2021-08-20 20:55+0300\n"
+"PO-Revision-Date: 2024-04-07 16:36+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [brush]: id=brush-1
@@ -135,7 +135,7 @@ msgstr "особое"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "подъём"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -211,7 +211,7 @@ msgstr "Окно"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Аддон"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -425,14 +425,8 @@ msgid "Map loaded from scenario"
 msgstr "Карта загружена из сценария"
 
 #: src/editor/map/context_manager.cpp:951
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Загрузил файл карты по ссылке:\n"
-"$new"
+msgstr "Загружена связанная карта:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -453,7 +447,7 @@ msgstr "Файл пуст"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "Файл не имеет разрешения .map или .cfg"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -466,6 +460,8 @@ msgstr ""
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
+"Найдена последовательность \"<<\", присущая встроенному lua-коду — загрузка "
+"прекращена"
 
 #: src/editor/map/map_context.cpp:266
 #: src/editor/palette/location_palette.cpp:265
@@ -474,23 +470,19 @@ msgstr "Ошибка"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "Ошибка загрузки сценария. Попытка загрузить только карту."
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Файл карты похож на сценарий, но значение map_data не указывает на "
+"Файл карты похож на сценарий, но значение map_file не указывает на "
 "существующий файл"
 
 #: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Из файла не удаётся выделить данные карты"
 
 #: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
 #: src/editor/map/map_context.cpp:886

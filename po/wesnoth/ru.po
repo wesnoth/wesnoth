@@ -8,13 +8,13 @@
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2022-08-28 19:32+0300\n"
+"PO-Revision-Date: 2024-04-13 23:08+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -211,7 +211,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "Множитель размера шрифта (экспериментально)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -219,13 +219,14 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"Увеличивает или уменьшает весь текст относительно обычного для вашего "
+"разрешения экрана размера. Предупреждение: изменение размера текста может "
+"исказить вид внутриигровой боковой панели."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Превышен лимит времени подключения"
+msgstr "Лимит времени отключения"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -234,6 +235,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Количество времени, в секундах, прежде чем засчитывается отключение. Если Вы "
+"на тот момент находились на сервере мультиплеера, Вам придётся выйти из него "
+"и зайти назад."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -398,10 +402,8 @@ msgstr "Баскский перевод"
 
 #. [about]
 #: data/core/about_i18n.cfg:65
-#, fuzzy
-#| msgid "Bulgarian Translation"
 msgid "Bengali Translation"
-msgstr "Болгарский перевод"
+msgstr "Бенгальский перевод"
 
 #. [about]
 #: data/core/about_i18n.cfg:77
@@ -650,10 +652,8 @@ msgstr "Вьетнамский перевод"
 
 #. [about]
 #: data/core/about_i18n.cfg:1905
-#, fuzzy
-#| msgid "Polish Translation"
 msgid "Welsh Translation"
-msgstr "Польский перевод"
+msgstr "Уэльский перевод"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
@@ -4269,7 +4269,7 @@ msgstr "неизлечима"
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
-msgstr "неизлечимо"
+msgstr "неизлечим"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
@@ -4309,21 +4309,15 @@ msgstr "Планировка Продвижений Бойцов"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
-#, fuzzy
-#| msgid ""
-#| "When playing a multiplayer game, you do not control what a unit advances "
-#| "to if it advances on another player's turn. With this modification you "
-#| "can set what your units advance to beforehand, either for a specific unit "
-#| "or for all units of the same type."
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
 "if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
-"Во время многопользовательской игры Вы не можете выбирать, в кого "
-"продвигается боец, если это происходит во время хода другого игрока. Когда "
-"эта модификация включена, Вы можете заранее обозначить, в кого продвигаться "
+"Во время многопользовательской игры Вы обычно не можете выбирать, в кого "
+"продвигается боец, если это происходит во время хода другого игрока. С "
+"помощью этой модификации Вы можете заранее обозначить, в кого продвигаться "
 "либо отдельному бойцу, либо всем бойцам данного типа."
 
 #. [checkbox]: id=pickadvance_force_choice
@@ -4513,10 +4507,8 @@ msgstr "Загрузить ход..."
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "воспроизвести ход"
+msgstr "Воспроизвести ход..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -5368,14 +5360,12 @@ msgid ""
 "The cleansing waters of an oasis will heal the injured. The fiery ichor of "
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
-msgstr ""
+msgstr "<i>— Доминант Горлак, 3 ГВ</i>"
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>— Король Конрад, 536 ГВ</i>"
+msgstr "<i>— Доминант Горлак, 3 ГВ</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5537,16 +5527,16 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
 #: src/actions/undo.cpp:402
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "Ошибка игры"
+msgstr "Ошибка повтора"
 
 #: src/actions/undo.cpp:403
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
+"Стек повтора рассинхронизирован. Как правило, это вызвано испорченным файлом "
+"сохранения или нерабочим WML кодом в этом сценарии или эре. Подробности:"
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
@@ -5607,6 +5597,8 @@ msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
 msgstr ""
+"Соединение с удалённым сервером небезопасно. Аддон <i>$addon_title</i> не "
+"может быть загружен."
 
 #: src/addon/client.cpp:224
 msgid "Requesting file index..."
@@ -5633,10 +5625,8 @@ msgid "Add-ons Manager"
 msgstr "Менеджер аддонов"
 
 #: src/addon/client.cpp:350
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr "Отправка аддона <i>$addon_title</i>..."
+msgstr "Установка аддона <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:362 src/addon/client.cpp:388
 msgid ""
@@ -5873,7 +5863,7 @@ msgstr "Неверный пароль аддона."
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
-msgstr ""
+msgstr "Требуется аутентификация через форум."
 
 #: src/addon/validation.cpp:401
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -5993,6 +5983,7 @@ msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"Атрибут forum_auth аддона не совпадает с указанным в более ранней публикации."
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
@@ -6013,7 +6004,7 @@ msgstr "На сервере нет ни одной версии аддона."
 #: src/addon/validation.cpp:528
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
-msgstr ""
+msgstr "Этот сервер не поддерживает атрибут forum_auth вашего pbl-файла."
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
@@ -6921,44 +6912,36 @@ msgstr[2] ""
 "Установить их?"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
-#, fuzzy
-#| msgid "Create a unit."
 msgid "Create a new add-on"
-msgstr "Создать бойца."
+msgstr "Создать новый аддон"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
-msgstr ""
+msgstr "Новый аддон"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
-msgstr ""
+msgstr "Основная серия"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline multiplayer scenarios"
-msgstr ""
+msgstr "Официальные сценарии мультиплеера"
 
 #: src/gui/dialogs/game_stats.hpp:42
 msgid "No visible sides found."
 msgstr "Нет видимых оппонентов."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
-#, fuzzy
-#| msgid "Selected user: "
 msgid "Selected Game"
-msgstr "Выберите пользователя: "
+msgstr "Выбранная игра"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
-#, fuzzy
-#| msgid "Game Lobby"
 msgid "Lobby"
-msgstr "Холл игры"
+msgstr "Лобби"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
-#, fuzzy
-#| msgid "Observe Game"
 msgid "Other Games"
-msgstr "Наблюдать за игрой"
+msgstr "Прочие игры"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
 #: src/gui/dialogs/multiplayer/match_history.cpp:92
@@ -6970,40 +6953,32 @@ msgid "Scenario"
 msgstr "Сценарий"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:71
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Эра:"
+msgstr "Эра"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:72
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modification"
-msgstr "Модификации:"
+msgstr "Модификация"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:151
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
-msgstr "Эра:"
+msgstr "Эра: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:254
-#, fuzzy
-#| msgid "No games found."
 msgid "No game history found."
-msgstr "Игры не найдены."
+msgstr "История игр не найдена."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:267
 msgid "Request timed out."
-msgstr ""
+msgstr "Время запроса истекло."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:277
 msgid "Request encountered an unexpected error, please check the logs."
-msgstr ""
+msgstr "Непредвиденная ошибка запроса, пожалуйста, проверьте логи."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7042,10 +7017,8 @@ msgid "Error"
 msgstr "Ошибка"
 
 #: src/gui/dialogs/unit_attack.cpp:163 src/gui/dialogs/unit_attack.cpp:178
-#, fuzzy
-#| msgid "Observe Game"
 msgid "Other aspects: "
-msgstr "Наблюдать за игрой"
+msgstr "Прочее: "
 
 #: src/gui/dialogs/unit_attack.cpp:190 src/gui/dialogs/unit_attack.cpp:203
 #: src/reports.cpp:822 src/reports.cpp:1086 src/reports.cpp:1098
@@ -7068,10 +7041,8 @@ msgid "Attacks: "
 msgstr "Атак: "
 
 #: src/gui/dialogs/unit_attack.cpp:194 src/gui/dialogs/unit_attack.cpp:207
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Chance to hit: "
-msgstr "Продвигается в: "
+msgstr "Точность: "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
@@ -7115,7 +7086,7 @@ msgstr "Преимущество Теневых:"
 
 #: src/help/help_impl.cpp:438
 msgid "Schedule"
-msgstr "Планировать"
+msgstr "Расписание"
 
 #: src/help/help_impl.cpp:530
 msgid "<header>text='Units with this special attack'</header>"
@@ -7164,16 +7135,12 @@ msgstr "Тип: "
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1149
-#, fuzzy
-#| msgid ""
-#| "This is a group of units, all of whom are <ref>dst='$topic_id' "
-#| "text='$help_taxonomy'</ref>"
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 "Это — группа бойцов, все из которых — <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 
 #: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
@@ -7228,16 +7195,12 @@ msgid "Back to Turn "
 msgstr "Вернуться к ходу "
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "Ready to start!"
 msgid "Replay from Start"
-msgstr "Готов к старту!"
+msgstr "Воспроизвести с начала"
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "воспроизвести ход"
+msgstr "Воспроизвести с хода "
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -7252,22 +7215,16 @@ msgid "Planning mode deactivated!"
 msgstr "Режим планирования отключён!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:322
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
-msgstr "Вы хотите продолжить?"
+msgstr "Всё равно загрузить?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
-msgstr "Файл, который Вы пытались загрузить, поврежден"
+msgstr "Выбранный файл не содержит информации, необходимой для повтора. "
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
-msgstr "Файл, который Вы пытались загрузить, поврежден"
+msgstr "Выбранный файл не относится к текущей сессии."
 
 #: src/language.cpp:115
 msgid "System default language"
@@ -7302,16 +7259,12 @@ msgid "This command is currently unavailable."
 msgstr "Команда недоступна."
 
 #: src/map_command_handler.hpp:225
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
-"Команда '$command' неизвестна; чтобы получить список доступных команд, "
-"введите $help_command."
+"Команда '$command' неизвестна. Возможно, Вы имели ввиду '$command_proposal'? "
+"Чтобы получить список доступных команд, введите $help_command."
 
 #: src/map_command_handler.hpp:229
 msgid ""
@@ -7968,11 +7921,8 @@ msgstr ""
 "запланированные бойцы для вербовки или призыва."
 
 #: src/mouse_events.cpp:1314
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
 msgid "No Attacks"
-msgstr "Атака"
+msgstr "Атаки отсутствуют"
 
 #: src/mouse_events.cpp:1314
 msgid "This unit has no usable weapons."
@@ -8013,40 +7963,32 @@ msgstr "Ход сменился"
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
-msgstr "Ошибка при скачивании списка аддонов с сервера."
+msgstr ""
+"Ошибка при скачивании файла. За подробностями обращайтесь к файлу журнала."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download error"
-msgstr "Загрузки"
+msgstr "Ошибка скачивания"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Подтвердить перезапись"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "Перезаписать существующий файл?"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download complete"
-msgstr "Загрузки"
+msgstr "Скачивание завершено"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "Игра успешно сохранена."
+msgstr "Файл успешно скачан."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8070,6 +8012,8 @@ msgstr "текущее локальное время"
 #: src/play_controller.cpp:565
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr ""
+"Был создан потенциально испорченный файл. Пожалуйста, оповестите "
+"разработчиков."
 
 #: src/play_controller.cpp:1050
 msgid ""
@@ -8311,29 +8255,24 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Этот боец окаменел. Он не может двигаться или атаковать."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "неизлечимо"
+msgstr "неизлечим: "
 
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
+"Этот боец неизлечим. Лекари и деревни не могут ему помочь, и отдых не "
+"восстанавливает ему сил."
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "невидимый: "
+msgstr "неуязвимый: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr "Этот боец невидим. Противник не может его увидеть или атаковать."
+msgstr "Боец неуязвим. Никакая атака не может нанести ему урон."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -8926,11 +8865,11 @@ msgstr "Ваша деревня"
 
 #: src/theme.cpp:315
 msgid "border_size should be between 0.0 and 0.5."
-msgstr "Величина параметра border_size должна быть между 0,0 и 0,5."
+msgstr "border_size должен быть между 0,0 и 0,5."
 
 #: src/theme.cpp:566 src/theme.cpp:571
 msgid "Hotkey(s): "
-msgstr "Горячие клавиши"
+msgstr "Горячие клавиши: "
 
 #: src/time_of_day.cpp:44
 msgid "Stub Time of Day"
@@ -8941,24 +8880,22 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Это время суток - всего лишь заглушка!"
 
 #: src/units/abilities.cpp:970
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "замедлен: "
+msgstr "Принадлежит: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:974
 msgid "Taught: "
-msgstr ""
+msgstr "Наставляемый: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:978
 msgid "Taught: (by an enemy): "
-msgstr ""
+msgstr "Наставляемый: (врагом): "
 
 #: src/units/abilities.cpp:991
 msgid "Used by opponent: "
-msgstr ""
+msgstr "Оппонент использует: "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:473
@@ -9029,26 +8966,19 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> очков движ�
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:555
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "повреждение: $number"
-msgstr[1] "повреждение: $number"
-msgstr[2] "повреждение: $number"
+msgstr[0] "$number атака потрачена"
+msgstr[1] "$number атаки потрачено"
+msgstr[2] "$number атак потрачено"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:564
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака за ход"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки за ход"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак за ход"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака потрачена"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки потрачено"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак потрачено"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -9163,12 +9093,14 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"Невозможно создать файл журнала в папке $logdir. Обычно это вызвано "
+"некорректными разрешениями доступа; антивирусом, ограничивающим доступ к "
+"директориям; или использованием облачных хранилищ — таких как OneDrive или "
+"Яндекс.Диск — синхронизированных с папкой \"Мои Документы\"."
 
 #: src/wesnoth.cpp:804
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Запись логов"
+msgstr "Ошибка записи логов"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."

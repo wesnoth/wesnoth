@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-18 00:07 UTC\n"
-"PO-Revision-Date: 2022-08-28 19:36+0300\n"
+"PO-Revision-Date: 2024-04-07 20:02+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [editor_group]: id=eastern_invasion
@@ -9462,40 +9462,32 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2030
-#, fuzzy
-#| msgid "I have. I think we should..."
 msgid "I think we should..."
-msgstr "Да. Я думаю, мы..."
+msgstr "Я думаю, мы..."
 
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2032
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2086
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2149
-#, fuzzy
-#| msgid "challenge Mal-Ravanal to a duel."
 msgid "challenge Mal-Ravanal to a duel. <i>(normal)</i>"
-msgstr "вызовем Мал-Раванала на дуэль."
+msgstr "вызовем Мал-Раванала на дуэль. <i>(средняя сложность)</i>"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2036
-#, fuzzy
-#| msgid "I will send the message at once."
 msgid "I agree. Dacyn, send the message at once."
-msgstr "Я пошлю ему весть."
+msgstr "Согласен. Дацин, пошли ему весть."
 
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2046
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2100
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2163
 msgid "defeat Mal-Ravanal in pitched battle. <i>(challenging)</i>"
-msgstr ""
+msgstr "победим Мал-Раванала в решающем сражении. <i>(высокая сложность)</i>"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2050
-#, fuzzy
-#| msgid "I will begin preparing our troops."
 msgid "I agree. Owaec, begin preparing our armies."
-msgstr "Я начну готовить наши войска."
+msgstr "Согласен. Оваек, готовь наши войска."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2068
@@ -9604,21 +9596,19 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2203
-#, fuzzy
-#| msgid "challenge Mal-Ravanal to a duel."
 msgid "challenge Mal-Ravanal to a duel. <i>(regular)</i>"
-msgstr "вызовем Мал-Раванала на дуэль."
+msgstr "вызову Мал-Раванала на дуэль. <i>(обычная сложность)</i>"
 
 #. [option]
 #. both Gweddry and Owaec are dead, so this goes from "challenging" to "very hard"
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2218
 msgid "defeat Mal-Ravanal in pitched battle. <i>(very hard)</i>"
-msgstr ""
+msgstr "одолею Мал-Раванала в решающем сражении. <i>(очень сложно)</i>"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:2222
 msgid "This is an unwise decision, but I will aid our armies as best I can."
-msgstr ""
+msgstr "Это немудрое решение, но я помогу нашим войскам, чем смогу."
 
 #. [scenario]: id=17a_The_Duel
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:4
@@ -9654,10 +9644,8 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:130
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:623
-#, fuzzy
-#| msgid "Mal-Ravanal"
 msgid "Defeat Mal-Ravanal"
-msgstr "Мал-Раванал"
+msgstr "Победите Мал-Раванала"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:169
@@ -9680,12 +9668,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:191
-#, fuzzy
-#| msgid ""
-#| "The rules of the duel are these:\n"
-#| "You may recruit or recall up to 5 units.\n"
-#| "At the end of your first turn, your keep will disappear, and you must "
-#| "battle with whatever troops you have at that time."
 msgid ""
 "The rules of the duel are these:\n"
 "You may recruit or recall up to 6 units.\n"
@@ -9693,9 +9675,9 @@ msgid ""
 "with whatever troops you have at that time."
 msgstr ""
 "Правила дуэли таковы:\n"
-"Вы можете завербовать или призвать до 5 бойцов.\n"
-"В конце вашего первого хода, ваши укрытия будут убраны и вы должны будете "
-"сражаться только теми бойцами, которые у вас есть на данный момент."
+"Вы можете завербовать или призвать до 6 бойцов.\n"
+"В конце вашего первого хода ваши укрытия будут убраны, и вы должны будете "
+"сражаться только теми бойцами, которые у вас будут на данный момент."
 
 #. [message]: speaker=$found_unit.id
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:294
@@ -9910,10 +9892,8 @@ msgstr "Мал-Хаданак"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:927
-#, fuzzy
-#| msgid "You dare to attack me? Now you will pay!"
 msgid "You dare to attack me?"
-msgstr "Ты посмел атаковать меня? Теперь ты заплатишь!"
+msgstr "Ты посмел атаковать меня?"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:930
@@ -9962,10 +9942,8 @@ msgstr "Мал-Драканал"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:947
-#, fuzzy
-#| msgid "My master is merely toying with you!"
 msgid "I am merely toying with you!"
-msgstr "Мой повелитель лишь играет с вами!"
+msgstr "Я всего лишь играю с вами!"
 
 #. [message]: speaker=$found_unit.id
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:992
@@ -10026,10 +10004,8 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:1385
-#, fuzzy
-#| msgid "Their spell is broken! There he is!"
 msgid "Their spell is broken!"
-msgstr "Чары разрушены! Вот он!"
+msgstr "Чары разрушены!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:1670
