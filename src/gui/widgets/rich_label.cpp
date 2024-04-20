@@ -226,21 +226,28 @@ void rich_label::set_label(const t_string& text)
 				(*curr_item)["actions"] = actions.str();
 				actions.str("");
 
-				y_ = h_;
-				h_ += get_image_size(*curr_item).y + 7;
-
 				//FIXME image could be in the middle of a text block
 
 				is_image = true;
+				if (break_line && !floating) {
+					new_text_block = true;
+				}
 
 				PLAIN_LOG << "(img) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 			} else {
-				// TODO is h_ getting correctly added here?
-				if (curr_item == nullptr || new_text_block || is_image) {
+				if (curr_item == nullptr || new_text_block) {
 					curr_item = &(text_dom_.add_child("text"));
 					default_text_config(curr_item);
 					new_text_block = false;
+				}
+				
+				if (is_image && !floating) {
+					prev_txt_height_ += img_size.y + 5;
+					img_size = point(0,0);
+					
+					curr_item = &(text_dom_.add_child("text"));
+					default_text_config(curr_item);
 				}
 
 				// Text type tags
@@ -461,20 +468,27 @@ void rich_label::set_label(const t_string& text)
 			}
 
 		} else if (!line.empty()) {
-			// TODO is h_ getting correctly added here?
-			// reset image positioning
-			if (curr_item == nullptr || new_text_block || is_image) {
+			if (curr_item == nullptr || new_text_block) {
 				curr_item = &(text_dom_.add_child("text"));
 				default_text_config(curr_item);
 				new_text_block = false;
 			}
+			
+			if (is_image && !floating) {
+				prev_txt_height_ += img_size.y + 5;
+				img_size = point(0,0);
+				
+				curr_item = &(text_dom_.add_child("text"));
+				default_text_config(curr_item);
+			}
+			
 			PLAIN_LOG << "(text) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
 			int tmp_h = get_text_size(*curr_item, w_ - img_size.x).y;
 
 			(*curr_item)["text"] = (*curr_item)["text"].str() + line;
 
-			if ( (img_size.y > 0) && (get_text_size(*curr_item, w_ - img_size.x).y > img_size.y) ) {
+			if ( floating && (img_size.y > 0) && (get_text_size(*curr_item, w_ - img_size.x).y > img_size.y) ) {
 				PLAIN_LOG << "wrap start";
 
 				size_t len = get_split_location(img_size.y);
@@ -516,6 +530,11 @@ void rich_label::set_label(const t_string& text)
 
 		// reset all variables to zero, otherwise they grow infinitely
 		if (last_entry) {
+			if (is_image) {
+				y_ = h_;
+				h_ += get_image_size(*curr_item).y + 5;
+			}
+		
 			config& break_cfg = text_dom_.add_child("text");
 			default_text_config(&break_cfg);
 			break_cfg["text"] = " ";
@@ -525,7 +544,7 @@ void rich_label::set_label(const t_string& text)
 	} // for loop ends
 
 	// padding, avoids text from getting cut off at the bottom
-	h_ += 20;
+//	h_ += 20;
 
 } // function ends
 
