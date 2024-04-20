@@ -302,10 +302,23 @@ void rich_label::set_label(const t_string& text)
 					}
 
 					is_image = false;
+				} else if (cfg.optional_child("underline")||cfg.optional_child("u")) {
+
+					if (cfg.optional_child("underline")) {
+						add_text_with_attribute((*curr_item), cfg.mandatory_child("underline")["text"], "underline");
+					} else if (cfg.optional_child("u")) {
+						add_text_with_attribute((*curr_item), cfg.mandatory_child("u")["text"], "underline");
+					}
+
+					is_image = false;
 
 				} else if (cfg.optional_child("header")||cfg.optional_child("h")) {
 					// Header starts in a new line/paragraph
-					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + item_height)])";
+					if (is_image) {
+						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height)])";
+					} else {
+						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + text_height)])";
+					}
 					prev_txt_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
 					txt_height_ = 0;
 
