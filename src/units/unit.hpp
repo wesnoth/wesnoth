@@ -1024,6 +1024,15 @@ public:
 	int defense_modifier(const t_translation::terrain_code& terrain) const;
 
 	/**
+	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.
+	 *
+	 * @param resistance_list A list of resistance abilities that the unit has.
+	 * @param damage_name The name of the damage type, for example "blade".
+	 * @return The resistance value for a unit with the provided resistance abilities to the provided damage type.
+	 */
+	int resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const;
+
+	/**
 	 * The unit's resistance against a given damage type
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
@@ -1052,17 +1061,7 @@ public:
 	}
 
 private:
-	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
-
-	/**
-	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.
-	 *
-	 * @param resistance_abilities A list of resistance abilities that the unit has.
-	 * @param damage_name The name of the damage type, for example "blade".
-	 * @param attacker True if the unit is attacking, false if defending.
-	 * @return The resistance value for a unit with the provided resistance abilities to the provided damage type.
-	 */
-	int resistance_ability(unit_ability_list resistance_abilities, const std::string& damage_name, bool attacker) const;
+	bool resistance_filter_matches(const config& cfg, const std::string& damage_name, int res) const;
 
 	/**
 	 * @}
