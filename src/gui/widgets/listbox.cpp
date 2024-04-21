@@ -641,9 +641,10 @@ const listbox::order_pair listbox::get_active_sorting_option()
 {
 	for(unsigned int column = 0; column < orders_.size(); ++column) {
 		selectable_item* w = orders_[column].first;
-		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		if(!w) continue;
 
-		if(w && sort != sort_order::type::none) {
+		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		if(sort != sort_order::type::none) {
 			return std::pair(column, sort);
 		}
 	}
