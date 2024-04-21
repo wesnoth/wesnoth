@@ -179,11 +179,11 @@ void rich_label::set_label(const t_string& text)
 					}
 				}
 
-				if (floating) {
-					(*curr_item)["y"] = "(img_y)";
-				} else {
+//				if (floating) {
+//					(*curr_item)["y"] = "(img_y)";
+//				} else {
 					(*curr_item)["y"] = "(pos_y)";
-				}
+//				}
 				(*curr_item)["h"] = "(image_height)";
 				(*curr_item)["w"] = "(image_width)";
 
@@ -207,13 +207,19 @@ void rich_label::set_label(const t_string& text)
 					} else if (align == "right") {
 						x_ = 0;
 						actions << "set_var('pos_x', 0)";
+						actions << ",";
+						actions << "set_var('ww', image_width)";
 					}
 					actions << "," <<  "set_var('img_y', img_y + image_height + 5)";
 				} else {
 					if (align == "left" && !break_line) {
 						x_ += img_size.x + 5;
-						actions << "set_var('pos_x', pos_x + image_width + 5)";
+						actions << "set_var('pos_x', pos_x + image_width + 5)";						
 					} else {
+						if (align == "right" && !break_line) {
+							actions << "set_var('ww', image_width)";
+							actions << ",";
+						}
 						x_ = 0;
 						actions << "set_var('pos_x', 0)";
 					}
@@ -281,7 +287,7 @@ void rich_label::set_label(const t_string& text)
 
 //					is_image = false;
 
-					PLAIN_LOG << "(ref) x :" << x_ << "y :" << y_ << "h :" << h_ << " pth : " << prev_txt_height_;
+					PLAIN_LOG << "(ref) x :" << x_ << " y :" << y_ << " h :" << h_ << " pth : " << prev_txt_height_;
 
 				} else if (cfg.optional_child("bold")||cfg.optional_child("b")) {
 
@@ -497,6 +503,8 @@ void rich_label::set_label(const t_string& text)
 			
 			PLAIN_LOG << "(text) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 
+			(*curr_item)["font_size"] = font::SIZE_NORMAL;
+			
 			int tmp_h = get_text_size(*curr_item, w_ - img_size.x).y;
 
 			(*curr_item)["text"] = (*curr_item)["text"].str() + line;
@@ -522,7 +530,11 @@ void rich_label::set_label(const t_string& text)
 
 			} else if ((img_size.y > 0) && (get_text_size(*curr_item, w_ - img_size.x).y < img_size.y)) {
 				PLAIN_LOG << "no wrap";
-				(*curr_item)["actions"] = "([set_var('pos_y', pos_y + prev_height)])";
+				if (is_image) {
+					(*curr_item)["actions"] = "([set_var('pos_y', pos_y + image_height)])";
+				} else {
+					(*curr_item)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
+				}
 			}
 
 			// update text size and widget height
@@ -568,7 +580,9 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	(*txt_ptr)["y"] = "(pos_y)";
 	(*txt_ptr)["w"] = "(text_width)";
 	(*txt_ptr)["h"] = "(text_height)";
-	(*txt_ptr)["maximum_width"] = "(width - tw - pos_x)";
+	// tw -> table width, used for wrapping text inside table cols
+	// ww -> wrap width, used for wrapping around floating image
+	(*txt_ptr)["maximum_width"] = "(width - tw - pos_x - ww)";
 	(*txt_ptr)["actions"] = "([set_var('pos_y', pos_y+text_height)])";
 }
 
@@ -579,6 +593,8 @@ void rich_label::update_canvas()
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("img_x", wfl::variant(0));
 		tmp.set_variable("img_y", wfl::variant(0));
+		tmp.set_variable("tw", wfl::variant(0));
+		tmp.set_variable("ww", wfl::variant(0));
 		// Disable ellipsization so that text wrapping can work
 		tmp.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 		tmp.set_cfg(text_dom_, true);
@@ -640,8 +656,8 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	PLAIN_LOG << "(mouse)" << mouse.x << "," << mouse.y;
 	PLAIN_LOG << "link count :" << links_.size();
 	for (const auto& entry : links_) {
-		PLAIN_LOG << entry.first.x << "," << entry.first.y;
-		PLAIN_LOG << entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h;
+		PLAIN_LOG << "link [" << entry.first.x << "," << entry.first.y << ","
+		<< entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h  << "]";
 
 		if (entry.first.contains(mouse)) {
 			PLAIN_LOG << "Clicked link! dst = " << entry.second;
