@@ -22,7 +22,7 @@
 #error SDL is too old!
 #endif
 
-int main(int, char** argv)
+int main(int, char**)
 {
     SDL_Init(0);
     SDL_Quit();
