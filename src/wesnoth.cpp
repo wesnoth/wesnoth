@@ -690,7 +690,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
-		gui2::dialogs::migrate_version_selection::execute();
+		gui2::dialogs::migrate_version_selection::execute(true);
 	}
 
 	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {

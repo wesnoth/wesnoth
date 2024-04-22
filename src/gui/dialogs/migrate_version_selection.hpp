@@ -26,8 +26,8 @@ namespace gui2::dialogs
 class migrate_version_selection : public modal_dialog
 {
 public:
-	migrate_version_selection();
-	static void execute();
+	migrate_version_selection(bool first_time);
+	static void execute(bool first_time);
 
 private:
 	virtual void pre_show(window& window) override;
@@ -35,5 +35,6 @@ private:
 	virtual const std::string& window_id() const override;
 
 	std::vector<std::string> versions_;
+	bool first_time_;
 };
 } // namespace gui2::dialogs

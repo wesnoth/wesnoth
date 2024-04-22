@@ -17,6 +17,7 @@
 		02A44BEAA567595C902031CF /* edit_pbl_translation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C679447D91FD3623CC852FF8 /* edit_pbl_translation.hpp */; };
 		04C748F7835C62498D27442D /* edit_pbl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FA542D78393E8FF067775DA /* edit_pbl.cpp */; };
 		0554467DB5FE99D85ABCDCA0 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
+		06C64FAB863DA4D5263266D8 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 11A6446FA1F45EC6159F43D2 /* migrate_version_selection.hpp */; };
 		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D4594633BF3F8A06D6AE752F /* prompt.hpp */; };
@@ -1569,6 +1570,7 @@
 		09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = carryover_show_gold.cpp; sourceTree = "<group>"; };
 		0B0F48CE9CF65D9813BE6CDC /* multiline_text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = multiline_text.cpp; path = multiline_text.cpp; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		11A6446FA1F45EC6159F43D2 /* migrate_version_selection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = migrate_version_selection.hpp; path = migrate_version_selection.hpp; sourceTree = "<group>"; };
 		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
 		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -3851,6 +3853,7 @@
 				D4594633BF3F8A06D6AE752F /* prompt.hpp */,
 				63B64397BB28593D879A67BE /* community_dialog.cpp */,
 				CD5045B9A988F034F8D17C85 /* community_dialog.hpp */,
+				11A6446FA1F45EC6159F43D2 /* migrate_version_selection.hpp */,
 			);
 			path = dialogs;
 			sourceTree = "<group>";
@@ -5154,6 +5157,7 @@
 				7FDF4E8D9C94E7DA8F41F7BB /* tod_new_schedule.hpp in Headers */,
 				F96A40219A964A8022910D73 /* back_edge_detector.hpp in Headers */,
 				00324A11ACB0DB64FBD97896 /* community_dialog.hpp in Headers */,
+				06C64FAB863DA4D5263266D8 /* migrate_version_selection.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
