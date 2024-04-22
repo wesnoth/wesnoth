@@ -193,11 +193,19 @@ struct lexical_caster<
 	, void
 >
 {
-	bool operator()(std::string_view str, utils::optional<bool>) const
+	bool operator()(std::string_view str, utils::optional<bool> fallback) const
 	{
 		DEBUG_THROW("specialized - To bool - From string");
-		// FIXME: this matches the previous implementation, but it seems wrong as it ignores fallback
-		return str == "1";
+		utils::trim_for_from_chars(str);
+		if(str == "1") {
+			return true;
+		} else if(str == "0") {
+			return false;
+		} else if (fallback) {
+			return *fallback;
+		} else {
+			throw bad_lexical_cast();
+		}
 	}
 };
 
