@@ -321,7 +321,7 @@ void story_viewer::display_part()
 	// Hardcoded max width, should be made customizable
 	// preferably as an key to [part]
 	unsigned win_width = get_window()->get_size().x;
-	unsigned best_text_width = (win_width < 1500) ? win_width/2.0 : 1000;
+	unsigned best_text_width = (win_width < 1500) ? win_width/1.5 : 800;
 	text_label.set_text_max_width(best_text_width);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
