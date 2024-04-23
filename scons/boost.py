@@ -265,9 +265,11 @@ def CheckBoostCharconv(context):
 
     needs_boost_charconv = not context.TryLink(test_program_std, ".cpp")
     if not needs_boost_charconv:
+        context.Result("yes")
         return True
     else:
-        if context.TryCompile(test_quadmath, ".cpp"):
+        # This needs to be compiled as C code witherwise the Q literal won't work.
+        if context.TryCompile(test_quadmath, ".c"):
             context.env.PrependUnique(LIBS = ["quadmath"])
 
         return CheckBoost(context, "charconv")
