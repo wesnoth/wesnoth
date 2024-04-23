@@ -237,7 +237,6 @@ def CheckBoostLocaleBackends(context, backends):
 
 
 def CheckBoostCharconv(context):
-    context.Message("Checking charconv support... ")
 
     test_program_std = """
         #include <charconv>
@@ -252,7 +251,7 @@ def CheckBoostCharconv(context):
         }
         \n"""
 
-    test_quadmath = """
+    test_program_quadmath = """
         #include <quadmath.h>
 
         int main()
@@ -263,15 +262,17 @@ def CheckBoostCharconv(context):
            return 0;
         }"""
 
-    needs_boost_charconv = not context.TryLink(test_program_std, ".cpp")
-    if not needs_boost_charconv:
-        context.Result("yes")
-        return True
-    else:
-        # This needs to be compiled as C code witherwise the Q literal won't work.
-        if context.TryCompile(test_quadmath, ".c"):
+    has_boost_charconv = CheckBoost(context, "charconv")
+    if has_boost_charconv:
+        if context.TryCompile(test_program_quadmath, ".c"):
             context.env.PrependUnique(LIBS = ["quadmath"])
+        return True
 
-        return CheckBoost(context, "charconv")
+    else:
+        context.Message("Checking std::charconv ... ")
+
+        has_std_charconv =  context.TryLink(test_program_std, ".cpp")
+        context.Result(has_std_charconv)
+        return has_std_charconv
 
 config_checks = { "CheckBoost" : CheckBoost, "CheckBoostCharconv" : CheckBoostCharconv, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2, "CheckBoostLocaleBackends" : CheckBoostLocaleBackends }
