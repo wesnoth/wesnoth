@@ -237,7 +237,7 @@ void game_version::browse_directory_callback(const std::string& path)
 
 void game_version::run_migrator()
 {
-	migrate_version_selection::execute(false);
+	migrate_version_selection::execute();
 }
 
 void game_version::copy_to_clipboard_callback(const std::string& path)

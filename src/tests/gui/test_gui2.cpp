@@ -1090,7 +1090,7 @@ struct dialog_tester<migrate_version_selection>
 {
 	migrate_version_selection* create()
 	{
-		return new migrate_version_selection(true);
+		return new migrate_version_selection();
 	}
 };
 

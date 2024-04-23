@@ -39,17 +39,16 @@ namespace gui2::dialogs
 {
 REGISTER_DIALOG(migrate_version_selection)
 
-void migrate_version_selection::execute(bool first_time)
+void migrate_version_selection::execute()
 {
-	migrate_version_selection mig = migrate_version_selection(first_time);
+	migrate_version_selection mig = migrate_version_selection();
 	if(mig.versions_.size() > 0) {
 		mig.show();
 	}
 }
 
-migrate_version_selection::migrate_version_selection(bool first_time)
+migrate_version_selection::migrate_version_selection()
 	: modal_dialog(window_id())
-	, first_time_(first_time)
 {
 	version_info current_version = game_config::wesnoth_version;
 	std::string current_version_str = filesystem::get_version_path_suffix();
@@ -116,7 +115,7 @@ void migrate_version_selection::post_show(window& window)
 		if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
 			// if this is the first time, just copy the file over
 			// else need to merge the preferences file
-			if(first_time_) {
+			if(!filesystem::file_exists(filesystem::get_prefs_file())) {
 				filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
 			} else {
 				config current_cfg;
@@ -144,7 +143,7 @@ void migrate_version_selection::post_show(window& window)
 		}
 
 		// don't touch the credentials file on migrator re-run
-		if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && first_time_) {
+		if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && !filesystem::file_exists(filesystem::get_credentials_file())) {
 			filesystem::copy_file(migrate_credentials_file, filesystem::get_credentials_file());
 		}
 
