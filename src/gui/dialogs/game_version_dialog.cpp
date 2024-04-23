@@ -87,6 +87,8 @@ game_version::game_version()
 
 void game_version::pre_show(window& window)
 {
+	window.set_click_dismiss(false);
+	
 	utils::string_map i18n_syms;
 
 	//
@@ -94,14 +96,14 @@ void game_version::pre_show(window& window)
 	//
 
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
-	i18n_syms["version"] = game_config::revision + " " + game_config::build_arch();
-	version_label.set_label(VGETTEXT("Version $version", i18n_syms));
-
-	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
+	i18n_syms["version"] = game_config::revision;
 	i18n_syms["os"] = desktop::os_version();
-	os_label.set_label(VGETTEXT("Running on $os", i18n_syms));
+	i18n_syms["arch"] = game_config::build_arch();
+	
+	version_label.set_label(VGETTEXT("<b>Version:</b> $version", i18n_syms) + "\n" + VGETTEXT("<b>Running on:</b> <i>$os</i>", i18n_syms) + "\n" + VGETTEXT("<b>Architechture:</b> $arch", i18n_syms));
 
-	button& copy_all = find_widget<button>(&window, "copy_all", false);
+	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
+	button& copy_all = find_widget<button>(pager.get_layer_grid(1), "copy_all", false);
 	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
 
 	//
@@ -139,7 +141,7 @@ void game_version::pre_show(window& window)
 		}
 	}
 
-	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
+	button& stderr_button = find_widget<button>(pager.get_layer_grid(1), "open_stderr", false);
 	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty() && filesystem::file_exists(log_path_));
 
@@ -201,8 +203,6 @@ void game_version::pre_show(window& window)
 	// Set-up page stack and auxiliary controls last.
 	//
 
-	stacked_widget& pager
-			= find_widget<stacked_widget>(&window, "tabs_container", false);
 	pager.select_layer(0);
 
 	listbox& tab_bar

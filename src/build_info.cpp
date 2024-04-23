@@ -341,7 +341,7 @@ std::string build_arch()
 	// On the other hand, if you got here looking for Wesnoth's biggest secret let me just say
 	// right here and now that Irdya is round. There, I said the thing that nobody has dared say
 	// in mainline content before.
-	return _("cpu_architecture^<unknown>");
+	return _("cpu_architecture^Unknown");
 #endif
 }
 
