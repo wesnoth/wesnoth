@@ -102,7 +102,7 @@ void migrate_version_selection::post_show(window& window)
 			std::vector<std::string> old_addons;
 			std::vector<std::string> current_addons;
 			std::vector<std::string> migrate_addons;
-			
+
 			filesystem::get_files_in_dir(migrate_addons_dir, nullptr, &old_addons);
 			filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &current_addons);
 
