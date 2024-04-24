@@ -20,7 +20,6 @@
 #include "build_info.hpp"
 
 #include <map>
-
 #include <array>
 
 namespace gui2
@@ -107,6 +106,21 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 */
 	void browse_directory_callback(const std::string& path);
+	
+	/**
+	 * Show credits dialogs
+	 */
+	void show_credits_dialog();
+	/**
+	 * Show license
+	 */
+	void show_license();
+	
+	/**
+	 * Open browser to report issue
+	 */
+	void report_issue();
+	
 };
 } // namespace dialogs
 } // namespace gui2
