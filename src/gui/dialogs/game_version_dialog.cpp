@@ -101,20 +101,20 @@ void game_version::pre_show(window& window)
 	i18n_syms["version"] = game_config::revision;
 	i18n_syms["os"] = desktop::os_version();
 	i18n_syms["arch"] = game_config::build_arch();
-	
+
 	version_label.set_label(VGETTEXT("<b>Version:</b> $version\n<b>Running on:</b> <i>$os</i>\n<b>Architechture:</b> $arch", i18n_syms));
 
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
 	button& copy_all = find_widget<button>(pager.get_layer_grid(1), "copy_all", false);
 	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
-	
+
 	// Bottom row buttons
 	button& credits_button = find_widget<button>(&window, "credits", false);
 	connect_signal_mouse_left_click(credits_button, std::bind(&game_version::show_credits_dialog, this));
-	
+
 	button& license_button = find_widget<button>(&window, "license", false);
 	connect_signal_mouse_left_click(license_button, std::bind(&game_version::show_license, this));
-	
+
 	button& issue_button = find_widget<button>(&window, "issue", false);
 	connect_signal_mouse_left_click(issue_button, std::bind(&game_version::report_issue, this));
 
@@ -272,7 +272,7 @@ void game_version::report_issue() {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 		return;
 	} else {
-		desktop::open_object("https://github.com/wesnoth/wesnoth/issues");
+		desktop::open_object("https://bugs.wesnoth.org");
 	}
 }
 

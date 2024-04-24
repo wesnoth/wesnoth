@@ -106,7 +106,7 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 */
 	void browse_directory_callback(const std::string& path);
-	
+
 	/**
 	 * Show credits dialogs
 	 */
@@ -115,12 +115,12 @@ private:
 	 * Show license
 	 */
 	void show_license();
-	
+
 	/**
 	 * Open browser to report issue
 	 */
 	void report_issue();
-	
+
 };
 } // namespace dialogs
 } // namespace gui2
