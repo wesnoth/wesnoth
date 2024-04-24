@@ -98,11 +98,12 @@ void game_version::pre_show(window& window)
 	//
 
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
-	i18n_syms["version"] = game_config::revision;
-	i18n_syms["os"] = desktop::os_version();
-	i18n_syms["arch"] = game_config::build_arch();
-
-	version_label.set_label(VGETTEXT("<b>Version:</b> $version\n<b>Running on:</b> <i>$os</i>\n<b>Architechture:</b> $arch", i18n_syms));
+	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
+	styled_widget& arch_label = find_widget<styled_widget>(&window, "arch", false);
+	
+	version_label.set_label(game_config::revision);
+	os_label.set_label("<i>"+desktop::os_version()+"</i>");
+	arch_label.set_label(game_config::build_arch());
 
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
 	button& copy_all = find_widget<button>(pager.get_layer_grid(1), "copy_all", false);
