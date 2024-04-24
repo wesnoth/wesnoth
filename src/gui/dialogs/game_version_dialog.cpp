@@ -100,7 +100,7 @@ void game_version::pre_show(window& window)
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
 	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
 	styled_widget& arch_label = find_widget<styled_widget>(&window, "arch", false);
-	
+
 	version_label.set_label(game_config::revision);
 	os_label.set_label("<i>"+desktop::os_version()+"</i>");
 	arch_label.set_label(game_config::build_arch());
