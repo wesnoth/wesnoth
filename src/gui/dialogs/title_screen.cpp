@@ -346,11 +346,6 @@ void title_screen::init_callbacks()
 		std::bind(&title_screen::show_community, this));
 
 	//
-	// Credits
-	//
-	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
-
-	//
 	// Quit
 	//
 	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });

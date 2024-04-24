@@ -30,6 +30,10 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/end_credits.hpp"
+#include "gettext.hpp"
+#include "help/help.hpp"
 
 #include <functional>
 
@@ -87,8 +91,6 @@ game_version::game_version()
 
 void game_version::pre_show(window& window)
 {
-	window.set_click_dismiss(false);
-	
 	utils::string_map i18n_syms;
 
 	//
@@ -100,11 +102,21 @@ void game_version::pre_show(window& window)
 	i18n_syms["os"] = desktop::os_version();
 	i18n_syms["arch"] = game_config::build_arch();
 	
-	version_label.set_label(VGETTEXT("<b>Version:</b> $version", i18n_syms) + "\n" + VGETTEXT("<b>Running on:</b> <i>$os</i>", i18n_syms) + "\n" + VGETTEXT("<b>Architechture:</b> $arch", i18n_syms));
+	version_label.set_label(VGETTEXT("<b>Version:</b> $version\n<b>Running on:</b> <i>$os</i>\n<b>Architechture:</b> $arch", i18n_syms));
 
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
 	button& copy_all = find_widget<button>(pager.get_layer_grid(1), "copy_all", false);
 	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
+	
+	// Bottom row buttons
+	button& credits_button = find_widget<button>(&window, "credits", false);
+	connect_signal_mouse_left_click(credits_button, std::bind(&game_version::show_credits_dialog, this));
+	
+	button& license_button = find_widget<button>(&window, "license", false);
+	connect_signal_mouse_left_click(license_button, std::bind(&game_version::show_license, this));
+	
+	button& issue_button = find_widget<button>(&window, "issue", false);
+	connect_signal_mouse_left_click(issue_button, std::bind(&game_version::report_issue, this));
 
 	//
 	// Game paths tab.
@@ -245,6 +257,23 @@ void game_version::report_copy_callback()
 void game_version::generate_plain_text_report()
 {
 	report_ = game_config::full_build_report();
+}
+
+void game_version::show_credits_dialog() {
+	gui2::dialogs::end_credits::display();
+}
+
+void game_version::show_license() {
+	help::show_help("license");
+}
+
+void game_version::report_issue() {
+	if (!desktop::open_object_is_supported()) {
+		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
+		return;
+	} else {
+		desktop::open_object("https://github.com/wesnoth/wesnoth/issues");
+	}
 }
 
 } // namespace dialogs
