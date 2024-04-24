@@ -106,7 +106,7 @@ void game_version::pre_show(window& window)
 	arch_label.set_label(game_config::build_arch());
 
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
-	button& copy_all = find_widget<button>(pager.get_layer_grid(1), "copy_all", false);
+	button& copy_all = find_widget<button>(pager.get_layer_grid(0), "copy_all", false);
 	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
 
 	// Bottom row buttons
