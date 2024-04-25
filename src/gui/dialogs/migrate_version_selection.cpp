@@ -113,20 +113,22 @@ void migrate_version_selection::post_show(window& window)
 		}
 
 		if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
-			// if this is the first time, just copy the file over
+			// if the file doesn't exist, just copy the file over
 			// else need to merge the preferences file
 			if(!filesystem::file_exists(filesystem::get_prefs_file())) {
 				filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
 			} else {
 				config current_cfg;
-				read(current_cfg, filesystem::get_prefs_file());
+				filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+				read(current_cfg, *current_stream);
 				config old_cfg;
-				read(old_cfg, migrate_prefs_file);
+				filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
+				read(old_cfg, *old_stream);
 
 				// when both files have the same attribute, use the one from whichever was most recently modified
 				bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
 				for(const config::attribute& val : old_cfg.attribute_range()) {
-					if((current_cfg.has_attribute(val.first) && !current_prefs_are_older) || !current_cfg.has_attribute(val.first)) {
+					if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
 						preferences::set(val.first, val.second);
 					}
 				}
@@ -139,10 +141,12 @@ void migrate_version_selection::post_show(window& window)
 						preferences::set_child(val.key, val.cfg);
 					}
 				}
+
+				preferences::write_preferences();
 			}
 		}
 
-		// don't touch the credentials file on migrator re-run
+		// don't touch the credentials file on migrator re-run if it already exists
 		if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && !filesystem::file_exists(filesystem::get_credentials_file())) {
 			filesystem::copy_file(migrate_credentials_file, filesystem::get_credentials_file());
 		}
