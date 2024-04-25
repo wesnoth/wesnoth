@@ -217,6 +217,9 @@ private:
 	/** Width and height of the canvas */
 	unsigned w_, h_, x_, y_;
 
+	/** Padding */
+	unsigned padding_;
+
 	/** Height of current text block */
 	unsigned txt_height_;
 
