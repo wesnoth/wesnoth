@@ -155,9 +155,12 @@ option.
 .B --log-precise
 shows the timestamps in log output with more precision.
 .TP
-.B --log-strict
-sets the strict level of the logger. Any messages sent to log domains
-of this level or more severe will cause the unit test to fail regardless
+.BI --log-strict \ level
+sets the strict
+.I level
+of the logger. Any messages sent to log domains of this
+.I level
+or more severe will cause the unit test to fail regardless
 of the victory result. Only relevant when used with
 .BR -u .
 .TP
