@@ -269,6 +269,7 @@ void rich_label::set_label(const t_string& text)
 //					PLAIN_LOG << "(ref, start) pth :" << prev_txt_height_;
 
 					point t_start = get_xy_from_offset((*curr_item)["text"].str().size());
+					PLAIN_LOG << "(t_s) "<< t_start.x << ", " << t_start.y;
 
 					std::string link_text = cfg.mandatory_child("ref")["text"].str();
 					link_text = link_text.empty() ? cfg.mandatory_child("ref")["dst"] : link_text;
@@ -277,15 +278,16 @@ void rich_label::set_label(const t_string& text)
 
 					setup_text_renderer(*curr_item, w_ - img_size.x);
 					point t_end = get_xy_from_offset((*curr_item)["text"].str().size());
+					PLAIN_LOG << "(t_e) "<< t_end.x << ", " << t_end.y;
+
 					// TODO Needs to be adjusted if ref's font size is changed
-//					point link_start(x_ + t_start.x, prev_txt_height_ + t_start.y);
-					PLAIN_LOG << "t_start :" << t_start.x << ", " << t_start.y;
 					point link_start(x_ + t_start.x, prev_txt_height_ + t_start.y);
 					t_end.y += font::get_max_height(font::SIZE_NORMAL);
+					PLAIN_LOG << "(t_e) "<< t_end.x << ", " << t_end.y;
 
 					// Add link
 					// TODO only works if text is on the right side of the image
-					if (t_end.x > static_cast<int>(w_)) {
+					if (t_end.x < static_cast<int>(w_)) {
 						point link_size = t_end - t_start;
 						rect link_rect = {
 								link_start.x,
@@ -294,6 +296,8 @@ void rich_label::set_label(const t_string& text)
 								link_size.y,
 						};
 						links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
+
+						PLAIN_LOG << "(link) [" << link_start.x << ", " << link_start.y << ", " << link_size.x << ", " << link_size.y << "]";
 					} else {
 						PLAIN_LOG << cfg.mandatory_child("ref")["dst"];
 						//link straddles two lines, break into two rects
@@ -655,7 +659,7 @@ void rich_label::set_label(const t_string& text)
 
 	// padding, avoids text from getting cut off at the bottom
 //	h_ += 20;
-	PLAIN_LOG << text_dom_.debug();
+//	PLAIN_LOG << text_dom_.debug();
 
 } // function ends
 
