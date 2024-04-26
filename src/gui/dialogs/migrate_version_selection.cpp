@@ -133,14 +133,7 @@ void migrate_version_selection::post_show(window& window)
 					}
 				}
 
-				for(const auto& val : old_cfg.all_children_range()) {
-					// only move tags that exist in the older version's file but not in the current version's file
-					// can't blindly overwrite since that could give undesirable results
-					// ie: for achievements and campaign completions
-					if(!current_cfg.has_child(val.key)) {
-						preferences::set_child(val.key, val.cfg);
-					}
-				}
+				// don't touch child tags
 
 				preferences::write_preferences();
 			}
