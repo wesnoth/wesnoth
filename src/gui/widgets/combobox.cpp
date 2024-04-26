@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	Copyright (C) 2024
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -367,7 +367,7 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 		}
 	} else {
 		/*
-		 * Copied from the base class see how we can do inheritance with the new
+		 * Copied from the base class to see how we can do inheritance with the new
 		 * system...
 		 */
 		get_window()->keyboard_capture(this);

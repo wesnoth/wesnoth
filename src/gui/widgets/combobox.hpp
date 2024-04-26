@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2008 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	Copyright (C) 2024
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -29,24 +29,30 @@ struct builder_combobox;
 // ------------ WIDGET -----------{
 
 /**
- * @ingroup GUIWidgetWML
+ * @ingroup GUIWidgetDefinitionWML
  *
  * Class for a editable combobox.
  *
- * The resolution for a text box also contains the following keys:
+ * The resolution for a combobox also contains the following keys:
  * Key          |Type                                    |Default  |Description
  * -------------|----------------------------------------|---------|-----------
- * text_x_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The x offset of the text in the text box. This is needed for the code to determine where in the text the mouse clicks, so it can set the cursor properly.
- * text_y_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The y offset of the text in the text box.
+ * text_x_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The x offset of the text in the combo box. This is needed for the code to determine where in the text the mouse clicks, so it can set the cursor properly.
+ * text_y_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The y offset of the text in the combo box.
+ *
+ * @ingroup GUIWidgetInstanceWML
+ *
  * The following states exist:
- * * state_enabled - the text box is enabled.
- * * state_disabled - the text box is disabled.
- * * state_focussed - the text box has the focus of the keyboard.
+ * * state_enabled - the combobox is enabled.
+ * * state_disabled - the combobox is disabled.
+ * * state_focused - the combobox has the focus of the keyboard.
+ * * state_hovered - mouse is hovering above the combobox
  * The following variables exist:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the text box.
- * history      | @ref guivartype_string "string"    |""       |The name of the history for the text box. A history saves the data entered in a text box between the games. With the up and down arrow it can be accessed. To create a new history item just add a new unique name for this field and the engine will handle the rest.
+ * Key              |Type                                |Default  |Description
+ * -----------------|------------------------------------|---------|-----------
+ * label            | @ref guivartype_t_string "t_string"|""       |The initial text of the combobox.
+ * max_input_length | @ref guivartype_f_int "int"        |0        |Maximum length of text in characters that can be entered into the combobox
+ * hint_text        | @ref guivartype_t_string "t_string"|""       |Text that is shown in the background when there is no input
+ * hint_image       | @ref guivartype_string "string"    |""       |Image that is shown in the background when there is no input
  */
 class combobox : public text_box_base
 {
@@ -150,7 +156,7 @@ private:
 	/** Is the mouse in dragging mode, this affects selection in mouse move */
 	bool dragging_;
 
-	/** Helper text to display (such as "Search") if the text box is empty. */
+	/** Helper text to display (such as "Search") if the combo box is empty. */
 	std::string hint_text_;
 
 	/** Image (such as a magnifying glass) that accompanies the help text. */
@@ -236,8 +242,6 @@ public:
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	std::string history;
 
 	std::size_t max_input_length;
 

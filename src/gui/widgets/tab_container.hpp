@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,12 +28,14 @@ struct builder_tab_container;
 }
 
 /**
- * @ingroup GUIWidgetWML
+ * @ingroup GUIWidgetInstanceWML
  *
- * tab_container widget.
+ * The following states exist:
+ * * state_enabled - the text box is enabled.
+ * * state_disabled - the text box is disabled.
  *
- * A widget with a text_box and two button (named _prev and _next) that allows user to increase
- * or decrease the numeric value inside the text_box. Non-numeric values are considered as zero.
+ * A container widget that can show its contents separated into various pages, each of which are accessible
+ * by clicking on one of the tabs.
  *
  * Key          |Type                        |Default  |Description
  * -------------|----------------------------|---------|-----------
@@ -85,6 +87,7 @@ private:
 	builder_grid_map builders_;
 	std::vector<widget_data> list_items_;
 
+    /** Get the listbox inside which the tabs are shown */
 	listbox& get_internal_list();
 
 	void finalize_setup();
@@ -109,8 +112,6 @@ private:
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
-
-//	void place(const point& origin, const point& size);
 
 };
 
