@@ -28,32 +28,6 @@ struct builder_combobox;
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetDefinitionWML
- *
- * Class for a editable combobox.
- *
- * The resolution for a combobox also contains the following keys:
- * Key          |Type                                    |Default  |Description
- * -------------|----------------------------------------|---------|-----------
- * text_x_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The x offset of the text in the combo box. This is needed for the code to determine where in the text the mouse clicks, so it can set the cursor properly.
- * text_y_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The y offset of the text in the combo box.
- *
- * @ingroup GUIWidgetInstanceWML
- *
- * The following states exist:
- * * state_enabled - the combobox is enabled.
- * * state_disabled - the combobox is disabled.
- * * state_focused - the combobox has the focus of the keyboard.
- * * state_hovered - mouse is hovering above the combobox
- * The following variables exist:
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-----------
- * label            | @ref guivartype_t_string "t_string"|""       |The initial text of the combobox.
- * max_input_length | @ref guivartype_f_int "int"        |0        |Maximum length of text in characters that can be entered into the combobox
- * hint_text        | @ref guivartype_t_string "t_string"|""       |Text that is shown in the background when there is no input
- * hint_image       | @ref guivartype_string "string"    |""       |Image that is shown in the background when there is no input
- */
 class combobox : public text_box_base
 {
 	friend struct implementation::builder_combobox;

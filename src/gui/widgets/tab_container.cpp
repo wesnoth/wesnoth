@@ -128,6 +128,20 @@ tab_container_definition::resolution::resolution(const config& cfg)
 
 // }---------- BUILDER -----------{
 
+/**
+ * @ingroup GUIWidgetInstanceWML
+ *
+ * The following states exist:
+ * * state_enabled - the text box is enabled.
+ * * state_disabled - the text box is disabled.
+ *
+ * A container widget that can show its contents separated into various pages, each of which are accessible
+ * by clicking on one of the tabs.
+ *
+ * Key          |Type                        |Default  |Description
+ * -------------|----------------------------|---------|-----------
+ * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
+ */
 namespace implementation
 {
 
