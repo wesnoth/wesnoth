@@ -3,24 +3,25 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-10-28 14:02 UTC\n"
-"PO-Revision-Date: 2006-12-22 21:33+0100\n"
+"PO-Revision-Date: 2024-04-25 17:07+0200\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
 msgid "The South Guard"
-msgstr "Vaktpostene i sør"
+msgstr "Sørgarden"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:10
 msgid "TSG"
-msgstr ""
+msgstr "SG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:20
@@ -31,16 +32,21 @@ msgid ""
 "remaining men of the derelict South Guard to defend his country.\n"
 "\n"
 msgstr ""
+"Den unge ridderen Deoran blir sendt til den sørlige Wesnoth-provinsen "
+"Kerlath for å undersøke de hærjede byene ved grensen. Deoran blir raskt "
+"kastet inn i en ulykksalig konflikt mot plyndrende banditter, og må samle de "
+"gjenværende mennene i den nedlagte sørgarden for å forsvare landet sitt.\n"
+"\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "(Novice level, 8 scenarios.)"
-msgstr ""
+msgstr "(Nybegynnernivå, 8 scenarier.)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:25
 msgid "Beginner"
-msgstr ""
+msgstr "Nybegynner"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:25
@@ -49,9 +55,8 @@ msgstr "Silvilist"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:26
-#, fuzzy
 msgid "Easy"
-msgstr "(lett)"
+msgstr "Lett"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:26
@@ -60,9 +65,8 @@ msgstr "Rekrutt"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:27
-#, fuzzy
 msgid "Normal"
-msgstr "(middels)"
+msgstr "Normal"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:27
@@ -72,22 +76,22 @@ msgstr "Soldat"
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:32
 msgid "Campaign Design"
-msgstr ""
+msgstr "Kampanjeutforming"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:38
 msgid "Latest Campaign Revision"
-msgstr ""
+msgstr "Siste revisjon av kampanjen"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:44
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Vedlikehold av kampanjen"
 
 #. [about]
 #: data/campaigns/The_South_Guard/_main.cfg:60
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Kunstverk og grafisk design"
 
 #. [scenario]: id=01_Born_to_the_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:5
@@ -127,9 +131,8 @@ msgstr "Deoran"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/09a_Elf_Epilogue.cfg:22
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:22
-#, fuzzy
 msgid "South Guard"
-msgstr "Vaktpostene i sør"
+msgstr "Den sørlige garden"
 
 #. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:58
@@ -147,7 +150,7 @@ msgstr "Urza Mathin"
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:114
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:64
 msgid "Bandits"
-msgstr ""
+msgstr "Banditter"
 
 #. [label]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:97
@@ -192,6 +195,7 @@ msgstr "Kaptein Gerrikks død"
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:173
 msgid "Upon arrival, Deoran found the land completely overrun by bandits."
 msgstr ""
+"Da Deoran kom frem, så han at landet var fullstendig beleiret av banditter."
 
 #. [unit]: id=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:187
@@ -200,25 +204,23 @@ msgstr "Moreth"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:199
-#, fuzzy
 msgid ""
 "You will never take this village! I have watched too many of your kind "
 "ransack our homes and kill the townsfolk! I’ll defend them to the death if I "
 "must!"
 msgstr ""
-"Du får ikke valse inn her uten kamp! Jeg har sett kjeltringer som deg "
-"plyndre og herje alt for mange landsbyer allerede, jeg dør heller enn å "
-"slippe deg inn!"
+"Du får ikke valse inn her uten kamp! Jeg har sett folk av ditt slag plyndre "
+"og herje alt for mange landsbyer allerede, jeg dør heller enn å slippe deg "
+"inn!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:205
-#, fuzzy
 msgid ""
 "My kind? I am a knight of Wesnoth and a messenger appointed by the King "
 "himself! What do you mean, <i>“my kind”</i>? And where is the South Guard?"
 msgstr ""
-"Kjeltringer som meg? Jeg er en av Wesnoths riddere, utsendt av Kong Haldrik! "
-"Så hva mener du med kjeltringer?"
+"Mitt slag? Jeg er en ridder av Wesnoth og en budbringer utnevnt av kongen "
+"selv! Hva mener du med \"mitt slag\"? Og hvor er sørgarden?"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:210
@@ -228,36 +230,32 @@ msgid ""
 "their numbers were too great. Alas, Sir Gerrick and I are now the last two "
 "who remain. The South Guard is no more."
 msgstr ""
+"Jeg ber så mye om unnskyldning, sir! Banditter har plyndret landsbyene og "
+"drept bøndene - vi gjorde vårt ytterste for å motstå og fordrive dem, men de "
+"var for mange. Dessverre er sir Gerrikk og jeg nå de to siste som er igjen. "
+"Sørgarden finnes ikke lenger."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:215
-#, fuzzy
 msgid ""
 "What? I was sent here merely to question Sir Loris, but it seems that the "
 "circumstances here are more dire than I had thought. We must arm the "
 "villagers and drive off the bandits before they can do any more harm!"
 msgstr ""
-"Mitt ærend er å gjenvinne kontrollen over vaktpostene og gjenopprette lov og "
-"orden. Vi må mobilisere flere bønder og jage bandittene før de kan gjøre mer "
-"ugang!"
+"Hva? Jeg ble bare sendt hit for å avhøre sir Loris, men det ser ut til at "
+"omstendighetene her er mer alvorlige enn jeg trodde. Vi må bevæpne "
+"landsbyboerne og drive bandittene vekk før de gjør mer skade!"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:220
-#, fuzzy
 msgid ""
 "Then we must head to the river fort! Sir Gerrick is guarding the armory "
 "there!"
 msgstr ""
-"Du burde legge kursen mot elvefortet. At forsterkninger har ankommet er en "
-"nyhet Kaptein Gerrikk har ventet lenge nok på!"
+"Da burde vi sette kurs mot elvefortet. Sir Gerrikk vokter våpenlageret der!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:229
-#, fuzzy
-#| msgid ""
-#| "Whenever you see a target that looks like this, you should move your "
-#| "leader (or whatever unit the dialogue just suggested) onto the hex that "
-#| "contains it."
 msgid ""
 "Whenever you see a target that looks like this, you should move your leader "
 "(or whatever unit the dialog just suggested) onto the hex that contains it."
@@ -267,12 +265,13 @@ msgstr ""
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:235
-#, fuzzy
 msgid ""
 "Ha! This new commander is merely a boy. What kind of fool sent him here to "
 "stop us? This sniveling child will soon share the fate of that swine Loris!"
 msgstr ""
-"Pøh! Denne nye ypplingen har ingen sjanse. Han vil dele sjebne med Loris!"
+"Ha! Denne nye kommandanten er bare en gutt. Hvilken dumskalle sendte ham hit "
+"for å stoppe oss? Dette snufsende barnet vil snart dele skjebnen til det "
+"svinet Loris!"
 
 #. [unit]: type=Infantry Lieutenant, id=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:257
@@ -289,6 +288,11 @@ msgid ""
 "were slain. I have barely managed to defend this fort, but the South Guard "
 "has fallen and I do not know how much longer I can hold..."
 msgstr ""
+"Endelig forsterkninger! Ærede ridder, banditter har tatt over hele "
+"landsbygda og dreper og plyndrer uten hensyn eller nåde. Mine menn og jeg "
+"forsøkte å bekjempe dem, men vi ble dessverre drevet på flukt, og de fleste "
+"av mine menn ble drept. Jeg har så vidt klart å forsvare dette fortet, men "
+"sørgarden har falt, og jeg vet ikke hvor mye lenger jeg kan holde stand..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:274
@@ -297,6 +301,9 @@ msgid ""
 "villagers and re-man the posts. Are there any weapons left in the citadel’s "
 "armory?"
 msgstr ""
+"Fortvil ikke! Jeg er sikker på at vi kan drive bandittene på flukt hvis vi "
+"samler landsbyboerne og bemanner postene. Er det noen våpen igjen i borgens "
+"våpenlager?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:279
@@ -304,6 +311,8 @@ msgid ""
 "A small supply of spears and bows still remains. I will distribute them to "
 "the peasants if that is your wish, commander."
 msgstr ""
+"Det er fortsatt litt spyd og buer igjen. Jeg skal dele dem ut til bøndene "
+"hvis det er ditt ønske, kommandør."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:284
@@ -314,6 +323,10 @@ msgid ""
 "raise the white and red banners and lead us against them. The South Guard "
 "fights again!"
 msgstr ""
+"<i>Så han har bestemt at jeg skal ta kommandoen? Ja vel, jeg har aldri vært "
+"typen ti å takke nei til en utfordring. </i> Ja, vi bør samle de troppene vi "
+"kan ved leiren min og organisere en front mot bandittene. Jeg skal heise de "
+"hvite og røde fanene og lede oss mot dem. Sørgarden kjemper igjen!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:296
@@ -322,67 +335,65 @@ msgid ""
 "capable leader, raising the fighting spirit of less experienced troops near "
 "him and causing their attacks to deal more damage."
 msgstr ""
+"Som overordnet infanterioffiser er sir Gerrikk både en mektig kriger og en "
+"dyktig leder, og han hever kampviljen til mindre erfarne tropper i nærheten "
+"av seg og får angrepene deres til å gjøre mer skade."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:302
-#, fuzzy
 msgid ""
 "Units that have a <i>hero</i> marker are vital to your campaign. If any of "
 "them die, you will lose the scenario, so guard them carefully!"
 msgstr ""
-"Enheter med en heltemarkør spiller en viktig rolle i felttoget ditt. Du "
-"taper hvis noen av dem dør, så vokt dem med omhu!"
+"Enheter som har en <i>helt</i>-markør er avgjørende for kampanjen din. Hvis "
+"noen av dem dør, vil du tape scenariet, så pass nøye på dem!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:327
 msgid "Head back to the encampment where you started and recruit some troops!"
-msgstr "Ri tilbake til leiren og bevæpne noen rekrutter!"
+msgstr "Dra tilbake til leiren der du startet, og rekrutter noen tropper!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:380
-#, fuzzy
 msgid ""
 "While you are in your camp, you can recruit more units. Build an army to use "
 "against the bandits that Urza Mathin recruits."
 msgstr ""
-"Med lederen plassert i teltet i en leir, kan du rekrutere nye styrker. "
-"Mobiliser en liten hær for å ta opp kampen mot Urza Mathins banditter."
+"Mens du er i leiren din, kan du rekruttere flere enheter. Bygg en hær som du "
+"kan bruke mot bandittene som Urza Mathin rekrutterer."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:386
-#, fuzzy
 msgid ""
 "Bowmen have a strong ranged attack and are very effective against units that "
 "lack a ranged attack, like Thieves and Thugs. They also carry a sword and "
 "can defend themselves against melee attacks."
 msgstr ""
-"Bueskyttere er svært effektive mot enheter uten avstandsangrep, som tyver og "
-"kjeltringer. De bærer også sverd, som gir brukbart forsvar mot "
-"nærstridsangrep."
+"Bueskyttere har et sterkt avstandsbasert angrep og er svært effektive mot "
+"enheter som mangler et slikt angrep, som tyver og kjeltringer. De bærer også "
+"sverd og kan forsvare seg mot nærkampsangrep."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:391
-#, fuzzy
 msgid ""
 "Spearmen have a strong melee attack and are effective against most units. "
 "They also have a weak ranged attack. They form the backbone of the South "
 "Guard."
 msgstr ""
 "Spydmenn er formidable i nærstrid, og effektive mot de fleste typer enheter. "
-"De har også et relativt svakt avstandsangrep. Spydmenns anvennelighet lar "
-"dem utgjøre ryggraden i en effektiv hær."
+"De har også et relativt svakt avstandsangrep. De utgjør ryggraden i "
+"sørgarden."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:395
-#, fuzzy
 msgid ""
 "The best army will have a mix of units to deal with the different enemies "
 "that you will encounter. For now, concentrate on creating a small corps of "
 "experienced Bowmen."
 msgstr ""
-"Det beste er vanligvis å ha en kombinasjon av forskjellige enheter for å "
-"kunne hamle opp med alle typer fiender og terreng. Inntil videre burde du "
-"fokusere på å lage en mindre gruppe erfarne bueskyttere."
+"Den beste hæren vil ha en blanding av enheter for å hamle opp med de "
+"forskjellige fiendene du vil møte. Inntil videre bør du konsentrere deg om å "
+"skape et lite kompani av erfarne bueskyttere."
 
 #. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, id=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:421
@@ -619,19 +630,18 @@ msgstr ""
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:714
-#, fuzzy
 msgid "My days of pillage and plunder are over! Avenge me, my brothers..."
-msgstr "Mine dager som røver er talte. Måtte mine brødre hevne min død!"
+msgstr "Mine dager som røver er talte! Måtte mine brødre hevne min død..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:742
-#, fuzzy
 msgid ""
 "Urza Mathin is dead! Congratulations, commander, though I am surprised that "
 "the King sent only you to help us. Did Sir Loris not send word of our plight?"
 msgstr ""
-"Gratulerer, han er død! Vi trodde aldri forsterkningene skulle ankomme, var "
-"det Loris som sendte dere?"
+"Urza Mathin er død! Gratulerer, kommandør, men jeg er overrasket over at "
+"kongen bare sendte deg for å hjelpe oss. Sendte ikke Sir Loris beskjed om "
+"situasjonen vår?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:747
@@ -640,6 +650,9 @@ msgid ""
 "heard word from you in weeks. I was prepared to take command of the South "
 "Guard if necessary, but not to fight so many bandits with so few men!"
 msgstr ""
+"Nei. Kong Haldrik sendte meg for å undersøke, siden han ikke hadde hørt noe "
+"fra dere på ukevis. Jeg var forberedt på å ta kommandoen over sørgarden om "
+"nødvendig, men ikke å kjempe mot så mange banditter med så få menn!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:752
@@ -648,6 +661,10 @@ msgid ""
 "predicament. I do wish that the King had sent more reinforcements, though "
 "you seem to be quite a capable commander despite your age."
 msgstr ""
+"Ja, du kunne ikke ha visst det om ikke sir Loris hadde meldt fra om "
+"situasjonen vår. Jeg skulle ønske at kongen hadde sendt flere "
+"forsterkninger, selv om du ser ut til å være en dyktig kommandant til tross "
+"for din alder."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:757
@@ -657,10 +674,13 @@ msgid ""
 "to remedy these harrowing circumstances. How long have you been fighting "
 "against these bandits anyway?"
 msgstr ""
+"Jeg har trent med de beste, og kanskje det vil veie opp for min eventuelle "
+"uerfarenhet. Vi må i det minste be om at mitt nærvær er nok til å bøte på "
+"disse opprivende omstendighetene. Hvor lenge har du kjempet mot disse "
+"bandittene?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:762
-#, fuzzy
 msgid ""
 "Almost two months! I know not why, but one night, Sir Loris took several of "
 "our patrols along the Westin road and never returned. The very next evening, "
@@ -668,11 +688,11 @@ msgid ""
 "and held out, hoping for reinforcements, but they never came. Something must "
 "have happened in Westin, else Sir Loris would have relieved us by now."
 msgstr ""
-"Nesten to måneder. Loris tok med seg de fleste soldatene i retning Westin, "
-"men vi har siden ikke hørt fra ham. Neste dag ble vi overrumplet av "
-"banditter som slaktet åtte av mine menn. Vi har holdt fortet i håp om at det "
-"ville komme forsterkninger fra Westin. Jeg hadde aldri trodd at det var "
-"tropper langveis fra som skulle komme og redde oss!"
+"Nesten to måneder! Jeg vet ikke hvorfor, men en natt tok sir Loris flere av "
+"våre patruljer langs Westin-veien og kom aldri tilbake. Neste kveld slo "
+"disse bøllene til og drepte åtte av mine menn. Vi forsvarte fortet og håpet "
+"på forsterkninger, men de kom aldri. Noe må ha skjedd i Westin, ellers ville "
+"sir Loris ha avløst oss nå."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:767
@@ -681,6 +701,8 @@ msgid ""
 "staying here. We will have to seek out Sir Loris in Westin for answers. "
 "Come, men, let us ride to the city!"
 msgstr ""
+"Historien din er høyst merkverdig, men vi oppnår ingenting ved å bli her. Vi "
+"må oppsøke sir Loris i Westin for å få svar. Kom, menn, la oss ri til byen!"
 
 #. [scenario]: id=02_Proven_by_the_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:5
@@ -713,9 +735,8 @@ msgstr "Kriminell"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:103
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:107
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:108
-#, fuzzy
 msgid "female^Criminal"
-msgstr "seig"
+msgstr "Kriminell"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:166
@@ -724,7 +745,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:176
-#, fuzzy
 msgid "Defeat Urza Nalmath, the bandit leader"
 msgstr "Drep Urza Nalmath, bandittenes leder."
 
@@ -735,7 +755,7 @@ msgstr "Drep Urza Nalmath, bandittenes leder."
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:262
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:519
 msgid "Death of Minister Hylas"
-msgstr "Fader Hylas' død"
+msgstr "Byrådsleder Hylas' død"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:229
@@ -782,14 +802,12 @@ msgstr ""
 #. [unit]: type=White Mage, id=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:298
 msgid "Minister Hylas"
-msgstr "Fader Hylas"
+msgstr "Byrådsleder Hylas"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:311
-#, fuzzy
-#| msgid "The master of the undead is defeated!"
 msgid "More bandits?! Prepare to die!"
-msgstr "De vandødes mester er tatt av dage!"
+msgstr "Flere banditter?! Forbered dere på å dø!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:315
@@ -797,6 +815,8 @@ msgid ""
 "Peace, I am a friend! I am Hylas, advisor to Sir Loris and Chief Minister of "
 "the town council. Thanks to your timely arrival, the city is saved!"
 msgstr ""
+"Fred, jeg er en venn! Jeg er Hylas, rådgiver for sir Loris og byrådets "
+"øverste minister. Takket være din rettidige ankomst er byen reddet!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:319
@@ -804,6 +824,8 @@ msgid ""
 "Indeed, we have defeated most of the bandits in the city. But where is Sir "
 "Loris? And where is the city garrison?"
 msgstr ""
+"Sannelig, vi har beseiret de fleste bandittene i byen. Men hvor er sir "
+"Loris? Og hvor er byens garnison?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:323
@@ -816,6 +838,12 @@ msgid ""
 "Sir Loris had sent a rider earlier, he might have survived long enough to "
 "stand with us here."
 msgstr ""
+"Sir Loris falt i kamp for flere dager siden. I ukevis advarte vi ham om "
+"bandittenes nye makt, men han ville aldri lede mennene sine mot dem før de "
+"var blitt for sterke for oss. Jeg sendte en budbringer til kongen om vår "
+"situasjon, men han må ha vært uheldig, for dere er de første forsterkningene "
+"som har ankommet hit. Hvis bare sir Loris hadde sendt en rytter tidligere, "
+"kunne han ha overlevd lenge nok til å stå sammen med oss her."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:329
@@ -824,6 +852,9 @@ msgid ""
 "death. With him gone, it seems that I must lead the townsfolk against the "
 "bandits and drive them from our city."
 msgstr ""
+"Det er sant. Selv om han var en tåpe, gjør det meg vondt å høre om hans død. "
+"Nå som han er borte, må jeg lede borgerne mot bandittene og drive dem ut av "
+"byen vår."
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:333
@@ -855,13 +886,12 @@ msgstr "Tyborg"
 
 #. [message]: speaker=Ufes
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:353
-#, fuzzy
 msgid ""
 "We stand with you, Sir Deoran! We will hold the city while you lead your men "
 "across the river and defeat the bandit leader!"
 msgstr ""
-"Vi skal gjøre vårt beste for å holde byen! Led dine menn sørover og drep "
-"røvernes leder!"
+"Vi står med deg, sir Deoran! Vi vil forsvare byen mens du leder mennene dine "
+"over elven og beseirer bandittlederen!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:395
@@ -1748,7 +1778,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:536
 msgid "For my lady I fall..."
-msgstr "Jeg faller for Ethiliel!"
+msgstr "Jeg faller for Ethiliel..."
 
 #. [message]: speaker=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:548
@@ -2582,7 +2612,7 @@ msgstr ""
 #. [scenario]: id=06a_Into_the_Depths
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:5
 msgid "Into the Depths"
-msgstr "Til bunns!"
+msgstr "Ned i dypet"
 
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/06a_Into_the_Depths.cfg:59
@@ -4562,17 +4592,16 @@ msgstr ""
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:8
-#, fuzzy
 msgid ""
 "The reign of Haldric VII was a time of great prosperity and peace in "
 "Wesnoth. Konrad I had driven off the orcs in the north. The eastern forts "
 "were quiet and secure. The elves in the western forest kept to their own "
 "affairs. In the south, men built new towns and farms."
 msgstr ""
-"Mens Haldrik VII regjerte rådet det fred i Wesnoth. Konrad I hadde drevet "
-"orkene tilbake i nord. I øst rådet fred, og det trengtes knapt vaktposter. "
-"Alvene i skogene i vest holdt seg til sitt. I de frodige områdene i sør ble "
-"det bygget storslåtte byer og gårdsanlegg."
+"Haldrik VIIs regjeringstid var en tid med velstand og fred i Wesnoth. Konrad "
+"I hadde drevet orkene i nord på flukt. De østlige fortene var fredfulle og "
+"sikre. Alvene i den vestlige skogen holdt seg til sitt. I sør bygde "
+"menneskene nye byer og gårder."
 
 #. [part]
 #. Intro to scenario 1
@@ -4590,6 +4619,16 @@ msgid ""
 "in dense gloominess, ominous enough that even the elves eschewed entering, "
 "and only a few, scattered outlaws called it their home."
 msgstr ""
+"I åtte år hadde sørgarden forsvart gårdene og hjemmene rundt byen Westin, "
+"hovedstaden i Wesnoths grenseprovins Kerlath lengst sør i landet. Under sir "
+"Loris' kommando holdt sørgarden Westin fri for farer, og måtte bare slå ned "
+"en og annen banditt eller et og annet vilt dyr. Den eneste virkelige uroen "
+"kom kanskje fra Aethenwood i vest, der alvene levde i en reservert "
+"tilværelse, likegyldige til menneskenes gjøren og laden. Det var forbudt å "
+"ferdes i deres land uten tillatelse, men alvene kom sjelden inn i Kerlaths "
+"land. Enda lenger sør i villmarken lå den eldgamle Hjerteskogen tett og "
+"dyster, illevarslende nok til at selv alvene unngikk å gå inn i den, og bare "
+"noen få, spredte lovløse kalte den sitt hjem."
 
 #. [part]
 #. Intro to scenario 1
@@ -4600,6 +4639,10 @@ msgid ""
 "the ninth year, ceased altogether. Displeased with Sir Loris’ conduct, the "
 "King decided to send someone to investigate."
 msgstr ""
+"Etter hvert som det ikke var noen overhengende fare, ble sørgarden "
+"selvtilfreds og sløv. Rapportene til Kong Haldrik ble færre, og våren det "
+"niende året opphørte de helt. Kongen var misfornøyd med sir Loris' "
+"oppførsel, og bestemte seg for å sende noen for å undersøke saken."
 
 #. [part]
 #. Intro to scenario 1
@@ -4613,11 +4656,17 @@ msgid ""
 "King Haldric knighted Deoran and tasked him with riding to Westin to demand "
 "accounting from Sir Loris."
 msgstr ""
+"Haldrik tilkalte en ung, men lovende kavalerioffiser ved navn Deoran til "
+"oppgaven. Selv om Deorans familie ikke hadde noen fremtredende historie i "
+"Wesnoths hær, hadde de en dekorert fortid: Oldefaren hans, Haldiel, hadde "
+"kjempet sammen med Konrad I i krigen for å gjenvinne tronen, og faren hans, "
+"Leonard, hadde tjenestegjort som offiser i tretti år. Med full tillit til "
+"den unge offiseren slo kong Haldrik Deoran til ridder og ga ham i oppdrag å "
+"ri til Westin for å kreve regnskap fra sir Loris."
 
 #. [part]
 #. Intro to scenario 2
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:35
-#, fuzzy
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent out scouts into the "
 "whole countryside. His men reported bandits roaming freely through the land, "
