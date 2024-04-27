@@ -24,6 +24,7 @@
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -143,6 +144,8 @@ void game_version::pre_show(window& window)
 	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty() && filesystem::file_exists(log_path_));
 
+	connect_signal_mouse_left_click(find_widget<button>(&window, "run_migrator", false), std::bind(&game_version::run_migrator, this));
+
 	//
 	// Build info tab.
 	//
@@ -230,6 +233,11 @@ void game_version::tab_switch_callback()
 void game_version::browse_directory_callback(const std::string& path)
 {
 	desktop::open_object(path);
+}
+
+void game_version::run_migrator()
+{
+	migrate_version_selection::execute();
 }
 
 void game_version::copy_to_clipboard_callback(const std::string& path)
