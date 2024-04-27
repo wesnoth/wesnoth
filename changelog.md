@@ -10,7 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, Bengali, British English, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Norwegian, Polish, Russian, Slovak, Spanish, Ukrainian
+   * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Norwegian, Polish, Russian, Slovak, Spanish, Ukrainian
    * Added new font "Lohit-Bengali.ttf" to support Bengali translation
  ### Units
    * Elvish Avenger - decreased ranged attack from 11×4 to 10×4, decreased cost from 66 to 60
