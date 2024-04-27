@@ -26,6 +26,7 @@
 #include "gui/widgets/window.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
+#include "serialization/parser.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -98,19 +99,49 @@ void migrate_version_selection::post_show(window& window)
 		// given self-compilation and linux distros being able to do whatever they want plus command line options to
 		// alter locations make sure the directories/files are actually different before doing anything with them
 		if(migrate_addons_dir != filesystem::get_addons_dir()) {
+			std::vector<std::string> old_addons;
+			std::vector<std::string> current_addons;
 			std::vector<std::string> migrate_addons;
-			filesystem::get_files_in_dir(migrate_addons_dir, nullptr, &migrate_addons);
+
+			filesystem::get_files_in_dir(migrate_addons_dir, nullptr, &old_addons);
+			filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &current_addons);
+
+			std::set_difference(old_addons.begin(), old_addons.end(), current_addons.begin(), current_addons.end(), std::back_inserter(migrate_addons));
+
 			if(migrate_addons.size() > 0) {
 				ad_hoc_addon_fetch_session(migrate_addons);
 			}
 		}
 
 		if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
-			filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
+			// if the file doesn't exist, just copy the file over
+			// else need to merge the preferences file
+			if(!filesystem::file_exists(filesystem::get_prefs_file())) {
+				filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
+			} else {
+				config current_cfg;
+				filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+				read(current_cfg, *current_stream);
+				config old_cfg;
+				filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
+				read(old_cfg, *old_stream);
+
+				// when both files have the same attribute, use the one from whichever was most recently modified
+				bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
+				for(const config::attribute& val : old_cfg.attribute_range()) {
+					if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
+						preferences::set(val.first, val.second);
+					}
+				}
+
+				// don't touch child tags
+
+				preferences::write_preferences();
+			}
 		}
 
-		if(migrate_credentials_file != filesystem::get_credentials_file()
-			&& filesystem::file_exists(migrate_credentials_file)) {
+		// don't touch the credentials file on migrator re-run if it already exists
+		if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && !filesystem::file_exists(filesystem::get_credentials_file())) {
 			filesystem::copy_file(migrate_credentials_file, filesystem::get_credentials_file());
 		}
 
