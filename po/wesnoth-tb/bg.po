@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-08-20 01:56 UTC\n"
-"PO-Revision-Date: 2022-08-09 17:13+0300\n"
+"PO-Revision-Date: 2024-04-24 18:54+0300\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
 "Language: bg\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -102,13 +102,6 @@ msgstr "Примамка за магьосника"
 #. This text is shown with the journey map, showing the village in the foothills along the route between Aldril and Dan’Tonk.
 #. I'm assuming the beacons either use smoke signals or basic fire signals, with a few agreed ones to request goods or indicate that surplus is for sale.
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:52
-#, fuzzy
-#| msgid ""
-#| "The remote freehold of Maghre in the western reaches of the Kingdom of "
-#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
-#| "comings and goings of the wider world. Wars and the rumor of wars touched "
-#| "them not, until the day a dark mage settled in the region and began "
-#| "seeking sacrifices for his evil summonings."
 msgid ""
 "The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
@@ -118,20 +111,12 @@ msgid ""
 msgstr ""
 "Малката област на Магре, част от западните покрайнини на Уеснот винаги е "
 "била спокойно и миролюбиво място. Големите воини почти не оказваха влияние "
-"върху местните жители. Те оставаха напълно недокоснати от света до един ден, "
-"когато зъл магьосник се заселил в местността и започнал да търси жертви за "
-"злите си ритуали."
+"върху местните жители. Те оставаха напълно недокоснати от света, дори "
+"търговски каравани почти не минаваха, освен ако керваните между Алдрил и "
+"Дан`Тонк не бъдат повикани чрез сигналната кула."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:57
-#, fuzzy
-#| msgid ""
-#| "Skeletons and zombies killed cattle and fired fields. <i>“Fear and obey "
-#| "Mordak the Mage!”</i> they cried in fell voices as they did their foul "
-#| "deeds. People vanished from isolated farmsteads. Men and women began to "
-#| "fear the night, and their children even the bright day. But the nearest "
-#| "lord was more than a day’s ride distant, and messengers sent to seek his "
-#| "help did not return."
 msgid ""
 "Then came the day that a dark mage settled in the region and began seeking "
 "sacrifices for his summonings.\n"
@@ -143,6 +128,9 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
+"Но дойде ден, когато тъмен магьосник се засели в региона и започна да прави "
+"жертвоприношения за неговите ритуали.\n"
+"\n"
 "Скелети и зомбита започнаха да убиват добитъка, крещейки с адски викове "
 "\"Подчинете се на Мордак магьосника\". Хората от по-отдалечените ферми "
 "изчезваха. Мъже и жени започнаха да се страхуват от нощта, а децата - от "
@@ -169,14 +157,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:68
-#, fuzzy
-#| msgid ""
-#| "Now Baran had a brother named Arvith who had also left Maghre to seek his "
-#| "fortune, and had become the leader of a small band of horsemen who hired "
-#| "out as guards to merchant caravans. Fortunate it was for all that when "
-#| "Baran was but an apprentice mage, he had made a pair of amulets for "
-#| "himself and his brother, with which they might call to each other when in "
-#| "dire need. Baran sent out that call."
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
@@ -192,19 +172,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:72
-#, fuzzy
-#| msgid ""
-#| "12 V, 363 YW\n"
-#| "Excerpt from the journal of Baran of Maghre\n"
-#| "\n"
-#| "If I could but face this ‘Mordak’! I think my magic might prove stronger "
-#| "than his. But he bides in the hills, well-guarded by his servants, and I "
-#| "muster frightened peasants to fight his minions with blades and sticks. I "
-#| "need my brother; he always had a better head for battle than I.\n"
-#| "\n"
-#| "Will he heed the call? I do not know if he has kept the amulet; we have "
-#| "not spoken since that evil day at Toen Caric. If he will not come for me, "
-#| "perhaps he will return to aid our village in its hour of desperate need."
 msgid ""
 "12 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -218,7 +185,7 @@ msgid ""
 "me, perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
 "12 V, 363 УГ\n"
-"Откъс от дневника на Баран, от Магре\n"
+"Откъс от дневника на Баран от Магре\n"
 "\n"
 "Само ако можех да се изправя срещу този \"Мордак\"! Мисля, че магията ми е "
 "по-силна от неговата. Но той седи добре охраняван от войските си в хълмовете "
@@ -233,10 +200,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:81
-#, fuzzy
-#| msgid ""
-#| "Heeding the call of his amulet, Arvith gathered such men as he could and "
-#| "hurried to Maghre to help Baran."
 msgid ""
 "Heeding the call, Arvith gathered such men as he could and hurried to Maghre "
 "to help Baran."
@@ -1677,15 +1640,11 @@ msgstr ""
 #. [message]: speaker=Arvith
 #. "you have my word" is a idiom for promising to do something
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:366
-#, fuzzy
-#| msgid ""
-#| "I must go back to earning my living. But we have our amulets, little "
-#| "brother. If you are beset again, I will come."
 msgid ""
 "I must go back to earning my living. But you have my word, little brother; "
 "if you are beset again, I will come."
 msgstr ""
-"Трябва отново да тръгна, за да си изкарвам прехраната. Но имаме нашите "
+"Трябва отново да тръгна, за да изкарвам прехраната си. Но имаме нашите "
 "амулети, малки братко. Ако отново настане проблем, аз ще дойда."
 
 #. [message]: speaker=Arvith
