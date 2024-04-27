@@ -4,12 +4,12 @@
 # Automatically generated, 2006.
 # ???
 # Fedor Khod'kov <fkhodkov@gmail.com>, ???-2014.
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2024-04-10 12:05-0500\n"
-"PO-Revision-Date: 2022-08-28 19:43+0300\n"
+"PO-Revision-Date: 2024-04-08 21:45+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 # type: TH
 #. type: TH
@@ -237,7 +237,7 @@ msgstr "B<--core>I<\\ id_ядра>"
 #. type: Plain text
 #: doc/man/wesnoth.6:80
 msgid "overrides the loaded core with the one whose id is specified."
-msgstr "перекрывает загруженное ядро тем, чей идентификатор был указан"
+msgstr "перекрывает загруженное ядро тем, чей идентификатор был указан."
 
 #. type: TP
 #: doc/man/wesnoth.6:80
@@ -494,41 +494,50 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--no-log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
+#, fuzzy
+#| msgid ""
+#| "prevents redirecting logged output to a file. Log files are created in "
+#| "the logs directory under the userdata folder."
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
+"предотвращает перенаправление данных логгера в файл. Файлы логов создаются в "
+"подпапке логов в директории пользовательских данных."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:171
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
+#, fuzzy
+#| msgid ""
+#| "log output is written to a file in addition to standard output/error. "
+#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
+"вывод логов дополнительно к стандартному выводу записывается в файл. Имеет "
+"приоритет перед --no-log-to-file"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:174
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
@@ -536,6 +545,9 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"В виндоусе, когда используется вместе с --no-log-to-file, приводит к тому, "
+"что выход будет записываться в cerr/cout вместо CONOUT. В других системах не "
+"делает ничего."
 
 # type: TP
 #. type: TP
@@ -1002,12 +1014,6 @@ msgstr "B<-t[>I<id сценария>B<],\\ --test[>I<=id сценария>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:334
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
@@ -1015,8 +1021,7 @@ msgid ""
 msgstr ""
 "запустить игру на небольшом пробном сценарии. Сценарий следует обозначить "
 "тэгом WML B<[test]>. По умолчанию B<test>.  Демонстрацию функции "
-"B<[micro_ai]> можно запустить с помощью B<micro_ai_test>.  Подразумевает B<--"
-"nogui>."
+"B<[micro_ai]> можно запустить с помощью B<micro_ai_test>."
 
 #. type: TP
 #: doc/man/wesnoth.6:334
@@ -1589,10 +1594,10 @@ msgstr "АВТОРСКОЕ ПРАВО"
 #: doc/man/wesnoth.6:518 doc/man/wesnothd.6:301
 #, fuzzy
 #| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
+#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Авторское право \\(co Дэвид Уайт, 2003-2022 E<lt>davidnwhite@verizon.netE<gt>"
+"Авторское право \\(co Дэвид Уайт, 2003-2023 E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2141,40 +2146,40 @@ msgstr ""
 #: doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
-msgstr ""
+msgstr "Разрешает использование TLS. Требует указать три следующие опции."
 
 #. type: TP
 #: doc/man/wesnothd.6:170
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr "Полный TLS-сертификат в формате .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr "приватный TLS-ключ в формате .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -2182,6 +2187,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+"DH-параметры TLS, как файл .pem. Генерируйте через B<openssl dhparam -out "
+"filename.pem 4096>"
 
 # type: TP
 #. type: TP
@@ -2211,7 +2218,7 @@ msgstr "Пример: B<versions_accepted=\"*\"> принимает строку
 #: doc/man/wesnothd.6:185
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
@@ -2220,6 +2227,9 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"ID сервера, на котором вы используете функционал базы данных, чтобы хранить "
+"игровую информацию. Как правило, формат: major.minor версия допустимых "
+"клиентов, таких как 1.16 или 1.17."
 
 # type: SS
 #. type: SS
@@ -2421,16 +2431,12 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
 "Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее "
-"всего, это E<lt>префикс-таблицыE<gt>_users (т.е. phpbb3_users)."
+"всего, это E<lt>table-prefixE<gt>_users (т.е. phpbb3_users)."
 
 # type: TP
 #. type: TP
@@ -2503,27 +2509,21 @@ msgstr "B<db_user_group_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
 "Название таблицы, где Ваш phpbb форум хранит данные о группах пользователей. "
-"Скорее всего это E<lt>префикс-таблицыE<gt>_user_group (т.е. "
+"Скорее всего это E<lt>table-prefixE<gt>_user_group (напр., "
 "phpbb3_user_group)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2531,52 +2531,45 @@ msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
+"Имя таблицы, где хранятся времена захода/выхода с сервера. Можно также "
+"использовать для того, чтобы сопоставлять IP с пользователями, и наоборот."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее "
-"всего, это E<lt>префикс-таблицыE<gt>_users (т.е. phpbb3_users)."
+"Название таблицы где ваш phpbb форум хранит данные о тредах (темах). Скорее "
+"всего, это E<lt>table-prefixE<gt>_topics (т.е. phpbb3_users)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее "
-"всего, это E<lt>префикс-таблицыE<gt>_users (т.е. phpbb3_users)."
+"Название таблицы где ваш phpbb форум хранит данные о заблокированных "
+"пользователях. Скорее всего, это E<lt>table-prefixE<gt>_users (т.е. "
+"phpbb3_users)."
 
 #. type: TP
 #: doc/man/wesnothd.6:281

@@ -107,6 +107,11 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 */
 	void browse_directory_callback(const std::string& path);
+
+	/**
+	 * Callback function to re-run the version migration dialog.
+	 */
+	void run_migrator();
 };
 } // namespace dialogs
 } // namespace gui2

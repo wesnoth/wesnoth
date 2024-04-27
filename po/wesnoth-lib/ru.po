@@ -11,13 +11,13 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2022-02-02 14:48+0300\n"
+"PO-Revision-Date: 2024-04-13 16:21+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [ai]: id=ai_default_rca
@@ -79,7 +79,7 @@ msgstr "Серая глубокая вода"
 #. [terrain_type]: id=deep_water_medium
 #: data/core/terrain.cfg:35
 msgid "Medium Deep Water"
-msgstr "Неглубокая вода"
+msgstr "Средне-глубокая вода"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:46
@@ -168,10 +168,8 @@ msgstr "Болото"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Пальмовый лес"
+msgstr "Водорослевый лес"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -443,14 +441,12 @@ msgstr "Железный забор"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:534
 msgid "Palisade"
-msgstr ""
+msgstr "Частокол"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Деревянный мост"
+msgstr "Деревянный частокол"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -470,7 +466,7 @@ msgstr "Цветущие водяные лилии"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:573
 msgid "Seashells"
-msgstr ""
+msgstr "Ракушки"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:584
@@ -485,7 +481,7 @@ msgstr "Останки"
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
 msgid "Window"
-msgstr ""
+msgstr "Окно"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -904,29 +900,27 @@ msgstr "Рельсы в руднике"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1216
 msgid "Bluff"
-msgstr ""
+msgstr "Утёс"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1226
 msgid "Gulch"
-msgstr ""
+msgstr "Ущелье"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1237
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Непроходимая местность"
+msgstr "Непреступный овраг"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1250
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Лесистый утёс"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1259
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Лесистый овраг"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1033,22 +1027,18 @@ msgstr "Земляная стена"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1423
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Природная стена пещеры"
+msgstr "Повреждённая стена пещеры"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1433
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Толстая изгородь"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1434
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Hedges Wall"
-msgstr "Высеченная стена пещеры"
+msgstr "Изгородь"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1113,17 +1103,13 @@ msgstr "Заросшая каменная стена"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Каменная стена"
+msgstr "Повреждённая каменная стена"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1562
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Стена рудника"
+msgstr "Разрушенные стены"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1351,10 +1337,8 @@ msgstr "Деревня дрейков"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2051
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Деревня дрейков"
+msgstr "Заснеженная деревня дрейков"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2066
@@ -1839,10 +1823,8 @@ msgstr "Каменный мост"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
 #: data/core/terrain.cfg:2955
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Каменный мост"
+msgstr "Заснеженный каменный мост"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1879,22 +1861,22 @@ msgstr "Дощатый мост"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "Маркер подъёма"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "Маркер подъёма 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "Маркер спуска"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Маркер спуска 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3182
@@ -1909,7 +1891,7 @@ msgstr "Фальшивая граница карты"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3202
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Заглушка для арта"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -2111,21 +2093,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3366
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but also severely impede any passage through them. Units burdened "
-#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
-#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
-#| "piscine bodies which also render them unable to climb steep inclines. "
-#| "Nagas are an exception due to their strong arms and rugged scales. Both "
-#| "dwarves and trolls are native to mountainous terrain, and have an easy "
-#| "time traversing them.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2142,15 +2109,16 @@ msgid ""
 msgstr ""
 "<italic>text='Горы'</italic> — это рельеф настолько крутой, что здесь бойцам "
 "приходится взбираться на препятствия, чтобы преодолеть их.\n"
-"По своей природе, горы предоставляют значительный бонус к защите для "
-"большинства бойцов, но также значительно затрудняют любой путь через них. "
-"Бойцы, обременённые тяжёлой бронёй, вроде веснотской кавалерии или ударных "
+"По своей природе горы предоставляют значительный бонус к защите для "
+"большинства бойцов, но также сильно затрудняют любой путь через них. Бойцы, "
+"обременённые тяжёлой бронёй, вроде веснотской кавалерии или ударных "
 "пехотинцев, даже не могут зайти в горы. Водяные расы и существа не могут "
-"взбираться по крутым склонам просто из-за строения своих тел. Наги, однако, "
-"исключение: их спасают крепкие руки и грубая чешуя. Гномы и тролли привыкли "
-"к горной местности и могут двигаться по ней без замедления.\n"
+"взбираться по крутым склонам из-за строения своих тел. Наги, однако, "
+"исключение: их спасают крепкие руки и грубая чешуя. Гномы и тролли рождены в "
+"горной местности и могут двигаться по ней без замедления.\n"
 "\n"
-"Большинство бойцов имеют уровень защиты в 60% в горах, а гномы получают 70%."
+"Большинство бойцов в горах имеют уровень защиты 60%, а гномы наслаждаются "
+"70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3378
@@ -2336,17 +2304,13 @@ msgstr ""
 #: data/core/terrain.cfg:3476 data/core/terrain.cfg:3487
 #: data/core/terrain.cfg:3498 data/core/terrain.cfg:3509
 #: data/core/terrain.cfg:3520
-#, fuzzy
-#| msgid "Game created"
 msgid "Deprecated"
-msgstr "Игра создана"
+msgstr "Устарело"
 
 #. [settings]
 #: data/gui/default.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
-msgstr " (Нажмите \"$hotkey\" для дополнительной информации)"
+msgstr " (Нажмите «$hotkey» для дополнительной информации)"
 
 #. [button]: id=search
 #: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
@@ -2491,10 +2455,8 @@ msgstr "Профиль"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Продвижения"
+msgstr "Достижения"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2503,10 +2465,8 @@ msgstr "Аутентификация"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Переименовать"
+msgstr "Ник:"
 
 #. [label]
 #. [grid]
@@ -2714,10 +2674,8 @@ msgstr "Вебсайт:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ИД:"
+msgstr "ID:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -2896,8 +2854,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:240
+#, fuzzy
+#| msgid "Completed"
 msgid "Not Completed"
-msgstr ""
+msgstr "Завершено"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
@@ -2907,8 +2867,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:246
+#, fuzzy
+#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr ""
+msgstr "Завершено"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:247
@@ -2918,9 +2880,9 @@ msgstr ""
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:251
 #, fuzzy
-#| msgid "Computer Player"
+#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Компьютерный игрок"
+msgstr "Завершено"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:252
@@ -2929,8 +2891,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:256
+#, fuzzy
+#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr ""
+msgstr "Завершено"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:257
@@ -2939,8 +2903,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:261
+#, fuzzy
+#| msgid "Completed"
 msgid "Completed: All"
-msgstr ""
+msgstr "Завершено"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:262
@@ -3293,9 +3259,9 @@ msgstr "Только для команд"
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:47
 #, fuzzy
-#| msgid "Add-on Details"
+#| msgid "Add-on selection"
 msgid "Add-on Selection"
-msgstr "Подробности аддона"
+msgstr "Выбор аддона"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:64
@@ -3304,18 +3270,18 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Выберите аддон, ассоциированный с текущей сессией редактора. Если выбрана "
+"опция Новый Аддон, его ID можно изменить через опцию «Изменить ID аддона»."
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:162
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Показывать шары союзников"
+msgstr "Показать все"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:174
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Показать ли все установленные аддоны или только Ваши"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3350,36 +3316,34 @@ msgstr "Виден под пеленой"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Настройка публикации аддона"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "Имя аддона, отображаемое в игре."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Название:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "Описание аддона, отображаемое в менеджере аддонов."
 
 #. [label]: id=icon_label
 #. [grid]: id=grid_atk
 #: data/gui/window/editor_edit_pbl.cfg:162
 #: data/gui/window/editor_edit_unit.cfg:671
 msgid "Icon:"
-msgstr ""
+msgstr "Иконка:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Сбросить выбор"
+msgstr "Выберите файл иконки"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3387,6 +3351,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Путь к иконке, отображаемой в менеджере аддонов. Должна быть из основной "
+"игры."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3399,11 +3365,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"Автор аддона. Если используется форумная аутентификация, это Ваш ник на "
+"форуме."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "Текущая версия аддона. Должна быть в формате X.Y.Z."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:208
@@ -3412,11 +3380,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Разделённый запятыми список ID всех прочих аддонов, от которых зависит этот "
+"аддон. ID аддона — это имя его директории в файловом менеджере операционной "
+"системы, а не название аддона."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Тема на форуме:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3424,23 +3395,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"Числовой ID темы на Веснотском форуме, где игроки могут выкладывать обратную "
+"связь."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "Ссылка на форум"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "URL на тему обратной связи на форуме."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
-#, fuzzy
-#| msgid "Authenticate"
 msgid "Forum Authentication:"
-msgstr "Аутентификация"
+msgstr "Аутентификация форума:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3448,6 +3419,8 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Использовать ли Ваш ник на форуме и пароль при публикации или хранить Ваш "
+"пароль и адрес электронной почты в файле _server.pbl."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3455,22 +3428,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Разделённый запятыми список форумных ников остальных людей, которые могут "
+"выкладывать обновления этого аддона."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Соавторы:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Адрес электронной почты, по которому с Вами смогут связаться в случае "
+"проблем, с Вашим аддоном."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "Почта:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3478,18 +3455,18 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"Текущий пароль аддона. Рекомендуется вместо него использовать форумную "
+"аутентификацию, поскольку он не хранится надёжно."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "Имя"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Описание:"
+msgstr "Описание"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3509,7 +3486,7 @@ msgstr "Удалить"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr ""
+msgstr "Проверить"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3522,24 +3499,18 @@ msgstr "Сохранить"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Переводы:"
+msgstr "Перевод"
 
 #. [label]
 #: data/gui/window/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Необходим пароль"
+msgstr "* Необходимо"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Язык"
+msgstr "* Язык:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
@@ -3547,21 +3518,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"POSIX-принятое имя локали перевода, такое как sv для шведского или zh_CN для "
+"упрощённого китайского."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Имя:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "Перевод названия аддона."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "Перевод описания аддона."
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -3617,10 +3590,8 @@ msgstr "Имя команды:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruit list:"
-msgstr "Вербуется:"
+msgstr "Вербовка:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -3883,9 +3854,9 @@ msgstr "Способности"
 #. [label]: id=movetype_label
 #: data/gui/window/editor_edit_unit.cfg:885
 #, fuzzy
-#| msgid "Contents"
+#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "Содержание"
+msgstr "Тип содержания:"
 
 #. [button]: id=load_movetype
 #. [button]: id=ok
@@ -4428,10 +4399,8 @@ msgstr "Журнал:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Сделать скриншот"
+msgstr "Скриншоты:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:171
@@ -4486,21 +4455,17 @@ msgstr "Скопировать этот отчет в буфер"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Открыть файл журнала"
+msgstr "Файл журнала"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
 msgstr ""
-"Открывает файл с логами, который может содержать полезную информацию для "
-"отладки"
+"Открывает файл с логами текущей сессии, который может содержать полезную "
+"информацию для отладки"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4616,17 +4581,15 @@ msgstr "Загрузка..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Общие"
+msgstr "Общее лобби"
 
 #. [widget]: id=tab_label
 #. Games which were created by a bot, there's discussion about the meaning and
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Подбор игроков"
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:140
@@ -5093,7 +5056,7 @@ msgstr "Разрешить зеркальных соперников когда 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:177
 msgid "Independent"
-msgstr ""
+msgstr "Независимый"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:178
@@ -5103,7 +5066,7 @@ msgstr "Независимый: случайные фракции, назнач�
 #. [option]
 #: data/gui/window/mp_create_game.cfg:182
 msgid "No Mirror"
-msgstr ""
+msgstr "Нет зеркала"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:183
@@ -5113,7 +5076,7 @@ msgstr "Нет зеркала: нет двух игроков, которые п
 #. [option]
 #: data/gui/window/mp_create_game.cfg:187
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Нет зеркала союзника"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:188
@@ -5368,8 +5331,6 @@ msgstr "Вербовки"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Leader"
 msgid "Choose Your Leader"
 msgstr "Выберите лидера"
 
@@ -5446,31 +5407,25 @@ msgstr "Логин:"
 
 #. [button]: id=replay_download
 #: data/gui/window/mp_match_history.cfg:159
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Загрузки"
+msgstr "Загрузить"
 
 #. [label]: id=players
 #. [label]: id=modifications
 #: data/gui/window/mp_match_history.cfg:185
 #: data/gui/window/mp_match_history.cfg:223
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
-msgstr "Нет"
+msgstr "Ничего"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "Сведения"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Игроки:"
+msgstr "Игроки"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5481,10 +5436,8 @@ msgstr "Модификации"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Игроки:"
+msgstr "Игрок:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -5493,21 +5446,17 @@ msgstr "Игроки:"
 #: data/gui/window/mp_match_history.cfg:506
 #: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Звёздочки соответствуют любым символам"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:474
-#, fuzzy
-#| msgid "Contents"
 msgid "Content Type:"
-msgstr "Содержание"
+msgstr "Тип содержания:"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Имя команды:"
+msgstr "Имя игры:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5566,50 +5515,44 @@ msgstr "Создать локальную игру"
 #. [label]
 #: data/gui/window/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* Игрок, на которого подаётся жалоба:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Причина жалобы:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Место инцидента:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Additional dialogs:"
 msgid "Additional information:"
-msgstr "Дополнительные диалоги"
+msgstr "Доп. информация:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* требуемые поля"
 
 #. [label]
 #: data/gui/window/mp_staging.cfg:157
 #, fuzzy
-#| msgid "Action"
+#| msgid "Faction"
 msgid "Faction:"
-msgstr "Действие"
+msgstr "Фракция"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:243
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
-msgstr "Изменить владельца стороны"
+msgstr "Изменить контроллер стороны"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:259
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
-msgstr "Изменить поведение бота стороны"
+msgstr "Изменить поведение ИИ стороны"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:286
@@ -5860,19 +5803,17 @@ msgstr "Сбросить клавишу"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Размер окна:"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Множитель размера пикселей:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the buffer size"
 msgid "Change the game window size"
-msgstr "Изменить размер буфера"
+msgstr "Изменить размер окна игры"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/window/preferences/03_display.cfg:87
@@ -5880,6 +5821,8 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Установить глобальный множитель размера пикселей. Множитель x2 заставит всё "
+"выглядеть в два раза больше."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:102
@@ -5894,17 +5837,19 @@ msgstr "Полноэкранный либо оконный режим"
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr ""
+msgstr "Автоопределение"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Установить множитель размера пикселей автоматически, основываясь на текущем "
+"разрешении"
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:129
 msgid "VSync"
-msgstr ""
+msgstr "Вертикальная синхронизация"
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:130
@@ -5912,6 +5857,8 @@ msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"Сокращает разрывы и артефакты графики, согласовывая отображение с частотой "
+"обновления экрана (требует перезагрузки игры)"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:145
@@ -5930,7 +5877,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Тема интерфейса:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -5938,23 +5885,24 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Меняет тему игрового интерфейса. Дополнительные темы могут поставляться "
+"сделанными сообществом аддонами"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Индикаторы урона"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Показывать значения урона и исцеления над бойцом"
+msgstr ""
+"Показывать значения урона и исцеления как исчезающие надписи над бойцом"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Индикаторы цвета команды"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -5968,7 +5916,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Отображение сетки"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -5997,10 +5945,8 @@ msgstr "Показывать эффекты анимации воды (може�
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Анимировать стоящих бойцов"
+msgstr "Анимации стоящих бойцов"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
@@ -6009,10 +5955,8 @@ msgstr "Непрерывно анимировать стоящих на поле
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Анимировать бездействующих бойцов"
+msgstr "Анимации бездействующих бойцов"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
@@ -6194,29 +6138,21 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Добавить это имя пользователя в список ваших друзей (добавить заметки по "
-"умолчанию, напр. 'имя_друга: заметки о друге')"
+"Добавить имя пользователя в список Ваших друзей (можно добавить заметки, "
+"напр. 'имя_друга: заметки о друге')"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
-"Добавить это имя пользователя в список игнорируемых (добавить заметки по "
-"умолчанию, напр. 'имя_друга: причины игнора')"
+"Добавить это имя пользователя в список игнора (можно добавить заметки, напр. "
+"'имя_игрока: причины игнора')"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -6255,8 +6191,6 @@ msgstr "Показывать шары с полным запасом хода"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "Показывать шары с частичным запасом хода"
 
@@ -6266,11 +6200,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Если боец может двигаться, но не атаковать, показывать двухцветный шар, "
+"означающий частичное и полное перемещение."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Использовать двухцветный шар для вышедших из боя бойцов"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -6286,6 +6222,8 @@ msgstr "Показывать шары союзников"
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Во время хода союзника, использовать двухцветный шар, чтобы показывать "
+"движения"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -6294,6 +6232,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Во время хода союзников, их шары будут двухцветными. Первая половина — "
+"обозначение союзника, вторая — двигался ли боец или нет, частично или "
+"полностью."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -6417,7 +6358,7 @@ msgstr "Выйти из игры"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr "#"
+msgstr "№"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -6536,10 +6477,8 @@ msgstr "Изменить настройки игры"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "Обзор: Каждая команда"
+msgstr "Посмотреть достижения"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -6731,10 +6670,8 @@ msgid "filesystem_path_game^User preferences"
 msgstr "Предпочтения пользователя"
 
 #: src/desktop/paths.cpp:225
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "Данные игры"
+msgstr "Карты редактора"
 
 #: src/desktop/paths.cpp:238
 msgid "filesystem_path_system^Home"
@@ -6845,74 +6782,53 @@ msgstr "прошло"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num year"
-#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num год"
-msgstr[1] "$num год"
-msgstr[2] "$num год"
+msgstr[1] "$num года"
+msgstr[2] "$num лет"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num month"
-#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num месяц"
-msgstr[1] "$num месяц"
-msgstr[2] "$num месяц"
+msgstr[1] "$num месяца"
+msgstr[2] "$num месяцев"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num week"
-#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num неделя"
-msgstr[1] "$num неделя"
-msgstr[2] "$num неделя"
+msgstr[1] "$num недели"
+msgstr[2] "$num недель"
 
 #: src/formula/string_utils.cpp:316
-#, fuzzy
-#| msgid "timespan^$num day"
-#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num день"
-msgstr[1] "$num день"
-msgstr[2] "$num день"
+msgstr[1] "$num дня"
+msgstr[2] "$num дней"
 
 #: src/formula/string_utils.cpp:317
-#, fuzzy
-#| msgid "timespan^$num hour"
-#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num час"
-msgstr[1] "$num час"
-msgstr[2] "$num час"
+msgstr[1] "$num часа"
+msgstr[2] "$num часов"
 
 #: src/formula/string_utils.cpp:318
-#, fuzzy
-#| msgid "timespan^$num minute"
-#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num минута"
-msgstr[1] "$num минута"
-msgstr[2] "$num минута"
+msgstr[1] "$num минуты"
+msgstr[2] "$num минут"
 
 #: src/formula/string_utils.cpp:319
-#, fuzzy
-#| msgid "timespan^$num second"
-#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num секунда"
-msgstr[1] "$num секунда"
-msgstr[2] "$num секунда"
+msgstr[1] "$num секунды"
+msgstr[2] "$num секунд"
 
 #: src/gui/core/canvas.cpp:273
 msgid "Image doesn't fit on canvas."
@@ -6923,10 +6839,8 @@ msgid "Text has a font size of 0."
 msgstr "Размер шрифта текста 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "Не определено состояние или область отрисовки."
+msgstr "Не определена область отрисовки."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:132
 msgid "No resolution defined."
@@ -6948,12 +6862,12 @@ msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"Количество столбцов строки $row не соответствует остальной таблице "
-"'$grid' (найдено $found, ожидалось $expected)"
+"Количество столбцов строки $row не соответствует остальной таблице '$grid' "
+"(найдено $found, ожидалось $expected)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
 msgid "Completed"
-msgstr ""
+msgstr "Завершено"
 
 #: src/gui/dialogs/addon/manager.cpp:154
 msgid "addons_view^All Add-ons"
@@ -7231,7 +7145,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:940
 msgid "The passphrase attribute cannot be present when forum_auth is used."
-msgstr ""
+msgstr "Пароль не может присутствовать, когда используется форумный логин."
 
 #: src/gui/dialogs/addon/manager.cpp:945
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -7266,17 +7180,13 @@ msgstr "Вы хотите удалить '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1041
-#, fuzzy
-#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%d.%m.%Y %I:%M %p"
+msgstr "%d.%B.%Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1043
-#, fuzzy
-#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr "%d.%m.%Y %H:%M"
+msgstr "%d.%B.%Y %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1104
 msgid "url^None"
@@ -7303,10 +7213,8 @@ msgid "Attacker vulnerability vs"
 msgstr "Уязвимость атакующего против"
 
 #: src/gui/dialogs/campaign_selection.cpp:375
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Кампании"
+msgstr "Отсутствующие кампании"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
@@ -7317,6 +7225,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Даже в базовом Весноте есть более 15 кампаний, даже без скачивания каких-"
+"либо дополнений с сервера аддонов. Если вы устанавливали игру через менеджер "
+"пакетов, вероятно, вам потребуется установить отдельные пакеты для полного "
+"содержания игры."
 
 #: src/gui/dialogs/campaign_selection.cpp:417
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
@@ -7365,46 +7277,32 @@ msgstr ""
 "Выберите совместимую модификацию."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:171
-#, fuzzy
-#| msgid "Cores"
 msgid "Core"
-msgstr "Ресурсное ядро"
+msgstr "Ядро"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:172
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
-msgstr "Кампании"
+msgstr "Кампания"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Hybrid Campaign"
-msgstr "Кампании"
+msgstr "Гибридная кампания"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
-msgstr "Многопользовательские кампании"
+msgstr "Многопользовательская кампания"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario"
-msgstr "Начало сценария"
+msgstr "Сценарий"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:176
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Оповещения мультиплеера"
+msgstr "Сценарий мультиплеера"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Действие"
+msgstr "Фракция"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
 #: src/gui/dialogs/multiplayer/lobby.cpp:423
@@ -7413,65 +7311,51 @@ msgstr "Эра"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
 msgid "Map Pack"
-msgstr ""
+msgstr "Пакет карт"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Модификации"
+msgstr "Модификация"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Media"
-msgstr ""
+msgstr "Мультимедиа"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other"
-msgstr "Другие игры"
+msgstr "Прочее"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:188
-#, fuzzy
-#| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
-msgstr "Совместный"
+msgstr "Совместное"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:189
-#, fuzzy
-#| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Внешний вид"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:191
 msgid "RNG"
-msgstr ""
+msgstr "Рандом"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:192
-#, fuzzy
-#| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Выживание"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
-#, fuzzy
-#| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
-msgstr "Терраформирование"
+msgstr "Рельеф"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:376
 msgid "No validation errors"
-msgstr ""
+msgstr "Нет ошибок валидации"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:376
 msgid "Success"
-msgstr ""
+msgstr "Успех"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:406
-#, fuzzy
-#| msgid "Choose weapon:"
 msgid "Choose an icon"
-msgstr "Выберите оружие:"
+msgstr "Выберите иконку"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:82
 msgid "lawful"
@@ -7641,7 +7525,7 @@ msgstr "Веснот $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:229
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$active активно, $reserve зарезервировано"
 
 #: src/gui/dialogs/game_load.cpp:278
 msgid "The selected file is corrupt: "
@@ -7696,10 +7580,8 @@ msgid "controller^Idle"
 msgstr "Играет: не занято"
 
 #: src/gui/dialogs/game_stats.cpp:63
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Играет: никто"
+msgstr "Зарезервировано"
 
 #: src/gui/dialogs/game_stats.cpp:102 src/gui/dialogs/label_settings.cpp:76
 msgid "Unknown"
@@ -8046,10 +7928,8 @@ msgid "Lobby"
 msgstr "Лобби"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:49
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
-msgstr "Игры"
+msgstr "Игра"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:514
 msgid "Waiting for players to choose factions..."
@@ -8147,10 +8027,8 @@ msgstr ""
 "принятых попаданий."
 
 #: src/gui/dialogs/statistics_dialog.cpp:367
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
-msgstr "Вербовки"
+msgstr "Рекруты"
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
 msgid "Recalls"
@@ -8187,10 +8065,8 @@ msgid "Screenshot"
 msgstr "Сделать скриншот"
 
 #: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:303
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Выберите стартовый сценарий"
+msgstr "Выберите пробный сценарий"
 
 #: src/gui/dialogs/unit_create.cpp:190
 msgid "unit_variation^Default Variation"
@@ -9136,13 +9012,11 @@ msgstr "Добавить область"
 
 #: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Редактор публикации аддона"
 
 #: src/hotkey/hotkey_command.cpp:273
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Управление аддонами"
+msgstr "Изменить ID аддона"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"
@@ -9307,10 +9181,8 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
 
-#, fuzzy
-#~| msgid "Beach Sands"
 #~ msgid "Rocky Sands"
-#~ msgstr "Пляжный песок"
+#~ msgstr "Скалистые пески"
 
 #~ msgid "Sands"
 #~ msgstr "Пески"
@@ -9331,10 +9203,8 @@ msgstr "В разделе '[$section|]' не задан обязательный
 #~ "Исходы сражений сильнее соответствуют указанным вероятностям, и не "
 #~ "изменяются перезапуском"
 
-#, fuzzy
-#~| msgid "Add-ons"
 #~ msgid "Add-on ID"
-#~ msgstr "Аддоны"
+#~ msgstr "ID Аддона"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Какой язык предпочитаете:"
