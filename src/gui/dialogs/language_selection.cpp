@@ -34,6 +34,8 @@ namespace
 
 const std::string translations_wiki_url = "https://wiki.wesnoth.org/WesnothTranslations";
 
+const std::string translations_stats_url = "https://gettext.wesnoth.org/";
+
 }
 
 REGISTER_DIALOG(language_selection)
@@ -65,6 +67,7 @@ language_selection::language_selection()
 	register_bool("show_all", true, show_all);
 	// Markup needs to be enabled for the link to be highlighted
 	register_label("contrib_url", true, translations_wiki_url, true);
+	register_label("stats_url", true, translations_stats_url, true);
 }
 
 void language_selection::shown_filter_callback()
@@ -96,8 +99,13 @@ void language_selection::pre_show(window& window)
 		widget_data data;
 
 		data["language"]["label"] = lang.language;
+		data["language"]["use_markup"] = "true";
 		data["translated_total"]["label"] = "<span color='" + game_config::red_to_green(lang.percent).to_hex_string() + "'>" + std::to_string(lang.percent) + "%</span>";
 		data["translated_total"]["use_markup"] = "true";
+
+		if(game_config::debug && !lang.localename.empty()) {
+			data["language"]["label"] += "\n<small><tt>" + lang.localename + "</tt></small>";
+		}
 
 		list.add_row(data);
 

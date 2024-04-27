@@ -888,16 +888,31 @@ void unit::generate_traits(bool must_have_only)
 	random_traits_ = false;
 }
 
-std::vector<std::string> unit::get_traits_list() const
+std::vector<std::string> unit::get_modifications_list(const std::string& mod_type) const
 {
 	std::vector<std::string> res;
 
-	for(const config& mod : modifications_.child_range("trait"))
-	{
-			// Make sure to return empty id trait strings as otherwise
-			// names will not match in length (Bug #21967)
-			res.push_back(mod["id"]);
+	for(const config& mod : modifications_.child_range(mod_type)){
+		// Make sure to return empty id trait strings as otherwise
+		// names will not match in length (Bug #21967)
+		res.push_back(mod["id"]);
 	}
+	if(mod_type == "advancement"){
+		for(const config& mod : modifications_.child_range("advance")){
+			res.push_back(mod["id"]);
+		}
+	}
+	return res;
+}
+
+std::size_t unit::modification_count(const std::string& type) const
+{
+	//return numbers of modifications of same type, same without ID.
+	std::size_t res = modifications_.child_range(type).size();
+	if(type == "advancement"){
+		res += modification_count("advance");
+	}
+
 	return res;
 }
 
@@ -1764,12 +1779,8 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 	return def;
 }
 
-bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
+bool unit::resistance_filter_matches(const config& cfg, const std::string& damage_name, int res) const
 {
-	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
-		return false;
-	}
-
 	const std::string& apply_to = cfg["apply_to"];
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
@@ -1792,15 +1803,15 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	return true;
 }
 
-int unit::resistance_ability(unit_ability_list resistance_abilities, const std::string& damage_name, bool attacker) const
+int unit::resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const
 {
 	int res = movement_type_.resistance_against(damage_name);
-	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
-		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
+	utils::erase_if(resistance_list, [&](const unit_ability& i) {
+		return !resistance_filter_matches(*i.ability_cfg, damage_name, 100-res);
 	});
 
-	if(!resistance_abilities.empty()) {
-		unit_abilities::effect resist_effect(resistance_abilities, 100-res, nullptr, unit_abilities::EFFECT_CLAMP_MIN_MAX);
+	if(!resistance_list.empty()) {
+		unit_abilities::effect resist_effect(resistance_list, 100-res, nullptr, unit_abilities::EFFECT_CLAMP_MIN_MAX);
 
 		res = 100 - resist_effect.get_composite_value();
 	}
@@ -1808,22 +1819,37 @@ int unit::resistance_ability(unit_ability_list resistance_abilities, const std::
 	return res;
 }
 
-int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 {
-	std::pair<std::string, std::string> types;
+	if(!(!cfg.has_attribute("active_on") || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
+		return false;
+	}
+
+	return true;
+}
+
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	utils::erase_if(resistance_list, [&](const unit_ability& i) {
+		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
+	});
 	if(opp_weapon){
-		types = opp_weapon->damage_type();
-	} else{
-		types.first = damage_name;
+		unit_ability_list damage_type_list = opp_weapon->get_specials_and_abilities("damage_type");
+		if(damage_type_list.empty()){
+			return resistance_value(resistance_list, damage_name);
+		}
+		std::string replacement_type = opp_weapon->select_damage_type(damage_type_list, "replacement_type", resistance_list);
+		std::string type_damage = replacement_type.empty() ? damage_name : replacement_type;
+		int max_res = resistance_value(resistance_list, type_damage);
+		for(auto& i : damage_type_list) {
+			if((*i.ability_cfg).has_attribute("alternative_type")){
+				max_res = std::max(max_res , resistance_value(resistance_list, (*i.ability_cfg)["alternative_type"].str()));
+			}
+		}
+		return max_res;
 	}
-
-	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
-	int res = resistance_ability(resistance_abilities, types.first, attacker);
-	if(!(types.second).empty()){
-		res = std::max(res , resistance_ability(resistance_abilities, types.second, attacker));
-	}
-
-	return res;
+	return resistance_value(resistance_list, damage_name);
 }
 
 std::map<std::string, std::string> unit::advancement_icons() const
