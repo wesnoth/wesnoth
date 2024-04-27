@@ -27,6 +27,11 @@ namespace implementation
 struct builder_tab_container;
 }
 
+/**
+ * Class for a tabbed container
+ * A container widget that shows one of its pages of widgets 
+ * depending on which tab the user clicked.
+ */
 class tab_container : public container_base
 {
 	friend struct implementation::builder_tab_container;

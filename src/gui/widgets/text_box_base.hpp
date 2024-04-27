@@ -155,6 +155,10 @@ public:
 	 */
 	void set_selection(std::size_t start, int length);
 
+    /*
+     * Set or unset whether the text can be edited or note
+     * Text can only be copied and scroll when editable is false.
+     */
 	void set_editable(bool editable)
 	{
 		editable_ = editable;

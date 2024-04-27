@@ -306,10 +306,10 @@ void combobox::set_selected(unsigned selected, bool fire_event)
 
 void combobox::update_mouse_cursor()
 {
-	unsigned x = get_x() + this->get_size().x;
-	unsigned mx = get_mouse_position().x;
+	unsigned right_border = get_x() + this->get_size().x;
+	unsigned mouse_x = get_mouse_position().x;
 
-	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
+	if ((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)) {
 		cursor::set(cursor::NORMAL);
 	} else {
 		cursor::set(cursor::IBEAM);
@@ -345,12 +345,12 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 	/* get_x() is the left border
 	 * this->get_size().x is the size of this widget
 	 * so get_x() + this->get_size().x is the right border
-	 * ICON_SIZE is the size of the icon. */
+	 * ICON_SIZE is the size of the icon.*/
 
-	unsigned x = get_x() + this->get_size().x;
-	unsigned mx = get_mouse_position().x;
+	unsigned right_border = get_x() + this->get_size().x;
+	unsigned mouse_x = get_mouse_position().x;
 
-	if ((mx <= x) && (mx >= x-ICON_SIZE)) {
+	if ((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)) {
 		// If a button has a retval do the default handling.
 		dialogs::drop_down_menu droplist(this, values_, selected_, false);
 
@@ -410,8 +410,6 @@ combobox_definition::combobox_definition(const config& cfg)
 
 /**
  * @ingroup GUIWidgetDefinitionWML
- *
- * Class for a editable combobox.
  *
  * The resolution for a combobox also contains the following keys:
  * Key          |Type                                    |Default  |Description

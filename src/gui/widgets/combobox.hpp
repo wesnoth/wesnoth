@@ -28,6 +28,12 @@ struct builder_combobox;
 
 // ------------ WIDGET -----------{
 
+/**
+ * Class for a combobox.
+ * A widget that allows the user to input text or to select predefined options from a list
+ * accessed by clicking the dropdown arrow.
+ */
+
 class combobox : public text_box_base
 {
 	friend struct implementation::builder_combobox;
