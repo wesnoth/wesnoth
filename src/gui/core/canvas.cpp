@@ -480,6 +480,10 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	std::vector<std::string> colors = utils::split(attr_data_, ',');
 
 	for(size_t i = 0, col_index = 0; i < std::min(starts.size(), stops.size()); i++) {
+		if (styles.at(i).empty()) {
+			continue;
+		}
+
 		typed_formula<int> attr_start(starts.at(i));
 		typed_formula<int> attr_stop(stops.at(i));
 

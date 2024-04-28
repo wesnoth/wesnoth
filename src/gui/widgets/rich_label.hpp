@@ -230,6 +230,13 @@ private:
 	void default_text_config(config* txt_ptr, t_string text = "");
 
 	void add_text_with_attribute(config& text_cfg, std::string text, std::string attr_name = "", std::string extra_data = "");
+	void add_text_with_attributes(config& text_cfg, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
+
+	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
+		if (!key->str().empty()) {
+			*key = key->str() + suffix;
+		}
+	}
 
 	/** size calculation functions */
 	point get_text_size(config text_cfg, unsigned width = 0);

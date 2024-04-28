@@ -29,6 +29,7 @@
 #include "help/help_impl.hpp"
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
+#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>
@@ -103,11 +104,41 @@ void rich_label::add_text_with_attribute(config& text_cfg, std::string text, std
 	text_cfg["text"] = text_cfg["text"].str() + text;
 
 	if (!attr_name.empty()) {
-		text_cfg["attr_name"] = (text_cfg["attr_name"].str().empty() ? "" : (text_cfg["attr_name"].str() + ",")) + attr_name;
-		text_cfg["attr_start"] = (text_cfg["attr_start"].str().empty() ? "" : (text_cfg["attr_start"].str() + ",")) +  std::to_string(start);
-		text_cfg["attr_end"] = (text_cfg["attr_end"].str().empty() ? "" : (text_cfg["attr_end"].str() + ",")) + std::to_string(text_cfg["text"].str().size());
+		append_if_not_empty(&text_cfg["attr_name"], ",");
+		text_cfg["attr_name"] = text_cfg["attr_name"].str() + attr_name;
+
+		append_if_not_empty(&text_cfg["attr_start"], ",");
+		text_cfg["attr_start"] = text_cfg["attr_start"].str() + std::to_string(start);
+
+		append_if_not_empty(&text_cfg["attr_end"], ",");
+		text_cfg["attr_end"] = text_cfg["attr_end"].str() + std::to_string(text_cfg["text"].str().size());
+
 		if (!extra_data.empty()) {
-			text_cfg["attr_data"] = (text_cfg["attr_data"].str().empty() ? "" : (text_cfg["attr_data"].str() + ",")) + extra_data;
+			append_if_not_empty(&text_cfg["attr_data"], ",");
+			text_cfg["attr_data"] = text_cfg["attr_data"].str() + extra_data;
+		}
+	}
+}
+
+void rich_label::add_text_with_attributes(config& text_cfg, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data) {
+
+	size_t start = text_cfg["text"].str().size();
+	text_cfg["text"] = text_cfg["text"].str() + text;
+
+	if (!attr_names.empty()) {
+		append_if_not_empty(&text_cfg["attr_name"], ",");
+		text_cfg["attr_name"] = text_cfg["attr_name"].str() + utils::join(attr_names);
+
+		for (size_t i = 0; i < attr_names.size(); i++) {
+			append_if_not_empty(&text_cfg["attr_start"], ",");
+			text_cfg["attr_start"] = text_cfg["attr_start"].str() + std::to_string(start);
+			append_if_not_empty(&text_cfg["attr_end"], ",");
+			text_cfg["attr_end"] = text_cfg["attr_end"].str() + std::to_string(text_cfg["text"].str().size());
+		}
+
+		if (!extra_data.empty()) {
+			append_if_not_empty(&text_cfg["attr_data"], ",");
+			text_cfg["attr_data"] = text_cfg["attr_data"].str() + utils::join(extra_data);
 		}
 	}
 }
@@ -133,7 +164,7 @@ void rich_label::set_label(const t_string& text)
 	text_dom_.clear();
 	links_.clear();
 	help::topic_text marked_up_text(text);
-	std::vector<std::string> parsed_text =  marked_up_text.parsed_text();
+	std::vector<std::string> parsed_text = marked_up_text.parsed_text();
 
 	config* curr_item = nullptr;
 
@@ -265,8 +296,6 @@ void rich_label::set_label(const t_string& text)
 				if (cfg.optional_child("ref")) {
 					setup_text_renderer(*curr_item, w_ - img_size.x);
 					PLAIN_LOG << "(ref, start) x :" << x_ << ", y :" << y_;
-//					PLAIN_LOG << "(ref, start) tx :" << prev_block_size.x << ", ty :" << tmp_h;
-//					PLAIN_LOG << "(ref, start) pth :" << prev_txt_height_;
 
 					point t_start = get_xy_from_offset((*curr_item)["text"].str().size());
 					PLAIN_LOG << "(t_s) "<< t_start.x << ", " << t_start.y;
@@ -367,119 +396,52 @@ void rich_label::set_label(const t_string& text)
 
 				} else if (cfg.optional_child("header")||cfg.optional_child("h")) {
 					// Header starts in a new line/paragraph
-//					if (is_image) {
-//						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + " + std::to_string(padding_) + ")])";
-//					}
-//
-//					prev_txt_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
-//					txt_height_ = 0;
-//
-//					PLAIN_LOG << img_start.x << ", " << img_start.y;
-//					PLAIN_LOG << img_size.x << ", " << img_size.y;
-//					PLAIN_LOG << prev_text_height_;
-//					if (!is_image) {
-//						if (img_start.y + img_size.y < prev_txt_height_) {
-//							(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + text_height + " + std::to_string(padding_) + ")])";
-//						} else {
-//							(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + " + std::to_string(img_size.y) + " + " + std::to_string(padding_) + ")])";
-//						}
-//					}
-//
-//					// Header config
-//					curr_item = &(text_dom_.add_child("text"));
-//					default_text_config(curr_item);
 
-					size_t start = (*curr_item)["text"].str().size();
+					append_if_not_empty(&((*curr_item)["text"]), "\n");
+					append_if_not_empty(&((*curr_item)["attr_name"]), ",");
+					append_if_not_empty(&((*curr_item)["attr_start"]), ",");
+					append_if_not_empty(&((*curr_item)["attr_end"]), ",");
+					append_if_not_empty(&((*curr_item)["attr_data"]), ",");
 
-					if (!(*curr_item)["text"].str().empty()) {
-						(*curr_item)["text"] = (*curr_item)["text"].str() + "\n";
-					}
-
-					if (!(*curr_item)["attr_name"].str().empty()) {
-						(*curr_item)["attr_name"] = (*curr_item)["attr_name"].str() + ",";
-					}
-					if (!(*curr_item)["attr_start"].str().empty()) {
-						(*curr_item)["attr_start"] = (*curr_item)["attr_start"].str() + ",";
-					}
-					if (!(*curr_item)["attr_end"].str().empty()) {
-						(*curr_item)["attr_end"] = (*curr_item)["attr_end"].str() + ",";
-					}
-					if (!(*curr_item)["attr_data"].str().empty()) {
-						(*curr_item)["attr_data"] = (*curr_item)["attr_data"].str() + ",";
-					}
-
+					std::stringstream header_text;
 					if (cfg.optional_child("header")) {
-						(*curr_item)["text"] = (*curr_item)["text"].str() + cfg.mandatory_child("header")["text"] + "\n";
+						header_text << cfg.mandatory_child("header")["text"].str() + "\n";
 					} else if (cfg.optional_child("h")) {
-						(*curr_item)["text"] = (*curr_item)["text"].str() + cfg.mandatory_child("h")["text"] + "\n";
+						header_text << cfg.mandatory_child("h")["text"].str() + "\n";
 					}
-					(*curr_item)["attr_name"] = (*curr_item)["attr_name"].str() + "color,size";
-					(*curr_item)["attr_start"] =
-							(*curr_item)["attr_start"].str()
-							+ std::to_string(start)
-							+ ","
-							+ std::to_string(start);
 
-					(*curr_item)["attr_end"] =
-							(*curr_item)["attr_end"].str()
-							+ std::to_string((*curr_item)["text"].str().size())
-							+ ","
-							+ std::to_string((*curr_item)["text"].str().size());
+					std::vector<std::string> attrs = {"color", "size"};
+					std::vector<std::string> attr_data;
+					attr_data.push_back(font::TITLE_COLOR.to_hex_string().substr(1));
+					attr_data.push_back(std::to_string(font::SIZE_TITLE));
 
-					(*curr_item)["attr_data"] =
-							(*curr_item)["attr_data"]
-							+ font::TITLE_COLOR.to_hex_string().substr(1)
-							+ ","
-							+ std::to_string(font::SIZE_TITLE);
+					add_text_with_attributes((*curr_item), header_text.str(), attrs, attr_data);
 
 					is_image = false;
 
 					PLAIN_LOG << "(header) x :" << x_ << " y :" << y_;
 
-					is_image = false;
-
-					PLAIN_LOG << "(header) x: " << x_ << " y:" << y_;
-
 				} else if(cfg.optional_child("span")||cfg.optional_child("format")) {
 					//TODO add bold, italic and underline
 				
-					config& span_cfg = cfg.mandatory_child("span");
-					size_t start = (*curr_item)["text"].str().size();
-					PLAIN_LOG << (*curr_item)["text"];
-					(*curr_item)["text"] = span_cfg["text"].str();
-					size_t end = (*curr_item)["text"].str().size();
-
-					PLAIN_LOG << span_cfg["text"];
-					PLAIN_LOG << (*curr_item)["text"];
-
-					std::stringstream attrs;
-					std::stringstream attr_start;
-					std::stringstream attr_end;
-					std::stringstream attr_data;
-
-					size_t i = 1;
-					for (const auto& attr : span_cfg.attribute_range()) {
-						if (attr.first != "text") {
-							PLAIN_LOG << attr.first << "," << attr.second;
-							attrs << attr.first;
-							attr_start << start;
-							attr_end << end;
-							attr_data << attr.second;
-							if (i != span_cfg.attribute_count() - 1) {
-								PLAIN_LOG << i << "," << span_cfg.attribute_count();
-								attrs << ",";
-								attr_start << ",";
-								attr_end << ",";
-								attr_data << ",";
-							}
-						}
-						i++;
+					config* span_cfg = nullptr;
+					if (cfg.optional_child("span")) {
+						span_cfg = &cfg.mandatory_child("span");
+					} else if (cfg.optional_child("format")) {
+						span_cfg = &cfg.mandatory_child("format");
 					}
 
-					(*curr_item)["attr_name"] = attrs.str();
-					(*curr_item)["attr_start"] = attr_start.str();
-					(*curr_item)["attr_end"] = attr_end.str();
-					(*curr_item)["attr_data"] = attr_data.str();
+					std::vector<std::string> attrs;
+					std::vector<std::string> attr_data;
+
+					for (const auto& attr : span_cfg->attribute_range()) {
+						if (attr.first != "text") {
+							attrs.push_back(attr.first);
+							attr_data.push_back(attr.second);
+						}
+					}
+
+					add_text_with_attributes((*curr_item), (*span_cfg)["text"], attrs, attr_data);
 
 					PLAIN_LOG << curr_item->debug();
 
