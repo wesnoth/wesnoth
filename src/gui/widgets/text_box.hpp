@@ -119,7 +119,6 @@ private:
 };
 
 /**
- * Class for a single line text area.
  * A widget that allows the user to input text in single line
  */
 class text_box : public text_box_base

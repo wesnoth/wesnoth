@@ -119,8 +119,8 @@ tab_container_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is tab_container.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for tab container control")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for tab container control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("tab_container_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("tab_container_definition][resolution", "state_disabled")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for tab container control"));
 	grid = std::make_shared<builder_grid>(child);
