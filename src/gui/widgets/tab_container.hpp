@@ -55,8 +55,6 @@ public:
 
 	void select_tab(unsigned index);
 
-//	std::unique_ptr<widget> get_t(unsigned index);
-
 	unsigned get_tab_count() {
 		return builders_.size();
 	}
