@@ -23,17 +23,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Offers a list of compatible items if a currently selected one is incompatible. Currently used for switching era or map.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * message           | @ref label   |yes      |displays the details of the required changes
- * itemlist          | @ref listbox |yes      |displays the available items to choose from
- * cancel            | @ref button  |yes      |refuse to apply any changes
- * ok                | @ref button  |yes      |select the chosen item
- */
 class depcheck_select_new : public modal_dialog
 {
 public:

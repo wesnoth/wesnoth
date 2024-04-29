@@ -19,15 +19,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to provide a password when uploading an add-on.
- *
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * password          | text_box      |yes      |The password used to verify the uploader.
- */
 class addon_auth : public modal_dialog
 {
 public:

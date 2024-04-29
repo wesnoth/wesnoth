@@ -29,32 +29,6 @@ struct builder_slider;
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A slider is a control that can select a value by moving a grip on a groove.
- * Key                      |Type                                |Default  |Description
- * -------------------------|------------------------------------|---------|-----------
- * minimum_positioner_length| @ref guivartype_unsigned "unsigned"|mandatory|The minimum size the positioner is allowed to be. The engine needs to know this in order to calculate the best size for the positioner.
- * maximum_positioner_length| @ref guivartype_unsigned "unsigned"|0        |The maximum size the positioner is allowed to be. If minimum and maximum are the same value the positioner is fixed size. If the maximum is 0 (and the minimum not) there's no maximum.
- * left_offset              | @ref guivartype_unsigned "unsigned"|0        |The number of pixels at the left side which can't be used by the positioner.
- * right_offset             | @ref guivartype_unsigned "unsigned"|0        |The number of pixels at the right side which can't be used by the positioner.
- * Variables:
- * Key                      |Type                                |Default  |Description
- * -------------------------|------------------------------------|---------|-----------
- * best_slider_length       | @ref guivartype_unsigned "unsigned"|0        |The best length for the sliding part.
- * minimum_value            | @ref guivartype_int "int"          |0        |The minimum value the slider can have.
- * maximum_value            | @ref guivartype_int "int"          |0        |The maximum value the slider can have.
- * step_size                | @ref guivartype_unsigned "unsigned"|0        |The number of items the slider's value increases with one step.
- * value                    | @ref guivartype_int "int"          |0        |The value of the slider.
- * minimum_value_label      | @ref guivartype_t_string "t_string"|""       |If the minimum value is chosen there might be the need for a special value (eg off). When this key has a value that value will be shown if the minimum is selected.
- * maximum_value_label      | @ref guivartype_t_string "t_string"|""       |If the maximum value is chosen there might be the need for a special value (eg unlimited)). When this key has a value that value will be shown if the maximum is selected.
- * The following states exist:
- * * state_enabled - the slider is enabled.
- * * state_disabled - the slider is disabled.
- * * state_pressed - the left mouse button is down on the positioner of the slider.
- * * state_focussed - the mouse is over the positioner of the slider.
- */
 class slider : public slider_base, public integer_selector
 {
 	friend struct implementation::builder_slider;
