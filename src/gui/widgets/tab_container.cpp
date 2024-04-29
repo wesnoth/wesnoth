@@ -23,7 +23,7 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/stacked_widget.hpp"
+//#include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
