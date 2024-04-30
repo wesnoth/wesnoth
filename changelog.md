@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Descent into Darkness
+     * S3: player now no longer gains any exp upon killing rats and crawlers, buffed puzzle exp to compensate
  ### Editor
  ### Multiplayer
  ### Lua API
