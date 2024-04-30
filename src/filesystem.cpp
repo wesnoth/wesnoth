@@ -670,6 +670,11 @@ void set_user_data_dir(std::string newprefdir)
 		newprefdir = PREFERENCES_DIR;
 		relative_ok = true;
 	}
+#elif defined(__APPLE__)
+	if(newprefdir.empty()) {
+		newprefdir = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
+		relative_ok = true;
+	}
 #endif
 
 #ifdef _WIN32
