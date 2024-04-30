@@ -19,21 +19,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows a dialog displaying community links.
- *
- * Key    |Type    |Mandatory|Description
- * -------|--------|---------|-----------
- * forums |button  |yes      |Links to the Wesnoth forums
- * discord|button  |yes      |Links to the Wesnoth Discord server
- * irc    |button  |yes      |Links to a web client for the Wesnoth IRC channels
- * steam  |button  |yes      |Links to the Wesnoth Steam forums
- * reddit |button  |yes      |Links to the Wesnoth sub-reddit
- * donate |button  |yes      |Links to the SPI donation page for Wesnoth
- */
-
 class community_dialog : public modal_dialog
 {
 public:
