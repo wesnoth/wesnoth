@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -57,7 +57,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, h_(0)
 	, x_(0)
 	, y_(0)
-	, padding_(0)
+	, padding_(5)
 	, txt_height_(0)
 	, prev_txt_height_(0)
 {
@@ -158,7 +158,7 @@ size_t rich_label::get_split_location(int img_height) {
 void rich_label::set_label(const t_string& text)
 {
 	// Initialization
-	w_ = 800;
+	w_ = 800; // TODO test without fixed width
 	h_ = 0;
 	unparsed_text_ = text;
 	text_dom_.clear();
@@ -211,15 +211,16 @@ void rich_label::set_label(const t_string& text)
 					}
 				}
 
-//				if (floating) {
-//					(*curr_item)["y"] = "(img_y)";
-//				} else {
-					(*curr_item)["y"] = "(pos_y)";
-//				}
+				(*curr_item)["y"] = "(pos_y)";
 				(*curr_item)["h"] = "(image_height)";
 				(*curr_item)["w"] = "(image_width)";
 
-				bool break_line = cfg.mandatory_child("img")["break"].to_bool();
+				bool break_line = true;
+				if (cfg.mandatory_child("img").has_attribute("break")) {
+					break_line = cfg.mandatory_child("img")["break"].to_bool();
+					PLAIN_LOG << break_line;
+				}
+				PLAIN_LOG << break_line;
 
 				// Sizing
 				if (floating) {
@@ -256,8 +257,10 @@ void rich_label::set_label(const t_string& text)
 						actions << "set_var('pos_x', 0)";
 					}
 				}
+
 				if (break_line) {
 					actions << "," << "set_var('pos_y', pos_y + image_height + " + std::to_string(padding_) + ")";
+					x_ = 0;
 				}
 				actions << "])";
 
@@ -272,6 +275,7 @@ void rich_label::set_label(const t_string& text)
 				}
 
 				PLAIN_LOG << "(img) x :" << x_ << ", y :" << y_ << ", h: " << h_;
+				PLAIN_LOG << (*curr_item).debug();
 
 			} else {
 				if (curr_item == nullptr || new_text_block) {
@@ -294,8 +298,8 @@ void rich_label::set_label(const t_string& text)
 				int tmp_h = prev_block_size.y;
 
 				if (cfg.optional_child("ref")) {
-					setup_text_renderer(*curr_item, w_ - img_size.x);
-					PLAIN_LOG << "(ref, start) x :" << x_ << ", y :" << y_;
+					setup_text_renderer(*curr_item, w_ - x_);
+					PLAIN_LOG << "(ref, start) x :" << x_;
 
 					point t_start = get_xy_from_offset((*curr_item)["text"].str().size());
 					PLAIN_LOG << "(t_s) "<< t_start.x << ", " << t_start.y;
@@ -305,17 +309,17 @@ void rich_label::set_label(const t_string& text)
 
 					add_text_with_attribute((*curr_item), link_text, "color", font::YELLOW_COLOR.to_hex_string().substr(1));
 
-					setup_text_renderer(*curr_item, w_ - img_size.x);
+					setup_text_renderer(*curr_item, w_ - x_);
 					point t_end = get_xy_from_offset((*curr_item)["text"].str().size());
-					PLAIN_LOG << "(t_e) "<< t_end.x << ", " << t_end.y;
 
 					// TODO Needs to be adjusted if ref's font size is changed
-					point link_start(x_ + t_start.x, prev_txt_height_ + t_start.y);
+					// x_ = 0 means the text started at a new line or break_line = yes
+					point link_start(x_ + t_start.x, (x_ > 0 ? 0 : prev_txt_height_) + t_start.y);
 					t_end.y += font::get_max_height(font::SIZE_NORMAL);
 					PLAIN_LOG << "(t_e) "<< t_end.x << ", " << t_end.y;
 
 					// Add link
-					// TODO only works if text is on the right side of the image
+					// FIXME only works if text is on the right side of the image
 					if (t_end.x < static_cast<int>(w_)) {
 						point link_size = t_end - t_start;
 						rect link_rect = {
