@@ -294,7 +294,7 @@ private:
 	std::string attr_end_;
 
 	/**
-	 * The attribute type 
+	 * The attribute type
 	 * Possible values :
 	 *  color/foreground, bgcolor/background, font_size/size,
 	 *  bold, italic, underline
