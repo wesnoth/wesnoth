@@ -89,14 +89,13 @@ void story_viewer::pre_show(window& window)
 	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
-	// text_layout=top set
-//	connect_signal_mouse_left_click(find_widget<button>(&window, "cancel2", false),
-//			std::bind(&story_viewer::close, this));
-
 	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
 	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
+		
+	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
+	text_label.connect_signal_left_click(std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
 
 	// Tell the game display not to draw
 	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
@@ -272,15 +271,12 @@ void story_viewer::display_part()
 	switch(current_part_->story_text_location()) {
 
 		case storyscreen::part::BLOCK_TOP:
-
 			new_panel_mode = "top";
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
-
 			new_panel_mode = "center";
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
-
 			new_panel_mode = "bottom";
 			break;
 	}
@@ -300,9 +296,6 @@ void story_viewer::display_part()
 	const std::string& part_text = current_part_->text();
 
 	if(part_text.empty() || !has_background) {
-		// Move skip button to the bottom so that it doesn't interfere with the image
-//		set_skip_button_visibility(storyscreen::part::BLOCK_TOP);
-
 		// No text or no background for this part, hide the background layer.
 		text_stack.select_layer(LAYER_TEXT);
 	} else if(text_stack.current_layer() != -1)  {
@@ -315,7 +308,7 @@ void story_viewer::display_part()
 
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
 
-	// Hardcoded max width, should be made customizable
+	// TODO Hardcoded max width, should be made customizable
 	// preferably as an key to [part]
 	unsigned win_width = get_window()->get_size().x;
 	unsigned best_text_width = (win_width < 1500) ? win_width/1.5 : 800;

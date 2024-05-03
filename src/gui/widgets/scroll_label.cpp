@@ -49,6 +49,11 @@ scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
 		event::dispatcher::back_pre_child);
 }
 
+void scroll_label::connect_signal_left_click(std::function<void()> click_handler)
+{
+	click_handler_ = click_handler;
+}
+
 label* scroll_label::get_internal_label()
 {
 	if(content_grid()) {
@@ -157,6 +162,8 @@ void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	get_window()->keyboard_capture(this);
+	
+	click_handler_();
 }
 
 // }---------- DEFINITION ---------{
