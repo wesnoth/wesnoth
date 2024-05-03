@@ -29,16 +29,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * The dialog for selecting which random generator to use in the editor.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * generators_list   | @ref listbox |yes      |Listbox displaying known map generators.
- * settings          | @ref button  |yes      |When clicked this button opens the generator settings dialog.
- * seed_textbox      | text_box     |yes      |Allows entering a seed for the map generator.
- */
 class editor_generate_map : public modal_dialog
 {
 public:

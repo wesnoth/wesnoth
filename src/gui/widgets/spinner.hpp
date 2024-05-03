@@ -34,35 +34,6 @@ namespace implementation
 struct builder_spinner;
 }
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Spinner widget.
- *
- * A widget with a text_box and two button (named _prev and _next) that allows user to increase
- * or decrease the numeric value inside the text_box. Non-numeric values are considered as zero.
- *
- * Key          |Type                        |Default  |Description
- * -------------|----------------------------|---------|-----------
- * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
- *
- * TODO: we need one definition for a vertical scrollbar since this is the second time we use it.
- *
- * ID (return value)|Type                            |Default  |Description
- * -----------------|--------------------------------|---------|-----------
- * _content_grid    | @ref guivartype_grid "grid"    |mandatory|A grid which should contain a text_box and two buttons.
- *
- * Description of necessary widgets contained inside _content_grid :
- *
- * ID (return value)|Type                            |Default  |Description
- * -----------------|--------------------------------|---------|-----------
- * _text            | @ref gui2::text_box            |mandatory|The text_box that shows the value.
- * _prev            | @ref gui2::button              |mandatory|The previous button, clicking on it decreases value by 1.
- * _next            | @ref gui2::button              |mandatory|The next button, clicking on it increases value by 1.
- * The following states exist:
- * * state_enabled - the spinner is enabled.
- * * state_disabled - the spinner is disabled.
- */
 class spinner : public container_base
 {
 	friend struct implementation::builder_spinner;

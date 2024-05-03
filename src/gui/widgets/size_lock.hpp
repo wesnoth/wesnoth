@@ -29,22 +29,6 @@ namespace implementation
 struct builder_size_lock;
 }
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A fixed-size widget that wraps an arbitrary widget and forces it to the given size.
- *
- * A size lock contains one child widget and forces it to have the specified size.
- * This can be used, for example, when there are two list boxes in different rows of the same grid
- * and it's desired that only one list box changes size when its contents change.
- *
- * A size lock has no states.
- * Key          |Type                                    |Default  |Description
- * -------------|----------------------------------------|---------|-----------
- * widget       | @ref guivartype_section "section"      |mandatory|The widget.
- * width        | @ref guivartype_f_unsigned "f_unsigned"|mandatory|The width of the widget.
- * height       | @ref guivartype_f_unsigned "f_unsigned"|mandatory|The height of the widget.
- */
 class size_lock : public container_base
 {
 	friend struct implementation::builder_size_lock;

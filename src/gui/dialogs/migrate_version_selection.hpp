@@ -19,8 +19,6 @@
 namespace gui2::dialogs
 {
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * This shows the dialog to select a previous version of Wesnoth to migrate preferences from and redownload add-ons.
  */
 class migrate_version_selection : public modal_dialog

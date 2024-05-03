@@ -190,8 +190,8 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	}
 
 	// 0.3 Not a .map or .cfg file
-	if(!filesystem::ends_with(filename, ".map") && !filesystem::ends_with(filename, ".cfg")) {
-		std::string message = _("File does not have .map or .cfg extension");
+	if(!filesystem::ends_with(filename, ".map") && !filesystem::ends_with(filename, ".cfg") && !filesystem::ends_with(filename, ".mask")) {
+		std::string message = _("File does not have .map, .cfg, or .mask extension");
 		throw editor_map_load_exception(filename, message);
 	}
 

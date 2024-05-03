@@ -32,8 +32,6 @@ namespace dialogs
 {
 
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * Dialog that allows user to create custom unit types.
  */
 class editor_edit_unit : public modal_dialog
