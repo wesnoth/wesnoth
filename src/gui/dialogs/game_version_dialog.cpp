@@ -50,7 +50,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(game_version)
 
-game_version::game_version()
+game_version::game_version(unsigned start_page)
 	: modal_dialog(window_id())
 	, path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
@@ -60,6 +60,7 @@ game_version::game_version()
 	, deps_()
 	, opts_(game_config::optional_features_table())
 	, report_()
+	, start_page_(start_page)
 {
 	// NOTE: these path_map_ entries are referenced by the GUI2 WML
 	// definition of this dialog using preprocessor macros.
@@ -211,6 +212,18 @@ void game_version::pre_show(window& window)
 
 	opts_listbox.select_row(0);
 	list_data.clear();
+	
+	//
+	// Community tab
+	//
+	pager.select_layer(4);
+	
+	connect_signal_mouse_left_click(find_widget<button>(&window, "forums", false), std::bind(&desktop::open_object, "https://forums.wesnoth.org/"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "discord", false), std::bind(&desktop::open_object, "https://discord.gg/battleforwesnoth"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "irc", false), std::bind(&desktop::open_object, "https://web.libera.chat/#wesnoth"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "steam", false), std::bind(&desktop::open_object, "https://steamcommunity.com/app/599390/discussions/"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "reddit", false), std::bind(&desktop::open_object, "https://www.reddit.com/r/wesnoth/"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "donate", false), std::bind(&desktop::open_object, "https://www.spi-inc.org/projects/wesnoth/"));
 
 	//
 	// Set-up page stack and auxiliary controls last.
@@ -228,6 +241,14 @@ void game_version::pre_show(window& window)
 
 	connect_signal_notify_modified(tab_bar,
 		std::bind(&game_version::tab_switch_callback, this));
+	
+	if (start_page_ < pager.get_layer_count()) {
+		pager.select_layer(start_page_);
+	}
+	
+	if (start_page_ < tab_bar.get_item_count()) {
+		tab_bar.select_row(start_page_);
+	}
 }
 
 void game_version::tab_switch_callback()
@@ -253,6 +274,11 @@ void game_version::copy_to_clipboard_callback(const std::string& path)
 void game_version::report_copy_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
+	
+	stacked_widget& pager = find_widget<stacked_widget>(get_window(), "tabs_container", false);
+	button& copy_all = find_widget<button>(pager.get_layer_grid(0), "copy_all", false);
+	copy_all.set_label(_("✔ Copied"));
+	copy_all.set_active(false);
 }
 
 void game_version::generate_plain_text_report()

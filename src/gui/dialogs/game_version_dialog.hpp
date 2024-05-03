@@ -47,7 +47,7 @@ public:
 	/**
 	 * Constructor.
 	 */
-	game_version();
+	game_version(unsigned start_page = 0);
 
 	/**
 	 * The display function.
@@ -72,6 +72,8 @@ private:
 	std::vector<game_config::optional_feature> opts_;
 
 	std::string report_;
+	
+	unsigned start_page_;
 
 	void generate_plain_text_report();
 
