@@ -38,24 +38,17 @@ class tab_container : public container_base
 public:
 	explicit tab_container(const implementation::builder_tab_container& builder);
 
-	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
+	/* **** ***** ***** setters / getters for members ***** ****** **** */
 
-	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	bool can_wrap() const override;
 
-	void add_tab_entry(const widget_data row);
-
 	void select_tab(unsigned index);
-
-//	std::unique_ptr<widget> get_t(unsigned index);
 
 	unsigned get_tab_count() {
 		return builders_.size();
@@ -82,12 +75,14 @@ private:
 	builder_grid_map builders_;
 	std::vector<widget_data> list_items_;
 
-    /** Get the listbox inside which the tabs are shown */
+	/** Get the listbox inside which the tabs are shown */
 	listbox& get_internal_list();
 
-	void finalize_setup();
+	void add_tab_entry(const widget_data row);
 
 	void change_selection();
+
+	void finalize_setup();
 
 	void set_items(std::vector<widget_data> list_items)
 	{

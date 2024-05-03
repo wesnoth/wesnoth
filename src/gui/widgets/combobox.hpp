@@ -16,7 +16,6 @@
 #pragma once
 
 #include "gui/widgets/text_box_base.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 
 namespace gui2
@@ -41,10 +40,6 @@ class combobox : public text_box_base
 public:
 	explicit combobox(const implementation::builder_styled_widget& builder);
 
-	std::vector<::config> values_;
-
-	unsigned selected_;
-
 	void set_max_input_length(const std::size_t length)
 	{
 		max_input_length_ = length;
@@ -68,32 +63,26 @@ public:
 	void set_selected(unsigned selected, bool fire_event = true);
 
 protected:
-	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+	/* **** ***** ***** ***** layout functions ***** ***** ***** **** */
 
-	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+	/* **** ***** ***** ***** Inherited ***** ***** ***** **** */
 
-	/** See @ref styled_widget::update_canvas. */
 	virtual void update_canvas() override;
 
-	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
 		goto_end_of_data(select);
 	}
 
-	/** Inherited from text_box_base. */
 	void goto_start_of_line(const bool select = false) override
 	{
 		goto_start_of_data(select);
 	}
 
-	/** Inherited from text_box_base. */
 	void delete_char(const bool before_cursor) override;
 
-	/** Inherited from text_box_base. */
 	void delete_selection() override;
 
 	void handle_mouse_selection(point mouse, const bool start_selection);
@@ -141,6 +130,10 @@ private:
 
 	/** Image (such as a magnifying glass) that accompanies the help text. */
 	std::string hint_image_;
+
+	std::vector<::config> values_;
+
+	unsigned selected_;
 
 	/**
 	 * Inherited from text_box_base.

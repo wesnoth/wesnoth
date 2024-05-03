@@ -17,16 +17,17 @@
 
 #include "gui/widgets/combobox.hpp"
 
+#include "cursor.hpp"
+#include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/game.hpp"
 #include "serialization/unicode.hpp"
-#include <functional>
-#include "cursor.hpp"
 #include "wml_exception.hpp"
-#include "gettext.hpp"
+
+#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -88,7 +89,7 @@ void combobox::place(const point& origin, const point& size)
 
 void combobox::update_canvas()
 {
-	/***** Gather the info *****/
+	// Gather the info
 
 	// Set the cursor info.
 	const unsigned start = get_selection_start();
@@ -114,7 +115,7 @@ void combobox::update_canvas()
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
 	if(length == 0) {
-		// No nothing.
+		// Do nothing.
 	} else if(length > 0) {
 		start_offset = get_cursor_position(start).x;
 		end_offset = get_cursor_position(start + length).x;
@@ -127,7 +128,7 @@ void combobox::update_canvas()
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
 	if(edit_length == 0) {
-		// No nothing.
+		// Do nothing.
 	} else if(edit_length > 0) {
 		comp_start_offset = get_cursor_position(edit_start).x;
 		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
@@ -136,7 +137,7 @@ void combobox::update_canvas()
 		comp_end_offset = get_cursor_position(edit_start).x;
 	}
 
-	/***** Set in all canvases *****/
+	// Set in all canvases
 
 	const int max_width = get_text_maximum_width() - ICON_SIZE;
 	const int max_height = get_text_maximum_height();
@@ -235,8 +236,7 @@ void combobox::update_offsets()
 	text_x_offset_ = conf->text_x_offset(variables);
 	text_y_offset_ = conf->text_y_offset(variables);
 
-	// Since this variable doesn't change set it here instead of in
-	// update_canvas().
+	// Since this variable doesn't change set it here instead of in update_canvas().
 	for(auto & tmp : get_canvases())
 	{
 		tmp.set_variable("text_font_height", wfl::variant(text_height_));
@@ -282,7 +282,6 @@ void combobox::set_values(const std::vector<::config>& values, unsigned selected
 	values_ = values;
 	selected_ = selected;
 
-//	set_label(values_[selected_]["label"]);
 	text_box_base::set_value(values_[selected_]["label"]);
 }
 
@@ -297,7 +296,6 @@ void combobox::set_selected(unsigned selected, bool fire_event)
 
 	selected_ = selected;
 
-//	set_label(values_[selected_]["label"]);
 	text_box_base::set_value(values_[selected_]["label"]);
 	if (fire_event) {
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
@@ -366,10 +364,6 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 			set_selected(selected, true);
 		}
 	} else {
-		/*
-		 * Copied from the base class to see how we can do inheritance with the new
-		 * system...
-		 */
 		get_window()->keyboard_capture(this);
 		get_window()->mouse_capture();
 
@@ -408,15 +402,6 @@ combobox_definition::combobox_definition(const config& cfg)
 	load_resolutions<resolution>(cfg);
 }
 
-/**
- * @ingroup GUIWidgetDefinitionWML
- *
- * The resolution for a combobox also contains the following keys:
- * Key          |Type                                    |Default  |Description
- * -------------|----------------------------------------|---------|-----------
- * text_x_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The x offset of the text in the combo box. This is needed for the code to determine where in the text the mouse clicks, so it can set the cursor properly.
- * text_y_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The y offset of the text in the combo box.
- */
 combobox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, text_x_offset(cfg["text_x_offset"])
@@ -431,22 +416,6 @@ combobox_definition::resolution::resolution(const config& cfg)
 
 // }---------- BUILDER -----------{
 
-/*
- * @ingroup GUIWidgetInstanceWML
- *
- * The following states exist:
- * * state_enabled - the combobox is enabled.
- * * state_disabled - the combobox is disabled.
- * * state_focused - the combobox has the focus of the keyboard.
- * * state_hovered - mouse is hovering above the combobox
- * The following variables exist:
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-----------
- * label            | @ref guivartype_t_string "t_string"|""       |The initial text of the combobox.
- * max_input_length | @ref guivartype_f_int "int"        |0        |Maximum length of text in characters that can be entered into the combobox
- * hint_text        | @ref guivartype_t_string "t_string"|""       |Text that is shown in the background when there is no input
- * hint_image       | @ref guivartype_string "string"    |""       |Image that is shown in the background when there is no input
- */
 namespace implementation
 {
 
