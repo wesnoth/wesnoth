@@ -649,6 +649,9 @@ void editor_edit_unit::enable_movement_slider() {
 }
 
 void editor_edit_unit::store_attack() {
+	// Textdomain
+	std::string current_textdomain = "wesnoth-"+addon_id_;
+
 	// Save current attack data
 	if (selected_attack_ < 1) {
 		return;
@@ -659,7 +662,7 @@ void editor_edit_unit::store_attack() {
 	page.select_layer(2);
 
 	attack["name"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
-	attack["description"] = find_widget<text_box>(get_window(), "atk_name_box", false).get_value();
+	attack["description"] = t_string(find_widget<text_box>(get_window(), "atk_name_box", false).get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
 	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
 	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
@@ -741,12 +744,15 @@ void editor_edit_unit::update_index() {
 }
 
 void editor_edit_unit::add_attack() {
+	// Textdomain
+	std::string current_textdomain = "wesnoth-"+addon_id_;
+
 	config attack;
 
 	stacked_widget& page = find_widget<stacked_widget>(get_window(), "page", false);
 	page.select_layer(2);
 	attack["name"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
-	attack["description"] = find_widget<text_box>(get_window(), "atk_name_box", false).get_value();
+	attack["description"] = t_string(find_widget<text_box>(get_window(), "atk_name_box", false).get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
 	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
 	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
@@ -850,20 +856,6 @@ void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std:
 	out << "{" << macro_name << "}\n";
 }
 
-void editor_edit_unit::write_key_val(std::ostream& out, unsigned level, const std::string& key,	const config::attribute_value& value, const bool translatable)
-{
-	for(unsigned i = 0; i < level; i++)
-	{
-		out << "\t";
-	}
-
-	if (translatable) {
-		out << key << "=" << "_ \"" << value << "\"\n";
-	} else {
-		out << key << "=" << value << "\n";
-	}
-}
-
 void editor_edit_unit::update_wml_view() {
 	store_attack();
 	save_unit_type();
@@ -872,6 +864,7 @@ void editor_edit_unit::update_wml_view() {
 	page.select_layer(3);
 
 	std::stringstream wml_stream;
+	
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
 
@@ -889,11 +882,7 @@ void editor_edit_unit::update_wml_view() {
 
 		level++;
 		for (const auto& attr : type_cfg_.mandatory_child("unit_type").attribute_range()) {
-			if (attr.first == "name" || attr.first == "description") {
-				write_key_val(wml_stream, level, attr.first, attr.second, true);
-			} else {
-				write_key_val(wml_stream, level, attr.first, attr.second);
-			}
+			::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
 		}
 
 		// Abilities
@@ -914,11 +903,7 @@ void editor_edit_unit::update_wml_view() {
 				level++;
 				for (const auto& attr : atk.second.attribute_range()) {
 					if (!attr.second.empty()) {
-						if (attr.first == "description") {
-							write_key_val(wml_stream, level, attr.first, attr.second, true);
-						} else {
-							write_key_val(wml_stream, level, attr.first, attr.second);
-						}
+						::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
 					}
 				}
 
@@ -948,7 +933,7 @@ void editor_edit_unit::update_wml_view() {
 			int i = 0;
 			for (const auto& attr : movement_.attribute_range()) {
 				if (move_toggles_[i] == 1) {
-					write_key_val(wml_stream, level, attr.first, attr.second);
+					::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
 				}
 				i++;
 			}
@@ -963,7 +948,7 @@ void editor_edit_unit::update_wml_view() {
 			int i = 0;
 			for (const auto& attr : defenses_.attribute_range()) {
 				if (def_toggles_[i] == 1) {
-					write_key_val(wml_stream, level, attr.first, attr.second);
+					::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
 				}
 				i++;
 			}
@@ -978,7 +963,7 @@ void editor_edit_unit::update_wml_view() {
 			int i = 0;
 			for (const auto& attr : resistances_.attribute_range()) {
 				if (res_toggles_[i] == 1) {
-					write_key_val(wml_stream, level, attr.first, attr.second);
+					::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
 				}
 				i++;
 			}

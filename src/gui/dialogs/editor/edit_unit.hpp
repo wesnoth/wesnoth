@@ -89,10 +89,7 @@ private:
 
 	/** Write macro to a stream at specified tab level */
 	void write_macro(std::ostream& out, unsigned level, const std::string macro_name);
-
-	/** Write wml key-value pair at specified tab level */
-	void write_key_val(std::ostream& out, unsigned level, const std::string& key, const config::attribute_value& value, const bool translatable = false);
-
+	
 	/** Update wml preview */
 	void update_wml_view();
 
