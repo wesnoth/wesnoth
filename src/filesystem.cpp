@@ -669,11 +669,6 @@ bfs::path windows_userdata(const std::string& newprefdir)
 	if(temp.empty()) {
 		temp = PREFERENCES_DIR;
 	}
-#elif defined(__APPLE__)
-	if(newprefdir.empty()) {
-		newprefdir = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
-		relative_ok = true;
-	}
 #endif
 
 	// if a custom userdata directory is provided as an absolute path, just use that
@@ -736,7 +731,7 @@ bfs::path apple_userdata(const std::string& newprefdir)
 	// if a custom userdata was not specified
 	// use the PREFERENCES_DIR if defined
 	// else if this is iOS, use the SDL pref path
-	// else use a default
+	// else use a default - this is currently the "unsandboxed" location from migrate_apple_config_directory_for_unsandboxed_builds() above
 	if(temp.empty()) {
 #ifdef PREFERENCES_DIR
 		temp = PREFERENCES_DIR;
@@ -750,7 +745,7 @@ bfs::path apple_userdata(const std::string& newprefdir)
 			SDL_free(sdl_pref_path);
 		}
 #else
-		temp = ".wesnoth" + get_version_path_suffix();
+		temp = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
 #endif
 	} else if(temp[0] != '/') {
 		// TRANSLATORS: translate the part inside <...> only
