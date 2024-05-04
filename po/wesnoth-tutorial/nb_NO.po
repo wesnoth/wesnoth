@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2024-04-25 17:16+0200\n"
+"PO-Revision-Date: 2024-05-01 14:14+0200\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
 "Language: no\n"
@@ -129,7 +129,7 @@ msgstr "Bli drept i forsøket"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"Du kan ikke avslutte turen før du har fullført leksjonen om forflytning!"
+"Du kan ikke avslutte runden før du har fullført leksjonen om forflytning!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
@@ -158,10 +158,10 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"I denne opplæringen spiller du som Konrad. Du står på vakttårnet, og "
-"mentoren din, Delfador, befinner seg på østsiden av elven. Du kan føre musen "
-"over en enhet for å se en oversikt over enhetens evner og statistikk, som "
-"vises til høyre på skjermen."
+"I denne opplæringen spiller du som Konrad. Du står på borgen, og mentoren "
+"din, Delfador, befinner seg på østsiden av elven. Du kan føre musen over en "
+"enhet for å se en oversikt over enhetens evner og statistikk, som vises til "
+"høyre på skjermen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
@@ -171,10 +171,10 @@ msgid ""
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"I denne opplæringen spiller du som Li'sar. Du står på vakttårnet, og "
-"mentoren din, Delfador, befinner seg på østsiden av elven. Du kan bevege "
-"musen over en enhet for å se en oversikt over enhetens evner og statistikk, "
-"som vises til høyre på skjermen."
+"I denne opplæringen spiller du som Li'sar. Du står på borgen, og mentoren "
+"din, Delfador, befinner seg på østsiden av elven. Du kan bevege musen over "
+"en enhet for å se en oversikt over enhetens evner og statistikk, som vises "
+"til høyre på skjermen."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
@@ -212,7 +212,7 @@ msgstr ""
 "Når du holder musepekeren over eller velger en enhet, i dette tilfellet "
 "Konrad, markeres stedene han kan forflytte seg til. Alle enheter har et "
 "visst antall <i>forflytningspoeng</i>, som angir hvor mange felter enheten "
-"kan forflytte seg per tur. Normalt brukes det ett forflytningspoeng for å "
+"kan forflytte seg per runde. Normalt brukes det ett forflytningspoeng for å "
 "forflytte seg én rute i flatt terreng. For å forflytte deg klikker du bare "
 "på Konrad og deretter på destinasjonen. (Du kan trykke på <b>u</b> for å "
 "angre en forflytning hvis du forflytter deg til feil sted)."
@@ -230,7 +230,7 @@ msgstr ""
 "Når du holder musepekeren over eller velger en enhet, i dette tilfellet "
 "Li'sar, markeres stedene hun kan forflytte seg til. Alle enheter har et "
 "visst antall <i>forflytningspoeng</i>, som angir hvor mange felter enheten "
-"kan forflytte seg per tur. Normalt går det med ett forflytningspoeng til å "
+"kan forflytte seg per runde. Normalt går det med ett forflytningspoeng til å "
 "forflytte seg én rute i flatt terreng. For å forflytte deg klikker du bare "
 "på Li'sar og deretter på destinasjonen. (Du kan trykke på <b>u</b> for å "
 "angre en forflytning hvis du forflytter deg til feil sted)."
@@ -339,7 +339,7 @@ msgstr ""
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:503
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr "Du kan ikke avslutte turen din før du har angrepet stråmannen!"
+msgstr "Du kan ikke avslutte runden din før du har angrepet stråmannen!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:517
@@ -408,7 +408,7 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:576
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "Får <i>stråmannen</i> en egen tur??"
+msgstr "Får <i>stråmannen</i> en egen runde??"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:581
@@ -459,7 +459,7 @@ msgstr "Avslutt runden din"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
-"Du kan ikke avslutte turen før du har fullført leksjonen om helbredelse!"
+"Du kan ikke avslutte runden før du har fullført leksjonen om helbredelse!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:625
@@ -520,7 +520,7 @@ msgstr ""
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
-"Du kan ikke avslutte turen før du har fullført leksjonen om rekruttering!"
+"Du kan ikke avslutte runden før du har fullført leksjonen om rekruttering!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
@@ -531,9 +531,9 @@ msgid ""
 "hitpoints."
 msgstr ""
 "Siden du startet runden din i en landsby, har du fått tilbake litt helse! "
-"Landsbyer helbreder enheter med 8 helsepoeng per tur, eller nok til å fylle "
-"opp helsen deres, avhengig av hva som er minst. I ditt tilfelle fikk du "
-"tilbake $student_hp_heal_amount helsepoeng."
+"Landsbyer helbreder enheter med 8 helsepoeng per runde, eller nok til å "
+"fylle opp helsen deres, avhengig av hva som er minst. I ditt tilfelle fikk "
+"du tilbake $student_hp_heal_amount helsepoeng."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:693
@@ -558,23 +558,23 @@ msgid ""
 "have plenty of gold for that."
 msgstr ""
 "En glimrende idé! Det er nok best at du ikke forsøker å angripe stråmannen "
-"denne runden. I stedet bør du dra tilbake til vakttårnet og rekruttere to "
+"denne runden. I stedet bør du dra tilbake til borgen og rekruttere to "
 "enheter; du har nok av gull til det."
 
 #. [label]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:709
 msgid "Keep"
-msgstr "Vakttårn"
+msgstr "Borg"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
 msgid "Move Konrad to the keep"
-msgstr "Flytt Konrad til vakttårnet"
+msgstr "Flytt Konrad til borgen"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
 msgid "Move Li’sar to the keep"
-msgstr "Flytt Li'sar til vakttårnet"
+msgstr "Flytt Li'sar til borgen"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
@@ -590,8 +590,8 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"Når du befinner deg på et <i>vakttårn</i>, kan du <i>rekruttere</i> enheter "
-"på slottsbrikkene rundt den ved å høyreklikke og velge <b>Rekrutter</b>. Vær "
+"Når du befinner deg på en <i>borg</i>, kan du <i>rekruttere</i> enheter på "
+"slottsbrikkene rundt den ved å høyreklikke og velge <b>Rekrutter</b>. Vær "
 "oppmerksom på at nyrekrutterte enheter ikke kan utføre handlinger den runden "
 "du rekrutterer dem; du kan bruke dem i neste runde. I dette scenariet har du "
 "bare én type enhet å velge mellom: infanteristen."
@@ -604,7 +604,7 @@ msgstr "Rekruttere to alviske infanterister"
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
 msgid "Traits"
-msgstr "Egenskaper"
+msgstr "Karaktertrekk"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:765
@@ -615,18 +615,18 @@ msgid ""
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
-"Husk å undersøke <i>egenskapene</i> til de nye rekruttene dine. De er "
+"Husk å undersøke <i>karaktertrekkene</i> til de nye rekruttene dine. De er "
 "oppført under rasen i sidepanelet. Egenskapene kan på en subtil måte påvirke "
-"hvordan du bruker troppene dine. For eksempel kan enheter med egenskapen "
-"<i>rask</i> forflytte seg en ekstra rute hver runde, og enheter med "
-"egenskapen <i>intelligent</i> trenger 20 % mindre erfaring for å stige i "
-"nivå."
+"hvordan du bruker troppene dine. For eksempel kan enheter med "
+"karaktertrekket <i>rask</i> forflytte seg en ekstra rute hver runde, og "
+"enheter med karaktertrekket <i>intelligent</i> trenger 20 % mindre erfaring "
+"for å stige i nivå."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:807
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr "Du kan ikke avslutte turen før du har fullført leksjonen om angrep!"
+msgstr "Du kan ikke avslutte runden før du har fullført leksjonen om angrep!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:816
@@ -718,7 +718,7 @@ msgid ""
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
 "Infanterister gjør normalt 5×4 skade med sverdene sine, men denne alven har "
-"egenskapen <i>sterk</i>, som øker skadeeffekten til nærkampangrep."
+"karaktertrekket <i>sterk</i>, som øker skadeeffekten til nærkampangrep."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:905
@@ -752,7 +752,7 @@ msgid ""
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
 "Infanterister gjør normalt 3×3 skader med buen, men denne alven har "
-"egenskapen <i>hendig</i>, som øker skadeeffekten til avstandsangrep."
+"karaktertrekket <i>hendig</i>, som øker skadeeffekten til avstandsangrep."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:936
@@ -816,7 +816,7 @@ msgid ""
 "each unit costs you one gold per turn."
 msgstr ""
 "Hver landsby du kontrollerer vil <i>støtte</i> én enhet gratis. Deretter "
-"koster hver enhet deg ett gull per tur."
+"koster hver enhet deg ett gull per runde."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1008
@@ -929,7 +929,7 @@ msgid ""
 "next?"
 msgstr ""
 "Vel, jeg tror jeg kan det grunnleggende. Fremover! Kanskje jeg kan kjempe i "
-"en ekte kamp neste gang?"
+"et ekte slag neste gang?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1168
@@ -938,7 +938,7 @@ msgid ""
 "battle next?"
 msgstr ""
 "Vel, jeg tror jeg kan det grunnleggende. Fremover! Kanskje jeg kan kjempe i "
-"en ekte kamp neste gang?"
+"et ekte slag neste gang?"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1183
@@ -1010,7 +1010,7 @@ msgstr "Jeg håper jeg får mulighet til å trekke meg tilbake etter dette!"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:129
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Et heldig angrep av en orkisk Fotsoldat, og jeg er ferdig!"
+msgstr "Et heldig angrep av en orkisk fotsoldat, og jeg er ferdig!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
@@ -1063,7 +1063,7 @@ msgid ""
 msgstr ""
 "Velkommen tilbake! Dette er andre del av den todelte opplæringen. Del 2 vil "
 "lære deg om tilbakekalling av enheter, evner og våpenspesialiteter, inntekt "
-"og vedlikehold, langdistanseforflytning, kontrollsone og tid på døgnet."
+"og utgifter, langdistanseforflytning, kontrollsone og tid på døgnet."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
@@ -1246,9 +1246,9 @@ msgstr ""
 "<i>tilbakekalle</i> erfarne veteraner fra tidligere scenarier, mot en "
 "kostnad på 20 gull per stykk. På denne måten kan du bygge opp en formidabel "
 "hær i løpet av flere scenarier ved å tilbakekalle de høyest rangerte "
-"troppene dine eller tropper med gode kombinasjoner av egenskaper og evner. "
-"For å tilbakekalle en enhet høyreklikker du mens lederen din står på et "
-"vakttårn og velger alternativet <i>Tilbakekall</i>. Husk å rekruttere nye "
+"troppene dine eller tropper med gode kombinasjoner av karaktertrekk og "
+"evner. For å tilbakekalle en enhet høyreklikker du mens lederen din står på "
+"en borg og velger alternativet <i>Tilbakekall</i>. Husk å rekruttere nye "
 "tropper i tillegg til å tilbakekalle gamle."
 
 #. [message]: speaker=Galdrad
@@ -1338,12 +1338,12 @@ msgstr ""
 "kraftigere. I dette tilfellet har sjamanen spesialen <i>forsinkende</i> på "
 "<b>innfiltre</b>-angrepet sitt. Når dette angrepet treffer en fiende, "
 "halverer det skaden fienden gjør i én omgang. Andre våpenspesialiteter "
-"inkluderer <i>forhåndslag</i>, som gjør at angrepet alltid treffer først "
+"inkluderer <i>første slag</i>, som gjør at angrepet alltid treffer først "
 "uansett hvem som angriper først, og <i>magisk</i>, som gir angrepet en "
 "konstant 70 % sjanse til å treffe.\n"
 "\n"
 "En fullstendig liste over evner og våpenspesialiteter, sammen med "
-"egenskaper, finner du i hjelpen (standard hurtigtast: <b>F1</b>)."
+"karaktertrekk, finner du i hjelpen (standard hurtigtast: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:361
@@ -1381,7 +1381,7 @@ msgid ""
 "most advanced one."
 msgstr ""
 "Du har nå to healere. Druiden din kan helbrede tilstøtende enheter med 8 "
-"treffpunkter per tur, sammenlignet med sjamanens 4. Hver enhet kan "
+"treffpunkter per runde, sammenlignet med sjamanens 4. Hver enhet kan "
 "imidlertid bare motta helbredelse fra én helbreder - en enhet ved siden av "
 "flere helbredere blir helbredet av den sterkeste."
 
@@ -1448,7 +1448,7 @@ msgid ""
 msgstr ""
 "Selv om ingen av de rekrutterte enhetene dine kan forflytte seg ennå, kan du "
 "fortsatt gjøre det. Du trenger mer inntekt; det er noen landsbyer i nærheten "
-"av vakttårnet du kan erobre."
+"av borgen du kan erobre."
 
 #. [event]
 #. [on_undo]
@@ -1488,7 +1488,7 @@ msgstr ""
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
 msgid "Income and Upkeep"
-msgstr "Inntekter og vedlikehold"
+msgstr "Inntekter og utgifter"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:493
@@ -1500,8 +1500,8 @@ msgid ""
 "negative income and lose gold each turn!"
 msgstr ""
 "Hver runde mottar du 2 gull, pluss ett for hver landsby du eier. Imidlertid "
-"trekkes <i>vedlikehold</i> fra dette. Du kan ha like mange enheter som "
-"antall landsbyer du eier, men utover det må du betale 1 gull per runde. Vær "
+"trekkes <i>utgifter</i> fra dette. Du kan ha like mange enheter som antall "
+"landsbyer du eier, men utover det må du betale 1 gull per runde. Vær "
 "forsiktig, for hvis du eier for mange enheter, kan du få negativ inntekt og "
 "tape gull hver runde!"
 
@@ -1538,8 +1538,8 @@ msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
-"Galdrad, hvis jeg går langs vadestedet, kan jeg snike meg nær vakttårnet "
-"hans og ta ham raskt."
+"Galdrad, hvis jeg går langs vadestedet, kan jeg snike meg nær borgen hans og "
+"ta ham raskt."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
@@ -1547,8 +1547,8 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
-"Galdrad, hvis jeg går langs vadestedet, kan jeg snike meg nær vakttårnet "
-"hans og ta ham raskt."
+"Galdrad, hvis jeg går langs vadestedet, kan jeg snike meg nær borgen hans og "
+"ta ham raskt."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:593
@@ -1633,8 +1633,8 @@ msgstr ""
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
-"Jeg tror jeg holder meg i nærheten av vakttårnet inntil videre for å "
-"rekruttere flere enheter."
+"Jeg tror jeg holder meg i nærheten av borgen inntil videre for å rekruttere "
+"flere enheter."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:617
@@ -1642,8 +1642,8 @@ msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
 msgstr ""
-"Jeg tror jeg holder meg i nærheten av vakttårnet inntil videre for å "
-"rekruttere flere enheter."
+"Jeg tror jeg holder meg i nærheten av borgen inntil videre for å rekruttere "
+"flere enheter."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:623
@@ -1654,8 +1654,8 @@ msgid ""
 "recruiting reinforcements."
 msgstr ""
 "Du har lært godt, Konrad. Det er en god idé å holde lederen din trygg og "
-"beskyttet i nærheten av vakttårnet tidlig i spillet. Kampen kan fort snu, og "
-"du vil ikke bli avskåret fra å rekruttere forsterkninger."
+"beskyttet i nærheten av borgen tidlig i spillet. Kampen kan fort snu, og du "
+"vil ikke bli avskåret fra å rekruttere forsterkninger."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:628
@@ -1666,8 +1666,8 @@ msgid ""
 "recruiting reinforcements."
 msgstr ""
 "Du har lært godt, Li'sar. Det er en god idé å holde lederen din trygg og "
-"beskyttet i nærheten av vakttårnet tidlig i spillet. Kampen kan fort snu, og "
-"du vil ikke bli avskåret fra å rekruttere forsterkninger."
+"beskyttet i nærheten av borgen tidlig i spillet. Kampen kan fort snu, og du "
+"vil ikke bli avskåret fra å rekruttere forsterkninger."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:698
@@ -1774,7 +1774,7 @@ msgid ""
 "at the beginning of the next turn."
 msgstr ""
 "Hvis en av sjamanene dine står rett bak deg, helbreder hun deg med 4 "
-"helsepoeng i begynnelsen av neste tur."
+"helsepoeng i begynnelsen av neste runde."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
@@ -1794,7 +1794,7 @@ msgid ""
 "each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Hvis en av sjamanene dine står rett bak de sårede enhetene dine, helbreder "
-"hun hver av dem med 4 treffpunkter i begynnelsen av neste tur."
+"hun hver av dem med 4 treffpunkter i begynnelsen av neste runde."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:815
@@ -1865,8 +1865,8 @@ msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"Du våger deg bort fra vakttårnet ditt. Du må kanskje rekruttere flere "
-"enheter, og jeg tviler på at orkelederen vil la deg bruke hans! Forsiktig!"
+"Du våger deg bort fra borgen din. Du må kanskje rekruttere flere enheter, og "
+"jeg tviler på at orkelederen vil la deg bruke hans! Forsiktig!"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
@@ -1907,7 +1907,7 @@ msgstr ""
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
 msgid "Time of Day"
-msgstr "Tid på dagen"
+msgstr "Tid på døgnet"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
@@ -1919,8 +1919,8 @@ msgid ""
 "current time of day and who has the advantage."
 msgstr ""
 "I løpet av et scenario vil tiden på døgnet endres etter hvert som rundene "
-"går. Det er fire <i>sinnelag</i> en enhet kan ha: Lovlydig, Nøytral, Kaotisk "
-"eller Liminal. Hver av disse får ulike bonuser eller ulemper avhengig av "
+"går. Det er fire <i>sinnelag</i> en enhet kan ha: lovlydig, nøytral, kaotisk "
+"eller diffus. Hver av disse får ulike bonuser eller ulemper avhengig av "
 "tidspunktet på dagen. Du kan holde musepekeren over himmelbildet under "
 "minikartet til høyre for å se gjeldende tid på døgnet og hvem som har "
 "fordelen."
@@ -1947,7 +1947,7 @@ msgstr ""
 "8 per runde.\n"
 "\n"
 "Ulike kilder til helbredelse kombineres vanligvis ikke. Hvis en enhet "
-"starter sin tur ved siden av flere helbredere, eller i en landsby og ved "
+"starter sin runde ved siden av flere helbredere, eller i en landsby og ved "
 "siden av en helbreder, blir den likevel bare helbredet én gang.\n"
 "\n"
 "Hvilehelbredelse er et unntak fra regelen - hvis en enhet ikke gjør noe i en "
@@ -1971,7 +1971,7 @@ msgid ""
 msgstr ""
 "Du kan sikre at du bruker alle troppene dine ved å trykke på <b>n</b> for å "
 "gå fra en enhet til den neste. Hvis du trykker på <b>mellomrom</b>, kan du "
-"markere den valgte enheten som ferdig med sin tur, slik at du ikke flytter "
+"markere den valgte enheten som ferdig med sin runde, slik at du ikke flytter "
 "den ved et uhell senere. Når <b>n</b> ikke lenger velger en ny enhet, er det "
 "trygt å avslutte runden."
 
