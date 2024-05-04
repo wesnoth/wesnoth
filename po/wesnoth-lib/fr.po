@@ -2664,8 +2664,9 @@ msgstr "Téléchargements :"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:299
+#, fuzzy
 msgid "date^Uploaded:"
-msgstr "Date d'envoi :"
+msgstr "Mise en ligne :"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:329
@@ -6663,8 +6664,9 @@ msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Dernière mise à jour ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:205
+#, fuzzy
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Date d'envoi initiale ($datelike_order)"
+msgstr "Mise en ligne initiale ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^Cooperative"
@@ -6881,15 +6883,20 @@ msgstr ""
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Voulez-vous désinstaller « $addon| » ?"
 
+# L'indicateur AM/PM n'est pas francisé. Donc je garde l'heure sur la base de 24 heures.
+# Pour un affichage comme "le 8 avril 2024 à 00h53"
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1049
+#, fuzzy
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%d-%B-%Y %I:%M %p"
+msgstr "le %e %B %Y à %Hh%M"
 
+# Pour un affichage comme "le 8 avril 2024 à 00h53"
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1051
+#, fuzzy
 msgid "%B %d %Y, %H:%M"
-msgstr "%d-%B-%Y %H:%M"
+msgstr "le %e %B %Y à %Hh%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1112
 msgid "url^None"
