@@ -80,6 +80,9 @@ void migrate_version_selection::pre_show(window& window)
 	}
 }
 
+// TODO: add extra logic for linux to migrate the preferences and credentials
+//       with 1.19 they're going to be stored with the rest of the userdata instead of separately
+//       so this needs to account for that
 void migrate_version_selection::post_show(window& window)
 {
 	if(get_retval() == gui2::OK) {
