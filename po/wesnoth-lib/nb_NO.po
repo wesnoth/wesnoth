@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2024-04-25 15:50+0200\n"
+"PO-Revision-Date: 2024-05-01 22:05+0200\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
 "Language: nb_NO\n"
@@ -20,27 +20,27 @@ msgstr ""
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr "Standard AI (RCA)"
+msgstr "Standard KI (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr "Gammel standard AI (1.14 versjon)"
+msgstr "Gammel standard KI (1.14 versjon)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Eksperimentell AI"
+msgstr "Eksperimentell KI"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Utv AI: Inaktiv AI"
+msgstr "Utv KI: Inaktiv KI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Utv AI: Standard AI (RCA) med alternativ rekruttering"
+msgstr "Utv KI: Standard KI (RCA) med alternativ rekruttering"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -864,7 +864,7 @@ msgstr "Erodert grotte"
 #: data/core/terrain.cfg:1171 data/core/terrain.cfg:1183
 #: data/core/terrain.cfg:1196
 msgid "Mine Rail"
-msgstr ""
+msgstr "Gruveskinner"
 
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1216
@@ -1422,62 +1422,62 @@ msgstr "Snødekket leir"
 #: data/core/terrain.cfg:2460 data/core/terrain.cfg:2776
 #: data/core/terrain.cfg:3346 data/core/terrain.cfg:3347
 msgid "Castle"
-msgstr "Borg"
+msgstr "Slott"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:2243
 msgid "Orcish Castle"
-msgstr "Orkeborg"
+msgstr "Orkeslott"
 
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:2255
 msgid "Snowy Orcish Castle"
-msgstr "Snødekket orkeborg"
+msgstr "Snødekket orkeslott"
 
 #. [terrain_type]: id=human_castle
 #: data/core/terrain.cfg:2267
 msgid "Human Castle"
-msgstr "Menneskeborg"
+msgstr "Menneskeslott"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:2279
 msgid "Snowy Human Castle"
-msgstr "Snødekket menneskeborg"
+msgstr "Snødekket menneskeslott"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:2290
 msgid "Elven Castle"
-msgstr "Alveborg"
+msgstr "Alveslott"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2302
 msgid "Elven Castle Ruin"
-msgstr "Alveborgsruiner"
+msgstr "Alveslottsruiner"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2314
 msgid "Winter Elven Castle"
-msgstr "Vinter-alveborg"
+msgstr "Vinter-alveslott"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2326
 msgid "Dwarven Underground Castle"
-msgstr "Dvergers undergrunnsborg"
+msgstr "Dvergers undergrunnslott"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2338
 msgid "Dwarven Castle"
-msgstr "Dvergeborg"
+msgstr "Dvergeslott"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2350
 msgid "Dwarven Castle Ruins"
-msgstr "Dvergeborgsruiner"
+msgstr "Dvergeslott"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2362
 msgid "Winter Dwarven Castle"
-msgstr "Vinter-dvergeborg"
+msgstr "Vinter-dvergeslott"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1486,12 +1486,12 @@ msgstr "Vinter-dvergeborg"
 #: data/core/terrain.cfg:2373 data/core/terrain.cfg:2385
 #: data/core/terrain.cfg:2398 data/core/terrain.cfg:2423
 msgid "Ruined Castle"
-msgstr "Borgruiner"
+msgstr "Slottsruiner"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:2374
 msgid "Ruined Human Castle"
-msgstr "Menneskeborgruiner"
+msgstr "Menneskeslottruiner"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:2386
@@ -1588,48 +1588,42 @@ msgstr "Leir"
 #: data/core/terrain.cfg:2657 data/core/terrain.cfg:2709
 #: data/core/terrain.cfg:2761 data/core/terrain.cfg:2789
 msgid "Keep"
-msgstr "Vakttårn"
+msgstr "Borg"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:2528
-#, fuzzy
 msgid "Orcish Keep"
-msgstr "Vakttårn"
+msgstr "Orkisk vakttårn"
 
 #. [terrain_type]: id=snow_orcish_keep
 #: data/core/terrain.cfg:2541
 msgid "Snowy Orcish Keep"
-msgstr ""
+msgstr "Snødekket orkisk vakttårn"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:2554
-#, fuzzy
 msgid "Human Castle Keep"
-msgstr "Dvergefestning"
+msgstr "Menneskeskapt slottsborg"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:2567
-#, fuzzy
 msgid "Snowy Human Castle Keep"
-msgstr "Dvergefestning"
+msgstr "Snødekket menneskeskapt slottsborg"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:2580
-#, fuzzy
 msgid "Elven Castle Keep"
-msgstr "Borg"
+msgstr "Alveskapt slottsborg"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2593
-#, fuzzy
 msgid "Elven Keep Ruin"
-msgstr "Borg"
+msgstr "Ruiner av alveskapt slottsborg"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2606
-#, fuzzy
 msgid "Winter Elven Keep"
-msgstr "Borg"
+msgstr "Vinteralveborg"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2619
@@ -2177,7 +2171,7 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
-"Det er ingen egendefinerte alternativer tilgjengelig for den valgte epoken, "
+"Det er ingen egendefinerte alternativer tilgjengelig for den valgte æraen, "
 "spillet eller modifikasjonen."
 
 #. [button]: id=reset_option_values
@@ -3427,7 +3421,7 @@ msgstr "Tilfeldig starttid"
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr ""
+msgstr "Sideoppsett"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -3500,7 +3494,7 @@ msgstr "Menneske"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:401
 msgid "controller^AI only"
-msgstr "Bare AI"
+msgstr "Bare KI"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:403
@@ -3605,16 +3599,16 @@ msgstr ""
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:387
 #, fuzzy
-#| msgid "HP"
+#| msgid "HP: "
 msgid "HP:"
-msgstr "HP"
+msgstr "HP: "
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:417
 #, fuzzy
-#| msgid "XP"
+#| msgid "XP: "
 msgid "XP:"
-msgstr "XP"
+msgstr "EP: "
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:447
@@ -3623,8 +3617,10 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:477
+#, fuzzy
+#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr ""
+msgstr "Forflytningkostnad:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3633,7 +3629,7 @@ msgstr ""
 #: data/gui/window/editor_edit_unit.cfg:1273
 #: src/gui/widgets/unit_preview_pane.cpp:221
 msgid "Attacks"
-msgstr ""
+msgstr "Angrep"
 
 #. [button]: id=atk_new
 #: data/gui/window/editor_edit_unit.cfg:599
@@ -3645,9 +3641,9 @@ msgstr "Angrip"
 #. [button]: id=atk_delete
 #: data/gui/window/editor_edit_unit.cfg:612
 #, fuzzy
-#| msgid "Delete Save"
+#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Slett lagring"
+msgstr "Velg/Flytt/Angrip"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:682
@@ -3701,8 +3697,10 @@ msgstr "Profil"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:859
+#, fuzzy
+#| msgid "Abilities"
 msgid "Abilities:"
-msgstr ""
+msgstr "Evner"
 
 #. [label]: id=movetype_label
 #: data/gui/window/editor_edit_unit.cfg:885
@@ -3724,7 +3722,7 @@ msgstr "Last inn spill"
 #: data/gui/window/editor_edit_unit.cfg:928
 #: src/gui/widgets/unit_preview_pane.cpp:152
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Forflytningkostnad:"
 
 #. [label]: id=defense_label
 #: data/gui/window/editor_edit_unit.cfg:981
@@ -3735,8 +3733,10 @@ msgstr "Forsvarer"
 
 #. [label]: id=resistance_label
 #: data/gui/window/editor_edit_unit.cfg:1034
+#, fuzzy
+#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr ""
+msgstr "Motstandsdyktighet: "
 
 #. [label]: id=usage_label
 #: data/gui/window/editor_edit_unit.cfg:1087
@@ -3914,7 +3914,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/formula_debugger.cfg:59
 msgid "Welcome"
-msgstr ""
+msgstr "Velkommen"
 
 #. [label]: id=state
 #: data/gui/window/formula_debugger.cfg:71
@@ -4045,35 +4045,33 @@ msgstr "Last inn spill"
 #. [button]: id=browse_saves_folder
 #: data/gui/window/game_load.cfg:332
 msgid "Open saves folder"
-msgstr ""
+msgstr "Åpne lagringsmappe"
 
 #. [menu_button]: id=dirList
 #: data/gui/window/game_load.cfg:346
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Vis lagringer fra andre versjoner av Wesnoth"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:408
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Change difficulty"
-msgstr "Endre hurtigtast"
+msgstr "Endre vanskelighetsgrad"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/window/game_load.cfg:409
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Endre kampanjens vanskelighetsgrad før innlasting"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:431
-#, fuzzy
 msgid "Show replay"
-msgstr "spiller"
+msgstr "Vis reprise"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:432
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
+"Spill av den innebygde reprisen fra det lagrede spillet, hvis det er aktuelt"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:454
@@ -4144,7 +4142,7 @@ msgstr "Enheter"
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr "Vedlikehold"
+msgstr "Utgifter"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -4520,7 +4518,7 @@ msgstr "Bli med"
 #: data/gui/window/lobby_main.cfg:544 data/gui/window/lobby_main.cfg:819
 #: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid "Observe"
-msgstr "Observer"
+msgstr "Se på"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
@@ -4563,7 +4561,7 @@ msgstr "Hurtigrepriser"
 #. [option]
 #: data/gui/window/lobby_main.cfg:671 data/gui/window/lobby_main.cfg:839
 msgid "Skip quickly to the active turn when observing"
-msgstr "Hopp raskt til den aktive runden når du observerer"
+msgstr "Hopp raskt til den aktive runden når du tilskuer"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:675 data/gui/window/lobby_main.cfg:843
@@ -4714,7 +4712,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
+msgstr "Datamigrering"
 
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:53
@@ -4722,6 +4720,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Velg hvilken versjon av Wesnoth du importerer data fra.\n"
+"Noen innstillinger vil ikke trå i kraft før Wesnoth startes på nytt."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -4894,7 +4894,7 @@ msgstr "Adresse"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
-msgstr "Epoker:"
+msgstr "Æraer:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
@@ -5116,7 +5116,7 @@ msgstr "Tillat brukere som ikke spiller, å se på kampen."
 
 #: data/gui/window/mp_create_game.cfg:979
 msgid "Observers"
-msgstr "Observatører"
+msgstr "Tilskuere"
 
 #: data/gui/window/mp_create_game.cfg:983
 msgid "Strict Synchronization"
@@ -5211,7 +5211,7 @@ msgstr "Velg fraksjon og leder for dette laget"
 #. [label]
 #: data/gui/window/mp_join_game.cfg:155
 msgid "<b>Faction:</b>"
-msgstr "<b>Faksjon:</b>"
+msgstr "<b>Fraksjon:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:187
@@ -5357,7 +5357,7 @@ msgstr "Være vert for et spill ved hjelp av en dedikert server"
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:283
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Spill et flerspillerspill med AI eller mennesker på samme maskin."
+msgstr "Spill et flerspillerspill med KI eller mennesker på samme maskin."
 
 #. [widget]: id=name
 #: data/gui/window/mp_method_selection.cfg:292
@@ -5394,7 +5394,7 @@ msgstr "* obligatoriske felter"
 #, fuzzy
 #| msgid "Faction"
 msgid "Faction:"
-msgstr "Faksjon"
+msgstr "Fraksjon"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:243
@@ -5460,12 +5460,12 @@ msgstr "Endre panoreringsfart"
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:54
 msgid "Skip AI moves"
-msgstr "Ignorer AI-trekk"
+msgstr "Ignorer KI-trekk"
 
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
-msgstr "Ikke animer AI-styrte enheter"
+msgstr "Ikke animer KI-styrte enheter"
 
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/window/preferences/01_general.cfg:68
@@ -5801,27 +5801,23 @@ msgstr "Vis animert vanngrafikk (kan være tregt)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Unit standing animations"
-msgstr "Vis stående animasjoner"
+msgstr "Vis enheters ståanimasjoner"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
 msgid "Continuously animate standing units on the battlefield"
-msgstr ""
+msgstr "Animer stående enheter på slagmarken kontinuerlig"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Vis stående animasjoner"
+msgstr "Vis enheters inaktivanimasjon"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
 msgid "Play short random animations for idle units"
-msgstr ""
+msgstr "Spill av korte, tilfeldige animasjoner for inaktive enheter"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:336
@@ -6294,7 +6290,7 @@ msgid ""
 "the AI"
 msgstr ""
 "Spill flerspiller (hotseat, LAN eller Internett) eller et enkelt scenario "
-"mot AI."
+"mot KI."
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -6309,7 +6305,7 @@ msgstr "Tillegg"
 #. [grid]
 #: data/gui/window/title_screen.cfg:258
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Last ned brukerskapte kampanjer, epoker eller kartpakker"
+msgstr "Last ned brukerskapte kampanjer, æraer eller kartpakker"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:259
@@ -6422,7 +6418,7 @@ msgstr "XP"
 #: src/gui/widgets/unit_preview_pane.cpp:379
 #: src/gui/widgets/unit_preview_pane.cpp:529
 msgid "Traits"
-msgstr "Egenskaper"
+msgstr "Karaktertrekk"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6438,7 +6434,7 @@ msgstr "Tilbakekall enhet"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait"
-msgstr "Søk etter enhetsnavn, enhetstypenavn, enhetsnivå eller egenskap"
+msgstr "Søk etter enhetsnavn, enhetstype-navn, enhetsnivå eller karaktertrekk"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -6760,11 +6756,11 @@ msgstr "FS kartpakker"
 
 #: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^MP eras"
-msgstr "FS epoker"
+msgstr "FS æraer"
 
 #: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^MP factions"
-msgstr "FS faksjoner"
+msgstr "FS fraksjoner"
 
 #: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^Modifications"
@@ -6821,7 +6817,7 @@ msgstr "Samarbeid"
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:217
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr "Alle menneskelige spillere er på samme lag, mot AI."
+msgstr "Alle menneskelige spillere er på samme lag, mot KI."
 
 #: src/gui/dialogs/addon/manager.cpp:218
 msgid "addon_tag^Cosmetic"
@@ -7112,6 +7108,8 @@ msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Den valgte æraen er ikke kompatibel med ditt oppsett.\n"
+"Vennligst velg en kompatibel æra."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:52
 msgid ""
@@ -7145,12 +7143,12 @@ msgstr "Flerspillerscenario"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
 msgid "Faction"
-msgstr "Faksjon"
+msgstr "Fraksjon"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
 #: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "Era"
-msgstr "Epoke"
+msgstr "Æra"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
 msgid "Map Pack"
@@ -7388,18 +7386,16 @@ msgid "Test scenario"
 msgstr "Test scenariet"
 
 #: src/gui/dialogs/game_load.cpp:405
-#, fuzzy
 msgid "Replay"
-msgstr "spiller"
+msgstr "Reprise"
 
 #: src/gui/dialogs/game_load.cpp:407
 msgid "Turn"
 msgstr "Runde"
 
 #: src/gui/dialogs/game_load.cpp:409
-#, fuzzy
 msgid "Scenario start"
-msgstr "Scenariets mål"
+msgstr "Scenariostart"
 
 #: src/gui/dialogs/game_load.cpp:428
 msgid "Difficulty: "
@@ -7415,7 +7411,7 @@ msgstr "Modifikasjoner: "
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^AI"
-msgstr "AI"
+msgstr "KI"
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^Idle"
@@ -7449,14 +7445,12 @@ msgid "Running on $os"
 msgstr "Kjører på $os"
 
 #: src/gui/dialogs/label_settings.cpp:52
-#, fuzzy
-#| msgid "Set Team Label"
 msgid "Team Labels"
-msgstr "Sett merkelapp (lag)"
+msgstr "Lagmerkelapper"
 
 #: src/gui/dialogs/label_settings.cpp:82
 msgid "Side $side_number ($name)"
-msgstr ""
+msgstr "Side $side_number ($name)"
 
 #: src/gui/dialogs/loading_screen.cpp:45
 msgid "Building terrain rules"
@@ -7566,7 +7560,7 @@ msgstr "Vil du virkelig logge ut?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:174
 msgid "Incompatible User-made Content"
-msgstr ""
+msgstr "Uforenlig brukerskapt innhold"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid ""
@@ -7574,10 +7568,12 @@ msgid ""
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
+"Spillet kan ikke kobles til fordi verten har utdaterte tillegg som ikke er "
+"kompatible med din versjon. Du kan foreslå at vertens tillegg oppdateres."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:190
 msgid "Missing User-made Content"
-msgstr ""
+msgstr "Mangler brukerskapt innhold"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
@@ -7585,18 +7581,21 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
+"Dette spillet krever en eller flere brukerskapte tillegg installert eller "
+"oppdatert for å kunne delta.\n"
+"Vil du prøve å installere dem?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:368
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Spill: viser $num_shown av $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:390
 msgid "$game_name (Era: $era_name)"
-msgstr ""
+msgstr "$game_name (Æra: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "era_or_mod^not installed"
-msgstr ""
+msgstr "ikke installert"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 #, fuzzy
@@ -7605,46 +7604,46 @@ msgstr "Opprett spill"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Shared vision:"
-msgstr ""
+msgstr "Delt synsfelt:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shuffle sides:"
-msgstr ""
+msgstr "Stokk sider:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:458
-#, fuzzy
-#| msgid "Time:"
 msgid "Time limit:"
-msgstr "Tid:"
+msgstr "Tidsgrense:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:459
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "Bruk kartets innstillinger"
+msgstr "Bruk kartinnstillinger:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Ett eller flere tillegg må være installert\n"
+"for å kunne delta i dette spillet."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Observers allowed"
-msgstr ""
+msgstr "Tilskuere tillatt"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Tilskuere ikke tillatt"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:626
 msgid "lobby"
-msgstr ""
+msgstr "lobby"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:835
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Dette spillet tillater ikke tilskuere. Se på ved å benytte "
+"moderatorretighetene dine?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:848
 msgid ""
@@ -7664,153 +7663,135 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:83
 msgid "Side $side"
-msgstr ""
+msgstr "Side $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:185
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Server:"
+msgstr "Legg til server"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:95
-#, fuzzy
 msgid "Scenarios"
-msgstr "Scenariets mål"
+msgstr "Scenarier"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:96
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
-msgstr "Valg for gruppespill"
+msgstr "Flerspillerkampanjer"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
-#, fuzzy
 msgid "Singleplayer Campaigns"
-msgstr "Felttog"
+msgstr "Enspillerkampanjer"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
-#, fuzzy
 msgid "Custom Maps"
-msgstr "Handling"
+msgstr "Egendefinerte kart"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
-#, fuzzy
 msgid "Custom Scenarios"
-msgstr "Scenariets mål"
+msgstr "Egendefinerte scenarier"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
-#, fuzzy
-#| msgid "Generate Random Map"
 msgid "Random Maps"
-msgstr "Generer tilfeldig kart"
+msgstr "Tilfeldige kart"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:166
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
 msgid "No games found."
-msgstr ""
+msgstr "Ingen spill funnet."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:233
 msgid "No eras found."
-msgstr ""
+msgstr "Ingen æraer funnet."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:234
 msgid "No eras found"
-msgstr ""
+msgstr "Ingen æraer funnet"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:501
 msgid "No eras available for this game."
-msgstr ""
+msgstr "Ingen æraer tilgjengelige for dette spillet."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "$min til $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:821
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "Det valgte spillet inneholder ingen sider!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
 msgid "The selected game cannot be created."
-msgstr ""
+msgstr "Det valgte spillet kan ikke opprettes."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Choose Starting Scenario"
-msgstr ""
+msgstr "Velg startscenario"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Select at which point to begin this campaign."
-msgstr ""
+msgstr "Velg hvilket punkt du vil starte kampanjen på."
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:221
 msgid "Computer Player"
-msgstr ""
+msgstr "Dataspiller"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
-#, fuzzy
-#| msgid "(empty list)"
 msgid "Empty slot"
-msgstr "(tom liste)"
+msgstr "Tom plass"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
 msgid "Reserved for $playername"
-msgstr ""
+msgstr "Reservert for $playername"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
 msgid "Vacant slot"
-msgstr ""
+msgstr "Ledig plass"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:231
 msgid "empty"
-msgstr ""
+msgstr "tom"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:110
-#, fuzzy
-#| msgid "Quit Game"
 msgid "this game"
-msgstr "Avslutt spill"
+msgstr "dette spillet"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:47
 msgid "Lobby"
-msgstr ""
+msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:49
-#, fuzzy
 msgid "Game"
-msgstr "Navn"
+msgstr "Spill"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:514
 msgid "Waiting for players to choose factions..."
-msgstr ""
+msgstr "Venter på at spillerne skal velge fraksjoner..."
 
 #: src/gui/dialogs/outro.cpp:55
 msgid "The End"
-msgstr ""
+msgstr "Slutt"
 
 #: src/gui/dialogs/preferences_dialog.cpp:177
-#, fuzzy
 msgid "friend"
-msgstr "Din venneliste"
+msgstr "venn"
 
 #: src/gui/dialogs/preferences_dialog.cpp:182
 msgid "ignored"
-msgstr ""
+msgstr "ignorert"
 
 #: src/gui/dialogs/preferences_dialog.cpp:236
 #: src/gui/dialogs/preferences_dialog.cpp:293
 msgid "No username specified"
-msgstr ""
+msgstr "Ingen brukernavn spesifisert"
 
 #: src/gui/dialogs/preferences_dialog.cpp:251
 msgid "Invalid username"
 msgstr "Ugyldig brukernavn"
 
 #: src/gui/dialogs/preferences_dialog.cpp:298
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
-msgstr "Se eller endre lister over venner og ignorerte"
+msgstr "Ikke venne- eller ignoreringslisten"
 
 #: src/gui/dialogs/preferences_dialog.cpp:871
 #: src/gui/dialogs/preferences_dialog.cpp:935
@@ -7847,9 +7828,8 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:79
-#, fuzzy
 msgid "All Scenarios"
-msgstr "Scenariets mål"
+msgstr "Alle scenarier"
 
 #: src/gui/dialogs/statistics_dialog.cpp:177
 #: src/gui/dialogs/statistics_dialog.cpp:336
@@ -7858,11 +7838,11 @@ msgstr "Denne runden"
 
 #: src/gui/dialogs/statistics_dialog.cpp:213
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Faktisk treffprosent, etter sjanse for å treffe:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:215
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(ingen angrep har funnet sted ennå)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:323
 msgid ""
@@ -7873,61 +7853,56 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Differanse mellom faktisk utfall og forventet utfall, i prosent.\n"
+"Det første tallet i parentesen er forventet antall påførte/mottatte treff.\n"
+"Summen (eller differansen) av de to tallene i parentesen er det faktiske "
+"antallet påførte/utførte treff."
 
 #: src/gui/dialogs/statistics_dialog.cpp:367
-#, fuzzy
-#| msgid "Recruit"
 msgid "stats^Recruits"
 msgstr "Rekrutter"
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "Tilbakekall"
+msgstr "Tilbakekallinger"
 
 #: src/gui/dialogs/statistics_dialog.cpp:369
-#, fuzzy
-#| msgid "Advanced Mode"
 msgid "Advancements"
-msgstr "Avansert modus"
+msgstr "Forfremmelser"
 
 #: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Losses"
-msgstr ""
+msgstr "Tap"
 
 #: src/gui/dialogs/statistics_dialog.cpp:371
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Åser"
+msgstr "Drap"
 
 #: src/gui/dialogs/statistics_dialog.cpp:393
 #: src/gui/dialogs/statistics_dialog.cpp:400
 msgid "Inflicted"
-msgstr ""
+msgstr "Forvoldt"
 
 #: src/gui/dialogs/statistics_dialog.cpp:406
 #: src/gui/dialogs/statistics_dialog.cpp:413
 msgid "Taken"
-msgstr ""
+msgstr "Kapret"
 
 #: src/gui/dialogs/statistics_dialog.cpp:454
 msgid "$count|× $name"
-msgstr ""
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:110 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
-msgstr "Øyeblikksbilde"
+msgstr "Skjermbilde"
 
 #: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:303
-#, fuzzy
 msgid "Choose Test Scenario"
-msgstr "Scenariets mål"
+msgstr "Velg testscenario"
 
 #: src/gui/dialogs/unit_create.cpp:190
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "Standard variasjon"
 
 #: src/gui/dialogs/unit_recall.cpp:221
 msgid ""
@@ -7945,33 +7920,29 @@ msgstr "Gi enheten nytt navn"
 
 #: src/gui/dialogs/unit_recall.cpp:359
 msgid "This unit is loyal and requires no upkeep."
-msgstr ""
+msgstr "Denne enheten er lojal og generer ingen utgifter."
 
 #: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
 #: src/gui/dialogs/unit_recall.cpp:370
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
-msgstr "Vil du virkelig avslutte?"
+msgstr "Vil du virkelig avskjedige ham?"
 
 #: src/gui/dialogs/unit_recall.cpp:361 src/gui/dialogs/unit_recall.cpp:366
 #: src/gui/dialogs/unit_recall.cpp:371
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
-msgstr "Vil du virkelig avslutte?"
+msgstr "Vil du virkelig avskjedige henne?"
 
 #: src/gui/dialogs/unit_recall.cpp:364
 msgid "This unit is an experienced one, having advanced levels."
-msgstr ""
+msgstr "Dette er en erfaren enhet som har gått opp i nivå."
 
 #: src/gui/dialogs/unit_recall.cpp:369
 msgid "This unit is close to advancing a level."
-msgstr ""
+msgstr "Enheten er nærme ved å gå opp i nivå."
 
 #: src/gui/dialogs/unit_recall.cpp:375
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Avskjedige enhet"
 
 #: src/gui/gui.cpp:85
 msgid "No default gui defined."
@@ -7979,37 +7950,39 @@ msgstr "Ingen standard GUI er definert"
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
-msgstr ""
+msgstr "Installert, oppgraderbar"
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
-msgstr ""
+msgstr "Publisert, oppgraderbar"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
-msgstr ""
+msgstr "Installert, utdatert på server"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
-msgstr ""
+msgstr "Publisert, utdatert på server"
 
 #: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "Slett tillegg fra server"
 
 #: src/gui/widgets/chatbox.cpp:297
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "direktemelding til $receiver"
 
 #: src/gui/widgets/chatbox.cpp:381
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "Ble med <i>$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:387
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
+"Startet privat melding med <i>$name</i>. Hvis du ikke ønsker å motta "
+"meldinger fra denne spilleren, skriver du inn <i>/ignore $name</i>"
 
 #: src/gui/widgets/helper.cpp:91
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -8050,7 +8023,7 @@ msgstr "Rutenett er ikke definert"
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "Alle valgt"
 
 #. TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
 #. of the text on the button when many of the boxes are selected. The text becomes
@@ -8058,23 +8031,21 @@ msgstr ""
 #: src/gui/widgets/multimenu_button.cpp:179
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$excess annen"
+msgstr[1] "$excess andre"
 
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:233
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "Ingen valgt"
 
 #: src/gui/widgets/pane.cpp:361
 msgid "Need at least 1 parallel item."
 msgstr ""
 
 #: src/gui/widgets/size_lock.cpp:88
-#, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
-msgstr "Ugyldig brukernavn"
+msgstr "Ugyldig størrelse."
 
 #: src/gui/widgets/size_lock.cpp:123
 #, fuzzy
@@ -8109,53 +8080,51 @@ msgstr ""
 
 #: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "Resistances: "
-msgstr ""
+msgstr "Motstandsdyktighet: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:138
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Ang / For)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:298
 #: src/gui/widgets/unit_preview_pane.cpp:329
 #: src/gui/widgets/unit_preview_pane.cpp:450
 #: src/gui/widgets/unit_preview_pane.cpp:482
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "Nivå $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:336
 #: src/gui/widgets/unit_preview_pane.cpp:349
 #: src/gui/widgets/unit_preview_pane.cpp:490
 #: src/gui/widgets/unit_preview_pane.cpp:509
 msgid "HP: "
-msgstr ""
+msgstr "HP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:338
 #: src/gui/widgets/unit_preview_pane.cpp:354
 #: src/gui/widgets/unit_preview_pane.cpp:492
 #: src/gui/widgets/unit_preview_pane.cpp:514
 msgid "XP: "
-msgstr ""
+msgstr "EP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:356
 #: src/gui/widgets/unit_preview_pane.cpp:516
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier: "
-msgstr "Erfaringsmodifikasjon"
+msgstr "Erfaringsmodifikasjon: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:359
 #: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "MP: "
-msgstr ""
+msgstr "FP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:397
 #: src/gui/widgets/unit_preview_pane.cpp:547
 msgid "Abilities"
-msgstr ""
+msgstr "Evner"
 
 #: src/gui/widgets/window.cpp:421
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "Den koblede '$id'-gruppen har flere definisjoner."
 
 #: src/gui/widgets/window.cpp:907
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -8164,60 +8133,47 @@ msgstr ""
 #: src/gui/widgets/window.cpp:932 src/gui/widgets/window.cpp:969
 #: src/tests/gui/test_gui2.cpp:732
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "Kunne ikke vise en dialogboks som ikke fikk plass på skjermen."
 
 #: src/hotkey/hotkey_command.cpp:52
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved Games"
-msgstr "Lagre spill"
+msgstr "Lagre spillLagrede spill"
 
 #: src/hotkey/hotkey_command.cpp:53
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Map Commands"
-msgstr "Brukerdefinert kommando"
+msgstr "Kartkommandoer"
 
 #: src/hotkey/hotkey_command.cpp:54
-#, fuzzy
-#| msgid "Custom Command"
 msgid "Unit Commands"
-msgstr "Brukerdefinert kommando"
+msgstr "Enhetskommandoer"
 
 #: src/hotkey/hotkey_command.cpp:55
-#, fuzzy
-#| msgid "Players: "
 msgid "Player Chat"
-msgstr "Spillere:"
+msgstr "Spillerchat"
 
 #: src/hotkey/hotkey_command.cpp:56
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Replay Control"
-msgstr "Endre hurtigtast"
+msgstr "Reprisekontroll"
 
 #: src/hotkey/hotkey_command.cpp:57
 msgid "Planning Mode"
-msgstr ""
+msgstr "Planleggingsmodus"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
 msgid "Scenario Editor"
-msgstr "Scenariets mål"
+msgstr "Scenariobehandler"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Editor Palettes"
-msgstr ""
+msgstr "Behandlerpaletter"
 
 #: src/hotkey/hotkey_command.cpp:60
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Editor Tools"
-msgstr "Maleverktøy"
+msgstr "Behandlerverktøy"
 
 #: src/hotkey/hotkey_command.cpp:61
 msgid "Editor Clipboard"
-msgstr ""
+msgstr "Behandler-utklippstavle"
 
 #: src/hotkey/hotkey_command.cpp:62
 #, fuzzy
@@ -8232,59 +8188,48 @@ msgid "Custom WML Commands"
 msgstr "Brukerdefinert kommando"
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
-msgstr "Panoreringsfart:"
+msgstr "Panorer opp"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Scroll Down"
-msgstr ""
+msgstr "Panorer ned"
 
 #: src/hotkey/hotkey_command.cpp:76
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Left"
-msgstr "Panoreringsfart:"
+msgstr "Panorer venstre"
 
 #: src/hotkey/hotkey_command.cpp:77
 msgid "Scroll Right"
-msgstr ""
+msgstr "Panorer høyre"
 
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
-msgstr "Avbryt"
+msgstr "avbryt"
 
 #: src/hotkey/hotkey_command.cpp:80
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Velg Ingen"
+msgstr "Velg felt"
 
 #: src/hotkey/hotkey_command.cpp:81
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Velg Ingen"
+msgstr "Opphev feltvalg"
 
 #: src/hotkey/hotkey_command.cpp:82
 msgid "Move/Attack"
-msgstr ""
+msgstr "Flytt/Angrip"
 
 #: src/hotkey/hotkey_command.cpp:83
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Velg/Flytt/Angrip"
 
 #: src/hotkey/hotkey_command.cpp:84
 msgid "Touch"
-msgstr ""
+msgstr "Berør"
 
 #: src/hotkey/hotkey_command.cpp:85
-#, fuzzy
 msgid "Animate Map"
-msgstr "Generer kart"
+msgstr "Animere kart"
 
 #: src/hotkey/hotkey_command.cpp:86
 msgid "Next Unit"
@@ -8303,10 +8248,8 @@ msgid "End Unit Turn"
 msgstr "Avslutt enhetens runde"
 
 #: src/hotkey/hotkey_command.cpp:90
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll to Leader"
-msgstr "Panoreringsfart:"
+msgstr "Panorer til leder"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Undo"
@@ -8329,8 +8272,6 @@ msgid "Default Zoom"
 msgstr "Standard panorering"
 
 #: src/hotkey/hotkey_command.cpp:96
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Fullskjerm av/på"
 
@@ -8339,16 +8280,12 @@ msgid "Map Screenshot"
 msgstr "Skjermbilde av kart"
 
 #: src/hotkey/hotkey_command.cpp:100
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Akselerert hastighet"
+msgstr "Veksle akselerert hastighet"
 
 #: src/hotkey/hotkey_command.cpp:101
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Enhetsbeskrivelse"
+msgstr "Terrengbeskrivelse"
 
 #: src/hotkey/hotkey_command.cpp:102
 msgid "Unit Description"
@@ -8419,16 +8356,12 @@ msgid "Objectives"
 msgstr "Scenariets mål"
 
 #: src/hotkey/hotkey_command.cpp:129
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Vær vert for nettverkspill"
+msgstr "Pause nettverkspill"
 
 #: src/hotkey/hotkey_command.cpp:130
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Vær vert for nettverkspill"
+msgstr "Fortsett nettverkspill"
 
 #: src/hotkey/hotkey_command.cpp:132
 msgid "Quit to Menu"
@@ -8455,22 +8388,16 @@ msgid "Best Possible Enemy Moves"
 msgstr "Vis fiendens best mulige rekkevidde"
 
 #: src/hotkey/hotkey_command.cpp:139
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Lagre Opptak"
+msgstr "Spill reprise"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Lagre Opptak"
+msgstr "Tilbakestill reprise"
 
 #: src/hotkey/hotkey_command.cpp:141
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Lagre Opptak"
+msgstr "Stopp reprise"
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Next Turn"
@@ -8481,71 +8408,63 @@ msgid "Next Side"
 msgstr "Neste side"
 
 #: src/hotkey/hotkey_command.cpp:144
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Neste side"
+msgstr "Neste trekk"
 
 #: src/hotkey/hotkey_command.cpp:145
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Fullt kart"
+msgstr "Vinkel: Fullt kart"
 
 #: src/hotkey/hotkey_command.cpp:146
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Hvert lag"
+msgstr "Vinkel: Hvert lag"
 
 #: src/hotkey/hotkey_command.cpp:147
-#, fuzzy
 msgid "View: Human Team"
-msgstr "Dvergefestning"
+msgstr "Vinkel: Menneskelag"
 
 #: src/hotkey/hotkey_command.cpp:148
 msgid "Skip Animation"
 msgstr "Utelat animasjon"
 
 #: src/hotkey/hotkey_command.cpp:149
-#, fuzzy
 msgid "End Replay"
-msgstr "spiller"
+msgstr "Avslutt reprise"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:152
 msgid "whiteboard^Planning Mode"
-msgstr ""
+msgstr "Planleggingsmodus"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:154
 msgid "whiteboard^Execute Action"
-msgstr ""
+msgstr "Utfør handling"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:156
 msgid "whiteboard^Execute All Actions"
-msgstr ""
+msgstr "Utfør alle handlinger"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:158
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Fjerne handling"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:160
 msgid "whiteboard^Move Action Up"
-msgstr ""
+msgstr "Flytt handling opp"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:162
 msgid "whiteboard^Move Action Down"
-msgstr ""
+msgstr "Flytt handling ned"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:164
 msgid "whiteboard^Suppose Dead"
-msgstr ""
+msgstr "Annta død"
 
 #: src/hotkey/hotkey_command.cpp:166
 msgid "Quit to Desktop"
@@ -8706,16 +8625,12 @@ msgid ""
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:206
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Maleverktøy"
+msgstr "Enhetsverktøy"
 
 #: src/hotkey/hotkey_command.cpp:207
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Neste verktøy"
+msgstr "Gjenstandsverktøy"
 
 #: src/hotkey/hotkey_command.cpp:207
 msgid "Left mouse button sets a new item."
@@ -8728,16 +8643,12 @@ msgid ""
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:208
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Landsbygull"
+msgstr "Landsbyverktøy"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Recruit"
 msgid "Can Recruit"
-msgstr "Rekrutter"
+msgstr "Kan rekruttere"
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Toggle the recruit attribute of a unit."
@@ -8753,14 +8664,12 @@ msgid "Toggle the unit being renameable."
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:213
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Change Unit ID"
-msgstr "Endre hurtigtast"
+msgstr "Endre enhets-ID"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Loyal"
-msgstr ""
+msgstr "Lojal"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
@@ -8954,37 +8863,28 @@ msgid "Remove Selected Area"
 msgstr "Slett fil"
 
 #: src/hotkey/hotkey_command.cpp:270
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Area"
-msgstr "Neste side"
+msgstr "Legg till nytt område"
 
 #: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:273
-#, fuzzy
 msgid "Change Add-on ID"
-msgstr "Oppdater tilleggspakker"
+msgstr "Endre tilleggs-ID"
 
 #: src/hotkey/hotkey_command.cpp:275
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
-msgstr "Innstillinger for kartverktøy"
+msgstr "Rediger scenario"
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Edit Side"
-msgstr "Bytt kart"
+msgstr "Rediger side"
 
 #: src/hotkey/hotkey_command.cpp:277
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Fjern"
+msgstr "Fjern side"
 
 #: src/hotkey/hotkey_command.cpp:279
 msgid "Delay Shroud Updates"
@@ -9012,11 +8912,11 @@ msgstr "Melding til alle"
 
 #: src/hotkey/hotkey_command.cpp:286
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Hjelp angående lagre-lasting av spill"
 
 #: src/hotkey/hotkey_command.cpp:286
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Tips: lagre-lasting av spill er unødvendig"
 
 #: src/hotkey/hotkey_command.cpp:288
 msgid "Enter Command"
@@ -9080,11 +8980,11 @@ msgstr "Vis hjelpetips"
 
 #: src/hotkey/hotkey_command.cpp:307
 msgid "Show Lua Console"
-msgstr ""
+msgstr "Vis Lua-konsoll"
 
 #: src/hotkey/hotkey_command.cpp:310
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Ukjent kommando"
 
 #: src/preferences/display.cpp:67
 msgid "No known themes. Try changing from within an existing game."
@@ -9099,7 +8999,7 @@ msgstr ""
 
 #: src/preferences/display.cpp:113
 msgid "Find Server Application"
-msgstr ""
+msgstr "Finn serverapplikasjon"
 
 #: src/preferences/game.cpp:864
 msgid "[%H:%M]"

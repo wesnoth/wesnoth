@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2009-04-05 11:02+0100\n"
+"POT-Creation-Date: 2024-03-18 00:07 UTC\n"
+"PO-Revision-Date: 2024-04-25 21:37+0200\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
-"Language: \n"
+"Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Bookmarks: 348,182,120,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [attack]: type=impact
@@ -445,7 +445,7 @@ msgstr "kjøttøks"
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
 #: data/core/units/undead/Skele_Bone_Knight.cfg:77
 msgid "trample"
-msgstr ""
+msgstr "tråkke"
 
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
@@ -566,11 +566,9 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one’s "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
-"Vandrende lik er de dødes kroppet, vekket til live med mørk magi. Selvom de "
-"er svake i kamp vil de spre sin pest for hver fiende de beseirer, som vil "
-"reise seg og bli med dem i de vandødes rekker.\n"
-"\n"
-"Merk:"
+"Vandrende lik er de dødes kropper, levendegjort ved hjelp av mørk magi. Selv "
+"om de ikke er spesielt farlige for en trent soldat, er synet av ens "
+"tidligere kamerater blant dem mildt sagt skremmende."
 
 #. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
@@ -658,6 +656,11 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"Teknikken med å besjele en død kropp er dessverre velkjent i mørkets kunst, "
+"og praktiserende magikere bruker den ofte til å vekke opp tjenere og "
+"soldater fra ufrivillige lik. De er ofte tallrike, men skrøpelige; "
+"kamperfaring kan vekke deres indre potensiale, som gjør dem langt mer "
+"fryktinngytende."
 
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
@@ -904,17 +907,27 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the single-minded tenacity of an oak."
 msgstr ""
+"Dvergenes hedersvergere er mestere blant sine troppekamerater og utgjør "
+"bolverket i stridslinjene deres. Å lede et direkte angrep mot en linje de "
+"har befestet, er ofte uaktuelt; det er snarere selvmorderisk enn bare "
+"ineffektivt. Disse dvergene er mestere i nærkamp, og de kan holde en "
+"jordflekk med en eiks utholdenhet."
 
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
+#, fuzzy
 msgid ""
 "The wiles of experience and training turn guardsmen into worthy soldiers. "
 "These stalwart troops are equipped to match their skills, and can hold their "
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"Erfaring og trening forvandler gardister til verdige soldater. Disse "
+"trofaste troppene har utstyr som står i samsvar med ferdighetene deres, og "
+"de kan holde stand mot alt annet enn de mest brutale angrep. Det er farlig å "
+"miste fotfestet mot en slik soldat, for det er ikke lett å ta igjen."
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
@@ -982,18 +995,16 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
-"Dverger har lange tradisjoner i å avle mektige krigere. De mest blodtørstige "
-"styrkene de har avlet hittil er ulvhedinene, som uten å ta hensyn til egne "
-"skader, presser angrepet til fienden ligger død for deres føttes.\n"
-"\n"
-"Merk:"
+"Dvergene er en eldgammel rase av mektige krigere. Ulfserkerne er de mest "
+"glupske av dem, og i kamp kan de gå inn i et blindt raseri der de verken "
+"føler frykt eller smerte, og de bryr seg ikke om skadene de får."
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
-msgstr "Runerisser"
+msgstr "Runemester"
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
@@ -1282,9 +1293,8 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:37 data/core/units/drakes/Fire.cfg:30
 #: data/core/units/drakes/Inferno.cfg:32
-#, fuzzy
 msgid "battle claws"
-msgstr "stridsøks"
+msgstr "stridsklør"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:46
@@ -1303,8 +1313,6 @@ msgstr "ildpust"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Armageddon.cfg:65
-#, fuzzy
-#| msgid "Armageddon Drake"
 msgid "female^Armageddon Drake"
 msgstr "Armageddon"
 
@@ -1333,8 +1341,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Blademaster.cfg:61
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "female^Drake Blademaster"
 msgstr "Sverdmester"
 
@@ -1358,8 +1364,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Burner.cfg:67
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "female^Drake Burner"
 msgstr "Svier"
 
@@ -1386,8 +1390,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Clasher.cfg:111
-#, fuzzy
-#| msgid "Drake Clasher"
 msgid "female^Drake Clasher"
 msgstr "Vekter"
 
@@ -1417,8 +1419,6 @@ msgstr "trefork"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Enforcer.cfg:119
-#, fuzzy
-#| msgid "Drake Enforcer"
 msgid "female^Drake Enforcer"
 msgstr "Tyrann"
 
@@ -1447,8 +1447,6 @@ msgstr "hugg"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Fighter.cfg:64
-#, fuzzy
-#| msgid "Drake Fighter"
 msgid "female^Drake Fighter"
 msgstr "Strider"
 
@@ -1469,8 +1467,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Fire.cfg:62
-#, fuzzy
-#| msgid "Fire Drake"
 msgid "female^Fire Drake"
 msgstr "Brenner"
 
@@ -1493,8 +1489,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Flameheart.cfg:66
-#, fuzzy
-#| msgid "Drake Flameheart"
 msgid "female^Drake Flameheart"
 msgstr "Ildsjel"
 
@@ -1515,8 +1509,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Flare.cfg:65
-#, fuzzy
-#| msgid "Drake Flare"
 msgid "female^Drake Flare"
 msgstr "Ildfull"
 
@@ -1551,8 +1543,6 @@ msgstr "svingslag"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Glider.cfg:66
-#, fuzzy
-#| msgid "Drake Glider"
 msgid "female^Drake Glider"
 msgstr "Seiler"
 
@@ -1575,8 +1565,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Hurricane.cfg:101
-#, fuzzy
-#| msgid "Hurricane Drake"
 msgid "female^Hurricane Drake"
 msgstr "Orkan"
 
@@ -1597,8 +1585,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Inferno.cfg:64
-#, fuzzy
-#| msgid "Inferno Drake"
 msgid "female^Inferno Drake"
 msgstr "Inferno"
 
@@ -1619,14 +1605,11 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Sky.cfg:98
-#, fuzzy
-#| msgid "Sky Drake"
 msgid "female^Sky Drake"
 msgstr "Stormer"
 
 #. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
 msgstr "Vekter"
 
@@ -1643,7 +1626,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Thrasher.cfg:118
-#, fuzzy
 msgid "female^Drake Thrasher"
 msgstr "Vekter"
 
@@ -1673,8 +1655,6 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Warden.cfg:175
-#, fuzzy
-#| msgid "Drake Warden"
 msgid "female^Drake Warden"
 msgstr "Dommer"
 
@@ -1696,17 +1676,13 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "female^Drake Warrior"
 msgstr "Kriger"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Alchemist"
-msgstr "Sverdmester"
+msgstr "Alkymist"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1789,8 +1765,6 @@ msgstr "krumsabel"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:8
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "Dune Burner"
 msgstr "Svier"
 
@@ -1814,15 +1788,11 @@ msgstr ""
 
 #. [female]: gender=female
 #: data/core/units/dunefolk/Burner.cfg:98
-#, fuzzy
-#| msgid "Drake Burner"
 msgid "female^Dune Burner"
 msgstr "Svier"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
-#, fuzzy
-#| msgid "Elvish Captain"
 msgid "Dune Captain"
 msgstr "Kaptein"
 
@@ -2108,8 +2078,6 @@ msgstr ""
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:11
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Raider"
 msgstr "Fenrisrytter"
 
@@ -2128,8 +2096,6 @@ msgstr ""
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Dune Rider"
 msgstr "Fenrisrytter"
 
@@ -2191,8 +2157,6 @@ msgstr "Åndemanerske"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:8
-#, fuzzy
-#| msgid "Saurian Skirmisher"
 msgid "female^Dune Skirmisher"
 msgstr "Linjebryter"
 
@@ -2277,10 +2241,8 @@ msgstr ""
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "Dune Spearmaster"
-msgstr "Sverdmester"
+msgstr "Spydmester"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:21
@@ -2597,9 +2559,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
-#, fuzzy
 msgid "Dwarvish Runesmith"
-msgstr "Runerisser"
+msgstr "Runesmed"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:23
@@ -2609,6 +2570,10 @@ msgid ""
 "and accuracy, and disrupt the blows of their enemies, causing them to strike "
 "softly, weakly and on the armor of the defender."
 msgstr ""
+"Dvergenes runesmeder, som nå har lang erfaring med håndverket sitt, risser "
+"inn mystiske runer i våpnene og rustningene sine. Disse runene tilfører "
+"runesmedens slag kraft og nøyaktighet, og forstyrrer fiendens slag slik at "
+"slagene treffer lett, svakt og på forsvarerens rustning."
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
@@ -2628,6 +2593,14 @@ msgid ""
 "However, they pay for their speed with the poorer protection provided by "
 "their lighter armor."
 msgstr ""
+"Selv om dvergene ikke kan hamle opp med de høyere folkeslagene i en sprint, "
+"gjør deres enorme utholdenhet og utholdenhet at de kan hamle opp med alle "
+"andre enn de raskeste til fots når de ikke er belemret med tung rustning. "
+"Sendebudene utnytter dette til sin fordel ved å gå foran hovedstyrken og "
+"rapportere om troppebevegelser og -disposisjoner, eller ved å sikre viktige "
+"mål. Utenfor kamp brukes de ofte til å formidle beskjeder mellom "
+"dvergsamfunnene. De betaler imidlertid for sin hurtighet med dårligere "
+"beskyttelse på grunn av den lettere rustningen."
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -2644,6 +2617,11 @@ msgid ""
 "armor, these dwarves are masters of the melee and can hold a patch of earth "
 "with the single-minded tenacity of an oak."
 msgstr ""
+"Dvergenes hedersvergere er mestere blant sine troppekamerater og utgjør "
+"bolverket i stridslinjene deres. Å lede et direkte angrep mot en linje de "
+"har befestet, er ofte uaktuelt; det er snarere selvmorderisk enn bare "
+"ineffektivt. Disse dvergene er mestere i nærkamp, og de kan holde en "
+"jordflekk med en eiks utholdenhet."
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
@@ -2733,7 +2711,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/elves/Archer.cfg:80
 msgid "female^Elvish Archer"
-msgstr "Skytterske"
+msgstr "Bueskytter"
 
 #. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:4
@@ -2785,7 +2763,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/elves/Avenger.cfg:96
 msgid "female^Elvish Avenger"
-msgstr "Tretoppjeger"
+msgstr "Hevner"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
@@ -3326,12 +3304,10 @@ msgid ""
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminutive frames."
 msgstr ""
-"Tussene er vant med å måtte fylle opp orkenes frontlinjer. De få som ved "
-"hjelp av flaks og utholdenhet overlever et par kamper ser fort nytten i å "
-"skaffe enda lenger spyd og kler de spinkle kroppene i rustningsdeler fra "
-"falne fiender.\n"
-"\n"
-"Merk:"
+"Tussene brukes av orkene som trefninger for å forstyrre fiendens slaglinje. "
+"De som overlever de første kampene, utstyrer seg med et langt spyd for å "
+"kompensere for den korte rekkevidden, og en bedre rustning for å beskytte "
+"den lille kroppen."
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
@@ -3366,11 +3342,10 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
-"Enkelte tusser lykkes i å kurere ulvene for deres frykt for ild. Slike "
-"ulveryttere er gjerne med på plyndringstokter, der de setter fyr på hus og "
-"avlinger, og stopper forsøk på motstand med tunge nett.\n"
-"\n"
-"Merk:"
+"Noen tusser trener ulvene sine til å mestre sin frykt for ild. Under tokt "
+"har disse tussene en støttende rolle; de setter fyr på fiendens hjem og "
+"avlinger, og bærer også med seg nett for å ødelegge for dem som forsøker å "
+"samle seg til forsvar eller hevn."
 
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:50
@@ -3734,11 +3709,9 @@ msgid ""
 "proving both their tactical wit and their considerable mettle at personal "
 "combat."
 msgstr ""
-"Feltmarskalkene er menneskenes ypperste hærførere, og de som tildeles "
-"tittelen har alltid lang erfaring og vist seg verdige ved å vinne viktige "
-"slag. De er lærde strateger, men også formidable krigere på egenhånd.\n"
-"\n"
-"Merk:"
+"Rangeringen som feltmarskalk er en av de mest anerkjente i menneskehetens "
+"hærer, og de som bærer tittelen, har overlevd mange ildprøver og vist både "
+"taktisk kløkt og stor dyktighet i direkte kamp."
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
@@ -4096,16 +4069,15 @@ msgstr ""
 "velger å ta dette steget videre fra dagdrømmer, og inn i lærdommens verden. "
 "Magikere har studert i årevis, og har visdom som stiller dem i en "
 "særstilling i samfunnet. Mens de færreste i Wesnoth kan lese og skrive gir "
-"de seg hen til å dyrke kunnskapen på heltid. Skolene er fyllt med yrende "
-"iver og lærevilje, og for de fleste studentene er det selve drømmen å slippe "
-"unnå arbeider- og jordbrukersamfunnets intellektuelle vakuum.\n"
+"de seg hen til å dyrke kunnskapen på heltid.Blant dem finner vi barn av den "
+"håpefulle adelen, eller de som har søkt en flukt det manuelle arbeidets "
+"intellektuelle vakuum.\n"
 "\n"
 "Det er ironisk at de lærde, med all sin visdom og et tilnærmet monopol på "
-"kunnskap, ikke finnes i ledende posisjonene i samfunnet. Forbund av magikere "
-"kunne antagelig lyktes i å kapre kontrollen over hele fylker og byer, men "
-"magikernes sanne livsmål er verken penger eller makt, De blant magikerne som "
-"ser på magi som en måte til å oppnå slike gevinster blir sjelden mestere, da "
-"de ikke lykkes i å dedikere seg fullstendig til kunnskapen.\n"
+"kunnskap, ikke finnes i ledende posisjonene i samfunnet. Men magikernes "
+"sanne livsmål er verken penger eller makt, De blant magikerne som ser på "
+"magi som en måte til å oppnå slike gevinster blir sjelden mestere, da de "
+"ikke lykkes i å dedikere seg fullstendig til kunnskapen.\n"
 "\n"
 "Til tross for at de er fysisk svake og mangler kamptrening, har magikere "
 "kunster på lager som kan være svært nyttige i strid.\n"
