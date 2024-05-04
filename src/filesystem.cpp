@@ -786,7 +786,7 @@ bfs::path linux_userdata(const std::string& newprefdir)
 	// if a custom userdata dir is not specified
 	// and one of the XDG home and regular home env variables are not empty
 	// then use one of those
-	if(temp.empty() && ((!xdg_data || xdg_data[0] == '\0') || !home_str)) {
+	if(temp.empty() && ((xdg_data && xdg_data[0] != '\0') || home_str)) {
 		if(xdg_data && xdg_data[0] != '\0') {
 			dir = xdg_data;
 		} else if(home_str) {
