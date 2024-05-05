@@ -1,0 +1,2 @@
+### WML Engine
+   * Add a attack_alignment in [attack] to change the alignment of an attack if name used matche with lawful|neutral|chaotic|liminal alignment, but [filter_weapon] and formula check the string write in wml code.
