@@ -20,14 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for entering a password for joining a password-protected MP game.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * password          | text_box     |yes      |Input field for the game password.
- */
 class mp_join_game_password_prompt : public modal_dialog
 {
 public:

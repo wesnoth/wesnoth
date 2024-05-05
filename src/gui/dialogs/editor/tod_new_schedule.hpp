@@ -23,8 +23,6 @@ namespace dialogs
 {
 
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * Dialog that takes new schedule ID and name from the player.
  * custom_tod.cpp is the main editor window for time schedules.
  * This is launched when the user presses OK there.

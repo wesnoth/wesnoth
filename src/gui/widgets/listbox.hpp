@@ -431,49 +431,7 @@ struct listbox_definition : public styled_widget_definition
 
 namespace implementation
 {
-/**
- * @ingroup GUIWidgetWML
- *
- * A listbox is a control that holds several items of the same type.
- * Normally the items in a listbox are ordered in rows, this version might allow more options for ordering the items in the future.
- * The definition of a listbox contains the definition of its scrollbar:
- * Key                      |Type                                |Default     |Description
- * -------------------------|------------------------------------|------------|-------------
- * scrollbar                | @ref guivartype_section "section"  |mandatory   |A grid containing the widgets for the scrollbar. The scrollbar has some special widgets so it can make default behavior for certain widgets.
- * The resolution for a listbox also contains the following keys:
- * ID (return value)        |Type                |Mandatory   |Description
- * -------------------------|--------------------|------------|-------------
- * _begin                   | clickable          |no          |Moves the position to the beginning of the list.
- * _line_up                 | clickable          |no          |Move the position one item up. (NOTE: if too many items to move per item it might be more items.)
- * _half_page_up            | clickable          |no          |Move the position half the number of the visible items up. (See note at _line_up.)
- * _page_up                 | clickable          |no          |Move the position the number of visible items up. (See note at _line_up.)
- * _end                     | clickable          |no          |Moves the position to the end of the list.
- * _line_down               | clickable          |no          |Move the position one item down.(See note at _line_up.)
- * _half_page_down          | clickable          |no          |Move the position half the number of the visible items down. (See note at _line_up.)
- * _page_down               | clickable          |no          |Move the position the number of visible items down. (See note at _line_up.)
- * _scrollbar               | vertical_scrollbar |yes         |This is the scrollbar so the user can scroll through the list.
- * A clickable is one of:
- * * button
- * * repeating_button
- * The following states exist:
- * * state_enabled - the listbox is enabled.
- * * state_disabled - the listbox is disabled.
- * List with the listbox specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-------------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * header                   | @ref guivartype_grid "grid"                    |[]          |Defines the grid for the optional header. (This grid will automatically get the id _header_grid.)
- * footer                   | @ref guivartype_grid "grid"                    |[]          |Defines the grid for the optional footer. (This grid will automatically get the id _footer_grid.)
- * list_definition          | @ref guivartype_section "section"              |mandatory   |This defines how a listbox item looks. It must contain the grid definition for 1 row of the list.
- * list_data                | @ref guivartype_section "section"              |[]          |A grid alike section which stores the initial data for the listbox. Every row must have the same number of columns as the 'list_definition'.
- * has_minimum              | @ref guivartype_bool "bool"                    |true        |If false, less than one row can be selected.
- * has_maximum              | @ref guivartype_bool "bool"                    |true        |If false, more than one row can be selected.
- * In order to force widgets to be the same size inside a listbox, the widgets need to be inside a linked_group. Inside the list section there are only the following widgets allowed:
- * * grid (to nest)
- * * toggle_button
- * * toggle_panel
- */
+
 struct builder_listbox : public builder_styled_widget
 {
 	explicit builder_listbox(const config& cfg);
@@ -501,27 +459,6 @@ struct builder_listbox : public builder_styled_widget
 	bool has_minimum_, has_maximum_;
 };
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A horizontal listbox is a control that holds several items of the same type. Normally the items in a listbox are ordered in rows, this version orders them in columns instead. The definition of a horizontal listbox is the same as for a normal listbox.
- *
- * List with the horizontal listbox specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-------------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * list_definition          | @ref guivartype_section "section"              |mandatory  |This defines how a listbox item looks. It must contain the grid definition for 1 column of the list.
- * list_data                | @ref guivartype_section "section"              |[]         |A grid alike section which stores the initial data for the listbox. Every row must have the same number of columns as the 'list_definition'.
- * has_minimum              | @ref guivartype_bool "bool"                    |true       |If false, less than one row can be selected.
- * has_maximum              | @ref guivartype_bool "bool"                    |true       |If false, more than one row can be selected.
- *
- * In order to force widgets to be the same size inside a horizontal listbox, the widgets need to be inside a linked_group.
- * Inside the list section there are only the following widgets allowed:
- * * grid (to nest)
- * * toggle_button
- * * toggle_panel
- */
 struct builder_horizontal_listbox : public builder_styled_widget
 {
 	explicit builder_horizontal_listbox(const config& cfg);
@@ -546,28 +483,6 @@ struct builder_horizontal_listbox : public builder_styled_widget
 	bool has_minimum_, has_maximum_;
 };
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A grid listbox is a styled_widget that holds several items of the same type.
- * Normally the items in a listbox are ordered in rows, this version orders them in a grid instead.
- *
- * List with the grid listbox specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-------------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * list_definition          | @ref guivartype_section "section"              |mandatory  |This defines how a listbox item looks. It must contain the grid definition for 1 column of the list.
- * list_data                | @ref guivartype_section "section"              |[]         |A grid alike section which stores the initial data for the listbox. Every row must have the same number of columns as the 'list_definition'.
- * has_minimum              | @ref guivartype_bool "bool"                    |true        |If false, less than one row can be selected.
- * has_maximum              | @ref guivartype_bool "bool"                    |true        |If false, more than one row can be selected.
- *
- * In order to force widgets to be the same size inside a horizontal listbox, the widgets need to be inside a linked_group.
- * Inside the list section there are only the following widgets allowed:
- * * grid (to nest)
- * * toggle_button
- * * toggle_panel
- */
 struct builder_grid_listbox : public builder_styled_widget
 {
 	explicit builder_grid_listbox(const config& cfg);

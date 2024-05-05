@@ -20,14 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for renaming units in-game.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * name              | text_box     |yes      |Input field for the unit name.
- */
 class edit_text : public modal_dialog
 {
 public:

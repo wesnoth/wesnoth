@@ -27,15 +27,6 @@ namespace events
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the multiplayer change control dialog.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * sides_list        | @ref listbox |yes      |List of sides participating in the MP game.
- * nicks_list        | @ref listbox |yes      |List of nicks of all clients playing or observing the MP game.
- */
 class mp_change_control : public modal_dialog
 {
 public:
