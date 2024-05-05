@@ -22,18 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows a dialog displaying achievements.
- *
- * Key                       |Type         |Mandatory|Description
- * --------------------------|-------------|---------|-----------
- * selected_achievements_list|menu_button  |yes      |Allows selecting achievements by what content they're for.
- * name                      |label        |yes      |The user displayed name of the achievement.
- * description               |label        |yes      |The achievement's longer description.
- * icon                      |image        |yes      |An icon to display to the left of the achievement.
- */
 class achievements_dialog : public modal_dialog
 {
 public:

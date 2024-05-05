@@ -1038,8 +1038,10 @@ static std::string format_addon_time(std::time_t time)
 
 		const std::string format = preferences::use_twelve_hour_clock_format()
 			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			? _("%B %d %Y, %I:%M %p")
 			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			: _("%B %d %Y, %H:%M");
 
 		ss << translation::strftime(format, std::localtime(&time));

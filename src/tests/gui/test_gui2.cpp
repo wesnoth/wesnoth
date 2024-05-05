@@ -81,6 +81,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
@@ -627,6 +628,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {
 	test<mp_match_history>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
+{
+	test<migrate_version_selection>();
+}
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
 	test_popup<debug_clock>();
@@ -1072,6 +1077,15 @@ struct dialog_tester<mp_match_history>
 	mp_match_history* create()
 	{
 		return new mp_match_history("", connection, false);
+	}
+};
+
+template<>
+struct dialog_tester<migrate_version_selection>
+{
+	migrate_version_selection* create()
+	{
+		return new migrate_version_selection();
 	}
 };
 

@@ -20,15 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to create a savegame file.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * lblTitle          | @ref label   |yes      |The title of the window.
- * txtFilename       | text_box     |yes      |The name of the savefile.
- */
 class game_save : public modal_dialog
 {
 public:

@@ -22,14 +22,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for getting a single text value from the player.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * prompt_box        | text_box      |yes      |The text box to enter the value into.
- */
 class prompt : public modal_dialog
 {
 public:

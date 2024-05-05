@@ -315,31 +315,6 @@ public:
 		return "History is disabled, you did not compile with GNU history support.";
 #endif
 	}
-
-	// Does history expansion in a command line. A return value of true indicates an error,
-	// the error message will be returned in the string argument. A return value of false
-	// indicates success and that execution should proceed.
-	bool do_history_expansion ([[maybe_unused]] std::string & cmd) {
-#ifdef HAVE_HISTORY
-		// Do history expansions
-		std::unique_ptr<char[]> cmd_cstr(new char[cmd.length()+1]);
-		strcpy (cmd_cstr.get(), cmd.c_str());
-
-		char * expansion;
-
-		int result = history_expand(cmd_cstr.get(), &expansion);
-
-		if (result < 0 || result == 2) {
-			cmd = expansion; // return error message in cmd var
-			free(expansion);
-			return true;
-		}
-
-		cmd = expansion;
-		free(expansion);
-#endif
-		return false;
-	}
 };
 
 /**
@@ -553,12 +528,6 @@ void lua_interpreter::controller::execute()
 	if (cmd.size() >= 7 && (cmd.substr(0,7) == "history")) {
 		lua_model_->add_dialog_message(input_model_->list_history());
 		text_entry->set_value("");
-		update_view();
-		return;
-	}
-
-	if (input_model_->do_history_expansion(cmd)) {
-		lua_model_->add_dialog_message(cmd);
 		update_view();
 		return;
 	}

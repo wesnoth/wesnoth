@@ -28,25 +28,6 @@ struct builder_horizontal_scrollbar;
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A horizontal scrollbar is a widget that shows a horizontal scrollbar.
- * This widget is most of the time used in a container to control the scrolling of its contents.
- *
- * The resolution for a horizontal scrollbar also contains the following keys:
- * Key                      |Type                                |Default  |Description
- * -------------------------|------------------------------------|---------|-------------
- * minimum_positioner_length| @ref guivartype_unsigned "unsigned"|mandatory|The minimum size the positioner is allowed to be. The engine needs to know this in order to calculate the best size for the positioner.
- * maximum_positioner_length| @ref guivartype_unsigned "unsigned"|0        |The maximum size the positioner is allowed to be. If minimum and maximum are the same value the positioner is fixed size. If the maximum is 0 (and the minimum not) there's no maximum.
- * left_offset              | @ref guivartype_unsigned "unsigned"|0        |The number of pixels at the left which can't be used by the positioner.
- * right_offset             | @ref guivartype_unsigned "unsigned"|0        |The number of pixels at the right which can't be used by the positioner.
- * The following states exist:
- * * state_enabled - the horizontal scrollbar is enabled.
- * * state_disabled - the horizontal scrollbar is disabled.
- * * state_pressed - the left mouse button is down on the positioner of the horizontal scrollbar.
- * * state_focussed - the mouse is over the positioner of the horizontal scrollbar.
- */
 class horizontal_scrollbar : public scrollbar_base
 {
 	friend struct implementation::builder_horizontal_scrollbar;

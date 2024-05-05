@@ -30,6 +30,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
+#include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
@@ -667,6 +668,11 @@ void set_user_data_dir(std::string newprefdir)
 #ifdef PREFERENCES_DIR
 	if(newprefdir.empty()) {
 		newprefdir = PREFERENCES_DIR;
+		relative_ok = true;
+	}
+#elif defined(__APPLE__)
+	if(newprefdir.empty()) {
+		newprefdir = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
 		relative_ok = true;
 	}
 #endif

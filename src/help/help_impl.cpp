@@ -43,6 +43,7 @@
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
+#include "utils/general.hpp"            // for contains
 #include "serialization/unicode.hpp"    // for iterator
 #include "color.hpp"
 
@@ -990,6 +991,13 @@ void generate_terrain_sections(section& sec, int /*level*/)
 		terrain_topic.text  = std::make_shared<terrain_topic_generator>(info);
 
 		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
+		if (info.has_default_base()) {
+			for (const auto base : tdata->underlying_union_terrain(info.default_base())) {
+				if (!utils::contains(base_terrains, base)) {
+					base_terrains.emplace_back(base);
+				}
+			}
+		}
 		for (const t_translation::terrain_code& base : base_terrains) {
 
 			const terrain_type& base_info = tdata->get_terrain_info(base);

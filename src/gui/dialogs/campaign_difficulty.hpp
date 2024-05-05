@@ -28,19 +28,6 @@ namespace gui2::dialogs
  */
 config generate_difficulty_config(const config& source);
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * The campaign mode difficulty menu.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * title             | @ref label   |yes      |Dialog title label.
- * message           | scroll_label |no       |Text label displaying a description or instructions.
- * listbox           | @ref listbox |yes      |Listbox displaying user choices, defined by WML for each campaign.
- * icon              | control      |yes      |Widget which shows a listbox item icon, first item markup column.
- * label             | control      |yes      |Widget which shows a listbox item label, second item markup column.
- * description       | control      |yes      |Widget which shows a listbox item description, third item markup column.
- */
 class campaign_difficulty : public modal_dialog
 {
 public:

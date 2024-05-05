@@ -28,19 +28,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog displaying the various paths used by the game to locate resource and configuration files.
- *
- * There are several item types used to build widget ids in this dialog.
- * All references to TYPE below refer to the following suffixes: datadir, config, userdata, saves, addons, cache.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * path_TYPE         | text_box     |yes      |Textbox containing the filesystem path for the given item.
- * copy_TYPE         | @ref button  |yes      |Copies the given item's path to clipboard.
- * browse_TYPE       | @ref button  |yes      |Launches the default file browser on the given item's path.
- */
 class game_version : public modal_dialog
 {
 public:
@@ -123,6 +110,10 @@ private:
 	 */
 	void report_issue();
 
+	/**
+	 * Callback function to re-run the version migration dialog.
+	 */
+	void run_migrator();
 };
 } // namespace dialogs
 } // namespace gui2

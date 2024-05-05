@@ -3,7 +3,7 @@
 |Branch|CI status|
 |------|---------|
 |Master|[![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3Amaster)|
-|1.16|[![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg?branch=1.16)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3A1.16)|
+|1.18|[![CI](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml/badge.svg?branch=1.18)](https://github.com/wesnoth/wesnoth/actions/workflows/ci-main.yml?query=branch%3A1.18)|
 
 About
 =====

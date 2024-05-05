@@ -22,16 +22,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for adding a translation while editing an add-on's _server.pbl.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * language          | text_box      |yes      |The language code for this translation.
- * lang_title        | text_box      |yes      |The name of the language displayed on the UI.
- * description       | text_box      |yes      |The description of the translation.
- */
 class editor_edit_pbl_translation : public modal_dialog
 {
 public:

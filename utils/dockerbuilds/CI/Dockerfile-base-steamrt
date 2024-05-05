@@ -1,11 +1,11 @@
 FROM steamrt_sniper_amd64
 ENV DEBIAN_FRONTEND=noninteractive
-ARG BOOST_VERSION=1.67.0
-ARG BOOST_VERSION_=1_67_0
+ARG BOOST_VERSION=1.85.0
+ARG BOOST_VERSION_=1_85_0
 
 RUN apt-get update
 RUN apt-get install -y scons libreadline-dev expect-dev
 
 RUN wget --max-redirect 3 https://boostorg.jfrog.io/artifactory/main/release/$BOOST_VERSION/source/boost_$BOOST_VERSION_.tar.gz
 RUN mkdir -p /src/boost && tar zxf boost_${BOOST_VERSION_}.tar.gz -C /src/boost --strip-components=1
-RUN cd /src/boost && ./bootstrap.sh --with-libraries=iostreams,regex,system,filesystem,program_options,random,locale,context,coroutine,graph && ./b2 toolset=gcc-10 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
+RUN cd /src/boost && ./bootstrap.sh --with-libraries=charconv,iostreams,regex,system,filesystem,program_options,random,locale,context,coroutine,graph && ./b2 toolset=gcc-10 --layout=system link=static variant=release cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 install
