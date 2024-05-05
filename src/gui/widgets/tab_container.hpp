@@ -98,7 +98,7 @@ public:
 	static const std::string& type();
 
 private:
-	/***** ***** ***** inherited ****** *****/
+	/* **** ***** ***** inherited ****** **** */
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;

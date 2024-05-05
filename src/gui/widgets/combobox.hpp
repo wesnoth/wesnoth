@@ -170,7 +170,7 @@ private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
-	/***** ***** ***** signal handlers ***** ****** *****/
+	/* **** ***** ***** signal handlers ***** ****** **** */
 
 	void signal_handler_mouse_enter(const event::ui_event /*event*/, bool& /*handled*/);
 	void signal_handler_mouse_motion(const event::ui_event event,
