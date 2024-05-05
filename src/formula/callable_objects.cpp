@@ -93,6 +93,8 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_->icon());
 	} else if(key == "range") {
 		return variant(att_->range());
+	} else if(key == "attack_alignment") {
+		return variant(att_->attack_alignment());
 	} else if(key == "damage") {
 		return variant(att_->damage());
 	} else if(key == "number_of_attacks" || key == "number" || key == "num_attacks" || key == "attacks") {
@@ -130,6 +132,7 @@ void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "description");
 	add_input(inputs, "icon");
 	add_input(inputs, "range");
+	add_input(inputs, "attack_alignment");
 	add_input(inputs, "damage");
 	add_input(inputs, "number");
 	add_input(inputs, "accuracy");
@@ -166,6 +169,10 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 
 	if(att_->range() != att_callable->att_->range()) {
 		return att_->range().compare(att_callable->att_->range());
+	}
+
+	if(att_->attack_alignment() != att_callable->att_->attack_alignment()) {
+		return att_->attack_alignment().compare(att_callable->att_->attack_alignment());
 	}
 
 	const auto self_specials = att_->specials().all_children_range();

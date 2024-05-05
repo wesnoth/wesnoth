@@ -1284,6 +1284,19 @@ int attack_type::modified_damage() const
 	return damage_value;
 }
 
+unit_alignments::type attack_type::alignment_in_attack() const
+{
+	std::optional<unit_alignments::type> align = unit_alignments::get_enum(attack_alignment());
+	if(self_){
+		//here the value returned can't be null, if self_ exist like in attack.cpp and gui and report functions, unit alignment returned if attack_alignment empty or don't match regular alignment.
+		//if this function should be called without unit specified then "neutral" returned instead of empty or incorrect value(in case or function called in other file in future).
+		align = (!attack_alignment().empty() && (checking_alignment().count(attack_alignment()) != 0)) ? unit_alignments::get_enum(attack_alignment()) : (*self_).alignment();
+	} else {
+		align = (!attack_alignment().empty() && (checking_alignment().count(attack_alignment()) != 0)) ? unit_alignments::get_enum(attack_alignment()) : unit_alignments::type::neutral;
+	}
+	return *align;
+}
+
 
 namespace { // Helpers for attack_type::special_active()
 

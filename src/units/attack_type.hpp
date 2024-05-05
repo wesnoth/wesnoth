@@ -25,6 +25,7 @@
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
+#include "units/unit_alignments.hpp"
 
 class unit_ability_list;
 class unit_type;
@@ -59,6 +60,7 @@ public:
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
+	void set_attack_alignment(const std::string& value) { attack_alignment_ = value; set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -82,6 +84,13 @@ public:
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
+
+	const std::set<std::string>& checking_alignment() const { return checking_alignment_; }
+
+	const std::string& attack_alignment() const { return attack_alignment_; }
+	/** Returns alignment specified by 'attack_alignment' If empty and have unit's alignment returns the unit's alignment.
+	 */
+	unit_alignments::type alignment_in_attack() const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
@@ -334,12 +343,15 @@ public:
 	}
 private:
 
+	const std::set<std::string> checking_alignment_{"neutral", "lawful", "chaotic", "liminal"};
+
 	t_string description_;
 	std::string id_;
 	std::string type_;
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
+	std::string attack_alignment_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;
