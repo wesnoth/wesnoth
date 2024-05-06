@@ -63,7 +63,7 @@ def generate(env):
     env["BUILDERS"]["AaptCompile"] = aapt_compile
 
     aapt_link = Builder(
-        action = "$AAPT link -o $TARGET --manifest $SOURCES -I $JAVACLASSPATH --java $AAPTJAVADIR",
+        action = "$AAPT link --proto-format -o $TARGET --manifest $SOURCES -I $JAVACLASSPATH --java $AAPTJAVADIR",
         suffix = ".apk"
     )
     env["BUILDERS"]["AaptLink"] = aapt_link
