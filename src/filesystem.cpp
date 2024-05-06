@@ -668,6 +668,7 @@ bfs::path windows_userdata(const std::string& newprefdir)
 #ifdef PREFERENCES_DIR
 	if(temp.empty()) {
 		temp = PREFERENCES_DIR;
+		DBG_FS << "Using PREFERENCES_DIR " << PREFERENCES_DIR;
 	}
 #endif
 
@@ -678,12 +679,15 @@ bfs::path windows_userdata(const std::string& newprefdir)
 	if(temp.size() > 2 && temp[1] == ':') {
 		// allow absolute path override
 		dir = temp;
+		DBG_FS << "custom userdata folder - absolute path";
 	} else if(is_path_relative_to_cwd(temp)) {
 		// Custom directory relative to workdir (for portable installs, etc.)
 		dir = get_cwd() + "/" + temp;
+		DBG_FS << "userdata relative to current working directory";
 	} else {
 		if(temp.empty()) {
 			temp = "Wesnoth" + get_version_path_suffix();
+			DBG_FS << "using default userdata folder name";
 		} else {
 			// only warn about a relative path if it comes from the command line option, not from the PREFERENCES_DIR define
 #ifdef PREFERENCES_DIR
@@ -714,6 +718,7 @@ bfs::path windows_userdata(const std::string& newprefdir)
 			create_directory_if_missing(games_path);
 
 			dir = games_path / temp;
+			DBG_FS << "userdata is under My Games";
 		}
 
 		CoTaskMemFree(docs_path);
@@ -735,8 +740,10 @@ bfs::path apple_userdata(const std::string& newprefdir)
 	if(temp.empty()) {
 #ifdef PREFERENCES_DIR
 		temp = PREFERENCES_DIR;
+		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR;
 		if(home_str && temp[0] == '~') {
 			temp = home_str + temp.substr(1);
+			DBG_FS << "userdata is relative to HOME";
 		}
 #elif defined(WESNOTH_BOOST_OS_IOS)
 		char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
@@ -744,8 +751,10 @@ bfs::path apple_userdata(const std::string& newprefdir)
 			temp = std::string(sdl_pref_path) + ".wesnoth" + get_version_path_suffix();
 			SDL_free(sdl_pref_path);
 		}
+		DBG_FS << "userdata using SDL pref path";
 #else
 		temp = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
+		DBG_FS << "userdata using default path relative to HOME";
 #endif
 	} else if(temp[0] != '/') {
 		// TRANSLATORS: translate the part inside <...> only
@@ -777,8 +786,10 @@ bfs::path linux_userdata(const std::string& newprefdir)
 #ifdef PREFERENCES_DIR
 	if(temp.empty()) {
 		temp = PREFERENCES_DIR;
+		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR;
 		if(home_str && temp[0] == '~') {
 			temp = home_str + temp.substr(1);
+			DBG_FS << "userdata is relative to HOME";
 		}
 	}
 #endif
@@ -789,9 +800,11 @@ bfs::path linux_userdata(const std::string& newprefdir)
 	if(temp.empty() && ((xdg_data && xdg_data[0] != '\0') || home_str)) {
 		if(xdg_data && xdg_data[0] != '\0') {
 			dir = xdg_data;
+			DBG_FS << "userdata using XDG_DATA_HOME";
 		} else if(home_str) {
 			dir = home_str;
 			dir /= ".local/share";
+			DBG_FS << "userdata using HOME";
 		}
 
 		dir /= "wesnoth";
@@ -802,6 +815,7 @@ bfs::path linux_userdata(const std::string& newprefdir)
 	// if a custom userdata dir using an absolute path was specified, just use that
 	if(!temp.empty() && temp[0] == '/') {
 		dir = temp;
+		DBG_FS << "userdata is an absolute path";
 		return dir;
 	}
 
@@ -821,6 +835,7 @@ bfs::path linux_userdata(const std::string& newprefdir)
 			_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
 	} else {
 		dir = ".";
+		DBG_FS << "userdata unable to determine location to use, defaulting to current working directory";
 	}
 
 	dir /= temp;
