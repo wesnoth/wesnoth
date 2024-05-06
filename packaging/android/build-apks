@@ -1,0 +1,11 @@
+#!/bin/bash -xe
+
+REPO=`pwd`/../..
+
+for arch in "x86_64" "armeabi-v7a" "arm64-v8a" "x86"
+do
+	mkdir -p /tmp/wesnoth-$arch
+	pushd /tmp/wesnoth-$arch
+		scons -j`nproc` -Y $REPO prefix=/tmp/android-prefix/$arch host=android-$arch ndkdir=/opt/android-sdk-update-manager/ndk/23.1.7779620 android_home=/opt/android-sdk-update-manager/ apk
+	popd
+done
