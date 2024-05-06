@@ -198,11 +198,10 @@ point widget::get_best_size() const
 	if(result == point()) {
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
-		if(!get_window()->get_need_layout() && !linked_group_.empty())
-		{
-			point linked_size = get_window()->get_linked_size(linked_group_);
-			result.x = std::max(result.x, linked_size.x);
-			result.y = std::max(result.y, linked_size.y);
+		if (get_window() && !get_window()->get_need_layout() && !linked_group_.empty()) {
+				point linked_size = get_window()->get_linked_size(linked_group_);
+				result.x = std::max(result.x, linked_size.x);
+				result.y = std::max(result.y, linked_size.y);
 		}
 	}
 
