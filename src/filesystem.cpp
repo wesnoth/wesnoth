@@ -668,7 +668,7 @@ bfs::path windows_userdata(const std::string& newprefdir)
 #ifdef PREFERENCES_DIR
 	if(temp.empty()) {
 		temp = PREFERENCES_DIR;
-		DBG_FS << "Using PREFERENCES_DIR " << PREFERENCES_DIR;
+		DBG_FS << "Using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
 	}
 #endif
 
@@ -740,7 +740,7 @@ bfs::path apple_userdata(const std::string& newprefdir)
 	if(temp.empty()) {
 #ifdef PREFERENCES_DIR
 		temp = PREFERENCES_DIR;
-		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR;
+		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
 		if(home_str && temp[0] == '~') {
 			temp = home_str + temp.substr(1);
 			DBG_FS << "userdata is relative to HOME";
@@ -786,7 +786,7 @@ bfs::path linux_userdata(const std::string& newprefdir)
 #ifdef PREFERENCES_DIR
 	if(temp.empty()) {
 		temp = PREFERENCES_DIR;
-		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR;
+		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
 		if(home_str && temp[0] == '~') {
 			temp = home_str + temp.substr(1);
 			DBG_FS << "userdata is relative to HOME";
