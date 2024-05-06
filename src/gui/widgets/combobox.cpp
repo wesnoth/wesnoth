@@ -42,12 +42,12 @@ REGISTER_WIDGET(combobox)
 
 combobox::combobox(const implementation::builder_styled_widget& builder)
 	: text_box_base(builder, type())
-	, values_()
 	, max_input_length_(0)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
+	, values_()
 	, selected_(0)
 {
 	values_.emplace_back("label", this->get_label());
