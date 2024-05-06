@@ -33,8 +33,6 @@ unaligned = env.Command("wesnoth.apk.unaligned", [apk[0]] + bytecode + env.Glob(
     add_libraries_to_archive
     ])
 
-unsigned = env.Command("wesnoth.apk.unsigned", unaligned, "zipalign -p 4 $SOURCE $TARGET")
-
-debug_apk = env.Command("wesnoth-debug.apk", unsigned, "cp $SOURCE $TARGET && apksigner sign --ks ~/.android/debug.keystore --ks-pass pass:android $TARGET")
+debug_apk = env.Command("wesnoth-debug.apk", unaligned, "zipalign -p 4 $SOURCE $TARGET")
 
 Alias("apk", debug_apk)
