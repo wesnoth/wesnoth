@@ -3110,7 +3110,9 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 						return 0;
 					}
 					// found the achievement - mark it as completed
-					preferences::set_achievement(content_for, id);
+					if(!play_controller_.is_replay()) {
+						preferences::set_achievement(content_for, id);
+					}
 					achieve.achieved_ = true;
 					// progressable achievements can also check for current progress equals -1
 					if(achieve.max_progress_ != 0) {
@@ -3242,7 +3244,10 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 					}
 
 					if(!achieve.achieved_) {
-						int progress = preferences::progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
+						int progress = 0;
+						if(!play_controller_.is_replay()) {
+							progress = preferences::progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
+						}
 						if(progress >= achieve.max_progress_) {
 							intf_set_achievement(L);
 							achieve.current_progress_ = -1;
@@ -3319,7 +3324,9 @@ int game_lua_kernel::intf_set_sub_achievement(lua_State *L)
 							if(sub_ach.achieved_) {
 								return 0;
 							} else {
-								preferences::set_sub_achievement(content_for, id, sub_id);
+								if(!play_controller_.is_replay()) {
+									preferences::set_sub_achievement(content_for, id, sub_id);
+								}
 								sub_ach.achieved_ = true;
 								achieve.current_progress_++;
 								if(achieve.current_progress_ == achieve.max_progress_) {
