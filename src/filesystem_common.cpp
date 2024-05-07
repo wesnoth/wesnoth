@@ -132,15 +132,6 @@ std::string get_credentials_file()
 	return get_user_config_dir() + "/credentials-aes";
 }
 
-std::string get_default_prefs_file()
-{
-#ifdef HAS_RELATIVE_DEFPREF
-	return game_config::path + "/" + game_config::default_preferences_path;
-#else
-	return game_config::default_preferences_path;
-#endif
-}
-
 std::string get_save_index_file()
 {
 	return get_user_data_dir() + "/save_index";

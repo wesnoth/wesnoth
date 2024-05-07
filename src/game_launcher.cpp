@@ -40,6 +40,7 @@
 #include "language.hpp"                      // for language_def, etc
 #include "log.hpp"                           // for LOG_STREAM, logger, general, etc
 #include "map/exception.hpp"
+#include "serialization/parser.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/display.hpp"
 #include "preferences/general.hpp" // for disable_preferences_save, etc
@@ -820,23 +821,29 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
-	std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
-		? filesystem::get_exe_dir() + "/" + filesystem::get_program_invocation("wesnothd")
-		: preferences::get_mp_server_program_name();
-
-	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
-	if (!filesystem::file_exists(config)) {
+	std::string path = filesystem::get_user_config_dir() + "/lan_server.cfg";
+	if (!filesystem::file_exists(path)) {
 		// copy file if it isn't created yet
-		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
+		filesystem::write_file(path, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
+	}
+
+	config lan;
+	read(lan, path);
+
+	std::string wesnothd_program = lan["command"].str("");
+	if(wesnothd_program.empty() || !filesystem::file_exists(wesnothd_program)) {
+		wesnothd_program = preferences::get_mp_server_program_name().empty()
+				? filesystem::get_exe_dir() + "/" + filesystem::get_program_invocation("wesnothd")
+				: preferences::get_mp_server_program_name();
 	}
 
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
 #ifndef _WIN32
-		bp::child c(wesnothd_program, "-c", config);
+		bp::child c(wesnothd_program, "-c", path);
 #else
-		bp::child c(wesnothd_program, "-c", config, bp::windows::create_no_window);
+		bp::child c(wesnothd_program, "-c", path, bp::windows::create_no_window);
 #endif
 		c.detach();
 		// Give server a moment to start up

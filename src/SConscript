@@ -49,13 +49,6 @@ for environ in [test_env, client_env, env]:
     else:
         environ["fifodir"] = ""
 
-# if a default preference file exists, configure its location
-    if env['default_prefs_file']:
-        environ['default_prefs_file'] = env['default_prefs_file']
-        environ.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
-        if not os.path.isabs(env['default_prefs_file']):
-            environ.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
-
 for environ in [test_env, client_env, env]:
     environ.Append(CPPDEFINES = "$EXTRA_DEFINE")
 

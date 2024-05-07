@@ -3051,6 +3051,9 @@ int main(int argc, char** argv)
 			std::cout << "usage: " << argv[0]
 					  << " [-dvV] [-c path] [-m n] [-p port] [-t n]\n"
 					  << "  -c, --config <path>        Tells wesnothd where to find the config file to use.\n"
+					  << "                             When used as a LAN server, the 'command' attribute can\n"
+					  << "                             be used to where to specify either this executable\n"
+					  << "                             or a script file to run this executable.\n"
 					  << "  -d, --daemon               Runs wesnothd as a daemon.\n"
 					  << "  -h, --help                 Shows this usage message.\n"
 					  << "  --log-<level>=<domain1>,<domain2>,...\n"

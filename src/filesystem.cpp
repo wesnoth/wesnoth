@@ -84,11 +84,6 @@ std::string path = WESNOTH_PATH;
 std::string path = "";
 #endif
 
-#ifdef DEFAULT_PREFS_PATH
-std::string default_preferences_path = DEFAULT_PREFS_PATH;
-#else
-std::string default_preferences_path = "";
-#endif
 bool check_migration = false;
 
 const std::string observer_team_name = "observer";
