@@ -276,9 +276,11 @@ void rich_label::set_label(const t_string& text)
 				int tmp_h = prev_block_size.y;
 
 				if (cfg.optional_child("ref")) {
+					PLAIN_LOG << (*curr_item)["text"];
+				
 					setup_text_renderer(*curr_item, w_ - x_);
 
-					point t_start = get_xy_from_offset((*curr_item)["text"].str().size());
+					point t_start = get_xy_from_offset(utf8::size((*curr_item)["text"].str()));
 					PLAIN_LOG << "\n(t_s) " << "offset : " << (*curr_item)["text"].str().size() << ", "<< t_start.x << ", " << t_start.y;
 
 					std::string link_text = cfg.mandatory_child("ref")["text"].str();
@@ -287,7 +289,7 @@ void rich_label::set_label(const t_string& text)
 					add_text_with_attribute((*curr_item), link_text, "color", font::YELLOW_COLOR.to_hex_string().substr(1));
 
 					setup_text_renderer(*curr_item, w_ - x_);
-					point t_end = get_xy_from_offset((*curr_item)["text"].str().size());
+					point t_end = get_xy_from_offset(utf8::size((*curr_item)["text"].str()));
 
 					PLAIN_LOG << "(th) " << txt_height_;
 
@@ -298,8 +300,7 @@ void rich_label::set_label(const t_string& text)
 					PLAIN_LOG << "(t_e) " << "offset : " << (*curr_item)["text"].str().size() << ", " << t_end.x << ", " << t_end.y;
 
 					// Add link
-					// FIXME only works if text is on the right side of the image
-					if (t_end.x < static_cast<int>(w_)) {
+					if (t_end.x > t_start.x) {
 						point link_size = t_end - t_start;
 						rect link_rect = {
 								link_start.x,
@@ -311,7 +312,7 @@ void rich_label::set_label(const t_string& text)
 
 						PLAIN_LOG << "(link) [" << link_start.x << ", " << link_start.y << ", " << link_size.x << ", " << link_size.y << "]";
 					} else {
-						PLAIN_LOG << cfg.mandatory_child("ref")["dst"];
+						// FIXME only works if text is on the right side of the image
 						//link straddles two lines, break into two rects
 						point t_size(w_ - link_start.x, t_end.y - t_start.y);
 						point link_start2(x_, link_start.y + font::get_max_height(font::SIZE_NORMAL));
