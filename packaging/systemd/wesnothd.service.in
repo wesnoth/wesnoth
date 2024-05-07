@@ -11,7 +11,7 @@ After=network.target
 # Deleting the pipe resets owner, group and mode
 ExecStartPre=/bin/rm -f @FIFO_DIR@/socket
 
-ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/wesnothd@BINARY_SUFFIX@ -t 2 -T 5
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/wesnothd@BINARY_SUFFIX@
 # You can use -c to specify the same configuration file
 # which is used when starting wesnothd from within the wesnoth UI
 # e.g. -c /home/user/.local/share/wesnoth/1.14/lan_server.cfg
