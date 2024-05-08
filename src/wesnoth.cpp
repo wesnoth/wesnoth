@@ -119,6 +119,10 @@
 
 #ifdef __ANDROID__
 #include <android/log.h>
+#include <jni.h>
+
+#include <play/asset_pack.h>
+
 #endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -985,6 +989,7 @@ static int do_gameloop(const std::vector<std::string>& args)
  * Try to autodetect the location of the game data dir. Note that
  * the root of the source tree currently doubles as the data dir.
  */
+#ifndef __ANDROID__
 static std::string autodetect_game_data_dir(std::string exe_dir)
 {
 	std::string auto_dir;
@@ -1015,6 +1020,7 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 
 	return auto_dir;
 }
+#endif
 
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
@@ -1038,6 +1044,53 @@ int main(int argc, char** argv)
 {
 #ifdef __ANDROID__
 	__android_log_write(ANDROID_LOG_INFO, "wesnoth", "Wesnoth started");
+
+	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+	JavaVM* jvm;
+	env->GetJavaVM(&jvm);
+
+	jobject activity = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+
+	AssetPackManager_init(jvm, activity);
+
+	const char* asset_pack_name = "wesnoth_data";
+	auto result = AssetPackManager_requestInfo(&asset_pack_name, 1);
+	assert(result == ASSET_PACK_NO_ERROR);
+
+	AssetPackDownloadState* state;
+	AssetPackDownloadStatus status;
+	do {
+		auto error_code = AssetPackManager_getDownloadState(asset_pack_name, &state);
+		assert(error_code == ASSET_PACK_NO_ERROR);
+		status = AssetPackDownloadState_getStatus(state);
+		__android_log_print(ANDROID_LOG_INFO, "wesnoth", "Download status: %d\n", status);
+		AssetPackDownloadState_destroy(state);
+		SDL_Delay(16);
+	} while(status == ASSET_PACK_INFO_PENDING);
+
+	result = AssetPackManager_requestDownload(&asset_pack_name, 1);
+	assert(result == ASSET_PACK_NO_ERROR);
+
+	do {
+		auto error_code = AssetPackManager_getDownloadState(asset_pack_name, &state);
+		assert(error_code == ASSET_PACK_NO_ERROR);
+		status = AssetPackDownloadState_getStatus(state);
+		__android_log_print(ANDROID_LOG_INFO, "wesnoth", "Download status: %d\n", status);
+		AssetPackDownloadState_destroy(state);
+		SDL_Delay(16);
+	} while(status < 4);
+	assert(status == ASSET_PACK_DOWNLOAD_COMPLETED);
+
+	AssetPackLocation* location;
+
+	result = AssetPackManager_getAssetPackLocation(asset_pack_name, &location);
+	assert(result == ASSET_PACK_NO_ERROR);
+
+	std::string android_asset_path;
+	android_asset_path = AssetPackLocation_getAssetsPath(location);
+	__android_log_print(ANDROID_LOG_INFO, "wesnoth", "Download path: %s\n", android_asset_path.c_str());
+	AssetPackLocation_destroy(location);
+
 #endif
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
@@ -1149,6 +1202,9 @@ int main(int argc, char** argv)
 			PLAIN_LOG << "Started on " << ctime(&t);
 		}
 
+#ifdef __ANDROID__
+		game_config::path = std::move(android_asset_path);
+#else
 		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
 			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
 				if(!nobanner) {
@@ -1169,6 +1225,7 @@ int main(int argc, char** argv)
 				}
 			}
 		}
+#endif
 
 		const int res = do_gameloop(args);
 		safe_exit(res);
