@@ -1,0 +1,40 @@
+diff -rupN --no-dereference fontconfig-2.14.2/configure.ac fontconfig-2.14.2-new/configure.ac
+--- fontconfig-2.14.2/configure.ac	2023-01-27 06:46:22.000000000 +0100
++++ fontconfig-2.14.2-new/configure.ac	2023-01-28 23:01:06.642068717 +0100
+@@ -749,6 +749,21 @@ fi
+ AM_CONDITIONAL(HAVE_PTHREAD, $have_pthread)
+ 
+ 
++#
++# Allow not building tests
++#
++
++default_tests="yes"
++
++AC_ARG_ENABLE(tests,
++	[AC_HELP_STRING([--disable-tests],
++			[Don't build tests])],
++	,
++	enable_tests=$default_tests)
++
++AM_CONDITIONAL(ENABLE_TESTS, test "x$enable_tests" = xyes)
++
++
+ dnl ===========================================================================
+ 
+ #
+diff -rupN --no-dereference fontconfig-2.14.2/Makefile.am fontconfig-2.14.2-new/Makefile.am
+--- fontconfig-2.14.2/Makefile.am	2021-10-20 12:03:19.000000000 +0200
++++ fontconfig-2.14.2-new/Makefile.am	2023-01-28 23:01:06.642068717 +0100
+@@ -24,7 +24,10 @@
+ SUBDIRS=fontconfig fc-case fc-lang src \
+ 	fc-cache fc-cat fc-conflist fc-list fc-match \
+ 	fc-pattern fc-query fc-scan fc-validate conf.d \
+-	its po po-conf test
++	its po po-conf
++if ENABLE_TESTS
++SUBDIRS += test
++endif
+ if ENABLE_DOCS
+ SUBDIRS += doc
+ endif
