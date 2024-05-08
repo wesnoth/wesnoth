@@ -10,7 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, Bengali, British English, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Polish, Russian, Slovak, Spanish, Ukrainian
+   * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Norwegian, Polish, Russian, Slovak, Spanish, Ukrainian
    * Added new font "Lohit-Bengali.ttf" to support Bengali translation
  ### Units
    * Elvish Avenger - decreased ranged attack from 11×4 to 10×4, decreased cost from 66 to 60
@@ -18,6 +18,7 @@
    * Elvish Shyde - decreased ranged slow attack from 8×3 to 7×3, decreased ranged magical attack from 14×3 to 10×3, decreased cost from 69 to 58
    * Elvish Enchantress - decreased ranged slow attack from 7×4 to 6×4, decreased ranged magical attack from 13×4 to 11×4, decreased cost from 70 to 62, decreased XP requirement from 198 to 180
    * Elvish Sylph - decreased ranged magical attack from 16×5 to 13×5, decreased cost from 161 to 135
+   * Added new Fire Wisp unit
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes

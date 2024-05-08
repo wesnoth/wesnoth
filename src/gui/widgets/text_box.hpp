@@ -118,6 +118,9 @@ private:
 	bool enabled_;
 };
 
+/**
+ * A widget that allows the user to input text in single line
+ */
 class text_box : public text_box_base
 {
 	friend struct implementation::builder_text_box;
@@ -331,6 +334,8 @@ public:
 
 	t_string hint_text;
 	std::string hint_image;
+
+	bool editable;
 };
 
 } // namespace implementation
