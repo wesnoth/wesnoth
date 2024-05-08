@@ -28,7 +28,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/stacked_widget.hpp"
+#include "gui/widgets/tab_container.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/dialogs/message.hpp"
@@ -94,10 +94,13 @@ game_version::game_version(unsigned start_page)
 void game_version::pre_show(window& window)
 {
 	utils::string_map i18n_syms;
+	
+	tab_container& tabs = find_widget<tab_container>(&window, "tabs", false);
 
 	//
 	// General information.
 	//
+	tabs.select_tab(0);
 
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
 	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
@@ -107,8 +110,7 @@ void game_version::pre_show(window& window)
 	os_label.set_label("<i>"+desktop::os_version()+"</i>");
 	arch_label.set_label(game_config::build_arch());
 
-	stacked_widget& pager = find_widget<stacked_widget>(&window, "tabs_container", false);
-	button& copy_all = find_widget<button>(pager.get_layer_grid(0), "copy_all", false);
+	button& copy_all = find_widget<button>(&window, "copy_all", false);
 	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
 
 	// Bottom row buttons
@@ -120,10 +122,13 @@ void game_version::pre_show(window& window)
 
 	button& issue_button = find_widget<button>(&window, "issue", false);
 	connect_signal_mouse_left_click(issue_button, std::bind(&game_version::report_issue, this));
+	
+	connect_signal_mouse_left_click(find_widget<button>(&window, "run_migrator", false), std::bind(&game_version::run_migrator, this));
 
 	//
 	// Game paths tab.
 	//
+	tabs.select_tab(1);
 
 	for(const auto & path_ent : path_map_)
 	{
@@ -135,7 +140,6 @@ void game_version::pre_show(window& window)
 		button& browse_w = find_widget<button>(&window, browse_wid_stem_ + path_id, false);
 
 		path_w.set_value(path_path);
-		path_w.set_active(false);
 
 		connect_signal_mouse_left_click(
 				copy_w,
@@ -156,15 +160,14 @@ void game_version::pre_show(window& window)
 		}
 	}
 
-	button& stderr_button = find_widget<button>(pager.get_layer_grid(1), "open_stderr", false);
+	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
 	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty() && filesystem::file_exists(log_path_));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "run_migrator", false), std::bind(&game_version::run_migrator, this));
 
 	//
 	// Build info tab.
 	//
+	tabs.select_tab(2);
 
 	widget_data list_data;
 
@@ -195,6 +198,7 @@ void game_version::pre_show(window& window)
 	//
 	// Features tab.
 	//
+	tabs.select_tab(3);
 
 	listbox& opts_listbox
 			= find_widget<listbox>(&window, "opts_listbox", false);
@@ -219,7 +223,7 @@ void game_version::pre_show(window& window)
 	//
 	// Community tab
 	//
-	pager.select_layer(4);
+	tabs.select_tab(4);
 	
 	connect_signal_mouse_left_click(find_widget<button>(&window, "forums", false), std::bind(&desktop::open_object, "https://forums.wesnoth.org/"));
 	connect_signal_mouse_left_click(find_widget<button>(&window, "discord", false), std::bind(&desktop::open_object, "https://discord.gg/battleforwesnoth"));
@@ -232,36 +236,7 @@ void game_version::pre_show(window& window)
 	// Set-up page stack and auxiliary controls last.
 	//
 
-	pager.select_layer(0);
-
-	listbox& tab_bar
-			= find_widget<listbox>(&window, "tab_bar", false);
-
-	window.keyboard_capture(&tab_bar);
-
-	const unsigned tab_count = tab_bar.get_item_count();
-	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
-
-	connect_signal_notify_modified(tab_bar,
-		std::bind(&game_version::tab_switch_callback, this));
-	
-	if (start_page_ < pager.get_layer_count()) {
-		pager.select_layer(start_page_);
-	}
-	
-	if (start_page_ < tab_bar.get_item_count()) {
-		tab_bar.select_row(start_page_);
-	}
-}
-
-void game_version::tab_switch_callback()
-{
-	stacked_widget& pager
-			= find_widget<stacked_widget>(get_window(), "tabs_container", false);
-	listbox& tab_bar
-			= find_widget<listbox>(get_window(), "tab_bar", false);
-
-	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
+	tabs.select_tab(0);
 }
 
 void game_version::browse_directory_callback(const std::string& path)
@@ -283,9 +258,8 @@ void game_version::report_copy_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
 	
-	stacked_widget& pager = find_widget<stacked_widget>(get_window(), "tabs_container", false);
-	button& copy_all = find_widget<button>(pager.get_layer_grid(0), "copy_all", false);
-	copy_all.set_label(_("✔ Copied"));
+	button& copy_all = find_widget<button>(get_window(), "copy_all", false);
+	copy_all.set_label(_("<span foreground='green'>✔ Copied</span>"));
 	copy_all.set_active(false);
 }
 
