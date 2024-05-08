@@ -104,6 +104,10 @@
 
 #ifdef __ANDROID__
 #include <android/log.h>
+#include <jni.h>
+
+#include <play/asset_pack.h>
+
 #endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -967,6 +971,43 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	}
 }
 
+/**
+ * Try to autodetect the location of the game data dir. Note that
+ * the root of the source tree currently doubles as the data dir.
+ */
+#ifndef __ANDROID__
+static std::string autodetect_game_data_dir(std::string exe_dir)
+{
+	std::string auto_dir;
+
+	// scons leaves the resulting binaries at the root of the source
+	// tree by default.
+	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
+		auto_dir = std::move(exe_dir);
+	}
+	// cmake encourages creating a subdir at the root of the source
+	// tree for the build, and the resulting binaries are found in it.
+	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/..");
+	}
+	// Allow using the current working directory as the game data dir
+	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+		auto_dir = filesystem::get_cwd();
+	}
+#ifdef _WIN32
+	// In Windows builds made using Visual Studio and its CMake
+	// integration, the EXE is placed a few levels below the game data
+	// dir (e.g. .\out\build\x64-Debug).
+	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
+	}
+#endif
+
+	return auto_dir;
+}
+#endif
+
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
 	do {                                                                                                               \
@@ -990,6 +1031,53 @@ int main(int argc, char** argv)
 	events::set_main_thread();
 #ifdef __ANDROID__
 	__android_log_write(ANDROID_LOG_INFO, "wesnoth", "Wesnoth started");
+
+	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+	JavaVM* jvm;
+	env->GetJavaVM(&jvm);
+
+	jobject activity = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+
+	AssetPackManager_init(jvm, activity);
+
+	const char* asset_pack_name = "wesnoth_data";
+	auto result = AssetPackManager_requestInfo(&asset_pack_name, 1);
+	assert(result == ASSET_PACK_NO_ERROR);
+
+	AssetPackDownloadState* state;
+	AssetPackDownloadStatus status;
+	do {
+		auto error_code = AssetPackManager_getDownloadState(asset_pack_name, &state);
+		assert(error_code == ASSET_PACK_NO_ERROR);
+		status = AssetPackDownloadState_getStatus(state);
+		__android_log_print(ANDROID_LOG_INFO, "wesnoth", "Download status: %d\n", status);
+		AssetPackDownloadState_destroy(state);
+		SDL_Delay(16);
+	} while(status == ASSET_PACK_INFO_PENDING);
+
+	result = AssetPackManager_requestDownload(&asset_pack_name, 1);
+	assert(result == ASSET_PACK_NO_ERROR);
+
+	do {
+		auto error_code = AssetPackManager_getDownloadState(asset_pack_name, &state);
+		assert(error_code == ASSET_PACK_NO_ERROR);
+		status = AssetPackDownloadState_getStatus(state);
+		__android_log_print(ANDROID_LOG_INFO, "wesnoth", "Download status: %d\n", status);
+		AssetPackDownloadState_destroy(state);
+		SDL_Delay(16);
+	} while(status < 4);
+	assert(status == ASSET_PACK_DOWNLOAD_COMPLETED);
+
+	AssetPackLocation* location;
+
+	result = AssetPackManager_getAssetPackLocation(asset_pack_name, &location);
+	assert(result == ASSET_PACK_NO_ERROR);
+
+	std::string android_asset_path;
+	android_asset_path = AssetPackLocation_getAssetsPath(location);
+	__android_log_print(ANDROID_LOG_INFO, "wesnoth", "Download path: %s\n", android_asset_path.c_str());
+	AssetPackLocation_destroy(location);
+
 #endif
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
@@ -1008,15 +1096,32 @@ int main(int argc, char** argv)
 		commandline_options cmdline_opts = commandline_options(args);
 		int finished = process_command_args(cmdline_opts);
 
-		if(finished != -1) {
-#ifdef _WIN32
-			if(lg::using_own_console()) {
-				std::cerr << "Press enter to continue..." << std::endl;
-				std::cin.get();
+#ifdef __ANDROID__
+		game_config::path = std::move(android_asset_path);
+#else
+		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
+			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
+				if(!nobanner) {
+					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
+				}
+				game_config::path = std::move(auto_dir);
+			} else if(game_config::path.empty()) {
+				bool data_dir_specified = false;
+				for(int i=0;i<argc;i++) {
+					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
+						data_dir_specified = true;
+						break;
+					}
+				}
+				if (!data_dir_specified) {
+					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+					return 1;
+				}
 			}
 #endif
 			safe_exit(finished);
 		}
+#endif
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 		// Is there a reason not to just use SDL_INIT_EVERYTHING?

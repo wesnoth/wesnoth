@@ -70,6 +70,9 @@
 
 #endif
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
+#endif
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
@@ -743,6 +746,80 @@ void set_user_data_dir(std::string newprefdir)
 		} else {
 			newprefdir = "~/.wesnoth" + get_version_path_suffix();
 		}
+
+		PWSTR docs_path = nullptr;
+		HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
+
+		if(res != S_OK) {
+			//
+			// Crummy fallback path full of pain and suffering.
+			//
+			ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
+				   << "User config/data directories may be unavailable for "
+				   << "this session. Please report this as a bug.";
+			user_data_dir = bfs::path(get_cwd()) / newprefdir;
+		} else {
+			bfs::path games_path = bfs::path(docs_path) / "My Games";
+			create_directory_if_missing(games_path);
+
+			user_data_dir = games_path / newprefdir;
+		}
+
+		CoTaskMemFree(docs_path);
+	}
+
+#else /*_WIN32*/
+
+	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
+
+#ifdef WESNOTH_BOOST_OS_IOS
+	char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+	if(sdl_pref_path) {
+		backupprefdir = std::string(sdl_pref_path) + backupprefdir;
+		SDL_free(sdl_pref_path);
+	}
+#endif
+
+#ifdef __ANDROID__
+	backupprefdir = std::string(SDL_AndroidGetInternalStoragePath()) + "/" + backupprefdir;
+#endif
+
+#ifdef _X11
+	const char* home_str = getenv("HOME");
+
+	if(newprefdir.empty()) {
+		char const* xdg_data = getenv("XDG_DATA_HOME");
+		if(!xdg_data || xdg_data[0] == '\0') {
+			if(!home_str) {
+				newprefdir = backupprefdir;
+				goto other;
+			}
+
+			user_data_dir = home_str;
+			user_data_dir /= ".local/share";
+		} else {
+			user_data_dir = xdg_data;
+		}
+
+		user_data_dir /= "wesnoth";
+		user_data_dir /= get_version_path_suffix();
+	} else {
+	other:
+		bfs::path home = home_str ? home_str : ".";
+
+		if(newprefdir[0] == '/') {
+			user_data_dir = newprefdir;
+		} else {
+			if(!relative_ok) {
+				// TRANSLATORS: translate the part inside <...> only
+				deprecated_message(_("--userdata-dir=<relative path>"),
+					DEP_LEVEL::FOR_REMOVAL,
+					{1, 17, 0},
+					_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
+			}
+			user_data_dir = home / newprefdir;
+		}
+	}
 #else
 		const char* h = std::getenv("HOME");
 		std::string home = h ? h : "";
