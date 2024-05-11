@@ -47,7 +47,7 @@ public:
 
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
-	
+
 	void set_success(bool success);
 
 	/** Inherited from clickable_item. */
@@ -99,7 +99,7 @@ private:
 	 * the window and the window closes itself.
 	 */
 	int retval_;
-	
+
 	/**
 	 * Action performed by this button succeeded.
 	 */

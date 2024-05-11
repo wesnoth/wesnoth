@@ -79,14 +79,14 @@ void tab_container::finalize(std::unique_ptr<generator_base> generator)
 	for(const auto& builder_entry : builders_) {
 		generator->create_item(-1, *builder_entry, empty_data, nullptr);
 	}
-	
+
 	grid* parent_grid = find_widget<grid>(this, "_content_grid", false, true);
 	if (parent_grid) {
 		parent_grid->swap_child("_page", std::move(generator), false);
 	}
-	
+
 	finalize_listbox();
-	
+
 	select_tab(0);
 }
 

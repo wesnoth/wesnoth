@@ -252,7 +252,7 @@ void game_version::run_migrator()
 void game_version::copy_to_clipboard_callback(const std::string& path, const std::string btn_id)
 {
 	desktop::clipboard::copy_to_clipboard(path, false);
-	
+
 	button& copy_w = find_widget<button>(get_window(), btn_id, false);
 	copy_w.set_success(true);
 }

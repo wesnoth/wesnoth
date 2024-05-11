@@ -74,7 +74,7 @@ private:
 
 	std::vector<std::shared_ptr<builder_grid>> builders_;
 	std::vector<widget_data> list_items_;
-	
+
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
