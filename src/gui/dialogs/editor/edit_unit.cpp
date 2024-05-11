@@ -864,7 +864,7 @@ void editor_edit_unit::update_wml_view() {
 	page.select_layer(3);
 
 	std::stringstream wml_stream;
-	
+
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
 
