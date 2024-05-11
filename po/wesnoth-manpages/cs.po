@@ -2,14 +2,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2020 - 2023
+# Michal Žejdl <lachim@emer.cz>, 2020 - 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:05-0500\n"
-"PO-Revision-Date: 2023-06-25 12:03+0200\n"
+"PO-Revision-Date: 2024-04-16 21:57+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -490,16 +490,13 @@ msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
-#, fuzzy
-#| msgid ""
-#| "prevents redirecting logged output to a file. Log files are created in "
-#| "the logs directory under the userdata folder."
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
-"zabrání přesměrování výstupu záznamů do souboru. Soubory se záznamy jsou "
+"zabrání přesměrování výstupu záznamů do souboru. Jako alternativu lze také "
+"nastavit proměnnou prostředí WESNOTH_NO_LOG_FILE. Soubory se záznamy jsou "
 "vytvářeny v adresáři logs pod složkou s uživatelskými daty."
 
 # type: TP
@@ -511,17 +508,12 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
-#, fuzzy
-#| msgid ""
-#| "log output is written to a file in addition to standard output/error. "
-#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
-"výstup záznamů je kromě standardních výstupů output/error zapsán také do "
-"souboru. Ruší účinek volby --no-log-to-file ať už je vyjádřena přímo, nebo "
-"nepřímo."
+"výstup záznamů je zapsán do souboru. Ruší účinek volby --no-log-to-file ať "
+"už je vyjádřena přímo, nebo nepřímo."
 
 # type: TP
 #. type: TP
@@ -1564,12 +1556,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:518 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003–2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003–2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2591,55 +2580,3 @@ msgstr ""
 #: doc/man/wesnothd.6:308
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--bunzip2>I<\\ vstupní_soubor.bz2>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a file which should be in bzip2 format and stores it without "
-#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
-#~ msgstr ""
-#~ "dekomprimuje soubor, který by měl být ve formátu bzip2, a uloží jej bez "
-#~ "přípony .bz2. Původní I<vstupní_soubor.bz2> bude odstraněn."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--bzip2>I<\\ vstupní_soubor>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "zkomprimuje soubor do formátu bzip2, uloží jej jako I<vstupní_soubor>.bz2 "
-#~ "a odstraní I<vstupní_soubor>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--gunzip>I<\\ infile.gz>"
-#~ msgstr "B<--gunzip>I<\\ soubor_se_hrou>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a file which should be in gzip format and stores it without "
-#~ "the .gz suffix. The I<infile.gz> will be removed."
-#~ msgstr ""
-#~ "dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a "
-#~ "uloží jej bez koncovky .gz. Následně je I<soubor_se_hrou> smazán."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--gzip>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ soubor_se_hrou>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a "
-#~ "uloží jej jako I<soubor_se_hrou>.gz a odstraní I<soubor_se_hrou>."

@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2023-11-21 04:47+0100\n"
+"PO-Revision-Date: 2024-04-25 22:50+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -259,7 +259,7 @@ msgstr "Čisté šedé kočičí hlavy"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Štěrk"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -2824,68 +2824,58 @@ msgstr "Řadit dle přibližného chronologického rozložení událostí v př
 #. [multimenu_button]: id=filter_completion
 #: data/gui/window/campaign_dialog.cfg:237
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Filtrovat podle stavu dokončení tažení"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:240
-#, fuzzy
-#| msgid "Completed"
 msgid "Not Completed"
-msgstr "Dokončeno"
+msgstr "Nedokončeno"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/window/campaign_dialog.cfg:242
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Ukázat hráčem nedokončená tažení"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:246
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr "Dokončeno"
+msgstr "Dokončeno: bronz"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:247
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Ukázat tažení dokončená na nejlehčí obtížnost"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:251
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Dokončeno"
+msgstr "Dokončeno: stříbro"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:252
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Ukázat tažení dokončená na prostřední obtížnosti"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:256
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr "Dokončeno"
+msgstr "Dokončeno: zlato"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:257
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Ukázat tažení dokončená na nejtěžší obtížnost"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:261
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: All"
-msgstr "Dokončeno"
+msgstr "Dokončeno: vše"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:262
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Ukázat dokončená tažení"
 
 #. [label]
 #. [label]: id=mods_header
@@ -2912,6 +2902,11 @@ msgid ""
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Čistá, neovlivněná náhoda. Tak, jak se má Wesnoth hrát.\n"
+"\n"
+"Příklad: pokud dvakrát udeříš s 50% přesností, s největší pravděpodobností "
+"jednou zasáhneš a jednou mineš, ale můžeš také dvakrát zasáhnout nebo "
+"dvakrát minout."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
@@ -2927,13 +2922,16 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Stejný jako výchozí GNČ s výjimkou toho, že načtení uložené hry nezmění "
+"výsledek útoku.\n"
+"\n"
+"Příklad: dvakrát udeříš a budeš mít štěstí, zasáhneš dvakrát. Pak načteš "
+"dřívější uložení a provedeš stejný útok znovu. Oba údery stejně zasáhnou."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
-#, fuzzy
-#| msgid "Predictable RNG"
 msgid "Reduced RNG"
-msgstr "Předvídatelný GNČ"
+msgstr "Omezený GNČ"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:366
@@ -2944,6 +2942,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Zásahy a minutí jsou mnohem stálejší. Díky tomu je snazší plánovat malé "
+"akce.\n"
+"\n"
+"Příklad: pokud třikrát udeříš s 50% přesností, vždy alespoň jednou zasáhneš "
+"a alespoň jednou mineš."
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:383
@@ -3232,8 +3235,6 @@ msgstr "Pouze pro tým"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
 msgstr "Výběr rozšíření"
 
@@ -3648,105 +3649,83 @@ msgstr "Žádné"
 
 #. [button]: id=preview_
 #: data/gui/window/editor_edit_unit.cfg:98
-#, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Předchozí strana"
+msgstr "Náhled obrázku"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_unit.cfg:143
-#, fuzzy
-#| msgid "Status"
 msgid "Stats"
-msgstr "Stav"
+msgstr "Statistiky"
 
 #. [button]: id=load_unit_type
 #: data/gui/window/editor_edit_unit.cfg:187
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Nahrát typ jednotky"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:221
-#, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Obrázek:"
+msgstr "Obrázek jednotky:"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:223
 msgid "Portrait:"
-msgstr ""
+msgstr "Podobizna:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:234
 msgid "Level:"
-msgstr ""
+msgstr "Úroveň:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:259 data/gui/window/mp_staging.cfg:189
-#, fuzzy
-#| msgid "<b>Gender:</b>"
 msgid "Gender:"
-msgstr "<b>Pohlaví:</b>"
+msgstr "Pohlaví:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:267
-#, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Náhodné"
+msgstr "Muž"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:268
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Žena"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:283
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Povýšit jednotku"
+msgstr "Povyšuje na:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:309
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Národ"
+msgstr "Národ:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:361
 msgid "Alignment:"
-msgstr ""
+msgstr "Příslušnost:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:387
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "HP: "
+msgstr "Životy:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:417
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "XP: "
+msgstr "Zkušenosti:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:447
 msgid "Cost:"
-msgstr ""
+msgstr "Cena:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:477
-#, fuzzy
-#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr "Cena za pohyb:"
+msgstr "Pohyb:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3759,51 +3738,43 @@ msgstr "Útoky"
 
 #. [button]: id=atk_new
 #: data/gui/window/editor_edit_unit.cfg:599
-#, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Zaútočit"
+msgstr "Nový útok"
 
 #. [button]: id=atk_delete
 #: data/gui/window/editor_edit_unit.cfg:612
-#, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Vybrat/Pohnout/Zaútočit"
+msgstr "Odstranit útok"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:682
 msgid "Range:"
-msgstr ""
+msgstr "Dosah:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:694
 msgid "range^Melee"
-msgstr ""
+msgstr "na blízko"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:695
 msgid "range^Ranged"
-msgstr ""
+msgstr "na dálku"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:736
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Zranění"
+msgstr "Zranění:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:763
-#, fuzzy
-#| msgid "Hits"
 msgid "Hits:"
-msgstr "Zásahy"
+msgstr "Rány:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:791
 msgid "Specials:"
-msgstr ""
+msgstr "Zvláštnosti:"
 
 #. [label]: id=title
 #. [widget]: id=tab_label
@@ -3816,24 +3787,18 @@ msgstr "Pokročilé"
 
 #. [grid]: id=grid_atk
 #: data/gui/window/editor_edit_unit.cfg:848
-#, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
-msgstr "Profil"
+msgstr "Menší podobizna:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:859
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Schopnosti"
+msgstr "Schopnosti:"
 
 #. [label]: id=movetype_label
 #: data/gui/window/editor_edit_unit.cfg:885
-#, fuzzy
-#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "Druh obsahu:"
+msgstr "Druh pohybu:"
 
 #. [button]: id=load_movetype
 #. [button]: id=ok
@@ -3852,56 +3817,48 @@ msgstr "Cena za pohyb:"
 
 #. [label]: id=defense_label
 #: data/gui/window/editor_edit_unit.cfg:981
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Obránce"
+msgstr "Obrana:"
 
 #. [label]: id=resistance_label
 #: data/gui/window/editor_edit_unit.cfg:1034
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Odolnosti: "
+msgstr "Odolnosti:"
 
 #. [label]: id=usage_label
 #: data/gui/window/editor_edit_unit.cfg:1087
-#, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Obrázek:"
+msgstr "Použití UI:"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1245
 msgid "/data/core/images/units/human-loyalists/general.png"
-msgstr ""
+msgstr "/data/core/images/units/human-loyalists/general.png"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1249
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Statistika hry"
+msgstr "Základní statistiky"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1257
 msgid "/data/core/images/attacks/rectangular-shield.png"
-msgstr ""
+msgstr "/data/core/images/attacks/rectangular-shield.png"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1269
 msgid "/data/core/images/attacks/sword-human.png"
-msgstr ""
+msgstr "/data/core/images/attacks/sword-human.png"
 
 #. [widget]: id=tab_image
 #: data/gui/window/editor_edit_unit.cfg:1281
 msgid "/data/core/images/attacks/gaze.png"
-msgstr ""
+msgstr "/data/core/images/attacks/gaze.png"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1285
 msgid "WML View"
-msgstr ""
+msgstr "Náhled WML"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4550,11 +4507,20 @@ msgid ""
 "suggest visiting the following page for more information and enabling all "
 "translations while you work on your contributions:"
 msgstr ""
+"Aby <i>Bitva o Wesnoth</i> poskytla bezbariérový zážitek hráčům z celého "
+"světa, spoléhá na příspěvky komunity. Protože vývoj hlavní hry může "
+"postupovat rychleji, než dokážou dobrovolní překladatelé stíhat, stává se, "
+"že překlady zaostávají nebo jsou dokonce opouštěny.\n"
+"\n"
+"Jestliže hraješ poprvé, doporučujeme použít co nejúplnější překlad. Pokud "
+"máš sám zájem hru překládat, navrhujeme navštívit následující stránku, kde "
+"nalezneš další informace, a povolit všechny překlady, zatímco budeš pracovat "
+"na svých příspěvcích:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:134
 msgid "Show work-in-progress or abandoned translations"
-msgstr ""
+msgstr "Zobrazit rozpracované nebo opuštěné překlady"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -5521,10 +5487,8 @@ msgstr "* povinná pole"
 
 #. [label]
 #: data/gui/window/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Frakce"
+msgstr "Frakce:"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:243
@@ -7341,47 +7305,43 @@ msgstr "Vybrat ikonu"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:82
 msgid "lawful"
-msgstr ""
+msgstr "zákonná"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:83
 msgid "chaotic"
-msgstr ""
+msgstr "chaotická"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:84
 msgid "neutral"
-msgstr ""
+msgstr "neutrální"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:85
 msgid "liminal"
-msgstr ""
+msgstr "šerá"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:145
 msgid "scout"
-msgstr ""
+msgstr "zvěd"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:146
 msgid "fighter"
-msgstr ""
+msgstr "bojovník"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:147
-#, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Vyhledat"
+msgstr "střelec"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:148
 msgid "mixed fighter"
-msgstr ""
+msgstr "všestranný bojovník"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:149
 msgid "healer"
-msgstr ""
+msgstr "léčitel"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:305
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose File"
-msgstr "Vybrat motiv"
+msgstr "Vybrat soubor"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -8633,10 +8593,8 @@ msgid "Assign Local Time"
 msgstr "Přiřadit místní čas"
 
 #: src/hotkey/hotkey_command.cpp:176
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Další jednotka"
+msgstr "Nový typ jednotky"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Time Schedule Editor"
@@ -9165,142 +9123,3 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "Rocky Sands"
-#~ msgstr "Kamenité písky"
-
-#~ msgid "Sands"
-#~ msgstr "Písky"
-
-#~ msgid "Reloading alters future combat outcomes"
-#~ msgstr "Opakované načítání mění budoucí výsledky soubojů"
-
-#~ msgid "Combat outcomes remain constant when reloading"
-#~ msgstr "Výsledky soubojů zůstavají při opakovaném načítání neměnné"
-
-#~ msgid "Biased RNG (experimental)"
-#~ msgstr "Ovlivněný GNČ (pokusný)"
-
-#~ msgid ""
-#~ "Combat outcomes are more in line with displayed probabilities and "
-#~ "unaffected by reloading"
-#~ msgstr ""
-#~ "Výsledky soubojů jsou více v souladu se zobrazovanými pravděpodobnostmi "
-#~ "a opakované načítání se jich nedotkne"
-
-#~ msgid "Add-on ID"
-#~ msgstr "ID rozšíření"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Vyber si preferovaný jazyk:"
-
-#~ msgid "Missing required state for button"
-#~ msgstr "Pro tlačítko chybí požadovaný stav"
-
-#~ msgid "Missing required background for chatbox"
-#~ msgstr "Pro pole zpráv chybí požadované pozadí"
-
-#~ msgid "Missing required foreground for chatbox"
-#~ msgstr "Pro pole zpráv chybí požadované popředí"
-
-#~ msgid "Missing required grid for chatbox"
-#~ msgstr "Pro pole zpráv chybí požadovaná mřížka"
-
-#~ msgid "Missing [draw] in drawing"
-#~ msgstr "V kreslení chybí [draw]"
-
-#~ msgid "Missing required state for horizontal scrollbar"
-#~ msgstr "Pro vodorovný posuvník chybí požadovaný stav"
-
-#~ msgid "Missing required state for image control"
-#~ msgstr "Pro ovládání obrázku chybí požadovaný stav"
-
-#~ msgid "Missing required state for text label control"
-#~ msgstr "Pro ovládání textových popisků chybí požadovaný stav"
-
-#~ msgid "Missing required state for listbox"
-#~ msgstr "Pro výběrový seznam chybí požadovaný stav"
-
-#~ msgid "Missing [content] in [matrix_definition]"
-#~ msgstr "V [matrix_definition] chybí [content]"
-
-#~ msgid "Missing required state for matrix definition"
-#~ msgstr "Pro definici matrice chybí požadovaný stav"
-
-#~ msgid "Missing [main] in [matrix]"
-#~ msgstr "V [matrix] chybí [main]"
-
-#~ msgid "Missing required state for menu button"
-#~ msgstr "Pro tlačítko menu chybí požadovaný stav"
-
-#~ msgid "Missing required state for minimap control"
-#~ msgstr "Pro ovládání minimapy chybí požadovaný stav"
-
-#~ msgid "Missing required state for editable text box"
-#~ msgstr "Pro upravitelné textové pole chybí požadovaný stav"
-
-#~ msgid "Missing required state for multimenu button"
-#~ msgstr "Pro tlačítko multimenu chybí požadovaný stav"
-
-#~ msgid "Missing [item_definition] in [pane]"
-#~ msgstr "V [pane] chybí [item_definition]"
-
-#~ msgid "Missing required background for panel definition"
-#~ msgstr "Pro definování panelu chybí požadované pozadí"
-
-#~ msgid "Missing required foreground for panel definition"
-#~ msgstr "Pro definování panelu chybí požadované popředí"
-
-#~ msgid "Missing required state for progress bar"
-#~ msgstr "Pro ukazatel průběhu chybí požadovaný stav"
-
-#~ msgid "Missing required state for repeating button"
-#~ msgstr "Pro opakovací tlačítko chybí požadovaný stav"
-
-#~ msgid "Missing required state for scroll label control"
-#~ msgstr "Pro ovládání svitkového popisku chybí požadovaný stav"
-
-#~ msgid "No grid defined for scroll label control"
-#~ msgstr "Pro ovládání svitkového popisku není stanovena žádná mřížka"
-
-#~ msgid "Missing required background for scrollbar panel"
-#~ msgstr "Pro posuvný panel chybí požadované pozadí"
-
-#~ msgid "Missing required foreground for scrollbar panel"
-#~ msgstr "Pro posuvný panel chybí požadované popředí"
-
-#~ msgid "Missing required grid for scrollbar panel"
-#~ msgstr "Pro posuvný panel chybí požadovaná mřížka"
-
-#~ msgid "Missing required state for slider"
-#~ msgstr "Pro posuvník chybí požadovaný stav"
-
-#~ msgid "Missing required state for toggle button"
-#~ msgstr "Pro přepínací tlačítko chybí požadovaný stav"
-
-#~ msgid "Missing required state for toggle panel"
-#~ msgstr "Pro přepínací panel chybí požadovaný stav"
-
-#~ msgid "Missing required state for tree view"
-#~ msgstr "Pro stromové zobrazení chybí požadovaný stav"
-
-#~ msgid "No grid defined for tree view"
-#~ msgstr "Pro stromové zobrazení není stanovena žádná mřížka"
-
-#~ msgid "No node defined."
-#~ msgstr "Není definován žádný uzel."
-
-#~ msgid "Missing required background for unit preview pane"
-#~ msgstr "Pro podokno náhledu jednotky chybí požadované pozadí"
-
-#~ msgid "Missing required foreground for unit preview pane"
-#~ msgstr "Pro podokno náhledu jednotky chybí požadované popředí"
-
-#~ msgid "Missing required grid for unit preview pane"
-#~ msgstr "Pro podokno náhledu jednotky chybí požadovaná mřížka"
-
-#~ msgid "Missing required state for vertical scrollbar"
-#~ msgstr "Pro svislý posuvník chybí požadovaný stav"
-
-#~ msgid "Missing [widget] in [viewport]"
-#~ msgstr "Ve [viewport] chybí [widget]"
