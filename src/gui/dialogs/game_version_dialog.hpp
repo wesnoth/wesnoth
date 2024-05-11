@@ -59,7 +59,7 @@ private:
 	std::vector<game_config::optional_feature> opts_;
 
 	std::string report_;
-	
+
 	unsigned start_page_;
 
 	void generate_plain_text_report();
@@ -87,7 +87,7 @@ private:
 	 *
 	 * @param path Filesystem path associated with the widget.
 	 */
-	void copy_to_clipboard_callback(const std::string& path);
+	void copy_to_clipboard_callback(const std::string& path, const std::string btn_id);
 
 	/**
 	 * Callback function for browse-directory action buttons.

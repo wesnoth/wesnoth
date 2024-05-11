@@ -94,7 +94,7 @@ game_version::game_version(unsigned start_page)
 void game_version::pre_show(window& window)
 {
 	utils::string_map i18n_syms;
-	
+
 	tab_container& tabs = find_widget<tab_container>(&window, "tabs", false);
 
 	//
@@ -122,7 +122,7 @@ void game_version::pre_show(window& window)
 
 	button& issue_button = find_widget<button>(&window, "issue", false);
 	connect_signal_mouse_left_click(issue_button, std::bind(&game_version::report_issue, this));
-	
+
 	connect_signal_mouse_left_click(find_widget<button>(&window, "run_migrator", false), std::bind(&game_version::run_migrator, this));
 
 	//
@@ -143,7 +143,7 @@ void game_version::pre_show(window& window)
 
 		connect_signal_mouse_left_click(
 				copy_w,
-				std::bind(&game_version::copy_to_clipboard_callback, this, path_path));
+				std::bind(&game_version::copy_to_clipboard_callback, this, path_path, copy_wid_stem_ + path_id));
 		connect_signal_mouse_left_click(
 				browse_w,
 				std::bind(&game_version::browse_directory_callback, this, path_path));
@@ -219,12 +219,12 @@ void game_version::pre_show(window& window)
 
 	opts_listbox.select_row(0);
 	list_data.clear();
-	
+
 	//
 	// Community tab
 	//
 	tabs.select_tab(4);
-	
+
 	connect_signal_mouse_left_click(find_widget<button>(&window, "forums", false), std::bind(&desktop::open_object, "https://forums.wesnoth.org/"));
 	connect_signal_mouse_left_click(find_widget<button>(&window, "discord", false), std::bind(&desktop::open_object, "https://discord.gg/battleforwesnoth"));
 	connect_signal_mouse_left_click(find_widget<button>(&window, "irc", false), std::bind(&desktop::open_object, "https://web.libera.chat/#wesnoth"));
@@ -249,18 +249,20 @@ void game_version::run_migrator()
 	migrate_version_selection::execute();
 }
 
-void game_version::copy_to_clipboard_callback(const std::string& path)
+void game_version::copy_to_clipboard_callback(const std::string& path, const std::string btn_id)
 {
 	desktop::clipboard::copy_to_clipboard(path, false);
+	
+	button& copy_w = find_widget<button>(get_window(), btn_id, false);
+	copy_w.set_success(true);
 }
 
 void game_version::report_copy_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
-	
+
 	button& copy_all = find_widget<button>(get_window(), "copy_all", false);
-	copy_all.set_label(_("<span foreground='green'>✔ Copied</span>"));
-	copy_all.set_active(false);
+	copy_all.set_success(true);
 }
 
 void game_version::generate_plain_text_report()
