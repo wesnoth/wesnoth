@@ -660,7 +660,7 @@ static bool is_path_relative_to_cwd(const std::string& str)
 	return *p.begin() == "." || *p.begin() == "..";
 }
 
-bfs::path windows_userdata(const std::string& newprefdir)
+static bfs::path windows_userdata(const std::string& newprefdir)
 {
 	bfs::path dir;
 	std::string temp = newprefdir;
@@ -727,7 +727,7 @@ bfs::path windows_userdata(const std::string& newprefdir)
 	return dir;
 }
 #elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
-bfs::path apple_userdata(const std::string& newprefdir)
+static bfs::path apple_userdata(const std::string& newprefdir)
 {
 	bfs::path dir;
 	std::string temp = newprefdir;
@@ -776,7 +776,7 @@ bfs::path apple_userdata(const std::string& newprefdir)
 	return dir;
 }
 #else
-bfs::path linux_userdata(const std::string& newprefdir)
+static bfs::path linux_userdata(const std::string& newprefdir)
 {
 	bfs::path dir;
 	std::string temp = newprefdir;
