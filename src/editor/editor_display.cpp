@@ -176,6 +176,8 @@ void editor_display::clear_help_string()
 
 void editor_display::set_help_string(const std::string& str)
 {
+	// Always update the internal string so we can toggle its visibility back
+	// at any time without having to ask the current editor_palette.
 	help_string_ = str;
 
 	clear_help_string();

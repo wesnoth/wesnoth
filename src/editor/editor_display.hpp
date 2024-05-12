@@ -108,7 +108,7 @@ private:
 	/** Whether the help text is currently shown. */
 	bool help_string_enabled_ = true;
 
-	/** Current help string. */
+	/** Current help string, cached for easy visibility toggling. */
 	std::string help_string_;
 };
 
