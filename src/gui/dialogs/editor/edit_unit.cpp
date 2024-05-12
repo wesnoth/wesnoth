@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -361,14 +361,14 @@ void editor_edit_unit::load_unit_type() {
 		stacked_widget& page = find_widget<stacked_widget>(get_window(), "page", false);
 		page.select_layer(0);
 		find_widget<text_box>(get_window(), "id_box", false).set_value(type->id());
-		find_widget<text_box>(get_window(), "name_box", false).set_value(type->type_name());
+		find_widget<text_box>(get_window(), "name_box", false).set_value(type->type_name().base_str());
 		find_widget<spinner>(get_window(), "level_box", false).set_value(type->level());
 		find_widget<slider>(get_window(), "cost_slider", false).set_value(type->cost());
 		find_widget<text_box>(get_window(), "adv_box", false).set_value(utils::join(type->advances_to()));
 		find_widget<slider>(get_window(), "hp_slider", false).set_value(type->hitpoints());
 		find_widget<slider>(get_window(), "xp_slider", false).set_value(type->experience_needed());
 		find_widget<slider>(get_window(), "move_slider", false).set_value(type->movement());
-		find_widget<scroll_text>(get_window(), "desc_box", false).set_value(type->unit_description());
+		find_widget<scroll_text>(get_window(), "desc_box", false).set_value(type->unit_description().base_str());
 		find_widget<text_box>(get_window(), "adv_box", false).set_value(utils::join(type->advances_to(), ", "));
 		find_widget<text_box>(get_window(), "path_unit_image", false).set_value(type->image());
 		find_widget<text_box>(get_window(), "path_portrait_image", false).set_value(type->big_profile());
@@ -458,8 +458,8 @@ void editor_edit_unit::load_unit_type() {
 		{
 			config attack;
 			boost::dynamic_bitset<> enabled(specials_list_.size());
-			attack["id"] = atk.id();
-			attack["name"] = atk.name();
+			attack["name"] = atk.id();
+			attack["description"] = atk.name().base_str();
 			attack["icon"] = atk.icon();
 			attack["range"] = atk.range();
 			attack["damage"] = atk.damage();
@@ -473,6 +473,8 @@ void editor_edit_unit::load_unit_type() {
 		update_index();
 
 		page.select_layer(0);
+
+		button_state_change();
 	}
 }
 
@@ -647,6 +649,9 @@ void editor_edit_unit::enable_movement_slider() {
 }
 
 void editor_edit_unit::store_attack() {
+	// Textdomain
+	std::string current_textdomain = "wesnoth-"+addon_id_;
+
 	// Save current attack data
 	if (selected_attack_ < 1) {
 		return;
@@ -656,8 +661,8 @@ void editor_edit_unit::store_attack() {
 	stacked_widget& page = find_widget<stacked_widget>(get_window(), "page", false);
 	page.select_layer(2);
 
-	attack["id"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
-	attack["name"] = find_widget<text_box>(get_window(), "atk_name_box", false).get_value();
+	attack["name"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
+	attack["description"] = t_string(find_widget<text_box>(get_window(), "atk_name_box", false).get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
 	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
 	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
@@ -679,8 +684,8 @@ void editor_edit_unit::update_attacks() {
 	stacked_widget& page = find_widget<stacked_widget>(get_window(), "page", false);
 	page.select_layer(2);
 
-	find_widget<text_box>(get_window(), "atk_id_box", false).set_value(attack["id"]);
-	find_widget<text_box>(get_window(), "atk_name_box", false).set_value(attack["name"]);
+	find_widget<text_box>(get_window(), "atk_id_box", false).set_value(attack["name"]);
+	find_widget<text_box>(get_window(), "atk_name_box", false).set_value(attack["description"]);
 	find_widget<text_box>(get_window(), "path_attack_image", false).set_value(attack["icon"]);
 	update_image("attack_image");
 	find_widget<slider>(get_window(), "dmg_box", false).set_value(attack["damage"]);
@@ -695,23 +700,13 @@ void editor_edit_unit::update_attacks() {
 		find_widget<toggle_button>(get_window(), "range_ranged", false).set_value(true);
 	}
 
-//	for (unsigned int i = 0; i < resistances_list_.size(); i++) {
-//		if (resistances_list_.at(i)["label"] == attack["type"]) {
-//			find_widget<menu_button>(get_window(), "attack_type_list", false).set_value(i);
-//			break;
-//		}
-//	}
-
-//	find_widget<menu_button>(get_window(), "attack_type_list", false).set_selected_from_string(attack["type"]);
 	set_selected_from_string(
 			find_widget<menu_button>(get_window(), "attack_type_list", false),
 			resistances_list_,
 			attack["type"]);
 
-
 	find_widget<multimenu_button>(get_window(), "weapon_specials_list", false)
 		.select_options(attacks_.at(selected_attack_-1).first);
-
 }
 
 void editor_edit_unit::update_index() {
@@ -749,12 +744,15 @@ void editor_edit_unit::update_index() {
 }
 
 void editor_edit_unit::add_attack() {
+	// Textdomain
+	std::string current_textdomain = "wesnoth-"+addon_id_;
+
 	config attack;
 
 	stacked_widget& page = find_widget<stacked_widget>(get_window(), "page", false);
 	page.select_layer(2);
-	attack["id"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
-	attack["name"] = find_widget<text_box>(get_window(), "atk_name_box", false).get_value();
+	attack["name"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
+	attack["description"] = t_string(find_widget<text_box>(get_window(), "atk_name_box", false).get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
 	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
 	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
@@ -849,9 +847,9 @@ void editor_edit_unit::load_movetype() {
 	}
 }
 
-void editor_edit_unit::write_macro(std::ostream& out, int level, std::string macro_name)
+void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std::string macro_name)
 {
-	for(int i = 0; i < level; i++)
+	for(unsigned i = 0; i < level; i++)
 	{
 		out << "\t";
 	}
@@ -866,17 +864,18 @@ void editor_edit_unit::update_wml_view() {
 	page.select_layer(3);
 
 	std::stringstream wml_stream;
+
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
 
 	wml_stream
+	    << "#textdomain " << current_textdomain << "\n"
 		<< "#\n"
 		<< "# This file was generated using the scenario editor.\n"
 		<< "#\n";
 
 	{
 		config_writer out(wml_stream, false);
-		//out.write(type_cfg_);
 		int level = 0;
 
 		out.open_child("unit_type");
@@ -1010,7 +1009,7 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 
 bool editor_edit_unit::check_id(std::string id) {
 	for(char c : id) {
-		if (!(std::isalnum(c) || c == '_')) {
+		if (!(std::isalnum(c) || c == '_' || c == ' ')) {
 			/* One bad char means entire id string is invalid */
 			return false;
 		}
@@ -1042,7 +1041,7 @@ void editor_edit_unit::button_state_change_id() {
 }
 
 void editor_edit_unit::write() {
-	/** Write the file */
+	// Write the file
 	update_wml_view();
 
 	std::string unit_name = type_cfg_.mandatory_child("unit_type")["name"];
