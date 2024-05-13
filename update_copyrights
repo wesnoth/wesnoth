@@ -57,13 +57,10 @@ def do_hash(file):
 
 args = argparse.ArgumentParser()
 args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
-args.add_argument("--output", default="output.csv", help="The file to write the results of this script to.")
+args.add_argument("--output", default="copyrights.csv", help="The file to write the results of this script to.")
 args.add_argument("--input", default="copyrights.csv", help="The file to read the existing copyright data from.")
 options = args.parse_args()
 os.chdir(options.repo)
-
-with contextlib.suppress(FileNotFoundError):
-    os.remove(options.output)
 
 csv_data = {}
 # Too few fields
@@ -102,6 +99,9 @@ with open(options.input) as csvfile:
             continue
 
         csv_data[file] = row
+
+with contextlib.suppress(FileNotFoundError):
+    os.remove(options.output)
 
 for root, _, files in os.walk(options.repo):
     for filename in files:
