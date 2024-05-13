@@ -244,7 +244,7 @@ private:
 
 	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0);
 
-	size_t get_split_location(int img_height);
+	size_t get_split_location(std::string text, int img_height);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
