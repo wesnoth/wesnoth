@@ -77,8 +77,6 @@ incomplete = []
 update = []
 unchanged = []
 removed = []
-# Sanity-check that the input is in the same order as the output would be
-csvfile_needs_sorting = False
 # Sanity-check for known licenses
 unknown_licenses = []
 
@@ -90,8 +88,6 @@ with open(options.input, encoding="utf-8") as csvfile:
             continue
 
         file = row[1]
-        if file < previous_file:
-            csvfile_needs_sorting = True
         previous_file = file
 
         if not os.path.exists(file):
@@ -130,15 +126,8 @@ for root, _, files in os.walk(options.repo):
             else:
                 unchanged.append(csv_data[file])
 
-missing_fields.sort(key=itemgetter(1))
-extra_fields.sort(key=itemgetter(1))
-added.sort(key=itemgetter(1))
-changed.sort(key=itemgetter(1))
-incomplete.sort(key=itemgetter(1))
-update.sort(key=itemgetter(1))
-unchanged.sort(key=itemgetter(1))
-
 final_output = missing_fields + extra_fields + added + changed + incomplete + update + unchanged
+final_output.sort(key=itemgetter(1))
 
 if options.output != "":
     with open(options.output, 'w') as f:
@@ -169,14 +158,6 @@ if count_missing_fields > 0 or count_extra_fields > 0 or count_added > 0 or coun
     print("\nThere are "+str(count_changed)+" changed images"+"\n".join(a[1] for a in changed))
     print("\nThere are "+str(count_incomplete)+" images that lack license or author information"+"\n".join(a[1] for a in incomplete))
     print("\nThere are "+str(count_update)+" images that need updated information"+"\n".join(a[1] for a in update))
-    if options.output != "":
-        print("These are at the top of the output for easy editing, run the tool again after editing to sort the file")
-
-if csvfile_needs_sorting:
-    print("The input file isn’t sorted by filename")
-
-    if options.output != "" and final_output == unchanged:
-        print("The new output file is correctly sorted")
 
 if len(unknown_licenses) > 0:
     any_check_failed = True
