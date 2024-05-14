@@ -155,7 +155,6 @@ size_t rich_label::get_split_location(std::string text, int img_height) {
 	// break only at word boundary
 	char c;
 	while((c = text.at(len)) != ' ') {
-		PLAIN_LOG << "(char) " << c;
 		len--;
 	}
 
@@ -201,7 +200,7 @@ void rich_label::set_label(const t_string& text)
 				if (floating) {
 					img_start.x = x_;
 					img_start.y = h_;
-					PLAIN_LOG << "(img) x: " << img_start.x << " y: " << img_start.y;
+//					PLAIN_LOG << "(img) x: " << img_start.x << " y: " << img_start.y;
 				}
 
 				curr_item = &(text_dom_.add_child("image"));
@@ -272,7 +271,7 @@ void rich_label::set_label(const t_string& text)
 				is_image = true;
 				new_text_block = true;
 
-				PLAIN_LOG << "(img) x :" << x_ << ", y :" << y_ << ", h: " << h_;
+//				PLAIN_LOG << "(img) x :" << x_ << ", y :" << y_ << ", h: " << h_;
 //				PLAIN_LOG << (*curr_item).debug();
 
 			} else {
@@ -330,7 +329,7 @@ void rich_label::set_label(const t_string& text)
 					} else {
 						// FIXME only works if text is on the right side of the image
 						//link straddles two lines, break into two rects
-						point t_size(w_ - link_start.x, t_end.y - t_start.y);
+						point t_size(w_ - link_start.x - (x_ == 0 ? img_size.x : 0), t_end.y - t_start.y);
 						point link_start2(x_, link_start.y + font::get_max_height(font::SIZE_NORMAL));
 						point t_size2(t_end.x, t_end.y - t_start.y);
 
@@ -548,33 +547,32 @@ void rich_label::set_label(const t_string& text)
 			point text_size;
 			point text_start;
 
-//			text_start.x = img_size.x; // works only for left aligned
-//			text_start.y = img_start.y;
-//			text_size.x = get_text_size(*curr_item, w_ - x_).x - x_;
-//			text_size.y = prev_txt_height_ + get_text_size(*curr_item, w_ - x_).y;
-//
-//			PLAIN_LOG << "floating: " << floating;
-//			PLAIN_LOG << "img start: " << img_start.x << "," << img_start.y;
-//			PLAIN_LOG << "img size: " << img_size.x << "," << img_size.y;
-//			PLAIN_LOG << "text start: " << text_start.x << "," << text_start.y;
-//			PLAIN_LOG << "text size: " << text_size.x << "," << text_size.y;
+			text_start.x = img_size.x; // works only for left aligned
+			text_start.y = img_start.y;
+			text_size.x = get_text_size(*curr_item, w_ - (x_ == 0 ? img_size.x : x_)).x - x_;
+			text_size.y = get_text_size(*curr_item, w_ - (x_ == 0 ? img_size.x : x_)).y;
 
-			if ( floating && (img_size.y > 0) && (get_text_size(*curr_item, w_ - x_).y > img_size.y) ) {
+			PLAIN_LOG << "floating: " << floating;
+			PLAIN_LOG << "img start: " << img_start.x << "," << img_start.y;
+			PLAIN_LOG << "img size: " << img_size.x << "," << img_size.y;
+			PLAIN_LOG << "text start: " << text_start.x << "," << text_start.y;
+			PLAIN_LOG << "text size: " << text_size.x << "," << text_size.y;
+
+			if ( floating && (img_size.y > 0) && (text_size.y > img_size.y) ) {
 				PLAIN_LOG << "wrap start";
 
 				size_t len = get_split_location((*curr_item)["text"].str(), img_size.y);
-
 				t_string* removed_part = new t_string((*curr_item)["text"].str().substr(len+1));
-
 				(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
-				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + text_height)])";
-				PLAIN_LOG << (*curr_item)["text"].str();
+				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height)])";
+//				PLAIN_LOG << (*curr_item)["text"].str();
 
 				x_ = 0;
 				//prev_txt_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
 				prev_txt_height_ += img_size.y + img_start.y;
 				txt_height_ = 0;
 				img_size = point(0,0);
+				floating = false;
 
 				curr_item = &(text_dom_.add_child("text"));
 				default_text_config(curr_item);
@@ -642,7 +640,7 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	(*txt_ptr)["h"] = "(text_height)";
 	// tw -> table width, used for wrapping text inside table cols
 	// ww -> wrap width, used for wrapping around floating image
-	(*txt_ptr)["maximum_width"] = "(width - tw - pos_x - ww)";
+	(*txt_ptr)["maximum_width"] = "(width - pos_x - ww - tw)";
 	(*txt_ptr)["actions"] = "([set_var('pos_y', pos_y+text_height)])";
 }
 
