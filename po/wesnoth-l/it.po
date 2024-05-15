@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-17 04:13 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-10-21 20:38+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
@@ -359,7 +359,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant, id=Harper
+#. [unit]: type=Footpad_Peasant, id=Harper, gender=female
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:240
 msgid "Harper"
 msgstr "Harper"
@@ -628,7 +628,7 @@ msgstr ""
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
@@ -972,7 +972,7 @@ msgstr ""
 "ma avrebbe ragione: ho una responsabilità nei confronti della nostra gente. "
 "Vedo molti guai nel nostro futuro..."
 
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
 msgid "Relana"
 msgstr "Relana"
@@ -3371,12 +3371,12 @@ msgstr ""
 "guidato da un gruppo di anziani che sono gli abitanti del villaggio più "
 "saggi e più esperti."
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:53
 msgid "Senior Village Elder"
 msgstr "Venerabile"
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:57
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -3390,7 +3390,7 @@ msgstr ""
 "i venerabili più anziani come magistrati per fare in modo che la legge del "
 "regno e le consuetudini locali coincidano."
 
-#. [female]
+#. [female]: gender=female
 #: data/campaigns/Liberty/units/Villagers.cfg:59
 msgid "female^Senior Village Elder"
 msgstr "Venerabile"

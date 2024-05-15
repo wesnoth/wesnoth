@@ -93,7 +93,7 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem)
+find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
@@ -527,7 +527,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
-	find_package(SDL2 2.0.10 REQUIRED)
+	find_package(SDL2 2.0.18 REQUIRED)
 	if(NOT MSVC)
 		# for everything else, use pkgconfig
 		# SDL2_image and SDL2_mixer don't seem to have any cmake configuration available at all

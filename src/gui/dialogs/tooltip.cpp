@@ -21,8 +21,6 @@
 #include "gui/core/gui_definition.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/modeless_dialog.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(warn, log_config)
@@ -33,26 +31,12 @@ namespace gui2::dialogs
 REGISTER_WINDOW(tooltip_large)
 
 /**
- * @ingroup GUIWindowDefinitionWML
- *
- * Class to show the tips.
- *
  * At the moment two kinds of tips are known:
  * * tooltip
  * * helptip
  *
  * Generic window to show a floating tip window.
  * The class has several subclasses using the same format.
- * For example there will be tooltips and helptips, both using this class.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * label             | control      |yes      |This text contains the message to show in the tip.
- *
- * In the canvas of the windows used in this dialog the following variables are defined:
- * Variable          |Type                               |Description
- * ------------------|-----------------------------------|-----------
- * mouse_x           | @ref guivartype_string "unsigned" |The x coordinate of the mouse pointer when the window was created.
- * mouse_y           | @ref guivartype_string "unsigned" |The y coordinate of the mouse pointer when the window was created.
  */
 class tooltip : public modeless_dialog
 {

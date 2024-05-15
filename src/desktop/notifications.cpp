@@ -15,7 +15,6 @@
 
 #include "desktop/notifications.hpp"
 
-#include "preferences/game.hpp"
 #include "gettext.hpp"
 
 #include "video.hpp" // window_has_flags()

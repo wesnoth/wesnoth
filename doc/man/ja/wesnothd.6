@@ -140,17 +140,17 @@ wesnothd をデーモンとして実行する。
 サーバーが自動的にゲームのリプレイを保存するか定義する。(既定値: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+TLSの使用を有効にする。trueの場合は、以下の3つのオプションも設定する必要がある。
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+\&.pem形式のTLSフル証明書チェーン
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+\&.pem形式のTLS用秘密鍵
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+\&.pemファイルとして生成される TLS DHパラメータ。　\fBopenssl dhparam \-out filename.pem 4096\fP
+で生成する。
 .TP 
 \fBversions_accepted\fP
 カンマで区切られた、サーバーに受けつけられるバージョン文字列のリスト。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。(既定値では
@@ -159,9 +159,8 @@ wesnoth のバージョンに一致する)
 例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+ゲーム情報を保存するためにデータベース機能を使用する場合のサーバーのID。一般的には、1.16 や 1.17 のように、接続したクライアントアプリの
+メジャー番号.マイナー番号 で構成されるバージョン番号。
 .
 .SS グローバルタグ:
 .
@@ -217,8 +216,8 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 ユーザーのパスワード
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbbフォーラムがユーザーデータを保存するテーブル名。<table\-prefix>_users
+（例：phpbb3_users）である可能性が高い。
 .TP 
 \fBdb_extra_table\fP
 ユーザーに関するデータをwesnothdが保存するテーブル名。
@@ -233,23 +232,19 @@ likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 ゲームで使用されるMODに関するデータをwesnothdが保存するテーブル名。
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+ユーザーグループデータをphpbbフォーラムが保存するテーブル名。<table\-prefix>_user_group
+（例：phpbb3_user_group）である可能性が高い
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+ログイン/ログアウトの回数を保存するためのDBテーブル名。または IP とユーザーのマッチングにも使用される。
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+トピック（スレッド）情報をphpbbフォーラムが保存するテーブル名。 <table\-prefix>_topics
+（例：phpbb3_user_group）である可能性が高い。
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+ユーザーの入室禁止データをphpbbフォーラムが保存するテーブル名。<table\-prefix>_banlist
+（例：phpbb3_banlist）である可能性が高い。
 .TP 
 \fBmp_mod_group\fP
 モデレーション権限を持つフォーラムグループのID。
@@ -272,7 +267,7 @@ David White <davidnwhite@verizon.net> によって書かれた。 Nils Kneuper
 .
 .SH 著作権
 .
-Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

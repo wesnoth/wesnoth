@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-21 03:01 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
@@ -182,7 +182,7 @@ msgstr ""
 "ravintoa. En voi oppia lepakoilta mitään elämän pidentämisestä. Nyt minulla "
 "on ongelma. Minun on pakko pitää lepakot ja teeskennellä, että ne ovat "
 "lemmikkejäni, koska en voi tunnustaa, miksi tutkin niitä. Tosiasiassa se ei "
-"ole taakka — olen alkanut jotakuinkin pitää näistä otuksista, enkä välitä "
+"ole taakka. Olen alkanut jotakuinkin pitää näistä otuksista, enkä välitä "
 "vaikuttavani eksentriseltä. Minut on jo leimattu erilaiseksi, koska hiukseni "
 "ovat niin vaaleat ja minulta puuttuu hajuaisti."
 
@@ -754,7 +754,7 @@ msgstr ""
 msgid "Garcyn"
 msgstr "Garcyn"
 
-#. [unit]: type=Outlaw, id=Mossa
+#. [unit]: type=Outlaw, gender=female, id=Mossa
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/03_Bandits.cfg:48
 msgid "Mossa"
 msgstr "Mossa"
@@ -1174,7 +1174,7 @@ msgstr "Vartija"
 msgid "Gweddyn"
 msgstr "Gweddyn"
 
-#. [unit]: type=Mage, id=Bremen
+#. [unit]: type=Mage, gender=male, id=Bremen
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:75
 msgid "Bremen"
 msgstr "Bremen"
@@ -1747,7 +1747,7 @@ msgstr "Valtaa jokainen kylä"
 msgid "Wynran"
 msgstr "Wynran"
 
-#. [unit]: type=Mage, id=Raydah
+#. [unit]: type=Mage, id=Raydah, gender=female
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:105
 msgid "Raydah"
 msgstr "Raydah"
@@ -2647,7 +2647,7 @@ msgstr "Dolmathengalin"
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:351
 msgid "You are greeted daughter of elves. Why does the forest moan in despair?"
 msgstr ""
-"Ollos tervehditty, haltioiden tytär. Miks' metsä waikeroi epätoivoisest'?"
+"Ollos tervehditty, haltiain tytär. Miks' metsä waikeroi epätoivoisest'?"
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/12_Walking_Trees.cfg:355
@@ -3130,12 +3130,12 @@ msgid "Crelanu"
 msgstr "Crelanu"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:69
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:73
 msgid "Defeat Crelanu"
 msgstr "Kukista Crelanu"
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:81
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:85
 msgid ""
 "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die if "
 "he reaches zero."
@@ -3144,7 +3144,7 @@ msgstr ""
 "kuolee, jos hän menee nollille."
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:84
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:88
 msgid ""
 "Moving any unit onto a bottle of holy water will remove the bottle. An "
 "undead unit will be destroyed."
@@ -3153,12 +3153,12 @@ msgstr ""
 "yksikkö tuhoutuu."
 
 #. [unit]: type=White Mage, id=Ginmera
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:220
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:224
 msgid "Ginmera"
 msgstr "Ginmera"
 
 #. [message]: speaker=Ginmera
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:253
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:257
 msgid ""
 "It seems that the invaders can raise undead soldiers, so I placed some holy "
 "water around the castle for protection."
@@ -3167,22 +3167,22 @@ msgstr ""
 "joten sijoitin pyhää vettä linnan ympärille suojaksi."
 
 #. [unit]: type=White Mage, id=Rinconan
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:258
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:262
 msgid "Rinconan"
 msgstr "Rinconan"
 
 #. [message]: speaker=Ginmera
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:270
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:274
 msgid "Rinconan and I will stay here to guard you."
 msgstr "Rinconan ja minä jäämme tänne suojaamaan sinua."
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:274
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:278
 msgid "Yes. Thank you Ginmera."
 msgstr "Kyllä. Kiitos, Ginmera."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:280
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:284
 msgid ""
 "Moving a unit onto a bottle of holy water will remove the bottle. A living "
 "unit can do this safely, but any undead unit will be destroyed."
@@ -3191,17 +3191,17 @@ msgstr ""
 "yksikkö voi tehdä tämän turvallisesti, mutta epäkuollut yksikkö tuhoutuu."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:332
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:336
 msgid "Crelanu! (<i>Cough, cough</i>) We have come... for your book."
 msgstr "Crelanu! (<i>Köh, köh</i>) Me olemme tulleet... sinun kirjasi takia."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:336
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:340
 msgid "We need to borrow it."
 msgstr "Meidän on lainattava sitä."
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:340
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:344
 msgid ""
 "Yes, I knew people like you would be coming, but the book is out of reach "
 "now — for all of us. I have given it to the elves. Only they know where it "
@@ -3212,12 +3212,12 @@ msgstr ""
 "tietävät, missä se on."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:344
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:348
 msgid "Why would you do such a thing?"
 msgstr "Miksi sinä tekisit sellaista?"
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:348
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:352
 msgid ""
 "So that one like you would not be tempted to do what you intend. Oh, yes. I "
 "know well what you seek."
@@ -3226,22 +3226,22 @@ msgstr ""
 "tiedän hyvin, mitä te etsitte."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:352
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:356
 msgid "Then you can tell us what we want to know."
 msgstr "Sitten voit kertoa meille, mitä haluamme tietää."
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:356
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:360
 msgid "I shall not."
 msgstr "En kerro."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:360
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:364
 msgid "We shall see."
 msgstr "Sehän nähdään."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:365
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:369
 msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero."
@@ -3250,12 +3250,12 @@ msgstr ""
 "joka vuorolla. Hän kuolee, jos hän menee nollille."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:393
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:397
 msgid "Now, you will tell us the secret of immortality or die!"
 msgstr "Nyt kerrot meille kuolemattomuuden salaisuuden tai kuolet!"
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:397
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:401
 msgid ""
 "There <i>is no secret</i>, you fools! Magic cannot stop aging. You cannot "
 "live forever. It is the way of nature, and the greatest thing we have in "
@@ -3268,7 +3268,7 @@ msgstr ""
 "lähdettävä. En yrittäisi juttuanne mistään syystä."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:401
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:405
 msgid ""
 "You are the fool, for you have, indeed, told us all we required. For that, I "
 "will spare you to live a few more lonely years with your cowardice."
@@ -3278,12 +3278,12 @@ msgstr ""
 "pelkuruudessasi."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:414
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:418
 msgid "I don’t understand. What did Crelanu tell us?"
 msgstr "Minä en ymmärrä. Mitä Crelanu kertoi meille?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:418
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:422
 msgid ""
 "I will explain. Let us get you somewhere safe first. We’ll go into the cave. "
 "Come with me."
@@ -3988,7 +3988,7 @@ msgstr "Katsokaa! Kääpiöt kiersivät meidän eteemme."
 msgid "That’s why getting through Knalga was so easy."
 msgstr "Siksi Knalgasta läpi pääseminen oli niin helppoa."
 
-#. [unit]: type=Great Mage, id=Carmyna
+#. [unit]: type=Great Mage, gender=female, id=Carmyna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:696
 msgid "Carmyna"
 msgstr "Carmyna"
@@ -4208,12 +4208,12 @@ msgstr ""
 "pimeyden herralle. Silkan tottumuksen voimasta epäkuollut kapteeni vielä "
 "huokuu arvovaltaa, vaikka hänen kaikki muut muistonsa ovatkin mennyttä."
 
-#. [unit_type]: id=Delinquent, race=human
+#. [unit_type]: id=Delinquent, gender=female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:4
 msgid "Delinquent"
 msgstr "Rikollinen"
 
-#. [unit_type]: id=Delinquent, race=human
+#. [unit_type]: id=Delinquent, gender=female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:18
 msgid ""
 "Some girls shun the typical life planned for them by society, and fall in "

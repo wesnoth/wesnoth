@@ -21,8 +21,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 
-#include "desktop/clipboard.hpp"
-#include "desktop/open.hpp"
 
 #include "help/help.hpp"
 #include "gettext.hpp"
@@ -37,10 +35,6 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/credentials.hpp"
@@ -55,10 +49,8 @@
 #include "config.hpp"
 
 #include <functional>
-#include <iomanip>
 #include <set>
 #include <sstream>
-#include <stdexcept>
 
 namespace gui2::dialogs
 {
@@ -325,7 +317,18 @@ void addon_manager::pre_show(window& window)
 	if(addr_visible) {
 		auto addr_box = dynamic_cast<styled_widget*>(addr_visible->find("server_addr", false));
 		if(addr_box) {
-			addr_box->set_label(client_.addr());
+			if(!client_.server_id().empty()) {
+				auto full_id = formatter()
+					<< client_.addr() << ' '
+					<< font::unicode_em_dash << ' '
+					<< client_.server_id();
+				if(game_config::debug && !client_.server_version().empty()) {
+					full_id << " (" << client_.server_version() << ')';
+				}
+				addr_box->set_label(full_id.str());
+			} else {
+				addr_box->set_label(client_.addr());
+			}
 		}
 	}
 
@@ -1035,8 +1038,10 @@ static std::string format_addon_time(std::time_t time)
 
 		const std::string format = preferences::use_twelve_hour_clock_format()
 			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			? _("%B %d %Y, %I:%M %p")
 			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			: _("%B %d %Y, %H:%M");
 
 		ss << translation::strftime(format, std::localtime(&time));

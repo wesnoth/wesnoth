@@ -20,10 +20,6 @@
 #include <string>
 #include <vector>
 
-namespace ai {
-	class readonly_context_impl;
-}
-
 /** This class encapsulates the recall list of a team. */
 class recall_list_manager {
 public:

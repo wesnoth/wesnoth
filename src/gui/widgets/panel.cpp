@@ -19,12 +19,10 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gettext.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
-#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -116,8 +114,8 @@ panel_definition::resolution::resolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", _("Missing required background for panel definition")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", _("Missing required foreground for panel definition")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("panel_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("panel_definition][resolution", "foreground")));
 }
 
 // }---------- BUILDER -----------{

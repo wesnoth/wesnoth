@@ -41,9 +41,7 @@
 #include "formula/function_gamestate.hpp"
 #include "deprecation.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
-#include <string_view>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -1170,28 +1168,72 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
-//Functions used for change damage_type list with damage
-static std::vector<std::string> damage_type_list(const unit_ability_list& abil_list, const std::string& type)
+static std::string select_replacement_type(const unit_ability_list& damage_type_list)
 {
-	std::vector<std::string> type_list;
-	for(auto& i : abil_list) {
-		if(!(*i.ability_cfg)[type].str().empty()){
-			type_list.push_back((*i.ability_cfg)[type].str());
-		}
-	}
-	if(type_list.size() >= 2){
-		std::sort(type_list.begin(), type_list.end());
-		if(type_list.size() >= 3){
-			std::unordered_map<std::string, unsigned int> type_count;
-			for( const std::string& character : type_list ){
-				type_count[character]++;
+	std::map<std::string, unsigned int> type_count;
+	unsigned int max = 0;
+	for(auto& i : damage_type_list) {
+		const config& c = *i.ability_cfg;
+		if(c.has_attribute("replacement_type")) {
+			std::string type = c["replacement_type"].str();
+			unsigned int count = ++type_count[type];
+			if((count > max)) {
+				max = count;
 			}
-			std::sort( std::begin( type_list ) , std::end( type_list ) , [&]( const std::string& rhs , const std::string& lhs ){
-				return type_count[lhs] < type_count[rhs];
-			});
 		}
 	}
-	return type_list;
+
+	if (type_count.empty()) return "";
+
+	std::vector<std::string> type_list;
+	for(auto& i : type_count){
+		if(i.second == max){
+			type_list.push_back(i.first);
+		}
+	}
+
+	if(type_list.empty()) return "";
+
+	return type_list.front();
+}
+
+static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
+{
+	std::map<std::string, int> type_res;
+	int max_res = INT_MIN;
+	for(auto& i : damage_type_list) {
+		const config& c = *i.ability_cfg;
+		if(c.has_attribute("alternative_type")) {
+			std::string type = c["alternative_type"].str();
+			if(type_res.count(type) == 0){
+				type_res[type] = u.resistance_value(resistance_list, type);
+				max_res = std::max(max_res, type_res[type]);
+			}
+		}
+	}
+
+	if (type_res.empty()) return "";
+
+	std::vector<std::string> type_list;
+	for(auto& i : type_res){
+		if(i.second == max_res){
+			type_list.push_back(i.first);
+		}
+	}
+	if(type_list.empty()) return "";
+
+	return type_list.front();
+}
+
+std::string attack_type::select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const
+{
+	bool is_alternative = (key_name == "alternative_type");
+	if(is_alternative && other_){
+		return select_alternative_type(damage_type_list, resistance_list, (*other_));
+	} else if(!is_alternative){
+		return select_replacement_type(damage_type_list);
+	}
+	return "";
 }
 
 /**
@@ -1199,20 +1241,37 @@ static std::vector<std::string> damage_type_list(const unit_ability_list& abil_l
  */
 std::pair<std::string, std::string> attack_type::damage_type() const
 {
-	unit_ability_list abil_list = get_specials_and_abilities("damage_type");
-	if(abil_list.empty()){
+	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	if(damage_type_list.empty()){
 		return {type(), ""};
 	}
 
-	std::vector<std::string> type_list = damage_type_list(abil_list, "replacement_type");
-	std::vector<std::string> added_type_list = damage_type_list(abil_list, "alternative_type");
-	std::string type_damage, sec_type_damage;
-	type_damage = !type_list.empty() ? type_list.front() : type();
-	sec_type_damage = !added_type_list.empty() ? added_type_list.front() : "";
-	if(!sec_type_damage.empty()){
-		sec_type_damage =  type_damage != sec_type_damage ? sec_type_damage: "";
+	unit_ability_list resistance_list;
+	if(other_){
+		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
 	}
-	return {type_damage, sec_type_damage};
+	std::string replacement_type = select_damage_type(damage_type_list, "replacement_type", resistance_list);
+	std::string alternative_type = select_damage_type(damage_type_list, "alternative_type", resistance_list);
+	std::string type_damage = replacement_type.empty() ? type() : replacement_type;
+	if(!alternative_type.empty() && type_damage != alternative_type){
+		return {type_damage, alternative_type};
+	}
+	return {type_damage, ""};
+}
+
+std::set<std::string> attack_type::alternative_damage_types() const
+{
+	unit_ability_list damage_alternative_type_list = get_specials_and_abilities("damage_type");
+	if(damage_alternative_type_list.empty()){
+		return {};
+	}
+	std::set<std::string> damage_types;
+	for(auto& i : damage_alternative_type_list) {
+		const config& c = *i.ability_cfg;
+		damage_types.insert(c["alternative_type"].str());
+	}
+
+	return damage_types;
 }
 
 
@@ -1921,18 +1980,20 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, bool is_cumulable) :
+effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(0)
 {
 
-	int value_set = is_cumulable ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
+	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
 
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
+	std::optional<int> max_value = std::nullopt;
+	std::optional<int> min_value = std::nullopt;
 
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.ability_cfg;
@@ -1941,7 +2002,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if(!is_cumulable){
+		if(wham != EFFECT_CUMULABLE){
 			if (const config::attribute_value *v = cfg.get("value")) {
 				int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 					callable.add("base_value", wfl::variant(def));
@@ -1962,6 +2023,15 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 						set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
 					}
 				}
+			}
+		}
+
+		if(wham == EFFECT_CLAMP_MIN_MAX){
+			if(cfg.has_attribute("max_value")){
+				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
+			}
+			if(cfg.has_attribute("min_value")){
+				min_value = min_value ? std::max(*min_value, cfg["min_value"].to_int()) : cfg["min_value"].to_int();
 			}
 		}
 
@@ -2013,7 +2083,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 		}
 	}
 
-	if(!is_cumulable && set_effect_max.type != NOT_USED) {
+	if((wham != EFFECT_CUMULABLE) && set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
@@ -2051,6 +2121,14 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 	}
 
 	composite_value_ = static_cast<int>((value_set + addition) * multiplier / divisor);
+	//clamp what if min_value < max_value or one attribute only used.
+	if(max_value && min_value && *min_value < *max_value) {
+		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);
+	} else if(max_value && !min_value) {
+		composite_value_ = std::min(*max_value, composite_value_);
+	} else if(min_value && !max_value) {
+		composite_value_ = std::max(*min_value, composite_value_);
+	}
 }
 
 } // end namespace unit_abilities

@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
-#include "preferences/display.hpp"
 #include "preferences/game.hpp"
 
 namespace events {

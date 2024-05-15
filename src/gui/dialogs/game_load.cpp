@@ -19,22 +19,17 @@
 
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
-#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/core/log.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
@@ -46,7 +41,6 @@
 #include <functional>
 #include "game_config_view.hpp"
 
-#include <cctype>
 
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)

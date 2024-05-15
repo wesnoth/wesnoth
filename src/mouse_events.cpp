@@ -18,7 +18,6 @@
 
 #include "actions/attack.hpp"                // for battle_context, etc
 #include "actions/move.hpp"                  // for move_and_record
-#include "actions/undo.hpp"                  // for undo_list
 #include "config.hpp"                        // for config
 #include "cursor.hpp"                        // for set, CURSOR_TYPE::NORMAL, etc
 #include "game_board.hpp"                    // for game_board, etc
@@ -27,7 +26,6 @@
 #include "gui/dialogs/transient_message.hpp" // for show_transient_message
 #include "gui/dialogs/unit_attack.hpp"       // for unit_attack
 #include "gui/widgets/settings.hpp"          // for new_widgets
-#include "language.hpp"                      // for string_table, symbol_table
 #include "log.hpp"                           // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                       // for gamemap
 #include "pathfind/teleport.hpp"             // for get_teleport_locations, etc
@@ -47,7 +45,6 @@
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
-#include <ostream>     // for operator<<, basic_ostream, etc
 #include <string>      // for string, operator<<, etc
 
 static lg::log_domain log_engine("engine");
@@ -76,6 +73,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
 	, over_route_(false)
 	, reachmap_invalid_(false)
 	, show_partial_move_(false)
+	, teleport_selected_(false)
 	, preventing_units_highlight_(false)
 {
 	singleton_ = this;
@@ -824,6 +822,47 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 	return gui().map_area().contains(x, y);
 }
 
+void mouse_handler::select_teleport()
+{
+	// Load whiteboard partial moves
+	//wb::future_map_if_active planned_unit_map;
+
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
+
+	unit_map::iterator clicked_u = find_unit(last_hex_);
+	unit_map::iterator selected_u = find_unit(selected_hex_);
+
+	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
+	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+	) {
+		selected_hex_ = last_hex_;
+		teleport_selected_ = true;
+		gui().select_hex(selected_hex_);
+		gui().set_route(nullptr);
+	}
+}
+
+void mouse_handler::teleport_action()
+{
+	// Set the teleport to active so that we can use existing functions
+	// for teleport
+	teleport_selected_ = false;
+
+	actions::teleport_unit_and_record(selected_hex_, last_hex_);
+	cursor::set(cursor::NORMAL);
+	gui().invalidate_game_status();
+	gui().invalidate_all();
+	gui().clear_attack_indicator();
+	gui().set_route(nullptr);
+
+	// Select and deselect the units hex to prompt updates for hover
+	select_hex(last_hex_, false);
+	deselect_hex();
+	current_route_.steps.clear();
+}
+
 void mouse_handler::select_or_action(bool browse)
 {
 	if(!pc_.get_map().on_board(last_hex_)) {
@@ -848,6 +887,7 @@ void mouse_handler::select_or_action(bool browse)
 	} else {
 		move_action(browse);
 	}
+	teleport_selected_ = false;
 }
 
 void mouse_handler::move_action(bool browse)
@@ -892,8 +932,12 @@ void mouse_handler::move_action(bool browse)
 		attack_from = current_unit_attacks_from(hex);
 	} // end planned unit map scope
 
+	// See if the teleport option is toggled
+	if(teleport_selected_) {
+		teleport_action();
+	}
 	// see if we're trying to do a attack or move-and-attack
-	if((!browse || pc_.get_whiteboard()->is_active()) && attack_from.valid()) {
+	else if((!browse || pc_.get_whiteboard()->is_active()) && attack_from.valid()) {
 		// Ignore this command if commands are disabled.
 		if(commands_disabled) {
 			return;

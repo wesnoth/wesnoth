@@ -35,7 +35,6 @@ public:
 
 };
 
-class rca_context;
 class rca_context : public virtual ai_context {
 public:
 
@@ -66,7 +65,6 @@ private:
 	static bool strategy_set_;
 };
 
-class candidate_action_context;
 class candidate_action_context : public virtual rca_context {
 public:
 

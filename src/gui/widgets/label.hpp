@@ -28,30 +28,6 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A label displays text that can be wrapped but no scrollbars are provided.
- *
- * A label has two states because labels are often used as visual indication of the state of the widget it labels.
- *
- * The following states exist:
- * * state_enabled - the label is enabled.
- * * state_disabled - the label is disabled.
- *
- * Key                |Type                                |Default |Description
- * -------------------|------------------------------------|--------|-------------
- * link_color         | @ref guivartype_string "string"    |\#ffff00|The color to render links with. This string will be used verbatim in pango markup for each link.
- *
- * The label specific variables:
- * Key                |Type                                |Default|Description
- * -------------------|------------------------------------|-------|-------------
- * wrap               | @ref guivartype_bool "bool"        |false  |Is wrapping enabled for the label.
- * characters_per_line| @ref guivartype_unsigned "unsigned"|0      |Sets the maximum number of characters per line. The amount is an approximate since the width of a character differs. E.g. iii is smaller than MMM. When the value is non-zero it also implies can_wrap is true. When having long strings wrapping them can increase readability, often 66 characters per line is considered the optimum for a one column text.
- * text_alignment     | @ref guivartype_h_align "h_align"  |left   |The way the text is aligned inside the canvas.
- * can_shrink         | @ref guivartype_bool "bool"        |false  |Whether the label can shrink past its optimal size.
- * link_aware         | @ref guivartype_bool "bool"        |false  |Whether the label is link aware. This means it is rendered with links highlighted, and responds to click events on those links.
- */
 class label : public styled_widget
 {
 	friend struct implementation::builder_label;

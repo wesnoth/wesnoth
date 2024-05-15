@@ -121,7 +121,7 @@ All content within add-ons uploaded to this server must be licensed under the te
 
 bool timing_reports_enabled = false;
 
-void timing_report_function(const util::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
+void timing_report_function(const utils::ms_optimer& tim, const campaignd::server::request& req, const std::string& label = {})
 {
 	if(timing_reports_enabled) {
 		if(label.empty()) {
@@ -132,9 +132,9 @@ void timing_report_function(const util::ms_optimer& tim, const campaignd::server
 	}
 }
 
-inline util::ms_optimer service_timer(const campaignd::server::request& req, const std::string& label = {})
+inline utils::ms_optimer service_timer(const campaignd::server::request& req, const std::string& label = {})
 {
-	return util::ms_optimer{std::bind(timing_report_function, std::placeholders::_1, req, label)};
+	return utils::ms_optimer{std::bind(timing_report_function, std::placeholders::_1, req, label)};
 }
 
 //

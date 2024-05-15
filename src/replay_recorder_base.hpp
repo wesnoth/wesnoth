@@ -13,7 +13,6 @@
 */
 
 #pragma once
-#include <cassert>
 #include <boost/ptr_container/ptr_vector.hpp>
 
 #include "config.hpp"

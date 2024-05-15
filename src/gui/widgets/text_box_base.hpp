@@ -25,10 +25,6 @@
 
 namespace gui2
 {
-namespace implementation
-{
-	struct builder_styled_widget;
-}
 
 /**
  * Abstract base class for text items.
@@ -159,12 +155,19 @@ public:
 	 */
 	void set_selection(std::size_t start, int length);
 
+	/**
+	 * Set or unset whether text can be edited or not
+	 * Text can only be copied and scrolled through when editable is false.
+	 */
 	void set_editable(bool editable)
 	{
 		editable_ = editable;
 		update_canvas();
 	}
 
+	/**
+	 * Check whether text can be edited or not
+	 */
 	bool is_editable()
 	{
 		return editable_;

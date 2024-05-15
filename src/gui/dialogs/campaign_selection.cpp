@@ -22,19 +22,14 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/multimenu_button.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
-#include "lexical_cast.hpp"
 #include "preferences/game.hpp"
 
 #include <functional>
@@ -228,11 +223,30 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		}
 	}
 
+	// List of which options has been selected in the completion filter multimenu_button
+	boost::dynamic_bitset<> filter_comp_options = find_widget<multimenu_button>(this, "filter_completion", false).get_toggle_states();
+
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
-		if(show_items[i]) {
-			add_campaign_to_tree(levels[i]->data());
+		bool completed = preferences::is_campaign_completed(levels[i]->data()["id"]);
+		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
+		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
+		// Check for non-completion on every difficulty save the first.
+		const bool only_first_completed = difficulties.size() > 1 &&
+			std::none_of(difficulties.begin() + 1, difficulties.end(), did_complete_at);
+		const bool completed_easy = only_first_completed && did_complete_at(difficulties.front());
+		const bool completed_hardest = !difficulties.empty() && did_complete_at(difficulties.back());
+		const bool completed_mid = completed && !completed_hardest && !completed_easy;
+
+		if( show_items[i] && (
+					( (!completed) && filter_comp_options[0] )       // Selects all campaigns not finished by player
+				 || ( completed && filter_comp_options[4] )          // Selects all campaigns finished by player
+				 || ( completed_hardest && filter_comp_options[3] )  // Selects campaigns completed in hardest difficulty
+				 || ( completed_easy && filter_comp_options[1] )     // Selects campaigns completed in easiest difficulty
+				 || ( completed_mid && filter_comp_options[2])       // Selects campaigns completed in any other difficulty
+				 )) {
+			add_campaign_to_tree(levels[i]->data());
 			if (!exists_in_filtered_result) {
 				exists_in_filtered_result = levels[i]->id() == was_selected;
 			}
@@ -319,6 +333,13 @@ void campaign_selection::pre_show(window& window)
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
+
+	multimenu_button& filter_comp = find_widget<multimenu_button>(&window, "filter_completion", false);
+	connect_signal_notify_modified(filter_comp,
+		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
+	for (unsigned j = 0; j < filter_comp.num_options(); j++) {
+		filter_comp.select_option(j);
+	}
 
 	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
 		const config& campaign = level->data();

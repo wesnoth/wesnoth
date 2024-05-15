@@ -25,10 +25,7 @@
 #pragma once
 
 #include "map/location.hpp"
-#include "sdl/rect.hpp"
-#include "utils/math.hpp"
 
-#include <map>
 #include <vector>
 
 class display;
@@ -38,10 +35,6 @@ namespace halo { class manager; }
 class team;
 class unit;
 
-struct color_t;
-struct SDL_Rect;
-struct point;
-class surface;
 
 class unit_drawer
 {

@@ -203,6 +203,8 @@ void text_box::update_canvas()
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
 
+		tmp.set_variable("editable", wfl::variant(is_editable()));
+
 		tmp.set_variable("cursor_offset",
 						 wfl::variant(get_cursor_position(start + length).x));
 
@@ -408,10 +410,10 @@ text_box_definition::resolution::resolution(const config& cfg)
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in text_box.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for editable text box")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for editable text box")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for editable text box")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_hovered", _("Missing required state for editable text box")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("text_box_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("text_box_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("text_box_definition][resolution", "state_focused")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_hovered", missing_mandatory_wml_tag("text_box_definition][resolution", "state_hovered")));
 }
 
 // }---------- BUILDER -----------{
@@ -425,6 +427,7 @@ builder_text_box::builder_text_box(const config& cfg)
 	, max_input_length(cfg["max_input_length"])
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
+	, editable(cfg["editable"].to_bool(true))
 {
 }
 
@@ -441,6 +444,7 @@ std::unique_ptr<widget> builder_text_box::build() const
 
 	widget->set_max_input_length(max_input_length);
 	widget->set_hint_data(hint_text, hint_image);
+	widget->set_editable(editable);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";

@@ -18,7 +18,6 @@
 #include "scripting/plugins/manager.hpp"
 
 #include <cassert>
-#include <utility>
 #include <functional>
 
 plugins_context::plugins_context(const std::string & name)

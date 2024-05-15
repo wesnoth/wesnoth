@@ -18,12 +18,10 @@
 #include "actions/create.hpp"
 #include "game_board.hpp"
 #include "game_errors.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
-#include "units/map.hpp"
 #include "units/type_error.hpp"
 #include "units/unit.hpp"
 

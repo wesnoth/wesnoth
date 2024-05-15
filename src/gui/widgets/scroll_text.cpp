@@ -18,14 +18,9 @@
 #include "gui/widgets/scroll_text.hpp"
 
 #include "gui/widgets/multiline_text.hpp"
-#include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/spacer.hpp"
-#include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
@@ -230,10 +225,10 @@ scroll_text_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_text.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for scroll text control")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for scroll text control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("scroll_text", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("scroll_text", "state_disabled")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for scroll text control"));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("scroll_text", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

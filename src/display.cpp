@@ -22,7 +22,6 @@
 
 #include "arrow.hpp"
 #include "color.hpp"
-#include "cursor.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
@@ -30,11 +29,8 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
@@ -49,7 +45,6 @@
 #include "terrain/builder.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
-#include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
@@ -59,7 +54,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include <SDL2/SDL_image.h>
 
 #include <algorithm>
 #include <array>
@@ -165,7 +159,7 @@ display::display(const display_context* dc,
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
-	, minimap_(nullptr)
+	, minimap_renderer_(nullptr)
 	, minimap_location_(sdl::empty_rect)
 	, redraw_background_(false)
 	, invalidateAll_(true)
@@ -1507,48 +1501,6 @@ void display::draw_text_in_hex(const map_location& loc,
 	});
 }
 
-void display::add_submerge_ipf_mod(std::string& image_path, int image_height, double submersion_amount, int shift)
-{
-	// We may also want to shift the position so that the waterline matches.
-	// Note: This currently has blending problems (see the note on sdl_blit),
-	// but if that blending problem is fixed it should work.
-	if (shift) {
-		image_path = "misc/blank-hex.png~BLIT(" + image_path;
-	}
-
-	// general formula for submerge alpha:
-	//   if (y > WATERLINE)
-	//   then min(max(alpha_mod, 0), 1) * alpha
-	//   else alpha
-	//   where alpha_mod = alpha_base - (y - WATERLINE) * alpha_delta
-	// formula variables: x, y, red, green, blue, alpha, width, height
-	// full WFL string:
-	// "~ADJUST_ALPHA(if(y>DL,clamp((AB-(y-DL)*AD),0,1)*alpha,alpha))"
-	// where DL = submersion line in pixels from top of image
-	//       AB = base alpha proportion at submersion line (30%)
-	//       AD = proportional alpha delta per pixel (1.5%)
-	if (submersion_amount > 0.0) {
-		int submersion_line = image_height * (1.0 - submersion_amount);
-		const std::string sl_string = std::to_string(submersion_line);
-		image_path += "~ADJUST_ALPHA(if(y>";
-		image_path += sl_string;
-		image_path += ",clamp((0.3-(y-";
-		image_path += sl_string;
-		image_path += ")*0.015),0,1)*alpha,alpha))";
-	}
-	// FUTURE: this submerge function could be done using SDL_RenderGeometry,
-	// but that's not available below SDL 2.0.18.
-	// Alternately it could also be done fairly easily using shaders,
-	// if a graphics system supporting them (such as openGL) is moved to.
-
-	if (shift) {
-		// Finish the shifting blit. This assumes a hex-sized image.
-		image_path += ",0,";
-		image_path += std::to_string(shift);
-		image_path += ')';
-	}
-}
-
 void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
@@ -1666,11 +1618,12 @@ void display::recalculate_minimap()
 		return;
 	}
 
-	minimap_ = texture(image::getMinimap(
-		area.w, area.h, get_map(),
+	minimap_renderer_ = image::prep_minimap_for_rendering(
+		get_map(),
 		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
-	));
+	);
 
 	redraw_minimap();
 }
@@ -1688,7 +1641,7 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(!minimap_) {
+	if(!minimap_renderer_) {
 		ERR_DP << "trying to draw null minimap";
 		return;
 	}
@@ -1698,23 +1651,15 @@ void display::draw_minimap()
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
 
-	// Update the minimap location for mouse and units functions
-	minimap_location_.x = area.x + (area.w - minimap_.w()) / 2;
-	minimap_location_.y = area.y + (area.h - minimap_.h()) / 2;
-	minimap_location_.w = minimap_.w();
-	minimap_location_.h = minimap_.h();
-
-	// Draw the minimap.
-	if (minimap_) {
-		draw::blit(minimap_, minimap_location_);
-	}
+	// Draw the minimap and update its location for mouse and units functions
+	minimap_location_ = std::invoke(minimap_renderer_, area);
 
 	draw_minimap_units();
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_.w() / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_.h() / (get_map().h()*hex_size());
+	double xscaling = 1.0 * minimap_location_.w / (get_map().w() * hex_width());
+	double yscaling = 1.0 * minimap_location_.h / (get_map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -2268,6 +2213,52 @@ bool display::get_prevent_draw()
 	return prevent_draw_;
 }
 
+submerge_data display::get_submerge_data(const rect& dest, double submerge, const point& size, uint8_t alpha, bool hreverse, bool vreverse)
+{
+	submerge_data data;
+	if(submerge <= 0.0) {
+		return data;
+	}
+
+	// Set up blit destinations
+	data.unsub_dest = dest;
+	const int dest_sub_h = dest.h * submerge;
+	data.unsub_dest.h -= dest_sub_h;
+	const int dest_y_mid = dest.y + data.unsub_dest.h;
+
+	// Set up blit src regions
+	const int submersion_line = size.y * (1.0 - submerge);
+	data.unsub_src = {0, 0, size.x, submersion_line};
+
+	// Set up shader vertices
+	const color_t c_mid(255, 255, 255, 0.3 * alpha);
+	const int pixels_submerged = size.y * submerge;
+	const int bot_alpha = std::max(0.3 - pixels_submerged * 0.015, 0.0) * alpha;
+	const color_t c_bot(255, 255, 255, bot_alpha);
+	const SDL_FPoint pML{float(dest.x), float(dest_y_mid)};
+	const SDL_FPoint pMR{float(dest.x + dest.w), float(dest_y_mid)};
+	const SDL_FPoint pBL{float(dest.x), float(dest.y + dest.h)};
+	const SDL_FPoint pBR{float(dest.x + dest.w), float(dest.y + dest.h)};
+	data.alpha_verts = {
+		SDL_Vertex{pML, c_mid, {0.0, float(1.0 - submerge)}},
+		SDL_Vertex{pMR, c_mid, {1.0, float(1.0 - submerge)}},
+		SDL_Vertex{pBL, c_bot, {0.0, 1.0}},
+		SDL_Vertex{pBR, c_bot, {1.0, 1.0}},
+	};
+
+	if(hreverse) {
+		for(SDL_Vertex& v : data.alpha_verts) {
+			v.tex_coord.x = 1.0 - v.tex_coord.x;
+		}
+	}
+	if(vreverse) {
+		for(SDL_Vertex& v : data.alpha_verts) {
+			v.tex_coord.y = 1.0 - v.tex_coord.y;
+		}
+	}
+
+	return data;
+}
 
 void display::fade_tod_mask(
 	const std::string& old_mask,
@@ -2502,11 +2493,9 @@ void display::render()
 	// update the minimap texture, if necessary
 	// TODO: highdpi - high DPI minimap
 	const rect& area = minimap_area();
-	if(!area.empty() &&
-		(!minimap_ || minimap_.w() > area.w || minimap_.h() > area.h))
-	{
+	if(!area.empty() && !minimap_renderer_) {
 		recalculate_minimap();
-		if(!minimap_) {
+		if(!minimap_renderer_) {
 			ERR_DP << "error creating minimap";
 			return;
 		}
@@ -2726,10 +2715,6 @@ void display::draw_hex(const map_location& loc)
 		}
 	}
 
-	const t_translation::terrain_code terrain = get_map().get_terrain(loc);
-	const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
-	const double submerge = terrain_info.unit_submerge();
-
 	if(!is_shrouded) {
 		auto it = get_overlays().find(loc);
 		if(it != get_overlays().end()) {
@@ -2754,20 +2739,28 @@ void display::draw_hex(const map_location& loc)
 						point isize = image::get_size(ov.image, image::HEXED);
 						std::string ipf = ov.image;
 
-						if(ov.submerge) {
-							// Adjust submerge appropriately
-							double sub = submerge * ov.submerge;
-							// Shift the image so the waterline remains static.
-							// This is so that units swimming there look okay.
-							int shift = isize.y * (sub - submerge);
-							add_submerge_ipf_mod(ipf, isize.y, sub, shift);
-						}
-
-						const texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
+						texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
 							? image::get_lighted_texture(ipf, lt)
 							: image::get_texture(ipf, image::HEXED);
 
-						drawing_buffer_add(LAYER_TERRAIN_BG, loc, [tex](const rect& dest) { draw::blit(tex, dest); });
+						drawing_buffer_add(LAYER_TERRAIN_BG, loc, [=](const rect& dest) mutable {
+							// Adjust submerge appropriately
+							const t_translation::terrain_code terrain = get_map().get_terrain(loc);
+							const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
+							const double submerge = terrain_info.unit_submerge();
+
+							submerge_data data = get_submerge_data(dest, submerge, isize, ALPHA_OPAQUE, false, false);
+							if(submerge > 0.0) {
+								// set clip for dry part
+								// smooth_shaded doesn't use the clip information so it's fine to set it up front
+								tex.set_src(data.unsub_src);
+
+								// draw underwater part
+								draw::smooth_shaded(tex, data.alpha_verts);
+							}
+							// draw dry part
+							draw::blit(tex, submerge > 0.0 ? data.unsub_dest : dest);
+						});
 					}
 				}
 			}

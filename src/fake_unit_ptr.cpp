@@ -18,7 +18,6 @@
 #include "fake_unit_manager.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
-#include "units/ptr.hpp"
 
 fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(nullptr) {}
 fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(nullptr) {}

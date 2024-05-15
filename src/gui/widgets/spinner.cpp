@@ -21,9 +21,7 @@
 #include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/core/log.hpp"
-#include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
@@ -140,10 +138,10 @@ spinner_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is spinner.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for spinner control")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for spinner control")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("spinner", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("spinner", "state_disabled")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for spinner control"));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("spinner", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

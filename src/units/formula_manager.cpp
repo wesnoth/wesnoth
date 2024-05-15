@@ -15,11 +15,7 @@
 
 #include "units/formula_manager.hpp"
 
-#include "formula/callable_objects.hpp"
 #include "config.hpp"
-#include "formula/formula.hpp"
-#include "map/location.hpp"
-#include "log.hpp"
 #include "deprecation.hpp"
 
 void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)

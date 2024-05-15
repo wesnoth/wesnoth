@@ -17,14 +17,9 @@
 
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
-namespace implementation
-{
-struct builder_styled_widget;
-}
 
 /**
  * A generic container base class.

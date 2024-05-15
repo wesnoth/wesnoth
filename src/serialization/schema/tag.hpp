@@ -51,11 +51,11 @@ public:
 	using key_map  = std::map<std::string, wml_key>;
 	using link_map = std::map<std::string, std::string>;
 	using condition_list = std::vector<wml_condition>;
-	using super_list = std::vector<wml_tag*>;
+	using super_list = std::map<std::string, const wml_tag*>;
 private:
 	static void push_new_tag_conditions(std::queue<const wml_tag*>& q, const config& match, const wml_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
-	class iterator : public boost::iterator_facade<iterator<T>, const typename Map::value_type, std::forward_iterator_tag>
+	class iterator : public boost::iterator_facade<iterator<T, Map>, const typename Map::value_type, std::forward_iterator_tag>
 	{
 		std::queue<const wml_tag*> condition_queue;
 		typename Map::const_iterator current;
@@ -107,6 +107,7 @@ private:
 	template<typename T, typename Map> friend class iterator;
 	using tag_iterator = iterator<wml_tag>;
 	using key_iterator = iterator<wml_key>;
+	using super_iterator = iterator<const wml_tag*>;
 public:
 
 	wml_tag()
@@ -307,6 +308,10 @@ public:
 		return {key_iterator(*this, cfg_match), key_iterator()};
 	}
 
+	boost::iterator_range<super_iterator> super(const config& cfg_match) const {
+		return {super_iterator(*this, cfg_match), super_iterator()};
+	}
+
 	const link_map& links() const
 	{
 		return links_;
@@ -404,6 +409,12 @@ private:
 
 	/** Expands all "super", storing direct references for easier access. */
 	void expand(wml_tag& root);
+
+	/** Finds a key with super bookkeeping to handle super cycles. */
+	const wml_key* find_key(const std::string& name, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const;
+
+	/** Finds a tag with super bookkeeping to handle super cycles. */
+	const wml_tag* find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const;
 };
 
 /**

@@ -18,7 +18,6 @@
 #include "build_info.hpp"
 
 #include "desktop/version.hpp"
-#include "game_config.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -36,7 +35,6 @@
 
 #include "lua/wrapper_lua.h"
 
-#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
@@ -336,6 +334,7 @@ std::string build_arch()
 #elif BOOST_ARCH_SPARC
 	return "sparc";
 #else
+	#warning Unrecognized platform or Boost.Predef broken/unavailable
 	// Congratulations, you're running Wesnoth on an exotic platform -- either that or you live in
 	// the foretold future where x86 and ARM stopped being the dominant CPU architectures for the
 	// general-purpose consumer market. If you want to add label support for your platform, check

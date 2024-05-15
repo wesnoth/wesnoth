@@ -33,11 +33,8 @@ namespace implementation
 struct builder_pane;
 } // namespace implementation
 
-class grid;
 
 /**
- * @ingroup GUIWidgetWML
- *
  * A pane is a container where new members can be added and removed during run-time.
  */
 class pane : public widget

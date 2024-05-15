@@ -17,7 +17,6 @@
 
 #include "gui/widgets/generator_private.hpp"
 
-#include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
 #include <numeric>

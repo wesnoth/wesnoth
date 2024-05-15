@@ -95,15 +95,6 @@ public:
 
 typedef control_NEW<state_default> tbase;
 
-/**
- * @ingroup GUIWidgetWML
- *
- * List with the matrix specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-----------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- */
 class matrix : public tbase
 {
 	friend class debug_layout_graph;

@@ -27,7 +27,6 @@
 #include "sdl/texture.hpp"
 #include "sdl/rect.hpp"
 
-namespace wfl { class variant; }
 struct point;
 
 namespace gui2
@@ -198,7 +197,7 @@ private:
 	 * the config object is no longer required and thus not stored in the
 	 * object.
 	 *
-	 * @param cfg                 The config object with the data to draw, see @ref GUICanvasWML
+	 * @param cfg                 The config object with the data to draw
 	 */
 	void parse_cfg(const config& cfg);
 

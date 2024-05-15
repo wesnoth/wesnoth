@@ -15,7 +15,6 @@
 
 #include "synced_user_choice.hpp"
 
-#include "actions/undo.hpp"
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_data.hpp"

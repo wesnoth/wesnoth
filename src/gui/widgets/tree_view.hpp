@@ -35,28 +35,6 @@ namespace implementation {
 
 // ------------ WIDGET -----------{
 
-class tree_view_node;
-
-/**
- * @ingroup GUIWidgetWML
- *
- * A tree view is a control that holds several items of the same or different types.
- * The items shown are called tree view nodes and when a node has children, these can be shown or hidden.
- * Nodes that contain children need to provide a clickable button in order to fold or unfold the children.
- *
- * The following states exist:
- * * state_enabled - the listbox is enabled.
- * * state_disabled - the listbox is disabled.
- * List with the tree view specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-------------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * indention_step_size      | @ref guivartype_unsigned "unsigned"            |0           |The number of pixels every level of nodes is indented from the previous level.
- * node                     | @ref guivartype_unsigned "unsigned"            |mandatory   |The tree view can contain multiple node sections. This part needs more documentation.
- * id                       | @ref guivartype_unsigned "unsigned"            |""          |.
- * return_value_id          | @ref guivartype_unsigned "unsigned"            |""          |.
- */
 class tree_view : public scrollbar_container
 {
 	friend struct implementation::builder_tree_view;

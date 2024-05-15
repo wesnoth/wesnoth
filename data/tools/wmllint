@@ -1729,8 +1729,8 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                     if campaign_rank < 300:
                         print(errlead + "rank for add-on campaigns should be greater than or equal to 300")
                 elif "campaigns" in filename:
-                    if campaign_rank >= 300 or (campaign_rank % 5) != 0:
-                        print(errlead + "rank for mainline campaigns should be a multiple of 5 between 0 and 299 (included)")  
+                    if campaign_rank >= 300:
+                        print(errlead + "rank for mainline campaigns should be between 0 and 299 (included)")  
             except ValueError:
                 print(errlead + "rank must be a numeric value")
 

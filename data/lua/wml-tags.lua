@@ -69,7 +69,7 @@ function wml_actions.chat(cfg)
 	local observable = cfg.observable ~= false
 
 	if observable then
-		local all_sides = wesnoth.sides.find()
+		local all_sides = wesnoth.sides.find{}
 		local has_human_side = false
 		for index, side in ipairs(all_sides) do
 			if side.controller == "human" and side.is_local then
@@ -116,8 +116,7 @@ function wml_actions.store_unit_type_ids(cfg)
 		table.insert(types, k)
 	end
 	table.sort(types)
-	types = table.concat(types, ',')
-	wml.variables[cfg.variable or "unit_type_ids"] = types
+	wml.variables[cfg.variable or "unit_type_ids"] = table.concat(types, ',')
 end
 
 function wml_actions.store_unit_type(cfg)
@@ -752,7 +751,7 @@ function wml_actions.remove_event(cfg)
 end
 
 function wml_actions.inspect(cfg)
-	gui.show_inspector(cfg)
+	gui.show_inspector(cfg.name)
 end
 
 function wml_actions.label( cfg )

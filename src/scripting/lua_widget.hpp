@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include <string>
 
 #include "scripting/lua_ptr.hpp"
 #include "serialization/string_utils.hpp"

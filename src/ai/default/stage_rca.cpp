@@ -21,7 +21,6 @@
 #include "ai/default/stage_rca.hpp"
 
 #include "ai/manager.hpp"
-#include "ai/composite/ai.hpp"
 #include "ai/composite/engine.hpp"
 #include "ai/composite/property_handler.hpp"
 #include "ai/composite/rca.hpp"

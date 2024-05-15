@@ -16,7 +16,6 @@
 #pragma once
 
 #include "hotkey_command.hpp"
-#include "game_end_exceptions.hpp"
 
 #include <SDL2/SDL_events.h>
 
@@ -137,6 +136,7 @@ public:
 	virtual void deselect_hex() {}
 	virtual void move_action() {}
 	virtual void select_and_action() {}
+	virtual void select_teleport() {}
 	virtual void touch_hex() {}
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}

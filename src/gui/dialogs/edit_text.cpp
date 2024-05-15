@@ -19,7 +19,6 @@
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 
 #include <boost/algorithm/string/trim.hpp>

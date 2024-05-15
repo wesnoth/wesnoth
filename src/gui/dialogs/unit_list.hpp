@@ -20,7 +20,6 @@
 #include "map/location.hpp"
 #include "units/ptr.hpp"
 
-#include <memory>
 #include <string>
 #include <vector>
 

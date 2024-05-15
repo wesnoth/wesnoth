@@ -20,7 +20,6 @@
 #include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
-#include "sdl/utils.hpp"
 #include "video.hpp"
 
 #include <map>

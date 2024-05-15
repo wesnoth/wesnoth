@@ -21,7 +21,6 @@
 #include "game_launcher.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/widgets/retval.hpp"
 #include "wml_exception.hpp"

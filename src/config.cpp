@@ -30,7 +30,6 @@
 
 #include <algorithm>
 #include <cstring>
-#include <istream>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

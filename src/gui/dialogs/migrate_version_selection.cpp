@@ -21,11 +21,11 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
+#include "serialization/parser.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -98,20 +98,40 @@ void migrate_version_selection::post_show(window& window)
 		// given self-compilation and linux distros being able to do whatever they want plus command line options to
 		// alter locations make sure the directories/files are actually different before doing anything with them
 		if(migrate_addons_dir != filesystem::get_addons_dir()) {
+			std::vector<std::string> old_addons;
+			std::vector<std::string> current_addons;
 			std::vector<std::string> migrate_addons;
-			filesystem::get_files_in_dir(migrate_addons_dir, nullptr, &migrate_addons);
+
+			filesystem::get_files_in_dir(migrate_addons_dir, nullptr, &old_addons);
+			filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &current_addons);
+
+			std::set_difference(old_addons.begin(), old_addons.end(), current_addons.begin(), current_addons.end(), std::back_inserter(migrate_addons));
+
 			if(migrate_addons.size() > 0) {
 				ad_hoc_addon_fetch_session(migrate_addons);
 			}
 		}
 
-		if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
-			filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
+#if !defined(_WIN32) && !defined(__APPLE__)
+		bool already_migrated = false;
+		std::string linux_old_config_dir = old_config_dir();
+		std::string old_migrate_prefs_file = linux_old_config_dir + "/preferences";
+		std::string old_migrate_credentials_file = linux_old_config_dir + "/credentials-aes";
+
+		if(filesystem::file_exists(old_migrate_prefs_file)) {
+			already_migrated = true;
+			migrate_preferences(old_migrate_prefs_file);
+		}
+		if(filesystem::file_exists(old_migrate_credentials_file)) {
+			already_migrated = true;
+			migrate_credentials(old_migrate_credentials_file);
 		}
 
-		if(migrate_credentials_file != filesystem::get_credentials_file()
-			&& filesystem::file_exists(migrate_credentials_file)) {
-			filesystem::copy_file(migrate_credentials_file, filesystem::get_credentials_file());
+		if(!already_migrated)
+#endif
+		{
+			migrate_preferences(migrate_prefs_file);
+			migrate_credentials(migrate_credentials_file);
 		}
 
 		// reload preferences and credentials
@@ -121,4 +141,69 @@ void migrate_version_selection::post_show(window& window)
 		preferences::load_credentials();
 	}
 }
+
+/**
+ * Prior to 1.19 linux installs would usually store the credentials and preferences file under XDG_CONFIG_HOME with no version separation.
+ * That special handling has been removed, but still needs to be accounted for when migrating
+ */
+std::string migrate_version_selection::old_config_dir()
+{
+	char const* xdg_config = getenv("XDG_CONFIG_HOME");
+	std::string old_config_dir;
+
+	if(!xdg_config || xdg_config[0] == '\0') {
+		xdg_config = getenv("HOME");
+		if(!xdg_config) {
+			old_config_dir = filesystem::get_user_data_dir();
+			return old_config_dir;
+		}
+
+		old_config_dir = xdg_config;
+		old_config_dir += "/.config";
+	} else {
+		old_config_dir = xdg_config;
+	}
+
+	old_config_dir += "/wesnoth";
+	return old_config_dir;
+}
+
+void migrate_version_selection::migrate_preferences(const std::string& migrate_prefs_file)
+{
+	if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
+		// if the file doesn't exist, just copy the file over
+		// else need to merge the preferences file
+		if(!filesystem::file_exists(filesystem::get_prefs_file())) {
+			filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
+		} else {
+			config current_cfg;
+			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+			read(current_cfg, *current_stream);
+			config old_cfg;
+			filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
+			read(old_cfg, *old_stream);
+
+			// when both files have the same attribute, use the one from whichever was most recently modified
+			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
+			for(const config::attribute& val : old_cfg.attribute_range()) {
+				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
+					preferences::set(val.first, val.second);
+				}
+			}
+
+			// don't touch child tags
+
+			preferences::write_preferences();
+		}
+	}
+}
+
+void migrate_version_selection::migrate_credentials(const std::string& migrate_credentials_file)
+{
+	// don't touch the credentials file on migrator re-run if it already exists
+	if(migrate_credentials_file != filesystem::get_credentials_file() && filesystem::file_exists(migrate_credentials_file) && !filesystem::file_exists(filesystem::get_credentials_file())) {
+		filesystem::copy_file(migrate_credentials_file, filesystem::get_credentials_file());
+	}
+}
+
 } // namespace gui2::dialogs

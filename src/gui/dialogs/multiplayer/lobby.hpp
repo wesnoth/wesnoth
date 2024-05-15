@@ -15,13 +15,11 @@
 
 #pragma once
 
-#include "chat_events.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/lobby_player_list_helper.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
-#include "gui/widgets/tree_view.hpp"
 #include "quit_confirmation.hpp"
 
 class wesnothd_connection;

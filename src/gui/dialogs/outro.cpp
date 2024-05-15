@@ -21,12 +21,18 @@
 #include "formula/variant.hpp"
 #include "game_classification.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include <cmath>
+
+namespace
+{
+
+// How long text fading should take - currently a hardcoded value.
+const unsigned FADE_DURATION_MS = 500;
+
+} // end unnamed namespace
 
 namespace gui2::dialogs
 {
@@ -38,7 +44,8 @@ outro::outro(const game_classification& info)
 	, current_text_()
 	, text_index_(0)
 	, duration_(info.end_text_duration)
-	, fade_step_(0)
+	, fade_alpha_(0)
+	, fade_start_(0)
 	, fading_in_(true)
 	, timer_id_(0)
 {
@@ -105,16 +112,18 @@ void outro::update()
 		return;
 	}
 
-	/* If we've faded fully in...
-	 *
-	 * NOTE: we want fading to take around half a second. Given this function runs about every 3 frames, we
-	 * limit ourselves to a reasonable 10 fade steps with an alpha difference (rounded up) of 25.5 each cycle.
-	 * The actual calculation for alpha is done in the window definition in WFL.
-	 */
-	if(fading_in_ && fade_step_ > 10) {
+	if(fade_start_ == 0) {
+		fade_start_ = SDL_GetTicks();
+	}
+
+	// If we've faded fully in...
+	if(fading_in_ && fade_alpha_ >= 255) {
 		// Schedule the fadeout after the provided delay.
 		if(timer_id_ == 0) {
-			timer_id_ = add_timer(duration_, [this](std::size_t) { fading_in_ = false; });
+			timer_id_ = add_timer(duration_, [this](std::size_t) {
+				fading_in_ = false;
+				fade_start_ = 0;
+			});
 		}
 
 		return;
@@ -123,7 +132,7 @@ void outro::update()
 	canvas& window_canvas = window::get_canvas(0);
 
 	// If we've faded fully out...
-	if(!fading_in_ && fade_step_ < 0) {
+	if(!fading_in_ && fade_alpha_ == 0) {
 		// ...and we've just showed the last text bit, close the window.
 		text_index_++;
 		if(text_index_ >= text_.size()) {
@@ -136,20 +145,31 @@ void outro::update()
 		window_canvas.set_variable("outro_text", wfl::variant(current_text_));
 
 		fading_in_ = true;
-		fade_step_ = 0;
 
 		remove_timer(timer_id_);
 		timer_id_ = 0;
+
+		fade_start_ = SDL_GetTicks();
 	}
 
-	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
+	window_canvas.set_variable("fade_alpha", wfl::variant(fade_alpha_));
 	window_canvas.update_size_variables();
 	queue_redraw();
 
-	if(fading_in_) {
-		fade_step_++;
-	} else {
-		fade_step_--;
+	auto current_ticks = SDL_GetTicks();
+
+	if(fade_start_ > current_ticks) {
+		// 32-bit ticks counter wraps around after about 49 days, the 64-bit version
+		// requires SDL 2.0.18+. Just restart the counter in the worst case and let
+		// the player deal with the sheer ridiculousness of their predicament.
+		fade_start_ = current_ticks;
+	}
+
+	fade_alpha_ = std::clamp<int>(
+		std::round(255.0 * double(current_ticks - fade_start_) / double(FADE_DURATION_MS)),
+		0, 255);
+	if(!fading_in_) {
+		fade_alpha_ = 255 - fade_alpha_;
 	}
 }
 

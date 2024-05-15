@@ -18,7 +18,6 @@
 #include "events.hpp"
 #include "gui/core/top_level_drawable.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 
 #include <string>
 

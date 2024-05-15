@@ -17,7 +17,6 @@
 
 #include "formula/function.hpp"
 
-#include <set>
 
 namespace ai {
 	class formula_ai;

@@ -5,17 +5,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# h22, 2021
-# RatArmy, 2022
+# RatArmy, 2024
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-20 19:57-0600\n"
-"PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: RatArmy, 2022\n"
+"POT-Creation-Date: 2024-04-10 12:05-0500\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -201,7 +200,7 @@ msgstr ""
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
@@ -209,7 +208,7 @@ msgstr "瞬間移動"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -232,7 +231,7 @@ msgstr "奇襲"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:387
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "摂食"
 
@@ -259,7 +258,7 @@ msgstr "洞窟"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "潜伏"
 
@@ -297,7 +296,7 @@ msgstr "キノコの森"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "隠密"
 
@@ -738,41 +737,24 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "エディタの地形オーバーレイグラフィック"
+msgstr "地形エレベーショングラフィック"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"一般的には、エディタとゲーム中でのマップの見た目は同じになるはずです。しかし"
-"いくつかの例外があり、それらはエディタ上では異なる見た目で表示されます。それ"
-"らはオーバーレイと呼ばれ、地形パレットだと「特殊地形」グループに分類されてい"
-"ます。"
+"エディタ上でのエレベーションエフェクトの見た目は、編集の補助のためゲーム中と"
+"は少し異なります。ここに記載のあるすべてのオーバーレイは地形パレットの「エレ"
+"ベーション」グループで見つけることができます。"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:175
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='上級編'</bold>"
+msgstr "<bold>text='ダイレクトオーバーレイ'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
@@ -784,24 +766,20 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"絶壁、峡谷や、類似のバリエーションたちは通常の地形オーバーレイと非常に似通っ"
+"ており、同様の方法で使用することができます。しかし、マップのより広い領域で"
+"は、をこのオーバーレイだけでなくほかの地形オーバーレイも使いたくなるかもしれ"
+"ません。その場合は次のセクションで記載する「マーカー」を組み合わせましょう。"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='上級編'</bold>"
+msgstr "<bold>text='エレベーションの塗り潰し'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "上昇のエレベーションを示すマップ上のマーカー"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
@@ -820,6 +798,16 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"上昇のエレベーションを示すエディタパレットのアイコン\n"
+"\n"
+"木などの他のオーバーレイ地形を適用しつつ地形の一部を上昇または下降させるに"
+"は、マーカーを使用する必要があるでしょう。これらの矢印のうち 1 つをマップに設"
+"置すると、マップは半透明のもやで塗り潰されます（矢印やもやは実際のゲーム中で"
+"は表示されません）。\n"
+"\n"
+"上昇マーカーと下降マーカーはそれぞれ 2 種類が存在し、これらによって高さを 5 "
+"段階（最低、低い、通常、高い、最高）で調節できます。ただし、隣り合った領域の"
+"高低差は崖の大きさに影響しません。\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:192
@@ -841,6 +829,20 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"<bold>text='使い方'</bold>\n"
+"\n"
+"矢印マーカー自体はそれほど役には立ちませんが、それによって塗り潰されたエリア"
+"では絶壁や峡谷タイプの地形を使用できます。\n"
+"\n"
+"下記は使用例です：\n"
+"1. エディタパレットで絶壁（^Qhh）を選び、シングルへクスペイントツールで空っぽ"
+"の草原のマップの中に大きな塊の外枠を描く。\n"
+"2. 上昇マーカー（^_mh）の矢印を塊の内側のタイル（絶壁で描いた境界線ではない）"
+"に置く。\n"
+"3. 塊が隆起する。マーカーや絶壁のオーバーレイで上書きしない限りは、他の地形"
+"オーバーレイの追加も可能となる。\n"
+"\n"
+"棚の境界線を描画するグラフィックはベース地形によって決まります。\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:203
@@ -850,6 +852,9 @@ msgid ""
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='UMC 作者へのメモ：塗り潰したタイルの地形コードやその他のプロパ"
+"ティは変化しないため、エレベーションした場所をフィルタリングするのは簡単では"
+"ありません。' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:208
@@ -1074,10 +1079,8 @@ msgstr ""
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:319
-#, fuzzy
-#| msgid "Using Add-ons"
 msgid "Change Add-on ID"
-msgstr "アドオンの使い方"
+msgstr "アドオン ID の変更"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
@@ -1086,11 +1089,14 @@ msgid ""
 "in. This will only rename that folder and update any references to it in the "
 "_main.cfg file. Any other place will need to be updated manually."
 msgstr ""
+"アドオンの ID、すなわちアドオンのフォルダの名称を変更できます。この機能はフォ"
+"ルダ名をリネームし _main.cfg ファイル内の参照を更新するだけです。他の部分に関"
+"しては手動で更新する必要があります。"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:329
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "アドオン公開エディタ"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:330
@@ -1099,6 +1105,9 @@ msgid ""
 "publishing an add-on to the add-ons server for other players to download. "
 "The Validate button will check whether all required fields have valid values."
 msgstr ""
+"アドオンをアドオンサーバーに公開し他のプレイヤーからダウンロードできるように"
+"するために必要となる、_server.pbl ファイルのセットアップができます。「検証」"
+"ボタンですべての入力欄に有効な値が入っているかチェックできます。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:338
@@ -1107,36 +1116,6 @@ msgstr "マップ・シナリオエディタ"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -1168,10 +1147,10 @@ msgid ""
 "text='playlist manager'</ref> for the music."
 msgstr ""
 "Wesnoth のマップ・シナリオエディタによってシナリオの舞台となるマップの作成と"
-"編集を行えます。また、基本的なシナリオをセットアップするための一部の機能も備"
-"えています。\n"
+"編集を行えます。また、基本的なシナリオをセットアップするための一部の機能と、"
+"シナリオの配布に必要となるアドオンの初期化機能を備えています。\n"
 "\n"
-"タイトルスクリーンの<italic>text='マップエディタ'</italic> オプションから起動"
+"エディタはタイトルスクリーンの<italic>text='マップエディタ'</italic>から起動"
 "できます。\n"
 "\n"
 "<header>text='エディタモード'</header>\n"
@@ -1179,20 +1158,20 @@ msgstr ""
 "エディタには地形モードとシナリオモードの２つの操作モードがあります。\n"
 "\n"
 "<ref>dst='..editor_mode_terrain' text='地形モード'</ref>はシンプルなペイント"
-"アプリケーションに似ており、 <ref>dst='editor_tool_paint' text='ペイント'</"
+"アプリケーションに似ており、<ref>dst='editor_tool_paint' text='ペイント'</"
 "ref>、<ref>dst='editor_tool_fill' text='塗り潰し'</ref>、"
 "<ref>dst='editor_tool_select' text='選択（とコピー）'</ref>、"
 "<ref>dst='editor_tool_paste' text='貼り付け'</ref>ツールを備えています。ま"
-"た、リーダーの <ref>dst='editor_tool_starting' text='開始地点'</ref>を設定す"
-"るツールも備えています。\n"
+"た、リーダーの<ref>dst='editor_tool_starting' text='開始地点'</ref>を設定する"
+"ツールも備えています。\n"
 "\n"
 "<ref>dst='..editor_mode_scenario' text='シナリオモード'</ref>では、地形モード"
 "で使用できるツールに加えて、<ref>dst='editor_tool_label' text='ラベル'</"
 "ref>、<ref>dst='editor_tool_scenery' text='舞台装置'</ref>、リーダーを含めた"
 "<ref>dst='editor_tool_unit' text='ユニット'</ref>の追加をサポートし、シナリオ"
 "開始時の<ref>dst='editor_tool_village' text='村の所有権'</ref>を割り当てるこ"
-"ともできます。. また、BGM用の<ref>dst='editor_playlist' text='プレイリストマ"
-"ネージャー'</ref> も利用できます."
+"ともできます。また、BGM用の<ref>dst='editor_playlist' text='プレイリストマ"
+"ネージャー'</ref>も利用できます。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:351
@@ -1205,6 +1184,12 @@ msgid ""
 "scenario mode is required in order for your maps to be selectable during "
 "game creation."
 msgstr ""
+"どちらのモードでも、シナリオ作成のために使用するアドオンを選択するかどうか尋"
+"ねられます。選択する対象は既存のアドオンと新規のアドオンのどちらでも可能で"
+"す。新規のアドオンを選択した場合、アドオンに必要なすべてのファイルとフォルダ"
+"が自動作成され、デフォルトの ID が割り当てられます。既存のマップファイルを編"
+"集している場合でなければ、ゲーム作成時にマップを選択できるようにするにはシナ"
+"リオモードを使用する必要があります。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:353
@@ -1334,22 +1319,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:402
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenario mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1366,18 +1335,16 @@ msgid ""
 msgstr ""
 "<header>text='.mapファイルと.cfgファイル'</header>\n"
 "\n"
-"マップエディタは .map （地形モード）か .cfg （シナリオモード）のいずれかの"
-"ファイルを保存します。シナリオモードでは、地形マップは .cfg ファイルの内部に"
-"保存されるため、 .map ファイルが別に生成されることはありません。地形モードで"
-"編集を始めた後にシナリオモードに切り替えた場合には古い .map ファイルが残って"
-"いるかもしれませんが、シナリオエディタによってそのファイルが更新されることは"
-"ありません。\n"
+"マップエディタは地形モードでは 1 つのファイル（.map）、シナリオモードでは 2 "
+"つのファイル（.map と .cfg）を保存します。\n"
 "\n"
 ".cfg ファイルの読み込みはその中身によって異なる結果をもたらします。シナリオエ"
 "ディタで作成された .cfg ファイルであれば、 .cfg ファイルがシナリオエディタに"
-"よって開かれます。しかし、別の .map ファイルを使用する .cfgファイルの場合（シ"
-"ナリオエディタがこのタイプを生成することはありません）は、エディタは .cfg "
-"ファイルの内部のリンクを辿って .map ファイルを地形モードで開きます。"
+"よって開かれます。\n"
+"しかし、シナリオエディタによって開けない .cfg ファイルの場合、エディタはその"
+"シナリオのマップデータを探し、まるでファイルセレクタで .map ファイルを選択し"
+"たときのようにその .map ファイルを地形のみのモードで 開こうとします。このよう"
+"な場合はかわりに .map ファイルを直接読み込むことをおすすめします。"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:414
@@ -1417,6 +1384,32 @@ msgid ""
 "  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
 "the additional cfg file"
 msgstr ""
+"シナリオエディタが .cfg ファイルを読み込む時、もともとそのファイルがシナリオ"
+"エディタで作成されたものであれば問題ありませんが、手作業で作成されたファイル"
+"であれば失敗してしまうかもしれません。\n"
+"\n"
+"WML ファイル（拡張子は .cfg）を分割して作成し、WML プリプロセッサでエディタで"
+"作成したファイルを読み込むようにするのも 1 つの手です。この分割されたファイル"
+"は、[scenario] タグとイベントなどの手作業で編集した WML の両方を含みます。こ"
+"のワークフローによって、アドオンファイルの構造は下記のようになるでしょう：\n"
+"\n"
+"<header>text='例'</header>\n"
+"アドオンが 1.18 以降のバージョンのみで使用される場合は、追加の WML を含む ."
+"cfg ファイルを読み込む際には新しくできた include_file 属性をかわりに使用する"
+"ことを推奨します。\n"
+"\n"
+"• _main.cfg：\n"
+"  ◦ 「[binary_path]」を使用してアドオンのディレクトリをバイナリパスに追加し、"
+"「map_file」が「maps」ディレクトリを検索可能とする\n"
+"• maps/first.map\n"
+"  ◦ シナリオモードのシナリオエディタによって作成されるマップファイル \n"
+"• scenarios/other.cfg\n"
+"  ◦ シナリオエディタで解釈できないものすべてを含む .cfg ファイル\n"
+"• scenarios/first.cfg\n"
+"  ◦ [scenario] 要素の内部で「map_file=\"first.map\"」を使用してマップファイル"
+"を読み込む\n"
+"  ◦ [scenario] 要素の内部で「include_file=\"other.cfg\"」を使用して追加の "
+"cfg ファイルを読み込む"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:438
@@ -1608,16 +1601,6 @@ msgstr ""
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:504
-#, fuzzy
-#| msgid ""
-#| "<header>text='Files created by the Scenario Editor'</header>\n"
-#| "\n"
-#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
-#| "map data. When loading a .cfg file, the scenario editor understands files "
-#| "created by the scenario editor itself, but is likely to have difficulty "
-#| "with files that have been edited by hand; problems can be avoided by "
-#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
-#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1631,12 +1614,13 @@ msgid ""
 msgstr ""
 "<header>text='シナリオエディタで作成されたファイル'</header>\n"
 "\n"
-"シナリオモードでは .cfg ファイルにマップデータを埋め込んだ形式で保存します。"
-"シナリオエディタは、もともとシナリオエディタで作成された .cfg ファイルを読み"
-"込むことはできますが、シナリオエディタ以外で編集されたファイルは正常に読み込"
-"めない場合があります。その手の問題は手動で編集した箇所の"
+"シナリオモードでは、エディタはシナリオデータを .cfg ファイル、マップデータ"
+"を .map ファイルに分割して保存します。そしてそのシナリオは .map ファイルを "
+"map_file によって参照します。シナリオエディタが .cfg ファイルを読み込む時、シ"
+"ナリオエディタによって作成されたファイルを解釈することはできますが、手作業で"
+"編集されたファイルでは失敗するかもしれません。手作業で編集する部分に関して"
 "<ref>dst='editor_separate_events_file' text='.cfg ファイルを分割'</ref>するこ"
-"とで回避できます。"
+"とによってこの問題を回避できます。"
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2229,8 +2213,8 @@ msgstr "ゲームの遊び方"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:500
 msgid "Traits"
 msgstr "特性"
 
@@ -4619,32 +4603,6 @@ msgstr "アドオンのインストール"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the search box, separated by spaces. You can also sort the add-on list "
-#| "by clicking the column headers. It is also possible to choose to only "
-#| "display add-ons of specific categories by clicking on the "
-#| "<bold>text='Type'</bold> dropdown.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "If the window is too small to show them inline, the <bold>text='Addon "
-#| "Details'</bold> button provides you with additional details about the add-"
-#| "on, such as its full description, installation status, and available "
-#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4669,15 +4627,14 @@ msgid ""
 "description, installation status, and available translations."
 msgstr ""
 "ユーザ製のアドオンはメインメニューの<italic>text='アドオン'</italic>から取"
-"得・更新を行うことができます。\n"
-"アドオンサーバー (デフォルトでは<italic>text='add-ons.wesnoth.org'</italic>) "
-"に接続すると、サーバー上に存在するダウンロード可能なアドオンのリストが表示さ"
-"れます。\n"
+"得・更新を行うことができます。アドオンサーバー（デフォルトでは"
+"<italic>text='add-ons.wesnoth.org'</italic>）に接続すると、サーバー上に存在す"
+"るダウンロード可能なアドオンのリストが表示されます。\n"
 "\n"
 "アドオンのインストール状況はそれぞれのエントリに表示されます。サーバー上の"
 "<italic>text='更新有り'</italic>か<italic>text='旧バージョン'</italic>のアド"
-"オンは、インストール済みか公開済みのバージョンが<italic>text='バージョン'</"
-"italic>カラムに表示されます。\n"
+"オンは、インストール済みおよび公開済みのバージョンが<italic>text='バージョ"
+"ン'</italic>カラムに表示されます。\n"
 "\n"
 "アドオンをキーワードで検索したければ、検索ボックスに適切な単語をスペースで区"
 "切って入力して下さい。また、カラムヘッダをクリックすることでアドオンリストを"
@@ -4685,10 +4642,10 @@ msgstr ""
 "<bold>text='種類'</bold>ドロップダウンをクリックして下さい。\n"
 "\n"
 "アドオンをインストールしたいなら、リストからそのアドオンを選択してから"
-"<bold>text='＋'</bold>ボタンを押すか、アドオンのタイトルをダブルクリックして"
-"下さい。ウィンドウが小さすぎて１行で表示できない場合は、<bold>text='アドオン"
-"の詳細'</bold>ボタンを押すとアドオンの情報 (解説、インストール状況、利用でき"
-"る翻訳) を詳しく見ることができます。"
+"<bold>text='＋'</bold>アイコンを押すか、アドオンのタイトルをダブルクリックし"
+"て下さい。ウィンドウが小さすぎて１行で表示できない場合は、<bold>text='アドオ"
+"ンの詳細'</bold>ボタンを押すとアドオンの情報（解説、インストール状況、利用で"
+"きる翻訳）を詳しく見ることができます。"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:662
@@ -4726,29 +4683,19 @@ msgstr "一般的なコマンド"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
-#, fuzzy
-#| msgid ""
-#| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with "
-#| "'/' (press 'm' first to open the chat line).\n"
-#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
 "‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
-"これらのコマンドは「:」を押してコマンドラインを出すか、チャット欄に「/」を打"
-"つことで実行できます (チャット欄は「m」で開けます) 。\n"
+"これらのコマンドは（ここに記載された通り）頭に「:」をつけてコマンドライン経由"
+"で発行するか、チャット欄の頭に「/」をつけて発行できます（チャット欄は「m」で"
+"開けます）。\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Similar to the 'fps' command, but also forces everything to redraw "
-#| "instead of only things that have changed.\n"
-#| "\n"
 msgid ""
 "\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
@@ -5275,11 +5222,6 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| "If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit diverts the target's attention and reduces "
-#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
@@ -5376,17 +5318,17 @@ msgstr ""
 "ニットは、残りの移動力を全て失います。"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr "堀潜"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:306
+#: data/core/macros/abilities.cfg:307
 msgid "female^burrow"
 msgstr "堀潜"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:307
+#: data/core/macros/abilities.cfg:308
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5403,7 +5345,7 @@ msgstr ""
 "ニットを初めて発見したユニットは、例外なく直ちに残りの移動力を全て失います。"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:330
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5418,21 +5360,12 @@ msgstr ""
 "失います。"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "潜伏"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:348
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in a village, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
+#: data/core/macros/abilities.cfg:350
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5441,25 +5374,25 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"このユニットは村（水域の村は除く）に隠れることができます。隠れている間は敵に"
-"は見つからず、そのユニットの隣に来るまでは気づくことすらできません。\n"
+"このユニットは村に隠れることができます。隠れている間は敵には見つからず、その"
+"ユニットの隣に来るまでは気づくことすらできません。\n"
 "\n"
 "このユニットが村にいる間は、敵からは不可視になります。ただし、隣に敵ユニット"
-"がいる場合は無効となります。潜伏ユニットを見つけた敵ユニットは、そのターン中"
+"がいる場合は無効となります。このユニットを見つけた敵ユニットは、そのターン中"
 "の残り移動力を全て失います。"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:366
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "潜水"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:367
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
 msgstr "潜水"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:368
+#: data/core/macros/abilities.cfg:370
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5474,12 +5407,12 @@ msgstr ""
 "は残りの移動力を全て失います。"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:388
+#: data/core/macros/abilities.cfg:390
 msgid "female^feeding"
 msgstr "摂食"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -5818,16 +5751,12 @@ msgstr ""
 "りは。"
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| "Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-" 疫病で命を落とした敵は、死者としてよみがえるでしょう。村の上に立っていない限"
-"りは。"
+" 村の上に立っていない限り、とある自然の恐怖によって命を落とした敵は急速に成長"
+"する幼虫の栄養となります。"
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -5909,6 +5838,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"特記事項（1.14 スタイルのため、重複を防ぐため新しいリスト形式に更新してくださ"
+"い）："
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6497,10 +6428,6 @@ msgstr "受流"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used defensively, this attack reduces the opponent's chance to hit "
-#| "by 10%."
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -6611,7 +6538,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "スタン"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6619,23 +6546,20 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"この攻撃はその強烈さによって敵をひるませ、支配領域（ZOC）が維持できなくなりま"
+"す。この効果は敵の次のターンには解除されます。"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-" このユニットは敵を遅くすることができ、敵のターンが終わるまでの間、敵の移動速"
-"度と攻撃ダメージを半減させることができます。"
+"このユニットは敵をスタンさせることができ、その支配領域（ZOC）を妨害します。"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "秘術"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
@@ -6643,6 +6567,8 @@ msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"この攻撃のダメージ型は秘術としても扱います。ただし、秘術への耐性によって悪影"
+"響を受けることはありません。"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
@@ -6650,6 +6576,8 @@ msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"このユニットは秘術のダメージ型を扱うことができ、敵が秘術を弱点とする場合に武"
+"器に適用されます。"
 
 #: data/core/units.cfg:4
 msgid ""
@@ -6722,73 +6650,6 @@ msgstr "ドレーク"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains into ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — dominant who rules the society with an iron fist. Every "
-#| "drake is expected to earn their place in the strict hierarchy, to obey "
-#| "their superiors and command their inferiors. Entry to the ruling elite is "
-#| "only possible through challenging and defeating a superior in single "
-#| "combat, which is the way the hierarchy within the elite itself is "
-#| "established. The use of deception of any kind towards any fellow drake "
-#| "is, without exception, seen as cowardly and unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
-#| "armor- and weapon-smithing, but neither know nor need other science and "
-#| "culture besides this. Nonetheless, the few implements they do fashion are "
-#| "almost unrivaled in quality, only matched by those produced in the finest "
-#| "Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-#| "Death in battle is the most preferred way for a drake to leave this "
-#| "world. Unlike the elder members of other races, drakes naturally grow "
-#| "more aggressive and reckless towards the ends of their natural lives, "
-#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6859,8 +6720,8 @@ msgstr ""
 "有しており、長距離を素早く旅することができます。しかし、重い体重と巨大な体が"
 "飛行能力を制限しており、空中では少し不格好になります。ドレークは丘や山、森林"
 "を高度とスピードを得るための離着陸点として活用します。ドレークの敵にとっては"
-"幸いなことに、ドレークは不器用で、戦闘時には素早く動くことはできません。その"
-"体の大きさも相まって、ドレークたちは大きな的となってしまいます。\n"
+"幸いなことに、その体の大きさも相まってドレークたちは大きな的となってしまいま"
+"す。\n"
 "\n"
 "ドレークは本質的には魔法生物であり、体内の神秘的な炎が命を保っています。戦死"
 "したドレークを見ればこのことは簡単に確認できます。ドレークが死ぬ時には体内の"
@@ -6889,10 +6750,9 @@ msgstr ""
 "良い品であり、それに比肩するのはドワーフの鍛造所で作られた最高の品だけで"
 "す。\n"
 "\n"
-"ドレークは卵から孵化し、通常20〜30年生きます。ドレークは戦死こそがもっとも良"
-"い死に方だと考えています。他の種族の長老たちとは違い、ドレークは歳をとるほど"
-"より攻撃的に、無謀になっていきます。おそらく、英雄たちの伝説の中に自らの名前"
-"を刻もうとしているのでしょう。\n"
+"ドレークは卵から孵化し数十年生きますが、一部はより長く生存することが知られて"
+"います。しかし、ドレークは戦死こそがもっとも良い死に方だと考えています。その"
+"ため、多くのドレークは生物としての寿命を迎える前にその人生を終えます。\n"
 "\n"
 "<header>text='地理'</header>\n"
 "ドレークは<ref>dst='great_ocean' text='大洋'</ref>にある<ref>dst='morogor' "
@@ -7931,24 +7791,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "ドワーフ"
+msgstr "カラス"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "ドレーク族"
+msgstr "カラス"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "ドワーフ"
+msgstr "カラス"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -7969,6 +7823,19 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"カラス（Raven）は一般的な腐肉食動物で、獲物のお零れをもらうためにしばしば狩人"
+"や肉食動物に強力します。グリフォンや猛禽類のような強力な嘴や鉤爪はカラスには"
+"ありませんが、その知性とアドバンテージの認識能力は脅威となります。\n"
+"\n"
+"戦乱の後に死体や負傷者はカラスの獲物となり、敗者の陣営にとってはカラスはやっ"
+"かいな存在となりますが、一部の勝者はカラスを戦場の栄典とみなします。この観点"
+"から暴力と物量を特徴とするオークと人間はカラスと継続的な共生関係を持っていま"
+"す。そのため、カラスは戦争に関するおとぎ話、たとえ話や迷信にキャラクターとし"
+"て登場します。\n"
+"\n"
+"知的な腐肉食動物であるため、カラスは戦場を生き延びる必要はありません。一部の"
+"農家は植えた作物からカラスを追い払おうと足掻いていますが、他のものたちは衛兵"
+"の周囲にいるカラスを見つけると喜びます。"
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
@@ -8250,48 +8117,46 @@ msgstr "最大 HP +1"
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "スタン：このユニットはスタンされています。ZOC は無効です。"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "アンデッド"
+msgstr "スタン"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "スタン"
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "閉じる"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "ヘルプ"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:263 src/help/help.cpp:267
 msgid "Parse error when parsing help text:"
 msgstr "ヘルプテキストをパース中にエラーが発生しました："
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr "次のうち良い方："
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr "次のうち悪い方："
 
-#: src/help/help_topic_generators.cpp:161
+#: src/help/help_topic_generators.cpp:160
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr "村に留まる限りユニットは回復または解毒されます。"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8302,14 +8167,14 @@ msgstr[0] ""
 "この地形は村と同様にユニットを滞在させることでHPを $amount 回復するか解毒を行"
 "えます。"
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:172
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr "この地形は城です。繋がっている主塔から城の上にユニットを雇用できます。"
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:176
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -8318,7 +8183,7 @@ msgstr ""
 "す。"
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:179
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -8326,325 +8191,172 @@ msgstr ""
 "この少々変わった主塔の上にいる間リーダーは雇用を行えますが、この主塔に繋がっ"
 "ている別の主塔からこのヘクス上にユニットを雇用することはできません。"
 
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
+#: src/help/help_topic_generators.cpp:183
+#: src/help/help_topic_generators.cpp:603
 msgid "Special Notes:"
 msgstr "特記事項："
 
-#: src/help/help_topic_generators.cpp:193
+#: src/help/help_topic_generators.cpp:192
 msgid "Base Terrain: "
 msgstr "ベース地形："
 
-#: src/help/help_topic_generators.cpp:213
+#: src/help/help_topic_generators.cpp:212
 msgid "Movement properties: "
 msgstr "移動特性："
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:216
 msgid "Defense properties: "
 msgstr "回避特性："
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:296
 msgid "Level"
 msgstr "レベル"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
 msgstr "レベルアップ元："
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:362
 msgid "Advances to: "
 msgstr "レベルアップ先："
 
-#: src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:391
 msgid "Base unit: "
 msgstr "ベースユニット："
 
-#: src/help/help_topic_generators.cpp:393
+#: src/help/help_topic_generators.cpp:396
 msgid "Base units: "
 msgstr "ベースユニット："
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:414
 msgid "Variations: "
 msgstr "バリエーション："
 
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:438
 msgid "race^Miscellaneous"
 msgstr "その他"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:440
 msgid "Race: "
 msgstr "種族："
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:510
 msgid "Abilities: "
 msgstr "能力："
 
-#: src/help/help_topic_generators.cpp:533
+#: src/help/help_topic_generators.cpp:536
 msgid "Ability Upgrades: "
 msgstr "能力のアップグレード："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:566
 msgid "HP:"
 msgstr "HP："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:570
 msgid "Moves:"
 msgstr "移動力："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:575
 msgid "Vision:"
 msgstr "視界："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:581
 msgid "Jamming:"
 msgstr "ジャミング："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:586
 msgid "Cost:"
 msgstr "コスト: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:590
 msgid "Alignment:"
 msgstr "アラインメント："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
+#: src/help/help_topic_generators.cpp:597
 msgid "Required XP:"
 msgstr "必要 XP："
 
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:615
 msgid "unit help^Attacks"
 msgstr "攻撃"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "unit help^Name"
 msgstr "名前"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Strikes"
 msgstr "攻撃回数"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Range"
 msgstr "射程"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:625
 msgid "Type"
 msgstr "種類"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:626
 msgid "Special"
 msgstr "特殊"
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:701
 msgid "Resistances"
 msgstr "耐性"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:705
 msgid "Attack Type"
 msgstr "ダメージ型"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistance"
 msgstr "耐性"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:736
 msgid "Terrain Modifiers"
 msgstr "地形効果"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:740
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:741
 msgid "Defense"
 msgstr "回避"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:742
 msgid "Movement Cost"
 msgstr "移動コスト"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense Cap"
 msgstr "上限回避率"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
 msgstr "視界コスト"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:755
 msgid "Jamming Cost"
 msgstr "ジャミングコスト"
-
-#, fuzzy
-#~| msgid "first strike"
-#~ msgid "first verse"
-#~ msgstr "先制"
-
-#, fuzzy
-#~| msgid "Second Dusk"
-#~ msgid "second verse"
-#~ msgstr "二度目の夕暮れ"
-
-#~ msgid ""
-#~ "When loading a .cfg file, the scenario editor understands files created "
-#~ "by the scenario editor, but is likely to have difficulty with files that "
-#~ "have been edited by hand.\n"
-#~ "\n"
-#~ "Files created by the scenario editor omit the opening [scenario] and "
-#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
-#~ "on), then those tags need to be added; there is more detail about this in "
-#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
-#~ "documentation.\n"
-#~ "\n"
-#~ "One workflow is to create a separate WML file, also with the .cfg "
-#~ "extension, which uses the WML preprocessor to include the editor-created "
-#~ "file. This separate file contains both the [scenario] tag and any hand-"
-#~ "edited WML such as events. With this workflow, the add-on’s file "
-#~ "structure could look like this:\n"
-#~ "\n"
-#~ "<header>text='For Wesnoth 1.14'</header>\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ this is the file created by the scenario editor\n"
-#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-#~ "these four lines:\n"
-#~ "  ◦ [scenario]\n"
-#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-#~ "  ◦ [/scenario]\n"
-#~ "  ◦ [+scenario]\n"
-#~ "\n"
-#~ "The first three of those lines insert the scenario-generated file inside "
-#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
-#~ "tags will be combined, with attributes in the second one overriding "
-#~ "attributes in the first one.\n"
-#~ "\n"
-#~ "<header>text='1.16 and later'</header>\n"
-#~ "\n"
-#~ "If your add-on will only be used on 1.16 and later, there are new "
-#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
-#~ "on’s name within the .cfg files.\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-#~ "which makes “map_file” search the “maps” directory.\n"
-#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ this is the file created by the scenario editor\n"
-#~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-#~ "load that file"
-#~ msgstr ""
-#~ ".cfg ファイルを読み込むとき、シナリオエディタはそのファイルがシナリオエ"
-#~ "ディタによって作られたものであれば正常に読み込めますが、そうでない場合（人"
-#~ "の手が加わっている場合）には正常に読み込めないことがあります\n"
-#~ "\n"
-#~ "シナリオエディタで作成されたファイルは [scenario] 開始タグと [/scenario] "
-#~ "終了タグを含んでいません。キャンペーン（またはその他のアドオン）を作る場"
-#~ "合、それらのタグは必要となります。詳細は<ref>dst='editor_map_format' "
-#~ "text='マップファイルフォーマット'</ref>に記載されています。 \n"
-#~ "\n"
-#~ "エディタで作成したファイルを WML プリプロセッサを使って読み込む、分割され"
-#~ "た WML ファイル（.cfg）を作ることがワークフローの１つとなります。 この分割"
-#~ "されたファイルは [scenario] タグとイベントなどの手製の WML  の両方を含みま"
-#~ "す。このワークフローによって、アドオンのファイル構造は次のようになりま"
-#~ "す：\n"
-#~ "\n"
-#~ "<header>text='Wesnoth 1.14 向け'</header>\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ 「{./scenarios}」 によって「scenarios」ディレクトリを読み込みます。\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ シナリオエディタによって作成されるファイルです。\n"
-#~ "• scenarios/01_Forest.cfg、[scenario]開始タグのかわりに以下の4行を設置しま"
-#~ "す：\n"
-#~ "  ◦ [scenario]\n"
-#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-#~ "  ◦ [/scenario]\n"
-#~ "  ◦ [+scenario]\n"
-#~ "\n"
-#~ "最初の３行はシナリオエディタで生成されたファイルを [scenario] タグの内部に"
-#~ "挿入しています。4行目の「+」記号は2つの scenario タグを、最初のタグの属性"
-#~ "で後のタグの属性を上書きしつつ結合することを示します。\n"
-#~ "\n"
-#~ "<header>text='1.16 以降'</header>\n"
-#~ "\n"
-#~ "アドオンが 1.16 以降でのみ使用される場合は、map_file を使用して .cfg を読"
-#~ "み込む新しい機能が利用できます。また、 .cfg ファイル中にアドオン名を繰り返"
-#~ "し記述するのを避けることができます。\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ 「[binary_path]」によってアドオンのディレクトリをバイナリパスに追加す"
-#~ "ることで、 「map_file」が「maps」ディレクトリを検索できるようにします。\n"
-#~ "  ◦ 「{./scenarios}」によって「scenarios」ディレクトリを読み込みます。\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ シナリオエディタによって作成されたファイルです。\n"
-#~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ [scenario]要素の中に、「map_file=\"map_from_01.cfg\"」でファイルを読み"
-#~ "込みます。"
-
-#~ msgid ""
-#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
-#~ "\n"
-#~ "Files created by the scenario editor have the contents of a WML scenario "
-#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
-#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
-#~ "subfolder, the game will automatically try to load a scenario from it to "
-#~ "include in the “Custom Scenarios” list (files that fail to load are "
-#~ "ignored). In this folder each file is a separate item - files that fail "
-#~ "to parse as a scenario are ignored, and files must not contain the "
-#~ "[scenario][/scenario] tags.\n"
-#~ "\n"
-#~ "The opposite applies when a scenario is part of a campaign or other add-"
-#~ "on. Typically each scenario has its own .cfg file, however this is "
-#~ "unnecessary - all of the WML in an add-on will be combined by the "
-#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
-#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
-#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
-#~ "scenario."
-#~ msgstr ""
-#~ "<header>text='どのシナリオファイルが [scenario] タグを使用しているか'</"
-#~ "header>\n"
-#~ "\n"
-#~ "シナリオエディタで作成されたファイルは WML シナリオ要素を含みますが、"
-#~ "[scenario] 開始タグと [/scenario] 終了タグを含みません。ユーザーデータフォ"
-#~ "ルダの editor/scenarios サブフォルダの中にある各 .cfg ファイルについては、"
-#~ "ゲームは「カスタムシナリオ」一覧に自動的に読み込まれます（読み込みに失敗し"
-#~ "た場合は無視されます）。このフォルダでは各ファイルは独立したアイテムとな"
-#~ "り、シナリオとして読み込めないファイルは無視され、ファイルに[scenario][/"
-#~ "scenario] タグを含めてはいけません。\n"
-#~ "\n"
-#~ "キャンペーンや他のアドオンの一部となるシナリオはその逆が適用されます。一般"
-#~ "的にはシナリオは個別の .cfg ファイルを持ちますが、アドオンの中の WML ファ"
-#~ "イルはプリプロセッサによって結合されるため、ファイルが分割されているかどう"
-#~ "かは問題とはなりません。そのかわりに WML のどの箇所がシナリオとなっている"
-#~ "のかをエンジンが識別するために、[scenario]...[/scenario] （または "
-#~ "[multiplayer]...[/multiplayer]）タグが必要となります。"
-
-#~ msgid "Flat"
-#~ msgstr "平地"
-
-#~ msgid "Village"
-#~ msgstr "村"

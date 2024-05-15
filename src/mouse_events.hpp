@@ -26,7 +26,6 @@
 #include <vector>                       // for vector
 #include <SDL2/SDL_events.h>                 // for SDL_MouseButtonEvent
 
-class game_display;
 class battle_context;  // lines 23-23
 class play_controller;
 class team;
@@ -84,10 +83,12 @@ public:
 		const bool fire_event = true);
 
 	void move_action(bool browse) override;
+	void teleport_action();
 
 	void touch_action(const map_location hex, bool browse) override;
 
 	void select_or_action(bool browse);
+	void select_teleport();
 
 	/**
 	 * Uses SDL and @ref game_display::hex_clicked_on
@@ -193,6 +194,7 @@ private:
 	bool over_route_;
 	bool reachmap_invalid_;
 	bool show_partial_move_;
+	bool teleport_selected_;
 
 	static mouse_handler * singleton_;
 

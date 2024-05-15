@@ -21,7 +21,6 @@
 #include "game_config_manager.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "preferences/game.hpp"
 #include "scripting/plugins/context.hpp"

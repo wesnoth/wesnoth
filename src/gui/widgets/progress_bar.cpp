@@ -19,11 +19,8 @@
 
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
-#include "gettext.hpp"
 
-#include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -93,7 +90,7 @@ progress_bar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in progress_bar.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for progress bar")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("progress_bar_definition][resolution", "state_enabled")));
 }
 
 // }---------- BUILDER -----------{

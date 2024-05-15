@@ -17,11 +17,8 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
 #include "preferences/credentials.hpp"
-#include "preferences/general.hpp"
-#include "preferences/game.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

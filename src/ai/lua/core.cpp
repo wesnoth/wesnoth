@@ -19,24 +19,18 @@
  *
  */
 
-#include <cassert>
 #include <cstring>
 
 #include "ai/lua/core.hpp"
 #include "ai/composite/aspect.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/push_check.hpp"
 #include "ai/lua/lua_object.hpp" // (Nephro)
 
-#include "attack_prediction.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "terrain/translation.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "ai/actions.hpp"
@@ -44,7 +38,6 @@
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
 
-#include "lua/wrapper_lauxlib.h"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)

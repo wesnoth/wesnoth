@@ -170,11 +170,11 @@ void terrain_palette::setup_item(
 	texture& overlay_image,
 	std::stringstream& tooltip_text)
 {
-	const t_translation::terrain_code base_terrain = map().get_terrain_info(terrain).default_base();
+	const auto& info = map().get_terrain_info(terrain);
 
 	//Draw default base for overlay terrains
-	if(base_terrain != t_translation::NONE_TERRAIN) {
-		const std::string base_filename = map().get_terrain_info(base_terrain).editor_image();
+	if(info.has_default_base()) {
+		const std::string base_filename = info.editor_image();
 		base_image = image::get_texture(base_filename);
 
 		if(!base_image) {
@@ -188,7 +188,7 @@ void terrain_palette::setup_item(
 		}
 	}
 
-	const std::string filename = map().get_terrain_info(terrain).editor_image();
+	const std::string filename = info.editor_image();
 	overlay_image = image::get_texture(filename);
 	if(!overlay_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";

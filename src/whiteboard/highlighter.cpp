@@ -19,7 +19,6 @@
 
 #include <algorithm>
 #include <iterator>
-#include <functional>
 
 #include "whiteboard/highlighter.hpp"
 
@@ -30,16 +29,11 @@
 #include "whiteboard/recall.hpp"
 #include "whiteboard/recruit.hpp"
 #include "whiteboard/side_actions.hpp"
-#include "whiteboard/suppose_dead.hpp"
 #include "whiteboard/utility.hpp"
 
-#include "arrow.hpp"
-#include "config.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "game_errors.hpp"
-#include "play_controller.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"

@@ -15,7 +15,6 @@
 #pragma once
 
 class team;
-class config;
 #include <vector>
 #include <string>
 #include <set>

@@ -66,23 +66,6 @@
 
 #include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
-#include <boost/iostreams/categories.hpp>   // for input, output
-#include <boost/iostreams/copy.hpp>         // for copy
-#include <boost/iostreams/filter/bzip2.hpp> // for bzip2_compressor, etc
-
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4456)
-#pragma warning(disable : 4458)
-#endif
-
-#include <boost/iostreams/filter/gzip.hpp> // for gzip_compressor, etc
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
-#include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include <optional>
@@ -136,75 +119,6 @@ static void safe_exit(int res)
 {
 	LOG_GENERAL << "exiting with code " << res;
 	exit(res);
-}
-
-// maybe this should go in a util file somewhere?
-template<typename filter>
-static void encode(const std::string& input_file, const std::string& output_file)
-{
-	try {
-		std::ifstream ifile(input_file.c_str(), std::ios_base::in | std::ios_base::binary);
-		ifile.peek(); // We need to touch the stream to set the eof bit
-
-		if(!ifile.good()) {
-			PLAIN_LOG << "Input file " << input_file
-					  << " is not good for reading. Exiting to prevent bzip2 from segfaulting";
-			safe_exit(1);
-		}
-
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out | std::ios_base::binary);
-
-		boost::iostreams::filtering_stream<boost::iostreams::output> stream;
-		stream.push(filter());
-		stream.push(ofile);
-
-		boost::iostreams::copy(ifile, stream);
-		ifile.close();
-
-		safe_exit(remove(input_file.c_str()));
-	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "IO error: " << e.what();
-	}
-}
-
-template<typename filter>
-static void decode(const std::string& input_file, const std::string& output_file)
-{
-	try {
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out | std::ios_base::binary);
-		std::ifstream ifile(input_file.c_str(), std::ios_base::in | std::ios_base::binary);
-
-		boost::iostreams::filtering_stream<boost::iostreams::input> stream;
-		stream.push(filter());
-		stream.push(ifile);
-
-		boost::iostreams::copy(stream, ofile);
-		ifile.close();
-
-		safe_exit(remove(input_file.c_str()));
-	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "IO error: " << e.what();
-	}
-}
-
-static void gzip_encode(const std::string& input_file, const std::string& output_file)
-{
-	encode<boost::iostreams::gzip_compressor>(input_file, output_file);
-}
-
-static void gzip_decode(const std::string& input_file, const std::string& output_file)
-{
-	decode<boost::iostreams::gzip_decompressor>(input_file, output_file);
-}
-
-static void bzip2_encode(const std::string& input_file, const std::string& output_file)
-{
-	encode<boost::iostreams::bzip2_compressor>(input_file, output_file);
-}
-
-static void bzip2_decode(const std::string& input_file, const std::string& output_file)
-{
-	decode<boost::iostreams::bzip2_decompressor>(input_file, output_file);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -398,6 +312,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
+		PLAIN_LOG << "Starting with directory: '" << datadir << "'";
 #ifdef _WIN32
 		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
 		if(datadir.c_str()[1] == ':') {
@@ -409,9 +324,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			game_config::path = filesystem::get_cwd() + '/' + datadir;
 		}
 
+		PLAIN_LOG << "Now have with directory: '" << game_config::path << "'";
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(!cmdline_opts.nobanner) {
-			PLAIN_LOG << "Overriding data directory with " << game_config::path;
+			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 
 		if(!filesystem::is_directory(game_config::path)) {
@@ -438,40 +354,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.strict_lua) {
 		game_config::strict_lua = true;
-	}
-
-	if(cmdline_opts.gunzip) {
-		const std::string input_file(*cmdline_opts.gunzip);
-		if(!filesystem::is_gzip_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .gz file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 3);
-		gzip_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bunzip2) {
-		const std::string input_file(*cmdline_opts.bunzip2);
-		if(!filesystem::is_bzip2_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .bz2 file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 4);
-		bzip2_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.gzip) {
-		const std::string input_file(*cmdline_opts.gzip);
-		const std::string output_file(*cmdline_opts.gzip + ".gz");
-		gzip_encode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bzip2) {
-		const std::string input_file(*cmdline_opts.bzip2);
-		const std::string output_file(*cmdline_opts.bzip2 + ".bz2");
-		bzip2_encode(input_file, output_file);
 	}
 
 	if(cmdline_opts.help) {
@@ -1041,7 +923,7 @@ int main(int argc, char** argv)
 	// write_to_log_file means that writing to the log file will be done, if true.
 	// if false, output will be written to the terminal
 	// on windows, if wesnoth was not started from a console, then it will allocate one
-	bool write_to_log_file = true;
+	bool write_to_log_file = !getenv("WESNOTH_NO_LOG_FILE");
 	[[maybe_unused]]
 	bool no_con = false;
 
@@ -1075,8 +957,8 @@ int main(int argc, char** argv)
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> terminal_arg_switches = {
-			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
-			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
+			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image", "--screenshot",
+			"-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
@@ -1222,326 +1104,3 @@ int main(int argc, char** argv)
 
 	return 0;
 } // end main
-
-/**
- * @page GUIToolkitWML GUIToolkitWML
- * @tableofcontents
- *
- * @section State State
- *
- * A state contains the info what to do in a state. At the moment this is rather focussed on the drawing part, might change later. Keys:
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-------------
- * draw             | @ref guivartype_section "section"  |mandatory|Section with drawing directions for a canvas.
- *
- * @section WindowDefinition Window Definition
- *
- * A window defines how a window looks in the game.
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-------------
- * id               | @ref guivartype_string "string"    |mandatory|Unique id for this window.
- * description      | @ref guivartype_t_string "t_string"|mandatory|Unique translatable name for this window.
- * resolution       | @ref guivartype_section "section"  |mandatory|The definitions of the window in various resolutions.
- *
- * @section Cell Cell
- *
- * Every grid cell has some cell configuration values and one widget in the grid cell.
- * Here we describe the what is available more information about the usage can be found at @ref GUILayout.
- *
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * id                  | @ref guivartype_string "string"        |""       |A grid is a widget and can have an id. This isn't used that often, but is allowed.
- * linked_group        | @ref guivartype_string "string"        |0        |.
- *
- * @section RowValues Row Values
- *
- * For every row the following variables are available:
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * grow_factor         | @ref guivartype_unsigned "unsigned"    |0        |The grow factor for a row.
- *
- * @section CellValues Cell Values
- *
- * For every column the following variables are available:
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * grow_factor         | @ref guivartype_unsigned "unsigned"    |0        |The grow factor for a column, this value is only read for the first row.
- * border_size         | @ref guivartype_unsigned "unsigned"    |0        |The border size for this grid cell.
- * border              | @ref guivartype_border "border"        |""       |Where to place the border in this grid cell.
- * vertical_alignment  | @ref guivartype_v_align "v_align"      |""       |The vertical alignment of the widget in the grid cell. (This value is ignored if vertical_grow is true.)
- * horizontal_alignment| @ref guivartype_h_align "h_align"      |""       |The horizontal alignment of the widget in the grid cell.(This value is ignored if horizontal_grow is true.)
- * vertical_grow       | @ref guivartype_bool "bool"            |false    |Does the widget grow in vertical direction when the grid cell grows in the vertical direction. This is used if the grid cell is wider as the best width for the widget.
- * horizontal_grow     | @ref guivartype_bool "bool"            |false    |Does the widget grow in horizontal direction when the grid cell grows in the horizontal direction. This is used if the grid cell is higher as the best width for the widget.
- */
-
-/**
- * @page GUILayout GUILayout
- * @tableofcontents
- *
- * @section Abstract Abstract
- *
- * In the widget library the placement and sizes of elements is determined by
- * a grid. Therefore most widgets have no fixed size.
- *
- * @section Theory Theory
- *
- * We have two examples for the addon dialog, the first example the lower
- * buttons are in one grid, that means if the remove button gets wider
- * (due to translations) the connect button (4.1 - 2.2) will be aligned
- * to the left of the remove button. In the second example the connect
- * button will be partial underneath the remove button.
- *
- * A grid exists of x rows and y columns for all rows the number of columns
- * needs to be the same, there is no column (nor row) span. If spanning is
- * required place a nested grid to do so. In the examples every row has 1 column
- * but rows 3, 4 (and in the second 5) have a nested grid to add more elements
- * per row.
- *
- * In the grid every cell needs to have a widget, if no widget is wanted place
- * the special widget @a spacer. This is a non-visible item which normally
- * shouldn't have a size. It is possible to give a spacer a size as well but
- * that is discussed elsewhere.
- *
- * Every row and column has a @a grow_factor, since all columns in a grid are
- * aligned only the columns in the first row need to define their grow factor.
- * The grow factor is used to determine with the extra size available in a
- * dialog. The algorithm determines the extra size work like this:
- *
- * * determine the extra size
- * * determine the sum of the grow factors
- * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of items.
- * * divide the extra size with the sum of grow factors
- * * for every item multiply the grow factor with the division value
- *
- * eg:
- * * extra size 100
- * * grow factors 1, 1, 2, 1
- * * sum 5
- * * division 100 / 5 = 20
- * * extra sizes 20, 20, 40, 20
- *
- * Since we force the factors to 1 if all zero it's not possible to have non
- * growing cells. This can be solved by adding an extra cell with a spacer and a
- * grow factor of 1. This is used for the buttons in the examples.
- *
- * Every cell has a @a border_size and @a border the @a border_size is the
- * number of pixels in the cell which aren't available for the widget. This is
- * used to make sure the items in different cells aren't put side to side. With
- * @a border it can be determined which sides get the border. So a border is
- * either 0 or @a border_size.
- *
- * If the widget doesn't grow when there's more space available the alignment
- * determines where in the cell the widget is placed.
- *
- * @subsection AbstractExample Abstract Example
- *
- *  	|---------------------------------------|
- *  	| 1.1                                   |
- *  	|---------------------------------------|
- *  	| 2.1                                   |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 3.1 - 1.1          | 3.1 - 1.2    | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 4.1 - 1.1 | 4.1 - 1.2 | 4.1 - 1.3 | |
- *  	| |-----------------------------------| |
- *  	| | 4.1 - 2.1 | 4.1 - 2.2 | 4.1 - 2.3 | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *
- *
- *  	1.1       label : title
- *  	2.1       label : description
- *  	3.1 - 1.1 label : server
- *  	3.1 - 1.2 text box : server to connect to
- *  	4.1 - 1.1 spacer
- *  	4.1 - 1.2 spacer
- *  	4.1 - 1.3 button : remove addon
- *  	4.1 - 2.1 spacer
- *  	4.1 - 2.2 button : connect
- *  	4.1 - 2.3 button : cancel
- *
- *
- *  	|---------------------------------------|
- *  	| 1.1                                   |
- *  	|---------------------------------------|
- *  	| 2.1                                   |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 3.1 - 1.1          | 3.1 - 1.2    | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 4.1 - 1.1         | 4.1 - 1.2     | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 5.1 - 1.1 | 5.1 - 1.2 | 5.1 - 2.3 | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *
- *
- *  	1.1       label : title
- *  	2.1       label : description
- *  	3.1 - 1.1 label : server
- *  	3.1 - 1.2 text box : server to connect to
- *  	4.1 - 1.1 spacer
- *  	4.1 - 1.2 button : remove addon
- *  	5.1 - 1.1 spacer
- *  	5.1 - 1.2 button : connect
- *  	5.1 - 1.3 button : cancel
- *
- * @subsection ConcreteExample Concrete Example
- *
- * This is the code needed to create the skeleton for the structure the extra
- * flags are omitted.
- *
- *  	[grid]
- *  		[row]
- *  			[column]
- *  				[label]
- *  					# 1.1
- *  				[/label]
- *  			[/column]
- *  		[/row]
- *  		[row]
- *  			[column]
- *  				[label]
- *  					# 2.1
- *  				[/label]
- *  			[/column]
- *  		[/row]
- *  		[row]
- *  			[column]
- *  				[grid]
- *  					[row]
- *  						[column]
- *  							[label]
- *  								# 3.1 - 1.1
- *  							[/label]
- *  						[/column]
- *  						[column]
- *  							[text_box]
- *  								# 3.1 - 1.2
- *  							[/text_box]
- *  						[/column]
- *  					[/row]
- *  				[/grid]
- *  			[/column]
- *  		[/row]
- *  		[row]
- *  			[column]
- *  				[grid]
- *  					[row]
- *  						[column]
- *  							[spacer]
- *  								# 4.1 - 1.1
- *  							[/spacer]
- *  						[/column]
- *  						[column]
- *  							[spacer]
- *  								# 4.1 - 1.2
- *  							[/spacer]
- *  						[/column]
- *  						[column]
- *  							[button]
- *  								# 4.1 - 1.3
- *  							[/button]
- *  						[/column]
- *  					[/row]
- *  					[row]
- *  						[column]
- *  							[spacer]
- *  								# 4.1 - 2.1
- *  							[/spacer]
- *  						[/column]
- *  						[column]
- *  							[button]
- *  								# 4.1 - 2.2
- *  							[/button]
- *  						[/column]
- *  						[column]
- *  							[button]
- *  								# 4.1 - 2.3
- *  							[/button]
- *  						[/column]
- *  					[/row]
- *  				[/grid]
- *  			[/column]
- *  		[/row]
- *  	[/grid]
- */
-
-/**
- * @defgroup GUIWidgetWML GUIWidgetWML
- * In various parts of the GUI there are several variables types in use. This section describes them.
- *
- * Below are the simple types which have one value or a short list of options:
- * Variable                                        |description
- * ------------------------------------------------|-----------
- * @anchor guivartype_unsigned unsigned            |Unsigned number (positive whole numbers and zero).
- * @anchor guivartype_f_unsigned f_unsigned        |Unsigned number or formula returning an unsigned number.
- * @anchor guivartype_int int                      |Signed number (whole numbers).
- * @anchor guivartype_f_int f_int                  |Signed number or formula returning an signed number.
- * @anchor guivartype_bool bool                    |A boolean value accepts the normal values as the rest of the game.
- * @anchor guivartype_f_bool f_bool                |Boolean value or a formula returning a boolean value.
- * @anchor guivartype_string string                |A text.
- * @anchor guivartype_t_string t_string            |A translatable string.
- * @anchor guivartype_f_tstring f_tstring          |Formula returning a translatable string.
- * @anchor guivartype_function function            |A string containing a set of function definition for the formula language.
- * @anchor guivartype_color color                  |A string which contains the color, this a group of 4 numbers between 0 and 255 separated by a comma. The numbers are red component, green component, blue component and alpha. A color of 0 is not available. An alpha of 255 is fully transparent. Omitted values are set to 0.
- * @anchor guivartype_font_style font_style        |A string which contains the style of the font:<ul><li>normal</li><li>bold</li><li>italic</li><li>underlined</li></ul>Since SDL has problems combining these styles only one can be picked. Once SDL will allow multiple options, this type will be transformed to a comma separated list. If empty we default to the normal style. Since the render engine is replaced by Pango markup this field will change later on. Note widgets that allow marked up text can use markup to change the font style.
- * @anchor guivartype_v_align v_align              |Vertical alignment; how an item is aligned vertically in the available space. Possible values:<ul><li>top</li><li>bottom</li><li>center</li></ul>When nothing is set or an another value as in the list the item is centered.
- * @anchor guivartype_h_align h_align              |Horizontal alignment; how an item is aligned horizontal in the available space. Possible values:<ul><li>left</li><li>right</li><li>center</li></ul>
- * @anchor guivartype_f_h_align f_h_align          |A horizontal alignment or a formula returning a horizontal alignment.
- * @anchor guivartype_border border                |Comma separated list of borders to use. Possible values:<ul><li>left</li><li>right</li><li>top</li><li>bottom</li><li>all alias for "left, right, top, bottom"</li></ul>
- * @anchor guivartype_scrollbar_mode scrollbar_mode|How to show the scrollbar of a widget. Possible values:<ul><li>always - The scrollbar is always shown, regardless whether it's required or not.</li><li>never - The scrollbar is never shown, even not when needed. (Note when setting this mode dialogs might not properly fit anymore).</li><li>auto - Shows the scrollbar when needed. The widget will reserve space for the scrollbar, but only show when needed.</li><li>initial_auto - Like auto, but when the scrollbar is not needed the space is not reserved.</li></ul>Use auto when the list can be changed dynamically eg the game list in the lobby. For optimization you can also use auto when you really expect a scrollbar, but don't want it to be shown when not needed eg the language list will need a scrollbar on most screens.
- * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled smoothly.</li><li>scale_sharp - The image is scaled with sharp (nearest neighbour) interpolation. This is good for sprites.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li><li>tile_center - like tile, except aligned so that one tile is always centered.</li><li>tile_highres - like tile, except rendered at full output resolution in high-dpi contexts. This is useful for texturing effects, but final tile size will be unpredictable.</li></ul>
- * @anchor guivartype_grow_direction grow_direction|The direction in which newly added items will grow a container. Possible values:<ul><li>horizontal</li><li>vertical</li></ul>
- *
- * For more complex parts, there are sections. Sections contain of several lines of WML and can have sub sections. For example a grid has sub sections which contain various widgets. Here's the list of sections:
- * Variable                                        |description
- * ------------------------------------------------|-----------
- * @anchor guivartype_section section              |A generic section. The documentation about the section should describe the section in further detail.
- * @anchor guivartype_grid grid                    |A grid contains several widgets.
- * @anchor guivartype_config config                |.
- *
- * Every widget has some parts in common. First of all, every definition has the following fields:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * id           | @ref guivartype_string "string"    |mandatory|Unique id for this gui (theme).
- * description  | @ref guivartype_t_string "t_string"|mandatory|Unique translatable name for this gui.
- * resolution   | @ref guivartype_section "section"  |mandatory|The definitions of the widget in various resolutions.
- * Inside a grid (which is inside all container widgets) a widget is instantiated. With this instantiation some more variables of a widget can be tuned.
- */
-
-/**
- * @defgroup GUICanvasWML GUICanvasWML
- *
- * A canvas is a blank drawing area on which the user can draw several shapes.
- * The drawing is done by adding WML structures to the canvas.
- *
- * @section PreCommit Pre-commit
- *
- * This section contains the pre commit functions.
- * These functions will be executed before the drawn canvas is applied on top of the normal background.
- * There should only be one pre commit section and its order regarding the other shapes doesn't matter.
- * The function has effect on the entire canvas, it's not possible to affect only a small part of the canvas.
- *
- * @subsection Blur Blur
- *
- * Blurs the background before applying the canvas. This doesn't make sense if the widget isn't semi-transparent.
- *
- * Keys:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * depth        | @ref guivartype_unsigned "unsigned"|0        |The depth to blur.
- */
-
-/**
- * @defgroup GUIWindowDefinitionWML GUIWindowDefinitionWML
- *
- * The window definition define how the windows shown in the dialog look.
- */

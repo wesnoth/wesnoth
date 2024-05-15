@@ -13,19 +13,17 @@
 */
 
 #include <SDL2/SDL.h>
-#include <stdlib.h>
-#include <string>
 
-int main(int, char** argv)
+#define STR(x) STR_(x)
+#define STR_(x) #x
+
+#if ! SDL_VERSION_ATLEAST(REQ_MAJOR, REQ_MINOR, REQ_PATCH)
+#pragma message "SDL version " STR(SDL_MAJOR_VERSION.SDL_MINOR_VERSION.SDL_PATCHLEVEL) " is older than required version " STR(REQ_MAJOR.REQ_MINOR.REQ_PATCH)
+#error SDL is too old!
+#endif
+
+int main(int, char**)
 {
-    int major = std::stoi(argv[1]);
-    int minor = std::stoi(argv[2]);
-    int patchlevel = std::stoi(argv[3]);
-
-    if(!SDL_VERSION_ATLEAST(major, minor, patchlevel)) {
-        exit(1);
-    }
-
     SDL_Init(0);
     SDL_Quit();
 

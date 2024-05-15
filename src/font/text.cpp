@@ -28,14 +28,10 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
-#include "sdl/utils.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "preferences/general.hpp"
 #include "video.hpp"
 
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/functional/hash_fwd.hpp>
 
 #include <cassert>
 #include <cstring>

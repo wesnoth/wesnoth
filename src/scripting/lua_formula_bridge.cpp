@@ -15,7 +15,6 @@
 #include "scripting/lua_formula_bridge.hpp"
 
 #include "game_board.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_team.hpp"

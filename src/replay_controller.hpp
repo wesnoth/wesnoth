@@ -15,10 +15,8 @@
 #pragma once
 
 #include "play_controller.hpp"
-#include "replay.hpp"
 #include "mouse_handler_base.hpp" //events::command_disabler
 
-#include <vector>
 
 class replay_controller : public events::observer
 {

@@ -66,8 +66,8 @@ namespace lg {
 // This is used to find old files to delete.
 const std::string log_file_prefix = "wesnoth-";
 const std::string log_file_suffix = ".log";
-// stdout file for Windows
-const std::string out_log_file_suffix = ".out.log";
+// stdout file for Windows; needs to end in log_file_suffix so log rotation works for both
+const std::string out_log_file_suffix = ".out" + log_file_suffix;
 
 // Maximum number of older log files to keep intact. Other files are deleted.
 // Note that this count does not include the current log file!

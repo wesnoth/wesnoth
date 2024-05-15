@@ -27,7 +27,6 @@
 #include <boost/multi_index/hashed_index.hpp>
 
 #include <map>
-#include <mutex>
 #include <vector>
 
 static lg::log_domain log_config("config");

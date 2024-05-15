@@ -17,7 +17,6 @@
 #include "game_initialization/create_engine.hpp"
 #include "gui/widgets/generator.hpp"
 
-class config;
 
 namespace gui2
 {

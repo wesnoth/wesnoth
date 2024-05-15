@@ -24,7 +24,7 @@
 #include <array>
 #include <boost/algorithm/string.hpp>
 
-const unsigned short default_campaignd_port = 15017;
+const unsigned short default_campaignd_port = 15019;
 
 namespace
 {

@@ -18,12 +18,9 @@
 #include "filesystem.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "preferences/credentials.hpp"
-#include "serialization/string_utils.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
 
-#include <cstdio>
 #include <iomanip>
 #include <sstream>
 

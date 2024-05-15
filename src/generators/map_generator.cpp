@@ -21,7 +21,6 @@
 #include "generators/map_generator.hpp"
 
 #include "config.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_mapgen("mapgen");

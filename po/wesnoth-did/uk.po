@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.10\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2012-09-19 11:53+0200\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-03-22 12:38+0200\n"
+"Last-Translator: AncientGeneral <greatgeneral12 {AT} gmail DT com>\n"
+"Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #. [achievement_group]
@@ -35,7 +36,7 @@ msgstr "ПвТ"
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
 msgid "Easy"
-msgstr ""
+msgstr "Легкий"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
@@ -49,17 +50,13 @@ msgstr "Викликач"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:23
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Нормальний)"
+msgstr "Нормальний"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:24
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Складний)"
+msgstr "Ускладнений"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:24
@@ -78,10 +75,8 @@ msgstr ""
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:28
-#, fuzzy
-#| msgid "(Intermediate level, 12 scenarios.)"
 msgid "(Intermediate level, 10 scenarios.)"
-msgstr "(Середній рівень, 12 сценаріїв.)"
+msgstr "(Середній рівень, 10 сценаріїв.)"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:31
@@ -92,10 +87,8 @@ msgstr "Розробка кампанії"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:37
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Latest Campaign Revision"
-msgstr "Розробка кампанії"
+msgstr "Останній перегляд кампанії"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:43
@@ -105,7 +98,7 @@ msgstr "Графіка та Дизайн"
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:58
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Різне"
 
 #. [achievement]: id=did_rat_eater
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:10
@@ -3058,7 +3051,7 @@ msgstr ""
 msgid "Find Lady Karae"
 msgstr "Лорд Каррес"
 
-#. [unit]: type=Silver Mage, id=Lady Karae
+#. [unit]: type=Silver Mage, id=Lady Karae, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:177
 #, fuzzy
 #| msgid "Lord Karres"
@@ -5303,7 +5296,7 @@ msgstr ""
 msgid "<small>(faking pain)</small> Aaargh!"
 msgstr ""
 
-#. [message]: role=unit
+#. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1187
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1215
 msgid "It’s not catching fire!"
@@ -5438,7 +5431,7 @@ msgstr ""
 msgid "A monolith of black stone, cold and brittle to the touch."
 msgstr ""
 
-#. [unit]: type=Cuttle Fish, id=Inky
+#. [unit]: type=Cuttle Fish, id=Inky, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1399
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:558
 msgid "female^Inky"
@@ -5993,12 +5986,12 @@ msgid ""
 "village of squids for all eternity."
 msgstr ""
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "Учень мага"
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:17
 #, fuzzy
 #| msgid ""
@@ -6019,12 +6012,12 @@ msgstr ""
 msgid "magic blast"
 msgstr "магічний вибух"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "Учень некроманта"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:16
 msgid ""
 "Under Darken Volk’s tutelage, Malin has become adept at wielding necromancy "
@@ -6054,12 +6047,12 @@ msgstr ""
 "Хоча меч Маліна вже покрився іржею від нестачі догляду, його збільшені "
 "навички в магії компенсують це з лишком."
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "Прикордонна баронеса"
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "

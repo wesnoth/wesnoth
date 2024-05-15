@@ -31,6 +31,9 @@ jobs:
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh; git status; git diff --exit-code
+      - name: WML missing images check
+        if: success() || failure()
+        run: utils/CI/check_wml_images.sh
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
@@ -69,7 +72,7 @@ jobs:
         SDL_VIDEODRIVER: dummy
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
 # 1) wesnothd and campaignd should be buildable without SDL2 being present
 # 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
@@ -121,7 +124,7 @@ jobs:
           for opt in config data userconfig userdata
           do
             output=$(./wesnoth --nobanner --"$opt"-path)
-            if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!' "$opt" >&2; exit 1; fi
+            if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi
             printf '%s-path: %s\n' "$opt" "$output"
           done
       - name: WML validation
@@ -144,7 +147,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Steam Runtime
         run: |
@@ -153,7 +156,7 @@ jobs:
           tar -cf "steambuild-$version.tar" steambuild
 
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Steam-Linux
           path: utils/dockerbuilds/steambuild-*.tar
@@ -162,7 +165,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: MinGW Crosscompile
         run: |
@@ -175,13 +178,13 @@ jobs:
           mv mingwbuild/wesnoth*-win64.exe "wesnoth-$version-win64.exe"
 
       - name: Upload Source
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Source
           path: wesnoth-*.tar.bz2
 
       - name: Upload Windows-Installer
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Windows-Installer
           path: utils/dockerbuilds/wesnoth-*-win64.exe
@@ -193,20 +196,20 @@ jobs:
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
+      - { uses: actions/checkout@v4, with: { submodules: "recursive", fetch-depth: 500, fetch-tags: true } }
 
       - name: Flatpak
         run: |
           # write to an ignored filename so the build is not marked as modified
-          jq '.modules |= map(select(.name == "wesnoth").sources[0]={"type":"dir","path":"."}) | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
-          flatpak-builder --force-clean --default-branch=ci --disable-rofiles-fuse wesnoth-app wesnoth-manifest.json
-          flatpak build-export export wesnoth-app ci
-          flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth ci --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
+          jq '.modules |= map(select(.name == "wesnoth").sources[0]={type:"dir",path:"."})' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
+          git config --global --add safe.directory "$PWD"
+          branch=ci-$(git describe || git log -n 1 --format=%h) # if git describe fails fall back to the commit hash
+          flatpak-builder --force-clean --default-branch="$branch" --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
+          flatpak build-export export wesnoth-app "$branch"
+          flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth "$branch" --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
 
       - name: Upload flatpak bundle
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Flatpak-Bundle
           path: wesnoth.flatpak
@@ -222,7 +225,7 @@ jobs:
        CLICOLOR_FORCE: 1
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -245,12 +248,12 @@ jobs:
       fail-fast: false
       matrix:
         cfg: [ Debug, Release ]
-    runs-on: macos-11.0
+    runs-on: macos-14
     env:
       CFG: ${{ matrix.cfg }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -271,7 +274,7 @@ jobs:
         working-directory: projectfiles/Xcode
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
       - name: Upload disk image
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: MacOS ${{ matrix.cfg }} disk image
           path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
@@ -297,21 +300,21 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
         run: echo IMAGE_VERSION=%ImageVersion%>> %GITHUB_ENV%
 
       - name: Cache object files
         id: windows-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
           # the final key part needs to be changed if anything in the build process changes that is not already included here
           key: win-cache-master-${{ matrix.cfg }}-${{ env.IMAGE_VERSION }}-${{ hashFiles('vcpkg.json') }}-0001
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1.3
+        uses: microsoft/setup-msbuild@v2
 
       - name: Run cmake
         run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
@@ -329,7 +332,7 @@ jobs:
 # run after all other jobs have completed to check overall build status
   notification:
     runs-on: ubuntu-latest
-    needs: [checks, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
+    needs: [checks, copyright, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
     if: failure() && github.event_name == 'push'
 
     steps:

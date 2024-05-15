@@ -19,7 +19,6 @@
 #include <SDL2/SDL_keycode.h>
 #include <vector>
 
-class display;
 
 namespace gui2
 {

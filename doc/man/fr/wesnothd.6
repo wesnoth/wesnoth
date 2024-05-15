@@ -167,17 +167,18 @@ Définit si le serveur va automatiquement sauvegarder les films des parties
 (par défaut\ : \fBfalse\fP).
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Utilise TLS. Si activée, les trois options suivantes doivent être
+spécifiées.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+La chaîne du certificat TLS au format .pem
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+La clé privée TLS au format .pem
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+Le paramètre DH de TLS au format .pem. À générer par  \fBopenssl dhparam \-out
+nom_de_fichier.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Liste des versions acceptées par le serveur, séparées par des virgules. Les
@@ -187,9 +188,9 @@ correspondant à celle de wesnoth).
 Exemple\ : \fBversions_accepted="*"\fP autorise tout type de version.
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+L'identifiant ID du serveur quand la sauvegarde en base de données des
+informations des parties est activée. Souvent les nombres majeur et mineur
+de la version des clients qui est acceptée\ : 1.18, 1.16...
 .
 .SS "Balises globales\ : "
 .
@@ -277,8 +278,9 @@ probablement sous la forme <table\-prefix>_user_group. Par exemple\ :
 phpbb3_user_group.
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+Le nom de la table de la base de données où les instants de connexion et
+déconnexion sont stockés. Permet aussi de trouver les adresses IP
+correspondant aux joueurs.
 .TP 
 \fBdb_topics_table\fP
 Nom de la table des informations des sujets de vos forums phpbb,
@@ -312,7 +314,7 @@ Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

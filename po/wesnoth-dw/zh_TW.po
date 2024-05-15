@@ -1,23 +1,23 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2020 Wesnoth development team
+# Copyright (C) 2005-2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 李信融 <magiclen0810@gmail.com>, 2010.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
-"PO-Revision-Date: 2022-05-30 14:44+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-03-03 17:43+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [campaign]: id=Dead_Water
@@ -1118,18 +1118,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
-#, fuzzy
-#| msgid ""
-#| "You can choose when the slaves come out of their villages and attack "
-#| "their captors. When you are ready, right-click anywhere and select "
-#| "'Inspire the slaves to revolt'."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right-click anywhere and select ‘Inspire the "
 "slaves to revolt’."
 msgstr ""
 "你可以選擇你認為最適當的時機，來讓奴隸們從村莊裡衝出來對抗這群蜥蜴人。當你覺"
-"得時機成熟的時候，按滑鼠右鍵點及任何地方，選擇「奴隸起義」。"
+"得時機成熟的時候，按下滑鼠右鍵點擊任何位置，來選擇「奴隸起義」。"
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:449
@@ -2107,7 +2102,7 @@ msgstr "有一個人在這裡。"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:404
 msgid "Whoa there! BACK off or else!"
-msgstr "誰在那裡！<b>滾開</b>！否則……"
+msgstr "誰在那裡！給我滾開！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
@@ -2425,7 +2420,7 @@ msgstr ""
 "在我的機會來了！凱‧克瑞利斯，我的朋友和我會加入你們的戰鬥，你可以使喚我們，我"
 "們不會跟你收取任何的費用。"
 
-#. [unit]: type=Footpad, id=Lyllan
+#. [unit]: type=Footpad, gender=female, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
 msgstr "莉蘭"
@@ -2436,7 +2431,7 @@ msgid "Trudd"
 msgstr "特魯德"
 
 #. [unit]: type=Thug, id=Dorcyn
-#. [unit]: type=Footpad, id=Dorcyn
+#. [unit]: type=Footpad, gender=male, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"

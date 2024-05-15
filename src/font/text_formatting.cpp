@@ -18,7 +18,6 @@
 #include "gettext.hpp"
 #include "color.hpp"
 
-#include <iomanip>
 
 namespace font {
 

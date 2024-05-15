@@ -29,10 +29,8 @@
 #include "game_board.hpp"           // for game_board
 #include "game_config.hpp"          // for add_color_info, etc
 #include "game_data.hpp"
-#include "game_errors.hpp"         // for game_error
 #include "game_events/manager.hpp" // for add_events
 #include "game_version.hpp"
-#include "gettext.hpp" // for N_
 #include "lexical_cast.hpp"
 #include "log.hpp"                       // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
@@ -40,12 +38,9 @@
 #include "random.hpp"                    // for generator, rng
 #include "resources.hpp"                 // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
-#include "side_filter.hpp"               // for side_filter
 #include "synced_context.hpp"
 #include "team.hpp"                      // for team, get_teams, etc
-#include "terrain/filter.hpp"            // for terrain_filter
 #include "units/abilities.hpp"           // for effect, filter_base_matches
-#include "units/animation.hpp"           // for unit_animation
 #include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
 #include "units/formula_manager.hpp" // for unit_formula_manager
@@ -58,10 +53,7 @@
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
-#include <functional>
 #include <iterator>                     // for back_insert_iterator, etc
-#include <new>                          // for operator new
-#include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string_view>
 
 namespace t_translation { struct terrain_code; }
@@ -296,6 +288,7 @@ unit::unit(const unit& o)
 	, facing_(o.facing_)
 	, trait_names_(o.trait_names_)
 	, trait_descriptions_(o.trait_descriptions_)
+	, trait_nonhidden_ids_(o.trait_nonhidden_ids_)
 	, unit_value_(o.unit_value_)
 	, goto_(o.goto_)
 	, interrupted_move_(o.interrupted_move_)
@@ -377,6 +370,7 @@ unit::unit(unit_ctor_t)
 	, facing_(map_location::NDIRECTIONS)
 	, trait_names_()
 	, trait_descriptions_()
+	, trait_nonhidden_ids_()
 	, unit_value_()
 	, goto_()
 	, interrupted_move_()
@@ -894,16 +888,31 @@ void unit::generate_traits(bool must_have_only)
 	random_traits_ = false;
 }
 
-std::vector<std::string> unit::get_traits_list() const
+std::vector<std::string> unit::get_modifications_list(const std::string& mod_type) const
 {
 	std::vector<std::string> res;
 
-	for(const config& mod : modifications_.child_range("trait"))
-	{
-			// Make sure to return empty id trait strings as otherwise
-			// names will not match in length (Bug #21967)
-			res.push_back(mod["id"]);
+	for(const config& mod : modifications_.child_range(mod_type)){
+		// Make sure to return empty id trait strings as otherwise
+		// names will not match in length (Bug #21967)
+		res.push_back(mod["id"]);
 	}
+	if(mod_type == "advancement"){
+		for(const config& mod : modifications_.child_range("advance")){
+			res.push_back(mod["id"]);
+		}
+	}
+	return res;
+}
+
+std::size_t unit::modification_count(const std::string& type) const
+{
+	//return numbers of modifications of same type, same without ID.
+	std::size_t res = modifications_.child_range(type).size();
+	if(type == "advancement"){
+		res += modification_count("advance");
+	}
+
 	return res;
 }
 
@@ -928,6 +937,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// Reset the scalar values first
 	trait_names_.clear();
 	trait_descriptions_.clear();
+	trait_nonhidden_ids_.clear();
 	is_fearless_ = false;
 	is_healthy_ = false;
 	image_mods_.clear();
@@ -1769,12 +1779,8 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 	return def;
 }
 
-bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
+bool unit::resistance_filter_matches(const config& cfg, const std::string& damage_name, int res) const
 {
-	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
-		return false;
-	}
-
 	const std::string& apply_to = cfg["apply_to"];
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
@@ -1797,33 +1803,53 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+int unit::resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const
 {
-	int res = opp_weapon ? movement_type_.resistance_against(*opp_weapon) : movement_type_.resistance_against(damage_name);
-
-	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
-	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
-		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
+	int res = movement_type_.resistance_against(damage_name);
+	utils::erase_if(resistance_list, [&](const unit_ability& i) {
+		return !resistance_filter_matches(*i.ability_cfg, damage_name, 100-res);
 	});
 
-	if(!resistance_abilities.empty()) {
-		unit_abilities::effect resist_effect(resistance_abilities, 100-res);
+	if(!resistance_list.empty()) {
+		unit_abilities::effect resist_effect(resistance_list, 100-res, nullptr, unit_abilities::EFFECT_CLAMP_MIN_MAX);
 
-		unit_ability_list resistance_max_value;
-		resistance_max_value.append_if(resistance_abilities, [&](const unit_ability& i) {
-			return (*i.ability_cfg).has_attribute("max_value");
-		});
-		if(!resistance_max_value.empty()){
-			res = 100 - std::min<int>(
-				resist_effect.get_composite_value(),
-				resistance_max_value.highest("max_value").first
-			);
-		} else {
-			res = 100 - resist_effect.get_composite_value();
-		}
+		res = 100 - resist_effect.get_composite_value();
 	}
 
 	return res;
+}
+
+static bool resistance_filter_matches_base(const config& cfg, bool attacker)
+{
+	if(!(!cfg.has_attribute("active_on") || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
+		return false;
+	}
+
+	return true;
+}
+
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+{
+	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	utils::erase_if(resistance_list, [&](const unit_ability& i) {
+		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
+	});
+	if(opp_weapon){
+		unit_ability_list damage_type_list = opp_weapon->get_specials_and_abilities("damage_type");
+		if(damage_type_list.empty()){
+			return resistance_value(resistance_list, damage_name);
+		}
+		std::string replacement_type = opp_weapon->select_damage_type(damage_type_list, "replacement_type", resistance_list);
+		std::string type_damage = replacement_type.empty() ? damage_name : replacement_type;
+		int max_res = resistance_value(resistance_list, type_damage);
+		for(auto& i : damage_type_list) {
+			if((*i.ability_cfg).has_attribute("alternative_type")){
+				max_res = std::max(max_res , resistance_value(resistance_list, (*i.ability_cfg)["alternative_type"].str()));
+			}
+		}
+		return max_res;
+	}
+	return resistance_value(resistance_list, damage_name);
 }
 
 std::map<std::string, std::string> unit::advancement_icons() const
@@ -2214,7 +2240,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		if(increase.empty() == false) {
-			experience_ = utils::apply_modifier(experience_, increase, 1);
+			experience_ = utils::apply_modifier(experience_, increase, 0);
 		}
 	} else if(apply_to == "max_experience") {
 		const std::string& increase = effect["increase"];
@@ -2442,14 +2468,19 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 {
 	bool generate_description = mod["generate_description"].to_bool(true);
 
+	config* target = nullptr;
+
 	if(no_add == false) {
-		modifications_.add_child(mod_type, mod);
+		target = &modifications_.add_child(mod_type, mod);
+		target->remove_children("effect");
 	}
 
-	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
-	config type_effect, variation_effect;
 	std::vector<t_string> effects_description;
 	for(const config& effect : mod.child_range("effect")) {
+		if(target) {
+			//Store effects only after they are added to avoid double applying effects on advance with apply_to=variation.
+			target->add_child("effect", effect);
+		}
 		// Apply SUF.
 		if(auto afilter = effect.optional_child("filter")) {
 			assert(resources::filter_con);
@@ -2460,6 +2491,10 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		const std::string& apply_to = effect["apply_to"];
 		int times = effect["times"].to_int(1);
 		t_string description;
+
+		if(no_add && (apply_to == "type" || apply_to == "variation")) {
+			continue;
+		}
 
 		if(effect["times"] == "per level") {
 			if(effect["apply_to"] == "level") {
@@ -2474,20 +2509,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(times) {
 			while (times > 0) {
 				times --;
-
-				bool was_poisoned = get_state(STATE_POISONED);
-				// Apply unit type/variation changes last to avoid double applying effects on advance.
-				if(apply_to == "type") {
-					set_poisoned = false;
-					type_effect = effect;
-					continue;
-				}
-				if(apply_to == "variation") {
-					set_poisoned = false;
-					variation_effect = effect;
-					continue;
-				}
-
 				std::string description_component;
 				if(resources::lua_kernel) {
 					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
@@ -2500,11 +2521,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				}
 				if(!times) {
 					description += description_component;
-				}
-				if(!was_poisoned && get_state(STATE_POISONED)) {
-					set_poisoned = true;
-				} else if(was_poisoned && !get_state(STATE_POISONED)) {
-					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2522,33 +2538,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		if(!description.empty()) {
 			effects_description.push_back(description);
 		}
-	}
-	// Apply variations -- only apply if we are adding this for the first time.
-	if((!type_effect.empty() || !variation_effect.empty()) && no_add == false) {
-		if(!type_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(type_effect["apply_to"], *this, type_effect, true);
-			} else if(builtin_effects.count(type_effect["apply_to"])) {
-				apply_builtin_effect(type_effect["apply_to"], type_effect);
-				description = describe_builtin_effect(type_effect["apply_to"], type_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(!variation_effect.empty()) {
-			std::string description;
-			if(resources::lua_kernel) {
-				description = resources::lua_kernel->apply_effect(variation_effect["apply_to"], *this, variation_effect, true);
-			} else if(builtin_effects.count(variation_effect["apply_to"])) {
-				apply_builtin_effect(variation_effect["apply_to"], variation_effect);
-				description = describe_builtin_effect(variation_effect["apply_to"], variation_effect);
-			}
-			effects_description.push_back(description);
-		}
-		if(set_poisoned)
-			// An effect explicitly set the poisoned state, and this
-			// should override the unit being immune to poison.
-			set_state(STATE_POISONED, true);
 	}
 
 	t_string description;
@@ -2588,6 +2577,7 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	if(!name.empty()) {
 		trait_names_.push_back(name);
 		trait_descriptions_.push_back(description);
+		trait_nonhidden_ids_.push_back(trait["id"]);
 	}
 }
 

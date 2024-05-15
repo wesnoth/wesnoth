@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
 "PO-Revision-Date: 2023-11-25 12:45+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -213,9 +213,9 @@ msgstr ""
 "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
-#: data/multiplayer/eras.lua:53
+#: data/multiplayer/eras.lua:113
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
@@ -223,9 +223,9 @@ msgstr ""
 "<span strikethrough='true' foreground='$side_color'>Squadra $side_number</"
 "span>:  ha perso tutte le unità"
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, any side that still has units left
-#: data/multiplayer/eras.lua:69
+#: data/multiplayer/eras.lua:118
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
@@ -235,29 +235,29 @@ msgstr ""
 "entrate = $income  Punteggio unità = $units  Oro = $gold\n"
 "Totale: <b>$total</b>"
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:84
+#: data/multiplayer/eras.lua:127
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr ""
 "<span foreground='$side_color'>La squadra $side_number</span> è in vantaggio."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:89
+#: data/multiplayer/eras.lua:132
 msgid "Sides $side_number and $other_side_number are tied."
 msgstr "Le squadre $side_number e $other_side_number sono accoppiate."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:94
+#: data/multiplayer/eras.lua:137
 msgid "Sides $winners are tied."
 msgstr "Le squadre$winners sono accoppiate."
 
-#. [lua]: f
+#. [lua]: res.show_turns_over_advantage
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
-#: data/multiplayer/eras.lua:100
+#: data/multiplayer/eras.lua:142
 msgid "dialog^Turns Over"
 msgstr "Fine dei turni"
 
@@ -468,19 +468,34 @@ msgstr "2g – Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus "
+#| "of mystical energy whose chaotic nature was able to prevent her escape. "
+#| "Over the centuries, however, Sulla gradually attuned her powers to the "
+#| "maelstrom of disorder that is the Aethermaw, and has now begun to project "
+#| "its influence onto the material plane, drawing in entire regions of land "
+#| "from hundreds of different worlds, realities and time-periods. She "
+#| "experiments with these disparate pieces of the cosmos, manipulating them, "
+#| "merging them and sending them back and forth between the Aethermaw and "
+#| "their place of origin. Perhaps, as her mastery over the Aethermaw grows, "
+#| "Sulla will one day break free of its bonds. Until that time comes, she "
+#| "will continue to amuse herself by arranging battles between the mortal "
+#| "beings unlucky enough to be drawn into its depths. Designed by Doc "
+#| "Paterson."
 msgid ""
-"Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus of "
-"mystical energy whose chaotic nature was able to prevent her escape. Over "
-"the centuries, however, Sulla gradually attuned her powers to the maelstrom "
-"of disorder that is the Aethermaw, and has now begun to project its "
-"influence onto the material plane, drawing in entire regions of land from "
-"hundreds of different worlds, realities and time-periods. She experiments "
-"with these disparate pieces of the cosmos, manipulating them, merging them "
-"and sending them back and forth between the Aethermaw and their place of "
-"origin. Perhaps, as her mastery over the Aethermaw grows, Sulla will one day "
-"break free of its bonds. Until that time comes, she will continue to amuse "
-"herself by arranging battles between the mortal beings unlucky enough to be "
-"drawn into its depths. Designed by Doc Paterson."
+"Long ago, the Legendary Aether Mage, Sulla, was imprisoned in the Aethermaw, "
+"a nexus of mystical energy whose chaotic nature was able to prevent her "
+"escape. Over the centuries, however, Sulla gradually attuned her powers to "
+"the maelstrom of disorder that is the Aethermaw, and has now begun to "
+"project its influence onto the material plane, drawing in entire regions of "
+"land from hundreds of different worlds, realities and time-periods. She now "
+"experiments with these disparate pieces of the cosmos, manipulating them, "
+"merging them and sending them back and forth between the Aethermaw and their "
+"place of origin. Perhaps, as her mastery over the Aethermaw grows, Sulla "
+"will one day break free of its bonds. Until that time comes, she will "
+"continue to amuse herself by arranging battles between the mortal beings "
+"unlucky enough to be drawn into its depths. Designed by Doc Paterson."
 msgstr ""
 "Tanto tempo fa, la grande maga Sulla fu imprigionata nell’Aethermaw, una "
 "stringa di energia mistica la cui natura caotica era capace di impedire la "
@@ -579,8 +594,12 @@ msgstr "Sconfiggi il condottiero nemico"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
+#, fuzzy
+#| msgid ""
+#| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
+#| "and demands that you amuse her by doing battle."
 msgid ""
-"The Great Mage Sulla has transported your armies to this bizarre nexus, and "
+"The Aether Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
 "La grande maga Sulla ha trasportato le tue armate in questa bizzarra "
@@ -597,9 +616,14 @@ msgstr ""
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
+#, fuzzy
+#| msgid ""
+#| "Beginning on turn 4, the Great Mage Sulla will begin to unite the two "
+#| "halves of the battlefield. The process will be complete by the end of "
+#| "turn 6."
 msgid ""
-"Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
-"of the battlefield. The process will be complete by the end of turn 6."
+"Beginning on turn 4, the Aether Mage Sulla will begin to unite the two "
+"halves of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
 "All’inizio del quarto turno, la grande maga Sulla inizierà a congiungere le "
 "due metà del campo di battaglia. Il processo sarà completato alla fine del "
@@ -1959,7 +1983,7 @@ msgstr ""
 msgid "Statue of Sulla"
 msgstr "Statua di Sulla"
 
-#. [unit]
+#. [unit]: gender=female
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "

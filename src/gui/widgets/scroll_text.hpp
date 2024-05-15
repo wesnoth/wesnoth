@@ -27,47 +27,11 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class label;
-class spacer;
-
 namespace implementation
 {
 struct builder_scroll_text;
 }
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Scrollable text area
- *
- * A multiline text area that shows a scrollbar if the text gets too long.
- *
- * Key          |Type                        |Default  |Description
- * -------------|----------------------------|---------|-----------
- * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
- *
- * TODO: we need one definition for a vertical scrollbar since this is the second time we use it.
- *
- * ID (return value)|Type                        |Default  |Description
- * -----------------|----------------------------|---------|-----------
- * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one multiline_text widget.
- * _scrollbar_grid  | @ref guivartype_grid "grid"|mandatory|A grid for the scrollbar (Merge with listbox info.)
- *
- * Description of necessary widgets contained inside _content_grid :
- *
- * ID (return value)|Type                            |Default  |Description
- * -----------------|--------------------------------|---------|-----------
- * _text            | @ref gui2::text_box            |mandatory|The text_box that shows the value.
- * The following states exist:
- * * state_enabled - the scroll text is enabled.
- * * state_disabled - the scroll text is disabled.
- * List with the scrollbar container specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-----------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * editable                 | @ref guivartype_bool "bool"                    |"true"      |If the contents of included multiline_text can be edited.
- */
 class scroll_text : public scrollbar_container
 {
 	friend struct implementation::builder_scroll_text;
@@ -163,7 +127,7 @@ private:
 		return vertical_scrollbar()->get_positioner_offset();
 	}
 
-	void place(const point& origin, const point& size);
+	void place(const point& origin, const point& size) override;
 
 	/** See @ref widget::calculate_best_size. */
 	point calculate_best_size() const override;

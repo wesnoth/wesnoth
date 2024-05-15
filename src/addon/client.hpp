@@ -218,6 +218,16 @@ public:
 		return conn_ && conn_->using_tls();
 	}
 
+	const std::string& server_id() const
+	{
+		return server_id_;
+	}
+
+	const std::string& server_version() const
+	{
+		return server_version_;
+	}
+
 private:
 	enum class transfer_mode {download, connect, upload};
 

@@ -37,10 +37,8 @@
 #include "font/constants.hpp"
 #include "gettext.hpp"
 #include <optional>
-#include <cstring>
 #include <list>                         // for list
 #include <memory>
-#include <ostream>                      // for operator<<, stringstream, etc
 #include <sstream>
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair

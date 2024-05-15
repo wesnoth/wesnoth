@@ -16,15 +16,9 @@
 #include "game_initialization/lobby_info.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
-#include "gettext.hpp"
 #include "log.hpp"
-#include "map/exception.hpp"
-#include "map/map.hpp"
 #include "mp_ui_alerts.hpp"
-#include "preferences/game.hpp"
-#include "wesnothd_connection.hpp"
 
-#include <iterator>
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)

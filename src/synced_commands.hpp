@@ -16,7 +16,6 @@
 #pragma once
 
 #include <map>
-#include <exception>
 #include <string>
 
 #include <functional>

@@ -21,7 +21,6 @@
 #include <string>
 #include <vector>
 
-#include <functional>
 
 /**
  * Used to find units in vectors by their ID.

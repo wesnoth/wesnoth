@@ -31,7 +31,6 @@
 #include <vector>                       // for vector
 
 class commandline_options;
-class config;
 
 struct jump_to_campaign_info
 {

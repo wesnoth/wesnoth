@@ -1,23 +1,23 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2020 Wesnoth development team
+# Copyright (C) 2005-2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 章存恩 <chandrew1119@gmail.com>, 2009.
 # 李昆融 <likwueron@gmail.com>, 2019.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2022-05-30 16:47+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-03-03 18:41+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
@@ -253,13 +253,13 @@ msgstr "海德瑞克王子"
 msgid "Haldric"
 msgstr "海德瑞克"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:44
 msgid "Wesfolk Leader"
 msgstr "韋族首領"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:59
 msgid "Wesfolk"
@@ -686,7 +686,7 @@ msgstr "那麼我該怎麼稱呼你？"
 msgid "The Lady Outlaw will do."
 msgstr "亡命小姐就好了。"
 
-#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type, gender=female
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
@@ -943,7 +943,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:262
 msgid "GO HOME! AIN’T NUTTIN TO SEE HEER!"
-msgstr "<b>滾回家！這裡沒什麼好看的！</b>"
+msgstr "滾回家！別湊熱鬧！"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:272
@@ -1071,20 +1071,20 @@ msgid "Cleon"
 msgstr "克萊恩"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Lollyra
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:61
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:114
 msgid "Cultists"
 msgstr "邪教徒"
 
-#. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:68
 msgid "Lollyra"
 msgstr "羅利拉"
 
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:94
 msgid "Clurka"
 msgstr "克勒卡"
@@ -2191,7 +2191,7 @@ msgstr ""
 msgid "Bah, have it your way!"
 msgstr "呸，那就照你的方式來！"
 
-#. [unit]: id=Lady Jessene, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:264
 msgid "Lady Jessene"
 msgstr "潔西恩小姐"
@@ -5268,8 +5268,8 @@ msgid ""
 "dwarves.”</i>"
 msgstr ""
 "我們是森林的居民，你知道所有對這些非森林居民做的承諾對於我們自身的需求是次要"
-"的。正如阿里亞德領主所說，「假如有更多麻煩隨著他們而來到這裡，我們應該要讓他"
-"們去與之對抗，然後我們應該要『處理』那些倖存者，並與矮人做個妥協」。"
+"的。正如阿里亞德領主所說，<i>「假如有更多麻煩隨著他們而來到這裡，我們應該要讓"
+"他們去與之對抗，然後我們應該要『處理』那些倖存者，並與矮人做個妥協」。</i>"
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:145
@@ -6723,32 +6723,30 @@ msgstr ""
 #. [unit_type]: id=Jevyan Cloaked, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:5
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan_Cloaked.cfg:5
-#, fuzzy
-#| msgid "Lich-Lord Caror"
 msgid "Lich Lord"
-msgstr "巫妖王卡羅爾"
+msgstr "巫妖王"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:34
 msgid "touch"
-msgstr ""
+msgstr "碰觸"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:46
 msgid "chill tempest"
-msgstr ""
+msgstr "冰風暴"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:58
 msgid "shadow wave"
-msgstr ""
+msgstr "暗影波"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
 msgstr "貴族指揮官"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
@@ -6761,12 +6759,12 @@ msgstr ""
 "改善相鄰的低級單位的戰鬥表現。指揮官最擅長使用劍，雖然他們也會攜帶一把弓，必"
 "要時會使用。如果指揮官戰敗了，戰鬥也會失敗。"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
 msgstr "貴族戰士"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
@@ -6776,12 +6774,12 @@ msgstr ""
 "年輕且盛氣凌人的戰士使用劍來攻擊，對付老練的敵人會顯得相當脆弱。然而，他們有"
 "成為成為偉大指揮官的潛質。"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
 msgstr "貴族領主"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -6792,12 +6790,12 @@ msgstr ""
 "作為大量軍隊的貴族領袖，領主在近戰中特別強大，並且也擁有弓箭技能。像指揮官一"
 "樣，領主擁有領導技能，能提高相鄰的低級單位的戰鬥能力。"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
 msgstr "貴族青年"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
@@ -6810,12 +6808,12 @@ msgstr "目前他是個青年，藉由他對王國的奉獻，他試著成為一
 msgid "training sword"
 msgstr "訓練劍"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
 msgid "female^Vampire Lady"
 msgstr "吸血貴婦"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -6842,12 +6840,12 @@ msgstr ""
 "作為人類王國的領袖，國王有責任統治和保護他們的國民。國王能協調1級和2級的單"
 "位，以此增加他們的戰鬥效率。"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
 msgid "female^Wesfolk Lady"
 msgstr "韋族小姐"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -6861,12 +6859,12 @@ msgstr ""
 "族的血液，而且她在戰場上獲得了的寶貴的經驗並隨著時間不斷增長，如同她的天然領"
 "導能力一樣。"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
 msgid "female^Wesfolk Leader"
 msgstr "韋族首領"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:22
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -6880,12 +6878,12 @@ msgstr ""
 "族的血液，而且她在戰場上獲得了的寶貴的經驗並隨著時間不斷增長，如同她的天然領"
 "導能力一樣。"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
 msgstr "韋族流浪者"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
