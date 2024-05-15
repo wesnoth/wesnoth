@@ -30,13 +30,13 @@
 #include "preferences/editor.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_list.hpp"
-#include "gui/widgets/retval.hpp"
 #include "wml_exception.hpp"
 
 #include "resources.hpp"
@@ -45,15 +45,11 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
-#include "game_board.hpp"
-#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
-#include "preferences/display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
-#include "game_config_manager.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
@@ -224,6 +220,14 @@ bool editor_controller::quit_confirm()
 	return quit_confirmation::show_prompt(message);
 }
 
+void editor_controller::unit_editor_dialog()
+{
+	gui2::dialogs::editor_edit_unit unit_dlg(game_config_, current_addon_id_);
+	if (unit_dlg.show()) {
+		unit_dlg.write();
+	}
+}
+
 void editor_controller::custom_tods_dialog()
 {
 	if (tods_.empty()) {
@@ -392,6 +396,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			return true;
 
 		// Only enable when editing a scenario
+		case HOTKEY_EDITOR_EDIT_UNIT:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 			return !get_current_map_context().is_pure_map();
 
@@ -800,6 +805,9 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_all_maps(true);
 			do_quit_ = true;
 			quit_mode_ = EXIT_RELOAD_DATA;
+			return true;
+		case HOTKEY_EDITOR_EDIT_UNIT:
+			unit_editor_dialog();
 			return true;
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 			custom_tods_dialog();

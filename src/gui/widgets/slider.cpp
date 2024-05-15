@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/core/log.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
@@ -310,10 +309,10 @@ slider_definition::resolution::resolution(const config& cfg)
 	VALIDATE(positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for slider")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for slider")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", _("Missing required state for slider")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for slider")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("slider_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("slider_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("slider_definition][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("slider_definition][resolution", "state_focused")));
 }
 
 // }---------- BUILDER -----------{

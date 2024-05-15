@@ -20,13 +20,11 @@
 #include "whiteboard/move.hpp"
 
 #include "whiteboard/visitor.hpp"
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "font/standard_colors.hpp"
 #include "game_board.hpp"
@@ -34,7 +32,6 @@
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

@@ -18,7 +18,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
-class config;
 class wesnothd_connection;
 
 namespace ai

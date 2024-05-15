@@ -16,15 +16,12 @@
 #pragma once
 
 class config;
-class team;
 class game_board;
 
-#include "chat_events.hpp"
 #include "display.hpp"
 #include "display_chat_manager.hpp"
 #include "pathfind/pathfind.hpp"
 
-#include <deque>
 
 // This needs to be separate from display.h because of the static
 // singleton member, which will otherwise trigger link failure

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-21 01:57 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
 "PO-Revision-Date: 2012-12-31 00:09+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -269,7 +269,8 @@ msgstr "mencambuk"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Clan_Captain.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
-#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:15
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:48
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
@@ -295,7 +296,7 @@ msgstr "mencambuk"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:932
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:933
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -367,12 +368,84 @@ msgstr "pedang panjang"
 msgid "morning star"
 msgstr "bintang fajar"
 
+#. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:18
+#: data/core/units/humans/Horse_Paladin.cfg:4
+msgid "Paladin"
+msgstr "Paladin"
+
+#. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
+#: data/core/units/humans/Horse_Paladin.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Knights of the highest virtue, Paladins have sworn their strength not to "
+#| "king and crown, but to ideals themselves; of chivalry, and the "
+#| "stewardship of everything that is good. They may serve in the armies of "
+#| "the world, but their first loyalties often lie with groups of their own "
+#| "making; secret, monastic orders that cross political and cultural "
+#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
+#| "is only as strong as the liege’s apparent virtue. This has led the more "
+#| "darkly ambitious to either attempt to defame and disperse these groups, "
+#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
+#| "staunchly loyal troops in service.\n"
+#| "    \n"
+#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
+#| "that champion most armies, but they are first-class fighters nonetheless. "
+#| "Additionally, their wisdom and piety grants these warrior monks certain "
+#| "curious abilities; a paladin is very powerful in fighting magical or "
+#| "unnatural things, and most have some skill at medicine and healing."
+msgid ""
+"Knights of the highest virtue, Paladins have sworn their strength not to "
+"king and crown, but to ideals themselves; of chivalry, and the stewardship "
+"of everything that is good. They may serve in the armies of the world, but "
+"their first loyalties often lie with groups of their own making; secret, "
+"monastic orders that cross political and cultural boundaries. Rulers are "
+"sometimes wary of them, for the paladins’ loyalty is only as strong as the "
+"liege’s apparent virtue. This has led the more darkly ambitious to either "
+"attempt to defame and disperse these groups, or more rarely, to conjure "
+"elaborate deceptions to keep these otherwise staunchly loyal troops in "
+"service.\n"
+"\n"
+"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
+"that champion most armies, but they are first-class fighters nonetheless. "
+"Additionally, their wisdom and piety grants these warrior monks certain "
+"curious abilities; a paladin is very powerful in fighting magical or "
+"unnatural things, and most have some skill at medicine and healing."
+msgstr ""
+"Ksatria dari kebajikan tertinggi, Paladin telah bersumpah demi kekuatan "
+"mereka tidak untuk raja dan mahkota, tetapi untuk cita-cita mereka sendiri; "
+"kaum ksatria, dan pelayanan dari segala sesuatu yang baik. Mereka mungkin "
+"melayani di tentara dunia, tetapi loyalitas pertama mereka kerap diberikan "
+"dengan kelompok buatan mereka sendiri; rahasia, golongan-golongan biarawan "
+"yang melintasi batas politik dan budaya. Penguasa kadang-kadang waspada "
+"terhadap mereka, menurut paladin kesetiaan hanya sekuat kebajikan Paduka "
+"yang nyata. Hal ini telah mengarah ke ambisius lebih gelap baik upaya untuk "
+"mencemarkan nama baik dan membubarkan kelompok ini, atau lebih jarang, untuk "
+"membangkitkan penipuan rumit untuk mempertahankan pasukan tersebut "
+"dinyatakan kukuh setia dalam pelayanan.\n"
+"    \n"
+"Paladin pada umumnya tidak cukup semenakutkan seperti 'Ksatria Agung' yang "
+"merupakan tentara paling kampiun, tetapi mereka adalah petarung kelas satu "
+"meskipun demikian. Selain itu, kebijaksanaan dan kesalehan mereka memberikan "
+"prajurit biarawan ini kemampuan aneh tertentu; Paladin yang sangat kuat "
+"dalam memerangi hal magis atau tidak wajar, dan yang paling memiliki "
+"keterampilan pada obat-obatan dan penyembuhan."
+
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Ogre_Ancient.cfg:35
 #: data/campaigns/Eastern_Invasion/units/Ogre_Great.cfg:32
 #: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
 msgid "cleaver"
 msgstr "pisau daging besar"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/core/units/undead/Skele_Bone_Knight.cfg:77
+msgid "trample"
+msgstr ""
 
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
@@ -393,7 +466,7 @@ msgstr "badai dingin"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:945
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:946
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -434,7 +507,7 @@ msgstr "busur panah"
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
 #: data/core/units/monsters/Jinn.cfg:91
-#: data/core/units/monsters/Raven_Harbinger.cfg:87
+#: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
@@ -516,7 +589,7 @@ msgid "Ancient Lich"
 msgstr "Lich Kuno "
 
 #. [unit_type]: id=Sacrifice, race=human
-#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Necromancer, gender=male,female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -731,13 +804,13 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:66
+#: data/core/units/undead/Skele_Bone_Knight.cfg:67
 #: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:85
+#: data/core/units/undead/Skeleton_Rider.cfg:86
 msgid "axe"
 msgstr "kapak"
 
@@ -1000,8 +1073,8 @@ msgstr ""
 "menyebabkan pukulan fisik bagi musuh-musuh mereka untuk memberi sedikit "
 "kerusakan dari yang diharapkan."
 
-#. [unit_type]: id=Autumn Shyde, race=elf
-#. [unit_type]: id=Elvish Shyde, race=elf
+#. [unit_type]: id=Autumn Shyde, race=elf, gender=female
+#. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1069,44 +1142,44 @@ msgid "taunting strike"
 msgstr ""
 
 #. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:182
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:183
 msgid "Run By (Taunting strike)"
 msgstr ""
 
 #. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:200
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:201
 msgid "Strength Training"
 msgstr ""
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:212
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:213
 msgid "Bowmanship Training"
 msgstr ""
 
 #. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:229
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
 msgid "Strong Shots"
 msgstr ""
 
 #. [advancement]: id=Bowman
-#. [unit_type]: id=Bowman, race=human
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:241
+#. [unit_type]: id=Bowman, race=human, gender=male
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "Pemanah"
 
 #. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:258
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:259
 msgid "Piercing Shot"
 msgstr ""
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:266
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:267
 msgid "piercing shot"
 msgstr ""
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:581
 msgid "Rain of arrows"
 msgstr ""
 
@@ -1223,12 +1296,12 @@ msgstr ""
 "mereka mencapai pantai, mereka bisa mendaratkan pasukan tersebut untuk "
 "menyerang."
 
-#. [unit_type]: id=Drake Arbiter, race=drake
+#. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
 msgstr "Drake Arbiter"
 
-#. [unit_type]: id=Drake Arbiter, race=drake
+#. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
@@ -1263,19 +1336,19 @@ msgstr ""
 msgid "halberd"
 msgstr "tombak pedang"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Arbiter.cfg:174
 #, fuzzy
 #| msgid "Drake Arbiter"
 msgid "female^Drake Arbiter"
 msgstr "Drake Arbiter"
 
-#. [unit_type]: id=Armageddon Drake, race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "Drake Kiamat"
 
-#. [unit_type]: id=Armageddon Drake, race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:20
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -1309,19 +1382,19 @@ msgstr "Cakar perang"
 msgid "fire breath"
 msgstr "nafas berapi"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Armageddon.cfg:65
 #, fuzzy
 #| msgid "Armageddon Drake"
 msgid "female^Armageddon Drake"
 msgstr "Drake Kiamat"
 
-#. [unit_type]: id=Drake Blademaster, race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "Drake Pendekar"
 
-#. [unit_type]: id=Drake Blademaster, race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
@@ -1346,19 +1419,19 @@ msgstr ""
 msgid "war talon"
 msgstr "cakar perang"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Blademaster.cfg:61
 #, fuzzy
 #| msgid "Drake Blademaster"
 msgid "female^Drake Blademaster"
 msgstr "Drake Pendekar"
 
-#. [unit_type]: id=Drake Burner, race=drake
+#. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "Drake Pembakar"
 
-#. [unit_type]: id=Drake Burner, race=drake
+#. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:18
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -1371,19 +1444,19 @@ msgstr ""
 "bernafas api. Ini, ditambah dengan ukuran besar dan cakar menakutkan mereka, "
 "membuat mereka musuh yang sangat berbahaya di pertempuran."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Burner.cfg:67
 #, fuzzy
 #| msgid "Drake Burner"
 msgid "female^Drake Burner"
 msgstr "Drake Pembakar"
 
-#. [unit_type]: id=Drake Clasher, race=drake
+#. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "Drake Penusuk"
 
-#. [unit_type]: id=Drake Clasher, race=drake
+#. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:19
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
@@ -1410,19 +1483,19 @@ msgstr ""
 "yang mana membuat mereka sangat baik dalam \"menyelesaikan\" sengketa "
 "teritorial dengan drake lain dan menegakkan hukum suku mereka."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Clasher.cfg:111
 #, fuzzy
 #| msgid "Drake Clasher"
 msgid "female^Drake Clasher"
 msgstr "Drake Penusuk"
 
-#. [unit_type]: id=Drake Enforcer, race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "Drake Penghukum"
 
-#. [unit_type]: id=Drake Enforcer, race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
@@ -1448,19 +1521,19 @@ msgstr ""
 msgid "trident"
 msgstr "trisula"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Enforcer.cfg:119
 #, fuzzy
 #| msgid "Drake Enforcer"
 msgid "female^Drake Enforcer"
 msgstr "Drake Penghukum"
 
-#. [unit_type]: id=Drake Fighter, race=drake
+#. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "Drake Petarung"
 
-#. [unit_type]: id=Drake Fighter, race=drake
+#. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:18
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
@@ -1480,19 +1553,19 @@ msgstr ""
 msgid "war blade"
 msgstr "pisau perang"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Fighter.cfg:64
 #, fuzzy
 #| msgid "Drake Fighter"
 msgid "female^Drake Fighter"
 msgstr "Drake Petarung"
 
-#. [unit_type]: id=Fire Drake, race=drake
+#. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "Drake Api"
 
-#. [unit_type]: id=Fire Drake, race=drake
+#. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
@@ -1507,19 +1580,19 @@ msgstr ""
 "dalamnya, vitalitas yang keluar melalui kulit mereka, membakar sisik mereka "
 "ke-abu-abu kemerahan."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Fire.cfg:62
 #, fuzzy
 #| msgid "Fire Drake"
 msgid "female^Fire Drake"
 msgstr "Drake Api"
 
-#. [unit_type]: id=Drake Flameheart, race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "Drake Hatiapi"
 
-#. [unit_type]: id=Drake Flameheart, race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:19
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
@@ -1539,19 +1612,19 @@ msgstr ""
 "pemimpin sukunya untuk supremasi, dan hanya jika dia yakin dengan dukungan "
 "dari rekan-rekan drakenya."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Flameheart.cfg:66
 #, fuzzy
 #| msgid "Drake Flameheart"
 msgid "female^Drake Flameheart"
 msgstr "Drake Hatiapi"
 
-#. [unit_type]: id=Drake Flare, race=drake
+#. [unit_type]: id=Drake Flare, race=drake, gender=male,female
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "Drake Kobaran"
 
-#. [unit_type]: id=Drake Flare, race=drake
+#. [unit_type]: id=Drake Flare, race=drake, gender=male,female
 #: data/core/units/drakes/Flare.cfg:18
 #, fuzzy
 #| msgid ""
@@ -1573,19 +1646,19 @@ msgstr ""
 "Flare sebagai pemimpin, mereka lebih sering terlihat memimpin partai perang "
 "kecil atau menengahi sengketa dengan tangan halus."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Flare.cfg:65
 #, fuzzy
 #| msgid "Drake Flare"
 msgid "female^Drake Flare"
 msgstr "Drake Kobaran"
 
-#. [unit_type]: id=Drake Glider, race=drake
+#. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "Drake Pelayang"
 
-#. [unit_type]: id=Drake Glider, race=drake
+#. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:19
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
@@ -1621,19 +1694,19 @@ msgstr ""
 msgid "slam"
 msgstr "membanting"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Glider.cfg:66
 #, fuzzy
 #| msgid "Drake Glider"
 msgid "female^Drake Glider"
 msgstr "Drake Pelayang"
 
-#. [unit_type]: id=Hurricane Drake, race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "Drake Topan"
 
-#. [unit_type]: id=Hurricane Drake, race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
@@ -1652,19 +1725,19 @@ msgstr ""
 "telah meningkatkan keterampilan mereka dalam pertempuran, tapi kekuatan "
 "terbesar mereka masih terletak pada kecepatan dan penerbangan."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Hurricane.cfg:101
 #, fuzzy
 #| msgid "Hurricane Drake"
 msgid "female^Hurricane Drake"
 msgstr "Drake Topan"
 
-#. [unit_type]: id=Inferno Drake, race=drake
+#. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "Drake Neraka"
 
-#. [unit_type]: id=Inferno Drake, race=drake
+#. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
@@ -1680,19 +1753,19 @@ msgstr ""
 "mereka, pahatan baju besi mereka merah-emas meningkatkan ilusi bahwa mereka, "
 "pada kenyataannya, naga."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Inferno.cfg:64
 #, fuzzy
 #| msgid "Inferno Drake"
 msgid "female^Inferno Drake"
 msgstr "Drake Neraka"
 
-#. [unit_type]: id=Sky Drake, race=drake
+#. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "Drake Angkasa"
 
-#. [unit_type]: id=Sky Drake, race=drake
+#. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:18
 #, fuzzy
 #| msgid ""
@@ -1716,19 +1789,19 @@ msgstr ""
 "buruan, bersaing untuk mendapatkan rasa hormat dari suku mereka dan, hanya "
 "mungkin, sewaktu dengan salah satu drake betina erat-dijaga."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Sky.cfg:98
 #, fuzzy
 #| msgid "Sky Drake"
 msgid "female^Sky Drake"
 msgstr "Drake Angkasa"
 
-#. [unit_type]: id=Drake Thrasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
 msgstr "Drake Pemukul"
 
-#. [unit_type]: id=Drake Thrasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
@@ -1746,19 +1819,19 @@ msgstr ""
 "akan memenuhi tugas-tugas kastanya, selama itu dapat dilakukan di medan "
 "perang."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Thrasher.cfg:118
 #, fuzzy
 #| msgid "Drake Thrasher"
 msgid "female^Drake Thrasher"
 msgstr "Drake Pemukul"
 
-#. [unit_type]: id=Drake Warden, race=drake
+#. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "Drake Penjaga"
 
-#. [unit_type]: id=Drake Warden, race=drake
+#. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
@@ -1784,19 +1857,19 @@ msgid ""
 "attacks."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Warden.cfg:175
 #, fuzzy
 #| msgid "Drake Warden"
 msgid "female^Drake Warden"
 msgstr "Drake Penjaga"
 
-#. [unit_type]: id=Drake Warrior, race=drake
+#. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Drake Prajurit"
 
-#. [unit_type]: id=Drake Warrior, race=drake
+#. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
@@ -1813,7 +1886,7 @@ msgstr ""
 "selama berabad-abad, memakai keramik berlapis kulit dengan pisau perang "
 "tradisional yang dipasang di punggung tangan masing-masing."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
 #, fuzzy
 #| msgid "Drake Warrior"
@@ -1906,14 +1979,14 @@ msgstr ""
 msgid "scimitar"
 msgstr "surik"
 
-#. [unit_type]: id=Dune Burner, race=dunefolk
+#. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:8
 #, fuzzy
 #| msgid "Drake Burner"
 msgid "Dune Burner"
 msgstr "Drake Pembakar"
 
-#. [unit_type]: id=Dune Burner, race=dunefolk
+#. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:21
 msgid ""
 "An oft forgotten hazard of traversing the desert is the freezing cold that "
@@ -1931,7 +2004,7 @@ msgstr ""
 msgid "tar bomb"
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Burner.cfg:98
 #, fuzzy
 #| msgid "Drake Burner"
@@ -2009,14 +2082,14 @@ msgid ""
 "effective flankers or potent shock attackers."
 msgstr ""
 
-#. [unit_type]: id=Dune Falconer, race=dunefolk
+#. [unit_type]: id=Dune Falconer, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Falconer.cfg:15
 #, fuzzy
 #| msgid "female^Necromancer"
 msgid "female^Dune Falconer"
 msgstr "Ahli Nujum Wanita"
 
-#. [unit_type]: id=Dune Falconer, race=dunefolk
+#. [unit_type]: id=Dune Falconer, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Falconer.cfg:39
 msgid ""
 "While well respected among the dunefolk, the art of falconry is relatively "
@@ -2041,12 +2114,12 @@ msgstr ""
 msgid "falcon"
 msgstr "Elang"
 
-#. [unit_type]: id=Dune Firetrooper, race=dunefolk
+#. [unit_type]: id=Dune Firetrooper, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
 msgstr ""
 
-#. [unit_type]: id=Dune Firetrooper, race=dunefolk
+#. [unit_type]: id=Dune Firetrooper, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Firetrooper.cfg:22
 msgid ""
 "By refining Sanbaar sap through a very specific distillation process, it "
@@ -2065,19 +2138,19 @@ msgstr ""
 msgid "flamethrower"
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
 msgstr ""
 
-#. [unit_type]: id=Dune Harrier, race=dunefolk
+#. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:8
 #, fuzzy
 #| msgid "Drake Warrior"
 msgid "female^Dune Harrier"
 msgstr "Drake Prajurit"
 
-#. [unit_type]: id=Dune Harrier, race=dunefolk
+#. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:25
 msgid ""
 "While harriers can fulfill a similar role to striders in hampering enemy "
@@ -2285,12 +2358,12 @@ msgid ""
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
 
-#. [unit_type]: id=Dune Scorcher, race=dunefolk
+#. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:9
 msgid "Dune Scorcher"
 msgstr ""
 
-#. [unit_type]: id=Dune Scorcher, race=dunefolk
+#. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:22
 msgid ""
 "The scorcher’s moniker is derived not from the destruction they wreak on "
@@ -2302,21 +2375,21 @@ msgid ""
 "battlefield, though this sometimes also results in unintended friendly fire."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Scorcher.cfg:95
 #, fuzzy
 #| msgid "female^Necromancer"
 msgid "female^Dune Scorcher"
 msgstr "Ahli Nujum Wanita"
 
-#. [unit_type]: id=Dune Skirmisher, race=dunefolk
+#. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:8
 #, fuzzy
 #| msgid "Saurian Skirmisher"
 msgid "female^Dune Skirmisher"
 msgstr "Saurian Skirmish"
 
-#. [unit_type]: id=Dune Skirmisher, race=dunefolk
+#. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:21
 msgid ""
 "Born and raised out on the open sands, skirmishers are accustomed to the "
@@ -2330,14 +2403,14 @@ msgid ""
 "disadvantageous position."
 msgstr ""
 
-#. [unit_type]: id=Dune Sky Hunter, race=dunefolk
+#. [unit_type]: id=Dune Sky Hunter, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
 #, fuzzy
 #| msgid "Drake Burner"
 msgid "female^Dune Sky Hunter"
 msgstr "Drake Pembakar"
 
-#. [unit_type]: id=Dune Sky Hunter, race=dunefolk
+#. [unit_type]: id=Dune Sky Hunter, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Sky_Hunter.cfg:39
 msgid ""
 "Often mistaken for young Rocs, desert eagles are large, majestic birds of "
@@ -2425,14 +2498,14 @@ msgid ""
 "prepared to die as nameless martyrs to protect their brethren."
 msgstr ""
 
-#. [unit_type]: id=Dune Strider, race=dunefolk
+#. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:8
 #, fuzzy
 #| msgid "female^Fugitive"
 msgid "female^Dune Strider"
 msgstr "Buronan Wanita "
 
-#. [unit_type]: id=Dune Strider, race=dunefolk
+#. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:21
 msgid ""
 "The power of any Dunefolk assault is inhibited by one major drawback: "
@@ -2873,12 +2946,12 @@ msgstr ""
 msgid "Dwarvish Ulfserker"
 msgstr "Dwarf Pemarah"
 
-#. [unit_type]: id=Elvish Archer, race=elf
+#. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "Elf Pemanah"
 
-#. [unit_type]: id=Elvish Archer, race=elf
+#. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:19
 msgid ""
 "As primarily foragers and hunters, most elves learn to become proficient "
@@ -2891,17 +2964,17 @@ msgid ""
 "the safety of their forests."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Archer.cfg:80
 msgid "female^Elvish Archer"
 msgstr "Elf Pemanah Wanita"
 
-#. [unit_type]: id=Elvish Avenger, race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "Elf Pendendam"
 
-#. [unit_type]: id=Elvish Avenger, race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:20
 #, fuzzy
 #| msgid ""
@@ -2940,7 +3013,7 @@ msgid ""
 "like sand, water, and mountains."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Avenger.cfg:96
 msgid "female^Elvish Avenger"
 msgstr "Elf Pendendam Wanita"
@@ -2983,12 +3056,12 @@ msgid ""
 "exceptionally dangerous and should never be underestimated."
 msgstr ""
 
-#. [unit_type]: id=Elvish Druid, race=elf
+#. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "Elf Cenayang"
 
-#. [unit_type]: id=Elvish Druid, race=elf
+#. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:19
 msgid ""
 "Some elves choose to deepen their connection to the corporeal world, thereby "
@@ -3010,12 +3083,12 @@ msgstr ""
 msgid "ensnare"
 msgstr "membelit"
 
-#. [unit_type]: id=Elvish Enchantress, race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "Elf Pemantra"
 
-#. [unit_type]: id=Elvish Enchantress, race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:19
 msgid ""
 "In the context of Elven magic, the notion of enchanting is a little bit "
@@ -3112,12 +3185,12 @@ msgid ""
 "or not they sit at the top of the chain of command."
 msgstr ""
 
-#. [unit_type]: id=Elvish Lady, race=elf
+#. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:4
 msgid "female^Elvish Lady"
 msgstr "Elf Ratu"
 
-#. [unit_type]: id=Elvish Lady, race=elf
+#. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
 "Usually strongly connected with the earthly aspect of Elven magic, noble "
@@ -3160,12 +3233,12 @@ msgid ""
 "rather than force."
 msgstr ""
 
-#. [unit_type]: id=Elvish Marksman, race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf, gender=male,female
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "Elf Penembak"
 
-#. [unit_type]: id=Elvish Marksman, race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf, gender=male,female
 #: data/core/units/elves/Marksman.cfg:19
 msgid ""
 "Elves have an intimate connection to the world of faerie, which innately "
@@ -3186,7 +3259,7 @@ msgstr ""
 msgid "longbow"
 msgstr "panah panjang"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Marksman.cfg:89
 msgid "female^Elvish Marksman"
 msgstr "Elf Penembak Wanita"
@@ -3250,12 +3323,12 @@ msgid ""
 "fastest do comprise."
 msgstr ""
 
-#. [unit_type]: id=Elvish Ranger, race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "Elf Ranger"
 
-#. [unit_type]: id=Elvish Ranger, race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:19
 msgid ""
 "The silent watchers of the forests, Elvish rangers are masters of stealth "
@@ -3276,7 +3349,7 @@ msgid ""
 "sand, water, and mountains."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Ranger.cfg:95
 msgid "female^Elvish Ranger"
 msgstr "Elf Ranger Wanita"
@@ -3324,12 +3397,12 @@ msgid ""
 "patrols, whom they also reinforce when necessary."
 msgstr ""
 
-#. [unit_type]: id=Elvish Shaman, race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "Elf Dukun Wanita"
 
-#. [unit_type]: id=Elvish Shaman, race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:19
 msgid ""
 "With a little training, an elf’s inherent affinity with the natural world "
@@ -3342,12 +3415,12 @@ msgid ""
 "their magic to command the earth itself to hinder or pacify their enemies."
 msgstr ""
 
-#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "Elf Penembak Jitu"
 
-#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:20
 msgid ""
 "Though not a formal title, ‘Sharpshooter’ is the epithet given to the most "
@@ -3361,12 +3434,12 @@ msgid ""
 "the undisputed masters of archery."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Sharpshooter.cfg:81
 msgid "female^Elvish Sharpshooter"
 msgstr "Elf Penembak Jitu Wanita"
 
-#. [unit_type]: id=Elvish Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/core/units/elves/Shyde.cfg:22
 msgid ""
 "As an elf maiden entwines herself more and more with nature, the essence of "
@@ -3384,12 +3457,12 @@ msgstr ""
 msgid "faerie touch"
 msgstr "sentuhan peri"
 
-#. [unit_type]: id=Elvish Sorceress, race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "Elf Penyihir Wanita"
 
-#. [unit_type]: id=Elvish Sorceress, race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:19
 msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
@@ -3405,12 +3478,12 @@ msgid ""
 "it with judicious caution."
 msgstr ""
 
-#. [unit_type]: id=Elvish Sylph, race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf, gender=female
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "Elf Bidadari"
 
-#. [unit_type]: id=Elvish Sylph, race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf, gender=female
 #: data/core/units/elves/Sylph.cfg:21
 msgid ""
 "Tremendously powerful in unfathomable ways, the sage-like Sylphs are masters "
@@ -3752,68 +3825,6 @@ msgstr ""
 "keluar dari formasi, dan menusuk barisan pertahanan. Namun, mereka terbatas "
 "di gunakan untuk bertahan."
 
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:4
-msgid "Paladin"
-msgstr "Paladin"
-
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "    \n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
-msgid ""
-"Knights of the highest virtue, Paladins have sworn their strength not to "
-"king and crown, but to ideals themselves; of chivalry, and the stewardship "
-"of everything that is good. They may serve in the armies of the world, but "
-"their first loyalties often lie with groups of their own making; secret, "
-"monastic orders that cross political and cultural boundaries. Rulers are "
-"sometimes wary of them, for the paladins’ loyalty is only as strong as the "
-"liege’s apparent virtue. This has led the more darkly ambitious to either "
-"attempt to defame and disperse these groups, or more rarely, to conjure "
-"elaborate deceptions to keep these otherwise staunchly loyal troops in "
-"service.\n"
-"\n"
-"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-"that champion most armies, but they are first-class fighters nonetheless. "
-"Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a paladin is very powerful in fighting magical or "
-"unnatural things, and most have some skill at medicine and healing."
-msgstr ""
-"Ksatria dari kebajikan tertinggi, Paladin telah bersumpah demi kekuatan "
-"mereka tidak untuk raja dan mahkota, tetapi untuk cita-cita mereka sendiri; "
-"kaum ksatria, dan pelayanan dari segala sesuatu yang baik. Mereka mungkin "
-"melayani di tentara dunia, tetapi loyalitas pertama mereka kerap diberikan "
-"dengan kelompok buatan mereka sendiri; rahasia, golongan-golongan biarawan "
-"yang melintasi batas politik dan budaya. Penguasa kadang-kadang waspada "
-"terhadap mereka, menurut paladin kesetiaan hanya sekuat kebajikan Paduka "
-"yang nyata. Hal ini telah mengarah ke ambisius lebih gelap baik upaya untuk "
-"mencemarkan nama baik dan membubarkan kelompok ini, atau lebih jarang, untuk "
-"membangkitkan penipuan rumit untuk mempertahankan pasukan tersebut "
-"dinyatakan kukuh setia dalam pelayanan.\n"
-"    \n"
-"Paladin pada umumnya tidak cukup semenakutkan seperti 'Ksatria Agung' yang "
-"merupakan tentara paling kampiun, tetapi mereka adalah petarung kelas satu "
-"meskipun demikian. Selain itu, kebijaksanaan dan kesalehan mereka memberikan "
-"prajurit biarawan ini kemampuan aneh tertentu; Paladin yang sangat kuat "
-"dalam memerangi hal magis atau tidak wajar, dan yang paling memiliki "
-"keterampilan pada obat-obatan dan penyembuhan."
-
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
@@ -3838,7 +3849,7 @@ msgstr ""
 "mereka yang telah jatuh keluar jalur, tetapi harus berhati-hati terhadap "
 "penombak dan pemanah yang mana mereka merupakan target yang besar. "
 
-#. [unit_type]: id=Bowman, race=human
+#. [unit_type]: id=Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -4172,12 +4183,12 @@ msgid ""
 "strategy."
 msgstr ""
 
-#. [unit_type]: id=Longbowman, race=human
+#. [unit_type]: id=Longbowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "Pemanah Tinggi"
 
-#. [unit_type]: id=Longbowman, race=human
+#. [unit_type]: id=Longbowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Longbowman.cfg:19
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -4193,12 +4204,12 @@ msgstr ""
 "senjata mereka sebagai lencana kebanggaan, dan kebanyakan pemanah menantikan "
 "hari mereka dapat mulai menggunakan busur panjang."
 
-#. [unit_type]: id=Master Bowman, race=human
+#. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "Ahli Panah"
 
-#. [unit_type]: id=Master Bowman, race=human
+#. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -4437,12 +4448,12 @@ msgid ""
 "and ‘impact’ attacks."
 msgstr ""
 
-#. [unit_type]: id=Mage, race=human
+#. [unit_type]: id=Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "Penyihir"
 
-#. [unit_type]: id=Mage, race=human
+#. [unit_type]: id=Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage.cfg:19
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
@@ -4490,17 +4501,17 @@ msgstr ""
 msgid "missile"
 msgstr "misil"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage.cfg:159
 msgid "female^Mage"
 msgstr "Penyihir Wanita"
 
-#. [unit_type]: id=Arch Mage, race=human
+#. [unit_type]: id=Arch Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "Penyihir Arch"
 
-#. [unit_type]: id=Arch Mage, race=human
+#. [unit_type]: id=Arch Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Arch.cfg:18
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
@@ -4544,7 +4555,7 @@ msgstr ""
 msgid "fireball"
 msgstr "bola api"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Arch.cfg:109
 msgid "female^Arch Mage"
 msgstr "Penyihir Arch Wanita"
@@ -4567,17 +4578,17 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:35
-#: data/core/units/monsters/Raven_Harbinger.cfg:104
-#: data/core/units/monsters/Raven_Omen.cfg:94
+#: data/core/units/monsters/Raven_Harbinger.cfg:100
+#: data/core/units/monsters/Raven_Omen.cfg:90
 msgid "lightning"
 msgstr "petir"
 
-#. [unit_type]: id=Great Mage, race=human
+#. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "Penyihir Hebat"
 
-#. [unit_type]: id=Great Mage, race=human
+#. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:19
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
@@ -4612,17 +4623,17 @@ msgid ""
 "attacks."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Great.cfg:90
 msgid "female^Great Mage"
 msgstr "Penyihir Hebat Wanita"
 
-#. [unit_type]: id=Red Mage, race=human
+#. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "Penyihir Merah"
 
-#. [unit_type]: id=Red Mage, race=human
+#. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:18
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
@@ -4659,17 +4670,17 @@ msgid ""
 "attacks."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Red.cfg:98
 msgid "female^Red Mage"
 msgstr "Penyihir Merah Wanita "
 
-#. [unit_type]: id=Silver Mage, race=human
+#. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "Penyihir Perak"
 
-#. [unit_type]: id=Silver Mage, race=human
+#. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:19
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
@@ -4722,17 +4733,17 @@ msgstr ""
 "CATATAN KHUSUS Penyihir Perak dengan baik selaras dengan sifat ajaib mereka "
 "dan sangat tahan terhadap kerusakan non-fisik."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Silver.cfg:163
 msgid "female^Silver Mage"
 msgstr "Penyihir Perak Wanita"
 
-#. [unit_type]: id=White Mage, race=human
+#. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "Penyihir Putih"
 
-#. [unit_type]: id=White Mage, race=human
+#. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:18
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
@@ -4764,17 +4775,17 @@ msgid ""
 "attacks."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_White.cfg:105
 msgid "female^White Mage"
 msgstr "Penyihir Putih Wanita"
 
-#. [unit_type]: id=Mage of Light, race=human
+#. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "Penyihir Cahaya"
 
-#. [unit_type]: id=Mage of Light, race=human
+#. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:19
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
@@ -4800,17 +4811,17 @@ msgid ""
 "attacks."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_of_Light.cfg:101
 msgid "female^Mage of Light"
 msgstr "Penyihir Cahaya Wanita"
 
-#. [unit_type]: id=Outlaw, race=human
+#. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "Penjahat"
 
-#. [unit_type]: id=Outlaw, race=human
+#. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former ‘footpads’ rise up in the ranks of their "
@@ -4829,17 +4840,17 @@ msgstr ""
 "amunisi. Penjahat agak gelisah bertempur selama siang hari, lebih suka "
 "perlindungan malam hari."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
 msgstr "Penjahat Perempuan"
 
-#. [unit_type]: id=Assassin, race=human
+#. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "Pembunuh"
 
-#. [unit_type]: id=Assassin, race=human
+#. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:19
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
@@ -4863,7 +4874,7 @@ msgstr ""
 msgid "throwing knives"
 msgstr "pisau lempar "
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Assassin.cfg:101
 msgid "female^Assassin"
 msgstr "Pembunuh Wanita"
@@ -4889,12 +4900,12 @@ msgstr ""
 "menyerah. Seperti penjahat lainnya, mereka tidak nyaman bertempur di siang "
 "hari bolong, mereka biasa beraksi di malam hari."
 
-#. [unit_type]: id=Footpad, race=human
+#. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "Footpad"
 
-#. [unit_type]: id=Footpad, race=human
+#. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
 "These petty criminals are often derisively called ‘footpads’ by their "
@@ -4911,17 +4922,17 @@ msgstr ""
 "meskipun persenjataan mereka bermutu rendah mereka cukup baik mengganggu "
 "musuh-musuh mereka, terutama di bawah lindungan kegelapan."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Footpad.cfg:89
 msgid "female^Footpad"
 msgstr "Footpad Perempuan"
 
-#. [unit_type]: id=Fugitive, race=human
+#. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "Buronan"
 
-#. [unit_type]: id=Fugitive, race=human
+#. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -4933,7 +4944,7 @@ msgstr ""
 "elemen mereka, meskipun tidak cocok untuk memperbanyak mereka karena serdadu "
 "taat hukum dapat menjebloskan mereka."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:80
 msgid "female^Fugitive"
 msgstr "Buronan Wanita "
@@ -4959,12 +4970,12 @@ msgstr ""
 "tengah malam. pengalaman mereka dari pertempuran tersebut membuat mereka "
 "mematikan bagi musuh satu lawan satu."
 
-#. [unit_type]: id=Rogue, race=human
+#. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "Pencopet"
 
-#. [unit_type]: id=Rogue, race=human
+#. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:18
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
@@ -4982,7 +4993,7 @@ msgstr ""
 "melempar pisau dengan akurasi yang dapat diandalkan, dan berjam-jam mereka "
 "berkeliaran di malam hari membuat mereka lebih nyaman bertempur di kegelapan."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Rogue.cfg:78
 msgid "female^Rogue"
 msgstr "Pencopet Wanita"
@@ -5007,12 +5018,12 @@ msgstr ""
 "pengalaman, mereka kadang-kadang berhasil menghindari penjara atau kematian "
 "yang menunggu sebagian besar rekan-rekan mereka."
 
-#. [unit_type]: id=Thief, race=human
+#. [unit_type]: id=Thief, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "Pencuri"
 
-#. [unit_type]: id=Thief, race=human
+#. [unit_type]: id=Thief, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Thief.cfg:18
 msgid ""
 "For as long as anyone can remember, the members of the various ‘guilds’ of "
@@ -5032,7 +5043,7 @@ msgstr ""
 "senang menggunakan taktik yang kurang terhormat dalam pertempuran, melihat "
 "sedikit manfaat dalam 'pertarungan yang jujur'."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Thief.cfg:147
 msgid "female^Thief"
 msgstr " Pencuri Wanita"
@@ -5058,12 +5069,12 @@ msgstr ""
 "semua berbagi kegemaran untuk memukul korban-korban mereka dengan tongkat "
 "besar."
 
-#. [unit_type]: id=Peasant, race=human
+#. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "Petani"
 
-#. [unit_type]: id=Peasant, race=human
+#. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:18
 #, fuzzy
 #| msgid ""
@@ -5088,12 +5099,12 @@ msgstr ""
 msgid "pitchfork"
 msgstr "garpu rumput"
 
-#. [unit_type]: id=Royal Warrior, race=human
+#. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:8
 msgid "Royal Warrior"
 msgstr "Prajurit Kerajaan"
 
-#. [unit_type]: id=Royal Warrior, race=human
+#. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:25
 msgid ""
 "The kings and princes of human nobility are still often trained rigorously "
@@ -5104,12 +5115,12 @@ msgid ""
 "faster than their gilded plate would suggest."
 msgstr ""
 
-#. [unit_type]: id=Woodsman, race=human
+#. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "Ahli hutan"
 
-#. [unit_type]: id=Woodsman, race=human
+#. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:18
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
@@ -5281,12 +5292,12 @@ msgid ""
 "situation, even merfolk with no weapons or training can be dangerous."
 msgstr ""
 
-#. [unit_type]: id=Mermaid Diviner, race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "Manusia Duyung Penujum Wanita"
 
-#. [unit_type]: id=Mermaid Diviner, race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:22
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
@@ -5304,12 +5315,12 @@ msgstr ""
 "tapi berkuda kembali hari berikutnya, dalam jumlah penuh, dan membuat "
 "keruntuhan adipati merah tua."
 
-#. [unit_type]: id=Mermaid Enchantress, race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman, gender=female
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "Manusia Duyung Penyihir Wanita"
 
-#. [unit_type]: id=Mermaid Enchantress, race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman, gender=female
 #: data/core/units/merfolk/Enchantress.cfg:18
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
@@ -5444,12 +5455,12 @@ msgstr ""
 "terbiasa di dalam air. Pada saat dibutuhkan, banyak manusia duyung akan "
 "secara sukarela membengkakan jajaran militer mereka."
 
-#. [unit_type]: id=Mermaid Initiate, race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman, gender=female
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "Manusia Duyung Muda Wanita"
 
-#. [unit_type]: id=Mermaid Initiate, race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman, gender=female
 #: data/core/units/merfolk/Initiate.cfg:18
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
@@ -5541,12 +5552,12 @@ msgstr ""
 "pertempuran dengan sedikit atau tanpa adaptasi dari memancing, karena "
 "pentungan sudah cukup mematikan."
 
-#. [unit_type]: id=Mermaid Priestess, race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman, gender=female
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "Manusia Duyung Pendeta Wanita"
 
-#. [unit_type]: id=Mermaid Priestess, race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman, gender=female
 #: data/core/units/merfolk/Priestess.cfg:21
 #, fuzzy
 #| msgid ""
@@ -5569,12 +5580,12 @@ msgstr ""
 "juga memberikan mereka wewenang tertentu, yang memungkinkan mereka untuk "
 "menjaga rakyat mereka dari hal-hal magis atau sesuatu yang tidak wajar."
 
-#. [unit_type]: id=Mermaid Siren, race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman, gender=female
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "Manusia Duyung Sirene"
 
-#. [unit_type]: id=Mermaid Siren, race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman, gender=female
 #: data/core/units/merfolk/Siren.cfg:19
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
@@ -6071,9 +6082,9 @@ msgstr ""
 #. [attack]: type=blade
 #. [attack]: type=pierce
 #: data/core/units/monsters/Elder_Falcon.cfg:84
-#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:86
-#: data/core/units/monsters/Raven_Harbinger.cfg:96
-#: data/core/units/monsters/Raven_Omen.cfg:86
+#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:82
+#: data/core/units/monsters/Raven_Harbinger.cfg:92
+#: data/core/units/monsters/Raven_Omen.cfg:82
 #: data/core/units/monsters/Roc.cfg:64
 msgid "beak"
 msgstr "paruh"
@@ -6348,12 +6359,12 @@ msgstr ""
 msgid "hooves"
 msgstr ""
 
-#. [unit_type]: id=Black Horse, race=horse
+#. [unit_type]: id=Black Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Black.cfg:14
 msgid "Black Horse"
 msgstr ""
 
-#. [unit_type]: id=Black Horse, race=horse
+#. [unit_type]: id=Black Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Black.cfg:34
 msgid ""
 "The true nature of Black Horses is impossible to discern, but the fire in "
@@ -6380,14 +6391,14 @@ msgstr ""
 msgid "female^Black Nightmare"
 msgstr "Penyihir Cahaya Wanita"
 
-#. [unit_type]: id=Dark Horse
+#. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
 #, fuzzy
 #| msgid "Dark Sorcerer"
 msgid "Dark Horse"
 msgstr "Penyihir Kegelapan"
 
-#. [unit_type]: id=Dark Horse
+#. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:40
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
@@ -6873,12 +6884,12 @@ msgid ""
 "from venturing too far onto the mountains they are said to inhabit."
 msgstr ""
 
-#. [unit_type]: id=Naga Dirkfang, race=naga
+#. [unit_type]: id=Naga Dirkfang, race=naga, gender=male,female
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
 msgstr ""
 
-#. [unit_type]: id=Naga Dirkfang, race=naga
+#. [unit_type]: id=Naga Dirkfang, race=naga, gender=male,female
 #: data/core/units/nagas/Dirkfang.cfg:18
 msgid ""
 "In contrast to the heavily melee-focused style of their northern brethren, "
@@ -6896,19 +6907,19 @@ msgstr ""
 msgid "chakri"
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Dirkfang.cfg:93
 #, fuzzy
 #| msgid "Nagini Fighter"
 msgid "Nagini Dirkfang"
 msgstr "Nagini Petarung"
 
-#. [unit_type]: id=Naga Fighter, race=naga
+#. [unit_type]: id=Naga Fighter, race=naga, gender=male,female
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "Kobra Petarung"
 
-#. [unit_type]: id=Naga Fighter, race=naga
+#. [unit_type]: id=Naga Fighter, race=naga, gender=male,female
 #: data/core/units/nagas/Fighter.cfg:18
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -6926,7 +6937,7 @@ msgstr ""
 "agak lemah dalam bentuk, tetapi sering jauh lebih gesit dari lawan-lawan "
 "mereka."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Fighter.cfg:49
 msgid "Nagini Fighter"
 msgstr "Nagini Petarung"
@@ -6990,12 +7001,12 @@ msgid ""
 "terrain advantage in such situations."
 msgstr ""
 
-#. [unit_type]: id=Naga Myrmidon, race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "Kobra Mirmidon"
 
-#. [unit_type]: id=Naga Myrmidon, race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:20
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -7011,12 +7022,12 @@ msgstr ""
 "terbuka, tapi kemampuan mereka untuk berenang memungkinkan mereka melakukan "
 "mobilitas mematikan dalam air."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Myrmidon.cfg:48
 msgid "Nagini Myrmidon"
 msgstr "Nagini Mirmidon"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Myrmidon.cfg:50
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
@@ -7032,14 +7043,14 @@ msgstr ""
 "medan terbuka, tapi kemampuan mereka untuk berenang memungkinkan gerakan "
 "mereka mematikan di dalam air."
 
-#. [unit_type]: id=Naga Ophidian, race=naga
+#. [unit_type]: id=Naga Ophidian, race=naga, gender=male,female
 #: data/core/units/nagas/Ophidian.cfg:4
 #, fuzzy
 #| msgid "Naga Myrmidon"
 msgid "Naga Ophidian"
 msgstr "Kobra Mirmidon"
 
-#. [unit_type]: id=Naga Ophidian, race=naga
+#. [unit_type]: id=Naga Ophidian, race=naga, gender=male,female
 #: data/core/units/nagas/Ophidian.cfg:18
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
@@ -7068,21 +7079,21 @@ msgstr "pisau perang"
 msgid "jarid"
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Ophidian.cfg:91
 #, fuzzy
 #| msgid "Naga Myrmidon"
 msgid "Nagini Ophidian"
 msgstr "Kobra Mirmidon"
 
-#. [unit_type]: id=Naga Ringcaster, race=naga
+#. [unit_type]: id=Naga Ringcaster, race=naga, gender=male,female
 #: data/core/units/nagas/Ringcaster.cfg:4
 #, fuzzy
 #| msgid "Naga Fighter"
 msgid "Naga Ringcaster"
 msgstr "Kobra Petarung"
 
-#. [unit_type]: id=Naga Ringcaster, race=naga
+#. [unit_type]: id=Naga Ringcaster, race=naga, gender=male,female
 #: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
@@ -7098,21 +7109,21 @@ msgstr ""
 msgid "chakram"
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Ringcaster.cfg:104
 #, fuzzy
 #| msgid "Naga Fighter"
 msgid "Nagini Ringcaster"
 msgstr "Kobra Petarung"
 
-#. [unit_type]: id=Naga Sicarius, race=naga
+#. [unit_type]: id=Naga Sicarius, race=naga, gender=male,female
 #: data/core/units/nagas/Sicarius.cfg:4
 #, fuzzy
 #| msgid "Naga Fighter"
 msgid "Naga Sicarius"
 msgstr "Kobra Petarung"
 
-#. [unit_type]: id=Naga Sicarius, race=naga
+#. [unit_type]: id=Naga Sicarius, race=naga, gender=male,female
 #: data/core/units/nagas/Sicarius.cfg:19
 msgid ""
 "While they sometimes still stand in as sellswords for potential Dunefolk "
@@ -7130,19 +7141,19 @@ msgid ""
 "blade to deflect or distract at the critical moment."
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Sicarius.cfg:95
 #, fuzzy
 #| msgid "Nagini Warrior"
 msgid "Nagini Sicarius"
 msgstr "Nagini Prajurit"
 
-#. [unit_type]: id=Naga Warrior, race=naga
+#. [unit_type]: id=Naga Warrior, race=naga, gender=male,female
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "Kobra Prajurit "
 
-#. [unit_type]: id=Naga Warrior, race=naga
+#. [unit_type]: id=Naga Warrior, race=naga, gender=male,female
 #: data/core/units/nagas/Warrior.cfg:18
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -7159,12 +7170,12 @@ msgstr ""
 "berputar dan berbalik untuk mengelak dari serangan. Hal ini membuat mereka "
 "kuat di darat, tetapi pergesekan air sangat menghambat teknik ini."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Warrior.cfg:46
 msgid "Nagini Warrior"
 msgstr "Nagini Prajurit"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Warrior.cfg:48
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -7182,14 +7193,14 @@ msgstr ""
 "Hal ini membuat mereka kuat di darat, tetapi pergesekan air sangat "
 "menghambat kemampuan mereka untuk melakukan hal ini."
 
-#. [unit_type]: id=Naga Zephyr, race=naga
+#. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:4
 #, fuzzy
 #| msgid "Naga Fighter"
 msgid "Naga Zephyr"
 msgstr "Kobra Petarung"
 
-#. [unit_type]: id=Naga Zephyr, race=naga
+#. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
@@ -7231,7 +7242,7 @@ msgid ""
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Zephyr.cfg:111
 #, fuzzy
 #| msgid "Naga Fighter"
@@ -7543,14 +7554,14 @@ msgid ""
 "strategies."
 msgstr ""
 
-#. [unit_type]: id=Saurian Ambusher, race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:4
 #, fuzzy
 #| msgid "Saurian Ambusher"
 msgid "female^Saurian Ambusher"
 msgstr "Saurian Penyergap"
 
-#. [unit_type]: id=Saurian Ambusher, race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:18
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
@@ -7587,14 +7598,14 @@ msgstr ""
 "kurang dipahami, tetapi dianggap benar dengan rasa takut bagi orang-orang "
 "terhadap siapa ia digunakan."
 
-#. [unit_type]: id=Saurian Flanker, race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:4
 #, fuzzy
 #| msgid "Saurian Flanker"
 msgid "female^Saurian Flanker"
 msgstr "Saurian Pencegat"
 
-#. [unit_type]: id=Saurian Flanker, race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:19
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
@@ -7609,14 +7620,14 @@ msgstr ""
 "sangat berbahaya dalam pertempuran, musuh yang ceroboh dapat segera "
 "mendapati pasukan bantuan mereka diapit oleh makhluk-makhluk ini."
 
-#. [unit_type]: id=Saurian Javelineer, race=lizard
+#. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:4
 #, fuzzy
 #| msgid "Saurian Flanker"
 msgid "female^Saurian Javelineer"
 msgstr "Saurian Pencegat"
 
-#. [unit_type]: id=Saurian Javelineer, race=lizard
+#. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
 msgid ""
 "After years of combat practice, saurians warriors that are the most talented "
@@ -7648,14 +7659,14 @@ msgstr ""
 "mereka miliki, dan menjadi makhluk yang patut di waspadai jika pernah "
 "menjumpainya."
 
-#. [unit_type]: id=Saurian Prophet, race=lizard
+#. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:4
 #, fuzzy
 #| msgid "Saurian Oracle"
 msgid "Saurian Prophet"
 msgstr "Saurian Penyihir"
 
-#. [unit_type]: id=Saurian Prophet, race=lizard
+#. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:19
 #, fuzzy
 #| msgid ""
@@ -7702,14 +7713,14 @@ msgstr ""
 "sekali trampil pada sejenis ilmu kedokteran, yang mana sangat bermanfaat "
 "kapan saja pertempuran terhadap mereka."
 
-#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:4
 #, fuzzy
 #| msgid "Saurian Skirmisher"
 msgid "female^Saurian Skirmisher"
 msgstr "Saurian Skirmish"
 
-#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:18
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
@@ -7734,14 +7745,14 @@ msgstr ""
 msgid "Saurian Soothsayer"
 msgstr "Saurian Tenung"
 
-#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:4
 #, fuzzy
 #| msgid "Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
 msgstr "Saurian Skirmish"
 
-#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:18
 msgid ""
 "Some saurians with particularly good aim prefer to aid their allies from the "
@@ -8147,12 +8158,12 @@ msgid ""
 "for the rest of time."
 msgstr ""
 
-#. [unit_type]: id=Dark Adept, race=human
+#. [unit_type]: id=Dark Adept, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Penyihir Hitam"
 
-#. [unit_type]: id=Dark Adept, race=human
+#. [unit_type]: id=Dark Adept, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:22
 #, fuzzy
 #| msgid ""
@@ -8189,17 +8200,17 @@ msgstr ""
 "Dalam kondisi seperti itu, satu-satunya senjata mereka adalah keahlian "
 "mereka yang mereka berkomitmen untuk mempelajarinya."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Adept.cfg:160
 msgid "female^Dark Adept"
 msgstr "Penyihir Hitam Wanita"
 
-#. [unit_type]: id=Dark Sorcerer, race=human
+#. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "Penyihir Kegelapan"
 
-#. [unit_type]: id=Dark Sorcerer, race=human
+#. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
 msgid ""
 "The dread inspired by black magic is enhanced by the secrecy and fell rumors "
@@ -8235,12 +8246,12 @@ msgstr ""
 "raja lalim impikan, dan menggiurkan bagi mereka yang bahkan hanya memiliki "
 "sedikit keinginan untuk kekuasaan."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:145
 msgid "Dark Sorceress"
 msgstr "Penyihir Kegelapan"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:149
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -8318,7 +8329,7 @@ msgstr ""
 "pertanyaan ini dapat diangkat sama sekali, menyaksikan besarnya apa yang "
 "telah mereka capai."
 
-#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Necromancer, gender=male,female, race=human
 #: data/core/units/undead/Necromancer.cfg:22
 msgid ""
 "One of the pinnacles of what is considered ‘black magic’ is the art of "
@@ -8338,7 +8349,7 @@ msgstr ""
 "Kemampuan ini, dalam segala aspek, adalah langkah pertama menuju penipuan "
 "kematian sebagai hadiah utamanya."
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necromancer.cfg:152
 msgid "female^Necromancer"
 msgstr "Ahli Nujum Wanita"
@@ -8372,16 +8383,11 @@ msgid "Bone Knight"
 msgstr "Goblin Ksatria "
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:59
+#: data/core/units/undead/Skele_Bone_Knight.cfg:60
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
-msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:76
-msgid "trample"
 msgstr ""
 
 #. [unit_type]: id=Bone Shooter, race=undead
@@ -8576,7 +8582,7 @@ msgid "Skeleton Rider"
 msgstr "Tengkorak Pemanah"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:78
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "

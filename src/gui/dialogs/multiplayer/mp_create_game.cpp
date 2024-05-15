@@ -17,20 +17,16 @@
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
-#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
@@ -587,7 +583,12 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 		item["label"] = game->name();
 		data.emplace("game_name", item);
 
-		list.add_row(data);
+		grid& rg = list.add_row(data);
+
+		auto& icon = find_widget<image>(&rg, "game_icon", false);
+		if(icon.get_label().empty()) {
+			icon.set_visible(gui2::widget::visibility::invisible);
+		}
 	}
 
 	if(!level.empty() && !list.get_rows_shown().empty()) {

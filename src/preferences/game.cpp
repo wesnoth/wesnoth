@@ -17,19 +17,16 @@
 
 #include "preferences/game.hpp"
 #include "game_board.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map_settings.hpp"
 #include "serialization/string_utils.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "units/map.hpp"
 #include "units/unit.hpp"
 #include "video.hpp"
 
-#include <cassert>
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err, log_config)
@@ -610,7 +607,7 @@ void set_countdown(bool value)
 
 int countdown_init_time()
 {
-	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_init_time"), 270), 0, 1500);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_init_time"), 240), 0, 1500);
 }
 
 void set_countdown_init_time(int value)
@@ -620,7 +617,7 @@ void set_countdown_init_time(int value)
 
 int countdown_reservoir_time()
 {
-	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_reservoir_time"), 330), 30, 1500);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_reservoir_time"), 360), 30, 1500);
 }
 
 void set_countdown_reservoir_time(int value)
@@ -630,7 +627,7 @@ void set_countdown_reservoir_time(int value)
 
 int countdown_turn_bonus()
 {
-	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_turn_bonus"), 60), 0, 300);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_turn_bonus"), 240), 0, 300);
 }
 
 void set_countdown_turn_bonus(int value)
@@ -640,7 +637,7 @@ void set_countdown_turn_bonus(int value)
 
 int countdown_action_bonus()
 {
-	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_action_bonus"), 13), 0, 30);
+	return std::clamp<int>(lexical_cast_default<int>(preferences::get("mp_countdown_action_bonus"), 0), 0, 30);
 }
 
 void set_countdown_action_bonus(int value)

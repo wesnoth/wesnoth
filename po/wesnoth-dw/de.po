@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
-"PO-Revision-Date: 2022-01-09 22:53+0100\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-02-20 08:23+0100\n"
 "Last-Translator: German translation team <irc://irc.libera.chat/#wesnoth-"
 "de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -1197,11 +1197,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
-#, fuzzy
-#| msgid ""
-#| "You can choose when the slaves come out of their villages and attack "
-#| "their captors. When you are ready, right-click anywhere and select "
-#| "'Inspire the slaves to revolt'."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right-click anywhere and select ‘Inspire the "
@@ -2598,7 +2593,7 @@ msgstr ""
 "Freunde und ich kämpfen heute Seit’ an Seit’ mit euch. Befehlt und wir "
 "folgen. Gold ist keins nötig."
 
-#. [unit]: type=Footpad, id=Lyllan
+#. [unit]: type=Footpad, gender=female, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
 msgstr "Lyllan"
@@ -2609,7 +2604,7 @@ msgid "Trudd"
 msgstr "Trudd"
 
 #. [unit]: type=Thug, id=Dorcyn
-#. [unit]: type=Footpad, id=Dorcyn
+#. [unit]: type=Footpad, gender=male, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"

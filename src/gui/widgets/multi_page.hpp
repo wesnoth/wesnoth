@@ -32,20 +32,6 @@ struct builder_multi_page;
 
 class generator_base;
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A multi page is a control that contains several 'pages' of which only one is visible.
- * The pages can contain the same widgets containing the same 'kind' of data or look completely different.
- * Key          |Type                        |Default  |Description
- * -------------|----------------------------|---------|-----------
- * grid         | @ref guivartype_grid "grid"|mandatory|Defines the grid with the widgets to place on the page.
- * A multipage has no states. List with the multi page specific variables:
- * Key            |Type                              |Default  |Description
- * ---------------|----------------------------------|---------|-----------
- * page_definition| @ref guivartype_section "section"|mandatory|This defines how a multi page item looks. It must contain the grid definition for at least one page.
- * page_data      | @ref guivartype_section "section"|[]       |A grid alike section which stores the initial data for the multi page. Every row must have the same number of columns as the 'page_definition'.
- */
 class multi_page : public container_base
 {
 	friend struct implementation::builder_multi_page;

@@ -73,7 +73,6 @@
 #include "random.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "side_controller.hpp"
-#include "statistics.hpp"
 #include "variable.hpp" // for config_variable_set
 #include "variable_info.hpp"
 

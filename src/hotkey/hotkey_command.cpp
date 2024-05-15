@@ -122,6 +122,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
 	{ HOTKEY_CHANGE_SIDE, "changeside", N_("Change Side (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
 	{ HOTKEY_KILL_UNIT, "killunit", N_("Kill Unit (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
+	{ HOTKEY_TELEPORT_UNIT, "teleportunit", N_("Teleport Unit (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
 	{ HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_OBJECTIVES, "objectives", N_("Objectives"), false, scope_game, HKCAT_MAP, "" },
 	{ HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
@@ -172,6 +173,8 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_SCHEDULE, "menu-editor-schedule", "", true, scope_editor, HKCAT_PLACEHOLDER, "" },
 	{ HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 	{ HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+
+	{ HOTKEY_EDITOR_EDIT_UNIT, "editor-edit-unit", N_("New Unit Type"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
 	{ HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Time Schedule Editor"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, scope_editor, HKCAT_SCENARIO, "" },

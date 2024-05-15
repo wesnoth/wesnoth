@@ -22,33 +22,15 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/addon_list.hpp"
 
-#include <boost/dynamic_bitset.hpp>
 
 namespace gui2
 {
-class text_box_base;
-class text_box;
 class selectable_item;
 class button;
 class stacked_widget;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Shows the list of addons on the server available for installation.
- *
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * addons            | @ref listbox |yes      |A listbox that will contain the info about all addons on the server.
- * name              | label        |yes      |The name of the addon.
- * version_filter    | menu_button  |yes      |List allowing current or older versions to be selected.
- * author            | label        |yes      |The author of the addon.
- * downloads         | label        |yes      |The number of times the addon has been downloaded.
- * size              | label        |yes      |The size of the addon.
- * tags              | label        |yes      |Contents of the PblWML "tags" attribute.
- */
 class addon_manager : public modal_dialog
 {
 public:

@@ -1,16 +1,15 @@
 #
 # Translators:
-# h22, 2021
-# k konami, 2022
 # RatArmy, 2023
+# k konami, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-21 01:57 UTC\n"
-"PO-Revision-Date: 2021-06-26 08:34+0000\n"
-"Last-Translator: RatArmy, 2023\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"PO-Revision-Date: 2023-12-03 03:44+0000\n"
+"Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -269,7 +268,8 @@ msgstr "フレイル"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Clan_Captain.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:37
-#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:15
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:48
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
@@ -295,7 +295,7 @@ msgstr "フレイル"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:932
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:933
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -367,12 +367,62 @@ msgstr "長剣"
 msgid "morning star"
 msgstr "モーニングスター"
 
+#. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:18
+#: data/core/units/humans/Horse_Paladin.cfg:4
+msgid "Paladin"
+msgstr "聖騎士"
+
+#. [unit_type]: id=Terraent, race=human
+#. [unit_type]: id=Paladin, race=human
+#: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
+#: data/core/units/humans/Horse_Paladin.cfg:20
+msgid ""
+"Knights of the highest virtue, Paladins have sworn their strength not to "
+"king and crown, but to ideals themselves; of chivalry, and the stewardship "
+"of everything that is good. They may serve in the armies of the world, but "
+"their first loyalties often lie with groups of their own making; secret, "
+"monastic orders that cross political and cultural boundaries. Rulers are "
+"sometimes wary of them, for the paladins’ loyalty is only as strong as the "
+"liege’s apparent virtue. This has led the more darkly ambitious to either "
+"attempt to defame and disperse these groups, or more rarely, to conjure "
+"elaborate deceptions to keep these otherwise staunchly loyal troops in "
+"service.\n"
+"\n"
+"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
+"that champion most armies, but they are first-class fighters nonetheless. "
+"Additionally, their wisdom and piety grants these warrior monks certain "
+"curious abilities; a paladin is very powerful in fighting magical or "
+"unnatural things, and most have some skill at medicine and healing."
+msgstr ""
+"最も高潔な騎士、聖騎士（Paladin）は国王と王位にではなく、理想それ自身に彼らの"
+"力を誓いました。騎士道と、善であるもの全てに仕える執事の職です。彼らは世界の"
+"軍隊に所属しているかもしれませんが、彼らの最初の忠誠はしばしば彼ら自身の製作"
+"の集団、秘密の、政治と文化の境界が交わる僧院騎士団にあります。聖騎士の忠誠心"
+"は主君の見せ掛けの美徳と同程度しか強くないので、統治者は時折彼らを警戒しま"
+"す。このことは、これらの集団を貶めて解散させようと試みる、あるいはより稀です"
+"が、彼らを別の固く忠実な服務中の兵隊に保つ入念な欺きを生み出す、双方のより邪"
+"悪な意思へと導きます。\n"
+"    \n"
+"一般的に聖騎士は、ほとんどの軍のチャンピオンである「近衛騎士」と同じだけ恐ろ"
+"しいわけではありません。しかしそれでもなお、彼らは一級の戦士です。その上彼ら"
+"の知恵と信仰心は、これらの僧兵にとある不思議な能力を与えました。聖騎士は魔法"
+"的あるいは不自然な存在と戦う際に大変強力で、たいていの者は医術と治療の能力を"
+"いくらか備えています。"
+
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Ogre_Ancient.cfg:35
 #: data/campaigns/Eastern_Invasion/units/Ogre_Great.cfg:32
 #: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
 msgid "cleaver"
 msgstr "大包丁"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/core/units/undead/Skele_Bone_Knight.cfg:77
+msgid "trample"
+msgstr "踏みつけ"
 
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
@@ -393,7 +443,7 @@ msgstr "冷気の大嵐"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:945
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:946
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -434,7 +484,7 @@ msgstr "弓"
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
 #: data/core/units/monsters/Jinn.cfg:91
-#: data/core/units/monsters/Raven_Harbinger.cfg:87
+#: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
@@ -515,7 +565,7 @@ msgid "Ancient Lich"
 msgstr "古代リッチ"
 
 #. [unit_type]: id=Sacrifice, race=human
-#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Necromancer, gender=male,female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
@@ -719,13 +769,13 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:66
+#: data/core/units/undead/Skele_Bone_Knight.cfg:67
 #: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:85
+#: data/core/units/undead/Skeleton_Rider.cfg:86
 msgid "axe"
 msgstr "斧"
 
@@ -882,7 +932,7 @@ msgid ""
 "The deafening noise of these ‘thundersticks’ is terrifying to behold, and is "
 "made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
-"Wesnoth の人々が最初にドワーフに遭遇した時、彼らはドワーフの銃撃兵（Dwarvish "
+"Wesnoth の人々が最初にドワーフに遭遇した時、彼らはドワーフの雷撃兵（Dwarvish "
 "Thunderer）の力に惑わされました。ドワーフは戦闘に持ち込む奇妙な杖の仕掛けで遠"
 "くから死を放つことができたのです。耳をつんざく「雷の杖」の騒音は見るのも恐ろ"
 "しいものです。ドワーフはこの杖の仕組みを秘密としており、それによって杖はより"
@@ -910,13 +960,15 @@ msgid ""
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
 "prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
-"ドワーフの熟練銃撃兵（Dwarvish Thunderguard）は彼らの珍しい武器によって名を馳"
-"せています。その武器とは、木と鉄で出来ており、怒ると雷のような音を立てる奇妙"
-"な杖なのです。この武器の仕組みは謎に包まれており、これを装備していた Knalga "
-"のドワーフ達はその秘密を自分もろとも墓場まで持っていくため、作り話ではないか"
-"とさえ思われています。最もよく知られているのは、その武器の口の中に奇妙な黒い"
-"埃を詰めこむドワーフ達に関する報告で、ある者はそれは中に閉じ込められている獣"
-"に与える食べ物だと言っています。\n"
+"ドワーフの覆面雷撃衛兵（Dwarvish Masked Thunderguard）\n"
+"\n"
+"ドワーフの雷撃衛兵は彼らの珍しい武器によって名を馳せています。その武器とは、"
+"木と鉄で出来ており、怒ると雷のような音を立てる奇妙な杖なのです。この武器の仕"
+"組みは謎に包まれており、これを装備していた Knalga のドワーフ達はその秘密を自"
+"分もろとも墓場まで持っていくため、作り話ではないかとさえ思われています。最も"
+"よく知られているのは、その武器の口の中に奇妙な黒い埃を詰めこむドワーフ達に関"
+"する報告で、ある者はそれは中に閉じ込められている獣に与える食べ物だと言ってい"
+"ます。\n"
 "\n"
 "この「雷の杖」からの一撃は準備するのに数分かかりますが、その結果はドワーフ族"
 "にとって待つ価値のあるものとみなされています。"
@@ -966,8 +1018,8 @@ msgstr ""
 "ルーンの力があればほぼ無敵ともいえるほどです。彼らのルーンによる物理的な打撃"
 "を受けた敵は、その攻撃が弱まってしまいます。"
 
-#. [unit_type]: id=Autumn Shyde, race=elf
-#. [unit_type]: id=Elvish Shyde, race=elf
+#. [unit_type]: id=Autumn Shyde, race=elf, gender=female
+#. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
@@ -1032,49 +1084,49 @@ msgstr "ボーラ"
 #. [effect]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:156
 msgid "taunting strike"
-msgstr ""
+msgstr "挑発攻撃"
 
 #. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:182
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:183
 msgid "Run By (Taunting strike)"
-msgstr ""
+msgstr "疾駆（挑発攻撃）"
 
 #. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:200
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:201
 msgid "Strength Training"
-msgstr ""
+msgstr "強化訓練"
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:212
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:213
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "弓術訓練"
 
 #. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:229
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
 msgid "Strong Shots"
-msgstr ""
+msgstr "強力な放弓"
 
 #. [advancement]: id=Bowman
-#. [unit_type]: id=Bowman, race=human
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:241
+#. [unit_type]: id=Bowman, race=human, gender=male
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "弓兵"
 
 #. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:258
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:259
 msgid "Piercing Shot"
-msgstr ""
+msgstr "刺突放弓"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:266
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:267
 msgid "piercing shot"
-msgstr ""
+msgstr "刺突放弓"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:580
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:581
 msgid "Rain of arrows"
-msgstr ""
+msgstr "矢の雨"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -1186,12 +1238,12 @@ msgstr ""
 "輸送ガレオン船（Transport Galleon）は軍隊を輸送する完全武装船です。この船が岸"
 "に着いたなら、攻撃のためにその軍隊を上陸させることができます。"
 
-#. [unit_type]: id=Drake Arbiter, race=drake
+#. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
 msgstr "ドレークの裁定者"
 
-#. [unit_type]: id=Drake Arbiter, race=drake
+#. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
@@ -1226,19 +1278,17 @@ msgstr ""
 msgid "halberd"
 msgstr "ハルバード"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Arbiter.cfg:174
-#, fuzzy
-#| msgid "Drake Arbiter"
 msgid "female^Drake Arbiter"
-msgstr "ドレークの裁定者"
+msgstr "ドレークの女裁定者"
 
-#. [unit_type]: id=Armageddon Drake, race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "アルマゲドンドレーク"
 
-#. [unit_type]: id=Armageddon Drake, race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Armageddon.cfg:20
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -1274,19 +1324,17 @@ msgstr "格闘かぎ爪"
 msgid "fire breath"
 msgstr "火炎のブレス"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Armageddon.cfg:65
-#, fuzzy
-#| msgid "Armageddon Drake"
 msgid "female^Armageddon Drake"
-msgstr "アルマゲドンドレーク"
+msgstr "女アルマゲドンドレーク"
 
-#. [unit_type]: id=Drake Blademaster, race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "ドレークの熟練剣士"
 
-#. [unit_type]: id=Drake Blademaster, race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake, gender=male,female
 #: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
@@ -1311,19 +1359,17 @@ msgstr ""
 msgid "war talon"
 msgstr "戦爪"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Blademaster.cfg:61
-#, fuzzy
-#| msgid "Drake Blademaster"
 msgid "female^Drake Blademaster"
-msgstr "ドレークの熟練剣士"
+msgstr "ドレークの女熟練剣士"
 
-#. [unit_type]: id=Drake Burner, race=drake
+#. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "ドレークの焼却者"
 
-#. [unit_type]: id=Drake Burner, race=drake
+#. [unit_type]: id=Drake Burner, race=drake, gender=male,female
 #: data/core/units/drakes/Burner.cfg:18
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -1335,19 +1381,17 @@ msgstr ""
 "先の力、特に炎の息を吐く能力について、最もよく受け継いでいます。これは、彼ら"
 "の巨大で恐ろしい爪が合わさることで、戦闘では危険な敵となります。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Burner.cfg:67
-#, fuzzy
-#| msgid "female^Dune Burner"
 msgid "female^Drake Burner"
-msgstr "デューンの女炎使い"
+msgstr "ドレークの女焼却者"
 
-#. [unit_type]: id=Drake Clasher, race=drake
+#. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "ドレークの粉砕者"
 
-#. [unit_type]: id=Drake Clasher, race=drake
+#. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:19
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
@@ -1372,19 +1416,17 @@ msgstr ""
 "唯一の階級でもあります。このことにより、彼らは他のドレークとの領土争いを「解"
 "決」し、彼らの部族の掟を強制するのにとりわけ優れています。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Clasher.cfg:111
-#, fuzzy
-#| msgid "Drake Clasher"
 msgid "female^Drake Clasher"
-msgstr "ドレークの粉砕者"
+msgstr "ドレークの女粉砕者"
 
-#. [unit_type]: id=Drake Enforcer, race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "ドレークの執行官"
 
-#. [unit_type]: id=Drake Enforcer, race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
@@ -1409,19 +1451,17 @@ msgstr ""
 msgid "trident"
 msgstr "トライデント"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Enforcer.cfg:119
-#, fuzzy
-#| msgid "Drake Enforcer"
 msgid "female^Drake Enforcer"
-msgstr "ドレークの執行官"
+msgstr "ドレークの女執行官"
 
-#. [unit_type]: id=Drake Fighter, race=drake
+#. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "ドレークの戦士"
 
-#. [unit_type]: id=Drake Fighter, race=drake
+#. [unit_type]: id=Drake Fighter, race=drake, gender=male,female
 #: data/core/units/drakes/Fighter.cfg:18
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
@@ -1441,19 +1481,17 @@ msgstr ""
 msgid "war blade"
 msgstr "戦刀"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Fighter.cfg:64
-#, fuzzy
-#| msgid "Drake Fighter"
 msgid "female^Drake Fighter"
-msgstr "ドレークの戦士"
+msgstr "ドレークの女戦士"
 
-#. [unit_type]: id=Fire Drake, race=drake
+#. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "火炎ドレーク"
 
-#. [unit_type]: id=Fire Drake, race=drake
+#. [unit_type]: id=Fire Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
@@ -1467,19 +1505,17 @@ msgstr ""
 "炎に人生を捧げ始めていますが、その生命力は彼らの皮膚を通して発散され、彼らの"
 "鱗を赤みがかった灰色に焦がします。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Fire.cfg:62
-#, fuzzy
-#| msgid "Fire Drake"
 msgid "female^Fire Drake"
-msgstr "火炎ドレーク"
+msgstr "女火炎ドレーク"
 
-#. [unit_type]: id=Drake Flameheart, race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "ドレークフレイムハート"
 
-#. [unit_type]: id=Drake Flameheart, race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake, gender=male,female
 #: data/core/units/drakes/Flameheart.cfg:19
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
@@ -1497,19 +1533,17 @@ msgstr ""
 "最も良い時を。フレイムハートが覇権のために部族の指導者に挑戦するのは時々しか"
 "なく、仲間のドレークの支援が得られると確信しているときだけです。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Flameheart.cfg:66
-#, fuzzy
-#| msgid "Drake Flameheart"
 msgid "female^Drake Flameheart"
-msgstr "ドレークフレイムハート"
+msgstr "女ドレークフレイムハート"
 
-#. [unit_type]: id=Drake Flare, race=drake
+#. [unit_type]: id=Drake Flare, race=drake, gender=male,female
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "ドレークフレア"
 
-#. [unit_type]: id=Drake Flare, race=drake
+#. [unit_type]: id=Drake Flare, race=drake, gender=male,female
 #: data/core/units/drakes/Flare.cfg:18
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
@@ -1524,19 +1558,17 @@ msgstr ""
 "として受け入れるでしょうが、小さな戦闘部隊を指揮していたり、絶妙な手腕で争い"
 "を仲裁しているところがもっと良く見かけられます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Flare.cfg:65
-#, fuzzy
-#| msgid "Drake Flare"
 msgid "female^Drake Flare"
-msgstr "ドレークフレア"
+msgstr "女ドレークフレア"
 
-#. [unit_type]: id=Drake Glider, race=drake
+#. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "滑空ドレーク"
 
-#. [unit_type]: id=Drake Glider, race=drake
+#. [unit_type]: id=Drake Glider, race=drake, gender=male,female
 #: data/core/units/drakes/Glider.cfg:19
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
@@ -1571,19 +1603,17 @@ msgstr ""
 msgid "slam"
 msgstr "強打"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Glider.cfg:66
-#, fuzzy
-#| msgid "Drake Glider"
 msgid "female^Drake Glider"
-msgstr "滑空ドレーク"
+msgstr "女滑空ドレーク"
 
-#. [unit_type]: id=Hurricane Drake, race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "ハリケーンドレーク"
 
-#. [unit_type]: id=Hurricane Drake, race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
@@ -1601,19 +1631,17 @@ msgstr ""
 "緒の訓練が許されたために戦闘能力が向上しましたが、彼らの最大の強みはいまだそ"
 "の速度と飛行にあるのです。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Hurricane.cfg:101
-#, fuzzy
-#| msgid "Hurricane Drake"
 msgid "female^Hurricane Drake"
-msgstr "ハリケーンドレーク"
+msgstr "女ハリケーンドレーク"
 
-#. [unit_type]: id=Inferno Drake, race=drake
+#. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "インフェルノドレーク"
 
-#. [unit_type]: id=Inferno Drake, race=drake
+#. [unit_type]: id=Inferno Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
@@ -1628,19 +1656,17 @@ msgstr ""
 "まりました。彼らの赤い金の彫刻された鎧は、彼らが本当にドラゴンであるという錯"
 "覚を助長します。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Inferno.cfg:64
-#, fuzzy
-#| msgid "Inferno Drake"
 msgid "female^Inferno Drake"
-msgstr "インフェルノドレーク"
+msgstr "女インフェルノドレーク"
 
-#. [unit_type]: id=Sky Drake, race=drake
+#. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "飛行ドレーク"
 
-#. [unit_type]: id=Sky Drake, race=drake
+#. [unit_type]: id=Sky Drake, race=drake, gender=male,female
 #: data/core/units/drakes/Sky.cfg:18
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
@@ -1654,19 +1680,17 @@ msgstr ""
 "て、彼らはしばしば長期間に渡って住み処を離れます。それぞれが可能な限り多くの"
 "獲物を持ち帰るよう励み、部族からの敬意を競います。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Sky.cfg:98
-#, fuzzy
-#| msgid "Sky Drake"
 msgid "female^Sky Drake"
-msgstr "飛行ドレーク"
+msgstr "女飛行ドレーク"
 
-#. [unit_type]: id=Drake Thrasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
 msgstr "ドレークの処罰者"
 
-#. [unit_type]: id=Drake Thrasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake, gender=male,female
 #: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
@@ -1684,19 +1708,17 @@ msgstr ""
 "わないずんぐりした頭蓋でさえ武器となります。戦場で片が付くならば、処罰者は喜"
 "んで自分の階級の職務を果たします。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Thrasher.cfg:118
-#, fuzzy
-#| msgid "Drake Thrasher"
 msgid "female^Drake Thrasher"
-msgstr "ドレークの処罰者"
+msgstr "ドレークの女処罰者"
 
-#. [unit_type]: id=Drake Warden, race=drake
+#. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "ドレークの長官"
 
-#. [unit_type]: id=Drake Warden, race=drake
+#. [unit_type]: id=Drake Warden, race=drake, gender=male,female
 #: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
@@ -1723,19 +1745,17 @@ msgstr ""
 "他のドレークと比較すると、ドレークの長官（Drake Warden）は「刺突」に対して高"
 "い耐性を持ちます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Warden.cfg:175
-#, fuzzy
-#| msgid "Drake Warden"
 msgid "female^Drake Warden"
-msgstr "ドレークの長官"
+msgstr "ドレークの女長官"
 
-#. [unit_type]: id=Drake Warrior, race=drake
+#. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "ドレークの熟練戦士"
 
-#. [unit_type]: id=Drake Warrior, race=drake
+#. [unit_type]: id=Drake Warrior, race=drake, gender=male,female
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
@@ -1751,12 +1771,10 @@ msgstr ""
 "セラミック板で覆った革鎧に身を包み、両手の甲に伝統的な戦刀を着けて、何世紀も"
 "そうしてきたように戦います。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
-#, fuzzy
-#| msgid "Drake Warrior"
 msgid "female^Drake Warrior"
-msgstr "ドレークの熟練戦士"
+msgstr "ドレークの女熟練戦士"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
@@ -1872,12 +1890,12 @@ msgstr ""
 msgid "scimitar"
 msgstr "シミター"
 
-#. [unit_type]: id=Dune Burner, race=dunefolk
+#. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:8
 msgid "Dune Burner"
 msgstr "デューンの炎使い"
 
-#. [unit_type]: id=Dune Burner, race=dunefolk
+#. [unit_type]: id=Dune Burner, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Burner.cfg:21
 msgid ""
 "An oft forgotten hazard of traversing the desert is the freezing cold that "
@@ -1903,7 +1921,7 @@ msgstr ""
 msgid "tar bomb"
 msgstr "タール爆弾"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Burner.cfg:98
 msgid "female^Dune Burner"
 msgstr "デューンの女炎使い"
@@ -1995,12 +2013,12 @@ msgstr ""
 "を行うだけでなく、隊の側面の防衛役と敵にダメージを与える攻撃役のどちらをこな"
 "すにも十分な技量を持ちます。"
 
-#. [unit_type]: id=Dune Falconer, race=dunefolk
+#. [unit_type]: id=Dune Falconer, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Falconer.cfg:15
 msgid "female^Dune Falconer"
 msgstr "デューンの隼使い"
 
-#. [unit_type]: id=Dune Falconer, race=dunefolk
+#. [unit_type]: id=Dune Falconer, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Falconer.cfg:39
 msgid ""
 "While well respected among the dunefolk, the art of falconry is relatively "
@@ -2032,12 +2050,12 @@ msgstr ""
 msgid "falcon"
 msgstr "隼"
 
-#. [unit_type]: id=Dune Firetrooper, race=dunefolk
+#. [unit_type]: id=Dune Firetrooper, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
 msgstr "デューンの火炎兵"
 
-#. [unit_type]: id=Dune Firetrooper, race=dunefolk
+#. [unit_type]: id=Dune Firetrooper, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Firetrooper.cfg:22
 msgid ""
 "By refining Sanbaar sap through a very specific distillation process, it "
@@ -2062,17 +2080,17 @@ msgstr ""
 msgid "flamethrower"
 msgstr "火炎放射器"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
 msgstr "デューンの女火炎兵"
 
-#. [unit_type]: id=Dune Harrier, race=dunefolk
+#. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:8
 msgid "female^Dune Harrier"
 msgstr "デューンの女ハリアー"
 
-#. [unit_type]: id=Dune Harrier, race=dunefolk
+#. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:25
 msgid ""
 "While harriers can fulfill a similar role to striders in hampering enemy "
@@ -2349,12 +2367,12 @@ msgstr ""
 "と日暮れを得意とするユニークな特性は、砂漠の気温が最も快適になる時間帯と一致"
 "しています。"
 
-#. [unit_type]: id=Dune Scorcher, race=dunefolk
+#. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:9
 msgid "Dune Scorcher"
 msgstr "デューンの焦痕兵"
 
-#. [unit_type]: id=Dune Scorcher, race=dunefolk
+#. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:22
 msgid ""
 "The scorcher’s moniker is derived not from the destruction they wreak on "
@@ -2372,17 +2390,17 @@ msgstr ""
 "として火傷に耐えるのです。これらの射手は戦場で喜んで大きな炎を起こすため、時"
 "には意図せずして味方すらも焼いてしまいます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/dunefolk/Scorcher.cfg:95
 msgid "female^Dune Scorcher"
 msgstr "デューンの女焦痕兵"
 
-#. [unit_type]: id=Dune Skirmisher, race=dunefolk
+#. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:8
 msgid "female^Dune Skirmisher"
 msgstr "デューンの散兵"
 
-#. [unit_type]: id=Dune Skirmisher, race=dunefolk
+#. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:21
 msgid ""
 "Born and raised out on the open sands, skirmishers are accustomed to the "
@@ -2403,12 +2421,12 @@ msgstr ""
 "り、逃走経路や補給線を遮ったり、重要なユニットを暗殺したり、敵の陣形を不利な"
 "位置に崩すことを可能とします。"
 
-#. [unit_type]: id=Dune Sky Hunter, race=dunefolk
+#. [unit_type]: id=Dune Sky Hunter, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
 msgid "female^Dune Sky Hunter"
 msgstr "デューンのスカイハンター"
 
-#. [unit_type]: id=Dune Sky Hunter, race=dunefolk
+#. [unit_type]: id=Dune Sky Hunter, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Sky_Hunter.cfg:39
 msgid ""
 "Often mistaken for young Rocs, desert eagles are large, majestic birds of "
@@ -2530,12 +2548,12 @@ msgstr ""
 "や栄誉を受けることはほとんどありませんが、同胞を守るために命を懸けた名もなき"
 "者として多少は認知されています。"
 
-#. [unit_type]: id=Dune Strider, race=dunefolk
+#. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:8
 msgid "female^Dune Strider"
 msgstr "デューンの追撃兵"
 
-#. [unit_type]: id=Dune Strider, race=dunefolk
+#. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:21
 msgid ""
 "The power of any Dunefolk assault is inhibited by one major drawback: "
@@ -2566,17 +2584,6 @@ msgstr "デューンの突撃騎兵"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Among the many different type of Dune horsemen, there are those who most "
-#| "enjoy the frantic melee at the heart of battle. Bearing short-ranged "
-#| "maces, these sunderers are sturdy, robust warriors who have both the "
-#| "disposition and skill to survive multiple skirmishes. Though not "
-#| "particularly creative or special warriors, such a rider is not impotent "
-#| "in any way  — even a small group of sunderers is powerful enough to "
-#| "breach most enemy lines through sheer force. In a situation that requires "
-#| "it, these horsemen also possess enough skill at archery to weaken enemy "
-#| "forces or pick off fleeing stragglers."
 msgid ""
 "Among the many different type of Dune horsemen, there are those who most "
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
@@ -2588,12 +2595,12 @@ msgid ""
 "enough skill at archery to weaken enemy forces or pick off fleeing "
 "stragglers."
 msgstr ""
-"多彩なデューンの騎兵の中で、狂ったように近接戦闘を好む者たちがいます。突撃騎"
-"兵（Sunderer）は近距離用のメイスを装備したたくましく丈夫な戦士で、先に挙げた"
-"気質と複数回の小競り合いを生き延びる技術を併せ持ちます。創造性や特別性を持つ"
-"戦士ではありませんが、それでも無力なわけではありません。少数の突撃騎兵であっ"
-"ても、強引に敵の戦線を突破するには十分なほど強力です。また、敵軍の弱体化や敗"
-"残兵の狙撃に十分な弓術を身に付けており、必要とあれば使用します。"
+"多種多様なデューン騎兵の中には、戦地の真ん中での必死の混戦に喜びを感じる者た"
+"ちがいます。射程の短いメイスを携えた突撃騎兵（Sunderer）は、複数の小競り合い"
+"を生き抜く気質と技術を併せ持った、頑丈で逞しい戦士です。格別に創造的で特殊な"
+"戦士というわけではありませんが、こうした騎馬兵は決して無力ではありません。必"
+"要となれば、敵軍を弱体化させるか、逃げ惑う残兵を仕留めたりするのに十分な弓術"
+"の腕前も持っています。"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
@@ -2860,10 +2867,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:4
-#, fuzzy
-#| msgid "Dwarvish Fighter"
 msgid "Dwarvish Miner"
-msgstr "ドワーフの戦士"
+msgstr "ドワーフの鉱夫"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:17
@@ -2873,11 +2878,14 @@ msgid ""
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
+"ドワーフの鉱夫（Dwarvish miner）はドワーフ社会の下働き労働者です。彼らは貴重"
+"な鉱石を地下から掘り出しますが、武器や美術品への製作には関わりません。軍事的"
+"な訓練は受けていませんが、ツルハシで相手にダメージを与えることはできます。"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:22
 msgid "pick"
-msgstr ""
+msgstr "ツルハシ"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
@@ -2990,12 +2998,12 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr "ドワーフの銃撃兵"
+msgstr "ドワーフの雷撃兵"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr "ドワーフの熟練銃撃兵"
+msgstr "ドワーフの雷撃衛兵"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:18
@@ -3011,13 +3019,13 @@ msgid ""
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
-"ドワーフの熟練銃撃兵（Dwarvish Thunderguard）は彼らの珍しい武器によって名を馳"
-"せています。その武器とは、木と鉄で出来ており、怒ると雷のような音を立てる奇妙"
-"な杖なのです。この武器の仕組みは謎に包まれており、これを装備していた Knalga "
-"のドワーフ達はその秘密を自分もろとも墓場まで持っていくため、作り話ではないか"
-"とさえ思われています。最もよく知られているのは、その武器の口の中に奇妙な黒い"
-"埃を詰めこむドワーフ達に関する報告で、ある者はそれは中に閉じ込められている獣"
-"に与える食べ物だと言っています。\n"
+"ドワーフの雷撃衛兵（Dwarvish Thunderguard）は彼らの珍しい武器によって名を馳せ"
+"ています。その武器とは、木と鉄で出来ており、怒ると雷のような音を立てる奇妙な"
+"杖なのです。この武器の仕組みは謎に包まれており、これを装備していた Knalga の"
+"ドワーフ達はその秘密を自分もろとも墓場まで持っていくため、作り話ではないかと"
+"さえ思われています。最もよく知られているのは、その武器の口の中に奇妙な黒い埃"
+"を詰めこむドワーフ達に関する報告で、ある者はそれは中に閉じ込められている獣に"
+"与える食べ物だと言っています。\n"
 "\n"
 "この「雷の杖」からの一撃は準備するのに数分かかりますが、その結果はドワーフ族"
 "にとって待つ価値のあるものとみなされています。"
@@ -3027,12 +3035,12 @@ msgstr ""
 msgid "Dwarvish Ulfserker"
 msgstr "ドワーフの狂戦士"
 
-#. [unit_type]: id=Elvish Archer, race=elf
+#. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "エルフの射手"
 
-#. [unit_type]: id=Elvish Archer, race=elf
+#. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:19
 msgid ""
 "As primarily foragers and hunters, most elves learn to become proficient "
@@ -3056,17 +3064,17 @@ msgstr ""
 "手（Elvish Archer）は有能な戦闘員であり、特に森の加護を受けて戦う場合は、その"
 "能力を遺憾なく発揮します。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Archer.cfg:80
 msgid "female^Elvish Archer"
 msgstr "エルフの女射手"
 
-#. [unit_type]: id=Elvish Avenger, race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "エルフの復讐者"
 
-#. [unit_type]: id=Elvish Avenger, race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf, gender=male,female
 #: data/core/units/elves/Avenger.cfg:20
 msgid ""
 "The curious name of the Elvish ‘Avengers’ comes from a tactic often employed "
@@ -3093,7 +3101,7 @@ msgstr ""
 "エルフの復讐者（Elvish Avengers）は踏破力に優れ、砂地や水域、山などの厳しい地"
 "形を踏破することに熟達しています。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Avenger.cfg:96
 msgid "female^Elvish Avenger"
 msgstr "エルフの女復讐者"
@@ -3155,12 +3163,12 @@ msgstr ""
 "かけているこれらのエルフは、並外れて危険な存在であり、決して侮ってはいけませ"
 "ん。"
 
-#. [unit_type]: id=Elvish Druid, race=elf
+#. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "エルフのドルイド僧"
 
-#. [unit_type]: id=Elvish Druid, race=elf
+#. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:19
 msgid ""
 "Some elves choose to deepen their connection to the corporeal world, thereby "
@@ -3191,12 +3199,12 @@ msgstr ""
 msgid "ensnare"
 msgstr "罠の術"
 
-#. [unit_type]: id=Elvish Enchantress, race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "エルフの女熟練魔術師"
 
-#. [unit_type]: id=Elvish Enchantress, race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:19
 msgid ""
 "In the context of Elven magic, the notion of enchanting is a little bit "
@@ -3331,12 +3339,12 @@ msgstr ""
 "の掟を守るために非常に貴重であり、それはその君主が指揮系統の頂点に立っている"
 "かどうかとは関係ないということです。"
 
-#. [unit_type]: id=Elvish Lady, race=elf
+#. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:4
 msgid "female^Elvish Lady"
 msgstr "エルフの貴婦人"
 
-#. [unit_type]: id=Elvish Lady, race=elf
+#. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
 "Usually strongly connected with the earthly aspect of Elven magic, noble "
@@ -3399,12 +3407,12 @@ msgstr ""
 "いずれの場合でも、貴族の地位が絶対的であることはほとんどなく、力よりも対話と"
 "知恵によって統率することが期待されます。"
 
-#. [unit_type]: id=Elvish Marksman, race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf, gender=male,female
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "エルフの射撃手"
 
-#. [unit_type]: id=Elvish Marksman, race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf, gender=male,female
 #: data/core/units/elves/Marksman.cfg:19
 msgid ""
 "Elves have an intimate connection to the world of faerie, which innately "
@@ -3433,7 +3441,7 @@ msgstr ""
 msgid "longbow"
 msgstr "大弓"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Marksman.cfg:89
 msgid "female^Elvish Marksman"
 msgstr "エルフの女射撃手"
@@ -3531,12 +3539,12 @@ msgstr ""
 "この伝承が真実かどうかはわかりませんが、 騎馬従者（Outrider）が最速であること"
 "は間違いありません。"
 
-#. [unit_type]: id=Elvish Ranger, race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "エルフのレンジャー"
 
-#. [unit_type]: id=Elvish Ranger, race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:19
 msgid ""
 "The silent watchers of the forests, Elvish rangers are masters of stealth "
@@ -3567,7 +3575,7 @@ msgstr ""
 "エルフのレンジャー（Elvish Rangers）は踏破力に優れ、砂地や水域、山などの厳し"
 "い地形を踏破することに熟達しています。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Ranger.cfg:95
 msgid "female^Elvish Ranger"
 msgstr "エルフの女レンジャー"
@@ -3635,12 +3643,12 @@ msgstr ""
 "素速い情報伝達に熟達しており、必要に応じて増援部隊として投入されることもあり"
 "ます。"
 
-#. [unit_type]: id=Elvish Shaman, race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "エルフの女呪術師"
 
-#. [unit_type]: id=Elvish Shaman, race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf, gender=female
 #: data/core/units/elves/Shaman.cfg:19
 msgid ""
 "With a little training, an elf’s inherent affinity with the natural world "
@@ -3659,12 +3667,12 @@ msgstr ""
 "彼女らは癒し手として広く知られています。呪術師は信心深く平和的であるため戦闘"
 "を行うことは稀ですが、魔法で大地を操作して敵の妨害・鎮圧を行います。"
 
-#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "エルフの狙撃手"
 
-#. [unit_type]: id=Elvish Sharpshooter, race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:20
 msgid ""
 "Though not a formal title, ‘Sharpshooter’ is the epithet given to the most "
@@ -3685,12 +3693,12 @@ msgstr ""
 "らに数射加えれば重装兵でも倒してしまいます。エルフの狙撃手（Elvish "
 "Sharpshooter）は弓術を極限まで磨き上げた誰もが認める最高の射手です。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/elves/Sharpshooter.cfg:81
 msgid "female^Elvish Sharpshooter"
 msgstr "エルフの女狙撃手"
 
-#. [unit_type]: id=Elvish Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/core/units/elves/Shyde.cfg:22
 msgid ""
 "As an elf maiden entwines herself more and more with nature, the essence of "
@@ -3714,12 +3722,12 @@ msgstr ""
 msgid "faerie touch"
 msgstr "妖精の接触"
 
-#. [unit_type]: id=Elvish Sorceress, race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "エルフの女魔術師"
 
-#. [unit_type]: id=Elvish Sorceress, race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:19
 msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
@@ -3743,12 +3751,12 @@ msgstr ""
 "す。表面的な秘術の応用ではありますが、エルフは秘術の炎を重要視し、細心の注意"
 "を払って用います。"
 
-#. [unit_type]: id=Elvish Sylph, race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf, gender=female
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "エルフのシルフ"
 
-#. [unit_type]: id=Elvish Sylph, race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf, gender=female
 #: data/core/units/elves/Sylph.cfg:21
 msgid ""
 "Tremendously powerful in unfathomable ways, the sage-like Sylphs are masters "
@@ -3795,18 +3803,6 @@ msgstr "ダイアウルフライダー"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:19
-#, fuzzy
-#| msgid ""
-#| "‘Dire wolves’ differ from the common variety only in size and color. They "
-#| "typically stand taller than a horse at the shoulder, and have an appetite "
-#| "to match. Only a madman would willingly encounter them; but goblins, at "
-#| "great cost to themselves, have managed to tame and ride them.\n"
-#| "\n"
-#| "The claws of a wolf are not generally regarded as being the more "
-#| "dangerous parts, but on a beast this large, they are thicker and longer "
-#| "than iron nails. Their riders smear a poison on the front set, not unlike "
-#| "that used by the orcish assassins, making a swipe from these beasts’ paws "
-#| "into a most deadly stroke."
 msgid ""
 "While the ferocity and danger of direwolves makes them somewhat of an omen "
 "to most, the diminutive goblins have an unusual bond with these savage "
@@ -3824,16 +3820,16 @@ msgid ""
 msgstr ""
 "ダイアウルフライダー（Direwolf Rider）\n"
 "\n"
-"「ダイアウルフ」と普通の種類の狼との違いは大きさと色だけです。通常サイズで"
-"は、その高さは馬の肩よりも大きくなり、その大きさに見合っただけの食欲もありま"
-"す。正常な判断力を持っていれば、このような生き物に出くわしたいと望むものはい"
-"ないでしょう。しかしながら、ゴブリンの中には大変な労力をかけてダイアウルフを"
-"飼いならし、その背中に乗ることができるものもいるのです。\n"
+"ダイアウルフの獰猛さと危険性からすると、殆どの者にとって若干不吉な存在です"
+"が、小柄なゴブリンはこの野蛮な生き物と普通ではない絆で結ばれています。この獣"
+"を手なずけるにはゴブリンの能力では難しいのですが、もしも、狼の中で生活するこ"
+"とを選ぶような豪胆なゴブリンが、幼い頃から小狼の世話をすれば、両者が互いに敬"
+"意を抱くこともできるのです。そのゴブリンを仲間と認めさえすれば、自分に跨がら"
+"せることも厭わないでしょう。\n"
 "\n"
-"狼のかぎ爪は一般的には最も危険な部分としては見なされてはいませんが、実際には"
-"大きいもので、鉄釘よりも太く長いのです。ダイアウルフライダーはその前足に毒を"
-"塗りつけています。このことにより、オークの暗殺者による毒の攻撃とは違って、死"
-"にも至るほどの一撃を繰り出します。"
+"狼の爪は一般に危険な部分と見なされてはいませんが、この大きさの獣の爪となれ"
+"ば、鉄の爪よりも太く長くなります。ライダーがオークの暗殺者が使うような毒を前"
+"足に塗りつけることで、この野獣の爪の一振りは必殺の一撃となります。"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -3939,15 +3935,6 @@ msgstr "ゴブリンの槍兵"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "In any race, there are always those rare individuals who, by stroke of "
-#| "bad luck, are born much smaller and weaker than the rest of their kind. "
-#| "For Orcs, however, such occurrences are extraordinarily common, with "
-#| "there usually being several runts born in each litter. Known as "
-#| "‘Goblins’, these sickly creatures nearly always live short, brutal lives, "
-#| "most used merely as fodder against an enemy of their larger siblings' "
-#| "choosing while equipped with only the crudest of spears."
 msgid ""
 "In any race, there are always those rare individuals who, by stroke of bad "
 "luck, are born much smaller and weaker than the rest of their kind. For "
@@ -4108,46 +4095,6 @@ msgstr ""
 "穴を開けることに優れています。しかしながら、彼らは防御での使用は限られたもの"
 "となります。"
 
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:4
-msgid "Paladin"
-msgstr "聖騎士"
-
-#. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:20
-msgid ""
-"Knights of the highest virtue, Paladins have sworn their strength not to "
-"king and crown, but to ideals themselves; of chivalry, and the stewardship "
-"of everything that is good. They may serve in the armies of the world, but "
-"their first loyalties often lie with groups of their own making; secret, "
-"monastic orders that cross political and cultural boundaries. Rulers are "
-"sometimes wary of them, for the paladins’ loyalty is only as strong as the "
-"liege’s apparent virtue. This has led the more darkly ambitious to either "
-"attempt to defame and disperse these groups, or more rarely, to conjure "
-"elaborate deceptions to keep these otherwise staunchly loyal troops in "
-"service.\n"
-"\n"
-"Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-"that champion most armies, but they are first-class fighters nonetheless. "
-"Additionally, their wisdom and piety grants these warrior monks certain "
-"curious abilities; a paladin is very powerful in fighting magical or "
-"unnatural things, and most have some skill at medicine and healing."
-msgstr ""
-"最も高潔な騎士、聖騎士（Paladin）は国王と王位にではなく、理想それ自身に彼らの"
-"力を誓いました。騎士道と、善であるもの全てに仕える執事の職です。彼らは世界の"
-"軍隊に所属しているかもしれませんが、彼らの最初の忠誠はしばしば彼ら自身の製作"
-"の集団、秘密の、政治と文化の境界が交わる僧院騎士団にあります。聖騎士の忠誠心"
-"は主君の見せ掛けの美徳と同程度しか強くないので、統治者は時折彼らを警戒しま"
-"す。このことは、これらの集団を貶めて解散させようと試みる、あるいはより稀です"
-"が、彼らを別の固く忠実な服務中の兵隊に保つ入念な欺きを生み出す、双方のより邪"
-"悪な意思へと導きます。\n"
-"    \n"
-"一般的に聖騎士は、ほとんどの軍のチャンピオンである「近衛騎士」と同じだけ恐ろ"
-"しいわけではありません。しかしそれでもなお、彼らは一級の戦士です。その上彼ら"
-"の知恵と信仰心は、これらの僧兵にとある不思議な能力を与えました。聖騎士は魔法"
-"的あるいは不自然な存在と戦う際に大変強力で、たいていの者は医術と治療の能力を"
-"いくらか備えています。"
-
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
@@ -4171,7 +4118,7 @@ msgstr ""
 "いますが、巨大な寸法により格好の的になってしまうため、槍兵と射手に対しては気"
 "をつけなければなりません。"
 
-#. [unit_type]: id=Bowman, race=human
+#. [unit_type]: id=Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -4473,16 +4420,12 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Javelineer.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Compared to other loyalists, Halberdiers have a higher resistance to "
-#| "‘pierce’ attacks."
 msgid ""
 "Compared to other loyalists, Javelineers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
-"他の忠誠者と比較すると、ハルバード兵（Halberdier）は「刺突」に対して高い耐性"
-"を持ちます。"
+"他の忠誠兵士と比較すると、投槍兵（Javelineer）は「刺突」に対して高い耐性を持"
+"ちます。"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -4505,12 +4448,12 @@ msgstr ""
 "脆弱ですが、しかし彼らの秀でた知識と軍略に関する鍛錬は、その脆弱さを補って余"
 "りあるものです。"
 
-#. [unit_type]: id=Longbowman, race=human
+#. [unit_type]: id=Longbowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "大弓兵"
 
-#. [unit_type]: id=Longbowman, race=human
+#. [unit_type]: id=Longbowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Longbowman.cfg:19
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -4526,12 +4469,12 @@ msgstr ""
 "程範囲と力は役立たずになります。大弓兵は誇りの記章として自分の武器を携帯して"
 "おり、多くの弓兵はこれを使えるようになる日を夢見ています。"
 
-#. [unit_type]: id=Master Bowman, race=human
+#. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "熟練弓兵"
 
-#. [unit_type]: id=Master Bowman, race=human
+#. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -4755,12 +4698,12 @@ msgstr ""
 "他の忠誠者と比較すると、剣士（Swordsman）は「斬撃」と「打撃」に対して高い耐性"
 "を持ちます。"
 
-#. [unit_type]: id=Mage, race=human
+#. [unit_type]: id=Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "魔術師"
 
-#. [unit_type]: id=Mage, race=human
+#. [unit_type]: id=Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage.cfg:19
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
@@ -4805,17 +4748,17 @@ msgstr ""
 msgid "missile"
 msgstr "魔法の矢"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage.cfg:159
 msgid "female^Mage"
 msgstr "女魔術師"
 
-#. [unit_type]: id=Arch Mage, race=human
+#. [unit_type]: id=Arch Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "熟練魔術師"
 
-#. [unit_type]: id=Arch Mage, race=human
+#. [unit_type]: id=Arch Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Arch.cfg:18
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
@@ -4857,7 +4800,7 @@ msgstr ""
 msgid "fireball"
 msgstr "ファイアボール"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Arch.cfg:109
 msgid "female^Arch Mage"
 msgstr "熟練女魔術師"
@@ -4880,17 +4823,17 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:35
-#: data/core/units/monsters/Raven_Harbinger.cfg:104
-#: data/core/units/monsters/Raven_Omen.cfg:94
+#: data/core/units/monsters/Raven_Harbinger.cfg:100
+#: data/core/units/monsters/Raven_Omen.cfg:90
 msgid "lightning"
 msgstr "雷"
 
-#. [unit_type]: id=Great Mage, race=human
+#. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "大魔術師"
 
-#. [unit_type]: id=Great Mage, race=human
+#. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:19
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
@@ -4924,17 +4867,17 @@ msgstr ""
 "他の魔術師と比較すると、大魔術師（Great Mage）は「火炎」に対して高い耐性を持"
 "ちます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Great.cfg:90
 msgid "female^Great Mage"
 msgstr "女大魔術師"
 
-#. [unit_type]: id=Red Mage, race=human
+#. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "赤魔術師"
 
-#. [unit_type]: id=Red Mage, race=human
+#. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:18
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
@@ -4972,17 +4915,17 @@ msgstr ""
 "他の魔術師と比較すると、赤魔術師（Red Mage）は「火炎」に対して高い耐性を持ち"
 "ます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Red.cfg:98
 msgid "female^Red Mage"
 msgstr "女赤魔術師"
 
-#. [unit_type]: id=Silver Mage, race=human
+#. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "銀魔術師"
 
-#. [unit_type]: id=Silver Mage, race=human
+#. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:19
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
@@ -5029,17 +4972,17 @@ msgstr ""
 "銀魔術師は彼らの魔法的な性質によく調和しており、非物理的ダメージに対して高い"
 "抵抗力があります。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_Silver.cfg:163
 msgid "female^Silver Mage"
 msgstr "女銀魔術師"
 
-#. [unit_type]: id=White Mage, race=human
+#. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "白魔術師"
 
-#. [unit_type]: id=White Mage, race=human
+#. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:18
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
@@ -5073,17 +5016,17 @@ msgstr ""
 "他の魔術師と比較すると、白魔術師（White Mage）は「秘術」に対して高い耐性を持"
 "ちます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_White.cfg:105
 msgid "female^White Mage"
 msgstr "女白魔術師"
 
-#. [unit_type]: id=Mage of Light, race=human
+#. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "光の魔術師"
 
-#. [unit_type]: id=Mage of Light, race=human
+#. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:19
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
@@ -5111,17 +5054,17 @@ msgstr ""
 "他の魔術師と比較すると、光の魔術師（Mage of Light）は「秘術」に対して高い耐性"
 "を持ちます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Mage_of_Light.cfg:101
 msgid "female^Mage of Light"
 msgstr "光の女魔術師"
 
-#. [unit_type]: id=Outlaw, race=human
+#. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "無法者"
 
-#. [unit_type]: id=Outlaw, race=human
+#. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former ‘footpads’ rise up in the ranks of their "
@@ -5139,17 +5082,17 @@ msgstr ""
 "心得ています。無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるの"
 "を好みます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
 msgstr "女無法者"
 
-#. [unit_type]: id=Assassin, race=human
+#. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "暗殺者"
 
-#. [unit_type]: id=Assassin, race=human
+#. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:19
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
@@ -5174,7 +5117,7 @@ msgstr ""
 msgid "throwing knives"
 msgstr "投げナイフ"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Assassin.cfg:101
 msgid "female^Assassin"
 msgstr "女暗殺者"
@@ -5198,12 +5141,12 @@ msgstr ""
 "打ちのめすような彼ら好みの仕事に優れています。あらゆる無法者と同様に、広い日"
 "中での戦いは苦手で、夜間の行動に慣れています。"
 
-#. [unit_type]: id=Footpad, race=human
+#. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "追いはぎ"
 
-#. [unit_type]: id=Footpad, race=human
+#. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
 msgid ""
 "These petty criminals are often derisively called ‘footpads’ by their "
@@ -5219,17 +5162,17 @@ msgstr ""
 "れた持久力と敏捷さは戦闘においても同様に活躍し、みじめな武器しかないにも関わ"
 "らず、彼らは、特に闇に隠れて、敵を悩ますのが極めて得意です。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Footpad.cfg:89
 msgid "female^Footpad"
 msgstr "女追いはぎ"
 
-#. [unit_type]: id=Fugitive, race=human
+#. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "逃亡者"
 
-#. [unit_type]: id=Fugitive, race=human
+#. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -5242,7 +5185,7 @@ msgstr ""
 "意なところでは危険になれます。しかし、彼らに遵法軍人が投入する全くの数には敵"
 "いません。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:80
 msgid "female^Fugitive"
 msgstr "女逃亡者"
@@ -5266,12 +5209,12 @@ msgstr ""
 "て、しばしば人里離れた街道や真夜中に攻めます。このような遭遇戦での経験によ"
 "り、彼らは接近戦では致命的な敵となります。"
 
-#. [unit_type]: id=Rogue, race=human
+#. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "熟練盗賊"
 
-#. [unit_type]: id=Rogue, race=human
+#. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:18
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
@@ -5289,7 +5232,7 @@ msgstr ""
 "彼らは確実な精度でナイフを投げることができます。そして夜に長い時間獲物を求め"
 "てぶらついていたため、暗闇での戦闘により長けています。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Rogue.cfg:78
 msgid "female^Rogue"
 msgstr "熟練女盗賊"
@@ -5315,12 +5258,12 @@ msgstr ""
 "す。彼らに十分な運と経験があれば、彼らの仲間の大部分を待ち受けている投獄や死"
 "を時々どうにか回避します。"
 
-#. [unit_type]: id=Thief, race=human
+#. [unit_type]: id=Thief, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "盗賊"
 
-#. [unit_type]: id=Thief, race=human
+#. [unit_type]: id=Thief, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Thief.cfg:18
 msgid ""
 "For as long as anyone can remember, the members of the various ‘guilds’ of "
@@ -5341,7 +5284,7 @@ msgstr ""
 "アな戦い」にはほとんど意味を見いださず、「あまり立派ではない」戦術をよろこん"
 "で使います。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/humans/Outlaw_Thief.cfg:147
 msgid "female^Thief"
 msgstr "女盗賊"
@@ -5365,12 +5308,12 @@ msgstr ""
 "は生計を立てるために悪党になります。経歴に関係なく、彼らはみな犠牲者を大きな"
 "棍棒で打つという共通の傾向を持っています。"
 
-#. [unit_type]: id=Peasant, race=human
+#. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "農民"
 
-#. [unit_type]: id=Peasant, race=human
+#. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:18
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -5390,12 +5333,12 @@ msgstr ""
 msgid "pitchfork"
 msgstr "熊手"
 
-#. [unit_type]: id=Royal Warrior, race=human
+#. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:8
 msgid "Royal Warrior"
 msgstr "王族の戦士"
 
-#. [unit_type]: id=Royal Warrior, race=human
+#. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:25
 msgid ""
 "The kings and princes of human nobility are still often trained rigorously "
@@ -5411,12 +5354,12 @@ msgstr ""
 "いった重い鎧で動けるようによく調整しています。また、その黄金に装飾された鎧か"
 "らは想像できないほどに素早く戦場を駆け抜けます。"
 
-#. [unit_type]: id=Woodsman, race=human
+#. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "木こり"
 
-#. [unit_type]: id=Woodsman, race=human
+#. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:18
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
@@ -5548,10 +5491,8 @@ msgstr ""
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:4
-#, fuzzy
-#| msgid "Merman Entangler"
 msgid "Merman Brawler"
-msgstr "マーマンの精鋭投網兵"
+msgstr "マーマンの喧嘩屋"
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:17
@@ -5559,6 +5500,8 @@ msgid ""
 "Exceptionally large and strong mermen are sometimes more comfortable with "
 "their own fists and tails than with other weapons."
 msgstr ""
+"ことのほか大きくて強靭なマーマンは、武器を使うよりも、ときには自身の拳や尾を"
+"使うほうが快適に戦えるのです。"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
@@ -5569,10 +5512,8 @@ msgstr "尾"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:4
-#, fuzzy
-#| msgid "Merman Triton"
 msgid "Merman Citizen"
-msgstr "マーマンのトリトン"
+msgstr "マーマンの市民"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:17
@@ -5580,13 +5521,16 @@ msgid ""
 "Merfolk are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even merfolk with no weapons or training can be dangerous."
 msgstr ""
+"マーフォークはおよそ平和的な種族ですが、家庭を守るためならば戦います。そうし"
+"た状況下では、武器を持たず訓練を受けていないマーフォークといえども、危険な存"
+"在となり得ます。"
 
-#. [unit_type]: id=Mermaid Diviner, race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "マーメイドの占い師"
 
-#. [unit_type]: id=Mermaid Diviner, race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:22
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
@@ -5603,12 +5547,12 @@ msgstr ""
 "題です。Alavynne の浅瀬で隅に追いやられて殺され、しかし翌日再び定員で上がって"
 "くる人間、銀の尖塔の騎士達のそれのように、深紅の公爵の凋落をもたらしました。"
 
-#. [unit_type]: id=Mermaid Enchantress, race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman, gender=female
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "マーメイドの術師"
 
-#. [unit_type]: id=Mermaid Enchantress, race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman, gender=female
 #: data/core/units/merfolk/Enchantress.cfg:18
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
@@ -5723,12 +5667,12 @@ msgstr ""
 "できます。特に水中に住んでいるのではない者に対して。必要なときに、この職業の"
 "多くのマーフォークは彼らの軍隊の兵を増やすために志願するでしょう。"
 
-#. [unit_type]: id=Mermaid Initiate, race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman, gender=female
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "マーメイドの下級術師"
 
-#. [unit_type]: id=Mermaid Initiate, race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman, gender=female
 #: data/core/units/merfolk/Initiate.cfg:18
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
@@ -5801,12 +5745,12 @@ msgstr ""
 "両方で有用です。戦闘で使われる棍棒は漁用からほとんどあるいはまったく改良され"
 "ていません。それらは既にかなり致命的だったからです。"
 
-#. [unit_type]: id=Mermaid Priestess, race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman, gender=female
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "マーメイドの司祭"
 
-#. [unit_type]: id=Mermaid Priestess, race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman, gender=female
 #: data/core/units/merfolk/Priestess.cfg:21
 msgid ""
 "Among merfolk, mysticism is generally left to the mermaids, who are more "
@@ -5822,12 +5766,12 @@ msgstr ""
 "るのは彼女らです。彼女らは信仰心によりある種の力を得て、魔法的なあるいは不自"
 "然な存在から彼女らの種族を守ることができるのです。"
 
-#. [unit_type]: id=Mermaid Siren, race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman, gender=female
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "マーメイドのセイレーン"
 
-#. [unit_type]: id=Mermaid Siren, race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman, gender=female
 #: data/core/units/merfolk/Siren.cfg:19
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
@@ -5943,13 +5887,16 @@ msgid ""
 "approaches an ant egg or breaches the shell of an adjacent brood member will "
 "spur that ant to hatch as a fully formed adult."
 msgstr ""
+"巨大アリの卵は、壊すにはひたすら努力が必要なほどに丈夫な革質の殻を持っていま"
+"す。外部から中の様子を知ることは困難ですが、その中で急速な成長を遂げる幼虫が"
+"外の状況を伺うことができないわけではありません。捕食しようとする者や外敵が卵"
+"に近づこうとしたり近くの仲間の巣の殻を壊そうとすれば、十分に成長したアリが孵"
+"化することでしょう。"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:9
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Egg"
-msgstr "巨大アリ"
+msgstr "巨大アリの卵"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
@@ -5960,13 +5907,18 @@ msgid ""
 "any suitable location.\n"
 "\n"
 msgstr ""
+"巨大アリの卵（Giant Ant Egg）\n"
+"\n"
+"巨大アリは様々な環境に生息していますし、生み出された卵もまた、洞窟や隠れ家環"
+"境のあちこちで確認できます。卵の殆どは、1つのコロニーの女王アリが生み出したも"
+"のですが、働きアリたちによって、育てるために適切な場所へと運ばれていきま"
+"す。\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Egg"
-msgstr "火蟻"
+msgstr "火蟻の卵"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
@@ -5976,6 +5928,12 @@ msgid ""
 "colony queens, but the workers transport them to any suitable location.\n"
 "\n"
 msgstr ""
+"火蟻の卵（Fire Ant Egg）\n"
+"\n"
+"大群ともなれば、火蟻は正に脅威となりえますが、驚くべき数の大量の卵が、その元"
+"になっています。火蟻の卵の殆どは、1つのコロニーの女王アリが生み出したものです"
+"が、働きアリたちによって、育てるために適切な場所へと運ばれていきます。\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
@@ -6006,10 +5964,8 @@ msgstr "火炎"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Queen"
-msgstr "火蟻"
+msgstr "火蟻の女王"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:54
@@ -6017,20 +5973,20 @@ msgid ""
 "Fire ants possess fierce fangs and an unusual ability to generate fire, and "
 "the queen is no different."
 msgstr ""
+"火蟻の女王（Fire Ant Queen）\n"
+"\n"
+"火蟻は獰猛な牙と、火を発生させる異常な能力を持っていますが、女王アリもまた同"
+"様です。"
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebane Ant"
-msgstr "火蟻"
+msgstr "焚殺アリ"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebomb Ant"
-msgstr "火蟻"
+msgstr "火炎アリ"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:53
@@ -6041,13 +5997,15 @@ msgid ""
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
 msgstr ""
+"より進化して特殊化した火蟻は、異なる容姿に変化していきます。火炎アリ"
+"（Firebom Ant）は膨張した腹部に可燃性噴霧液を大量に生成・運搬することが可能"
+"で、恐るべき攻撃に役立てます。しかしそれは、物理的な攻撃に対する抵抗力を弱体"
+"化させていて、健康を害すれば連続的な火炎攻撃はできなくなります。"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:4
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Queen"
-msgstr "巨大アリ"
+msgstr "巨大アリの女王"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
@@ -6061,30 +6019,31 @@ msgid ""
 "a very short continued existence — and if their flesh is warm and "
 "nourishing, they can host an ant egg."
 msgstr ""
+"巨大アリは、地下深くの洞窟から高い山の頂上まで、ほとんどの環境で普通に見られ"
+"る生き物です。巨大アリの女王（Giant Ant Queen）は、他の多くの種族が理解してい"
+"るような王族ではありませんが、機能しているあらゆる巣の中心であり、全精力を"
+"もって守られています。巣の中核としての女王は有能な戦術家でなければなりません"
+"し、競争相手の巣の標的にもされることから、巧みな戦士である必要もあります。女"
+"王アリを伴ったアリの集団に遭遇してしまった普通の人間やオークは、ごく短い生存"
+"期間しか期待できません ―― また、その肉が暖かく栄養があれば、アリの卵を産み付"
+"けられることでしょう。"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Soldier Ant"
-msgstr "火蟻"
+msgstr "兵隊アリ"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. Though normally not hostile, "
-#| "they can bite at close range."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Most common are the nondescript workers "
 "and scouts, but in times of conflict, a more dangerous Soldier caste enters "
 "the fray."
 msgstr ""
-"巨大アリ（Giant Ant）は、地下深くの洞窟から高い山の頂上まで、ほとんどの環境で"
-"普通に見られる生き物です。通常は敵対的ではありませんが、近づけば噛みつかれる"
-"恐れがあります。"
+"巨大アリは、地下深くの洞窟から高い山の頂上まで、ほとんどの環境で普通に見られ"
+"る生き物です。最も一般的なのは、ありふれた働きアリや探索アリですが、紛争勃発"
+"となれば更に危険な兵士階層の兵隊アリ（Soldier Ant）たちが参戦してきます。"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
@@ -6150,7 +6109,7 @@ msgstr ""
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:8
 msgid "Caribe"
-msgstr ""
+msgstr "ピラニア"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
@@ -6162,11 +6121,16 @@ msgid ""
 "use to extricate themselves from situations dire to most other fish. These "
 "fish are unusually clever and should not be underestimated."
 msgstr ""
+"巨大なピラニア（Caribe）には Weldyn 近辺の内陸の川では滅多に遭遇しませんが、"
+"その獰猛な攻撃に関する話は遠方まで知れ渡っています。鎧に覆われた顔には、怒れ"
+"る赤い目を光らせています。危険な武器となるのは、その歯ですが、小さく骨ばった"
+"腕と爪があって、他の多くの魚にとって逃げ出すべき状況で、それが役に立つので"
+"す。この魚は非常に賢く、見くびってはいけません。"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:8
 msgid "Hunter Caribe"
-msgstr ""
+msgstr "狩猟ピラニア"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
@@ -6174,11 +6138,15 @@ msgid ""
 "As they age, the giant caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
+"狩猟ピラニア（Hunter Caribe）\n"
+"\n"
+"成長するに従って、巨大なピラニアは更に大きくなり、より危険な存在になります。"
+"しかも、海藻を使って獲物や敵を捕らえる技を身につけます。"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:8
 msgid "Nibbler"
-msgstr ""
+msgstr "齧り魚"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:43
@@ -6186,6 +6154,8 @@ msgid ""
 "Nibblers are juvenile predator fish, often more curious than dangerous. A "
 "single individual may not be a threat, but these fish seldom travel alone."
 msgstr ""
+"齧り魚（Nibbler）は肉食魚の幼魚で、危険というよりむしろ好奇心が旺盛です。一匹"
+"だけならそう恐くはありませんが、めったに単独行動は取りません。"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -6274,10 +6244,8 @@ msgstr "墨"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:5
-#, fuzzy
-#| msgid "Dragoon"
 msgid "Dragonfly"
-msgstr "熟練竜騎士"
+msgstr "トンボ"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:27
@@ -6288,18 +6256,23 @@ msgid ""
 "generally territorial, but can cooperate in small groups to confront common "
 "foes or large prey."
 msgstr ""
+"巨大なトンボ（Dragonfly）は Wesnoth 一帯の一部の沼や川、湖にいて、一般的な小"
+"型生物よりも少し寿命が長く、その命を謳歌しています。成虫になれれば、終わり無"
+"く生き続けることができ、ゆっくりと成長を続けて最後の脱皮の時期を迎えます。一"
+"般的には縄張り意識が強いのですが、トンボ共通の敵や大型の獲物に立ち向かうため"
+"に小グループ同士が協力し合ったりもします。"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:5
-#, fuzzy
-#| msgid "Grand Marshal"
 msgid "Grand Dragonfly"
-msgstr "大元帥"
+msgstr "雄大トンボ"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:28
 msgid "Dragonflies that survive long enough grow into a final, grander form."
 msgstr ""
+"成長を続けて長く生き残ったトンボは、最終的に非常に大きな容姿の雄大トンボ"
+"（Grand Dragonly）となります。"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Dragonfly_Grand.cfg:44
@@ -6311,7 +6284,7 @@ msgstr "毒針"
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
 msgid "Dragonfly Naiad"
-msgstr ""
+msgstr "ヤゴ"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
@@ -6321,6 +6294,11 @@ msgid ""
 "stay submerged to breathe, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
+"ヤゴ（Dragonfly Naiad）\n"
+"\n"
+"トンボの幼虫は水中生活を送っていて、小魚や他の昆虫の幼虫などが主な餌となりま"
+"す。陸上の岩や泥の上を這い回れますが、息を継ぐには水に潜る必要があり、水辺に"
+"しか巨大トンボが棲息していないのはそのためなのです。"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
@@ -6342,9 +6320,9 @@ msgstr ""
 #. [attack]: type=blade
 #. [attack]: type=pierce
 #: data/core/units/monsters/Elder_Falcon.cfg:84
-#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:86
-#: data/core/units/monsters/Raven_Harbinger.cfg:96
-#: data/core/units/monsters/Raven_Omen.cfg:86
+#: data/core/units/monsters/Falcon.cfg:95 data/core/units/monsters/Raven.cfg:82
+#: data/core/units/monsters/Raven_Harbinger.cfg:92
+#: data/core/units/monsters/Raven_Omen.cfg:82
 #: data/core/units/monsters/Roc.cfg:64
 msgid "beak"
 msgstr "くちばし"
@@ -6638,12 +6616,12 @@ msgstr ""
 msgid "hooves"
 msgstr "蹄"
 
-#. [unit_type]: id=Black Horse, race=horse
+#. [unit_type]: id=Black Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Black.cfg:14
 msgid "Black Horse"
 msgstr "黒馬"
 
-#. [unit_type]: id=Black Horse, race=horse
+#. [unit_type]: id=Black Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Black.cfg:34
 msgid ""
 "The true nature of Black Horses is impossible to discern, but the fire in "
@@ -6670,12 +6648,12 @@ msgstr "黒雄馬"
 msgid "female^Black Nightmare"
 msgstr "黒の悪夢"
 
-#. [unit_type]: id=Dark Horse
+#. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
 msgid "Dark Horse"
 msgstr "闇馬"
 
-#. [unit_type]: id=Dark Horse
+#. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:40
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
@@ -6804,24 +6782,18 @@ msgstr "砂漠の稲妻"
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
 msgid "Kraken"
-msgstr ""
+msgstr "クラーケン"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cuttlefish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Krakens are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"大王イカ（Cuttlefish）は海棲の巨大な生物です。強力な触手によって敵を捕らえた"
-"り、有毒の墨を吐いたりできます。この化け物と遭遇した際に、生き延びる最善の手"
-"段は浅瀬に留まる事です。"
+"クラーケン（Kraken）は超巨大な海洋生物です。立ち向かうものを強力な触手で掴ん"
+"だり、遠方から毒性の黒い墨を吐きつけたりもします。クラーケンに遭遇せず生き残"
+"りたいなら、岸辺近くに留まっておくことが最善の方法です。"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -6842,12 +6814,12 @@ msgstr ""
 "泥蟲は土と水による単純な構造を持ち、泥の塊を驚くべき力で吐き出すことができま"
 "す。泥蟲は遅く、ひ弱で、火に弱くはありますが、一般的な武器への耐性を持ち、簡"
 "単に素早く作ることができるので、未熟で野心的な魔術師たちによって生み出されま"
-"す"
+"す。"
 
 #. [unit_type]: id=Raven, race=raven
 #: data/core/units/monsters/Raven.cfg:4
 msgid "Raven"
-msgstr ""
+msgstr "カラス"
 
 #. [unit_type]: id=Raven, race=raven
 #: data/core/units/monsters/Raven.cfg:18
@@ -6858,11 +6830,17 @@ msgid ""
 "vivacious behavior ties them to the legacy of battle and its consequences "
 "for the living, rather than rot and the finality of the tomb."
 msgstr ""
+"カラス（Raven）たちが軍隊を追いかけるのは、戦争の果実としてのゴミや骸骨にあり"
+"つくのが目的です。それが理由でカラスたちは、死、戦争、運命といった言葉と結び"
+"付けられることがしばしばです。通常は彼らが降霊術と関係あるとは思われていませ"
+"ん。彼らの厚かましくも陽気な振る舞いは、腐敗とか、お墓の持つ終末感よりもむし"
+"ろ、戦争の遺産や、生き続けることとの因果関係と結び付けられることが多いからで"
+"す。"
 
 #. [unit_type]: id=War Harbinger, race=raven
 #: data/core/units/monsters/Raven_Harbinger.cfg:4
 msgid "War Harbinger"
-msgstr ""
+msgstr "戦争の先触れ者"
 
 #. [unit_type]: id=War Harbinger, race=raven
 #: data/core/units/monsters/Raven_Harbinger.cfg:19
@@ -6873,13 +6851,18 @@ msgid ""
 "been seen to wear crude ornaments and lead groups in a noisy chorus of calls "
 "and cries, a reliable sign that war is imminent."
 msgstr ""
+"戦争の先触れ者（War Harbinger）\n"
+"\n"
+"カラスたちが軍隊を追いかけるのは、戦争の果実としてのゴミや骸骨にありつくのが"
+"目的です。このことが、黒い鳥たちは争い事に結びつく超自然的な力の使者だ、とい"
+"う言い伝えの元になっているのです。カラスの中で大きな者たちの一部は、むき出し"
+"の飾りを身につけて、騒々しい鳴き声を発する群れを率いたりもしますが、それこそ"
+"が戦争が差し迫っている兆候なのです。"
 
 #. [unit_type]: id=Dark Omen, race=raven
 #: data/core/units/monsters/Raven_Omen.cfg:4
-#, fuzzy
-#| msgid "Dark Horse"
 msgid "Dark Omen"
-msgstr "闇馬"
+msgstr "暗黒の予言者"
 
 #. [unit_type]: id=Dark Omen, race=raven
 #: data/core/units/monsters/Raven_Omen.cfg:18
@@ -6889,6 +6872,12 @@ msgid ""
 "supernatural forces associated with conflict. The unusual abilities "
 "displayed by some have only supported this notion."
 msgstr ""
+"暗黒の予言者（Dark Omen）\n"
+"\n"
+"カラスたちが軍隊を追いかけるのは、戦争の果実としてのゴミや骸骨にありつくのが"
+"目的です。このことが、黒い鳥たちは争い事に結びつく超自然的な力の使者だ、とい"
+"う言い伝えの元になっているのです。一部のカラスが見せるその異常な能力は、その"
+"発想を裏付けるものでしかありません。"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
@@ -6912,11 +6901,25 @@ msgid ""
 "disappear when trying to cross the harsh ranges. If you must traverse the "
 "great deserts, keep an eye to the sky."
 msgstr ""
+"ロック鳥（Rok）\n"
+"\n"
+"市街地や住宅地から遠く離れた砂地の山中では、巨大な猛禽類が険しく聳える岩山に"
+"巣作りしていると言われています。旅人や遊牧民の話でよると、家畜や大の大人たち"
+"が、何の前触れもなくその怪物たちに空へと運び去られているのを目撃したそうで"
+"す。砂漠を放浪する者たちの言い分をそっくり信用するわけにはいきませんが、酔っ"
+"た船乗りの嘘 ―― 完全装備の艦船が、どんな生き物も育たないほど切り立った崖が"
+"迫った峡谷を航行しようとしていると、巨大なワシに岩を落とされて沈められてし"
+"まった、というでたらめな話よりは、まだ現実味がありそうです。\n"
+"\n"
+"その荒唐無稽な話が真実かどうかはともかく、砂漠が危険な場所であることは否定で"
+"きませんし、商人や軍隊が過酷な領域を越えようとして、ときどき行方不明となって"
+"います。もしも砂漠地帯を横断するのならば、決して空から目を話してはいけませ"
+"ん。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Roc.cfg:75
 msgid "rock"
-msgstr ""
+msgstr "岩"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
@@ -6944,10 +6947,8 @@ msgstr "噴射"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:11
-#, fuzzy
-#| msgid "Sand Scuttler"
 msgid "Sand Scamperer"
-msgstr "砂走り"
+msgstr "砂走りの子供"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:16
@@ -6958,6 +6959,12 @@ msgid ""
 "energy, making fire and magic-based attacks the most effective way to take "
 "this venomous critter down."
 msgstr ""
+"砂走りの子供（Sand Scamperer）\n"
+"\n"
+"この印象的な生き物は、灼熱の砂漠の砂を素早く移動します。体は、衝撃によるあら"
+"ゆるダメージを吸収してくれる、砂色をした厚い外骨格で覆われています。但し、非"
+"常に燃えやすくて魔力にもめっぽう弱いので、この猛毒の生き物を倒すには、火力や"
+"魔法による攻撃が最も効果的です。"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -7039,7 +7046,7 @@ msgstr ""
 #. [unit_type]: id=Shadow Jumping Spider, race=monster
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:4
 msgid "Shadow Jumping Spider"
-msgstr ""
+msgstr "影の跳び蜘蛛"
 
 #. [unit_type]: id=Shadow Jumping Spider, race=monster
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:29
@@ -7056,6 +7063,15 @@ msgid ""
 "wanderers on the ground below. While they prefer the shadows, they are "
 "perfectly capable of hunting in the broad daylight."
 msgstr ""
+"毒と蜘蛛の巣を使って捕獲する恐るべき巨大蜘蛛とは違い、影の跳び蜘蛛（Shadow "
+"Jumping Spider）は、速さと奇襲が特長です。忍び足と鋭い目を持つこの狩人は、攻"
+"撃範囲内に密かに近づくと、鋼鉄をも貫くという噛みつき力で急襲します。獲物の防"
+"具を一旦貫通させてから有用な栄養分を吸い取り、素早くお構いなしの方法で彼らの"
+"性質どうりの方法で食い物にします。\n"
+"\n"
+"巣を張る巨大蜘蛛の従兄弟である跳び蜘蛛は、同じく暗い洞窟でよく活動しています"
+"が、森の樹冠部をうろついて、地上をさ迷う不運な者たちを上方で待ち伏せることも"
+"します。お気に入りは暗がりですが、真っ昼間の狩猟も十分に可能です。"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -7182,6 +7198,10 @@ msgid ""
 "match. Posing a considerable threat to even experienced soldiers, direwolves "
 "are avoided by all but madmen."
 msgstr ""
+"「ダイアウルフ」（Direwolf）と普通の種類の狼との違いは大きさと色だけです。通"
+"常サイズでは、その高さは馬の肩よりも大きくなり、その大きさに見合っただけの食"
+"欲もあります。経験豊かな兵士にとっても相当の脅威なので、狂人以外にダイアウル"
+"フに近づくものはいません。"
 
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
@@ -7196,6 +7216,12 @@ msgid ""
 "these great wolves are usually faster and hardier, making even just a single "
 "one a grave threat to an unwary traveler."
 msgstr ""
+"グレートウルフ（Great Wolf）\n"
+"\n"
+"ウルフの中には異常なほど大きく成長する者がいて、しかも異常なほど獰猛な外見を"
+"しています。普通の狼に比べて特別に強いというわけではありませんが、この大型の"
+"狼は通常より俊足かつ頑強のため、たとえ一匹でも、無用心な旅人にとっては重大な"
+"脅威となります。"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -7218,12 +7244,12 @@ msgstr ""
 "り、凄まじく頑丈で、いかなる敵であっても素手で倒すことができるそうです。これ"
 "らは疑わしい情報ですが、それでも人々を山から遠ざけるには十分なようです。"
 
-#. [unit_type]: id=Naga Dirkfang, race=naga
+#. [unit_type]: id=Naga Dirkfang, race=naga, gender=male,female
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
 msgstr "ナーガの剣牙"
 
-#. [unit_type]: id=Naga Dirkfang, race=naga
+#. [unit_type]: id=Naga Dirkfang, race=naga, gender=male,female
 #: data/core/units/nagas/Dirkfang.cfg:18
 msgid ""
 "In contrast to the heavily melee-focused style of their northern brethren, "
@@ -7248,17 +7274,17 @@ msgstr ""
 msgid "chakri"
 msgstr "チャクリ"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
 msgstr "ナギニの剣牙"
 
-#. [unit_type]: id=Naga Fighter, race=naga
+#. [unit_type]: id=Naga Fighter, race=naga, gender=male,female
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "ナーガの戦士"
 
-#. [unit_type]: id=Naga Fighter, race=naga
+#. [unit_type]: id=Naga Fighter, race=naga, gender=male,female
 #: data/core/units/nagas/Fighter.cfg:18
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -7276,7 +7302,7 @@ msgstr ""
 "ん。彼らは小さく、やわな体をしていますが、ほとんどの場合敵よりも非常に素早く"
 "動作できます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Fighter.cfg:49
 msgid "Nagini Fighter"
 msgstr "ナギニの戦士"
@@ -7346,12 +7372,12 @@ msgstr ""
 "ませんが、そのような状況であればナーガはより良いアドバンテージが得られる地形"
 "を探すでしょう。"
 
-#. [unit_type]: id=Naga Myrmidon, race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "ナーガのミュルミドーン"
 
-#. [unit_type]: id=Naga Myrmidon, race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:20
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -7365,12 +7391,12 @@ msgstr ""
 "き、優雅に踊りながら攻撃を回避します。あらゆる開けた土地の敵に有効なだけでな"
 "く、水泳能力によって素晴しい移動力を持っています。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Myrmidon.cfg:48
 msgid "Nagini Myrmidon"
 msgstr "ナギニのミュルミドーン"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Myrmidon.cfg:50
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
@@ -7384,12 +7410,12 @@ msgstr ""
 "速く攻撃でき、優雅に踊りながら攻撃を回避します。あらゆる開けた土地の敵に有効"
 "なだけでなく、水泳能力によって素晴しい移動力を持っています。"
 
-#. [unit_type]: id=Naga Ophidian, race=naga
+#. [unit_type]: id=Naga Ophidian, race=naga, gender=male,female
 #: data/core/units/nagas/Ophidian.cfg:4
 msgid "Naga Ophidian"
 msgstr "ナーガのオフィディアン"
 
-#. [unit_type]: id=Naga Ophidian, race=naga
+#. [unit_type]: id=Naga Ophidian, race=naga, gender=male,female
 #: data/core/units/nagas/Ophidian.cfg:18
 msgid ""
 "Experienced warriors of the Southern Naga often find work as mercenaries, "
@@ -7427,17 +7453,17 @@ msgstr "曲刀"
 msgid "jarid"
 msgstr "ジャリド"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
 msgstr "ナギニのオフィディアン"
 
-#. [unit_type]: id=Naga Ringcaster, race=naga
+#. [unit_type]: id=Naga Ringcaster, race=naga, gender=male,female
 #: data/core/units/nagas/Ringcaster.cfg:4
 msgid "Naga Ringcaster"
 msgstr "ナーガの輪投げ"
 
-#. [unit_type]: id=Naga Ringcaster, race=naga
+#. [unit_type]: id=Naga Ringcaster, race=naga, gender=male,female
 #: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
@@ -7457,17 +7483,17 @@ msgstr ""
 msgid "chakram"
 msgstr "チャクラム"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
 msgstr "ナギニの輪投げ"
 
-#. [unit_type]: id=Naga Sicarius, race=naga
+#. [unit_type]: id=Naga Sicarius, race=naga, gender=male,female
 #: data/core/units/nagas/Sicarius.cfg:4
 msgid "Naga Sicarius"
 msgstr "ナーガのシカリウス"
 
-#. [unit_type]: id=Naga Sicarius, race=naga
+#. [unit_type]: id=Naga Sicarius, race=naga, gender=male,female
 #: data/core/units/nagas/Sicarius.cfg:19
 msgid ""
 "While they sometimes still stand in as sellswords for potential Dunefolk "
@@ -7495,17 +7521,17 @@ msgstr ""
 "陥ったとき、その抜け目ない狡猾さによって多くの敵の攻撃を先読みし、重い曲刀に"
 "よって致命打を受け流します。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
 msgstr "ナギニのシカリウス"
 
-#. [unit_type]: id=Naga Warrior, race=naga
+#. [unit_type]: id=Naga Warrior, race=naga, gender=male,female
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "ナーガの熟練戦士"
 
-#. [unit_type]: id=Naga Warrior, race=naga
+#. [unit_type]: id=Naga Warrior, race=naga, gender=male,female
 #: data/core/units/nagas/Warrior.cfg:18
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -7522,12 +7548,12 @@ msgstr ""
 "効果的な技能である、攻撃回避の捻りや回転を学んでいます。これは陸上では有効で"
 "すが、水の抵抗がこれを行うことを大きく妨げます。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Warrior.cfg:46
 msgid "Nagini Warrior"
 msgstr "ナギニの熟練戦士"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Warrior.cfg:48
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
@@ -7544,12 +7570,12 @@ msgstr ""
 "でもっとも効果的な技能である、攻撃回避の捻りや回転を学んでいます。これは陸上"
 "では有効ですが、水の抵抗がこれを行うことを大きく妨げます。"
 
-#. [unit_type]: id=Naga Zephyr, race=naga
+#. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:4
 msgid "Naga Zephyr"
 msgstr "ナーガのゼフィアー"
 
-#. [unit_type]: id=Naga Zephyr, race=naga
+#. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
@@ -7622,7 +7648,7 @@ msgstr ""
 "手とするわけではありません。アンバランスなチャクラムの突起と小さな刃が格闘の"
 "役に立つのです。\n"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
 msgstr "ナギニのゼフィアー"
@@ -7658,9 +7684,9 @@ msgid ""
 msgstr ""
 "若者オーガ（Young Ogre）\n"
 "\n"
-"まだ若い内にオーガは時々捕えられ、軍隊に入れて訓練させられます。彼らはそれほ"
-"ど武器をそれほど上手に扱えませんが、彼らの怪力を考慮すると大したことではあり"
-"ません。"
+"まだ若い内にオーガは時々捕えられ、軍隊に入れて訓練させられます。彼らは武器を"
+"それほど上手には扱えませんが、彼らの怪力を考慮すると大したことではありませ"
+"ん。"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
@@ -7978,12 +8004,12 @@ msgstr ""
 "かなり野蛮な戦術ですが、訓練とより複雑な戦術を扱う技巧が不足しているこれらの"
 "戦士にとっては非常に効率的です。"
 
-#. [unit_type]: id=Saurian Ambusher, race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "female^Saurian Ambusher"
 msgstr "トカゲの女熟練散兵"
 
-#. [unit_type]: id=Saurian Ambusher, race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard, gender=female
 #: data/core/units/saurians/Ambusher.cfg:18
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
@@ -8020,12 +8046,12 @@ msgstr ""
 "の実践は占いと黒魔術を思わせるものです。それが何なのかあまり理解されていませ"
 "んが、それを使われるものにとってはまさしく恐怖と見なされます。"
 
-#. [unit_type]: id=Saurian Flanker, race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "female^Saurian Flanker"
 msgstr "トカゲの女精鋭散兵"
 
-#. [unit_type]: id=Saurian Flanker, race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard, gender=female
 #: data/core/units/saurians/Flanker.cfg:19
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
@@ -8042,14 +8068,12 @@ msgstr ""
 "ぜなら、敵が不注意でいると、彼らの支援部隊の側面からすぐにこの生物の攻撃を受"
 "けることになってしまうからです。"
 
-#. [unit_type]: id=Saurian Javelineer, race=lizard
+#. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "トカゲの女精鋭散兵"
+msgstr "トカゲの女投槍兵"
 
-#. [unit_type]: id=Saurian Javelineer, race=lizard
+#. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
 msgid ""
 "After years of combat practice, saurians warriors that are the most talented "
@@ -8057,6 +8081,11 @@ msgid ""
 "javelineers. With better equipment and exceptional aim, saurian javelineers "
 "are not to be underestimated."
 msgstr ""
+"トカゲの投槍兵（Saurian Javelineer）\n"
+"\n"
+"長期の戦闘訓練を経て槍投げの技能を身につけたトカゲの戦士は、投槍兵へと昇格す"
+"ることでしょう。よりよい装備と優れた照準能力を持ったトカゲの投槍兵は軽視され"
+"るべきではありません。"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
@@ -8081,23 +8110,13 @@ msgstr ""
 "的な」役割がなんであれ、彼らはまぎれもなく強力です。彼らの種族の持つ奇妙な魔"
 "法のために。そして彼らはいつでも警戒すべき存在です。"
 
-#. [unit_type]: id=Saurian Prophet, race=lizard
+#. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:4
-#, fuzzy
-#| msgid "Saurian Oracle"
 msgid "Saurian Prophet"
-msgstr "トカゲの神官"
+msgstr "トカゲの預言者"
 
-#. [unit_type]: id=Saurian Prophet, race=lizard
+#. [unit_type]: id=Saurian Prophet, race=lizard, gender=male
 #: data/core/units/saurians/Prophet.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Certain saurians are seen dressed in arcane regalia and covered head to "
-#| "toe in horrifying, esoteric shapes and markings, both with paint and "
-#| "tattoo. Some suspect them to be visionaries, or oracles amongst their "
-#| "ilk. But whatever ‘societal’ function they may have, they are undeniably "
-#| "powerful in the strange magics their kind possess, and are beings to be "
-#| "wary of if ever seen."
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -8105,20 +8124,18 @@ msgid ""
 "whatever ‘societal’ function they may have, they are undeniably powerful in "
 "the strange magics their kind possess."
 msgstr ""
-"トカゲの神官（Saurian Oracle）\n"
+"トカゲの預言者（Saurian Prophet）\n"
 "\n"
-"一部のトカゲ族は神秘的な王権の象徴で着飾り、頭からつま先まで、塗料と入れ墨で"
-"描かれた恐ろしい、秘密の形や模様に覆われています。ある者は彼らを彼らの種族の"
-"中の幻視者、あるいは神官だろうと考えています。しかし、彼らが持っている「社会"
-"的な」役割がなんであれ、彼らはまぎれもなく強力です。彼らの種族の持つ奇妙な魔"
+"一部のトカゲ族は神秘的な王権の象徴で着飾り、頭からつま先まで塗料と入れ墨で描"
+"かれた、恐ろしい秘密の形や模様に覆われています。ある者は彼らを彼らの種族の中"
+"の幻視者、あるいは神官だろうと考えています。しかし、彼らが持っている「社会"
+"的」な役割がなんであれ、彼らはまぎれもなく強力です。彼らの種族の持つ奇妙な魔"
 "法のために。そして彼らはいつでも警戒すべき存在です。"
 
 #. [unit_type]: id=Saurian Seer, race=lizard
 #: data/core/units/saurians/Seer.cfg:4
-#, fuzzy
-#| msgid "Saurian Soothsayer"
 msgid "Saurian Seer"
-msgstr "トカゲの僧侶"
+msgstr "トカゲの千里眼"
 
 #. [unit_type]: id=Saurian Seer, race=lizard
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
@@ -8130,18 +8147,18 @@ msgid ""
 "skilled at a sort of medicine, which is of great benefit whenever battle is "
 "brought against them."
 msgstr ""
-"トカゲの僧侶（Saurian Soothsayer）\n"
+"トカゲの僧侶（Saurian Soothsayer）,トカゲの千里眼（Saurian Seer）\n"
 "\n"
 "トカゲ族はある奇妙な能力を持っていることが知られています。その能力は不思議で"
 "神秘的な技術です。彼らの一部は一種の薬品の扱いに特に長けているのは明らかで"
 "す。戦闘に巻き込まれたときにはいつでも、薬はすばらしい利益となります。"
 
-#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "female^Saurian Skirmisher"
 msgstr "トカゲの女散兵"
 
-#. [unit_type]: id=Saurian Skirmisher, race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard, gender=female
 #: data/core/units/saurians/Skirmisher.cfg:18
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
@@ -8168,20 +8185,23 @@ msgstr ""
 msgid "Saurian Soothsayer"
 msgstr "トカゲの僧侶"
 
-#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
-msgstr "トカゲの女散兵"
+msgstr "トカゲの女槍兵"
 
-#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#. [unit_type]: id=Saurian Spearthrower, race=lizard, gender=female
 #: data/core/units/saurians/Spearthrower.cfg:18
 msgid ""
 "Some saurians with particularly good aim prefer to aid their allies from the "
 "backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
+"トカゲの槍兵（Saurian Spearthrower）\n"
+"\n"
+"照準能力の高いトカゲの中には、敵の陣中に進み入るよりは後方からの支援を好む者"
+"がいます。その強力な槍投げの能力が、遠方からトカゲの兵士たちを支援を可能にし"
+"ています。"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -8410,18 +8430,14 @@ msgstr ""
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:143
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Rat"
 msgid "wc_variation^Ant"
-msgstr "ネズミ"
+msgstr "アリ"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:159
 #: data/core/units/undead/Corpse_Walking.cfg:160
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Bug"
-msgstr "コウモリ"
+msgstr "虫"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
@@ -8444,10 +8460,8 @@ msgstr "隼"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:238
 #: data/core/units/undead/Corpse_Walking.cfg:239
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Fish"
-msgstr "ウーズ"
+msgstr "魚"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:259
@@ -8500,10 +8514,8 @@ msgstr "サソリ"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:364
 #: data/core/units/undead/Corpse_Walking.cfg:365
-#, fuzzy
-#| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
-msgstr "クモ"
+msgstr "砂走り"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:373
@@ -8574,12 +8586,12 @@ msgstr ""
 "の世界がその古代リッチ（Ancient Lich）の支配によって永遠に闇に覆われずに済ん"
 "でいるのは、勇敢な英雄たちの不断の努力があったからに他なりません。"
 
-#. [unit_type]: id=Dark Adept, race=human
+#. [unit_type]: id=Dark Adept, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "暗黒僧"
 
-#. [unit_type]: id=Dark Adept, race=human
+#. [unit_type]: id=Dark Adept, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:22
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
@@ -8603,17 +8615,17 @@ msgstr ""
 "\n"
 "そのような制約があるために、降霊術の技術が彼らの唯一の武器となります。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Adept.cfg:160
 msgid "female^Dark Adept"
 msgstr "女暗黒僧"
 
-#. [unit_type]: id=Dark Sorcerer, race=human
+#. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "黒魔術師"
 
-#. [unit_type]: id=Dark Sorcerer, race=human
+#. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
 msgid ""
 "The dread inspired by black magic is enhanced by the secrecy and fell rumors "
@@ -8645,12 +8657,12 @@ msgstr ""
 "人に疑問を抱きません。これらの創造物はあらゆる暴君が夢見た忠誠心を持ち、力へ"
 "のほんのわずかな渇望ですら誘うものです。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:145
 msgid "Dark Sorceress"
 msgstr "女黒魔術師"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:149
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
@@ -8710,7 +8722,7 @@ msgstr ""
 "無限に引延ばされているか、単に延長されているかのどちらかです。そのようなこと"
 "を考えることさえ、彼らが成し遂げた事の重要性を支持することになります。"
 
-#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Necromancer, gender=male,female, race=human
 #: data/core/units/undead/Necromancer.cfg:22
 msgid ""
 "One of the pinnacles of what is considered ‘black magic’ is the art of "
@@ -8731,7 +8743,7 @@ msgstr ""
 "この能力は、あらゆる面において、死者を究極のものに変える最初のステップでし"
 "た。"
 
-#. [female]
+#. [female]: gender=female
 #: data/core/units/undead/Necromancer.cfg:152
 msgid "female^Necromancer"
 msgstr "女ネクロマンサー"
@@ -8759,23 +8771,20 @@ msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Goblin Knight"
 msgid "Bone Knight"
-msgstr "ゴブリンの騎士"
+msgstr "ボーンナイト"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:59
+#: data/core/units/undead/Skele_Bone_Knight.cfg:60
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:76
-msgid "trample"
-msgstr ""
+"ボーンナイト（Bone Knight）\n"
+"\n"
+"かつては平原中を駆け回っていた偉大な戦士でしたが、骸骨のような馬にまたがった"
+"騎手は恐怖と破壊をまき散らすため、邪悪な魔法によって地面から蘇りました。"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -8833,7 +8842,7 @@ msgstr ""
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:5
 msgid "Death Squire"
-msgstr ""
+msgstr "Death Squire"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
@@ -8844,6 +8853,10 @@ msgid ""
 "pick up a good deal of the Knight’s power, including the ability to command "
 "underlings."
 msgstr ""
+"憎しみと怒りに呪われた最強の戦士や将軍には、死の騎士としてこの世に戻ってくる"
+"者がいます。死の従者（Death Squire）は彼らに仕えつつ、死の騎士になるのに十分"
+"な穢れの力を身につけていきます。その中で指揮能力などの騎士としての力もつけて"
+"いきます。"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -8946,18 +8959,19 @@ msgstr ""
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:5
-#, fuzzy
-#| msgid "Skeleton Archer"
 msgid "Skeleton Rider"
-msgstr "スケルトンアーチャー"
+msgstr "スケルトンライダー"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:78
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"かつては平原中に声を轟かせていた偉大な戦士たちでしたが、骸骨のような馬にまた"
+"がったスケルトンライダー（Skeleton Rider）たちは恐怖と破壊をまき散らすため、"
+"邪悪な魔法によって墓から蘇りました。"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -9190,34 +9204,3 @@ msgid ""
 msgstr ""
 "呪術師ウーズ（Wose Shaman）はつる植物や蔦などの森林植物に命じて敵を絡めとるこ"
 "とができます。"
-
-#~ msgid ""
-#~ "Far from human cities in the great desert mountains, the large birds of "
-#~ "prey known as Rocs can sometimes be found rapidly scouring the sands on "
-#~ "their hunts. Despite their large size, Rocs tend to be reclusive and are "
-#~ "only rarely encountered by other sapient races. Their elusive nature has "
-#~ "raised them to near mythological status, particularly among the nomads of "
-#~ "the deserts.\n"
-#~ "\n"
-#~ "Unlike other avians, such as falcons or hawks, the individualistic and "
-#~ "intelligent Rocs are nearly untamable. Only on occasion, a Roc may offer "
-#~ "its aid to a traveler in need, usually in exchange for a small trinket or "
-#~ "shiny bauble."
-#~ msgstr ""
-#~ "大砂漠の山脈にある人間の都市から離れた場所で、ロック鳥（Roc）として知られ"
-#~ "る大きな猛禽類は獲物についた砂をすばやく落としている姿が時折見られます。彼"
-#~ "らは巨体であるにも関わらず、身を隠そうとする傾向があり知恵のある他種族と遭"
-#~ "遇することは稀です。彼らの捉えにくい性質から半ば神話の存在となりつつあり、"
-#~ "特に砂漠の放浪者たちからはそのように扱われています。\n"
-#~ "\n"
-#~ "群れを作らず知恵のあるロック鳥は、隼や鷹などの他の鳥類とは異なり、飼いなら"
-#~ "すことはほぼ不可能です。ときおりロック鳥は旅人を助けることがありますが、通"
-#~ "常は小さな品物や輝くおもちゃを交換条件とします。"
-
-#~ msgid "Giant Stoat"
-#~ msgstr "巨大オコジョ"
-
-#~ msgid "Giant Stoats are obsolete, use Frost Stoat."
-#~ msgstr ""
-#~ "巨大オコジョ（Giant Stoat）は廃止されました。氷オコジョ（Frost Stoat）を使"
-#~ "用してください。"

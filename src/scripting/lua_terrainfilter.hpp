@@ -14,17 +14,13 @@
 
 #pragma once
 
-#include <cstddef>
 #include <string>
 #include <memory>
 #include <map>
 #include <set>
 #include "map/map.hpp"
 
-#include "scripting/lua_common.hpp"
 struct lua_State;
-struct map_location;
-class mapgen_gamemap;
 class filter_impl;
 namespace lua_mapgen
 {

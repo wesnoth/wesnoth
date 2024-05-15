@@ -24,7 +24,6 @@
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
-#include "gui/core/event/handler.hpp"
 #include "gui/core/top_level_drawable.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
@@ -38,7 +37,6 @@
 #include <string>
 #include <vector>
 
-struct point;
 
 namespace gui2
 {
@@ -49,8 +47,6 @@ namespace event { struct message; }
 // ------------ WIDGET -----------{
 
 namespace dialogs { class modal_dialog; }
-class debug_layout_graph;
-class pane;
 
 namespace event
 {
@@ -58,8 +54,6 @@ class distributor;
 } // namespace event
 
 /**
- * @ingroup GUIWidgetWML
- *
  * base class of top level items, the only item which needs to store the final canvases to draw on.
  * A window is a kind of panel see the panel for which fields exist.
  */

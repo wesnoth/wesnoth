@@ -24,7 +24,6 @@
 #include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
-#include "variable.hpp"
 
 
 // This file is in the game_events namespace.

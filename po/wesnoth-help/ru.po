@@ -8,13 +8,13 @@
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-20 19:57-0600\n"
-"PO-Revision-Date: 2022-08-28 19:34+0300\n"
+"POT-Creation-Date: 2024-04-10 12:05-0500\n"
+"PO-Revision-Date: 2024-04-07 19:09+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Bookmarks: 120,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
@@ -203,7 +203,7 @@ msgstr ""
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
@@ -211,7 +211,7 @@ msgstr "телепорт"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -234,7 +234,7 @@ msgstr "бьёт в спину"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:387
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "пожиратель"
 
@@ -261,7 +261,7 @@ msgstr "Пещера"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "скрытность"
 
@@ -299,7 +299,7 @@ msgstr "Грибная роща"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "невидимка"
 
@@ -631,7 +631,7 @@ msgid ""
 "“special” group."
 msgstr ""
 "Карты в редакторе обычно выглядят так же, как и в игре. Но есть несколько "
-"исключений, когда в редакторе используется иная графика. Все наложения, "
+"исключений, когда в редакторе используется иная графика. Все покрытия, "
 "описанные здесь, находятся во вкладке «особое» палитры местности."
 
 #. [topic]: id=editor_terrain_overlays
@@ -740,40 +740,24 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "Редактор графики покрытия местности"
+msgstr "Вид подъёма местности"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"Карты в редакторе обычно выглядят так же, как и в игре. Но есть несколько "
-"исключений, когда в редакторе используется иная графика. Все наложения, "
-"описанные здесь, находятся во вкладке «особое» палитры местности."
+"Вид графического эффекта подъёма выглядит в редакторе иначе, чем в игре из-"
+"за упрощающих с ним работу визуальных средств. Все покрытия, перечисленные "
+"здесь, находятся в группе «подъём» палитры местности."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:175
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Продвинутый'</bold>"
+msgstr "<bold>text='Прямые покрытия'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
@@ -785,24 +769,23 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"Утёсы и ущелья\n"
+"\n"
+"Утёсы, ущелья и сходные вариации рельефа действуют практически как обычные "
+"покрытия местности, и их можно напрямую использовать подобным образом. "
+"Однако для областей карт, где Вам хотелось бы объединять эти «маркеры» с "
+"другими покрытиями, Вам нужно будет использовать способ, изложенный в "
+"следующей секции."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Продвинутый'</bold>"
+msgstr "<bold>text='Заливка возвышенностью'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Маркер возвышенности"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
@@ -821,6 +804,16 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"Иконка возвышенности в палитре редактора\n"
+"\n"
+"Чтобы сделать часть местности выше или ниже и всё ещё мочь использовать "
+"другие покрытия местности, такие как деревья, Вам потребуется использовать "
+"эти маркеры. Разместив одну из этих стрелочек на карте, Вы зальёте её "
+"окрашенной дымкой, заставляя её выглядеть выше или ниже соседних полей.\n"
+"\n"
+"Существуют два маркера возвышенности и два — низины, поэтому можно создавать "
+"террасы вплоть до пяти уровней высоты (vv, v, -, ^, ^^). Размещение высокой "
+"области рядом с низкой не увеличит видимую глубину скал.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:192
@@ -842,6 +835,22 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"editor^<bold>text='Как использовать'</bold>\n"
+"\n"
+"Стрелки маркера сами по себе не слишком полезны, но их можно использовать, "
+"чтобы огораживать труднодоступные области ущельями или утёсами.\n"
+"\n"
+"Пример использования может быть таким:\n"
+"1.  Выберите утёс (^Qhh) из палитры редактора и воспользуйтесь кистью "
+"шириной в одно поле, чтобы очертить шарик над пустой травянистой картой.\n"
+"2.  Разместите стрелку маркера высоты (^_mh) на поле внутри вашего шарика "
+"(но не на границе из утёсов).\n"
+"3.  Теперь весь Ваш шарик поднимется наверх, и до тех пор, пока Вы не "
+"перезапишите маркеры или покрытия утёсов, Вы можете добавлять остальные "
+"покрытия местности как Вам угодно.\n"
+"\n"
+"Графика, используемая для отражения границ подъёма определяется базовой "
+"местностью.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:203
@@ -851,6 +860,9 @@ msgid ""
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='Памятка авторам контента: Ни коды местности, ни любые другие "
+"свойства залитых полей не меняются, поэтому отфильтровать местность по её "
+"подъёму будет непросто.' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:208
@@ -1080,10 +1092,8 @@ msgstr ""
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:319
-#, fuzzy
-#| msgid "Using Add-ons"
 msgid "Change Add-on ID"
-msgstr "Использование аддонов"
+msgstr "Изменить идентификатор аддона"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:320
@@ -1092,11 +1102,14 @@ msgid ""
 "in. This will only rename that folder and update any references to it in the "
 "_main.cfg file. Any other place will need to be updated manually."
 msgstr ""
+"Позволяет изменить ID аддона, который соответствует названию папки, где он "
+"находится. Это всего лишь переименует ту папку и обновит все ссылки на неё в "
+"файле _main.cfg. В любых других местах это потребуется изменить вручную."
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:329
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Редактор публикации аддонов"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:330
@@ -1105,6 +1118,9 @@ msgid ""
 "publishing an add-on to the add-ons server for other players to download. "
 "The Validate button will check whether all required fields have valid values."
 msgstr ""
+"Позволяет настраивать _server.pbl файл аддона, необходимый для публикации на "
+"сервер аддонов, чтобы другие пользователи могли его скачать. Кнопка "
+"«Проверить» даст Вам понять, все ли поля имеют допустимые значения."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:338
@@ -1113,36 +1129,6 @@ msgstr "Редактор карт/сценариев"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
-#| "maps on which every Wesnoth scenario takes place. It also provides a "
-#| "limited set of features for setting up a basic scenario.\n"
-#| "\n"
-#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
-#| "option at the title screen.\n"
-#| "\n"
-#| "<header>text='Editing Modes'</header>\n"
-#| "\n"
-#| "The editor features two modes of operation: terrain mode and scenario "
-#| "mode.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
-#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-#| "locations'</ref>.\n"
-#| "\n"
-#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-#| "addition to the tools available in terrain mode, adds support for adding "
-#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
-#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
-#| "ref> at the start of the scenario. There’s also a "
-#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -1175,7 +1161,9 @@ msgid ""
 msgstr ""
 "Веснотский редактор карт и сценариев позволяет пользователям создавать и "
 "редактировать карты, на которых происходят события игры. Он также предлагает "
-"ограниченный набор возможностей для настройки базовых сценариев.\n"
+"ограниченный набор возможностей для настройки базовых сценариев, а также для "
+"наброска описания аддона, через который вы сможете распространять созданные "
+"сценарии.\n"
 "\n"
 "Редактор запускается кнопкой <italic>text='Редактор карт'</italic> главного "
 "экрана.\n"
@@ -1213,6 +1201,13 @@ msgid ""
 "scenario mode is required in order for your maps to be selectable during "
 "game creation."
 msgstr ""
+"В обоих режимах Вас попросят выбрать аддон, для которого Вы создаёте "
+"сценарии. Это может быть существующий аддон, либо же совершенно новый. Если "
+"Вы выберете новый аддон, в нём автоматически будут созданы все требуемые "
+"файлы и подпапки и присвоен уникальный идентификатор по умолчанию. Если "
+"только Вы не редактируете уже существующий файл карты, использование режима "
+"сценариев потребуется затем, чтобы Ваши карты можно было выбирать при "
+"создании игры."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:353
@@ -1345,22 +1340,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:402
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenario mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1377,18 +1356,15 @@ msgid ""
 msgstr ""
 "<header>text='Файлы: .map и .cfg'</header>\n"
 "\n"
-"Редактор сохраняет только один файл: либо .map (режим местности), либо .cfg "
-"(режим сценариев). В сценарном режиме карта местности сохраняется внутри "
-"файла .cfg без необходимости в отдельном файле .map. Если Вы начали работу в "
-"режиме местности, то с переключением в режим сценариев старый файл .map "
-"может остаться на месте, но он не будет обновляться редактором сценариев.\n"
+"Редактор сохраняет только один файл: либо .map (режим местности), либо оба "
+"файла — .map и .cfg — в режиме сценариев.\n"
 "\n"
 "Загрузка файлов .cfg происходит по-разному в зависимости от содержания этих "
 "файлов. Файлы .cfg, созданные редактором сценариев, будут открыты редактором "
 "напрямую. Однако при открытии файлов .cfg, которые используют отдельный "
-"файл .map (который редактором сценариев не создаётся), редактор попытается "
-"проследовать за ссылкой на него и открыть этот файл в режиме редактирования "
-"местности, как если бы файл .map выбрали в списке файлов."
+"файл .map, редактор попытается проследовать за ссылкой на него и открыть "
+"этот файл в режиме редактирования местности, как если бы файл .map выбрали в "
+"списке файлов."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:414
@@ -1428,6 +1404,34 @@ msgid ""
 "  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
 "the additional cfg file"
 msgstr ""
+"Во время загрузки .cfg файла, редактор сценариев поймёт файлы, созданные "
+"редактором сценариев, но скорее всего столкнётся с трудностями, при загрузке "
+"файлов, которые были изменены вручную.\n"
+"\n"
+"Одна из опций — создать отдельный WML файл, также с расширением .cfg, в "
+"котором при помощи препроцессора WML будет включён файл, созданный "
+"редактором. Такой отдельный файл содержит тег [scenario] и любой изменённый "
+"вручную WML, например, события. При таком рабочем процессе файловая "
+"структура аддона может выглядеть так:\n"
+"\n"
+"<header>text='Пример'</header>\n"
+"Если Ваш аддон будет использован только в 1.18 и после, рекомендуется вместо "
+"этого использовать новый атрибут include_file для подгрузки файлов, "
+"содержащих дополнительный WML в сценарий.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ «[binary_path]» добавляет подпапки аддона в список бинарных путей, "
+"позволяя искать map_file среди папки «maps»\n"
+"• maps/first.map\n"
+"  ◦ Это .map файл, созданный редактором сценариев во время сохранения в "
+"режиме сценария\n"
+"• scenarios/other.cfg\n"
+"  ◦ Это — .cfg файл, содержащий всё, что редактор сценариев понять не может\n"
+"• scenarios/first.cfg\n"
+"  ◦ Внутри элемента [scenario], используйте “map_file=\"first.map\"” для "
+"загрузки карты\n"
+"  ◦ Внутри элемента [scenario], используйте “include_file=\"other.cfg\"” для "
+"подгрузки дополнительного WML "
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:438
@@ -1624,16 +1628,6 @@ msgstr ""
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:504
-#, fuzzy
-#| msgid ""
-#| "<header>text='Files created by the Scenario Editor'</header>\n"
-#| "\n"
-#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
-#| "map data. When loading a .cfg file, the scenario editor understands files "
-#| "created by the scenario editor itself, but is likely to have difficulty "
-#| "with files that have been edited by hand; problems can be avoided by "
-#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
-#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1647,12 +1641,13 @@ msgid ""
 msgstr ""
 "<header>text='Файлы, созданные Редактором сценариев'</header>\n"
 "\n"
-"В сценарном режиме редактор сохраняет данные в виде файла .cfg со "
-"встроенными сведениями о карте. Когда файл .cfg загружается, Редактор "
-"сценариев понимает, какие карты были созданы внутри его самого, но с "
-"файлами, которые изменили вручную, могут возникнуть сложности. Неполадок "
-"можно избежать, если пользоваться <ref>dst='editor_separate_events_file' "
-"text='отдельным файлом .cfg'</ref> для частей, изменённых вручную."
+"В сценарном режиме редактор сохраняет данные в виде файла .cfg и отдельный ."
+"map файл со сведениями о карте. Затем сценарий подгружает карту через поле "
+"map_file. При загрузке .cfg файла редактор сценариев понимает, какие карты "
+"были созданы внутри его самого, но с файлами, которые изменили вручную, "
+"могут возникнуть сложности. Неполадок можно избежать, если пользоваться "
+"<ref>dst='editor_separate_events_file' text='отдельным файлом .cfg'</ref> "
+"для частей, изменённых вручную."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2246,8 +2241,8 @@ msgstr "Игра"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:500
 msgid "Traits"
 msgstr "Особенности"
 
@@ -4700,32 +4695,6 @@ msgstr "Установка аддонов"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the search box, separated by spaces. You can also sort the add-on list "
-#| "by clicking the column headers. It is also possible to choose to only "
-#| "display add-ons of specific categories by clicking on the "
-#| "<bold>text='Type'</bold> dropdown.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "If the window is too small to show them inline, the <bold>text='Addon "
-#| "Details'</bold> button provides you with additional details about the add-"
-#| "on, such as its full description, installation status, and available "
-#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4749,7 +4718,7 @@ msgid ""
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
-"Пользовательские аддоны могут быть получен через подменю "
+"Пользовательские аддоны могут быть получены и обновлены через подменю "
 "<italic>text='Аддоны'</italic> главного меню. Соединившись с сервером "
 "аддонов (по умолчанию <italic>text='add-ons.wesnoth.org'</italic>, вы "
 "получите список аддонов, доступных на сервере для скачивания.\n"
@@ -4806,12 +4775,6 @@ msgstr "Основные команды"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
-#, fuzzy
-#| msgid ""
-#| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with "
-#| "'/' (press 'm' first to open the chat line).\n"
-#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
@@ -4825,12 +4788,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Similar to the 'fps' command, but also forces everything to redraw "
-#| "instead of only things that have changed.\n"
-#| "\n"
 msgid ""
 "\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
@@ -5356,11 +5313,6 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| "If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit diverts the target's attention and reduces "
-#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
@@ -5455,17 +5407,17 @@ msgstr ""
 "первым обнаруживший его, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr "землянка"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:306
+#: data/core/macros/abilities.cfg:307
 msgid "female^burrow"
 msgstr "землянка"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:307
+#: data/core/macros/abilities.cfg:308
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5481,7 +5433,7 @@ msgstr ""
 "Враг, который обнаружит его первым, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:330
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5495,21 +5447,12 @@ msgstr ""
 "первым обнаруживший его, немедленно теряет все оставшиеся ходы."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "скрытность"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:348
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in a village, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
+#: data/core/macros/abilities.cfg:350
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5518,24 +5461,24 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Этот боец может прятаться в деревнях (за исключением водных) и оставаться "
-"незамеченным для врагов, за исключением стоящих рядом.\n"
+"Этот боец может прятаться в деревнях и оставаться незамеченным для врагов, "
+"за исключением стоящих рядом.\n"
 "\n"
 "Вражеский боец, первым обнаруживший его, немедленно теряет все оставшиеся "
 "ходы."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:366
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "погружается"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:367
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
 msgstr "погружается"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:368
+#: data/core/macros/abilities.cfg:370
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5552,12 +5495,12 @@ msgstr ""
 "оставшиеся ходы."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:388
+#: data/core/macros/abilities.cfg:390
 msgid "female^feeding"
 msgstr "пожирательница"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -5899,16 +5842,12 @@ msgstr ""
 "деревне."
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| "Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-"Умершие от чумы противники восстанут из мертвых, если не находились в "
-"деревне."
+"Те, кто умрут от особых ужасов природы, станут субстратом для стремительно "
+"растущих личинок, если они смогут сразу же прекратить этот процесс в деревне."
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -5992,6 +5931,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"Примечания (стиль 1.14, пожалуйста, приспособьте их к новому формату, чтобы "
+"избежать дубликатов):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6589,10 +6530,6 @@ msgstr "отвод"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used defensively, this attack reduces the opponent's chance to hit "
-#| "by 10%."
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -6709,7 +6646,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "ошеломляет"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6717,23 +6654,19 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"Эта атака бьёт настолько сильно, что противник оказывается ошеломлён и "
+"больше не может поддерживать зону контроля вплоть до своего следующего хода."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Этот боец способен замедлять противника, вдвое уменьшая скорость "
-"передвижения и количество атак до его следующего хода."
+msgstr "Этот боец способен ошеломить противников и лишить их зоны контроля."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "мистический"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
@@ -6741,6 +6674,8 @@ msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"Эта атака объединяет мистический урон с базовым типом урона оружия, поэтому "
+"устойчивость врага к мистическим атакам не повредит преимуществу бойца."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
@@ -6748,6 +6683,8 @@ msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"Этот боец может использовать мистические атаки, когда оппонент особенно "
+"уязвим к ним по отношению к оружию, к которому он применяется."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -6823,73 +6760,6 @@ msgstr "Дрейки"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains into ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — dominant who rules the society with an iron fist. Every "
-#| "drake is expected to earn their place in the strict hierarchy, to obey "
-#| "their superiors and command their inferiors. Entry to the ruling elite is "
-#| "only possible through challenging and defeating a superior in single "
-#| "combat, which is the way the hierarchy within the elite itself is "
-#| "established. The use of deception of any kind towards any fellow drake "
-#| "is, without exception, seen as cowardly and unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
-#| "armor- and weapon-smithing, but neither know nor need other science and "
-#| "culture besides this. Nonetheless, the few implements they do fashion are "
-#| "almost unrivaled in quality, only matched by those produced in the finest "
-#| "Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-#| "Death in battle is the most preferred way for a drake to leave this "
-#| "world. Unlike the elder members of other races, drakes naturally grow "
-#| "more aggressive and reckless towards the ends of their natural lives, "
-#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6959,7 +6829,7 @@ msgstr ""
 "чешуек, отражающих большинство физических атак, кроме колющих и атак "
 "холодом. Большинство дрейков способны летать и быстро перемещаться на "
 "дальние расстояния. Однако их большой вес и размер несколько ограничивает их "
-"способности, они не могут сражаться в воздухе. Где возможно, они пользуются "
+"способности — в воздухе они бойцы так себе. Где возможно, они пользуются "
 "особенностями местности, вроде холмов, гор и деревьев, как стартовыми "
 "площадками, чтобы набрать большую скорость и высоту. К счастью для своих "
 "врагов, они довольно неуклюжи и на удивление медлительны в бою. Вкупе с "
@@ -6968,15 +6838,15 @@ msgstr ""
 "\n"
 "Дрейки — магические существа, саму их жизнь поддерживает таинственный "
 "внутренний огонь. В этом легко убедиться, когда кто-нибудь из них гибнет в "
-"бою; его внутренний огонь высвобождается, сжигая останки в пепел. Их "
-"внутренний огонь — их главная слабость; из-за него они очень уязвимы к "
-"холоду. Несмотря на сверхъестественную природу, управлять магией они не "
+"бою; его внутренний огонь высвобождается, сжигая останки в пепел. В то же "
+"время, внутренний огонь — их главная слабость; из-за него они очень уязвимы "
+"к холоду. Несмотря на сверхъестественную природу, управлять магией они не "
 "способны. Волшебство, заключённое в теле дрейков, даёт им жизнь и позволяет "
 "изрыгать огонь, но ничего другого с этой магией они делать не умеют.\n"
 "\n"
 "<header>text='Общество'</header>\n"
 "Дрейки — раса довольно воинственная, их общества лучше всего описываются "
-"выражением «развитая военная община». Ядро племени составляет небольшая "
+"выражением «развитая воинская община». Ядро племени составляет небольшая "
 "группа опытных воинов во главе с всеми уважаемым — или просто внушающим "
 "страх — доминантом, что держит общину в ежовых рукавицах. Каждый дрейк "
 "должен заслужить место в строгой иерархии, подчиняться тем, кто выше и "
@@ -6996,10 +6866,10 @@ msgstr ""
 "кузнечном деле с ними не сравнится почти никто, разве что мастера из гномьих "
 "цехов.\n"
 "\n"
-"Дрейки вылупляются из яиц и как правило живут по 20-30 лет. Лучшим способом "
-"покинуть этот мир для дрейка — умереть в бою. В отличие от других рас, "
-"дрейки к старости становятся агрессивнее и безрассуднее; возможно, для того, "
-"чтобы заслужить место в легендах своего народа.\n"
+"Дрейки вылупляются из яиц и, как правило, живут по несколько десятилетий, "
+"хотя известны и те, кто смог прожить дольше. Тем не менее, лучшим способом "
+"покинуть этот мир для дрейка считается умереть в бою — едва ли кто-то "
+"доживает до старости.\n"
 "\n"
 "<header>text='География'</header>\n"
 "Дрейки родом с вулканического архипелага <ref>dst='morogor' text='Морогор'</"
@@ -8108,24 +7978,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Гномы"
+msgstr "Ворон"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "Дрейк"
+msgstr "Ворона"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Гномы"
+msgstr "Вороны"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -8146,6 +8010,21 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"Вороны — превосходные падальщики, часто следующие за охотниками или "
+"хищниками в надежде поживиться частью добычи. У них нет мощных клювов и "
+"когтей грифонов или хищных птиц, тем не менее, они всё ещё представляют "
+"угрозу благодаря своей хитрости и способности заметить любое преимущество.\n"
+"\n"
+"Когда проходят битвы, мёртвые и раненые превращаются в воронье пиршество — "
+"посему вороны раздражают сотоварищей павших, но видятся частью ритуала войны "
+"некоторыми победителями. Жестокость и немалая численность, присущие как "
+"оркам, так и людям, порождает постоянное взаимодействие этих рас с воронами. "
+"Именно поэтому эти птицы стали всеобщими персонажами легенд, притч и "
+"суеверий, связанных с войной.\n"
+"\n"
+"Вороны умнее обычных падальщиков, и им совсем не обязательна военная "
+"мертвечина. Многие фермеры еле справляются с тем, чтобы отогнать их от "
+"свежепосаженых семян, в то время, как иные приветствуют их как сторожей."
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
@@ -8441,40 +8320,39 @@ msgstr "+1 max ЗД"
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
+"ошеломлён: Этот боец ошеломлён и не может поддерживать свою Зону Контроля."
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "нежить"
+msgstr "ошеломлена"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "ошеломлён"
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "Помощь"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:263 src/help/help.cpp:267
 msgid "Parse error when parsing help text:"
 msgstr "Синтаксическая ошибка при загрузке помощи:"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr "Лучший из"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr "Худший из"
 
-#: src/help/help_topic_generators.cpp:161
+#: src/help/help_topic_generators.cpp:160
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
@@ -8483,7 +8361,7 @@ msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8500,7 +8378,7 @@ msgstr[2] ""
 "Эта местность позволяет бойцам восстановить $amount единиц здоровья или "
 "излечиться от яда, как если бы они находились в деревне."
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:172
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
@@ -8509,7 +8387,7 @@ msgstr ""
 "цитадели."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:176
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -8518,7 +8396,7 @@ msgstr ""
 "присоединённых полях замка."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:179
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -8526,173 +8404,173 @@ msgstr ""
 "Эта необычная цитадель позволяет лидеру вербовать, когда тот стоит на ней, "
 "но не разрешает вербовать на ней самой из другой связанной цитадели."
 
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
+#: src/help/help_topic_generators.cpp:183
+#: src/help/help_topic_generators.cpp:603
 msgid "Special Notes:"
 msgstr "Примечания:"
 
-#: src/help/help_topic_generators.cpp:193
+#: src/help/help_topic_generators.cpp:192
 msgid "Base Terrain: "
 msgstr "Основная местность: "
 
-#: src/help/help_topic_generators.cpp:213
+#: src/help/help_topic_generators.cpp:212
 msgid "Movement properties: "
 msgstr "Свойства движения: "
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:216
 msgid "Defense properties: "
 msgstr "Свойства обороны: "
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:296
 msgid "Level"
 msgstr "Уровень"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
 msgstr "Получается из: "
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:362
 msgid "Advances to: "
 msgstr "Продвигается в: "
 
-#: src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:391
 msgid "Base unit: "
 msgstr "Базовый боец: "
 
-#: src/help/help_topic_generators.cpp:393
+#: src/help/help_topic_generators.cpp:396
 msgid "Base units: "
 msgstr "Базовые бойцы: "
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:414
 msgid "Variations: "
 msgstr "Вариации:"
 
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:438
 msgid "race^Miscellaneous"
 msgstr "Разные"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:440
 msgid "Race: "
 msgstr "Раса: "
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:510
 msgid "Abilities: "
 msgstr "Способности: "
 
-#: src/help/help_topic_generators.cpp:533
+#: src/help/help_topic_generators.cpp:536
 msgid "Ability Upgrades: "
 msgstr "Улучшенные способности: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:566
 msgid "HP:"
 msgstr "ЗД:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:570
 msgid "Moves:"
 msgstr "Ходов:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:575
 msgid "Vision:"
 msgstr "Видение:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:581
 msgid "Jamming:"
 msgstr "Помехи:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:586
 msgid "Cost:"
 msgstr "Цена:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:590
 msgid "Alignment:"
 msgstr "Тип:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
+#: src/help/help_topic_generators.cpp:597
 msgid "Required XP:"
 msgstr "Необходимый ОП:"
 
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:615
 msgid "unit help^Attacks"
 msgstr "Атаки"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "unit help^Name"
 msgstr "Имя"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Strikes"
 msgstr "Удары"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Range"
 msgstr "Дальность"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:625
 msgid "Type"
 msgstr "Тип"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:626
 msgid "Special"
 msgstr "Особенности"
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:701
 msgid "Resistances"
 msgstr "Сопротивляемости"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:705
 msgid "Attack Type"
 msgstr "Тип атаки"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistance"
 msgstr "Сопротивление"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:736
 msgid "Terrain Modifiers"
 msgstr "Влияние местности"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:740
 msgid "Terrain"
 msgstr "Местность"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:741
 msgid "Defense"
 msgstr "Защита"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:742
 msgid "Movement Cost"
 msgstr "Цена хода"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense Cap"
 msgstr "Максимальная защита"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
 msgstr "Цена видения"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:755
 msgid "Jamming Cost"
 msgstr "Цена помех"
 

@@ -23,8 +23,6 @@
 #include <set>
 #include <string>
 
-class filter_context;
-class game_data;
 class game_lua_kernel;
 
 namespace game_events

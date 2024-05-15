@@ -42,6 +42,7 @@
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
+#include "gui/dialogs/community_dialog.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
@@ -56,6 +57,7 @@
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
+#include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
@@ -80,6 +82,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
@@ -622,9 +625,17 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_community_dialog)
+{
+	test<community_dialog>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {
 	test<mp_match_history>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
+{
+	test<migrate_version_selection>();
 }
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
@@ -641,6 +652,11 @@ BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_tod_new_schedule)
 {
 	test<tod_new_schedule>();
+}
+
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_unit)
+{
+	test<editor_edit_unit>();
 }
 
 // execute last - checks that there aren't any unaccounted for GUIs
@@ -1069,6 +1085,15 @@ struct dialog_tester<mp_match_history>
 	}
 };
 
+template<>
+struct dialog_tester<migrate_version_selection>
+{
+	migrate_version_selection* create()
+	{
+		return new migrate_version_selection();
+	}
+};
+
 class fake_chat_handler : public events::chat_handler {
 	void add_chat_message(const std::time_t&,
 		const std::string&, int, const std::string&,
@@ -1414,6 +1439,27 @@ struct dialog_tester<tod_new_schedule>
 	tod_new_schedule* create()
 	{
 		return new tod_new_schedule(id, name);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_unit>
+{
+	config cfg;
+	game_config_view view;
+
+	dialog_tester() {}
+	editor_edit_unit* create()
+	{
+		config& units = cfg.add_child("units");
+		cfg.add_child("race");
+		config& movetype = units.add_child("movetype");
+		movetype["name"] = "Test Movetype";
+		movetype.add_child("defense");
+		movetype.add_child("resistance");
+		movetype.add_child("movement_costs");
+		view = game_config_view::wrap(cfg);
+		return new editor_edit_unit(view, "test_addon");
 	}
 };
 

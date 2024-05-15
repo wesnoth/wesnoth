@@ -23,7 +23,6 @@
 #include <string>
 #include <utility>
 
-#include "lua/wrapper_lauxlib.h"
 
 namespace lua_map_location {
 

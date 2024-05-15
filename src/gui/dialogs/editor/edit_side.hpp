@@ -19,7 +19,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "side_controller.hpp"
-#include "team.hpp"
 
 namespace gui2
 {
@@ -27,16 +26,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for editing gamemap sides.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * title             | @ref label    |yes      |Dialog title label.
- * label             | @ref text_box |yes      |Input field for the id.
- * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
- */
 class editor_edit_side : public modal_dialog
 {
 public:

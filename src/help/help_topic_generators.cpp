@@ -34,7 +34,6 @@
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "video.hpp"                    // for game_canvas_size
 
-#include <map>                          // for map, etc
 #include <optional>
 #include <set>
 
@@ -90,9 +89,14 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	if (!last_change_pos) {
 		std::vector<std::string> names;
 		for (ter_iter i = start; i != end; ++i) {
-			const terrain_type tt = tdata->get_terrain_info(*i);
-			if (!tt.editor_name().empty())
-				names.push_back(tt.editor_name());
+			if (*i == t_translation::BASE) {
+				// TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
+				names.push_back(_("base terrain"));
+			} else {
+				const terrain_type tt = tdata->get_terrain_info(*i);
+				if (!tt.editor_name().empty())
+					names.push_back(tt.editor_name());
+			}
 		}
 
 		if (names.empty()) return "";
@@ -190,21 +194,31 @@ std::string terrain_topic_generator::operator()() const {
 	// Almost all terrains will show the data in this conditional block. The ones that don't are the
 	// archetypes used in [movetype]'s subtags such as [movement_costs].
 	if (!type_.is_indivisible()) {
-		ss << "\n" << _("Base Terrain: ");
-
-		bool first = true;
+		std::vector<t_string> underlying;
 		for (const auto& underlying_terrain : type_.union_type()) {
 			const terrain_type& base = tdata->get_terrain_info(underlying_terrain);
-
-			if (base.editor_name().empty()) continue;
-
-			if (!first) {
-				ss << ", ";
-			} else {
-				first = false;
+			if (!base.editor_name().empty()) {
+				underlying.push_back(make_link(base.editor_name(), ".." + terrain_prefix + base.id()));
 			}
+		}
+		utils::string_map symbols;
+		symbols["types"] = utils::format_conjunct_list("", underlying);
+		// TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+		// The terrain names will be hypertext links to the help page of the corresponding terrain type.
+		// There will always be at least 1 item in the list, but unlikely to be more than 3.
+		ss << "\n" << VNGETTEXT("Basic terrain type: $types", "Basic terrain types: $types", underlying.size(), symbols);
 
-			ss << make_link(base.editor_name(), ".." + terrain_prefix + base.id());
+		if (type_.has_default_base()) {
+			const terrain_type& base = tdata->get_terrain_info(type_.default_base());
+
+			symbols.clear();
+			if (base.is_indivisible()) {
+				symbols["type"] = make_link(base.editor_name(), ".." + terrain_prefix + base.id());
+			} else {
+				symbols["type"] = make_link(base.editor_name(), terrain_prefix + base.id());
+			}
+			// TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
+			ss << "\n" << VGETTEXT("Typical base terrain: $type", symbols);
 		}
 
 		ss << "\n";
@@ -299,13 +313,13 @@ std::string unit_topic_generator::operator()() const {
 
 	ss << "<img>src='" << male_type.image();
 	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1200) ss << "~SCALE_SHARP(144,144)";
+	if (screen_width >= 1200) ss << "~SCALE_SHARP(200%,200%)";
 	ss << "' box='no'</img> ";
 
 	if (female_type.image() != male_type.image()) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1200) ss << "~SCALE_SHARP(144,144)";
+		if (screen_width >= 1200) ss << "~SCALE_SHARP(200%,200%)";
 		ss << "' box='no'</img> ";
 	}
 
@@ -323,6 +337,10 @@ std::string unit_topic_generator::operator()() const {
 	} else if (screen_width >= 1920) {
 		sz = 400;
 	}
+
+	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
+	// can't use the preferences value since it may be different than the actual value
+	sz *= video::get_pixel_scale();
 
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {

@@ -21,7 +21,6 @@
 #include <deque>
 #include <unordered_map>
 
-class game_lua_kernel;
 
 namespace game_events
 {

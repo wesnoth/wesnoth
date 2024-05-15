@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-17 04:13 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2023-11-01 12:47+0100\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none <>\n"
@@ -352,7 +352,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant, id=Harper
+#. [unit]: type=Footpad_Peasant, id=Harper, gender=female
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:240
 msgid "Harper"
 msgstr "Harper"
@@ -614,7 +614,7 @@ msgstr ""
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
@@ -944,7 +944,7 @@ msgstr ""
 "máš pred sebou, a dostaň tých ľudí do bezpečia.\" To je drzé. Ale mala by "
 "pravdu, mám zodpovednosť voči našim ľuďom. Čaká nás veľa problémov..."
 
-#. [side]: type=Highwayman_Peasant, id=Relana
+#. [side]: type=Highwayman_Peasant, gender=female, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
 msgid "Relana"
 msgstr "Relana"
@@ -3235,12 +3235,12 @@ msgstr ""
 "Každá z dedín, rozptýlených po Wesnothskom vidieku je obyčajne spravovaná "
 "skupinou starších, čo sú jej najmúdrejší a najskúsenejší obyvatelia."
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:53
 msgid "Senior Village Elder"
 msgstr "Dedinský starešina"
 
-#. [unit_type]: id=Highwayman_Peasant
+#. [unit_type]: id=Highwayman_Peasant, gender=male,female
 #: data/campaigns/Liberty/units/Villagers.cfg:57
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -3253,7 +3253,7 @@ msgstr ""
 "provincii obyčajne udeľujú dedinským starešinom funkciu predstaveného obce, "
 "aby sa tak posilnila ich autorita a bol zabezpečený poriadok."
 
-#. [female]
+#. [female]: gender=female
 #: data/campaigns/Liberty/units/Villagers.cfg:59
 msgid "female^Senior Village Elder"
 msgstr "Staršia správkyňa dediny"

@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-20 19:57-0600\n"
-"PO-Revision-Date: 2009-04-05 10:50+0100\n"
+"POT-Creation-Date: 2024-04-10 12:05-0500\n"
+"PO-Revision-Date: 2024-05-02 18:08+0200\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
-"Language: \n"
+"Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -56,16 +57,14 @@ msgstr "pest"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
 #: data/core/macros/weapon_specials.cfg:53
-#, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Pest:\n"
-"Når en enhet blir drept av et Pestangrep, blir den byttet ut med en enhet "
-"identisk og på samme side som enheten med Pestangrepet. (Dette gjelder ikke "
-"for vandøde eller enheter i landsbyer.)"
+"Når en enhet blir drept av et <italic>text='pestangrep'</italic>, erstattes "
+"enheten med et <italic>text='vandrende lik'</italic> på pestgiverens side. "
+"Dette fungerer ikke på vandøde eller enheter i landsbyer."
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
@@ -93,7 +92,7 @@ msgstr "belyser"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
-msgstr "helbreder 4"
+msgstr "helbreder +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
@@ -103,16 +102,6 @@ msgstr "helbreder +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -121,9 +110,8 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helbreder 4:\n"
-"Setter enheten i stand til å helbrede allierte naboenheter i begynnelsen av "
-"sin runde.\n"
+"Setter enheten i stand til å helbrede tilstøtende allierte enheter i "
+"begynnelsen av sin runde.\n"
 "\n"
 "En enhet som blir hjulpet av en helbreder kan hver runde heles opp til 4 HP, "
 "eller få stoppet virkningen av gift.\n"
@@ -135,16 +123,14 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
-#, fuzzy
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr ""
-" Denne enheten kan helbrede enheter rundt seg, eller kurere forgiftning."
+msgstr "Denne enheten er i stand til å helbrede og bremse dehydrering."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
-msgstr "helbreder 8"
+msgstr "helbreder +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
@@ -154,16 +140,6 @@ msgstr "helbreder +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -173,7 +149,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helbreder:\n"
 "Denne enheten kombinerer urtemedisin med magi for å helbrede enheter "
 "hurtigere enn vanligvis mulig på slagmarken.\n"
 "\n"
@@ -184,30 +159,16 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "helbreder 4"
+msgstr "helbreder +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "helbreder +4"
+msgstr "helbreder +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -217,31 +178,27 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helbreder:\n"
 "Denne enheten kombinerer urtemedisin med magi for å helbrede enheter "
 "hurtigere enn vanligvis mulig på slagmarken.\n"
 "\n"
-"En enhet som blir hjulpet av denne kan hver runde heles opp til 8 HP, eller "
+"En enhet som blir hjulpet av denne kan hver runde heles opp til 12 HP, eller "
 "få stoppet virkningen av gift.\n"
 "En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
 "søke hjelp i en landsby eller hos en enhet som kan kurere."
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" Denne enheten kan helbrede enheter rundt seg, eller kurere forgiftning."
+"Denne enheten kan helbrede dem som er rundt den, bremse dehydrering og "
+"kurere dem for gift."
 
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
@@ -249,7 +206,7 @@ msgstr "teleporterer"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -260,7 +217,7 @@ msgstr "regenererer"
 #: data/campaigns/World_Conquest/resources/data/training.cfg:257
 #: data/core/macros/traits.cfg:229
 msgid "Always rest heals"
-msgstr ""
+msgstr "Mottar alltid hvileheling"
 
 #. [chance]
 #. [damage]: id=backstab
@@ -272,7 +229,7 @@ msgstr "bakholdsangrep"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:387
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "åtseleter"
 
@@ -299,7 +256,7 @@ msgstr "Grotte"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "skjulested"
 
@@ -337,7 +294,7 @@ msgstr "Soppvokst grotte"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "nattskygger"
 
@@ -376,28 +333,24 @@ msgstr "kurerer"
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Kart- og scenariobehandler"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Terrengmodifikatorer"
+msgstr "Terrengbehandler"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
-msgstr "Terrengmodifikatorer"
+msgstr "Scenariobehandler"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr ""
+msgstr "Maleverktøy"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -931,7 +884,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Kart- og scenariobehandler"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:339
@@ -965,6 +918,37 @@ msgid ""
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
 "text='playlist manager'</ref> for the music."
 msgstr ""
+"Wesnoths kart- og scenariobehandler gjør det mulig å opprette og redigere "
+"kartene som alle Wesnoth-scenarioer foregår på. Den inneholder også et "
+"begrenset sett med funksjoner for å sette opp et grunnleggende scenario samt "
+"initialisere et tillegg som kan brukes til å distribuere scenariene du "
+"lager.\n"
+"\n"
+"Behandleren kan startes fra <italic>text='kartbehandler'</italic>-"
+"alternativet på hovudmenyen.\n"
+"\n"
+"<header>text='Behandlingsmoduser'</header>\n"
+"\n"
+"Behandleren har to moduser: terrengmodus og scenariomodus.\n"
+"\n"
+"\n"
+"<ref>dst='..editor_mode_terrain' text='Terrengmodus'</ref> ligner på et "
+"enkelt tegneprogram, med verktøy for å <ref>dst='editor_tool_paint' "
+"text='male'</ref>, <ref>dst='editor_tool_fill' text='fylle'</ref>, "
+"<ref>dst='editor_tool_select' text='markere (og kopiere)'</ref> og "
+"<ref>dst='editor_tool_paste' text='lime inn'</ref>. Den har også et verktøy "
+"for å angi ledernes <ref>dst='editor_tool_starting' text='startposisjoner'</"
+"ref>.\n"
+"\n"
+"\n"
+"<ref>dst='..editor_mode_scenario' text='Scenariomodus'</ref>, i tillegg til "
+"verktøyene som er tilgjengelige i terrengmodus, supplerer evnen til å legge "
+"til <ref>dst='editor_tool_label' text='etiketter'</ref>, "
+"<ref>dst='editor_tool_scenery' text='landskapselementer'</ref>, "
+"<ref>dst='editor_tool_unit' text='enheter'</ref> i tillegg til lederen, og "
+"tildeling av <ref>dst='editor_tool_village' text='landsbyeierskap'</ref> i "
+"starten av scenarioet. Det finnes også en <ref>dst='editor_playlist' "
+"text='spillelistebehandler'</ref> for musikken."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:351
@@ -977,6 +961,13 @@ msgid ""
 "scenario mode is required in order for your maps to be selectable during "
 "game creation."
 msgstr ""
+"I begge modusene blir du bedt om å velge et tillegg som skal brukes for "
+"scenariene du oppretter. Dette kan være et eksisterende tillegg eller et "
+"helt nytt tillegg. Hvis du velger å bruke et helt nytt tillegg, blir alle "
+"nødvendige filer og mapper automatisk opprettet, og tillegget får tildelt en "
+"standard-ID. Med mindre du redigerer en allerede eksisterende kartfil, må du "
+"bruke scenariomodus for at kartene dine skal kunne velges under "
+"spillopprettelsen."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:353
@@ -1655,14 +1646,14 @@ msgstr "Introduksjon"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:23 data/core/help.cfg:167
 msgid "Gameplay"
-msgstr "Spillbarhet"
+msgstr "Spillets gang"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:500
 msgid "Traits"
 msgstr "Karaktertrekk"
 
@@ -1676,19 +1667,19 @@ msgstr "Enheter"
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:46 data/core/help.cfg:138
 msgid "Abilities"
-msgstr "Egenskaper"
+msgstr "Evner"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:54 data/core/help.cfg:147
 msgid "Weapon Specials"
-msgstr "Spesielle våpen"
+msgstr "Våpenspesialiteter"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:62 data/core/help.cfg:127
 msgid "Eras"
-msgstr ""
+msgstr "Æraer"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
@@ -1700,7 +1691,7 @@ msgstr "Terreng"
 #. [topic]: id=..addons
 #: data/core/help.cfg:78 data/core/help.cfg:599
 msgid "Add-ons"
-msgstr ""
+msgstr "Tillegg"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1710,7 +1701,6 @@ msgstr "Kommandoer"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1728,13 +1718,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kampen om Wesnoth er et rundebasert strategispill med et fantasytema. "
-"Spillet avviker noe fra moderne strategispill. Mens mange spill strekker seg "
-"etter kompleksitet både i regler og spillopplevelse, strekker Kampen om "
-"Wesnoth seg etter enkelhet i regler og spillopplevelse. Dette gjør ikke "
-"spillet enkelt, derimot vil det fra disse enkle reglene reise seg en verden "
-"av forskellige strategimuligheter. Noe som gjør spillet lett å lære, men "
-"utfordrende å mestre."
+"<italic>text='Kampen om Wesnoth'</italic> er et rundebasert strategispill "
+"med et fantasytema. Spillet avviker noe fra moderne strategispill. Mens "
+"mange spill strekker seg etter kompleksitet både i regler og "
+"spillopplevelse, strekker <italic>text='Kampen om Wesnoth'</italic> seg "
+"etter enkelhet i regler og spillopplevelse. Dette gjør ikke spillet enkelt, "
+"derimot vil det fra disse enkle reglene reise seg en verden av forskjellige "
+"strategimuligheter. Dette gjør spillet lett å lære, men utfordrende å "
+"mestre.\n"
+"\n"
+"På de følgende sidene finner du alt du trenger å vite for å spille Wesnoth. "
+"Etter hvert som du spiller, vil ny informasjon bli lagt til i de ulike "
+"kategoriene ettersom du møter nye aspekter ved spillet. For mer detaljert "
+"informasjon om spesielle situasjoner og unntak, følg lenkene som medfølger."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:106
@@ -1763,6 +1759,24 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
+"Spillet foregår på et spillbrett bestående av sekskantede felter, der "
+"enhetene dine kjemper mot enheter kontrollert av datamaskinen, venner som "
+"spiller på samme datamaskin (hotseat-spill), andre spillere på samme "
+"nettverk eller spillere over hele verden i flerspillermodus.\n"
+"\n"
+"Hver av disse kampene kalles et <italic>text='scenario'</italic>, som kan "
+"settes sammen til <italic>text='kampanjer'</italic>. I tillegg til "
+"kampanjene som følger med spillet, støtter Wesnoth brukerskapt innhold, og "
+"tilleggsserveren tilbyr hundrevis av egendefinerte kart, kampanjer, æraer, "
+"fraksjoner og ressurser.\n"
+"\n"
+"Spillet har også en menneskelig lesbar markering kalt Wesnoth Markup "
+"Language (WML) som gjør det enkelt for brukerne å lage sitt eget innhold, "
+"samt en fullt utstyrt kart- og scenarioredigeringsfunksjon for å designe "
+"dine egne slagmarker.\n"
+"\n"
+"<italic>text='Kampen om Wesnoth'</italic>-prosjektet ble påbegynt i 2003, og "
+"har blitt jobbet med av en rekke frivillige siden den gang."
 
 #. [topic]: id=..units
 #: data/core/help.cfg:119
@@ -1774,6 +1788,13 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"Denne seksjonen inneholder en liste over alle enhetene du oppdager når du "
+"utforsker Wesnoths verden. Når du ser en ny enhet i løpet av en kampanje "
+"eller et flerspillerscenario, blir den lagt til i underseksjonen for sin "
+"rase, og du kan deretter se siden når du vil. Enhetens side inneholder en "
+"generell beskrivelse, statistikk, angrep, motstand og bevegelses- og "
+"forsvarsverdier.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:128
@@ -1782,6 +1803,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"En fraksjon er en samling av enheter og ledere. Fraksjoner tildeles sider i "
+"flerspillerspill.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:130
@@ -1791,10 +1815,13 @@ msgid ""
 "factions are available from add-ons.\n"
 "\n"
 msgstr ""
+"En æra er en samling fraksjoner som er ment å spilles mot hverandre. I "
+"tillegg til de grunnleggende epokene som følger med spillet, finnes det "
+"mange brukerskapte fraksjoner som er tilgjengelige via tilleggsprogrammer.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:139
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1803,10 +1830,12 @@ msgid ""
 "have it.\n"
 "\n"
 msgstr ""
-"Enkelte enheter har egenskaper som enten direkte påvirker andre enheter "
-"eller har en innvirkning på hvordan enheten samspiller med andre enheter. "
-"Disse egenskapene vil bli listet under dette emnet etter hvert som du støter "
-"på dem."
+"Enkelte enheter har evner som enten direkte påvirker andre enheter eller har "
+"en innvirkning på hvordan enheten samspiller med andre enheter. Disse evnene "
+"vil bli listet under dette emnet etter hvert som du støter på dem. Hver side "
+"inneholder en beskrivelse av hva evnen gjør, og hvilke (foreløpig oppdagede) "
+"enheter som har den.\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:148
@@ -1818,6 +1847,13 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Noen våpen har spesielle egenskaper som gjør det mer effektivt å angripe med "
+"dem. Når du ser en ny våpenspesialitet i løpet av en kampanje eller et "
+"flerspillerscenario, vil den bli lagt til i denne listen; du kan deretter se "
+"siden for den når du måtte ønske det. Hver side vil gi en beskrivelse av hva "
+"våpenspesialen gjør, og hvilke (for øyeblikket oppdagede) enheter som har "
+"den.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:157
@@ -1832,6 +1868,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Denne enheten er ukjent for øyeblikket. Du må oppdage den i spillet for å "
+"kunne se beskrivelsen."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:168
@@ -1868,10 +1908,40 @@ msgid ""
 "enemy may have higher incomes, higher-level units, more castle hexes, and so "
 "on."
 msgstr ""
+"Wesnoth består av en serie slag, kalt <italic>text='scenarier'</italic>, som "
+"setter troppene dine opp mot troppene til en eller flere motstandere. Flere "
+"scenarier som følger etter hverandre og forteller en historie, utgjør en "
+"<italic>text='kampanje'</italic>. I en kampanje må du ofte spille mer "
+"forsiktig, og ta vare på de beste troppene dine for å bruke dem igjen i "
+"senere scenarier.\n"
+"\n"
+"Den interaktive <bold>text='Veiledningen'</bold> introduserer det "
+"grunnleggende i Wesnoth-spillingen i sammenheng med et scenario. Det meste "
+"av det som gjennomgås i veiledningen, blir forklart mer inngående på disse "
+"sidene, så du kan alltids komme hit hvis du glemmer noe.\n"
+"\n"
+"Når du har lært det grunnleggende, kan du prøve en nybegynnerkampanje, for "
+"eksempel <italic>text='Tronarvingen'</italic> eller "
+"<italic>text='Sørgarden'</italic>. Du finner en fullstendig liste over "
+"installerte kampanjer via <bold>text='kampanjer'</bold>-alternativet på "
+"hovedmenyen. Ettersom Wesnoth kan være ganske utfordrende, kan det være lurt "
+"å starte på lett vanskelighetsgrad før du øker utfordringen.\n"
+"\n"
+"Kampanjene er gruppert etter <italic>text='nivå'</italic> og "
+"<italic>text='vanskelighetsgrad'</italic>. For eksempel er "
+"<italic>text='Tronarvingen'</italic> på nybegynnernivå, og kan spilles på "
+"tre vanskelighetsgrader: «Lett», «Normal» og «Utfordrende». Kampanjenivået "
+"angir hvilken grad av ferdighet i spillmekanikken (for eksempel "
+"<ref>dst='movement' text='kontrollsoner'</ref> og <ref>dst='time_of_day' "
+"text='tid på døgnet'</ref>) som forutsettes. Vanskelighetsgraden angir hvor "
+"utfordrende scenariene vil være for en erfaren spiller: På høyere "
+"vanskelighetsgrader vil hindringene for å vinne være større, og det vil "
+"kreve dyktigere spill for å overvinne dem. På høyere vanskelighetsgrader kan "
+"fienden for eksempel ha høyere inntekter, enheter på høyere nivå, flere "
+"borgfelter og så videre."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1880,11 +1950,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Grunnleggende spillkonsepter'</header>\n"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1892,10 +1961,11 @@ msgid ""
 "encounter new elements, such as <ref>dst='..abilities_section' "
 "text='abilities'</ref>, for the first time."
 msgstr ""
-"Når du spiller kan du holde muspekeren over informasjonen i feltet til "
-"høyre, da vil det komme frem en kort beskrivelse for elementet der "
-"muspekeren er. Dette er særlig nyttig når du støter på nye egenskaper for "
-"første gang."
+"Husk at du kan holde musepekeren over mange elementer i spillet, for "
+"eksempel informasjonen som vises i statusruten, for å se en kort beskrivelse "
+"som forklarer hvert element. Dette er spesielt nyttig når du støter på nye "
+"elementer, for eksempel <ref>dst='..abilities_section' text='evner'</ref>, "
+"for første gang."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:189
@@ -1912,6 +1982,13 @@ msgid ""
 "things like changing your save options or (if you are in a multiplayer game) "
 "chatting with other players before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Når du vinner et scenario, blir kartet grått, og knappen <bold>text='Avslutt "
+"runden'</bold> endres til <bold>text='Avslutt scenario'</bold>. Du kan nå "
+"gjøre ting som å endre lagringsalternativene dine eller (hvis du er i et "
+"flerspillerspill) chatte med andre spillere før du trykker på knappen for å "
+"gå videre."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
@@ -1924,6 +2001,13 @@ msgid ""
 "ally, solving a puzzle, or holding out against a siege until a certain "
 "number of turns have elapsed."
 msgstr ""
+"Følg nøye med på boksen som formidler<bold>text='scenariets mål'</bold> i "
+"begynnelsen av hvert scenario. I de fleste scenariene vil du vinne ved å "
+"drepe alle fiendens ledere, og på samme måte vil din egen leders død som "
+"regel føre til nederlag. Noen scenarier kan imidlertid ha andre seiersmål, "
+"for eksempel å få lederen din til et bestemt punkt, redde en alliert, løse "
+"en gåte eller holde stand mot en beleiring til et visst antall runder har "
+"gått."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:199
@@ -1932,15 +2016,6 @@ msgstr "Rekruttering og tilbakekalling"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1951,14 +2026,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hvis du høyreklikket på en borgrute og valgte 'Rekruttér', så vil den nye "
+"Hvis du høyreklikket på en slottsrute og valgte 'Rekruttér', så vil den nye "
 "enheten komme frem på denne ruten. Ellers vil den komme frem på en ledig "
-"rute nær vakttårnet. Du kan bare rekruttere så mange enheter som det er "
-"plass til i borgen, og du kan ikke rekruttere mer enn du har gull til."
+"rute nærme borgen. Du kan bare rekruttere så mange enheter som det er plass "
+"til i borgen, og du kan ikke rekruttere for mer enn du har gull til."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1971,19 +2045,20 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the <bold>text='Recruit'</bold> button to recruit it."
 msgstr ""
-"Når du spiller et scenario - spesielt i starten - kommer du til å måtte "
-"rekruttere nye tropper til arméen din. For å kunne gjøre dette må lederen "
-"din (Konrad i felttoget Tronarvingen) stå i vakttårnet i en "
-"<ref>dst=terrain_castle text=borg</ref>. Du rekrutterer enten ved å velge "
-"'Rekruttér' fra menyen eller høyreklikke på en rute og velge "
-"<italic>text=Rekruttér</italic>. Dette får frem rekrutteringmenyen der "
-"tilgjenglige enheter vises sammen med hva det koster å rekruttere dem. Trykk "
-"på en enhet for å vise dens egenskaper til venstre i dialogruten. For å "
-"rekruttere enheten som er valgt trykker du på 'Rekruttér'."
+"Hver side begynner med én leder i sin borg. Ved starten av et scenario, og "
+"noen ganger i løpet av det, må du rekruttere <ref>dst='..units' "
+"text='enheter'</ref> til hæren din. For å rekruttere må du ha lederen din "
+"(for eksempel Konrad i kampanjen <italic>text='Tronarvingen'</italic>) på "
+"borgen i et <ref>dst='..terrain_castle' text='slott'</ref>. Deretter kan du "
+"rekruttere ved enten å velge <bold>text='Rekrutter'</bold> fra menyen eller "
+"høyreklikke på et felt og velge <bold>text='Rekrutter'</bold>. Da får du opp "
+"rekrutteringsmenyen, som viser en liste over enheter som er tilgjengelige "
+"for rekruttering, sammen med gullkostnaden deres. Klikk på en enhet for å se "
+"statistikken, og trykk deretter på <bold>text='Rekrutter'</bold>-knappen for "
+"å rekruttere den."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2006,15 +2081,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"I senere scenarier vil du også kunne velge å tilbakekalle veteraner fra "
-"tidlegere scenarier. Dette foregår på samme måte som rekruttering, bortsett "
-"fra at det koster 20 gull å tilbakekalle en enhet uansett hva det kostet å "
-"rekruttere den. Om du velger å tilbakekalle får du opp en liste over de "
-"tilgjengelige veteraner som du kan velge mellom."
+"I senere scenarier kan du også tilbakekalle overlevende fra tidligere slag. "
+"Tilbakekalling koster 20 gull og gir deg en liste over alle overlevende "
+"enheter fra tidligere scenarier."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2025,17 +2097,16 @@ msgstr ""
 "\n"
 "\n"
 "Husk at enheter ikke bare koster gull å rekruttere eller tilbakekalle, men "
-"de krever også lønn. Les <ref>dst=income_and_upkeep text='Inntekt og "
+"de krever også lønn. Les <ref>dst=income_and_upkeep text='inntekt og "
 "utgifter'</ref> for mer informasjon."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:215
 msgid "Income and Upkeep"
-msgstr "Inntekt og lønn"
+msgstr "Inntekt og utgifter"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2046,28 +2117,26 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Inntekt er lett. Du har en grunninntekt på 2 gullstykker per runde. For hver "
-"landsby du kontrollerer, tjener du en ekstra gull per runde. Altså, hvis du "
-"kontrollerer 10 landsbyer vil du tjene 12 gull per runde. Lønnsutgifter blir "
-"trukket fra denne inntekten, som beskrevet under."
+"Inntekt er ganske enkelt. Du har en grunninntekt på 2 gullstykker per runde. "
+"For hver landsby du kontrollerer, tjener du en ekstra gull per runde. Altså, "
+"hvis du kontrollerer 10 landsbyer vil du tjene 12 gull per runde. Utgifter "
+"blir trukket fra denne inntekten, som beskrevet under."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
 "gold over from one scenario to the next. There are two aspects to this; "
 "<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgstr ""
-"I Wesnoth er det ikke nok å ganske enkelt rekruttere tropper og så kjempe. "
-"Du må se til gullbeholdningen din også, spesielt under et Felttog, hvor du "
-"kan bringe ubrukt gull videre fra ett scenario til et annet. To hensyn; "
-"Inntekt og lønn."
+"I Wesnoth er det ikke nok å bare rekruttere enheter og kjempe. Du må også "
+"passe på gullet ditt, spesielt i kampanjer, der du kan ta med deg ekstra "
+"gull fra ett scenario til det neste. Det er to aspekter ved dette: "
+"<italic>text='inntekter'</italic> og <italic>text='utgifter'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2080,14 +2149,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Lønn er også ganske enkelt. Hver enhet krever lønn lik enhetens grad. "
-"Lønning opptil antall landsbyer er gratis. Overskytende trekkes fra "
-"inntekten. For eksempel, hvis du har 12 enheter med grad 1, og 10 landsbyer, "
-"vil du måtte betale to gull i lønn hver runde, som trekkes fra din inntekt. "
+"Utgifter er også ganske enkelt. Hver enhet krever en mengde utgifter som "
+"tilsvarer nivået. Du kan støtte så mange nivåer verdt med enheter som du har "
+"landsbyer, uten å betale noe vedlikehold. Men for hvert nivå av enheter "
+"utover antallet landsbyer du har, må du betale ett gull per runde. Hvis du "
+"for eksempel har tolv enheter på nivå én og ti landsbyer, må du betale to "
+"gull hver runde i utgifter."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2097,8 +2167,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Lønnskostnadene trekkes hver runde fra inntekten din. I tilfellet med ti "
-"landsbyer og totalt tolv enhetesgrader vil resultatet være en inntekt på 10 "
+"Vedlikehold trekkes hver runde fra inntekten din. I tilfellet med ti "
+"landsbyer og totalt tolv enhetesnivåer vil resultatet være en inntekt på 10 "
 "gull."
 
 #. [topic]: id=income_and_upkeep
@@ -2113,10 +2183,17 @@ msgid ""
 "<italic>text='Status Table'</italic> dialog shows the values for the current "
 "scenario."
 msgstr ""
+"\n"
+"\n"
+"Generelt kan grunninntekten, mengden gull du får per landsby per runde, og "
+"antall enhetsnivåer hver landsby kan støtte, konfigureres. Men i kampanjer "
+"er de nesten alltid verdiene som er beskrevet ovenfor. Fanen "
+"<italic>text='Scenarioinnstillinger'</italic> i dialogboksen "
+"<italic>text='Statustabell'</italic> viser verdiene for det gjeldende "
+"scenariet."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:228
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2128,11 +2205,14 @@ msgid ""
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
 "\n"
-"Det er et viktig unntak fra reglene om lønn: enheter med karaktertrekket "
-"lojal krever aldri betaling. Enheter du begynner scenariet med (slik som "
-"Konrad eller Delfador), eller enheter som blir med deg i løpet av et "
-"scenario (som rytteren i det andre scenariet i Tronarvingen) vil vanligvis "
-"være lojale."
+"\n"
+"Det er to viktige unntak i henhold til utgifter: Enheter med karaktertrekket "
+"lojal og ledere pådrar seg aldri vedlikehold. Enheter du begynner scenariet "
+"med (for eksempel Delfador), eller enheter som slutter seg til deg i løpet "
+"av et scenario (for eksempel rytteren i det andre scenariet av "
+"<italic>text='Tronarvingen'</italic>), vil vanligvis ha karaktertrekket "
+"<italic>text='lojal'</italic>. Enheten du spiller (for eksempel Konrad) vil "
+"nesten alltid være en leder."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:237
@@ -2141,7 +2221,6 @@ msgstr "Helsepoeng og erfaring"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:238
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -2149,10 +2228,10 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Hver enhet har et visst antall helsepoeng (HP). Hvis en enhets helsepoeng "
-"faller under 1, dør den. Hver enhet har også et visst antall erfaringspoeng "
-"(XP). En fersk rekrutt starter uten noen erfaring, og vinner erfaring ved å "
-"kjempe mot fiender."
+"Hver enhet har et visst antall <italic>text='helsepoeng'</italic> (HP). Hvis "
+"en enhets helsepoeng faller under 1, dør enheten. Hver enhet har også et "
+"visst antall <italic>text='erfaringspoeng'</italic> (EP). En nyrekruttert "
+"enhet starter uten erfaringspoeng, og får erfaring ved å kjempe mot fiender."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:242
@@ -2167,7 +2246,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:244
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -2177,15 +2255,12 @@ msgstr ""
 "Helsepoengene vises også ved en helsesøyle ved siden av hver enhet, med "
 "lengde og farve (grønn, gul, rød) avhengig av gjeldende helsepoeng. En enhet "
 "med minst ett erfaringspoeng har en blå erfaringssøyle, som blir hvit når "
-"enheten er i ferd med å <ref>dst=experience_and_advancement text=avansere</"
-"ref>."
+"enheten er i ferd med å <ref>dst='advancement' text='forfremmes'</ref>."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:251
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Forfremmes til: "
+msgstr "Forfremmelser"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -2199,11 +2274,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Enheter trenger en viss mengde erfaring for å avansere (karaktertrekket "
+"Enheter trenger en viss mengde erfaring for å forfremmes (karaktertrekket "
 "Intelligent reduserer denne med 20%). Idet en enhet når grensen avanserer de "
-"umiddelbart til neste nivå, og helbredes i prosessen opp til maksimalt "
-"antall HP. I noen tilfelle vil spilleren få et valg med hensyn på "
-"avansement. "
+"umiddelbart til neste nivå, og helbredes fullstendig i prosessen. I noen "
+"tilfeller vil få valget mellom ulike forfremmelser."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -2214,13 +2288,12 @@ msgid ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
 "Hvis begge enheter overlever en kamp, vinner de et antall erfaringspoeng "
-"(XP) likt med nivået til enheten de kjemper med. Hvis en enhet på derimot "
-"dreper en annen i kamp vinner den mye mer erfaring - 4  for en nivå 0 enhet, "
+"(EP) likt med nivået til enheten de kjemper med. Hvis en enhet på derimot "
+"dreper en annen i kamp vinner den mye mer erfaring — 4 for en nivå 0 enhet, "
 "8 for nivå 1, 16 for nivå 2, 24 for nivå 3, og så videre."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2238,18 +2311,15 @@ msgstr ""
 "\n"
 "\n"
 "De fleste enheter har tre nivåer, men ikke alle. Enkelte (slik som "
-"<ref>dst=unit_Mage text='magikere'</ref>) kan ha fire. Når en enhet har nådd "
-"sitt høyeste nivå, kan den få spesielle bonuser hvis den samler nok "
-"erfaring. Dette gjelder først og fremst viktige enheter i felttog. For de "
-"fleste enheter vil ytterlige forfremelser etter å ha nådd maksimal grad kun "
-"gi dem tre ekstra helsepoeng. Første bonus blir normalt nådd med 100 "
-"erfaringspoeng (eller 80 XP for intelligente enheter). Grensen blir "
-"progressivt hardere å nå for hver bonus enheten mottar, og det er derfor "
-"ofte nyttigere å forsøke å avansere enheter på lavere nivå.\n"
-"\n"
-"Merk at bare et lite fåtall enheter, slik som likgnageren, vil motta noen "
-"full helbredelse når de oppnår bonusgrader. De fleste får bare de tre ekstra "
-"helsepoengene."
+"<ref>dst='unit_Mage' text='magikere'</ref>) kan ha fire. Når en enhet har "
+"nådd sitt høyeste nivå, kan den ha en <italic>text='Forfremmelse etter "
+"maksimalnivå'</italic> (FEMN) tilgjengelig for den. FEMN vil endre enheten "
+"hver gang enheten når erfaringsmålet, men enheten vil forbli på samme nivå. "
+"Den typiske FEMN-effekten er at enhetens maksimal HP økes med 3 og den "
+"helbredes fullstendig. Den første FEMN-enheten vil normalt nås med 150 EP "
+"(120 EP for intelligente enheter). Det blir imidlertid gradvis vanskeligere "
+"å oppnå en FEMN for hver FEMN enheten får, og det er derfor vanligvis mer "
+"nyttig å prøve å avansere enhetene på lavere nivå."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:263
@@ -2258,7 +2328,6 @@ msgstr "Forflytning"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2274,20 +2343,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hver enhet har et visst antall forflytningspoeng som blir brukt for hver "
-"gang enheten flytter til en ny rute. Hvor mange poeng som blir brukt er "
-"avhengig av hvilket <ref>dst=terrain text=terreng</ref> ruten har. Det "
-"koster for eksempel nesten alltid ett forflytningspoeng å gå inn på en rute "
-"med gresslette. Akkurat hvor mange poeng det koster å flytte inn i en rute "
-"avhenger av enhetstypen - i skogen vil alvene bruke ett forflytningspoeng, "
-"de fleste mennesker og orker bruker to, mens hestefolk bruker 3. Du kan "
-"finne ut hvor mange poeng en enhet trenger for å flytte inn på et terreng "
-"ved å høyreklikke på den, velge 'Enhetsbeskrivelse', og så se på "
-"<italic>text='Terrengmodifikasjoner'</italic>."
+"Hver enhet har et visst antall forflytningspoeng som brukes opp når de "
+"beveger seg inn i et nytt felt, avhengig av terrenget i det aktuelle feltet. "
+"For eksempel koster det nesten alltid 1 forflytningspoeng å gå inn i "
+"gressletter. Nøyaktig hvor mange forflytningspoeng som brukes på å gå inn i "
+"et felt, avhenger av enhetstypen - i skog bruker alviske enheter bare 1 "
+"forflytningspoeng, de fleste menneske- og orke-enheter bruker 2, mens "
+"hestefolk bruker 3. Du kan finne ut hvor mange forflytningspoeng en enhet "
+"trenger for å komme inn i en bestemt terrengtype ved å høyreklikke på den, "
+"velge <bold>text='Enhetsbeskrivelse'</bold>, og deretter se på "
+"<bold>text='Terrengmodifikatorer'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -2302,23 +2370,23 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Flytting av enheter i 'Kampen om Wesnoth' er enkelt: Klikk på enheten du vil "
-"flytte, klikk så på ruten du vil flytte til. Når enheten er valgt vil alle "
-"ruter enheten kan flytte til være uthevet, og alle ruter som den ikke kan "
-"flytte til være grå. Flytter du musepekeren over uthevede ruter viser "
-"forsvarsgraden enheten vil ha i den valgte ruten. Flytter du muspekeren over "
-"grå ruter vil du se hvor mange runder det tar å nå ruten. Klikker du på "
-"ruten vil enheten flytte seg dit langs den raskeste stien denne og de "
-"etterfølgende rundene. Hvis du ikke bruker opp en enhets forflytning når du "
-"først flytter den, kan du flytte den igjen senere. Dette er viktig når man "
-"ønsker å la to enheter bytte plass. Det å angripe en annen enhet bruker opp "
-"angriperens forflytning. Det samme gjør det å ende en enhets tur i en "
-"landsby du ikke eide fra før. Enheten vil likevel være i stand til eventuelt "
-"å angripe."
+"Forflytning i <italic>text='Kampen om Wesnoth'</italic> er enkelt. Klikk på "
+"enheten du ønsker å flytte for å velge den, og klikk deretter på feltet du "
+"ønsker å flytte den til. Når en enhet er valgt, blir alle feltene den kan "
+"flytte til i denne runden uthevet, og alle andre felter vil være grå. Når du "
+"holder musepekeren over et uthevet felt, vises forsvarsverdien enheten ville "
+"hatt hvis du flyttet den til det feltet. Når du holder musepekeren over et "
+"grått felt, vises også antall runder som kreves for å nå det, og hvis du "
+"klikker på det, vil enheten bevege seg mot det på den raskeste ruten i løpet "
+"av denne og de påfølgende rundene. Hvis du ikke bruker opp hele "
+"forflytningen til en enhet når du flytter den første gangen, kan du flytte "
+"den igjen. Dette er nyttig når to enheter bytter plass. Det å angripe en "
+"annen enhet bruker opp angriperens forflytning. Det samme gjør det å "
+"plassere en enhet i en landsby du ikke eide fra før. Enheten vil likevel "
+"være i stand til eventuelt å angripe."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2333,12 +2401,13 @@ msgstr ""
 "\n"
 "\n"
 "En annen ting som er viktig å huske på under forflytning er "
-"<ref>dst=zones_of_control text='kontrollsoner'</ref>. Hver enhet lager en "
-"kontrollsone rundt seg i rutene som ligger inntil ruten enheten står i, og "
-"alle fiendtlige enheter som flytter inn i en slik rute vil miste alle sine "
-"forflytningspoeng. Å lære hvordan man bruker kontrollsoner til din fordel er "
-"en viktig del av Wesnoth, siden bare <ref>dst=ability_skirmisher "
-"text='speidere'</ref> kan ignorere kontrollsoner."
+"<ref>dst=zones_of_control text='kontrollsoner'</ref>. Hver enhet — med "
+"unntak av nivå 0 enheter — lager en kontrollsone i de tilstøtende feltene "
+"der enheten står, og alle fiendtlige enheter som flytter inn i et slikt felt "
+"vil miste alle sine forflytningspoeng. Å lære hvordan man bruker "
+"kontrollsoner til din fordel er en viktig del av Wesnoth, siden bare "
+"<ref>dst=ability_skirmisher text='linjebrytere'</ref> kan ignorere "
+"kontrollsoner."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:268
@@ -2351,9 +2420,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"For å se hvor langt fiendens enheter kan nå på sin neste tur, trykk Ctrl-v "
-"eller Cmd-v. Ctrl-b eller Cmd-b viser hvor langt fienden kunne ha flyttet "
-"hvis dine enheter ikke hadde stått i veien for dem."
+"Trykk Ctrl-v eller Cmd-v for å se hvor fienden kan bevege seg i løpet av sin "
+"neste runde. Ctrl-b eller Cmd-b viser hvor fienden kan bevege seg hvis "
+"enhetene dine ikke er på kartet og blokkerer fremdriften deres."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:277
@@ -2362,7 +2431,6 @@ msgstr "Skodde og stridsdis"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:278
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2385,24 +2453,31 @@ msgid ""
 "bold> (or the end of your turn) and thereby preserve your ability to undo "
 "movement."
 msgstr ""
-"I noen scenarier vil deler av kartet være skjult for deg. To mekanismer kan "
-"bli brukt hver for seg eller sammen. Skodden skjuler både terrenget og "
-"eventuelle enheter på et gitt sted. Med en gang du utspeider området med en "
-"enhet letter skodden og du kan alltid se det aktuelle feltet. Stridsdisen "
-"derimot viser terrenget, men skjuler eventuelle fiendtlige enheter og hvem "
-"som eier landsbyer. Stridsdisen letter midlertidig når du har enheter i "
-"nærheten, men faller tilbake når du forlater området. Skodde og Stridsdis "
-"fjernes av dine enheter. Hver enhet klarerer det området den kan flytte til "
-"neste runde (ser bort fra kontrollsoner og fiender)."
+"I noen scenarier vil deler av kartet være skjult for deg. Det finnes to "
+"mekanismer som kan brukes hver for seg eller sammen. <italic>text='skodde'</"
+"italic> skjuler både terrenget og eventuelle enheter på et sted. Men når den "
+"er fjernet, kan du alltid se stedet. <italic>text='stridsdis'</italic> "
+"skjuler bare enheter og eierskap av landsbyer (andre enn deg eller dine "
+"allierte). Stridsdisen forsvinner midlertidig når du har enheter i nærheten, "
+"men kommer tilbake når de forlater stedet. Både skodden og stridsdisen "
+"fjernes av enheter. Hver enhet synliggjør felter langs stien de går i løpet "
+"av en runde (uten å ta hensyn til kontrollsoner og fiendtlige enheter).\n"
+"\n"
+"Normalt kan du angre en enhets forflytning, så lenge det ikke har skjedd en "
+"hendelse med et tilfeldig resultat, for eksempel kamp eller rekruttering "
+"(ettersom de fleste enheter tildeles tilfeldige karaktertrekk når de "
+"rekrutteres). Hvis du utforsker skjult terreng ved å fjerne skodde eller "
+"stridsdis, kan du heller ikke angre til en tidligere tilstand. Det kan være "
+"lurt å aktivere <bold>text='Forsink skoddeoppdatering'</bold> i "
+"handlingsmenyen. Dette vil hindre enheter i å fjerne skodde eller stridsdis "
+"frem til neste randomiserte hendelse, eller en manuell oppdatering via "
+"<bold>text='Oppdater skodde nå'</bold> (eller slutten av din runde), og "
+"dermed bevare muligheten til å angre forflytninger."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Rekkefølge og antall angrep'</header>"
+msgstr "<header>text='Flerspiller og angring'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2414,11 +2489,18 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"I flerspillerspill kan trekk som har blitt sendt til nettverket ikke angres; "
+"spillet forsinker sending av data for å prøve å bevare muligheten til å "
+"angre. Når du diskuterer med lagkamerater, må du huske at de andre spillerne "
+"vanligvis ser på et øyeblikksbilde fra tidspunktet til den siste kampen "
+"eller det siste skoddeavslørende trekket. Chat-meldinger og kartetiketter "
+"sendes umiddelbart, men de fører ikke til at de angrebare trekkene blir "
+"sendt."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
 msgid "Save-loading"
-msgstr ""
+msgstr "Lagre og laste på nytt"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
@@ -2429,6 +2511,11 @@ msgid ""
 "recommend against reloading merely to try the same strategy again while "
 "hoping for better luck."
 msgstr ""
+"Tilfeldige tall er en del av Wesnoth, angrep kan mislykkes og enheter kan dø "
+"på grunn av uflaks - dette er en forventet del av spillet. Å gå tilbake til "
+"en tidligere runde for å prøve en annen strategi er en del av det å lære "
+"spillet, men vi anbefaler at du ikke laster om bare for å prøve den samme "
+"strategien på nytt i håp om å ha mer flaks."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
@@ -2439,6 +2526,11 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
+"En av utfordringene i spillet er å finne ut hvordan du skal beskytte heltene "
+"dine. Små risikoer akkumuleres raskt: Hvis du har fem viktige enheter, og "
+"hver av dem bare har 1 % sjanse for å dø hver runde, kan du "
+"<italic>text='forvente'</italic> at en av dem dør omtrent hver 20. runde. "
+"Det er altså sjelden du kommer deg gjennom et scenario uten at det skjer."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:297
@@ -2450,6 +2542,12 @@ msgid ""
 "them in future scenarios. Your battle plan should distribute the risks based "
 "on which troops you want to recall later."
 msgstr ""
+"Små risikoer akkumuleres også for de andre enhetene dine. Mens historien og "
+"dialogen vanligvis har som mål å gi deg et følelsesmessig bånd til troppene "
+"dine, belønner spillmekanismene deg for å huske at det bare er et spill - "
+"det er sjelden noen straff for å la disse enhetene dø, annet enn at du ikke "
+"kan tilbakekalle dem i fremtidige scenarioer. Slagplanen din bør fordele "
+"risikoen basert på hvilke tropper du ønsker å kalle tilbake senere."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
@@ -2460,6 +2558,12 @@ msgid ""
 "assuming that the player will be able to train enough troops to cope with "
 "losing some level two or level three units."
 msgstr ""
+"Vanskelighetsgradene er balansert ut fra at spilleren ikke vil lagre og "
+"laste inn konstant. I hovedkampanjene har høyere vanskelighetsgrader "
+"generelt flere fiender og dermed flere erfaringspoeng tilgjengelig, noe som "
+"fører til at de er balansert ut fra en antakelse om at spilleren vil være i "
+"stand til å trene opp nok tropper til å takle å miste noen nivå to- eller "
+"nivå tre-enheter."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
@@ -2467,11 +2571,13 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
+"Når det er sagt, er dette bare et spill; den beste måten å spille det på er "
+"den som gir deg mest glede."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Lære av tap"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:309
@@ -2481,6 +2587,10 @@ msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
+"<italic>text='Hvorfor tapte jeg dette scenariet?'</italic>\n"
+"\n"
+"Noe av det vanskeligste med Wesnoth er å forstå hvorfor man tapte et "
+"scenario."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:311
@@ -2492,6 +2602,13 @@ msgid ""
 "from your mistakes: watch the replay, try to understand what you did wrong, "
 "then <ref>dst='saveload' text='restart the scenario'</ref> and try again."
 msgstr ""
+"\n"
+"\n"
+"Når du først begynner å spille, vil du sannsynligvis tape noen scenarier. "
+"Det er normalt, og er en del av det å lære spillet. Når det skjer, kan du "
+"prøve å lære av feilene dine: se på reprisen, prøv å forstå hva du gjorde "
+"galt, og <ref>dst='saveload' text='start scenariet på nytt'</ref> og prøv "
+"igjen."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:313
@@ -2500,6 +2617,9 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"\n"
+"Noen vanlige årsaker til at man taper et scenario er:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
@@ -2509,6 +2629,11 @@ msgid ""
 "• Playing a campaign at too high a <ref>dst='..gameplay' text='difficulty "
 "level'</ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
+"\n"
+"\n"
+"• Spiller en kampanje på for høy <ref>dst='..gameplay' "
+"text='vanskelighetsgrad'</ref>. Prøv å starte scenariet på nytt på en "
+"lettere vanskelighetsgrad."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:317
@@ -2519,6 +2644,11 @@ msgid ""
 "fighting at the wrong <ref>dst='time_of_day' text='time of day'</ref>, not "
 "taking advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
+"\n"
+"\n"
+"• Spiller en dårlig strategi: for eksempel å rekruttere feil type enheter, "
+"kjempe på feil <ref>dst='time_of_day' text='tid på døgnet'</ref>, ikke dra "
+"nytte av terrengets egenskaper eller enhetenes spesielle evner, og så videre."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:319
@@ -2530,6 +2660,12 @@ msgid ""
 "it. If you have a loyal mage on your side, take the time to listen to its "
 "advice; it may save your life."
 msgstr ""
+"\n"
+"\n"
+"• Manglende ledetråder. Ofte vil det være hint i kampanjens historie og "
+"dialog om hva du kan forvente av et vanskelig scenario og hvordan du kan "
+"forberede deg på det. Hvis du har en lojal magiker på din side, bør du ta "
+"deg tid til å lytte til dens råd; det kan redde livet ditt"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
@@ -2547,6 +2683,18 @@ msgid ""
 "remember that <italic>text='some'</italic> losses are expected, particularly "
 "at higher difficulties.)"
 msgstr ""
+"\n"
+"\n"
+"• Såvidt oppnådd seier i et tidligere scenario. \n"
+"Kampanjer forutsetter vanligvis at du har litt <italic>text='overført gull'</"
+"italic> og noen erfarne enheter på <italic>text='tilbakekallingslisten.'</"
+"italic> (Disse konseptene er forklart i veiledningen.) Hvis du vinner et "
+"scenario, men mister de fleste av dine erfarne enheter og mye av gullet "
+"ditt, kan det neste scenariet være svært vanskelig å vinne, selv for en mer "
+"erfaren spiller. Hvis du befinner deg i denne situasjonen, kan du prøve å gå "
+"tilbake et scenario eller to og vinne dem på en mer bedre måte, eller bytte "
+"til en lettere vanskelighetsgrad. (Husk imidlertid at <italic>text='noen'</"
+"italic> tap er forventet, spesielt på høyere vanskelighetsgrader)."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
@@ -2560,10 +2708,17 @@ msgid ""
 "carryover for the next scenario. (This would be an example of “barely "
 "scraping a victory”.)"
 msgstr ""
+"\n"
+"\n"
+"• Dårlig gullforvaltning. På høyere vanskelighetsgrader blir det viktig å "
+"forvalte gullet - å erobre landsbyer for å øke inntektene, og å bruke "
+"enheter på lavt nivå og nye rekrutter for å redusere utgiftene. Hvis du "
+"bruker mange enheter på høyt nivå, kan du vinne et scenario enkelt, men ikke "
+"ha nok gull til neste scenario. (Dette er et eksempel på at man «såvidt "
+"oppnår seier»)."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2571,7 +2726,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Usannsynlige årsaker'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
@@ -2581,6 +2736,10 @@ msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
+"\n"
+"\n"
+"I tillegg til de vanlige årsakene som er nevnt ovenfor, finnes det noen få "
+"andre årsaker som er usannsynlige, men ikke umulige. Disse er:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:329
@@ -2591,6 +2750,11 @@ msgid ""
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
 msgstr ""
+"\n"
+"\n"
+"• Du kan ha spilt en strategi som kampanjeutvikleren ikke forutså, og endt "
+"opp med et sett med enheter på høyt nivå som ikke passer for det neste "
+"scenariet."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
@@ -2604,6 +2768,14 @@ msgid ""
 "the highest difficulties. Requiring above-average luck, however, would "
 "qualify as a bug.)"
 msgstr ""
+"\n"
+"\n"
+"• Du har støtt på et scenario som bare kan vinnes andre eller tredje gang, "
+"enten ved å kreve over gjennomsnittlig flaks eller ved å forvente at "
+"spillerne har forhåndskunnskap - at de vet hvilke overraskelser som kommer "
+"før de skjer. (Det diskuteres om det forventes forhåndskunnskap på de "
+"høyeste vanskelighetsgradene. Å kreve flaks over gjennomsnittet vil "
+"imidlertid kvalifisere som en bug)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
@@ -2623,6 +2795,21 @@ msgid ""
 "luck. It is only exceedingly bad luck, over multiple turns, that we mean "
 "here."
 msgstr ""
+"\n"
+"\n"
+"• Uvanlig uflaks. Det er tilfeldig om et angrep treffer eller bommer, så det "
+"kan hende at fienden var veldig heldig og hadde mange treff, mens du var "
+"veldig uheldig og hadde mange bom. Dette skjer imidlertid svært sjelden, og "
+"er så godt som uhørt i alle andre enn de korteste og minste scenariene. "
+"Faktisk er det vanligere å tape ved å spille en <italic>text='dårlig'</"
+"italic>-strategi til tross for at man har <italic>text='over "
+"gjennomsnittet'</italic> flaks, enn ved å spille en <italic>text='god'</"
+"italic> strategi, men ha <italic>text='under gjennomsnittet'</italic> flaks. "
+"Dessuten er det ikke noen unnskyldning for å tape bare fordi man har «over "
+"snittet med uflaks»; det er helt normalt å ha over snittet med uflaks, og "
+"scenariene er utformet slik at man kan vinne selv med mer uflaks en "
+"gjennomsnittet. Det er bare ekstrem uflaks, over flere runder, som vi mener "
+"her."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:335
@@ -2635,6 +2822,13 @@ msgid ""
 "indicative of a bug in the campaign. However, if you still think you found a "
 "bug, then by all means, report it!"
 msgstr ""
+"\n"
+"\n"
+"Vær forsiktig med å tilskrive et tap til noen av disse årsakene. Hvis du "
+"ikke er en erfaren spiller, er det langt mer sannsynlig at tapet ditt "
+"skyldes en av de <italic>text='vanlige'</italic> feilene som er listet "
+"ovenfor, og ikke en feil i kampanjen. Men hvis du likevell mener at du har "
+"funnet en feil, må du for all del rapportere den!"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:337
@@ -2647,6 +2841,13 @@ msgid ""
 "strategic mistakes, or small bits of luck at critical points in the "
 "engagement."
 msgstr ""
+"\n"
+"\n"
+"Dialogboksen «Skadeberegning» viser en del statistikk som kan bidra til å "
+"avgjøre om en kamp var heldig eller uheldig. \n"
+"Å lese statistikken er imidlertid ingen erstatning for å se på reprisen og "
+"lete etter strategiske feil eller små lykketreff på kritiske punkter i "
+"kampen."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:346
@@ -2655,7 +2856,6 @@ msgstr "Kamp"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:347
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2667,7 +2867,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:347
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2680,19 +2879,19 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Kamphandlinger i Kampen om Wesnoth finner alltid sted mellom enheter i "
-"nabofelter. Klikk på din enhet, og klikk på enheten du ønsker å angripe: "
-"enheten din vil flytte seg mot fienden, og når de er ved siden av hverandre, "
-"tar kamphandlingene til. Angriper og forsvarer slår etter tur inntil begge "
-"har brukt alle sine tillatte angrep med den gitte angrepstypen. Angriperen "
-"velger ett av sine våpen å angripe med, og forsvareren slår tilbake med ett "
-"av sine angrep av den samme typen. Det er to typer angrep: Nærkamp, som "
-"vanligvis involverer våpen som sverd, økser, eller klør; og Avstand, som "
+"Kamphandlinger i <italic>text='Kampen om Wesnoth'</italic> finner alltid "
+"sted mellom enheter i nabofelter. Klikk på din enhet, og klikk på enheten du "
+"ønsker å angripe: enheten din vil flytte seg mot fienden, og når de er ved "
+"siden av hverandre, tar kamphandlingene til. Angriper og forsvarer slår "
+"etter tur inntil begge har brukt alle sine tillatte angrep med den gitte "
+"angrepstypen. Angriperen velger ett av sine våpen å angripe med, og "
+"forsvareren slår tilbake med ett av sine angrep av den samme typen. Det er "
+"to typer angrep: <italic>text='nærkamp'</italic>, som vanligvis involverer "
+"våpen som sverd, økser, eller klør; og <italic>text='avstand'</italic>, som "
 "vanligvis involverer våpen som buer, kastespyd og magiske kulelyn."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:349
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2706,16 +2905,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Angriper får angripe først, deretter forsvareren. Dette fortsetter til begge "
-"enhetene har brukt opp alle angrepene sine. Antall angrep en enhet har "
-"varierer. En Alvisk Kriger for eksempel, med et 5-4 sverd kan slå 4 ganger, "
-"hvor hvert slag kan gi 5 skade. Mens en Orkisk Soldat med 9-2 får 2 slag "
-"(men med 9 i skade). Hvert slag er enten et treff (og gir oppgitt skade) "
-"eller et bom (og gir ingen skade i det hele)."
+"Angriperen får det første slaget, deretter slår forsvareren tilbake. Hvert "
+"slag enten treffer og gjør en gitt mengde skade, eller bommer og gjør ingen "
+"skade i det hele tatt. Angrepene veksler til hver enhet har brukt opp alle "
+"sine slag. Antall slag en enhet kan slå varierer; for eksempel kan en alvisk "
+"kriger med et 5×4-angrep slå fire ganger, og hvert vellykket slag gjør fem "
+"skade, mens en orkisk soldat med et 9×2-angrep bare kan slå to ganger (men "
+"med ni skade for hvert treff)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:351
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2723,11 +2922,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Treffsjangse'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:353
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2741,11 +2939,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hver enhet har en sjanse for å bli truffet, basert på hva slags "
-"<ref>dst=terrain text=terreng</ref> den befinner seg i. Dette vises i "
+"Hver enhet har en sjanse for å bli truffet, basert på hvilket "
+"<ref>dst=terrain text='terreng'</ref> den befinner seg i. Dette vises i "
 "statuspanelet på høyre side av skjermbildet, og kan også finnes ved å "
 "høyreklikke på en enhet, og så velge <italic>text='Enhetsbeskrivelse'</"
-"italic> og så se på <italic>text='Terreng Modifikatorer'</italic> for den "
+"italic> og så se på <italic>text='Terrengmodifikatorer'</italic> for den "
 "aktuelle enheten. Mange alver har for eksempel en forsvarsgrad på 70% i "
 "skog, det betyr at en enhet som angriper dem bare har 30% sjanse for treffe "
 "dem for hvert slag. På samme måte er alvens sjanse for å treffe angriperen i "
@@ -2753,7 +2951,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:355
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2766,9 +2963,9 @@ msgstr ""
 "\n"
 "\n"
 "Det er to unntak fra denne regelen: <ref>dst=magical_attacks text='magiske "
-"angrep'</ref> og <ref>dst=ability_marksman text=skarpskytende angrep</ref>. "
-"Magiske angrep har alltid 70% sjanse for å treffe, og skarpskyttere har "
-"minst 60% sjanse til å treffe når de brukes offensivt."
+"angrep'</ref> og <ref>dst=ability_marksman text='skarpskytende angrep'</"
+"ref>. Magiske angrep har alltid 70% sjanse for å treffe, og skarpskyttere "
+"har minst 60% sjanse til å treffe når de brukes offensivt."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:357
@@ -2783,7 +2980,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2798,7 +2994,7 @@ msgstr ""
 "\n"
 "\n"
 "Hvert slag som treffer fører til en grunnskade som er avhengig av "
-"angrepstypen. Et treff av en Alvisk Kriger med et 5-4 sverdangrep fører til "
+"angrepstypen. Et treff av en Alvisk Kriger med et 5×4 sverdangrep fører til "
 "en grunnskade på 5 helsepoeng (HP). Denne grunnskaden kan modifiseres, "
 "oftest på to måter: <ref>dst=damage_types_and_resistance text='Motstand'</"
 "ref> og <ref>dst=time_of_day text='Tid på Døgnet'</ref>. For å se hvordan "
@@ -2807,7 +3003,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:361
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2818,10 +3013,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Noen enheter har spesielle evner som påvirker skaden som blir utdelt i kamp. "
-"En hyppig forekommende evne er <ref>dst=ability_charge text='stormangrep'</"
-"ref>, som dobler skaden som blir påført av både angriper og forsvarer når "
-"enheten med stormangrep angriper."
+"Noen enheter har spesielle <ref>dst='..abilities_section' text='evner'</ref> "
+"som påvirker skaden som blir utdelt i kamp. En hyppig forekommende evne er "
+"<ref>dst=ability_charge text='stormangrep'</ref>, som dobler skaden som blir "
+"påført av både angriper og forsvarer når enheten med stormangrep angriper."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:369
@@ -2830,7 +3025,6 @@ msgstr "Skadetyper og motstand"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:370
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2842,15 +3036,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Motstand har en lettvint virkning: Hvis en enhet har 40% motstand mot en "
-"type skade, mottar den 40% mindre skade enn normalt når den blir truffet av "
-"et angrep med den skadetypen. Det er også mulig for en enhet å være sårbar "
-"mot noen skadetyper. Hvis en enhet har −100% motstand mot en type skade "
-"mottar den dobbel normal skade hvis angrepet av den skadetypen."
+"Motstand fungerer veldig enkelt: Hvis en enhet har 40 % motstand mot en "
+"skadetype, vil den lide 40 % mindre skade når den blir truffet av denne "
+"skadetypen. Det er også mulig for en enhet å være sårbar mot enkelte "
+"skadetyper. Hvis en enhet har -100 % motstand mot en skadetype, vil den lide "
+"100 % mer skade når den blir truffet av denne skadetypen."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:370
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2860,14 +3053,14 @@ msgid ""
 "they take from certain damage types."
 msgstr ""
 "I Wesnoth er det tre typer skade som vanligvis sees i sammenheng med fysiske "
-"angrep. Hugg-, stikk- og slagskade. I tillegg er det tre typer skade som "
-"vanligvis sees i sammenheng med magiske angrep. Ild-, kulde- og hellig "
-"skade. Forskjellige enheter kan ha ulike motstandskrefter som endrer skaden "
-"de mottar fra ulike skadetyper."
+"angrep: <italic>text='hugg, stikk, og slagskade'</italic>. I tillegg er det "
+"tre typer skade som vanligvis sees i sammenheng med magiske angrep: "
+"<italic>text='ild, kulde- og arkane angrep'</italic>. Forskjellige enheter "
+"kan ha ulik motstandskraft mot ulike skadetyper, som endrer skaden de mottar "
+"fra disse."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:372
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2877,8 +3070,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Som et eksempel har Skjeletter sterk motstand mot Hugg- og Stikkskade, men "
-"er sårbare overfor Slag- og Ildskade og ekstremt sårbare mot Hellige angrep."
+"Skjeletter er for eksempel svært motstandsdyktige mot hugg- og stikkskade, "
+"men er sårbare for slag- og ildskade, og ekstremt sårbare for arkanskade."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:374
@@ -2897,7 +3090,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Kuler og ellipser"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -2905,6 +3098,8 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"Noen enheter har fargede indikatorer over helsesøylene, som består av en "
+"farget kule (og noen ganger en <ref>dst='crowns' text='krone'</ref>)."
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -2934,15 +3129,36 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"Kulene viser om enheten kan forflytte seg eller angripe. Kulens tilstander "
+"og deres standardfarger er\n"
+"• <bold>text='Grønn'</bold> hvis den verken har forflyttet seg eller "
+"angrepet denne runden.\n"
+"• <bold>text='Gul'</bold> hvis den har forflyttet seg (eller angrepet), og "
+"fortsatt kan angripe. Den kan også fortsatt være i stand til å forflytte seg "
+"videre.\n"
+"• <bold>text='Rød'</bold> hvis den verken kan forflytte seg videre eller "
+"angripe igjen denne runden.\n"
+"    • Rød brukes også etter kommandoen «avslutt enhetens tur», og\n"
+"    • når en enhet er midt i et trekk med flere runder (har fått beskjed om "
+"å flytte lenger enn den kan i inneværende runde).\n"
+"• <bold>text='Rød og gul'</bold> hvis den har flyttet (eller angrepet), kan "
+"fortsatt flytte videre, men ikke lenger kan angripe.\n"
+"    • Dette kan skje på grunn av kampanjespesifikke hendelser eller evner, "
+"for eksempel evnen <italic>text='trekk unna'</italic> i kampanjen "
+"<italic>text='Under de brennende solene'</italic>.\n"
+"• <bold>text='Blå'</bold> for allierte enheter, unntatt under den alliertes "
+"egen tur.\n"
+"    • Under den alliertes egen tur vil enhetene deres vises med fargene som "
+"viser om enhetene fortsatt kan forflytte seg og angripe, men bevegelsene "
+"deres, og de tilhørende kuleskiftene, er forsinket som forklart i "
+"<ref>dst='shroud_and_fog' text='Skodde og stridsdis'</ref>.\n"
+"• Fiendenheter har normalt ikke kuler, men disse kan aktiveres i den "
+"avanserte innstillingen «Tilpass kulefarger»."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Sjanse for å treffe'</header>"
+msgstr "<header>text='Ellipser'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -2950,6 +3166,8 @@ msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"En form i lagets farge tegnes på bakken under hver enhet. Dette kalles "
+"«ellipsen», selv om noen enheters ellipser ikke er elliptiske."
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -2964,11 +3182,20 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
+"• De fleste enheter har en sirkelformet ellipse.\n"
+"• Enheter som kan rekruttere har en syvtakket stjerne.\n"
+"• <ref>dst='crowns' text='Helteenheter'</ref> har en mindre variant av den "
+"syvtakkede stjernen, disse enhetene kan ikke rekruttere.\n"
+"• Enheter uten en <ref>dst='movement' text='kontrollsone'</ref> har en "
+"stiplet versjon av formen.\n"
+"• Noen kampanjer starter med en leder på nivå null. Disse enhetene kan "
+"rekruttere, men mangler en kontrollsone, og har derfor en stiplet versjon av "
+"den syvtakkede stjernen."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Kroner og lojalitetsmarkører"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -2977,6 +3204,9 @@ msgid ""
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
 "text='ellipses'</ref>:"
 msgstr ""
+"Noen enheter har en ekstra markører over deres <ref>dst='orbs' text='kuler'</"
+"ref>, og en tilsvarende form over deres <ref>dst='orbs' text='ellipser'</"
+"ref>:"
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
@@ -3002,6 +3232,25 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"• Ledere vises med en <bold>text='gullkrone'</bold>.\n"
+"• Helter vises med en <bold>text='blålig sølvkrone'</bold>.\n"
+"• Ikke-essensielle ledere vises med en <bold>text='sølvkrone'</bold>.\n"
+"• <ref>dst='traits_loyal' text='Lojale enheter'</ref> vises med "
+"<bold>text='lojalitetsikonet'</bold>.\n"
+"\n"
+"Av disse kategoriene er det bare ledere som er innebygd i de grunnleggende "
+"spillereglene. De andre finnes i kampanjer, og er karakterer som er en del "
+"av fortellingen. De nøyaktige reglene for dem fastsettes av kampanjen, som "
+"kan avvike fra disse standardforventningene til dem:\n"
+"\n"
+"• En helts død fører til umiddelbart nederlag.\n"
+"• En ikke-essensiell leders død fører ikke til umiddelbart nederlag, selv om "
+"de kan rekruttere.\n"
+"• Alle disse enhetene har samme fordelen som karaktertrekket lojal, nemlig "
+"at de ikke koster noe vedlikehold.\n"
+"• Å miste noen av disse enhetene medfører en ulempe for resten av kampanjen, "
+"forutsatt at den ikke avsluttes umiddelbart.\n"
+"• Disse enhetene vil aldri forekomme som tilfeldige rekrutter."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
@@ -3010,7 +3259,6 @@ msgstr "Tid på døgnet"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -3021,14 +3269,17 @@ msgid ""
 "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
 "• <bold>text='Liminal'</bold> units get +25% damage during twilight."
 msgstr ""
-"Tiden på døgnet påvirker skaden en enhet gjør etter dette skjemaet:\n"
-" Hederlige enheter gjør +25% skade om dagen, og −25% skade om natten.\n"
-" Lyssky enheter gjør +25% skade om natten, og −25% skade om dagen.\n"
-" Nøytrale enheter påvirkes ikke av tiden på døgnet."
+"Tiden på døgnet påvirker skaden til visse enheter på følgende måte:\n"
+"\n"
+"- <bold>text='Lovlydige'</bold> enheter får +25 % skade på dagtid, og -25 % "
+"skade om natten.\n"
+"- <bold>text='Kaotiske'</bold> enheter får +25 % skade om natten, og -25 % "
+"på dagtid.\n"
+"- <bold>text='Nøytrale'</bold> enheter påvirkes ikke av tiden på døgnet.\n"
+"- <bold>text='Diffuse'</bold> enheter får +25 % skade i demringstiden."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3040,8 +3291,9 @@ msgstr ""
 "\n"
 "\n"
 "Den gjeldende tid på døgnet kan lett finnes under minikartet på høyre side "
-"av skjermen. I den vanlige dag/natt kretsen regnes For- og Ettermiddag som "
+"av skjermen. I den vanlige dag/natt-syklusen regnes For- og Ettermiddag som "
 "dag, mens Kveld og Natt regnes som natt.\n"
+"\n"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
@@ -3085,16 +3337,11 @@ msgstr "Natt"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Husk at noen scenarier finner sted under jorden, hvor det råder en evig "
-"mørke!"
+"Husk at noen scenarier finner sted under jorden, hvor et evig mørke rår!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:485
@@ -3102,6 +3349,8 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
+"Noen underjordiske steder er opplyst. De befinner seg i en evig "
+"demringstilstand.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:487
@@ -3109,6 +3358,8 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate.\n"
 msgstr ""
+"Noen rollespillscenarier foregår innendørs - disse områdene befinner seg "
+"også i en evig demringstilstand.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:489
@@ -3118,6 +3369,9 @@ msgid ""
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 "around them."
 msgstr ""
+"Til sist kan enheter med evnen <ref>dst='ability_illuminationilluminates' "
+"text='belyser'</ref> og terrengfunksjoner som <ref>dst='terrain_lava' "
+"text='lava'</ref> endre tid-på-dagen-bonusen rundt dem."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:496
@@ -3126,7 +3380,6 @@ msgstr "Helbredelse"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:497
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3135,8 +3388,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hvile: En enhet som hverken beveger seg, angriper, eller blir angrepet vil "
-"helbredes for 2 HP ved begynnelsen av sin neste tur."
+"• <bold>text='Hvile'</bold>: En enhet som hverken beveger seg, angriper, "
+"eller blir angrepet vil helbredes for 2 HP ved begynnelsen av sin neste "
+"runde."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:497
@@ -3145,10 +3399,12 @@ msgid ""
 "heal your units. However, with the exception of resting, these do not stack; "
 "only one can occur per turn."
 msgstr ""
+"I kamp vil enhetene dine uunngåelig bli skadet. Det finnes flere måter å "
+"helbrede enhetene dine på. Men med unntak av hvile, kan ikke disse "
+"effektente stables; bare én kan skje per tur."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:499
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -3156,11 +3412,12 @@ msgid ""
 "poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"Landsbyer: En enhet som starter sin tur i en landsby vil helbredes for 8 HP."
+"• <bold>text='Landsbyer'</bold>: En enhet som starter sin runde i en landsby "
+"eller <ref>dst='terrain_oasis' text='oase'</ref> vil helbrede 8HP. Hvis "
+"enheten er forgiftet, vil giften bli kurert i stedet."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:500
-#, fuzzy
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -3168,12 +3425,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"Regenerering: Visse enheter (slik som troll) vil automatisk regenerere 8 HP "
-"ved starten av hver runde"
+"• <ref>dst='ability_regeneratesregenerates' text='Regenerering'</ref>: Visse "
+"enheter (for eksempel troll) helbreder automatisk 8 HP hver runde. Hvis "
+"enheten er forgiftet, vil giften bli kurert i stedet."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:501
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -3183,14 +3440,14 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Helbredende enheter: Enheter med egenskapen <ref>dst=ability_heals "
-"text=Helbreder</ref> vil helbrede hver alliert enhet i nabofeltene dens, "
-"vanligvis 4 eller 8 HP hver runde. Enheten hindrer gift i forgiftede enheter "
-"å gjøre skade inneværende runde, men fjerner ikke effekten. "
+"• <bold>text='Helbredende enheter'</bold>: Enheter med evnen "
+"<ref>dst='ability_healingheals +4' text='helbereder'</ref> vil helbrede hver "
+"tilstøtende allierte enhet, vanligvis <ref>dst='ability_healingheals +4' "
+"text='4HP'</ref> eller <ref>dst='ability_healingheals +8' text='8HP'</ref> "
+"per runde, eller forhindre at gift forårsaker skade på enheten."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:502
-#, fuzzy
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -3199,8 +3456,8 @@ msgid ""
 "ability as well)."
 msgstr ""
 "\n"
-"Kurere: Enheter med egenskapen <ref>dst=ability_cures text=kurerer</ref> vil "
-"kurere alle alierte enheter i nabofeltene for gift."
+"• <bold>text='Kurere'</bold>: Enheter med evnen <ref>dst=ability_cures "
+"text=kurerer</ref> vil kurere alle alierte enheter i nabofeltene for gift."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:503
@@ -3210,6 +3467,10 @@ msgid ""
 "text='advances'</ref>, it will heal fully. This can happen as soon as your "
 "unit gains enough experience, whether it is your turn or not."
 msgstr ""
+"\n"
+"- <bold>text='Forfremmelse'</bold>: Når en enhet <ref>dst='advancement' "
+"text='forfremmes'</ref>, vil den leges fullstendig. Dette kan skje så snart "
+"enheten din får nok erfaring, uavhengig av om det er din tur eller ikke."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:504
@@ -3234,6 +3495,9 @@ msgid ""
 "\n"
 "<bold>text='Advanced'</bold>"
 msgstr ""
+"\n"
+"\n"
+"<bold>text='Avansert'</bold>"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:508
@@ -3246,6 +3510,14 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
+"\n"
+"\n"
+"I motsetning til andre former for helbredelse, vil dets evne ikke tre i "
+"kraft på den helbredede enhetens runde, men på helbrederens runde. Dette "
+"betyr at mens en enhet som er omringet av flere healere på samme side bare "
+"vil motta healing fra én healer per tur, vil en enhet som er omringet av "
+"healere fra flere allierte sider bli healet én gang på hver av de allierte "
+"sidenes tur."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:516
@@ -3254,7 +3526,6 @@ msgstr "Sammendrag"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:517
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -3262,11 +3533,11 @@ msgid ""
 "ref>, but you now know everything you need to know to play the "
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
-"Her avsluttes de fundamentale reglene i Wesnoth. For mer informasjon, les om "
-"grunnleggende strategi eller bli familiær med <ref>dst=traits "
-"text=karaktertrekk</ref> og <ref>dst=abilities text=egenskaper</ref>. Du vet "
-"allerede alt du behøver for å starte et av de øverste felttogene. Ha det "
-"moro, og lykke til!"
+"Med dette er de grunnleggende prinsippene i Wesnoth oppsummert. Det kan være "
+"lurt å lese seg opp på grunnleggende strategi, eller gjøre seg kjent med "
+"<ref>dst=traits text=karaktertrekk</ref> og <ref>dst=abilities text=evner</"
+"ref>. Du vet allerede alt du behøver for å starte kampanjen "
+"<italic>text='Tronarvingen'</italic>. Ha det gøy, og lykke til!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:522
@@ -3275,7 +3546,6 @@ msgstr "Lisens"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3284,10 +3554,12 @@ msgid ""
 "and in some cases <italic>text='fearless'</italic>, and woses do not receive "
 "any traits. "
 msgstr ""
-"De fleste enheter har to karaktertrekk. Vandøde får tilordnet ett trekk; "
-"vandøde, og Trehyrder mottar ingen trekk. Karaktertrekk er modifikasjoner "
-"som i mild grad endrer en enhets egenskaper. De tilordnes vanligvis "
-"tilfeldig når en enhet rekrutteres."
+"\n"
+"\n"
+"De fleste enheter har to karaktertrekk. Tusser har imidlertid bare ett "
+"karaktertrekk, vandøde enheter får alltid det ene karaktertrekket "
+"<italic>text='vandød'</italic> og i noen tilfeller <italic>text='fryktløs'</"
+"italic>, og trehyrder får ingen karaktertrekk. "
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
@@ -3297,10 +3569,13 @@ msgid ""
 "available to a unit are largely determined by its <italic>text='race'</"
 "italic>."
 msgstr ""
+"Karaktertrekk er modifikasjoner som endrer en enhets attributter noe. De "
+"tildeles vanligvis tilfeldig til en enhet når den rekrutteres. Hvilke "
+"karaktertrekk som er tilgjengelige for en enhet, bestemmes i stor grad av "
+"dens <italic>text='rase'</italic>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:535
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3311,14 +3586,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Karaktertrekkene som er tilgjengelige for alle vanlige enheter er: "
+"Karaktertrekkene som er tilgjengelige for de fleste ikke-vandøde enheter er: "
 "<ref>dst=traits_intelligent text=intelligent</ref>, <ref>dst=traits_quick "
 "text=rask</ref>, <ref>dst=traits_resilient text=seig</ref>, og "
 "<ref>dst=traits_strong text=sterk</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:537
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3332,9 +3606,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Andre karaktertrekk som kan tilordnes spesielle enheter er: "
-"<ref>dst=traits_loyal text=lojal</ref>, <ref>dst=traits_undead text=vandød</"
-"ref>, og <ref>dst=traits_dextrous text=hendig</ref>."
+"Alver kan også få <ref>dst='traits_dextrous' text='hendig'</ref>, og dverger "
+"kan få <ref>dst='traits_healthy' text='sunn'</ref>. Troll og visse mennesker "
+"kan få <ref>dst='traits_fearless' text='fryktløs'</ref>. Andre egenskaper "
+"som kan tildeles inkluderer <ref>dst='traits_loyal' text='lojal'</ref>, "
+"<ref>dst='traits_feral' text='vill'</ref> og <ref>dst='traits_undead' "
+"text='vandød'</ref>.\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:547
@@ -3513,7 +3790,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3522,7 +3798,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Grunnleggende terrengtyper'</header>\n"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:600
@@ -3532,19 +3808,19 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"Graden av tilpasning som Wesnoth-motoren tilbyr, gjør det mulig for "
+"spillerne å skape sitt eget spillinnhold, inkludert nye scenarier, kampanjer "
+"og mye mer utover det som tilbys i det offisielle innholdet som følger med "
+"spillet.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:610
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Å benytte tillegg"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:611
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3552,7 +3828,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Skade</header>"
+"<header>text='Kampanjer og scenarier'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:611
@@ -3560,6 +3836,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Spillet støtter ulike typer tilleggsinnhold, som ikke alle er tilgjengelige "
+"i alle spillmoduser."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:613
@@ -3571,10 +3849,15 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"Enspillerkampanjer er samlinger av scenarier som henger sammen, med hensikt "
+"å fortelle en historie. Både frittstående scenarier—hvis de er ment å "
+"spilles slik—og vanlige kampanjer er tilgjengelige fra "
+"<italic>text='kampanjer'</italic>-menyen på tittelskjermen."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3582,7 +3865,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Flerspillerkampanjer, scenarier og kartpakker'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
@@ -3593,10 +3876,13 @@ msgid ""
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
 msgstr ""
+"\n"
+"<italic>text='Flerspiller'</italic>spill kan spilles i fullt tilpassede, "
+"skriptbaserte scenarier eller til og med skreddersydde kampanjer. Det finnes "
+"også pakker med individuelle flerspillerscenarier."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:619
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3604,7 +3890,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Rekkefølge og antall angrep'</header>"
+"<header>text='Flerspilleræraer og fraksjoner'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:621
@@ -3620,6 +3906,17 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"For spillets skyld samarbeider ulike raser av skapninger i verden med "
+"hverandre i fraksjoner. \n"
+"Fraksjonene er gruppert i velbalanserte sett med et felles tema; for "
+"eksempel kan du finne de viktigste fraksjonene i Wesnoth i den inkluderte "
+"standardæraen.\n"
+"\n"
+"I <italic>text='flerspiller'</italic>modus kan du velge en æra når du "
+"oppretter et nytt spill, og spillerne kan velge blant de tilgjengelige "
+"fraksjonene for den æraen når de setter opp sidene og lagene sine."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:625
@@ -3629,10 +3926,13 @@ msgid ""
 "You can see what eras you have loaded in the <ref>text='eras' dst='.."
 "eras_section'</ref> of the help."
 msgstr ""
+"\n"
+"\n"
+"Du kan se hvilke æraer du har tilgjengelig under <ref>text='æraer' dst='.."
+"eras_section'</ref> i hjelpeskjermen."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:627
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3640,7 +3940,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Rekkefølge og antall angrep'</header>"
+"<header>text='Modifikasjoner'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:629
@@ -3651,10 +3951,14 @@ msgid ""
 "alter the default ruleset in various ways. You can choose and configure "
 "modifications when creating a new game."
 msgstr ""
+"\n"
+"\n"
+"Modifikasjoner er valgfrie scenario- og æra-uavhengige skript som kan endre "
+"standardregelsettet på ulike måter. Du kan velge og konfigurere "
+"modifikasjoner når du oppretter et nytt spill."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:631
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3662,7 +3966,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Kjerner'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:633
@@ -3677,10 +3981,19 @@ msgid ""
 "War II campaign, or even a different game altogether, as long as it can be "
 "represented as a hexagonal map with ’units’ in some way."
 msgstr ""
+"\n"
+"\n"
+"Kjerner muliggjør total konvertering av Kampen om Wesnoth. En kjerne kan "
+"erstatte alt innholdet i Wesnoth: Når en annen kjerne lastes inn, finnes "
+"ikke de vanlige enhetene, terrengene og lignende.\n"
+"\n"
+"Kjerner gjør det mulig å skape en helt annen spillopplevelse: for eksempel "
+"en kampanje fra andre verdenskrig, eller til og med et helt annet spill, så "
+"lenge det kan representeres som et kart bestående av sekskantede felter med "
+"«enheter» på en eller annen måte."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3688,7 +4001,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Skaper-ressurser'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:639
@@ -3701,11 +4014,19 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Innholdsforfattere kan bruke ressurspakker som er tilgjengelige på "
+"tilleggsserveren, til å berike sitt eget innhold med eksisterende ressurser "
+"som bilder, musikk og kode. Disse er vanligvis ikke ment for direkte bruk i "
+"spillet, men andre spillbare tillegg kan være avhengige av dem og foreslå "
+"eller kreve at de installeres under nedlasting."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:648
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Installere tillegg"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
@@ -3732,11 +4053,34 @@ msgid ""
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
+"Brukerskapte tillegg kan hentes og oppdateres via <italic>text='Tillegg'</"
+"italic>-alternativet i hovedmenyen. Etter at du har koblet deg til "
+"tilleggsserveren (som standard <italic>text='add-ons.wesnoth.org'</italic>), "
+"vil du få opp en liste over tillegg som er tilgjengelige på serveren for "
+"nedlasting.\n"
+"\n"
+"Installasjonsstatusen for hvert tillegg vises under hver oppføring. For "
+"tillegg som er <italic>text='oppgraderbare'</italic> eller "
+"<italic>text='utdaterte'</italic> på serveren, vil deres installerte og "
+"publiserte versjoner vises i kolonnen <italic>text='versjon'</italic>.\n"
+"\n"
+"Hvis du vil søke etter tillegg etter nøkkelord, skriver du inn relevante "
+"termer i hvilken som helst rekkefølge i søkeboksen, atskilt med mellomrom. "
+"Du kan også sortere tilleggslisten ved å klikke på kolonneoverskriftene. Det "
+"er også mulig å velge å bare vise tillegg i bestemte kategorier ved å klikke "
+"på rullegardinmenyen <bold>text='Type'</bold>.\n"
+"\n"
+"Hvis du vil installere et tillegg, velger du det fra listen og klikker på "
+"<bold>text='+'</bold>-ikonet, eller dobbeltklikker på tilleggets tittel. "
+"Hvis vinduet er for lite til å vise dem på linje, gir <bold>text='Detaljer "
+"om tillegg'</bold>-knappen deg ytterligere informasjon om tillegget, for "
+"eksempel en fullstendig beskrivelse, installasjonsstatus og tilgjengelige "
+"oversettelser."
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:662
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Fjerne tillegg"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:663
@@ -3751,6 +4095,15 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
+"Hvis du vil fjerne et tillegg, velger du <bold>text='Fjern tillegg'</bold> i "
+"dialogboksen for tilkobling til tilleggsserveren. Du får opp alternativer "
+"for å fjerne et hvilket som helst antall tillegg du har installert.\n"
+"\n"
+"Det er ikke mulig å fjerne tillegg som det er knyttet "
+"publiseringsinformasjon (<italic>text='.pbl'</italic>-filer) til, for å "
+"forhindre utilsiktet tap av denne. Hvis det er nødvendig, må du slette "
+"informasjonsfilene eller selve tilleggene manuelt ved hjelp av en "
+"filbehandler som leveres av plattformen din."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
@@ -4337,14 +4690,6 @@ msgstr "belyser"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:239
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4353,11 +4698,11 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "Belyser:\n"
-"Denne enheten lyser opp det omkringliggende området, og gjør at hederlige "
-"enheter kjemper bedre og lyssky tilsvarende dårligere.\n"
+"Denne enheten lyser opp det omkringliggende området, som gjør at lovlydige "
+"enheter kjemper bedre og kaotiske enheter kjemper dårligere.\n"
 "\n"
 "Enhver naboenhet til denne enheten vil kjempe som om det var skumring når "
-"det er natt, og som om det var dag når det er skumring eller daggry."
+"det er natt, og som om det var dag når det er skumring eller morgengry."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:254
@@ -4398,19 +4743,19 @@ msgstr ""
 "de står rett ved siden av den."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:306
+#: data/core/macros/abilities.cfg:307
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^burrow"
 msgstr "treg"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:307
+#: data/core/macros/abilities.cfg:308
 #, fuzzy
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
@@ -4428,7 +4773,7 @@ msgstr ""
 "de står rett ved siden av den."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:330
 #, fuzzy
 msgid ""
 "The unit becomes invisible during night.\n"
@@ -4445,12 +4790,12 @@ msgstr ""
 "fiendtlige enheter i denne enhetens nabofelt. "
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "skjulested"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:350
 #, fuzzy
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
@@ -4467,18 +4812,17 @@ msgstr ""
 "angrepet, eller hvis den har fiendtlige enheter i noe nabofelt. "
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:366
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "dykke"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:367
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
-msgstr "neddykke"
+msgstr "dykke"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:368
-#, fuzzy
+#: data/core/macros/abilities.cfg:370
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4486,19 +4830,17 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Dykke:\n"
-"\n"
 "Fiendtlige enheter kan ikke se eller angripe denne enheten når den befinner "
 "seg på dypt vann, unntatt for en runde rett etter at enheten selv har "
 "angrepet, eller hvis den har fiendtlige enheter i noe nabofelt. "
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:388
+#: data/core/macros/abilities.cfg:390
 msgid "female^feeding"
 msgstr "åtseleter"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4506,9 +4848,8 @@ msgstr ""
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
-#, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Maks HP bonus +"
+msgstr "Maks HP bonus +3, Maks FP +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
@@ -5052,7 +5393,6 @@ msgstr "Krever ingen lønn"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:15
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5065,7 +5405,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Under felttog, kan visse enheter velge å slutte seg til spillerens styrker "
+"Under kampanjer, kan visse enheter velge å slutte seg til spillerens styrker "
 "av egen fri vilje. Disse enhetene merkes ved karaktertrekket lojal. Skjønt "
 "de krever betaling for å bli tilbakekalt, krever de aldri lønn. Dette kan "
 "gjøre dem uvurderlige under et langt felttog, når det er vanskelig å få "
@@ -5352,7 +5692,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Seige enheter kan være nyttige i alle stadium i et felttog og er et nyttig "
+"Seige enheter kan være nyttige i alle stadium i en kampanje og er et nyttig "
 "karaktertrekk for alle enheter. Du vil legge mer merke til det på enkelte "
 "enheter enn andre. Seige enheter er spesiellt nyttige til å holde utsatte "
 "strategiske posisjoner mot motstanderen."
@@ -5409,20 +5749,18 @@ msgstr ""
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:285
-#, fuzzy
 msgid "feral"
-msgstr "Grottevegg"
+msgstr "vill"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:286
-#, fuzzy
 msgid "female^feral"
-msgstr "Overfallskvinne"
+msgstr "vill"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
-msgstr ""
+msgstr "Får bare 50 % forsvar i landbaserte landsbyer"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
@@ -5432,6 +5770,10 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
+"Boliger med sansende vesener er ikke lett å bruke som dekning for ville "
+"skapninger med lav intelligens. Som et resultat får <italic>text='ville'</"
+"italic> enheter maksimalt 50 % forsvar i alle landbaserte landsbyer, "
+"uavhengig av terrenget."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:304
@@ -5470,15 +5812,19 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Kraftige og klossete, langsomme individer av gobliner og andre arter får en "
+"bevegelsesstraff, men blir kompensert med en liten økning i utholdenhet."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:325
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
-"Raske enheter har 1 ekstra forflyttningspoeng, men 10% mindre HP enn vanlig"
+"<italic>text='Trege'</italic> enheter har 1 forflytningspoeng mindre, men 5 "
+"% flere helsepoeng."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:343
@@ -5498,6 +5844,11 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Tungnem er et trekk som er altfor vanlig hos gobliner og andre mindreverdige "
+"arter. Det er grunner til at disse artene er mindreverdige, og dette er en "
+"av dem."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:345
@@ -5505,18 +5856,18 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
+"Enheter med egenskapen <italic>text='tungnem'</italic> trenger 20% mere "
+"erfaringspoeng for å forfremmes."
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:359
-#, fuzzy
 msgid "aged"
-msgstr "avstand"
+msgstr "aldret"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:360
-#, fuzzy
 msgid "female^aged"
-msgstr "tungnem"
+msgstr "aldret"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:361
@@ -5524,6 +5875,8 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
+"Enheter med egenskapen <italic>text='aldret'</italic> har 8 helsepoeng "
+"mindre og mister 1 poeng i forflyttning og nærkamp."
 
 #. [berserk]: id=berserk
 #: data/core/macros/weapon_specials.cfg:9
@@ -5532,107 +5885,80 @@ msgstr "berserkergang"
 
 #. [berserk]: id=berserk
 #: data/core/macros/weapon_specials.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserkergang:\n"
-"Denne effekten presser et sammenstøt til døden, både på offensiven og "
-"defensiven. Kampen går til en av sidene er drept, eller til 30 runder med "
-"angrep har skjedd. "
+"Enten angrepet brukes offensivt eller defensivt, vil det presse angrepet til "
+"en av de stridende dør, eller til 30 runder med angrep har funnet sted."
 
 #. [damage]: id=backstab
 #: data/core/macros/weapon_specials.cfg:22
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Bakholdsangrep:\n"
 "Dette angrepet gjør dobbel skade hvis en vennlig enhet står på andre siden "
-"av målet. (Den andre enheten kan ikke være uskadeliggjort, f.eks forstenet)."
+"av målet. (Den andre enheten kan ikke være uskadeliggjort, (f.eks forstenet)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:42
-#, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
 "Undead or units in villages."
 msgstr ""
-"Pest:\n"
-"Når en enhet blir drept av et Pestangrep, blir den byttet ut med en enhet "
-"identisk og på samme side som enheten med Pestangrepet. (Dette gjelder ikke "
-"for vandøde eller enheter i landsbyer.)"
+"Når en enhet blir drept av et <italic>text='pestangrep'</italic>, erstattes "
+"enheten med et <italic>text='vandrende lik'</italic> på pestgiverens side. "
+"Dette fungerer ikke på vandøde eller enheter i landsbyer."
 
 #. [slow]: id=slow
 #: data/core/macros/weapon_specials.cfg:65
-#, fuzzy
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Forsinkende:\n"
-"Dette angrepet sinker målet. Forsinkede enheter gjør halv skade og beveger "
-"seg med halv normal fart (rundet opp)."
+"Dette angrepet sinker målet til det avslutter en runde. Forsinkede enheter "
+"halverer skaden som forårsakes av angrep, og forflytningskostnaden dobles. "
+"En enhet som er forsinket, vil ha et snegleikon i sidefeltet når den er "
+"valgt."
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/weapon_specials.cfg:75
-#, fuzzy
 msgid "petrifies"
-msgstr "Slag"
+msgstr "forstener"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/weapon_specials.cfg:76
-#, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Forsteinender:\n"
 "Dette angrepet gjør offeret til sten. Enheter som har blitt forstenet kan "
 "ikke bevege seg eller angripe."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/weapon_specials.cfg:87
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Skarpskytende:\n"
-"Dette angrepet har alltid minst 60% sjanse for å treffe i angrep."
+msgstr "Dette angrepet har alltid minst 60% sjanse for å treffe i offensiv."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:100
 msgid "deflect"
-msgstr ""
+msgstr "avverg"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
-"Skarpskytende:\n"
-"Dette angrepet har alltid minst 60% sjanse for å treffe i angrep."
+"Når dette angrepet brukes defensivt, reduserer det motstanderens sjanse til "
+"å treffe med 10 %."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:102
@@ -5648,13 +5974,12 @@ msgstr "magisk"
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/weapon_specials.cfg:116
-#, fuzzy
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Magisk:\n"
-"Dette angrepet har alltid 70% sjanse for å treffe."
+"Dette angrepet har alltid 70 % sjanse for å treffe, uavhengig av "
+"forsvarsevnen til enheten som blir angrepet."
 
 #. [swarm]: id=swarm
 #: data/core/macros/weapon_specials.cfg:128
@@ -5663,18 +5988,15 @@ msgstr "sverm"
 
 #. [swarm]: id=swarm
 #: data/core/macros/weapon_specials.cfg:129
-#, fuzzy
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Sverm:\n"
-"Dette angrepet får nedsatt antall angrep når enheten er skadet. Antallet "
-"slag er proporsjonalt med hvor mange HP enheten har igjen. For eksempel vil "
-"en enhet med 3/4 av sine maksimale HP slå 3/4 så mange slag som når den var "
-"helt frisk."
+"Antall slag med dette angrepet reduseres når enheten er såret. Antall slag "
+"er proporsjonalt med prosentandelen av enhetens maksimale HP. Eksempelvis "
+"vil en enhet med 3/4 av sine maksimale HP få 3/4 av antall slag."
 
 #. [damage]: id=charge
 #: data/core/macros/weapon_specials.cfg:139
@@ -5683,19 +6005,17 @@ msgstr "stormangrep"
 
 #. [damage]: id=charge
 #: data/core/macros/weapon_specials.cfg:140
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Stormangrep:\n"
-"Dette angrepet forårsaker dobbel skade på målet. Det gjør også at enheten "
-"tar dobbel skade fra målenhetens motangrep."
+"Når dette angrepet brukes offensivt, gjør det dobbel skade på målet. Det "
+"fører også til at denne enheten tar dobbel skade fra målets motangrep."
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:153
 msgid "absorb"
-msgstr ""
+msgstr "absorber"
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:154
@@ -5703,65 +6023,52 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Dette angrepet setter enheten i en god forsvarsposisjon, og det absorberer "
+"noe av skaden som påføres av et fiendtlig angrep."
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:155
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Denne enheten kan blokkere fiendens angrep, slik at den påføres mindre skade "
+"når den blir truffet."
 
 #. [drains]: id=drains
 #: data/core/macros/weapon_specials.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Blodsugende:\n"
 "Dette angrepet suger liv fra levende enheter og helbreder enheten for "
 "halvparten av den påførte skaden (rundet ned)."
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/weapon_specials.cfg:177
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
-msgstr "førsteslag"
+msgstr "første slag"
 
 #. [firststrike]: id=firststrike
 #: data/core/macros/weapon_specials.cfg:178
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Førsteslag:\n"
-"Denne enheten slår alltid først, selv om den forsvarer seg."
+msgstr "Denne enheten slår alltid først, selv om den forsvarer seg."
 
 #. [poison]: id=poison
 #: data/core/macros/weapon_specials.cfg:189
-#, fuzzy
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
 "a unit."
 msgstr ""
-"Giftig:\n"
 "Dette angrepet forgifter målet. Forgiftede enheter mister 8 HP på "
 "begynnelsen av sin runde helt til de blir kurert eller blir redusert til 1 "
-"HP. "
+"HP. Gift kan ikke i seg selv drepe en enhet."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "lamslå"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -5769,23 +6076,22 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"Dette angrepet treffer så hardt at motstanderen blir lamslått og ikke lenger "
+"kan håndheve en kontrollsone. Effekten forsvinner ved motstanderens neste "
+"runde."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-" Denne enheten kan forsinke fiender. Forsinkede enheter har halvert "
-"forflytning og gjør halv skade en hel runde."
+"Denne enheten er i stand til å lamslå fienden og dermed forstyrre "
+"kontrollsonene deres."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "arkan"
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:209
@@ -5793,6 +6099,8 @@ msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"Dette angrepet kombinerer den arkanske typen med våpentypen som brukes, slik "
+"at motstand mot den arkanske typen ikke straffer brukeren."
 
 #. [damage_type]: id=arcane_damage
 #: data/core/macros/weapon_specials.cfg:210
@@ -5800,6 +6108,8 @@ msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"Denne enheten kan bruke den arkanske typen når motstanderen er spesielt "
+"følsom for det i forhold til våpenet det brukes på."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -6165,24 +6475,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:181
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Trehyrde"
+msgstr "Hest"
 
 #. [race]: id=horse
 #: data/core/units.cfg:182
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Rise"
+msgstr "Hest"
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Trehyrder"
+msgstr "Hester"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
@@ -6428,7 +6732,7 @@ msgstr "Mekanisk"
 #. [race]: id=mechanical
 #: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
-msgstr "Mekanisk"
+msgstr "Mekaniske"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:275
@@ -6740,7 +7044,7 @@ msgstr ""
 #. [race]: id=undead
 #: data/core/units.cfg:388
 msgid "race^Undead"
-msgstr "Vandøde"
+msgstr "Vandød"
 
 #. [race]: id=undead
 #: data/core/units.cfg:389
@@ -6878,49 +7182,46 @@ msgstr "+1 maks HP"
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
 msgstr ""
+"lamslått: Denne enheten er lamslått. Den kan ikke håndheve sin kontrollsone."
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "vandød"
+msgstr "lamslått"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "lamslått"
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "Lukk"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
-#, fuzzy
-#| msgid "Parse error when parsing help text: "
+#: src/help/help.cpp:263 src/help/help.cpp:267
 msgid "Parse error when parsing help text:"
-msgstr "Feil med hjelpeteksten: "
+msgstr "Lesefeil ved analyse av hjelpetekst:"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:161
+#: src/help/help_topic_generators.cpp:160
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -6930,129 +7231,108 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:172
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:176
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:179
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
-#, fuzzy
+#: src/help/help_topic_generators.cpp:183
+#: src/help/help_topic_generators.cpp:603
 msgid "Special Notes:"
-msgstr "Spesial"
+msgstr "Spesielle merknader:"
 
-#: src/help/help_topic_generators.cpp:193
-#, fuzzy
-#| msgid "Terrain"
+#: src/help/help_topic_generators.cpp:192
 msgid "Base Terrain: "
-msgstr "Terreng"
+msgstr "Basisterreng: "
 
-#: src/help/help_topic_generators.cpp:213
-#, fuzzy
-#| msgid "Movement Cost"
+#: src/help/help_topic_generators.cpp:212
 msgid "Movement properties: "
-msgstr "Forflytningskostnad"
+msgstr "Forflytningsegenskaper: "
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:216
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:297
-#, fuzzy
-#| msgid "level"
+#: src/help/help_topic_generators.cpp:296
 msgid "Level"
-msgstr "grad"
+msgstr "Nivå"
 
-#: src/help/help_topic_generators.cpp:357
-#, fuzzy
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
-msgstr "Forfremmes til: "
+msgstr "Forfremmes fra: "
 
-#: src/help/help_topic_generators.cpp:359
-#, fuzzy
+#: src/help/help_topic_generators.cpp:362
 msgid "Advances to: "
 msgstr "Forfremmes til: "
 
-#: src/help/help_topic_generators.cpp:388
-#, fuzzy
-#| msgid "Terrain"
+#: src/help/help_topic_generators.cpp:391
 msgid "Base unit: "
-msgstr "Terreng"
+msgstr "Basisenhet: "
 
-#: src/help/help_topic_generators.cpp:393
-#, fuzzy
-#| msgid "Terrain"
+#: src/help/help_topic_generators.cpp:396
 msgid "Base units: "
-msgstr "Terreng"
+msgstr "Basisenheter: "
 
-#: src/help/help_topic_generators.cpp:411
-#, fuzzy
+#: src/help/help_topic_generators.cpp:414
 msgid "Variations: "
-msgstr "Fraksjon"
+msgstr "Variasjoner: "
 
-#: src/help/help_topic_generators.cpp:435
-#, fuzzy
+#: src/help/help_topic_generators.cpp:438
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help/help_topic_generators.cpp:437
-#, fuzzy
+#: src/help/help_topic_generators.cpp:440
 msgid "Race: "
-msgstr "stridskølle"
+msgstr "Rase: "
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:510
 msgid "Abilities: "
-msgstr "Egenskaper: "
+msgstr "Evner: "
 
-#: src/help/help_topic_generators.cpp:533
-#, fuzzy
+#: src/help/help_topic_generators.cpp:536
 msgid "Ability Upgrades: "
-msgstr "Egenskaper: "
+msgstr "Oppgradering av evner: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
-#, fuzzy
-#| msgid "HP: "
+#: src/help/help_topic_generators.cpp:566
 msgid "HP:"
-msgstr "HP: "
+msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
-#, fuzzy
-#| msgid "Moves: "
+#: src/help/help_topic_generators.cpp:570
 msgid "Moves:"
-msgstr "Flytt: "
+msgstr "Flytt:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:575
 msgid "Vision:"
-msgstr ""
+msgstr "Syn:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:581
 #, fuzzy
 msgid "Jamming:"
 msgstr "sverm"
@@ -7060,97 +7340,85 @@ msgstr "sverm"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
-#, fuzzy
-#| msgid "Cost: "
+#: src/help/help_topic_generators.cpp:586
 msgid "Cost:"
 msgstr "Kostnad:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
-#, fuzzy
-#| msgid "Alignment: "
+#: src/help/help_topic_generators.cpp:590
 msgid "Alignment:"
-msgstr "Sinnelag: "
+msgstr "Sinnelag:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
-#, fuzzy
-#| msgid "Required XP: "
+#: src/help/help_topic_generators.cpp:597
 msgid "Required XP:"
-msgstr "Nødvendig XP: "
+msgstr "Nødvendig EP:"
 
-#: src/help/help_topic_generators.cpp:612
-#, fuzzy
+#: src/help/help_topic_generators.cpp:615
 msgid "unit help^Attacks"
-msgstr "Avslutt spillet"
+msgstr "Angrep"
 
-#: src/help/help_topic_generators.cpp:619
-#, fuzzy
+#: src/help/help_topic_generators.cpp:622
 msgid "unit help^Name"
-msgstr "Avslutt spillet"
+msgstr "Navn"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Range"
 msgstr "Rekkevidde"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:625
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:626
 msgid "Special"
 msgstr "Spesial"
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:701
 msgid "Resistances"
 msgstr "Motstander"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:705
 msgid "Attack Type"
 msgstr "Angrepstype"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistance"
 msgstr "Motstand"
 
-#: src/help/help_topic_generators.cpp:733
-#, fuzzy
-#| msgid "Terrain Modifiers"
+#: src/help/help_topic_generators.cpp:736
 msgid "Terrain Modifiers"
 msgstr "Terrengmodifikatorer"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:740
 msgid "Terrain"
 msgstr "Terreng"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:741
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:742
 msgid "Movement Cost"
 msgstr "Forflytningskostnad"
 
-#: src/help/help_topic_generators.cpp:743
-#, fuzzy
-#| msgid "Defense"
+#: src/help/help_topic_generators.cpp:746
 msgid "Defense Cap"
-msgstr "Forsvar"
+msgstr "Forsvarstak"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
-msgstr ""
+msgstr "Synskostnad"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:755
 msgid "Jamming Cost"
 msgstr ""
 

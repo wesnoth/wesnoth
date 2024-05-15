@@ -22,7 +22,6 @@
 
 #include "ai/game_info.hpp"
 
-#include "lua/aspect_advancements.hpp"
 
 class unit_type;
 

@@ -16,21 +16,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "color.hpp"
 
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for editing gamemap labels.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * title             | @ref label    |yes      |Dialog title label.
- * label             | @ref text_box |yes      |Input field for the map label.
- * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
- */
 class editor_edit_label : public modal_dialog
 {
 public:

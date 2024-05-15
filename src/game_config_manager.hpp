@@ -23,7 +23,6 @@
 #include "game_config_view.hpp"
 #include "terrain/type_data.hpp"
 
-#include <optional>
 
 class game_classification;
 class game_config_manager

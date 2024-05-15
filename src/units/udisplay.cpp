@@ -15,7 +15,6 @@
 
 #include "units/udisplay.hpp"
 
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
@@ -23,12 +22,11 @@
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
+#include "play_controller.hpp"
 #include "color.hpp"
 #include "sound.hpp"
-#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
-#include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/scope_exit.hpp"
 #include "video.hpp"
@@ -166,8 +164,7 @@ int move_unit_between(const map_location& a,
 
 bool do_not_show_anims(display* disp)
 {
-
-	return !disp || video::headless();
+	return !disp || video::headless() || resources::controller->is_skipping_replay();
 }
 
 } // end anon namespace

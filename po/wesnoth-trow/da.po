@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2008-12-21 22:43+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -270,13 +270,13 @@ msgstr "Prins Haldric"
 msgid "Haldric"
 msgstr "Haldric"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:44
 msgid "Wesfolk Leader"
 msgstr "Wesfolk leder"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:59
 msgid "Wesfolk"
@@ -731,7 +731,7 @@ msgstr "Hvad skal jeg kalde dig?"
 msgid "The Lady Outlaw will do."
 msgstr "Lady Fredløs er fint."
 
-#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type, gender=female
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
@@ -1149,20 +1149,20 @@ msgid "Cleon"
 msgstr "Cleon"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Lollyra
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:61
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:114
 msgid "Cultists"
 msgstr "Kultmedlemmer"
 
-#. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:68
 msgid "Lollyra"
 msgstr "Lollyra"
 
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:94
 msgid "Clurka"
 msgstr "Clurka"
@@ -2381,7 +2381,7 @@ msgstr ""
 msgid "Bah, have it your way!"
 msgstr "Bah, som du vil!"
 
-#. [unit]: id=Lady Jessene, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:264
 #, fuzzy
 msgid "Lady Jessene"
@@ -7327,12 +7327,12 @@ msgstr ""
 msgid "shadow wave"
 msgstr ""
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
 msgstr "Adelig kommandør"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
@@ -7347,12 +7347,12 @@ msgstr ""
 "også bærer en bue, der kan bruges i nødstilfælde. Hvis kommandøren dør tabes "
 "slaget."
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
 msgstr "Adelig kæmper"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
 #, fuzzy
 #| msgid ""
@@ -7367,12 +7367,12 @@ msgstr ""
 "Unge og kåde, kæmpere slås med et sværd og er sårbare over for "
 "afstandsvåben. De har dog potentialet til at blive store kommandører en dag."
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
 msgstr "Adelig lensherre"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -7384,12 +7384,12 @@ msgstr ""
 "og har også evner med buen. Som kommandører har lensherrer lederegenskaber, "
 "og forøger kampevnerne hos nærvedstående lavere rangerende enheder."
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
 msgstr "Ung adelig"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
@@ -7403,12 +7403,12 @@ msgstr ""
 msgid "training sword"
 msgstr "træningssværd"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
 msgid "female^Vampire Lady"
 msgstr "Vampyrkvinde"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -7438,12 +7438,12 @@ msgstr ""
 "beskyttelse af deres undersåtter. Konger kan koordinere angrebene fra niveau "
 "1 og 2 enheder og dermed øge deres kampeffektivitet."
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
 msgid "female^Wesfolk Lady"
 msgstr "Wesfolkkvinde"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
 #, fuzzy
 #| msgid ""
@@ -7466,12 +7466,12 @@ msgstr ""
 "årer, og på slagmarken har hun opnået værdifuld erfaring, som stadig forøges "
 "med tiden. Ligeledes øges hendes naturlige lederevner."
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
 msgid "female^Wesfolk Leader"
 msgstr "Wesfolkleder"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:22
 #, fuzzy
 #| msgid ""
@@ -7494,12 +7494,12 @@ msgstr ""
 "årer, og på slagmarken har hun opnået værdifuld erfaring, som stadig forøges "
 "med tiden. Ligeledes øges hendes naturlige lederevner."
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
 msgstr "Wesfolkfredløs"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:21
 #, fuzzy
 #| msgid ""

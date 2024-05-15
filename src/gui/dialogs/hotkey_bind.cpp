@@ -16,10 +16,8 @@
 
 #include "gui/dialogs/hotkey_bind.hpp"
 
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <SDL2/SDL.h>
 
 namespace gui2::dialogs
 {

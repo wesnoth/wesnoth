@@ -19,18 +19,14 @@
 
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "floating_label.hpp"
 #include "picture.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp" // is_in_dialog
-#include "help/help.hpp"
-#include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/input.hpp" // get_mouse_state
-#include "sdl/utils.hpp" // blur_surface
 #include "video.hpp"
 
 static lg::log_domain log_display("display");

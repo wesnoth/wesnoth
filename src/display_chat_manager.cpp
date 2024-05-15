@@ -15,7 +15,6 @@
 
 #include "display_chat_manager.hpp"
 
-#include "desktop/notifications.hpp"
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()

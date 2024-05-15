@@ -20,7 +20,6 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_common.hpp" // for new(L)
 
-#include <new>
 #include <string>
 
 #include "lua/wrapper_lauxlib.h"

@@ -363,7 +363,7 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL2('2.0.10') & \
+            conf.CheckSDL2('2.0.18') & \
             conf.CheckSDL2Mixer() & \
             conf.CheckSDL2Image()
 
@@ -371,7 +371,7 @@ if env["prereqs"]:
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
 
     have_server_prereqs = (\
-        conf.CheckCPlusPlus(gcc_version = "7") & \
+        conf.CheckCPlusPlus(gcc_version = "8") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
@@ -409,6 +409,7 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph")
 
     if env["system_lua"]:
         if env["PLATFORM"] == 'win32':

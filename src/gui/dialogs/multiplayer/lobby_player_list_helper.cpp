@@ -19,7 +19,6 @@
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/event/handler.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"

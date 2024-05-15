@@ -26,7 +26,6 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
-#include "deprecation.hpp"
 
 namespace gui2::dialogs
 {

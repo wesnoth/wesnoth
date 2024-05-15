@@ -17,7 +17,6 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/scrollbar_container.hpp"
 
 namespace gui2
 {
@@ -28,27 +27,6 @@ struct builder_multiline_text;
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Base class for a multiline text area.
- *
- * The resolution for a text box also contains the following keys:
- * Key          |Type                                    |Default  |Description
- * -------------|----------------------------------------|---------|-----------
- * text_x_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The x offset of the text in the text box. This is needed for the code to determine where in the text the mouse clicks, so it can set the cursor properly.
- * text_y_offset| @ref guivartype_f_unsigned "f_unsigned"|""       |The y offset of the text in the text box.
- * The following states exist:
- * * state_enabled - the text box is enabled.
- * * state_disabled - the text box is disabled.
- * * state_focussed - the text box has the focus of the keyboard.
- * The following variables exist:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the text box.
- * history      | @ref guivartype_string "string"    |""       |The name of the history for the text box. A history saves the data entered in a text box between the games. With the up and down arrow it can be accessed. To create a new history item just add a new unique name for this field and the engine will handle the rest.
- * editable     | @ref guivartype_bool "bool"        |"true"   |If the contents of the text box can be edited.
- */
 class multiline_text : public text_box_base
 {
 	friend struct implementation::builder_multiline_text;
@@ -132,16 +110,13 @@ protected:
 		update_layout();
 	}
 
-	/** Inherited from text_box_base. */
-	void set_cursor(const std::size_t offset, const bool select, const bool autoscroll = true)
+	/** Inherited from text_box_base */
+	void set_cursor(const std::size_t offset, const bool select) override
 	{
 		text_box_base::set_cursor(offset, select);
 		set_line_num_from_offset();
-
-		if (autoscroll) {
-			// Whenever cursor moves, this tells scroll_text to update the scrollbars
-			update_layout();
-		}
+		// Whenever cursor moves, this tells scroll_text to update the scrollbars
+		update_layout();
 	}
 
 	/** Inherited from text_box_base. */

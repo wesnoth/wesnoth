@@ -21,7 +21,6 @@
 #pragma once
 
 #include "ai/composite/engine.hpp"
-#include "ai/default/contexts.hpp"
 
 //============================================================================
 namespace ai {

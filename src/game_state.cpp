@@ -31,11 +31,9 @@
 #include "synced_context.hpp"
 #include "teambuilder.hpp"
 #include "units/unit.hpp"
-#include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "side_controller.hpp"
 
-#include <functional>
 #include <SDL2/SDL_timer.h>
 
 #include <algorithm>
@@ -59,6 +57,8 @@ game_state::game_state(const config& level, play_controller& pc)
 	, player_number_(level["playing_team"].to_int() + 1)
 	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
 	, do_healing_(level["do_healing"].to_bool(false))
+	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
+	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, server_request_number_(level["server_request_number"].to_int())
 {
 	lua_kernel_->load_core();
@@ -225,6 +225,8 @@ void game_state::write(config& cfg) const
 	}
 	cfg["server_request_number"] = server_request_number_;
 	cfg["do_healing"] = do_healing_;
+	cfg["victory_when_enemies_defeated"] = victory_when_enemies_defeated_;
+	cfg["remove_from_carryover_on_defeat"] = remove_from_carryover_on_defeat_;
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);
 
@@ -390,6 +392,10 @@ const game_events::wmi_manager& game_state::get_wml_menu_items() const
 	return this->events_manager_->wml_menu_items();
 }
 
+bool game_state::has_next_scenario() const
+{
+	return !gamedata_.next_scenario().empty() && gamedata_.next_scenario() != "null";
+}
 
 namespace
 {

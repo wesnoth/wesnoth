@@ -117,6 +117,8 @@
 0 modify_unit_which_recall_list
 0 modify_unit_recall_cost
 0 put_to_recall_and_modify
+0 effect_type_variation_full_heal
+0 effect_type_variation_no_heal
 0 event_handlers_in_events_1
 0 event_handlers_in_events_3
 0 event_handlers_in_events_2
@@ -367,6 +369,10 @@
 0 damage_type_test
 0 damage_type_with_filter_test
 0 damage_secondary_type_test
+0 negative_resistance_with_two_attack_types
+0 positive_resistance_with_two_attack_types
+0 taught_resistance_with_two_attack_types
+0 taught_resistance_with_three_attack_types
 0 swarms_filter_student_by_type
 0 swarms_effects_not_checkable
 0 filter_special_id_active
@@ -495,6 +501,7 @@
 0 kill_fires_events
 # Game mechanics
 0 zero_experience
+0 increase_zero_experience_by_percentage
 0 unit_no_advancements
 0 no_sides
 # heal ability tests
@@ -589,11 +596,16 @@
 0 resistance_wfl_self
 0 resistance_two_cumulative_yes_same_id
 0 resistance_two_cumulative_yes_unique_id
+0 resistance_two_cumulative_yes_unique_id_skeletal
 0 resistance_two_cumulative_no_same_id
 0 resistance_two_cumulative_no_unique_id
+0 resistance_two_cumulative_no_unique_id_skeletal
 0 resistance_two_cumulative_mixed_same_id
 0 resistance_two_cumulative_mixed_unique_id
+0 resistance_two_cumulative_mixed_unique_id_skeletal
 0 resistance_max_value
+0 resistance_min_value
+0 resistance_cumulative_max_value
 0 resistance_negative_max_value
 0 resistance_apply_to_blade
 0 resistance_apply_to_non_blade

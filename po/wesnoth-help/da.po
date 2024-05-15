@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-01-20 19:57-0600\n"
+"POT-Creation-Date: 2024-04-10 12:05-0500\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -239,7 +239,7 @@ msgstr " Denne enhed kan helbrede enheder omkring den, og rense dem for gift."
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:659
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:785
 #: data/core/macros/abilities.cfg:253
 msgid "teleport"
@@ -247,7 +247,7 @@ msgstr "teleport"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:720
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -272,7 +272,7 @@ msgstr "snigangreb"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:387
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "fodring"
 
@@ -299,7 +299,7 @@ msgstr "Hule"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "skjul"
 
@@ -339,7 +339,7 @@ msgstr "Champignonskov"
 # godt for det er jo også tilfældet om dagen! (måske natcamouflage)
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "natsløring"
 
@@ -1663,8 +1663,8 @@ msgstr "Gameplay"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:500
 msgid "Traits"
 msgstr "Karaktertræk"
 
@@ -4493,19 +4493,19 @@ msgstr ""
 "tilbageværende bevægelsespoint."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:306
+#: data/core/macros/abilities.cfg:307
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^burrow"
 msgstr "langsom"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:307
+#: data/core/macros/abilities.cfg:308
 #, fuzzy
 #| msgid ""
 #| "Ambush:\n"
@@ -4531,7 +4531,7 @@ msgstr ""
 "tilbageværende bevægelsespoint."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:330
 #, fuzzy
 #| msgid ""
 #| "Nightstalk:\n"
@@ -4555,13 +4555,13 @@ msgstr ""
 "straks alle tilbageværende bevægelsespoint."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:349
 #, fuzzy
 msgid "female^concealment"
 msgstr "skjul"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:350
 #, fuzzy
 #| msgid ""
 #| "Concealment:\n"
@@ -4589,18 +4589,18 @@ msgstr ""
 "opdager denne enhed mister straks alle tilbageværende bevægelsespoint."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:366
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "dykke"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:367
+#: data/core/macros/abilities.cfg:369
 #, fuzzy
 msgid "female^submerge"
 msgstr "stærk"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:368
+#: data/core/macros/abilities.cfg:370
 #, fuzzy
 #| msgid ""
 #| "Submerge:\n"
@@ -4625,13 +4625,13 @@ msgstr ""
 "bevægelsespoint."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:388
+#: data/core/macros/abilities.cfg:390
 #, fuzzy
 msgid "female^feeding"
 msgstr "frygtløs"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:391
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -7131,36 +7131,36 @@ msgstr "udød"
 msgid "stunned"
 msgstr ""
 
-#: src/help/help.cpp:211
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "Luk"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:263 src/help/help.cpp:267
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
 msgstr "Fortolk fejl når der fortolkes hjælpetekst: "
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:161
+#: src/help/help_topic_generators.cpp:160
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -7170,28 +7170,28 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:172
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:176
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:179
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
+#: src/help/help_topic_generators.cpp:183
+#: src/help/help_topic_generators.cpp:603
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -7203,75 +7203,75 @@ msgstr ""
 "\n"
 "Specielle bemærkninger:"
 
-#: src/help/help_topic_generators.cpp:193
+#: src/help/help_topic_generators.cpp:192
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Terræn"
 
-#: src/help/help_topic_generators.cpp:213
+#: src/help/help_topic_generators.cpp:212
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement properties: "
 msgstr "Bevægelsespris"
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:216
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:296
 #, fuzzy
 #| msgid "level"
 msgid "Level"
 msgstr "level"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:360
 msgid "Advances from: "
 msgstr "Forfremmes fra: "
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:362
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "Forfremmes fra: "
 
-#: src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:391
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "Terræn"
 
-#: src/help/help_topic_generators.cpp:393
+#: src/help/help_topic_generators.cpp:396
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "Terræn"
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:414
 #, fuzzy
 msgid "Variations: "
 msgstr "Deling"
 
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:438
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:440
 msgid "Race: "
 msgstr "Race: "
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:510
 msgid "Abilities: "
 msgstr "Evner: "
 
-#: src/help/help_topic_generators.cpp:533
+#: src/help/help_topic_generators.cpp:536
 msgid "Ability Upgrades: "
 msgstr "Evneopgraderinger: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:566
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -7280,7 +7280,7 @@ msgstr "L: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:570
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -7289,14 +7289,14 @@ msgstr "Bevægelser: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:575
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:581
 #, fuzzy
 msgid "Jamming:"
 msgstr "sværm"
@@ -7304,7 +7304,7 @@ msgstr "sværm"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -7313,7 +7313,7 @@ msgstr "Pris: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:590
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -7322,77 +7322,77 @@ msgstr "Sindelag: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
+#: src/help/help_topic_generators.cpp:597
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "Nødvendig EP: "
 
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:615
 msgid "unit help^Attacks"
 msgstr "Angreb"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "unit help^Name"
 msgstr "Navn"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Range"
 msgstr "Afstand"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:625
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:626
 msgid "Special"
 msgstr "Speciel"
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:701
 msgid "Resistances"
 msgstr "Modstandskræfter"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:705
 msgid "Attack Type"
 msgstr "Angrebstype"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:706
 msgid "Resistance"
 msgstr "Modstandskraft"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:736
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Terrænpåvirkninger"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:740
 msgid "Terrain"
 msgstr "Terræn"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:741
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:742
 msgid "Movement Cost"
 msgstr "Bevægelsespris"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:746
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Forsvar"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:751
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:755
 msgid "Jamming Cost"
 msgstr ""
 

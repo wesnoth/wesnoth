@@ -18,8 +18,6 @@
 #include "editor/editor_display.hpp"
 #include "editor/editor_main.hpp"
 #include "editor/map/context_manager.hpp"
-#include "editor/map/map_context.hpp"
-#include "editor/map/map_fragment.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "controller_base.hpp"
@@ -30,19 +28,12 @@
 
 #include "sound_music_track.hpp"
 
-class map_generator;
-
-namespace tooltips {
-class manager;
-}
-
 namespace font {
 struct floating_label_context;
 }
 
 namespace editor {
 
-class editor_map;
 
 enum menu_type {
 	MAP,
@@ -91,6 +82,9 @@ class editor_controller : public controller_base,
 
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
+
+		/** Show Unit Editor dialog */
+		void unit_editor_dialog();
 
 		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void custom_tods_dialog();

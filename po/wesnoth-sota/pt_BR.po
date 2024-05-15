@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-21 03:01 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
 "PO-Revision-Date: 2022-09-28 10:13-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: \n"
@@ -770,7 +770,7 @@ msgstr ""
 msgid "Garcyn"
 msgstr "Garcyn"
 
-#. [unit]: type=Outlaw, id=Mossa
+#. [unit]: type=Outlaw, gender=female, id=Mossa
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/03_Bandits.cfg:48
 msgid "Mossa"
 msgstr "Mossa"
@@ -1189,7 +1189,7 @@ msgstr "Guarda"
 msgid "Gweddyn"
 msgstr "Gweddyn"
 
-#. [unit]: type=Mage, id=Bremen
+#. [unit]: type=Mage, gender=male, id=Bremen
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:75
 msgid "Bremen"
 msgstr "Bremen"
@@ -1771,7 +1771,7 @@ msgstr "Capture todas as aldeias"
 msgid "Wynran"
 msgstr "Wynran"
 
-#. [unit]: type=Mage, id=Raydah
+#. [unit]: type=Mage, id=Raydah, gender=female
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:105
 msgid "Raydah"
 msgstr "Raydah"
@@ -3165,12 +3165,12 @@ msgid "Crelanu"
 msgstr "Crelanu"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:69
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:73
 msgid "Defeat Crelanu"
 msgstr "Derrote Crelanu"
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:81
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:85
 msgid ""
 "Ras-Tabahn is slowed and will lose four hitpoints every turn. He will die if "
 "he reaches zero."
@@ -3179,7 +3179,7 @@ msgstr ""
 "morrerá que chegar a zero."
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:84
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:88
 msgid ""
 "Moving any unit onto a bottle of holy water will remove the bottle. An "
 "undead unit will be destroyed."
@@ -3188,12 +3188,12 @@ msgstr ""
 "unidade morta-viva será destruída."
 
 #. [unit]: type=White Mage, id=Ginmera
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:220
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:224
 msgid "Ginmera"
 msgstr "Ginmera"
 
 #. [message]: speaker=Ginmera
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:253
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:257
 msgid ""
 "It seems that the invaders can raise undead soldiers, so I placed some holy "
 "water around the castle for protection."
@@ -3202,22 +3202,22 @@ msgstr ""
 "coloquei água benta ao redor do castelo por proteção."
 
 #. [unit]: type=White Mage, id=Rinconan
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:258
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:262
 msgid "Rinconan"
 msgstr "Rinconan"
 
 #. [message]: speaker=Ginmera
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:270
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:274
 msgid "Rinconan and I will stay here to guard you."
 msgstr "Rinconan e eu ficaremos aqui para te proteger."
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:274
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:278
 msgid "Yes. Thank you Ginmera."
 msgstr "Sim. Obrigado Ginmera."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:280
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:284
 msgid ""
 "Moving a unit onto a bottle of holy water will remove the bottle. A living "
 "unit can do this safely, but any undead unit will be destroyed."
@@ -3227,17 +3227,17 @@ msgstr ""
 "viva será destruída."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:332
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:336
 msgid "Crelanu! (<i>Cough, cough</i>) We have come... for your book."
 msgstr "Crelanu! (<i>Tosse, tosse</i>) Nós viemos... por causa do seu livro."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:336
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:340
 msgid "We need to borrow it."
 msgstr "Precisamos dele emprestado."
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:340
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:344
 msgid ""
 "Yes, I knew people like you would be coming, but the book is out of reach "
 "now — for all of us. I have given it to the elves. Only they know where it "
@@ -3247,12 +3247,12 @@ msgstr ""
 "Eu dei ele aos elfos. Só eles sabem onde ele está."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:344
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:348
 msgid "Why would you do such a thing?"
 msgstr "Por que você faria uma coisa dessas?"
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:348
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:352
 msgid ""
 "So that one like you would not be tempted to do what you intend. Oh, yes. I "
 "know well what you seek."
@@ -3261,22 +3261,22 @@ msgstr ""
 "Ah, sim. Eu sei bem o que você busca."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:352
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:356
 msgid "Then you can tell us what we want to know."
 msgstr "Então você pode nos dizer o que nós queremos saber."
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:356
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:360
 msgid "I shall not."
 msgstr "Não direi."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:360
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:364
 msgid "We shall see."
 msgstr "É o que veremos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:365
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:369
 msgid ""
 "Ras-Tabahn is sick. He is slowed, and will lose four hitpoints every turn. "
 "He will die if he reaches zero."
@@ -3285,12 +3285,12 @@ msgstr ""
 "turno. Ele morrerá se chegar a zero pontos de vida."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:393
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:397
 msgid "Now, you will tell us the secret of immortality or die!"
 msgstr "Agora, conte o segredo da imortalidade ou morra!"
 
 #. [message]: speaker=Crelanu
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:397
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:401
 msgid ""
 "There <i>is no secret</i>, you fools! Magic cannot stop aging. You cannot "
 "live forever. It is the way of nature, and the greatest thing we have in "
@@ -3303,7 +3303,7 @@ msgstr ""
 "<i>precisa</i> morrer, e a sua alma partir. Eu não tentaria isso por nada."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:401
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:405
 msgid ""
 "You are the fool, for you have, indeed, told us all we required. For that, I "
 "will spare you to live a few more lonely years with your cowardice."
@@ -3312,12 +3312,12 @@ msgstr ""
 "pouparei você para que viva mais alguns anos de solidão com a sua covardia."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:414
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:418
 msgid "I don’t understand. What did Crelanu tell us?"
 msgstr "Eu não entendo. O que Crelanu nos disse?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:418
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:422
 msgid ""
 "I will explain. Let us get you somewhere safe first. We’ll go into the cave. "
 "Come with me."
@@ -4037,7 +4037,7 @@ msgstr "Veja! Os anões deram a volta e estão na nossa frente."
 msgid "That’s why getting through Knalga was so easy."
 msgstr "Por isso que foi fácil passar por Knalga."
 
-#. [unit]: type=Great Mage, id=Carmyna
+#. [unit]: type=Great Mage, gender=female, id=Carmyna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:696
 msgid "Carmyna"
 msgstr "Carmyna"
@@ -4263,12 +4263,12 @@ msgstr ""
 "exalando autoridade mesmo que todas suas outras memórias tenham sido "
 "esquecidas."
 
-#. [unit_type]: id=Delinquent, race=human
+#. [unit_type]: id=Delinquent, gender=female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:4
 msgid "Delinquent"
 msgstr "Delinquente"
 
-#. [unit_type]: id=Delinquent, race=human
+#. [unit_type]: id=Delinquent, gender=female, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:18
 msgid ""
 "Some girls shun the typical life planned for them by society, and fall in "

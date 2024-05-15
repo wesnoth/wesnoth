@@ -504,7 +504,7 @@ int font_scaled(int size)
 
 int keepalive_timeout()
 {
-	return prefs["keepalive_timeout"].to_int(10);
+	return prefs["keepalive_timeout"].to_int(20);
 }
 
 void keepalive_timeout(int seconds)
@@ -522,14 +522,14 @@ void set_idle_anim(const bool ison)
 	prefs["idle_anim"] = ison;
 }
 
-double idle_anim_rate()
+int idle_anim_rate()
 {
-	return prefs["idle_anim_rate"].to_double(1.0);
+	return prefs["idle_anim_rate"];
 }
 
-void set_idle_anim_rate(const int rate)
+void set_idle_anim_rate(int rate)
 {
-	prefs["idle_anim_rate"] = std::pow(2.0, -rate / 10.0);
+	prefs["idle_anim_rate"] = rate;
 }
 
 std::string language()

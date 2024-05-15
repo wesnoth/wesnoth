@@ -14,9 +14,7 @@
 
 #include "gui/dialogs/multiplayer/match_history.hpp"
 
-#include "desktop/open.hpp"
 #include "formula/string_utils.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -140,6 +138,7 @@ bool mp_match_history::update_display()
 
 	listbox* tab_bar = find_widget<listbox>(get_window(), "tab_bar", false, true);
 	connect_signal_notify_modified(*tab_bar, std::bind(&mp_match_history::tab_switch_callback, this));
+	tab_bar->select_row(0);
 
 	int i = 0;
 	for(const config& game : history.mandatory_child("game_history_results").child_range("game_history_result")) {

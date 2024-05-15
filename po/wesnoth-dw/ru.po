@@ -1,13 +1,13 @@
 # translation of wesnoth-dw (ru.po) to Russian
 # O_o <mm-94@mail.ru>, 2010.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014-2016.
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-dw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-10-28 14:02 UTC\n"
-"PO-Revision-Date: 2022-08-28 19:35+0300\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-04-13 23:08+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -1176,19 +1176,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
-#, fuzzy
-#| msgid ""
-#| "You can choose when the slaves come out of their villages and attack "
-#| "their captors. When you are ready, right-click anywhere and select "
-#| "'Inspire the slaves to revolt'."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
 "captors. When you are ready, right-click anywhere and select ‘Inspire the "
 "slaves to revolt’."
 msgstr ""
-"Решите, когда рабы выйдут из своих укрытий и нападут на своих захватчиков. "
-"Как только Вы будете готовы, кликните правой кнопкой мыши в любом месте и "
-"выберите «начать бунт»."
+"Вы можете решить, когда рабы выйдут из своих укрытий и нападут на своих "
+"поработителей. Как только Вы будете готовы, кликните правой кнопкой мыши в "
+"любом месте и выберите «начать бунт»."
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:449
@@ -2557,7 +2552,7 @@ msgstr ""
 "друзьями поможем тебе в твоей битве, Кай Креллис. Командуй нами Кай, мы "
 "ничего не просим взамен."
 
-#. [unit]: type=Footpad, id=Lyllan
+#. [unit]: type=Footpad, gender=female, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
 msgstr "Лиллан"
@@ -2568,7 +2563,7 @@ msgid "Trudd"
 msgstr "Трудд"
 
 #. [unit]: type=Thug, id=Dorcyn
-#. [unit]: type=Footpad, id=Dorcyn
+#. [unit]: type=Footpad, gender=male, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"

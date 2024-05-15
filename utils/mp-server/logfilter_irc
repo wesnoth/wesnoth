@@ -1,9 +1,11 @@
-#!/bin/sed -f
-s/\t/ /g
+#!/bin/sed -Ef
+# 20221025 05:35:29 info server: 2601:243:4101:5740:4c58:4587:3b8e:d151   <nick> message
+s/	/ /g
 # skip over irregular lines
-/^[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [a-zA-Z]\+ [a-zA-Z]\+:/!d
+/^[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [[:alpha:]]+ [[:alpha:]]+:/!d
 # remove the timestamp and the IP
-s/^\(PREV: \|OLD: \|\)[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [a-zA-Z]\+ [a-zA-Z]\+: [0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+ /\1/
+#s/^\(PREV: \|OLD: \|\)[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [a-zA-Z]\+ [a-zA-Z]\+: [0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+ /\1/
+s/^(PREV: |OLD: |)[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] [[:alpha:]]+ [[:alpha:]]+: [[:xdigit:].:]+ +/\1/
 s/ info server://
 s/""/"/g
-/^<[a-zA-Z0-9_-]\+ .*>$\|^<[a-zA-Z0-9_-]\+>\|^[0-9]\+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] \(<server>\|Statistics:\) \|^[a-zA-Z0-9_-]\+ \(\(started\( reloaded\|\)\|advanced\|ended\) game: \|ended game: .* and disconnected.\)/!d
+/^<[[:alnum:]_-]+ .*>$|^<[[:alnum:]_-]+>|^[0-9]+ [0-2][0-9]:[0-5][0-9]:[0-5][0-9] (<server>|Statistics:) |^[[:alnum:]_-]+ ((started( reloaded|)|advanced|ended) game: |ended game: .* and disconnected\.)/!d

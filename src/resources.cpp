@@ -14,7 +14,6 @@
 */
 
 #include "resources.hpp"
-#include <cstddef>
 
 namespace resources
 {

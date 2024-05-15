@@ -21,19 +21,16 @@
  */
 
 #include "log.hpp"
-#include <fcntl.h>
 #include "filesystem.hpp"
 #include "mt_rng.hpp"
 
 #include <boost/algorithm/string.hpp>
-#include <boost/iostreams/stream.hpp>
 
 #include <map>
 #include <ctime>
 #include <mutex>
 #include <iostream>
 #include <iomanip>
-#include <sys/stat.h>
 
 #ifdef _WIN32
 #include <io.h>
@@ -282,7 +279,7 @@ std::optional<bool> log_dir_writable()
 
 std::string get_log_file_path()
 {
-	return output_file_path_+lg::log_file_suffix;
+	return output_file_path_.empty() ? "" : output_file_path_+lg::log_file_suffix;
 }
 
 redirect_output_setter::redirect_output_setter(std::ostream& stream)

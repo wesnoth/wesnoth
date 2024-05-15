@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2022-03-03 03:10+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
@@ -259,13 +259,13 @@ msgstr "Принц Халдрик"
 msgid "Haldric"
 msgstr "Халдрик"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:44
 msgid "Wesfolk Leader"
 msgstr "Водач на Западния народ"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:59
 msgid "Wesfolk"
@@ -728,7 +728,7 @@ msgstr "Е, как да те наричаме?"
 msgid "The Lady Outlaw will do."
 msgstr "\"Разбойницата\" е достатъчно."
 
-#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type, gender=female
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
@@ -1139,20 +1139,20 @@ msgid "Cleon"
 msgstr "Клион"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Lollyra
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:61
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:114
 msgid "Cultists"
 msgstr "Култисти"
 
-#. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:68
 msgid "Lollyra"
 msgstr "Лолира"
 
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:94
 msgid "Clurka"
 msgstr "Клърка"
@@ -2356,7 +2356,7 @@ msgstr ""
 msgid "Bah, have it your way!"
 msgstr "Пфу, прави каквото искаш!"
 
-#. [unit]: id=Lady Jessene, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:264
 msgid "Lady Jessene"
 msgstr "Лейди Жесин"
@@ -7283,12 +7283,12 @@ msgstr ""
 msgid "shadow wave"
 msgstr ""
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
 msgstr "Благороден командир"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
@@ -7303,12 +7303,12 @@ msgstr ""
 "служат най-добре с меч, но са въоръжени също с лък и при нужда го използват. "
 "Ако командирът падне, битката е изгубена."
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
 msgstr "Благороден боец"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
@@ -7319,12 +7319,12 @@ msgstr ""
 "Въпреки това те имат заложби да се превърнат във великолепни водачи някой "
 "ден."
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
 msgstr "Благороден лорд"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -7337,12 +7337,12 @@ msgstr ""
 "лордовете притежават водаческо умение, благодарение на което единиците от по-"
 "ниско ниво, намиращи се на съседно поле се бият по-добре."
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
 msgstr "Благороден младеж"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
@@ -7356,12 +7356,12 @@ msgstr ""
 msgid "training sword"
 msgstr "тренировъчен меч"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
 msgid "female^Vampire Lady"
 msgstr "Вампирска лейди"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -7391,12 +7391,12 @@ msgstr ""
 "поданици. Те могат да наставляват единиците от 1-во и 2-ро ниво, като "
 "повишават тяхната бойна ефективност."
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
 msgid "female^Wesfolk Lady"
 msgstr "Лейди от Запада"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -7411,12 +7411,12 @@ msgstr ""
 "във вените си, а на бойното поле е натрупала ценен опит, който постоянно "
 "развива, заедно с таланта си за водач."
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
 msgid "female^Wesfolk Leader"
 msgstr "Водач от Запада"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:22
 #, fuzzy
 #| msgid ""
@@ -7439,12 +7439,12 @@ msgstr ""
 "във вените си, а на бойното поле е натрупала ценен опит, който постоянно "
 "развива, заедно с таланта си за водач."
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
 msgstr "Изгнанник от Запада"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:21
 #, fuzzy
 #| msgid ""

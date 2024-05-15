@@ -22,16 +22,12 @@
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
-#include "lexical_cast.hpp"
 #include "picture.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "sound.hpp"
-#include "utils/general.hpp"
 #include "video.hpp"
-#include "wml_separators.hpp"
 
-#include <numeric>
 
 namespace {
 	/**

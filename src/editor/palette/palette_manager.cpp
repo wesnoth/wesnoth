@@ -18,7 +18,6 @@
 #include "editor/palette/palette_manager.hpp"
 #include "widgets/widget.hpp"
 
-#include "tooltips.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 namespace editor {

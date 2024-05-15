@@ -27,7 +27,8 @@ dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
     portmap = (
-        ("15017", "1.17.x"),
+        ("15019", "1.19.x"),
+        ("15018", "1.18.x"),
         ("15016", "1.16.x"),
         ("15014", "1.14.x"),
         ("15004", "trunk"),
@@ -35,6 +36,7 @@ class CampaignClient:
 
     # Deactivated servers.
     deactivated = (
+        ("15017", "1.17.x"),
         ("15015", "1.15.x"),
         ("15008", "1.13.x"),
         ("15007", "1.12.x"),

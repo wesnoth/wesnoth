@@ -22,7 +22,6 @@
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
 
-#include <stdexcept>
 #include <clocale>
 
 #ifdef _WIN32
@@ -139,6 +138,11 @@ language_list get_languages(bool all)
 		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
 
 	return result;
+}
+
+int get_min_translation_percent()
+{
+	return min_translation_percent;
 }
 
 void set_min_translation_percent(int percent) {

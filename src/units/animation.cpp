@@ -16,7 +16,6 @@
 #include "units/animation.hpp"
 
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"

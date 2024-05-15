@@ -17,8 +17,6 @@
 
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 

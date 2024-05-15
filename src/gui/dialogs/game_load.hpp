@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "gettext.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -26,26 +25,10 @@
 
 namespace gui2
 {
-class text_box_base;
 
 namespace dialogs
 {
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to select and load a savegame file.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * txtFilter         | text         |yes      |The filter for the listbox items.
- * savegame_list     | @ref listbox |yes      |List of savegames.
- * filename          | control      |yes      |Name of the savegame.
- * date              | control      |no       |Date the savegame was created.
- * preview_pane      | widget       |yes      |Container widget or grid that contains the items for a preview. The visible status of this container depends on whether or not something is selected.
- * minimap           | @ref minimap |yes      |Minimap of the selected savegame.
- * imgLeader         | @ref image   |yes      |The image of the leader in the selected savegame.
- * lblScenario       | @ref label   |yes      |The name of the scenario of the selected savegame.
- * lblSummary        | @ref label   |yes      |Summary of the selected savegame.
- */
+
 class game_load : public modal_dialog
 {
 public:

@@ -26,10 +26,8 @@
 #include "gui/core/log.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
-#include "video.hpp"
 #include "wml_exception.hpp"
 #include <functional>
 

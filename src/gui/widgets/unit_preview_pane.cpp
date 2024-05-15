@@ -23,8 +23,6 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
@@ -41,7 +39,6 @@
 #include "team.hpp"
 #include "terrain/movement.hpp"
 #include "terrain/type_data.hpp"
-#include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
 #include "units/unit.hpp"
@@ -608,10 +605,10 @@ unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", _("Missing required background for unit preview pane")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", _("Missing required foreground for unit preview pane")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "foreground")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("Missing required grid for unit preview pane"));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

@@ -641,9 +641,10 @@ const listbox::order_pair listbox::get_active_sorting_option()
 {
 	for(unsigned int column = 0; column < orders_.size(); ++column) {
 		selectable_item* w = orders_[column].first;
-		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		if(!w) continue;
 
-		if(w && sort != sort_order::type::none) {
+		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		if(sort != sort_order::type::none) {
 			return std::pair(column, sort);
 		}
 	}
@@ -704,10 +705,10 @@ listbox_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for listbox")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for listbox")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_disabled")));
 
-	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined."));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("listbox_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

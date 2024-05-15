@@ -17,7 +17,6 @@
 
 #include "utils/name_generator.hpp"
 
-#include <list>
 #include <vector>
 #include <cstdint>
 

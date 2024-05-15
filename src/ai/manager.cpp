@@ -35,7 +35,6 @@
 #include "ai/configuration.hpp"            // for configuration
 #include "ai/contexts.hpp"                 // for readonly_context, etc
 #include "ai/default/contexts.hpp"  // for default_ai_context, etc
-#include "game_end_exceptions.hpp" // for ai_end_turn_exception
 #include "ai/game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
 #include "ai/lua/aspect_advancements.hpp"
@@ -46,7 +45,6 @@
 #include <cassert>                     // for assert
 #include <iterator>                     // for reverse_iterator, etc
 #include <map>                          // for _Rb_tree_iterator, etc
-#include <ostream>                      // for operator<<, basic_ostream, etc
 #include <set>                          // for set
 #include <stack>                        // for stack
 #include <utility>                      // for pair, make_pair

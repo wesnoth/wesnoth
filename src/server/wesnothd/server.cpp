@@ -28,7 +28,6 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/general.hpp"
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -50,13 +49,10 @@
 #include <algorithm>
 #include <cassert>
 #include <cerrno>
-#include <csignal>
 #include <cstdlib>
 #include <functional>
 #include <iostream>
-#include <iomanip>
 #include <map>
-#include <queue>
 #include <set>
 #include <sstream>
 #include <vector>
@@ -3053,7 +3049,7 @@ int main(int argc, char** argv)
 			keep_alive = true;
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-					  << " [-dvV] [-c path] [-m n] [-p port] [-t n]\n"
+					  << " [-dvV] [-c path] [-m n] [-p port]\n"
 					  << "  -c, --config <path>        Tells wesnothd where to find the config file to use.\n"
 					  << "  -d, --daemon               Runs wesnothd as a daemon.\n"
 					  << "  -h, --help                 Shows this usage message.\n"

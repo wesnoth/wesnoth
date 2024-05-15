@@ -16,7 +16,6 @@
 #include "theme.hpp"
 
 #include "desktop/battery_info.hpp"
-#include "display.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"

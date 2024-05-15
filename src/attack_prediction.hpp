@@ -17,7 +17,6 @@
 
 #include <vector>
 #include <array>
-#include <cstring>
 
 struct battle_context_unit_stats;
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2024-02-06 09:37+0100\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-04-03 12:22+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -65,8 +65,10 @@ msgid ""
 "sacrificing his own soul in the process.\n"
 "\n"
 msgstr ""
-"تتم مداهمة مدينة بارثين الواقعة على الحدود الشمالية سنويًا من قبل قبائل "
-"الأورك المجاورة. \n"
+"تتعرض مدينة بارثين الحدودية الشمالية سنويًا لمداهمة قبائل الأورك المجاورة. "
+"يسعى مالين كيشار، الساحر المنبوذ، إلى الدفاع عن موطنه والانتقام من الأورك "
+"بأي وسيلة ضرورية، حتى لو كان ذلك يعني التضحية بروحه في هذه العملية.\n"
+"\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:28
@@ -3117,7 +3119,7 @@ msgstr "في الداخل"
 msgid "Find Lady Karae"
 msgstr "ابحث عن السيدة كاراي"
 
-#. [unit]: type=Silver Mage, id=Lady Karae
+#. [unit]: type=Silver Mage, id=Lady Karae, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:177
 msgid "Lady Karae"
 msgstr "السيدة كاراي"
@@ -5346,7 +5348,7 @@ msgstr "قد يكون مرتبطًا بقوة الليتش! حاول حرقه."
 msgid "<small>(faking pain)</small> Aaargh!"
 msgstr "<small>(تألم مزيف)</small> آآآرغ!"
 
-#. [message]: role=unit
+#. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1187
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1215
 msgid "It’s not catching fire!"
@@ -5503,7 +5505,7 @@ msgstr ""
 msgid "A monolith of black stone, cold and brittle to the touch."
 msgstr "كتلة من الحجر الأسود باردة وهشة عند اللمس."
 
-#. [unit]: type=Cuttle Fish, id=Inky
+#. [unit]: type=Cuttle Fish, id=Inky, gender=female
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1399
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:558
 msgid "female^Inky"
@@ -6101,12 +6103,12 @@ msgstr ""
 "أوهام العظمة لديه، لم تعد بقاياه العظمية سوى عدد قليل من العناصر الزخرفية "
 "حول الخلفية المائية لقرية الحبار إلى الأبد."
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "الساحر المتدرب"
 
-#. [unit_type]: id=Apprentice Mage, race=human
+#. [unit_type]: id=Apprentice Mage, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:17
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
@@ -6125,12 +6127,12 @@ msgstr ""
 msgid "magic blast"
 msgstr "انفجار سحري"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "مستحضر أرواح متدرب"
 
-#. [unit_type]: id=Apprentice Necromancer, race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human, gender=male
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:16
 msgid ""
 "Under Darken Volk’s tutelage, Malin has become adept at wielding necromancy "
@@ -6161,12 +6163,12 @@ msgstr ""
 "يواصل استخدامه في القتال الالتحامي، ربما كتذكار أكثر من كونه سلاحًا فعالاً. "
 "ومع ذلك، فإن مهارته المتزايدة في السحر أكثر من كافية للتعويض."
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "بارونة حدود"
 
-#. [unit_type]: id=Frontier Baroness, race=human
+#. [unit_type]: id=Frontier Baroness, race=human, gender=female
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:23
 msgid ""
 "At Wesnoth’s frontiers, all able-bodied men and women must be able to defend "

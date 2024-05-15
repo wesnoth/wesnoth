@@ -17,7 +17,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "hotkey/hotkey_item.hpp"
 
-#include <SDL2/SDL_keycode.h>
 
 #include <string>
 

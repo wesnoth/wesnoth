@@ -19,21 +19,12 @@
  */
 
 #include "ai/composite/component.hpp"
-#include "ai/composite/engine.hpp"
 #include "ai/composite/property_handler.hpp"
 #include "config.hpp"
 #include "log.hpp"
-#include "units/unit.hpp"
 
-#include "ai/formula/ai.hpp"
 
 #include <boost/regex.hpp>
-
-namespace pathfind {
-
-struct pathfind;
-
-} //of namespace pathfind
 
 namespace ai {
 

@@ -24,7 +24,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 
 #include "log.hpp"
 

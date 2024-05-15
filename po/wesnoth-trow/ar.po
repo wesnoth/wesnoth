@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2024-02-03 02:08+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -249,13 +249,13 @@ msgstr "الأمير هالدريك"
 msgid "Haldric"
 msgstr "هالدريك"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:44
 msgid "Wesfolk Leader"
 msgstr "زعيم قوغربي"
 
-#. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
+#. [side]: type=Wesfolk Outcast, gender=female, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:59
 msgid "Wesfolk"
@@ -693,7 +693,7 @@ msgstr "فبماذا سأدعوك إذن؟"
 msgid "The Lady Outlaw will do."
 msgstr "الآنسة الخارجة عن القانون ستفعل."
 
-#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type
+#. [unit]: id=Lady Outlaw, type=$wesfolk_leader_store.type, gender=female
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:324
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:476
@@ -1093,20 +1093,20 @@ msgid "Cleon"
 msgstr "كليون"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
-#. [side]: type=Dark Sorcerer, id=Lollyra
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:61
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:114
 msgid "Cultists"
 msgstr "الطائفين"
 
-#. [side]: type=Dark Sorcerer, id=Lollyra
+#. [side]: type=Dark Sorcerer, id=Lollyra, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:68
 msgid "Lollyra"
 msgstr "لوليرا"
 
-#. [side]: type=Dark Sorcerer, id=Clurka
+#. [side]: type=Dark Sorcerer, id=Clurka, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:94
 msgid "Clurka"
 msgstr "كلوركا"
@@ -2240,7 +2240,7 @@ msgstr ""
 msgid "Bah, have it your way!"
 msgstr "باه، افعل ما تريد!"
 
-#. [unit]: id=Lady Jessene, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:264
 msgid "Lady Jessene"
 msgstr "الآنسة جيسين"
@@ -6871,12 +6871,12 @@ msgstr "عاصفة البرد"
 msgid "shadow wave"
 msgstr "موجة الظل"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
 msgstr "القائد النبيل"
 
-#. [unit_type]: id=Noble Commander, race=human
+#. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:20
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
@@ -6891,12 +6891,12 @@ msgstr ""
 "السيف، على الرغم من أنهم يحملون أيضًا قوسًا لاستخدامه عند الضرورة. إذا ضاع "
 "القائد، فكذلك المعركة."
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:4
 msgid "Noble Fighter"
 msgstr "المقاتل النبيل"
 
-#. [unit_type]: id=Noble Fighter, race=human
+#. [unit_type]: id=Noble Fighter, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:18
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
@@ -6906,12 +6906,12 @@ msgstr ""
 "يقاتل المقاتلون الشباب والجريئون بالسيف ويكونون عرضة لهجمات بعيدة المدى من "
 "الأعداء. ومع ذلك، لديهم القدرة على أن يصبحوا قادة عظماء في يوم من الأيام."
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
 msgid "Noble Lord"
 msgstr "اللورد النبيل"
 
-#. [unit_type]: id=Noble Lord, race=human
+#. [unit_type]: id=Noble Lord, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:21
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -6925,12 +6925,12 @@ msgstr ""
 "استخدام القوس. مثل القادة، يمتلك اللوردات مهارات قيادية، ويحسنون القدرة "
 "القتالية لجميع الوحدات المجاورة ذات المستوى الأدنى."
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
 msgid "Noble Youth"
 msgstr "الشباب النبيل"
 
-#. [unit_type]: id=Noble Youth, race=human
+#. [unit_type]: id=Noble Youth, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:18
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
@@ -6944,12 +6944,12 @@ msgstr ""
 msgid "training sword"
 msgstr "سيف التدريب"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
 msgid "female^Vampire Lady"
 msgstr "آنسة مصاصة دماء"
 
-#. [unit_type]: id=Vampire Lady, race=undead
+#. [unit_type]: id=Vampire Lady, gender=female, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -6976,12 +6976,12 @@ msgstr ""
 "بصفتهم قادة الممالك البشرية، فإن الملوك مسؤولون عن حكم رعاياهم وحمايتهم. "
 "يمكن للملوك تنسيق هجمات وحدات المستوى 1 و 2، وبالتالي زيادة كفاءتهم القتالية."
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
 msgid "female^Wesfolk Lady"
 msgstr "آنسة قوغربية"
 
-#. [unit_type]: id=Wesfolk Lady, race=human
+#. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -6995,12 +6995,12 @@ msgstr ""
 "تزال هذه المنبوذة تحفظ نبلها في عروقها، وقد اكتسبت في ساحة المعركة خبرة "
 "قيمة، لا تزال خبرتها تتزايد مع مرور الوقت، وكذلك قيادتها الغريزية."
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
 msgid "female^Wesfolk Leader"
 msgstr "زعيمة قوغربية"
 
-#. [unit_type]: id=Wesfolk Leader, race=human
+#. [unit_type]: id=Wesfolk Leader, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:22
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
@@ -7014,12 +7014,12 @@ msgstr ""
 "تزال هذه المنبوذة تحفظ نبلها في عروقها، وقد اكتسبت في ساحة المعركة خبرة "
 "قيمة، لا تزال خبرتها تتزايد مع مرور الوقت، وكذلك قيادتها الغريزية."
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
 msgstr "منبوذة قوغربية"
 
-#. [unit_type]: id=Wesfolk Outcast, race=human
+#. [unit_type]: id=Wesfolk Outcast, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:21
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "

@@ -24,13 +24,11 @@
 
 #include "config.hpp"
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp" // for resources::gamedata conversion variable_set
 #include "game_version.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
@@ -38,7 +36,6 @@
 #include "team.hpp" //for team
 #include "units/unit.hpp" // for unit
 #include "units/udisplay.hpp" // for unit_display
-#include "variable.hpp" // for vconfig
 #include "deprecation.hpp"
 
 static lg::log_domain log_engine("engine");

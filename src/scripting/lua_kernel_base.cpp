@@ -52,14 +52,11 @@
 #include "utils/scope_exit.hpp"
 
 #include <cstring>
-#include <exception>
-#include <new>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <numeric>
 
-#include "lua/wrapper_lauxlib.h"
 #include "lua/wrapper_lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");

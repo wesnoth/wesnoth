@@ -16,7 +16,6 @@
 #include "scripting/lua_gui2.hpp"
 
 #include "gui/core/gui_definition.hpp"
-#include "gui/core/window_builder.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
@@ -25,7 +24,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
-#include "gui/core/gui_definition.hpp"
 #include "scripting/lua_widget_methods.hpp" //intf_show_dialog
 
 #include "config.hpp"
@@ -33,11 +31,8 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_widget_methods.hpp"
 #include "scripting/push_check.hpp"
-#include "serialization/string_utils.hpp"
 #include "help/help.hpp"
-#include "game_config_manager.hpp"
 #include "tstring.hpp"
 #include "game_data.hpp"
 #include "game_state.hpp"
@@ -46,11 +41,8 @@
 #include <functional>
 #include <optional>
 
-#include <map>
-#include <utility>
 #include <vector>
 
-#include "lua/wrapper_lauxlib.h"        // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -246,9 +238,9 @@ int show_lua_console(lua_State* /*L*/, lua_kernel_base* lk)
 	return 0;
 }
 
-int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state)
+int show_gamestate_inspector(const std::string& name, const game_data& data, const game_state& state)
 {
-	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
+	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, name);
 	return 0;
 }
 

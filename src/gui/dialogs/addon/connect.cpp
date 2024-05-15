@@ -20,7 +20,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "help/help.hpp"
 

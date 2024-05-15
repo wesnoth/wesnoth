@@ -21,14 +21,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to confirm deleting a savegame file.
- * Key               |Type              |Mandatory|Description
- * ------------------|------------------|---------|-----------
- * do_not_show_again | boolean_selector |yes      |A checkbox to not show this dialog again.
- */
 class mp_host_game_prompt : public modal_dialog
 {
 public:

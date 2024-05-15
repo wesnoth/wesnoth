@@ -25,11 +25,9 @@
 #include "side_controller.hpp"
 #include "side_proxy_controller.hpp"
 #include "team_shared_vision.hpp"
-#include "units/ptr.hpp"
 
 #include <set>
 
-#include <cstdint>
 #include <boost/dynamic_bitset.hpp>
 
 class game_data;
