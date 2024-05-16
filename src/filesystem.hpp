@@ -190,7 +190,9 @@ std::vector<other_version_dir> find_other_version_saves_dirs();
 std::string get_cwd();
 bool set_cwd(const std::string& dir);
 
+std::string get_exe_path();
 std::string get_exe_dir();
+std::string get_wesnothd_name();
 
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname, const bool keep_pbl = false);

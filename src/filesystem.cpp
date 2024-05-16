@@ -1033,7 +1033,7 @@ bool set_cwd(const std::string& dir)
 	return true;
 }
 
-std::string get_exe_dir()
+std::string get_exe_path()
 {
 #ifdef _WIN32
 	wchar_t process_path[MAX_PATH];
@@ -1042,11 +1042,11 @@ std::string get_exe_dir()
 	GetModuleFileNameW(nullptr, process_path, MAX_PATH);
 
 	if(GetLastError() != ERROR_SUCCESS) {
-		return get_cwd();
+		return get_cwd() + "/wesnoth";
 	}
 
 	bfs::path exe(process_path);
-	return exe.parent_path().string();
+	return exe.string();
 #else
 	// first check /proc
 	if(bfs::exists("/proc/")) {
@@ -1054,7 +1054,7 @@ std::string get_exe_dir()
 		error_code ec;
 		bfs::path exe = bfs::read_symlink(self_exe, ec);
 		if(!ec) {
-			return exe.parent_path().string();
+			return exe.string();
 		}
 	}
 
@@ -1064,19 +1064,38 @@ std::string get_exe_dir()
 	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
 	bfs::path search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
-		return search.parent_path().string();
+		return search.string();
 	}
 
 	// versionless
 	exe = filesystem::get_program_invocation("wesnoth");
 	search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
-		return search.parent_path().string();
+		return search.string();
 	}
 
 	// return the current working directory
-	return get_cwd();
+	return get_cwd() + "/wesnoth";
 #endif
+}
+
+std::string get_exe_dir()
+{
+	bfs::path path(get_exe_path());
+	return path.parent_path().string();
+}
+
+std::string get_wesnothd_name()
+{
+	std::string exe_dir = get_exe_dir();
+	std::string exe_name = base_name(get_exe_path());
+	// macOS doesn't call the wesnoth client executable "wesnoth"
+	// otherwise, add any suffix after the "wesnoth" part of the executable name to wesnothd's name
+	std::string wesnothd = exe_dir + "/wesnothd" + exe_name.substr(7);
+	if(!file_exists(wesnothd)) {
+		return exe_dir + "/" + get_program_invocation("wesnothd");
+	}
+	return wesnothd;
 }
 
 bool make_directory(const std::string& dirname)
@@ -1751,16 +1770,11 @@ std::string get_independent_binary_file_path(const std::string& type, const std:
 
 std::string get_program_invocation(const std::string& program_name)
 {
-	const std::string real_program_name(program_name
-#ifdef DEBUG
-										+ "-debug"
-#endif
 #ifdef _WIN32
-										+ ".exe"
+	return program_name + ".exe";
+#else
+	return program_name;
 #endif
-	);
-
-	return real_program_name;
 }
 
 std::string sanitize_path(const std::string& path)
