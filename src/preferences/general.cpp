@@ -240,6 +240,8 @@ config* get_prefs(){
 void load_base_prefs() {
 	try{
 #ifdef DEFAULT_PREFS_PATH
+		// NOTE: the system preferences file is only ever relevant for the first time wesnoth starts
+		//       any default values will subsequently be written to the normal preferences file, which takes precedence over any values in the system preferences file
 		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
 		read(prefs, *stream);
 
