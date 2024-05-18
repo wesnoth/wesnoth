@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2024-03-15 16:31+0100\n"
+"PO-Revision-Date: 2024-05-12 17:56+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr "Tekoäly (RCA)"
+msgstr "Oletustekoäly (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
@@ -76,7 +76,7 @@ msgstr "Melko syvää vettä"
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:46
 msgid "Tropical Deep Water"
-msgstr "syvää vettä tropiikissa"
+msgstr "syvää troppista vettä"
 
 #. [terrain_type]: id=gray_tropical_water
 #. [terrain_type]: id=medium_shallow_water
@@ -100,7 +100,7 @@ msgstr "melko matalaa vettä"
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:79
 msgid "Tropical Shallow Water"
-msgstr "matalaa vettä tropiikissa"
+msgstr "matalaa troppista vettä"
 
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:89 data/core/terrain.cfg:90
@@ -118,10 +118,10 @@ msgid ""
 "the unit on it."
 msgstr ""
 "Kun joki sattuu olemaan erityisen matalaa, sen ylittäminen on helppoa "
-"maayksiköille. Lisäksi uimiseen sopeutuneet olennot liikkuvat parhaiten jopa "
-"tällaisilla jokialueilla. Pelimekaniikan kannalta kahluupaikka luetaan joko "
-"niityksi tai matalana vetenä valiten sen, joka antaa parhaimman puolustus- "
-"ja liikkumisbonuksen siinä olevalle yksikölle."
+"maayksiköille. Lisäksi uimiseen sopeutuneet olennot liikkuvat täysin jopa "
+"tällaisilla jokialueilla. Pelillisesti kahluupaikka on joko ruohomaata tai "
+"matalaa vettä, ja se, joka antaa siinä olevalle yksikölle parhaimman "
+"puolustus- ja liikkumisbonuksen, valitaan."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -200,7 +200,7 @@ msgstr "kuivaa ruohoa"
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:211
 msgid "Leaf Litter"
-msgstr "pudonneita lehtiä"
+msgstr "lehtikarikkoa"
 
 #. [terrain_type]: id=dirt_dark
 #. [terrain_type]: id=dirt
@@ -218,7 +218,7 @@ msgstr "mustaa mutaa"
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:233
 msgid "Regular Dirt"
-msgstr "maata"
+msgstr "perusmutaa"
 
 #. [terrain_type]: id=dirt_dry
 #: data/core/terrain.cfg:243
@@ -251,9 +251,8 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
-"<italic>text='Tiet'</italic> ovat useiden matkustajien muodostamia "
-"tallattuja maapolkuja. Pelin näkökulmasta tiet käyttäytyvät samalla tavalla "
-"kuin tasamaa."
+"<italic>text='Tiet'</italic> ovat monien matkustajien muodostamia tallattuja "
+"maapolkuja. Pelin näkökulmasta tiet toimivat samalla tavalla kuin tasamaa."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:264
@@ -328,10 +327,10 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"<italic>text='Hiekan'</italic> epävakaus tekee liikkumisesta vaikeata "
-"useimmille yksiköille, ja jättää heidät avoimiksi hyökkäyksille. Vastaavasti "
-"leveät jalat tai matelijalajien käärmemäiset vartalot tekevät hiekassa "
-"liikkumisesta huomattavasti helpompaa.\n"
+"<italic>text='Hiekan'</italic> epävakaus tekee liikkumisesta vaikeaa "
+"useimmille yksiköille ja altistaa heidät hyökkäyksille. Sen sijaan leveät "
+"jalat tai matelijalajien käärmemäiset vartalot tekevät hiekassa "
+"liikkumisesta paljon helpompaa.\n"
 "\n"
 "Useimmat yksiköt saavat 20–40% puolustuksen hiekassa."
 
@@ -346,8 +345,8 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
-"Tervetullut näky mille tahansa matkustajalle, keitaat antavat yksiköiden "
-"kylien lailla parannella, mutta eivät anna tuloja tai puolustusta."
+"Keitaat, tervetulleina näkyinä kenelle tahansa matkalaiselle, mahdollistavat "
+"yksiköiden parantua kuten kylässä, mutta eivät anna tuloja tai puolustusta."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:368
@@ -717,7 +716,7 @@ msgstr "luolamatto"
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:986
 msgid "Wooden Floor"
-msgstr "tavallinen puulattia"
+msgstr "puulattia"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:989
@@ -811,11 +810,11 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
-"Kääpiöiden tarinat kuvailevat erilaatuisista sienistä — jossa joidenkin "
-"lajien kohdalla rihmaisen lattian päällä kävelemisellä ei ole mitään "
-"suhdetta alla olevaan maahan, vaikka alla näkyvä lattia olisikin näkyvä. "
-"Tämän maaston puolustus- ja liikehaitat pohjautuvat puhtaasti yksikön "
-"suhteeseen <italic>text='Sieneen'</italic>."
+"Kääpiöiden tarinat kuvailevat erilaatuisista sienistä. Joidenkin kohdalla "
+"sienilattialla kävelemisellä ei ole mitään yhteyttä alla olevaan maahan, "
+"vaikka alapuoleinen lattia olisikin näkyvä. Tämän maaston puolustus- ja "
+"liikehaitat perustuvat puhtaasti yksikön suhteeseen <italic>text='Sieneen'</"
+"italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1083
@@ -855,6 +854,17 @@ msgid ""
 "\n"
 "Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
+"<italic>text='Louhikkoluola'</italic> on maastona muodostunut veden ja "
+"tuulen vaikutuksesta, joiden kuljettamat ainekset kuluttavat kiveä. Se "
+"muistuttaa karua maanalaista onkaloa, joka antaa suojaa, mutta on useimmille "
+"yksiköille vaikeakulkuinen. Vain luola-asujat, kuten kääpiöt ja peikot, "
+"pystyvät täysin kulkemaan moisilla pinnanmuodoilla.\n"
+"\n"
+"Useimmat yksiköt saavat 50% puolustuksen louhosluolissa, kun taas ratsuväki "
+"saa vain 40%. Kääpiöt, pienen kokonsa ansiosta, nauttivat 60% puolustuksesta "
+"louhikkoluolissa.\n"
+"\n"
+"Joskus luolat ovat <italic>text='valaistuja'</italic>."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1154
@@ -887,7 +897,7 @@ msgstr "ylitsepääsemätön rotko"
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1250
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Metsäiset jyrkänteet"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1259
@@ -916,7 +926,7 @@ msgstr "maakuilu"
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:1295
 msgid "Ethereal Abyss"
-msgstr "aineeton syöveri"
+msgstr "eteerinen syöveri"
 
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:1306
@@ -940,12 +950,12 @@ msgid ""
 "removes the attack bonus from chaotic units."
 msgstr ""
 "<italic>text='Laavan'</italic> päällä kävelemiseen liittyvät vaarat ovat "
-"aika itsestään selviä. Liikkumisen kohdalla laava vastaa "
+"aika itsestään selviä. Liikkumisen osalta laava vastaa "
 "<ref>dst='terrain_unwalkable' text='ylitsepääsemätöntä'</ref> maastoa, ja "
-"sen voivat ylittää huomattavan välimatkan päästä maastosta vain "
-"lentokykyiset yksiköt. Sula laava tuottaa myös runsaasti loistoa, valaisten "
-"yllä olevaa aluetta. Tämä täten antaa hyökkäysbonuksen lainkuuliaisille "
-"yksiköille ja poistaa hyökkäysbonuksen kaoottisilta yksiköiltä."
+"ainoastaan lentokykyiset yksiköt voivat sen ylittää huomattavan välimatkan "
+"päästä siitä. Sula laava myös tuottaa runsasta loistetta ja valaisee "
+"yläpuolista aluetta. Tämä antaa hyökkäysbonuksen lainkuuliaisille yksiköille "
+"ja poistaa hyökkäysbonuksen kaoottisilta yksiköiltä."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1332
@@ -1010,10 +1020,8 @@ msgstr "paksut aidat"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1434
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Hedges Wall"
-msgstr "luolan hirsiseinä"
+msgstr "Pensasseinä"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1132,7 +1140,7 @@ msgstr "puinen ovi"
 #: data/core/terrain.cfg:1665 data/core/terrain.cfg:1677
 #: data/core/terrain.cfg:1690
 msgid "Open Rusty Gate"
-msgstr "avonainen ruosteinen portti"
+msgstr "avoin ruosteinen portti"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
@@ -1233,7 +1241,7 @@ msgstr "telttakylä"
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1839
 msgid "Orcish Village"
-msgstr "örkkien kylä"
+msgstr "örkkikylä"
 
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1852
@@ -1268,7 +1276,7 @@ msgstr "rauniomökki"
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1934
 msgid "Human City"
-msgstr "ihmisten kaupunki"
+msgstr "ihmiskaupunki"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1947
@@ -1278,12 +1286,12 @@ msgstr "tuulimyllykylä"
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1960
 msgid "Snowy Human City"
-msgstr "luminen ihmisten kaupunki"
+msgstr "luminen ihmiskaupunki"
 
 #. [terrain_type]: id=city_village_ruin
 #: data/core/terrain.cfg:1973
 msgid "Ruined Human City"
-msgstr "ihmisten kaupungin rauniot"
+msgstr "ihmiskaupungin rauniot"
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1986
@@ -1353,7 +1361,7 @@ msgstr "iglu"
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:2159
 msgid "Swamp Village"
-msgstr "kylä suolla"
+msgstr "suokylä"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:2172
@@ -1373,16 +1381,15 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"<italic>text='Vedenalaiset kylät'</italic> ovat merenmiesten ja nagojen "
-"koteja. Siinä missä vedessä asuvat olennot ovat kotonaan täällä, "
-"maanelävillä on vaikeuksia liikkua ja puolustaa näitä kyliä. Toisaalta, "
-"kuten muutkin kylät, niiden palvelut ovat käytössä kaikille olennoilla, mikä "
-"antaa yksiköille mahdollisuuden hoitaa haavojaan. Mikä tahansa yksikkö "
-"kylässä paranee kahdeksan osumapistettä vuorossa tai parantuu "
-"myrkytyksestä.\n"
+"<italic>text='Vedenalaiset kylät'</italic> ovat merenväen ja nagojen koteja. "
+"Siinä missä vedenelävät ovat kotonaan täällä, maanelävillä on vaikeuksia "
+"liikkua ja puolustaa näitä kyliä. Toisaalta muiden kylien tavoin niiden "
+"palvelut ovat käytössä kaikille olennoille, minkä avulla yksiköt voivat "
+"hoitaa haavojaan. Jokainen yksikkö kylässä paranee kahdeksan elämäpistettä "
+"vuorossa tai parantuu myrkytyksestä.\n"
 "\n"
-"Merenmiehet ja nagat saavat 60% puolustuksen merenalaisista kylistä, kun "
-"taas maayksiköt saavat tyypillisesti vähäistä puolustusta."
+"Merenväki ja nagat saavat 60% puolustuksen merenalaisista kylistä, kun taas "
+"maayksiköt saavat tyypillisesti vähäistä puolustusta."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:2190
@@ -1439,7 +1446,7 @@ msgstr "linna"
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:2243
 msgid "Orcish Castle"
-msgstr "örkkien linna"
+msgstr "örkkilinna"
 
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:2255
@@ -1449,12 +1456,12 @@ msgstr "luminen örkkilinna"
 #. [terrain_type]: id=human_castle
 #: data/core/terrain.cfg:2267
 msgid "Human Castle"
-msgstr "ihmisten linna"
+msgstr "ihmislinna"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:2279
 msgid "Snowy Human Castle"
-msgstr "luminen ihmisten linna"
+msgstr "luminen ihmislinna"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:2290
@@ -1498,12 +1505,12 @@ msgstr "talvinen kääpiölinna"
 #: data/core/terrain.cfg:2373 data/core/terrain.cfg:2385
 #: data/core/terrain.cfg:2398 data/core/terrain.cfg:2423
 msgid "Ruined Castle"
-msgstr "linnan rauniot"
+msgstr "linnanrauniot"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:2374
 msgid "Ruined Human Castle"
-msgstr "ihmisten linnan rauniot"
+msgstr "ihmislinnan rauniot"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:2386
@@ -1554,7 +1561,7 @@ msgstr "leirin linnake"
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2489
 msgid "Ruined Encampment Keep"
-msgstr "leirin linnakeen raunio"
+msgstr "leirilinnakeen raunio"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2502
@@ -1564,7 +1571,7 @@ msgstr "korkea leirilinnake"
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:2515
 msgid "Snowy Encampment Keep"
-msgstr "lumisen leirilinnake"
+msgstr "luminen leirilinnake"
 
 #. [terrain_type]: id=orcish_keep
 #. [terrain_type]: id=snow_orcish_keep
@@ -1603,7 +1610,7 @@ msgstr "luminen örkkilinnake"
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:2554
 msgid "Human Castle Keep"
-msgstr "ihmisten linnan linnake"
+msgstr "ihmislinnan linnake"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:2567
@@ -1662,7 +1669,7 @@ msgstr "ihmisten linnanraunion linnake"
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:2684
 msgid "Sunken Human Castle Keep"
-msgstr "uponneen linnan linnake"
+msgstr "uponneen ihmislinnan linnake"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:2697
@@ -1677,7 +1684,7 @@ msgstr "aavikkolinnake"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:2723
 msgid "Ruined Desert Keep"
-msgstr "aavikkolinnakeen rauniot"
+msgstr "raunioitunut aavikkolinnake"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2736
@@ -1767,16 +1774,14 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 "Niille, jotka pystyvät rakentamaan sellaisen, kyky pystyttää "
-"<italic>text='silta'</italic> tarjoaa vapautuksen vesistöjen oikuista, "
-"joiden kahlaamot tulevat ja menevät vesirajan myötä. Sanomattakin selvää, "
-"että kuivien jalkojen ylellisyys nousee erityiseen arvoonsa vuoden kylminä "
-"kuukausina, joka ei ole nauramisen aihe jos sen menettää.\n"
+"<italic>text='silta'</italic> antaa vapautuksen vesistöjen oikuista, joiden "
+"kahlaamot tulevat ja menevät vesirajan myötä. Puhumattakaan kuivien jalkojen "
+"ylellisyydestä, minkä menetys ei ole naurun asia vuoden kylminä kuukausina.\n"
 "\n"
-"Niille, jotka kulkevat maitse tai meritse, silta tarjoaa parasta kummastakin "
-"maailmasta – pelin näkökulmasta se on joko ruohotasanko tai vettä, mikä "
-"sitten antaa paremmin liikkumista ja puolustusta heksassa olevalle "
-"yksikölle. Huomaa, että uiva yksikkö ja maastoyksikkö eivät voi olla samassa "
-"siltaheksassa samaan aikaan."
+"Maitse tai meritse kulkeville silta on parhautta kullekin. Pelillisesti se "
+"on joko ruohomaata tai vettä, kumpi sitten antaakin parhaimman liikkumis- ja "
+"puolustusbonuksen heksassa olevalle yksikölle. Huomaa, että uiva yksikkö ja "
+"maayksikkö eivät voi olla samassa siltaheksassa yhtä aikaa."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1837,22 +1842,22 @@ msgstr "lankkusilta"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "Ylämerkki"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "Ylämerkki 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "Alamerkki"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Alamerkki 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3182
@@ -1906,13 +1911,13 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"<italic>text='Sienilehdot'</italic> ovat laajoja maanalaisia jättisienien "
+"<italic>text='Sienilehdot'</italic> ovat laajoja, maanalaisten jättisienien "
 "metsiä, jotka kukoistavat kosteassa pimeydessä. Useimmilla yksiköillä on "
-"vaikeuksia suoriutua pienten sienien muodostamasta pehmeästä lattiasta, "
-"mutta niiden isommat varret antavat runsaasti suojaa. Ratsuväkiyksiköt tosin "
-"juuttuvat täysin liejuun ja eivät kykene liikkumaan taisteluissa. "
-"Epäkuolleilla yksiköillä on luontainen mieltymys lahoamiseen ja toimivat "
-"erityisen hyvin sienilehdoissa.\n"
+"vaikeuksia kulkea pikkusienien muodostamalla pehmeällä lattialla, mutta "
+"isommat varret antavat runsaasti suojaa. Ratsuyksiköt tosin jäävät täysin "
+"jumiin eivätkä pysty liikkumaan kunnolla taistelussa. Epäkuolleilla "
+"yksiköillä on luontainen mieltymys lahoamiseen, ja ne toimivat erityisen "
+"hyvin sienilehdoissa.\n"
 "\n"
 "Useimmat yksiköt saavat 50–60% puolustukseen sienilehdoissa, kun taas "
 "ratsuväet saavat vain 20%."
@@ -1937,21 +1942,20 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"<italic>text='Luola'</italic>maasto viittaa mihin tahansa maanalaiseen "
-"onkaloon, jossa on tarpeeksi tilaa yksikön läpi kulkemiseen.\n"
-"Useimmat yksiköt eivät tunne tätä maastoa, ja kulkevat ja puolustavat täten "
-"vaivalloisesti. Kääpiöille ja peikoille ovat luolissa kuin kotonaan, "
-"liikkuvat vapaasti, erityisesti kääpiöt, joiden pienen kokonsa myöten "
-"pystyvät liikkumaan monen esteen ohi, mikä jäisi monelta muulta lajilta "
-"kesken. Joskus luolat ovat myös <italic>text='valaistuja'</italic>.\n"
+"<italic>text='Luola'</italic> maastona edustaa mitä tahansa maanalaista "
+"onkaloa, jossa yksikölle riittää tilaa kulkea läpi.\n"
+"Useimmat yksiköt eivät tunne tätä maastoa, ja siten kulkevat ja puolustavat "
+"vaivalloisesti. Kääpiöt ja peikot, jotka ovat luolissa kuin kotonaan, "
+"liikkuvat suhteellisen helposti, etenkin kääpiöt, jotka pienen kokonsa "
+"ansiosta pystyvät liikkumaan monen esteen ohi, mihin muut rodut eivät pysty. "
+"Joskus luolat ovat <italic>text='valaistuja'</italic>.\n"
 "\n"
-"Joskus pieni osa maanalaiseen maailmaan pääsee valoa maanpäällisestä "
-"maailmasta valaisemaan synkkään pimeyteen. Tämä antaa lainkuulaisille "
-"yksiköille hyökkäysbonuksen ja poistaa kaoottisilta yksiköiltä "
-"hyökkäysbonuksen. Kaiken muun osalta maasto toimii kuten normaalit "
-"luolamaastot.\n"
+"Maanalaisen maailman harvoihin paikkoihin pääsee valoa maanpinnalta "
+"valaisemaan synkkää pimeyttä. Tämä antaa lainkuulaisille yksiköille "
+"hyökkäysbonuksen ja poistaa kaoottisilta yksiköiltä hyökkäysbonuksen. Kaiken "
+"muun osalta tämä maasto toimii samoin kuin normaalit luolamaastot.\n"
 "\n"
-"Useimmat yksiköt saavat 20–40% puolustuksen luolissa, kääpiöillä on 50%."
+"Useimmat yksiköt saavat 20–40% puolustuksen luolissa, kääpiöt saavat 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:3279
@@ -1972,10 +1976,10 @@ msgstr ""
 "<italic>text='Rantariutat</italic> ovat kivien, korallien ja hiekan "
 "muodostamia matalikkoja.\n"
 "Tämä antaa useimmille maayksiköille vakaampaa jalansijaa ja puolustusasemaa "
-"verrattuna matalassa vedessä kahlaamiseen, ja antaa myös useimmille vedessä "
-"eläville lajeille huomattavaa puolustusetua.\n"
+"kuin matalassa vedessä kahlaaminen, ja se antaa myös useimmille "
+"vedeneläville huomattavaa puolustusetua.\n"
 "\n"
-"Merenmiehet ja nagat saavat kummatkin 70% puolustuksen riutoista."
+"Merenväki ja nagat saavat kummatkin 70% puolustuksen riutoista."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3310
@@ -1990,15 +1994,14 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic>text='Mäet'</italic> kuvaavat suhteellisen vaikeakulkuista maastoa, "
-"joka tarjoaa tarpeeksi notkelmia ja kohoumia, jotka tarjoavat jotain suojaa. "
-"Mäet ovat useimmille sotilaille vaikeita kulkemiseen. Kääpiöillä, peikoilla "
-"ja örkeillä mäet ovat ennestään tuttuja, ja he kulkevat niissä helposti. "
-"Ratsuväellä on jo tarpeeksi ongelmia maaston kanssa, että sen tarjoamat "
-"suojat eivät hyödytä.\n"
+"<italic>text='Mäet'</italic> edustavat epätasaista maastoa, jossa on "
+"tarpeeksi notkelmia ja kohoumia, jotka antavat jotain suojaa. Mäet ovat "
+"useimmille joukoille vaikeakulkuisia. Kääpiöillä, peikoilla ja örkeillä mäet "
+"ovat ennestään tuttuja, ja he kulkevat niissä hidastumatta. Ratsuväellä "
+"riittää ongelmia maaston kanssa, joten sen tarjoamat suojat eivät hyödytä.\n"
 "\n"
-"Useimmat yksiköt saavat mäistä 50% puolustuksen, kun taas ratsuväet saavat "
-"vain 40%. Kääpiöille tarjoutuu mäkimaastosta puolustukseen 60%."
+"Useimmilla yksiköillä on 50% puolustus mäissä, kun taas ratsuväellä vain "
+"40%. Kääpiöille tarjoutuu 60% puolustus mäissä."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:3324
@@ -2013,13 +2016,13 @@ msgid ""
 "Most units make do with 30% defense in swamps. Merfolk, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"<italic>text='Suot'</italic> viittaavat yleisesti kosteikkoon.\n"
+"<italic>text='Suot'</italic> edustavat kaikenlaisia kosteikkoja.\n"
 "Suot hidastavat miltei ketä tahansa ja haittaavat kykyä puolustaa itseään. "
-"Poikkeuksena tähän ovat fysiikaltaan vedessä uimiseen kykenevät lajit; he "
-"liikkuvat vapaasti ja saavat puolustusbonuksen. He, jotka saavat elantonsa "
-"kosteikosta, ovat taitavia käyttämään maastoa suojanaan.\n"
+"Poikkeuksena tähän ovat keholtaan uimataitoiset rodut. He saavat täyden "
+"liikkuvuuden ja lisäpuolustusta. Kosteikosta elantonsa hankkivat ovat "
+"taitavia käyttämään tätä maastoa suojanaan.\n"
 "\n"
-"Useimmat yksiköt tyytyvät suossa 40% puolustukseen. Merenmiehet, nagat ja "
+"Useimmat yksiköt tyytyvät suolla 30% puolustukseen. Merenväki, nagat ja "
 "sauriaanit yleisesti saavat 60%."
 
 #. [terrain_type]: id=shallow_water
@@ -2036,15 +2039,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and merfolk enjoy 60%."
 msgstr ""
-"<italic>text='Matala vesi'</italic> viittaa mihin tahansa vesimassaan, joka "
-"ylettyy ihmisen vyötäröön. Tämä on tarpeeksi syvä hidastamaan miltei ketä "
-"tahansa ja jättää heidät alttiiksi hyökkäyksille. Erityisesti kääpiöillä, "
-"joille vesi ulottuu päähän saakka, on äärimmäisen vaikeaa. Poikkeuksena ovat "
-"mikä tahansa laji, joiden vartalot ovat luontaisesti mukautuneet uimiseen, "
-"missä he saavat merkittävästi puolustusbonusta ja vapaata liikkuvuutta.\n"
+"<italic>text='Matala vesi'</italic> edustaa mitä tahansa vesialuetta, joka "
+"on suunnilleen vyötärön syvyistä. Tämä riittää hidastamaan miltei ketä "
+"tahansa ja altistaa heidät hyökkäyksille. Kääpiöillä, joilla vesi yltää "
+"päähän asti, on äärimmäisen vaikeaa. Poikkeuksena ovat kaikki lajit, joiden "
+"kehot ovat luontaisesti soveltuneet uimiseen, jolloin he saavat "
+"merkittävästi lisäpuolustusta ja täyden liikkuvuuden.\n"
 "\n"
-"Useimmat yksiköt joutuvat matalassa vedessä pärjäämään 20–30% "
-"puolustuksella, kun taas nagat ja merenmiehet nauttivat 60%."
+"Useimmat yksiköt tyytyvät matalassa vedessä 20–30% puolustukseen, kun taas "
+"nagat ja merenväki saavat 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:3352
@@ -2059,11 +2062,12 @@ msgid ""
 "Most units have about 60% defense in a castle."
 msgstr ""
 "<italic>text='Linnat'</italic> ovat mitä tahansa pysyvää linnoitusta.\n"
-"Miltei kaikki yksiköt saavat merkittävää bonusta puolustukseen kun heidät on "
-"asemoitu linnaan, ja valtaosa yksiköistä pystyvät liikkumaan linnoissa "
-"vapaasti. Yksiköiden sijoittaminen linnaan esittää sen puolustuskykyä. Jos "
-"muuriheksassa on vapaata tilaa, vihollinen voi vain hiipiä linnaan helposti, "
-"saaden saman puolustusbonuksen kuten muutkin sen sisällä.\n"
+"Melkein kaikki yksiköt saavat merkittävää lisäpuolustusta, kun heidät on "
+"asemoitu linnaan, ja valtaosa yksiköistä pystyy täysin liikkumaan linnoissa. "
+"Yksiköiden sijoittaminen linnaan esittää sen puolustuskykyä. Jos jokaisessa "
+"muuriheksassa ei ole yksikköä, vihollinen voi vain pujahtaa linnaan "
+"esteettömästi, ja se saa saman lisäpuolustuksen kuten muutkin sen sisällä.\n"
+"\n"
 "Useimmilla yksiköillä on noin 60% puolustus linnassa."
 
 #. [terrain_type]: id=mountains
@@ -2084,14 +2088,14 @@ msgid ""
 msgstr ""
 "<italic>text='Vuoret'</italic> ovat niin jyrkkiä, että yksiköiden on "
 "kiivettävä esteiden yli liikkuakseen.\n"
-"Täten ne luonnostaan antavat merkittävää lisäpuolustusta useimmille "
-"yksiköille, mutta ne myös pahoin haittaavat läpikulkua. Raskaasti "
-"haarniskoidut yksiköt, kuten Wesnothin ratsuväki ja raskas jalkaväki, eivät "
-"voi edes siirtyä niihin. Vesilajeilla ja merenväen kaltaisilla olennoilla on "
-"kalaruumiit, mikä tekee myös niistä kiipeämiskyvyttömiä jyrkillä rinteillä. "
+"Täten ne luonnostaan antavat merkittävää lisäsuojaa useimmille joukoille, "
+"mutta ne myös haittaavat pahoin läpikulkua. Raskaasti haarniskoidut yksiköt, "
+"kuten Wesnothin ratsuväki ja raskas jalkaväki, eivät voi edes siirtyä "
+"niihin. Vesilajeilla ja merenväen kaltaisilla olennoilla on kalamaiset "
+"ruumiit, mikä tekee myös heistä kiipeämiskyvyttömiä jyrkillä rinteillä. "
 "Nagat ovat poikkeus niiden vahvojen käsien ja karkeiden suomujen vuoksi. "
-"Sekä kääpiöt että peikot ovat kotoisin vuorialueilta ja he liikkuvat niissä "
-"helposti.\n"
+"Sekä kääpiöt että peikot ovat kotoisin vuorialueilta, ja he liikkuvatkin "
+"niissä helposti.\n"
 "\n"
 "Useimmat yksiköt saavat vuoristossa 60% puolustuksen, kääpiöt peräti 70%."
 
@@ -2105,13 +2109,13 @@ msgid ""
 "\n"
 "Merfolk and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"<italic>text='Syvä vesi'</italic> viittaa mihin tahansa vesimassaan, joka on "
-"tarpeeksi syvä peittämään henkilön pään.\n"
-"Useimmat yksiköt eivät pysty astumaan syvään veteen: se on lentokykyisten "
-"yksiköiden tai poikkeuksellisen vahvojen uijien valtakuntaa.\n"
+"<italic>text='Syvä vesi'</italic> edustaa mitä tahansa vesialuetta, joka on "
+"tarpeeksi syvää saamaan miehen pään upoksiin.\n"
+"Useimmat yksiköt eivät voi käydä syvään veteen: se on lentokykyisten "
+"yksiköiden tai poikkeuksellisen vahvojen uimareiden valtakuntaa.\n"
 "\n"
-"Merenmiehet ja nagat saavat molemmat 50% puolustuksen syvässä vedessä, "
-"vapaalla liikkuvuudella."
+"Merenväki ja nagat saavat molemmat 50% puolustuksen syvässä vedessä täydellä "
+"liikkuvuudella."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:3389 data/core/terrain.cfg:3390
@@ -2130,13 +2134,14 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"<italic>text='Ruohotasangot'</italic> ovat aavoja tasankoja, oli ne sitten "
-"viljeltyjä, laidunmaata tai villejä.\n"
-"Avoimena maastona ruohotasangoissa on hyvin helppo liikkua, mutta myös hyvin "
-"vaikeata puolustaa. Tyypillisesti yksiköt jotka pystyvät hyödyntämään "
-"laajoja, avoimia tiloja parhaiten, ovat ratsuväet tai hyvin notkealiikkeiset "
-"yksiköt.\n"
-"Useimmilla yksiköillä on 30–40% puolustus ruohotasangoissa."
+"<italic>text='Ruohomaat'</italic> ovat aavoja tasankoja, olivatpa ne sitten "
+"viljeltyjä, laidunmaata tai villiä.\n"
+"Avomaastona ruohomailla on hyvin helppo liikkua, mutta myös vaikeaa "
+"puolustaa itseään. Tyypillisesti ruohomailla parhaiten toimivat yksiköt ovat "
+"joko ratsuväkeä tai hyvin ketteriä yksiköitä, jotka osaavat hyödyntää "
+"avointa tilaa.\n"
+"\n"
+"Useimmilla yksiköillä on 30–40% puolustus ruohomailla."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:3404
@@ -2157,19 +2162,18 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
 "<italic>text='Metsät'</italic> edustavat mitä tahansa metsämaata "
-"huomattavalla aluskasvillisuudella, haitaten läpikulkua. Vaikka ne "
-"hidastuttavatkin miltei ketä tahansa, metsät toisaalta antavat paremman "
-"puolustuksen useimmille yksiköille kuin avoin maasto. Ratsuväellä tosin on "
-"niin suuria vaikeuksia siinä kulkemisessa, että mikä tahansa saatu etu on "
-"mitätöity. Haltijat ovat poikkeus metsien yleissäännöstä. He eivät "
-"pelkästään pysty liikkumaan vapaasti metsässä, mutta he saavat merkittävän "
-"puolustusbonuksen. Kääpiöt ovat toinen poikkeus tähän sääntöön; vaikka he "
-"pystyvätkin rämpimään läpi metsän ilman merkittävää hidastusta, heidän "
-"tottumattomuus maastossa ei anna heille mitään puolustusbonusta.\n"
+"huomattavalla aluskasvillisuudella haitaten läpikulkua. Vaikka ne hidastavat "
+"lähes ketä tahansa, metsät antavat paremman suojan useimmille yksiköille "
+"kuin avomaasto. Ratsuväellä tosin on niin suuria vaikeuksia kulkea niissä, "
+"että mikä tahansa suojaetu mitätöityy. Haltiat ovat poikkeus metsien "
+"yleissäännöstä. He eivät pelkästään liiku vapaasti metsissä, vaan saavat "
+"myös merkittävää lisäsuojaa. Kääpiöt ovat toinen poikkeus tähän sääntöön. "
+"Vaikka he pystyvätkin rämpimään metsien läpi ilman suurta hidastumista, "
+"heidän tottumattomuus maastossa ei anna heille mitään lisäsuojaa.\n"
 "\n"
-"Useimmilla yksiköillä on 50% puolustus metsissä, mutta ratsuväellä on vain "
-"30%. Haltijat tosin nauttivat 60–70% puolustuksesta, mukaan lukien heidän "
-"ratsuyksikkönsä. Kääpiöt yleisesti saavat vain 30% puolutuksen metsissä."
+"Useimmilla yksiköillä on 50% puolustus metsissä, mutta ratsuväellä vain 30%. "
+"Haltiat tosin nauttivat 60–70% puolustuksesta, jopa heidän "
+"ratsuyksikkönsäkin. Kääpiöt yleisesti saavat vain 30% puolutuksen metsissä."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:3414 data/core/terrain.cfg:3415
@@ -2189,9 +2193,9 @@ msgid ""
 msgstr ""
 "<italic>text='Jäätynyt'</italic> maasto edustaa mitä tahansa tasaista "
 "aluetta, jota peittää lumi tai jää.\n"
-"Useimmat yksiköt kulkevat hitaasti siinä, eivätkä pysty puolustamaan yhtä "
-"hyvin itseään. Huomaa, että uivat yksiköt, vaikka pystyisivätkin "
-"hengittämään veden alla, eivät voi uida jään ali.\n"
+"Useimmat yksiköt hidastuvat niissä ja heidän on vaikeampi puolustaa itseään. "
+"Huomaa, että uivat yksiköt, jopa veden alla hengittämään kykenevät, eivät "
+"voi uida jään alla.\n"
 "\n"
 "Useimmilla yksiköillä on 20–40% puolustus jäätyneessä maastossa."
 
@@ -2209,15 +2213,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
-"<italic>text='Kylät'</italic> edustavat ryhmän rakennuksia, ihmisten tai "
-"muiden tekemiä.\n"
-"Miltei kaikki yksiköt, ratsuväki mukaan lukien, liikkuvat helposti kylissä, "
-"ja valtaosa yksiköistä saavatkin puolustusbonuksen kun ovat kylässä "
-"asemoituna. Kylät antavat yksiköiden huoltaa ja hoitaa haavojaan, mikä antaa "
-"kylään sijoitetun yksikön parantaa joka vuoro kahdeksan osumapistettä tai "
-"parantua myrkytyksestä.\n"
+"<italic>text='Kylät'</italic> edustavat rakennusryhmää, ihmisten tai muiden "
+"tekemiä.\n"
+"Melkein kaikki yksiköt, jopa ratsuväet, liikkuvat helposti kylissä, ja "
+"useimmat yksiköt saavatkin lisäpuolustusta kylissä asemoituneina. Kylät "
+"antavat yksiköille resursseja puhdistaa ja hoitaa haavojaan, minkä avulla "
+"kylään sijoitettu yksikkö parantuu kahdeksan elämäpistettä joka vuorolla tai "
+"paranee myrkytyksestä.\n"
 "\n"
-"Useimmilla yksiköillä on 50–60% puolustus kylissä, ratsuväet saavat vain 40%."
+"Useimmilla yksiköillä on 50–60% puolustus kylissä, ratsuväki saa vain 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:3440 data/core/terrain.cfg:3441
@@ -2233,11 +2237,11 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
-"Esteitä, mitä edes kaikkein päättäväisimmät matkustelijat eivät pysty "
-"valloittamaan, ovat umpinaisia seiniä ja niin korkeita ja jyrkkiä vuoria, "
-"että ne ovat alati pilvikiehkurojen pukemia. Ei edes lentävät olennot pysty "
-"kulkemaan näiden rosoisten vuorenhuippujen niin ohuessa ilmassa, eikä "
-"kaikkein hurjin peikko pysty särkemään paksujen kiviseinien läpi."
+"Esteitä, joita edes kaikkein päättäväisin matkalainen ei pysty "
+"valloittamaan, ovat umpinaiset seinät ja niin korkeat ja jyrkät vuoret, että "
+"ne ovat alati pilvien peitossa. Edes lentävät olennot eivät voi kulkea "
+"näillä rosoisilla vuorenhuipuilla moisissa korkeuksissa eikä edes hurjinkaan "
+"peikko pysty murtautumaan paksujen kiviseinien läpi."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:3450 data/core/terrain.cfg:3451
@@ -2253,10 +2257,10 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"<italic>text='Ylitsepääsemätön maasto'</italic> viittaa mihin tahansa "
-"kuiluun tai rotkoon, jota ei voi ylittää pelkästään kävelemällä. Kuilut ovat "
-"tunnettuja jyrkistä seinämistä, joiden ylittäminen kestäisi päiviä. Pelin "
-"kannalta vain lentävät yksiköt voivat ylittää tätä maastoa."
+"<italic>text='Ylitsepääsemätön maasto'</italic> on mitä tahansa kuilua tai "
+"rotkoa, jota ei voi ylittää pelkästään kävelemällä. Kuilut ovat tunnettuja "
+"jyrkistä seinämistä, joiden ylittäminen kestäisi päiviä. Pelin kannalta vain "
+"lentävät yksiköt voivat ylittää tätä maastoa."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:3460 data/core/terrain.cfg:3461
@@ -2268,8 +2272,8 @@ msgstr "Raiteet"
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
-"<italic>text='Raiteita'</italic> käytetään kivimalmin kuljettamiseen, "
-"enimmäkseen kääpiöiden toimesta."
+"<italic>text='Raiteita'</italic> käytetään malmin kuljettamiseen, useimmiten "
+"kääpiöiden toimesta."
 
 #. [terrain_type]: id=regular_stone_floor_deprecated
 #. [terrain_type]: id=ancient_stone_floor_deprecated
@@ -2840,7 +2844,7 @@ msgstr "Perus-RNG"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:318
 msgid "Reloading alters future combat outcomes"
-msgstr "Uudelleenlataaminen muuttaa tulevien taisteluiden lopputuloksia"
+msgstr "Uudelleenlataaminen muuttaa tulevia taistelutuloksia"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
@@ -2850,7 +2854,7 @@ msgstr "Ennustettava RNG"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Combat outcomes remain constant when reloading"
-msgstr "Taistelutulokset pysyvät muuttumattomina uudelleenlatauksen yhteydessä"
+msgstr "Taistelutulokset pysyvät muuttumattomina uudelleenladattaessa"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
@@ -2863,7 +2867,7 @@ msgid ""
 "Combat outcomes are more in line with displayed probabilities and unaffected "
 "by reloading"
 msgstr ""
-"Taistelutulokset ovat suunnilleen näytettyjen todennäköisyyksien sisällä, "
+"Taistelutulokset ovat suunnilleen näytettyjen todennäköisyyksien sisällä "
 "uudelleenlatauksista vaikuttumatta"
 
 #. [label]
@@ -2906,7 +2910,7 @@ msgstr "Pelaa"
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
 #: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "Difficulty"
-msgstr "Vaikeusaste:"
+msgstr "Vaikeustaso:"
 
 #. [scroll_label]: id=message
 #: data/gui/window/campaign_difficulty.cfg:73
@@ -2917,7 +2921,7 @@ msgstr "Valitse vaikeustaso:"
 #. [label]
 #: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
 msgid "Chat Log"
-msgstr "Katso keskusteluhistoria"
+msgstr "Keskusteluloki"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:58
@@ -3154,11 +3158,14 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Valitse lisäosa, joka liitetään nykyiseen editori-istuntoon. Jos Uusi "
+"lisäosa -valinta on valittu, sen tunnusta voidaan muuttaa Vaihda lisäosan "
+"tunnusta -valinnan avulla."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
 msgid "Add-on ID"
-msgstr "Lisäosan ID"
+msgstr "Lisäosan tunniste"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
@@ -3236,6 +3243,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Polku kuvakkeeseen, joka näytetään lisäosien hallinnassa. Kuvan on oltava "
+"päälinjan kuva."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3263,6 +3272,9 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Pilkulla erotettu luettelo muiden lisäosien tunnuksista, joista tämä lisäosa "
+"on riippuvainen. Lisäosan tunnus on kansion nimi käyttöjärjestelmäsi "
+"tiedostonhallinnassa, ei lisäosan nimi."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3275,6 +3287,8 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"Viestiketjun numeerinen aiheen tunnus Wesnothin foorumilla, jonne pelaajat "
+"voivat lähettää palautetta."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
@@ -3284,7 +3298,7 @@ msgstr "Foorumi-URL"
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "Palauteketjusi täydellinen URL-osoite foorumilla."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3297,6 +3311,8 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Käytetäänkö foorumin käyttäjätunnusta ja salasanaa ladattaessa vai "
+"tallennetaanko salasana ja sähköpostiosoite lisäosan _server.pbl-tiedostoon."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3304,6 +3320,8 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Pilkulla erotettu luettelo muiden sellaisten henkilöiden foorumin "
+"käyttäjätunnuksista, jotka saavat ladata päivityksiä tähän lisäosaan."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3315,6 +3333,8 @@ msgstr "Toissijaiset tekijät:"
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Sähköpostiosoite, johon voi ottaa yhteyttä, jos lisäosan kanssa ilmenee "
+"ongelmia."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
@@ -3327,6 +3347,8 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"Lisäosan nykyinen salasana. Sen sijaan on suositeltavaa käyttää foorumin "
+"todennusta, koska tätä salasanaa ei tallenneta turvallisesti."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
@@ -3388,6 +3410,8 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"POSIX-lokaalin nimi käännökselle, kuten sv (ruotsi) tai zh_CN "
+"(yksinkertaistettu kiina)."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
@@ -3439,7 +3463,7 @@ msgstr "Satunnainen aloitusaika"
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr "Puolen asetus"
+msgstr "Osapuolen asetus"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -3741,8 +3765,8 @@ msgstr ""
 "Wesnoth ylläpitää välimuistia esikäsiteltyä WML-dataa varten nopeuttaakseen "
 "kampanjoiden, moninpeliskenaarioiden ja muiden lisäosien lataamisprosessia. "
 "Välimuistia voidaan turvallisesti puhdistaa vapauttaakseen kovalevytilaa, "
-"täten poistaen aikaisempien versioiden tuottamia vanhentuneita tiedostoja; "
-"tai voit tyhjentää sen koko sisällön jos koet ongelmia pelidatan "
+"täten poistaen aikaisempien versioiden tuottamia vanhentuneita tiedostoja. "
+"Tai voit tyhjentää sen koko sisällön, jos koet ongelmia pelidatan "
 "lataamisessa."
 
 #. [label]
@@ -3828,7 +3852,7 @@ msgstr "Näytä uusinta"
 #. [toggle_button]: id=show_replay
 #: data/gui/window/game_load.cfg:432
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr "Toista upotettu uusinta tallennetusta pelistä jos käyttökelpoinen"
+msgstr "Toista upotettu uusinta tallennetusta pelistä tarvittaessa"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:454
@@ -3838,7 +3862,7 @@ msgstr "Peruuta käskyt"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/window/game_load.cfg:455
 msgid "Cancel any pending unit movements in the saved game"
-msgstr "Kumoa suorittamattomia yksikköliikkeitä tallennuksessa"
+msgstr "Kumoa suorittamattomia yksiköiden liikkeitä tallennuksessa"
 
 #. [button]: id=ok
 #. [grid]
@@ -3866,12 +3890,12 @@ msgstr "Lopeta peli"
 #. [label]: id=lblTitle
 #: data/gui/window/game_save_overwrite.cfg:40
 msgid "Overwrite?"
-msgstr "Ylikirjoitetaanko tiedosto?"
+msgstr "Korvataanko?"
 
 #. [label]: id=lblMessage
 #: data/gui/window/game_save_overwrite.cfg:60
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Tämänniminen tallennus on jo olemassa. Tahdotko ylikirjoittaa sen?"
+msgstr "Tallennus on jo olemassa. Haluatko korvata sen?"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/game_stats.cfg:35 data/gui/window/game_stats.cfg:283
@@ -3921,7 +3945,7 @@ msgstr "Tulot"
 #. [label]: id=side_title
 #: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
-msgstr "Seuraava puoli"
+msgstr "Puoli"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
@@ -4041,7 +4065,7 @@ msgstr "Suoritusvaiheversio"
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
-"Seuraavat ominaisuudet valittiin kun käännettiin tätä versiota Wesnothista:"
+"Seuraavat ominaisuudet valittiin tätä Wesnothin versiota rakennettaessa:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:429
@@ -4080,12 +4104,12 @@ msgstr "Lokitiedosto"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Avaa lokitiedoston, joka saattaa sisältää hyödyllistä virhetilatietoa"
+msgstr ""
+"Avaa nykyiseen istuntoon liittyvän lokitiedoston, joka voi sisältää "
+"hyödyllistä vianmääritystietoa."
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4158,7 +4182,7 @@ msgstr "Teitä linnojen välille"
 #. [toggle_button]: id=show_labels
 #: data/gui/window/generator_settings.cfg:157
 msgid "Show Labels"
-msgstr "Näytä etiketit"
+msgstr "Näytä merkit"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
@@ -4173,7 +4197,7 @@ msgstr "Paina haluttua pikanäppäintä (Esc peruuttaa)"
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
 msgid "Show or Hide Labels"
-msgstr "Näytä tai piilota etiketit"
+msgstr "Näytä tai piilota merkit"
 
 #. [label]
 #: data/gui/window/language_selection.cfg:60
@@ -4461,10 +4485,7 @@ msgstr "Tyhjennä lokialue"
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
-"Matchmaking\n"
-"\n"
-"Tiedonsiirto"
+msgstr "Tiedonsiirto"
 
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:53
@@ -4472,6 +4493,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Valitse, mistä Wesnothin versiosta tuot tietosi.\n"
+"Jotkin asetukset tulevat voimaan vasta, kun Wesnoth käynnistetään uudelleen."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -4491,8 +4514,8 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
-"Valitse, miten haluaisit ilmoitettavana moninpelin tapahtumista tai "
-"moninpeliaulassa; joko soittamalla äänihälytyksen tai (jos peli-ikkuna on "
+"Valitse, miten haluat saada ilmoituksen tapahtumista moninpeleissä tai "
+"moninpelin aulassa. Joko soittamalla äänihälytyksen tai (jos peli-ikkuna on "
 "toimeton tai pienennettynä) näyttämällä työpöytäilmoituksen."
 
 #. [label]
@@ -4651,14 +4674,14 @@ msgstr "Aikakaudet:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
-#, fuzzy
 msgid "Random Faction Matchups:"
-msgstr "Satunnaistettu ryhmäkokoonpanot:"
+msgstr "Satunnaistetut liittoumakokoonpanot:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
+"Mahdollistaa palvelinkokoonpanot satunnaistettuja liittoumia valittaessa"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:177
@@ -4668,7 +4691,7 @@ msgstr "Itsenäinen"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:178
 msgid "Independent: Random factions assigned independently"
-msgstr "Itsenäinen: Satunnaisia itsenäiseksi määriteltyjä ryhmiä"
+msgstr "Itsenäinen: Satunnaisia itsenäisesti määriteltyjä liittoumia"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:182
@@ -4678,7 +4701,7 @@ msgstr "Ei peilipalvelinta"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:183
 msgid "No Mirror: No two players will get the same faction"
-msgstr "Ei peilipalvelinta: Kukaan pelaajista ei saa samaa ryhmää"
+msgstr "Ei peilipalvelinta: Kukaan pelaajista ei saa samaa liittoumaa"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:187
@@ -4689,7 +4712,7 @@ msgstr "Ei liittolaispeilipalvelinta"
 #: data/gui/window/mp_create_game.cfg:188
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
-"Ei liittolaispeilipalvelinta: Kukaan liittolaisista ei saa samaa ryhmää"
+"Ei liittolaispeilipalvelinta: Kukaan liittolaisista ei saa samaa liittoumaa"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:330
@@ -4958,12 +4981,12 @@ msgstr ""
 #. [button]: id=select_leader
 #: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Valitse ryhmä ja johtaja tälle osapuolelle"
+msgstr "Valitse liittouma ja johtaja tälle osapuolelle"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:155 data/gui/window/mp_staging.cfg:157
 msgid "<b>Faction:</b>"
-msgstr "<b>Ryhmä:</b>"
+msgstr "<b>Liittouma:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
@@ -5078,8 +5101,8 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
-"Vaaditaan rekisteröity tili Wesnoth-foorumiin liittyäkseen viralliseen "
-"palvelimeen."
+"Viralliselle palvelimelle liittyminen edellyttää rekisteröityä tiliä "
+"Wesnothin foorumeilla."
 
 #. [button]: id=register
 #: data/gui/window/mp_method_selection.cfg:136
@@ -5104,12 +5127,12 @@ msgstr "Liity toiselle palvelimelle"
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:264
 msgid "Host a game using a dedicated server"
-msgstr "Isännöi peli käyttäen dedikoitua palvelinta"
+msgstr "Isännöi peliä käyttämällä dedikoitua palvelinta"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:283
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Pelaa moninpeli tekoälyn tai ihmisten kanssa samalla tietokoneella"
+msgstr "Pelaa moninpeliä tekoälyn tai ihmisten kanssa samalla tietokoneella"
 
 #. [widget]: id=name
 #: data/gui/window/mp_method_selection.cfg:292
@@ -5189,7 +5212,7 @@ msgstr "Edistyneet"
 #. [button]: id=about
 #: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:470
 msgid "Display the game version and build information"
-msgstr "Näytä peliversio ja käännöstiedot"
+msgstr "Näytä peliversio ja koontitiedot"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
@@ -5204,22 +5227,22 @@ msgstr "Muuta kartan vieritysnopeutta"
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:54
 msgid "Skip AI moves"
-msgstr "Ohita tietokoneen liikkeet"
+msgstr "Ohita tekoälyn liikkeet"
 
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
-msgstr "Älä animoi tietokoneen yksiköiden liikkeitä"
+msgstr "Älä animoi tekoäly-yksiköiden liikkeitä"
 
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/window/preferences/01_general.cfg:68
 msgid "Accelerated speed"
-msgstr "Kiihdytetty pelinopeus"
+msgstr "Kiihdytetty nopeus"
 
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/window/preferences/01_general.cfg:69
 msgid "Make units move and fight faster"
-msgstr "Valitse, jos haluat yksiköiden liikkuvan ja taistelevan nopeammin"
+msgstr "Saa yksiköt liikkumaan ja taistelemaan nopeammin"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:79
@@ -5232,8 +5255,8 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
-"Nopeus, jolla yksikkö liikkuu ja animaatio käy kun 'Nopeuttaminen' on päällä "
-"tai kun Shift-näppäintä pidetään pohjassa pelin aikana"
+"Nopeus, jolla yksikkö liikkuu ja animaatiot pyörivät, kun 'Nopeuttaminen' on "
+"päällä tai kun Shift-nappia pidetään pohjassa pelin aikana"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
@@ -5292,10 +5315,8 @@ msgstr "Tallenna uusinnat skenaarion lopussa"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:173
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
-msgstr "Poista automaattitallennukset YP/MP-voitoista tai MP-häviöistä."
+msgstr "Poista pelien uusinnat YP/MP-voitoista tai MP-häviöistä."
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:186
@@ -5304,11 +5325,10 @@ msgstr "Poista automaattitallennukset skenaarion lopussa"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:187
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Poista automaattitallennukset YP/MP-voitoista tai MP-häviöistä."
+msgstr ""
+"Poista edelliset automaattitallennukset YP/MP-voitoista tai MP-häviöistä."
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:197
@@ -5414,7 +5434,7 @@ msgstr "Ikkunan koko:"
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Pikselin skaalauskerroin:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
@@ -5427,11 +5447,13 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Asettaa globaalin pikselin skaalauskertoimen. Pikselin skaalauskerroin 2 saa "
+"kaiken näyttämään kaksi kertaa suuremmalta."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:102
 msgid "Full screen"
-msgstr "Kokonäyttö"
+msgstr "Kokoruutu"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:103
@@ -5447,6 +5469,8 @@ msgstr "Automaattinen skaalaus"
 #: data/gui/window/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Valitse pikselin skaalauskerroin automaattisesti nykyisen resoluution "
+"perusteella."
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:129
@@ -5541,17 +5565,17 @@ msgstr "Animoi vesi"
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:278
 msgid "Display animated water graphics (can be slow)"
-msgstr "Näytä animoidut vedet (voi olla hidas)"
+msgstr "Näytä animoidut vesigrafiikat (voi olla hidas)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
 msgid "Unit standing animations"
-msgstr "Yksiköiden seisonta-animaatiot"
+msgstr "Yksiköiden joutenolo-animaatiot"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
 msgid "Continuously animate standing units on the battlefield"
-msgstr "Animoi paikallaanolevia yksiköitä jatkuvasti"
+msgstr "Animoi jatkuvasti paikallaan olevia yksiköitä taistelukentällä"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
@@ -5561,7 +5585,7 @@ msgstr "Yksiköiden joutenolo-animaatiot"
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
 msgid "Play short random animations for idle units"
-msgstr "Näytä toimettomilla yksiköillä lyhyitä animaatioita"
+msgstr "Näytä toimettomilla yksiköillä lyhyitä, satunnaisia animaatioita"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:336
@@ -5586,7 +5610,7 @@ msgstr "Musiikki tauolle pelin ulkopuolella"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr "Pistä musiikki tauolle kun vaihdat toiseen ikkunaan"
+msgstr "Laita musiikki tauolle kun vaihdat toiseen ikkunaan"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -5731,35 +5755,25 @@ msgstr "Palvelimen ohjelmatiedosto"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
-msgstr "Etsi ja aseta polku moninpelipalvelimeen pitääksesi verkkopelejä"
+msgstr "Etsi ja aseta polku moninpelipalvelimeen pitääksesi LAN-pelejä"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Lisää tämä nimi ystävälistaasi (lisää vaihtoehtoisia huomautuksia, esim. "
-"'player_name ystävästä asioita')"
+"Lisää tämä käyttäjänimi ystävälistaasi (lisää valinnaisia huomautuksia, "
+"esim. 'player_name ystävästä asioita')"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
-"Lisää tämä nimi estolistaasi (lisää vaihtoehtoisesti syyn, esim. "
+"Lisää tämä käyttäjänimi estolistaasi (lisää valinnainen syy, esim. "
 "'player_name syy estoon')"
 
 #. [button]: id=remove
@@ -5795,12 +5809,12 @@ msgstr "Valitse pallojen/minikarttojen värit"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
-msgstr "Näytä liikkumaton kuula"
+msgstr "Näytä liikkumaton pallo"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
 msgid "Show partially moved orb"
-msgstr "Näytä osittain liikkunut kuula"
+msgstr "Näytä osittain liikkunut pallo"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -5814,17 +5828,17 @@ msgstr ""
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Käytä kaksiväristä palloa irtaantuneille yksiköille."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
-msgstr "Näytä liikutettu-kuula"
+msgstr "Näytä liikutettu-pallo"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:153
 msgid "Show ally orb"
-msgstr "Näytä liittolainen-kuula"
+msgstr "Näytä liittolainen-pallo"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5838,11 +5852,14 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Liittolaisen vuorolla niiden yksiköillä on kaksivärinen pallo. Toinen puoli "
+"on liittolaisen pallon väri ja toinen puoli näyttää, onko yksikkö ollut "
+"liikkumatta, osittain liikkunut vai täysin liikkunut."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
 msgid "Show enemy orb"
-msgstr "Näytä vihollinen-kuula"
+msgstr "Näytä vihollinen-pallo"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -6173,7 +6190,7 @@ msgstr "KP"
 #: src/gui/widgets/unit_preview_pane.cpp:382
 #: src/gui/widgets/unit_preview_pane.cpp:532
 msgid "Traits"
-msgstr "Ominaisuudet"
+msgstr "Piirteet"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6189,8 +6206,7 @@ msgstr "Kutsu yksikköä"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait"
-msgstr ""
-"Etsi yksikön nimeä, yksikön tyypin nimeä, yksikön tasoa tai ominaisuutta"
+msgstr "Etsi yksikön nimeä, yksikkötyypin nimeä, yksikön tasoa tai piirrettä"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -6430,7 +6446,7 @@ msgstr[1] "$num sekuntit"
 
 #: src/gui/core/canvas.cpp:273
 msgid "Image doesn't fit on canvas."
-msgstr "Kuva ei sovi kankaaseen."
+msgstr "Kuva ei sovi piirtoalueelle."
 
 #: src/gui/core/canvas.cpp:417
 msgid "Text has a font size of 0."
@@ -6518,7 +6534,7 @@ msgstr "MP-aikakaudet"
 
 #: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^MP factions"
-msgstr "MP-ryhmät"
+msgstr "MP-liittoumat"
 
 #: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Modifications"
@@ -6584,7 +6600,7 @@ msgstr "Kosmeettinen"
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr "Nämä muuttavat pelin ulkonäköä, vaikuttamatta itse peliin"
+msgstr "Nämä muuttavat pelin ulkonäköä vaikuttamatta pelin kulkuun"
 
 #: src/gui/dialogs/addon/manager.cpp:229
 msgid "addon_tag^Difficulty"
@@ -6708,7 +6724,7 @@ msgstr "Takaisin listaan"
 
 #: src/gui/dialogs/addon/manager.cpp:560
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Virhe tapahtui palvelimen lisäosalistan lataamisen yhteydessä."
+msgstr "Virhe tapahtui palvelimen lisäosalistan lataamisessa."
 
 #: src/gui/dialogs/addon/manager.cpp:598
 msgid "No Add-ons Available"
@@ -6716,7 +6732,7 @@ msgstr "Lisäosia ei saatavilla"
 
 #: src/gui/dialogs/addon/manager.cpp:598
 msgid "There are no add-ons available for download from this server."
-msgstr "Tällä palvelimella ei ole ladattavissa olevia lisäosia."
+msgstr "Tällä palvelimella ei ole lisäosia ladattavissa."
 
 #: src/gui/dialogs/addon/manager.cpp:867
 msgid ""
@@ -6740,11 +6756,11 @@ msgid ""
 "uploaded. Do you really wish to continue?"
 msgstr ""
 "Palvelimen lisäosan versio on suurempi tai sama kuin lähetettävä versio. "
-"Oletko varma, että haluat jatkaa?"
+"Haluatko varmasti jatkaa?"
 
 #: src/gui/dialogs/addon/manager.cpp:948
 msgid "The passphrase attribute cannot be present when forum_auth is used."
-msgstr ""
+msgstr "Salasana-attribuutti ei voi olla läsnä, kun forum_auth on käytössä."
 
 #: src/gui/dialogs/addon/manager.cpp:953
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -6769,7 +6785,7 @@ msgid ""
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 "Lisäosan '$addon|' poistaminen poistaa pysyvästi sen lataus- ja "
-"lähetyskerrat lisäosapalvelimesta. Oletko varma että haluat jatkaa?"
+"lähetyskerrat lisäosapalvelimesta. Haluatko varmasti jatkaa?"
 
 #: src/gui/dialogs/addon/manager.cpp:1018
 msgid "Do you want to uninstall '$addon|'?"
@@ -6822,6 +6838,9 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth sisältää normaalisti yli 15 pääkampanjaa jopa ennen asentamista "
+"mitään lisäosapalvelimelta. Jos olet asentanut pelin paketinhallinnan "
+"kautta, erillinen paketti on luultavasti koko pelidatan asentamista varten."
 
 #: src/gui/dialogs/campaign_selection.cpp:396
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
@@ -6904,7 +6923,7 @@ msgstr "Aikakausi"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Map Pack"
-msgstr ""
+msgstr "Karttapakkaus"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Modification"
@@ -6976,7 +6995,7 @@ msgstr "Avaa"
 
 #: src/gui/dialogs/file_dialog.cpp:305
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "TIedosto on jo olemassa. Tahdotko kirjoittaa sen yli?"
+msgstr "TIedosto on jo olemassa. Haluatko korvata sen?"
 
 #: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
@@ -7076,7 +7095,7 @@ msgstr "$active aktiivisia, $reserve reservissä"
 
 #: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
-msgstr "Valittu tiedosto on rikki: "
+msgstr "Valittu tiedosto on vioittunut: "
 
 #: src/gui/dialogs/game_load.cpp:356
 msgid "(Invalid)"
@@ -7104,11 +7123,11 @@ msgstr "Vuoro"
 
 #: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
-msgstr "Skenaarion tavoitteet"
+msgstr "Skenaarion aloitus"
 
 #: src/gui/dialogs/game_load.cpp:434
 msgid "Difficulty: "
-msgstr "Vaikeusaste:"
+msgstr "Vaikeustaso:"
 
 #: src/gui/dialogs/game_load.cpp:457
 msgid "Version: "
@@ -7155,7 +7174,7 @@ msgstr "Ajetaan $os"
 
 #: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
-msgstr "Joukkue-merkit"
+msgstr "Joukkue-merkinnät"
 
 #: src/gui/dialogs/label_settings.cpp:84
 msgid "Side $side_number ($name)"
@@ -7478,7 +7497,7 @@ msgstr "Peli"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:518
 msgid "Waiting for players to choose factions..."
-msgstr "Odotetaan pelaajien ryhmien valintaa..."
+msgstr "Odotetaan pelaajien valitsevan liittoumat..."
 
 #: src/gui/dialogs/outro.cpp:57
 msgid "The End"
@@ -7652,11 +7671,11 @@ msgstr "Haluatko todella vapauttaa hänet palveluksesta?"
 
 #: src/gui/dialogs/unit_recall.cpp:368
 msgid "This unit is an experienced one, having advanced levels."
-msgstr "Tämä on kokenut yksikkö, joka on edennyt tasoissa."
+msgstr "Tämä on kokenut yksikkö, joka on noussut tasoissa."
 
 #: src/gui/dialogs/unit_recall.cpp:373
 msgid "This unit is close to advancing a level."
-msgstr "Tämä yksikkö on lähellä tasonousua."
+msgstr "Tämä yksikkö on lähellä tasonnousua."
 
 #: src/gui/dialogs/unit_recall.cpp:379
 msgid "Dismiss Unit"
@@ -7736,7 +7755,7 @@ msgstr "’list_definition’:lla pitäisi olla yksi rivi."
 
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
-msgstr "Ruudukkoa ei ole määritetty."
+msgstr "Sivua ei määritetty."
 
 #: src/gui/widgets/multimenu_button.cpp:173
 msgid "multimenu^All Selected"
@@ -7758,7 +7777,7 @@ msgstr "Ei valittu"
 
 #: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
-msgstr "Tarvitaan vähintään 1 rinnakkainen esine."
+msgstr "Tarvitaan vähintään 1 rinnakkainen kohde."
 
 #: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
@@ -7844,7 +7863,7 @@ msgstr "LP: "
 #: src/gui/widgets/unit_preview_pane.cpp:400
 #: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
-msgstr "Kyvyt"
+msgstr "Erikoistaidot"
 
 #: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
@@ -7852,7 +7871,7 @@ msgstr "Linkitetyllä ’$id’-ryhmällä on useampia määritelmiä."
 
 #: src/gui/widgets/window.cpp:911
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "Hylkäys klikkaamalla tarvitsee 'click_dismiss' tai 'ok' -painikkeen."
+msgstr "Hylkäys klikkaamalla tarvitsee 'click_dismiss' tai 'ok' -napin."
 
 #: src/gui/widgets/window.cpp:936 src/gui/widgets/window.cpp:973
 #: src/tests/gui/test_gui2.cpp:726
@@ -8030,7 +8049,7 @@ msgstr "Toista värväys"
 
 #: src/hotkey/hotkey_command.cpp:113
 msgid "Show/Hide Labels"
-msgstr "Näytä/piilota etiketit"
+msgstr "Näytä/piilota merkinnät"
 
 #: src/hotkey/hotkey_command.cpp:114
 msgid "End Turn"
@@ -8284,9 +8303,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Käytä hiiren vasenta/oikeaa hiirennappia piirtääkseen etu-/taustamaastoa. "
-"Pidä Vaihto-näppäintä pohjassa piirtääkseen vain pohjatasoa. Ctrl+napauta "
-"ottaakseen näytteen maastosta kohdistimen kohdalta."
+"Piirrä etu-/taustamaastoa hiiren vasemmalla/oikealla napilla. Piirrä vain "
+"pohjatasoa pitämällä Shift pohjassa. Ota näyte maastosta kohdistimen "
+"kohdalta Ctrl+napauttamalla."
 
 #: src/hotkey/hotkey_command.cpp:200
 msgid "Fill Tool"
@@ -8297,9 +8316,9 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"Hiiren vasen nappi valitsee, Ctrl-näppäimen kanssa poistaa valinnan, oikea "
-"avaa kontekstivalikon. Pidä Shift pohjassa valitakseen kaikki vierekkäiset "
-"saman maastotyypin laatat."
+"Hiiren vasen nappi valitsee, Ctrl-napin kanssa poistaa valinnan, oikea avaa "
+"kontekstivalikon. Valitse kaikki viereiset saman maastotyypin tilet "
+"pitämällä Shift pohjassa."
 
 #: src/hotkey/hotkey_command.cpp:201
 msgid "Selection Tool"
@@ -8321,18 +8340,18 @@ msgstr "Aloituspaikat-työkalu"
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Label Tool"
-msgstr "Etikettityökalu"
+msgstr "Merkintätyökalu"
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr "Hiiren vasen nappi asettaa tai raahaa nimilappua, oikea tyhjentää."
+msgstr "Hiiren vasen nappi asettaa tai raahaa merkintää, oikea poistaa."
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
-"Hiiren vasen nappi asettaa uuden yksikön tai liikuttaa yksikön raahaamalla, "
+"Hiiren vasen nappi asettaa uuden yksikön tai liikuttaa yksikköä raahaamalla, "
 "oikea avaa kontekstivalikon. Vaatii määritellyn puolen."
 
 #: src/hotkey/hotkey_command.cpp:204
@@ -8341,11 +8360,11 @@ msgstr "Yksikkö-työkalu"
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Item Tool"
-msgstr "Esineet-työkalu"
+msgstr "Kohteet-työkalu"
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Left mouse button sets a new item."
-msgstr "Hiiren vasen nappi asettaa uuden esineen."
+msgstr "Hiiren vasen nappi asettaa uuden kohteen."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid ""
@@ -8373,11 +8392,11 @@ msgstr "Voidaan uudelleennimetä"
 
 #: src/hotkey/hotkey_command.cpp:209
 msgid "Toggle the unit being renameable."
-msgstr "Vaihda yksikön uudelleennimeämistila."
+msgstr "Vaihda yksikön uudelleennimeämisen tilaa."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Change Unit ID"
-msgstr "Vaihda yksikön ID"
+msgstr "Vaihda yksikön tunnistetta"
 
 #: src/hotkey/hotkey_command.cpp:212
 msgid "Loyal"
@@ -8514,7 +8533,7 @@ msgstr "Päivitä maaston siirtymät"
 
 #: src/hotkey/hotkey_command.cpp:254
 msgid "Toggle Terrain Transition Update"
-msgstr "Vaihda maastonsiirtymien päivittely"
+msgstr "Vaihda maastonsiirtymien päivitystä"
 
 #: src/hotkey/hotkey_command.cpp:256
 msgid "Auto-update Terrain Transitions"
@@ -8522,11 +8541,11 @@ msgstr "Päivitä maaston siirtymät automaattisesti"
 
 #: src/hotkey/hotkey_command.cpp:257
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Maaston siirtymien päivitys: Ei"
+msgstr "Maaston siirtymien automaattinen päivitys: Ei"
 
 #: src/hotkey/hotkey_command.cpp:258
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Maaston siirtymien päivitys: Osittain"
+msgstr "Maaston siirtymien automaattinen päivitys: Osittain"
 
 #: src/hotkey/hotkey_command.cpp:260
 msgid "Refresh Image Cache"
@@ -8562,7 +8581,7 @@ msgstr "Lisää uusi alue"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Lisäosan julkaisueditori"
 
 #: src/hotkey/hotkey_command.cpp:271
 msgid "Change Add-on ID"
@@ -8682,7 +8701,7 @@ msgstr "Tunnistamaton komento"
 
 #: src/preferences/display.cpp:71
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Ei teemoja. Teema täytyy vaihtaa käynnissä olevasta pelistä."
+msgstr "Ei tunnettuja teemoja. Yritä vaihtaa olemassa olevasta pelistä."
 
 #: src/preferences/display.cpp:113
 msgid ""
@@ -8731,11 +8750,104 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
+#~ msgid "Missing required state for button"
+#~ msgstr "Puuttuva vaadittu tila nappia varten"
+
+#~ msgid "Missing required background for chatbox"
+#~ msgstr "Puuttuva vaadittu tausta chat-laatikkoa varten"
+
+#~ msgid "Missing required foreground for chatbox"
+#~ msgstr "Puuttuva vaadittu etuala chat-laatikkoa varten"
+
+#~ msgid "Missing required grid for chatbox"
+#~ msgstr "Puuttuva vaadittu ruudukko chat-laatikkoa varten"
+
+#~ msgid "Missing [draw] in drawing"
+#~ msgstr "Puuttuva [draw] piirustuksessa"
+
+#~ msgid "Missing required state for horizontal scrollbar"
+#~ msgstr "Puuttuva vaadittu tila vaakasuoralle vierityspalkille"
+
+#~ msgid "Missing required state for image control"
+#~ msgstr "Puuttuva vaadittu tila kuvanhallintaa varten"
+
+#~ msgid "Missing required state for text label control"
+#~ msgstr "Puuttuva vaadittu tila tekstimerkin ohjausta varten"
+
+#~ msgid "Missing required state for listbox"
+#~ msgstr "Puuttuva vaadittu tila listalaatikkoa varten"
+
+#~ msgid "Missing [content] in [matrix_definition]"
+#~ msgstr "Puuttuva [content] kohteessa [matrix_definition]"
+
+#~ msgid "Missing required state for matrix definition"
+#~ msgstr "Puuttuva vaadittu tila matriisimääritelmää varten"
+
+#~ msgid "Missing [main] in [matrix]"
+#~ msgstr "Puuttuva [main] kohteessa [matrix]"
+
+#~ msgid "Missing required state for menu button"
+#~ msgstr "Puuttuva vaadittu tila valikkonappia varten"
+
+#~ msgid "Missing required state for minimap control"
+#~ msgstr "Puuttuva vaadittu tila minikartan hallintaa varten"
+
+#~ msgid "Missing required state for multimenu button"
+#~ msgstr "Puuttuva vaadittu tila monivalikkonappia varten"
+
+#~ msgid "Missing [item_definition] in [pane]"
+#~ msgstr "Puuttuva [item_definition] kohteessa [pane]"
+
+#~ msgid "Missing required state for progress bar"
+#~ msgstr "Puuttuva vaadittu tila edistyspalkkia varten"
+
+#~ msgid "Missing required state for repeating button"
+#~ msgstr "Puuttuva vaadittu tila toistuvaa nappia varten"
+
+#~ msgid "Missing required background for scrollbar panel"
+#~ msgstr "Puuttuva vaadittu tausta vierityspaneelia varten"
+
+#~ msgid "Missing required foreground for scrollbar panel"
+#~ msgstr "Puuttuva vaadittu etuala vierityspaneelia varten"
+
+#~ msgid "Missing required grid for scrollbar panel"
+#~ msgstr "Puuttuva vaadittu tila vierityspaneelia varten"
+
+#~ msgid "Missing required state for slider"
+#~ msgstr "Puuttuva vaadittu tila liukusäädintä varten"
+
+#~ msgid "Missing required state for editable text box"
+#~ msgstr "Puuttuva vaadittu tila muokattavaa tekstilaatikkoa varten"
+
+#~ msgid "Missing required state for toggle button"
+#~ msgstr "Puuttuva vaadittu tila vaihtonappia varten"
+
+#~ msgid "Missing required state for toggle panel"
+#~ msgstr "Puuttuva vaadittu tila vaihtopaneelia varten"
+
+#~ msgid "Missing required state for tree view"
+#~ msgstr "Puuttuva vaadittu tila puunäkymää varten"
+
 #~ msgid "No grid defined for tree view"
 #~ msgstr "Puunäkymää varten ei ole määritelty ruudukkoa."
 
 #~ msgid "No node defined."
 #~ msgstr "Solmua ei ole määritetty."
+
+#~ msgid "Missing required background for unit preview pane"
+#~ msgstr "Puuttuva vaadittu tausta yksikön esikatselupaneelia varten"
+
+#~ msgid "Missing required foreground for unit preview pane"
+#~ msgstr "Puuttuva vaadittu etuala yksikön esikatselupaneelia varten"
+
+#~ msgid "Missing required grid for unit preview pane"
+#~ msgstr "Puuttuva vaadittu ruudukko yksikön esikatselupaneelia varten"
+
+#~ msgid "Missing required state for vertical scrollbar"
+#~ msgstr "Puuttuva vaadittu tila pystyvierityspalkkia varten"
+
+#~ msgid "Missing [widget] in [viewport]"
+#~ msgstr "Puuttuva [widget] kohteessa [viewport]"
 
 #~ msgid "Resolution:"
 #~ msgstr "Kuvakoko:"
