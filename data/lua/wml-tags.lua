@@ -463,7 +463,7 @@ end
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or wml.error("[terrain] missing required terrain= attribute")
 	local layer = cfg.layer or 'both'
-	if not (wesnoth.terrain_types[terrain] or layer == "overlay" and terrain == "^") then
+	if not (wesnoth.terrain_types[terrain] or (layer == "overlay" and terrain == "^")) then
 		wml.error("[terrain] invalid terrain="..terrain)
 	end
 	if layer ~= 'both' and layer ~= 'overlay' and layer ~= 'base' then
