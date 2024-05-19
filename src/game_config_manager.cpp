@@ -76,15 +76,15 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 	}
 
 	// Clean the cache of any old Wesnoth version's cache data
-	if(const std::string last_cleaned = preferences::get("_last_cache_cleaned_ver"); !last_cleaned.empty()) {
+	if(const std::string last_cleaned = preferences::last_cache_cleared_version(); !last_cleaned.empty()) {
 		if(version_info{last_cleaned} < game_config::wesnoth_version) {
 			if(cache_.clean_cache()) {
-				preferences::set("_last_cache_cleaned_ver", game_config::wesnoth_version.str());
+				preferences::set_last_cache_cleared_version(game_config::wesnoth_version.str());
 			}
 		}
 	} else {
 		// If the preference wasn't set, set it, else the cleaning will never happen :P
-		preferences::set("_last_cache_cleaned_ver", game_config::wesnoth_version.str());
+		preferences::set_last_cache_cleared_version(game_config::wesnoth_version.str());
 	}
 }
 

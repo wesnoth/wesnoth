@@ -73,7 +73,7 @@ namespace preferences {
 	void set_scroll_to_action(bool ison);
 
 	point resolution();
-	void _set_resolution(const point& res);
+	void set_resolution(const point& res);
 
 	int pixel_scale();
 	void set_pixel_scale(const int scale);
@@ -82,10 +82,10 @@ namespace preferences {
 	void set_auto_pixel_scale(bool choice);
 
 	bool maximized();
-	void _set_maximized(bool ison);
+	void set_maximized(bool ison);
 
 	bool fullscreen();
-	void _set_fullscreen(bool ison);
+	void set_fullscreen(bool ison);
 
 	bool vsync();
 	void set_vsync(bool ison);
@@ -163,7 +163,6 @@ namespace preferences {
 	void add_alias(const std::string& alias, const std::string& command);
 	optional_const_config get_alias();
 
-
 	std::string allied_color();
 	void set_allied_color(const std::string& color_id);
 
@@ -199,9 +198,6 @@ namespace preferences {
 
 	bool show_disengaged_orb();
 	void set_show_disengaged_orb(bool show_orb);
-
-	bool use_color_cursors();
-	void _set_color_cursors(bool value);
 
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
@@ -329,5 +325,19 @@ namespace preferences {
 	 * @return The most recently selected add-on id from the editor. May be an empty string.
 	 */
 	std::string editor_chosen_addon();
+
+	void set_mp_alert_option(const std::string& id, const std::string& type, bool value);
+	bool mp_alert_option(const std::string& id, const std::string& type, bool def = false);
+	bool has_mp_alert_option(const std::string& id, const std::string& type);
+
+	void set_last_cache_cleared_version(const std::string& version);
+	std::string last_cache_cleared_version();
+
+	bool get_show_deprecation(bool def);
+
+	bool get_scroll_when_mouse_outside(bool def);
+
+	void set_dir_bookmarks(const config& cfg);
+	optional_const_config dir_bookmarks();
 
 } // end namespace preferences

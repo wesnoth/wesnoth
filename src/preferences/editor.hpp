@@ -32,8 +32,6 @@ namespace editor {
 	int auto_update_transitions();
 	void set_auto_update_transitions(int value);
 
-	//std::vector<std::string>* get_editor_history();
-
 	std::string default_dir();
 
 	bool draw_terrain_codes();
