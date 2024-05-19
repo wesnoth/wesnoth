@@ -36,17 +36,17 @@ namespace
 {
 bool lobby_pref(const std::string& id)
 {
-	return preferences::get(id + "_lobby", get_def_pref_lobby(id));
+	return preferences::mp_alert_option(id, "lobby", get_def_pref_lobby(id));
 }
 
 bool sound_pref(const std::string& id)
 {
-	return preferences::get(id + "_sound", get_def_pref_sound(id));
+	return preferences::mp_alert_option(id, "sound", get_def_pref_sound(id));
 }
 
 bool notif_pref(const std::string& id)
 {
-	return preferences::get(id + "_notif", get_def_pref_notif(id));
+	return preferences::mp_alert_option(id, "notif", get_def_pref_notif(id));
 }
 
 const std::string _player_joins = "player_joins";

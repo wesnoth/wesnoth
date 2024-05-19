@@ -18,6 +18,7 @@
 
 namespace preferences
 {
+bool use_color_cursors();
 void set_color_cursors(bool value);
 
 bool show_standing_animations();
