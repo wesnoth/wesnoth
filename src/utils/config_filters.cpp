@@ -62,6 +62,10 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 		return false;
 	}
 
+	//if filter attribute is "default" check if cfg attribute equals to def.
+	if(filter[attribute] == "default" && def){
+		return (cfg[attribute].to_int(*def) == *def);
+	}
 	int value_def = def ? (*def) : 0;
 	return in_ranges<int>(cfg[attribute].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
 }
@@ -79,6 +83,10 @@ bool utils::config_filters::int_matches_if_present_or_negative(
 		if(!cfg.has_attribute(opposite) && !def) {
 			return false;
 		}
+		//if filter attribute is "default" check if cfg attribute equals to def.
+		if(filter[attribute] == "default" && def){
+			return (cfg[attribute].to_int(*def) == *def);
+		}
 		int value_def = def ? (*def) : 0;
 		return in_ranges<int>(-cfg[opposite].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
 	}
@@ -95,6 +103,10 @@ bool utils::config_filters::double_matches_if_present(const config& filter, cons
 		return false;
 	}
 
+	//if filter attribute is "default" check if cfg attribute equals to def.
+	if(filter[attribute] == "default" && def){
+		return (cfg[attribute].to_int(*def) == *def);
+	}
 	double value_def = def ? (*def) : 1;
 	return in_ranges<double>(cfg[attribute].to_double(value_def), utils::parse_ranges_real(filter[attribute].str()));
 }
