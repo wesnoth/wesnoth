@@ -266,8 +266,8 @@ private:
 	 * Save the map under a given filename. Displays an error message on failure.
 	 * @return true on success
 	 */
-	bool write_map(bool display_confirmation = false);
-	bool write_scenario(bool display_confirmation = false);
+	bool write_map(bool display_confirmation = true);
+	bool write_scenario(bool display_confirmation = true);
 
 	/**
 	 * Create a new map.

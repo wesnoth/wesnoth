@@ -25,6 +25,7 @@
 #include "units/types.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -1010,7 +1011,7 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 bool editor_edit_unit::check_id(std::string id) {
 	for(char c : id) {
 		if (!(std::isalnum(c) || c == '_' || c == ' ')) {
-			/* One bad char means entire id string is invalid */
+			// One bad char means entire id string is invalid
 			return false;
 		}
 	}
@@ -1053,8 +1054,9 @@ void editor_edit_unit::write() {
 	// Write to file
 	try {
 		filesystem::write_file(unit_path, generated_wml);
-	} catch(const filesystem::io_exception& /*e*/) {
-		// TODO : Needs an error message
+		gui2::show_transient_message("", _("Unit type saved."));
+	} catch(const filesystem::io_exception& e) {
+		gui2::show_transient_message("", e.what());
 	}
 }
 

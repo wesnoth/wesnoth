@@ -23,6 +23,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "map/label.hpp"
 #include "preferences/editor.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -834,13 +835,13 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 
 		if(!wml_stream.str().empty()) {
 			filesystem::write_file(schedule_path, wml_stream.str());
+			gui2::show_transient_message("", _("Time schedule saved."));
 		}
 
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		//TODO : Needs to be replaced with a better message later.
-		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
+		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
 
 		throw editor_map_save_exception(msg);
 	}
