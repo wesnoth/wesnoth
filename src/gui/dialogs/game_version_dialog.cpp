@@ -236,7 +236,7 @@ void game_version::pre_show(window& window)
 	// Set-up page stack and auxiliary controls last.
 	//
 
-	tabs.select_tab(0);
+	tabs.select_tab(start_page_);
 }
 
 void game_version::browse_directory_callback(const std::string& path)
