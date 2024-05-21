@@ -167,37 +167,43 @@ void custom_tod::select_file(const std::string& default_dir)
 		dn = dlg.path();
 
 		if(data.first == "image") {
-
-			// dn is absolute path, convert to wesnothian relative path
-			std::string images_dir = filesystem::get_core_images_dir();
-			bool is_in_images_dir = (dn.find(images_dir) != std::string::npos);
-
-			std::string addon_images_dir;
-			bool is_in_addon_dir = false;
-			if (!addon_id_.empty()) {
-				addon_images_dir = filesystem::get_current_editor_dir(addon_id_) + "/images";
-				is_in_addon_dir = (dn.find(addon_images_dir) != std::string::npos);
-				PLAIN_LOG << addon_images_dir;
-			}
-
-			if (is_in_images_dir) {
-				times_[current_tod_].image = dn.replace(0, images_dir.size()+1, "");
-			} else if (is_in_addon_dir) {
-				times_[current_tod_].image = dn.replace(0, addon_images_dir.size()+1, "");
-			} else {
-				// image outside wesnoth's directories
-				// copy to addon's images directory
-				times_[current_tod_].image = dn;
-			}
-
+			times_[current_tod_].image = to_wesnoth_path(dn, "images");
 		} else if(data.first == "mask") {
-			times_[current_tod_].image_mask = dn;
+			times_[current_tod_].image_mask = to_wesnoth_path(dn, "images");
 		} else if(data.first == "sound") {
-			times_[current_tod_].sounds = dn;
+			times_[current_tod_].sounds = to_wesnoth_path(dn, "sounds");
 		}
 	}
 
 	update_selected_tod_info();
+}
+
+std::string custom_tod::to_wesnoth_path(std::string abs_path, std::string asset_type)
+{
+	std::string rel_path = "";
+	std::string core_asset_dir = filesystem::get_dir(game_config::path + "/data/core/" + asset_type);
+	std::string addon_asset_dir;
+
+	bool is_in_core_dir = (abs_path.find(core_asset_dir) != std::string::npos);
+	bool is_in_addon_dir = false;
+
+	if (!addon_id_.empty()) {
+		addon_asset_dir = filesystem::get_current_editor_dir(addon_id_) + "/" + asset_type;
+		is_in_addon_dir = (abs_path.find(addon_asset_dir) != std::string::npos);
+	}
+
+	if (is_in_core_dir) {
+		rel_path = abs_path.erase(0, core_asset_dir.size()+1);
+	} else if (is_in_addon_dir) {
+		rel_path = abs_path.erase(0, addon_asset_dir.size()+1);
+	} else {
+		// image outside wesnoth's directories
+		// copy to addon's images directory
+	}
+
+	PLAIN_LOG << rel_path;
+
+	return rel_path;
 }
 
 void custom_tod::do_next_tod()

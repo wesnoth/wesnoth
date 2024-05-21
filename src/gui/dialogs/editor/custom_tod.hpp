@@ -87,6 +87,9 @@ private:
 	/** Update current TOD with values from the GUI */
 	void update_schedule();
 
+	/** Helper function to convert absolute path to wesnoth relative path */
+	std::string to_wesnoth_path(std::string abs_path, std::string asset_type);
+
 	/** ID of the current addon. The schedule file will be saved here. */
 	const std::string addon_id_;
 
