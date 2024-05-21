@@ -238,7 +238,7 @@ void editor_controller::custom_tods_dialog()
 	tod_manager& manager = *get_current_map_context().get_time_manager();
 	std::vector<time_of_day> prev_schedule = manager.times();
 
-	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time());
+	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time(), current_addon_id_);
 
 	/* Register callback to the dialog so that the map changes can be
 	 * previewed in real time.
@@ -1013,12 +1013,10 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			if(current_addon_id_ == "") {
+			if(current_addon_id_.empty()) {
 				current_addon_id_ = editor::initialize_addon();
 				context_manager_->set_addon_id(current_addon_id_);
-			}
-
-			if(current_addon_id_ != "") {
+			} else {
 				context_manager_->save_scenario_as_dialog();
 			}
 			return true;

@@ -55,8 +55,9 @@ static custom_tod::string_pair tod_getter_sound(const time_of_day& tod)
 
 REGISTER_DIALOG(custom_tod)
 
-custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time)
+custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string addon_id)
 	: modal_dialog(window_id())
+	, addon_id_(addon_id)
 	, times_(times)
 	, current_tod_(current_time)
 	, color_field_r_(register_integer("tod_red",   true))
@@ -82,8 +83,6 @@ void custom_tod::pre_show(window& window)
 	window.add_to_tab_order(find_widget<text_box>(&window, "tod_id", false, true));
 
 	for(const auto& data : metadata_stuff) {
-		find_widget<text_box>(&window, "path_" + data.first, false).set_active(false);
-
 		button& copy_w = find_widget<button>(&window, "copy_" + data.first, false);
 
 		connect_signal_mouse_left_click(copy_w,
@@ -168,7 +167,29 @@ void custom_tod::select_file(const std::string& default_dir)
 		dn = dlg.path();
 
 		if(data.first == "image") {
-			times_[current_tod_].image = dn;
+
+			// dn is absolute path, convert to wesnothian relative path
+			std::string images_dir = filesystem::get_core_images_dir();
+			bool is_in_images_dir = (dn.find(images_dir) != std::string::npos);
+
+			std::string addon_images_dir;
+			bool is_in_addon_dir = false;
+			if (!addon_id_.empty()) {
+				addon_images_dir = filesystem::get_current_editor_dir(addon_id_) + "/images";
+				is_in_addon_dir = (dn.find(addon_images_dir) != std::string::npos);
+				PLAIN_LOG << addon_images_dir;
+			}
+
+			if (is_in_images_dir) {
+				times_[current_tod_].image = dn.replace(0, images_dir.size()+1, "");
+			} else if (is_in_addon_dir) {
+				times_[current_tod_].image = dn.replace(0, addon_images_dir.size()+1, "");
+			} else {
+				// image outside wesnoth's directories
+				// copy to addon's images directory
+				times_[current_tod_].image = dn;
+			}
+
 		} else if(data.first == "mask") {
 			times_[current_tod_].image_mask = dn;
 		} else if(data.first == "sound") {
