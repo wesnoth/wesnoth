@@ -20,7 +20,6 @@
 #include "build_info.hpp"
 
 #include <map>
-
 #include <array>
 
 namespace gui2
@@ -35,7 +34,7 @@ public:
 	/**
 	 * Constructor.
 	 */
-	game_version();
+	game_version(unsigned start_page = 0);
 
 	/**
 	 * The display function.
@@ -61,6 +60,8 @@ private:
 
 	std::string report_;
 
+	unsigned start_page_;
+
 	void generate_plain_text_report();
 
 	virtual const std::string& window_id() const override;
@@ -85,8 +86,9 @@ private:
 	 * Callback function for copy-to-clipboard action buttons.
 	 *
 	 * @param path Filesystem path associated with the widget.
+	 * @param btn_id Id of the button that calls this method
 	 */
-	void copy_to_clipboard_callback(const std::string& path);
+	void copy_to_clipboard_callback(const std::string& path, const std::string btn_id);
 
 	/**
 	 * Callback function for browse-directory action buttons.
@@ -94,6 +96,20 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 */
 	void browse_directory_callback(const std::string& path);
+
+	/**
+	 * Show credits dialogs
+	 */
+	void show_credits_dialog();
+	/**
+	 * Show license
+	 */
+	void show_license();
+
+	/**
+	 * Open browser to report issue
+	 */
+	void report_issue();
 
 	/**
 	 * Callback function to re-run the version migration dialog.

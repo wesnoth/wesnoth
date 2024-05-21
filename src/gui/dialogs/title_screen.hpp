@@ -57,8 +57,6 @@ public:
 		MP_LOCAL,
 		// Start the map/scenario editor
 		MAP_EDITOR,
-		// Show credits
-		SHOW_ABOUT,
 		// Exit to desktop
 		QUIT_GAME,
 		// Used to reload all game data

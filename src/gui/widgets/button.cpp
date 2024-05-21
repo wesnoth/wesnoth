@@ -46,6 +46,7 @@ button::button(const implementation::builder_button& builder)
 	, clickable_item()
 	, state_(ENABLED)
 	, retval_(retval::NONE)
+	, success_(false)
 {
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
@@ -85,6 +86,13 @@ void button::set_state(const state_t state)
 	}
 }
 
+void button::set_success(bool success) {
+	success_ = success;
+	if (success) {
+		set_state(SUCCESS);
+	}
+}
+
 void button::signal_handler_mouse_enter(const event::ui_event event,
 										 bool& handled)
 {
@@ -99,7 +107,11 @@ void button::signal_handler_mouse_leave(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	set_state(ENABLED);
+	if (success_) {
+		set_state(SUCCESS);
+	} else {
+		set_state(ENABLED);
+	}
 	handled = true;
 }
 
@@ -163,6 +175,11 @@ button_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("button_definition][resolution", "state_disabled")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("button_definition][resolution", "state_pressed")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("button_definition][resolution", "state_focused")));
+	// state_success is optional, so error message not needed.
+	if (cfg.optional_child("state_success")) {
+		state.emplace_back(cfg.mandatory_child("state_success"));
+	}
+
 }
 
 // }---------- BUILDER -----------{
