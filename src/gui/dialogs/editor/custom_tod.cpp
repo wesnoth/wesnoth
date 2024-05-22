@@ -24,6 +24,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -31,6 +32,7 @@
 #include "gui/widgets/text_box.hpp"
 
 #include <functional>
+#include <boost/filesystem.hpp>
 
 namespace gui2::dialogs
 {
@@ -178,7 +180,7 @@ void custom_tod::select_file(const std::string& default_dir)
 	update_selected_tod_info();
 }
 
-std::string custom_tod::to_wesnoth_path(std::string abs_path, std::string asset_type)
+std::string custom_tod::to_wesnoth_path(std::string abs_path, std::string asset_type, bool copy_if_outside)
 {
 	std::string rel_path = "";
 	std::string core_asset_dir = filesystem::get_dir(game_config::path + "/data/core/" + asset_type);
@@ -197,11 +199,18 @@ std::string custom_tod::to_wesnoth_path(std::string abs_path, std::string asset_
 	} else if (is_in_addon_dir) {
 		rel_path = abs_path.erase(0, addon_asset_dir.size()+1);
 	} else {
-		// image outside wesnoth's directories
-		// copy to addon's images directory
-	}
+		// file outside, ask the user if they want to copy
+		const std::string& message
+			= _("File outside Wesnoth's data dirs. Do you wish to copy it in your add-on?");
+		bool status = gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK;
 
-	PLAIN_LOG << rel_path;
+		if (copy_if_outside && !addon_id_.empty() && status) {
+			std::string filename = boost::filesystem::path(abs_path).filename().string();
+			std::string asset_path = addon_asset_dir + "/" + filename;
+			rel_path = filename; // for example, inside images/ or sounds/, so wesnoth path same as filename
+			filesystem::copy_file(abs_path, asset_path);
+		}
+	}
 
 	return rel_path;
 }

@@ -88,7 +88,7 @@ private:
 	void update_schedule();
 
 	/** Helper function to convert absolute path to wesnoth relative path */
-	std::string to_wesnoth_path(std::string abs_path, std::string asset_type);
+	std::string to_wesnoth_path(std::string abs_path, std::string asset_type, bool copy_if_outside = true);
 
 	/** ID of the current addon. The schedule file will be saved here. */
 	const std::string addon_id_;
