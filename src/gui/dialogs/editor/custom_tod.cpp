@@ -89,7 +89,7 @@ void custom_tod::pre_show(window& window)
 		button& copy_w = find_widget<button>(&window, "copy_" + data.first, false);
 
 		connect_signal_mouse_left_click(copy_w,
-			std::bind(&custom_tod::copy_to_clipboard_callback, this, data.second));
+			std::bind(&custom_tod::copy_to_clipboard_callback, this, data));
 
 		if(!desktop::clipboard::available()) {
 			copy_w.set_active(false);
@@ -350,9 +350,13 @@ void custom_tod::update_selected_tod_info()
 	update_tod_display();
 }
 
-void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
+void custom_tod::copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data)
 {
+	std::string type = data.first;
+	tod_attribute_getter getter = data.second;
+	button& copy_w = find_widget<button>(get_window(), "copy_" + type, false);
 	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
+	copy_w.set_success(true);
 }
 
 /** Quickly preview the schedule changes and color */

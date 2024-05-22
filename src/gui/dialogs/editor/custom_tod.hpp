@@ -82,7 +82,7 @@ private:
 
 	void update_selected_tod_info();
 
-	void copy_to_clipboard_callback(tod_attribute_getter getter);
+	void copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data);
 
 	/** Update current TOD with values from the GUI */
 	void update_schedule();
