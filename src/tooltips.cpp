@@ -60,15 +60,55 @@ void tooltip::init_label()
 	rect game_canvas = video::game_canvas();
 	unsigned int border = 10;
 
+	bool mydebug=false;
+
+	rect huge;
+	huge.h=1000000;
+	huge.w=1000000;
+
 	label.set_font_size(font_size);
 	label.set_color(font::NORMAL_COLOR);
-	label.set_clip_rect(game_canvas);
-	label.set_width(text_width);
+	label.set_clip_rect(huge);  
+	label.set_width(text_width);   // If tooltip will be too tall for game_canvas, this could be scaled up appropriately
 	label.set_alignment(font::LEFT_ALIGN);
 	label.set_bg_color(bgcolor);
 	label.set_border_size(border);
 
 	label.create_texture();
+
+	point lsize = label.get_draw_size();
+	int new_text_width = text_width;
+	if(lsize.y > game_canvas.h*0.95) {
+		// The multiplier (currently 2) is hard to select, since making a texture wider is no guarantee that there will be fewer lines of text.
+		// Could just use something really big, or incrementally increase it until the texture fits vertically (or width maxes out)?
+		//
+		// This block of text is just
+		// as tall as the other one.
+		//
+		// This block of text is just as tall as the other
+		// one.
+		new_text_width = 2 * text_width * static_cast<float>(static_cast<float>(lsize.y)/game_canvas.h);
+		if(new_text_width>game_canvas.w) {
+			new_text_width=game_canvas.w;
+		}
+	}
+	if(mydebug) {LOG_FT << "lsize.x,y = " << lsize.x << "," << lsize.y << ", new_text_width = " << new_text_width;}
+
+
+//	label.clear_texture();  // couldn't figure this out  -- just commented out the check if tex_ exists in create_texture()
+
+	label.set_font_size(font_size);
+	label.set_color(font::NORMAL_COLOR);
+	label.set_clip_rect(game_canvas);  
+	label.set_width(new_text_width);   
+	label.set_alignment(font::LEFT_ALIGN);
+	label.set_bg_color(bgcolor);
+	label.set_border_size(border);
+
+	label.create_texture();
+
+	lsize = label.get_draw_size();
+	if(mydebug) {LOG_FT << "new label lsize.x,y = " << lsize.x << "," << lsize.y;}
 
 	update_label_pos();
 }
@@ -80,11 +120,31 @@ void tooltip::update_label_pos()
 	point lsize = label.get_draw_size();
 	loc = {0, 0, lsize.x, lsize.y};
 
-	// See if there is enough room to fit it above the tip area
+	bool mydebug=false;
+
+	if(mydebug) { LOG_FT << "\nupdate_label_pos() Start: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
+
 	if(origin.y > loc.h) {
+		// There is enough room to fit it above the tip area
 		loc.y = origin.y - loc.h;
-	} else {
+		if(mydebug) { LOG_FT << "\tAbove: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
+	} else if((origin.y + origin.h + loc.h) <= game_canvas.h*0.95) {
+		// There is enough room to fit it below the tip area
 		loc.y = origin.y + origin.h;
+		if(mydebug) { LOG_FT << "\tAbove: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
+	} else if(((origin.y + origin.h/2 - loc.h/2) >= 0) &&
+		  ((origin.y + origin.h/2 + loc.h/2) <= game_canvas.h*0.95)) {
+		// There is enough room to center it at the tip area
+		loc.y = origin.y + origin.h/2 - loc.h/2;	
+		if(mydebug) { LOG_FT << "\tCenter: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
+	} else if(loc.h <= game_canvas.h*0.95) {
+		// There is enough room to center it 
+		loc.y = game_canvas.h/2;
+		if(mydebug) { LOG_FT << "\tScreen Center: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
+	} else {
+		// It doesn't fit
+		loc.y = 0;
+		if(mydebug) { LOG_FT << "\tToo big: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
 	}
 
 	// Try to keep it within the screen
@@ -95,6 +155,7 @@ void tooltip::update_label_pos()
 		loc.x = game_canvas.w - loc.w;
 	}
 
+	if(mydebug) { LOG_FT << "Final: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
 	label.set_position(loc.x, loc.y);
 }
 
