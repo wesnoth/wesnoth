@@ -23,29 +23,29 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "units/types.hpp"
-#include "gui/dialogs/unit_create.hpp"
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/spinner.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/multimenu_button.hpp"
+#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/slider.hpp"
+#include "gui/widgets/spinner.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
-#include <boost/filesystem.hpp>
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/filesystem.hpp>
 #include <sstream>
 
 namespace gui2::dialogs
