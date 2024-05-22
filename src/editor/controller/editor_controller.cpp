@@ -251,12 +251,12 @@ void editor_controller::custom_tods_dialog()
 	tod_dlg.register_callback(update_func);
 
 	/* Autogenerate schedule id */
-	// TODO : sch_name should be translatable
 	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	std::string sch_id = current_addon_id_+"-schedule";
-	std::string sch_name;
+	/* Set correct textdomain */
+	t_string sch_name("", "wesnoth-"+current_addon_id_);
 
-	// TODO : Needs better error handling
+	// TODO : Needs better error handling messages
 	/* Show dialog and update current schedule */
 	if(tod_dlg.show()) {
 		/* Save the new schedule */

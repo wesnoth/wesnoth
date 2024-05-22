@@ -821,6 +821,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 		std::stringstream wml_stream;
 
 		wml_stream
+			<< "#textdomain " << current_textdomain << "\n"
 			<< "#\n"
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
