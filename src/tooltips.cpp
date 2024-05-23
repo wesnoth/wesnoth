@@ -68,7 +68,7 @@ void tooltip::init_label()
 
 	label.set_font_size(font_size);
 	label.set_color(font::NORMAL_COLOR);
-	label.set_clip_rect(huge);  
+	label.set_clip_rect(huge);
 	label.set_width(text_width);   // If tooltip will be too tall for game_canvas, this could be scaled up appropriately
 	label.set_alignment(font::LEFT_ALIGN);
 	label.set_bg_color(bgcolor);
@@ -87,28 +87,22 @@ void tooltip::init_label()
 		//
 		// This block of text is just as tall as the other
 		// one.
-		new_text_width = 2 * text_width * static_cast<float>(static_cast<float>(lsize.y)/game_canvas.h);
+		new_text_width = 2 * text_width * static_cast<float>(lsize.y)/game_canvas.h;
 		if(new_text_width>game_canvas.w) {
 			new_text_width=game_canvas.w;
 		}
 	}
 	if(mydebug) {LOG_FT << "lsize.x,y = " << lsize.x << "," << lsize.y << ", new_text_width = " << new_text_width;}
 
-
-//	label.clear_texture();  // couldn't figure this out  -- just commented out the check if tex_ exists in create_texture()
-
-	label.set_font_size(font_size);
-	label.set_color(font::NORMAL_COLOR);
-	label.set_clip_rect(game_canvas);  
-	label.set_width(new_text_width);   
-	label.set_alignment(font::LEFT_ALIGN);
-	label.set_bg_color(bgcolor);
-	label.set_border_size(border);
+	label.set_clip_rect(game_canvas);
+	label.set_width(new_text_width);
 
 	label.create_texture();
 
-	lsize = label.get_draw_size();
-	if(mydebug) {LOG_FT << "new label lsize.x,y = " << lsize.x << "," << lsize.y;}
+	if(mydebug) {
+		lsize = label.get_draw_size();
+		LOG_FT << "new label lsize.x,y = " << lsize.x << "," << lsize.y;
+	}
 
 	update_label_pos();
 }
@@ -135,10 +129,10 @@ void tooltip::update_label_pos()
 	} else if(((origin.y + origin.h/2 - loc.h/2) >= 0) &&
 		  ((origin.y + origin.h/2 + loc.h/2) <= game_canvas.h*0.95)) {
 		// There is enough room to center it at the tip area
-		loc.y = origin.y + origin.h/2 - loc.h/2;	
+		loc.y = origin.y + origin.h/2 - loc.h/2;
 		if(mydebug) { LOG_FT << "\tCenter: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
 	} else if(loc.h <= game_canvas.h*0.95) {
-		// There is enough room to center it 
+		// There is enough room to center it
 		loc.y = game_canvas.h/2;
 		if(mydebug) { LOG_FT << "\tScreen Center: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y; }
 	} else {
