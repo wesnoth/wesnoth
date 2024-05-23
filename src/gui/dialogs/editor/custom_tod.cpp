@@ -169,18 +169,18 @@ void custom_tod::select_file(const std::string& default_dir)
 		dn = dlg.path();
 
 		if(data.first == "image") {
-			times_[current_tod_].image = to_wesnoth_path(dn, "images");
+			times_[current_tod_].image = to_asset_path(dn, "images");
 		} else if(data.first == "mask") {
-			times_[current_tod_].image_mask = to_wesnoth_path(dn, "images");
+			times_[current_tod_].image_mask = to_asset_path(dn, "images");
 		} else if(data.first == "sound") {
-			times_[current_tod_].sounds = to_wesnoth_path(dn, "sounds");
+			times_[current_tod_].sounds = to_asset_path(dn, "sounds");
 		}
 	}
 
 	update_selected_tod_info();
 }
 
-std::string custom_tod::to_wesnoth_path(std::string abs_path, std::string asset_type, bool copy_if_outside)
+std::string custom_tod::to_asset_path(std::string abs_path, std::string asset_type, bool copy_if_outside)
 {
 	std::string rel_path = "";
 	std::string core_asset_dir = filesystem::get_dir(game_config::path + "/data/core/" + asset_type);
@@ -199,16 +199,18 @@ std::string custom_tod::to_wesnoth_path(std::string abs_path, std::string asset_
 	} else if (is_in_addon_dir) {
 		rel_path = abs_path.erase(0, addon_asset_dir.size()+1);
 	} else {
-		// file outside, ask the user if they want to copy
-		const std::string& message
-			= _("File outside Wesnoth's data dirs. Do you wish to copy it in your add-on?");
-		bool status = gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK;
-
-		if (copy_if_outside && !addon_id_.empty() && status) {
-			std::string filename = boost::filesystem::path(abs_path).filename().string();
-			std::string asset_path = addon_asset_dir + "/" + filename;
-			rel_path = filename; // for example, inside images/ or sounds/, so wesnoth path same as filename
-			filesystem::copy_file(abs_path, asset_path);
+		if (copy_if_outside && !addon_id_.empty()) {
+			// file outside, ask the user if they want to copy
+			const std::string& message
+				= _("This file is outside Wesnoth's data dirs. Do you wish to copy it into your add-on?");
+			bool status = (gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK);
+			if (status) {
+				std::string filename = boost::filesystem::path(abs_path).filename().string();
+				std::string asset_path = addon_asset_dir + "/" + filename;
+				// for example, inside images/ or sounds/, so wesnoth asset path same as filename
+				rel_path = filename;
+				filesystem::copy_file(abs_path, asset_path);
+			}
 		}
 	}
 
