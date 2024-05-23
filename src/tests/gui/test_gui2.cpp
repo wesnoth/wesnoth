@@ -1429,7 +1429,7 @@ template<>
 struct dialog_tester<tod_new_schedule>
 {
 	std::string id = "id";
-	std::string name = "name";
+	t_string name = "name";
 	dialog_tester() {}
 	tod_new_schedule* create()
 	{
