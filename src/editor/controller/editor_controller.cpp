@@ -994,12 +994,12 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			if(current_addon_id_ == "") {
+			if(current_addon_id_.empty()) {
 				current_addon_id_ = editor::initialize_addon();
 				context_manager_->set_addon_id(current_addon_id_);
 			}
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->new_scenario_dialog();
 			}
 			return true;
@@ -1016,7 +1016,9 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			if(current_addon_id_.empty()) {
 				current_addon_id_ = editor::initialize_addon();
 				context_manager_->set_addon_id(current_addon_id_);
-			} else {
+			}
+			
+			if(!current_addon_id_.empty()) {
 				context_manager_->save_scenario_as_dialog();
 			}
 			return true;
