@@ -707,7 +707,7 @@ void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if(input_name.empty()) {
-		input_name = filesystem::get_legacy_editor_dir()+"/scenarios";
+		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/scenarios";
 	}
 
 	gui2::dialogs::file_dialog dlg;
