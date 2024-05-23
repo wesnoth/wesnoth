@@ -87,6 +87,12 @@ private:
 	/** Update current TOD with values from the GUI */
 	void update_schedule();
 
+	/** Update image when preview is pressed */
+	void update_image(const std::string& id_stem);
+
+	/** Play sound when play is pressed */
+	void play_sound();
+
 	/** Helper function to convert absolute path to wesnoth relative path */
 	std::string to_asset_path(std::string abs_path, std::string asset_type, bool copy_if_outside = true);
 

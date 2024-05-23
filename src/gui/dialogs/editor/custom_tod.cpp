@@ -30,6 +30,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "sound.hpp"
 
 #include <functional>
 #include <boost/filesystem.hpp>
@@ -107,6 +108,18 @@ void custom_tod::pre_show(window& window)
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "browse_sound", false),
 			std::bind(&custom_tod::select_file<tod_getter_sound>, this, "data/core/sounds/ambient"));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "preview_image", false),
+		std::bind(&custom_tod::update_image, this, "image"));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "preview_mask", false),
+		std::bind(&custom_tod::update_image, this, "mask"));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "preview_sound", false),
+		std::bind(&custom_tod::play_sound, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "next_tod", false),
@@ -279,6 +292,18 @@ void custom_tod::color_slider_callback(COLOR_TYPE type)
 	}
 
 	update_tod_display();
+}
+
+void custom_tod::play_sound() {
+	std::string sound_path = find_widget<text_box>(get_window(), "path_sound", false).get_value();
+	sound::play_sound(sound_path, sound::SOUND_SOURCES);
+}
+
+void custom_tod::update_image(const std::string& id_stem) {
+	std::string img_path = find_widget<text_box>(get_window(), "path_"+id_stem, false).get_value();
+	find_widget<image>(get_window(), "current_tod_" + id_stem, false).set_label(img_path);
+
+	get_window()->invalidate_layout();
 }
 
 void custom_tod::update_tod_display()
