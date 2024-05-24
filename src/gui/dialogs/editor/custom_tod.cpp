@@ -138,7 +138,7 @@ void custom_tod::pre_show(window& window)
 			std::bind(&custom_tod::do_delete_tod, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "preview", false),
+			find_widget<button>(&window, "preview_color", false),
 			std::bind(&custom_tod::preview_schedule, this));
 
 	connect_signal_notify_modified(
