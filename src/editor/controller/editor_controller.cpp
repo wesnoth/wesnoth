@@ -402,6 +402,8 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 
 		case HOTKEY_EDITOR_PBL:
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+		case HOTKEY_EDITOR_SELECT_ADDON:
+		case HOTKEY_EDITOR_OPEN_ADDON:
 			return true;
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
@@ -1017,7 +1019,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				current_addon_id_ = editor::initialize_addon();
 				context_manager_->set_addon_id(current_addon_id_);
 			}
-			
+
 			if(!current_addon_id_.empty()) {
 				context_manager_->save_scenario_as_dialog();
 			}
