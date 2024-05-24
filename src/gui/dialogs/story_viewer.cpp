@@ -93,7 +93,7 @@ void story_viewer::pre_show(window& window)
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
 	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
-		
+
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
 	text_label.connect_signal_left_click(std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
 

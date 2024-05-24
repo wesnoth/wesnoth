@@ -101,7 +101,7 @@ public:
 			text_label->set_text_maximum_width(max_width);
 		}
 	}
-	
+
 	void connect_signal_left_click(std::function<void()> click_handler);
 
 private:
@@ -131,7 +131,7 @@ private:
 	PangoAlignment text_alignment_;
 
 	bool link_aware_;
-	
+
 	std::function<void()> click_handler_;
 
 	void finalize_subclass() override;
