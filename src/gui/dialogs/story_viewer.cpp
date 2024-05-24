@@ -20,10 +20,14 @@
 #include "display.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -87,9 +91,11 @@ void story_viewer::pre_show(window& window)
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
+	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
+
+	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
+	text_label.connect_signal_left_click(std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
 
 	// Tell the game display not to draw
 	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
@@ -113,7 +119,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<button>(get_window(), "back", false).set_active(part_index_ != 0);
+	find_widget<button>(get_window(), "prev", false).set_active(part_index_ != 0);
 
 	//
 	// Music and sound
@@ -263,6 +269,7 @@ void story_viewer::display_part()
 	std::string new_panel_mode;
 
 	switch(current_part_->story_text_location()) {
+
 		case storyscreen::part::BLOCK_TOP:
 			new_panel_mode = "top";
 			break;
@@ -301,6 +308,11 @@ void story_viewer::display_part()
 
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
 
+	// TODO Hardcoded max width, should be made customizable
+	// preferably as an key to [part]
+	unsigned win_width = get_window()->get_size().x;
+	unsigned best_text_width = (win_width < 1500) ? win_width/1.5 : 800;
+	text_label.set_text_max_width(best_text_width);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);

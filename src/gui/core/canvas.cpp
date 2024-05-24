@@ -395,7 +395,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
-text_shape::text_shape(const config& cfg)
+text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: rect_bounded_shape(cfg)
 	, font_family_(font::str_to_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"])
@@ -413,6 +413,7 @@ text_shape::text_shape(const config& cfg)
 	, highlight_end_(cfg["highlight_end"], 0)
 	, highlight_color_(cfg["highlight_color"], color_t::from_hex_string("215380"))
 	, outline_(cfg["outline"], false)
+	, actions_formula_(cfg["actions"], &functions)
 {
 	if(!font_size_.has_formula()) {
 		VALIDATE(font_size_(), _("Text has a font size of 0."));
@@ -472,6 +473,9 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	const int w = w_(local_variables);
 	const int h = h_(local_variables);
 	rect dst_rect{x, y, w, h};
+
+	// Execute the provided actions for this context.
+	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
@@ -623,7 +627,7 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "image") {
 			shapes_.emplace_back(std::make_unique<image_shape>(data, functions_));
 		} else if(type == "text") {
-			shapes_.emplace_back(std::make_unique<text_shape>(data));
+			shapes_.emplace_back(std::make_unique<text_shape>(data, functions_));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
