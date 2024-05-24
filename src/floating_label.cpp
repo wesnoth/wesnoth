@@ -106,7 +106,7 @@ rect floating_label::get_bg_rect(const rect& text_rect) const
 
 void floating_label::clear_texture()
 {
-	tex_ = {};
+	tex_.reset();
 }
 
 bool floating_label::create_texture()

@@ -33,7 +33,7 @@ namespace {
 
 static const int font_size = font::SIZE_SMALL;
 static const int text_width = 400;
-static const float height_fudge = 0.95;  // An artificial "border" to keep tip text from crowding lower edge of viewing area
+static const double height_fudge = 0.95;  // An artificial "border" to keep tip text from crowding lower edge of viewing area
 
 struct tooltip
 {
@@ -87,8 +87,10 @@ void tooltip::init_label()
 		// one.
 		//
 		// Creating this over and over may not be the most efficient route, but it will work and will be quite rare (tip taller than screen).
+		bool wont_fit = false;
 		if(new_text_width>game_canvas.w) {
 			new_text_width=game_canvas.w;
+			wont_fit = true;
 		}
 		DBG_FT << "lsize.x,y = " << lsize.x << "," << lsize.y << ", new_text_width = " << new_text_width;
 
@@ -97,8 +99,11 @@ void tooltip::init_label()
 		label.create_texture();
 
 		lsize = label.get_draw_size();
-		new_text_width *= 1.3;
 		DBG_FT << "new label lsize.x,y = " << lsize.x << "," << lsize.y;
+		if(wont_fit) {
+			break;
+		}
+		new_text_width *= 1.3;
 	}
 	// I don't know if it's strictly necessary to create the texture yet again just to make sure the clip_rect is set to game_canvas
 	// but it seems like the safe course of action.
@@ -141,15 +146,17 @@ void tooltip::update_label_pos()
 		DBG_FT << "\tToo big: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
 	}
 
+	DBG_FT << "\tBefore x adjust: loc.x,y,w,h = " << loc.x << "," << loc.y << "," << loc.w << "," << loc.h << "  origin = " << origin.x << "," << origin.y;
 	// Try to keep it within the screen
 	loc.x = origin.x;
-	if(loc.x < 0) {
-		loc.x = 0;
-	} else if(loc.x + loc.w > game_canvas.w) {
+	if(loc.x + loc.w > game_canvas.w) {
 		loc.x = game_canvas.w - loc.w;
 	}
+	if(loc.x < 0) {
+		loc.x = 0;
+	}
 
-	DBG_FT << "\tFinal: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
+	DBG_FT << "\tFinal: loc.x,y,w,h = " << loc.x << "," << loc.y << "," << loc.w << "," << loc.h << "  origin = " << origin.x << "," << origin.y;
 	label.set_position(loc.x, loc.y);
 }
 
