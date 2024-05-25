@@ -516,21 +516,17 @@ void widget::set_debug_border_color(const color_t debug_border_color)
 
 void widget::draw_debug_border()
 {
-	SDL_Rect r = redraw_action_ == redraw_action::partly
-		? calculate_clipping_rectangle()
-		: calculate_blitting_rectangle();
-
 	switch(debug_border_mode_) {
 		case debug_border::none:
 			/* DO NOTHING */
 			break;
 
 		case debug_border::outline:
-			draw::rect(r, debug_border_color_);
+			draw::rect(rect{{0, 0}, get_size()}, debug_border_color_);
 			break;
 
 		case debug_border::fill:
-			draw::fill(r, debug_border_color_);
+			draw::fill(rect{{0, 0}, get_size()}, debug_border_color_);
 			break;
 
 		default:
