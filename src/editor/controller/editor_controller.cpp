@@ -380,24 +380,25 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
 					units.find(loc) != units.end());
 		}
+
 		case HOTKEY_UNDO:
+		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return get_current_map_context().can_undo();
 		case HOTKEY_REDO:
 			return get_current_map_context().can_redo();
-		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			return get_current_map_context().can_undo();
+
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
-		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
 		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_EDIT_UNIT:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
+		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return !get_current_map_context().is_pure_map();
 
 		case HOTKEY_EDITOR_PBL:
@@ -405,6 +406,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_SELECT_ADDON:
 		case HOTKEY_EDITOR_OPEN_ADDON:
 			return true;
+
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
 			return !get_current_map_context().is_pure_map();
