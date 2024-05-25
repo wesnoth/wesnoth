@@ -214,10 +214,10 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
 		} else {
 			// Scale down any sprites larger than 72x72
-			leader_image += sprite_scale_mod;
+			leader_image += sprite_scale_mod + "~FL(horiz)";
 		}
 
-		item["label"] = leader_image + "~FL(horiz)";
+		item["label"] = leader_image;
 		data.emplace("imgLeader", item);
 
 		item["label"] = leader["leader_name"];
