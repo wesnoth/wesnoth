@@ -308,12 +308,6 @@ void story_viewer::display_part()
 	PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
 
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
-
-	// TODO Hardcoded max width, should be made customizable
-	// preferably as an key to [part]
-	unsigned win_width = get_window()->get_size().x;
-	unsigned best_text_width = (win_width < 1500) ? win_width/1.5 : 800;
-	text_label.set_text_max_width(best_text_width);
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
