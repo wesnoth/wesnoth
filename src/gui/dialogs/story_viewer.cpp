@@ -94,8 +94,9 @@ void story_viewer::pre_show(window& window)
 	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
-	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
-	text_label.connect_signal_left_click(std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
+	find_widget<scroll_label>(get_window(), "part_text", false)
+		.connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD), queue_position::front_pre_child);
 
 	// Tell the game display not to draw
 	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
