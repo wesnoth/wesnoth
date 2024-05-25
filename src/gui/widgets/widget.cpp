@@ -386,7 +386,6 @@ bool widget::draw_background()
 	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
-	draw_debug_border();
 	return impl_draw_background();
 }
 
@@ -429,6 +428,7 @@ bool widget::draw_foreground()
 	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
+	draw_debug_border();
 	return impl_draw_foreground();
 }
 
