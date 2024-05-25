@@ -2,7 +2,16 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * Prevent Dacyn from picking up a different staff (issue #8885)
+     * Reduce Barrow/Pyre Wight vulnerability to arcane
+     * Many minor bugfixes
+   * Sceptre of Fire
+     * S7: Fewer and slower enemies, to balance the buff to the Elvish Outrider unit type
+   * Tutorial
+     * Better timing for some of the hints
  ### Editor
+   * Allow loading .mask files
  ### Multiplayer
  ### Lua API
  ### Packaging
@@ -11,8 +20,14 @@
    * Updated translations: Arabic, Bengali, Bulgarian, Czech, Finnish, French, German, Italian, Norwegian, Russian, Slovak, Ukrainian
  ### Units
  ### User interface
+   * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed replays marking achievements as complete (issue #8858)
+   * Fixed build with Boost 1.85
+   * Fixed a crash in the recall dialog when turning off all sorting options (issue #8878)
+   * Fixed clicking on a trait in the sidebar sometimes opening the wrong trait’s help page
+   * Removed wesnothd’s unused threads commandline options
 
 ## Version 1.18.0
  ### Add-ons client
