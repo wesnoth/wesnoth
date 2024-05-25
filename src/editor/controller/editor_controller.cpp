@@ -17,6 +17,8 @@
 
 #include "editor/map/context_manager.hpp"
 
+#include "desktop/open.hpp"
+
 #include "editor/action/action.hpp"
 #include "editor/action/action_unit.hpp"
 #include "editor/action/action_select.hpp"
@@ -33,6 +35,7 @@
 #include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/editor/tod_new_schedule.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -841,26 +844,53 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			return true;
 
 		case HOTKEY_EDITOR_PBL:
-			if(current_addon_id_ == "") {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->edit_pbl();
 			}
 			return true;
 
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-			if(current_addon_id_ == "") {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->change_addon_id();
 			}
 			return true;
+
+		case HOTKEY_EDITOR_SELECT_ADDON:
+			current_addon_id_ = editor::initialize_addon();
+			context_manager_->set_addon_id(current_addon_id_);
+			return true;
+
+		case HOTKEY_EDITOR_OPEN_ADDON:
+		{
+			initialize_addon_if_empty();
+
+			gui2::dialogs::file_dialog dlg;
+
+			dlg.set_title(_("Add-on Files"))
+				.set_path(filesystem::get_current_editor_dir(current_addon_id_));
+
+			if (dlg.show()) {
+				std::string filepath = dlg.path();
+				if (filepath.substr(filepath.size() - 4) == ".map"
+				    || filepath.substr(filepath.size() - 4) == ".cfg") {
+					// Open map or scenario
+					context_manager_->load_map(filepath, true);
+				} else {
+					// Open file using OS application for that format
+					if (desktop::open_object_is_supported()) {
+						desktop::open_object(filepath);
+					} else {
+						gui2::show_message("", _("Opening files is not supported, contact your packager"), gui2::dialogs::message::auto_close);
+					}
+				}
+			}
+
+			return true;
+		}
 
 		case HOTKEY_EDITOR_AREA_ADD:
 			add_area();
@@ -998,10 +1028,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			if(current_addon_id_.empty()) {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
 			if(!current_addon_id_.empty()) {
 				context_manager_->new_scenario_dialog();
@@ -1017,10 +1044,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			if(current_addon_id_.empty()) {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
 			if(!current_addon_id_.empty()) {
 				context_manager_->save_scenario_as_dialog();
@@ -1111,6 +1135,13 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		default:
 			return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
+}
+
+void editor_controller::initialize_addon_if_empty() {
+	if(current_addon_id_.empty()) {
+		current_addon_id_ = editor::initialize_addon();
+	}
+	context_manager_->set_addon_id(current_addon_id_);
 }
 
 void editor_controller::show_help()

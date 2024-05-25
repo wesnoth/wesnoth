@@ -207,7 +207,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
 	std::string fn = get_map_context().get_filename();
 	if(fn.empty()) {
-		fn = filesystem::get_legacy_editor_dir()+"/maps";
+		fn = filesystem::get_current_editor_dir(current_addon_) +"/maps";
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -243,7 +243,7 @@ void context_manager::edit_side_dialog(int side_index)
 
 void context_manager::edit_pbl()
 {
-	if(current_addon_ != "") {
+	if(!current_addon_.empty()) {
 		std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
 		gui2::dialogs::editor_edit_pbl::execute(pbl, current_addon_);
 	}
@@ -908,17 +908,17 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	}
 
 	if(filesystem::ends_with(filename, ".cfg")) {
-		if(editor_controller::current_addon_id_ == "") {
+		if(editor_controller::current_addon_id_.empty()) {
 			// if no addon id has been set and the file being loaded is from an addon
 			// then use the file path to determine the addon rather than showing a dialog
 			editor_controller::current_addon_id_ = filesystem::get_addon_id_from_path(filename);
-			if(editor_controller::current_addon_id_ == "") {
+			if(editor_controller::current_addon_id_.empty()) {
 				editor_controller::current_addon_id_ = editor::initialize_addon();
 			}
 			set_addon_id(editor_controller::current_addon_id_);
 		}
 
-		if(editor_controller::current_addon_id_ == "") {
+		if(editor_controller::current_addon_id_.empty()) {
 			return;
 		}
 	}

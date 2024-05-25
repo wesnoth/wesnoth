@@ -165,6 +165,9 @@ class editor_controller : public controller_base,
 			return context_manager_->get_map_context();
 		}
 
+		/** Initialize an addon if the addon id is empty */
+		void initialize_addon_if_empty();
+
 	protected:
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event) override;

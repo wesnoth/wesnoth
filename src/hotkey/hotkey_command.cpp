@@ -105,7 +105,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 
 	{ HOTKEY_SAVE_GAME, "save", N_("Save Game"), false, scope_game, HKCAT_SAVING, "" },
 	{ HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false, scope_game, HKCAT_SAVING, "" },
-	{ HOTKEY_SAVE_MAP, "savemap", N_("Save"), false, scope_game, HKCAT_SAVING, "" },
+	{ HOTKEY_SAVE_MAP, "savemap", N_("Save Map"), false, scope_game, HKCAT_SAVING, "" },
 	{ HOTKEY_LOAD_GAME, "load", N_("Load Game"), false, scope_game | scope_main, HKCAT_SAVING, "" },
 	{ HOTKEY_RECRUIT, "recruit", N_("Recruit"), false, scope_game, HKCAT_UNITS, "" },
 	{ HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, scope_game, HKCAT_UNITS, "" },
@@ -181,7 +181,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SCENARIO_NEW, "editor-scenario-new", N_("New Scenario"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map/Scenario"), false, scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save Map"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_SCENARIO_SAVE_AS, "editor-scenario-save-as", N_("Save Scenario As"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, scope_editor, HKCAT_MAP, "" },
