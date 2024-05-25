@@ -75,8 +75,6 @@ public:
 		}
 	}
 
-	void connect_signal_left_click(std::function<void()> click_handler);
-
 private:
 	/**
 	 * Possible states of the widget.
@@ -104,8 +102,6 @@ private:
 	PangoAlignment text_alignment_;
 
 	bool link_aware_;
-
-	std::function<void()> click_handler_;
 
 	void finalize_subclass() override;
 
