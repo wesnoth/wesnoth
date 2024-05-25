@@ -456,7 +456,7 @@ struct builder_listbox : public builder_styled_widget
 	 */
 	std::vector<widget_data> list_data;
 
-	bool has_minimum_, has_maximum_;
+	bool has_minimum_, has_maximum_, allow_selection_;
 };
 
 struct builder_horizontal_listbox : public builder_styled_widget
