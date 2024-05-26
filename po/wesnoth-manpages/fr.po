@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2024-05-25 21:28-0500\n"
 "PO-Revision-Date: 2024-03-06 16:10+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -571,6 +571,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:192
+#, no-wrap
 msgid "B<--no-log-to-file>"
 msgstr "B<--no-log-to-file>"
 
@@ -586,14 +587,19 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:195
+#, no-wrap
 msgid "B<--log-to-file>"
 msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
+#, fuzzy
+#| msgid ""
+#| "log output is written to a file in addition to standard output/error. "
+#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
-"log output is written to a file in addition to standard output/error. "
-"Cancels the effect of --no-log-to-file whether implicit or explicit."
+"log output is written to a file. Cancels the effect of --no-log-to-file "
+"whether implicit or explicit."
 msgstr ""
 "Un fichier de journalisation est créé en supplément des sorties standards "
 "output/error. Annule l'effet du --no-log-to-file implicite ou donné "
@@ -601,6 +607,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:198
+#, no-wrap
 msgid "B<--wnoconsole>"
 msgstr "B<--wnoconsole>"
 
@@ -1660,7 +1667,10 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-msgid "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -2214,6 +2224,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:167
+#, no-wrap
 msgid "B<tls_enabled>"
 msgstr "B<tls_enabled>"
 
@@ -2225,6 +2236,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:170
+#, no-wrap
 msgid "B<tls_fullchain>"
 msgstr "B<tls_fullchain>"
 
@@ -2235,6 +2247,7 @@ msgstr "La chaîne du certificat TLS au format .pem "
 
 #. type: TP
 #: doc/man/wesnothd.6:173
+#, no-wrap
 msgid "B<tls_private_key>"
 msgstr "B<tls_private_key>"
 
@@ -2245,6 +2258,7 @@ msgstr "La clé privée TLS au format .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
+#, no-wrap
 msgid "B<tls_dh>"
 msgstr "B<tls_dh>"
 
@@ -2284,6 +2298,7 @@ msgstr "Exemple : B<versions_accepted=\"*\"> autorise tout type de version."
 
 #. type: TP
 #: doc/man/wesnothd.6:185
+#, no-wrap
 msgid "B<id>"
 msgstr "B<id>"
 

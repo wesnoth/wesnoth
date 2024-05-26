@@ -162,16 +162,16 @@ restart (перезагрузка) запросы будут проигнори�
 Определяет будет ли сервер сохранять повторы игр (по умолчанию: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Разрешает использование TLS. Требует указать три следующие опции.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+Полный TLS\-сертификат в формате .pem
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+приватный TLS\-ключ в формате .pem
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+DH\-параметры TLS, как файл .pem. Генерируйте через \fBopenssl dhparam \-out
 filename.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
@@ -181,9 +181,9 @@ filename.pem 4096\fP
 Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+ID сервера, на котором вы используете функционал базы данных, чтобы хранить
+игровую информацию. Как правило, формат: major.minor версия допустимых
+клиентов, таких как 1.16 или 1.17.
 .
 .SS "Глобальные тэги:"
 .
@@ -246,8 +246,8 @@ MySQL. В cmake она включается при помощи \fBENABLE_MYSQL\
 Пароль пользвателя
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее
+всего, это <table\-prefix>_users (т.е. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Название таблицы, в которой wesnothd сохранит свои данные об играх.
@@ -264,23 +264,22 @@ likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 используемых в игре.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Название таблицы, где Ваш phpbb форум хранит данные о группах
+пользователей. Скорее всего это <table\-prefix>_user_group (напр.,
+phpbb3_user_group).
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+Имя таблицы, где хранятся времена захода/выхода с сервера. Можно также
+использовать для того, чтобы сопоставлять IP с пользователями, и наоборот.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+Название таблицы где ваш phpbb форум хранит данные о тредах (темах). Скорее
+всего, это <table\-prefix>_topics (т.е. phpbb3_users).
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+Название таблицы где ваш phpbb форум хранит данные о заблокированных
+пользователях. Скорее всего, это <table\-prefix>_users
+(т.е. phpbb3_users).
 .TP 
 \fBmp_mod_group\fP
 Идентификатор группы пользователей форума, имеющих полномочия модератора.

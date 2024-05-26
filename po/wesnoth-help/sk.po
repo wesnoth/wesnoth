@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-17 19:07-0500\n"
+"POT-Creation-Date: 2024-05-25 21:28-0500\n"
 "PO-Revision-Date: 2023-11-01 14:44+0100\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: Slovenčina\n"
@@ -17,6 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Generator: Poedit 3.4\n"
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr "arkánny"
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:549
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+"Tento útok kombinuje arkánny typ s typom použitej zbrane, takže odolnosť "
+"voči arkánnemu typu používateľa nepenalizuje."
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:550
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
+"Táto jednotka môže použiť arkánny typ, keď je naň protivník obzvlášť citlivý "
+"vo vzťahu k zbrani, na ktorú je použitý."
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -2230,8 +2256,8 @@ msgstr "Hra"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:477
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:501
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -4745,9 +4771,9 @@ msgid ""
 "‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
-"Tieto príkazy môžu byť vyvolané z príkazového riadka použitím predpony ':' "
-"(ako je zobrazené tu) alebo cez rozhovor použitím predpony '/' (stlač najprv "
-"'m' na zobrazenie riadka rozhovoru).\n"
+"Tieto príkazy môžu byť vyvolané z príkazového riadka použitím predpony "
+"':' (ako je zobrazené tu) alebo cez rozhovor použitím predpony '/' (stlač "
+"najprv 'm' na zobrazenie riadka rozhovoru).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -6640,29 +6666,6 @@ msgstr ""
 "Táto jednotka dokáže spomaliť svojich nepriateľov, zmenší ich rýchlosť "
 "pohybu a spôsobené zranenie na polovicu, až kým neukončia ťah."
 
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
-msgid "arcane"
-msgstr "arkánny"
-
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
-msgid ""
-"This attack combines the arcane type with the type of weapon used so that "
-"resistance to the arcane type does not penalize the user."
-msgstr ""
-"Tento útok kombinuje arkánny typ s typom použitej zbrane, takže odolnosť "
-"voči arkánnemu typu používateľa nepenalizuje."
-
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
-msgid ""
-"This unit can use the arcane type when the opponent is particularly "
-"sensitive to it in relation to the weapon on which it is applied."
-msgstr ""
-"Táto jednotka môže použiť arkánny typ, keď je naň protivník obzvlášť citlivý "
-"vo vzťahu k zbrani, na ktorú je použitý."
-
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -8367,7 +8370,7 @@ msgstr ""
 "neumožňuje vodcovi na pripojenej pevnosti verbovať na tento šesťuhoľník."
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:603
+#: src/help/help_topic_generators.cpp:604
 msgid "Special Notes:"
 msgstr "Špeciálne Poznámky:"
 
@@ -8387,152 +8390,152 @@ msgstr "Obranné vlastnosti: "
 msgid "Level"
 msgstr "Úroveň"
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances from: "
 msgstr "Povýšený z: "
 
-#: src/help/help_topic_generators.cpp:362
+#: src/help/help_topic_generators.cpp:363
 msgid "Advances to: "
 msgstr "Povýšený na: "
 
-#: src/help/help_topic_generators.cpp:391
+#: src/help/help_topic_generators.cpp:392
 msgid "Base unit: "
 msgstr "Základná jednotka: "
 
-#: src/help/help_topic_generators.cpp:396
+#: src/help/help_topic_generators.cpp:397
 msgid "Base units: "
 msgstr "Základné jednotky: "
 
-#: src/help/help_topic_generators.cpp:414
+#: src/help/help_topic_generators.cpp:415
 msgid "Variations: "
 msgstr "Variácie: "
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:439
 msgid "race^Miscellaneous"
 msgstr "Rôzne"
 
-#: src/help/help_topic_generators.cpp:440
+#: src/help/help_topic_generators.cpp:441
 msgid "Race: "
 msgstr "Rasa: "
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:511
 msgid "Abilities: "
 msgstr "Schopnosti: "
 
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:537
 msgid "Ability Upgrades: "
 msgstr "Zvýšenie schopností: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:566
+#: src/help/help_topic_generators.cpp:567
 msgid "HP:"
 msgstr "Životy:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:570
+#: src/help/help_topic_generators.cpp:571
 msgid "Moves:"
 msgstr "Kroky:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:575
+#: src/help/help_topic_generators.cpp:576
 msgid "Vision:"
 msgstr "Videnie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:582
 msgid "Jamming:"
 msgstr "Blokovanie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:586
+#: src/help/help_topic_generators.cpp:587
 msgid "Cost:"
 msgstr "Cena:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:590
+#: src/help/help_topic_generators.cpp:591
 msgid "Alignment:"
 msgstr "Príslušnosť:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:597
+#: src/help/help_topic_generators.cpp:598
 msgid "Required XP:"
 msgstr "Potrebné skúsenosti:"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:616
 msgid "unit help^Attacks"
 msgstr "Útoky"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:623
 msgid "unit help^Name"
 msgstr "Názov"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:624
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:625
 msgid "Range"
 msgstr "Dosah"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:626
 msgid "Type"
 msgstr "Typ"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:627
 msgid "Special"
 msgstr "Špeciálne"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:702
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:706
 msgid "Attack Type"
 msgstr "Typ útoku"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:707
 msgid "Resistance"
 msgstr "Odolnosť"
 
-#: src/help/help_topic_generators.cpp:736
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain Modifiers"
 msgstr "Modifikátory terénu"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:741
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:742
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:743
 msgid "Movement Cost"
 msgstr "Cena pohybu"
 
-#: src/help/help_topic_generators.cpp:746
+#: src/help/help_topic_generators.cpp:747
 msgid "Defense Cap"
 msgstr "Limit obrany"
 
-#: src/help/help_topic_generators.cpp:751
+#: src/help/help_topic_generators.cpp:752
 msgid "Vision Cost"
 msgstr "Cena videnia"
 
-#: src/help/help_topic_generators.cpp:755
+#: src/help/help_topic_generators.cpp:756
 msgid "Jamming Cost"
 msgstr "Cena blokovania"
 

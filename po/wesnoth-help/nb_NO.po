@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-17 19:07-0500\n"
+"POT-Creation-Date: 2024-05-25 21:28-0500\n"
 "PO-Revision-Date: 2024-05-02 18:08+0200\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -17,6 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr "arkan"
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:549
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+"Dette angrepet kombinerer den arkanske typen med våpentypen som brukes, slik "
+"at motstand mot den arkanske typen ikke straffer brukeren."
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:550
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
+"Denne enheten kan bruke den arkanske typen når motstanderen er spesielt "
+"følsom for det i forhold til våpenet det brukes på."
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -1652,8 +1678,8 @@ msgstr "Spillets gang"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:477
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:501
 msgid "Traits"
 msgstr "Karaktertrekk"
 
@@ -6088,29 +6114,6 @@ msgstr ""
 "Denne enheten er i stand til å lamslå fienden og dermed forstyrre "
 "kontrollsonene deres."
 
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
-msgid "arcane"
-msgstr "arkan"
-
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
-msgid ""
-"This attack combines the arcane type with the type of weapon used so that "
-"resistance to the arcane type does not penalize the user."
-msgstr ""
-"Dette angrepet kombinerer den arkanske typen med våpentypen som brukes, slik "
-"at motstand mot den arkanske typen ikke straffer brukeren."
-
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
-msgid ""
-"This unit can use the arcane type when the opponent is particularly "
-"sensitive to it in relation to the weapon on which it is applied."
-msgstr ""
-"Denne enheten kan bruke den arkanske typen når motstanderen er spesielt "
-"følsom for det i forhold til våpenet det brukes på."
-
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -7252,7 +7255,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:603
+#: src/help/help_topic_generators.cpp:604
 msgid "Special Notes:"
 msgstr "Spesielle merknader:"
 
@@ -7272,67 +7275,67 @@ msgstr ""
 msgid "Level"
 msgstr "Nivå"
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances from: "
 msgstr "Forfremmes fra: "
 
-#: src/help/help_topic_generators.cpp:362
+#: src/help/help_topic_generators.cpp:363
 msgid "Advances to: "
 msgstr "Forfremmes til: "
 
-#: src/help/help_topic_generators.cpp:391
+#: src/help/help_topic_generators.cpp:392
 msgid "Base unit: "
 msgstr "Basisenhet: "
 
-#: src/help/help_topic_generators.cpp:396
+#: src/help/help_topic_generators.cpp:397
 msgid "Base units: "
 msgstr "Basisenheter: "
 
-#: src/help/help_topic_generators.cpp:414
+#: src/help/help_topic_generators.cpp:415
 msgid "Variations: "
 msgstr "Variasjoner: "
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:439
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help/help_topic_generators.cpp:440
+#: src/help/help_topic_generators.cpp:441
 msgid "Race: "
 msgstr "Rase: "
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:511
 msgid "Abilities: "
 msgstr "Evner: "
 
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:537
 msgid "Ability Upgrades: "
 msgstr "Oppgradering av evner: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:566
+#: src/help/help_topic_generators.cpp:567
 msgid "HP:"
 msgstr "HP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:570
+#: src/help/help_topic_generators.cpp:571
 msgid "Moves:"
 msgstr "Flytt:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:575
+#: src/help/help_topic_generators.cpp:576
 msgid "Vision:"
 msgstr "Syn:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:582
 #, fuzzy
 msgid "Jamming:"
 msgstr "sverm"
@@ -7340,85 +7343,85 @@ msgstr "sverm"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:586
+#: src/help/help_topic_generators.cpp:587
 msgid "Cost:"
 msgstr "Kostnad:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:590
+#: src/help/help_topic_generators.cpp:591
 msgid "Alignment:"
 msgstr "Sinnelag:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:597
+#: src/help/help_topic_generators.cpp:598
 msgid "Required XP:"
 msgstr "Nødvendig EP:"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:616
 msgid "unit help^Attacks"
 msgstr "Angrep"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:623
 msgid "unit help^Name"
 msgstr "Navn"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:624
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:625
 msgid "Range"
 msgstr "Rekkevidde"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:626
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:627
 msgid "Special"
 msgstr "Spesial"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:702
 msgid "Resistances"
 msgstr "Motstander"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:706
 msgid "Attack Type"
 msgstr "Angrepstype"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:707
 msgid "Resistance"
 msgstr "Motstand"
 
-#: src/help/help_topic_generators.cpp:736
+#: src/help/help_topic_generators.cpp:737
 msgid "Terrain Modifiers"
 msgstr "Terrengmodifikatorer"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:741
 msgid "Terrain"
 msgstr "Terreng"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:742
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:743
 msgid "Movement Cost"
 msgstr "Forflytningskostnad"
 
-#: src/help/help_topic_generators.cpp:746
+#: src/help/help_topic_generators.cpp:747
 msgid "Defense Cap"
 msgstr "Forsvarstak"
 
-#: src/help/help_topic_generators.cpp:751
+#: src/help/help_topic_generators.cpp:752
 msgid "Vision Cost"
 msgstr "Synskostnad"
 
-#: src/help/help_topic_generators.cpp:755
+#: src/help/help_topic_generators.cpp:756
 msgid "Jamming Cost"
 msgstr ""
 

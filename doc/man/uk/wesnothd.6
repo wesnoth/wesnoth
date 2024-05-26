@@ -1,0 +1,312 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2022 wesnothd "Мережний даемон мультиплеєру Битви за Веснот"
+.
+.SH НАЗВА
+.
+wesnothd \- мережний демон мультиплеєру Битви за \fBВеснот\fP
+.
+.SH ОГЛЯД
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIшлях\fP\|] [\|\fB\-p\fP \fIпорт\fP\|] [\|\fB\-t\fP
+\fIчисло\fP\|] [\|\fB\-T\fP \fIчисло\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH ОПИС
+.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
+.
+.SH ОПЦІЇ
+.
+.TP 
+\fB\-c\ \fP\fIшлях\fP\fB,\ \-\-config\fP\fI\ шлях\fP
+вказує де розміщений конфігураційний файл wesnothd. Див. \fBПАРАМЕТРИ
+СЕРВЕРА\fP нижче для опису синтаксису. Ви можете перезавантажити файл
+параметрів відправивши сигнал SIGHUP серверному процесу.
+.TP 
+\fB\-d, \-\-daemon\fP
+стартує wesnothd резидентно.
+.TP 
+\fB\-h, \-\-help\fP
+повідомляє, що роблять параметри командного рядка.
+.TP 
+\fB\-\-log\-\fP\fIрівень\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
+встановити рівень серйозності налагоджувальних доменів. \fBall\fP відповідає
+будь\-якому домену. Доступні рівні: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. За замовчуванням використовується рівень \fBerror\fP, а для домену
+\fBserver\fP \- рівень \fBinfo\fP.
+.TP 
+\fB\-p\ \fP\fIпорт\fP\fB,\ \-\-port\fP\fI\ порт\fP
+прив'язує сервер до зазначеного порту. Якщо порт не вказаний,
+використовується порт \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIчисло\fP\fB,\ \-\-threads\fP\fI\ число\fP
+встановити максимальну кількість робочих потоків для мережевого вводу\-виводу
+n (типовое \fB5\fP,\ макс:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIчисло\fP\fB,\ \-\-max\-threads\fP\fI\ число\fP
+встановити максимальну кількість створюваних робочих потоків. Якщо заданий
+\fB0\fP, то обмежень немає (типово: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+показати версію та вийти.
+.TP 
+\fB\-v, \-\-verbose\fP
+вмикає журнал налагодження.
+.
+.SH "ПАРАМЕТРИ СЕРВЕРА"
+.
+.SS "Узагальнений синтаксис:"
+.
+.P
+[\fIтег\fP]
+.IP
+\fIключ\fP="\fIзначення\fP"
+.IP
+\fIключ\fP="\fIзначення\fP,\fIзначення\fP,..."
+.P
+[/\fIтег\fP]
+.
+.SS "Глобальні ключі:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Якщо встановлено \fBno\fP (типово), запити вимкнення та переапуску (shut_down і
+restart) будуть проігноровані, тільки якщо вони не прийшли з fifo. Вкажіть
+\fByes\fP щоб дозволити віддалене вимикання адміністратором через /query.
+.TP 
+\fBban_save_file\fP
+Повний або відносний шлях до файлу (в форматі gzip), який сервер може читати
+і записувати. Бани будуть зберігатися тут і завантажуватися при старті
+сервера.
+.TP 
+\fBcompress_stored_rooms\fP
+Визначає, чи файл кімнат повинен бути прочитаний та записаний в стислому
+вигляді. Типово \- \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+К\-сть дозволених під'єднань з однієї IP\-адреси. \fB0\fP значить
+необмежено. (типове: \fB5\fP)
+.TP 
+\fBdeny_unregistered_login\fP
+Whether to prevent users who are not registered with the \fBuser_handler\fP
+being used from logging in. (default: false)
+.TP 
+\fBdisallow_names\fP
+Імена/ніки, які не приймаються сервером. Підтримуються шаблони підстановки
+\fB*\fP та \fB?\fP. Також дивіться \fBglob\fP(7). Стандартні значення
+(використовуються, якщо нічого не зазначено)::
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+Кількість дозволених повідомлень за \fBmessages_time_period\fP. (типово: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Відрізок часу (в секундах), протягом якого визначається флуд
+повідомлень. (типово: \fB10\fP секунд)
+.TP 
+\fBmotd\fP
+Повідомлення дня.
+.TP 
+\fBnew_room_policy\fP
+Визначає, хто може створювати нові кімнати на сервері. Доступні значення
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP та \fBnobody\fP, вони дають дають дозвіл
+відповідно всім, зареєстрованим користувачам, адміністраторам або забороняє
+створення нових кімнат. Типове значення \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+Пароль для отримання прав адміністратора (через \fB/query admin \fP\fIпароль\fP).
+.TP 
+\fBreplay_save_path\fP
+Директорія, де сервер зберігає повтори ігор. (Не забудьте косу риску / в
+кінці!) Типове значення `' що означає директорію з якої запущений wesnothd.
+.TP 
+\fBrestart_command\fP
+Команда, яку використовує сервер, щоб запустити новий серверний процес за
+допомогою команди \fBrestart\fP. (Може бути заданий лише через
+fifo. Див. параметр \fBallow_remote_shutdown\fP).
+.TP 
+\fBroom_save_file\fP
+Шлях до файлу, в якому зберігаються дані кімнати. Цей файл читається при
+старті сервера і пишеться пізніше. Якщо порожній або не заданий, кімнати не
+завантажуються і не зберігаються.
+.TP 
+\fBsave_replays\fP
+Визначає чи буде сервер автоматично зберігати повтори ігор (типово:
+\fBfalse\fP)
+.TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+Перелік версій, що сприймаються сервером, розділені комами. Підтримуються
+шаблони підстановки \fB*\fP and \fB?\fP.  (скидає на відповідну версію wesnoth)
+.br
+Приклад: \fBversions_accepted="*"\fP приймає рядок з будь\-якою версією.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
+.
+.SS "Глобальні теги:"
+.
+.P
+\fB[redirect]\fP Тег, який вказує перенаправлення на сервер для певної версії
+клієнта. Не використовується, якщо \fBversions_accepted\fP не встановлено.
+.RS
+.TP 
+\fBhost\fP
+Адреса сервера для перенаправлення.
+.TP 
+\fBport\fP
+Порт для під'єднання.
+.TP 
+\fBversion\fP
+Перелік версій для перенаправлення, розділених комами. При використанні
+шаблонів підстановки поводиться аналогічно \fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP Тег, щоб задати зручні ключові слова для часових періодів
+тимчасового бану.
+.RS
+.TP 
+\fBname\fP
+Ім'я, що відповідає посиланню на час бану.
+.TP 
+\fBtime\fP
+Визначення тривалості часу. Формат:  %d[%s[%d%s[...]]] де %s це s (секунди),
+m (хвилини), h (години), D (дні), M (місяці) чи Y (роки) а %d це число. Якщо
+формат не вказаний, передбачається що час вказано у хвилинах (m). Приклад:
+\fBtime="1D12h30m"\fP призводить до бану на 1 день, 12 годин і 30 хвилин.
+.RE
+.P
+\fB[proxy]\fP Тег вказує серверу працювати в якості проксі і передавати вхідні
+запити користувачів на вказаний сервер. Приймає ті ж ключі, що і
+\fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+.RS
+.TP 
+\fBdb_host\fP
+Назва хосту серверу бази даних
+.TP 
+\fBdb_name\fP
+Назва бази даних
+.TP 
+\fBdb_user\fP
+The name of the user under which to log into the database
+.TP 
+\fBdb_password\fP
+Пароль цього користувача
+.TP 
+\fBdb_users_table\fP
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+The name of the table in which wesnothd will save its own data about users.
+.TP 
+\fBdb_game_info_table\fP
+The name of the table in which wesnothd will save its own data about games.
+.TP 
+\fBdb_game_player_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+players in a game.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
+.TP 
+\fBmp_mod_group\fP
+The ID of the forum group to be considered as having moderation authority.
+.RE
+.
+.SH "КОД ВИХОДУ"
+.
+Якщо сервер закінчив роботу правильно, код виходу рівний 0. Код виходу 2
+означає що в параметрах командного рядка були помилки.
+.
+.SH АВТОР
+.
+Написана Девідом Уайтом (David White)
+<davidnwhite@verizon.net>. Відредагована Нільсом Кнойпером (Nils
+Kneuper) <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> та Томасом Баумхауером (Thomas
+Baumhauer) <thomas.baumhauer@gmail.com>. Початковий автор сторінки \-
+Cyril Bouthors <cyril@bouthors.org>.
+.br
+Завіиайие на офіційну сторінку: https://www.wesnoth.org/
+.
+.SH "АВТОРСЬКІ ПРАВА"
+.
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+.br
+Це Вільне Програмне Забезпечення; воно ліцензоване під ліцензією GPL версії
+2, що опублікована Free Software Foundation. Гарантії НЕ надаються; ні щодо
+ПРОДАЖУ, ні щодо ПРИДАТНОСТІ ДЛЯ КОНКРЕТНИХ ЦІЛЕЙ.
+.
+.SH "ДИВ. ТАКОЖ"
+.
+\fBwesnoth\fP(6)
+

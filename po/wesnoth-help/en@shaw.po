@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-17 19:07-0500\n"
+"POT-Creation-Date: 2024-05-25 21:28-0500\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -21,6 +21,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:549
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage_type]: id=arcane_damage
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:550
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -1665,8 +1687,8 @@ msgstr "𐑜𐑱𐑥𐑐𐑤𐑱"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:477
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:478
+#: src/help/help_topic_generators.cpp:501
 msgid "Traits"
 msgstr "𐑑𐑮𐑱𐑑𐑕"
 
@@ -5984,25 +6006,6 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑱𐑚𐑩𐑤 𐑑 𐑕𐑤𐑴 𐑦𐑑𐑕 𐑧𐑯𐑦𐑥𐑦𐑟, 𐑣𐑨𐑝𐑦𐑙 𐑞𐑺 𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑕𐑐𐑰𐑛 𐑯 𐑩𐑑𐑨𐑒 𐑛𐑨𐑥𐑦𐑡 𐑳𐑯𐑑𐑦𐑤 "
 "𐑞𐑱 𐑧𐑯𐑛 𐑩 𐑑𐑻𐑯."
 
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
-msgid "arcane"
-msgstr ""
-
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
-msgid ""
-"This attack combines the arcane type with the type of weapon used so that "
-"resistance to the arcane type does not penalize the user."
-msgstr ""
-
-#. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
-msgid ""
-"This unit can use the arcane type when the opponent is particularly "
-"sensitive to it in relation to the weapon on which it is applied."
-msgstr ""
-
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -7397,7 +7400,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:603
+#: src/help/help_topic_generators.cpp:604
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -7431,54 +7434,54 @@ msgstr ""
 msgid "Level"
 msgstr "𐑤𐑧𐑝𐑩𐑤"
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:361
 msgid "Advances from: "
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑩𐑟 𐑓𐑮𐑪𐑥: "
 
-#: src/help/help_topic_generators.cpp:362
+#: src/help/help_topic_generators.cpp:363
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "𐑩𐑛𐑝𐑭𐑯𐑕𐑩𐑟 𐑓𐑮𐑪𐑥: "
 
-#: src/help/help_topic_generators.cpp:391
+#: src/help/help_topic_generators.cpp:392
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base unit: "
 msgstr "𐑑𐑻𐑱𐑯"
 
-#: src/help/help_topic_generators.cpp:396
+#: src/help/help_topic_generators.cpp:397
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base units: "
 msgstr "𐑑𐑻𐑱𐑯"
 
-#: src/help/help_topic_generators.cpp:414
+#: src/help/help_topic_generators.cpp:415
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "𐑓𐑨𐑒𐑖𐑩𐑯𐑟:"
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:439
 msgid "race^Miscellaneous"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕"
 
-#: src/help/help_topic_generators.cpp:440
+#: src/help/help_topic_generators.cpp:441
 msgid "Race: "
 msgstr "𐑮𐑱𐑕: "
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:511
 msgid "Abilities: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦𐑟: "
 
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:537
 msgid "Ability Upgrades: "
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦 𐑩𐑐𐑜𐑮𐑱𐑛𐑟: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:566
+#: src/help/help_topic_generators.cpp:567
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -7487,7 +7490,7 @@ msgstr "HP: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:570
+#: src/help/help_topic_generators.cpp:571
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -7496,14 +7499,14 @@ msgstr "𐑥𐑵𐑝𐑟: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:575
+#: src/help/help_topic_generators.cpp:576
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:582
 #, fuzzy
 msgid "Jamming:"
 msgstr "𐑕𐑢𐑹𐑥"
@@ -7511,7 +7514,7 @@ msgstr "𐑕𐑢𐑹𐑥"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:586
+#: src/help/help_topic_generators.cpp:587
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -7520,7 +7523,7 @@ msgstr "𐑒𐑪𐑕𐑑: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:590
+#: src/help/help_topic_generators.cpp:591
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -7529,77 +7532,77 @@ msgstr "𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:597
+#: src/help/help_topic_generators.cpp:598
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "𐑮𐑦𐑒𐑢𐑲𐑼𐑛 XP: "
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:616
 msgid "unit help^Attacks"
 msgstr "𐑩𐑑𐑨𐑒𐑕"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:623
 msgid "unit help^Name"
 msgstr "𐑯𐑱𐑥"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:624
 msgid "Strikes"
 msgstr "𐑕𐑑𐑮𐑲𐑒𐑕"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:625
 msgid "Range"
 msgstr "𐑮𐑱𐑯𐑡"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:626
 msgid "Type"
 msgstr "𐑑𐑲𐑐"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:627
 msgid "Special"
 msgstr "𐑕𐑐𐑧𐑖𐑩𐑤"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:702
 msgid "Resistances"
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕𐑩𐑟"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:706
 msgid "Attack Type"
 msgstr "𐑩𐑑𐑨𐑒 𐑑𐑲𐑐"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:707
 msgid "Resistance"
 msgstr "𐑮𐑦𐑟𐑦𐑕𐑑𐑩𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:736
+#: src/help/help_topic_generators.cpp:737
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "𐑑𐑻𐑱𐑯 𐑥𐑪𐑛𐑦𐑓𐑲𐑼𐑟"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:741
 msgid "Terrain"
 msgstr "𐑑𐑻𐑱𐑯"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:742
 msgid "Defense"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:743
 msgid "Movement Cost"
 msgstr "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
 
-#: src/help/help_topic_generators.cpp:746
+#: src/help/help_topic_generators.cpp:747
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "𐑛𐑦𐑓𐑧𐑯𐑕"
 
-#: src/help/help_topic_generators.cpp:751
+#: src/help/help_topic_generators.cpp:752
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:755
+#: src/help/help_topic_generators.cpp:756
 msgid "Jamming Cost"
 msgstr ""
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-17 19:07-0500\n"
+"POT-Creation-Date: 2024-05-25 21:28-0500\n"
 "PO-Revision-Date: 2023-09-10 09:01+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2380,9 +2380,9 @@ msgstr "消息等待中"
 #: data/gui/widget/window_default.cfg:106
 #: data/gui/window/achievements_dialog.cfg:306
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:201
-#: data/gui/window/end_credits.cfg:145
+#: data/gui/window/community_dialog.cfg:176 data/gui/window/end_credits.cfg:145
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:637
+#: data/gui/window/game_stats.cfg:843 data/gui/window/game_version.cfg:649
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
@@ -2454,7 +2454,7 @@ msgstr "在本地保存密码（明文）"
 #: data/gui/window/editor_edit_scenario.cfg:287
 #: data/gui/window/editor_edit_side.cfg:469 data/gui/window/file_dialog.cfg:437
 #: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
-#: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
+#: data/gui/window/logging.cfg:259
 #: data/gui/window/migrate_version_selection.cfg:114
 #: data/gui/window/mp_change_control.cfg:203
 #: data/gui/window/mp_faction_select.cfg:381
@@ -2494,7 +2494,7 @@ msgstr "确定"
 #: data/gui/window/file_dialog.cfg:450 data/gui/window/file_progress.cfg:94
 #: data/gui/window/folder_create.cfg:133 data/gui/window/game_load.cfg:651
 #: data/gui/window/game_save.cfg:134 data/gui/window/label_settings.cfg:149
-#: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:269
+#: data/gui/window/language_selection.cfg:305 data/gui/window/logging.cfg:269
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_connect.cfg:314
 #: data/gui/window/mp_create_game/default_resolution.cfg:460
@@ -2648,7 +2648,7 @@ msgstr "依赖项目："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1095
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1097
 msgid "addon_dependencies^None"
 msgstr "无"
 
@@ -2661,7 +2661,7 @@ msgstr "翻译："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1109
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1111
 msgid "translations^None"
 msgstr "无"
 
@@ -2687,8 +2687,8 @@ msgstr "标签："
 #. [button]: id=language
 #: data/gui/window/addon_manager.cfg:870
 #: data/gui/window/editor_edit_pbl.cfg:257
-#: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:491
+#: data/gui/window/language_selection.cfg:227
+#: data/gui/window/title_screen.cfg:492
 msgid "Language"
 msgstr "语言"
 
@@ -2944,13 +2944,58 @@ msgid "Copy this log to clipboard"
 msgstr "将此日志复制到剪贴板"
 
 #. [label]
+#. [grid]
+#. On the title screen, this is the button to open the "Community" dialog, a multi-tab dialog which also includes the “About” info.
+#. Within the “Community” dialog, this chooses a tab with links to various Wesnoth websites.
+#: data/gui/window/community_dialog.cfg:42 data/gui/window/title_screen.cfg:262
+msgid "Community"
+msgstr ""
+
+#. [button]: id=forums
+#. this is on a button that opens the Wesnoth forums webpage
+#: data/gui/window/community_dialog.cfg:63
+msgid "Forums"
+msgstr ""
+
+#. [button]: id=discord
+#. this is on a button that opens the Wesnoth Discord server webpage
+#: data/gui/window/community_dialog.cfg:82
+msgid "Discord"
+msgstr ""
+
+#. [button]: id=irc
+#. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
+#: data/gui/window/community_dialog.cfg:101
+msgid "IRC"
+msgstr ""
+
+#. [button]: id=steam
+#. this is on a button that opens the Wesnoth Steam forums webpage
+#: data/gui/window/community_dialog.cfg:120
+msgid "Steam"
+msgstr ""
+
+#. [button]: id=reddit
+#. this is on a button that opens the Wesnoth Reddit webpage
+#: data/gui/window/community_dialog.cfg:139
+msgid "Reddit"
+msgstr ""
+
+#. [button]: id=donate
+#. this is on a button that opens the Wesnoth SPI webpage for sending donations
+#: data/gui/window/community_dialog.cfg:158
+msgid "Donate"
+msgstr ""
+
+#. [label]
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
 msgstr "读取核心"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/core_dialog.cfg:228 src/preferences/display.cpp:119
+#: data/gui/window/core_dialog.cfg:228
+#: data/gui/window/language_selection.cfg:293 src/preferences/display.cpp:119
 msgid "Select"
 msgstr "选择"
 
@@ -3721,7 +3766,7 @@ msgstr "执行轨迹"
 #. [button]: id=quit_without_surrender
 #. [grid]
 #: data/gui/window/formula_debugger.cfg:234
-#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:263
+#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:264
 msgid "Quit"
 msgstr "退出"
 
@@ -4089,6 +4134,14 @@ msgid ""
 "useful debug information"
 msgstr "打开日志文件，其中可能包含有用的调试信息"
 
+#. [button]: id=run_migrator
+#. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
+#: data/gui/window/game_version.cfg:635
+#, fuzzy
+#| msgid "Crater"
+msgid "Migrate"
+msgstr "火山口"
+
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
@@ -4178,9 +4231,36 @@ msgid "Show or Hide Labels"
 msgstr "显示或隐藏标签"
 
 #. [label]
-#: data/gui/window/language_selection.cfg:60
-msgid "Choose your preferred language:"
-msgstr "选择你偏好的语言："
+#: data/gui/window/language_selection.cfg:80
+msgid ""
+"<i>The Battle for Wesnoth</i> relies on volunteers for development, "
+"including translation. Translations may drift behind or even become "
+"abandoned."
+msgstr ""
+
+#. [label]
+#. Beneath the label widget displaying this text there is a widget displaying
+#. a clickable link to <https://gettext.wesnoth.org/> (which opens in the user’s browser).
+#: data/gui/window/language_selection.cfg:85
+msgid ""
+"<b>Note:</b> The translation percentages shown apply to the core game "
+"interface and in-game help only. More complete stats, including details for "
+"each campaign, are available at the following page:"
+msgstr ""
+
+#. [label]
+#. Beneath the label widget displaying this text there is a widget displaying
+#. a clickable link to the wiki’s WesnothTranslations page (which opens in the user’s browser).
+#: data/gui/window/language_selection.cfg:142
+msgid ""
+"If you are interested in translating the game yourself, please follow the "
+"link below for more information:"
+msgstr ""
+
+#. [toggle_button]: id=show_all
+#: data/gui/window/language_selection.cfg:276
+msgid "Show in-progress or abandoned translations"
+msgstr ""
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -5199,7 +5279,7 @@ msgid "Advanced"
 msgstr "高级"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:470
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:471
 msgid "Display the game version and build information"
 msgstr "显示游戏版本和构建信息"
 
@@ -6083,21 +6163,28 @@ msgstr "视图：每一团队"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
+#, fuzzy
+#| msgid "The Battle for Wesnoth"
+msgid "Places to talk about Wesnoth"
+msgstr "韦诺之战"
+
+#. [grid]
+#: data/gui/window/title_screen.cfg:263
 msgid "Credits"
 msgstr "制作者"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:262
+#: data/gui/window/title_screen.cfg:263
 msgid "View the credits"
 msgstr "查看制作者名单"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:263
+#: data/gui/window/title_screen.cfg:264
 msgid "Quit the game"
 msgstr "退出游戏"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:492
+#: data/gui/window/title_screen.cfg:493
 msgid "Change the language"
 msgstr "切换语言"
 
@@ -6289,22 +6376,22 @@ msgid "operating_system^<unknown>"
 msgstr "<未知>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:690
+#: src/filesystem.cpp:696
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<不以点号开头的相对路径>"
 
-#: src/filesystem.cpp:693
+#: src/filesystem.cpp:699
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr "使用绝对路径，或以点号及反斜杠开头的相对路径"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:758 src/filesystem.cpp:780
+#: src/filesystem.cpp:764 src/filesystem.cpp:786
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<相对路径>"
 
-#: src/filesystem.cpp:761 src/filesystem.cpp:783
+#: src/filesystem.cpp:767 src/filesystem.cpp:789
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6322,7 +6409,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1762
+#: src/filesystem.cpp:1768
 msgid "language code for localized resources^en_US"
 msgstr "zh_CN"
 
@@ -6460,7 +6547,7 @@ msgid ""
 msgstr ""
 "网格“$grid”的第$row|行的列数与期望值不同（实际为$found|，期望为$expected|）"
 
-#: src/gui/dialogs/achievements_dialog.cpp:138
+#: src/gui/dialogs/achievements_dialog.cpp:137
 msgid "Completed"
 msgstr ""
 
@@ -6768,20 +6855,22 @@ msgid "Do you want to uninstall '$addon|'?"
 msgstr "你要卸载’$addon|’吗？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1049
+#. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
+#: src/gui/dialogs/addon/manager.cpp:1050
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1051
+#. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
+#: src/gui/dialogs/addon/manager.cpp:1053
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1112
+#: src/gui/dialogs/addon/manager.cpp:1114
 msgid "url^None"
 msgstr "无"
 
@@ -6827,7 +6916,7 @@ msgid "active_modifications^None"
 msgstr "无"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
-#: src/gui/dialogs/game_version_dialog.cpp:141
+#: src/gui/dialogs/game_version_dialog.cpp:142
 #: src/gui/dialogs/gamestate_inspector.cpp:418
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
@@ -7168,12 +7257,12 @@ msgstr "否"
 msgid "yes"
 msgstr "是"
 
-#: src/gui/dialogs/game_version_dialog.cpp:101
-#: src/gui/dialogs/title_screen.cpp:378
+#: src/gui/dialogs/game_version_dialog.cpp:102
+#: src/gui/dialogs/title_screen.cpp:385
 msgid "Version $version"
 msgstr "版本$version"
 
-#: src/gui/dialogs/game_version_dialog.cpp:105
+#: src/gui/dialogs/game_version_dialog.cpp:106
 msgid "Running on $os"
 msgstr "运行于$os之上"
 
@@ -7626,11 +7715,11 @@ msgstr "受到的伤害"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:113 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/gui/dialogs/title_screen.cpp:471 src/hotkey/hotkey_command.cpp:301
+#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -7736,18 +7825,18 @@ msgstr "打开链接？"
 msgid "Copied link!"
 msgstr "已复制链接！"
 
-#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:220
+#: src/gui/widgets/listbox.cpp:725 src/gui/widgets/multi_page.cpp:220
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "“list_data”与“list_definition”中的列数必须一致。"
 
-#: src/gui/widgets/listbox.cpp:768 src/gui/widgets/listbox.cpp:811
-#: src/gui/widgets/listbox.cpp:854 src/gui/widgets/scrollbar_panel.cpp:92
+#: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
+#: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:92
 msgid "No list defined."
 msgstr "没有已定义的列表。"
 
-#: src/gui/widgets/listbox.cpp:773 src/gui/widgets/listbox.cpp:816
-#: src/gui/widgets/listbox.cpp:859
+#: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
+#: src/gui/widgets/listbox.cpp:860
 msgid "A 'list_definition' should contain one row."
 msgstr "每个“list_definition”（列表定义）应该至少有一行。"
 
@@ -7865,12 +7954,12 @@ msgstr "能力"
 msgid "Linked '$id' group has multiple definitions."
 msgstr "连接的“$id|”组有多个定义。"
 
-#: src/gui/widgets/window.cpp:911
+#: src/gui/widgets/window.cpp:917
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "单击“开除”需要一个“click_dismiss”或“ok”按钮。"
 
-#: src/gui/widgets/window.cpp:936 src/gui/widgets/window.cpp:973
-#: src/tests/gui/test_gui2.cpp:726
+#: src/gui/widgets/window.cpp:942 src/gui/widgets/window.cpp:979
+#: src/tests/gui/test_gui2.cpp:736
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示对话框，对话框不适应屏幕大小。"
 
@@ -8741,6 +8830,9 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有设定值。"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "选择你偏好的语言："
 
 #, fuzzy
 #~| msgid "No nodes defined for a tree view."
