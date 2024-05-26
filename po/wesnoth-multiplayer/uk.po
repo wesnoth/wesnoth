@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2024-04-04 13:20+0300\n"
+"PO-Revision-Date: 2024-04-13 12:39+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -211,14 +211,14 @@ msgstr ""
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:118
-#, fuzzy
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
 "<span foreground='side_color'>Сторона $side_number</span>:  Рахунок прибутку "
-"= $income  Рахунок бійців = $units  Золото = $gold Сумарно: <b>$total</b>"
+"= $income  Рахунок бійців = $units  Золото = $gold\n"
+"Сумарно: <b>$total</b>"
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a single side that's won.
