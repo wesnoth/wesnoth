@@ -1,8 +1,7 @@
-## Version 1.19.0-dev
+## Version 1.19.0
  ### Add-ons client
    * Show the server ID in the Add-ons Manager
    * The add-ons server identifier (e.g. 1.18) is now displayed on the bottom left after the server address. If debug mode is enabled the server software version is also shown.
- ### Add-ons server
  ### Campaigns
    * Descent into Darkness
      * S3: player now no longer gains any exp upon killing rats and crawlers, buffed puzzle exp to compensate
