@@ -136,11 +136,10 @@ defecte, el nivell \fBwarning\fP s'utilitza per a la majoria de dominis, però
 \fB\-\-log\-precise\fP
 shows the timestamps in log output with more precision.
 .TP 
-\fB\-\-log\-strict\fP
-estableix el nivell estricte del registrador. Els missatges enviats als
-dominis de registre d'aquest nivell o de més severs faran que la prova de la
-unitat falli independentment del resultat de la victòria. Només és rellevant
-quan s'utilitza amb \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 llista els dominis de registre definits (només els que continguin \fIfilter\fP
@@ -307,13 +306,12 @@ acció dona a lua els mateixos permisos que l'executable wesnoth.
 sets the WML schema for use with \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-estableix el directori de configuració de l'usuari a \fIname\fP a $HOME o «My
-Documents\eMy Games» per al Windows.  També podeu especificar un camí
-absolut per al directori de configuració fora de $HOME o «My Documents\eMy
-Games». Al Windows també és possible especificar un directori relatiu al
-directori de treball del procés utilitzant el camí que comença amb «.\e» o
-«..\e».  A l'X11, el valor per defecte n'és $XDG.CONFIG.HOME o
-$HOME/.config/wesnoth; en altres sistemes, al camí de les dades d'usuari.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 imprimeix el camí del directori de configuració d'usuari i surt.

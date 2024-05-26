@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
+"POT-Creation-Date: 2024-05-26 15:07-0500\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -569,93 +569,93 @@ msgid "Norwegian Translation"
 msgstr "Traducció al noruec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1347
+#: data/core/about_i18n.cfg:1351
 #, fuzzy
 msgid "Old English Translation"
 msgstr "Traducció a l'anglés (Gran Bretanya)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1365
+#: data/core/about_i18n.cfg:1369
 msgid "Polish Translation"
 msgstr "Traducció al polac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1440
+#: data/core/about_i18n.cfg:1444
 msgid "Portuguese Translation"
 msgstr "Traducció al portugués"
 
 #. [about]
-#: data/core/about_i18n.cfg:1454
+#: data/core/about_i18n.cfg:1458
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portugués (Brasil)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1512
+#: data/core/about_i18n.cfg:1516
 msgid "Romanian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1520
+#: data/core/about_i18n.cfg:1524
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about_i18n.cfg:1627
+#: data/core/about_i18n.cfg:1631
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1636
+#: data/core/about_i18n.cfg:1640
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1655
+#: data/core/about_i18n.cfg:1659
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1690
+#: data/core/about_i18n.cfg:1694
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslové"
 
 #. [about]
-#: data/core/about_i18n.cfg:1706
+#: data/core/about_i18n.cfg:1710
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1796
+#: data/core/about_i18n.cfg:1800
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1841
+#: data/core/about_i18n.cfg:1845
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1866
+#: data/core/about_i18n.cfg:1870
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1894
+#: data/core/about_i18n.cfg:1898
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
 #. [about]
-#: data/core/about_i18n.cfg:1907
+#: data/core/about_i18n.cfg:1911
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al chinenc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1926
+#: data/core/about_i18n.cfg:1930
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -663,7 +663,7 @@ msgstr "Traducció al polac"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1935
+#: data/core/about_i18n.cfg:1939
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "Traducció al chinenc"
@@ -3972,7 +3972,7 @@ msgstr "No"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:625
+#: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "captura"
 
@@ -4010,7 +4010,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:881
+#: data/lua/wml-tags.lua:884
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -4061,8 +4061,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3481
-#: src/scripting/game_lua_kernel.cpp:3516
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3512
+#: src/scripting/game_lua_kernel.cpp:3547
 msgid "input"
 msgstr ""
 
@@ -5289,23 +5289,23 @@ msgstr "cura"
 msgid "female^cured"
 msgstr "intrèpida"
 
-#: src/actions/move.cpp:610
+#: src/actions/move.cpp:650
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions/move.cpp:1110
+#: src/actions/move.cpp:1194
 msgid "Failed teleport! Exit not empty"
 msgstr "¡No s'ha pogut teletransportar! La eixida no està buida"
 
 #. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1126
+#: src/actions/move.cpp:1210
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "amiga"
 msgstr[1] "$friends amigues"
 
 #. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1128
+#: src/actions/move.cpp:1212
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "enemiga"
@@ -5313,13 +5313,13 @@ msgstr[1] "$enemies enemigues"
 
 #. TRANSLATORS: Both friends and enemies sighted -- neutral message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1131
+#: src/actions/move.cpp:1215
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "¡Unitats a la vista! ($friendphrase, $enemyphrase)"
 
 #. TRANSLATORS: Only enemies sighted -- bad message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1136
+#: src/actions/move.cpp:1220
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "¡Unitat enemiga a la vista!"
@@ -5327,13 +5327,13 @@ msgstr[1] "¡$enemies unitats enemigues a la vista!"
 
 #. TRANSLATORS: Only friends sighted -- good message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1141
+#: src/actions/move.cpp:1225
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "S'ha vist una unitat amiga."
 msgstr[1] "S'han vist $friends unitats amigues"
 
-#: src/actions/move.cpp:1156
+#: src/actions/move.cpp:1240
 msgid "(press $hotkey to keep moving)"
 msgstr "(pulsa $hotkey per a seguir movent-se)"
 
@@ -6314,7 +6314,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:953
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:956
 #, fuzzy
 msgid "Error: "
 msgstr "Erro"
@@ -6666,20 +6666,20 @@ msgstr ""
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:945
+#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "No ha segut possible carregar la partida:"
 
-#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:910
-#: src/game_launcher.cpp:1031
+#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:913
+#: src/game_launcher.cpp:1034
 msgid "Map generator error: "
 msgstr ""
 
@@ -6711,7 +6711,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "L'archiu que ha intentat carregar està danyat."
 
 #: src/game_launcher.cpp:714 src/game_launcher.cpp:733
-#: src/hotkey/hotkey_handler_sp.cpp:333 src/savegame.cpp:147
+#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
 #: src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "L'archiu que has intentat carregar està danyat: '"
@@ -6725,12 +6725,12 @@ msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 
-#: src/game_launcher.cpp:904
+#: src/game_launcher.cpp:907
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_launcher.cpp:926
+#: src/game_launcher.cpp:929
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6899,7 +6899,7 @@ msgid "Other aspects: "
 msgstr "Observar joc"
 
 #: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
-#: src/reports.cpp:818 src/reports.cpp:1082 src/reports.cpp:1094
+#: src/reports.cpp:818 src/reports.cpp:1088 src/reports.cpp:1100
 #, fuzzy
 msgid "Weapon: "
 msgstr "alcanç de l'arma: "
@@ -6911,7 +6911,7 @@ msgid "Type: "
 msgstr "Tipo"
 
 #: src/gui/dialogs/unit_attack.cpp:187 src/gui/dialogs/unit_attack.cpp:200
-#: src/reports.cpp:819 src/reports.cpp:1083
+#: src/reports.cpp:819 src/reports.cpp:1089
 #, fuzzy
 msgid "Damage: "
 msgstr "Dany"
@@ -6946,142 +6946,142 @@ msgstr "sí"
 msgid "Reference to unknown topic: "
 msgstr "Referència a un tema desconegut: "
 
-#: src/help/help_impl.cpp:405
+#: src/help/help_impl.cpp:406
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:406 src/help/help_impl.cpp:442
+#: src/help/help_impl.cpp:407 src/help/help_impl.cpp:443
 #, fuzzy
 msgid "Time of Day Schedule"
 msgstr "Hora del dia"
 
-#: src/help/help_impl.cpp:433
+#: src/help/help_impl.cpp:434
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Unitats llegals: "
 
-#: src/help/help_impl.cpp:434
+#: src/help/help_impl.cpp:435
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Unitats neutrals: "
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:436
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Unitats caòtiques: "
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:437
 #, fuzzy
 msgid "Liminal Bonus:"
 msgstr "Unitats llegals: "
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:438
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:529
+#: src/help/help_impl.cpp:530
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unitats ab est atac especial'</header>"
 
-#: src/help/help_impl.cpp:593
+#: src/help/help_impl.cpp:594
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unitats ab esta habilitat'</header>"
 
-#: src/help/help_impl.cpp:623
+#: src/help/help_impl.cpp:624
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help/help_impl.cpp:631
+#: src/help/help_impl.cpp:632
 #, fuzzy
 msgid "Factions"
 msgstr "Facció"
 
-#: src/help/help_impl.cpp:679
+#: src/help/help_impl.cpp:680
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Raça:"
 
-#: src/help/help_impl.cpp:688 src/help/help_impl.cpp:1129
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1137
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Alineació: "
 
-#: src/help/help_impl.cpp:695
+#: src/help/help_impl.cpp:696
 #, fuzzy
 msgid "Leaders"
 msgstr "Líder: "
 
-#: src/help/help_impl.cpp:704
+#: src/help/help_impl.cpp:705
 msgid "Recruits"
 msgstr "Reclutes"
 
-#: src/help/help_impl.cpp:789 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 #, fuzzy
 msgid "No description available."
 msgstr "No hi ha objectius"
 
-#: src/help/help_impl.cpp:899 src/help/help_impl.cpp:1106
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1114
 msgid "race^Miscellaneous"
 msgstr "Miscelànea"
 
-#: src/help/help_impl.cpp:1129 src/reports.cpp:389
+#: src/help/help_impl.cpp:1137 src/reports.cpp:389
 msgid "Alignment: "
 msgstr "Alineació: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1156
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1153
+#: src/help/help_impl.cpp:1161
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unitats ab esta habilitat'</header>"
 
-#: src/help/help_impl.cpp:1155
+#: src/help/help_impl.cpp:1163
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1164
+#: src/help/help_impl.cpp:1172
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1166
+#: src/help/help_impl.cpp:1174
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1487
+#: src/help/help_impl.cpp:1495
 msgid "corrupted original file"
 msgstr "archiu original corromput"
 
-#: src/hotkey/command_executor.cpp:399
+#: src/hotkey/command_executor.cpp:402
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "¿Estàs segur de que vols suprimir esta partida?"
 
-#: src/hotkey/command_executor.cpp:399
+#: src/hotkey/command_executor.cpp:402
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:801
+#: src/hotkey/command_executor.cpp:804
 #, fuzzy
 #| msgid "Screenshot"
 msgid "Map-Screenshot"
@@ -7125,35 +7125,35 @@ msgstr "Tornar a començar"
 msgid "Replay from Turn "
 msgstr "jugar tanda"
 
-#: src/hotkey/hotkey_handler_sp.cpp:151
+#: src/hotkey/hotkey_handler_sp.cpp:155
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(pulsa $hotkey per a seguir movent-se)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2094
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2094
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "¡Modo de depuració activat!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2097
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2097
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "¡Modo de depuració desactivat!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:321
+#: src/hotkey/hotkey_handler_sp.cpp:326
 #, fuzzy
 #| msgid "Do you still want to download it?"
 msgid "Do you want to load it anyway?"
 msgstr "¿Encara vols descarregar-ho?"
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
 msgstr "L'archiu que ha intentat carregar està danyat."
 
-#: src/hotkey/hotkey_handler_sp.cpp:341
+#: src/hotkey/hotkey_handler_sp.cpp:346
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -7883,7 +7883,7 @@ msgstr "Color no vàlit"
 msgid "prompt^Command:"
 msgstr "Orde:"
 
-#: src/mouse_events.cpp:1216
+#: src/mouse_events.cpp:1263
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7891,13 +7891,13 @@ msgid ""
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/mouse_events.cpp:1311
+#: src/mouse_events.cpp:1358
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Atacant"
 
-#: src/mouse_events.cpp:1311
+#: src/mouse_events.cpp:1358
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -8274,7 +8274,7 @@ msgstr ""
 msgid "Ability: "
 msgstr "Habilitats: "
 
-#: src/reports.cpp:438 src/reports.cpp:993
+#: src/reports.cpp:438 src/reports.cpp:999
 msgid " (inactive)"
 msgstr ""
 
@@ -8378,43 +8378,43 @@ msgstr "Especial"
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:896
+#: src/reports.cpp:900
 #, fuzzy
 msgid "Weapon range: "
 msgstr "alcanç de l'arma: "
 
-#: src/reports.cpp:897
+#: src/reports.cpp:901
 #, fuzzy
 msgid "Damage type: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:898
+#: src/reports.cpp:902
 #, fuzzy
 msgid "Damage versus: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:960
+#: src/reports.cpp:966
 msgid "Accuracy:"
 msgstr ""
 
-#: src/reports.cpp:965
+#: src/reports.cpp:971
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:991
+#: src/reports.cpp:997
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:1066
+#: src/reports.cpp:1072
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1095
+#: src/reports.cpp:1101
 msgid "Total damage"
 msgstr "Dany total"
 
-#: src/reports.cpp:1159
+#: src/reports.cpp:1165
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8423,83 +8423,83 @@ msgstr[0] "Atacant"
 msgstr[1] "Atacant"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1167
+#: src/reports.cpp:1173
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1171
+#: src/reports.cpp:1177
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Est archiu no correspon a una partida multijugador."
 
-#: src/reports.cpp:1263
+#: src/reports.cpp:1269
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "Hora del dia"
 
-#: src/reports.cpp:1312
+#: src/reports.cpp:1318
 #, fuzzy
 msgid "Time of day:"
 msgstr "Hora del dia"
 
-#: src/reports.cpp:1313 src/reports.cpp:1367
+#: src/reports.cpp:1319 src/reports.cpp:1373
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1315 src/reports.cpp:1369
+#: src/reports.cpp:1321 src/reports.cpp:1375
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:1316 src/reports.cpp:1370
+#: src/reports.cpp:1322 src/reports.cpp:1376
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:1318 src/reports.cpp:1372
+#: src/reports.cpp:1324 src/reports.cpp:1378
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1431
+#: src/reports.cpp:1437
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Tanda"
 
-#: src/reports.cpp:1433
+#: src/reports.cpp:1439
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1458
+#: src/reports.cpp:1464
 msgid "Gold"
 msgstr "Or"
 
-#: src/reports.cpp:1458
+#: src/reports.cpp:1464
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1483
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1483
 msgid "Villages"
 msgstr "Aldees"
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1488
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1482
+#: src/reports.cpp:1488
 msgid "Units"
 msgstr "Unitats"
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1498
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8508,39 +8508,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1498
 msgid "Upkeep"
 msgstr "Manteniment"
 
-#: src/reports.cpp:1529
+#: src/reports.cpp:1535
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Beneficis"
 
-#: src/reports.cpp:1529
+#: src/reports.cpp:1535
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1729
+#: src/reports.cpp:1735
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/reports.cpp:1749
+#: src/reports.cpp:1755
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1760
+#: src/reports.cpp:1766
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1791
+#: src/reports.cpp:1797
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1791
+#: src/reports.cpp:1797
 msgid "Turn Countdown"
 msgstr ""
 
@@ -9089,17 +9089,17 @@ msgstr "caòtic"
 msgid "liminal"
 msgstr "lleal"
 
-#: src/units/unit.cpp:2022
+#: src/units/unit.cpp:2047
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2053
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:2063
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9107,25 +9107,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:2044
+#: src/units/unit.cpp:2069
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2048
+#: src/units/unit.cpp:2073
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2053
+#: src/units/unit.cpp:2078
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2057
+#: src/units/unit.cpp:2082
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9134,13 +9134,13 @@ msgid_plural ""
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2089
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2520
+#: src/units/unit.cpp:2545
 msgid "$effect_description per level"
 msgstr "$effect_description per nivell"
 
@@ -9164,14 +9164,14 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:685
+#: src/wesnoth.cpp:684
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:686
+#: src/wesnoth.cpp:685
 #, fuzzy
 #| msgid "Loading data files"
 msgid "Logging Failure"

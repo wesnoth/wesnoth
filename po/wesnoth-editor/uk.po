@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
+"POT-Creation-Date: 2024-05-26 15:07-0500\n"
 "PO-Revision-Date: 2024-04-04 14:15+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
@@ -441,7 +441,9 @@ msgid "Empty file"
 msgstr "Порожній файл"
 
 #: src/editor/map/map_context.cpp:194
-msgid "File does not have .map or .cfg extension"
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Це не файл розширення .map або .cfg"
 
 #: src/editor/map/map_context.cpp:240

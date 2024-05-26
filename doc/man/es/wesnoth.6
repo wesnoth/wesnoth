@@ -138,11 +138,10 @@ opción \fB\-d\fP.
 muestra los marcadores de tiempo del archivo de registro con mayor
 precisión.
 .TP 
-\fB\-\-log\-strict\fP
-establece el nivel de precisión del registro. Cualquier mensaje enviado a
-los dominios de registro con este nivel o mayor causará un fallo en el
-análisis de la unidad a pesar de un resultado victorioso. Solo es relevante
-cuando se usa con \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
 muestra una lista de dominios de registro definidos (únicamente aquéllos
@@ -312,14 +311,12 @@ de wesnoth.
 configura el patrón WML para su uso con \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ nombre\fP
-establece el directorio de configuración del usuario como \fInombre\fP en $HOME
-o "Mis documentos\eMis juegos" en Windows. También es posible especificar
-una ruta absoluta para el directorio de configuración fuera de $HOME o "Mis
-documentos\eMis juegos". En Windows también es posible especificar un
-directorio relativo al directorio donde corre el proceso usando una ruta que
-comience por ".\e" or "..\e". Con X11 está predeterminado como
-$XDG_CONFIG_HOME o $HOME/.config/wesnoth, en otros sistemas para la ruta de
-los datos de usuario.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 muestra la ruta del directorio de la configuración del usuario y regresa.

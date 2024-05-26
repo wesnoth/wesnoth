@@ -109,8 +109,10 @@ http://www.wesnoth.org/wiki/CommandMode）。
 \fB\-\-log\-precise\fP
 以更精確的方式顯示日誌中的時間戳記。
 .TP 
-\fB\-\-log\-strict\fP
-設定日誌記錄器的嚴格等級。任何訊息傳送至此等級的日誌域或是高的等級將導致單元測試失敗，不管勝利的結果。只有在和 \fB\-u\fP 一同使用時才會有效。
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 列出定義的日誌域（只列出包含 \fIfilter\fP 的日誌域，如果它有被使用的話）並退出
@@ -243,9 +245,12 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 設定要與 \fB\-V,\-\-validate\fP 一同使用的 WML 格式。
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-在 $HOME 或「我的文件\我的遊戲」(Windows)底下設定使用者配置目錄為 \fIname\fP 。你也可以為配置目錄設定一個在 $HOME
-或「我的文件\我的遊戲」之外的絕對路徑。在 Windows 上，也可以使用 「.\e」或「..\e」作為前綴來指定相對於工作目錄的相對路徑。在 X11
-下，這會預設為 $XDG_CONFIG_HOME 或 $HOME/.config/wesnoth，在其它作業系統上則預設為使用者資料的路徑。
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 印出使用者配置目錄的路徑並退出。

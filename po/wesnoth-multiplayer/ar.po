@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2024-01-26 18:02+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -125,8 +125,12 @@ msgstr "قياسي"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "العصر القياسي للعبة ويسنوث الجماعية. يتكون من ستة فصائل وهي متوازنة بشكل عام."
@@ -138,56 +142,18 @@ msgstr "عصر الابطال"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "عصر يضم وحدات ذات مستوى عالٍ: قادة من المستوى الثالث، مع وحدات من المستوى "
 "الأول والمستوى الثاني متاحة للتجنيد. يتكون من ستة فصائل. لا يعتبر متوازنا ."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "قياسي + قوم الواحات"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"عصر يضم فصيلًا إضافيًا إلى جانب الفصائل الستة من العصر القياسي. تعتمد وحدات "
-"قوم الواحات على الاستخدام الدقيق للتضاريس والضربات المنسقة في الغسق أو "
-"الفجر.\n"
-"\n"
-"لا يزال هذا العصر قيد التطوير ، لذا يرجى التأكد من الإبلاغ عن أي مشاكل قد "
-"تظهر."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "عصر الأبطال + قوم الواحات"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"عصر يضم فصيلًا إضافيًا إلى جانب الفصائل الستة من عصر الأبطال. تعتمد وحدات قوم "
-"الواحات على الاستخدام الدقيق للتضاريس والضربات المنسقة في الغسق أو الفجر.\n"
-"\n"
-"لا يزال هذا العصر قيد التطوير ، لذا يرجى التأكد من الإبلاغ عن أي مشاكل قد "
-"تظهر."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3016,6 +2982,42 @@ msgid ""
 msgstr ""
 "هذه الخريطة هي مثال لكيفية استخدام رسومات التضاريس المرتفعة الجديدة (BfW "
 "v1.17). يرجى العلم أنه ليس مخصصًا للعب."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "قياسي + قوم الواحات"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "عصر يضم فصيلًا إضافيًا إلى جانب الفصائل الستة من العصر القياسي. تعتمد وحدات "
+#~ "قوم الواحات على الاستخدام الدقيق للتضاريس والضربات المنسقة في الغسق أو "
+#~ "الفجر.\n"
+#~ "\n"
+#~ "لا يزال هذا العصر قيد التطوير ، لذا يرجى التأكد من الإبلاغ عن أي مشاكل قد "
+#~ "تظهر."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "عصر الأبطال + قوم الواحات"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "عصر يضم فصيلًا إضافيًا إلى جانب الفصائل الستة من عصر الأبطال. تعتمد وحدات "
+#~ "قوم الواحات على الاستخدام الدقيق للتضاريس والضربات المنسقة في الغسق أو "
+#~ "الفجر.\n"
+#~ "\n"
+#~ "لا يزال هذا العصر قيد التطوير ، لذا يرجى التأكد من الإبلاغ عن أي مشاكل قد "
+#~ "تظهر."
 
 #~ msgid "Random"
 #~ msgstr "عشوائي"
