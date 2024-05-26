@@ -1,14 +1,41 @@
 ## Version 1.19.0-dev
  ### Add-ons client
+   * Show the server ID in the Add-ons Manager
  ### Add-ons server
  ### Campaigns
    * Descent into Darkness
      * S3: player now no longer gains any exp upon killing rats and crawlers, buffed puzzle exp to compensate
+   * Eastern Invasion
+     * Prevent Dacyn from picking up a different staff (issue #8885)
+     * Reduce Barrow/Pyre Wight vulnerability to arcane
+     * S14: indicate uncleared swamp hexes with "swamp reed" images
+     * Many minor bugfixes
+   * Liberty
+     * Custom unit and portrait for Lord Maddock
+   * Sceptre of Fire
+     * S7: fewer and slower enemies, to balance the buff to the Elvish Outrider unit type
+   * Tutorial
+     * Better timing for some of the hints
+   * Under the Burnings Suns
+     * S01: the luck involved in getting units from villages is now fairer
+   * Winds of Fate
+     * Avoid a Lua error that only triggered on Windows in locales that use commas as the decimal separator
+     * Rebalanced enemies and enemy gold from S6 onwards
+     * S08: clarify the objectives
  ### Editor
+   * Allow loading .mask files
  ### Multiplayer
+   * The default settings for the timer are now 240 seconds turn bonus, with no action bonus
+   * The full map is no longer revealed in linger mode by default, so it behaves similarly to SP mode for campaigns
+   * Refactor the code which determines when actions can be undone, and when actions are sent to the server
  ### Lua API
+   * Overhaul of the API to use named tuples instead of `data[1]`, `data[2]`, etc
+   * Locations returned by the API are now named tuples, so their data can be accessed as `location.x` and `location.y`
+   * Objects with `x` and `y` data members can generally be passed to APIs that expect a location
  ### Packaging
  ### Terrain
+   * Oasis is now a mixed terrain, adding shallow water to the base terrain, and defaulting to Sand as the base terrain
+   * The help browser now considers the default base of mixed terrains when adding them to the help tree
  ### Translations
    * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Norwegian, Polish, Russian, Slovak, Spanish, Ukrainian
    * Added new font "Lohit-Bengali.ttf" to support Bengali translation
@@ -19,9 +46,30 @@
    * Elvish Enchantress - decreased ranged slow attack from 7×4 to 6×4, decreased ranged magical attack from 13×4 to 11×4, decreased cost from 70 to 62, decreased XP requirement from 198 to 180
    * Elvish Sylph - decreased ranged magical attack from 16×5 to 13×5, decreased cost from 161 to 135
    * Added new Fire Wisp unit
+   * Added portraits for Skeletal Rider, Wyvern, TSG’s Eyestalk, TRoW’s vampire lady, and an alternative portrait for bears
  ### User interface
+   * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
+   * Use a gold completion laurel for campaigns with only one difficulty setting
+   * Refined the layout of the Load Game dialog
+   * New texture-based minimap rendering
+   * Added a "Teleport Unit" option to the debug menu
  ### WML Engine
+   * Fixed the Ambush ability not working in Bluff/Glutch Forest terrain
+   * Multiple fixes to replay handling
+   * Image Path Functions now accept percentages for scaling sizes
+   * The AMLAs that a unit has are now accessible via WFL
  ### Miscellaneous and Bug Fixes
+   * Remove special handling of config directory on Linux, use the userdata folder as on Windows and MacOS (#8848)
+   * Added new `color_range` palettes `yellow` and `pink`
+   * Added environment variable `WESNOTH_NO_LOG_FILE`, equivalent to the `--no-log-to-file` command line flag
+   * Fixed attack calculations when resistances counter `[damage_type]alternative_type=`
+   * Fixed replays marking achievements as complete (issue #8858)
+   * Fixed build with Boost 1.85
+   * Fixed a crash in the recall dialog when turning off all sorting options (issue #8878)
+   * Fixed clicking on a trait in the sidebar sometimes opening the wrong trait’s help page
+   * Removed wesnothd’s unused threads command line options
+   * Fixed a bug causing excessive pixellation of scaled images
+   * General cleanup of unnecessary C++ header file includes
 
 ## Version 1.17.26
  ### Campaigns
