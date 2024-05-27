@@ -46,11 +46,9 @@ namespace fs = filesystem;
 
 namespace
 {
-const std::string icon_dir = "misc/folder-icon.png";
-// Empty icons with the same size as the above to force the icon column to have a
-// specific size even when there are no folders in the list.
-const std::string icon_file = icon_dir + "~O(0)";
-const std::string icon_parent = icon_dir + "~O(0)";
+const std::string icon_dir = "icons/action/browse_25.png";
+const std::string icon_parent = "icons/action/undo_25.png";
+const std::string icon_file = "misc/file.png";
 // NOTE: Does not need to be the same as PARENT_DIR! Use PARENT_DIR to build
 //       relative paths for non-presentational purposes instead.
 const std::string label_parent = "..";
