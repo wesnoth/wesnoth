@@ -1459,6 +1459,41 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
+bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+{
+	std::string rel_path = "";
+	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);
+	std::string addon_asset_dir;
+
+	bool found = false;
+	bool is_in_core_dir = (path.find(core_asset_dir) != std::string::npos);
+	bool is_in_addon_dir = false;
+
+	if (is_in_core_dir) {
+		rel_path = path.erase(0, core_asset_dir.size()+1);
+		found = true;
+	} else if (!addon_id.empty()) {
+		addon_asset_dir = get_current_editor_dir(addon_id) + "/" + asset_type;
+		is_in_addon_dir = (path.find(addon_asset_dir) != std::string::npos);
+		if (is_in_addon_dir) {
+			rel_path = path.erase(0, addon_asset_dir.size()+1);
+			found = true;
+		} else {
+			// Not found in either core or addons dirs,
+			// return a possible path where the asset could be copied.
+			std::string filename = boost::filesystem::path(path).filename().string();
+			std::string asset_path = addon_asset_dir + "/" + filename;
+			rel_path = filename;
+			found = false;
+		}
+	} else {
+		found = false;
+	}
+
+	path = rel_path;
+	return found;
+}
+
 /**
  *  The paths manager is responsible for recording the various paths
  *  that binary files may be located at.
