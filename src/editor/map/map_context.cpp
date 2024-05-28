@@ -751,7 +751,6 @@ config map_context::to_config()
 		}
 
 		if(unit.loyal()) {
-			//config& unit_traits = u.add_child("trait");
 			config trait_loyal;
 			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
 			u.append(trait_loyal);
