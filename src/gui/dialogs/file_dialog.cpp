@@ -19,6 +19,7 @@
 
 #include "cursor.hpp"
 #include "desktop/paths.hpp"
+#include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -236,6 +237,8 @@ void file_dialog::pre_show(window& window)
 	button& rm_button = find_widget<button>(&window, "delete_file", false);
 	button& bookmark_add_button = find_widget<button>(&window, "add_bookmark", false);
 	button& bookmark_del_button = find_widget<button>(&window, "remove_bookmark", false);
+	button& open_ext_button = find_widget<button>(&window, "open_ext", false);
+
 
 	connect_signal_mouse_left_click(mkdir_button,
 			std::bind(&file_dialog::on_dir_create_cmd, this));
@@ -245,6 +248,14 @@ void file_dialog::pre_show(window& window)
 			std::bind(&file_dialog::on_bookmark_add_cmd, this));
 	connect_signal_mouse_left_click(bookmark_del_button,
 			std::bind(&file_dialog::on_bookmark_del_cmd, this));
+
+	if (desktop::open_object_is_supported()) {
+		connect_signal_mouse_left_click(open_ext_button,
+			std::bind([this](){ desktop::open_object(path()); }));
+	} else {
+		open_ext_button.set_active(false);
+		open_ext_button.set_tooltip(_("Opening files is not supported, contact your packager"));
+	}
 
 	if(read_only_) {
 		mkdir_button.set_active(false);
