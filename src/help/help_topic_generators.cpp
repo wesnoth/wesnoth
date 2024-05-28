@@ -20,7 +20,7 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
-#include "preferences/game.hpp"         // for encountered_terrains, etc
+#include "preferences/preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
@@ -756,7 +756,7 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Defense"));
 		push_header(first_row, _("Movement Cost"));
 
-		const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(preferences::encountered_terrains());
+		const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(prefs::get().encountered_terrains());
 		if (has_terrain_defense_caps) {
 			push_header(first_row, _("Defense Cap"));
 		}
@@ -774,7 +774,7 @@ std::string unit_topic_generator::operator()() const {
 
 		std::set<terrain_movement_info> terrain_moves;
 
-		for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+		for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}

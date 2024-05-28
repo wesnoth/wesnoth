@@ -36,7 +36,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -457,7 +457,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		throw;
 	} catch(const wesnothd_error& e) {
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 		if(e.message == "") {
 			save.save_game_interactive(
 				_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),
@@ -538,21 +538,21 @@ void playsingle_controller::before_human_turn()
 		return;
 	}
 
-	if(!did_autosave_this_turn_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
+	if(!did_autosave_this_turn_ && !game_config::disable_autosave && prefs::get().autosavemax() > 0) {
 		did_autosave_this_turn_ = true;
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
-		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+		savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
+		save.autosave(game_config::disable_autosave, prefs::get().autosavemax(), pref_constants::INFINITE_AUTO_SAVES);
 	}
 
-	if(preferences::turn_bell()) {
+	if(prefs::get().turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
 }
 
 void playsingle_controller::show_turn_dialog()
 {
-	if(preferences::turn_dialog() && !is_regular_game_end()) {
+	if(prefs::get().turn_dialog() && !is_regular_game_end()) {
 		blindfold b(*gui_, true); // apply a blindfold for the duration of this dialog
 		gui_->queue_rerender();
 		std::string message = _("It is now $name|’s turn");
@@ -579,7 +579,7 @@ void playsingle_controller::play_human_turn()
 {
 	show_turn_dialog();
 
-	if(!preferences::disable_auto_moves()) {
+	if(!prefs::get().disable_auto_moves()) {
 		execute_gotos();
 	}
 

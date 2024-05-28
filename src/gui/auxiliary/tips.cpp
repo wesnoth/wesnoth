@@ -18,7 +18,7 @@
 #include "gui/auxiliary/tips.hpp"
 
 #include "config.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -47,7 +47,7 @@ std::vector<game_tip> load(const config& cfg)
 std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 {
 	std::vector<game_tip> result = tips;
-	const std::set<std::string>& units = preferences::encountered_units();
+	const std::set<std::string>& units = prefs::get().encountered_units();
 
 	// Remove entries whose filters do not match from the tips list.
 	const auto iter = std::remove_if(result.begin(), result.end(), [&units](const game_tip& tip) {

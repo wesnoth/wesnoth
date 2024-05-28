@@ -23,8 +23,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 
 #include <boost/algorithm/string.hpp>
@@ -136,9 +135,10 @@ void migrate_version_selection::post_show(window& window)
 
 		// reload preferences and credentials
 		// otherwise the copied files won't be used and also will get overwritten/deleted when Wesnoth closes
-		preferences::load_base_prefs();
-		preferences::load_game_prefs();
-		preferences::load_credentials();
+
+		migrate_version_selection_friend::clear_preferences();
+		migrate_version_selection_friend::load_preferences();
+		migrate_version_selection_friend::load_credentials();
 	}
 }
 
@@ -187,13 +187,13 @@ void migrate_version_selection::migrate_preferences(const std::string& migrate_p
 			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
 			for(const config::attribute& val : old_cfg.attribute_range()) {
 				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
-					preferences::set(val.first, val.second);
+					migrate_version_selection_friend::set(val.first, val.second);
 				}
 			}
 
 			// don't touch child tags
 
-			preferences::write_preferences();
+			prefs::get().write_preferences();
 		}
 	}
 }

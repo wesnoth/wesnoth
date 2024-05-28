@@ -21,7 +21,7 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 #include <functional>

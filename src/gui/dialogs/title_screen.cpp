@@ -40,7 +40,7 @@
 #include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -518,7 +518,7 @@ void title_screen::button_callback_multiplayer()
 
 		const auto res = dlg.get_choice();
 
-		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
@@ -526,7 +526,7 @@ void title_screen::button_callback_multiplayer()
 
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
-			game_.select_mp_server(preferences::builtin_servers_list().front().address);
+			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
 			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
@@ -554,7 +554,7 @@ void title_screen::button_callback_cores()
 	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
 		cores.push_back(core);
 
-		if(core["id"] == preferences::core_id()) {
+		if(core["id"] == prefs::get().core_id()) {
 			current = cores.size() - 1;
 		}
 	}
@@ -563,7 +563,7 @@ void title_screen::button_callback_cores()
 	if(core_dlg.show()) {
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
-		preferences::set_core_id(core_id);
+		prefs::get().set_core_id(core_id);
 		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }

@@ -24,7 +24,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
 #include "picture.hpp"                  // for get_image
-#include "preferences/general.hpp"      // for font_scaled
+#include "preferences/preferences.hpp"      // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
 #include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
@@ -306,7 +306,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
 	// font::line_width(), font::get_rendered_text() are not use scaled font inside
-	const int scaled_font_size = preferences::font_scaled(font_size);
+	const int scaled_font_size = prefs::get().font_scaled(font_size);
 	if (text.empty())
 		return;
 	const int remaining_width = get_remaining_width();

@@ -20,7 +20,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
@@ -679,7 +679,7 @@ static config unit_moves(const reports::context& rc, const unit* u, bool is_visi
 	}
 
 	tooltip << _("Movement Costs:") << "\n";
-	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+	for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
@@ -1748,7 +1748,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 
 	std::ostringstream ss;
 
-	const char* format = preferences::use_twelve_hour_clock_format()
+	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 

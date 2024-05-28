@@ -21,7 +21,7 @@
 #include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "preferences/game.hpp"         // for encountered_terrains, etc
+#include "preferences/preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
@@ -982,8 +982,8 @@ void generate_terrain_sections(section& sec, int /*level*/)
 
 		bool hidden = info.hide_help();
 
-		if (preferences::encountered_terrains().find(t)
-				== preferences::encountered_terrains().end() && !info.is_overlay())
+		if (prefs::get().encountered_terrains().find(t)
+				== prefs::get().encountered_terrains().end() && !info.is_overlay())
 			hidden = true;
 
 		topic terrain_topic;
@@ -1188,12 +1188,12 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 {
-	if (game_config::debug || preferences::show_all_units_in_help()	||
+	if (game_config::debug || prefs::get().show_all_units_in_help()	||
 			hotkey::is_scope_active(hotkey::SCOPE_EDITOR) ) {
 		return FULL_DESCRIPTION;
 	}
 
-	const std::set<std::string> &encountered_units = preferences::encountered_units();
+	const std::set<std::string> &encountered_units = prefs::get().encountered_units();
 	if (encountered_units.find(type.id()) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
