@@ -67,7 +67,7 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 
 	read(specials, *(preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", &abilities_map_)));
 	for (const auto& x : abilities_map_) {
-		/** Don't add any macros that have INTERNAL */
+		// Don't add any macros that have INTERNAL
 		if (x.first.find("INTERNAL") == std::string::npos) {
 			abilities_list_.emplace_back("label", x.first, "checkbox", false);
 		}

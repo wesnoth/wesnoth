@@ -918,6 +918,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			un->anim_comp().set_standing();
 		}
 		return true;
+		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
+		{
+			map_location loc = gui_->mouseover_hex();
+			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
+			bool loyal = un->loyal();
+			un->set_loyal(!loyal);
+		}
+		return true;
 		case HOTKEY_DELETE_UNIT:
 		{
 			map_location loc = gui_->mouseover_hex();
