@@ -674,7 +674,7 @@ void context_manager::resize_map_dialog()
 void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty()) {
+	if(input_name.empty() || (input_name.find("scenario") != std::string::npos)) {
 		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_)+"/maps";
 	}
 
@@ -706,7 +706,7 @@ void context_manager::save_map_as_dialog()
 void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty()) {
+	if(input_name.empty() || (input_name.find("map") != std::string::npos)) {
 		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/scenarios";
 	}
 
