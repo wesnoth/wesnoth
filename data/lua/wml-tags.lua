@@ -370,7 +370,7 @@ function wml_actions.remove_unit_overlay(cfg)
 		end
 		if has_already then
 			u:add_modification("object", {
-				id = cfg.object_id,
+				id = cfg.object_id or get_overlay_object_id(img),
 				wml.tag.effect {
 					apply_to = "overlay",
 					remove = img,
