@@ -754,8 +754,6 @@ config map_context::to_config()
 			config trait_loyal;
 			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
 			u.append(trait_loyal);
-			PLAIN_LOG << u.debug();
-			PLAIN_LOG << trait_loyal.debug();
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.
