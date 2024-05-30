@@ -22,8 +22,6 @@
 #include "serialization/preprocessor.hpp"
 
 #include <boost/dynamic_bitset.hpp>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
 namespace gui2
 {
@@ -81,14 +79,6 @@ private:
 
 	/** Save Unit Type data to cfg */
 	void save_unit_type();
-
-	/** Check if width/height bigger
-	 *  than a specified size */
-	bool check_big(std::string img_abs_path, const int scale_size)
-	{
-		SDL_Surface * img_surf = IMG_Load(img_abs_path.c_str());
-		return (img_surf->w > scale_size) || (img_surf->h > scale_size);
-	}
 
 	/** Write macro to a stream at specified tab level */
 	void write_macro(std::ostream& out, unsigned level, const std::string macro_name);

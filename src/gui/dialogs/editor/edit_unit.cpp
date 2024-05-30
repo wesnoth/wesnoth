@@ -22,9 +22,9 @@
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "units/types.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -40,9 +40,11 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "picture.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "units/types.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
@@ -310,46 +312,37 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 
 	if (dlg.show()) {
 
-		/* Convert absolute path to wesnoth relative path */
-		std::string images_dir = filesystem::get_core_images_dir();
-		std::string addons_dir = filesystem::get_current_editor_dir(addon_id_) + "/images";
-		std::stringstream path;
+		std::string dn = dlg.path();
+		const std::string& message
+						= _("This file is outside Wesnoth's data dirs. Do you wish to copy it into your add-on?");
 
-		if ((dlg.path().find(images_dir) == std::string::npos)
-				&& (dlg.path().find(addons_dir) == std::string::npos)) {
-			/* choosen file is outside wesnoth's images dir,
-			 * copy image to addons directory */
-			std::string filename = boost::filesystem::path(dlg.path()).filename().string();
+		if(id_stem == "unit_image") {
 
-			if (id_stem == "unit_image") {
-				path << addons_dir + "/units/" + filename;
-			} else if ((id_stem == "portrait_image")||(id_stem == "small_profile_image")) {
-				path << addons_dir + "/portraits/" + filename;
-			} else if (id_stem == "attack_image") {
-				path << addons_dir + "/attacks/" + filename;
+			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
+				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+					filesystem::copy_file(dlg.path(), dn);
+				}
 			}
 
-			filesystem::copy_file(dlg.path(), path.str());
-		} else {
-			path << dlg.path();
+		} else if((id_stem == "portrait_image")||(id_stem == "small_profile_image")) {
+
+			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
+				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+					filesystem::copy_file(dlg.path(), dn);
+				}
+			}
+
+		} else if(id_stem == "attack_image") {
+
+			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
+				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+					filesystem::copy_file(dlg.path(), dn);
+				}
+			}
+
 		}
 
-		if (path.str().find(images_dir) != std::string::npos) {
-			// Image in Wesnoth core dir
-			path.str(path.str().replace(0, images_dir.size()+1, ""));
-		} else if (path.str().find(addons_dir) != std::string::npos) {
-			// Image in addons dir
-			path.str(path.str().replace(0, addons_dir.size()+1, ""));
-		}
-
-		path.seekp(0, std::ios_base::end);
-
-		unsigned size = 200; // TODO: Arbitrary, can be changed later.
-		if (check_big(dlg.path(), size)) {
-			path << "~SCALE(" << size << "," << size << ")";
-		}
-
-		find_widget<text_box>(get_window(), "path_"+id_stem, false).set_value(path.str());
+		find_widget<text_box>(get_window(), "path_"+id_stem, false).set_value(dn);
 		update_image(id_stem);
 	}
 }
@@ -988,20 +981,22 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 		rel_path = rel_path.substr(0, rel_path.find("~"));
 	}
 
-	std::string abs_path = filesystem::get_binary_file_location("images", rel_path);
-
-	std::stringstream mod_path(rel_path);
-	mod_path.seekp(0, std::ios_base::end);
-	unsigned size = 200; // TODO: Arbitrary, can be changed later.
-	if ((abs_path.size() > 0) && check_big(abs_path, size)) {
-		mod_path << "~SCALE(" << size << "," << size << ")";
+	int scale_size = 200; // TODO: Arbitrary, can be changed later.
+	if (rel_path.size() > 0) {
+		point img_size = ::image::get_size(::image::locator{rel_path});
+		float aspect_ratio = static_cast<float>(img_size.x)/img_size.y;
+		if(img_size.x > scale_size) {
+			rel_path.append("~SCALE(" + std::to_string(scale_size) + "," + std::to_string(scale_size*aspect_ratio) + ")");
+		} else if (img_size.y > scale_size) {
+			rel_path.append("~SCALE(" + std::to_string(scale_size/aspect_ratio) + "," + std::to_string(scale_size) + ")");
+		}
 	}
 
 	if (id_stem == "portrait_image") {
 		// portrait image uses same [image] as unit_image
-		find_widget<image>(get_window(), "unit_image", false).set_label(mod_path.str());
+		find_widget<image>(get_window(), "unit_image", false).set_label(rel_path);
 	} else {
-		find_widget<image>(get_window(), id_stem, false).set_label(mod_path.str());
+		find_widget<image>(get_window(), id_stem, false).set_label(rel_path);
 	}
 
 	get_window()->invalidate_layout();
