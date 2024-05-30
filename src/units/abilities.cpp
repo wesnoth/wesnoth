@@ -1258,7 +1258,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
-static std::string select_replacement_type(const unit_ability_list& damage_type_list)
+std::string attack_type::select_replacement_type(const unit_ability_list& damage_type_list) const
 {
 	std::map<std::string, unsigned int> type_count;
 	unsigned int max = 0;
@@ -1273,7 +1273,7 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 		}
 	}
 
-	if (type_count.empty()) return "";
+	if (type_count.empty()) return type();
 
 	std::vector<std::string> type_list;
 	for(auto& i : type_count){
@@ -1282,27 +1282,29 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 		}
 	}
 
-	if(type_list.empty()) return "";
+	if(type_list.empty()) return type();
 
 	return type_list.front();
 }
 
-static std::string select_alternative_type(const unit_ability_list& damage_type_list, const unit_ability_list& resistance_list, const unit& u)
+std::pair<std::string, int> attack_type::select_alternative_type(const unit_ability_list& damage_type_list, const unit_ability_list& resistance_list) const
 {
 	std::map<std::string, int> type_res;
-	int max_res = std::numeric_limits<int>::min();
-	for(auto& i : damage_type_list) {
-		const config& c = *i.ability_cfg;
-		if(c.has_attribute("alternative_type")) {
-			std::string type = c["alternative_type"].str();
-			if(type_res.count(type) == 0){
-				type_res[type] = u.resistance_value(resistance_list, type);
-				max_res = std::max(max_res, type_res[type]);
+	int max_res = INT_MIN;
+	if(other_){
+		for(auto& i : damage_type_list) {
+			const config& c = *i.ability_cfg;
+			if(c.has_attribute("alternative_type")) {
+				std::string type = c["alternative_type"].str();
+				if(type_res.count(type) == 0){
+					type_res[type] = (*other_).resistance_value(resistance_list, type);
+					max_res = std::max(max_res, type_res[type]);
+				}
 			}
 		}
 	}
 
-	if (type_res.empty()) return "";
+	if (type_res.empty()) return {"", INT_MIN};
 
 	std::vector<std::string> type_list;
 	for(auto& i : type_res){
@@ -1310,65 +1312,62 @@ static std::string select_alternative_type(const unit_ability_list& damage_type_
 			type_list.push_back(i.first);
 		}
 	}
-	if(type_list.empty()) return "";
+	if(type_list.empty()) return {"", INT_MIN};
 
-	return type_list.front();
-}
-
-std::string attack_type::select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, const unit_ability_list& resistance_list) const
-{
-	bool is_alternative = (key_name == "alternative_type");
-	if(is_alternative && other_){
-		return select_alternative_type(damage_type_list, resistance_list, (*other_));
-	} else if(!is_alternative){
-		return select_replacement_type(damage_type_list);
-	}
-	return "";
+	return {type_list.front(), max_res};
 }
 
 /**
- * Returns the type of damage inflicted.
+ * The type of attack used and the resistance value that does the most damage.
  */
-std::pair<std::string, std::string> attack_type::damage_type() const
+std::pair<std::string, int> attack_type::effective_damage_type() const
 {
 	if(attack_empty()){
-		return {"", ""};
+		return {"", 100};
 	}
-	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
-	if(damage_type_list.empty()){
-		return {type(), ""};
-	}
-
 	unit_ability_list resistance_list;
 	if(other_){
 		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
+		utils::erase_if(resistance_list, [&](const unit_ability& i) {
+			return (!((*i.ability_cfg)["active_on"].empty() || (!is_attacker_ && (*i.ability_cfg)["active_on"] == "offense") || (is_attacker_ && (*i.ability_cfg)["active_on"] == "defense")));
+		});
 	}
-	std::string replacement_type = select_damage_type(damage_type_list, "replacement_type", resistance_list);
-	std::string alternative_type = select_damage_type(damage_type_list, "alternative_type", resistance_list);
-	std::string type_damage = replacement_type.empty() ? type() : replacement_type;
-	if(!alternative_type.empty() && type_damage != alternative_type){
-		return {type_damage, alternative_type};
+	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
+	if(damage_type_list.empty()){
+		return {type(), res};
 	}
-	return {type_damage, ""};
+	std::string replacement_type = select_replacement_type(damage_type_list);
+	std::pair<std::string, int> alternative_type = select_alternative_type(damage_type_list, resistance_list);
+
+	if(other_){
+		res = replacement_type != type() ? (*other_).resistance_value(resistance_list, replacement_type) : res;
+		replacement_type = alternative_type.second > res ? alternative_type.first : replacement_type;
+		res = std::max(res, alternative_type.second);
+	}
+	return {replacement_type, res};
 }
 
-std::set<std::string> attack_type::alternative_damage_types() const
+/**
+ * Return a type()/replacement_type and a list of alternative_types that should be displayed in the selected unit's report.
+ */
+std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
 {
 	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	std::set<std::string> alternative_damage_types;
 	if(damage_type_list.empty()){
-		return {};
+		return {type(), alternative_damage_types};
 	}
-	std::set<std::string> damage_types;
+	std::string replacement_type = select_replacement_type(damage_type_list);
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
 		if(c.has_attribute("alternative_type")){
-			damage_types.insert(c["alternative_type"].str());
+			alternative_damage_types.insert(c["alternative_type"].str());
 		}
 	}
 
-	return damage_types;
+	return {replacement_type, alternative_damage_types};
 }
-
 
 /**
  * Returns the damage per attack of this weapon, considering specials.

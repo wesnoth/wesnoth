@@ -168,8 +168,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			}
 		} else {
 			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+			if (filter_type.count(attack.effective_damage_type().first) == 0){
 				return false;
 			}
 		}
