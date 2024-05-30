@@ -119,6 +119,7 @@ protected:
 		update_layout();
 	}
 
+public:
 	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
@@ -147,6 +148,7 @@ protected:
 		update_layout();
 	}
 
+private:
 	/** Inherited from text_box_base. */
 	void paste_selection(const bool mouse) override
 	{

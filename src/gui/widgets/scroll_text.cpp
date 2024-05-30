@@ -68,6 +68,7 @@ void scroll_text::set_label(const t_string& label)
 		if(resize_needed && get_size() != point()) {
 			place(get_origin(), get_size());
 		}
+		widget->goto_start_of_data();
 	}
 }
 

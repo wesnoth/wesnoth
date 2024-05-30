@@ -125,7 +125,6 @@ private:
 
 	/** Callback to enable/disable OK button if ID/Name is invalid */
 	void button_state_change();
-	void button_state_change_id();
 
 	/** Utility method to check if ID contains any invalid characters */
 	bool check_id(std::string id);
