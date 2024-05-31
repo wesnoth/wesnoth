@@ -933,6 +933,8 @@ int main(int argc, char** argv)
 		}
 	}
 
+	PLAIN_LOG << preferences::chat_lines();
+
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --no-log-to-file in particular attaches
