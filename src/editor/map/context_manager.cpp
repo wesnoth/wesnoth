@@ -52,6 +52,7 @@
 
 #include <memory>
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
 
 namespace editor {
 
@@ -674,7 +675,7 @@ void context_manager::resize_map_dialog()
 void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty() || (input_name.find("scenario") != std::string::npos)) {
+	if(input_name.empty() || (input_name.find("scenarios") != std::string::npos)) {
 		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_)+"/maps";
 	}
 
@@ -689,14 +690,30 @@ void context_manager::save_map_as_dialog()
 		return;
 	}
 
-	std::size_t is_open = check_open_map(dlg.path());
+
+	boost::filesystem::path save_path(dlg.path());
+	const std::string ext = save_path.extension().string();
+
+	if (ext != ".map") {
+		if(gui2::show_message(
+			_("Error"),
+			VGETTEXT("Wrong Extension $wrong_ext. Replace with .map?", {{"wrong_ext", ext}}),
+			gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK)
+		{
+			save_path.replace_extension(".map");
+		} else {
+			return;
+		}
+	}
+
+	std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(_("This map is already open."), dlg.path());
+		gui2::show_transient_message(_("This map is already open."), save_path.string());
 	}
 
 	std::string old_filename = get_map_context().get_filename();
 
-	get_map_context().set_filename(dlg.path());
+	get_map_context().set_filename(save_path.string());
 
 	if(!write_map(true)) {
 		get_map_context().set_filename(old_filename);
@@ -706,7 +723,7 @@ void context_manager::save_map_as_dialog()
 void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty() || (input_name.find("map") != std::string::npos)) {
+	if(input_name.empty() || (input_name.find("maps") != std::string::npos)) {
 		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/scenarios";
 	}
 
@@ -722,15 +739,30 @@ void context_manager::save_scenario_as_dialog()
 		return;
 	}
 
-	std::size_t is_open = check_open_map(dlg.path());
+	boost::filesystem::path save_path(dlg.path());
+	const std::string ext = save_path.extension().string();
+
+	if (ext != ".cfg") {
+		if(gui2::show_message(
+			_("Error"),
+			VGETTEXT("Wrong Extension $wrong_ext. Replace with .cfg?", {{"wrong_ext", ext}}),
+			gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK)
+		{
+			save_path.replace_extension(".cfg");
+		} else {
+			return;
+		}
+	}
+
+	std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(_("This scenario is already open."), dlg.path());
+		gui2::show_transient_message(_("This scenario is already open."), save_path.string());
 		return;
 	}
 
 	std::string old_filename = get_map_context().get_filename();
 
-	get_map_context().set_filename(dlg.path());
+	get_map_context().set_filename(save_path.string());
 
 	if(!write_scenario(true)) {
 		get_map_context().set_filename(old_filename);
