@@ -49,7 +49,7 @@ public:
 	bool can_wrap() const override;
 
 	void select_tab(unsigned index);
-	
+
 	unsigned get_active_tab_index() {
 		return get_internal_list().get_selected_row();
 	}
@@ -57,13 +57,13 @@ public:
 	unsigned get_tab_count() const {
 		return builders_.size();
 	}
-	
+
 	grid* get_tab_grid(unsigned i)
 	{
 		assert(generator_);
 		return &generator_->item(i);
 	}
-	
+
 	const grid* get_tab_grid(unsigned i) const
 	{
 		assert(generator_);

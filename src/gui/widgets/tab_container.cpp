@@ -115,7 +115,7 @@ void tab_container::change_selection() {
 	select_tab(get_active_tab_index());
 	place(get_origin(), get_size());
 	queue_redraw();
-	
+
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
