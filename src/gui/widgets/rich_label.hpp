@@ -185,7 +185,7 @@ private:
 	std::unique_ptr<image_shape> ishape_;
 
 	/** Width and height of the canvas */
-	unsigned w_, h_, x_, y_;
+	unsigned w_, h_, x_;
 
 	/** Padding */
 	unsigned padding_;
@@ -233,7 +233,7 @@ private:
 		return font::get_text_renderer().get_cursor_position(offset);
 	}
 
-	point calculate_best_size() const
+	point calculate_best_size() const override
 	{
 		return point(w_, h_);
 	}
