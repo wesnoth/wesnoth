@@ -1322,6 +1322,19 @@ namespace { // Helpers for attack_type::special_active()
 				return false;
 		}
 
+		// Check for if unit has attack who match.
+		if (auto filter_attack = filter_child->optional_child("has_attack") ) {
+			bool has_attack = false;
+			for(const attack_type& a : (*u).attacks())
+				if(a.matches_filter(*filter_attack, tag_name)) {
+					has_attack = true;
+					break;
+				}
+			if(!has_attack){
+				return false;
+			}
+		}
+
 		// Passed.
 		// If the other unit doesn't exist, try matching without it
 		if (!u2) {
