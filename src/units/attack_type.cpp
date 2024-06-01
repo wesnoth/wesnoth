@@ -46,27 +46,6 @@ static lg::log_domain log_unit("unit");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
-namespace {
-/**
- * Value of attack_type::num_recursion_ at which allocations of further recursion_guards fail. This
- * value is used per weapon, so if two weapon specials are depending on each other being active then
- * with ATTACK_RECURSION_LIMIT = 3 the recursion could go 6 levels deep (and then return false on
- * the 7th call to matches_simple_filter).
- *
- * The counter is checked at the start of matches_simple_filter, and even the first level needs an
- * allocation; setting the limit to zero would make matches_simple_filter always return false.
- *
- * With the recursion limit set to 1, the following tests fail; they just need a reasonable depth.
- * event_test_filter_attack_specials
- * event_test_filter_attack_opponent_weapon_condition
- * event_test_filter_attack_student_weapon_condition
- *
- * With the limit set to 2, all tests pass, but as the limit only affects cases that would otherwise
- * lead to a crash, it seems reasonable to leave a little headroom for more complex logic.
- */
-constexpr unsigned int ATTACK_RECURSION_LIMIT = 4;
-};
-
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
 	other_loc_(),
@@ -117,50 +96,12 @@ std::string attack_type::accuracy_parry_description() const
 	return s.str();
 }
 
-namespace {
-/**
- * Print "Recursion limit reached" log messages, including deduplication if the same problem has
- * already been logged.
- */
-void show_recursion_warning(const attack_type& attack, const config& filter) {
-	// This function is only called when the recursion limit has already been reached, meaning the
-	// filter has already been parsed multiple times, so I'm not trying to optimize the performance
-	// of this; it's merely to prevent the logs getting spammed. For example, each of
-	// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
-	// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
-	static std::vector<std::tuple<std::string, std::string>> already_shown;
-
-	auto identifier = std::tuple<std::string, std::string>{attack.id(), filter.debug()};
-	if(utils::contains(already_shown, identifier)) {
-		return;
-	}
-
-	std::string_view filter_text_view = std::get<1>(identifier);
-	utils::trim(filter_text_view);
-	ERR_UT << "Recursion limit reached for weapon '" << attack.id()
-		<< "' while checking filter '" << filter_text_view << "'";
-
-	// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
-	// warnings can't lead to unbounded memory consumption here.
-	if(already_shown.size() > 100) {
-		already_shown.clear();
-	}
-	already_shown.push_back(std::move(identifier));
-}
-
 /**
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& tag_name)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& tag_name)
 {
-	//update and check variable_recursion for prevent check special_id/type_active in case of infinite recursion.
-	attack_type::recursion_guard filter_lock= attack.update_variables_recursion();
-	if(!filter_lock) {
-		show_recursion_warning(attack, filter);
-		return false;
-	}
-
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_damage = filter["damage"];
 	const std::string& filter_attacks = filter["number"];
@@ -314,7 +255,6 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	// Passed all tests.
 	return true;
 }
-} // anonymous namespace
 
 /**
  * Returns whether or not *this matches the given @a filter.
@@ -635,20 +575,20 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	return true;
 }
 
-attack_type::recursion_guard attack_type::update_variables_recursion() const
+attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const
 {
-	if(num_recursion_ < ATTACK_RECURSION_LIMIT) {
-		return recursion_guard(*this);
+	if(utils::contains(open_queries_, special)) {
+		return recursion_guard();
 	}
-	return recursion_guard();
+	return recursion_guard(*this, special);
 }
 
 attack_type::recursion_guard::recursion_guard() = default;
 
-attack_type::recursion_guard::recursion_guard(const attack_type& weapon)
+attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const config& special)
 	: parent(weapon.shared_from_this())
 {
-	weapon.num_recursion_++;
+	parent->open_queries_.emplace_back(special);
 }
 
 attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
@@ -674,8 +614,10 @@ attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_typ
 attack_type::recursion_guard::~recursion_guard()
 {
 	if(parent) {
-		assert(parent->num_recursion_ > 0);
-		parent->num_recursion_--;
+		// As this only expects nested recursion, simply pop the top of the open_queries_ stack
+		// without checking that the top of the stack matches the filter passed to the constructor.
+		assert(!parent->open_queries_.empty());
+		parent->open_queries_.pop_back();
 	}
 }
 
