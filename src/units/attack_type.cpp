@@ -100,7 +100,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& tag_name)
+static bool matches_simple_filter(const attack_type & attack, const config & filter)
 {
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_damage = filter["damage"];
@@ -144,17 +144,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if (!filter_type.empty()){
-		//if special is type "damage_type" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
-		if(tag_name == "damage_type"){
-			if (filter_type.count(attack.type()) == 0){
-				return false;
-			}
-		} else {
-			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
-				return false;
-			}
+		std::pair<std::string, std::string> damage_type = attack.damage_type();
+		if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+			return false;
 		}
 	}
 
@@ -256,25 +248,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, tag_name);
+	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, tag_name);
+			matches = matches && matches_filter(condition.cfg);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, tag_name);
+			matches = matches || matches_filter(condition.cfg);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, tag_name);
+			matches = matches && !matches_filter(condition.cfg);
 	}
 
 	return matches;
