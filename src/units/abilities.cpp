@@ -1261,14 +1261,16 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 
 std::set<std::string> attack_type::alternative_damage_types() const
 {
-	unit_ability_list damage_alternative_type_list = get_specials_and_abilities("damage_type");
-	if(damage_alternative_type_list.empty()){
+	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	if(damage_type_list.empty()){
 		return {};
 	}
 	std::set<std::string> damage_types;
-	for(auto& i : damage_alternative_type_list) {
+	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
-		damage_types.insert(c["alternative_type"].str());
+		if(c.has_attribute("alternative_type")){
+			damage_types.insert(c["alternative_type"].str());
+		}
 	}
 
 	return damage_types;
