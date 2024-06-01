@@ -1277,6 +1277,17 @@ namespace { // Helpers for attack_type::special_active()
 	}
 
 	/**
+	 * update check_tag_name_ variable if weapon exist.
+	 * @param  weapon      the attack where modification applied
+	 * @param  tag_name  string used for modification
+	 */
+	void update_tag_name_variable(const_attack_ptr& weapon, const std::string& tag_name)
+	{
+		if(weapon){
+			weapon->update_check_tag_name(tag_name);
+		}
+	}
+	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
 	 * @param[in]  u           A unit to filter.
@@ -1291,7 +1302,7 @@ namespace { // Helpers for attack_type::special_active()
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
 		                             const map_location & loc,
-		                             const_attack_ptr weapon,
+		                             const_attack_ptr& weapon,
 		                             const config & filter,
 									 const bool for_listing,
 		                             const std::string & child_tag, const std::string& tag_name)
@@ -1314,6 +1325,8 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
+		update_tag_name_variable(weapon, tag_name);
+
 		unit_filter ufilt{vconfig(*filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
@@ -1321,16 +1334,24 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) ){
+				update_tag_name_variable(weapon, "");
 				return false;
+			}
 		}
 
 		// Passed.
 		// If the other unit doesn't exist, try matching without it
+		bool u_match = false;
 		if (!u2) {
-			return ufilt.matches(*u, loc);
+			u_match = ufilt.matches(*u, loc);
+			//reinitialise check_tag_name before return result of checking
+			update_tag_name_variable(weapon, "");
+			return u_match;
 		}
-		return ufilt.matches(*u, loc, *u2);
+		u_match = ufilt.matches(*u, loc, *u2);
+		update_tag_name_variable(weapon, "");
+		return u_match;
 	}
 
 }//anonymous namespace
@@ -1363,6 +1384,9 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
+	if(check_tag_name() == special){
+		return {};
+	}
 	// get all weapon specials of the provided type
 	unit_ability_list abil_list = get_specials(special);
 	// append all such weapon specials as abilities as well
@@ -1789,8 +1813,8 @@ bool attack_type::special_active_impl(
 	unit_const_ptr & def = is_attacker ? other : self;
 	const map_location & att_loc   = is_attacker ? self_loc : other_loc;
 	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
-	const_attack_ptr att_weapon = is_attacker ? self_attack : other_attack;
-	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
+	const_attack_ptr& att_weapon = is_attacker ? self_attack : other_attack;
+	const_attack_ptr& def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
 	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
@@ -1818,7 +1842,6 @@ bool attack_type::special_active_impl(
 	}
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
-	// Filter the units involved.
 	//If filter concerns the unit on which special is applied,
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
