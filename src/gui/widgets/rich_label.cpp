@@ -172,6 +172,7 @@ void rich_label::set_label(const t_string& text)
 	std::vector<std::string> parsed_text = marked_up_text.parsed_text();
 
 	config* curr_item = nullptr;
+	optional_config_impl<config> child;
 
 	bool is_image = false;
 	bool floating = false;
@@ -188,14 +189,14 @@ void rich_label::set_label(const t_string& text)
 			config cfg;
 			::read(cfg, line);
 
-			if (cfg.optional_child("img")) {
+			if ((child = cfg.optional_child("img"))) {
 
-				floating = cfg.mandatory_child("img")["float"].to_bool();
+				floating = child["float"].to_bool();
+				std::string align = child["align"];
 
 				curr_item = &(text_dom_.add_child("image"));
+				(*curr_item)["name"] = child["src"];
 
-				(*curr_item)["name"] = cfg.mandatory_child("img")["src"];
-				std::string align = cfg.mandatory_child("img")["align"];
 				if (align.empty()) {
 					align = "left";
 				}
@@ -273,13 +274,15 @@ void rich_label::set_label(const t_string& text)
 				point prev_block_size = get_text_size(*curr_item, w_ - x_);
 				int tmp_h = prev_block_size.y;
 
-				if (cfg.optional_child("ref")) {
+				if ((child = cfg.optional_child("ref"))) {
 
 					setup_text_renderer(*curr_item, w_ - img_size.x);
 					point t_start = get_xy_from_offset(utf8::size((*curr_item)["text"].str()));
 
-					std::string link_text = cfg.mandatory_child("ref")["text"].str();
-					link_text = link_text.empty() ? cfg.mandatory_child("ref")["dst"] : link_text;
+					std::string link_text = child["text"].str();
+					std::string dest = child["dst"];
+
+					link_text = link_text.empty() ? dest : link_text;
 					add_text_with_attribute((*curr_item), link_text, "color", font::YELLOW_COLOR.to_hex_string().substr(1));
 
 					setup_text_renderer(*curr_item, w_ - img_size.x);
@@ -300,7 +303,7 @@ void rich_label::set_label(const t_string& text)
 								link_size.x,
 								link_size.y,
 						};
-						links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
+						links_.push_back(std::pair(link_rect, dest));
 
 					} else {
 						//link straddles two lines, break into two rects
@@ -322,43 +325,28 @@ void rich_label::set_label(const t_string& text)
 								t_size2.y,
 						};
 
-						links_.push_back(std::pair(link_rect, cfg.mandatory_child("ref")["dst"]));
-						links_.push_back(std::pair(link_rect2, cfg.mandatory_child("ref")["dst"]));
+						links_.push_back(std::pair(link_rect, dest));
+						links_.push_back(std::pair(link_rect2, dest));
 					}
 
 					is_image = false;
 
-				} else if (cfg.optional_child("bold")||cfg.optional_child("b")) {
+				} else if ((child = cfg.optional_child("bold")) || (child = cfg.optional_child("b"))) {
 
-					if (cfg.optional_child("bold")) {
-						add_text_with_attribute((*curr_item), cfg.mandatory_child("bold")["text"], "bold");
-					} else if (cfg.optional_child("b")) {
-						add_text_with_attribute((*curr_item), cfg.mandatory_child("b")["text"], "bold");
-					}
-
+					add_text_with_attribute((*curr_item), child["text"], "bold");
 					is_image = false;
 
-				} else if (cfg.optional_child("italic")||cfg.optional_child("i")) {
+				} else if ((child = cfg.optional_child("italic")) || (child = cfg.optional_child("i"))) {
 
-					if (cfg.optional_child("italic")) {
-						add_text_with_attribute((*curr_item), cfg.mandatory_child("italic")["text"], "italic");
-					} else if (cfg.optional_child("i")) {
-						add_text_with_attribute((*curr_item), cfg.mandatory_child("i")["text"], "italic");
-					}
-
+					add_text_with_attribute((*curr_item), child["text"], "italic");
 					is_image = false;
 
-				} else if (cfg.optional_child("underline")||cfg.optional_child("u")) {
+				} else if ((child = cfg.optional_child("underline")) || (child = cfg.optional_child("u"))) {
 
-					if (cfg.optional_child("underline")) {
-						add_text_with_attribute((*curr_item), cfg.mandatory_child("underline")["text"], "underline");
-					} else if (cfg.optional_child("u")) {
-						add_text_with_attribute((*curr_item), cfg.mandatory_child("u")["text"], "underline");
-					}
-
+					add_text_with_attribute((*curr_item), child["text"], "underline");
 					is_image = false;
 
-				} else if (cfg.optional_child("header")||cfg.optional_child("h")) {
+				} else if ((child = cfg.optional_child("header")) || (child = cfg.optional_child("h"))) {
 					// Header starts in a new line/paragraph
 
 					append_if_not_empty(&((*curr_item)["text"]), "\n");
@@ -368,12 +356,7 @@ void rich_label::set_label(const t_string& text)
 					append_if_not_empty(&((*curr_item)["attr_data"]), ",");
 
 					std::stringstream header_text;
-					if (cfg.optional_child("header")) {
-						header_text << cfg.mandatory_child("header")["text"].str() + "\n";
-					} else if (cfg.optional_child("h")) {
-						header_text << cfg.mandatory_child("h")["text"].str() + "\n";
-					}
-
+					header_text << child["text"].str() + "\n";
 					std::vector<std::string> attrs = {"color", "size"};
 					std::vector<std::string> attr_data;
 					attr_data.push_back(font::TITLE_COLOR.to_hex_string().substr(1));
@@ -383,34 +366,26 @@ void rich_label::set_label(const t_string& text)
 
 					is_image = false;
 
-				} else if (cfg.optional_child("span")||cfg.optional_child("format")) {
-
-					config* span_cfg = nullptr;
-					if (cfg.optional_child("span")) {
-						span_cfg = &cfg.mandatory_child("span");
-					} else if (cfg.optional_child("format")) {
-						span_cfg = &cfg.mandatory_child("format");
-					}
+				} else if ((child = cfg.optional_child("span")) || (child = cfg.optional_child("format"))) {
 
 					std::vector<std::string> attrs;
 					std::vector<std::string> attr_data;
 
-					for (const auto& attr : span_cfg->attribute_range()) {
+					for (const auto& attr : child.value().attribute_range()) {
 						if (attr.first != "text") {
 							attrs.push_back(attr.first);
 							attr_data.push_back(attr.second);
 						}
 					}
 
-					add_text_with_attributes((*curr_item), (*span_cfg)["text"], attrs, attr_data);
-
+					add_text_with_attributes((*curr_item), child["text"], attrs, attr_data);
 					is_image = false;
 
 				// }---------- TABLE TAGS -----------{
-				} else if (cfg.optional_child("table")) {
+				} else if ((child = cfg.optional_child("table"))) {
 					// setup column width
-					unsigned columns = cfg.mandatory_child("table")["col"].to_int();
-					unsigned width = cfg.mandatory_child("table")["width"].to_int();
+					unsigned columns = child["col"].to_int();
+					unsigned width = child["width"].to_int();
 					width = width > 0 ? width : w_;
 					col_width = width/columns;
 
