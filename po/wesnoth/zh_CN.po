@@ -13,18 +13,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 15:07-0500\n"
-"PO-Revision-Date: 2023-09-10 08:30+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2024-05-22 18:08+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -392,10 +392,8 @@ msgstr "巴斯克文翻译"
 
 #. [about]
 #: data/core/about_i18n.cfg:65
-#, fuzzy
-#| msgid "Bulgarian Translation"
 msgid "Bengali Translation"
-msgstr "保加利亚文翻译"
+msgstr "孟加拉文翻译"
 
 #. [about]
 #: data/core/about_i18n.cfg:77
@@ -644,10 +642,8 @@ msgstr "越南文翻译"
 
 #. [about]
 #: data/core/about_i18n.cfg:1930
-#, fuzzy
-#| msgid "Polish Translation"
 msgid "Welsh Translation"
-msgstr "波兰文翻译"
+msgstr "威尔士文翻译"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
@@ -4804,10 +4800,8 @@ msgstr "载入回合……"
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "播放此回合"
+msgstr "重新播放回合……"
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -5595,10 +5589,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<b>——科纳德国王，韦元536年</b>"
+msgstr "<b>——Dominant Gorlack，韦元3年</b>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5750,16 +5742,16 @@ msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey|继续移动）"
 
 #: src/actions/undo.cpp:402
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "游戏错误"
+msgstr "重做错误"
 
 #: src/actions/undo.cpp:403
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
+"重做栈失去同步。这通常是由损坏的存档文件或者场景或时代中错误的WML代码造成的。"
+"细节："
 
 #: src/addon/client.cpp:79
 msgid "Connecting to $server_address|..."
@@ -5814,7 +5806,7 @@ msgstr ""
 msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
-msgstr ""
+msgstr "到远程服务器的连接不安全。附加组件<i>$addon_title</i>无法上传。"
 
 #: src/addon/client.cpp:222
 msgid "Requesting file index..."
@@ -5841,10 +5833,8 @@ msgid "Add-ons Manager"
 msgstr "附加组件管理器"
 
 #: src/addon/client.cpp:348
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr "正在发送附加组件<b>$addon_title</b>……"
+msgstr "正在安装附加组件<b>$addon_title</b>……"
 
 #: src/addon/client.cpp:360 src/addon/client.cpp:386
 msgid ""
@@ -7063,44 +7053,36 @@ msgstr[1] ""
 "们吗？"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
-#, fuzzy
-#| msgid "Create a unit."
 msgid "Create a new add-on"
-msgstr "创建一个单位。"
+msgstr "创建一个新附加组件。"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
-msgstr ""
+msgstr "新附加组件"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline"
-msgstr ""
+msgstr "主线"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:84
 msgid "Mainline multiplayer scenarios"
-msgstr ""
+msgstr "主线多人场景"
 
 #: src/gui/dialogs/game_stats.hpp:38
 msgid "No visible sides found."
 msgstr "未找到可见的阵营。"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:172
-#, fuzzy
-#| msgid "Save Game"
 msgid "Selected Game"
-msgstr "保存游戏"
+msgstr "被选择的游戏"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
-#, fuzzy
-#| msgid "In lobby"
 msgid "Lobby"
-msgstr "在大厅中"
+msgstr "大厅"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
-#, fuzzy
-#| msgid "Save Game"
 msgid "Other Games"
-msgstr "保存游戏"
+msgstr "其他游戏"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:49
 #: src/gui/dialogs/multiplayer/match_history.cpp:90
@@ -7108,16 +7090,12 @@ msgid "Match History — $player"
 msgstr "匹配历史 — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:68
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "结束场景"
+msgstr "场景"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:69
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "时代："
+msgstr "时代"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
 #, fuzzy
@@ -7136,18 +7114,16 @@ msgid " UTC+0"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:253
-#, fuzzy
-#| msgid "No units found."
 msgid "No game history found."
-msgstr "未找到单位。"
+msgstr "未找到游戏历史。"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:266
 msgid "Request timed out."
-msgstr ""
+msgstr "请求超时。"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:276
 msgid "Request encountered an unexpected error, please check the logs."
-msgstr ""
+msgstr "请求遇到意外的错误，请检查日志。"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:105
 msgid "In game:"
@@ -7186,10 +7162,8 @@ msgid "Error"
 msgstr "错误"
 
 #: src/gui/dialogs/unit_attack.cpp:158 src/gui/dialogs/unit_attack.cpp:173
-#, fuzzy
-#| msgid "With specials: "
 msgid "Other aspects: "
-msgstr "特攻："
+msgstr "其他方面："
 
 #: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
 #: src/reports.cpp:818 src/reports.cpp:1088 src/reports.cpp:1100
@@ -7213,7 +7187,7 @@ msgstr "攻击数："
 
 #: src/gui/dialogs/unit_attack.cpp:189 src/gui/dialogs/unit_attack.cpp:202
 msgid "Chance to hit: "
-msgstr ""
+msgstr "命中率："
 
 #: src/gui/dialogs/unit_list.hpp:40
 msgid "No units found."
@@ -7306,14 +7280,11 @@ msgstr "立场："
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1156
-#, fuzzy
-#| msgid ""
-#| "This is a group of units, all of whom are <ref>dst='$topic_id' "
-#| "text='$help_taxonomy'</ref>"
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
-msgstr "这是一组单位，他们都是<ref>dst='$topic_id' text='$help_taxonomy'</ref>"
+msgstr ""
+"这是一组单位，他们都是<ref>dst='$topic_id' text='$help_taxonomy'</ref>。"
 
 #: src/help/help_impl.cpp:1161
 msgid "<header>text='Subgroups of units within this group'</header>"
@@ -7368,16 +7339,12 @@ msgid "Back to Turn "
 msgstr "回到回合"
 
 #: src/hotkey/hotkey_handler.cpp:452
-#, fuzzy
-#| msgid "Ready to start!"
 msgid "Replay from Start"
-msgstr "准备开始！"
+msgstr "从开始回放"
 
 #: src/hotkey/hotkey_handler.cpp:452
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "播放此回合"
+msgstr "从回合回放"
 
 #: src/hotkey/hotkey_handler_sp.cpp:155
 msgid "(press $hotkey to deactivate)"
@@ -7392,16 +7359,12 @@ msgid "Planning mode deactivated!"
 msgstr "计划模式关闭！"
 
 #: src/hotkey/hotkey_handler_sp.cpp:326
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
-msgstr "你要继续吗？"
+msgstr "你无论如何都要载入它吗？"
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
-msgstr "你试图载入的文件已损坏"
+msgstr "你试图载入的文件没有回放信息。"
 
 #: src/hotkey/hotkey_handler_sp.cpp:346
 #, fuzzy
@@ -7752,7 +7715,7 @@ msgstr "保存并退出。"
 
 #: src/menu_events.cpp:1251
 msgid "Ignore replay errors."
-msgstr "忽略录像错误。"
+msgstr "忽略回放错误。"
 
 #: src/menu_events.cpp:1252
 msgid "Disable autosaves."
@@ -8071,11 +8034,8 @@ msgid ""
 msgstr "在有剩余的征募或者召回计划时，你不能将首领移动到主楼之外。"
 
 #: src/mouse_events.cpp:1358
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
 msgid "No Attacks"
-msgstr "攻击手段"
+msgstr "无攻击手段"
 
 #: src/mouse_events.cpp:1358
 msgid "This unit has no usable weapons."
@@ -8127,25 +8087,23 @@ msgstr "从服务器上下载附加组件列表时发生错误。"
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
 msgid "Download error"
-msgstr ""
+msgstr "下载错误"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "确认覆盖"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "覆盖已有的文件？"
 
 #: src/network_download_file.cpp:81
 msgid "Download complete"
-msgstr ""
+msgstr "下载完成"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "游戏已保存。"
+msgstr "文件已下载。"
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8168,7 +8126,7 @@ msgstr "当前本地时间"
 
 #: src/play_controller.cpp:559
 msgid "Trying to create a corrupt file, please report this bug"
-msgstr ""
+msgstr "尝试创建一个损坏的文件，请报告这个错误。"
 
 #: src/play_controller.cpp:1022
 msgid ""
@@ -8391,29 +8349,22 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "此单位石化了，它不能移动或者攻击。"
 
 #: src/reports.cpp:353
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "不可治疗"
+msgstr "不可治疗："
 
 #: src/reports.cpp:354
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
-msgstr ""
+msgstr "此单位不可治疗。它不能被疗伤者或村庄治疗，也不能从休息中获得收益。"
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "隐形： "
+msgstr "不可伤害： "
 
 #: src/reports.cpp:358
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr "此单位隐形了。敌人看不见它，也不能攻击它。"
+msgstr "此单位不可伤害。敌人不能以任何攻击伤害它。"
 
 #: src/reports.cpp:436
 msgid "Ability: "
@@ -9218,10 +9169,8 @@ msgid ""
 msgstr ""
 
 #: src/wesnoth.cpp:685
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "日志记录"
+msgstr "记录日志失败"
 
 #: src/wesnothd_connection.cpp:548
 msgid "Disconnected from server."

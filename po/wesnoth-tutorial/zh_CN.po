@@ -10,18 +10,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 20:07 UTC\n"
-"PO-Revision-Date: 2023-09-10 09:11+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2024-05-21 18:27+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -51,14 +51,12 @@ msgstr "初学者"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "完成教程"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "战斗训练"
+msgstr "完成战斗训练。"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -228,8 +226,8 @@ msgid ""
 msgstr ""
 "当你的鼠标在单位上方悬停或选中单位（此处为莉莎）时，她可以移动到的位置会高亮"
 "显示。所有单位都拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的"
-"格数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点击目"
-"的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
+"格数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击莉莎再点击目的"
+"地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:375
@@ -1736,6 +1734,8 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"当移动一个单位的时候，显示的百分数是这个单位在那个六角格的防御率。这个数值越"
+"大，他们被击中的概率越小。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938

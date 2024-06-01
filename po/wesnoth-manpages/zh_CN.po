@@ -2236,6 +2236,48 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
+#, no-wrap
+#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
+#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
+
+#~ msgid ""
+#~ "decompresses a file which should be in bzip2 format and stores it without "
+#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
+#~ msgstr ""
+#~ "解压缩应为bzip2格式的文件，解压后去掉.bz2后缀。文件I<infile.bz2>将被删除。"
+
+#, no-wrap
+#~ msgid "B<--bzip2>I<\\ infile>"
+#~ msgstr "B<--bzip2>I<\\ infile>"
+
+#~ msgid ""
+#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "将I<infile>压缩为bzip2格式文件，文件名为I<infile>.bz2。文件I<infile>将被删"
+#~ "除。"
+
+#, no-wrap
+#~ msgid "B<--gunzip>I<\\ infile.gz>"
+#~ msgstr "B<--gunzip>I<\\ infile.gz>"
+
+#~ msgid ""
+#~ "decompresses a file which should be in gzip format and stores it without "
+#~ "the .gz suffix. The I<infile.gz> will be removed."
+#~ msgstr ""
+#~ "解压缩应为gzip格式的文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
+
+#, no-wrap
+#~ msgid "B<--gzip>I<\\ infile>"
+#~ msgstr "B<--gzip>I<\\ infile>"
+
+#~ msgid ""
+#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "将I<infile>压缩为gzip格式文件，文件名为I<infile>.gz。文件I<infile>将被删"
+#~ "除。"
+
 #~ msgid ""
 #~ "sets the user configuration directory to I<name> under $HOME or \"My "
 #~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
@@ -2312,45 +2354,3 @@ msgstr "B<wesnoth>(6)"
 #, no-wrap
 #~ msgid "B<db_game_modification_info_table>"
 #~ msgstr "B<db_game_modification_info_table>"
-
-#, no-wrap
-#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
-
-#~ msgid ""
-#~ "decompresses a file which should be in bzip2 format and stores it without "
-#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
-#~ msgstr ""
-#~ "解压缩应为bzip2格式的文件，解压后去掉.bz2后缀。文件I<infile.bz2>将被删除。"
-
-#, no-wrap
-#~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--bzip2>I<\\ infile>"
-
-#~ msgid ""
-#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "将I<infile>压缩为bzip2格式文件，文件名为I<infile>.bz2。文件I<infile>将被删"
-#~ "除。"
-
-#, no-wrap
-#~ msgid "B<--gunzip>I<\\ infile.gz>"
-#~ msgstr "B<--gunzip>I<\\ infile.gz>"
-
-#~ msgid ""
-#~ "decompresses a file which should be in gzip format and stores it without "
-#~ "the .gz suffix. The I<infile.gz> will be removed."
-#~ msgstr ""
-#~ "解压缩应为gzip格式的文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
-
-#, no-wrap
-#~ msgid "B<--gzip>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ infile>"
-
-#~ msgid ""
-#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "将I<infile>压缩为gzip格式文件，文件名为I<infile>.gz。文件I<infile>将被删"
-#~ "除。"
