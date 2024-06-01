@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-18 00:07 UTC\n"
-"PO-Revision-Date: 2023-09-10 09:11+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2024-05-22 15:15+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -426,7 +426,7 @@ msgstr "剁肉刀"
 #: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
 #: data/core/units/undead/Skele_Bone_Knight.cfg:77
 msgid "trample"
-msgstr ""
+msgstr "践踏"
 
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
@@ -2784,10 +2784,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:4
-#, fuzzy
-#| msgid "Dwarvish Fighter"
 msgid "Dwarvish Miner"
-msgstr "矮人战士"
+msgstr "矮人矿工"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:17
@@ -2797,11 +2795,13 @@ msgid ""
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
+"矮人矿工是矮人社会的底层工人。他们从地下开采珍贵的矿石，但从不参与武器或器物"
+"的制作。他们没有受过军事训练，但他们仍然可以用自己的镐造成一些伤害。"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:22
 msgid "pick"
-msgstr ""
+msgstr "镐"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
@@ -3427,12 +3427,12 @@ msgstr ""
 msgid ""
 "Elvish Rangers are well-traveled and adept at traversing harsh terrains like "
 "sand, water, and mountains."
-msgstr "精灵游侠们游历甚广，擅长穿越沙地、水面和山地等恶劣地形。"
+msgstr "精灵巡林者们游历甚广，擅长穿越沙地、水面和山地等恶劣地形。"
 
 #. [female]: gender=female
 #: data/core/units/elves/Ranger.cfg:95
 msgid "female^Elvish Ranger"
-msgstr "精灵游侠"
+msgstr "精灵巡林者"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
@@ -4217,14 +4217,10 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Javelineer.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Compared to other loyalists, Halberdiers have a higher resistance to "
-#| "‘pierce’ attacks."
 msgid ""
 "Compared to other loyalists, Javelineers have a higher resistance to "
 "‘pierce’ attacks."
-msgstr "与其他保王党人相比，戟兵对“穿刺”攻击的抗性更高。"
+msgstr "与其他保王党人相比，标枪兵对“穿刺”攻击的抗性更高。"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -5186,10 +5182,8 @@ msgstr ""
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:4
-#, fuzzy
-#| msgid "Merman Entangler"
 msgid "Merman Brawler"
-msgstr "人鱼缠绕者"
+msgstr "人鱼斗士"
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:17
@@ -5207,10 +5201,8 @@ msgstr "尾巴"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:4
-#, fuzzy
-#| msgid "Merman Triton"
 msgid "Merman Citizen"
-msgstr "人鱼三叉戟战士"
+msgstr "人鱼平民"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:17
@@ -5545,10 +5537,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:9
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Egg"
-msgstr "巨蚁"
+msgstr "巨蚁卵"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
@@ -5562,10 +5552,8 @@ msgstr ""
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Egg"
-msgstr "火蚁"
+msgstr "火蚁卵"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
@@ -5605,10 +5593,8 @@ msgstr "火焰"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Queen"
-msgstr "火蚁"
+msgstr "火蚁后"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:54
@@ -5643,10 +5629,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:4
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Queen"
-msgstr "巨蚁"
+msgstr "巨蚁后"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
@@ -5861,10 +5845,8 @@ msgstr "墨汁"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:5
-#, fuzzy
-#| msgid "Dragoon"
 msgid "Dragonfly"
-msgstr "龙骑兵"
+msgstr "蜻蜓"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:27
@@ -5878,10 +5860,8 @@ msgstr ""
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:5
-#, fuzzy
-#| msgid "Grand Marshal"
 msgid "Grand Dragonfly"
-msgstr "大元帅"
+msgstr "大蜻蜓"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:28
@@ -7516,10 +7496,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "蜥蜴人侧击士"
+msgstr "蜥蜴人标枪兵"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
@@ -7845,18 +7823,14 @@ msgstr ""
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:143
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Rat"
 msgid "wc_variation^Ant"
-msgstr "鼠"
+msgstr "蚂蚁"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:159
 #: data/core/units/undead/Corpse_Walking.cfg:160
-#, fuzzy
-#| msgid "wc_variation^Bat"
 msgid "wc_variation^Bug"
-msgstr "蝙蝠"
+msgstr "臭虫"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
@@ -7879,10 +7853,8 @@ msgstr "猎隼"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:238
 #: data/core/units/undead/Corpse_Walking.cfg:239
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Fish"
-msgstr "树人"
+msgstr "鱼"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:259
@@ -8178,10 +8150,8 @@ msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Goblin Knight"
 msgid "Bone Knight"
-msgstr "地精骑士"
+msgstr "枯骨骑士"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:60
@@ -8350,10 +8320,8 @@ msgstr ""
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:5
-#, fuzzy
-#| msgid "Skeleton Archer"
 msgid "Skeleton Rider"
-msgstr "骷髅弓箭手"
+msgstr "骷髅骑手"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:79
