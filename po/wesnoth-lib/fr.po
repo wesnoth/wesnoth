@@ -4533,39 +4533,43 @@ msgstr ""
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:631
 #, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "URL du forum"
+msgstr "Forum"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:650
+#, fuzzy
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:669
+#, fuzzy
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:688
+#, fuzzy
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:707
+#, fuzzy
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:726
+#, fuzzy
 msgid "Donate"
-msgstr ""
+msgstr "Donations"
 
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:822
@@ -4601,8 +4605,9 @@ msgstr "Fonctionnalités"
 #. [tab]
 #. [grid]
 #: data/gui/window/game_version.cfg:881 data/gui/window/title_screen.cfg:261
+#, fuzzy
 msgid "Community"
-msgstr ""
+msgstr "Communauté"
 
 #. [button]: id=credits
 #: data/gui/window/game_version.cfg:935
@@ -8164,8 +8169,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</b> "
-"».\n"
+"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</"
+"b> ».\n"
 "Voulez-vous le réattribuer à « <b>$new_hotkey_action|</b> » ?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:905
@@ -9400,15 +9405,6 @@ msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
 
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "Copier ce rapport dans le presse-papier"
-
-#~ msgid "View the credits"
-#~ msgstr "Voir les crédits"
-
-#~ msgid "Running on $os"
-#~ msgstr "Exécuté sous $os"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "Sables pierreux"
 
@@ -9433,6 +9429,15 @@ msgstr ""
 
 #~ msgid "Add-on ID"
 #~ msgstr "Identifiant de l'extension"
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "Copier ce rapport dans le presse-papier"
+
+#~ msgid "View the credits"
+#~ msgstr "Voir les crédits"
+
+#~ msgid "Running on $os"
+#~ msgstr "Exécuté sous $os"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Choisissez votre langue préférée :"
@@ -9645,8 +9650,8 @@ msgstr ""
 #~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
 #~ "'$deprecated_key' will be removed in version $removal_version."
 #~ msgstr ""
-#~ "La clef « $deprecated_key » a été remplacée par « $key ». « "
-#~ "$deprecated_key » ne sera plus maintenue à partir de la version "
+#~ "La clef « $deprecated_key » a été remplacée par « $key ». "
+#~ "« $deprecated_key » ne sera plus maintenue à partir de la version "
 #~ "$removal_version."
 
 #~ msgid "Show disengaged orb"
@@ -10188,8 +10193,8 @@ msgstr ""
 
 #~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 #~ msgstr ""
-#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou « "
-#~ "fixed_height »."
+#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou "
+#~ "« fixed_height »."
 
 #~ msgid "Items"
 #~ msgstr "Objets"
