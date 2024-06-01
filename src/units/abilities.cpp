@@ -1311,7 +1311,16 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
-		unit_filter ufilt{vconfig(*filter_child)};
+		//'inform' u.matches what called from a weapon special if filter_child contain "has_attack" child.
+		config cfg = *filter_child;
+		if ((*filter_child).has_child("has_attack") ) {
+			config& filter_has_attack = cfg.mandatory_child("has_attack");
+			filter_has_attack["bug_8940"] = tag_name;
+		}
+
+		const config& final_filter_child = (*filter_child).has_child("has_attack") ? cfg : *filter_child;
+
+		unit_filter ufilt{vconfig(final_filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
 
