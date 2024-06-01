@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 15:07-0500\n"
-"PO-Revision-Date: 2024-04-11 09:47+1000\n"
+"PO-Revision-Date: 2024-05-27 10:52+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2409,10 +2409,8 @@ msgstr "Copy"
 
 #. [draw]
 #: data/gui/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "page^Copy"
 msgid "page^✔ Copied"
-msgstr "Copy"
+msgstr "✔ Copied"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
@@ -4304,43 +4302,44 @@ msgstr "Scroll To"
 #. [label]
 #: data/gui/window/game_version.cfg:122
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:150
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:179
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Home Page:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:218
 msgid "<span foreground='yellow'><u>https://www.wesnoth.org</u></span>"
-msgstr ""
+msgstr "<span foreground='yellow'><u>https://www.wesnoth.org</u></span>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:237
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:248
 msgid "<span foreground='yellow'><u>https://wiki.wesnoth.org</u></span>"
-msgstr ""
+msgstr "<span foreground='yellow'><u>https://wiki.wesnoth.org</u></span>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:275
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:295
@@ -4348,11 +4347,13 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
+"feature:</i>"
 
 #. [button]: id=issue
 #: data/gui/window/game_version.cfg:309
 msgid "Report Issue"
-msgstr ""
+msgstr "Report Issue"
 
 #. [label]
 #: data/gui/window/game_version.cfg:318
@@ -4360,14 +4361,14 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
+"dialogue:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:331
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Crater"
+msgstr "Migrate"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:368
@@ -4448,45 +4449,43 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:631
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "Forum URL"
+msgstr "Forums"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:650
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:669
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:688
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:707
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:726
 msgid "Donate"
-msgstr ""
+msgstr "Donate"
 
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:822
 msgid "An open source, turn-based strategy game with a high fantasy theme."
-msgstr ""
+msgstr "An open-source, turn-based strategy game with a high fantasy theme."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -4518,7 +4517,7 @@ msgstr "Features"
 #. [grid]
 #: data/gui/window/game_version.cfg:881 data/gui/window/title_screen.cfg:261
 msgid "Community"
-msgstr ""
+msgstr "Community"
 
 #. [button]: id=credits
 #: data/gui/window/game_version.cfg:935
@@ -4528,7 +4527,7 @@ msgstr "Credits"
 #. [button]: id=license
 #: data/gui/window/game_version.cfg:950
 msgid "License"
-msgstr ""
+msgstr "Licence"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4625,6 +4624,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> relies on volunteers for development, "
+"including translation. Translations may drift behind or even become "
+"abandoned."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4635,6 +4637,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Note:</b> The translation percentages shown apply to the core game "
+"interface and in-game help only. More complete statistics, including details "
+"for each campaign, are available at the following page:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4644,13 +4649,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"If you are interested in translating the game yourself, please follow the "
+"link below for more information:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
-#, fuzzy
-#| msgid "Show work-in-progress or abandoned translations"
 msgid "Show in-progress or abandoned translations"
-msgstr "Show work-in-progress or abandoned translations"
+msgstr "Show in-progress or abandoned translations"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -6531,10 +6536,8 @@ msgstr "Start the map editor"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "Places to talk about Wesnoth"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -6549,14 +6552,12 @@ msgstr "Quit the game"
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:470
 msgid "About"
-msgstr ""
+msgstr "About"
 
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:471
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "General information about Battle for Wesnoth"
 
 #. [button]: id=language
 #: data/gui/window/title_screen.cfg:493
@@ -8276,10 +8277,8 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Found a widget with a helptip and without a tooltip."
 
 #: src/gui/widgets/tab_container.cpp:138
-#, fuzzy
-#| msgid "No grid defined for scroll label control"
 msgid "No grid defined for tab container control"
-msgstr "No grid defined for scroll label control"
+msgstr "No grid defined for tab container control"
 
 #: src/gui/widgets/tree_view.cpp:290
 msgid "No nodes defined for a tree view."
@@ -8563,10 +8562,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Kill Unit (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Create Unit (Debug!)"
+msgstr "Teleport Unit (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Objectives"
