@@ -96,185 +96,196 @@ std::string attack_type::accuracy_parry_description() const
 	return s.str();
 }
 
-/**
- * Returns whether or not *this matches the given @a filter, ignoring the
- * complexities introduced by [and], [or], and [not].
- */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& tag_name)
-{
-	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
-	const std::string& filter_damage = filter["damage"];
-	const std::string& filter_attacks = filter["number"];
-	const std::string& filter_accuracy = filter["accuracy"];
-	const std::string& filter_parry = filter["parry"];
-	const std::string& filter_movement = filter["movement_used"];
-	const std::string& filter_attacks_used = filter["attacks_used"];
-	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
-	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
-	const std::vector<std::string> filter_special = utils::split(filter["special"]);
-	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
-	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
-	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
-	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
-	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
-	const std::string filter_formula = filter["formula"];
+namespace { // Helpers for attack_type::matches_filter()
+	bool matches_simple_filter_with_possible_infinite_recursion(const attack_type & attack, const config & filter)
+	{
+		//update and check variable_recursion for prevent check special_id/type_active in case of infinite recursion.
+		attack_type::recursion_guard filter_lock;
+		filter_lock = attack.update_variables_recursion();
+		if(!filter_lock) {
+			return false;
+		}
+		const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
+		const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
+		const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
+		const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
+		const std::string filter_formula = filter["formula"];
 
-	if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
-		return false;
 
-	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges_unsigned(filter_damage)) )
-		return false;
-
-	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges_unsigned(filter_attacks)))
-		return false;
-
-	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges_int(filter_accuracy)))
-		return false;
-
-	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges_int(filter_parry)))
-		return false;
-
-	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges_unsigned(filter_movement)))
-		return false;
-
-	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
-		return false;
-
-	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
-		return false;
-
-	if (!filter_type.empty()){
-		//if special is type "damage_type" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
-		if(tag_name == "damage_type"){
-			if (filter_type.count(attack.type()) == 0){
-				return false;
-			}
-		} else {
-			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
+		if (!filter_type.empty()){
 			std::pair<std::string, std::string> damage_type = attack.damage_type();
 			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
 				return false;
 			}
 		}
-	}
 
-	if(!filter_special.empty()) {
-		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
-		bool found = false;
-		for(auto& special : filter_special) {
-			if(attack.has_special(special, true)) {
-				found = true;
-				break;
+		if(!filter_special_active.empty()) {
+			deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
+			bool found = false;
+			for(auto& special : filter_special_active) {
+				if(attack.has_special(special, false)) {
+					found = true;
+					break;
+				}
 			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_id.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_id) {
-			if(attack.has_special(special, true, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-
-	if(!filter_special_active.empty()) {
-		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
-		bool found = false;
-		for(auto& special : filter_special_active) {
-			if(attack.has_special(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_id_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_id_active) {
-			if(attack.has_special_or_ability(special, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_type.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_type) {
-			if(attack.has_special(special, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_type_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_type_active) {
-			if(attack.has_special_or_ability(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-
-	if (!filter_formula.empty()) {
-		try {
-			const wfl::attack_type_callable callable(attack);
-			const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
-			if(!form.evaluate(callable).as_bool()) {
+			if(!found) {
 				return false;
 			}
-		} catch(const wfl::formula_error& e) {
-			lg::log_to_chat() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
-			ERR_WML << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
-			// Formulae with syntax errors match nothing
-			return false;
 		}
+		if(!filter_special_id_active.empty()) {
+			bool found = false;
+			for(auto& special : filter_special_id_active) {
+				if(attack.has_special_or_ability(special, true, false)) {
+					found = true;
+					break;
+				}
+			}
+			if(!found) {
+				return false;
+			}
+		}
+		if(!filter_special_type_active.empty()) {
+			bool found = false;
+			for(auto& special : filter_special_type_active) {
+				if(attack.has_special_or_ability(special, false)) {
+					found = true;
+					break;
+				}
+			}
+			if(!found) {
+				return false;
+			}
+		}
+
+		if (!filter_formula.empty()) {
+			try {
+				const wfl::attack_type_callable callable(attack);
+				const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
+				if(!form.evaluate(callable).as_bool()) {
+					return false;
+				}
+			} catch(const wfl::formula_error& e) {
+				lg::log_to_chat() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+				ERR_WML << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
+				// Formulae with syntax errors match nothing
+				return false;
+			}
+		}
+
+		// Passed all tests.
+		return true;
 	}
 
-	// Passed all tests.
-	return true;
+	/**
+	 * Returns whether or not *this matches the given @a filter, ignoring the
+	 * complexities introduced by [and], [or], and [not].
+	 */
+	static bool matches_simple_filter(const attack_type & attack, const config & filter)
+	{
+		const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
+		const std::string& filter_damage = filter["damage"];
+		const std::string& filter_attacks = filter["number"];
+		const std::string& filter_accuracy = filter["accuracy"];
+		const std::string& filter_parry = filter["parry"];
+		const std::string& filter_movement = filter["movement_used"];
+		const std::string& filter_attacks_used = filter["attacks_used"];
+		const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
+		const std::vector<std::string> filter_special = utils::split(filter["special"]);
+		const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
+		const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
+
+		if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
+			return false;
+
+		if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges_unsigned(filter_damage)) )
+			return false;
+
+		if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges_unsigned(filter_attacks)))
+			return false;
+
+		if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges_int(filter_accuracy)))
+			return false;
+
+		if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges_int(filter_parry)))
+			return false;
+
+		if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges_unsigned(filter_movement)))
+			return false;
+
+		if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
+			return false;
+
+		if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
+			return false;
+
+		if(!filter_special.empty()) {
+			deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
+			bool found = false;
+			for(auto& special : filter_special) {
+				if(attack.has_special(special, true)) {
+					found = true;
+					break;
+				}
+			}
+			if(!found) {
+				return false;
+			}
+		}
+		if(!filter_special_id.empty()) {
+			bool found = false;
+			for(auto& special : filter_special_id) {
+				if(attack.has_special(special, true, true, false)) {
+					found = true;
+					break;
+				}
+			}
+			if(!found) {
+				return false;
+			}
+		}
+		if(!filter_special_type.empty()) {
+			bool found = false;
+			for(auto& special : filter_special_type) {
+				if(attack.has_special(special, true, false)) {
+					found = true;
+					break;
+				}
+			}
+			if(!found) {
+				return false;
+			}
+		}
+
+		if(!matches_simple_filter_with_possible_infinite_recursion(attack, filter))
+			return false;
+
+		// Passed all tests.
+		return true;
+	}
 }
 
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, tag_name);
+	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, tag_name);
+			matches = matches && matches_filter(condition.cfg);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, tag_name);
+			matches = matches || matches_filter(condition.cfg);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, tag_name);
+			matches = matches && !matches_filter(condition.cfg);
 	}
 
 	return matches;
@@ -570,6 +581,51 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	}
 
 	return true;
+}
+
+attack_type::recursion_guard attack_type::update_variables_recursion() const
+{
+	// this shouldn't be const, but replacing the const-and-mutable mess in attack_type is a big task
+	if(num_recursion_ < RECURSION_LIMIT) {
+		return recursion_guard(*this);
+	}
+	return recursion_guard();
+}
+
+attack_type::recursion_guard::recursion_guard() = default;
+
+attack_type::recursion_guard::recursion_guard(const attack_type& weapon)
+	: parent(weapon.shared_from_this())
+{
+	weapon.num_recursion_++;
+}
+
+attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
+{
+	std::swap(parent, other.parent);
+}
+
+attack_type::recursion_guard::operator bool() const {
+	return bool(parent);
+}
+
+attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other)
+{
+	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
+	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,
+	// but is accidentally dropping one of the allocations that it already has; hence the asserts.
+	assert(this != &other);
+	assert(!parent);
+	std::swap(parent, other.parent);
+	return *this;
+}
+
+attack_type::recursion_guard::~recursion_guard()
+{
+	if(parent) {
+		assert(parent->num_recursion_ > 0);
+		parent->num_recursion_--;
+	}
 }
 
 void attack_type::write(config& cfg) const
