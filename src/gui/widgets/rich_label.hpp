@@ -199,10 +199,12 @@ private:
 	/** template for canvas text config */
 	void default_text_config(config* txt_ptr, t_string text = "");
 
-	void add_text_with_attribute(config& text_cfg, std::string text, std::string attr_name = "", std::string extra_data = "");
-	void add_text_with_attributes(config& text_cfg, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
+	void add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "");
+	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
+	void add_image(config& curr_item, std::string name, std::string align, bool floating, point& img_size);
+	void add_link(config& curr_item, std::string name, std::string dest, int img_width);
 
-	void start_new_text_block(config* text_cfg, unsigned txt_height_);
+//	void start_new_text_block(config* txt_ptr);
 
 	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
 		if (!key->str().empty()) {
