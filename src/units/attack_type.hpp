@@ -124,7 +124,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter) const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -343,6 +343,7 @@ private:
 	int parry_;
 	config specials_;
 	bool changed_;
+	mutable std::set<const config*> num_recursion_ = {};
 };
 
 using attack_list = std::vector<attack_ptr>;

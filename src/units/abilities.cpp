@@ -1291,7 +1291,7 @@ namespace { // Helpers for attack_type::special_active()
 		                             const_attack_ptr weapon,
 		                             const config & filter,
 									 const bool for_listing,
-		                             const std::string & child_tag, const std::string& tag_name)
+		                             const std::string & child_tag)
 	{
 		if (for_listing && !loc.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
@@ -1318,7 +1318,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
 				return false;
 		}
 
@@ -1816,20 +1816,23 @@ bool attack_type::special_active_impl(
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
 	// Filter the units involved.
-	//If filter concerns the unit on which special is applied,
-	//then the type of special must be entered to avoid calling
-	//the function of this special in matches_filter()
-	std::string self_tag_name = whom_is_self ? tag_name : "";
-	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
+	config cfg_rec = special;
+	//tag_name added in config for because add directly in set::pair don't work.
+	cfg_rec["fix_recursion"] = tag_name;
+	const config& rec_special = cfg_rec;
+	const_attack_ptr rec_attack = self_attack ? self_attack : other_attack;
+
+	int self_rec = whom_is_self ? rec_attack->num_recursion_.count(&rec_special) : 0;
+	if ((self_rec < 1) && !special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
 		return false;
-	std::string opp_tag_name = !whom_is_self ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
+	int opp_rec = !whom_is_self ? rec_attack->num_recursion_.count(&rec_special) : 0;
+	if ((opp_rec < 1) && !special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent"))
 		return false;
-	std::string att_tag_name = is_attacker ? tag_name : "";
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
+	int att_rec = is_attacker ? rec_attack->num_recursion_.count(&rec_special) : 0;
+	if ((att_rec < 1) && !special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker"))
 		return false;
-	std::string def_tag_name = !is_attacker ? tag_name : "";
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
+	int def_rec = !is_attacker ? rec_attack->num_recursion_.count(&rec_special) : 0;
+	if ((def_rec < 1) && !special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
 		return false;
 
 	const auto adjacent = get_adjacent_tiles(self_loc);
@@ -1884,6 +1887,9 @@ bool attack_type::special_active_impl(
 		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
+	}
+	if(rec_attack->num_recursion_.count(&rec_special) < 1){
+		rec_attack->num_recursion_.insert(&rec_special);
 	}
 
 	return true;
