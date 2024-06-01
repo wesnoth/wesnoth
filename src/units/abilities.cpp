@@ -1420,6 +1420,36 @@ namespace { // Helpers for attack_type::special_active()
 	}
 
 	/**
+	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
+	 * already been logged.
+	 */
+	void show_recursion_warning(const_attack_ptr& attack, const config& filter) {
+		// This function is only called when a special is checked for the second time
+		// filter has already been parsed multiple times, so I'm not trying to optimize the performance
+		// of this; it's merely to prevent the logs getting spammed. For example, each of
+		// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
+		// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
+		static std::vector<std::tuple<std::string, std::string>> already_shown;
+
+		auto identifier = std::tuple<std::string, std::string>{attack->id(), filter.debug()};
+		if(utils::contains(already_shown, identifier)) {
+			return;
+		}
+
+		std::string_view filter_text_view = std::get<1>(identifier);
+		utils::trim(filter_text_view);
+		ERR_NG << "Looped recursion error for weapon '" << attack->id()
+		<< "' while checking weapon special '" << filter_text_view << "'";
+
+		// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
+		// warnings can't lead to unbounded memory consumption here.
+		if(already_shown.size() > 100) {
+			already_shown.clear();
+		}
+		already_shown.push_back(std::move(identifier));
+	}
+
+	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
 	 * @param[in]  u           A unit to filter.
@@ -1434,7 +1464,7 @@ namespace { // Helpers for attack_type::special_active()
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
 		                             const map_location & loc,
-		                             const_attack_ptr weapon,
+		                             const_attack_ptr& weapon,
 		                             const config & filter,
 									 const bool for_listing,
 		                             const std::string & child_tag, const std::string& check_if_recursion)
@@ -1447,7 +1477,25 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
-		auto filter_child = filter.optional_child(child_tag);
+		//Add wml filter if "backstab" attribute used.
+		if (!filter["backstab"].blank() && child_tag == "filter_opponent") {
+			deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+		}
+		config cfg = filter;
+		if(filter["backstab"].to_bool() && child_tag == "filter_opponent"){
+			const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+			config& filter_child = cfg.child_or_add("filter_opponent");
+			if(!filter.has_child("filter_opponent")){
+				filter_child["formula"] = backstab_formula;
+			} else {
+				config filter_opponent;
+				filter_opponent["formula"] = backstab_formula;
+				filter_child.add_child("and", filter_opponent);
+			}
+		}
+		const config& filter_backstab = filter["backstab"].to_bool() ? cfg : filter;
+
+		auto filter_child = filter_backstab.optional_child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
@@ -1462,6 +1510,14 @@ namespace { // Helpers for attack_type::special_active()
 		// If the other unit doesn't exist, try matching without it
 
 
+		attack_type::recursion_guard filter_lock;
+		if (weapon && (filter_child->optional_child("has_attack") || filter_child->optional_child("filter_weapon"))) {
+			filter_lock  = weapon->update_variables_recursion(filter);
+			if(!filter_lock) {
+				show_recursion_warning(weapon, filter);
+				return false;
+			}
+		}
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
 			if ( !weapon || !weapon->matches_filter(*filter_weapon, check_if_recursion) )
@@ -2146,8 +2202,8 @@ bool attack_type::special_active_impl(
 	unit_const_ptr & def = is_attacker ? other : self;
 	const map_location & att_loc   = is_attacker ? self_loc : other_loc;
 	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
-	const_attack_ptr att_weapon = is_attacker ? self_attack : other_attack;
-	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
+	const_attack_ptr& att_weapon = is_attacker ? self_attack : other_attack;
+	const_attack_ptr& def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
 	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
@@ -2156,24 +2212,6 @@ bool attack_type::special_active_impl(
 		if (whom_is_defender && att_weapon && att_weapon->has_special_or_ability("firststrike"))
 			return false;
 	}
-
-	//Add wml filter if "backstab" attribute used.
-	if (!special["backstab"].blank()) {
-		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
-	}
-	config cfg = special;
-	if(special["backstab"].to_bool()){
-		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
-		config& filter_child = cfg.child_or_add("filter_opponent");
-		if(!special.has_child("filter_opponent")){
-			filter_child["formula"] = backstab_formula;
-		} else {
-			config filter;
-			filter["formula"] = backstab_formula;
-			filter_child.add_child("and", filter);
-		}
-	}
-	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
 	// Filter the units involved.
 	//If filter concerns the unit on which special is applied,
@@ -2185,7 +2223,7 @@ bool attack_type::special_active_impl(
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_check_if_recursion))
 		return false;
 	std::string opp_check_if_recursion = (applied_both || !whom_is_self) ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_check_if_recursion))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent", opp_check_if_recursion))
 		return false;
 	//in case of apply_to=attacker|defender, if both [filter_attacker] and [filter_defender] are used,
 	//check what is_attacker is true(or false for (filter_defender]) in affect self case only is necessary for what unit affected by special has a tag_name check.
