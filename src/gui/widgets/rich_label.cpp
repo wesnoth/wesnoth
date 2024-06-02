@@ -61,8 +61,6 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
-	connect_signal<event::RIGHT_BUTTON_CLICK>(
-		std::bind(&rich_label::signal_handler_right_button_click, this, std::placeholders::_3));
 	connect_signal<event::MOUSE_MOTION>(
 		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
@@ -646,6 +644,10 @@ void rich_label::set_state(const state_t state)
 void rich_label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "rich_label click";
+	
+	if(!get_link_aware()) {
+		return; // without marking event as "handled"
+	}
 
 	point mouse = get_mouse_position();
 
@@ -655,50 +657,20 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	PLAIN_LOG << "(mouse)" << mouse.x << "," << mouse.y;
 	PLAIN_LOG << "link count :" << links_.size();
 
-	if (link_aware_) {
-		for (const auto& entry : links_) {
-			PLAIN_LOG << "link [" << entry.first.x << "," << entry.first.y << ","
-			<< entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h  << "]";
+	for (const auto& entry : links_) {
+		PLAIN_LOG << "link [" << entry.first.x << "," << entry.first.y << ","
+		<< entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h  << "]";
 
-			if (entry.first.contains(mouse)) {
-				PLAIN_LOG << "Clicked link! dst = " << entry.second;
-				if (link_handler_) {
-					link_handler_(entry.second);
-				} else {
-					PLAIN_LOG << "No registered link handler found";
-				}
-
+		if (entry.first.contains(mouse)) {
+			PLAIN_LOG << "Clicked link! dst = " << entry.second;
+			if (link_handler_) {
+				link_handler_(entry.second);
+			} else {
+				PLAIN_LOG << "No registered link handler found";
 			}
+
 		}
 	}
-
-	handled = true;
-}
-
-void rich_label::signal_handler_right_button_click(bool& handled)
-{
-	DBG_GUI_E << "rich_label right click";
-
-	if (!get_link_aware()) {
-		return ; // without marking event as "handled".
-	}
-
-	point mouse = get_mouse_position();
-
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	std::string link = get_label_link(mouse);
-
-	if (link.length() == 0) {
-		return ; // without marking event as "handled"
-	}
-
-	DBG_GUI_E << "Right Clicked Link:\"" << link << "\"";
-
-	desktop::clipboard::copy_to_clipboard(link, false);
-
-	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
 }
@@ -716,9 +688,15 @@ void rich_label::signal_handler_mouse_motion(bool& handled, const point& coordin
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	update_mouse_cursor(!get_label_link(mouse).empty());
+	for (const auto& entry : links_) {
+		if (entry.first.contains(mouse)) {
+			update_mouse_cursor(true);
+			handled = true;
+			return;
+		}
+	}
 
-	handled = true;
+	update_mouse_cursor(false);
 }
 
 void rich_label::signal_handler_mouse_leave(bool& handled)

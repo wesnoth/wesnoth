@@ -256,11 +256,6 @@ private:
 	void signal_handler_left_button_click(bool& handled);
 
 	/**
-	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
-	 */
-	void signal_handler_right_button_click(bool& handled);
-
-	/**
 	 * Mouse motion signal handler: checks if the cursor is on a hyperlink
 	 */
 	void signal_handler_mouse_motion(bool& handled, const point& coordinate);
