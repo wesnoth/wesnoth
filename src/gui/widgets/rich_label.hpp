@@ -304,13 +304,8 @@ struct builder_rich_label : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	bool wrap;
-
-	unsigned characters_per_line;
-
 	PangoAlignment text_alignment;
 
-	bool can_shrink;
 	bool link_aware;
 };
 

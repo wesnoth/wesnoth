@@ -46,11 +46,10 @@ REGISTER_WIDGET(rich_label)
 rich_label::rich_label(const implementation::builder_rich_label& builder)
 	: styled_widget(builder, type())
 	, state_(ENABLED)
-	, can_wrap_(builder.wrap)
-	, characters_per_line_(builder.characters_per_line)
-	, link_aware_(builder.link_aware)
-	, link_color_(color_t::from_hex_string("ffff00"))
-	, can_shrink_(builder.can_shrink)
+	, can_wrap_(true)
+	, link_aware_(true)
+	, link_color_(font::YELLOW_COLOR)
+	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
 	, unparsed_text_()
 	, w_(0)
@@ -199,11 +198,13 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 }
 
 void rich_label::add_link(config& curr_item, std::string name, std::string dest, int img_width) {
+	// TODO algorithm needs to be text_alignment independent
+
 	setup_text_renderer(curr_item, w_ - img_width);
 	point t_start = get_xy_from_offset(utf8::size(curr_item["text"].str()));
 
 	std::string link_text = name.empty() ? dest : name;
-	add_text_with_attribute(curr_item, link_text, "color", font::YELLOW_COLOR.to_hex_string().substr(1));
+	add_text_with_attribute(curr_item, link_text, "color", link_color_.to_hex_string().substr(1));
 
 	setup_text_renderer(curr_item, w_ - img_width);
 	point t_end = get_xy_from_offset(utf8::size(curr_item["text"].str()));
@@ -355,8 +356,8 @@ void rich_label::set_label(const t_string& text)
 					is_image = false;
 
 				} else if ((child = cfg.optional_child("header")) || (child = cfg.optional_child("h"))) {
+				
 					// Header starts in a new line/paragraph
-
 					append_if_not_empty(&((*curr_item)["text"]), "\n");
 					append_if_not_empty(&((*curr_item)["attr_name"]), ",");
 					append_if_not_empty(&((*curr_item)["attr_start"]), ",");
@@ -571,6 +572,7 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
 		(*txt_ptr)["font_size"] = font::SIZE_NORMAL;
+		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
 		(*txt_ptr)["x"] = "(pos_x)";
 		(*txt_ptr)["y"] = "(pos_y)";
 		(*txt_ptr)["w"] = "(text_width)";
@@ -652,18 +654,21 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 
 	PLAIN_LOG << "(mouse)" << mouse.x << "," << mouse.y;
 	PLAIN_LOG << "link count :" << links_.size();
-	for (const auto& entry : links_) {
-		PLAIN_LOG << "link [" << entry.first.x << "," << entry.first.y << ","
-		<< entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h  << "]";
 
-		if (entry.first.contains(mouse)) {
-			PLAIN_LOG << "Clicked link! dst = " << entry.second;
-			if (link_handler_) {
-				link_handler_(entry.second);
-			} else {
-				PLAIN_LOG << "No registered link handler found";
+	if (link_aware_) {
+		for (const auto& entry : links_) {
+			PLAIN_LOG << "link [" << entry.first.x << "," << entry.first.y << ","
+			<< entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h  << "]";
+
+			if (entry.first.contains(mouse)) {
+				PLAIN_LOG << "Clicked link! dst = " << entry.second;
+				if (link_handler_) {
+					link_handler_(entry.second);
+				} else {
+					PLAIN_LOG << "No registered link handler found";
+				}
+
 			}
-
 		}
 	}
 
@@ -755,7 +760,7 @@ rich_label_definition::rich_label_definition(const config& cfg)
 
 rich_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
+	, link_color(cfg["link_color"].empty() ? font::YELLOW_COLOR : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is rich_label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_enabled")));
@@ -769,11 +774,8 @@ namespace implementation
 
 builder_rich_label::builder_rich_label(const config& cfg)
 	: builder_styled_widget(cfg)
-	, wrap(cfg["wrap"].to_bool())
-	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
-	, can_shrink(cfg["can_shrink"].to_bool(false))
-	, link_aware(cfg["link_aware"].to_bool(false))
+	, link_aware(cfg["link_aware"].to_bool(true))
 {
 }
 
@@ -785,6 +787,7 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	assert(conf);
 
 	lbl->set_text_alignment(text_alignment);
+	lbl->set_link_aware(link_aware);
 	lbl->set_link_color(conf->link_color);
 	lbl->set_label(lbl->get_label());
 
