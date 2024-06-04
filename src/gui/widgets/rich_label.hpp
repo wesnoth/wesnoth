@@ -108,6 +108,11 @@ public:
 		can_shrink_ = can_shrink;
 	}
 
+	void set_width(unsigned width)
+	{
+		w_ = width;
+	}
+
 	void set_text_alpha(unsigned short alpha);
 
 	const t_string& get_label() const
@@ -300,8 +305,8 @@ struct builder_rich_label : public builder_styled_widget
 	virtual std::unique_ptr<widget> build() const override;
 
 	PangoAlignment text_alignment;
-
 	bool link_aware;
+	unsigned width;
 };
 
 } // namespace implementation

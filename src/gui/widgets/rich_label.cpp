@@ -164,7 +164,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 		img_size.x = get_image_size(curr_item).x;
 		img_size.y += get_image_size(curr_item).y;
 	} else {
-		img_size.x += get_image_size(curr_item).x;
+		img_size.x += get_image_size(curr_item).x + padding_;
 		img_size.y = get_image_size(curr_item).y;
 	}
 
@@ -186,7 +186,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 		actions << "," <<  "set_var('img_y', img_y + image_height + padding)";
 
 	} else {
-		x_ = img_size.x + padding_;
+		x_ = img_size.x;
 		actions << "set_var('pos_x', pos_x + image_width + padding)";
 	}
 	actions << "])";
@@ -198,20 +198,24 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 void rich_label::add_link(config& curr_item, std::string name, std::string dest, int img_width) {
 	// TODO algorithm needs to be text_alignment independent
 
-	setup_text_renderer(curr_item, w_ - img_width);
+	PLAIN_LOG << "add_link, x=" << x_ << " width=" << img_width;
+
+	setup_text_renderer(curr_item, w_ - x_ - img_width);
 	point t_start = get_xy_from_offset(utf8::size(curr_item["text"].str()));
+
+	PLAIN_LOG << "link text start:" << t_start;
 
 	std::string link_text = name.empty() ? dest : name;
 	add_text_with_attribute(curr_item, link_text, "color", link_color_.to_hex_string().substr(1));
 
-	setup_text_renderer(curr_item, w_ - img_width);
+	setup_text_renderer(curr_item, w_ - x_ - img_width);
 	point t_end = get_xy_from_offset(utf8::size(curr_item["text"].str()));
+	PLAIN_LOG << "link text end:" << t_end;
 
-	// TODO Needs to be adjusted if ref's font size is changed
 	point link_start(x_ + t_start.x, prev_txt_height_ + t_start.y);
 	t_end.y += font::get_max_height(font::SIZE_NORMAL);
 
-	// TODO link after floating images toward right
+	// TODO link after right aligned images
 
 	// Add link
 	if (t_end.x > t_start.x) {
@@ -223,6 +227,8 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 				link_size.y,
 		};
 		links_.push_back(std::pair(link_rect, dest));
+
+		PLAIN_LOG << "added link at rect: " << link_rect;
 
 	} else {
 		//link straddles two lines, break into two rects
@@ -246,6 +252,9 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 
 		links_.push_back(std::pair(link_rect, dest));
 		links_.push_back(std::pair(link_rect2, dest));
+
+		PLAIN_LOG << "added link at rect 1: " << link_rect;
+		PLAIN_LOG << "added link at rect 2: " << link_rect2;
 	}
 }
 
@@ -270,7 +279,8 @@ size_t rich_label::get_split_location(std::string text, int img_height) {
 void rich_label::set_label(const t_string& text)
 {
 	// Initialization
-	w_ = 800; // TODO test without fixed width
+	w_ = (w_ == 0) ? styled_widget::calculate_best_size().x : w_;
+	PLAIN_LOG << "Width: " << w_;
 	h_ = 0;
 	unparsed_text_ = text;
 	text_dom_.clear();
@@ -284,6 +294,7 @@ void rich_label::set_label(const t_string& text)
 	bool is_image = false;
 	bool floating = false;
 	bool new_text_block = false;
+	bool needs_size_update = true;
 	point img_size;
 	unsigned col_width = 0;
 	unsigned max_col_height = 0;
@@ -307,9 +318,10 @@ void rich_label::set_label(const t_string& text)
 				curr_item = &(text_dom_.add_child("image"));
 				add_image(*curr_item, name, align, floating, img_size);
 
-				//TODO image could be in the middle of a text block
 				is_image = true;
 				new_text_block = true;
+
+				PLAIN_LOG << "image: src=" << name << ", size=" << get_image_size(*curr_item);
 
 			} else {
 
@@ -329,33 +341,40 @@ void rich_label::set_label(const t_string& text)
 				}
 
 				// }---------- TEXT TAGS -----------{
-
-				point prev_block_size = get_text_size(*curr_item, w_ - x_);
-				int tmp_h = prev_block_size.y;
+				int tmp_h = get_text_size(*curr_item, w_ - x_).y;
 
 				if ((child = cfg.optional_child("ref"))) {
 
 					add_link(*curr_item, child["text"], child["dst"], img_size.x);
 					is_image = false;
 
+					PLAIN_LOG << "ref: dst=" << child["dst"];
+
 				} else if ((child = cfg.optional_child("bold")) || (child = cfg.optional_child("b"))) {
 
 					add_text_with_attribute(*curr_item, child["text"], "bold");
 					is_image = false;
+
+					PLAIN_LOG << "bold: text=" << child["text"];
 
 				} else if ((child = cfg.optional_child("italic")) || (child = cfg.optional_child("i"))) {
 
 					add_text_with_attribute(*curr_item, child["text"], "italic");
 					is_image = false;
 
+					PLAIN_LOG << "italic: text=" << child["text"];
+
 				} else if ((child = cfg.optional_child("underline")) || (child = cfg.optional_child("u"))) {
 
 					add_text_with_attribute(*curr_item, child["text"], "underline");
 					is_image = false;
 
+					PLAIN_LOG << "u: text=" << child["text"];
+
 				} else if ((child = cfg.optional_child("header")) || (child = cfg.optional_child("h"))) {
-				
-					// Header starts in a new line/paragraph
+
+					// Header starts in a new line
+
 					append_if_not_empty(&((*curr_item)["text"]), "\n");
 					append_if_not_empty(&((*curr_item)["attr_name"]), ",");
 					append_if_not_empty(&((*curr_item)["attr_start"]), ",");
@@ -372,6 +391,8 @@ void rich_label::set_label(const t_string& text)
 					add_text_with_attributes((*curr_item), header_text.str(), attrs, attr_data);
 
 					is_image = false;
+
+					PLAIN_LOG << "h: text=" << child["text"];
 
 				} else if ((child = cfg.optional_child("span")) || (child = cfg.optional_child("format"))) {
 
@@ -460,21 +481,30 @@ void rich_label::set_label(const t_string& text)
 					}
 				}
 
-				// update text size and widget height
-				if (tmp_h > get_text_size(*curr_item, w_ - img_size.x).y) {
-					tmp_h = 0;
-				}
+				if (needs_size_update) {
+					int ah = get_text_size(*curr_item, w_ - x_).y;
+					// update text size and widget height
+					if (tmp_h > ah) {
+						tmp_h = 0;
+					}
 
-				txt_height_ += get_text_size(*curr_item, w_ - img_size.x).y - tmp_h;
+					txt_height_ += ah - tmp_h;
+				}
 			}
 
 		} else if (!line.empty()) {
+			PLAIN_LOG << "text: text=" << line.substr(1, 20) << "...";
 
 			// Start the text in a new paragraph if a newline follows after an image
-			if (is_image && (!floating) && (line.at(0) == '\n')) {
-				x_ = 0;
-				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
-				line = line.substr(1, line.size());
+			if (is_image && (!floating)) {
+					if ((line.at(0) == '\n')) {
+						x_ = 0;
+						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
+						line = line.substr(1, line.size());
+						needs_size_update = true;
+					} else {
+						needs_size_update = false;
+					}
 			}
 
 			if (curr_item == nullptr || new_text_block) {
@@ -527,32 +557,43 @@ void rich_label::set_label(const t_string& text)
 				}
 			}
 
+			int ah = get_text_size(*curr_item, w_ - x_).y;
 			// update text size and widget height
-			if (tmp_h > get_text_size(*curr_item, w_ - x_).y) {
+			if (tmp_h > ah) {
 				tmp_h = 0;
 			}
 
-			txt_height_ += get_text_size(*curr_item, w_ - x_).y - tmp_h;
+			txt_height_ += ah - tmp_h;
 
 			is_image = false;
 		}
 
-
 		// Height Update
 		if (!is_image && !floating && img_size.y > 0) {
-			prev_txt_height_ += img_size.y;
+			if (needs_size_update) {
+				prev_txt_height_ += img_size.y;
+			}
 			img_size = point(0,0);
 		}
 
+		PLAIN_LOG << "X: " << x_;
+		PLAIN_LOG << "PTH: " << prev_txt_height_ << " CTH: " << txt_height_;
+		PLAIN_LOG << "Height: " << h_;
 		h_ = txt_height_ + prev_txt_height_;
 
 		// reset all variables to zero, otherwise they grow infinitely
 		if (last_entry) {
+			if (static_cast<unsigned>(img_size.y) > h_) {
+				h_ = img_size.y;
+			}
+
 			config& break_cfg = text_dom_.add_child("text");
 			default_text_config(&break_cfg);
 			break_cfg["text"] = " ";
 			break_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0), set_var('img_x', 0), set_var('img_y', 0)])";
 		}
+
+		PLAIN_LOG << "-----------";
 
 	} // for loop ends
 
@@ -644,7 +685,7 @@ void rich_label::set_state(const state_t state)
 void rich_label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "rich_label click";
-	
+
 	if(!get_link_aware()) {
 		return; // without marking event as "handled"
 	}
@@ -754,6 +795,7 @@ builder_rich_label::builder_rich_label(const config& cfg)
 	: builder_styled_widget(cfg)
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(true))
+	, width(cfg["width"].to_int(500))
 {
 }
 
@@ -767,6 +809,7 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	lbl->set_text_alignment(text_alignment);
 	lbl->set_link_aware(link_aware);
 	lbl->set_link_color(conf->link_color);
+	lbl->set_width(width);
 	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
