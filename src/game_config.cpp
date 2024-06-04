@@ -23,6 +23,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <cmath>
+#include <random>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -313,8 +314,13 @@ void load_config(const config &v)
 	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
-		game_title            = i["game_title"].str();
-		game_title_background = i["game_title_background"].str();
+		// Select a background at random
+		const auto backgrounds = utils::split(i["game_title_background"].str());
+		int r = rand() % (backgrounds.size());
+		game_title_background = backgrounds.at(r);
+		
+		// Allow game_title to be empty
+		game_title            = i["game_title"].str().empty() ? game_title_background : i["game_title"].str();
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
 
