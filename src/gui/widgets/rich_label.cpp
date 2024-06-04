@@ -61,7 +61,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, x_(0)
 	, padding_(5)
 	, txt_height_(0)
-	, prev_txt_height_(0)
+	, prev_blk_height_(0)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
@@ -216,7 +216,7 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 	point t_end = get_xy_from_offset(utf8::size(curr_item["text"].str()));
 	DBG_GUI_RL << "link text end:" << t_end;
 
-	point link_start(x_ + t_start.x, prev_txt_height_ + t_start.y);
+	point link_start(x_ + t_start.x, prev_blk_height_ + t_start.y);
 	t_end.y += font::get_max_height(font::SIZE_NORMAL);
 
 	// TODO link after right aligned images
@@ -302,7 +302,7 @@ void rich_label::set_label(const t_string& text)
 	point img_size;
 	unsigned col_width = 0;
 	unsigned max_col_height = 0;
-	prev_txt_height_ = 0;
+	prev_blk_height_ = 0;
 	txt_height_ = 0;
 
 	for (size_t i = 0; i < parsed_text.size(); i++) {
@@ -335,7 +335,7 @@ void rich_label::set_label(const t_string& text)
 				}
 
 				if (curr_item == nullptr || new_text_block) {
-					prev_txt_height_ += txt_height_ + padding_;
+					prev_blk_height_ += txt_height_ + padding_;
 					txt_height_ = 0;
 
 					curr_item = &(text_dom_.add_child("text"));
@@ -423,7 +423,7 @@ void rich_label::set_label(const t_string& text)
 					// start on a new line
 					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + if(ih > text_height, ih, text_height)), set_var('tw', width - pos_x - %d), set_var('ih', 0)])") % col_width);
 					x_ = 0;
-					prev_txt_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
+					prev_blk_height_ += std::max(img_size.y, get_text_size(*curr_item, w_ - img_size.x).y);
 					txt_height_ = 0;
 
 					new_text_block = true;
@@ -457,7 +457,7 @@ void rich_label::set_label(const t_string& text)
 
 					//linebreak
 					x_ = 0;
-					prev_txt_height_ += max_col_height;
+					prev_blk_height_ += max_col_height;
 					max_col_height = 0;
 					txt_height_ = 0;
 
@@ -475,7 +475,7 @@ void rich_label::set_label(const t_string& text)
 					//linebreak and reset col_width
 					col_width = 0;
 					x_ = 0;
-					prev_txt_height_ += max_col_height;
+					prev_blk_height_ += max_col_height;
 					max_col_height = 0;
 					txt_height_ = 0;
 
@@ -511,7 +511,7 @@ void rich_label::set_label(const t_string& text)
 			}
 
 			if (curr_item == nullptr || new_text_block) {
-				prev_txt_height_ += txt_height_ + padding_;
+				prev_blk_height_ += txt_height_ + padding_;
 				txt_height_ = 0;
 
 				curr_item = &(text_dom_.add_child("text"));
@@ -539,7 +539,7 @@ void rich_label::set_label(const t_string& text)
 
 				// New text block
 				x_ = 0;
-				prev_txt_height_ += img_size.y + padding_;
+				prev_blk_height_ += img_size.y + padding_;
 				// TODO excess line gets added, so that needs to be compensated
 				txt_height_ = 0;
 				img_size = point(0,0);
@@ -573,15 +573,15 @@ void rich_label::set_label(const t_string& text)
 		// Height Update
 		if (!is_image && !floating && img_size.y > 0) {
 			if (needs_size_update) {
-				prev_txt_height_ += img_size.y;
+				prev_blk_height_ += img_size.y;
 			}
 			img_size = point(0,0);
 		}
 
 		DBG_GUI_RL << "X: " << x_;
-		DBG_GUI_RL << "Prev block height: " << prev_txt_height_ << " Current text block height: " << txt_height_;
+		DBG_GUI_RL << "Prev block height: " << prev_blk_height_ << " Current text block height: " << txt_height_;
 		DBG_GUI_RL << "Height: " << h_;
-		h_ = txt_height_ + prev_txt_height_;
+		h_ = txt_height_ + prev_blk_height_;
 
 		// reset all variables to zero, otherwise they grow infinitely
 		if (last_entry) {

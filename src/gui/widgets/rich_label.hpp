@@ -198,8 +198,8 @@ private:
 	/** Height of current text block */
 	unsigned txt_height_;
 
-	/** Height of all previous text blocks, combined */
-	unsigned prev_txt_height_;
+	/** Height of all previous blocks, combined */
+	unsigned prev_blk_height_;
 
 	/** template for canvas text config */
 	void default_text_config(config* txt_ptr, t_string text = "");
@@ -208,8 +208,6 @@ private:
 	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
 	void add_image(config& curr_item, std::string name, std::string align, bool floating, point& img_size);
 	void add_link(config& curr_item, std::string name, std::string dest, int img_width);
-
-//	void start_new_text_block(config* txt_ptr);
 
 	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
 		if (!key->str().empty()) {
