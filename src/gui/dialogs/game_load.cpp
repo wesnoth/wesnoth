@@ -314,11 +314,16 @@ void game_load::display_savegame()
 
 void game_load::filter_text_changed(const std::string& text)
 {
+	apply_filter_text(text, false);
+}
+
+void game_load::apply_filter_text(const std::string& text, bool force)
+{
 	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if(words == last_words_)
+	if(words == last_words_ && !force)
 		return;
 	last_words_ = words;
 
@@ -536,6 +541,9 @@ void game_load::handle_dir_select()
 	}
 
 	populate_game_list();
+	if(auto* filter = find_widget<text_box>(get_window(), "txtFilter", false, true)) {
+		apply_filter_text(filter->get_value(), true);
+	}
 	display_savegame();
 }
 
