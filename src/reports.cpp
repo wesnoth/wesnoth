@@ -883,15 +883,17 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
 		const std::string type_png = std::string("icons/profiles/") + type + ".png~SCALE_INTO(16,16)";
 		std::vector<std::string> secondary_types_png;
-		bool secondary_type_png_exist = true;
-		for(auto alt_t : alt_types){
+		for(const auto& alt_t : alt_types) {
 			secondary_types_png.push_back(std::string("icons/profiles/") + alt_t + ".png~SCALE_INTO(16,16)");
-			if(!image::locator(alt_t).file_exists() && secondary_type_png_exist) {secondary_type_png_exist=false;}
 		}
-		const bool range_png_exists = image::locator(range_png).file_exists();
-		const bool type_png_exists = image::locator(type_png).file_exists();
 
-		if(!range_png_exists || !type_png_exists || (!secondary_type_png_exist && !alt_types.empty())) {
+		// If any of the images is missing, then add a text description too.
+		bool all_pngs_exist = image::locator(range_png).file_exists();
+		all_pngs_exist &= image::locator(type_png).file_exists();
+		for(const auto& png : secondary_types_png) {
+			all_pngs_exist &= image::locator(png).file_exists();
+		}
+		if(!all_pngs_exist) {
 			str << span_color(font::weapon_details_color) << "  " << "  "
 				<< range << font::weapon_details_sep
 				<< lang_type << "</span>\n";
