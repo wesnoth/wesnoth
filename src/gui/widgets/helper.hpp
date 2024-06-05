@@ -52,6 +52,15 @@ color_t decode_color(const std::string& color);
 PangoAlignment decode_text_alignment(const std::string& alignment);
 
 /**
+ * Converts a text weight string to a PangoWeight.
+ *
+ * @param weight                  An weight string.
+ *
+ * @returns                       The corresponding PangoWeight.
+ */
+PangoWeight decode_text_weight(const std::string& weight);
+
+/**
  * Converts a text alignment to its string representation.
  *
  * @param alignment               An alignment.

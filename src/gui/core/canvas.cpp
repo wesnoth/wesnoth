@@ -477,9 +477,9 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	starts = utils::split(attr_start_, ',');
 	stops = utils::split(attr_end_, ',');
 	std::vector<std::string> styles = utils::split(attr_name_, ',');
-	std::vector<std::string> colors = utils::split(attr_data_, ',');
+	std::vector<std::string> data = utils::split(attr_data_, ',');
 
-	for(size_t i = 0, col_index = 0; i < std::min(starts.size(), stops.size()); i++) {
+	for(size_t i = 0, data_index = 0; i < std::min(starts.size(), stops.size()); i++) {
 		if (styles.at(i).empty()) {
 			continue;
 		}
@@ -487,17 +487,24 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		typed_formula<int> attr_start(starts.at(i));
 		typed_formula<int> attr_stop(stops.at(i));
 
-		if (styles.at(i) == "color"||styles.at(i) == "foreground") {
-			// Note that the color value is not the i-th item
-			// Using col_index so that we can get rid of excess commas
-			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), font::string_to_color(colors.at(col_index)));
-			col_index++;
+		// Note that the value corresponding to the attribute is not the i-th item
+		// but rather the data_index-th one. Using data_index so that we can get rid of excess commas
+		// that is, things like 'attr_data=value1,,,valu2,value3'
+		if (styles.at(i) == "color"||styles.at(i) == "fgcolor"||styles.at(i) == "foreground") {
+			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), font::string_to_color(data.at(data_index)));
+			data_index++;
 		} else if (styles.at(i) == "bgcolor"||styles.at(i) == "background") {
-			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), font::string_to_color(colors.at(col_index)));
-			col_index++;
+			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), font::string_to_color(data.at(data_index)));
+			data_index++;
 		} else if (styles.at(i) == "font_size"||styles.at(i) == "size") {
-			text_renderer.add_attribute_size(attr_start(variables), attr_stop(variables), std::stoi(colors.at(col_index)));
-			col_index++;
+			text_renderer.add_attribute_size(attr_start(variables), attr_stop(variables), std::stoi(data.at(data_index)));
+			data_index++;
+		} else if (styles.at(i) == "font_family"||styles.at(i) == "face") {
+			text_renderer.add_attribute_font_family(attr_start(variables), attr_stop(variables), data.at(data_index));
+			data_index++;
+		} else if (styles.at(i) == "weight") {
+			text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), decode_text_weight(data.at(data_index)));
+			data_index++;
 		} else {
 			font::pango_text::FONT_STYLE attr_style = decode_font_style(styles.at(i));
 			switch(attr_style)
