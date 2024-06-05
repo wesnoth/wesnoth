@@ -53,7 +53,7 @@ namespace network
             curl_easy_setopt(curl, CURLOPT_FRESH_CONNECT, 1L);
             curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
             curl_easy_setopt(curl, CURLOPT_TIMEOUT_MS, 5000L);
-            curl_easy_setopt(curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTPS);
+            curl_easy_setopt(curl, CURLOPT_PROTOCOLS_STR, CURLPROTO_HTTPS);
 
             CURLcode res = curl_easy_perform(curl);
 
