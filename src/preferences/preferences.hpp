@@ -196,7 +196,6 @@ struct option
 class prefs
 {
 	friend struct preferences_dialog_friend;
-	friend struct migrate_version_selection_friend;
 	friend int impl_preferences_set(lua_State* L);
 	friend int impl_preferences_get(lua_State* L);
 
@@ -219,6 +218,8 @@ class prefs
 
 		void write_preferences();
 		void load_advanced_prefs(const game_config_view& gc);
+		void migrate_preferences(const std::string& prefs_dir);
+		void reload_preferences();
 		std::set<std::string> all_attributes();
 
 		void disable_preferences_save();
@@ -844,30 +845,5 @@ struct preferences_dialog_friend
 	static std::string get(const std::string& pref, const std::string& def)
 	{
 		return prefs::get().get(pref, def);
-	}
-};
-
-struct migrate_version_selection_friend
-{
-	friend class migrate_version_selection;
-
-	static void set(const std::string& pref, config::attribute_value value)
-	{
-		prefs::get().preferences_[pref] = value;
-	}
-
-	static void clear_preferences()
-	{
-		prefs::get().clear_preferences();
-	}
-
-	static void load_preferences()
-	{
-		prefs::get().load_preferences();
-	}
-
-	static void load_credentials()
-	{
-		prefs::get().load_credentials();
 	}
 };

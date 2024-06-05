@@ -102,12 +102,6 @@ prefs::prefs()
 
 prefs::~prefs()
 {
-	try {
-		if(!no_preferences_save_) {
-			write_preferences();
-		}
-	} catch (...) {}
-
 	config campaigns;
 	for(const auto& elem : completed_campaigns_) {
 		config cmp;
@@ -153,6 +147,14 @@ prefs::~prefs()
 	history_map_.clear();
 	encountered_units_set_.clear();
 	encountered_terrains_set_.clear();
+
+	try {
+		if(!no_preferences_save_) {
+			write_preferences();
+		}
+	} catch (...) {
+		ERR_FS << "Failed to write preferences due to exception: " << utils::get_unknown_exception_type();
+	}
 }
 
 void prefs::load_advanced_prefs(const game_config_view& gc)
@@ -176,6 +178,42 @@ void prefs::load_advanced_prefs(const game_config_view& gc)
 	}
 
 	std::sort(advanced_prefs_.begin(), advanced_prefs_.end(), [](const auto& lhs, const auto& rhs) { return translation::icompare(lhs.name, rhs.name) < 0; });
+}
+
+void prefs::migrate_preferences(const std::string& migrate_prefs_file)
+{
+	if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
+		// if the file doesn't exist, just copy the file over
+		// else need to merge the preferences file
+		if(!filesystem::file_exists(filesystem::get_prefs_file())) {
+			filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
+		} else {
+			config current_cfg;
+			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+			read(current_cfg, *current_stream);
+			config old_cfg;
+			filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
+			read(old_cfg, *old_stream);
+
+			// when both files have the same attribute, use the one from whichever was most recently modified
+			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
+			for(const config::attribute& val : old_cfg.attribute_range()) {
+				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
+					preferences_[val.first] = val.second;
+				}
+			}
+
+			// don't touch child tags
+
+			prefs::get().write_preferences();
+		}
+	}
+}
+void prefs::reload_preferences()
+{
+	clear_preferences();
+	load_preferences();
+	load_credentials();
 }
 
 std::set<std::string> prefs::all_attributes()
