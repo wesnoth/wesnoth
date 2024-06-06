@@ -37,6 +37,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
@@ -363,6 +364,17 @@ void title_screen::init_callbacks()
 	}
 
 	//
+	// GUI Test and Debug Window
+	//
+	register_button(*this, "test_dialog", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_gui_test_dialog, this));
+
+	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	if(test_dialog) {
+		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
 	// Static labels (version and language)
 	//
 	update_static_labels();
@@ -451,6 +463,11 @@ void title_screen::show_debug_clock_window()
 		debug_clock_.reset(new debug_clock());
 		debug_clock_->show(true);
 	}
+}
+
+void title_screen::show_gui_test_dialog()
+{
+	gui2::dialogs::gui_test_dialog::execute();
 }
 
 void title_screen::hotkey_callback_select_tests()
