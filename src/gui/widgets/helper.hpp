@@ -54,11 +54,20 @@ PangoAlignment decode_text_alignment(const std::string& alignment);
 /**
  * Converts a text weight string to a PangoWeight.
  *
- * @param weight                  An weight string.
+ * @param weight                  A weight string, possible values: "thin", "light", "normal", "semibold", "bold", "heavy"
  *
  * @returns                       The corresponding PangoWeight.
  */
 PangoWeight decode_text_weight(const std::string& weight);
+
+/**
+ * Converts a text style string to a PangoStyle.
+ *
+ * @param style                  A style string, possible values: "normal", "italic", "oblique
+ *
+ * @returns                       The corresponding PangoStyle.
+ */
+PangoStyle decode_text_style(const std::string& style);
 
 /**
  * Converts a text alignment to its string representation.

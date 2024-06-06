@@ -505,6 +505,9 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		} else if (styles.at(i) == "weight") {
 			text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), decode_text_weight(data.at(data_index)));
 			data_index++;
+		} else if (styles.at(i) == "style") {
+			text_renderer.add_attribute_style(attr_start(variables), attr_stop(variables), decode_text_style(data.at(data_index)));
+			data_index++;
 		} else {
 			font::pango_text::FONT_STYLE attr_style = decode_font_style(styles.at(i));
 			switch(attr_style)

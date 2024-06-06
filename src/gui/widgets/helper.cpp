@@ -76,6 +76,21 @@ PangoWeight decode_text_weight(const std::string& weight)
 	return PANGO_WEIGHT_NORMAL;
 }
 
+PangoStyle decode_text_style(const std::string& style)
+{
+	if(style == "italic") {
+		return PANGO_STYLE_ITALIC;
+	} else if(style == "oblique") {
+		return PANGO_STYLE_OBLIQUE;
+	}
+	
+	if(!style.empty() && style != "normal") {
+		ERR_GUI_E << "Invalid text style '" << style << "', falling back to 'normal'.";
+	}
+	
+	return PANGO_STYLE_NORMAL;
+}
+
 PangoAlignment decode_text_alignment(const std::string& alignment)
 {
 	if(alignment == "center") {
