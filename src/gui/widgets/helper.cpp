@@ -68,11 +68,11 @@ PangoWeight decode_text_weight(const std::string& weight)
 	} else if (weight == "heavy") {
 		return PANGO_WEIGHT_HEAVY;
 	}
-	
+
 	if(!weight.empty() && weight != "normal") {
 		ERR_GUI_E << "Invalid text weight '" << weight << "', falling back to 'normal'.";
 	}
-	
+
 	return PANGO_WEIGHT_NORMAL;
 }
 
@@ -83,11 +83,11 @@ PangoStyle decode_text_style(const std::string& style)
 	} else if(style == "oblique") {
 		return PANGO_STYLE_OBLIQUE;
 	}
-	
+
 	if(!style.empty() && style != "normal") {
 		ERR_GUI_E << "Invalid text style '" << style << "', falling back to 'normal'.";
 	}
-	
+
 	return PANGO_STYLE_NORMAL;
 }
 

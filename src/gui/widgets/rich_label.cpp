@@ -299,6 +299,7 @@ void rich_label::set_label(const t_string& text)
 	bool floating = false;
 	bool new_text_block = false;
 	bool needs_size_update = true;
+	bool in_table = false;
 	point img_size;
 	unsigned col_width = 0;
 	unsigned max_col_height = 0;
@@ -402,10 +403,14 @@ void rich_label::set_label(const t_string& text)
 					std::vector<std::string> attrs;
 					std::vector<std::string> attr_data;
 
+					DBG_GUI_RL << "span/format: text=" << child["text"];
+					DBG_GUI_RL << "attributes:";
+
 					for (const auto& attr : child.value().attribute_range()) {
 						if (attr.first != "text") {
 							attrs.push_back(attr.first);
 							attr_data.push_back(attr.second);
+							DBG_GUI_RL << attr.first << "=" << attr.second;
 						}
 					}
 
@@ -414,6 +419,9 @@ void rich_label::set_label(const t_string& text)
 
 				// }---------- TABLE TAGS -----------{
 				} else if ((child = cfg.optional_child("table"))) {
+
+					in_table = true;
+
 					// setup column width
 					unsigned columns = child["col"].to_int();
 					unsigned width = child["width"].to_int();
@@ -432,42 +440,49 @@ void rich_label::set_label(const t_string& text)
 					DBG_GUI_RL << "col_width : " << col_width;
 
 				} else if (cfg.optional_child("jump")) {
+
 					if (col_width > 0) {
-						DBG_GUI_RL << "(jump) new block/col";
 
 						max_col_height = std::max(max_col_height, txt_height_);
 						max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
 						txt_height_ = 0;
 						x_ += col_width;
 
-						(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', pos_x + %d), set_var('tw', width - pos_x - %d)])") % col_width % col_width);
+						DBG_GUI_RL << "jump to next column";
 
-						DBG_GUI_RL << curr_item->debug();
+						(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', pos_x + %d), set_var('tw', width - pos_x - %d)])") % col_width % col_width);
 
 						if (!is_image) {
 							new_text_block = true;
 						}
 					}
-				} else if (cfg.optional_child("break") || cfg.optional_child("br")) {
-					max_col_height = std::max(max_col_height, txt_height_);
-					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
-					DBG_GUI_RL << "(br) " << max_col_height;
-					DBG_GUI_RL << curr_item->debug();
-					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_col_height % padding_ % col_width);
 
-					//linebreak
-					x_ = 0;
-					prev_blk_height_ += max_col_height;
-					max_col_height = 0;
-					txt_height_ = 0;
+				} else if (cfg.optional_child("break") || cfg.optional_child("br")) {
+
+					if (in_table) {
+
+						max_col_height = std::max(max_col_height, txt_height_);
+						max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
+
+						//linebreak
+						x_ = 0;
+						prev_blk_height_ += max_col_height;
+						max_col_height = 0;
+						txt_height_ = 0;
+
+						(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_col_height % padding_ % col_width);
+
+					}
+
+					DBG_GUI_RL << "linebreak: " << (in_table ? max_col_height : w_);
 
 					if (!is_image) {
 						new_text_block = true;
 					}
 
 				} else if (cfg.optional_child("endtable")) {
-					DBG_GUI_RL << "(endtable) " << max_col_height;
-					DBG_GUI_RL << curr_item->debug();
+
+					DBG_GUI_RL << "end table: " << max_col_height;
 					max_col_height = std::max(max_col_height, txt_height_);
 					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
 					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d), set_var('tw', 0)])") % max_col_height);
@@ -482,6 +497,8 @@ void rich_label::set_label(const t_string& text)
 					if (!last_entry) {
 						new_text_block = true;
 					}
+
+					in_table = false;
 				}
 
 				if (needs_size_update) {
@@ -578,6 +595,8 @@ void rich_label::set_label(const t_string& text)
 			img_size = point(0,0);
 		}
 
+
+		DBG_GUI_RL << "Item :" << curr_item->debug();
 		DBG_GUI_RL << "X: " << x_;
 		DBG_GUI_RL << "Prev block height: " << prev_blk_height_ << " Current text block height: " << txt_height_;
 		DBG_GUI_RL << "Height: " << h_;
