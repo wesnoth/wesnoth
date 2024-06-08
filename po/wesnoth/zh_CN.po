@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 15:07-0500\n"
-"PO-Revision-Date: 2024-05-22 18:08+0800\n"
+"PO-Revision-Date: 2024-06-02 17:10+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -205,7 +205,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "字体缩放（实验特性）"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -213,6 +213,7 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"为你的分辨率放大或缩小所有的文字。警告：放大文字可能会让游戏的侧边栏出问题。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
@@ -5586,6 +5587,8 @@ msgid ""
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"绿洲的纯净水会治愈受伤的人。地下世界火一般的岩浆阻止无法飞行的人，同时在黑暗"
+"中为在其上方飞行的人提供光明。"
 
 #. [tip]
 #: data/tips.cfg:258
@@ -7054,7 +7057,7 @@ msgstr[1] ""
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "Create a new add-on"
-msgstr "创建一个新附加组件。"
+msgstr "创建一个新附加组件"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "New Add-on"
@@ -7098,14 +7101,10 @@ msgid "Era"
 msgstr "时代"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
-#, fuzzy
-#| msgid "addon_type^Modification"
 msgid "Modification"
 msgstr "模组"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:150
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
 msgstr "时代："
 
@@ -7367,10 +7366,8 @@ msgid "The file you have tried to load has no replay information. "
 msgstr "你试图载入的文件没有回放信息。"
 
 #: src/hotkey/hotkey_handler_sp.cpp:346
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
-msgstr "你试图载入的文件已损坏"
+msgstr "你试图载入的文件不来自当前会话。"
 
 #: src/language.cpp:114
 msgid "System default language"
@@ -7537,7 +7534,7 @@ msgstr "现在你不能征募$unit_type_name|。"
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
-msgstr "你没有足够的金币，不能征募此单位"
+msgstr "在你计划中的这一点，你没有足够的金币来征募此单位。"
 
 #: src/menu_events.cpp:326
 msgid "You do not have enough gold to recruit this unit."
@@ -9037,24 +9034,17 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span>移动力"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:554
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number|伤害"
-msgstr[1] "$number|伤害"
+msgstr[0] "$number 次攻击已使用"
+msgstr[1] "$number 次攻击已使用"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:563
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> 的攻击次数已使用"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> 的攻击次数已使用"
 
 #: src/units/helper.cpp:57
 msgid "Level: "
