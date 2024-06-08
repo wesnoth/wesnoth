@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-lib - de\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 15:07-0500\n"
-"PO-Revision-Date: 2024-02-25 21:28+0100\n"
+"PO-Revision-Date: 2024-06-07 01:45+0200\n"
 "Last-Translator: René Genz <liebundartig@freenet.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -2632,7 +2632,7 @@ msgstr "Ich stimme zu"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr "Datenübertragung zwischen Spiel und Server ist nicht sicher"
+msgstr "Datenübertragung zwischen Spiel und Server ist nicht gesichert"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
@@ -3344,7 +3344,7 @@ msgstr "Sichtbar durch Schleier der Finsternis"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr "Erweiterungsveröffentlichungskonfiguration"
+msgstr "Angaben zur Erweiterungsveröffentlichung"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
@@ -3409,9 +3409,9 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
-"Eine Kommaseparierte Liste von IDs benötigter Erweiterungen dieser "
-"Erweiterung. Die Erweiterungs-ID ist der Ordnername in der Betriebssystem-"
-"Dateiverwaltung, nicht der Erweiterungsname."
+"Eine durch Kommas getrente Liste von IDs benötigter Erweiterungen, auf denen "
+"Eure Erweiterung aufbaut. Die Erweiterungs-ID ist der Ordnername in der "
+"Betriebssystem-Dateiverwaltung, nicht der Erweiterungsname."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3435,7 +3435,7 @@ msgstr "Forum-URL"
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr "Die vollständige URL eures Forum-Rückmeldung-Gesprächsfadens."
+msgstr "Die vollständige URL Eures Forum-Rückmeldung-Gesprächsfadens."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3458,7 +3458,7 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
-"Kommaseparierte Liste von Forum-Benutzernamen anderer Personen die "
+"Durch Kommas getrennte Liste von Forum-Benutzernamen anderer Personen, die "
 "Aktualisierungen für diese Erweiterung hochladen dürfen."
 
 #. [grid]
@@ -3472,7 +3472,7 @@ msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
 "Eine E-Mail-Adresse mit der Ihr kontaktiert werden könnt, falls es Probleme "
-"mit eurer Erweiterung gibt."
+"mit Eurer Erweiterung gibt."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
@@ -3485,8 +3485,9 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
-"Momentanes Erwetierungspasswort. Forum-Authentifizierungsnutzung ist "
-"empfohlen, da das Passwort nicht sicher gespeichert wird."
+"Momentanes Erweiterungspasswort. Es wird stattdessen die Nutzung der Forum-"
+"Authentifizierung empfohlen, da das Passwort unverschlüsselt gespeichert "
+"wird."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
@@ -3516,7 +3517,7 @@ msgstr "Löschen"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr "Validiere"
+msgstr "Validieren"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -4439,10 +4440,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:331
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Krater"
+msgstr "Datenmigration"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:368
@@ -4524,40 +4523,38 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:631
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "Forum-URL"
+msgstr "Forum"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:650
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:669
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:688
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:707
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:726
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:822
@@ -4594,7 +4591,7 @@ msgstr "Eigenschaften"
 #. [grid]
 #: data/gui/window/game_version.cfg:881 data/gui/window/title_screen.cfg:261
 msgid "Community"
-msgstr ""
+msgstr "Community"
 
 #. [button]: id=credits
 #: data/gui/window/game_version.cfg:935
@@ -5469,7 +5466,7 @@ msgstr "Weiblich"
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:217
 msgid "Recruits"
-msgstr "Ausgebildete"
+msgstr "Rekruten"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
@@ -6635,10 +6632,8 @@ msgstr "Startet den Karteneditor"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "Die Schlacht um Wesnoth"
+msgstr ""
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -8540,7 +8535,7 @@ msgstr "Debug-Befehle"
 
 #: src/hotkey/hotkey_command.cpp:63
 msgid "Custom WML Commands"
-msgstr "Benutzerdefinierte WML-Befehle"
+msgstr "Szenariospezifische Menüs"
 
 #: src/hotkey/hotkey_command.cpp:74
 msgid "Scroll Up"
@@ -9217,7 +9212,7 @@ msgstr "Neue Zone hinzufügen"
 
 #: src/hotkey/hotkey_command.cpp:273
 msgid "Add-on Publishing Editor"
-msgstr "Erweiterungsveröffentlichungseditor"
+msgstr "Erweiterungsveröffentlichung vorbereiten"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Change Add-on ID"
@@ -9368,8 +9363,8 @@ msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Ein Fehler ist durch möglicherweise ungültiges WML aufgetreten\n"
-"Die Fehlermeldung ist:"
+"Ein Fehler ist durch möglicherweise ungültiges WML aufgetreten. Die "
+"Fehlermeldung ist:"
 
 #: src/wml_exception.cpp:68
 msgid "When reporting the bug please include the following error message :"
@@ -10624,3 +10619,20 @@ msgstr ""
 #~ msgstr ""
 #~ "Verwendet eine Kombination der Farben von bewegten und teilweise bewegten "
 #~ "Sphären."
+
+#~ msgid "Add-on selection"
+#~ msgstr "Erweiterungsauswahl"
+
+#~ msgid "The Battle for Wesnoth"
+#~ msgstr "Die Schlacht um Wesnoth"
+
+#~ msgid "No grid defined for scroll label control"
+#~ msgstr ""
+#~ "Im Abschnitt »[scroll_label]« ist der benötigte Abschnitt »[grid]« nicht "
+#~ "gesetzt."
+
+#~ msgid "Choose Player"
+#~ msgstr "Spieler wählen"
+
+#~ msgid "Right"
+#~ msgstr "Rechts"
