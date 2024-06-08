@@ -13,7 +13,7 @@ import re
 import argparse
 
 # Where to get terrain images
-terrain_url = "https://raw.github.com/wesnoth/wesnoth/1.14/data/core/images/terrain/%s.png"
+terrain_url = "https://raw.github.com/wesnoth/wesnoth/1.18/data/core/images/terrain/%s.png"
 
 
 def parse_terrain(data):
