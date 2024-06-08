@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 20:07 UTC\n"
-"PO-Revision-Date: 2024-04-17 21:54+0200\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2024-06-02 15:17+0200\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [editor_group]: id=eastern_invasion
 #. [campaign]: id=Eastern_Invasion
@@ -307,11 +307,11 @@ msgstr "Scénář 14: Historik"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:69
-#, fuzzy
-#| msgid "Complete ‘<i>Eleventh Hour</i>’ with no recalling and no items."
 msgid ""
 "Complete ‘<i>Eleventh Hour</i>’ with no recalling and no droppable items."
-msgstr "Dokonči „<i>Za pět minut dvanáct</i>“ bez povolávání a předmětů."
+msgstr ""
+"Dokonči „<i>Za pět minut dvanáct</i>“ bez povolávání a odložitelných "
+"předmětů."
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:69
@@ -1934,8 +1934,10 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:559
+#, fuzzy
 msgid "<i>(herbs are spread in all directions around your starting keep)</i>"
 msgstr ""
+"<i>(byliny jsou rozmístěny ve všech směrech kolem vaší výchozí chaty)</i>"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:573
@@ -5571,10 +5573,8 @@ msgstr "Dobrá, já pomoct člověk bojovat! Člověk dobrý!"
 
 #. [scenario]: id=09_Castle_in_the_Ice
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1360
-#, fuzzy
-#| msgid "20 gold"
 msgid "25 gold"
-msgstr "20 zlatých"
+msgstr "25 zlatých"
 
 #. [message]: speaker=unit
 #. circa 25 gold pieces
@@ -8560,16 +8560,16 @@ msgstr "Zatopené pláně"
 #. [part]
 #. In this scenario, there's circa 18 ghosts, each with a single line of speech, you'll recognise them because most start and end with ellipsis. The WML would need to be restructured to put po hints on those lines themselves.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:41
-#, fuzzy
 msgid ""
 "Anxious to rendezvous with the Wesnothian army, Gweddry, Owaec, and Dacyn "
 "pressed hurriedly westward. Their hearts sank as they passed battlefield "
 "after battlefield, in the ruins of what used to be Wesnoth’s thriving "
 "eastern provinces."
 msgstr ""
-"Gweddry, Owaec a Dacyn se snažili setkat s wesnothijským vojskem a spěchali "
-"na západ. Srdce se jim sevřelo, když míjeli jedno bitevní pole za druhým, v "
-"troskách kdysi vzkvétajících východních provincií Wesnothu."
+"Gweddry, Owaec a Dacyn se nemohli dočkat setkání s wesnothským vojskem, "
+"a tak spěchali na západ. Srdce se jim sevřelo, když míjeli jedno bitevní "
+"pole za druhým, kde ležely v troskách kdysi vzkvétající východní provincie "
+"Wesnothu."
 
 #. [leader]: type=Barrow Wight, id=Sir Seoraery
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:113
@@ -8613,15 +8613,13 @@ msgstr "... neznají bolest... neznají únavu... nemohli jsme nic dělat..."
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:486
-#, fuzzy
 msgid "Lords of Light... what affront did I commit to deserve this fate..."
-msgstr ""
-"Páni světla... čím jsem se provinil, že jsem si zasloužil tento osud..."
+msgstr "Páni světla... čím jsem se provinil, že si zasloužím tento osud..."
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:487
 msgid "I fought the undead with everything... I gave everything..."
-msgstr "Bojoval jsem s nemrtvými čím se dalo... dal jsem do toho všechno..."
+msgstr "Bojoval jsem s nemrtvými čím se dalo... dal do toho všechno..."
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:488
@@ -8686,7 +8684,6 @@ msgstr "... k čemu byl můj dřevec... proti stvoření... bez masa?"
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:499
-#, fuzzy
 msgid ""
 "At first I thought he was one of ours... then he waved his hand and my blood "
 "ran cold..."
@@ -8702,57 +8699,51 @@ msgstr "... takový chlad... taková tma..."
 #. [message]: speaker=unit
 #. Player's unit has just been ambushed. Some other nearby corpses have awoken too, but the player will find that out during the enemy turn.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:582
-#, fuzzy
 msgid ""
 "Gah, undead! This one was mired face-first in the swamp, dormant until I "
 "stumbled upon it. They must be lying everywhere in this muck."
 msgstr ""
-"Nemrtví! Tenhle byl zabořený obličejem do bažiny a nečinný, dokud jsem na "
-"něj nenarazil. V tomhle bahně musí ležet všude."
+"Ha, nemrtví! Tenhle byl zabořený obličejem do bažiny a spal, dokud jsem "
+"o něj nezakopl. V tomhle sajrajtu můžou ležet kdekoli."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:586
-#, fuzzy
 msgid ""
 "Perhaps their leaders are dormant as well. I suspect we will not have to "
 "contend with them until we sight them. We can afford some time to capture "
 "villages and build our forces."
 msgstr ""
-"Možná, že i jejich vůdci jsou nečinní. Domnívám se, že se s nimi nebudeme "
-"muset potýkat, dokud je nespatříme. Můžeme si dovolit nějaký čas na obsazení "
-"vesnic a budování sil."
+"Možná, že spí i jejich vůdci. Domnívám se, že se s nimi nebudeme muset "
+"potýkat, dokud je nespatříme. Můžeme si dovolit nějaký čas na obsazení "
+"vesnic a budování sil."
 
 #. [message]: speaker=Gweddry
 #. Player's unit trigger an ambush last turn. During the enemy turn, some other nearby corpses started moving too.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:593
-#, fuzzy
 msgid ""
 "Whenever we stumble upon a corpse, it awakens its nearby allies! What will "
 "happen when we wake their leaders?"
 msgstr ""
-"Kdykoli narazíme na mrtvolu, probudí své blízké spojence! Co se stane, když "
-"probudíme jejich vůdce?"
+"Kdykoli narazíme na mrtvolu, probudí své spojence poblíž! Co se stane, když "
+"vzbudíme jejich vůdce?"
 
 #. [message]: speaker=Dacyn
 #. The keeps are visible, so the player can guess where the leaders themselves are.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:598
-#, fuzzy
 msgid ""
 "It may be prudent to clear the swamp near the undead leaders before we sight "
 "them."
 msgstr ""
-"Možná by bylo rozumné vyčistit bažinu poblíž nemrtvých vůdců, než je "
-"spatříme."
+"Možná by bylo rozumné vyčistit močál poblíž nemrtvých vůdců, než budou "
+"v dohledu."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:727
-#, fuzzy
 msgid "Their leader is waking nearby allies out from the swamp!"
-msgstr "Jejich vůdce probouzí blízké spojence z bažin!"
+msgstr "Jejich vůdce si z bažiny budí blízké spojence!"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:731
-#, fuzzy
 msgid "Just more abominations for us to slay!!"
 msgstr "Jen další ohavnosti, které máme zabít!!"
 
@@ -8768,7 +8759,6 @@ msgstr "Hrad sira Efrana"
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:787
-#, fuzzy
 msgid "Lord Gaelyc’s Citadel"
 msgstr "Citadela lorda Gaelyca"
 
@@ -8829,14 +8819,13 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:916
-#, fuzzy
 msgid ""
 "I’m sorry Owaec. The undead armies must have defeated the Clansmen and "
 "dammed the river to drown the plains. They must like the swamp, filled with "
 "death and decay..."
 msgstr ""
-"Je mi líto, Owaec. Armády nemrtvých musely porazit klany a přehradit řeku, "
-"aby utopily pláně. Musí se jim líbit bažina plná smrti a rozkladu..."
+"Je mi líto, Owaecu. Armády nemrtvých musely porazit klany a přehradily řeku, "
+"aby zatopily pláně. Močály, to je jejich, plné smrti a rozkladu..."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:920
@@ -8845,67 +8834,60 @@ msgstr "Můj domov... můj lid... jak se to mohlo stát..."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:930
-#, fuzzy
 msgid ""
 "YOU! MAGE!!! Had you not insisted we travel north, we might have arrived in "
 "time to save these people! My friends, my family, dead from your neglect. "
 "And all for what? Some necromancer’s trinket more likely to curse us than "
 "save us?"
 msgstr ""
-"TY! MAGE!!! Kdybys netrval na tom, abychom jeli na sever, mohli jsme dorazit "
-"včas a zachránit ty lidi! Moji přátelé, moje rodina, zemřeli kvůli tvé "
-"nedbalosti. A to všechno kvůli čemu? Kvůli nějakému nekromantskému trumfu, "
-"který nás spíš prokleje, než zachrání?"
+"TY! MÁGU!!! Kdybys netrval na tom, abychom jeli na sever, mohli jsme dorazit "
+"včas a ochránit tyhle lidi! Moji přátelé, moje rodina, zemřeli kvůli tvé "
+"nedbalosti. A proč tohle všechno? Pro nějakou nekromantskou cetku, která nás "
+"spíš přivede do zkázy, než zachrání?"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:934
-#, fuzzy
 msgid ""
 "We trusted you. I trusted you! Instead, you sent us away from the war like "
 "cowards, led our men to slaughter at the hand of orcs and drakes, and "
 "deprived Wesnoth of her eastern guard when she needed it most sorely. And "
 "now my homeland has paid the price for your misdeeds!!"
 msgstr ""
-"Věřili jsme vám. Věřil jsem ti! Místo toho jsi nás poslal pryč z války jako "
-"zbabělce, vedl jsi naše muže na porážku od orků a draků a připravil jsi "
-"Wesnoth o východní stráž, když ji nejvíc potřeboval. A moje vlast teď "
-"zaplatila za tvé špatné činy!!!"
+"Věřili jsme ti. Já ti věřil! Místo toho jsi nás poslal pryč z války jako "
+"zbabělce, vedl jsi naše muže na porážku z ruky skřetů a drakonidů "
+"a připravil jsi Wesnoth o jeho východní stráž, když ji nejvíc potřeboval. "
+"A moje vlast teď zaplatila za tvá pochybení!!"
 
 #. [message]: speaker=Owaec
 #. Dacyn is bleeding and about to take damage from an unknown source
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:944
-#, fuzzy
 msgid "Are you even listening?!?"
 msgstr "Posloucháš mě vůbec?!?"
 
 #. [message]: speaker=Gweddry
 #. Dacyn is bleeding and taking damage, from an unknown source
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:961
-#, fuzzy
 msgid "Dacyn, what’s wrong? Are you all right?"
-msgstr "Dacyn, co se děje? Jsi v pořádku?"
+msgstr "Dacyne, co se děje? Jsi v pořádku?"
 
 #. [message]: speaker=Dacyn
 #. Dacyn steps away from the initial encampment, and is about take a lot of damage
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:973
-#, fuzzy
 msgid "...I can’t-"
-msgstr "...nemůžu..."
+msgstr "... Já nemůžu..."
 
 #. [message]: speaker=Dacyn
 #. Dacyn stepped away from the castle, the six hexes around him have changed to chasms and he's down to 15 hp.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1020
-#, fuzzy
 msgid "I’ve lost control of the Amulet! I must-"
-msgstr "Ztratil jsem kontrolu nad amuletem! Já musím..."
+msgstr "Ten amulet si dělá co chce! Já musím..."
 
 #. [message]
 #. up to 6 ghosts or wraiths come out of the chasms, depending on difficulty and how many auto-recalled loyals the player has
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1044
-#, fuzzy
 msgid "<span size='small' font-style='italic'>And most importantly...</span>"
 msgstr ""
-"<span size='small' font-style='italic'>A co je nejdůležitější...</span>"
+"<span size='small' font-style='italic'>A co je nejdůležitější...</span>"
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1051
@@ -8916,12 +8898,12 @@ msgstr "Lord Alrik"
 #. speaker is a wraith, he's emerged from the chasms around Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1057
 msgid "Owaec, my son..."
-msgstr "Owaeci, můj synu..."
+msgstr "Owaecu, můj synu..."
 
 #. [message]: speaker=Lord Alric
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1061
 msgid "Why did you abandon us? I am dead... thanks to you..."
-msgstr "Proč jsi nás opustil? Jsem mrtvý... kvůli tobě..."
+msgstr "Proč jsi nás opustil? Jsem mrtvý... díky tobě..."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1065
@@ -8943,50 +8925,44 @@ msgstr "Co mám teď dělat?"
 #. The chasms are filled with sand, so all terrain near the keep is walkable again.
 #. Dacyn has healed back to full HP, although that's for gameplay reasons because he needs to fight the ghosts, there isn't a story reason for it.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1112
-#, fuzzy
 msgid "(gasping) I have regained control!"
-msgstr "(lapá po dechu) Znovu jsem se ovládl!"
+msgstr "(lapá po dechu) Znovu jsem ho ovládl!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1116
-#, fuzzy
 msgid "What happened? I did not know this Amulet could act of its own accord."
-msgstr "Co se stalo? Nevěděl jsem, že tento amulet může působit sám od sebe."
+msgstr "Co se stalo? Nevěděl jsem, že tenhle amulet může působit sám od sebe."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1120
-#, fuzzy
 msgid ""
 "Neither did I. I should have sensed it, but the darkness is nearly "
 "overwhelming. Even with my inner light, the best I can do is cancel out this "
 "dark energy. Such is the price of power..."
 msgstr ""
-"Ani já ne. Měl jsem to vycítit, ale temnota je téměř zdrcující. I s mým "
-"vnitřním světlem dokážu tu temnou energii nanejvýš zrušit. Taková je cena za "
-"moc..."
+"Ani já ne. Měl jsem to vycítit, ale ta temnota je téměř nepřemožitelná. "
+"I s mým vnitřním světlem dokážu tu temnou sílu nanejvýš zrušit. Taková je "
+"cena moci..."
 
 #. [message]: speaker=Dacyn
 #. loses his halo and advances to an L4 Twilight Mage (liminal, heals +4, does not illuminate, melee attack gains "drain")
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1125
-#, fuzzy
 msgid ""
 "... but it is a necessary price to pay. I will not let up until Mal-Ravanal "
 "is defeated, whatever the cost may be."
 msgstr ""
-"... ale je to nutná cena. Nepolevím, dokud Mal-Ravanal nebude poražen, ať to "
-"stojí, co to stojí."
+"... ale je to cena, kterou je třeba zaplatit. Nepolevím, dokud Mal-Ravanal "
+"nebude poražen, ať to stojí, co to stojí."
 
 #. [message]: speaker=Owaec
 #. Owaec is near his father's castle, and there's a dead (not undead) skeleton on the keep
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1206
-#, fuzzy
 msgid "...so it is true. My lord and father is dead."
-msgstr "...takže je to pravda. Můj pán a otec je mrtev."
+msgstr "...takže je to pravda. Můj pán a otec je mrtev."
 
 #. [message]: speaker=Owaec
 #. today is when he learns the news of that, not when it happened
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1215
-#, fuzzy
 msgid ""
 "Today truly is a day of ill fortune. My family is slain, my kinsmen "
 "scattered, my homeland defiled."
@@ -8996,7 +8972,6 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1219
-#, fuzzy
 msgid ""
 "But I will not despair! This damning destruction will not be the lasting "
 "legacy of the Clans!! These undead will pay for the death they have "
@@ -9007,115 +8982,102 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1256
-#, fuzzy
 msgid ""
 "Owaec, do not be so hasty. Much of the horde that conquered this place now "
 "marches on Weldyn, but even what little lingers is surely more than a match "
 "for our weary band."
 msgstr ""
 "Owaecu, neunáhluj se. Velká část hordy, která dobyla toto místo, nyní "
-"pochoduje na Weldyn, ale i to málo, co zůstává, je jistě víc než jen soupeř "
-"pro naši unavenou skupinu."
+"pochoduje na Weldyn, ale i to málo, co zůstalo, je jistě víc, než může naše "
+"unavená skupina zvládnout."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1260
-#, fuzzy
 msgid ""
 "I agree, yet all is strangely quiet. Perhaps the remaining undead lie "
 "dormant? If we take time to capture villages and rebuild our forces, we may "
 "yet be able to reclaim this place."
 msgstr ""
 "Souhlasím, ale všude je podivné ticho. Možná zbývající nemrtví spí? Pokud si "
-"uděláme čas na obsazení vesnic a obnovení našich sil, možná se nám ještě "
+"uděláme čas na obsazení vesnic a obnovení našich sil, možná se nám ještě "
 "podaří získat toto místo zpět."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1271
-#, fuzzy
 msgid "Capture villages and build up an army before attacking."
-msgstr "Před útokem se zmocněte vesnic a vybudujte armádu."
+msgstr "Před útokem se zmocni vesnic a vybuduj armádu."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1276
-#, fuzzy
 msgid "Loot Addogin’s smugglers’ caches."
-msgstr "Vydrancujte Addoginovy pašerácké skrýše."
+msgstr "Vyrabuj Adoginovy pašerácké skrýše."
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1292
-#, fuzzy
 msgid ""
 "Enemy leaders are idle until first sighted, but will then abandon their keep "
 "and attack you."
 msgstr ""
-"Nepřátelští vůdci jsou nečinní, dokud je nespatříte, ale pak opustí svou "
-"pevnost a zaútočí na vás."
+"Nepřátelští vůdci jsou nečinní, dokud je poprvé nespatříš, ale pak opustí "
+"svou tvrz a zaútočí na tebe."
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1300
-#, fuzzy
 msgid ""
 "On a quest of searing vengeance? Owaec my friend, what you need is my elixir "
 "of ulfserker fury! One taste of this bitter red ambrosia and you’ll fight "
 "until you drop, with <b><i>unlimited melee attacks</i></b> and the "
 "<b><i>berserk</i></b> melee special!"
 msgstr ""
-"Na cestě za spalující pomstou? Owaec, příteli, potřebuješ můj elixír "
-"ulfserkerské zuřivosti! Stačí ochutnat tuto hořkou rudou ambrózii a budeš "
-"bojovat, dokud nepadneš, s <b><i>neomezenými útoky zblízka</i></b> a "
-"<b><i>berserkem</i></b> speciálním útokem zblízka!"
+"Na cestě za spalující pomstou? Owaecu, příteli, to potřebuješ můj elixír "
+"ulfserkské zuřivosti! Stačí ochutnat tento hořký rudý mok a budeš bojovat, "
+"dokud nepadneš, s <b><i>neomezenými útoky zblízka</i></b> a speciálním "
+"útokem zblízka <b><i>na život a na smrt</i></b>!"
 
 #. [message]: speaker=Hahid al-Ali
 #. player bought the elixir of ulfserker fury
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1314
-#, fuzzy
 msgid "Try not to die too quickly!"
-msgstr "Snažte se neumírat příliš rychle!"
+msgstr "Snaž se neumřít příliš rychle!"
 
 #. [message]: speaker=Hahid al-Ali
 #. player declined the elixir of ulfserker fury
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1323
-#, fuzzy
 msgid "Suit yourself! Don’t expect me to drink that though, I’m not suicidal!"
-msgstr "Jak je libo! Ale nečekejte, že to vypiju, nejsem sebevrah!"
+msgstr "Jak je libo! Ale nečekej, že to vypiju já, nejsem sebevrah!"
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1328
-#, fuzzy
 msgid ""
 "This offer expires as soon as your anger does! <i>(elixirs only last for 1 "
 "scenario)</i>"
 msgstr ""
-"Tato nabídka vyprší, jakmile se váš hněv objeví! <i>(elixíry vydrží pouze 1 "
-"scénář)</i>"
+"Tato nabídka vyprší spolu s tvým hněvem! <i>(elixíry vydrží pouze 1 scénář)</"
+"i>"
 
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1330
-#, fuzzy
 msgid "Buy the elixir for Owaec (30 gold)."
-msgstr "Kupte si elixír pro Owaeca (30 zlatých)."
+msgstr "Koupit elixír pro Owaeca (30 zlatých)."
 
 #. [option]
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1340
-#, fuzzy
 msgid "Leave the elixir."
-msgstr "Nechte elixír."
+msgstr "Nechat elixír být."
 
 #. [message]: speaker=Addogin
 #. Wait a moment... this landscape looks familiar.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1368
-#, fuzzy
 msgid ""
 "Hol’ up... some of this place is lookin’ mighty familiar. Yeah, few years "
 "back I used to work for a smuggler ’round these parts."
 msgstr ""
-"Vydržte... některá místa jsou mi povědomá. Jo, před pár lety jsem tady "
+"Vydržte... připadá mi to tu dost povědomé. Jo, před pár lety jsem tady "
 "pracoval pro jednoho pašeráka."
 
 #. [message]: speaker=Addogin
 #. hint about the smuggler's hidden gold, will be followed by adding three "go here" markers to the map
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1373
-#, fuzzy
 msgid ""
 "I’m sure the undead have burned down his storehouse, but there might still "
 "be a cache or three hidden ’round here."
@@ -9125,21 +9087,19 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1397
-#, fuzzy
 msgid ""
 "We should retrieve as many as we can; I’m sure the extra gold will be useful."
 msgstr ""
-"Měli bychom jich získat co nejvíc; jsem si jistý, že zlato navíc se nám bude "
+"Měli bychom jich najít co nejvíc. Jsem si jistý, že zlato navíc se nám bude "
 "hodit."
 
 #. [message]: speaker=Addogin
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1401
-#, fuzzy
 msgid ""
 "Just remember, I ain’t been here in years. Some of them caches might be "
 "empty now."
 msgstr ""
-"Jen si pamatuj, že jsem tu nebyl už roky. Některé z těch keší už mohou být "
+"Jen si pamatuj, že jsem tu nebyl už roky. Některé z těch skrýší už mohou být "
 "prázdné."
 
 #. [message]: speaker=Addogin
@@ -9172,31 +9132,27 @@ msgstr "Výborně! Zlato z těch schránek přijde k užitku."
 #. [message]: speaker=Grug
 #. this is probably grug's first time fighting squishy undead (though there were a few in S10)
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1531
-#, fuzzy
 msgid "Squishy fun to squash! Squash squish squash!"
-msgstr "Zábava s mačkáním! Squash squash squash!"
+msgstr "Legrační měkoučcí! Pomačkám rád!"
 
 #. [message]: speaker=unit
 #. "odd that his body didn't become undead"
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1553
-#, fuzzy
 msgid ""
 "This man looks to have been dead for about a month. Odd that his body yet "
 "lies still."
 msgstr ""
 "Tento muž vypadá, že je mrtvý už asi měsíc. Je zvláštní, že jeho tělo stále "
-"leží."
+"klidně leží."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1566
-#, fuzzy
 msgid "There is a journal here, still intact despite the swamp."
 msgstr "Je tu deník, který je navzdory bažině stále neporušený."
 
 #. [message]: speaker=unit
 #. Reading from a dead horseman's journal. This is a warning to the player that there's a Skeletal Dragon in the scenario.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1571
-#, fuzzy
 msgid ""
 "<i>... we thought the enemy had erred, that the battle could yet be won. "
 "Taking advantage of the gap, our swiftest riders drove toward the exposed "
@@ -9208,20 +9164,18 @@ msgid ""
 "claw and wing. Then it fell upon us from behind, and the enemy closed their "
 "ranks, and we were encircled by death.</i>"
 msgstr ""
-"<i>... mysleli jsme si, že se nepřítel zmýlil, že bitvu lze ještě vyhrát. "
-"Využili jsme mezery a naši nejrychlejší jezdci vyrazili k odkrytému srdci "
-"kostlivé formace. Ale i když působili zkázu v řadách nekromantů, z vody se "
-"ozvalo silné zachvění, jako by se sama Irdya zachvěla v chorobném "
-"očekávání.\n"
+"<i>... mysleli jsme si, že nepřítel udělal chybu, že bitvu lze ještě vyhrát. "
+"Využili jsme mezery a naši nejrychlejší jezdci vyrazili k odkrytému srdci "
+"kostlivé formace. Ale i když působili zkázu v řadách nekromantů, z vody se "
+"ozvalo silné zachvění, jako by se sama Irdye otřásla v chorobném očekávání.\n"
 "\n"
-"Na okamžik jsem zahlédl velkou kostnatou postavu, bortící se masu zubů, "
-"drápů a křídel. Pak se na nás zezadu vrhla, nepřítel sevřel své řady a my "
-"jsme byli obklíčeni smrtí.</i>"
+"Na okamžik jsem zahlédl ohromný tvar z kostí, vlekoucí se masu zubů, drápů "
+"a křídel. Pak se to na nás zezadu vrhlo, nepřítel sevřel své řady a my jsme "
+"byli obklíčeni smrtí.</i>"
 
 #. [message]: speaker=unit
 #. Reading more from the dead horseman's journal, whose corpse prompted the "odd that his body didn't become undead" comment.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1578
-#, fuzzy
 msgid ""
 "<i>I fled, coward that I am, riding breakneck through the night before my "
 "injuries overcame my strength. And so it comes that I have earned no "
@@ -9231,12 +9185,12 @@ msgid ""
 "I offer one final prayer to the Light, that at least my family may be spared "
 "and that my soul may be kept from undeath...</i>"
 msgstr ""
-"<i>Uprchl jsem, zbabělec, a jel jsem na zběsilé jízdě nocí, než moje zranění "
-"přemohla mé síly. A tak se stalo, že jsem si nevysloužil čestnou smrt v "
-"boji, jen pomalou únavu a horečku, kterou nese hniloba a jed.\n"
+"<i>Uprchl jsem, já zbabělec, a ujížděl zběsile nocí, než moje zranění "
+"přemohla mé síly. A tak se stalo, že jsem si nevysloužil čestnou smrt "
+"v boji, jen pomalou únavu a horečku, kterou přináší hniloba a jed.\n"
 "\n"
-"Nabízím Světlu poslední modlitbu, aby alespoň moje rodina byla ušetřena a má "
-"duše uchráněna před smrtí...</i>"
+"Předkládám Světlu poslední modlitbu, aby alespoň moje rodina byla ušetřena "
+"a má duše uchráněna před nesmrtí...</i>"
 
 #. [message]: speaker=Sir Seoraery
 #. no-one sends a messenger, he's talking about memories from before he died
@@ -9279,9 +9233,8 @@ msgstr "... dříve... zemřu... než se podvolit tobě..., nekromante."
 #. [message]: speaker=unit
 #. undead dragon, talking to a memory rather than the unit that triggered him
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1773
-#, fuzzy
 msgid "... Lich, you do not belong here... leave, or I shall... rend you..."
-msgstr "... Lichi, ty sem nepatříš... odejdi, nebo tě... roztrhám..."
+msgstr "... Lichu, ty sem nepatříš... odejdi, nebo tě... roztrhám..."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1777
@@ -9337,7 +9290,6 @@ msgstr "Ty! Ty jsi příčinou této zkázy!! Můj padlý lid volá po pomstě!"
 #. [message]: speaker=Terraent
 #. speaking to one of the undead leaders (horseman, not dragon) in an [event]name=attack
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1916
-#, fuzzy
 msgid ""
 "All things deserve redemption, but I fear the undead will never find it. May "
 "this place be cleansed in holy fire!"
@@ -9348,74 +9300,65 @@ msgstr ""
 #. [message]: speaker=Terraent
 #. speaking to Khrakrahs in an [event]name=attack
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1933
-#, fuzzy
 msgid ""
 "I have faced worse terrors than you, lizard! Through piety and the holy "
 "Light, this place will be sanctified once more."
 msgstr ""
-"Čelil jsem horším hrůzám než ty, ještěrko! Díky zbožnosti a svatému světlu "
-"bude toto místo opět posvěceno."
+"Čelil jsem horším postrachům než tobě, ještěre! Díky zbožnosti a svatému "
+"světlu bude toto místo opět požehnáno."
 
 #. [message]: speaker=second_unit
 #. speaker is an undead horseman, who's fighting Gaennell. Unclear whether this is to a memory, or because Gaennell is a Shadow Mage
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1950
-#, fuzzy
 msgid "... Necromancer... you are a blight..."
-msgstr "... Nekromant... jsi zhouba..."
+msgstr "... Nekromante... jsi zhoubou..."
 
 #. [message]: speaker=Gaennell
 #. to an undead horseman in an [event]name=attack
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1955
-#, fuzzy
 msgid ""
 "Not sure what you’d call me anymore, but definitely not more of a blight "
 "than you."
 msgstr ""
-"Nejsem si jistý, jak bys mě ještě nazval, ale rozhodně nejsem větší zhouba "
-"než ty."
+"Nevím, jak bys mě ještě nazval, ale rozhodně nejsem větší zhoubou než ty."
 
 #. [message]: speaker=second_unit
 #. Attacked with a fireball from an L2 or higher mage.
 #. Shek’kahan was Khrakrahs' brother, but died during TRoW, 6 centuries ago.
 #. The date of Khrakrahs' own death isn't canon, he was still alive in 40 YW (he appears in SoF).
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1974
-#, fuzzy
 msgid "... Shek’kahan, your fire grows weak... you are hardly... a rival."
-msgstr "... Shek'kahan, tvůj oheň slábne... jsi sotva... soupeř."
+msgstr "... Šekekahane, tvůj oheň slábne... jsi stěží... soupeřem."
 
 #. [message]: speaker=second_unit
 #. speaker is Khrakrahs when attacked by a dwarf, but remembering one he met in 40 YW.
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1991
-#, fuzzy
 msgid "... Thursagan... I warned you not... to enter my lair."
-msgstr "... Čtvrtek... Varoval jsem tě, abys nevstupoval do mého doupěte."
+msgstr ""
+"... Thursagane... Varoval jsem tě, abys... nevstupoval do mého doupěte."
 
 #. [message]: speaker=Lord Alric
 #. last breath request from the ghost of Lord Alric
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2008
-#, fuzzy
 msgid "... please, watch over my son for me."
 msgstr "... prosím, dohlédněte na mého syna."
 
 #. [message]: speaker=Sir Seoraery
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2020
-#, fuzzy
 msgid "... I may die... but the Clans... will never fall."
 msgstr "... Možná zemřu... ale klany... nikdy nepadnou."
 
 #. [message]: speaker=Sir Efran
 #. last breath, but still talking to a memory rather than the unit currently fighting him
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2033
-#, fuzzy
 msgid "... Necromancer... Wesnoth will defeat you... in the end."
-msgstr "... Nekromant... Wesnoth tě nakonec porazí..."
+msgstr "... Nekromante... Wesnoth tě nakonec... porazí..."
 
 #. [message]: speaker=Khrakrahs
 #. last breath
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2046
-#, fuzzy
 msgid "I am... ...<i>cold</i>."
-msgstr "Já jsem... ...<i>studený</i>."
+msgstr "Je mi... ...<i>zima</i>."
 
 #. [message]: speaker=Gweddry
 #. spoken at the start of a new turn after killing the first undead leader
@@ -9592,8 +9535,8 @@ msgid ""
 "despite your questionable methods."
 msgstr ""
 "Nenechte se mýlit, váš plán stále neschvaluji! Povede vás jen ke zkáze a "
-"smrti! Přesto teď alespoň věřím, že máš dobré úmysly, přestože tvé metody "
-"jsou pochybné."
+"smrti! Přesto teď alespoň věřím, že navzdory tvým pochybným metodám máš "
+"dobré úmysly."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2204
@@ -12424,7 +12367,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/units/Ant_Queen.cfg:25
 #, fuzzy
 msgid "royalty"
-msgstr "královská výsost"
+msgstr "licenční poplatky"
 
 #. [dummy]
 #: data/campaigns/Eastern_Invasion/units/Ant_Queen.cfg:26
@@ -12990,13 +12933,12 @@ msgstr "Tvá duše je má!!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:133
-#, fuzzy
 msgid ""
 "Funny thing about the undead. If you know what you’re doing, they’re really "
 "very easy to put back together."
 msgstr ""
-"S nemrtvými je to zvláštní. Pokud víte, co děláte, je opravdu velmi snadné "
-"je dát dohromady."
+"Zábavný fakt o nemrtvých. Pokud víte, co děláte, je opravdu velmi snadné je "
+"dát znovu dohromady."
 
 #. [attacks]: id=swift
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:141
@@ -13066,13 +13008,11 @@ msgstr ""
 
 #. [illuminates]: id=darkens
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:243
-#, fuzzy
 msgid "darkens"
-msgstr "ztmavuje"
+msgstr "zatemňuje"
 
 #. [illuminates]: id=darkens
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:244
-#, fuzzy
 msgid ""
 "This unit darkens the surrounding area, making chaotic units fight better, "
 "and lawful units fight worse.\n"
@@ -13080,49 +13020,44 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "day, and as if it were night when it is dusk."
 msgstr ""
-"Tato jednotka zatemňuje okolí, takže chaotické jednotky bojují lépe a "
-"zákonné hůře.\n"
+"Tato jednotka zatemní okolní prostor, takže chaotické jednotky budou bojovat "
+"lépe a zákonné jednotky hůře.\n"
 "\n"
-"Všechny jednotky sousedící s touto jednotkou budou bojovat, jako by byl "
-"soumrak, když je den, a jako by byla noc, když je soumrak."
+"Jednotky na sousedních polích budou bojovat ve dne jako za soumraku a za "
+"soumraku jako v noci."
 
 #. [illuminates]: id=obfuscation
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:257
-#, fuzzy
 msgid "obfuscates"
-msgstr "obfuscates"
+msgstr "zatmavuje"
 
 #. [illuminates]: id=obfuscation
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:258
-#, fuzzy
 msgid ""
 "This unit obfuscates the surrounding area, making chaotic units fight much "
 "better, and lawful units fight much worse."
 msgstr ""
-"Tato jednotka zatemňuje okolí, takže chaotické jednotky bojují mnohem lépe a "
-"zákonné jednotky mnohem hůře."
+"Tato jednotka zatmaví okolní prostor, takže chaotické jednotky budou bojovat "
+"mnohem lépe a zákonné jednotky mnohem hůře."
 
 #. [skirmisher]: id=nightskirmish
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:267
-#, fuzzy
 msgid "nightskirmish"
-msgstr "nightskirmish"
+msgstr "noční průbojnost"
 
 #. [skirmisher]: id=nightskirmish
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:268
-#, fuzzy
 msgid "female^nightskirmish"
-msgstr "fena^nightskirmish"
+msgstr "noční průbojnost"
 
 #. [skirmisher]: id=nightskirmish
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:269
-#, fuzzy
 msgid ""
 "This unit is skilled in moving past enemies quickly and ignores all enemy "
 "Zones of Control, but only at night."
 msgstr ""
-"Tato jednotka se umí rychle pohybovat kolem nepřátel a ignoruje všechny "
-"nepřátelské kontrolní zóny, ale pouze v noci."
+"Tato jednotka se umí rychle pohybovat kolem nepřátel a ignoruje všechny "
+"jejich oblasti kontroly, ale pouze v noci."
 
 #. [dummy]: id=terror
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:283
@@ -13161,7 +13096,7 @@ msgstr "Při obraně má tato jednotka 50% odolnost proti ohni a tajemství."
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:534
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:546
 msgid "arcane blessing"
-msgstr ""
+msgstr "nezemské požehnání"
 
 #. [damage_type]: id=arcane_damage_blessing
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:535
@@ -13169,13 +13104,19 @@ msgid ""
 "All attacks combine the arcane type with the type of the weapon used, so "
 "that resistance to arcane does not penalize the user."
 msgstr ""
+"Všechny útoky kombinují nezemský typ poškození s typem poškození použité "
+"zbraně, takže odolnost cíle vůči nezemským útokům uživatele zbraně "
+"nepenalizuje."
 
+# Není přeloženo doslovně, v originále je oproti zamýšlenému významu určitě nepřesnost.
 #. [damage_type]: id=arcane_damage_blessing
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:536
 msgid ""
 "This unit's weapons are treated as arcane instead of the declared damage "
 "type if that would increase the damage."
 msgstr ""
+"Pokud by to ve srovnání s deklarovaným typem bojového poškození zvýšilo jeho "
+"míru, považují se útoky jednotky prováděné jejími zbraněmi za nezemské."
 
 #. [damage_type]: id=arcane_damage_ranged_blessing
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:547
@@ -13183,6 +13124,9 @@ msgid ""
 "All bow or crossbow attacks combine the arcane type with the type of the "
 "weapon used, so that resistance to arcane does not penalize the user."
 msgstr ""
+"Všechny útoky lukem nebo kuší kombinují nezemský typ poškození s typem "
+"poškození použité zbraně, takže odolnost cíle vůči nezemským útokům "
+"uživatele zbraně nepenalizuje."
 
 #. [damage_type]: id=arcane_damage_ranged_blessing
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
@@ -13190,6 +13134,8 @@ msgid ""
 "This unit's bow or crossbow attacks are treated as arcane instead of the "
 "declared damage type if that would increase the damage."
 msgstr ""
+"Pokud by to ve srovnání s deklarovaným typem bojového poškození zvýšilo jeho "
+"míru, považují se útoky jednotky prováděné tímto lukem nebo kuší za nezemské."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/amlas.cfg:39
@@ -13817,10 +13763,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:812
-#, fuzzy
-#| msgid "Mak-Dak’an"
 msgid "Mal-Dak’an"
-msgstr "Mak-Dakan"
+msgstr "Mal-Dakan"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:832

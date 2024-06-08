@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 15:07-0500\n"
-"PO-Revision-Date: 2024-04-25 22:50+0200\n"
+"PO-Revision-Date: 2024-06-05 23:58+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2395,10 +2395,8 @@ msgstr "Kopírovat"
 
 #. [draw]
 #: data/gui/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "page^Copy"
 msgid "page^✔ Copied"
-msgstr "Kopírovat"
+msgstr "✔ Zkopírováno"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
@@ -4303,7 +4301,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/game_version.cfg:150
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Běžící na:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:179
@@ -4335,6 +4333,8 @@ msgstr ""
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Celou zprávu si můžeš zkopírovat "
+"zde:</i>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:295
@@ -4358,10 +4358,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:331
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Kráter"
+msgstr "Migrovat"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:368
@@ -4442,40 +4440,38 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:631
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "URL adresa fóra"
+msgstr "Fóra"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:650
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:669
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:688
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:707
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:726
 msgid "Donate"
-msgstr ""
+msgstr "Darovat"
 
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:822
@@ -4512,7 +4508,7 @@ msgstr "Vymakávky"
 #. [grid]
 #: data/gui/window/game_version.cfg:881 data/gui/window/title_screen.cfg:261
 msgid "Community"
-msgstr ""
+msgstr "Komunita"
 
 #. [button]: id=credits
 #: data/gui/window/game_version.cfg:935
@@ -4619,6 +4615,8 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>Bitva o Wesnoth</i> spoléhá na dobrovolníky, kteří se podílejí na vývoji, "
+"včetně překladů. Překlady mohou zaostávat, nebo dokonce být opuštěny."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4629,6 +4627,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Poznámka:</b> Uvedené procentní podíly překladu se vztahují pouze na "
+"základní rozhraní hry a nápovědu ve hře. Úplnější statistiky, včetně "
+"podrobností pro jednotlivá tažení, jsou k dispozici na následující stránce:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4638,11 +4639,11 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Pokud máš sám zájem hru překládat, další informace nalezneš na níže uvedeném "
+"odkazu:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
-#, fuzzy
-#| msgid "Show work-in-progress or abandoned translations"
 msgid "Show in-progress or abandoned translations"
 msgstr "Zobrazit rozpracované nebo opuštěné překlady"
 
@@ -6538,10 +6539,8 @@ msgstr "Spustit editor map"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "Bitva o Wesnoth"
+msgstr "Místa, kde se mluví o Wesnothu"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -6560,10 +6559,8 @@ msgstr ""
 
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:471
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "Bitva o Wesnoth"
+msgstr "Obecné informace ohledně Bitvy o Wesnoth"
 
 #. [button]: id=language
 #: data/gui/window/title_screen.cfg:493
@@ -8583,10 +8580,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Zabít jednotku (ladění!)"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Vytvořit jednotku (ladění!)"
+msgstr "Teleportovat jednotku (ladění!)"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Objectives"
@@ -9254,46 +9249,3 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "/data/core/images/units/human-loyalists/general.png"
-#~ msgstr "/data/core/images/units/human-loyalists/general.png"
-
-#~ msgid "/data/core/images/attacks/rectangular-shield.png"
-#~ msgstr "/data/core/images/attacks/rectangular-shield.png"
-
-#~ msgid "/data/core/images/attacks/sword-human.png"
-#~ msgstr "/data/core/images/attacks/sword-human.png"
-
-#~ msgid "/data/core/images/attacks/gaze.png"
-#~ msgstr "/data/core/images/attacks/gaze.png"
-
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "Zkopírovat celé hlášení do schránky"
-
-#~ msgid ""
-#~ "<i>Battle for Wesnoth</i> relies on community submissions to provide an "
-#~ "accessible game experience for players around the world. Because "
-#~ "development of the main game can move faster than volunteer translators "
-#~ "are able to keep up with, translations may drift behind or even become "
-#~ "abandoned.\n"
-#~ "\n"
-#~ "If you are a first-time player, we recommend using a mostly-complete "
-#~ "translation. If you are interested in translating the game yourself, we "
-#~ "suggest visiting the following page for more information and enabling all "
-#~ "translations while you work on your contributions:"
-#~ msgstr ""
-#~ "Aby <i>Bitva o Wesnoth</i> poskytla bezbariérový zážitek hráčům z celého "
-#~ "světa, spoléhá na příspěvky komunity. Protože vývoj hlavní hry může "
-#~ "postupovat rychleji, než dokážou dobrovolní překladatelé stíhat, stává "
-#~ "se, že překlady zaostávají nebo jsou dokonce opouštěny.\n"
-#~ "\n"
-#~ "Jestliže hraješ poprvé, doporučujeme použít co nejúplnější překlad. Pokud "
-#~ "máš sám zájem hru překládat, navrhujeme navštívit následující stránku, "
-#~ "kde nalezneš další informace, a povolit všechny překlady, zatímco budeš "
-#~ "pracovat na svých příspěvcích:"
-
-#~ msgid "View the credits"
-#~ msgstr "Zobrazit poděkování"
-
-#~ msgid "Running on $os"
-#~ msgstr "Běžící na $os"
