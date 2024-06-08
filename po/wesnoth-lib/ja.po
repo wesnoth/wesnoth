@@ -7,6 +7,7 @@
 # Translators:
 # tamanegi, 2024
 # k konami, 2024
+# h22, 2024
 # RatArmy, 2024
 #
 #, fuzzy
@@ -4377,10 +4378,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:331
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "クレーター"
+msgstr "移行"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:368
@@ -4460,40 +4459,38 @@ msgstr "Wesnothのビルド時に選択された機能："
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:631
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "フォーラムの URL"
+msgstr "フォーラム"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:650
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:669
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:688
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:707
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:726
 msgid "Donate"
-msgstr ""
+msgstr "寄付"
 
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:822
@@ -4530,7 +4527,7 @@ msgstr "機能"
 #. [grid]
 #: data/gui/window/game_version.cfg:881 data/gui/window/title_screen.cfg:261
 msgid "Community"
-msgstr ""
+msgstr "コミュニティ"
 
 #. [button]: id=credits
 #: data/gui/window/game_version.cfg:935
@@ -4637,6 +4634,8 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> は、翻訳を含む開発をボランティアに依存していま"
+"す。翻訳が遅れたり、放置されることもあります。"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4647,6 +4646,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>注：</b>表示されている翻訳パーセンテージは、core game interface とゲーム内"
+"ヘルプのみに適用されます。各キャンペーンの詳細を含む、より完全な統計は以下の"
+"ページでご覧いただけます："
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4656,11 +4658,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"ご自身でゲームを翻訳することにご興味のある方は、以下のリンクから詳細をご覧く"
+"ださい："
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "進行中または放置されている翻訳を表示する"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -6550,10 +6554,8 @@ msgstr "マップエディタを起動します"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "Wesnoth について語る場所"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -8302,10 +8304,8 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr "helptipがあるのにtooltipの無いwidgetが見つかりました。"
 
 #: src/gui/widgets/tab_container.cpp:138
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tab container control"
-msgstr "tree viewのためのnodeが定義されていません。"
+msgstr ""
 
 #: src/gui/widgets/tree_view.cpp:290
 msgid "No nodes defined for a tree view."
@@ -9265,15 +9265,6 @@ msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
 "ん。"
 
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "リポートを全てクリップボードにコピーします"
-
-#~ msgid "View the credits"
-#~ msgstr "クレジットを表示します"
-
-#~ msgid "Running on $os"
-#~ msgstr "$os 上で動作中"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "岩混じりの砂地"
 
@@ -9299,10 +9290,11 @@ msgstr ""
 #~ msgid "Add-on ID"
 #~ msgstr "アドオンの ID"
 
-#~ msgid "Choose your preferred language:"
-#~ msgstr "言語を選択："
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "リポートを全てクリップボードにコピーします"
 
-#, fuzzy
-#~| msgid "No widget defined."
-#~ msgid "No node defined."
-#~ msgstr "widget が定義されていません。"
+#~ msgid "View the credits"
+#~ msgstr "クレジットを表示します"
+
+#~ msgid "Running on $os"
+#~ msgstr "$os 上で動作中"
