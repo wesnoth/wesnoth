@@ -58,6 +58,14 @@ namespace editor {
 		preferences::set("editor_draw_num_of_bitmaps", value);
 	}
 
+	bool help_text_shown() {
+		return preferences::get("editor_help_text_shown", true);
+	}
+
+	void set_help_text_shown(bool value) {
+		preferences::set("editor_help_text_shown", value);
+	}
+
 	namespace {
 		std::size_t editor_mru_limit()
 		{
