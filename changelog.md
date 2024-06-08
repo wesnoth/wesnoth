@@ -17,7 +17,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Finnish, French, German, Italian, Norwegian, Russian, Slovak, Ukrainian
+   * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Finnish, French, German, Italian, Japanese, Norwegian, Russian, Slovak, Ukrainian
  ### Units
  ### User interface
    * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
