@@ -432,7 +432,7 @@ bool init_sound()
 
 	if(!mix_ok) {
 		SDL_AudioSpec spec;
-		spec.freq = preferences::sample_rate();
+		spec.freq = prefs::get().sample_rate();
 		spec.format = MIX_DEFAULT_FORMAT;
 		spec.channels = 2;
 		if(Mix_OpenAudio(0, &spec) == -1) {

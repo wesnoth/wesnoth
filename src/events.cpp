@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "draw_manager.hpp"
 #include "quit_confirmation.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
 #include "utils/general.hpp"
