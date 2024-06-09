@@ -62,7 +62,10 @@ struct preferences_list_defines
 	static constexpr const char* const confirm_end_turn = "confirm_end_turn";
 	/** the current core to use */
 	static constexpr const char* const core = "core";
-	/** unknown */
+	/**
+	 * creates a single command composed of one or more other commands
+	 * format - :custom show_terrain_codes;show_num_of_bitmaps
+	 */
 	static constexpr const char* const custom_command = "custom_command";
 	/** whether to show a confirmation dialog when deleting a save */
 	static constexpr const char* const delete_saves = "delete_saves";
