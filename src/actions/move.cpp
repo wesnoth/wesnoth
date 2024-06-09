@@ -207,6 +207,8 @@ namespace { // Private helpers for move_unit()
 		void post_move(undo_list *undo_stack);
 		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
+		/** Attempts to teleport the unit to a map_location. */
+		void try_teleport(bool show);
 
 		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
@@ -273,6 +275,10 @@ namespace { // Private helpers for move_unit()
 		inline bool do_move(const route_iterator & step_from,
 		                    const route_iterator & step_to,
 		                    unit_display::unit_mover & animator);
+
+		/** Teleports the unit. */
+		inline bool do_teleport(unit_display::unit_mover& animator);
+
 		/** Clears fog/shroud and handles units being sighted. */
 		inline void handle_fog(const map_location & hex, bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
@@ -538,6 +544,40 @@ namespace { // Private helpers for move_unit()
 		return success;
 	}
 
+	/**
+	 * Teleports the unit to begin_ + 1.
+	 * @a animator is the unit_display::unit_mover being used.
+	 * @return whether or not we started a new animation.
+	 */
+	inline bool unit_mover::do_teleport(unit_display::unit_mover& animator)
+	{
+		game_display& disp = *game_display::get_singleton();
+		const route_iterator step_to = begin_ + 1;
+
+		// Invalidate before moving so we invalidate neighbor hexes if needed.
+		move_it_->anim_comp().invalidate(disp);
+
+		// Attempt actually moving. Fails if *step_to is occupied.
+		auto [unit_it, success] = resources::gameboard->units().move(*begin_, *step_to);
+
+		if(success) {
+			// Update the moving unit.
+			move_it_ = unit_it;
+			move_it_->set_facing(begin_->get_relative_dir(*step_to));
+
+			move_it_->anim_comp().set_standing(false);
+			disp.invalidate_unit_after_move(*begin_, *step_to);
+			disp.invalidate(*step_to);
+			move_loc_ = step_to;
+
+			// Show this move.
+			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_, move_it_->appearance_changed(), false);
+
+			move_it_->set_appearance_changed(false);
+			disp.redraw_minimap();
+		}
+		return success;
+	}
 
 	/**
 	 * Clears fog/shroud and raises events for units being sighted.
@@ -1012,6 +1052,50 @@ namespace { // Private helpers for move_unit()
 		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
 	}
 
+	/**
+	 * Attempts to teleport the unit to a map_location.
+	 *
+	 * @param[in]  show            Set to false to suppress animations.
+	 */
+	void unit_mover::try_teleport(bool show)
+	{
+		const route_iterator step_from = real_end_ - 1;
+
+		std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
+
+		// Prepare to animate.
+		unit_display::unit_mover animator(route_, show);
+		animator.start(move_it_.get_shared_ptr());
+		fire_hex_event("exit hex", step_from, begin_);
+
+		bool new_animation = do_teleport(animator);
+
+		if(current_uses_fog_)
+			handle_fog(*(begin_ + 1), new_animation);
+
+		animator.wait_for_anims();
+
+		fire_hex_event("enter hex", begin_, step_from);
+
+		if(is_reasonable_stop(*step_from)) {
+			pump_sighted(step_from);
+		}
+
+		pump_sighted(step_from);
+
+		if(move_it_.valid()) {
+			// Finish animating.
+			animator.finish(move_it_.get_shared_ptr());
+
+			// Check for the moving unit being seen.
+			auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*move_it_, &not_seeing);
+
+			wml_move_aborted_ |= wml_move_aborted;
+			wml_undo_disabled_ |= wml_undo_blocked;
+		}
+
+		post_move(resources::undo_stack);
+	}
 
 	/**
 	 * Does some bookkeeping and event firing, for use after movement.
@@ -1203,6 +1287,41 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 	}
 
 	return mover.steps_travelled();
+}
+
+void teleport_unit_and_record(const map_location& teleport_from,
+	const map_location& teleport_to,
+	bool show_move,
+	move_unit_spectator* move_spectator)
+{
+	const bool skip_ally_sighted = true;
+	const bool continued_move = false;
+
+	const std::vector<map_location>& route{teleport_from, teleport_to};
+
+	unit_mover mover(route, move_spectator, continued_move, skip_ally_sighted);
+
+	if(synced_context::get_synced_state() != synced_context::SYNCED) {
+		/*
+			enter the synced mode and do the actual movement.
+		*/
+		resources::recorder->add_synced_command("debug_teleport",
+			config{"teleport_from_x", teleport_from.wml_x(), "teleport_from_y", teleport_from.wml_y(), "teleport_to_x",
+				teleport_to.wml_x(), "teleport_to_y", teleport_to.wml_y()});
+		set_scontext_synced sync;
+		mover.try_teleport(show_move);
+		sync.do_final_checkup();
+	} else {
+		// we are already in synced mode and don't need to reenter it again.
+		mover.try_teleport(show_move);
+	}
+}
+
+void teleport_unit_from_replay(const std::vector<map_location> &steps,
+	bool continued_move, bool skip_ally_sighted, bool show_move)
+{
+	unit_mover mover(steps, nullptr, continued_move, skip_ally_sighted);
+	mover.try_teleport(show_move);
 }
 
 /**

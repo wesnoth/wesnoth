@@ -66,7 +66,7 @@ function ca_village_hunt:evaluation(cfg, data, filter_own)
     for _,unit in ipairs(units) do
         local best_cost = AH.no_path
         for i,v in ipairs(villages) do
-            if not wesnoth.map.matches(v, { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }) then
+            if not wesnoth.map.matches(v, { wml.tag.filter_owner { wml.tag.ally_of { side = wesnoth.current.side } } }) then
                 local path, cost = AH.find_path_with_avoid(unit, v[1], v[2], avoid_map2)
                 if (cost < best_cost) then
                     local dst = AH.next_hop(unit, nil, nil, { path = path, avoid_map = avoid_map2 })

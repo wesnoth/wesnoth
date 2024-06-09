@@ -25,7 +25,6 @@
 #include "serialization/unicode.hpp"
 
 #include <functional>
-
 #include <limits>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

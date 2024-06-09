@@ -790,7 +790,7 @@ void set_fullscreen(bool fullscreen)
 	}
 
 	// Update the config value in any case.
-	preferences::_set_fullscreen(fullscreen);
+	preferences::set_fullscreen(fullscreen);
 }
 
 void toggle_fullscreen()
@@ -822,8 +822,8 @@ bool set_resolution(const point& resolution)
 
 	// Change the saved values in preferences.
 	LOG_DP << "updating resolution to " << resolution;
-	preferences::_set_resolution(resolution);
-	preferences::_set_maximized(false);
+	preferences::set_resolution(resolution);
+	preferences::set_maximized(false);
 
 	return true;
 }

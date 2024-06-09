@@ -27,7 +27,7 @@ function ca_hang_out:evaluation(cfg, data)
         MAISD.insert_mai_self_data(data, cfg.ai_id, { mobilize_units = true })
 
         -- Need to unmark all units also (all units, with and without moves)
-        local units = wesnoth.units.find_on_map { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } }
+        local units = wesnoth.units.find_on_map { side = wesnoth.current.side, wml.tag["and"] ( wml.get_child(cfg, "filter") ) }
         for _,unit in ipairs(units) do
             MAIUV.delete_mai_unit_variables(unit, cfg.ai_id)
         end

@@ -16,6 +16,7 @@
 #pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
+#include "gui/widgets/label.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -26,39 +27,13 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 class label;
+class spacer;
 
 namespace implementation
 {
 struct builder_scroll_label;
 }
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Label showing a text.
- *
- * This version shows a scrollbar if the text gets too long and has some scrolling features.
- * In general this widget is slower as the normal label so the normal label should be preferred.
- *
- * Key          |Type                        |Default  |Description
- * -------------|----------------------------|---------|-----------
- * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
- *
- * TODO: we need one definition for a vertical scrollbar since this is the second time we use it.
- *
- * ID (return value)|Type                        |Default  |Description
- * -----------------|----------------------------|---------|-----------
- * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one label widget.
- * _scrollbar_grid  | @ref guivartype_grid "grid"|mandatory|A grid for the scrollbar (Merge with listbox info.)
- * The following states exist:
- * * state_enabled - the scroll label is enabled.
- * * state_disabled - the scroll label is disabled.
- * List with the scroll label specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-----------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- */
 class scroll_label : public scrollbar_container
 {
 	friend struct implementation::builder_scroll_label;
@@ -92,6 +67,13 @@ public:
 	void set_text_alpha(unsigned short alpha);
 
 	void set_link_aware(bool l);
+
+	void set_text_max_width(int max_width) {
+		label* text_label = get_internal_label();
+		if (text_label) {
+			text_label->set_text_maximum_width(max_width);
+		}
+	}
 
 private:
 	/**

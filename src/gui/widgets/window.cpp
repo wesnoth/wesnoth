@@ -555,8 +555,14 @@ int window::show(const unsigned auto_close_timeout)
 
 	try
 	{
-		// Start our loop drawing will happen here as well.
+		// According to the comment in the next loop, we need to pump() once
+		// before we know which mouse buttons are down. Assume they're all
+		// down, otherwise there's a race condition when the MOUSE_UP gets
+		// processed in the first pump(), which immediately closes the window.
 		bool mouse_button_state_initialized = false;
+		mouse_button_state_ = std::numeric_limits<uint32_t>::max();
+
+		// Start our loop, drawing will happen here as well.
 		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
 			// Process and handle all pending events.
 			events::pump();

@@ -27,24 +27,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to modify tod schedules.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * current_tod_name  | text_box     |yes      |The name of the time of day(ToD).
- * current_tod_id    | text_box     |yes      |The id of the time of day(ToD).
- * current_tod_image | @ref image   |yes      |The image for the time of day(ToD).
- * current_tod_mask  | @ref image   |yes      |The image mask for the time of day(ToD).
- * current_tod_sound | @ref label   |yes      |The sound for the time of day(ToD).
- * next_tod          | @ref button  |yes      |Selects the next ToD.
- * prev_tod          | @ref button  |yes      |Selects the previous ToD.
- * lawful_bonus      | @ref slider  |yes      |Sets the Lawful Bonus for the current ToD.
- * tod_red           | @ref slider  |yes      |Sets the red component of the current ToD.
- * tod_green         | @ref slider  |yes      |Sets the green component of the current ToD.
- * tod_blue          | @ref slider  |yes      |Sets the blue component of the current ToD.
- */
 class custom_tod : public modal_dialog
 {
 public:

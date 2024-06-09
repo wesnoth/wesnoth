@@ -1024,6 +1024,15 @@ public:
 	int defense_modifier(const t_translation::terrain_code& terrain) const;
 
 	/**
+	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.
+	 *
+	 * @param resistance_list A list of resistance abilities that the unit has.
+	 * @param damage_name The name of the damage type, for example "blade".
+	 * @return The resistance value for a unit with the provided resistance abilities to the provided damage type.
+	 */
+	int resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const;
+
+	/**
 	 * The unit's resistance against a given damage type
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
@@ -1052,7 +1061,7 @@ public:
 	}
 
 private:
-	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
+	bool resistance_filter_matches(const config& cfg, const std::string& damage_name, int res) const;
 
 	/**
 	 * @}
@@ -1096,11 +1105,41 @@ public:
 	}
 
 	/**
-	 * Gets a list of the traits this unit currently has.
+	 * Gets the ids of the traits corresponding to those returned by trait_names() and
+	 * trait_descriptions(). Omits hidden traits, which are those with an empty name.
 	 *
 	 * @returns                   A list of trait IDs.
 	 */
-	std::vector<std::string> get_traits_list() const;
+	std::vector<std::string> trait_nonhidden_ids() const
+	{
+		return trait_nonhidden_ids_;
+	}
+
+	/** Gets a list of the modification this unit currently has.
+	 * @param mod_type type of modification.
+	 * @returns                   A list of modification IDs.
+	 */
+	std::vector<std::string> get_modifications_list(const std::string& mod_type) const;
+
+	/**
+	 * Gets a list of the traits this unit currently has, including hidden traits.
+	 *
+	 * @returns                   A list of trait IDs.
+	 */
+	std::vector<std::string> get_traits_list() const
+	{
+		return get_modifications_list("trait");
+	}
+
+	std::vector<std::string> get_objects_list() const
+	{
+		return get_modifications_list("object");
+	}
+
+	std::vector<std::string> get_advancements_list() const
+	{
+		return get_modifications_list("advancement");
+	}
 
 	/**
 	 * Register a trait's name and its description for the UI's use.
@@ -1495,6 +1534,29 @@ public:
 	 * @return The total number of modifications of that type and ID.
 	 */
 	std::size_t modification_count(const std::string& type, const std::string& id) const;
+
+	/**
+	 * Count modifications of a particular type.
+	 * @param type The type of modification to count.
+	 *             Valid values are "advancement", "trait", "object"
+	 * @return The total number of modifications of that type.
+	 */
+	std::size_t modification_count(const std::string& type) const;
+
+	std::size_t traits_count() const
+	{
+		return modification_count("trait");
+	}
+
+	std::size_t objects_count() const
+	{
+		return modification_count("object");
+	}
+
+	std::size_t advancements_count() const
+	{
+		return modification_count("advancement");
+	}
 
 	/**
 	 * Add a new modification to the unit.
@@ -1957,6 +2019,7 @@ protected:
 private:
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
+	std::vector<std::string> trait_nonhidden_ids_;
 
 	int unit_value_;
 	map_location goto_, interrupted_move_;

@@ -31,18 +31,6 @@ namespace gui2
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the debug-mode dialog to create new units on the map.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * male_toggle       | toggle_button |yes      |Option button to select the "male" gender for created units.
- * female_toggle     | toggle_button |yes      |Option button to select the "female" gender for created units.
- * unit_type_list    | @ref listbox  |yes      |Listbox displaying existing unit types sorted by name and race.
- * unit_type         | control       |yes      |Widget which shows the unit type name label.
- * race              | control       |yes      |Widget which shows the unit race name label.
- */
 class unit_create : public modal_dialog
 {
 public:

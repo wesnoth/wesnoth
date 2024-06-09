@@ -47,14 +47,6 @@ unidades, cenários e campanhas e compartilhe\-os com os outros.
 Mostra todas as traduções na lista de seleção de línguas do jogo, mesmo que
 elas não sejam consideradas como suficientemente completas.
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-descomprime um arquivo que deve estar no formato bzip2 e guarda\-o sem o
-sufixo .bz2. O \fIinfile.bz2\fP será removido.
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-comprime um arquivo em formato bzip2 , guarda\-o como \fIinfile\fP.bz2 e remove
-o \fIinfile\fP.
-.TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 vai diretamente para a campanha com o id \fIid_campaign\fP. Um menu de seleção
 aparecerá se nenhum id for especificado.
@@ -114,14 +106,6 @@ grava estes valores em um arquivo no diretório de dados do usuário.
 \fB\-f, \-\-fullscreen\fP
 executa o jogo em modo tela cheia.
 .TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-descomprime um arquivo que está em formato gzip e armazena\-o sem o sufixo
-\&.gz. O arquivo \fIinfile.gz\fP é então removido.
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-comprime um arquivo em formato gzip, guarda\-o como \fIinfile\fP.gz e remove
-\fIinfile\fP.
-.TP 
 \fB\-h, \-\-help\fP
 exibe um resumo das opções de linha de comando para saída padrão, e sai.
 .TP 
@@ -144,24 +128,23 @@ ser que seja combinado com a opção \fB\-d\fP.
 \fB\-\-log\-precise\fP
 mostra as timestamps no log de saída com mais precisão.
 .TP 
-\fB\-\-log\-strict\fP
-define o nível strict para o logger. Qualquer mensagem enviada para os log
-domains deste nível, ou de níveis mais severos, fará com que o teste de
-unidade falhe independentemente do resultado da vitória. Apenas relevante
-quando usado juto de \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lista dos log domains definidos (apenas os que contêm \fIfilter\fP se usad0) e
 sai
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -313,13 +296,12 @@ executável do wesnoth.
 configura o WML schema para ser usado com \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-define o diretório das configurações do usuário para \fIname\fP em $HOME ou "My
-Documents\eMy Games" para windows.  Você também pode especificar um caminho
-absoluto para este diretório fora da $HOME ou "My Documents\eMy Games". No
-Windows também é possível especificar um diretório relativo ao processode
-trabalho ao usar um caminho que comece com ".\e" ou "..\e".  Sob X11 o
-padrão é $XDG_CONFIG_HOME ou $HOME/.config/wesnoth, em outros sistemas para
-o caminho dos dados do usuário.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 imprime o caminho da pasta de configurações de usuário e sai.

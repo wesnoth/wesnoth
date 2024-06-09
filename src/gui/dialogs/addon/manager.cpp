@@ -521,6 +521,10 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(version_filter,
 		std::bind(&addon_manager::on_selected_version_change, this));
 
+	if(!game_config::debug) {
+		find_widget<label>(&window, "addon_id", false).set_visible(widget::visibility::invisible);
+	}
+
 	on_addon_select();
 
 	window.set_enter_disabled(true);
@@ -1038,8 +1042,10 @@ static std::string format_addon_time(std::time_t time)
 
 		const std::string format = preferences::use_twelve_hour_clock_format()
 			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			? _("%B %d %Y, %I:%M %p")
 			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			: _("%B %d %Y, %H:%M");
 
 		ss << translation::strftime(format, std::localtime(&time));
@@ -1102,7 +1108,10 @@ void addon_manager::on_addon_select()
 
 	const std::string& feedback_url = info->feedback_url;
 	find_widget<label>(parent, "url", false).set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
-	find_widget<label>(parent, "id", false).set_label(info->id);
+
+	if(auto addon_id =  find_widget<label>(parent, "addon_id", false, true)) {
+		addon_id->set_label(info->id);
+	}
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;

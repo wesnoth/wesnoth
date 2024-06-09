@@ -860,17 +860,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	cfg_["side"] = index_ + 1;
 
-	// Check if this side should give its control to some other side.
-	const std::size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
-	if(side_cntr_index < parent_.side_engines().size()) {
-		// Remove this attribute to avoid locking side
-		// to non-existing controller type.
-		cfg_.remove_attribute("controller");
-
-		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
-		ERR_MP << "controller=<number> is deperecated";
-	}
-
 	if(cfg_["controller"] != side_controller::human && cfg_["controller"] != side_controller::ai && cfg_["controller"] != side_controller::none) {
 		//an invalid controller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");

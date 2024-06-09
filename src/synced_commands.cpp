@@ -323,8 +323,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_handler*/)
 {
-	bool undoable = true;
-
 	if(const auto last_select = child.optional_child("last_select"))
 	{
 		//the select event cannot clear the undo stack.
@@ -332,14 +330,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 	}
 	const std::string &event_name = child["raise"];
 	if (const auto source = child.optional_child("source")) {
-		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata)));
+		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata))));
 	} else {
-		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name));
+		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name)));
 	}
 
 	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
 	if(use_undo) {
-		if(!undoable || synced_context::undo_blocked()) {
+		if(synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();
@@ -592,6 +590,27 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	debug_cmd_notification("lua");
 	resources::lua_kernel->run(child["code"].str().c_str(), "debug command");
 	resources::controller->pump().flush_messages();
+
+	return true;
+}
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	debug_cmd_notification("teleport");
+
+	const map_location teleport_from(child["teleport_from_x"].to_int(), child["teleport_from_y"].to_int(), wml_loc());
+	const map_location teleport_to(child["teleport_to_x"].to_int(), child["teleport_to_y"].to_int(), wml_loc());
+
+	const unit_map::iterator unit_iter = resources::gameboard->units().find(teleport_from);
+	if(unit_iter != resources::gameboard->units().end()) {
+		if(unit_iter.valid()) {
+			actions::teleport_unit_from_replay({teleport_from, teleport_to}, false, false, false);
+		}
+		display::get_singleton()->redraw_minimap();
+	}
 
 	return true;
 }

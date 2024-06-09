@@ -22,6 +22,7 @@
 
 #include "picture.hpp"
 #include "preferences/game.hpp"
+#include "preferences/display.hpp"
 #include "sdl/utils.hpp"
 
 #include <boost/logic/tribool.hpp>

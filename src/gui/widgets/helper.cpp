@@ -55,6 +55,42 @@ color_t decode_color(const std::string& color)
 	return color_t::from_rgba_string(color);
 }
 
+PangoWeight decode_text_weight(const std::string& weight)
+{
+	if(weight == "thin") {
+		return PANGO_WEIGHT_THIN;
+	} else if (weight == "light") {
+		return PANGO_WEIGHT_LIGHT;
+	} else if (weight == "semibold") {
+		return PANGO_WEIGHT_SEMIBOLD;
+	} else if (weight == "bold") {
+		return PANGO_WEIGHT_BOLD;
+	} else if (weight == "heavy") {
+		return PANGO_WEIGHT_HEAVY;
+	}
+
+	if(!weight.empty() && weight != "normal") {
+		ERR_GUI_E << "Invalid text weight '" << weight << "', falling back to 'normal'.";
+	}
+
+	return PANGO_WEIGHT_NORMAL;
+}
+
+PangoStyle decode_text_style(const std::string& style)
+{
+	if(style == "italic") {
+		return PANGO_STYLE_ITALIC;
+	} else if(style == "oblique") {
+		return PANGO_STYLE_OBLIQUE;
+	}
+
+	if(!style.empty() && style != "normal") {
+		ERR_GUI_E << "Invalid text style '" << style << "', falling back to 'normal'.";
+	}
+
+	return PANGO_STYLE_NORMAL;
+}
+
 PangoAlignment decode_text_alignment(const std::string& alignment)
 {
 	if(alignment == "center") {

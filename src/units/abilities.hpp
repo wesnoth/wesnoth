@@ -25,6 +25,8 @@ bool filter_base_matches(const config& cfg, int def);
 
 enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
+enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_CLAMP_MIN_MAX=3 };
+
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(nullptr),
@@ -39,7 +41,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, const_attack_ptr attacker = const_attack_ptr(), bool is_cumulable = false);
+		effect(const unit_ability_list& list, int def, const_attack_ptr attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;

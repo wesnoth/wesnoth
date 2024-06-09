@@ -30,30 +30,6 @@ namespace implementation
 struct builder_scrollbar_panel;
 }
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Visible container to hold multiple widgets.
- *
- * This widget can draw items beyond the widgets it holds and in front of them.
- * A panel is always active so these functions return dummy values.
- *
- * A panel is a container holding other elements in its grid.
- * It uses the states as layers to draw on.
- *
- * Key          |Type                        |Default  |Description
- * -------------|----------------------------|---------|-----------
- * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
- * The following layers exist:
- * * background - the background of the panel.
- * * foreground - the foreground of the panel.
- * List with the scrollbar_panel specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-----------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * definition               | @ref guivartype_section "section"              |mandatory   |This defines how a scrollbar_panel item looks. It must contain the grid definition for 1 row of the list.
- */
 class scrollbar_panel : public scrollbar_container
 {
 	friend struct implementation::builder_scrollbar_panel;

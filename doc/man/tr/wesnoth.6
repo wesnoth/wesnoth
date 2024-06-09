@@ -48,13 +48,6 @@ seferberliklerinizi yazabilir ve bunları başkaları ile paylaşabilirsiniz.
 Oyun içi dil seçim listesindeki tüm çevirileri yeterli olmasalar bile,
 gösterir.
 .TP 
-\fB\-\-bunzip2\fP\fI\ dosya.bz2\fP
-bzip2 biçemli bir dosyanın sıkıştırmasını açar ve .bz2 uzantısız olarak
-kaydeder. \fIdosya.bz2\fP dosyasını da siler.
-.TP 
-\fB\-\-bzip2\fP\fI\ dosya\fP
-bir dosyayı \fIdosya\fP.gz adıyla sıkıştırarak kaydeder ve \fIdosya\fPyı siler.
-.TP 
 \fB\-c[\fP\fIseferberlik\fP\fB],\ \-\-campaign[\fP\fI=seferberlik\fP\fB]\fP
 \fIseferberlik\fP kimliği ile doğrudan seferberliğe gider. Kimlik
 belirtilmemişse bir seçim menüsü görünecektir.
@@ -114,13 +107,6 @@ görüntüler ve bu değerleri userdata dizinindeki bir dosyaya yazar.
 \fB\-f, \-\-fullscreen\fP
 oyunu tam ekran çalıştırır.
 .TP 
-\fB\-\-gunzip\fP\fI\ girdi\-dosyası.gz\fP
-Gzipli bir dosyanın sıkıştırmasını açar ve .gz uzantısız olarak
-kaydeder. \fIdosya.gz\fP dosyasını da siler.
-.TP 
-\fB\-\-gzip\fP\fI\ girdi\-dosyası\fP
-Bir dosyayı \fIdosya\fP.gz adıyla sıkıştırarak kaydeder ve \fIdosya\fPyı siler.
-.TP 
 \fB\-h, \-\-help\fP
 Komut satırı seçeneklerini standart çıktıya listeler ve çıkar.
 .TP 
@@ -143,24 +129,23 @@ değerini kullanır, fakat \fB\-d\fP  seçeneği ile birlikte kullanılmadıkça
 \fB\-\-log\-precise\fP
 günlük çıktısında zaman damgaları daha ayrıntılı gösterilir.
 .TP 
-\fB\-\-log\-strict\fP
-günlük iletilerinin önem seviyesi. Günlük alanlarına gönderilen bu ve daha
-önemli seviyelerdeki iletiler, zafer sonucuna bakılmaksızın birim
-sınamalarının başarısız olmasında sebep olur. Sadece \fB\-u\fP ile
-kullanıldığında etkin olur.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=süzgeç\fP\fB]\fP
 tanımlı günlük alanlarını listeler ve çıkar (bir \fIsüzgeç\fP belirtilmişse
 sadece belirtilenleri içerir).
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -313,14 +298,12 @@ wesnoth çalıştırılabiliri ile aynı yetkileri sağlar.
 \fB\-V,\-\-validate\fP ile kullanmak için WML şemasını tanımlar.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ isim\fP
-kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows'ta
-"Belgelerim\eOyunlarım" dizini altında \fIisim\fP dizini kullanılır. Ayrıca,
-$HOME veya "Belgelerim\eOyunlarım" dışında bir yapılandırma dizinini de
-mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu
-".\e" veya "..\e" ile başlatarak sürecin çalışma dizinine göreli bir dosya
-yolu da belirtebilirsiniz. X11 altında bu, öntanımlı olarak $XDG_CONFIG_HOME
-veya $HOME/.config/wesnoth olup diğer sistemlerde kullanıcı verisi
-dizinidir.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 Kullanıcı yapılandırma dizininin yolunu basar ve çıkar.

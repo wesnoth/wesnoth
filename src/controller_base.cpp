@@ -299,7 +299,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
 		video::window_has_mouse_focus()
-		|| preferences::get("scroll_when_mouse_outside", true);
+		|| preferences::get_scroll_when_mouse_outside(true);
 
 	int scroll_speed = preferences::scroll_speed();
 	double dx = 0.0, dy = 0.0;
