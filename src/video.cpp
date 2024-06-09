@@ -357,7 +357,7 @@ void init_window(bool hidden)
 	window_flags |= SDL_WINDOW_RESIZABLE;
 	window_flags |= SDL_WINDOW_HIGH_PIXEL_DENSITY;
 
-	if(preferences::maximized()) {
+	if(prefs::get().maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
@@ -375,7 +375,7 @@ void init_window(bool hidden)
 
 	// Initialize window
 	window.reset(new sdl::window("", x, y, w, h, window_flags, renderer_flags));
-	if(preferences::fullscreen()) {
+	if(prefs::get().fullscreen()) {
 		SDL_DisplayMode mode;
 		mode.format = SDL_PIXELFORMAT_UNKNOWN;
 		mode.w = w;
@@ -750,7 +750,7 @@ void set_fullscreen(bool fullscreen)
 
 	if (fullscreen) {
 		window->full_screen();
-	} else if (preferences::maximized()) {
+	} else if (prefs::get().maximized()) {
 		window->to_window();
 		window->maximize();
 	} else {

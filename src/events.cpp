@@ -21,6 +21,7 @@
 #include "draw_manager.hpp"
 #include "preferences/preferences.hpp"
 #include "quit_confirmation.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
 #include "utils/general.hpp"
