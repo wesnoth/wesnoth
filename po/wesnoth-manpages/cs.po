@@ -2,14 +2,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2020 - 2023
+# Michal Žejdl <lachim@emer.cz>, 2020 - 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-25 21:28-0500\n"
-"PO-Revision-Date: 2023-06-25 12:03+0200\n"
+"PO-Revision-Date: 2024-06-01 07:45+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -574,17 +574,12 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
-#, fuzzy
-#| msgid ""
-#| "log output is written to a file in addition to standard output/error. "
-#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
-"výstup záznamů je kromě standardních výstupů output/error zapsán také do "
-"souboru. Ruší účinek volby --no-log-to-file ať už je vyjádřena přímo, nebo "
-"nepřímo."
+"výstup záznamů je zapsán do souboru. Ruší účinek volby --no-log-to-file ať "
+"už je vyjádřena přímo, nebo nepřímo."
 
 # type: TP
 #. type: TP
@@ -1627,12 +1622,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003–2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003–2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2368,10 +2360,10 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
-"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
-"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
-"12 hodin a 30 minut."
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" "
+"(roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty "
+"(m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, 12 "
+"hodin a 30 minut."
 
 # type: Plain text
 #. type: Plain text
