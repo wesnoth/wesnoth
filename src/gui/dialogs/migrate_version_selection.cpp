@@ -23,8 +23,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 
 #include <boost/algorithm/string.hpp>
@@ -120,7 +119,7 @@ void migrate_version_selection::post_show(window& window)
 
 		if(filesystem::file_exists(old_migrate_prefs_file)) {
 			already_migrated = true;
-			migrate_preferences(old_migrate_prefs_file);
+			prefs::get().migrate_preferences(old_migrate_prefs_file);
 		}
 		if(filesystem::file_exists(old_migrate_credentials_file)) {
 			already_migrated = true;
@@ -130,15 +129,14 @@ void migrate_version_selection::post_show(window& window)
 		if(!already_migrated)
 #endif
 		{
-			migrate_preferences(migrate_prefs_file);
+			prefs::get().migrate_preferences(migrate_prefs_file);
 			migrate_credentials(migrate_credentials_file);
 		}
 
 		// reload preferences and credentials
 		// otherwise the copied files won't be used and also will get overwritten/deleted when Wesnoth closes
-		preferences::load_base_prefs();
-		preferences::load_game_prefs();
-		preferences::load_credentials();
+
+		prefs::get().reload_preferences();
 	}
 }
 
@@ -166,36 +164,6 @@ std::string migrate_version_selection::old_config_dir()
 
 	old_config_dir += "/wesnoth";
 	return old_config_dir;
-}
-
-void migrate_version_selection::migrate_preferences(const std::string& migrate_prefs_file)
-{
-	if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
-		// if the file doesn't exist, just copy the file over
-		// else need to merge the preferences file
-		if(!filesystem::file_exists(filesystem::get_prefs_file())) {
-			filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
-		} else {
-			config current_cfg;
-			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
-			read(current_cfg, *current_stream);
-			config old_cfg;
-			filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
-			read(old_cfg, *old_stream);
-
-			// when both files have the same attribute, use the one from whichever was most recently modified
-			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
-			for(const config::attribute& val : old_cfg.attribute_range()) {
-				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
-					preferences::set(val.first, val.second);
-				}
-			}
-
-			// don't touch child tags
-
-			preferences::write_preferences();
-		}
-	}
 }
 
 void migrate_version_selection::migrate_credentials(const std::string& migrate_credentials_file)

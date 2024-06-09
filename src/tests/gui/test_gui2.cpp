@@ -635,7 +635,7 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
 {
-	test<migrate_version_selection>();
+	test<gui2::dialogs::migrate_version_selection>();
 }
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
@@ -1086,11 +1086,11 @@ struct dialog_tester<mp_match_history>
 };
 
 template<>
-struct dialog_tester<migrate_version_selection>
+struct dialog_tester<gui2::dialogs::migrate_version_selection>
 {
-	migrate_version_selection* create()
+	gui2::dialogs::migrate_version_selection* create()
 	{
-		return new migrate_version_selection();
+		return new gui2::dialogs::migrate_version_selection();
 	}
 };
 

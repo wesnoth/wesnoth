@@ -29,7 +29,7 @@
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
 #include "serialization/unicode.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "video.hpp"
 
 
@@ -584,7 +584,7 @@ pango_text& pango_text::set_family_class(font::family_class fclass)
 
 pango_text& pango_text::set_font_size(unsigned font_size)
 {
-	font_size = preferences::font_scaled(font_size) * pixel_scale_;
+	font_size = prefs::get().font_scaled(font_size) * pixel_scale_;
 
 	if(font_size != font_size_) {
 		font_size_ = font_size;

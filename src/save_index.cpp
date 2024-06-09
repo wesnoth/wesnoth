@@ -21,7 +21,7 @@
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
 
@@ -128,7 +128,7 @@ void save_index_class::write_save_index()
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(preferences::save_compression_format() != compression::format::none) {
+		if(prefs::get().save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
 			write_gz(*stream, data());
 		} else {
@@ -250,7 +250,7 @@ const config& save_info::summary() const
 std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
-		const std::string format = preferences::use_twelve_hour_clock_format()
+		const std::string format = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 			? _("%a %b %d %Y, %I:%M %p")
 			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.

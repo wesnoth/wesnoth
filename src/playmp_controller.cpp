@@ -30,8 +30,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "mp_ui_alerts.hpp"
-#include "preferences/game.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -122,7 +121,7 @@ void playmp_controller::play_human_turn()
 		undo_stack().clear();
 	}
 
-	if(!preferences::disable_auto_moves()) {
+	if(!prefs::get().disable_auto_moves()) {
 		execute_gotos();
 	}
 
@@ -406,13 +405,13 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 	{
 		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
 				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
-				preferences::message_bell());
+				prefs::get().message_bell());
 	}
 	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
 	{
 		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
 				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
-				preferences::message_bell());
+				prefs::get().message_bell());
 	}
 	else if (auto observer = cfg.optional_child("observer") )
 	{
