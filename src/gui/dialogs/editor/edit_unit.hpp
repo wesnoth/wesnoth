@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,11 +15,11 @@
 
 #pragma once
 
+#include "game_config_view.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "serialization/preprocessor.hpp"
-#include "game_config_view.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 #include <SDL2/SDL.h>
@@ -32,8 +32,6 @@ namespace dialogs
 {
 
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * Dialog that allows user to create custom unit types.
  */
 class editor_edit_unit : public modal_dialog
@@ -90,7 +88,7 @@ private:
 	}
 
 	/** Write macro to a stream at specified tab level */
-	void write_macro(std::ostream& out, int level, std::string macro_name);
+	void write_macro(std::ostream& out, unsigned level, const std::string macro_name);
 
 	/** Update wml preview */
 	void update_wml_view();

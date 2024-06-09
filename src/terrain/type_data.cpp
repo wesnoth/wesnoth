@@ -267,7 +267,7 @@ t_translation::terrain_code terrain_type_data::merge_terrains(const t_translatio
 		if(new_t.base != t_translation::NO_LAYER) {
 			result = new_t;
 		}
-		else if (get_terrain_info(new_t).default_base() != t_translation::NONE_TERRAIN) {
+		else if (get_terrain_info(new_t).has_default_base()) {
 			result = get_terrain_info(new_t).terrain_with_default_base();
 		}
 	}

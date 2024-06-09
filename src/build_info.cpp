@@ -39,6 +39,7 @@
 #include <SDL2/SDL_mixer.h>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/predef.h>
 #include <boost/version.hpp>
 
 #ifndef __APPLE__
@@ -333,6 +334,7 @@ std::string build_arch()
 #elif BOOST_ARCH_SPARC
 	return "sparc";
 #else
+	#warning Unrecognized platform or Boost.Predef broken/unavailable
 	// Congratulations, you're running Wesnoth on an exotic platform -- either that or you live in
 	// the foretold future where x86 and ARM stopped being the dominant CPU architectures for the
 	// general-purpose consumer market. If you want to add label support for your platform, check

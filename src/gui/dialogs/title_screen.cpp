@@ -37,6 +37,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
@@ -339,9 +340,10 @@ void title_screen::init_callbacks()
 		std::bind(&title_screen::show_achievements, this));
 
 	//
-	// Credits
+	// Community
 	//
-	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
+	register_button(*this, "community", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_community, this));
 
 	//
 	// Quit
@@ -359,6 +361,17 @@ void title_screen::init_callbacks()
 	auto clock = find_widget<button>(this, "clock", false, false);
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// GUI Test and Debug Window
+	//
+	register_button(*this, "test_dialog", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_gui_test_dialog, this));
+
+	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	if(test_dialog) {
+		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
 
 	//
@@ -452,6 +465,11 @@ void title_screen::show_debug_clock_window()
 	}
 }
 
+void title_screen::show_gui_test_dialog()
+{
+	gui2::dialogs::gui_test_dialog::execute();
+}
+
 void title_screen::hotkey_callback_select_tests()
 {
 	game_config_manager::get()->load_game_config_for_create(false, true);
@@ -479,6 +497,13 @@ void title_screen::show_achievements()
 {
 	achievements_dialog ach;
 	ach.show();
+}
+
+void title_screen::show_community()
+{
+	game_version dlg;
+	// shows the 5th tab, community, when the dialog is shown
+	dlg.display(4);
 }
 
 void title_screen::button_callback_multiplayer()

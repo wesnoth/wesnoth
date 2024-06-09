@@ -122,17 +122,17 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
-		_set_resolution(video::window_size());
+		set_resolution(video::window_size());
 
 		break;
 
 	case SDL_WINDOWEVENT_MAXIMIZED:
-		_set_maximized(true);
+		set_maximized(true);
 
 		break;
 
 	case SDL_WINDOWEVENT_RESTORED:
-		_set_maximized(fullscreen() || false);
+		set_maximized(fullscreen() || false);
 
 		break;
 	}
@@ -240,6 +240,8 @@ config* get_prefs(){
 void load_base_prefs() {
 	try{
 #ifdef DEFAULT_PREFS_PATH
+		// NOTE: the system preferences file is only ever relevant for the first time wesnoth starts
+		//       any default values will subsequently be written to the normal preferences file, which takes precedence over any values in the system preferences file
 		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
 		read(prefs, *stream);
 
@@ -441,18 +443,18 @@ bool vsync()
 	return get("vsync", true);
 }
 
-void _set_resolution(const point& res)
+void set_resolution(const point& res)
 {
-	preferences::set("xresolution", std::to_string(res.x));
-	preferences::set("yresolution", std::to_string(res.y));
+	prefs["xresolution"] = std::to_string(res.x);
+	prefs["yresolution"] = std::to_string(res.y);
 }
 
-void _set_maximized(bool ison)
+void set_maximized(bool ison)
 {
 	prefs["maximized"] = ison;
 }
 
-void _set_fullscreen(bool ison)
+void set_fullscreen(bool ison)
 {
 	prefs["fullscreen"] = ison;
 }
@@ -522,14 +524,14 @@ void set_idle_anim(const bool ison)
 	prefs["idle_anim"] = ison;
 }
 
-double idle_anim_rate()
+int idle_anim_rate()
 {
-	return prefs["idle_anim_rate"].to_double(1.0);
+	return prefs["idle_anim_rate"];
 }
 
-void set_idle_anim_rate(const int rate)
+void set_idle_anim_rate(int rate)
 {
-	prefs["idle_anim_rate"] = std::pow(2.0, -rate / 10.0);
+	prefs["idle_anim_rate"] = rate;
 }
 
 std::string language()
@@ -539,7 +541,7 @@ std::string language()
 
 void set_language(const std::string& s)
 {
-	preferences::set("locale", s);
+	prefs["locale"] = s;
 }
 
 std::string gui_theme()
@@ -549,7 +551,7 @@ std::string gui_theme()
 
 void set_gui_theme(const std::string& s)
 {
-	preferences::set("gui2_theme", s);
+	prefs["gui2_theme"] = s;
 }
 
 bool ellipses()
@@ -559,7 +561,7 @@ bool ellipses()
 
 void set_ellipses(bool ison)
 {
-	preferences::set("show_side_colors",  ison);
+	prefs["show_side_colors"] = ison;
 }
 
 bool grid()
@@ -569,7 +571,7 @@ bool grid()
 
 void set_grid(bool ison)
 {
-	preferences::set("grid", ison);
+	prefs["grid"] = ison;
 }
 
 std::size_t sound_buffer_size()
@@ -597,7 +599,7 @@ void save_sound_buffer_size(const std::size_t size)
 	if (get("sound_buffer_size") == new_size)
 		return;
 
-	preferences::set("sound_buffer_size", new_size);
+	prefs["sound_buffer_size"] = new_size;
 
 	sound::reset_sound();
 }
@@ -680,15 +682,15 @@ bool turn_bell()
 bool set_turn_bell(bool ison)
 {
 	if(!turn_bell() && ison) {
-		preferences::set("turn_bell", true);
+		prefs["turn_bell"] = true;
 		if(!music_on() && !sound_on() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
-				preferences::set("turn_bell", false);
+				prefs["turn_bell"] = false;
 				return false;
 			}
 		}
 	} else if(turn_bell() && !ison) {
-		preferences::set("turn_bell", false);
+		prefs["turn_bell"] = false;
 		sound::stop_bell();
 		if(!music_on() && !sound_on() && !UI_sound_on())
 			sound::close_sound();
@@ -704,15 +706,15 @@ bool UI_sound_on()
 bool set_UI_sound(bool ison)
 {
 	if(!UI_sound_on() && ison) {
-		preferences::set("UI_sound", true);
+		prefs["UI_sound"] = true;
 		if(!music_on() && !sound_on() && !turn_bell()) {
 			if(!sound::init_sound()) {
-				preferences::set("UI_sound", false);
+				prefs["UI_sound"] = false;
 				return false;
 			}
 		}
 	} else if(UI_sound_on() && !ison) {
-		preferences::set("UI_sound", false);
+		prefs["UI_sound"] = false;
 		sound::stop_UI_sound();
 		if(!music_on() && !sound_on() && !turn_bell())
 			sound::close_sound();
@@ -732,15 +734,15 @@ bool sound_on()
 
 bool set_sound(bool ison) {
 	if(!sound_on() && ison) {
-		preferences::set("sound", true);
+		prefs["sound"] = true;
 		if(!music_on() && !turn_bell() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
-				preferences::set("sound", false);
+				prefs["sound"] = false;
 				return false;
 			}
 		}
 	} else if(sound_on() && !ison) {
-		preferences::set("sound", false);
+		prefs["sound"] = false;
 		sound::stop_sound();
 		if(!music_on() && !turn_bell() && !UI_sound_on())
 			sound::close_sound();
@@ -755,17 +757,17 @@ bool music_on()
 
 bool set_music(bool ison) {
 	if(!music_on() && ison) {
-		preferences::set("music", true);
+		prefs["music"] = true;
 		if(!sound_on() && !turn_bell() && !UI_sound_on()) {
 			if(!sound::init_sound()) {
-				preferences::set("music", false);
+				prefs["music"] = false;
 				return false;
 			}
 		}
 		else
 			sound::play_music();
 	} else if(music_on() && !ison) {
-		preferences::set("music", false);
+		prefs["music"] = false;
 		if(!sound_on() && !turn_bell() && !UI_sound_on())
 			sound::close_sound();
 		else
@@ -781,7 +783,7 @@ bool stop_music_in_background()
 
 void set_stop_music_in_background(bool ison)
 {
-	preferences::set("stop_music_in_background", ison);
+	prefs["stop_music_in_background"] = ison;
 }
 
 int scroll_speed()
@@ -816,17 +818,17 @@ int mouse_scroll_threshold()
 
 bool animate_map()
 {
-	return preferences::get("animate_map", true);
+	return get("animate_map", true);
 }
 
 bool animate_water()
 {
-	return preferences::get("animate_water", true);
+	return get("animate_water", true);
 }
 
 bool minimap_movement_coding()
 {
-	return preferences::get("minimap_movement_coding", true);
+	return get("minimap_movement_coding", true);
 }
 
 void toggle_minimap_movement_coding()
@@ -836,7 +838,7 @@ void toggle_minimap_movement_coding()
 
 bool minimap_terrain_coding()
 {
-	return preferences::get("minimap_terrain_coding", true);
+	return get("minimap_terrain_coding", true);
 }
 
 void toggle_minimap_terrain_coding()
@@ -846,7 +848,7 @@ void toggle_minimap_terrain_coding()
 
 bool minimap_draw_units()
 {
-	return preferences::get("minimap_draw_units", true);
+	return get("minimap_draw_units", true);
 }
 
 void toggle_minimap_draw_units()
@@ -856,7 +858,7 @@ void toggle_minimap_draw_units()
 
 bool minimap_draw_villages()
 {
-	return preferences::get("minimap_draw_villages", true);
+	return get("minimap_draw_villages", true);
 }
 
 void toggle_minimap_draw_villages()
@@ -866,7 +868,7 @@ void toggle_minimap_draw_villages()
 
 bool minimap_draw_terrain()
 {
-	return preferences::get("minimap_draw_terrain", true);
+	return get("minimap_draw_terrain", true);
 }
 
 void toggle_minimap_draw_terrain()
@@ -902,16 +904,6 @@ int draw_delay()
 void set_draw_delay(int value)
 {
 	prefs["draw_delay"] = value;
-}
-
-bool use_color_cursors()
-{
-	return get("color_cursors", true);
-}
-
-void _set_color_cursors(bool value)
-{
-	preferences::set("color_cursors", value);
 }
 
 void load_hotkeys()
@@ -975,7 +967,7 @@ bool disable_auto_moves()
 
 void set_disable_auto_moves(bool value)
 {
-	preferences::set("disable_auto_moves", value);
+	prefs["disable_auto_moves"] = value;
 }
 
 bool damage_prediction_allow_monte_carlo_simulation()
@@ -1210,6 +1202,47 @@ void set_editor_chosen_addon(const std::string& addon_id)
 std::string editor_chosen_addon()
 {
 	return prefs["editor_chosen_addon"];
+}
+
+void set_mp_alert_option(const std::string& id, const std::string& type, bool value)
+{
+	prefs[id+"_"+type] = value;
+}
+bool mp_alert_option(const std::string& id, const std::string& type, bool def)
+{
+	return prefs[id+"_"+type].to_bool(def);
+}
+bool has_mp_alert_option(const std::string& id, const std::string& type)
+{
+	return have_setting(id+"_"+type);
+}
+
+void set_last_cache_cleared_version(const std::string& version)
+{
+	prefs["_last_cache_cleaned_ver"] = version;
+}
+std::string last_cache_cleared_version()
+{
+	return prefs["_last_cache_cleaned_ver"];
+}
+
+bool get_show_deprecation(bool def)
+{
+	return get("show_deprecation", def);
+}
+
+bool get_scroll_when_mouse_outside(bool def)
+{
+	return get("scroll_when_mouse_outside", def);
+}
+
+void set_dir_bookmarks(const config& cfg)
+{
+	set_child("dir_bookmarks", cfg);
+}
+optional_const_config dir_bookmarks()
+{
+	return get_child("dir_bookmarks");
 }
 
 } // end namespace preferences

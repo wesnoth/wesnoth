@@ -140,6 +140,11 @@ language_list get_languages(bool all)
 	return result;
 }
 
+int get_min_translation_percent()
+{
+	return min_translation_percent;
+}
+
 void set_min_translation_percent(int percent) {
 	min_translation_percent = percent;
 }

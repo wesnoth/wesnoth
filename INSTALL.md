@@ -20,7 +20,7 @@ order to build Wesnoth:
    * Coroutine
    * Graph
  * SDL2 libraries:
-   * SDL2                      >= 2.0.10 (macOS: 2.0.22 due to needing https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30)
+   * SDL2                      >= 2.0.18 (macOS: 2.0.22 due to needing https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30)
    * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
  * Fontconfig                  >= 2.4.1

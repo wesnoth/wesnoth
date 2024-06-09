@@ -48,14 +48,6 @@ hráčmi.
 Zobraziť všetky preklady vo výberovom zozname jazykov v hre, aj keď sa
 považujú za nedokončené.
 .TP 
-\fB\-\-bunzip2\fP\fI\ vstupný\-súbor.bz2\fP
-rozbalí súbor, ktorý by mal byť vo formáte bzip2, a uloží ho bez prípony
-\&.bz2. Súbor \fIvstupný_súbor.bz2\fP sa vymaže.
-.TP 
-\fB—bzip2\fP\fI\ vstupný\-súbor\fP
-zbalí uloženú hru do formátu bzip2, uloží ju ako \fIvstupný_súbor\fP.bz2 a
-vymaže \fIvstupný_súbor\fP.
-.TP 
 \fB\-c[\fP\fIid kampane\fP\fB],\ \-\-campaign[\fP\fI=id kampane\fP\fB]\fP
 prejde priamo do kampane s ID \fIid_campaign\fP. Ak nebolo zadané žiadne ID,
 zobrazí sa ponuka výberu.
@@ -114,14 +106,6 @@ zapisuje tieto hodnoty do súboru v adresári užívateľských údajov.
 \fB\-f, \-\-fullscreen\fP
 spustí hru na ploche celej obrazovky.
 .TP 
-\fB\-\-gunzip\fP\fI\ vstupný_súbor.gz\fP
-rozbalí súbor, ktorý by mal byť vo formáte gzip, a uloží ho bez prípony
-\&.gz. Súbor \fIvstupný_súbor.gz\fP sa vymaže.
-.TP 
-\fB\-\-gzip\fP\fI\ vstupný_súbor\fP
-zbalí uloženú hru do formátu gzip, uloží ju ako \fIvstupný_súbor\fP.gz a vymaže
-\fIvstupný_súbor\fP.
-.TP 
 \fB\-h, \-\-help\fP
 vypíše súhrn možností príkazového riadku do štandardného výstupu, a skončí.
 .TP 
@@ -144,23 +128,23 @@ zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
 \fB\-\-log\-precise\fP
 zobrazuje časové pečiatky vo výstupe protokolu s väčšou presnosťou.
 .TP 
-\fB\-\-log\-strict\fP
-nastavuje prísnu úroveň zapisovača. Všetky správy odoslané do domén tejto
-úrovne alebo závažnejších spôsobia zlyhanie testu jednotky bez ohľadu na
-výsledok víťazstva. Relevantné len pri použití s \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 vypíše definované protokolovacie domény domény protokolovania (iba tie ktoré
 obsahujú reťazec \fIfilter\fP) a skončí
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-zabraňuje presmerovaniu zaznamenaného výstupu do súboru. Súbory denníkov sa
-vytvárajú v adresári logs v priečinku userdata.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-výstup protokolu sa zapisuje do súboru okrem štandardného
-výstupu/chyby. Zruší efekt \-\-no\-log\-to\-file, či už implicitný alebo
-explicitný.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 Pre Windows, keď sa použije s \-\-no\-log\-to\-file, výstup sa zapíše do
@@ -308,13 +292,12 @@ rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ názov\fP
-nastaví konfiguračný adresár používateľa na \fInázov\fP pod $HOME alebo "My
-Documents\eMy Games" pre Windows.  Môžete tiež zadať absolútnu cestu pre
-konfiguračný adresár mimo $HOME alebo "My Documents\eMy Games". V systéme
-Windows je možné zadať aj adresár relatívny k pracovnému adresáru procesu
-pomocou cesty začínajúcej na ".\e" alebo "..\e".  V systéme X11 je to
-predvolená cesta $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, v ostatných
-systémoch cesta userdata.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 vypíše názov adresára s používateľskými nastaveniami a skončí.

@@ -64,9 +64,7 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 
 
 commandline_options::commandline_options(const std::vector<std::string>& args)
-	: bunzip2()
-	, bzip2()
-	, campaign()
+	: campaign()
 	, campaign_difficulty()
 	, campaign_scenario()
 	, campaign_skip_story(false)
@@ -85,8 +83,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, editor()
 	, fps(false)
 	, fullscreen(false)
-	, gunzip()
-	, gzip()
 	, help()
 	, language()
 	, log()
@@ -173,8 +169,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	po::options_description general_opts("General options");
 	general_opts.add_options()
 		("all-translations", "Show all translations, even incomplete ones.")
-		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed." IMPLY_TERMINAL)
-		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>." IMPLY_TERMINAL)
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
 		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-dir instead.")
 		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path instead." IMPLY_TERMINAL)
@@ -190,8 +184,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
 #endif
 		("editor,e", po::value<std::string>()->implicit_value(std::string()), "starts the in-game map editor directly. If file <arg> is specified, equivalent to -e --load <arg>.")
-		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed." IMPLY_TERMINAL)
-		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>." IMPLY_TERMINAL)
 		("help,h", "prints this message and exits." IMPLY_TERMINAL)
 		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
@@ -213,7 +205,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("unsafe-scripts", "makes the \'package\' package available to Lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives ua the same permissions as the Wesnoth executable.")
 		("usercache-dir", po::value<std::string>(), "sets the path of the cache directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.cache/wesnoth on X11 and to the userdata-dir on other systems.")
 		("usercache-path", "prints the path of the cache directory and exits.")
-		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
+		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to the userdata-dir.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
 		("userdata-path", "prints the path of the userdata directory and exits." IMPLY_TERMINAL)
@@ -326,10 +318,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string>>());
 	if(vm.count("algorithm"))
 		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string>>());
-	if(vm.count("bunzip2"))
-		bunzip2 = vm["bunzip2"].as<std::string>();
-	if(vm.count("bzip2"))
-		bzip2 = vm["bzip2"].as<std::string>();
 	if(vm.count("campaign"))
 		campaign = vm["campaign"].as<std::string>();
 	if(vm.count("campaign-difficulty"))
@@ -378,10 +366,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		fps = true;
 	if(vm.count("fullscreen"))
 		fullscreen = true;
-	if(vm.count("gunzip"))
-		gunzip = vm["gunzip"].as<std::string>();
-	if(vm.count("gzip"))
-		gzip = vm["gzip"].as<std::string>();
 	if(vm.count("help"))
 		help = true;
 	if(vm.count("ignore-map-settings"))

@@ -28,15 +28,15 @@ local micro_ai_self_data = {}
 function micro_ai_self_data.modify_mai_self_data(self_data, ai_id, action, vars_table)
     -- Always delete the respective [micro_ai] tag, if it exists
     local existing_table
-    for i,mai in ipairs(self_data, "micro_ai") do
-        if (mai[1] == "micro_ai") and (mai[2].ai_id == ai_id) then
+    for i,mai in ipairs(self_data) do
+        if (mai.tag == "micro_ai") and (mai.contents.ai_id == ai_id) then
             if (action == "delete") and vars_table then
                 for k,_ in pairs(vars_table) do
-                    mai[2][k] = nil
+                    mai.contents[k] = nil
                 end
                 return
             end
-            existing_table = mai[2]
+            existing_table = mai.contents
             table.remove(self_data, i)
             break
         end
@@ -96,6 +96,7 @@ function micro_ai_self_data.get_mai_self_data(self_data, ai_id, key)
     -- If we got here, no corresponding tag was found
     -- Return empty table; or nil if @key was set
     if (not key) then return {} end
+    return nil
 end
 
 return micro_ai_self_data

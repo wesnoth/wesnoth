@@ -23,7 +23,6 @@
 #include "game_config_manager.hpp"
 #include "log.hpp"
 #include "terrain/translation.hpp"
-#include "units/types.hpp" // for attack_type
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -722,7 +721,7 @@ void movetype::terrain_defense::merge(const config & new_data, bool overwrite)
 
 
 /**
- * Returns a map from attack types to resistances.
+ * Returns a map from damage types to resistances.
  */
 utils::string_map_res movetype::resistances::damage_table() const
 {
@@ -734,21 +733,6 @@ utils::string_map_res movetype::resistances::damage_table() const
 
 	return result;
 }
-
-
-/**
- * Returns the resistance against the indicated attack.
- */
-int movetype::resistances::resistance_against(const attack_type & attack) const
-{
-	std::pair<std::string, std::string> types = attack.damage_type();
-	int res = resistance_against(types.first);
-	if(!(types.second).empty()){
-		res = std::max(res, resistance_against(types.second));
-	}
-	return res;
-}
-
 
 /**
  * Returns the resistance against the indicated damage type.

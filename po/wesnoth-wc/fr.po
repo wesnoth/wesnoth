@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2024-04-10 17:05 UTC\n"
 "PO-Revision-Date: 2024-02-28 13:49+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -615,7 +615,7 @@ msgstr "Voie"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:101
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:103
 msgid "Ruin"
-msgstr "Ruine"
+msgstr "Ruines"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:3
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:11
@@ -1238,7 +1238,7 @@ msgstr "Académie"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:89
 msgid "Library"
-msgstr "Librairie"
+msgstr "Bibliothèque"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:85
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:87
@@ -2096,7 +2096,7 @@ msgid ""
 "her ways. Let me show you."
 msgstr ""
 "Vous avez traversé la mer pour venir de si loin, mais je vois que vous la "
-"connaissez très mal. Laissez-moi vous instruire."
+"connaissez très mal. Laissez-moi vous guider."
 
 #. a Cavalryman joins a player's side
 #. a Sergeant joins a player's side
@@ -2121,7 +2121,7 @@ msgstr "Bien sûr. Comment dire non à un homme montant un cheval ?"
 msgid ""
 "Hurrah! Now THIS is a battle too grand to be missed. Save some for me, eh?"
 msgstr ""
-"Hourra ! CA c'est la bataille à laquelle il faut absolument participer. Tu "
+"Hourra ! ÇA c'est la bataille à laquelle il faut absolument participer. Tu "
 "m'en gardes un peu, hein ?"
 
 #. a Spearman joins a player's side
@@ -2372,7 +2372,7 @@ msgid ""
 msgstr ""
 "J'te dis, vieille branche ! Tu sembles avoir un problème à régler. Et bien, "
 "haut les cœurs, j'te dis ! Je suis sûr qu'on va fracasser tous les deux. On "
-"va arranger tout ça avant le service du thé, n'est-ce pas ?"
+"va arranger tout ça avant le service du thé, pas vrai ?"
 
 # Réaction épidermique de dégoût face à une goule, interrompue après réflexion.
 #. response to the Ghoul’s introduction line
@@ -2405,7 +2405,7 @@ msgstr ""
 #. a Vampire Bat joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:339
 msgid "Skreeeeeeee!"
-msgstr "Skreeeeeeee !"
+msgstr "Skriiiiiiii !"
 
 #. after a Vampire Bat joins the player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:343
@@ -2669,12 +2669,13 @@ msgstr " (indisponible pour les ennemis)."
 msgid " (not available for players)"
 msgstr " (indisponible pour les joueurs)."
 
+# Dans le sens de "premier scénario"
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
 #: data/campaigns/World_Conquest/lua/map/main.lua:126
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
-msgstr "Démarrage"
+msgstr "Début"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:128
@@ -4047,12 +4048,17 @@ msgstr ""
 "(Niveau expert, 5 scénarios)."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
+#, fuzzy
+#| msgid ""
+#| "A randomly generated cooperative campaign for 2 players. It has 6 levels "
+#| "of difficulty.\n"
+#| "(Expert level, 5 scenarios.)"
 msgid ""
-"A randomly generated cooperative campaign for 4 players. It has 6 level of "
-"difficulties.\n"
+"A randomly generated cooperative campaign for 4 players. It has 6 levels of "
+"difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
+"Une campagne générée aléatoirement pour 2 joueurs. Comporte 6 niveaux de "
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
@@ -4145,6 +4151,15 @@ msgstr "Test"
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
 msgid "Campaign Maintenance"
 msgstr "Maintenance de la campagne"
+
+#~ msgid ""
+#~ "A randomly generated cooperative campaign for 4 players. It has 6 level "
+#~ "of difficulties.\n"
+#~ "(Expert level, 5 scenarios.)"
+#~ msgstr ""
+#~ "Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
+#~ "difficultés.\n"
+#~ "(Niveau expert, 5 scénarios)."
 
 #~ msgid "World Conquest version"
 #~ msgstr "Version de Conquête du Monde"

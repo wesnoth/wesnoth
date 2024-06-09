@@ -205,8 +205,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		const int xres = std::get<0>(*cmdline_opts_.resolution);
 		const int yres = std::get<1>(*cmdline_opts_.resolution);
 		if(xres > 0 && yres > 0) {
-			preferences::_set_resolution(point(xres, yres));
-			preferences::_set_maximized(false);
+			preferences::set_resolution(point(xres, yres));
+			preferences::set_maximized(false);
 		}
 	}
 	if(cmdline_opts_.screenshot) {
@@ -820,9 +820,12 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
-	std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
-		? filesystem::get_exe_dir() + "/" + filesystem::get_program_invocation("wesnothd")
-		: preferences::get_mp_server_program_name();
+	std::string wesnothd_program = "";
+	if(!preferences::get_mp_server_program_name().empty()) {
+		wesnothd_program = preferences::get_mp_server_program_name();
+	} else {
+		wesnothd_program = filesystem::get_wesnothd_name();
+	}
 
 	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
 	if (!filesystem::file_exists(config)) {

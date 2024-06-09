@@ -463,6 +463,9 @@ end
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or wml.error("[terrain] missing required terrain= attribute")
 	local layer = cfg.layer or 'both'
+	if not (wesnoth.terrain_types[terrain] or (layer == "overlay" and terrain == "^")) then
+		wml.error("[terrain] invalid terrain="..terrain)
+	end
 	if layer ~= 'both' and layer ~= 'overlay' and layer ~= 'base' then
 		wml.error('[terrain] invalid layer=')
 	end
@@ -751,7 +754,7 @@ function wml_actions.remove_event(cfg)
 end
 
 function wml_actions.inspect(cfg)
-	gui.show_inspector(cfg)
+	gui.show_inspector(cfg.name)
 end
 
 function wml_actions.label( cfg )
@@ -989,8 +992,8 @@ function wml_actions.terrain_mask(cfg)
 		-- tile to the northwest from the specified hex.
 		-- todo: deprecate this strange behaviour or at least not make it
 		--       the default behaviour anymore.
-		local new_loc = wesnoth.map.get_direction({x, y}, "nw")
-		x, y = new_loc[1], new_loc[2]
+		local new_loc = wesnoth.map.get_direction(x, y, "nw")
+		x, y = new_loc.x, new_loc.y
 	end
 	local rules = {}
 	for rule in wml.child_range(cfg, 'rule') do
@@ -1001,7 +1004,7 @@ function wml_actions.terrain_mask(cfg)
 		resolved = resolved:sub(6) -- strip off 'data/' prefix
 		mask = filesystem.read_file(resolved)
 	end
-	wesnoth.current.map:terrain_mask({x, y}, mask, {
+	wesnoth.current.map:terrain_mask(x, y, mask, {
 		is_odd = is_odd,
 		rules = rules,
 		ignore_special_locations = cfg.ignore_special_locations,

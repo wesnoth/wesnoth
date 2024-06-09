@@ -527,7 +527,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
-	find_package(SDL2 2.0.10 REQUIRED)
+	find_package(SDL2 2.0.18 REQUIRED)
 	if(NOT MSVC)
 		# for everything else, use pkgconfig
 		# SDL2_image and SDL2_mixer don't seem to have any cmake configuration available at all

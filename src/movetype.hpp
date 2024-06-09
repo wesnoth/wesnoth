@@ -18,7 +18,6 @@
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
 
-class attack_type;
 namespace t_translation { struct terrain_code; }
 
 
@@ -224,11 +223,9 @@ public:
 		resistances() : cfg_() {}
 		explicit resistances(const config & cfg) : cfg_(cfg) {}
 
-		/** Returns a map from attack types to resistances. */
+		/** Returns a map from damage types to resistances. */
 		utils::string_map_res damage_table() const;
-		/** Returns the resistance against the indicated attack. */
-		int resistance_against(const attack_type & attack) const;
-		/** Returns the resistance against the indicated damage type. */
+		/** Returns the vulnerability to the indicated damage type (higher means more damage). */
 		int resistance_against(const std::string & damage_type) const;
 		/** Merges the given config over the existing costs. */
 		void merge(const config & new_data, bool overwrite);
@@ -291,13 +288,10 @@ public:
 	int defense_modifier(const t_translation::terrain_code & terrain) const
 	{ return defense_.defense(terrain); }
 
-	/** Returns the resistance against the indicated attack. */
-	int resistance_against(const attack_type & attack) const
-	{ return resist_.resistance_against(attack); }
-	/** Returns the resistance against the indicated damage type. */
+	/** Returns the vulnerability to the indicated damage type (higher means takes more damage). */
 	int resistance_against(const std::string & damage_type) const
 	{ return resist_.resistance_against(damage_type); }
-	/** Returns a map from attack types to resistances. */
+	/** Returns a map from damage types to resistances. */
 	utils::string_map_res damage_table() const
 	{ return resist_.damage_table(); }
 

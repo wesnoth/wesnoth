@@ -37,16 +37,21 @@
 
 namespace preferences {
 
+bool use_color_cursors()
+{
+	return get("color_cursors", true);
+}
+
 void set_color_cursors(bool value)
 {
-	_set_color_cursors(value);
+	preferences::set("color_cursors", value);
 
 	cursor::set();
 }
 
 bool show_standing_animations()
 {
-	return preferences::get("unit_standing_animations", true);
+	return get("unit_standing_animations", true);
 }
 
 void set_show_standing_animations(bool value)

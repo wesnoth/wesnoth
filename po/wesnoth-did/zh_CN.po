@@ -11,15 +11,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-09-10 08:30+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2024-05-22 18:21+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Descent_into_Darkness
 #. [achievement_group]
@@ -134,7 +134,7 @@ msgstr ""
 #. [achievement]: id=did_sushi
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:27
 msgid "Upgrade a normal swimmer zombie into a super zombie."
-msgstr ""
+msgstr "将一个普通的游泳僵尸升级为一个超级僵尸。"
 
 #. [achievement]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/achievements.cfg:33
@@ -3264,10 +3264,8 @@ msgstr "法师"
 
 #. [command]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
-#, fuzzy
-#| msgid "female^maimed"
 msgid "female^Mage"
-msgstr "伤残"
+msgstr "法师"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:467
@@ -5008,7 +5006,7 @@ msgstr "矮人"
 msgid ""
 "Been a long time since I’ve smashed me some undead. Ye gots ye plenty o’ "
 "bones for me hammer ta break."
-msgstr "俺已经有老长时间没砸亡灵了。你骨头还挺多，够俺拿锤子砸咯！"
+msgstr "俺已经有老长时间没砸亡灵了。你骨头还挺多，够俺拿锤子砸咯。"
 
 #. [message]: speaker=Too Foolish Hero
 #. [message]: speaker=Foolish Hero
@@ -5047,7 +5045,7 @@ msgstr "愚蠢的英雄"
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:965
 msgid "That was quite the nightmare..."
-msgstr ""
+msgstr "这真是一个噩梦……"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:969
@@ -5361,7 +5359,7 @@ msgstr "<b>好……冷……</b>"
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1495
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:593
 msgid "Bloub°°°"
-msgstr "卜卜……"
+msgstr "卜卜°°°"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1504
@@ -6377,7 +6375,7 @@ msgstr "伤残"
 #. [teleport]: id=did_enlightened
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:494
 msgid "This unit can teleport between mushroom groves."
-msgstr ""
+msgstr "这个单位可在蘑菇丛之间传送。"
 
 #. [heal_on_hit]: id=did_vitalize1
 #. [heal_on_hit]: id=did_vitalize2
@@ -6519,12 +6517,12 @@ msgstr "在每个新回合开始时，此单位会毒害附近的所有敌方单
 #. [plague]: id=ghoulfication, type=Ghoul
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1039
 msgid "ghoulfication"
-msgstr ""
+msgstr "食尸鬼化"
 
 #. [plague]: id=ghoulfication, type=Ghoul
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1040
 msgid "When a unit is killed by this attack, it turns into a ghoul."
-msgstr ""
+msgstr "当一个单位被这种攻击杀死时，变成一个食尸鬼。"
 
 #. [dummy]: id=did_starving
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1048
@@ -6536,7 +6534,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1050
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1051
 msgid "This unit loses 1 hitpoint every turn."
-msgstr ""
+msgstr "这个单位每回合损失1点生命。"
 
 #. [leadership]: id=masochism1
 #. [leadership]: id=masochism2
@@ -6559,12 +6557,12 @@ msgstr "伤残"
 #. [leadership]: id=masochism1
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1096
 msgid "This unit gains up to 50% damage as its hitpoints are reduced."
-msgstr ""
+msgstr "这个单位在生命值减少时可增加最多50%的伤害输出。"
 
 #. [leadership]: id=masochism2
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1108
 msgid "This unit gains up to 100% damage as its hitpoints are reduced."
-msgstr ""
+msgstr "这个单位在生命值减少时可增加最多100%的伤害输出。"
 
 #. [resistance]: id=did_drunk
 #: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1120
@@ -6691,14 +6689,12 @@ msgstr "获得死亡之云能力"
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1029
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1056
 msgid "Gain increasing damage as hitpoints are reduced"
-msgstr ""
+msgstr "当生命值减少时可增加的伤害输出"
 
 #. [advancement]: id=necron_ghoulfication
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1083
-#, fuzzy
-#| msgid "Gain the ability to hide allied units"
 msgid "Gains the ability to turn enemies into ghouls"
-msgstr "获得隐藏友方单位的能力"
+msgstr "获得将敌人变成食尸鬼的能力"
 
 #. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:44
