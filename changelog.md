@@ -6,10 +6,14 @@
      * Prevent Dacyn from picking up a different staff (issue #8885)
      * Reduce Barrow/Pyre Wight vulnerability to arcane
      * Many minor bugfixes
+   * Heir to the Throne
+     * Li'sar is no longer renameable.
    * Sceptre of Fire
      * S7: Fewer and slower enemies, to balance the buff to the Elvish Outrider unit type
    * Tutorial
      * Better timing for some of the hints
+   * World Conquest
+     * Fix World Conquest's Help dialog showing double scrollbars due to the left tree having it's vertical scrollbar disabled. Changed both vertical and horizontal scrollbar modes to automatic. (issue #8576)
  ### Editor
    * Allow loading .mask files
  ### Multiplayer
@@ -21,6 +25,9 @@
  ### Units
  ### User interface
    * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
+   * Overhauled the Language selection dialog to make it more informative, including displaying translation progress and making it easier to select highly-incomplete translations.
+   * Made the Changelog option in the macOS app menu link to the changelog for the particular Wesnoth app version rather than the Git master branch changelog.
+   * Add a Community button to the title screen to link to the forums, discord, etc.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed replays marking achievements as complete (issue #8858)
@@ -28,6 +35,14 @@
    * Fixed a crash in the recall dialog when turning off all sorting options (issue #8878)
    * Fixed clicking on a trait in the sidebar sometimes opening the wrong trait’s help page
    * Removed wesnothd’s unused threads commandline options
+   * Trying to load an image filename ending ".jpg" will now automatically try ".webp" if the ".jpg" isn’t found.
+   * Fix: releasing a mouse button at the same time as a dialog pops up sometimes dismissed the dialog immediately (issue #8644)
+   * Fixed macOS saves going in the wrong directory.
+   * Fixed unit portraits being too large in the in-game help when a pixel scale multiplier was set but disabled.
+   * Fixed the unit idle animation preference not being saved correctly.
+   * Fixed multiplayer games not entering linger mode after the scenario ends due to a turn limit.
+   * Fixed achievements being marked completed when only watching a replay.
+   * Fixed Wesnoth crashing when reloading a multiplayer game in debug mode.
 
 ## Version 1.18.0
  ### Add-ons client
