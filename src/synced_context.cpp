@@ -217,7 +217,7 @@ bool synced_context::undo_blocked()
 	// if the game has ended, undoing is blocked.
 	// if the turn has ended undoing is blocked.
 	return is_simultaneous_
-	    || (randomness::generator->get_random_calls() != 0)
+	    || (is_synced() && (randomness::generator->get_random_calls() != 0))
 	    || resources::controller->is_regular_game_end()
 	    || resources::gamedata->end_turn_forced();
 }
