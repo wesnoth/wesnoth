@@ -1,6 +1,4 @@
-## Version 1.18.0+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.18.1
  ### Campaigns
    * Eastern Invasion
      * Prevent Dacyn from picking up a different staff (issue #8885)
@@ -16,19 +14,15 @@
      * Fix World Conquest's Help dialog showing double scrollbars due to the left tree having it's vertical scrollbar disabled. Changed both vertical and horizontal scrollbar modes to automatic. (issue #8576)
  ### Editor
    * Allow loading .mask files
- ### Multiplayer
- ### Lua API
  ### Packaging
- ### Terrain
+   * Fixed building with Boost 1.85.
  ### Translations
    * Updated translations: Arabic, Bengali, Bulgarian, Chinese (Simplified), Czech, Finnish, French, German, Italian, Japanese, Norwegian, Russian, Slovak, Ukrainian
- ### Units
  ### User interface
    * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
    * Overhauled the Language selection dialog to make it more informative, including displaying translation progress and making it easier to select highly-incomplete translations.
    * Made the Changelog option in the macOS app menu link to the changelog for the particular Wesnoth app version rather than the Git master branch changelog.
    * Add a Community button to the title screen to link to the forums, discord, etc.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed replays marking achievements as complete (issue #8858)
    * Fixed build with Boost 1.85
