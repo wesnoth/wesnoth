@@ -887,9 +887,9 @@ void attack::fire_event(const std::string& n)
 		return;
 	}
 
-	// damage_inflicted is set in these two events.
+	// damage_inflicted is set in these events.
 	// TODO: should we set this value from unit_info::damage, or continue using the WML variable?
-	if(n == "attacker_hits" || n == "defender_hits") {
+	if(n == "attacker_hits" || n == "defender_hits" || n == "unit_hits") {
 		ev_data["damage_inflicted"] = resources::gamedata->get_variable("damage_inflicted");
 	}
 
@@ -1125,6 +1125,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
+			fire_event("unit_hits");
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1132,6 +1133,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	} else {
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
+			fire_event("unit_misses");
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1450,7 +1452,7 @@ void attack::perform()
 		}
 	}
 
-	// Set by attacker_hits and defender_hits events.
+	// Set by attacker_hits and defender_hits and unit_hits events.
 	resources::gamedata->clear_variable("damage_inflicted");
 
 	if(update_def_fog_) {
