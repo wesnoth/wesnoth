@@ -709,6 +709,7 @@ private:
 
 	bool perform_hit(bool, statistics_attack_context&);
 	void fire_event(const std::string& n);
+	void fire_event_impl(const std::string& n, bool reversed);
 	void refresh_bc();
 
 	/** Structure holding unit info used in the attack action. */
@@ -845,12 +846,17 @@ attack::attack(const map_location& attacker,
 
 void attack::fire_event(const std::string& n)
 {
+	fire_event_impl(n, false);
+}
+
+void attack::fire_event_impl(const std::string& n, bool reverse)
+{
 	LOG_NG << "attack: firing '" << n << "' event";
 
 	// prepare the event data for weapon filtering
 	config ev_data;
-	config& a_weapon_cfg = ev_data.add_child("first");
-	config& d_weapon_cfg = ev_data.add_child("second");
+	config& a_weapon_cfg = ev_data.add_child(reverse ? "second" : "first");
+	config& d_weapon_cfg = ev_data.add_child(reverse ? "first" : "second");
 
 	// Need these to ensure weapon filters work correctly
 	std::optional<attack_type::specials_context_t> a_ctx, d_ctx;
@@ -897,8 +903,8 @@ void attack::fire_event(const std::string& n)
 
 	bool wml_aborted;
 	std::tie(std::ignore, wml_aborted) = resources::game_events->pump().fire(n,
-		game_events::entity_location(a_.loc_, a_.id_),
-		game_events::entity_location(d_.loc_, d_.id_), ev_data);
+		game_events::entity_location(reverse ? d_.loc_ : a_.loc_, reverse ? d_.id_ : a_.id_),
+		game_events::entity_location(reverse ? a_.loc_ : d_.loc_, reverse ? a_.id_ : d_.id_), ev_data);
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist.
@@ -1125,7 +1131,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
-			fire_event("unit_hits");
+			fire_event_impl("unit_hits", !attacker_turn);
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1133,7 +1139,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	} else {
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
-			fire_event("unit_misses");
+			fire_event_impl("unit_misses", !attacker_turn);
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
