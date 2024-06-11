@@ -133,11 +133,19 @@ void get_files_in_dir(const std::string &dir,
 
 std::string get_dir(const std::string &dir);
 
-// The location of various important files:
+// The location of various important files/folders:
 std::string get_prefs_file();
+/** location of preferences file before it was moved to the sync directory */
+std::string get_unsynced_prefs_file();
 std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
+std::string get_lua_history_file();
+/**
+ * parent directory for everything that should be synced between systems.
+ * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
+ */
+std::string get_sync_dir();
 std::string get_saves_dir();
 std::string get_wml_persist_dir();
 std::string get_intl_dir();
