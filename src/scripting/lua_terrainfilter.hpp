@@ -43,12 +43,14 @@ namespace lua_mapgen
 
 		~filter();
 
-		bool matches(const gamemap_base& m, map_location l);
+		bool matches(const gamemap_base& m, map_location l) const;
 		//todo: add a clear cache function.
 	private:
 		std::map<std::string, std::set<map_location>> known_sets_;
 		std::unique_ptr<filter_impl> impl_;
 	};
+
+	using filter_ptr = std::unique_ptr<filter, std::function<void(filter*)>>;
 
 	std::string register_filter_metatables(lua_State *L);
 }
@@ -57,7 +59,7 @@ bool luaW_is_mgfilter(lua_State* L, int index);
 
 lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index);
 
-lua_mapgen::filter& luaW_check_mgfilter(lua_State *L, int index);
+lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile = false);
 
 void lua_mgfilter_setmetatable(lua_State *L);
 
