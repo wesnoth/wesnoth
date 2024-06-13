@@ -22,6 +22,7 @@
 #include "preferences/preferences.hpp"
 
 #include "cursor.hpp"
+#include "desktop/notifications.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "formula/string_utils.hpp"
@@ -1185,7 +1186,7 @@ void prefs::set_selected_achievement_group(const std::string& content_for)
 
 bool prefs::achievement(const std::string& content_for, const std::string& id)
 {
-	for(config& ach : preferences_.child_range("achievements"))
+	for(config& ach : preferences_.child_range(prefs_list::achievements))
 	{
 		if(ach["content_for"].str() == content_for)
 		{
@@ -1198,7 +1199,7 @@ bool prefs::achievement(const std::string& content_for, const std::string& id)
 
 void prefs::set_achievement(const std::string& content_for, const std::string& id)
 {
-	for(config& ach : preferences_.child_range("achievements"))
+	for(config& ach : preferences_.child_range(prefs_list::achievements))
 	{
 		// if achievements already exist for this content and the achievement has not already been set, add it
 		if(ach["content_for"].str() == content_for)
@@ -1222,7 +1223,7 @@ void prefs::set_achievement(const std::string& content_for, const std::string& i
 	config ach;
 	ach["content_for"] = content_for;
 	ach["ids"] = id;
-	preferences_.add_child("achievements", ach);
+	preferences_.add_child(prefs_list::achievements, ach);
 }
 
 int prefs::progress_achievement(const std::string& content_for, const std::string& id, int limit, int max_progress, int amount)
@@ -1232,7 +1233,7 @@ int prefs::progress_achievement(const std::string& content_for, const std::strin
 		return -1;
 	}
 
-	for(config& ach : preferences_.child_range("achievements"))
+	for(config& ach : preferences_.child_range(prefs_list::achievements))
 	{
 		// if achievements already exist for this content and the achievement has not already been set, add it
 		if(ach["content_for"].str() == content_for)
@@ -1280,7 +1281,7 @@ int prefs::progress_achievement(const std::string& content_for, const std::strin
 		ach["ids"] = "";
 
 		config& child = ach.add_child("in_progress", set_progress);
-		preferences_.add_child("achievements", ach);
+		preferences_.add_child(prefs_list::achievements, ach);
 		return child["progress_at"].to_int();
 	}
 	return 0;
@@ -1294,7 +1295,7 @@ bool prefs::sub_achievement(const std::string& content_for, const std::string& i
 		return true;
 	}
 
-	for(config& ach : preferences_.child_range("achievements"))
+	for(config& ach : preferences_.child_range(prefs_list::achievements))
 	{
 		if(ach["content_for"].str() == content_for)
 		{
@@ -1320,7 +1321,7 @@ void prefs::set_sub_achievement(const std::string& content_for, const std::strin
 		return;
 	}
 
-	for(config& ach : preferences_.child_range("achievements"))
+	for(config& ach : preferences_.child_range(prefs_list::achievements))
 	{
 		// if achievements already exist for this content and the achievement has not already been set, add it
 		if(ach["content_for"].str() == content_for)
@@ -1364,7 +1365,7 @@ void prefs::set_sub_achievement(const std::string& content_for, const std::strin
 	ach["ids"] = "";
 
 	ach.add_child("in_progress", set_progress);
-	preferences_.add_child("achievements", ach);
+	preferences_.add_child(prefs_list::achievements, ach);
 }
 
 void prefs::set_editor_chosen_addon(const std::string& addon_id)
@@ -1375,19 +1376,6 @@ void prefs::set_editor_chosen_addon(const std::string& addon_id)
 std::string prefs::editor_chosen_addon()
 {
 	return preferences_[prefs_list::editor_chosen_addon].str();
-}
-
-void prefs::set_mp_alert_option(const std::string& id, const std::string& type, bool value)
-{
-	preferences_[id+"_"+type] = value;
-}
-bool prefs::mp_alert_option(const std::string& id, const std::string& type, bool def)
-{
-	return preferences_[id+"_"+type].to_bool(def);
-}
-bool prefs::has_mp_alert_option(const std::string& id, const std::string& type)
-{
-	return preferences_.has_attribute(id+"_"+type);
 }
 
 void prefs::set_last_cache_cleared_version(const std::string& version)
@@ -2504,6 +2492,290 @@ void prefs::encounter_all_content(const game_board& gameboard_)
 	encounter_start_units(gameboard_.units());
 	encounter_recallable_units(gameboard_.teams());
 	encounter_map_terrain(gameboard_.map());
+}
+
+bool prefs::player_joins_sound()
+{
+	return preferences_[prefs_list::player_joins_sound].to_bool(true);
+}
+void prefs::set_player_joins_sound(bool val)
+{
+	preferences_[prefs_list::player_joins_sound] = val;
+}
+bool prefs::player_joins_notif()
+{
+	return preferences_[prefs_list::player_joins_notif].to_bool(false);
+}
+void prefs::set_player_joins_notif(bool val)
+{
+	preferences_[prefs_list::player_joins_notif] = val;
+}
+bool prefs::player_joins_lobby()
+{
+	return preferences_[prefs_list::player_joins_lobby].to_bool(false);
+}
+void prefs::set_player_joins_lobby(bool val)
+{
+	preferences_[prefs_list::player_joins_lobby] = val;
+}
+
+bool prefs::player_leaves_sound()
+{
+	return preferences_[prefs_list::player_leaves_sound].to_bool(true);
+}
+void prefs::set_player_leaves_sound(bool val)
+{
+	preferences_[prefs_list::player_leaves_sound] = val;
+}
+bool prefs::player_leaves_notif()
+{
+	return preferences_[prefs_list::player_leaves_notif].to_bool(false);
+}
+void prefs::set_player_leaves_notif(bool val)
+{
+	preferences_[prefs_list::player_leaves_notif] = val;
+}
+bool prefs::player_leaves_lobby()
+{
+	return preferences_[prefs_list::player_leaves_lobby].to_bool(false);
+}
+void prefs::set_player_leaves_lobby(bool val)
+{
+	preferences_[prefs_list::player_leaves_lobby] = val;
+}
+
+bool prefs::private_message_sound()
+{
+	return preferences_[prefs_list::private_message_sound].to_bool(true);
+}
+void prefs::set_private_message_sound(bool val)
+{
+	preferences_[prefs_list::private_message_sound] = val;
+}
+bool prefs::private_message_notif()
+{
+	return preferences_[prefs_list::private_message_notif].to_bool(desktop::notifications::available());
+}
+void prefs::set_private_message_notif(bool val)
+{
+	preferences_[prefs_list::private_message_notif] = val;
+}
+bool prefs::private_message_lobby()
+{
+	return preferences_[prefs_list::private_message_lobby].to_bool(true);
+}
+void prefs::set_private_message_lobby(bool val)
+{
+	preferences_[prefs_list::private_message_lobby] = val;
+}
+
+bool prefs::friend_message_sound()
+{
+	return preferences_[prefs_list::friend_message_sound].to_bool(false);
+}
+void prefs::set_friend_message_sound(bool val)
+{
+	preferences_[prefs_list::friend_message_sound] = val;
+}
+bool prefs::friend_message_notif()
+{
+	return preferences_[prefs_list::friend_message_notif].to_bool(false);
+}
+void prefs::set_friend_message_notif(bool val)
+{
+	preferences_[prefs_list::friend_message_notif] = val;
+}
+bool prefs::friend_message_lobby()
+{
+	return preferences_[prefs_list::friend_message_lobby].to_bool(false);
+}
+void prefs::set_friend_message_lobby(bool val)
+{
+	preferences_[prefs_list::friend_message_lobby] = val;
+}
+
+bool prefs::public_message_sound()
+{
+	return preferences_[prefs_list::public_message_sound].to_bool(false);
+}
+void prefs::set_public_message_sound(bool val)
+{
+	preferences_[prefs_list::public_message_sound] = val;
+}
+bool prefs::public_message_notif()
+{
+	return preferences_[prefs_list::public_message_notif].to_bool(false);
+}
+void prefs::set_public_message_notif(bool val)
+{
+	preferences_[prefs_list::public_message_notif] = val;
+}
+bool prefs::public_message_lobby()
+{
+	return preferences_[prefs_list::public_message_lobby].to_bool(false);
+}
+void prefs::set_public_message_lobby(bool val)
+{
+	preferences_[prefs_list::public_message_lobby] = val;
+}
+
+bool prefs::server_message_sound()
+{
+	return preferences_[prefs_list::server_message_sound].to_bool(true);
+}
+void prefs::set_server_message_sound(bool val)
+{
+	preferences_[prefs_list::server_message_sound] = val;
+}
+bool prefs::server_message_notif()
+{
+	return preferences_[prefs_list::server_message_notif].to_bool(false);
+}
+void prefs::set_server_message_notif(bool val)
+{
+	preferences_[prefs_list::server_message_notif] = val;
+}
+bool prefs::server_message_lobby()
+{
+	return preferences_[prefs_list::server_message_lobby].to_bool(true);
+}
+void prefs::set_server_message_lobby(bool val)
+{
+	preferences_[prefs_list::server_message_lobby] = val;
+}
+
+bool prefs::ready_for_start_sound()
+{
+	return preferences_[prefs_list::ready_for_start_sound].to_bool(true);
+}
+void prefs::set_ready_for_start_sound(bool val)
+{
+	preferences_[prefs_list::ready_for_start_sound] = val;
+}
+bool prefs::ready_for_start_notif()
+{
+	return preferences_[prefs_list::ready_for_start_notif].to_bool(desktop::notifications::available());
+}
+void prefs::set_ready_for_start_notif(bool val)
+{
+	preferences_[prefs_list::ready_for_start_notif] = val;
+}
+bool prefs::ready_for_start_lobby()
+{
+	return preferences_[prefs_list::ready_for_start_lobby].to_bool(false);
+}
+void prefs::set_ready_for_start_lobby(bool val)
+{
+	preferences_[prefs_list::ready_for_start_lobby] = val;
+}
+
+bool prefs::game_has_begun_sound()
+{
+	return preferences_[prefs_list::game_has_begun_sound].to_bool(true);
+}
+void prefs::set_game_has_begun_sound(bool val)
+{
+	preferences_[prefs_list::game_has_begun_sound] = val;
+}
+bool prefs::game_has_begun_notif()
+{
+	return preferences_[prefs_list::game_has_begun_notif].to_bool(desktop::notifications::available());
+}
+void prefs::set_game_has_begun_notif(bool val)
+{
+	preferences_[prefs_list::game_has_begun_notif] = val;
+}
+bool prefs::game_has_begun_lobby()
+{
+	return preferences_[prefs_list::game_has_begun_lobby].to_bool(false);
+}
+void prefs::set_game_has_begun_lobby(bool val)
+{
+	preferences_[prefs_list::game_has_begun_lobby] = val;
+}
+
+bool prefs::turn_changed_sound()
+{
+	return preferences_[prefs_list::turn_changed_sound].to_bool(true);
+}
+void prefs::set_turn_changed_sound(bool val)
+{
+	preferences_[prefs_list::turn_changed_sound] = val;
+}
+bool prefs::turn_changed_notif()
+{
+	return preferences_[prefs_list::turn_changed_notif].to_bool(desktop::notifications::available());
+}
+void prefs::set_turn_changed_notif(bool val)
+{
+	preferences_[prefs_list::turn_changed_notif] = val;
+}
+bool prefs::turn_changed_lobby()
+{
+	return preferences_[prefs_list::turn_changed_lobby].to_bool(false);
+}
+void prefs::set_turn_changed_lobby(bool val)
+{
+	preferences_[prefs_list::turn_changed_lobby] = val;
+}
+
+bool prefs::game_created_sound()
+{
+	return preferences_[prefs_list::game_created_sound].to_bool(true);
+}
+void prefs::set_game_created_sound(bool val)
+{
+	preferences_[prefs_list::game_created_sound] = val;
+}
+bool prefs::game_created_notif()
+{
+	return preferences_[prefs_list::game_created_notif].to_bool(desktop::notifications::available());
+}
+void prefs::set_game_created_notif(bool val)
+{
+	preferences_[prefs_list::game_created_notif] = val;
+}
+bool prefs::game_created_lobby()
+{
+	return preferences_[prefs_list::game_created_lobby].to_bool(true);
+}
+void prefs::set_game_created_lobby(bool val)
+{
+	preferences_[prefs_list::game_created_lobby] = val;
+}
+
+void prefs::clear_mp_alert_prefs()
+{
+	erase(prefs_list::player_joins_sound);
+	erase(prefs_list::player_joins_notif);
+	erase(prefs_list::player_joins_lobby);
+	erase(prefs_list::player_leaves_sound);
+	erase(prefs_list::player_leaves_notif);
+	erase(prefs_list::player_leaves_lobby);
+	erase(prefs_list::private_message_sound);
+	erase(prefs_list::private_message_notif);
+	erase(prefs_list::private_message_lobby);
+	erase(prefs_list::friend_message_sound);
+	erase(prefs_list::friend_message_notif);
+	erase(prefs_list::friend_message_lobby);
+	erase(prefs_list::public_message_sound);
+	erase(prefs_list::public_message_notif);
+	erase(prefs_list::public_message_lobby);
+	erase(prefs_list::server_message_sound);
+	erase(prefs_list::server_message_notif);
+	erase(prefs_list::server_message_lobby);
+	erase(prefs_list::ready_for_start_sound);
+	erase(prefs_list::ready_for_start_notif);
+	erase(prefs_list::ready_for_start_lobby);
+	erase(prefs_list::game_has_begun_sound);
+	erase(prefs_list::game_has_begun_notif);
+	erase(prefs_list::game_has_begun_lobby);
+	erase(prefs_list::turn_changed_sound);
+	erase(prefs_list::turn_changed_notif);
+	erase(prefs_list::turn_changed_lobby);
+	erase(prefs_list::game_created_sound);
+	erase(prefs_list::game_created_notif);
+	erase(prefs_list::game_created_lobby);
 }
 
 std::string prefs::get_system_username()

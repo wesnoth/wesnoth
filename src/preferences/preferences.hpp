@@ -59,19 +59,6 @@ const int INFINITE_AUTO_SAVES = 61;
 
 const std::string default_addons_server = "add-ons.wesnoth.org";
 
-// preferences for MP alerts
-// all listed here have three variants with the suffixes: _lobby, _sound, _notif
-const std::string player_joins = "player_joins";
-const std::string player_leaves = "player_leaves";
-const std::string private_message = "private_message";
-const std::string friend_message = "friend_message";
-const std::string public_message = "public_message";
-const std::string server_message = "server_message";
-const std::string ready_for_start = "ready_for_start";
-const std::string game_has_begun = "game_has_begun";
-const std::string turn_changed = "turn_changed";
-const std::string game_created = "game_created";
-
 enum class lobby_joins { show_none, show_friends, show_all };
 
 enum PREFERENCE_VIEW { VIEW_DEFAULT, VIEW_FRIENDS };
@@ -478,10 +465,6 @@ class prefs
 		 */
 		std::string editor_chosen_addon();
 
-		void set_mp_alert_option(const std::string& id, const std::string& type, bool value);
-		bool mp_alert_option(const std::string& id, const std::string& type, bool def = false);
-		bool has_mp_alert_option(const std::string& id, const std::string& type);
-
 		void set_last_cache_cleared_version(const std::string& version);
 		std::string last_cache_cleared_version();
 
@@ -729,6 +712,78 @@ class prefs
 
 		// Calls all of the above functions on the current game board
 		void encounter_all_content(const game_board& gb);
+
+		bool player_joins_sound();
+		void set_player_joins_sound(bool val);
+		bool player_joins_lobby();
+		void set_player_joins_lobby(bool val);
+		bool player_joins_notif();
+		void set_player_joins_notif(bool val);
+
+		bool player_leaves_sound();
+		void set_player_leaves_sound(bool val);
+		bool player_leaves_lobby();
+		void set_player_leaves_lobby(bool val);
+		bool player_leaves_notif();
+		void set_player_leaves_notif(bool val);
+
+		bool private_message_sound();
+		void set_private_message_sound(bool val);
+		bool private_message_lobby();
+		void set_private_message_lobby(bool val);
+		bool private_message_notif();
+		void set_private_message_notif(bool val);
+
+		bool friend_message_sound();
+		void set_friend_message_sound(bool val);
+		bool friend_message_lobby();
+		void set_friend_message_lobby(bool val);
+		bool friend_message_notif();
+		void set_friend_message_notif(bool val);
+
+		bool public_message_sound();
+		void set_public_message_sound(bool val);
+		bool public_message_lobby();
+		void set_public_message_lobby(bool val);
+		bool public_message_notif();
+		void set_public_message_notif(bool val);
+
+		bool server_message_sound();
+		void set_server_message_sound(bool val);
+		bool server_message_lobby();
+		void set_server_message_lobby(bool val);
+		bool server_message_notif();
+		void set_server_message_notif(bool val);
+
+		bool ready_for_start_sound();
+		void set_ready_for_start_sound(bool val);
+		bool ready_for_start_lobby();
+		void set_ready_for_start_lobby(bool val);
+		bool ready_for_start_notif();
+		void set_ready_for_start_notif(bool val);
+
+		bool game_has_begun_sound();
+		void set_game_has_begun_sound(bool val);
+		bool game_has_begun_lobby();
+		void set_game_has_begun_lobby(bool val);
+		bool game_has_begun_notif();
+		void set_game_has_begun_notif(bool val);
+
+		bool turn_changed_sound();
+		void set_turn_changed_sound(bool val);
+		bool turn_changed_lobby();
+		void set_turn_changed_lobby(bool val);
+		bool turn_changed_notif();
+		void set_turn_changed_notif(bool val);
+
+		bool game_created_sound();
+		void set_game_created_sound(bool val);
+		bool game_created_lobby();
+		void set_game_created_lobby(bool val);
+		bool game_created_notif();
+		void set_game_created_notif(bool val);
+
+		void clear_mp_alert_prefs();
 
 		bool remember_password();
 		void set_remember_password(bool remember);
