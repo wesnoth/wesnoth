@@ -26,6 +26,8 @@ struct preferences_list_defines
 	//
 	/** wesnoth version string when cache files were last deleted */
 	static constexpr const char* const _last_cache_cleaned_ver = "_last_cache_cleaned_ver";
+	/** achievements completed for add-ons/UMC, are not steam achievements */
+	static constexpr const char* const achievements = "achievements";
 	/** the sort direction, ie: ascending */
 	static constexpr const char* const addon_manager_saved_order_direction = "addon_manager_saved_order_direction";
 	/** the name of the column in the add-ons manager to use by default to sort results */
@@ -270,6 +272,69 @@ struct preferences_list_defines
 	static constexpr const char* const xresolution = "xresolution";
 	/** height of the wesnoth window */
 	static constexpr const char* const yresolution = "yresolution";
+	//
+	// MP alert preferences
+	//
+	/** whether to play a sound when a player joins the game you're in */
+	static constexpr const char* const player_joins_sound = "player_joins_sound";
+	/** whether to show a notification when a player joins the game you're in */
+	static constexpr const char* const player_joins_notif = "player_joins_notif";
+	/** whether to show the enabled player join sound or notification in the lobby as well */
+	static constexpr const char* const player_joins_lobby = "player_joins_lobby";
+	/** whether to play a sound when a player leaves the game you're in */
+	static constexpr const char* const player_leaves_sound = "player_leaves_sound";
+	/** whether to show a notification when a player leaves the game you're in */
+	static constexpr const char* const player_leaves_notif = "player_leaves_notif";
+	/** whether to show the enabled player leave sound or notification in the lobby as well */
+	static constexpr const char* const player_leaves_lobby = "player_leaves_lobby";
+	/** whether to play a sound when receiving a private message aka whisper */
+	static constexpr const char* const private_message_sound = "private_message_sound";
+	/** whether to show a notification when receiving a private message aka whisper */
+	static constexpr const char* const private_message_notif = "private_message_notif";
+	/** whether to show the enabled private message aka whisper join sound or notification in the lobby as well */
+	static constexpr const char* const private_message_lobby = "private_message_lobby";
+	/** whether to play a sound when a friend messages you while in game */
+	static constexpr const char* const friend_message_sound = "friend_message_sound";
+	/** whether to show a notification when a friend messages you while in game */
+	static constexpr const char* const friend_message_notif = "friend_message_notif";
+	/** whether to show the enabled friend message sound or notification in the lobby as well */
+	static constexpr const char* const friend_message_lobby = "friend_message_lobby";
+	/** whether to play a sound when a public message is sent */
+	static constexpr const char* const public_message_sound = "public_message_sound";
+	/** whether to show a notification when a public message is sent */
+	static constexpr const char* const public_message_notif = "public_message_notif";
+	/** whether to show the enabled public message sound or notification in the lobby as well */
+	static constexpr const char* const public_message_lobby = "public_message_lobby";
+	/** whether to play a sound when a server message is sent */
+	static constexpr const char* const server_message_sound = "server_message_sound";
+	/** whether to show a notification when a server message is sent */
+	static constexpr const char* const server_message_notif = "server_message_notif";
+	/** whether to show the enabled server message sound or notification in the lobby as well */
+	static constexpr const char* const server_message_lobby = "server_message_lobby";
+	/** whether to play a sound when the game is ready to be started */
+	static constexpr const char* const ready_for_start_sound = "ready_for_start_sound";
+	/** whether to show a notification when the game is ready to be started */
+	static constexpr const char* const ready_for_start_notif = "ready_for_start_notif";
+	/** used to make a UI element invisible in the mp alerts options dialog */
+	static constexpr const char* const ready_for_start_lobby = "ready_for_start_lobby";
+	/** whether to play a sound when the game has started */
+	static constexpr const char* const game_has_begun_sound = "game_has_begun_sound";
+	/** whether to show a notification when the game has started */
+	static constexpr const char* const game_has_begun_notif = "game_has_begun_notif";
+	/** used to make a UI element invisible in the mp alerts options dialog */
+	static constexpr const char* const game_has_begun_lobby = "game_has_begun_lobby";
+	/** used to make a UI element invisible in the mp alerts options dialog */
+	static constexpr const char* const turn_changed_sound = "turn_changed_sound";
+	/** whether to show a notification when the turn changes */
+	static constexpr const char* const turn_changed_notif = "turn_changed_notif";
+	/** used to make a UI element invisible in the mp alerts options dialog */
+	static constexpr const char* const turn_changed_lobby = "turn_changed_lobby";
+	/** whether to play a sound when a new game is created */
+	static constexpr const char* const game_created_sound = "game_created_sound";
+	/** whether to show a notification when a new game is created */
+	static constexpr const char* const game_created_notif = "game_created_notif";
+	/** whether to show the new game creation message sound or notification in the lobby as well */
+	static constexpr const char* const game_created_lobby = "game_created_lobby";
 
 	//
 	// advanced preferences
@@ -314,6 +379,7 @@ struct preferences_list_defines
 
 	ENUM_AND_ARRAY(
 		_last_cache_cleaned_ver,
+		achievements,
 		addon_manager_saved_order_direction,
 		addon_manager_saved_order_name,
 		alias,
@@ -450,7 +516,37 @@ struct preferences_list_defines
 		show_all_units_in_help,
 		show_combat,
 		show_deprecation,
-		use_twelve_hour_clock_format
+		use_twelve_hour_clock_format,
+		player_joins_sound,
+		player_joins_notif,
+		player_joins_lobby,
+		player_leaves_sound,
+		player_leaves_notif,
+		player_leaves_lobby,
+		private_message_sound,
+		private_message_notif,
+		private_message_lobby,
+		friend_message_sound,
+		friend_message_notif,
+		friend_message_lobby,
+		public_message_sound,
+		public_message_notif,
+		public_message_lobby,
+		server_message_sound,
+		server_message_notif,
+		server_message_lobby,
+		ready_for_start_sound,
+		ready_for_start_notif,
+		ready_for_start_lobby,
+		game_has_begun_sound,
+		game_has_begun_notif,
+		game_has_begun_lobby,
+		turn_changed_sound,
+		turn_changed_notif,
+		turn_changed_lobby,
+		game_created_sound,
+		game_created_notif,
+		game_created_lobby
 	)
 };
 using prefs_list = string_enums::enum_base<preferences_list_defines>;
