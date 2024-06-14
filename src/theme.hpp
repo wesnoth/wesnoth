@@ -23,6 +23,7 @@
 #include "color.hpp"
 #include "config.hpp"
 #include "generic_event.hpp"
+#include "global.hpp"
 #include "sdl/rect.hpp"
 
 #include <memory>
@@ -320,7 +321,7 @@ public:
 	static void set_known_themes(const game_config_view* cfg);
 
 	/** Returns the saved config for the theme with the given ID. */
-	static const config& get_theme_config(const std::string& id);
+	NOT_DANGLING static const config& get_theme_config(const std::string& id);
 
 	/** Returns minimal info about saved themes, optionally including hidden ones. */
 	static std::vector<theme_info> get_basic_theme_info(bool include_hidden = false);
