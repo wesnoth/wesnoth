@@ -1305,7 +1305,7 @@ const topic *find_topic(const section &sec, const std::string &id)
 
 const section *find_section(const section &sec, const std::string &id)
 {
-	const auto &sit =
+	const auto sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
 	if (sit != sec.sections.end()) {
 		return &*sit;
