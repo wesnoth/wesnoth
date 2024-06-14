@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "global.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "utils/const_clone.hpp"
@@ -66,7 +67,7 @@ T& get_parent(widget& child)
  * @returns                   The widget with the id.
  */
 template <class T>
-T* find_widget(utils::const_clone_ptr<widget, T> widget,
+NOT_DANGLING T* find_widget(utils::const_clone_ptr<widget, T> widget,
 			   const std::string& id,
 			   const bool must_be_active,
 			   const bool must_exist)
@@ -93,7 +94,7 @@ T* find_widget(utils::const_clone_ptr<widget, T> widget,
  * @returns                   The widget with the id.
  */
 template <class T>
-T& find_widget(utils::const_clone_ptr<widget, T> widget,
+NOT_DANGLING T& find_widget(utils::const_clone_ptr<widget, T> widget,
 			   const std::string& id,
 			   const bool must_be_active)
 {
