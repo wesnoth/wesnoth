@@ -29,6 +29,7 @@
 
 #include "exceptions.hpp"
 #include "game_version.hpp"
+#include "global.hpp"
 
 namespace game_config {
 extern std::string path;
@@ -426,7 +427,7 @@ void clear_binary_paths_cache();
  * Returns a vector with all possible paths to a given type of binary,
  * e.g. 'images', 'sounds', etc,
  */
-const std::vector<std::string>& get_binary_paths(const std::string& type);
+NOT_DANGLING const std::vector<std::string>& get_binary_paths(const std::string& type);
 
 /**
  * Returns a complete path to the actual file of a given @a type
