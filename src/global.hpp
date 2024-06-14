@@ -40,3 +40,21 @@
 
 #if defined(__GNUC__) && !defined(__clang__)
 #endif
+
+/*
+ * GCC-13 and GCC-14 warn about functions that take a reference and return a
+ * reference, assuming the returned reference may point into the argument, they
+ * have false positives for functions that take an id string and return a
+ * string. GCC-14 supports supressing the warnings with [[gnu::no_dangling]].
+ *
+ * Clang complains about unknown attributes in the gnu:: namespace, so has to
+ * have the #if, and the #if means we need the #ifdef.
+ */
+#ifdef __has_cpp_attribute
+#if __has_cpp_attribute(gnu::no_dangling)
+#define NOT_DANGLING [[gnu::no_dangling]]
+#endif
+#endif
+#ifndef NOT_DANGLING
+#define NOT_DANGLING
+#endif
