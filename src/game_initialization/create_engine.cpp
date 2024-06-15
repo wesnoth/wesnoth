@@ -17,7 +17,7 @@
 
 #include "filesystem.hpp"
 #include "game_config_manager.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_initialization/component_availability.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
@@ -219,10 +219,10 @@ void campaign::set_metadata()
 
 void campaign::mark_if_completed()
 {
-	data_["completed"] = preferences::is_campaign_completed(data_["id"]);
+	data_["completed"] = prefs::get().is_campaign_completed(data_["id"]);
 
 	for(auto& cfg : data_.child_range("difficulty")) {
-		cfg["completed_at"] = preferences::is_campaign_completed(data_["id"], cfg["define"]);
+		cfg["completed_at"] = prefs::get().is_campaign_completed(data_["id"], cfg["define"]);
 	}
 }
 
@@ -279,7 +279,7 @@ create_engine::create_engine(saved_game& state)
 
 	state_.mp_settings().saved_game = saved_game_mode::type::no;
 
-	for(const std::string& str : preferences::modifications(state_.classification().is_multiplayer())) {
+	for(const std::string& str : prefs::get().modifications(state_.classification().is_multiplayer())) {
 		if(game_config_.find_child("modification", "id", str)) {
 			state_.classification().active_mods.push_back(str);
 		}

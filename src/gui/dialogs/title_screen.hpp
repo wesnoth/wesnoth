@@ -85,6 +85,9 @@ private:
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
 
+	/** Shows the gui test window. */
+	void show_gui_test_dialog();
+
 	void hotkey_callback_select_tests();
 
 	void show_achievements();

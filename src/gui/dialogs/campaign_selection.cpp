@@ -30,7 +30,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 
 #include <functional>
 #include "utils/irdya_datetime.hpp"
@@ -90,7 +90,7 @@ void campaign_selection::campaign_selected()
 				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 				entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-				if(preferences::is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
+				if(prefs::get().is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
 					std::string laurel;
 
 					if(n + 1 >= max_n) {
@@ -228,7 +228,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
-		bool completed = preferences::is_campaign_completed(levels[i]->data()["id"]);
+		bool completed = prefs::get().is_campaign_completed(levels[i]->data()["id"]);
 		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
@@ -494,7 +494,7 @@ void campaign_selection::post_show(window& window)
 
 	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
 
-	preferences::set_modifications(engine_.active_mods(), false);
+	prefs::get().set_modifications(engine_.active_mods(), false);
 }
 
 void campaign_selection::mod_toggled()

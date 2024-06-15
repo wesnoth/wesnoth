@@ -25,7 +25,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "game_config.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include <functional>
 
 namespace gui2::dialogs
@@ -43,23 +43,23 @@ REGISTER_DIALOG(select_orb_colors)
 
 select_orb_colors::select_orb_colors()
 	: modal_dialog(window_id())
-	, show_unmoved_(preferences::show_unmoved_orb())
-	, show_partial_(preferences::show_partial_orb())
-	, show_disengaged_(preferences::show_disengaged_orb())
-	, show_moved_(preferences::show_moved_orb())
-	, show_ally_(preferences::show_ally_orb())
-	, two_color_ally_(preferences::show_status_on_ally_orb())
-	, show_enemy_(preferences::show_enemy_orb())
+	, show_unmoved_(prefs::get().show_unmoved_orb())
+	, show_partial_(prefs::get().show_partial_orb())
+	, show_disengaged_(prefs::get().show_disengaged_orb())
+	, show_moved_(prefs::get().show_moved_orb())
+	, show_ally_(prefs::get().show_ally_orb())
+	, two_color_ally_(prefs::get().show_status_on_ally_orb())
+	, show_enemy_(prefs::get().show_enemy_orb())
 {
 }
 
 void select_orb_colors::pre_show(window& window)
 {
-	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color());
-	setup_orb_group_two_color("partial", show_partial_, show_disengaged_, preferences::partial_color());
-	setup_orb_group("moved", show_moved_, preferences::moved_color());
-	setup_orb_group_two_color("ally", show_ally_, two_color_ally_, preferences::allied_color());
-	setup_orb_group("enemy", show_enemy_, preferences::enemy_color());
+	setup_orb_group("unmoved", show_unmoved_, prefs::get().unmoved_color());
+	setup_orb_group_two_color("partial", show_partial_, show_disengaged_, prefs::get().partial_color());
+	setup_orb_group("moved", show_moved_, prefs::get().moved_color());
+	setup_orb_group_two_color("ally", show_ally_, two_color_ally_, prefs::get().allied_color());
+	setup_orb_group("enemy", show_enemy_, prefs::get().enemy_color());
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "orb_defaults", false), std::bind(&select_orb_colors::reset_orb_callback, this));
@@ -71,19 +71,19 @@ void select_orb_colors::post_show(window&)
 		return;
 	}
 
-	preferences::set_show_unmoved_orb(show_unmoved_);
-	preferences::set_show_partial_orb(show_partial_);
-	preferences::set_show_disengaged_orb(show_disengaged_);
-	preferences::set_show_moved_orb(show_moved_);
-	preferences::set_show_ally_orb(show_ally_);
-	preferences::set_show_status_on_ally_orb(two_color_ally_);
-	preferences::set_show_enemy_orb(show_enemy_);
+	prefs::get().set_show_unmoved_orb(show_unmoved_);
+	prefs::get().set_show_partial_orb(show_partial_);
+	prefs::get().set_show_disengaged_orb(show_disengaged_);
+	prefs::get().set_show_moved_orb(show_moved_);
+	prefs::get().set_show_ally_orb(show_ally_);
+	prefs::get().set_show_status_on_ally_orb(two_color_ally_);
+	prefs::get().set_show_enemy_orb(show_enemy_);
 
-	preferences::set_unmoved_color(groups_["unmoved"].get_active_member_value());
-	preferences::set_partial_color(groups_["partial"].get_active_member_value());
-	preferences::set_moved_color(groups_["moved"].get_active_member_value());
-	preferences::set_allied_color(groups_["ally"].get_active_member_value());
-	preferences::set_enemy_color(groups_["enemy"].get_active_member_value());
+	prefs::get().set_unmoved_color(groups_["unmoved"].get_active_member_value());
+	prefs::get().set_partial_color(groups_["partial"].get_active_member_value());
+	prefs::get().set_moved_color(groups_["moved"].get_active_member_value());
+	prefs::get().set_allied_color(groups_["ally"].get_active_member_value());
+	prefs::get().set_enemy_color(groups_["enemy"].get_active_member_value());
 }
 
 void select_orb_colors::setup_orb_toggle(const std::string& base_id, bool& shown)

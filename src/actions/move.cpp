@@ -24,7 +24,7 @@
 #include "actions/vision.hpp"
 
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -1363,7 +1363,7 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
 			resources::gameboard->units().find(steps.front())->side() - 1];
 		continued_move |= !current_team.fog_or_shroud();
 	}
-	const bool skip_ally_sighted = !preferences::interrupt_when_ally_sighted();
+	const bool skip_ally_sighted = !prefs::get().interrupt_when_ally_sighted();
 
 	// Evaluate this move.
 	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted);

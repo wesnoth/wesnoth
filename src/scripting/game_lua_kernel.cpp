@@ -57,7 +57,7 @@
 #include "game_events/handlers.hpp"
 #include "game_events/manager_impl.hpp" // for pending_event_handler
 #include "game_events/pump.hpp"         // for queued_event
-#include "preferences/game.hpp"         // for encountered_units
+#include "preferences/preferences.hpp"         // for encountered_units
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                      // for gamemap
 #include "map/label.hpp"
@@ -67,7 +67,7 @@
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
@@ -3111,7 +3111,7 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 					}
 					// found the achievement - mark it as completed
 					if(!play_controller_.is_replay()) {
-						preferences::set_achievement(content_for, id);
+						prefs::get().set_achievement(content_for, id);
 					}
 					achieve.achieved_ = true;
 					// progressable achievements can also check for current progress equals -1
@@ -3156,7 +3156,7 @@ int game_lua_kernel::intf_has_achievement(lua_State *L)
 		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
 		lua_pushboolean(L, false);
 	} else {
-		lua_pushboolean(L, preferences::achievement(content_for, id));
+		lua_pushboolean(L, prefs::get().achievement(content_for, id));
 	}
 
 	return 1;
@@ -3246,7 +3246,7 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 					if(!achieve.achieved_) {
 						int progress = 0;
 						if(!play_controller_.is_replay()) {
-							progress = preferences::progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
+							progress = prefs::get().progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
 						}
 						if(progress >= achieve.max_progress_) {
 							intf_set_achievement(L);
@@ -3291,7 +3291,7 @@ int game_lua_kernel::intf_has_sub_achievement(lua_State *L)
 		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
 		lua_pushboolean(L, false);
 	} else {
-		lua_pushboolean(L, preferences::sub_achievement(content_for, id, sub_id));
+		lua_pushboolean(L, prefs::get().sub_achievement(content_for, id, sub_id));
 	}
 
 	return 1;
@@ -3325,7 +3325,7 @@ int game_lua_kernel::intf_set_sub_achievement(lua_State *L)
 								return 0;
 							} else {
 								if(!play_controller_.is_replay()) {
-									preferences::set_sub_achievement(content_for, id, sub_id);
+									prefs::get().set_sub_achievement(content_for, id, sub_id);
 								}
 								sub_ach.achieved_ = true;
 								achieve.current_progress_++;
@@ -3912,7 +3912,7 @@ static int intf_add_known_unit(lua_State *L)
 		ss << "unknown unit type: '" << ty << "'";
 		return luaL_argerror(L, 1, ss.str().c_str());
 	}
-	preferences::encountered_units().insert(ty);
+	prefs::get().encountered_units().insert(ty);
 	return 0;
 }
 

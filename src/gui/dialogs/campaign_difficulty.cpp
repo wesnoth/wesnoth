@@ -25,7 +25,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
@@ -100,7 +100,7 @@ void campaign_difficulty::pre_show(window& window)
 		}
 
 		styled_widget& widget = find_widget<styled_widget>(&grid, "victory", false);
-		if(preferences::is_campaign_completed(campaign_id_, d["define"])) {
+		if(prefs::get().is_campaign_completed(campaign_id_, d["define"])) {
 			// Use different laurels according to the difficulty level, following the
 			// pre-existing convention established in campaign_selection class.
 			// Assumes ascending order of difficulty and gold laurel is set first

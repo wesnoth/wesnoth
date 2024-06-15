@@ -18,13 +18,12 @@
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 #include "color.hpp"
-#include "preferences/credentials.hpp"
 #include "serialization/utf8_exception.hpp"
 #include "video.hpp" // only for faked
 
@@ -63,10 +62,10 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 		}
 	}
 
-	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
-	if (preferences::is_ignored(sender)) return;
+	if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
+	if (prefs::get().is_ignored(sender)) return;
 
-	//preferences::parse_admin_authentication(sender, message); TODO: replace
+	//prefs::get().parse_admin_authentication(sender, message); TODO: replace
 
 	bool is_observer = false;
 	{ //TODO: Clean this block up somehow
@@ -80,9 +79,9 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
-			|| utils::word_match(message, preferences::login())) {
+			|| utils::word_match(message, prefs::get().login())) {
 			mp::ui_alerts::private_message(false, sender, message);
-		} else if (preferences::is_friend(sender)) {
+		} else if (prefs::get().is_friend(sender)) {
 			mp::ui_alerts::friend_message(false, sender, message);
 		} else if (sender == "server") {
 			mp::ui_alerts::server_message(false, sender, message);
@@ -149,7 +148,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	// Prepend message with timestamp.
 	std::stringstream message_complete;
-	message_complete << preferences::get_chat_timestamp(time) << str.str();
+	message_complete << prefs::get().get_chat_timestamp(time) << str.str();
 
 	const SDL_Rect rect = my_disp_.map_outside_area();
 
@@ -192,8 +191,8 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 {
 	//NOTE: prune_chat_messages(false) seems to be only called when a new message is added, which in
 	//      particular means the aging feature won't work unless new messages are addded regularly
-	const unsigned message_aging = preferences::chat_message_aging();
-	const unsigned max_chat_messages = preferences::chat_lines();
+	const unsigned message_aging = prefs::get().chat_message_aging();
+	const unsigned max_chat_messages = prefs::get().chat_lines();
 	const bool enable_aging = message_aging != 0;
 
 	const unsigned remove_before = enable_aging ? safe_subtract(SDL_GetTicks(), message_aging * 60 * 1000) : 0;

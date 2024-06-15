@@ -32,7 +32,7 @@
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "play_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -1311,7 +1311,7 @@ void attack::unit_killed(unit_info& attacker,
 			game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
 			resources::game_events->pump().fire("unit_placed", reanim_loc);
 
-			preferences::encountered_units().insert(newunit->type_id());
+			prefs::get().encountered_units().insert(newunit->type_id());
 
 			if(update_display_) {
 				display::get_singleton()->invalidate(death_loc);

@@ -29,7 +29,8 @@ const color_t
 	PETRIFIED_COLOR {160, 160, 160},
 	TITLE_COLOR     {186, 172, 125},
 	LABEL_COLOR     {107, 140, 255},
-	BIGMAP_COLOR    {255, 255, 255};
+	BIGMAP_COLOR    {255, 255, 255},
+	BLUE_COLOR      {0  , 0  , 255};
 
 const color_t DISABLED_COLOR = PETRIFIED_COLOR.inverse();
 
@@ -42,4 +43,38 @@ const color_t
 	inactive_ability_color {146, 146, 146},
 	unit_type_color        {245, 230, 193},
 	race_color             {166, 146, 117};
+
+color_t string_to_color(const std::string &cmp_str)
+{
+	// TODO needs a more generic mechanism so that more common color names are recognized
+	if (cmp_str == "green") {
+		return font::GOOD_COLOR;
+	}
+	if (cmp_str == "red") {
+		return font::BAD_COLOR;
+	}
+	if (cmp_str == "black") {
+		return font::BLACK_COLOR;
+	}
+	if (cmp_str == "yellow") {
+		return font::YELLOW_COLOR;
+	}
+	if (cmp_str == "white") {
+		return font::BIGMAP_COLOR;
+	}
+	if (cmp_str == "blue") {
+		return font::BLUE_COLOR;
+	}
+
+	if (cmp_str.at(0) == '#' && cmp_str.size() == 7) {
+		// #rrggbb color, pango format.
+		return color_t::from_hex_string(cmp_str.substr(1));
+	} else if (cmp_str.size() == 6) {
+		// rrggbb color, wesnoth format
+		return color_t::from_hex_string(cmp_str);
+	}
+	return font::NORMAL_COLOR;
 }
+
+} // namespace font
+

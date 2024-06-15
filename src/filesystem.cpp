@@ -566,6 +566,11 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static bfs::path user_data_dir, user_config_dir, cache_dir;
 
+bool is_userdata_initialized()
+{
+	return !user_data_dir.string().empty();
+}
+
 const std::string get_version_path_suffix(const version_info& version)
 {
 	std::ostringstream s;

@@ -793,10 +793,10 @@ protected:
 	map_location mouseoverHex_;
 	CKey keys_;
 
-	/** Local cache for preferences::animate_map, since it is constantly queried. */
+	/** Local cache for prefs::get().animate_map, since it is constantly queried. */
 	bool animate_map_;
 
-	/** Local version of preferences::animate_water, used to detect when it's changed. */
+	/** Local version of prefs::get().animate_water, used to detect when it's changed. */
 	bool animate_water_;
 
 private:

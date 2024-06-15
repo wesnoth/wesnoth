@@ -25,7 +25,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
@@ -367,23 +367,23 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			surrender_game();
 			break;
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
-			preferences::toggle_minimap_draw_terrain();
+			prefs::get().toggle_minimap_draw_terrain();
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
-			preferences::toggle_minimap_terrain_coding();
+			prefs::get().toggle_minimap_terrain_coding();
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
-			preferences::toggle_minimap_movement_coding();
+			prefs::get().toggle_minimap_movement_coding();
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
-			preferences::toggle_minimap_draw_units();
+			prefs::get().toggle_minimap_draw_units();
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
-			preferences::toggle_minimap_draw_villages();
+			prefs::get().toggle_minimap_draw_villages();
 			recalculate_minimap();
 			break;
 		case HOTKEY_ACHIEVEMENTS:
@@ -628,10 +628,10 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			make_screenshot(_("Screenshot"), false);
 			break;
 		case HOTKEY_ANIMATE_MAP:
-			preferences::set_animate_map(!preferences::animate_map());
+			prefs::get().set_animate_map(!prefs::get().animate_map());
 			break;
 		case HOTKEY_MOUSE_SCROLL:
-			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
+			prefs::get().enable_mouse_scroll(!prefs::get().mouse_scroll_enabled());
 			break;
 		case HOTKEY_MUTE:
 			{
@@ -641,19 +641,19 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 					bool playing_sound,playing_music;
 					before_muted_s() : playing_sound(false),playing_music(false){}
 				} before_muted;
-				if (preferences::music_on() || preferences::sound_on())
+				if (prefs::get().music_on() || prefs::get().sound_on())
 				{
 					// then remember settings and mute both
-					before_muted.playing_sound = preferences::sound_on();
-					before_muted.playing_music = preferences::music_on();
-					preferences::set_sound(false);
-					preferences::set_music(false);
+					before_muted.playing_sound = prefs::get().sound_on();
+					before_muted.playing_music = prefs::get().music_on();
+					prefs::get().set_sound(false);
+					prefs::get().set_music(false);
 				}
 				else
 				{
 					// then set settings before mute
-					preferences::set_sound(before_muted.playing_sound);
-					preferences::set_music(before_muted.playing_music);
+					prefs::get().set_sound(before_muted.playing_sound);
+					prefs::get().set_music(before_muted.playing_music);
 				}
 			}
 			break;

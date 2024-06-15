@@ -73,6 +73,7 @@
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
@@ -520,6 +521,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_generator_settings)
 {
 	test<generator_settings>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_gui_test_dialog)
+{
+	test<gui_test_dialog>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
 {
 	test<hotkey_bind>();
@@ -630,7 +635,7 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
 {
-	test<migrate_version_selection>();
+	test<gui2::dialogs::migrate_version_selection>();
 }
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
@@ -1081,11 +1086,11 @@ struct dialog_tester<mp_match_history>
 };
 
 template<>
-struct dialog_tester<migrate_version_selection>
+struct dialog_tester<gui2::dialogs::migrate_version_selection>
 {
-	migrate_version_selection* create()
+	gui2::dialogs::migrate_version_selection* create()
 	{
-		return new migrate_version_selection();
+		return new gui2::dialogs::migrate_version_selection();
 	}
 };
 
@@ -1455,6 +1460,16 @@ struct dialog_tester<editor_edit_unit>
 		movetype.add_child("movement_costs");
 		view = game_config_view::wrap(cfg);
 		return new editor_edit_unit(view, "test_addon");
+	}
+};
+
+template<>
+struct dialog_tester<gui_test_dialog>
+{
+	dialog_tester() {}
+	gui_test_dialog* create()
+	{
+		return new gui_test_dialog();
 	}
 };
 

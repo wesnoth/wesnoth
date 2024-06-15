@@ -25,7 +25,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "mp_ui_alerts.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 #include <functional>
 
@@ -36,15 +36,15 @@ namespace gui2::dialogs
 
 static toggle_button* setup_pref_toggle_button(const std::string& id, const std::string& type, bool def, window& window)
 {
-	toggle_button* b = find_widget<toggle_button>(&window, id+"_"+type, false, true);
-	b->set_value(preferences::mp_alert_option(id, type, def));
-
 	//ensure we have yes / no for the toggle button, so that the preference matches the toggle button for sure.
-	if (preferences::has_mp_alert_option(id, type)) {
-		preferences::set_mp_alert_option(id, type, def);
+	if (!prefs::get().has_mp_alert_option(id, type)) {
+		prefs::get().set_mp_alert_option(id, type, def);
 	}
 
-	connect_signal_mouse_left_click(*b, std::bind([b, id, type]() { preferences::set_mp_alert_option(id, type, b->get_value_bool()); }));
+	toggle_button* b = find_widget<toggle_button>(&window, id+"_"+type, false, true);
+	b->set_value(prefs::get().mp_alert_option(id, type, def));
+
+	connect_signal_mouse_left_click(*b, std::bind([b, id, type]() { prefs::get().set_mp_alert_option(id, type, b->get_value_bool()); }));
 
 	return b;
 }
@@ -61,7 +61,7 @@ static void setup_item(const std::string& item, window& window)
 	if (!desktop::notifications::available()) {
 		notif->set_value(false);
 		notif->set_active(false);
-		preferences::set_mp_alert_option(item, "notif", false);
+		prefs::get().set_mp_alert_option(item, "notif", false);
 	} else {
 		notif->set_active(true);
 	}
@@ -72,8 +72,8 @@ static void setup_item(const std::string& item, window& window)
 
 static void set_pref_and_button(const std::string& id, const std::string& type, bool value, window& window)
 {
-	preferences::set_mp_alert_option(id, type, value);
-	toggle_button* button = find_widget<toggle_button>(&window, id, false, true);
+	prefs::get().set_mp_alert_option(id, type, value);
+	toggle_button* button = find_widget<toggle_button>(&window, id+"_"+type, false, true);
 	button->set_value(value);
 }
 

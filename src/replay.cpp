@@ -31,7 +31,7 @@
 #include "map/label.hpp"
 #include "map/location.hpp"
 #include "play_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "replay_recorder_base.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
@@ -358,8 +358,8 @@ void replay::speak(const config& cfg)
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg>> &i) const
 {
 
-	if (!preferences::parse_should_show_lobby_join(cfg["id"], cfg["message"])) return;
-	if (preferences::is_ignored(cfg["id"])) return;
+	if (!prefs::get().parse_should_show_lobby_join(cfg["id"], cfg["message"])) return;
+	if (prefs::get().is_ignored(cfg["id"])) return;
 	*i = chat_msg(cfg);
 }
 
@@ -764,7 +764,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const std::string &team_name = speak["to_sides"];
 			const std::string &speaker_name = speak["id"];
 			const std::string &message = speak["message"];
-			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
+
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			if(resources::recorder->add_chat_message_location()) {
 				DBG_REPLAY << "tried to add a chat message twice.";
@@ -773,7 +773,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(*speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
-						preferences::message_bell());
+						prefs::get().message_bell());
 				}
 			}
 		}

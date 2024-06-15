@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/password_box.hpp"
@@ -35,25 +35,25 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 {
 	register_label("login_label", false, label);
 	username_ = register_text("user_name", true,
-		&preferences::login,
-		&preferences::set_login,
+		[]() {return prefs::get().login();},
+		[](std::string v) {prefs::get().set_login(v);},
 		!focus_password);
 
 	register_bool("remember_password", false,
-		&preferences::remember_password,
-		&preferences::set_remember_password);
+		[]() {return prefs::get().remember_password();},
+		[](bool v) {prefs::get().set_remember_password(v);});
 }
 
 void mp_login::load_password()
 {
 	text_box& pwd = find_widget<text_box>(this, "password", false);
-	pwd.set_value(preferences::password(host_, username_->get_widget_value()));
+	pwd.set_value(prefs::get().password(host_, username_->get_widget_value()));
 }
 
 void mp_login::save_password()
 {
 	password_box& pwd = find_widget<password_box>(this, "password", false);
-	preferences::set_password(host_, username_->get_widget_value(), pwd.get_real_value());
+	prefs::get().set_password(host_, username_->get_widget_value(), pwd.get_real_value());
 }
 
 void mp_login::pre_show(window& win)

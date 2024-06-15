@@ -264,10 +264,10 @@ def output(path, url, datadir, data):
         ("locales", "Translations", "'string'")
     ]
     for count, (header_class, header_label, sort_type) in enumerate(table_headers):
-    if sort_type:
-        w('<th onclick="clickSort(%d, %s, this)" class="addon-%s header">%s&nbsp;&nbsp;&nbsp;</th>' % (count, sort_type, header_class, header_label))
-    else:
-        w('<th class="addon-%s header">%s&nbsp;&nbsp;&nbsp;</th>' % (header_class, header_label))
+        if sort_type:
+            w('<th onclick="clickSort(%d, %s, this)" class="addon-%s header">%s&nbsp;&nbsp;&nbsp;</th>' % (count, sort_type, header_class, header_label))
+        else:
+            w('<th class="addon-%s header">%s&nbsp;&nbsp;&nbsp;</th>' % (header_class, header_label))
     w('</tr>\n</thead>\n<tbody>')
 
     addons = data.get_all(tag="campaigns")[0]

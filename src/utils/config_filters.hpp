@@ -67,6 +67,13 @@ bool int_matches_if_present_or_negative(
 bool string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def);
 
+/**
+ * filter[attribute] and cfg[attribute] are assumed to be comma-separated lists.
+ * If the filter is present, each item in filter[attribute] must match an item in cfg[attribute]
+ * for the function to return true.
+ */
+bool set_includes_if_present(const config& filter, const config& cfg, const std::string& attribute);
+
 bool bool_or_empty(const config& filter, const config& cfg, const std::string& attribute);
 
 } // namespace utils::config_filters

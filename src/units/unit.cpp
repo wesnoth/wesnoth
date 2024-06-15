@@ -34,7 +34,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"                       // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                   // for gamemap
-#include "preferences/game.hpp"          // for encountered_units
+#include "preferences/preferences.hpp"          // for encountered_units
 #include "random.hpp"                    // for generator, rng
 #include "resources.hpp"                 // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
@@ -1472,8 +1472,15 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!string_matches_if_present(filter, cfg, "id", ""))
 		return false;
 
-	if(!string_matches_if_present(filter, cfg, "apply_to", "self"))
-		return false;
+	if(tag_name == "resistance"){
+		if(!set_includes_if_present(filter, cfg, "apply_to")){
+			return false;
+		}
+	} else {
+		if(!string_matches_if_present(filter, cfg, "apply_to", "self")){
+			return false;
+		}
+	}
 
 	if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 		return false;
@@ -2449,7 +2456,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		const unit_type* new_type = unit_types.find(new_type_id);
 		if(new_type) {
 			advance_to(*new_type);
-			preferences::encountered_units().insert(new_type_id);
+			prefs::get().encountered_units().insert(new_type_id);
 			if(effect["heal_full"].to_bool(false)) {
 				heal_fully();
 			}

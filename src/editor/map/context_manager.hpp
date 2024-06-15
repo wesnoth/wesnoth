@@ -18,7 +18,7 @@
 #include "editor/map/map_context.hpp"
 #include "editor/map/map_fragment.hpp"
 #include "filter_context.hpp"
-#include "preferences/editor.hpp"
+#include "preferences/preferences.hpp"
 
 class map_generator;
 class game_config_view;
@@ -41,7 +41,7 @@ public:
 	void set_update_transitions_mode(int mode)
 	{
 		auto_update_transitions_ = mode;
-		preferences::editor::set_auto_update_transitions(mode);
+		prefs::get().set_editor_auto_update_transitions(mode);
 	}
 
 	bool toggle_update_transitions();

@@ -18,7 +18,7 @@
 #include "exceptions.hpp"
 #include "log.hpp"
 #include "gui/core/top_level_drawable.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
@@ -186,7 +186,7 @@ int get_frame_length()
 	// allow 1ms for general processing
 	int vsync_delay = (1000 / rr) - 1;
 	// if there's a preferred limit, limit to that
-	return std::clamp(vsync_delay, preferences::draw_delay(), 1000);
+	return std::clamp(vsync_delay, prefs::get().draw_delay(), 1000);
 }
 
 static void wait_for_vsync()

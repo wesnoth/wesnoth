@@ -19,7 +19,7 @@
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_events/wmi_manager.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -220,12 +220,12 @@ void play_controller::hotkey_handler::search(){
 
 void play_controller::hotkey_handler::toggle_accelerated_speed()
 {
-	preferences::set_turbo(!preferences::turbo());
+	prefs::get().set_turbo(!prefs::get().turbo());
 
 	display::announce_options ao;
 	ao.discard_previous = true;
 
-	if (preferences::turbo())
+	if (prefs::get().turbo())
 	{
 		utils::string_map symbols;
 		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).id);
@@ -405,9 +405,9 @@ static void trim_items(std::vector<T>& newitems)
 template<typename F>
 static void foreach_autosave(int turn, saved_game& sg, F func) {
 
-	const compression::format comp_format = preferences::save_compression_format();
+	const compression::format comp_format = prefs::get().save_compression_format();
 
-	compression::format compression_format = preferences::save_compression_format();
+	compression::format compression_format = prefs::get().save_compression_format();
 	savegame::autosave_savegame autosave(sg, compression_format);
 	savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
 
@@ -544,15 +544,15 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hot
 	switch(cmd.hotkey_command) {
 
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:

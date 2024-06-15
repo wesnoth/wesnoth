@@ -479,16 +479,12 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
-#| msgid ""
-#| "log output is written to a file in addition to standard output/error. "
-#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
-"ログ出力が、標準出力・標準エラーに加えてファイルに書き出される。暗黙的か明示"
-"的かに関わらず、--no-log-to-file の効果をキャンセルする。"
+"ログ出力がファイルに書き込まれる。暗黙的か明示的かに関わらず、--no-log-to-"
+"file の効果をキャンセルする。"
 
 #. type: TP
 #: doc/man/wesnoth.6:177
@@ -1441,12 +1437,9 @@ msgstr "著作権"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:520 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:523 doc/man/wesnothd.6:283
@@ -2294,6 +2287,50 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
+#, no-wrap
+#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
+#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
+
+#~ msgid ""
+#~ "decompresses a file which should be in bzip2 format and stores it without "
+#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
+#~ msgstr ""
+#~ "bzip2 フォーマットのファイルを展開して .bz2 という拡張子を除いたファイルに"
+#~ "保存する。 I<infile.bz2> は削除される。"
+
+#, no-wrap
+#~ msgid "B<--bzip2>I<\\ infile>"
+#~ msgstr "B<--bzip2>I<\\ infile>"
+
+#~ msgid ""
+#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "ファイルを bzip2 フォーマットで圧縮して I<infile>.bz2 に保存し、I<infile> "
+#~ "を削除する。"
+
+#, no-wrap
+#~ msgid "B<--gunzip>I<\\ infile.gz>"
+#~ msgstr "B<--gunzip>I<\\ infile.gz>"
+
+#~ msgid ""
+#~ "decompresses a file which should be in gzip format and stores it without "
+#~ "the .gz suffix. The I<infile.gz> will be removed."
+#~ msgstr ""
+#~ "gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保"
+#~ "存する。 I<infile.gz> は削除される。"
+
+#, no-wrap
+#~ msgid "B<--gzip>I<\\ infile>"
+#~ msgstr "B<--gzip>I<\\ infile>"
+
+#~ msgid ""
+#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "ファイルを gzip フォーマットで圧縮して I<infile>.gz に保存し、I<infile> を"
+#~ "削除する。"
+
 #~ msgid ""
 #~ "sets the user configuration directory to I<name> under $HOME or \"My "
 #~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
@@ -2374,47 +2411,3 @@ msgstr "B<wesnoth>(6)"
 #, no-wrap
 #~ msgid "B<db_game_modification_info_table>"
 #~ msgstr "B<db_game_modification_info_table>"
-
-#, no-wrap
-#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
-
-#~ msgid ""
-#~ "decompresses a file which should be in bzip2 format and stores it without "
-#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
-#~ msgstr ""
-#~ "bzip2 フォーマットのファイルを展開して .bz2 という拡張子を除いたファイルに"
-#~ "保存する。 I<infile.bz2> は削除される。"
-
-#, no-wrap
-#~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--bzip2>I<\\ infile>"
-
-#~ msgid ""
-#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "ファイルを bzip2 フォーマットで圧縮して I<infile>.bz2 に保存し、I<infile> "
-#~ "を削除する。"
-
-#, no-wrap
-#~ msgid "B<--gunzip>I<\\ infile.gz>"
-#~ msgstr "B<--gunzip>I<\\ infile.gz>"
-
-#~ msgid ""
-#~ "decompresses a file which should be in gzip format and stores it without "
-#~ "the .gz suffix. The I<infile.gz> will be removed."
-#~ msgstr ""
-#~ "gzip フォーマットのファイルを展開して .gz という拡張子を除いたファイルに保"
-#~ "存する。 I<infile.gz> は削除される。"
-
-#, no-wrap
-#~ msgid "B<--gzip>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ infile>"
-
-#~ msgid ""
-#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "ファイルを gzip フォーマットで圧縮して I<infile>.gz に保存し、I<infile> を"
-#~ "削除する。"

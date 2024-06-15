@@ -26,7 +26,7 @@
 #include "fake_unit_manager.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "font/standard_colors.hpp"
@@ -587,7 +587,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 
 void game_display::float_label(const map_location& loc, const std::string& text, const color_t& color)
 {
-	if(preferences::show_floating_labels() == false || fogged(loc)) {
+	if(prefs::get().show_floating_labels() == false || fogged(loc)) {
 		return;
 	}
 

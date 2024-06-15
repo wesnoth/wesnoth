@@ -24,7 +24,7 @@
 #include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_config_view.hpp"
 
@@ -122,7 +122,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 	for(const rule_image_rand& ri : images) {
 		bool is_background = ri->is_background();
-		bool animate = (!ri.ri->is_water || preferences::animate_water());
+		bool animate = (!ri.ri->is_water || prefs::get().animate_water());
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 

@@ -25,7 +25,7 @@
 #include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
@@ -45,11 +45,11 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		bool ignore_terrain_disabled)
 {
 	// Drawing mode flags.
-	const bool preferences_minimap_draw_terrain   = preferences::minimap_draw_terrain() || ignore_terrain_disabled;
-	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
-	const bool preferences_minimap_draw_villages  = preferences::minimap_draw_villages();
-	const bool preferences_minimap_draw_units     = preferences::minimap_draw_units();
-	const bool preferences_minimap_unit_coding    = preferences::minimap_movement_coding();
+	const bool preferences_minimap_draw_terrain   = prefs::get().minimap_draw_terrain() || ignore_terrain_disabled;
+	const bool preferences_minimap_terrain_coding = prefs::get().minimap_terrain_coding();
+	const bool preferences_minimap_draw_villages  = prefs::get().minimap_draw_villages();
+	const bool preferences_minimap_draw_units     = prefs::get().minimap_draw_units();
+	const bool preferences_minimap_unit_coding    = prefs::get().minimap_movement_coding();
 
 	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
 
@@ -235,11 +235,11 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						col = team::get_minimap_color(side_num);
 					} else {
 						if(vw->owns_village(loc)) {
-							col = game_config::color_info(preferences::unmoved_color()).rep();
+							col = game_config::color_info(prefs::get().unmoved_color()).rep();
 						} else if(vw->is_enemy(side_num)) {
-							col = game_config::color_info(preferences::enemy_color()).rep();
+							col = game_config::color_info(prefs::get().enemy_color()).rep();
 						} else {
-							col = game_config::color_info(preferences::allied_color()).rep();
+							col = game_config::color_info(prefs::get().allied_color()).rep();
 						}
 					}
 				}

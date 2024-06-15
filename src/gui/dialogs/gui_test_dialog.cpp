@@ -1,6 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
-	by David White <dave@whitevine.net>
+	Copyright (C) 2023 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,17 +12,29 @@
 	See the COPYING file for more details.
 */
 
-#pragma once
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/dialogs/gui_test_dialog.hpp"
 
-namespace preferences
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/text_box.hpp"
+
+namespace gui2::dialogs
 {
-bool use_color_cursors();
-void set_color_cursors(bool value);
 
-bool show_standing_animations();
-void set_show_standing_animations(bool value);
+REGISTER_DIALOG(gui_test_dialog)
 
-void show_wesnothd_server_search();
-bool show_theme_dialog();
-} // end namespace preferences
+gui_test_dialog::gui_test_dialog()
+	: modal_dialog(window_id())
+{
+}
+
+void gui_test_dialog::pre_show(window& /*win*/)
+{
+}
+
+void gui_test_dialog::post_show(window& /*win*/)
+{
+}
+
+} // namespace gui2::dialogs

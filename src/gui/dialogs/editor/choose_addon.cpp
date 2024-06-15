@@ -20,7 +20,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
 {
@@ -48,14 +48,14 @@ void editor_choose_addon::post_show(window& win)
 
 	if(selected_row == 0) {
 		addon_id_ = "///newaddon///";
-		preferences::set_editor_chosen_addon("");
+		prefs::get().set_editor_chosen_addon("");
 	} else if(selected_row == 1 && find_widget<toggle_button>(get_window(), "show_all", false).get_value_bool()) {
 		addon_id_ = "mainline";
-		preferences::set_editor_chosen_addon("");
+		prefs::get().set_editor_chosen_addon("");
 	} else {
 		grid* row = existing_addons.get_row_grid(selected_row);
 		addon_id_ = dynamic_cast<label*>(row->find("existing_addon_id", false))->get_label();
-		preferences::set_editor_chosen_addon(addon_id_);
+		prefs::get().set_editor_chosen_addon(addon_id_);
 	}
 }
 
@@ -94,7 +94,7 @@ void editor_choose_addon::populate_list(bool show_all)
 				{"existing_addon_id", widget_item{{"label", dir}}},
 			};
 			existing_addons.add_row(entry);
-			if(dir == preferences::editor_chosen_addon()) {
+			if(dir == prefs::get().editor_chosen_addon()) {
 				selected_row = existing_addons.get_item_count()-1;
 			}
 		}

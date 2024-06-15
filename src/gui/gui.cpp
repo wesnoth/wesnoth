@@ -23,7 +23,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/widgets/settings.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
@@ -66,7 +66,7 @@ void init()
 	//
 	// Parse GUI definitions.
 	//
-	const std::string& current_theme = preferences::gui_theme();
+	const std::string& current_theme = prefs::get().gui_theme();
 
 	for(const config& g : cfg.child_range("gui")) {
 		const std::string id = g["id"];

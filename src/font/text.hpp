@@ -305,12 +305,17 @@ public:
  	* @param end_offset          Column offset of the cursor where selection/highlight ends
  	* @param color               Highlight color
 	*/
-	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
-	{
-		highlight_start_offset_ = start_offset;
-		highlight_end_offset_ = end_offset;
-		highlight_color_ = color;
-	}
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+
+	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
+	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
+	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
+	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
+	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family);
+
+	/** Clear all attributes */
+	void clear_attribute_list();
 
 private:
 
@@ -409,9 +414,18 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	unsigned highlight_start_offset_;
-	unsigned highlight_end_offset_;
+	unsigned attribute_start_offset_;
+	unsigned attribute_end_offset_;
 	color_t	highlight_color_;
+
+	/**
+	 * Global pango attribute list. All attributes in this list
+	 * will be applied one by one to the text
+	 */
+	PangoAttrList* global_attribute_list_;
+
+	/** Hash for the global_attribute_list_ */
+	std::size_t attrib_hash_;
 
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;

@@ -19,7 +19,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
 #include "sdl/input.hpp" // get_mouse_state
@@ -171,7 +171,7 @@ bool mouse_handler_base::mouse_button_event(const SDL_MouseButtonEvent& event, u
 
 void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
-	if(is_middle_click(event) && !preferences::middle_click_scrolls()) {
+	if(is_middle_click(event) && !prefs::get().middle_click_scrolls()) {
 		simple_warp_ = true;
 	}
 
@@ -359,8 +359,8 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	int x, y;
 	sdl::get_mouse_state(&x, &y);
 
-	int movex = scrollx * preferences::scroll_speed();
-	int movey = scrolly * preferences::scroll_speed();
+	int movex = scrollx * prefs::get().scroll_speed();
+	int movey = scrolly * prefs::get().scroll_speed();
 
 	// Don't scroll map if cursor is not in gamemap area
 	if(!gui().map_area().contains(x, y)) {

@@ -21,7 +21,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 
@@ -162,19 +162,19 @@ void lobby_player_info::update_relation()
 
 void lobby_player_info::add_to_friends_button_callback()
 {
-	preferences::add_acquaintance(info_.name, "friend", "");
+	prefs::get().add_acquaintance(info_.name, "friend", "");
 	update_relation();
 }
 
 void lobby_player_info::add_to_ignores_button_callback()
 {
-	preferences::add_acquaintance(info_.name, "ignore", "");
+	prefs::get().add_acquaintance(info_.name, "ignore", "");
 	update_relation();
 }
 
 void lobby_player_info::remove_from_list_button_callback()
 {
-	preferences::remove_acquaintance(info_.name);
+	prefs::get().remove_acquaintance(info_.name);
 	update_relation();
 }
 

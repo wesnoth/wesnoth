@@ -24,7 +24,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
 {
@@ -35,7 +35,7 @@ static const std::string forum_registration_url = "https://forums.wesnoth.org/uc
 
 void mp_method_selection::pre_show(window& window)
 {
-	user_name_ = preferences::login();
+	user_name_ = prefs::get().login();
 
 	text_box* user_widget = find_widget<text_box>(&window, "user_name", false, true);
 	user_widget->set_value(user_name_);
@@ -60,7 +60,7 @@ void mp_method_selection::post_show(window& window)
 		user_widget.save_to_history();
 
 		user_name_ = user_widget.get_value();
-		preferences::set_login(user_name_);
+		prefs::get().set_login(user_name_);
 	}
 }
 

@@ -41,13 +41,13 @@ enum class orb_status {
 namespace orb_status_helper
 {
 /**
- * Wrapper for the various preferences::show_..._orb() methods, using the
+ * Wrapper for the various prefs::get().show_..._orb() methods, using the
  * enum instead of exposing a separate function for each preference.
  */
 bool prefs_show_orb(orb_status os);
 
 /**
- * Wrapper for the various preferences::unmoved_color(), moved_color(), etc
+ * Wrapper for the various prefs::get().unmoved_color(), moved_color(), etc
  * methods, using the enum instead of exposing a separate function for each
  * preference.
  */

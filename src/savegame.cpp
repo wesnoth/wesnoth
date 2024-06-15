@@ -33,7 +33,7 @@
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "persist_manager.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
@@ -248,7 +248,7 @@ bool loadgame::check_version_compatibility(const version_info& save_version)
 		return false;
 	}
 
-	if(preferences::confirm_load_save_from_different_version()) {
+	if(prefs::get().confirm_load_save_from_different_version()) {
 		const std::string message
 			= _("This save is from a different version of the game ($version_number|), and might not work with this "
 				"version.\n"
@@ -620,7 +620,7 @@ std::string autosave_savegame::create_initial_filename(unsigned int turn_number)
 }
 
 oos_savegame::oos_savegame(saved_game& gamestate, bool& ignore)
-	: ingame_savegame(gamestate, preferences::save_compression_format())
+	: ingame_savegame(gamestate, prefs::get().save_compression_format())
 	, ignore_(ignore)
 {
 }

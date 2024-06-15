@@ -35,7 +35,7 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 #include <functional>
@@ -487,7 +487,7 @@ void game_load::delete_button_callback()
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation
-		if(preferences::ask_delete_saves()) {
+		if(prefs::get().ask_delete_saves()) {
 			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}

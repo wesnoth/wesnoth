@@ -486,7 +486,7 @@ def actualtype(a):
         atype = "percentage"
     elif re.match(r"-?[0-9]+,-?[0-9]+\Z", a):
         atype = "position"
-    elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
+    elif re.match(r"(([0-9]+-)?[0-9]+,)*([0-9]+-)?[0-9]+\Z", a):
         atype = "span"
     elif a in ("melee", "ranged"):
         atype = "range"

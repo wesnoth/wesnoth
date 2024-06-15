@@ -225,7 +225,7 @@ rect input_area();
  * This is equal to output_size() / game_canvas_size().
  * Currently it is always integer, and the same in both dimensions.
  *
- * This may differ from preferences::pixel_scale() in some cases,
+ * This may differ from prefs::get().pixel_scale() in some cases,
  * For example if the window is too small to fit the desired scale.
  *
  * @returns     The currently active pixel scale multiplier.

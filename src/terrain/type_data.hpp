@@ -141,7 +141,7 @@ public:
 	 * Returns true if get_terrain_info(terrain) would succeed, or false if
 	 * get_terrain_info(terrain) would return a default-constructed instance.
 	 *
-	 * This has no connection to preferences::encountered_terrains().
+	 * This has no connection to prefs::get().encountered_terrains().
 	 *
 	 * Implementation note: if necessary, will trigger the lazy-creation and
 	 * add the resulting terrain to the terrain list.

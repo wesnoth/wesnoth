@@ -32,7 +32,7 @@
 
 #include "actions/attack.hpp"
 #include "game_config.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 
 #include <array>
@@ -2333,7 +2333,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 
 	bool use_monte_carlo_simulation =
 		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
-		&& preferences::damage_prediction_allow_monte_carlo_simulation();
+		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
 
 	if(use_monte_carlo_simulation) {
 		// A very complex fight. Use Monte Carlo simulation instead of exact

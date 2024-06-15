@@ -17,7 +17,7 @@
 
 #include "assert.h"
 #include "gettext.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 namespace utils {
 
@@ -43,7 +43,7 @@ std::string format_time_summary(std::time_t t) {
 		const int days_apart = current_time.tm_yday - save_time.tm_yday;
 		if(days_apart == 0) {
 			// save is from today
-			if(preferences::use_twelve_hour_clock_format() == false) {
+			if(prefs::get().use_twelve_hour_clock_format() == false) {
 				// TRANSLATORS: 24-hour time, eg '13:59'
 				format_string = _("%H:%M");
 			}
@@ -53,7 +53,7 @@ std::string format_time_summary(std::time_t t) {
 			}
 		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
 			// save is from this week
-			if(preferences::use_twelve_hour_clock_format() == false) {
+			if(prefs::get().use_twelve_hour_clock_format() == false) {
 				// TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
 				format_string = _("%A, %H:%M");
 			}

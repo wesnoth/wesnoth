@@ -21,7 +21,6 @@
 #include "game_end_exceptions.hpp"   // for LEVEL_RESULT, etc
 #include "hotkey/hotkey_manager.hpp" // for manager
 #include "picture.hpp"               // for manager
-#include "preferences/game.hpp"      // for manager
 #include "saved_game.hpp"            // for saved_game
 #include "savegame.hpp"              // for clean_saves, etc
 #include "sound.hpp"                 // for music_thinker
@@ -132,7 +131,6 @@ private:
 	bool start_in_fullscreen_ = false;
 
 	font::manager font_manager_;
-	const preferences::manager prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;

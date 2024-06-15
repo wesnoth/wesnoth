@@ -14,23 +14,23 @@
 */
 
 #include "units/orb_status.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 
 bool orb_status_helper::prefs_show_orb(orb_status os)
 {
 	switch(os) {
 	case orb_status::unmoved:
-		return preferences::show_unmoved_orb();
+		return prefs::get().show_unmoved_orb();
 	case orb_status::moved:
-		return preferences::show_moved_orb();
+		return prefs::get().show_moved_orb();
 	case orb_status::disengaged:
-		return preferences::show_disengaged_orb();
+		return prefs::get().show_disengaged_orb();
 	case orb_status::partial:
-		return preferences::show_partial_orb();
+		return prefs::get().show_partial_orb();
 	case orb_status::allied:
-		return preferences::show_ally_orb();
+		return prefs::get().show_ally_orb();
 	case orb_status::enemy:
-		return preferences::show_enemy_orb();
+		return prefs::get().show_enemy_orb();
 	default:
 		assert(!"expected to handle all the enum values");
 		return false;
@@ -41,17 +41,17 @@ std::string orb_status_helper::get_orb_color(orb_status os)
 {
 	switch(os) {
 	case orb_status::unmoved:
-		return preferences::unmoved_color();
+		return prefs::get().unmoved_color();
 	case orb_status::moved:
-		return preferences::moved_color();
+		return prefs::get().moved_color();
 	case orb_status::disengaged:
 		[[fallthrough]]; // use partial_color() for any context that wants a single color
 	case orb_status::partial:
-		return preferences::partial_color();
+		return prefs::get().partial_color();
 	case orb_status::allied:
-		return preferences::allied_color();
+		return prefs::get().allied_color();
 	case orb_status::enemy:
-		return preferences::enemy_color();
+		return prefs::get().enemy_color();
 	default:
 		assert(!"expected to handle all the enum values");
 		return {};

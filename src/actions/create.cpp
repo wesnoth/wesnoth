@@ -29,7 +29,7 @@
 #include "filter_context.hpp"
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -671,7 +671,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 			return std::tuple(true, 0, false);
 		new_unit_itor->set_hidden(true);
 	}
-	preferences::encountered_units().insert(new_unit_itor->type_id());
+	prefs::get().encountered_units().insert(new_unit_itor->type_id());
 	current_team.spend_gold(cost);
 
 	if ( show ) {
