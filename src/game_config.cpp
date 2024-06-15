@@ -318,7 +318,7 @@ void load_config(const config &v)
 		const auto backgrounds = utils::split(i["game_title_background"].str());
 		int r = rand() % (backgrounds.size());
 		game_title_background = backgrounds.at(r);
-		
+
 		// Allow game_title to be empty
 		game_title            = i["game_title"].str().empty() ? game_title_background : i["game_title"].str();
 		game_logo             = i["game_logo"].str();
