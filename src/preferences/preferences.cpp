@@ -236,31 +236,36 @@ void prefs::load_preferences()
 {
 	preferences_.clear();
 	try{
+		config default_prefs;
+		config unsynced_prefs;
+		config synced_prefs;
 #ifdef DEFAULT_PREFS_PATH
 		// NOTE: the system preferences file is only ever relevant for the first time wesnoth starts
-		//	   any default values will subsequently be written to the normal preferences file, which takes precedence over any values in the system preferences file
-		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
-		read(preferences_, *stream);
-
-		config user_prefs;
-		stream = filesystem::istream_file(filesystem::get_prefs_file());
-		read(user_prefs, *stream);
-
-		preferences_.merge_with(user_prefs);
-#else
-		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(),false);
-		read(preferences_, *stream);
+		//	   any default values will subsequently be written to the normal preferences files, which takes precedence over any values in the system preferences file
+		{
+			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(), false);
+			read(default_prefs, *stream);
+		}
 #endif
+		{
+			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_unsynced_prefs_file(), false);
+			read(unsynced_prefs, *stream);
+		}
+
+		{
+			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+			read(synced_prefs, *stream);
+		}
+
+		preferences_.merge_with(default_prefs);
+		preferences_.merge_with(unsynced_prefs);
+		preferences_.merge_with(synced_prefs);
 	} catch(const config::error& e) {
 		ERR_CFG << "Error loading preference, message: " << e.what();
 	}
 
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
-
-	// We save the password encrypted now. Erase any saved passwords in the prefs file.
-	erase("password");
-	erase("password_is_wrapped");
 
 	/*
 	completed_campaigns = "A,B,C"
@@ -309,22 +314,62 @@ void prefs::load_preferences()
 void prefs::write_preferences()
 {
 #ifndef _WIN32
-	bool prefs_file_existed = filesystem::file_exists(filesystem::get_prefs_file());
+	bool synced_prefs_file_existed = filesystem::file_exists(filesystem::get_prefs_file());
+	bool unsynced_prefs_file_existed = filesystem::file_exists(filesystem::get_unsynced_prefs_file());
 #endif
 
+	config synced;
+	config unsynced;
+
+	for(const char* attr : synced_attributes_) {
+		if(preferences_.has_attribute(attr)) {
+			synced[attr] = preferences_[attr];
+		}
+	}
+	for(const char* attr : synced_children_) {
+		for(const auto& child : preferences_.child_range(attr)) {
+			config& ch = synced.add_child(attr);
+			ch.append_children(child);
+		}
+	}
+
+	for(const char* attr : unsynced_attributes_) {
+		if(preferences_.has_attribute(attr)) {
+			unsynced[attr] = preferences_[attr];
+		}
+	}
+	for(const char* attr : unsynced_children_) {
+		for(const auto& child : preferences_.child_range(attr)) {
+			config& ch = unsynced.add_child(attr);
+			ch.append_children(child);
+		}
+	}
+
 	try {
-		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
-		write(*prefs_file, preferences_);
+		filesystem::scoped_ostream synced_prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
+		write(*synced_prefs_file, synced);
 	} catch(const filesystem::io_exception&) {
-		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'";
+		ERR_FS << "error writing to synced preferences file '" << filesystem::get_prefs_file() << "'";
+	}
+
+	try {
+		filesystem::scoped_ostream unsynced_prefs_file = filesystem::ostream_file(filesystem::get_unsynced_prefs_file());
+		write(*unsynced_prefs_file, unsynced);
+	} catch(const filesystem::io_exception&) {
+		ERR_FS << "error writing to unsynced preferences file '" << filesystem::get_unsynced_prefs_file() << "'";
 	}
 
 	save_credentials();
 
 #ifndef _WIN32
-	if(!prefs_file_existed) {
+	if(!synced_prefs_file_existed) {
 		if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
 			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'";
+		}
+	}
+	if(!unsynced_prefs_file_existed) {
+		if(chmod(filesystem::get_unsynced_prefs_file().c_str(), 0600) == -1) {
+			ERR_FS << "error setting permissions of unsynced preferences file '" << filesystem::get_unsynced_prefs_file() << "'";
 		}
 	}
 #endif
@@ -410,15 +455,6 @@ void prefs::save_credentials()
 //
 // helpers
 //
-void prefs::clear(const std::string& key)
-{
-	preferences_.recursive_clear_value(key);
-}
-
-void prefs::erase(const std::string& key) {
-	preferences_.remove_attribute(key);
-}
-
 void prefs::set_child(const std::string& key, const config& val) {
 	preferences_.clear_children(key);
 	preferences_.add_child(key, val);
@@ -1686,7 +1722,7 @@ void prefs::set_theme(const std::string& theme)
 void prefs::set_mp_server_program_name(const std::string& path)
 {
 	if(path.empty()) {
-		clear(prefs_list::mp_server_program_name);
+		preferences_.remove_attribute(prefs_list::mp_server_program_name);
 	} else {
 		preferences_[prefs_list::mp_server_program_name] = path;
 	}
@@ -2105,7 +2141,7 @@ void prefs::set_countdown_init_time(int value)
 
 void prefs::clear_countdown_init_time()
 {
-	clear(prefs_list::mp_countdown_init_time);
+	preferences_.remove_attribute(prefs_list::mp_countdown_init_time);
 }
 
 int prefs::countdown_reservoir_time()
@@ -2120,7 +2156,7 @@ void prefs::set_countdown_reservoir_time(int value)
 
 void prefs::clear_countdown_reservoir_time()
 {
-	clear(prefs_list::mp_countdown_reservoir_time);
+	preferences_.remove_attribute(prefs_list::mp_countdown_reservoir_time);
 }
 
 int prefs::countdown_turn_bonus()
@@ -2135,7 +2171,7 @@ void prefs::set_countdown_turn_bonus(int value)
 
 void prefs::clear_countdown_turn_bonus()
 {
-	clear(prefs_list::mp_countdown_turn_bonus);
+	preferences_.remove_attribute(prefs_list::mp_countdown_turn_bonus);
 }
 
 int prefs::countdown_action_bonus()
@@ -2150,7 +2186,7 @@ void prefs::set_countdown_action_bonus(int value)
 
 void prefs::clear_countdown_action_bonus()
 {
-	clear(prefs_list::mp_countdown_action_bonus);
+	preferences_.remove_attribute(prefs_list::mp_countdown_action_bonus);
 }
 
 int prefs::village_gold()
@@ -2746,36 +2782,36 @@ void prefs::set_game_created_lobby(bool val)
 
 void prefs::clear_mp_alert_prefs()
 {
-	erase(prefs_list::player_joins_sound);
-	erase(prefs_list::player_joins_notif);
-	erase(prefs_list::player_joins_lobby);
-	erase(prefs_list::player_leaves_sound);
-	erase(prefs_list::player_leaves_notif);
-	erase(prefs_list::player_leaves_lobby);
-	erase(prefs_list::private_message_sound);
-	erase(prefs_list::private_message_notif);
-	erase(prefs_list::private_message_lobby);
-	erase(prefs_list::friend_message_sound);
-	erase(prefs_list::friend_message_notif);
-	erase(prefs_list::friend_message_lobby);
-	erase(prefs_list::public_message_sound);
-	erase(prefs_list::public_message_notif);
-	erase(prefs_list::public_message_lobby);
-	erase(prefs_list::server_message_sound);
-	erase(prefs_list::server_message_notif);
-	erase(prefs_list::server_message_lobby);
-	erase(prefs_list::ready_for_start_sound);
-	erase(prefs_list::ready_for_start_notif);
-	erase(prefs_list::ready_for_start_lobby);
-	erase(prefs_list::game_has_begun_sound);
-	erase(prefs_list::game_has_begun_notif);
-	erase(prefs_list::game_has_begun_lobby);
-	erase(prefs_list::turn_changed_sound);
-	erase(prefs_list::turn_changed_notif);
-	erase(prefs_list::turn_changed_lobby);
-	erase(prefs_list::game_created_sound);
-	erase(prefs_list::game_created_notif);
-	erase(prefs_list::game_created_lobby);
+	preferences_.remove_attribute(prefs_list::player_joins_sound);
+	preferences_.remove_attribute(prefs_list::player_joins_notif);
+	preferences_.remove_attribute(prefs_list::player_joins_lobby);
+	preferences_.remove_attribute(prefs_list::player_leaves_sound);
+	preferences_.remove_attribute(prefs_list::player_leaves_notif);
+	preferences_.remove_attribute(prefs_list::player_leaves_lobby);
+	preferences_.remove_attribute(prefs_list::private_message_sound);
+	preferences_.remove_attribute(prefs_list::private_message_notif);
+	preferences_.remove_attribute(prefs_list::private_message_lobby);
+	preferences_.remove_attribute(prefs_list::friend_message_sound);
+	preferences_.remove_attribute(prefs_list::friend_message_notif);
+	preferences_.remove_attribute(prefs_list::friend_message_lobby);
+	preferences_.remove_attribute(prefs_list::public_message_sound);
+	preferences_.remove_attribute(prefs_list::public_message_notif);
+	preferences_.remove_attribute(prefs_list::public_message_lobby);
+	preferences_.remove_attribute(prefs_list::server_message_sound);
+	preferences_.remove_attribute(prefs_list::server_message_notif);
+	preferences_.remove_attribute(prefs_list::server_message_lobby);
+	preferences_.remove_attribute(prefs_list::ready_for_start_sound);
+	preferences_.remove_attribute(prefs_list::ready_for_start_notif);
+	preferences_.remove_attribute(prefs_list::ready_for_start_lobby);
+	preferences_.remove_attribute(prefs_list::game_has_begun_sound);
+	preferences_.remove_attribute(prefs_list::game_has_begun_notif);
+	preferences_.remove_attribute(prefs_list::game_has_begun_lobby);
+	preferences_.remove_attribute(prefs_list::turn_changed_sound);
+	preferences_.remove_attribute(prefs_list::turn_changed_notif);
+	preferences_.remove_attribute(prefs_list::turn_changed_lobby);
+	preferences_.remove_attribute(prefs_list::game_created_sound);
+	preferences_.remove_attribute(prefs_list::game_created_notif);
+	preferences_.remove_attribute(prefs_list::game_created_lobby);
 }
 
 std::string prefs::get_system_username()
