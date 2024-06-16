@@ -94,6 +94,8 @@ void migrate_version_selection::post_show(window& window)
 			= boost::replace_all_copy(filesystem::get_addons_dir(), current_version_str, selected);
 		std::string migrate_prefs_file
 			= boost::replace_all_copy(filesystem::get_prefs_file(), current_version_str, selected);
+		std::string migrate_unsynced_prefs_file
+			= boost::replace_all_copy(filesystem::get_unsynced_prefs_file(), current_version_str, selected);
 		std::string migrate_credentials_file
 			= boost::replace_all_copy(filesystem::get_credentials_file(), current_version_str, selected);
 
@@ -132,6 +134,7 @@ void migrate_version_selection::post_show(window& window)
 		if(!already_migrated)
 #endif
 		{
+			prefs::get().migrate_preferences(migrate_unsynced_prefs_file);
 			prefs::get().migrate_preferences(migrate_prefs_file);
 			migrate_credentials(migrate_credentials_file);
 		}

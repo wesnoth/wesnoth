@@ -274,6 +274,7 @@ struct preferences_list_defines
 	static constexpr const char* const yresolution = "yresolution";
 	//
 	// MP alert preferences
+	// Note, this list of items must match those ids defined in data/gui/dialogs/mp_alerts_options.cfg
 	//
 	/** whether to play a sound when a player joins the game you're in */
 	static constexpr const char* const player_joins_sound = "player_joins_sound";
