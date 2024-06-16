@@ -34,6 +34,8 @@
 2 empty_test
 0 test_end_turn
 9 there_is_no_test_with_this_name
+0 check_strikes_once
+10 check_strikes_twice_fail
 #
 # The synchronisation mechanism
 #
@@ -747,6 +749,40 @@
 0 attacks_overwrite_specials_two_both_sides
 0 attacks_overwrite_specials_two_one_side
 0 attacks_overwrite_specials_mixed
+# berserk ability tests
+0 berserk_negative_value
+0 berserk_zero
+0 berserk_add
+0 berserk_add_divide
+0 berserk_add_multiply
+0 berserk_add_sub
+0 berserk_affect_self_no
+0 berserk_affect_enemies
+0 berserk_affect_everybody
+0 berserk_divide
+0 berserk_high_fraction
+0 berserk_low_fraction
+0 berserk_multiply
+0 berserk_multiply_divide
+0 berserk_no_value
+0 berserk_sub
+0 berserk_sub_divide
+0 berserk_sub_multiply
+0 berserk_wfl_other
+0 berserk_wfl_self
+0 berserk_two_cumulative_yes_same_id
+0 berserk_two_cumulative_yes_unique_id
+0 berserk_two_cumulative_no_same_id
+0 berserk_two_cumulative_no_unique_id
+0 berserk_two_cumulative_mixed_same_id
+0 berserk_two_cumulative_mixed_unique_id
+0 berserk_max_value
+0 berserk_overwrite_specials_one_side
+0 berserk_overwrite_specials_both_sides
+0 berserk_overwrite_specials_two_both_sides
+0 berserk_overwrite_specials_two_one_side
+0 berserk_overwrite_specials_mixed
+0 berserk_different_values
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated

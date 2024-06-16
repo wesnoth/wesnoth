@@ -1,2 +1,2 @@
-find data -name '*.cfg' -print
-find data -name '*.lua' -print
+find data -name '*.cfg' -not -path "data/test/*" -print
+find data -name '*.lua' -not -path "data/test/*" -print
