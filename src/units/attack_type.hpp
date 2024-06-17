@@ -129,6 +129,11 @@ public:
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
 	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	/**
+	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
+	 * uses when a defender has no weapon for a given range.
+	 */
+	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
 
 	// In unit_types.cpp:
 

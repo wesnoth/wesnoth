@@ -1241,6 +1241,9 @@ std::string attack_type::select_damage_type(const unit_ability_list& damage_type
  */
 std::pair<std::string, std::string> attack_type::damage_type() const
 {
+	if(attack_empty()){
+		return {"", ""};
+	}
 	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
 	if(damage_type_list.empty()){
 		return {type(), ""};
