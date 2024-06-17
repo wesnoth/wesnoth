@@ -506,7 +506,7 @@ static std::string fix_orb_color_name(const std::string& color) {
 }
 
 std::string prefs::allied_color() {
-	std::string ally_color = preferences_[prefs_list::ally_orb_color];
+	std::string ally_color = preferences_[prefs_list::ally_orb_color].str();
 	if (ally_color.empty())
 		return game_config::colors::ally_orb_color;
 	return fix_orb_color_name(ally_color);
@@ -516,7 +516,7 @@ void prefs::set_allied_color(const std::string& color_id) {
 }
 
 std::string prefs::enemy_color() {
-	std::string enemy_color = preferences_[prefs_list::enemy_orb_color];
+	std::string enemy_color = preferences_[prefs_list::enemy_orb_color].str();
 	if (enemy_color.empty())
 		return game_config::colors::enemy_orb_color;
 	return fix_orb_color_name(enemy_color);
@@ -526,7 +526,7 @@ void prefs::set_enemy_color(const std::string& color_id) {
 }
 
 std::string prefs::moved_color() {
-	std::string moved_color = preferences_[prefs_list::moved_orb_color];
+	std::string moved_color = preferences_[prefs_list::moved_orb_color].str();
 	if (moved_color.empty())
 		return game_config::colors::moved_orb_color;
 	return fix_orb_color_name(moved_color);
@@ -536,7 +536,7 @@ void prefs::set_moved_color(const std::string& color_id) {
 }
 
 std::string prefs::unmoved_color() {
-	std::string unmoved_color = preferences_[prefs_list::unmoved_orb_color];
+	std::string unmoved_color = preferences_[prefs_list::unmoved_orb_color].str();
 	if (unmoved_color.empty())
 		return game_config::colors::unmoved_orb_color;
 	return fix_orb_color_name(unmoved_color);
@@ -546,7 +546,7 @@ void prefs::set_unmoved_color(const std::string& color_id) {
 }
 
 std::string prefs::partial_color() {
-	std::string partmoved_color = preferences_[prefs_list::partial_orb_color];
+	std::string partmoved_color = preferences_[prefs_list::partial_orb_color].str();
 	if (partmoved_color.empty())
 		return game_config::colors::partial_orb_color;
 	return fix_orb_color_name(partmoved_color);
@@ -556,7 +556,7 @@ void prefs::set_partial_color(const std::string& color_id) {
 }
 
 std::string prefs::core_id() {
-	std::string core_id = preferences_[prefs_list::core];
+	std::string core_id = preferences_[prefs_list::core].str();
 	if (core_id.empty())
 		return "default";
 	return core_id;
@@ -654,7 +654,7 @@ bool prefs::turbo()
 		return true;
 	}
 
-	return preferences_[prefs_list::turbo];
+	return preferences_[prefs_list::turbo].to_bool();
 }
 
 void prefs::set_turbo(bool ison)
@@ -710,7 +710,7 @@ void prefs::set_idle_anim(const bool ison)
 
 int prefs::idle_anim_rate()
 {
-	return preferences_[prefs_list::idle_anim_rate];
+	return preferences_[prefs_list::idle_anim_rate].to_int();
 }
 
 void prefs::set_idle_anim_rate(int rate)
@@ -720,7 +720,7 @@ void prefs::set_idle_anim_rate(int rate)
 
 std::string prefs::language()
 {
-	return preferences_[prefs_list::locale];
+	return preferences_[prefs_list::locale].str();
 }
 
 void prefs::set_language(const std::string& s)
@@ -730,7 +730,7 @@ void prefs::set_language(const std::string& s)
 
 std::string prefs::gui_theme()
 {
-	return preferences_[prefs_list::gui2_theme];
+	return preferences_[prefs_list::gui2_theme].str();
 }
 
 void prefs::set_gui_theme(const std::string& s)
@@ -740,7 +740,7 @@ void prefs::set_gui_theme(const std::string& s)
 
 bool prefs::ellipses()
 {
-	return preferences_[prefs_list::show_side_colors];
+	return preferences_[prefs_list::show_side_colors].to_bool();
 }
 
 void prefs::set_ellipses(bool ison)
@@ -750,7 +750,7 @@ void prefs::set_ellipses(bool ison)
 
 bool prefs::grid()
 {
-	return preferences_[prefs_list::grid];
+	return preferences_[prefs_list::grid].to_bool();
 }
 
 void prefs::set_grid(bool ison)
@@ -956,7 +956,7 @@ bool prefs::set_music(bool ison) {
 
 bool prefs::stop_music_in_background()
 {
-	return preferences_[prefs_list::stop_music_in_background];
+	return preferences_[prefs_list::stop_music_in_background].to_bool();
 }
 
 void prefs::set_stop_music_in_background(bool ison)
@@ -1135,12 +1135,12 @@ bool prefs::confirm_load_save_from_different_version()
 
 bool prefs::use_twelve_hour_clock_format()
 {
-	return preferences_[prefs_list::use_twelve_hour_clock_format];
+	return preferences_[prefs_list::use_twelve_hour_clock_format].to_bool();
 }
 
 bool prefs::disable_auto_moves()
 {
-	return preferences_[prefs_list::disable_auto_moves];
+	return preferences_[prefs_list::disable_auto_moves].to_bool();
 }
 
 void prefs::set_disable_auto_moves(bool value)
@@ -1160,7 +1160,7 @@ void prefs::set_damage_prediction_allow_monte_carlo_simulation(bool value)
 
 std::string prefs::addon_manager_saved_order_name()
 {
-	return preferences_[prefs_list::addon_manager_saved_order_name];
+	return preferences_[prefs_list::addon_manager_saved_order_name].str();
 }
 
 void prefs::set_addon_manager_saved_order_name(const std::string& value)
@@ -1180,7 +1180,7 @@ void prefs::set_addon_manager_saved_order_direction(sort_order::type value)
 
 std::string prefs::selected_achievement_group()
 {
-	return preferences_[prefs_list::selected_achievement_group];
+	return preferences_[prefs_list::selected_achievement_group].str();
 }
 
 void prefs::set_selected_achievement_group(const std::string& content_for)
@@ -1379,7 +1379,7 @@ void prefs::set_editor_chosen_addon(const std::string& addon_id)
 
 std::string prefs::editor_chosen_addon()
 {
-	return preferences_[prefs_list::editor_chosen_addon];
+	return preferences_[prefs_list::editor_chosen_addon].str();
 }
 
 void prefs::set_mp_alert_option(const std::string& id, const std::string& type, bool value)
@@ -1401,7 +1401,7 @@ void prefs::set_last_cache_cleared_version(const std::string& version)
 }
 std::string prefs::last_cache_cleared_version()
 {
-	return preferences_[prefs_list::_last_cache_cleaned_ver];
+	return preferences_[prefs_list::_last_cache_cleaned_ver].str();
 }
 
 bool prefs::get_show_deprecation(bool def)
@@ -1425,7 +1425,7 @@ optional_const_config prefs::dir_bookmarks()
 
 bool prefs::whisper_friends_only()
 {
-	return preferences_[prefs_list::lobby_whisper_friends_only];
+	return preferences_[prefs_list::lobby_whisper_friends_only].to_bool();
 }
 
 void prefs::set_whisper_friends_only(bool v)
@@ -1440,7 +1440,7 @@ bool prefs::auto_open_whisper_windows()
 
 bool prefs::fi_invert()
 {
-	return preferences_[prefs_list::fi_invert];
+	return preferences_[prefs_list::fi_invert].to_bool();
 }
 
 void prefs::set_fi_invert(bool value)
@@ -1450,7 +1450,7 @@ void prefs::set_fi_invert(bool value)
 
 bool prefs::fi_vacant_slots()
 {
-	return preferences_[prefs_list::fi_vacant_slots];
+	return preferences_[prefs_list::fi_vacant_slots].to_bool();
 }
 
 void prefs::set_fi_vacant_slots(bool value)
@@ -1460,7 +1460,7 @@ void prefs::set_fi_vacant_slots(bool value)
 
 bool prefs::fi_friends_in_game()
 {
-	return preferences_[prefs_list::fi_friends_in_game];
+	return preferences_[prefs_list::fi_friends_in_game].to_bool();
 }
 
 void prefs::set_fi_friends_in_game(bool value)
@@ -1470,7 +1470,7 @@ void prefs::set_fi_friends_in_game(bool value)
 
 bool prefs::fi_blocked_in_game()
 {
-	return preferences_[prefs_list::fi_blocked_in_game];
+	return preferences_[prefs_list::fi_blocked_in_game].to_bool();
 }
 
 void prefs::set_fi_blocked_in_game(bool value)
@@ -1487,11 +1487,11 @@ void prefs::set_editor_auto_update_transitions(int value) {
 }
 
 std::string prefs::default_dir() {
-	return preferences_[prefs_list::editor_default_dir];
+	return preferences_[prefs_list::editor_default_dir].str();
 }
 
 bool prefs::editor_draw_terrain_codes() {
-	return preferences_[prefs_list::editor_draw_terrain_codes];
+	return preferences_[prefs_list::editor_draw_terrain_codes].to_bool();
 }
 
 void prefs::set_editor_draw_terrain_codes(bool value) {
@@ -1499,7 +1499,7 @@ void prefs::set_editor_draw_terrain_codes(bool value) {
 }
 
 bool prefs::editor_draw_hex_coordinates() {
-	return preferences_[prefs_list::editor_draw_hex_coordinates];
+	return preferences_[prefs_list::editor_draw_hex_coordinates].to_bool();
 }
 
 void prefs::set_editor_draw_hex_coordinates(bool value) {
@@ -1507,7 +1507,7 @@ void prefs::set_editor_draw_hex_coordinates(bool value) {
 }
 
 bool prefs::editor_draw_num_of_bitmaps() {
-	return preferences_[prefs_list::editor_draw_num_of_bitmaps];
+	return preferences_[prefs_list::editor_draw_num_of_bitmaps].to_bool();
 }
 
 void prefs::set_editor_draw_num_of_bitmaps(bool value) {
@@ -1711,7 +1711,7 @@ void prefs::set_mp_server_program_name(const std::string& path)
 
 std::string prefs::get_mp_server_program_name()
 {
-	return preferences_[prefs_list::mp_server_program_name];
+	return preferences_[prefs_list::mp_server_program_name].str();
 }
 
 const std::map<std::string, preferences::acquaintance>& prefs::get_acquaintances()
@@ -1918,7 +1918,7 @@ void prefs::set_network_host(const std::string& host)
 std::string prefs::campaign_server()
 {
 	if(!preferences_[prefs_list::campaign_server].empty()) {
-		return preferences_[prefs_list::campaign_server];
+		return preferences_[prefs_list::campaign_server].str();
 	} else {
 		return pref_constants::default_addons_server;
 	}
@@ -1931,7 +1931,7 @@ void prefs::set_campaign_server(const std::string& host)
 
 bool prefs::turn_dialog()
 {
-	return preferences_[prefs_list::turn_dialog];
+	return preferences_[prefs_list::turn_dialog].to_bool();
 }
 
 void prefs::set_turn_dialog(bool ison)
@@ -1941,7 +1941,7 @@ void prefs::set_turn_dialog(bool ison)
 
 bool prefs::enable_whiteboard_mode_on_start()
 {
-	return preferences_[prefs_list::enable_planning_mode_on_start];
+	return preferences_[prefs_list::enable_planning_mode_on_start].to_bool();
 }
 
 void prefs::set_enable_whiteboard_mode_on_start(bool value)
@@ -1951,7 +1951,7 @@ void prefs::set_enable_whiteboard_mode_on_start(bool value)
 
 bool prefs::hide_whiteboard()
 {
-	return preferences_[prefs_list::hide_whiteboard];
+	return preferences_[prefs_list::hide_whiteboard].to_bool();
 }
 
 void prefs::set_hide_whiteboard(bool value)
@@ -1976,7 +1976,7 @@ void prefs::set_allow_observers(bool value)
 
 bool prefs::shuffle_sides()
 {
-	return preferences_[prefs_list::shuffle_sides];
+	return preferences_[prefs_list::shuffle_sides].to_bool();
 }
 
 void prefs::set_shuffle_sides(bool value)
@@ -1986,7 +1986,7 @@ void prefs::set_shuffle_sides(bool value)
 
 std::string prefs::random_faction_mode()
 {
-	return preferences_[prefs_list::random_faction_mode];
+	return preferences_[prefs_list::random_faction_mode].str();
 }
 
 void prefs::set_random_faction_mode(const std::string& value)
@@ -2006,7 +2006,7 @@ void prefs::set_use_map_settings(bool value)
 
 int prefs::mp_server_warning_disabled()
 {
-	return preferences_[prefs_list::mp_server_warning_disabled];
+	return preferences_[prefs_list::mp_server_warning_disabled].to_int();
 }
 
 void prefs::set_mp_server_warning_disabled(int value)
@@ -2036,7 +2036,7 @@ void prefs::set_fog(bool value)
 
 bool prefs::shroud()
 {
-	return preferences_[prefs_list::mp_shroud];
+	return preferences_[prefs_list::mp_shroud].to_bool();
 }
 
 void prefs::set_shroud(bool value)
@@ -2082,7 +2082,7 @@ void prefs::set_options(const config& values)
 
 bool prefs::skip_mp_replay()
 {
-	return preferences_[prefs_list::skip_mp_replay];
+	return preferences_[prefs_list::skip_mp_replay].to_bool();
 }
 
 void prefs::set_skip_mp_replay(bool value)
@@ -2092,7 +2092,7 @@ void prefs::set_skip_mp_replay(bool value)
 
 bool prefs::blindfold_replay()
 {
-	return preferences_[prefs_list::blindfold_replay];
+	return preferences_[prefs_list::blindfold_replay].to_bool();
 }
 
 void prefs::set_blindfold_replay(bool value)
@@ -2102,7 +2102,7 @@ void prefs::set_blindfold_replay(bool value)
 
 bool prefs::countdown()
 {
-	return preferences_[prefs_list::mp_countdown];
+	return preferences_[prefs_list::mp_countdown].to_bool();
 }
 
 void prefs::set_countdown(bool value)
@@ -2202,7 +2202,7 @@ void prefs::set_xp_modifier(int value)
 
 std::string prefs::era()
 {
-	return preferences_[prefs_list::mp_era];
+	return preferences_[prefs_list::mp_era].str();
 }
 
 void prefs::set_era(const std::string& value)
@@ -2212,7 +2212,7 @@ void prefs::set_era(const std::string& value)
 
 std::string prefs::level()
 {
-	return preferences_[prefs_list::mp_level];
+	return preferences_[prefs_list::mp_level].str();
 }
 
 void prefs::set_level(const std::string& value)
@@ -2258,7 +2258,7 @@ void prefs::set_modifications(const std::vector<std::string>& value, bool mp)
 
 bool prefs::skip_ai_moves()
 {
-	return preferences_[prefs_list::skip_ai_moves];
+	return preferences_[prefs_list::skip_ai_moves].to_bool();
 }
 
 void prefs::set_skip_ai_moves(bool value)
@@ -2293,7 +2293,7 @@ void prefs::set_delete_saves(bool value)
 
 bool prefs::delete_saves()
 {
-	return preferences_[prefs_list::delete_saves];
+	return preferences_[prefs_list::delete_saves].to_bool();
 }
 
 void prefs::set_ask_delete_saves(bool value)
@@ -2381,7 +2381,7 @@ std::string prefs::get_chat_timestamp(const std::time_t& t)
 
 bool prefs::chat_timestamping()
 {
-	return preferences_[prefs_list::chat_timestamp];
+	return preferences_[prefs_list::chat_timestamp].to_bool();
 }
 
 void prefs::set_chat_timestamping(bool value)
@@ -2411,7 +2411,7 @@ int prefs::chat_message_aging()
 
 bool prefs::show_all_units_in_help()
 {
-	return preferences_[prefs_list::show_all_units_in_help];
+	return preferences_[prefs_list::show_all_units_in_help].to_bool();
 }
 
 void prefs::set_show_all_units_in_help(bool value)
@@ -2431,7 +2431,7 @@ std::set<t_translation::terrain_code>& prefs::encountered_terrains()
 
 std::string prefs::custom_command()
 {
-	return preferences_[prefs_list::custom_command];
+	return preferences_[prefs_list::custom_command].str();
 }
 
 void prefs::set_custom_command(const std::string& command)
@@ -2771,7 +2771,7 @@ preferences::secure_buffer prefs::escape(const preferences::secure_buffer& text)
 
 bool prefs::remember_password()
 {
-	return preferences_[prefs_list::remember_password];
+	return preferences_[prefs_list::remember_password].to_bool();
 }
 
 void prefs::set_remember_password(bool remember)
