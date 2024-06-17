@@ -1,19 +1,14 @@
-## Version 1.19.0+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.19.1
  ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French, Japanese, Ukrainian
  ### Units
- ### User interface
+   * Added a melee animation for the Dragoon and Cavalier.
+   * Added a wounded bob animation for the Cavalier.
  ### WML Engine
-   * modify 'apply_to' in [experimental_filter_ability(_active)] or [overwrite][experimental_filter_specials] to do an inclusion check for a comma-separated list of damage types in [resistance] abilities.
+   * Modified 'apply_to' in [experimental_filter_ability(_active)] or [overwrite][experimental_filter_specials] to do an inclusion check for a comma-separated list of damage types in [resistance] abilities.
+   * Removed the deprecated 'controller=number' from [side]
  ### Miscellaneous and Bug Fixes
+   * Fixed erroneous sidebar text caused by [damage_type] assuming that an alternate_type is always present.
 
 ## Version 1.19.0
  ### Add-ons client
