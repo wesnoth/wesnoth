@@ -851,10 +851,13 @@ static bfs::path linux_userdata(const std::string& newprefdir)
 void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
+	DBG_FS << "determining Windows userdata dir";
 	user_data_dir = windows_userdata(newprefdir);
 #elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
+	DBG_FS << "determining macOS userdata dir";
 	user_data_dir = apple_userdata(newprefdir);
 #else
+	DBG_FS << "determining non-Windows and non-macOS userdata dir";
 	user_data_dir = linux_userdata(newprefdir);
 #endif
 
