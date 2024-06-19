@@ -674,8 +674,10 @@ void context_manager::resize_map_dialog()
 
 void context_manager::save_map_as_dialog()
 {
+	bool first_pick = false;
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty() || (input_name.find("scenarios") != std::string::npos)) {
+	if(input_name.empty()) {
+		first_pick = true;
 		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_)+"/maps";
 	}
 
@@ -690,10 +692,9 @@ void context_manager::save_map_as_dialog()
 		return;
 	}
 
-
 	boost::filesystem::path save_path(dlg.path());
-	const std::string ext = save_path.extension().string();
 
+	const std::string ext = save_path.extension().string();
 	if (ext != ".map") {
 		if(gui2::show_message(
 			_("Error"),
@@ -704,6 +705,18 @@ void context_manager::save_map_as_dialog()
 		} else {
 			return;
 		}
+	}
+
+	// Show warning the first time user tries to save in a wrong folder
+	std::string last_folder = save_path.parent_path().filename().string();
+	if ((last_folder == "scenarios")
+		&& first_pick
+		&& (gui2::show_message(
+				_("Error"),
+				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "map"}, {"type2", "scenarios"}}),
+				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
+	{
+		return;
 	}
 
 	std::size_t is_open = check_open_map(save_path.string());
@@ -722,8 +735,10 @@ void context_manager::save_map_as_dialog()
 
 void context_manager::save_scenario_as_dialog()
 {
+	bool first_pick = false;
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty() || (input_name.find("maps") != std::string::npos)) {
+	if(input_name.empty()) {
+		first_pick = true;
 		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/scenarios";
 	}
 
@@ -752,6 +767,18 @@ void context_manager::save_scenario_as_dialog()
 		} else {
 			return;
 		}
+	}
+
+	// Show warning the first time user tries to save in a wrong folder
+	std::string last_folder = save_path.parent_path().filename().string();
+	if ((last_folder == "maps")
+		&& first_pick
+		&& (gui2::show_message(
+				_("Error"),
+				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "scenario"}, {"type2", "maps"}}),
+				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
+	{
+		return;
 	}
 
 	std::size_t is_open = check_open_map(save_path.string());
