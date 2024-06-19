@@ -600,16 +600,12 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 }
 
 template<typename TComp>
-std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
+unit_ability_list::half_pair unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
 {
 	if ( cfgs_.empty() ) {
-		return std::pair(def, map_location());
+		return half_pair{def};
 	}
-	// The returned location is the best non-cumulative one, if any,
-	// the best absolute cumulative one otherwise.
-	map_location best_loc;
 	bool only_cumulative = true;
-	int abs_max = 0;
 	int flat = 0;
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
@@ -620,22 +616,16 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 
 		if ((*p.ability_cfg)["cumulative"].to_bool()) {
 			stack += value;
-			if (value < 0) value = -value;
-			if (only_cumulative && !comp(value, abs_max)) {
-				abs_max = value;
-				best_loc = p.teacher_loc;
-			}
 		} else if (only_cumulative || comp(flat, value)) {
 			only_cumulative = false;
 			flat = value;
-			best_loc = p.teacher_loc;
 		}
 	}
-	return std::pair(flat + stack, best_loc);
+	return half_pair{flat + stack};
 }
 
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
+template unit_ability_list::half_pair unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
+template unit_ability_list::half_pair unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
 
 /*
  *
@@ -1985,16 +1975,16 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFFECTS wham) :
+effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, effect::extra_calculation_rules ruleset) :
 	effect_list_(),
 	composite_value_(0)
 {
-
-	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
 
+	// used only for TODO_rename_lship, this is the sub of cumulative values
+	int stack = 0;
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
 	std::optional<int> max_value = std::nullopt;
@@ -2007,31 +1997,39 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if(wham != EFFECT_CUMULABLE){
-			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		if (const config::attribute_value *v = cfg.get("value")) {
+			int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				if(ruleset != extra_calculation_rules::TODO_rename_lship) {
+					// No idea if there's a reason not to include this for TODO_rename_lship, but get_extremum didn't
 					callable.add("base_value", wfl::variant(def));
-					return formula.evaluate(callable).as_int();
-				});
+				}
+				return formula.evaluate(callable).as_int();
+			});
 
-				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			if(extra_calculation_rules::TODO_rename_lship == ruleset && cfg["cumulative"].to_bool()) {
+				stack += value;
+			} else {
+				if(extra_calculation_rules::TODO_rename_lship != ruleset && cfg["cumulative"].to_bool()) {
+					value = std::max(def, value);
+				}
+				// FIXME: is this assert triggerable by WML?
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
-					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
-					set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					set_effect_min.set(SET, value, ability.ability_cfg, ability.teacher_loc);
+					set_effect_max.set(SET, value, ability.ability_cfg, ability.teacher_loc);
 				}
 				else {
-					if(value_cum > set_effect_max.value) {
-						set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					if(value > set_effect_max.value) {
+						set_effect_max.set(SET, value, ability.ability_cfg, ability.teacher_loc);
 					}
-					if(value_cum < set_effect_min.value) {
-						set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					if(value < set_effect_min.value) {
+						set_effect_min.set(SET, value, ability.ability_cfg, ability.teacher_loc);
 					}
 				}
 			}
 		}
 
-		if(wham == EFFECT_CLAMP_MIN_MAX){
+		if(extra_calculation_rules::clamp_to_min_max == ruleset) {
 			if(cfg.has_attribute("max_value")){
 				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
 			}
@@ -2088,7 +2086,8 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 		}
 	}
 
-	if((wham != EFFECT_CUMULABLE) && set_effect_max.type != NOT_USED) {
+	int value_set = def;
+	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
@@ -2097,6 +2096,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 			effect_list_.push_back(set_effect_min);
 		}
 	}
+	value_set += stack; // TODO: should it override def, even if there are no non-cumulative abilities (no set_effect_max is NOT_USED)?
 
 	/* Do multiplication with floating point values rather than integers
 	 * We want two places of precision for each multiplier

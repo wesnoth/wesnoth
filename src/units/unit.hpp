@@ -64,18 +64,31 @@ class unit_ability_list
 public:
 	unit_ability_list(const map_location& loc = map_location()) : cfgs_() , loc_(loc) {}
 
+	/**
+	 * Specialisation of std::pair<int, map_location> returned by get_extremum.
+	 *
+	 * The map_location should identify the unit whose ability provides the bulk
+	 * of the bonus or malus; however the calculation seems incorrect when dealing
+	 * with negative values for a malus, and I believe it's never used. This struct
+	 * is for confirming that nothing used it.
+	 */
+	struct half_pair {
+		int first;
+		// the map_location could be re-added if anything needs to use it
+	};
+
 	// Implemented in unit_abilities.cpp
-	std::pair<int, map_location> highest(const std::string& key, int def=0) const
+	half_pair highest(const std::string& key, int def=0) const
 	{
 		return get_extremum(key, def, std::less<int>());
 	}
-	std::pair<int, map_location> lowest(const std::string& key, int def=0) const
+	half_pair lowest(const std::string& key, int def=0) const
 	{
 		return get_extremum(key, def, std::greater<int>());
 	}
 
 	template<typename TComp>
-	std::pair<int, map_location> get_extremum(const std::string& key, int def, const TComp& comp) const;
+	half_pair get_extremum(const std::string& key, int def, const TComp& comp) const;
 
 	// The following make this class usable with standard library algorithms and such
 	typedef std::vector<unit_ability>::iterator       iterator;
