@@ -153,6 +153,11 @@ public:
 	 * from a side's config before using it to create the side's leader.
 	 */
 	static const std::set<std::string> attributes;
+	/**
+	 * Stores the child tags recognized by [side]. These should be stripped
+	 * from a side's config before using it to create the side's leader.
+	 */
+	static const std::set<std::string> tags;
 
 	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
 

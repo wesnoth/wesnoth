@@ -846,12 +846,18 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	// Save default attributes that could be overwritten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
+	cfg_.clear_children("default_faction");
 	cfg_.add_child("default_faction", config {
-		"type",    cfg_["type"],
-		"gender",  cfg_["gender"],
 		"faction", cfg_["faction"],
 		"recruit", cfg_["recruit"],
 	});
+	if(auto p_cfg = cfg_.optional_child("leader")) {
+		cfg_.mandatory_child("default_faction").add_child("leader", config {
+			"type", (p_cfg)["type"],
+			"gender", (p_cfg)["gender"],
+		});
+	}
+
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1;
@@ -1030,40 +1036,17 @@ config side_engine::new_config() const
 	res["chose_random"] = chose_random_;
 
 	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
-		// Find a config where a default leader is and set a new type and gender values for it.
-		config* leader = &res;
 
-		if(flg_.default_leader_cfg() != nullptr) {
-			for(config& side_unit : res.child_range("unit")) {
-				if(*flg_.default_leader_cfg() != side_unit) {
-					continue;
-				}
-
-				leader = &side_unit;
-
-				if(flg_.current_leader() != (*leader)["type"]) {
-					// If a new leader type was selected from carryover, make sure that we reset the leader.
-					std::string leader_id = (*leader)["id"];
-					leader->clear();
-
-					if(!leader_id.empty()) {
-						(*leader)["id"] = leader_id;
-					}
-				}
-
-				break;
+		if(!flg_.leader_lock()) {
+			if(controller_ != CNTR_EMPTY) {
+				auto& leader = res.child_or_add("leader");
+				leader["type"] = flg_.current_leader();
+				leader["gender"] = flg_.current_gender();
+				LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << leader["type"]
+					   << " gender=" << leader["gender"];
+			} else if(!controller_lock_) {
+				res.remove_children("leader");
 			}
-		}
-
-		// NOTE: the presence of a type= key overrides no_leader
-		if(controller_ != CNTR_EMPTY) {
-			(*leader)["type"] = flg_.current_leader();
-			(*leader)["gender"] = flg_.current_gender();
-			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"];
-		} else if(!controller_lock_) {
-			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
-			(*leader)["type"] = "null";
-			(*leader)["gender"] = "null";
 		}
 
 		const std::string& new_team_name = parent_.team_data_[team_].team_name;
