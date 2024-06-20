@@ -158,8 +158,36 @@ file_dialog& file_dialog::set_path(const std::string& value)
 file_dialog& file_dialog::set_filename(const std::string& value)
 {
 	current_entry_ = value;
-
 	return *this;
+}
+
+void file_dialog::check_filename() {
+	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
+	button& save_btn = find_widget<button>(get_window(), "ok", false);
+
+	// empty filename
+	std::string filename = file_textbox.get_value();
+	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
+
+	if (stat_invalid) {
+		find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' size='small'>✘ filename is empty</span>");
+		save_btn.set_active(false);
+	} else {
+		if (filename.size() > extension_.size()) {
+			// wrong extension
+			std::string ext = filename.substr(filename.size()-extension_.size());
+			if ((!extension_.empty()) && (ext != extension_)) {
+				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' size='small'>✘ wrong extension, use " + extension_ + "</span>");
+				save_btn.set_active(false);
+			} else {
+				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("");
+				save_btn.set_active(true);
+			}
+		} else {
+			find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' size='small'>✘ wrong extension, use " + extension_ + "</span>");
+			save_btn.set_active(false);
+		}
+	}
 }
 
 void file_dialog::pre_show(window& window)
@@ -227,18 +255,22 @@ void file_dialog::pre_show(window& window)
 	sync_bookmarks_bar();
 
 	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
+	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
 
 	connect_signal_notify_modified(filelist,
 			std::bind(&file_dialog::on_row_selected, this));
 	connect_signal_notify_modified(bookmarks_bar,
 			std::bind(&file_dialog::on_bookmark_selected, this));
+	connect_signal_notify_modified(file_textbox,
+			std::bind(&file_dialog::check_filename, this));
+
+	check_filename();
 
 	button& mkdir_button = find_widget<button>(&window, "new_dir", false);
 	button& rm_button = find_widget<button>(&window, "delete_file", false);
 	button& bookmark_add_button = find_widget<button>(&window, "add_bookmark", false);
 	button& bookmark_del_button = find_widget<button>(&window, "remove_bookmark", false);
 	button& open_ext_button = find_widget<button>(&window, "open_ext", false);
-
 
 	connect_signal_mouse_left_click(mkdir_button,
 			std::bind(&file_dialog::on_dir_create_cmd, this));
@@ -267,7 +299,8 @@ void file_dialog::pre_show(window& window)
 
 	refresh_fileview();
 
-	window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
+	//window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
+	window.keyboard_capture(&file_textbox);
 	window.add_to_keyboard_chain(&filelist);
 	window.set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
 }

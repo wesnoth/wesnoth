@@ -258,6 +258,11 @@ private:
 	bool process_submit_common(const std::string& name);
 
 	/**
+	 * Check if the filename is valid and disable save button if invalid
+	 */
+	void check_filename();
+
+	/**
 	 * Updates the bookmarks bar state to reflect the internal state.
 	 */
 	void sync_bookmarks_bar();
