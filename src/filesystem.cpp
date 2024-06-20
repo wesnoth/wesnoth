@@ -22,7 +22,6 @@
 #include "filesystem.hpp"
 
 #include "config.hpp"
-#include "deprecation.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
@@ -680,7 +679,7 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 	// if a custom userdata directory is provided as an absolute path, just use that
 	// else if it's relative to the current working directory, just use that
 	// else if no custom userdata directory was provided, default to the "My Games" folder if present or fallback to the current working directory if not
-	// else a relative path was provided
+	// else a relative path was provided that isn't relative to the current working directory, so ignore it and use the default
 	if(temp.size() > 2 && temp[1] == ':') {
 		// allow absolute path override
 		dir = temp;
@@ -694,17 +693,8 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 			temp = "Wesnoth" + get_version_path_suffix();
 			DBG_FS << "using default userdata folder name";
 		} else {
-			// only warn about a relative path if it comes from the command line option, not from the PREFERENCES_DIR define
-#ifdef PREFERENCES_DIR
-			if (temp != PREFERENCES_DIR)
-#endif
-			{
-				// TRANSLATORS: translate the part inside <...> only
-				deprecated_message(_("--userdata-dir=<relative path that doesn't start with a period>"),
-					DEP_LEVEL::FOR_REMOVAL,
-					{1, 17, 0},
-					_("Use an absolute path, or a relative path that starts with a period and a backslash"));
-			}
+			temp = "Wesnoth" + get_version_path_suffix();
+			ERR_FS << "relative path for userdata that doesn't start with '.' or '..' is not allowed, using default userdata folder name";
 		}
 
 		PWSTR docs_path = nullptr;
@@ -761,21 +751,16 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 		temp = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
 		DBG_FS << "userdata using default path relative to HOME";
 #endif
-	} else if(temp[0] != '/') {
-		// TRANSLATORS: translate the part inside <...> only
-		deprecated_message(_("--userdata-dir=<relative path>"),
-			DEP_LEVEL::FOR_REMOVAL,
-			{1, 17, 0},
-			_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
 	}
 
 	// if it's an absolute path, just use that
 	// else make it relative to HOME if HOME is populated, otherwise make it relative to the current working directory
 	if(temp[0] == '/') {
 		dir = temp;
+		DBG_FS << "userdata using absolute path";
 	} else {
-		bfs::path home = home_str ? home_str : ".";
-		dir = home / temp;
+		dir = "." / temp;
+		ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory";
 	}
 
 	return dir;
@@ -829,19 +814,9 @@ static bfs::path linux_userdata(const std::string& newprefdir)
 		temp = ".wesnoth" + get_version_path_suffix();
 	}
 
-	// if there is a HOME variable and we've reached this point, then a custom userdata folder using a relative path was provided
-	// else just use the current working directory for the userdata
-	if(home_str) {
-		dir = home_str;
-		// TRANSLATORS: translate the part inside <...> only
-		deprecated_message(_("--userdata-dir=<relative path>"),
-			DEP_LEVEL::FOR_REMOVAL,
-			{1, 17, 0},
-			_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
-	} else {
-		dir = ".";
-		DBG_FS << "userdata unable to determine location to use, defaulting to current working directory";
-	}
+	// unable to determine another userdata directory, so just use the current working directory for the userdata
+	dir = ".";
+	ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory";
 
 	dir /= temp;
 	return dir;
