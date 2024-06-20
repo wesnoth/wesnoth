@@ -170,21 +170,21 @@ void file_dialog::check_filename() {
 	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
 
 	if (stat_invalid) {
-		find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' size='small'>✘ filename is empty</span>");
+		find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='#00dcff' size='small'>please enter a filename</span>");
 		save_btn.set_active(false);
 	} else {
 		if (filename.size() > extension_.size()) {
 			// wrong extension
 			std::string ext = filename.substr(filename.size()-extension_.size());
 			if ((!extension_.empty()) && (ext != extension_)) {
-				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' size='small'>✘ wrong extension, use " + extension_ + "</span>");
+				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' face='DejaVuSans'>✘</span><span color='red' size='small'>wrong extension, use " + extension_ + "</span>");
 				save_btn.set_active(false);
 			} else {
 				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("");
 				save_btn.set_active(true);
 			}
 		} else {
-			find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' size='small'>✘ wrong extension, use " + extension_ + "</span>");
+			find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' face='DejaVuSans'>✘</span><span color='red' size='small'>wrong extension, use " + extension_ + "</span>");
 			save_btn.set_active(false);
 		}
 	}
