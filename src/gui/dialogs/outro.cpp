@@ -24,13 +24,12 @@
 #include "gui/core/timer.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <cmath>
-
 namespace
 {
 
 // How long text fading should take - currently a hardcoded value.
-const unsigned FADE_DURATION_MS = 500;
+using namespace std::chrono_literals;
+constexpr auto FADE_DURATION = 500ms;
 
 } // end unnamed namespace
 
@@ -40,15 +39,21 @@ REGISTER_DIALOG(outro)
 
 outro::outro(const game_classification& info)
 	: modal_dialog(window_id())
+	, alpha_queue_()
 	, text_()
-	, current_text_()
 	, text_index_(0)
-	, duration_(info.end_text_duration)
-	, fade_alpha_(0)
-	, fade_start_(0)
-	, fading_in_(true)
-	, timer_id_(0)
 {
+	// 3.5 seconds by default
+	const auto show_duration = info.end_text_duration > 0 ? std::chrono::milliseconds{info.end_text_duration} : 3500ms;
+
+	alpha_queue_ = {
+		{0,   255, FADE_DURATION, utils::easing::cubic_ease_in},
+		{255, 255, show_duration, utils::easing::linear_interpolation},
+		{255, 0,   FADE_DURATION, utils::easing::cubic_ease_out},
+	};
+
+	alpha_queue_.on_complete(std::bind(&outro::advance_text, this));
+
 	if(!info.end_text.empty()) {
 		text_.push_back(info.end_text);
 	} else {
@@ -91,18 +96,12 @@ outro::outro(const game_classification& info)
 			}
 		}
 	}
-
-	current_text_ = text_[0];
-
-	if(!duration_) {
-		duration_ = 3500; // 3.5 seconds
-	}
 }
 
 void outro::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant(current_text_));
+	window.get_canvas(0).set_variable("outro_text", wfl::variant(text_[0]));
 }
 
 void outro::update()
@@ -112,71 +111,27 @@ void outro::update()
 		return;
 	}
 
-	if(fade_start_ == 0) {
-		fade_start_ = SDL_GetTicks();
-	}
-
-	// If we've faded fully in...
-	if(fading_in_ && fade_alpha_ >= 255) {
-		// Schedule the fadeout after the provided delay.
-		if(timer_id_ == 0) {
-			timer_id_ = add_timer(duration_, [this](std::size_t) {
-				fading_in_ = false;
-				fade_start_ = 0;
-			});
-		}
-
-		return;
-	}
-
 	canvas& window_canvas = window::get_canvas(0);
-
-	// If we've faded fully out...
-	if(!fading_in_ && fade_alpha_ == 0) {
-		// ...and we've just showed the last text bit, close the window.
-		text_index_++;
-		if(text_index_ >= text_.size()) {
-			window::close();
-			return;
-		}
-		current_text_ = text_[text_index_];
-
-		// ...else show the next bit.
-		window_canvas.set_variable("outro_text", wfl::variant(current_text_));
-
-		fading_in_ = true;
-
-		remove_timer(timer_id_);
-		timer_id_ = 0;
-
-		fade_start_ = SDL_GetTicks();
-	}
-
-	window_canvas.set_variable("fade_alpha", wfl::variant(fade_alpha_));
+	window_canvas.set_variable("fade_alpha", wfl::variant(alpha_queue_.value()));
 	window_canvas.update_size_variables();
+
 	queue_redraw();
+}
 
-	auto current_ticks = SDL_GetTicks();
+void outro::advance_text()
+{
+	// Advance to the next text block, and either display it or close the window if we've shown them all.
+	text_index_++;
 
-	if(fade_start_ > current_ticks) {
-		// 32-bit ticks counter wraps around after about 49 days, the 64-bit version
-		// requires SDL 2.0.18+. Just restart the counter in the worst case and let
-		// the player deal with the sheer ridiculousness of their predicament.
-		fade_start_ = current_ticks;
-	}
-
-	fade_alpha_ = std::clamp<int>(
-		std::round(255.0 * double(current_ticks - fade_start_) / double(FADE_DURATION_MS)),
-		0, 255);
-	if(!fading_in_) {
-		fade_alpha_ = 255 - fade_alpha_;
+	if(text_index_ < text_.size()) {
+		window::get_canvas(0).set_variable("outro_text", wfl::variant{text_[text_index_]});
+	} else {
+		window::close();
 	}
 }
 
 void outro::post_show(window& /*window*/)
 {
-	remove_timer(timer_id_);
-	timer_id_ = 0;
 }
 
 } // namespace dialogs
