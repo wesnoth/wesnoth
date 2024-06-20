@@ -694,7 +694,7 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 			DBG_FS << "using default userdata folder name";
 		} else {
 			temp = "Wesnoth" + get_version_path_suffix();
-			ERR_FS << "relative path for userdata that doesn't start with '.' or '..' is not allowed, using default userdata folder name";
+			DBG_FS << "relative path for userdata that doesn't start with '.' or '..' is not allowed, using default userdata folder name";
 		}
 
 		PWSTR docs_path = nullptr;
@@ -759,8 +759,9 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 		dir = temp;
 		DBG_FS << "userdata using absolute path";
 	} else {
-		dir = "." / temp;
-		ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory";
+		dir = ".";
+		dir / temp;
+		DBG_FS << "unable to determine location to use for userdata, defaulting to current working directory";
 	}
 
 	return dir;
@@ -816,7 +817,7 @@ static bfs::path linux_userdata(const std::string& newprefdir)
 
 	// unable to determine another userdata directory, so just use the current working directory for the userdata
 	dir = ".";
-	ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory";
+	DBG_FS << "unable to determine location to use for userdata, defaulting to current working directory";
 
 	dir /= temp;
 	return dir;
