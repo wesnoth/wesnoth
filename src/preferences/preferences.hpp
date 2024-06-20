@@ -204,11 +204,9 @@ class prefs
 		{
 			// for wesnoth: checks that the userdata folders have been initialized/found since if it hasn't been then it's too soon to be getting any values from it
 			// for boost: the userdata folders don't get initialized and the preferences aren't used for anything, so skip the check here
-			//
-			// nice idea, but it seems that literally the only thing that initializes the userdata folders before something ends up calling the preferences is running wesnoth normally
-			// and that's not practical to check for
-			//static bool called_before_init = !(filesystem::base_name(filesystem::get_exe_path()).find("boost") == std::string::npos && !filesystem::is_userdata_initialized());
-			//assert(called_before_init);
+			// TODO: figure out how to make this not fail for all the other tests too
+			static bool called_before_init = !(filesystem::base_name(filesystem::get_exe_path()).find("boost") == std::string::npos && !filesystem::is_userdata_initialized());
+			assert(called_before_init);
 
 			static prefs prefs_manager;
 			return prefs_manager;
