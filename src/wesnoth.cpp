@@ -309,6 +309,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	// earliest possible point to ensure the userdata directory is known
+	// if you're hitting the assertion in the preferences about the userdata not being initialized, it means you're trying to use the preferences before wesnoth knows where the preferences are
+	filesystem::get_user_data_dir();
+
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
 		PLAIN_LOG << "Starting with directory: '" << datadir << "'";

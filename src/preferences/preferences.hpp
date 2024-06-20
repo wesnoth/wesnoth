@@ -204,9 +204,10 @@ class prefs
 		{
 			// for wesnoth: checks that the userdata folders have been initialized/found since if it hasn't been then it's too soon to be getting any values from it
 			// for boost: the userdata folders don't get initialized and the preferences aren't used for anything, so skip the check here
-			// TODO: figure out how to make this not fail for all the other tests too
-			static bool called_before_init = !(filesystem::base_name(filesystem::get_exe_path()).find("boost") == std::string::npos && !filesystem::is_userdata_initialized());
-			assert(called_before_init);
+			//            macos -  called "unit_tests"
+			//            others - called "boost_unit_tests"
+			static bool called_before_init = !(filesystem::base_name(filesystem::get_exe_path()).find("unit_tests") == std::string::npos && !filesystem::is_userdata_initialized());
+			assert(called_before_init && "Attempt to use preferences before userdata initialization");
 
 			static prefs prefs_manager;
 			return prefs_manager;
@@ -219,8 +220,6 @@ class prefs
 		void migrate_preferences(const std::string& prefs_dir);
 		void reload_preferences();
 		std::set<std::string> all_attributes();
-
-		void disable_preferences_save();
 
 		std::string core_id();
 		void set_core_id(const std::string& root);
@@ -742,6 +741,14 @@ class prefs
 
 		std::vector<preferences::option>& get_advanced_preferences() {return advanced_prefs_;}
 
+		static void disable_preferences_save() {
+			no_preferences_save_ = true;
+		}
+
+		static bool preferences_save() {
+			return no_preferences_save_;
+		}
+
 	private:
 		prefs();
 		// don't move, assign, or copy a singleton
@@ -750,8 +757,9 @@ class prefs
 		prefs(const prefs&& p) = delete;
 		prefs& operator=(const prefs&& p) = delete;
 
+		inline static bool no_preferences_save_ = false;
+
 		config preferences_;
-		bool no_preferences_save_;
 		bool fps_;
 		std::map<std::string, std::set<std::string>> completed_campaigns_;
 		std::set<std::string> encountered_units_set_;
