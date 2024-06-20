@@ -1035,45 +1035,6 @@ int game_lua_kernel::impl_schedule_set(lua_State *L)
 }
 
 /**
- * Gets details about a terrain.
- * - Arg 1: terrain code string.
- * - Ret 1: table.
- */
-int game_lua_kernel::impl_get_terrain_info(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 2);
-	t_translation::terrain_code t = t_translation::read_terrain_code(m);
-	if (t == t_translation::NONE_TERRAIN || !board().map().tdata()->is_known(t)) return 0;
-	const terrain_type& info = board().map().tdata()->get_terrain_info(t);
-
-	lua_newtable(L);
-	lua_pushstring(L, info.id().c_str());
-	lua_setfield(L, -2, "id");
-	luaW_pushtstring(L, info.name());
-	lua_setfield(L, -2, "name");
-	luaW_pushtstring(L, info.editor_name());
-	lua_setfield(L, -2, "editor_name");
-	luaW_pushtstring(L, info.description());
-	lua_setfield(L, -2, "description");
-	lua_push(L, info.icon_image());
-	lua_setfield(L, -2, "icon");
-	lua_push(L, info.editor_image());
-	lua_setfield(L, -2, "editor_image");
-	lua_pushinteger(L, info.light_bonus(0));
-	lua_setfield(L, -2, "light");
-	lua_pushboolean(L, info.is_village());
-	lua_setfield(L, -2, "village");
-	lua_pushboolean(L, info.is_castle());
-	lua_setfield(L, -2, "castle");
-	lua_pushboolean(L, info.is_keep());
-	lua_setfield(L, -2, "keep");
-	lua_pushinteger(L, info.gives_healing());
-	lua_setfield(L, -2, "healing");
-
-	return 1;
-}
-
-/**
  * Gets time of day information.
  * - Arg 1: schedule object, location, time area ID, or nil
  * - Arg 2: optional turn number
@@ -5044,19 +5005,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 
 	// Create the unit_types table
 	cmd_log_ << lua_terrainmap::register_metatables(L);
-
-	// Create the unit_types table
-	cmd_log_ << "Adding terrain_types table...\n";
-	lua_getglobal(L, "wesnoth");
-	lua_newuserdatauv(L, 0, 0);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_get_terrain_info>);
-	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "terrain types");
-	lua_setfield(L, -2, "__metatable");
-	lua_setmetatable(L, -2);
-	lua_setfield(L, -2, "terrain_types");
-	lua_pop(L, 1);
 
 	// Create the ai elements table.
 	cmd_log_ << "Adding ai elements table...\n";

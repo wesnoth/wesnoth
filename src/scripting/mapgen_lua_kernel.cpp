@@ -22,6 +22,7 @@
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_terrainfilter.hpp"
 #include "scripting/lua_terrainmap.hpp"
+#include "scripting/lua_unit_type.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
 
@@ -293,6 +294,7 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
+	cmd_log_ << lua_unit_type::register_table(L);
 }
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
