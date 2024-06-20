@@ -1478,7 +1478,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 
 	// send notification of changes to the game and user
 	simple_wml::document diff;
-	bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->description(), diff);
+	bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->changed_description(), diff);
 	bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user",
 		player->info().config_address(), diff);
 
@@ -1544,7 +1544,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
 
-		simple_wml::node& desc = *g.description();
+		simple_wml::node& desc = *g.description_for_writing();
 
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
@@ -1634,7 +1634,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			return;
 		}
 
-		simple_wml::node& desc = *g.description();
+		simple_wml::node& desc = *g.description_for_writing();
 
 		// Update the game's description.
 		if(const simple_wml::node* m = scenario->child("multiplayer")) {
@@ -1765,7 +1765,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		if(g.remove_player(p)) {
 			delete_game(g.id());
 		} else {
-			auto description = g.description();
+			bool has_diff = false;
+			simple_wml::document diff;
 
 			// After this line, the game object may be destroyed. Don't use `g`!
 			player_connections_.modify(p, std::bind(&player_record::enter_lobby, std::placeholders::_1));
@@ -1773,14 +1774,14 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			// Only run this if the game object is still valid
 			if(auto gStrong = g_ptr.lock()) {
 				gStrong->describe_slots();
+				//Don't update the game if it no longer exists.
+				has_diff |= make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", gStrong->description(), diff);
 			}
 
 			// Send all other players in the lobby the update to the gamelist.
-			simple_wml::document diff;
-			bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", description, diff);
-			bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user", player.config_address(), diff);
+			has_diff |= make_change_diff(games_and_users_list_.root(), nullptr, "user", player.config_address(), diff);
 
-			if(diff1 || diff2) {
+			if(has_diff) {
 				send_to_lobby(diff, p);
 			}
 
@@ -1802,9 +1803,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			g.update_side_data();
 		}
 
-		if(g.describe_slots()) {
-			update_game_in_lobby(g);
-		}
+		g.describe_slots();
+		update_game_in_lobby(g);
 
 		g.send_data(data, p);
 		return;
@@ -1815,9 +1815,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// If the owner of a side is changing the controller.
 	} else if(const simple_wml::node* change = data.child("change_controller")) {
 		g.transfer_side_control(p, *change);
-		if(g.describe_slots()) {
-			update_game_in_lobby(g);
-		}
+		g.describe_slots();
+		update_game_in_lobby(g);
 
 		return;
 		// If all observers should be muted. (toggles)
@@ -1846,9 +1845,9 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 		if(user) {
 			player_connections_.modify(*user, std::bind(&player_record::enter_lobby, std::placeholders::_1));
-			if(g.describe_slots()) {
-				update_game_in_lobby(g, user);
-			}
+			g.describe_slots();
+
+			update_game_in_lobby(g, user);
 
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document gamelist_diff;
@@ -1886,9 +1885,9 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// Notify the game of the commands, and if it changes
 		// the description, then sync the new description
 		// to players in the lobby.
-		if(g.process_turn(data, p)) {
-			update_game_in_lobby(g);
-		}
+		g.process_turn(data, p);
+		
+		update_game_in_lobby(g);
 
 		return;
 	} else if(data.child("whiteboard")) {
@@ -1915,11 +1914,12 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		data.root().has_attr("side")
 	) {
 		return;
-	}
-
-	WRN_SERVER << p->client_ip() << "\tReceived unknown data from: " << player.name()
+	} else {
+		WRN_SERVER << p->client_ip() << "\tReceived unknown data from: " << player.name()
 			   << " in game: \"" << g.name() << "\" (" << g.id() << ", " << g.db_id() << ")\n"
 			   << data.output();
+	}
+
 }
 
 template<class SocketPtr> void server::send_server_message(SocketPtr socket, const std::string& message, const std::string& type)
@@ -2971,11 +2971,13 @@ void server::delete_game(int gameid, const std::string& reason)
 	}
 }
 
-void server::update_game_in_lobby(const wesnothd::game& g, std::optional<player_iterator> exclude)
+void server::update_game_in_lobby(wesnothd::game& g, std::optional<player_iterator> exclude)
 {
 	simple_wml::document diff;
-	if(make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g.description(), diff)) {
-		send_to_lobby(diff, exclude);
+	if(auto p_desc = g.changed_description()) {
+		if(make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", p_desc, diff)) {
+			send_to_lobby(diff, exclude);
+		}
 	}
 }
 

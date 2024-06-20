@@ -617,6 +617,14 @@ node* node::child(const char* name)
 	return nullptr;
 }
 
+node& node::child_or_add(const char* name)
+{
+	if(node* res = child(name)) {
+		return *res;
+	}
+	return add_child(name);
+}
+
 const node* node::child(const char* name) const
 {
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
