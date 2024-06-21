@@ -686,26 +686,14 @@ void context_manager::save_map_as_dialog()
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".map");
+	   .set_extension(".map")
+	   .set_extension(".mask");
 
 	if(!dlg.show()) {
 		return;
 	}
 
 	boost::filesystem::path save_path(dlg.path());
-
-	const std::string ext = save_path.extension().string();
-	if (ext != ".map") {
-		if(gui2::show_message(
-			_("Error"),
-			VGETTEXT("Wrong Extension $wrong_ext. Replace with .map?", {{"wrong_ext", ext}}),
-			gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK)
-		{
-			save_path.replace_extension(".map");
-		} else {
-			return;
-		}
-	}
 
 	// Show warning the first time user tries to save in a wrong folder
 	std::string last_folder = save_path.parent_path().filename().string();
@@ -755,19 +743,6 @@ void context_manager::save_scenario_as_dialog()
 	}
 
 	boost::filesystem::path save_path(dlg.path());
-	const std::string ext = save_path.extension().string();
-
-	if (ext != ".cfg") {
-		if(gui2::show_message(
-			_("Error"),
-			VGETTEXT("Wrong Extension $wrong_ext. Replace with .cfg?", {{"wrong_ext", ext}}),
-			gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK)
-		{
-			save_path.replace_extension(".cfg");
-		} else {
-			return;
-		}
-	}
 
 	// Show warning the first time user tries to save in a wrong folder
 	std::string last_folder = save_path.parent_path().filename().string();
