@@ -50,6 +50,11 @@
 
 #endif /* !_WIN32 */
 
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#include <limits.h>
+#endif
+
 #include <algorithm>
 #include <set>
 
@@ -726,7 +731,6 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 {
 	bfs::path dir;
 	std::string temp = newprefdir;
-	const char* home_str = getenv("HOME");
 
 	// if a custom userdata was not specified
 	// use the PREFERENCES_DIR if defined
@@ -734,6 +738,7 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 	// else use a default - this is currently the "unsandboxed" location from migrate_apple_config_directory_for_unsandboxed_builds() above
 	if(temp.empty()) {
 #ifdef PREFERENCES_DIR
+		const char* home_str = getenv("HOME");
 		temp = PREFERENCES_DIR;
 		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
 		if(home_str && temp[0] == '~') {
@@ -1031,6 +1036,16 @@ std::string get_exe_path()
 
 	bfs::path exe(process_path);
 	return exe.string();
+#elif defined(__APPLE__)
+	std::vector<char> buffer(PATH_MAX, 0);
+	uint32_t size = PATH_MAX;
+	if(_NSGetExecutablePath(&buffer[0], &size) == 0) {
+		buffer.resize(size+1);
+		return std::string(buffer.begin(), buffer.end());
+	} else {
+		ERR_FS << "Path to wesnoth executable is too long";
+		return get_cwd() + "/The Battle for Wesnoth";
+	}
 #else
 	// first check /proc
 	if(bfs::exists("/proc/")) {
