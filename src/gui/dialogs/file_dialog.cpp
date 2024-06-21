@@ -162,30 +162,46 @@ file_dialog& file_dialog::set_filename(const std::string& value)
 }
 
 void file_dialog::check_filename() {
+	if(!save_mode_) {
+		return;
+	}
+
 	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
 	button& save_btn = find_widget<button>(get_window(), "ok", false);
 
 	// empty filename
 	std::string filename = file_textbox.get_value();
+	styled_widget& validation_msg = find_widget<styled_widget>(get_window(), "validation_msg", false);
+
 	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
+	bool wrong_ext = false;
 
 	if (stat_invalid) {
-		find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='#00dcff' size='small'>please enter a filename</span>");
+		validation_msg.set_label("<span color='#00dcff' size='small'>please enter a filename</span>");
 		save_btn.set_active(false);
 	} else {
-		if (filename.size() > extension_.size()) {
-			// wrong extension
-			std::string ext = filename.substr(filename.size()-extension_.size());
-			if ((!extension_.empty()) && (ext != extension_)) {
-				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' face='DejaVuSans'>✘</span><span color='red' size='small'>wrong extension, use " + extension_ + "</span>");
-				save_btn.set_active(false);
+		// wrong extension check
+		for (const auto& extension : extensions_) {
+			if (filename.size() >= extension.size()) {
+				std::string ext = filename.substr(filename.size()-extension.size());
+				if (ext == extension) {
+					wrong_ext = false;
+					break;
+				} else {
+					wrong_ext = true;
+				}
 			} else {
-				find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("");
-				save_btn.set_active(true);
+				// size of allowed extensions and the one typed don't match
+				wrong_ext = true;
 			}
-		} else {
-			find_widget<styled_widget>(get_window(), "validation_msg", false).set_label("<span color='red' face='DejaVuSans'>✘</span><span color='red' size='small'>wrong extension, use " + extension_ + "</span>");
+		}
+
+		if (wrong_ext) {
+			validation_msg.set_label("<span color='red' face='DejaVuSans'>✘</span><span color='red' size='small'>wrong extension, use " + utils::join(extensions_, ", ") + "</span>");
 			save_btn.set_active(false);
+		} else {
+			validation_msg.set_label("");
+			save_btn.set_active(true);
 		}
 	}
 }
