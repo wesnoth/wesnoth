@@ -362,8 +362,12 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_UNIT_LIST:
 			return !get_current_map_context().units().empty();
 
+		// TODO Disabling this for now until the functionality can be implemnted.
+		// See the status_table() method
 		case HOTKEY_STATUS_TABLE:
-			return !get_current_map_context().teams().empty();
+			//return !get_current_map_context().teams().empty();
+			return false;
+		/////////////////////////////
 
 		case HOTKEY_TERRAIN_DESCRIPTION:
 			return gui().mouseover_hex().valid();
