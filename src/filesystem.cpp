@@ -1668,7 +1668,11 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	}
 
 	std::string result;
-	for(const std::string& bp : get_binary_paths(type)) {
+	// fix for duplicate mainline paths on macOS for some reason
+	// would be good for someone who uses macOS to debug the cause at some point
+	const std::vector<std::string> temp = get_binary_paths(type);
+	const std::set<std::string> bpaths(temp.begin(), temp.end());
+	for(const std::string& bp : bpaths) {
 		bfs::path bpath(bp);
 		bpath /= filename;
 
