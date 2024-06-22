@@ -208,7 +208,8 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			widget["label"] = "<span font_family='OldaniaADFStd' font_size='xx-large'>" + tip.text().str().substr(0,1) + "</span>" + tip.text().str().substr(1);
+//			widget["label"] = "<span font_family='OldaniaADFStd' font_size='xx-large'>" + tip.text().str().substr(0,1) + "</span>" + tip.text().str().substr(1);
+			widget["label"] = tip.text().str();
 			page.emplace("tip", widget);
 
 			widget["label"] = tip.source();
