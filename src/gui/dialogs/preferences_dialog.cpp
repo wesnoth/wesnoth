@@ -25,6 +25,7 @@
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
 #include "resources.hpp"
@@ -157,6 +158,28 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 	}
 
 	theme_list.set_values(options, current_theme);
+}
+
+void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
+{
+	std::string current_theme_name = prefs::get().gui_theme();
+
+	std::vector<config> options;
+	std::size_t current_theme = 0;
+	unsigned i = 0;
+	for(auto& gui : guis) {
+		gui2_themes_.emplace_back(gui.first);
+		options.emplace_back("label", gui.first);
+		if (current_theme_name == gui.first) {
+			current_theme = i;
+		}
+		if (current_theme == 0) {
+			i++;
+		}
+	}
+
+	theme_list.set_values(options);
+	theme_list.set_selected(current_theme);
 }
 
 widget_data preferences_dialog::get_friends_list_row_data(const preferences::acquaintance& entry)
@@ -563,6 +586,12 @@ void preferences_dialog::initialize_callbacks()
 	//connect_signal_mouse_left_click(
 	//		find_widget<button>(this, "choose_theme", false),
 	//		std::bind(&show_theme_dialog));
+
+	/* SELECT GUI2 THEME */
+	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
+	set_gui2_theme_list(gui2_theme_list);
+	connect_signal_notify_modified(theme_list,
+		std::bind(&preferences_dialog::handle_gui2_theme_select, this));
 
 	//
 	// SOUND PANEL
@@ -1177,6 +1206,12 @@ void preferences_dialog::handle_theme_select()
 		display->set_theme(theme.id);
 	}
 
+}
+
+void preferences_dialog::handle_gui2_theme_select()
+{
+	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
+	prefs::get().set_gui_theme(gui2_themes_.at(gui2_theme_list.get_value()));
 }
 
 void preferences_dialog::on_page_select()
