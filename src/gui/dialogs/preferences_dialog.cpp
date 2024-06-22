@@ -108,6 +108,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 	: modal_dialog(window_id())
 	, resolutions_() // should be populated by set_resolution_list before use
 	, themes_() // populated by set_theme_list
+	, gui2_themes_() // populated by set_gui2_theme_list
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
@@ -590,7 +591,7 @@ void preferences_dialog::initialize_callbacks()
 	/* SELECT GUI2 THEME */
 	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
 	set_gui2_theme_list(gui2_theme_list);
-	connect_signal_notify_modified(theme_list,
+	connect_signal_notify_modified(gui2_theme_list,
 		std::bind(&preferences_dialog::handle_gui2_theme_select, this));
 
 	//
