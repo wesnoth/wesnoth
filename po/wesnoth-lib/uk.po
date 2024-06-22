@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-06-17 10:25-0500\n"
-"PO-Revision-Date: 2024-04-04 11:30+0300\n"
+"PO-Revision-Date: 2024-06-20 14:39+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -25,31 +25,27 @@ msgstr ""
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Типовий ШІ (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Старий типовий ШІ (версія 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Сповіщення мультриплеєру"
+msgstr "Експериментальний ШІ"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Сповіщення мультриплеєру"
+msgstr "ШІ для розробників: Бездіяльний ШІ"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "ШІ для розробників: Типовий ШІ (RCA) з Альтернативним вербуванням"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -164,10 +160,8 @@ msgstr "Болото"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Пальмовий ліс"
+msgstr "Ліс водорослей"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -269,7 +263,7 @@ msgstr "Чиста сіра бруківка"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Гравій"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -278,10 +272,8 @@ msgstr "Заросла бруківка"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:294
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Чиста сіра бруківка"
+msgstr "Зльодяніла бруківка"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:307
@@ -385,10 +377,8 @@ msgstr "Камені"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:418
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Сніг"
+msgstr "Підсніжники"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:427
@@ -443,14 +433,12 @@ msgstr "Залізний паркан"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:532
 msgid "Palisade"
-msgstr ""
+msgstr "Огорожа"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:533
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Дерев'яний міст"
+msgstr "Дерев'яна огорожа"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:542
@@ -794,10 +782,8 @@ msgstr "Грибний гай"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1062
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Освітлений грибний гай"
+msgstr "Звичайний грибний гай"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -813,6 +799,13 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"Накладення '^Uf' і '^Ufi' застаріли, оскільки, хоча графіка зображує "
+"накладення з іншою місцевістю під нею, характеристики руху і захисту є суто "
+"грибковою, ігноруючи нижню місцевість. Рекомендованими замінами є '^Tf' і "
+"'^Tfi', які виглядають так само, але мають характеристики, що є відповідними "
+"графіці. Для гексів, де потрібні характеристики лише грибів, \"Tb\" — це "
+"грибний базовий тип місцевості, який можна використовувати з \"^Tf\" зверху "
+"або без нього."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -826,13 +819,16 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"У казках гномів описані різні типи грибів — для деяких типів складність "
+"ходіння по губчастій підлозі не має відношення до ґрунту під нею, навіть "
+"якщо ґрунт під нею все ще видно. Витрати на захист і пересування на цій "
+"місцевості базуються виключно на характеристиках бійця для "
+"<italic>text='Грибів'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1081
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Освітлений грибний гай"
+msgstr "Звичайний освітлений грибний гай"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1113
@@ -842,32 +838,18 @@ msgstr "Освітлений грибний гай"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1125 data/core/terrain.cfg:1126
 msgid "Mycelium"
-msgstr ""
+msgstr "Міцелій"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1135 data/core/terrain.cfg:1136
 #: data/core/terrain.cfg:1151
 msgid "Rockbound Cave"
-msgstr "Облямована скелями печера"
+msgstr "Скеляста печера"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1141 data/core/terrain.cfg:1157
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -889,14 +871,12 @@ msgstr ""
 "Більшість бійців мають захист близько 50%, але кавалерія обмежена до 40%. "
 "Гноми, через їх малі розміри, мають у скелястих печерах захист 60%.\n"
 "\n"
-"Печера може бути <ref>dst='terrain_illuminated_cave' text='освітленою'</ref>."
+"Печера може бути <italic>text='освітленою'</italic>."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1152
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Облямована скелями печера"
+msgstr "Земляно-скеляста печера"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -909,29 +889,27 @@ msgstr "Шахтні рейки"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1214
 msgid "Bluff"
-msgstr ""
+msgstr "Узвишшя"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1224
 msgid "Gulch"
-msgstr ""
+msgstr "Западина"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1235
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Непрохідне перекриття"
+msgstr "Непрохідна ущелина"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1248
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Лісове узвишшя"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1257
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Лісова западина"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1044,14 +1022,12 @@ msgstr "Пошкоджена стіна печери"
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1431
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Густі зарослі"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1432
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Hedges Wall"
-msgstr "Тесана стіна печери"
+msgstr "Заросла стіна"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1183,12 +1159,12 @@ msgstr "Відкриті дерев'яні двері"
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1741
 msgid "Impassable Overlay"
-msgstr "Непрохідне перекриття"
+msgstr "Накладення повної непрохідності"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1754
 msgid "Unwalkable Overlay"
-msgstr "Непрохідне перекриття"
+msgstr "Накладення непрохідності"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
@@ -1423,7 +1399,7 @@ msgstr ""
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:2188
 msgid "Village Overlay"
-msgstr "Сільське перекриття"
+msgstr "Накладення села"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_ruin
@@ -1872,22 +1848,22 @@ msgstr "Дерев'яний міст"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3138
 msgid "Marker High"
-msgstr ""
+msgstr "Маркер узвишшя"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3148
 msgid "Marker High 2"
-msgstr ""
+msgstr "Маркер узвишшя 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3158
 msgid "Marker Low"
-msgstr ""
+msgstr "Маркер западини"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3168
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Маркер западини 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3180
@@ -1902,7 +1878,7 @@ msgstr "Фальшиві межі карти"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3200
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Замінник зображення"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1930,18 +1906,6 @@ msgstr "Грибниця"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3253
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1954,36 +1918,17 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "<italic>text='Грибний гай'</italic> - це величезний підземний ліс "
-"гігантських грибів,\n"
-"що розкинулися у сирій темряві. Більшість бійців мають труднощі на пористій "
-"підстилці з малих грибів, але за ніжками великих грибів можна пристойно "
-"сховатися від ворожих атак. Однак, кінні бійці загрузають і, як наслідок, "
-"повністю позбавлені свободи руху в бою. Все, що гниє, приваблює нежить, тому "
-"вона досить добре себе почуває в грибних лісах.\n"
+"гігантських грибів, що розкинулися у сирій темряві. Більшість бійців мають "
+"труднощі на пористій підстилці з малих грибів, але за ніжками великих грибів "
+"можна пристойно сховатися від ворожих атак. Однак, кінні бійці загрузають і, "
+"як наслідок, повністю позбавлені свободи руху в бою. Все, що гниє, приваблює "
+"нежить, тому вона досить добре себе почуває в грибних лісах.\n"
 "\n"
 "Більшість бійців у грибних лісах отримують від 50% до 60% захисту, тоді як "
 "кавалерія має лише 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:3264
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -2008,11 +1953,12 @@ msgstr ""
 "обмежені при захисті. Корінні мешканці печер, гноми та тролі, відносно легко "
 "рухаються по цій місцевості. Гноми, через їх малі розміри, можуть проходити "
 "через непрохідні для інших рас перешкоди. Іноді печери бувають "
-"<ref>dst='terrain_illuminated_cave' text='освітленими'</ref>.\n"
+"<italic>text='освітленими'</italic>.\n"
 "\n"
-"Деякі клаптики підземного світу освітлені світлом з поверхні. Це дає бонус "
-"до атаки порядним бійцям, і лишає цього бонуса хаотичних бійців. У всіх "
-"інших відношеннях ця місцевість еквівалентна звичайним печерам.\n"
+"Деякі клаптики підземного світу осяяні світлом з поверхні. Це дає бонус до "
+"атаки порядним бійцям, і лишає цього бонуса хаотичних бійців. У всіх інших "
+"відношеннях ця місцевість еквівалентна звичайним печерам.\n"
+"\n"
 "Більшість бійців у печерах отримують від 20% до 40% захисту, тоді як гноми "
 "мають 50%."
 
@@ -2037,17 +1983,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3308
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2059,14 +1994,14 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic>text='Пагорби'</italic> являють собою будь-яку нерівну місцевість,\n"
-"де велика кількість схилів та підйомів надає хоч якийсь захист. Для "
-"більшості загонів пересуватися пагорбами досить складно. Гноми, тролі та "
-"орки досить обізнані з такою місцевістю, тому не проходять по ній без "
-"штрафу. Кавалерія настільки утруднена пересуванням пагорбами, що це зводить "
-"нанівець усі бонуси захисту.\n"
+"<italic>text='Пагорби'</italic> являють собою будь-яку нерівну місцевість, "
+"де велика кількість схилів та підйомів надає певний захист. Для більшості "
+"бійців пересування пагорбами може бути доволі складним. Гноми, тролі та орки "
+"досить обізнані з такою місцевістю, тому не проходять по ній без штрафу. "
+"Кавалерії настільки важко пересуванням пагорбами, що це зводить нанівець усі "
+"бонуси захисту.\n"
 "\n"
-"Більшість бійців на пагорбах отримують 50% захисту, тоді як кавалерія - лише "
+"Більшість бійців на пагорбах отримують 50% захисту, тоді як кавалерія — лише "
 "40%. Гноми на пагорбах отримують 60% захисту."
 
 #. [terrain_type]: id=swamp_water
@@ -2137,19 +2072,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3364
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2166,11 +2088,11 @@ msgid ""
 msgstr ""
 "<italic>text='Гори'</italic> зазвичай достатньо круті, і бійці часто "
 "вимушені лазити про ним що хоч трохи просунутися вперед.\n"
-"вони надають значний бонус до захисту Для більшості бійців вони надають "
-"значний бонус до захисту, але також дуже сильно заважають пересуванню. "
-"Кавалерія нездатна навіть зайти на гірську місцевість, з єдиним винятком для "
-"кінноти ельфів та гоблінів на вовках. Корінні мешканці печер, гноми та "
-"тролі, відносно легко рухаються по цій місцевості.\n"
+"Для більшості бійців вони надають значний бонус до захисту, але також дуже "
+"сильно заважають пересуванню. Кавалерія нездатна навіть зайти на гірську "
+"місцевість, з єдиним винятком для кінноти ельфів та гоблінів на вовках. "
+"Корінні мешканці печер, гноми та тролі, відносно легко рухаються по цій "
+"місцевості.\n"
 "\n"
 "Більшість бійців у горах отримують 60% захисту, тоді як гноми мають 70%."
 
@@ -2369,12 +2291,10 @@ msgstr "Пошук"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
-msgstr "Налаштувати параметри для вибраних модифікацій."
+msgstr "Для обраної ери, гри чи модифікації відсутні додаткові налаштування."
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
@@ -2472,10 +2392,8 @@ msgstr "Копіювати"
 
 #. [draw]
 #: data/gui/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "page^Copy"
 msgid "page^✔ Copied"
-msgstr "Копіювати"
+msgstr "✔ Скопійовано"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
@@ -2527,7 +2445,7 @@ msgstr "Досягнення"
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Авторизація"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
@@ -2654,10 +2572,8 @@ msgstr "Під'єднатись"
 
 #. [label]
 #: data/gui/window/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Тип ($order)"
+msgstr "Умови"
 
 #. [label]: id=message
 #: data/gui/window/addon_license_prompt.cfg:54
@@ -2665,6 +2581,8 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"До того як завантажувати вміст на цей сервер, ви маєте прийняти наступні "
+"умови, натиснувши “Я погоджуюсь”."
 
 #. [button]: id=ok
 #: data/gui/window/addon_license_prompt.cfg:103
@@ -2673,11 +2591,11 @@ msgstr "Погоджуюсь"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "Передача даних між грою та сервером не захищена"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "Передача даних між грою та сервером зашифрована"
 
 #. [label]
 #. [grid]
@@ -2771,10 +2689,8 @@ msgstr "Немає"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:756
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Фільтрувати за описом аддону, версією, типом або автором."
+msgstr "Фільтрувати за описом аддону, версією, типом або автором"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:777
@@ -2912,60 +2828,58 @@ msgstr "Сортувати за приблизним хронологічним 
 #. [multimenu_button]: id=filter_completion
 #: data/gui/window/campaign_dialog.cfg:237
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Фільтрувати за статусом проходження"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:240
 msgid "Not Completed"
-msgstr ""
+msgstr "Не пройдено"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/window/campaign_dialog.cfg:242
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Показувати непройдені гравцем кампанії"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:246
 msgid "Completed: Bronze"
-msgstr ""
+msgstr "Пройдено: Бронза"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:247
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Показувати кампанії, що пройдені на найлегшій складності"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:251
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Completed: Silver"
-msgstr "Комп'ютерний гравець"
+msgstr "Пройдено: Срібло"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:252
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Показувати кампанії, що пройдені на середній складності"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:256
 msgid "Completed: Gold"
-msgstr ""
+msgstr "Пройдено: Золото"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:257
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Показувати кампанії, що пройдені на важкій складності"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:261
 msgid "Completed: All"
-msgstr ""
+msgstr "Пройдено: Всі"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:262
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Показувати пройдені кампанії"
 
 #. [label]
 #. [label]: id=mods_header
@@ -2982,7 +2896,7 @@ msgstr "Битва:"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:353
 msgid "Default RNG"
-msgstr "Типовий ГВЧ"
+msgstr "Типовий RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:354
@@ -2992,11 +2906,16 @@ msgid ""
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Чиста, неупереджена випадковість; саме так у Веснот і треба грати.\n"
+"\n"
+"Приклад: якщо ви атакуєте двічі з 50% точністю, ви, швидше за все, влучите "
+"один раз і промахнетеся один раз, але також можете влучити двічі або "
+"промахнутися двічі."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
 msgid "Predictable RNG"
-msgstr ""
+msgstr "Передбачуваний RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:360
@@ -3007,11 +2926,17 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Ідентичний до типового RNG, за винятком того, що завантаження збереженої гри "
+"не змінює результат атаки.\n"
+"\n"
+"Приклад: ви робите дві атаки і вам пощастило, обидва удари влучили в ціль. "
+"Потім ви завантажуєте попереднє збереження і повторюєте ту саму атаку. "
+"Обидва удари все одно не промахнуться."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
 msgid "Reduced RNG"
-msgstr ""
+msgstr "Зменшений RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:366
@@ -3022,6 +2947,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Влучання та промахи є набагато більш послідовними. Це, як правило, полегшує "
+"планування маломасштабних бойових дій.\n"
+"\n"
+"Приклад: якщо ви атакуєте три рази з 50% точністю, ви завжди влучите "
+"принаймні один раз і промахнетеся принаймні один раз."
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:383
@@ -3311,8 +3241,6 @@ msgstr "Лише команда"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
 msgstr "Вибір аддону"
 
@@ -3323,6 +3251,9 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Оберіть аддон, який буде пов'язано з поточним сеансом редагування. Якщо "
+"вибрано опцію \"Новий аддон\", його ID можна змінити за допомогою опції "
+"\"Змінити ID аддону\"."
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:162
@@ -3332,7 +3263,7 @@ msgstr "Показати все"
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:174
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Показувати усі встановленні аддони або лише ваші"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3367,12 +3298,12 @@ msgstr "Видимий в пелені"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Налаштування публікації аддону"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "Ім'я аддону, що відображуватиметься в грі."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
@@ -3382,7 +3313,7 @@ msgstr "Назва:"
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "Опис аддону, що відображуватиметься на сервері аддонів."
 
 #. [label]: id=icon_label
 #. [grid]: id=grid_atk
@@ -3402,6 +3333,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Шлях до зображення, що відображуватиметься на сервері аддонів. Має бути "
+"зображенням з основної гри."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3414,11 +3347,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"Автор цього аддону. Якщо використовується авторизація через форум, це ваше "
+"ім'я на форумі."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "Поточна версія аддону. Має бути в форматі X.Y.Z."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:208
@@ -3427,11 +3362,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Розділений комами список ID будь-яких інших аддонів, які використовуються "
+"цим аддоном. ID аддону це назва папки в файлах гри, а не назва, що "
+"відображується в грі."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Гілка на форумі:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3439,21 +3377,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"Числове ID гілки на форумі Весноту, де гравці зможуть публікувати відгуки та "
+"пропозиції."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "Адреса форуму"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "Повне посилання на вашу гілку на форумі."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
 msgid "Forum Authentication:"
-msgstr ""
+msgstr "Авторизація через форум:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3461,6 +3401,8 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Використовувати ваш аккаунт з форуму при завантаженні аддону чи зберігати "
+"пароль та пошту в файлі _server.pbl."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3468,22 +3410,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Розділений комами список користувачів форуму, яким дозволено завантажувати "
+"оновлення для цього аддону."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Другорядні автори:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Пошта, на яку користувачі зможуть звертатися в разі виникнення проблем з "
+"вашим аддоном."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "Пошта:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3491,11 +3437,13 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"Поточний пароль цього аддону. Рекомендується використовувати авторизацію "
+"через форум, інакше цей пароль не буде захищено."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "Назва"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
@@ -3520,7 +3468,7 @@ msgstr "Видалити"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr ""
+msgstr "Підтвердити"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3552,6 +3500,8 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"Назва мови перекладу у форматі POSIX, наприклад, uk (Ukrainian) або zh_CN "
+"(Simplified Chinese)."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
@@ -3705,39 +3655,33 @@ msgstr "Відключено"
 
 #. [button]: id=preview_
 #: data/gui/window/editor_edit_unit.cfg:98
-#, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Попередня сторінка"
+msgstr "Переглянути зображення"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_unit.cfg:143
-#, fuzzy
-#| msgid "Status"
 msgid "Stats"
-msgstr "Статус"
+msgstr "Статистика"
 
 #. [button]: id=load_unit_type
 #: data/gui/window/editor_edit_unit.cfg:187
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Завантажити тип бійця"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:221
-#, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Зображення:"
+msgstr "Зображення бійця:"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:223
 msgid "Portrait:"
-msgstr ""
+msgstr "Портрет:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:234
 msgid "Level:"
-msgstr ""
+msgstr "Рівень:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:259 data/gui/window/mp_staging.cfg:189
@@ -3746,62 +3690,48 @@ msgstr "Стать:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:267
-#, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Випадкова"
+msgstr "Чоловік"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:268
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Жінка"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:283
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Підвищити бійця"
+msgstr "Підвищується до:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:309
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Раса"
+msgstr "Раса:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:361
 msgid "Alignment:"
-msgstr ""
+msgstr "Світогляд:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:387
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "ЗД: "
+msgstr "ЗД:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:417
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "ОД: "
+msgstr "ОД:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:447
 msgid "Cost:"
-msgstr ""
+msgstr "Ціна:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:477
-#, fuzzy
-#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr "Ціна ходу:"
+msgstr "Очки руху:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3814,49 +3744,43 @@ msgstr "Атаки"
 
 #. [button]: id=atk_new
 #: data/gui/window/editor_edit_unit.cfg:599
-#, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Атака"
+msgstr "Нова атака"
 
 #. [button]: id=atk_delete
 #: data/gui/window/editor_edit_unit.cfg:612
-#, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Вибір/Рух/Атака"
+msgstr "Видалити атаку"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:682
 msgid "Range:"
-msgstr ""
+msgstr "Відстань:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:694
 msgid "range^Melee"
-msgstr ""
+msgstr "Ближня"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:695
 msgid "range^Ranged"
-msgstr ""
+msgstr "Дальня"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:736
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Шкода"
+msgstr "Шкода:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:763
 msgid "Hits:"
-msgstr ""
+msgstr "Удари:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:791
 msgid "Specials:"
-msgstr ""
+msgstr "Здібності зброї:"
 
 #. [label]: id=title
 #. [widget]: id=tab_label
@@ -3869,24 +3793,18 @@ msgstr "Додатково"
 
 #. [grid]: id=grid_atk
 #: data/gui/window/editor_edit_unit.cfg:848
-#, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
 msgstr "Профіль"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:859
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Здібності"
+msgstr "Здібності:"
 
 #. [label]: id=movetype_label
 #: data/gui/window/editor_edit_unit.cfg:885
-#, fuzzy
-#| msgid "Content"
 msgid "Movetype:"
-msgstr "Вміст"
+msgstr "Тип руху:"
 
 #. [button]: id=load_movetype
 #. [button]: id=ok
@@ -3905,36 +3823,28 @@ msgstr "Ціна ходу:"
 
 #. [label]: id=defense_label
 #: data/gui/window/editor_edit_unit.cfg:981
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Захисник"
+msgstr "Захист:"
 
 #. [label]: id=resistance_label
 #: data/gui/window/editor_edit_unit.cfg:1034
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Опірність: "
+msgstr "Опори:"
 
 #. [label]: id=usage_label
 #: data/gui/window/editor_edit_unit.cfg:1087
-#, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Зображення:"
+msgstr "Використання у ШІ:"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1247
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Статус гри"
+msgstr "Головні характеристики"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1283
 msgid "WML View"
-msgstr ""
+msgstr "Вигляд через WML"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4374,33 +4284,34 @@ msgstr "Прокрутити до"
 #. [label]
 #: data/gui/window/game_version.cfg:122
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Версія:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:150
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Запущено на:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:179
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Архітектура:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Домашня сторінка:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:239
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:279
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Скопіювати повну інформацію :</i>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:299
@@ -4408,11 +4319,13 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Повідомити про проблему або "
+"запропонувати покращення:</i>"
 
 #. [button]: id=issue
 #: data/gui/window/game_version.cfg:313
 msgid "Report Issue"
-msgstr ""
+msgstr "Повідомити про проблему"
 
 #. [label]
 #: data/gui/window/game_version.cfg:322
@@ -4420,14 +4333,13 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Перезапустити вікно міграції:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:335
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Кратер"
+msgstr "Мігрувати"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:372
@@ -4462,7 +4374,7 @@ msgstr "Кеш:"
 #. [grid]
 #: data/gui/window/game_version.cfg:384
 msgid "Logs:"
-msgstr ""
+msgstr "Логи:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:386
@@ -4476,14 +4388,12 @@ msgstr "Лог-файл"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:421
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
 msgstr ""
-"Відкриває лог-файл, у якому може міститися корисна для відлагодження "
-"інформація"
+"Відкриває відповідний до теперішньої версії лог-файл, у якому може міститися "
+"корисна для відлагодження інформація"
 
 #. [label]
 #: data/gui/window/game_version.cfg:451
@@ -4510,42 +4420,44 @@ msgstr "Під час побудови цієї версії Весноту бу
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:635
 msgid "Forums"
-msgstr ""
+msgstr "Forums"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:654
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:673
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:692
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:711
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:730
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвувати"
 
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:826
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
+"Покрокова стратегія з відкритим кодом, що опирається на тему високого "
+"фентезі."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -4577,7 +4489,7 @@ msgstr "Особливості"
 #. [grid]
 #: data/gui/window/game_version.cfg:885 data/gui/window/title_screen.cfg:261
 msgid "Community"
-msgstr ""
+msgstr "Спільнота"
 
 #. [button]: id=credits
 #: data/gui/window/game_version.cfg:939
@@ -4587,7 +4499,7 @@ msgstr "Автори"
 #. [button]: id=license
 #: data/gui/window/game_version.cfg:954
 msgid "License"
-msgstr ""
+msgstr "Ліцензія"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4684,6 +4596,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"Розробкою <i>The Battle for Wesnoth</i> займаються виключно на добровільних "
+"засадах, включаючи переклад. Переклади можуть відставати або навіть бути "
+"закинутими."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4694,6 +4609,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Примітка:</b> Показаний відсоток перекладу відноситься лише до основному "
+"інтерфейсу гри та внутрішньої довідки. Більше статистики, включаючи "
+"інформацію про кожну окрему кампанію, можна знайти за наступним посиланням:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4703,11 +4621,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Якщо Ви зацікавлені у допомозі з перекладом гри, будь ласка, пройдіть за "
+"наступним посиланням задля отримання інформації:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Показувати неповні та закинуті переклади"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -4910,12 +4830,12 @@ msgstr "Перевірити стан"
 #. [button]: id=kick
 #: data/gui/window/lobby_player_info.cfg:248
 msgid "Kick"
-msgstr "Копнути"
+msgstr "Прогнати"
 
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:260
 msgid "Kick + Ban"
-msgstr "Копнути + забанити"
+msgstr "Прогнати + забанити"
 
 #. [button]: id=stopgame
 #: data/gui/window/lobby_player_info.cfg:272
@@ -4949,10 +4869,8 @@ msgstr "Параметри логування"
 
 #. [label]
 #: data/gui/window/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Дерев'яна будка"
+msgstr "Домен логів"
 
 #. [row]
 #: data/gui/window/logging.cfg:196
@@ -4992,7 +4910,7 @@ msgstr "Очистити лог"
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
+msgstr "Перенесення даних"
 
 #. [label]
 #: data/gui/window/migrate_version_selection.cfg:53
@@ -5000,6 +4918,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Оберіть версію Весноту, з якої буде імпортовано ваші дані.\n"
+"Деякі налаштування запрацюють лише після перезапуску гри."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -5159,10 +5079,8 @@ msgstr "Змінити управління"
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Увійти на офіційний мультиплеєрний сервер Веснота"
+msgstr "Оберіть чи введіть адресу сервера для багатокористувацької гри."
 
 #. [label]
 #: data/gui/window/mp_connect.cfg:101
@@ -5186,10 +5104,8 @@ msgstr "Випадковий підбір фракцій:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:156
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
-msgstr "Дозволити дзеркальні матчі при виборі випадкових фракцій."
+msgstr "Дозволити дзеркальні матчі при виборі випадкових фракцій"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:177
@@ -5404,14 +5320,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr "Строгі перевірки на помилки синхронізації"
 
 #: data/gui/window/mp_create_game.cfg:987
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Зберегти повтор"
+msgstr "Приватний повтор"
 
 #: data/gui/window/mp_create_game.cfg:987
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Визначає чи буде повтор матчу публічно доступним"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:1003
@@ -5420,13 +5334,9 @@ msgstr "Назва гри:"
 
 #. [text_box]: id=game_password
 #: data/gui/window/mp_create_game.cfg:1050
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
-msgstr "Встановлює пароль, який повинні ввести охочі приєднатися до гри."
+msgstr "Встановлює пароль, який повинні ввести охочі приєднатися до гри"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5463,10 +5373,8 @@ msgstr "Завербовано"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Виберіть собі фракцію"
+msgstr "Оберіть свого лідера"
 
 #. [label]
 #. [widget]: id=name
@@ -5542,10 +5450,8 @@ msgstr "Логін:"
 
 #. [button]: id=replay_download
 #: data/gui/window/mp_match_history.cfg:159
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Завантажень"
+msgstr "Завантажити"
 
 #. [label]: id=players
 #. [label]: id=modifications
@@ -5557,14 +5463,12 @@ msgstr "Нема"
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "Інформація"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Гравці:"
+msgstr "Гравці"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5575,10 +5479,8 @@ msgstr "Модифікації"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Гравці:"
+msgstr "Гравець:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -5587,21 +5489,17 @@ msgstr "Гравці:"
 #: data/gui/window/mp_match_history.cfg:506
 #: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Зірочки відповідають усім символам"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:474
-#, fuzzy
-#| msgid "Content"
 msgid "Content Type:"
-msgstr "Вміст"
+msgstr "Тип вмісту:"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Ім'я команди:"
+msgstr "Ім'я гри:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5660,50 +5558,42 @@ msgstr "Локальна гра"
 #. [label]
 #: data/gui/window/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* На кого подається скарга:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Причина скарги:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Де відбулося порушення:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Інформація про карту"
+msgstr "Додаткова інформація:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* обов'язкові поля"
 
 #. [label]
 #: data/gui/window/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Фракція"
+msgstr "Фракція:"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:243
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "Змінити оператора сторони"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:259
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
-msgstr "Змінити поведінку AI"
+msgstr "Змінити поведінку ШІ сторони"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:286
@@ -5712,10 +5602,8 @@ msgstr "До якої команди належить ця сторона"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:302
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "Колір команди"
+msgstr "Колір сторони"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:423
@@ -5725,7 +5613,7 @@ msgstr "Я готовий"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Натисніть ESC, щоб пропустити"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:311
@@ -5957,12 +5845,12 @@ msgstr "Скинути"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Розмір вікна:"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Множник розміру пікселів:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
@@ -5975,6 +5863,8 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Встановити глобальний помножувач розміру пікселів. Множник розміру пікселів "
+"2 зробить усе на екрані вдвічі більшим."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:102
@@ -5989,12 +5879,14 @@ msgstr "Перемкнутися між повноекранним та віко
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr ""
+msgstr "Автоматичний розмір"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Обирати множник розміру пікселів автоматично, залежно від поточного розміру "
+"вікна"
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:129
@@ -6007,6 +5899,8 @@ msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"Зменшує розриви, синхронізуючи промальовку з частотою оновлення екрану "
+"(вимагає перезапуску)"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:145
@@ -6025,7 +5919,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Тема інтерфейсу:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -6033,23 +5927,23 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Змінити внутрішньоігрову тему інтерфейсу. Додаткові теми можливо отримати в "
+"аддонах"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Показники під час бою"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Показувати величину шкоди і зцілення над бійцем"
+msgstr "Показувати величину шкоди і зцілення тимчасовими написами над бійцем"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Показувати еліпси під бійцями"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -6063,7 +5957,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Сітка на мапі"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -6092,10 +5986,8 @@ msgstr "Показувати анімацію води (може сповіль�
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Анімувати нерухомих бійців"
+msgstr "Анімації нерухомих бійців"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
@@ -6104,10 +5996,8 @@ msgstr "Безперервно анімувати стоячих бійців н
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Анімувати бездіяльних бійців"
+msgstr "Анімації бездіяльних бійців"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
@@ -6288,29 +6178,21 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Додати ім'я користувача до вашого списку друзів (додайте необов'язкові "
-"замітки, наприклад  'player_name notes on friend')"
+"Додати ім'я користувача до вашого списку друзів (додайте додаткові замітки, "
+"наприклад, 'player_name notes on friend')"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
-"Додати це ім'я користувача до вашого списку ігнорованих (додайте "
-"необов'язкову причину, наприклад 'player_name reason ignored')"
+"Додати це ім'я користувача до вашого списку ігнорованих (додайте додаткову "
+"причину, наприклад, 'player_name reason ignored')"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -6345,12 +6227,12 @@ msgstr "Вибрати кольори сфер/мінікарти"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
-msgstr "Показувати сферу якщо не ходив"
+msgstr "Показувати сферу, якщо не ходив"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
 msgid "Show partially moved orb"
-msgstr "Показувати сферу якщо часткова ходив"
+msgstr "Показувати сферу, якщо частково ходив"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -6358,11 +6240,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Якщо боєць може ходити, але не атакувати, показувати двоколірну сфери з "
+"кольорами часткового та завершеного руху."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Використовувати двоколірну сферу для бійців поза боєм"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -6377,7 +6261,7 @@ msgstr "Показувати сферу союзника"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "Використовувати двоколірні сфери під часу ходу союзників"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -6386,6 +6270,8 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Під часу ходу союзників, їхні бійці матимуть двоколірну сферу. Одна половина "
+"позначатиме колір сторони союзника, а інша — статус переміщення бійця."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -6433,16 +6319,21 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Різниця фактичного результату від очікуваного, у відсотках.\n"
+"Перше число в дужках — очікувана кількість втрачених/отриманих очків "
+"здоров'я.\n"
+"Сума (або різниця) двох чисел у дужках — фактична кількість втрачених/"
+"отриманих очків здоров'я."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Відношення фактичного до очікуваного"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Удари"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:579
@@ -6458,6 +6349,19 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"<i>Апріорна</i> ймовірність того, що буде завдано/отримано не більше цієї "
+"кількості шкоди, у відсотках.\n"
+"\n"
+"Інтуїтивно, це міра того, наскільки випадковість вплинула на цю сторону.\n"
+"Значення від 0 до 50 вказують на те, що кількість влучань була меншою, ніж "
+"очікувалося.\n"
+"Значення від 50 до 100 вказують на те, що кількість влучань була більшою, "
+"ніж очікувалося.\n"
+"\n"
+"Зелені значення вказують на те, що для сторони виявилася кращою, ніж "
+"очікувалося.\n"
+"Червоні значення вказують на те, що для сторони ситуація була гіршою, ніж "
+"очікувалося."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -6504,7 +6408,7 @@ msgstr "Зображення"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "Loc"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
@@ -6515,13 +6419,13 @@ msgstr "Шар"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Base.x"
 
 # гадки не маю звідки це
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Base.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
@@ -6615,10 +6519,8 @@ msgstr "Запустити редактор карт"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "Битва за Веснот"
+msgstr "Місця для розмови про Веснот"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -6633,14 +6535,12 @@ msgstr "Вийти з гри"
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:471
 msgid "About"
-msgstr ""
+msgstr "About"
 
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:472
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "Битва за Веснот"
+msgstr "Загальна інформація про Battle for Wesnoth"
 
 #. [button]: id=language
 #: data/gui/window/title_screen.cfg:494
@@ -6732,7 +6632,7 @@ msgstr "Викликати бійця"
 #. [text_box]: id=filter_box
 #: data/gui/window/unit_recall.cfg:311
 msgid "Search for unit name, unit type name, unit level, or trait"
-msgstr ""
+msgstr "Шукати ім'я бійця, назву типу бійця, рівень бійця або особливість"
 
 #. [button]: id=rename
 #: data/gui/window/unit_recall.cfg:401
@@ -6794,7 +6694,7 @@ msgstr "Cocoa сповіщення"
 
 #: src/build_info.cpp:346 src/desktop/version.cpp:125
 msgid "cpu_architecture^<unknown>"
-msgstr ""
+msgstr "<невідомо>"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -6835,24 +6735,28 @@ msgstr "<невідомо>"
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:703
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
-msgstr ""
+msgstr "--userdata-dir=<відносний шлях, який не починається з крапки>"
 
 #: src/filesystem.cpp:706
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
+"Використовуйте абсолютний шлях або відносний, що починається з крапки або "
+"оберненої косої"
 
 #. TRANSLATORS: translate the part inside <...> only
 #: src/filesystem.cpp:766 src/filesystem.cpp:837
 msgid "--userdata-dir=<relative path>"
-msgstr ""
+msgstr "--userdata-dir=<відносний шлях>"
 
 #: src/filesystem.cpp:769 src/filesystem.cpp:840
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
 msgstr ""
+"Використовуйте абсолютні шляхи. Відносні шляхи є застарілими, оскільки вони "
+"інтерпретуються відносно $HOME"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -6866,7 +6770,7 @@ msgstr ""
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/filesystem.cpp:1830
 msgid "language code for localized resources^en_US"
-msgstr "uk,ru"
+msgstr "uk"
 
 #: src/font/text.cpp:1055
 msgid "The text contains invalid Pango markup: "
@@ -6916,7 +6820,7 @@ msgstr "$prefix, або $last"
 
 #: src/formula/string_utils.cpp:299 src/formula/string_utils.cpp:339
 msgid "timespan^expired"
-msgstr ""
+msgstr "прострочений"
 
 #. TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
 #. as the string with this comment MUST be translated following the usual rules
@@ -6929,51 +6833,51 @@ msgstr ""
 #: src/formula/string_utils.cpp:313
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num рік"
+msgstr[1] "$num роки"
+msgstr[2] "$num років"
 
 #: src/formula/string_utils.cpp:314
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num місяць"
+msgstr[1] "$num місяці"
+msgstr[2] "$num місяців"
 
 #: src/formula/string_utils.cpp:315
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num тиждень"
+msgstr[1] "$num тижні"
+msgstr[2] "$num тижнів"
 
 #: src/formula/string_utils.cpp:316
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num день"
+msgstr[1] "$num дні"
+msgstr[2] "$num днів"
 
 #: src/formula/string_utils.cpp:317
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num година"
+msgstr[1] "$num години"
+msgstr[2] "$num годин"
 
 #: src/formula/string_utils.cpp:318
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num хвилина"
+msgstr[1] "$num хвилини"
+msgstr[2] "$num хвилин"
 
 #: src/formula/string_utils.cpp:319
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$num секунда"
+msgstr[1] "$num секунди"
+msgstr[2] "$num секунд"
 
 #: src/gui/core/canvas.cpp:276
 msgid "Image doesn't fit on canvas."
@@ -6984,10 +6888,8 @@ msgid "Text has a font size of 0."
 msgstr "Розмір шрифту тексту 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "Не визначений стан або секція відмальовки."
+msgstr "Не визначено секції промальовки."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:132
 msgid "No resolution defined."
@@ -7001,20 +6903,20 @@ msgid "No grid defined."
 msgstr "Сітка не визначена."
 
 #: src/gui/core/window_builder.cpp:220
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "У рядка має бути стовпець."
+msgstr "Сітка '$grid' рядок $row має мати хоч одну колонку."
 
 #: src/gui/core/window_builder.cpp:232
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Сітка '$grid' рядок $row має неправильну кількість колонок ($found знайдено, "
+"$expected очікувалося)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
 msgid "Completed"
-msgstr ""
+msgstr "Пройдено"
 
 #: src/gui/dialogs/addon/manager.cpp:152
 msgid "addons_view^All Add-ons"
@@ -7145,7 +7047,7 @@ msgstr "Може зробити кампанії легшими або скла�
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^RNG"
-msgstr "ГВЧ"
+msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
@@ -7293,6 +7195,7 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:942
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
+"Кодової фрази не може бути, якщо використовується авторизація через форум."
 
 #: src/gui/dialogs/addon/manager.cpp:947
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -7305,7 +7208,7 @@ msgstr "Сервер відповів з помилкою:"
 
 #: src/gui/dialogs/addon/manager.cpp:953
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "Аддон було відкинуто сервером:"
 
 #: src/gui/dialogs/addon/manager.cpp:968 src/gui/dialogs/addon/manager.cpp:995
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:508
@@ -7328,13 +7231,13 @@ msgstr "Ви дійсно хочете видалити '$addon|'?"
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1044
 msgid "%B %d %Y, %I:%M %p"
-msgstr ""
+msgstr "%d %B %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1047
 msgid "%B %d %Y, %H:%M"
-msgstr ""
+msgstr "%d %B %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1108
 msgid "url^None"
@@ -7342,7 +7245,7 @@ msgstr "Немає"
 
 #: src/gui/dialogs/attack_predictions.cpp:115
 msgid "No usable weapon"
-msgstr "Нема підходящої зброї"
+msgstr "Нема відповідної зброї"
 
 #: src/gui/dialogs/attack_predictions.cpp:193
 msgid "Defender resistance vs"
@@ -7373,6 +7276,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"При нормальному встановленні Веснот включає більш ніж 15 основних кампаній, "
+"навіть до того, як ви завантажите додаткові з серверу аддонів. Якщо ви "
+"встановили гру через менеджер пакетів, можливо, там також є окремий пакет, "
+"який включає повні дані гри."
 
 #: src/gui/dialogs/campaign_selection.cpp:417
 #: src/gui/dialogs/multiplayer/lobby.cpp:434
@@ -7479,77 +7386,67 @@ msgstr "Прикраса"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:191
 msgid "RNG"
-msgstr "ГВЧ"
+msgstr "RNG"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:192
 msgid "Survival"
 msgstr "Виживання"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
-#, fuzzy
-#| msgid "Map Information"
 msgid "Terraforming"
-msgstr "Інформація про карту"
+msgstr "Тераформування"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:376
 msgid "No validation errors"
-msgstr ""
+msgstr "Відсутність помилок при перевірці"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:376
 msgid "Success"
 msgstr "Успіх"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:406
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose an icon"
-msgstr "Виберіть розширення"
+msgstr "Оберіть іконку"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:82
 msgid "lawful"
-msgstr ""
+msgstr "порядний"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:83
 msgid "chaotic"
-msgstr ""
+msgstr "хаотичний"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:84
 msgid "neutral"
-msgstr ""
+msgstr "нейтральний"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:85
 msgid "liminal"
-msgstr ""
+msgstr "тіньовий"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:145
 msgid "scout"
-msgstr ""
+msgstr "розвідник"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:146
-#, fuzzy
-#| msgid "Right"
 msgid "fighter"
-msgstr "Вправо"
+msgstr "воїн"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:147
-#, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Пошук"
+msgstr "лучник"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:148
 msgid "mixed fighter"
-msgstr ""
+msgstr "змішаний воїн"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:149
 msgid "healer"
-msgstr ""
+msgstr "цілитель"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:305
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Choose File"
-msgstr "Виберіть гравця"
+msgstr "Оберіть файл"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -7673,7 +7570,7 @@ msgstr "Веснот $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:230
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$active active, $reserve reserve"
 
 #: src/gui/dialogs/game_load.cpp:285
 msgid "The selected file is corrupt: "
@@ -8150,11 +8047,11 @@ msgstr "Цей хід"
 
 #: src/gui/dialogs/statistics_dialog.cpp:213
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Фактична частота влучень, за шансом влучити:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:215
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(жодних сутичок поки що не сталося)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:323
 msgid ""
@@ -8165,6 +8062,10 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Різниця між фактичним та очікуваним результатом, у відсотках.\n"
+"Перше число в дужках — очікувана кількість завданих/отриманих ударів.\n"
+"Сума (або різниця) двох чисел у дужках це фактична кількість завданих/"
+"отриманих ударів."
 
 #: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "stats^Recruits"
@@ -8214,17 +8115,19 @@ msgstr "Виберіть тестовий сценарій"
 
 #: src/gui/dialogs/unit_create.cpp:190
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "Типовий різновид"
 
 #: src/gui/dialogs/unit_recall.cpp:221
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Цього бійця неможливо закликати, тому що ви маєте недостатньо золота в "
+"вашому плані."
 
 #: src/gui/dialogs/unit_recall.cpp:223
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "Цього бійця неможливо закликати, тому що ви маєте недостатньо золота."
 
 #: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
@@ -8286,7 +8189,7 @@ msgstr "шепотіти користувачеві $receiver"
 
 #: src/gui/widgets/chatbox.cpp:379
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "<i>$name</i> приєднався"
 
 #: src/gui/widgets/chatbox.cpp:385
 msgid ""
@@ -8338,9 +8241,9 @@ msgstr "Все вибрано"
 #: src/gui/widgets/multimenu_button.cpp:179
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "$excess іншого"
+msgstr[1] "$excess інших"
+msgstr[2] "$excess інших"
 
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:233
@@ -8372,10 +8275,8 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Знайдений елемент керування з підказкою але без спливаючої підказки."
 
 #: src/gui/widgets/tab_container.cpp:138
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tab container control"
-msgstr "У дереві не визначені вузли."
+msgstr "Не визначено сітки для керування контейнером вкладки"
 
 #: src/gui/widgets/tree_view.cpp:290
 msgid "No nodes defined for a tree view."
@@ -8659,10 +8560,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Вбити бійця (Відладка!)"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Створити бійця (Відладка!)"
+msgstr "Телепортувати бійця (Відладка!)"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Objectives"
@@ -8800,10 +8699,8 @@ msgid "Assign Local Time"
 msgstr "Призначити місцевий час"
 
 #: src/hotkey/hotkey_command.cpp:177
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Наступний боєць"
+msgstr "Новий тип бійця"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Time Schedule Editor"

@@ -4435,8 +4435,6 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:335
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
 msgstr "Migrer"
 
@@ -4520,42 +4518,36 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/game_version.cfg:635
-#, fuzzy
 msgid "Forums"
 msgstr "Forums"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/game_version.cfg:654
-#, fuzzy
 msgid "Discord"
 msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/game_version.cfg:673
-#, fuzzy
 msgid "IRC"
 msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/game_version.cfg:692
-#, fuzzy
 msgid "Steam"
 msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/game_version.cfg:711
-#, fuzzy
 msgid "Reddit"
 msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/game_version.cfg:730
-#, fuzzy
 msgid "Donate"
 msgstr "Donations"
 
@@ -4593,7 +4585,6 @@ msgstr "Fonctionnalités"
 #. [tab]
 #. [grid]
 #: data/gui/window/game_version.cfg:885 data/gui/window/title_screen.cfg:261
-#, fuzzy
 msgid "Community"
 msgstr "Communauté"
 
@@ -4700,7 +4691,6 @@ msgstr "Afficher ou masquer les notes"
 
 #. [label]
 #: data/gui/window/language_selection.cfg:80
-#, fuzzy
 msgid ""
 "<i>The Battle for Wesnoth</i> relies on volunteers for development, "
 "including translation. Translations may drift behind or even become "
@@ -4714,7 +4704,6 @@ msgstr ""
 #. Beneath the label widget displaying this text there is a widget displaying
 #. a clickable link to <https://gettext.wesnoth.org/> (which opens in the user’s browser).
 #: data/gui/window/language_selection.cfg:85
-#, fuzzy
 msgid ""
 "<b>Note:</b> The translation percentages shown apply to the core game "
 "interface and in-game help only. More complete stats, including details for "
@@ -4729,17 +4718,15 @@ msgstr ""
 #. Beneath the label widget displaying this text there is a widget displaying
 #. a clickable link to the wiki’s WesnothTranslations page (which opens in the user’s browser).
 #: data/gui/window/language_selection.cfg:142
-#, fuzzy
 msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
-"Si vous êtes intéressé pour participer à la traduction du jeu, cliquez sur "
-"le lien suivant pour obtenir plus d'information :"
+"Si vous êtes intéressé(e) par une participation à la traduction du jeu, "
+"cliquez sur le lien suivant pour obtenir plus d'information :"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
-#, fuzzy
 msgid "Show in-progress or abandoned translations"
 msgstr "Afficher les traductions incomplètes ou abandonnées"
 
@@ -6657,8 +6644,6 @@ msgstr "Ouvrir l'éditeur de carte"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
 msgstr "Endroits pour parler de Wesnoth"
 
@@ -8170,8 +8155,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</b> "
-"».\n"
+"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</"
+"b> ».\n"
 "Voulez-vous le réattribuer à « <b>$new_hotkey_action|</b> » ?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:945
@@ -8439,8 +8424,9 @@ msgstr "Widget avec une aide contextuelle sans support détecté."
 
 #: src/gui/widgets/tab_container.cpp:138
 #, fuzzy
+#| msgid "No grid defined for tree view"
 msgid "No grid defined for tab container control"
-msgstr "Grille du contrôle du label de coulisse requise manquante"
+msgstr "Pas de grille définie pour l'arborescence."
 
 #: src/gui/widgets/tree_view.cpp:290
 msgid "No nodes defined for a tree view."
@@ -9406,14 +9392,14 @@ msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
 
-#~ msgid "Id:"
-#~ msgstr "Identifiant :"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "Sables pierreux"
 
 #~ msgid "Sands"
 #~ msgstr "Sable"
+
+#~ msgid "Id:"
+#~ msgstr "Identifiant :"
 
 #~ msgid "Reloading alters future combat outcomes"
 #~ msgstr "Le rechargement altère l'issue des prochains combats"
@@ -9446,147 +9432,8 @@ msgstr ""
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Choisissez votre langue préférée :"
 
-#, fuzzy
-#~ msgid "Missing required state for button"
-#~ msgstr "État du bouton requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required background for chatbox"
-#~ msgstr "Fond de la zone de discussion requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required foreground for chatbox"
-#~ msgstr "Front de la zone de discussion requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required grid for chatbox"
-#~ msgstr "Grille de la zone de discussion requise manquante"
-
-#, fuzzy
-#~ msgid "Missing [draw] in drawing"
-#~ msgstr "[draw] pour le dessin requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for horizontal scrollbar"
-#~ msgstr "État de la coulisse horizontale requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for image control"
-#~ msgstr "État du contrôle de l'image requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for text label control"
-#~ msgstr "État du contrôle du texte requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for listbox"
-#~ msgstr "État de la liste requis manquant"
-
-#, fuzzy
-#~ msgid "Missing [content] in [matrix_definition]"
-#~ msgstr "[content] dans le [matrix_definition] requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for matrix definition"
-#~ msgstr "État de la définition de matrice requis manquant"
-
-#, fuzzy
-#~ msgid "Missing [main] in [matrix]"
-#~ msgstr "[main] dans le [matrix] requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for menu button"
-#~ msgstr "État du bouton de menu manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for minimap control"
-#~ msgstr "État du contrôle de la mini-carte requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for editable text box"
-#~ msgstr "État de la zone de texte éditable requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for multimenu button"
-#~ msgstr "État du bouton de multi-menu requis manquant"
-
-#, fuzzy
-#~ msgid "Missing [item_definition] in [pane]"
-#~ msgstr "[item_definition] dans le [pane] requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required background for panel definition"
-#~ msgstr "Fond de la définition du panneau requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required foreground for panel definition"
-#~ msgstr "Front de la définition du panneau requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for progress bar"
-#~ msgstr "État de la barre d'ascenceur requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for repeating button"
-#~ msgstr "État du bouton en répétition requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for scroll label control"
-#~ msgstr "État du contrôle du label de coulisse requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required background for scrollbar panel"
-#~ msgstr "Fond du panneau de coulisse requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required foreground for scrollbar panel"
-#~ msgstr "Front du panneau de coulisse requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required grid for scrollbar panel"
-#~ msgstr "Grille du panneau de coulisse requise manquante"
-
-#, fuzzy
-#~ msgid "Missing required state for slider"
-#~ msgstr "État de la glissière requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for toggle button"
-#~ msgstr "État du bouton de bascule requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for toggle panel"
-#~ msgstr "État du panneau de bascule requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required state for tree view"
-#~ msgstr "État de l'affichage en arbre requis manquant"
-
-#~ msgid "No grid defined for tree view"
-#~ msgstr "Pas de grille définie pour l'arborescence."
-
 #~ msgid "No node defined."
 #~ msgstr "Aucun nœud défini."
-
-#, fuzzy
-#~ msgid "Missing required background for unit preview pane"
-#~ msgstr "Fond du panneau d'aperçu d'unité requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required foreground for unit preview pane"
-#~ msgstr "Front du panneau d'aperçu d'unité requis manquant"
-
-#, fuzzy
-#~ msgid "Missing required grid for unit preview pane"
-#~ msgstr "Grille du panneau d'aperçu d'unité requise manquante"
-
-#, fuzzy
-#~ msgid "Missing required state for vertical scrollbar"
-#~ msgstr "État de la coulisse verticale requis manquant"
-
-#, fuzzy
-#~ msgid "Missing [widget] in [viewport]"
-#~ msgstr "[widget] dans le [viewport] requis manquant"
 
 #~ msgid "Resolution:"
 #~ msgstr "Résolution :"
@@ -9654,8 +9501,8 @@ msgstr ""
 #~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
 #~ "'$deprecated_key' will be removed in version $removal_version."
 #~ msgstr ""
-#~ "La clef « $deprecated_key » a été remplacée par « $key ». « "
-#~ "$deprecated_key » ne sera plus maintenue à partir de la version "
+#~ "La clef « $deprecated_key » a été remplacée par « $key ». "
+#~ "« $deprecated_key » ne sera plus maintenue à partir de la version "
 #~ "$removal_version."
 
 #~ msgid "Show disengaged orb"
@@ -9741,11 +9588,6 @@ msgstr ""
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "La largeur maximum du texte est inférieure à 1."
 
-#, fuzzy
-#~| msgid "Preferences"
-#~ msgid "Open Preferences Screen"
-#~ msgstr "Préférences"
-
 #~ msgid "View Chat Log"
 #~ msgstr "Afficher l'historique des discussions"
 
@@ -9776,11 +9618,6 @@ msgstr ""
 
 #~ msgid "No ignored"
 #~ msgstr "Pas d'ignorés"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "Information de la carte"
 
 #~ msgid "Do you want to open this link?"
 #~ msgstr "Voulez-vous ouvrir ce lien ?"
@@ -9851,17 +9688,6 @@ msgstr ""
 
 #~ msgid "Registered Users Only"
 #~ msgstr "Joueurs enregistrés uniquement"
-
-#, fuzzy
-#~| msgid "Do you want to open this link?"
-#~ msgid "Are you sure you want to open this link? "
-#~ msgstr "Voulez-vous ouvrir ce lien ?"
-
-#, fuzzy
-#~| msgid "Find $filename server binary to host networked games"
-#~ msgid "Find $filename server binary"
-#~ msgstr ""
-#~ "Trouve le serveur $filename pour héberger des parties réseau multijoueur."
 
 #~ msgid "Event"
 #~ msgstr "Événement"
@@ -10013,13 +9839,6 @@ msgstr ""
 #~ msgid "Quit to Titlescreen"
 #~ msgstr "Quitter pour l'écran d’accueil"
 
-# Un accord à faire peut-être ?
-# Qu'est-ce qui est illimité ?
-#, fuzzy
-#~| msgid "unlimited"
-#~ msgid "FPS limiter"
-#~ msgstr "illimité"
-
 #~ msgid "Rooms"
 #~ msgstr "Salles de discussions"
 
@@ -10029,22 +9848,8 @@ msgstr ""
 #~ msgid "Screenshot Saved"
 #~ msgstr "Capture d'écran sauvegardée"
 
-#, fuzzy
-#~ msgid "feature^Growl notifications back end"
-#~ msgstr "Notification via le back-end Growl"
-
 #~ msgid "file_size^Unknown"
 #~ msgstr "Inconnu"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "Extensions"
-
-#, fuzzy
-#~| msgid "Connect to Server"
-#~ msgid "Send new version to server"
-#~ msgstr "Se connecter au serveur"
 
 #~ msgid "Unknown era"
 #~ msgstr "Ère inconnue"
@@ -10097,26 +9902,6 @@ msgstr ""
 #~ msgid "Show icons in front of the player names in the lobby"
 #~ msgstr "Afficher une icône devant le nom des joueurs connectés"
 
-#, fuzzy
-#~| msgid "controller^None"
-#~ msgid "controller^Computer"
-#~ msgstr "Aucun"
-
-#, fuzzy
-#~| msgid "Close Map"
-#~ msgid "User Maps"
-#~ msgstr "Fermer la carte"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "SP Campaigns"
-#~ msgstr "Campagne"
-
-#, fuzzy
-#~| msgid "No description available."
-#~ msgid "No description available"
-#~ msgstr "Aucune description disponible."
-
 #~ msgid ""
 #~ "Widget definition '$definition' doesn't contain the definition for '$id'."
 #~ msgstr ""
@@ -10129,16 +9914,6 @@ msgstr ""
 #~ msgid "player"
 #~ msgstr "joueur"
 
-#, fuzzy
-#~| msgid "sound^Advanced Options"
-#~ msgid "Advanced Settings"
-#~ msgstr "Options avancées"
-
-#, fuzzy
-#~| msgid "Configuration:"
-#~ msgid "Configure sides"
-#~ msgstr "Configuration :"
-
 #~ msgid "Metadata:"
 #~ msgstr "Métadonnées :"
 
@@ -10146,11 +9921,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Le nouveau thème sera utilisé à la prochaine nouvelle partie ou au "
 #~ "prochain chargement."
-
-#, fuzzy
-#~| msgid "Choose Modifications"
-#~ msgid "Modifiers"
-#~ msgstr "Choisir la modification"
 
 #~ msgid "Experimental Fake Map Edge"
 #~ msgstr "Faux bord de carte expérimental"
@@ -10184,11 +9954,6 @@ msgstr ""
 #~ msgid "sort^By first upload"
 #~ msgstr "Par ancienneté"
 
-#, fuzzy
-#~| msgid "Speed: "
-#~ msgid "Seed:"
-#~ msgstr "Vitesse : "
-
 #~ msgid "Filter"
 #~ msgstr "Filtre : "
 
@@ -10197,8 +9962,8 @@ msgstr ""
 
 #~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 #~ msgstr ""
-#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou « "
-#~ "fixed_height »."
+#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou "
+#~ "« fixed_height »."
 
 #~ msgid "Items"
 #~ msgstr "Objets"
@@ -10222,16 +9987,6 @@ msgstr ""
 #~ msgid "Show haloing effects"
 #~ msgstr "Afficher les effets de halo"
 
-#, fuzzy
-#~| msgid "Show haloing effects"
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "Afficher les effets de halo"
-
-#, fuzzy
-#~| msgid "Add as Ignore"
-#~ msgid "Add Ignored"
-#~ msgstr "Ajouter comme ignoré"
-
 #~ msgid "Delete File"
 #~ msgstr "Supprimer le fichier"
 
@@ -10247,18 +10002,8 @@ msgstr ""
 #~ msgid "infinite"
 #~ msgstr "infini"
 
-#, fuzzy
-#~| msgid "Prefs section^General"
-#~ msgid "Prefs tab^General"
-#~ msgstr "Général"
-
 #~ msgid "Prefs section^General"
 #~ msgstr "Général"
-
-#, fuzzy
-#~| msgid "Prefs section^Game"
-#~ msgid "Prefs section^Hotkeys"
-#~ msgstr "Jeu"
 
 #~ msgid "Prefs section^Display"
 #~ msgstr "Vidéo"
@@ -10268,11 +10013,6 @@ msgstr ""
 
 #~ msgid "Prefs section^Multiplayer"
 #~ msgstr "Multijoueur"
-
-#, fuzzy
-#~| msgid "Prefs section^Game"
-#~ msgid "Prefs section^Advanced"
-#~ msgstr "Jeu"
 
 #~ msgid "Version "
 #~ msgstr "Version"
@@ -10300,41 +10040,6 @@ msgstr ""
 
 #~ msgid "100/100"
 #~ msgstr "100/100"
-
-#, fuzzy
-#~| msgid "Mouse Scrolling"
-#~ msgid "Map scrolling"
-#~ msgstr "Défilement de la souris"
-
-#, fuzzy
-#~| msgid "Moderation"
-#~ msgid "Mouse emulation"
-#~ msgstr "Modération"
-
-#, fuzzy
-#~| msgid "Hotkey Settings"
-#~ msgid "Joystick Settings"
-#~ msgstr "Configuration des raccourcis clavier"
-
-#, fuzzy
-#~| msgid "Sound"
-#~ msgid "Play Sound:"
-#~ msgstr "Son"
-
-#, fuzzy
-#~| msgid "Send Private Message"
-#~ msgid "Private message:"
-#~ msgstr "Envoyer un message privé"
-
-#, fuzzy
-#~| msgid "Send a private message"
-#~ msgid "When a private message is received"
-#~ msgstr "Envoyer un message privé"
-
-#, fuzzy
-#~| msgid "Random start time"
-#~ msgid "Ready to start game:"
-#~ msgstr "Heure de départ aléatoire"
 
 #~ msgid "Attack enemy"
 #~ msgstr "Attaquer l'ennemi"
@@ -10398,11 +10103,6 @@ msgstr ""
 
 #~ msgid "Advanced section^Advanced"
 #~ msgstr "Avancé"
-
-#, fuzzy
-#~| msgid "Refresh Image Cache"
-#~ msgid "Purge Cache"
-#~ msgstr "Rafraîchir le cache des images"
 
 #~ msgid "Hotkey Settings"
 #~ msgstr "Configuration des raccourcis clavier"
@@ -10668,20 +10368,8 @@ msgstr ""
 #~ msgid "Reset"
 #~ msgstr "Remettre à zéro"
 
-#, fuzzy
-#~ msgid "Saved preference:"
-#~ msgstr "Préférence de thème sauvegardée : "
-
 #~ msgid "Add waypoint"
 #~ msgstr "Ajouter un point de passage"
-
-#, fuzzy
-#~ msgid "Sunken Keep"
-#~ msgstr "Donjon de château englouti"
-
-#, fuzzy
-#~ msgid "Swamp Keep"
-#~ msgstr "Marais"
 
 #~ msgid "Add to friends list"
 #~ msgstr "Ajouter cet utilisateur aux amis"
@@ -10717,10 +10405,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Choisir si le soleil évolue de droite à gauche ou de gauche à droite"
 
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Tout désélectionner"
-
 #~ msgid "Generate name"
 #~ msgstr "Générer un nom"
 
@@ -10729,22 +10413,6 @@ msgstr ""
 
 #~ msgid "Impassable Desert Mountains"
 #~ msgstr "Montagnes désertiques infranchissables"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "Donjon de château"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "Donjon de château"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "Eau profonde"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "Eau profonde"
 
 #~ msgid "Snow Forest"
 #~ msgstr "Forêt enneigée"
