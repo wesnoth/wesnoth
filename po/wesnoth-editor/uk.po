@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-17 19:07-0500\n"
-"PO-Revision-Date: 2024-04-04 14:15+0300\n"
+"PO-Revision-Date: 2024-06-19 00:48+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -436,8 +436,10 @@ msgid "Empty file"
 msgstr "Порожній файл"
 
 #: src/editor/map/map_context.cpp:196
+#, fuzzy
+#| msgid "File does not have .map, .cfg, or .mask extension"
 msgid "File does not have .map or .cfg extension"
-msgstr "Це не файл розширення .map або .cfg"
+msgstr "Це не файл розширення .map, .cfg або .mask"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -555,6 +557,9 @@ msgstr "Виберіть файл"
 #: src/gui/dialogs/editor/custom_tod.cpp:164
 msgid "Select"
 msgstr "Вибрати"
+
+#~ msgid "Unit"
+#~ msgstr "Боєць"
 
 #~ msgid "player^None"
 #~ msgstr "Нема"

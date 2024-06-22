@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-25 21:28-0500\n"
-"PO-Revision-Date: 2024-04-06 18:57+0300\n"
+"PO-Revision-Date: 2024-06-20 14:56+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -565,7 +565,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Редактор місцевості-Графіка накладення"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:129
@@ -757,7 +757,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:224
 msgid "Label Tool"
-msgstr "Інструмент Мітка"
+msgstr "Інструмент написів"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:225
@@ -776,7 +776,7 @@ msgstr ""
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:240
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Інструмент предметів"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:241
@@ -796,7 +796,7 @@ msgstr ""
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:254
 msgid "Village Ownership Tool"
-msgstr "Інструмент Власник села"
+msgstr "Інструмент приналежності сіл"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:255
@@ -7385,43 +7385,6 @@ msgstr "Тролі"
 
 #. [race]: id=troll
 #: data/core/units.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes cannot even "
-#| "tell them apart, it is usually easy for an orcish band to convince a "
-#| "group of trolls that by joining them they get to exact revenge on those "
-#| "that have before hunted them. These new recruits are then directed to "
-#| "attack whoever the orcs themselves are currently in conflict with, "
-#| "whether previously a foe of the trolls or not, accumulating even more "
-#| "enemies for the misled trolls. The most common enemy of trolls are "
-#| "dwarves, and the animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7782,11 +7745,11 @@ msgstr "Синтаксична помилка при читанні довідк
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Найкраще з"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Найгірше з"
 
 #: src/help/help_topic_generators.cpp:161
 msgid ""
@@ -7811,6 +7774,8 @@ msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Це місцевість є замком — тут можна завербувати бійців, маючи лідера у "
+"приєднаній цитаделі."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
@@ -7818,6 +7783,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Ця місцевість є цитаделлю — звідси лідер може вербувати нових бійців, "
+"розміщуючи їх на прилеглих клітинках, що є замком."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -7825,6 +7792,9 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Ця незвичайна цитадель дозволяє лідеру вербувати, знаходячись в ній, але не "
+"дозволяє лідеру, що знаходиться в прилеглій цитаделі, вербувати на цій "
+"клітинці."
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:604
@@ -7832,8 +7802,10 @@ msgid "Special Notes:"
 msgstr "Спеціальні нотатки:"
 
 #: src/help/help_topic_generators.cpp:193
+#, fuzzy
+#| msgid "base terrain"
 msgid "Base Terrain: "
-msgstr "Базова місцевість: "
+msgstr "базова місцевість"
 
 #: src/help/help_topic_generators.cpp:213
 msgid "Movement properties: "
@@ -7995,6 +7967,15 @@ msgstr "Ціна бачення"
 #: src/help/help_topic_generators.cpp:756
 msgid "Jamming Cost"
 msgstr "Ціна заклинювання"
+
+#~ msgid "Basic terrain type: $types"
+#~ msgid_plural "Basic terrain types: $types"
+#~ msgstr[0] "Базова місцевість: $types"
+#~ msgstr[1] "Базова місцевість: $types"
+#~ msgstr[2] "Базова місцевість: $types"
+
+#~ msgid "Typical base terrain: $type"
+#~ msgstr "Типова базова місцевість: $type"
 
 #, fuzzy
 #~| msgid "first strike"
