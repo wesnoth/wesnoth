@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Ukrainian
+   * Updated translations: French, Ukrainian
  ### Units
  ### User interface
  ### WML Engine
