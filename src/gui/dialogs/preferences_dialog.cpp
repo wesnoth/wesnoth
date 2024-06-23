@@ -170,7 +170,7 @@ void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 	unsigned i = 0;
 	for(auto& gui : guis) {
 		gui2_themes_.emplace_back(gui.first);
-		options.emplace_back("label", gui.first);
+		options.emplace_back("label", gui.second.description());
 		if (current_theme_name == gui.first) {
 			current_theme = i;
 		}

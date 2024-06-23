@@ -60,6 +60,10 @@ public:
 	/** Activates this GUI. */
 	void activate() const;
 
+	t_string description() {
+		return description_;
+	}
+
 private:
 	std::string id_;
 
