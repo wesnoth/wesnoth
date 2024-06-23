@@ -208,8 +208,19 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-//			widget["label"] = "<span font_family='OldaniaADFStd' font_size='xx-large'>" + tip.text().str().substr(0,1) + "</span>" + tip.text().str().substr(1);
-			widget["label"] = tip.text().str();
+			if (tip.text().str().substr(0,1) != "<") {
+				widget["label"] = "<span font_family='OldaniaADFStd' font_size='xx-large'>" + tip.text().str().substr(0,1) + "</span>" + tip.text().str().substr(1);
+			} else {
+				// tip starts with a tag
+				std::size_t id = tip.text().str().find_first_of(">") + 1;
+				std::stringstream tip_text;
+				tip_text << tip.text().str().substr(0,id)
+						 << "<span font_family='OldaniaADFStd' font_size='xx-large'>"
+						 << tip.text().str().substr(id,1)
+						 << "</span>"
+						 << tip.text().str().substr(id+1);
+				widget["label"] = tip_text.str();
+			}
 			page.emplace("tip", widget);
 
 			widget["label"] = tip.source();
