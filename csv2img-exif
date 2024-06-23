@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 ##
-# This script reads from the existing Wesnoth copyrights file, and writes it to the CreateDate, ModifyDate, Artist, Copyright, and UserComment Exif tags of the images
+# This script reads from the existing Wesnoth copyrights CSV file, and writes it to the CreateDate, ModifyDate, Artist, Copyright, and UserComment Exif tags of the images
+# requires exiftool and cwebp
 ##
 
 import argparse
@@ -16,14 +17,14 @@ import sys
 import re
 
 ##
-# csv file layout (legacy):
-# [0] = current file modified date
+# csv file layout:
+# [0] = current file modified date -> CreateDate tag (not totally accurate)
 # [1] = file path, relative to the repository root
 # [2] = license name(s) -> Copyright Exif tag
 # [3] = authorship information -> Artist Exif tag
 # [4] = notes -> UserComment Exif tag
-# [5] = new git commit date (not used here)
-# [6] = current md5 hash
+# [5] = new git commit date (not used) -> ModifyDate (today)
+# [6] = md5 hash (not used, not updated)
 ##
 
 ##
@@ -37,18 +38,20 @@ known_licenses = (
         "CC0",
         "GNU GPL v2+",
         )
-
+# to check that the date has a four-digit pattern (the year), meaning it really is a date
 dv = re.compile('\d\d\d\d/')
 
+# "-all=" to clear out existing metadata before writing the data from the CSV
 def write_exif(target,date_value,copyright_value,artist_value,usercomment_value):
     if dv.match(date_value) != None:
-    #    print(dv.match(date_value))
         date_value = datetime.strptime(str(date_value),"%Y/%m/%d").strftime("%Y:%m:%d %H:%M:%S")
     else:
         date_value = datetime.today().strftime("%Y:%m:%d %H:%M:%S")
-    #    print("else:"+str(date_value))
-    #date_value = str(date_value)
-    return str(check_output(["exiftool", "-ModifyDate=now", "-CreateDate=%s" % date_value, "-Copyright=%s" % copyright_value, "-Artist=%s" % artist_value, "-UserComment=%s" % usercomment_value, target]), 'UTF-8')
+    return str(check_output(["exiftool", "-overwrite_original", "-all=", "-ModifyDate=now", "-CreateDate=%s" % date_value, "-Copyright=%s" % copyright_value, "-Artist=%s" % artist_value, "-UserComment=%s" % usercomment_value, target]), 'UTF-8')
+
+def fix_webp(target):
+    return str(check_output(["cwebp", "-quiet", "-q", "100", target, "-o", target]), 'UTF-8')
+
 
 ##
 # program logic start
@@ -67,7 +70,7 @@ csv_data = {}
 missing_fields = []
 # Too many fields, possibly due to an unquoted comma
 extra_fields = []
-# untracked images
+# previously untracked images
 added = []
 # lacking something in either the license or author fields
 incomplete = []
@@ -100,7 +103,7 @@ with contextlib.suppress(FileNotFoundError):
 for root, _, files in os.walk(options.repo):
     for filename in files:
         filetype = Path(filename).suffix
-        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp":
+        if filetype == ".png" or filetype == ".jpg":
             file = os.path.normpath(os.path.join(root, filename))
 
             if not file in csv_data:
@@ -116,8 +119,29 @@ for root, _, files in os.walk(options.repo):
                 incomplete.append(csv_data[file])
             else:
                 unchanged.append(csv_data[file])
-                write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])                
+                write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])
 
+        # exiftool doesn't fully support WEBP-RIFF yet (v12.87), and adding Exif data to a WEBP that's missing the alpha subchunk causes issues
+        elif filetype == ".webp":
+            file = os.path.normpath(os.path.join(root, filename))
+
+            if not file in csv_data:
+                added.append(["NO_DATA", file, "NO_DATA", "NO_DATA", "NEW", "NO_DATA", "NO_DATA"])
+            elif len(csv_data[file]) < 7:
+                missing_fields.append(csv_data[file])
+            elif len(csv_data[file]) > 7:
+                extra_fields.append(csv_data[file])
+            elif csv_data[file][2].strip() == "" or csv_data[file][3].strip() == "":
+                incomplete.append(csv_data[file])
+            elif not csv_data[file][2] in known_licenses:
+                unknown_licenses.append(csv_data[file][2])
+                incomplete.append(csv_data[file])
+            else:
+                unchanged.append(csv_data[file])
+                fix_webp(file)
+                write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])
+
+# output reports
 final_output = added + missing_fields + extra_fields + incomplete + unchanged
 
 if options.output != "":

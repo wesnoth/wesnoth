@@ -14,13 +14,13 @@ from subprocess import check_output
 
 ##
 # csv file layout:
-# [0] = created date (taken from original CSV, isn't really the date)
+# [0] = created date (taken from original CSV, isn't really the creation date, but should still be tracked)
 # [1] = file path, relative to the repository root
 # [2] = license name(s) -> Copyright Exif tag
 # [3] = authorship information -> Artist Exif tag
 # [4] = notes -> UserComment Exif tag
 # [5] = modified date
-# [6] = current md5 hash
+# [6] = md5 hash
 ##
 
 def read_exif(target,hash_data,error_file):
