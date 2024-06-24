@@ -260,6 +260,29 @@ void prefs::load_preferences()
 		preferences_.merge_with(default_prefs);
 		preferences_.merge_with(unsynced_prefs);
 		preferences_.merge_with(synced_prefs);
+
+		// check for any unknown preferences
+		for(const auto& attr : synced_prefs.attribute_range()) {
+			if(std::find(synced_attributes_.begin(), synced_attributes_.end(), attr.first) == synced_attributes_.end()) {
+				unknown_synced_attributes_.insert(attr.first);
+			}
+		}
+		for(const auto& attr : unsynced_prefs.attribute_range()) {
+			if(std::find(unsynced_attributes_.begin(), unsynced_attributes_.end(), attr.first) == unsynced_attributes_.end()) {
+				unknown_unsynced_attributes_.insert(attr.first);
+			}
+		}
+
+		for(const auto& child : synced_prefs.all_children_range()) {
+			if(std::find(synced_children_.begin(), synced_children_.end(), child.key) == synced_children_.end()) {
+				unknown_synced_children_.insert(child.key);
+			}
+		}
+		for(const auto& child : unsynced_prefs.all_children_range()) {
+			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), child.key) == unsynced_children_.end()) {
+				unknown_unsynced_children_.insert(child.key);
+			}
+		}
 	} catch(const config::error& e) {
 		ERR_CFG << "Error loading preference, message: " << e.what();
 	}
@@ -339,6 +362,27 @@ void prefs::write_preferences()
 		}
 	}
 	for(const char* attr : unsynced_children_) {
+		for(const auto& child : preferences_.child_range(attr)) {
+			config& ch = unsynced.add_child(attr);
+			ch.append_children(child);
+		}
+	}
+
+	// write any unknown preferences back out
+	for(const std::string& attr : unknown_synced_attributes_) {
+		synced[attr] = preferences_[attr];
+	}
+	for(const std::string& attr : unknown_synced_children_) {
+		for(const auto& child : preferences_.child_range(attr)) {
+			config& ch = synced.add_child(attr);
+			ch.append_children(child);
+		}
+	}
+
+	for(const std::string& attr : unknown_unsynced_attributes_) {
+		unsynced[attr] = preferences_[attr];
+	}
+	for(const std::string& attr : unknown_unsynced_children_) {
 		for(const auto& child : preferences_.child_range(attr)) {
 			config& ch = unsynced.add_child(attr);
 			ch.append_children(child);
