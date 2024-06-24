@@ -871,6 +871,11 @@ class prefs
 		preferences::secure_buffer escape(const preferences::secure_buffer& text);
 		preferences::secure_buffer unescape(const preferences::secure_buffer& text);
 
+		std::set<std::string> unknown_synced_attributes_;
+		std::set<std::string> unknown_unsynced_attributes_;
+		std::set<std::string> unknown_synced_children_;
+		std::set<std::string> unknown_unsynced_children_;
+
 		// a bit verbose, but it being a compile time error if a preference hasn't been added is nice
 		static constexpr std::array synced_attributes_{
 			prefs_list::player_joins_sound,
