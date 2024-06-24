@@ -314,13 +314,19 @@ void load_config(const config &v)
 	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
-		// Select a background at random
-		const auto backgrounds = utils::split(i["game_title_background"].str());
-		int r = rand() % (backgrounds.size());
-		game_title_background = backgrounds.at(r);
+		if (!i["game_title_background"].blank()) {
+			// Select a background at random
+			const auto backgrounds = utils::split(i["game_title_background"].str());
+			if (backgrounds.size() > 1) {
+				int r = rand() % (backgrounds.size());
+				game_title_background = backgrounds.at(r);
+			} else if (backgrounds.size() == 1) {
+				game_title_background = backgrounds.at(0);
+			}
+		}
 
 		// Allow game_title to be empty
-		game_title            = i["game_title"].str().empty() ? game_title_background : i["game_title"].str();
+		game_title            = i["game_title"].str();
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
 

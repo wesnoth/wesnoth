@@ -167,14 +167,16 @@ void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 
 	std::vector<config> options;
 	std::size_t current_theme = 0;
+	bool theme_found = false;
 	unsigned i = 0;
 	for(auto& gui : guis) {
 		gui2_themes_.emplace_back(gui.first);
 		options.emplace_back("label", gui.second.description());
 		if (current_theme_name == gui.first) {
 			current_theme = i;
+			theme_found = true;
 		}
-		if (current_theme == 0) {
+		if (!theme_found) {
 			i++;
 		}
 	}
