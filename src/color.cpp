@@ -65,6 +65,10 @@ color_t color_t::from_hex_string(const std::string& c)
 		throw std::invalid_argument("Color hex string should be exactly 6 digits");
 	}
 
+	if(!std::all_of(c.begin(), c.end(), [](const char& ch) { return std::isxdigit(ch) != 0; })) {
+		throw std::invalid_argument("Color hex string contains invalid characters");
+	}
+
 	unsigned long temp_c = std::strtol(c.c_str(), nullptr, 16);
 
 	return {
