@@ -742,11 +742,11 @@ class prefs
 		std::vector<preferences::option>& get_advanced_preferences() {return advanced_prefs_;}
 
 		static void disable_preferences_save() {
-			no_preferences_save_ = true;
+			no_preferences_save = true;
 		}
 
 		static bool preferences_save() {
-			return no_preferences_save_;
+			return no_preferences_save;
 		}
 
 	private:
@@ -757,7 +757,7 @@ class prefs
 		prefs(const prefs&& p) = delete;
 		prefs& operator=(const prefs&& p) = delete;
 
-		inline static bool no_preferences_save_ = false;
+		inline static bool no_preferences_save = false;
 
 		config preferences_;
 		bool fps_;

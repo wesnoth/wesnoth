@@ -655,9 +655,11 @@ static void setup_user_data_dir()
 }
 
 #ifdef _WIN32
-// A convenience for portable installs on Windows.
-// relative paths with . or .. as the first component are considered relative to the current workdir instead of Documents/My Games.
-// Only provided for Windows since portable installs on other systems are not particularly relevant or supported.
+/**
+ * A convenience for portable installs on Windows.
+ * relative paths with . or .. as the first component are considered relative to the current workdir instead of Documents/My Games.
+ * Only provided for Windows since portable installs on other systems are not particularly relevant or supported.
+ */
 static bool is_path_relative_to_cwd(const std::string& str)
 {
 	const bfs::path p(str);
@@ -667,6 +669,28 @@ static bool is_path_relative_to_cwd(const std::string& str)
 	}
 
 	return *p.begin() == "." || *p.begin() == "..";
+}
+
+/**
+ * @return the path to the My Games directory on success or an empty string on failure
+ */
+static std::optional<std::string> get_games_path()
+{
+	PWSTR docs_path = nullptr;
+	HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
+	std::optional<std::string> path = std::nullopt;
+
+	if(res == S_OK) {
+		bfs::path games_path = bfs::path(docs_path) / "My Games";
+		path = games_path.string();
+	} else {
+		ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
+				<< "User config/data directories may be unavailable for "
+				<< "this session. Please report this as a bug.";
+	}
+
+	CoTaskMemFree(docs_path);
+	return path;
 }
 
 static bfs::path windows_userdata(const std::string& newprefdir)
@@ -683,6 +707,7 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 
 	// if a custom userdata directory is provided as an absolute path, just use that
 	// else if it's relative to the current working directory, just use that
+	// else if the first characters is a tilde, then replace that with the path to the "My Games" folder
 	// else if no custom userdata directory was provided, default to the "My Games" folder if present or fallback to the current working directory if not
 	// else a relative path was provided that isn't relative to the current working directory, so ignore it and use the default
 	if(temp.size() > 2 && temp[1] == ':') {
@@ -693,35 +718,39 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 		// Custom directory relative to workdir (for portable installs, etc.)
 		dir = get_cwd() + "/" + temp;
 		DBG_FS << "userdata relative to current working directory";
+	} else if(!temp.empty() && temp[0] == '~') {
+		std::optional<std::string> games_path = get_games_path();
+
+		if(games_path) {
+			dir = *games_path;
+		} else {
+			dir = get_cwd();
+		}
+		dir / temp.substr(1);
 	} else {
 		if(temp.empty()) {
-			temp = "Wesnoth" + get_version_path_suffix();
 			DBG_FS << "using default userdata folder name";
-		} else {
 			temp = "Wesnoth" + get_version_path_suffix();
-			DBG_FS << "relative path for userdata that doesn't start with '.' or '..' is not allowed, using default userdata folder name";
+		} else {
+			ERR_FS << "relative path for userdata whose first path component is neither '.' or '..' is not allowed: " << temp
+				   << ", using default location under My Games";
+			temp = "Wesnoth" + get_version_path_suffix();
 		}
 
-		PWSTR docs_path = nullptr;
-		HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
-
-		if(res != S_OK) {
+		std::optional<std::string> games_path = get_games_path();
+		if(games_path) {
+			create_directory_if_missing(*games_path);
+			dir = *games_path;
+			dir / temp;
+			DBG_FS << "userdata is under My Games at " << dir.string();
+		} else {
 			//
 			// Crummy fallback path full of pain and suffering.
 			//
-			ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
-				   << "User config/data directories may be unavailable for "
-				   << "this session. Please report this as a bug.";
-			dir = bfs::path(get_cwd()) / temp;
-		} else {
-			bfs::path games_path = bfs::path(docs_path) / "My Games";
-			create_directory_if_missing(games_path);
-
-			dir = games_path / temp;
-			DBG_FS << "userdata is under My Games";
+			dir = get_cwd();
+			dir / temp;
+			DBG_FS << "userdata is at " << dir.string();
 		}
-
-		CoTaskMemFree(docs_path);
 	}
 
 	return dir;
@@ -731,6 +760,7 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 {
 	bfs::path dir;
 	std::string temp = newprefdir;
+	const char* home_str = getenv("HOME");
 
 	// if a custom userdata was not specified
 	// use the PREFERENCES_DIR if defined
@@ -738,7 +768,6 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 	// else use a default - this is currently the "unsandboxed" location from migrate_apple_config_directory_for_unsandboxed_builds() above
 	if(temp.empty()) {
 #ifdef PREFERENCES_DIR
-		const char* home_str = getenv("HOME");
 		temp = PREFERENCES_DIR;
 		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
 		if(home_str && temp[0] == '~') {
@@ -754,7 +783,7 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 		DBG_FS << "userdata using SDL pref path";
 #else
 		temp = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
-		DBG_FS << "userdata using default path relative to HOME";
+		DBG_FS << "Using default relative path for userdata";
 #endif
 	}
 
@@ -762,11 +791,11 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 	// else make it relative to HOME if HOME is populated, otherwise make it relative to the current working directory
 	if(temp[0] == '/') {
 		dir = temp;
-		DBG_FS << "userdata using absolute path";
+		DBG_FS << "userdata using absolute path: " << temp;
 	} else {
-		dir = ".";
-		dir / temp;
-		DBG_FS << "unable to determine location to use for userdata, defaulting to current working directory";
+		bfs::path home = home_str ? home_str : get_cwd();
+		dir = home / temp;
+		DBG_FS << "userdata is relative to the current working directory: " << dir.string();
 	}
 
 	return dir;
@@ -821,10 +850,10 @@ static bfs::path linux_userdata(const std::string& newprefdir)
 	}
 
 	// unable to determine another userdata directory, so just use the current working directory for the userdata
-	dir = ".";
-	DBG_FS << "unable to determine location to use for userdata, defaulting to current working directory";
-
+	dir = get_cwd();
 	dir /= temp;
+	ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory: " << dir.string();
+
 	return dir;
 }
 #endif

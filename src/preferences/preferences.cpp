@@ -148,7 +148,7 @@ prefs::~prefs()
 	encountered_terrains_set_.clear();
 
 	try {
-		if(!no_preferences_save_) {
+		if(!no_preferences_save) {
 			write_preferences();
 		}
 	} catch (...) {
