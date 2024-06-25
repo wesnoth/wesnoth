@@ -839,9 +839,9 @@ void context_manager::save_all_maps(bool auto_save_windows)
 	saved_windows_.clear();
 	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
-		std::string name = get_map_context().get_filename();
+		std::string save_path = get_map_context().get_filename();
 		if(auto_save_windows) {
-			if(name.empty() || filesystem::is_directory(name)) {
+			if(save_path.empty() || filesystem::is_directory(save_path)) {
 				std::ostringstream s;
 				s << default_dir_ << "/";
 				if(!get_map_context().is_embedded() && !get_map_context().is_pure_map()) {
@@ -849,11 +849,11 @@ void context_manager::save_all_maps(bool auto_save_windows)
 				} else {
 					s << "maps/tmp_map_" << i + 1 << ".map";
 				}
-				name = s.str();
-				get_map_context().set_filename(name);
+				save_path = s.str();
+				get_map_context().set_filename(save_path);
 			}
 		}
-		saved_windows_.push_back(name);
+		saved_windows_.push_back(save_path);
 		save_map(false);
 	}
 
