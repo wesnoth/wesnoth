@@ -25,7 +25,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "map/label.hpp"
-#include "preferences/editor.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -1005,7 +1005,7 @@ void map_context::clear_modified()
 
 void map_context::add_to_recent_files()
 {
-	preferences::editor::add_recent_files_entry(get_filename());
+	prefs::get().add_recent_files_entry(get_filename());
 }
 
 bool map_context::can_undo() const

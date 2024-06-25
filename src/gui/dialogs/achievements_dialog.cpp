@@ -25,7 +25,7 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -40,7 +40,7 @@ REGISTER_DIALOG(achievements_dialog)
 achievements_dialog::achievements_dialog()
 	: modal_dialog(window_id())
 	, achieve_()
-	, last_selected_(preferences::selected_achievement_group())
+	, last_selected_(prefs::get().selected_achievement_group())
 	, achievements_box_(nullptr)
 	, content_names_(nullptr)
 {
@@ -76,7 +76,7 @@ void achievements_dialog::pre_show(window& win)
 
 void achievements_dialog::post_show(window&)
 {
-	preferences::set_selected_achievement_group(last_selected_);
+	prefs::get().set_selected_achievement_group(last_selected_);
 }
 
 void achievements_dialog::set_achievements_row()

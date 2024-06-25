@@ -42,8 +42,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "pathfind/teleport.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -232,7 +231,7 @@ void play_controller::init(const config& level)
 
 		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
-		preferences::encounter_all_content(gamestate().board_);
+		prefs::get().encounter_all_content(gamestate().board_);
 
 		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
@@ -728,7 +727,7 @@ void play_controller::tab()
 		}
 
 		// Add nicks from friendlist
-		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+		const std::map<std::string, std::string> friends = prefs::get().get_acquaintances_nice("friend");
 
 		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter) {
 			dictionary.insert((*iter).first);
@@ -736,7 +735,7 @@ void play_controller::tab()
 
 		// Exclude own nick from tab-completion.
 		// NOTE why ?
-		dictionary.erase(preferences::login());
+		dictionary.erase(prefs::get().login());
 		break;
 	}
 
@@ -865,26 +864,26 @@ void play_controller::save_game()
 	assert(!gamestate().events_manager_->is_event_running());
 
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_game_auto(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
 
 void play_controller::save_replay()
 {
-	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_replay_auto(const std::string& filename)
 {
-	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
 
@@ -1042,14 +1041,14 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 void play_controller::do_autosave()
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
-	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+	savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
+	save.autosave(false, prefs::get().autosavemax(), pref_constants::INFINITE_AUTO_SAVES);
 }
 
 void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(true, filename);
 }
 

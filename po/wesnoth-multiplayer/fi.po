@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2023-01-07 12:07+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -132,8 +132,12 @@ msgstr "Taistelu Wesnothista"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Oletus aikakausi Wesnothin moninpelille. Sisältää kuusi liittoumaa ja on "
@@ -146,58 +150,19 @@ msgstr "Sankareiden aika"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Korkeamman tason yksiköiden aikakausi. Tason kolme johtajayksiköillä ja "
 "tason yksi ja kaksi yksiköitä värvättävänä. Sisältää kuusi liittoumaa. "
 "Yleisesti ottaen ei pidetä tasapainotettuna."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Taistelu Wesnothista + Dyynikansa"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Taistelu Wesnothista, sisältäen yhden liittouman lisää. Dyynikansan yksiköt "
-"turvautuvat usein hyvään maastonkäyttöön ja koordinoituihin hyökkäyksiin "
-"ilta- tai aamuhämärän aikaan.\n"
-"\n"
-"Tämä aikakausi on edelleen kehitystyössä, joten ilmoita mahdollisista "
-"virheistä mitä löydät."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Sankareiden aika + Dyynikansa"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Sankaraiden aika, sisältäen yhden liittouman lisää. Dyynikansan yksiköt "
-"turvautuvat usein hyvään maastonkäyttöön ja koordinoituihin hyökkäyksiin "
-"ilta- tai aamuhämärän aikaan.\n"
-"\n"
-"Tämä aikakausi on edelleen kehitystyössä, joten ilmoita mahdollisista "
-"virheistä mitä löydät."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3150,6 +3115,42 @@ msgid ""
 msgstr ""
 "Tämä kartta on esimerkki kuinka käyttää uutta (TW v1.17) korotettuja "
 "maastografiikoita. Muista että tämä ei ole tarkoitettu pelattavaksi."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Taistelu Wesnothista + Dyynikansa"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Taistelu Wesnothista, sisältäen yhden liittouman lisää. Dyynikansan "
+#~ "yksiköt turvautuvat usein hyvään maastonkäyttöön ja koordinoituihin "
+#~ "hyökkäyksiin ilta- tai aamuhämärän aikaan.\n"
+#~ "\n"
+#~ "Tämä aikakausi on edelleen kehitystyössä, joten ilmoita mahdollisista "
+#~ "virheistä mitä löydät."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Sankareiden aika + Dyynikansa"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Sankaraiden aika, sisältäen yhden liittouman lisää. Dyynikansan yksiköt "
+#~ "turvautuvat usein hyvään maastonkäyttöön ja koordinoituihin hyökkäyksiin "
+#~ "ilta- tai aamuhämärän aikaan.\n"
+#~ "\n"
+#~ "Tämä aikakausi on edelleen kehitystyössä, joten ilmoita mahdollisista "
+#~ "virheistä mitä löydät."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

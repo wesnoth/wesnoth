@@ -370,7 +370,7 @@ function wml_actions.remove_unit_overlay(cfg)
 		end
 		if has_already then
 			u:add_modification("object", {
-				id = cfg.object_id,
+				id = cfg.object_id or get_overlay_object_id(img),
 				wml.tag.effect {
 					apply_to = "overlay",
 					remove = img,
@@ -463,6 +463,9 @@ end
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or wml.error("[terrain] missing required terrain= attribute")
 	local layer = cfg.layer or 'both'
+	if not (wesnoth.terrain_types[terrain] or (layer == "overlay" and terrain == "^")) then
+		wml.error("[terrain] invalid terrain="..terrain)
+	end
 	if layer ~= 'both' and layer ~= 'overlay' and layer ~= 'base' then
 		wml.error('[terrain] invalid layer=')
 	end

@@ -31,7 +31,7 @@
 
 #include "editor/action/action.hpp"
 #include "editor/controller/editor_controller.hpp"
-#include "preferences/editor.hpp"
+#include "preferences/preferences.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/prompt.hpp"
@@ -80,7 +80,7 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 	, map_generators_()
 	, last_map_generator_(nullptr)
 	, current_context_index_(0)
-	, auto_update_transitions_(preferences::editor::auto_update_transitions())
+	, auto_update_transitions_(prefs::get().editor_auto_update_transitions())
 	, map_contexts_()
 	, clipboard_()
 {
@@ -154,11 +154,11 @@ void context_manager::reload_map()
 bool context_manager::is_active_transitions_hotkey(const std::string& item)
 {
 	switch (auto_update_transitions_) {
-		case preferences::editor::TRANSITION_UPDATE_ON:
+		case pref_constants::TRANSITION_UPDATE_ON:
 			return (item == "editor-auto-update-transitions");
-		case preferences::editor::TRANSITION_UPDATE_PARTIAL:
+		case pref_constants::TRANSITION_UPDATE_PARTIAL:
 			return (item == "editor-partial-update-transitions");
-		case preferences::editor::TRANSITION_UPDATE_OFF:
+		case pref_constants::TRANSITION_UPDATE_OFF:
 			return (item == "editor-no-update-transitions");
 	}
 
@@ -167,10 +167,10 @@ bool context_manager::is_active_transitions_hotkey(const std::string& item)
 
 bool context_manager::toggle_update_transitions()
 {
-	auto_update_transitions_ = (auto_update_transitions_ + 1) % preferences::editor::TRANSITION_UPDATE_COUNT;
-	preferences::editor::set_auto_update_transitions(auto_update_transitions_);
+	auto_update_transitions_ = (auto_update_transitions_ + 1) % pref_constants::TRANSITION_UPDATE_COUNT;
+	prefs::get().set_editor_auto_update_transitions(auto_update_transitions_);
 
-	if(auto_update_transitions_ != preferences::editor::TRANSITION_UPDATE_ON) {
+	if(auto_update_transitions_ != pref_constants::TRANSITION_UPDATE_ON) {
 		return true;
 	}
 
@@ -218,7 +218,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 
 void context_manager::load_mru_item(unsigned index, bool force_same_context /* = false */)
 {
-	const std::vector<std::string>& mru = preferences::editor::recent_files();
+	const std::vector<std::string>& mru = prefs::get().recent_files();
 	if(mru.empty() || index >= mru.size()) {
 		return;
 	}
@@ -368,7 +368,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 
 void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
 {
-	std::vector<std::string> mru = preferences::editor::recent_files();
+	std::vector<std::string> mru = prefs::get().recent_files();
 
 	auto pos = items.erase(items.begin() + i);
 
@@ -569,8 +569,8 @@ void context_manager::refresh_after_action(bool drag_part)
 	const std::set<map_location>& changed_locs = get_map_context().changed_locations();
 
 	if(get_map_context().needs_terrain_rebuild()) {
-		if((auto_update_transitions_ == preferences::editor::TRANSITION_UPDATE_ON)
-		|| ((auto_update_transitions_ == preferences::editor::TRANSITION_UPDATE_PARTIAL)
+		if((auto_update_transitions_ == pref_constants::TRANSITION_UPDATE_ON)
+		|| ((auto_update_transitions_ == pref_constants::TRANSITION_UPDATE_PARTIAL)
 		&& (!drag_part || get_map_context().everything_changed())))
 		{
 			gui_.rebuild_all();

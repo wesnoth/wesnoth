@@ -566,6 +566,11 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static bfs::path user_data_dir, user_config_dir, cache_dir;
 
+bool is_userdata_initialized()
+{
+	return !user_data_dir.string().empty();
+}
+
 const std::string get_version_path_suffix(const version_info& version)
 {
 	std::ostringstream s;
@@ -846,10 +851,13 @@ static bfs::path linux_userdata(const std::string& newprefdir)
 void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
+	DBG_FS << "determining Windows userdata dir";
 	user_data_dir = windows_userdata(newprefdir);
 #elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
+	DBG_FS << "determining macOS userdata dir";
 	user_data_dir = apple_userdata(newprefdir);
 #else
+	DBG_FS << "determining non-Windows and non-macOS userdata dir";
 	user_data_dir = linux_userdata(newprefdir);
 #endif
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2024-04-04 13:20+0300\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"PO-Revision-Date: 2024-04-13 12:39+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -132,8 +132,12 @@ msgstr "Типова"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Типова ера для мультиплеєру Веснота. Складається з шести збалансованих "
@@ -146,57 +150,18 @@ msgstr "Вік героїв"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Ера для бійців вищого рівня: лідери третього рівня, які можуть вербувати "
 "бійців першого та другого. Складається з шести фракцій, незбалансована."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Типова + Люди дюн"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Ера, у якій є додаткова фракція, окрім шести Типових фракцій. Підрозділи "
-"Людей Дюн покладаються на обережне використання місцевості та скоординовані "
-"удари в сутінках або на світанку.\n"
-"\n"
-"Ця ера все ще знаходиться на стадії розробки, тому, будь ласка, обов’язково "
-"повідомляйте про будь-які проблеми."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Вік героїв + Люди дюн"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Ера, у якій є додаткова фракція, окрім шести фракцій з Віку героїв. Бійці "
-"Людей Дюн покладаються на обережне використання місцевості та скоординовані "
-"удари в сутінках або на світанку.\n"
-"\n"
-"Ця ера все ще знаходиться на стадії розробки, тому, будь ласка, обов’язково "
-"повідомляйте про будь-які проблеми."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -211,14 +176,14 @@ msgstr ""
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:118
-#, fuzzy
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
 "<span foreground='side_color'>Сторона $side_number</span>:  Рахунок прибутку "
-"= $income  Рахунок бійців = $units  Золото = $gold Сумарно: <b>$total</b>"
+"= $income  Рахунок бійців = $units  Золото = $gold\n"
+"Сумарно: <b>$total</b>"
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, there's a single side that's won.
@@ -3071,6 +3036,42 @@ msgid ""
 msgstr ""
 "Ця карта є прикладом того, як використовувати нову (Битва за Веснот v1.17) "
 "графіку рельєфу. Зверніть увагу, що вона не призначена для гри."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Типова + Люди дюн"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Ера, у якій є додаткова фракція, окрім шести Типових фракцій. Підрозділи "
+#~ "Людей Дюн покладаються на обережне використання місцевості та "
+#~ "скоординовані удари в сутінках або на світанку.\n"
+#~ "\n"
+#~ "Ця ера все ще знаходиться на стадії розробки, тому, будь ласка, "
+#~ "обов’язково повідомляйте про будь-які проблеми."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Вік героїв + Люди дюн"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Ера, у якій є додаткова фракція, окрім шести фракцій з Віку героїв. Бійці "
+#~ "Людей Дюн покладаються на обережне використання місцевості та "
+#~ "скоординовані удари в сутінках або на світанку.\n"
+#~ "\n"
+#~ "Ця ера все ще знаходиться на стадії розробки, тому, будь ласка, "
+#~ "обов’язково повідомляйте про будь-які проблеми."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

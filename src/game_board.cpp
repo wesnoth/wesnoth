@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "recall_list_manager.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
@@ -361,7 +361,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 		return false;
 	}
 
-	preferences::encountered_terrains().insert(new_t);
+	prefs::get().encountered_terrains().insert(new_t);
 
 	if(map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
 		int owner = village_owner(loc);
@@ -372,7 +372,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 	map_->set_terrain(loc, new_t);
 
 	for(const t_translation::terrain_code& ut : map_->underlying_union_terrain(loc)) {
-		preferences::encountered_terrains().insert(ut);
+		prefs::get().encountered_terrains().insert(ut);
 	}
 
 	return true;

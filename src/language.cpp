@@ -17,7 +17,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
@@ -336,7 +336,7 @@ const language_def& get_locale()
 
 	assert(!known_languages.empty());
 
-	const std::string& prefs_locale = preferences::language();
+	const std::string& prefs_locale = prefs::get().language();
 	if(prefs_locale.empty() == false) {
 		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();

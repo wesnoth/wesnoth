@@ -34,7 +34,7 @@
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "playmp_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
@@ -182,12 +182,12 @@ level_result::type campaign_controller::play_game()
 			return res;
 		}
 
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 
-		if(preferences::save_replays() && end_level.replay_save) {
-			savegame::replay_savegame save(state_, preferences::save_compression_format());
+		if(prefs::get().save_replays() && end_level.replay_save) {
+			savegame::replay_savegame save(state_, prefs::get().save_compression_format());
 			save.save_game_automatic(true);
 		}
 
@@ -197,7 +197,7 @@ level_result::type campaign_controller::play_game()
 		if(state_.get_scenario_id().empty()) {
 			// Don't show The End for multiplayer scenarios.
 			if(res == level_result::type::victory && !state_.classification().is_normal_mp_game()) {
-				preferences::add_completed_campaign(
+				prefs::get().add_completed_campaign(
 					state_.classification().campaign, state_.classification().difficulty);
 
 				if(state_.classification().end_credits) {
@@ -266,7 +266,7 @@ level_result::type campaign_controller::play_game()
 				// For multiplayer, we want the save to contain the starting position.
 				// For campaigns however, this is the start-of-scenario save and the
 				// starting position needs to be empty, to force a reload of the scenario config.
-				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
+				savegame::scenariostart_savegame save(state_, prefs::get().save_compression_format());
 				save.save_game_automatic();
 			}
 		}
@@ -284,7 +284,7 @@ level_result::type campaign_controller::play_game()
 	}
 
 	if(state_.classification().is_scenario()) {
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 	}

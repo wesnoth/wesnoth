@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2014-06-05 18:06+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -127,8 +127,12 @@ msgstr "Mặc định"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Thời đại mặc định cho Wesnoth nhiều người chơi. Bao gồm sáu liên minh và nói "
@@ -141,78 +145,19 @@ msgstr "Thời đại anh hùng"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Một thời đại với các đơn vị ở cấp độ cao hơn: những người lãnh đạo cấp độ "
 "ba, có thể tuyển các đơn vị cấp độ một và hai. Bao gồm sáu liên minh. Không "
 "được xem là cân bằng."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr ""
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Một thời đại có thêm một liên minh bổ sung ngoài sáu liên minh từ Thời đại "
-"mặc định. Các đơn vị Khalifate không sử dụng phép thuật, mà dựa trên việc sử "
-"dụng cẩn thận địa hình và các đòn đánh phối hợp khoảng lúc chạng vạng hoặc "
-"bình minh.\n"
-"\n"
-"Thời đại này vẫn còn đang phát triển, do đó xin đảm bảo báo cáo bất cứ vấn "
-"đề nào xảy ra."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-#, fuzzy
-#| msgid "Age of Heroes"
-msgid "Age of Heroes + Dunefolk"
-msgstr "Thời đại anh hùng"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Một thời đại có thêm một liên minh bổ sung ngoài sáu liên minh từ Thời đại "
-"anh hùng. Các đơn vị Khalifate không sử dụng phép thuật, mà dựa trên việc sử "
-"dụng cẩn thận địa hình và các đòn đánh phối hợp khoảng lúc chạng vạng hoặc "
-"bình minh.\n"
-"\n"
-"Thời đại này vẫn còn đang phát triển, do đó xin đảm bảo báo cáo bất cứ vấn "
-"đề nào xảy ra."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3158,6 +3103,59 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "An era featuring an additional faction besides the six factions from "
+#~| "Default Era. Khalifate units use no magic, but instead rely on careful "
+#~| "use of terrain and coordinated strikes around dusk or dawn.\n"
+#~| "\n"
+#~| "This era is still under development, so please be sure to report any "
+#~| "problems that arise."
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Một thời đại có thêm một liên minh bổ sung ngoài sáu liên minh từ Thời "
+#~ "đại mặc định. Các đơn vị Khalifate không sử dụng phép thuật, mà dựa trên "
+#~ "việc sử dụng cẩn thận địa hình và các đòn đánh phối hợp khoảng lúc chạng "
+#~ "vạng hoặc bình minh.\n"
+#~ "\n"
+#~ "Thời đại này vẫn còn đang phát triển, do đó xin đảm bảo báo cáo bất cứ "
+#~ "vấn đề nào xảy ra."
+
+#, fuzzy
+#~| msgid "Age of Heroes"
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Thời đại anh hùng"
+
+#, fuzzy
+#~| msgid ""
+#~| "An era featuring an additional faction besides the six factions from Age "
+#~| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
+#~| "use of terrain and coordinated strikes around dusk or dawn.\n"
+#~| "\n"
+#~| "This era is still under development, so please be sure to report any "
+#~| "problems that arise."
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Một thời đại có thêm một liên minh bổ sung ngoài sáu liên minh từ Thời "
+#~ "đại anh hùng. Các đơn vị Khalifate không sử dụng phép thuật, mà dựa trên "
+#~ "việc sử dụng cẩn thận địa hình và các đòn đánh phối hợp khoảng lúc chạng "
+#~ "vạng hoặc bình minh.\n"
+#~ "\n"
+#~ "Thời đại này vẫn còn đang phát triển, do đó xin đảm bảo báo cáo bất cứ "
+#~ "vấn đề nào xảy ra."
 
 #, fuzzy
 #~| msgid ""

@@ -20,7 +20,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
@@ -150,13 +150,13 @@ inline std::string pretty_path(const std::string& path)
 
 inline config get_bookmarks_config()
 {
-	auto cfg = preferences::get_child("dir_bookmarks");
+	auto cfg = prefs::get().dir_bookmarks();
 	return cfg ? *cfg : config{};
 }
 
 inline void commit_bookmarks_config(config& cfg)
 {
-	preferences::set_child("dir_bookmarks", cfg);
+	prefs::get().set_dir_bookmarks(cfg);
 }
 
 } // unnamed namespace

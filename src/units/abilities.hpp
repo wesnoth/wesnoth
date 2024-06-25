@@ -25,7 +25,7 @@ bool filter_base_matches(const config& cfg, int def);
 
 enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
-enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_CLAMP_MIN_MAX=3 };
+enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MAX=3 };
 
 struct individual_effect
 {

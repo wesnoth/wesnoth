@@ -21,7 +21,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/unicode.hpp"
 #include <functional>
 #include "wml_exception.hpp"
@@ -40,7 +40,7 @@ REGISTER_WIDGET(text_box)
 text_history text_history::get_history(const std::string& id,
 										 const bool enabled)
 {
-	std::vector<std::string>* vec = preferences::get_history(id);
+	std::vector<std::string>* vec = prefs::get().get_history(id);
 	return text_history(vec, enabled);
 }
 

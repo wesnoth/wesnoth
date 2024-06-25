@@ -41,7 +41,7 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "attack_prediction.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
@@ -476,7 +476,7 @@ void move_result::do_execute()
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true,
-			/*bool show_move*/ !preferences::skip_ai_moves(),
+			/*bool show_move*/ !prefs::get().skip_ai_moves(),
 			/*bool* interrupted*/ nullptr,
 			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
 
@@ -658,7 +658,7 @@ void recall_result::do_execute()
 	synced_context::run_in_synced_context_if_not_already("recall",
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
 		false,
-		!preferences::skip_ai_moves(),
+		!prefs::get().skip_ai_moves(),
 		synced_context::ignore_error_function);
 
 	set_gamestate_changed();
@@ -804,7 +804,7 @@ void recruit_result::do_execute()
 	}
 
 	resources::undo_stack->clear();
-	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !preferences::skip_ai_moves());
+	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !prefs::get().skip_ai_moves());
 
 	set_gamestate_changed();
 	try {

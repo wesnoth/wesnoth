@@ -29,7 +29,7 @@
 
 #include "editor/action/mouse/mouse_action.hpp"
 
-#include "preferences/editor.hpp"
+#include "preferences/preferences.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/edit_unit.hpp"
@@ -105,9 +105,9 @@ void editor_controller::init_gui()
 	gui_->change_display_context(&get_current_map_context());
 	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
 	floating_label_manager_.reset(new font::floating_label_context());
-	gui().set_debug_flag(display::DEBUG_COORDINATES, preferences::editor::draw_hex_coordinates());
-	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, preferences::editor::draw_terrain_codes());
-	gui().set_debug_flag(display::DEBUG_NUM_BITMAPS, preferences::editor::draw_num_of_bitmaps());
+	gui().set_debug_flag(display::DEBUG_COORDINATES, prefs::get().editor_draw_hex_coordinates());
+	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, prefs::get().editor_draw_terrain_codes());
+	gui().set_debug_flag(display::DEBUG_NUM_BITMAPS, prefs::get().editor_draw_num_of_bitmaps());
 //	halo_manager_.reset(new halo::manager(*gui_));
 //	resources::halo = halo_manager_.get();
 //	^ These lines no longer necessary, the gui owns its halo manager.
@@ -578,7 +578,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		return toolkit_->is_active_brush("brush-sw-ne") ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_TOGGLE_GRID:
-		return preferences::grid() ? ACTION_ON : ACTION_OFF;
+		return prefs::get().grid() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_SELECT_ALL:
 		return get_current_map_context().map().everything_selected() ?
 				ACTION_SELECTED : ACTION_DESELECTED;
@@ -603,15 +603,15 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
+		return (prefs::get().minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? ACTION_ON : ACTION_OFF;
+		return (prefs::get().minimap_movement_coding()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? ACTION_ON : ACTION_OFF;
+		return (prefs::get().minimap_terrain_coding()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? ACTION_ON : ACTION_OFF;
+		return (prefs::get().minimap_draw_units()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? ACTION_ON : ACTION_OFF;
+		return (prefs::get().minimap_draw_terrain()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_ZOOM_DEFAULT:
 		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
 
@@ -1121,17 +1121,17 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			gui().toggle_debug_flag(display::DEBUG_COORDINATES);
-			preferences::editor::set_draw_hex_coordinates(gui().debug_flag_set(display::DEBUG_COORDINATES));
+			prefs::get().set_editor_draw_hex_coordinates(gui().debug_flag_set(display::DEBUG_COORDINATES));
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			gui().toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
-			preferences::editor::set_draw_terrain_codes(gui().debug_flag_set(display::DEBUG_TERRAIN_CODES));
+			prefs::get().set_editor_draw_terrain_codes(gui().debug_flag_set(display::DEBUG_TERRAIN_CODES));
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 			gui().toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
-			preferences::editor::set_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
+			prefs::get().set_editor_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
@@ -1275,7 +1275,7 @@ void editor_controller::preferences()
 
 void editor_controller::toggle_grid()
 {
-	preferences::set_grid(!preferences::grid());
+	prefs::get().set_grid(!prefs::get().grid());
 	gui_->invalidate_all();
 }
 

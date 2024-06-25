@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2022-06-01 02:03+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -132,8 +132,12 @@ msgstr "預設"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr "韋諾多人遊戲的標準時代，共有六種派系，整體來說是平衡的。"
 
@@ -144,53 +148,18 @@ msgstr "英雄時代"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "一個有著高等級單位的時代，首領是等級三，可以招募等級一和等級二的單位。共有六"
 "種派系。不被認為是平衡的。"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "預設 + 沙丘之民"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"這個時代除了有預設時代下的六個派系外，還有一個額外的派系。沙丘之民的單位仰賴"
-"於對地形的謹慎運用，以及在黃昏和黎明的協調作戰。\n"
-"\n"
-"此時代仍在開發中，所以請務必回報出現的任何問題。"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "英雄時代 + 沙丘之民"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"這個時代除了有英雄時代下的六個派系外，還有一個額外的派系。沙丘之民的單位仰賴"
-"於對地形的謹慎運用，以及在黃昏和黎明的協調作戰。\n"
-"\n"
-"此時代仍在開發中，所以請務必回報出現的任何問題。"
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -2977,6 +2946,38 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "預設 + 沙丘之民"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "這個時代除了有預設時代下的六個派系外，還有一個額外的派系。沙丘之民的單位仰"
+#~ "賴於對地形的謹慎運用，以及在黃昏和黎明的協調作戰。\n"
+#~ "\n"
+#~ "此時代仍在開發中，所以請務必回報出現的任何問題。"
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "英雄時代 + 沙丘之民"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "這個時代除了有英雄時代下的六個派系外，還有一個額外的派系。沙丘之民的單位仰"
+#~ "賴於對地形的謹慎運用，以及在黃昏和黎明的協調作戰。\n"
+#~ "\n"
+#~ "此時代仍在開發中，所以請務必回報出現的任何問題。"
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

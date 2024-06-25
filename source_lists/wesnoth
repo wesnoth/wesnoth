@@ -211,6 +211,7 @@ gui/dialogs/game_save.cpp
 gui/dialogs/game_stats.cpp
 gui/dialogs/game_version_dialog.cpp
 gui/dialogs/gamestate_inspector.cpp
+gui/dialogs/gui_test_dialog.cpp
 gui/dialogs/help_browser.cpp
 gui/dialogs/hotkey_bind.cpp
 gui/dialogs/label_settings.cpp
@@ -273,7 +274,6 @@ gui/widgets/generator.cpp
 gui/widgets/grid.cpp
 gui/widgets/helper.cpp
 gui/widgets/pane.cpp
-gui/widgets/scroll_text.cpp
 gui/widgets/scrollbar.cpp
 gui/widgets/scrollbar_container.cpp
 gui/widgets/settings.cpp
@@ -312,11 +312,7 @@ play_controller.cpp
 playmp_controller.cpp
 playsingle_controller.cpp
 playturn_network_adapter.cpp
-preferences/advanced.cpp
-preferences/display.cpp
-preferences/editor.cpp
-preferences/game.cpp
-preferences/lobby.cpp
+preferences/preferences.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp

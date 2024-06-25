@@ -25,7 +25,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "mp_ui_alerts.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 #include <functional>
 
@@ -34,55 +34,55 @@
 namespace gui2::dialogs
 {
 
-static toggle_button * setup_pref_toggle_button(const std::string & id, bool def, window & window)
+static toggle_button* setup_pref_toggle_button(const std::string& id, const std::string& type, bool def, window& window)
 {
-	toggle_button * b = find_widget<toggle_button>(&window, id, false, true);
-	b->set_value(preferences::get(id, def));
-
 	//ensure we have yes / no for the toggle button, so that the preference matches the toggle button for sure.
-	if (preferences::get(id).empty()) {
-		preferences::set(id, def);
+	if (!prefs::get().has_mp_alert_option(id, type)) {
+		prefs::get().set_mp_alert_option(id, type, def);
 	}
 
-	connect_signal_mouse_left_click(*b, std::bind([b, id]() { preferences::set(id, b->get_value_bool()); }));
+	toggle_button* b = find_widget<toggle_button>(&window, id+"_"+type, false, true);
+	b->set_value(prefs::get().mp_alert_option(id, type, def));
+
+	connect_signal_mouse_left_click(*b, std::bind([b, id, type]() { prefs::get().set_mp_alert_option(id, type, b->get_value_bool()); }));
 
 	return b;
 }
 
-static void setup_item(const std::string & item, window & window)
+static void setup_item(const std::string& item, window& window)
 {
 	// Set up the sound checkbox
-	setup_pref_toggle_button(item+"_sound", mp::ui_alerts::get_def_pref_sound(item), window);
+	setup_pref_toggle_button(item, "sound", mp::ui_alerts::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
-	toggle_button * notif = setup_pref_toggle_button(item+"_notif", mp::ui_alerts::get_def_pref_notif(item), window);
+	toggle_button* notif = setup_pref_toggle_button(item, "notif", mp::ui_alerts::get_def_pref_notif(item), window);
 
 	// Check if desktop notifications are available
 	if (!desktop::notifications::available()) {
 		notif->set_value(false);
 		notif->set_active(false);
-		preferences::set(item+"_notif", false);
+		prefs::get().set_mp_alert_option(item, "notif", false);
 	} else {
 		notif->set_active(true);
 	}
 
 	// Set up the in_lobby checkbox
-	setup_pref_toggle_button(item+"_lobby", mp::ui_alerts::get_def_pref_lobby(item), window);
+	setup_pref_toggle_button(item, "lobby", mp::ui_alerts::get_def_pref_lobby(item), window);
 }
 
-static void set_pref_and_button(const std::string & id, bool value, window & window)
+static void set_pref_and_button(const std::string& id, const std::string& type, bool value, window& window)
 {
-	preferences::set(id,value);
-	toggle_button * button = find_widget<toggle_button>(&window, id, false, true);
+	prefs::get().set_mp_alert_option(id, type, value);
+	toggle_button* button = find_widget<toggle_button>(&window, id+"_"+type, false, true);
 	button->set_value(value);
 }
 
-static void revert_to_default_pref_values(window & window)
+static void revert_to_default_pref_values(window& window)
 {
-	for (const std::string & i : mp::ui_alerts::items) {
-		set_pref_and_button(i+"_sound", mp::ui_alerts::get_def_pref_sound(i), window);
-		set_pref_and_button(i+"_notif", mp::ui_alerts::get_def_pref_notif(i), window);
-		set_pref_and_button(i+"_lobby", mp::ui_alerts::get_def_pref_lobby(i), window);
+	for (const std::string& i : mp::ui_alerts::items) {
+		set_pref_and_button(i, "sound", mp::ui_alerts::get_def_pref_sound(i), window);
+		set_pref_and_button(i, "notif", mp::ui_alerts::get_def_pref_notif(i), window);
+		set_pref_and_button(i, "lobby", mp::ui_alerts::get_def_pref_lobby(i), window);
 	}
 }
 
@@ -95,16 +95,16 @@ mp_alerts_options::mp_alerts_options()
 
 void mp_alerts_options::pre_show(window& window)
 {
-	for (const std::string & i : mp::ui_alerts::items) {
+	for (const std::string& i : mp::ui_alerts::items) {
 		setup_item(i, window);
 	}
 
 	if (!desktop::notifications::available()) {
-		label * nlabel = find_widget<label>(&window, "notification_label", false, true);
+		label* nlabel = find_widget<label>(&window, "notification_label", false, true);
 		nlabel->set_tooltip(_("This build of wesnoth does not include support for desktop notifications, contact your package manager"));
 	}
 
-	toggle_button * in_lobby;
+	toggle_button* in_lobby;
 	in_lobby = find_widget<toggle_button>(&window,"ready_for_start_lobby", false, true);
 	in_lobby->set_visible(widget::visibility::invisible);
 
@@ -117,7 +117,7 @@ void mp_alerts_options::pre_show(window& window)
 	in_lobby = find_widget<toggle_button>(&window,"turn_changed_lobby", false, true);
 	in_lobby->set_visible(widget::visibility::invisible);
 
-	button * defaults;
+	button* defaults;
 	defaults = find_widget<button>(&window,"revert_to_defaults", false, true);
 	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 }

@@ -112,9 +112,10 @@ FPSを画面の隅に表示し、ユーザーデータディレクトリ内の�
 \fB\-\-log\-precise\fP
 より正確にログ出力の時刻を表示する。
 .TP 
-\fB\-\-log\-strict\fP
-ログ出力の厳密なレベルを設定する。このレベル以上に深刻なメッセージがログ領域に送られると、ユニットテストは勝利の結果にかかわらず失敗する。 \fB\-u\fP
-と併せて利用しなければ不適切である。
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 定義済のログ領域のリストを表示して終了する。(\fIfilter\fPが指定されたら反映される)
@@ -250,11 +251,12 @@ GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き�
 \fB\-V,\-\-validate\fP と合わせてWMLスキーマを設定する。
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-ユーザー設定ディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
-に設定する。設定ディレクトリのパスを$HOME や 「My Documents\eMy Games」の外に絶対パスで指定することもできる。Windows
-では 「.\e」あるいは「..\e」を用いることで、ワーキングディレクトリーからの相対パスで指定することもできる。X11 下では、このパスはデフォルトで
-$XDG_CONFIG_HOME または $HOME/.config/wesnoth
-であり、他のシステムでユーザーデータパスがデフォルトであるのとは異なる。
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 ユーザー設定ディレクトリの名前を表示して、終了する。
