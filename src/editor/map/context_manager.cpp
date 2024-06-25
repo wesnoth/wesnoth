@@ -75,7 +75,7 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 	: locs_(nullptr)
 	, gui_(gui)
 	, game_config_(game_config)
-	, default_dir_(preferences::editor::default_dir())
+	, default_dir_(filesystem::get_dir(filesystem::get_legacy_editor_dir()))
 	, current_addon_(addon_id)
 	, map_generators_()
 	, last_map_generator_(nullptr)
@@ -85,11 +85,6 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 	, clipboard_()
 {
 	resources::filter_con = this;
-
-	if(default_dir_.empty()) {
-		default_dir_ = filesystem::get_dir(filesystem::get_user_data_dir() + "/editor");
-	}
-
 	create_default_context();
 	init_map_generators(game_config);
 }
@@ -848,24 +843,24 @@ void context_manager::save_all_maps(bool auto_save_windows)
 		if(auto_save_windows) {
 			if(name.empty() || filesystem::is_directory(name)) {
 				std::ostringstream s;
-				s << default_dir_ << "/" << "window_" << i + 1;
+				s << default_dir_ << "/";
 				if(!get_map_context().is_embedded() && !get_map_context().is_pure_map()) {
-					s << ".cfg";
+					s << "scenarios/tmp_scenario_" << i + 1 << ".cfg";
 				} else {
-					s << ".map";
+					s << "maps/tmp_map_" << i + 1 << ".map";
 				}
 				name = s.str();
 				get_map_context().set_filename(name);
 			}
 		}
 		saved_windows_.push_back(name);
-		save_map();
+		save_map(false);
 	}
 
 	switch_context(current);
 }
 
-void context_manager::save_map()
+void context_manager::save_map(bool show_confirmation)
 {
 	const std::string& name = get_map_context().get_filename();
 	if(name.empty() || filesystem::is_directory(name)) {
@@ -876,9 +871,9 @@ void context_manager::save_map()
 		}
 	} else {
 		if(get_map_context().is_pure_map()) {
-			write_map();
+			write_map(show_confirmation);
 		} else {
-			write_scenario();
+			write_scenario(show_confirmation);
 		}
 	}
 }

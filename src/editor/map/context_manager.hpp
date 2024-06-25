@@ -83,7 +83,7 @@ public:
 	void save_all_maps(bool auto_save_windows = false);
 
 	/** Save the map, open dialog if not named yet. */
-	void save_map();
+	void save_map(bool show_confirmation = true);
 
 	editor_display& gui()
 	{
