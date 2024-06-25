@@ -351,8 +351,7 @@ void prefs::write_preferences()
 	}
 	for(const char* attr : synced_children_) {
 		for(const auto& child : preferences_.child_range(attr)) {
-			config& ch = synced.add_child(attr);
-			ch.append_children(child);
+			synced.add_child(attr, child);
 		}
 	}
 
@@ -363,8 +362,7 @@ void prefs::write_preferences()
 	}
 	for(const char* attr : unsynced_children_) {
 		for(const auto& child : preferences_.child_range(attr)) {
-			config& ch = unsynced.add_child(attr);
-			ch.append_children(child);
+			unsynced.add_child(attr, child);
 		}
 	}
 
@@ -374,8 +372,7 @@ void prefs::write_preferences()
 	}
 	for(const std::string& attr : unknown_synced_children_) {
 		for(const auto& child : preferences_.child_range(attr)) {
-			config& ch = synced.add_child(attr);
-			ch.append_children(child);
+			synced.add_child(attr, child);
 		}
 	}
 
@@ -384,8 +381,7 @@ void prefs::write_preferences()
 	}
 	for(const std::string& attr : unknown_unsynced_children_) {
 		for(const auto& child : preferences_.child_range(attr)) {
-			config& ch = unsynced.add_child(attr);
-			ch.append_children(child);
+			unsynced.add_child(attr, child);
 		}
 	}
 
