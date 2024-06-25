@@ -20,8 +20,7 @@
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_initialization/playcampaign.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -204,10 +203,10 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 	if(first_scenario_) {
 		// Add host to the connected users list.
-		import_user(preferences::login(), false);
+		import_user(prefs::get().login(), false);
 	} else {
 		// Add host but don't assign a side to him.
-		import_user(preferences::login(), true);
+		import_user(prefs::get().login(), true);
 
 		// Load reserved players information into the sides.
 		load_previous_sides_users();
@@ -741,7 +740,7 @@ void connect_engine::send_level_data() const
 			"create_game", config {
 				"name", params_.name,
 				"password", params_.password,
-				"ignored", preferences::get_ignored_delim(),
+				"ignored", prefs::get().get_ignored_delim(),
 				"auto_hosted", false,
 			},
 		});
@@ -860,17 +859,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	cfg_["side"] = index_ + 1;
 
-	// Check if this side should give its control to some other side.
-	const std::size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
-	if(side_cntr_index < parent_.side_engines().size()) {
-		// Remove this attribute to avoid locking side
-		// to non-existing controller type.
-		cfg_.remove_attribute("controller");
-
-		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
-		ERR_MP << "controller=<number> is deperecated";
-	}
-
 	if(cfg_["controller"] != side_controller::human && cfg_["controller"] != side_controller::ai && cfg_["controller"] != side_controller::none) {
 		//an invalid controller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");
@@ -979,13 +967,13 @@ config side_engine::new_config() const
 	// The hosts receives the serversided controller tweaks after the start event, but
 	// for mp sync it's very important that the controller types are correct
 	// during the start/prestart event (otherwise random unit creation during prestart fails).
-	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
+	res["is_local"] = player_id_ == prefs::get().login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
 
 	// This function (new_config) is only meant to be called by the host's machine, which is why this check
 	// works. It essentially certifies that whatever side has the player_id that matches the host's login
 	// will be flagged. The reason we cannot check mp_game_metadata::is_host is because that flag is *always*
 	// true on the host's machine, meaning this flag would be set to true for every side.
-	res["is_host"] = player_id_ == preferences::login();
+	res["is_host"] = player_id_ == prefs::get().login();
 
 	std::string desc = user_description();
 	if(!desc.empty()) {
@@ -1022,17 +1010,17 @@ config side_engine::new_config() const
 	// The "player_id" is the id of the client who controls that side. It's always the host for Local and AI players and
 	// always empty for free/reserved sides or null controlled sides. You can use !res["player_id"].empty() to check
 	// whether a side is already taken.
-	assert(!preferences::login().empty());
+	assert(!prefs::get().login().empty());
 	if(controller_ == CNTR_LOCAL) {
-		res["player_id"] = preferences::login();
-		res["current_player"] = preferences::login();
+		res["player_id"] = prefs::get().login();
+		res["current_player"] = prefs::get().login();
 	} else if(controller_ == CNTR_RESERVED) {
 		res.remove_attribute("player_id");
 		res["current_player"] = reserved_for_;
 	} else if(controller_ == CNTR_COMPUTER) {
 		// TODO: what is the content of player_id_ here ?
 		res["current_player"] = desc;
-		res["player_id"] = preferences::login();
+		res["player_id"] = prefs::get().login();
 	} else if(!player_id_.empty()) {
 		res["player_id"] = player_id_;
 		res["current_player"] = player_id_;
@@ -1157,7 +1145,7 @@ bool side_engine::ready_for_start() const
 	}
 
 	if(controller_ == CNTR_NETWORK) {
-		if(player_id_ == preferences::login() || !waiting_to_choose_faction_ || !allow_changes_) {
+		if(player_id_ == prefs::get().login() || !waiting_to_choose_faction_ || !allow_changes_) {
 			// The host is ready. A network player, who got a chance
 			// to choose faction if allowed, is also ready.
 			return true;

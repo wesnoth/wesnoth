@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2023-09-10 09:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -136,8 +136,12 @@ msgstr "默认"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr "韦诺多人游戏的标准时代。包含六大派系，总体来说是平衡的。"
 
@@ -148,53 +152,18 @@ msgstr "英雄时代"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "包含高阶单位的时代：首领为三级，而一级和二级单位可供直接征募。包含六大派系。"
 "此时代并不被认为是平衡的。"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "默认 + 沙丘游民"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"此时代中除了默认时代的六大派系之外，还含有一个额外的派系。沙丘游民单位不使用"
-"魔法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
-"\n"
-"此时代仍在开发中，因此请务必报告出现的一切问题。"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "英雄时代 + 沙丘游民"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"此时代中除了英雄时代的六大派系之外，还含有一个额外的派系。沙丘游民单位不使用"
-"魔法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
-"\n"
-"此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -2970,6 +2939,38 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "默认 + 沙丘游民"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "此时代中除了默认时代的六大派系之外，还含有一个额外的派系。沙丘游民单位不使"
+#~ "用魔法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
+#~ "\n"
+#~ "此时代仍在开发中，因此请务必报告出现的一切问题。"
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "英雄时代 + 沙丘游民"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "此时代中除了英雄时代的六大派系之外，还含有一个额外的派系。沙丘游民单位不使"
+#~ "用魔法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
+#~ "\n"
+#~ "此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #~ msgid "Random"
 #~ msgstr "随机"

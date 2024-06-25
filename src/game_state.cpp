@@ -24,7 +24,7 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -202,7 +202,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 		for(std::size_t i = 0; i < board_.teams().size(); i++) {
 			// Labels from players in your ignore list default to hidden
-			if(preferences::is_ignored(board_.teams()[i].current_player())) {
+			if(prefs::get().is_ignored(board_.teams()[i].current_player())) {
 				std::string label_cat = "side:" + std::to_string(i + 1);
 				board_.hidden_label_categories().push_back(label_cat);
 			}

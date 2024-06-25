@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:05-0500\n"
+"POT-Creation-Date: 2024-05-26 15:07-0500\n"
 "PO-Revision-Date: 2023-11-01 14:44+0100\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: Slovenčina\n"
@@ -1022,8 +1022,32 @@ msgstr "Pomenované oblasti"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:286
+#, fuzzy
+#| msgid ""
+#| "This tool create sets of tiles that can be used in WML scripts’ Standard "
+#| "Location Filters (a concept explained in detail on the Wiki), by using "
+#| "the area’s id in the filter’s <italic>text='area='</italic> attribute. "
+#| "For example:\n"
+#| "\n"
+#| "• assigning a local time zone to this set of hexes\n"
+#| "• filtering the set of hexes which trigger an event when a unit moves on "
+#| "to them\n"
+#| "\n"
+#| "To use the tool:\n"
+#| "\n"
+#| "• select hexes using the <ref>dst='editor_tool_select' text='select "
+#| "tool'</ref>\n"
+#| "• in the Areas menu, select Add New Area\n"
+#| "• then in the Areas menu, select Save Selection to Area\n"
+#| "• then in the Areas menu, select Rename Selected Area and choose a name "
+#| "for the area\n"
+#| "\n"
+#| "This tool is only available in Scenario Mode; it adds WML "
+#| "<italic>text='[time_area]'</italic> tags to the scenario. Although the "
+#| "tag’s name implies time, it is now more generic and can be used for other "
+#| "purposes without needing to change the time-of-day schedule in the area."
 msgid ""
-"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
 "area’s id in the filter’s <italic>text='area='</italic> attribute. For "
 "example:\n"
@@ -2230,8 +2254,8 @@ msgstr "Hra"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:477
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:492
+#: src/help/help_topic_generators.cpp:515
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -4745,9 +4769,9 @@ msgid ""
 "‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
-"Tieto príkazy môžu byť vyvolané z príkazového riadka použitím predpony ':' "
-"(ako je zobrazené tu) alebo cez rozhovor použitím predpony '/' (stlač najprv "
-"'m' na zobrazenie riadka rozhovoru).\n"
+"Tieto príkazy môžu byť vyvolané z príkazového riadka použitím predpony "
+"':' (ako je zobrazené tu) alebo cez rozhovor použitím predpony '/' (stlač "
+"najprv 'm' na zobrazenie riadka rozhovoru).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -8315,7 +8339,14 @@ msgstr "Najlepšie z"
 msgid "Worst of"
 msgstr "Najhoršie z"
 
-#: src/help/help_topic_generators.cpp:160
+#. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
+#: src/help/help_topic_generators.cpp:94
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "base terrain"
+msgstr "Základný terén"
+
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
@@ -8324,7 +8355,7 @@ msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:165
+#: src/help/help_topic_generators.cpp:170
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8341,7 +8372,7 @@ msgstr[2] ""
 "Tento terén umožňuje jednotkám vyliečiť sa z jedu alebo vyliečiť $amount "
 "hitpoints zásahové body."
 
-#: src/help/help_topic_generators.cpp:172
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
@@ -8349,7 +8380,7 @@ msgstr ""
 "Tento terén je hrad – jednotky naň možno naverbovať z pripojenej pevnosti."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:176
+#: src/help/help_topic_generators.cpp:181
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
@@ -8358,7 +8389,7 @@ msgstr ""
 "pripojené hradné šesťuhoľníky."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:179
+#: src/help/help_topic_generators.cpp:184
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -8366,173 +8397,186 @@ msgstr ""
 "Táto neobvyklá pevnosť umožňuje vodcovi verbovať, keď na nej stojí, ale "
 "neumožňuje vodcovi na pripojenej pevnosti verbovať na tento šesťuhoľník."
 
-#: src/help/help_topic_generators.cpp:183
-#: src/help/help_topic_generators.cpp:603
+#: src/help/help_topic_generators.cpp:188
+#: src/help/help_topic_generators.cpp:618
 msgid "Special Notes:"
 msgstr "Špeciálne Poznámky:"
 
-#: src/help/help_topic_generators.cpp:192
-msgid "Base Terrain: "
-msgstr "Základný terén"
+#. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+#. The terrain names will be hypertext links to the help page of the corresponding terrain type.
+#. There will always be at least 1 item in the list, but unlikely to be more than 3.
+#: src/help/help_topic_generators.cpp:209
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Basic terrain type: $types"
+msgid_plural "Basic terrain types: $types"
+msgstr[0] "Základný terén"
+msgstr[1] "Základný terén"
+msgstr[2] "Základný terén"
 
-#: src/help/help_topic_generators.cpp:212
+#. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
+#: src/help/help_topic_generators.cpp:221
+msgid "Typical base terrain: $type"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:227
 msgid "Movement properties: "
 msgstr "Pohybové vlastnosti: "
 
-#: src/help/help_topic_generators.cpp:216
+#: src/help/help_topic_generators.cpp:231
 msgid "Defense properties: "
 msgstr "Obranné vlastnosti: "
 
-#: src/help/help_topic_generators.cpp:296
+#: src/help/help_topic_generators.cpp:311
 msgid "Level"
 msgstr "Úroveň"
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:375
 msgid "Advances from: "
 msgstr "Povýšený z: "
 
-#: src/help/help_topic_generators.cpp:362
+#: src/help/help_topic_generators.cpp:377
 msgid "Advances to: "
 msgstr "Povýšený na: "
 
-#: src/help/help_topic_generators.cpp:391
+#: src/help/help_topic_generators.cpp:406
 msgid "Base unit: "
 msgstr "Základná jednotka: "
 
-#: src/help/help_topic_generators.cpp:396
+#: src/help/help_topic_generators.cpp:411
 msgid "Base units: "
 msgstr "Základné jednotky: "
 
-#: src/help/help_topic_generators.cpp:414
+#: src/help/help_topic_generators.cpp:429
 msgid "Variations: "
 msgstr "Variácie: "
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:453
 msgid "race^Miscellaneous"
 msgstr "Rôzne"
 
-#: src/help/help_topic_generators.cpp:440
+#: src/help/help_topic_generators.cpp:455
 msgid "Race: "
 msgstr "Rasa: "
 
-#: src/help/help_topic_generators.cpp:510
+#: src/help/help_topic_generators.cpp:525
 msgid "Abilities: "
 msgstr "Schopnosti: "
 
-#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:551
 msgid "Ability Upgrades: "
 msgstr "Zvýšenie schopností: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:566
+#: src/help/help_topic_generators.cpp:581
 msgid "HP:"
 msgstr "Životy:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:570
+#: src/help/help_topic_generators.cpp:585
 msgid "Moves:"
 msgstr "Kroky:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:575
+#: src/help/help_topic_generators.cpp:590
 msgid "Vision:"
 msgstr "Videnie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:596
 msgid "Jamming:"
 msgstr "Blokovanie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:586
+#: src/help/help_topic_generators.cpp:601
 msgid "Cost:"
 msgstr "Cena:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:590
+#: src/help/help_topic_generators.cpp:605
 msgid "Alignment:"
 msgstr "Príslušnosť:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:597
+#: src/help/help_topic_generators.cpp:612
 msgid "Required XP:"
 msgstr "Potrebné skúsenosti:"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:630
 msgid "unit help^Attacks"
 msgstr "Útoky"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:637
 msgid "unit help^Name"
 msgstr "Názov"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:638
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:639
 msgid "Range"
 msgstr "Dosah"
 
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:640
 msgid "Type"
 msgstr "Typ"
 
-#: src/help/help_topic_generators.cpp:626
+#: src/help/help_topic_generators.cpp:641
 msgid "Special"
 msgstr "Špeciálne"
 
-#: src/help/help_topic_generators.cpp:701
+#: src/help/help_topic_generators.cpp:716
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help/help_topic_generators.cpp:705
+#: src/help/help_topic_generators.cpp:720
 msgid "Attack Type"
 msgstr "Typ útoku"
 
-#: src/help/help_topic_generators.cpp:706
+#: src/help/help_topic_generators.cpp:721
 msgid "Resistance"
 msgstr "Odolnosť"
 
-#: src/help/help_topic_generators.cpp:736
+#: src/help/help_topic_generators.cpp:751
 msgid "Terrain Modifiers"
 msgstr "Modifikátory terénu"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:755
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help/help_topic_generators.cpp:741
+#: src/help/help_topic_generators.cpp:756
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help/help_topic_generators.cpp:742
+#: src/help/help_topic_generators.cpp:757
 msgid "Movement Cost"
 msgstr "Cena pohybu"
 
-#: src/help/help_topic_generators.cpp:746
+#: src/help/help_topic_generators.cpp:761
 msgid "Defense Cap"
 msgstr "Limit obrany"
 
-#: src/help/help_topic_generators.cpp:751
+#: src/help/help_topic_generators.cpp:766
 msgid "Vision Cost"
 msgstr "Cena videnia"
 
-#: src/help/help_topic_generators.cpp:755
+#: src/help/help_topic_generators.cpp:770
 msgid "Jamming Cost"
 msgstr "Cena blokovania"
 

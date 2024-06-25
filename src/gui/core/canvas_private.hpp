@@ -239,8 +239,9 @@ public:
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the text.
+	 * @param functions           WFL functions to execute.
 	 */
-	explicit text_shape(const config& cfg);
+	explicit text_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
 	void draw(wfl::map_formula_callable& variables) override;
 
@@ -282,14 +283,34 @@ private:
 	typed_formula<int> maximum_height_;
 
 	/** Start and end offsets for highlight */
-	typed_formula<int> highlight_start_;
-	typed_formula<int> highlight_end_;
+	std::string highlight_start_;
+	std::string highlight_end_;
 
 	/** The color to be used for highlighting */
 	typed_formula<color_t> highlight_color_;
 
+	/** Generic start and end offsets for various attributes */
+	std::string attr_start_;
+	std::string attr_end_;
+
+	/**
+	 * The attribute type
+	 * Possible values :
+	 *  color/foreground, bgcolor/background, font_size/size,
+	 *  bold, italic, underline
+	 * The first three require extra data
+	 * the color for the first two, and font size for the last
+	 */
+	std::string attr_name_;
+
+	/** extra data for the attribute, if any */
+	std::string attr_data_;
+
 	/** Whether to apply a text outline. */
 	typed_formula<bool> outline_;
+
+	/** Any extra WFL actions to execute. */
+	wfl::formula actions_formula_;
 };
 
 }

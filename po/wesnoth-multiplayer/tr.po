@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2021-08-03 03:00+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <>\n"
@@ -133,8 +133,12 @@ msgstr "Öntanımlı"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Vesnot çok oyunculu için standart çağ. Altı birlikten oluşur ve genel olarak "
@@ -147,58 +151,19 @@ msgstr "Kahramanlar Çağı"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Yüksek seviyeli birimleri olan bir çağ: Askere almak için üçüncü seviyeden "
 "liderler, birinci ve ikinci seviyeden birimler vardır. Altı birlik içerir. "
 "Dengeli sayılmaz."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Öntanımlı + Kumul Halkı"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Öntanımlı Çağdaki altı birliğin yanı sıra ek bir birlik içeren bir çağ. "
-"Kumul Halkının birimleri, alacakaranlıkta veya şafakta arazinin dikkatli bir "
-"şekilde kullanılmasında ve  iyi örgütlenmiş görevlerde güvenilirdir.\n"
-"\n"
-"Bu çağ hala geliştirme aşamasındadır, bu nedenle lütfen ortaya çıkan "
-"sorunları bildirdiğinizden emin olun."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Kahramanlar Çağı + Kumul Halkı"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Kahramanlar Çağındaki altı birliğin yanı sıra ek bir birlik içeren bir çağ. "
-"Kumul Halkının birimleri, alacakaranlıkta veya şafakta arazinin dikkatli bir "
-"şekilde kullanılmasında ve  iyi örgütlenmiş görevlerde güvenilirdir.\n"
-"\n"
-"Bu çağ hala geliştirme aşamasındadır, bu nedenle lütfen ortaya çıkan "
-"sorunları bildirdiğinizden emin olun."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3115,6 +3080,43 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Öntanımlı + Kumul Halkı"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Öntanımlı Çağdaki altı birliğin yanı sıra ek bir birlik içeren bir çağ. "
+#~ "Kumul Halkının birimleri, alacakaranlıkta veya şafakta arazinin dikkatli "
+#~ "bir şekilde kullanılmasında ve  iyi örgütlenmiş görevlerde güvenilirdir.\n"
+#~ "\n"
+#~ "Bu çağ hala geliştirme aşamasındadır, bu nedenle lütfen ortaya çıkan "
+#~ "sorunları bildirdiğinizden emin olun."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Kahramanlar Çağı + Kumul Halkı"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Kahramanlar Çağındaki altı birliğin yanı sıra ek bir birlik içeren bir "
+#~ "çağ. Kumul Halkının birimleri, alacakaranlıkta veya şafakta arazinin "
+#~ "dikkatli bir şekilde kullanılmasında ve  iyi örgütlenmiş görevlerde "
+#~ "güvenilirdir.\n"
+#~ "\n"
+#~ "Bu çağ hala geliştirme aşamasındadır, bu nedenle lütfen ortaya çıkan "
+#~ "sorunları bildirdiğinizden emin olun."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

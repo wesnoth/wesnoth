@@ -18,8 +18,7 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "map/map.hpp"
-#include "preferences/display.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
@@ -30,11 +29,11 @@ namespace
 {
 int get_next_idle_time()
 {
-	if(!preferences::idle_anim()) {
+	if(!prefs::get().idle_anim()) {
 		return INT_MAX;
 	}
 
-	const double rate = std::pow(2.0, -preferences::idle_anim_rate() / 10.0);
+	const double rate = std::pow(2.0, -prefs::get().idle_anim_rate() / 10.0);
 	return get_current_animation_tick()
 		+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * rate);
 }
@@ -66,7 +65,7 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 
 void unit_animation_component::set_standing(bool with_bars)
 {
-	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
+	if (prefs::get().show_standing_animations()&& !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
@@ -96,7 +95,7 @@ void unit_animation_component::set_idling()
 
 void unit_animation_component::set_selecting()
 {
-	if (preferences::show_standing_animations() && !u_.incapacitated()) {
+	if (prefs::get().show_standing_animations() && !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(u_.loc_, "selected"),
 			true, "", {0,0,0}, STATE_FORGET);
 	} else {

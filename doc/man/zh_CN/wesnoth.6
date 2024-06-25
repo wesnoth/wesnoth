@@ -106,8 +106,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 \fB\-\-log\-precise\fP
 在日志输出中显示更高精度的时间戳。
 .TP 
-\fB\-\-log\-strict\fP
-设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和 \fB\-u\fP 共同使用时才有意义。
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 列出游戏中定义的日志域（如果使用了 \fIfilter\fP 则只列出饱含该字符串的日志域）而后退出
@@ -236,9 +238,12 @@ with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
 设置\fB\-V,\-\-validate\fP所使用的WML schema。
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
-Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME或者“My Documents\eMy
-Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头的路径来指定相对于游戏进程工作目录的目录。在X11下，配置目录默认为$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配置目录默认为用户数据目录。
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 输出用户配置目录的路径并退出。

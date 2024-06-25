@@ -128,10 +128,10 @@ zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
 \fB\-\-log\-precise\fP
 zobrazuje časové pečiatky vo výstupe protokolu s väčšou presnosťou.
 .TP 
-\fB\-\-log\-strict\fP
-nastavuje prísnu úroveň zapisovača. Všetky správy odoslané do domén tejto
-úrovne alebo závažnejších spôsobia zlyhanie testu jednotky bez ohľadu na
-výsledok víťazstva. Relevantné len pri použití s \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 vypíše definované protokolovacie domény domény protokolovania (iba tie ktoré
@@ -292,13 +292,12 @@ rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ názov\fP
-nastaví konfiguračný adresár používateľa na \fInázov\fP pod $HOME alebo "My
-Documents\eMy Games" pre Windows.  Môžete tiež zadať absolútnu cestu pre
-konfiguračný adresár mimo $HOME alebo "My Documents\eMy Games". V systéme
-Windows je možné zadať aj adresár relatívny k pracovnému adresáru procesu
-pomocou cesty začínajúcej na ".\e" alebo "..\e".  V systéme X11 je to
-predvolená cesta $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, v ostatných
-systémoch cesta userdata.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 vypíše názov adresára s používateľskými nastaveniami a skončí.

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2024-04-06 13:31+0200\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"PO-Revision-Date: 2024-06-07 00:59+0200\n"
 "Last-Translator: Simon Waldek\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -137,8 +137,12 @@ msgstr "Standard"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Standardepoche des Wesnoth-Mehrspielermodus, die auf sechs weitgehend "
@@ -151,57 +155,19 @@ msgstr "Zeit der Helden"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Eine Epoche mit hochstufigen Einheiten: Die Heerführer sind auf der dritten "
 "Stufe und rekrutierbare Einheiten auf den Stufen eins und zwei. Diese Epoche "
 "besteht aus sechs Fraktionen und gilt als unausgeglichen."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Standard + Wüstenvolk"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Eine Epoche mit einer zusätzlichen Fraktion zu den sechs Fraktion der "
-"Standardepoche. Das Wüstenvolk nutzt sein Geländevorteil bedacht aus und "
-"führt koordinierte Schläge bei Sonnenaufgang oder Sonnenuntergang durch.\n"
-"\n"
-"Diese Epoche ist noch in Entwicklung und nicht so ausgeglichen wie die "
-"Standardepoche."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Zeit der Helden + Wüstenvolk"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Eine Epoche mit einer zusätzlichen Fraktion zu den sechs Fraktion der "
-"Heldenepoche. Das Wüstenvolk nutzt sein Geländevorteil bedacht aus und führt "
-"koordinierte Schläge bei Sonnenaufgang oder Sonnenuntergang durch.\n"
-"\n"
-"Diese Epoche ist noch in Entwicklung und wie die Heldenepoche unausgeglichen."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -600,8 +566,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
-"Units können möglicherweise Felder mit Steinhaufen nicht betreten. Jedoch "
-"können sie auf diesen Feldern ausgebildet und von dort herunterbewegt werden."
+"Einheiten können Felder mit Steinhaufen nicht betreten. Jedoch können sie "
+"auf diesen Feldern ausgebildet und von dort herunterbewegt werden."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
@@ -3175,6 +3141,42 @@ msgid ""
 msgstr ""
 "Diese Karte ist ein Beispiel für die Verwendung der neuen (BfW v1.17) Grafik "
 "mit Höhenunterschieden im Terrain. Sie ist nicht zum Spielen gedacht"
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Standard + Wüstenvolk"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Eine Epoche mit einer zusätzlichen Fraktion zu den sechs Fraktion der "
+#~ "Standardepoche. Das Wüstenvolk nutzt sein Geländevorteil bedacht aus und "
+#~ "führt koordinierte Schläge bei Sonnenaufgang oder Sonnenuntergang durch.\n"
+#~ "\n"
+#~ "Diese Epoche ist noch in Entwicklung und nicht so ausgeglichen wie die "
+#~ "Standardepoche."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Zeit der Helden + Wüstenvolk"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Eine Epoche mit einer zusätzlichen Fraktion zu den sechs Fraktion der "
+#~ "Heldenepoche. Das Wüstenvolk nutzt sein Geländevorteil bedacht aus und "
+#~ "führt koordinierte Schläge bei Sonnenaufgang oder Sonnenuntergang durch.\n"
+#~ "\n"
+#~ "Diese Epoche ist noch in Entwicklung und wie die Heldenepoche "
+#~ "unausgeglichen."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

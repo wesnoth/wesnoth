@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
+"POT-Creation-Date: 2024-05-26 15:07-0500\n"
 "PO-Revision-Date: 2024-01-01 18:43+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -434,7 +434,9 @@ msgid "Empty file"
 msgstr "Prázdny súbor mapy"
 
 #: src/editor/map/map_context.cpp:194
-msgid "File does not have .map or .cfg extension"
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Súbor nemá príponu .map alebo .cfg"
 
 #: src/editor/map/map_context.cpp:240

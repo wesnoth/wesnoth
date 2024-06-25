@@ -137,10 +137,10 @@ gesetzt ist.
 \fB\-\-log\-precise\fP
 Zeigt die Zeitstempel in der Log\-Ausgabe mit höherer Genauigkeit.
 .TP 
-\fB\-\-log\-strict\fP\fI\ Stufe\fP
-Sorgt dafür dass die Unit\-Tests scheitern, falls irgendeine Log\-Domäne eine
-Meldung auf der angegebenen oder einer schlimmeren \fIStufe\fP erhält. Wird nur
-zusammen mit \fB\-u\fP benutzt.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=Filter\fP\fB]\fP
 Gibt die definierten Log\-Domänen aus (nur jene, die \fIFilter\fP enthalten,
@@ -316,14 +316,12 @@ Gibt den Pfad zu einem WML\-Schema an, welches für \fB\-V,\-\-validate\fP verwe
 wird.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ Name\fP
-Setzt das Konfigurationsverzeichnis des Benutzers auf \fIName\fP in $HOME oder
-»Eigene Dateien\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum
-Konfigurationsverzeichnis außerhalb von $HOME oder »Eigene Dateien\eMy
-Games« angegeben werden. Unter Windows ist es auch möglich ein Verzeichnis
-relativ zum Installationsverzeichnis mit ".\e" oder "..\e"
-anzugeben. Standard ist unter GNU/Linux und BSD $XDG_CONFIG_HOME
-bzw. $HOME/.config/wesnoth, auf anderen Betriebssystemen ist es das
-Nutzerdatenverzeichnis.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.

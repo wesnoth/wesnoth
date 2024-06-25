@@ -129,11 +129,10 @@ değerini kullanır, fakat \fB\-d\fP  seçeneği ile birlikte kullanılmadıkça
 \fB\-\-log\-precise\fP
 günlük çıktısında zaman damgaları daha ayrıntılı gösterilir.
 .TP 
-\fB\-\-log\-strict\fP
-günlük iletilerinin önem seviyesi. Günlük alanlarına gönderilen bu ve daha
-önemli seviyelerdeki iletiler, zafer sonucuna bakılmaksızın birim
-sınamalarının başarısız olmasında sebep olur. Sadece \fB\-u\fP ile
-kullanıldığında etkin olur.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=süzgeç\fP\fB]\fP
 tanımlı günlük alanlarını listeler ve çıkar (bir \fIsüzgeç\fP belirtilmişse
@@ -299,14 +298,12 @@ wesnoth çalıştırılabiliri ile aynı yetkileri sağlar.
 \fB\-V,\-\-validate\fP ile kullanmak için WML şemasını tanımlar.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ isim\fP
-kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows'ta
-"Belgelerim\eOyunlarım" dizini altında \fIisim\fP dizini kullanılır. Ayrıca,
-$HOME veya "Belgelerim\eOyunlarım" dışında bir yapılandırma dizinini de
-mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu
-".\e" veya "..\e" ile başlatarak sürecin çalışma dizinine göreli bir dosya
-yolu da belirtebilirsiniz. X11 altında bu, öntanımlı olarak $XDG_CONFIG_HOME
-veya $HOME/.config/wesnoth olup diğer sistemlerde kullanıcı verisi
-dizinidir.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 Kullanıcı yapılandırma dizininin yolunu basar ve çıkar.

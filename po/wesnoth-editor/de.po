@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2024-02-27 01:56+0100\n"
+"POT-Creation-Date: 2024-05-26 15:07-0500\n"
+"PO-Revision-Date: 2024-06-07 01:06+0200\n"
 "Last-Translator: René Genz <liebundartig@freenet.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -223,7 +223,7 @@ msgstr ""
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
 msgid "Side"
-msgstr "Partei"
+msgstr "Parteien"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:168
@@ -438,7 +438,9 @@ msgid "Empty file"
 msgstr "Leere Datei"
 
 #: src/editor/map/map_context.cpp:194
-msgid "File does not have .map or .cfg extension"
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Datei hat keine .map- oder .cfg-Dateiendung"
 
 #: src/editor/map/map_context.cpp:240
@@ -562,3 +564,6 @@ msgstr "Datei auswählen"
 #: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Select"
 msgstr "Auswählen"
+
+#~ msgid "File does not have .map or .cfg extension"
+#~ msgstr "Datei hat keine .map- oder .cfg-Dateiendung"

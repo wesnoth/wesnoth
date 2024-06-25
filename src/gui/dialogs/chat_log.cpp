@@ -27,7 +27,7 @@
 #include "font/pango/escape.hpp"
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "gettext.hpp"
@@ -109,7 +109,7 @@ public:
 										  chat_log_history.begin() + last))
 		{
 			const std::string& timestamp
-					= preferences::get_chat_timestamp(t.time());
+					= prefs::get().get_chat_timestamp(t.time());
 
 			if(!lcfilter.empty()) {
 				const std::string& lcsample = utf8::lowercase(timestamp)

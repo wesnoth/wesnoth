@@ -130,10 +130,10 @@ option.
 \fB\-\-log\-precise\fP
 shows the time\-stamps in log output with more precision.
 .TP 
-\fB\-\-log\-strict\fP
-sets the strict level of the logger. Any messages sent to log domains of
-this level or more severe will cause the unit test to fail regardless of the
-victory result. Only relevant when used with \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lists defined log domains (only the ones containing \fIfilter\fP if used) and
@@ -296,8 +296,7 @@ Documents\eMy Games" for windows.  You can also specify an absolute path for
 the configuration directory outside the $HOME or "My Documents\eMy
 Games". On Windows it is also possible to specify a directory relative to
 the process working directory by using path starting with ".\e" or "..\e".
-Under X11 this is set to $XDG_CONFIG_HOME or $HOME/.config/wesnoth by
-default, on other systems to the user data path.
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 prints the path of the user configuration directory and exits.
