@@ -144,13 +144,6 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
 
-	if (!filter_type.empty()){
-		std::pair<std::string, std::string> damage_type = attack.damage_type();
-		if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
-			return false;
-		}
-	}
-
 	if(!filter_special.empty()) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
 		bool found = false;
@@ -194,6 +187,13 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	filter_lock = attack.update_variables_recursion();
 	if(!filter_lock) {
 		return true;
+	}
+
+	if (!filter_type.empty()){
+		std::pair<std::string, std::string> damage_type = attack.damage_type();
+		if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+			return false;
+		}
 	}
 
 	if(!filter_special_active.empty()) {
