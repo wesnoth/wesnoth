@@ -156,6 +156,15 @@ private:
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	/**
+	 * Filter a list of abilities or weapon specials
+	 * @param cfg config of ability checked
+	 * @param tag_name le type of ability who is checked
+	 * @param filter config contain list of attribute who are researched in cfg
+	 *
+	 * @return true if all attribute with ability checked
+	 */
+	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that don't own
 	 * the overwrite_specials attributes.
 	 *
