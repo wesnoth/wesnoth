@@ -134,6 +134,17 @@ public:
 	 * uses when a defender has no weapon for a given range.
 	 */
 	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
+	/** remove special if matche condition
+	 * @param filter if special check with filter, it will be removed.
+	 */
+	void remove_special_by_filter(const config& filter);
+	/** check if special matche
+	 * @return True if special matche with filter and active.
+	 * @param filter if special check with filter, return true.
+	 */
+	bool has_special_with_filter(const config & filter) const;
+	bool has_ability_with_filter(const config & filter) const;
+	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
 
@@ -155,6 +166,16 @@ private:
 
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	/**
+	 * Filter a list of abilities or weapon specials
+	 * @param cfg config of ability checked
+	 * @param tag_name le type of ability who is checked
+	 * @param filter config contain list of attribute who are researched in cfg
+	 * @param tag_name_optional boolean variable, if false, using of tag_name in filter is mandatory
+	 *
+	 * @return true if all attribute with ability checked
+	 */
+	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional = false) const;
 	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that don't own
 	 * the overwrite_specials attributes.
