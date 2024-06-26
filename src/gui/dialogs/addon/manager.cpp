@@ -504,11 +504,6 @@ void addon_manager::pre_show(window& window)
 		find_widget<button>(&window, "show_help", false),
 		std::bind(&addon_manager::show_help, this));
 
-	// Do this while all stack layers (if applicable) are visible
-	if(!game_config::debug) {
-		find_widget<label>(&window, "addon_id", false).set_visible(widget::visibility::invisible);
-	}
-
 	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
 		button& btn = find_widget<button>(&window, "details_toggle", false);
 		connect_signal_mouse_left_click(btn, std::bind(&addon_manager::toggle_details, this, std::ref(btn), std::ref(*stk)));
@@ -523,6 +518,10 @@ void addon_manager::pre_show(window& window)
 	menu_button& version_filter = find_widget<menu_button>(version_filter_parent, "version_filter", false);
 	connect_signal_notify_modified(version_filter,
 		std::bind(&addon_manager::on_selected_version_change, this));
+
+	if(!game_config::debug) {
+		find_widget<label>(&window, "addon_id", false).set_visible(widget::visibility::invisible);
+	}
 
 	on_addon_select();
 
