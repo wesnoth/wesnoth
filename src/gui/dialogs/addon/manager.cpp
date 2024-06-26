@@ -519,10 +519,6 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(version_filter,
 		std::bind(&addon_manager::on_selected_version_change, this));
 
-	if(!game_config::debug) {
-		find_widget<label>(&window, "addon_id", false).set_visible(widget::visibility::invisible);
-	}
-
 	on_addon_select();
 
 	window.set_enter_disabled(true);
@@ -1106,10 +1102,7 @@ void addon_manager::on_addon_select()
 
 	const std::string& feedback_url = info->feedback_url;
 	find_widget<label>(parent, "url", false).set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
-
-	if(auto addon_id =  find_widget<label>(parent, "addon_id", false, true)) {
-		addon_id->set_label(info->id);
-	}
+	find_widget<label>(parent, "id", false).set_label(info->id);
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
