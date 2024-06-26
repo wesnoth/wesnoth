@@ -1352,7 +1352,7 @@ DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 		.convert_to<location_callable>()
 		->loc();
 
-	const map_location loc = args()[0]
+	const map_location loc = args()[1]
 		->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location"))
 		.convert_to<location_callable>()
 		->loc();
