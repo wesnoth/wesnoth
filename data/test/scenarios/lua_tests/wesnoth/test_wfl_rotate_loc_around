@@ -1,0 +1,12 @@
+{GENERIC_UNIT_TEST "test_wfl_rotate_loc_around" (
+[event]
+      name = start
+      [lua]
+            code=<<
+wml.variables.test_ok = {10,10} == wesnoth.eval_formula(wesnoth.compile_formula("rotate_loc_around(loc(10,10),loc(9,11),1)"))
+>>
+      [/lua]
+{FAIL_IF_NOT test_ok yes}
+{SUCCEED}
+[/event]
+)}
