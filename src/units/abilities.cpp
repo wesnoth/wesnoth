@@ -35,6 +35,7 @@
 #include "units/abilities.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
+#include "utils/config_filters.hpp"
 #include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -1522,11 +1523,15 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		// check whether the current overwriter is disabled due to a filter
 		bool special_matches = true;
 		if(overwrite_specials){
-			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
-			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				if(self_){
-					special_matches = (*self_).ability_matches_filter(cfg, tag_name, *overwrite_filter);
+			auto overwrite_filter = (*overwrite_specials).optional_child("filter_specials");
+			if(!overwrite_filter){
+				overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
+				if(overwrite_filter){
+					deprecated_message("experimental_filter_specials", DEP_LEVEL::INDEFINITE, "", "Use filter_specials instead.");
 				}
+			}
+			if(overwrite_filter && is_overwritable && one_side_overwritable){
+				special_matches = special_matches_filter(cfg, tag_name, *overwrite_filter, true);
 			}
 		}
 
@@ -1742,6 +1747,156 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
+
+namespace
+{
+	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
+	{
+		using namespace utils::config_filters;
+
+		//in the filter call from an ability using overwrite_specials=[overwrite][experiemental_filter_specials]
+		//the checked tag_name will always be the same as that of the ability calling the function
+		//and the use of tag_name is not mandatory, otherwise the fact of not using it will return a false response
+		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+		if(tag_name_optional){
+			if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+				return false;
+			}
+		} else {
+			if ( filter_type.empty() || std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() ){
+				return false;
+			}
+		}
+
+		if(!filter["affect_adjacent"].empty()){
+			bool adjacent = cfg.has_child("affect_adjacent");
+			if(filter["affect_adjacent"].to_bool() != adjacent){
+				return false;
+			}
+		}
+
+		if(!bool_matches_if_present(filter, cfg, "affect_self", true))
+			return false;
+
+		if(!bool_or_empty(filter, cfg, "affect_allies"))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "id", ""))
+			return false;
+
+		if(tag_name == "resistance"){
+			if(!set_includes_if_present(filter, cfg, "apply_to")){
+				return false;
+			}
+		} else {
+			if(!string_matches_if_present(filter, cfg, "apply_to", "self")){
+				return false;
+			}
+		}
+
+		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		//for damage only
+		if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
+			return false;
+
+		//for plague only
+		if(!string_matches_if_present(filter, cfg, "type", ""))
+			return false;
+
+		if(!filter["value"].empty()){
+			if(tag_name == "drains"){
+				if(!int_matches_if_present(filter, cfg, "value", 50)){
+					return false;
+				}
+			} else if(tag_name == "berserk"){
+				if(!int_matches_if_present(filter, cfg, "value", 1)){
+					return false;
+				}
+			} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+				if(!int_matches_if_present(filter, cfg, "value" , 0)){
+					return false;
+				}
+			} else {
+				if(!int_matches_if_present(filter, cfg, "value")){
+					return false;
+				}
+			}
+		}
+
+		if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+			return false;
+
+		if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "multiply"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "divide"))
+			return false;
+
+		//the wml_filter is used in cases where the attribute we are looking for is not
+		//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
+		//If the checked set does not exactly match the content of the capability, the function returns a false response.
+		auto fwml = filter.optional_child("filter_wml");
+		if (fwml){
+			if(!cfg.matches(*fwml)){
+				return false;
+			}
+		}
+
+		// Passed all tests.
+		return true;
+	}
+
+	static bool common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional)
+	{
+		// Handle the basic filter.
+		bool matches = matches_ability_filter(cfg, tag_name, filter, tag_name_optional);
+
+		// Handle [and], [or], and [not] with in-order precedence
+		for (const config::any_child condition : filter.all_children_range() )
+		{
+			// Handle [and]
+			if ( condition.key == "and" )
+				matches = matches && common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
+
+			// Handle [or]
+			else if ( condition.key == "or" )
+				matches = matches || common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
+
+			// Handle [not]
+			else if ( condition.key == "not" )
+				matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg, tag_name_optional);
+		}
+
+		return matches;
+	}
+}
+
+bool unit::ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+{
+	return common_matches_filter(cfg, tag_name, filter, false);
+}
+
+bool attack_type::special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool tag_name_optional) const
+{
+	return common_matches_filter(cfg, tag_name, filter, tag_name_optional);
+}
 
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  const std::string& filter_self) const
