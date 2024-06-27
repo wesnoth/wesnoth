@@ -65,7 +65,7 @@ synced_command::map& synced_command::registry()
 }
 
 
-SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
 	team &current_team = resources::gameboard->get_team(current_team_num);
@@ -121,7 +121,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 		error_handler(errbuf.str());
 	}
 
-	actions::recruit_unit(*u_type, current_team_num, loc, from, show, use_undo);
+	actions::recruit_unit(*u_type, current_team_num, loc, from, show);
 
 	LOG_REPLAY << "recruit: team=" << current_team_num << " '" << type_id << "' at (" << loc
 		<< ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
@@ -129,7 +129,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, show, error_handler)
 {
 
 	int current_team_num = resources::controller->current_side();
@@ -139,7 +139,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 
-	if ( !actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate, show, use_undo) ) {
+	if(!actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate, show)) {
 		error_handler("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 		//when recall_unit returned false nothing happened so we can safety return false;
 		return false;
@@ -147,7 +147,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, show, error_handler)
 {
 	const auto destination = child.optional_child("destination");
 	const auto source = child.optional_child("source");
@@ -228,7 +228,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*show*/, error_handler)
 {
 
 	int current_team_num = resources::controller->current_side();
@@ -255,7 +255,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(move, child, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
 	team &current_team = resources::gameboard->get_team(current_team_num);
@@ -316,12 +316,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	{
 		show_move = show_move && !prefs::get().skip_ai_moves();
 	}
-	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : nullptr, skip_sighted, skip_ally_sighted, show_move);
+	actions::move_unit_from_replay(steps, resources::undo_stack, skip_sighted, skip_ally_sighted, show_move);
 
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child, /*show*/, /*error_handler*/)
 {
 	if(const auto last_select = child.optional_child("last_select"))
 	{
@@ -336,33 +336,29 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 	}
 
 	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
-	if(use_undo) {
-		if(synced_context::undo_blocked()) {
-			resources::undo_stack->clear();
-		} else {
-			resources::undo_stack->add_dummy();
-		}
+	if(synced_context::undo_blocked()) {
+		resources::undo_stack->clear();
+	} else {
+		resources::undo_stack->add_dummy();
 	}
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child,  use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child, /*show*/, /*error_handler*/)
 {
 	assert(resources::lua_kernel);
 	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
-	if(use_undo) {
-		if(synced_context::undo_blocked()) {
-			resources::undo_stack->clear();
-		} else {
-			resources::undo_stack->add_dummy();
-		}
+
+	if(synced_context::undo_blocked()) {
+		resources::undo_stack->clear();
+	} else {
+		resources::undo_stack->add_dummy();
 	}
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child, /*show*/, /*error_handler*/)
 {
-	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
@@ -376,13 +372,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/, /*show*/, error_handler)
 {
 	// When "updating shroud now" is used.
 	// Updates fog/shroud based on the undo stack, then updates stack as needed.
 	// This may fire events and change the game state.
 
-	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
 		error_handler("Team has DSU disabled but we found an explicit shroud update");
@@ -443,11 +438,9 @@ namespace
 	}
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 	debug_cmd_notification("terrain");
 
 	map_location loc(child);
@@ -463,11 +456,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, use_undo, /*show*/, /*erro
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 	debug_cmd_notification("unit");
 	map_location loc(child);
 	const std::string name = child["name"];
@@ -534,11 +525,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, /*show*/, error_handler)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_notification(N_("A unit was created using debug mode during $player’s turn"));
 	map_location loc(child);
@@ -582,11 +571,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 	debug_cmd_notification("lua");
 	resources::lua_kernel->run(child["code"].str().c_str(), "debug command");
 	resources::controller->pump().flush_messages();
@@ -594,11 +581,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 	debug_cmd_notification("teleport");
 
 	const map_location teleport_from(child["teleport_from_x"].to_int(), child["teleport_from_y"].to_int(), wml_loc());
@@ -615,11 +600,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*err
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, /*show*/, /*error_handler*/)
 {
-	if (use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 	debug_cmd_notification("kill");
 
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
@@ -644,11 +627,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("next_level");
 
@@ -668,11 +649,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, use_undo, /*show*/, /*e
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("turn_limit");
 
@@ -681,11 +660,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*e
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("turn");
 
@@ -697,11 +674,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("set_var");
 
@@ -715,11 +690,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, use_undo, /*show*/, /*erro
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("gold");
 
@@ -729,11 +702,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_h
 }
 
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("throw");
 
@@ -744,11 +715,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_
 }
 
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("fog");
 
@@ -763,11 +732,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*erro
 }
 
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, /*show*/, /*error_handler*/)
 {
-	if(use_undo) {
-		resources::undo_stack->clear();
-	}
+	resources::undo_stack->clear();
 
 	debug_cmd_notification("shroud");
 

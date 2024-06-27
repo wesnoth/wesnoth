@@ -45,13 +45,11 @@ static lg::log_domain log_replay("replay");
 
 bool synced_context::run(const std::string& commandname,
 	const config& data,
-	bool use_undo,
+	bool /*use_undo*/,
 	bool show,
 	synced_command::error_handler_function error_handler)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname;
-
-	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
 
 	// use this after resources::recorder->add_synced_command
 	// because set_scontext_synced sets the checkup to the last added command
@@ -61,7 +59,7 @@ bool synced_context::run(const std::string& commandname,
 	if(it == synced_command::registry().end()) {
 		error_handler("commandname [" + commandname + "] not found");
 	} else {
-		bool success = it->second(data, use_undo, show, error_handler);
+		bool success = it->second(data, show, error_handler);
 		if(!success) {
 			return false;
 		}
