@@ -745,10 +745,6 @@ bool recall_unit(const std::string & id, team & current_team,
 	if ( !recall )
 		return false;
 
-
-	// ** IMPORTANT: id might become invalid at this point!
-	// (Use recall.id() instead, if needed.)
-
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
