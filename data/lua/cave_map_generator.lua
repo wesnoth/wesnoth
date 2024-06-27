@@ -10,6 +10,7 @@ function callbacks.generate_map(params)
 	local function build_chamber(x, y, locs_set, size, jagged)
 		if locs_set:get(x,y) or not map:on_board(x, y) or size == 0 then
 			return
+		else
 		end
 		locs_set:insert(x,y)
 		for xn, yn in MG.adjacent_tiles(x, y) do
