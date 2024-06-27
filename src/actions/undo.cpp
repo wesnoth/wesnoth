@@ -54,60 +54,6 @@ static lg::log_domain log_engine("engine");
 namespace actions {
 
 
-
-/**
- * Creates an undo_action based on a config.
- * @return a pointer that must be deleted, or nullptr if the @a cfg could not be parsed.
- */
-std::unique_ptr<undo_action_base> undo_list::create_action(const config & cfg)
-{
-	const std::string str = cfg["type"];
-	// The general division of labor in this function is that the various
-	// constructors will parse the "unit" child config, while this function
-	// parses everything else.
-
-	if ( str == "move" ) {
-		return std::make_unique<undo::move_action>(cfg, cfg.child_or_empty("unit"),
-		                       cfg["starting_moves"].to_int(),
-		                       map_location::parse_direction(cfg["starting_direction"]));
-	}
-
-	else if ( str == "recruit" ) {
-		// Validate the unit type.
-		const config & child = cfg.mandatory_child("unit");
-		const unit_type * u_type = unit_types.find(child["type"]);
-
-		if ( !u_type ) {
-			// Bad data.
-			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type '"
-			       << child["type"] << "' was not found.\n";
-			return nullptr;
-		}
-		return std::make_unique<undo::recruit_action>(cfg, *u_type, map_location(cfg.child_or_empty("leader"), nullptr));
-	}
-
-	else if ( str == "recall" )
-		return std::make_unique<undo::recall_action>(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
-
-	else if ( str == "dismiss" )
-		return std::make_unique<undo::dismiss_action>(cfg, cfg.mandatory_child("unit"));
-
-	else if ( str == "auto_shroud" )
-		return std::make_unique<undo::auto_shroud_action>(cfg["active"].to_bool());
-
-	else if ( str == "update_shroud" )
-		return std::make_unique<undo::update_shroud_action>();
-	else if ( str == "dummy" )
-		return std::make_unique<undo_dummy_action>(cfg);
-	else
-	{
-		// Unrecognized type.
-		ERR_NG << "Unrecognized undo action type: " << str << ".";
-		return nullptr;
-	}
-}
-
-
 /**
  * Constructor.
  * The config is allowed to be invalid.
@@ -135,10 +81,6 @@ void undo_list::add_auto_shroud(bool turned_on)
 	add(std::make_unique<undo::auto_shroud_action>(turned_on));
 }
 
-void undo_list::add_dummy()
-{
-	add(std::make_unique<undo_dummy_action>());
-}
 
 /**
  * Adds a dismissal to the undo stack.
@@ -176,16 +118,6 @@ void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
                             const map_location& from, int orig_village_owner, bool time_bonus)
 {
 	add(std::make_unique<undo::recruit_action>(u, loc, from, orig_village_owner, time_bonus));
-}
-
-/**
- * Adds a shroud update to the undo stack.
- * This is called from within commit_vision(), so there should be no need
- * for this to be publicly visible.
- */
-void undo_list::add_update_shroud()
-{
-	add(std::make_unique<undo::update_shroud_action>());
 }
 
 
@@ -267,39 +199,33 @@ void undo_list::new_side_turn(int side)
 void undo_list::read(const config & cfg)
 {
 	// Merge header data.
+	// TODO: remove side parameter, its already stored in [snapshot].
 	side_ = cfg["side"].to_int(side_);
 	committed_actions_ = committed_actions_ || cfg["committed"].to_bool();
 
 	// Build the undo stack.
-	for (const config & child : cfg.child_range("undo")) {
-		try {
-			if(auto action = create_action(child)) {
-				undos_.push_back(std::move(action));
-			}
-		} catch (const bad_lexical_cast &) {
-			ERR_NG << "Error when parsing undo list from config: bad lexical cast.";
-			ERR_NG << "config was: " << child.debug();
-			ERR_NG << "Skipping this undo action...";
-		} catch (const config::error& e) {
-			ERR_NG << "Error when parsing undo list from config: " << e.what();
-			ERR_NG << "config was: " << child.debug();
-			ERR_NG << "Skipping this undo action...";
+	try {
+		for(const config& child : cfg.child_range("undo")) {
+			undos_.push_back(std::make_unique<undo_action_container>());
+			undos_.back()->read(child);
 		}
+	} catch(const bad_lexical_cast&) {
+		//It ddoenst make sense to "skip" actions in the undo stakc since that would just result in errors later.
+		ERR_NG << "Error when parsing undo list from config: bad lexical cast.";
+		ERR_NG << "config was: " << cfg.debug();
+		ERR_NG << "discardind undo stack...";
+		undos_.clear();
+	} catch(const config::error& e) {
+		ERR_NG << "Error when parsing undo list from config: " << e.what();
+		ERR_NG << "config was: " << cfg.debug();
+		ERR_NG << "discardind undo stack...";
+		undos_.clear();
 	}
+
 
 	// Build the redo stack.
 	for (const config & child : cfg.child_range("redo")) {
-		try {
-			redos_.emplace_back(new config(child));
-		} catch (const bad_lexical_cast &) {
-			ERR_NG << "Error when parsing redo list from config: bad lexical cast.";
-			ERR_NG << "config was: " << child.debug();
-			ERR_NG << "Skipping this redo action...";
-		} catch (const config::error& e) {
-			ERR_NG << "Error when parsing redo list from config: " << e.what();
-			ERR_NG << "config was: " << child.debug();
-			ERR_NG << "Skipping this redo action...";
-		}
+		redos_.emplace_back(new config(child));
 	}
 }
 
@@ -320,6 +246,32 @@ void undo_list::write(config & cfg) const
 }
 
 
+void undo_list::init_action()
+{
+	current_ = std::make_unique<undo_action_container>();
+	redos_.clear();
+}
+
+
+void undo_list::finish_action(bool can_undo)
+{
+	if(current_) {
+		current_->set_unit_id_diff(synced_context::get_unit_id_diff());
+		undos_.emplace_back(std::move(current_));
+		if(!can_undo) {
+			clear();
+		}
+	}
+}
+
+void undo_list::cleanup_action()
+{
+	// This in particular makes sure no commands that do nothing stay on the undo stack but also on the recorder
+	// in particular so that menu items that did nothing because the user aborted in a custom menu dont persist on the replay.
+	if(!undos_.empty() && undos_.back()->empty()) {
+		undo();
+	}
+}
 /**
  * Undoes the top action on the undo stack.
  */
@@ -330,49 +282,25 @@ void undo_list::undo()
 
 	const events::command_disabler disable_commands;
 
-	game_display & gui = *game_display::get_singleton();
-
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	auto action = std::move(undos_.back());
-	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
-	{
-		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-		if ( !undoable_action->undo(side_) ) {
-			return;
-		}
-		if(last_unit_id - undoable_action->unit_id_diff < 0) {
-			ERR_NG << "Next unit id is below 0 after undoing";
-		}
-		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
-
-		// Bookkeeping.
-		undos_.pop_back();
-		redos_.emplace_back(new config());
-		resources::recorder->undo_cut(*redos_.back());
-
-		resources::whiteboard->on_gamestate_change();
-
-		// Screen updates.
-		gui.invalidate_unit();
-		gui.invalidate_game_status();
-		gui.redraw_minimap();
+	if(!action->undo(side_)) {
+		return;
 	}
-	else
-	{
-		//ignore this action, and undo the previous one.
-		undos_.pop_back();
-		config replay_data;
-		resources::recorder->undo_cut(replay_data);
-		undo();
-		resources::recorder->redo(replay_data);
-		undos_.emplace_back(std::move(action));
-	}
-	if(std::all_of(undos_.begin(), undos_.end(), [](const action_ptr_t& action){ return dynamic_cast<undo_action*>(action.get()) == nullptr; }))
-	{
-		//clear the undo stack if it only contains dsu related actions, this in particular makes sure loops like `while(can_undo()) { undo(); }`always stop.
-		undos_.clear();
-	}
+
+	// Bookkeeping.
+	undos_.pop_back();
+	redos_.emplace_back(new config());
+	resources::recorder->undo_cut(*redos_.back());
+
+	resources::whiteboard->on_gamestate_change();
+
+	// Screen updates.
+	game_display& gui = *game_display::get_singleton();
+	gui.invalidate_unit();
+	gui.invalidate_game_status();
+	gui.redraw_minimap();
 }
 
 
@@ -441,17 +369,20 @@ bool undo_list::apply_shroud_changes() const
 
 	// Loop through the list of undo_actions.
 	for( std::size_t i = 0; i != list_size; ++i ) {
-		if (const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(undos_[i].get())) {
-			LOG_NG << "Turning an undo...";
+		// Loop through the staps of the action.
+		for(auto& step_ptr : undos_[i]->steps()) {
+			if(const shroud_clearing_action* action = dynamic_cast<const shroud_clearing_action*>(step_ptr.get())) {
+				LOG_NG << "Turning an undo...";
 
-			// Clear the hexes this unit can see from each hex occupied during
-			// the action.
-			std::vector<map_location>::const_iterator step;
-			for (step = action->route.begin(); step != action->route.end(); ++step) {
-				// Clear the shroud, collecting new sighted events.
-				// (This can be made gradual by changing "true" to "false".)
-				if ( clearer.clear_unit(*step, tm, action->view_info, true) ) {
-					cleared_shroud = true;
+				// Clear the hexes this unit can see from each hex occupied during
+				// the action.
+				std::vector<map_location>::const_iterator step;
+				for(step = action->route.begin(); step != action->route.end(); ++step) {
+					// Clear the shroud, collecting new sighted events.
+					// (This can be made gradual by changing "true" to "false".)
+					if(clearer.clear_unit(*step, tm, action->view_info, true)) {
+						cleared_shroud = true;
+					}
 				}
 			}
 		}
