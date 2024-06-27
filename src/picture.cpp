@@ -134,7 +134,7 @@ template<typename T>
 std::optional<T> locator::copy_from_cache(cache_type<T>& cache) const
 {
 	const auto& elem = cache.get_element(val_);
-	return elem.loaded ? std::make_optional(elem.item) : std::nullopt;
+	return elem.loaded ? std::optional{elem.item} : std::nullopt;
 }
 
 template<typename T>
