@@ -20,7 +20,7 @@
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
-	return SDL_RectEquals(&a, &b) != SDL_FALSE;
+	return SDL_RectsEqual(&a, &b) != SDL_FALSE;
 }
 
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
@@ -36,12 +36,12 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& r)
 
 bool rect::operator==(const rect& r) const
 {
-	return SDL_RectEquals(this, &r) != SDL_FALSE;
+	return SDL_RectsEqual(this, &r) != SDL_FALSE;
 }
 
 bool rect::operator==(const SDL_Rect& r) const
 {
-	return SDL_RectEquals(this, &r) != SDL_FALSE;
+	return SDL_RectsEqual(this, &r) != SDL_FALSE;
 }
 
 bool rect::empty() const
@@ -71,26 +71,26 @@ bool rect::contains(const SDL_Rect& r) const
 
 bool rect::overlaps(const SDL_Rect& r) const
 {
-	return SDL_HasIntersection(this, &r);
+	return SDL_HasRectIntersection(this, &r);
 }
 
 rect rect::minimal_cover(const SDL_Rect& other) const
 {
 	rect result;
-	SDL_UnionRect(this, &other, &result);
+	SDL_GetRectUnion(this, &other, &result);
 	return result;
 }
 
 rect& rect::expand_to_cover(const SDL_Rect& other)
 {
-	SDL_UnionRect(this, &other, this);
+	SDL_GetRectUnion(this, &other, this);
 	return *this;
 }
 
 rect rect::intersect(const SDL_Rect& other) const
 {
 	rect result;
-	if(!SDL_IntersectRect(this, &other, &result)) {
+	if(!SDL_GetRectIntersection(this, &other, &result)) {
 		return rect();
 	}
 	return result;

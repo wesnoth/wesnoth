@@ -12,14 +12,12 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL_image.h>
-#include <stdlib.h>
+#include <SDL3/SDL.h>
 
-int main(int, char** argv)
+int main(int, char**)
 {
-    SDL_RWops *src = SDL_RWFromFile(argv[1], "rb");
-    if (src == NULL) {
-        exit(2);
-    }
-    exit(!IMG_isPNG(src));
+    SDL_Init(0);
+    SDL_Quit();
+
+    return 0;
 }

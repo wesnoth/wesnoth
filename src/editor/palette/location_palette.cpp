@@ -97,10 +97,10 @@ public:
 		state_t start_state = state_;
 
 		switch (e.type) {
-		case SDL_MOUSEBUTTONUP:
+		case SDL_EVENT_MOUSE_BUTTON_UP:
 			mouse_up(e.button);
 			break;
-		case SDL_MOUSEMOTION:
+		case SDL_EVENT_MOUSE_MOTION:
 			state_.mouseover = hit(e.motion.x, e.motion.y);
 			break;
 		default:

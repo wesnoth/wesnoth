@@ -35,8 +35,8 @@
 
 #include "lua/wrapper_lua.h"
 
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL3_image/SDL_image.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/predef.h>
@@ -77,7 +77,7 @@ std::string format_version(unsigned a, unsigned b, unsigned c)
 	return formatter() << a << '.' << b << '.' << c;
 }
 
-std::string format_version(const SDL_version& v)
+std::string format_version(const SDL_Version& v)
 {
 	return formatter() << static_cast<unsigned>(v.major) << '.'
 						<< static_cast<unsigned>(v.minor) << '.'
@@ -179,7 +179,7 @@ version_table_manager::version_table_manager()
 	, names(LIB_COUNT, "")
 	, features()
 {
-	SDL_version sdl_version;
+	SDL_Version sdl_version;
 
 	//
 	// SDL
@@ -200,7 +200,7 @@ version_table_manager::version_table_manager()
 	SDL_IMAGE_VERSION(&sdl_version);
 	compiled[LIB_SDL_IMAGE] = format_version(sdl_version);
 
-	const SDL_version* sdl_rt_version = IMG_Linked_Version();
+	const SDL_Version* sdl_rt_version = IMG_Linked_Version();
 	if(sdl_rt_version) {
 		linked[LIB_SDL_IMAGE] = format_version(*sdl_rt_version);
 	}
@@ -582,20 +582,11 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	const auto& current_driver = video::current_driver();
 	auto drivers = video::enumerate_drivers();
 
-	const auto& dpi = video::get_dpi();
-	std::string dpi_report;
-
-	dpi_report = dpi.first == 0.0f || dpi.second == 0.0f ?
-				 "<unknown>" :
-				 geometry_to_string(dpi.first, dpi.second);
-
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
 	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
 	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
-	fmt.insert("Screen dpi", dpi_report);
-
 	const auto& renderer_report = video::renderer_report();
 
 	for(const auto& info : renderer_report) {
@@ -621,18 +612,16 @@ list_formatter sound_settings_report_internal(const std::string& heading = "")
 
 	static std::map<uint16_t, std::string> audio_format_names = {
 		// 8 bits
-		{ AUDIO_U8,     "unsigned 8 bit" },
-		{ AUDIO_S8,     "signed 8 bit" },
+		{ SDL_AUDIO_U8,     "unsigned 8 bit" },
+		{ SDL_AUDIO_S8,     "signed 8 bit" },
 		// 16 bits
-		{ AUDIO_U16LSB, "unsigned 16 bit little-endian" },
-		{ AUDIO_U16MSB, "unsigned 16 bit big-endian" },
-		{ AUDIO_S16LSB, "signed 16 bit little-endian" },
-		{ AUDIO_S16MSB, "signed 16 bit big-endian" },
+		{ SDL_AUDIO_S16LE, "signed 16 bit little-endian" },
+		{ SDL_AUDIO_S16BE, "signed 16 bit big-endian" },
 		// 32 bits
-		{ AUDIO_S32LSB, "signed 32 bit little-endian" },
-		{ AUDIO_S32MSB, "signed 32 bit big-endian" },
-		{ AUDIO_F32LSB, "signed 32 bit floating point little-endian" },
-		{ AUDIO_F32MSB, "signed 32 bit floating point big-endian" },
+		{ SDL_AUDIO_S32LE, "signed 32 bit little-endian" },
+		{ SDL_AUDIO_S32BE, "signed 32 bit big-endian" },
+		{ SDL_AUDIO_F32LE, "signed 32 bit floating point little-endian" },
+		{ SDL_AUDIO_F32BE, "signed 32 bit floating point big-endian" },
 	};
 
 	auto fmt_names_it = audio_format_names.find(driver_status.format);

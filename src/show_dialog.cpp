@@ -66,10 +66,10 @@ dialog_manager::dialog_manager() : cursor::setter(cursor::NORMAL), reset_to(is_i
 dialog_manager::~dialog_manager()
 {
 	is_in_dialog = reset_to;
-	int mousex, mousey;
+	float mousex, mousey;
 	sdl::get_mouse_state(&mousex, &mousey);
 	SDL_Event pb_event;
-	pb_event.type = SDL_MOUSEMOTION;
+	pb_event.type = SDL_EVENT_MOUSE_MOTION;
 	pb_event.motion.state = 0;
 	pb_event.motion.x = mousex;
 	pb_event.motion.y = mousey;

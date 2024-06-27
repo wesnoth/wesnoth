@@ -587,11 +587,11 @@ void mp_staging::signal_handler_sdl_key_down(const event::ui_event /*event*/,
 
     #ifdef __APPLE__
         // Idiomatic modifier key in macOS computers.
-        const SDL_Keycode modifier_key = KMOD_GUI;
+        const SDL_Keycode modifier_key = SDL_KMOD_GUI;
     #else
         // Idiomatic modifier key in Microsoft desktop environments. Common in
         // GNU/Linux as well, to some extent.
-        const SDL_Keycode modifier_key = KMOD_CTRL;
+        const SDL_Keycode modifier_key = SDL_KMOD_CTRL;
     #endif
 
     if ((key == SDLK_g) && (modifier & modifier_key)) {

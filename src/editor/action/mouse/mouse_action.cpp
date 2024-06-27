@@ -102,7 +102,7 @@ std::unique_ptr<editor_action> mouse_action::key_event(
 		}
 		return nullptr;
 	}
-	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
+	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_EVENT_KEY_UP) {
 		return nullptr;
 	}
 	std::unique_ptr<editor_action> a;

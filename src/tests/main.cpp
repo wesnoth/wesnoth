@@ -30,7 +30,7 @@
 
 #include <fstream>
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #include "filesystem.hpp"
 #include "game_config.hpp"

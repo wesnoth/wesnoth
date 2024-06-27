@@ -12,14 +12,20 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL_image.h>
-#include <stdlib.h>
+#include <SDL3/SDL.h>
 
-int main(int, char** argv)
+#define STR(x) STR_(x)
+#define STR_(x) #x
+
+#if ! SDL_VERSION_ATLEAST(REQ_MAJOR, REQ_MINOR, REQ_PATCH)
+#pragma message "SDL version " STR(SDL_MAJOR_VERSION.SDL_MINOR_VERSION.SDL_PATCHLEVEL) " is older than required version " STR(REQ_MAJOR.REQ_MINOR.REQ_PATCH)
+#error SDL is too old!
+#endif
+
+int main(int, char**)
 {
-    SDL_RWops *src = SDL_RWFromFile(argv[1], "rb");
-    if (src == NULL) {
-        exit(2);
-    }
-    exit(!IMG_isWEBP(src));
+    SDL_Init(0);
+    SDL_Quit();
+
+    return 0;
 }
