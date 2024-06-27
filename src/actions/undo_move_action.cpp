@@ -123,8 +123,8 @@ bool move_action::undo(int)
 	u->anim_comp().set_standing();
 
 	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
-	execute_undo_umc_wml();
 	return true;
 }
+static auto reg_undo_move = undo_action_container::subaction_factory<move_action>();
 
 }

@@ -40,11 +40,11 @@ recall_action::recall_action(const unit_const_ptr recalled, const map_location& 
 	, recall_from(from)
 {}
 
-recall_action::recall_action(const config & cfg, const map_location & from)
-	: undo_action(cfg)
+recall_action::recall_action(const config & cfg)
+	: undo_action()
 	, shroud_clearing_action(cfg)
 	, id(cfg["id"])
-	, recall_from(from)
+	, recall_from(map_location(cfg.child_or_empty("leader"), nullptr))
 {}
 
 /**
@@ -98,8 +98,8 @@ bool recall_action::undo(int side)
 	resources::whiteboard->on_kill_unit();
 	un->anim_comp().clear_haloes();
 	this->return_village();
-	execute_undo_umc_wml();
 	return true;
 }
+static auto reg_undo_recall = undo_action_container::subaction_factory<recall_action>();
 
 }
