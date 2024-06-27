@@ -65,10 +65,7 @@ class editor_controller : public controller_base,
 		editor_controller& operator=(const editor_controller&) = delete;
 
 		/**
-		 * The constructor. A initial map context can be specified here, the controller
-		 * will assume ownership and delete the pointer during destruction, but changes
-		 * to the map can be retrieved between the main loop's end and the controller's
-		 * destruction.
+		 * The constructor.
 		 */
 		editor_controller(bool clear_id);
 

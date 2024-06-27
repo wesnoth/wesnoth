@@ -56,7 +56,7 @@
 
 namespace editor {
 
-static std::vector<std::string> saved_windows_;
+static std::vector<map_context> saved_contexts_;
 
 static const std::string get_menu_marker(const bool changed)
 {
@@ -833,27 +833,13 @@ void context_manager::fill_selection()
 	perform_refresh(editor_action_paint_area(get_map_context().map().selection(), get_selected_bg_terrain()));
 }
 
-void context_manager::save_all_maps(bool auto_save_windows)
+void context_manager::save_contexts()
 {
 	int current = current_context_index_;
-	saved_windows_.clear();
+	saved_contexts_.clear();
 	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
-		std::string save_path = get_map_context().get_filename();
-		if(auto_save_windows) {
-			if(save_path.empty() || filesystem::is_directory(save_path)) {
-				std::ostringstream s;
-				s << default_dir_ << "/";
-				if(!get_map_context().is_embedded() && !get_map_context().is_pure_map()) {
-					s << "scenarios/tmp_scenario_" << i + 1 << ".cfg";
-				} else {
-					s << "maps/tmp_map_" << i + 1 << ".map";
-				}
-				save_path = s.str();
-				get_map_context().set_filename(save_path);
-			}
-		}
-		saved_windows_.push_back(save_path);
+		saved_contexts_.push_back(std::move(get_map_context()));
 		save_map(false);
 	}
 
@@ -1063,18 +1049,19 @@ void context_manager::replace_map_context_with(context_ptr&& mc)
 
 void context_manager::create_default_context()
 {
-	if(saved_windows_.empty()) {
+	if(saved_contexts_.empty()) {
 		t_translation::terrain_code default_terrain =
 			t_translation::read_terrain_code(game_config::default_terrain);
 
 		const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 		add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
 	} else {
-		for(const std::string& filename : saved_windows_) {
-			add_map_context(game_config_, filename, current_addon_);
+
+		for(auto& save_context : saved_contexts_) {
+			add_map_context_of(std::make_unique<map_context>(std::move(save_context)));
 		}
 
-		saved_windows_.clear();
+		saved_contexts_.clear();
 	}
 }
 

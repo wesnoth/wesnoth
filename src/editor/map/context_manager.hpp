@@ -75,12 +75,12 @@ public:
 	 */
 	void perform_refresh(const editor_action& action, bool drag_part = false);
 
-	/**
-	 * Save all maps, open dialog if not named yet, except when using
-	 * auto_save_windows which will name unnamed maps "windows_N".
-	 * Also record all filenames for future reopening.
-	 */
-	void save_all_maps(bool auto_save_windows = false);
+
+	/** Save all open map_contexts to memory */
+	void save_contexts();
+
+	/** Save all maps, show save dialogs for unsaved ones */
+	void save_all_maps() {};
 
 	/** Save the map, open dialog if not named yet. */
 	void save_map(bool show_confirmation = true);

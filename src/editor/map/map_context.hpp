@@ -62,8 +62,8 @@ struct editor_team_info {
 class map_context : public display_context
 {
 public:
-	map_context(const map_context&) = delete;
-	map_context& operator=(const map_context&) = delete;
+	// Move constructor
+	map_context(const map_context&&);
 
 	/**
 	 * Create a map context from an existing map. The filename is set to be
@@ -447,7 +447,7 @@ protected:
 	void perform_action_between_stacks(action_stack& from, action_stack& to);
 
 	/**
-	 * The undo stack. A double-ended queues due to the need to add items to one end,
+	 * The undo stack. A double-ended queue due to the need to add items to one end,
 	 * and remove from both when performing the undo or when trimming the size. This container owns
 	 * all contents, i.e. no action in the stack shall be deleted, and unless otherwise noted the contents
 	 * could be deleted at an time during normal operation of the stack. To work on an action, either

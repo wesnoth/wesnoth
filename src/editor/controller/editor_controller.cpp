@@ -813,7 +813,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			quit_confirmation::quit_to_desktop();
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
-			context_manager_->save_all_maps(true);
+			context_manager_->save_contexts();
 			do_quit_ = true;
 			quit_mode_ = EXIT_RELOAD_DATA;
 			return true;
