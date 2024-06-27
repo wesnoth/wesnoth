@@ -32,7 +32,7 @@ class synced_command {
 		/*
 			returns: true if the action succeeded correctly,
 		*/
-		typedef bool (*handler)(const config &, bool use_undo, bool show, error_handler_function error_handler);
+		typedef bool (*handler)(const config &, bool show, error_handler_function error_handler);
 		typedef std::map<std::string, handler> map;
 
 
@@ -47,7 +47,7 @@ class synced_command {
 	but if you have a good reason feel free to do so.
 */
 
-#define SYNCED_COMMAND_HANDLER_FUNCTION(pname, pcfg, use_undo, show, error_handler) \
-	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler ); \
+#define SYNCED_COMMAND_HANDLER_FUNCTION(pname, pcfg, show, error_handler) \
+	static bool synced_command_func_##pname(const config & pcfg, bool show, synced_command::error_handler_function error_handler ); \
 	static synced_command synced_command_action_##pname(#pname, &synced_command_func_##pname);  \
-	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+	static bool synced_command_func_##pname(const config & pcfg, bool show, synced_command::error_handler_function error_handler)
