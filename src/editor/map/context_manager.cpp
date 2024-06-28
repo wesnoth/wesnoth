@@ -56,7 +56,7 @@
 
 namespace editor {
 
-static std::vector<map_context> saved_contexts_;
+static std::vector<context_ptr> saved_contexts_;
 static int last_context_ = 0;
 
 static const std::string get_menu_marker(const bool changed)
@@ -846,14 +846,15 @@ void context_manager::save_all_maps()
 
 void context_manager::save_contexts()
 {
-	int current = current_context_index_;
-	saved_contexts_.clear();
-	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
-		switch_context(i);
-		saved_contexts_.push_back(std::move(get_map_context()));
-	}
+//	saved_contexts_.clear();
+//	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
+//		switch_context(i);
+//		saved_contexts_.push_back(std::make_unique<map_context>(std::move(get_map_context())));
+//	}
+	saved_contexts_.swap(map_contexts_);
 	last_context_ = current_context_index_;
-	switch_context(current);
+	create_blank_context();
+	switch_context(0);
 }
 
 void context_manager::save_map(bool show_confirmation)
@@ -1060,21 +1061,21 @@ void context_manager::replace_map_context_with(context_ptr&& mc)
 void context_manager::create_default_context()
 {
 	if(saved_contexts_.empty()) {
-		t_translation::terrain_code default_terrain =
-			t_translation::read_terrain_code(game_config::default_terrain);
-
-		const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-		add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
+		create_blank_context();
 		switch_context(0, true);
 	} else {
-
-		for(auto& save_context : saved_contexts_) {
-			add_map_context_of(std::make_unique<map_context>(std::move(save_context)));
-		}
-
-		saved_contexts_.clear();
+		saved_contexts_.swap(map_contexts_);
 		switch_context(last_context_, true);
 	}
+}
+
+void context_manager::create_blank_context()
+{
+	t_translation::terrain_code default_terrain =
+			t_translation::read_terrain_code(game_config::default_terrain);
+
+	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
+	add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
 }
 
 void context_manager::close_current_context()

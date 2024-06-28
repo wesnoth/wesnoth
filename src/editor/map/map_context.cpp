@@ -91,52 +91,6 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 {
 }
 
-map_context::map_context(map_context&& ctxt)
-	: filename_(ctxt.filename_)
-	, map_data_key_(ctxt.map_data_key_)
-	, embedded_(ctxt.embedded_)
-	, pure_map_(ctxt.pure_map_)
-	, map_(ctxt.map_)
-	, undo_stack_()
-	, redo_stack_()
-	, actions_since_save_(ctxt.actions_since_save_)
-	, starting_position_label_locs_(ctxt.starting_position_label_locs_)
-	, needs_reload_(ctxt.needs_reload_)
-	, needs_terrain_rebuild_(ctxt.needs_terrain_rebuild_)
-	, needs_labels_reset_(ctxt.needs_labels_reset_)
-	, changed_locations_(ctxt.changed_locations_)
-	, everything_changed_(ctxt.everything_changed_)
-	, addon_id_(ctxt.addon_id_)
-	, previous_cfg_(ctxt.previous_cfg_)
-	, scenario_id_(ctxt.scenario_id_)
-	, scenario_name_(ctxt.scenario_name_)
-	, scenario_description_(ctxt.scenario_description_)
-	, xp_mod_(ctxt.xp_mod_)
-	, victory_defeated_(ctxt.victory_defeated_)
-	, random_time_(ctxt.random_time_)
-	, active_area_(ctxt.active_area_)
-	, labels_(ctxt.labels_)
-	, units_(ctxt.units_)
-	, teams_(ctxt.teams_)
-	, tod_manager_(new tod_manager(ctxt.tod_manager_->to_config()))
-	, mp_settings_(ctxt.mp_settings_)
-	, game_classification_(ctxt.game_classification_)
-	, music_tracks_(ctxt.music_tracks_)
-{
-	for(auto& a : ctxt.undo_stack_) {
-		undo_stack_.push_back(a->clone());
-		a.reset();
-	}
-
-	for(auto& a : ctxt.redo_stack_) {
-		redo_stack_.push_back(a->clone());
-		a.reset();
-	}
-
-	ctxt.undo_stack_.clear();
-	ctxt.redo_stack_.clear();
-}
-
 static std::string get_map_location(const std::string& file_contents, const std::string& attr)
 {
 	std::size_t attr_name_start = file_contents.find(attr);

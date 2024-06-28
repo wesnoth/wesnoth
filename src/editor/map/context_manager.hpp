@@ -25,11 +25,11 @@ class game_config_view;
 
 namespace editor
 {
+using context_ptr = std::unique_ptr<map_context>;
 
 class context_manager : public filter_context
 {
 public:
-	using context_ptr = std::unique_ptr<map_context>;
 
 	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
 	~context_manager();
@@ -241,9 +241,11 @@ private:
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
-	 * Except when we saved windows, in which case reopen them
+	 * When we have saved contexts, reopen them instead.
 	 */
 	void create_default_context();
+
+	void create_blank_context();
 
 	/** Performs the necessary housekeeping necessary when switching contexts. */
 	void refresh_on_context_change();

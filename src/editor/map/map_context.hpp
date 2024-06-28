@@ -62,9 +62,6 @@ struct editor_team_info {
 class map_context : public display_context
 {
 public:
-	// Move constructor
-	map_context(map_context&&);
-
 	/**
 	 * Create a map context from an existing map. The filename is set to be
 	 * empty, indicating a new map.
