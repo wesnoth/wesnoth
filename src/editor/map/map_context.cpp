@@ -91,7 +91,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 {
 }
 
-map_context::map_context(const map_context&& ctxt)
+map_context::map_context(map_context&& ctxt)
 	: filename_(ctxt.filename_)
 	, map_data_key_(ctxt.map_data_key_)
 	, embedded_(ctxt.embedded_)
@@ -123,15 +123,18 @@ map_context::map_context(const map_context&& ctxt)
 	, game_classification_(ctxt.game_classification_)
 	, music_tracks_(ctxt.music_tracks_)
 {
-	for (size_t i = 0; i < ctxt.undo_stack_.size(); i++) {
-		undo_stack_.push_back(std::move(undo_stack_.front()));
-		undo_stack_.pop_front();
+	for(auto& a : ctxt.undo_stack_) {
+		undo_stack_.push_back(a->clone());
+		a.reset();
 	}
 
-	for (size_t i = 0; i < ctxt.redo_stack_.size(); i++) {
-		redo_stack_.push_back(std::move(redo_stack_.front()));
-		redo_stack_.pop_front();
+	for(auto& a : ctxt.redo_stack_) {
+		redo_stack_.push_back(a->clone());
+		a.reset();
 	}
+
+	ctxt.undo_stack_.clear();
+	ctxt.redo_stack_.clear();
 }
 
 static std::string get_map_location(const std::string& file_contents, const std::string& attr)

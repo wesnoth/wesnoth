@@ -57,6 +57,7 @@
 namespace editor {
 
 static std::vector<map_context> saved_contexts_;
+static int last_context_ = 0;
 
 static const std::string get_menu_marker(const bool changed)
 {
@@ -833,6 +834,16 @@ void context_manager::fill_selection()
 	perform_refresh(editor_action_paint_area(get_map_context().map().selection(), get_selected_bg_terrain()));
 }
 
+void context_manager::save_all_maps()
+{
+	int current = current_context_index_;
+	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
+		switch_context(i);
+		save_map();
+	}
+	switch_context(current);
+}
+
 void context_manager::save_contexts()
 {
 	int current = current_context_index_;
@@ -840,9 +851,8 @@ void context_manager::save_contexts()
 	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
 		saved_contexts_.push_back(std::move(get_map_context()));
-		save_map(false);
 	}
-
+	last_context_ = current_context_index_;
 	switch_context(current);
 }
 
@@ -1055,6 +1065,7 @@ void context_manager::create_default_context()
 
 		const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 		add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
+		switch_context(0, true);
 	} else {
 
 		for(auto& save_context : saved_contexts_) {
@@ -1062,6 +1073,7 @@ void context_manager::create_default_context()
 		}
 
 		saved_contexts_.clear();
+		switch_context(last_context_, true);
 	}
 }
 

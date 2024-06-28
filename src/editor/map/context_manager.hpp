@@ -80,7 +80,7 @@ public:
 	void save_contexts();
 
 	/** Save all maps, show save dialogs for unsaved ones */
-	void save_all_maps() {};
+	void save_all_maps();
 
 	/** Save the map, open dialog if not named yet. */
 	void save_map(bool show_confirmation = true);

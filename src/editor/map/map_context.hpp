@@ -63,7 +63,7 @@ class map_context : public display_context
 {
 public:
 	// Move constructor
-	map_context(const map_context&&);
+	map_context(map_context&&);
 
 	/**
 	 * Create a map context from an existing map. The filename is set to be
