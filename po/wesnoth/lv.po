@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-06-09 22:42-0500\n"
+"POT-Creation-Date: 2024-06-28 22:34-0500\n"
 "PO-Revision-Date: 2015-08-08 13:56+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -643,17 +643,17 @@ msgid "Ukrainian Translation"
 msgstr "Tulkojums ukraiņu valodā"
 
 #. [about]
-#: data/core/about_i18n.cfg:1890
+#: data/core/about_i18n.cfg:1908
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tulkojums valensiešu valodā (Katalānas dienvidu)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1903
+#: data/core/about_i18n.cfg:1921
 msgid "Vietnamese Translation"
 msgstr "Tulkojums vjetnamiešu valodā"
 
 #. [about]
-#: data/core/about_i18n.cfg:1922
+#: data/core/about_i18n.cfg:1940
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -661,7 +661,7 @@ msgstr "Tulkojums poļu valodā"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1931
+#: data/core/about_i18n.cfg:1949
 msgid "RACV’s Translation"
 msgstr "RACVa tulkojums"
 
@@ -7865,8 +7865,8 @@ msgstr "$name ir pārņēmis kontroli"
 msgid "Turn changed"
 msgstr "Gājiens mainīts"
 
-#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
-#: src/network_download_file.cpp:87
+#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
+#: src/network_download_file.cpp:91
 #, fuzzy
 #| msgid ""
 #| "An error occurred while downloading the add-ons list from the server."
@@ -7875,28 +7875,28 @@ msgid ""
 "information."
 msgstr "Ielādējot papildinājumu ieviesās kļūda."
 
-#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
-#: src/network_download_file.cpp:87
+#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
+#: src/network_download_file.cpp:91
 #, fuzzy
 #| msgid "Downloads"
 msgid "Download error"
 msgstr "Lejupielādes"
 
-#: src/network_download_file.cpp:68
+#: src/network_download_file.cpp:72
 msgid "Confirm overwrite"
 msgstr ""
 
-#: src/network_download_file.cpp:68
+#: src/network_download_file.cpp:72
 msgid "Overwrite existing file?"
 msgstr ""
 
-#: src/network_download_file.cpp:81
+#: src/network_download_file.cpp:85
 #, fuzzy
 #| msgid "Downloads"
 msgid "Download complete"
 msgstr "Lejupielādes"
 
-#: src/network_download_file.cpp:81
+#: src/network_download_file.cpp:85
 #, fuzzy
 #| msgid "The game has been saved."
 msgid "The file has been downloaded."
