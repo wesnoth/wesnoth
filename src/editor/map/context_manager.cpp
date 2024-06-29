@@ -55,21 +55,23 @@
 #include <boost/filesystem.hpp>
 
 namespace {
-	std::vector<std::unique_ptr<editor::map_context>> saved_contexts_;
-	int last_context_ = 0;
 
-	const std::string get_menu_marker(const bool changed)
-	{
-		std::ostringstream ss;
-		ss << "[<span ";
+std::vector<std::unique_ptr<editor::map_context>> saved_contexts_;
+int last_context_ = 0;
 
-		if(changed) {
-			ss << "color='#f00' ";
-		}
+const std::string get_menu_marker(const bool changed)
+{
+	std::ostringstream ss;
+	ss << "[<span ";
 
-		ss << ">" << font::unicode_bullet << "</span>]";
-		return ss.str();
+	if(changed) {
+		ss << "color='#f00' ";
 	}
+
+	ss << ">" << font::unicode_bullet << "</span>]";
+	return ss.str();
+}
+
 }
 
 namespace editor {
@@ -265,7 +267,7 @@ void context_manager::change_addon_id()
 
 		current_addon_ = new_addon_id;
 
-		for(context_ptr& context : map_contexts_) {
+		for(std::unique_ptr<map_context>& context : map_contexts_) {
 			context->set_addon_id(current_addon_);
 		}
 	}
@@ -949,7 +951,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
-			context_ptr mc(new map_context(game_config_, filename, current_addon_));
+			std::unique_ptr<map_context> mc(std::make_unique<map_context>(game_config_, filename, current_addon_));
 			if(mc->get_filename() != filename) {
 				if(new_context && check_switch_open_map(mc->get_filename())) {
 					return;
@@ -1032,11 +1034,11 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 template<typename... T>
 int context_manager::add_map_context(const T&... args)
 {
-	map_contexts_.emplace_back(new map_context(args...));
+	map_contexts_.emplace_back(std::make_unique<map_context>(args...));
 	return map_contexts_.size() - 1;
 }
 
-int context_manager::add_map_context_of(context_ptr&& mc)
+int context_manager::add_map_context_of(std::unique_ptr<map_context>&& mc)
 {
 	map_contexts_.emplace_back(std::move(mc));
 	return map_contexts_.size() - 1;
@@ -1045,11 +1047,11 @@ int context_manager::add_map_context_of(context_ptr&& mc)
 template<typename... T>
 void context_manager::replace_map_context(const T&... args)
 {
-	context_ptr new_mc(new map_context(args...));
+	std::unique_ptr<map_context> new_mc(std::make_unique<map_context>(args...));
 	replace_map_context_with(std::move(new_mc));
 }
 
-void context_manager::replace_map_context_with(context_ptr&& mc)
+void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
 {
 	map_contexts_[current_context_index_].swap(mc);
 	refresh_on_context_change();

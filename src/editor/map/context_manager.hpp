@@ -29,8 +29,6 @@ namespace editor
 class context_manager : public filter_context
 {
 public:
-	using context_ptr = std::unique_ptr<map_context>;
-
 	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
 	~context_manager();
 
@@ -229,7 +227,7 @@ private:
 	template<typename... T>
 	int add_map_context(const T&... args);
 
-	int add_map_context_of(context_ptr&& mc);
+	int add_map_context_of(std::unique_ptr<map_context>&& mc);
 
 	/**
 	 * Replace the current map context and refresh accordingly
@@ -237,7 +235,7 @@ private:
 	template<typename... T>
 	void replace_map_context(const T&... args);
 
-	void replace_map_context_with(context_ptr&& mc);
+	void replace_map_context_with(std::unique_ptr<map_context>&& mc);
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
@@ -337,7 +335,7 @@ private:
 	int auto_update_transitions_;
 
 	/** The currently opened map context object */
-	std::vector<context_ptr> map_contexts_;
+	std::vector<std::unique_ptr<map_context>> map_contexts_;
 
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;
