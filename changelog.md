@@ -1,16 +1,6 @@
-## Version 1.18.1+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.18.2
  ### Translations
    * Updated translations: Chinese (Simplified), French, Ukrainian
- ### Units
- ### User interface
  ### WML Engine
    * Fixed out of sync errors due to bad undo/redo handling.
  ### Miscellaneous and Bug Fixes
