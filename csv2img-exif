@@ -50,7 +50,7 @@ def write_exif(target,date_value,copyright_value,artist_value,usercomment_value)
     return str(check_output(["exiftool", "-overwrite_original", "-all=", "-ModifyDate=now", "-CreateDate=%s" % date_value, "-Copyright=%s" % copyright_value, "-Artist=%s" % artist_value, "-UserComment=%s" % usercomment_value, target]), 'UTF-8')
 
 def fix_webp(target):
-    return str(check_output(["cwebp", "-quiet", "-q", "100", target, "-o", target]), 'UTF-8')
+    return str(check_output(["cwebp", "-quiet", "mt", "-z", "9", "-metadata", "exif", target, "-o", target]), 'UTF-8')
 
 
 ##
@@ -121,7 +121,6 @@ for root, _, files in os.walk(options.repo):
                 unchanged.append(csv_data[file])
                 write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])
 
-        # exiftool doesn't fully support WEBP-RIFF yet (v12.87), and adding Exif data to a WEBP that's missing the alpha subchunk causes issues
         elif filetype == ".webp":
             file = os.path.normpath(os.path.join(root, filename))
 
@@ -138,8 +137,8 @@ for root, _, files in os.walk(options.repo):
                 incomplete.append(csv_data[file])
             else:
                 unchanged.append(csv_data[file])
-                fix_webp(file)
                 write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])
+                fix_webp(file)
 
 # output reports
 final_output = added + missing_fields + extra_fields + incomplete + unchanged
