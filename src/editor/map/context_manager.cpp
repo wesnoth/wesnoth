@@ -851,9 +851,9 @@ void context_manager::save_all_maps()
 void context_manager::save_contexts()
 {
 	saved_contexts_.swap(map_contexts_);
-	last_context_ = current_context_index_;
+	std::swap(last_context_, current_context_index_);
 	create_blank_context();
-	switch_context(0);
+	switch_context(0, true);
 }
 
 void context_manager::save_map(bool show_confirmation)
@@ -1064,6 +1064,7 @@ void context_manager::create_default_context()
 	} else {
 		saved_contexts_.swap(map_contexts_);
 		switch_context(last_context_, true);
+		last_context_ = 0;
 	}
 }
 
