@@ -12,8 +12,10 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Fixed out of sync errors due to bad undo/redo handling.
  ### Miscellaneous and Bug Fixes
    * Server-side fix for the "Something is wrong with the addon version check database supporting the multiplayer lobby." error (issue #8805)
+   * Potential fix for log files not being written on Windows.
 
 ## Version 1.18.1
  ### Campaigns
