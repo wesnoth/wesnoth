@@ -331,8 +331,7 @@ void custom_tod::update_selected_tod_info()
 
 void custom_tod::copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data)
 {
-	std::string type = data.first;
-	tod_attribute_getter getter = data.second;
+	auto& [type, getter] = data;
 	button& copy_w = find_widget<button>(get_window(), "copy_" + type, false);
 	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
 	copy_w.set_success(true);

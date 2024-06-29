@@ -25,11 +25,11 @@ class game_config_view;
 
 namespace editor
 {
-using context_ptr = std::unique_ptr<map_context>;
 
 class context_manager : public filter_context
 {
 public:
+	using context_ptr = std::unique_ptr<map_context>;
 
 	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
 	~context_manager();

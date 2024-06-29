@@ -62,6 +62,9 @@ struct editor_team_info {
 class map_context : public display_context
 {
 public:
+	map_context(const map_context&) = delete;
+	map_context& operator=(const map_context&) = delete;
+
 	/**
 	 * Create a map context from an existing map. The filename is set to be
 	 * empty, indicating a new map.

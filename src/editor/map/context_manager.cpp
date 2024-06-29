@@ -54,23 +54,25 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 
-namespace editor {
+namespace {
+	std::vector<std::unique_ptr<editor::map_context>> saved_contexts_;
+	int last_context_ = 0;
 
-static std::vector<context_ptr> saved_contexts_;
-static int last_context_ = 0;
+	const std::string get_menu_marker(const bool changed)
+	{
+		std::ostringstream ss;
+		ss << "[<span ";
 
-static const std::string get_menu_marker(const bool changed)
-{
-	std::ostringstream ss;
-	ss << "[<span ";
+		if(changed) {
+			ss << "color='#f00' ";
+		}
 
-	if(changed) {
-		ss << "color='#f00' ";
+		ss << ">" << font::unicode_bullet << "</span>]";
+		return ss.str();
 	}
-
-	ss << ">" << font::unicode_bullet << "</span>]";
-	return ss.str();
 }
+
+namespace editor {
 
 context_manager::context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id)
 	: locs_(nullptr)
@@ -846,11 +848,6 @@ void context_manager::save_all_maps()
 
 void context_manager::save_contexts()
 {
-//	saved_contexts_.clear();
-//	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
-//		switch_context(i);
-//		saved_contexts_.push_back(std::make_unique<map_context>(std::move(get_map_context())));
-//	}
 	saved_contexts_.swap(map_contexts_);
 	last_context_ = current_context_index_;
 	create_blank_context();
