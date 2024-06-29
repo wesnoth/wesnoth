@@ -951,7 +951,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
-			std::unique_ptr<map_context> mc(std::make_unique<map_context>(game_config_, filename, current_addon_));
+			auto mc = std::make_unique<map_context>(game_config_, filename, current_addon_);
 			if(mc->get_filename() != filename) {
 				if(new_context && check_switch_open_map(mc->get_filename())) {
 					return;
@@ -1047,8 +1047,7 @@ int context_manager::add_map_context_of(std::unique_ptr<map_context>&& mc)
 template<typename... T>
 void context_manager::replace_map_context(const T&... args)
 {
-	std::unique_ptr<map_context> new_mc(std::make_unique<map_context>(args...));
-	replace_map_context_with(std::move(new_mc));
+	replace_map_context_with(std::move(std::make_unique<map_context>(args...)));
 }
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
