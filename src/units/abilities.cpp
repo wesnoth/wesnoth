@@ -1165,13 +1165,21 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
-static std::string select_replacement_type(const unit_ability_list& damage_type_list)
+std::string attack_type::select_replacement_type(const unit_ability_list& damage_type_list) const
 {
 	std::map<std::string, unsigned int> type_count;
 	unsigned int max = 0;
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
-		if(c.has_attribute("replacement_type")) {
+		if(c.has_attribute("type") && (c["mode"].empty() || c["mode"] == "replace" )) {
+			std::string type = c["type"].str();
+			unsigned int count = ++type_count[type];
+			if((count > max)) {
+				max = count;
+			}
+		}
+		else if(c.has_attribute("replacement_type")) {
+			deprecated_message("replacement_type= in weapon special [damage_type]", DEP_LEVEL::PREEMPTIVE, {1, 19, 2}, "Please use type= with mode=replace by default");
 			std::string type = c["replacement_type"].str();
 			unsigned int count = ++type_count[type];
 			if((count > max)) {
@@ -1194,17 +1202,27 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 	return type_list.front();
 }
 
-static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
+std::string attack_type::select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list) const
 {
 	std::map<std::string, int> type_res;
 	int max_res = std::numeric_limits<int>::min();
-	for(auto& i : damage_type_list) {
-		const config& c = *i.ability_cfg;
-		if(c.has_attribute("alternative_type")) {
-			std::string type = c["alternative_type"].str();
-			if(type_res.count(type) == 0){
-				type_res[type] = u.resistance_value(resistance_list, type);
-				max_res = std::max(max_res, type_res[type]);
+	if(other_){
+		for(auto& i : damage_type_list) {
+			const config& c = *i.ability_cfg;
+			if(c.has_attribute("type") && c["mode"] == "append" ) {
+				std::string type = c["type"].str();
+				if(type_res.count(type) == 0){
+					type_res[type] = (*other_).resistance_value(resistance_list, type);
+					max_res = std::max(max_res, type_res[type]);
+				}
+			}
+			else if(c.has_attribute("alternative_type")) {
+				deprecated_message("alternative_type= in weapon special [damage_type]", DEP_LEVEL::PREEMPTIVE, {1, 19, 2}, "Please use type= with mode=append specified");
+				std::string type = c["alternative_type"].str();
+				if(type_res.count(type) == 0){
+					type_res[type] = (*other_).resistance_value(resistance_list, type);
+					max_res = std::max(max_res, type_res[type]);
+				}
 			}
 		}
 	}
@@ -1220,17 +1238,6 @@ static std::string select_alternative_type(const unit_ability_list& damage_type_
 	if(type_list.empty()) return "";
 
 	return type_list.front();
-}
-
-std::string attack_type::select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const
-{
-	bool is_alternative = (key_name == "alternative_type");
-	if(is_alternative && other_){
-		return select_alternative_type(damage_type_list, resistance_list, (*other_));
-	} else if(!is_alternative){
-		return select_replacement_type(damage_type_list);
-	}
-	return "";
 }
 
 /**
@@ -1250,8 +1257,8 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 	if(other_){
 		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
 	}
-	std::string replacement_type = select_damage_type(damage_type_list, "replacement_type", resistance_list);
-	std::string alternative_type = select_damage_type(damage_type_list, "alternative_type", resistance_list);
+	std::string replacement_type = select_replacement_type(damage_type_list);
+	std::string alternative_type = select_alternative_type(damage_type_list, resistance_list);
 	std::string type_damage = replacement_type.empty() ? type() : replacement_type;
 	if(!alternative_type.empty() && type_damage != alternative_type){
 		return {type_damage, alternative_type};
@@ -1268,7 +1275,10 @@ std::set<std::string> attack_type::alternative_damage_types() const
 	std::set<std::string> damage_types;
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
-		if(c.has_attribute("alternative_type")){
+		if(c.has_attribute("type") && c["mode"] == "append" ){
+			damage_types.insert(c["type"].str());
+		}
+		else if(c.has_attribute("alternative_type")){
 			damage_types.insert(c["alternative_type"].str());
 		}
 	}

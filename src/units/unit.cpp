@@ -1868,13 +1868,12 @@ int unit::resistance_against(const std::string& damage_name, bool attacker, cons
 		if(damage_type_list.empty()){
 			return resistance_value(resistance_list, damage_name);
 		}
-		std::string replacement_type = opp_weapon->select_damage_type(damage_type_list, "replacement_type", resistance_list);
+		std::string replacement_type = opp_weapon->select_replacement_type(damage_type_list);
+		std::string alternative_type = opp_weapon->select_alternative_type(damage_type_list, resistance_list);
 		std::string type_damage = replacement_type.empty() ? damage_name : replacement_type;
 		int max_res = resistance_value(resistance_list, type_damage);
-		for(auto& i : damage_type_list) {
-			if((*i.ability_cfg).has_attribute("alternative_type")){
-				max_res = std::max(max_res , resistance_value(resistance_list, (*i.ability_cfg)["alternative_type"].str()));
-			}
+		if(!alternative_type.empty() && alternative_type != type_damage){
+			max_res = std::max(max_res , resistance_value(resistance_list, alternative_type));
 		}
 		return max_res;
 	}

@@ -88,13 +88,18 @@ public:
 	                      unsigned & max_attacks) const;
 
 	/**
-	 * Select best damage type based on frequency count for replacement_type and based on highest damage for alternative_type.
+	 * Select best damage type based on frequency count for replacement_type or type with mode=replace(value by default).
 	 *
 	 * @param damage_type_list list of [damage_type] to check.
-	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
+	 */
+	std::string select_replacement_type(const unit_ability_list& damage_type_list) const;
+	/**
+	 * Select best damage type based on highest damage for alternative_type or type with mode=append.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
 	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
 	 */
-	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const;
+	std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list) const;
 	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
 	std::pair<std::string, std::string> damage_type() const;
 	/** @return A list of alternative_type damage types. */
