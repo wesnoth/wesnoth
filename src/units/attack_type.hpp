@@ -137,7 +137,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter) const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -150,6 +150,50 @@ public:
 	inline config to_config() const { config c; write(c); return c; }
 
 	void add_formula_context(wfl::map_formula_callable&) const;
+
+	//used in self infinite recursion case for prevent crash.
+	const std::string& check_tag_name() const {return check_tag_name_;}
+	//used for reinitialise variable of recursion after each cheking.
+	void update_check_tag_name(const std::string& tag_name = "") const {check_tag_name_ = tag_name;}
+	/**
+	 * Helper similar to std::unique_lock for detecting when calculations such as has_special
+	 * have entered infinite recursion.
+	 */
+	class recursion_guard {
+		friend class attack_type;
+		/**
+		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
+		 */
+		explicit recursion_guard(const attack_type& weapon);
+	public:
+		/**
+		 * Construct an empty instance, only useful for extending the lifetime of a
+		 * recursion_guard returned from weapon.update_variables_recursion() by
+		 * std::moving it to an instance declared in a larger scope.
+		 */
+		explicit recursion_guard();
+
+		/**
+		 * Returns true if the .
+		 */
+		operator bool() const;
+
+		recursion_guard(recursion_guard&& other);
+		recursion_guard(const recursion_guard& other) = delete;
+		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(const recursion_guard&) = delete;
+		~recursion_guard();
+	private:
+		std::shared_ptr<const attack_type> parent;
+	};
+
+	/**
+	 * Tests which might otherwise cause infinite recursion should call this, check that the
+	 * returned object evaluates to true, and then keep the object returned as long as the
+	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
+	 * reentrances.
+	 */
+	recursion_guard update_variables_recursion() const;
 private:
 	// In unit_abilities.cpp:
 
@@ -356,6 +400,11 @@ private:
 	int parry_;
 	config specials_;
 	bool changed_;
+	mutable std::string check_tag_name_ = "";
+	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
+	mutable unsigned int num_recursion_ = 0;
+	/** Value of num_recursion_ at which allocations of further recursion_guards fail */
+	static constexpr unsigned int RECURSION_LIMIT = 4;
 };
 
 using attack_list = std::vector<attack_ptr>;
