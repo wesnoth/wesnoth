@@ -53,33 +53,21 @@ public:
 	 *
 	 * @return              True if the action was successful.
 	 */
-	static bool run(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run(
+		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
 
-	static bool run_and_store(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_and_store(
+		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
 
-	static bool run_and_throw(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_and_throw(
+		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
 
 	/**
 	 * Checks whether we are currently running in a synced context, and if not we enters it.
 	 * This is never called from so_replay_handle.
 	 */
-	static bool run_in_synced_context_if_not_already(const std::string& commandname,
-		const config& data,
-		bool use_undo = true,
-		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_in_synced_context_if_not_already(
+		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
 
 	/**
 	 * @return Whether we are currently executing a synced action like recruit, start, recall, disband, movement,
@@ -126,14 +114,8 @@ public:
 	 */
 	static void send_user_choice();
 
-	/** A function to be passed to run_in_synced_context to assert false on error (the default). */
-	static void default_error_function(const std::string& message);
-
-	/** A function to be passed to run_in_synced_context to log the error. */
-	static void just_log_error_function(const std::string& message);
-
-	/** A function to be passed to run_in_synced_context to ignore the error. */
-	static void ignore_error_function(const std::string& message);
+	/** An object to be passed to run_in_synced_context to assert false on error (the default). */
+	static action_spectator& get_default_spectator();
 
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
