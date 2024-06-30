@@ -209,6 +209,7 @@ public:
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_; }
+	bool is_skipping_actions() const;
 	void toggle_skipping_replay();
 	void do_autosave();
 
