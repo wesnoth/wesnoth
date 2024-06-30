@@ -1313,6 +1313,11 @@ void play_controller::toggle_skipping_replay()
 	}
 }
 
+bool play_controller::is_skipping_actions() const
+{
+	return is_skipping_replay() || (prefs::get().skip_ai_moves() && current_team().is_ai() && !is_replay());
+}
+
 bool play_controller::is_during_turn() const
 {
 	return gamestate().in_phase(game_data::TURN_PLAYING);

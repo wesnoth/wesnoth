@@ -446,8 +446,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	if(!pc_.get_whiteboard()
 			|| !pc_.get_whiteboard()->save_recall(*recall_list_team[res].get(), side_num, recall_location)) {
 		bool success = synced_context::run_and_throw("recall",
-				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from), true, true,
-				synced_context::ignore_error_function);
+				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from));
 
 		if(!success) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.";

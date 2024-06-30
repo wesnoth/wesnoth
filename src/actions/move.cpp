@@ -1250,6 +1250,7 @@ namespace { // Private helpers for move_unit()
 static std::size_t move_unit_internal(undo_list* undo_stack,
 	bool show_move, bool* interrupted, unit_mover& mover)
 {
+	show_move = show_move && !resources::controller->is_skipping_actions();
 	const events::command_disabler disable_commands;
 	// Default return value.
 	if (interrupted) {
