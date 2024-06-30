@@ -1,3 +1,18 @@
+## Version 1.16.12+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.16.12
  ### Security Fixes
    * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
