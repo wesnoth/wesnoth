@@ -689,11 +689,6 @@ bool replay::add_start_if_not_there_yet()
 	}
 }
 
-static void show_oos_error_error_function(const std::string& message)
-{
-	replay::process_error(message);
-}
-
 REPLAY_ACTION_TYPE get_replay_action_type(const config& command)
 {
 	if(command.all_children_count() != 1) {
@@ -912,7 +907,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
-				synced_context::run(commandname, data, true, !resources::controller->is_skipping_replay(), show_oos_error_error_function);
+				auto spectator = action_spectator([](const std::string& message) { replay::process_error(message); });
+				synced_context::run(commandname, data, spectator);
 				if(resources::controller->is_regular_game_end()) {
 					return REPLAY_FOUND_END_LEVEL;
 				}

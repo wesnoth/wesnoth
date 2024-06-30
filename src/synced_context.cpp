@@ -43,11 +43,7 @@ static lg::log_domain log_replay("replay");
 #define WRN_REPLAY LOG_STREAM(warn, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
-bool synced_context::run(const std::string& commandname,
-	const config& data,
-	bool /*use_undo*/,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run(const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname;
 
@@ -57,9 +53,9 @@ bool synced_context::run(const std::string& commandname,
 
 	synced_command::map::iterator it = synced_command::registry().find(commandname);
 	if(it == synced_command::registry().end()) {
-		error_handler("commandname [" + commandname + "] not found");
+		spectator.error("commandname [" + commandname + "] not found");
 	} else {
-		bool success = it->second(data, show, error_handler);
+		bool success = it->second(data, spectator);
 		if(!success) {
 			return false;
 		}
@@ -82,11 +78,7 @@ bool synced_context::run(const std::string& commandname,
 	return true;
 }
 
-bool synced_context::run_and_store(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run_and_store(const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	if(resources::controller->is_replay()) {
 		ERR_REPLAY << "ignored attempt to invoke a synced command during replay";
@@ -95,7 +87,7 @@ bool synced_context::run_and_store(const std::string& commandname,
 
 	assert(resources::recorder->at_end());
 	resources::recorder->add_synced_command(commandname, data);
-	bool success = run(commandname, data, use_undo, show, error_handler);
+	bool success = run(commandname, data, spectator);
 	if(!success) {
 		resources::recorder->undo();
 	}
@@ -103,13 +95,9 @@ bool synced_context::run_and_store(const std::string& commandname,
 	return success;
 }
 
-bool synced_context::run_and_throw(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run_and_throw(const std::string& commandname, const config& data, action_spectator& spectator)
 {
-	bool success = run_and_store(commandname, data, use_undo, show, error_handler);
+	bool success = run_and_store(commandname, data, spectator);
 	if(success) {
 		resources::controller->maybe_throw_return_to_play_side();
 	}
@@ -117,15 +105,12 @@ bool synced_context::run_and_throw(const std::string& commandname,
 	return success;
 }
 
-bool synced_context::run_in_synced_context_if_not_already(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run_in_synced_context_if_not_already(
+	const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	switch(synced_context::get_synced_state()) {
 	case(synced_context::UNSYNCED): {
-		return run_and_throw(commandname, data, use_undo, show, error_handler);
+		return run_and_throw(commandname, data, spectator);
 	}
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice";
@@ -136,10 +121,10 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	case(synced_context::SYNCED): {
 		synced_command::map::iterator it = synced_command::registry().find(commandname);
 		if(it == synced_command::registry().end()) {
-			error_handler("commandname [" + commandname + "] not found");
+			spectator.error("commandname [" + commandname + "] not found");
 			return false;
 		} else {
-			return it->second(data, /*use_undo*/ false, show, error_handler);
+			return it->second(data, spectator);
 		}
 	}
 	default:
@@ -148,20 +133,19 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	}
 }
 
-void synced_context::default_error_function(const std::string& message)
+action_spectator& synced_context::get_default_spectator()
 {
-	ERR_REPLAY << "Unexpected Error during synced execution" << message;
-	assert(!"Unexpected Error during synced execution, more info in stderr.");
-}
+	static class : public action_spectator
+	{
+	public:
+		void error(const std::string& message)
+		{
+			ERR_REPLAY << "Unexpected Error during synced execution" << message;
+			assert(!"Unexpected Error during synced execution, more info in stderr.");
+		}
 
-void synced_context::just_log_error_function(const std::string& message)
-{
-	ERR_REPLAY << "Error during synced execution: " << message;
-}
-
-void synced_context::ignore_error_function(const std::string& message)
-{
-	DBG_REPLAY << "Ignored during synced execution: " << message;
+	} res;
+	return res;
 }
 
 namespace

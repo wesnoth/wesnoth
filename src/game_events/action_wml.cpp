@@ -247,12 +247,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-static void on_replay_error(const std::string& message)
-{
-	ERR_NG << "Error via [do_command]:";
-	ERR_NG << message;
-}
-
 // This tag exposes part of the code path used to handle [command]'s in replays
 // This allows to perform scripting in WML that will use the same code path as player actions, for example.
 WML_HANDLER_FUNCTION(do_command,, cfg)
@@ -306,12 +300,14 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 		//Note that this fires related events and everything else that also happens normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
+		auto spectator = action_spectator([](const std::string& message) {
+			ERR_NG << "Error via [do_command]:";
+			ERR_NG << message;
+		});
 		synced_context::run_in_synced_context_if_not_already(
-			/*commandname*/ key,
-			/*data*/ child.get_parsed_config(),
-			/*use_undo*/ true,
-			/*show*/ true,
-			/*error_handler*/ &on_replay_error
+			key,
+			child.get_parsed_config(),
+			spectator
 		);
 		ai::manager::get_singleton().raise_gamestate_changed();
 	}
