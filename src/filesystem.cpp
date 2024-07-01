@@ -642,6 +642,7 @@ static void setup_user_data_dir()
 	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
 
 	// Create user data and add-on directories
+	create_directory_if_missing(get_sync_dir());
 	create_directory_if_missing(get_legacy_editor_dir());
 	create_directory_if_missing(get_legacy_editor_dir() + "/maps");
 	create_directory_if_missing(get_legacy_editor_dir() + "/scenarios");
@@ -650,6 +651,10 @@ static void setup_user_data_dir()
 	create_directory_if_missing(get_saves_dir());
 	create_directory_if_missing(get_wml_persist_dir());
 	create_directory_if_missing(get_logs_dir());
+
+	if(file_exists(get_unsynced_prefs_file()) && !file_exists(get_prefs_file())) {
+		copy_file(get_unsynced_prefs_file(), get_prefs_file());
+	}
 
 	lg::move_log_file();
 }
