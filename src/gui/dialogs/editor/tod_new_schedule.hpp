@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -30,7 +31,7 @@ namespace dialogs
 class tod_new_schedule : public modal_dialog
 {
 public:
-	tod_new_schedule(std::string& schedule_id, std::string& schedule_name);
+	tod_new_schedule(std::string& schedule_id, t_string& schedule_name);
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(tod_new_schedule);
@@ -42,7 +43,7 @@ private:
 	virtual const std::string& window_id() const override;
 
 	std::string& schedule_id_;
-	std::string& schedule_name_;
+	t_string& schedule_name_;
 
 	/* Callback for enabling or disabling OK button */
 	void button_state_change();

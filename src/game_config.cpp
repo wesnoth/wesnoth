@@ -482,8 +482,8 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 			for(const auto& s : utils::split(rgb.second)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
-				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid color in palette: " << s;
+				} catch(const std::invalid_argument& e) {
+					ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 				}
 			}
 
@@ -532,9 +532,9 @@ const std::vector<color_t>& tc_info(std::string_view name)
 	for(const auto& s : utils::split(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument& e) {
 			static std::vector<color_t> stv;
-			ERR_NG << "Invalid color in palette: " << s;
+			ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 			return stv;
 		}
 	}

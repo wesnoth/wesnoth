@@ -100,7 +100,7 @@ std::optional<credits_data::const_iterator> get_campaign_credits(const std::stri
 {
 	const auto res = std::find_if(parsed_credits_data.begin(), parsed_credits_data.end(),
 		[&campaign](const credits_group& group) { return group.id == campaign; });
-	return res != parsed_credits_data.end() ? std::make_optional(res) : std::nullopt;
+	return res != parsed_credits_data.end() ? std::optional{res} : std::nullopt;
 }
 
 std::vector<std::string> get_background_images(const std::string& campaign)

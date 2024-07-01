@@ -504,11 +504,6 @@ void addon_manager::pre_show(window& window)
 		find_widget<button>(&window, "show_help", false),
 		std::bind(&addon_manager::show_help, this));
 
-	// Do this while all stack layers (if applicable) are visible
-	if(!game_config::debug) {
-		find_widget<label>(&window, "addon_id", false).set_visible(widget::visibility::invisible);
-	}
-
 	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
 		button& btn = find_widget<button>(&window, "details_toggle", false);
 		connect_signal_mouse_left_click(btn, std::bind(&addon_manager::toggle_details, this, std::ref(btn), std::ref(*stk)));
@@ -1107,10 +1102,7 @@ void addon_manager::on_addon_select()
 
 	const std::string& feedback_url = info->feedback_url;
 	find_widget<label>(parent, "url", false).set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
-
-	if(auto addon_id =  find_widget<label>(parent, "addon_id", false, true)) {
-		addon_id->set_label(info->id);
-	}
+	find_widget<label>(parent, "id", false).set_label(info->id);
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;

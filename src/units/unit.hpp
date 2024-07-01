@@ -1282,6 +1282,8 @@ public:
 	/** Gets whether this unit is loyal - ie, it costs no upkeep. */
 	bool loyal() const;
 
+	void set_loyal(bool loyal);
+
 	/** Gets whether this unit is fearless - ie, unaffected by time of day. */
 	bool is_fearless() const
 	{

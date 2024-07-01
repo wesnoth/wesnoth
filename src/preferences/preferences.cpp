@@ -69,7 +69,6 @@ static lg::log_domain advanced_preferences("advanced_preferences");
 
 prefs::prefs()
 : preferences_()
-, no_preferences_save_(false)
 , fps_(false)
 , completed_campaigns_()
 , encountered_units_set_()
@@ -149,7 +148,7 @@ prefs::~prefs()
 	encountered_terrains_set_.clear();
 
 	try {
-		if(!no_preferences_save_) {
+		if(!no_preferences_save) {
 			write_preferences();
 		}
 	} catch (...) {
@@ -441,10 +440,6 @@ config::attribute_value prefs::get_as_attribute(const std::string &key)
 //
 // accessors
 //
-void prefs::disable_preferences_save() {
-	no_preferences_save_ = true;
-}
-
 bool prefs::show_ally_orb() {
 	return preferences_[prefs_list::show_ally_orb].to_bool(game_config::show_ally_orb);
 }

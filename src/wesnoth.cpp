@@ -286,22 +286,27 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
 	}
 
+	if(cmdline_opts.userconfig_dir) {
+		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
+	}
+
+	if(cmdline_opts.userdata_dir) {
+		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
+	}
+
+	// earliest possible point to ensure the userdata directory is known
+	if(!filesystem::is_userdata_initialized()) {
+		filesystem::set_user_data_dir(std::string());
+	}
+
 	if(cmdline_opts.usercache_path) {
 		std::cout << filesystem::get_cache_dir();
 		return 0;
 	}
 
-	if(cmdline_opts.userconfig_dir) {
-		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
-	}
-
 	if(cmdline_opts.userconfig_path) {
 		std::cout << filesystem::get_user_config_dir();
 		return 0;
-	}
-
-	if(cmdline_opts.userdata_dir) {
-		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
 	}
 
 	if(cmdline_opts.userdata_path) {

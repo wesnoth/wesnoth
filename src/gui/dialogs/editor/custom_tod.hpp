@@ -30,7 +30,7 @@ namespace dialogs
 class custom_tod : public modal_dialog
 {
 public:
-	custom_tod(const std::vector<time_of_day>& times, int current_time);
+	custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string addon_id = "");
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(custom_tod)
@@ -82,15 +82,24 @@ private:
 
 	void update_selected_tod_info();
 
-	void copy_to_clipboard_callback(tod_attribute_getter getter);
+	void copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data);
 
 	/** Update current TOD with values from the GUI */
 	void update_schedule();
 
-	/** Available time_of_days */
+	/** Update image when preview is pressed */
+	void update_image(const std::string& id_stem);
+
+	/** Play sound when play is pressed */
+	void play_sound();
+
+	/** ID of the current addon. The schedule file will be saved here. */
+	const std::string addon_id_;
+
+	/** Available time of days */
 	std::vector<time_of_day> times_;
 
-	/** Current ToD index */
+	/** Current time of day (ToD) index */
 	int current_tod_;
 
 	field_integer* color_field_r_;

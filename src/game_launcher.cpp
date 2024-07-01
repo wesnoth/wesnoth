@@ -188,7 +188,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	}
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		no_sound = true;
-		prefs::get().disable_preferences_save();
+		prefs::disable_preferences_save();
 	}
 	if(cmdline_opts_.new_widgets)
 		gui2::new_widgets = true;
@@ -211,7 +211,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		screenshot_map_ = *cmdline_opts_.screenshot_map_file;
 		screenshot_filename_ = *cmdline_opts_.screenshot_output_file;
 		no_sound = true;
-		prefs::get().disable_preferences_save();
+		prefs::disable_preferences_save();
 	}
 	if (cmdline_opts_.server){
 		jump_to_multiplayer_ = true;
@@ -227,10 +227,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 			}
 		}
 		if(cmdline_opts_.username) {
-			prefs::get().disable_preferences_save();
+			prefs::disable_preferences_save();
 			prefs::get().set_login(*cmdline_opts_.username);
 			if(cmdline_opts_.password) {
-				prefs::get().disable_preferences_save();
+				prefs::disable_preferences_save();
 				prefs::get().set_password(*cmdline_opts.server, *cmdline_opts.username, *cmdline_opts_.password);
 			}
 		}
