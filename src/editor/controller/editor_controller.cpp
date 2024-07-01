@@ -878,8 +878,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 
 			if (dlg.show()) {
 				std::string filepath = dlg.path();
-				if (filepath.substr(filepath.size() - 4) == ".map"
-				    || filepath.substr(filepath.size() - 4) == ".cfg") {
+				if (filesystem::is_map(filepath) || filesystem::is_cfg(filepath)) {
 					// Open map or scenario
 					context_manager_->load_map(filepath, true);
 				} else {
