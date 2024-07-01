@@ -44,7 +44,8 @@ function wml_actions.harm_unit(cfg)
 				if harmer and harmer.valid then
 					harmer_loc = { x = tonumber(harmer.x) or 0, y = tonumber(harmer.y) or 0 }
 				end
-				wesnoth.game_events.fire("pre harm", unit_to_harm_loc, harmer_loc, primary_attack, secondary_attack)
+				wesnoth.game_events.fire("pre harm", harmer_loc, unit_to_harm_loc, { wml.tag.primary_attack(primary_attack), wml.tag.secondary_attack(secondary_attack)})
+				wesnoth.interface.add_chat_message(primary_attack.name)
 			end
 			
 			if unit_to_harm.valid then 
@@ -206,7 +207,10 @@ function wml_actions.harm_unit(cfg)
 					if harmer and harmer.valid then
 						harmer_loc = { x = tonumber(harmer.x) or 0, y = tonumber(harmer.y) or 0 }
 					end
-					wesnoth.game_events.fire("post harm", unit_to_harm_loc, harmer_loc, primary_attack, secondary_attack)				
+					local var <close> = utils.scoped_var("damage_inflicted")
+					var:set(damage)
+					wesnoth.game_events.fire("post harm", harmer_loc, unit_to_harm_loc, { damage_inflicted = damage})
+					wesnoth.interface.add_chat_message(damage)
 				end
 				
 				if unit_to_harm.valid then
