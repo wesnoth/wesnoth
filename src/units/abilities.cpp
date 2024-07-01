@@ -826,6 +826,9 @@ bool attack_type::has_special(const std::string& special, bool simple_check, boo
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
+	if(check_tag_name() == special){
+		return {};
+	}
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
@@ -837,6 +840,10 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 	if(!other_attack_) {
 		return res;
+	}
+
+	if(other_attack_ && other_attack_->check_tag_name() == special){
+		return {};
 	}
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
@@ -1277,6 +1284,17 @@ namespace { // Helpers for attack_type::special_active()
 	}
 
 	/**
+	 * Reinitialise variable check_tag_name used for prevent infinite recursion in specials like damage_type.
+	 * @param self_attack       this unit's attack
+	 * @param other_attack      the other unit's attack
+	 */
+	void reinitialise_recursion_variables(const_attack_ptr& self_attack, const_attack_ptr& other_attack)
+	{
+		if(self_attack){self_attack->update_check_tag_name();}
+		if(other_attack){other_attack->update_check_tag_name();}
+	}
+
+	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
 	 * @param[in]  u           A unit to filter.
@@ -1314,6 +1332,10 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
+		if(weapon){
+			weapon->update_check_tag_name(tag_name);
+		}
+
 		unit_filter ufilt{vconfig(*filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
@@ -1321,7 +1343,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
 				return false;
 		}
 
@@ -1344,12 +1366,19 @@ namespace { // Helpers for attack_type::special_active()
 
 unit_ability_list attack_type::get_weapon_ability(const std::string& ability) const
 {
+	if(check_tag_name() == ability){
+		return {};
+	}
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
 			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
 		});
+	}
+
+	if(other_attack_ && other_attack_->check_tag_name() == ability){
+		return {};
 	}
 
 	if(other_) {
@@ -1819,21 +1848,31 @@ bool attack_type::special_active_impl(
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
 	// Filter the units involved.
-	//If filter concerns the unit on which special is applied,
-	//then the type of special must be entered to avoid calling
-	//the function of this special in matches_filter()
+	// If filter concerns the unit on which special is applied,
+	// then the type of special must be entered to avoid calling
+	// the function of this special in matches_filter()
 	std::string self_tag_name = whom_is_self ? tag_name : "";
-	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
+	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name)){
+		reinitialise_recursion_variables(self_attack, other_attack);
 		return false;
+	}
 	std::string opp_tag_name = !whom_is_self ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name)){
+		reinitialise_recursion_variables(self_attack, other_attack);
 		return false;
-	std::string att_tag_name = is_attacker ? tag_name : "";
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
+	}
+	std::string att_tag_name = (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker) ? tag_name : "";
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name)){
+		reinitialise_recursion_variables(self_attack, other_attack);
 		return false;
-	std::string def_tag_name = !is_attacker ? tag_name : "";
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
+	}
+	std::string def_tag_name = (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker) ? tag_name : "";
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name)){
+		reinitialise_recursion_variables(self_attack, other_attack);
 		return false;
+	}
+	//when exit of the loop, reinitialise variables
+	reinitialise_recursion_variables(self_attack, other_attack);
 
 	const auto adjacent = get_adjacent_tiles(self_loc);
 
