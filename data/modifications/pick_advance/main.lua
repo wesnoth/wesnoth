@@ -200,29 +200,20 @@ on_event("start", function()
 	wml.variables.pickadvance_force_choice = wml.variables.pickadvance_force_choice or not map_has_recruits
 end)
 
--- set "fresh_turn" for the moveto event at the start of each side turn
+-- check if there are any new units that need to be forced to make an advancement choice
 on_event("turn refresh", function()
-	wml.variables.pa_fresh_turn = true
-end)
-
--- the first time a unit moves at the start of each side's turn, check if there are any new units that need to be forced to make an advancement choice
-on_event("moveto", function()
-	if wml.variables.pa_fresh_turn then
-		wml.variables.pa_fresh_turn = nil
-		if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
-		for _, unit in ipairs(wesnoth.units.find_on_map { side = wesnoth.current.side }) do
-			if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
-				pickadvance.pick_advance(unit)
-				if #unit.advances_to > 1 then
-					local len = #unit.advances_to
-					local rand = mathx.random(len)
-					unit.advances_to = { unit.advances_to[rand] }
-				end
-			else
-				initialize_unit(unit)
+	if not wesnoth.sides[wesnoth.current.side].__cfg.allow_player then return end
+	for _, unit in ipairs(wesnoth.units.find_on_map { side = wesnoth.current.side }) do
+		if #unit.advances_to > 1 and wml.variables.pickadvance_force_choice and wesnoth.current.turn > 1 then
+			pickadvance.pick_advance(unit)
+			if #unit.advances_to > 1 then
+				local len = #unit.advances_to
+				local rand = mathx.random(len)
+				unit.advances_to = { unit.advances_to[rand] }
 			end
+		else
+			initialize_unit(unit)
 		end
-		wesnoth.allow_undo(false)
 	end
 end)
 
