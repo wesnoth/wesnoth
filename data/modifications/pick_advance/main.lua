@@ -42,17 +42,23 @@ local function original_advances(unit)
 	return split_comma_units(variable), clean_type_func(variable)
 end
 
--- replace the unit's current advancements with the new set of units via object/effect
+-- forget previously chosen advancements
+-- replace the unit's current advancements with the new unit via object/effect
 local function set_advances(unit, array)
-	unit:add_modification("object", {
-		pickadvance = true,
-		take_only_once = false,
-		T.effect {
-			apply_to = "new_advancement",
-			replace = true,
-			types = array
-		}
-	})
+	unit:remove_modifications{
+		pickadvance = true
+	}
+	if #array == 1 then
+		unit:add_modification("object", {
+			pickadvance = true,
+			take_only_once = false,
+			T.effect {
+				apply_to = "new_advancement",
+				replace = true,
+				types = array
+			}
+		})
+	end
 end
 
 -- for table "arr" containing sets of [index,unit_type]
