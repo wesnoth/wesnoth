@@ -81,8 +81,6 @@ struct preferences_list_defines
 	static constexpr const char* const editor_auto_update_transitions = "editor_auto_update_transitions";
 	/** the current add-on being used in the editor */
 	static constexpr const char* const editor_chosen_addon = "editor_chosen_addon";
-	/** effectively unused */
-	static constexpr const char* const editor_default_dir = "editor_default_dir";
 	/** whether to draw the x,y map coordinates in the editor */
 	static constexpr const char* const editor_draw_hex_coordinates = "editor_draw_hex_coordinates";
 	/** number of images used to draw the hex */
@@ -406,7 +404,6 @@ struct preferences_list_defines
 		draw_delay,
 		editor_auto_update_transitions,
 		editor_chosen_addon,
-		editor_default_dir,
 		editor_draw_hex_coordinates,
 		editor_draw_num_of_bitmaps,
 		editor_draw_terrain_codes,

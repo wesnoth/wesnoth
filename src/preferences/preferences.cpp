@@ -1545,10 +1545,6 @@ void prefs::set_editor_auto_update_transitions(int value) {
 	preferences_[prefs_list::editor_auto_update_transitions] = value;
 }
 
-std::string prefs::default_dir() {
-	return preferences_[prefs_list::editor_default_dir].str();
-}
-
 bool prefs::editor_draw_terrain_codes() {
 	return preferences_[prefs_list::editor_draw_terrain_codes].to_bool();
 }
