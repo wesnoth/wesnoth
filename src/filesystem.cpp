@@ -726,7 +726,7 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 		} else {
 			dir = get_cwd();
 		}
-		dir / temp.substr(1);
+		dir /= temp.substr(1);
 	} else {
 		if(temp.empty()) {
 			DBG_FS << "using default userdata folder name";
@@ -741,14 +741,14 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 		if(games_path) {
 			create_directory_if_missing(*games_path);
 			dir = *games_path;
-			dir / temp;
+			dir /= temp;
 			DBG_FS << "userdata is under My Games at " << dir.string();
 		} else {
 			//
 			// Crummy fallback path full of pain and suffering.
 			//
 			dir = get_cwd();
-			dir / temp;
+			dir /= temp;
 			DBG_FS << "userdata is at " << dir.string();
 		}
 	}
