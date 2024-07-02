@@ -30,15 +30,6 @@ class listbox;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to the MP server to connect to.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * start_table       | text_box     |yes      |The name of the server to connect to.
- * list              | @ref button  |no       |Shows a dialog with a list of predefined servers to connect to.
- */
 class mp_connect : public modal_dialog
 {
 	/** The unit test needs to be able to test the mp_connect dialog. */

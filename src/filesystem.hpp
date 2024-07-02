@@ -147,6 +147,8 @@ const std::string& get_version_path_suffix();
  * maximum 1000 files then start always giving 999
  */
 std::string get_next_filename(const std::string& name, const std::string& extension);
+
+bool is_userdata_initialized();
 void set_user_config_dir(const std::string& path);
 void set_user_data_dir(std::string path);
 void set_cache_dir(const std::string& path);
@@ -190,7 +192,9 @@ std::vector<other_version_dir> find_other_version_saves_dirs();
 std::string get_cwd();
 bool set_cwd(const std::string& dir);
 
+std::string get_exe_path();
 std::string get_exe_dir();
+std::string get_wesnothd_name();
 
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname, const bool keep_pbl = false);
@@ -340,6 +344,11 @@ std::string nearest_extant_parent(const std::string& file);
 std::string normalize_path(const std::string& path,
 						   bool normalize_separators = false,
 						   bool resolve_dot_entries = false);
+
+/** Helper function to convert absolute path to wesnoth relative path */
+bool to_asset_path(std::string& abs_path,
+                   std::string addon_id,
+                   std::string asset_type);
 
 /**
  * Sanitizes a path to remove references to the user's name.

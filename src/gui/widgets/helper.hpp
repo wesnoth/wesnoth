@@ -36,7 +36,7 @@ namespace gui2
 /**
  * Converts a color string to a color.
  *
- * @param color                   A color string see @ref GUIWidgetWML for more info.
+ * @param color                   A color string.
  *
  * @returns                       The color.
  */
@@ -45,25 +45,43 @@ color_t decode_color(const std::string& color);
 /**
  * Converts a text alignment string to a text alignment.
  *
- * @param alignment               An alignment string see @ref GUIWidgetWML for more info.
+ * @param alignment               An alignment string.
  *
  * @returns                       The text alignment.
  */
 PangoAlignment decode_text_alignment(const std::string& alignment);
 
 /**
+ * Converts a text weight string to a PangoWeight.
+ *
+ * @param weight                  A weight string, possible values: "thin", "light", "normal", "semibold", "bold", "heavy"
+ *
+ * @returns                       The corresponding PangoWeight.
+ */
+PangoWeight decode_text_weight(const std::string& weight);
+
+/**
+ * Converts a text style string to a PangoStyle.
+ *
+ * @param style                  A style string, possible values: "normal", "italic", "oblique
+ *
+ * @returns                       The corresponding PangoStyle.
+ */
+PangoStyle decode_text_style(const std::string& style);
+
+/**
  * Converts a text alignment to its string representation.
  *
  * @param alignment               An alignment.
  *
- * @returns                       An alignment string see @ref GUIWidgetWML for more info.
+ * @returns                       An alignment string.
  */
 std::string encode_text_alignment(const PangoAlignment alignment);
 
 /**
  * Converts a font style string to a font style.
  *
- * @param style                   A font style string see @ref GUIWidgetWML for more info.
+ * @param style                   A font style string.
  *
  * @returns                       The font style.
  */

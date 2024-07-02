@@ -47,14 +47,6 @@
 Показва всички преводи от списъка с достъпни единици, дори и тези, които се
 считат за незавършени.
 .TP 
-\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
-декомпресира файл, който би трябвало да бъде в bzip2 формат и го съхранява
-без наставката .bz2. \fIinfile.bz2\fP ще бъде премахнат.
-.TP 
-\fB\-\-bzip2\fP\fI\ infile\fP
-компресира файл в bzip2, съхранява го като \fIinfile\fP.bz2 и премахва
-\fIinfile\fP.
-.TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 прехвърля направо към кампанията с id \fIid_campaign\fP. Ако няма посочен id ще
 се появи прозорец с възможни избори.
@@ -115,14 +107,6 @@ to the file indicated by \fI\-\-output\fP.
 \fB\-f, \-\-fullscreen\fP
 пуска играта в режим пълен екран.
 .TP 
-\fB\-\-gunzip\fP\fI\ infile.gz\fP
-декомпресира файл, който трябва да бъде в gzip формат и го съхранява без
-наставката .gz. \fIinfile.gz\fP ще бъде премахнат.
-.TP 
-\fB\-\-gzip\fP\fI\ infile\fP
-компресира файл в gzip формат, съхранява го като \fIinfile\fP.gz и премахва
-\fIinfile\fP.
-.TP 
 \fB\-h, \-\-help\fP
 показва обобщено опциите за командния ред на стандартния изход и излиза.
 .TP 
@@ -144,23 +128,23 @@ log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebu
 \fB\-\-log\-precise\fP
 shows the timestamps in log output with more precision.
 .TP 
-\fB\-\-log\-strict\fP
-sets the strict level of the logger. Any messages sent to log domains of
-this level or more severe will cause the unit test to fail regardless of the
-victory result. Only relevant when used with \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lists defined log domains (only the ones containing \fIfilter\fP if used) and
 exits
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -307,13 +291,12 @@ lua the same permissions as the wesnoth executable.
 поставя WML схемата за употреба с \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-поставя директорията за настройки към \fIname\fP под $HOME или в "My
-Documents\eMy Games" за windows.  Също можете да посочите абсолютен път за
-директорията извън посочените. На Windows е възможно да посочите директория
-относителна към процеса, като използвате пътища стартиращи с ".\e" or
-"..\e".  Под X11 стандартът за това е $XDG_CONFIG_HOME или
-$HOME/.config/wesnoth, а на други системи е пътят към данните на
-потребителя.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+This defaults to the userdata path.
 .TP 
 \fB\-\-userconfig\-path\fP
 извежда името на директорията с информацията на играта и излиза.

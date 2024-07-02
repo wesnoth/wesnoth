@@ -17,7 +17,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
@@ -138,6 +138,11 @@ language_list get_languages(bool all)
 		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
 
 	return result;
+}
+
+int get_min_translation_percent()
+{
+	return min_translation_percent;
 }
 
 void set_min_translation_percent(int percent) {
@@ -331,7 +336,7 @@ const language_def& get_locale()
 
 	assert(!known_languages.empty());
 
-	const std::string& prefs_locale = preferences::language();
+	const std::string& prefs_locale = prefs::get().language();
 	if(prefs_locale.empty() == false) {
 		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();

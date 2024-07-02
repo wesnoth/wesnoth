@@ -20,7 +20,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
@@ -304,7 +304,7 @@ static config unit_traits(const unit* u)
 	config res;
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
-	const std::vector<std::string> &trait_ids = u->get_traits_list();
+	const std::vector<std::string> &trait_ids = u->trait_nonhidden_ids();
 	unsigned nb = traits.size();
 	for (unsigned i = 0; i < nb; ++i)
 	{
@@ -679,7 +679,7 @@ static config unit_moves(const reports::context& rc, const unit* u, bool is_visi
 	}
 
 	tooltip << _("Movement Costs:") << "\n";
-	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+	for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
@@ -872,22 +872,28 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
-		std::pair<std::string, std::string> types = at.damage_type();
-		std::string secondary_lang_type = types.second;
-		if (!secondary_lang_type.empty()) {
-			secondary_lang_type = ", " + string_table["type_" + secondary_lang_type];
+		std::string type = at.damage_type().first;
+		std::set<std::string> alt_types = at.alternative_damage_types();
+		std::string lang_type = string_table["type_" + type];
+		for(auto alt_t : alt_types){
+			lang_type += ", " + string_table["type_" + alt_t];
 		}
-		std::string lang_type = string_table["type_" + types.first] + secondary_lang_type;
 
 		// SCALE_INTO() is needed in case the 72x72 images/misc/missing-image.png is substituted.
 		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + types.first + ".png~SCALE_INTO(16,16)";
-		const std::string secondary_type_png = !(types.second).empty() ? std::string("icons/profiles/") + types.second + ".png~SCALE_INTO(16,16)" : "";
-		const bool range_png_exists = image::locator(range_png).file_exists();
-		const bool type_png_exists = image::locator(type_png).file_exists();
-		const bool secondary_type_png_exists = image::locator(secondary_type_png).file_exists();
+		const std::string type_png = std::string("icons/profiles/") + type + ".png~SCALE_INTO(16,16)";
+		std::vector<std::string> secondary_types_png;
+		for(const auto& alt_t : alt_types) {
+			secondary_types_png.push_back(std::string("icons/profiles/") + alt_t + ".png~SCALE_INTO(16,16)");
+		}
 
-		if(!range_png_exists || !type_png_exists || (!secondary_type_png_exists && !secondary_lang_type.empty())) {
+		// If any of the images is missing, then add a text description too.
+		bool all_pngs_exist = image::locator(range_png).file_exists();
+		all_pngs_exist &= image::locator(type_png).file_exists();
+		for(const auto& png : secondary_types_png) {
+			all_pngs_exist &= image::locator(png).file_exists();
+		}
+		if(!all_pngs_exist) {
 			str << span_color(font::weapon_details_color) << "  " << "  "
 				<< range << font::weapon_details_sep
 				<< lang_type << "</span>\n";
@@ -944,8 +950,10 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
 		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
 		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
-		if(secondary_type_png_exists){
-			add_image(res, spacer + "~BLIT(" + secondary_type_png + ",0,5)", damage_versus.tooltip);
+		for(auto sec_exist : secondary_types_png){
+			if(image::locator(sec_exist).file_exists()){
+				add_image(res, spacer + "~BLIT(" + sec_exist + ",0,5)", damage_versus.tooltip);
+			}
 		}
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
@@ -1740,7 +1748,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 
 	std::ostringstream ss;
 
-	const char* format = preferences::use_twelve_hour_clock_format()
+	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 

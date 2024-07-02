@@ -37,9 +37,10 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -339,9 +340,10 @@ void title_screen::init_callbacks()
 		std::bind(&title_screen::show_achievements, this));
 
 	//
-	// Credits
+	// Community
 	//
-	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
+	register_button(*this, "community", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_community, this));
 
 	//
 	// Quit
@@ -359,6 +361,17 @@ void title_screen::init_callbacks()
 	auto clock = find_widget<button>(this, "clock", false, false);
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// GUI Test and Debug Window
+	//
+	register_button(*this, "test_dialog", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_gui_test_dialog, this));
+
+	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	if(test_dialog) {
+		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
 
 	//
@@ -452,6 +465,11 @@ void title_screen::show_debug_clock_window()
 	}
 }
 
+void title_screen::show_gui_test_dialog()
+{
+	gui2::dialogs::gui_test_dialog::execute();
+}
+
 void title_screen::hotkey_callback_select_tests()
 {
 	game_config_manager::get()->load_game_config_for_create(false, true);
@@ -481,6 +499,13 @@ void title_screen::show_achievements()
 	ach.show();
 }
 
+void title_screen::show_community()
+{
+	game_version dlg;
+	// shows the 5th tab, community, when the dialog is shown
+	dlg.display(4);
+}
+
 void title_screen::button_callback_multiplayer()
 {
 	while(true) {
@@ -493,7 +518,7 @@ void title_screen::button_callback_multiplayer()
 
 		const auto res = dlg.get_choice();
 
-		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
@@ -501,7 +526,7 @@ void title_screen::button_callback_multiplayer()
 
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
-			game_.select_mp_server(preferences::builtin_servers_list().front().address);
+			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
 			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
@@ -529,7 +554,7 @@ void title_screen::button_callback_cores()
 	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
 		cores.push_back(core);
 
-		if(core["id"] == preferences::core_id()) {
+		if(core["id"] == prefs::get().core_id()) {
 			current = cores.size() - 1;
 		}
 	}
@@ -538,7 +563,7 @@ void title_screen::button_callback_cores()
 	if(core_dlg.show()) {
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
-		preferences::set_core_id(core_id);
+		prefs::get().set_core_id(core_id);
 		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }

@@ -18,7 +18,7 @@
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
@@ -521,7 +521,7 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc, unit_ptr defender)
 {
 	display* disp = display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || disp->fogged(loc) || !prefs::get().show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -541,7 +541,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit_ptr secondary_unit)
 {
 	display* disp = display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !prefs::get().show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -571,7 +571,7 @@ void unit_die(const map_location& loc, unit& loser,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc, unit_ptr winner)
 {
 	display* disp = display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || disp->fogged(loc) || !prefs::get().show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -601,7 +601,7 @@ void unit_attack(display * disp, game_board & board,
                  const std::vector<std::string>* extra_hit_sounds,
                  bool attacking)
 {
-	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !prefs::get().show_combat()) {
 		return;
 	}
 	//const unit_map& units = disp->get_units();

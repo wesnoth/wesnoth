@@ -185,6 +185,8 @@ public:
 			pages_->set_label(out.str());
 			left_->set_visible(widget::visibility::visible);
 			right_->set_visible(widget::visibility::visible);
+			left_->set_active(current_page_ > 0);
+			right_->set_active(current_page_ < n_pages - 1);
 		} else {
 			pages_->set_label("");
 			left_->set_visible(widget::visibility::invisible);

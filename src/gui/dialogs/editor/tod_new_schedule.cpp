@@ -1,5 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -27,7 +28,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(tod_new_schedule);
 
-tod_new_schedule::tod_new_schedule(std::string& schedule_id, std::string& schedule_name)
+tod_new_schedule::tod_new_schedule(std::string& schedule_id, t_string& schedule_name)
 	: modal_dialog(window_id())
 	, schedule_id_(schedule_id)
 	, schedule_name_(schedule_name)

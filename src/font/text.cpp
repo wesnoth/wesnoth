@@ -29,7 +29,7 @@
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
 #include "serialization/unicode.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "video.hpp"
 
 
@@ -84,9 +84,16 @@ pango_text::pango_text()
 	, maximum_length_(std::string::npos)
 	, calculation_dirty_(true)
 	, length_(0)
+	, attribute_start_offset_(0)
+	, attribute_end_offset_(0)
+	, highlight_color_()
+	, attrib_hash_(0)
 	, pixel_scale_(1)
 	, surface_buffer_()
 {
+	// Initialize global list
+	global_attribute_list_ = pango_attr_list_new();
+
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_.get(), 72.0);
 
@@ -342,6 +349,184 @@ point pango_text::get_column_line(const point& position) const
 	}
 }
 
+void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_size_new_absolute(PANGO_SCALE * size);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: size";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+		boost::hash_combine(attrib_hash_, size);
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_weight_new(weight);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: weight";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+		boost::hash_combine(attrib_hash_, weight);
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+
+		PangoAttribute *attr = pango_attr_style_new(style);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: style";
+		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_underline_new(underline);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: underline";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+		boost::hash_combine(attrib_hash_, underline);
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+
+void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		int col_r = color.r / 255.0 * 65535.0;
+		int col_g = color.g / 255.0 * 65535.0;
+		int col_b = color.b / 255.0 * 65535.0;
+
+		PangoAttribute *attr = pango_attr_foreground_new(col_r, col_g, col_b);
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
+
+		DBG_GUI_D << "attribute: fg color";
+		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
+		DBG_GUI_D << "color: " << col_r << "," << col_g << "," << col_b;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+		boost::hash_combine(attrib_hash_, color.to_rgba_bytes());
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_family_new(family.c_str());
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: font family";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+		DBG_GUI_D << "font family: " << family;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+		boost::hash_combine(attrib_hash_, family);
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color) {
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+	highlight_color_ = color;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		// Highlight
+		int col_r = highlight_color_.r / 255.0 * 65535.0;
+		int col_g = highlight_color_.g / 255.0 * 65535.0;
+		int col_b = highlight_color_.b / 255.0 * 65535.0;
+
+		DBG_GUI_D << "highlight start: " << attribute_start_offset_ << "end : " << attribute_end_offset_;
+		DBG_GUI_D << "highlight color: " << col_r << "," << col_g << "," << col_b;
+
+		PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		// Update hash
+		boost::hash_combine(attrib_hash_, attribute_start_offset_);
+		boost::hash_combine(attrib_hash_, attribute_end_offset_);
+		boost::hash_combine(attrib_hash_, highlight_color_.to_rgba_bytes());
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::clear_attribute_list() {
+	global_attribute_list_ = pango_attr_list_new();
+	pango_layout_set_attributes(layout_.get(), global_attribute_list_);
+}
+
 bool pango_text::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
@@ -357,28 +542,16 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 					<< "' contains invalid utf-8, trimmed the invalid parts.";
 		}
 
-		if (highlight_start_offset_ != highlight_end_offset_) {
-			/** Highlight */
-			PangoAttrList *attribute_list = pango_attr_list_new();
-			int col_r = highlight_color_.r / 255.0 * 65535.0;
-			int col_g = highlight_color_.g / 255.0 * 65535.0;
-			int col_b = highlight_color_.b / 255.0 * 65535.0;
-			DBG_GUI_D << "highlight start : " << highlight_start_offset_ << "end : " << highlight_end_offset_;
-			DBG_GUI_D << "highlight rgb : " << col_r << "," << col_g << "," << col_b;
-			PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
-			attr->start_index = highlight_start_offset_;
-			attr->end_index = highlight_end_offset_;
-			pango_attr_list_insert(attribute_list, attr);
-
-			pango_layout_set_attributes(layout_.get(), attribute_list);
-		}
+		pango_layout_set_attributes(layout_.get(), global_attribute_list_);
+		// Clear list. Using pango_attr_list_unref() causes segfault
+		global_attribute_list_ = pango_attr_list_new();
 
 		if(markedup) {
 			if(!this->set_markup(narrow, *layout_)) {
 				return false;
 			}
 		} else {
-			if (highlight_start_offset_ == highlight_end_offset_) {
+			if (attribute_start_offset_ == attribute_end_offset_) {
 				/*
 				 * pango_layout_set_text after pango_layout_set_markup might
 				 * leave the layout in an undefined state regarding markup so
@@ -411,7 +584,7 @@ pango_text& pango_text::set_family_class(font::family_class fclass)
 
 pango_text& pango_text::set_font_size(unsigned font_size)
 {
-	font_size = preferences::font_scaled(font_size) * pixel_scale_;
+	font_size = prefs::get().font_scaled(font_size) * pixel_scale_;
 
 	if(font_size != font_size_) {
 		font_size_ = font_size;
@@ -1034,9 +1207,9 @@ std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 	boost::hash_combine(hash, t.alignment_);
 	boost::hash_combine(hash, t.ellipse_mode_);
 	boost::hash_combine(hash, t.add_outline_);
-	boost::hash_combine(hash, t.highlight_start_offset_);
-	boost::hash_combine(hash, t.highlight_end_offset_);
-	boost::hash_combine(hash, t.highlight_color_.to_rgba_bytes());
+
+	// Hash for the global attribute list
+	boost::hash_combine(hash, t.attrib_hash_);
 
 	return hash;
 }

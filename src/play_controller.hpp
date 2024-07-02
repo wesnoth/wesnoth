@@ -61,9 +61,7 @@ class play_controller : public controller_base, public events::observer, public 
 {
 public:
 	play_controller(const config& level,
-			saved_game& state_of_game,
-			bool skip_replay,
-			bool start_faded = false);
+			saved_game& state_of_game);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -110,6 +108,8 @@ public:
 	 * @throw quit_game_exception If the user wants to abort.
 	 */
 	virtual void process_oos(const std::string& msg) const;
+
+	bool reveal_map_default() const;
 
 	void set_end_level_data(const end_level_data& data)
 	{
@@ -243,6 +243,8 @@ public:
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
 	bool is_replay() const { return get_replay_controller() != nullptr; }
 
+	replay& recorder() const { return *replay_; }
+
 	t_string get_scenario_name() const
 	{
 		return level_["name"].t_str();
@@ -270,10 +272,6 @@ public:
 
 	void maybe_throw_return_to_play_side() const;
 
-	virtual void play_side_impl() {}
-
-	void play_side();
-
 	team& current_team();
 	const team& current_team() const;
 
@@ -287,6 +285,11 @@ public:
 	 * Changes the UI for this client to the passed side index.
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
+
+	/// Sends replay [command]s to the server
+	virtual void send_actions() { }
+	/// Reads and executes replay [command]s from the server
+	virtual void receive_actions() { }
 
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
@@ -331,12 +334,9 @@ protected:
 	void textbox_move_vertically(bool up);
 	void tab();
 
-
-	bool is_team_visible(int team_num, bool observer) const;
 public:
 	/** returns 0 if no such team was found. */
-	int find_viewing_side() const;
-
+	virtual int find_viewing_side() const = 0;
 private:
 	const int ticks_;
 

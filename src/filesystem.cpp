@@ -22,7 +22,6 @@
 #include "filesystem.hpp"
 
 #include "config.hpp"
-#include "deprecation.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
@@ -30,6 +29,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
+#include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
@@ -49,6 +49,11 @@
 #endif
 
 #endif /* !_WIN32 */
+
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#include <limits.h>
+#endif
 
 #include <algorithm>
 #include <set>
@@ -565,6 +570,11 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 
 static bfs::path user_data_dir, user_config_dir, cache_dir;
 
+bool is_userdata_initialized()
+{
+	return !user_data_dir.string().empty();
+}
+
 const std::string get_version_path_suffix(const version_info& version)
 {
 	std::ostringstream s;
@@ -645,9 +655,11 @@ static void setup_user_data_dir()
 }
 
 #ifdef _WIN32
-// As a convenience for portable installs on Windows, relative paths with . or
-// .. as the first component are considered relative to the current workdir
-// instead of Documents/My Games.
+/**
+ * A convenience for portable installs on Windows.
+ * relative paths with . or .. as the first component are considered relative to the current workdir instead of Documents/My Games.
+ * Only provided for Windows since portable installs on other systems are not particularly relevant or supported.
+ */
 static bool is_path_relative_to_cwd(const std::string& str)
 {
 	const bfs::path p(str);
@@ -658,135 +670,207 @@ static bool is_path_relative_to_cwd(const std::string& str)
 
 	return *p.begin() == "." || *p.begin() == "..";
 }
+
+/**
+ * @return the path to the My Games directory on success or an empty string on failure
+ */
+static std::optional<std::string> get_games_path()
+{
+	PWSTR docs_path = nullptr;
+	HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
+	std::optional<std::string> path = std::nullopt;
+
+	if(res == S_OK) {
+		bfs::path games_path = bfs::path(docs_path) / "My Games";
+		path = games_path.string();
+	} else {
+		ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
+				<< "User config/data directories may be unavailable for "
+				<< "this session. Please report this as a bug.";
+	}
+
+	CoTaskMemFree(docs_path);
+	return path;
+}
+
+static bfs::path windows_userdata(const std::string& newprefdir)
+{
+	bfs::path dir;
+	std::string temp = newprefdir;
+
+#ifdef PREFERENCES_DIR
+	if(temp.empty()) {
+		temp = PREFERENCES_DIR;
+		DBG_FS << "Using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
+	}
+#endif
+
+	// if a custom userdata directory is provided as an absolute path, just use that
+	// else if it's relative to the current working directory, just use that
+	// else if the first characters is a tilde, then replace that with the path to the "My Games" folder
+	// else if no custom userdata directory was provided, default to the "My Games" folder if present or fallback to the current working directory if not
+	// else a relative path was provided that isn't relative to the current working directory, so ignore it and use the default
+	if(temp.size() > 2 && temp[1] == ':') {
+		// allow absolute path override
+		dir = temp;
+		DBG_FS << "custom userdata folder - absolute path";
+	} else if(is_path_relative_to_cwd(temp)) {
+		// Custom directory relative to workdir (for portable installs, etc.)
+		dir = get_cwd() + "/" + temp;
+		DBG_FS << "userdata relative to current working directory";
+	} else if(!temp.empty() && temp[0] == '~') {
+		std::optional<std::string> games_path = get_games_path();
+
+		if(games_path) {
+			dir = *games_path;
+		} else {
+			dir = get_cwd();
+		}
+		dir / temp.substr(1);
+	} else {
+		if(temp.empty()) {
+			DBG_FS << "using default userdata folder name";
+			temp = "Wesnoth" + get_version_path_suffix();
+		} else {
+			ERR_FS << "relative path for userdata whose first path component is neither '.' or '..' is not allowed: " << temp
+				   << ", using default location under My Games";
+			temp = "Wesnoth" + get_version_path_suffix();
+		}
+
+		std::optional<std::string> games_path = get_games_path();
+		if(games_path) {
+			create_directory_if_missing(*games_path);
+			dir = *games_path;
+			dir / temp;
+			DBG_FS << "userdata is under My Games at " << dir.string();
+		} else {
+			//
+			// Crummy fallback path full of pain and suffering.
+			//
+			dir = get_cwd();
+			dir / temp;
+			DBG_FS << "userdata is at " << dir.string();
+		}
+	}
+
+	return dir;
+}
+#elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
+static bfs::path apple_userdata(const std::string& newprefdir)
+{
+	bfs::path dir;
+	std::string temp = newprefdir;
+	const char* home_str = getenv("HOME");
+
+	// if a custom userdata was not specified
+	// use the PREFERENCES_DIR if defined
+	// else if this is iOS, use the SDL pref path
+	// else use a default - this is currently the "unsandboxed" location from migrate_apple_config_directory_for_unsandboxed_builds() above
+	if(temp.empty()) {
+#ifdef PREFERENCES_DIR
+		temp = PREFERENCES_DIR;
+		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
+		if(home_str && temp[0] == '~') {
+			temp = home_str + temp.substr(1);
+			DBG_FS << "userdata is relative to HOME";
+		}
+#elif defined(WESNOTH_BOOST_OS_IOS)
+		char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+		if(sdl_pref_path) {
+			temp = std::string(sdl_pref_path) + ".wesnoth" + get_version_path_suffix();
+			SDL_free(sdl_pref_path);
+		}
+		DBG_FS << "userdata using SDL pref path";
+#else
+		temp = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
+		DBG_FS << "Using default relative path for userdata";
+#endif
+	}
+
+	// if it's an absolute path, just use that
+	// else make it relative to HOME if HOME is populated, otherwise make it relative to the current working directory
+	if(temp[0] == '/') {
+		dir = temp;
+		DBG_FS << "userdata using absolute path: " << temp;
+	} else {
+		bfs::path home = home_str ? home_str : get_cwd();
+		dir = home / temp;
+		DBG_FS << "userdata is relative to the current working directory: " << dir.string();
+	}
+
+	return dir;
+}
+#else
+static bfs::path linux_userdata(const std::string& newprefdir)
+{
+	bfs::path dir;
+	std::string temp = newprefdir;
+	const char* home_str = getenv("HOME");
+	char const* xdg_data = getenv("XDG_DATA_HOME");
+
+#ifdef PREFERENCES_DIR
+	if(temp.empty()) {
+		temp = PREFERENCES_DIR;
+		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
+		if(home_str && temp[0] == '~') {
+			temp = home_str + temp.substr(1);
+			DBG_FS << "userdata is relative to HOME";
+		}
+	}
+#endif
+
+	// if a custom userdata dir is not specified
+	// and one of the XDG home and regular home env variables are not empty
+	// then use one of those
+	if(temp.empty() && ((xdg_data && xdg_data[0] != '\0') || home_str)) {
+		if(xdg_data && xdg_data[0] != '\0') {
+			dir = xdg_data;
+			DBG_FS << "userdata using XDG_DATA_HOME";
+		} else if(home_str) {
+			dir = home_str;
+			dir /= ".local/share";
+			DBG_FS << "userdata using HOME";
+		}
+
+		dir /= "wesnoth";
+		dir /= get_version_path_suffix();
+		return dir;
+	}
+
+	// if a custom userdata dir using an absolute path was specified, just use that
+	if(!temp.empty() && temp[0] == '/') {
+		dir = temp;
+		DBG_FS << "userdata is an absolute path";
+		return dir;
+	}
+
+	// if no custom userdata folder was specified and there's also no XDG/HOME variables available, set a default folder name
+	if(temp.empty()) {
+		temp = ".wesnoth" + get_version_path_suffix();
+	}
+
+	// unable to determine another userdata directory, so just use the current working directory for the userdata
+	dir = get_cwd();
+	dir /= temp;
+	ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory: " << dir.string();
+
+	return dir;
+}
 #endif
 
 void set_user_data_dir(std::string newprefdir)
 {
-	[[maybe_unused]] bool relative_ok = false;
-
-#ifdef PREFERENCES_DIR
-	if(newprefdir.empty()) {
-		newprefdir = PREFERENCES_DIR;
-		relative_ok = true;
-	}
-#endif
-
 #ifdef _WIN32
-	if(newprefdir.size() > 2 && newprefdir[1] == ':') {
-		// allow absolute path override
-		user_data_dir = newprefdir;
-	} else if(is_path_relative_to_cwd(newprefdir)) {
-		// Custom directory relative to workdir (for portable installs, etc.)
-		user_data_dir = get_cwd() + "/" + newprefdir;
-	} else {
-		if(newprefdir.empty()) {
-			newprefdir = "Wesnoth" + get_version_path_suffix();
-		} else {
-#ifdef PREFERENCES_DIR
-			if (newprefdir != PREFERENCES_DIR)
-#endif
-			{
-				// TRANSLATORS: translate the part inside <...> only
-				deprecated_message(_("--userdata-dir=<relative path that doesn't start with a period>"),
-					DEP_LEVEL::FOR_REMOVAL,
-					{1, 17, 0},
-					_("Use an absolute path, or a relative path that starts with a period and a backslash"));
-			}
-		}
-
-		PWSTR docs_path = nullptr;
-		HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
-
-		if(res != S_OK) {
-			//
-			// Crummy fallback path full of pain and suffering.
-			//
-			ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
-				   << "User config/data directories may be unavailable for "
-				   << "this session. Please report this as a bug.";
-			user_data_dir = bfs::path(get_cwd()) / newprefdir;
-		} else {
-			bfs::path games_path = bfs::path(docs_path) / "My Games";
-			create_directory_if_missing(games_path);
-
-			user_data_dir = games_path / newprefdir;
-		}
-
-		CoTaskMemFree(docs_path);
-	}
-
-#else /*_WIN32*/
-
-	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
-
-#ifdef WESNOTH_BOOST_OS_IOS
-	char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
-	if(sdl_pref_path) {
-		backupprefdir = std::string(sdl_pref_path) + backupprefdir;
-		SDL_free(sdl_pref_path);
-	}
-#endif
-
-#ifdef _X11
-	const char* home_str = getenv("HOME");
-
-	if(newprefdir.empty()) {
-		char const* xdg_data = getenv("XDG_DATA_HOME");
-		if(!xdg_data || xdg_data[0] == '\0') {
-			if(!home_str) {
-				newprefdir = backupprefdir;
-				goto other;
-			}
-
-			user_data_dir = home_str;
-			user_data_dir /= ".local/share";
-		} else {
-			user_data_dir = xdg_data;
-		}
-
-		user_data_dir /= "wesnoth";
-		user_data_dir /= get_version_path_suffix();
-	} else {
-	other:
-		bfs::path home = home_str ? home_str : ".";
-
-		if(newprefdir[0] == '/') {
-			user_data_dir = newprefdir;
-		} else {
-			if(!relative_ok) {
-				// TRANSLATORS: translate the part inside <...> only
-				deprecated_message(_("--userdata-dir=<relative path>"),
-					DEP_LEVEL::FOR_REMOVAL,
-					{1, 17, 0},
-					_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
-			}
-			user_data_dir = home / newprefdir;
-		}
-	}
+	DBG_FS << "determining Windows userdata dir";
+	user_data_dir = windows_userdata(newprefdir);
+#elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
+	DBG_FS << "determining macOS userdata dir";
+	user_data_dir = apple_userdata(newprefdir);
 #else
-	if(newprefdir.empty()) {
-		newprefdir = backupprefdir;
-		relative_ok = true;
-	}
-
-	const char* home_str = getenv("HOME");
-	bfs::path home = home_str ? home_str : ".";
-
-	if(newprefdir[0] == '/') {
-		user_data_dir = newprefdir;
-	} else {
-		if(!relative_ok) {
-			// TRANSLATORS: translate the part inside <...> only
-			deprecated_message(_("--userdata-dir=<relative path>"),
-				DEP_LEVEL::FOR_REMOVAL,
-				{1, 17, 0},
-				_("Use absolute paths. Relative paths are deprecated because they are interpreted relative to $HOME"));
-		}
-		user_data_dir = home / newprefdir;
-	}
+	DBG_FS << "determining non-Windows and non-macOS userdata dir";
+	user_data_dir = linux_userdata(newprefdir);
 #endif
 
-#endif /*_WIN32*/
 	setup_user_data_dir();
 	user_data_dir = normalize_path(user_data_dir.string(), true, true);
 }
@@ -841,27 +925,7 @@ static const bfs::path& get_user_data_path()
 std::string get_user_config_dir()
 {
 	if(user_config_dir.empty()) {
-#if defined(_X11) && !defined(PREFERENCES_DIR)
-		char const* xdg_config = getenv("XDG_CONFIG_HOME");
-
-		if(!xdg_config || xdg_config[0] == '\0') {
-			xdg_config = getenv("HOME");
-			if(!xdg_config) {
-				user_config_dir = get_user_data_path();
-				return user_config_dir.string();
-			}
-
-			user_config_dir = xdg_config;
-			user_config_dir /= ".config";
-		} else {
-			user_config_dir = xdg_config;
-		}
-
-		user_config_dir /= "wesnoth";
-		set_user_config_path(user_config_dir);
-#else
 		user_config_dir = get_user_data_path();
-#endif
 	}
 
 	return user_config_dir.string();
@@ -987,7 +1051,7 @@ bool set_cwd(const std::string& dir)
 	return true;
 }
 
-std::string get_exe_dir()
+std::string get_exe_path()
 {
 #ifdef _WIN32
 	wchar_t process_path[MAX_PATH];
@@ -996,11 +1060,21 @@ std::string get_exe_dir()
 	GetModuleFileNameW(nullptr, process_path, MAX_PATH);
 
 	if(GetLastError() != ERROR_SUCCESS) {
-		return get_cwd();
+		return get_cwd() + "/wesnoth";
 	}
 
 	bfs::path exe(process_path);
-	return exe.parent_path().string();
+	return exe.string();
+#elif defined(__APPLE__)
+	std::vector<char> buffer(PATH_MAX, 0);
+	uint32_t size = PATH_MAX;
+	if(_NSGetExecutablePath(&buffer[0], &size) == 0) {
+		buffer.resize(size+1);
+		return std::string(buffer.begin(), buffer.end());
+	} else {
+		ERR_FS << "Path to wesnoth executable is too long";
+		return get_cwd() + "/The Battle for Wesnoth";
+	}
 #else
 	// first check /proc
 	if(bfs::exists("/proc/")) {
@@ -1008,7 +1082,7 @@ std::string get_exe_dir()
 		error_code ec;
 		bfs::path exe = bfs::read_symlink(self_exe, ec);
 		if(!ec) {
-			return exe.parent_path().string();
+			return exe.string();
 		}
 	}
 
@@ -1018,19 +1092,38 @@ std::string get_exe_dir()
 	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
 	bfs::path search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
-		return search.parent_path().string();
+		return search.string();
 	}
 
 	// versionless
 	exe = filesystem::get_program_invocation("wesnoth");
 	search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
-		return search.parent_path().string();
+		return search.string();
 	}
 
 	// return the current working directory
-	return get_cwd();
+	return get_cwd() + "/wesnoth";
 #endif
+}
+
+std::string get_exe_dir()
+{
+	bfs::path path(get_exe_path());
+	return path.parent_path().string();
+}
+
+std::string get_wesnothd_name()
+{
+	std::string exe_dir = get_exe_dir();
+	std::string exe_name = base_name(get_exe_path());
+	// macOS doesn't call the wesnoth client executable "wesnoth"
+	// otherwise, add any suffix after the "wesnoth" part of the executable name to wesnothd's name
+	std::string wesnothd = exe_dir + "/wesnothd" + exe_name.substr(7);
+	if(!file_exists(wesnothd)) {
+		return exe_dir + "/" + get_program_invocation("wesnothd");
+	}
+	return wesnothd;
 }
 
 bool make_directory(const std::string& dirname)
@@ -1394,6 +1487,41 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
+bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+{
+	std::string rel_path = "";
+	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);
+	std::string addon_asset_dir;
+
+	bool found = false;
+	bool is_in_core_dir = (path.find(core_asset_dir) != std::string::npos);
+	bool is_in_addon_dir = false;
+
+	if (is_in_core_dir) {
+		rel_path = path.erase(0, core_asset_dir.size()+1);
+		found = true;
+	} else if (!addon_id.empty()) {
+		addon_asset_dir = get_current_editor_dir(addon_id) + "/" + asset_type;
+		is_in_addon_dir = (path.find(addon_asset_dir) != std::string::npos);
+		if (is_in_addon_dir) {
+			rel_path = path.erase(0, addon_asset_dir.size()+1);
+			found = true;
+		} else {
+			// Not found in either core or addons dirs,
+			// return a possible path where the asset could be copied.
+			std::string filename = boost::filesystem::path(path).filename().string();
+			std::string asset_path = addon_asset_dir + "/" + filename;
+			rel_path = filename;
+			found = false;
+		}
+	} else {
+		found = false;
+	}
+
+	path = rel_path;
+	return found;
+}
+
 /**
  *  The paths manager is responsible for recording the various paths
  *  that binary files may be located at.
@@ -1569,7 +1697,11 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	}
 
 	std::string result;
-	for(const std::string& bp : get_binary_paths(type)) {
+	// fix for duplicate mainline paths on macOS for some reason
+	// would be good for someone who uses macOS to debug the cause at some point
+	const std::vector<std::string> temp = get_binary_paths(type);
+	const std::set<std::string> bpaths(temp.begin(), temp.end());
+	for(const std::string& bp : bpaths) {
 		bfs::path bpath(bp);
 		bpath /= filename;
 
@@ -1705,16 +1837,11 @@ std::string get_independent_binary_file_path(const std::string& type, const std:
 
 std::string get_program_invocation(const std::string& program_name)
 {
-	const std::string real_program_name(program_name
-#ifdef DEBUG
-										+ "-debug"
-#endif
 #ifdef _WIN32
-										+ ".exe"
+	return program_name + ".exe";
+#else
+	return program_name;
 #endif
-	);
-
-	return real_program_name;
 }
 
 std::string sanitize_path(const std::string& path)

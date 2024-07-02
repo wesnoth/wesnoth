@@ -4,7 +4,7 @@ function world_conquest_tek_map_noise_proxy(radius, fraction, terrain)
 	mathx.shuffle(terrain_to_change)
 	for terrain_i = 1, math.ceil(#terrain_to_change / fraction) do
 		local loc_a = terrain_to_change[terrain_i]
-		local terrain_to_swap_b = map:find_in_radius({loc_a}, radius, nop_filter)
+		local terrain_to_swap_b = map:find_in_radius(loc_a, radius, nop_filter)
 
 		terrain_to_swap_b  = map:find(f.all(
 			f.none(f.is_loc(loc_a)),

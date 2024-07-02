@@ -26,7 +26,7 @@
 #include "display.hpp"
 #include "game_board.hpp"
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_data.hpp" // for resources::gamedata conversion variable_set
 #include "game_version.hpp"
 #include "log.hpp"
@@ -193,7 +193,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			//add to recall list
 			team_.recall_list().add(new_unit);
 			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side();
-			preferences::encountered_units().insert(new_unit->type_id());
+			prefs::get().encountered_units().insert(new_unit->type_id());
 		}
 	} else {
 		//get unit from recall list
@@ -217,7 +217,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 {
 
 	if (discover_) {
-		preferences::encountered_units().insert(new_unit.type_id());
+		prefs::get().encountered_units().insert(new_unit.type_id());
 	}
 
 	bool show = show_ && (display::get_singleton() !=nullptr) && !display::get_singleton()->fogged(loc);

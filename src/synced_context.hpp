@@ -152,6 +152,11 @@ public:
 
 	/** Sets is_simultaneous_ = true, called using a user choice that is not the currently playing side. */
 	static void set_is_simultaneous();
+	static void block_undo(bool do_block = true);
+	static void reset_block_undo()
+	{
+		is_undo_blocked_ = false;
+	}
 
 	/** @return Whether we tracked something that can never be undone. */
 	static bool undo_blocked();
@@ -209,6 +214,7 @@ public:
 		undo_commands_.clear();
 	}
 
+	static bool ignore_undo();
 private:
 	/** Weather we are in a synced move, in a user_choice, or none of them. */
 	static inline synced_state state_ = synced_context::UNSYNCED;
@@ -223,6 +229,7 @@ private:
 	 * TODO: it would be better if the following variable were not static.
 	 */
 	static inline bool is_simultaneous_ = false;
+	static inline bool is_undo_blocked_ = false;
 
 	/** Used to restore the unit id manager when undoing. */
 	static inline int last_unit_id_ = 0;

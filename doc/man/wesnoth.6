@@ -47,18 +47,6 @@ campaigns, and share them with others.
 Show all translations in the in-game language selection list,
 even if they are deemed insufficiently complete.
 .TP
-.BI --bunzip2 \ infile.bz2
-decompresses a file which should be in bzip2 format and stores it
-without the .bz2 suffix. The
-.I infile.bz2
-will be removed.
-.TP
-.BI --bzip2 \ infile
-compresses a file in bzip2 format, stores it as
-.IR infile .bz2
-and removes
-.IR infile .
-.TP
 .BI -c[ id_campaign ],\ --campaign[ =id_campaign ]
 goes directly to the campaign with id
 .IR id_campaign .
@@ -128,18 +116,6 @@ in the userdata directory.
 .B -f, --fullscreen
 runs the game in full screen mode.
 .TP
-.BI --gunzip \ infile.gz
-decompresses a file which should be in gzip format and stores it
-without the .gz suffix. The
-.I infile.gz
-will be removed.
-.TP
-.BI --gzip \ infile
-compresses a file in gzip format, stores it as
-.IR infile .gz
-and removes
-.IR infile .
-.TP
 .B -h, --help
 displays a summary of command line options to standard output, and exits.
 .TP
@@ -179,9 +155,12 @@ option.
 .B --log-precise
 shows the timestamps in log output with more precision.
 .TP
-.B --log-strict
-sets the strict level of the logger. Any messages sent to log domains
-of this level or more severe will cause the unit test to fail regardless
+.BI --log-strict \ level
+sets the strict
+.I level
+of the logger. Any messages sent to log domains of this
+.I level
+or more severe will cause the unit test to fail regardless
 of the victory result. Only relevant when used with
 .BR -u .
 .TP
@@ -383,8 +362,7 @@ You can also specify an absolute path for the configuration directory outside
 the $HOME or "My Documents\\My Games". On Windows it is also possible to
 specify a directory relative to the process working directory by using path
 starting with ".\\" or "..\\".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth,
-on other systems to the userdata path.
+This defaults to the userdata path.
 .TP
 .B --userconfig-path
 prints the path of the user configuration directory and exits.

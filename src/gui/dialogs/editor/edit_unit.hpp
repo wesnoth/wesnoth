@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,15 +15,13 @@
 
 #pragma once
 
+#include "game_config_view.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "serialization/preprocessor.hpp"
-#include "game_config_view.hpp"
 
 #include <boost/dynamic_bitset.hpp>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
 namespace gui2
 {
@@ -32,8 +30,6 @@ namespace dialogs
 {
 
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * Dialog that allows user to create custom unit types.
  */
 class editor_edit_unit : public modal_dialog
@@ -54,7 +50,10 @@ private:
 	config type_cfg_;
 	config resistances_, defenses_, movement_;
 	preproc_map specials_map_, abilities_map_;
-	/** Used to control checkboxes, so that only specific values are overridden */
+	/**
+	 * Used to control checkboxes for various resistances, defences, etc.
+	 * so that only specific values are overridden.
+	 */
 	boost::dynamic_bitset<> res_toggles_, def_toggles_, move_toggles_;
 
 	std::vector<config> align_list_, race_list_, movetype_list_, defense_list_, resistances_list_, usage_type_list_;
@@ -81,16 +80,8 @@ private:
 	/** Save Unit Type data to cfg */
 	void save_unit_type();
 
-	/** Check if width/height bigger
-	 *  than a specified size */
-	bool check_big(std::string img_abs_path, const int scale_size)
-	{
-		SDL_Surface * img_surf = IMG_Load(img_abs_path.c_str());
-		return (img_surf->w > scale_size) || (img_surf->h > scale_size);
-	}
-
 	/** Write macro to a stream at specified tab level */
-	void write_macro(std::ostream& out, int level, std::string macro_name);
+	void write_macro(std::ostream& out, unsigned level, const std::string macro_name);
 
 	/** Update wml preview */
 	void update_wml_view();
@@ -134,7 +125,6 @@ private:
 
 	/** Callback to enable/disable OK button if ID/Name is invalid */
 	void button_state_change();
-	void button_state_change_id();
 
 	/** Utility method to check if ID contains any invalid characters */
 	bool check_id(std::string id);

@@ -168,7 +168,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	else
 	{
 		// put the where clause with an always true condition here so I don't need to check again a couple lines down whether it needs "where" vs "and"
-		game_history_query += "where 1=1 ";
+		game_history_query += "where true ";
 	}
 
 	game_history_query += "and exists "

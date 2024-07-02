@@ -1572,10 +1572,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			desc.child("modification")->set_attr_dup("id", m->attr("id"));
 			desc.child("modification")->set_attr_dup("name", m->attr("name"));
 			desc.child("modification")->set_attr_dup("addon_id", m->attr("addon_id"));
-
-			if(m->attr("require_modification").to_bool(false)) {
-				desc.child("modification")->set_attr("require_modification", "yes");
-			}
+			desc.child("modification")->set_attr_dup("require_modification", m->attr("require_modification"));
 		}
 
 		// Record the full scenario in g.level()
@@ -3049,7 +3046,7 @@ int main(int argc, char** argv)
 			keep_alive = true;
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-					  << " [-dvV] [-c path] [-m n] [-p port] [-t n]\n"
+					  << " [-dvV] [-c path] [-m n] [-p port]\n"
 					  << "  -c, --config <path>        Tells wesnothd where to find the config file to use.\n"
 					  << "  -d, --daemon               Runs wesnothd as a daemon.\n"
 					  << "  -h, --help                 Shows this usage message.\n"

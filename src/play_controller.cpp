@@ -42,8 +42,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "pathfind/teleport.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -129,7 +128,7 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay, bool start_faded)
+play_controller::play_controller(const config& level, saved_game& state_of_game)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
@@ -151,12 +150,12 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
 	, statistics_context_(new statistics_t(state_of_game.statistics()))
 	, replay_(new replay(state_of_game.get_replay()))
-	, skip_replay_(skip_replay)
+	, skip_replay_(false)
 	, skip_story_(state_of_game.skip_story())
 	, did_autosave_this_turn_(true)
 	, did_tod_sound_this_turn_(false)
 	, map_start_()
-	, start_faded_(start_faded)
+	, start_faded_(true)
 	, victory_music_()
 	, defeat_music_()
 	, scope_(hotkey::scope_game)
@@ -232,7 +231,7 @@ void play_controller::init(const config& level)
 
 		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
-		preferences::encounter_all_content(gamestate().board_);
+		prefs::get().encounter_all_content(gamestate().board_);
 
 		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
@@ -447,6 +446,9 @@ void play_controller::do_init_side()
 {
 	{ // Block for set_scontext_synced
 		set_scontext_synced sync;
+
+		synced_context::block_undo();
+
 		log_scope("player turn");
 		// In case we might end up calling sync:network during the side turn events,
 		// and we don't want do_init_side to be called when a player drops.
@@ -518,6 +520,8 @@ void play_controller::do_init_side()
 		gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	}
 
+	statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
+
 	init_side_end();
 
 	if(!is_skipping_replay() && current_team().get_scroll_to_leader()) {
@@ -562,8 +566,9 @@ void play_controller::finish_side_turn_events()
 
 	{ // Block for set_scontext_synced
 		set_scontext_synced sync(1);
-		// Ending the turn commits all moves.
-		undo_stack().clear();
+		// Also clears the undo stack.
+		synced_context::block_undo();
+
 		gamestate().board_.end_turn(current_side());
 		const std::string turn_num = std::to_string(turn());
 		const std::string side_num = std::to_string(current_side());
@@ -722,7 +727,7 @@ void play_controller::tab()
 		}
 
 		// Add nicks from friendlist
-		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+		const std::map<std::string, std::string> friends = prefs::get().get_acquaintances_nice("friend");
 
 		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter) {
 			dictionary.insert((*iter).first);
@@ -730,7 +735,7 @@ void play_controller::tab()
 
 		// Exclude own nick from tab-completion.
 		// NOTE why ?
-		dictionary.erase(preferences::login());
+		dictionary.erase(prefs::get().login());
 		break;
 	}
 
@@ -761,30 +766,6 @@ const team& play_controller::current_team() const
 	return gamestate().board_.get_team(current_side());
 }
 
-bool play_controller::is_team_visible(int team_num, bool observer) const
-{
-	const team& t = gamestate().board_.get_team(team_num);
-	if(observer) {
-		return !t.get_disallow_observers() && !t.is_empty();
-	} else {
-		return t.is_local_human() && !t.is_idle();
-	}
-}
-
-int play_controller::find_viewing_side() const
-{
-	const int num_teams = get_teams().size();
-	const bool observer = is_observer();
-
-	for(int i = 0; i < num_teams; i++) {
-		const int team_num = modulo(current_side() + i, num_teams, 1);
-		if(is_team_visible(team_num, observer)) {
-			return team_num;
-		}
-	}
-
-	return 0;
-}
 
 events::mouse_handler& play_controller::get_mouse_handler_base()
 {
@@ -883,26 +864,26 @@ void play_controller::save_game()
 	assert(!gamestate().events_manager_->is_event_running());
 
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_game_auto(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
 
 void play_controller::save_replay()
 {
-	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_replay_auto(const std::string& filename)
 {
-	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
 
@@ -1020,6 +1001,7 @@ void play_controller::check_victory()
 	DBG_EE << "throwing end level exception...";
 	// Also proceed to the next scenario when another player survived.
 	end_level_data el_data;
+	el_data.transient.reveal_map = reveal_map_default();
 	el_data.proceed_to_next_level = found_player || found_network_player;
 	el_data.is_victory = found_player;
 	set_end_level_data(el_data);
@@ -1044,6 +1026,11 @@ void play_controller::process_oos(const std::string& msg) const
 	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
+bool play_controller::reveal_map_default() const
+{
+	return saved_game_.classification().get_tagname() == "multiplayer";
+}
+
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
 	gui_->set_team(team_index, observe);
@@ -1054,14 +1041,14 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 void play_controller::do_autosave()
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
-	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+	savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
+	save.autosave(false, prefs::get().autosavemax(), pref_constants::INFINITE_AUTO_SAVES);
 }
 
 void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(true, filename);
 }
 
@@ -1127,6 +1114,9 @@ void play_controller::start_game()
 
 		set_scontext_synced sync;
 
+		// So that the code knows it can send choices immidiateley
+		// todo: im not sure whetrh this is actually needed.
+		synced_context::block_undo();
 		fire_prestart();
 		if(is_regular_game_end()) {
 			return;
@@ -1264,37 +1254,6 @@ std::set<std::string> play_controller::all_players() const
 	return res;
 }
 
-void play_controller::play_side()
-{
-	do {
-		if(std::find_if(get_teams().begin(), get_teams().end(), [](const team& t) { return !t.is_empty(); }) == get_teams().end()){
-			throw game::game_error("The scenario has no (non-empty) sides defined");
-		}
-		update_viewing_player();
-
-		maybe_do_init_side();
-		if(is_regular_game_end()) {
-			return;
-		}
-		// This flag can be set by derived classes (in overridden functions).
-		player_type_changed_ = false;
-
-		//TODO: this resets the "current turn" statistics whenever the controller changes,
-		//  in particular whenever a game is reloaded, wouldn't it be better if this was
-		//  only done, when a sides turn actually ends?
-		statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
-
-		play_side_impl();
-
-		if(is_regular_game_end()) {
-			return;
-		}
-	} while(player_type_changed_);
-
-	// Keep looping if the type of a team (human/ai/networked) has changed mid-turn
-	sync_end_turn();
-}
-
 void play_controller::check_time_over()
 {
 	const bool time_left = gamestate().tod_manager_.next_turn(&gamestate().gamedata_);
@@ -1321,6 +1280,7 @@ void play_controller::check_time_over()
 		}
 
 		end_level_data e;
+		e.transient.reveal_map = reveal_map_default();
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);

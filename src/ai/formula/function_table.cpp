@@ -67,9 +67,21 @@ class unit_adapter {
 			}
 		}
 
+		/**
+		 * Estimates the damage this unit or unit_type would take from a single strike of an attack.
+		 *
+		 * Many details aren't taken into account here, for example abilities that are only active
+		 * on offense, or on particular terrain. For unit_type, abilities aren't considered at all.
+		 */
 		int damage_from(const attack_type& attack) const {
 			if(unit_type_ != nullptr) {
-				return unit_type_->movement_type().resistance_against(attack);
+				std::pair<std::string, std::string> types = attack.damage_type();
+				int res = unit_type_->movement_type().resistance_against(types.first);
+				if(!(types.second).empty()){
+					// max not min, resistance_against() returns the percentage taken, so higher means more damage
+					res = std::max(res, unit_type_->movement_type().resistance_against(types.second));
+				}
+				return res;
 			} else {
 				return unit_->damage_from(attack, false, map_location());
 			}

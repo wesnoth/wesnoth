@@ -23,8 +23,9 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "map/label.hpp"
-#include "preferences/editor.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -190,8 +191,8 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	}
 
 	// 0.3 Not a .map or .cfg file
-	if(!filesystem::ends_with(filename, ".map") && !filesystem::ends_with(filename, ".cfg")) {
-		std::string message = _("File does not have .map or .cfg extension");
+	if(!filesystem::ends_with(filename, ".map") && !filesystem::ends_with(filename, ".cfg") && !filesystem::ends_with(filename, ".mask")) {
+		std::string message = _("File does not have .map, .cfg, or .mask extension");
 		throw editor_map_load_exception(filename, message);
 	}
 
@@ -723,6 +724,10 @@ config map_context::to_config()
 	}
 
 	// [unit]s
+	config traits;
+	preproc_map traits_map;
+	read(traits, *(preprocess_file(game_config::path+"/data/core/macros/traits.cfg", &traits_map)));
+
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
 
@@ -744,6 +749,15 @@ config map_context::to_config()
 		if(unit.unrenamable()) {
 			u["unrenamable"] = unit.unrenamable();
 		}
+
+		if(unit.loyal()) {
+			config trait_loyal;
+			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
+			u.append(trait_loyal);
+		}
+		//TODO this entire block could also be replaced by unit.write(u, true)
+		//however, the resultant config is massive and contains many attributes we don't need.
+		//need to find a middle ground here.
 	}
 
 	// [side]s
@@ -800,8 +814,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		//TODO : Needs to be replaced with a better message later.
-		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
+		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
 		throw editor_map_save_exception(msg);
 	}
 
@@ -820,6 +833,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 		std::stringstream wml_stream;
 
 		wml_stream
+			<< "#textdomain " << current_textdomain << "\n"
 			<< "#\n"
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
@@ -834,14 +848,13 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 
 		if(!wml_stream.str().empty()) {
 			filesystem::write_file(schedule_path, wml_stream.str());
+			gui2::show_transient_message("", _("Time schedule saved."));
 		}
 
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		//TODO : Needs to be replaced with a better message later.
-		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
-
+		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
 		throw editor_map_save_exception(msg);
 	}
 }
@@ -992,7 +1005,7 @@ void map_context::clear_modified()
 
 void map_context::add_to_recent_files()
 {
-	preferences::editor::add_recent_files_entry(get_filename());
+	prefs::get().add_recent_files_entry(get_filename());
 }
 
 bool map_context::can_undo() const
