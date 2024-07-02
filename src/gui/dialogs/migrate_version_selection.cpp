@@ -45,7 +45,7 @@ void migrate_version_selection::execute()
 	if(mig.versions_.size() > 0) {
 		mig.show();
 	} else {
-		gui2::show_message(_("No Versions"), _("There are no other previous versions which data can be migrated from"), gui2::dialogs::message::button_style::auto_close);
+		gui2::show_message(_("No Other Version Found"), _("This would import settings from a previous version of Wesnoth, but no other version was found on this device"), gui2::dialogs::message::button_style::auto_close);
 	}
 }
 
