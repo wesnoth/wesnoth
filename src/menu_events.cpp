@@ -157,7 +157,7 @@ void menu_handler::save_map()
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".map");
+	   .set_extension(filesystem::map_extension);
 
 	if(!dlg.show()) {
 		return;

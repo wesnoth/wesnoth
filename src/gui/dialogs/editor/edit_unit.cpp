@@ -1077,7 +1077,7 @@ void editor_edit_unit::write() {
 	boost::algorithm::replace_all(unit_name, " ", "_");
 
 	// Path to <unit_type_name>.cfg
-	std::string unit_path = filesystem::get_current_editor_dir(addon_id_) + "/units/" + unit_name + ".cfg";
+	std::string unit_path = filesystem::get_current_editor_dir(addon_id_) + "/units/" + unit_name + filesystem::wml_extension;
 
 	// Write to file
 	try {

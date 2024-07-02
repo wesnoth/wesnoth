@@ -3055,10 +3055,6 @@ must be converted manually".format(filename, baseline + y + 1, old, name))
 
 # Generic machinery starts here
 
-def is_map(filename):
-    "Is this file a map?"
-    return filename.endswith(".map") or filename.endswith(".mask")
-
 if 0: # Not used, as there are currently no defined map transforms
     class maptransform_error(BaseException):
         "Error object to be thrown by maptransform."
@@ -3108,7 +3104,7 @@ def translator(filename, mapxforms, textxform):
             return
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
-    map_only = filename.endswith(".map")
+    map_only = filename.endswith(default_map_extension)
     terminator = "\n"
     UTF8_BOM = "\ufeff"
     for i, line in enumerate(unmodified):
@@ -3145,9 +3141,9 @@ def translator(filename, mapxforms, textxform):
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
                 pass
-            elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(".mask")):
-                print('"%s", line %d: mask file without .mask extension or not a mask file (%s)' \
-                      % (filename, lineno+1, refname))
+            elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(default_mask_extension)):
+                print('"%s", line %d: mask file without %s extension or not a mask file (%s)' \
+                      % (filename, lineno+1, default_mask_extension, refname))
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
@@ -3163,7 +3159,7 @@ def translator(filename, mapxforms, textxform):
             maskwarn = False
             maptype = None
             if map_only:
-                if filename.endswith(".mask"):
+                if filename.endswith(default_mask_extension):
                     maptype = "mask"
                 else:
                     maptype = "map"
@@ -3239,8 +3235,8 @@ def translator(filename, mapxforms, textxform):
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
                 mapfile = refre.group(1)
-                if not mapfile.endswith(".map") and is_map(mapfile):
-                    newline = newline.replace(mapfile, mapfile + ".map")
+                if not mapfile.endswith(default_map_extension) and ismap(mapfile):
+                    newline = newline.replace(mapfile, mapfile + default_map_extension)
             newdata.append(newline + terminator)
             if newline != line:
                 if verbose > 0:
@@ -3505,8 +3501,8 @@ vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return (fn.endswith(".cfg") and not fn.endswith("_info.cfg")) \
-           or is_map(fn) or issave(fn)
+    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) \
+           or ismap(fn) or issave(fn)
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."

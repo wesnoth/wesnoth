@@ -268,8 +268,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 static void archive_file(const std::string& path, const std::string& fname, config& cfg)
 {
 	cfg["name"] = fname;
-	const bool is_cfg = (fname.size() > 4 ? (fname.substr(fname.size() - 4) == ".cfg") : false);
-	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname),is_cfg));
+	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname), filesystem::is_cfg(fname)));
 }
 
 static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, const filesystem::blacklist_pattern_list& ignore_patterns)

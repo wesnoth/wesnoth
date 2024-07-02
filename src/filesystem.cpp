@@ -1333,6 +1333,21 @@ std::time_t file_modified_time(const std::string& fname)
 	return mtime;
 }
 
+bool is_map(const std::string& filename)
+{
+	return bfs::path(filename).extension() == map_extension;
+}
+
+bool is_cfg(const std::string& filename)
+{
+	return bfs::path(filename).extension() == wml_extension;
+}
+
+bool is_mask(const std::string& filename)
+{
+	return bfs::path(filename).extension() == mask_extension;
+}
+
 bool is_gzip_file(const std::string& filename)
 {
 	return bfs::path(filename).extension() == ".gz";

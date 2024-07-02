@@ -93,12 +93,10 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		//
 
 		if(!is_main_cfg) {
-			// Remove the file extension first.
-			static const std::string wml_suffix = ".cfg";
 
-			if(base.size() > wml_suffix.size()) {
-				const std::size_t suffix_pos = base.size() - wml_suffix.size();
-				if(base.substr(suffix_pos) == wml_suffix) {
+			if(base.size() > filesystem::wml_extension.size()) {
+				const std::size_t suffix_pos = base.size() - filesystem::wml_extension.size();
+				if(base.substr(suffix_pos) == filesystem::wml_extension) {
 					base.erase(suffix_pos);
 				}
 			}

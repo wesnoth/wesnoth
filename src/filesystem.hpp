@@ -72,6 +72,11 @@ enum class name_mode { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 enum class filter_mode { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
 enum class reorder_mode { DONT_REORDER, DO_REORDER };
 
+// default extensions
+const std::string map_extension = ".map";
+const std::string mask_extension = ".mask";
+const std::string wml_extension = ".cfg";
+
 // A list of file and directory blacklist patterns
 class blacklist_pattern_list
 {
@@ -249,6 +254,15 @@ bool file_exists(const std::string& name);
 
 /** Get the modification time of a file. */
 std::time_t file_modified_time(const std::string& fname);
+
+/** Returns true if the file ends with the mapfile extension. */
+bool is_map(const std::string& filename);
+
+/** Returns true if the file ends with the wmlfile extension. */
+bool is_cfg(const std::string& filename);
+
+/** Returns true if the file ends with the maskfile extension. */
+bool is_mask(const std::string& filename);
 
 /** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);
