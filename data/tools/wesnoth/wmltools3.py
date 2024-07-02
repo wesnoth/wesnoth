@@ -68,12 +68,12 @@ if no expansion could be performed"""
         for i, match in enumerate(re.finditer(r"\[(.*?)\]", path)): # stop on the first closed square braces, to allow multiple substitutions
             substitutions.append([]) # a new list which will host all the substitutions for the current expansion
             for token in match.group(1).split(","):
-                match_mult = re.match("(.+)\*(\d+)", token) # repeat syntax, eg. [melee*3]
+                match_mult = re.match(r"(.+)\*(\d+)", token) # repeat syntax, eg. [melee*3]
                 if match_mult:
                     substitutions[i].extend([Substitution(match_mult.group(1), match.start(0), match.end(0))] *
                                          int(match_mult.group(2)))
                     continue
-                match_range = re.match("(\d+)~(\d+)", token) # range syntax, eg [1~4]
+                match_range = re.match(r"(\d+)~(\d+)", token) # range syntax, eg [1~4]
                 if match_range:
                     before, after = int(match_range.group(1)), int(match_range.group(2))
                     # does one of the limits have leading zeros? If so, detect the length of the numbers used
@@ -145,7 +145,7 @@ def comma_split(csstring, list=None, strip="r"):
     # lstrip() only, the other to warn about trailing whitespace.
     if 'w' in strip:
         for item in vallist:
-            if re.search('\s$', item):
+            if re.search(r"\s$", item):
                 print('Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring))
     if 'l' not in strip:
         vallist = [x.rstrip() for x in vallist]
@@ -162,8 +162,8 @@ def parse_attribute(line):
         return None
     leader = line[:where]
     after = line[where+1:]
-    if re.search("\s#", after):
-        where = len(re.split("\s+#", after)[0])
+    if re.search(r"\s#", after):
+        where = len(re.split(r"\s+#", after)[0])
         value = after[:where].lstrip()
         comment = after[where:]
     else:
@@ -406,7 +406,7 @@ def parse_macroref(start, line):
             if quit:
                 added_arg = handle_argument(buffer)
                 break
-        elif line[i] == EQUALS and re.match(r'^([A-Z0-9_]+?)', line[i-1]):
+        elif line[i] == EQUALS and re.match(r"^([A-Z0-9_]+?)", line[i-1]):
             open_token(EQUALS)
             buffer.append(line[i])
         elif line[i].isspace():
@@ -486,7 +486,7 @@ def actualtype(a):
         atype = "percentage"
     elif re.match(r"-?[0-9]+,-?[0-9]+\Z", a):
         atype = "position"
-    elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
+    elif re.match(r"(([0-9]+-)?[0-9]+,)*([0-9]+-)?[0-9]+\Z", a):
         atype = "span"
     elif a in ("melee", "ranged"):
         atype = "range"
@@ -629,8 +629,8 @@ class States(enum.Enum):
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + "))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
-    tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)")
+    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + r"))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
+    tag_parse = re.compile(r"\s*([a-z_]+)\s*=(.*)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
         pattern = pattern.replace("+", r"\+")
@@ -1128,7 +1128,7 @@ class Translation(dict):
             expect = False
             fuzzy = "#, fuzzy\n"
             gettext = f.read().decode("utf8")
-            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").finditer(gettext)
+            matches = re.compile(r'(msgid|msgstr)((\s*".*?")+)').finditer(gettext)
             msgid = ""
             for match in matches:
                 text = "".join(re.compile('"(.*?)"').findall(match.group(2)))
