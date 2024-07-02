@@ -14,11 +14,11 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-1604-scons-gcc-release, ubuntu-1604-scons-clang-debug, ubuntu-1604-cmake-clang-debug, macos-master-release, macos-master-debug]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, translations, macos-intel-debug, macos-intel-release]
     if: always()
 
     steps:
-      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: technote-space/workflow-conclusion-action@v3
       - uses: rjstone/discord-webhook-notify@v1
         if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
@@ -29,133 +29,96 @@ jobs:
             commit: ${{ github.event.head_commit.message }}
             commit url: ${{ github.event.head_commit.url }}
 
-  ubuntu-1604-scons-gcc-release:
+  ubuntu-2004-scons-gcc-release-lto:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
-      - name: Ubuntu 1604
+      - name: Ubuntu 20.04
         run: |
-          export BRANCH=1.14
-          export IMAGE=1604
+          export BRANCH=master
+          export IMAGE=2004
           export NLS=false
           export TOOL=scons
           export CC=gcc
           export CXX=g++
           export CXX_STD=11
           export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export LTO=true
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  ubuntu-1604-scons-clang-debug:
+  ubuntu-2004-cmake-clang-debug:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
-      - name: Ubuntu 1604
+      - name: Ubuntu 20.04
         run: |
-          export BRANCH=1.14
-          export IMAGE=1604
-          export NLS=false
-          export TOOL=scons
-          export CC=clang
-          export CXX=clang++
-          export CXX_STD=11
-          export CFG=debug
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
-          ./.github/workflows/ci-scripts/ubuntu.sh master
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-Clang-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
-  ubuntu-1604-cmake-clang-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 1604
-        run: |
-          export BRANCH=1.14
-          export IMAGE=1604
+          export BRANCH=master
+          export IMAGE=2004
           export NLS=false
           export TOOL=cmake
           export CC=clang
           export CXX=clang++
           export CXX_STD=11
-          export CFG=Debug
+          export CFG=debug
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   translations:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
-      - name: Ubuntu 1604
+      - name: Translations
         run: |
-          export BRANCH=1.14
-          export IMAGE=1604
+          export BRANCH=master
+          export IMAGE=2004
           export NLS=only
-          export TOOL=cmake
-          export CC=clang
-          export CXX=clang++
+          export TOOL=scons
+          export CC=gcc
+          export CXX=g++
           export CXX_STD=11
-          export CFG=Debug
+          export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-travis/build
+          export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-master-release:
-    runs-on: macos-10.15
+  macos-intel-debug:
+    runs-on: macos-11.0
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
-      - name: macOS Release
+      - name: macOS Intel Debug
+        run: |
+          export CFG=Debug
+          export CACHE_DIR=~/build-cache
+          ./.github/workflows/ci-scripts/macos.sh
+
+  macos-intel-release:
+    runs-on: macos-11.0
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+
+      - name: macOS Intel Release
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
           ./.github/workflows/ci-scripts/macos.sh
-
-  macos-master-debug:
-    runs-on: macos-10.15
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS Debug
-        run: |
-          export CFG=Debug
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
