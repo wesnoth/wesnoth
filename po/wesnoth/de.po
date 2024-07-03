@@ -42,7 +42,7 @@ msgstr "Gzip"
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "Standard Kompressionsrate, schneller"
+msgstr "Standard-Kompressionsrate, schneller"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
@@ -120,12 +120,12 @@ msgid ""
 "to disable."
 msgstr ""
 "Wartezeit in Minuten, ehe eine Chat-Nachricht im Spiel ausgeblendet wird. "
-"Mit 0 werden Nichtrichten nicht gelöscht Löschen deaktiviert."
+"Auf 0 setzen zum Deaktivieren."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
-msgstr "12-Stunden Uhrzeitformat verwenden"
+msgstr "12-Stunden-Uhrzeitformat verwenden"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:94
@@ -181,7 +181,7 @@ msgstr "Logging"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr "Erlaube Schadensberechnung mit Monte Carlo Simulation"
+msgstr "Erlaube Schadensberechnung mit Monte-Carlo-Simulation"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:141
@@ -189,8 +189,8 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
-"Erlaube dem Schadensberechnungsfenster die Kämpfe zu simulieren statt exakte "
-"Wahrscheinlichkeitsberechnung durchzuführen"
+"Erlaube dem Schadensberechnungsfenster, die Kämpfe zu simulieren statt "
+"exakte Wahrscheinlichkeitsberechnungen durchzuführen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:148
@@ -204,10 +204,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
-"Zeige Warnungen über veraltete APO im im-spiel Chat. Diese Nachrichten "
+"Zeige Warnungen über veraltete API im Spiel-Chat. Diese Nachrichten "
 "werden immer ins Log geschrieben, auch wenn diese Option deaktiviert ist. "
-"Zusätzlich kontrolliert der Log-Domäne über veralteten Code, wie viele "
-"Nachrichten angezeigt werden."
+"Zusätzlich regelt die veraltete Log-Domäne, wie viele Nachrichten "
+"angezeigt werden."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
@@ -236,8 +236,8 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
-"Zeit in Sekunden bis von einem Verbindungsabbruch ausgegangen wird. Wenn Ihr "
-"gerade im Server eingeloggt seit, müsst ihr Euch neu einloggen, um diese "
+"Zeit in Sekunden, bis von einem Verbindungsabbruch ausgegangen wird. Wenn "
+"Ihr gerade im Server eingeloggt seit, müsst ihr Euch neu einloggen, um diese "
 "Änderung zu aktivieren."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -3673,7 +3673,7 @@ msgstr "Grün"
 #. [color_range]: id=brightgreen
 #: data/core/team-colors.cfg:53
 msgid "Bright green"
-msgstr "Giftgrün"
+msgstr "Hellgrün"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
@@ -3702,7 +3702,7 @@ msgstr "Orange"
 #. [color_range]: id=brightorange
 #: data/core/team-colors.cfg:87
 msgid "Bright orange"
-msgstr "Gelb"
+msgstr "Hellorange"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
@@ -3723,15 +3723,13 @@ msgstr "Gold"
 
 #. [color_range]: id=yellow
 #: data/core/team-colors.cfg:113
-#, fuzzy
-#| msgid "Yellow Potion"
 msgid "Yellow"
-msgstr "Gelber Trank"
+msgstr "Gelb"
 
 #. [color_range]: id=pink
 #: data/core/team-colors.cfg:119
 msgid "Pink"
-msgstr ""
+msgstr "Pink"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:126
@@ -3850,7 +3848,7 @@ msgstr "Standard"
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr "Der Standard Wesnoth-Kern."
+msgstr "Der Standard-Wesnoth-Kern."
 
 #. [language]
 #: data/english.cfg:3
@@ -4660,10 +4658,8 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:17
-#, fuzzy
-#| msgid "<i>― Great Mage Delfador, 516YW</i>"
 msgid "<i>― Great Mage Delfador, 520YW</i>"
-msgstr "<i>― Großmagier Delfador, 516JW</i>"
+msgstr "<i>― Großmagier Delfador, 520JW</i>"
 
 #. [tip]
 #: data/tips.cfg:20
@@ -6192,11 +6188,11 @@ msgstr "Bonus für frühzeitiges Ende: "
 
 #: src/carryover_show_gold.cpp:99
 msgid "Total bonus: "
-msgstr "Gesamt Bonus: "
+msgstr "Gesamtbonus: "
 
 #: src/carryover_show_gold.cpp:102
 msgid "Total gold: "
-msgstr "Gesamt Gold: "
+msgstr "Gesamtgold: "
 
 #: src/carryover_show_gold.cpp:106
 msgid "Carryover percentage: "
@@ -8541,7 +8537,7 @@ msgstr "Verteidigung: "
 # Oder auch nur Sicht
 #: src/reports.cpp:646 src/reports.cpp:647
 msgid "vision:"
-msgstr "Sichtweite:"
+msgstr "👁"
 
 # Diesen String gibt es zwei mal.
 #: src/reports.cpp:651 src/reports.cpp:652
