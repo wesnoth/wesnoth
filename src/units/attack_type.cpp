@@ -186,6 +186,7 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	const std::set<std::string> filter_alignment = utils::split_set(filter["alignment"].str());
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
+	const std::set<std::string> filter_original_type = utils::split_set(filter["original_type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -225,6 +226,9 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 		return false;
 
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
+		return false;
+
+	if ( !filter_original_type.empty() && filter_original_type.count(attack.type()) == 0 )
 		return false;
 
 	if (!filter_type.empty()){
