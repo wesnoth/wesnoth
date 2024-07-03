@@ -793,7 +793,7 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 		dir = temp;
 		DBG_FS << "userdata using absolute path: " << temp;
 	} else {
-		bfs::path home = home_str ? home_str : get_cwd();
+		bfs::path home = home_str ? home_str : ".";
 		dir = home / temp;
 		DBG_FS << "userdata is relative to the current working directory: " << dir.string();
 	}
