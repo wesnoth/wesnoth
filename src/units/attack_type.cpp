@@ -116,6 +116,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::set<std::string> filter_alignment = utils::split_set(filter["alignment"].str());
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
+	const std::set<std::string> filter_base_type = utils::split_set(filter["base_type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -173,6 +174,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			}
 		}
 	}
+
+	if ( !filter_base_type.empty() && filter_base_type.count(attack.type()) == 0 )
+		return false;
 
 	if(!filter_special.empty()) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
