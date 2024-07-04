@@ -134,8 +134,12 @@ void get_files_in_dir(const std::string &dir,
 std::string get_dir(const std::string &dir);
 
 // The location of various important files/folders:
-std::string get_prefs_file();
-/** location of preferences file before it was moved to the sync directory */
+/**
+ * location of preferences file containing preferences that are synced between computers
+ * note that wesnoth does not provide the syncing functionality itself
+ */
+std::string get_synced_prefs_file();
+/** location of preferences file containing preferences that aren't synced between computers */
 std::string get_unsynced_prefs_file();
 std::string get_credentials_file();
 std::string get_default_prefs_file();

@@ -122,7 +122,7 @@ bool blacklist_pattern_list::match_dir(const std::string& name) const
 					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
 }
 
-std::string get_prefs_file()
+std::string get_synced_prefs_file()
 {
 	return get_sync_dir() + "/preferences";
 }

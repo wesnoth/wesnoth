@@ -182,21 +182,21 @@ void prefs::load_advanced_prefs(const game_config_view& gc)
 
 void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 {
-	if(migrate_prefs_file != filesystem::get_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
+	if(migrate_prefs_file != filesystem::get_synced_prefs_file() && filesystem::file_exists(migrate_prefs_file)) {
 		// if the file doesn't exist, just copy the file over
 		// else need to merge the preferences file
-		if(!filesystem::file_exists(filesystem::get_prefs_file())) {
-			filesystem::copy_file(migrate_prefs_file, filesystem::get_prefs_file());
+		if(!filesystem::file_exists(filesystem::get_synced_prefs_file())) {
+			filesystem::copy_file(migrate_prefs_file, filesystem::get_synced_prefs_file());
 		} else {
 			config current_cfg;
-			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+			filesystem::scoped_istream current_stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
 			read(current_cfg, *current_stream);
 			config old_cfg;
 			filesystem::scoped_istream old_stream = filesystem::istream_file(migrate_prefs_file, false);
 			read(old_cfg, *old_stream);
 
 			// when both files have the same attribute, use the one from whichever was most recently modified
-			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
+			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
 			for(const config::attribute& val : old_cfg.attribute_range()) {
 				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
 					preferences_[val.first] = val.second;
@@ -253,7 +253,7 @@ void prefs::load_preferences()
 		}
 
 		{
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(), false);
+			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_synced_prefs_file(), false);
 			read(synced_prefs, *stream);
 		}
 
@@ -337,7 +337,7 @@ void prefs::load_preferences()
 void prefs::write_preferences()
 {
 #ifndef _WIN32
-	bool synced_prefs_file_existed = filesystem::file_exists(filesystem::get_prefs_file());
+	bool synced_prefs_file_existed = filesystem::file_exists(filesystem::get_synced_prefs_file());
 	bool unsynced_prefs_file_existed = filesystem::file_exists(filesystem::get_unsynced_prefs_file());
 #endif
 
@@ -386,10 +386,10 @@ void prefs::write_preferences()
 	}
 
 	try {
-		filesystem::scoped_ostream synced_prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
+		filesystem::scoped_ostream synced_prefs_file = filesystem::ostream_file(filesystem::get_synced_prefs_file());
 		write(*synced_prefs_file, synced);
 	} catch(const filesystem::io_exception&) {
-		ERR_FS << "error writing to synced preferences file '" << filesystem::get_prefs_file() << "'";
+		ERR_FS << "error writing to synced preferences file '" << filesystem::get_synced_prefs_file() << "'";
 	}
 
 	try {
@@ -403,8 +403,8 @@ void prefs::write_preferences()
 
 #ifndef _WIN32
 	if(!synced_prefs_file_existed) {
-		if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
-			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'";
+		if(chmod(filesystem::get_synced_prefs_file().c_str(), 0600) == -1) {
+			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_synced_prefs_file() << "'";
 		}
 	}
 	if(!unsynced_prefs_file_existed) {

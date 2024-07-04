@@ -652,8 +652,8 @@ static void setup_user_data_dir()
 	create_directory_if_missing(get_wml_persist_dir());
 	create_directory_if_missing(get_logs_dir());
 
-	if(file_exists(get_unsynced_prefs_file()) && !file_exists(get_prefs_file())) {
-		copy_file(get_unsynced_prefs_file(), get_prefs_file());
+	if(file_exists(get_unsynced_prefs_file()) && !file_exists(get_synced_prefs_file())) {
+		copy_file(get_unsynced_prefs_file(), get_synced_prefs_file());
 	}
 
 	lg::move_log_file();
