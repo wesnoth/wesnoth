@@ -14,7 +14,7 @@ jobs:
 
     name: Discord Notification
 
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel-debug, macos-intel-release]
+    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-cmake-clang-debug, steam-runtime, mingw, flatpak, translations, macos-intel]
     if: always()
 
     steps:
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -96,7 +96,7 @@ jobs:
           ./.github/workflows/ci-scripts/ubuntu.sh
 
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Steam-Linux
           path: |
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -125,7 +125,7 @@ jobs:
           ./.github/workflows/ci-scripts/ubuntu.sh
 
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Source-And-Windows-Installer
           path: |
@@ -136,7 +136,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
@@ -176,30 +176,42 @@ jobs:
           export CACHE_DIR=/home/wesnoth-CI/build
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-intel-debug:
-    runs-on: macos-11.0
+  macos-intel:
+    strategy:
+      fail-fast: false
+      matrix:
+        cfg: [ Debug ]
+    runs-on: macos-12
+    env:
+      CFG: ${{ matrix.cfg }}
+      DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
 
-      - name: macOS Intel Debug
+      - name: Get dependencies
         run: |
-          export CFG=Debug
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-
-  macos-intel-release:
-    runs-on: macos-11.0
-
-    steps:
-      - uses: actions/checkout@v3
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install scons
+          ./projectfiles/Xcode/Fix_Xcode_Dependencies
+      - name: Build translations
+        run: scons translations build=release --debug=time nls=true jobs=2
+      - name: Build wesnoth and unit tests
+        working-directory: projectfiles/Xcode
+        run: |
+          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+          # xcodebuild or maybe clang do not appear to fail properly when input files cannot be found; double check executables were produced
+          [ -x "build/$CFG/The Battle for Wesnoth.app" ] || { printf 'Failed to build wesnoth executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/unit_tests" ] || { printf 'Failed to build unit test executable!\n' >&2; exit 1; }
+      - name: Create disk image
+        working-directory: projectfiles/Xcode
+        run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+      - name: Upload disk image
+        uses: actions/upload-artifact@v4
         with:
-          submodules: "recursive"
-
-      - name: macOS Intel Release
-        run: |
-          export CFG=Release
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
+          name: MacOS ${{ matrix.cfg }} disk image
+          path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
+      - name: Run WML tests
+        if: matrix.cfg == 'Release'
+        run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
