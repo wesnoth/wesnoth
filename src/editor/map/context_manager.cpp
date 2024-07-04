@@ -54,6 +54,7 @@
 
 #include <memory>
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
 
 namespace editor {
 
@@ -675,9 +676,11 @@ void context_manager::resize_map_dialog()
 
 void context_manager::save_map_as_dialog()
 {
+	bool first_pick = false;
 	std::string input_name = get_map_context().get_filename();
 	if(input_name.empty()) {
-		input_name = filesystem::get_legacy_editor_dir()+"/maps";
+		first_pick = true;
+		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_)+"/maps";
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -691,14 +694,28 @@ void context_manager::save_map_as_dialog()
 		return;
 	}
 
-	std::size_t is_open = check_open_map(dlg.path());
+	boost::filesystem::path save_path(dlg.path());
+
+	// Show warning the first time user tries to save in a wrong folder
+	std::string last_folder = save_path.parent_path().filename().string();
+	if ((last_folder == "scenarios")
+		&& first_pick
+		&& (gui2::show_message(
+				_("Error"),
+				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "map"}, {"type2", "scenarios"}}),
+				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
+	{
+		return;
+	}
+
+	std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(_("This map is already open."), dlg.path());
+		gui2::show_transient_message(_("This map is already open."), save_path.string());
 	}
 
 	std::string old_filename = get_map_context().get_filename();
 
-	get_map_context().set_filename(dlg.path());
+	get_map_context().set_filename(save_path.string());
 
 	if(!write_map(true)) {
 		get_map_context().set_filename(old_filename);
@@ -707,9 +724,11 @@ void context_manager::save_map_as_dialog()
 
 void context_manager::save_scenario_as_dialog()
 {
+	bool first_pick = false;
 	std::string input_name = get_map_context().get_filename();
 	if(input_name.empty()) {
-		input_name = filesystem::get_legacy_editor_dir()+"/scenarios";
+		first_pick = true;
+		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/scenarios";
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -724,15 +743,29 @@ void context_manager::save_scenario_as_dialog()
 		return;
 	}
 
-	std::size_t is_open = check_open_map(dlg.path());
+	boost::filesystem::path save_path(dlg.path());
+
+	// Show warning the first time user tries to save in a wrong folder
+	std::string last_folder = save_path.parent_path().filename().string();
+	if ((last_folder == "maps")
+		&& first_pick
+		&& (gui2::show_message(
+				_("Error"),
+				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "scenario"}, {"type2", "maps"}}),
+				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
+	{
+		return;
+	}
+
+	std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(_("This scenario is already open."), dlg.path());
+		gui2::show_transient_message(_("This scenario is already open."), save_path.string());
 		return;
 	}
 
 	std::string old_filename = get_map_context().get_filename();
 
-	get_map_context().set_filename(dlg.path());
+	get_map_context().set_filename(save_path.string());
 
 	if(!write_scenario(true)) {
 		get_map_context().set_filename(old_filename);

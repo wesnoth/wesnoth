@@ -92,6 +92,7 @@ editor_controller::editor_controller(bool clear_id)
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config_));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
+	context_manager_->switch_context(0, true);
 	init_tods(game_config_);
 	init_music(game_config_);
 	get_current_map_context().set_starting_position_labels(gui());
