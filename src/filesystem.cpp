@@ -568,7 +568,7 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 	return next_filename;
 }
 
-static bfs::path user_data_dir, user_config_dir, cache_dir;
+static bfs::path user_data_dir, cache_dir;
 
 bool is_userdata_initialized()
 {
@@ -892,19 +892,6 @@ bool rename_dir(const std::string& old_dir, const std::string& new_dir)
 	return true;
 }
 
-static void set_user_config_path(bfs::path newconfig)
-{
-	user_config_dir = newconfig;
-	if(!create_directory_if_missing_recursive(user_config_dir)) {
-		ERR_FS << "could not open or create user config directory at " << user_config_dir.string();
-	}
-}
-
-void set_user_config_dir(const std::string& newconfigdir)
-{
-	set_user_config_path(newconfigdir);
-}
-
 static void set_cache_path(bfs::path newcache)
 {
 	cache_dir = newcache;
@@ -925,15 +912,6 @@ static const bfs::path& get_user_data_path()
 	}
 
 	return user_data_dir;
-}
-
-std::string get_user_config_dir()
-{
-	if(user_config_dir.empty()) {
-		user_config_dir = get_user_data_path();
-	}
-
-	return user_config_dir.string();
 }
 
 std::string get_user_data_dir()
