@@ -92,7 +92,6 @@ editor_controller::editor_controller(bool clear_id)
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config_));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
-	context_manager_->switch_context(0, true);
 	init_tods(game_config_);
 	init_music(game_config_);
 	get_current_map_context().set_starting_position_labels(gui());
@@ -874,6 +873,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			bool canrecruit = un->can_recruit();
 			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
+		}
+		return true;
+		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
+		{
+			map_location loc = gui_->mouseover_hex();
+			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
+			bool loyal = un->loyal();
+			un->set_loyal(!loyal);
 		}
 		return true;
 		case HOTKEY_DELETE_UNIT:

@@ -1568,6 +1568,7 @@ bool unit::get_attacks_changed() const
 	}
 	return false;
 }
+
 void unit::write(config& cfg, bool write_all) const
 {
 	config back;
@@ -1755,6 +1756,17 @@ int unit::upkeep() const
 bool unit::loyal() const
 {
 	return utils::holds_alternative<upkeep_loyal>(upkeep_);
+}
+
+void unit::set_loyal(bool loyal)
+{
+	if (loyal) {
+		upkeep_ = upkeep_loyal{};
+		overlays_.push_back("misc/loyal-icon.png");
+	} else {
+		upkeep_ = upkeep_full{};
+		overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), "misc/loyal-icon.png"), overlays_.end());
+	}
 }
 
 int unit::defense_modifier(const t_translation::terrain_code & terrain) const
