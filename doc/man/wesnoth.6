@@ -67,14 +67,6 @@ event.
 .B --clock
 Adds the option to show a clock for testing the drawing timer.
 .TP
-.BI --config-dir \ name
-Deprecated, use
-.BR --userdata-dir .
-.TP
-.B --config-path
-Deprecated, use
-.BR --userdata-path .
-.TP
 .BI --core \ id_core
 overrides the loaded core with the one whose id is specified.
 .TP
@@ -353,19 +345,6 @@ package available to lua scripts, so that they can load arbitrary packages. Do n
 .BI -S,--use-schema  \ path
 sets the WML schema for use with
 .BR -V,--validate .
-.TP
-.BI --userconfig-dir \ name
-sets the user configuration directory to
-.I name
-under $HOME or "My Documents\\My Games" for windows.
-You can also specify an absolute path for the configuration directory outside
-the $HOME or "My Documents\\My Games". On Windows it is also possible to
-specify a directory relative to the process working directory by using path
-starting with ".\\" or "..\\".
-This defaults to the userdata path.
-.TP
-.B --userconfig-path
-prints the path of the user configuration directory and exits.
 .TP
 .BI --userdata-dir \ name
 sets the userdata directory to
