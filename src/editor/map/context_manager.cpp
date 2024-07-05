@@ -210,7 +210,11 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
 	std::string fn = get_map_context().get_filename();
 	if(fn.empty()) {
-		fn = filesystem::get_legacy_editor_dir()+"/maps";
+		if (editor_controller::current_addon_id_.empty()) {
+			fn = filesystem::get_legacy_editor_dir() + "/maps";
+		} else {
+			fn = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/maps";
+		}
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -680,7 +684,11 @@ void context_manager::save_map_as_dialog()
 	std::string input_name = get_map_context().get_filename();
 	if(input_name.empty()) {
 		first_pick = true;
-		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_)+"/maps";
+		if (editor_controller::current_addon_id_.empty()) {
+			input_name = filesystem::get_legacy_editor_dir() + "/maps";
+		} else {
+			input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/maps";
+		}
 	}
 
 	gui2::dialogs::file_dialog dlg;
