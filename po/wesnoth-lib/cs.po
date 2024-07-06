@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-06-17 10:25-0500\n"
-"PO-Revision-Date: 2024-06-05 23:58+0200\n"
+"PO-Revision-Date: 2024-06-28 23:36+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4292,7 +4292,7 @@ msgstr "Posunout na"
 #. [label]
 #: data/gui/window/game_version.cfg:122
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Verze:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:150
@@ -4302,17 +4302,17 @@ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Běžící na:</b>"
 #. [label]
 #: data/gui/window/game_version.cfg:179
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Architektura:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Domovská stránka:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:239
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:279
@@ -4328,11 +4328,13 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Nahlásit problém nebo požádat "
+"o vylepšení:</i>"
 
 #. [button]: id=issue
 #: data/gui/window/game_version.cfg:313
 msgid "Report Issue"
-msgstr ""
+msgstr "Nahlásit problém"
 
 #. [label]
 #: data/gui/window/game_version.cfg:322
@@ -4340,6 +4342,8 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Znovu otevřít okno pro migraci "
+"mezi verzemi:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
@@ -4462,7 +4466,7 @@ msgstr "Darovat"
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:826
 msgid "An open source, turn-based strategy game with a high fantasy theme."
-msgstr ""
+msgstr "Tahová strategická hra s motivem fantasy a otevřeným zdrojovým kódem."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -4504,7 +4508,7 @@ msgstr "Poděkování"
 #. [button]: id=license
 #: data/gui/window/game_version.cfg:954
 msgid "License"
-msgstr ""
+msgstr "Licence"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -6541,7 +6545,7 @@ msgstr "Ukončit hru"
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:471
 msgid "About"
-msgstr ""
+msgstr "O hře"
 
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:472
@@ -8279,7 +8283,7 @@ msgstr "Nalezen grafický prvek s nápovědou bez bublinkové nápovědy."
 
 #: src/gui/widgets/tab_container.cpp:138
 msgid "No grid defined for tab container control"
-msgstr ""
+msgstr "Pro ovládací prvek kontejneru s kartami není definována mřížka"
 
 #: src/gui/widgets/tree_view.cpp:290
 msgid "No nodes defined for a tree view."
@@ -9235,6 +9239,3 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "Id:"
-#~ msgstr "Id:"
