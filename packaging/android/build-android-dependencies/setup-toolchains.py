@@ -2,6 +2,7 @@
 import json
 from subprocess import run
 from pathlib import Path
+from os import environ
 
 ndk = Path("/opt/android-sdk-update-manager/ndk/23.1.7779620")
 api = 29
@@ -10,7 +11,7 @@ abis = json.load(open(ndk / "meta/abis.json"))
 for abi, abi_data in abis.items():
     triple = abi_data["llvm_triple"]
     arch = abi_data["arch"]
-    prefix = Path("/tmp/android-prefix/" + abi)
+    prefix = Path(environ.get("PREFIXDIR", "/tmp/android-prefix")) / abi
     prefix.mkdir(parents = True, exist_ok = True)
     with open(prefix / "android.env", "w") as envfile:
         envfile.write(f"""
