@@ -199,9 +199,6 @@ struct unit_filter_attribute_literal : public unit_filter_base
 };
 
 class contains_dollar_visitor
-#ifdef USING_BOOST_VARIANT
-	: public boost::static_visitor<bool>
-#endif
 {
 public:
 	contains_dollar_visitor() {}
@@ -505,7 +502,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			},
 			[](unit::upkeep_t upkeep, const unit_filter_args& args)
 			{
-				return args.u.upkeep() == utils::visit(unit::upkeep_value_visitor{args.u}, upkeep);
+				return args.u.upkeep() == std::visit(unit::upkeep_value_visitor{args.u}, upkeep);
 			}
 		);
 

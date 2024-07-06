@@ -69,14 +69,14 @@ private:
 public:
 	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type);
 	void send_server_message(player_iterator player, const std::string& message, const std::string& type) {
-		utils::visit(
+		std::visit(
 			[this, &message, &type](auto&& socket) { send_server_message(socket, message, type); },
 			player->socket()
 		);
 	}
 	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
 	void send_to_player(player_iterator player, simple_wml::document& data) {
-		utils::visit(
+		std::visit(
 			[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
 			player->socket()
 		);

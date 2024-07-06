@@ -29,7 +29,7 @@
 #pragma once
 
 #include "tstring.hpp"
-#include "utils/variant.hpp"
+#include <variant>
 
 #include <climits>
 #include <ctime>
@@ -96,7 +96,7 @@ private:
 	// use few types (to keep the overhead low), we do have use cases for
 	// fractions (double) and huge numbers (up to the larger of LLONG_MAX
 	// and SIZE_MAX).
-	typedef utils::variant<utils::monostate,
+	typedef std::variant<std::monostate,
 		true_false, yes_no,
 		int, unsigned long long, double,
 		std::string, t_string
@@ -216,7 +216,7 @@ public:
 	template <typename V>
 	auto apply_visitor(const V & visitor) const
 	{
-		return utils::visit(visitor, value_);
+		return std::visit(visitor, value_);
 	}
 
 private:
@@ -225,10 +225,8 @@ private:
 	static const std::string s_true, s_false;
 };
 
-#ifndef USING_BOOST_VARIANT
 /** Specialize operator<< for monostate. Boost already does this, but the STL does not. */
 inline std::ostream& operator<<(std::ostream& os, const std::monostate&) { return os; }
-#endif
 
 namespace utils
 {

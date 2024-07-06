@@ -381,9 +381,6 @@ public:
 };
 
 class lua_aspect_visitor
-#ifdef USING_BOOST_VARIANT
-	: public boost::static_visitor<std::string>
-#endif
 {
 	static std::string quote_string(const std::string& s);
 public:
@@ -393,7 +390,7 @@ public:
 	std::string operator()(double i) const {return std::to_string(i);}
 	std::string operator()(const std::string& s) const {return quote_string(s);}
 	std::string operator()(const t_string& s) const {return quote_string(s.str());}
-	std::string operator()(utils::monostate) const {return "nil";}
+	std::string operator()(std::monostate) const {return "nil";}
 };
 
 template<typename T>
