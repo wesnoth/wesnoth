@@ -26,20 +26,26 @@ https://curl.se/download/curl-8.1.1.tar.xz
 )
 PACKAGES=()
 
-./setup-toolchains.py
 
 ORIGIN=`pwd`
+: ${BUILDDIR:=/tmp/android-build}
+: ${PREFIXDIR:=/tmp/android-prefix}
+: ${DOWNLOADDIR:=/tmp/android-dl}
 
-mkdir -p /tmp/android-build/src
-pushd /tmp/android-build/src
+export PREFIXDIR
+
+./setup-toolchains.py
+
+mkdir -p $BUILDDIR/src
+pushd $BUILDDIR/src
 for url in ${SOURCES[@]}
 do
-	wget -nc $url
+	wget -nc $url -P $DOWNLOADDIR
 	archive=`basename $url`
 	package=${archive%.*.*}
 	if [ ! -d $package ]
 	then
-		tar -xf $archive
+		tar -xf $DOWNLOADDIR/$archive
 		if [ -f $ORIGIN/${package%-*}.patch ]
 		then
 			patch=$ORIGIN/${package%-*}.patch
@@ -71,13 +77,13 @@ do
 done
 popd
 
-for prefix in /tmp/android-prefix/*
+for prefix in $PREFIXDIR/*
 do
 	abi=`basename $prefix`
-	rm -rf /tmp/android-build/$abi
+	rm -rf $BUILDDIR/$abi
 
-	. /tmp/android-prefix/$abi/android.env
-	export PKG_CONFIG_PATH=/tmp/android-prefix/$abi/lib/pkgconfig
+	. $PREFIXDIR/$abi/android.env
+	export PKG_CONFIG_PATH=$PREFIXDIR/$abi/lib/pkgconfig
 
 	for package in ${PACKAGES[@]}
 	do
@@ -97,13 +103,13 @@ do
 
 		host_arg="--host=$HOST"
 
-		src_dir=/tmp/android-build/src/$package
-		build_dir=/tmp/android-build/$abi/$package
+		src_dir=$BUILDDIR/src/$package
+		build_dir=$BUILDDIR/$abi/$package
 		mkdir -p $build_dir
 		if [ -f $src_dir/configure ]
 		then
 			pushd $build_dir
-			$src_dir/configure $host_arg --prefix=/tmp/android-prefix/$abi $extra_flags
+			$src_dir/configure $host_arg --prefix=$PREFIXDIR/$abi $extra_flags
 			make -j`nproc`
 			make install
 			popd
@@ -116,7 +122,7 @@ do
 			then
 				make clean
 			fi
-			./Configure --prefix=/tmp/android-prefix/$abi $extra_flags android-$ANDROID_ARCH -D__ANDROID_API__=$API
+			./Configure --prefix=$PREFIXDIR/$abi $extra_flags android-$ANDROID_ARCH -D__ANDROID_API__=$API
 			make -j`nproc`
 			make install
 			popd
@@ -124,7 +130,7 @@ do
 		fi
 		if [ -f $src_dir/meson.build ]
 		then
-			meson setup --cross-file /tmp/android-prefix/$abi/android.ini $build_dir $src_dir -Dprefix=/tmp/android-prefix/$abi $extra_flags
+			meson setup --cross-file $PREFIXDIR/$abi/android.ini $build_dir $src_dir -Dprefix=$PREFIXDIR/$abi $extra_flags
 			ninja -C $build_dir
 			ninja -C $build_dir install
 			continue
@@ -145,7 +151,7 @@ do
 				BCABI="sysv"
 				BOOSTARCH="x86"
 			fi
-			./b2 --user-config=/tmp/android-prefix/$abi/android.jam --prefix=/tmp/android-prefix/$abi target-os=android architecture=$BOOSTARCH address-model=$BITNESS abi=$BCABI binary-format=elf install $extra_flags
+			./b2 --user-config=$PREFIXDIR/$abi/android.jam --prefix=$PREFIXDIR/$abi target-os=android architecture=$BOOSTARCH address-model=$BITNESS abi=$BCABI binary-format=elf install $extra_flags
 			popd
 			continue
 		fi
@@ -153,17 +159,17 @@ do
 		then
 			pushd $src_dir
 			make clean
-			make install CC="$CC -fPIC" AR="$AR" RANLIB="$RANLIB" PREFIX=/tmp/android-prefix/$abi
+			make install CC="$CC -fPIC" AR="$AR" RANLIB="$RANLIB" PREFIX=$PREFIXDIR/$abi
 			popd
 			continue
 		fi
 	done
 done
 
-cd /tmp/android-build/src/SDL2-ndk-build
+cd $BUILDDIR/src/SDL2-ndk-build
 $NDK/ndk-build
 for lib in libs/*/*.so
 do
 	instdir=$(basename $(dirname $lib))
-	cp $lib /tmp/android-prefix/$instdir/lib/
+	cp $lib $PREFIXDIR/$instdir/lib/
 done
