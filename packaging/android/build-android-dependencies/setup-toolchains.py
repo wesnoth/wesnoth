@@ -32,6 +32,7 @@ export CC="$TOOLCHAIN/bin/clang -target $TARGET$API"
 export AS=$CC
 export CXX="$TOOLCHAIN/bin/clang++ -target $TARGET$API"
 export LD=$TOOLCHAIN/bin/ld
+export LDFLAGS=-Wl,--undefined-version
 export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
 export STRIP=$TOOLCHAIN/bin/llvm-strip
 export PKG_CONFIG=/usr/bin/pkg-config
