@@ -450,7 +450,7 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 		std::string id = *a1;
 		std::vector<color_t> temp;
 
-		for(const auto& s : utils::split(*a2)) {
+		for(const auto& s : utils::split_view(*a2)) {
 			try {
 				temp.push_back(color_t::from_hex_string(s));
 			} catch(const std::invalid_argument&) {
@@ -465,10 +465,9 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Ggenerate palette of same name;
-		std::vector<color_t> tp = palette(team_rgb_range[id]);
-		if(!tp.empty()) {
-			team_rgb_colors.emplace(id, tp);
+		// Generate palette of same name
+		if(std::vector<color_t> pal = palette(team_rgb_range[id]); !pal.empty()) {
+			team_rgb_colors.emplace(id, std::move(pal));
 		}
 
 		if(build_defaults && teamC["default"].to_bool()) {
@@ -478,16 +477,16 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 
 	for(const config &cp : v.child_range("color_palette")) {
 		for(const config::attribute& rgb : cp.attribute_range()) {
-			std::vector<color_t> temp;
-			for(const auto& s : utils::split(rgb.second)) {
+			std::vector<color_t> palette;
+			for(const auto& s : utils::split_view(rgb.second)) {
 				try {
-					temp.push_back(color_t::from_hex_string(s));
+					palette.push_back(color_t::from_hex_string(s));
 				} catch(const std::invalid_argument& e) {
 					ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 				}
 			}
 
-			team_rgb_colors.emplace(rgb.first, temp);
+			team_rgb_colors.emplace(rgb.first, std::move(palette));
 			LOG_NG << "registered color palette: " << rgb.first;
 		}
 	}
