@@ -329,9 +329,6 @@ bool vconfig::has_child(const std::string& key) const
 
 namespace {
 	struct vconfig_expand_visitor
-#ifdef USING_BOOST_VARIANT
-		: boost::static_visitor<void>
-#endif
 	{
 		config::attribute_value &result;
 		const variable_set& vars;

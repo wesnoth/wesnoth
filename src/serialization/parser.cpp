@@ -524,9 +524,6 @@ inline std::string escaped_string(const std::string& value)
 }
 
 class write_key_val_visitor
-#ifdef USING_BOOST_VARIANT
-	: public boost::static_visitor<void>
-#endif
 {
 public:
 	write_key_val_visitor(std::ostream& out, unsigned level, std::string& textdomain, const std::string& key)
@@ -549,7 +546,7 @@ public:
 	// Specialized visitors for things that go in quotes:
 	//
 
-	void operator()(const utils::monostate&) const
+	void operator()(const std::monostate&) const
 	{
 		// Treat blank values as nonexistent which fits better than treating them as empty strings.
 	}

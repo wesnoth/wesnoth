@@ -539,15 +539,12 @@ namespace {
 
 template<typename T, typename TFuncFormula>
 class get_ability_value_visitor
-#ifdef USING_BOOST_VARIANT
-	: public boost::static_visitor<T>
-#endif
 {
 public:
 	// Constructor stores the default value.
 	get_ability_value_visitor(T def, const TFuncFormula& formula_handler) : def_(def), formula_handler_(formula_handler) {}
 
-	T operator()(const utils::monostate&) const { return def_; }
+	T operator()(const std::monostate&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
 	T operator()(int i)                const { return static_cast<T>(i); }
 	T operator()(unsigned long long u) const { return static_cast<T>(u); }

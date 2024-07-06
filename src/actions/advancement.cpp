@@ -372,7 +372,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
-	auto [new_unit, use_amla] = utils::visit(
+	auto [new_unit, use_amla] = std::visit(
 		[u](const auto& v) {
 			if constexpr(utils::decayed_is_same<std::string, decltype(v)>) {
 				return std::pair(get_advanced_unit(*u, v), false);

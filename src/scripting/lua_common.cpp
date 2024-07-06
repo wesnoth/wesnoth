@@ -551,14 +551,11 @@ void luaW_pushtstring(lua_State *L, const t_string& v)
 
 namespace {
 	struct luaW_pushscalar_visitor
-#ifdef USING_BOOST_VARIANT
-		: boost::static_visitor<>
-#endif
 	{
 		lua_State *L;
 		luaW_pushscalar_visitor(lua_State *l): L(l) {}
 
-		void operator()(const utils::monostate&) const
+		void operator()(const std::monostate&) const
 		{ lua_pushnil(L); }
 		void operator()(bool b) const
 		{ lua_pushboolean(L, b); }
