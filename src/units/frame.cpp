@@ -89,7 +89,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	const auto& text_color_key = cfg[frame_string + "text_color"];
 	if(!text_color_key.empty()) {
 		try {
-			text_color_ = color_t::from_rgb_string(text_color_key);
+			text_color_ = color_t::from_rgb_string(text_color_key.str_view());
 		} catch(const std::invalid_argument& e) {
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG text color in unit animation: " << text_color_key.str()
@@ -114,7 +114,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	const auto& blend_color_key = cfg[frame_string + "blend_color"];
 	if(!blend_color_key.empty()) {
 		try {
-			blend_with_ = color_t::from_rgb_string(blend_color_key);
+			blend_with_ = color_t::from_rgb_string(blend_color_key.str_view());
 		} catch(const std::invalid_argument& e) {
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG blend color in unit animation: " << blend_color_key.str()
