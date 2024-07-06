@@ -351,6 +351,11 @@ t_string config_attribute_value::t_str() const
 	return str();
 }
 
+std::string_view config_attribute_value::str_view() const
+{
+	return utils::get<std::string>(value_);
+}
+
 /**
  * Tests for an attribute that was never set.
  */
@@ -445,7 +450,13 @@ std::ostream& operator<<(std::ostream& os, const config_attribute_value& v)
 
 namespace utils
 {
-	std::vector<std::string> split(const config_attribute_value& val) {
+	std::vector<std::string> split(const config_attribute_value& val)
+	{
 		return utils::split(val.str());
 	}
-}
+
+	std::vector<std::string_view> split_view(const config_attribute_value& val)
+	{
+		return utils::split_view(val.str_view());
+	}
+} // namespace utils

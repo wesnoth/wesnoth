@@ -150,6 +150,12 @@ public:
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;
 
+	/**
+	 * Returns a string_view to the held value, *only* if it is a string.
+	 * @throws std::bad_variant_access if the held value is not a string.
+	 */
+	std::string_view str_view() const;
+
 	// Implicit conversions:
 	operator int() const { return to_int(); }
 	operator std::string() const { return str(); }
@@ -233,4 +239,5 @@ inline std::ostream& operator<<(std::ostream& os, const std::monostate&) { retur
 namespace utils
 {
 	std::vector<std::string> split(const config_attribute_value& val);
+	std::vector<std::string_view> split_view(const config_attribute_value& val);
 }
