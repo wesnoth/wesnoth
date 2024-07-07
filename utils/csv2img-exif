@@ -105,6 +105,7 @@ for root, _, files in os.walk(options.repo):
         filetype = Path(filename).suffix
         if filetype == ".png" or filetype == ".jpg":
             file = os.path.normpath(os.path.join(root, filename))
+            file = re.sub(r'../wesnoth/', '', file)
 
             if not file in csv_data:
                 added.append(["NO_DATA", file, "NO_DATA", "NO_DATA", "NEW", "NO_DATA", "NO_DATA"])
@@ -123,6 +124,7 @@ for root, _, files in os.walk(options.repo):
 
         elif filetype == ".webp":
             file = os.path.normpath(os.path.join(root, filename))
+            file = re.sub(r'../wesnoth/', '', file)
 
             if not file in csv_data:
                 added.append(["NO_DATA", file, "NO_DATA", "NO_DATA", "NEW", "NO_DATA", "NO_DATA"])
