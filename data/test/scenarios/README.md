@@ -32,6 +32,11 @@ based on the list in `wml_test_schedule`.
 They are unlikely to return the same status if run with `-t <testname>`. Running them with `-t` can
 still be helpful for debugging.
 
+The tests aren't meant to prevent intentional changes to behavior; they're for checking that
+bugfixes or unrelated changes don't accidentally change the behavior. They make intentional changes
+easier to notice and review, and you should pay attention to any comments in tests that you change,
+but the mere existence of a test shouldn't be taken as saying that the current behavior is good.
+
 ### Guidelines for writing automated new tests
 
 Tests are generally implemented with the `GENERIC_UNIT_TEST` macro, with two leaders called Alice
@@ -49,5 +54,9 @@ existing tests don't conform to this goal yet.
 Names containing `_fail_` or ending `_fail` are reserved for tests that should not `PASS`. However,
 they may expect a status that is neither `PASS` nor `FAIL`.
 
-Names containing `break` or `error` might be for tests expected to `PASS`. Some of these are testing
-loops, or testing error-handling that is expected to handle the error.
+Names containing `_bug_` or ending `_bug` are reserved for tests where consensus is that the
+behavior should change in the development branch, however that it's better to accept the current
+behavior in the stable branch than to risk Out Of Sync errors.
+
+The words `break` and `error` aren't reserved, and can be used even for tests expected to `PASS`.
+Some of these are testing loops, or testing error-handling that is expected to handle the error.
