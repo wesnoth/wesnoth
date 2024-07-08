@@ -458,19 +458,18 @@ void game_config_manager::load_addons_cfg()
 
 	// Warn player about addons using the no-longer-supported single-file format.
 	for(const std::string& file : user_files) {
-		const int size_minus_extension = file.size() - 4;
 
-		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
+		if(filesystem::is_cfg(file)) {
 			ERR_CONFIG << "error reading usermade add-on '" << file << "'";
 
 			error_addons.push_back(file);
 
-			const int userdata_loc = file.find("data/add-ons") + 5;
+			const std::string short_wml_path = filesystem::get_short_wml_path(file);
 			const std::string log_msg = formatter()
-				<< "The format '~"
-				<< file.substr(userdata_loc)
-				<< "' (for single-file add-ons) is not supported anymore, use '~"
-				<< file.substr(userdata_loc, size_minus_extension - userdata_loc)
+				<< "The format '"
+				<< short_wml_path
+				<< "' (for single-file add-ons) is not supported anymore, use '"
+				<< short_wml_path.substr(0, short_wml_path.size() - filesystem::wml_extension.size())
 				<< "/_main.cfg' instead.";
 
 			error_log.push_back(log_msg);

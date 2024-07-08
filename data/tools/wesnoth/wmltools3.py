@@ -11,14 +11,26 @@ import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 import enum
 
+# Extensions
+# Ordering is important, see default extensions below
 map_extensions   = ("map", "mask")
+wml_extensions   = ("cfg",)
 image_extensions = ("png", "jpg", "jpeg", "webp")
 sound_extensions = ("ogg", "wav")
-vc_directories = (".git", ".svn")
-misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db") # These files and extensions should be included in the `default_blacklist` in filesystem.hpp.
-l10n_directories = ("l10n",)
+
+# Default extensions
+default_map_extension  = "." + map_extensions[0] # ".map" at the moment
+default_mask_extension = "." + map_extensions[1] # ".mask" at the moment
+default_wml_extension  = "." + wml_extensions[0] # ".cfg" at the moment
 resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g|webp)(?=(~.*)?)"
+
+# Directories
+l10n_directories = ("l10n",)
+vc_directories   = (".git", ".svn")
+
+# Misc files and extensions
+misc_files_extensions = ("-bak", ".DS_Store", "Thumbs.db") # These files and extensions should be included in the `default_blacklist` in filesystem.hpp.
 
 EQUALS = '='
 QUOTE = '"'
@@ -184,7 +196,7 @@ class Forest:
             subtree = []
             rooted = False
             if os.path.isdir(directory): # So we skip .cfgs in a UMC mirror
-                oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + '.cfg')
+                oldmain = os.path.join(os.path.dirname(directory), os.path.basename(directory) + default_wml_extension)
                 if os.path.isfile(oldmain):
                     subtree.append(oldmain)
                 base = os.path.basename(os.path.dirname(os.path.abspath(directory)))
@@ -199,8 +211,8 @@ class Forest:
                             rooted = True
                         elif os.path.basename(root) in roots:
                             for subdir in dirlist:
-                                if subdir + '.cfg' in files:
-                                    files.remove(subdir + '.cfg')
+                                if subdir + default_wml_extension in files:
+                                    files.remove(subdir + default_wml_extension)
                                 dirs.remove(subdir)
                                 dirpath.append(os.path.join(root, subdir))
                             rooted = True
@@ -219,8 +231,8 @@ class Forest:
                             if count >= (stop // 2):
                                 roots.append(os.path.basename(root))
                                 for subdir in dirlist:
-                                    if subdir + '.cfg' in files:
-                                        files.remove(subdir + '.cfg')
+                                    if subdir + default_wml_extension in files:
+                                        files.remove(subdir + default_wml_extension)
                                     dirs.remove(subdir)
                                     dirpath.append(os.path.join(root, subdir))
                     subtree.extend([os.path.normpath(os.path.join(root, x)) for x in files])
@@ -265,9 +277,13 @@ class Forest:
             for filename in tree:
                 yield (directory, filename)
 
+def ismap(filename):
+    "Is this file a map?"
+    return filename.split('.')[-1] in map_extensions
+
 def iswml(filename):
     "Is the specified filename WML?"
-    return filename.endswith(".cfg")
+    return filename.split('.')[-1] in wml_extensions
 
 def issave(filename):
     "Is the specified filename a WML save? (Detects compressed saves too.)"
@@ -1004,7 +1020,7 @@ class CrossRef:
                                 for pattern in split_filenames(match):
                                     for name in expand_square_braces(pattern):
                                         # Catches maps that look like macro names.
-                                        if (name.endswith(".map") or name.endswith(".mask")):
+                                        if (ismap(name)):
                                             if name.startswith("{~"):
                                                 name = name[2:]
                                             elif name.startswith("{"):
@@ -1091,91 +1107,6 @@ class CrossRef:
         except KeyError:
             return 0
 
-#
-# String translations from po files.  The advantage of this code is that it
-# does not require the gettext binary message catalogs to have been compiled.
-# The disadvantage is that it eats lots of core!
-#
-
-
-class TranslationError(Exception):
-    def __init__(self, textdomain, isocode):
-        self.isocode = isocode
-        self.textdomain = textdomain
-    def __str__(self):
-        return "No translations found for %s/%s.\n" % (
-            self.textdomain, self.isocode)
-
-class Translation(dict):
-    "Parses a po file to create a translation dictionary."
-    def __init__(self, textdomain, isocode, topdir=""):
-        self.textdomain = textdomain
-        self.isocode = isocode
-        self.gettext = {}
-        if self.isocode != "C":
-            isocode2 = isocode[:isocode.rfind("_")]
-            for code in [isocode, isocode2]:
-                fn = "po/%s/%s.po" % (textdomain, code)
-                if topdir: fn = os.path.join(topdir, fn)
-                try:
-                    f = file(fn)
-                    break
-                except IOError:
-                    pass
-            else:
-                raise TranslationError(textdomain, self.isocode)
-
-            expect = False
-            fuzzy = "#, fuzzy\n"
-            gettext = f.read().decode("utf8")
-            matches = re.compile(r'(msgid|msgstr)((\s*".*?")+)').finditer(gettext)
-            msgid = ""
-            for match in matches:
-                text = "".join(re.compile('"(.*?)"').findall(match.group(2)))
-                if match.group(1) == "msgid":
-                    msgid = text.replace("\\n", "\n")
-                    expect = gettext[match.start(1) - len(fuzzy):match.start(1)] != fuzzy
-                elif expect:
-                    self.gettext[msgid] = text.replace("\\n", "\n")
-    def get(self, key, dflt):
-        if self.isocode == "C":
-            if key:
-                return key[key.find("^") + 1:]
-            return "?"
-        else:
-            t = self.gettext.get(key, dflt)
-            if not t:
-                if key:
-                    return key[key.find("^") + 1:]
-                return "?"
-            return t
-    def __getitem__(self, key):
-        if self.isocode == "C":
-            return key
-        else:
-            return self.gettext[key]
-    def __contains__(self, key):
-        if self.isocode == "C":
-            return True
-        else:
-            return key in self.gettext
-
-class Translations:
-    "Wraps around Translation to support multiple languages and domains."
-    def __init__(self, topdir = ""):
-        self.translations = {}
-        self.topdir = topdir
-    def get(self, textdomain, isocode, key, default):
-        t = (textdomain, isocode)
-        if not t in self.translations:
-            try:
-                self.translations[t] = Translation(textdomain, isocode, self.topdir)
-            except TranslationError as e:
-                print(str(e), file=sys.stderr)
-                self.translations[t] = Translation(textdomain, "C", self.topdir)
-        result = self.translations[t].get(key, default)
-        return result
-
 ## Namespace management
 #
 # This is the only part of the code that actually knows about the
@@ -1217,8 +1148,8 @@ def resolve_unit_cfg(namespace, utype, resource=None):
     else:
         resource = utype
     loc = namespace_directory(namespace) + "units/" + resource
-    if not loc.endswith(".cfg"):
-        loc += ".cfg"
+    if not loc.endswith(default_wml_extension):
+        loc += default_wml_extension
     return loc
 
 def resolve_unit_image(namespace, subdir, resource):

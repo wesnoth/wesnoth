@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 15:07-0500\n"
-"PO-Revision-Date: 2024-04-16 21:57+0200\n"
+"PO-Revision-Date: 2024-06-27 20:34+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -450,26 +450,21 @@ msgstr "použije v záznamech časové značky s větší přesností."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:157
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-strict>I<\\ level>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-strict>I<\\ úroveň>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:166
-#, fuzzy
-#| msgid ""
-#| "sets the strict level of the logger. Any messages sent to log domains of "
-#| "this level or more severe will cause the unit test to fail regardless of "
-#| "the victory result. Only relevant when used with B<-u>."
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
-"nastaví úroveň přísnosti pro zaznamenávání. Jakékoli zprávy poslané oblastem "
-"zaznamenávání s touto nebo závažnější úrovní způsobí, že test součástí selže "
-"bez ohledu na vítězný výsledek. Má smysl pouze při použití s B<-u>."
+"nastaví I<úroveň> přísnosti pro zaznamenávání. Jakékoli zprávy poslané "
+"oblastem zaznamenávání s touto nebo závažnější I<úrovní> způsobí, že test "
+"součástí selže bez ohledu na vítězný výsledek. Má smysl pouze při použití "
+"s B<-u>."
 
 # type: TP
 #. type: TP
@@ -1070,14 +1065,6 @@ msgstr "B<--userconfig-dir>I<\\ název>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:366
-#, fuzzy
-#| msgid ""
-#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
-#| "Games\" for windows.  You can also specify an absolute path for the "
-#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\". On "
-#| "Windows it is also possible to specify a directory relative to the "
-#| "process working directory by using path starting with \".\\e\" or \".."
-#| "\\e\"."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -1086,11 +1073,12 @@ msgid ""
 "the process working directory by using path starting with \".\\e\" or \".."
 "\\e\".  This defaults to the userdata path."
 msgstr ""
-"nastaví I<název> adresáře s uživatelskými daty v $HOME, nebo pro Windows "
-"v „My Documents\\eMy Games“. Pro adresář s uživatelskými daty můžeš také "
+"nastaví I<název> adresáře s uživatelským nastavením v $HOME, nebo pro "
+"Windows v „My Documents\\eMy Games“. Pro adresář s nastavením můžeš také "
 "určit absolutní cestu mimo $HOME nebo „My Documents\\eMy Games“. Na Windows "
 "je kromě toho možné zadat adresář relativně k pracovnímu adresáři procesu "
-"užitím cesty, která začíná na „.\\e“ nebo „..\\e“."
+"užitím cesty, která začíná na „.\\e“ nebo „..\\e“. Výchozí hodnotou je cesta "
+"k uživatelským datům."
 
 # type: TP
 #. type: TP
@@ -1637,14 +1625,9 @@ msgstr "wesnothd – Bitva o B<Wesnoth> – síťový server pro hru více hr�
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:32
-#, fuzzy
-#| msgid ""
-#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<cesta>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<počet_vláken>\\|] [\\|B<-T> I<počet_vláken>\\|]"
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<cesta>\\|] [\\|B<-p> I<port>\\|]"
 
 # type: Plain text
 #. type: Plain text
@@ -1881,12 +1864,6 @@ msgstr "B<disallow_names>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:118
-#, fuzzy
-#| msgid ""
-#| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
-#| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1895,8 +1872,8 @@ msgid ""
 msgstr ""
 "Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky B<*> "
 "a B<?>. Pro více podrobností viz B<glob>(7). Výchozí hodnoty (použité, když "
-"není nic určeno) jsou: B<*admin*,*admln*,*server*,ai,ai?,computer,human,"
-"network,player>."
+"není nic určeno) jsou: B<*admin*,*admln*,*moderator*,*server*,ai,ai?,"
+"computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2377,24 +2354,19 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
-#| msgid "B<db_game_info_table>"
+#, no-wrap
 msgid "B<db_game_content_info_table>"
-msgstr "B<db_game_info_table>"
+msgstr "B<db_game_content_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which wesnothd will save its own data about the "
-#| "modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
-"Název tabulky, do které bude wesnothd ukládat svá vlastní data "
-"o modifikacích použitých ve hře."
+"Název tabulky, do které bude wesnothd ukládat svá vlastní data o herním "
+"obsahu (scénáři/éře/modifikacích) použitém ve hře."
 
 # type: TP
 #. type: TP
@@ -2418,10 +2390,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:248
-#, fuzzy, no-wrap
-#| msgid "B<db_name>"
+#, no-wrap
 msgid "B<db_tournament_query>"
-msgstr "B<db_name>"
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2429,6 +2400,8 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"SQL dotaz na vyhledání turnajů, které se mají vypsat při přihlášení. Měl by "
+"vrátit B<název>, B<stav> a B<url> turnaje."
 
 # type: TP
 #. type: TP
@@ -2529,96 +2502,3 @@ msgstr ""
 #: doc/man/wesnothd.6:287
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  Under X11 this defaults to "
-#~ "$XDG_CONFIG_HOME or $HOME/.config/wesnoth, on other systems to the "
-#~ "userdata path."
-#~ msgstr ""
-#~ "nastaví I<název> adresáře s uživatelským nastavením v $HOME, nebo pro "
-#~ "Windows v „My Documents\\eMy Games“. Pro adresář s nastavením můžeš také "
-#~ "určit absolutní cestu mimo $HOME nebo „My Documents\\eMy Games“. Na "
-#~ "Windows je kromě toho možné zadat adresář relativně k pracovnímu adresáři "
-#~ "procesu užitím cesty, která začíná na „.\\e“ nebo „..\\e“. Pod X11 je "
-#~ "výchozím adresářem $XDG_CONFIG_HOME nebo $HOME/.config/wesnoth, na jiných "
-#~ "systémech je to cesta k uživatelským datům."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-#~ msgstr "B<-t,\\ >I<počet>B<,\\ --threads>I<\\ počet>"
-
-# type: Plain text
-#~ msgid ""
-#~ "sets the maximum number of waiting worker threads for network I/O to n "
-#~ "(default: B<5>,\\ max:\\ B<30>)."
-#~ msgstr ""
-#~ "nastavuje nejvyšší počet pracovních vláken čekajících na vstupně-výstupní "
-#~ "síťové operace. (výchozí hodnota: B<5>,\\ maximum:\\ B<30>)"
-
-# type: TP
-#, no-wrap
-#~ msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-#~ msgstr "B<-T,\\ >I<počet>B<,\\ --max-threads>I<\\ počet>"
-
-# type: Plain text
-#~ msgid ""
-#~ "sets the maximum number of worker threads that will be created.  If set "
-#~ "to B<0> there will be no limit (default: B<0>)."
-#~ msgstr ""
-#~ "nastavuje nejvyšší počet pracovních vláken, který bude vytvořen. Při "
-#~ "nastavení na B<0> nebude žádné omezení. (výchozí hodnota: B<0>)"
-
-# type: TP
-#, no-wrap
-#~ msgid "B<compress_stored_rooms>"
-#~ msgstr "B<compress_stored_rooms>"
-
-# type: Plain text
-#~ msgid ""
-#~ "Determines whether the rooms file should be read and written to in "
-#~ "compressed form. Defaults to B<yes>."
-#~ msgstr ""
-#~ "Určuje, zda je soubor s místnostmi čten a zapisován jako komprimovaný. "
-#~ "Výchozí hodnotou je B<yes>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<new_room_policy>"
-#~ msgstr "B<new_room_policy>"
-
-# type: Plain text
-#~ msgid ""
-#~ "Determines who can create new rooms on the server. Available values are "
-#~ "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the "
-#~ "permission respectively to everyone, registered users, admin users or "
-#~ "disables new room creation. Default value is B<everyone>."
-#~ msgstr ""
-#~ "Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty "
-#~ "zahrnují B<everyone>, B<registered>, B<admin> a B<nobody> – místnosti pak "
-#~ "může vytvářet každý, registrovaní uživatelé, pouze správci nebo nikdo. "
-#~ "Výchozí hodnota je B<everyone>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<room_save_file>"
-#~ msgstr "B<room_save_file>"
-
-# type: Plain text
-#~ msgid ""
-#~ "Path to a file where the room info should be stored. This file is read on "
-#~ "server startup and written to later. If empty or not set, rooms are not "
-#~ "loaded and not saved."
-#~ msgstr ""
-#~ "Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento "
-#~ "soubor je načten při spuštění serveru a poté přepisován. Pokud je prázdný "
-#~ "nebo není nastaven, ukládání a načítání místností nebude aktivní."
-
-#, no-wrap
-#~ msgid "B<db_game_modification_info_table>"
-#~ msgstr "B<db_game_modification_info_table>"
