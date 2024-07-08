@@ -158,6 +158,43 @@ struct unit_filter_adjacent : public unit_filter_base
 	const vconfig cfg_;
 };
 
+struct unit_filter_adjacent_location : public unit_filter_base
+{
+	unit_filter_adjacent_location(const vconfig& cfg)
+		: child_(cfg)
+		, cfg_(cfg)
+	{
+	}
+
+	virtual bool matches(const unit_filter_args& args) const override
+	{
+		terrain_filter adj_filter(cfg_, resources::filter_con, false);
+		const auto adjacent = get_adjacent_tiles(args.loc);
+		int match_count=0;
+
+		config::attribute_value i_adjacent = cfg_["adjacent"];
+		std::vector<map_location::direction> dirs;
+		if (i_adjacent.empty()) {
+			dirs = map_location::all_directions();
+		} else {
+			dirs = map_location::parse_directions(i_adjacent);
+		}
+		for (map_location::direction dir : dirs) {
+			if(!adj_filter.match(adjacent[static_cast<int>(dir)])) {
+				continue;
+			}
+			++match_count;
+		}
+
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		config::attribute_value i_count = cfg_["count"];
+		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
+	}
+
+	const unit_filter_compound child_;
+	const vconfig cfg_;
+};
+
 
 template<typename F>
 struct unit_filter_child_literal : public unit_filter_base
@@ -763,6 +800,9 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 			else if (child.first == "filter_adjacent") {
 				children_.emplace_back(new unit_filter_adjacent(child.second));
+			}
+			else if (child.first == "filter_adjacent_location") {
+				children_.emplace_back(new unit_filter_adjacent_location(child.second));
 			}
 			else if (child.first == "filter_location") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
