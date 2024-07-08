@@ -726,7 +726,7 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 		} else {
 			dir = get_cwd();
 		}
-		dir / temp.substr(1);
+		dir /= temp.substr(1);
 	} else {
 		if(temp.empty()) {
 			DBG_FS << "using default userdata folder name";
@@ -741,14 +741,14 @@ static bfs::path windows_userdata(const std::string& newprefdir)
 		if(games_path) {
 			create_directory_if_missing(*games_path);
 			dir = *games_path;
-			dir / temp;
+			dir /= temp;
 			DBG_FS << "userdata is under My Games at " << dir.string();
 		} else {
 			//
 			// Crummy fallback path full of pain and suffering.
 			//
 			dir = get_cwd();
-			dir / temp;
+			dir /= temp;
 			DBG_FS << "userdata is at " << dir.string();
 		}
 	}
@@ -793,7 +793,7 @@ static bfs::path apple_userdata(const std::string& newprefdir)
 		dir = temp;
 		DBG_FS << "userdata using absolute path: " << temp;
 	} else {
-		bfs::path home = home_str ? home_str : get_cwd();
+		bfs::path home = home_str ? home_str : ".";
 		dir = home / temp;
 		DBG_FS << "userdata is relative to the current working directory: " << dir.string();
 	}
@@ -1331,6 +1331,21 @@ std::time_t file_modified_time(const std::string& fname)
 	}
 
 	return mtime;
+}
+
+bool is_map(const std::string& filename)
+{
+	return bfs::path(filename).extension() == map_extension;
+}
+
+bool is_cfg(const std::string& filename)
+{
+	return bfs::path(filename).extension() == wml_extension;
+}
+
+bool is_mask(const std::string& filename)
+{
+	return bfs::path(filename).extension() == mask_extension;
 }
 
 bool is_gzip_file(const std::string& filename)

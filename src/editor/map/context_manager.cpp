@@ -255,8 +255,10 @@ void context_manager::change_addon_id()
 	std::string new_addon_id = current_addon_;
 	gui2::dialogs::prompt::execute(new_addon_id);
 
-	if(addon_filename_legal(new_addon_id) && filesystem::rename_dir(filesystem::get_current_editor_dir(current_addon_), filesystem::get_current_editor_dir(new_addon_id))) {
-		std::string main_cfg = filesystem::get_current_editor_dir(new_addon_id)+"/_main.cfg";
+	std::string old_dir = filesystem::get_current_editor_dir(current_addon_);
+	std::string new_dir = filesystem::get_current_editor_dir(new_addon_id);
+	if(addon_filename_legal(new_addon_id) && filesystem::rename_dir(old_dir, new_dir)) {
+		std::string main_cfg = new_dir + "/_main.cfg";
 		std::string main = filesystem::read_file(main_cfg);
 
 		// update paths
@@ -686,8 +688,8 @@ void context_manager::save_map_as_dialog()
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".map")
-	   .set_extension(".mask");
+	   .set_extension(filesystem::map_extension)
+	   .set_extension(filesystem::mask_extension);
 
 	if(!dlg.show()) {
 		return;
@@ -735,7 +737,7 @@ void context_manager::save_scenario_as_dialog()
 	dlg.set_title(_("Save Scenario As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".cfg")
+	   .set_extension(filesystem::wml_extension)
 	   .add_extra_path(desktop::GAME_EDITOR_MAP_DIR);
 
 	if(!dlg.show()) {
@@ -932,7 +934,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 		return;
 	}
 
-	if(filesystem::ends_with(filename, ".cfg")) {
+	if(filesystem::is_cfg(filename)) {
 		if(editor_controller::current_addon_id_.empty()) {
 			// if no addon id has been set and the file being loaded is from an addon
 			// then use the file path to determine the addon rather than showing a dialog

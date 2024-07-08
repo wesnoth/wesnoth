@@ -21,6 +21,7 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
@@ -43,6 +44,8 @@ void migrate_version_selection::execute()
 	migrate_version_selection mig = migrate_version_selection();
 	if(mig.versions_.size() > 0) {
 		mig.show();
+	} else {
+		gui2::show_message(_("No Other Version Found"), _("This would import settings from a previous version of Wesnoth, but no other version was found on this device"), gui2::dialogs::message::button_style::auto_close);
 	}
 }
 
