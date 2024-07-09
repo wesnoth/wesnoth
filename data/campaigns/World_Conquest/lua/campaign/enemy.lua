@@ -218,7 +218,6 @@ function enemy.init_data()
 		wesnoth.game_events.fire("wc2_init_enemy")
 	end
 	if wml.variables.wc2_enemy_army == nil then
-		-- give eras an option to overwrite the enemy data.
 		local enemy_army = wesnoth.dofile("./enemy_data.lua")
 		wml.variables.wc2_enemy_army = wc2_convert.lon_to_wml(enemy_army, "wct_enemy")
 	end
