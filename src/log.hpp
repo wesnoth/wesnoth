@@ -137,6 +137,9 @@ void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 
+/** toggle log sanitization */
+void set_log_sanitize(bool sanitize);
+
 /**
  * Do the initial redirection to a log file if the logs directory is writable.
  * Also performs log rotation to delete old logs.

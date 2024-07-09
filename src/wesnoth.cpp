@@ -968,6 +968,10 @@ int main(int argc, char** argv)
 		} else if(arg == "--log-to-file") {
 			write_to_log_file = true;
 		}
+		
+		if(arg == "--no-log-sanitize") {
+			lg::set_log_sanitize(false);
+		}
 
 		if(arg == "--wnoconsole") {
 			no_con = true;
