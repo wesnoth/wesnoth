@@ -239,6 +239,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-precise", "shows the timestamps in log output with more precision.")
 		("no-log-to-file", "log output is written only to standard error rather than to a file. The environment variable WESNOTH_NO_LOG_FILE can also be set as an alternative.")
 		("log-to-file", "log output is written to a file. Cancels the effect of --no-log-to-file whether implicit or explicit.")
+		("no-log-sanitize", "do not sanitize usernames in log")
 		("wnoconsole", "For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.")
 		;
 
