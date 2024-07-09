@@ -149,9 +149,9 @@ struct unit_filter_adjacent : public unit_filter_base
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		static std::vector<std::pair<unsigned, unsigned>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count = cfg_["count"];
-		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
+		return in_ranges<unsigned>(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
 	}
 
 	const unit_filter_compound child_;
@@ -599,83 +599,53 @@ void unit_filter_compound::fill(vconfig cfg)
 
 		create_attribute(literal["recall_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
+			[](const std::vector<std::pair<unsigned, unsigned>>& ranges, const unit_filter_args& args)
 			{
-				for(auto cost : ranges) {
-					if(cost.first <= args.u.recall_cost() && args.u.recall_cost() <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges<unsigned>(args.u.recall_cost(), ranges);
 			}
 		);
 
 		create_attribute(literal["level"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
+			[](const std::vector<std::pair<unsigned, unsigned>>& ranges, const unit_filter_args& args)
 			{
-				for(auto lvl : ranges) {
-					if(lvl.first <= args.u.level() && args.u.level() <= lvl.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges<unsigned>(args.u.level(), ranges);
 			}
 		);
 
 		create_attribute(literal["defense"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
+			[](const std::vector<std::pair<unsigned, unsigned>>& ranges, const unit_filter_args& args)
 			{
 				int actual_defense = args.u.defense_modifier(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto def : ranges) {
-					if(def.first <= actual_defense && actual_defense <= def.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges<unsigned>(actual_defense, ranges);
 			}
 		);
 
 		create_attribute(literal["movement_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
+			[](const std::vector<std::pair<unsigned, unsigned>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.movement_cost(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto cost : ranges) {
-					if(cost.first <= actual_cost && actual_cost <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges<unsigned>(actual_cost, ranges);
 			}
 		);
 
 		create_attribute(literal["vision_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
+			[](const std::vector<std::pair<unsigned, unsigned>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.vision_cost(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto cost : ranges) {
-					if(cost.first <= actual_cost && actual_cost <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges<unsigned>(actual_cost, ranges);
 			}
 		);
 
 		create_attribute(literal["jamming_cost"],
 			[](const config::attribute_value& c) { return utils::parse_ranges_unsigned(c.str()); },
-			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& args)
+			[](const std::vector<std::pair<unsigned, unsigned>>& ranges, const unit_filter_args& args)
 			{
 				int actual_cost = args.u.jamming_cost(args.context().get_disp_context().map().get_terrain(args.loc));
-				for(auto cost : ranges) {
-					if(cost.first <= actual_cost && actual_cost <= cost.second) {
-						return true;
-					}
-				}
-				return false;
+				return in_ranges<unsigned>(actual_cost, ranges);
 			}
 		);
 

@@ -248,10 +248,10 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 					}
 				}
 			}
-			static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
-			std::vector<std::pair<int,int>> counts = (*i).has_attribute("count")
+			static std::vector<std::pair<unsigned, unsigned>> default_counts = utils::parse_ranges_unsigned("1-6");
+			std::vector<std::pair<unsigned, unsigned>> counts = (*i).has_attribute("count")
 				? utils::parse_ranges_unsigned((*i)["count"]) : default_counts;
-			if(!in_ranges(match_count, counts)) {
+			if(!in_ranges<unsigned>(match_count, counts)) {
 				return false;
 			}
 		}

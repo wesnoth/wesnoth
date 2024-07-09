@@ -71,7 +71,7 @@ bool utils::config_filters::unsigned_matches_if_present(const config& filter, co
 		return false;
 	}
 
-	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges_unsigned(filter[attribute].str()));
+	return in_ranges<unsigned>(cfg[attribute].to_unsigned(0), utils::parse_ranges_unsigned(filter[attribute].str()));
 }
 
 bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<int> def)

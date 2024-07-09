@@ -918,15 +918,16 @@ std::pair<double, double> parse_range_real(const std::string& str)
 	return res;
 }
 
-std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str)
+std::vector<std::pair<unsigned, unsigned>> parse_ranges_unsigned(const std::string& str)
 {
-	auto to_return = parse_ranges_int(str);
-	if(std::any_of(to_return.begin(), to_return.end(), [](const std::pair<int, int>& r) { return r.first < 0; })) {
+	auto temp = parse_ranges_int(str);
+	if(std::any_of(temp.begin(), temp.end(), [](const std::pair<int, int>& r) { return r.first < 0; })) {
 		ERR_GENERAL << "Invalid range (expected values to be zero or positive): " << str;
 		return {};
 	}
 
-	return to_return;
+	// Convert to strongly-typed unsigned range
+	return { temp.begin(), temp.end() };
 }
 
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)

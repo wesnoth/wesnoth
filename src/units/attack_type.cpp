@@ -122,10 +122,10 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
 		return false;
 
-	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges_unsigned(filter_damage)) )
+	if ( !filter_damage.empty() && !in_ranges<unsigned>(attack.damage(), utils::parse_ranges_unsigned(filter_damage)) )
 		return false;
 
-	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges_unsigned(filter_attacks)))
+	if (!filter_attacks.empty() && !in_ranges<unsigned>(attack.num_attacks(), utils::parse_ranges_unsigned(filter_attacks)))
 		return false;
 
 	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges_int(filter_accuracy)))
@@ -134,10 +134,10 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges_int(filter_parry)))
 		return false;
 
-	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges_unsigned(filter_movement)))
+	if (!filter_movement.empty() && !in_ranges<unsigned>(attack.movement_used(), utils::parse_ranges_unsigned(filter_movement)))
 		return false;
 
-	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
+	if (!filter_attacks_used.empty() && !in_ranges<unsigned>(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
 		return false;
 
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)

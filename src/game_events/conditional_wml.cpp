@@ -46,14 +46,14 @@ static lg::log_domain log_wml("wml");
 namespace game_events {
 
 namespace builtin_conditions {
-	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-infinity");
+	std::vector<std::pair<unsigned, unsigned>> default_counts = utils::parse_ranges_unsigned("1-infinity");
 
 	bool have_unit(const vconfig& cfg)
 	{
 		if(!resources::gameboard) {
 			return false;
 		}
-		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
+		std::vector<std::pair<unsigned, unsigned>> counts = cfg.has_attribute("count")
 			? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg);
@@ -82,7 +82,7 @@ namespace builtin_conditions {
 				}
 			}
 		}
-		return in_ranges(match_count, counts);
+		return in_ranges<unsigned>(match_count, counts);
 	}
 
 	bool have_location(const vconfig& cfg)
@@ -90,9 +90,9 @@ namespace builtin_conditions {
 		std::set<map_location> res;
 		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
-		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
+		std::vector<std::pair<unsigned, unsigned>> counts = cfg.has_attribute("count")
 		? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
-		return in_ranges<int>(res.size(), counts);
+		return in_ranges<unsigned>(res.size(), counts);
 	}
 
 	bool variable_matches(const vconfig& values)
