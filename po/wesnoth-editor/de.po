@@ -218,7 +218,7 @@ msgstr "Lokalen Zeitplan zuweisen"
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Einheit"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -438,10 +438,8 @@ msgid "Empty file"
 msgstr "Leere Datei"
 
 #: src/editor/map/map_context.cpp:194
-#, fuzzy
-#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "Datei hat keine .map- oder .cfg-Dateiendung"
+msgstr "Datei hat keine .map-, .cfg- oder .mask-Dateiendung"
 
 #: src/editor/map/map_context.cpp:240
 msgid ""
@@ -525,22 +523,22 @@ msgstr "Löschen"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr "Links-Klick: "
+msgstr "Linksklick: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr "Rechts-Klick: "
+msgstr "Rechtsklick: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr "Shift + Links-Klick: Zeichnet nur das Overlay"
+msgstr "Umschalt + Linksklick: Zeichnet nur das Overlay"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr "Shift + Rechtsklick: Zeichnet nur das Basisgelände"
+msgstr "Umschalt + Linksklick: Zeichnet nur das Basisgelände"
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
