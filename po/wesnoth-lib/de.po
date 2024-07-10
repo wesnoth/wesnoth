@@ -40,12 +40,12 @@ msgstr "Experimentelle KI"
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Entw. KI: Inaktive KI"
+msgstr "Entw.-KI: Inaktive KI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Entw. KI: Standard + alternative Rekrutierung"
+msgstr "Entw.-KI: Standard + alternative Rekrutierung"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -2247,11 +2247,11 @@ msgid ""
 msgstr ""
 "<italic>text='Dörfer'</italic> repräsentieren eine Gruppe von Häusern, "
 "erbaut von Menschen oder anderen.\n"
-"Fast alle Einheiten, auch Reiter, haben leichtes Spiel, sich durch die Reihen "
-"der Häuser zu bewegen und erhalten einen Defensivbonus, wenn sie in einem "
-"Dorf stationiert sind. Dörfer erlauben Einheiten, ihre Wunden zu säubern und "
-"zu versorgen, wodurch sie 8 Lebenspunkte pro Runde wiedererlangen, oder von "
-"Vergiftungen kuriert werden.\n"
+"Fast alle Einheiten, auch Reiter, haben leichtes Spiel, sich durch die "
+"Reihen der Häuser zu bewegen und erhalten einen Defensivbonus, wenn sie in "
+"einem Dorf stationiert sind. Dörfer erlauben Einheiten, ihre Wunden zu "
+"säubern und zu versorgen, wodurch sie 8 Lebenspunkte pro Runde "
+"wiedererlangen, oder von Vergiftungen kuriert werden.\n"
 "\n"
 "Die meisten Einheiten haben 50 bis 60% Verteidigung in Dörfern, Reiter "
 "jedoch nur 40%."
@@ -2850,7 +2850,7 @@ msgstr "Sortiert nach Kampagnennamen in alphabetischer Reihenfolge"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:226
 msgid "Timeline"
-msgstr "Zeitleiste"
+msgstr "Zeitlinie"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:227
@@ -3547,7 +3547,7 @@ msgstr "Zufällige Startzeit"
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr "Parteiseinstellungen"
+msgstr "Parteieinstellungen"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -4298,6 +4298,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> braucht Freiwillige für die Entwicklung, "
+"inklusive die Übersetzung. Übersetzungen können hinterherhinken oder sogar "
+"aufgegeben werden."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4308,6 +4311,10 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Anmerkung:</b> Die angezeigten Übersetzungsprozentzahlen beziehen sich "
+"nur auf das Interface des Hauptspiels und der Hilfe im Spiel. Vollständigere "
+"Statistiken, inklusive Details für jede Kampagne, sind auf der folgenden "
+"Seite verfügbar:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4317,11 +4324,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Falls Ihr an der Übersetzung des Spiels selber interessiert seid, so folgt "
+"diesem Link unten für weitere Informationen:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Halbfertige oder aufgegebene Übersetzungen anzeigen"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -4612,8 +4621,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
-"Wähle die Version von Wesnoth von der du die Daten importieren willst.\n"
-"Einige Einstellungen werden erst funktionieren, wenn du Wesnoth neu startest."
+"Wählt die Version von Wesnoth, von der Ihr die Daten importieren wollt.\n"
+"Einige Einstellungen werden erst funktionieren, wenn Ihr Wesnoth neu startet."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -5314,7 +5323,7 @@ msgstr "Spiel starten"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr "Drücke ESC um abzubrechen"
+msgstr "Drückt ESC zum Überspringen"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:311
@@ -5381,12 +5390,12 @@ msgid ""
 msgstr ""
 "Die Geschwindigkeit, mit welcher Einheiten sich bewegen und Animationen "
 "abgespielt werden, wenn »Geschwindigkeit erhöhen« aktiviert ist oder während "
-"des Spiels »Shift« gedrückt wird"
+"des Spiels »Umschalt« gedrückt wird"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
-msgstr "Deaktiviere automatische Bewegungen"
+msgstr "Automatische Bewegungen deaktivieren"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:101
@@ -5640,8 +5649,8 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
-"Ändere das Spiel-Oberflächenmotiv. Zusätzliche Motive können von der "
-"Gemeinschaft erstellte Erweiterungen bereitgestellt werden"
+"Ändere das Spiel-Oberflächenmotiv. Zusätzliche Motive können in von der "
+"Gemeinschaft erstellten Erweiterungen bereitgestellt werden"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
@@ -6245,7 +6254,7 @@ msgstr "Erfolge einsehen"
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
 msgid "Places to talk about Wesnoth"
-msgstr ""
+msgstr "Orte, wo man über Wesnoth reden kann"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:263
@@ -6496,7 +6505,7 @@ msgstr "de"
 
 #: src/font/text.cpp:886
 msgid "The text contains invalid Pango markup: "
-msgstr "Der Text enthält ungültiges Pango Markup: "
+msgstr "Der Text enthält ungültiges Pango-Markup: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:265
@@ -6662,27 +6671,27 @@ msgstr "Szenarien"
 
 #: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "ES/MS Kampagnen"
+msgstr "ES-/MS-Kampagnen"
 
 #: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^MP campaigns"
-msgstr "MS Kampagnen"
+msgstr "MS-Kampagnen"
 
 #: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^MP scenarios"
-msgstr "MS Szenarien"
+msgstr "MS-Szenarien"
 
 #: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^MP map-packs"
-msgstr "MS Kartenpakete"
+msgstr "MS-Kartenpakete"
 
 #: src/gui/dialogs/addon/manager.cpp:176
 msgid "addons_of_type^MP eras"
-msgstr "MS Epochen"
+msgstr "MS-Epochen"
 
 #: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^MP factions"
-msgstr "MS Fraktionen"
+msgstr "MS-Fraktionen"
 
 #: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Modifications"
@@ -7573,11 +7582,11 @@ msgstr "Szenarien"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "Multiplayer Campaigns"
-msgstr "Mehrspieler Kampagnen"
+msgstr "Mehrspielerkampagnen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 msgid "Singleplayer Campaigns"
-msgstr "Einzelspieler Kampagnen"
+msgstr "Einzelspielerkampagnen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Custom Maps"
@@ -7913,8 +7922,8 @@ msgstr "Link kopiert!"
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
-"»Listendefinition« entsprechen."
+"Die Anzahl von Spalten in »list_data« muss jener der »list_definition« "
+"entsprechen."
 
 #: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
 #: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:92
@@ -7924,7 +7933,7 @@ msgstr "Keine Liste definiert."
 #: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
 #: src/gui/widgets/listbox.cpp:860
 msgid "A 'list_definition' should contain one row."
-msgstr "Eine »Listendefinition« sollte nur eine Zeile enthalten."
+msgstr "Eine »list_definition« sollte nur eine Zeile enthalten."
 
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
@@ -7978,7 +7987,7 @@ msgstr "Keine Knoten für die Baumansicht definiert."
 
 #: src/gui/widgets/tree_view.cpp:326
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr "[node]id 'root' ist der Implementierung vorbehalten."
+msgstr "[node]id »root« ist der Implementierung vorbehalten."
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -8402,7 +8411,7 @@ msgstr "Übertrage Lokale Zeit"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Time Schedule Editor"
-msgstr "Tagesablauf Editor"
+msgstr "Tagesablauf-Editor"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Partial Undo"
@@ -8478,7 +8487,7 @@ msgid ""
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Verwendet die linke und rechte Maustaste, um Gelände zu zeichnen. Haltet "
-"Shift gedrückt, um die zugrundeliegenden Ebene nicht zu ändern, z. B. bei "
+"Umschalt gedrückt, um die zugrundeliegenden Ebene nicht zu ändern, z. B. bei "
 "Brücken. Mit Strg+Klick wird das Gelände unter dem Cursor als Pinsel "
 "übernommen."
 
@@ -8492,7 +8501,7 @@ msgid ""
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 "Die linke Maustaste wählt aus oder hebt die Auswahl auf, wenn Strg gedrückt "
-"ist; die Rechte ruft ein Kontextmenü auf. Haltet Shift gedrückt, um eine "
+"ist; die Rechte ruft ein Kontextmenü auf. Haltet Umschalt gedrückt, um eine "
 "Zauberstabauswahl des selben Geländetyps durchzuführen."
 
 #: src/hotkey/hotkey_command.cpp:201
