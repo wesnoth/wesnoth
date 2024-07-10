@@ -440,10 +440,11 @@ void set_log_sanitize(bool sanitize) {
 
 std::string sanitize_log(const std::string& logstr)
 {
-	std::string str = logstr;
 	if (!log_sanitization) {
 		return logstr;
 	}
+	
+	std::string str = logstr;
 
 #ifdef _WIN32
 	const char* user_name = getenv("USERNAME");
