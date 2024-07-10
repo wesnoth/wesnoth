@@ -440,7 +440,7 @@ void set_log_sanitize(bool sanitize) {
 
 std::string sanitize_log(const std::string& logstr)
 {
-	if (!log_sanitization) {
+	if(!log_sanitization) {
 		return logstr;
 	}
 
