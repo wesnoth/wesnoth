@@ -443,7 +443,7 @@ std::string sanitize_log(const std::string& logstr)
 	if (!log_sanitization) {
 		return logstr;
 	}
-	
+
 	std::string str = logstr;
 
 #ifdef _WIN32
