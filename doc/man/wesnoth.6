@@ -167,6 +167,9 @@ prevents redirecting logged output to a file. The environment variable WESNOTH_N
 .B --log-to-file
 log output is written to a file. Cancels the effect of --no-log-to-file whether implicit or explicit.
 .TP
+.B --no-log-sanitize
+disables the anonymization that's normally applied when logging, for example replacing usernames with USER.
+.TP
 .B --wnoconsole
 For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP
