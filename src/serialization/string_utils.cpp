@@ -920,14 +920,23 @@ std::pair<double, double> parse_range_real(const std::string& str)
 
 std::vector<std::pair<unsigned, unsigned>> parse_ranges_unsigned(const std::string& str)
 {
-	auto temp = parse_ranges_int(str);
-	if(std::any_of(temp.begin(), temp.end(), [](const std::pair<int, int>& r) { return r.first < 0; })) {
-		ERR_GENERAL << "Invalid range (expected values to be zero or positive): " << str;
-		return {};
+	std::vector<std::pair<unsigned, unsigned>> to_return;
+	for(const auto& [lower_bound, upper_bound] : parse_ranges_int(str)) {
+		// Pre: upper_bound > lower_bound. Bail if we find any negative lower bounds.
+		if(lower_bound < 0) {
+			ERR_GENERAL << "Invalid negative lower bound in range: " << str;
+			return {};
+		}
+
+		// Bump the value of "infinity" to compensate for using unsigned ints.
+		if(upper_bound == std::numeric_limits<int>::max()) {
+			to_return.emplace_back(lower_bound, std::numeric_limits<unsigned>::max());
+		} else {
+			to_return.emplace_back(lower_bound, upper_bound);
+		}
 	}
 
-	// Convert to strongly-typed unsigned range
-	return { temp.begin(), temp.end() };
+	return to_return;
 }
 
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
