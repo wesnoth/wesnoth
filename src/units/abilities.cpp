@@ -1197,7 +1197,7 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
 {
 	std::map<std::string, int> type_res;
-	int max_res = INT_MIN;
+	int max_res = std::numeric_limits<int>::min();
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
 		if(c.has_attribute("alternative_type")) {

@@ -932,7 +932,7 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 	, last_frame_begin_time_(0)
 	, cycles_(false)
 {
-	starting_frame_time_ = INT_MAX;
+	starting_frame_time_ = std::numeric_limits<int>::max();
 
 	config::const_child_itors range = cfg.child_range(frame_string + "frame");
 	if(!range.empty() && cfg[frame_string + "start_time"].empty()) {
@@ -1394,7 +1394,7 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 
 void unit_animator::start_animations()
 {
-	int begin_time = INT_MAX;
+	int begin_time = std::numeric_limits<int>::max();
 
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
@@ -1492,7 +1492,7 @@ int unit_animator::get_animation_time_potential() const
 
 int unit_animator::get_end_time() const
 {
-	int end_time = INT_MIN;
+	int end_time = std::numeric_limits<int>::min();
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
 			end_time = std::max<int>(end_time, anim.my_unit->anim_comp().get_animation()->get_end_time());

@@ -192,7 +192,7 @@ class unit_animator
 public:
 	unit_animator() :
 		animated_units_(),
-		start_time_(INT_MIN)
+		start_time_(std::numeric_limits<int>::min())
 	{}
 
 	void add_animation(unit_const_ptr animated_unit
@@ -255,7 +255,7 @@ public:
 
 	void clear()
 	{
-		start_time_ = INT_MIN;
+		start_time_ = std::numeric_limits<int>::min();
 		animated_units_.clear();
 	}
 

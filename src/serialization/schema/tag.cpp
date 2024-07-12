@@ -43,10 +43,10 @@ wml_tag::wml_tag(const config& cfg)
 	, any_tag_(cfg["any_tag"].to_bool())
 {
 	if(max_ < 0) {
-		max_ = INT_MAX;
+		max_ = std::numeric_limits<int>::max();
 	}
 	if(max_children_ < 0) {
-		max_children_ = INT_MAX;
+		max_children_ = std::numeric_limits<int>::max();
 	}
 
 	if(cfg.has_attribute("super")) {

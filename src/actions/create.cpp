@@ -591,7 +591,7 @@ namespace { // Helpers for place_recruit()
 		const unit_map & units = resources::gameboard->units();
 		unit_map::const_iterator unit_itor;
 		map_location min_loc;
-		int min_dist = INT_MAX;
+		int min_dist = std::numeric_limits<int>::max();
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
@@ -603,7 +603,7 @@ namespace { // Helpers for place_recruit()
 				}
 			}
 		}
-		if (min_dist < INT_MAX) {
+		if (min_dist < std::numeric_limits<int>::max()) {
 			// Face towards closest enemy
 			new_unit_itor->set_facing(recruit_loc.get_relative_dir(min_loc));
 		} else if (leader_loc != map_location::null_location()) {
