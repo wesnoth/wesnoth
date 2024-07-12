@@ -515,7 +515,7 @@ DEFINE_WFL_FUNCTION(tan, 1, 1)
 {
 	const double angle = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double result = std::tan(angle * pi<double>() / 180.0);
-	if(std::isnan(result) || result <= INT_MIN || result >= INT_MAX) {
+	if(std::isnan(result) || result <= std::numeric_limits<int>::min() || result >= std::numeric_limits<int>::max()) {
 		return variant();
 	}
 
@@ -613,7 +613,7 @@ DEFINE_WFL_FUNCTION(exp, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double result = std::exp(num);
-	if(result == 0 || result >= INT_MAX) {
+	if(result == 0 || result >= std::numeric_limits<int>::max()) {
 		// These are range errors rather than NaNs,
 		// but I figure it's better than returning INT_MIN.
 		return variant();

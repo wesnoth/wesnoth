@@ -64,7 +64,7 @@ std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 		const config& list_cfg = cfg.mandatory_child("list");
 		int list_min = list_cfg["min"].to_int();
 		int list_max = list_cfg["max"].str() == "infinite" ? -1 : list_cfg["max"].to_int(-1);
-		if(list_max < 0) list_max = INT_MAX;
+		if(list_max < 0) list_max = std::numeric_limits<int>::max();
 		type = std::make_shared<wml_type_list>(cfg["name"], list_cfg["split"].str("\\s*,\\s*"), list_min, list_max);
 		composite_range.emplace(list_cfg.child_range("element"));
 	} else if(cfg.has_attribute("value")) {

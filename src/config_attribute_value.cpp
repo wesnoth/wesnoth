@@ -80,7 +80,7 @@ config_attribute_value& config_attribute_value::operator=(long long v)
 		return *this = static_cast<unsigned long long>(v);
 	}
 
-	if(v >= INT_MIN) {
+	if(v >= std::numeric_limits<int>::min()) {
 		// We can store this as an int.
 		return *this = static_cast<int>(v);
 	}
@@ -97,7 +97,7 @@ config_attribute_value& config_attribute_value::operator=(long long v)
 config_attribute_value& config_attribute_value::operator=(unsigned long long v)
 {
 	// Use int for smaller numbers.
-	if(v <= INT_MAX) {
+	if(v <= std::numeric_limits<int>::max()) {
 		return *this = static_cast<int>(v);
 	}
 
