@@ -1348,8 +1348,8 @@ int file_size(const std::string& fname)
 	if(ec) {
 		LOG_FS << "Failed to read filesize of " << fname << ": " << ec.message();
 		return -1;
-	} else if(size > INT_MAX) {
-		return INT_MAX;
+	} else if(size > std::numeric_limits<int>::max()) {
+		return std::numeric_limits<int>::max();
 	} else {
 		return size;
 	}
@@ -1369,8 +1369,8 @@ int dir_size(const std::string& pname)
 	if(ec) {
 		LOG_FS << "Failed to read directorysize of " << pname << ": " << ec.message();
 		return -1;
-	} else if(size_sum > INT_MAX) {
-		return INT_MAX;
+	} else if(size_sum > std::numeric_limits<int>::max()) {
+		return std::numeric_limits<int>::max();
 	} else {
 		return size_sum;
 	}
