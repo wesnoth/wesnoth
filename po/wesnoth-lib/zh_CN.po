@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-25 21:28-0500\n"
-"PO-Revision-Date: 2023-09-10 09:01+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2024-07-10 11:00+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2411,10 +2411,8 @@ msgstr "档案"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "升级"
+msgstr "成就"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2423,10 +2421,8 @@ msgstr "身份认证"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "重命名"
+msgstr "用户名："
 
 #. [label]
 #. [grid]
@@ -2955,7 +2951,7 @@ msgstr ""
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/community_dialog.cfg:63
 msgid "Forums"
-msgstr ""
+msgstr "论坛"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
@@ -2985,7 +2981,7 @@ msgstr ""
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/community_dialog.cfg:158
 msgid "Donate"
-msgstr ""
+msgstr "捐款"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -3185,10 +3181,8 @@ msgstr ""
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "附加组件"
+msgstr "附加组件ID"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
@@ -3313,7 +3307,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "论坛URL"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
@@ -3502,10 +3496,8 @@ msgstr "团队名称："
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruit Unit"
 msgid "Recruit list:"
-msgstr "征募单位"
+msgstr "征募列表："
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -4120,10 +4112,8 @@ msgstr "将完整的报告复制到剪贴板"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "打开日志文件"
+msgstr "日志文件"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
@@ -4255,12 +4245,12 @@ msgstr ""
 msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
-msgstr ""
+msgstr "如果你对翻译这个游戏感兴趣，请从以下链接获得更多信息："
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "显示正在进行或弃用的翻译"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -5098,8 +5088,6 @@ msgstr "下载数"
 #. [label]: id=modifications
 #: data/gui/window/mp_match_history.cfg:185
 #: data/gui/window/mp_match_history.cfg:223
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
 msgstr "无"
 
@@ -5231,15 +5219,11 @@ msgstr ""
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "改变阵营的控制者"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
 msgstr "改变AI阵营的行为"
 
@@ -5502,10 +5486,8 @@ msgstr ""
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the game resolution"
 msgid "Change the game window size"
-msgstr "改变游戏分辨率"
+msgstr "改变游戏窗口大小"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/window/preferences/03_display.cfg:87
@@ -6156,17 +6138,13 @@ msgstr "配置游戏的各项设置"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "视图：每一团队"
+msgstr "查看成就"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "韦诺之战"
+msgstr "谈论韦诺之战的地方"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:263
@@ -6957,40 +6935,28 @@ msgstr ""
 "请选择一个兼容的模组。"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Load Core"
 msgid "Core"
-msgstr "读取核心"
+msgstr "核心"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "战役"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
-#, fuzzy
-#| msgid "Start Campaign"
 msgid "Hybrid Campaign"
-msgstr "开始战役"
+msgstr "混合战役"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:176
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
 msgstr "多人战役"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
-#, fuzzy
-#| msgid "Scenarios"
 msgid "Scenario"
 msgstr "场景"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "多人游戏告警"
+msgstr "多人场景"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
 #, fuzzy
@@ -7040,14 +7006,10 @@ msgid "RNG"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:194
-#, fuzzy
-#| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "生存"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:195
-#, fuzzy
-#| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "地形改造"
 
@@ -7580,8 +7542,6 @@ msgid "Lobby"
 msgstr "大厅"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
 msgstr "游戏"
 
@@ -7720,10 +7680,8 @@ msgid "Screenshot"
 msgstr "截屏"
 
 #: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:301
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "选择起始场景"
+msgstr "选择测试场景"
 
 #: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
@@ -8664,10 +8622,8 @@ msgid "Add-on Publishing Editor"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:271
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "管理附加组件"
+msgstr "修改附加组件ID"
 
 #: src/hotkey/hotkey_command.cpp:273
 msgid "Edit Scenario"
