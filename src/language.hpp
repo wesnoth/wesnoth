@@ -112,6 +112,9 @@ bool current_language_rtl();
 //function which attempts to query and return the locale on the system
 const language_def& get_locale();
 
+/** Get the country for the given language definition */
+const std::string country(const language_def& locale);
+
 /** Initializes the list of textdomains from a configuration object */
 void init_textdomains(const game_config_view& cfg);
 

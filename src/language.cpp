@@ -22,6 +22,9 @@
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
 
+#include <boost/locale.hpp>
+#include <boost/locale/info.hpp>
+#include <locale>
 #include <clocale>
 
 #ifdef _WIN32
@@ -366,6 +369,13 @@ const language_def& get_locale()
 
 	LOG_G << "locale could not be determined; defaulting to system locale";
 	return known_languages[0];
+}
+
+const std::string country(const language_def& locale)
+{
+	boost::locale::generator gen;
+	std::locale loc = gen(locale.localename);
+	return std::use_facet<boost::locale::info>(loc).country();
 }
 
 void init_textdomains(const game_config_view& cfg)
