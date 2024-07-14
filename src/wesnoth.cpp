@@ -286,10 +286,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
 	}
 
-	if(cmdline_opts.userconfig_dir) {
-		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
-	}
-
 	if(cmdline_opts.userdata_dir) {
 		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
 	}
@@ -301,11 +297,6 @@ static int process_command_args(const commandline_options& cmdline_opts)
 
 	if(cmdline_opts.usercache_path) {
 		std::cout << filesystem::get_cache_dir();
-		return 0;
-	}
-
-	if(cmdline_opts.userconfig_path) {
-		std::cout << filesystem::get_user_config_dir();
 		return 0;
 	}
 
@@ -950,8 +941,8 @@ int main(int argc, char** argv)
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
 		static const std::set<std::string> terminal_switches = {
-			"--config-path", "--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
-			"--simple-version", "--userconfig-path", "--userdata-path", "-v", "--version"
+			"--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
+			"--simple-version", "--userdata-path", "-v", "--version"
 		};
 
 		// Switches that take arguments, the switch may have the argument past
@@ -976,6 +967,10 @@ int main(int argc, char** argv)
 			write_to_log_file = false;
 		} else if(arg == "--log-to-file") {
 			write_to_log_file = true;
+		}
+
+		if(arg == "--no-log-sanitize") {
+			lg::set_log_sanitize(false);
 		}
 
 		if(arg == "--wnoconsole") {

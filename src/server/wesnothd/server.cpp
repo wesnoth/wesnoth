@@ -1932,7 +1932,7 @@ template<class SocketPtr> void server::send_server_message(SocketPtr socket, con
 
 void server::disconnect_player(player_iterator player)
 {
-	utils::visit([](auto&& socket) {
+	std::visit([](auto&& socket) {
 		if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
 			socket->async_shutdown([socket](...) {});
 			const char buffer[] = "";
@@ -2657,7 +2657,7 @@ void server::kickban_handler(
 
 	for(auto user : users_to_kick) {
 		*out << "\nKicked " << user->info().name() << " (" << user->client_ip() << ").";
-		utils::visit([this,reason](auto&& socket) { async_send_error(socket, "You have been banned. Reason: " + reason); }, user->socket());
+		std::visit([this,reason](auto&& socket) { async_send_error(socket, "You have been banned. Reason: " + reason); }, user->socket());
 		disconnect_player(user);
 	}
 }
@@ -2799,7 +2799,7 @@ void server::kick_handler(const std::string& /*issuer_name*/,
 		*out << "Kicked " << player->name() << " (" << player->client_ip() << "). '"
 			 << kick_message << "'";
 
-		utils::visit([this, &kick_message](auto&& socket) { async_send_error(socket, kick_message); }, player->socket());
+		std::visit([this, &kick_message](auto&& socket) { async_send_error(socket, kick_message); }, player->socket());
 		disconnect_player(player);
 	}
 

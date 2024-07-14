@@ -4891,7 +4891,7 @@ msgid ""
 "poison will not be removed unless the unit regenerates, or begins a turn in "
 "a village, in an oasis, or next to a unit with the <i>Cures</i> ability."
 msgstr ""
-"Vergiftete Einheiten verlieren zu Beginn ihres Zuges 8 Lebenspunkte bis sie "
+"Vergiftete Einheiten verlieren zu Beginn ihres Zuges 8 Lebenspunkte, bis sie "
 "schließlich nur noch 1 Lebenspunkt von ihrem Tod trennt. Bis das Gift "
 "kuriert ist, werden sie in diesem bedauernswerten Zustand verbleiben. Heiler "
 "können die Wirkung des Giftes aufhalten, aber nicht aufheben. Nur der "
@@ -4938,8 +4938,8 @@ msgid ""
 msgstr ""
 "Die Aussicht, dass ein Angriff eine Einheit trifft, hängt normalerweise "
 "davon ab, wie gut sich der/die Attackierte in der jeweiligen Geländeart "
-"verteidigen kann. <i>Magische Angriffe</i>haben jedoch generell eine "
-"Trefferwahrscheinlichkeit von 70% und die Vorhersagbarkeit bei "
+"verteidigen kann. <i>Magische Angriffe</i> haben jedoch generell eine "
+"Trefferwahrscheinlichkeit von 70% und die Trefferwahrscheinlichkeit bei "
 "<i>treffsicheren</i> Einheiten liegt bei mindestens 60%."
 
 #. [tip]
@@ -5249,13 +5249,13 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"Nachdem eine Einheit ihre höchste Stufe (sog. AMLA) erreicht hat, wird sie "
-"beim nächsten Rangaufstieg mit einem anderen Bonus begünstigt. Gewöhnlich "
-"wird sie voll geheilt und die Zahl der Lebenspunkte (LP) jeweils um 3 "
-"weitere erhöht – was im Vergleich zur normalen Beförderung kein großer "
-"Zugewinn mehr ist. Da es zudem stetig schwieriger wird, weitere "
-"Auszeichnungen zu erhalten, ist es sinnvoller, schwächere Einheiten voran zu "
-"bringen."
+"Nachdem eine Einheit ihre höchste Stufe erreicht hat, wird sie "
+"beim Erreichen der max. Erfahrungspunkte (EP) mit einem anderen Bonus "
+"(sog. AMLA) begünstigt. Gewöhnlich wird sie voll geheilt und die Zahl "
+"der Lebenspunkte (LP) jeweils um 3 weitere erhöht – was im Vergleich zur "
+"normalen Beförderung kein großer Zugewinn mehr ist. Da es zudem stetig "
+"schwieriger wird, weitere Auszeichnungen zu erhalten, ist es sinnvoller, "
+"schwächere Einheiten voran zu bringen."
 
 #. [tip]
 #: data/tips.cfg:192
@@ -5381,7 +5381,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:226 data/tips.cfg:238
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>- Fürst Hamel von Knalga</i>"
+msgstr "<i>— Fürst Hamel von Knalga</i>"
 
 #. [tip]
 #: data/tips.cfg:229
@@ -5444,7 +5444,7 @@ msgid ""
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
 "Man muss Verluste in einer Schlacht akzeptieren. Es ist nicht ungewöhnlich "
-"for Anfänger, den Sieg bei dem Versuch, jede Einheit am Leben zu halten, aus "
+"für Anfänger, den Sieg bei dem Versuch, jede Einheit am Leben zu halten, aus "
 "den Augen zu verlieren."
 
 #. [tip]
@@ -5504,7 +5504,7 @@ msgstr ""
 #. [tip]
 #: data/tips.cfg:262
 msgid "<i>― Lord Tallin of Knalga, 538 YW</i>"
-msgstr "<i>- Fürst Tallin von Knalga, 538JW</i>"
+msgstr "<i>— Fürst Tallin von Knalga, 538JW</i>"
 
 #. [tip]
 #: data/tips.cfg:265
@@ -5513,7 +5513,7 @@ msgid ""
 "quicker. The <i>acceleration factor</i> can be set, and turned on by "
 "default, in the <i>Preferences</i> menu’s <i>General</i> tab."
 msgstr ""
-"Drücken von <b>Shift</b> wird die Animationen für die Bewegung und Kämpfe "
+"Drücken von <b>Umschalt</b> wird die Animationen für die Bewegung und Kämpfe "
 "beschleunigen. Der <b>Beschleunigungsfaktor</b> kann in den "
 "<b>Einstellungen</b> unter <b>Allgemeines</b> gesetzt sowie standardmäßig "
 "aktiviert werden."
@@ -5526,9 +5526,9 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
-"Wusstest Ihr schon, dass Ihr den Schwierigkeitsgrad währen einer Kampagne "
-"ändern könnt? Wählt <i>Schwierigkeitsgrad ändern</i> unten im <i>Spielstand "
-"laden</i>-Menü beim Laden eines Spielstands der ein Szenario beginnt."
+"Wusstest Ihr schon, dass Ihr den Schwierigkeitsgrad während einer Kampagne "
+"ändern könnt? Wählt <i>Schwierigkeitsgrad ändern</i> unten im <i>Spielstand-"
+"laden</i>-Menü beim Laden eines Spielstands, der ein Szenario beginnt."
 
 #. [tip]
 #: data/tips.cfg:275
@@ -5845,27 +5845,27 @@ msgstr "Szenario"
 
 #: src/addon/info.cpp:256
 msgid "addon_type^SP/MP Campaign"
-msgstr "ES/MS Kampagne"
+msgstr "ES-/MS-Kampagne"
 
 #: src/addon/info.cpp:258
 msgid "addon_type^MP era"
-msgstr "MS Epoche"
+msgstr "MS-Epoche"
 
 #: src/addon/info.cpp:260
 msgid "addon_type^MP faction"
-msgstr "MS Fraktion"
+msgstr "MS-Fraktion"
 
 #: src/addon/info.cpp:262
 msgid "addon_type^MP map-pack"
-msgstr "MS Kartenpaket"
+msgstr "MS-Kartenpaket"
 
 #: src/addon/info.cpp:264
 msgid "addon_type^MP scenario"
-msgstr "MS Szenario"
+msgstr "MS-Szenario"
 
 #: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
-msgstr "MS Kampagne"
+msgstr "MS-Kampagne"
 
 #: src/addon/info.cpp:268
 msgid "addon_type^Modification"
@@ -7124,7 +7124,7 @@ msgstr "Epoche: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:151
 msgid " UTC+0"
-msgstr "UTC-Zeit"
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "No game history found."
@@ -7132,7 +7132,7 @@ msgstr "Kein Partien-Verlauf gefunden."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:266
 msgid "Request timed out."
-msgstr "Zeitüberschreitung der Anfrage"
+msgstr "Zeitüberschreitung der Anfrage."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:276
 msgid "Request encountered an unexpected error, please check the logs."
@@ -8076,8 +8076,8 @@ msgstr "Variable nicht gefunden"
 #: src/menu_events.cpp:1981
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
-"Debug-Kommando »unit« ignoriert: Es ist keine Einheit ausgewählt oder unter "
-"dem Mauszeiger"
+"Debug-Kommando »unit: $unit« ignoriert: Es ist keine Einheit ausgewählt oder unter "
+"dem Mauszeiger."
 
 #: src/menu_events.cpp:1999
 msgid ""
@@ -8196,7 +8196,7 @@ msgstr "Download abgeschlossen"
 
 #: src/network_download_file.cpp:85
 msgid "The file has been downloaded."
-msgstr "Die Datei wurde heruntergeladen"
+msgstr "Die Datei wurde heruntergeladen."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8222,7 +8222,7 @@ msgstr "Aktuelle Systemzeit"
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr ""
 "Es wurde versucht, eine beschädigte Datei zu erstellen. Bitte berichtet "
-"diesen Fehler."
+"diesen Fehler"
 
 #: src/play_controller.cpp:1021
 msgid ""

@@ -121,7 +121,7 @@ wesnothd_connection::~wesnothd_connection()
 {
 	MPTEST_LOG;
 
-	if(auto socket = utils::get_if<tls_socket>(&socket_)) {
+	if(auto socket = std::get_if<tls_socket>(&socket_)) {
 		error_code ec;
 		// this sends close_notify for secure connection shutdown
 		(*socket)->async_shutdown([](const error_code&) {} );
@@ -143,7 +143,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, results_type resu
 		throw system_error(ec);
 	}
 
-	boost::asio::async_connect(*utils::get<raw_socket>(socket_), results,
+	boost::asio::async_connect(*std::get<raw_socket>(socket_), results,
 		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, std::placeholders::_2));
 }
 
@@ -175,9 +175,9 @@ void wesnothd_connection::handshake()
 	static const uint32_t handshake = 0;
 	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
-	boost::asio::async_write(*utils::get<raw_socket>(socket_), boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
+	boost::asio::async_write(*std::get<raw_socket>(socket_), boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
 		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });
-	boost::asio::async_read(*utils::get<raw_socket>(socket_), boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4),
+	boost::asio::async_read(*std::get<raw_socket>(socket_), boost::asio::buffer(reinterpret_cast<std::byte*>(&handshake_response_), 4),
 		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
@@ -225,11 +225,11 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 
 		if(handshake_response_ == 0x00000000) {
 			network_asio::load_tls_root_certs(tls_context_);
-			raw_socket s { std::move(utils::get<raw_socket>(socket_)) };
+			raw_socket s { std::move(std::get<raw_socket>(socket_)) };
 			tls_socket ts { new tls_socket::element_type{std::move(*s), tls_context_} };
 			socket_ = std::move(ts);
 
-			auto& socket { *utils::get<tls_socket>(socket_) };
+			auto& socket { *std::get<tls_socket>(socket_) };
 
 			socket.set_verify_mode(
 				boost::asio::ssl::verify_peer |
@@ -267,10 +267,10 @@ void wesnothd_connection::fallback_to_unencrypted()
 	assert(use_tls_ == true);
 	use_tls_ = false;
 
-	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_)->remote_endpoint() };
-	utils::get<raw_socket>(socket_)->close();
+	boost::asio::ip::tcp::endpoint endpoint { std::get<raw_socket>(socket_)->remote_endpoint() };
+	std::get<raw_socket>(socket_)->close();
 
-	utils::get<raw_socket>(socket_)->async_connect(endpoint,
+	std::get<raw_socket>(socket_)->async_connect(endpoint,
 		std::bind(&wesnothd_connection::handle_connect, this, std::placeholders::_1, endpoint));
 }
 
@@ -343,7 +343,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 void wesnothd_connection::cancel()
 {
 	MPTEST_LOG;
-	utils::visit([](auto&& socket) {
+	std::visit([](auto&& socket) {
 		if(socket->lowest_layer().is_open()) {
 			boost::system::error_code ec;
 
@@ -506,7 +506,7 @@ void wesnothd_connection::send()
 		buf.data()
 	};
 
-	utils::visit([this, &bufs](auto&& socket) {
+	std::visit([this, &bufs](auto&& socket) {
 		boost::asio::async_write(*socket, bufs,
 			std::bind(&wesnothd_connection::is_write_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&wesnothd_connection::handle_write, this, std::placeholders::_1, std::placeholders::_2));
@@ -518,7 +518,7 @@ void wesnothd_connection::recv()
 {
 	MPTEST_LOG;
 
-	utils::visit([this](auto&& socket) {
+	std::visit([this](auto&& socket) {
 		boost::asio::async_read(*socket, read_buf_,
 			std::bind(&wesnothd_connection::is_read_complete, this, std::placeholders::_1, std::placeholders::_2),
 			std::bind(&wesnothd_connection::handle_read, this, std::placeholders::_1, std::placeholders::_2));
@@ -572,21 +572,21 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 void wesnothd_connection::set_keepalive(int seconds)
 {
 	boost::asio::socket_base::keep_alive option(true);
-	utils::get<raw_socket>(socket_)->set_option(option);
+	std::get<raw_socket>(socket_)->set_option(option);
 
 #ifdef __linux__
 	int timeout = 10;
 	int cnt = std::max((seconds - 10) / 10, 1);
 	int interval = 10;
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
+	setsockopt(std::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
+	setsockopt(std::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
+	setsockopt(std::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
 #elif defined(__APPLE__) && defined(__MACH__)
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &seconds, sizeof(seconds));
+	setsockopt(std::get<raw_socket>(socket_)->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &seconds, sizeof(seconds));
 #elif defined(_WIN32)
 	// these are in milliseconds for windows
 	DWORD timeout_ms = seconds * 1000;
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+	setsockopt(std::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+	setsockopt(std::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
 #endif
 }

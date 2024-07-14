@@ -205,7 +205,7 @@ public:
 	 * @param value   A pointer to a variant value representing the container.
 	 * @param iter    An underlying iterator for the underlying container.
 	 */
-	variant_iterator(const variant_value_base* value, const utils::any& iter);
+	variant_iterator(const variant_value_base* value, const std::any& iter);
 
 	variant operator*() const;
 	variant_iterator& operator++();
@@ -217,7 +217,7 @@ public:
 private:
 	formula_variant::type type_;
 	const variant_value_base* container_;
-	utils::any iter_;
+	std::any iter_;
 };
 
 }

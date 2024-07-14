@@ -212,7 +212,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	std::vector<terrain_builder::tile> new_tiles((x + 4) * (y + 4));
+	std::vector<terrain_builder::tile> new_tiles(static_cast<size_t>(x + 4) * (y + 4));
 	tiles_.swap(new_tiles);
 	reset();
 }
@@ -637,8 +637,8 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	// Normalize the rotation, so that it starts on a positive location
-	int minx = INT_MAX;
-	int miny = INT_MAX;
+	int minx = std::numeric_limits<int>::max();
+	int miny = std::numeric_limits<int>::max();
 
 	for(const terrain_constraint& cons : ret.constraints) {
 		minx = std::min<int>(cons.loc.x, minx);
@@ -1154,7 +1154,7 @@ void terrain_builder::build_terrains()
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them
-		std::size_t min_size = INT_MAX;
+		std::size_t min_size = std::numeric_limits<int>::max();
 		t_translation::ter_list min_types = t_translation::ter_list(); // <-- This must be explicitly initialized, just
 																	   // as min_constraint is, at start of loop, or we
 																	   // get a null pointer dereference when we go

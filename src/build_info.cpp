@@ -666,7 +666,6 @@ std::string full_build_report()
 {
 	list_formatter::contents_list paths{
 		{"Data dir",        game_config::path},
-		{"User config dir", filesystem::get_user_config_dir()},
 		{"User data dir",   filesystem::get_user_data_dir()},
 		{"Saves dir",       filesystem::get_saves_dir()},
 		{"Add-ons dir",     filesystem::get_addons_dir()},

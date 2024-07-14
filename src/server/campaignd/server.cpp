@@ -482,7 +482,7 @@ void server::load_config()
 
 std::ostream& operator<<(std::ostream& o, const server::request& r)
 {
-	o << '[' << (utils::holds_alternative<tls_socket_ptr>(r.sock) ? "+" : "") << r.addr << ' ' << r.cmd << "] ";
+	o << '[' << (std::holds_alternative<tls_socket_ptr>(r.sock) ? "+" : "") << r.addr << ' ' << r.cmd << "] ";
 	return o;
 }
 
@@ -842,11 +842,11 @@ void server::send_message(const std::string& msg, const any_socket_ptr& sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("message").set_attr_dup("message", escaped_msg.c_str());
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
+	std::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
 inline std::string client_address(const any_socket_ptr& sock) {
-	return utils::visit([](auto&& sock) { return ::client_address(sock); }, sock);
+	return std::visit([](auto&& sock) { return ::client_address(sock); }, sock);
 }
 
 void server::send_error(const std::string& msg, const any_socket_ptr& sock)
@@ -855,7 +855,7 @@ void server::send_error(const std::string& msg, const any_socket_ptr& sock)
 	const auto& escaped_msg = simple_wml_escape(msg);
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", escaped_msg.c_str());
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
+	std::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
 void server::send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock)
@@ -876,7 +876,7 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	err_cfg.set_attr_dup("extra_data", escaped_extra_data.c_str());
 	err_cfg.set_attr_dup("status_code", escaped_status_str.c_str());
 
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
+	std::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
 optional_config server::get_addon(const std::string& id)
@@ -954,7 +954,7 @@ void server::handle_server_id(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+	std::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -1055,7 +1055,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();
 
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+	std::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_request_campaign(const server::request& req)
@@ -1167,7 +1167,7 @@ void server::handle_request_campaign(const server::request& req)
 
 			LOG_CS << req << "Sending add-on '" << name << "' version: " << from << " -> " << to << " (delta)";
 
-			utils::visit([this, &req, &doc](auto && sock) {
+			std::visit([this, &req, &doc](auto && sock) {
 				coro_send_doc(sock, doc, req.yield);
 			}, req.sock);
 
@@ -1185,7 +1185,7 @@ void server::handle_request_campaign(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on '" << name << "' version: " << to << " size: " << full_pack_size / 1024 << " KiB";
-		utils::visit([this, &req, &full_pack_path](auto&& socket) {
+		std::visit([this, &req, &full_pack_path](auto&& socket) {
 			coro_send_file(socket, full_pack_path, req.yield);
 		}, req.sock);
 	}
@@ -1242,7 +1242,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 		}
 
 		LOG_CS << req << "Sending add-on hash index for '" << req.cfg["name"] << "' size: " << file_size / 1024 << " KiB";
-		utils::visit([this, &path, &req](auto&& socket) {
+		std::visit([this, &path, &req](auto&& socket) {
 			coro_send_file(socket, path, req.yield);
 		}, req.sock);
 	}

@@ -64,7 +64,7 @@ variant_iterator::variant_iterator()
 {
 }
 
-variant_iterator::variant_iterator(const variant_value_base* value, const utils::any& iter)
+variant_iterator::variant_iterator(const variant_value_base* value, const std::any& iter)
 	: type_(value->get_type())
 	, container_(value)
 	, iter_(iter)

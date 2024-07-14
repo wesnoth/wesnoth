@@ -66,7 +66,6 @@ game_version::game_version(unsigned start_page)
 	// NOTE: these path_map_ entries are referenced by the GUI2 WML
 	// definition of this dialog using preprocessor macros.
 	path_map_["datadir"] = game_config::path;
-	path_map_["config"] = filesystem::get_user_config_dir();
 	path_map_["userdata"] = filesystem::get_user_data_dir();
 	path_map_["saves"] = filesystem::get_saves_dir();
 	path_map_["addons"] = filesystem::get_addons_dir();

@@ -568,7 +568,7 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 	return next_filename;
 }
 
-static bfs::path user_data_dir, user_config_dir, cache_dir;
+static bfs::path user_data_dir, cache_dir;
 
 bool is_userdata_initialized()
 {
@@ -642,6 +642,7 @@ static void setup_user_data_dir()
 	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
 
 	// Create user data and add-on directories
+	create_directory_if_missing(get_sync_dir());
 	create_directory_if_missing(get_legacy_editor_dir());
 	create_directory_if_missing(get_legacy_editor_dir() + "/maps");
 	create_directory_if_missing(get_legacy_editor_dir() + "/scenarios");
@@ -650,6 +651,10 @@ static void setup_user_data_dir()
 	create_directory_if_missing(get_saves_dir());
 	create_directory_if_missing(get_wml_persist_dir());
 	create_directory_if_missing(get_logs_dir());
+
+	if(file_exists(get_unsynced_prefs_file()) && !file_exists(get_synced_prefs_file())) {
+		copy_file(get_unsynced_prefs_file(), get_synced_prefs_file());
+	}
 
 	lg::move_log_file();
 }
@@ -887,19 +892,6 @@ bool rename_dir(const std::string& old_dir, const std::string& new_dir)
 	return true;
 }
 
-static void set_user_config_path(bfs::path newconfig)
-{
-	user_config_dir = newconfig;
-	if(!create_directory_if_missing_recursive(user_config_dir)) {
-		ERR_FS << "could not open or create user config directory at " << user_config_dir.string();
-	}
-}
-
-void set_user_config_dir(const std::string& newconfigdir)
-{
-	set_user_config_path(newconfigdir);
-}
-
 static void set_cache_path(bfs::path newcache)
 {
 	cache_dir = newcache;
@@ -920,15 +912,6 @@ static const bfs::path& get_user_data_path()
 	}
 
 	return user_data_dir;
-}
-
-std::string get_user_config_dir()
-{
-	if(user_config_dir.empty()) {
-		user_config_dir = get_user_data_path();
-	}
-
-	return user_config_dir.string();
 }
 
 std::string get_user_data_dir()
@@ -1365,8 +1348,8 @@ int file_size(const std::string& fname)
 	if(ec) {
 		LOG_FS << "Failed to read filesize of " << fname << ": " << ec.message();
 		return -1;
-	} else if(size > INT_MAX) {
-		return INT_MAX;
+	} else if(size > std::numeric_limits<int>::max()) {
+		return std::numeric_limits<int>::max();
 	} else {
 		return size;
 	}
@@ -1386,8 +1369,8 @@ int dir_size(const std::string& pname)
 	if(ec) {
 		LOG_FS << "Failed to read directorysize of " << pname << ": " << ec.message();
 		return -1;
-	} else if(size_sum > INT_MAX) {
-		return INT_MAX;
+	} else if(size_sum > std::numeric_limits<int>::max()) {
+		return std::numeric_limits<int>::max();
 	} else {
 		return size_sum;
 	}

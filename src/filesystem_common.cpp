@@ -122,14 +122,19 @@ bool blacklist_pattern_list::match_dir(const std::string& name) const
 					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
 }
 
-std::string get_prefs_file()
+std::string get_synced_prefs_file()
 {
-	return get_user_config_dir() + "/preferences";
+	return get_sync_dir() + "/preferences";
+}
+
+std::string get_unsynced_prefs_file()
+{
+	return get_user_data_dir() + "/preferences";
 }
 
 std::string get_credentials_file()
 {
-	return get_user_config_dir() + "/credentials-aes";
+	return get_user_data_dir() + "/credentials-aes";
 }
 
 std::string get_default_prefs_file()
@@ -146,9 +151,19 @@ std::string get_save_index_file()
 	return get_user_data_dir() + "/save_index";
 }
 
+std::string get_lua_history_file()
+{
+	return get_sync_dir() + "/lua_command_history";
+}
+
+std::string get_sync_dir()
+{
+	return get_user_data_dir() + "/sync";
+}
+
 std::string get_saves_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/saves";
+	const std::string dir_path = get_sync_dir() + "/saves";
 	return get_dir(dir_path);
 }
 
@@ -166,13 +181,13 @@ std::string get_addons_dir()
 
 std::string get_wml_persist_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/persist";
+	const std::string dir_path = get_sync_dir() + "/persist";
 	return get_dir(dir_path);
 }
 
 std::string get_legacy_editor_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/editor";
+	const std::string dir_path = get_sync_dir() + "/editor";
 	return get_dir(dir_path);
 }
 

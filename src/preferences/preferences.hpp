@@ -59,19 +59,6 @@ const int INFINITE_AUTO_SAVES = 61;
 
 const std::string default_addons_server = "add-ons.wesnoth.org";
 
-// preferences for MP alerts
-// all listed here have three variants with the suffixes: _lobby, _sound, _notif
-const std::string player_joins = "player_joins";
-const std::string player_leaves = "player_leaves";
-const std::string private_message = "private_message";
-const std::string friend_message = "friend_message";
-const std::string public_message = "public_message";
-const std::string server_message = "server_message";
-const std::string ready_for_start = "ready_for_start";
-const std::string game_has_begun = "game_has_begun";
-const std::string turn_changed = "turn_changed";
-const std::string game_created = "game_created";
-
 enum class lobby_joins { show_none, show_friends, show_all };
 
 enum PREFERENCE_VIEW { VIEW_DEFAULT, VIEW_FRIENDS };
@@ -478,10 +465,6 @@ class prefs
 		 */
 		std::string editor_chosen_addon();
 
-		void set_mp_alert_option(const std::string& id, const std::string& type, bool value);
-		bool mp_alert_option(const std::string& id, const std::string& type, bool def = false);
-		bool has_mp_alert_option(const std::string& id, const std::string& type);
-
 		void set_last_cache_cleared_version(const std::string& version);
 		std::string last_cache_cleared_version();
 
@@ -730,6 +713,78 @@ class prefs
 		// Calls all of the above functions on the current game board
 		void encounter_all_content(const game_board& gb);
 
+		bool player_joins_sound();
+		void set_player_joins_sound(bool val);
+		bool player_joins_lobby();
+		void set_player_joins_lobby(bool val);
+		bool player_joins_notif();
+		void set_player_joins_notif(bool val);
+
+		bool player_leaves_sound();
+		void set_player_leaves_sound(bool val);
+		bool player_leaves_lobby();
+		void set_player_leaves_lobby(bool val);
+		bool player_leaves_notif();
+		void set_player_leaves_notif(bool val);
+
+		bool private_message_sound();
+		void set_private_message_sound(bool val);
+		bool private_message_lobby();
+		void set_private_message_lobby(bool val);
+		bool private_message_notif();
+		void set_private_message_notif(bool val);
+
+		bool friend_message_sound();
+		void set_friend_message_sound(bool val);
+		bool friend_message_lobby();
+		void set_friend_message_lobby(bool val);
+		bool friend_message_notif();
+		void set_friend_message_notif(bool val);
+
+		bool public_message_sound();
+		void set_public_message_sound(bool val);
+		bool public_message_lobby();
+		void set_public_message_lobby(bool val);
+		bool public_message_notif();
+		void set_public_message_notif(bool val);
+
+		bool server_message_sound();
+		void set_server_message_sound(bool val);
+		bool server_message_lobby();
+		void set_server_message_lobby(bool val);
+		bool server_message_notif();
+		void set_server_message_notif(bool val);
+
+		bool ready_for_start_sound();
+		void set_ready_for_start_sound(bool val);
+		bool ready_for_start_lobby();
+		void set_ready_for_start_lobby(bool val);
+		bool ready_for_start_notif();
+		void set_ready_for_start_notif(bool val);
+
+		bool game_has_begun_sound();
+		void set_game_has_begun_sound(bool val);
+		bool game_has_begun_lobby();
+		void set_game_has_begun_lobby(bool val);
+		bool game_has_begun_notif();
+		void set_game_has_begun_notif(bool val);
+
+		bool turn_changed_sound();
+		void set_turn_changed_sound(bool val);
+		bool turn_changed_lobby();
+		void set_turn_changed_lobby(bool val);
+		bool turn_changed_notif();
+		void set_turn_changed_notif(bool val);
+
+		bool game_created_sound();
+		void set_game_created_sound(bool val);
+		bool game_created_lobby();
+		void set_game_created_lobby(bool val);
+		bool game_created_notif();
+		void set_game_created_notif(bool val);
+
+		void clear_mp_alert_prefs();
+
 		bool remember_password();
 		void set_remember_password(bool remember);
 
@@ -782,12 +837,10 @@ class prefs
 		void save_credentials();
 		void clear_credentials();
 
-		void clear(const std::string& key);
 		void set_child(const std::string& key, const config& val);
 		optional_const_config get_child(const std::string &key);
 		std::string get(const std::string& key, const std::string& def);
 		config::attribute_value get_as_attribute(const std::string& key);
-		void erase(const std::string& key);
 
 		std::string get_system_username();
 		/**
@@ -817,6 +870,190 @@ class prefs
 		preferences::secure_buffer build_key(const std::string& server, const std::string& login);
 		preferences::secure_buffer escape(const preferences::secure_buffer& text);
 		preferences::secure_buffer unescape(const preferences::secure_buffer& text);
+
+		std::set<std::string> unknown_synced_attributes_;
+		std::set<std::string> unknown_unsynced_attributes_;
+		std::set<std::string> unknown_synced_children_;
+		std::set<std::string> unknown_unsynced_children_;
+
+		// a bit verbose, but it being a compile time error if a preference hasn't been added is nice
+		static constexpr std::array synced_attributes_{
+			prefs_list::player_joins_sound,
+			prefs_list::player_joins_notif,
+			prefs_list::player_joins_lobby,
+			prefs_list::player_leaves_sound,
+			prefs_list::player_leaves_notif,
+			prefs_list::player_leaves_lobby,
+			prefs_list::private_message_sound,
+			prefs_list::private_message_notif,
+			prefs_list::private_message_lobby,
+			prefs_list::friend_message_sound,
+			prefs_list::friend_message_notif,
+			prefs_list::friend_message_lobby,
+			prefs_list::public_message_sound,
+			prefs_list::public_message_notif,
+			prefs_list::public_message_lobby,
+			prefs_list::server_message_sound,
+			prefs_list::server_message_notif,
+			prefs_list::server_message_lobby,
+			prefs_list::ready_for_start_sound,
+			prefs_list::ready_for_start_notif,
+			prefs_list::ready_for_start_lobby,
+			prefs_list::game_has_begun_sound,
+			prefs_list::game_has_begun_notif,
+			prefs_list::game_has_begun_lobby,
+			prefs_list::turn_changed_sound,
+			prefs_list::turn_changed_notif,
+			prefs_list::turn_changed_lobby,
+			prefs_list::game_created_sound,
+			prefs_list::game_created_notif,
+			prefs_list::game_created_lobby,
+			prefs_list::_last_cache_cleaned_ver,
+			prefs_list::addon_manager_saved_order_direction,
+			prefs_list::addon_manager_saved_order_name,
+			prefs_list::alias,
+			prefs_list::allow_observers,
+			prefs_list::ally_orb_color,
+			prefs_list::ally_sighted_interrupts,
+			prefs_list::auto_save_max,
+			prefs_list::blindfold_replay,
+			prefs_list::campaign_server,
+			prefs_list::chat_lines,
+			prefs_list::chat_timestamp,
+			prefs_list::confirm_end_turn,
+			prefs_list::custom_command,
+			prefs_list::delete_saves,
+			prefs_list::disable_auto_moves,
+			prefs_list::editor_auto_update_transitions,
+			prefs_list::editor_draw_hex_coordinates,
+			prefs_list::editor_draw_num_of_bitmaps,
+			prefs_list::editor_draw_terrain_codes,
+			prefs_list::enable_planning_mode_on_start,
+			prefs_list::encountered_terrain_list,
+			prefs_list::encountered_units,
+			prefs_list::enemy_orb_color,
+			prefs_list::fi_blocked_in_game,
+			prefs_list::fi_friends_in_game,
+			prefs_list::fi_invert,
+			prefs_list::fi_vacant_slots,
+			prefs_list::floating_labels,
+			prefs_list::grid,
+			prefs_list::hide_whiteboard,
+			prefs_list::host,
+			prefs_list::idle_anim,
+			prefs_list::idle_anim_rate,
+			prefs_list::lobby_joins,
+			prefs_list::lobby_whisper_friends_only,
+			prefs_list::locale,
+			prefs_list::login,
+			prefs_list::message_bell,
+			prefs_list::minimap_draw_terrain,
+			prefs_list::minimap_draw_units,
+			prefs_list::minimap_draw_villages,
+			prefs_list::minimap_movement_coding,
+			prefs_list::minimap_terrain_coding,
+			prefs_list::moved_orb_color,
+			prefs_list::mp_countdown,
+			prefs_list::mp_countdown_action_bonus,
+			prefs_list::mp_countdown_init_time,
+			prefs_list::mp_countdown_reservoir_time,
+			prefs_list::mp_countdown_turn_bonus,
+			prefs_list::mp_fog,
+			prefs_list::mp_level_type,
+			prefs_list::mp_random_start_time,
+			prefs_list::mp_server_warning_disabled,
+			prefs_list::mp_shroud,
+			prefs_list::mp_turns,
+			prefs_list::mp_use_map_settings,
+			prefs_list::mp_village_gold,
+			prefs_list::mp_village_support,
+			prefs_list::mp_xp_modifier,
+			prefs_list::music,
+			prefs_list::partial_orb_color,
+			prefs_list::random_faction_mode,
+			prefs_list::remember_password,
+			prefs_list::save_replays,
+			prefs_list::scroll,
+			prefs_list::scroll_threshold,
+			prefs_list::show_ally_orb,
+			prefs_list::show_disengaged_orb,
+			prefs_list::show_enemy_orb,
+			prefs_list::show_moved_orb,
+			prefs_list::show_partial_orb,
+			prefs_list::show_side_colors,
+			prefs_list::show_status_on_ally_orb,
+			prefs_list::show_unmoved_orb,
+			prefs_list::shuffle_sides,
+			prefs_list::skip_ai_moves,
+			prefs_list::skip_mp_replay,
+			prefs_list::sound,
+			prefs_list::sample_rate,
+			prefs_list::stop_music_in_background,
+			prefs_list::turbo,
+			prefs_list::turbo_speed,
+			prefs_list::turn_bell,
+			prefs_list::turn_dialog,
+			prefs_list::ui_sound,
+			prefs_list::unit_standing_animations,
+			prefs_list::unmoved_orb_color,
+			prefs_list::ask_delete,
+			prefs_list::chat_message_aging,
+			prefs_list::color_cursors,
+			prefs_list::compress_saves,
+			prefs_list::confirm_load_save_from_different_version,
+			prefs_list::damage_prediction_allow_monte_carlo_simulation,
+			prefs_list::editor_max_recent_files,
+			prefs_list::keepalive_timeout,
+			prefs_list::lobby_auto_open_whisper_windows,
+			prefs_list::middle_click_scrolls,
+			prefs_list::mouse_scrolling,
+			prefs_list::scroll_to_action,
+			prefs_list::scroll_when_mouse_outside,
+			prefs_list::show_all_units_in_help,
+			prefs_list::show_combat,
+			prefs_list::show_deprecation,
+			prefs_list::use_twelve_hour_clock_format,
+			prefs_list::mp_era,
+			prefs_list::mp_level,
+			prefs_list::mp_modifications,
+			prefs_list::selected_achievement_group,
+			prefs_list::sp_modifications,
+			prefs_list::animate_map,
+			prefs_list::animate_water,
+		};
+		static constexpr std::array synced_children_{
+			prefs_list::achievements,
+			prefs_list::completed_campaigns,
+			prefs_list::history,
+			prefs_list::options,
+		};
+		static constexpr std::array unsynced_attributes_{
+			prefs_list::auto_pixel_scale,
+			prefs_list::core,
+			prefs_list::dir_bookmarks,
+			prefs_list::draw_delay,
+			prefs_list::editor_chosen_addon,
+			prefs_list::gui2_theme,
+			prefs_list::mp_server_program_name,
+			prefs_list::pixel_scale,
+			prefs_list::sound_buffer_size,
+			prefs_list::theme,
+			prefs_list::tile_size,
+			prefs_list::vsync,
+			prefs_list::xresolution,
+			prefs_list::yresolution,
+			prefs_list::font_scale,
+			prefs_list::bell_volume,
+			prefs_list::music_volume,
+			prefs_list::sound_volume,
+			prefs_list::ui_volume,
+			prefs_list::fullscreen,
+			prefs_list::maximized,
+		};
+		static constexpr std::array unsynced_children_{
+			prefs_list::editor_recent_files,
+		};
+		static_assert(synced_attributes_.size() + synced_children_.size() + unsynced_attributes_.size() + unsynced_children_.size() == prefs_list::values.size(), "attribute missing from lists of synced or unsynced preferences!");
 };
 
 //

@@ -59,6 +59,8 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
+static bool log_sanitization = true;
+
 /** whether the current logs directory is writable */
 static std::optional<bool> is_log_dir_writable_ = std::nullopt;
 /** alternative stream to write data to */
@@ -432,8 +434,16 @@ static void print_precise_timestamp(std::ostream& out) noexcept
 	} catch(...) {}
 }
 
+void set_log_sanitize(bool sanitize) {
+	log_sanitization = sanitize;
+}
+
 std::string sanitize_log(const std::string& logstr)
 {
+	if(!log_sanitization) {
+		return logstr;
+	}
+
 	std::string str = logstr;
 
 #ifdef _WIN32

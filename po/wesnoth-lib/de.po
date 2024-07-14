@@ -40,12 +40,12 @@ msgstr "Experimentelle KI"
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Entw. KI: Inaktive KI"
+msgstr "Entw.-KI: Inaktive KI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "Entw. KI: Standard + alternative Rekrutierung"
+msgstr "Entw.-KI: Standard + alternative Rekrutierung"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -266,7 +266,7 @@ msgstr "Sauberer Pflasterstein"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Kies"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -2431,10 +2431,8 @@ msgstr "Kopieren"
 
 #. [draw]
 #: data/gui/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "page^Copy"
 msgid "page^✔ Copied"
-msgstr "Kopieren"
+msgstr "✔ Kopiert"
 
 #. [image]: id=pending_messages
 #: data/gui/widget/chatbox.cfg:40
@@ -2859,7 +2857,7 @@ msgstr "Sortiert nach Kampagnennamen in alphabetischer Reihenfolge"
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:226
 msgid "Timeline"
-msgstr "Zeitleiste"
+msgstr "Zeitlinie"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:227
@@ -2869,68 +2867,58 @@ msgstr "Sortiert nach den Geschehnissen in chronologischer Reihenfolge"
 #. [multimenu_button]: id=filter_completion
 #: data/gui/window/campaign_dialog.cfg:237
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Nach Kampagnenvollendungsstatus filtern"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:240
-#, fuzzy
-#| msgid "Completed"
 msgid "Not Completed"
-msgstr "Vollendet"
+msgstr "Nicht vollendet"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/window/campaign_dialog.cfg:242
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Zeige vom Spieler nicht vollendete Kampagnen"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:246
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr "Vollendet"
+msgstr "Vollendet: Bronze"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:247
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Zeige Kampagnen, die im einfachsten Schwierigkeitsgrad vollendet wurden"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:251
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Vollendet"
+msgstr "Vollendet: Silber"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:252
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Zeige Kampagnen, die in einem mittleren Schwierigkeitsgrad vollendet wurden"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:256
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr "Vollendet"
+msgstr "Vollendet: Gold"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:257
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Zeige Kampagnen, die in im schwierigsten Schwierigkeitsgrad vollendet wurden"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:261
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: All"
-msgstr "Vollendet"
+msgstr "Vollendet: Alle"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:262
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Zeige vollendete Kampagnen"
 
 #. [label]
 #. [label]: id=mods_header
@@ -2956,7 +2944,11 @@ msgid ""
 "\n"
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
-msgstr ""
+msgstr "Reiner Zufall ohne Anpassungen; so, wie das Spiel vorgesehen ist.\n"
+"\n"
+"Beispiel: Falls Ihr zwei mal mit 50% Trefferwahrscheinlichkeit zuschlagt, "
+"werdet Ihr am wahrscheinlichsten einmal treffen und einmal verfehlen, "
+"aber Ihr könnt auch zwei mal treffen oder zwei mal verfehlen."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:359
@@ -2972,13 +2964,17 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Identisch zum Standard-Zufall, außer, dass beim Laden eines "
+"Spielstands der Ausgang eines Angriffs sich nicht ändert.\n"
+"\n"
+"Beispiel: Ihr schlagt zwei mal zu und habt Glück, denn Ihr trefft in beiden "
+"Fällen. Dann ladet Ihr einen früheren Spielstand und macht den selben "
+"Angriff erneut. Beide Schläge werden immer noch treffen."
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:365
-#, fuzzy
-#| msgid "Predictable RNG"
 msgid "Reduced RNG"
-msgstr "Vorhersehbarer Zufall"
+msgstr "Verringerter Zufall"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:366
@@ -2989,6 +2985,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Treffer und Verfehlungen sind viel konsistenter. Damit können "
+"kleinere Scharmützel besser geplant werden.\n"
+"\n"
+"Beispiel: Wenn Ihr drei mal mit 50% Trefferwahrscheinlichkeit zuschlagt, "
+"werdet Ihr immer mindestens ein mal treffen und ein mal verfehlen."
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:383
@@ -3279,8 +3280,6 @@ msgstr "Nur für Verbündete"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
 msgstr "Erweiterungsauswahl"
 
@@ -3598,7 +3597,7 @@ msgstr "Zufällige Startzeit"
 #. [label]: id=title
 #: data/gui/window/editor_edit_side.cfg:60
 msgid "Side Setup"
-msgstr "Parteiseinstellungen"
+msgstr "Parteieinstellungen"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
@@ -3700,40 +3699,34 @@ msgstr "Keine"
 
 #. [button]: id=preview_
 #: data/gui/window/editor_edit_unit.cfg:98
-#, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Vorherige Seite"
+msgstr "Vorschaubild"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_unit.cfg:143
-#, fuzzy
-#| msgid "Status"
 msgid "Stats"
-msgstr "Status"
+msgstr "Statistiken"
 
 #. [button]: id=load_unit_type
 #: data/gui/window/editor_edit_unit.cfg:187
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Einheitentyp laden"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:221
-#, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Bild:"
+msgstr "Einheitenbild:"
 
 #. [grid]: id=grid_stats
 #: data/gui/window/editor_edit_unit.cfg:223
 msgid "Portrait:"
-msgstr ""
+msgstr "Portrait:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:234
 msgid "Level:"
-msgstr ""
+msgstr "Stufe:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:259 data/gui/window/mp_staging.cfg:189
@@ -3742,62 +3735,48 @@ msgstr "Geschlecht:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:267
-#, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Zufall"
+msgstr "Männlich"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:268
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Weiblich"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:283
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Einheit aufsteigen lassen"
+msgstr "Steigt auf zu:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:309
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Spezies"
+msgstr "Spezies:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:361
 msgid "Alignment:"
-msgstr ""
+msgstr "Ausrichtung:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:387
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "LP: "
+msgstr "LP:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:417
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "EP: "
+msgstr "EP:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:447
 msgid "Cost:"
-msgstr ""
+msgstr "Kosten:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:477
-#, fuzzy
-#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr "Bewegungskosten:"
+msgstr "Bewegung:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3810,52 +3789,44 @@ msgstr "Angriffe"
 
 #. [button]: id=atk_new
 #: data/gui/window/editor_edit_unit.cfg:599
-#, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Angreifen"
+msgstr "Neue Attacke"
 
 #. [button]: id=atk_delete
 #: data/gui/window/editor_edit_unit.cfg:612
-#, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Auswählen/Bewegen/Kämpfen"
+msgstr "Attacke löschen"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:682
 msgid "Range:"
-msgstr ""
+msgstr "Reichweite:"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:694
 msgid "range^Melee"
-msgstr ""
+msgstr "Nahkampf"
 
 #. [row]
 #: data/gui/window/editor_edit_unit.cfg:695
 msgid "range^Ranged"
-msgstr ""
+msgstr "Fernkampf"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:736
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Schaden"
+msgstr "Schaden:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:763
-#, fuzzy
-#| msgid "Hits"
 msgid "Hits:"
-msgstr "Treffer"
+msgstr "Treffer:"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:791
 msgid "Specials:"
-msgstr ""
+msgstr "Besonderheiten:"
 
 #. [label]: id=title
 #. [widget]: id=tab_label
@@ -3868,24 +3839,18 @@ msgstr "Erweitert"
 
 #. [grid]: id=grid_atk
 #: data/gui/window/editor_edit_unit.cfg:848
-#, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
-msgstr "Profil"
+msgstr "Kleines Profil"
 
 #. [label]
 #: data/gui/window/editor_edit_unit.cfg:859
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Fähigkeiten"
+msgstr "Fähigkeiten:"
 
 #. [label]: id=movetype_label
 #: data/gui/window/editor_edit_unit.cfg:885
-#, fuzzy
-#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "Inhaltstyp:"
+msgstr "Bewegungstyp:"
 
 #. [button]: id=load_movetype
 #. [button]: id=ok
@@ -3904,37 +3869,29 @@ msgstr "Bewegungskosten:"
 
 #. [label]: id=defense_label
 #: data/gui/window/editor_edit_unit.cfg:981
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Verteidiger"
+msgstr "Verteidigung:"
 
 #. [label]: id=resistance_label
 #: data/gui/window/editor_edit_unit.cfg:1034
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Resistenzen: "
+msgstr "Resistenzen:"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #. [label]: id=usage_label
 #: data/gui/window/editor_edit_unit.cfg:1087
-#, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Bild:"
+msgstr "KI-Benutzung:"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1247
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Übersicht (Parteien)"
+msgstr "Hauptstatistik"
 
 #. [widget]: id=tab_label
 #: data/gui/window/editor_edit_unit.cfg:1283
 msgid "WML View"
-msgstr ""
+msgstr "WML-Ansicht"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4376,33 +4333,35 @@ msgstr "Scrolle zu"
 #. [label]
 #: data/gui/window/game_version.cfg:122
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:150
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Läuft auf:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:179
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Architektur:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:239
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:279
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Kopiert einen vollständigen "
+"Bericht hier:</i>"
 
 #. [label]
 #: data/gui/window/game_version.cfg:299
@@ -4410,11 +4369,13 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Meldet ein Problem oder "
+"erbetet eine neue Funktion:</i>"
 
 #. [button]: id=issue
 #: data/gui/window/game_version.cfg:313
 msgid "Report Issue"
-msgstr ""
+msgstr "Problem melden"
 
 #. [label]
 #: data/gui/window/game_version.cfg:322
@@ -4422,6 +4383,8 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Versionsmigratordialog "
+"erneut öffnen:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
@@ -4545,7 +4508,7 @@ msgstr "Spenden"
 #. [label]: id=description
 #: data/gui/window/game_version.cfg:826
 msgid "An open source, turn-based strategy game with a high fantasy theme."
-msgstr ""
+msgstr "Ein zugbasiertes Open-Source-Spiel mit einem High-Fantasy-Thema."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -4587,7 +4550,7 @@ msgstr "Mitwirkende"
 #. [button]: id=license
 #: data/gui/window/game_version.cfg:954
 msgid "License"
-msgstr ""
+msgstr "Lizenz"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4684,6 +4647,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> braucht Freiwillige für die Entwicklung, "
+"inklusive die Übersetzung. Übersetzungen können hinterherhinken oder "
+"sogar aufgegeben werden."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4694,6 +4660,10 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Anmerkung:</b> Die angezeigten Übersetzungsprozentzahlen beziehen "
+"sich nur auf das Interface des Hauptspiels und der Hilfe im Spiel. Vollständigere "
+"Statistiken, inklusive Details für jede Kampagne, sind auf der folgenden Seite "
+"verfügbar:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4703,11 +4673,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Falls Ihr an der Übersetzung des Spiels selber interessiert seid, so folgt "
+"diesem Link unten für weitere Informationen:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Halbfertige oder aufgegebene Übersetzungen anzeigen"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -4998,8 +4970,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
-"Wähle die Version von Wesnoth von der du die Daten importieren willst.\n"
-"Einige Einstellungen werden erst funktionieren, wenn du Wesnoth neu startest."
+"Wählt die Version von Wesnoth, von der Ihr die Daten importieren wollt.\n"
+"Einige Einstellungen werden erst funktionieren, wenn Ihr Wesnoth neu startet."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -5665,10 +5637,8 @@ msgstr "* benötigte Werte"
 
 #. [label]
 #: data/gui/window/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Fraktion"
+msgstr "Fraktion:"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:243
@@ -5698,7 +5668,7 @@ msgstr "Spiel starten"
 #. [text]
 #: data/gui/window/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr "Drücke ESC um abzubrechen"
+msgstr "Drückt ESC zum Überspringen"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:311
@@ -5760,12 +5730,12 @@ msgid ""
 msgstr ""
 "Die Geschwindigkeit, mit welcher Einheiten sich bewegen und Animationen "
 "abgespielt werden, wenn »Geschwindigkeit erhöhen« aktiviert ist oder während "
-"des Spiels »Shift« gedrückt wird"
+"des Spiels »Umschalt« gedrückt wird"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
-msgstr "Deaktiviere automatische Bewegungen"
+msgstr "Automatische Bewegungen deaktivieren"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:101
@@ -6019,8 +5989,8 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
-"Ändere das Spiel-Oberflächenmotiv. Zusätzliche Motive können von der "
-"Gemeinschaft erstellte Erweiterungen bereitgestellt werden"
+"Ändere das Spiel-Oberflächenmotiv. Zusätzliche Motive können in von der "
+"Gemeinschaft erstellten Erweiterungen bereitgestellt werden"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
@@ -6619,7 +6589,7 @@ msgstr "Startet den Karteneditor"
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
 msgid "Places to talk about Wesnoth"
-msgstr ""
+msgstr "Orte, wo man über Wesnoth reden kann"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -6634,14 +6604,12 @@ msgstr "Spiel beenden"
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:471
 msgid "About"
-msgstr ""
+msgstr "Über"
 
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:472
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "Die Schlacht um Wesnoth"
+msgstr "Allgemeine Informationen über Battle for Wesnoth"
 
 #. [button]: id=language
 #: data/gui/window/title_screen.cfg:494
@@ -6877,7 +6845,7 @@ msgstr "de"
 
 #: src/font/text.cpp:1055
 msgid "The text contains invalid Pango markup: "
-msgstr "Der Text enthält ungültiges Pango Markup: "
+msgstr "Der Text enthält ungültiges Pango-Markup: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:265
@@ -7043,27 +7011,27 @@ msgstr "Szenarien"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "ES/MS Kampagnen"
+msgstr "ES-/MS-Kampagnen"
 
 #: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_of_type^MP campaigns"
-msgstr "MS Kampagnen"
+msgstr "MS-Kampagnen"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^MP scenarios"
-msgstr "MS Szenarien"
+msgstr "MS-Szenarien"
 
 #: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_of_type^MP map-packs"
-msgstr "MS Kartenpakete"
+msgstr "MS-Kartenpakete"
 
 #: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_of_type^MP eras"
-msgstr "MS Epochen"
+msgstr "MS-Epochen"
 
 #: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^MP factions"
-msgstr "MS Fraktionen"
+msgstr "MS-Fraktionen"
 
 #: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^Modifications"
@@ -7515,49 +7483,43 @@ msgstr "Wählt ein Icon"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:82
 msgid "lawful"
-msgstr ""
+msgstr "redlich"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:83
 msgid "chaotic"
-msgstr ""
+msgstr "lichtscheu"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:84
 msgid "neutral"
-msgstr ""
+msgstr "neutral"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:85
 msgid "liminal"
-msgstr ""
+msgstr "zwielichtig"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:145
 msgid "scout"
-msgstr ""
+msgstr "Kundschafter"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:146
-#, fuzzy
-#| msgid "Right"
 msgid "fighter"
-msgstr "Rechts"
+msgstr "Kämpfer"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:147
-#, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Suche"
+msgstr "Bogenschütze"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:148
 msgid "mixed fighter"
-msgstr ""
+msgstr "Mischkämpfer"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:149
 msgid "healer"
-msgstr ""
+msgstr "Heiler"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:305
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Choose File"
-msgstr "Spieler wählen"
+msgstr "Datei wählen"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -7997,11 +7959,11 @@ msgstr "Szenarien"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:123
 msgid "Multiplayer Campaigns"
-msgstr "Mehrspieler Kampagnen"
+msgstr "Mehrspielerkampagnen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:124
 msgid "Singleplayer Campaigns"
-msgstr "Einzelspieler Kampagnen"
+msgstr "Einzelspielerkampagnen"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:125
 msgid "Custom Maps"
@@ -8335,8 +8297,8 @@ msgstr "Link kopiert!"
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
-"»Listendefinition« entsprechen."
+"Die Anzahl von Spalten in »list_data« muss jener der "
+"»list_definition« entsprechen."
 
 #: src/gui/widgets/listbox.cpp:770 src/gui/widgets/listbox.cpp:813
 #: src/gui/widgets/listbox.cpp:856 src/gui/widgets/scrollbar_panel.cpp:90
@@ -8346,7 +8308,7 @@ msgstr "Keine Liste definiert."
 #: src/gui/widgets/listbox.cpp:775 src/gui/widgets/listbox.cpp:818
 #: src/gui/widgets/listbox.cpp:861
 msgid "A 'list_definition' should contain one row."
-msgstr "Eine »Listendefinition« sollte nur eine Zeile enthalten."
+msgstr "Eine »list_definition« sollte nur eine Zeile enthalten."
 
 #: src/gui/widgets/multi_page.cpp:195
 msgid "No page defined."
@@ -8399,8 +8361,7 @@ msgstr "Element mit Helptipp aber ohne Tooltipp gefunden."
 #| msgid "No grid defined for scroll label control"
 msgid "No grid defined for tab container control"
 msgstr ""
-"Im Abschnitt »[scroll_label]« ist der benötigte Abschnitt »[grid]« nicht "
-"gesetzt."
+"Kein Gitter für die »tab container control« definiert"
 
 #: src/gui/widgets/tree_view.cpp:290
 msgid "No nodes defined for a tree view."
@@ -8408,7 +8369,7 @@ msgstr "Keine Knoten für die Baumansicht definiert."
 
 #: src/gui/widgets/tree_view.cpp:325
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr "[node]id 'root' ist der Implementierung vorbehalten."
+msgstr "[node]id »root« ist der Implementierung vorbehalten."
 
 #: src/gui/widgets/tree_view_node.cpp:105
 msgid "Unknown builder id for tree view node."
@@ -8688,10 +8649,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Einheit töten (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:125
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Einheit erstellen (Debug!)"
+msgstr "Einheit teleportieren (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Objectives"
@@ -8829,14 +8788,12 @@ msgid "Assign Local Time"
 msgstr "Übertrage Lokale Zeit"
 
 #: src/hotkey/hotkey_command.cpp:177
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Nächste Einheit"
+msgstr "Nächster Einheitentyp"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Time Schedule Editor"
-msgstr "Tagesablauf Editor"
+msgstr "Tagesablauf-Editor"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Partial Undo"
@@ -8912,7 +8869,7 @@ msgid ""
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Verwendet die linke und rechte Maustaste, um Gelände zu zeichnen. Haltet "
-"Shift gedrückt, um die zugrundeliegenden Ebene nicht zu ändern, z. B. bei "
+"Umschalt gedrückt, um die zugrundeliegenden Ebene nicht zu ändern, z. B. bei "
 "Brücken. Mit Strg+Klick wird das Gelände unter dem Cursor als Pinsel "
 "übernommen."
 
@@ -8926,7 +8883,7 @@ msgid ""
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
 "Die linke Maustaste wählt aus oder hebt die Auswahl auf, wenn Strg gedrückt "
-"ist; die Rechte ruft ein Kontextmenü auf. Haltet Shift gedrückt, um eine "
+"ist; die Rechte ruft ein Kontextmenü auf. Haltet Umschalt gedrückt, um eine "
 "Zauberstabauswahl des selben Geländetyps durchzuführen."
 
 #: src/hotkey/hotkey_command.cpp:204

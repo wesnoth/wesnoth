@@ -539,15 +539,12 @@ namespace {
 
 template<typename T, typename TFuncFormula>
 class get_ability_value_visitor
-#ifdef USING_BOOST_VARIANT
-	: public boost::static_visitor<T>
-#endif
 {
 public:
 	// Constructor stores the default value.
 	get_ability_value_visitor(T def, const TFuncFormula& formula_handler) : def_(def), formula_handler_(formula_handler) {}
 
-	T operator()(const utils::monostate&) const { return def_; }
+	T operator()(const std::monostate&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
 	T operator()(int i)                const { return static_cast<T>(i); }
 	T operator()(unsigned long long u) const { return static_cast<T>(u); }
@@ -1200,7 +1197,7 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
 {
 	std::map<std::string, int> type_res;
-	int max_res = INT_MIN;
+	int max_res = std::numeric_limits<int>::min();
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
 		if(c.has_attribute("alternative_type")) {

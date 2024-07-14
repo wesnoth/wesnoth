@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Bengali\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2024-06-23 16:54+0530\n"
+"PO-Revision-Date: 2024-07-12 16:42+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -116,7 +116,7 @@ msgstr "পরিবর্তন করুন এবং পরিবর্তন
 
 #: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
 msgid "Dry run"
-msgstr ""
+msgstr "ড্রাই রান"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
@@ -152,12 +152,12 @@ msgstr "ব্যাক-আপ ফাইল ব্যবহার করে প�
 
 #: data/tools/GUI.pyw:712 data/tools/GUI.pyw:1096
 msgid "Verbosity level"
-msgstr ""
+msgstr "বিবরণের বিস্তার"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:720 data/tools/GUI.pyw:1104
 msgid "Terse"
-msgstr ""
+msgstr "সংক্ষিপ্ত"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:731
@@ -231,25 +231,25 @@ msgstr "ম্যাক্রো সংজ্ঞায়ণ কমেন্টগ�
 
 #: data/tools/GUI.pyw:899
 msgid "Report all macros with untyped formals"
-msgstr ""
+msgstr "অলিখিত ফর্মালযুক্ত সকল ম্যাক্রো দেখান"
 
 #: data/tools/GUI.pyw:908
 msgid "Show progress"
-msgstr ""
+msgstr "অগ্রগতি দেখান"
 
 #: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
 msgid "Exclude file names matching regular expression:"
-msgstr ""
+msgstr "সেই ফাইলগুলি দেখাবেন না যাদের নাম এই রেগুলার এক্সপ্রেশন মানে:"
 
 #: data/tools/GUI.pyw:946
 msgid "Exclude file names not matching regular expression:"
-msgstr ""
+msgstr "সেই ফাইলগুলি দেখাবেন না যাদের নাম এই রেগুলার এক্সপ্রেশন মানে না:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
 #: data/tools/GUI.pyw:966
 msgid "Report only on macros referenced in exactly n files:"
-msgstr ""
+msgstr "শুধু সেই ম্যাক্রোগুলি দেখান যেগুলি ঠিক n সংখ্যাক ফাইলে ব্যবহৃত হয়েছে:"
 
 #: data/tools/GUI.pyw:986
 msgid "Report macro definitions and usages in file:"
@@ -257,7 +257,7 @@ msgstr "ম্যাক্রো সংজ্ঞায়ণ এবং তাদে
 
 #: data/tools/GUI.pyw:1004
 msgid "Allow unused macros with names matching regular expression:"
-msgstr ""
+msgstr "এই রেগুলার এক্সপ্রেশন মেলে এমন অব্যবহৃত মাক্রো রাখা যাবে:"
 
 #: data/tools/GUI.pyw:1066
 msgid "wmlindent mode"
@@ -266,7 +266,7 @@ msgstr "wmlindent মোড"
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1114
 msgid "Verbose"
-msgstr ""
+msgstr "বিস্তারিত"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1124
@@ -310,7 +310,7 @@ msgstr "সকল স্ট্রিং ফাজ়ি করুন ।"
 
 #: data/tools/GUI.pyw:1214
 msgid "Advanced options"
-msgstr ""
+msgstr "বিশেষ অপশন"
 
 #: data/tools/GUI.pyw:1218
 msgid "Package version"
@@ -334,7 +334,7 @@ msgstr "আউটপুট পরিস্কার করুন"
 
 #: data/tools/GUI.pyw:1302
 msgid "About..."
-msgstr ""
+msgstr "সম্পর্কে..."
 
 #: data/tools/GUI.pyw:1309
 msgid "Exit"
@@ -362,15 +362,15 @@ msgstr "আউটপুট"
 
 #: data/tools/GUI.pyw:1390
 msgid "Run wmlscope"
-msgstr ""
+msgstr "wmlscope চালান"
 
 #: data/tools/GUI.pyw:1393
 msgid "Run wmlindent"
-msgstr ""
+msgstr "wmlindent চালান"
 
 #: data/tools/GUI.pyw:1396
 msgid "Run wmlxgettext"
-msgstr ""
+msgstr "wmlxgettext চালান"
 
 #: data/tools/GUI.pyw:1404
 msgid ""
@@ -378,6 +378,10 @@ msgid ""
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
+"কোনো ডিরেক্টরি নির্বাচন করা হয়নি ।\n"
+"\n"
+"অনুগ্রহ করে একটি ডিরেক্টরি নির্বাচন করুন বা \"কোর ডিরেক্টরি এড়িয়ে যান\" অপশনটি "
+"নিস্ক্রিয় করুন"
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
 msgid ""
@@ -386,12 +390,16 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"কোর ডিরেক্টরি অথবা সেটির একটি সাবডিরেক্টরি অ্যাড-অন নির্বাচন বাক্সে পছন্দ করা "
+"হয়েছে ।\n"
+"\n"
+"টুলটি শুধুমাত্র ওয়েসনথ কোর ডিরেক্টরিতেই চালানো হবে ।"
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
 #: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
 #: data/tools/GUI.pyw:1599
 msgid "Warning"
-msgstr ""
+msgstr "সতর্কবার্তা"
 
 #: data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1519
 msgid ""
@@ -399,11 +407,14 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"কোনো ডিরেক্টরি নির্বাচন করা হয়নি ।\n"
+"\n"
+"টুলটি শুধুমাত্র ওয়েসনথ কোর ডিরেক্টরিতেই চালানো হবে ।"
 
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
 #: data/tools/GUI.pyw:1585
 msgid "The selected directory does not exist."
-msgstr ""
+msgstr "নির্বাচিত ডিরেক্টরির অস্তিত্ব নেই ।"
 
 #: data/tools/GUI.pyw:1496
 msgid "Invalid value. Value must be an integer in the range 0-999."
@@ -415,6 +426,9 @@ msgid ""
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
+"কোনো ডিরেক্টরি নির্বাচন করা হয়নি ।\n"
+"\n"
+"টুলটি ওয়েসনথ কোর ডিরেক্টরিতে চালানো হবে ।"
 
 #: data/tools/GUI.pyw:1580
 msgid ""
@@ -422,11 +436,14 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"কোনো ডিরেক্টরি নির্বাচন করা হয়নি ।\n"
+"\n"
+"টুলটি চালানো হবে না ।"
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1592
 msgid "Overwrite Confirmation"
-msgstr ""
+msgstr "পরিবর্তন নিশ্চিত করুন"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1594
@@ -435,6 +452,8 @@ msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
+"ফাইল {0} আগে থেকেই রয়েছে\n"
+"আপনি কী সেটিকে মুছে তার স্থানে লিখতে চান?"
 
 #: data/tools/GUI.pyw:1599
 msgid ""
@@ -442,6 +461,9 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"কোনো আউটপুট ফাইল পছন্দ করা হয়নি ।\n"
+"\n"
+"টুলটি চালানো হবে না ।"
 
 #: data/tools/GUI.pyw:1628
 #, python-brace-format
@@ -450,6 +472,9 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
+"চালাবার সময় ত্রুটি {0}.\n"
+"\n"
+"ত্রুটি কোড: {1}"
 
 #: data/tools/GUI.pyw:1639
 msgid "Text file"
@@ -474,7 +499,7 @@ msgstr ""
 
 #: data/tools/GUI.pyw:1664
 msgid "About Maintenance Tools GUI"
-msgstr ""
+msgstr "মেইনটেন্যান্স টুলস্ জিইউআই সম্পর্কে"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1666
@@ -490,16 +515,25 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
+"© Elvish_Hunter, 2014-2024\n"
+"\n"
+"সংস্করণ: {0}\n"
+"\n"
+"ব্যাটল ফর ওয়েসনথ প্রোজেক্টের অন্তর্ভুক্ত এবং জিএনইউ জিপিএল v2 লাইসেন্সের অধীনে "
+"প্রকাশিত\n"
+"\n"
+"আইকনগুলি ট্যাঙ্গো ডেস্কটপ প্রোজেক্ট (http://tango.freedesktop.org) থেকে নেওয়া, এবং "
+"পাবলিক ডোমেইনে প্রকাশিত ।"
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1680
 msgid "Exit Confirmation"
-msgstr ""
+msgstr "বেরিয়ে যাওয়া নিশ্চিত করুন"
 
 #: data/tools/GUI.pyw:1681
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
 
 #: data/tools/GUI.pyw:1973
 msgid "This application must be placed into the wesnoth/data/tools directory."
-msgstr ""
+msgstr "এই অ্যাপ্লিকেশনটি wesnoth/data/tools ডিরেক্টরিতে অবস্থিত হতেই হবে ।"

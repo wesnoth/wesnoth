@@ -121,7 +121,7 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: |
           ./wesnoth --version
-          for opt in config data userconfig userdata
+          for opt in data userdata
           do
             output=$(./wesnoth --nobanner --"$opt"-path)
             if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi
@@ -237,7 +237,7 @@ jobs:
           make pot-update; echo "Ran make pot-update"
           make mo-update; echo "Ran make mo-update"
           make clean
-          
+
           scons translations build=release --debug=time nls=true jobs=2; echo "Ran scons translations"
           scons pot-update; echo "Ran scons pot-update"
           scons update-po4a; echo "Ran scons update-po4a"
@@ -251,7 +251,6 @@ jobs:
     runs-on: macos-12
     env:
       CFG: ${{ matrix.cfg }}
-      DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
 
     steps:
       - uses: actions/checkout@v4

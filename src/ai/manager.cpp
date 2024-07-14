@@ -273,10 +273,10 @@ const std::string holder::get_ai_overview()
 	s << "caution:  " << this->ai_->get_caution() << std::endl;
 	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
 	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
-	s << "leader_ignores_keep:  " << utils::visit(leader_aspects_visitor(), lik) << std::endl;
+	s << "leader_ignores_keep:  " << std::visit(leader_aspects_visitor(), lik) << std::endl;
 	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
-	s << "passive_leader:  " << utils::visit(leader_aspects_visitor(), pl) << std::endl;
-	s << "passive_leader_shares_keep:  " << utils::visit(leader_aspects_visitor(), plsk) << std::endl;
+	s << "passive_leader:  " << std::visit(leader_aspects_visitor(), pl) << std::endl;
+	s << "passive_leader_shares_keep:  " << std::visit(leader_aspects_visitor(), plsk) << std::endl;
 	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
 	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;

@@ -133,11 +133,23 @@ void get_files_in_dir(const std::string &dir,
 
 std::string get_dir(const std::string &dir);
 
-// The location of various important files:
-std::string get_prefs_file();
+// The location of various important files/folders:
+/**
+ * location of preferences file containing preferences that are synced between computers
+ * note that wesnoth does not provide the syncing functionality itself
+ */
+std::string get_synced_prefs_file();
+/** location of preferences file containing preferences that aren't synced between computers */
+std::string get_unsynced_prefs_file();
 std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
+std::string get_lua_history_file();
+/**
+ * parent directory for everything that should be synced between systems.
+ * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
+ */
+std::string get_sync_dir();
 std::string get_saves_dir();
 std::string get_wml_persist_dir();
 std::string get_intl_dir();
@@ -155,11 +167,9 @@ const std::string& get_version_path_suffix();
 std::string get_next_filename(const std::string& name, const std::string& extension);
 
 bool is_userdata_initialized();
-void set_user_config_dir(const std::string& path);
 void set_user_data_dir(std::string path);
 void set_cache_dir(const std::string& path);
 
-std::string get_user_config_dir();
 std::string get_user_data_dir();
 std::string get_logs_dir();
 std::string get_cache_dir();

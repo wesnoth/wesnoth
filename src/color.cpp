@@ -34,10 +34,10 @@ color_t color_t::from_rgba_string(const std::string& c)
 	}
 
 	return {
-		*utils::from_chars<uint8_t>(fields[0]),
-		*utils::from_chars<uint8_t>(fields[1]),
-		*utils::from_chars<uint8_t>(fields[2]),
-		fields.size() == 4 ? *utils::from_chars<uint8_t>(fields[3]) : ALPHA_OPAQUE
+		utils::from_chars<uint8_t>(fields[0]).value(),
+		utils::from_chars<uint8_t>(fields[1]).value(),
+		utils::from_chars<uint8_t>(fields[2]).value(),
+		fields.size() == 4 ? utils::from_chars<uint8_t>(fields[3]).value() : ALPHA_OPAQUE
 	};
 }
 
@@ -54,9 +54,9 @@ color_t color_t::from_rgb_string(const std::string& c)
 	}
 
 	return {
-		*utils::from_chars<uint8_t>(fields[0]),
-		*utils::from_chars<uint8_t>(fields[1]),
-		*utils::from_chars<uint8_t>(fields[2]),
+		utils::from_chars<uint8_t>(fields[0]).value(),
+		utils::from_chars<uint8_t>(fields[1]).value(),
+		utils::from_chars<uint8_t>(fields[2]).value(),
 		ALPHA_OPAQUE
 	};
 }
@@ -71,7 +71,7 @@ color_t color_t::from_hex_string(const std::string& c)
 		throw std::invalid_argument("Color hex string contains invalid characters");
 	}
 
-	auto temp_c = *utils::from_chars<uint32_t>(c, 16);
+	auto temp_c = utils::from_chars<uint32_t>(c, 16).value();
 
 	return {
 		static_cast<uint8_t>((0x00FFFFFF & temp_c) >> 16),

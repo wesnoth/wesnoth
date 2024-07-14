@@ -679,7 +679,7 @@ config readonly_context_impl::get_leader_goal() const
 	return config();
 }
 
-utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
+std::variant<bool, std::vector<std::string>> readonly_context_impl::get_leader_ignores_keep() const
 {
 	if (leader_ignores_keep_) {
 		return leader_ignores_keep_->get();
@@ -695,7 +695,7 @@ double readonly_context_impl::get_leader_value() const
 	return 0;
 }
 
-utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
+std::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader() const
 {
 	if (passive_leader_) {
 		return passive_leader_->get();
@@ -703,7 +703,7 @@ utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passiv
 	return {};
 }
 
-utils::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
+std::variant<bool, std::vector<std::string>> readonly_context_impl::get_passive_leader_shares_keep() const
 {
 	if (passive_leader_shares_keep_) {
 		return passive_leader_shares_keep_->get();
@@ -1228,9 +1228,9 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 }
 
 bool readonly_context_impl::applies_to_leader(
-	const utils::variant<bool, std::vector<std::string>>& aspect_value, const std::string& id) const
+	const std::variant<bool, std::vector<std::string>>& aspect_value, const std::string& id) const
 {
-	return utils::visit(
+	return std::visit(
 		[&id](const auto& v) {
 			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
 				return v;

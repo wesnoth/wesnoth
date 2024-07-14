@@ -21,7 +21,7 @@
 #include "config.hpp"              // for config, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL
 #include "exceptions.hpp"          // for error
-#include "filesystem.hpp"          // for get_user_config_dir, etc
+#include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
 #include "game_config.hpp"         // for path, no_delay, revision, etc
 #include "game_config_manager.hpp" // for game_config_manager
@@ -253,7 +253,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(!cmdline_opts.nobanner) {
 		PLAIN_LOG
 			<< "\nData directory:               " << game_config::path
-			<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
 			<< "\nUser data directory:          " << filesystem::get_user_data_dir()
 			<< "\nCache directory:              " << filesystem::get_cache_dir()
 			<< "\n\n";
@@ -824,7 +823,7 @@ void game_launcher::start_wesnothd()
 		wesnothd_program = filesystem::get_wesnothd_name();
 	}
 
-	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
+	std::string config = filesystem::get_user_data_dir() + "/lan_server.cfg";
 	if (!filesystem::file_exists(config)) {
 		// copy file if it isn't created yet
 		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));

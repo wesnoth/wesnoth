@@ -21,7 +21,7 @@
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
-#include "utils/variant.hpp"
+#include <variant>
 
 
 #include <bitset>
@@ -1173,13 +1173,10 @@ public:
 		static std::string type() { static std::string v = "loyal"; return v; }
 	};
 
-	using upkeep_t = utils::variant<upkeep_full, upkeep_loyal, int>;
+	using upkeep_t = std::variant<upkeep_full, upkeep_loyal, int>;
 
 	/** Visitor helper class to fetch the appropriate upkeep value. */
 	class upkeep_value_visitor
-#ifdef USING_BOOST_VARIANT
-		: public boost::static_visitor<int>
-#endif
 	{
 	public:
 		explicit upkeep_value_visitor(const unit& unit) : u_(unit) {}
@@ -1207,9 +1204,6 @@ public:
 
 	/** Visitor helper struct to fetch the upkeep type flag if applicable, or the the value otherwise. */
 	struct upkeep_type_visitor
-#ifdef USING_BOOST_VARIANT
-		: public boost::static_visitor<std::string>
-#endif
 	{
 		template<typename T>
 		std::enable_if_t<!std::is_same_v<int, T>, std::string>
@@ -1227,9 +1221,6 @@ public:
 
 	/** Visitor helper class to parse the upkeep value from a config. */
 	class upkeep_parser_visitor
-#ifdef USING_BOOST_VARIANT
-		: public boost::static_visitor<upkeep_t>
-#endif
 	{
 	public:
 		template<typename N>
@@ -1248,7 +1239,7 @@ public:
 			throw std::invalid_argument(b.str());
 		}
 
-		upkeep_t operator()(utils::monostate) const
+		upkeep_t operator()(std::monostate) const
 		{
 			return upkeep_full();
 		}

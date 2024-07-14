@@ -208,10 +208,6 @@ public:
 	bool usercache_path;
 	/** Non-empty if --usercache-dir was given on the command line. Sets the cache dir to the specified one. */
 	std::optional<std::string> usercache_dir;
-	/** True if --userconfig-path was given on the command line. Prints path to user config directory and exits. */
-	bool userconfig_path;
-	/** Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one. */
-	std::optional<std::string> userconfig_dir;
 	/** True if --userdata-path was given on the command line. Prints path to user data directory and exits. */
 	bool userdata_path;
 	/** Non-empty if --userdata-dir was given on the command line. Sets the user data dir to the specified one. */
