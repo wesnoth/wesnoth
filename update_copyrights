@@ -133,7 +133,7 @@ final_output = missing_fields + extra_fields + added + changed + incomplete + up
 final_output.sort(key=itemgetter(1))
 
 if options.output != "":
-    with open(options.output, 'w') as f:
+    with open(options.output, 'w', encoding="utf-8") as f:
         writer = csv.writer(f, lineterminator="\n")
         writer.writerow(["Date", "File", "License", "Author - Real Name(other name);Real Name(other name);etc", "Notes", "Needs Update", "MD5"])
         writer.writerows(final_output)
