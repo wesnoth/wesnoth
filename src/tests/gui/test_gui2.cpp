@@ -76,6 +76,7 @@
 #include "gui/dialogs/gui_test_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
+#include "gui/dialogs/hotkey_transliteration.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -528,6 +529,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_gui_test_dialog)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
 {
 	test<hotkey_bind>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_transliteration)
+{
+	test<hotkey_transliteration>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_install_dependencies)
 {
@@ -1053,6 +1058,15 @@ struct dialog_tester<hotkey_bind>
 	hotkey_bind* create()
 	{
 		return new hotkey_bind(id);
+	}
+};
+
+template<>
+struct dialog_tester<hotkey_transliteration>
+{
+	hotkey_transliteration* create()
+	{
+		return new hotkey_transliteration();
 	}
 };
 

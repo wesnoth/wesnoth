@@ -16,6 +16,8 @@
 #pragma once
 
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL.h>
+#include <map>
 #include <memory>
 #include <vector>
 #include <string>
@@ -333,6 +335,17 @@ protected:
 };
 
 /**
+ * Method of handling multiple keyboard layouts, assuming that they use different alphabets, by mapping letters from one alphabet to another. Uses a 1:1 mapping, so it might be considered a substitution cipher.
+ *
+ * For example, Greek's alpha and beta keys might be mapped to Latin's 'a' and 'b'.
+ */
+struct transliteration {
+	std::string name;
+	std::map<std::string, std::string> text;
+	std::map<SDL_Keycode, SDL_Keycode> sym;
+};
+
+/**
  * Create and instantiate a hotkey from a config element.
  * @param cfg The config element to read for data.
  * @return The new instance of the hotkey item.
@@ -397,6 +410,8 @@ void reset_default_hotkeys();
  * Returns the list of hotkeys.
  */
 const hotkey_list& get_hotkeys();
+
+const std::vector<transliteration>& get_transliterations();
 
 /**
  * Unset the command bindings for all hotkeys matching the command.
