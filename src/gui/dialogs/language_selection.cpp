@@ -26,6 +26,10 @@
 #include "language.hpp"
 #include "preferences/preferences.hpp"
 
+#include <boost/locale.hpp>
+#include <boost/locale/info.hpp>
+#include <locale>
+
 namespace gui2::dialogs
 {
 
@@ -94,11 +98,12 @@ void language_selection::pre_show(window& window)
 			&language_selection::shown_filter_callback, this));
 
 	const language_def& current_language = get_language();
-
+	
+	boost::locale::generator gen;
 	for(const auto& lang : langs_) {
 		widget_data data;
-
-		data["language"]["label"] = lang.language;
+		std::locale loc = gen(lang.localename);
+		data["language"]["label"] = lang.language + (lang.rtl ? " ," : ", ") + std::use_facet<boost::locale::info>(loc).country();
 		data["language"]["use_markup"] = "true";
 		data["translated_total"]["label"] = "<span color='" + game_config::red_to_green(lang.percent).to_hex_string() + "'>" + std::to_string(lang.percent) + "%</span>";
 		data["translated_total"]["use_markup"] = "true";
