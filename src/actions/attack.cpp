@@ -502,6 +502,11 @@ bool battle_context::better_combat(const combatant& us_a,
 	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
 	b = (us_b.average_hp() - poison_b_us) * harm_weight - (them_b.average_hp() - poison_b_them);
 
+	double attack_weight_a = a.u_.weapon.attack_weight();
+	double attack_weight_b = b.u_.weapon.attack_weight();
+	a = a * attack_weight_a;
+	b = b * attack_weight_b;
+
 	if(a - b < -0.01) {
 		return false;
 	}
@@ -511,7 +516,7 @@ bool battle_context::better_combat(const combatant& us_a,
 	}
 
 	// All else equal: go for most damage.
-	return them_a.average_hp() < them_b.average_hp();
+	return them_a.average_hp() * attack_weight_a < them_b.average_hp() * attack_weight_b;
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
