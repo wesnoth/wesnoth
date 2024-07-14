@@ -57,10 +57,10 @@ struct combatant
 	void reset();
 #endif
 
+	const battle_context_unit_stats &u_;
+
 private:
 	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 50000u;
-
-	const battle_context_unit_stats &u_;
 
 	/** Summary of matrix used to calculate last battle (unslowed & slowed).
 	 *  Invariant: summary[1].size() == summary[0].size() or summary[1].empty() */
