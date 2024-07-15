@@ -56,6 +56,7 @@
 #endif
 
 #include <algorithm>
+#include <cstdlib>
 #include <set>
 
 // Copied from boost::predef, as it's there only since 1.55.
@@ -661,22 +662,6 @@ static void setup_user_data_dir()
 
 #ifdef _WIN32
 /**
- * A convenience for portable installs on Windows.
- * relative paths with . or .. as the first component are considered relative to the current workdir instead of Documents/My Games.
- * Only provided for Windows since portable installs on other systems are not particularly relevant or supported.
- */
-static bool is_path_relative_to_cwd(const std::string& str)
-{
-	const bfs::path p(str);
-
-	if(p.empty()) {
-		return false;
-	}
-
-	return *p.begin() == "." || *p.begin() == "..";
-}
-
-/**
  * @return the path to the My Games directory on success or an empty string on failure
  */
 static std::optional<std::string> get_games_path()
@@ -690,194 +675,88 @@ static std::optional<std::string> get_games_path()
 		path = games_path.string();
 	} else {
 		ERR_FS << "Could not determine path to user's Documents folder! (" << std::hex << "0x" << res << std::dec << ") "
-				<< "User config/data directories may be unavailable for "
-				<< "this session. Please report this as a bug.";
+				<< "Please report this as a bug.";
 	}
 
 	CoTaskMemFree(docs_path);
 	return path;
 }
-
-static bfs::path windows_userdata(const std::string& newprefdir)
-{
-	bfs::path dir;
-	std::string temp = newprefdir;
-
-#ifdef PREFERENCES_DIR
-	if(temp.empty()) {
-		temp = PREFERENCES_DIR;
-		DBG_FS << "Using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
-	}
-#endif
-
-	// if a custom userdata directory is provided as an absolute path, just use that
-	// else if it's relative to the current working directory, just use that
-	// else if the first characters is a tilde, then replace that with the path to the "My Games" folder
-	// else if no custom userdata directory was provided, default to the "My Games" folder if present or fallback to the current working directory if not
-	// else a relative path was provided that isn't relative to the current working directory, so ignore it and use the default
-	if(temp.size() > 2 && temp[1] == ':') {
-		// allow absolute path override
-		dir = temp;
-		DBG_FS << "custom userdata folder - absolute path";
-	} else if(is_path_relative_to_cwd(temp)) {
-		// Custom directory relative to workdir (for portable installs, etc.)
-		dir = get_cwd() + "/" + temp;
-		DBG_FS << "userdata relative to current working directory";
-	} else if(!temp.empty() && temp[0] == '~') {
-		std::optional<std::string> games_path = get_games_path();
-
-		if(games_path) {
-			dir = *games_path;
-		} else {
-			dir = get_cwd();
-		}
-		dir /= temp.substr(1);
-	} else {
-		if(temp.empty()) {
-			DBG_FS << "using default userdata folder name";
-			temp = "Wesnoth" + get_version_path_suffix();
-		} else {
-			ERR_FS << "relative path for userdata whose first path component is neither '.' or '..' is not allowed: " << temp
-				   << ", using default location under My Games";
-			temp = "Wesnoth" + get_version_path_suffix();
-		}
-
-		std::optional<std::string> games_path = get_games_path();
-		if(games_path) {
-			create_directory_if_missing(*games_path);
-			dir = *games_path;
-			dir /= temp;
-			DBG_FS << "userdata is under My Games at " << dir.string();
-		} else {
-			//
-			// Crummy fallback path full of pain and suffering.
-			//
-			dir = get_cwd();
-			dir /= temp;
-			DBG_FS << "userdata is at " << dir.string();
-		}
-	}
-
-	return dir;
-}
-#elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
-static bfs::path apple_userdata(const std::string& newprefdir)
-{
-	bfs::path dir;
-	std::string temp = newprefdir;
-	const char* home_str = getenv("HOME");
-
-	// if a custom userdata was not specified
-	// use the PREFERENCES_DIR if defined
-	// else if this is iOS, use the SDL pref path
-	// else use a default - this is currently the "unsandboxed" location from migrate_apple_config_directory_for_unsandboxed_builds() above
-	if(temp.empty()) {
-#ifdef PREFERENCES_DIR
-		temp = PREFERENCES_DIR;
-		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
-		if(home_str && temp[0] == '~') {
-			temp = home_str + temp.substr(1);
-			DBG_FS << "userdata is relative to HOME";
-		}
-#elif defined(WESNOTH_BOOST_OS_IOS)
-		char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
-		if(sdl_pref_path) {
-			temp = std::string(sdl_pref_path) + ".wesnoth" + get_version_path_suffix();
-			SDL_free(sdl_pref_path);
-		}
-		DBG_FS << "userdata using SDL pref path";
-#else
-		temp = "Library/Application Support/Wesnoth_"+get_version_path_suffix();
-		DBG_FS << "Using default relative path for userdata";
-#endif
-	}
-
-	// if it's an absolute path, just use that
-	// else make it relative to HOME if HOME is populated, otherwise make it relative to the current working directory
-	if(temp[0] == '/') {
-		dir = temp;
-		DBG_FS << "userdata using absolute path: " << temp;
-	} else {
-		bfs::path home = home_str ? home_str : ".";
-		dir = home / temp;
-		DBG_FS << "userdata is relative to the current working directory: " << dir.string();
-	}
-
-	return dir;
-}
-#else
-static bfs::path linux_userdata(const std::string& newprefdir)
-{
-	bfs::path dir;
-	std::string temp = newprefdir;
-	const char* home_str = getenv("HOME");
-	char const* xdg_data = getenv("XDG_DATA_HOME");
-
-#ifdef PREFERENCES_DIR
-	if(temp.empty()) {
-		temp = PREFERENCES_DIR;
-		DBG_FS << "userdata using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
-		if(home_str && temp[0] == '~') {
-			temp = home_str + temp.substr(1);
-			DBG_FS << "userdata is relative to HOME";
-		}
-	}
-#endif
-
-	// if a custom userdata dir is not specified
-	// and one of the XDG home and regular home env variables are not empty
-	// then use one of those
-	if(temp.empty() && ((xdg_data && xdg_data[0] != '\0') || home_str)) {
-		if(xdg_data && xdg_data[0] != '\0') {
-			dir = xdg_data;
-			DBG_FS << "userdata using XDG_DATA_HOME";
-		} else if(home_str) {
-			dir = home_str;
-			dir /= ".local/share";
-			DBG_FS << "userdata using HOME";
-		}
-
-		dir /= "wesnoth";
-		dir /= get_version_path_suffix();
-		return dir;
-	}
-
-	// if a custom userdata dir using an absolute path was specified, just use that
-	if(!temp.empty() && temp[0] == '/') {
-		dir = temp;
-		DBG_FS << "userdata is an absolute path";
-		return dir;
-	}
-
-	// if no custom userdata folder was specified and there's also no XDG/HOME variables available, set a default folder name
-	if(temp.empty()) {
-		temp = ".wesnoth" + get_version_path_suffix();
-	}
-
-	// unable to determine another userdata directory, so just use the current working directory for the userdata
-	dir = get_cwd();
-	dir /= temp;
-	ERR_FS << "unable to determine location to use for userdata, defaulting to current working directory: " << dir.string();
-
-	return dir;
-}
 #endif
 
 void set_user_data_dir(std::string newprefdir)
 {
-#ifdef _WIN32
-	DBG_FS << "determining Windows userdata dir";
-	user_data_dir = windows_userdata(newprefdir);
-#elif defined(__APPLE__) || defined(WESNOTH_BOOST_OS_IOS)
-	DBG_FS << "determining macOS userdata dir";
-	user_data_dir = apple_userdata(newprefdir);
-#else
-	DBG_FS << "determining non-Windows and non-macOS userdata dir";
-	user_data_dir = linux_userdata(newprefdir);
+#ifdef PREFERENCES_DIR
+	if(newprefdir.empty()) {
+		newprefdir = PREFERENCES_DIR;
+		DBG_FS << "Using PREFERENCES_DIR '" << PREFERENCES_DIR << "'";
+	}
 #endif
 
+	// if no custom userdata directory was provided, use appropriate default
+	// next replace ~ with Documents/My Games on windows and $HOME otherwise
+	if(newprefdir.empty()) {
+#ifdef _WIN32
+		newprefdir = "~/Wesnoth" + get_version_path_suffix();
+#elif defined(__APPLE__)
+		newprefdir = "~/Library/Application Support/Wesnoth_"+get_version_path_suffix();
+#elif defined(WESNOTH_BOOST_OS_IOS)
+		char* sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+		if(sdl_pref_path) {
+			newprefdir = std::string(sdl_pref_path);
+			SDL_free(sdl_pref_path);
+		} else {
+			newprefdir = "~/.wesnoth" + get_version_path_suffix();
+		}
+#else
+		const char* h = std::getenv("HOME");
+		std::string home = h ? h : "";
+		h = std::getenv("XDG_DATA_HOME");
+		std::string xdg_data_home = h ? h : "";
+		if (!xdg_data_home.empty()) {
+			newprefdir = xdg_data_home + "/wesnoth/" + get_version_path_suffix();
+		} else if (!home.empty()) {
+			newprefdir = home + "/.local/share/wesnoth/" + get_version_path_suffix();
+		} else {
+			newprefdir = ".wesnoth" + get_version_path_suffix();
+		}
+#endif
+	}
+
+	bfs::path dir;
+	if(newprefdir[0] == '~') {
+#ifdef _WIN32
+		std::optional<std::string> games_path = get_games_path();
+		if(games_path) {
+			create_directory_if_missing(*games_path);
+			dir = *games_path;
+		} else {
+			dir = get_cwd();
+			WRN_FS << "Using current directory instead: " << dir.string();
+		}
+#else
+		const char* h = std::getenv("HOME");
+		std::string home = h ? h : "";
+		if(!home.empty()) {
+			dir = home;
+		} else {
+			dir = get_cwd();
+			ERR_FS << "Unable to determine path to user's HOME.";
+			WRN_FS << "Using current directory instead: " << dir.string();
+		}
+#endif
+		dir /= newprefdir.substr(1);
+	} else {
+		dir = newprefdir;
+	}
+	user_data_dir = dir;
+	DBG_FS << "userdata dir set to: " << user_data_dir.string();
+
 	setup_user_data_dir();
-	user_data_dir = normalize_path(user_data_dir.string(), true, true);
+	// normalize_path expects the path to exist so calling it after potentially creating it in setup_user_data_dir
+	dir = normalize_path(user_data_dir.string(), true, true);
+	if(!dir.empty()) {
+		user_data_dir = dir;
+	}
 }
 
 bool rename_dir(const std::string& old_dir, const std::string& new_dir)
