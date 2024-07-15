@@ -94,8 +94,8 @@ void language_selection::pre_show(window& window)
 			&language_selection::shown_filter_callback, this));
 
 	const language_def& current_language = get_language();
-	
-	
+
+
 	for(auto& lang : langs_) {
 		widget_data data;
 		data["language"]["label"] = lang.language + (lang.rtl ? " ," : ", ") + country(lang);
