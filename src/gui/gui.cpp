@@ -31,7 +31,19 @@
 
 namespace gui2
 {
-static bool initialized = false;
+
+namespace
+{
+bool initialized = false;
+const std::string fallback_theme = "default";
+const std::string initial_theme = "modern";
+std::string current_theme;
+}
+
+std::string& get_active_theme()
+{
+	return current_theme;
+}
 
 void init()
 {
@@ -66,28 +78,32 @@ void init()
 	//
 	// Parse GUI definitions.
 	//
-	const std::string& current_theme = prefs::get().gui_theme();
+	
+	current_theme = prefs::get().gui_theme();
+	if (current_theme.empty()) {
+		current_theme = initial_theme;
+	}
 
 	for(const config& g : cfg.child_range("gui")) {
 		const std::string id = g["id"];
 
 		auto iter = guis.emplace(id, gui_definition(g)).first;
 
-		if(id == "default") {
+		// setup fallback theme
+		if(id == fallback_theme) {
 			default_gui = iter;
 		}
 
-		if(!current_theme.empty() && id == current_theme) {
+		// setup currently active theme
+		if(id == current_theme) {
 			current_gui = iter;
 		}
 	}
 
 	VALIDATE(default_gui != guis.end(), _("No default gui defined."));
 
-	if(current_theme.empty()) {
-		current_gui = default_gui;
-	} else if(current_gui == guis.end()) {
-		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
+	if(current_gui == guis.end()) {
+		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'" << ", using fallback theme instead";
 		current_gui = default_gui;
 	}
 
