@@ -411,6 +411,8 @@ config server::read_config() const
 	}
 
 	try {
+		// necessary to avoid assert since preprocess_file() goes through filesystem::get_short_wml_path()
+		filesystem::set_user_data_dir(std::string());
 		filesystem::scoped_istream stream = preprocess_file(config_file_);
 		read(configuration, *stream);
 		LOG_SERVER << "Server configuration from file: '" << config_file_ << "' read.";
