@@ -177,16 +177,12 @@ void title_screen::init_callbacks()
 	//
 	// Background and logo images
 	//
-	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined";
+	if(game_config::images::game_title.empty() && game_config::images::game_title_background.empty()) {
+		// game works just fine if just one of the background images are missing
+		ERR_CF << "No titlescreen background defined in game config";
 	}
 
 	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
-
-	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined";
-	}
-
 	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
 	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
@@ -208,7 +204,27 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			widget["label"] = tip.text();
+			//
+			// Use pango markup to insert drop cap
+			//
+			if (tip.text().str().substr(0,1) != "<") {
+				// Example: Lawful units -> <span ...>L</span>awful units
+				widget["label"] = "<span font_family='OldaniaADFStd' font_size='xx-large'>" + tip.text().str().substr(0,1) + "</span>" + tip.text().str().substr(1);
+			} else {
+				// Tip starts with a tag, so we need to insert the <span> after it
+				// then insert the </span> tag after the first character of the text
+				// after markup. Example:
+				// <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
+				std::size_t id = tip.text().str().find_first_of(">") + 1;
+				std::stringstream tip_text;
+				tip_text << tip.text().str().substr(0,id) // existing start tag
+						 << "<span font_family='OldaniaADFStd' font_size='xx-large'>" // span start tag
+						 << tip.text().str().substr(id,1) // first character
+						 << "</span>" // span end tag
+						 << tip.text().str().substr(id+1); // rest of the text
+				widget["label"] = tip_text.str();
+			}
+
 			page.emplace("tip", widget);
 
 			widget["label"] = tip.source();

@@ -25,6 +25,7 @@
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
 #include "resources.hpp"
@@ -107,6 +108,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 	: modal_dialog(window_id())
 	, resolutions_() // should be populated by set_resolution_list before use
 	, themes_() // populated by set_theme_list
+	, gui2_themes_() // populated by set_gui2_theme_list
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
@@ -157,6 +159,30 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 	}
 
 	theme_list.set_values(options, current_theme);
+}
+
+void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
+{
+	std::string current_theme_name = prefs::get().gui_theme();
+
+	std::vector<config> options;
+	std::size_t current_theme = 0;
+	bool theme_found = false;
+	unsigned i = 0;
+	for(auto& gui : guis) {
+		gui2_themes_.emplace_back(gui.first);
+		options.emplace_back("label", gui.second.description());
+		if (current_theme_name == gui.first) {
+			current_theme = i;
+			theme_found = true;
+		}
+		if (!theme_found) {
+			i++;
+		}
+	}
+
+	theme_list.set_values(options);
+	theme_list.set_selected(current_theme);
 }
 
 widget_data preferences_dialog::get_friends_list_row_data(const preferences::acquaintance& entry)
@@ -560,9 +586,12 @@ void preferences_dialog::initialize_callbacks()
 	set_theme_list(theme_list);
 	connect_signal_notify_modified(theme_list,
 		std::bind(&preferences_dialog::handle_theme_select, this));
-	//connect_signal_mouse_left_click(
-	//		find_widget<button>(this, "choose_theme", false),
-	//		std::bind(&show_theme_dialog));
+
+	/* SELECT GUI2 THEME */
+	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
+	set_gui2_theme_list(gui2_theme_list);
+	connect_signal_notify_modified(gui2_theme_list,
+		std::bind(&preferences_dialog::handle_gui2_theme_select, this));
 
 	//
 	// SOUND PANEL
@@ -1108,6 +1137,9 @@ void preferences_dialog::pre_show(window& window)
 	VALIDATE(selector.get_item_count() == pager.get_layer_count(),
 		"The preferences pager and its selector listbox do not have the same number of items.");
 
+	// don't show the "*restart required" message for UI theme at start
+	find_widget<label>(&window, "restart_msg", false).set_visible(widget::visibility::invisible);
+
 	const int main_index = index_in_pager_range(initial_index_.first, pager);
 
 	// Loops through each pager layer and checks if it has both a tab bar
@@ -1177,6 +1209,13 @@ void preferences_dialog::handle_theme_select()
 		display->set_theme(theme.id);
 	}
 
+}
+
+void preferences_dialog::handle_gui2_theme_select()
+{
+	find_widget<label>(get_window(), "restart_msg", false).set_visible(widget::visibility::visible);
+	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
+	prefs::get().set_gui_theme(gui2_themes_.at(gui2_theme_list.get_value()));
 }
 
 void preferences_dialog::on_page_select()
