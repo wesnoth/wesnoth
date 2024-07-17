@@ -78,7 +78,7 @@ void init()
 	//
 	// Parse GUI definitions.
 	//
-	
+
 	current_theme = prefs::get().gui_theme();
 	if (current_theme.empty()) {
 		current_theme = initial_theme;
