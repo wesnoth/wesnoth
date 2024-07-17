@@ -693,7 +693,7 @@ void schema_validator::print(message_info& el)
 }
 
 schema_self_validator::schema_self_validator()
-	: schema_validator(filesystem::get_wml_location("schema/schema.cfg"), false)
+	: schema_validator(filesystem::get_wml_location("schema/schema.cfg").value(), false)
 	, type_nesting_()
 	, condition_nesting_()
 {

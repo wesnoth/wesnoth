@@ -348,37 +348,37 @@ static surface load_image_file(const image::locator& loc)
 	surface res;
 	const std::string& name = loc.get_filename();
 
-	std::string location = filesystem::get_binary_file_location("images", name);
+	auto location = filesystem::get_binary_file_location("images", name);
 
 	// Many images have been converted from PNG to WEBP format,
 	// but the old filename may still be saved in savegame files etc.
 	// If the file does not exist in ".png" format, also try ".webp".
 	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
-	if(location.empty() && (filesystem::ends_with(name, ".png") || filesystem::ends_with(name, ".jpg"))) {
+	if(!location && (filesystem::ends_with(name, ".png") || filesystem::ends_with(name, ".jpg"))) {
 		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
 		location = filesystem::get_binary_file_location("images", webp_name);
-		if(!location.empty()) {
+		if(location) {
 			WRN_IMG << "Replaced missing '" << name << "' with found '"
 			        << webp_name << "'.";
 		}
 	}
 
 	{
-		if(!location.empty()) {
+		if(location) {
 			// Check if there is a localized image.
-			const std::string loc_location = filesystem::get_localized_path(location);
-			if(!loc_location.empty()) {
-				location = loc_location;
+			const auto loc_location = filesystem::get_localized_path(location.value());
+			if(loc_location) {
+				location = loc_location.value();
 			}
 
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location.value());
 			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 
 			// If there was no standalone localized image, check if there is an overlay.
-			if(res && loc_location.empty()) {
-				const std::string ovr_location = filesystem::get_localized_path(location, "--overlay");
-				if(!ovr_location.empty()) {
-					add_localized_overlay(ovr_location, res);
+			if(res && !loc_location) {
+				const auto ovr_location = filesystem::get_localized_path(location.value(), "--overlay");
+				if(ovr_location) {
+					add_localized_overlay(ovr_location.value(), res);
 				}
 			}
 		}
@@ -565,7 +565,7 @@ bool locator::file_exists() const
 {
 	return val_.is_data_uri
 		? parsed_data_URI{val_.filename}.good
-		: !filesystem::get_binary_file_location("images", val_.filename).empty();
+		: filesystem::get_binary_file_location("images", val_.filename).has_value();
 }
 
 static surface load_from_disk(const locator& loc)
@@ -868,7 +868,7 @@ bool exists(const image::locator& i_locator)
 		if(i_locator.is_data_uri()) {
 			cache = parsed_data_URI{i_locator.get_filename()}.good;
 		} else {
-			cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();
+			cache = filesystem::get_binary_file_location("images", i_locator.get_filename()).has_value();
 		}
 	}
 

@@ -239,17 +239,17 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 					const std::string& macro_argument = map_data_loc.substr(2, map_data_loc.size()-4);
 					LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}";
 
-					std::string new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
+					auto new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
 
-					if(new_filename.empty()) {
+					if(!new_filename) {
 						std::string message = _("The map file looks like a scenario, but the map_data value does not point to an existing file")
 											+ std::string("\n") + macro_argument;
 						throw editor_map_load_exception(filename, message);
 					}
 
-					LOG_ED << "New filename is: " << new_filename;
+					LOG_ED << "New filename is: " << new_filename.value();
 
-					filename_ = new_filename;
+					filename_ = new_filename.value();
 					file_string = filesystem::read_file(filename_);
 					map_ = editor_map::from_string(file_string);
 					pure_map_ = true;

@@ -182,7 +182,7 @@ const config& configuration::get_ai_config_for(const std::string &id)
 
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
 	try {
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file));
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file).value());
 		read(cfg, *stream);
 		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'";
 	} catch(const config::error &) {

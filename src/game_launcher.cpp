@@ -826,7 +826,7 @@ void game_launcher::start_wesnothd()
 	std::string config = filesystem::get_user_data_dir() + "/lan_server.cfg";
 	if (!filesystem::file_exists(config)) {
 		// copy file if it isn't created yet
-		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
+		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg").value()));
 	}
 
 	LOG_GENERAL << "Starting wesnothd";

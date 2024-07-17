@@ -52,7 +52,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 		std::string img = item_groups[mci].icon + "_30";
 		if (mci == active_group_index()) {
 			std::string pressed_img = img + "-pressed.png";
-			if(!filesystem::get_binary_file_location("images", pressed_img).empty()) {
+			if(filesystem::get_binary_file_location("images", pressed_img).has_value()) {
 				img = pressed_img;
 			} else {
 				img += ".png~CS(70,70,0)";

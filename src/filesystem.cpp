@@ -1554,7 +1554,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 	return res;
 }
 
-std::string get_binary_file_location(const std::string& type, const std::string& filename)
+std::optional<std::string> get_binary_file_location(const std::string& type, const std::string& filename)
 {
 	// We define ".." as "remove everything before" this is needed because
 	// on the one hand allowing ".." would be a security risk but
@@ -1570,7 +1570,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	}
 
 	if(!is_legal_file(filename)) {
-		return std::string();
+		return std::nullopt;
 	}
 
 	std::string result;
@@ -1596,13 +1596,13 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	}
 
 	DBG_FS << "  not found";
-	return result;
+	return result.empty() ? std::nullopt : std::optional{result};
 }
 
-std::string get_binary_dir_location(const std::string& type, const std::string& filename)
+std::optional<std::string> get_binary_dir_location(const std::string& type, const std::string& filename)
 {
 	if(!is_legal_file(filename)) {
-		return std::string();
+		return std::nullopt;
 	}
 
 	for(const std::string& bp : get_binary_paths(type)) {
@@ -1616,13 +1616,13 @@ std::string get_binary_dir_location(const std::string& type, const std::string& 
 	}
 
 	DBG_FS << "  not found";
-	return std::string();
+	return std::nullopt;
 }
 
-std::string get_wml_location(const std::string& filename, const std::string& current_dir)
+std::optional<std::string> get_wml_location(const std::string& filename, const std::string& current_dir)
 {
 	if(!is_legal_file(filename)) {
-		return std::string();
+		return std::nullopt;
 	}
 
 	assert(game_config::path.empty() == false);
@@ -1652,7 +1652,7 @@ std::string get_wml_location(const std::string& filename, const std::string& cur
 		DBG_FS << "  found: '" << result.string() << "'";
 	}
 
-	return result.string();
+	return result.empty() ? std::nullopt : std::optional{result.string()};
 }
 
 static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix)
@@ -1691,14 +1691,14 @@ std::string get_short_wml_path(const std::string& filename)
 	return filename;
 }
 
-std::string get_independent_binary_file_path(const std::string& type, const std::string& filename)
+std::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string& filename)
 {
-	bfs::path full_path(get_binary_file_location(type, filename));
-
-	if(full_path.empty()) {
-		return full_path.generic_string();
+	auto bp = get_binary_file_location(type, filename);
+	if(!bp) {
+		return std::nullopt;
 	}
 
+	bfs::path full_path{bp.value()};
 	bfs::path partial = subtract_path(full_path, get_user_data_path());
 	if(!partial.empty()) {
 		return partial.generic_string();
@@ -1739,7 +1739,7 @@ std::string sanitize_path(const std::string& path)
 
 // Return path to localized counterpart of the given file, if any, or empty string.
 // Localized counterpart may also be requested to have a suffix to base name.
-std::string get_localized_path(const std::string& file, const std::string& suff)
+std::optional<std::string> get_localized_path(const std::string& file, const std::string& suff)
 {
 	std::string dir = filesystem::directory_name(file);
 	std::string base = filesystem::base_name(file);
@@ -1776,10 +1776,10 @@ std::string get_localized_path(const std::string& file, const std::string& suff)
 		}
 	}
 
-	return "";
+	return std::nullopt;
 }
 
-std::string get_addon_id_from_path(const std::string& location)
+std::optional<std::string> get_addon_id_from_path(const std::string& location)
 {
 	std::string full_path = normalize_path(location, true);
 	std::string addons_path = normalize_path(get_addons_dir(), true);
@@ -1791,7 +1791,7 @@ std::string get_addon_id_from_path(const std::string& location)
 		}
 	}
 
-	return "";
+	return std::nullopt;
 }
 
 } // namespace filesystem

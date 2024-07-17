@@ -938,10 +938,12 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 		if(editor_controller::current_addon_id_.empty()) {
 			// if no addon id has been set and the file being loaded is from an addon
 			// then use the file path to determine the addon rather than showing a dialog
-			editor_controller::current_addon_id_ = filesystem::get_addon_id_from_path(filename);
-			if(editor_controller::current_addon_id_.empty()) {
+			if(auto addon_at_path = filesystem::get_addon_id_from_path(filename)) {
+				editor_controller::current_addon_id_ = addon_at_path.value();
+			} else {
 				editor_controller::current_addon_id_ = editor::initialize_addon();
 			}
+
 			set_addon_id(editor_controller::current_addon_id_);
 		}
 

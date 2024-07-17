@@ -448,16 +448,16 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			schema_path = *cmdline_opts.validate_with;
 			if(!filesystem::file_exists(schema_path)) {
 				auto check = filesystem::get_wml_location(schema_path);
-				if(!filesystem::file_exists(check)) {
+				if(!check) {
 					PLAIN_LOG << "Could not find schema file: " << schema_path;
 				} else {
-					schema_path = check;
+					schema_path = check.value();
 				}
 			} else {
 				schema_path = filesystem::normalize_path(schema_path);
 			}
 		} else {
-			schema_path = filesystem::get_wml_location("schema/game_config.cfg");
+			schema_path = filesystem::get_wml_location("schema/game_config.cfg").value();
 		}
 		schema_validation::schema_validator validator(schema_path);
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
