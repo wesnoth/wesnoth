@@ -73,7 +73,7 @@ function wc2_show_invest_dialog_impl(dialog_args)
 		if show_heroes then
 			local node = root_node:add_invest_category(_ "Heroes")
 
-			if available_commanders then
+			if available_commanders and #available_commanders > 0 then
 				local desc = _ "Commanders will take your leader’s place when the leader dies, possible commanders:"
 				for j,v in ipairs(available_commanders) do
 					desc = desc .. "\n" .. wesnoth.unit_types[v].name
@@ -98,7 +98,7 @@ function wc2_show_invest_dialog_impl(dialog_args)
 				}
 				page.unit_info.unit = unit_type
 			end
-			if available_deserters then
+			if available_deserters and #available_deserters > 0 then
 				local desc = "<b>" .. _ "possible units:" .. "</b>"
 				for j,v in ipairs(available_deserters) do
 					desc = desc .. "\n" .. wesnoth.unit_types[v].name
