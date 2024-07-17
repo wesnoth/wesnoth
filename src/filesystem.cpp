@@ -786,10 +786,7 @@ void set_cache_dir(const std::string& newcachedir)
 
 static const bfs::path& get_user_data_path()
 {
-	if(user_data_dir.empty()) {
-		set_user_data_dir(std::string());
-	}
-
+	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
 }
 

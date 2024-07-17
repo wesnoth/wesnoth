@@ -189,13 +189,6 @@ class prefs
 	public:
 		static prefs& get()
 		{
-			// for wesnoth: checks that the userdata folders have been initialized/found since if it hasn't been then it's too soon to be getting any values from it
-			// for boost: the userdata folders don't get initialized and the preferences aren't used for anything, so skip the check here
-			//            macos -  called "unit_tests"
-			//            others - called "boost_unit_tests"
-			static bool called_before_init = !(filesystem::base_name(filesystem::get_exe_path()).find("unit_tests") == std::string::npos && !filesystem::is_userdata_initialized());
-			assert(called_before_init && "Attempt to use preferences before userdata initialization");
-
 			static prefs prefs_manager;
 			return prefs_manager;
 		}
