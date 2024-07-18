@@ -293,7 +293,11 @@ bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 
 bool ends_with(const std::string& str, const std::string& suffix)
 {
+#ifdef __cpp_lib_starts_ends_with
+	return str.ends_with(suffix);
+#else
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
+#endif
 }
 
 std::string read_map(const std::string& name)
