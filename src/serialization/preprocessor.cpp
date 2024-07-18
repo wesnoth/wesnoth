@@ -1643,8 +1643,7 @@ bool preprocessor_data::get_chunk()
 				LOG_PREPROC << "Macro definition not found for " << symbol << ", attempting to open as file.";
 				pop_token();
 
-				auto nfname = filesystem::get_wml_location(symbol, directory_);
-				if(nfname) {
+				if(auto nfname = filesystem::get_wml_location(symbol, directory_)) {
 					if(!slowpath_)
 						// nfname.size() - symbol.size() gives you an index into nfname
 						// This does not necessarily match the symbol though, as it can start with ~ or ./

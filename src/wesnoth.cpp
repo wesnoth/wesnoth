@@ -447,11 +447,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.validate_with) {
 			schema_path = *cmdline_opts.validate_with;
 			if(!filesystem::file_exists(schema_path)) {
-				auto check = filesystem::get_wml_location(schema_path);
-				if(!check) {
-					PLAIN_LOG << "Could not find schema file: " << schema_path;
-				} else {
+				if(auto check = filesystem::get_wml_location(schema_path)) {
 					schema_path = check.value();
+				} else {
+					PLAIN_LOG << "Could not find schema file: " << schema_path;
 				}
 			} else {
 				schema_path = filesystem::normalize_path(schema_path);
