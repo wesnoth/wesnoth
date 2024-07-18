@@ -28,7 +28,7 @@ template<typename T>
 inline auto reversed_view(T& container)
 {
 #ifdef HAVE_CXX20
-	return std::views::reverse(container);
+	return std::ranges::reverse_view(container);
 #else
 	return boost::adaptors::reverse(container);
 #endif
