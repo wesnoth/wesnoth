@@ -2741,7 +2741,7 @@ void display::draw_hex(const map_location& loc)
 							? image::get_lighted_texture(ipf, lt)
 							: image::get_texture(ipf, image::HEXED);
 
-						drawing_buffer_add(LAYER_TERRAIN_BG, loc, [=](const rect& dest) mutable {
+						drawing_buffer_add(LAYER_TERRAIN_BG, loc, [=, this](const rect& dest) mutable {
 							// Adjust submerge appropriately
 							const t_translation::terrain_code terrain = get_map().get_terrain(loc);
 							const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
@@ -2774,7 +2774,7 @@ void display::draw_hex(const map_location& loc)
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 || tod_hex_mask2) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [=](const rect& dest) mutable {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [=, this](const rect& dest) mutable {
 			tod_hex_mask1.set_alpha_mod(tod_hex_alpha1);
 			draw::blit(tod_hex_mask1, dest);
 
