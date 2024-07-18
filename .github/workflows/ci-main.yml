@@ -65,7 +65,7 @@ jobs:
         CFG: ${{ matrix.cfg }}
         CC: ${{ matrix.cc }}
         CXX: ${{ matrix.cxx }}
-        CXX_STD: 17
+        CXX_STD: 20
         LTO: ${{ matrix.lto }}
         SYS_LUA: ${{ matrix.sys_lua }}
         CLICOLOR_FORCE: 1
