@@ -268,13 +268,13 @@ bool ends_with(const std::string& str, const std::string& suffix)
 std::string read_map(const std::string& name)
 {
 	std::string res;
-	std::string map_location = get_wml_location(name);
-	if(map_location.empty()) {
+	auto map_location = get_wml_location(name);
+	if(!map_location) {
 		// Consult [binary_path] for maps as well.
 		map_location = get_binary_file_location("maps", name);
 	}
-	if(!map_location.empty()) {
-		res = read_file(map_location);
+	if(map_location) {
+		res = read_file(map_location.value());
 	}
 
 	if(res.empty()) {
@@ -287,13 +287,13 @@ std::string read_map(const std::string& name)
 std::string read_scenario(const std::string& name)
 {
 	std::string res;
-	std::string file_location = get_wml_location(name);
-	if(file_location.empty()) {
+	auto file_location = get_wml_location(name);
+	if(!file_location) {
 		// Consult [binary_path] for scenarios as well.
 		file_location = get_binary_file_location("scenarios", name);
 	}
-	if(!file_location.empty()) {
-		res = read_file(file_location);
+	if(file_location) {
+		res = read_file(file_location.value());
 	}
 
 	if(res.empty()) {

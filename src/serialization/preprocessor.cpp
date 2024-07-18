@@ -1336,7 +1336,7 @@ bool preprocessor_data::get_chunk()
 			if(symbol.empty()) {
 				parent_.error("No path argument found after #ifhave/#ifnhave directive", linenum_);
 			}
-			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
+			bool found = filesystem::get_wml_location(symbol, directory_).has_value();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
@@ -1643,19 +1643,18 @@ bool preprocessor_data::get_chunk()
 				LOG_PREPROC << "Macro definition not found for " << symbol << ", attempting to open as file.";
 				pop_token();
 
-				std::string nfname = filesystem::get_wml_location(symbol, directory_);
-				if(!nfname.empty()) {
+				if(auto nfname = filesystem::get_wml_location(symbol, directory_)) {
 					if(!slowpath_)
 						// nfname.size() - symbol.size() gives you an index into nfname
 						// This does not necessarily match the symbol though, as it can start with ~ or ./
-						parent_.add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+						parent_.add_preprocessor<preprocessor_file>(nfname.value(), nfname->size() - symbol.size());
 					else {
 						std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 						std::ostringstream res;
 						{
 							std::istream in(buf.get());
-							buf->add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+							buf->add_preprocessor<preprocessor_file>(nfname.value(), nfname->size() - symbol.size());
 
 							res << in.rdbuf();
 						}

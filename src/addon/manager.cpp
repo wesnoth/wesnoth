@@ -75,7 +75,7 @@ config get_addon_pbl_info(const std::string& addon_name, bool do_validate)
 		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
 		std::unique_ptr<schema_validation::schema_validator> validator;
 		if(do_validate) {
-			validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg"));
+			validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg").value());
 			validator->set_create_exceptions(true);
 		}
 		read(cfg, *stream, validator.get());

@@ -80,13 +80,13 @@ bool load_font_config()
 {
 	config cfg;
 	try {
-		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
-		if(cfg_path.empty()) {
+		const auto cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
+		if(!cfg_path) {
 			ERR_FT << "could not resolve path to fonts.cfg, file not found";
 			return false;
 		}
 
-		filesystem::scoped_istream stream = preprocess_file(cfg_path);
+		filesystem::scoped_istream stream = preprocess_file(cfg_path.value());
 		read(cfg, *stream);
 	} catch(const config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n" << e.message;

@@ -104,7 +104,7 @@ bool load_language_list()
 {
 	config cfg;
 	try {
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg"));
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg").value());
 		read(cfg, *stream);
 	} catch(const config::error &) {
 		return false;
@@ -377,16 +377,11 @@ void init_textdomains(const game_config_view& cfg)
 
 		if(path.empty()) {
 			t_string::add_textdomain(name, filesystem::get_intl_dir());
+		} else if(auto location = filesystem::get_binary_dir_location("", path)) {
+			t_string::add_textdomain(name, location.value());
 		} else {
-			std::string location = filesystem::get_binary_dir_location("", path);
-
-			if (location.empty()) {
-				//if location is empty, this causes a crash on Windows, so we
-				//disallow adding empty domains
-				WRN_G << "no location found for '" << path << "', skipping textdomain";
-			} else {
-				t_string::add_textdomain(name, location);
-			}
+			// If location is empty, this causes a crash on Windows, so we disallow adding empty domains
+			WRN_G << "no location found for '" << path << "', skipping textdomain";
 		}
 	}
 }

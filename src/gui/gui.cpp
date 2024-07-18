@@ -49,10 +49,10 @@ void init()
 	//
 	config cfg;
 	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg"));
+		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
 
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
 
 		read(cfg, *stream, &validator);
 	} catch(const config::error& e) {

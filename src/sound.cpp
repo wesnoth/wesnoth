@@ -645,8 +645,10 @@ static void play_new_music()
 		return;
 	}
 
-	const std::string localized = filesystem::get_localized_path(current_track->file_path());
-	const std::string& filename = localized.empty() ? current_track->file_path() : localized;
+	std::string filename = current_track->file_path();
+	if(auto localized = filesystem::get_localized_path(filename)) {
+		filename = localized.value();
+	}
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
@@ -938,11 +940,11 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		temp_chunk.group = group;
-		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
-		const std::string localized = filesystem::get_localized_path(filename);
+		const auto filename = filesystem::get_binary_file_location("sounds", file);
+		const auto localized = filesystem::get_localized_path(filename.value_or(""));
 
-		if(!filename.empty()) {
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.empty() ? filename : localized);
+		if(filename) {
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.value_or(filename.value()));
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'.";
@@ -950,7 +952,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		if(temp_chunk.get_data() == nullptr) {
-			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError();
+			ERR_AUDIO << "Could not load sound file '" << filename.value() << "': " << Mix_GetError();
 			throw chunk_load_exception();
 		}
 

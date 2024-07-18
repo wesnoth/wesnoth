@@ -259,7 +259,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				}
 
 				const std::string& path = core["path"];
-				if(!filesystem::file_exists(filesystem::get_wml_location(path))) {
+				if(!filesystem::get_wml_location(path)) {
 					events::call_in_main_thread([&]() {
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),
@@ -307,11 +307,11 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			// Load the selected core
 			std::unique_ptr<schema_validation::schema_validator> validator;
 			if(cmdline_opts_.validate_core) {
-				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg").value()));
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
 
-			cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_, validator.get());
+			cache_.get_config(filesystem::get_wml_location(wml_tree_root).value(), game_config_, validator.get());
 			game_config_.append(valid_cores);
 
 			main_transaction.lock();
@@ -548,7 +548,7 @@ void game_config_manager::load_addons_cfg()
 		try {
 			std::unique_ptr<schema_validation::schema_validator> validator;
 			if(cmdline_opts_.validate_addon && *cmdline_opts_.validate_addon == addon_id) {
-				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg").value()));
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
 
