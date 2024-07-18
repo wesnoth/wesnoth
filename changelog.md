@@ -11,6 +11,7 @@
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German
  ### Units
  ### User interface
+   * Help button in the leaderchoosing window works on all languages (issue #9102)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
