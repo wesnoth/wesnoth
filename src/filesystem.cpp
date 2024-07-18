@@ -1595,8 +1595,12 @@ std::optional<std::string> get_binary_file_location(const std::string& type, con
 		}
 	}
 
-	DBG_FS << "  not found";
-	return result.empty() ? std::nullopt : std::optional{result};
+	if(result.empty()) {
+		DBG_FS << "  not found";
+		return std::nullopt;
+	} else {
+		return result;
+	}
 }
 
 std::optional<std::string> get_binary_dir_location(const std::string& type, const std::string& filename)
@@ -1647,12 +1651,11 @@ std::optional<std::string> get_wml_location(const std::string& filename, const s
 
 	if(result.empty() || !file_exists(result)) {
 		DBG_FS << "  not found";
-		result.clear();
+		return std::nullopt;
 	} else {
 		DBG_FS << "  found: '" << result.string() << "'";
+		return result.string();
 	}
-
-	return result.empty() ? std::nullopt : std::optional{result.string()};
 }
 
 static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix)
