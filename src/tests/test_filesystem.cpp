@@ -186,7 +186,7 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 {
 	const std::string& userdata = get_user_data_dir();
 
-	BOOST_CHECK_EQUAL( get_wml_location(""), std::nullopt );
+	BOOST_CHECK_EQUAL( get_wml_location("").value_or(""), "" );
 
 	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg").value(), gamedata + "/data/_main.cfg" );
 	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg").value(), gamedata + "/data/core/_main.cfg" );
