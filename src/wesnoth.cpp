@@ -611,23 +611,9 @@ static void check_fpu()
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
-static int do_gameloop(const std::vector<std::string>& args)
+static int do_gameloop(commandline_options& cmdline_opts)
 {
 	srand(std::time(nullptr));
-
-	commandline_options cmdline_opts = commandline_options(args);
-
-	int finished = process_command_args(cmdline_opts);
-	if(finished != -1) {
-#ifdef _WIN32
-		if(lg::using_own_console()) {
-			std::cerr << "Press enter to continue..." << std::endl;
-			std::cin.get();
-		}
-#endif
-
-		return finished;
-	}
 
 	const auto game = std::make_unique<game_launcher>(cmdline_opts);
 	const int start_ticks = SDL_GetTicks();
@@ -977,6 +963,20 @@ int main(int argc, char** argv)
 		}
 	}
 
+	commandline_options cmdline_opts = commandline_options(args);
+
+	int finished = process_command_args(cmdline_opts);
+	if(finished != -1) {
+#ifdef _WIN32
+		if(lg::using_own_console()) {
+			std::cerr << "Press enter to continue..." << std::endl;
+			std::cin.get();
+		}
+#endif
+
+		safe_exit(finished);
+	}
+
 	// setup logging to file
 	// else handle redirecting the output and potentially attaching a console on windows
 	if(write_to_log_file) {
@@ -1038,7 +1038,7 @@ int main(int argc, char** argv)
 			}
 		}
 
-		const int res = do_gameloop(args);
+		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
 		PLAIN_LOG << "Error in command line: " << e.what();
