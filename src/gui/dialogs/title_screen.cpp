@@ -330,7 +330,11 @@ void title_screen::init_callbacks()
 	// Preferences
 	//
 	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
-		gui2::dialogs::preferences_dialog::display();
+		gui2::dialogs::preferences_dialog pref_dlg;
+		pref_dlg.show();
+		if (pref_dlg.get_retval() == RELOAD_GAME_DATA) {
+			set_retval(RELOAD_GAME_DATA);
+		}
 
 		// Currently blurred windows don't capture well if there is something
 		// on top of them at the time of blur. Resizing the game window in

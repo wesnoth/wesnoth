@@ -35,9 +35,9 @@ static bool initialized = false;
 
 void init()
 {
-	if(initialized) {
-		return;
-	}
+//	if(initialized) {
+//		return;
+//	}
 
 	LOG_GUI_G << "Initializing UI subststem.";
 

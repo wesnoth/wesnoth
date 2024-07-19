@@ -25,6 +25,7 @@
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
@@ -38,6 +39,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/title_screen.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -1137,9 +1139,6 @@ void preferences_dialog::pre_show(window& window)
 	VALIDATE(selector.get_item_count() == pager.get_layer_count(),
 		"The preferences pager and its selector listbox do not have the same number of items.");
 
-	// don't show the "*restart required" message for UI theme at start
-	find_widget<label>(&window, "restart_msg", false).set_visible(widget::visibility::invisible);
-
 	const int main_index = index_in_pager_range(initial_index_.first, pager);
 
 	// Loops through each pager layer and checks if it has both a tab bar
@@ -1213,9 +1212,11 @@ void preferences_dialog::handle_theme_select()
 
 void preferences_dialog::handle_gui2_theme_select()
 {
-	find_widget<label>(get_window(), "restart_msg", false).set_visible(widget::visibility::visible);
 	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
 	prefs::get().set_gui_theme(gui2_themes_.at(gui2_theme_list.get_value()));
+
+	gui2::init();
+	set_retval(gui2::dialogs::title_screen::RELOAD_GAME_DATA);
 }
 
 void preferences_dialog::on_page_select()
