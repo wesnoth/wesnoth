@@ -112,6 +112,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 	, themes_() // populated by set_theme_list
 	, gui2_themes_() // populated by set_gui2_theme_list
 	, last_selected_item_(0)
+	, current_gui_theme_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
 	, visible_categories_()
@@ -165,17 +166,16 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 
 void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 {
-	std::string current_theme_name = prefs::get().gui_theme();
+	std::string current_gui_theme_name = prefs::get().gui_theme();
 
 	std::vector<config> options;
-	std::size_t current_theme = 0;
 	bool theme_found = false;
 	unsigned i = 0;
 	for(auto& gui : guis) {
 		gui2_themes_.emplace_back(gui.first);
 		options.emplace_back("label", gui.second.description());
-		if (current_theme_name == gui.first) {
-			current_theme = i;
+		if (current_gui_theme_name == gui.first) {
+			current_gui_theme_ = i;
 			theme_found = true;
 		}
 		if (!theme_found) {
@@ -184,7 +184,7 @@ void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 	}
 
 	theme_list.set_values(options);
-	theme_list.set_selected(current_theme);
+	theme_list.set_selected(current_gui_theme_);
 }
 
 widget_data preferences_dialog::get_friends_list_row_data(const preferences::acquaintance& entry)
@@ -1213,10 +1213,13 @@ void preferences_dialog::handle_theme_select()
 void preferences_dialog::handle_gui2_theme_select()
 {
 	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
-	prefs::get().set_gui_theme(gui2_themes_.at(gui2_theme_list.get_value()));
-
-	gui2::init();
-	set_retval(gui2::dialogs::title_screen::RELOAD_GAME_DATA);
+	unsigned selected_theme = gui2_theme_list.get_value();
+	if (selected_theme != current_gui_theme_) {
+		current_gui_theme_ = selected_theme;
+		prefs::get().set_gui_theme(gui2_themes_.at(selected_theme));
+		gui2::init();
+		set_retval(gui2::dialogs::title_screen::RELOAD_GAME_DATA);
+	}
 }
 
 void preferences_dialog::on_page_select()
