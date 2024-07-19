@@ -31,14 +31,9 @@
 
 namespace gui2
 {
-static bool initialized = false;
 
 void init()
 {
-//	if(initialized) {
-//		return;
-//	}
-
 	LOG_GUI_G << "Initializing UI subststem.";
 
 	// Save current screen size.
@@ -92,8 +87,6 @@ void init()
 	}
 
 	current_gui->second.activate();
-
-	initialized = true;
 }
 
 } // namespace gui2
