@@ -134,6 +134,12 @@ void get_files_in_dir(const std::string &dir,
 
 std::string get_dir(const std::string &dir);
 
+/**
+ * Try to autodetect the location of the game data dir. Note that
+ * the root of the source tree currently doubles as the data dir.
+ */
+std::string autodetect_game_data_dir(std::string exe_dir);
+
 // The location of various important files/folders:
 /**
  * location of preferences file containing preferences that are synced between computers

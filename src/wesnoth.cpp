@@ -375,6 +375,26 @@ static int process_command_args(commandline_options& cmdline_opts)
 		// font_manager_.update_font_path();
 	}
 
+	if(!cmdline_opts.nobanner) {
+		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
+		const std::time_t t = std::time(nullptr);
+		PLAIN_LOG << "Started on " << ctime(&t);
+	}
+
+	if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
+		if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
+			if(!cmdline_opts.nobanner) {
+				PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
+			}
+			game_config::path = std::move(auto_dir);
+		} else if(game_config::path.empty()) {
+			if (!cmdline_opts.data_dir.has_value()) {
+				PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+				return 1;
+			}
+		}
+	}
+
 	if(cmdline_opts.data_path) {
 		std::cout << game_config::path;
 		return 0;
@@ -875,41 +895,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	}
 }
 
-/**
- * Try to autodetect the location of the game data dir. Note that
- * the root of the source tree currently doubles as the data dir.
- */
-static std::string autodetect_game_data_dir(std::string exe_dir)
-{
-	std::string auto_dir;
-
-	// scons leaves the resulting binaries at the root of the source
-	// tree by default.
-	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
-		auto_dir = std::move(exe_dir);
-	}
-	// cmake encourages creating a subdir at the root of the source
-	// tree for the build, and the resulting binaries are found in it.
-	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
-		auto_dir = filesystem::normalize_path(exe_dir + "/..");
-	}
-	// Allow using the current working directory as the game data dir
-	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
-		auto_dir = filesystem::get_cwd();
-	}
-#ifdef _WIN32
-	// In Windows builds made using Visual Studio and its CMake
-	// integration, the EXE is placed a few levels below the game data
-	// dir (e.g. .\out\build\x64-Debug).
-	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
-		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
-		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
-	}
-#endif
-
-	return auto_dir;
-}
-
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
 	do {                                                                                                               \
@@ -985,33 +970,6 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		if(!cmdline_opts.nobanner) {
-			PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-			const std::time_t t = std::time(nullptr);
-			PLAIN_LOG << "Started on " << ctime(&t);
-		}
-
-		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
-			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
-				if(!cmdline_opts.nobanner) {
-					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
-				}
-				game_config::path = std::move(auto_dir);
-			} else if(game_config::path.empty()) {
-				bool data_dir_specified = false;
-				for(int i=0;i<argc;i++) {
-					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
-						data_dir_specified = true;
-						break;
-					}
-				}
-				if (!data_dir_specified) {
-					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
-					return 1;
-				}
-			}
-		}
-
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
