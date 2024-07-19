@@ -155,6 +155,11 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
+	, no_console(false)
+	, no_log_sanitize(false)
+	, log_to_file(false)
+	, no_log_to_file(false)
+	, final_log_redirect_to_file(true)
 	, translation_percent()
 	, args_(args.begin() + 1, args.end())
 	, args0_(*args.begin())
@@ -510,6 +515,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		windowed = true;
 	if(vm.count("with-replay"))
 		with_replay = true;
+	if(vm.count("wnoconsole"))
+		no_console = true;
+	if(vm.count("no-log-sanitize"))
+		no_log_sanitize = true;
+	if(vm.count("log-to-file"))
+		log_to_file = true;
+	if(vm.count("no-log-to-file"))
+		no_log_to_file = true;
 	if(vm.count("all-translations"))
 		translation_percent = 0;
 	else if(vm.count("translations-over"))

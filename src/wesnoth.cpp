@@ -267,9 +267,45 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 }
 
 /** Process commandline-arguments */
-static int process_command_args(const commandline_options& cmdline_opts)
+static int process_command_args(commandline_options& cmdline_opts)
 {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
+
+	if(cmdline_opts.no_log_sanitize) {
+		lg::set_log_sanitize(false);
+	}
+
+	// decide whether to redirect output to a file or not
+	if(cmdline_opts.log_to_file) {
+		cmdline_opts.final_log_redirect_to_file = true;
+	} else if(cmdline_opts.no_log_to_file) {
+		cmdline_opts.final_log_redirect_to_file = false;
+	} else {
+		// write_to_log_file means that writing to the log file will be done, if true.
+		// if false, output will be written to the terminal
+		// on windows, if wesnoth was not started from a console, then it will allocate one
+		cmdline_opts.final_log_redirect_to_file = !getenv("WESNOTH_NO_LOG_FILE")
+		// command line options that imply not redirecting output to a log file
+		// Some switches force a Windows console to be attached to the process even
+		// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
+		// turn it into a CLI application. Also, --no-log-to-file in particular attaches
+		// a console to a regular GUI game session.
+			&& !cmdline_opts.data_path
+			&& !cmdline_opts.help
+			&& !cmdline_opts.logdomains
+			&& !cmdline_opts.nogui
+			&& !cmdline_opts.report
+			&& !cmdline_opts.simple_version
+			&& !cmdline_opts.userdata_path
+			&& !cmdline_opts.version
+			&& !cmdline_opts.do_diff
+			&& !cmdline_opts.do_patch
+			&& !cmdline_opts.preprocess
+			&& !cmdline_opts.render_image
+			&& !cmdline_opts.screenshot
+			&& !cmdline_opts.headless_unit_test
+			&& !cmdline_opts.any_validation_option();
+	}
 
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
@@ -293,6 +329,11 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	// earliest possible point to ensure the userdata directory is known
 	if(!filesystem::is_userdata_initialized()) {
 		filesystem::set_user_data_dir(std::string());
+	}
+
+	// userdata is initialized, so initialize logging to file if enabled
+	if(cmdline_opts.final_log_redirect_to_file) {
+		lg::set_log_to_file();
 	}
 
 	if(cmdline_opts.usercache_path) {
@@ -897,97 +938,30 @@ int main(int argc, char** argv)
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif
 
-	// write_to_log_file means that writing to the log file will be done, if true.
-	// if false, output will be written to the terminal
-	// on windows, if wesnoth was not started from a console, then it will allocate one
-	bool write_to_log_file = !getenv("WESNOTH_NO_LOG_FILE");
-	[[maybe_unused]]
-	bool no_con = false;
-
-	// --nobanner needs to be detected before the main command-line parsing happens
-	// --log-to needs to be detected so the logging output location is set before any actual logging happens
-	bool nobanner = false;
-	for(const auto& arg : args) {
-		if(arg == "--nobanner") {
-			nobanner = true;
-			break;
-		}
-	}
-
-	// Some switches force a Windows console to be attached to the process even
-	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-	// turn it into a CLI application. Also, --no-log-to-file in particular attaches
-	// a console to a regular GUI game session.
-	//
-	// It's up to commandline_options later to handle these switches (except
-	// --no-log-to-file) later and emit any applicable console output, but right here
-	// we need a rudimentary check for the switches in question to set up the
-	// console before proceeding any further.
-	for(const auto& arg : args) {
-		// Switches that don't take arguments
-		static const std::set<std::string> terminal_switches = {
-			"--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
-			"--simple-version", "--userdata-path", "-v", "--version"
-		};
-
-		// Switches that take arguments, the switch may have the argument past
-		// the first = character, or in a subsequent argv entry which we don't
-		// care about -- we just want to see if the switch is there.
-		static const std::set<std::string> terminal_arg_switches = {
-			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image", "--screenshot",
-			"-u", "--unit", "-V", "--validate", "--validate-schema"
-		};
-
-		auto switch_matches_arg = [&arg](const std::string& sw) {
-			const auto pos = arg.find('=');
-			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
-		};
-
-		if(terminal_switches.find(arg) != terminal_switches.end() ||
-			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
-			write_to_log_file = false;
-		}
-
-		if(arg == "--no-log-to-file") {
-			write_to_log_file = false;
-		} else if(arg == "--log-to-file") {
-			write_to_log_file = true;
-		}
-
-		if(arg == "--no-log-sanitize") {
-			lg::set_log_sanitize(false);
-		}
-
-		if(arg == "--wnoconsole") {
-			no_con = true;
-		}
-	}
-
 	commandline_options cmdline_opts = commandline_options(args);
-
 	int finished = process_command_args(cmdline_opts);
-	if(finished != -1) {
-#ifdef _WIN32
-		if(lg::using_own_console()) {
-			std::cerr << "Press enter to continue..." << std::endl;
-			std::cin.get();
-		}
-#endif
 
+#ifndef _WIN32
+	if(finished != -1) {
 		safe_exit(finished);
 	}
+#endif
 
-	// setup logging to file
-	// else handle redirecting the output and potentially attaching a console on windows
-	if(write_to_log_file) {
-		lg::set_log_to_file();
-	} else {
 #ifdef _WIN32
-		if(!no_con) {
+	// else handle redirecting the output and potentially attaching a console on windows
+	if(!cmdline_opts.final_log_redirect_to_file) {
+		if(!cmdline_opts.no_console) {
 			lg::do_console_redirect();
 		}
-#endif
+		if(finished != -1) {
+			if(lg::using_own_console()) {
+				std::cerr << "Press enter to continue..." << std::endl;
+				std::cin.get();
+			}
+			safe_exit(finished);
+		}
 	}
+#endif
 
 	SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 	// Is there a reason not to just use SDL_INIT_EVERYTHING?
@@ -1011,7 +985,7 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		if(!nobanner) {
+		if(!cmdline_opts.nobanner) {
 			PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
 			const std::time_t t = std::time(nullptr);
 			PLAIN_LOG << "Started on " << ctime(&t);
@@ -1019,7 +993,7 @@ int main(int argc, char** argv)
 
 		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
 			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
-				if(!nobanner) {
+				if(!cmdline_opts.nobanner) {
 					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 				}
 				game_config::path = std::move(auto_dir);
