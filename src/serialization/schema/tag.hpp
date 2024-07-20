@@ -116,10 +116,6 @@ public:
 
 	wml_tag(const config&);
 
-	~wml_tag()
-	{
-	}
-
 	/** Prints information about tag to outputstream, recursively
 	 * is used to print tag info
 	 * the format is next
