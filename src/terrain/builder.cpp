@@ -202,6 +202,14 @@ static unsigned int get_noise(const map_location& loc, unsigned int index)
 	return abc * abc;
 }
 
+terrain_builder::tilemap::tilemap(int x, int y)
+	: tiles_((x + 4) * (y + 4))
+	, x_(x)
+	, y_(y)
+{
+	reset();
+}
+
 void terrain_builder::tilemap::reset()
 {
 	for(std::vector<tile>::iterator it = tiles_.begin(); it != tiles_.end(); ++it)
@@ -655,6 +663,18 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	replace_rotate_tokens(ret, angle, rot);
+}
+
+terrain_builder::rule_image_variant::rule_image_variant(const std::string& image_string,
+		const std::string& variations,
+		int random_start)
+	: image_string(image_string)
+	, variations(variations)
+	, images()
+	, tods()
+	, has_flag()
+	, random_start(random_start)
+{
 }
 
 terrain_builder::rule_image_variant::rule_image_variant(const std::string& image_string,
