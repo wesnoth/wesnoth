@@ -291,6 +291,11 @@ bool variant_container<T>::iterator_equals(const utils::any& first, const utils:
 template class variant_container<variant_vector>;
 template class variant_container<variant_map_raw>;
 
+variant_list::variant_list(const variant_vector& vec)
+	: variant_container<variant_vector>(vec)
+{
+}
+
 variant variant_list::list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func)
 {
 	const auto& other_list = value_cast<variant_list>(second);

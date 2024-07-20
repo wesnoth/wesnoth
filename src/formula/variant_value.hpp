@@ -488,9 +488,7 @@ private:
 class variant_list : public variant_container<variant_vector>
 {
 public:
-	explicit variant_list(const variant_vector& vec)
-		: variant_container<variant_vector>(vec)
-	{}
+	explicit variant_list(const variant_vector& vec);
 
 	/**
 	 * Applies the provided function to the corresponding variants in this and another list.
