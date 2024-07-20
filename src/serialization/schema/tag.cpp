@@ -27,6 +27,16 @@ namespace schema_validation
 
 wml_tag any_tag("", 0, -1, "", true);
 
+wml_tag::wml_tag(const std::string& name, int min, int max, const std::string& super, bool any)
+	: name_(name)
+	, min_(min)
+	, max_(max)
+	, super_(super)
+	, fuzzy_(name.find_first_of("*?") != std::string::npos)
+	, any_tag_(any)
+{
+}
+
 wml_tag::wml_tag(const config& cfg)
 	: name_(cfg["name"].str())
 	, min_(cfg["min"].to_int())
