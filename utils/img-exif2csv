@@ -8,7 +8,6 @@
 import argparse
 import contextlib
 import hashlib
-import re
 import os
 from pathlib import Path
 from subprocess import check_output
@@ -59,6 +58,5 @@ with open(options.output, 'w') as f:
         filetype = Path(filename).suffix
         if filetype == ".png" or filetype == ".jpg" or filetype == ".webp":
             file = os.path.normpath(os.path.join(root, filename))
-            file = re.sub(r'../wesnoth/', '', file)
             hash = do_hash(file)
             f.write(read_exif(file,hash,options.error))
