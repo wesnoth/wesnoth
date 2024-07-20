@@ -78,10 +78,6 @@ public:
 	{
 	}
 
-	~parser()
-	{
-	}
-
 	void operator()();
 
 private:
