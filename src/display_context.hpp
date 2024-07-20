@@ -43,12 +43,7 @@ public:
 	/** This getter takes a 1-based side number, not a 0-based team number. */
 	const team& get_team(int side) const;
 
-	// this one is only a template function to prevent compilation erros when class team is an incomplete type.
-	template<typename T = void>
-	bool has_team(int side) const
-	{
-		return side > 0 && side <= static_cast<int>(teams().size());
-	}
+	bool has_team(int side) const;
 
 	// Helper for is_visible_to_team
 
