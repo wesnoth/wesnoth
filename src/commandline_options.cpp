@@ -155,7 +155,9 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
+#ifdef _WIN32
 	, no_console(false)
+#endif
 	, no_log_sanitize(false)
 	, log_to_file(false)
 	, no_log_to_file(false)
@@ -245,7 +247,9 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("no-log-to-file", "log output is written only to standard error rather than to a file. The environment variable WESNOTH_NO_LOG_FILE can also be set as an alternative.")
 		("log-to-file", "log output is written to the log file instead of standard error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
 		("no-log-sanitize", "disables the anonymization that's normally applied when logging, for example replacing usernames with USER.")
+#ifdef _WIN32
 		("wnoconsole", "For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.")
+#endif
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -515,8 +519,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		windowed = true;
 	if(vm.count("with-replay"))
 		with_replay = true;
+#ifdef _WIN32
 	if(vm.count("wnoconsole"))
 		no_console = true;
+#endif
 	if(vm.count("no-log-sanitize"))
 		no_log_sanitize = true;
 	if(vm.count("log-to-file"))

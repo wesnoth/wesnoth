@@ -304,18 +304,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 			&& !cmdline_opts.render_image
 			&& !cmdline_opts.screenshot
 			&& !cmdline_opts.headless_unit_test
-			&& !cmdline_opts.any_validation_option();
-	}
-
-	if(cmdline_opts.log) {
-		for(const auto& log_pair : *cmdline_opts.log) {
-			const std::string log_domain = log_pair.second;
-			const lg::severity severity = log_pair.first;
-			if(!lg::set_log_domain_severity(log_domain, severity)) {
-				PLAIN_LOG << "unknown log domain: " << log_domain;
-				return 2;
-			}
-		}
+			&& !cmdline_opts.validate_schema
+			&& !cmdline_opts.validate_wml;
 	}
 
 	if(cmdline_opts.usercache_dir) {
@@ -334,6 +324,17 @@ static int process_command_args(commandline_options& cmdline_opts)
 	// userdata is initialized, so initialize logging to file if enabled
 	if(cmdline_opts.final_log_redirect_to_file) {
 		lg::set_log_to_file();
+	}
+
+	if(cmdline_opts.log) {
+		for(const auto& log_pair : *cmdline_opts.log) {
+			const std::string log_domain = log_pair.second;
+			const lg::severity severity = log_pair.first;
+			if(!lg::set_log_domain_severity(log_domain, severity)) {
+				PLAIN_LOG << "unknown log domain: " << log_domain;
+				return 2;
+			}
+		}
 	}
 
 	if(cmdline_opts.usercache_path) {
@@ -923,57 +924,56 @@ int main(int argc, char** argv)
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif
 
-	commandline_options cmdline_opts = commandline_options(args);
-	int finished = process_command_args(cmdline_opts);
+	try {
+		commandline_options cmdline_opts = commandline_options(args);
+		int finished = process_command_args(cmdline_opts);
 
 #ifndef _WIN32
-	if(finished != -1) {
-		safe_exit(finished);
-	}
-#endif
-
-#ifdef _WIN32
-	// else handle redirecting the output and potentially attaching a console on windows
-	if(!cmdline_opts.final_log_redirect_to_file) {
-		if(!cmdline_opts.no_console) {
-			lg::do_console_redirect();
-		}
 		if(finished != -1) {
-			if(lg::using_own_console()) {
-				std::cerr << "Press enter to continue..." << std::endl;
-				std::cin.get();
-			}
 			safe_exit(finished);
 		}
-	}
+#else
+		// else handle redirecting the output and potentially attaching a console on windows
+		if(!cmdline_opts.final_log_redirect_to_file) {
+			if(!cmdline_opts.no_console) {
+				lg::do_console_redirect();
+			}
+			if(finished != -1) {
+				if(lg::using_own_console()) {
+					std::cerr << "Press enter to continue..." << std::endl;
+					std::cin.get();
+				}
+				safe_exit(finished);
+			}
+		}
 #endif
 
-	SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
-	// Is there a reason not to just use SDL_INIT_EVERYTHING?
-	if(SDL_Init(SDL_INIT_TIMER) < 0) {
-		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-		return (1);
-	}
-	atexit(SDL_Quit);
+		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
+		// Is there a reason not to just use SDL_INIT_EVERYTHING?
+		if(SDL_Init(SDL_INIT_TIMER) < 0) {
+			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
+			return (1);
+		}
+		atexit(SDL_Quit);
 
-	// Mac's touchpad generates touch events too.
-	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
+		// Mac's touchpad generates touch events too.
+		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
-	SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-	SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-	SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
 #endif
 
-	// declare this here so that it will always be at the front of the event queue.
-	events::event_context global_context;
+		// declare this here so that it will always be at the front of the event queue.
+		events::event_context global_context;
 
-	SDL_StartTextInput();
+		SDL_StartTextInput();
 
-	try {
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
-		PLAIN_LOG << "Error in command line: " << e.what();
+		// logging hasn't been initialized by this point
+		std::cerr << "Error in command line: " << e.what();
 		error_exit(1);
 	} catch(const video::error& e) {
 		PLAIN_LOG << "Video system error: " << e.what();

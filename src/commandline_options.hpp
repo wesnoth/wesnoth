@@ -239,8 +239,10 @@ public:
 	bool windowed;
 	/** True if --with-replay was given on the command line. Shows replay of the loaded file. */
 	bool with_replay;
-	/** True if --wnoconsole was given on the command line. Controls whether to write to a command prompt on Windows. */
+#ifdef _WIN32
+	/** True if --wnoconsole was given on the command line. Prevents logs from being written to the console window if Wesnoth is launched from the command prompt on Windows. */
 	bool no_console;
+#endif
 	/** True if --no-log-sanitize was given on the command line. Prevents removal of OS user from file paths in log files. */
 	bool no_log_sanitize;
 	/**
