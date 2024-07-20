@@ -41,7 +41,7 @@ def do_hash(file):
 ##
 
 args = argparse.ArgumentParser()
-args.add_argument("--repo", default="..", help="The directory of the Wesnoth repository to run this script against.")
+args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
 args.add_argument("--output", default="img-exif2csv_output.csv", help="The file to write the results of this script to.")
 args.add_argument("--error", default="exiftool_errors.txt", help="The file to write the errors and warning from exiftool to.")
 options = args.parse_args()

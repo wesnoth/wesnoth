@@ -58,7 +58,7 @@ def fix_webp(target):
 ##
 
 args = argparse.ArgumentParser()
-args.add_argument("--repo", default="..", help="The directory of the Wesnoth repository to run this script against.")
+args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
 args.add_argument("--input", default="copyrights.csv", help="The file to read the existing copyright data from.")
 args.add_argument("--output", default="csv2img-exif_output.csv", help="The file to write the results of this script to.")
 options = args.parse_args()
