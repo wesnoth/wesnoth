@@ -32,7 +32,11 @@
 namespace gui2
 {
 
-void init()
+namespace {
+config guis_cfg;
+}
+
+void init(bool force_read)
 {
 	LOG_GUI_G << "Initializing UI subststem.";
 
@@ -49,13 +53,14 @@ void init()
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
 
-		read(cfg, *stream, &validator);
-	} catch(const config::error& e) {
-		ERR_GUI_P << e.what();
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
-	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
-		ERR_GUI_P << e.message;
+			read(guis_cfg, *stream, &validator);
+		} catch(const config::error& e) {
+			ERR_GUI_P << e.what();
+			ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
+		} catch(const abstract_validator::error& e) {
+			ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
+			ERR_GUI_P << e.message;
+		}
 	}
 
 	//
@@ -63,7 +68,7 @@ void init()
 	//
 	const std::string& current_theme = prefs::get().gui_theme();
 
-	for(const config& g : cfg.child_range("gui")) {
+	for(const config& g : guis_cfg.child_range("gui")) {
 		const std::string id = g["id"];
 
 		auto iter = guis.emplace(id, gui_definition(g)).first;
