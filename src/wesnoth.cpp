@@ -844,6 +844,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
+		//gui2::dialogs::title_screen::RELOAD_UI intentionally left out
+		//not handling it causes the dialog to be closed and reshown with changes
 		}
 	}
 }

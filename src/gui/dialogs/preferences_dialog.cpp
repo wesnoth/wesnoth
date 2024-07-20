@@ -592,7 +592,7 @@ void preferences_dialog::initialize_callbacks()
 	/* SELECT GUI2 THEME */
 	menu_button& gui2_theme_list = find_widget<menu_button>(this, "choose_gui2_theme", false);
 	set_gui2_theme_list(gui2_theme_list);
-	connect_signal_notify_modified(gui2_theme_list,
+	connect_signal_mouse_left_click(find_widget<button>(this, "apply", false),
 		std::bind(&preferences_dialog::handle_gui2_theme_select, this));
 
 	//
@@ -1218,7 +1218,7 @@ void preferences_dialog::handle_gui2_theme_select()
 		current_gui_theme_ = selected_theme;
 		prefs::get().set_gui_theme(gui2_themes_.at(selected_theme));
 		gui2::init();
-		set_retval(gui2::dialogs::title_screen::RELOAD_GAME_DATA);
+		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
 	}
 }
 

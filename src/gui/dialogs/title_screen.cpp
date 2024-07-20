@@ -332,8 +332,8 @@ void title_screen::init_callbacks()
 	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
 		gui2::dialogs::preferences_dialog pref_dlg;
 		pref_dlg.show();
-		if (pref_dlg.get_retval() == RELOAD_GAME_DATA) {
-			set_retval(RELOAD_GAME_DATA);
+		if (pref_dlg.get_retval() == RELOAD_UI) {
+			set_retval(RELOAD_UI);
 		}
 
 		// Currently blurred windows don't capture well if there is something
