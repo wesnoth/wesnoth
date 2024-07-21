@@ -239,6 +239,21 @@ public:
 	bool windowed;
 	/** True if --with-replay was given on the command line. Shows replay of the loaded file. */
 	bool with_replay;
+#ifdef _WIN32
+	/** True if --wnoconsole was given on the command line. Prevents logs from being written to the console window if Wesnoth is launched from the command prompt on Windows. */
+	bool no_console;
+#endif
+	/** True if --no-log-sanitize was given on the command line. Prevents removal of OS user from file paths in log files. */
+	bool no_log_sanitize;
+	/**
+	 * True if --log-to-file was given on the command line.
+	 * Forces output to be written to a log file. Takes priority over any arguments that implicitly prevent logging to file.
+	 */
+	bool log_to_file;
+	/** True if --no-log-to-file was given on the command line. Results in logs not being redirected to a log file. */
+	bool no_log_to_file;
+	/** final result of determining whether to log to file or not */
+	bool final_log_redirect_to_file;
 	/** Non-empty if --all-translations or --translations-over is given on the command line. */
 	std::optional<unsigned int> translation_percent;
 private:

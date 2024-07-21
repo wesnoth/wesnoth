@@ -122,6 +122,37 @@ bool blacklist_pattern_list::match_dir(const std::string& name) const
 					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
 }
 
+std::string autodetect_game_data_dir(std::string exe_dir)
+{
+	std::string auto_dir;
+
+	// scons leaves the resulting binaries at the root of the source
+	// tree by default.
+	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
+		auto_dir = std::move(exe_dir);
+	}
+	// cmake encourages creating a subdir at the root of the source
+	// tree for the build, and the resulting binaries are found in it.
+	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/..");
+	}
+	// Allow using the current working directory as the game data dir
+	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+		auto_dir = filesystem::get_cwd();
+	}
+#ifdef _WIN32
+	// In Windows builds made using Visual Studio and its CMake
+	// integration, the EXE is placed a few levels below the game data
+	// dir (e.g. .\out\build\x64-Debug).
+	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
+	}
+#endif
+
+	return auto_dir;
+}
+
 std::string get_synced_prefs_file()
 {
 	return get_sync_dir() + "/preferences";
