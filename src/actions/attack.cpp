@@ -498,9 +498,14 @@ bool battle_context::better_combat(const combatant& us_a,
 	double poison_b_us = us_b.poisoned > 0 ? (us_b.poisoned - us_b.hp_dist[0]) * game_config::poison_amount : 0;
 	double poison_b_them = them_b.poisoned > 0 ? (them_b.poisoned - them_b.hp_dist[0]) * game_config::poison_amount : 0;
 
+	double attack_weight_a = us_a.u_.weapon->attack_weight();
+	double attack_weight_b = us_b.u_.weapon->attack_weight();
+	double damage_a = (them_a.u_.hp - them_a.average_hp()) * attack_weight_a;
+	double damage_b = (them_b.u_.hp - them_b.average_hp()) * attack_weight_b;
+
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
-	b = (us_b.average_hp() - poison_b_us) * harm_weight - (them_b.average_hp() - poison_b_them);
+	a = (us_a.average_hp() - poison_a_us) * harm_weight + damage_a + poison_a_them;
+	b = (us_b.average_hp() - poison_b_us) * harm_weight + damage_b + poison_b_them;
 
 	if(a - b < -0.01) {
 		return false;
@@ -511,7 +516,7 @@ bool battle_context::better_combat(const combatant& us_a,
 	}
 
 	// All else equal: go for most damage.
-	return them_a.average_hp() < them_b.average_hp();
+	return damage_a >= damage_b;
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
