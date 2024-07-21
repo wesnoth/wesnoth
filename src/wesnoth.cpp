@@ -973,6 +973,9 @@ int main(int argc, char** argv)
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
 		// logging hasn't been initialized by this point
+		std::string error = "Error parsing command line arguments: ";
+		error += e.what();
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", error.c_str(), nullptr);
 		std::cerr << "Error in command line: " << e.what();
 		error_exit(1);
 	} catch(const video::error& e) {
