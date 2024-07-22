@@ -23,7 +23,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/widgets/settings.hpp"
-#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
@@ -36,7 +35,7 @@ namespace {
 config guis_cfg;
 }
 
-void init(bool force_read)
+void init(const std::string& current_theme, bool force_read)
 {
 	LOG_GUI_G << "Initializing UI subststem.";
 
@@ -46,13 +45,12 @@ void init(bool force_read)
 	//
 	// Read and validate the WML files.
 	//
-	config cfg;
-	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
+	if (guis_cfg.empty() || force_read) {
+		try {
+			schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
 
-		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
-
+			preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
+			filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
 			read(guis_cfg, *stream, &validator);
 		} catch(const config::error& e) {
 			ERR_GUI_P << e.what();
@@ -66,8 +64,6 @@ void init(bool force_read)
 	//
 	// Parse GUI definitions.
 	//
-	const std::string& current_theme = prefs::get().gui_theme();
-
 	for(const config& g : guis_cfg.child_range("gui")) {
 		const std::string id = g["id"];
 

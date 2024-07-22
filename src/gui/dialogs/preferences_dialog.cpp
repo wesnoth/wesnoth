@@ -1217,7 +1217,7 @@ void preferences_dialog::handle_gui2_theme_select()
 	if (selected_theme != current_gui_theme_) {
 		current_gui_theme_ = selected_theme;
 		prefs::get().set_gui_theme(gui2_themes_.at(selected_theme));
-		gui2::init();
+		gui2::init(gui2_themes_.at(selected_theme), false);
 		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
 	}
 }
