@@ -1,6 +1,4 @@
-## Version 1.19.1+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.19.2
  ### Campaigns
    * Eastern Invasion
      * fixed Gweddry having the wrong HP values
@@ -41,13 +39,8 @@
      * Redesigned with new icons
 	 * New Open External button that opens selected file/folder in the platform's default application (independently of what pressing Open would do). This could be used to quickly open a folder or preview the file before actually selecting it.
 	 * Extension checking and filename validation. (See #8911)
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Ukrainian
- ### Units
  ### User interface
    * When a player types something into the Load Game filter box and then changes to a different version, apply the filter immediately instead of showing the full list of files.
    * An updated design for the titlescreen has been added. This can be toggled in the Display preferences. (#8953)
