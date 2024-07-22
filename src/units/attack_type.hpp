@@ -139,7 +139,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
