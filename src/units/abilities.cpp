@@ -1883,16 +1883,19 @@ bool attack_type::special_active_impl(
 	//If filter concerns the unit on which special is applied,
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
-	std::string self_tag_name = whom_is_self ? tag_name : "";
+	bool applied_both = special["apply_to"] == "both";
+	std::string self_tag_name = (applied_both || whom_is_self) ? tag_name : "";
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
 		return false;
-	std::string opp_tag_name = !whom_is_self ? tag_name : "";
+	std::string opp_tag_name = (applied_both || !whom_is_self) ? tag_name : "";
 	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
 		return false;
-	std::string att_tag_name = is_attacker ? tag_name : "";
+	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
+	std::string att_tag_name = applied_to_attacker ? tag_name : "";
 	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
 		return false;
-	std::string def_tag_name = !is_attacker ? tag_name : "";
+	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
+	std::string def_tag_name = applied_to_defender ? tag_name : "";
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
 		return false;
 
