@@ -36,6 +36,7 @@
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
+#include "preferences/preferences.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -667,7 +668,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	gui2::init();
+	gui2::init(prefs::get().gui_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
