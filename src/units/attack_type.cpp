@@ -153,7 +153,7 @@ void show_recursion_warning(const attack_type& attack, const config& filter) {
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& tag_name)
+bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& check_if_recursion)
 {
 	//update and check variable_recursion for prevent check special_id/type_active in case of infinite recursion.
 	attack_type::recursion_guard filter_lock= attack.update_variables_recursion();
@@ -208,7 +208,7 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 		// should always use the base type of the weapon. Otherwise it will flip-flop between the
 		// special being active or inactive based on whether ATTACK_RECURSION_LIMIT is even or odd;
 		// without this it will also behave differently when calculating resistance_against.
-		if(tag_name == "damage_type"){
+		if(check_if_recursion == "damage_type"){
 			if (filter_type.count(attack.type()) == 0){
 				return false;
 			}
@@ -320,25 +320,25 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
+bool attack_type::matches_filter(const config& filter, const std::string& check_if_recursion) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, tag_name);
+	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, tag_name);
+			matches = matches && matches_filter(condition.cfg, check_if_recursion);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, tag_name);
+			matches = matches || matches_filter(condition.cfg, check_if_recursion);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, tag_name);
+			matches = matches && !matches_filter(condition.cfg, check_if_recursion);
 	}
 
 	return matches;
