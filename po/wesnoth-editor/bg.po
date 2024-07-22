@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 15:07-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2022-03-16 17:08+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
@@ -274,150 +274,171 @@ msgstr ""
 msgid "Cost: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:183
+#: src/editor/controller/editor_controller.cpp:185
 msgid "Fatal error"
 msgstr "Фатална грешка"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:215
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:234
+#: src/editor/controller/editor_controller.cpp:236
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1262
+#: src/editor/controller/editor_controller.cpp:876
+msgid "Add-on Files"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:889
+msgid "Opening files is not supported, contact your packager"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:1307
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1263
+#: src/editor/controller/editor_controller.cpp:1308
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1279
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1280
+#: src/editor/controller/editor_controller.cpp:1325
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:215
+#: src/editor/map/context_manager.cpp:216
 msgid "Load Map"
 msgstr "Зареди карта"
 
-#: src/editor/map/context_manager.cpp:311 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:314 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "Нова карта"
 
-#: src/editor/map/context_manager.cpp:324 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:327 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "Следваща мисия"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:383
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:421
 msgid "Unnamed Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:449
+#: src/editor/map/context_manager.cpp:452
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "New Side"
 msgstr "Запазване на картата като"
 
-#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:508
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:514
+#: src/editor/map/context_manager.cpp:517
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:537
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:537
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:548
+#: src/editor/map/context_manager.cpp:551
 #, fuzzy
 msgid "Choose Target Map"
 msgstr "Избор на карта "
 
-#: src/editor/map/context_manager.cpp:557
-#: src/editor/map/context_manager.cpp:953
+#: src/editor/map/context_manager.cpp:560
+#: src/editor/map/context_manager.cpp:982
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:683
+#: src/editor/map/context_manager.cpp:688
 msgid "Save Map As"
 msgstr "Запазване на картата като"
 
-#: src/editor/map/context_manager.cpp:694
-#: src/editor/map/context_manager.cpp:896
+#: src/editor/map/context_manager.cpp:705
+#: src/editor/map/context_manager.cpp:754 src/editor/map/map_context.cpp:269
+#: src/editor/palette/location_palette.cpp:264
+msgid "Error"
+msgstr "Грешка"
+
+#: src/editor/map/context_manager.cpp:706
+#: src/editor/map/context_manager.cpp:755
+#, fuzzy
+#| msgid "Do you want to save the map before quitting?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Искате ли да запазите картата?"
+
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:923
 msgid "This map is already open."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:737
 msgid "Save Scenario As"
 msgstr "Запазване на мисията като"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:763
 msgid "This scenario is already open."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:761
+#: src/editor/map/context_manager.cpp:797
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:774
-#: src/editor/map/context_manager.cpp:779
+#: src/editor/map/context_manager.cpp:810
+#: src/editor/map/context_manager.cpp:815
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:794
+#: src/editor/map/context_manager.cpp:830
 msgid "Unsaved Changes"
 msgstr "Незапазени промени"
 
-#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:831
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:857
+#: src/editor/map/context_manager.cpp:884
 msgid "Scenario saved."
 msgstr "Картата запазена."
 
-#: src/editor/map/context_manager.cpp:872
+#: src/editor/map/context_manager.cpp:899
 msgid "Map saved."
 msgstr "Картата запазена."
 
-#: src/editor/map/context_manager.cpp:945
+#: src/editor/map/context_manager.cpp:974
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:946
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:975
+#: src/editor/map/context_manager.cpp:978
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:978
 msgid "Loaded referenced map file:"
 msgstr ""
 
@@ -430,57 +451,61 @@ msgstr ""
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:181
+#: src/editor/map/map_context.cpp:182
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:188
+#: src/editor/map/map_context.cpp:189
 msgid "Empty file"
 msgstr "Празен файл"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:198
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:240
+#: src/editor/map/map_context.cpp:245
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:259
+#: src/editor/map/map_context.cpp:264
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:264
-#: src/editor/palette/location_palette.cpp:264
-msgid "Error"
-msgstr "Грешка"
-
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:269
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:271
+#: src/editor/map/map_context.cpp:276
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:286
+#: src/editor/map/map_context.cpp:291
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:804 src/editor/map/map_context.cpp:843
-#: src/editor/map/map_context.cpp:884
+#: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Файлът не може да се запише: $msg"
+
+#: src/editor/map/map_context.cpp:855
+msgid "Time schedule saved."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
 msgstr "Файлът не може да се запише: $msg"
 
-#: src/editor/map/map_context.cpp:915
+#: src/editor/map/map_context.cpp:932
 msgid "Could not save into scenario"
 msgstr "Файлът не може да се запише: $msg"
 
-#: src/editor/map/map_context.cpp:925
+#: src/editor/map/map_context.cpp:942
 msgid "Could not save the map: $msg"
 msgstr "Файлът не може да се запише: $msg"
 
@@ -543,16 +568,28 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:96
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:162
+#: src/gui/dialogs/editor/custom_tod.cpp:176
 msgid "Choose File"
 msgstr "Изберете файл"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
+#: src/gui/dialogs/editor/custom_tod.cpp:177
 msgid "Select"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:184
+msgid ""
+"This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:188
+#: src/gui/dialogs/editor/custom_tod.cpp:195
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Confirm"
 msgstr ""
 
 #, fuzzy
@@ -660,9 +697,6 @@ msgstr ""
 
 #~ msgid "The file does not contain a valid map."
 #~ msgstr "Файлът не съдържа валидна карта."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Искате ли да запазите картата?"
 
 #~ msgid "Error: Illegal character in filename."
 #~ msgstr "Грешка: Непозволен знак в името на файла."

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-06-17 10:25-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2024-06-02 17:10+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -234,7 +234,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "poisoned"
 msgstr "中毒"
 
@@ -632,23 +632,23 @@ msgid "Ukrainian Translation"
 msgstr "乌克兰文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1902
+#: data/core/about_i18n.cfg:1908
 msgid "Valencian (southern Catalan) Translation"
 msgstr "瓦伦西亚文（南加泰罗尼亚）翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1915
+#: data/core/about_i18n.cfg:1921
 msgid "Vietnamese Translation"
 msgstr "越南文翻译"
 
 #. [about]
-#: data/core/about_i18n.cfg:1934
+#: data/core/about_i18n.cfg:1940
 msgid "Welsh Translation"
 msgstr "威尔士文翻译"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1943
+#: data/core/about_i18n.cfg:1949
 msgid "RACV’s Translation"
 msgstr "RACV的翻译"
 
@@ -3906,7 +3906,7 @@ msgstr "你获得了$amount_gold|枚金币。"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:258
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:265
 msgid "Red"
 msgstr "红"
 
@@ -3922,7 +3922,7 @@ msgstr "暗红"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:264
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:271
 msgid "Blue"
 msgstr "蓝"
 
@@ -3933,7 +3933,7 @@ msgstr "亮蓝"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:270
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:277
 msgid "Green"
 msgstr "绿"
 
@@ -3944,25 +3944,25 @@ msgstr "亮绿"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:276
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:283
 msgid "Purple"
 msgstr "紫"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:288
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:295
 msgid "Black"
 msgstr "黑"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:300
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:307
 msgid "Brown"
 msgstr "棕"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:282
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:289
 msgid "Orange"
 msgstr "橙"
 
@@ -3973,13 +3973,13 @@ msgstr "亮橙"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:294
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:301
 msgid "White"
 msgstr "白"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:306
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:313
 msgid "Teal"
 msgstr "青"
 
@@ -4108,6 +4108,11 @@ msgstr "迷雾"
 #: src/game_initialization/lobby_data.cpp:389
 msgid "Shroud"
 msgstr "战场黑幕"
+
+#. [color_range]: id=urbanjungle
+#: data/core/team-colors.cfg:256
+msgid "Urban"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4465,23 +4470,23 @@ msgid "Alternate Wesnoth Server"
 msgstr "备选韦诺服务器"
 
 #. [label]: id=title
-#: data/gui/window/install_dependencies.cfg:37
+#: data/gui/themes/default/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "安装依赖项目"
 
 #. [button]: id=ok
-#: data/gui/window/install_dependencies.cfg:84
+#: data/gui/themes/default/window/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "是"
 
 #. [button]: id=cancel
-#: data/gui/window/install_dependencies.cfg:95
+#: data/gui/themes/default/window/install_dependencies.cfg:95
 msgid "No"
 msgstr "否"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:95
+#: data/gui/themes/default/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "截屏"
@@ -4524,31 +4529,31 @@ msgstr "无效废弃级别（应为1-4）"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "中毒"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "石化"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "petrified"
 msgstr "石化"
 
@@ -5655,7 +5660,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "升级选择"
 
-#: src/actions/attack.cpp:578 src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
 msgid "An invalid attacker weapon got selected."
 msgstr "选中了无效的进攻武器。"
 
@@ -6508,7 +6513,7 @@ msgstr "$elem|已废弃并已移除。"
 msgid "Chat message"
 msgstr "聊天信息"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -6546,7 +6551,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:516
+#: src/game_config.cpp:528
 msgid "Invalid color in range: "
 msgstr "范围内颜色无效："
 
@@ -6634,20 +6639,20 @@ msgstr ""
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "作为替代，在 [campaign]标签中使用同名的宏"
 
-#: src/game_config_manager.cpp:636
+#: src/game_config_manager.cpp:635
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "下列附加组件有错误，无法载入："
 msgstr[1] "下列附加组件有错误，无法载入："
 
-#: src/game_config_manager.cpp:640
+#: src/game_config_manager.cpp:639
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "请将此问题报告给此附加组件的作者或维护者。"
 msgstr[1] "请将此问题报告给这些附加组件各自的作者或维护者。"
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:953
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "错误："
 
@@ -6968,20 +6973,20 @@ msgstr "你尝试登录的次数太多了。"
 msgid "Password hashing failed."
 msgstr "密码哈希操作失败。"
 
-#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "无法载入游戏： "
 
-#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "进行游戏时发生错误："
 
-#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:945
+#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "无法载入游戏地图： "
 
-#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:910
-#: src/game_launcher.cpp:1031
+#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "地图生成器错误："
 
@@ -7006,29 +7011,29 @@ msgstr "未知场景：“$scenario|”"
 msgid "No campaigns are available."
 msgstr "没有可用战役。"
 
-#: src/game_launcher.cpp:709 src/game_launcher.cpp:728 src/replay.cpp:678
+#: src/game_launcher.cpp:708 src/game_launcher.cpp:727 src/replay.cpp:678
 msgid "The file you have tried to load is corrupt"
 msgstr "你试图载入的文件已损坏"
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:710 src/game_launcher.cpp:729
 #: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
 #: src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "你试图载入的文件已损坏：'"
 
-#: src/game_launcher.cpp:720
+#: src/game_launcher.cpp:719
 msgid "File I/O Error while reading the game"
 msgstr "读取游戏时发生文件I/O错误"
 
-#: src/game_launcher.cpp:722
+#: src/game_launcher.cpp:721
 msgid "File I/O Error while reading the game: '"
 msgstr "读取游戏时发生文件I/O错误：’"
 
-#: src/game_launcher.cpp:904
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "启动服务器时发生错误： "
 
-#: src/game_launcher.cpp:926
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "连接失败："
 
@@ -8045,36 +8050,36 @@ msgstr "无攻击手段"
 msgid "This unit has no usable weapons."
 msgstr "此单位没有可用的武器。"
 
-#: src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
 msgstr "游戏（$name|, $scenario|）已创建"
 
-#: src/mp_ui_alerts.cpp:78 src/mp_ui_alerts.cpp:93 src/mp_ui_alerts.cpp:108
-#: src/mp_ui_alerts.cpp:183 src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:47 src/mp_ui_alerts.cpp:62 src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:152 src/mp_ui_alerts.cpp:163
 msgid "Wesnoth"
 msgstr "韦诺"
 
-#: src/mp_ui_alerts.cpp:93
+#: src/mp_ui_alerts.cpp:62
 msgid "A player has joined"
 msgstr "一位玩家加入了"
 
-#: src/mp_ui_alerts.cpp:108
+#: src/mp_ui_alerts.cpp:77
 msgid "A player has left"
 msgstr "一位玩家离开了"
 
-#: src/mp_ui_alerts.cpp:183
+#: src/mp_ui_alerts.cpp:152
 msgid "Ready to start!"
 msgstr "准备开始！"
 
-#: src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:163
 msgid "Game has begun!"
 msgstr "游戏开始！"
 
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "$name has taken control"
 msgstr "$name|接管了控制权"
 
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "Turn changed"
 msgstr "回合改变了"
 
@@ -8958,23 +8963,23 @@ msgstr "时段占位符"
 msgid "This Time of Day is only a Stub!"
 msgstr "这一时段只是一个占位时段！"
 
-#: src/units/abilities.cpp:968
+#: src/units/abilities.cpp:965
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "减速： "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:972
+#: src/units/abilities.cpp:969
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:976
+#: src/units/abilities.cpp:973
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:989
+#: src/units/abilities.cpp:986
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9097,44 +9102,44 @@ msgstr "混沌"
 msgid "liminal"
 msgstr "边缘"
 
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2066
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/units/unit.cpp:2060
+#: src/units/unit.cpp:2072
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 
-#: src/units/unit.cpp:2070
+#: src/units/unit.cpp:2082
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
-#: src/units/unit.cpp:2076
+#: src/units/unit.cpp:2088
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span>视野"
 
-#: src/units/unit.cpp:2080
+#: src/units/unit.cpp:2092
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
-#: src/units/unit.cpp:2085
+#: src/units/unit.cpp:2097
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
-#: src/units/unit.cpp:2089
+#: src/units/unit.cpp:2101
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
-#: src/units/unit.cpp:2096
+#: src/units/unit.cpp:2108
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2552
+#: src/units/unit.cpp:2564
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 
@@ -9158,14 +9163,14 @@ msgstr "崩前$year|年"
 msgid "$year AF"
 msgstr "崩后$year|年"
 
-#: src/wesnoth.cpp:684
+#: src/wesnoth.cpp:727
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:685
+#: src/wesnoth.cpp:728
 msgid "Logging Failure"
 msgstr "记录日志失败"
 

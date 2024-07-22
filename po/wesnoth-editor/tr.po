@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 15:07-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2021-07-01 02:30+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -270,15 +270,15 @@ msgstr "Seviye: "
 msgid "Cost: "
 msgstr "Bedel: "
 
-#: src/editor/controller/editor_controller.cpp:183
+#: src/editor/controller/editor_controller.cpp:185
 msgid "Fatal error"
 msgstr "Ölümcül hata"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:215
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:217
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri bu haritada yaptığınız "
 "değişiklikleri kaybedeceksiniz."
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,129 +294,152 @@ msgstr ""
 "Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri yaptığınız tüm "
 "değişiklikleri kaybedeceksiniz. Değiştirdiğiniz haritalar:"
 
-#: src/editor/controller/editor_controller.cpp:234
+#: src/editor/controller/editor_controller.cpp:236
 msgid "No editor time-of-day found."
 msgstr "Bir vakit düzenleyici yok."
 
-#: src/editor/controller/editor_controller.cpp:1262
+#: src/editor/controller/editor_controller.cpp:876
+msgid "Add-on Files"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:889
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "Pano desteği yok, paketleyicinize başvurun"
+
+#: src/editor/controller/editor_controller.cpp:1307
 msgid "Change Unit ID"
 msgstr "Birim Kimliğini Değiştir"
 
-#: src/editor/controller/editor_controller.cpp:1263
+#: src/editor/controller/editor_controller.cpp:1308
 msgid "ID:"
 msgstr "Kimlik:"
 
-#: src/editor/controller/editor_controller.cpp:1279
+#: src/editor/controller/editor_controller.cpp:1324
 msgid "Rename Unit"
 msgstr "Birim Adını Değiştir"
 
-#: src/editor/controller/editor_controller.cpp:1280
+#: src/editor/controller/editor_controller.cpp:1325
 msgid "Name:"
 msgstr "Ad:"
 
-#: src/editor/map/context_manager.cpp:215
+#: src/editor/map/context_manager.cpp:216
 msgid "Load Map"
 msgstr "Harita yükle"
 
-#: src/editor/map/context_manager.cpp:311 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:314 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "Yeni Harita"
 
-#: src/editor/map/context_manager.cpp:324 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:327 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "Yeni Senaryo"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:383
 msgid "No Recent Files"
 msgstr "Dosya Yok"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:421
 msgid "Unnamed Area"
 msgstr "İsimsiz Alan"
 
-#: src/editor/map/context_manager.cpp:449
+#: src/editor/map/context_manager.cpp:452
 msgid "New Side"
 msgstr "Yeni Taraf"
 
-#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:508
 msgid "Apply Mask"
 msgstr "Maske Uygula"
 
-#: src/editor/map/context_manager.cpp:514
+#: src/editor/map/context_manager.cpp:517
 msgid "Error loading mask"
 msgstr "Örüntü yüklenirken hata"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:537
 msgid "Identifier:"
 msgstr "Tanımlayıcı:"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:537
 msgid "Rename Area"
 msgstr "Alan Adını Değiştir"
 
-#: src/editor/map/context_manager.cpp:548
+#: src/editor/map/context_manager.cpp:551
 msgid "Choose Target Map"
 msgstr "Hedef haritayı seçiniz"
 
-#: src/editor/map/context_manager.cpp:557
-#: src/editor/map/context_manager.cpp:953
+#: src/editor/map/context_manager.cpp:560
+#: src/editor/map/context_manager.cpp:982
 msgid "Error loading map"
 msgstr "Harita yüklenirken hata"
 
-#: src/editor/map/context_manager.cpp:683
+#: src/editor/map/context_manager.cpp:688
 msgid "Save Map As"
 msgstr "Haritayı Şöyle Kaydet"
 
-#: src/editor/map/context_manager.cpp:694
-#: src/editor/map/context_manager.cpp:896
+#: src/editor/map/context_manager.cpp:705
+#: src/editor/map/context_manager.cpp:754 src/editor/map/map_context.cpp:269
+#: src/editor/palette/location_palette.cpp:264
+msgid "Error"
+msgstr "Hata"
+
+#: src/editor/map/context_manager.cpp:706
+#: src/editor/map/context_manager.cpp:755
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Gerçekten çıkmak istiyor musunuz?"
+
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:923
 msgid "This map is already open."
 msgstr "Bu harita zaten açık."
 
-#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:737
 msgid "Save Scenario As"
 msgstr "Senaryoyu Şöyle Kaydet"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:763
 msgid "This scenario is already open."
 msgstr "Bu senaryo zaten açık."
 
-#: src/editor/map/context_manager.cpp:761
+#: src/editor/map/context_manager.cpp:797
 msgid "No random map generators found."
 msgstr "Bir rasgele harita üreteci yok."
 
-#: src/editor/map/context_manager.cpp:774
-#: src/editor/map/context_manager.cpp:779
+#: src/editor/map/context_manager.cpp:810
+#: src/editor/map/context_manager.cpp:815
 msgid "Map creation failed."
 msgstr "Harita oluşturulamadı."
 
-#: src/editor/map/context_manager.cpp:794
+#: src/editor/map/context_manager.cpp:830
 msgid "Unsaved Changes"
 msgstr "Kaydedilmemiş Değişiklikler"
 
-#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:831
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Son kayıttan beri haritada yaptığınız tüm değişiklikleri iptal etmek istiyor "
 "musunuz?"
 
-#: src/editor/map/context_manager.cpp:857
+#: src/editor/map/context_manager.cpp:884
 msgid "Scenario saved."
 msgstr "Senaryo kaydedildi."
 
-#: src/editor/map/context_manager.cpp:872
+#: src/editor/map/context_manager.cpp:899
 msgid "Map saved."
 msgstr "Harita kaydedildi."
 
-#: src/editor/map/context_manager.cpp:945
+#: src/editor/map/context_manager.cpp:974
 msgid "Loaded embedded map data"
 msgstr "Gömülü harita verisi yüklendi"
 
-#: src/editor/map/context_manager.cpp:946
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:975
+#: src/editor/map/context_manager.cpp:978
 msgid "Map loaded from scenario"
 msgstr "Harita senaryodan yüklendi"
 
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:978
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"
@@ -435,19 +458,19 @@ msgstr "$side_num. taraf oyuncusu"
 msgid "The size of the target map is different from the current map"
 msgstr "Hedef harita bundan farklı boyutlarda"
 
-#: src/editor/map/map_context.cpp:181
+#: src/editor/map/map_context.cpp:182
 msgid "File not found"
 msgstr "Dosya bulunamadı"
 
-#: src/editor/map/map_context.cpp:188
+#: src/editor/map/map_context.cpp:189
 msgid "Empty file"
 msgstr "Boş dosya"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:198
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:240
+#: src/editor/map/map_context.cpp:245
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -455,20 +478,15 @@ msgstr ""
 "Harita dosyası bir senaryo gibi görünüyor, fakat map_data değeri mevcut bir "
 "dosyaya ait değil."
 
-#: src/editor/map/map_context.cpp:259
+#: src/editor/map/map_context.cpp:264
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:264
-#: src/editor/palette/location_palette.cpp:264
-msgid "Error"
-msgstr "Hata"
-
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:269
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:271
+#: src/editor/map/map_context.cpp:276
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -480,20 +498,31 @@ msgstr ""
 "Harita dosyası bir senaryo gibi görünüyor, fakat map_data değeri mevcut bir "
 "dosyaya ait değil."
 
-#: src/editor/map/map_context.cpp:286
+#: src/editor/map/map_context.cpp:291
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:804 src/editor/map/map_context.cpp:843
-#: src/editor/map/map_context.cpp:884
+#: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Senaryo kaydedilemedi: $msg"
+
+#: src/editor/map/map_context.cpp:855
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "Zaman Çizelgesi Menüsü"
+
+#: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
 msgstr "Senaryo kaydedilemedi: $msg"
 
-#: src/editor/map/map_context.cpp:915
+#: src/editor/map/map_context.cpp:932
 msgid "Could not save into scenario"
 msgstr "Senaryoya kaydedilemedi"
 
-#: src/editor/map/map_context.cpp:925
+#: src/editor/map/map_context.cpp:942
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
@@ -556,17 +585,29 @@ msgstr "Cmd + tıklama: araziyi kopyalar"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + tıklama: araziyi kopyalar"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:96
 msgid "Clipboard support not found, contact your packager"
 msgstr "Pano desteği yok, paketleyicinize başvurun"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:162
+#: src/gui/dialogs/editor/custom_tod.cpp:176
 msgid "Choose File"
 msgstr "Dosya seçiniz"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
+#: src/gui/dialogs/editor/custom_tod.cpp:177
 msgid "Select"
 msgstr "Seç"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:184
+msgid ""
+"This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:188
+#: src/gui/dialogs/editor/custom_tod.cpp:195
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Confirm"
+msgstr ""
 
 #~ msgid "player^None"
 #~ msgstr "Hiçbiri"

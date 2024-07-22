@@ -52,13 +52,8 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 在 \fBstart\fP 事件最後跳過 [story] 畫面及對話框。
 .TP 
 \fB\-\-clock\fP
-增加一個顯示時鐘的選項用來當測試畫面繪製計時器。
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-已廢棄，請使用 \fB\-\-userdata\-dir\fP。
-.TP 
-\fB\-\-config\-path\fP
-已廢棄，請使用 \fB\-\-config\-path\fP。
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 以指定 ID 的核心來覆寫被讀取的核心。
@@ -125,6 +120,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 在 Windows 系統下，當使用 \-\-no\-log\-to\-file 時，會將輸出寫入 cerr/cout 而不是 CONOUT。否則，不會有任何作用。
@@ -243,17 +242,6 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 設定要與 \fB\-V,\-\-validate\fP 一同使用的 WML 格式。
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-印出使用者配置目錄的路徑並退出。
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 在 $HOME 或「我的文件\我的遊戲」(Windows)底下設定使用者資料目錄為 \fIname\fP 。你也可以為使用者資料目錄設定一個在 $HOME

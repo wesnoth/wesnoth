@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-06-17 10:25-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2024-06-23 21:09+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -237,7 +237,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "poisoned"
 msgstr "otrávený"
 
@@ -637,17 +637,17 @@ msgid "Ukrainian Translation"
 msgstr "Ukrajinský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1902
+#: data/core/about_i18n.cfg:1908
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1915
+#: data/core/about_i18n.cfg:1921
 msgid "Vietnamese Translation"
 msgstr "Vietnamský překlad"
 
 #. [about]
-#: data/core/about_i18n.cfg:1934
+#: data/core/about_i18n.cfg:1940
 msgid "Welsh Translation"
 msgstr "Velšský překlad"
 
@@ -655,7 +655,7 @@ msgstr "Velšský překlad"
 # Každopádně RACV představuje zkratku instituce, proto tato forma.
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1943
+#: data/core/about_i18n.cfg:1949
 msgid "RACV’s Translation"
 msgstr "Překlad RACV"
 
@@ -3603,7 +3603,7 @@ msgstr "Získáváš $amount_gold zlatých."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:258
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:265
 msgid "Red"
 msgstr "Červená"
 
@@ -3619,7 +3619,7 @@ msgstr "Tmavě červená"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:264
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:271
 msgid "Blue"
 msgstr "Modrá"
 
@@ -3630,7 +3630,7 @@ msgstr "Světle modrá"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:270
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:277
 msgid "Green"
 msgstr "Zelená"
 
@@ -3641,25 +3641,25 @@ msgstr "Světle zelená"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:276
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:283
 msgid "Purple"
 msgstr "Fialová"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:288
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:295
 msgid "Black"
 msgstr "Černá"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:300
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:307
 msgid "Brown"
 msgstr "Hnědá"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:282
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:289
 msgid "Orange"
 msgstr "Oranžová"
 
@@ -3670,13 +3670,13 @@ msgstr "Světle oranžová"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:294
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:301
 msgid "White"
 msgstr "Bílá"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:306
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:313
 msgid "Teal"
 msgstr "Azurová"
 
@@ -3803,6 +3803,11 @@ msgstr "Mlha"
 #: src/game_initialization/lobby_data.cpp:389
 msgid "Shroud"
 msgstr "Zahalení tmou"
+
+#. [color_range]: id=urbanjungle
+#: data/core/team-colors.cfg:256
+msgid "Urban"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4176,23 +4181,23 @@ msgid "Alternate Wesnoth Server"
 msgstr "Alternativní server Wesnothu"
 
 #. [label]: id=title
-#: data/gui/window/install_dependencies.cfg:37
+#: data/gui/themes/default/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "Instalovat závislosti"
 
 #. [button]: id=ok
-#: data/gui/window/install_dependencies.cfg:84
+#: data/gui/themes/default/window/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "Ano"
 
 #. [button]: id=cancel
-#: data/gui/window/install_dependencies.cfg:95
+#: data/gui/themes/default/window/install_dependencies.cfg:95
 msgid "No"
 msgstr "Ne"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:95
+#: data/gui/themes/default/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "Screenshot"
@@ -4235,31 +4240,31 @@ msgstr "Neplatná úroveň zastarání (měla by být 1-4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "zpomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "zpomalený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "zkamenělá"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "petrified"
 msgstr "zkamenělý"
 
@@ -5429,7 +5434,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "výběr povýšení"
 
-#: src/actions/attack.cpp:578 src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
 msgid "An invalid attacker weapon got selected."
 msgstr "Byla vybrána neplatná zbraň útočníka."
 
@@ -6339,7 +6344,7 @@ msgstr "$elem byl označen za zastaralý a odstraněn."
 msgid "Chat message"
 msgstr "Zpráva chatu"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
@@ -6377,7 +6382,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
-#: src/game_config.cpp:516
+#: src/game_config.cpp:528
 msgid "Invalid color in range: "
 msgstr "Neplatná barva v rozsahu: "
 
@@ -6471,14 +6476,14 @@ msgstr ""
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "místo toho použij ve značce [campaign] makro se stejným jménem"
 
-#: src/game_config_manager.cpp:636
+#: src/game_config_manager.cpp:635
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Následující rozšíření obsahovalo chyby a nemohlo být nahráno:"
 msgstr[1] "Následující rozšíření obsahovala chyby a nemohla být nahrána:"
 msgstr[2] "Následující rozšíření obsahovala chyby a nemohla být nahrána:"
 
-#: src/game_config_manager.cpp:640
+#: src/game_config_manager.cpp:639
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6489,7 +6494,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Prosíme ohlaste tyto problémy autorům nebo správcům těchto rozšíření."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:953
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Chyba: "
 
@@ -6818,20 +6823,20 @@ msgstr "Bylo provedeno příliš mnoho pokusů o přihášení."
 msgid "Password hashing failed."
 msgstr "Hašování hesla se nepodařilo."
 
-#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "Hru se nepodařilo nahrát: "
 
-#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "Během hraní hry se vyskytla chyba: "
 
-#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:945
+#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "Nepodařilo se nahrát herní mapu: "
 
-#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:910
-#: src/game_launcher.cpp:1031
+#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "Chyba v generátoru map: "
 
@@ -6856,29 +6861,29 @@ msgstr "Neznámý scénář: „$scenario|“"
 msgid "No campaigns are available."
 msgstr "K dispozici nejsou žádná tažení."
 
-#: src/game_launcher.cpp:709 src/game_launcher.cpp:728 src/replay.cpp:678
+#: src/game_launcher.cpp:708 src/game_launcher.cpp:727 src/replay.cpp:678
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený"
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:710 src/game_launcher.cpp:729
 #: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
 #: src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Soubor, který ses snažil načíst, je poškozený: '"
 
-#: src/game_launcher.cpp:720
+#: src/game_launcher.cpp:719
 msgid "File I/O Error while reading the game"
 msgstr "Vstupně výstupní chyba souboru při načítání hry"
 
-#: src/game_launcher.cpp:722
+#: src/game_launcher.cpp:721
 msgid "File I/O Error while reading the game: '"
 msgstr "Vstupně výstupní chyba souboru při načítání hry: '"
 
-#: src/game_launcher.cpp:904
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "Při spouštění serveru se vyskytla chyba: "
 
-#: src/game_launcher.cpp:926
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "Připojení selhalo: "
 
@@ -7940,37 +7945,37 @@ msgstr "Žádné útoky"
 msgid "This unit has no usable weapons."
 msgstr "Tato jednotka nemá žádné použitelné zbraně."
 
-#: src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
 msgstr "Byla vytvořena hra ($name|, $scenario|)"
 
-#: src/mp_ui_alerts.cpp:78 src/mp_ui_alerts.cpp:93 src/mp_ui_alerts.cpp:108
-#: src/mp_ui_alerts.cpp:183 src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:47 src/mp_ui_alerts.cpp:62 src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:152 src/mp_ui_alerts.cpp:163
 msgid "Wesnoth"
 msgstr "Wesnoth"
 
-#: src/mp_ui_alerts.cpp:93
+#: src/mp_ui_alerts.cpp:62
 msgid "A player has joined"
 msgstr "Připojil se hráč"
 
-#: src/mp_ui_alerts.cpp:108
+#: src/mp_ui_alerts.cpp:77
 msgid "A player has left"
 msgstr "Hráč opustil hru"
 
-#: src/mp_ui_alerts.cpp:183
+#: src/mp_ui_alerts.cpp:152
 msgid "Ready to start!"
 msgstr "Připraveni začít!"
 
-#: src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:163
 msgid "Game has begun!"
 msgstr "Hra začala!"
 
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "$name has taken control"
 msgstr "$name převzal/a kontrolu"
 
 # když se změní vlastník strany nebo tak něco
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "Turn changed"
 msgstr "Změna tahu"
 
@@ -8894,21 +8899,21 @@ msgstr "Útržek denní doby"
 msgid "This Time of Day is only a Stub!"
 msgstr "Tato denní doba je pouze útržek!"
 
-#: src/units/abilities.cpp:968
+#: src/units/abilities.cpp:965
 msgid "Owned: "
 msgstr "Vlastní: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:972
+#: src/units/abilities.cpp:969
 msgid "Taught: "
 msgstr "Naučeno: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:976
+#: src/units/abilities.cpp:973
 msgid "Taught: (by an enemy): "
 msgstr "Naučeno (nepřítelem): "
 
-#: src/units/abilities.cpp:989
+#: src/units/abilities.cpp:986
 msgid "Used by opponent: "
 msgstr "Užito protivníkem: "
 
@@ -9040,35 +9045,35 @@ msgstr "chaotický"
 msgid "liminal"
 msgstr "šerý"
 
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2066
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2060
+#: src/units/unit.cpp:2072
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> bodů života"
 
-#: src/units/unit.cpp:2070
+#: src/units/unit.cpp:2082
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> krok"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> kroky"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> kroků"
 
-#: src/units/unit.cpp:2076
+#: src/units/unit.cpp:2088
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> rozhled"
 
-#: src/units/unit.cpp:2080
+#: src/units/unit.cpp:2092
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> rušení"
 
-#: src/units/unit.cpp:2085
+#: src/units/unit.cpp:2097
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> bodů zkušenosti k postupu"
 
-#: src/units/unit.cpp:2089
+#: src/units/unit.cpp:2101
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9076,11 +9081,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
 
-#: src/units/unit.cpp:2096
+#: src/units/unit.cpp:2108
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cena za povolání"
 
-#: src/units/unit.cpp:2552
+#: src/units/unit.cpp:2564
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 
@@ -9104,7 +9109,7 @@ msgstr "$year př. P."
 msgid "$year AF"
 msgstr "$year po P."
 
-#: src/wesnoth.cpp:684
+#: src/wesnoth.cpp:727
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9114,7 +9119,7 @@ msgstr ""
 "chybným oprávněním na složce, antivirovým programem, který omezuje ke složce "
 "přístup, nebo použitím OneDrive pro správu tvé složky Dokumenty."
 
-#: src/wesnoth.cpp:685
+#: src/wesnoth.cpp:728
 msgid "Logging Failure"
 msgstr "Selhání zaznamenávání"
 

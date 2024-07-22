@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-06-17 10:25-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2024-06-07 00:37+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -204,10 +204,10 @@ msgid ""
 "will still be shown in the log, even if this is disabled. In addition, the "
 "deprecation log-domain controls how many messages are printed."
 msgstr ""
-"Zeige Warnungen über veraltete API im Spiel-Chat. Diese Nachrichten "
-"werden immer ins Log geschrieben, auch wenn diese Option deaktiviert ist. "
-"Zusätzlich regelt die veraltete Log-Domäne, wie viele Nachrichten "
-"angezeigt werden."
+"Zeige Warnungen über veraltete API im Spiel-Chat. Diese Nachrichten werden "
+"immer ins Log geschrieben, auch wenn diese Option deaktiviert ist. "
+"Zusätzlich regelt die veraltete Log-Domäne, wie viele Nachrichten angezeigt "
+"werden."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
@@ -244,7 +244,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "poisoned"
 msgstr "vergiftet"
 
@@ -642,23 +642,23 @@ msgid "Ukrainian Translation"
 msgstr "Ukrainische Übersetzung"
 
 #. [about]
-#: data/core/about_i18n.cfg:1902
+#: data/core/about_i18n.cfg:1908
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencianische (südliches Katalonien) Übersetzung"
 
 #. [about]
-#: data/core/about_i18n.cfg:1915
+#: data/core/about_i18n.cfg:1921
 msgid "Vietnamese Translation"
 msgstr "Vietnamesische Übersetzung"
 
 #. [about]
-#: data/core/about_i18n.cfg:1934
+#: data/core/about_i18n.cfg:1940
 msgid "Welsh Translation"
 msgstr "Walisische Übersetzung"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1943
+#: data/core/about_i18n.cfg:1949
 msgid "RACV’s Translation"
 msgstr "Valenzianische (nach der RACV) Übersetzung"
 
@@ -3639,7 +3639,7 @@ msgstr "Ihr erhaltet $amount_gold Goldstücke."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:258
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:265
 msgid "Red"
 msgstr "Rot"
 
@@ -3655,7 +3655,7 @@ msgstr "Dunkelrot"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:264
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:271
 msgid "Blue"
 msgstr "Blau"
 
@@ -3666,7 +3666,7 @@ msgstr "Hellblau"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:270
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:277
 msgid "Green"
 msgstr "Grün"
 
@@ -3677,25 +3677,25 @@ msgstr "Hellgrün"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:276
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:283
 msgid "Purple"
 msgstr "Purpur"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:288
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:295
 msgid "Black"
 msgstr "Schwarz"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:300
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:307
 msgid "Brown"
 msgstr "Braun"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:282
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:289
 msgid "Orange"
 msgstr "Orange"
 
@@ -3706,13 +3706,13 @@ msgstr "Hellorange"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:294
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:301
 msgid "White"
 msgstr "Weiß"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:306
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:313
 msgid "Teal"
 msgstr "Türkis"
 
@@ -3839,6 +3839,11 @@ msgstr "Nebel"
 #: src/game_initialization/lobby_data.cpp:389
 msgid "Shroud"
 msgstr "Schleier der Finsternis"
+
+#. [color_range]: id=urbanjungle
+#: data/core/team-colors.cfg:256
+msgid "Urban"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4212,23 +4217,23 @@ msgid "Alternate Wesnoth Server"
 msgstr "Alternativer Wesnoth-Server"
 
 #. [label]: id=title
-#: data/gui/window/install_dependencies.cfg:37
+#: data/gui/themes/default/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "Abhängigkeiten installieren"
 
 #. [button]: id=ok
-#: data/gui/window/install_dependencies.cfg:84
+#: data/gui/themes/default/window/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "Ja"
 
 #. [button]: id=cancel
-#: data/gui/window/install_dependencies.cfg:95
+#: data/gui/themes/default/window/install_dependencies.cfg:95
 msgid "No"
 msgstr "Nein"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:95
+#: data/gui/themes/default/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
@@ -4271,31 +4276,31 @@ msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "vergiftet"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "verlangsamt"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "verlangsamt"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "versteinert"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "petrified"
 msgstr "versteinert"
 
@@ -5249,13 +5254,13 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"Nachdem eine Einheit ihre höchste Stufe erreicht hat, wird sie "
-"beim Erreichen der max. Erfahrungspunkte (EP) mit einem anderen Bonus "
-"(sog. AMLA) begünstigt. Gewöhnlich wird sie voll geheilt und die Zahl "
-"der Lebenspunkte (LP) jeweils um 3 weitere erhöht – was im Vergleich zur "
-"normalen Beförderung kein großer Zugewinn mehr ist. Da es zudem stetig "
-"schwieriger wird, weitere Auszeichnungen zu erhalten, ist es sinnvoller, "
-"schwächere Einheiten voran zu bringen."
+"Nachdem eine Einheit ihre höchste Stufe erreicht hat, wird sie beim "
+"Erreichen der max. Erfahrungspunkte (EP) mit einem anderen Bonus (sog. AMLA) "
+"begünstigt. Gewöhnlich wird sie voll geheilt und die Zahl der Lebenspunkte "
+"(LP) jeweils um 3 weitere erhöht – was im Vergleich zur normalen Beförderung "
+"kein großer Zugewinn mehr ist. Da es zudem stetig schwieriger wird, weitere "
+"Auszeichnungen zu erhalten, ist es sinnvoller, schwächere Einheiten voran zu "
+"bringen."
 
 #. [tip]
 #: data/tips.cfg:192
@@ -5548,7 +5553,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "eine Aufstiegsentscheidung"
 
-#: src/actions/attack.cpp:578 src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
 msgid "An invalid attacker weapon got selected."
 msgstr "Für den Angreifer wurde eine ungültige Waffe ausgewählt."
 
@@ -6477,7 +6482,7 @@ msgstr "$elem ist veraltet und wurde entfernt."
 msgid "Chat message"
 msgstr "Chat-Nachricht"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6517,7 +6522,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
-#: src/game_config.cpp:516
+#: src/game_config.cpp:528
 msgid "Invalid color in range: "
 msgstr "Ungültiger Farbbereich: "
 
@@ -6610,7 +6615,7 @@ msgstr ""
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "Benutze stattdessen das Makro mit dem selben Namen im [campaign]-tag"
 
-#: src/game_config_manager.cpp:636
+#: src/game_config_manager.cpp:635
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -6619,7 +6624,7 @@ msgstr[1] ""
 "Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
 "werden:"
 
-#: src/game_config_manager.cpp:640
+#: src/game_config_manager.cpp:639
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6628,7 +6633,7 @@ msgstr[1] ""
 "Bitte meldet dies an die zuständigen Autoren bzw. Betreuer dieser "
 "Erweiterungen."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:953
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Fehler: "
 
@@ -6973,20 +6978,20 @@ msgid "Password hashing failed."
 msgstr "Password-Hashing fehlgeschlagen."
 
 # Wenn diese Übersetzung korrekt ist, dann ist das Original falsch oder missverständlich.
-#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden: "
 
-#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "Fehler beim Spielen: "
 
-#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:945
+#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "Die Karte konnte nicht geladen werden: "
 
-#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:910
-#: src/game_launcher.cpp:1031
+#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "Kartengenerator Fehler: "
 
@@ -7011,29 +7016,29 @@ msgstr "Unbekanntes Szenario: »$scenario|«"
 msgid "No campaigns are available."
 msgstr "Keine Kampagnen vorhanden."
 
-#: src/game_launcher.cpp:709 src/game_launcher.cpp:728 src/replay.cpp:678
+#: src/game_launcher.cpp:708 src/game_launcher.cpp:727 src/replay.cpp:678
 msgid "The file you have tried to load is corrupt"
 msgstr "Die Datei, die Ihr zu laden versucht, ist beschädigt"
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:710 src/game_launcher.cpp:729
 #: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
 #: src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die Datei, die Ihr zu laden versucht, ist beschädigt: '"
 
-#: src/game_launcher.cpp:720
+#: src/game_launcher.cpp:719
 msgid "File I/O Error while reading the game"
 msgstr "E/A-Dateifehler beim Einlesen des Spieles"
 
-#: src/game_launcher.cpp:722
+#: src/game_launcher.cpp:721
 msgid "File I/O Error while reading the game: '"
 msgstr "E/A-Dateifehler beim Einlesen des Spieles: '"
 
-#: src/game_launcher.cpp:904
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "Fehler beim Starten des Servers: "
 
-#: src/game_launcher.cpp:926
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "Verbindung fehlgeschlagen: "
 
@@ -8076,8 +8081,8 @@ msgstr "Variable nicht gefunden"
 #: src/menu_events.cpp:1981
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
-"Debug-Kommando »unit: $unit« ignoriert: Es ist keine Einheit ausgewählt oder unter "
-"dem Mauszeiger."
+"Debug-Kommando »unit: $unit« ignoriert: Es ist keine Einheit ausgewählt oder "
+"unter dem Mauszeiger."
 
 #: src/menu_events.cpp:1999
 msgid ""
@@ -8122,41 +8127,41 @@ msgstr "Keine Angriffe"
 msgid "This unit has no usable weapons."
 msgstr "Keine verwendbare Waffe."
 
-#: src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
 msgstr "Ein neues Spiel wurde eröffnet: $name|, $scenario|"
 
-#: src/mp_ui_alerts.cpp:78 src/mp_ui_alerts.cpp:93 src/mp_ui_alerts.cpp:108
-#: src/mp_ui_alerts.cpp:183 src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:47 src/mp_ui_alerts.cpp:62 src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:152 src/mp_ui_alerts.cpp:163
 msgid "Wesnoth"
 msgstr "Wesnoth"
 
-#: src/mp_ui_alerts.cpp:93
+#: src/mp_ui_alerts.cpp:62
 msgid "A player has joined"
 msgstr "Ein Spieler ist der Sitzung beigetreten"
 
-#: src/mp_ui_alerts.cpp:108
+#: src/mp_ui_alerts.cpp:77
 msgid "A player has left"
 msgstr "Ein Spieler hat die Sitzung verlassen"
 
 # Wird als
 # Desktopbenachrichtigung
 # angezeigt, wenn man ein Spiel hostet und die Spiellobby voll ist
-#: src/mp_ui_alerts.cpp:183
+#: src/mp_ui_alerts.cpp:152
 msgid "Ready to start!"
 msgstr "Startbereit!"
 
 # Wird als
 # Desktopbenachrichtigung
 # angezeigt
-#: src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:163
 msgid "Game has begun!"
 msgstr "Das Spiel hat begonnen!"
 
 # Desktopbenachrichtigung.
 # Unter Linux wird nur dieser Text angezeigt, unter Windows wir oben drüber der Text von "Turn changed" angezeigt"
 # Es sollte in beiden Fällen passend aussehen.
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "$name has taken control"
 msgstr "$name ist am Zug"
 
@@ -8164,7 +8169,7 @@ msgstr "$name ist am Zug"
 # wird unter Windows über
 # "$name has taken control"
 # angezeigt und sollte damit zusammenpassen.
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "Turn changed"
 msgstr "Nächster Spieler"
 
@@ -9134,21 +9139,21 @@ msgstr "Modell Tageszeit"
 msgid "This Time of Day is only a Stub!"
 msgstr "Diese Tageszeit ist nur ein Platzhalter!"
 
-#: src/units/abilities.cpp:968
+#: src/units/abilities.cpp:965
 msgid "Owned: "
 msgstr "Im Besitz: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:972
+#: src/units/abilities.cpp:969
 msgid "Taught: "
 msgstr "Erlernt: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:976
+#: src/units/abilities.cpp:973
 msgid "Taught: (by an enemy): "
 msgstr "Erlernt: (von einem Feind): "
 
-#: src/units/abilities.cpp:989
+#: src/units/abilities.cpp:986
 msgid "Used by opponent: "
 msgstr "Vom Gegner verwendet: "
 
@@ -9271,45 +9276,45 @@ msgstr "lichtscheu"
 msgid "liminal"
 msgstr "zwielichtig"
 
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2066
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2060
+#: src/units/unit.cpp:2072
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> LP"
 
-#: src/units/unit.cpp:2070
+#: src/units/unit.cpp:2082
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkte"
 
-#: src/units/unit.cpp:2076
+#: src/units/unit.cpp:2088
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> Sichtweite"
 
-#: src/units/unit.cpp:2080
+#: src/units/unit.cpp:2092
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> Störung"
 
-#: src/units/unit.cpp:2085
+#: src/units/unit.cpp:2097
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> EP zur nächsten Stufe"
 
-#: src/units/unit.cpp:2089
+#: src/units/unit.cpp:2101
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Angriff pro Runde"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Angriffe pro Runde"
 
-#: src/units/unit.cpp:2096
+#: src/units/unit.cpp:2108
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> Kosten zur Einberufung"
 
-#: src/units/unit.cpp:2552
+#: src/units/unit.cpp:2564
 msgid "$effect_description per level"
 msgstr "$effect_description pro Stufe"
 
@@ -9335,7 +9340,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year NF"
 
-#: src/wesnoth.cpp:684
+#: src/wesnoth.cpp:727
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9346,7 +9351,7 @@ msgstr ""
 "Zugriff einschränkt, oder daran, dass OneDrive den Eigene Dokumente-Ordner "
 "verwaltet."
 
-#: src/wesnoth.cpp:685
+#: src/wesnoth.cpp:728
 msgid "Logging Failure"
 msgstr "Logging-Fehler"
 

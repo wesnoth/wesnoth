@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-06-17 10:25-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2022-07-08 22:49+0200\n"
 "Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -234,7 +234,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "poisoned"
 msgstr "förgiftad"
 
@@ -634,17 +634,17 @@ msgid "Ukrainian Translation"
 msgstr "Ukrainsk översättning"
 
 #. [about]
-#: data/core/about_i18n.cfg:1902
+#: data/core/about_i18n.cfg:1908
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencisk (sydkatalansk) översättning"
 
 #. [about]
-#: data/core/about_i18n.cfg:1915
+#: data/core/about_i18n.cfg:1921
 msgid "Vietnamese Translation"
 msgstr "Vietnamesisk översättning"
 
 #. [about]
-#: data/core/about_i18n.cfg:1934
+#: data/core/about_i18n.cfg:1940
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -652,7 +652,7 @@ msgstr "Polsk översättning"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1943
+#: data/core/about_i18n.cfg:1949
 msgid "RACV’s Translation"
 msgstr "RACVs översättning"
 
@@ -3598,7 +3598,7 @@ msgstr "Du får $amount_gold guldstycken."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:258
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:265
 msgid "Red"
 msgstr "Röd"
 
@@ -3614,7 +3614,7 @@ msgstr "Mörkröd"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:264
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:271
 msgid "Blue"
 msgstr "Blå"
 
@@ -3625,7 +3625,7 @@ msgstr "Ljusblå"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:270
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:277
 msgid "Green"
 msgstr "Grön"
 
@@ -3636,25 +3636,25 @@ msgstr "Klargrön"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:276
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:283
 msgid "Purple"
 msgstr "Lila"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:288
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:295
 msgid "Black"
 msgstr "Svart"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:300
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:307
 msgid "Brown"
 msgstr "Brun"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:282
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:289
 msgid "Orange"
 msgstr "Orange"
 
@@ -3665,13 +3665,13 @@ msgstr "Klarorange"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:294
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:301
 msgid "White"
 msgstr "Vit"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:306
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:313
 msgid "Teal"
 msgstr "Turkos"
 
@@ -3800,6 +3800,11 @@ msgstr "Dimma"
 #: src/game_initialization/lobby_data.cpp:389
 msgid "Shroud"
 msgstr "Slöja"
+
+#. [color_range]: id=urbanjungle
+#: data/core/team-colors.cfg:256
+msgid "Urban"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4157,23 +4162,23 @@ msgid "Alternate Wesnoth Server"
 msgstr "Alternativ Wesnoth-server"
 
 #. [label]: id=title
-#: data/gui/window/install_dependencies.cfg:37
+#: data/gui/themes/default/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "Installera behövda moduler"
 
 #. [button]: id=ok
-#: data/gui/window/install_dependencies.cfg:84
+#: data/gui/themes/default/window/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "Ja"
 
 #. [button]: id=cancel
-#: data/gui/window/install_dependencies.cfg:95
+#: data/gui/themes/default/window/install_dependencies.cfg:95
 msgid "No"
 msgstr "Nej"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:95
+#: data/gui/themes/default/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "Skärmdump"
@@ -4216,31 +4221,31 @@ msgstr "Ogiltig nivå av utfasning (ska vara 1-4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1050
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "female^poisoned"
 msgstr "förgiftad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "female^slowed"
 msgstr "nersaktad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "nersaktad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "female^petrified"
 msgstr "förstenad"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1063
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 msgid "petrified"
 msgstr "förstenad"
 
@@ -5426,7 +5431,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "befodringsval"
 
-#: src/actions/attack.cpp:578 src/actions/attack.cpp:1369
+#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
 msgid "An invalid attacker weapon got selected."
 msgstr "Ogiltigt attackvapen valt."
 
@@ -6326,7 +6331,7 @@ msgstr "$elem har fasats ut och tagits bort."
 msgid "Chat message"
 msgstr "Chattmeddelande"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:568
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -6366,7 +6371,7 @@ msgstr "%e %b"
 msgid "%b %d %Y"
 msgstr "%F"
 
-#: src/game_config.cpp:516
+#: src/game_config.cpp:528
 msgid "Invalid color in range: "
 msgstr "Ogiltig färg i skalan: "
 
@@ -6461,13 +6466,13 @@ msgstr ""
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "använd istället makrot med samma namn i [campaign]-taggen"
 
-#: src/game_config_manager.cpp:636
+#: src/game_config_manager.cpp:635
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 msgstr[1] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 
-#: src/game_config_manager.cpp:640
+#: src/game_config_manager.cpp:639
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6476,7 +6481,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Rapportera detta till författaren eller ansvarig för detta extramaterial."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:953
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Fel: "
 
@@ -6806,20 +6811,20 @@ msgstr "Du har försökt logga in för många gånger."
 msgid "Password hashing failed."
 msgstr "Hashning av lösenord misslyckades."
 
-#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:906
+#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:945
+#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
-#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:910
-#: src/game_launcher.cpp:1031
+#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "Kartgeneratorsfel: "
 
@@ -6844,29 +6849,29 @@ msgstr "Okänt scenario: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Inga kampanjer är tillgängliga."
 
-#: src/game_launcher.cpp:709 src/game_launcher.cpp:728 src/replay.cpp:678
+#: src/game_launcher.cpp:708 src/game_launcher.cpp:727 src/replay.cpp:678
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
+#: src/game_launcher.cpp:710 src/game_launcher.cpp:729
 #: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
 #: src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du försöker öppna är felaktig: '"
 
-#: src/game_launcher.cpp:720
+#: src/game_launcher.cpp:719
 msgid "File I/O Error while reading the game"
 msgstr "I/O-fel vid läsning från fil"
 
-#: src/game_launcher.cpp:722
+#: src/game_launcher.cpp:721
 msgid "File I/O Error while reading the game: '"
 msgstr "I/O-fel vid läsning från fil: '"
 
-#: src/game_launcher.cpp:904
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "Fel under serverstart: "
 
-#: src/game_launcher.cpp:926
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "Anslutningen misslyckades: "
 
@@ -7947,36 +7952,36 @@ msgstr "Anfallare"
 msgid "This unit has no usable weapons."
 msgstr "Denna trupp har inget användbart vapen."
 
-#: src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
 msgstr "Ett spel ($name|, $scenario|) har skapats"
 
-#: src/mp_ui_alerts.cpp:78 src/mp_ui_alerts.cpp:93 src/mp_ui_alerts.cpp:108
-#: src/mp_ui_alerts.cpp:183 src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:47 src/mp_ui_alerts.cpp:62 src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:152 src/mp_ui_alerts.cpp:163
 msgid "Wesnoth"
 msgstr "Wesnoth"
 
-#: src/mp_ui_alerts.cpp:93
+#: src/mp_ui_alerts.cpp:62
 msgid "A player has joined"
 msgstr "En spelare har anslutit sig"
 
-#: src/mp_ui_alerts.cpp:108
+#: src/mp_ui_alerts.cpp:77
 msgid "A player has left"
 msgstr "En spelare har lämnat spelet"
 
-#: src/mp_ui_alerts.cpp:183
+#: src/mp_ui_alerts.cpp:152
 msgid "Ready to start!"
 msgstr "Klar att börja!"
 
-#: src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:163
 msgid "Game has begun!"
 msgstr "Spelet har börjat!"
 
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "$name has taken control"
 msgstr "$name har tagit över kontrollen"
 
-#: src/mp_ui_alerts.cpp:203
+#: src/mp_ui_alerts.cpp:172
 msgid "Turn changed"
 msgstr "Bytt drag"
 
@@ -8929,23 +8934,23 @@ msgstr "Utkast till Tid på dygnet"
 msgid "This Time of Day is only a Stub!"
 msgstr "Denna tid på dygnet är endast ett utkast!"
 
-#: src/units/abilities.cpp:968
+#: src/units/abilities.cpp:965
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "långsam: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:972
+#: src/units/abilities.cpp:969
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:976
+#: src/units/abilities.cpp:973
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:989
+#: src/units/abilities.cpp:986
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9075,46 +9080,46 @@ msgstr "ljusskygg"
 msgid "liminal"
 msgstr "perifer"
 
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2066
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2060
+#: src/units/unit.cpp:2072
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:2070
+#: src/units/unit.cpp:2082
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> förflyttning"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> förflyttningar"
 
-#: src/units/unit.cpp:2076
+#: src/units/unit.cpp:2088
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> syn"
 
-#: src/units/unit.cpp:2080
+#: src/units/unit.cpp:2092
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> störning"
 
-#: src/units/unit.cpp:2085
+#: src/units/unit.cpp:2097
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> XP krävd för befodring"
 
-#: src/units/unit.cpp:2089
+#: src/units/unit.cpp:2101
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attack per drag"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacks per drag"
 
-#: src/units/unit.cpp:2096
+#: src/units/unit.cpp:2108
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> kostnad för att återkalla"
 
-#: src/units/unit.cpp:2552
+#: src/units/unit.cpp:2564
 msgid "$effect_description per level"
 msgstr "$effect_description per nivå"
 
@@ -9138,14 +9143,14 @@ msgstr "$year fS"
 msgid "$year AF"
 msgstr "$year eS"
 
-#: src/wesnoth.cpp:684
+#: src/wesnoth.cpp:727
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:685
+#: src/wesnoth.cpp:728
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
