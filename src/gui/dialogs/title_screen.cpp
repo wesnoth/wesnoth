@@ -206,13 +206,12 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			//
 			// Use pango markup to insert drop cap
-			//
 			// Example: Lawful units -> <span ...>L</span>awful units
 			// If tip starts with a tag, we need to insert the <span> after it
 			// then insert the </span> tag after the first character of the text
-			// after markup.
+			// after markup. Assumes that the tags themselves don't
+			// contain non-ASCII characters.
 			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
 			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
 			std::string tip_text = tip.text().str();
