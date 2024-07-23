@@ -341,7 +341,7 @@ namespace lua_check_impl
 	lua_check(lua_State *L, int n)
 	{
 		std::string str = lua_check_impl::lua_check<std::string>(L, n);
-		std::optional<typename T::type> val = T::get_enum(str);
+		utils::optional<typename T::type> val = T::get_enum(str);
 		if(!val) {
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum.").c_str());
 		}

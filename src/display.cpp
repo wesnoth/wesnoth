@@ -2640,7 +2640,7 @@ void display::draw_invalidated()
 	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes with clip " << clip_rect;
 
 	// The unit drawer can't function without teams
-	std::optional<unit_drawer> drawer{};
+	utils::optional<unit_drawer> drawer{};
 	if(!dc_->teams().empty()) {
 		drawer.emplace(*this);
 	}
@@ -2903,7 +2903,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	// Now we will need the config. Generate one if needed.
 
-	utils::optional_reference<events::mouse_handler> mhb = std::nullopt;
+	utils::optional_reference<events::mouse_handler> mhb = utils::nullopt;
 
 	if (resources::controller) {
 		mhb = resources::controller->get_mouse_handler_base();

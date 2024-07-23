@@ -52,7 +52,7 @@
 #endif
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
 #include <ctime>
@@ -162,7 +162,7 @@ void check_log_dir_writable();
  *
  * @return true if the log directory is writable, false otherwise.
  */
-std::optional<bool> log_dir_writable();
+utils::optional<bool> log_dir_writable();
 
 /**
  * Use the defined prefix and suffix to determine if a filename is a log file.

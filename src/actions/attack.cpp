@@ -50,7 +50,7 @@
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

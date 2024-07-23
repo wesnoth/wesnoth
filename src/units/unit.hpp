@@ -25,7 +25,7 @@
 #include "utils/variant.hpp"
 
 #include <bitset>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 class team;
 class unit_animation_component;

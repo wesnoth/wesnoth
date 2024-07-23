@@ -74,7 +74,7 @@ bool utils::config_filters::unsigned_matches_if_present(const config& filter, co
 	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges_unsigned(filter[attribute].str()));
 }
 
-bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<int> def)
+bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<int> def)
 {
 	if(!filter.has_attribute(attribute)) {
 		return true;
@@ -92,7 +92,7 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 }
 
 bool utils::config_filters::int_matches_if_present_or_negative(
-	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, std::optional<int> def)
+	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, utils::optional<int> def)
 {
 	if(int_matches_if_present(filter, cfg, attribute, def)) {
 		return true;
@@ -115,7 +115,7 @@ bool utils::config_filters::int_matches_if_present_or_negative(
 	return false;
 }
 
-bool utils::config_filters::double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<double> def)
+bool utils::config_filters::double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<double> def)
 {
 	if(!filter.has_attribute(attribute)) {
 		return true;

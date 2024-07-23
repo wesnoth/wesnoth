@@ -23,7 +23,7 @@
 #include "units/id.hpp"
 #include "utils/optional_fwd.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <set>
 #include <vector>
 

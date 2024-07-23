@@ -62,7 +62,7 @@ public:
 	{
 	}
 
-	optional_config_impl(std::nullopt_t)
+	optional_config_impl(utils::nullopt_t)
 		: opt_()
 	{
 	}
@@ -73,7 +73,7 @@ public:
 			return *opt_;
 		} else {
 			// We're going to drop this codepath once we can use optional::value anyway, but just
-			// noting we want this function to ultimately throw std::bad_optional_access.
+			// noting we want this function to ultimately throw utils::bad_optional_access.
 			throw std::runtime_error("Optional reference has no value");
 		}
 	}

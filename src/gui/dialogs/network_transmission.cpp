@@ -87,7 +87,7 @@ void network_transmission::pre_show(window& window)
 
 void network_transmission::post_show(window& /*window*/)
 {
-	pump_monitor_.window_ = std::nullopt;
+	pump_monitor_.window_ = utils::nullopt;
 
 	if(get_retval() == retval::CANCEL) {
 		connection_->cancel();

@@ -67,7 +67,7 @@
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM

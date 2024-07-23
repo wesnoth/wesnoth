@@ -28,11 +28,15 @@ namespace utils
 using std::optional;
 using std::make_optional;
 using std::nullopt;
+using std::nullopt_t;
+using std::bad_optional_access;
 
 #else
 
 using boost::optional;
 using boost::make_optional;
+using boost::bad_optional_access;
+using nullopt_t = boost::none_t;
 
 // Create a new nullopt object equivalent to boost::none to match the STL interface
 static const boost::none_t nullopt{boost::none_t::init_tag{}};

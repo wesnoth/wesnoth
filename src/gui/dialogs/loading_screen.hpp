@@ -22,7 +22,7 @@
 #include <atomic>
 #include <future>
 #include <map>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <vector>
 
 namespace cursor
@@ -137,7 +137,7 @@ private:
 	label* progress_stage_label_;
 	drawing* animation_;
 
-	std::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
+	utils::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
 
 	std::atomic<loading_stage> current_stage_;
 

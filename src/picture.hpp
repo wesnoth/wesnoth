@@ -18,7 +18,7 @@
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 class surface;
 class texture;
@@ -118,7 +118,7 @@ public:
 	const T& locate_in_cache(cache_type<T>& cache) const;
 
 	template<typename T>
-	std::optional<T> copy_from_cache(cache_type<T>& cache) const;
+	utils::optional<T> copy_from_cache(cache_type<T>& cache) const;
 
 	template<typename T>
 	void add_to_cache(cache_type<T>& cache, T data) const;

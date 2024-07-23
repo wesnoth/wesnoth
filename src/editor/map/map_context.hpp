@@ -497,7 +497,7 @@ protected:
 
 private:
 	std::string addon_id_;
-	std::optional<config> previous_cfg_;
+	utils::optional<config> previous_cfg_;
 	std::string scenario_id_, scenario_name_, scenario_description_;
 
 	utils::optional<int> xp_mod_;

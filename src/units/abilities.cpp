@@ -1997,8 +1997,8 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
-	std::optional<int> max_value = std::nullopt;
-	std::optional<int> min_value = std::nullopt;
+	utils::optional<int> max_value = utils::nullopt;
+	utils::optional<int> min_value = utils::nullopt;
 
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.ability_cfg;

@@ -22,7 +22,7 @@
 #include "serialization/validator.hpp"
 
 #include <boost/graph/adjacency_list.hpp>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <stack>
 #include <string>
 
@@ -181,8 +181,8 @@ private:
 	 *
 	 * The returned map can contain non-mandatory keys if they are overriden, please check the is_mandatory() result.
 	 */
-	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg) const;
-	std::optional<std::map<std::string, wml_key>> find_mandatory_keys(
+	utils::optional<std::map<std::string, wml_key>> find_mandatory_keys(const wml_tag* tag, const config& cfg) const;
+	utils::optional<std::map<std::string, wml_key>> find_mandatory_keys(
 		const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const;
 
 	/**

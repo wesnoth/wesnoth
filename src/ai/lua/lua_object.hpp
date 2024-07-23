@@ -289,7 +289,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 
 		lua_pushstring(L, "type"); // st n + 2
 		lua_rawget(L, -2);  // st n + 2
-		std::optional<ai_target::type> type = ai_target::type::xplicit;
+		utils::optional<ai_target::type> type = ai_target::type::xplicit;
 		if(lua_isnumber(L, -1)) {
 			int target = static_cast<int>(lua_tointeger(L, -1));
 			type = ai_target::get_enum(target);  // st n + 2

@@ -15,7 +15,7 @@
 #pragma once
 
 #include <array>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <string_view>
 #include <tuple>
@@ -52,30 +52,30 @@ struct enum_base : public Definition
 	 * Converts a string into its enum equivalent.
 	 *
 	 * @param value      The string value to convert.
-	 * @return           The equivalent enum or std::nullopt.
+	 * @return           The equivalent enum or utils::nullopt.
 	 */
-	static constexpr std::optional<enum_type> get_enum(const std::string_view value)
+	static constexpr utils::optional<enum_type> get_enum(const std::string_view value)
 	{
 		for(unsigned int i = 0; i < size(); i++) {
 			if(value == Definition::values[i]) {
 				return static_cast<enum_type>(i);
 			}
 		}
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	/**
 	 * Converts an int into its enum equivalent.
 	 *
 	 * @param value      The string value to convert.
-	 * @return           The equivalent enum or std::nullopt.
+	 * @return           The equivalent enum or utils::nullopt.
 	 */
-	static constexpr std::optional<enum_type> get_enum(unsigned long value)
+	static constexpr utils::optional<enum_type> get_enum(unsigned long value)
 	{
 		if(value < size()) {
 			return static_cast<enum_type>(value);
 		} else {
-			return std::nullopt;
+			return utils::nullopt;
 		}
 	}
 

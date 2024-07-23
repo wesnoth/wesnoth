@@ -192,7 +192,7 @@ public:
 
 	struct event_info {
 		config cmds_;
-		std::optional<int> lua_;
+		utils::optional<int> lua_;
 		game_events::queued_event evt_;
 		event_info(const config& cmds, game_events::queued_event evt) : cmds_(cmds), evt_(evt) {}
 		event_info(int lua, game_events::queued_event evt) : lua_(lua), evt_(evt) {}

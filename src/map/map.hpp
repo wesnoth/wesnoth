@@ -113,7 +113,7 @@ public:
 		t_translation::ter_list old_;
 		t_translation::ter_list new_;
 		terrain_type_data::merge_mode mode_;
-		std::optional<t_translation::terrain_code> terrain_;
+		utils::optional<t_translation::terrain_code> terrain_;
 		bool use_old_;
 		bool replace_if_failed_;
 

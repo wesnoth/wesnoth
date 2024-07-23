@@ -24,7 +24,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "variable.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 class filter_context;
 class game_data;
@@ -162,7 +162,7 @@ private:
 	const std::string hotkey_id_;
 
 	/** Controls the lifetime of the associate hotkey's hotkey_command. */
-	std::optional<hotkey::wml_hotkey_record> hotkey_record_;
+	utils::optional<hotkey::wml_hotkey_record> hotkey_record_;
 
 	/** The image to display in the menu next to this item's description. */
 	std::string image_;

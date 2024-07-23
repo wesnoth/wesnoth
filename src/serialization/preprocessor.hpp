@@ -25,7 +25,7 @@
 #include <iosfwd>
 #include <map>
 #include <string>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <vector>
 
 class config_writer;

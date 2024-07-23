@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include "map/location.hpp"
 #include "synced_context.hpp"
 #include "config.hpp"
@@ -23,7 +23,7 @@
 namespace actions {
 
 	struct undo_event {
-		std::optional<int> lua_idx;
+		utils::optional<int> lua_idx;
 		config commands, data;
 		map_location loc1, loc2, filter_loc1, filter_loc2;
 		std::size_t uid1, uid2;

@@ -668,7 +668,7 @@ static utils::optional<std::string> get_games_path()
 {
 	PWSTR docs_path = nullptr;
 	HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
-	utils::optional<std::string> path = std::nullopt;
+	utils::optional<std::string> path = utils::nullopt;
 
 	if(res == S_OK) {
 		bfs::path games_path = bfs::path(docs_path) / "My Games";

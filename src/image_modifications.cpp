@@ -1055,13 +1055,13 @@ std::pair<int, bool> parse_scale_value(std::string_view arg)
 }
 
 /** Common helper function to parse scaling IPF inputs. */
-std::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view args)
+utils::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view args)
 {
 	const auto scale_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 	const std::size_t num_args = scale_params.size();
 
 	if(num_args == 0 || (num_args == 1 && scale_params[0].empty())) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	uint8_t flags = 0;

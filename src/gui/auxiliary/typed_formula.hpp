@@ -26,7 +26,7 @@
 #include "tstring.hpp"
 
 #include <cassert>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 namespace gui2
 {
@@ -127,7 +127,7 @@ private:
 	 *
 	 * If without value, there's no formula.
 	 */
-	std::optional<std::string> formula_;
+	utils::optional<std::string> formula_;
 
 	/** If there's no formula it contains the value. */
 	T value_;

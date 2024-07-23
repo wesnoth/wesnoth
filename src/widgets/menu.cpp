@@ -118,7 +118,7 @@ void menu::set_inner_location(const SDL_Rect& /*rect*/)
 	update_scrollbar_grip_height();
 }
 
-void menu::set_items(const std::vector<indented_menu_item>& items, std::optional<std::size_t> selected)
+void menu::set_items(const std::vector<indented_menu_item>& items, utils::optional<std::size_t> selected)
 {
 	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
 	items_.clear();

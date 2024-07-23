@@ -27,7 +27,7 @@
 #include "utils/general.hpp"
 #include <array>
 #include <limits>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <stdexcept>
 
 #include <boost/algorithm/string.hpp>
@@ -834,9 +834,9 @@ namespace
  * Internal common code for parse_range and parse_range_real.
  *
  * If str contains two elements and a separator such as "a-b", returns a and b.
- * Otherwise, returns the original string and std::nullopt.
+ * Otherwise, returns the original string and utils::nullopt.
  */
-std::pair<std::string, std::optional<std::string>> parse_range_internal_separator(const std::string& str)
+std::pair<std::string, utils::optional<std::string>> parse_range_internal_separator(const std::string& str)
 {
 	// If turning this into a list with additional options, ensure that "-" (if present) is last. Otherwise a
 	// range such as "-2..-1" might be incorrectly split as "-2..", "1".
@@ -852,7 +852,7 @@ std::pair<std::string, std::optional<std::string>> parse_range_internal_separato
 		return {str.substr(0, pos), str.substr(pos + length)};
 	}
 
-	return {str, std::nullopt};
+	return {str, utils::nullopt};
 }
 } // namespace
 
