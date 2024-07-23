@@ -24,13 +24,13 @@
 #include <fstream>
 #include <iosfwd>
 #include <memory>
-#include <optional>
 #include <string>
 #include <vector>
 
 #include "exceptions.hpp"
 #include "game_version.hpp"
 #include "global.hpp"
+#include "utils/optional_fwd.hpp"
 
 namespace game_config {
 extern std::string path;
@@ -463,17 +463,17 @@ NOT_DANGLING const std::vector<std::string>& get_binary_paths(const std::string&
 /**
  * Returns a complete path to the actual file of a given @a type, if it exists.
  */
-std::optional<std::string> get_binary_file_location(const std::string& type, const std::string& filename);
+utils::optional<std::string> get_binary_file_location(const std::string& type, const std::string& filename);
 
 /**
  * Returns a complete path to the actual directory of a given @a type, if it exists.
  */
-std::optional<std::string> get_binary_dir_location(const std::string &type, const std::string &filename);
+utils::optional<std::string> get_binary_dir_location(const std::string &type, const std::string &filename);
 
 /**
  * Returns a complete path to the actual WML file or directory, if either exists.
  */
-std::optional<std::string> get_wml_location(const std::string &filename,
+utils::optional<std::string> get_wml_location(const std::string &filename,
 	const std::string &current_dir = std::string());
 
 /**
@@ -488,7 +488,7 @@ std::string get_short_wml_path(const std::string &filename);
  *   images, units/konrad-fighter.png ->
  *   data/campaigns/Heir_To_The_Throne/images/units/konrad-fighter.png
  */
-std::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string &filename);
+utils::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string &filename);
 
 /**
  * Returns the appropriate invocation for a Wesnoth-related binary, assuming
@@ -502,12 +502,12 @@ std::string get_program_invocation(const std::string &program_name);
 /**
  * Returns the localized version of the given filename, if it exists.
  */
-std::optional<std::string> get_localized_path(const std::string& file, const std::string& suff = "");
+utils::optional<std::string> get_localized_path(const std::string& file, const std::string& suff = "");
 
 /**
  * Returns the add-on ID from a path.
  * aka the directory directly following the "add-ons" folder, or an empty string if none is found.
  */
-std::optional<std::string> get_addon_id_from_path(const std::string& location);
+utils::optional<std::string> get_addon_id_from_path(const std::string& location);
 
 }

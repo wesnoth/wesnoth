@@ -664,11 +664,11 @@ static void setup_user_data_dir()
 /**
  * @return the path to the My Games directory on success or an empty string on failure
  */
-static std::optional<std::string> get_games_path()
+static utils::optional<std::string> get_games_path()
 {
 	PWSTR docs_path = nullptr;
 	HRESULT res = SHGetKnownFolderPath(FOLDERID_Documents, KF_FLAG_CREATE, nullptr, &docs_path);
-	std::optional<std::string> path = std::nullopt;
+	utils::optional<std::string> path = std::nullopt;
 
 	if(res == S_OK) {
 		bfs::path games_path = bfs::path(docs_path) / "My Games";
@@ -725,7 +725,7 @@ void set_user_data_dir(std::string newprefdir)
 	bfs::path dir;
 	if(newprefdir[0] == '~') {
 #ifdef _WIN32
-		std::optional<std::string> games_path = get_games_path();
+		utils::optional<std::string> games_path = get_games_path();
 		if(games_path) {
 			create_directory_if_missing(*games_path);
 			dir = *games_path;
@@ -1551,7 +1551,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 	return res;
 }
 
-std::optional<std::string> get_binary_file_location(const std::string& type, const std::string& filename)
+utils::optional<std::string> get_binary_file_location(const std::string& type, const std::string& filename)
 {
 	// We define ".." as "remove everything before" this is needed because
 	// on the one hand allowing ".." would be a security risk but
@@ -1567,7 +1567,7 @@ std::optional<std::string> get_binary_file_location(const std::string& type, con
 	}
 
 	if(!is_legal_file(filename)) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	std::string result;
@@ -1594,16 +1594,16 @@ std::optional<std::string> get_binary_file_location(const std::string& type, con
 
 	if(result.empty()) {
 		DBG_FS << "  not found";
-		return std::nullopt;
+		return utils::nullopt;
 	} else {
 		return result;
 	}
 }
 
-std::optional<std::string> get_binary_dir_location(const std::string& type, const std::string& filename)
+utils::optional<std::string> get_binary_dir_location(const std::string& type, const std::string& filename)
 {
 	if(!is_legal_file(filename)) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	for(const std::string& bp : get_binary_paths(type)) {
@@ -1617,13 +1617,13 @@ std::optional<std::string> get_binary_dir_location(const std::string& type, cons
 	}
 
 	DBG_FS << "  not found";
-	return std::nullopt;
+	return utils::nullopt;
 }
 
-std::optional<std::string> get_wml_location(const std::string& filename, const std::string& current_dir)
+utils::optional<std::string> get_wml_location(const std::string& filename, const std::string& current_dir)
 {
 	if(!is_legal_file(filename)) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	assert(game_config::path.empty() == false);
@@ -1648,7 +1648,7 @@ std::optional<std::string> get_wml_location(const std::string& filename, const s
 
 	if(result.empty() || !file_exists(result)) {
 		DBG_FS << "  not found";
-		return std::nullopt;
+		return utils::nullopt;
 	} else {
 		DBG_FS << "  found: '" << result.string() << "'";
 		return result.string();
@@ -1691,11 +1691,11 @@ std::string get_short_wml_path(const std::string& filename)
 	return filename;
 }
 
-std::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string& filename)
+utils::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string& filename)
 {
 	auto bp = get_binary_file_location(type, filename);
 	if(!bp) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	bfs::path full_path{bp.value()};
@@ -1739,7 +1739,7 @@ std::string sanitize_path(const std::string& path)
 
 // Return path to localized counterpart of the given file, if any, or empty string.
 // Localized counterpart may also be requested to have a suffix to base name.
-std::optional<std::string> get_localized_path(const std::string& file, const std::string& suff)
+utils::optional<std::string> get_localized_path(const std::string& file, const std::string& suff)
 {
 	std::string dir = filesystem::directory_name(file);
 	std::string base = filesystem::base_name(file);
@@ -1776,10 +1776,10 @@ std::optional<std::string> get_localized_path(const std::string& file, const std
 		}
 	}
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
-std::optional<std::string> get_addon_id_from_path(const std::string& location)
+utils::optional<std::string> get_addon_id_from_path(const std::string& location)
 {
 	std::string full_path = normalize_path(location, true);
 	std::string addons_path = normalize_path(get_addons_dir(), true);
@@ -1791,7 +1791,7 @@ std::optional<std::string> get_addon_id_from_path(const std::string& location)
 		}
 	}
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 } // namespace filesystem
