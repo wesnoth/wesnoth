@@ -15,7 +15,7 @@
 
 #include "global.hpp"
 
-#ifdef HAVE_CXX17
+#ifndef __APPLE__
 #include <optional>
 #else
 #include <boost/optional.hpp>
@@ -23,7 +23,7 @@
 
 namespace utils
 {
-#ifdef HAVE_CXX17
+#ifndef __APPLE__
 
 using std::optional;
 using std::make_optional;
@@ -42,15 +42,5 @@ using nullopt_t = boost::none_t;
 static const boost::none_t nullopt{boost::none_t::init_tag{}};
 
 #endif
-
-template<typename T>
-bool has_optional_value(const optional<T>& opt)
-{
-#if defined HAVE_CXX17 || BOOST_VERSION >= 106800
-	return opt.has_value();
-#else
-	return opt != nullopt;
-#endif
-}
 
 } // end namespace utils

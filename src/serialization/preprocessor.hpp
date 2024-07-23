@@ -94,7 +94,7 @@ struct preproc_define
 	version_info deprecation_version;
 
 	bool is_deprecated() const {
-		return utils::has_optional_value(deprecation_level);
+		return deprecation_level.has_value();
 	}
 
 	void write(config_writer&, const std::string&) const;

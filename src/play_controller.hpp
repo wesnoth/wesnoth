@@ -123,7 +123,7 @@ public:
 
 	bool is_regular_game_end() const
 	{
-		return utils::has_optional_value(gamestate().end_level_data_);
+		return gamestate().end_level_data_.has_value();
 	}
 
 	bool check_regular_game_end();

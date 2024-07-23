@@ -45,7 +45,7 @@ public:
 	bool should_stop() const { return stop_condition_->should_stop(); }
 	bool can_execute_command(const hotkey::ui_command& cmd) const;
 	bool is_controlling_view() const {
-		return utils::has_optional_value(vision_);
+		return vision_.has_value();
 	}
 	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
 	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; }
