@@ -217,7 +217,7 @@ void title_screen::init_callbacks()
 			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
 			std::string tip_text = tip.text().str();
 			std::size_t pos = 0;
-			while (tip_text.at(pos) == '<' && pos < utf8::size(tip_text)) {
+			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
 				pos = tip_text.find_first_of(">", pos) + 1;
 			}
 			utf8::insert(tip_text, pos+1, "</span>");
