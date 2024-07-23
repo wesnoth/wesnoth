@@ -95,7 +95,7 @@ public:
 	/** True if connection is currently using TLS and thus is allowed to send cleartext passwords or auth tokens */
 	bool using_tls() const
 	{
-		return std::holds_alternative<tls_socket>(socket_);
+		return utils::holds_alternative<tls_socket>(socket_);
 	}
 
 	void cancel();
@@ -146,7 +146,7 @@ private:
 	std::string service_;
 	typedef std::unique_ptr<boost::asio::ip::tcp::socket> raw_socket;
 	typedef std::unique_ptr<boost::asio::ssl::stream<raw_socket::element_type>> tls_socket;
-	typedef std::variant<raw_socket, tls_socket> any_socket;
+	typedef utils::variant<raw_socket, tls_socket> any_socket;
 	bool use_tls_;
 	any_socket socket_;
 

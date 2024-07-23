@@ -409,9 +409,9 @@ static int cfun_ai_get_leader_goal(lua_State *L)
 namespace
 {
 // TODO: name this something better
-void visit_helper(lua_State* L, const std::variant<bool, std::vector<std::string>>& input)
+void visit_helper(lua_State* L, const utils::variant<bool, std::vector<std::string>>& input)
 {
-	std::visit(
+	utils::visit(
 		[L](const auto& v) {
 			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
 				lua_pushboolean(L, v);

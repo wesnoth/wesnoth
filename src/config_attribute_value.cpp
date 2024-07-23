@@ -251,9 +251,9 @@ void config_attribute_value::write_if_not_empty(const t_string& v)
 
 bool config_attribute_value::to_bool(bool def) const
 {
-	if(const yes_no* p = std::get_if<yes_no>(&value_))
+	if(const yes_no* p = utils::get_if<yes_no>(&value_))
 		return *p;
-	if(const true_false* p = std::get_if<true_false>(&value_))
+	if(const true_false* p = utils::get_if<true_false>(&value_))
 		return *p;
 
 	// No other types are ever recognized as boolean.
@@ -265,12 +265,15 @@ namespace
 /** Visitor for converting a variant to a numeric type (T). */
 template<typename T>
 class attribute_numeric_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<T>
+#endif
 {
 public:
 	// Constructor stores the default value.
 	attribute_numeric_visitor(T def) : def_(def) {}
 
-	T operator()(const std::monostate&) const { return def_; }
+	T operator()(const utils::monostate&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
 	T operator()(int i)                const { return static_cast<T>(i); }
 	T operator()(unsigned long long u) const { return static_cast<T>(u); }
@@ -315,13 +318,16 @@ double config_attribute_value::to_double(double def) const
 
 /** Visitor for converting a variant to a string. */
 class config_attribute_value::string_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<std::string>
+#endif
 {
 	const std::string default_;
 
 public:
 	string_visitor(const std::string& fallback) : default_(fallback) {}
 
-	std::string operator()(const std::monostate &) const { return default_; }
+	std::string operator()(const utils::monostate &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }
 	std::string operator()(const true_false & b) const { return b.str(); }
 	std::string operator()(int i)                const { return std::to_string(i); }
@@ -338,7 +344,7 @@ std::string config_attribute_value::str(const std::string& fallback) const
 
 t_string config_attribute_value::t_str() const
 {
-	if(const t_string* p = std::get_if<t_string>(&value_)) {
+	if(const t_string* p = utils::get_if<t_string>(&value_)) {
 		return *p;
 	}
 
@@ -350,7 +356,7 @@ t_string config_attribute_value::t_str() const
  */
 bool config_attribute_value::blank() const
 {
-	return std::holds_alternative<std::monostate>(value_);
+	return utils::holds_alternative<utils::monostate>(value_);
 }
 
 /**
@@ -362,7 +368,7 @@ bool config_attribute_value::empty() const
 		return true;
 	}
 
-	if(const std::string* p = std::get_if<std::string>(&value_)) {
+	if(const std::string* p = utils::get_if<std::string>(&value_)) {
 		return p->empty();
 	}
 
@@ -371,6 +377,9 @@ bool config_attribute_value::empty() const
 
 /** Visitor handling equality checks. */
 class config_attribute_value::equality_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<bool>
+#endif
 {
 public:
 	// Most generic: not equal.
@@ -406,7 +415,7 @@ public:
  */
 bool config_attribute_value::operator==(const config_attribute_value& other) const
 {
-	return std::visit(equality_visitor(), value_, other.value_);
+	return utils::visit(equality_visitor(), value_, other.value_);
 }
 
 /**

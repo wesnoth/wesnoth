@@ -23,7 +23,7 @@
 #include "exceptions.hpp"
 #include "server/common/simple_wml.hpp"
 
-#include <variant>
+#include "utils/variant.hpp"
 #include "utils/general.hpp"
 
 #ifdef _WIN32
@@ -49,7 +49,7 @@ class config;
 
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
 typedef std::shared_ptr<boost::asio::ssl::stream<socket_ptr::element_type>> tls_socket_ptr;
-typedef std::variant<socket_ptr, tls_socket_ptr> any_socket_ptr;
+typedef utils::variant<socket_ptr, tls_socket_ptr> any_socket_ptr;
 
 struct server_shutdown : public game::error
 {

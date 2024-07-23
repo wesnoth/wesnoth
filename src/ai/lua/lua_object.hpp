@@ -119,11 +119,11 @@ inline std::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *
 }
 
 template <>
-inline void lua_object<std::variant<bool, std::vector<std::string>>>::from_type(lua_State *L, std::shared_ptr<std::variant<bool, std::vector<std::string>>> value)
+inline void lua_object<utils::variant<bool, std::vector<std::string>>>::from_type(lua_State *L, std::shared_ptr<utils::variant<bool, std::vector<std::string>>> value)
 {
 	if(value) {
 		// TODO: this is is duplicated as a helper function in ai/lua/core.cpp
-		std::visit(
+		utils::visit(
 			[L](const auto& v) {
 				if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
 					lua_pushboolean(L, v);
@@ -140,10 +140,10 @@ inline void lua_object<std::variant<bool, std::vector<std::string>>>::from_type(
 }
 
 template <>
-inline std::shared_ptr< std::variant<bool, std::vector<std::string>> > lua_object< std::variant<bool, std::vector<std::string>> >::to_type(lua_State *L, int n)
+inline std::shared_ptr< utils::variant<bool, std::vector<std::string>> > lua_object< utils::variant<bool, std::vector<std::string>> >::to_type(lua_State *L, int n)
 {
 	if (lua_isboolean(L, n)) {
-		return std::make_shared<std::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
+		return std::make_shared<utils::variant<bool, std::vector<std::string>>>(luaW_toboolean(L, n));
 	} else {
 		auto v = std::make_shared<std::vector<std::string>>();
 		int l = lua_rawlen(L, n);
@@ -156,7 +156,7 @@ inline std::shared_ptr< std::variant<bool, std::vector<std::string>> > lua_objec
 			v->push_back(s);
 		}
 
-		return std::make_shared<std::variant<bool, std::vector<std::string>>>(*v);
+		return std::make_shared<utils::variant<bool, std::vector<std::string>>>(*v);
 	}
 }
 

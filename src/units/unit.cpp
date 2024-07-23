@@ -1774,12 +1774,12 @@ int unit::upkeep() const
 		return 0;
 	}
 
-	return std::visit(upkeep_value_visitor{*this}, upkeep_);
+	return utils::visit(upkeep_value_visitor{*this}, upkeep_);
 }
 
 bool unit::loyal() const
 {
-	return std::holds_alternative<upkeep_loyal>(upkeep_);
+	return utils::holds_alternative<upkeep_loyal>(upkeep_);
 }
 
 void unit::set_loyal(bool loyal)
@@ -2866,7 +2866,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	upkeep = std::visit(upkeep_type_visitor{}, upkeep_);
+	upkeep = utils::visit(upkeep_type_visitor{}, upkeep_);
 }
 
 void unit::clear_changed_attributes()

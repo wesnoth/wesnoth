@@ -46,7 +46,7 @@
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
 #include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
-#include <variant>
+#include "utils/variant.hpp"
 
 #include <ctime>                       // for time
 #include <vector>                       // for vector, allocator, etc
@@ -272,9 +272,9 @@ variant villages_from_set(const Container& villages, const std::set<map_location
 }
 
 // TODO: I have no damn idea what to name this function
-variant visit_helper(const std::variant<bool, std::vector<std::string>>& input)
+variant visit_helper(const utils::variant<bool, std::vector<std::string>>& input)
 {
-	return std::visit(
+	return utils::visit(
 		[](const auto& v) {
 			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
 				return variant(v);

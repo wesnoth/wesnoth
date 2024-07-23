@@ -32,7 +32,7 @@
 #endif
 
 #include "exceptions.hpp"
-#include <variant>
+#include "utils/variant.hpp"
 
 #include <boost/asio/io_context.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -103,7 +103,7 @@ public:
 	{
 		// Calling this function before connection is ready may return wrong result
 		assert(done_);
-		return std::holds_alternative<tls_socket>(socket_);
+		return utils::holds_alternative<tls_socket>(socket_);
 	}
 
 	std::size_t bytes_to_write() const
@@ -138,7 +138,7 @@ private:
 
 	typedef std::unique_ptr<boost::asio::ip::tcp::socket> raw_socket;
 	typedef std::unique_ptr<boost::asio::ssl::stream<raw_socket::element_type>> tls_socket;
-	typedef std::variant<raw_socket, tls_socket> any_socket;
+	typedef utils::variant<raw_socket, tls_socket> any_socket;
 	bool use_tls_;
 	any_socket socket_;
 

@@ -175,7 +175,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			}
 
 			final_socket = tls_socket_ptr { new tls_socket_ptr::element_type(std::move(*socket), tls_context_) };
-			std::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
+			utils::get<tls_socket_ptr>(final_socket)->async_handshake(boost::asio::ssl::stream_base::server, yield[error]);
 			if(error) {
 				ERR_SERVER << "TLS handshake failed: " << error.message();
 				return;
@@ -187,7 +187,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			return;
 	}
 
-	std::visit([this](auto&& socket) {
+	utils::visit([this](auto&& socket) {
 		const std::string ip = client_address(socket);
 
 		const std::string reason = is_ip_banned(ip);

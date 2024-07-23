@@ -27,7 +27,7 @@
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain/filter.hpp"
-#include <variant>
+#include "utils/variant.hpp"
 
 namespace ai {
 
@@ -114,6 +114,9 @@ public:
 };
 
 class leader_aspects_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<std::string>
+#endif
 {
 public:
 	std::string operator()(const bool b) const {
@@ -127,10 +130,10 @@ public:
 };
 
 template<>
-class config_value_translator<std::variant<bool, std::vector<std::string>>> {
+class config_value_translator<utils::variant<bool, std::vector<std::string>>> {
 public:
 
-	static std::variant<bool, std::vector<std::string>> cfg_to_value(const config &cfg)
+	static utils::variant<bool, std::vector<std::string>> cfg_to_value(const config &cfg)
 	{
 		if (cfg["value"].to_bool(true) == cfg["value"].to_bool(false)) {
 			return cfg["value"].to_bool();
@@ -138,17 +141,17 @@ public:
 		return utils::split(cfg["value"]);
 	}
 
-	static void cfg_to_value(const config &cfg, std::variant<bool, std::vector<std::string>> &value)
+	static void cfg_to_value(const config &cfg, utils::variant<bool, std::vector<std::string>> &value)
 	{
 		value = cfg_to_value(cfg);
 	}
 
-	static void value_to_cfg(const std::variant<bool, std::vector<std::string>> &value, config &cfg)
+	static void value_to_cfg(const utils::variant<bool, std::vector<std::string>> &value, config &cfg)
 	{
-		cfg["value"] = std::visit(leader_aspects_visitor(), value);
+		cfg["value"] = utils::visit(leader_aspects_visitor(), value);
 	}
 
-	static config value_to_cfg(const std::variant<bool, std::vector<std::string>> &value)
+	static config value_to_cfg(const utils::variant<bool, std::vector<std::string>> &value)
 	{
 		config cfg;
 		value_to_cfg(value,cfg);

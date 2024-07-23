@@ -504,6 +504,9 @@ int unit_type_callable::do_compare(const formula_callable* callable) const
 }
 
 struct fai_variant_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<variant>
+#endif
 {
 	variant operator()(bool b) const               { return variant(b ? 1 : 0); }
 	variant operator()(int i) const                { return variant(i); }
@@ -514,7 +517,7 @@ struct fai_variant_visitor
 	// (or should we assume that such strings will be translatable?).
 	variant operator()(const std::string& s) const { return variant(s); }
 	variant operator()(const t_string& s) const    { return variant(s.str()); }
-	variant operator()(std::monostate) const         { return variant(); }
+	variant operator()(utils::monostate) const         { return variant(); }
 };
 
 variant config_callable::get_value(const std::string& key) const

@@ -24,7 +24,7 @@ class  config;
 
 #include "map/location.hpp"
 #include "units/ptr.hpp"
-#include <variant>
+#include "utils/variant.hpp"
 
 #include <string>
 
@@ -59,7 +59,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string &advance_to);
  */
 unit_ptr get_amla_unit(const unit &u, const config &mod_option);
 
-using advancement_option = std::variant<std::string /*change type*/, const config* /*apply amla*/>;
+using advancement_option = utils::variant<std::string /*change type*/, const config* /*apply amla*/>;
 
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.
