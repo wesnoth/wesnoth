@@ -326,11 +326,11 @@ namespace
 				      << "' encoding='"  << info.encoding()
 				      << "' variant='"  << info.variant() << "')";
 			}
-			catch(const bl::conv::conversion_error&)
+			catch(const bl::conv::conversion_error& e)
 			{
 				assert(std::has_facet<bl::info>(current_locale_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
-				ERR_G << "Failed to update locale due to conversion error, locale is now: "
+				ERR_G << "Failed to update locale due to conversion error (" << e.what() << ") locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
 				      << "' language='" << info.language()
@@ -338,11 +338,11 @@ namespace
 				      << "' variant='" << info.variant()
 				      << "'";
 			}
-			catch(const std::runtime_error&)
+			catch(const std::runtime_error& e)
 			{
 				assert(std::has_facet<bl::info>(current_locale_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
-				ERR_G << "Failed to update locale due to runtime error, locale is now: "
+				ERR_G << "Failed to update locale due to runtime error (" << e.what() << ") locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
 				      << "' language='" << info.language()
