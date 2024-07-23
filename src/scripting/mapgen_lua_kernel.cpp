@@ -184,7 +184,7 @@ static int intf_find_path(lua_State *L)
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
 		return luaL_argerror(L, 3, msg);
 	}
-	std::optional<lua_pathfind_cost_calculator> calc;
+	utils::optional<lua_pathfind_cost_calculator> calc;
 	int width, height;
 	bool border = false;
 	if(lua_istable(L, 3)) {
@@ -322,7 +322,7 @@ int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
 	return 1;
 }
 
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
@@ -338,7 +338,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());

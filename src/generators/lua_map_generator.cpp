@@ -65,7 +65,7 @@ void lua_map_generator::user_config()
 	}
 }
 
-std::string lua_map_generator::create_map(std::optional<uint32_t> seed)
+std::string lua_map_generator::create_map(utils::optional<uint32_t> seed)
 {
 	if(create_map_.empty()) {
 		return map_generator::create_map(seed);
@@ -81,7 +81,7 @@ std::string lua_map_generator::create_map(std::optional<uint32_t> seed)
 	}
 }
 
-config lua_map_generator::create_scenario(std::optional<uint32_t> seed)
+config lua_map_generator::create_scenario(utils::optional<uint32_t> seed)
 {
 	if(create_scenario_.empty()) {
 		return map_generator::create_scenario(seed);

@@ -20,7 +20,7 @@ class config;
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 #include "terrain/type_data.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 //class terrain_type_data; Can't forward declare because of enum
 

@@ -21,8 +21,8 @@
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
+#include "utils/optional_fwd.hpp"
 #include "utils/variant.hpp"
-
 
 #include <bitset>
 #include <optional>
@@ -2046,9 +2046,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	std::optional<std::string> usage_;
-	std::optional<std::string> halo_;
-	std::optional<std::string> ellipse_;
+	utils::optional<std::string> usage_;
+	utils::optional<std::string> halo_;
+	utils::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;

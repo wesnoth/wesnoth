@@ -16,7 +16,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <cstdint>
 #include <memory>
@@ -43,7 +43,7 @@ public:
 
 	void select_map_generator(map_generator* mg);
 
-	std::optional<uint32_t> get_seed();
+	utils::optional<uint32_t> get_seed();
 
 private:
 	virtual const std::string& window_id() const override;

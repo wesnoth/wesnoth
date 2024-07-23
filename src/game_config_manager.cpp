@@ -102,9 +102,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", cmdline_opts_.multiplayer);
-	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
+	game_config::scoped_preproc_define test("TEST", utils::has_optional_value(cmdline_opts_.test));
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
-	game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
+	game_config::scoped_preproc_define editor("EDITOR", utils::has_optional_value(cmdline_opts_.editor));
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 

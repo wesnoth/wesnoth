@@ -61,7 +61,7 @@ public:
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
 
-	std::optional<end_level_data> end_level_data_;
+	utils::optional<end_level_data> end_level_data_;
 	// used to sync with the mpserver
 	int server_request_number_;
 
