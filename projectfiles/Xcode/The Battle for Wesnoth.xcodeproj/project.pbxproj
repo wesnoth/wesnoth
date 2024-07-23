@@ -711,6 +711,7 @@
 		9107AE461DB335D5001927B0 /* paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE113A41DAECF3D00EBD7C4 /* paths.cpp */; };
 		9107AE571DB5BD49001927B0 /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 9107AE561DB5BD49001927B0 /* lutf8lib.c */; };
 		911F2DAD1BA086A400E3102E /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 911F2DAB1BA086A400E3102E /* window.cpp */; };
+		91254C462C4FE519007695D3 /* optional_fwd.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 91254C452C4FE519007695D3 /* optional_fwd.hpp */; };
 		913D26771D3C9697002FF3AB /* name_generator_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 913D26751D3C9697002FF3AB /* name_generator_factory.cpp */; };
 		914F2F861D35253900A42440 /* location_palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 914F2F841D35253900A42440 /* location_palette.cpp */; };
 		915C68EA1DF1DCB000594B07 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 915C68E81DF1DCB000594B07 /* color.cpp */; };
@@ -2245,6 +2246,7 @@
 		911F2DAB1BA086A400E3102E /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		911F2DAC1BA086A400E3102E /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
 		911F471B1CAE5A7E00F47035 /* iterable_pair.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = iterable_pair.hpp; sourceTree = "<group>"; };
+		91254C452C4FE519007695D3 /* optional_fwd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = optional_fwd.hpp; sourceTree = "<group>"; };
 		912DCA641CA6F5F90019A6F9 /* doxygen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = doxygen.cpp; sourceTree = "<group>"; };
 		912DCA651CA6F5F90019A6F9 /* footer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = footer.html; sourceTree = "<group>"; };
 		912DCA661CA6F5F90019A6F9 /* header.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = header.html; sourceTree = "<group>"; };
@@ -4557,6 +4559,7 @@
 				913D26761D3C9697002FF3AB /* name_generator_factory.hpp */,
 				91C55DA11CC078780040012E /* name_generator.hpp */,
 				4675F092257A494E00ADF791 /* optimer.hpp */,
+				91254C452C4FE519007695D3 /* optional_fwd.hpp */,
 				9197972826199F9D001E8133 /* optional_reference.hpp */,
 				46B58F4121E097900070BB8E /* parse_network_address.cpp */,
 				46B58F4221E097900070BB8E /* parse_network_address.hpp */,
@@ -5225,6 +5228,7 @@
 				9577DD4E2C1E39A50031135F /* edit_unit.hpp in Headers */,
 				44CA4F8598147FDAE871B7CB /* prompt.hpp in Headers */,
 				FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */,
+				91254C462C4FE519007695D3 /* optional_fwd.hpp in Headers */,
 				285C4E7A9E891E1DCB215683 /* back_edge_detector.hpp in Headers */,
 				9577DD2F2C1E1BEB0031135F /* side_controller.hpp in Headers */,
 				8E1D442FB4DA43385F58F77F /* combobox.hpp in Headers */,
