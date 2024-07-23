@@ -1989,7 +1989,7 @@ void server::remove_player(player_iterator iter)
 	if(game_ended) delete_game(g->id());
 }
 
-void server::send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude)
+void server::send_to_lobby(simple_wml::document& data, utils::optional<player_iterator> exclude)
 {
 	for(const auto& p : player_connections_.get<game_t>().equal_range(0)) {
 		auto player { player_connections_.iterator_to(p) };
@@ -1999,7 +1999,7 @@ void server::send_to_lobby(simple_wml::document& data, std::optional<player_iter
 	}
 }
 
-void server::send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude)
+void server::send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude)
 {
 	for(const auto& p : player_connections_.get<game_t>().equal_range(0)) {
 		auto player { player_connections_.iterator_to(p) };
@@ -2009,7 +2009,7 @@ void server::send_server_message_to_lobby(const std::string& message, std::optio
 	}
 }
 
-void server::send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude)
+void server::send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude)
 {
 	for(auto player = player_connections_.begin(); player != player_connections_.end(); ++player) {
 		if(player != exclude) {
@@ -2970,7 +2970,7 @@ void server::delete_game(int gameid, const std::string& reason)
 	}
 }
 
-void server::update_game_in_lobby(const wesnothd::game& g, std::optional<player_iterator> exclude)
+void server::update_game_in_lobby(const wesnothd::game& g, utils::optional<player_iterator> exclude)
 {
 	simple_wml::document diff;
 	if(make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g.description(), diff)) {
