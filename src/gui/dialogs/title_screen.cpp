@@ -216,9 +216,12 @@ void title_screen::init_callbacks()
 			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
 			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
 			std::string tip_text = tip.text().str();
-			std::size_t id = (tip_text.substr(0,1) == "<") ? tip_text.find_first_of(">") + 1 : 0;
-			utf8::insert(tip_text, id+1, "</span>");
-			utf8::insert(tip_text, id, "<span font_family='" + script_font + "' font_size='xx-large'>");
+			std::size_t pos = 0;
+			while (tip_text.at(pos) == '<' && pos < utf8::size(tip_text)) {
+				pos = tip_text.find_first_of(">", pos) + 1;
+			}
+			utf8::insert(tip_text, pos+1, "</span>");
+			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
 
 			widget["label"] = tip_text;
 
