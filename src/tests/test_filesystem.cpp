@@ -190,7 +190,7 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 
 	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg").value(), gamedata + "/data/_main.cfg" );
 	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg").value(), gamedata + "/data/core/_main.cfg" );
-	BOOST_CHECK_EQUAL( get_wml_location(".").value(), gamedata + "/data/." );
+	BOOST_CHECK_EQUAL( get_wml_location(".").value(), "." );
 
 	BOOST_CHECK_EQUAL( get_wml_location("~/").value(), userdata + "/data/" );
 

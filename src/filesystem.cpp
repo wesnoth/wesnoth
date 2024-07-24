@@ -1621,30 +1621,30 @@ utils::optional<std::string> get_binary_dir_location(const std::string& type, co
 	return utils::nullopt;
 }
 
-utils::optional<std::string> get_wml_location(const std::string& filename, const std::string& current_dir)
+utils::optional<std::string> get_wml_location(const std::string& path, const utils::optional<std::string>& current_dir)
 {
-	if(!is_legal_file(filename)) {
+	if(!is_legal_file(path)) {
 		return utils::nullopt;
 	}
 
-	assert(game_config::path.empty() == false);
-
-	bfs::path fpath(filename);
+	bfs::path fpath(path);
 	bfs::path result;
 
-	if(filename[0] == '~') {
-		result /= get_user_data_path() / "data" / filename.substr(1);
+	if(path[0] == '~') {
+		result /= get_user_data_path() / "data" / path.substr(1);
 		DBG_FS << "  trying '" << result.string() << "'";
 	} else if(*fpath.begin() == ".") {
-		if(!current_dir.empty()) {
-			result /= bfs::path(current_dir);
+		if (current_dir) {
+			result /= bfs::path(*current_dir) / path;
 		} else {
-			result /= bfs::path(game_config::path) / "data";
+			WRN_FS << "Cannot resolve " << path << " since the current directory is unknown!";
 		}
-
-		result /= filename;
-	} else if(!game_config::path.empty()) {
-		result /= bfs::path(game_config::path) / "data" / filename;
+	} else {
+		if(game_config::path.empty()) {
+			WRN_FS << "Cannot resolve " << path << " since the game data directory is unknown!";
+		} else {
+			result /= bfs::path(game_config::path) / "data" / path;
+		}
 	}
 
 	if(result.empty() || !file_exists(result)) {
