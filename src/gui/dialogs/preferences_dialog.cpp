@@ -25,7 +25,6 @@
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
-#include "gui/gui.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
@@ -1217,7 +1216,6 @@ void preferences_dialog::handle_gui2_theme_select()
 	if (selected_theme != current_gui_theme_) {
 		current_gui_theme_ = selected_theme;
 		prefs::get().set_gui_theme(gui2_themes_.at(selected_theme));
-		gui2::init(gui2_themes_.at(selected_theme), false);
 		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
 	}
 }
