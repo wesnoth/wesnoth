@@ -29,4 +29,12 @@ namespace gui2
  */
 void init(const std::string& current_theme = "", bool force_read = false);
 
+/**
+ * Set and activate the given gui2 theme
+ *
+ * @param current_theme    the name of the gui2 theme to switch to
+ */
+void switch_theme(const std::string& current_theme);
+
+
 } // namespace gui2

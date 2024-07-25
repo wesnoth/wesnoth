@@ -72,19 +72,30 @@ void init(const std::string& current_theme, bool force_read)
 		if(id == "default") {
 			default_gui = iter;
 		}
-
-		if(!current_theme.empty() && id == current_theme) {
-			current_gui = iter;
-		}
 	}
 
 	VALIDATE(default_gui != guis.end(), _("No default gui defined."));
 
-	if(current_theme.empty()) {
+	switch_theme(current_theme);
+}
+
+void switch_theme(const std::string& current_theme)
+{
+	if (current_theme.empty() || current_theme == "default") {
 		current_gui = default_gui;
-	} else if(current_gui == guis.end()) {
-		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
-		current_gui = default_gui;
+	} else {
+		gui_theme_map_t::iterator gui_itor = guis.begin();
+		for (const auto& gui : guis) {
+			if (gui.first == current_theme) {
+				current_gui = gui_itor;
+			}
+			gui_itor++;
+		}
+
+		if(current_gui == guis.end()) {
+			ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
+			current_gui = default_gui;
+		}
 	}
 
 	current_gui->second.activate();

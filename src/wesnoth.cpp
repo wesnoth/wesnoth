@@ -848,7 +848,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
 		case gui2::dialogs::title_screen::RELOAD_UI:
-			gui2::init(prefs::get().gui_theme(), false);
+			gui2::switch_theme(prefs::get().gui_theme());
 			break;
 		}
 	}
