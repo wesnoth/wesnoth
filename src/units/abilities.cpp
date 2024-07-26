@@ -1336,6 +1336,73 @@ namespace { // Helpers for attack_type::special_active()
 		return false;
 	}
 
+	//return false if an attribute detected inside filter.
+	static bool matches_simple_filter_without_weapon(const config & filter)
+	{
+		if(filter.has_attribute("range"))
+			return false;
+		if(filter.has_attribute("damage"))
+			return false;
+		if(filter.has_attribute("number"))
+			return false;
+		if(filter.has_attribute("accuracy"))
+			return false;
+		if(filter.has_attribute("parry"))
+			return false;
+		if(filter.has_attribute("movement_used"))
+			return false;
+		if(filter.has_attribute("attacks_used"))
+			return false;
+		if(filter.has_attribute("name"))
+			return false;
+		if(filter.has_attribute("special"))
+			return false;
+		if(filter.has_attribute("special_id"))
+			return false;
+		if(filter.has_attribute("special_type"))
+			return false;
+		if(filter.has_attribute("special_active"))
+			return false;
+		if(filter.has_attribute("special_id_active"))
+			return false;
+		if(filter.has_attribute("special_type_active"))
+			return false;
+		if(filter.has_attribute("formula"))
+			return false;
+		if(filter.has_attribute("type"))
+			return false;
+
+		// Passed all tests.
+		return true;
+	}
+
+	/**
+	 * Returns whether or not if @a filter empty or not.
+	 */
+	bool matches_filter_without_weapon(const config& filter)
+	{
+		// Handle the basic filter.
+		bool matches = matches_simple_filter_without_weapon(filter);
+
+		// Handle [and], [or], and [not] with in-order precedence
+		for (const config::any_child condition : filter.all_children_range() )
+		{
+			// Handle [and]
+			if ( condition.key == "and" )
+				matches = matches && matches_filter_without_weapon(condition.cfg);
+
+			// Handle [or]
+			else if ( condition.key == "or" )
+				matches = matches || matches_filter_without_weapon(condition.cfg);
+
+			// Handle [not]
+			else if ( condition.key == "not" )
+				matches = matches && !matches_filter_without_weapon(condition.cfg);
+		}
+
+		return matches;
+	}
+
 	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
@@ -1381,8 +1448,10 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
+			bool matches = weapon ? weapon->matches_filter(*filter_weapon, tag_name) : matches_filter_without_weapon(*filter_weapon);
+			if (!matches){
 				return false;
+			}
 		}
 
 		// Passed.
