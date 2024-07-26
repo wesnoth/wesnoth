@@ -82,7 +82,7 @@ void switch_theme(const std::string& current_theme)
 			if (gui.first == current_theme) {
 				current_gui = gui_itor;
 			}
-			
+
 			if (gui_itor != guis.end()) {
 				gui_itor++;
 			}
