@@ -668,7 +668,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	gui2::init(prefs::get().gui_theme());
+	gui2::init();
+	gui2::switch_theme(prefs::get().gui_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.

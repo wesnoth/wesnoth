@@ -23,11 +23,9 @@ namespace gui2
  * Initializes the GUI subsystems.
  *
  * @note This function must be called before other parts of the UI engine
- * are used.
- * @param current_theme         the theme to switch to
- * @param force_read    force rereading of gui from file even when cache is non-empty
+ * are used. Use @ref switch_theme below to actually activate the theme.
  */
-void init(const std::string& current_theme = "", bool force_read = false);
+void init();
 
 /**
  * Set and activate the given gui2 theme

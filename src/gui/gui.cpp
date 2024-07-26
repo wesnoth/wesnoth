@@ -35,7 +35,7 @@ namespace {
 config guis_cfg;
 }
 
-void init(const std::string& current_theme, bool force_read)
+void init()
 {
 	LOG_GUI_G << "Initializing UI subststem.";
 
@@ -45,20 +45,18 @@ void init(const std::string& current_theme, bool force_read)
 	//
 	// Read and validate the WML files.
 	//
-	if (guis_cfg.empty() || force_read) {
-		try {
-			schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
+	try {
+		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
 
-			preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-			filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
-			read(guis_cfg, *stream, &validator);
-		} catch(const config::error& e) {
-			ERR_GUI_P << e.what();
-			ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
-		} catch(const abstract_validator::error& e) {
-			ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
-			ERR_GUI_P << e.message;
-		}
+		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
+		read(guis_cfg, *stream, &validator);
+	} catch(const config::error& e) {
+		ERR_GUI_P << e.what();
+		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
+	} catch(const abstract_validator::error& e) {
+		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
+		ERR_GUI_P << e.message;
 	}
 
 	//
@@ -75,8 +73,6 @@ void init(const std::string& current_theme, bool force_read)
 	}
 
 	VALIDATE(default_gui != guis.end(), _("No default gui defined."));
-
-	switch_theme(current_theme);
 }
 
 void switch_theme(const std::string& current_theme)
