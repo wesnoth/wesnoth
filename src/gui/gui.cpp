@@ -31,10 +31,6 @@
 namespace gui2
 {
 
-namespace {
-config guis_cfg;
-}
-
 void init()
 {
 	LOG_GUI_G << "Initializing UI subststem.";
@@ -45,6 +41,7 @@ void init()
 	//
 	// Read and validate the WML files.
 	//
+	config guis_cfg;
 	try {
 		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
 
@@ -85,7 +82,10 @@ void switch_theme(const std::string& current_theme)
 			if (gui.first == current_theme) {
 				current_gui = gui_itor;
 			}
-			gui_itor++;
+			
+			if (gui_itor != guis.end) {
+				gui_itor++;
+			}
 		}
 
 		if(current_gui == guis.end()) {
