@@ -2193,52 +2193,6 @@ msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
 #, no-wrap
-#~ msgid "B<--config-dir>I<\\ name>"
-#~ msgstr "B<--config-dir>I<\\ name>"
-
-#~ msgid "Deprecated, use B<--userdata-dir>."
-#~ msgstr "已废弃，请使用B<--userdata-dir>。"
-
-#, no-wrap
-#~ msgid "B<--config-path>"
-#~ msgstr "B<--config-path>"
-
-#~ msgid "Deprecated, use B<--userdata-path>."
-#~ msgstr "已废弃，请使用B<--userdata-path>。"
-
-#, no-wrap
-#~ msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgstr "B<--userconfig-dir>I<\\ name>"
-
-#, fuzzy
-#~| msgid ""
-#~| "sets the userdata directory to I<name> under $HOME or \"My "
-#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~| "path for the userdata directory outside the $HOME or \"My Documents\\eMy "
-#~| "Games\". On Windows it is also possible to specify a directory relative "
-#~| "to the process working directory by using path starting with \".\\e\" or "
-#~| "\"..\\e\"."
-#~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  This defaults to the userdata path."
-#~ msgstr ""
-#~ "设置用户数据目录为$HOME或者Windows下“我的文档\\我的游戏（My "
-#~ "Documents\\eMy Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，"
-#~ "此路径可以在$HOME或者“My Documents\\eMy Games”之外。在Windows下，也可以使"
-#~ "用以“.\\e”或“..\\e”开头的路径来指定相对于游戏进程工作目录的目录。"
-
-#, no-wrap
-#~ msgid "B<--userconfig-path>"
-#~ msgstr "B<--userconfig-path>"
-
-#~ msgid "prints the path of the user configuration directory and exits."
-#~ msgstr "输出用户配置目录的路径并退出。"
-
-#, no-wrap
 #~ msgid "B<--bunzip2>I<\\ infile.bz2>"
 #~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
@@ -2258,6 +2212,20 @@ msgstr "B<wesnoth>(6)"
 #~ msgstr ""
 #~ "将I<infile>压缩为bzip2格式文件，文件名为I<infile>.bz2。文件I<infile>将被删"
 #~ "除。"
+
+#, no-wrap
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ name>"
+
+#~ msgid "Deprecated, use B<--userdata-dir>."
+#~ msgstr "已废弃，请使用B<--userdata-dir>。"
+
+#, no-wrap
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--config-path>"
+
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "已废弃，请使用B<--userdata-path>。"
 
 #, no-wrap
 #~ msgid "B<--gunzip>I<\\ infile.gz>"
@@ -2280,6 +2248,10 @@ msgstr "B<wesnoth>(6)"
 #~ "将I<infile>压缩为gzip格式文件，文件名为I<infile>.gz。文件I<infile>将被删"
 #~ "除。"
 
+#, no-wrap
+#~ msgid "B<--userconfig-dir>I<\\ name>"
+#~ msgstr "B<--userconfig-dir>I<\\ name>"
+
 #~ msgid ""
 #~ "sets the user configuration directory to I<name> under $HOME or \"My "
 #~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
@@ -2296,6 +2268,13 @@ msgstr "B<wesnoth>(6)"
 #~ "用以“.\\e”或“..\\e”开头的路径来指定相对于游戏进程工作目录的目录。在X11下，"
 #~ "配置目录默认为$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配"
 #~ "置目录默认为用户数据目录。"
+
+#, no-wrap
+#~ msgid "B<--userconfig-path>"
+#~ msgstr "B<--userconfig-path>"
+
+#~ msgid "prints the path of the user configuration directory and exits."
+#~ msgstr "输出用户配置目录的路径并退出。"
 
 #, no-wrap
 #~ msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
