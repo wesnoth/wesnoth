@@ -1,3 +1,8 @@
+-- database initial setup
+-- GRANT ALL ON *.* TO 'wesnoth'@'localhost' IDENTIFIED BY 'wesnoth' WITH GRANT OPTION;
+-- create database wesnoth;
+-- use wesnoth;
+
 -- a minimal users table, if not using a phpbb3 installation
 -- create table users
 -- (
