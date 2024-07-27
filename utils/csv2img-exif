@@ -107,7 +107,7 @@ for root, _, files in os.walk("."):
             file = os.path.normpath(os.path.join(root, filename))
 
             if not file in csv_data:
-                added.append(["NO_DATA", file, "", "", "NEW", "NO_DATA", "NO_DATA"])
+                added.append(["NEW", file, "", "", "", "NO_DATA", "NO_DATA"])
             elif len(csv_data[file]) < 7:
                 missing_fields.append(csv_data[file])
             elif len(csv_data[file]) > 7:
@@ -125,7 +125,7 @@ for root, _, files in os.walk("."):
             file = os.path.normpath(os.path.join(root, filename))
 
             if not file in csv_data:
-                added.append(["NO_DATA", file, "", "", "NEW", "NO_DATA", "NO_DATA"])
+                added.append(["NEW", file, "", "", "", "NO_DATA", "NO_DATA"])
             elif len(csv_data[file]) < 7:
                 missing_fields.append(csv_data[file])
             elif len(csv_data[file]) > 7:
