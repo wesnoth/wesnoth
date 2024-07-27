@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-07-21 22:32-0500\n"
-"PO-Revision-Date: 2024-05-27 10:52+1000\n"
+"PO-Revision-Date: 2024-07-26 01:07+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2422,10 +2422,8 @@ msgstr "Copy"
 #. [draw]
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Home Page:</b>"
+msgstr "<span font_family='DejaVu Sans'>✔</span> Copied"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widget/chatbox.cfg:40
@@ -3191,10 +3189,8 @@ msgstr "Preview image"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/window/custom_tod.cfg:108
-#, fuzzy
-#| msgid "Play Sound:"
 msgid "Play sound"
-msgstr "Play Sound:"
+msgstr "Play sound"
 
 #. [label]
 #: data/gui/themes/default/window/custom_tod.cfg:186
@@ -3286,7 +3282,7 @@ msgstr "Delete ToD"
 #. [button]: id=preview_color
 #: data/gui/themes/default/window/custom_tod.cfg:498
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Preview colour changes on map"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4095,12 +4091,12 @@ msgstr "Removes the current bookmark"
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:318
 msgid "Open External"
-msgstr ""
+msgstr "Open External"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:319
 msgid "Open selected using platform's default applications"
-msgstr ""
+msgstr "Open selected using platform's default applications"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -6081,10 +6077,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/03_display.cfg:168
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Interface theme:"
+msgstr "In-game theme:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/window/preferences/03_display.cfg:181
@@ -6097,28 +6091,22 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/03_display.cfg:192
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "UI theme:"
-msgstr "Interface theme:"
+msgstr "UI theme:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/window/preferences/03_display.cfg:205
-#, fuzzy
-#| msgid ""
-#| "Change the in-game interface theme. Additional themes may be provided by "
-#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
-"Change the in-game interface theme. Additional themes may be provided by "
-"community-made add-ons"
+"Change the UI (GUI2) theme. Additional themes may be provided by community-"
+"made add-ons"
 
 #. [label]: id=restart_msg
 #: data/gui/themes/default/window/preferences/03_display.cfg:217
 msgid "<span color='red'>*restart required</span>"
-msgstr ""
+msgstr "<span color='red'>*restart required</span>"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/window/preferences/03_display.cfg:238
@@ -7624,10 +7612,12 @@ msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"This file is outside Wesnoth's data directories. Do you wish to copy it into "
+"your add-on?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1085
 msgid "Unit type saved."
-msgstr ""
+msgstr "Unit type saved."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -7654,10 +7644,8 @@ msgid "Open"
 msgstr "Open"
 
 #: src/gui/dialogs/file_dialog.cpp:305
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Opening links is not supported, contact your packager"
+msgstr "Opening files is not supported, contact your packager"
 
 #: src/gui/dialogs/file_dialog.cpp:362
 msgid "The file already exists. Do you wish to overwrite it?"
@@ -7938,16 +7926,16 @@ msgid "lua console"
 msgstr "lua console"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:48
-#, fuzzy
-#| msgid "No era information found."
 msgid "No Other Version Found"
-msgstr "No era information found."
+msgstr "No Other Version Found"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:48
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"This would import settings from a previous version of Wesnoth, but no other "
+"version was found on this device"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:138
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:497
@@ -8906,10 +8894,8 @@ msgid "New Scenario"
 msgstr "New Scenario"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Edit Scenario"
+msgstr "Load Map/Scenario"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Save Map As"
@@ -9256,16 +9242,12 @@ msgid "Change Add-on ID"
 msgstr "Change Add-on ID"
 
 #: src/hotkey/hotkey_command.cpp:275
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Select the add-on version"
+msgstr "Select active Add-on"
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Open saves folder"
+msgstr "Open Add-on folder"
 
 #: src/hotkey/hotkey_command.cpp:279
 msgid "Edit Side"
