@@ -51,9 +51,9 @@ with contextlib.suppress(FileNotFoundError):
     os.remove(options.output)
     os.remove(options.error)
 
-with open(options.output, 'w') as f:
+with open(options.output, 'w', encoding="utf-8") as f:
   f.write("Date, File, License, Author - Real Name(other name);Real Name(other name);etc, Notes, Modified Date, MD5 \n")
-  for root, _, files in os.walk(options.repo):
+  for root, _, files in os.walk("."):
     for filename in files:
         filetype = Path(filename).suffix
         if filetype == ".png" or filetype == ".jpg" or filetype == ".webp":

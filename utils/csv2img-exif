@@ -100,14 +100,14 @@ with contextlib.suppress(FileNotFoundError):
 
 # only transfer the info from complete, properly formatted CSV rows (unchanged)
 # but keep track of all the rest for summary output
-for root, _, files in os.walk(options.repo):
+for root, _, files in os.walk("."):
     for filename in files:
         filetype = Path(filename).suffix
         if filetype == ".png" or filetype == ".jpg":
             file = os.path.normpath(os.path.join(root, filename))
 
             if not file in csv_data:
-                added.append(["NO_DATA", file, "NO_DATA", "NO_DATA", "NEW", "NO_DATA", "NO_DATA"])
+                added.append(["NO_DATA", file, "", "", "NEW", "NO_DATA", "NO_DATA"])
             elif len(csv_data[file]) < 7:
                 missing_fields.append(csv_data[file])
             elif len(csv_data[file]) > 7:
@@ -144,7 +144,7 @@ for root, _, files in os.walk(options.repo):
 final_output = added + missing_fields + extra_fields + incomplete + unchanged
 
 if options.output != "":
-    with open(options.output, 'w') as f:
+    with open(options.output, 'w', encoding="utf-8") as f:
         writer = csv.writer(f, lineterminator="\n")
         writer.writerow(["Date", "File", "License", "Author - Real Name(other name);Real Name(other name);etc", "Notes", "Needs Update", "MD5"])
         writer.writerows(final_output)
