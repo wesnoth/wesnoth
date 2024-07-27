@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-09-10 09:12+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2024-07-23 13:12+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -118,13 +118,6 @@ msgstr "特别感谢忘记提到的人们。"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -132,10 +125,10 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"脱水：在白天，此单位会脱水，并将失去4HP，同时在每一回合伤害值将减少1，但有医"
-"治者或在绿洲的水中治疗除外。\n"
+"脱水：这个单位脱水了。在白天，它每回合会失去 $dehydration 点生命，并且伤害值"
+"减少1点，除非有治疗者阻止或在绿洲中被水治愈。\n"
 "\n"
-"由于脱水，单位不会死去活或不造成伤害。"
+"由于脱水，单位不会死去或不造成伤害。"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
@@ -2109,15 +2102,10 @@ msgstr "你不能这么做，独自和这种怪物战斗会死的。我们需要
 #. probably just because of the nearby undead, not some prophetic vision. Neither Garak nor a first-time
 #. player know that the scenario will extend the night indefinitely until the enemies are defeated.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#, fuzzy
-#| msgid ""
-#| "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
-#| "will end here one way or another."
 msgid ""
 "I had a dream this night Kaleh, full of gloom and darkness. My journey will "
 "end here one way or another."
-msgstr ""
-"卡勒，我曾经梦到过今晚的事，梦中一片黑暗。不论结果如何，我的旅程将在此结束。"
+msgstr "卡勒，今晚做了个梦，梦中一片黑暗。不论结果如何，我的旅程将在此结束。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
@@ -2419,10 +2407,8 @@ msgstr ""
 
 #. ['A unit’s name, should be short.']
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1540
-#, fuzzy
-#| msgid "Wounded Elven Scout"
 msgid "Wounded Scout"
-msgstr "受伤的哨兵"
+msgstr "受伤的侦察兵"
 
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -2976,8 +2962,6 @@ msgstr "湖中的那迦"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
-#, fuzzy
-#| msgid "Lake Naga"
 msgid "female^Lake Naga"
 msgstr "湖中的那迦"
 
@@ -3654,10 +3638,8 @@ msgstr "哇。"
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
-#, fuzzy
-#| msgid "Kaleh, I think you should come up and see this."
 msgid "Whoa. Kaleh, you have to come see this."
-msgstr "卡勒，来看这个。"
+msgstr "哇。卡勒，你需要来看这个。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
@@ -8944,10 +8926,8 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4650
-#, fuzzy
-#| msgid "You don’t know where to find your master?"
 msgid "You don’t know where to find your leader?"
-msgstr "你不知道去哪里找你的主人？"
+msgstr "你不知道去哪里找你的首领？"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4655
@@ -13982,8 +13962,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "沙暴"
 
@@ -14144,7 +14122,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:383
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:700
 msgid "bolas"
-msgstr "绳球"
+msgstr "流星锤"
 
 #. [unit_type]: id=Quenoth Pathfinder, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:5
@@ -14557,19 +14535,17 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:84
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:452
 msgid "Swordsmanship Training"
-msgstr ""
+msgstr "剑术训练"
 
 #. [advancement]: id=strong_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:105
-#, fuzzy
-#| msgid "true strike"
 msgid "Strong Strikes"
-msgstr "准确打击"
+msgstr "强力打击"
 
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:122
 msgid "Swordsman"
-msgstr ""
+msgstr "剑士"
 
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:144
@@ -14592,7 +14568,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:323
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:634
 msgid "Stamina Training"
-msgstr ""
+msgstr "耐力训练"
 
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:338
@@ -14602,24 +14578,20 @@ msgstr ""
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:358
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:675
-#, fuzzy
-#| msgid "Troll Skirmisher"
 msgid "Skirmisher"
-msgstr "巨魔散兵"
+msgstr "散兵"
 
 #. [advancement]: id=training_with_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:377
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:694
-#, fuzzy
-#| msgid "Talking with Trolls"
 msgid "Training with Bolas"
-msgstr "对话巨魔"
+msgstr "用流星锤训练"
 
 #. [advancement]: id=slow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:397
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:726
 msgid "Slow"
-msgstr ""
+msgstr "减速"
 
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:417
@@ -14651,7 +14623,7 @@ msgstr ""
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "弓术训练"
 
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:543
@@ -14660,20 +14632,18 @@ msgstr ""
 
 #. [advancement]: id=ranger
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
-#, fuzzy
-#| msgid "Quenoth Ranger"
 msgid "Ranger"
-msgstr "奎诺巡林者"
+msgstr "巡林者"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
 msgid "Rain of Arrows"
-msgstr ""
+msgstr "箭雨"
 
 #. [advancement]: id=toxic_rain
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:602
 msgid "Toxic Rain"
-msgstr ""
+msgstr "毒雨"
 
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:620
@@ -14692,15 +14662,13 @@ msgstr ""
 
 #. [advancement]: id=bolaship
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:746
-#, fuzzy
-#| msgid "bolas"
 msgid "Bolaship"
-msgstr "绳球"
+msgstr "流星锤术"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:759
 msgid "Herbalism"
-msgstr ""
+msgstr "草药学"
 
 #. [advancement]: id=run_by_sword_and_bow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:777
@@ -15028,7 +14996,7 @@ msgstr ""
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "once per turn"
-msgstr ""
+msgstr "每回合一次"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
@@ -15310,17 +15278,13 @@ msgstr ""
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1531
-#, fuzzy
-#| msgid "Pulsing Spire"
 msgid "inspire"
-msgstr "脉动尖塔"
+msgstr "鼓舞"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1532
-#, fuzzy
-#| msgid "female^support"
 msgid "female^inspire"
-msgstr "支援"
+msgstr "鼓舞"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
@@ -15356,7 +15320,7 @@ msgstr ""
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1614
 msgid "pierce"
-msgstr ""
+msgstr "穿刺"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1615
