@@ -113,9 +113,6 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
  *
  *  The 'damage' will be subtracted from the unit's hitpoints,
  *  and a die effect will be displayed if the unit dies.
- *
- *  @retval	true                  if the defending unit is dead, should be
- *                                removed from the playing field.
  */
 void unit_attack(display * disp, game_board & board, //TODO: Would be nice if this could be purely a display function and defer damage dealing to its caller
 	const map_location& a, const map_location& b, int damage,
