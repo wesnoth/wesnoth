@@ -408,6 +408,39 @@ static bool create_directory_if_missing_recursive(const bfs::path& dirpath)
 	}
 }
 
+static bool check_prefix(bfs::path::iterator& fi, const bfs::path::iterator& fe, const bfs::path& prefix)
+{
+	bfs::path::iterator pi = prefix.begin(), pe = prefix.end();
+	while(fi != fe && pi != pe && *fi == *pi) {
+		++fi;
+		++pi;
+	}
+
+	return pi == pe;
+}
+
+static bool is_prefix(const bfs::path& full, const bfs::path& prefix_path)
+{
+	bfs::path::iterator fi = full.begin();
+	return check_prefix(fi, full.end(), prefix_path);
+}
+
+static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix_path)
+{
+	bfs::path rest;
+	bfs::path::iterator fi = full.begin(), fe = full.end();
+	if(!check_prefix(fi, fe, prefix_path)) {
+		return rest;
+	}
+
+	while(fi != fe) {
+		rest /= *fi;
+		++fi;
+	}
+
+	return rest;
+}
+
 void get_files_in_dir(const std::string& dir,
 		std::vector<std::string>* files,
 		std::vector<std::string>* dirs,
@@ -1631,48 +1664,34 @@ utils::optional<std::string> get_wml_location(const std::string& path, const uti
 	bfs::path result;
 
 	if(path[0] == '~') {
-		result /= get_user_data_path() / "data" / path.substr(1);
+		result = get_user_data_path() / "data" / path.substr(1);
 		DBG_FS << "  trying '" << result.string() << "'";
 	} else if(*fpath.begin() == ".") {
-		if (current_dir) {
-			result /= bfs::path(*current_dir) / path;
-		} else {
+		if (!current_dir) {
 			WRN_FS << "Cannot resolve " << path << " since the current directory is unknown!";
+			return utils::nullopt;
+		}
+		result = bfs::path(*current_dir) / path;
+		error_code ec;
+		bfs::path c = bfs::canonical(result, ec);
+		if (!is_prefix(c, bfs::path(game_config::path) / "data") && !is_prefix(c, get_user_data_path() / "data")) {
+			WRN_FS << "Resolved path " << c << " is outside game and user data directories!";
 		}
 	} else {
 		if(game_config::path.empty()) {
 			WRN_FS << "Cannot resolve " << path << " since the game data directory is unknown!";
-		} else {
-			result /= bfs::path(game_config::path) / "data" / path;
+			return utils::nullopt;
 		}
+		result = bfs::path(game_config::path) / "data" / path;
 	}
 
-	if(result.empty() || !file_exists(result)) {
+	if(!file_exists(result)) {
 		DBG_FS << "  not found";
 		return utils::nullopt;
 	} else {
 		DBG_FS << "  found: '" << result.string() << "'";
 		return result.string();
 	}
-}
-
-static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix)
-{
-	bfs::path::iterator fi = full.begin(), fe = full.end(), pi = prefix.begin(), pe = prefix.end();
-	while(fi != fe && pi != pe && *fi == *pi) {
-		++fi;
-		++pi;
-	}
-
-	bfs::path rest;
-	if(pi == pe) {
-		while(fi != fe) {
-			rest /= *fi;
-			++fi;
-		}
-	}
-
-	return rest;
 }
 
 std::string get_short_wml_path(const std::string& filename)
