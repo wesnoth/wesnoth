@@ -100,7 +100,7 @@ end
 
 -- WORLD_CONQUEST_TEK_ENEMY_SUPPLY
 function enemy.do_supply(cfg, group_id, loc)
-	if not (cfg.supply == 1) then
+	if cfg.supply ~= 1 then
 		return
 	end
 	local u = wesnoth.units.get(loc[1], loc[2])
