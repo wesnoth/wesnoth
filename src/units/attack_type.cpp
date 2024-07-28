@@ -111,11 +111,24 @@ namespace { // Helpers for attack_type::matches_filter()
 		const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 		const std::string filter_formula = filter["formula"];
 
-
 		if (!filter_type.empty()){
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
-				return false;
+			if(attack.check_tag_name() == "damage_type"){
+				if((attack.check_cfg()).has_attribute("replacement_type")){
+					if (filter_type.count(attack.type()) == 0){
+						return false;
+					}
+				}
+				else if((attack.check_cfg()).has_attribute("alternative_type")){
+					std::pair<std::string, std::string> damage_type = attack.damage_type();
+					if (filter_type.count(damage_type.first) == 0){
+						return false;
+					}
+				}
+			} else {
+				std::pair<std::string, std::string> damage_type = attack.damage_type();
+				if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+					return false;
+				}
 			}
 		}
 

@@ -1406,14 +1406,29 @@ namespace { // Helpers for attack_type::special_active()
 	}
 
 	/**
-	 * update check_tag_name_ variable if weapon exist.
+	 * update check_tag_name_ and check_cfg_variables if weapon exist.
 	 * @param  weapon      the attack where modification applied
-	 * @param  tag_name  string used for modification
+	 * @param  tag_name    string used for modification
+	 * @param  cfg         config used for modification
 	 */
-	void update_tag_name_variable(const_attack_ptr& weapon, const std::string& tag_name)
+	void update_variables(const_attack_ptr& weapon, const std::string& tag_name, const config& cfg)
 	{
 		if(weapon){
 			weapon->update_check_tag_name(tag_name);
+			weapon->update_check_cfg(cfg);
+		}
+	}
+
+	/**
+	 * reinitialise check_tag_name_ and check_cfg_variables if weapon exist.
+	 * @param  weapon      the attack where modification applied
+	 */
+	void reinitialise_variables(const_attack_ptr& weapon)
+	{
+		if(weapon){
+			config n;
+			weapon->update_check_cfg(n);
+			weapon->update_check_tag_name();
 		}
 	}
 	/**
@@ -1444,7 +1459,25 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
-		auto filter_child = filter.optional_child(child_tag);
+		//Add wml filter if "backstab" attribute used.
+		if (!filter["backstab"].blank() && child_tag == "filter_opponent") {
+			deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+		}
+		config cfg = filter;
+		if(filter["backstab"].to_bool() && child_tag == "filter_opponent"){
+			const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+			config& filter_child = cfg.child_or_add("filter_opponent");
+			if(!filter.has_child("filter_opponent")){
+				filter_child["formula"] = backstab_formula;
+			} else {
+				config filter_opponent;
+				filter_opponent["formula"] = backstab_formula;
+				filter_child.add_child("and", filter_opponent);
+			}
+		}
+		const config& filter_backstab = filter["backstab"].to_bool() ? cfg : filter;
+
+		auto filter_child = filter_backstab.optional_child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
@@ -1454,7 +1487,7 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
-		update_tag_name_variable(weapon, tag_name);
+		update_variables(weapon, tag_name, filter);
 
 		unit_filter ufilt{vconfig(*filter_child)};
 
@@ -1465,7 +1498,7 @@ namespace { // Helpers for attack_type::special_active()
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
 			bool matches = weapon ? weapon->matches_filter(*filter_weapon) : matches_filter_without_weapon(*filter_weapon);
 			if (!matches){
-				update_tag_name_variable(weapon, "");
+				reinitialise_variables(weapon);
 				return false;
 			}
 		}
@@ -1476,11 +1509,11 @@ namespace { // Helpers for attack_type::special_active()
 		if (!u2) {
 			u_match = ufilt.matches(*u, loc);
 			//reinitialise check_tag_name before return result of checking
-			update_tag_name_variable(weapon, "");
+			reinitialise_variables(weapon);
 			return u_match;
 		}
 		u_match = ufilt.matches(*u, loc, *u2);
-		update_tag_name_variable(weapon, "");
+		reinitialise_variables(weapon);
 		return u_match;
 	}
 
@@ -1514,9 +1547,6 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
-	if(check_tag_name() == special){
-		return {};
-	}
 	// get all weapon specials of the provided type
 	unit_ability_list abil_list = get_specials(special);
 	// append all such weapon specials as abilities as well
@@ -2003,6 +2033,12 @@ bool attack_type::special_active_impl(
 	bool is_for_listing = self_attack ? self_attack->is_for_listing_ : other_attack->is_for_listing_;
 	//log_scope("special_active");
 
+	//if same special check itself return false for prevent recursion
+	if(self_attack && self_attack->check_cfg() == special)
+		return false;
+	if(other_attack && other_attack->check_cfg() == special)
+		return false;
+
 
 	// Does this affect the specified unit?
 	if ( whom == AFFECT_SELF ) {
@@ -2092,24 +2128,7 @@ bool attack_type::special_active_impl(
 			return false;
 	}
 
-	//Add wml filter if "backstab" attribute used.
-	if (!special["backstab"].blank()) {
-		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
-	}
-	config cfg = special;
-	if(special["backstab"].to_bool()){
-		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
-		config& filter_child = cfg.child_or_add("filter_opponent");
-		if(!special.has_child("filter_opponent")){
-			filter_child["formula"] = backstab_formula;
-		} else {
-			config filter;
-			filter["formula"] = backstab_formula;
-			filter_child.add_child("and", filter);
-		}
-	}
-	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
-
+	// Filter the units involved.
 	//If filter concerns the unit on which special is applied,
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
@@ -2118,7 +2137,7 @@ bool attack_type::special_active_impl(
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
 		return false;
 	std::string opp_tag_name = (applied_both || !whom_is_self) ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent", opp_tag_name))
 		return false;
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
 	std::string att_tag_name = applied_to_attacker ? tag_name : "";
