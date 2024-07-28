@@ -1279,12 +1279,24 @@ namespace { // Helpers for attack_type::special_active()
 	/**
 	 * update check_tag_name_ variable if weapon exist.
 	 * @param  weapon      the attack where modification applied
-	 * @param  tag_name  string used for modification
+	 * @param  tag_name    string used for modification
 	 */
 	void update_tag_name_variable(const_attack_ptr& weapon, const std::string& tag_name)
 	{
 		if(weapon){
 			weapon->update_check_tag_name(tag_name);
+		}
+	}
+
+	/**
+	 * update check_cfg_ variable if weapon exist.
+	 * @param  weapon      the attack where modification applied
+	 * @param  cfg         config used for modification
+	 */
+	void update_cfg_variable(const_attack_ptr& weapon, const config& cfg)
+	{
+		if(weapon){
+			weapon->update_check_cfg(cfg);
 		}
 	}
 	/**
@@ -1307,21 +1319,28 @@ namespace { // Helpers for attack_type::special_active()
 									 const bool for_listing,
 		                             const std::string & child_tag, const std::string& tag_name)
 	{
-		if (for_listing && !loc.valid())
+		//declaration of null config for reinitialise check_cfg_ variable before return.
+		config n;
+		if (for_listing && !loc.valid()){
 			// The special's context was set to ignore this unit, so assume we pass.
 			// (This is used by reports.cpp to show active specials when the
 			// opponent is not known. From a player's perspective, the special
 			// is active, in that it can be used, even though the player might
 			// need to select an appropriate opponent.)
+			update_cfg_variable(weapon, n);
 			return true;
+		}
 
 		auto filter_child = filter.optional_child(child_tag);
-		if ( !filter_child )
+		if ( !filter_child ){
 			// The special does not filter on this unit, so we pass.
+			update_cfg_variable(weapon, n);
 			return true;
+		}
 
 		// If the primary unit doesn't exist, there's nothing to match
 		if (!u) {
+			update_cfg_variable(weapon, n);
 			return false;
 		}
 
@@ -1336,6 +1355,7 @@ namespace { // Helpers for attack_type::special_active()
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
 			if ( !weapon || !weapon->matches_filter(*filter_weapon) ){
 				update_tag_name_variable(weapon, "");
+				update_cfg_variable(weapon, n);
 				return false;
 			}
 		}
@@ -1347,10 +1367,12 @@ namespace { // Helpers for attack_type::special_active()
 			u_match = ufilt.matches(*u, loc);
 			//reinitialise check_tag_name before return result of checking
 			update_tag_name_variable(weapon, "");
+			update_cfg_variable(weapon, n);
 			return u_match;
 		}
 		u_match = ufilt.matches(*u, loc, *u2);
 		update_tag_name_variable(weapon, "");
+		update_cfg_variable(weapon, n);
 		return u_match;
 	}
 
@@ -1384,9 +1406,6 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
-	if(check_tag_name() == special){
-		return {};
-	}
 	// get all weapon specials of the provided type
 	unit_ability_list abil_list = get_specials(special);
 	// append all such weapon specials as abilities as well
@@ -1735,6 +1754,12 @@ bool attack_type::special_active_impl(
 	bool is_for_listing = self_attack ? self_attack->is_for_listing_ : other_attack->is_for_listing_;
 	//log_scope("special_active");
 
+	//if same special check itself return false for prevent recursion
+	if(self_attack && self_attack->check_cfg() == special)
+		return false;
+	if(other_attack && other_attack->check_cfg() == special)
+		return false;
+
 
 	// Does this affect the specified unit?
 	if ( whom == AFFECT_SELF ) {
@@ -1847,17 +1872,21 @@ bool attack_type::special_active_impl(
 	//the function of this special in matches_filter()
 	bool applied_both = special["apply_to"] == "both";
 	std::string self_tag_name = (applied_both || whom_is_self) ? tag_name : "";
+	update_cfg_variable(self_attack, special);
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
 		return false;
 	std::string opp_tag_name = (applied_both || !whom_is_self) ? tag_name : "";
+	update_cfg_variable(other_attack, special);
 	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
 		return false;
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
 	std::string att_tag_name = applied_to_attacker ? tag_name : "";
+	update_cfg_variable(att_weapon, special);
 	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
 	std::string def_tag_name = applied_to_defender ? tag_name : "";
+	update_cfg_variable(def_weapon, special);
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
 		return false;
 

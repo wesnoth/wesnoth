@@ -145,8 +145,12 @@ public:
 
 	//used in self infinite recursion case for prevent crash.
 	const std::string& check_tag_name() const {return check_tag_name_;}
-	//used for reinitialise variable of recursion after each cheking.
+	//used for update variable of recursion after each checking.
 	void update_check_tag_name(const std::string& tag_name = "") const {check_tag_name_ = tag_name;}
+	//used in for prevent recursion by autochecking of weapon special
+	const config& check_cfg() const {return check_cfg_;}
+	//used for update variable of recursion after each checking.
+	void update_check_cfg(const config& cfg) const {check_cfg_ = cfg;}
 	/**
 	 * Helper similar to std::unique_lock for detecting when calculations such as has_special
 	 * have entered infinite recursion.
@@ -393,6 +397,8 @@ private:
 	config specials_;
 	bool changed_;
 	mutable std::string check_tag_name_ = "";
+	/** mutable config used for prevent weapon special to check itself.*/
+	mutable config check_cfg_;
 	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
 	mutable unsigned int num_recursion_ = 0;
 	/** Value of num_recursion_ at which allocations of further recursion_guards fail */
