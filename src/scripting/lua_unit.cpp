@@ -345,7 +345,7 @@ static int impl_unit_get(lua_State *L)
 		if(int* v = utils::get_if<int>(&upkeep)) {
 			lua_push(L, *v);
 		} else {
-			const std::string type = utils::visit(unit::upkeep_type_visitor{}, upkeep);
+			const std::string type = utils::visit(unit::upkeep_type_visitor(), upkeep);
 			lua_push(L, type);
 		}
 
