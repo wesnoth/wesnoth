@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,25 +17,21 @@
 
 #include "filesystem.hpp"
 #include "game_config_manager.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_initialization/component_availability.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
-#include "minimap.hpp"
 #include "saved_game.hpp"
 #include "side_controller.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <sstream>
-#include <cctype>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -223,10 +219,10 @@ void campaign::set_metadata()
 
 void campaign::mark_if_completed()
 {
-	data_["completed"] = preferences::is_campaign_completed(data_["id"]);
+	data_["completed"] = prefs::get().is_campaign_completed(data_["id"]);
 
 	for(auto& cfg : data_.child_range("difficulty")) {
-		cfg["completed_at"] = preferences::is_campaign_completed(data_["id"], cfg["define"]);
+		cfg["completed_at"] = prefs::get().is_campaign_completed(data_["id"], cfg["define"]);
 	}
 }
 
@@ -283,7 +279,7 @@ create_engine::create_engine(saved_game& state)
 
 	state_.mp_settings().saved_game = saved_game_mode::type::no;
 
-	for(const std::string& str : preferences::modifications(state_.classification().is_multiplayer())) {
+	for(const std::string& str : prefs::get().modifications(state_.classification().is_multiplayer())) {
 		if(game_config_.find_child("modification", "id", str)) {
 			state_.classification().active_mods.push_back(str);
 		}
@@ -548,12 +544,12 @@ void create_engine::set_current_era_index(const std::size_t index, bool force)
 	dependency_manager_->try_era_by_index(index, force);
 }
 
-bool create_engine::toggle_mod(int index, bool force)
+bool create_engine::toggle_mod(const std::string& id, bool force)
 {
 	force |= state_.classification().type != campaign_type::type::multiplayer;
 
-	bool is_active = dependency_manager_->is_modification_active(index);
-	dependency_manager_->try_modification_by_index(index, !is_active, force);
+	bool is_active = dependency_manager_->is_modification_active(id);
+	dependency_manager_->try_modification_by_id(id, !is_active, force);
 
 	state_.classification().active_mods = dependency_manager_->get_modifications();
 
@@ -791,7 +787,6 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 				extras.push_back(std::move(new_extras_metadata));
 			}
 			else {
-				//TODO: use a more visible error message.
 				ERR_CF << "found " << extra_name << " with id=" << extra["id"] << " twice";
 			}
 		}

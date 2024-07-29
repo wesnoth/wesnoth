@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #pragma once
 
 #include "config.hpp"
+#include "global.hpp"
 #include "utils/name_generator.hpp"
 
 #include <array>
@@ -91,5 +92,14 @@ private:
 
 unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=unit_race::MALE);
 const std::string& gender_string(unit_race::GENDER gender);
+
+/**
+ * Chooses a value from the given config based on gender. If the value for
+ * the specified gender is blank, then @a default_key is used to look up a
+ * value instead.
+ */
+NOT_DANGLING const config::attribute_value & gender_value(
+    const config & cfg, unit_race::GENDER gender, const std::string & male_key,
+    const std::string & female_key, const std::string & default_key);
 
 typedef std::map<std::string,unit_race> race_map;

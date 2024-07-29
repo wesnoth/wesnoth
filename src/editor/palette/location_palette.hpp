@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "editor/editor_display.hpp"
 #include "editor/palette/common_palette.hpp"
-#include "editor/palette/tristate_button.hpp"
 
 class location_palette_item;
 class location_palette_button;

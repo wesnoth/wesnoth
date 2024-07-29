@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2022
+	Copyright (C) 2021 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,9 +14,7 @@
 
 #include "gui/dialogs/multiplayer/match_history.hpp"
 
-#include "desktop/open.hpp"
 #include "formula/string_utils.hpp"
-#include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -24,6 +22,8 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "network_download_file.hpp"
 #include "serialization/string_utils.hpp"
@@ -51,12 +51,44 @@ mp_match_history::mp_match_history(const std::string& player_name, wesnothd_conn
 
 void mp_match_history::pre_show(window& win)
 {
+	win.set_enter_disabled(true);
+
 	button& newer_history = find_widget<button>(&win, "newer_history", false);
 	button& older_history = find_widget<button>(&win, "older_history", false);
 	connect_signal_mouse_left_click(newer_history, std::bind(&mp_match_history::newer_history_offset, this));
 	connect_signal_mouse_left_click(older_history, std::bind(&mp_match_history::older_history_offset, this));
 
+	button& search = find_widget<button>(&win, "search", false);
+	connect_signal_mouse_left_click(search, std::bind(&mp_match_history::new_search, this));
+
+	text_box& search_player = find_widget<text_box>(&win, "search_player", false);
+	search_player.set_value(player_name_);
+
+	std::vector<config> content_types;
+	content_types.emplace_back("label", _("Scenario"));
+	content_types.emplace_back("label", _("Era"));
+	content_types.emplace_back("label", _("Modification"));
+
+	find_widget<menu_button>(&win, "search_content_type", false).set_values(content_types);
+
 	update_display();
+}
+
+void mp_match_history::new_search()
+{
+	int old_offset = offset_;
+	std::string old_player_name = player_name_;
+	text_box& search_player = find_widget<text_box>(get_window(), "search_player", false);
+	player_name_ = search_player.get_value();
+
+	// display update failed, set the offset back to what it was before
+	if(!update_display()) {
+		offset_ = old_offset;
+		player_name_ = old_player_name;
+	} else {
+		label& title = find_widget<label>(get_window(), "title", false);
+		title.set_label(VGETTEXT("Match History — $player", {{"player", player_name_}}));
+	}
 }
 
 void mp_match_history::newer_history_offset()
@@ -77,12 +109,27 @@ void mp_match_history::older_history_offset()
 	}
 }
 
+namespace
+{
+std::string key_with_fallback(const config::attribute_value& val)
+{
+	// Note that using the fallback arg of str() doesn't work since the value is set,
+	// it's just set as an empty string, and the fallback is only returned if the value
+	// is actually unset.
+	if(std::string s = val.str(); !s.empty()) {
+		return s;
+	} else {
+		return font::unicode_em_dash;
+	}
+}
+};
+
 bool mp_match_history::update_display()
 {
-	const config history = request_history(offset_);
+	const config history = request_history();
 
 	// request failed, nothing to do
-	if(history.child_count("game_history_result") == 0) {
+	if(history.child_count("game_history_results") == 0) {
 		return false;
 	}
 
@@ -91,17 +138,18 @@ bool mp_match_history::update_display()
 
 	listbox* tab_bar = find_widget<listbox>(get_window(), "tab_bar", false, true);
 	connect_signal_notify_modified(*tab_bar, std::bind(&mp_match_history::tab_switch_callback, this));
+	tab_bar->select_row(0);
 
 	int i = 0;
-	for(const config& game : history.child_range("game_history_result")) {
+	for(const config& game : history.mandatory_child("game_history_results").child_range("game_history_result")) {
 		widget_data row;
 		grid& history_grid = history_box->add_row(row);
 
-		dynamic_cast<label*>(history_grid.find("game_name", false))->set_label(game["game_name"].str());
-		dynamic_cast<label*>(history_grid.find("scenario_name", false))->set_label(game["scenario_name"].str());
-		dynamic_cast<label*>(history_grid.find("era_name", false))->set_label("<span color='#baac7d'>"+_("Era: ")+"</span>"+game["era_name"].str());
-		dynamic_cast<label*>(history_grid.find("game_start", false))->set_label(game["game_start"].str()+_(" UTC+0"));
-		dynamic_cast<label*>(history_grid.find("version", false))->set_label(game["version"].str());
+		dynamic_cast<label*>(history_grid.find("game_name", false))->set_label(key_with_fallback(game["game_name"]));
+		dynamic_cast<label*>(history_grid.find("scenario_name", false))->set_label(key_with_fallback(game["scenario_name"]));
+		dynamic_cast<label*>(history_grid.find("era_name", false))->set_label("<span color='#baac7d'>" + _("Era: ") + "</span>" + key_with_fallback(game["era_name"]));
+		dynamic_cast<label*>(history_grid.find("game_start", false))->set_label(key_with_fallback(game["game_start"]) + _(" UTC+0"));
+		dynamic_cast<label*>(history_grid.find("version", false))->set_label(key_with_fallback(game["version"]));
 
 		button* replay_download = dynamic_cast<button*>(history_grid.find("replay_download", false));
 		std::string replay_url = game["replay_url"].str();
@@ -115,12 +163,19 @@ bool mp_match_history::update_display()
 		}
 
 		std::vector<std::string> player_list;
+		std::vector<std::string> player_faction_list;
 		for(const config& player : game.child_range("player")) {
-			player_list.emplace_back(player["name"].str()+": "+player["faction"].str());
+			player_list.emplace_back(font::unicode_bullet + " " + player["name"].str() + ":");
+			player_faction_list.emplace_back(player["faction"].str());
 		}
+
 		label* players = dynamic_cast<label*>(history_grid.find("players", false));
 		players->set_label(utils::join(player_list, "\n"));
-		players->set_visible(gui2::widget::visibility::invisible);
+
+		label* factions = dynamic_cast<label*>(history_grid.find("player_factions", false));
+		factions->set_label(utils::join(player_faction_list, "\n"));
+
+		history_grid.find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
 
 		label* modifications = dynamic_cast<label*>(history_grid.find("modifications", false));
 		const auto& children = game.child_range("modification");
@@ -128,7 +183,7 @@ bool mp_match_history::update_display()
 			std::vector<std::string> modifications_list;
 
 			for(const config& modification : game.child_range("modification")) {
-				modifications_list.emplace_back(modification["name"].str());
+				modifications_list.emplace_back(font::unicode_bullet + " " + modification["name"].str());
 			}
 
 			modifications->set_label(utils::join(modifications_list, "\n"));
@@ -163,12 +218,15 @@ bool mp_match_history::update_display()
 	return true;
 }
 
-const config mp_match_history::request_history(int offset)
+const config mp_match_history::request_history()
 {
 	config request;
 	config& child = request.add_child("game_history_request");
-	child["offset"] = offset;
-	child["search_for"] = player_name_;
+	child["offset"] = offset_;
+	child["search_player"] = player_name_;
+	child["search_game_name"] = find_widget<text_box>(get_window(), "search_game_name", false).get_value();
+	child["search_content_type"] = find_widget<menu_button>(get_window(), "search_content_type", false).get_value();
+	child["search_content"] = find_widget<text_box>(get_window(), "search_content", false).get_value();
 	DBG_NW << request.debug();
 	connection_.send_data(request);
 
@@ -183,17 +241,17 @@ const config mp_match_history::request_history(int offset)
 		// lobby responses are not received while this method is running, and are handled in the lobby after it completes
 		// history results are never received in the lobby
 		if(connection_.receive_data(response)) {
-			if(response.child_count("game_history_result") == 0) {
+			if(response.child_count("game_history_results") == 0) {
 				DBG_NW << "Received non-history data: " << response.debug();
 				if(!response["error"].str().empty()) {
 					ERR_NW << "Received error from server: " << response["error"].str();
-					gui2::show_error_message(_("The server responded with an error:")+response["error"].str());
-					return {};
-				} else if(!response["no_data"].str().empty()) {
-					DBG_NW << "Player has no game history data.";
-					gui2::show_error_message(_("No game history found."));
+					gui2::show_error_message(_("The server responded with an error:")+" "+response["error"].str());
 					return {};
 				}
+			} else if(response.mandatory_child("game_history_results").child_count("game_history_result") == 0) {
+				DBG_NW << "Player has no game history data.";
+				gui2::show_error_message(_("No game history found."));
+				return {};
 			} else {
 				DBG_NW << "Received history data: " << response.debug();
 				return response;
@@ -228,29 +286,14 @@ void mp_match_history::tab_switch_callback()
 	for(unsigned i = 0; i < history_box->get_item_count(); i++) {
 		grid* history_grid = history_box->get_row_grid(i);
 		if(tab == 0) {
-			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("era_name", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("game_start", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("version", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<button*>(history_grid->find("replay_download", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("players", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("modifications", false))->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::invisible);
 		} else if(tab == 1) {
-			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("era_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("game_start", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("version", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<button*>(history_grid->find("replay_download", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("players", false))->set_visible(gui2::widget::visibility::visible);
-			dynamic_cast<label*>(history_grid->find("modifications", false))->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::visible);
+			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::invisible);
 		} else if(tab == 2) {
-			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("era_name", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("game_start", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("version", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<button*>(history_grid->find("replay_download", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("players", false))->set_visible(gui2::widget::visibility::invisible);
-			dynamic_cast<label*>(history_grid->find("modifications", false))->set_visible(gui2::widget::visibility::visible);
+			history_grid->find("player_grid", false)->set_visible(gui2::widget::visibility::invisible);
+			history_grid->find("modifications", false)->set_visible(gui2::widget::visibility::visible);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,11 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
@@ -32,8 +30,6 @@
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
 
-#include "game_board.hpp"
-#include "game_data.hpp"
 #include "gettext.hpp"
 #include "recall_list_manager.hpp"
 #include "team.hpp"
@@ -42,7 +38,7 @@
 #include "ai/manager.hpp"
 
 #include "display_context.hpp"
-#include "filter_context.hpp"
+#include "video.hpp"
 
 #include <vector>
 #include <functional>
@@ -92,6 +88,7 @@ public:
 	void clear_data()
 	{
 		data.clear();
+		pages.clear();
 	}
 
 	void set_data(const std::string& new_data)
@@ -110,13 +107,13 @@ private:
 	{
 		pages.clear();
 		std::size_t start = 0;
-		while(start + max_inspect_win_len < data.size()) {
+		while(start + page_characters < data.size()) {
 			// This could search into data that's already on a previous page, which is why the result
 			// is then checked for end < start.
-			std::size_t end = data.find_last_of('\n', start + max_inspect_win_len);
+			std::size_t end = data.find_last_of('\n', start + page_characters);
 			int len;
 			if(end == std::string::npos || end < start) {
-				len = max_inspect_win_len;
+				len = page_characters;
 			} else {
 				len = end - start + 1;
 			}
@@ -127,7 +124,7 @@ private:
 			pages.emplace_back(start, data.size() - start);
 		}
 	}
-	static const unsigned int max_inspect_win_len = 20000;
+	unsigned int page_characters = 10000 / video::get_pixel_scale();
 	std::string data;
 	std::vector<std::pair<std::size_t,int>> pages;
 };
@@ -188,6 +185,8 @@ public:
 			pages_->set_label(out.str());
 			left_->set_visible(widget::visibility::visible);
 			right_->set_visible(widget::visibility::visible);
+			left_->set_active(current_page_ > 0);
+			right_->set_active(current_page_ < n_pages - 1);
 		} else {
 			pages_->set_label("");
 			left_->set_visible(widget::visibility::invisible);

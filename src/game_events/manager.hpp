@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,8 +23,6 @@
 #include <set>
 #include <string>
 
-class filter_context;
-class game_data;
 class game_lua_kernel;
 
 namespace game_events
@@ -63,7 +61,7 @@ public:
 	/** Create an event handler from an [event] tag. */
 	void add_event_handler_from_wml(const config& handler, game_lua_kernel& lk, bool is_menu_item = false);
 	/** Create an empty event handler. Expects the caller to finish setting up the event. */
-	pending_event_handler add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat = false, bool is_menu_item = false);
+	pending_event_handler add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat = false, double priority = 0., bool is_menu_item = false);
 
 	/** Removes an event handler. */
 	void remove_event_handler(const std::string& id);

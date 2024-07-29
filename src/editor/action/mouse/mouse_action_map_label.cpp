@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 
 #include "editor/editor_display.hpp"
 #include "editor/controller/editor_controller.hpp"
-#include "editor/map/context_manager.hpp"
 
 #include "gui/dialogs/editor/edit_label.hpp"
 

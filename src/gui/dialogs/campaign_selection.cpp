@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,24 +17,20 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "filesystem.hpp"
 #include "font/text_formatting.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/multimenu_button.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
-#include "lexical_cast.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 
 #include <functional>
 #include "utils/irdya_datetime.hpp"
@@ -55,6 +51,12 @@ void campaign_selection::campaign_selected()
 
 	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
+
+		if(tree.selected_item()->id() == missing_campaign_) {
+			find_widget<button>(this, "ok", false).set_active(false);
+		} else {
+			find_widget<button>(this, "ok", false).set_active(true);
+		}
 
 		const int choice = std::distance(page_ids_.begin(), iter);
 		if(iter == page_ids_.end()) {
@@ -88,7 +90,7 @@ void campaign_selection::campaign_selected()
 				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 				entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-				if(preferences::is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
+				if(prefs::get().is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
 					std::string laurel;
 
 					if(n + 1 >= max_n) {
@@ -221,11 +223,30 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		}
 	}
 
+	// List of which options has been selected in the completion filter multimenu_button
+	boost::dynamic_bitset<> filter_comp_options = find_widget<multimenu_button>(this, "filter_completion", false).get_toggle_states();
+
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
-		if(show_items[i]) {
-			add_campaign_to_tree(levels[i]->data());
+		bool completed = prefs::get().is_campaign_completed(levels[i]->data()["id"]);
+		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
+		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
+		// Check for non-completion on every difficulty save the first.
+		const bool only_first_completed = difficulties.size() > 1 &&
+			std::none_of(difficulties.begin() + 1, difficulties.end(), did_complete_at);
+		const bool completed_easy = only_first_completed && did_complete_at(difficulties.front());
+		const bool completed_hardest = !difficulties.empty() && did_complete_at(difficulties.back());
+		const bool completed_mid = completed && !completed_hardest && !completed_easy;
+
+		if( show_items[i] && (
+					( (!completed) && filter_comp_options[0] )       // Selects all campaigns not finished by player
+				 || ( completed && filter_comp_options[4] )          // Selects all campaigns finished by player
+				 || ( completed_hardest && filter_comp_options[3] )  // Selects campaigns completed in hardest difficulty
+				 || ( completed_easy && filter_comp_options[1] )     // Selects campaigns completed in easiest difficulty
+				 || ( completed_mid && filter_comp_options[2])       // Selects campaigns completed in any other difficulty
+				 )) {
+			add_campaign_to_tree(levels[i]->data());
 			if (!exists_in_filtered_result) {
 				exists_in_filtered_result = levels[i]->id() == was_selected;
 			}
@@ -313,6 +334,13 @@ void campaign_selection::pre_show(window& window)
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
 
+	multimenu_button& filter_comp = find_widget<multimenu_button>(&window, "filter_completion", false);
+	connect_signal_notify_modified(filter_comp,
+		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
+	for (unsigned j = 0; j < filter_comp.num_options(); j++) {
+		filter_comp.select_option(j);
+	}
+
 	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
 		const config& campaign = level->data();
 
@@ -339,6 +367,29 @@ void campaign_selection::pre_show(window& window)
 		page_ids_.push_back(campaign["id"]);
 	}
 
+	std::vector<std::string> dirs;
+	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
+	if(dirs.size() <= 15) {
+		config missing;
+		missing["icon"] = "units/unknown-unit.png";
+		missing["name"] = _("Missing Campaigns");
+		missing["completed"] = false;
+		missing["id"] = missing_campaign_;
+
+		add_campaign_to_tree(missing);
+
+		widget_data data;
+		widget_item item;
+
+		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
+		data.emplace("description", item);
+
+		pages.add_page(data);
+		page_ids_.push_back(missing_campaign_);
+	}
+
 	//
 	// Set up Mods selection dropdown
 	//
@@ -354,6 +405,7 @@ void campaign_selection::pre_show(window& window)
 			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
 
 			mod_states_.push_back(active);
+			mod_ids_.emplace_back(mod->id);
 		}
 
 		mods_menu.set_values(mod_menu_values);
@@ -442,7 +494,7 @@ void campaign_selection::post_show(window& window)
 
 	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
 
-	preferences::set_modifications(engine_.active_mods(), false);
+	prefs::get().set_modifications(engine_.active_mods(), false);
 }
 
 void campaign_selection::mod_toggled()
@@ -455,7 +507,7 @@ void campaign_selection::mod_toggled()
 
 	for(unsigned i = 0; i < mod_states_.size(); i++) {
 		if(mod_states_[i]) {
-			engine_.toggle_mod(i);
+			engine_.toggle_mod(mod_ids_[i]);
 		}
 	}
 

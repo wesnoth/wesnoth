@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-sotbe)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2020-02-14 16:39+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -187,8 +187,8 @@ msgstr "Morte de Kapou'e"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
 msgid "Kapou’e"
 msgstr "Kapou’e"
 
@@ -865,9 +865,13 @@ msgstr ""
 #
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:204
+#, fuzzy
+#| msgid ""
+#| "Whatever else happens, we have to pass through these mountains and I "
+#| "dislike leaving enemies in our rear. Stab, smite, and slay!"
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
-"leaving enemies in our rear. Stab, smite, and slay!"
+"leaving enemies to our rear. Stab, smite, and slay!"
 msgstr ""
 "Aconteça o que acontecer, temos de passar por estas montanhas e não gosto "
 "deixar os inimigos na nossa retaguarda. Apunhalam, destruam e matam!"
@@ -1143,7 +1147,7 @@ msgstr "Etheliel"
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:69
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
@@ -1701,7 +1705,7 @@ msgstr "De maneira nenhuma! Grüü quer esmagar alguns mortos-vivos."
 msgid ""
 "Grüü is right. It is not wise to let these undead remain here, cutting off "
 "our supply lines and path of retreat. In these days of turmoil, we don’t "
-"know what lies ahead, so it is best not to leave any threats in our rear."
+"know what lies ahead, so it is best not to leave any threats to our rear."
 msgstr ""
 "Grüü está certo. Não é sábio deixar que estes mortos-vivos continuam aqui a "
 "cortar as nossas linhas de suprimentos e caminhos de retirada. Nestes dias "
@@ -2339,7 +2343,7 @@ msgid "Defeat the elves"
 msgstr "Derrota os Elfos"
 
 #
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:76
 msgid "Lucile"
 msgstr "Lucile"
@@ -5589,76 +5593,6 @@ msgstr ""
 "sua coragem e astúcia chegaram até mesmo à Wesnoth."
 
 #
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
-msgid "Novice Orcish Shaman"
-msgstr "Aprendiz de Buxo Orc"
-
-#
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Novice Shamans are still young and vigorous, but "
-#| "their spell-casting ability still needs improvement."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Novice Shamans are still young and vigorous, but their "
-"spell-casting ability still needs improvement."
-msgstr ""
-"Bruxos Orcs são os guardiões da magia orc. Respeitados entre as tribos orcs, "
-"formam o Conselho Orc, que toma importantes decisões para toda a comunidade "
-"e arbitra os muitos conflitos que surgem entre as tribos dessa raça. Embora "
-"sejam fisicamente fracos (para orcs), Bruxos Orcs são lançadores de feitiços "
-"e podem amaldiçoar os seus inimigos, drenando as suas vidas. Bruxos Orcs "
-"Novatos ainda são jovens e vigorosos, mas a sua habilidade de lançar "
-"feitiços ainda precisa de melhorar."
-
-#
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
-msgid "Old Orcish Shaman"
-msgstr "Velho Bruxo Orc"
-
-#
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Old Orcish Shamans are shamans that have mastered "
-#| "magic, although their physical strength has declined with age."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Old Orcish Shamans are shamans that have mastered "
-"magic, although their physical strength has declined with age."
-msgstr ""
-"Bruxos Orcs são os guardiões da magia orc. Respeitados entre as tribos orcs, "
-"formam o Conselho Orc, que toma importantes decisões para toda a comunidade "
-"e arbitra os muitos conflitos que surgem entre as tribos dessa raça. Embora "
-"sejam fisicamente fracos (para orcs), Bruxos Orcs são lançadores de feitiços "
-"e podem amaldiçoar os seus inimigos, drenando as suas vidas... Bruxos Orcs "
-"Antigos são bruxos que dominaram a magia completamente, embora a sua força "
-"física tenha diminuído com a idade."
-
-#
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 msgid "Orcish Shaman"
@@ -5688,6 +5622,74 @@ msgstr ""
 "e arbitra os muitos conflitos que surgem entre as tribos dessa raça. Embora "
 "sejam fisicamente fracos (para orcs), Bruxos Orcs são lançadores de feitiços "
 "e podem amaldiçoar os seus inimigos, drenando as suas vidas."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
+msgid "variation^Novice"
+msgstr ""
+
+#
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Novice Shamans are still young and vigorous, but "
+#| "their spell-casting ability still needs improvement."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Novice Shamans are still young and vigorous, but their "
+"spell-casting ability still needs improvement."
+msgstr ""
+"Bruxos Orcs são os guardiões da magia orc. Respeitados entre as tribos orcs, "
+"formam o Conselho Orc, que toma importantes decisões para toda a comunidade "
+"e arbitra os muitos conflitos que surgem entre as tribos dessa raça. Embora "
+"sejam fisicamente fracos (para orcs), Bruxos Orcs são lançadores de feitiços "
+"e podem amaldiçoar os seus inimigos, drenando as suas vidas. Bruxos Orcs "
+"Novatos ainda são jovens e vigorosos, mas a sua habilidade de lançar "
+"feitiços ainda precisa de melhorar."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
+msgid "variation^Elder"
+msgstr ""
+
+#
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Old Orcish Shamans are shamans that have mastered "
+#| "magic, although their physical strength has declined with age."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Old Orcish Shamans are shamans that have mastered "
+"magic, although their physical strength has declined with age."
+msgstr ""
+"Bruxos Orcs são os guardiões da magia orc. Respeitados entre as tribos orcs, "
+"formam o Conselho Orc, que toma importantes decisões para toda a comunidade "
+"e arbitra os muitos conflitos que surgem entre as tribos dessa raça. Embora "
+"sejam fisicamente fracos (para orcs), Bruxos Orcs são lançadores de feitiços "
+"e podem amaldiçoar os seus inimigos, drenando as suas vidas... Bruxos Orcs "
+"Antigos são bruxos que dominaram a magia completamente, embora a sua força "
+"física tenha diminuído com a idade."
 
 #
 #. [message]: speaker=unit
@@ -5733,18 +5735,26 @@ msgstr ""
 "Maldição, sem Inarix para liderar os seus répteis, não podemos mais contar "
 "com a ajuda deles."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
 msgid "Al’Brock"
 msgstr "Al’Brock"
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
 msgid "Flar’Tar"
 msgstr "Flar’Tar"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "A Grande Horda: o custo de manutenção de cada unidade diminuiu em um."
+
+#
+#~ msgid "Novice Orcish Shaman"
+#~ msgstr "Aprendiz de Buxo Orc"
+
+#
+#~ msgid "Old Orcish Shaman"
+#~ msgstr "Velho Bruxo Orc"
 
 #
 #~ msgid ""

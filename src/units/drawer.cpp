@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,8 +26,7 @@
 #include "map/location.hpp"
 #include "map/map.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
-#include "sdl/surface.hpp"
+#include "preferences/preferences.hpp"
 #include "team.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
@@ -69,7 +68,7 @@ std::unique_ptr<image::locator> get_orb_image(orb_status os)
  */
 std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
 {
-	if(!preferences::show_status_on_ally_orb())
+	if(!prefs::get().show_status_on_ally_orb())
 		return get_orb_image(orb_status::allied);
 
 	// This is conditional on prefs_show_orb, because a user might want to disable the standard
@@ -287,7 +286,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	texture ellipse_back;
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
-	if(draw_bars && (preferences::show_side_colors() || is_selected_hex)) {
+	if(draw_bars && (prefs::get().show_side_colors() || is_selected_hex)) {
 		if(adjusted_params.submerge > 0.0) {
 			// The division by 2 seems to have no real meaning,
 			// It just works fine with the current center of ellipse
@@ -389,6 +388,13 @@ void unit_drawer::redraw_unit(const unit& u) const
 			}
 		};
 
+		const std::vector<std::string> overlays_abilities = u.overlays_abilities();
+		for(const std::string& ov : overlays_abilities) {
+			if(texture tex = image::get_texture(ov)) {
+				textures.push_back(std::move(tex));
+			}
+		};
+
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, [=,
 			textures      = std::move(textures),
 			adj_y         = adjusted_params.y,
@@ -461,6 +467,45 @@ void unit_drawer::redraw_unit(const unit& u) const
 	} else if(has_halo) {
 		halo_man.set_location(ac.unit_halo_, halo_x, halo_y);
 	}
+
+	const std::vector<std::string> halos_abilities = u.halo_abilities();
+	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
+	if(!has_abil_halo && !halos_abilities.empty()) {
+		for(const std::string& halo_ab : halos_abilities){
+			halo::handle abil_halo = halo_man.add(
+				halo_x, halo_y,
+				halo_ab + u.TC_image_mods(),
+				map_location(-1, -1)
+			);
+			if(abil_halo->valid()){
+				ac.abil_halos_.push_back(abil_halo);
+			}
+		}
+	}
+	if(has_abil_halo && (ac.abil_halos_ref_ != halos_abilities || halos_abilities.empty())){
+		for(halo::handle& abil_halo : ac.abil_halos_){
+			halo_man.remove(abil_halo);
+		}
+		ac.abil_halos_.clear();
+		if(!halos_abilities.empty()){
+			for(const std::string& halo_ab : halos_abilities){
+				halo::handle abil_halo = halo_man.add(
+					halo_x, halo_y,
+					halo_ab + u.TC_image_mods(),
+					map_location(-1, -1)
+				);
+				if(abil_halo->valid()){
+					ac.abil_halos_.push_back(abil_halo);
+				}
+			}
+		}
+	} else if(has_abil_halo){
+		for(halo::handle& abil_halo : ac.abil_halos_){
+			halo_man.set_location(abil_halo, halo_x, halo_y);
+		}
+	}
+
+	ac.abil_halos_ref_ = halos_abilities;
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;

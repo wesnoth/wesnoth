@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2005-12-19 00:38+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -164,8 +164,8 @@ msgstr "מותו של קאפואה"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
 msgid "Kapou’e"
 msgstr "קאפואה"
 
@@ -716,7 +716,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:204
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
-"leaving enemies in our rear. Stab, smite, and slay!"
+"leaving enemies to our rear. Stab, smite, and slay!"
 msgstr ""
 
 #. [message]: speaker=unit
@@ -946,7 +946,7 @@ msgstr "את'ליאל"
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:69
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
@@ -1363,7 +1363,7 @@ msgstr ""
 msgid ""
 "Grüü is right. It is not wise to let these undead remain here, cutting off "
 "our supply lines and path of retreat. In these days of turmoil, we don’t "
-"know what lies ahead, so it is best not to leave any threats in our rear."
+"know what lies ahead, so it is best not to leave any threats to our rear."
 msgstr ""
 
 #. [message]: speaker=Vraurk
@@ -1887,7 +1887,7 @@ msgstr "יער שקט"
 msgid "Defeat the elves"
 msgstr "הבס את כל מנהיגי האוייב"
 
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:76
 msgid "Lucile"
 msgstr "לוסיל"
@@ -4221,42 +4221,6 @@ msgid ""
 "Tales of his courage and cunning reached even as far as Wesnoth itself."
 msgstr ""
 
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
-#, fuzzy
-msgid "Novice Orcish Shaman"
-msgstr "שליט אורקי"
-
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Novice Shamans are still young and vigorous, but their "
-"spell-casting ability still needs improvement."
-msgstr ""
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
-#, fuzzy
-msgid "Old Orcish Shaman"
-msgstr "שליט אורקי"
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Old Orcish Shamans are shamans that have mastered "
-"magic, although their physical strength has declined with age."
-msgstr ""
-
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 #, fuzzy
@@ -4272,6 +4236,40 @@ msgid ""
 "between tribes of this argumentative race. Although physically weak (for "
 "orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
+msgid "variation^Novice"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Novice Shamans are still young and vigorous, but their "
+"spell-casting ability still needs improvement."
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
+msgid "variation^Elder"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Old Orcish Shamans are shamans that have mastered "
+"magic, although their physical strength has declined with age."
 msgstr ""
 
 #. [message]: speaker=unit
@@ -4309,18 +4307,26 @@ msgid ""
 "their help."
 msgstr "בלי אינריקס שינהיג את הלטאיש שלו, לא נותרה תקווה."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
 msgid "Al’Brock"
 msgstr ""
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
 msgid "Flar’Tar"
 msgstr ""
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Novice Orcish Shaman"
+#~ msgstr "שליט אורקי"
+
+#, fuzzy
+#~ msgid "Old Orcish Shaman"
+#~ msgstr "שליט אורקי"
 
 #, fuzzy
 #~ msgid ""

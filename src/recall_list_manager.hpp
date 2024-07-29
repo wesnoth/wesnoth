@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,6 @@
 
 #include <string>
 #include <vector>
-
-namespace ai {
-	class readonly_context_impl;
-}
 
 /** This class encapsulates the recall list of a team. */
 class recall_list_manager {

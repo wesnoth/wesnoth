@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/widgets/settings.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
@@ -49,10 +49,10 @@ void init()
 	//
 	config cfg;
 	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg"));
+		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
 
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
 
 		read(cfg, *stream, &validator);
 	} catch(const config::error& e) {
@@ -66,7 +66,7 @@ void init()
 	//
 	// Parse GUI definitions.
 	//
-	const std::string& current_theme = preferences::gui_theme();
+	const std::string& current_theme = prefs::get().gui_theme();
 
 	for(const config& g : cfg.child_range("gui")) {
 		const std::string id = g["id"];

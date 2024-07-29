@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "editor/palette/palette_manager.hpp"
 #include "widgets/widget.hpp"
 
-#include "tooltips.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
 
 namespace editor {

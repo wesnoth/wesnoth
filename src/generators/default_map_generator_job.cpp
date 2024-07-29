@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 #include "serialization/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "generators/map_generator.hpp" // mapgen_exception
@@ -886,7 +885,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * more interesting types than the default.
 	 */
 	const height_map temperature_map = generate_height_map(data.width,data.height,
-		cfg["temperature_iterations"].to_int() * data.width * data.height / default_dimensions,
+		static_cast<size_t>(cfg["temperature_iterations"].to_int()) * data.width * data.height / default_dimensions,
 		cfg["temperature_size"], 0, 0);
 
 	LOG_NG << "Generated temperature map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";

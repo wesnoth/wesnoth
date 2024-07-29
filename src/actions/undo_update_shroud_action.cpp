@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,7 +13,6 @@
 */
 
 #include "actions/undo_update_shroud_action.hpp"
-#include "replay.hpp"
 
 namespace actions
 {

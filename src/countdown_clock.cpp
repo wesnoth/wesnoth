@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,7 @@
 #include "countdown_clock.hpp"
 
 #include "team.hpp"
-#include "saved_game.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "sound.hpp"
 
 namespace {
@@ -74,7 +73,7 @@ void countdown_clock::maybe_play_sound()
 {
 	if(!playing_sound_ && team_.countdown_time() < WARNTIME )
 	{
-		if(preferences::turn_bell() || preferences::sound_on() || preferences::UI_sound_on())
+		if(prefs::get().turn_bell() || prefs::get().sound_on() || prefs::get().ui_sound_on())
 		{
 			const int loop_ticks = team_.countdown_time();
 			const int fadein_ticks = (loop_ticks > WARNTIME / 2) ? loop_ticks - WARNTIME / 2 : 0;

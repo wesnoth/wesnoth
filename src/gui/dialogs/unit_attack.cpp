@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -13,7 +13,6 @@
 	See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/unit_attack.hpp"
 
@@ -21,16 +20,11 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "game_config.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
-#include "help/help.hpp"
 #include "language.hpp"
 #include "color.hpp"
 #include "units/unit.hpp"
@@ -116,7 +110,26 @@ void unit_attack::pre_show(window& window)
 			attacker_itor_->get_location(), false, attacker.weapon
 		);
 
-		const std::set<std::string> checking_tags_other = {"disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+		std::pair<std::string, std::string> types = attacker_weapon.damage_type();
+		std::string attw_type_second = types.second;
+		std::string attw_type = !(types.first).empty() ? types.first : attacker_weapon.type();
+		if (!attw_type.empty()) {
+			attw_type = string_table["type_" + attw_type];
+		}
+		if (!attw_type_second.empty()) {
+			attw_type_second = ", " + string_table["type_" + attw_type_second];
+		}
+		std::pair<std::string, std::string> def_types = defender_weapon.damage_type();
+		std::string defw_type_second = def_types.second;
+		std::string defw_type = !(def_types.first).empty() ? def_types.first : defender_weapon.type();
+		if (!defw_type.empty()) {
+			defw_type = string_table["type_" + defw_type];
+		}
+		if (!defw_type_second.empty()) {
+			defw_type_second = ", " + string_table["type_" + defw_type_second];
+		}
+
+		const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 		std::string attw_specials = attacker_weapon.weapon_specials();
 		std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
 		std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
@@ -142,7 +155,7 @@ void unit_attack::pre_show(window& window)
 			attw_specials_cth = " " + attw_specials_cth;
 		}
 		if(!attw_specials_others.empty()) {
-			attw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Other aspects: ")+"</b>") + "\n" + ("<i>"+attw_specials_others+"</i>");
+			attw_specials_others = "\n" + ("<b>" + _("Other aspects: ") + "</b>") + "\n" + ("<i>"+attw_specials_others+"</i>");
 		}
 		if(!defw_specials.empty()) {
 			defw_specials = " " + defw_specials;
@@ -157,32 +170,36 @@ void unit_attack::pre_show(window& window)
 			defw_specials_cth = " " + defw_specials_cth;
 		}
 		if(!defw_specials_others.empty()) {
-			defw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Other aspects: ")+"</b>") + "\n" + ("<i>"+defw_specials_others+"</i>");
+			defw_specials_others = "\n" + ("<b>" + _("Other aspects: ") + "</b>") + "\n" + ("<i>"+defw_specials_others+"</i>");
 		}
 
 		std::stringstream attacker_stats, defender_stats, attacker_tooltip, defender_tooltip;
 
 		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
+			<< attw_type << attw_type_second << "\n"
 			<< attacker.damage << font::weapon_numbers_sep << attacker.num_blows
 			<< attw_specials << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
-		attacker_tooltip << translation::dsgettext("wesnoth", "Weapon: ") << "<b>" << attw_name << "</b>" << "\n"
-			<< translation::dsgettext("wesnoth", "Damage: ") << attacker.damage <<  "<i>" << attw_specials_dmg <<  "</i>" << "\n"
-			<< translation::dsgettext("wesnoth", "Attacks: ") << attacker.num_blows <<  "<i>" << attw_specials_atk <<  "</i>" << "\n"
-			<< translation::dsgettext("wesnoth-lib", "Chance to hit") << ": " << font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>"<<  "<i>" << attw_specials_cth << "</i>"
+		attacker_tooltip << _("Weapon: ") << "<b>" << attw_name << "</b>" << "\n"
+			<< _("Type: ") << attw_type << attw_type_second << "\n"
+			<< _("Damage: ") << attacker.damage <<  "<i>" << attw_specials_dmg <<  "</i>" << "\n"
+			<< _("Attacks: ") << attacker.num_blows <<  "<i>" << attw_specials_atk <<  "</i>" << "\n"
+			<< _("Chance to hit: ") << font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>"<<  "<i>" << attw_specials_cth << "</i>"
 			<< attw_specials_others;
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
+			<< defw_type << defw_type_second << "\n"
 			<< defender.damage << font::weapon_numbers_sep << defender.num_blows
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
-		defender_tooltip << translation::dsgettext("wesnoth", "Weapon: ") << "<b>" << defw_name << "</b>" << "\n"
-			<< translation::dsgettext("wesnoth", "Damage: ") << defender.damage << "<i>" << defw_specials_dmg << "</i>" << "\n"
-			<< translation::dsgettext("wesnoth", "Attacks: ") << defender.num_blows <<  "<i>" << defw_specials_atk <<  "</i>" << "\n"
-			<< translation::dsgettext("wesnoth-lib", "Chance to hit") << ": " << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"
+		defender_tooltip << _("Weapon: ") << "<b>" << defw_name << "</b>" << "\n"
+			<< _("Type: ") << defw_type << defw_type_second << "\n"
+			<< _("Damage: ") << defender.damage << "<i>" << defw_specials_dmg << "</i>" << "\n"
+			<< _("Attacks: ") << defender.num_blows <<  "<i>" << defw_specials_atk <<  "</i>" << "\n"
+			<< _("Chance to hit: ") << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"
 			<< defw_specials_others;
 
 		widget_data data;

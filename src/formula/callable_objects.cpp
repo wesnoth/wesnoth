@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -191,6 +191,7 @@ unit_callable::unit_callable(const unit& u) : loc_(u.get_location()), u_(u)
 
 variant unit_callable::get_value(const std::string& key) const
 {
+
 	if(key == "x") {
 		if(loc_ == map_location::null_location()) {
 			return variant();
@@ -256,6 +257,16 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.max_attacks());
 	} else if(key == "traits") {
 		return formula_callable::convert_vector(u_.get_traits_list());
+	} else if(key == "advancements_taken") {
+		return formula_callable::convert_vector(u_.get_advancements_list());
+	} else if(key == "objects") {
+		return formula_callable::convert_vector(u_.get_objects_list());
+	} else if(key == "traits_count") {
+		return variant(u_.traits_count());
+	} else if(key == "advancements_taken_count") {
+		return variant(u_.advancements_count());
+	} else if(key == "objects_count") {
+		return variant(u_.objects_count());
 	} else if(key == "extra_recruit") {
 		return formula_callable::convert_vector(u_.recruits());
 	} else if(key == "advances_to") {
@@ -306,7 +317,7 @@ variant unit_callable::get_value(const std::string& key) const
 		} else if(key == "vision_cost") {
 			mt.get_vision().write(cfg);
 		} else if(key == "jamming_cost") {
-			mt.get_vision().write(cfg);
+			mt.get_jamming().write(cfg);
 		} else if(key == "defense") {
 			mt.get_defense().write(cfg);
 			needs_flip = true;
@@ -353,6 +364,11 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "canrecruit");
 	add_input(inputs, "undead");
 	add_input(inputs, "traits");
+	add_input(inputs, "advancements_taken");
+	add_input(inputs, "objects");
+	add_input(inputs, "traits_count");
+	add_input(inputs, "advancements_taken_count");
+	add_input(inputs, "objects_count");
 	add_input(inputs, "attacks");
 	add_input(inputs, "abilities");
 	add_input(inputs, "hitpoints");
@@ -435,6 +451,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.level());
 	} else if(key == "total_movement" || key == "max_moves" || key == "moves") {
 		return variant(u_.movement());
+	} else if(key == "undead") {
+		return variant(u_.musthave_status("unpoisonable") && u_.musthave_status("undrainable") && u_.musthave_status("unplagueable"));
 	} else if(key == "unpoisonable") {
 		return variant(u_.musthave_status("unpoisonable"));
 	} else if(key == "unslowable") {
@@ -704,7 +722,6 @@ void team_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "village_gold");
 	add_input(inputs, "village_support");
 	add_input(inputs, "recall_cost");
-	add_input(inputs, "name");
 	add_input(inputs, "is_human");
 	add_input(inputs, "is_ai");
 	add_input(inputs, "is_network");
@@ -768,6 +785,10 @@ variant team_callable::get_value(const std::string& key) const
 		return variant(team_.flag_icon());
 	} else if(key == "team_name") {
 		return variant(team_.team_name());
+	} else if(key == "faction") {
+		return variant(team_.faction());
+	} else if(key == "faction_name") {
+		return variant(team_.faction_name());
 	} else if(key == "color") {
 		return variant(team_.color());
 	} else if(key == "share_vision") {

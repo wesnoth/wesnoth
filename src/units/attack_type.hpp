@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,10 +20,8 @@
 #include "config.hpp"
 #include <string>
 #include <vector>
-#include <cassert>
 
 #include <boost/iterator/indirect_iterator.hpp>
-#include <boost/range/iterator_range.hpp>
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
@@ -88,6 +86,20 @@ public:
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
 	                      unsigned & max_attacks) const;
+
+	/**
+	 * Select best damage type based on frequency count for replacement_type and based on highest damage for alternative_type.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
+	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
+	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
+	 */
+	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const;
+	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
+	std::pair<std::string, std::string> damage_type() const;
+	/** @return A list of alternative_type damage types. */
+	std::set<std::string> alternative_damage_types() const;
+
 	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage() const;
 
@@ -98,7 +110,10 @@ public:
 	int composite_value(const unit_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
-	/** Returns list who contains get_weapon_ability and get_specials list for each ability type */
+	/**
+	 * @param special the tag name to check for
+	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
+	 */
 	unit_ability_list get_specials_and_abilities(const std::string& special) const;
 	/** used for abilities used like weapon
 	 * @return True if the ability @a special is active.
@@ -114,10 +129,15 @@ public:
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
 	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	/**
+	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
+	 * uses when a defender has no weapon for a given range.
+	 */
+	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter) const;
+	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -136,16 +156,22 @@ private:
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	/**
-	 * Filter a list of abilities or weapon specials, removing any entries that are overridden by
-	 * the overwrite_specials attributes of a second list.
+	 * Filter a list of abilities or weapon specials, removing any entries that don't own
+	 * the overwrite_specials attributes.
 	 *
-	 * @param ability The special ability type who is being checked.
-	 * @param input list to check, a filtered copy of this list is returned by the function.
 	 * @param overwriters list that may have overwrite_specials attributes.
-	 * @param filter_self name of [filter_"self/student"] if is abilities or specials who are checked.
-	 * @param is_special if true, input contains weapon specials; if false, it contains abilities.
+	 * @param tag_name type of abilitie/special checked.
 	 */
-	unit_ability_list overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const;
+	unit_ability_list overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const;
+	/**
+	 * Check whether @a cfg would be overwritten by any element of @a overwriters.
+	 *
+	 * @return True if element checked is overwritable.
+	 * @param overwriters list used for check if element is overwritable.
+	 * @param cfg element checked.
+	 * @param tag_name type of abilitie/special checked.
+	 */
+	bool overwrite_special_checking(unit_ability_list& overwriters, const config& cfg, const std::string& tag_name) const;
 	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.

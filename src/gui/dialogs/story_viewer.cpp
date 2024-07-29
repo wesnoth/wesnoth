@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,8 @@
 #include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -89,9 +91,12 @@ void story_viewer::pre_show(window& window)
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
+	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
+
+	find_widget<scroll_label>(get_window(), "part_text", false)
+		.connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD), queue_position::front_pre_child);
 
 	// Tell the game display not to draw
 	game_was_already_hidden_ = display::get_singleton()->get_prevent_draw();
@@ -115,7 +120,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<button>(get_window(), "back", false).set_active(part_index_ != 0);
+	find_widget<button>(get_window(), "prev", false).set_active(part_index_ != 0);
 
 	//
 	// Music and sound
@@ -265,6 +270,7 @@ void story_viewer::display_part()
 	std::string new_panel_mode;
 
 	switch(current_part_->story_text_location()) {
+
 		case storyscreen::part::BLOCK_TOP:
 			new_panel_mode = "top";
 			break;
@@ -302,10 +308,12 @@ void story_viewer::display_part()
 	PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
 
 	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
-
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
+
+	// Regenerate any background blur texture
+	panel_canvas.queue_reblur();
 
 	begin_fade_draw(true);
 	// if the previous page was skipped, it is possible that we already have a timer running.

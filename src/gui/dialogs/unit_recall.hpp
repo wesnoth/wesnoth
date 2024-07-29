@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,11 +15,8 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/group.hpp"
-#include "units/race.hpp"
 #include "units/ptr.hpp"
 
-#include <memory>
 #include <string>
 #include <vector>
 
@@ -28,7 +25,6 @@ class team;
 namespace gui2
 {
 
-class text_box_base;
 
 namespace dialogs
 {

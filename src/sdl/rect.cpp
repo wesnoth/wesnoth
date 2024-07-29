@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,8 +15,6 @@
 
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/window.hpp"
-#include "video.hpp"
 
 #include <ostream>
 

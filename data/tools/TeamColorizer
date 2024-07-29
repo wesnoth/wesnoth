@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+
+import sys, argparse
+from unit_tree.team_colorizer import colorize
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description="""Map the magenta team-color patches in the input image to red (or a custom
+color) in the output image, copy the result to output.""",
+        formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument(
+        "-d", "--dryrun",
+        action="store_true",
+        help="""Print the command to be executed, but don't actually
+generate the output image.""")
+    parser.add_argument(
+        "-v", "--verbose",
+        action="count",
+        default=0,
+        help="""Print extra information about what is going on.""")
+    parser.add_argument(
+        "-x", "--hex",
+        action="store_true",
+        help="""Use base 16 for defining custom colors. Works with the
+-r, -g, and -b options.""")
+    parser.add_argument(
+        "-m", "--magick",
+        action="store",
+        default="convert",
+        help="""Command that executes the convert(1) program of the 
+imagemagick(1) suite. Supports subcommands (e.g. `magick convert`).""")
+    parser.add_argument(
+        "-l", "--luminance",
+        action="store_const",
+        dest="method",
+        const="luminance",
+        default="average",
+        help="""Use luminance instead of average value for computing
+color brightness when mapping colors. This produces
+results that are noticeably poorer than those produced
+by the in-game algorithm (which is used in the absence
+of -l).""")
+    parser.add_argument(
+        "-r", "--red",
+        action="store",
+        default=None,
+        help="""Set the desired red value to RED. Should be an integer
+between 0 and 255, or a hex value in the same range if
+-x is given.""")
+    parser.add_argument(
+        "-g", "--green",
+        action="store",
+        default=None,
+        help="Same as -r, but for green value.")
+    parser.add_argument(
+        "-b", "--blue",
+        action="store",
+        default=None,
+        help="Same as -r, but for blue value.")
+    parser.add_argument(
+        "--color",
+        action="store",
+        choices=sorted(team_colors.keys()),
+        default=None,
+        help="""Causes -r, -g, and -b to be ignored. Sets the desired
+color (default: red). This method uses a more complex
+color definition but produces results identical to the
+in-game algorithm.""")
+    parser.add_argument(
+        "input_file",
+        action="store")
+    parser.add_argument(
+        "output_file",
+        action="store")
+    namespace = parser.parse_args()
+    verbose = namespace.verbose
+    dryrun = namespace.dryrun
+    if dryrun:
+        verbose = max(1, verbose)
+
+    exit_code = colorize(
+        namespace.color,
+        namespace.input_file,
+        namespace.output_file,
+        magick=namespace.magick,
+        method=namespace.method,
+        hex=namespace.hex,
+        namespace=namespace
+    )
+    if not dryrun and exit_code != 0:
+        sys.exit(exit_code)
+
+# TeamColorizer ends here.

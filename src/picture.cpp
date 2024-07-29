@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,13 +20,10 @@
 
 #include "picture.hpp"
 
-#include "config.hpp"
-#include "display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
 #include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
@@ -34,10 +31,8 @@
 
 #include <SDL2/SDL_image.h>
 
-#include <functional>
 
 #include <boost/algorithm/string.hpp>
-#include <boost/functional/hash_fwd.hpp>
 
 #include <array>
 #include <set>
@@ -58,18 +53,18 @@ struct std::hash<image::locator::value>
 {
 	std::size_t operator()(const image::locator::value& val) const
 	{
-		std::size_t hash = std::hash<unsigned>{}(val.type_);
+		std::size_t hash = std::hash<unsigned>{}(val.type);
 
-		if(val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
-			boost::hash_combine(hash, val.filename_);
+		if(val.type == image::locator::FILE || val.type == image::locator::SUB_FILE) {
+			boost::hash_combine(hash, val.filename);
 		}
 
-		if(val.type_ == image::locator::SUB_FILE) {
-			boost::hash_combine(hash, val.loc_.x);
-			boost::hash_combine(hash, val.loc_.y);
-			boost::hash_combine(hash, val.center_x_);
-			boost::hash_combine(hash, val.center_y_);
-			boost::hash_combine(hash, val.modifications_);
+		if(val.type == image::locator::SUB_FILE) {
+			boost::hash_combine(hash, val.loc.x);
+			boost::hash_combine(hash, val.loc.y);
+			boost::hash_combine(hash, val.center_x);
+			boost::hash_combine(hash, val.center_y);
+			boost::hash_combine(hash, val.modifications);
 		}
 
 		return hash;
@@ -136,10 +131,10 @@ T& locator::access_in_cache(cache_type<T>& cache) const
 }
 
 template<typename T>
-std::optional<T> locator::copy_from_cache(cache_type<T>& cache) const
+utils::optional<T> locator::copy_from_cache(cache_type<T>& cache) const
 {
 	const auto& elem = cache.get_element(val_);
-	return elem.loaded ? std::make_optional(elem.item) : std::nullopt;
+	return elem.loaded ? utils::make_optional(elem.item) : utils::nullopt;
 }
 
 template<typename T>
@@ -218,10 +213,6 @@ parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 
 } // end anon namespace
 
-mini_terrain_cache_map mini_terrain_cache;
-mini_terrain_cache_map mini_fogged_terrain_cache;
-mini_terrain_cache_map mini_highlighted_terrain_cache;
-
 void flush_cache()
 {
 	for(surface_cache& cache : surfaces_) {
@@ -236,90 +227,19 @@ void flush_cache()
 	textures_.clear();
 	textures_hexed_.clear();
 	texture_tod_colored_.clear();
-	mini_terrain_cache.clear();
-	mini_fogged_terrain_cache.clear();
-	mini_highlighted_terrain_cache.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
 }
 
-void locator::parse_arguments()
+locator locator::clone(const std::string& mods) const
 {
-	std::string& fn = val_.filename_;
-	if(fn.empty()) {
-		return;
-	}
-
-	if(boost::algorithm::starts_with(fn, data_uri_prefix)) {
-		parsed_data_URI parsed{fn};
-
-		if(!parsed.good) {
-			std::string_view view{ fn };
-			std::string_view stripped = view.substr(0, view.find(","));
-			ERR_IMG << "Invalid data URI: " << stripped;
-		}
-
-		val_.is_data_uri_ = true;
-	}
-
-	std::size_t markup_field = fn.find('~');
-
-	if(markup_field != std::string::npos) {
-		val_.type_ = SUB_FILE;
-		val_.modifications_ = fn.substr(markup_field, fn.size() - markup_field);
-		fn = fn.substr(0, markup_field);
-	}
-}
-
-locator::locator()
-	: val_()
-{
-}
-
-locator::locator(const locator& a, const std::string& mods)
-	: val_(a.val_)
-{
+	locator res = *this;
 	if(!mods.empty()) {
-		val_.modifications_ += mods;
-		val_.type_ = SUB_FILE;
+		res.val_.modifications += mods;
+		res.val_.type = SUB_FILE;
 	}
-}
 
-locator::locator(const char* filename)
-	: val_(filename)
-{
-	parse_arguments();
-}
-
-locator::locator(const std::string& filename)
-	: val_(filename)
-{
-	parse_arguments();
-}
-
-locator::locator(const std::string& filename, const std::string& modifications)
-	: val_(filename, modifications)
-{
-}
-
-locator::locator(const char* filename, const char* modifications)
-	: val_(filename, modifications)
-{
-}
-
-locator::locator(const std::string& filename,
-		const map_location& loc,
-		int center_x,
-		int center_y,
-		const std::string& modifications)
-	: val_(filename, loc, center_x, center_y, modifications)
-{
-}
-
-locator& locator::operator=(const locator& a)
-{
-	val_ = a.val_;
-	return *this;
+	return res;
 }
 
 std::ostream& operator<<(std::ostream& s, const locator& l)
@@ -334,85 +254,62 @@ std::ostream& operator<<(std::ostream& s, const locator& l)
 	return s;
 }
 
-locator::value::value()
-	: type_(NONE)
-	, is_data_uri_(false)
-	, filename_()
-	, loc_()
-	, modifications_()
-	, center_x_(0)
-	, center_y_(0)
+locator::value::value(const std::string& fn)
+	: type(FILE)
+	, filename(fn)
 {
-}
+	if(filename.empty()) {
+		return;
+	}
 
-locator::value::value(const char* filename)
-	: type_(FILE)
-	, is_data_uri_(false)
-	, filename_(filename)
-	, loc_()
-	, modifications_()
-	, center_x_(0)
-	, center_y_(0)
-{
-}
+	if(boost::algorithm::starts_with(filename, data_uri_prefix)) {
+		if(parsed_data_URI parsed{ filename }; !parsed.good) {
+			std::string_view view{ filename };
+			std::string_view stripped = view.substr(0, view.find(","));
+			ERR_IMG << "Invalid data URI: " << stripped;
+		}
 
-locator::value::value(const std::string& filename)
-	: type_(FILE)
-	, is_data_uri_(false)
-	, filename_(filename)
-	, loc_()
-	, modifications_()
-	, center_x_(0)
-	, center_y_(0)
-{
+		is_data_uri = true;
+	}
+
+	if(const std::size_t markup_field = filename.find('~'); markup_field != std::string::npos) {
+		type = SUB_FILE;
+		modifications = filename.substr(markup_field, filename.size() - markup_field);
+		filename = filename.substr(0, markup_field);
+	}
 }
 
 locator::value::value(const std::string& filename, const std::string& modifications)
-	: type_(SUB_FILE)
-	, is_data_uri_(false)
-	, filename_(filename)
-	, loc_()
-	, modifications_(modifications)
-	, center_x_(0)
-	, center_y_(0)
+	: type(SUB_FILE)
+	, filename(filename)
+	, modifications(modifications)
 {
 }
 
-locator::value::value(const char* filename, const char* modifications)
-	: type_(FILE)
-	, is_data_uri_(false)
-	, filename_(filename)
-	, loc_()
-	, modifications_(modifications)
-	, center_x_(0)
-	, center_y_(0)
-{
-}
-
-locator::value::value(const std::string& filename,
+locator::value::value(
+		const std::string& filename,
 		const map_location& loc,
 		int center_x,
 		int center_y,
 		const std::string& modifications)
-	: type_(SUB_FILE)
-	, is_data_uri_(false)
-	, filename_(filename)
-	, loc_(loc)
-	, modifications_(modifications)
-	, center_x_(center_x)
-	, center_y_(center_y)
+	: type(SUB_FILE)
+	, filename(filename)
+	, modifications(modifications)
+	, loc(loc)
+	, center_x(center_x)
+	, center_y(center_y)
 {
 }
 
 bool locator::value::operator==(const value& a) const
 {
-	if(a.type_ != type_) {
+	if(a.type != type) {
 		return false;
-	} else if(type_ == FILE) {
-		return filename_ == a.filename_;
-	} else if(type_ == SUB_FILE) {
-		return std::tie(filename_, loc_, modifications_, center_x_, center_y_) ==
-			std::tie(a.filename_, a.loc_, a.modifications_, a.center_x_, a.center_y_);
+	} else if(type == FILE) {
+		return filename == a.filename;
+	} else if(type == SUB_FILE) {
+		return std::tie(filename, loc, modifications, center_x, center_y) ==
+			std::tie(a.filename, a.loc, a.modifications, a.center_x, a.center_y);
 	}
 
 	return false;
@@ -420,13 +317,13 @@ bool locator::value::operator==(const value& a) const
 
 bool locator::value::operator<(const value& a) const
 {
-	if(type_ != a.type_) {
-		return type_ < a.type_;
-	} else if(type_ == FILE) {
-		return filename_ < a.filename_;
-	} else if(type_ == SUB_FILE) {
-		return std::tie(filename_, loc_, modifications_, center_x_, center_y_) <
-			std::tie(a.filename_, a.loc_, a.modifications_, a.center_x_, a.center_y_);
+	if(type != a.type) {
+		return type < a.type;
+	} else if(type == FILE) {
+		return filename < a.filename;
+	} else if(type == SUB_FILE) {
+		return std::tie(filename, loc, modifications, center_x, center_y) <
+			std::tie(a.filename, a.loc, a.modifications, a.center_x, a.center_y);
 	}
 
 	return false;
@@ -451,36 +348,37 @@ static surface load_image_file(const image::locator& loc)
 	surface res;
 	const std::string& name = loc.get_filename();
 
-	std::string location = filesystem::get_binary_file_location("images", name);
+	auto location = filesystem::get_binary_file_location("images", name);
 
 	// Many images have been converted from PNG to WEBP format,
 	// but the old filename may still be saved in savegame files etc.
 	// If the file does not exist in ".png" format, also try ".webp".
-	if(location.empty() && filesystem::ends_with(name, ".png")) {
+	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
+	if(!location && (filesystem::ends_with(name, ".png") || filesystem::ends_with(name, ".jpg"))) {
 		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
 		location = filesystem::get_binary_file_location("images", webp_name);
-		if(!location.empty()) {
+		if(location) {
 			WRN_IMG << "Replaced missing '" << name << "' with found '"
 			        << webp_name << "'.";
 		}
 	}
 
 	{
-		if(!location.empty()) {
+		if(location) {
 			// Check if there is a localized image.
-			const std::string loc_location = filesystem::get_localized_path(location);
-			if(!loc_location.empty()) {
-				location = loc_location;
+			const auto loc_location = filesystem::get_localized_path(location.value());
+			if(loc_location) {
+				location = loc_location.value();
 			}
 
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location.value());
 			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 
 			// If there was no standalone localized image, check if there is an overlay.
-			if(res && loc_location.empty()) {
-				const std::string ovr_location = filesystem::get_localized_path(location, "--overlay");
-				if(!ovr_location.empty()) {
-					add_localized_overlay(ovr_location, res);
+			if(res && !loc_location) {
+				const auto ovr_location = filesystem::get_localized_path(location.value(), "--overlay");
+				if(ovr_location) {
+					add_localized_overlay(ovr_location.value(), res);
 				}
 			}
 		}
@@ -665,9 +563,9 @@ static surface apply_light(surface surf, const light_string& ls)
 
 bool locator::file_exists() const
 {
-	return val_.is_data_uri_
-		? parsed_data_URI{val_.filename_}.good
-		: !filesystem::get_binary_file_location("images", val_.filename_).empty();
+	return val_.is_data_uri
+		? parsed_data_URI{val_.filename}.good
+		: filesystem::get_binary_file_location("images", val_.filename).has_value();
 }
 
 static surface load_from_disk(const locator& loc)
@@ -925,25 +823,13 @@ point get_size(const locator& i_locator, bool skip_cache)
 
 bool is_in_hex(const locator& i_locator)
 {
-	bool result;
-	{
-		if(i_locator.in_cache(in_hex_info_)) {
-			result = i_locator.locate_in_cache(in_hex_info_);
-		} else {
-			const surface image(get_surface(i_locator, UNSCALED));
-
-			bool res = in_mask_surface(image, get_hexmask());
-
-			i_locator.add_to_cache(in_hex_info_, res);
-
-			// std::cout << "in_hex : " << i_locator.get_filename()
-			//		<< " " << (res ? "yes" : "no") << "\n";
-
-			result = res;
-		}
+	if(auto cached_val = i_locator.copy_from_cache(in_hex_info_)) {
+		return *cached_val;
 	}
 
-	return result;
+	bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
+	i_locator.add_to_cache(in_hex_info_, res);
+	return res;
 }
 
 bool is_empty_hex(const locator& i_locator)
@@ -982,7 +868,7 @@ bool exists(const image::locator& i_locator)
 		if(i_locator.is_data_uri()) {
 			cache = parsed_data_URI{i_locator.get_filename()}.good;
 		} else {
-			cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();
+			cache = filesystem::get_binary_file_location("images", i_locator.get_filename()).has_value();
 		}
 	}
 

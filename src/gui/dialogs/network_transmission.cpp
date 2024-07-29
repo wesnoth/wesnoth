@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2024
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,12 +19,9 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2::dialogs
@@ -90,7 +87,7 @@ void network_transmission::pre_show(window& window)
 
 void network_transmission::post_show(window& /*window*/)
 {
-	pump_monitor_.window_ = std::nullopt;
+	pump_monitor_.window_ = utils::nullopt;
 
 	if(get_retval() == retval::CANCEL) {
 		connection_->cancel();

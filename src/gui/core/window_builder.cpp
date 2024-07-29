@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/window_builder/instance.hpp"
 #include "gui/widgets/pane.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"

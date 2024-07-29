@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,14 +19,14 @@
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
-#include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
 
+#include "utils/optional_fwd.hpp"
+
 #include <boost/asio/steady_timer.hpp>
 
-#include <optional>
 #include <random>
 
 namespace wesnothd
@@ -35,7 +35,7 @@ namespace wesnothd
 class server : public server_base
 {
 public:
-	server(int port, bool keep_alive, const std::string& config_file, std::size_t, std::size_t);
+	server(int port, bool keep_alive, const std::string& config_file);
 
 	// We keep this flag for coroutines. Since they get their stack unwinding done after player_connections_
 	// is already destroyed they need to know to avoid calling remove_player() on invalid iterators.
@@ -75,15 +75,15 @@ public:
 			player->socket()
 		);
 	}
-	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_to_lobby(simple_wml::document& data, utils::optional<player_iterator> exclude = {});
 	void send_to_player(player_iterator player, simple_wml::document& data) {
 		utils::visit(
 			[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
 			player->socket()
 		);
 	}
-	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
-	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {});
 
 	bool player_is_in_game(player_iterator player) const {
 		return player->get_game() != nullptr;
@@ -212,7 +212,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const game& g, std::optional<player_iterator> exclude = {});
+	void update_game_in_lobby(const game& g, utils::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 

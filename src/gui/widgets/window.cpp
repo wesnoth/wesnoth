@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "gui/widgets/window_private.hpp"
 
 #include "config.hpp"
-#include "cursor.hpp"
 #include "draw.hpp"
 #include "events.hpp"
 #include "formula/callable.hpp"
@@ -39,7 +38,6 @@
 #include "gui/core/layout_exception.hpp"
 #include "sdl/point.hpp"
 #include "gui/core/window_builder.hpp"
-#include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/container_base.hpp"
@@ -54,10 +52,7 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "preferences/general.hpp"
-#include "preferences/display.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp" // only for toggle_fullscreen
@@ -68,11 +63,7 @@
 #include <functional>
 
 #include <algorithm>
-#include <iterator>
-#include <stdexcept>
 
-namespace wfl { class function_symbol_table; }
-namespace gui2 { class button; }
 
 static lg::log_domain log_gui("gui/layout");
 #define ERR_GUI  LOG_STREAM(err, log_gui)
@@ -564,8 +555,14 @@ int window::show(const unsigned auto_close_timeout)
 
 	try
 	{
-		// Start our loop drawing will happen here as well.
+		// According to the comment in the next loop, we need to pump() once
+		// before we know which mouse buttons are down. Assume they're all
+		// down, otherwise there's a race condition when the MOUSE_UP gets
+		// processed in the first pump(), which immediately closes the window.
 		bool mouse_button_state_initialized = false;
+		mouse_button_state_ = std::numeric_limits<uint32_t>::max();
+
+		// Start our loop, drawing will happen here as well.
 		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
 			// Process and handle all pending events.
 			events::pump();
@@ -619,13 +616,22 @@ void window::draw()
 	}
 
 	// Draw background.
-	this->draw_background();
+	if(!this->draw_background()) {
+		// We may need to blur the background behind the window,
+		// but at this point it hasn't been rendered yet.
+		// We thus defer rendering to next frame so we can snapshot what
+		// is underneath the window without drawing over it.
+		defer_region(get_rectangle());
+		return;
+	}
 
 	// Draw children.
 	this->draw_children();
 
 	// Draw foreground.
-	this->draw_foreground();
+	if(!this->draw_foreground()) {
+		defer_region(get_rectangle());
+	}
 
 	return;
 }
@@ -646,15 +652,100 @@ void window::hide()
 	hidden_ = true;
 }
 
+void window::update_render_textures()
+{
+	point draw = get_size();
+	point render = draw * video::get_pixel_scale();
+
+	// Check that the render buffer size is correct.
+	point buf_raw = render_buffer_.get_raw_size();
+	point buf_draw = render_buffer_.draw_size();
+	bool raw_size_changed = buf_raw.x != render.x || buf_raw.y != render.y;
+	bool draw_size_changed = buf_draw.x != draw.x || buf_draw.y != draw.y;
+	if (!raw_size_changed && !draw_size_changed) {
+		// buffers are fine
+		return;
+	}
+
+	if(raw_size_changed) {
+		LOG_DP << "regenerating window render buffer as " << render;
+		render_buffer_ = texture(render.x, render.y, SDL_TEXTUREACCESS_TARGET);
+	}
+	if(raw_size_changed || draw_size_changed) {
+		LOG_DP << "updating window render buffer draw size to " << draw;
+		render_buffer_.set_draw_size(draw);
+	}
+
+	// Clear the entire texture.
+	{
+		auto setter = draw::set_render_target(render_buffer_);
+		draw::clear();
+	}
+
+	// Rerender everything.
+	queue_rerender();
+}
+
+void window::queue_rerender()
+{
+	queue_rerender(get_rectangle());
+}
+
+void window::queue_rerender(const rect& screen_region)
+{
+	// More than one region updating per-frame should be rare.
+	// Just rerender the minimal area that covers everything.
+	rect local_region = screen_region.intersect(get_rectangle());
+	local_region.shift(-get_origin());
+	awaiting_rerender_.expand_to_cover(local_region);
+}
+
+void window::defer_region(const rect& screen_region)
+{
+	LOG_DP << "deferring region " << screen_region;
+	deferred_regions_.push_back(screen_region);
+}
+
+void window::render()
+{
+	// Ensure our render texture is correctly sized.
+	update_render_textures();
+
+	// Mark regions that were previously deferred for rerender and repaint.
+	for(auto& region : deferred_regions_) {
+		queue_redraw(region);
+	}
+	deferred_regions_.clear();
+
+	// Render the portion of the window awaiting rerender (if any).
+	if (awaiting_rerender_.empty()) {
+		return;
+	}
+	DBG_DP << "window::render() local " << awaiting_rerender_;
+	auto target_setter = draw::set_render_target(render_buffer_);
+	auto clip_setter = draw::override_clip(awaiting_rerender_);
+	draw();
+	awaiting_rerender_ = sdl::empty_rect;
+}
+
 bool window::expose(const rect& region)
 {
 	DBG_DP << "window::expose " << region;
-	rect i = get_rectangle().intersect(region);
-	i.clip(draw::get_clip());
-	if (i.empty()) {
+
+	// Calculate the destination region we need to draw.
+	rect dst = get_rectangle().intersect(region);
+	dst.clip(draw::get_clip());
+	if (dst.empty()) {
 		return false;
 	}
-	draw();
+
+	// Blit from the pre-rendered buffer.
+	rect src = dst;
+	src.shift(-get_origin());
+	render_buffer_.set_src(src);
+	draw::blit(render_buffer_, dst);
+	render_buffer_.clear_src();
+
 	return true;
 }
 
@@ -1212,9 +1303,18 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 			}
 		}
 	}
-	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
-		set_retval(retval::OK);
-		handled = true;
+	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
+		if (mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)) {
+			// Don't handle if modifier is pressed
+			handled = false;
+		} else {
+			// Trigger window OK button only if Enter enabled,
+			// otherwise pass handling to widget
+			if (!enter_disabled_) {
+				set_retval(retval::OK);
+				handled = true;
+			}
+		}
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
 		set_retval(retval::CANCEL);
 		handled = true;

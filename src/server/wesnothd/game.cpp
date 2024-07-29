@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,15 +16,11 @@
 #include "server/wesnothd/game.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp" // game_config::observer_team_name
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "preferences/credentials.hpp"
-#include "serialization/string_utils.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
 
-#include <cstdio>
 #include <iomanip>
 #include <sstream>
 
@@ -96,6 +92,7 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, started_(false)
 	, level_()
 	, history_()
+	, chat_history_()
 	, description_(nullptr)
 	, current_turn_(0)
 	, current_side_index_(0)
@@ -319,6 +316,7 @@ void game::start_game(player_iterator starter)
 
 	update_turn_data();
 	clear_history();
+	clear_chat_history();
 
 	// Send [observer] tags for all observers that are already in the game.
 	send_observerjoins();
@@ -771,7 +769,7 @@ void game::send_leave_game(player_iterator user) const
 	server.send_to_player(user, leave_game);
 }
 
-std::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
+utils::optional<player_iterator> game::kick_member(const simple_wml::node& kick, player_iterator kicker)
 {
 	if(kicker != owner_) {
 		send_server_message("You cannot kick: not the game host", kicker);
@@ -803,7 +801,7 @@ std::optional<player_iterator> game::kick_member(const simple_wml::node& kick, p
 	return user;
 }
 
-std::optional<player_iterator> game::ban_user(const simple_wml::node& ban, player_iterator banner)
+utils::optional<player_iterator> game::ban_user(const simple_wml::node& ban, player_iterator banner)
 {
 	if(banner != owner_) {
 		send_server_message("You cannot ban: not the game host", banner);
@@ -880,10 +878,10 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 	simple_wml::node* const message = data.root().child("message");
 	assert(message);
 	message->set_attr_dup("sender", user->info().name().c_str());
-
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
-
+	// Save chat as history to be sent to newly joining players
+	chat_history_.push_back(data.clone());
 	send_data(data, user);
 }
 
@@ -1123,6 +1121,7 @@ void game::handle_random_choice()
 	simple_wml::node& random_seed = command.add_child("random_seed");
 
 	random_seed.set_attr_dup("new_seed", stream.str().c_str());
+	random_seed.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1188,6 +1187,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 	change_controller_wml.set_attr_dup("controller", side_controller::get_string(*new_controller).c_str());
 	change_controller_wml.set_attr("is_local", "yes");
+	change_controller_wml.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1416,6 +1416,8 @@ bool game::add_player(player_iterator player, bool observer)
 		send_history(player);
 	} else {
 		send_user_list();
+		// Send the game chat log, regardless if observer or not
+		send_chat_history(player);
 	}
 
 	const std::string clones = has_same_ip(player);
@@ -1542,7 +1544,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 	return false;
 }
 
-void game::send_user_list(std::optional<player_iterator> exclude)
+void game::send_user_list(utils::optional<player_iterator> exclude)
 {
 	// If the game hasn't started yet, then send all players a list of the users in the game.
 	if(started_ /*|| description_ == nullptr*/) {
@@ -1630,7 +1632,7 @@ void game::load_next_scenario(player_iterator user)
 }
 
 template<typename Container>
-void game::send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude)
+void game::send_to_players(simple_wml::document& data, const Container& players, utils::optional<player_iterator> exclude)
 {
 	for(const auto& player : players) {
 		if(player != exclude) {
@@ -1639,14 +1641,14 @@ void game::send_to_players(simple_wml::document& data, const Container& players,
 	}
 }
 
-void game::send_data(simple_wml::document& data, std::optional<player_iterator> exclude)
+void game::send_data(simple_wml::document& data, utils::optional<player_iterator> exclude)
 {
 	send_to_players(data, all_game_users(), exclude);
 }
 
 void game::send_data_sides(simple_wml::document& data,
 		const simple_wml::string_span& sides,
-		std::optional<player_iterator> exclude)
+		utils::optional<player_iterator> exclude)
 {
 	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl);
 
@@ -1688,7 +1690,7 @@ std::string game::has_same_ip(player_iterator user) const
 	return clones;
 }
 
-void game::send_observerjoins(std::optional<player_iterator> player)
+void game::send_observerjoins(utils::optional<player_iterator> player)
 {
 	for(auto ob : observers_) {
 		if(ob == player) {
@@ -1746,6 +1748,17 @@ void game::send_history(player_iterator player) const
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
 	}
 }
+
+void game::send_chat_history(player_iterator player) const
+{
+	if(chat_history_.empty()) {
+		return;
+	}
+	for(auto& h : chat_history_) {
+		server.send_to_player(player, *h);
+	}
+}
+
 
 static bool is_invalid_filename_char(char c)
 {
@@ -1844,6 +1857,11 @@ void game::clear_history()
 	history_.clear();
 }
 
+void game::clear_chat_history()
+{
+	chat_history_.clear();
+}
+
 void game::set_description(simple_wml::node* desc)
 {
 	description_ = desc;
@@ -1911,7 +1929,7 @@ std::string game::debug_sides_info() const
 	return result.str();
 }
 
-std::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
+utils::optional<player_iterator> game::find_user(const simple_wml::string_span& name)
 {
 	auto player { player_connections_.get<name_t>().find(name.to_string()) };
 	if(player != player_connections_.get<name_t>().end()) {
@@ -1921,7 +1939,7 @@ std::optional<player_iterator> game::find_user(const simple_wml::string_span& na
 	}
 }
 
-void game::send_and_record_server_message(const char* message, std::optional<player_iterator> exclude)
+void game::send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude)
 {
 	auto doc = std::make_unique<simple_wml::document>();
 	send_server_message(message, {}, doc.get());
@@ -1932,14 +1950,14 @@ void game::send_and_record_server_message(const char* message, std::optional<pla
 	}
 }
 
-void game::send_server_message_to_all(const char* message, std::optional<player_iterator> exclude)
+void game::send_server_message_to_all(const char* message, utils::optional<player_iterator> exclude)
 {
 	simple_wml::document doc;
 	send_server_message(message, {}, &doc);
 	send_data(doc, exclude);
 }
 
-void game::send_server_message(const char* message, std::optional<player_iterator> player, simple_wml::document* docptr) const
+void game::send_server_message(const char* message, utils::optional<player_iterator> player, simple_wml::document* docptr) const
 {
 	simple_wml::document docbuf;
 	if(docptr == nullptr) {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
@@ -149,9 +148,10 @@ void multi_page::finalize(std::unique_ptr<generator_base> generator, const std::
 	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
 }
 
-void multi_page::impl_draw_background()
+bool multi_page::impl_draw_background()
 {
 	/* DO NOTHING */
+	return true;
 }
 
 void multi_page::set_self_active(const bool /*active*/)

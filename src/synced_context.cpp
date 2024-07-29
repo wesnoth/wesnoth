@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,9 +21,7 @@
 #include "game_board.hpp"
 #include "game_classification.hpp"
 #include "game_data.hpp"
-#include "game_end_exceptions.hpp"
 #include "log.hpp"
-#include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
 #include "random.hpp"
 #include "random_deterministic.hpp"
@@ -37,8 +35,6 @@
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
-#include <cstdlib>
-#include <iomanip>
 #include <sstream>
 
 static lg::log_domain log_replay("replay");
@@ -208,6 +204,14 @@ void synced_context::set_is_simultaneous()
 	is_simultaneous_ = true;
 }
 
+void synced_context::block_undo(bool do_block)
+{
+	is_undo_blocked_ |= do_block;
+	resources::undo_stack->clear();
+	// Since the action cannot be undone, send it immidiately to the other players.
+	resources::controller->send_actions();
+}
+
 bool synced_context::undo_blocked()
 {
 	// this method should only works in a synced context.
@@ -217,7 +221,8 @@ bool synced_context::undo_blocked()
 	// if the game has ended, undoing is blocked.
 	// if the turn has ended undoing is blocked.
 	return is_simultaneous_
-	    || (randomness::generator->get_random_calls() != 0)
+	    || is_undo_blocked_
+	    || (is_synced() && (randomness::generator->get_random_calls() != 0))
 	    || resources::controller->is_regular_game_end()
 	    || resources::gamedata->end_turn_forced();
 }
@@ -231,14 +236,14 @@ int synced_context::get_unit_id_diff()
 
 void synced_context::pull_remote_user_input()
 {
-	syncmp_registry::pull_remote_choice();
+	resources::controller->receive_actions();
 }
 
 // TODO: this is now also used for normal actions, maybe it should be renamed.
 void synced_context::send_user_choice()
 {
 	assert(undo_blocked());
-	syncmp_registry::send_user_choice();
+	resources::controller->send_actions();
 }
 
 std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
@@ -251,11 +256,16 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 	}
 }
 
+int synced_context::server_choice::request_id() const
+{
+	return resources::controller->get_server_request_number();
+}
+
 void synced_context::server_choice::send_request() const
 {
 	resources::controller->send_to_wesnothd(config {
 		"request_choice", config {
-			"request_id", resources::controller->get_server_request_number(),
+			"request_id", request_id(),
 			name(), request(),
 		},
 	});
@@ -289,7 +299,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			DBG_REPLAY << "MP synchronization: local server choice";
 			leave_synced_context sync;
 			config cfg = sch.local_choice();
-
+			cfg["request_id"] = sch.request_id();
 			//-1 for "server" todo: change that.
 			resources::recorder->user_input(sch.name(), cfg, -1);
 			return cfg;
@@ -339,7 +349,11 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
 
-			return action->mandatory_child(sch.name());
+			config res = action->mandatory_child(sch.name());
+			if(res["request_id"] != sch.request_id()) {
+				WRN_REPLAY << "Unexpected request_id: " << res["request_id"] << " expected: " <<  sch.request_id();
+			}
+			return res;
 		}
 	}
 }
@@ -347,6 +361,23 @@ config synced_context::ask_server_choice(const server_choice& sch)
 void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
 {
 	undo_commands_.emplace_front(commands, ctx);
+}
+
+void synced_context::add_undo_commands(int idx, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(idx, ctx);
+}
+
+void synced_context::add_undo_commands(int idx, const config& args, const game_events::queued_event& ctx)
+{
+	undo_commands_.emplace_front(idx, args, ctx);
+}
+
+bool synced_context::ignore_undo()
+{
+	auto& ct = resources::controller->current_team();
+	// Ai doesn't undo stuff, disabling the undo stack allows us to send moves to other clients sooner.
+	return ct.is_ai() && ct.auto_shroud_updates();
 }
 
 set_scontext_synced_base::set_scontext_synced_base()
@@ -360,6 +391,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneous();
+	synced_context::reset_block_undo();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
 

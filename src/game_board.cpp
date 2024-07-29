@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,9 +17,10 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "recall_list_manager.hpp"
 #include "units/unit.hpp"
+#include "units/animation_component.hpp"
 #include "utils/general.hpp"
 
 #include <set>
@@ -288,9 +289,9 @@ bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr
 	return true;
 }
 
-std::optional<std::string> game_board::replace_map(const gamemap& newmap)
+utils::optional<std::string> game_board::replace_map(const gamemap& newmap)
 {
-	std::optional<std::string> ret;
+	utils::optional<std::string> ret;
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
@@ -360,7 +361,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 		return false;
 	}
 
-	preferences::encountered_terrains().insert(new_t);
+	prefs::get().encountered_terrains().insert(new_t);
 
 	if(map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
 		int owner = village_owner(loc);
@@ -371,7 +372,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 	map_->set_terrain(loc, new_t);
 
 	for(const t_translation::terrain_code& ut : map_->underlying_union_terrain(loc)) {
-		preferences::encountered_terrains().insert(ut);
+		prefs::get().encountered_terrains().insert(ut);
 	}
 
 	return true;
@@ -470,12 +471,13 @@ temporary_unit_remover::~temporary_unit_remover()
  * the unit is moved (and restored to its previous value upon this object's
  * destruction).
  */
-temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves)
+temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst, int new_moves, bool stand)
 	: m_(m)
 	, src_(src)
 	, dst_(dst)
 	, old_moves_(-1)
 	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
+	, stand_(stand)
 {
 	auto [iter, success] = m_.move(src_, dst_);
 
@@ -483,48 +485,10 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 	if(success) {
 		old_moves_ = iter->movement_left(true);
 		iter->set_movement(new_moves);
+		if(stand_) {
+			m_.find_unit_ptr(dst_)->anim_comp().set_standing();
+		}
 	}
-}
-
-temporary_unit_mover::temporary_unit_mover(
-	game_board& b, const map_location& src, const map_location& dst, int new_moves)
-	: m_(b.units_)
-	, src_(src)
-	, dst_(dst)
-	, old_moves_(-1)
-	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
-{
-	auto [iter, success] = m_.move(src_, dst_);
-
-	// Set the movement.
-	if(success) {
-		old_moves_ = iter->movement_left(true);
-		iter->set_movement(new_moves);
-	}
-}
-
-/**
- * Constructor
- * This version does not change (nor restore) the unit's movement.
- */
-temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src, const map_location& dst)
-	: m_(m)
-	, src_(src)
-	, dst_(dst)
-	, old_moves_(-1)
-	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
-{
-	m_.move(src_, dst_);
-}
-
-temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src, const map_location& dst)
-	: m_(b.units_)
-	, src_(src)
-	, dst_(dst)
-	, old_moves_(-1)
-	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
-{
-	m_.move(src_, dst_);
 }
 
 temporary_unit_mover::~temporary_unit_mover()
@@ -535,6 +499,9 @@ temporary_unit_mover::~temporary_unit_mover()
 		// Restore the movement?
 		if(success && old_moves_ >= 0) {
 			iter->set_movement(old_moves_);
+			if(stand_) {
+				m_.find_unit_ptr(src_)->anim_comp().set_standing();
+			}
 		}
 
 		// Restore the extracted unit?

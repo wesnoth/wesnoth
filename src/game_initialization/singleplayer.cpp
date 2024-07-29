@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 #include "game_launcher.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/widgets/retval.hpp"
 #include "wml_exception.hpp"

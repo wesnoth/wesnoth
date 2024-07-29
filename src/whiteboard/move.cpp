@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,13 +20,11 @@
 #include "whiteboard/move.hpp"
 
 #include "whiteboard/visitor.hpp"
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "font/standard_colors.hpp"
 #include "game_board.hpp"
@@ -34,7 +32,6 @@
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -364,7 +361,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")";
-	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit)));
+	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit), false));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"

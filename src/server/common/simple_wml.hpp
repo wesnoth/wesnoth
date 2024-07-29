@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 
 #include <cstddef>
 #include <iosfwd>
-#include <map>
 #include <memory>
 #include <string>
 #include <vector>

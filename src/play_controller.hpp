@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -25,14 +25,11 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <set>
 
-class game_display;
-class game_data;
 class team;
-class unit;
 class replay;
 class replay_controller;
 class saved_game;
@@ -49,41 +46,22 @@ namespace font {
 }
 
 namespace game_events {
-	class manager;
 	class wml_event_pump;
-	class wml_menu_item;
 } // namespace game_events
 
-namespace soundsource {
-	class manager;
-} // namespace soundsource
-
-namespace statistics {
-	struct scenario_context;
-} // namespace statistics
-
-namespace pathfind {
-	class manager;
-}
-
-namespace tooltips {
-	class manager;
-} // namespace tooltips
+class statistics_t;
 
 namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
 
 // Holds gamestate related objects
-class game_state;
 
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
 	play_controller(const config& level,
-			saved_game& state_of_game,
-			bool skip_replay,
-			bool start_faded = false);
+			saved_game& state_of_game);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -130,6 +108,8 @@ public:
 	 * @throw quit_game_exception If the user wants to abort.
 	 */
 	virtual void process_oos(const std::string& msg) const;
+
+	bool reveal_map_default() const;
 
 	void set_end_level_data(const end_level_data& data)
 	{
@@ -263,6 +243,8 @@ public:
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
 	bool is_replay() const { return get_replay_controller() != nullptr; }
 
+	replay& recorder() const { return *replay_; }
+
 	t_string get_scenario_name() const
 	{
 		return level_["name"].t_str();
@@ -290,10 +272,6 @@ public:
 
 	void maybe_throw_return_to_play_side() const;
 
-	virtual void play_side_impl() {}
-
-	void play_side();
-
 	team& current_team();
 	const team& current_team() const;
 
@@ -307,6 +285,11 @@ public:
 	 * Changes the UI for this client to the passed side index.
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
+
+	/// Sends replay [command]s to the server
+	virtual void send_actions() { }
+	/// Reads and executes replay [command]s from the server
+	virtual void receive_actions() { }
 
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
@@ -324,6 +307,7 @@ public:
 
 	saved_game& get_saved_game() { return saved_game_; }
 
+	statistics_t& statistics() { return *statistics_context_; }
 	bool is_during_turn() const;
 	bool is_linger_mode() const;
 
@@ -350,11 +334,9 @@ protected:
 	void textbox_move_vertically(bool up);
 	void tab();
 
-
-	bool is_team_visible(int team_num, bool observer) const;
+public:
 	/** returns 0 if no such team was found. */
-	int find_last_visible_team() const;
-
+	virtual int find_viewing_side() const = 0;
 private:
 	const int ticks_;
 
@@ -385,7 +367,7 @@ protected:
 	//other objects
 	std::unique_ptr<game_display> gui_;
 	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
-	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
+	const std::unique_ptr<statistics_t> statistics_context_;
 	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; }
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; }
 	std::unique_ptr<replay> replay_;
@@ -416,8 +398,6 @@ private:
 	 */
 	void check_next_scenario_is_known();
 
-	bool victory_when_enemies_defeated_;
-	bool remove_from_carryover_on_defeat_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 

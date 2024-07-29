@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,8 +22,6 @@
 #include "ai/default/contexts.hpp"
 #include "ai/lua/core.hpp"
 #include "ai/lua/lua_object.hpp"
-#include "ai/manager.hpp"
-#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map/location.hpp"

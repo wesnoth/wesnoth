@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
-#include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -34,20 +33,16 @@
 #include "log.hpp"
 #include "map_settings.hpp"
 #include "multiplayer_error_codes.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
 
-#include <fstream>
 #include <functional>
-#include <future>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <thread>
 
 static lg::log_domain log_mp("mp/main");
@@ -72,7 +67,7 @@ public:
 	friend void mp::send_to_server(const config&);
 	friend mp::lobby_info* mp::get_lobby_info();
 
-	mp_manager(const std::optional<std::string> host);
+	mp_manager(const utils::optional<std::string> host);
 
 	~mp_manager()
 	{
@@ -162,7 +157,7 @@ public:
 	}
 };
 
-mp_manager::mp_manager(const std::optional<std::string> host)
+mp_manager::mp_manager(const utils::optional<std::string> host)
 	: network_worker()
 	, stop(false)
 	, connection(nullptr)
@@ -318,7 +313,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 		// Enter login loop
 		while(true) {
-			std::string login = preferences::login();
+			std::string login = prefs::get().login();
 
 			config response;
 			config& sp = response.add_child("login");
@@ -357,7 +352,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			if(!error) break;
 
 			do {
-				std::string password = preferences::password(host, login);
+				std::string password = prefs::get().password(host, login);
 
 				const bool fall_through = (*error)["force_confirmation"].to_bool()
 					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
@@ -472,7 +467,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				}
 
 			// If we have got a new username we have to start all over again
-			} while(login == preferences::login());
+			} while(login == prefs::get().login());
 
 			// Somewhat hacky...
 			// If we broke out of the do-while loop above error is still going to be nullopt
@@ -589,7 +584,7 @@ void mp_manager::enter_staging_mode()
 	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
 	if(connection) {
 		metadata = std::make_unique<mp_game_metadata>(*connection);
-		metadata->connected_players.insert(preferences::login());
+		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
 	}
 
@@ -617,8 +612,6 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 	// The connection should never be null here, since one should never reach this screen in local game mode.
 	assert(connection);
 
-	statistics::fresh_stats();
-
 	mp_game_metadata metadata(*connection);
 	metadata.is_host = false;
 
@@ -626,9 +619,9 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		metadata.current_turn = gi->current_turn;
 	}
 
-	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
+	if(prefs::get().skip_mp_replay() || prefs::get().blindfold_replay()) {
 		metadata.skip_replay = true;
-		metadata.skip_replay_blindfolded = preferences::blindfold_replay();
+		metadata.skip_replay_blindfolded = prefs::get().blindfold_replay();
 	}
 
 	bool dlg_ok = false;
@@ -687,9 +680,9 @@ void start_local_game()
 {
 	DBG_MP << "starting local game";
 
-	preferences::set_message_private(false);
+	prefs::get().set_message_private(false);
 
-	mp_manager(std::nullopt).enter_create_mode();
+	mp_manager(utils::nullopt).enter_create_mode();
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
@@ -701,7 +694,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not
 	// needed in commandline mode, but they are required by the functions called.
-	preferences::set_message_private(false);
+	prefs::get().set_message_private(false);
 
 	DBG_MP << "entering create mode";
 
@@ -775,8 +768,6 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	}
 
 	DBG_MP << "entering connect mode";
-
-	statistics::fresh_stats();
 
 	{
 		ng::connect_engine connect_engine(state, true, nullptr);

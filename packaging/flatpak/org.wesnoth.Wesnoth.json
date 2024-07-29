@@ -1,7 +1,7 @@
 {
     "app-id": "org.wesnoth.Wesnoth",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "22.08",
+    "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "finish-args": [
         "--device=dri",
@@ -34,14 +34,14 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.66.0/source/boost_1_66_0.tar.bz2",
-                    "sha256": "5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9"
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.67.0/source/boost_1_67_0.tar.bz2",
+                    "sha256": "2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba"
                 }
             ],
             "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context",
+                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph",
                 "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
-]
+            ]
         },
 	{
             "name": "scons",
@@ -72,6 +72,12 @@
                     "type": "git",
                     "path": "/usr/src/wesnoth/master",
                     "branch": "master"
+                },
+                {
+                     "type": "shell",
+                     "commands": [
+                          "echo Flatpak > data/dist"
+                     ]
                 }
             ]
         }

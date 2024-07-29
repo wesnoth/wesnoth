@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
@@ -28,7 +28,6 @@
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "reports.hpp"
-#include "resources.hpp"
 #include "color.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -39,12 +38,9 @@
 #include "units/unit_alignments.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <cassert>
 #include <ctime>
 #include <iomanip>
-#include <boost/dynamic_bitset.hpp>
 #include <boost/format.hpp>
-#include <boost/lexical_cast.hpp>
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
@@ -83,7 +79,7 @@ static config image_report(const std::string &image,
 using font::span_color;
 
 static void add_status(config &r,
-	char const *path, char const *desc1, char const *desc2)
+	const std::string& path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
 	s << translation::gettext(desc1) << translation::gettext(desc2);
@@ -308,7 +304,7 @@ static config unit_traits(const unit* u)
 	config res;
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
-	const std::vector<std::string> &trait_ids = u->get_traits_list();
+	const std::vector<std::string> &trait_ids = u->trait_nonhidden_ids();
 	unsigned nb = traits.size();
 	for (unsigned i = 0; i < nb; ++i)
 	{
@@ -683,7 +679,7 @@ static config unit_moves(const reports::context& rc, const unit* u, bool is_visi
 	}
 
 	tooltip << _("Movement Costs:") << "\n";
-	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+	for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
@@ -876,15 +872,28 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
-		std::string lang_type = string_table["type_" + at.type()];
+		std::string type = at.damage_type().first;
+		std::set<std::string> alt_types = at.alternative_damage_types();
+		std::string lang_type = string_table["type_" + type];
+		for(auto alt_t : alt_types){
+			lang_type += ", " + string_table["type_" + alt_t];
+		}
 
 		// SCALE_INTO() is needed in case the 72x72 images/misc/missing-image.png is substituted.
 		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO(16,16)";
-		const bool range_png_exists = image::locator(range_png).file_exists();
-		const bool type_png_exists = image::locator(type_png).file_exists();
+		const std::string type_png = std::string("icons/profiles/") + type + ".png~SCALE_INTO(16,16)";
+		std::vector<std::string> secondary_types_png;
+		for(const auto& alt_t : alt_types) {
+			secondary_types_png.push_back(std::string("icons/profiles/") + alt_t + ".png~SCALE_INTO(16,16)");
+		}
 
-		if(!range_png_exists || !type_png_exists) {
+		// If any of the images is missing, then add a text description too.
+		bool all_pngs_exist = image::locator(range_png).file_exists();
+		all_pngs_exist &= image::locator(type_png).file_exists();
+		for(const auto& png : secondary_types_png) {
+			all_pngs_exist &= image::locator(png).file_exists();
+		}
+		if(!all_pngs_exist) {
 			str << span_color(font::weapon_details_color) << "  " << "  "
 				<< range << font::weapon_details_sep
 				<< lang_type << "</span>\n";
@@ -941,6 +950,11 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
 		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
 		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
+		for(auto sec_exist : secondary_types_png){
+			if(image::locator(sec_exist).file_exists()){
+				add_image(res, spacer + "~BLIT(" + sec_exist + ",0,5)", damage_versus.tooltip);
+			}
+		}
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
@@ -1534,24 +1548,27 @@ void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::strin
 
 REPORT_GENERATOR(terrain_info, rc)
 {
-	const gamemap &map = rc.map();
+	const gamemap& map = rc.map();
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 
-	if (!map.on_board(mouseover_hex))
+	if(!map.on_board(mouseover_hex)) {
 		mouseover_hex = rc.screen().selected_hex();
+	}
 
-	if (!map.on_board(mouseover_hex))
+	if(!map.on_board(mouseover_hex)) {
 		return config();
+	}
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
+	if(t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 		return config();
+	}
 
 	config cfg;
 
 	bool high_res = false;
 
-	if (display::get_singleton()->shrouded(mouseover_hex)) {
+	if(display::get_singleton()->shrouded(mouseover_hex)) {
 		return cfg;
 	}
 	//TODO
@@ -1564,17 +1581,46 @@ REPORT_GENERATOR(terrain_info, rc)
 //	}
 
 	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
-
-		if (t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP))
+	for(const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+		if(t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
+		}
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		const std::string& terrain_name = map.get_terrain_string(underlying_terrain);
 		const std::string& terrain_icon = map.get_terrain_info(underlying_terrain).icon_image();
-		if (terrain_icon.empty())
+		if(terrain_icon.empty()) {
 			continue;
+		}
 		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res, terrain_name);
 	}
+
+	if(map.is_village(mouseover_hex)) {
+		int owner = rc.dc().village_owner(mouseover_hex);
+		// This report is used in both game and editor. get_team(viewing_side) would throw in the editor's
+		// terrain-only mode, but if the village already has an owner then we're not in that mode.
+		if(owner != 0) {
+			int viewing_side = rc.screen().viewing_side();
+			const team& viewing_team = rc.dc().get_team(viewing_side);
+
+			if(!viewing_team.fogged(mouseover_hex)) {
+				const team& owner_team = rc.dc().get_team(owner);
+
+				std::string flag_icon = owner_team.flag_icon();
+				std::string old_rgb = game_config::flag_rgb;
+				std::string new_rgb = team::get_side_color_id(owner_team.side());
+				std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
+				if(flag_icon.empty()) {
+					flag_icon = game_config::images::flag_icon;
+				}
+				std::string tooltip = side_tooltip(owner_team);
+				std::string side = std::to_string(owner_team.side());
+
+				add_image(cfg, flag_icon + mods, tooltip);
+				add_text(cfg, side, tooltip);
+			}
+		}
+	}
+
 	return cfg;
 }
 
@@ -1695,28 +1741,6 @@ REPORT_GENERATOR(observers, rc)
 	return image_report(game_config::images::observer, str.str());
 }
 
-/* TODO unused
-REPORT_GENERATOR(selected_terrain)
-{
-	const std::string selected_terrain = editor::get_selected_terrain();
-	if (selected_terrain.empty())
-		return config();
-	else
-		return text_report(selected_terrain);
-}
-*/
-
-/* TODO this is unused
-REPORT_GENERATOR(edit_left_button_function)
-{
-	const std::string left_button_function = editor::get_left_button_function();
-	if (left_button_function.empty())
-		return config();
-	else
-		return text_report(left_button_function);
-}
-*/
-
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
 	config report;
@@ -1724,7 +1748,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 
 	std::ostringstream ss;
 
-	const char* format = preferences::use_twelve_hour_clock_format()
+	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 

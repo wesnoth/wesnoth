@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2024
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 
 #include <boost/asio/connect.hpp>
 #include <boost/asio/read.hpp>
-#include <boost/asio/write.hpp>
 
 #include <algorithm>
 #include <cstdint>
@@ -122,9 +121,6 @@ void connection::handle_connect(const boost::system::error_code& ec, endpoint en
 	} else {
 		LOG_NW << "Connected to " << endpoint.address();
 
-		if(endpoint.address().is_loopback()) {
-			use_tls_ = false;
-		}
 		handshake();
 	}
 }

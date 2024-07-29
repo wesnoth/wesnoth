@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,13 +18,11 @@
 #include "gui/widgets/scrollbar_panel.hpp"
 
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/core/window_builder/helper.hpp"
 
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
-#include <functional>
 
 namespace gui2
 {
@@ -67,13 +65,11 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.optional_child("background"));
-	state.emplace_back(cfg.optional_child("foreground"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("scrollbar_panel_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("scrollbar_panel_definition][resolution", "foreground")));
 
-	auto child = cfg.optional_child("grid");
-	VALIDATE(child, _("No grid defined."));
-
-	grid = std::make_shared<builder_grid>(*child);
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("scrollbar_panel][definition", "grid"));
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{

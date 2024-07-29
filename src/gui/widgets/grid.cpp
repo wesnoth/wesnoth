@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -724,7 +724,7 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 	cols_ = cols;
 	row_grow_factor_.resize(rows);
 	col_grow_factor_.resize(cols);
-	children_.resize(rows_ * cols_);
+	children_.resize(static_cast<size_t>(rows_) * cols_);
 }
 
 point grid::child::get_best_size() const
@@ -1008,9 +1008,18 @@ void grid::impl_draw_children()
 			continue;
 		}
 
-		widget->draw_background();
+		// We may need to defer drawing to next frame for blur processing.
+		if(!widget->draw_background()) {
+			get_window()->defer_region(widget->get_rectangle());
+			continue;
+		}
+
 		widget->draw_children();
-		widget->draw_foreground();
+
+		if(!widget->draw_foreground()) {
+			get_window()->defer_region(widget->get_rectangle());
+			continue;
+		}
 	}
 }
 

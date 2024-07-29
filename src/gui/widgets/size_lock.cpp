@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	by Jyrki Vesterinen <sandgtx@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/helper.hpp"
-#include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

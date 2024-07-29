@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2::dialogs
@@ -35,8 +35,8 @@ addon_auth::addon_auth(config& cfg)
 	, cfg_(cfg)
 {
 	register_bool("remember_password", false,
-		&preferences::remember_password,
-		&preferences::set_remember_password);
+		[]() {return prefs::get().remember_password();},
+		[](bool v) {prefs::get().set_remember_password(v);});
 }
 
 void addon_auth::pre_show(window& win)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,8 +21,6 @@
 
 #include "play_controller.hpp"
 
-#include "actions/advancement.hpp"
-#include "actions/create.hpp"
 #include "actions/heal.hpp"
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
@@ -41,16 +39,12 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_handler.hpp"
-#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "pathfind/teleport.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/display.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
-#include "reports.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
@@ -61,8 +55,6 @@
 #include "soundsource.hpp"
 #include "statistics.hpp"
 #include "synced_context.hpp"
-#include "tooltips.hpp"
-#include "units/id.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "utils/general.hpp"
@@ -97,8 +89,6 @@ static void copy_persistent(const config& src, config& dst)
 	static const std::set<std::string> attrs {
 		"description",
 		"name",
-		"victory_when_enemies_defeated",
-		"remove_from_carryover_on_defeat",
 		"disallow_recall",
 		"experience_modifier",
 		"require_scenario",
@@ -138,7 +128,7 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay, bool start_faded)
+play_controller::play_controller(const config& level, saved_game& state_of_game)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
@@ -158,16 +148,14 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, persist_()
 	, gui_()
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
-	, statistics_context_(new statistics::scenario_context(level["name"]))
+	, statistics_context_(new statistics_t(state_of_game.statistics()))
 	, replay_(new replay(state_of_game.get_replay()))
-	, skip_replay_(skip_replay)
+	, skip_replay_(false)
 	, skip_story_(state_of_game.skip_story())
 	, did_autosave_this_turn_(true)
 	, did_tod_sound_this_turn_(false)
 	, map_start_()
-	, start_faded_(start_faded)
-	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
-	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
+	, start_faded_(true)
 	, victory_music_()
 	, defeat_music_()
 	, scope_(hotkey::scope_game)
@@ -243,7 +231,7 @@ void play_controller::init(const config& level)
 
 		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
-		preferences::encounter_all_content(gamestate().board_);
+		prefs::get().encounter_all_content(gamestate().board_);
 
 		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
@@ -282,19 +270,6 @@ void play_controller::init(const config& level)
 		gamestate().set_game_display(gui_.get());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_lua);
 
-		if(gamestate().first_human_team_ != -1) {
-			gui_->set_team(gamestate().first_human_team_);
-		} else if(is_observer()) {
-			// Find first team that is allowed to be observed.
-			// If not set here observer would be without fog until
-			// the first turn of observable side
-			for(const team& t : get_teams()) {
-				if(!t.get_disallow_observers()) {
-					gui_->set_team(t.side() - 1);
-				}
-			}
-		}
-
 		init_managers();
 		gui2::dialogs::loading_screen::progress(loading_stage::start_game);
 		// loadscreen_manager->reset();
@@ -311,6 +286,8 @@ void play_controller::init(const config& level)
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
+	// TODO: should we update we update this->level_ with level ?
+
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
 	resources::tod_manager = nullptr;
@@ -422,13 +399,9 @@ void play_controller::init_gui()
 void play_controller::init_side_begin()
 {
 	mouse_handler_.set_side(current_side());
-
-	// If we are observers we move to watch next team if it is allowed
-	if((is_observer() && !current_team().get_disallow_observers()) || (current_team().is_local_human() && !is_replay())) {
-		update_gui_to_player(current_side() - 1);
-	}
-
 	gui_->set_playing_team(std::size_t(current_side() - 1));
+
+	update_viewing_player();
 
 	gamestate().gamedata_.last_selected = map_location::null_location();
 }
@@ -471,75 +444,83 @@ void play_controller::maybe_do_init_side()
 
 void play_controller::do_init_side()
 {
-	set_scontext_synced sync;
-	log_scope("player turn");
-	// In case we might end up calling sync:network during the side turn events,
-	// and we don't want do_init_side to be called when a player drops.
-	gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
+	{ // Block for set_scontext_synced
+		set_scontext_synced sync;
 
-	const std::string turn_num = std::to_string(turn());
-	const std::string side_num = std::to_string(current_side());
+		synced_context::block_undo();
 
-	gamestate().gamedata_.get_variable("side_number") = current_side();
+		log_scope("player turn");
+		// In case we might end up calling sync:network during the side turn events,
+		// and we don't want do_init_side to be called when a player drops.
+		gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
+		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 
-	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
-	if(!gamestate().tod_manager_.has_turn_event_fired()) {
-		pump().fire("turn_" + turn_num);
-		pump().fire("new_turn");
-		gamestate().tod_manager_.turn_event_fired();
-	}
+		const std::string turn_num = std::to_string(turn());
+		const std::string side_num = std::to_string(current_side());
 
-	pump().fire("side_turn");
-	pump().fire("side_" + side_num + "_turn");
-	pump().fire("side_turn_" + turn_num);
-	pump().fire("side_" + side_num + "_turn_" + turn_num);
+		gamestate().gamedata_.get_variable("side_number") = current_side();
 
-	// We want to work out if units for this player should get healed,
-	// and the player should get income now.
-	// Healing/income happen if it's not the first turn of processing,
-	// or if we are loading a game.
-	if(turn() > 1) {
-		gamestate().board_.new_turn(current_side());
-		current_team().new_turn();
-
-		// If the expense is less than the number of villages owned
-		// times the village support capacity,
-		// then we don't have to pay anything at all
-		int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
-		if(expense > 0) {
-			current_team().spend_gold(expense);
+		// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
+		if(!gamestate().tod_manager_.has_turn_event_fired()) {
+			pump().fire("turn_" + turn_num);
+			pump().fire("new_turn");
+			gamestate().tod_manager_.turn_event_fired();
 		}
-	}
 
-	if(do_healing()) {
-		calculate_healing(current_side(), !is_skipping_replay());
-	}
+		pump().fire("side_turn");
+		pump().fire("side_" + side_num + "_turn");
+		pump().fire("side_turn_" + turn_num);
+		pump().fire("side_" + side_num + "_turn_" + turn_num);
 
-	// Do healing on every side turn except the very first side turn.
-	// (1.14 and earlier did healing whenever turn >= 2.)
-	set_do_healing(true);
+		// We want to work out if units for this player should get healed,
+		// and the player should get income now.
+		// Healing/income happen if it's not the first turn of processing,
+		// or if we are loading a game.
+		if(turn() > 1) {
+			gamestate().board_.new_turn(current_side());
+			current_team().new_turn();
 
-	// Set resting now after the healing has been done.
-	for(unit& patient : resources::gameboard->units()) {
-		if(patient.side() == current_side()) {
-			patient.set_resting(true);
+			// If the expense is less than the number of villages owned
+			// times the village support capacity,
+			// then we don't have to pay anything at all
+			int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
+			if(expense > 0) {
+				current_team().spend_gold(expense);
+			}
 		}
+
+		if(do_healing()) {
+			calculate_healing(current_side(), !is_skipping_replay());
+		}
+
+		// Do healing on every side turn except the very first side turn.
+		// (1.14 and earlier did healing whenever turn >= 2.)
+		set_do_healing(true);
+
+		// Set resting now after the healing has been done.
+		for(unit& patient : resources::gameboard->units()) {
+			if(patient.side() == current_side()) {
+				patient.set_resting(true);
+			}
+		}
+
+		// Prepare the undo stack.
+		undo_stack().new_side_turn(current_side());
+
+		pump().fire("turn_refresh");
+		pump().fire("side_" + side_num + "_turn_refresh");
+		pump().fire("turn_" + turn_num + "_refresh");
+		pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
+
+		// Make sure vision is accurate.
+		actions::clear_shroud(current_side(), true);
+
+		check_victory();
+		sync.do_final_checkup();
+		gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	}
 
-	// Prepare the undo stack.
-	undo_stack().new_side_turn(current_side());
-
-	pump().fire("turn_refresh");
-	pump().fire("side_" + side_num + "_turn_refresh");
-	pump().fire("turn_" + turn_num + "_refresh");
-	pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
-
-	// Make sure vision is accurate.
-	actions::clear_shroud(current_side(), true);
-
-	check_victory();
-	sync.do_final_checkup();
-	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
+	statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
 
 	init_side_end();
 
@@ -573,6 +554,10 @@ config play_controller::to_config() const
 	gui_->labels().write(cfg);
 	sound::write_music_play_list(cfg);
 
+	if(cfg["replay_pos"].to_int(0) > 0 && cfg["playing_team"].empty()) {
+		gui2::show_error_message(_("Trying to create a corrupt file, please report this bug"));
+	}
+
 	return cfg;
 }
 
@@ -581,8 +566,9 @@ void play_controller::finish_side_turn_events()
 
 	{ // Block for set_scontext_synced
 		set_scontext_synced sync(1);
-		// Ending the turn commits all moves.
-		undo_stack().clear();
+		// Also clears the undo stack.
+		synced_context::block_undo();
+
 		gamestate().board_.end_turn(current_side());
 		const std::string turn_num = std::to_string(turn());
 		const std::string side_num = std::to_string(current_side());
@@ -741,7 +727,7 @@ void play_controller::tab()
 		}
 
 		// Add nicks from friendlist
-		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+		const std::map<std::string, std::string> friends = prefs::get().get_acquaintances_nice("friend");
 
 		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter) {
 			dictionary.insert((*iter).first);
@@ -749,7 +735,7 @@ void play_controller::tab()
 
 		// Exclude own nick from tab-completion.
 		// NOTE why ?
-		dictionary.erase(preferences::login());
+		dictionary.erase(prefs::get().login());
 		break;
 	}
 
@@ -780,31 +766,6 @@ const team& play_controller::current_team() const
 	return gamestate().board_.get_team(current_side());
 }
 
-bool play_controller::is_team_visible(int team_num, bool observer) const
-{
-	const team& t = gamestate().board_.get_team(team_num);
-	if(observer) {
-		return !t.get_disallow_observers() && !t.is_empty();
-	} else {
-		return t.is_local_human() && !t.is_idle();
-	}
-}
-
-int play_controller::find_last_visible_team() const
-{
-	assert(current_side() <= static_cast<int>(get_teams().size()));
-	const int num_teams = get_teams().size();
-	const bool observer = is_observer();
-
-	for(int i = 0; i < num_teams; i++) {
-		const int team_num = modulo(current_side() - i, num_teams, 1);
-		if(is_team_visible(team_num, observer)) {
-			return team_num;
-		}
-	}
-
-	return 0;
-}
 
 events::mouse_handler& play_controller::get_mouse_handler_base()
 {
@@ -903,26 +864,26 @@ void play_controller::save_game()
 	assert(!gamestate().events_manager_->is_event_running());
 
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_game_auto(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
 
 void play_controller::save_replay()
 {
-	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_replay_auto(const std::string& filename)
 {
-	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
 
@@ -997,7 +958,7 @@ void play_controller::check_victory()
 		found_network_player,
 		invalidate_all,
 		not_defeated,
-		remove_from_carryover_on_defeat_
+		gamestate().remove_from_carryover_on_defeat_
 	);
 
 	if(invalidate_all) {
@@ -1015,11 +976,11 @@ void play_controller::check_victory()
 		}
 	}
 
-	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_;
+	DBG_EE << "victory_when_enemies_defeated: " << gamestate().victory_when_enemies_defeated_;
 	DBG_EE << "found_player: " << found_player;
 	DBG_EE << "found_network_player: " << found_network_player;
 
-	if(!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
+	if(!gamestate().victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
@@ -1040,6 +1001,7 @@ void play_controller::check_victory()
 	DBG_EE << "throwing end level exception...";
 	// Also proceed to the next scenario when another player survived.
 	end_level_data el_data;
+	el_data.transient.reveal_map = reveal_map_default();
 	el_data.proceed_to_next_level = found_player || found_network_player;
 	el_data.is_victory = found_player;
 	set_end_level_data(el_data);
@@ -1064,6 +1026,11 @@ void play_controller::process_oos(const std::string& msg) const
 	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
+bool play_controller::reveal_map_default() const
+{
+	return saved_game_.classification().get_tagname() == "multiplayer";
+}
+
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
 	gui_->set_team(team_index, observe);
@@ -1074,14 +1041,14 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 void play_controller::do_autosave()
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
-	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+	savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
+	save.autosave(false, prefs::get().autosavemax(), pref_constants::INFINITE_AUTO_SAVES);
 }
 
 void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(true, filename);
 }
 
@@ -1142,12 +1109,14 @@ void play_controller::play_slice_catch()
 void play_controller::start_game()
 {
 	if(gamestate().in_phase(game_data::PRELOAD)) {
-		map_start_ = map_location();
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
 
 		set_scontext_synced sync;
 
+		// So that the code knows it can send choices immidiateley
+		// todo: im not sure whetrh this is actually needed.
+		synced_context::block_undo();
 		fire_prestart();
 		if(is_regular_game_end()) {
 			return;
@@ -1285,31 +1254,6 @@ std::set<std::string> play_controller::all_players() const
 	return res;
 }
 
-void play_controller::play_side()
-{
-	do {
-		update_viewing_player();
-
-		maybe_do_init_side();
-		if(is_regular_game_end()) {
-			return;
-		}
-		// This flag can be set by derived classes (in overridden functions).
-		player_type_changed_ = false;
-
-		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
-
-		play_side_impl();
-
-		if(is_regular_game_end()) {
-			return;
-		}
-	} while(player_type_changed_);
-
-	// Keep looping if the type of a team (human/ai/networked) has changed mid-turn
-	sync_end_turn();
-}
-
 void play_controller::check_time_over()
 {
 	const bool time_left = gamestate().tod_manager_.next_turn(&gamestate().gamedata_);
@@ -1336,6 +1280,7 @@ void play_controller::check_time_over()
 		}
 
 		end_level_data e;
+		e.transient.reveal_map = reveal_map_default();
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);

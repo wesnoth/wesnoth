@@ -7,6 +7,7 @@ tests/test_addons.cpp
 tests/test_commandline_options.cpp
 tests/test_config.cpp
 tests/test_config_cache.cpp
+tests/test_config_filters.cpp
 tests/test_filesystem.cpp
 tests/test_formula_core.cpp
 tests/test_formula_function.cpp
@@ -18,6 +19,7 @@ tests/test_map_location.cpp
 tests/test_mp_connect.cpp
 tests/test_recall_list.cpp
 tests/test_rng.cpp
+tests/test_sdl.cpp
 tests/test_serialization.cpp
 tests/test_simple_wml.cpp
 tests/test_team.cpp
@@ -29,3 +31,5 @@ tests/utils/fake_display.cpp
 tests/utils/game_config_manager_tests.cpp
 tests/utils/wml_equivalence.cpp
 tests/wml/test_macro_define.cpp
+tests/wml/schema/test_schema_validator.cpp
+tests/wml/schema/test_schema_self_validator.cpp

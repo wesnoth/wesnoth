@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
 #include "draw_manager.hpp"
+#include "preferences/preferences.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
@@ -619,6 +620,7 @@ void pump()
 					<< event.window.data1 << 'x' << event.window.data2;
 				info.resize_dimensions.first = event.window.data1;
 				info.resize_dimensions.second = event.window.data2;
+				prefs::get().set_resolution(video::window_size());
 				break;
 
 			// Once everything has had a chance to respond to the resize,
@@ -629,7 +631,13 @@ void pump()
 				break;
 
 			case SDL_WINDOWEVENT_MAXIMIZED:
+				LOG_DP << "events/MAXIMIZED";
+				prefs::get().set_maximized(true);
+				break;
 			case SDL_WINDOWEVENT_RESTORED:
+				LOG_DP << "events/RESTORED";
+				prefs::get().set_maximized(prefs::get().fullscreen());
+				break;
 			case SDL_WINDOWEVENT_SHOWN:
 			case SDL_WINDOWEVENT_MOVED:
 				// Not used.
@@ -761,7 +769,7 @@ void raise_resize_event()
 	point size = video::window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
+	event.window.event = SDL_WINDOWEVENT_SIZE_CHANGED;
 	event.window.windowID = 0; // We don't check this anyway... I think...
 	event.window.data1 = size.x;
 	event.window.data2 = size.y;

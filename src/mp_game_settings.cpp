@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -164,7 +164,7 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	}
 
 	cfg["name"]	= name;
-	cfg["require"] = required;
+	cfg["required"] = required;
 	for(const auto& item : content) {
 		config& c = cfg.add_child("content");
 		c["id"] = item.id;

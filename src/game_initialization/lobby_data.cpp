@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,16 +26,13 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
 #include "mp_game_settings.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "wml_exception.hpp"
 
-#include <iterator>
 
 #include <boost/algorithm/string.hpp>
 
@@ -74,11 +71,11 @@ user_info::user_state user_info::get_state(int selected_game_id) const
 
 user_info::user_relation user_info::get_relation() const
 {
-	if(name == preferences::login()) {
+	if(name == prefs::get().login()) {
 		return user_relation::ME;
-	} else if(preferences::is_ignored(name)) {
+	} else if(prefs::get().is_ignored(name)) {
 		return user_relation::IGNORED;
-	} else if(preferences::is_friend(name)) {
+	} else if(prefs::get().is_friend(name)) {
 		return user_relation::FRIEND;
 	} else {
 		return user_relation::NEUTRAL;
@@ -152,7 +149,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
-		if(addon.has_attribute("id") && addon["require"].to_bool(false)) {
+		if(addon.has_attribute("id") && addon["required"].to_bool(false)) {
 			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
 				required_addon r;
 				r.addon_id = addon["id"].str();
@@ -205,7 +202,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		mod_info.emplace_back(cfg["name"].str(), true);
 		info_stream << ' ' << mod_info.back().first;
 
-		if(cfg["require_modification"].to_bool(false)) {
+		if(cfg["require_modification"].to_bool(true)) {
 			if(auto mod = game_config.find_child("modification", "id", cfg["id"])) {
 				addon_req result = check_addon_version_compatibility(*mod, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
@@ -256,7 +253,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
-		if(level_cfg) {
+		if(!level_cfg) {
 			level_cfg = game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]).ptr();
 		}
 
@@ -413,7 +410,7 @@ game_info::addon_req game_info::check_addon_version_compatibility(const config& 
 	}
 
 	if(auto game_req = game.find_child("addon", "id", local_item["addon_id"])) {
-		if(!game_req["require"].to_bool(false)) {
+		if(!game_req["required"].to_bool(false)) {
 			return addon_req::SATISFIED;
 		}
 

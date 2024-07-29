@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -21,10 +21,7 @@
 #include "utils/general.hpp"
 
 #include <functional>
-#include <iterator>
 #include <map>
-#include <sstream>
-#include <utility>
 #include <vector>
 #include <boost/range/iterator_range.hpp>
 

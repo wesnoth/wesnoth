@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,6 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
-#include <climits>
 #include <ctime>
 #include <functional>
 #include <iosfwd>
@@ -42,7 +41,6 @@
 #include <memory>
 #include <string>
 #include <string_view>
-#include <type_traits>
 #include <utility>
 #include <vector>
 
@@ -64,7 +62,7 @@ public:
 	{
 	}
 
-	optional_config_impl(std::nullopt_t)
+	optional_config_impl(utils::nullopt_t)
 		: opt_()
 	{
 	}
@@ -75,7 +73,7 @@ public:
 			return *opt_;
 		} else {
 			// We're going to drop this codepath once we can use optional::value anyway, but just
-			// noting we want this function to ultimately throw std::bad_optional_access.
+			// noting we want this function to ultimately throw utils::bad_optional_access.
 			throw std::runtime_error("Optional reference has no value");
 		}
 	}
@@ -447,7 +445,7 @@ public:
 	optional_config_impl<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	/**
-	 * Get a deprecated child rangw and log a deprecation message
+	 * Get a deprecated child range and log a deprecation message
 	 * @param old_key The deprecated child to return if present
 	 * @param in_tag The name of the tag this child appears in
 	 * @param level The deprecation level
@@ -520,6 +518,13 @@ public:
 	 * or nullptr if it does not exist.
 	 */
 	const attribute_value *get(config_key_type key) const;
+
+    /**
+     * Chooses a value. If the value specified by @a key is
+     * blank, then @a default_key is chosen instead.
+     * If both values are blank or not set, then an empty value is returned.
+     */
+    const attribute_value& get_or(const config_key_type key, const config_key_type default_key) const;
 
 	/**
 	 * Function to handle backward compatibility

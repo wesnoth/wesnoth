@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,7 +32,6 @@
 #include "gettext.hpp"
 #include "utils/math.hpp"
 
-#include <cassert>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -101,17 +100,17 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& tag_name)
 {
-	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
+	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_damage = filter["damage"];
 	const std::string& filter_attacks = filter["number"];
 	const std::string& filter_accuracy = filter["accuracy"];
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
 	const std::string& filter_attacks_used = filter["attacks_used"];
-	const std::vector<std::string> filter_name = utils::split(filter["name"]);
-	const std::vector<std::string> filter_type = utils::split(filter["type"]);
+	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
+	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -120,32 +119,44 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
 
-	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
+	if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
 		return false;
 
-	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges(filter_damage)) )
+	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges_unsigned(filter_damage)) )
 		return false;
 
-	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks)))
+	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges_unsigned(filter_attacks)))
 		return false;
 
-	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy)))
+	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges_int(filter_accuracy)))
 		return false;
 
-	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges(filter_parry)))
+	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges_int(filter_parry)))
 		return false;
 
-	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
+	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges_unsigned(filter_movement)))
 		return false;
 
-	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges(filter_attacks_used)))
+	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
 		return false;
 
-	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
+	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
 
-	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
-		return false;
+	if (!filter_type.empty()){
+		//if special is type "damage_type" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
+		if(tag_name == "damage_type"){
+			if (filter_type.count(attack.type()) == 0){
+				return false;
+			}
+		} else {
+			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
+			std::pair<std::string, std::string> damage_type = attack.damage_type();
+			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+				return false;
+			}
+		}
+	}
 
 	if(!filter_special.empty()) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
@@ -245,25 +256,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter) const
+bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter);
+	bool matches = matches_simple_filter(*this, filter, tag_name);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg);
+			matches = matches && matches_filter(condition.cfg, tag_name);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg);
+			matches = matches || matches_filter(condition.cfg, tag_name);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg);
+			matches = matches && !matches_filter(condition.cfg, tag_name);
 	}
 
 	return matches;

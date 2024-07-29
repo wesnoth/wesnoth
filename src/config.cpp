@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -24,16 +24,12 @@
 #include "formatter.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "utils/const_clone.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
-#include <cstdlib>
 #include <cstring>
-#include <istream>
-#include <locale>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -332,7 +328,7 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 	auto i = children.find(key);
 	if(i == children.end()) {
 		DBG_CF << "The config object has no child named »" << key << "«.";
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	if(n < 0) {
@@ -344,7 +340,7 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 	} catch(const std::out_of_range&) {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
 			   << "«; request for the index »" << n << "« cannot be honored.";
-		return std::nullopt;
+		return utils::nullopt;
 	}
 }
 
@@ -425,7 +421,7 @@ optional_config_impl<const config> config::get_deprecated_child(config_key_type 
 		return res;
 	}
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
@@ -694,6 +690,12 @@ const config::attribute_value* config::get(config_key_type key) const
 	return i != values_.end() ? &i->second : nullptr;
 }
 
+const config::attribute_value& config::get_or(const config_key_type key, const config_key_type default_key) const
+{
+    const config::attribute_value & value = operator[](key);
+    return !value.blank() ? value : operator[](default_key);
+}
+
 config::attribute_value& config::operator[](config_key_type key)
 {
 	auto res = values_.lower_bound(key);
@@ -789,7 +791,7 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
 
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
@@ -805,7 +807,7 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 
 	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value)

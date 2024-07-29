@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,6 @@
 #include "map/location.hpp"
 #include "units/ptr.hpp"
 
-#include <memory>
 #include <string>
 #include <vector>
 

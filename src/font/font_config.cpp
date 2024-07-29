@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	by Chris Beck<render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "font/font_config.hpp"
-#include "font/font_description.hpp"
 #include "font/error.hpp"
 
 #include "config.hpp"
@@ -22,21 +21,12 @@
 #include "tstring.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp"
 
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/unicode.hpp"
-#include "preferences/general.hpp"
 
-#include <list>
-#include <set>
-#include <stack>
 #include <sstream>
-#include <vector>
 
-#include <cairo-features.h>
 
 #include <fontconfig/fontconfig.h>
 
@@ -90,13 +80,13 @@ bool load_font_config()
 {
 	config cfg;
 	try {
-		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
-		if(cfg_path.empty()) {
+		const auto cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
+		if(!cfg_path) {
 			ERR_FT << "could not resolve path to fonts.cfg, file not found";
 			return false;
 		}
 
-		filesystem::scoped_istream stream = preprocess_file(cfg_path);
+		filesystem::scoped_istream stream = preprocess_file(cfg_path.value());
 		read(cfg, *stream);
 	} catch(const config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n" << e.message;
@@ -159,8 +149,18 @@ manager::manager()
 	}
 
 	std::string font_file = font_path + "/fonts.conf";
-	if(!FcConfigParseAndLoad(FcConfigGetCurrent(),
-							 reinterpret_cast<const FcChar8*>(font_file.c_str()),
+	std::string font_file_contents = filesystem::read_file(font_file);
+
+// msys2 crosscompiling for windows for whatever reason makes the cache directory prefer using drives other than C:
+// ie - D:\a\msys64\var\cache\fontconfig
+// fontconfig also does not seem to provide a way to set the cachedir for a specific platform
+// so load the fonts.conf file into memory and only for windows insert the cachedir configuration
+#ifdef _WIN32
+	font_file_contents.insert(font_file_contents.find("</fontconfig>"), "<cachedir>"+filesystem::get_cache_dir()+"</cachedir>\n");
+#endif
+
+	if(!FcConfigParseAndLoadFromMemory(FcConfigGetCurrent(),
+							 reinterpret_cast<const FcChar8*>(font_file_contents.c_str()),
 							 FcFalse))
 	{
 		ERR_FT << "Could not load local font configuration";

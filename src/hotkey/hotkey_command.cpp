@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -122,6 +122,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
 	{ HOTKEY_CHANGE_SIDE, "changeside", N_("Change Side (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
 	{ HOTKEY_KILL_UNIT, "killunit", N_("Kill Unit (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
+	{ HOTKEY_TELEPORT_UNIT, "teleportunit", N_("Teleport Unit (Debug!)"), false, scope_game, HKCAT_DEBUG, "" },
 	{ HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_OBJECTIVES, "objectives", N_("Objectives"), false, scope_game, HKCAT_MAP, "" },
 	{ HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
@@ -173,12 +174,14 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 	{ HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
+	{ HOTKEY_EDITOR_EDIT_UNIT, "editor-edit-unit", N_("New Unit Type"), true, scope_editor, HKCAT_PLACEHOLDER, "" },
+
 	{ HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Time Schedule Editor"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SCENARIO_NEW, "editor-scenario-new", N_("New Scenario"), false, scope_editor, HKCAT_SCENARIO, "" },
-	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map"), false, scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save Map"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map/Scenario"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_SCENARIO_SAVE_AS, "editor-scenario-save-as", N_("Save Scenario As"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, scope_editor, HKCAT_MAP, "" },
@@ -267,7 +270,12 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_AREA_REMOVE, "editor-remove-area", N_("Remove Selected Area"),   false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_AREA_ADD,    "editor-add-area",    N_("Add New Area"),           false, scope_editor, HKCAT_SCENARIO, "" },
 
-	{ HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario"), false, scope_editor, HKCAT_SCENARIO, "" },
+	{ HOTKEY_EDITOR_PBL,             "editor-pbl",      N_("Add-on Publishing Editor"),   false, scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_EDITOR_CHANGE_ADDON_ID, "editor-addon-id", N_("Change Add-on ID"),           false, scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_EDITOR_SELECT_ADDON, "editor-addon-select", N_("Select active Add-on"),           false, scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_EDITOR_OPEN_ADDON, "editor-addon-open", N_("Open Add-on folder"),           false, scope_editor, HKCAT_GENERAL, "" },
+
+	{ HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario Settings"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SIDE_EDIT, "editor-side-edit", N_("Edit Side"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SIDE_REMOVE, "editor-side-remove", N_("Remove Side"), false, scope_editor, HKCAT_SCENARIO, "" },
 
@@ -302,7 +310,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ LUA_CONSOLE, "global__lua__console", N_("Show Lua Console"), false, scope_game | scope_editor | scope_main, HKCAT_DEBUG, ""},
 
 	//This list item must stay at the end since it is used as terminator for iterating.
-	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, SCOPE_COUNT, HKCAT_PLACEHOLDER, "" }
+	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, 0, HKCAT_PLACEHOLDER, "" }
 }};
 
 const std::set<HOTKEY_COMMAND> toggle_commands {
@@ -402,7 +410,7 @@ wml_hotkey_record::wml_hotkey_record(const std::string& id, const t_string& desc
 	}
 
 	// Record the cleanup handler
-	cleanup_ = [i = iter] { registered_hotkeys.erase(i); };
+	cleanup_ = [id] { registered_hotkeys.erase(id); };
 }
 
 wml_hotkey_record::~wml_hotkey_record()

@@ -145,7 +145,7 @@ def main(folder):
             for line in text.splitlines():
                 line = line.strip()
                 if line in ["<INTERNAL ERROR>", "<WML ERROR>", "<PARSE ERROR>", "<TIMEOUT ERROR>"]:
-                    htmlerr.write('<p>')
+                    htmlerr.write('<p class="error %s">' % line[1:-1].replace(" ", "-").lower())
                 elif line in ["</INTERNAL ERROR>", "</WML ERROR>", "</PARSE ERROR>", "</TIMEOUT ERROR>"]:
                     htmlerr.write('</p>')
                 else:

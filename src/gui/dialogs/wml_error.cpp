@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -94,12 +93,10 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		//
 
 		if(!is_main_cfg) {
-			// Remove the file extension first.
-			static const std::string wml_suffix = ".cfg";
 
-			if(base.size() > wml_suffix.size()) {
-				const std::size_t suffix_pos = base.size() - wml_suffix.size();
-				if(base.substr(suffix_pos) == wml_suffix) {
+			if(base.size() > filesystem::wml_extension.size()) {
+				const std::size_t suffix_pos = base.size() - filesystem::wml_extension.size();
+				if(base.substr(suffix_pos) == filesystem::wml_extension) {
 					base.erase(suffix_pos);
 				}
 			}

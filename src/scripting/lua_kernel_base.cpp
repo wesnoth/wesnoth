@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,15 +52,12 @@
 #include "utils/scope_exit.hpp"
 
 #include <cstring>
-#include <exception>
-#include <new>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <numeric>
 
-#include "lua/lauxlib.h"
-#include "lua/lualib.h"
+#include "lua/wrapper_lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 static lg::log_domain log_user("scripting/lua/user");
@@ -302,6 +299,22 @@ static int intf_load(lua_State* L)
 	return 1;
 }
 
+/**
+ * Wrapper for pcall and xpcall functions to rethrow jailbreak exceptions
+ */
+static int intf_pcall(lua_State *L)
+{
+	lua_CFunction function = lua_tocfunction(L, lua_upvalueindex(1));
+	assert(function); // The upvalue should be Lua's pcall or xpcall, or else something is very wrong.
+
+	int nRets = function(L);
+
+	// If a jailbreak exception was stored while running (x)pcall, rethrow it so Lua doesn't continue.
+	lua_jailbreak_exception::rethrow();
+
+	return nRets;
+}
+
 // The show lua console callback is similarly a method of lua kernel
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
@@ -339,7 +352,7 @@ static int intf_name_generator(lua_State *L)
 			if(lua_istable(L, 2)) {
 				input = lua_check<std::vector<std::string>>(L, 2);
 			} else {
-				input = utils::parenthetical_split(luaW_checktstring(L, 2), ',');
+				input = utils::parenthetical_split(luaW_checktstring(L, 2).str(), ',');
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
@@ -517,8 +530,11 @@ static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
 		case LUA_TFUNCTION:
 			lua_pushvalue(L, 1);
 			lua_push(L, keys);
-			lua_call(L, 2, 1);
-			keys = lua_check<std::vector<std::string>>(L, -1);
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+				keys = lua_check<std::vector<std::string>>(L, -1);
+			} else {
+				lua_warning(L, "wesnoth.print_attributes: __dir metamethod raised an error", false);
+			}
 			break;
 		case LUA_TTABLE:
 			auto dir_keys = lua_check<std::vector<std::string>>(L, -1);
@@ -576,8 +592,11 @@ static int impl_get_dir_suffix(lua_State*L)
  * This function does the actual work of grabbing all the attribute names.
  * It's a separate function so that it can be used by tab-completion as well.
  */
-static std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
+std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 {
+	if(idx < 0 && idx >= -lua_gettop(L)) {
+		idx = lua_absindex(L, idx);
+	}
 	std::vector<std::string> keys;
 	if(lua_istable(L, idx)) {
 		// Walk the metatable chain (as long as __index is a table)...
@@ -826,6 +845,15 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "load");
 	lua_pushnil(L);
 	lua_setglobal(L, "loadstring");
+
+	// Wrap the pcall and xpcall functions
+	cmd_log_ << "Wrapping pcall and xpcall functions...\n";
+	lua_getglobal(L, "pcall");
+	lua_pushcclosure(L, intf_pcall, 1);
+	lua_setglobal(L, "pcall");
+	lua_getglobal(L, "xpcall");
+	lua_pushcclosure(L, intf_pcall, 1);
+	lua_setglobal(L, "xpcall");
 
 	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.

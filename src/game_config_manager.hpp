@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,8 +22,7 @@
 #include "filesystem.hpp"
 #include "game_config_view.hpp"
 #include "terrain/type_data.hpp"
-
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 class game_classification;
 class game_config_manager

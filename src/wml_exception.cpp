@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -78,16 +78,7 @@ std::string missing_mandatory_wml_key(
 		, const std::string& primary_value)
 {
 	utils::string_map symbols;
-	if(!section.empty()) {
-		if(section[0] == '[') {
-			symbols["section"] = section;
-		} else {
-			WRN_NG << __func__
-					<< " parameter 'section' should contain brackets."
-					<< " Added them.";
-			symbols["section"] = "[" + section + "]";
-		}
-	}
+	symbols["section"] = section;
 	symbols["key"] = key;
 	if(!primary_key.empty()) {
 		assert(!primary_value.empty());
@@ -101,4 +92,12 @@ std::string missing_mandatory_wml_key(
 		return VGETTEXT("In section '[$section|]' the "
 			"mandatory key '$key|' isn't set.", symbols);
 	}
+}
+
+std::string missing_mandatory_wml_tag(
+		  const std::string &section
+		, const std::string &tag)
+{
+	// TODO in 1.19: revisit this when we can add new strings
+	return missing_mandatory_wml_key(section, "[" + tag + "]");
 }

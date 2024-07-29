@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2024
 	by Karol Nowak <grywacz@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,6 +77,7 @@ struct wesnoth_global_fixture {
 		results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
+		filesystem::set_user_data_dir(std::string());
 
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;

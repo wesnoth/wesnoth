@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,10 +20,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "generators/map_generator.hpp"
 #include "lexical_cast.hpp"
@@ -117,13 +114,13 @@ void editor_generate_map::pre_show(window& window)
 			std::bind(&editor_generate_map::do_settings,this));
 }
 
-std::optional<uint32_t> editor_generate_map::get_seed()
+utils::optional<uint32_t> editor_generate_map::get_seed()
 {
 	try {
 		return lexical_cast<uint32_t>(random_seed_);
 	}
 	catch(const bad_lexical_cast& ) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 }
 

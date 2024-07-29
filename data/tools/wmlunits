@@ -28,23 +28,30 @@ import wesnoth.wmlparser3 as wmlparser3
 TIMEOUT = 20
 
 def copy_images():
-    print("Recolorizing pictures.")
+    print("Recolorizing pictures...")
     image_collector.copy_and_color_images(options.output)
     shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)), "unit_tree", "menu.js"),
                  options.output)
 
-def shell_out(com):
-    p = subprocess.Popen(com,
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out
+def shell_out(wesnoth_exe, com):
+    base_com = [wesnoth_exe, "--nobanner"] + com
+    cli_opt_matrix = [[], ["--no-log-to-file"], ["--wnoconsole", "--wnoredirect"]]
+    for cli_opts in cli_opt_matrix:
+        com = base_com + cli_opts
+        p = subprocess.run(com, capture_output=True, text=True)
+        if p.returncode == 0:
+            return os.path.normpath(p.stdout.strip())
+    return ""
 
-def move(f, t, name):
+def symlink(f, t, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
-        shutil.move(os.path.join(f, name + ".cfg"), t)
+        os.symlink(os.path.join(f, name + ".cfg"), os.path.join(t, name + ".cfg"))
+    os.symlink(os.path.join(f, name), os.path.join(t, name))
 
-    shutil.move(os.path.join(f, name), t)
+def rm_symlink(f, name):
+    if os.path.exists(os.path.join(f, name + ".cfg")):
+        os.remove(os.path.join(f, name + ".cfg"))
+    os.remove(os.path.join(f, name))
 
 _info = {}
 def get_info(addon):
@@ -300,46 +307,44 @@ def list_contents():
         except OSError:
             pass
         version = get_version(addon)
-        move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), addon)
-        for d in get_dependencies(addon):
-            move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
+        symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), addon)
+        all_dependencies = get_all_dependencies(addon)
+        for d in all_dependencies:
+            symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
         try:
             info = search(batchlist, addon)
             if info.get("version", "") == version and info.get("parsed", False) is True:
                 sys.stdout.write("up to date\n")
                 continue
             info["parsed"] = False
-            info["dependencies"] = get_dependencies(addon)
-            parse("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+            info["dependencies"] = all_dependencies
+            parse("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
-            sys.stdout.write("ok\n")
+            print("ok")
         except wmlparser3.WMLError as e:
-            ef = open(logname, "w")
-            ef.write("<PARSE ERROR>\n")
-            ef.write(str(e))
-            ef.write("</PARSE ERROR>\n")
-            ef.close()
-            sys.stdout.write("failed\n")
+            with open(logname, "w") as ef:
+                ef.write("<PARSE ERROR>\n")
+                ef.write(str(e))
+                ef.write("\n</PARSE ERROR>\n")
+            print("failed")
         except queue.Empty as e:
-            ef = open(logname, "w")
-            ef.write("<TIMEOUT ERROR>\n")
-            ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
-            ef.write("</TIMEOUT ERROR>\n")
-            ef.close()
-            sys.stdout.write("failed\n")
+            with open(logname, "w") as ef:
+                ef.write("<TIMEOUT ERROR>\n")
+                ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
+                ef.write("\n</TIMEOUT ERROR>\n")
+            print("failed")
         except Exception as e:
-            ef = open(logname, "w")
-            ef.write("<INTERNAL ERROR>\n")
-            ef.write(repr(e))
-            ef.write("</INTERNAL ERROR>\n")
-            ef.close()
-            sys.stdout.write("failed\n")
+            with open(logname, "w") as ef:
+                ef.write("<INTERNAL ERROR>\n")
+                ef.write(repr(e))
+                ef.write("\n</INTERNAL ERROR>\n")
+            print("failed")
         finally:
-            move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, addon)
-            for d in get_dependencies(addon):
-                move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, d)
+            rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), addon)
+            for d in all_dependencies:
+                rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), d)
 
     yaml.safe_dump(batchlist, open(filename, "w"),
                    encoding="utf-8", default_flow_style=False)
@@ -364,7 +369,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
 
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
@@ -372,7 +377,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
                 wesnoth.parser.parse_text("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
-            wesnoth.parser.parse_text("{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
+            wesnoth.parser.parse_text("{themes}{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
             wesnoth.add_units(cid)
 
     if addon == "mainline" and cid == "mainline":
@@ -431,12 +436,12 @@ def batch_process():
             worked = True
         else:
             try:
-                move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), name)
+                symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), name)
                 worked = True
             except FileNotFoundError:
                 worked = False
             for d in addon.get("dependencies", []):
-                move(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
+                symlink(options.addons, os.path.join(options.config_dir, "data", "add-ons"), d)
         d = os.path.join(options.output, name)
         try:
             os.makedirs(d)
@@ -471,26 +476,34 @@ def batch_process():
                 campaign["units"] = n
 
         except wmlparser3.WMLError as e:
-            ef = open(logname, "a")
-            ef.write("<WML ERROR>\n")
-            ef.write(str(e))
-            ef.write("</WML ERROR>\n")
-            ef.close()
             print("    " + name + " failed")
+            with open(logname, "a") as ef:
+                ef.write("<WML ERROR>\n")
+                ef.write(str(e))
+                ef.write("\n</WML ERROR>\n")
+        except (AttributeError, KeyError, TypeError) as e:
+            # Common logic errors.
+            traceback.print_exc()
+            print("    " + name + " failed")
+            with open(logname, "a") as ef:
+                ef.write("<INTERNAL ERROR>\n")
+                ef.write("please report as bug\n")
+                # Show last few stack frames of traceback to make bug reports more useful.
+                ef.write(traceback.format_exc(limit=-2))
+                ef.write("\n</INTERNAL ERROR>\n")
         except Exception as e:
             traceback.print_exc()
             print("    " + name + " failed")
-            ef = open(logname, "a")
-            ef.write("<INTERNAL ERROR>\n")
-            ef.write("please report as bug\n")
-            ef.write(str(e))
-            ef.write("</INTERNAL ERROR>\n")
-            ef.close()
+            with open(logname, "a") as ef:
+                ef.write("<INTERNAL ERROR>\n")
+                ef.write("please report as bug\n")
+                ef.write(str(e))
+                ef.write("\n</INTERNAL ERROR>\n")
         finally:
             if name != "mainline":
-                move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, name)
+                rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), name)
                 for d in addon.get("dependencies", []):
-                    move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, d)
+                    rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), d)
 
         addon["parsed"] = True
 
@@ -567,6 +580,9 @@ if __name__ == '__main__':
     ap.add_argument("-t", "--transdir",
                     help="Specify the directory with gettext message catalogues. " +
                     "Defaults to ./translations.", default="translations")
+    ap.add_argument("-m", "--magick", default="convert",
+                    help="Command that executes the convert(1) program of the " +
+                    "imagemagick(1) suite. Supports subcommands (e.g. `magick convert`).")
     ap.add_argument("-T", "--timeout",
                     help="Use the timeout iven in seconds when parsing WML, default is 20 " +
                     "seconds.")
@@ -606,15 +622,29 @@ if __name__ == '__main__':
         options.wesnoth = "wesnoth"
 
     if not options.data_dir:
-        options.data_dir = shell_out([options.wesnoth, "--data-path"]).strip().decode("utf8")
+        options.data_dir = shell_out(options.wesnoth, ["--data-path"]).strip()
+        if not options.data_dir:
+            sys.stderr.write("Need --data-dir.\n")
+            ap.print_help()
+            sys.exit(-1)
         print("Using " + options.data_dir + " as data dir.")
 
     if not options.config_dir:
-        options.config_dir = shell_out([options.wesnoth, "--userdata-path"]).strip().decode("utf8")
+        options.config_dir = shell_out(options.wesnoth, ["--userdata-path"]).strip()
+        if not options.config_dir:
+            sys.stderr.write("Need --config-dir.\n")
+            ap.print_help()
+            sys.exit(-1)
         print("Using " + options.config_dir + " as config dir.")
 
     if not options.transdir:
         options.transdir = os.getcwd()
+
+    options.data_dir = os.path.normpath(options.data_dir)
+    options.config_dir = os.path.normpath(options.config_dir)
+    options.transdir = os.path.normpath(options.transdir)
+    if options.addons:
+        options.addons = os.path.normpath(options.addons)
 
     if options.wiki:
         wiki_output.main()
@@ -622,7 +652,8 @@ if __name__ == '__main__':
 
     image_collector = helpers.ImageCollector(options.wesnoth,
                                              options.config_dir,
-                                             options.data_dir)
+                                             options.data_dir,
+                                             magick_exe=options.magick)
     html_output.image_collector = image_collector
 
     if options.language == "all":

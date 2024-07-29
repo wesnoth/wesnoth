@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,6 @@
 #include "actions/move.hpp" //get_village
 #include "resources.hpp"
 #include "team.hpp"
-#include "log.hpp"
-#include "units/udisplay.hpp"
 #include "game_board.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"

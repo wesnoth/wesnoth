@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -193,18 +193,18 @@ void toggle_panel::set_state(const state_t state)
 	assert(conf);
 }
 
-void toggle_panel::impl_draw_background()
+bool toggle_panel::impl_draw_background()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_background();
+	return styled_widget::impl_draw_background();
 }
 
-void toggle_panel::impl_draw_foreground()
+bool toggle_panel::impl_draw_foreground()
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_foreground();
+	return styled_widget::impl_draw_foreground();
 }
 
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
@@ -299,9 +299,9 @@ toggle_panel_definition::resolution::resolution(const config& cfg)
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.optional_child("enabled"));
-		state.emplace_back(c.optional_child("disabled"));
-		state.emplace_back(c.optional_child("focused"));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "enabled", missing_mandatory_wml_tag("toggle_panel_definition][resolution][state", "enabled")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "disabled", missing_mandatory_wml_tag("toggle_panel_definition][resolution][state", "disabled")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "focused", missing_mandatory_wml_tag("toggle_panel_definition][resolution][state", "focused")));
 	}
 }
 

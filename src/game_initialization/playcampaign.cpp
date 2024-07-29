@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,31 +21,23 @@
 
 #include "game_initialization/playcampaign.hpp"
 
-#include "carryover.hpp"
-#include "carryover_show_gold.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_initialization/connect_engine.hpp"
-#include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/multiplayer.hpp"
-#include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/outro.hpp"
-#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
-#include "map/map.hpp"
-#include "persist_manager.hpp"
 #include "playmp_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
@@ -64,7 +56,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 		? state_.get_replay_starting_point()
 		: state_.get_starting_point();
 
-	playsingle_controller playcontroller(starting_point, state_, false);
+	playsingle_controller playcontroller(starting_point, state_);
 
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks());
 	if(is_replay_) {
@@ -190,12 +182,12 @@ level_result::type campaign_controller::play_game()
 			return res;
 		}
 
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 
-		if(preferences::save_replays() && end_level.replay_save) {
-			savegame::replay_savegame save(state_, preferences::save_compression_format());
+		if(prefs::get().save_replays() && end_level.replay_save) {
+			savegame::replay_savegame save(state_, prefs::get().save_compression_format());
 			save.save_game_automatic(true);
 		}
 
@@ -205,7 +197,7 @@ level_result::type campaign_controller::play_game()
 		if(state_.get_scenario_id().empty()) {
 			// Don't show The End for multiplayer scenarios.
 			if(res == level_result::type::victory && !state_.classification().is_normal_mp_game()) {
-				preferences::add_completed_campaign(
+				prefs::get().add_completed_campaign(
 					state_.classification().campaign, state_.classification().difficulty);
 
 				if(state_.classification().end_credits) {
@@ -274,7 +266,7 @@ level_result::type campaign_controller::play_game()
 				// For multiplayer, we want the save to contain the starting position.
 				// For campaigns however, this is the start-of-scenario save and the
 				// starting position needs to be empty, to force a reload of the scenario config.
-				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
+				savegame::scenariostart_savegame save(state_, prefs::get().save_compression_format());
 				save.save_game_automatic();
 			}
 		}
@@ -292,7 +284,7 @@ level_result::type campaign_controller::play_game()
 	}
 
 	if(state_.classification().is_scenario()) {
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 	}

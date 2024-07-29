@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,9 +67,21 @@ class unit_adapter {
 			}
 		}
 
+		/**
+		 * Estimates the damage this unit or unit_type would take from a single strike of an attack.
+		 *
+		 * Many details aren't taken into account here, for example abilities that are only active
+		 * on offense, or on particular terrain. For unit_type, abilities aren't considered at all.
+		 */
 		int damage_from(const attack_type& attack) const {
 			if(unit_type_ != nullptr) {
-				return unit_type_->movement_type().resistance_against(attack);
+				std::pair<std::string, std::string> types = attack.damage_type();
+				int res = unit_type_->movement_type().resistance_against(types.first);
+				if(!(types.second).empty()){
+					// max not min, resistance_against() returns the percentage taken, so higher means more damage
+					res = std::max(res, unit_type_->movement_type().resistance_against(types.second));
+				}
+				return res;
 			} else {
 				return unit_->damage_from(attack, false, map_location());
 			}
@@ -193,7 +205,7 @@ namespace {
 		if (search_counter == 0) search_counter = 2;
 
 		static std::vector<node> nodes;
-		nodes.resize(map.w() * map.h());
+		nodes.resize(static_cast<size_t>(map.w()) * map.h());
 
 		indexer index(map.w(), map.h());
 		comp node_comp(nodes);
@@ -278,7 +290,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	std::vector< std::vector<int>> scores( number_of_teams );
 
 	for( std::size_t i = 0; i< number_of_teams; ++i)
-		scores[i].resize(w*h);
+		scores[i].resize(static_cast<size_t>(w)*h);
 
 	/* // TODO: Do we need this?
 	for(unit_map::const_iterator i = resources::gameboard->units().begin(); i != resources::gameboard->units().end(); ++i) {
@@ -409,13 +421,13 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 	const std::string filename = var0.string_cast();
 
 	//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
-	std::string path = filesystem::get_wml_location(filename);
-	if(path.empty()) {
+	auto path = filesystem::get_wml_location(filename);
+	if(!path) {
 		ERR_AI << "run_file : not found [" << filename <<"]";
 		return variant(); //no suitable file
 	}
 
-	std::string formula_string = filesystem::read_file(path);
+	std::string formula_string = filesystem::read_file(path.value());
 	//need to get function_table from somewhere or delegate to someone who has access to it
 	formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
 	if(parsed_formula == formula_ptr()) {

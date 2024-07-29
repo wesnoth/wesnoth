@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,10 +21,8 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
@@ -195,7 +193,7 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
 
 		if(entry.checkbox) {
-			auto checkbox = build_single_widget_instance<toggle_button>();
+			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 

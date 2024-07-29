@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,13 +34,9 @@
 #include <climits>
 #include <ctime>
 #include <iosfwd>
-#include <iterator>
-#include <map>
 #include <string>
-#include <utility>
 #include <vector>
 #include <type_traits>
-#include <memory>
 
 /**
  * Variant for storing WML attributes.
@@ -141,6 +137,7 @@ public:
 
 	/** Calls @ref operator=(const std::string&) if @a v is not empty. */
 	void write_if_not_empty(const std::string& v);
+	void write_if_not_empty(const t_string& v);
 
 	// Extracting as a specific type:
 	bool to_bool(bool def = false) const;

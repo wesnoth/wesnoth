@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #include "addon/info.hpp"
 
-#include "addon/manager.hpp"
 #include "config.hpp"
 #include "font/pango/escape.hpp"
 #include "gettext.hpp"
@@ -235,7 +234,7 @@ std::string addon_info::display_icon() const
 
 	if(ret.empty()) {
 		ERR_AC << "add-on '" << id << "' doesn't have an icon path set";
-	} else if(!image::exists(ret)) {
+	} else if(!image::exists(image::locator{ret})) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful

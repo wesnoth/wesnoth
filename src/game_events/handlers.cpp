@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -163,6 +163,7 @@ void event_handler::write_config(config &cfg, bool include_nonserializable) cons
 	if(!types_.empty()) cfg["name"] = types_;
 	if(!id_.empty()) cfg["id"] = id_;
 	cfg["first_time_only"] = first_time_only_;
+	cfg["priority"] = priority_;
 	for(const auto& filter : filters_) {
 		filter->serialize(cfg);
 	}
@@ -248,17 +249,22 @@ struct filter_attack : public event_filter {
 		if(unit_a != units.end() && loc.matches_unit(unit_a)) {
 			const auto u = unit_a->shared_from_this();
 			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
-			const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
-			if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
-				const auto opp = unit_d->shared_from_this();
-				auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
-				const_attack_ptr second_attack = std::make_shared<const attack_type>(*temp_other_weapon);
-				auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
-				auto opp_ctx = second_attack->specials_context(opp, u, loc_d, loc, !first_, attack);
-				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
-			} else {
-				auto ctx = attack->specials_context(u, loc, first_);
-				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+			if(temp_weapon){
+				const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
+				if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
+					const auto opp = unit_d->shared_from_this();
+					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
+					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
+					auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
+					utils::optional<decltype(ctx)> opp_ctx;
+					if(second_attack){
+						opp_ctx.emplace(second_attack->specials_context(opp, u, loc_d, loc, !first_, attack));
+					}
+					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+				} else {
+					auto ctx = attack->specials_context(u, loc, first_);
+					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+				}
 			}
 		}
 		return false;

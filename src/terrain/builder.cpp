@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,7 @@
 #include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_config_view.hpp"
 
@@ -122,7 +122,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 	for(const rule_image_rand& ri : images) {
 		bool is_background = ri->is_background();
-		bool animate = (!ri.ri->is_water || preferences::animate_water());
+		bool animate = (!ri.ri->is_water || prefs::get().animate_water());
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
@@ -212,7 +212,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	std::vector<terrain_builder::tile> new_tiles((x + 4) * (y + 4));
+	std::vector<terrain_builder::tile> new_tiles(static_cast<size_t>(x + 4) * (y + 4));
 	tiles_.swap(new_tiles);
 	reset();
 }
@@ -637,8 +637,8 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	// Normalize the rotation, so that it starts on a positive location
-	int minx = INT_MAX;
-	int miny = INT_MAX;
+	int minx = std::numeric_limits<int>::max();
+	int miny = std::numeric_limits<int>::max();
 
 	for(const terrain_constraint& cons : ret.constraints) {
 		minx = std::min<int>(cons.loc.x, minx);
@@ -1154,7 +1154,7 @@ void terrain_builder::build_terrains()
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them
-		std::size_t min_size = INT_MAX;
+		std::size_t min_size = std::numeric_limits<int>::max();
 		t_translation::ter_list min_types = t_translation::ter_list(); // <-- This must be explicitly initialized, just
 																	   // as min_constraint is, at start of loop, or we
 																	   // get a null pointer dereference when we go

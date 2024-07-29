@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,15 +34,6 @@ struct builder_stacked_widget;
 
 class generator_base;
 
-/**
- * @ingroup GUIWidgetWML
- *
- * A stacked widget holds several widgets on top of each other.
- * This can be used for various effects; add an optional overlay to an image, stack it with a spacer to force a minimum size of a widget.
- * The latter is handy to avoid making a separate definition for a single instance with a fixed size.
- *
- * A stacked widget has no states.
- */
 class stacked_widget : public container_base
 {
 	friend struct stacked_widget_implementation;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "fake_unit_manager.hpp"
 
 #include "display.hpp"
-#include "fake_unit_ptr.hpp"
 #include "log.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"

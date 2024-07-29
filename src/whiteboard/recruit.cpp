@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,12 +19,10 @@
 
 #include "whiteboard/recruit.hpp"
 
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 #include "whiteboard/visitor.hpp"
 
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"

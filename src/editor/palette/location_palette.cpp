@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "tooltips.hpp"
 
 #include <boost/regex.hpp>
 

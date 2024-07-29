@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "arrow.hpp"
 
 #include "draw.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_arrows("arrows");
@@ -140,9 +139,8 @@ bool arrow::path_contains(const map_location& hex) const
 void arrow::draw_hex(const map_location& hex)
 {
 	if(path_contains(hex)) {
-		display* disp = display::get_singleton();
-		disp->drawing_buffer_add(layer_, hex, [disp, tex = image::get_texture(symbols_map_[hex])](const rect& dest) {
-			draw::blit(tex, disp->scaled_to_zoom({dest.x, dest.y, tex.w(), tex.h()}));
+		display::get_singleton()->drawing_buffer_add(layer_, hex, [tex = image::get_texture(symbols_map_[hex])](const rect& dest) {
+			draw::blit(tex, dest);
 		});
 	}
 }

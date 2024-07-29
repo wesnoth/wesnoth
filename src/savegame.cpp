@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -13,13 +13,10 @@
 	See the COPYING file for more details.
 */
 
-#include <boost/iostreams/filter/gzip.hpp>
 
 #include "savegame.hpp"
 
-#include "carryover.hpp"
 #include "cursor.hpp"
-#include "format_time_summary.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -34,20 +31,16 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/retval.hpp"
-#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "persist_manager.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
-#include "statistics.hpp"
 #include "video.hpp" // only for faked
 
-#include <algorithm>
 #include <iomanip>
 
 static lg::log_domain log_engine("engine");
@@ -255,7 +248,7 @@ bool loadgame::check_version_compatibility(const version_info& save_version)
 		return false;
 	}
 
-	if(preferences::confirm_load_save_from_different_version()) {
+	if(prefs::get().confirm_load_save_from_different_version()) {
 		const std::string message
 			= _("This save is from a different version of the game ($version_number|), and might not work with this "
 				"version.\n"
@@ -530,9 +523,6 @@ void savegame::write_game(config_writer& out)
 	out.write_key_val("version", game_config::wesnoth_version.str());
 
 	gamestate_.write_general_info(out);
-	out.open_child("statistics");
-	statistics::write_stats(out);
-	out.close_child("statistics");
 }
 
 void savegame::finish_save_game(const config_writer& out)
@@ -630,7 +620,7 @@ std::string autosave_savegame::create_initial_filename(unsigned int turn_number)
 }
 
 oos_savegame::oos_savegame(saved_game& gamestate, bool& ignore)
-	: ingame_savegame(gamestate, preferences::save_compression_format())
+	: ingame_savegame(gamestate, prefs::get().save_compression_format())
 	, ignore_(ignore)
 {
 }

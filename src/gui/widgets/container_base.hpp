@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,14 +17,9 @@
 
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/styled_widget.hpp"
-#include "gui/core/window_builder.hpp"
 
 namespace gui2
 {
-namespace implementation
-{
-struct builder_styled_widget;
-}
 
 /**
  * A generic container base class.

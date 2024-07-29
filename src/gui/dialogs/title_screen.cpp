@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,19 +19,18 @@
 
 #include "addon/manager_ui.hpp"
 #include "filesystem.hpp"
+#include "font/font_config.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
-#include "gui/core/timer.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
-#include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
@@ -39,9 +38,10 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -54,7 +54,7 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "sdl/surface.hpp"
-#include "sdl/utils.hpp"
+#include "serialization/unicode.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -179,31 +179,16 @@ void title_screen::init_callbacks()
 	//
 	// Background and logo images
 	//
-	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined";
+	if(game_config::images::game_title.empty() && game_config::images::game_title_background.empty()) {
+		// game works just fine if just one of the background images are missing
+		ERR_CF << "No titlescreen background defined in game config";
 	}
 
 	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
-
-	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined";
-	}
-
 	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
 	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
 	find_widget<image>(this, "logo", false).set_image(game_config::images::game_logo);
-
-	//
-	// Version string
-	//
-	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
-
-	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
-		version_label->set_label(version_string);
-	}
-
-	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Tip-of-the-day browser
@@ -221,7 +206,24 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			widget["label"] = tip.text();
+			// Use pango markup to insert drop cap
+			// Example: Lawful units -> <span ...>L</span>awful units
+			// If tip starts with a tag, we need to insert the <span> after it
+			// then insert the </span> tag after the first character of the text
+			// after markup. Assumes that the tags themselves don't
+			// contain non-ASCII characters.
+			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
+			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
+			std::string tip_text = tip.text().str();
+			std::size_t pos = 0;
+			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
+				pos = tip_text.find_first_of(">", pos) + 1;
+			}
+			utf8::insert(tip_text, pos+1, "</span>");
+			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
+
+			widget["label"] = tip_text;
+
 			page.emplace("tip", widget);
 
 			widget["label"] = tip.source();
@@ -316,12 +318,99 @@ void title_screen::init_callbacks()
 		try {
 			if(game_.change_language()) {
 				on_resize();
+				update_static_labels();
 			}
 		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
 		}
 	});
 
+	//
+	// Preferences
+	//
+	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
+		gui2::dialogs::preferences_dialog::display();
+
+		// Currently blurred windows don't capture well if there is something
+		// on top of them at the time of blur. Resizing the game window in
+		// preferences will cause the title screen tip and menu panels to
+		// capture the prefs dialog in their blur. This workaround simply
+		// forces them to re-capture the blur after the dialog closes.
+		panel* tip_panel = find_widget<panel>(this, "tip_panel", false, false);
+		if(tip_panel != nullptr) {
+			tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
+			tip_panel->queue_redraw();
+		}
+		panel* menu_panel = find_widget<panel>(this, "menu_panel", false, false);
+		if(menu_panel != nullptr) {
+			menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
+			menu_panel->queue_redraw();
+		}
+	});
+
+	//
+	// Achievements
+	//
+	register_button(*this, "achievements", hotkey::HOTKEY_ACHIEVEMENTS,
+		std::bind(&title_screen::show_achievements, this));
+
+	//
+	// Community
+	//
+	register_button(*this, "community", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_community, this));
+
+	//
+	// Quit
+	//
+	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
+	find_widget<button>(this, "quit", false, true);
+
+	//
+	// Debug clock
+	//
+	register_button(*this, "clock", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_debug_clock_window, this));
+
+	auto clock = find_widget<button>(this, "clock", false, false);
+	if(clock) {
+		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// GUI Test and Debug Window
+	//
+	register_button(*this, "test_dialog", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_gui_test_dialog, this));
+
+	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	if(test_dialog) {
+		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// Static labels (version and language)
+	//
+	update_static_labels();
+}
+
+void title_screen::update_static_labels()
+{
+	//
+	// Version menu label
+	//
+	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+
+	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
+		version_label->set_label(version_string);
+	}
+
+	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+
+	//
+	// Language menu label
+	//
 	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
@@ -345,42 +434,6 @@ void title_screen::init_callbacks()
 			// locale identifier as a last resort
 			lang_button->set_label(boost_name);
 		}
-	}
-
-	//
-	// Preferences
-	//
-	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
-		gui2::dialogs::preferences_dialog::display();
-	});
-
-	//
-	// Achievements
-	//
-	register_button(*this, "achievements", hotkey::HOTKEY_ACHIEVEMENTS,
-		std::bind(&title_screen::show_achievements, this));
-
-	//
-	// Credits
-	//
-	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
-
-	//
-	// Quit
-	//
-	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
-	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
-	find_widget<button>(this, "quit", false, true);
-
-	//
-	// Debug clock
-	//
-	register_button(*this, "clock", hotkey::HOTKEY_NULL,
-		std::bind(&title_screen::show_debug_clock_window, this));
-
-	auto clock = find_widget<button>(this, "clock", false, false);
-	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
 }
 
@@ -427,6 +480,11 @@ void title_screen::show_debug_clock_window()
 	}
 }
 
+void title_screen::show_gui_test_dialog()
+{
+	gui2::dialogs::gui_test_dialog::execute();
+}
+
 void title_screen::hotkey_callback_select_tests()
 {
 	game_config_manager::get()->load_game_config_for_create(false, true);
@@ -456,6 +514,13 @@ void title_screen::show_achievements()
 	ach.show();
 }
 
+void title_screen::show_community()
+{
+	game_version dlg;
+	// shows the 5th tab, community, when the dialog is shown
+	dlg.display(4);
+}
+
 void title_screen::button_callback_multiplayer()
 {
 	while(true) {
@@ -468,7 +533,7 @@ void title_screen::button_callback_multiplayer()
 
 		const auto res = dlg.get_choice();
 
-		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
@@ -476,7 +541,7 @@ void title_screen::button_callback_multiplayer()
 
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
-			game_.select_mp_server(preferences::builtin_servers_list().front().address);
+			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
 			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
@@ -504,7 +569,7 @@ void title_screen::button_callback_cores()
 	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
 		cores.push_back(core);
 
-		if(core["id"] == preferences::core_id()) {
+		if(core["id"] == prefs::get().core_id()) {
 			current = cores.size() - 1;
 		}
 	}
@@ -513,7 +578,7 @@ void title_screen::button_callback_cores()
 	if(core_dlg.show()) {
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
-		preferences::set_core_id(core_id);
+		prefs::get().set_core_id(core_id);
 		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,6 @@
 #pragma once
 
 struct map_location;
-class  replay;
-class  unit;
 
 #include "units/map.hpp"
 #include "game_events/fwd.hpp"
@@ -99,6 +97,24 @@ private:
  * side can be 0 to make the village uncaptured.
  */
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
+
+/**
+ * Teleports a unit across the board and enters the synced context.
+ */
+void teleport_unit_and_record(const map_location& teleport_from,
+	const map_location& teleport_to,
+	bool show_move = false,
+	move_unit_spectator* move_spectator = nullptr);
+
+/**
+ * Teleports a unit across the board.
+ * To be called from replay when we are already in the synced context.
+ */
+void teleport_unit_from_replay(
+	const std::vector<map_location> &steps,
+	bool continued_move,
+	bool skip_ally_sighted,
+	bool show_move);
 
 /**
  * Moves a unit across the board.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "map/map.hpp"
 
 #include "config.hpp"
-#include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"

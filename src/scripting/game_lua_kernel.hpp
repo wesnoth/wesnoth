@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,14 +22,12 @@
 #include <stack>
 #include <string>                       // for string
 
-class config;
 class game_config_view;
 class unit;
 class vconfig;
 namespace ai { class engine_lua; }
 namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
-namespace game_events { struct queued_event; }
 
 class game_display;
 class game_state;
@@ -121,8 +119,10 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_play_sound(lua_State *L);
 	int intf_set_achievement(lua_State *L);
 	int intf_has_achievement(lua_State *L);
+	int intf_has_sub_achievement(lua_State *L);
 	int intf_get_achievement(lua_State *L);
 	int intf_progress_achievement(lua_State *L);
+	int intf_set_sub_achievement(lua_State *L);
 	int intf_set_floating_label(lua_State* L, bool spawn);
 	int intf_remove_floating_label(lua_State* L);
 	int intf_move_floating_label(lua_State* L);
@@ -133,8 +133,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
 	int intf_float_label(lua_State *L);
-	int intf_set_end_campaign_credits(lua_State *L);
-	int intf_set_end_campaign_text(lua_State *L);
 	int intf_clear_menu_item(lua_State *L);
 	int intf_create_side(lua_State *L);
 	int intf_set_menu_item(lua_State *L);
@@ -159,6 +157,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_add_event_simple(lua_State* L);
 	int intf_add_event_wml(lua_State* L);
 	int intf_add_event(lua_State *L);
+	int intf_add_undo_actions(lua_State *L);
+	int cfun_undoable_event(lua_State *L);
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
 	int intf_get_color_adjust(lua_State *L);
@@ -270,6 +270,7 @@ public:
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
 
 	void mouse_over_hex_callback(const map_location& loc);
+	bool mouse_button_callback(const map_location& loc, const std::string &button, const std::string &event);
 	void select_hex_callback(const map_location& loc);
 	void preload_finished() {has_preloaded_ = true;}
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,11 +21,9 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
 
-#include <functional>
 
 #include <ctime>
 

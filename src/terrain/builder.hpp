@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #pragma once
 
 #include "animated.hpp"
-#include "game_config.hpp"
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 

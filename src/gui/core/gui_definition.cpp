@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -140,7 +140,7 @@ gui_definition::gui_definition(const config& cfg)
 
 	has_helptip_message_ = settings["has_helptip_message"];
 
-	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("[settings]", "has_helptip_message"));
+	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("settings", "has_helptip_message"));
 }
 
 void gui_definition::activate() const

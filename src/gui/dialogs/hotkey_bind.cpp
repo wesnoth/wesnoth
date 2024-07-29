@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,8 @@
 
 #include "gui/dialogs/hotkey_bind.hpp"
 
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include <SDL2/SDL.h>
 
 namespace gui2::dialogs
 {

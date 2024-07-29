@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -25,17 +25,12 @@
 #include "draw_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/timer.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
-#include "sdl/rect.hpp"
 #include "video.hpp"
 
-#include <cstdlib>
 #include <functional>
 
 static lg::log_domain log_loadscreen("loadscreen");

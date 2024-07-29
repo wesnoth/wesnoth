@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 
-#include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
@@ -33,10 +32,8 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/chatbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/stacked_widget.hpp"
 #include "gui/dialogs/server_info_dialog.hpp"
 #include "gui/dialogs/multiplayer/match_history.hpp"
 
@@ -47,10 +44,9 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
-#include "preferences/lobby.hpp"
 #include "wesnothd_connection.hpp"
 
 #include <functional>
@@ -78,23 +74,23 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, chatbox_(nullptr)
 	, filter_friends_(register_bool("filter_with_friends",
 		  true,
-		  preferences::fi_friends_in_game,
-		  preferences::set_fi_friends_in_game,
+		  []() {return prefs::get().fi_friends_in_game();},
+		  [](bool v) {prefs::get().set_fi_friends_in_game(v);},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_ignored_(register_bool("filter_with_ignored",
 		  true,
-		  preferences::fi_blocked_in_game,
-		  preferences::set_fi_blocked_in_game,
+		  []() {return prefs::get().fi_blocked_in_game();},
+		  [](bool v) {prefs::get().set_fi_blocked_in_game(v);},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_slots_(register_bool("filter_vacant_slots",
 		  true,
-		  preferences::fi_vacant_slots,
-		  preferences::set_fi_vacant_slots,
+		  []() {return prefs::get().fi_vacant_slots();},
+		  [](bool v) {prefs::get().set_fi_vacant_slots(v);},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_invert_(register_bool("filter_invert",
 		  true,
-		  preferences::fi_invert,
-		  preferences::set_fi_invert,
+		  []() {return prefs::get().fi_invert();},
+		  [](bool v) {prefs::get().set_fi_invert(v);},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_auto_hosted_(false)
 	, filter_text_(nullptr)
@@ -609,11 +605,11 @@ void mp_lobby::pre_show(window& window)
 
 	menu_button& replay_options = find_widget<menu_button>(&window, "replay_options", false);
 
-	if(preferences::skip_mp_replay()) {
+	if(prefs::get().skip_mp_replay()) {
 		replay_options.set_selected(1);
 	}
 
-	if(preferences::blindfold_replay()) {
+	if(prefs::get().blindfold_replay()) {
 		replay_options.set_selected(2);
 	}
 
@@ -687,7 +683,7 @@ void mp_lobby::pre_show(window& window)
 
 void mp_lobby::tab_switch_callback()
 {
-	filter_auto_hosted_ = !filter_auto_hosted_;
+	filter_auto_hosted_ = find_widget<listbox>(get_window(), "games_list_tab_bar", false).get_selected_row() == 1;
 	update_gamelist_filter();
 }
 
@@ -1010,8 +1006,8 @@ void mp_lobby::skip_replay_changed_callback()
 {
 	// TODO: this prefence should probably be controlled with an enum
 	const int value = find_widget<menu_button>(get_window(), "replay_options", false).get_value();
-	preferences::set_skip_mp_replay(value == 1);
-	preferences::set_blindfold_replay(value == 2);
+	prefs::get().set_skip_mp_replay(value == 1);
+	prefs::get().set_blindfold_replay(value == 2);
 }
 
 } // namespace dialogs

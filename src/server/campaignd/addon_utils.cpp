@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Copyright (C) 2013 - 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -18,7 +18,6 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "addon/validation.hpp"
@@ -97,7 +96,7 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 void support_translation(config& addon, const std::string& locale_id)
 {
 	config* locale = addon.find_child("translation", "language", locale_id).ptr();
-	if(locale) {
+	if(!locale) {
 		locale = &addon.add_child("translation");
 		(*locale)["language"] = locale_id;
 	}
@@ -192,7 +191,7 @@ void data_apply_addlist(config& data, const config& addlist)
 
 	for(const config& dir : addlist.child_range("dir")) {
 		config* data_dir = data.find_child("dir", "name", dir["name"]).ptr();
-		if(data_dir) {
+		if(!data_dir) {
 			data_dir = &data.add_child("dir");
 			(*data_dir)["name"] = dir["name"];
 		}

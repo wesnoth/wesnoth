@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 
 #include "synced_user_choice.hpp"
 
-#include "actions/undo.hpp"
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_data.hpp"

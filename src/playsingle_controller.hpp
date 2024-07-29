@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -21,7 +21,6 @@
 #include "cursor.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "playturn_network_adapter.hpp"
-#include "playturn.hpp"
 #include "replay.hpp"
 
 #include <exception>
@@ -29,9 +28,12 @@
 class replay_controller;
 class saved_game;
 
-struct reset_gamestate_exception : public lua_jailbreak_exception, public std::exception
+struct reset_gamestate_exception final : public lua_jailbreak_exception, public std::exception
 {
-	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
+	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s)
+	{
+		this->store();
+	}
 	std::shared_ptr<config> level;
 	std::shared_ptr<config> stats_;
 	bool start_replay;
@@ -44,13 +46,21 @@ private:
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
+	playsingle_controller(const config& level, saved_game& state_of_game);
 
 	~playsingle_controller();
 	level_result::type play_scenario(const config& level);
 	void play_scenario_init(const config& level);
-	void skip_empty_sides(int& side_num);
+
+	struct ses_result { int side_num; bool wrapped; };
+	/// Calculates the current side, starting at @a side_num that is non-empty
+	/// @return side_num: the new side that is non-empty,
+	///                   @a side_num, if no such side was found.
+	///         wrapped:  whether we wrapped around (usually indicates a new tod turn.)
+	///                   also true if no non-empty side was found.
+	ses_result skip_empty_sides(int side_num);
 	void play_some();
+	void play_side();
 	void finish_side_turn();
 	void do_end_level();
 	void play_scenario_main_loop();
@@ -76,7 +86,7 @@ public:
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
 protected:
-	virtual void play_side_impl() override;
+	void play_side_impl();
 	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
@@ -91,13 +101,6 @@ protected:
 
 	const cursor::setter cursor_setter_;
 
-	/// Helper to send our actions to the server
-	/// Used by turn_data_
-	replay_network_sender replay_sender_;
-	/// Used by turn_data_
-	playturn_network_adapter network_reader_;
-	/// Helper to read and execute (in particular replay data/ user actions ) messsages from the server
-	turn_info turn_data_;
 	/// true iff the user has pressed the end turn button this turn.
 	/// (or wants to end linger mode, which is implemented via the same button)
 	bool end_turn_requested_;
@@ -109,6 +112,9 @@ protected:
 	void linger();
 	void update_gui_linger();
 	void sync_end_turn() override;
+	bool is_team_visible(int team_num, bool observer) const;
+	/** returns 0 if no such team was found. */
+	int find_viewing_side() const override;
 	void update_viewing_player() override;
 	void reset_replay();
 };

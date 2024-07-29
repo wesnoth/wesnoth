@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,6 @@
 
 #include "replay_controller.hpp"
 
-#include "game_config_manager.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -167,19 +165,13 @@ void replay_controller::play_side_impl()
 			}
 			else {
 				REPLAY_RETURN res = do_replay(true);
-				if(res == REPLAY_FOUND_END_MOVE) {
-					stop_condition_->move_done();
-				}
 				if(controller_.is_regular_game_end()) {
 					return;
 				}
 				if(res == REPLAY_FOUND_END_TURN) {
 					return;
 				}
-				// TODO: how can this be the case when we just checked for "resources::recorder->at_end()" above?
-				if(res == REPLAY_RETURN_AT_END) {
-					stop_replay();
-				}
+				stop_condition_->move_done();
 				if(res == REPLAY_FOUND_INIT_TURN)
 				{
 					stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());
@@ -202,9 +194,9 @@ void replay_controller::play_side_impl()
 	}
 	return;
 }
-bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int) const
+bool replay_controller::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	switch(cmd.command) {
+	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 		return true;
 	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
@@ -256,7 +248,10 @@ void replay_controller::update_teams()
 void replay_controller::update_viewing_player()
 {
 	assert(vision_);
-	controller_.update_gui_to_player(vision_ == HUMAN_TEAM ? controller_.gamestate().first_human_team_ : controller_.current_side() - 1, *vision_ == SHOW_ALL);
+	int viewing_side_num = vision_ == HUMAN_TEAM ? controller_.find_viewing_side() : controller_.current_side();
+	if(viewing_side_num != 0) {
+		controller_.update_gui_to_player(viewing_side_num - 1, *vision_ == SHOW_ALL);
+	}
 }
 
 bool replay_controller::see_all()

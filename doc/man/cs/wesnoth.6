@@ -48,14 +48,6 @@ s\ ostatními.
 V\ seznamu pro výběr jazyka uvnitř hry ukázat všechny překlady, i\ když jsou
 považovány za nedostatečně hotové.
 .TP 
-\fB\-\-bunzip2\fP\fI\ vstupní_soubor.bz2\fP
-dekomprimuje soubor, který by měl být ve formátu bzip2, a\ uloží jej bez
-přípony .bz2. Původní \fIvstupní_soubor.bz2\fP bude odstraněn.
-.TP 
-\fB\-\-bzip2\fP\fI\ vstupní_soubor\fP
-zkomprimuje soubor do formátu bzip2, uloží jej jako \fIvstupní_soubor\fP.bz2
-a\ odstraní \fIvstupní_soubor\fP.
-.TP 
 \fB\-c[\fP\fIid_tažení\fP\fB],\ \-\-campaign[\fP\fI=id_tažení\fP\fB]\fP
 rovnou spustí tažení s\ identifikátorem \fIid_tažení\fP. Pokud není zadán
 identifikátor, objeví se menu s\ výběrem.
@@ -73,13 +65,8 @@ Přeskočí obrazovky s\ příběhem ([story]) a\ rozhovor až do konce událost
 (event) \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Přidá volbu pro ukázání hodin na testování časovače kreslení.
-.TP 
-\fB\-\-config\-dir\fP\fI\ název\fP
-Zastaralé, použij \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Zastaralé, použij \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_jádra\fP
 nahradí načtené jádro tím, jehož identifikátor je zadán.
@@ -117,14 +104,6 @@ a\ také tyto hodnoty zapisuje do souboru v\ adresáři s\ uživatelskými daty.
 \fB\-f, \-\-fullscreen\fP
 spouští hru v celoobrazovkovém režimu.
 .TP 
-\fB\-\-gunzip\fP\fI\ soubor_se_hrou\fP
-dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží
-jej bez koncovky .gz. Následně je \fIsoubor_se_hrou\fP smazán.
-.TP 
-\fB\-\-gzip\fP\fI\ soubor_se_hrou\fP
-komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží
-jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
-.TP 
 \fB\-h, \-\-help\fP
 zobrazí nápovědu k parametrům příkazové řádky a skončí.
 .TP 
@@ -147,18 +126,32 @@ společně s\ volbou \fB\-d\fP, je výchozí úrovní \fBnone\fP.
 \fB\-\-log\-precise\fP
 použije v\ záznamech časové značky s\ větší přesností.
 .TP 
-\fB\-\-log\-strict\fP
-nastaví úroveň přísnosti pro zaznamenávání. Jakékoli zprávy poslané oblastem
-zaznamenávání s touto nebo závažnější úrovní způsobí, že test součástí selže
-bez ohledu na vítězný výsledek. Má smysl pouze při použití s \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ úroveň\fP
+nastaví \fIúroveň\fP přísnosti pro zaznamenávání. Jakékoli zprávy poslané
+oblastem zaznamenávání s\ touto nebo závažnější \fIúrovní\fP způsobí, že test
+součástí selže bez ohledu na vítězný výsledek. Má smysl pouze při použití
+s\ \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtr\fP\fB]\fP
 vypíše definované oblasti zaznamenávání (pokud je použit \fIfiltr\fP, pak pouze
 ty, které jej obsahují) a\ skončí.
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-zabrání přesměrování výstupu záznamů do souboru. Soubory se záznamy jsou
+zabrání přesměrování výstupu záznamů do souboru. Jako alternativu lze také
+nastavit proměnnou prostředí WESNOTH_NO_LOG_FILE. Soubory se záznamy jsou
 vytvářeny v\ adresáři logs pod složkou s\ uživatelskými daty.
+.TP 
+\fB\-\-log\-to\-file\fP
+výstup záznamů je zapsán do souboru. Ruší účinek volby \-\-no\-log\-to\-file ať
+už je vyjádřena přímo, nebo nepřímo.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
+.TP 
+\fB\-\-wnoconsole\fP
+Ve Windows, pokud je použita spolu s\ \-\-no\-log\-to\-file, způsobí, že je výstup
+zapisován do cerr/cout místo do CONOUT. V\ ostatních případech nedělá nic.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 počet snímků za sekundu, které může hra zobrazit. Hodnota by měla být mezi
@@ -283,7 +276,7 @@ chyby ověření jsou brány jako fatální.
 \fB\-t[\fP\fIid_scénáře\fP\fB],\ \-\-test[\fP\fI=id_scénáře\fP\fB]\fP
 spustí hru v\ malém testovacím scénáři. Scénář by měl být definován pomocí
 WML značky \fB[test]\fP. Výchozím je \fBtest\fP. Ukázku prvku \fB[micro_ai]\fP lze
-spustit pomocí \fBmicro_ai_test\fP. Zahrnuje \fB\-\-nogui\fP.
+spustit pomocí \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ procent\fP
 nastaví od kolika \fIprocent\fP je překlad považován za dost hotový na to, aby
@@ -300,18 +293,6 @@ stejná oprávnění, jaká má spustitelný soubor wesnoth.
 .TP 
 \fB\-S, \-\-use\-schema\fP\fI\ cesta\fP
 nastaví WML schéma pro použití s\ volbou \fB\-V, \-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ název\fP
-nastaví \fInázev\fP adresáře s\ uživatelským nastavením v\ $HOME, nebo pro
-Windows v\ „My Documents\eMy Games“. Pro adresář s\ nastavením můžeš také
-určit absolutní cestu mimo $HOME nebo „My Documents\eMy Games“. Na Windows
-je kromě toho možné zadat adresář relativně k\ pracovnímu adresáři procesu
-užitím cesty, která začíná na „.\e“ nebo „..\e“. Pod X11 je výchozím
-adresářem $XDG_CONFIG_HOME nebo $HOME/.config/wesnoth, na jiných systémech
-je to cesta k\ uživatelským datům.
-.TP 
-\fB\-\-userconfig\-path\fP
-vytiskne cestu k\ adresáři s\ uživatelským nastavením a\ skončí.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ název\fP
 nastaví \fInázev\fP adresáře s\ uživatelskými daty v\ $HOME, nebo pro Windows
@@ -437,9 +418,9 @@ Navštiv oficiální domovskou stránku: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003–2024 David White <davidnwhite@verizon.net>
 .br
-Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+Toto je svobodný software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a
 to i co se týká obchodovatelnosti a použitelnosti.
 .

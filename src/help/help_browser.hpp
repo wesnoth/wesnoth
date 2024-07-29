@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include "widgets/button.hpp"           // for button
 #include "widgets/widget.hpp"           // for widget
 
-struct SDL_Rect;
 
 namespace help {
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,14 +15,13 @@
 
 #pragma once
 
+#include "global.hpp"
 #include "tooltips.hpp"
 #include "tstring.hpp"
 
 #include <bitset>
 #include <functional>
-#include <list>
 #include <map>
-#include <vector>
 
 class config;
 
@@ -58,7 +57,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_SAVE_GAME, HOTKEY_SAVE_REPLAY, HOTKEY_SAVE_MAP, HOTKEY_LOAD_GAME,
 	HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
 	HOTKEY_TOGGLE_ELLIPSES, HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE, HOTKEY_MOUSE_SCROLL,
-	HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_SIDE, HOTKEY_KILL_UNIT, HOTKEY_PREFERENCES,
+	HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_SIDE, HOTKEY_KILL_UNIT, HOTKEY_PREFERENCES, HOTKEY_TELEPORT_UNIT,
 	HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_STOP_NETWORK, HOTKEY_START_NETWORK, HOTKEY_SURRENDER, HOTKEY_QUIT_GAME, HOTKEY_QUIT_TO_DESKTOP,
 	HOTKEY_LABEL_TEAM_TERRAIN, HOTKEY_LABEL_TERRAIN, HOTKEY_CLEAR_LABELS,HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
 	HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
@@ -121,6 +120,7 @@ enum HOTKEY_COMMAND {
 	/* Editor commands */
 	HOTKEY_EDITOR_CUSTOM_TODS,
 	HOTKEY_EDITOR_PARTIAL_UNDO,
+	HOTKEY_EDITOR_EDIT_UNIT,
 
 	// Palette
 	HOTKEY_EDITOR_PALETTE_ITEM_SWAP, HOTKEY_EDITOR_PALETTE_ITEMS_CLEAR,
@@ -190,6 +190,12 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_AREA_ADD,
 	HOTKEY_EDITOR_AREA_SAVE,
 	HOTKEY_EDITOR_AREA_RENAME,
+
+	// Addons
+	HOTKEY_EDITOR_PBL,
+	HOTKEY_EDITOR_CHANGE_ADDON_ID,
+	HOTKEY_EDITOR_SELECT_ADDON,
+	HOTKEY_EDITOR_OPEN_ADDON,
 
 	// Scenario
 	HOTKEY_EDITOR_SCENARIO_EDIT,
@@ -302,7 +308,7 @@ private:
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
 /** returns the hotkey_command with the given name */
-const hotkey_command& get_hotkey_command(const std::string& command);
+NOT_DANGLING const hotkey_command& get_hotkey_command(const std::string& command);
 
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);

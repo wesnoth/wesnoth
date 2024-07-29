@@ -42,3 +42,7 @@ end
 function wesnoth.wml_conditionals.has_achievement(cfg)
 	return wesnoth.achievements.has(cfg.content_for, cfg.id);
 end
+
+function wesnoth.wml_conditionals.has_sub_achievement(cfg)
+	return wesnoth.achievements.has_sub_achievement(cfg.content_for, cfg.id, cfg.sub_id);
+end

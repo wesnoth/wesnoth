@@ -186,14 +186,19 @@ gui/dialogs/depcheck_select_new.cpp
 gui/dialogs/drop_down_menu.cpp
 gui/dialogs/edit_label.cpp
 gui/dialogs/edit_text.cpp
+gui/dialogs/editor/choose_addon.cpp
 gui/dialogs/editor/custom_tod.cpp
 gui/dialogs/editor/edit_label.cpp
+gui/dialogs/editor/edit_pbl.cpp
+gui/dialogs/editor/edit_pbl_translation.cpp
 gui/dialogs/editor/edit_scenario.cpp
 gui/dialogs/editor/edit_side.cpp
+gui/dialogs/editor/edit_unit.cpp
 gui/dialogs/editor/generate_map.cpp
 gui/dialogs/editor/generator_settings.cpp
 gui/dialogs/editor/new_map.cpp
 gui/dialogs/editor/resize_map.cpp
+gui/dialogs/editor/tod_new_schedule.cpp
 gui/dialogs/end_credits.cpp
 gui/dialogs/file_dialog.cpp
 gui/dialogs/file_progress.cpp
@@ -206,6 +211,7 @@ gui/dialogs/game_save.cpp
 gui/dialogs/game_stats.cpp
 gui/dialogs/game_version_dialog.cpp
 gui/dialogs/gamestate_inspector.cpp
+gui/dialogs/gui_test_dialog.cpp
 gui/dialogs/help_browser.cpp
 gui/dialogs/hotkey_bind.cpp
 gui/dialogs/label_settings.cpp
@@ -239,6 +245,7 @@ gui/dialogs/multiplayer/synced_choice_wait.cpp
 gui/dialogs/network_transmission.cpp
 gui/dialogs/outro.cpp
 gui/dialogs/preferences_dialog.cpp
+gui/dialogs/prompt.cpp
 gui/dialogs/screenshot_notification.cpp
 gui/dialogs/select_orb_colors.cpp
 gui/dialogs/server_info_dialog.cpp
@@ -304,13 +311,8 @@ persist_var.cpp
 play_controller.cpp
 playmp_controller.cpp
 playsingle_controller.cpp
-playturn.cpp
 playturn_network_adapter.cpp
-preferences/advanced.cpp
-preferences/display.cpp
-preferences/editor.cpp
-preferences/game.cpp
-preferences/lobby.cpp
+preferences/preferences.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp
@@ -358,6 +360,7 @@ sdl/point.cpp
 sdl/texture.cpp
 side_filter.cpp
 statistics.cpp
+statistics_record.cpp
 storyscreen/controller.cpp
 storyscreen/parser.cpp
 storyscreen/part.cpp
@@ -388,6 +391,7 @@ units/race.cpp
 units/types.cpp
 units/udisplay.cpp
 units/unit.cpp
+utils/config_filters.cpp
 utils/context_free_grammar_generator.cpp
 utils/irdya_datetime.cpp
 utils/markov_generator.cpp

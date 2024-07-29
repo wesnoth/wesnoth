@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,10 +19,8 @@
 
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
-#include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
-#include "units/types.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"
 
@@ -54,7 +52,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 		std::string img = item_groups[mci].icon + "_30";
 		if (mci == active_group_index()) {
 			std::string pressed_img = img + "-pressed.png";
-			if(!filesystem::get_binary_file_location("images", pressed_img).empty()) {
+			if(filesystem::get_binary_file_location("images", pressed_img).has_value()) {
 				img = pressed_img;
 			} else {
 				img += ".png~CS(70,70,0)";

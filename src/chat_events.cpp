@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,11 +17,8 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/general.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -48,7 +45,7 @@ void chat_handler::change_logging(const std::string& data) {
 	if (j == data.end()) return;
 	const std::string level(data.begin(), j);
 	const std::string domain(j + 1, data.end());
-	int severity;
+	lg::severity severity;
 	if (level == "error") severity = lg::err().get_severity();
 	else if (level == "warning") severity = lg::warn().get_severity();
 	else if (level == "info") severity = lg::info().get_severity();
@@ -136,7 +133,7 @@ void chat_handler::send_whisper(const std::string& receiver, const std::string& 
 	config cwhisper, data;
 	cwhisper["receiver"] = receiver;
 	cwhisper["message"] = message;
-	cwhisper["sender"] = preferences::login();
+	cwhisper["sender"] = prefs::get().login();
 	data.add_child("whisper", std::move(cwhisper));
 	send_to_server(data);
 }
@@ -161,14 +158,14 @@ void chat_handler::send_chat_room_message(const std::string& room,
 	config cmsg, data;
 	cmsg["room"] = room;
 	cmsg["message"] = message;
-	cmsg["sender"] = preferences::login();
+	cmsg["sender"] = prefs::get().login();
 	data.add_child("message", std::move(cmsg));
 	send_to_server(data);
 }
 
 void chat_handler::add_chat_room_message_sent(const std::string &room, const std::string &message)
 {
-	add_chat_room_message_received(room, preferences::login(), message);
+	add_chat_room_message_received(room, prefs::get().login(), message);
 }
 
 void chat_handler::add_chat_room_message_received(const std::string &room,

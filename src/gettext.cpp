@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,9 +17,7 @@
 #include "filesystem.hpp"
 
 #include <algorithm>
-#include <iomanip>
 #include <iterator>
-#include <fstream>
 #include <locale>
 #include <map>
 #include <boost/locale.hpp>
@@ -166,7 +164,11 @@ namespace
 			return msg;
 		}
 
+#if BOOST_VERSION < 108300
 		const char* get(int domain_id, const char* ctx, const char* sid, int n) const override
+#else
+		const char* get(int domain_id, const char* ctx, const char* sid, bl::count_type n) const override
+#endif
 		{
 			auto& base = get_base();
 			const char* msg = base.get(domain_id, ctx, sid, n);
@@ -324,11 +326,11 @@ namespace
 				      << "' encoding='"  << info.encoding()
 				      << "' variant='"  << info.variant() << "')";
 			}
-			catch(const bl::conv::conversion_error&)
+			catch(const bl::conv::conversion_error& e)
 			{
 				assert(std::has_facet<bl::info>(current_locale_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
-				ERR_G << "Failed to update locale due to conversion error, locale is now: "
+				ERR_G << "Failed to update locale due to conversion error (" << e.what() << ") locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
 				      << "' language='" << info.language()
@@ -336,11 +338,11 @@ namespace
 				      << "' variant='" << info.variant()
 				      << "'";
 			}
-			catch(const std::runtime_error&)
+			catch(const std::runtime_error& e)
 			{
 				assert(std::has_facet<bl::info>(current_locale_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
-				ERR_G << "Failed to update locale due to runtime error, locale is now: "
+				ERR_G << "Failed to update locale due to runtime error (" << e.what() << ") locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
 				      << "' language='" << info.language()
