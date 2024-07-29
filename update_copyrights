@@ -97,37 +97,46 @@ with open(options.input, encoding="utf-8") as csvfile:
         csv_data[file] = row
 
 with contextlib.suppress(FileNotFoundError):
+    if options.input == options.output:
+        os.rename(options.input, options.input + '-bak')
     os.remove(options.output)
 
-for root, _, files in os.walk(options.repo):
-    for filename in files:
-        filetype = Path(filename).suffix
-        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp" or filetype == ".wav" or filetype == ".ogg":
-            file_path = os.path.normpath(os.path.join(root, filename))
-            if os.path.sep != '/':
-                # Always use slashes for the file path irrespective of OS used to run the update
-                file_path = file_path.replace(os.path.sep, '/')
-            file_hash = do_hash(file_path)
+try:
+    for root, _, files in os.walk(options.repo):
+        for filename in files:
+            filetype = Path(filename).suffix
+            if filetype == ".png" or filetype == ".jpg" or filetype == ".webp" or filetype == ".wav" or filetype == ".ogg":
+                file_path = os.path.normpath(os.path.join(root, filename))
+                if os.path.sep != '/':
+                    # Always use slashes for the file path irrespective of OS used to run the update
+                    file_path = file_path.replace(os.path.sep, '/')
+                file_hash = do_hash(file_path)
 
-            if not file_path in csv_data:
-                added.append(["", file_path, "", "", "", do_git(file_path), file_hash])
-            elif len(csv_data[file_path]) < 7:
-                missing_fields.append(csv_data[file_path])
-            elif len(csv_data[file_path]) > 7:
-                extra_fields.append(csv_data[file_path])
-            elif csv_data[file_path][5] != "":
-                update.append(csv_data[file_path])
-            elif csv_data[file_path][6] != file_hash:
-                csv_data[file_path][5] = do_git(file_path)
-                csv_data[file_path][6] = file_hash
-                changed.append(csv_data[file_path])
-            elif csv_data[file_path][2].strip() == "" or csv_data[file_path][3].strip() == "":
-                incomplete.append(csv_data[file_path])
-            elif not csv_data[file_path][2] in known_licenses:
-                unknown_licenses.append(csv_data[file_path][2])
-                incomplete.append(csv_data[file_path])
-            else:
-                unchanged.append(csv_data[file_path])
+                if not file_path in csv_data:
+                    added.append(["", file_path, "", "", "", do_git(file_path), file_hash])
+                elif len(csv_data[file_path]) < 7:
+                    missing_fields.append(csv_data[file_path])
+                elif len(csv_data[file_path]) > 7:
+                    extra_fields.append(csv_data[file_path])
+                elif csv_data[file_path][5] != "":
+                    update.append(csv_data[file_path])
+                elif csv_data[file_path][6] != file_hash:
+                    csv_data[file_path][5] = do_git(file_path)
+                    csv_data[file_path][6] = file_hash
+                    changed.append(csv_data[file_path])
+                elif csv_data[file_path][2].strip() == "" or csv_data[file_path][3].strip() == "":
+                    incomplete.append(csv_data[file_path])
+                elif not csv_data[file_path][2] in known_licenses:
+                    unknown_licenses.append(csv_data[file_path][2])
+                    incomplete.append(csv_data[file_path])
+                else:
+                    unchanged.append(csv_data[file_path])
+    if options.input == options.output:
+        os.remove(options.input + '-bak')
+except:
+    if options.input == options.output:
+        os.rename(options.input + '-bak', options.input)
+    raise
 
 final_output = missing_fields + extra_fields + added + changed + incomplete + update + unchanged
 final_output.sort(key=itemgetter(1))
