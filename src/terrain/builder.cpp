@@ -772,7 +772,11 @@ terrain_builder::terrain_constraint& terrain_builder::add_constraints(terrain_bu
 
 	if(!cons) {
 		// The terrain at the current location did not exist, so create it
+#ifdef __cpp_aggregate_paren_init
 		constraints.emplace_back(loc);
+#else
+		constraints.push_back({loc});
+#endif
 		cons = &constraints.back();
 	}
 
