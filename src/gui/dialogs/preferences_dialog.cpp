@@ -25,6 +25,7 @@
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
@@ -163,7 +164,7 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 
 void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 {
-	std::string current_theme_name = prefs::get().gui_theme();
+	std::string current_theme_name = gui2::get_active_theme();
 
 	std::vector<config> options;
 	std::size_t current_theme = 0;

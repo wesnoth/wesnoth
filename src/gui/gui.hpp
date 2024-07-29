@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <string>
+
 namespace gui2
 {
 /**
@@ -24,5 +26,8 @@ namespace gui2
  * are used.
  */
 void init();
+
+/** Get the currently active GUI2 theme */
+std::string& get_active_theme();
 
 } // namespace gui2
