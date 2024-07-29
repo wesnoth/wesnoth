@@ -2857,7 +2857,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	}
 
 	try {
-		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor{});
+		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor());
 	} catch(std::invalid_argument& e) {
 		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit";
 		upkeep_ = upkeep_full{};
@@ -2866,7 +2866,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	upkeep = utils::visit(upkeep_type_visitor{}, upkeep_);
+	upkeep = utils::visit(upkeep_type_visitor(), upkeep_);
 }
 
 void unit::clear_changed_attributes()
