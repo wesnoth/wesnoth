@@ -53,8 +53,8 @@
      * Two new menu entries for (1) opening the Add-on selection dialog, (2) opening the folder corresponding to the Add-on. The open add-on folder option shows a GUI2 file dialog at the add-on's folder which can be used to open any file. If it is a loadable map/scenario it will be opened in the editor, otherwise the OS's default application for that file will be opened.
    * File Dialog
      * Redesigned with new icons
-	 * New Open External button that opens selected file/folder in the platform's default application (independently of what pressing Open would do). This could be used to quickly open a folder or preview the file before actually selecting it.
-	 * Extension checking and filename validation. (See #8911)
+     * New Open External button that opens selected file/folder in the platform's default application (independently of what pressing Open would do). This could be used to quickly open a folder or preview the file before actually selecting it.
+     * Extension checking and filename validation. (See #8911)
  ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Ukrainian
  ### User interface
