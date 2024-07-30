@@ -110,6 +110,7 @@ private:
 	std::vector<std::string> gui2_themes_;
 
 	int last_selected_item_;
+	unsigned current_gui_theme_;
 
 	std::vector<double> accl_speeds_;
 

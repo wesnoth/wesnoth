@@ -15,14 +15,24 @@
 
 #pragma once
 
+#include <string>
+
 namespace gui2
 {
 /**
  * Initializes the GUI subsystems.
  *
  * @note This function must be called before other parts of the UI engine
- * are used.
+ * are used. Use @ref switch_theme below to actually activate the theme.
  */
 void init();
+
+/**
+ * Set and activate the given gui2 theme
+ *
+ * @param current_theme    the name of the gui2 theme to switch to
+ */
+void switch_theme(const std::string& current_theme);
+
 
 } // namespace gui2

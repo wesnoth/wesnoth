@@ -61,6 +61,9 @@ public:
 		QUIT_GAME,
 		// Used to reload all game data
 		RELOAD_GAME_DATA,
+		// Used to reshow the titlescreen, for example,
+		// in the case of a gui2 theme change
+		RELOAD_UI,
 	};
 
 private:

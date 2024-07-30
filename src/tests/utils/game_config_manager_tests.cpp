@@ -76,6 +76,7 @@ namespace test_utils {
 
 			font::load_font_config();
 			gui2::init();
+			gui2::switch_theme("default");
 			load_language_list();
 			game_config::config_cache::instance().add_define("TEST");
 			game_config::config_cache::instance().get_config(game_config::path + "/data/test/", cfg_);

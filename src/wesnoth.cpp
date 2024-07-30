@@ -36,6 +36,7 @@
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
+#include "preferences/preferences.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -716,6 +717,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #endif
 
 	gui2::init();
+	gui2::switch_theme(prefs::get().gui_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
@@ -856,7 +858,9 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		{ // scope to not keep the title screen alive all game
 			gui2::dialogs::title_screen dlg(*game);
 
-			// Allows re-layout on resize
+			// Allows re-layout on resize.
+			// Since RELOAD_UI is not checked here, it causes
+			// the dialog to be closed and reshown with changes.
 			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
@@ -891,6 +895,9 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
+			break;
+		case gui2::dialogs::title_screen::RELOAD_UI:
+			gui2::switch_theme(prefs::get().gui_theme());
 			break;
 		}
 	}
