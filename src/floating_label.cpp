@@ -185,7 +185,7 @@ void floating_label::update(int time)
 	// Invalidate new draw loc in preparation
 	draw_manager::invalidate_region(get_bg_rect(draw_loc));
 
-//	DBG_FT << "updating floating label from " << screen_loc_ << " to " << draw_loc;
+	DBG_FT << "updating floating label from " << screen_loc_ << " to " << draw_loc;
 
 	screen_loc_ = draw_loc;
 	alpha_ = new_alpha;
@@ -211,7 +211,7 @@ void floating_label::draw()
 		return;
 	}
 
-//	DBG_FT << "drawing floating label to " << screen_loc_;
+	DBG_FT << "drawing floating label to " << screen_loc_;
 
 	// Clip if appropriate.
 	auto clipper = draw::reduce_clip(clip_rect_);
