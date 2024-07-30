@@ -587,7 +587,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 
 void game_display::float_label(const map_location& loc, const std::string& text, const color_t& color)
 {
-	if(prefs::get().show_floating_labels() == false || fogged(loc)) {
+	if(prefs::get().floating_labels() == false || fogged(loc)) {
 		return;
 	}
 

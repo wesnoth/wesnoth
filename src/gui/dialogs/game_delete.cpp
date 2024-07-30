@@ -29,7 +29,7 @@ REGISTER_DIALOG(game_delete)
  */
 static bool get_dont_ask_again()
 {
-	return !prefs::get().ask_delete_saves();
+	return !prefs::get().ask_delete();
 }
 
 /**
@@ -39,7 +39,7 @@ static bool get_dont_ask_again()
  */
 static void set_dont_ask_again(const bool ask_again)
 {
-	prefs::get().set_ask_delete_saves(!ask_again);
+	prefs::get().set_ask_delete(!ask_again);
 }
 
 game_delete::game_delete()

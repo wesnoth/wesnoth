@@ -304,7 +304,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	int scroll_speed = prefs::get().scroll_speed();
 	double dx = 0.0, dy = 0.0;
 
-	int scroll_threshold = prefs::get().mouse_scroll_enabled()
+	int scroll_threshold = prefs::get().mouse_scrolling()
 		? prefs::get().mouse_scroll_threshold()
 		: 0;
 
