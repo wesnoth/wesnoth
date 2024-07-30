@@ -492,7 +492,7 @@ void game_load::delete_button_callback()
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation
-		if(prefs::get().ask_delete_saves()) {
+		if(prefs::get().ask_delete()) {
 			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}

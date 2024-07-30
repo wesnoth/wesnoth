@@ -985,7 +985,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 
 void menu_handler::toggle_ellipses()
 {
-	prefs::get().set_ellipses(!prefs::get().ellipses());
+	prefs::get().set_show_side_colors(!prefs::get().show_side_colors());
 	gui_->invalidate_all(); // TODO can fewer tiles be invalidated?
 }
 

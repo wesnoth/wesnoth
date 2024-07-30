@@ -524,7 +524,7 @@ void close_sound()
 void reset_sound()
 {
 	bool music = prefs::get().music_on();
-	bool sound = prefs::get().sound_on();
+	bool sound = prefs::get().sound();
 	bool UI_sound = prefs::get().ui_sound_on();
 	bool bell = prefs::get().turn_bell();
 
@@ -1034,14 +1034,14 @@ static void play_sound_internal(const std::string& files,
 
 void play_sound(const std::string& files, channel_group group, unsigned int repeats)
 {
-	if(prefs::get().sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, group, repeats);
 	}
 }
 
 void play_sound_positioned(const std::string& files, int id, int repeats, unsigned int distance)
 {
-	if(prefs::get().sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
 	}
 }
@@ -1057,7 +1057,7 @@ void play_bell(const std::string& files)
 // Play timer with separate volume setting
 void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
 {
-	if(prefs::get().sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_TIMER, 0, 0, -1, loop_ticks, fadein_ticks);
 	}
 }

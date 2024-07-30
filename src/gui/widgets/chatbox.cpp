@@ -298,7 +298,7 @@ void chatbox::add_whisper_sent(const std::string& receiver, const std::string& m
 
 void chatbox::add_whisper_received(const std::string& sender, const std::string& message)
 {
-	bool can_go_to_active = !prefs::get().whisper_friends_only() || prefs::get().is_friend(sender);
+	bool can_go_to_active = !prefs::get().lobby_whisper_friends_only() || prefs::get().is_friend(sender);
 	bool can_open_new = prefs::get().auto_open_whisper_windows() && can_go_to_active;
 
 	if(whisper_window_open(sender, can_open_new)) {

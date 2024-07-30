@@ -22,7 +22,6 @@
 #include "preferences/preferences.hpp"
 
 #include "cursor.hpp"
-#include "desktop/notifications.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "formula/string_utils.hpp"
@@ -517,55 +516,6 @@ config::attribute_value prefs::get_as_attribute(const std::string &key)
 //
 // accessors
 //
-bool prefs::show_ally_orb() {
-	return preferences_[prefs_list::show_ally_orb].to_bool(game_config::show_ally_orb);
-}
-void prefs::set_show_ally_orb(bool show_orb) {
-	preferences_[prefs_list::show_ally_orb] = show_orb;
-}
-
-bool prefs::show_status_on_ally_orb() {
-	return preferences_[prefs_list::show_status_on_ally_orb].to_bool(game_config::show_status_on_ally_orb);
-}
-void prefs::set_show_status_on_ally_orb(bool show_orb) {
-	preferences_[prefs_list::show_status_on_ally_orb] = show_orb;
-}
-
-bool prefs::show_enemy_orb() {
-	return preferences_[prefs_list::show_enemy_orb].to_bool(game_config::show_enemy_orb);
-}
-void prefs::set_show_enemy_orb(bool show_orb) {
-	preferences_[prefs_list::show_enemy_orb] = show_orb;
-}
-
-bool prefs::show_moved_orb() {
-	return preferences_[prefs_list::show_moved_orb].to_bool(game_config::show_moved_orb);
-}
-void prefs::set_show_moved_orb(bool show_orb) {
-	preferences_[prefs_list::show_moved_orb] = show_orb;
-}
-
-bool prefs::show_unmoved_orb() {
-	return preferences_[prefs_list::show_unmoved_orb].to_bool(game_config::show_unmoved_orb);
-}
-void prefs::set_show_unmoved_orb(bool show_orb) {
-	preferences_[prefs_list::show_unmoved_orb] = show_orb;
-}
-
-bool prefs::show_partial_orb() {
-	return preferences_[prefs_list::show_partial_orb].to_bool(game_config::show_partial_orb);
-}
-void prefs::set_show_partial_orb(bool show_orb) {
-	preferences_[prefs_list::show_partial_orb] = show_orb;
-}
-
-bool prefs::show_disengaged_orb() {
-	return preferences_[prefs_list::show_disengaged_orb].to_bool(game_config::show_disengaged_orb);
-}
-void prefs::set_show_disengaged_orb(bool show_orb) {
-	preferences_[prefs_list::show_disengaged_orb] = show_orb;
-}
-
 static std::string fix_orb_color_name(const std::string& color) {
 	if (color.substr(0,4) == "orb_") {
 		if(color[4] >= '0' && color[4] <= '9') {
@@ -627,26 +577,6 @@ void prefs::set_partial_color(const std::string& color_id) {
 	preferences_[prefs_list::partial_orb_color] = color_id;
 }
 
-std::string prefs::core_id() {
-	std::string core_id = preferences_[prefs_list::core].str();
-	if (core_id.empty())
-		return "default";
-	return core_id;
-}
-void prefs::set_core_id(const std::string& core_id) {
-	preferences_[prefs_list::core] = core_id;
-}
-
-bool prefs::scroll_to_action()
-{
-	return preferences_[prefs_list::scroll_to_action].to_bool(true);
-}
-
-void prefs::set_scroll_to_action(bool ison)
-{
-	preferences_[prefs_list::scroll_to_action] = ison;
-}
-
 point prefs::resolution()
 {
 	const unsigned x_res = preferences_[prefs_list::xresolution].to_unsigned();
@@ -663,6 +593,12 @@ point prefs::resolution()
 	);
 }
 
+void prefs::set_resolution(const point& res)
+{
+	preferences_[prefs_list::xresolution] = std::to_string(res.x);
+	preferences_[prefs_list::yresolution] = std::to_string(res.y);
+}
+
 int prefs::pixel_scale()
 {
 	// For now this has a minimum value of 1 and a maximum of 4.
@@ -672,52 +608,6 @@ int prefs::pixel_scale()
 void prefs::set_pixel_scale(const int scale)
 {
 	preferences_[prefs_list::pixel_scale] = std::clamp(scale, pref_constants::min_pixel_scale, pref_constants::max_pixel_scale);
-}
-
-bool prefs::auto_pixel_scale()
-{
-	return preferences_[prefs_list::auto_pixel_scale].to_bool(true);
-}
-
-void prefs::set_auto_pixel_scale(bool choice)
-{
-	preferences_[prefs_list::auto_pixel_scale] = choice;
-}
-
-bool prefs::maximized()
-{
-	return preferences_[prefs_list::maximized].to_bool(!fullscreen());
-}
-
-bool prefs::fullscreen()
-{
-	return preferences_[prefs_list::fullscreen].to_bool(true);
-}
-
-bool prefs::vsync()
-{
-	return preferences_[prefs_list::vsync].to_bool(true);
-}
-
-void prefs::set_resolution(const point& res)
-{
-	preferences_[prefs_list::xresolution] = std::to_string(res.x);
-	preferences_[prefs_list::yresolution] = std::to_string(res.y);
-}
-
-void prefs::set_maximized(bool ison)
-{
-	preferences_[prefs_list::maximized] = ison;
-}
-
-void prefs::set_fullscreen(bool ison)
-{
-	preferences_[prefs_list::fullscreen] = ison;
-}
-
-void prefs::set_vsync(bool ison)
-{
-	preferences_[prefs_list::vsync] = ison;
 }
 
 bool prefs::turbo()
@@ -732,16 +622,6 @@ bool prefs::turbo()
 void prefs::set_turbo(bool ison)
 {
 	preferences_[prefs_list::turbo] = ison;
-}
-
-double prefs::turbo_speed()
-{
-	return preferences_[prefs_list::turbo_speed].to_double(2.0);
-}
-
-void prefs::set_turbo_speed(const double speed)
-{
-	preferences_[prefs_list::turbo_speed] = speed;
 }
 
 int prefs::font_scaling()
@@ -768,66 +648,6 @@ int prefs::keepalive_timeout()
 void prefs::keepalive_timeout(int seconds)
 {
 	preferences_[prefs_list::keepalive_timeout] = std::abs(seconds);
-}
-
-bool prefs::idle_anim()
-{
-	return preferences_[prefs_list::idle_anim].to_bool(true);
-}
-
-void prefs::set_idle_anim(const bool ison)
-{
-	preferences_[prefs_list::idle_anim] = ison;
-}
-
-int prefs::idle_anim_rate()
-{
-	return preferences_[prefs_list::idle_anim_rate].to_int();
-}
-
-void prefs::set_idle_anim_rate(int rate)
-{
-	preferences_[prefs_list::idle_anim_rate] = rate;
-}
-
-std::string prefs::language()
-{
-	return preferences_[prefs_list::locale].str();
-}
-
-void prefs::set_language(const std::string& s)
-{
-	preferences_[prefs_list::locale] = s;
-}
-
-std::string prefs::gui_theme()
-{
-	return preferences_[prefs_list::gui2_theme].str();
-}
-
-void prefs::set_gui_theme(const std::string& s)
-{
-	preferences_[prefs_list::gui2_theme] = s;
-}
-
-bool prefs::ellipses()
-{
-	return preferences_[prefs_list::show_side_colors].to_bool();
-}
-
-void prefs::set_ellipses(bool ison)
-{
-	preferences_[prefs_list::show_side_colors] = ison;
-}
-
-bool prefs::grid()
-{
-	return preferences_[prefs_list::grid].to_bool();
-}
-
-void prefs::set_grid(bool ison)
-{
-	preferences_[prefs_list::grid] = ison;
 }
 
 std::size_t prefs::sound_buffer_size()
@@ -914,16 +734,6 @@ void prefs::set_ui_volume(int vol)
 	sound::set_UI_volume(ui_volume());
 }
 
-unsigned int prefs::tile_size()
-{
-	return preferences_[prefs_list::tile_size].to_unsigned();
-}
-
-void prefs::set_tile_size(const unsigned int size)
-{
-	preferences_[prefs_list::tile_size] = size;
-}
-
 bool prefs::turn_bell()
 {
 	return preferences_[prefs_list::turn_bell].to_bool(true);
@@ -933,7 +743,7 @@ bool prefs::set_turn_bell(bool ison)
 {
 	if(!turn_bell() && ison) {
 		preferences_[prefs_list::turn_bell] = true;
-		if(!music_on() && !sound_on() && !ui_sound_on()) {
+		if(!music_on() && !sound() && !ui_sound_on()) {
 			if(!sound::init_sound()) {
 				preferences_[prefs_list::turn_bell] = false;
 				return false;
@@ -942,7 +752,7 @@ bool prefs::set_turn_bell(bool ison)
 	} else if(turn_bell() && !ison) {
 		preferences_[prefs_list::turn_bell] = false;
 		sound::stop_bell();
-		if(!music_on() && !sound_on() && !ui_sound_on())
+		if(!music_on() && !sound() && !ui_sound_on())
 			sound::close_sound();
 	}
 	return true;
@@ -957,7 +767,7 @@ bool prefs::set_ui_sound(bool ison)
 {
 	if(!ui_sound_on() && ison) {
 		preferences_[prefs_list::ui_sound] = true;
-		if(!music_on() && !sound_on() && !turn_bell()) {
+		if(!music_on() && !sound() && !turn_bell()) {
 			if(!sound::init_sound()) {
 				preferences_[prefs_list::ui_sound] = false;
 				return false;
@@ -966,7 +776,7 @@ bool prefs::set_ui_sound(bool ison)
 	} else if(ui_sound_on() && !ison) {
 		preferences_[prefs_list::ui_sound] = false;
 		sound::stop_UI_sound();
-		if(!music_on() && !sound_on() && !turn_bell())
+		if(!music_on() && !sound() && !turn_bell())
 			sound::close_sound();
 	}
 	return true;
@@ -977,13 +787,13 @@ bool prefs::message_bell()
 	return preferences_[prefs_list::message_bell].to_bool(true);
 }
 
-bool prefs::sound_on()
+bool prefs::sound()
 {
 	return preferences_[prefs_list::sound].to_bool(true);
 }
 
 bool prefs::set_sound(bool ison) {
-	if(!sound_on() && ison) {
+	if(!sound() && ison) {
 		preferences_[prefs_list::sound] = true;
 		if(!music_on() && !turn_bell() && !ui_sound_on()) {
 			if(!sound::init_sound()) {
@@ -991,7 +801,7 @@ bool prefs::set_sound(bool ison) {
 				return false;
 			}
 		}
-	} else if(sound_on() && !ison) {
+	} else if(sound() && !ison) {
 		preferences_[prefs_list::sound] = false;
 		sound::stop_sound();
 		if(!music_on() && !turn_bell() && !ui_sound_on())
@@ -1008,7 +818,7 @@ bool prefs::music_on()
 bool prefs::set_music(bool ison) {
 	if(!music_on() && ison) {
 		preferences_[prefs_list::music] = true;
-		if(!sound_on() && !turn_bell() && !ui_sound_on()) {
+		if(!sound() && !turn_bell() && !ui_sound_on()) {
 			if(!sound::init_sound()) {
 				preferences_[prefs_list::music] = false;
 				return false;
@@ -1018,22 +828,12 @@ bool prefs::set_music(bool ison) {
 			sound::play_music();
 	} else if(music_on() && !ison) {
 		preferences_[prefs_list::music] = false;
-		if(!sound_on() && !turn_bell() && !ui_sound_on())
+		if(!sound() && !turn_bell() && !ui_sound_on())
 			sound::close_sound();
 		else
 			sound::stop_music();
 	}
 	return true;
-}
-
-bool prefs::stop_music_in_background()
-{
-	return preferences_[prefs_list::stop_music_in_background].to_bool();
-}
-
-void prefs::set_stop_music_in_background(bool ison)
-{
-	preferences_[prefs_list::stop_music_in_background] = ison;
 }
 
 int prefs::scroll_speed()
@@ -1051,89 +851,9 @@ bool prefs::middle_click_scrolls()
 	return preferences_[prefs_list::middle_click_scrolls].to_bool(true);
 }
 
-bool prefs::mouse_scroll_enabled()
-{
-	return preferences_[prefs_list::mouse_scrolling].to_bool(true);
-}
-
-void prefs::enable_mouse_scroll(bool value)
-{
-	preferences_[prefs_list::mouse_scrolling] = value;
-}
-
 int prefs::mouse_scroll_threshold()
 {
 	return preferences_[prefs_list::scroll_threshold].to_int(10);
-}
-
-bool prefs::animate_map()
-{
-	return preferences_[prefs_list::animate_map].to_bool(true);
-}
-
-bool prefs::animate_water()
-{
-	return preferences_[prefs_list::animate_water].to_bool(true);
-}
-
-bool prefs::minimap_movement_coding()
-{
-	return preferences_[prefs_list::minimap_movement_coding].to_bool(true);
-}
-
-void prefs::toggle_minimap_movement_coding()
-{
-	preferences_[prefs_list::minimap_movement_coding] = !minimap_movement_coding();
-}
-
-bool prefs::minimap_terrain_coding()
-{
-	return preferences_[prefs_list::minimap_terrain_coding].to_bool(true);
-}
-
-void prefs::toggle_minimap_terrain_coding()
-{
-	preferences_[prefs_list::minimap_terrain_coding] = !minimap_terrain_coding();
-}
-
-bool prefs::minimap_draw_units()
-{
-	return preferences_[prefs_list::minimap_draw_units].to_bool(true);
-}
-
-void prefs::toggle_minimap_draw_units()
-{
-	preferences_[prefs_list::minimap_draw_units] = !minimap_draw_units();
-}
-
-bool prefs::minimap_draw_villages()
-{
-	return preferences_[prefs_list::minimap_draw_villages].to_bool(true);
-}
-
-void prefs::toggle_minimap_draw_villages()
-{
-	preferences_[prefs_list::minimap_draw_villages] = !minimap_draw_villages();
-}
-
-bool prefs::minimap_draw_terrain()
-{
-	return preferences_[prefs_list::minimap_draw_terrain].to_bool(true);
-}
-
-void prefs::toggle_minimap_draw_terrain()
-{
-	preferences_[prefs_list::minimap_draw_terrain] = !minimap_draw_terrain();
-}
-
-void prefs::set_animate_map(bool value)
-{
-	preferences_[prefs_list::animate_map] = value;
-}
-
-void prefs::set_animate_water(bool value)
-{
-	preferences_[prefs_list::animate_water] = value;
 }
 
 bool prefs::show_fps()
@@ -1144,16 +864,6 @@ bool prefs::show_fps()
 void prefs::set_show_fps(bool value)
 {
 	fps_ = value;
-}
-
-int prefs::draw_delay()
-{
-	return preferences_[prefs_list::draw_delay].to_int(-1);
-}
-
-void prefs::set_draw_delay(int value)
-{
-	preferences_[prefs_list::draw_delay] = value;
 }
 
 void prefs::load_hotkeys()
@@ -1194,7 +904,7 @@ void prefs::save_sample_rate(const unsigned int rate)
 	if (sample_rate() == rate)
 		return;
 
-	preferences_[prefs_list::sample_rate] = static_cast<int>(rate);
+	preferences_[prefs_list::sample_rate] = rate;
 
 	// If audio is open, we have to re set sample rate
 	sound::reset_sound();
@@ -1210,36 +920,6 @@ bool prefs::use_twelve_hour_clock_format()
 	return preferences_[prefs_list::use_twelve_hour_clock_format].to_bool();
 }
 
-bool prefs::disable_auto_moves()
-{
-	return preferences_[prefs_list::disable_auto_moves].to_bool();
-}
-
-void prefs::set_disable_auto_moves(bool value)
-{
-	preferences_[prefs_list::disable_auto_moves] = value;
-}
-
-bool prefs::damage_prediction_allow_monte_carlo_simulation()
-{
-	return preferences_[prefs_list::damage_prediction_allow_monte_carlo_simulation].to_bool(true);
-}
-
-void prefs::set_damage_prediction_allow_monte_carlo_simulation(bool value)
-{
-	preferences_[prefs_list::damage_prediction_allow_monte_carlo_simulation] = value;
-}
-
-std::string prefs::addon_manager_saved_order_name()
-{
-	return preferences_[prefs_list::addon_manager_saved_order_name].str();
-}
-
-void prefs::set_addon_manager_saved_order_name(const std::string& value)
-{
-	preferences_[prefs_list::addon_manager_saved_order_name] = value;
-}
-
 sort_order::type prefs::addon_manager_saved_order_direction()
 {
 	return sort_order::get_enum(preferences_[prefs_list::addon_manager_saved_order_direction]).value_or(sort_order::type::none);
@@ -1248,16 +928,6 @@ sort_order::type prefs::addon_manager_saved_order_direction()
 void prefs::set_addon_manager_saved_order_direction(sort_order::type value)
 {
 	preferences_[prefs_list::addon_manager_saved_order_direction] = sort_order::get_string(value);
-}
-
-std::string prefs::selected_achievement_group()
-{
-	return preferences_[prefs_list::selected_achievement_group].str();
-}
-
-void prefs::set_selected_achievement_group(const std::string& content_for)
-{
-	preferences_[prefs_list::selected_achievement_group] = content_for;
 }
 
 bool prefs::achievement(const std::string& content_for, const std::string& id)
@@ -1444,25 +1114,6 @@ void prefs::set_sub_achievement(const std::string& content_for, const std::strin
 	preferences_.add_child(prefs_list::achievements, ach);
 }
 
-void prefs::set_editor_chosen_addon(const std::string& addon_id)
-{
-	preferences_[prefs_list::editor_chosen_addon] = addon_id;
-}
-
-std::string prefs::editor_chosen_addon()
-{
-	return preferences_[prefs_list::editor_chosen_addon].str();
-}
-
-void prefs::set_last_cache_cleared_version(const std::string& version)
-{
-	preferences_[prefs_list::_last_cache_cleaned_ver] = version;
-}
-std::string prefs::last_cache_cleared_version()
-{
-	return preferences_[prefs_list::_last_cache_cleaned_ver].str();
-}
-
 bool prefs::get_show_deprecation(bool def)
 {
 	return preferences_[prefs_list::show_deprecation].to_bool(def);
@@ -1482,99 +1133,9 @@ optional_const_config prefs::dir_bookmarks()
 	return get_child(prefs_list::dir_bookmarks);
 }
 
-bool prefs::whisper_friends_only()
-{
-	return preferences_[prefs_list::lobby_whisper_friends_only].to_bool();
-}
-
-void prefs::set_whisper_friends_only(bool v)
-{
-	preferences_[prefs_list::lobby_whisper_friends_only] = v;
-}
-
 bool prefs::auto_open_whisper_windows()
 {
 	return preferences_[prefs_list::lobby_auto_open_whisper_windows].to_bool(true);
-}
-
-bool prefs::fi_invert()
-{
-	return preferences_[prefs_list::fi_invert].to_bool();
-}
-
-void prefs::set_fi_invert(bool value)
-{
-	preferences_[prefs_list::fi_invert] = value;
-}
-
-bool prefs::fi_vacant_slots()
-{
-	return preferences_[prefs_list::fi_vacant_slots].to_bool();
-}
-
-void prefs::set_fi_vacant_slots(bool value)
-{
-	preferences_[prefs_list::fi_vacant_slots] = value;
-}
-
-bool prefs::fi_friends_in_game()
-{
-	return preferences_[prefs_list::fi_friends_in_game].to_bool();
-}
-
-void prefs::set_fi_friends_in_game(bool value)
-{
-	preferences_[prefs_list::fi_friends_in_game] = value;
-}
-
-bool prefs::fi_blocked_in_game()
-{
-	return preferences_[prefs_list::fi_blocked_in_game].to_bool();
-}
-
-void prefs::set_fi_blocked_in_game(bool value)
-{
-	preferences_[prefs_list::fi_blocked_in_game] = value;
-}
-
-int prefs::editor_auto_update_transitions() {
-	return preferences_[prefs_list::editor_auto_update_transitions].to_int(pref_constants::TRANSITION_UPDATE_PARTIAL);
-}
-
-void prefs::set_editor_auto_update_transitions(int value) {
-	preferences_[prefs_list::editor_auto_update_transitions] = value;
-}
-
-bool prefs::editor_draw_terrain_codes() {
-	return preferences_[prefs_list::editor_draw_terrain_codes].to_bool();
-}
-
-void prefs::set_editor_draw_terrain_codes(bool value) {
-	preferences_[prefs_list::editor_draw_terrain_codes] = value;
-}
-
-bool prefs::editor_draw_hex_coordinates() {
-	return preferences_[prefs_list::editor_draw_hex_coordinates].to_bool();
-}
-
-void prefs::set_editor_draw_hex_coordinates(bool value) {
-	preferences_[prefs_list::editor_draw_hex_coordinates] = value;
-}
-
-bool prefs::editor_draw_num_of_bitmaps() {
-	return preferences_[prefs_list::editor_draw_num_of_bitmaps].to_bool();
-}
-
-void prefs::set_editor_draw_num_of_bitmaps(bool value) {
-	preferences_[prefs_list::editor_draw_num_of_bitmaps] = value;
-}
-
-bool prefs::editor_help_text_shown() {
-	return preferences_[prefs_list::editor_help_text_shown].to_bool(true);
-}
-
-void prefs::set_editor_help_text_shown(bool value) {
-	preferences_[prefs_list::editor_help_text_shown] = value;
 }
 
 std::size_t prefs::editor_mru_limit()
@@ -1992,129 +1553,9 @@ void prefs::set_campaign_server(const std::string& host)
 	preferences_[prefs_list::campaign_server] = host;
 }
 
-bool prefs::turn_dialog()
-{
-	return preferences_[prefs_list::turn_dialog].to_bool();
-}
-
-void prefs::set_turn_dialog(bool ison)
-{
-	preferences_[prefs_list::turn_dialog] = ison;
-}
-
-bool prefs::enable_whiteboard_mode_on_start()
-{
-	return preferences_[prefs_list::enable_planning_mode_on_start].to_bool();
-}
-
-void prefs::set_enable_whiteboard_mode_on_start(bool value)
-{
-	preferences_[prefs_list::enable_planning_mode_on_start] = value;
-}
-
-bool prefs::hide_whiteboard()
-{
-	return preferences_[prefs_list::hide_whiteboard].to_bool();
-}
-
-void prefs::set_hide_whiteboard(bool value)
-{
-	preferences_[prefs_list::hide_whiteboard] = value;
-}
-
 bool prefs::show_combat()
 {
 	return preferences_[prefs_list::show_combat].to_bool(true);
-}
-
-bool prefs::allow_observers()
-{
-	return preferences_[prefs_list::allow_observers].to_bool(true);
-}
-
-void prefs::set_allow_observers(bool value)
-{
-	preferences_[prefs_list::allow_observers] = value;
-}
-
-bool prefs::shuffle_sides()
-{
-	return preferences_[prefs_list::shuffle_sides].to_bool();
-}
-
-void prefs::set_shuffle_sides(bool value)
-{
-	preferences_[prefs_list::shuffle_sides] = value;
-}
-
-std::string prefs::random_faction_mode()
-{
-	return preferences_[prefs_list::random_faction_mode].str();
-}
-
-void prefs::set_random_faction_mode(const std::string& value)
-{
-	preferences_[prefs_list::random_faction_mode] = value;
-}
-
-bool prefs::use_map_settings()
-{
-	return preferences_[prefs_list::mp_use_map_settings].to_bool(true);
-}
-
-void prefs::set_use_map_settings(bool value)
-{
-	preferences_[prefs_list::mp_use_map_settings] = value;
-}
-
-int prefs::mp_server_warning_disabled()
-{
-	return preferences_[prefs_list::mp_server_warning_disabled].to_int();
-}
-
-void prefs::set_mp_server_warning_disabled(int value)
-{
-	preferences_[prefs_list::mp_server_warning_disabled] = value;
-}
-
-bool prefs::random_start_time()
-{
-	return preferences_[prefs_list::mp_random_start_time].to_bool(true);
-}
-
-void prefs::set_random_start_time(bool value)
-{
-	preferences_[prefs_list::mp_random_start_time] = value;
-}
-
-bool prefs::fog()
-{
-	return preferences_[prefs_list::mp_fog].to_bool(true);
-}
-
-void prefs::set_fog(bool value)
-{
-	preferences_[prefs_list::mp_fog] = value;
-}
-
-bool prefs::shroud()
-{
-	return preferences_[prefs_list::mp_shroud].to_bool();
-}
-
-void prefs::set_shroud(bool value)
-{
-	preferences_[prefs_list::mp_shroud] = value;
-}
-
-int prefs::turns()
-{
-	return settings::get_turns(preferences_[prefs_list::mp_turns]);
-}
-
-void prefs::set_turns(int value)
-{
-	preferences_[prefs_list::mp_turns] = value;
 }
 
 const config& prefs::options()
@@ -2141,36 +1582,6 @@ void prefs::set_options(const config& values)
 {
 	set_child(prefs_list::options, values);
 	options_initialized_ = false;
-}
-
-bool prefs::skip_mp_replay()
-{
-	return preferences_[prefs_list::skip_mp_replay].to_bool();
-}
-
-void prefs::set_skip_mp_replay(bool value)
-{
-	preferences_[prefs_list::skip_mp_replay] = value;
-}
-
-bool prefs::blindfold_replay()
-{
-	return preferences_[prefs_list::blindfold_replay].to_bool();
-}
-
-void prefs::set_blindfold_replay(bool value)
-{
-	preferences_[prefs_list::blindfold_replay] = value;
-}
-
-bool prefs::countdown()
-{
-	return preferences_[prefs_list::mp_countdown].to_bool();
-}
-
-void prefs::set_countdown(bool value)
-{
-	preferences_[prefs_list::mp_countdown] = value;
 }
 
 int prefs::countdown_init_time()
@@ -2263,36 +1674,6 @@ void prefs::set_xp_modifier(int value)
 	preferences_[prefs_list::mp_xp_modifier] = value;
 }
 
-std::string prefs::era()
-{
-	return preferences_[prefs_list::mp_era].str();
-}
-
-void prefs::set_era(const std::string& value)
-{
-	preferences_[prefs_list::mp_era] = value;
-}
-
-std::string prefs::level()
-{
-	return preferences_[prefs_list::mp_level].str();
-}
-
-void prefs::set_level(const std::string& value)
-{
-	preferences_[prefs_list::mp_level] = value;
-}
-
-int prefs::level_type()
-{
-	return preferences_[prefs_list::mp_level_type].to_int();
-}
-
-void prefs::set_level_type(int value)
-{
-	preferences_[prefs_list::mp_level_type] = value;
-}
-
 const std::vector<std::string>& prefs::modifications(bool mp)
 {
 	if((!mp_modifications_initialized_ && mp) || (!sp_modifications_initialized_ && !mp)) {
@@ -2317,86 +1698,6 @@ void prefs::set_modifications(const std::vector<std::string>& value, bool mp)
 		preferences_[prefs_list::sp_modifications] = utils::join(value, ",");
 		sp_modifications_initialized_ = false;
 	}
-}
-
-bool prefs::skip_ai_moves()
-{
-	return preferences_[prefs_list::skip_ai_moves].to_bool();
-}
-
-void prefs::set_skip_ai_moves(bool value)
-{
-	preferences_[prefs_list::skip_ai_moves] = value;
-}
-
-void prefs::set_show_side_colors(bool value)
-{
-	preferences_[prefs_list::show_side_colors] = value;
-}
-
-bool prefs::show_side_colors()
-{
-	return preferences_[prefs_list::show_side_colors].to_bool(true);
-}
-
-void prefs::set_save_replays(bool value)
-{
-	preferences_[prefs_list::save_replays] = value;
-}
-
-bool prefs::save_replays()
-{
-	return preferences_[prefs_list::save_replays].to_bool(true);
-}
-
-void prefs::set_delete_saves(bool value)
-{
-	preferences_[prefs_list::delete_saves] = value;
-}
-
-bool prefs::delete_saves()
-{
-	return preferences_[prefs_list::delete_saves].to_bool();
-}
-
-void prefs::set_ask_delete_saves(bool value)
-{
-	preferences_[prefs_list::ask_delete] = value;
-}
-
-bool prefs::ask_delete_saves()
-{
-	return preferences_[prefs_list::ask_delete].to_bool(true);
-}
-
-void prefs::set_interrupt_when_ally_sighted(bool value)
-{
-	preferences_[prefs_list::ally_sighted_interrupts] = value;
-}
-
-bool prefs::interrupt_when_ally_sighted()
-{
-	return preferences_[prefs_list::ally_sighted_interrupts].to_bool(true);
-}
-
-int prefs::autosavemax()
-{
-	return preferences_[prefs_list::auto_save_max].to_int(10);
-}
-
-void prefs::set_autosavemax(int value)
-{
-	preferences_[prefs_list::auto_save_max] = value;
-}
-
-bool prefs::show_floating_labels()
-{
-	return preferences_[prefs_list::floating_labels].to_bool(true);
-}
-
-void prefs::set_show_floating_labels(bool value)
-{
-	preferences_[prefs_list::floating_labels] = value;
 }
 
 bool prefs::message_private()
@@ -2431,7 +1732,7 @@ compression::format prefs::save_compression_format()
 
 std::string prefs::get_chat_timestamp(const std::time_t& t)
 {
-	if(chat_timestamping()) {
+	if(chat_timestamp()) {
 		if(use_twelve_hour_clock_format() == false) {
 			return lg::get_timestamp(t, _("[%H:%M]")) + " ";
 		} else {
@@ -2442,46 +1743,6 @@ std::string prefs::get_chat_timestamp(const std::time_t& t)
 	return "";
 }
 
-bool prefs::chat_timestamping()
-{
-	return preferences_[prefs_list::chat_timestamp].to_bool();
-}
-
-void prefs::set_chat_timestamping(bool value)
-{
-	preferences_[prefs_list::chat_timestamp] = value;
-}
-
-int prefs::chat_lines()
-{
-	return preferences_[prefs_list::chat_lines].to_int(6);
-}
-
-void prefs::set_chat_lines(int lines)
-{
-	preferences_[prefs_list::chat_lines] = lines;
-}
-
-void prefs::set_chat_message_aging(const int aging)
-{
-	preferences_[prefs_list::chat_message_aging] = aging;
-}
-
-int prefs::chat_message_aging()
-{
-	return preferences_[prefs_list::chat_message_aging].to_int(20);
-}
-
-bool prefs::show_all_units_in_help()
-{
-	return preferences_[prefs_list::show_all_units_in_help].to_bool();
-}
-
-void prefs::set_show_all_units_in_help(bool value)
-{
-	preferences_[prefs_list::show_all_units_in_help] = value;
-}
-
 std::set<std::string>& prefs::encountered_units()
 {
 	return encountered_units_set_;
@@ -2490,16 +1751,6 @@ std::set<std::string>& prefs::encountered_units()
 std::set<t_translation::terrain_code>& prefs::encountered_terrains()
 {
 	return encountered_terrains_set_;
-}
-
-std::string prefs::custom_command()
-{
-	return preferences_[prefs_list::custom_command].str();
-}
-
-void prefs::set_custom_command(const std::string& command)
-{
-	preferences_[prefs_list::custom_command] = command;
 }
 
 /**
@@ -2572,256 +1823,6 @@ void prefs::encounter_all_content(const game_board& gameboard_)
 	encounter_start_units(gameboard_.units());
 	encounter_recallable_units(gameboard_.teams());
 	encounter_map_terrain(gameboard_.map());
-}
-
-bool prefs::player_joins_sound()
-{
-	return preferences_[prefs_list::player_joins_sound].to_bool(true);
-}
-void prefs::set_player_joins_sound(bool val)
-{
-	preferences_[prefs_list::player_joins_sound] = val;
-}
-bool prefs::player_joins_notif()
-{
-	return preferences_[prefs_list::player_joins_notif].to_bool(false);
-}
-void prefs::set_player_joins_notif(bool val)
-{
-	preferences_[prefs_list::player_joins_notif] = val;
-}
-bool prefs::player_joins_lobby()
-{
-	return preferences_[prefs_list::player_joins_lobby].to_bool(false);
-}
-void prefs::set_player_joins_lobby(bool val)
-{
-	preferences_[prefs_list::player_joins_lobby] = val;
-}
-
-bool prefs::player_leaves_sound()
-{
-	return preferences_[prefs_list::player_leaves_sound].to_bool(true);
-}
-void prefs::set_player_leaves_sound(bool val)
-{
-	preferences_[prefs_list::player_leaves_sound] = val;
-}
-bool prefs::player_leaves_notif()
-{
-	return preferences_[prefs_list::player_leaves_notif].to_bool(false);
-}
-void prefs::set_player_leaves_notif(bool val)
-{
-	preferences_[prefs_list::player_leaves_notif] = val;
-}
-bool prefs::player_leaves_lobby()
-{
-	return preferences_[prefs_list::player_leaves_lobby].to_bool(false);
-}
-void prefs::set_player_leaves_lobby(bool val)
-{
-	preferences_[prefs_list::player_leaves_lobby] = val;
-}
-
-bool prefs::private_message_sound()
-{
-	return preferences_[prefs_list::private_message_sound].to_bool(true);
-}
-void prefs::set_private_message_sound(bool val)
-{
-	preferences_[prefs_list::private_message_sound] = val;
-}
-bool prefs::private_message_notif()
-{
-	return preferences_[prefs_list::private_message_notif].to_bool(desktop::notifications::available());
-}
-void prefs::set_private_message_notif(bool val)
-{
-	preferences_[prefs_list::private_message_notif] = val;
-}
-bool prefs::private_message_lobby()
-{
-	return preferences_[prefs_list::private_message_lobby].to_bool(true);
-}
-void prefs::set_private_message_lobby(bool val)
-{
-	preferences_[prefs_list::private_message_lobby] = val;
-}
-
-bool prefs::friend_message_sound()
-{
-	return preferences_[prefs_list::friend_message_sound].to_bool(false);
-}
-void prefs::set_friend_message_sound(bool val)
-{
-	preferences_[prefs_list::friend_message_sound] = val;
-}
-bool prefs::friend_message_notif()
-{
-	return preferences_[prefs_list::friend_message_notif].to_bool(false);
-}
-void prefs::set_friend_message_notif(bool val)
-{
-	preferences_[prefs_list::friend_message_notif] = val;
-}
-bool prefs::friend_message_lobby()
-{
-	return preferences_[prefs_list::friend_message_lobby].to_bool(false);
-}
-void prefs::set_friend_message_lobby(bool val)
-{
-	preferences_[prefs_list::friend_message_lobby] = val;
-}
-
-bool prefs::public_message_sound()
-{
-	return preferences_[prefs_list::public_message_sound].to_bool(false);
-}
-void prefs::set_public_message_sound(bool val)
-{
-	preferences_[prefs_list::public_message_sound] = val;
-}
-bool prefs::public_message_notif()
-{
-	return preferences_[prefs_list::public_message_notif].to_bool(false);
-}
-void prefs::set_public_message_notif(bool val)
-{
-	preferences_[prefs_list::public_message_notif] = val;
-}
-bool prefs::public_message_lobby()
-{
-	return preferences_[prefs_list::public_message_lobby].to_bool(false);
-}
-void prefs::set_public_message_lobby(bool val)
-{
-	preferences_[prefs_list::public_message_lobby] = val;
-}
-
-bool prefs::server_message_sound()
-{
-	return preferences_[prefs_list::server_message_sound].to_bool(true);
-}
-void prefs::set_server_message_sound(bool val)
-{
-	preferences_[prefs_list::server_message_sound] = val;
-}
-bool prefs::server_message_notif()
-{
-	return preferences_[prefs_list::server_message_notif].to_bool(false);
-}
-void prefs::set_server_message_notif(bool val)
-{
-	preferences_[prefs_list::server_message_notif] = val;
-}
-bool prefs::server_message_lobby()
-{
-	return preferences_[prefs_list::server_message_lobby].to_bool(true);
-}
-void prefs::set_server_message_lobby(bool val)
-{
-	preferences_[prefs_list::server_message_lobby] = val;
-}
-
-bool prefs::ready_for_start_sound()
-{
-	return preferences_[prefs_list::ready_for_start_sound].to_bool(true);
-}
-void prefs::set_ready_for_start_sound(bool val)
-{
-	preferences_[prefs_list::ready_for_start_sound] = val;
-}
-bool prefs::ready_for_start_notif()
-{
-	return preferences_[prefs_list::ready_for_start_notif].to_bool(desktop::notifications::available());
-}
-void prefs::set_ready_for_start_notif(bool val)
-{
-	preferences_[prefs_list::ready_for_start_notif] = val;
-}
-bool prefs::ready_for_start_lobby()
-{
-	return preferences_[prefs_list::ready_for_start_lobby].to_bool(false);
-}
-void prefs::set_ready_for_start_lobby(bool val)
-{
-	preferences_[prefs_list::ready_for_start_lobby] = val;
-}
-
-bool prefs::game_has_begun_sound()
-{
-	return preferences_[prefs_list::game_has_begun_sound].to_bool(true);
-}
-void prefs::set_game_has_begun_sound(bool val)
-{
-	preferences_[prefs_list::game_has_begun_sound] = val;
-}
-bool prefs::game_has_begun_notif()
-{
-	return preferences_[prefs_list::game_has_begun_notif].to_bool(desktop::notifications::available());
-}
-void prefs::set_game_has_begun_notif(bool val)
-{
-	preferences_[prefs_list::game_has_begun_notif] = val;
-}
-bool prefs::game_has_begun_lobby()
-{
-	return preferences_[prefs_list::game_has_begun_lobby].to_bool(false);
-}
-void prefs::set_game_has_begun_lobby(bool val)
-{
-	preferences_[prefs_list::game_has_begun_lobby] = val;
-}
-
-bool prefs::turn_changed_sound()
-{
-	return preferences_[prefs_list::turn_changed_sound].to_bool(true);
-}
-void prefs::set_turn_changed_sound(bool val)
-{
-	preferences_[prefs_list::turn_changed_sound] = val;
-}
-bool prefs::turn_changed_notif()
-{
-	return preferences_[prefs_list::turn_changed_notif].to_bool(desktop::notifications::available());
-}
-void prefs::set_turn_changed_notif(bool val)
-{
-	preferences_[prefs_list::turn_changed_notif] = val;
-}
-bool prefs::turn_changed_lobby()
-{
-	return preferences_[prefs_list::turn_changed_lobby].to_bool(false);
-}
-void prefs::set_turn_changed_lobby(bool val)
-{
-	preferences_[prefs_list::turn_changed_lobby] = val;
-}
-
-bool prefs::game_created_sound()
-{
-	return preferences_[prefs_list::game_created_sound].to_bool(true);
-}
-void prefs::set_game_created_sound(bool val)
-{
-	preferences_[prefs_list::game_created_sound] = val;
-}
-bool prefs::game_created_notif()
-{
-	return preferences_[prefs_list::game_created_notif].to_bool(desktop::notifications::available());
-}
-void prefs::set_game_created_notif(bool val)
-{
-	preferences_[prefs_list::game_created_notif] = val;
-}
-bool prefs::game_created_lobby()
-{
-	return preferences_[prefs_list::game_created_lobby].to_bool(true);
-}
-void prefs::set_game_created_lobby(bool val)
-{
-	preferences_[prefs_list::game_created_lobby] = val;
 }
 
 void prefs::clear_mp_alert_prefs()

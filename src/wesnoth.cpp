@@ -722,7 +722,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #endif
 
 	gui2::init();
-	gui2::switch_theme(prefs::get().gui_theme());
+	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
@@ -902,7 +902,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
 		case gui2::dialogs::title_screen::RELOAD_UI:
-			gui2::switch_theme(prefs::get().gui_theme());
+			gui2::switch_theme(prefs::get().gui2_theme());
 			break;
 		}
 	}
