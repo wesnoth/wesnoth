@@ -314,7 +314,7 @@ void manager::on_init_side()
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()";
 
-	if (self_activate_once_ && prefs::get().enable_whiteboard_mode_on_start())
+	if (self_activate_once_ && prefs::get().enable_planning_mode_on_start())
 	{
 		self_activate_once_ = false;
 		set_active(true);

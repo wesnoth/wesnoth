@@ -367,23 +367,23 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			surrender_game();
 			break;
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
-			prefs::get().toggle_minimap_draw_terrain();
+			prefs::get().set_minimap_draw_terrain(!prefs::get().minimap_draw_terrain());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
-			prefs::get().toggle_minimap_terrain_coding();
+			prefs::get().set_minimap_terrain_coding(!prefs::get().minimap_terrain_coding());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
-			prefs::get().toggle_minimap_movement_coding();
+			prefs::get().set_minimap_movement_coding(!prefs::get().minimap_movement_coding());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
-			prefs::get().toggle_minimap_draw_units();
+			prefs::get().set_minimap_draw_units(!prefs::get().minimap_draw_units());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
-			prefs::get().toggle_minimap_draw_villages();
+			prefs::get().set_minimap_draw_villages(!prefs::get().minimap_draw_villages());
 			recalculate_minimap();
 			break;
 		case HOTKEY_ACHIEVEMENTS:
@@ -631,7 +631,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			prefs::get().set_animate_map(!prefs::get().animate_map());
 			break;
 		case HOTKEY_MOUSE_SCROLL:
-			prefs::get().enable_mouse_scroll(!prefs::get().mouse_scroll_enabled());
+			prefs::get().set_mouse_scrolling(!prefs::get().mouse_scrolling());
 			break;
 		case HOTKEY_MUTE:
 			{
@@ -641,10 +641,10 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 					bool playing_sound,playing_music;
 					before_muted_s() : playing_sound(false),playing_music(false){}
 				} before_muted;
-				if (prefs::get().music_on() || prefs::get().sound_on())
+				if (prefs::get().music_on() || prefs::get().sound())
 				{
 					// then remember settings and mute both
-					before_muted.playing_sound = prefs::get().sound_on();
+					before_muted.playing_sound = prefs::get().sound();
 					before_muted.playing_music = prefs::get().music_on();
 					prefs::get().set_sound(false);
 					prefs::get().set_music(false);

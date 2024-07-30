@@ -63,7 +63,7 @@ std::string configure_engine::game_name_default()
 
 int configure_engine::num_turns_default() const
 {
-	return use_map_settings() ? settings::get_turns(initial_cfg()["turns"]) : prefs::get().turns();
+	return use_map_settings() ? settings::get_turns(initial_cfg()["turns"]) : prefs::get().mp_turns();
 }
 
 int configure_engine::village_gold_default() const
@@ -109,31 +109,31 @@ int configure_engine::mp_countdown_action_bonus_default() const
 
 bool configure_engine::mp_countdown_default() const
 {
-	return prefs::get().countdown();
+	return prefs::get().mp_countdown();
 }
 
 bool configure_engine::use_map_settings_default() const
 {
-	return force_lock_settings() || prefs::get().use_map_settings();
+	return force_lock_settings() || prefs::get().mp_use_map_settings();
 }
 
 bool configure_engine::random_start_time_default() const
 {
 	return use_map_settings()
 		? initial_cfg()["random_start_time"].to_bool(false)
-		: prefs::get().random_start_time();
+		: prefs::get().mp_random_start_time();
 }
 
 bool configure_engine::fog_game_default() const
 {
 	return use_map_settings()
 		? initial_cfg()["mp_fog"].to_bool(state_.classification().is_normal_mp_game())
-		: prefs::get().fog();
+		: prefs::get().mp_fog();
 }
 
 bool configure_engine::shroud_game_default() const
 {
-	return use_map_settings() ? initial_cfg()["mp_shroud"].to_bool(false) : prefs::get().shroud();
+	return use_map_settings() ? initial_cfg()["mp_shroud"].to_bool(false) : prefs::get().mp_shroud();
 }
 
 bool configure_engine::allow_observers_default() const

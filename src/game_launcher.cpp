@@ -128,7 +128,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts_.core_id) {
-		prefs::get().set_core_id(*cmdline_opts_.core_id);
+		prefs::get().set_core(*cmdline_opts_.core_id);
 	}
 	if(cmdline_opts_.campaign) {
 		jump_to_campaign_.jump = true;
@@ -259,7 +259,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
-	if(no_sound || ((prefs::get().sound_on() || prefs::get().music_on() ||
+	if(no_sound || ((prefs::get().sound() || prefs::get().music_on() ||
 	                  prefs::get().turn_bell() || prefs::get().ui_sound_on()) &&
 	                 !sound::init_sound())) {
 		prefs::get().set_sound(false);
