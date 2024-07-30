@@ -86,6 +86,8 @@ public:
 	 */
 	bool create_texture();
 
+	void clear_texture();
+
 	/** Return the size of the label in drawing coordinates */
 	SDL_Point get_draw_size() const
 	{
