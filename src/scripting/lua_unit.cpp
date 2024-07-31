@@ -242,19 +242,26 @@ static int impl_unit_equality(lua_State* L)
 static int impl_unit_tostring(lua_State* L)
 {
 	const lua_unit* lu = luaW_tounit_ref(L, 1);
-	unit &u = *lu->get();
+	unit* u = lu->get();
 	std::ostringstream str;
 
 	str << "unit: <";
-	if(!u.id().empty()) {
-		str << u.id() << " ";
+	if(!u) {
+		str << "invalid";
+	} else if(!u->id().empty()) {
+		str << u->id() << " ";
 	} else {
-		str << u.type_id() << " ";
+		str << u->type_id() << " ";
 	}
-	if(int side = lu->on_recall_list()) {
-		str << "at (side " << side << " recall list)";
-	} else {
-		str << "at (" << u.get_location() << ")";
+	if(u) {
+		if(int side = lu->on_recall_list()) {
+			str << "at (side " << side << " recall list)";
+		} else {
+			if(!lu->on_map()) {
+				str << "private ";
+			}
+			str << "at (" << u->get_location() << ")";
+		}
 	}
 	str << '>';
 
