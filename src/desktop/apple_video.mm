@@ -28,11 +28,11 @@ namespace apple {
 		CGFloat scale_factor = 1.0f;
 
 		NSArray *screens = [NSScreen screens];
-		
+
 		if ([screens[display_index] respondsToSelector:@selector(backingScaleFactor)]) {  // Mac OS X 10.7 and later
 			scale_factor = [screens[display_index] backingScaleFactor];
 		}
-		
+
 		return scale_factor;
 	}
 } // end namespace apple

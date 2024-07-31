@@ -92,7 +92,7 @@ double get_battery_percentage() {
 
     NSNumber *maxCapacity = [battery objectForKey:@kIOPSMaxCapacityKey];
     NSNumber *currentCapacity = [battery objectForKey:@kIOPSCurrentCapacityKey];
-    
+
     if (maxCapacity && currentCapacity) {
         return ([currentCapacity doubleValue] / [maxCapacity doubleValue]) * 100;
     } else {
