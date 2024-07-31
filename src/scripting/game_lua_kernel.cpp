@@ -1070,6 +1070,15 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_setfield(L, -2, "keep");
 	lua_pushinteger(L, info.gives_healing());
 	lua_setfield(L, -2, "healing");
+	
+	lua_push(L, info.mvt_type());
+	lua_setfield(L, -2, "mvt_type");
+	lua_push(L, info.def_type());
+	lua_setfield(L, -2, "def_type");
+	lua_push(L, info.vision_type());
+	lua_setfield(L, -2, "vision_type");
+	lua_push(L, info.union_type());
+	lua_setfield(L, -2, "union_type");
 
 	return 1;
 }
