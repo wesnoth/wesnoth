@@ -56,6 +56,18 @@ jobs:
           libboost-program-options1.83-dev libboost-thread1.83-dev libboost-context1.83-dev libboost-test-dev \
           libboost-coroutine1.83-dev libboost-graph1.83-dev libasio-dev libsdl2-dev libsdl2-image-dev \
           libsdl2-mixer-dev libvorbis-dev libpango1.0-dev libssl-dev libcurl4-openssl-dev liblua5.4-dev
+
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        tool-cache: false
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: false
+        docker-images: false
+        swap-storage: false
+
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
