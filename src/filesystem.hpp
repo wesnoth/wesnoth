@@ -327,8 +327,6 @@ int file_size(const std::string& fname);
 /** Returns the sum of the sizes of the files contained in a directory. */
 int dir_size(const std::string& path);
 
-bool ends_with(const std::string& str, const std::string& suffix);
-
 /**
  * Returns the base filename of a file, with directory name stripped.
  * Equivalent to a portable basename() function.

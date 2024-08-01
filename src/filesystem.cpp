@@ -29,6 +29,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
+#include <boost/algorithm/string/predicate.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
@@ -520,7 +521,7 @@ void get_files_in_dir(const std::string& dir,
 	if(files != nullptr && reorder == reorder_mode::DO_REORDER) {
 		// move finalcfg_filename, if present, to the end of the vector
 		for(unsigned int i = 0; i < files->size(); i++) {
-			if(ends_with((*files)[i], "/" + finalcfg_filename)) {
+			if(boost::algorithm::ends_with((*files)[i], "/" + finalcfg_filename)) {
 				files->push_back((*files)[i]);
 				files->erase(files->begin() + i);
 				break;
@@ -530,7 +531,7 @@ void get_files_in_dir(const std::string& dir,
 		// move initialcfg_filename, if present, to the beginning of the vector
 		int foundit = -1;
 		for(unsigned int i = 0; i < files->size(); i++)
-			if(ends_with((*files)[i], "/" + initialcfg_filename)) {
+			if(boost::algorithm::ends_with((*files)[i], "/" + initialcfg_filename)) {
 				foundit = i;
 				break;
 			}

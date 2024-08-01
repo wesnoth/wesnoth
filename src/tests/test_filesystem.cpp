@@ -215,8 +215,6 @@ BOOST_AUTO_TEST_CASE( test_fs_search )
 
 BOOST_AUTO_TEST_CASE( test_fs_fluff )
 {
-	BOOST_CHECK( ends_with("foobarbazbat", "bazbat") );
-
 	BOOST_CHECK( looks_like_pbl("foo.pbl") );
 	BOOST_CHECK( looks_like_pbl("FOO.PBL") );
 	BOOST_CHECK( looks_like_pbl("Foo.Pbl") );
