@@ -241,7 +241,7 @@ config holder::to_config() const
 	}
 }
 
-const std::string holder::describe_ai()
+std::string holder::describe_ai() const
 {
 	if(ai_) {
 		return formatter() << ai_->describe_self() << " for side " << side_ << " : ";
@@ -250,7 +250,7 @@ const std::string holder::describe_ai()
 	}
 }
 
-const std::string holder::get_ai_overview()
+std::string holder::get_ai_overview()
 {
 	if (!ai_) {
 		get_ai_ref();
@@ -294,7 +294,7 @@ const std::string holder::get_ai_overview()
 	return s.str();
 }
 
-const std::string holder::get_ai_structure()
+std::string holder::get_ai_structure()
 {
 	if (!ai_) {
 		get_ai_ref();
@@ -302,7 +302,7 @@ const std::string holder::get_ai_structure()
 	return component_manager::print_component_tree(&*ai_,"");
 }
 
-const std::string holder::get_ai_identifier() const
+std::string holder::get_ai_identifier() const
 {
 	return cfg_["id"];
 }
