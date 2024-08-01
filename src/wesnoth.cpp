@@ -326,6 +326,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 	if(cmdline_opts.final_log_redirect_to_file) {
 		lg::set_log_to_file();
 	}
+#ifdef _WIN32
+	else if(!cmdline_opts.no_console) {
+		lg::do_console_redirect();
+	}
+#endif
 
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
@@ -935,25 +940,15 @@ int main(int argc, char** argv)
 		commandline_options cmdline_opts = commandline_options(args);
 		int finished = process_command_args(cmdline_opts);
 
-#ifndef _WIN32
 		if(finished != -1) {
+#ifdef _WIN32
+			if(lg::using_own_console()) {
+				std::cerr << "Press enter to continue..." << std::endl;
+				std::cin.get();
+			}
+#endif
 			safe_exit(finished);
 		}
-#else
-		// else handle redirecting the output and potentially attaching a console on windows
-		if(!cmdline_opts.final_log_redirect_to_file) {
-			if(!cmdline_opts.no_console) {
-				lg::do_console_redirect();
-			}
-			if(finished != -1) {
-				if(lg::using_own_console()) {
-					std::cerr << "Press enter to continue..." << std::endl;
-					std::cin.get();
-				}
-				safe_exit(finished);
-			}
-		}
-#endif
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 		// Is there a reason not to just use SDL_INIT_EVERYTHING?
