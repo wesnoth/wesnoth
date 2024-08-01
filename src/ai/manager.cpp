@@ -243,12 +243,10 @@ config holder::to_config() const
 
 const std::string holder::describe_ai()
 {
-	std::string sidestr = std::to_string(this->side_);
-
-	if (this->ai_!=nullptr) {
-		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
+	if(ai_) {
+		return formatter() << ai_->describe_self() << " for side " << side_ << " : ";
 	} else {
-		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
+		return formatter() << "not initialized ai with id=[" << cfg_["id"] << "] for side " << side_ << " : ";
 	}
 }
 
