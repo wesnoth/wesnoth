@@ -37,30 +37,6 @@ const std::string config_attribute_value::s_no("no");
 const std::string config_attribute_value::s_true("true");
 const std::string config_attribute_value::s_false("false");
 
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value::config_attribute_value()
-	: value_()
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value::~config_attribute_value()
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value::config_attribute_value(const config_attribute_value& that)
-	: value_(that.value_)
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value& config_attribute_value::operator=(const config_attribute_value& that)
-{
-	value_ = that.value_;
-	return *this;
-}
-
 config_attribute_value& config_attribute_value::operator=(bool v)
 {
 	value_ = yes_no(v);

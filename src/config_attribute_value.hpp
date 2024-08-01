@@ -110,15 +110,6 @@ private:
 	value_type value_;
 
 public:
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	config_attribute_value();
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	~config_attribute_value();
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	config_attribute_value(const config_attribute_value &);
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	config_attribute_value &operator=(const config_attribute_value &);
-
 	// Numeric assignments:
 	config_attribute_value& operator=(bool v);
 	config_attribute_value& operator=(int v);
