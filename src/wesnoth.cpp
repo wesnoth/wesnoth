@@ -276,38 +276,38 @@ static int process_command_args(commandline_options& cmdline_opts)
 		lg::set_log_sanitize(false);
 	}
 
-	// decide whether to redirect output to a file or not
-	if(cmdline_opts.log_to_file) {
-		cmdline_opts.final_log_redirect_to_file = true;
-	} else if(cmdline_opts.no_log_to_file) {
-		cmdline_opts.final_log_redirect_to_file = false;
-	} else {
-		// write_to_log_file means that writing to the log file will be done, if true.
-		// if false, output will be written to the terminal
-		// on windows, if wesnoth was not started from a console, then it will allocate one
-		cmdline_opts.final_log_redirect_to_file = !getenv("WESNOTH_NO_LOG_FILE")
-		// command line options that imply not redirecting output to a log file
-		// Some switches force a Windows console to be attached to the process even
-		// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-		// turn it into a CLI application. Also, --no-log-to-file in particular attaches
-		// a console to a regular GUI game session.
-			&& !cmdline_opts.data_path
-			&& !cmdline_opts.help
-			&& !cmdline_opts.logdomains
-			&& !cmdline_opts.nogui
-			&& !cmdline_opts.report
-			&& !cmdline_opts.simple_version
-			&& !cmdline_opts.userdata_path
-			&& !cmdline_opts.version
-			&& !cmdline_opts.do_diff
-			&& !cmdline_opts.do_patch
-			&& !cmdline_opts.preprocess
-			&& !cmdline_opts.render_image
-			&& !cmdline_opts.screenshot
-			&& !cmdline_opts.headless_unit_test
-			&& !cmdline_opts.validate_schema
-			&& !cmdline_opts.validate_wml;
-	}
+	// If true, output will be redirected to file, else output be written to console.
+	// On Windows, if Wesnoth was not started from a console, one will be allocated.
+	const auto should_redirect_to_file = [&cmdline_opts] {
+		if(cmdline_opts.log_to_file) {
+			return true;
+		} else if(cmdline_opts.no_log_to_file) {
+			return false;
+		} else {
+			return !getenv("WESNOTH_NO_LOG_FILE")
+				// command line options that imply not redirecting output to a log file
+				// Some switches force a Windows console to be attached to the process even
+				// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
+				// turn it into a CLI application. Also, --no-log-to-file in particular attaches
+				// a console to a regular GUI game session.
+				&& !cmdline_opts.data_path
+				&& !cmdline_opts.help
+				&& !cmdline_opts.logdomains
+				&& !cmdline_opts.nogui
+				&& !cmdline_opts.report
+				&& !cmdline_opts.simple_version
+				&& !cmdline_opts.userdata_path
+				&& !cmdline_opts.version
+				&& !cmdline_opts.do_diff
+				&& !cmdline_opts.do_patch
+				&& !cmdline_opts.preprocess
+				&& !cmdline_opts.render_image
+				&& !cmdline_opts.screenshot
+				&& !cmdline_opts.headless_unit_test
+				&& !cmdline_opts.validate_schema
+				&& !cmdline_opts.validate_wml;
+		}
+	};
 
 	if(cmdline_opts.usercache_dir) {
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
@@ -323,7 +323,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	// userdata is initialized, so initialize logging to file if enabled
-	if(cmdline_opts.final_log_redirect_to_file) {
+	if(should_redirect_to_file()) {
 		lg::set_log_to_file();
 	}
 #ifdef _WIN32
