@@ -1569,6 +1569,14 @@ void prefs::set_editor_draw_num_of_bitmaps(bool value) {
 	preferences_[prefs_list::editor_draw_num_of_bitmaps] = value;
 }
 
+bool prefs::editor_help_text_shown() {
+	return preferences_[prefs_list::editor_help_text_shown].to_bool(true);
+}
+
+void prefs::set_editor_help_text_shown(bool value) {
+	preferences_[prefs_list::editor_help_text_shown] = value;
+}
+
 std::size_t prefs::editor_mru_limit()
 {
 	return std::max(std::size_t(1), preferences_[prefs_list::editor_max_recent_files].to_size_t(10));

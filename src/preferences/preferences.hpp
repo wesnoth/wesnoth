@@ -499,6 +499,9 @@ class prefs
 		bool editor_draw_num_of_bitmaps();
 		void set_editor_draw_num_of_bitmaps(bool value);
 
+		bool editor_help_text_shown();
+		void set_editor_help_text_shown(bool value);
+
 		std::size_t editor_mru_limit();
 		std::vector<std::string> do_read_editor_mru();
 		void do_commit_editor_mru(const std::vector<std::string>& mru);
