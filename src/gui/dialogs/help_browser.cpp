@@ -20,7 +20,13 @@
 #include "game_config_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/image.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/rich_label.hpp"
+#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
@@ -28,6 +34,7 @@
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
+#include "gui/widgets/listbox.hpp"
 #endif
 
 #include "help/help.hpp"
@@ -44,6 +51,8 @@ help_browser::help_browser(const help::section& toplevel, const std::string& ini
 	: modal_dialog(window_id())
 	, initial_topic_(initial.empty() ? help::default_show_topic : initial)
 	, toplevel_(toplevel)
+	, history_()
+	, history_pos_(0)
 {
 	if(initial_topic_.compare(0, 2, "..") == 0) {
 		initial_topic_.replace(0, 2, "+");
@@ -60,13 +69,16 @@ void help_browser::pre_show(window& window)
 	button& back_button = find_widget<button>(&window, "back", false);
 	button& next_button = find_widget<button>(&window, "next", false);
 
-	next_button.set_visible(widget::visibility::hidden);
-	back_button.set_visible(widget::visibility::hidden);
+	rich_label& topic_text = find_widget<rich_label>(&window, "topic_text", false);
+
+	next_button.set_active(false);
+	back_button.set_active(false);
 	connect_signal_mouse_left_click(back_button, std::bind(&help_browser::on_history_navigate, this, true));
 	connect_signal_mouse_left_click(next_button, std::bind(&help_browser::on_history_navigate, this, false));
 
-	connect_signal_notify_modified(topic_tree,
-		std::bind(&help_browser::on_topic_select, this));
+	topic_text.register_link_callback(std::bind(&help_browser::on_link_click, this, std::placeholders::_1));
+
+	connect_signal_notify_modified(topic_tree, std::bind(&help_browser::on_topic_select, this));
 
 	window.keyboard_capture(&topic_tree);
 
@@ -87,7 +99,7 @@ void help_browser::add_topics_for_section(const help::section& parent_section, t
 	}
 
 	for(const help::topic& topic : parent_section.topics) {
-		if(topic.id.compare(0,2,"..") != 0) {
+		if(topic.id.compare(0, 2, "..") != 0) {
 			add_topic(topic.id, topic.title, false, parent_node);
 		}
 	}
@@ -107,80 +119,64 @@ tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::
 
 	return new_node;
 }
-
-static std::string format_help_text(const config& cfg)
+void help_browser::show_topic(std::string topic_id, bool add_to_history)
 {
-	std::stringstream ss;
-	for(auto item : cfg.all_children_range()) {
-		if(item.key == "text") {
-			ss << font::escape_text(item.cfg["text"]);
-		} else if(item.key == "ref") {
-			if(item.cfg["dst"].empty()) {
-				std::stringstream msg;
-				msg << "Ref markup must have dst attribute. Please submit a bug"
-					" report if you have not modified the game files yourself. Erroneous config: " << cfg;
-				throw help::parse_error(msg.str());
-			};
-			// TODO: Get the proper link shade from somewhere
-			ss << font::format_as_link(font::escape_text(item.cfg["text"]), color_t::from_hex_string("ffff00"));
-		} else if(item.key == "img") {
-			if(item.cfg["src"].empty()) {
-				throw help::parse_error("Img markup must have src attribute.");
-			}
-			// For now, just output a placeholder so we know an image is supposed to be there.
-			ss << "[img]" << font::escape_text(item.cfg["src"]) << "[/img]";
-		} else if(item.key == "bold") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Bold markup must have text attribute.");
-			}
-			ss << "<b>" << font::escape_text(item.cfg["text"]) << "</b>";
-		} else if(item.key == "italic") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Italic markup must have text attribute.");
-			}
-			ss << "<i>" << font::escape_text(item.cfg["text"]) << "</i>";
-		} else if(item.key == "header") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Header markup must have text attribute.");
-			}
-			ss << "<big>" << font::escape_text(item.cfg["text"]) << "</big>";
-		} else if(item.key == "jump") {
-			// This appears to be something akin to tab stops.
-			if(item.cfg["amount"].empty() && item.cfg["to"].empty()) {
-				throw help::parse_error("Jump markup must have either a to or an amount attribute.");
-			}
-			ss << '\t';
-		} else if(item.key == "format") {
-			if(item.cfg["text"].empty()) {
-				throw help::parse_error("Header markup must have text attribute.");
-			}
-
-			ss << "<span";
-			if(item.cfg.has_attribute("font_size")) {
-				ss << " size='" << item.cfg["font_size"].to_int(font::SIZE_NORMAL) << "'";
-			}
-
-			if(item.cfg.has_attribute("color")) {
-				ss << " color='" << font::string_to_color(item.cfg["color"]).to_hex_string() << "'";
-			}
-
-			if(item.cfg["bold"]) {
-				ss << " font_weight='bold'";
-			}
-
-			if(item.cfg["italic"]) {
-				ss << " font_style='italic'";
-			}
-
-			ss << '>' << font::escape_text(item.cfg["text"]) << "</span>";
-		}
+	if(topic_id.empty()) {
+		return;
 	}
-	return ss.str();
+
+	if(topic_id[0] == '+') {
+		topic_id.replace(topic_id.begin(), topic_id.begin() + 1, 2, '.');
+	}
+
+	if(topic_id[0] == '-') {
+		topic_id.erase(topic_id.begin(), topic_id.begin() + 1);
+	}
+
+	auto iter = parsed_pages_.find(topic_id);
+	if(iter == parsed_pages_.end()) {
+		const help::topic* topic = help::find_topic(toplevel_, topic_id);
+		if(!topic) {
+			PLAIN_LOG << "Help browser tried to show topic with id '" << topic_id
+				  << "' but that topic could not be found." << std::endl;
+			return;
+		}
+
+		widget_data data;
+		widget_item item;
+
+		item["label"] = topic->title;
+		data.emplace("topic_title", item);
+
+		find_widget<label>(this, "topic_title", false).set_label(topic->title);
+		find_widget<rich_label>(this, "topic_text", false).set_topic(topic);
+
+		get_window()->invalidate_layout();
+	}
+
+	if (add_to_history) {
+		// history pos is 0 initially, so it's already at first entry
+		// no need increment first time
+		if (!history_.empty()) {
+			history_pos_++;
+		}
+		history_.push_back(topic_id);
+
+		find_widget<button>(this, "back", false).set_active(history_pos_ != 0);
+
+		PLAIN_LOG << "history pos: " << history_pos_;
+		PLAIN_LOG << " history: " << topic_id;
+	}
+}
+
+void help_browser::on_link_click(std::string link)
+{
+	PLAIN_LOG << "topic: (" << link << ")";
+	show_topic(link);
 }
 
 void help_browser::on_topic_select()
 {
-	multi_page& topic_pages = find_widget<multi_page>(this, "topic_text_pages", false);
 	tree_view& topic_tree = find_widget<tree_view>(this, "topic_tree", false);
 
 	if(topic_tree.empty()) {
@@ -190,57 +186,7 @@ void help_browser::on_topic_select()
 	tree_view_node* selected = topic_tree.selected_item();
 	assert(selected);
 
-	std::string topic_id = selected->id();
-
-	if(topic_id.empty()) {
-		return;
-	}
-
-	if(topic_id[0] == '+') {
-		topic_id.replace(topic_id.begin(), topic_id.begin() + 1, 2, '.');
-	} else {
-		topic_id.erase(topic_id.begin());
-	}
-
-	const help::section& sec = toplevel_;
-
-	auto iter = parsed_pages_.find(topic_id);
-	if(iter == parsed_pages_.end()) {
-		const help::topic* topic = help::find_topic(sec, topic_id);
-		if(topic == nullptr) {
-			return;
-		}
-
-		widget_data data;
-		widget_item item;
-
-		item["label"] = format_help_text(topic->text.parsed_text());
-		data.emplace("topic_text", item);
-
-		item.clear();
-		item["label"] = topic->title;
-		data.emplace("topic_title", item);
-
-		parsed_pages_.emplace(topic_id, topic_pages.get_page_count());
-		topic_pages.add_page(data);
-
-		invalidate_layout();
-	}
-
-	if(!history_.empty()) {
-		history_.erase(std::next(history_pos_), history_.end());
-	}
-
-	history_.push_back(topic_id);
-	history_pos_ = std::prev(history_.end());
-
-	if(history_pos_ != history_.begin()) {
-			find_widget<button>(this, "back", false).set_visible(widget::visibility::visible);
-	}
-	find_widget<button>(this, "next", false).set_visible(widget::visibility::hidden);
-
-	const unsigned topic_i = parsed_pages_.at(topic_id);
-	topic_pages.select_page(topic_i);
+	show_topic(selected->id());
 }
 
 void help_browser::on_history_navigate(bool backwards)
@@ -250,10 +196,15 @@ void help_browser::on_history_navigate(bool backwards)
 	} else {
 		history_pos_++;
 	}
-	find_widget<button>(this, "back", false).set_visible(history_pos_ == history_.begin() ? widget::visibility::hidden : widget::visibility::visible);
-	find_widget<button>(this, "next", false).set_visible(history_pos_ == std::prev(history_.end()) ? widget::visibility::hidden : widget::visibility::visible);
-	const unsigned topic_i = parsed_pages_.at(*history_pos_);
-	find_widget<multi_page>(this, "topic_text_pages", false).select_page(topic_i);
+	find_widget<button>(this, "back", false).set_active(!history_.empty() && history_pos_ != 0);
+	find_widget<button>(this, "next", false).set_active(!history_.empty() && history_pos_ != (history_.size()-1));
+
+	PLAIN_LOG << "history pos: " << history_pos_;
+	const std::string topic_id = history_.at(history_pos_);
+	PLAIN_LOG << " history: " << topic_id;
+	show_topic(topic_id, false);
+//	const unsigned topic_i = parsed_pages_.at(*history_pos_);
+//	find_widget<multi_page>(this, "topic_text_pages", false).select_page(topic_i);
 }
 
 } // namespace dialogs
