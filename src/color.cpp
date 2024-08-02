@@ -63,8 +63,12 @@ color_t color_t::from_rgb_string(std::string_view c)
 
 color_t color_t::from_hex_string(std::string_view c)
 {
+	if(c[0] == '#') {
+		c = c.substr(1);
+	}
+
 	if(c.length() != 6) {
-		throw std::invalid_argument("Color hex string should be exactly 6 digits");
+		throw std::invalid_argument("Color hex string should be exactly 6 digits (leading '#' optional)");
 	}
 
 	if(std::any_of(c.begin(), c.end(), [](const char& ch) { return std::isxdigit(ch) == 0; })) {
