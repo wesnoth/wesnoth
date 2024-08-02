@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2022
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,9 +18,10 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "help/help_impl.hpp"
 #include <map>
-#include <list>
+#include <vector>
 
 class config;
+class game_config_view;
 
 namespace help {
 	struct section;
@@ -47,8 +48,8 @@ private:
 
 	std::map<std::string, int> parsed_pages_;
 
-	std::list<std::string> history_;
-	std::list<std::string>::const_iterator history_pos_;
+	std::vector<std::string> history_;
+	unsigned history_pos_;
 
 	virtual const std::string& window_id() const override;
 
@@ -60,6 +61,9 @@ private:
 	void add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node);
 	tree_view_node& add_topic(const std::string& topic_id, const std::string& topic_title,
 			bool expands, tree_view_node& parent);
+	void show_topic(std::string topic_id, bool add_to_history = true);
+
+	void on_link_click(std::string link);
 };
 
 } // namespace dialogs
