@@ -101,6 +101,7 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, description_updated_(false)
 	, current_turn_(0)
 	, current_side_index_(0)
+	, next_side_index_(0)
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
