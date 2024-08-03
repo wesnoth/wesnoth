@@ -1476,6 +1476,9 @@ void console_handler::do_droid()
 	} else if(menu_handler_.board().get_team(side).is_network()) {
 		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
 		return;
+	} else if (menu_handler_.board().get_team(side).is_empty()) {
+		command_failed(VGETTEXT("Side '$side' is not a human or AI player.", symbols));
+		return;
 	} else if(menu_handler_.board().get_team(side).is_local()) {
 		bool changed = false;
 
