@@ -49,6 +49,7 @@ def write_exif(target,date_value,copyright_value,artist_value,usercomment_value)
         date_value = datetime.today().strftime("%Y:%m:%d %H:%M:%S")
     return str(check_output(["exiftool", "-overwrite_original", "-all=", "-ModifyDate=now", "-CreateDate=%s" % date_value, "-Copyright=%s" % copyright_value, "-Artist=%s" % artist_value, "-UserComment=%s" % usercomment_value, target]), 'UTF-8')
 
+# This cwebp call is to work around a current exiftool limitation, where RIFF alpha tags cannot be written, yet are needed by Extended (because we now include Exif tags) WEBP if there is to be any transparency.
 def fix_webp(target):
     return str(check_output(["cwebp", "-quiet", "-mt", "-z", "9", "-metadata", "exif", target, "-o", target]), 'UTF-8')
 
