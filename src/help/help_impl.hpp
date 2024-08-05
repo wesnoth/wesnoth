@@ -309,14 +309,6 @@ section *find_section(section &sec, const std::string &id);
 /// markups are separate parts.
 config parse_text(const std::string &text);
 
-/**
- * Convert the the text between start and end xml tags for element_name to
- * valid wml attributes, surrounded between [element_name]...[/element_name].
- * The attributes in the start tag are also used.
- * @return the resulting WML.
- */
-std::string convert_to_wml(std::string &element_name, const std::string &contents);
-
 /** Make a best effort to word wrap s. All parts are less than width. */
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 

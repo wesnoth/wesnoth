@@ -50,8 +50,10 @@
 
 #include <boost/algorithm/string.hpp>
 #include <cassert>                     // for assert
+#include <codecvt>
 #include <algorithm>                    // for sort, find, transform, etc
 #include <iterator>                     // for back_insert_iterator, etc
+#include <locale>
 #include <map>                          // for map, etc
 #include <set>
 
@@ -1332,188 +1334,360 @@ section *find_section(section &sec, const std::string &id)
 	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
 }
 
-config parse_text(const std::string &text)
+/*
+
+Here's a little mini-grammar of the markup language:
+
+DOCUMENT ::= (TEXT | TAG)*
+TEXT ::= ([^<&\] | ENTITY | ESCAPE)*
+ESCAPE ::= '\' [:unicode-char:]
+ENTITY ::= '&' '#' [0-9]+ ';'
+ENTITY ::= '&' 'x' [0-9a-fA-F]+ ';'
+ENTITY ::= '&' NAME ';'
+TAG ::= '<' NAME ATTRIBUTE* '/' '>'
+TAG ::= '<' NAME ATTRIBUTE* '>' DOCUMENT '<' '/' NAME '>' ## NB: the names must match!
+TAG ::= '<' NAME '>' ATTRIBUTE* TEXT? '<' '/' NAME '>' ## NB: the names must match!
+ATTRIBUTE ::= NAME
+ATTRIBUTE ::= NAME '=' [^'" ]*
+ATTRIBUTE ::= NAME '=' "'" TEXT "'"
+ATTRIBUTE ::= NAME '=' '"' TEXT '"'
+NAME ::= [_0-9a-zA-Z]+
+
+Notes:
+* Entities and the first two tag formats are Pango-style. The tags can be nested inside each other.
+* Escapes and the third tag format are for compatibility with the old help markup. Tags cannot be nested.
+* This mostly doesn't attempt to define the meaning of specific tags or entity names. It does however substitute numeric entities, as well as some very basic named entities: lt, gt, amp, quot, apos.
+* The definition of TEXT is left a bit nebulous, but just think of it as "non-greedy"
+* Attributes without a value are only supported in Pango-style tags
+* Some restrictions may apply beyond what the grammar specifies. For example, arbitrary named entities are not supported in attribute values (numeric ones and the 5 special ones work though).
+
+------
+
+The result of the parsing is represented in the format of a WML config.
+Text spans are represented as a [text] tag, and character entities as a [character_entity] tag.
+All other tags are represented by a tag of the same name.
+Any attributes on a tag become key-value pairs within the tag.
+Old-style help markup tags with text at the end put the text in a "text" key in the tag.
+The same approach is used for new-style Pango tags, but only if there are no nested tags or entities.
+If there ARE nested tags or entities, the contents of the tag is broken down into spans as subtags of the parent tag.
+Thus, a tag with content has EITHER a text attribute OR some subtags.
+
+Note: Only unrecognized named entities count for the above purposes!
+Numerical entities and the special five lt, gt, amp, apos, quot are directly substituted in-place.
+
+Also, text spans will be broken up on paragraph breaks (double newlines).
+This means that adjacent [text] tags should be rendered with a paragraph break between them.
+However, no paragraph break should be used when [text] is followed by something else.
+It is possible to have empty text spans in some cases, for example given a run of more than 2 newlines,
+or a character entity directly followed by a paragraph break.
+
+*/
+static config parse_entity(std::string::const_iterator& beg, std::string::const_iterator end)
 {
-	config res;
-	bool last_char_escape = false;
-	bool found_slash = false;
-	bool in_quotes = false;
-	const char escape_char = '\\';
-	std::stringstream ss;
-	std::size_t pos;
-	enum { ELEMENT_NAME, OTHER } state = OTHER;
-	for (pos = 0; pos < text.size(); ++pos) {
-		const char c = text[pos];
-		if (c == escape_char && !last_char_escape) {
-			last_char_escape = true;
-		} else {
-			if (state == OTHER) {
-				if (c == '<') {
-					if (last_char_escape) {
-						ss << c;
-					} else {
-						res.add_child("text", config("text", ss.str()));
-						ss.str("");
-						state = ELEMENT_NAME;
-					}
-				} else {
-					ss << c;
-				}
-			} else if (state == ELEMENT_NAME) {
-				if ((c == '/') && (!in_quotes)) {
-					found_slash = true;
-				} else if (c == '\'') {
-					// toggle quoting
-					in_quotes = !in_quotes;
-				} else if (c == '>') {
-					in_quotes = false;
-
-					// end of this tag.
-					std::stringstream s;
-					std::string element_name = ss.str();
-					ss.str("");
-
-					// process any attributes in the start tag
-					std::size_t attr_pos = element_name.find(" ");
-					std::string attrs = "";
-					if (attr_pos != std::string::npos) {
-						attrs = element_name.substr(attr_pos+1);
-						element_name = element_name.substr(0, attr_pos);
-					}
-
-					if (found_slash) {
-						// empty tag
-						s.str(convert_to_wml(element_name, attrs));
-						found_slash = false;
-						pos = text.find(">", pos);
-					} else {
-						// non-empty tag
-						s << "</" << element_name << ">";
-						const std::string end_element_name = s.str();
-						std::size_t end_pos = text.find(end_element_name, pos);
-						if (end_pos == std::string::npos) {
-							std::stringstream msg;
-							msg << "Unterminated element: " << element_name;
-							throw parse_error(msg.str());
-						}
-						const std::string contents = attrs + " " + text.substr(pos + 1, end_pos - pos - 1);
-						const std::string element = convert_to_wml(element_name, contents);
-						s.str(element);
-						pos = end_pos + end_element_name.size() - 1;
-					}
-					s.seekg(0);
-					try {
-						config cfg;
-						read(cfg, s);
-						res.append_children(cfg);
-					} catch(config::error& e) {
-						std::stringstream msg;
-						msg << "Error when parsing help markup as WML: '" << e.message << "'";
-						throw parse_error(msg.str());
-					}
-					state = OTHER;
-				} else {
-					if (found_slash) {
-						found_slash = false;
-						std::string msg = "Erroneous / in element name.";
-						throw parse_error(msg);
-					} else {
-						ss << c;
-					}
-				}
+	config entity;
+	std::stringstream s;
+	enum { UNKNOWN, NAMED, HEX, DECIMAL } type = UNKNOWN;
+	assert(*beg == '&');
+	++beg;
+	for(; beg != end && *beg != ';'; ++beg) {
+		switch(type) {
+		case UNKNOWN:
+			if(*beg == '#') {
+				type = DECIMAL;
+			} else if(isalnum(*beg) || *beg == '_') {
+				type = NAMED;
+				s << *beg;
+			} else {
+				throw parse_error("TODO");
 			}
-			last_char_escape = false;
+			break;
+		case NAMED:
+			if(!isalnum(*beg)) {
+				throw parse_error("TODO");
+			}
+			s << *beg;
+			break;
+		case DECIMAL:
+			if(*beg == 'x') {
+				type = HEX;
+			} else if(isdigit(*beg)) {
+				s << *beg;
+			} else {
+				throw parse_error("TODO");
+			}
+			break;
+		case HEX:
+			if(isxdigit(*beg)) {
+				s << *beg;
+			} else {
+				throw parse_error("TODO");
+			}
+			break;
 		}
 	}
-	if (state == ELEMENT_NAME) {
-		std::stringstream msg;
-		msg << "Element '" << ss.str() << "' continues through end of string.";
-		throw parse_error(msg.str());
+	if(type == NAMED) {
+		std::string name = s.str();
+		entity["name"] = name;
+		if(name == "lt") {
+			entity["code_point"] = '<';
+		} else if(name == "gt") {
+			entity["code_point"] = '>';
+		} else if(name == "apos") {
+			entity["code_point"] = '\'';
+		} else if(name == "quot") {
+			entity["code_point"] = '"';
+		} else if(name == "amp") {
+			entity["code_point"] = '&';
+		}
+	} else {
+		s.seekg(0);
+		if(type == HEX) {
+			s >> std::hex;
+		}
+		int n;
+		s >> n;
+		entity["code_point"] = n;
 	}
-	if (!ss.str().empty()) {
-		// Add the last string.
-		res.add_child("text", config("text", ss.str()));
+	return entity;
+}
+
+static char parse_escape(std::string::const_iterator& beg, std::string::const_iterator end)
+{
+	assert(*beg == '\\');
+	// An escape at the end of stream is just treated as a literal.
+	// Otherwise, take the next character as a literal and be done with it.
+	if((beg + 1) != end) {
+		++beg;
+	}
+	return *beg;
+}
+
+static config parse_text_until(std::string::const_iterator& beg, std::string::const_iterator end, char close)
+{
+	// In practice, close will be one of < ' "
+	// Parsing will go until either close or eos, and will emit one or more text and character_entity tags.
+	// However, recognized character entities will be collapsed into the text tags.
+	std::ostringstream s;
+	bool saw_newline = false;
+	config res;
+	for(; beg != end && *beg != close; ++beg) {
+		if(*beg == '&') {
+			auto entity = parse_entity(beg, end);
+			if(beg == end) {
+				throw parse_error("unexpected eos after entity");
+			}
+			if(entity.has_attribute("code_point")) {
+				std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> conv;
+				s << conv.to_bytes(entity["code_point"]);
+			} else {
+				// TODO: Adding the text here seems wrong in the case that the stream BEGINS with an entity...
+				res.add_child("text", config("text", s.str()));
+				res.add_child("character_entity", entity);
+				s.str("");
+			}
+		} else if(*beg == '\\') {
+			s << parse_escape(beg, end);
+		} else if(*beg == '\n') {
+			if(saw_newline) {
+				res.add_child("text", config("text", s.str()));
+				s.str("");
+			} else {
+				saw_newline = true;
+				continue;
+			}
+		} else {
+			if(saw_newline) {
+				s << '\n';
+			}
+			s << *beg;
+		}
+		saw_newline = false;
+	}
+	res.add_child("text", config("text", s.str()));
+	assert(beg == end || *beg == close);
+	return res;
+}
+
+static std::string parse_name(std::string::const_iterator& beg, std::string::const_iterator end)
+{
+	std::ostringstream s;
+	for(; beg != end && (isalnum(*beg) || *beg == '_'); ++beg) {
+		s << *beg;
+	}
+	return s.str();
+}
+
+static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool allow_empty)
+{
+	std::string attr = parse_name(beg, end), value;
+	if(attr.empty()) {
+		throw parse_error("missing attribute name");
+	}
+	while(isspace(*beg)) ++beg;
+	if(*beg != '=') {
+		if(allow_empty) {
+			// The caller expects beg to point to the last character of the attribute upon return.
+			// But in this path, we're now pointing to the character AFTER that.
+			--beg;
+			return {attr, value};
+		} else throw parse_error("attribute missing value in old-style tag");
+	}
+	++beg;
+	while(isspace(*beg)) ++beg;
+	if(*beg == '\'' || *beg == '"') {
+		config res = parse_text_until(beg, end, *beg++);
+		if(res.has_child("character_entity")) {
+			throw parse_error("unsupported entity in attribute value");
+		} else if(res.all_children_count() > 1) {
+			throw parse_error("paragraph break in attribute value");
+		}
+		if(auto t = res.optional_child("text")) {
+			value = t["text"].str();
+		}
+	} else {
+		std::ostringstream s;
+		for(; beg != end && *beg != '/' && *beg != '>' && *beg != '<' && !isspace(*beg); ++beg) {
+			if(*beg == '&') {
+				auto entity = parse_entity(beg, end);
+				if(beg == end) {
+					throw parse_error("unexpected eos after entity");
+				}
+				if(entity.has_attribute("code_point")) {
+					std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> conv;
+					s << conv.to_bytes(entity["code_point"]);
+				} else {
+					throw parse_error("unsupported entity in attribute value");
+				}
+			} else if(*beg == '\\') {
+				s << parse_escape(beg, end);
+			} else {
+				s << *beg;
+			}
+		}
+		value = s.str();
+		// The caller expects beg to point to the last character of the attribute upon return.
+		// But in this path, we're now pointing to the character AFTER that.
+		--beg;
+	}
+	return {attr, value};
+}
+
+static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match)
+{
+	beg += 2;
+	if(!std::equal(match.begin(), match.end(), beg)) {
+		throw parse_error("Mismatched closing tag");
+	}
+	beg += match.size() + 1;
+}
+
+static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg, std::string::const_iterator end);
+static config parse_tag_contents(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match, bool check_for_attributes)
+{
+	assert(*beg == '>');
+	++beg;
+	// This also parses the matching closing tag!
+	config res;
+	for(; check_for_attributes && beg != end && *beg != '<'; ++beg) {
+		if(isspace(*beg)) continue;
+		auto save_beg = beg;
+		try {
+			auto [key, val] = parse_attribute(beg, end, false);
+			res[key] = val;
+		} catch(parse_error&) {
+			beg = save_beg;
+			while(beg != end && isspace(*beg)) ++beg;
+			break;
+		}
+	}
+	if(res.has_attribute("text")) {
+		if(beg == end || *beg != '<' || (beg + 1) == end || *(beg + 1) != '/') {
+			throw parse_error("Extra text at the end of old-style tag with explicit 'text' attribute");
+		}
+		check_closing_tag(beg, end, match);
+		return res;
+	} else if(res.attribute_count() > 0) {
+		config text = parse_text_until(beg, end, '<');
+		if(beg == end || *beg != '<' || (beg + 1) == end || *(beg + 1) != '/') {
+			throw parse_error("Extra text at the end of old-style tag with explicit 'text' attribute");
+		}
+		if(text.all_children_count() == 1 && text.has_child("text")) {
+			res["text"] = text.mandatory_child("text")["text"];
+		} else {
+			res.append_children(text);
+		}
+		check_closing_tag(beg, end, match);
+		return res;
+	}
+	while(true) {
+		config text = parse_text_until(beg, end, '<');
+		if(beg == end || beg + 1 == end) {
+			throw parse_error("Missing closing tag");
+		}
+		res.append_children(text);
+		if(*(beg + 1) == '/') {
+			check_closing_tag(beg, end, match);
+			break;
+		}
+		auto [tag, contents] = parse_tag(beg, end);
+		res.add_child(tag, contents);
+	}
+	if(res.all_children_count() == 1 && res.has_child("text")) {
+		return res.mandatory_child("text");
 	}
 	return res;
 }
 
-std::string convert_to_wml(std::string& element_name, const std::string& contents)
+static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg, std::string::const_iterator end)
 {
-	std::stringstream ss;
-	bool in_quotes = false;
-	bool last_char_escape = false;
-	const char escape_char = '\\';
-	std::vector<std::string> attributes;
-	std::stringstream buff;
-
-	// Remove any leading and trailing space from element name
-	boost::algorithm::trim(element_name);
-
-	// Find the different attributes.
-	// Attributes are just separated by spaces or newlines.
-	// Attributes that contain spaces must be in single quotes.
-	// No equal key forces that token to be considered as plain text
-	// and it gets attached to the default 'text' key.
-	for (std::size_t pos = 0; pos < contents.size(); ++pos) {
-		const char c = contents[pos];
-		if (c == escape_char && !last_char_escape) {
-			last_char_escape = true;
-		}
-		else {
-			if (c == '\'' && !last_char_escape) {
-				ss << '"';
-				in_quotes = !in_quotes;
+	assert(*beg == '<');
+	++beg;
+	std::string tag_name = parse_name(beg, end);
+	if(tag_name.empty()) {
+		throw parse_error("missing tag name");
+	}
+	bool auto_closed = false;
+	config elem;
+	for(; beg != end && *beg != '>'; ++beg) {
+		if(isspace(*beg)) continue;
+		if(*beg == '/') {
+			auto_closed = true;
+		} else if(isalnum(*beg) || *beg == '_') {
+			const auto& [key, value] = parse_attribute(beg, end, true);
+			if(beg == end) {
+				throw parse_error("unexpected eos following attribute");
 			}
-			else if ((c == ' ' || c == '\n') && !last_char_escape && !in_quotes) {
-				// Space or newline, end of attribute.
-				std::size_t eq_pos = ss.str().find("=");
-				if (eq_pos == std::string::npos) {
-					// no = sign found, assuming plain text
-					buff << " " << ss.str();
-				} else {
-					attributes.push_back(ss.str());
-				}
-				ss.str("");
-			}
-			else {
-				ss << c;
-			}
-			last_char_escape = false;
+			elem[key] = value;
 		}
 	}
-
-	if (in_quotes) {
-		std::stringstream msg;
-		msg << "Unterminated single quote after: '" << ss.str() << "'";
-		throw parse_error(msg.str());
-	}
-
-	if (!ss.str().empty()) {
-		std::size_t eq_pos = ss.str().find("=");
-		if (eq_pos == std::string::npos) {
-			// no = sign found, assuming plain text
-			buff << " " << ss.str();
+	if(auto_closed) {
+		assert(*beg == '>');
+		++beg;
+	} else {
+		config contents = parse_tag_contents(beg, end, tag_name, elem.attribute_count() == 0);
+		if(contents.all_children_count() == 0 && contents.attribute_count() == 1 && contents.has_attribute("text")) {
+			elem["text"] = contents["text"];
 		} else {
-			attributes.push_back(ss.str());
+			elem.append(contents);
 		}
 	}
-	ss.str("");
-	// Create the WML.
-	ss << "[" << element_name << "]\n";
-	for (auto& elem : attributes) {
-		boost::algorithm::trim(elem);
-		ss << elem << "\n";
-	}
+	return {tag_name, elem};
+}
 
-	std::string text = buff.str();
-	boost::algorithm::trim(text);
-	if (!text.empty()) {
-		ss << "text=\"" << text << "\"\n";
+config parse_text(const std::string &text)
+{
+	config res;
+	auto beg = text.begin(), end = text.end();
+	while(beg != end) {
+		if(*beg == '<') {
+			auto [tag, contents] = parse_tag(beg, end);
+			res.add_child(tag, contents);
+		} else {
+			config text = parse_text_until(beg, end, '<');
+			res.append_children(text);
+		}
 	}
-	ss << "[/" << element_name << "]";
-
-	buff.str("");
-	return ss.str();
+	return res;
 }
 
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,
