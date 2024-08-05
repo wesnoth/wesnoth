@@ -37,30 +37,6 @@ const std::string config_attribute_value::s_no("no");
 const std::string config_attribute_value::s_true("true");
 const std::string config_attribute_value::s_false("false");
 
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value::config_attribute_value()
-	: value_()
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value::~config_attribute_value()
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value::config_attribute_value(const config_attribute_value& that)
-	: value_(that.value_)
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config_attribute_value& config_attribute_value::operator=(const config_attribute_value& that)
-{
-	value_ = that.value_;
-	return *this;
-}
-
 config_attribute_value& config_attribute_value::operator=(bool v)
 {
 	value_ = yes_no(v);
@@ -416,23 +392,6 @@ public:
 bool config_attribute_value::operator==(const config_attribute_value& other) const
 {
 	return utils::visit(equality_visitor(), value_, other.value_);
-}
-
-/**
- * Checks for equality of the attribute values when viewed as strings.
- * Exception: Boolean synonyms can be equal ("yes" == "true").
- * Note: Blanks have no string representation, so do not equal "" (an empty string).
- * Also note that translatable string are never equal to non translatable strings.
- */
-bool config_attribute_value::equals(const std::string& str) const
-{
-	config_attribute_value v;
-	v = str;
-	return *this == v;
-	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" being false
-	// because a["a"] is '1' and not '"1"'.
-	// return boost::apply_visitor(std::bind( equality_visitor(), std::placeholders::_1, std::cref(str) ), value_);
-	// that's why we don't use it.
 }
 
 std::ostream& operator<<(std::ostream& os, const config_attribute_value& v)

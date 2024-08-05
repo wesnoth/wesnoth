@@ -441,7 +441,7 @@ theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 		font_ = DefaultFontSize;
 
 	if(cfg.has_attribute("font_rgb")) {
-		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"]);
+		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"].str());
 		font_rgb_set_ = true;
 	}
 }
@@ -463,7 +463,7 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 	}
 
 	if(cfg.has_attribute("font_rgb")) {
-		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"]);
+		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"].str());
 		font_rgb_set_ = true;
 	}
 }

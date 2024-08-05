@@ -354,7 +354,7 @@ static surface load_image_file(const image::locator& loc)
 	// but the old filename may still be saved in savegame files etc.
 	// If the file does not exist in ".png" format, also try ".webp".
 	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
-	if(!location && (filesystem::ends_with(name, ".png") || filesystem::ends_with(name, ".jpg"))) {
+	if(!location && (boost::algorithm::ends_with(name, ".png") || boost::algorithm::ends_with(name, ".jpg"))) {
 		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
 		location = filesystem::get_binary_file_location("images", webp_name);
 		if(location) {
@@ -932,14 +932,14 @@ save_result save_image(const surface& surf, const std::string& filename)
 		return save_result::no_image;
 	}
 
-	if(filesystem::ends_with(filename, ".jpeg") || filesystem::ends_with(filename, ".jpg") || filesystem::ends_with(filename, ".jpe")) {
+	if(boost::algorithm::ends_with(filename, ".jpeg") || boost::algorithm::ends_with(filename, ".jpg") || boost::algorithm::ends_with(filename, ".jpe")) {
 		LOG_IMG << "Writing a JPG image to " << filename;
 
 		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
-	if(filesystem::ends_with(filename, ".png")) {
+	if(boost::algorithm::ends_with(filename, ".png")) {
 		LOG_IMG << "Writing a PNG image to " << filename;
 
 		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops

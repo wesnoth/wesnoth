@@ -291,11 +291,6 @@ bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 		modified == rhs.modified;
 }
 
-bool ends_with(const std::string& str, const std::string& suffix)
-{
-	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
-}
-
 std::string read_map(const std::string& name)
 {
 	std::string res;

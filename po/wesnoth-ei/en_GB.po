@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-07-22 03:31 UTC\n"
-"PO-Revision-Date: 2024-07-06 11:08+1000\n"
+"PO-Revision-Date: 2024-07-26 01:14+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [editor_group]: id=eastern_invasion
 #. [campaign]: id=Eastern_Invasion
@@ -2201,7 +2201,7 @@ msgstr "Rava-Krovan"
 #. [scenario]: id=04c_Mal-Ravanals_Capital
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:277
 msgid "Jailer"
-msgstr "Jailer"
+msgstr "Gaoler"
 
 #. [message]: speaker=Gweddry
 #. to a single captive
@@ -6770,12 +6770,6 @@ msgstr ""
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2809
-#, fuzzy
-#| msgid ""
-#| "You are right, Gweddry. I cannot know. But I must try. If I do not, "
-#| "Wesnoth — nay, all of Irdya — will surely fall to ruin. As long as I try, "
-#| "there is still a chance. Sacrificing myself means nothing for the greater "
-#| "good."
 msgid ""
 "You are right, Gweddry. I cannot know. But I must try. If I do not, Wesnoth "
 "— nay, all of Irdya — will surely fall to ruin. As long as I try, there is "
@@ -6784,7 +6778,8 @@ msgid ""
 msgstr ""
 "You are right, Gweddry. I cannot know. But I must try. If I do not, Wesnoth "
 "— nay, all of Irdya — will surely fall to ruin. As long as I try, there is "
-"still a chance. Sacrificing myself means nothing for the greater good."
+"still a chance. Sacrificing myself is of no consequence if it is for the "
+"greater good."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2813
@@ -8241,7 +8236,7 @@ msgid ""
 "More prisoners approach from the northwest! I have not the time to depart "
 "and return with Gweddry, or those dwarves will surely be slain."
 msgstr ""
-"More prisoners approach from the northwest! I have not the time to depart "
+"More prisoners approach from the north-west! I have not the time to depart "
 "and return with Gweddry, or those dwarves will surely be slain."
 
 #. [message]: speaker=Owaec
@@ -12146,7 +12141,7 @@ msgstr ""
 #. [message]: speaker=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/99_Empire.cfg:1205
 msgid "Get away from my jail cells! Filthy traitors, there goes my income..."
-msgstr ""
+msgstr "Get away from my gaol cells! Filthy traitors, there goes my income..."
 
 #. [message]: speaker=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/99_Empire.cfg:1209
@@ -12154,6 +12149,7 @@ msgid ""
 "Fine then, I’m done taking prisoners. From here on out, you either submit or "
 "die!"
 msgstr ""
+"Fine then, I’m done taking prisoners. From here on, you either submit or die!"
 
 #. [message]: role=leader
 #: data/campaigns/Eastern_Invasion/scenarios/99_Empire.cfg:1336
@@ -12284,7 +12280,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/terrain.cfg:33
 #: data/campaigns/Eastern_Invasion/terrain.cfg:34
 msgid "Urban Jungle"
-msgstr ""
+msgstr "Urban Jungle"
 
 #. [unit_type]: id=Ant Queen, race=monster
 #: data/campaigns/Eastern_Invasion/units/Ant_Queen.cfg:4
@@ -13740,19 +13736,15 @@ msgstr "<i>DARKNESS CONSUMES THE SOUL.</i>"
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:37
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:1007
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:1161
-#, fuzzy
-#| msgid "Take it."
 msgid "Take"
-msgstr "Take it."
+msgstr "Take"
 
 #. [item_dialog]: description={ITEM_DESC}
 #. Button label for 'leave an item'
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:39
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:1008
-#, fuzzy
-#| msgid "Leave it."
 msgid "Leave"
-msgstr "Leave it."
+msgstr "Leave"
 
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:119
 msgid ""
@@ -13769,13 +13761,6 @@ msgstr ""
 "<b></b>"
 
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:124
-#, fuzzy
-#| msgid ""
-#| "<span size='small'><i>This item can <b>NOT</b> be dropped, and can "
-#| "<b>NOT</b> be reused if its user dies.</i></span>\n"
-#| "<span size='small'><i>  Picking up an item consumes your moves and attack."
-#| "</i></span>\n"
-#| "<b></b>"
 msgid ""
 "<span size='small'><i>This item <b>CANNOT</b> be dropped, and <b>CANNOT</b> "
 "be reused if its user dies.</i></span>\n"
@@ -13783,8 +13768,8 @@ msgid ""
 "i></span>\n"
 "<b></b>"
 msgstr ""
-"<span size='small'><i>This item can <b>NOT</b> be dropped, and can <b>NOT</"
-"b> be reused if its user dies.</i></span>\n"
+"<span size='small'><i>This item <b>CANNOT</b> be dropped, and <b>CANNOT</b> "
+"be reused if its user dies.</i></span>\n"
 "<span size='small'><i>  Picking up an item consumes your moves and attack.</"
 "i></span>\n"
 "<b></b>"

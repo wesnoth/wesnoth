@@ -36,6 +36,7 @@
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
+#include "preferences/preferences.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -275,38 +276,38 @@ static int process_command_args(commandline_options& cmdline_opts)
 		lg::set_log_sanitize(false);
 	}
 
-	// decide whether to redirect output to a file or not
-	if(cmdline_opts.log_to_file) {
-		cmdline_opts.final_log_redirect_to_file = true;
-	} else if(cmdline_opts.no_log_to_file) {
-		cmdline_opts.final_log_redirect_to_file = false;
-	} else {
-		// write_to_log_file means that writing to the log file will be done, if true.
-		// if false, output will be written to the terminal
-		// on windows, if wesnoth was not started from a console, then it will allocate one
-		cmdline_opts.final_log_redirect_to_file = !getenv("WESNOTH_NO_LOG_FILE")
-		// command line options that imply not redirecting output to a log file
-		// Some switches force a Windows console to be attached to the process even
-		// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-		// turn it into a CLI application. Also, --no-log-to-file in particular attaches
-		// a console to a regular GUI game session.
-			&& !cmdline_opts.data_path
-			&& !cmdline_opts.help
-			&& !cmdline_opts.logdomains
-			&& !cmdline_opts.nogui
-			&& !cmdline_opts.report
-			&& !cmdline_opts.simple_version
-			&& !cmdline_opts.userdata_path
-			&& !cmdline_opts.version
-			&& !cmdline_opts.do_diff
-			&& !cmdline_opts.do_patch
-			&& !cmdline_opts.preprocess
-			&& !cmdline_opts.render_image
-			&& !cmdline_opts.screenshot
-			&& !cmdline_opts.headless_unit_test
-			&& !cmdline_opts.validate_schema
-			&& !cmdline_opts.validate_wml;
-	}
+	// If true, output will be redirected to file, else output be written to console.
+	// On Windows, if Wesnoth was not started from a console, one will be allocated.
+	const auto should_redirect_to_file = [&cmdline_opts] {
+		if(cmdline_opts.log_to_file) {
+			return true;
+		} else if(cmdline_opts.no_log_to_file) {
+			return false;
+		} else {
+			return !getenv("WESNOTH_NO_LOG_FILE")
+				// command line options that imply not redirecting output to a log file
+				// Some switches force a Windows console to be attached to the process even
+				// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
+				// turn it into a CLI application. Also, --no-log-to-file in particular attaches
+				// a console to a regular GUI game session.
+				&& !cmdline_opts.data_path
+				&& !cmdline_opts.help
+				&& !cmdline_opts.logdomains
+				&& !cmdline_opts.nogui
+				&& !cmdline_opts.report
+				&& !cmdline_opts.simple_version
+				&& !cmdline_opts.userdata_path
+				&& !cmdline_opts.version
+				&& !cmdline_opts.do_diff
+				&& !cmdline_opts.do_patch
+				&& !cmdline_opts.preprocess
+				&& !cmdline_opts.render_image
+				&& !cmdline_opts.screenshot
+				&& !cmdline_opts.headless_unit_test
+				&& !cmdline_opts.validate_schema
+				&& !cmdline_opts.validate_wml;
+		}
+	};
 
 	if(cmdline_opts.usercache_dir) {
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
@@ -322,9 +323,14 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	// userdata is initialized, so initialize logging to file if enabled
-	if(cmdline_opts.final_log_redirect_to_file) {
+	if(should_redirect_to_file()) {
 		lg::set_log_to_file();
 	}
+#ifdef _WIN32
+	else if(!cmdline_opts.no_console) {
+		lg::do_console_redirect();
+	}
+#endif
 
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
@@ -716,6 +722,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #endif
 
 	gui2::init();
+	gui2::switch_theme(prefs::get().gui_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
@@ -856,7 +863,9 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		{ // scope to not keep the title screen alive all game
 			gui2::dialogs::title_screen dlg(*game);
 
-			// Allows re-layout on resize
+			// Allows re-layout on resize.
+			// Since RELOAD_UI is not checked here, it causes
+			// the dialog to be closed and reshown with changes.
 			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
@@ -891,6 +900,9 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
+			break;
+		case gui2::dialogs::title_screen::RELOAD_UI:
+			gui2::switch_theme(prefs::get().gui_theme());
 			break;
 		}
 	}
@@ -928,25 +940,15 @@ int main(int argc, char** argv)
 		commandline_options cmdline_opts = commandline_options(args);
 		int finished = process_command_args(cmdline_opts);
 
-#ifndef _WIN32
 		if(finished != -1) {
+#ifdef _WIN32
+			if(lg::using_own_console()) {
+				std::cerr << "Press enter to continue..." << std::endl;
+				std::cin.get();
+			}
+#endif
 			safe_exit(finished);
 		}
-#else
-		// else handle redirecting the output and potentially attaching a console on windows
-		if(!cmdline_opts.final_log_redirect_to_file) {
-			if(!cmdline_opts.no_console) {
-				lg::do_console_redirect();
-			}
-			if(finished != -1) {
-				if(lg::using_own_console()) {
-					std::cerr << "Press enter to continue..." << std::endl;
-					std::cin.get();
-				}
-				safe_exit(finished);
-			}
-		}
-#endif
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 		// Is there a reason not to just use SDL_INIT_EVERYTHING?

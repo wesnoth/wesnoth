@@ -252,8 +252,6 @@ public:
 	bool log_to_file;
 	/** True if --no-log-to-file was given on the command line. Results in logs not being redirected to a log file. */
 	bool no_log_to_file;
-	/** final result of determining whether to log to file or not */
-	bool final_log_redirect_to_file;
 	/** Non-empty if --all-translations or --translations-over is given on the command line. */
 	utils::optional<unsigned int> translation_percent;
 private:

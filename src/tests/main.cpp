@@ -87,6 +87,7 @@ struct wesnoth_global_fixture {
 		test_utils::get_fake_display(1024, 768);
 
 		gui2::init();
+		gui2::switch_theme("default");
 		static const gui2::event::manager gui_event_manager;
 
 		// TODO: For some reason this fails on MacOS and prevents any tests from running

@@ -202,6 +202,14 @@ static unsigned int get_noise(const map_location& loc, unsigned int index)
 	return abc * abc;
 }
 
+terrain_builder::tilemap::tilemap(int x, int y)
+	: tiles_((x + 4) * (y + 4))
+	, x_(x)
+	, y_(y)
+{
+	reset();
+}
+
 void terrain_builder::tilemap::reset()
 {
 	for(std::vector<tile>::iterator it = tiles_.begin(); it != tiles_.end(); ++it)
@@ -659,6 +667,18 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 
 terrain_builder::rule_image_variant::rule_image_variant(const std::string& image_string,
 		const std::string& variations,
+		int random_start)
+	: image_string(image_string)
+	, variations(variations)
+	, images()
+	, tods()
+	, has_flag()
+	, random_start(random_start)
+{
+}
+
+terrain_builder::rule_image_variant::rule_image_variant(const std::string& image_string,
+		const std::string& variations,
 		const std::string& tod,
 		const std::string& has_flag,
 		int random_start)
@@ -752,7 +772,11 @@ terrain_builder::terrain_constraint& terrain_builder::add_constraints(terrain_bu
 
 	if(!cons) {
 		// The terrain at the current location did not exist, so create it
+#ifdef __cpp_aggregate_paren_init
 		constraints.emplace_back(loc);
+#else
+		constraints.push_back({loc});
+#endif
 		cons = &constraints.back();
 	}
 

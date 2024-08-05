@@ -51,7 +51,7 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 				img = empty_icon_unit
 			end
 			this_row.the_icon.label = img
-			this_row.global_icon.visible = not not (advance_type.id == game_override_one) or "hidden"
+			this_row.global_icon.visible = advance_type.id == game_override_one or "hidden"
 		end
 
 		window.the_list:focus()

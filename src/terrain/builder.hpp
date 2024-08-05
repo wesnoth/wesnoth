@@ -165,15 +165,7 @@ public:
 	struct rule_image_variant
 	{
 		/** Constructor for the normal default case */
-		rule_image_variant(const std::string& image_string, const std::string& variations, int random_start = -1)
-			: image_string(image_string)
-			, variations(variations)
-			, images()
-			, tods()
-			, has_flag()
-			, random_start(random_start)
-		{
-		}
+		rule_image_variant(const std::string& image_string, const std::string& variations, int random_start = -1);
 
 		/** Constructor for true [variant] cases */
 		rule_image_variant(const std::string& image_string,
@@ -277,38 +269,16 @@ public:
 	 */
 	struct terrain_constraint
 	{
-		terrain_constraint()
-			: loc()
-			, terrain_types_match()
-			, set_flag()
-			, no_flag()
-			, has_flag()
-			, no_draw()
-			, images()
-		{
-		}
-
-		terrain_constraint(map_location loc)
-			: loc(loc)
-			, terrain_types_match()
-			, set_flag()
-			, no_flag()
-			, has_flag()
-			, no_draw()
-			, images()
-		{
-		}
-
-		map_location loc;
-		t_translation::ter_match terrain_types_match;
-		std::vector<std::string> set_flag;
-		std::vector<std::string> no_flag;
-		std::vector<std::string> has_flag;
+		map_location loc{};
+		t_translation::ter_match terrain_types_match{};
+		std::vector<std::string> set_flag{};
+		std::vector<std::string> no_flag{};
+		std::vector<std::string> has_flag{};
 
 		/** Whether to actually draw the images onto this hex or not */
-		bool no_draw;
+		bool no_draw = false;
 
-		rule_imagelist images;
+		rule_imagelist images{};
 	};
 
 	/**
@@ -405,17 +375,6 @@ private:
 	 */
 	struct building_rule
 	{
-		building_rule()
-			: constraints()
-			, location_constraints()
-			, modulo_constraints()
-			, probability(100)
-			, precedence(0)
-			, local(false)
-			, hash_(DUMMY_HASH)
-		{
-		}
-
 		/**
 		 * The set of [tile] constraints of this rule.
 		 */
@@ -440,17 +399,17 @@ private:
 		 * are met. Defined if the "probability" parameter of the
 		 * [terrain_graphics] element is set.
 		 */
-		int probability;
+		int probability = 100;
 
 		/**
 		 * Ordering relation between the rules.
 		 */
-		int precedence;
+		int precedence = 0;
 
 		/**
 		 * Indicate if the rule is only for this scenario
 		 */
-		bool local;
+		bool local = false;
 
 		bool operator<(const building_rule& that) const
 		{
@@ -460,7 +419,7 @@ private:
 		unsigned int get_hash() const;
 
 	private:
-		mutable unsigned int hash_;
+		mutable unsigned int hash_ = DUMMY_HASH;
 	};
 
 	/**
@@ -472,13 +431,7 @@ private:
 		/**
 		 * Constructs a tilemap of dimensions x * y
 		 */
-		tilemap(int x, int y)
-			: tiles_((x + 4) * (y + 4))
-			, x_(x)
-			, y_(y)
-		{
-			reset();
-		}
+		tilemap(int x, int y);
 
 		/**
 		 * Returns a reference to the tile which is at the position

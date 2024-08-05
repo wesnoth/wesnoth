@@ -19,6 +19,7 @@
 
 #include "addon/manager_ui.hpp"
 #include "filesystem.hpp"
+#include "font/font_config.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
@@ -53,6 +54,7 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "sdl/surface.hpp"
+#include "serialization/unicode.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -204,26 +206,23 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			//
 			// Use pango markup to insert drop cap
-			//
-			if (tip.text().str().substr(0,1) != "<") {
-				// Example: Lawful units -> <span ...>L</span>awful units
-				widget["label"] = "<span font_family='OldaniaADFStd' font_size='xx-large'>" + tip.text().str().substr(0,1) + "</span>" + tip.text().str().substr(1);
-			} else {
-				// Tip starts with a tag, so we need to insert the <span> after it
-				// then insert the </span> tag after the first character of the text
-				// after markup. Example:
-				// <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
-				std::size_t id = tip.text().str().find_first_of(">") + 1;
-				std::stringstream tip_text;
-				tip_text << tip.text().str().substr(0,id) // existing start tag
-						 << "<span font_family='OldaniaADFStd' font_size='xx-large'>" // span start tag
-						 << tip.text().str().substr(id,1) // first character
-						 << "</span>" // span end tag
-						 << tip.text().str().substr(id+1); // rest of the text
-				widget["label"] = tip_text.str();
+			// Example: Lawful units -> <span ...>L</span>awful units
+			// If tip starts with a tag, we need to insert the <span> after it
+			// then insert the </span> tag after the first character of the text
+			// after markup. Assumes that the tags themselves don't
+			// contain non-ASCII characters.
+			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
+			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
+			std::string tip_text = tip.text().str();
+			std::size_t pos = 0;
+			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
+				pos = tip_text.find_first_of(">", pos) + 1;
 			}
+			utf8::insert(tip_text, pos+1, "</span>");
+			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
+
+			widget["label"] = tip_text;
 
 			page.emplace("tip", widget);
 
@@ -330,7 +329,11 @@ void title_screen::init_callbacks()
 	// Preferences
 	//
 	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
-		gui2::dialogs::preferences_dialog::display();
+		gui2::dialogs::preferences_dialog pref_dlg;
+		pref_dlg.show();
+		if (pref_dlg.get_retval() == RELOAD_UI) {
+			set_retval(RELOAD_UI);
+		}
 
 		// Currently blurred windows don't capture well if there is something
 		// on top of them at the time of blur. Resizing the game window in

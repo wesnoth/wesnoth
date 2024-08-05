@@ -1293,13 +1293,11 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 		int(zoom_)
 	};
 
-	// C++20 needed for in-place aggregate initilization
-#ifdef HAVE_CXX20
+#ifdef __cpp_aggregate_paren_init
 	drawing_buffer_.emplace_back(generate_hex_key(layer, loc), draw_func, dest);
 #else
-	draw_helper temp{generate_hex_key(layer, loc), draw_func, dest};
-	drawing_buffer_.push_back(std::move(temp));
-#endif //  HAVE_CXX20
+	drawing_buffer_.push_back({generate_hex_key(layer, loc), draw_func, dest});
+#endif
 }
 
 void display::drawing_buffer_commit()

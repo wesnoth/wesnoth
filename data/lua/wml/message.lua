@@ -446,7 +446,7 @@ function wesnoth.wml_actions.message(cfg)
 	end
 
 	-- Unhilight the speaker
-	if speaker and not cfg.highlight == false then
+	if speaker and cfg.highlight == true then
 		wesnoth.interface.deselect_hex()
 	end
 

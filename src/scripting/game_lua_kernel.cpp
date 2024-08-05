@@ -130,6 +130,7 @@
 #endif
 
 static lg::log_domain log_scripting_lua("scripting/lua");
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -1279,7 +1280,7 @@ static int intf_get_era(lua_State *L)
  */
 int game_lua_kernel::impl_game_config_get(lua_State *L)
 {
-	LOG_LUA << "impl_game_config_get";
+	DBG_LUA << "impl_game_config_get";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1331,7 +1332,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
  */
 int game_lua_kernel::impl_game_config_set(lua_State *L)
 {
-	LOG_LUA << "impl_game_config_set";
+	DBG_LUA << "impl_game_config_set";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1553,7 +1554,7 @@ static int impl_mp_settings_len(lua_State* L)
  */
 int game_lua_kernel::impl_scenario_get(lua_State *L)
 {
-	LOG_LUA << "impl_scenario_get";
+	DBG_LUA << "impl_scenario_get";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1638,7 +1639,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
  */
 int game_lua_kernel::impl_scenario_set(lua_State *L)
 {
-	LOG_LUA << "impl_scenario_set";
+	DBG_LUA << "impl_scenario_set";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.

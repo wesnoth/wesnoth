@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-07-21 22:32-0500\n"
-"PO-Revision-Date: 2024-05-27 09:35+1000\n"
+"PO-Revision-Date: 2024-07-26 01:01+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -299,16 +299,12 @@ msgid "No editor time-of-day found."
 msgstr "No editor time-of-day found."
 
 #: src/editor/controller/editor_controller.cpp:876
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Add-on"
+msgstr "Add-on Files"
 
 #: src/editor/controller/editor_controller.cpp:889
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Clipboard support not found, contact your packager"
+msgstr "Opening files is not supported, contact your packager"
 
 #: src/editor/controller/editor_controller.cpp:1307
 msgid "Change Unit ID"
@@ -387,10 +383,8 @@ msgstr "Error"
 
 #: src/editor/map/context_manager.cpp:706
 #: src/editor/map/context_manager.cpp:755
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Do you really want to quit?"
+msgstr "Do you really want to save $type1 in $type2 folder?"
 
 #: src/editor/map/context_manager.cpp:714
 #: src/editor/map/context_manager.cpp:923
@@ -494,16 +488,12 @@ msgid "Unable to parse file to find map data"
 msgstr "Unable to parse file to find map data"
 
 #: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Could not save the scenario: $msg"
+msgstr "Could not save time schedule: $msg"
 
 #: src/editor/map/map_context.cpp:855
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Time Schedule Menu"
+msgstr "Time schedule saved."
 
 #: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
@@ -593,12 +583,14 @@ msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"This file is outside Wesnoth's data directories. Do you wish to copy it into "
+"your add-on?"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:188
 #: src/gui/dialogs/editor/custom_tod.cpp:195
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Confirm"
-msgstr ""
+msgstr "Confirm"
 
 #~ msgid "player^None"
 #~ msgstr "None"

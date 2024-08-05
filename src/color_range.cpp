@@ -25,14 +25,14 @@
 #include <cassert>
 #include <sstream>
 
-#ifdef HAVE_CXX20
+#ifdef __cpp_lib_span
 #include <span>
 #endif
 
 namespace
 {
-#ifdef HAVE_CXX20
-std::vector<color_t> recolor_range_impl(const color_range& new_range, std::span<color_t> old_rgb)
+#ifdef __cpp_lib_span
+std::vector<color_t> recolor_range_impl(const color_range& new_range, std::span<const color_t> old_rgb)
 #else
 template<typename Container>
 std::vector<color_t> recolor_range_impl(const color_range& new_range, const Container& old_rgb)
