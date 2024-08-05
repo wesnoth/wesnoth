@@ -1500,8 +1500,6 @@ std::string convert_to_wml(std::string& element_name, const std::string& content
 	ss.str("");
 	// Create the WML.
 	ss << "[" << element_name << "]\n";
-	//for (std::vector<std::string>::const_iterator it = attributes.begin();
-	//	 it != attributes.end(); ++it) {
 	for (auto& elem : attributes) {
 		boost::algorithm::trim(elem);
 		ss << elem << "\n";
