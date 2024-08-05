@@ -120,8 +120,16 @@ public:
 		return unparsed_text_.empty() ? styled_widget::get_label() : unparsed_text_;
 	}
 
+	// Show text marked up with help markup
 	void set_label(const t_string& text) override;
 
+	// Show a help topic
+	void set_topic(const help::topic* topic);
+
+	// Show a help config
+	void set_parsed_text(const config& parsed_text);
+
+	// Attaches a callback function that will be called when a link is clicked
 	void register_link_callback(std::function<void(std::string)> link_handler)
 	{
 		link_handler_ = link_handler;
@@ -206,7 +214,7 @@ private:
 
 	void add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "");
 	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
-	void add_image(config& curr_item, std::string name, std::string align, bool floating, point& img_size);
+	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool is_prev_float, bool floating, point& img_size, point& float_size);
 	void add_link(config& curr_item, std::string name, std::string dest, int img_width);
 
 	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
