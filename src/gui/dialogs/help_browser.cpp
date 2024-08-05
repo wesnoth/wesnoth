@@ -137,7 +137,7 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 	if(iter == parsed_pages_.end()) {
 		const help::topic* topic = help::find_topic(toplevel_, topic_id);
 		if(!topic) {
-			PLAIN_LOG << "Help browser tried to show topic with id '" << topic_id
+			ERR_GUI_P << "Help browser tried to show topic with id '" << topic_id
 				  << "' but that topic could not be found." << std::endl;
 			return;
 		}
@@ -164,14 +164,11 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 
 		find_widget<button>(this, "back", false).set_active(history_pos_ != 0);
 
-		PLAIN_LOG << "history pos: " << history_pos_;
-		PLAIN_LOG << " history: " << topic_id;
 	}
 }
 
 void help_browser::on_link_click(std::string link)
 {
-	PLAIN_LOG << "topic: (" << link << ")";
 	show_topic(link);
 }
 
