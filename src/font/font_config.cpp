@@ -39,27 +39,6 @@ static lg::log_domain log_font("font");
 namespace font {
 
 
-bool check_font_file(std::string name) {
-	if(game_config::path.empty() == false) {
-		if(!filesystem::file_exists(game_config::path + "/fonts/" + name)) {
-			if(!filesystem::file_exists("fonts/" + name)) {
-				if(!filesystem::file_exists(name)) {
-				WRN_FT << "Failed opening font file '" << name << "': No such file or directory";
-				return false;
-				}
-			}
-		}
-	} else {
-		if(!filesystem::file_exists("fonts/" + name)) {
-			if(!filesystem::file_exists(name)) {
-				WRN_FT << "Failed opening font file '" << name << "': No such file or directory";
-				return false;
-			}
-		}
-	}
-	return true;
-}
-
 namespace
 {
 
