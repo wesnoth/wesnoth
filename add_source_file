@@ -103,12 +103,18 @@ def add_to_xcode(filename, targets):
                 f"Could not find target '{tname}' in Xcode project file")
 
     # groups are organized by directory structure under "src"
-    src_groups = project.get_groups_by_name("src")
+    # except for tests, which have a separate root, "tests"
+    if pathlib.Path("tests") in filename.parents:
+        src_groups = project.get_groups_by_name("tests")
+    else:
+        src_groups = project.get_groups_by_name("src")
     if len(src_groups) != 1:
         raise Exception("problem finding 'src' group in xcode project")
     src_group = src_groups[0]
     parent_group = src_group
     for d in filename.parts[:-1]:
+        if d == "tests":
+            continue
         found_groups = project.get_groups_by_name(d, parent=parent_group)
         if len(found_groups) != 1:
             groupname = parent_group.get_name()
