@@ -44,6 +44,7 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	, values_()
 	, selected_(0)
 	, keep_open_(false)
+	, update_label_(builder.update_label)
 {
 	values_.emplace_back("label", this->get_label());
 
@@ -194,7 +195,9 @@ void menu_button::set_values(const std::vector<::config>& values, unsigned selec
 	values_ = values;
 	selected_ = selected;
 
-	set_label(values_[selected_]["label"]);
+	if(update_label_) {
+		set_label(values_[selected_]["label"]);
+	}
 }
 
 void menu_button::set_selected(unsigned selected, bool fire_event)
@@ -208,7 +211,10 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 
 	selected_ = selected;
 
-	set_label(values_[selected_]["label"]);
+	if(update_label_) {
+		set_label(values_[selected_]["label"]);
+	}
+
 	if (fire_event) {
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
@@ -242,6 +248,7 @@ namespace implementation
 builder_menu_button::builder_menu_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, options_()
+	, update_label(cfg["update_label_"].to_bool(false))
 {
 	for(const auto& option : cfg.child_range("option")) {
 		options_.push_back(option);
