@@ -615,10 +615,10 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	// Print the detailed description about the unit.
-	ss << "\n\n" << detailed_description;
+	ss << "\n" << detailed_description;
 
 	if(const auto notes = type_.special_notes(); !notes.empty()) {
-		ss << "\n\n" << _("<header>Special Notes</header>") << "\n";
+		ss << "\n" << _("<header>Special Notes</header>");
 		for(const auto& note : notes) {
 			ss << font::unicode_bullet << " <i>" << note << "</i>" << '\n';
 		}
@@ -648,7 +648,7 @@ std::string unit_topic_generator::operator()() const {
 			std::string lang_type = string_table["type_" + attack.type()];
 
 			// Attack icon
-			attack_ss << "<img>src='" << attack.icon() << "'</img> <jump/>";
+			attack_ss << "<img>src='" << attack.icon() << "'</img><jump/>";
 
 			// attack name
 			attack_ss << lang_weapon << "<jump/>";
@@ -794,7 +794,7 @@ std::string unit_topic_generator::operator()() const {
 //			row.emplace_back("<img>src='" + final_image + "'</img> " +
 //					make_link(m.name, "..terrain_" + m.id),
 //				font::pango_line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
-			ss << "<img>src='" + final_image + "'</img> " + make_link(m.name, "..terrain_" + m.id) << "<jump/>";
+			ss << "<img>src='" + final_image + "'</img>" + make_link(m.name, "..terrain_" + m.id) << "<jump/>";
 
 			//defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
