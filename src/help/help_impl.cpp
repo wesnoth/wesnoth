@@ -1546,7 +1546,8 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		}
 	} else {
 		std::ostringstream s;
-		for(; beg != end && *beg != '/' && *beg != '>' && *beg != '<' && !isspace(*beg); ++beg) {
+		bool found_slash = false;
+		for(; beg != end && *beg != '>' && *beg != '<' && !isspace(*beg); ++beg) {
 			if(*beg == '&') {
 				auto entity = parse_entity(beg, end);
 				if(beg == end) {
@@ -1560,7 +1561,13 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 				}
 			} else if(*beg == '\\') {
 				s << parse_escape(beg, end);
+			} else if(*beg == '/') {
+				found_slash = true;
 			} else {
+				if(found_slash) {
+					s << '/';
+					found_slash = false;
+				}
 				s << *beg;
 			}
 		}
@@ -1568,6 +1575,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		// The caller expects beg to point to the last character of the attribute upon return.
 		// But in this path, we're now pointing to the character AFTER that.
 		--beg;
+		if(found_slash) --beg;
 	}
 	return {attr, value};
 }
@@ -1650,7 +1658,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 	config elem;
 	for(; beg != end && *beg != '>'; ++beg) {
 		if(isspace(*beg)) continue;
-		if(*beg == '/') {
+		if(*beg == '/' && (beg + 1) != end && *(beg + 1) == '>') {
 			auto_closed = true;
 		} else if(isalnum(*beg) || *beg == '_') {
 			const auto& [key, value] = parse_attribute(beg, end, true);
