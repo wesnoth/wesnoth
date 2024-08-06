@@ -247,8 +247,8 @@ namespace implementation
 
 builder_menu_button::builder_menu_button(const config& cfg)
 	: builder_styled_widget(cfg)
-	, options_()
 	, update_label(cfg["update_label_"].to_bool(true))
+	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
 		options_.push_back(option);
