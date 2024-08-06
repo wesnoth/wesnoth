@@ -313,6 +313,12 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(!output.mandatory_child("tt").has_attribute("text"));
 
+	// Auto-closed tag can have a space before the slash
+	output = help::parse_text("<tt />");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
+	BOOST_CHECK(output.has_child("tt"));
+	BOOST_CHECK(!output.mandatory_child("tt").has_attribute("text"));
+
 	// With an attribute
 	output = help::parse_text("<tt attr='value'>some text</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
@@ -467,6 +473,19 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("def")["text"], "tags");
 	BOOST_CHECK(output.mandatory_child("text", 2).has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], " within");
+
+	// Two tags with nothing between them shouldn't have an intervening text span.
+	output = help::parse_text("<img src=help/orb-green.png align=here/><img src=help/orb-green.png align=there/>");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 2);
+	BOOST_CHECK_EQUAL(output.child_count("img"), 2);
+	BOOST_CHECK(output.mandatory_child("img").has_attribute("src"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("img")["src"], "help/orb-green.png");
+	BOOST_CHECK(output.mandatory_child("img").has_attribute("align"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("img")["align"], "here");
+	BOOST_CHECK(output.mandatory_child("img", 1).has_attribute("src"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("img", 1)["src"], "help/orb-green.png");
+	BOOST_CHECK(output.mandatory_child("img", 1).has_attribute("align"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("img", 1)["align"], "there");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
