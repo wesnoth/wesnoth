@@ -49,10 +49,11 @@ static lg::log_domain log_config("config");
 using game_config::tile_size;
 
 template<>
-struct std::hash<image::locator::value>
+struct std::hash<image::locator>
 {
-	std::size_t operator()(const image::locator::value& val) const
+	std::size_t operator()(const image::locator& loc) const
 	{
+		const image::locator::value& val = loc.val_;
 		std::size_t hash = std::hash<unsigned>{}(val.type);
 
 		if(val.type == image::locator::FILE || val.type == image::locator::SUB_FILE) {
@@ -76,26 +77,37 @@ namespace image
 template<typename T>
 class cache_type
 {
-	using Key = locator::value;
-
 public:
-	struct cache_item
+	bool in_cache(const locator& item) const
 	{
-		T item {};
-		bool loaded = false;
+#ifdef HAVE_CXX20
+		return content_.contains(item);
+#else
+		return content_.find(key) != content_.end();
+#endif
+	}
 
-		void populate(T&& value)
-		{
-			item = value;
-			loaded = true;
-		}
-	};
+	/**
+	 * Returns a const reference to cache item associated with the given key.
+	 * @throws std::out_of_range if no corresponding value is found
+	 */
+	const T& locate_in_cache(const locator& item) const
+	{
+		return content_.at(item);
+	}
 
-	cache_type() = default;
-
-	cache_item& get_element(const Key& item)
+	/**
+	 * Returns a reference to the cache item associated with the given key.
+	 * If no corresponding value is found, a default instance will be created.
+	 */
+	T& access_in_cache(const locator& item)
 	{
 		return content_[item];
+	}
+
+	void add_to_cache(const locator& item, T data)
+	{
+		content_.insert_or_assign(item, std::move(data));
 	}
 
 	void flush()
@@ -104,47 +116,23 @@ public:
 	}
 
 private:
-	std::unordered_map<Key, cache_item> content_;
+	std::unordered_map<locator, T> content_;
 };
-
-std::size_t locator::hash() const
-{
-	return std::hash<value>{}(val_);
-}
-
-template<typename T>
-bool locator::in_cache(cache_type<T>& cache) const
-{
-	return cache.get_element(val_).loaded;
-}
-
-template<typename T>
-const T& locator::locate_in_cache(cache_type<T>& cache) const
-{
-	return cache.get_element(val_).item;
-}
-
-template<typename T>
-T& locator::access_in_cache(cache_type<T>& cache) const
-{
-	return cache.get_element(val_).item;
-}
-
-template<typename T>
-utils::optional<T> locator::copy_from_cache(cache_type<T>& cache) const
-{
-	const auto& elem = cache.get_element(val_);
-	return elem.loaded ? utils::make_optional(elem.item) : utils::nullopt;
-}
-
-template<typename T>
-void locator::add_to_cache(cache_type<T>& cache, T data) const
-{
-	cache.get_element(val_).populate(std::move(data));
-}
 
 namespace
 {
+using surface_cache = cache_type<surface>;
+using texture_cache = cache_type<texture>;
+using bool_cache = cache_type<bool>;
+
+/** Type used to pair light possibilities with the corresponding lit surface. */
+using lit_surface_variants = std::map<light_string, surface>;
+using lit_texture_variants = std::map<light_string, texture>;
+
+/** Lit variants for each locator. */
+using lit_surface_cache = cache_type<lit_surface_variants>;
+using lit_texture_cache = cache_type<lit_texture_variants>;
+
 /** Definition of all image maps */
 std::array<surface_cache, NUM_TYPES> surfaces_;
 
@@ -453,7 +441,7 @@ static surface load_image_sub_file(const image::locator& loc)
 			surf = nullptr;
 		}
 
-		loc.add_to_cache(is_empty_hex_, is_empty);
+		is_empty_hex_.add_to_cache(loc, is_empty);
 	}
 
 	return surf;
@@ -641,7 +629,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 	// hex cut tiles, also check and cache if empty result
 	bool is_empty = false;
 	surface res = mask_surface(image, mask, &is_empty, i_locator.get_filename());
-	i_locator.add_to_cache(is_empty_hex_, is_empty);
+	is_empty_hex_.add_to_cache(i_locator, is_empty);
 	return res;
 }
 
@@ -691,11 +679,11 @@ surface get_surface(
 	surface_cache& imap = surfaces_[type];
 
 	// return the image if already cached
-	if(auto cached_item = i_locator.copy_from_cache(imap)) {
-		return *cached_item;
+	try {
+		return imap.locate_in_cache(i_locator);
+	} catch(const std::out_of_range&) {
+		DBG_IMG << "surface cache [" << type << "] miss: " << i_locator;
 	}
-
-	DBG_IMG << "surface cache [" << type << "] miss: " << i_locator;
 
 	// not cached, generate it
 	switch(type) {
@@ -714,7 +702,7 @@ surface get_surface(
 	}
 
 	bool_cache& skip = skipped_cache_[type];
-	if(i_locator.in_cache(skip) && i_locator.locate_in_cache(skip))
+	if(skip.in_cache(i_locator) && skip.locate_in_cache(i_locator))
 	{
 		DBG_IMG << "duplicate load: " << i_locator
 			<< " [" << type << "]"
@@ -725,9 +713,9 @@ surface get_surface(
 
 	if(skip_cache) {
 		DBG_IMG << "surface cache [" << type << "] skip: " << i_locator;
-		i_locator.add_to_cache(skip, true);
+		skip.add_to_cache(i_locator, true);
 	} else {
-		i_locator.add_to_cache(imap, res);
+		imap.add_to_cache(i_locator, res);
 	}
 
 	return res;
@@ -735,36 +723,24 @@ surface get_surface(
 
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls)
 {
-	surface res;
 	if(i_locator.is_void()) {
-		return res;
+		return {};
 	}
 
-	// select associated cache
-	lit_surface_cache* imap = &lit_surfaces_;
+	lit_surface_variants& lvar = lit_surfaces_.access_in_cache(i_locator);
 
-	// if no light variants yet, need to add an empty map
-	if(!i_locator.in_cache(*imap)) {
-		i_locator.add_to_cache(*imap, lit_surface_variants());
-	}
-
-	// need access to add it if not found
-	{ // enclose reference pointing to data stored in a changing vector
-		const lit_surface_variants& lvar = i_locator.locate_in_cache(*imap);
-		auto lvi = lvar.find(ls);
-		if(lvi != lvar.end()) {
-			return lvi->second;
-		}
+	// Check the matching list_string variants for this locator
+	if(auto lvi = lvar.find(ls); lvi != lvar.end()) {
+		return lvi->second;
 	}
 
 	DBG_IMG << "lit surface cache miss: " << i_locator;
 
 	// not cached yet, generate it
-	res = get_surface(i_locator, HEXED);
-	res = apply_light(res, ls);
+	surface res = apply_light(get_surface(i_locator, HEXED), ls);
 
 	// record the lighted surface in the corresponding variants cache
-	i_locator.access_in_cache(*imap)[ls] = res;
+	lvar[ls] = res;
 
 	return res;
 }
@@ -777,21 +753,11 @@ texture get_lighted_texture(
 		return texture();
 	}
 
-	// select associated cache
-	lit_texture_cache* imap = &lit_textures_;
+	lit_texture_variants& lvar = lit_textures_.access_in_cache(i_locator);
 
-	// if no light variants yet, need to add an empty map
-	if(!i_locator.in_cache(*imap)) {
-		i_locator.add_to_cache(*imap, lit_texture_variants());
-	}
-
-	// need access to add it if not found
-	{ // enclose reference pointing to data stored in a changing vector
-		const lit_texture_variants& lvar = i_locator.locate_in_cache(*imap);
-		auto lvi = lvar.find(ls);
-		if(lvi != lvar.end()) {
-			return lvi->second;
-		}
+	// Check the matching list_string variants for this locator
+	if(auto lvi = lvar.find(ls); lvi != lvar.end()) {
+		return lvi->second;
 	}
 
 	DBG_IMG << "lit texture cache miss: " << i_locator;
@@ -800,7 +766,7 @@ texture get_lighted_texture(
 	texture tex(get_lighted_image(i_locator, ls));
 
 	// record the lighted texture in the corresponding variants cache
-	i_locator.access_in_cache(*imap)[ls] = tex;
+	lvar[ls] = tex;
 
 	return tex;
 }
@@ -823,32 +789,32 @@ point get_size(const locator& i_locator, bool skip_cache)
 
 bool is_in_hex(const locator& i_locator)
 {
-	if(auto cached_val = i_locator.copy_from_cache(in_hex_info_)) {
-		return *cached_val;
+	try {
+		return in_hex_info_.locate_in_cache(i_locator);
+	} catch(const std::out_of_range&) {
+		bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
+		in_hex_info_.add_to_cache(i_locator, res);
+		return res;
 	}
-
-	bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
-	i_locator.add_to_cache(in_hex_info_, res);
-	return res;
 }
 
 bool is_empty_hex(const locator& i_locator)
 {
-	if(!i_locator.in_cache(is_empty_hex_)) {
+	if(!is_empty_hex_.in_cache(i_locator)) {
 		const surface surf = get_surface(i_locator, HEXED);
 		// emptiness of terrain image is checked during hex cut
 		// so, maybe in cache now, let's recheck
-		if(!i_locator.in_cache(is_empty_hex_)) {
+		if(!is_empty_hex_.in_cache(i_locator)) {
 			// should never reach here
 			// but do it manually if it happens
 			// assert(false);
 			bool is_empty = false;
 			mask_surface(surf, get_hexmask(), &is_empty);
-			i_locator.add_to_cache(is_empty_hex_, is_empty);
+			is_empty_hex_.add_to_cache(i_locator, is_empty);
 		}
 	}
 
-	return i_locator.locate_in_cache(is_empty_hex_);
+	return is_empty_hex_.locate_in_cache(i_locator);
 }
 
 bool exists(const image::locator& i_locator)
@@ -993,11 +959,11 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	//
 	// Now attempt to find a cached texture. If found, return it.
 	//
-	if(auto cached_item = i_locator.copy_from_cache(*cache)) {
-		return *cached_item;
+	try {
+		return cache->locate_in_cache(i_locator);
+	} catch(const std::out_of_range&) {
+		DBG_IMG << "texture cache [" << type << "] miss: " << i_locator;
 	}
-
-	DBG_IMG << "texture cache [" << type << "] miss: " << i_locator;
 
 	//
 	// No texture was cached. In that case, create a new one. The explicit cases require special
@@ -1018,7 +984,7 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	if(skip_cache) {
 		DBG_IMG << "texture cache [" << type << "] skip: " << i_locator;
 	} else {
-		i_locator.add_to_cache(*cache, res);
+		cache->add_to_cache(i_locator, res);
 	}
 
 	return res;
