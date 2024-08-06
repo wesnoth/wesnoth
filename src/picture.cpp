@@ -83,7 +83,7 @@ public:
 #ifdef HAVE_CXX20
 		return content_.contains(item);
 #else
-		return content_.find(key) != content_.end();
+		return content_.find(item) != content_.end();
 #endif
 	}
 
