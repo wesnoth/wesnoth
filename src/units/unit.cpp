@@ -2202,7 +2202,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
+		if(auto fab_effect = effect.optional_child("filter_ability")) {
+			remove_ability_by_attribute(*fab_effect);
+		}
 		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
+			deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
 			remove_ability_by_attribute(*fab_effect);
 		}
 	} else if(apply_to == "image_mod") {
