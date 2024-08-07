@@ -89,6 +89,8 @@ struct preferences_list_defines
 	static constexpr const char* const editor_draw_terrain_codes = "editor_draw_terrain_codes";
 	/** list of recently accessed files in the editor */
 	static constexpr const char* const editor_recent_files = "editor_recent_files";
+	/** whether to display the active tool information help text at the bottom/top of the editor */
+	static constexpr const char* const editor_help_text_shown = "editor_help_text_shown";
 	/** whether to automatically start in planning mode in-game */
 	static constexpr const char* const enable_planning_mode_on_start = "enable_planning_mode_on_start";
 	/** list of terrain seen so far */
