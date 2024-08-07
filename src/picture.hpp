@@ -47,10 +47,6 @@ struct point;
  * be expected to alter the output (e.g. Time of Day-tinted images).
  */
 namespace image {
-
-template<typename T>
-class cache_type;
-
 /**
  * Generic locator abstracting the location of an image.
  *
@@ -108,21 +104,6 @@ public:
 	 */
 	bool file_exists() const;
 
-	template<typename T>
-	bool in_cache(cache_type<T>& cache) const;
-
-	template<typename T>
-	T& access_in_cache(cache_type<T>& cache) const;
-
-	template<typename T>
-	const T& locate_in_cache(cache_type<T>& cache) const;
-
-	template<typename T>
-	utils::optional<T> copy_from_cache(cache_type<T>& cache) const;
-
-	template<typename T>
-	void add_to_cache(cache_type<T>& cache, T data) const;
-
 private:
 	struct value
 	{
@@ -147,20 +128,11 @@ private:
 	value val_;
 
 public:
-	friend struct std::hash<value>;
-
-	template<typename T>
-	friend class cache_type;
-
-	std::size_t hash() const;
+	friend struct std::hash<locator>;
 };
 
 // write a readable representation of a locator, mostly for debugging
 std::ostream& operator<<(std::ostream&, const locator&);
-
-typedef cache_type<surface> surface_cache;
-typedef cache_type<texture> texture_cache;
-typedef cache_type<bool> bool_cache;
 
 /**
  * Type used to store color information of central and adjacent hexes.
@@ -175,14 +147,6 @@ typedef cache_type<bool> bool_cache;
  * 13-19: convex half-corners 2
  */
 typedef std::basic_string<signed char> light_string;
-
-/** Type used to pair light possibilities with the corresponding lit surface. */
-typedef std::map<light_string, surface> lit_surface_variants;
-typedef std::map<light_string, texture> lit_texture_variants;
-
-/** Lit variants for each locator. */
-typedef cache_type<lit_surface_variants> lit_surface_cache;
-typedef cache_type<lit_texture_variants> lit_texture_cache;
 
 /**
  * Returns the light_string for one light operation.
