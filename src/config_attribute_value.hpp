@@ -155,10 +155,6 @@ public:
 
 	// Comparisons:
 	bool operator==(const config_attribute_value &other) const;
-	bool operator!=(const config_attribute_value &other) const
-	{
-		return !operator==(other);
-	}
 
 	bool operator==(bool comp) const
 	{
@@ -178,18 +174,6 @@ public:
 		} else {
 			return utils::holds_alternative<T>(value_) && T(*this) == comp;
 		}
-	}
-
-	template<typename T>
-	bool friend operator!=(const config_attribute_value& val, const T& str)
-	{
-		return !val.operator==(str);
-	}
-
-	template<typename T>
-	bool friend operator!=(const T &str, const config_attribute_value& val)
-	{
-		return !val.operator==(str);
 	}
 
 	// Streaming:
