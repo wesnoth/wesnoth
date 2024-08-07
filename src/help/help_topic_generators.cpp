@@ -185,7 +185,7 @@ std::string terrain_topic_generator::operator()() const {
 	}
 
 	if(!special_notes.empty()) {
-		ss << "\n\n" << _("<header>Special Notes</header>") << "\n";
+		ss << "\n\n" << _("<header>Special Notes</header>") << "\n\n";
 		for(const auto& note : special_notes) {
 			ss << font::unicode_bullet << " " << note << '\n';
 		}
