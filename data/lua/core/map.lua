@@ -274,6 +274,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		---@type location
 		local loc, n = wesnoth.map.read_location(x, y)
 		if n == 0 then error('Missing or invalid coordinate') end
+		---@diagnostic disable-next-line: return-type-mismatch
 		return setmetatable({x = loc.x, y = loc.y}, hex_mt)
 	end
 
@@ -282,7 +283,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param cfg WML
 	---@param ref_unit? unit
 	---@return terrain_hex[]
-	function wesnoth.map.find(cfg, ref_unit)
+	function wesnoth.map.find(cfg, ref_unit) ---@diagnostic disable-line: duplicate-set-field
 		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])

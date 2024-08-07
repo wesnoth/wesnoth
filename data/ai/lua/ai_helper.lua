@@ -252,7 +252,7 @@ end
 ---@param y integer
 ---@param move_type string
 ---@return ai_result
-function ai_helper.checked_move_core(ai, unit, x, y, move_type)
+local function checked_move_core(ai, unit, x, y, move_type)
     local check = ai.check_move(unit, x, y)
 
     if (not check.ok) then
@@ -278,7 +278,7 @@ end
 ---@param y integer
 ---@return ai_result
 function ai_helper.checked_move_full(ai, unit, x, y)
-    return ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
+    return checked_move_core(ai, unit, x, y, 'ai.move_full')
 end
 
 ---Check if a move is viable, and execute it if it is.
@@ -289,7 +289,7 @@ end
 ---@param y integer
 ---@return ai_result
 function ai_helper.checked_move(ai, unit, x, y)
-    return ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
+    return checked_move_core(ai, unit, x, y, 'ai.move')
 end
 
 ---Check if a recruit is viable, and execute it if it is.
@@ -602,11 +602,10 @@ ai_helper.split = wesnoth.deprecate_api('ai_helper.split', 'stringx.split', 3, '
 ---@return integer
 ---@return integer
 function ai_helper.get_LS_xy(index)
-    local tmp_set = LS.create()
-    tmp_set.values[index] = 1
+    local tmp_set = LS.of_raw{[index] = true}
     local xy = tmp_set:to_pairs()[1]
 
-    return xy[1], xy[2]
+    return xy.x, xy.y
 end
 
 --------- Location, position or hex related helper functions ----------
@@ -1156,6 +1155,8 @@ function ai_helper.get_units_with_moves(filter, exclude_guardians)
         exclude_status = exclude_status .. ',guardian'
     end
     return wesnoth.units.find_on_map {
+        -- TODO: Should this also check for a case where the unit can't move because of terrain?
+        -- That is, all adjacent terrains have a movement cost higher than the unit's moves left.
         wml.tag["and"] { formula = "moves > 0" },
         wml.tag["not"] { status = exclude_status },
         wml.tag["and"] ( filter )
@@ -2088,6 +2089,7 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
             x, y = x.x, x.y
         end
     end
+    -- TODO: Use read_location above (and in many other places as well)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
@@ -2306,7 +2308,7 @@ end
 ---@param combos table?
 ---@param attacks ai_attack[]
 ---@return table<integer, integer>[]
-function add_next_attack_combo_level(combos, attacks)
+local function add_next_attack_combo_level(combos, attacks)
     -- Important: function needs to make a copy of the input array, otherwise original is changed
 
     -- Set up the array, if this is the first recursion level
@@ -2345,7 +2347,7 @@ function add_next_attack_combo_level(combos, attacks)
 
     local combos_next_level = {}
     if combos_this_level[1] then  -- If moves were found for this level, also find those for the next level
-        combos_next_level = ai_helper.add_next_attack_combo_level(combos_this_level, attacks)
+        combos_next_level = add_next_attack_combo_level(combos_this_level, attacks)
     end
 
     -- Finally, combine this level and next level combos
@@ -2374,7 +2376,7 @@ function ai_helper.get_attack_combos_full(units, enemy, cfg)
     if (not attacks[1]) then return {} end
 
     -- This recursive function does all the work:
-    local combos = ai_helper.add_next_attack_combo_level(nil, attacks)
+    local combos = add_next_attack_combo_level(nil, attacks)
 
     return combos
 end
@@ -2535,6 +2537,7 @@ function ai_helper.get_unit_time_of_day_bonus(alignment, lawful_bonus)
         elseif (alignment == 'chaotic') then
             multiplier = (1 - lawful_bonus / 100.)
         elseif (alignment == 'liminal') then
+            -- TODO: I think this is wrong?
             multiplier = (1 - math.abs(lawful_bonus) / 100.)
         end
     end

@@ -1,4 +1,5 @@
 --[========[Config Manipulation Functions]========]
+---@diagnostic disable: deprecated
 print("Loading WML module...")
 
 local function ensure_config(cfg)
@@ -187,10 +188,10 @@ wml.tag = setmetatable({}, create_tag_mt)
 ---@param cfg WML
 ---@return WMLTable
 function wml.literal(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__literal
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__literal
 	end
 end
 
@@ -200,10 +201,10 @@ end
 ---@param cfg WML
 ---@return WMLTable
 function wml.parsed(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__parsed
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__parsed
 	end
 end
 
@@ -213,10 +214,10 @@ end
 ---@param cfg WML
 ---@return WMLTable
 function wml.shallow_literal(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__shallow_literal
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__shallow_literal
 	end
 end
 
@@ -227,10 +228,10 @@ end
 ---@param cfg WML
 ---@return WMLTable
 function wml.shallow_parsed(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__shallow_parsed
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__shallow_parsed
 	end
 end
 
