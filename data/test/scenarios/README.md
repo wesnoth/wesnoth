@@ -51,3 +51,7 @@ they may expect a status that is neither `PASS` nor `FAIL`.
 
 Names containing `break` or `error` might be for tests expected to `PASS`. Some of these are testing
 loops, or testing error-handling that is expected to handle the error.
+
+Names containing `_bug_` or ending `_bug` are reserved for tests where consensus is that the
+behavior should change in the development branch, however that it's better to accept the current
+behavior in the stable branch than to risk Out Of Sync errors.
