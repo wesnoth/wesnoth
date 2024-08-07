@@ -478,21 +478,19 @@ static surface load_image_data_uri(const image::locator& loc)
 }
 
 // small utility function to store an int from (-256,254) to an signed char
-static signed char col_to_uchar(int i)
+static int8_t col_to_uchar(int i)
 {
-	return static_cast<signed char>(std::min<int>(127, std::max<int>(-128, i / 2)));
+	return static_cast<int8_t>(std::clamp(i / 2, -128, 127));
 }
 
 light_string get_light_string(int op, int r, int g, int b)
 {
-	light_string ls;
-	ls.reserve(4);
-	ls.push_back(op);
-	ls.push_back(col_to_uchar(r));
-	ls.push_back(col_to_uchar(g));
-	ls.push_back(col_to_uchar(b));
-
-	return ls;
+	return {
+		static_cast<int8_t>(op),
+		col_to_uchar(r),
+		col_to_uchar(g),
+		col_to_uchar(b),
+	};
 }
 
 static surface apply_light(surface surf, const light_string& ls)
@@ -551,9 +549,9 @@ static surface apply_light(surface surf, const light_string& ls)
 
 bool locator::file_exists() const
 {
-	return val_.is_data_uri
-		? parsed_data_URI{val_.filename}.good
-		: filesystem::get_binary_file_location("images", val_.filename).has_value();
+	return is_data_uri()
+		? parsed_data_URI{get_filename()}.good
+		: filesystem::get_binary_file_location("images", get_filename()).has_value();
 }
 
 static surface load_from_disk(const locator& loc)
@@ -779,8 +777,7 @@ surface get_hexmask()
 
 point get_size(const locator& i_locator, bool skip_cache)
 {
-	const surface s(get_surface(i_locator, UNSCALED, skip_cache));
-	if (s != nullptr) {
+	if(const surface s = get_surface(i_locator, UNSCALED, skip_cache)) {
 		return {s->w, s->h};
 	} else {
 		return {0, 0};
@@ -819,9 +816,7 @@ bool is_empty_hex(const locator& i_locator)
 
 bool exists(const image::locator& i_locator)
 {
-	typedef image::locator loc;
-	loc::type type = i_locator.get_type();
-	if(type != loc::FILE && type != loc::SUB_FILE) {
+	if(i_locator.is_void()) {
 		return false;
 	}
 
@@ -831,11 +826,7 @@ bool exists(const image::locator& i_locator)
 
 	bool& cache = iter->second;
 	if(success) {
-		if(i_locator.is_data_uri()) {
-			cache = parsed_data_URI{i_locator.get_filename()}.good;
-		} else {
-			cache = filesystem::get_binary_file_location("images", i_locator.get_filename()).has_value();
-		}
+		cache = i_locator.file_exists();
 	}
 
 	return cache;
@@ -870,9 +861,7 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 
 void precache_file_existence(const std::string& subdir)
 {
-	const std::vector<std::string>& paths = filesystem::get_binary_paths("images");
-
-	for(const auto& p : paths) {
+	for(const auto& p : filesystem::get_binary_paths("images")) {
 		precache_file_existence_internal(p, subdir);
 	}
 }
