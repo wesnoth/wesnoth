@@ -1563,6 +1563,9 @@ void console_handler::do_droid()
 				psc->set_player_type_changed();
 			}
 		}
+	} else {
+		command_failed(VGETTEXT("Side '$side' is not a human or AI player.", symbols));
+		return;
 	}
 	menu_handler_.textbox_info_.close();
 }
