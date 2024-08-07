@@ -40,7 +40,7 @@
 static lg::log_domain log_rich_label("gui/widget/rich_label");
 #define DBG_GUI_RL LOG_STREAM(debug, log_rich_label)
 
-#define DEBUG_LINES false
+#define DEBUG_LINES true
 
 namespace gui2
 {
@@ -296,7 +296,7 @@ size_t rich_label::get_split_location(std::string text, const point& pos) {
 
 void rich_label::set_topic(const help::topic* topic)
 {
-	set_parsed_text(topic->text.parsed_text());
+	text_dom_ = get_parsed_text(topic->text.parsed_text());
 }
 
 void rich_label::set_label(const t_string& text)
@@ -304,21 +304,22 @@ void rich_label::set_label(const t_string& text)
 	unparsed_text_ = text;
 	help::topic_text marked_up_text(text);
 	const config& parsed_text = marked_up_text.parsed_text();
-	set_parsed_text(parsed_text);
+	text_dom_ = get_parsed_text(parsed_text);
 }
 
-void rich_label::set_parsed_text(const config& parsed_text)
+config rich_label::get_parsed_text(const config& parsed_text)
 {
 	// Initialization
 	w_ = (w_ == 0) ? styled_widget::calculate_best_size().x : w_;
 	DBG_GUI_RL << "Width: " << w_;
 	x_ = 0;
 	h_ = 0;
-	text_dom_.clear();
+	config text_dom;
 	links_.clear();
 
 	config* curr_item = nullptr;
 
+	bool is_text = false;
 	bool is_image = false;
 	bool is_float = false;
 	bool wrap_mode = false;
@@ -357,18 +358,19 @@ void rich_label::set_parsed_text(const config& parsed_text)
 				}
 				DBG_GUI_RL << "floating: " << wrap_mode << ", " << is_float;
 
-				curr_item = &(text_dom_.add_child("image"));
+				curr_item = &(text_dom.add_child("image"));
 				add_image(*curr_item, name, align, is_image, is_float, is_curr_float, img_size, float_size);
 
 				DBG_GUI_RL << "image: src=" << name << ", size=" << get_image_size(*curr_item);
 
 				is_image = true;
 				is_float = is_curr_float;
+				is_text = false;
 				new_text_block = true;
 
 			} else if(tag.key == "table") {
 				if (curr_item == nullptr) {
-					curr_item = &(text_dom_.add_child("text"));
+					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
 					new_text_block = false;
 				}
@@ -395,7 +397,7 @@ void rich_label::set_parsed_text(const config& parsed_text)
 
 				// DEBUG: debug lines for table
 				#if DEBUG_LINES
-				config& link_rect_cfg = text_dom_.add_child("line");
+				config& link_rect_cfg = text_dom.add_child("line");
 				link_rect_cfg["x1"] = 0;
 				link_rect_cfg["y1"] = prev_blk_height_;
 				link_rect_cfg["x2"] = w_;
@@ -403,6 +405,7 @@ void rich_label::set_parsed_text(const config& parsed_text)
 				link_rect_cfg["color"] = "255, 0, 0, 255";
 				#endif
 
+				is_text = false;
 				new_text_block = true;
 				is_image = false;
 
@@ -411,7 +414,7 @@ void rich_label::set_parsed_text(const config& parsed_text)
 
 			} else if(tag.key == "jump") {
 				if (curr_item == nullptr) {
-					curr_item = &(text_dom_.add_child("text"));
+					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
 					new_text_block = false;
 				}
@@ -437,9 +440,11 @@ void rich_label::set_parsed_text(const config& parsed_text)
 					is_image = false;
 				}
 
+				is_text = false;
+
 			} else if(tag.key == "break" || tag.key == "br") {
 				if (curr_item == nullptr) {
-					curr_item = &(text_dom_.add_child("text"));
+					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
 					new_text_block = false;
 				}
@@ -462,7 +467,7 @@ void rich_label::set_parsed_text(const config& parsed_text)
 
 					// DEBUG: debug lines for table
 					#if DEBUG_LINES
-					config& link_rect_cfg = text_dom_.add_child("line");
+					config& link_rect_cfg = text_dom.add_child("line");
 					link_rect_cfg["x1"] = 0;
 					link_rect_cfg["y1"] = prev_blk_height_;
 					link_rect_cfg["x2"] = w_;
@@ -483,10 +488,11 @@ void rich_label::set_parsed_text(const config& parsed_text)
 				if (!is_image) {
 					new_text_block = true;
 				}
+				is_text = false;
 
 			} else if(tag.key == "endtable") {
 				if (curr_item == nullptr) {
-					curr_item = &(text_dom_.add_child("text"));
+					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
 					new_text_block = false;
 				}
@@ -495,6 +501,7 @@ void rich_label::set_parsed_text(const config& parsed_text)
 				col_width = 0;
 				in_table = false;
 				is_image = false;
+				is_text = false;
 				row_y = 0;
 
 			} else {
@@ -517,13 +524,18 @@ void rich_label::set_parsed_text(const config& parsed_text)
 						txt_height_ = 0;
 					}
 
-					curr_item = &(text_dom_.add_child("text"));
+					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
 					new_text_block = false;
 				}
 
 				// }---------- TEXT TAGS -----------{
 				int tmp_h = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_)).y;
+
+				if (is_text && tag.key == "text") {
+					add_text_with_attribute(*curr_item, "\n\n");
+				}
+				is_text = false;
 
 				if(tag.key == "ref") {
 
@@ -560,16 +572,13 @@ void rich_label::set_parsed_text(const config& parsed_text)
 					append_if_not_empty(&((*curr_item)["attr_end"]), ",");
 					append_if_not_empty(&((*curr_item)["attr_data"]), ",");
 
-					std::stringstream header_text;
-					// Header starts in a new line
-					header_text << "\n" + line + "\n";
 					std::vector<std::string> attrs = {"face", "color", "size"};
 					std::vector<std::string> attr_data;
 					attr_data.push_back("serif");
 					attr_data.push_back(font::string_to_color("white").to_hex_string());
 					attr_data.push_back(std::to_string(font::SIZE_TITLE - 2));
 
-					add_text_with_attributes((*curr_item), header_text.str(), attrs, attr_data);
+					add_text_with_attributes((*curr_item), line, attrs, attr_data);
 
 					is_image = false;
 
@@ -609,6 +618,8 @@ void rich_label::set_parsed_text(const config& parsed_text)
 					point text_size = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_));
 					text_size.x -= x_;
 
+					is_text = true;
+
 					if (wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 						DBG_GUI_RL << "wrap start";
 
@@ -636,7 +647,7 @@ void rich_label::set_parsed_text(const config& parsed_text)
 						wrap_mode = false;
 
 						// rest of the text
-						curr_item = &(text_dom_.add_child("text"));
+						curr_item = &(text_dom.add_child("text"));
 						default_text_config(curr_item);
 						tmp_h = get_text_size(*curr_item, w_).y;
 						add_text_with_attribute(*curr_item, *removed_part);
@@ -684,17 +695,17 @@ void rich_label::set_parsed_text(const config& parsed_text)
 	}
 
 	// reset all canvas variables to zero, otherwise they grow infinitely
-	config& break_cfg = text_dom_.add_child("text");
+	config& break_cfg = text_dom.add_child("text");
 	default_text_config(&break_cfg, " ");
 	break_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0), set_var('img_x', 0), set_var('img_y', 0), set_var('ww', 0), set_var('tw', 0)])";
 
-	DBG_GUI_RL << text_dom_.debug();
+	DBG_GUI_RL << text_dom.debug();
 	DBG_GUI_RL << "Height: " << h_;
 
 	// DEBUG: draw boxes around links
 	#if DEBUG_LINES
 	for (const auto& entry : links_) {
-		config& link_rect_cfg = text_dom_.add_child("rectangle");
+		config& link_rect_cfg = text_dom.add_child("rectangle");
 		link_rect_cfg["x"] = entry.first.x;
 		link_rect_cfg["y"] = entry.first.y;
 		link_rect_cfg["w"] = entry.first.w;
@@ -703,6 +714,8 @@ void rich_label::set_parsed_text(const config& parsed_text)
 		link_rect_cfg["border_color"] = "255, 180, 0, 255";
 	}
 	#endif
+
+	return text_dom;
 } // function ends
 
 void rich_label::default_text_config(config* txt_ptr, t_string text) {

@@ -127,7 +127,7 @@ public:
 	void set_topic(const help::topic* topic);
 
 	// Show a help config
-	void set_parsed_text(const config& parsed_text);
+	config get_parsed_text(const config& parsed_text);
 
 	// Attaches a callback function that will be called when a link is clicked
 	void register_link_callback(std::function<void(std::string)> link_handler)
