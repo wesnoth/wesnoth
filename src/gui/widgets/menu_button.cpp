@@ -144,6 +144,10 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	// If a button has a retval do the default handling.
 	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
+	// If we're not using the selected value to update the button label, we don't want the ddm to start with
+	// an item selected either.
+	droplist.set_start_selected(update_label_);
+
 	if(droplist.show()) {
 		const int selected = droplist.selected_item();
 
