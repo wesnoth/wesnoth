@@ -768,7 +768,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	bool inserted;
 	player_iterator new_player;
 	std::tie(new_player, inserted) = player_connections_.insert(player_connections::value_type(socket, player_data));
-	assert(inserted);
+	assert(inserted && "unexpected duplicate username");
 
 	simple_wml::document join_lobby_response;
 	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
