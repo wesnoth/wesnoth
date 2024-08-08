@@ -212,6 +212,8 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, scope_editor, HKCAT_TOOLS, "" },
 	{ HOTKEY_EDITOR_UNIT_FACING, "menu-unit-facing", "", true, scope_editor, HKCAT_PLACEHOLDER, "" },
 
+	{ HOTKEY_EDITOR_HELP_TEXT_SHOWN, "editor-help-text-shown", N_("Show Tool Information"), false, scope_editor, HKCAT_TOOLS, "" },
+
 	{ HOTKEY_MINIMAP_CODING_UNIT, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, scope_game | scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_MINIMAP_CODING_TERRAIN, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, scope_game | scope_editor, HKCAT_MAP, "" },
 
