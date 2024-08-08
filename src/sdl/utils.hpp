@@ -254,7 +254,7 @@ surface rotate_90_surface(const surface &surf, bool clockwise);
 surface flip_surface(const surface &surf);
 surface flop_surface(const surface &surf);
 
-surface get_non_transparent_portion(const surface &surf);
+rect get_non_transparent_portion(const surface &surf);
 
 /**
  * Helper methods for setting/getting a single pixel in an image.
@@ -268,4 +268,3 @@ surface get_non_transparent_portion(const surface &surf);
  */
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
-

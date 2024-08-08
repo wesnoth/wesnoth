@@ -197,7 +197,17 @@ surface gs_modification::operator()(const surface& src) const
 
 surface crop_transparency_modification::operator()(const surface& src) const
 {
-	return get_non_transparent_portion(src);
+	rect src_rect = get_non_transparent_portion(src);
+	if(src_rect.w == src->w && src_rect.h == src->h) {
+		return src;
+	}
+
+	if(surface cropped = get_surface_portion(src, src_rect)) {
+		return cropped;
+	} else {
+		ERR_DP << "Failed to either crop or scale the surface";
+		return nullptr;
+	}
 }
 
 surface bw_modification::operator()(const surface& src) const
