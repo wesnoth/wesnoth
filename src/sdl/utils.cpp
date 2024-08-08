@@ -1833,33 +1833,23 @@ surface get_surface_portion(const surface &src, SDL_Rect &area)
 	return dst;
 }
 
-namespace {
-
-struct not_alpha
+namespace
 {
-	not_alpha() {}
-
-	// we assume neutral format
-	bool operator()(uint32_t pixel) const {
-		uint8_t alpha = pixel >> 24;
-		return alpha != 0x00;
+constexpr bool not_alpha(uint32_t pixel)
+{
+	return (pixel >> 24) != 0x00;
 	}
-};
-
 }
-surface get_non_transparent_portion(const surface &surf)
+
+rect get_non_transparent_portion(const surface &surf)
 {
-	if(surf == nullptr)
-		return nullptr;
+	rect res {0,0,0,0};
 
 	surface nsurf = surf.clone();
 	if(nsurf == nullptr) {
 		PLAIN_LOG << "failed to make neutral surface";
-		return nullptr;
+		return res;
 	}
-
-	SDL_Rect res {0,0,0,0};
-	const not_alpha calc;
 
 	surface_lock lock(nsurf);
 	const uint32_t* const pixels = lock.pixels();
@@ -1869,7 +1859,7 @@ surface get_non_transparent_portion(const surface &surf)
 		const uint32_t* const start_row = pixels + n*nsurf->w;
 		const uint32_t* const end_row = start_row + nsurf->w;
 
-		if(std::find_if(start_row,end_row,calc) != end_row)
+		if(std::find_if(start_row,end_row,not_alpha) != end_row)
 			break;
 	}
 
@@ -1879,7 +1869,7 @@ surface get_non_transparent_portion(const surface &surf)
 		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*surf->w;
 		const uint32_t* const end_row = start_row + nsurf->w;
 
-		if(std::find_if(start_row,end_row,calc) != end_row)
+		if(std::find_if(start_row,end_row,not_alpha) != end_row)
 			break;
 	}
 
@@ -1892,7 +1882,7 @@ surface get_non_transparent_portion(const surface &surf)
 		int y;
 		for(y = 0; y != nsurf->h; ++y) {
 			const uint32_t pixel = pixels[y*nsurf->w + n];
-			if(calc(pixel))
+			if(not_alpha(pixel))
 				break;
 		}
 
@@ -1906,7 +1896,7 @@ surface get_non_transparent_portion(const surface &surf)
 		int y;
 		for(y = 0; y != nsurf->h; ++y) {
 			const uint32_t pixel = pixels[y*nsurf->w + surf->w - n - 1];
-			if(calc(pixel))
+			if(not_alpha(pixel))
 				break;
 		}
 
@@ -1915,15 +1905,5 @@ surface get_non_transparent_portion(const surface &surf)
 	}
 
 	res.w = nsurf->w - res.x - n;
-
-	surface cropped = get_surface_portion(nsurf, res);
-	if(cropped && res.w > 0 && res.h > 0) {
-		surface scaled = scale_surface(cropped, res.w, res.h);
-		if(scaled) {
-			return scaled;
-		}
-	}
-
-	ERR_DP << "Failed to either crop or scale the surface";
-	return nsurf;
+	return res;
 }
