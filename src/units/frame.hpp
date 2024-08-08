@@ -23,6 +23,7 @@
 #include "units/frame_private.hpp"
 
 #include "color.hpp"
+#include "drawing_layer.hpp"
 #include "halo.hpp"
 #include "picture.hpp"
 #include "utils/optional_fwd.hpp"
@@ -30,6 +31,11 @@
 #include <boost/logic/tribool.hpp>
 
 class config;
+
+constexpr int get_abs_frame_layer(drawing_layer layer)
+{
+	return int(layer) - int(drawing_layer::unit_first);
+}
 
 /** All parameters from a frame at a given instant */
 struct frame_parameters
