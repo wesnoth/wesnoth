@@ -1220,10 +1220,10 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 namespace
 {
 constexpr std::array layer_groups {
-	display::LAYER_TERRAIN_BG,
-	display::LAYER_UNIT_FIRST,
-	display::LAYER_UNIT_MOVE_DEFAULT,
-	display::LAYER_REACHMAP // Make sure the movement doesn't show above fog and reachmap.
+	drawing_layer::terrain_bg,
+	drawing_layer::unit_first,
+	drawing_layer::unit_move_default,
+	drawing_layer::reachmap // Make sure the movement doesn't show above fog and reachmap.
 };
 
 enum {
@@ -1257,7 +1257,7 @@ enum {
 	SHIFT_LAYER_GROUP    = BITS_FOR_Y        + SHIFT_Y
 };
 
-uint32_t generate_hex_key(const display::drawing_layer layer, const map_location& loc)
+uint32_t generate_hex_key(const drawing_layer layer, const map_location& loc)
 {
 	// Start with the index of last group entry...
 	uint32_t group_i = layer_groups.size() - 1;
@@ -2685,7 +2685,7 @@ void display::draw_hex(const map_location& loc)
 		get_terrain_images(loc, tod.id, BACKGROUND); // updates terrain_image_vector_
 		num_images_bg = terrain_image_vector_.size();
 
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
+		drawing_buffer_add(drawing_layer::terrain_bg, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -2694,7 +2694,7 @@ void display::draw_hex(const map_location& loc)
 		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
 		num_images_fg = terrain_image_vector_.size();
 
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
+		drawing_buffer_add(drawing_layer::terrain_fg, loc, [images = std::exchange(terrain_image_vector_, {})](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -2705,10 +2705,10 @@ void display::draw_hex(const map_location& loc)
 			static const image::locator grid_top{game_config::images::grid_top};
 			static const image::locator grid_bottom{game_config::images::grid_bottom};
 
-			drawing_buffer_add(LAYER_GRID_TOP, loc,
+			drawing_buffer_add(drawing_layer::grid_top, loc,
 				[tex = image::get_texture(grid_top, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 
-			drawing_buffer_add(LAYER_GRID_BOTTOM, loc,
+			drawing_buffer_add(drawing_layer::grid_bottom, loc,
 				[tex = image::get_texture(grid_bottom, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 		}
 	}
@@ -2741,7 +2741,7 @@ void display::draw_hex(const map_location& loc)
 							? image::get_lighted_texture(ipf, lt)
 							: image::get_texture(ipf, image::HEXED);
 
-						drawing_buffer_add(LAYER_TERRAIN_BG, loc, [=](const rect& dest) mutable {
+						drawing_buffer_add(drawing_layer::terrain_bg, loc, [=](const rect& dest) mutable {
 							// Adjust submerge appropriately
 							const t_translation::terrain_code terrain = get_map().get_terrain(loc);
 							const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
@@ -2767,14 +2767,14 @@ void display::draw_hex(const map_location& loc)
 
 	// village-control flags.
 	if(!is_shrouded) {
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, [tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
+		drawing_buffer_add(drawing_layer::terrain_bg, loc, [tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 || tod_hex_mask2) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, [=](const rect& dest) mutable {
+		drawing_buffer_add(drawing_layer::terrain_fg, loc, [=](const rect& dest) mutable {
 			tod_hex_mask1.set_alpha_mod(tod_hex_alpha1);
 			draw::blit(tod_hex_mask1, dest);
 
@@ -2782,7 +2782,7 @@ void display::draw_hex(const map_location& loc)
 			draw::blit(tod_hex_mask2, dest);
 		});
 	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc,
+		drawing_buffer_add(drawing_layer::terrain_fg, loc,
 			[tex = image::get_texture(tod_hex_mask, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
@@ -2798,19 +2798,19 @@ void display::draw_hex(const map_location& loc)
 
 	if(is_shrouded) {
 		// We apply void also on off-map tiles to shroud the half-hexes too
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc,
+		drawing_buffer_add(drawing_layer::fog_shroud, loc,
 			[tex = image::get_texture(get_variant(shroud_images_, loc), image::TOD_COLORED)](const rect& dest) {
 				draw::blit(tex, dest);
 			});
 	} else if(fogged(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc,
+		drawing_buffer_add(drawing_layer::fog_shroud, loc,
 			[tex = image::get_texture(get_variant(fog_images_, loc), image::TOD_COLORED)](const rect& dest) {
 				draw::blit(tex, dest);
 			});
 	}
 
 	if(!is_shrouded) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, [images = get_fog_shroud_images(loc, image::TOD_COLORED)](const rect& dest) {
+		drawing_buffer_add(drawing_layer::fog_shroud, loc, [images = get_fog_shroud_images(loc, image::TOD_COLORED)](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -2818,7 +2818,7 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(debug_flag_set(DEBUG_FOREGROUND)) {
-		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc,
+		drawing_buffer_add(drawing_layer::unit_default, loc,
 			[tex = image::get_texture(image::locator{"terrain/foreground.png"}, image::TOD_COLORED)](const rect& dest) {
 				draw::blit(tex, dest);
 			});
@@ -2862,7 +2862,7 @@ void display::draw_hex(const map_location& loc)
 		renderer.set_maximum_height(-1, false);
 		renderer.set_maximum_width(-1);
 
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, [tex = renderer.render_and_get_texture()](const rect& dest) {
+		drawing_buffer_add(drawing_layer::fog_shroud, loc, [tex = renderer.render_and_get_texture()](const rect& dest) {
 			const rect text_dest {
 				(dest.x + dest.w / 2) - (tex.w() / 2),
 				(dest.y + dest.h / 2) - (tex.h() / 2),

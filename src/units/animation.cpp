@@ -545,7 +545,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.push_back(base);
 		animations.back().event_ = { "movement" };
 		animations.back().unit_anim_.override(0, 200,
-			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
+			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
 
 		animations.push_back(base);
 		animations.back().event_ = { "defend" };
@@ -559,7 +559,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
-		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
 		animations.back().primary_attack_filter_.emplace_back("range", "melee");
 
 		animations.push_back(base);
@@ -606,7 +606,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 static void add_simple_anim(std::vector<unit_animation>& animations,
 	const config& cfg, char const* tag_name, char const* apply_to,
-	display::drawing_layer layer = display::LAYER_UNIT_DEFAULT,
+	drawing_layer layer = drawing_layer::unit_default,
 	bool offscreen = true)
 {
 	for(const animation_branch& ab : prepare_animation(cfg, tag_name)) {
@@ -619,7 +619,7 @@ static void add_simple_anim(std::vector<unit_animation>& animations,
 		}
 
 		config::attribute_value& v = anim["layer"];
-		if(v.empty()) v = layer - display::LAYER_UNIT_FIRST;
+		if(v.empty()) v = get_abs_frame_layer(layer);
 
 		animations.emplace_back(anim);
 	}
@@ -631,16 +631,16 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.emplace_back(ab.merge());
 	}
 
-	const int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
-	const int move_layer    = display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST;
-	const int missile_layer = display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST;
+	constexpr int default_layer = get_abs_frame_layer(drawing_layer::unit_default);
+	constexpr int move_layer    = get_abs_frame_layer(drawing_layer::unit_move_default);
+	constexpr int missile_layer = get_abs_frame_layer(drawing_layer::unit_missile_default);
 
 	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
 	add_simple_anim(animations, cfg, "leading_anim", "leading");
 	add_simple_anim(animations, cfg, "teaching_anim", "teaching");
 	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
 	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
-	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
+	add_simple_anim(animations, cfg, "idle_anim", "idling", drawing_layer::unit_default, false);
 	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
 	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
@@ -736,7 +736,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
 	}
 
-	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", drawing_layer::unit_move_default);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "movement_anim")) {
 		config anim = ab.merge();
@@ -753,7 +753,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.emplace_back(anim);
 	}
 
-	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", drawing_layer::unit_move_default);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "defend")) {
 		config anim = ab.merge();
@@ -799,8 +799,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 	}
 
-	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
-	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", drawing_layer::unit_move_default);
+	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", drawing_layer::unit_move_default);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "attack_anim")) {
 		config anim = ab.merge();
