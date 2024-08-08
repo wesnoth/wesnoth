@@ -202,12 +202,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 			}
 		}
 
-		std::pair<std::string, std::string> types = weapon->damage_type();
-		std::string type_bis = types.second;
-		if (!type_bis.empty()) {
-			type_bis = ", " + string_table["type_" + type_bis];
-		}
-		ss << string_table["type_" + types.first] + type_bis;
+		ss << string_table["type_" + weapon->effective_damage_type().first];
 
 		set_label_helper("resis_label", ss.str());
 

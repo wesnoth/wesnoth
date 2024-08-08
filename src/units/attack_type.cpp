@@ -111,6 +111,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::string& filter_attacks_used = filter["attacks_used"];
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
+	const std::set<std::string> filter_original_type = utils::split_set(filter["original_type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
 	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
 	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
@@ -143,6 +144,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
 
+	if ( !filter_original_type.empty() && filter_original_type.count(attack.type()) == 0 )
+		return false;
+
 	if (!filter_type.empty()){
 		//if special is type "damage_type" then check attack.type() only for don't have infinite recursion by calling damage_type() below.
 		if(tag_name == "damage_type"){
@@ -150,9 +154,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 				return false;
 			}
 		} else {
-			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+			if (filter_type.count(attack.effective_damage_type().first) == 0){
 				return false;
 			}
 		}
