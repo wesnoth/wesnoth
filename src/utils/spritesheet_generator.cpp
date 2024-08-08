@@ -41,10 +41,10 @@ namespace
 struct sheet_element
 {
 	explicit sheet_element(const std::filesystem::path& p)
-		: surf{IMG_Load_RW(filesystem::make_read_RWops(p.string()).release(), true)}
-		, filename{p.filename().string()}
-		, src{get_non_transparent_portion(surf)}
-		, dst{}
+		: surf(IMG_Load_RW(filesystem::make_read_RWops(p.string()).release(), true))
+		, filename(p.filename().string())
+		, src(get_non_transparent_portion(surf))
+		, dst()
 	{
 	}
 
@@ -202,17 +202,21 @@ void handle_dir_contents(const std::filesystem::path& path)
 }
 
 } // end anon namespace
-#define DEBUG_SPRITESHEET_OUTPUT
+
 void build_spritesheet_from(const std::string& entry_point)
 {
 #ifdef DEBUG_SPRITESHEET_OUTPUT
 	const std::size_t start = SDL_GetTicks();
 #endif
 
-	try {
-		handle_dir_contents(filesystem::get_binary_file_location("images", entry_point));
-	} catch(const std::filesystem::filesystem_error& e) {
-		PLAIN_LOG << "Error generating spritesheet: " << e.what();
+	if(auto path = filesystem::get_binary_file_location("images", entry_point)) {
+		try {
+			handle_dir_contents(*path);
+		} catch(const std::filesystem::filesystem_error& e) {
+			PLAIN_LOG << "Filesystem Error generating spritesheet: " << e.what();
+		}
+	} else {
+		PLAIN_LOG << "Cannot find entry point to build spritesheet: " << entry_point;
 	}
 
 #ifdef DEBUG_SPRITESHEET_OUTPUT
