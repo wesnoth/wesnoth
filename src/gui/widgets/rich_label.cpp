@@ -40,7 +40,15 @@
 static lg::log_domain log_rich_label("gui/widget/rich_label");
 #define DBG_GUI_RL LOG_STREAM(debug, log_rich_label)
 
-#define DEBUG_LINES true
+#define LINK_DEBUG_BORDER false
+#define DEBUG_LINE \
+config& link_rect_cfg = text_dom.add_child("line"); \
+link_rect_cfg["x1"] = 0; \
+link_rect_cfg["y1"] = prev_blk_height_; \
+link_rect_cfg["x2"] = w_; \
+link_rect_cfg["y2"] = prev_blk_height_; \
+link_rect_cfg["color"] = "255, 0, 0, 255";
+
 
 namespace gui2
 {
@@ -342,6 +350,8 @@ config rich_label::get_parsed_text(const config& parsed_text)
 			config& child = tag.cfg;
 
 			if(tag.key == "img") {
+				prev_blk_height_ += txt_height_ + padding_;
+				txt_height_ = 0;
 
 				std::string name = child["src"];
 				std::string align = child["align"];
@@ -356,7 +366,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 						wrap_mode = true;
 					}
 				}
-				DBG_GUI_RL << "floating: " << wrap_mode << ", " << is_float;
+				DBG_GUI_RL << "wrap mode: " << wrap_mode << ",floating: " << is_float;
 
 				curr_item = &(text_dom.add_child("image"));
 				add_image(*curr_item, name, align, is_image, is_float, is_curr_float, img_size, float_size);
@@ -395,16 +405,6 @@ config rich_label::get_parsed_text(const config& parsed_text)
 				txt_height_ = 0;
 				row_y = prev_blk_height_;
 
-				// DEBUG: debug lines for table
-				#if DEBUG_LINES
-				config& link_rect_cfg = text_dom.add_child("line");
-				link_rect_cfg["x1"] = 0;
-				link_rect_cfg["y1"] = prev_blk_height_;
-				link_rect_cfg["x2"] = w_;
-				link_rect_cfg["y2"] = prev_blk_height_;
-				link_rect_cfg["color"] = "255, 0, 0, 255";
-				#endif
-
 				is_text = false;
 				new_text_block = true;
 				is_image = false;
@@ -420,7 +420,6 @@ config rich_label::get_parsed_text(const config& parsed_text)
 				}
 
 				if (col_width > 0) {
-
 					max_col_height = std::max(max_col_height, txt_height_);
 					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
 					txt_height_ = 0;
@@ -465,23 +464,24 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					prev_blk_height_ += max_col_height + padding_;
 					row_y = prev_blk_height_;
 
-					// DEBUG: debug lines for table
-					#if DEBUG_LINES
-					config& link_rect_cfg = text_dom.add_child("line");
-					link_rect_cfg["x1"] = 0;
-					link_rect_cfg["y1"] = prev_blk_height_;
-					link_rect_cfg["x2"] = w_;
-					link_rect_cfg["y2"] = prev_blk_height_;
-					link_rect_cfg["color"] = "255, 0, 0, 255";
-					#endif
-
 					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_col_height % padding_ % col_width);
 
-					is_image = false;
 					max_col_height = 0;
 					txt_height_ = 0;
-					img_size = point(0,0);
+
+				} else {
+					// TODO correct height update
+					if (is_image && !is_float) {
+						x_ = 0;
+						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
+						img_size.y = 0;
+					} else {
+						add_text_with_attribute(*curr_item, "\n");
+					}
 				}
+
+				is_image = false;
+				img_size = point(0,0);
 
 				DBG_GUI_RL << "linebreak";
 
@@ -703,7 +703,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 	DBG_GUI_RL << "Height: " << h_;
 
 	// DEBUG: draw boxes around links
-	#if DEBUG_LINES
+	#if LINK_DEBUG_BORDER
 	for (const auto& entry : links_) {
 		config& link_rect_cfg = text_dom.add_child("rectangle");
 		link_rect_cfg["x"] = entry.first.x;
