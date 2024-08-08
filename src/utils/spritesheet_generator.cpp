@@ -28,10 +28,17 @@
 #include <SDL2/SDL_image.h>
 
 #include <algorithm>
-#include <filesystem>
 #include <future>
 #include <iostream>
 #include <numeric>
+
+#ifdef __APPLE__
+#include <boost/filesystem.hpp>
+namespace fs = boost::filesystem;
+#else
+#include <filesystem>
+namespace fs = std::filesystem;
+#endif
 
 namespace image
 {
@@ -40,7 +47,7 @@ namespace
 /** Intermediate helper struct to manage surfaces while the sheet is being assembled. */
 struct sheet_element
 {
-	explicit sheet_element(const std::filesystem::path& p)
+	explicit sheet_element(const fs::path& p)
 		: surf(IMG_Load_RW(filesystem::make_read_RWops(p.string()).release(), true))
 		, filename(p.filename().string())
 		, src(get_non_transparent_portion(surf))
@@ -80,7 +87,7 @@ struct sheet_element
 /** Tweak as needed. *Must* be floating-point in order to allow rounding. */
 constexpr double max_items_per_loader = 8.0;
 
-void build_sheet_from_images(const std::vector<std::filesystem::path>& file_paths)
+void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 {
 	const unsigned num_loaders = std::ceil(file_paths.size() / max_items_per_loader);
 	const unsigned num_to_load = std::ceil(file_paths.size() / double(num_loaders));
@@ -173,10 +180,10 @@ void build_sheet_from_images(const std::vector<std::filesystem::path>& file_path
 	image::save_image(res, "./_sheet.png");
 }
 
-void handle_dir_contents(const std::filesystem::path& path)
+void handle_dir_contents(const fs::path& path)
 {
-	std::vector<std::filesystem::path> files_found;
-	for(const auto& entry : std::filesystem::directory_iterator{path}) {
+	std::vector<fs::path> files_found;
+	for(const auto& entry : fs::directory_iterator{path}) {
 		if(entry.is_directory()) {
 			handle_dir_contents(entry);
 		} else if(entry.is_regular_file()) {
@@ -192,8 +199,8 @@ void handle_dir_contents(const std::filesystem::path& path)
 		try {
 			// Allows relative paths to resolve correctly. This needs to be set *after* recursive
 			// directory handling or else the path will be wrong when returning to the parent.
-			std::filesystem::current_path(path);
-		} catch(const std::filesystem::filesystem_error&) {
+			fs::current_path(path);
+		} catch(const fs::filesystem_error&) {
 			return;
 		}
 
@@ -212,7 +219,7 @@ void build_spritesheet_from(const std::string& entry_point)
 	if(auto path = filesystem::get_binary_file_location("images", entry_point)) {
 		try {
 			handle_dir_contents(*path);
-		} catch(const std::filesystem::filesystem_error& e) {
+		} catch(const fs::filesystem_error& e) {
 			PLAIN_LOG << "Filesystem Error generating spritesheet: " << e.what();
 		}
 	} else {
