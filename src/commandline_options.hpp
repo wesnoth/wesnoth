@@ -180,6 +180,8 @@ public:
 	utils::optional<std::string> render_image;
 	/** Output file to put rendered image path in. Optional second parameter after --render-image */
 	utils::optional<std::string> render_image_dst;
+  /** Path of which to generate a spritesheet */
+	utils::optional<std::string> generate_spritesheet;
 	/** True if --screenshot was given on the command line. Starts Wesnoth in screenshot mode. */
 	bool screenshot;
 	/** Map file to make a screenshot of. First parameter given after --screenshot. */
