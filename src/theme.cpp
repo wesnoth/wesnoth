@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "theme.hpp"
 
 #include "desktop/battery_info.hpp"
-#include "display.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -442,7 +441,7 @@ theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 		font_ = DefaultFontSize;
 
 	if(cfg.has_attribute("font_rgb")) {
-		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"]);
+		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"].str());
 		font_rgb_set_ = true;
 	}
 }
@@ -459,12 +458,12 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 	if(font_ == 0)
 		font_ = DefaultFontSize;
 
-	if(const config& label_child = cfg.child("label")) {
-		label_ = label(sw, sh, label_child);
+	if(auto label_child = cfg.optional_child("label")) {
+		label_ = label(sw, sh, *label_child);
 	}
 
 	if(cfg.has_attribute("font_rgb")) {
-		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"]);
+		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"].str());
 		font_rgb_set_ = true;
 	}
 }
@@ -747,16 +746,16 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 		DBG_DP << "done adding slider...";
 	}
 
-	if(const config& c = cfg.child("main_map_border")) {
-		border_ = border_t(c);
+	if(auto c = cfg.optional_child("main_map_border")) {
+		border_ = border_t(*c);
 	}
 
 	// Battery charge indicator is always hidden if there isn't enough horizontal space
 	// (GitHub issue #3714)
 	static const int BATTERY_ICON_MIN_WIDTH = 1152;
 	if(!desktop::battery_info::does_device_have_battery() || screen_dimensions_.w < BATTERY_ICON_MIN_WIDTH) {
-		if(const config& c = cfg.child("no_battery")) {
-			modify(c);
+		if(auto c = cfg.optional_child("no_battery")) {
+			modify(*c);
 		}
 	}
 }

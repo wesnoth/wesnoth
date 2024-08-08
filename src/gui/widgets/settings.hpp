@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,8 +29,6 @@
 namespace gui2
 {
 
-class gui_definition;
-class game_tip;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;

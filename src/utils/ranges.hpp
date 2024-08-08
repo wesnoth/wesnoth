@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2022
+	Copyright (C) 2021 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 
 #include "global.hpp"
 
-#ifdef HAVE_CXX20
+#ifdef __cpp_lib_ranges
 #include <ranges>
 #else
 #include <boost/range/adaptor/reversed.hpp>
@@ -27,8 +27,8 @@ namespace utils
 template<typename T>
 inline auto reversed_view(T& container)
 {
-#ifdef HAVE_CXX20
-	return std::views::reverse(container);
+#ifdef __cpp_lib_ranges
+	return std::ranges::reverse_view(container);
 #else
 	return boost::adaptors::reverse(container);
 #endif

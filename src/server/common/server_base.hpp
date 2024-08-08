@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	by Sergey Popov <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -180,8 +180,6 @@ protected:
 	boost::asio::signal_set sighup_;
 	virtual void handle_sighup(const boost::system::error_code& error, int signal_number) = 0;
 #endif
-	boost::asio::signal_set sigs_;
-	void handle_termination(const boost::system::error_code& error, int signal_number);
 };
 
 template<class SocketPtr> std::string client_address(SocketPtr socket);

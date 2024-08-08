@@ -4,7 +4,7 @@
 This script runs a sequence of C++ unit test scenarios.
 """
 
-import argparse, enum, os, re, subprocess, sys
+import argparse, os, subprocess, sys
 
 def get_tests(filename):
     test_list = []
@@ -22,20 +22,30 @@ def run_with_rerun_for_sdl_video(executable, test_name):
     # Sanity check on the number of retries.
     # It's a rare failure, a single retry would probably be enough.
     sdl_retries = 0
-    while sdl_retries < 10:
-        res = subprocess.run([executable, "--run_test="+test_name, "--color_output"], timeout=20, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        retry = False
-        if b"Could not initialize SDL_video" in res.stdout:
-            retry = True
-        if not retry:
+    timeout_retries = 0
+    while sdl_retries < 10 and timeout_retries < 5:
+        sdl_retry = False
+        timeout_retry = False
+
+        try:
+            res = subprocess.run([executable, "--run_test="+test_name, "--color_output"], timeout=20, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        except subprocess.TimeoutExpired as t:
+            timeout_retries += 1
+            timeout_retry = True
+            print("Test timed out, attempt", timeout_retries)
+        else:
+            if b"Could not initialize SDL_video" in res.stdout:
+                sdl_retries += 1
+                sdl_retry = True
+                print("Could not initialise SDL_video error, attempt", sdl_retries)
+
+        if not sdl_retry and not timeout_retry:
             return res
-        sdl_retries += 1
-        print("Could not initialise SDL_video error, attempt", sdl_retries)
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument("-e", "--executable", help="The name of the boost unit test executable. Default is boost_unit_tests.", default="boost_unit_tests")
-    ap.add_argument("-p", "--path", metavar="dir", help="Path to boost unit test binary. By default assume it is with this script.", default=".")
+    ap.add_argument("-p", "--path", metavar="dir", help="Path to boost unit test binary. By default assume it is the current directory.", default=".")
     ap.add_argument("-l", "--test_list", metavar="filename", help="Loads the list of tests from the given file. Default is boost_test_schedule.", default="boost_test_schedule")
 
     options = ap.parse_args()
@@ -46,20 +56,14 @@ if __name__ == '__main__':
     failure=0
 
     for test in tests:
-        try:
-            res = run_with_rerun_for_sdl_video(os.path.join(options.path, executable), test)
-        except subprocess.TimeoutExpired as t:
-            failure+=1
-            output = str(t.output) or ""
-            print("Test "+test+" timed out: "+output)
+        res = run_with_rerun_for_sdl_video(os.path.join(options.path, executable), test)
+        if res.returncode == 0:
+            success+=1
+            print("Test "+test+" passed")
         else:
-            if res.returncode == 0:
-                success+=1
-                print("Test "+test+" passed")
-            else:
-                failure+=1
-                print("Test "+test+" failed with return code "+str(res.returncode)+":")
-                print(res.stdout.decode('utf-8'))
+            failure+=1
+            print("Test "+test+" failed with return code "+str(res.returncode)+":")
+            print(res.stdout.decode('utf-8'))
     
     print("Tests passed: "+str(success))
     print("Tests failed: "+str(failure))

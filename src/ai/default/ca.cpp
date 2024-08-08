@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,9 +21,7 @@
 #include "ai/default/ca.hpp"
 #include "ai/actions.hpp"
 #include "ai/manager.hpp"
-#include "ai/composite/engine.hpp"
 #include "ai/composite/rca.hpp"
-#include "ai/composite/stage.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
@@ -35,7 +33,6 @@
 #include "pathfind/teleport.hpp"
 
 #include <numeric>
-#include <boost/dynamic_bitset.hpp>
 
 #include <SDL2/SDL_timer.h>
 
@@ -277,15 +274,11 @@ move_leader_to_goals_phase::~move_leader_to_goals_phase()
 double move_leader_to_goals_phase::evaluate()
 {
 
-	const config &goal = get_leader_goal();
+	config goal = get_leader_goal();
 	//passive leader can reach a goal
-	if (!goal) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found";
-		return BAD_SCORE;
-	}
 
 	if (goal.empty()) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty goal found";
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty or Nonexistent goal found";
 		return BAD_SCORE;
 	}
 

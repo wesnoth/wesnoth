@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
@@ -32,7 +30,7 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "language.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "help/help_impl.hpp"
@@ -41,7 +39,6 @@
 #include "team.hpp"
 #include "terrain/movement.hpp"
 #include "terrain/type_data.hpp"
-#include "units/attack_type.hpp"
 #include "units/types.hpp"
 #include "units/helper.hpp"
 #include "units/unit.hpp"
@@ -160,7 +157,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		return "";
 	}
 
-	for(t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+	for(t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
@@ -608,12 +605,10 @@ unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "foreground")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

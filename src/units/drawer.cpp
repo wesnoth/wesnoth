@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,8 +26,7 @@
 #include "map/location.hpp"
 #include "map/map.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
-#include "sdl/surface.hpp"
+#include "preferences/preferences.hpp"
 #include "team.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
@@ -62,6 +61,31 @@ std::unique_ptr<image::locator> get_orb_image(orb_status os)
 	return std::make_unique<image::locator>(game_config::images::orb + "~RC(magenta>" + color + ")");
 }
 
+/**
+ * Assemble a two-color orb for an ally's unit, during that ally's turn.
+ * Returns nullptr if the preferences both of these orbs and ally orbs in general are off.
+ * Returns a one-color orb (using the ally color) in several circumstances.
+ */
+std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
+{
+	if(!prefs::get().show_status_on_ally_orb())
+		return get_orb_image(orb_status::allied);
+
+	// This is conditional on prefs_show_orb, because a user might want to disable the standard
+	// partial orb, but keep it enabled as a reminder for units in the disengaged state.
+	if(os == orb_status::disengaged && !orb_status_helper::prefs_show_orb(orb_status::disengaged)) {
+		os = orb_status::partial;
+	}
+
+	if(!orb_status_helper::prefs_show_orb(os))
+		return get_orb_image(orb_status::allied);
+
+	auto allied_color = orb_status_helper::get_orb_color(orb_status::allied);
+	auto status_color = orb_status_helper::get_orb_color(os);
+	return std::make_unique<image::locator>(game_config::images::orb_two_color + "~RC(ellipse_red>"
+			+ allied_color + ")~RC(magenta>" + status_color + ")");
+}
+
 void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& col)
 {
 	// Magic width number
@@ -76,12 +100,18 @@ void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& 
 	const point offset = display::scaled_to_zoom(point{19, 13});
 
 	// Full bar dimensions.
-	const rect bar_rect = display::scaled_to_zoom({
+	rect bar_rect = display::scaled_to_zoom({
 		xpos + offset.x,
 		ypos + offset.y,
 		bar_width,
 		bar_height
 	});
+
+	// Bar dimensions should not overflow 80% of the scaled hex dimensions.
+	// The 80% comes from an approximation of the length of a segment drawn
+	// inside a regular hexagon that runs parallel to its outer left side.
+	bar_rect.w = std::clamp<int>(bar_rect.w, 0, display::hex_size() * 0.80 - offset.x);
+	bar_rect.h = std::clamp<int>(bar_rect.h, 0, display::hex_size() * 0.80 - offset.y);
 
 	filled = std::clamp<double>(filled, 0.0, 1.0);
 	const int unfilled = static_cast<std::size_t>(bar_rect.h * (1.0 - filled));
@@ -256,7 +286,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	texture ellipse_back;
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
-	if(draw_bars && (preferences::show_side_colors() || is_selected_hex)) {
+	if(draw_bars && (prefs::get().show_side_colors() || is_selected_hex)) {
 		if(adjusted_params.submerge > 0.0) {
 			// The division by 2 seems to have no real meaning,
 			// It just works fine with the current center of ellipse
@@ -284,7 +314,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		}
 	}
 
-	disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc, [=, adj_y = adjusted_params.y](const rect& d) {
+	disp.drawing_buffer_add(drawing_layer::unit_first, loc, [=, adj_y = adjusted_params.y](const rect& d) {
 		// Both front and back have the same origin
 		const point origin { d.x, d.y + adj_y - ellipse_floating };
 
@@ -329,9 +359,12 @@ void unit_drawer::redraw_unit(const unit& u) const
 			if(static_cast<std::size_t>(side) != viewing_team + 1)
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
+		} else if(static_cast<std::size_t>(side) != viewing_team + 1) {
+			// We're looking at an ally's unit, during that ally's turn.
+			auto os = dc.unit_orb_status(u);
+			orb_img = get_playing_ally_orb_image(os);
 		} else {
-			// We're looking at either the player's own unit, or an ally's unit, during the unit's
-			// owner's turn.
+			// We're looking at the player's own unit, during the player's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_orb_image(os);
 		}
@@ -355,7 +388,14 @@ void unit_drawer::redraw_unit(const unit& u) const
 			}
 		};
 
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, [=,
+		const std::vector<std::string> overlays_abilities = u.overlays_abilities();
+		for(const std::string& ov : overlays_abilities) {
+			if(texture tex = image::get_texture(ov)) {
+				textures.push_back(std::move(tex));
+			}
+		};
+
+		disp.drawing_buffer_add(drawing_layer::unit_bar, loc, [=,
 			textures      = std::move(textures),
 			adj_y         = adjusted_params.y,
 			//origin        = point{xsrc + xoff, ysrc + yoff + adjusted_params.y},
@@ -427,6 +467,45 @@ void unit_drawer::redraw_unit(const unit& u) const
 	} else if(has_halo) {
 		halo_man.set_location(ac.unit_halo_, halo_x, halo_y);
 	}
+
+	const std::vector<std::string> halos_abilities = u.halo_abilities();
+	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
+	if(!has_abil_halo && !halos_abilities.empty()) {
+		for(const std::string& halo_ab : halos_abilities){
+			halo::handle abil_halo = halo_man.add(
+				halo_x, halo_y,
+				halo_ab + u.TC_image_mods(),
+				map_location(-1, -1)
+			);
+			if(abil_halo->valid()){
+				ac.abil_halos_.push_back(abil_halo);
+			}
+		}
+	}
+	if(has_abil_halo && (ac.abil_halos_ref_ != halos_abilities || halos_abilities.empty())){
+		for(halo::handle& abil_halo : ac.abil_halos_){
+			halo_man.remove(abil_halo);
+		}
+		ac.abil_halos_.clear();
+		if(!halos_abilities.empty()){
+			for(const std::string& halo_ab : halos_abilities){
+				halo::handle abil_halo = halo_man.add(
+					halo_x, halo_y,
+					halo_ab + u.TC_image_mods(),
+					map_location(-1, -1)
+				);
+				if(abil_halo->valid()){
+					ac.abil_halos_.push_back(abil_halo);
+				}
+			}
+		}
+	} else if(has_abil_halo){
+		for(halo::handle& abil_halo : ac.abil_halos_){
+			halo_man.set_location(abil_halo, halo_x, halo_y);
+		}
+	}
+
+	ac.abil_halos_ref_ = halos_abilities;
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;

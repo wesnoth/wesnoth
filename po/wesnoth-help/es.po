@@ -16,22 +16,22 @@
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
 # Javier C.H. <javier_los_herejes@hotmail.com>, 2011.
 # Aelonin <quianaaelonin@gmail.com>, 2011, 2012.
-# Donpepe <donpepe1963@gmail.com>, 2014.
 # Pepe <donpepe1963@gmail.com>, 2014, 2017.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2021-09-24 13:20-0300\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"PO-Revision-Date: 2023-05-12 06:03+0200\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Bookmarks: 125,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [time]: id=underground
@@ -41,20 +41,83 @@ msgstr ""
 msgid "Underground"
 msgstr "Bajo tierra"
 
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "no muerto"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "intrépido"
+
+#. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
+msgid "plague"
+msgstr "plaga"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/weapon_specials.cfg:53
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Cuando una unidad muere por un ataque de plaga, ésta es reemplazada por un "
+"muerto andante del mismo bando que la unidad con el ataque de plaga. Esto no "
+"funciona con unidades no muertas o que se encuentren en aldeas."
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "firme"
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/core/macros/abilities.cfg:131
+msgid "female^steadfast"
+msgstr "firme"
+
+#. [illuminates]: id=illumination_song_verse
+#. [illuminates]: id=illumination
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
+#: data/core/macros/abilities.cfg:238
+msgid "female^illuminates"
+msgstr "ilumina"
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "sana +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "sana +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -73,28 +136,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Esta unidad es capaz de realizar sanación básica y de ralentizar la "
 "deshidratación."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "sana +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "sana +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -113,17 +176,17 @@ msgstr ""
 "buscar una aldea o una unidad con la habilidad de curar."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 msgid "heals +12"
 msgstr "sana +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
 msgid "female^heals +12"
 msgstr "sana +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -142,7 +205,7 @@ msgstr ""
 "debe buscar una aldea o una unidad con la habilidad de curar."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -153,15 +216,15 @@ msgstr ""
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
-#: data/campaigns/World_Conquest/resources/data/training.cfg:782
-#: data/core/macros/abilities.cfg:250
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
+#: data/campaigns/World_Conquest/resources/data/training.cfg:785
+#: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "teletransporte"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -175,23 +238,16 @@ msgid "Always rest heals"
 msgstr "Descansa siempre aunque se haya movido"
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "intrépido"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "puñalada trapera"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:384
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "alimentación"
 
@@ -204,7 +260,7 @@ msgstr "liderazgo"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:282
+#: data/core/macros/abilities.cfg:285
 msgid "ambush"
 msgstr "emboscar"
 
@@ -218,13 +274,13 @@ msgstr "Caverna"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:343
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "ocultarse"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "drena"
 
@@ -246,7 +302,7 @@ msgstr "Colinas"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "tirador"
 
@@ -256,20 +312,13 @@ msgstr "Campo de setas"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "nocturnidad"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "plaga"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "veneno"
 
@@ -285,7 +334,7 @@ msgstr "hostigador"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "ralentiza"
 
@@ -306,13 +355,13 @@ msgstr "Editor de mapas y escenarios"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 msgid "Terrain Editor"
 msgstr "Editor de terreno"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 msgid "Scenario Editor"
 msgstr "Editor de escenario"
 
@@ -525,7 +574,8 @@ msgid "Starting Locations Tool"
 msgstr "Guía de posiciones de inicio"
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:109
+#. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:110
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -590,23 +640,27 @@ msgstr ""
 "hubiera sido seleccionada con la paleta de edición."
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Editor de terreno-Gráficos superpuestos"
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:129
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
 "game. There are a few exceptions, where different graphics are used in the "
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"Los mapas normalmente se ven similares en el editor a su apariencia en el "
+"juego. Hay algunas excepciones, donde se utilizan diferentes gráficos en el "
+"editor; todas las superposiciones descritas aquí se encuentran en el grupo "
+"\"especial\" de la paleta de terreno."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:133
+#: data/core/editor/help.cfg:134
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
@@ -620,11 +674,22 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='Superposiciones de movimiento'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impenetrable e intransitable\n"
+"\n"
+"Si bien se notan fácilmente en el editor, estos son invisibles en el juego, "
+"por lo que los terrenos mixtos creados por ellos se ven como el terreno "
+"base. Se crea un terreno mixto con los costos de movimiento establecidos en "
+"\"impenetrable\" o \"intransitable\", respectivamente."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:143
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
@@ -642,11 +707,28 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='Superposiciones de castillo'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Agregar cualquiera de estas superposiciones a un hexágono transitable "
+"permite reclutar unidades en un hexágono. La fortaleza también permite que "
+"un líder reclute desde allí.\n"
+"\n"
+"Estos se pueden agregar a un hexágono infranqueable para conectar un "
+"castillo a una fortaleza visualmente separada a través de una pared "
+"infranqueable. También es posible crear un castillo que parezca tener "
+"pastizales entre el torreón y las torres, sin embargo, esto requiere que los "
+"hexágonos conectados estén ocupados o bloqueados para evitar que se recluten "
+"unidades en ellos."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:153
+#: data/core/editor/help.cfg:154
 msgid ""
 "editor^<bold>text='Village Overlay'</bold>\n"
 "\n"
@@ -655,10 +737,17 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='Superposición de aldea'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"Esto convierte cualquier terreno base en una aldea, proporcionando ingresos "
+"y curación."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:161
+#: data/core/editor/help.cfg:162
 msgid ""
 "editor^<bold>text='Fake Shroud'</bold>\n"
 "\n"
@@ -667,18 +756,155 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='Falsa Oscuridad'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Falsa oscuridad parece un área inexplorada, incluso en escenarios que tienen "
+"el sudario deshabilitado e incluso cuando las unidades del jugador pueden "
+"ver el hexágono."
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+msgid "Terrain Elevation Graphics"
+msgstr "Gráficos de elevación de terreno"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:172
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+"Un efecto de elevación cosmético que se ve un poco diferente en el editor "
+"que en el juego debido a las ayudas visuales en el editor; todas las "
+"superposiciones descritas aquí se encuentran en el grupo de \"elevación\" de "
+"la paleta de terreno."
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:175
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr "<bold>text='Superposiciones directas '</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:177
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+"Acantilados y barrancos\n"
+"\n"
+"Los acantilados, barrancos y variaciones similares son muy parecidos a una "
+"superposición de terreno estándar y simplemente se pueden usar de esa "
+"manera. Sin embargo, para áreas más grandes del mapa, donde querrá permitir "
+"el uso de otros terrenos superpuestos, querrá combinarlos con los "
+"\"marcadores\" que se describen en la siguiente sección."
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:182
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr "<bold>text='Relleno de elevación'</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid "Raised elevation on-map marker"
+msgstr "Marcador de elevación en el mapa"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:185
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+"Icono de la paleta del editor de elevaciones\n"
+"\n"
+"Para hacer que un trozo de terreno sea más alto o más bajo, y aún así poder "
+"usar otros terrenos superpuestos, como árboles, deberá usar estos "
+"marcadores. Colocar una de estas flechas en el mapa inundará el mapa con una "
+"neblina codificada por colores; ni la neblina ni la flecha serán visibles en "
+"el juego. El área opacada tendrá un saliente en el borde, lo que hará que "
+"parezca más alta o más baja que las baldosas adyacentes.\n"
+"\n"
+"Hay dos marcadores altos y dos marcadores bajos, por lo que es posible hacer "
+"terrazas de hasta cinco niveles (más bajo, más bajo, normal, más alto, más "
+"alto). Colocar una región alta junto a una región baja no da como resultado "
+"acantilados más grandes.\n"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:192
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+"<bold>text='Cómo usar'</bold>\n"
+"\n"
+"Las flechas de marcador no son muy útiles por sí solas, pero los terrenos "
+"tipo acantilados/barrancos se pueden usar para contener el área inundada.\n"
+"\n"
+"Un ejemplo de caso de uso sería:\n"
+"1. Seleccione los Acantilados (^Qhh) de la paleta del editor y use la "
+"herramienta de pintura de un solo hexágono para delinear una gran mancha "
+"sobre un mapa vacío de césped.\n"
+"2. Coloque una flecha de Marcador alto (^_mh) en un mosaico dentro de la "
+"mancha (no en el borde del acantilado).\n"
+"3. La mancha debería estar levantada ahora, y siempre que no sobrescriba las "
+"superposiciones Marcador o Acantilado, puede agregar otras superposiciones "
+"de terreno según sea necesario.\n"
+"\n"
+"Los gráficos utilizados para representar los bordes de las cornisas están "
+"determinados por el terreno base.\n"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:203
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
+"<format>text='Nota para los autores de modificaciones: los mosaicos "
+"inundados no tienen cambiados sus códigos de terreno, ni ninguna otra "
+"propiedad afectada, por lo que filtrar una ubicación por elevación no es "
+"simple.' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Base Terrain: "
+#: data/core/editor/help.cfg:208
 msgid "Deprecated Terrain"
-msgstr "Terreno base: "
+msgstr "Terreno discontinuado"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:211
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -692,14 +918,27 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>La 'D' magenta (de \"Obsoleto\").\n"
+"\n"
+"Esto se muestra en el editor sobre códigos de terreno obsoletos. Los "
+"ejemplos son:\n"
+"• el <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• el muro de piedra iluminada “Xol”, que está en desuso porque varios "
+"terrenos de muro ahora soportan el adorno de candelabro “^Efs”.\n"
+"\n"
+"Las páginas de ayuda para estos terrenos pueden tener texto adicional que "
+"solo se muestra en el editor, que describe la obsolescencia y los reemplazos "
+"recomendados."
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:224
 msgid "Label Tool"
 msgstr "Herramienta de etiqueta"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:225
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -723,12 +962,12 @@ msgstr ""
 
 # cosas? elementos? artículos?
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:240
 msgid "Item Tool (Scenery Tool)"
 msgstr "Herramienta de objetos (Herramienta de escenario)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:241
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -754,12 +993,12 @@ msgstr ""
 "<italic>text='[item]'</italic>."
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:254
 msgid "Village Ownership Tool"
 msgstr "Herramienta de control de aldeas"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:255
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -785,12 +1024,12 @@ msgstr ""
 "italic>."
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:269
 msgid "Unit Tool"
 msgstr "Herramienta de unidad"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:270
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -815,14 +1054,38 @@ msgstr ""
 "apropiado."
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:285
 msgid "Named Areas"
 msgstr "Áreas designadas"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:286
+#, fuzzy
+#| msgid ""
+#| "This tool create sets of tiles that can be used in WML scripts’ Standard "
+#| "Location Filters (a concept explained in detail on the Wiki), by using "
+#| "the area’s id in the filter’s <italic>text='area='</italic> attribute. "
+#| "For example:\n"
+#| "\n"
+#| "• assigning a local time zone to this set of hexes\n"
+#| "• filtering the set of hexes which trigger an event when a unit moves on "
+#| "to them\n"
+#| "\n"
+#| "To use the tool:\n"
+#| "\n"
+#| "• select hexes using the <ref>dst='editor_tool_select' text='select "
+#| "tool'</ref>\n"
+#| "• in the Areas menu, select Add New Area\n"
+#| "• then in the Areas menu, select Save Selection to Area\n"
+#| "• then in the Areas menu, select Rename Selected Area and choose a name "
+#| "for the area\n"
+#| "\n"
+#| "This tool is only available in Scenario Mode; it adds WML "
+#| "<italic>text='[time_area]'</italic> tags to the scenario. Although the "
+#| "tag’s name implies time, it is now more generic and can be used for other "
+#| "purposes without needing to change the time-of-day schedule in the area."
 msgid ""
-"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
 "area’s id in the filter’s <italic>text='area='</italic> attribute. For "
 "example:\n"
@@ -870,12 +1133,12 @@ msgstr ""
 "horarias en el área."
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:307
 msgid "Playlist Manager"
 msgstr "Gestor de la lista de reproducción"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:308
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -889,17 +1152,76 @@ msgstr ""
 "Esta herramienta solo está disponible en modo escenario; añade marcas WML "
 "<italic>text='[music]'</italic> al escenario."
 
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:319
+#, fuzzy
+#| msgid "Using Add-ons"
+msgid "Change Add-on ID"
+msgstr "Utilizar complementos"
+
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:320
+msgid ""
+"Allows changing the ID of an add-on, which is the name of the folder it’s "
+"in. This will only rename that folder and update any references to it in the "
+"_main.cfg file. Any other place will need to be updated manually."
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:329
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:330
+msgid ""
+"Allows setting up an add-on’s _server.pbl file, which is required for "
+"publishing an add-on to the add-ons server for other players to download. "
+"The Validate button will check whether all required fields have valid values."
+msgstr ""
+
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr "Editor de Mapa/Escenario"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:339
+#, fuzzy
+#| msgid ""
+#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
+#| "maps on which every Wesnoth scenario takes place. It also provides a "
+#| "limited set of features for setting up a basic scenario.\n"
+#| "\n"
+#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
+#| "option at the title screen.\n"
+#| "\n"
+#| "<header>text='Editing Modes'</header>\n"
+#| "\n"
+#| "The editor features two modes of operation: terrain mode and scenario "
+#| "mode.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
+#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+#| "locations'</ref>.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+#| "addition to the tools available in terrain mode, adds support for adding "
+#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
+#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
+#| "ref> at the start of the scenario. There’s also a "
+#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
-"of features for setting up a basic scenario.\n"
+"of features for setting up a basic scenario as well as initializing an add-"
+"on which can be used to distribute the scenarios you create.\n"
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
@@ -955,9 +1277,21 @@ msgstr ""
 "principio del escenario. También hay un <ref>dst='editor_playlist' "
 "text='gestor de la lista de reproducción'</ref> para la música."
 
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:351
+msgid ""
+"In either mode, you will be prompted to choose an add-on to use for the "
+"scenarios you create. This can be an existing add-on or a brand new add-on. "
+"If you choose to use a brand new add-on, then the add-on will have all the "
+"required files and folders automatically created as well as a default ID "
+"assigned. Unless you are editing an already existing map file, using "
+"scenario mode is required in order for your maps to be selectable during "
+"game creation."
+msgstr ""
+
 # No entiendo lo que quiere decir sobre como combina hexágonos, será que no uso nunca el editor de terreno.
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:353
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -1005,7 +1339,7 @@ msgstr ""
 "sobre sus tipos de terreno."
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:373
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -1030,7 +1364,7 @@ msgstr ""
 "partida» del tipo de juego «Mapas personalizados» de multijugador."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:385
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1045,7 +1379,7 @@ msgstr ""
 "escenario."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:387
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1064,7 +1398,7 @@ msgstr ""
 "desactivados."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1090,7 +1424,7 @@ msgstr ""
 "archivo .map)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:402
 #, fuzzy
 #| msgid ""
 #| "<header>text='The files: .map and .cfg'</header>\n"
@@ -1098,7 +1432,7 @@ msgstr ""
 #| "The map editor saves exactly one file, either a .map (for terrain mode) "
 #| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
 #| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenaro mode then an old .map "
+#| "editing in terrain mode and then switch to scenario mode then an old .map "
 #| "file might remain, but this is not updated by the scenario editor.\n"
 #| "\n"
 #| "Loading a .cfg file has different results depending on the contents of "
@@ -1110,18 +1444,16 @@ msgstr ""
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"The map editor saves exactly one file, either a .map (for terrain mode) or "
-"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
-"the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenario mode then an old .map file might "
-"remain, but this is not updated by the scenario editor.\n"
+"The map editor saves one file when in terrain mode (a .map) or two files "
+"when in scenario mode (both a .map and a .cfg).\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
 "cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that use a "
-"separate .map file (which can't be created by the scenario editor), the "
-"editor may follow the link and open the corresponding .map in terrain-only "
-"mode, as if the .map file was chosen in the file selector."
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
+"scenario's map data and open the corresponding .map file in terrain-only "
+"mode, as if the .map file was chosen in the file selector. It is recommended "
+"in those cases to simply load the .map file directly instead."
 msgstr ""
 "<header>text='Lor archivos: .map y .cfg'</header>\n"
 "\n"
@@ -1141,120 +1473,51 @@ msgstr ""
 "hubiera sido seleccionado con el administrador de archivos."
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:414
 msgid "Using a separate file for WML events"
 msgstr "Usando un archivo diferenciado para eventos WML"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:415
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
 "been edited by hand.\n"
 "\n"
-"Files created by the scenario editor omit the opening [scenario] and closing "
-"[/scenario] tags. If you are creating a campaign (or other add-on), then "
-"those tags need to be added; there is more detail about this in the "
-"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
-"\n"
-"One workflow is to create a separate WML file, also with the .cfg extension, "
+"One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
 "separate file contains both the [scenario] tag and any hand-edited WML such "
 "as events. With this workflow, the add-on’s file structure could look like "
 "this:\n"
 "\n"
-"<header>text='For Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-"these four lines:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"The first three of those lines insert the scenario-generated file inside a "
-"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
-"will be combined, with attributes in the second one overriding attributes in "
-"the first one.\n"
-"\n"
-"<header>text='1.16 and later'</header>\n"
-"\n"
-"If your add-on will only be used on 1.16 and later, there are new features "
-"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
-"within the .cfg files.\n"
+"<header>text='Example'</header>\n"
+"If your add-on will only be used on 1.18 and later, it is instead "
+"recommended to use the new include_file attribute to load a .cfg file "
+"containing additional WML into the scenario.\n"
 "\n"
 "• _main.cfg:\n"
 "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory.\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-"load that file"
+"which makes “map_file” search the “maps” directory\n"
+"• maps/first.map\n"
+"  ◦ this is the .map file created by the scenario editor when saving in "
+"scenario mode\n"
+"• scenarios/other.cfg\n"
+"  ◦ this is the .cfg file containing everything that the scenario editor "
+"doesn't understand\n"
+"• scenarios/first.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
+"map file\n"
+"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
+"the additional cfg file"
 msgstr ""
-"Al cargar un archivo .cfg, el editor de escenarios entiende los archivos que "
-"han sido creados con el mismo, pero es muy probable que tenga dificultades "
-"para comprender los archivos que han sido editados manualmente.\n"
-"\n"
-"Los archivos creados con el editor de escenarios omiten las marcas de "
-"apertura [scenario] y de cierre [/scenario]. Si usted está creando una "
-"campaña (o cualquier otro tipo de complemento), esas marcas han de ser "
-"añadidas; tiene más detalles acerca de este tema en la documentación "
-"<ref>dst='editor_map_format' text='formato del archivo de mapa'</ref>.\n"
-"\n"
-"Un flujo de trabajo se ha de crear en un archivo WML diferenciado, también "
-"con la extensión .cfg, que usa el preprocesador WML para añadir los archivos "
-"creados con el editor. Este archivo diferenciado contiene tanto la marca "
-"[scenario] como cualquier WML manual como los eventos. Con este flujo de "
-"trabajo, la estructura de ficheros del complemento podría verse de la forma "
-"siguiente:\n"
-"\n"
-"<header>text='Para Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ utilice “{./scenarios}” para incluir el directorio con los “scenarios”\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ este es el archivo creado con el editor de escenario\n"
-"• scenarios/01_Forest.cfg, en vez de la marca de inicio [scenario] poner "
-"estas cuatro líneas:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"Dentro de estas líneas, las tres primeras insertan el archivo de escenario "
-"generado dentro de la marca [scenario]. El signo ‘+’ de la cuarta línea "
-"significa que se combinarán dos marcas de escenario, con los atributos de la "
-"segunda sobreescribiendo los atributos de la primera.\n"
-"\n"
-"<header>text='1.16 y siguientes'</header>\n"
-"\n"
-"Si su complemento solo va a ser usado con la versión 1.16 y posteriores, hay "
-"nuevas características para cargar archivos .cfg mediante map_file, y evitar "
-"la repetición del nombre del complemento dentro de los archivos .cfg.\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ utilice “[binary_path]” para añadir los directorios de los complementos "
-"a la ruta binaria, que hace que “map_file” busque el directorio de “maps”.\n"
-"  ◦ use “{./scenarios}” para incluir el directorio de “scenarios”\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ este es el archivo creado por el editor de escenarios\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ dentro del elemento [scenario], utilice “map_file=\"map_from_01.cfg\"” "
-"para cargar ese archivo"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr "Uso de máscaras de edición"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1264,12 +1527,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:447
 msgid "ToD and Schedule Editor"
 msgstr "Editor de planificaciones y franjas horarias"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:448
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1290,13 +1553,13 @@ msgstr ""
 "diferentes de <ref>dst='editor_named_area' text='franjas horarias'</ref>."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:459
 msgid "Editor Palette"
 msgstr "Paleta del editor"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:461
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1325,33 +1588,33 @@ msgstr ""
 "dependiendo de cual está seleccionado. Ejemplos:"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:466
 msgid "Show all kinds of terrain"
 msgstr "Muestra todos los tipos de terreno"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:467
 msgid "Show only water terrains"
 msgstr "Solo muestra los terrenos acuaticos"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:468
 msgid "Show only villages"
 msgstr "Solo muestra aldeas"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:480
 msgid "Wesnoth Map Format"
 msgstr "Formato de los mapas de Wesnoth"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 "Wesnoth guarda sus mapas en archivos de texto plano legibles por humanos."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:483
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1411,7 +1674,7 @@ msgstr ""
 "preprocessor include."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1446,15 +1709,26 @@ msgstr ""
 "marcados con (E) en el menú Ventana."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:504
+#, fuzzy
+#| msgid ""
+#| "<header>text='Files created by the Scenario Editor'</header>\n"
+#| "\n"
+#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
+#| "map data. When loading a .cfg file, the scenario editor understands files "
+#| "created by the scenario editor itself, but is likely to have difficulty "
+#| "with files that have been edited by hand; problems can be avoided by "
+#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"In scenario mode, the editor saves the data as a .cfg file with embedded map "
-"data. When loading a .cfg file, the scenario editor understands files "
-"created by the scenario editor itself, but is likely to have difficulty with "
-"files that have been edited by hand; problems can be avoided by "
-"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"In scenario mode, the editor saves the scenario data as a .cfg file and the "
+"map data as a separate .map file. The scenario then references the .map file "
+"via map_file. When loading a .cfg file, the scenario editor understands "
+"files created by the scenario editor itself, but is likely to have "
+"difficulty with files that have been edited by hand; problems can be avoided "
+"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
 "<header>text='Archivos creados con el editor de escenarios'</header>\n"
@@ -1466,47 +1740,6 @@ msgstr ""
 "editados manualmente; se pueden evitar problemas mediante el "
 "<ref>dst='editor_separate_events_file' text='uso de un archivo .cfg "
 "diferenciado'</ref> para las partes editadas a mano."
-
-#. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
-msgid ""
-"<header>text='Which scenario files use the [scenario] tag'</header>\n"
-"\n"
-"Files created by the scenario editor have the contents of a WML scenario "
-"element, but don’t include the opening [scenario] and closing [/scenario] "
-"tags. For each .cfg file in the userdata folder’s editor/scenarios "
-"subfolder, the game will automatically try to load a scenario from it to "
-"include in the “Custom Scenarios” list (files that fail to load are "
-"ignored). In this folder each file is a separate item - files that fail to "
-"parse as a scenario are ignored, and files must not contain the [scenario][/"
-"scenario] tags.\n"
-"\n"
-"The opposite applies when a scenario is part of a campaign or other add-on. "
-"Typically each scenario has its own .cfg file, however this is unnecessary - "
-"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
-"matter whether the add-on is written as separate files or not. The engine "
-"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
-"to know which WML is part of each scenario."
-msgstr ""
-"<header>text='Qué archivos de escenario usan la marca [scenario]'</header>\n"
-"\n"
-"Los archivos creados con el editor de escenarios tienen el contenido de un "
-"elemento de escenario WML, pero no incluyen las marcas de apertura "
-"[scenario] ni de cierre [/scenario]. Para cada archivo .cfg en la carpeta "
-"userdata, subcarpeta editor/scenarios, el juego intentará automáticamente "
-"cargar un escenario de ella para añadir a la lista de «Escenarios "
-"personalizados» (se ignorarán los archivos que fallen al cargar). En esta "
-"carpeta cada archivo es un elemento separado - los ficheros que fallan al "
-"ser analizados como un escenario son ignorados, y los ficheros no deben "
-"contener las marcas de [scenario] [/scenario].\n"
-"\n"
-"Lo contrario se aplica cuando un escenario forma parte de una campaña o de "
-"otro complemento. Normalmente cada escenario tiene su propio archivo .cfg, "
-"aunque esto no sea necesario - todo el WML de un complemento será combinado "
-"por el preprocesador, no importa si el complemento se ha escrito en archivos "
-"separados o no. El motor necesita las marcas [scenario]...[/scenario] (o "
-"[multiplayer]...[/multiplayer]) para saber qué WML forma parte de cada "
-"escenario."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2118,8 +2351,8 @@ msgstr "Juego"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:475
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:492
+#: src/help/help_topic_generators.cpp:515
 msgid "Traits"
 msgstr "Rasgos"
 
@@ -3610,32 +3843,6 @@ msgstr ""
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "The orbs show whether the unit can move or attack. The statuses and their "
-#| "standard colors are:\n"
-#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
-#| "turn.\n"
-#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
-#| "attack. It might still be able to move further too.\n"
-#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
-#| "this turn.\n"
-#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
-#| "    • when a unit is in the middle of a multi-turn move (has been told to "
-#| "move further than it can in the current turn).\n"
-#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
-#| "still move further, but it can no longer attack.\n"
-#| "    • This can happen due to campaign-specific events or abilities, for "
-#| "example the <italic>text='disengage'</italic> ability in the campaign "
-#| "<italic>text='Under the Burning Suns'</italic>.\n"
-#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
-#| "own turn.\n"
-#| "    • During the ally’s own turn, their units will be shown with the "
-#| "green/yellow/red/white colors; however their moves, and the corresponding "
-#| "orb changes, are delayed as explained in <ref>dst='shroud_and_fog' "
-#| "text='Shroud and Fog of War'</ref>.\n"
-#| "• Enemy units normally don’t have orbs, however these can be enabled in "
-#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -4656,6 +4863,32 @@ msgstr "Instalar complementos"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
+#, fuzzy
+#| msgid ""
+#| "User-made add-ons can be obtained and updated through the "
+#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
+#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
+#| "italic>), you will be presented with a list of add-ons available on the "
+#| "server for downloading.\n"
+#| "\n"
+#| "The installation status for each add-on is shown below each entry. For "
+#| "add-ons that are <italic>text='upgradable'</italic> or "
+#| "<italic>text='outdated'</italic> on the server, their installed and "
+#| "published versions will be shown in the <italic>text='Version'</italic> "
+#| "column.\n"
+#| "\n"
+#| "To search for add-ons by keywords, type any relevant terms in any order "
+#| "in the search box, separated by spaces. You can also sort the add-on list "
+#| "by clicking the column headers. It is also possible to choose to only "
+#| "display add-ons of specific categories by clicking on the "
+#| "<bold>text='Type'</bold> dropdown.\n"
+#| "\n"
+#| "To install an add-on, select it from the list and click the "
+#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
+#| "If the window is too small to show them inline, the <bold>text='Addon "
+#| "Details'</bold> button provides you with additional details about the add-"
+#| "on, such as its full description, installation status, and available "
+#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4675,7 +4908,7 @@ msgid ""
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
 "bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
@@ -4742,10 +4975,16 @@ msgstr "Comandos generales"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
+#, fuzzy
+#| msgid ""
+#| "These commands can either be issued via the command line by prefixing "
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
+#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
+"with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
+"‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
 "Estos comandos pueden utilizarse ya sea mediante la linea de comandos, "
@@ -4755,12 +4994,22 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:681
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Similar to the 'fps' command, but also forces everything to redraw "
+#| "instead of only things that have changed.\n"
+#| "\n"
 msgid ""
 "\n"
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Similar al comando 'fps', pero también obliga a que todo se vuelva a dibujar "
+"en lugar de sólo las cosas que han cambiado.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:684
@@ -5258,16 +5507,6 @@ msgstr ""
 "una aldea."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "firme"
-
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
-msgid "female^steadfast"
-msgstr "firme"
-
-#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
@@ -5298,9 +5537,14 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
+#, fuzzy
+#| msgid ""
+#| "If there is an enemy of the target on the opposite side of the target "
+#| "while attacking it, this unit diverts the target's attention and reduces "
+#| "its chance to hit."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
+"attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
 "Si hay un enemigo del objetivo en el lado opuesto de dicho objetivo, "
@@ -5320,6 +5564,10 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"Esta unidad puede liderar otras tropas en combate.\n"
+"\n"
+"Todas las unidades adyacentes del mismo bando harán 25% más de daño por cada "
+"diferencia de nivel."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -5336,17 +5584,12 @@ msgstr ""
 "ignora todas las zonas de control del enemigo."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:235
+#: data/core/macros/abilities.cfg:237
 msgid "illuminates"
 msgstr "ilumina"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:236
-msgid "female^illuminates"
-msgstr "ilumina"
-
-#. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:237
+#: data/core/macros/abilities.cfg:239
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -5361,12 +5604,12 @@ msgstr ""
 "cuando es de noche, y como si fuera de día cuando está atardeciendo."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:251
+#: data/core/macros/abilities.cfg:254
 msgid "female^teleport"
 msgstr "teletransporte"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:252
+#: data/core/macros/abilities.cfg:255
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -5375,12 +5618,12 @@ msgstr ""
 "instantáneamente usando uno de sus puntos de movimiento."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:283
+#: data/core/macros/abilities.cfg:286
 msgid "female^ambush"
 msgstr "emboscar"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:284
+#: data/core/macros/abilities.cfg:287
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -5396,17 +5639,17 @@ msgstr ""
 "restante."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:302
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr "esconder"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:303
+#: data/core/macros/abilities.cfg:307
 msgid "female^burrow"
 msgstr "esconder"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:304
+#: data/core/macros/abilities.cfg:308
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5424,7 +5667,7 @@ msgstr ""
 "inmediatamente todo su movimiento restante."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:325
+#: data/core/macros/abilities.cfg:330
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5439,21 +5682,12 @@ msgstr ""
 "a esta unidad, pierde inmediatamente todo su movimiento restante."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:344
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "ocultarse"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:345
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in a village, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
+#: data/core/macros/abilities.cfg:350
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5462,26 +5696,25 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Esta unidad puede ocultarse en aldeas (con la excepción de aldeas "
-"acuáticas), y permanecer ilocalizable para sus enemigos, salvo para aquellos "
-"adyacentes a ella.\n"
+"Esta unidad puede ocultarse en aldeas, y permanecer ilocalizable para sus "
+"enemigos, salvo para aquellos adyacentes a ella.\n"
 "\n"
 "Las unidades enemigas no pueden ver a esta unidad cuando se encuentra en una "
 "aldea, excepto si tienen unidades a su lado. La primera unidad enemiga que "
 "descubra a esta unidad, pierde inmediatamente todo su movimiento restante."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:363
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "sumergirse"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:364
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
 msgstr "sumergirse"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:365
+#: data/core/macros/abilities.cfg:370
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5498,12 +5731,12 @@ msgstr ""
 "movimiento restante."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:385
+#: data/core/macros/abilities.cfg:390
 msgid "female^feeding"
 msgstr "alimentación"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:386
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -5511,219 +5744,10 @@ msgstr ""
 "Esta unidad gana 1 punto de vida añadido a su máximo cuando mata otra "
 "unidad, excepto unidades inmunes a plaga."
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "frenesí"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Usado tanto de forma ofensiva como defensiva, este ataque alarga la lucha "
-"hasta la muerte de uno de los combatientes, con un máximo de 30 rondas de "
-"ataques."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Cuando se usa ofensivamente, este ataque causa el doble de daño si una "
-"unidad enemiga del objetivo está en su extremo opuesto, siempre y cuando esa "
-"unidad no haya sido incapacitada (p.ej., convertida en piedra o paralizada "
-"de algún otro modo)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Cuando una unidad muere por un ataque de plaga, ésta es reemplazada por una "
-"unidad del mismo bando que la unidad con el ataque de plaga. Esto no "
-"funciona con unidades no muertas o que se encuentren en aldeas."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Cuando una unidad muere por un ataque de plaga, ésta es reemplazada por un "
-"muerto andante del mismo bando que la unidad con el ataque de plaga. Esto no "
-"funciona con unidades no muertas o que se encuentren en aldeas."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Este ataque ralentiza al objetivo hasta que acabe el turno. Una unidad "
-"afectada inflige la mitad del daño normal con sus ataques y se duplica su "
-"coste de movimiento. Al seleccionarlas, las unidades ralentizadas muestran "
-"el icono de un caracol en su panel de información."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "petrifica"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Este ataque convierte al objetivo en piedra. Las unidades que hayan sido "
-"petrificadas no podrán moverse ni atacar."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Cuando se usa ofensivamente, este ataque siempre tiene al menos un 60% de "
-"posibilidades de golpear."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr "desviar"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Cuando se usa a la defensiva, este ataque reduce en un 10% la posibilidad de "
-"que el oponente golpee."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-"Las técnicas defensivas de esta unidad reducen la probabilidad de éxito de "
-"un ataque enemigo."
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "mágico"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Este ataque siempre tiene un 70% de posibilidades de golpear, sin importar "
-"las capacidades defensivas de la unidad atacada."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "enjambre"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"El número de golpes de este ataque disminuye cuando la unidad se encuentra "
-"herida. El número de golpes es proporcional al porcentaje de PV del máximo "
-"de la unidad. Por ejemplo, una unidad con 3/4 de sus PV máximos tendrá sólo "
-"3/4 del número normal de golpes."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "carga"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Cuando se usa ofensivamente, este ataque causa el doble de daño al enemigo. "
-"También hace que esta unidad reciba el doble de daño de los contraataques "
-"enemigos."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr "absorber"
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-"Este ataque coloca a la unidad en una buena posición defensiva y absorbe "
-"parte del daño infligido por un ataque enemigo."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-"Esta unidad puede bloquear los ataques enemigos, por lo que recibe un daño "
-"reducido cuando es golpeada."
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Esta unidad drena la vitalidad de unidades vivas, sanándose a sí misma el "
-"equivalente a la mitad del daño que ha infligido (redondeado hacia abajo)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "precede"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Esta unidad siempre golpea primero con este ataque, incluso cuando se "
-"defiende."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Este ataque envenena a objetivos vivos. Las unidades envenenadas pierden 8 "
-"PV cada turno hasta que se las cure o sólo les quede 1 PV. El veneno no "
-"puede, por si mismo, matar a una unidad."
-
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Máxima bonificación en PV +3, Máximos XP +20%"
+msgstr "Máx PV +3, Máx exp +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
@@ -5912,7 +5936,7 @@ msgstr "La larga oscuridad (3)"
 msgid "The Long Dark (4)"
 msgstr "La larga oscuridad (4)"
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -5920,7 +5944,7 @@ msgstr ""
 "Los espíritus tienen una resistencia muy inusual al daño, y se mueven con "
 "bastante lentitud sobre el agua."
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -5928,22 +5952,22 @@ msgstr ""
 "El ataque arcano de esta unidad inflige un tremendo daño a los no muertos y "
 "algo de daño a las criaturas vivas."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "Esta unidad es capaz de realizar sanación básica."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 msgid "This unit is capable of rapid healing."
 msgstr "Esta unidad puede sanar rápidamente."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 "Esta unidad es capaz de sanar a todos aquellos a su alrededor y curarles del "
 "veneno."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
@@ -5951,7 +5975,7 @@ msgstr ""
 "Esta unidad es capaz de neutralizar los efectos del veneno en las unidades "
 "que la rodean."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -5959,7 +5983,7 @@ msgstr ""
 "Esta unidad se regenera, lo que permite que se sane como si siempre "
 "estuviera apostada en una aldea."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5967,7 +5991,7 @@ msgstr ""
 "La firmeza de esta unidad reduce el daño de algunos ataques, pero sólo "
 "mientras se defiende."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5976,7 +6000,7 @@ msgstr ""
 "próximas a ésta hagan más daño en combate, aunque esto sólo se aplica a "
 "unidades de menor nivel."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5984,12 +6008,12 @@ msgstr ""
 "La habilidad para escabullirse de esta unidad le permite ignorar las zonas "
 "de control del enemigo, pudiendo así moverse libremente entre ellos."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr ""
 "La iluminación incrementa el nivel de luminosidad de las áreas adyacentes."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5997,7 +6021,7 @@ msgstr ""
 "Esta unidad puede teletransportarse entre dos aldeas vacías del propio bando "
 "usando uno de sus puntos de movimiento."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -6006,13 +6030,13 @@ msgstr ""
 "invisible a los enemigos, a menos que estén adyacentes o se haya revelado a "
 "sí misma atacando."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 "Esta unidad puede ocultarse durante la noche, sin dejar rastro de su "
 "presencia."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -6021,14 +6045,14 @@ msgstr ""
 "acuáticas), y permanecer indetectable para sus enemigos, a excepción de los "
 "que están junto a ella."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "Esta unidad puede moverse sin ser vista en aguas profundas, sin necesitar "
 "aire de la superficie."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -6036,7 +6060,7 @@ msgstr ""
 "Esta unidad gana 1 punto de vida añadido a su máximo cuando mata a una "
 "unidad viva."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -6044,7 +6068,7 @@ msgstr ""
 "Cuando usa su ataque de frenesí, esta unidad continúa atacando hasta que uno "
 "de los dos contendientes haya muerto."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -6054,7 +6078,7 @@ msgstr ""
 "mientras se le ataca, esta unidad puede apuñalar al objetivo por la espalda, "
 "infligiéndole así el doble de daño por el hecho de atacar por detrás."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -6062,7 +6086,19 @@ msgstr ""
 "Los enemigos que pierdan su vida debido a la plaga volverán como no muertos "
 "a menos que hayan estado en una aldea."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
+#, fuzzy
+#| msgid ""
+#| "Foes who lose their life to the plague will rise again in unlife, unless "
+#| "they are standing on a village."
+msgid ""
+"Foes who lose their life to certain horrors of nature become nourishment for "
+"a rapidly growing larva, unless they are standing in a village."
+msgstr ""
+"Los enemigos que pierdan su vida debido a la plaga volverán como no muertos "
+"a menos que hayan estado en una aldea."
+
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -6070,14 +6106,14 @@ msgstr ""
 "Esta unidad es capaz de ralentizar a sus enemigos, reduciendo a la mitad su "
 "velocidad de movimiento y daño de ataque hasta que acabe el turno."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 "La capacidad de convertir a los vivos en piedra hace que esta unidad sea "
 "extremadamente peligrosa."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -6085,7 +6121,7 @@ msgstr ""
 "La precisión de esta unidad le confiere una alta probabilidad de golpear a "
 "los enemigos fijados como blanco, pero sólo durante el ataque."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6093,7 +6129,7 @@ msgstr ""
 "La unidad tiene ataques mágicos, que siempre tienen una alta probabilidad de "
 "golpear a un oponente."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -6101,7 +6137,7 @@ msgstr ""
 "Los ataques de enjambre de esta unidad se vuelven menos mortíferos cuando "
 "sus miembros están heridos."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -6109,14 +6145,14 @@ msgstr ""
 "Usar un ataque de carga dobla tanto el daño infligido como el sufrido. Esto "
 "no afecta a sus ataques defensivos, en respuesta a ataques enemigos."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 "Durante la batalla, esta unidad puede drenar vida de sus víctimas para "
 "renovar su propia salud."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -6124,7 +6160,7 @@ msgstr ""
 "La longitud del arma de estas unidades les permite atacar primero en la "
 "lucha cuerpo a cuerpo, incluso al defenderse."
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -6132,7 +6168,7 @@ msgstr ""
 "Las víctimas del veneno de esta unidad irán perdiendo vida continuamente "
 "hasta que sean curados en un pueblo, o por una unidad sanadora."
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6141,11 +6177,15 @@ msgstr ""
 "alcanzar un índice defensivo mayor en terrenos mixtos con ese tipo de "
 "terrenos."
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-msgid "Special Notes:"
-msgstr "Notas especiales:"
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
+#: data/core/macros/special-notes.cfg:122
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
+msgstr ""
+"Notas especiales (estilo 1.14, actualice al nuevo formato de lista para "
+"evitar duplicados):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6194,11 +6234,6 @@ msgstr ""
 "Las unidades <italic>text='leales'</italic> no exigen que las mantengan. La "
 "mayoría de las unidades requieren un coste de mantenimiento al final de cada "
 "turno igual a su nivel. Las unidades leales no tienen este coste."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "no muerto"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -6683,6 +6718,249 @@ msgstr ""
 "reducción de 8 PV y sufren de un decremento de 1 punto en el movimiento y en "
 "ataques cuerpo a cuerpo."
 
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "frenesí"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Usado tanto de forma ofensiva como defensiva, este ataque alarga la lucha "
+"hasta la muerte de uno de los combatientes, con un máximo de 30 rondas de "
+"ataques."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Cuando se usa ofensivamente, este ataque causa el doble de daño si una "
+"unidad enemiga del objetivo está en su extremo opuesto, siempre y cuando esa "
+"unidad no haya sido incapacitada (p.ej., convertida en piedra o paralizada "
+"de algún otro modo)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Cuando una unidad muere por un ataque de plaga, ésta es reemplazada por una "
+"unidad del mismo bando que la unidad con el ataque de plaga. Esto no "
+"funciona con unidades no muertas o que se encuentren en aldeas."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Este ataque ralentiza al objetivo hasta que acabe el turno. Una unidad "
+"afectada inflige la mitad del daño normal con sus ataques y se duplica su "
+"coste de movimiento. Al seleccionarlas, las unidades ralentizadas muestran "
+"el icono de un caracol en su panel de información."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "petrifica"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Este ataque convierte al objetivo en piedra. Las unidades que hayan sido "
+"petrificadas no podrán moverse ni atacar."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Cuando se usa ofensivamente, este ataque siempre tiene al menos un 60% de "
+"posibilidades de golpear."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr "desviar"
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "When used defensively, this attack reduces the opponent's chance to hit "
+#| "by 10%."
+msgid ""
+"When used defensively, this attack reduces the opponent’s chance to hit by "
+"10%."
+msgstr ""
+"Cuando se usa a la defensiva, este ataque reduce en un 10% la posibilidad de "
+"que el oponente golpee."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+"Las técnicas defensivas de esta unidad reducen la probabilidad de éxito de "
+"un ataque enemigo."
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "mágico"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Este ataque siempre tiene un 70% de posibilidades de golpear, sin importar "
+"las capacidades defensivas de la unidad atacada."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "enjambre"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"El número de golpes de este ataque disminuye cuando la unidad se encuentra "
+"herida. El número de golpes es proporcional al porcentaje de PV del máximo "
+"de la unidad. Por ejemplo, una unidad con 3/4 de sus PV máximos tendrá sólo "
+"3/4 del número normal de golpes."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "carga"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Cuando se usa ofensivamente, este ataque causa el doble de daño al enemigo. "
+"También hace que esta unidad reciba el doble de daño de los contraataques "
+"enemigos."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr "absorber"
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+"Este ataque coloca a la unidad en una buena posición defensiva y absorbe "
+"parte del daño infligido por un ataque enemigo."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+"Esta unidad puede bloquear los ataques enemigos, por lo que recibe un daño "
+"reducido cuando es golpeada."
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Esta unidad drena la vitalidad de unidades vivas, sanándose a sí misma el "
+"equivalente a la mitad del daño que ha infligido (redondeado hacia abajo)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "precede"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Esta unidad siempre golpea primero con este ataque, incluso cuando se "
+"defiende."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Este ataque envenena a objetivos vivos. Las unidades envenenadas pierden 8 "
+"PV cada turno hasta que se las cure o sólo les quede 1 PV. El veneno no "
+"puede, por si mismo, matar a una unidad."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr "aturdir"
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+"Este ataque golpea con tanta fuerza que el oponente queda aturdido y ya no "
+"puede imponer una zona de control. El efecto desaparece en el siguiente "
+"turno."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Esta unidad es capaz de aturdir a su enemigo, anulando su zona de control."
+
+#. [damage_type]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage_type]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage_type]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
+
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -6764,73 +7042,6 @@ msgstr "Dracos"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — dominant who rules the society with an iron fist. Every "
-#| "drake is expected to earn their place in the strict hierarchy, to obey "
-#| "their superiors and command their inferiors. Entry to the ruling elite is "
-#| "only possible through challenging and defeating a superior in single "
-#| "combat, which is the way the hierarchy within the elite itself is "
-#| "established. The use of deception of any kind towards any fellow drake "
-#| "is, without exception, seen as cowardly and unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
-#| "armor- and weapon-smithing, but neither know nor need other science and "
-#| "culture besides this. Nonetheless, the few implements they do fashion are "
-#| "almost unrivaled in quality, only matched by those produced in the finest "
-#| "Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-#| "Death in battle is the most preferred way for a drake to leave this "
-#| "world. Unlike the elder members of other races, drakes naturally grow "
-#| "more aggressive and reckless towards the ends of their natural lives, "
-#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6944,11 +7155,10 @@ msgstr ""
 "calidad, sólo igualadas por las producidas por las mejores fundiciones "
 "enanas.\n"
 "\n"
-"Los dracos eclosionan de huevos y habitualmente viven de 20 a 30 años. La "
-"muerte en batalla es el modo de dejar este mundo preferido por los dracos. "
-"Al contrario que los miembros más viejos de otras razas, los dracos se "
-"vuelven más agresivos y temerarios hacia el final de sus vidas, quizá para "
-"garantizarse un lugar en las heroicas leyendas de su pueblo.\n"
+"Los dracos eclosionan de huevos y habitualmente viven décadas, aunque se "
+"sabe de algunos que han sobrevivido más. Sin embargo, la muerte en batalla "
+"es el modo de dejar este mundo preferido por los dracos. Por eso, la mayoría "
+"de los dracos no llegan a ver el final de su vida natural.\n"
 "\n"
 "<header>text='Geografía'</header>\n"
 "Los dracos son originarios de un archipiélago de islas volcánicas llamado "
@@ -7267,22 +7477,22 @@ msgstr ""
 "un ejército."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:152
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Goblins"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:151
 msgid ""
 "\n"
 "\n"
@@ -7312,7 +7522,7 @@ msgstr ""
 "prueba de su bravura."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Grifo"
 
@@ -7320,17 +7530,17 @@ msgstr "Grifo"
 # Weird!
 # Myths do not really specify wether this creatures have gender or if it is diferentiated...
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Grifo hembra"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:172
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Grifos"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -7351,35 +7561,23 @@ msgstr ""
 "sus orígenes."
 
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:181
 msgid "race^Horse"
 msgstr "Caballo"
 
 # Hum, weird, yet less weird than others...
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:182
 msgid "race+female^Horse"
 msgstr "Yegua"
 
 #. [race]: id=horse
-#: data/core/units.cfg:185
+#: data/core/units.cfg:183
 msgid "race^Horses"
 msgstr "Caballos"
 
 #. [race]: id=horse
-#: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses.  While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
+#: data/core/units.cfg:184
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7404,22 +7602,22 @@ msgstr ""
 "puedan afirmar en serio que hayan visto cosas semejantes."
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:201
 msgid "race^Human"
 msgstr "Humano"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:202
 msgid "race+female^Human"
 msgstr "Humana"
 
 #. [race]: id=human
-#: data/core/units.cfg:205
+#: data/core/units.cfg:203
 msgid "race^Humans"
 msgstr "Humanos"
 
 #. [race]: id=human
-#: data/core/units.cfg:206
+#: data/core/units.cfg:204
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7503,22 +7701,22 @@ msgstr ""
 "fuerzas y las debilidades de unos se compensan con las de los otros."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:219
 msgid "race^Dunefolk Human"
 msgstr "Humano Barján"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:222
+#: data/core/units.cfg:220
 msgid "race+female^Dunefolk Human"
 msgstr "Humana Barjana"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:221
 msgid "race+plural^Dunefolk"
 msgstr "Barjanes"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:225
+#: data/core/units.cfg:223
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7637,22 +7835,22 @@ msgstr ""
 "los rincones más alejados de Iridia."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:244
 msgid "race^Saurian"
 msgstr "Saurio"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:245
 msgid "race+female^Saurian"
 msgstr "Sauria"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:248
+#: data/core/units.cfg:246
 msgid "race^Saurians"
 msgstr "Saurios"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:249
+#: data/core/units.cfg:247
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7795,17 +7993,17 @@ msgstr ""
 "canibalismo, siendo ambos hechos bastante corrientes."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:273
 msgid "race^Mechanical"
 msgstr "Mecánico"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:276
+#: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
 msgstr "Mecánicos"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:277
+#: data/core/units.cfg:275
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7818,22 +8016,22 @@ msgstr ""
 "si solos, pero algunos lo hacen como resultado de un encantamiento mágico."
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:284
 msgid "race^Merman"
 msgstr "Sirénido"
 
 #. [race]: id=merman
-#: data/core/units.cfg:287
+#: data/core/units.cfg:285
 msgid "race^Mermaid"
 msgstr "Sirénida"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:286
 msgid "race^Merfolk"
 msgstr "Sirénidos"
 
 #. [race]: id=merman
-#: data/core/units.cfg:290
+#: data/core/units.cfg:288
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7858,22 +8056,22 @@ msgstr ""
 "accidentado o boscoso."
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:296
 msgid "race^Monster"
 msgstr "Monstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:297
 msgid "race+female^Monster"
 msgstr "Monstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:300
+#: data/core/units.cfg:298
 msgid "race^Monsters"
 msgstr "Monstruos"
 
 #. [race]: id=monster
-#: data/core/units.cfg:301
+#: data/core/units.cfg:299
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7885,22 +8083,22 @@ msgstr ""
 "habitantes."
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:306
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:307
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:310
+#: data/core/units.cfg:308
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:311
+#: data/core/units.cfg:309
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7932,23 +8130,23 @@ msgstr ""
 "nagas prefieren los ríos y los pantanos tanto como el mar abierto."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:317
 msgid "race^Ogre"
 msgstr "Ogro"
 
 # Hum, weird, yet less weird than others...
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:318
 msgid "race+female^Ogre"
 msgstr "Ogresa"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:321
+#: data/core/units.cfg:319
 msgid "race^Ogres"
 msgstr "Ogros"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:322
+#: data/core/units.cfg:320
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7982,7 +8180,7 @@ msgstr ""
 "cooperación, domesticación o simplemente oportunismo mutuo."
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:328
 msgid "race^Orc"
 msgstr "Orco"
 
@@ -7990,17 +8188,17 @@ msgstr "Orco"
 # Perseo-> "Las orcas no son tan grandes, mujer orco, como en el de los otros"
 # Humm! Las orcas, esos animales marinos tan grandes... Realmente da lugar a confusión...
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:329
 msgid "race+female^Orc"
 msgstr "Orca"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:330
 msgid "race^Orcs"
 msgstr "Orcos"
 
 #. [race]: id=orc
-#: data/core/units.cfg:333
+#: data/core/units.cfg:331
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -8107,7 +8305,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:344
+#: data/core/units.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -8119,23 +8317,69 @@ msgstr ""
 "Los orcos menos fuertes de la camada tienden a especializarse en otras "
 "habilidades, como el tiro con arco o el asesinato."
 
-#. [race]: id=troll
+#. [race]: id=raven
+#: data/core/units.cfg:351
+#, fuzzy
+#| msgid "race^Dwarves"
+msgid "race^Raven"
+msgstr "Enanos"
+
+# Darkmage→ "La cuestión es que de acuerdo con la enciclopedia (línea 60~) los draco hembra son los 'breeders', y no drake, como muestra el archivo."
+# Lo dejo en estado difuso.
+# Perseo-> "Draco hembra y marchando"
+# Weird!
+# Draca sounds weird, yet, drakes' lore is a "work in progress".
+#. [race]: id=raven
+#: data/core/units.cfg:352
+#, fuzzy
+#| msgid "race+female^Drake"
+msgid "race+female^Raven"
+msgstr "Draconesa"
+
+#. [race]: id=raven
 #: data/core/units.cfg:353
+#, fuzzy
+#| msgid "race^Dwarves"
+msgid "race^Ravens"
+msgstr "Enanos"
+
+#. [race]: id=raven
+#: data/core/units.cfg:354
+msgid ""
+"Ravens are general scavengers, often associating with hunters or predators "
+"in the hope of sharing in the kill. They do not have the powerful beak or "
+"claws of the gryphons or raptors, but can still be a threat because of their "
+"intelligence and ability to recognize any advantage.\n"
+"\n"
+"In the aftermath of a battle, the dead and wounded are a banquet for ravens, "
+"thus ravens are a nuisance for allies of the defeated but are seen by some "
+"victors as part of martial ceremonies. The violence and large numbers that "
+"characterize both orcs and humans bring these races into constant "
+"interaction with ravens in this context. For this reason, the birds have "
+"become characters in fables, parables, and superstitions related to war.\n"
+"\n"
+"As intelligent scavengers, ravens do not need war dead to survive. Some "
+"farmers struggle to keep ravens away from freshly sown seeds, but others are "
+"happy to have them around as sentries."
+msgstr ""
+
+#. [race]: id=troll
+#: data/core/units.cfg:365
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:354
+#: data/core/units.cfg:366
 msgid "race+female^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:355
+#: data/core/units.cfg:367
 msgid "race^Trolls"
 msgstr "Troles"
 
 #. [race]: id=troll
-#: data/core/units.cfg:356
+#: data/core/units.cfg:368
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8212,22 +8456,22 @@ msgstr ""
 "orcas."
 
 #. [race]: id=undead
-#: data/core/units.cfg:376
+#: data/core/units.cfg:388
 msgid "race^Undead"
 msgstr "No muerto"
 
 #. [race]: id=undead
-#: data/core/units.cfg:377
+#: data/core/units.cfg:389
 msgid "race+female^Undead"
 msgstr "No muerta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:378
+#: data/core/units.cfg:390
 msgid "race+plural^Undead"
 msgstr "No muertos"
 
 #. [race]: id=undead
-#: data/core/units.cfg:379
+#: data/core/units.cfg:391
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8299,22 +8543,22 @@ msgstr ""
 "desconocidos para los elfos y enanos antes de tal acontecimiento."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:392
+#: data/core/units.cfg:404
 msgid "race^Wolf"
 msgstr "Lobo"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:393
+#: data/core/units.cfg:405
 msgid "race+female^Wolf"
 msgstr "Loba"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:394
+#: data/core/units.cfg:406
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:395
+#: data/core/units.cfg:407
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8333,18 +8577,18 @@ msgstr ""
 "dar caza al ganado."
 
 #. [race]: id=wose
-#: data/core/units.cfg:404
+#: data/core/units.cfg:416
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:405
+#: data/core/units.cfg:417
 msgid "race^Woses"
 msgstr "Woses"
 
 # En español no se usa faerie para la magia de este tipo: celtas, druidas, hadas, etc. No existe un equivalente: digamos que vendría a ser un poder místico o algo así.
 #. [race]: id=wose
-#: data/core/units.cfg:406
+#: data/core/units.cfg:418
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -8424,38 +8668,64 @@ msgstr ""
 "acontecimientos del mundo civilizado, el wose solamente se despertará para "
 "ir en defensa del mundo natural y del bosque al que llama su hogar."
 
-#: data/lua/feeding.lua:30 data/lua/feeding.lua:43
+#. [lua]: action
+#: data/lua/feeding.lua:26 data/lua/feeding.lua:39
 msgid "+1 max HP"
 msgstr "+1 PV máx"
 
-#: src/help/help.cpp:211
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+"aturdido: Esta unidad está aturdida. No puede imponer su Zona de Control."
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+msgid "female^stunned"
+msgstr "aturdida"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr "aturdido"
+
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:263 src/help/help.cpp:267
 msgid "Parse error when parsing help text:"
 msgstr "Error durante el procesado del texto de ayuda:"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr "Lo mejor de"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr "Lo peor de"
 
-#: src/help/help_topic_generators.cpp:161
+#. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
+#: src/help/help_topic_generators.cpp:94
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "base terrain"
+msgstr "Terreno base: "
+
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Las aldeas permiten que cualquier unidad estacionada en ellas sane o se cure "
+"del veneno."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:170
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8463,78 +8733,106 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Este terreno permite que las unidades se curen del veneno o sanen un solo "
+"punto de vida."
 msgstr[1] ""
+"Este terreno permite a las unidades sanar $amount puntos de vida o ser "
+"curadas de veneno, como si estuvieran estacionadas en una aldea."
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Este terreno es un castillo: se pueden reclutar unidades en él desde un "
+"torreón conectado."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:181
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Este terreno es un torreón: un líder puede reclutar desde este hexágono a "
+"hexágonos de castillo conectados."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:184
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Este torreón especial permite que un líder reclute mientras está parado en "
+"él, pero no permite que un líder en un torreón conectado reclute en este "
+"hexágono."
 
-#: src/help/help_topic_generators.cpp:193
-msgid "Base Terrain: "
-msgstr "Terreno base: "
+#: src/help/help_topic_generators.cpp:188
+#: src/help/help_topic_generators.cpp:618
+msgid "Special Notes:"
+msgstr "Notas especiales:"
 
-#: src/help/help_topic_generators.cpp:213
+#. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+#. The terrain names will be hypertext links to the help page of the corresponding terrain type.
+#. There will always be at least 1 item in the list, but unlikely to be more than 3.
+#: src/help/help_topic_generators.cpp:209
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Basic terrain type: $types"
+msgid_plural "Basic terrain types: $types"
+msgstr[0] "Terreno base: "
+msgstr[1] "Terreno base: "
+
+#. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
+#: src/help/help_topic_generators.cpp:221
+msgid "Typical base terrain: $type"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:227
 msgid "Movement properties: "
 msgstr "Propiedades de movimiento: "
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:231
 msgid "Defense properties: "
 msgstr "Propiedades defensivas: "
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:311
 msgid "Level"
 msgstr "Nivel"
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:375
 msgid "Advances from: "
 msgstr "Promocionado de: "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:377
 msgid "Advances to: "
 msgstr "Promociona a: "
 
-#: src/help/help_topic_generators.cpp:389
+#: src/help/help_topic_generators.cpp:406
 msgid "Base unit: "
 msgstr "Unidad de referencia: "
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:411
 msgid "Base units: "
 msgstr "Unidades de referencia: "
 
-#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:429
 msgid "Variations: "
 msgstr "Variaciones: "
 
 # Prefiero usar varios por ser un término más castellano
-#: src/help/help_topic_generators.cpp:436
+#: src/help/help_topic_generators.cpp:453
 msgid "race^Miscellaneous"
 msgstr "Varios"
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:455
 msgid "Race: "
 msgstr "Raza: "
 
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:525
 msgid "Abilities: "
 msgstr "Habilidades: "
 
-#: src/help/help_topic_generators.cpp:534
+#: src/help/help_topic_generators.cpp:551
 msgid "Ability Upgrades: "
 msgstr "Mejoras de habilidades: "
 
@@ -8542,115 +8840,365 @@ msgstr "Mejoras de habilidades: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:581
 msgid "HP:"
 msgstr "PV:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:585
 msgid "Moves:"
 msgstr "Movimientos:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:590
 msgid "Vision:"
 msgstr "Visión:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:596
 msgid "Jamming:"
 msgstr "Interferencia:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:601
 msgid "Cost:"
 msgstr "Coste:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:605
 msgid "Alignment:"
 msgstr "Alineamiento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:595
+#: src/help/help_topic_generators.cpp:612
 msgid "Required XP:"
 msgstr "PX requeridos:"
 
-#: src/help/help_topic_generators.cpp:613
+#: src/help/help_topic_generators.cpp:630
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:637
 msgid "unit help^Name"
 msgstr "Nombre"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:638
 msgid "Strikes"
 msgstr "Golpes"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:639
 msgid "Range"
 msgstr "Alcance"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:640
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:641
 msgid "Special"
 msgstr "Especial"
 
-#: src/help/help_topic_generators.cpp:699
+#: src/help/help_topic_generators.cpp:716
 msgid "Resistances"
 msgstr "Resistencias"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:720
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:721
 msgid "Resistance"
 msgstr "Resistencia"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:751
 msgid "Terrain Modifiers"
 msgstr "Modificadores de terreno"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:755
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:756
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:757
 msgid "Movement Cost"
 msgstr "Coste de movimiento"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:761
 msgid "Defense Cap"
 msgstr "Tope defensivo"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:766
 msgid "Vision Cost"
 msgstr "Coste de la visión"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:770
 msgid "Jamming Cost"
 msgstr "Coste de la interferencia"
+
+#~ msgid "uses 1 attack"
+#~ msgstr "usa 1 ataque"
+
+#~ msgid "uses 2 attacks"
+#~ msgstr "usa 2 ataques"
+
+#~ msgid "uses 3 attacks"
+#~ msgstr "usa 3 ataques"
+
+#~ msgid "uses 4 attacks"
+#~ msgstr "usa 4 ataques"
+
+#~ msgid "uses 5 attacks"
+#~ msgstr "usa 5 ataques"
+
+#~ msgid "uses 6 attacks"
+#~ msgstr "usa 6 ataques"
+
+#~ msgid "This attack uses 1 attack"
+#~ msgstr "Este ataque usa 1 ataque"
+
+#~ msgid "This attack uses 2 attacks"
+#~ msgstr "Este ataque usa 2 ataques"
+
+#~ msgid "This attack uses 3 attacks"
+#~ msgstr "Este ataque usa 3 ataques"
+
+#~ msgid "This attack uses 4 attacks"
+#~ msgstr "Este ataque usa 4 ataques"
+
+#~ msgid "This attack uses 5 attacks"
+#~ msgstr "Este ataque usa 5 ataques"
+
+#~ msgid "This attack uses 6 attacks"
+#~ msgstr "Este ataque usa 6 ataques"
+
+#~ msgid "first verse"
+#~ msgstr "primer verso"
+
+#~ msgid "second verse"
+#~ msgstr "segundo verso"
+
+#~ msgid "third verse"
+#~ msgstr "tercer verso"
+
+#~ msgid "once per turn"
+#~ msgstr "una vez por turno"
+
+#~ msgid "This attack can be used offensively only once per turn"
+#~ msgstr "Este ataque se puede usar ofensivamente sólo una vez por turno"
+
+#~ msgid "nova"
+#~ msgstr "nova"
+
+#~ msgid ""
+#~ "This weapon, when used offensively, deals damage to all units adjacent to "
+#~ "the caster when it hits."
+#~ msgstr ""
+#~ "Este arma, usada ofensivamente, daña a todas las unidades adyacentes al "
+#~ "lanzador cuando acierta."
+
+#~ msgid "This unit has wide-area attacks centered on the caster."
+#~ msgstr "Esta unidad tiene un ataque de área centrado en el lanzador."
+
+#~ msgid "ray"
+#~ msgstr "rayo"
+
+#~ msgid ""
+#~ "This weapon, when used offensively, also deals damage to a unit behind "
+#~ "the target."
+#~ msgstr ""
+#~ "Este arma, usada ofensivamente, también hace daño a una unidad tras el "
+#~ "objetivo."
+
+#~ msgid ""
+#~ "At the start of the turn this unit increases movement points of "
+#~ "surrounding units by +1"
+#~ msgstr ""
+#~ "Al principio del turno esta unidad aumenta los puntos de movimiento de "
+#~ "las unidades adyacentes en +1"
+
+#~ msgid ""
+#~ "At the start of the turn this unit increases movement points of "
+#~ "surrounding units by +2"
+#~ msgstr ""
+#~ "Al principio del turno esta unidad aumenta los puntos de movimiento de "
+#~ "las unidades adyacentes en +1"
+
+#~ msgid "tailwind +"
+#~ msgstr "céfiro +"
+
+#~ msgid "This attack can only be used as the first verse of the song."
+#~ msgstr ""
+#~ "Este ataque sólo puede ser usado como el primer verso de la canción."
+
+#~ msgid "This attack can only be used as the second verse of the song."
+#~ msgstr ""
+#~ "Este ataque sólo puede ser usado como el segundo verso de la canción."
+
+#~ msgid "This attack can only be used as the third verse of the song."
+#~ msgstr ""
+#~ "Este ataque sólo puede ser usado como el tercer verso de la canción."
+
+#~ msgid ""
+#~ "When loading a .cfg file, the scenario editor understands files created "
+#~ "by the scenario editor, but is likely to have difficulty with files that "
+#~ "have been edited by hand.\n"
+#~ "\n"
+#~ "Files created by the scenario editor omit the opening [scenario] and "
+#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
+#~ "on), then those tags need to be added; there is more detail about this in "
+#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
+#~ "documentation.\n"
+#~ "\n"
+#~ "One workflow is to create a separate WML file, also with the .cfg "
+#~ "extension, which uses the WML preprocessor to include the editor-created "
+#~ "file. This separate file contains both the [scenario] tag and any hand-"
+#~ "edited WML such as events. With this workflow, the add-on’s file "
+#~ "structure could look like this:\n"
+#~ "\n"
+#~ "<header>text='For Wesnoth 1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+#~ "these four lines:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "The first three of those lines insert the scenario-generated file inside "
+#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
+#~ "tags will be combined, with attributes in the second one overriding "
+#~ "attributes in the first one.\n"
+#~ "\n"
+#~ "<header>text='1.16 and later'</header>\n"
+#~ "\n"
+#~ "If your add-on will only be used on 1.16 and later, there are new "
+#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
+#~ "on’s name within the .cfg files.\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+#~ "which makes “map_file” search the “maps” directory.\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+#~ "load that file"
+#~ msgstr ""
+#~ "Al cargar un archivo .cfg, el editor de escenarios entiende los archivos "
+#~ "que han sido creados con el mismo, pero es muy probable que tenga "
+#~ "dificultades para comprender los archivos que han sido editados "
+#~ "manualmente.\n"
+#~ "\n"
+#~ "Los archivos creados con el editor de escenarios omiten las marcas de "
+#~ "apertura [scenario] y de cierre [/scenario]. Si usted está creando una "
+#~ "campaña (o cualquier otro tipo de complemento), esas marcas han de ser "
+#~ "añadidas; tiene más detalles acerca de este tema en la documentación "
+#~ "<ref>dst='editor_map_format' text='formato del archivo de mapa'</ref>.\n"
+#~ "\n"
+#~ "Un flujo de trabajo se ha de crear en un archivo WML diferenciado, "
+#~ "también con la extensión .cfg, que usa el preprocesador WML para añadir "
+#~ "los archivos creados con el editor. Este archivo diferenciado contiene "
+#~ "tanto la marca [scenario] como cualquier WML manual como los eventos. Con "
+#~ "este flujo de trabajo, la estructura de ficheros del complemento podría "
+#~ "verse de la forma siguiente:\n"
+#~ "\n"
+#~ "<header>text='Para Wesnoth 1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ utilice “{./scenarios}” para incluir el directorio con los "
+#~ "“scenarios”\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ este es el archivo creado con el editor de escenario\n"
+#~ "• scenarios/01_Forest.cfg, en vez de la marca de inicio [scenario] poner "
+#~ "estas cuatro líneas:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "Dentro de estas líneas, las tres primeras insertan el archivo de "
+#~ "escenario generado dentro de la marca [scenario]. El signo ‘+’ de la "
+#~ "cuarta línea significa que se combinarán dos marcas de escenario, con los "
+#~ "atributos de la segunda sobreescribiendo los atributos de la primera.\n"
+#~ "\n"
+#~ "<header>text='1.16 y siguientes'</header>\n"
+#~ "\n"
+#~ "Si su complemento solo va a ser usado con la versión 1.16 y posteriores, "
+#~ "hay nuevas características para cargar archivos .cfg mediante map_file, y "
+#~ "evitar la repetición del nombre del complemento dentro de los archivos ."
+#~ "cfg.\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ utilice “[binary_path]” para añadir los directorios de los "
+#~ "complementos a la ruta binaria, que hace que “map_file” busque el "
+#~ "directorio de “maps”.\n"
+#~ "  ◦ use “{./scenarios}” para incluir el directorio de “scenarios”\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ este es el archivo creado por el editor de escenarios\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ dentro del elemento [scenario], utilice “map_file=\"map_from_01."
+#~ "cfg\"” para cargar ese archivo"
+
+#~ msgid ""
+#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
+#~ "\n"
+#~ "Files created by the scenario editor have the contents of a WML scenario "
+#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
+#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
+#~ "subfolder, the game will automatically try to load a scenario from it to "
+#~ "include in the “Custom Scenarios” list (files that fail to load are "
+#~ "ignored). In this folder each file is a separate item - files that fail "
+#~ "to parse as a scenario are ignored, and files must not contain the "
+#~ "[scenario][/scenario] tags.\n"
+#~ "\n"
+#~ "The opposite applies when a scenario is part of a campaign or other add-"
+#~ "on. Typically each scenario has its own .cfg file, however this is "
+#~ "unnecessary - all of the WML in an add-on will be combined by the "
+#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
+#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
+#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
+#~ "scenario."
+#~ msgstr ""
+#~ "<header>text='Qué archivos de escenario usan la marca [scenario]'</"
+#~ "header>\n"
+#~ "\n"
+#~ "Los archivos creados con el editor de escenarios tienen el contenido de "
+#~ "un elemento de escenario WML, pero no incluyen las marcas de apertura "
+#~ "[scenario] ni de cierre [/scenario]. Para cada archivo .cfg en la carpeta "
+#~ "userdata, subcarpeta editor/scenarios, el juego intentará automáticamente "
+#~ "cargar un escenario de ella para añadir a la lista de «Escenarios "
+#~ "personalizados» (se ignorarán los archivos que fallen al cargar). En esta "
+#~ "carpeta cada archivo es un elemento separado - los ficheros que fallan al "
+#~ "ser analizados como un escenario son ignorados, y los ficheros no deben "
+#~ "contener las marcas de [scenario] [/scenario].\n"
+#~ "\n"
+#~ "Lo contrario se aplica cuando un escenario forma parte de una campaña o "
+#~ "de otro complemento. Normalmente cada escenario tiene su propio archivo ."
+#~ "cfg, aunque esto no sea necesario - todo el WML de un complemento será "
+#~ "combinado por el preprocesador, no importa si el complemento se ha "
+#~ "escrito en archivos separados o no. El motor necesita las marcas "
+#~ "[scenario]...[/scenario] (o [multiplayer]...[/multiplayer]) para saber "
+#~ "qué WML forma parte de cada escenario."
 
 #~ msgid "Flat"
 #~ msgstr "Llano"

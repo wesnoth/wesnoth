@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
+"POT-Creation-Date: 2024-07-21 22:31-0500\n"
 "PO-Revision-Date: 2013-06-20 23:23-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -30,20 +30,85 @@ msgstr ""
 msgid "Underground"
 msgstr "Subterraneus"
 
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "immortuus"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "intrepidus"
+
+#. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
+msgid "plague"
+msgstr "pestilens"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/weapon_specials.cfg:53
+#, fuzzy
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Pestilentia:\n"
+"Cum unitas ab oppugnatione Pestilentiae interficitur, illa unitas ab unitate "
+"consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
+"substituitur."
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "constans"
+
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/core/macros/abilities.cfg:131
+msgid "female^steadfast"
+msgstr "constans"
+
+#. [illuminates]: id=illumination_song_verse
+#. [illuminates]: id=illumination
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:343
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:344
+#: data/core/macros/abilities.cfg:238
+msgid "female^illuminates"
+msgstr "illustrat"
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "sanat +IV"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:675
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "sanat +IV"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:676
 #, fuzzy
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -63,28 +128,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr " Hic actor sanationem mediocrem potest."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "sanat +VIII"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "sanat +VIII"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 #, fuzzy
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -105,21 +170,21 @@ msgstr ""
 "unitatis quae sanat petere debet."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 #, fuzzy
 #| msgid "heals +4"
 msgid "heals +12"
 msgstr "sanat +IV"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
 #, fuzzy
 #| msgid "female^heals +4"
 msgid "female^heals +12"
 msgstr "sanat +IV"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
 #, fuzzy
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -140,7 +205,7 @@ msgstr ""
 "unitatis quae sanat petere debet."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -153,15 +218,15 @@ msgstr " Hic actor vicinos sanare potest et venenum purgare."
 #. [artifact]
 #. [chance]
 #. [teleport]: id=teleport
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:656
-#: data/campaigns/World_Conquest/resources/data/training.cfg:782
-#: data/core/macros/abilities.cfg:250
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
+#: data/campaigns/World_Conquest/resources/data/training.cfg:785
+#: data/core/macros/abilities.cfg:253
 msgid "teleport"
 msgstr "praeterit"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:717
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
@@ -175,23 +240,16 @@ msgid "Always rest heals"
 msgstr "Semper quiescens sanatur"
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "intrepidus"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "traicit"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:384
+#: data/core/macros/abilities.cfg:389
 msgid "feeding"
 msgstr "ingurgitat"
 
@@ -204,7 +262,7 @@ msgstr "ducatus"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:282
+#: data/core/macros/abilities.cfg:285
 msgid "ambush"
 msgstr "insidiae"
 
@@ -218,13 +276,13 @@ msgstr "Caverna"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:343
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "occultatio"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "exhaurit"
 
@@ -248,7 +306,7 @@ msgstr "Colles"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "perspicax"
 
@@ -258,20 +316,13 @@ msgstr "Nemus Fungorum"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "noctivagus"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "pestilens"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "venenat"
 
@@ -287,7 +338,7 @@ msgstr "concursatorius"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "tardat"
 
@@ -308,7 +359,7 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
@@ -316,7 +367,7 @@ msgstr "Mutamenta Terrae"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -477,7 +528,8 @@ msgid "Starting Locations Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:109
+#. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
+#: data/core/editor/help.cfg:110
 msgid ""
 "Defines the side leader starting position.\n"
 "\n"
@@ -511,12 +563,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:127
+#: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:129
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
 "game. There are a few exceptions, where different graphics are used in the "
@@ -527,7 +579,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:133
+#: data/core/editor/help.cfg:134
 msgid ""
 "editor^<bold>text='Movement Overlays'</bold>\n"
 "\n"
@@ -545,7 +597,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:142
+#: data/core/editor/help.cfg:143
 msgid ""
 "editor^<bold>text='Castle Overlays'</bold>\n"
 "\n"
@@ -567,7 +619,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:153
+#: data/core/editor/help.cfg:154
 msgid ""
 "editor^<bold>text='Village Overlay'</bold>\n"
 "\n"
@@ -579,7 +631,7 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:161
+#: data/core/editor/help.cfg:162
 msgid ""
 "editor^<bold>text='Fake Shroud'</bold>\n"
 "\n"
@@ -589,8 +641,97 @@ msgid ""
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
 
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+#, fuzzy
+#| msgid "Terrain Modifiers"
+msgid "Terrain Elevation Graphics"
+msgstr "Mutamenta Terrae"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:172
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:175
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:177
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:182
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid "Raised elevation on-map marker"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:185
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:192
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:203
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
+
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:170
+#: data/core/editor/help.cfg:208
 #, fuzzy
 #| msgid "Terrain"
 msgid "Deprecated Terrain"
@@ -599,7 +740,7 @@ msgstr "Terra"
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:211
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -615,12 +756,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:224
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:225
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -634,12 +775,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:240
 msgid "Item Tool (Scenery Tool)"
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:241
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -654,12 +795,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:254
 msgid "Village Ownership Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:255
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -674,12 +815,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:269
 msgid "Unit Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:270
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -694,14 +835,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:285
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:286
 msgid ""
-"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
 "area’s id in the filter’s <italic>text='area='</italic> attribute. For "
 "example:\n"
@@ -726,12 +867,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:307
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:308
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -740,17 +881,46 @@ msgid ""
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
 
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:319
+#, fuzzy
+#| msgid "Using Add-ons"
+msgid "Change Add-on ID"
+msgstr "Appendicibus Uti"
+
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:320
+msgid ""
+"Allows changing the ID of an add-on, which is the name of the folder it’s "
+"in. This will only rename that folder and update any references to it in the "
+"_main.cfg file. Any other place will need to be updated manually."
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:329
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:330
+msgid ""
+"Allows setting up an add-on’s _server.pbl file, which is required for "
+"publishing an add-on to the add-ons server for other players to download. "
+"The Validate button will check whether all required fields have valid values."
+msgstr ""
+
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:339
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
-"of features for setting up a basic scenario.\n"
+"of features for setting up a basic scenario as well as initializing an add-"
+"on which can be used to distribute the scenarios you create.\n"
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
@@ -778,7 +948,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:351
+msgid ""
+"In either mode, you will be prompted to choose an add-on to use for the "
+"scenarios you create. This can be an existing add-on or a brand new add-on. "
+"If you choose to use a brand new add-on, then the add-on will have all the "
+"required files and folders automatically created as well as a default ID "
+"assigned. Unless you are editing an already existing map file, using "
+"scenario mode is required in order for your maps to be selectable during "
+"game creation."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:353
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -804,7 +986,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:373
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -819,7 +1001,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:385
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -828,7 +1010,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:387
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -839,7 +1021,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -854,89 +1036,68 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:402
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"The map editor saves exactly one file, either a .map (for terrain mode) or "
-"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
-"the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenario mode then an old .map file might "
-"remain, but this is not updated by the scenario editor.\n"
+"The map editor saves one file when in terrain mode (a .map) or two files "
+"when in scenario mode (both a .map and a .cfg).\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
 "cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that use a "
-"separate .map file (which can't be created by the scenario editor), the "
-"editor may follow the link and open the corresponding .map in terrain-only "
-"mode, as if the .map file was chosen in the file selector."
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
+"scenario's map data and open the corresponding .map file in terrain-only "
+"mode, as if the .map file was chosen in the file selector. It is recommended "
+"in those cases to simply load the .map file directly instead."
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:414
 msgid "Using a separate file for WML events"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:415
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
 "been edited by hand.\n"
 "\n"
-"Files created by the scenario editor omit the opening [scenario] and closing "
-"[/scenario] tags. If you are creating a campaign (or other add-on), then "
-"those tags need to be added; there is more detail about this in the "
-"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
-"\n"
-"One workflow is to create a separate WML file, also with the .cfg extension, "
+"One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
 "separate file contains both the [scenario] tag and any hand-edited WML such "
 "as events. With this workflow, the add-on’s file structure could look like "
 "this:\n"
 "\n"
-"<header>text='For Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-"these four lines:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"The first three of those lines insert the scenario-generated file inside a "
-"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
-"will be combined, with attributes in the second one overriding attributes in "
-"the first one.\n"
-"\n"
-"<header>text='1.16 and later'</header>\n"
-"\n"
-"If your add-on will only be used on 1.16 and later, there are new features "
-"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
-"within the .cfg files.\n"
+"<header>text='Example'</header>\n"
+"If your add-on will only be used on 1.18 and later, it is instead "
+"recommended to use the new include_file attribute to load a .cfg file "
+"containing additional WML into the scenario.\n"
 "\n"
 "• _main.cfg:\n"
 "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory.\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-"load that file"
+"which makes “map_file” search the “maps” directory\n"
+"• maps/first.map\n"
+"  ◦ this is the .map file created by the scenario editor when saving in "
+"scenario mode\n"
+"• scenarios/other.cfg\n"
+"  ◦ this is the .cfg file containing everything that the scenario editor "
+"doesn't understand\n"
+"• scenarios/first.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
+"map file\n"
+"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
+"the additional cfg file"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -944,14 +1105,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:447
 #, fuzzy
 #| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
 msgstr "Hora"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:448
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -964,13 +1125,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:459
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:461
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -986,32 +1147,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:466
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:467
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:468
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:480
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:483
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1042,7 +1203,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1062,38 +1223,17 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:504
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"In scenario mode, the editor saves the data as a .cfg file with embedded map "
-"data. When loading a .cfg file, the scenario editor understands files "
-"created by the scenario editor itself, but is likely to have difficulty with "
-"files that have been edited by hand; problems can be avoided by "
-"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"In scenario mode, the editor saves the scenario data as a .cfg file and the "
+"map data as a separate .map file. The scenario then references the .map file "
+"via map_file. When loading a .cfg file, the scenario editor understands "
+"files created by the scenario editor itself, but is likely to have "
+"difficulty with files that have been edited by hand; problems can be avoided "
+"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
-msgstr ""
-
-#. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
-msgid ""
-"<header>text='Which scenario files use the [scenario] tag'</header>\n"
-"\n"
-"Files created by the scenario editor have the contents of a WML scenario "
-"element, but don’t include the opening [scenario] and closing [/scenario] "
-"tags. For each .cfg file in the userdata folder’s editor/scenarios "
-"subfolder, the game will automatically try to load a scenario from it to "
-"include in the “Custom Scenarios” list (files that fail to load are "
-"ignored). In this folder each file is a separate item - files that fail to "
-"parse as a scenario are ignored, and files must not contain the [scenario][/"
-"scenario] tags.\n"
-"\n"
-"The opposite applies when a scenario is part of a campaign or other add-on. "
-"Typically each scenario has its own .cfg file, however this is unnecessary - "
-"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
-"matter whether the add-on is written as separate files or not. The engine "
-"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
-"to know which WML is part of each scenario."
 msgstr ""
 
 #. [editor_times]: id=deep_underground
@@ -1501,8 +1641,8 @@ msgstr "Ars Ludi"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:475
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:492
+#: src/help/help_topic_generators.cpp:515
 msgid "Traits"
 msgstr "Ingenia"
 
@@ -3549,7 +3689,7 @@ msgid ""
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
 "bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
@@ -3586,8 +3726,8 @@ msgstr "Imperia Vulgaria"
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
+"with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
+"‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
 
@@ -3595,7 +3735,7 @@ msgstr ""
 #: data/core/help.cfg:681
 msgid ""
 "\n"
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
@@ -4041,16 +4181,6 @@ msgid ""
 msgstr " Haec unitas regenerat et semper se curat ut in villa."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "constans"
-
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
-msgid "female^steadfast"
-msgstr "constans"
-
-#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
 #, fuzzy
 msgid ""
@@ -4090,7 +4220,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
-"attacking it, this unit diverts the target's attention and reduces its "
+"attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
 "  Si quis ex sociis inimicum distrahit, haec unitas in tergum percutere "
@@ -4127,17 +4257,12 @@ msgstr ""
 "Imperii hostium ignorat."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:235
+#: data/core/macros/abilities.cfg:237
 msgid "illuminates"
 msgstr "illustrat"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:236
-msgid "female^illuminates"
-msgstr "illustrat"
-
-#. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:237
+#: data/core/macros/abilities.cfg:239
 #, fuzzy
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -4154,12 +4279,12 @@ msgstr ""
 "sicut die."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:251
+#: data/core/macros/abilities.cfg:254
 msgid "female^teleport"
 msgstr "praeterit"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:252
+#: data/core/macros/abilities.cfg:255
 #, fuzzy
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
@@ -4170,12 +4295,12 @@ msgstr ""
 "puncto motus."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:283
+#: data/core/macros/abilities.cfg:286
 msgid "female^ambush"
 msgstr "insidiae"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:284
+#: data/core/macros/abilities.cfg:287
 #, fuzzy
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -4192,19 +4317,19 @@ msgstr ""
 "unitates hostium apud unitatum hanc adsunt."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:302
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:303
+#: data/core/macros/abilities.cfg:307
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^burrow"
 msgstr "lenta"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:304
+#: data/core/macros/abilities.cfg:308
 #, fuzzy
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
@@ -4222,7 +4347,7 @@ msgstr ""
 "unitates hostium apud unitatum hanc adsunt."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:325
+#: data/core/macros/abilities.cfg:330
 #, fuzzy
 msgid ""
 "The unit becomes invisible during night.\n"
@@ -4239,12 +4364,12 @@ msgstr ""
 "unitatum hanc adsunt."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:344
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "occultatio"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:345
+#: data/core/macros/abilities.cfg:350
 #, fuzzy
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
@@ -4263,17 +4388,17 @@ msgstr ""
 "hostium apud unitatum hanc adsunt."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:363
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "demergit"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:364
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
 msgstr "demergit"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:365
+#: data/core/macros/abilities.cfg:370
 #, fuzzy
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -4291,239 +4416,16 @@ msgstr ""
 "hostium apud unitatum hanc adsunt."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:385
+#: data/core/macros/abilities.cfg:390
 msgid "female^feeding"
 msgstr "ingurgitat"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:386
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "saevus"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-#, fuzzy
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Saevitia:\n"
-"In offensione vel defensione, haec oppugnatio certamen presset donec unus ex "
-"pugnatoribus interfectus erit aut XXX tractus oppugnationis evenerint."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-#, fuzzy
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"In tergum percutere:\n"
-"Haec oppugnatio damnum duplice facit, si unitas inimica scopi in latere "
-"adverso scopi adest et haec unitas non debilitata est (e.g. petrificata)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-#, fuzzy
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Pestilentia:\n"
-"Cum unitas ab oppugnatione Pestilentiae interficitur, illa unitas ab unitate "
-"consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
-"substituitur."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-#, fuzzy
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Pestilentia:\n"
-"Cum unitas ab oppugnatione Pestilentiae interficitur, illa unitas ab unitate "
-"consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
-"substituitur."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-#, fuzzy
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Lentifacere:\n"
-"Haec oppugnatio lentifacit scopum usque ad terminum tractu eius. Hoc minuit "
-"damnum oppugnationum dimidia parte et unitates lentifactae se movent cum "
-"celeritate dimidia (si adest fractio numero superiori utitur)."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "defigit"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-#, fuzzy
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Petrificare:\n"
-"Haec oppugnatio petrificavit scopum. Unitates quae in saxum mutantur neque "
-"movere neque oppugnare possunt."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-#, fuzzy
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Peritus arcus:\n"
-"Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
-"saltem LX pro centum feriendi."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-#, fuzzy
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Peritus arcus:\n"
-"Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
-"saltem LX pro centum feriendi."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "magicus"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-#, fuzzy
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Magicalis:\n"
-"Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "fervet"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-#, fuzzy
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Examen:\n"
-"Numerus oppugnationum modi huius oppugnationis minuit cum vulneratur unitas. "
-"Numerus oppugnationum pro rata parte est fractionis SP ex maximis. Exempli "
-"gratia, unitas quae tres partes SP possidit tres partes oppugnationes "
-"accipiet."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "incurrit"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-#, fuzzy
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Incurrere:\n"
-"Haec oppugnatio damnum duplice facit scopo. Atque efficit ut haec unitas "
-"damnum duplice ex oppugnatione scopi in vicem accipiat."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-#, fuzzy
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Exhaurire:\n"
-"Haec unitas salutem ex unitatibus vivis exhaurit, se sanans dimidiam partem "
-"damni inflecti (ignorans fractiones)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "primus ictus"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-#, fuzzy
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Ictus Primus:\n"
-"Haec unitas semper prima percutit, etsi defendit."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-#, fuzzy
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Venenum:\n"
-"Haec oppugnatio scopum veneno necat. Unitates venenatae VIII PS quoque "
-"tractu amittunt donec sanantur aut ad I PS rediguntur."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4738,7 +4640,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 #, fuzzy
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
@@ -4747,7 +4649,7 @@ msgstr ""
 " Spiritus repugnantia insolita a damno habent et admodum lente se movent "
 "super aquas."
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
@@ -4756,19 +4658,19 @@ msgstr ""
 " Oppugnatio sancta huius unitatis damnum vastum infligit in inmortuis, etiam "
 "nonnulli vivis."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Hic actor sanationem mediocrem potest."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Hic actor sanationem celerem potest."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -4777,7 +4679,7 @@ msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr " Hic actor vicinos sanare potest et venenum purgare."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -4787,14 +4689,14 @@ msgid ""
 "it."
 msgstr " Hic actor venenum vicinorum supprimere."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr " Haec unitas regenerat et semper se curat ut in villa."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
@@ -4803,7 +4705,7 @@ msgstr ""
 " Constantia huius unitatis damnum a nonnullis oppugnationibus minut, sed "
 "tantum in defensu."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
@@ -4812,7 +4714,7 @@ msgstr ""
 " Ob ductu huius unitatis oppugnationes unitatum vicinorum maiorem damnum "
 "infligere possunt, sed tantum si sunt ex gradu inferiore."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -4821,12 +4723,12 @@ msgstr ""
 " Peritiae ut excursor huius unitatis se permitit ignorare zona imperii "
 "hostium et ergo inimpedita circum eos se movere."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Illustratio augeat lucem in hexagonis vicinis."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
@@ -4836,7 +4738,7 @@ msgstr ""
 "Haec unitas ianuas magicas inter duos pagos amicos aperire potest, utens uno "
 "puncto motus."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -4845,14 +4747,14 @@ msgstr ""
 " In silvis, peritiae huius unitatis insidiarum eam facit inivisibilem a "
 "hostiis, nisi vicina est inimico aut in hoc tractu oppugnavit."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Haec unitas noctu se occultare potest, relinquans vestigium nullum "
 "praesentiae."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
@@ -4866,7 +4768,7 @@ msgstr ""
 "gurgite est, nisi in tractu statim post oppugnationem eius aut si unitates "
 "hostium apud unitatum hanc adsunt."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
@@ -4874,13 +4776,13 @@ msgstr ""
 " Haec unitas in gurgite invisibiliter se movere potest, quia non eget aera a "
 "superficie."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
@@ -4889,7 +4791,7 @@ msgstr ""
 " Cum oppugnatione saeva utitur, haec unitas pugnat usque ad mortem sui vel "
 "hostis."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
@@ -4899,14 +4801,21 @@ msgstr ""
 "  Si quis ex sociis inimicum distrahit, haec unitas in tergum percutere "
 "potest damnum duplice infligens, quia post inimicum repere potest."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr " Inimicos qui a pestilenitia mortui erunt inmortui surgent."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
+#, fuzzy
+msgid ""
+"Foes who lose their life to certain horrors of nature become nourishment for "
+"a rapidly growing larva, unless they are standing in a village."
+msgstr " Inimicos qui a pestilenitia mortui erunt inmortui surgent."
+
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
@@ -4915,14 +4824,14 @@ msgstr ""
 " Haec oppugnatio inimicos lentificare potest. Hoc minuit motum dimidia parte "
 "atque damnum oppugnationum."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " Quia vivos in saxa convertere potest, haec unitas valde periculosa est."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
@@ -4931,7 +4840,7 @@ msgstr ""
 " Peritiae arcus huius unitatis probabilitatem bonam ei dat scopos ferendi, "
 "sed tantum in oppugnatione, non in defensu."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
@@ -4940,7 +4849,7 @@ msgstr ""
 " Oppugnationes a procul huius unitatis magicae sunt et semper probabilitatem "
 "bonam habent ferendi adversarios."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
@@ -4949,7 +4858,7 @@ msgstr ""
 "Oppugnationes examinis huius unitatis minus funestae fiunt si socii examinis "
 "feriuntur."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
@@ -4958,7 +4867,7 @@ msgstr ""
 " Oppugnatio incurrens infligit damnum duplice et fit ut damnum receptum "
 "duplice fiet. Hoc non accedit in ulscicione defensu."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
@@ -4966,7 +4875,7 @@ msgstr ""
 "In proelio haec unitas vitam ex victimis exhaurire potest ut salutem "
 "propriam renovet."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
@@ -4975,7 +4884,7 @@ msgstr ""
 "Longitudo teli huius unitatis permittit ut primus pulset in concursu, etiam "
 "in defensu."
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:100
 #, fuzzy
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
@@ -4984,25 +4893,19 @@ msgstr ""
 "Victimae veneni huius unitatis damnum perpetuo damnum patientur usque in "
 "pago aut a sanatore curantur."
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
+#: data/core/macros/special-notes.cfg:122
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
 msgstr ""
-"\n"
-"\n"
-"Nota bene: "
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5052,11 +4955,6 @@ msgstr ""
 "Unitates Fideles non solvunt impensam. Plurimae unitates impensa aequale "
 "gradu suo in fine omnis tractus solvere debent. Unitates Fideles hoc pretium "
 "non subeunt."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "immortuus"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -5504,6 +5402,256 @@ msgid ""
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
 
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "saevus"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+#, fuzzy
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Saevitia:\n"
+"In offensione vel defensione, haec oppugnatio certamen presset donec unus ex "
+"pugnatoribus interfectus erit aut XXX tractus oppugnationis evenerint."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+#, fuzzy
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"In tergum percutere:\n"
+"Haec oppugnatio damnum duplice facit, si unitas inimica scopi in latere "
+"adverso scopi adest et haec unitas non debilitata est (e.g. petrificata)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+#, fuzzy
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Pestilentia:\n"
+"Cum unitas ab oppugnatione Pestilentiae interficitur, illa unitas ab unitate "
+"consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
+"substituitur."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+#, fuzzy
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Lentifacere:\n"
+"Haec oppugnatio lentifacit scopum usque ad terminum tractu eius. Hoc minuit "
+"damnum oppugnationum dimidia parte et unitates lentifactae se movent cum "
+"celeritate dimidia (si adest fractio numero superiori utitur)."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "defigit"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+#, fuzzy
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Petrificare:\n"
+"Haec oppugnatio petrificavit scopum. Unitates quae in saxum mutantur neque "
+"movere neque oppugnare possunt."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+#, fuzzy
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Peritus arcus:\n"
+"Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
+"saltem LX pro centum feriendi."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+msgid ""
+"When used defensively, this attack reduces the opponent’s chance to hit by "
+"10%."
+msgstr ""
+"Peritus arcus:\n"
+"Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
+"saltem LX pro centum feriendi."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "magicus"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+#, fuzzy
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Magicalis:\n"
+"Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "fervet"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+#, fuzzy
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Examen:\n"
+"Numerus oppugnationum modi huius oppugnationis minuit cum vulneratur unitas. "
+"Numerus oppugnationum pro rata parte est fractionis SP ex maximis. Exempli "
+"gratia, unitas quae tres partes SP possidit tres partes oppugnationes "
+"accipiet."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "incurrit"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+#, fuzzy
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Incurrere:\n"
+"Haec oppugnatio damnum duplice facit scopo. Atque efficit ut haec unitas "
+"damnum duplice ex oppugnatione scopi in vicem accipiat."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+#, fuzzy
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Exhaurire:\n"
+"Haec unitas salutem ex unitatibus vivis exhaurit, se sanans dimidiam partem "
+"damni inflecti (ignorans fractiones)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "primus ictus"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+#, fuzzy
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Ictus Primus:\n"
+"Haec unitas semper prima percutit, etsi defendit."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+#, fuzzy
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Venenum:\n"
+"Haec oppugnatio scopum veneno necat. Unitates venenatae VIII PS quoque "
+"tractu amittunt donec sanantur aut ad I PS rediguntur."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+" Haec oppugnatio inimicos lentificare potest. Hoc minuit motum dimidia parte "
+"atque damnum oppugnationum."
+
+#. [damage_type]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:208
+msgid "arcane"
+msgstr ""
+
+#. [damage_type]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:209
+msgid ""
+"This attack combines the arcane type with the type of weapon used so that "
+"resistance to the arcane type does not penalize the user."
+msgstr ""
+
+#. [damage_type]: id=arcane_damage
+#: data/core/macros/weapon_specials.cfg:210
+msgid ""
+"This unit can use the arcane type when the opponent is particularly "
+"sensitive to it in relation to the weapon on which it is applied."
+msgstr ""
+
 #: data/core/units.cfg:4
 msgid ""
 "Despite orcs’ reliance on raw strength, few of their children are destined "
@@ -5807,22 +5955,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Orculis"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Orculis"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:152
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Orcules"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:153
+#: data/core/units.cfg:151
 msgid ""
 "\n"
 "\n"
@@ -5839,22 +5987,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Gryps"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Gryps"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:172
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Grypes"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:173
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -5867,28 +6015,28 @@ msgid ""
 msgstr ""
 
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:181
 #, fuzzy
 #| msgid "race^Wose"
 msgid "race^Horse"
 msgstr "Vidanum"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:182
 #, fuzzy
 #| msgid "race+female^Ogre"
 msgid "race+female^Horse"
 msgstr "Semimulier"
 
 #. [race]: id=horse
-#: data/core/units.cfg:185
+#: data/core/units.cfg:183
 #, fuzzy
 #| msgid "race^Woses"
 msgid "race^Horses"
 msgstr "Vidana"
 
 #. [race]: id=horse
-#: data/core/units.cfg:186
+#: data/core/units.cfg:184
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -5902,22 +6050,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:201
 msgid "race^Human"
 msgstr "Homo"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:202
 msgid "race+female^Human"
 msgstr "Mulier"
 
 #. [race]: id=human
-#: data/core/units.cfg:205
+#: data/core/units.cfg:203
 msgid "race^Humans"
 msgstr "Homines"
 
 #. [race]: id=human
-#: data/core/units.cfg:206
+#: data/core/units.cfg:204
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5960,28 +6108,28 @@ msgid ""
 msgstr ""
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:219
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
 msgstr "Homo"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:222
+#: data/core/units.cfg:220
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
 msgstr "Mulier"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:221
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Immortua"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:225
+#: data/core/units.cfg:223
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -6039,22 +6187,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:244
 msgid "race^Saurian"
 msgstr "Lacerta"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:245
 msgid "race+female^Saurian"
 msgstr "Lacerta"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:248
+#: data/core/units.cfg:246
 msgid "race^Saurians"
 msgstr "Lacertae"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:249
+#: data/core/units.cfg:247
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -6124,17 +6272,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:273
 msgid "race^Mechanical"
 msgstr "Machina"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:276
+#: data/core/units.cfg:274
 msgid "race+plural^Mechanical"
 msgstr "Machinae"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:277
+#: data/core/units.cfg:275
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -6143,24 +6291,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:284
 msgid "race^Merman"
 msgstr "Nereid"
 
 #. [race]: id=merman
-#: data/core/units.cfg:287
+#: data/core/units.cfg:285
 msgid "race^Mermaid"
 msgstr "Nereia"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:286
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Troglodyta"
 
 #. [race]: id=merman
-#: data/core/units.cfg:290
+#: data/core/units.cfg:288
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6174,22 +6322,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:296
 msgid "race^Monster"
 msgstr "Belua"
 
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:297
 msgid "race+female^Monster"
 msgstr "Belua"
 
 #. [race]: id=monster
-#: data/core/units.cfg:300
+#: data/core/units.cfg:298
 msgid "race^Monsters"
 msgstr "Beluae"
 
 #. [race]: id=monster
-#: data/core/units.cfg:301
+#: data/core/units.cfg:299
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6197,22 +6345,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:306
 msgid "race^Naga"
 msgstr "Hydradis"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:307
 msgid "race^Nagini"
 msgstr "Hydrada"
 
 #. [race]: id=naga
-#: data/core/units.cfg:310
+#: data/core/units.cfg:308
 msgid "race^Nagas"
 msgstr "Hydrades"
 
 #. [race]: id=naga
-#: data/core/units.cfg:311
+#: data/core/units.cfg:309
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6230,22 +6378,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:317
 msgid "race^Ogre"
 msgstr "Semihomo"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:318
 msgid "race+female^Ogre"
 msgstr "Semimulier"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:321
+#: data/core/units.cfg:319
 msgid "race^Ogres"
 msgstr "Semihomines"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:322
+#: data/core/units.cfg:320
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6264,22 +6412,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:328
 msgid "race^Orc"
 msgstr "Orx"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:329
 msgid "race+female^Orc"
 msgstr "Orx"
 
 #. [race]: id=orc
-#: data/core/units.cfg:332
+#: data/core/units.cfg:330
 msgid "race^Orcs"
 msgstr "Orces"
 
 #. [race]: id=orc
-#: data/core/units.cfg:333
+#: data/core/units.cfg:331
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -6333,7 +6481,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:344
+#: data/core/units.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -6341,23 +6489,64 @@ msgid ""
 "skills, like archery or assassination."
 msgstr ""
 
-#. [race]: id=troll
+#. [race]: id=raven
+#: data/core/units.cfg:351
+#, fuzzy
+#| msgid "race^Dwarves"
+msgid "race^Raven"
+msgstr "Pumiliones"
+
+#. [race]: id=raven
+#: data/core/units.cfg:352
+#, fuzzy
+#| msgid "race+female^Drake"
+msgid "race+female^Raven"
+msgstr "Dracula"
+
+#. [race]: id=raven
 #: data/core/units.cfg:353
+#, fuzzy
+#| msgid "race^Dwarves"
+msgid "race^Ravens"
+msgstr "Pumiliones"
+
+#. [race]: id=raven
+#: data/core/units.cfg:354
+msgid ""
+"Ravens are general scavengers, often associating with hunters or predators "
+"in the hope of sharing in the kill. They do not have the powerful beak or "
+"claws of the gryphons or raptors, but can still be a threat because of their "
+"intelligence and ability to recognize any advantage.\n"
+"\n"
+"In the aftermath of a battle, the dead and wounded are a banquet for ravens, "
+"thus ravens are a nuisance for allies of the defeated but are seen by some "
+"victors as part of martial ceremonies. The violence and large numbers that "
+"characterize both orcs and humans bring these races into constant "
+"interaction with ravens in this context. For this reason, the birds have "
+"become characters in fables, parables, and superstitions related to war.\n"
+"\n"
+"As intelligent scavengers, ravens do not need war dead to survive. Some "
+"farmers struggle to keep ravens away from freshly sown seeds, but others are "
+"happy to have them around as sentries."
+msgstr ""
+
+#. [race]: id=troll
+#: data/core/units.cfg:365
 msgid "race^Troll"
 msgstr "Troglodyta"
 
 #. [race]: id=troll
-#: data/core/units.cfg:354
+#: data/core/units.cfg:366
 msgid "race+female^Troll"
 msgstr "Troglodyta"
 
 #. [race]: id=troll
-#: data/core/units.cfg:355
+#: data/core/units.cfg:367
 msgid "race^Trolls"
 msgstr "Troglodytae"
 
 #. [race]: id=troll
-#: data/core/units.cfg:356
+#: data/core/units.cfg:368
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -6396,22 +6585,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:376
+#: data/core/units.cfg:388
 msgid "race^Undead"
 msgstr "Immortuum"
 
 #. [race]: id=undead
-#: data/core/units.cfg:377
+#: data/core/units.cfg:389
 msgid "race+female^Undead"
 msgstr "Immortua"
 
 #. [race]: id=undead
-#: data/core/units.cfg:378
+#: data/core/units.cfg:390
 msgid "race+plural^Undead"
 msgstr "Immortua"
 
 #. [race]: id=undead
-#: data/core/units.cfg:379
+#: data/core/units.cfg:391
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -6448,22 +6637,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:392
+#: data/core/units.cfg:404
 msgid "race^Wolf"
 msgstr "Lupus"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:393
+#: data/core/units.cfg:405
 msgid "race+female^Wolf"
 msgstr "Lupa"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:394
+#: data/core/units.cfg:406
 msgid "race^Wolves"
 msgstr "Lupi"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:395
+#: data/core/units.cfg:407
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -6475,17 +6664,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:404
+#: data/core/units.cfg:416
 msgid "race^Wose"
 msgstr "Vidanum"
 
 #. [race]: id=wose
-#: data/core/units.cfg:405
+#: data/core/units.cfg:417
 msgid "race^Woses"
 msgstr "Vidana"
 
 #. [race]: id=wose
-#: data/core/units.cfg:406
+#: data/core/units.cfg:418
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -6526,39 +6715,64 @@ msgid ""
 "home."
 msgstr ""
 
-#: data/lua/feeding.lua:30 data/lua/feeding.lua:43
+#. [lua]: action
+#: data/lua/feeding.lua:26 data/lua/feeding.lua:39
 msgid "+1 max HP"
 msgstr "+I fin PS"
 
-#: src/help/help.cpp:211
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+#, fuzzy
+#| msgid "female^undead"
+msgid "female^stunned"
+msgstr "immortua"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr ""
+
+#: src/help/help.cpp:207
 msgid "Close"
 msgstr "Claudere"
 
-#: src/help/help.cpp:215
+#: src/help/help.cpp:211
 msgid "Help"
 msgstr "Auxilium"
 
-#: src/help/help.cpp:267 src/help/help.cpp:271
+#: src/help/help.cpp:263 src/help/help.cpp:267
 #, fuzzy
 msgid "Parse error when parsing help text:"
 msgstr "Mendum traductionis in tradendo textum adiutorii: "
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:161
+#. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
+#: src/help/help_topic_generators.cpp:94
+#, fuzzy
+#| msgid "Terrain"
+msgid "base terrain"
+msgstr "Terra"
+
+#: src/help/help_topic_generators.cpp:165
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:170
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -6568,92 +6782,115 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:181
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:184
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:193
+#: src/help/help_topic_generators.cpp:188
+#: src/help/help_topic_generators.cpp:618
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"Nota bene: "
+
+#. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+#. The terrain names will be hypertext links to the help page of the corresponding terrain type.
+#. There will always be at least 1 item in the list, but unlikely to be more than 3.
+#: src/help/help_topic_generators.cpp:209
 #, fuzzy
 #| msgid "Terrain"
-msgid "Base Terrain: "
-msgstr "Terra"
+msgid "Basic terrain type: $types"
+msgid_plural "Basic terrain types: $types"
+msgstr[0] "Terra"
+msgstr[1] "Terra"
 
-#: src/help/help_topic_generators.cpp:213
+#. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
+#: src/help/help_topic_generators.cpp:221
+msgid "Typical base terrain: $type"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:227
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement properties: "
 msgstr "Pretium Motus"
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:231
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:311
 #, fuzzy
 #| msgid "level"
 msgid "Level"
 msgstr "ordo"
 
-#: src/help/help_topic_generators.cpp:358
+#: src/help/help_topic_generators.cpp:375
 msgid "Advances from: "
 msgstr "Producitur a: "
 
-#: src/help/help_topic_generators.cpp:360
+#: src/help/help_topic_generators.cpp:377
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances to: "
 msgstr "Producitur a: "
 
-#: src/help/help_topic_generators.cpp:389
+#: src/help/help_topic_generators.cpp:406
 msgid "Base unit: "
 msgstr "Actor communis: "
 
-#: src/help/help_topic_generators.cpp:394
+#: src/help/help_topic_generators.cpp:411
 #, fuzzy
 #| msgid "Base unit: "
 msgid "Base units: "
 msgstr "Actor communis: "
 
-#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:429
 msgid "Variations: "
 msgstr "Variationes: "
 
-#: src/help/help_topic_generators.cpp:436
+#: src/help/help_topic_generators.cpp:453
 msgid "race^Miscellaneous"
 msgstr "Alia"
 
-#: src/help/help_topic_generators.cpp:438
+#: src/help/help_topic_generators.cpp:455
 msgid "Race: "
 msgstr "Stirps: "
 
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:525
 msgid "Abilities: "
 msgstr "Facultates: "
 
-#: src/help/help_topic_generators.cpp:534
+#: src/help/help_topic_generators.cpp:551
 msgid "Ability Upgrades: "
 msgstr "Praemia Producendi: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:581
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -6662,7 +6899,7 @@ msgstr "PS: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:568
+#: src/help/help_topic_generators.cpp:585
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -6671,7 +6908,7 @@ msgstr "Motus: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:573
+#: src/help/help_topic_generators.cpp:590
 #, fuzzy
 #| msgid "Vision: "
 msgid "Vision:"
@@ -6680,7 +6917,7 @@ msgstr "Visio: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:579
+#: src/help/help_topic_generators.cpp:596
 #, fuzzy
 #| msgid "Swarming"
 msgid "Jamming:"
@@ -6689,7 +6926,7 @@ msgstr "Fervere"
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:584
+#: src/help/help_topic_generators.cpp:601
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -6698,7 +6935,7 @@ msgstr "Pretium: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:605
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -6707,81 +6944,91 @@ msgstr "Pars: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:595
+#: src/help/help_topic_generators.cpp:612
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "PU Necessaria: "
 
-#: src/help/help_topic_generators.cpp:613
+#: src/help/help_topic_generators.cpp:630
 msgid "unit help^Attacks"
 msgstr "Impetus"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:637
 msgid "unit help^Name"
 msgstr "Nomen"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:638
 msgid "Strikes"
 msgstr "Ictus"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:639
 msgid "Range"
 msgstr "Iactus"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:640
 msgid "Type"
 msgstr "Species"
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:641
 msgid "Special"
 msgstr "Praecipuum"
 
-#: src/help/help_topic_generators.cpp:699
+#: src/help/help_topic_generators.cpp:716
 msgid "Resistances"
 msgstr "Firmitas"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:720
 msgid "Attack Type"
 msgstr "Modus Pugnandi"
 
-#: src/help/help_topic_generators.cpp:704
+#: src/help/help_topic_generators.cpp:721
 msgid "Resistance"
 msgstr "Firmitas"
 
-#: src/help/help_topic_generators.cpp:734
+#: src/help/help_topic_generators.cpp:751
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Mutamenta Terrae"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:755
 msgid "Terrain"
 msgstr "Terra"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:756
 msgid "Defense"
 msgstr "Defensio"
 
-#: src/help/help_topic_generators.cpp:740
+#: src/help/help_topic_generators.cpp:757
 msgid "Movement Cost"
 msgstr "Pretium Motus"
 
-#: src/help/help_topic_generators.cpp:744
+#: src/help/help_topic_generators.cpp:761
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Defensio"
 
-#: src/help/help_topic_generators.cpp:749
+#: src/help/help_topic_generators.cpp:766
 msgid "Vision Cost"
 msgstr "Sumptus Visionis"
 
-#: src/help/help_topic_generators.cpp:753
+#: src/help/help_topic_generators.cpp:770
 #, fuzzy
 #| msgid "Vision Cost"
 msgid "Jamming Cost"
 msgstr "Sumptus Visionis"
+
+#, fuzzy
+#~| msgid "first strike"
+#~ msgid "first verse"
+#~ msgstr "primus ictus"
+
+#, fuzzy
+#~| msgid "Second Watch"
+#~ msgid "second verse"
+#~ msgstr "Vigilia Secunda"
 
 #~ msgid "Flat"
 #~ msgstr "Plana"

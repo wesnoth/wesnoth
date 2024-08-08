@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>, Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,13 +34,6 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the password box.
- */
 class password_box : public text_box
 {
 public:

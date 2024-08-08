@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@ class color_range;
 
 #include <vector>
 #include <map>
-#include <cstdint>
 
 //basic game configuration information is here.
 namespace game_config
@@ -55,8 +54,6 @@ namespace game_config
 		return combat_experience * level;
 	}
 
-	extern std::string wesnoth_program_dir;
-
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
@@ -67,12 +64,6 @@ namespace game_config
 
 	extern const bool& debug;
 	void set_debug(bool new_debug);
-
-	extern int cache_compression_level;
-
-	extern std::string path;
-	extern std::string default_preferences_path;
-	extern bool check_migration;
 
 	struct server_info
 	{
@@ -90,7 +81,6 @@ namespace game_config
 
 	namespace colors {
 	extern std::string ally_orb_color;
-	extern std::string disengaged_orb_color;
 	extern std::string enemy_orb_color;
 	extern std::string moved_orb_color;
 	extern std::string partial_orb_color;
@@ -103,6 +93,7 @@ namespace game_config
 	extern bool show_enemy_orb;
 	extern bool show_moved_orb;
 	extern bool show_partial_orb;
+	extern bool show_status_on_ally_orb;
 	extern bool show_unmoved_orb;
 
 	namespace images {
@@ -165,14 +156,11 @@ namespace game_config
 	 * Colors defined by WML [color_range] tags. In addition to team colors such as "red" and
 	 * "blue", this also contains the colors used on the minimap for "cave", "fungus" etc.
 	 */
-	extern std::map<std::string, color_range> team_rgb_range;
-	extern std::map<std::string, t_string> team_rgb_name;
-	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
+	extern std::map<std::string, color_range, std::less<>> team_rgb_range;
+	extern std::map<std::string, t_string, std::less<>> team_rgb_name;
+	extern std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
 
 	extern std::vector<std::string> default_colors;
-
-	/** observer team name used for observer team chat */
-	extern const std::string observer_team_name;
 
 	/**
 	 * The maximum number of hexes on a map and items in an array and also used
@@ -198,8 +186,8 @@ namespace game_config
 
 	void add_color_info(const game_config_view& v);
 	void reset_color_info();
-	const std::vector<color_t>& tc_info(const std::string& name);
-	const color_range& color_info(const std::string& name);
+	const std::vector<color_t>& tc_info(std::string_view name);
+	const color_range& color_info(std::string_view name);
 
 	/**
 	 * Return a color corresponding to the value val

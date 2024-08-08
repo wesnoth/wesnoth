@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2024
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -75,10 +75,6 @@ public:
 		, tok_(in)
 		, validator_(validator)
 		, elements()
-	{
-	}
-
-	~parser()
 	{
 	}
 
@@ -227,8 +223,8 @@ void parser::parse_element()
 
 		// Find the last child of the current element whose name is element
 		parent = elements.top().cfg;
-		if(config& c = parent->child(elname, -1)) {
-			current_element = &c;
+		if(auto c = parent->optional_child(elname, -1)) {
+			current_element = c.ptr();
 
 			if(validator_) {
 				validator_->open_tag(elname, *parent, tok_.get_start_line(), tok_.get_file(), true);

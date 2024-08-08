@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "ai/manager.hpp"
 #include "ai/default/contexts.hpp"
 #include "ai/actions.hpp"
-#include "ai/formula/ai.hpp"
 #include "ai/composite/contexts.hpp"
 
 #include "actions/attack.hpp"

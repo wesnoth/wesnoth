@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,11 +27,9 @@
 #include "actions/attack.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
-#include "preferences/general.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_events/pump.hpp"
 #include "map/map.hpp"
-#include "units/helper.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -241,7 +239,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 
 	// Find the unit in the recall list.
 	unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);
-	assert(dismissed_unit);
+	if (!dismissed_unit) {
+		error_handler("illegal disband\n");
+		return false;
+	}
 	//add dismissal to the undo stack
 	resources::undo_stack->add_dismissal(dismissed_unit);
 
@@ -313,7 +314,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	bool show_move = show;
 	if ( current_team.is_local_ai() || current_team.is_network_ai())
 	{
-		show_move = show_move && !preferences::skip_ai_moves();
+		show_move = show_move && !prefs::get().skip_ai_moves();
 	}
 	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : nullptr, skip_sighted, skip_ally_sighted, show_move);
 
@@ -322,8 +323,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_handler*/)
 {
-	bool undoable = true;
-
 	if(const auto last_select = child.optional_child("last_select"))
 	{
 		//the select event cannot clear the undo stack.
@@ -331,14 +330,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 	}
 	const std::string &event_name = child["raise"];
 	if (const auto source = child.optional_child("source")) {
-		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata)));
+		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata))));
 	} else {
-		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name));
+		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name)));
 	}
 
 	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
 	if(use_undo) {
-		if(!undoable || !synced_context::can_undo()) {
+		if(synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();
@@ -352,7 +351,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child,  use_undo, /*show*/, /*er
 	assert(resources::lua_kernel);
 	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
 	if(use_undo) {
-		if(!synced_context::can_undo()) {
+		if(synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();
@@ -367,31 +366,32 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
-	// We cannot update shroud here like 'if(active) resources::undo_stack->commit_vision();'.
-	// because the undo.cpp code assumes exactly 1 entry in the undo stack per entry in the replay.
-	// And doing so would create a second entry in the undo stack for this 'auto_shroud' entry.
+	if(active && !current_team.auto_shroud_updates()) {
+		resources::undo_stack->commit_vision();
+	}
 	current_team.set_auto_shroud_updates(active);
-	resources::undo_stack->add_auto_shroud(active);
+	if(resources::undo_stack->can_undo()) {
+		resources::undo_stack->add_auto_shroud(active);
+	}
 	return true;
 }
 
-/** from resources::undo_stack->commit_vision(bool is_replay):
- * Updates fog/shroud based on the undo stack, then updates stack as needed.
- * Call this when "updating shroud now".
- * This may fire events and change the game state.
- *
- * This means it is a synced command like any other.
- */
-
 SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, error_handler)
 {
+	// When "updating shroud now" is used.
+	// Updates fog/shroud based on the undo stack, then updates stack as needed.
+	// This may fire events and change the game state.
+
 	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
 		error_handler("Team has DSU disabled but we found an explicit shroud update");
 	}
-	resources::undo_stack->commit_vision();
+	bool res = resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
+	if(res) {
+		resources::undo_stack->clear();
+	}
 	return true;
 }
 
@@ -478,7 +478,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		return false;
 	}
 	if (name == "advances" ) {
-		int int_value = std::stoi(value);
+		int int_value = 0;
+		try {
+			int_value = std::stoi(value);
+		} catch (const std::invalid_argument&) {
+			WRN_REPLAY << "Warning: Invalid unit advancement argument: " << value;
+			return false;
+		}
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
 
@@ -584,6 +590,27 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	debug_cmd_notification("lua");
 	resources::lua_kernel->run(child["code"].str().c_str(), "debug command");
 	resources::controller->pump().flush_messages();
+
+	return true;
+}
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	debug_cmd_notification("teleport");
+
+	const map_location teleport_from(child["teleport_from_x"].to_int(), child["teleport_from_y"].to_int(), wml_loc());
+	const map_location teleport_to(child["teleport_to_x"].to_int(), child["teleport_to_y"].to_int(), wml_loc());
+
+	const unit_map::iterator unit_iter = resources::gameboard->units().find(teleport_from);
+	if(unit_iter != resources::gameboard->units().end()) {
+		if(unit_iter.valid()) {
+			actions::teleport_unit_from_replay({teleport_from, teleport_to}, false, false, false);
+		}
+		display::get_singleton()->redraw_minimap();
+	}
 
 	return true;
 }

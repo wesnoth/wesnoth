@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,27 +22,19 @@
 
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"          // for game_display
+#include "gui/dialogs/transient_message.hpp"
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
-#include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
 #include "mouse_handler_base.hpp"       // for command_disabler
-#include "preferences/general.hpp"
-#include "recall_list_manager.hpp"   // for recall_list_manager
 #include "replay.hpp"                // for recorder, replay
-#include "replay_helper.hpp"         // for replay_helper
 #include "resources.hpp"             // for screen, teams, units, etc
 #include "synced_context.hpp"        // for set_scontext_synced
 #include "team.hpp"                  // for team
-#include "units/unit.hpp"                  // for unit
-#include "units/animation_component.hpp"
 #include "units/id.hpp"
-#include "units/map.hpp"              // for unit_map, etc
 #include "units/ptr.hpp"      // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"               // for unit_type, unit_type_data, etc
 #include "whiteboard/manager.hpp"    // for manager
 
-#include "actions/create.hpp"                   // for find_recall_location, etc
-#include "actions/move.hpp"                   // for get_village
 #include "actions/vision.hpp"           // for clearer_info, etc
 #include "actions/shroud_clearing_action.hpp"
 #include "actions/undo_dismiss_action.hpp"
@@ -53,8 +45,6 @@
 
 #include <algorithm>                    // for reverse
 #include <cassert>                      // for assert
-#include <ostream>                      // for operator<<, basic_ostream, etc
-#include <set>                          // for set
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -85,7 +75,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 
 	else if ( str == "recruit" ) {
 		// Validate the unit type.
-		const config & child = cfg.child("unit");
+		const config & child = cfg.mandatory_child("unit");
 		const unit_type * u_type = unit_types.find(child["type"]);
 
 		if ( !u_type ) {
@@ -101,7 +91,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
 
 	else if ( str == "dismiss" )
-		res =  new undo::dismiss_action(cfg, cfg.child("unit"));
+		res =  new undo::dismiss_action(cfg, cfg.mandatory_child("unit"));
 
 	else if ( str == "auto_shroud" )
 		res =  new undo::auto_shroud_action(cfg["active"].to_bool());
@@ -124,11 +114,9 @@ undo_action_base * undo_list::create_action(const config & cfg)
  * Constructor.
  * The config is allowed to be invalid.
  */
-undo_list::undo_list(const config & cfg) :
+undo_list::undo_list() :
 	undos_(), redos_(), side_(1), committed_actions_(false)
 {
-	if ( cfg )
-		read(cfg);
 }
 
 /**
@@ -146,17 +134,11 @@ undo_list::~undo_list()
  */
 void undo_list::add_auto_shroud(bool turned_on)
 {
-	// TODO: Consecutive shroud actions can be collapsed into one.
-
-	// Do not call add(), as this should not clear the redo stack.
 	add(new undo::auto_shroud_action(turned_on));
 }
 
 void undo_list::add_dummy()
 {
-	// TODO: Consecutive shroud actions can be collapsed into one.
-
-	// Do not call add(), as this should not clear the redo stack.
 	add(new undo_dummy_action());
 }
 
@@ -205,8 +187,6 @@ void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
  */
 void undo_list::add_update_shroud()
 {
-	// TODO: Consecutive shroud actions can be collapsed into one.
-
 	add(new undo::update_shroud_action());
 }
 
@@ -239,9 +219,8 @@ void undo_list::clear()
  * Updates fog/shroud based on the undo stack, then updates stack as needed.
  * Call this when "updating shroud now".
  * This may fire events and change the game state.
- * @param[in]  is_replay  Set to true when this is called during a replay.
  */
-void undo_list::commit_vision()
+bool undo_list::commit_vision()
 {
 	// Update fog/shroud.
 	bool cleared_something = apply_shroud_changes();
@@ -253,6 +232,7 @@ void undo_list::commit_vision()
 		//undos_.erase(undos_.begin(), undos_.begin() + erase_to);
 		committed_actions_ = true;
 	}
+	return cleared_something;
 }
 
 
@@ -404,33 +384,35 @@ void undo_list::undo()
  */
 void undo_list::redo()
 {
-	if ( redos_.empty() )
+	if (redos_.empty()) {
 		return;
-
-	const events::command_disabler disable_commands;
-
-	game_display & gui = *game_display::get_singleton();
-
-	// Get the action to redo. (This will be placed on the undo stack, but
-	// only if the redo is successful.)
+	}
+	// Get the action to redo.
 	auto action = std::move(redos_.back());
 	redos_.pop_back();
 
-	const config& command_wml = action->child("command");
-	std::string commandname = command_wml.all_children_range().front().key;
-	const config& data = command_wml.all_children_range().front().cfg;
+	auto [commandname, data] = action->mandatory_child("command").all_children_range().front();
 
-	resources::recorder->redo(const_cast<const config&>(*action));
+	// Note that this might add more than one [command]
+	resources::recorder->redo(*action);
 
+	auto error_handler =  [](const std::string&  msg) {
+		ERR_NG << "Out of sync when redoing: " << msg;
+		gui2::show_transient_message(_("Redo Error"),
+					_("The redo stack is out of sync. This is most commonly caused by a corrupt save file or by faulty WML code in the scenario or era. Details:") + msg);
 
-	// synced_context::run readds the undo command with the normal undo_lis::add function which clears the
-	// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
+	};
+	// synced_context::run readds the undo command with the normal
+	// undo_list::add function which clears the redo stack which would
+	// make redoing of more than one move impossible. To work around
+	// that we save redo stack here and set it later.
 	redos_list temp;
 	temp.swap(redos_);
-	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true);
+	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true, error_handler);
 	temp.swap(redos_);
 
 	// Screen updates.
+	game_display & gui = *game_display::get_singleton();
 	gui.invalidate_unit();
 	gui.invalidate_game_status();
 	gui.redraw_minimap();

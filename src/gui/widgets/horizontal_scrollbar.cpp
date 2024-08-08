@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,13 +19,8 @@
 
 #include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
-#include "gui/core/window_builder.hpp"
-
-#include "gui/widgets/settings.hpp"
 
 #include "wml_exception.hpp"
-
-#include <functional>
 
 namespace gui2
 {
@@ -129,10 +124,10 @@ horizontal_scrollbar_definition::resolution::resolution(const config& cfg)
 									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is scrollbar.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_pressed"));
-	state.emplace_back(cfg.child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("horizontal_scrollbar_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("horizontal_scrollbar_definition][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("horizontal_scrollbar_definition][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("horizontal_scrollbar_definition][resolution", "state_focused")));
 }
 
 // }---------- BUILDER -----------{

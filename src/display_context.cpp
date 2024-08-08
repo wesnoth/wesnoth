@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,11 @@
 const team& display_context::get_team(int side) const
 {
 	return teams().at(side - 1);
+}
+
+bool display_context::has_team(int side) const
+{
+	return side > 0 && side <= static_cast<int>(teams().size());
 }
 
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)

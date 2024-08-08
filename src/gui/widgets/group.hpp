@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -93,7 +93,7 @@ public:
 	/**
 	 * Returns the value paired with the currently actively toggled member of the group.
 	 */
-	T get_active_member_value()
+	T get_active_member_value() const
 	{
 		for(auto& member : members_) {
 			if(member.second->get_value_bool()) {

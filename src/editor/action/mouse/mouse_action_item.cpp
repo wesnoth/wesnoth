@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include "editor/action/action_item.hpp"
 
 #include "editor/editor_display.hpp"
-#include "tooltips.hpp"
 #include "gettext.hpp"
 
 #include "map/location.hpp"

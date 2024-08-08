@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,20 +15,18 @@
 
 #include "units/udisplay.hpp"
 
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
+#include "play_controller.hpp"
 #include "color.hpp"
 #include "sound.hpp"
-#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
-#include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/scope_exit.hpp"
 #include "video.hpp"
@@ -138,7 +136,7 @@ int move_unit_between(const map_location& a,
 		display& disp)
 {
 	if ( disp.fogged(a) && disp.fogged(b) ) {
-		return INT_MIN;
+		return std::numeric_limits<int>::min();
 	}
 
 	temp_unit->set_location(a);
@@ -166,8 +164,7 @@ int move_unit_between(const map_location& a,
 
 bool do_not_show_anims(display* disp)
 {
-
-	return !disp || video::headless();
+	return !disp || video::headless() || resources::controller->is_skipping_replay();
 }
 
 } // end anon namespace
@@ -181,7 +178,7 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool
 	animate_(animate),
 	force_scroll_(force_scroll),
 	animator_(),
-	wait_until_(INT_MIN),
+	wait_until_(std::numeric_limits<int>::min()),
 	shown_unit_(),
 	path_(path),
 	current_(0),
@@ -396,10 +393,10 @@ void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, boo
  */
 void unit_mover::wait_for_anims()
 {
-	if ( wait_until_ == INT_MAX )
+	if ( wait_until_ == std::numeric_limits<int>::max() )
 		// Wait for end (not currently used, but still supported).
 		animator_.wait_for_end();
-	else if ( wait_until_ != INT_MIN ) {
+	else if ( wait_until_ != std::numeric_limits<int>::min() ) {
 		// Wait until the specified time (used for normal movement).
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
@@ -420,7 +417,7 @@ void unit_mover::wait_for_anims()
 	}
 
 	// Reset data.
-	wait_until_ = INT_MIN;
+	wait_until_ = std::numeric_limits<int>::min();
 	animator_.clear();
 
 	update_shown_unit();
@@ -524,7 +521,7 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc, unit_ptr defender)
 {
 	display* disp = display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || disp->fogged(loc) || !prefs::get().show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -544,7 +541,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit_ptr secondary_unit)
 {
 	display* disp = display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !prefs::get().show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -574,7 +571,7 @@ void unit_die(const map_location& loc, unit& loser,
 		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc, unit_ptr winner)
 {
 	display* disp = display::get_singleton();
-	if(do_not_show_anims(disp) || disp->fogged(loc) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || disp->fogged(loc) || !prefs::get().show_combat()) {
 		return;
 	}
 	unit_animator animator;
@@ -604,7 +601,7 @@ void unit_attack(display * disp, game_board & board,
                  const std::vector<std::string>* extra_hit_sounds,
                  bool attacking)
 {
-	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {
+	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !prefs::get().show_combat()) {
 		return;
 	}
 	//const unit_map& units = disp->get_units();
@@ -625,7 +622,7 @@ void unit_attack(display * disp, game_board & board,
 	int def_hitpoints = defender.hitpoints();
 	const_attack_ptr weapon = attack.shared_from_this();
 	auto ctx = weapon->specials_context(attacker.shared_from_this(), defender.shared_from_this(), a, b, attacking, secondary_attack);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(secondary_attack) {
 		opp_ctx.emplace(secondary_attack->specials_context(defender.shared_from_this(), attacker.shared_from_this(), b, a, !attacking, weapon));

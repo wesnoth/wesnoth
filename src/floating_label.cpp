@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,13 +15,11 @@
 
 #include "floating_label.hpp"
 
-#include "display.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "font/sdl_ttf_compat.hpp" // pango_line_width
+#include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
-#include "sdl/utils.hpp"
 #include "video.hpp"
 
 #include <map>
@@ -45,8 +43,6 @@ int label_id = 1;
 
 std::stack<std::set<int>> label_contexts;
 
-/** Curent ID of the help string. */
-int help_string_ = 0;
 }
 
 namespace font
@@ -100,13 +96,17 @@ int floating_label::xpos(std::size_t width) const
 
 rect floating_label::get_bg_rect(const rect& text_rect) const
 {
-	const int zf = display::get_singleton()->get_zoom_factor();
 	return {
-		text_rect.x - (border_ * zf),
-		text_rect.y - (border_ * zf),
-		text_rect.w + (border_ * zf * 2),
-		text_rect.h + (border_ * zf * 2)
+		text_rect.x -  border_,
+		text_rect.y -  border_,
+		text_rect.w + (border_ * 2),
+		text_rect.h + (border_ * 2)
 	};
+}
+
+void floating_label::clear_texture()
+{
+	tex_.reset();
 }
 
 bool floating_label::create_texture()
@@ -179,13 +179,8 @@ void floating_label::update(int time)
 
 	uint8_t new_alpha = get_alpha(time);
 
-	if(screen_loc_ == draw_loc && alpha_ == new_alpha) {
-		// nothing has changed
-		return;
-	}
-
 	// Invalidate former draw loc
-	draw_manager::invalidate_region(screen_loc_);
+	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
 
 	// Invalidate new draw loc in preparation
 	draw_manager::invalidate_region(get_bg_rect(draw_loc));
@@ -397,43 +392,6 @@ void update_floating_labels()
 			++j;
 		}
 	}
-}
-
-void set_help_string(const std::string& str)
-{
-	remove_floating_label(help_string_);
-
-	const color_t color{0, 0, 0, 0xbb};
-
-	int size = font::SIZE_LARGE;
-	point canvas_size = video::game_canvas_size();
-
-	while(size > 0) {
-		if(pango_line_width(str, size) > canvas_size.x) {
-			size--;
-		} else {
-			break;
-		}
-	}
-
-	const int border = 5;
-
-	floating_label flabel(str);
-	flabel.set_font_size(size);
-	flabel.set_position(canvas_size.x / 2, canvas_size.y);
-	flabel.set_bg_color(color);
-	flabel.set_border_size(border);
-
-	help_string_ = add_floating_label(flabel);
-
-	const rect& r = get_floating_label_rect(help_string_);
-	move_floating_label(help_string_, 0.0, -double(r.h));
-}
-
-void clear_help_string()
-{
-	remove_floating_label(help_string_);
-	help_string_ = 0;
 }
 
 }

@@ -1,23 +1,23 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2020 Wesnoth development team
+# Copyright (C) 2005-2024 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 李信融 <magiclen0810@gmail.com>, 2010.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
-"PO-Revision-Date: 2022-05-30 14:44+0800\n"
-"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"PO-Revision-Date: 2024-03-03 17:43+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [campaign]: id=Dead_Water
@@ -106,11 +106,6 @@ msgstr "劇本修飾和主線劇情改編"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "藝術"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "暈眩：此單位暈眩了。他無法堅守自己的控制區域。"
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -1125,11 +1120,11 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
-"captors. When you are ready, right-click anywhere and select 'Inspire the "
-"slaves to revolt'."
+"captors. When you are ready, right-click anywhere and select ‘Inspire the "
+"slaves to revolt’."
 msgstr ""
 "你可以選擇你認為最適當的時機，來讓奴隸們從村莊裡衝出來對抗這群蜥蜴人。當你覺"
-"得時機成熟的時候，按滑鼠右鍵點及任何地方，選擇「奴隸起義」。"
+"得時機成熟的時候，按下滑鼠右鍵點擊任何位置，來選擇「奴隸起義」。"
 
 #. [set_menu_item]: id=peasant_revolt_menu_option
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:449
@@ -2107,7 +2102,7 @@ msgstr "有一個人在這裡。"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:404
 msgid "Whoa there! BACK off or else!"
-msgstr "誰在那裡！<b>滾開</b>！否則……"
+msgstr "誰在那裡！給我滾開！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
@@ -2425,7 +2420,7 @@ msgstr ""
 "在我的機會來了！凱‧克瑞利斯，我的朋友和我會加入你們的戰鬥，你可以使喚我們，我"
 "們不會跟你收取任何的費用。"
 
-#. [unit]: type=Footpad, id=Lyllan
+#. [unit]: type=Footpad, gender=female, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
 msgstr "莉蘭"
@@ -2436,7 +2431,7 @@ msgid "Trudd"
 msgstr "特魯德"
 
 #. [unit]: type=Thug, id=Dorcyn
-#. [unit]: type=Footpad, id=Dorcyn
+#. [unit]: type=Footpad, gender=male, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"
@@ -3006,32 +3001,6 @@ msgstr ""
 "墨黑和克瑞利斯一起住在王宮裡。牠喜歡在礁沙海底的海藻床中嬉戲，直到牠老年之"
 "時，變得又懶又肥為止。"
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "人魚鬥士"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"體型特別龐大且身體強壯的人魚有時候用不慣別的武器，他們覺得自己的拳頭和尾巴用"
-"起來更自在。"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "暈眩"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "暈眩"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3052,36 +3021,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "權杖"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "人魚平民"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"人魚通常很和平，但一旦他們的家園受到威脅，即使是手無寸鐵未經訓練的人魚也會變"
-"得很危險。"
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:5
-msgid "Kraken"
-msgstr "克拉肯"
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:20
-msgid ""
-"Krakens are gigantic creatures of the seas. They can grab their opponents "
-"with strong tentacles, or spit a poisonous black ink from a distance. The "
-"best way to survive an encounter with these monsters is to remain ashore."
-msgstr ""
-"克拉肯是一種體型比大烏賊海怪還要更巨大的怪獸。牠們會用強而有力的觸手抓住敵"
-"人，或是從遠處向敵人噴出有毒的黑色墨汁。遇到這種生物的存活方法，就是乖乖地待"
-"在陸地上。"
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3254,26 +3193,64 @@ msgstr ""
 "這個人類巫師戴著一枚戒指！也許它蘊藏著魔力，應該要有一個人試著將它戴上，看看"
 "它是做什麼用的。"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "擊暈"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr "暈眩：此單位暈眩了。他無法堅守自己的控制區域。"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"這種攻擊可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域。而"
-"暈眩的效果將在敵人的下個回合解除。"
+#~ msgid "Merman Brawler"
+#~ msgstr "人魚鬥士"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"這個單位可以擊暈敵人，使其無法控制周圍的區域（無法遮擋敵方單位的移動區域）。"
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "體型特別龐大且身體強壯的人魚有時候用不慣別的武器，他們覺得自己的拳頭和尾巴"
+#~ "用起來更自在。"
+
+#~ msgid "stunned"
+#~ msgstr "暈眩"
+
+#~ msgid "female^stunned"
+#~ msgstr "暈眩"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "人魚平民"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "人魚通常很和平，但一旦他們的家園受到威脅，即使是手無寸鐵未經訓練的人魚也會"
+#~ "變得很危險。"
+
+#~ msgid "stun"
+#~ msgstr "擊暈"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "這種攻擊可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域。"
+#~ "而暈眩的效果將在敵人的下個回合解除。"
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "這個單位可以擊暈敵人，使其無法控制周圍的區域（無法遮擋敵方單位的移動區"
+#~ "域）。"
+
+#~ msgid "Kraken"
+#~ msgstr "克拉肯"
+
+#~ msgid ""
+#~ "Krakens are gigantic creatures of the seas. They can grab their opponents "
+#~ "with strong tentacles, or spit a poisonous black ink from a distance. The "
+#~ "best way to survive an encounter with these monsters is to remain ashore."
+#~ msgstr ""
+#~ "克拉肯是一種體型比大烏賊海怪還要更巨大的怪獸。牠們會用強而有力的觸手抓住敵"
+#~ "人，或是從遠處向敵人噴出有毒的黑色墨汁。遇到這種生物的存活方法，就是乖乖地"
+#~ "待在陸地上。"
 
 #~ msgid "Beginner"
 #~ msgstr "初學者"

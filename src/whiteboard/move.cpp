@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,13 +20,11 @@
 #include "whiteboard/move.hpp"
 
 #include "whiteboard/visitor.hpp"
-#include "whiteboard/manager.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "font/standard_colors.hpp"
 #include "game_board.hpp"
@@ -34,7 +32,6 @@
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -112,14 +109,14 @@ move::move(const config& cfg, bool hidden)
 	unit_underlying_id_ = unit_itor->underlying_id();
 
 	// Construct and validate route_
-	const config& route_cfg = cfg.child("route_");
+	auto route_cfg = cfg.optional_child("route_");
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
-	for(const config& loc_cfg : route_cfg.child_range("step")) {
+	for(const config& loc_cfg : route_cfg->child_range("step")) {
 		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
-	for(const config& mark_cfg : route_cfg.child_range("mark")) {
+	for(const config& mark_cfg : route_cfg->child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
 			= pathfind::marked_route::mark(mark_cfg["turns"],
 				mark_cfg["zoc"].to_bool(),
@@ -364,7 +361,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")";
-	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit)));
+	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit), false));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
@@ -401,7 +398,7 @@ void move::draw_hex(const map_location& hex)
 	{
 		std::stringstream turn_text;
 		turn_text << turn_number_;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::move_info, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 	}
 }
 

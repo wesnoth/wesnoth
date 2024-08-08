@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	by Chris Beck<render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,8 +52,5 @@ bool load_font_config();
 
 /** Returns the currently defined fonts. */
 const t_string& get_font_families(family_class fclass = FONT_SANS_SERIF);
-
-/** Test if a font file exists */
-bool check_font_file(std::string name);
 
 } // end namespace font

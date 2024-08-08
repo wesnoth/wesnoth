@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 03:46 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2022-02-10 17:33+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -172,8 +172,8 @@ msgstr "Смъртта на Капу'е"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
 msgid "Kapou’e"
 msgstr "Капу'е"
 
@@ -772,9 +772,13 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:204
+#, fuzzy
+#| msgid ""
+#| "Whatever else happens, we have to pass through these mountains and I "
+#| "dislike leaving enemies in our rear. Stab, smite, and slay!"
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
-"leaving enemies in our rear. Stab, smite, and slay!"
+"leaving enemies to our rear. Stab, smite, and slay!"
 msgstr ""
 "Тъй или иначе трябва да преминем през тези планини, а не искам врагове зад "
 "гърба ни. Сечете, смазвайте и убивайте!"
@@ -1017,7 +1021,7 @@ msgstr "Етелиел"
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:69
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
@@ -1506,7 +1510,7 @@ msgstr "Няма начин! Грю иска да смаже малко немъ
 msgid ""
 "Grüü is right. It is not wise to let these undead remain here, cutting off "
 "our supply lines and path of retreat. In these days of turmoil, we don’t "
-"know what lies ahead, so it is best not to leave any threats in our rear."
+"know what lies ahead, so it is best not to leave any threats to our rear."
 msgstr ""
 "Грю е прав. Не е в наш интерес да оставим тук тези немъртви, които ни "
 "отрязват пътя за отстъпление и провизии. В тези несигурни времена, когато "
@@ -2063,7 +2067,7 @@ msgstr "Тихата гора"
 msgid "Defeat the elves"
 msgstr "Надвийте елфите"
 
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:76
 msgid "Lucile"
 msgstr "Люсил"
@@ -4261,7 +4265,7 @@ msgid "What! Fight like an orc, you gutless coward!"
 msgstr "Какво! Бий се като орк, страхливецо!"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:289
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:292
 msgid ""
 "Hey Chief, it’s pretty odd. Shan Taum doesn’t seem to have too many of his "
 "men around. He was given control of half the Great Horde. Do you think they "
@@ -4271,7 +4275,7 @@ msgstr ""
 "поверена половината Голяма орда. Дали не са го изоставили?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:294
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
 #, fuzzy
 #| msgid ""
 #| "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out "
@@ -4287,7 +4291,7 @@ msgstr ""
 "много ни улеснява."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:303
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:306
 msgid ""
 "Good, we crushed this pocket of resistance too. Now where in the world did "
 "that coward Shan Taum run off to?"
@@ -4932,72 +4936,6 @@ msgstr ""
 "трол стана по-известен от Капу'е. Истории за неговия кураж и лукавство "
 "стигнаха дори до Уеснот."
 
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
-msgid "Novice Orcish Shaman"
-msgstr "Шаман-послушник"
-
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Novice Shamans are still young and vigorous, but "
-#| "their spell-casting ability still needs improvement."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Novice Shamans are still young and vigorous, but their "
-"spell-casting ability still needs improvement."
-msgstr ""
-"Оркските шамани са пазители на оркската магия. Те са уважавани от всички "
-"оркски племена и съставляват Великия съвет, който взема важни решения за "
-"цялата оркска общност и разрешава голяма част от споровете, възникнали между "
-"отделните племена на агресивната раса. Макар да са физически по-слаби от "
-"останалите орки, шаманите умеят да отправят заклинания и проклятия към "
-"враговете си, като така източват живота им. Послушниците са все още млади и "
-"буйни, а заклинателските им умения тепърва трябва да се развиват."
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
-msgid "Old Orcish Shaman"
-msgstr "Възрастен оркски шаман"
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Old Orcish Shamans are shamans that have mastered "
-#| "magic, although their physical strength has declined with age."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Old Orcish Shamans are shamans that have mastered "
-"magic, although their physical strength has declined with age."
-msgstr ""
-"Оркските шамани са пазители на оркската магия. Те са уважавани от всички "
-"оркски племена и съставляват Великия съвет, който взема важни решения за "
-"цялата оркска общност и разрешава голяма част от споровете, възникнали между "
-"отделните племена на агресивната раса. Макар да са физически по-слаби от "
-"останалите орки, шаманите умеят да отправят заклинания и проклятия към "
-"враговете си, като така източват живота им. Тези представители са овладели "
-"магията напълно, но са още по-слаби, заради възрастта си."
-
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 msgid "Orcish Shaman"
@@ -5027,6 +4965,72 @@ msgstr ""
 "отделните племена на агресивната раса. Макар да са физически по-слаби от "
 "останалите орки, шаманите умеят да отправят заклинания и проклятия към "
 "враговете си, като така източват живота им."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
+msgid "variation^Novice"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Novice Shamans are still young and vigorous, but "
+#| "their spell-casting ability still needs improvement."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Novice Shamans are still young and vigorous, but their "
+"spell-casting ability still needs improvement."
+msgstr ""
+"Оркските шамани са пазители на оркската магия. Те са уважавани от всички "
+"оркски племена и съставляват Великия съвет, който взема важни решения за "
+"цялата оркска общност и разрешава голяма част от споровете, възникнали между "
+"отделните племена на агресивната раса. Макар да са физически по-слаби от "
+"останалите орки, шаманите умеят да отправят заклинания и проклятия към "
+"враговете си, като така източват живота им. Послушниците са все още млади и "
+"буйни, а заклинателските им умения тепърва трябва да се развиват."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
+msgid "variation^Elder"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Old Orcish Shamans are shamans that have mastered "
+#| "magic, although their physical strength has declined with age."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Old Orcish Shamans are shamans that have mastered "
+"magic, although their physical strength has declined with age."
+msgstr ""
+"Оркските шамани са пазители на оркската магия. Те са уважавани от всички "
+"оркски племена и съставляват Великия съвет, който взема важни решения за "
+"цялата оркска общност и разрешава голяма част от споровете, възникнали между "
+"отделните племена на агресивната раса. Макар да са физически по-слаби от "
+"останалите орки, шаманите умеят да отправят заклинания и проклятия към "
+"враговете си, като така източват живота им. Тези представители са овладели "
+"магията напълно, но са още по-слаби, заради възрастта си."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
@@ -5062,18 +5066,24 @@ msgstr ""
 "По дяволите, без Инарикс начело на саурианците, не можем да разчитаме на "
 "тяхната помощ."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
 msgid "Al’Brock"
 msgstr "Ал'Брок"
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
 msgid "Flar’Tar"
 msgstr "Флар'Тар"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "Великата орда: поддръжката на всяка единица е намалена с едно."
+
+#~ msgid "Novice Orcish Shaman"
+#~ msgstr "Шаман-послушник"
+
+#~ msgid "Old Orcish Shaman"
+#~ msgstr "Възрастен оркски шаман"
 
 #~ msgid ""
 #~ "In this scenario, you may ask Grüü to move to any hex by right-clicking "

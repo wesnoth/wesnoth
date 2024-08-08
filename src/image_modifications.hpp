@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -45,14 +45,14 @@ public:
 	}
 
 	bool empty() const  { return priorities_.empty(); }
-	void push(modification * mod);
+	void push(std::unique_ptr<modification> mod);
 	void pop();
 	std::size_t size() const;
 	modification * top() const;
 
 private:
 	/** Map from a mod's priority() to the mods having that priority. */
-	typedef std::map<int, std::vector<std::shared_ptr<modification>>, std::greater<int>> map_type;
+	typedef std::map<int, std::vector<std::unique_ptr<modification>>, std::greater<int>> map_type;
 	/** Map from a mod's priority() to the mods having that priority. */
 	map_type priorities_;
 };
@@ -63,7 +63,7 @@ class modification
 public:
 
 	/** Exception thrown by the operator() when an error occurs. */
-	struct imod_exception
+	struct imod_exception final
 		: public lua_jailbreak_exception
 	{
 		/**
@@ -219,6 +219,15 @@ private:
  * Grayscale (GS) modification.
  */
 class gs_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
+ * Crop transparent padding (CROP_TRANSPARENCY) modification.
+ */
+class crop_transparency_modification : public modification
 {
 public:
 	virtual surface operator()(const surface& src) const;
@@ -427,58 +436,35 @@ private:
 };
 
 /**
- * Scaling modifications base class.
+ * Scaling (SCALE[_INTO], SCALE[_INTO]_SHARP) modifications.
  */
 class scale_modification : public modification
 {
 public:
-	scale_modification(int width, int height, const std::string& fn, bool use_nn)
-		: w_(width), h_(height), nn_(use_nn), fn_(fn)
+	// Bit-unique scaling flags
+	enum SCALE_FLAGS : uint8_t {
+		SCALE_LINEAR          = 0b00000,
+		SCALE_SHARP           = 0b00001,
+		FIT_TO_SIZE           = 0b00010,
+		PRESERVE_ASPECT_RATIO = 0b00100,
+		X_BY_FACTOR           = 0b01000,
+		Y_BY_FACTOR           = 0b10000,
+	};
+
+	scale_modification(point target_size, uint8_t flags)
+		: target_size_(target_size)
+		, flags_(flags)
 	{}
+
 	virtual surface operator()(const surface& src) const;
-	virtual std::pair<int,int> calculate_size(const surface& src) const = 0;
 
-	int get_w() const
-	{
-		return w_;
-	}
-
-	int get_h() const
-	{
-		return h_;
-	}
+	int get_w() const { return target_size_.x; }
+	int get_h() const { return target_size_.y; }
 
 private:
-	int w_, h_;
-	bool nn_;
+	point target_size_{0,0};
 
-protected:
-	const std::string fn_;
-};
-
-/**
- * Scale exact modification. (SCALE, SCALE_SHARP)
- */
-class scale_exact_modification : public scale_modification
-{
-public:
-	scale_exact_modification(int width, int height, const std::string& fn, bool use_nn)
-		: scale_modification(width, height, fn, use_nn)
-	{}
-	virtual std::pair<int,int> calculate_size(const surface& src) const;
-};
-
-/**
- * Scale into (SCALE_INTO) modification. (SCALE_INTO, SCALE_INTO_SHARP)
- * Preserves aspect ratio.
- */
-class scale_into_modification : public scale_modification
-{
-public:
-	scale_into_modification(int width, int height, const std::string& fn, bool use_nn)
-		: scale_modification(width, height, fn, use_nn)
-	{}
-	virtual std::pair<int,int> calculate_size(const surface& src) const;
+	uint8_t flags_ = SCALE_LINEAR | FIT_TO_SIZE;
 };
 
 /**

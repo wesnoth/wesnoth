@@ -1,4 +1,3 @@
-
 ---------------------------------------------------------
 ---- Code to add the [side]s to the [scenario]       ----
 ---- And the wml events to initilize the enemy sides ----
@@ -8,12 +7,12 @@ _ = wesnoth.textdomain "wesnoth-wc"
 
 local function table_join(t1, t2)
 	local r = {}
-    for i=1,#t1 do
-        r[#r+1] = t1[i]
-    end
-    for i=1,#t2 do
-        r[#r+1] = t2[i]
-    end
+	for i=1,#t1 do
+		r[#r+1] = t1[i]
+	end
+	for i=1,#t2 do
+		r[#r+1] = t2[i]
+	end
 	return r
 end
 
@@ -89,7 +88,7 @@ local function add_empty_side(scenario)
 	table.insert(scenario.side, side)
 end
 
-function wc_ii_generate_sides(scenario, prestart_event, nplayers, scenario_num, enemy_stength, enemy_data, scenario_data)
+function wc_ii_generate_sides(scenario, prestart_event, nplayers, scenario_num, enemy_data, scenario_data)
 
 	local n_enemy_sides = scenario_num == 5 and 6 or scenario_num
 

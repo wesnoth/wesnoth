@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,15 +25,13 @@
 #include "config.hpp"                   // for config, etc
 #include "events.hpp"                   // for draw, pump, etc
 #include "font/constants.hpp"           // for relative_size
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
-#include "gui/dialogs/transient_message.hpp"
 #include "help/help_browser.hpp"        // for help_browser
 #include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "sdl/surface.hpp"              // for surface
 #include "show_dialog.hpp"              // for dialog_frame, etc
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "units/unit.hpp"               // for unit
@@ -43,9 +41,7 @@
 
 #include <cassert>                      // for assert
 #include <algorithm>                    // for min
-#include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
-#include <SDL2/SDL.h>
 
 
 static lg::log_domain log_display("display");
@@ -220,14 +216,14 @@ void show_with_toplevel(const section &toplevel_sec,
 	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
 
-	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+	if (prefs::get().encountered_units().size() != size_t(last_num_encountered_units) ||
+		prefs::get().encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
 		last_debug_state != game_config::debug ||
 		last_num_encountered_units < 0)
 	{
 		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		last_num_encountered_units = prefs::get().encountered_units().size();
+		last_num_encountered_terrains = prefs::get().encountered_terrains().size();
 		last_debug_state = game_config::debug;
 		generate_contents();
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,34 +19,28 @@
 
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
-#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/core/log.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 #include <functional>
 #include "game_config_view.hpp"
 
-#include <cctype>
 
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)
@@ -197,6 +191,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 
 	const std::string sprite_scale_mod = (formatter() << "~SCALE_INTO(" << game_config::tile_size << ',' << game_config::tile_size << ')').str();
 
+	unsigned li = 0;
 	for(const auto& leader : summary_.child_range("leader")) {
 		widget_data data;
 		widget_item item;
@@ -206,12 +201,12 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
-			leader_image = filesystem::get_independent_binary_file_path("images", leader_image);
+			auto indep_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// The leader TC modifier isn't appending if the independent image path can't
 			// be resolved during save_index entry creation, so we need to add it here.
-			if(!leader_image.empty()) {
-				leader_image += leader["leader_image_tc_modifier"].str();
+			if(indep_path) {
+				leader_image = indep_path.value() + leader["leader_image_tc_modifier"].str();
 			}
 		}
 
@@ -219,7 +214,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
 		} else {
 			// Scale down any sprites larger than 72x72
-			leader_image += sprite_scale_mod;
+			leader_image += sprite_scale_mod + "~FL(horiz)";
 		}
 
 		item["label"] = leader_image;
@@ -236,6 +231,12 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		data.emplace("leader_troops", item);
 
 		leader_list.add_row(data);
+
+		// FIXME: hack. In order to use the listbox in view-only mode, you also need to
+		// disable the max number of "selected items", since in this mode, "selected" is
+		// synonymous with "visible". This basically just flags all rows as visible. Need
+		// a better solution at some point
+		leader_list.select_row(li++, true);
 	}
 
 	std::stringstream str;
@@ -243,8 +244,8 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	evaluate_summary_string(str, summary_);
 
 	// The new label value may have more or less lines than the previous value, so invalidate the layout.
-	find_widget<scroll_label>(get_window(), "slblSummary", false).set_label(str.str());
-	get_window()->invalidate_layout();
+	find_widget<styled_widget>(get_window(), "slblSummary", false).set_label(str.str());
+	//get_window()->invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
@@ -290,7 +291,7 @@ void game_load::display_savegame()
 		find_widget<minimap>(get_window(), "minimap", false).set_map_data("");
 		find_widget<label>(get_window(), "lblScenario", false)
 			.set_label("");
-		find_widget<scroll_label>(get_window(), "slblSummary", false)
+		find_widget<styled_widget>(get_window(), "slblSummary", false)
 			.set_label("");
 
 		listbox& leader_list = find_widget<listbox>(get_window(), "leader_list", false);
@@ -314,11 +315,16 @@ void game_load::display_savegame()
 
 void game_load::filter_text_changed(const std::string& text)
 {
+	apply_filter_text(text, false);
+}
+
+void game_load::apply_filter_text(const std::string& text, bool force)
+{
 	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if(words == last_words_)
+	if(words == last_words_ && !force)
 		return;
 	last_words_ = words;
 
@@ -370,8 +376,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			case campaign_type::type::scenario: {
 				const config* campaign = nullptr;
 				if(!campaign_id.empty()) {
-					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-						campaign = &c;
+					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+						campaign = c.ptr();
 					}
 				}
 
@@ -421,8 +427,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		case campaign_type::type::multiplayer: {
 			const config* campaign = nullptr;
 			if (!campaign_id.empty()) {
-				if (const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-					campaign = &c;
+				if (auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+					campaign = c.ptr();
 				}
 			}
 
@@ -433,7 +439,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			if (campaign != nullptr) {
 				str << "\n" << _("Difficulty: ");
 				try {
-					const config& difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+					const config& difficulty = campaign->find_mandatory_child("difficulty", "define", cfg_summary["difficulty"]);
 					std::ostringstream ss;
 					ss << difficulty["label"] << " (" << difficulty["description"] << ")";
 					str << ss.str();
@@ -463,7 +469,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		for(const auto& mod_id : active_mods) {
 			std::string mod_name;
 			try {
-				mod_name = cache_config_.find_child("modification", "id", mod_id)["name"].str();
+				mod_name = cache_config_.find_mandatory_child("modification", "id", mod_id)["name"].str();
 			} catch(const config::error&) {
 				// Fallback to nontranslatable mod id.
 				mod_name = "(" + mod_id + ")";
@@ -486,7 +492,7 @@ void game_load::delete_button_callback()
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation
-		if(preferences::ask_delete_saves()) {
+		if(prefs::get().ask_delete()) {
 			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}
@@ -536,6 +542,9 @@ void game_load::handle_dir_select()
 	}
 
 	populate_game_list();
+	if(auto* filter = find_widget<text_box>(get_window(), "txtFilter", false, true)) {
+		apply_filter_text(filter->get_value(), true);
+	}
 	display_savegame();
 }
 

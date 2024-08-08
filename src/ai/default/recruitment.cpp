@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2024
 	by Felix Bauer
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,7 +27,6 @@
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "display.hpp"
-#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -697,7 +696,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
 		const t_translation::terrain_code& terrain = entry.first;
 		int count = entry.second;
 		int defense = 100 - u_info->movement_type().defense_modifier(terrain);
-		summed_defense += defense * count;
+		summed_defense += static_cast<long>(defense) * count;
 		total_terrains += count;
 	}
 	double average_defense = (total_terrains == 0) ? 0.0 :
@@ -933,11 +932,11 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 		double value_of_b = damage_to_a / (a_max_hp * b_cost);
 
 		if (value_of_a > value_of_b) {
-			return value_of_a / value_of_b;
+			retval = value_of_a / value_of_b;
 		} else if (value_of_a < value_of_b) {
-			return -value_of_b / value_of_a;
+			retval = -value_of_b / value_of_a;
 		} else {
-			return 0.;
+			retval = 0.;
 		}
 	}
 
@@ -1817,7 +1816,7 @@ void recruitment::recruit_situation_change_observer::reset_gamestate_changed() {
 recruitment_aspect::recruitment_aspect(readonly_context &context, const config &cfg, const std::string &id)
 	: standard_aspect<config>(context, cfg, id)
 {
-	config parsed_cfg(cfg.has_child("value") ? cfg.child("value") : cfg);
+	config parsed_cfg(cfg.has_child("value") ? cfg.mandatory_child("value") : cfg);
 	// First, transform simplified tags into [recruit] tags.
 	for (config pattern : parsed_cfg.child_range("pattern")) {
 		parsed_cfg["pattern"] = true;

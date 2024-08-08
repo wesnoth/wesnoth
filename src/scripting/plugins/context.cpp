@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "scripting/plugins/manager.hpp"
 
 #include <cassert>
-#include <utility>
 #include <functional>
 
 plugins_context::plugins_context(const std::string & name)

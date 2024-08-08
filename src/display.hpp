@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,6 @@
 
 #pragma once
 
-class config;
 class fake_unit_manager;
 class terrain_builder;
 class map_labels;
@@ -42,9 +41,6 @@ class reports;
 class team;
 struct overlay;
 
-namespace halo {
-	class manager;
-}
 
 namespace wb {
 	class manager;
@@ -52,7 +48,7 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
-#include "filesystem.hpp"
+#include "drawing_layer.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
 #include "gui/core/top_level_drawable.hpp"
@@ -72,14 +68,23 @@ namespace wb {
 #include <functional>
 #include <chrono>
 #include <cstdint>
-#include <deque>
 #include <list>
 #include <map>
 #include <memory>
 #include <vector>
 
+struct submerge_data
+{
+	rect unsub_src;
+	rect unsub_dest;
+	std::array<SDL_Vertex, 4> alpha_verts;
+};
+
 class gamemap;
 
+/**
+ * Sort-of-Singleton that many classes, both GUI and non-GUI, use to access the game data.
+ */
 class display : public gui2::top_level_drawable
 {
 public:
@@ -108,9 +113,23 @@ public:
 
 	bool team_valid() const;
 
-	/** The viewing team is the team currently viewing the game. */
+	/**
+	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
+	 * is shown in the top bar of the default theme.
+	 *
+	 * For players, it will be their side (or one of them, if they control multiple sides).
+	 *
+	 * The value returned is a 0-based index into the vector returned by get_teams().
+	 */
 	std::size_t viewing_team() const { return currentTeam_; }
-	int viewing_side() const { return currentTeam_ + 1; }
+	/**
+	 * The 1-based equivalent of the 0-based viewing_team() function. This is the side-number that
+	 * WML uses.
+	 *
+	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI
+	 * class).
+	 */
+	int viewing_side() const { return static_cast<int>(currentTeam_ + 1); }
 
 	/**
 	 * Sets the team controlled by the player using the computer.
@@ -144,12 +163,6 @@ public:
 	 *         the empty string if there was no exclusive draw request for this location.
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
-
-	/**
-	 * Check the overlay_map for proper team-specific overlays to be
-	 * displayed/hidden
-	 */
-	void parse_team_overlays();
 
 	/**
 	 * Functions to add and remove overlays from locations.
@@ -394,6 +407,11 @@ public:
 
 	void draw_buttons();
 
+	/** Hide theme buttons so they don't draw. */
+	void hide_buttons();
+	/** Unhide theme buttons so they draw again. */
+	void unhide_buttons();
+
 	/** Update the given report. Actual drawing is done in draw_report(). */
 	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
 
@@ -534,8 +552,19 @@ public:
 
 	/** Prevent the game display from drawing.
 	  * Used while story screen is showing to prevent flicker. */
-	void set_prevent_draw(bool pd) { prevent_draw_ = pd; }
-	bool get_prevent_draw() { return prevent_draw_; }
+	void set_prevent_draw(bool pd = true);
+	bool get_prevent_draw();
+
+	/**
+	 * @param dest The original destination.
+	 * @param submerge How deep underwater it is.
+	 * @param size The size of its image.
+	 * @param alpha How transparent to make the submerged part.
+	 * @param hreverse Whether to flip the image horizontally.
+	 * @param vreverse Whether to flip the image vertically.
+	 * @return The data necessary for showing the submerged effect for units and map overlays (aka items).
+	 */
+	static submerge_data get_submerge_data(const rect& dest, double submerge, const point& size, uint8_t alpha, bool hreverse, bool vreverse);
 
 private:
 	bool prevent_draw_ = false;
@@ -727,7 +756,7 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	texture minimap_;
+	std::function<rect(rect)> minimap_renderer_;
 	SDL_Rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;
@@ -765,10 +794,10 @@ protected:
 	map_location mouseoverHex_;
 	CKey keys_;
 
-	/** Local cache for preferences::animate_map, since it is constantly queried. */
+	/** Local cache for prefs::get().animate_map, since it is constantly queried. */
 	bool animate_map_;
 
-	/** Local version of preferences::animate_water, used to detect when it's changed. */
+	/** Local version of prefs::get().animate_water, used to detect when it's changed. */
 	bool animate_water_;
 
 private:
@@ -783,57 +812,6 @@ private:
 	std::vector<texture> terrain_image_vector_;
 
 public:
-	/**
-	 * The layers to render something on. This value should never be stored
-	 * it's the internal drawing order and adding removing and reordering
-	 * the layers should be safe.
-	 * If needed in WML use the name and map that to the enum value.
-	 */
-	enum drawing_layer {
-		LAYER_TERRAIN_BG,          /**<
-		                            * Layer for the terrain drawn behind the
-		                            * unit.
-		                            */
-		LAYER_GRID_TOP,            /**< Top half part of grid image */
-		LAYER_MOUSEOVER_OVERLAY,   /**< Mouseover overlay used by editor*/
-		LAYER_FOOTSTEPS,           /**< Footsteps showing path from unit to mouse */
-		LAYER_MOUSEOVER_TOP,       /**< Top half of image following the mouse */
-		LAYER_UNIT_FIRST,          /**< Reserve layers to be selected for WML. */
-		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
-		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
-		LAYER_TERRAIN_FG = LAYER_UNIT_FIRST+50, /**<
-		                            * Layer for the terrain drawn in front of
-		                            * the unit.
-		                            */
-		LAYER_GRID_BOTTOM,         /**<
-		                            * Used for the bottom half part of grid image.
-		                            * Should be under moving units, to avoid masking south move.
-		                            */
-		LAYER_UNIT_MOVE_DEFAULT=LAYER_UNIT_FIRST+60/**<default layer for drawing moving units */,
-		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**<
-		                            * Used for the ellipse in front of the
-		                            * unit.
-		                            */
-		LAYER_UNIT_MISSILE_DEFAULT = LAYER_UNIT_FIRST+90, /**< default layer for missile frames*/
-		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
-		LAYER_MOUSEOVER_BOTTOM,    /**< Bottom half of image following the mouse */
-		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
-		LAYER_ARROWS,              /**< Arrows from the arrows framework. Used for planned moves display. */
-		LAYER_ACTIONS_NUMBERING,   /**< Move numbering for the whiteboard. */
-		LAYER_SELECTED_HEX,        /**< Image on the selected unit */
-		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
-		LAYER_UNIT_BAR,            /**<
-		                            * Unit bars and overlays are drawn on this
-		                            * layer (for testing here).
-		                            */
-		LAYER_MOVE_INFO,           /**< Movement info (defense%, etc...). */
-		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
-		LAYER_BORDER,              /**< The border of the map. */
-	};
-
-	static void add_submerge_ipf_mod(std::string& image_path, int image_height, double submersion_amount, int shift = 0);
-
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.
 	 * The font size is adjusted to the zoom factor.
@@ -912,16 +890,6 @@ private:
 	void draw_label(const theme::label& label);
 
 protected:
-
-	/**
-	 * Initiate a redraw.
-	 *
-	 * Invalidate controls and panels when changed after they have been drawn
-	 * initially. Useful for dynamic theme modification.
-	 */
-	void draw_init();
-	void draw_wrap(bool update,bool force);
-
 	/** Used to indicate to drawing functions that we are doing a map screenshot */
 	bool map_screenshot_;
 

@@ -63,7 +63,6 @@ on_event("prestart", function(cx)
 end)
 
 -- we need to do this also after difficulty selection.
--- NOTE: this is a bit fragile, in particualr it breaks if difficulty_selection happens before the prestart event above.
 on_event("wc2_start", function(cx)
 	if wml.variables.wc2_scenario == 1 then
 		for side_num = 1, wml.variables.wc2_player_count do
@@ -71,14 +70,14 @@ on_event("wc2_start", function(cx)
 				side = side_num
 			}
 		end
-	end
 
-	if wml.variables.wc2_difficulty.extra_training then
-		for side_num = 1, wml.variables.wc2_player_count do
-			wesnoth.wml_actions.wc2_give_random_training {
-				among="2,3,4,5,6",
-				side = side_num,
-			}
+		if wml.variables.wc2_difficulty.extra_training then
+			for side_num = 1, wml.variables.wc2_player_count do
+				wesnoth.wml_actions.wc2_give_random_training {
+					among="2,3,4,5,6",
+					side = side_num,
+				}
+			end
 		end
 	end
 

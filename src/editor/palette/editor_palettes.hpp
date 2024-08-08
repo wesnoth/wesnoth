@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,7 +29,7 @@ class editor_palette : public tristate_palette {
 public:
 
 	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
-	             , std::size_t item_size, std::size_t columns, editor_toolkit &toolkit)
+	             , int item_size, std::size_t columns, editor_toolkit &toolkit)
 		: tristate_palette()
 		, groups_()
 		, gui_(gui)
@@ -61,7 +61,6 @@ public:
 	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
 	void set_group(std::size_t index) override;
-//	int active_group();
 
 	const std::vector<item_group>& get_groups() const override { return groups_; }
 
@@ -150,10 +149,13 @@ protected:
 
 	/**
 	 * Both the width and the height of the square buttons.
+	 *
+	 * This is a size measured in pixels, and should match the type of
+	 * SDL_rect.w and SDL_rect.h.
 	 */
 	int item_size_;
 	/**
-	 * item_space_ plus some padding.
+	 * item_size_ plus some padding.
 	 */
 	int item_space_;
 

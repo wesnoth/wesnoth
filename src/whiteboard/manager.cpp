@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,15 +29,12 @@
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
 
-#include "actions/create.hpp"
 #include "actions/undo.hpp"
 #include "arrow.hpp"
-#include "chat_events.hpp"
-#include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -54,7 +51,6 @@
 
 #include <functional>
 
-#include <sstream>
 
 namespace wb {
 
@@ -85,7 +81,7 @@ manager::manager():
 		team_plans_hidden_(resources::gameboard->teams().size()),
 		units_owning_moves_()
 {
-	if(preferences::hide_whiteboard()) {
+	if(prefs::get().hide_whiteboard()) {
 		team_plans_hidden_.flip();
 	}
 	LOG_WB << "Manager initialized.";
@@ -151,7 +147,8 @@ bool manager::can_modify_game_state() const
 					|| resources::gameboard == nullptr
 					|| executing_actions_
 					|| resources::gameboard->is_observer()
-					|| resources::controller->is_linger_mode())
+					|| resources::controller->is_linger_mode()
+					|| !synced_context::is_unsynced())
 	{
 		return false;
 	}
@@ -186,7 +183,6 @@ void manager::set_active(bool active)
 		{
 			if(should_clear_undo()) {
 				if(!resources::controller->current_team().auto_shroud_updates()) {
-					synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
 					synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(true));
 				}
 				resources::undo_stack->clear();
@@ -318,7 +314,7 @@ void manager::on_init_side()
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()";
 
-	if (self_activate_once_ && preferences::enable_whiteboard_mode_on_start())
+	if (self_activate_once_ && prefs::get().enable_planning_mode_on_start())
 	{
 		self_activate_once_ = false;
 		set_active(true);
@@ -487,7 +483,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 				number_text, font_size, color, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;
@@ -649,13 +645,13 @@ void manager::send_network_data()
 
 void manager::process_network_data(const config& cfg)
 {
-	if(const config& wb_cfg = cfg.child("whiteboard"))
+	if(auto wb_cfg = cfg.optional_child("whiteboard"))
 	{
-		std::size_t count = wb_cfg.child_count("net_cmd");
+		std::size_t count = wb_cfg->child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").";
 
 		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
-		for(const side_actions::net_cmd& cmd : wb_cfg.child_range("net_cmd"))
+		for(const side_actions::net_cmd& cmd : wb_cfg->child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
 }
@@ -948,17 +944,20 @@ void manager::contextual_execute()
 		//For exception-safety, this struct sets executing_actions_ to false on destruction.
 		variable_finalizer<bool> finally(executing_actions_, false);
 
-		action_ptr action;
 		side_actions::iterator it = viewer_actions()->end();
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
-		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
+
+		auto check_action = [&](side_actions::iterator i) {
+			it = i;
+			return it != viewer_actions()->end() && it < viewer_actions()->turn_end(0);
+		};
+
+		if (selected_unit && check_action(viewer_actions()->find_first_action_of(*selected_unit)))
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
 		}
-		else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
-				 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
+		else if (highlighter_ && check_action(viewer_actions()->get_position_of(highlighter_->get_execute_target())))
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);

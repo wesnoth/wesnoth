@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,10 +15,12 @@
 #include "scripting/lua_formula_bridge.hpp"
 
 #include "game_board.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
-#include "lua/lauxlib.h"
+#include "scripting/lua_team.hpp"
+#include "scripting/lua_unit_attacks.hpp"
+#include "scripting/lua_unit_type.hpp"
+#include "lua/wrapper_lauxlib.h"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "variable.hpp"
@@ -150,6 +152,15 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			} else {
 				luaW_pushunit(L, u.side(), u.underlying_id());
 			}
+		} else if(auto ut_ref = val.try_convert<unit_type_callable>()) {
+			const unit_type& ut = ut_ref->get_unit_type();
+			luaW_pushunittype(L, ut);
+		} else if(auto atk_ref = val.try_convert<attack_type_callable>()) {
+			const auto& atk = atk_ref->get_attack_type();
+			luaW_pushweapon(L, atk.shared_from_this());
+		} else if(auto team_ref = val.try_convert<team_callable>()) {
+			auto t = team_ref->get_team();
+			luaW_pushteam(L, t);
 		} else if(auto loc_ref = val.try_convert<location_callable>()) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
@@ -192,12 +203,40 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 				return variant(std::make_shared<config_callable>(vcfg.get_parsed_config()));
 			} else if(unit* u = luaW_tounit(L, i)) {
 				return variant(std::make_shared<unit_callable>(*u));
+			} else if(const unit_type* ut = luaW_tounittype(L, i)) {
+				return variant(std::make_shared<unit_type_callable>(*ut));
+			} else if(const_attack_ptr atk = luaW_toweapon(L, i)) {
+				return variant(std::make_shared<attack_type_callable>(*atk));
+			} else if(team* t = luaW_toteam(L, i)) {
+				return variant(std::make_shared<team_callable>(*t));
 			} else if(luaW_tolocation(L, i, loc)) {
 				return variant(std::make_shared<location_callable>(loc));
 			}
 			break;
 	}
 	return variant();
+}
+
+/**
+ * Get a formula from the stack. If @a allow_str is true, it compiles a formula string if found.
+ * Otherwise, it must be an already-compiled formula.
+ * Raises an error if a formula is not found, or if there's an error in compilation.
+ * Thus, it never returns a null pointer.
+ */
+lua_formula_bridge::fpointer luaW_check_formula(lua_State* L, int idx, bool allow_str) {
+	using namespace lua_formula_bridge;
+	fpointer form;
+	if(void* ud = luaL_testudata(L, idx, formulaKey)) {
+		form.get_deleter() = [](fwrapper*) {};
+		form.reset(static_cast<fwrapper*>(ud));
+		// Setting a no-op deleter guarantees the Lua-held object is not deleted
+	} else if(allow_str) {
+		form.reset(new fwrapper(luaL_checkstring(L, idx)));
+		// Leave deleter at default so it's deleted properly later
+	} else {
+		luaW_type_error(L, idx, "formula");
+	}
+	return form;
 }
 
 /**
@@ -208,17 +247,16 @@ variant luaW_tofaivariant(lua_State* L, int i) {
  */
 int lua_formula_bridge::intf_eval_formula(lua_State *L)
 {
-	bool need_delete = false;
-	fwrapper* form;
-	if(void* ud = luaL_testudata(L, 1, formulaKey)) {
-		form = static_cast<fwrapper*>(ud);
-	} else {
-		need_delete = true;
-		form = new fwrapper(luaL_checkstring(L, 1));
-	}
+	fpointer form = luaW_check_formula(L, 1, true);
 	std::shared_ptr<formula_callable> context, fallback;
 	if(unit* u = luaW_tounit(L, 2)) {
 		context.reset(new unit_callable(*u));
+	} else if(const unit_type* ut = luaW_tounittype(L, 2)) {
+		context.reset(new unit_type_callable(*ut));
+	} else if(const_attack_ptr atk = luaW_toweapon(L, 2)) {
+		context.reset(new attack_type_callable(*atk));
+	} else if(team* t = luaW_toteam(L, 2)) {
+		context.reset(new team_callable(*t));
 	} else if(lua_istable(L, 2)) {
 		context.reset(new lua_callable(L, 2));
 	} else {
@@ -226,9 +264,6 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 	}
 	variant result = form->evaluate(*context);
 	luaW_pushfaivariant(L, result);
-	if(need_delete) {
-		delete form;
-	}
 	return 1;
 }
 

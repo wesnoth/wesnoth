@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,6 @@
 #include "scripting/lua_gui2.hpp"
 
 #include "gui/core/gui_definition.hpp"
-#include "gui/core/window_builder.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
@@ -25,7 +24,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
-#include "gui/core/gui_definition.hpp"
 #include "scripting/lua_widget_methods.hpp" //intf_show_dialog
 
 #include "config.hpp"
@@ -33,24 +31,18 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_kernel_base.hpp"
-#include "scripting/lua_widget_methods.hpp"
 #include "scripting/push_check.hpp"
-#include "serialization/string_utils.hpp"
 #include "help/help.hpp"
-#include "game_config_manager.hpp"
 #include "tstring.hpp"
 #include "game_data.hpp"
 #include "game_state.hpp"
 #include "sdl/input.hpp" // get_mouse_state
 
 #include <functional>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
-#include <map>
-#include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -86,7 +78,7 @@ int show_message_dialog(lua_State* L)
 			t_string short_opt;
 			config opt;
 			if(luaW_totstring(L, -1, short_opt)) {
-				opt["description"] = short_opt;
+				opt["label"] = short_opt;
 			} else if(!luaW_toconfig(L, -1, opt)) {
 				std::ostringstream error;
 				error << "expected array of config and/or translatable strings, but index ";
@@ -214,7 +206,7 @@ int show_message_box(lua_State* L) {
 	std::transform(button.begin(), button.end(), std::inserter(btn_style, btn_style.begin()), [](char c) { return std::tolower(c); });
 	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
 	using button_style = gui2::dialogs::message::button_style;
-	std::optional<button_style> style;
+	utils::optional<button_style> style;
 	if(btn_style.empty()) {
 		style = button_style::auto_close;
 	} else if(btn_style == "ok") {
@@ -246,9 +238,9 @@ int show_lua_console(lua_State* /*L*/, lua_kernel_base* lk)
 	return 0;
 }
 
-int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state)
+int show_gamestate_inspector(const std::string& name, const game_data& data, const game_state& state)
 {
-	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
+	gui2::dialogs::gamestate_inspector::display(data.get_variables(), *state.events_manager_, state.board_, name);
 	return 0;
 }
 

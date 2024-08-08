@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,8 @@
 #include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <pango/pango.h>
 #include <pango/pangocairo.h>
+
 
 #include <functional>
 #include <memory>
@@ -33,7 +33,6 @@
  * Note: This is the cairo-pango code path, not the SDL_TTF code path.
  */
 
-struct language_def;
 struct point;
 
 namespace font {
@@ -84,11 +83,8 @@ public:
 	pango_text(const pango_text&) = delete;
 	pango_text& operator=(const pango_text&) = delete;
 
-	/** Returns the cached texture, or creates a new one otherwise. */
-	texture render_and_get_texture();
-
 	/**
-	 * Returns the rendered text as a texture.
+	 * Returns the cached texture, or creates a new one otherwise.
 	 *
 	 * texture::w() and texture::h() methods will return the expected
 	 * width and height of the texture in draw space. This may differ
@@ -96,13 +92,26 @@ public:
 	 *
 	 * In almost all cases, use w() and h() to get the size of the
 	 * rendered text for drawing.
+	 */
+	texture render_and_get_texture();
+
+private:
+	/**
+	 * Wrapper around render_surface which sets texture::w() and texture::h()
+	 * in the same way that render_and_get_texture does.
 	 *
-	 * This function is otherwise identical to render().
+	 * The viewport rect is interpreted at the scale of render-space, not
+	 * drawing-space. This function has only been made private to preserve
+	 * the drawing-space encapsulation.
 	 */
 	texture render_texture(const SDL_Rect& viewport);
 
 	/**
 	 * Returns the rendered text.
+	 *
+	 * The viewport rect is interpreted at the scale of render-space, not
+	 * drawing-space. This function has only been made private to preserve
+	 * the drawing-space encapsulation.
 	 *
 	 * @param viewport Only this area needs to be drawn - the returned
 	 * surface's origin will correspond to viewport.x and viewport.y, the
@@ -111,16 +120,7 @@ public:
 	 */
 	surface render_surface(const SDL_Rect& viewport);
 
-	/**
-	 * Equivalent to render(viewport), where the viewport's top-left is at
-	 * (0,0) and the area is large enough to contain the full text.
-	 *
-	 * The top-left of the viewport will be at (0,0), regardless of the values
-	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
-	 * y rows of blank space are included in the amount of memory allocated.
-	 */
-	surface render_surface();
-
+public:
 	/** Returns the size of the text, in drawing coordinates. */
 	point get_size();
 
@@ -170,6 +170,18 @@ public:
 	 */
 	point get_cursor_position(
 		const unsigned column, const unsigned line = 0) const;
+
+	/**
+	 * Gets the correct number of columns to move the cursor
+	 * from Pango. Needed in case the text contains multibyte
+	 * characters. Return value == column if the text has no
+	 * multibyte characters.
+	 *
+	 * @param column              The column offset of the cursor.
+	 *
+	 * @returns                   Corrected column offset.
+	 */
+	int get_byte_offset(const unsigned column) const;
 
 	/**
 	 * Get maximum length.
@@ -224,6 +236,14 @@ public:
 	std::vector<std::string> get_lines() const;
 
 	/**
+	 * Get number of lines in the text.
+	 *
+	 * @returns                   The number of lines in the text.
+	 *
+	 */
+	unsigned get_lines_count() const { return pango_layout_get_line_count(layout_.get()); };
+
+	/**
 	 * Gets the length of the text in bytes.
 	 *
 	 * The text set is UTF-8 so the length of the string might not be the length
@@ -276,6 +296,26 @@ public:
 	pango_text& set_link_color(const color_t& color);
 
 	pango_text& set_add_outline(bool do_add);
+
+	/**
+	* Mark a specific portion of text for highlighting. Used for selection box.
+	* BGColor is set in set_text(), this just marks the area to be colored.
+	* Markup not used because the user may enter their own markup or special characters
+	* @param start_offset        Column offset of the cursor where selection/highlight starts
+ 	* @param end_offset          Column offset of the cursor where selection/highlight ends
+ 	* @param color               Highlight color
+	*/
+	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+
+	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
+	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
+	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
+	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
+	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family);
+
+	/** Clear all attributes */
+	void clear_attribute_list();
 
 private:
 
@@ -374,6 +414,19 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
+	unsigned attribute_start_offset_;
+	unsigned attribute_end_offset_;
+	color_t	highlight_color_;
+
+	/**
+	 * Global pango attribute list. All attributes in this list
+	 * will be applied one by one to the text
+	 */
+	PangoAttrList* global_attribute_list_;
+
+	/** Hash for the global_attribute_list_ */
+	std::size_t attrib_hash_;
+
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
 
@@ -386,10 +439,34 @@ private:
 	/** Allow specialization of std::hash for pango_text. */
 	friend struct std::hash<pango_text>;
 
-	/** Renders the text to a surface. */
+	/**
+	 * Equivalent to create_surface(viewport), where the viewport's top-left is
+	 * at (0,0) and the area is large enough to contain the full text.
+	 *
+	 * The top-left of the viewport will be at (0,0), regardless of the values
+	 * of x and y in the rect_ member variable. If the x or y co-ordinates are
+	 * non-zero, then x columns and y rows of blank space are included in the
+	 * amount of memory allocated.
+	 */
 	surface create_surface();
+
+	/**
+	 * Renders the text to a surface that uses surface_buffer_ as its data store,
+	 * the buffer will be allocated or reallocated as necessary.
+	 *
+	 * The surface's origin will correspond to viewport.x and viewport.y, the
+	 * width and height will be at least viewport.w and viewport.h (although
+	 * they may be larger).
+	 *
+	 * @param viewport The area to draw, which can be a subset of the text. This
+	 * rectangle's coordinates use render-space's scale.
+	 */
 	surface create_surface(const SDL_Rect& viewport);
 
+	/**
+	 * This is part of create_surface(viewport). The separation is a legacy
+	 * from workarounds to the size limits of cairo_surface_t.
+	 */
 	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
 
 	/**
@@ -462,6 +539,10 @@ pango_text& get_text_renderer();
  *                                ascent and descent lengths.
  */
 int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+
+/* Returns the default line spacing factor
+ * For now hardcoded here */
+constexpr float get_line_spacing_factor() { return 1.3f; };
 
 } // namespace font
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -20,11 +20,9 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -34,10 +32,9 @@
 #include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
-#include "preferences/lobby.hpp"
+#include "preferences/preferences.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "wml_exception.hpp"
 
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
@@ -181,7 +178,7 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
 		for(const auto& ui : li->users()) {
-			if(ui.name != preferences::login()) {
+			if(ui.name != prefs::get().login()) {
 				matches.push_back(ui.name);
 			}
 		}
@@ -224,7 +221,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	const std::string before_message = log.get_label().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_label() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
+		<< log.get_label() << before_message << "<span color='#bcb088'>" << prefs::get().get_chat_timestamp(std::time(0)) << text << "</span>";
 
 	log.set_use_markup(true);
 	log.set_label(new_text);
@@ -246,9 +243,9 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
-	add_chat_message(std::time(nullptr), preferences::login(), 0, message);
+	add_chat_message(std::time(nullptr), prefs::get().login(), 0, message);
 
-	::config c {"message", ::config {"message", message, "sender", preferences::login()}};
+	::config c {"message", ::config {"message", message, "sender", prefs::get().login()}};
 	send_to_server(c);
 }
 
@@ -290,10 +287,10 @@ void chatbox::add_chat_message(const std::time_t& /*time*/,
 void chatbox::add_whisper_sent(const std::string& receiver, const std::string& message)
 {
 	if(whisper_window_active(receiver)) {
-		add_active_window_message(preferences::login(), message, true);
-	} else if(lobby_chat_window* t = whisper_window_open(receiver, preferences::auto_open_whisper_windows())) {
+		add_active_window_message(prefs::get().login(), message, true);
+	} else if(lobby_chat_window* t = whisper_window_open(receiver, prefs::get().auto_open_whisper_windows())) {
 		switch_to_window(t);
-		add_active_window_message(preferences::login(), message, true);
+		add_active_window_message(prefs::get().login(), message, true);
 	} else {
 		add_active_window_whisper(VGETTEXT("whisper to $receiver", {{"receiver", receiver}}), message, true);
 	}
@@ -301,8 +298,8 @@ void chatbox::add_whisper_sent(const std::string& receiver, const std::string& m
 
 void chatbox::add_whisper_received(const std::string& sender, const std::string& message)
 {
-	bool can_go_to_active = !preferences::whisper_friends_only() || preferences::is_friend(sender);
-	bool can_open_new = preferences::auto_open_whisper_windows() && can_go_to_active;
+	bool can_go_to_active = !prefs::get().lobby_whisper_friends_only() || prefs::get().is_friend(sender);
+	bool can_open_new = prefs::get().auto_open_whisper_windows() && can_go_to_active;
 
 	if(whisper_window_open(sender, can_open_new)) {
 		if(whisper_window_active(sender)) {
@@ -335,7 +332,7 @@ void chatbox::add_chat_room_message_sent(const std::string& room, const std::str
 		switch_to_window(t);
 	}
 
-	add_active_window_message(preferences::login(), message, true);
+	add_active_window_message(prefs::get().login(), message, true);
 }
 
 void chatbox::add_chat_room_message_received(const std::string& room,
@@ -355,9 +352,9 @@ void chatbox::add_chat_room_message_received(const std::string& room,
 
 	if(speaker == "server") {
 		notify_mode = mp::notify_mode::server_message;
-	} else if (utils::word_match(message, preferences::login())) {
+	} else if (utils::word_match(message, prefs::get().login())) {
 		notify_mode = mp::notify_mode::own_nick;
-	} else if (preferences::is_friend(speaker)) {
+	} else if (prefs::get().is_friend(speaker)) {
 		notify_mode = mp::notify_mode::friend_message;
 	}
 
@@ -581,17 +578,17 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
 		<< ", len " << data["message"].str().size();
 
-	if(preferences::is_ignored(sender)) {
+	if(prefs::get().is_ignored(sender)) {
 		return;
 	}
 
 	const std::string& message = data["message"];
-	//preferences::parse_admin_authentication(sender, message); TODO: replace
+	//prefs::get().parse_admin_authentication(sender, message); TODO: replace
 
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
-		if (!preferences::parse_should_show_lobby_join(sender, message)) return;
+		if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
 
 		std::string room = data["room"];
 
@@ -653,12 +650,10 @@ chatbox_definition::chatbox_definition(const config& cfg)
 chatbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", missing_mandatory_wml_tag("chatbox_definition][resolution", "background")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("chatbox_definition][resolution", "foreground")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("chatbox_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 // }---------- BUILDER -----------{

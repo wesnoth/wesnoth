@@ -3,6 +3,10 @@ local location_set = wesnoth.require "location_set"
 local kill_recursion_preventer = location_set.create()
 
 function wesnoth.wml_actions.kill(cfg)
+	if wml.get_child(cfg, "filter") then
+		wml.error "Tag [filter] may not be used in [kill]"
+	end
+
 	local number_killed = 0
 	local secondary_unit = wml.get_child(cfg, "secondary_unit")
 	local killer_loc = {0, 0}
@@ -50,20 +54,28 @@ function wesnoth.wml_actions.kill(cfg)
 			-- In other words, the attacker's weapon. The attacker is the secondary unit.
 			-- In the victory animation, this is simply swapped.
 			if primary then
+				local found_attack = nil
 				if secondary_unit then
-					primary = secondary_unit:find_attack(primary)
+					found_attack = secondary_unit:find_attack(primary)
+				end
+				if found_attack then
+					primary = found_attack
 				else
 					primary = wesnoth.units.create_weapon(primary)
 				end
-				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
+				wesnoth.log('info', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
 			end
 			if secondary then
+				local found_weapon = nil
 				if primary then
-					secondary = unit:find_attack(secondary)
+					found_weapon = unit:find_attack(secondary)
+				end
+				if found_weapon then
+					secondary = found_weapon
 				else
 					secondary = wesnoth.units.create_weapon(secondary)
 				end
-				wesnoth.log('err', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
+				wesnoth.log('info', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
 			end
 			anim:add(unit, "death", "kill", {primary = primary, secondary = secondary})
 			if secondary_unit then

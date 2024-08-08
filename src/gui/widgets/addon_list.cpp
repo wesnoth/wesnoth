@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,6 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
@@ -427,10 +426,10 @@ addon_list_definition::resolution::resolution(const config& cfg)
 	static config dummy("draw");
 	state.emplace_back(dummy);
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 namespace implementation

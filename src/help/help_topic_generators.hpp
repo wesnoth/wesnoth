@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "help_impl.hpp"
 
 #include <string>                       // for string
-#include <utility>                      // for pair
 #include <vector>                       // for vector
 class terrain_type;  // lines 20-20
 class unit_type;

@@ -1,4 +1,5 @@
 about.cpp
+achievements.cpp
 actions/advancement.cpp
 actions/attack.cpp
 actions/create.cpp
@@ -60,6 +61,7 @@ animated.cpp
 attack_prediction.cpp
 build_info.cpp
 carryover.cpp
+carryover_show_gold.cpp
 chat_command_handler.cpp
 chat_events.cpp
 chat_log.cpp
@@ -166,6 +168,7 @@ gui/core/widget_definition.cpp
 gui/core/window_builder.cpp
 gui/core/window_builder/helper.cpp
 gui/core/window_builder/instance.cpp
+gui/dialogs/achievements_dialog.cpp
 gui/dialogs/addon/addon_auth.cpp
 gui/dialogs/addon/connect.cpp
 gui/dialogs/addon/install_dependencies.cpp
@@ -183,14 +186,19 @@ gui/dialogs/depcheck_select_new.cpp
 gui/dialogs/drop_down_menu.cpp
 gui/dialogs/edit_label.cpp
 gui/dialogs/edit_text.cpp
+gui/dialogs/editor/choose_addon.cpp
 gui/dialogs/editor/custom_tod.cpp
 gui/dialogs/editor/edit_label.cpp
+gui/dialogs/editor/edit_pbl.cpp
+gui/dialogs/editor/edit_pbl_translation.cpp
 gui/dialogs/editor/edit_scenario.cpp
 gui/dialogs/editor/edit_side.cpp
+gui/dialogs/editor/edit_unit.cpp
 gui/dialogs/editor/generate_map.cpp
 gui/dialogs/editor/generator_settings.cpp
 gui/dialogs/editor/new_map.cpp
 gui/dialogs/editor/resize_map.cpp
+gui/dialogs/editor/tod_new_schedule.cpp
 gui/dialogs/end_credits.cpp
 gui/dialogs/file_dialog.cpp
 gui/dialogs/file_progress.cpp
@@ -203,6 +211,7 @@ gui/dialogs/game_save.cpp
 gui/dialogs/game_stats.cpp
 gui/dialogs/game_version_dialog.cpp
 gui/dialogs/gamestate_inspector.cpp
+gui/dialogs/gui_test_dialog.cpp
 gui/dialogs/help_browser.cpp
 gui/dialogs/hotkey_bind.cpp
 gui/dialogs/label_settings.cpp
@@ -236,6 +245,7 @@ gui/dialogs/multiplayer/synced_choice_wait.cpp
 gui/dialogs/network_transmission.cpp
 gui/dialogs/outro.cpp
 gui/dialogs/preferences_dialog.cpp
+gui/dialogs/prompt.cpp
 gui/dialogs/screenshot_notification.cpp
 gui/dialogs/select_orb_colors.cpp
 gui/dialogs/server_info_dialog.cpp
@@ -292,6 +302,7 @@ movetype.cpp
 mp_game_settings.cpp
 mp_ui_alerts.cpp
 network_asio.cpp
+network_download_file.cpp
 pathfind/pathfind.cpp
 pathfind/teleport.cpp
 persist_context.cpp
@@ -300,13 +311,8 @@ persist_var.cpp
 play_controller.cpp
 playmp_controller.cpp
 playsingle_controller.cpp
-playturn.cpp
 playturn_network_adapter.cpp
-preferences/advanced.cpp
-preferences/display.cpp
-preferences/editor.cpp
-preferences/game.cpp
-preferences/lobby.cpp
+preferences/preferences.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp
@@ -354,6 +360,7 @@ sdl/point.cpp
 sdl/texture.cpp
 side_filter.cpp
 statistics.cpp
+statistics_record.cpp
 storyscreen/controller.cpp
 storyscreen/parser.cpp
 storyscreen/part.cpp
@@ -384,6 +391,7 @@ units/race.cpp
 units/types.cpp
 units/udisplay.cpp
 units/unit.cpp
+utils/config_filters.cpp
 utils/context_free_grammar_generator.cpp
 utils/irdya_datetime.cpp
 utils/markov_generator.cpp

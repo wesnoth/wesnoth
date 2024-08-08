@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2024
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,6 @@ enum controller {
 	CNTR_RESERVED,
 };
 
-class connect_engine;
 class side_engine;
 
 typedef std::shared_ptr<side_engine> side_engine_ptr;
@@ -82,10 +81,10 @@ public:
 	const config& level() const { return level_; }
 	config& scenario()
 	{
-		if(config& scenario = level_.child("scenario"))
-			return scenario;
-		else if(config& snapshot = level_.child("snapshot"))
-			return snapshot;
+		if(auto scenario = level_.optional_child("scenario"))
+			return *scenario;
+		else if(auto snapshot = level_.optional_child("snapshot"))
+			return *snapshot;
 		else
 			throw "No scenariodata found";
 	}

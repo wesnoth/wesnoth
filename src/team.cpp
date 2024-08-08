@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,7 +29,6 @@
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
-#include "preferences/game.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
@@ -365,7 +364,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		   << ", fog: " << uses_fog() << ".";
 
 	// Load the WML-cleared fog.
-	const config& fog_override = cfg.child("fog_override");
+	auto fog_override = cfg.optional_child("fog_override");
 	if(fog_override) {
 		const std::vector<map_location> fog_vector
 				= map.parse_location_range(fog_override["x"], fog_override["y"], true);
@@ -471,7 +470,10 @@ void team::set_recruits(const std::set<std::string>& recruits)
 {
 	info_.can_recruit = recruits;
 	info_.minimum_recruit_price = 0;
-	ai::manager::get_singleton().raise_recruit_list_changed();
+	// this method gets called from the editor, which obviously has no AI present
+	if(ai::manager::has_manager()) {
+		ai::manager::get_singleton().raise_recruit_list_changed();
+	}
 }
 
 void team::add_recruit(const std::string& recruit)
@@ -945,7 +947,7 @@ bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 const color_range team::get_side_color_range(int side)
 {
 	std::string index = get_side_color_id(side);
-	std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(index);
+	auto gp = game_config::team_rgb_range.find(index);
 
 	if(gp != game_config::team_rgb_range.end()) {
 		return (gp->second);

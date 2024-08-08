@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "draw.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
-#include "game_errors.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "font/sdl_ttf_compat.hpp"

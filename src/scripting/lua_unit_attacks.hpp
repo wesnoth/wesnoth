@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
 #include "units/attack_type.hpp"
 
 struct lua_State;
-class lua_unit;
 
 void push_unit_attacks_table(lua_State* L, int idx);
 

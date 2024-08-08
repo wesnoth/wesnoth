@@ -1,4 +1,4 @@
-## Version 1.17.9+dev
+## Version 1.19.2+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -7,13 +7,828 @@
  ### Lua API
  ### Packaging
  ### Terrain
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified)
+ ### Units
+   * New cat units: Jumpcat, Forest Lion, and zombie/soulless cat
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.19.2
+ ### Campaigns
+   * Eastern Invasion
+     * fixed Gweddry having the wrong HP values
+     * fixed the king being neutral instead of lawful
+     * fixed "Dark Shape" from being neutral instead of chaotic
+     * the king can no longer wield the plague staff
+     * the king and generals can no longer recall undead veterans
+     * S04c: achievement now only triggers when escaping with all knights alive
+     * S11/S99: flying units can no longer enter prison cells via the river
+     * S12: fixed Dra-Nak (if present) having incorrect traits and portraits
+     * S17b: AI is now more forced to recruit only higher-level units when gold reserves get too high
+     * S99: prisoners now escape if their jailers are killed
+ ### Editor
+   * Rename Load Map to Load Map/Scenario (since it can load both), Edit Scenario to Edit Scenario Settings, Save Map to just Save.
+   * Rearrange menu order
+   * Add icon for the preferences menu item (used the preexisting settings.png icon)
+   * Open folder correctly at Add-on's scenario directory instead of editor/scenarios. (#8910)
+   * Show Save Scenario As only for Scenarios
+   * Use the settings.png icon for Preferences menu item
+   * Add functionality to "Loyal" checkbox (Unit tool -> Place unit -> Right click menu) (#8445)
+   * Show warning when maps are saved in scenarios folder or vice versa (#8911)
+   * Unit List moved to Units menu from File menu to reduce some pressure from the latter.
+   * Status Table menu item disabled since it does nothing. (Should be reenabled once the functionality has been added.)
+   * Improve reload functionality in Editor (F5). Reload happens directly from memory and no temp files are needed. Also, the undo/redo stacks will be preserved. (#9024)
+   * Time Schedule Editor
+     * Browse buttons now set wesnoth style paths instead of just pasting the absolute path returned by the file dialog
+     * Change text boxes from inactive to uneditable.
+     * Code generation improvements
+     * Add copyright notice to tod_new_schedule
+     * Confirmation messages
+     * Preview buttons for image and sound files and new icons for the preview button (2 sets : preview image and preview sound)
+   * Unit Type Editor
+     * Confirmation messages
+     * New icons for the preview button (2 sets : preview image and preview sound)
+   * Add-on menu
+     * Two new menu entries for (1) opening the Add-on selection dialog, (2) opening the folder corresponding to the Add-on. The open add-on folder option shows a GUI2 file dialog at the add-on's folder which can be used to open any file. If it is a loadable map/scenario it will be opened in the editor, otherwise the OS's default application for that file will be opened.
+   * File Dialog
+     * Redesigned with new icons
+     * New Open External button that opens selected file/folder in the platform's default application (independently of what pressing Open would do). This could be used to quickly open a folder or preview the file before actually selecting it.
+     * Extension checking and filename validation. (See #8911)
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Ukrainian
+ ### User interface
+   * When a player types something into the Load Game filter box and then changes to a different version, apply the filter immediately instead of showing the full list of files.
+   * An updated design for the titlescreen has been added. This can be toggled in the Display preferences. (#8953)
+ ### WML Engine
+   * max_value and min_value can now be used with most abilities
+   * Added unit hits and unit misses events
+ ### Miscellaneous and Bug Fixes
+   * Server-side fix for the "Something is wrong with the addon version check database supporting the multiplayer lobby." error (issue #8805)
+   * Fixed the Load Game dialog forgetting the filename filter when changing directory
+   * Removed the config-dir, userconfig-dir, config-path, and userconfig-path commandline options
+   * Moved the editor, WML persist, saves, lua command history, and most of the preferences to a separate subfolder for all data that should be synced between multiple computers
+   * Fixed Plan Unit Advance modification causing incorrect XP colour in the Advance Unit dialogue (#9047)
+   * Fixed Plan Unit Advance modification preventing undo of the first action of each turn (#9047)
+
+## Version 1.19.1
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French, Japanese, Ukrainian
+ ### Units
+   * Added a melee animation for the Dragoon and Cavalier.
+   * Added a wounded bob animation for the Cavalier.
+ ### WML Engine
+   * Modified 'apply_to' in [experimental_filter_ability(_active)] or [overwrite][experimental_filter_specials] to do an inclusion check for a comma-separated list of damage types in [resistance] abilities.
+   * Removed the deprecated 'controller=number' from [side]
+ ### Miscellaneous and Bug Fixes
+   * Fixed erroneous sidebar text caused by [damage_type] assuming that an alternate_type is always present.
+
+## Version 1.19.0
+ ### Add-ons client
+   * Show the server ID in the Add-ons Manager
+   * The add-ons server identifier (e.g. 1.18) is now displayed on the bottom left after the server address. If debug mode is enabled the server software version is also shown.
+ ### Campaigns
+   * Descent into Darkness
+     * S3: player now no longer gains any exp upon killing rats and crawlers, buffed puzzle exp to compensate
+   * Eastern Invasion
+     * Prevent Dacyn from picking up a different staff (issue #8885)
+     * Reduce Barrow/Pyre Wight vulnerability to arcane
+     * S14: indicate uncleared swamp hexes with "swamp reed" images
+     * Many minor bugfixes
+   * Liberty
+     * Custom unit and portrait for Lord Maddock
+   * Sceptre of Fire
+     * S7: fewer and slower enemies, to balance the buff to the Elvish Outrider unit type
+   * Tutorial
+     * Better timing for some of the hints
+   * Under the Burnings Suns
+     * S01: the luck involved in getting units from villages is now fairer
+   * Secrets of the Ancients
+     * S16: Keep Crelanu within his ring of protective holy waters (issue #8361)
+   * Winds of Fate
+     * Avoid a Lua error that only triggered on Windows in locales that use commas as the decimal separator
+     * Rebalanced enemies and enemy gold from S6 onwards
+     * S08: clarify the objectives
+   * World Conquest
+      Fix World Conquest's Help dialog showing double scrollbars due to the left tree having it's vertical scrollbar disabled. Changed both vertical and horizontal scrollbar modes to automatic. (issue #8576)
+ ### Editor
+   * Allow loading .mask files
+   * New UI in the Scenario Editor that allows to create custom unit types, accessible by Unit menu > New Unit Type.
+ ### Multiplayer
+   * The default settings for the timer are now 240 seconds turn bonus, with no action bonus
+   * The full map is no longer revealed in linger mode by default, so it behaves similarly to SP mode for campaigns
+   * Refactor the code which determines when actions can be undone, and when actions are sent to the server
+   * In the Aethermaw map, Sulla's title has been changed to Aether Mage and prose slightly rewritten to include this change.
+   * Fixed some old paths to unit images being used in Aethermaw (issue #8432)
+   * Moved the Dunefolk into Default era. The "+Dunefolk" eras have been removed.
+ ### Lua API
+   * Overhaul of the API to use named tuples instead of `data[1]`, `data[2]`, etc
+   * Locations returned by the API are now named tuples, so their data can be accessed as `location.x` and `location.y`
+   * Objects with `x` and `y` data members can generally be passed to APIs that expect a location
+ ### Packaging
+   * Fixed build with Boost 1.85
+   * Increased the minimum required SDL version from 2.0.10 to 2.0.18 for non-macOS platforms (macOS already requires 2.0.22)
+ ### Terrain
+   * Oasis is now a mixed terrain, adding shallow water to the base terrain, and defaulting to Sand as the base terrain
+   * The help browser now considers the default base of mixed terrains when adding them to the help tree
+ ### Translations
+   * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Norwegian, Polish, Russian, Slovak, Spanish, Ukrainian
+   * Added new font "Lohit-Bengali.ttf" to support Bengali translation
+ ### Units
+   * Elvish Avenger - decreased ranged attack from 11×4 to 10×4, decreased cost from 66 to 60
+   * Elvish Sharpshooter - decreased ranged attack from 12×5 to 10×5, decreased cost from 62 to 55
+   * Elvish Shyde - decreased ranged slow attack from 8×3 to 7×3, decreased ranged magical attack from 14×3 to 10×3, decreased cost from 69 to 58
+   * Elvish Enchantress - decreased ranged slow attack from 7×4 to 6×4, decreased ranged magical attack from 13×4 to 11×4, decreased cost from 70 to 62, decreased XP requirement from 198 to 180
+   * Elvish Sylph - decreased ranged magical attack from 16×5 to 13×5, decreased cost from 161 to 135
+   * Added new Fire Wisp unit
+   * Added portraits for Skeletal Rider, Wyvern, TSG’s Eyestalk, TRoW’s vampire lady, and an alternative portrait for bears
+   * Elvish Enchantress - description for 'entangle' changed to 'ethereal web', icon changed.
+   * Elvish Sylph - description for 'gossamer' changed to 'ethereal web'.
+   * Mudcrawler and Giant Mudcrawler - increased swamp defense from 40% to 60%, swamp movement penalty reduced from 2 to 1, castle and village defense reduced from 60% to 50%
+ ### User interface
+   * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
+   * Use a gold completion laurel for campaigns with only one difficulty setting
+   * Refined the layout of the Load Game dialog
+   * New texture-based minimap rendering
+   * Added a "Teleport Unit" option to the debug menu
+   * The campaign list in New Campaign dialog now supports filtering campaigns by whether they have been completed and at which difficulty.
+   * Redesigned story screen layout with new graphics
+   * Game version dialog redesigned to act as an general purpose About dialog.
+   * Community dialog moved to About dialog as a new tab. Community button removed from title screen.
+   * Credits button moved from Title Screen into About dialog.
+   * Success indication mechanism on buttons. Currently used only for copy buttons.
+   * Slight reorganization of title screen buttons.
+   * Add a Community button to the title screen to link to the forums, discord, etc.
+   * Overhauled the Language selection dialog to make it more informative, including displaying translation progress and making it easier to select highly-incomplete translations.
+   * Made the Changelog option in the macOS app menu link to the changelog for the particular Wesnoth app version rather than the Git master branch changelog.
+   * Added unit type level as a filter criterion in the Recruit Unit dialog.
+   * Added unit race and alignment as additional filter criteria in the Recall Unit dialog.
+   * Fixed timing issue with the outro screen's text fading effect that made it so fast as to be unnoticeable on many hardware configurations.
+ ### WML Engine
+   * Fixed the Ambush ability not working in Bluff/Glutch Forest terrain
+   * Multiple fixes to replay handling
+   * Image Path Functions now accept percentages for scaling sizes
+   * The AMLAs that a unit has are now accessible via WFL
+   * new combobox and tab_container widgets
+   * editability in text box via the editable key
+   * add [filter_wml] to [experimental_filter_ability(_active)] or [overwrite][experimental_filter_specials]
+   * Added support for `value="default"` to ability filters to match abilities using their default `value` (by explicit setting or absence)
+ ### Miscellaneous and Bug Fixes
+   * Remove special handling of config directory on Linux, use the userdata folder as on Windows and MacOS (#8848)
+   * Added new `color_range` palettes `yellow` and `pink`
+   * Added environment variable `WESNOTH_NO_LOG_FILE`, equivalent to the `--no-log-to-file` command line flag
+   * Fixed attack calculations when resistances counter `[damage_type]alternative_type=`
+   * Fixed replays marking achievements as complete (issue #8858)
+   * Fixed a crash in the recall dialog when turning off all sorting options (issue #8878)
+   * Fixed clicking on a trait in the sidebar sometimes opening the wrong trait’s help page
+   * Removed wesnothd’s unused threads command line options
+   * Fixed a bug causing excessive pixellation of scaled images
+   * General cleanup of unnecessary C++ header file includes
+   * Trying to load an image filename ending ".jpg" will now automatically try ".webp" if the ".jpg" isn’t found.
+   * Fix: releasing a mouse button at the same time as a dialog pops up sometimes dismissed the dialog immediately (issue #8644)
+
+## Version 1.17.26
+ ### Campaigns
+   * Eastern Invasion
+     * Many minor bugfixes
+   * Heir to the Throne
+     * Fix S17 to ensure the starting castle always has 6 hexes for recruiting (PR #8314)
+     * Clarify S11's objectives by editing the map (no string changes) (PR #8326)
+     * Add decorations and map embellishments to S16, S19a and S22 (PR #8243)
+     * Use swamp terrain instead of sand for S19b (PR #8243)
+   * Under the Burning Suns
+     * Improve continuity between events that can be triggered in various orders.
+     * Adjust Fighter unit line for easier early leveling and more late game staying power.
+   * World Conquest
+     * Fix the Bezoar artifact (issue #6513)
+ ### Multiplayer
+   * Assume that all players need a copy of an add-on, by defaulting `require_modification`/`require_campaign` to `yes` (PR #8135)
+ ### Lua API
+   * Added documentation for linting and IDE support
+ ### Packaging
+   * Add CMake and SCons options to use an already installed copy of Lua 5.4 (PR #8234)
+     * The system copy of Lua must be compiled as C++ rather than C, as Wesnoth uses C++ exceptions.
+     * Windows requires a compile-time change to Lua, so must use the in-tree Lua submodule.
+ ### Translations
+   * New translation: Bengali
+   * Updated translations: Arabic, British English, Czech, Finnish, French
+ ### Units
+   * War Harbinger: +3 HP (29 -> 32), XP to 100, cost +2g (41 -> 43), removed forest and village dodge modifiers
+   * Dark Omen: removed forest and village dodge modifiers
+   * Raven: removed forest and village dodge modifiers
+ ### User interface
+   * New multiline textbox and numerical spinner widgets (PR #8199)
+ ### WML Engine
+   * Added a composite hero/leader ellipse, in case an author forgets to `UNMAKE_HERO` when converting to a leader (PR #8375)
+   * `[event]name=unit_placed` is now non-undoable by default (issue #7780)
+   * `[scroll]` now includes a delay, this was needed for visual effects such as the `QUAKE` macro
+ ### Miscellaneous and Bug Fixes
+   * Fix some logs not being included in the logfile (issue #8108)
+   * Multiple fixes to handling of Lua errors, some of which could cause a crash (PR #8234)
+   * When WML specifies a unit or unit type’s gender, automatically include that in the .po files as a translation hint
+   * Make sure `transform_unit` doesn't heal the unit when removing objects (PR #8147)
+   * Fixed bugs in the rushers recruit AI (issue #8297)
+   * Savefiles now include the ID of the core in use
+
+## Version 1.17.25
+ ### Campaigns
+   * Eastern Invasion
+     * Fix S04b’s time limit, which extends by 10 turns if a bonus objective is completed.
+     * Fix macros in translatable strings, because they prevent translation. (issue #8225)
+   * Winds of Fate
+     * Made the epilogue more vague about events on the Green Isle
+     * Removed part of epilogue suggesting a Drake-led war around 120YW
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, Finnish, French, German, Italian, Slovak
+ ### Units
+   * New fish and bug zombie variations
+ ### User interface
+   * Added hotkeys for various menu items and ThemeWML buttons in Map Editor
+   * Added shortcut Ctrl+G for 'I'm Ready' button in mp_staging dialog (Addresses issue #8250)
+   * Fix the left pane of the help browser’s layout for right-to-left languages (Arabic and Hebrew) (issue #8205)
+ ### Miscellaneous and Bug Fixes
+   * wmllint now warns about `[kill]` tags containing `[filter]` tags
+   * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8137)
+   * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
+
+## Version 1.17.24
+ ### Campaigns
+   * Winds of Fate
+     * Fix macro argument in translatable string
+   * Eastern Invasion
+     * Change S04b’s `scenario_id` to `en_US` spelling (issue #7994)
+     * S04b start-of-scenario saves since 1.17.21 will be broken
+     * S03 mid-scenario saves since 1.17.21 will show a warning, and players will only be able to go west
+     * Saves from earlier versions are already broken by the campaign rewrite
+     * Fix macro argument in translatable string
+ ### Editor
+    * Time Schedule Editor now saves custom time schedules to `utils/schedule.cfg` under the Add-on directory. (Cache needs to be manually reloaded with `F5` after exiting Map Editor.)
+    * Changing the color sliders and pressing the preview button shows a preview of the tint on the map.
+    * New dialog for entering custom schedule ID and name. The user is required to enter a non-empty schedule id and name. ID will be autogenerated if the user doesn't specify it or already exists.
+    * Textbox to enter Add-on ID after selecting `New Scenario > New Add-on`.
+ ### Multiplayer
+   * Fix Add-on version check error #4055 
+ ### Lua API
+   * units.remove_modifications can now remove multiple types of modifications.
+ ### Translations
+   * Updated translations: British English, Bulgarian, Finnish, French, German, Polish, Slovak
+ ### Miscellaneous and Bug Fixes
+   * Fix various assertion failures on invalid input 
+   * Fix end credits not showing when a scenario has no [side]s #8090
+   * The command line `--preprocess` utility now accepts any filename, not just those ending .cfg.
+
+## Version 1.17.23
+ ### Campaigns
+   * Under the Burning Suns
+     * All sand terrian now correctly applies the dehydrated effect
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian, Polish, Slovak, Welsh
+ ### Units
+   * Drakes:
+     * Saurian Seer - modify the unit to fix reductions in power level between level 2 and level 3.
+ ### User interface
+   * If wesnoth is installed with most campaigns missing, an error message is shown in the campaign selection dialog
+   * The inspect dialog again is able to correctly paginate large amounts of text
+   * The credits now actually show up instead of crashing the game
+   * Significantly improve game history query performance, preventing the query from timing out
+   * The help browser, when looking at a unit type which uses the same image for male and female units, now only shows one image instead of showing a duplicate.
+ ### WML Engine
+   * [filter_ability], [filter_ability_active], and [filter_specials] are renamed to [experimental_filter_ability], [experimental_filter_ability_active], and [experimental_filter_specials]
+   * Add a [damage_type]'replacement_type' and 'alternative_type' attribute weapon special to change the type of attack under specific conditions (terrain, time of day, leadership etc...)
+ ### Miscellaneous and Bug Fixes
+   * Added basic support for the `ttkthemes` Python library to GUI.pyw on Linux
+   * Fixed the screen not redrawing on Windows after unlocking the computer
+   * Fixed occasional bad rendering for blurred/translucent areas
+   * Significantly reduced CPU usage when a dialog is open
+   * Avoid an assert in `replay::add_start_if_not_there_yet` with corrupt files (issue #7154)
+   * Fix Leaders sometimes being removed in controller=null sides in mp campaigns (#7886)
+   * fix [store_reachable_locations] when the player has shroud #7891
+
+
+## Version 1.17.22
+ ### Campaigns
+   * Under the Burning Suns
+     * More AMLAs for Kaleh and Nym.
+     * Balance changes.
+ ### Multiplayer server
+   * Record and replay chat messages when joining a game that has not started yet
+ ### Lua API
+   * New experimental Lua undo API
+   * New Lua mouse click callback
+ ### Terrain
+   * New embellishment for adding windows to impassible walls.
+ ### Translations
+   * Updated translations: Welsh
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Slovak
+ ### Units
+   * Update graphics and stats of Roc
+   * New monster unit line - Ravens
+   * New Jumping Spider monster.
+   * Drakes:
+     * Saurian Oracle – xp changed from 66 to 74
+     * Saurian Soothsayer – xp changed from 100 to 66
+     * Saurian Prophet is added as an upgrade of the Saurian Oracle
+     * Saurian Seer is added as an upgrade of the Saurian Soothsayer
+ ### User interface
+   * Village ownership is shown with flag and side number in terrain info (issue #4334)
+ ### WML API
+   * New ability attributes `halo_image=` and `halo_image_self=`, to illustrate the effects of the illumination ability, HttT's initiative, etc.
+   * New ability attributes `overlay_image=` and `overlay_image_self=`.
+   * New ability tag and attribute `[overwrite]priority=`.
+   * Two new tags, `[filter_ability]` and `[filter_ability_active]`, which have a temporary exception from the API freeze.
+ ### WML Engine
+   * The implementation of `[allow_undo]` has changed, the behavior should be the same.
+ ### Miscellaneous and Bug Fixes
+   * Asset copyright tracking is now handled in a .csv file, and sanity checked during CI builds.
+   * Various fixes to World Conquest multiplayer campaign.
+
+## Version 1.17.21
+ ### Campaigns
+   * Eastern Invasion
+     * Revise entire campaign (Dalas version)
+   * Descent into Darkness
+     * Buff soul rend
+   * Liberty
+     * Make Harper a girl and revise some dialogue
+   * Legend of Wesmere
+     * Replace lingering instances of ‘old’ style gold carry over for S9, S11 and S14 (issue #7862)
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, German, French
+ ### Units
+   * Updates to Troll sprites and animations (#7844)
+   * Giant Ant Queen, Fire Ant Queen, Ant Eggs, and Ant Zombies
+   * Rebels:
+     * Elvish Enchanterss – xp changed from 180 to 198.
+     * Elvish Sylph – cost changed from 148 to 161.
+   * Loyalists:
+     * Young Ogre – cost changed from 15 to 13, xp changed from 32 to 34, mountain defense changed from 60% to 50%, arcane resistance changed from 20% to 10%.
+     * Ogre – cost changed from 30 to 27, mountain defense changed from 60% to 50%, arcane resistance changed from 20% to 10%.
+   * Miscellaneous:
+     * Elder Falcon - cost changed from 18 to 20.
+     * Giant Ant – xp changed from 26 to 16.
+     * Soldier ant – cost changed from 16 to 12, hp changed from 35 to 36.
+     * Fire Ant - xp changed from 50 to 22.
+     * Firebomb Ant - hp changed from 38 to 45, cost changed from 14 to 19.
+     * Yeti - cost changed from 80 to 151.
+     * Piglet – xp changed from 26 to 20.
+     * Woodland Boar – cost changed from 15 to 16, hp changed from 35 to 34.
+     * Fire guardian – xp changed from 29 to 24, hp changed from 23 to 25.
+     * Fire Wraith – gold cost changed from 22 to 17.
+     * Bay Horse and Dark Horse – xp changed from 44 to 24.
+     * Mermaid Initiate – cost changed from 19 to 16, xp changed from 50 to 42.
+     * Mermaind Priestess – cost changed from 38 to 31, xp changed from 132 to 61.
+     * Mermaid Diviner – cost changed from 57 to 49.
+     * Mermaid Enchanterss – cost changed from 33 to 32, xp changed from 90 to 46.
+     * Mermaid Siren – cost changed from 52 to 42.
+     * Merman Brawler - cost changed from 19 to 17.
+     * Naga Guardian – xp changed from 35 to 36.
+     * Naga Warden – xp changed from 70 to 54.
+     * Troll Hero – cost changed from 30 to 42, xp changed from 52 to 90.
+     * Great Troll – cost changed from 48 to 78.
+     * Troll Shaman – cost changed from 32 to 35.
+     * Dwarvish Scout – xp changed from 30 to 33.
+     * Dwarvish Pathfinder – cost changed from 30 to 24, xp changed from 60 to 65.
+     * Dwarvish Explorer –cost changed from 45 to 51.
+     * Dwarvish Runesmith – cost changed from 30 to 27, xp changed from 86 to 71.
+     * Dwarvish Runemaster – cost changed from 50 to 55.
+     * Dwarvish Arcanister – cost changed form 80 to 98.
+     * Dwarvish Miner – cost changed from 19 to 5.
+     * Orcish Leader – cost changed from 20 to 21, xp changed from 60 to 54.
+     * Orcish Ruler – cost changed from 35 to 45, xp changed from 120 to 102.
+     * Orcish Sovereign – cost changed from 50 to 80.
+     * Skeleton Rider – xp changed from 44 to 33.
+     * Death Squire – xp changed from 144 to 91.
+     * Death Knight –cost changed from 45 to 80.
+     * Royal Warrior - cost changed from 40 to 47.
+     * Elvish Lord – cost changed from 36 to 42, xp changed from 120 to 97.
+     * Elvish Highlord	- cost changed from 56 to 77.
+     * Nibbler – cost changed from 10 to 15, xp changed from 32 to 26.
+     * Caribe – cost changed from 16 to 25, xp changed from 40 to 43.
+     * Hunter Caribe – cost changed from 25 to 40.
+     * Dragonfly Naiad – cost changed from 8 to 11, xp changed from 23 to 16.
+     * Dragonfly – cost changed from 13 to 16, xp changed from 23 to 25.
+     * Grand Dragonfly – hp changed from 34 to 39, cost changed from 22 to 30.
+     * Ruffian - cost changed from 6 to 7.
+     * Thug - xp changed from 42 to 32.
+     * Bandit - cost changed from 23 to 22, xp changed from 70 to 61.
+     * Peasant and Woodsman - xp changed from 23 to 19.
+     * Elder Mage - cost changed from 65 to 90.
+
+## Version 1.17.20
+ ### Campaigns
+   * A Tale of Two Brothers
+     * Remove the magic communication amulets from the story.
+   * Under the Burning Suns
+     * S3: Ensure all of Garak’s attacks are changed to fire type (#7774).
+ ### Editor
+   * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
+ ### Multiplayer
+   * New game mechanics for 4p King of the Hill:
+     * A side with a leader holding the hill keep gets bonus gold each turn.
+     * A treasure chest which only a leader can unlock further rewards the first player to take the hill.
+     * Each side gets two leaders. If one dies then another can be "recalled" (recruited) from the recall list at its full unit cost.
+     * Computer players will try to take the hill with one of their two leaders.
+     * Revised map.
+ ### Translations
+   * Updated translations: British English, Czech, Italian, Japanese
+ ### Units
+   * Rebels:
+     * Elvish Outrider - movement changed from 10 to 11
+   * Drakes:
+     * Saurian Soothsayer - movement changed from 6 to 7
+   * Movement type changes:
+     * Smallfoot, armoredfoot, elusivefoot, mounted, fly, smallfly, lightfly, deepsea, mountainfoot, gurefoot, rodentfoot, lizard, dunefoot, duneelusivefoot, dunearmoredfoot, dunehorse, dunearmoredhorse - arcane resistance changed from 20% to 10%.
+     * Treefolk - arcane resistance changed from -30% to -20%.
+     * Undeadfoot - arcane resistance changed from -50% to -20%.
+     * Undeadfly - arcane resistance changed from -40% to -20%.
+     * Drakefly, drakeglide, drakeglide2, drakefoot - arcane resistance changed from -30% to -10%.
+   * Loyalists:
+     * Paladin - arcane resistance changed from 60% to 30%.
+     * White mage - arcane resistance changed from 40% to 30%.
+     * Mage of Light - arcane resistance changed from 60% to 50%.
+   * Undead:
+     * Lich - arcane resistance changed from -40% to -20%.
+ ### WML Engine
+   * Add support for filters to match negative values
+ ### Miscellaneous and Bug Fixes
+   * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
+
+## Version 1.17.19
+ ### Campaigns
+   * Descent into Darkness
+     * S3: Resolved Darken Volk speaking from the darkness at the end of the scenario (#7758).
+   * Liberty
+     * S4: Resolved nameless enemies gaining names at day-break (#7748).
+     * S5: Make the loss of Hans a lose-condition (#7750).
+ ### Translations
+   * Updated translations: British English, Czech, Finnish, French, Portuguese (Brazil)
+ ### Units
+   * Rebels:
+     * Elvish Fighter - xp changed from 40 to 37, and new updated sprite and animations
+     * Merman Hunter - xp changed from 35 to 33.
+     * Elvish Scout - xp changed from 32 to 42.
+     * Elvish Hero - xp changed from 90 to 80.
+     * Elvish Captain - xp changed from 90 to 85.
+     * Elvish Marksman - cost changed from 31 to 34.
+     * Elvish Ranger - xp changed from 90 to 85.
+     * Elvish Rider - ranged damage changed from 9 to 11, hp changed from 46 to 49, cost changed from 28 to 35, xp changed from 53 to 75.
+     * Elvish Druid - cost changed from 27 to 25, xp changed from 80 to 85.
+     * Elvish Sorceress - cost changed from 32 to 34, xp changed from 100 to 90.
+     * Elder Wose - cost changed from 27 to 28, xp changed from 100 to 80.
+     * Merman Netcaster - cost changed from 27 to 26, xp changed from 85 to 54.
+     * Merman Spearman - cost changed from 27 to 22, xp changed from 85 to 54.
+     * Champion - melee damage changed from 9 to 8. added 10 melee accuracy, hp changed from 70 to 72, cost changed from 48 to 61.
+     * Elvish Marshal - hp changed from 62 to 68, cost changed from 54 to 67.
+     * Elvish Sharpshooter - ranged damage changed from 10 to 12. cost changed from 51 to 62.
+     * Elvish Avenger - ranged damage changed from 10 to 11, hp changed from 55 to 59, cost changed from 53 to 66.
+     * Elvish Outrider - ranged damage changed from 8 to 11, melee damage changed from 7 to 8, hp changed from 57 to 60, cost changed from 43 to 58.
+     * Elvish Shyde - hp changed from 46 to 51, melee damage changed from 6 to 7, ranged slow (entangle) damage changed from 6 to 8, ranged magical (thorns) damage changed from 8 to 14, cost changed from 52 to 69.
+     * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13.
+     * Ancient Wose - cost changed from 48 to 50.
+     * Merman Entangler - cost changed from 46 to 42.
+     * Merman Javelineer - cost changed from 48 to 55.
+     * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148.
+   * Undead:
+     * Skeleton - xp changed from 35 to 39.
+     * Ghoul - xp changed from 35 to 30.
+     * Blood Bat - cost changed from 22 to 23, xp changed from 70 to 37.
+     * Revenant - cost changed from 31 to 28, xp changed from 85 to 78.
+     * Dark Sorcerer - cost changed from 33 to 34, xp changed from 90 to 110.
+     * Shadow - cost changed from 38 to 44, xp changed from 100 to 77.
+     * Wraith - xp changed from 100 to 90.
+     * Necrophage - melee damage changed from 7 to 9, cost changed from 27 to 23, xp changed from 120 to 61.
+     * Bone Shooter - cost changed from 26 to 24, xp changed from 80 to 60.
+     * Dread Bat - cost changed from 34 to 32.
+     * Draug - cost changed from 47 to 70.
+     * Lich - cost changed from 50 to 90.
+     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed from 70 to 76, impact resistance changed from 0% to 10%, cost changed from 50 to 90.
+     * Nightgaunt - cost changed from 52 to 71.
+     * Specter - cost changed from 52 to 78.
+     * Ghast - melee damage changed from 10 to 12, cost changed from 43 to 50.
+     * Banebow - cost changed from 41 to 52.
+     * Ancient lich cost changed from 100 to 214.
+   * Drakes:
+     * Drake Fighter - xp changed from 42 to 41.
+     * Drake Clasher - xp changed from 43 to 41.
+     * Drake Glider - xp changed from 35 to 39.
+     * Drake Warrior - xp changed from 70 to 81, cost changed from 32 to 31.
+     * Drake Arbiter - hp changed from 62 to 63, xp changed from 105 to 81.
+     * Drake Thrasher - xp changed from 95 to 77.
+     * Drake Flare - xp changed from 80 to 86.
+     * Fire Drake - xp changed from 80 to 84.
+     * Sky Drake - xp changed from 80 to 76, cost changed from 28 to 32.
+     * Saurian Ambusher - hp changed from 36 to 38, cost changed from 24 to 22.
+     * Saurian Soothsayer - melee attack strikes changed from 2 to 3, cost changed from 25 to 28.
+     * Saurian Spearthrower - melee damage changed from 6 to 5.
+     * Drake Blademaster - cost changed from 47 to 62.
+     * Drake Warden - cost changed from 46 to 62.
+     * Drake Enforcer - cost changed from 44 to 58.
+     * Drake Flameheart - cost changed from 51 to 66.
+     * Inferno Drake - cost changed from 51 to 64.
+     * Hurricane Drake - cost changed from 43 to 59.
+     * Saurian Flanker - hp changed from 47 to 52, cost changed from 46 to 42.
+     * Saurian Javelineer - ranged attack strikes changed from 5 to 4, cost changed from 52 to 42.
+     * Armageddon Drake - cost changed from 85 to 118.
+   * Dunefolk:
+     * Dune Burner - hp changed from 34 to 35, xp changed from 40 to 37.
+     * Dune Herbalist - cost changed from 14 to 13, xp changed from 39 to 36.
+     * Dune Rider - hp changed from 34 to 33, xp changed from 47 to 49.
+     * Dune Rover - hp changed from 32 to 33, xp changed from 43 to 40.
+     * Dune Soldier - cost changed from 18 to 17, xp changed from 43 to 39.
+     * Dune Skirmisher - xp changed from 34 to 39.
+     * Dune Explorer - xp changed from 80 to 73.
+     * Dune Swordsman - cost changed from 30 to 28, xp changed from 75 to 68.
+     * Dune Captain - cost changed from 30 to 29, xp changed from 75 to 74.
+     * Dune Spearguard - cost changed from 30 to 29, xp changed from 75 to 74.
+     * Dune Scorcher - ranged damage changed from 9 to 10, cost changed from 25 to 23, xp changed from 70 to 60.
+     * Dune Raider - cost changed from 34 to 35, xp changed from 70 to 77.
+     * Dune Swiftrider - xp changed from 65 to 62.
+     * Dune Sunderer - xp changed from 76 to 85.
+     * Dune Apothecary - cost changed from 27 to 23, xp changed from 65 to 50.
+     * Dune Falconer - hp changed from 38 to 39, cost changed from 23 to 29, xp changed from 78 to 70.
+     * Dune Strider - hp changed from 39 to 42, cost changed from 23 to 29, xp changed from 74 to 64.
+     * Naga Ophidian - hp changed from 43 to 44, cost changed from 22 to 24, xp changed from 76 to 62.
+     * Naga Ringcaster - hp changed from 40 to 41, cost changed from 22 to 24, ranged damage changed from 7 to 8, xp changed from 70 to 62.
+     * Dune Blademaster - hp changed from 69 to 76.
+     * Dune Spearmaster - hp changed from 67 to 68.
+     * Dune Cataphract - mace melee attack damage changed from 14 to 15, lance damage changed from 13 to 14, cost changed from 62 to 69.
+     * Dune Harrier - cost changed from 47 to 50.
+     * Dune Sky Hunter - cost changed from 50 to 54.
+   * Knalgan Alliance:
+     * Dwarvish Fighter - xp changed from 41 to 45.
+     * Dwarvish Thunderer - xp changed from 40 to 35.
+     * Dwarvish Guardsman - ranged damage increased from 5 to 6, xp changed from 47 to 40.
+     * Footpad - xp changed from 36 to 35.
+     * Thief - xp changed from 28 to 29.
+     * Poacher - xp changed from 29 to 28.
+     * Gryphon Rider - cost changed from 24 to 23, xp changed from 38 to 46.
+     * Dwarvish Steelclad - xp changed from 74 to 88.
+     * Dwarvish Thunderguard - cost changed from 27 to 24, xp changed from 95 to 65.
+     * Dwarvish Stalwart - hp changed from 54 to 59, ranged damage changed from 8 to 9, xp changed from 85 to 78.
+     * Outlaw - cost changed from 26 to 24, hp changed from 42 to 47, xp changed from 77 to 71.
+     * Rogue - xp changed from 70 to 80, cost changed from 24 to 25.
+     * Trapper - hp changed from 45 to 49, melee damage changed from 4 to 5, xp changed from 65 to 73.
+     * Gryphon Master - cost changed from 38 to 40.
+     * Dwarvish Lord - cost changed from 50 to 69.
+     * Dwarvish Sentinel - cost changed from 44 to 63.
+     * Dwarvish Dragonguard - cost changed from 46 to 61.
+     * Fugitive - hp changed from 62 to 68, cost changed from 53 to 55.
+     * Huntsman - cost changed from 50 to 43.
+     * Ranger - cost changed from 52 to 43.
+     * Assassin - cost changed from 44 to 46.
+   * Northerners:
+     * Orcish Archer - xp changed from 30 to 32.
+     * Naga Fighter - xp changed from 32 to 33.
+     * Wolf Rider - xp changed from 30 to 34.
+     * Orcish Warrior - cost changed from 26 to 23, xp changed from 60 to 67.
+     * Goblin Pillager - cost changed from 28 to 31.
+     * Troll - cost changed from 27 to 25, xp changed from 66 to 58.
+     * Troll Rocklobber - ranged damage changed from 17 to 19, hp changed from 51 to 53.
+     * Naga Warrior - cost changed from 24 to 22, xp changed from 66 to 56.
+     * Orcish Crossbowman - melee damage changed from 4 to 6, ranged pierce damage changed from 8 to 9, hp changed from 43 to 46, cost changed from 21 to 22, xp changed from 80 to 43.
+     * Orcish Slayer - cost changed from 26 to 21, xp changed from 64 to 62.
+     * Orcish Warlord - cost changed from 48 to 52.
+     * Direwolf Rider - cost changed from 44 to 52.
+     * Troll Warrior - cost changed from 44 to 49.
+     * Naga Myrmidon - cost changed from 48 to 47.
+     * Orcish Nightblade - cost changed from 43 to 53.
+     * Orcish Slurbow - cost changed from 43 to 37.
+   * Loyalists:
+     * Cavalryman - blade resistance changed from 30% to 20%, xp changed from 40 to 44.
+     * Bowman - xp changed from 39 to 35, melee damage changed from 4 to 5.
+     * Horseman - cost changed from 23 to 24, xp changed from 44 to 54.
+     * Merman Fighter - xp changed from 36 to 34.
+     * Mage - xp changed from 54 to 48.
+     * Javelineer - ranged damage increased from 11 to 13, cost changed from 25 to 24.
+     * Pikeman - cost changed from 25 to 24, xp changed from 65 to 69.
+     * Swordsman - xp changed from 60 to 80.
+     * Knight - cost changed from 38 to 50, xp changed from 120 to 100.
+     * Lancer - cost changed from 44 to 47.
+     * Shock Trooper - cost changed from 35 to 28, xp changed from 110 to 65.
+     * Red Mage - cost changed from 38 to 35, xp changed from 100 to 83.
+     * White Mage - cost changed from 38 to 31, xp changed from 136 to 75.
+     * Dragoon - cost changed from 28 to 29, xp changed from 95 to 80.
+     * Longbowman - cost changed from 26 to 23, xp changed from 68 to 65.
+     * Duelist - cost changed from 29 to 31, xp changed from 90 to 80.
+     * Merman Warrior - cost changed from 26 to 24, xp changed from 80 to 60.
+     * Lieutenant - cost changed from 34 to 31, xp changed from 80 to 85.
+     * Halberdier - cost changed from 44 to 52.
+     * Royal Guard - cost changed from 44 to 61.
+     * Grand Knight - hp changed from 78 to 84, lance damage changed from 17 to 19, cost changed from 58 to 86.
+     * Paladin - hp changed from 65 to 77, lance damage changed from 15 to 16, melee damage changed from 8 to 9, cost changed from 58 to 82.
+     * Iron Mauler - cost changed from 50 to 49.
+     * Arch Mage - cost changed from 59 to 63, xp changed from 220 to 150.
+     * Mage of Light - cost changed from 60 to 59.
+     * Cavalier - cost changed from 52 to 62.
+     * Master Bowman - cost changed from 46 to 50.
+     * Master at Arms - melee damage increased from 7 to 8, cost changed from 44 to 65.
+     * Merman Hoplite - cost changed from 43 to 45.
+     * Merman Triton - cost changed from 43 to 46.
+     * General - hp changed from 50 to 55, cost changed from 54 to 66, xp changed from 180 to 105.
+     * Great Mage - ranged damage changed from 16 to 17, cost changed from 72 to 110.
+     * Grand Marshal - hp changed from 60 to 68 cost changed from 66 to 101.
+ ### Miscellaneous and Bug Fixes
+   * Prevent duplicate advancements from being added to unit type. (issue #7009)
+   * When `[unit]` recalls a unit, remove it from the recall list before firing `[event]name=unit_placed`. (issue #7769)
+
+## Version 1.17.18
+ ### Campaigns
+   * Heir to the Throne
+     * S19c and S20b: Improve rewards by giving a Lieutenant instead of a Sergeant.
+   * Northern Rebirth
+     * Large grammar correction to the English text. (PRs #7643, #7663, #7676, #7680, #7682, #7683)
+   * UtBS
+     * Make the name of the dark assassin translatable again. (PR #7696)
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fixed a bug that the epic trait raised XP requirements for advancements that cost less than 60 XP.
+ ### Multiplayer
+   * Add some search terms to the match history dialog. (PR #7571)
+ ### Terrain
+   * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias). (PR #7629)
+ ### Translations
+   * Updated translations: British English, Czech, Finnish, French, Spanish
+   * Python files are now searched for translatable strings.
+   * Added the `wesnoth-tools` textdomain for WML-maintenance tools.
+ ### User interface
+   * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
+     as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
+   * Better error handling if the data directory is not found. (issue #6883)
+   * The Log File button is now available in the game version info dialog on non-Windows platforms.
+   * Rearranged some elements in Display preferences.
+ ### Miscellaneous and Bug Fixes
+   * Move multiplayer macros to proper folder. (PR #7647)
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite. (issue #7149)
+   * On platforms where logging used to go to stdout/stderr by default, it’s now copied there even when logging to a file. (PR #7672)
+   * `GUI.pyw` now has the i18n mechanics to be translatable, but please wait until the English has been revised.
+   * Refactored hotkey handling, so it no longer has two different codepaths for WML menu items.
+   * The old `utils/change_textdomain` script has been removed. (PR #7688)
+   * wmlxgettext now supports extracting all textdomains at once. (PR #7624)
+   * Fixed a crash in the autocorrect handling on the Wesnoth console. (issue #7412)
+
+## Version 1.17.17
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, French, German, Italian, Spanish
+ ### User interface
+   * Fixed main menu Language button and Version label not being refreshed after
+     switching languages without relaunching the game (issue #7437).
+   * Fixed changing game resolution in Preferences not refreshing the user interface
+     as expected (issue #7436).
+ ### WML Engine
+   * Add support for distinct sub-achievements.
+   * Add [filter_ability] usable instead of [abilities][tag name] to filter attributes including the type of ability used.
+
+## Version 1.17.16
+ ### Translations
+   * Updated translations: British English, French, Italian
+ ### WML Engine
+   * Fixed a crash when encountering a scenario with missing sides (issues #7550,#7553,#7554)
+
+## Version 1.17.15
+ ### Multiplayer
+   * The game no longer crashes when using "Back To Turn" after the game has
+     ended in multiplayer #4236
+ ### Translations
+   * Updated translations: British English, Bulgarian, Czech, French, Spanish, Turkish
+ ### User interface
+   * The "Back To Turn" menu now replays the turn in singelplayer too. However,
+     the Continue button can be used to resume the game from any given position.
+ ### WML Engine
+   * Added support for `[effect] apply_to=level` (PR #7512)
+ ### Miscellaneous and Bug Fixes
+   * The replay viewer now also replays victory/defeat events properly #4667, #6180
+   * Fixes undo stack getting corrupted by reloading #7253
+   * Removed unused `--color` switch from wesnoth_addon_manager
+
+## Version 1.17.14
+ ### Campaigns
+   * Under the Burning Suns
+     * S05 Fixed the main cavern event not taking scouting into account. (issue #7394)
+ ### Packaging
+   * Curl is now a required dependency
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian, Spanish
+ ### User interface
+   * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
+ ### Miscellaneous and Bug Fixes
+   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
+   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
+   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
+   * Linux SCons and CMake scripts now support enabling `_GLIBCXX_ASSERTIONS`.
+
+## Version 1.17.13
+ ### Add-ons client
+   * Added automatic schema-validation of `_server.pbl` files when uploading an add-on. (PR #7239)
+ ### Campaigns
+   * Legend of Wesmere
+     * Adjusted gold and carryover between S11, S14 and S17. (issue #7230)
+     * S03: Fixed an event trigger when Urudin retreats. (PR #7221)
+     * S16: Updated screen flash to use new macros.
+   * Secrets of the Ancients
+     * S17: Use the new `screen_fade` visual effect.
+   * Son of the Black Eye
+     * S14: Fixed Grüü’s dialogue not appearing during the intro. (issue #7280)
+   * The South Guard
+     * S04: Updated safeguard against AI leader stupidity to match map changes.
+   * Under the Burning Suns
+     * Quenoth Rework, including the major changes listed below. (PR #7349)
+     * Redesign of the Quenoth Fighter line, with multiple attacks instead of the formation ability.
+     * Redesign of the Quenoth Shaman line, with songs and the tailwind ability.
+     * Redesign of the Tauroch Rider line, giving both Tauroch and Rider one attack each.
+     * Hide XP bars for some enemies that are never expected to advance a level.
+   * World Conquest
+     * Fix mechanic when a commander replaces a dead leader. (issue #7284)
+ ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn’t always obscure the southmost hexes of the map. (issue #6422)
+ ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs. (issue #7108)
+     * By default, they are now two-color during the ally’s turn.
+     * Added an advanced setting to always show them as single-color (the ally color).
+   * Add waterfall animations to Isar’s Cross. (PR #7348)
+ ### Terrain
+   * Added Art Placeholder overlay (terrain code `^Xxxx`), used for Isar’s Cross’ new waterfalls. (PR #7348)
+ ### Translations
+   * Updated translations: British English, Chinese (Simplified), Czech, Dutch, Finnish, French, Polish, Portuguese (Brazil), Spanish
+   * wmlxgettext always uses Unix-style file paths in .pot files, to reduce changes when working on different platforms. (issue #7380)
+ ### Units
+   * Add Merman Brawler and Citizen to core.
+   * Add Dwarvish Miner to core.
+   * Add Sand Scamperer unit.
+   * Giant Ant now advances to Soldier Ant, requiring 26 XP.
+   * Soldier Ant now costs 16 gold, has 35 HP and needs 50 XP to advance.
+ ### User interface
+   * Added icons for invulnerable and unhealable states. (PR #7363)
+   * The help browser shows groups (`[race]help_taxonomy=`) in subfolders. For example Humans/Dunefolk and Elves/Quenoth. (PR #7228)
+ ### WML API
+   * New `attacks_used` key in `[attack]` causes the attack to deduct more than 1 from `attacks_left`. (PR #7351)
+   * Fixed `[foreach]` when nested loops used the same variable name for the inner and outer loop. (issue #6305)
+   * New `[trait]require_traits=` and `[trait]exclude_traits=` to control random trait generation. (PR #7109)
+ ### WML Engine
+   * Added basic achievements functionality.
+ ### Miscellaneous and Bug Fixes
+   * Fixed a regression in 1.17.x resulting in overlarge unit HP and XP bars in some cases. (issue #7171)
+   * Fixed the editor’s unit tool crashing when placing a unit. (issue #7296)
+   * Many command-line options that log to stdout/stderr now automatically imply `--no-log-to-file`. (issue #7310)
+   * General consolidation of code paths for logging between Windows and non-Windows platforms.
+   * Fixed crash and missing output in `--report`.
+   * Schema validation accepts variables in `[harm_unit]alignment`.
+   * Schema validation no longer accepts the unused `[unit]hp_bar_scaling` and `[unit]xp_bar_scaling`.
+   * Fix an issue with schema validator not reporting errors at top level.
+   * The `unit_tree` tool which generates https://units.wesnoth.org/ now ignores the `[advancefrom]` tag.
+   * Fix the search for the game data directory when doing a local Visual Studio build.
+   * Fixed warnings when compiling with Boost 1.81.
+
+## Version 1.17.12
+ ### Add-ons server
+   * Added support for allowing multiple people to upload updates to an add-on (PR#7268)
+ ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7214)
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Portuguese (Brazil), Turkish
+ ### Units
+   * Dunefolk Rover portrait added
+   * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight
+   * Add more ant types
+   * Fix and adjust Falcon and Elder Falcon attacks
+ ### User interface
+   * Improved the layout of the orb colors dialog, and added tooltips.
+ ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
+   * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
+
+## Version 1.17.11
+ ### Campaigns
+   * Sceptre of Fire
+     * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
+   * Heir to the Throne:
+     * S05B: Delurin now has traits Loyal + resilient + intelligent
+   * Liberty:
+     * The non-loyal character Delurin now has traits resilient + intelligent
+ ### Translations
+   * Updated translations: Arabic, British English, Finnish, French
+ ### Units
+   * Moved Kraken from campaigns to core, updated sprite
+   * Added some dragonfly units to "monsters"
+ ### Miscellaneous and Bug Fixes
+   * Fixed a crash when moving certain walking corpse variations north due to missing animations. (issue #7190)
+   * Fixed special notes being duplicated when storing units (issue #7153).
+
+## Version 1.17.10
+ ### Terrain
    * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
  ### Translations
    * Updated translations: British English, Czech, French, Polish, Portuguese (Brazil)
  ### Units
- ### User interface
- ### WML Engine
+   * Merkfolk units movement cost on forest and hills reduced from 5 to 4.
+   * Orcish Slayer can advance to the Orcish Nightblade by default.
+   * Orcish Slayer's xp required to level up reduced from 100 to 64.
+   * Dunefolk Falconer portrait added.
  ### Miscellaneous and Bug Fixes
+   * Fixed not being able to undo moves (bug #6898)
 
 ## Version 1.17.9
  ### Terrain
@@ -299,6 +1114,100 @@
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
+
+## Version 1.16.12
+ ### Security Fixes
+   * Run wesnothd server as `_wesnoth:_wesnoth` instead of `nobody:users`, improving safety and fixing a warning message in systemd 246+
+ ### Translations
+   * Updated translations: Czech, German, Italian
+ ### Miscellaneous and Bug Fixes
+   * Fix a regression from 1.13.11 that inverted horizontal scrolling with SDL versions 2.0.18+ on X11 and versions 2.0.20+ on Wayland (issues #3362 and #7404, PR #8158)
+
+## Version 1.16.11
+ ### Translations
+   * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Czech, French, Japanese, Polish, Slovak, Welsh
+ ### Miscellaneous and Bug Fixes
+   * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
+   * Fix "Something is wrong with the addon version check database supporting the multiplayer lobby".
+     Note that It also required the host of the game to use wesnoth 1.16.11
+
+## Version 1.16.10
+ ### Campaigns
+   * Under the Burning Suns
+     * S03: Ensure all of Garak’s attacks are changed to fire type (issue #7774).
+     * Make the name of the dark assassin translatable again (PR #7675).
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fix lua error at victory after promoting a replacement commander (issue #7823).
+ ### Translations
+   * Updated translations: Arabic, Czech, French, Italian, Spanish, Portuguese (Brazil)
+ ### User interface
+   * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
+     as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
+   * Enable Whiteboard if the "enable planning mode on start" option is set (issue #7820).
+ ### Miscellaneous and Bug Fixes
+   * Fix compilation with Clang 16 (PR #7586).
+   * Fix crash in the Flatpak version when recruiting in Wayland (issue #7104).
+   * Fix the version dialog’s display on MacOS.
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite (issue #7149).
+
+## Version 1.16.9
+ ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7291)
+   * World Conquest
+     * Fixed rare lua error when a unit is killed.
+     * Fixed Bezoar Item.
+     * Fixed some items losing their effects in later scenarios.
+     * Fixed units losing hp when picking up an artifact
+     * Partially fixed "Promote to commander" (but required a further fix in 1.16.10)
+ ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn't always obscure the southmost hexes of the map. (issue #6422)
+ ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs (issue #7108).
+       * By default, they are now two-color during the ally’s turn.
+       * Added an advanced setting to always show them as single-color (the ally color).
+   * "Back to Turn" menu no longer crashes the game when used
+     After the game has ended. #4236
+ ### Translations
+   * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Turkish
+ ### User interface
+   * Improved the layout of the orb colors dialog, and added tooltips.
+ ### Miscellaneous and Bug Fixes
+   * Fixed Possible Crash when using planning mode #3768
+   * Fixed Possible OOS when using planning mode #7465
+   * Fixed game hanging when an enemy attacks a unit
+     with planned moves #5302
+   * Fixed custom effects implemented via wesnoth.effects
+     losing their effects in later scenarios.
+   * Fix Crash undo+redo error after reloading #7253
+   * Fix Crash when loading old replays #7253
+   * Fix Crash when a unit has bad animations replays #5032
+   * Postponed the removal of the `SPECIAL_NOTES` macro, which means there will be fewer log messages.
+   * `wesnoth_addon_manager` now supports SSL/TLS connection (using the `--secure` flag)
+   * `wesnoth_addon_manager` now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to `wesnoth_addon_manager` (retrieves and prints the add-ons server upload terms)
+   * w`esnoth_addon_manager` now supports the `--version` flag (reports the current Wesnoth version)
+   * Removed unused `--color` switch from `wesnoth_addon_manager`
+
+## Version 1.16.8
+ ### Editor
+   * Fixed: the unit tool crashes when placing a unit (issue #7296).
+ ### Translations
+   * Updated translations: Finnish, Spanish
+ ### Miscellaneous and Bug Fixes
+   * Make the log messages about "Skipping duplicate unit variation ID" say which `[unit_type]` is causing the error.
+
+## Version 1.16.7
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese, Polish, Portuguese (Brazil), Turkish
+ ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
+   * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
+   * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
+   * Fix a crash when an out-of-bounds side number is used in Lua’s `sync.evaluate_multiple` (PR #7222)
+   * Fixed special notes being duplicated when storing units (issue #7153).
 
 ## Version 1.16.6
  ### Translations
@@ -658,9 +1567,9 @@
    * Moved Naga guardian line from UtBS to core, and made some revisions
    * Dune Apothecary experience needed to level up changed from 100 to 65
    * Dune Captain experience needed to level up changed from 86 to 75
-   * Dune Herbalist cost changed form 15 to 14
-   * Dune Horse Archer experience needed to level up changed form 70 to 65
-   * Naga Sicarius hp changed form 55 to 53 and melee damage changed form 9 to 6, new special "deflect" added to melee attack
+   * Dune Herbalist cost changed from 15 to 14
+   * Dune Horse Archer experience needed to level up changed from 70 to 65
+   * Naga Sicarius hp changed from 55 to 53 and melee damage changed from 9 to 6, new special "deflect" added to melee attack
    * Fire Guardian can now level into Fire Wraith, experience needed to level up for Fire Guardian changed from 50 to 29
    * Revised statistics of all animal horses, Bay Horse can now level into Great Horse
  ### Wesnoth Formula Language
@@ -2163,7 +3072,7 @@
        the lich brothers and Krash got more gold.
    * Sceptre of Fire:
      * S4: a cave entrance has been added.
-     * S5: Gryphon Riders are now available starting form S5 (formerly S3).
+     * S5: Gryphon Riders are now available starting from S5 (formerly S3).
      * S7: it's now impossible to kill all pursuers.
    * Secrets of the Ancients:
      * Fix dialog said by wrong unit & revert previous fix (issue #3294).
@@ -3051,7 +3960,7 @@
  ### Editor
    * Fixed a crash when placing units.
    * Restored the ability to preview different ToDs. Note this still does not
-     work when invoked form the Custom ToD window.
+     work when invoked from the Custom ToD window.
    * Fixed editor sides not having the correct side number.
    * Redesigned Windows, Areas, and Sides menus.
    * The Windows menu will now display maps starting from 1 rather than 0.

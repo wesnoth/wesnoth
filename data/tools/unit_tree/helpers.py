@@ -3,23 +3,11 @@
 """
 Various helpers for use by the wmlunits tool.
 """
-import sys, os, re, glob, shutil, copy, subprocess
+import sys, os, re, glob, shutil, copy, subprocess, traceback
 
 import wesnoth.wmlparser3 as wmlparser3
-
-def get_datadir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--data-path"],
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out.strip()
-
-def get_userdir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--userdata-path"],
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out.strip()
+from unit_tree.team_colorizer import colorize
+import wesnoth.base64url as base64url
 
 class Image:
     def __init__(self, id_name, ipath, bases, no_tc):
@@ -34,16 +22,20 @@ class ImageCollector:
     A class to collect all the images which need to be copied to the HTML
     output folder.
     """
-    def __init__(self, wesnoth_exe, userdir, datadir):
+    def __init__(self, wesnoth_exe, userdir, datadir, magick_exe="convert"):
         self.images_by_addon_name = {}
         self.images_by_ipath = {}
         self.binary_paths_per_addon = {}
         self.datadir = datadir
-        if not self.datadir:
-            self.datadir = get_datadir(wesnoth_exe)
         self.userdir = userdir
-        if not self.userdir:
-            self.userdir = get_userdir(wesnoth_exe)
+        self.hide_paths = [
+            os.path.join(self.userdir, "data", "add-ons"),
+            os.path.join(self.userdir, "data"),
+            os.path.join(self.userdir),
+            os.path.join(self.datadir, "data"),
+            os.path.join(self.datadir)
+        ]
+        self.magick = magick_exe
 
     def add_binary_paths_from_WML(self, addon, WML):
         for binpath in WML.get_all(tag="binary_path"):
@@ -56,7 +48,10 @@ class ImageCollector:
         tilde = name.find("~")
         if tilde >= 0:
             name = name[:tilde]
-        bases = [os.path.join(self.datadir, "data/core/images"), os.path.join(self.datadir, "images")]
+        bases = [
+            os.path.join(self.datadir, "data", "core", "images"),
+            os.path.join(self.datadir, "images")
+        ]
         binpaths = self.binary_paths_per_addon.get(addon, [])[:]
         binpaths.reverse()
         for path in binpaths:
@@ -75,9 +70,10 @@ class ImageCollector:
             bases = new_bases
 
         for ipath in bases:
+            ipath = os.path.normpath(ipath)
             if os.path.exists(ipath):
-                return ipath, bases
-        return None, bases
+                return ipath, list(map(os.path.normpath, bases))
+        return None, list(map(os.path.normpath, bases))
 
     def add_image_check(self, addon, name, no_tc=False, check_transparent=False):
         if (addon, name) in self.images_by_addon_name:
@@ -93,28 +89,31 @@ class ImageCollector:
                 image.addons.add(addon)
             return image
 
-        def make_name(x):
-            x = x.strip("./ ")
-            d = options.config_dir.strip("./ ")
-            if x.startswith(d): x = x[len(d):]
-            d = options.data_dir.strip("./ ")
-            if x.startswith(d): x = x[len(d):]
-            x = x.strip("./ ")
-            if x.startswith("data"): x = x[len("data"):]
-            x = x.strip("./ ")
-            y = ""
-            for c in x:
-                if c == "/":
-                    c = "$"
-                elif not c.isalnum() and c not in ".+-()[]{}":
-                    c = "_"
-                y += c
-            return y
+        def make_name(vpath, hide_paths, prefix_fallback=None):
+            if prefix_fallback is not None:
+                vpath = os.path.join(prefix_fallback, vpath)
+            vpath = os.path.normpath(vpath.strip())
+            for hidden_path in hide_paths:
+                if vpath.startswith(hidden_path):
+                #if os.path.commonpath(vpath, hidden_path) == hidden_path:
+                    vpath = os.path.relpath(vpath, hidden_path)
+                    break
+            else:                
+                # root_dir is prefix after normalization
+                root_dir = vpath.split("/")[0].split("\\")[0]
+                if prefix_fallback is None or (root_dir != "general" and root_dir != prefix_fallback):
+                    print("Path \"%s\" outside valid folders." % vpath)
+                    vpath = "403.png"
+
+            encoded_dir_name = base64url.encode_str(os.path.dirname(vpath))
+            sanitized_file_name = re.sub(r'[^a-zA-Z0-9_.-]' , "", ".".join(os.path.basename(vpath).split("(")[0].split(".")[-2:]))
+            head, ext = os.path.splitext(sanitized_file_name)
+            return '%s..%s%s' % (head, encoded_dir_name, ext)
 
         if ipath:
-            id_name = make_name(ipath)
+            id_name = make_name(ipath, self.hide_paths)
         else:
-            id_name = make_name(addon + "/" + name)
+            id_name = make_name(name, self.hide_paths, prefix_fallback=addon)
 
         image = Image(id_name, ipath, bases, no_tc)
         image.addons.add(addon)
@@ -134,29 +133,27 @@ class ImageCollector:
             opath = os.path.join(target_path, "pics", image.id_name)
             try:
                 os.makedirs(os.path.dirname(opath))
-            except OSError:
+            except FileExistsError:
                 pass
+            except OSError:
+                traceback.print_exc()
 
             no_tc = image.no_tc
 
             ipath = os.path.normpath(image.ipath)
-            cdir = os.path.normpath(options.config_dir + "/data/add-ons")
-            if ipath.startswith(cdir):
-                ipath = os.path.join(options.addons, ipath[len(cdir):].lstrip("/"))
+            default_addons_dir = os.path.join(options.config_dir, "data", "add-ons")
+            if ipath.startswith(default_addons_dir):
+                # Override with custom --addons
+                ipath = os.path.join(options.addons, os.path.relpath(ipath, default_addons_dir))
             if ipath and os.path.exists(ipath) and not os.path.isdir(ipath):
                 if no_tc:
                     shutil.copy2(ipath, opath)
                 else:
-                    # We assume TeamColorizer is in the same directory as the
-                    # helpers.py currently executing.
-                    command = os.path.join(os.path.dirname(__file__),
-                                           "TeamColorizer")
-                    p = subprocess.Popen([command, ipath, opath])
-                    p.wait()
+                    colorize(None, ipath, opath, magick=self.magick)
             else:
                 sys.stderr.write(
-                    "Warning: Required image %s does not exist (referenced by %s).\n" % (
-                        image.id_name, ", ".join(image.addons)))
+                    "Warning: Required image %s does not exist at %s (referenced by %s).\n" % (
+                        image.id_name, ipath, ", ".join(image.addons)))
                 if options.verbose:
                     if image.bases:
                         sys.stderr.write("Warning: Looked at the following locations:\n")
@@ -187,6 +184,7 @@ class WesnothList:
         n = 0
         for terrain in self.parser.get_all(tag="terrain_type"):
             tstring = terrain.get_text_val("string")
+            if tstring is None: continue
             self.terrain_lookup[tstring] = terrain
             n += 1
         return n
@@ -205,6 +203,8 @@ class WesnothList:
         for locale in parser.get_all(tag="locale"):
             isocode = locale.get_text_val("locale")
             name = locale.get_text_val("name")
+            if isocode is None or name is None:
+                continue
             if isocode == "ang_GB":
                 continue
             self.languages_found[isocode] = name
@@ -220,7 +220,7 @@ class WesnothList:
         era.faction_lookup = {}
         for multiplayer_side in era.get_all(tag="multiplayer_side"):
             fid = multiplayer_side.get_text_val("id")
-            if fid == "Random":
+            if fid == "Random" or fid in era.faction_lookup:
                 continue
             era.faction_lookup[fid] = multiplayer_side
             recruit = multiplayer_side.get_text_val("recruit", "").strip()
@@ -284,7 +284,7 @@ class WesnothList:
         # Find all unit types.
         newunits = getall("unit_type") + getall("unit")
         for unit in newunits:
-            uid = unit.get_text_val("id")
+            uid = unit.get_text_val("id", "none")
             unit.id = uid
 
             if unit.get_text_val("do_not_list", "no") not in ["no", "false"] or \
@@ -309,18 +309,18 @@ class WesnothList:
         for race in newraces:
             rid = race.get_text_val("id")
             if rid is None:
-                rid = race.get_text_val("name")
+                rid = race.get_text_val("name", "none")
             self.race_lookup[rid] = race
 
         # Find all movetypes.
         newmovetypes = getall("movetype")
         for movetype in newmovetypes:
             mtname = movetype.get_text_val("name")
+            if mtname is None: continue
             self.movetype_lookup[mtname] = movetype
 
         # Store race/movetype/faction of each unit for easier access later.
         for unit in newunits:
-            uid = unit.get_text_val("id")
             race = self.get_unit_value(unit, "race")
             try:
                 unit.race = self.race_lookup[race]
@@ -360,21 +360,9 @@ class WesnothList:
     def check_units(self):
         """
         Once all units have been added, do some checking.
+        This function used to handle now-removed advancefrom tags
         """
-        # handle advancefrom tags
-        for uid, unit in list(self.unit_lookup.items()):
-            for advancefrom in unit.get_all(tag="advancefrom"):
-                fromid = advancefrom.get_text_val("unit")
-                if fromid:
-                    try:
-                        fromunit = self.unit_lookup[fromid]
-                    except KeyError:
-                        error_message(
-                            "Error: Unit '%s' references non-existant [advancefrom] unit '%s'" % (
-                                uid, fromid))
-                        continue
-                    if uid not in fromunit.advance:
-                        fromunit.advance.append(uid)
+        return
 
     def find_unit_factions(self):
         for unit in list(self.unit_lookup.values()):
@@ -503,7 +491,7 @@ class UnitNode:
     def __init__(self, unit):
         self.unit = unit
         self.children = []
-        self.id = unit.get_text_val("id")
+        self.id = unit.get_text_val("id", "none")
         self.child_ids = []
         self.parent_ids = []
         self.child_ids.extend(unit.advance)

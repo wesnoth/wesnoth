@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sound.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -209,9 +210,9 @@ toggle_button_definition::resolution::resolution(const config& cfg)
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.emplace_back(c.child("enabled"));
-		state.emplace_back(c.child("disabled"));
-		state.emplace_back(c.child("focused"));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "enabled", missing_mandatory_wml_tag("toggle_button_definition][resolution][state", "enabled")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "disabled", missing_mandatory_wml_tag("toggle_button_definition][resolution][state", "disabled")));
+		state.emplace_back(VALIDATE_WML_CHILD(c, "focused", missing_mandatory_wml_tag("toggle_button_definition][resolution][state", "focused")));
 	}
 }
 

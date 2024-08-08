@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -128,7 +127,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
 	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(defender.unit_, attacker.unit_, defender.unit_->get_location(), attacker.unit_->get_location(), defender.stats_.is_attacker, weapon));
@@ -203,7 +202,12 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 			}
 		}
 
-		ss << string_table["type_" + weapon->type()];
+		std::pair<std::string, std::string> types = weapon->damage_type();
+		std::string type_bis = types.second;
+		if (!type_bis.empty()) {
+			type_bis = ", " + string_table["type_" + type_bis];
+		}
+		ss << string_table["type_" + types.first] + type_bis;
 
 		set_label_helper("resis_label", ss.str());
 

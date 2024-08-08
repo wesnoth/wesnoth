@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,9 +23,6 @@
 #include "actions/advancement.hpp"
 #include "actions/vision.hpp"
 
-#include "ai/lua/aspect_advancements.hpp"
-#include "formula/callable_objects.hpp"
-#include "formula/formula.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
@@ -35,27 +32,25 @@
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "play_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_checkup.hpp"
-#include "synced_user_choice.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/abilities.hpp"
 #include "units/animation_component.hpp"
-#include "units/helper.hpp"
-#include "units/filter.hpp"
 #include "units/map.hpp"
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
+#include "utils/optional_fwd.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -137,7 +132,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
@@ -176,9 +171,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	cth = std::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_specials_and_abilities("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, cth, weapon);
-	cth = cth_effects.get_composite_value();
+	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
 
 
 	if(opp.get_state("invulnerable")) {
@@ -216,16 +209,12 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_specials_and_abilities("drains");
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, weapon);
-		drain_percent = drain_percent_effects.get_composite_value();
+		drain_percent = weapon->composite_value(weapon->get_specials_and_abilities("drains"), 50);
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_specials_and_abilities("heal_on_hit");
-	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, weapon);
-	drain_constant += heal_on_hit_effects.get_composite_value();
+	drain_constant += weapon->composite_value(weapon->get_specials_and_abilities("heal_on_hit"), 0);
 
 	drains = drain_constant || drain_percent;
 
@@ -293,7 +282,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
@@ -321,9 +310,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 	cth = std::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, cth, weapon);
-	cth = cth_effects.get_composite_value();
+	cth = weapon->composite_value(weapon->get_specials("chance_to_hit"), cth);
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
@@ -337,17 +324,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_specials("drains");
-
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, weapon);
-		drain_percent = drain_percent_effects.get_composite_value();
+		drain_percent = weapon->composite_value(weapon->get_specials("drains"), 50);
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
-	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, weapon);
-	drain_constant += heal_on_hit_effects.get_composite_value();
+	drain_constant += weapon->composite_value(weapon->get_specials("heal_on_hit"), 0);
 
 	drains = drain_constant || drain_percent;
 
@@ -517,9 +499,14 @@ bool battle_context::better_combat(const combatant& us_a,
 	double poison_b_us = us_b.poisoned > 0 ? (us_b.poisoned - us_b.hp_dist[0]) * game_config::poison_amount : 0;
 	double poison_b_them = them_b.poisoned > 0 ? (them_b.poisoned - them_b.hp_dist[0]) * game_config::poison_amount : 0;
 
+	double attack_weight_a = us_a.u_.weapon->attack_weight();
+	double attack_weight_b = us_b.u_.weapon->attack_weight();
+	double damage_a = (them_a.u_.hp - them_a.average_hp()) * attack_weight_a;
+	double damage_b = (them_b.u_.hp - them_b.average_hp()) * attack_weight_b;
+
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
-	b = (us_b.average_hp() - poison_b_us) * harm_weight - (them_b.average_hp() - poison_b_them);
+	a = (us_a.average_hp() - poison_a_us) * harm_weight + damage_a + poison_a_them;
+	b = (us_b.average_hp() - poison_b_us) * harm_weight + damage_b + poison_b_them;
 
 	if(a - b < -0.01) {
 		return false;
@@ -530,7 +517,7 @@ bool battle_context::better_combat(const combatant& us_a,
 	}
 
 	// All else equal: go for most damage.
-	return them_a.average_hp() < them_b.average_hp();
+	return damage_a >= damage_b;
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
@@ -726,8 +713,9 @@ private:
 	{
 	};
 
-	bool perform_hit(bool, statistics::attack_context&);
+	bool perform_hit(bool, statistics_attack_context&);
 	void fire_event(const std::string& n);
+	void fire_event_impl(const std::string& n, bool reversed);
 	void refresh_bc();
 
 	/** Structure holding unit info used in the attack action. */
@@ -864,15 +852,20 @@ attack::attack(const map_location& attacker,
 
 void attack::fire_event(const std::string& n)
 {
+	fire_event_impl(n, false);
+}
+
+void attack::fire_event_impl(const std::string& n, bool reverse)
+{
 	LOG_NG << "attack: firing '" << n << "' event";
 
 	// prepare the event data for weapon filtering
 	config ev_data;
-	config& a_weapon_cfg = ev_data.add_child("first");
-	config& d_weapon_cfg = ev_data.add_child("second");
+	config& a_weapon_cfg = ev_data.add_child(reverse ? "second" : "first");
+	config& d_weapon_cfg = ev_data.add_child(reverse ? "first" : "second");
 
 	// Need these to ensure weapon filters work correctly
-	std::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {
@@ -906,9 +899,9 @@ void attack::fire_event(const std::string& n)
 		return;
 	}
 
-	// damage_inflicted is set in these two events.
+	// damage_inflicted is set in these events.
 	// TODO: should we set this value from unit_info::damage, or continue using the WML variable?
-	if(n == "attacker_hits" || n == "defender_hits") {
+	if(n == "attacker_hits" || n == "defender_hits" || n == "unit_hits") {
 		ev_data["damage_inflicted"] = resources::gamedata->get_variable("damage_inflicted");
 	}
 
@@ -916,8 +909,8 @@ void attack::fire_event(const std::string& n)
 
 	bool wml_aborted;
 	std::tie(std::ignore, wml_aborted) = resources::game_events->pump().fire(n,
-		game_events::entity_location(a_.loc_, a_.id_),
-		game_events::entity_location(d_.loc_, d_.id_), ev_data);
+		game_events::entity_location(reverse ? d_.loc_ : a_.loc_, reverse ? d_.id_ : a_.id_),
+		game_events::entity_location(reverse ? a_.loc_ : d_.loc_, reverse ? a_.id_ : d_.id_), ev_data);
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist.
@@ -970,7 +963,7 @@ void attack::refresh_bc()
 	d_.damage_ = d_stats_->damage;
 }
 
-bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
+bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 {
 	unit_info& attacker = attacker_turn ? a_ : d_;
 	unit_info& defender = attacker_turn ? d_ : a_;
@@ -1103,17 +1096,17 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	if(attacker_turn) {
 		stats.attack_result(hits
 			? (dies
-				? statistics::attack_context::KILLS
-				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES,
+				? statistics_attack_context::KILLS
+				: statistics_attack_context::HITS)
+			: statistics_attack_context::MISSES,
 			attacker.cth_, damage_done, drains_damage
 		);
 	} else {
 		stats.defend_result(hits
 			? (dies
-				? statistics::attack_context::KILLS
-				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES,
+				? statistics_attack_context::KILLS
+				: statistics_attack_context::HITS)
+			: statistics_attack_context::MISSES,
 			attacker.cth_, damage_done, drains_damage
 		);
 	}
@@ -1144,6 +1137,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
+			fire_event_impl("unit_hits", !attacker_turn);
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1151,6 +1145,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	} else {
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
+			fire_event_impl("unit_misses", !attacker_turn);
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1220,9 +1215,11 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	// for that unit, but let the other unit continue
 	if (attacker_stats->weapon == nullptr){
         attacker.n_attacks_ = 0;
+        attacker.orig_attacks_ = 0;
 	}
 	if (defender_stats->weapon == nullptr){
         defender.n_attacks_ = 0;
+        defender.orig_attacks_ = 0;
 	}
 
 	return true;
@@ -1328,7 +1325,7 @@ void attack::unit_killed(unit_info& attacker,
 			game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
 			resources::game_events->pump().fire("unit_placed", reanim_loc);
 
-			preferences::encountered_units().insert(newunit->type_id());
+			prefs::get().encountered_units().insert(newunit->type_id());
 
 			if(update_display_) {
 				display::get_singleton()->invalidate(death_loc);
@@ -1382,11 +1379,10 @@ void attack::perform()
 		return;
 	}
 
-	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - 1);
-
 	VALIDATE(a_.weapon_ < static_cast<int>(a_.get_unit().attacks().size()),
 			_("An invalid attacker weapon got selected."));
 
+	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - a_.get_unit().attacks()[a_.weapon_].attacks_used());
 	a_.get_unit().set_movement(a_.get_unit().movement_left() - a_.get_unit().attacks()[a_.weapon_].movement_used(), true);
 	a_.get_unit().set_state(unit::STATE_NOT_MOVED, false);
 	a_.get_unit().set_resting(false);
@@ -1407,7 +1403,7 @@ void attack::perform()
 	}
 
 	DBG_NG << "getting attack statistics";
-	statistics::attack_context attack_stats(
+	statistics_attack_context attack_stats(resources::controller->statistics(),
 			a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
 	a_.orig_attacks_ = a_stats_->num_blows;
@@ -1468,7 +1464,7 @@ void attack::perform()
 		}
 	}
 
-	// Set by attacker_hits and defender_hits events.
+	// Set by attacker_hits and defender_hits and unit_hits events.
 	resources::gamedata->clear_variable("damage_inflicted");
 
 	if(update_def_fog_) {
@@ -1593,7 +1589,7 @@ void attack_unit_and_advance(const map_location& attacker,
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
-	unit_abilities::effect leader_effect(abil, 0, nullptr, true);
+	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }
 

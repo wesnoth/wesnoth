@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "serialization/unicode.hpp"
 
 #include <functional>
-
 #include <limits>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -40,6 +39,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, text_()
 	, selection_start_(0)
 	, selection_length_(0)
+	, editable_(true)
 	, ime_composing_(false)
 	, ime_start_point_(0)
 	, cursor_timer_(0)
@@ -48,7 +48,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, text_changed_callback_()
 {
 	auto cfg = get_control(control_type, builder.definition);
-	text_.set_family_class(cfg->text_font_family);
+	set_font_family(cfg->text_font_family);
 
 #ifdef __unix__
 	// pastes on UNIX systems.
@@ -153,8 +153,11 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		queue_redraw();
 
 	} else {
-		assert(offset <= text_.get_length());
-		selection_start_ = offset;
+		if (offset <= text_.get_length()) {
+			selection_start_ = offset;
+		} else {
+			selection_start_ = 0;
+		}
 		selection_length_ = 0;
 
 		update_canvas();
@@ -164,6 +167,11 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 
 void text_box_base::insert_char(const std::string& unicode)
 {
+	if(!editable_)
+	{
+		return;
+	}
+
 	delete_selection();
 
 	if(text_.insert_text(selection_start_, unicode)) {
@@ -220,6 +228,11 @@ void text_box_base::copy_selection(const bool mouse)
 
 void text_box_base::paste_selection(const bool mouse)
 {
+	if(!editable_)
+	{
+		return;
+	}
+
 	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
 	if(text.empty()) {
 		return;
@@ -316,7 +329,8 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
-			if(get_window() != open_window_stack.back()) {
+			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
+			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
@@ -583,17 +597,28 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_BACKSPACE:
+			if (!is_editable())
+			{
+				return;
+			}
+
 			handle_key_backspace(modifier, handled);
 			break;
 
 		case SDLK_u:
-			if(!(modifier & KMOD_CTRL)) {
+			if( !(modifier & KMOD_CTRL) || !is_editable() ) {
 				return;
 			}
+
 			handle_key_clear_line(modifier, handled);
 			break;
 
 		case SDLK_DELETE:
+			if (!is_editable())
+			{
+				return;
+			}
+
 			handle_key_delete(modifier, handled);
 			break;
 
@@ -609,17 +634,20 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_x:
-			if(!(modifier & modifier_key)) {
+			if( !(modifier & modifier_key) ) {
 				return;
 			}
 
 			copy_selection(false);
-			delete_selection();
+
+			if ( is_editable() ) {
+				delete_selection();
+			}
 			handled = true;
 			break;
 
 		case SDLK_v:
-			if(!(modifier & modifier_key)) {
+			if( !(modifier & modifier_key) || !is_editable() ) {
 				return;
 			}
 
@@ -629,11 +657,14 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
-				return;
-			}
-			// The IME will handle it, we just need to make sure nothing else handles it too.
-			handled = true;
+
+//	TODO: check if removing the following check causes any side effects
+//	To be removed if there aren't any text rendering problems.
+//			if(!is_composing()) {
+//				return;
+//			}
+
+			handle_key_enter(modifier, handled);
 			break;
 
 		case SDLK_ESCAPE:
@@ -642,6 +673,10 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			}
 			interrupt_composition();
 			handled = true;
+			break;
+
+		case SDLK_TAB:
+			handle_key_tab(modifier, handled);
 			break;
 
 		default:

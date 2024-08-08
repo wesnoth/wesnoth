@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,14 +34,11 @@
 class game_launcher;
 namespace ai { class unit_advancements_aspect; }  // lines 45-45
 namespace ai { class ai_composite; }  // lines 45-45
-namespace ai { class ai_context; }  // lines 42-42
 namespace ai { class component; }  // lines 43-43
 namespace ai { class default_ai_context; }  // lines 41-41
 namespace ai { class readonly_context; }  // lines 39-39
 namespace ai { class readwrite_context; }  // lines 40-40
 namespace ai { class side_context; }  // lines 38-38
-namespace events { class generic_event; }
-namespace events { class observer; }
 
 namespace ai
 {
@@ -58,7 +55,7 @@ public:
 
 	ai_composite& get_ai_ref();
 
-	const std::string describe_ai();
+	std::string describe_ai() const;
 
 	config to_config() const;
 
@@ -67,11 +64,11 @@ public:
 
 	void append_ai(const config& cfg);
 
-	const std::string get_ai_overview();
+	std::string get_ai_overview();
 
-	const std::string get_ai_structure();
+	std::string get_ai_structure();
 
-	const std::string get_ai_identifier() const;
+	std::string get_ai_identifier() const;
 
 	component* get_component(component *root, const std::string &path); // Ai debug method
 

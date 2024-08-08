@@ -6,7 +6,7 @@ wesnoth.audio = {}
 
 ---Play a sound
 ---@param sound string
----@param repeats integer
+---@param repeats? integer
 function wesnoth.audio.play(sound, repeats) end
 
 ---@class music_track
@@ -17,12 +17,12 @@ function wesnoth.audio.play(sound, repeats) end
 ---@field title tstring
 ---@field __cfg WMLTable
 
----@class wesnoth.audio.music_list
+---@class wesnoth.audio.music_list : music_track[]
 ---@field current music_track
+---@field current_i integer|nil
 ---@field previous music_track
 ---@field volume number
 ---@field all WMLTable[]
----@type music_track[]
 wesnoth.audio.music_list = {}
 
 ---Add a new track to the player_list

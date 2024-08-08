@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,16 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog with a checkbox list for choosing installed add-ons to remove.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * addons_list       | @ref listbox  |yes      |A listbox containing add-on selection entries.
- * checkbox          | toggle_button |yes      |A toggle button allowing the user to mark/unmark the add-on.
- * name              | control       |no       |The name of the add-on.
- */
 class addon_uninstall_list : public modal_dialog
 {
 public:

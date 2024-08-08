@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
-class config;
 class wesnothd_connection;
 
 namespace ai
@@ -84,6 +83,12 @@ private:
 	{
 		state_changed_ = true;
 	}
+
+	/** for Ctrl+G handling */
+	void signal_handler_sdl_key_down(const event::ui_event /*event*/,
+										 bool& handled,
+										 const SDL_Keycode key,
+										 SDL_Keymod modifier);
 
 	ng::connect_engine& connect_engine_;
 

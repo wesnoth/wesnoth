@@ -69,8 +69,9 @@ end
 
 function wml_actions.bandit_village_capture(cfg)
 	local bandit_villages = wml.array_access.get_proxy("bandit_villages")
-	local x = cfg.x or wml.error("[bandit_village_capture] missing required x= attribute.")
-	local y = cfg.y or wml.error("[bandit_village_capture] missing required y= attribute.")
+	local x    = cfg.x or wml.error("[bandit_village_capture] missing required x= attribute.")
+	local y    = cfg.y or wml.error("[bandit_village_capture] missing required y= attribute.")
+	local unit = cfg.unit or wml.error("[bandit_village_capture] missing required unit= attribute.")
 
 	for i=1,#bandit_villages do
 		if bandit_villages[i].x == x and bandit_villages[i].y == y then
@@ -79,6 +80,7 @@ function wml_actions.bandit_village_capture(cfg)
 			local visited = vars.villages_visited
 			vars.villages_visited = visited + 1
 
+			wesnoth.game_events.fire("addogin_advice", x, y, unit);
 			wml.fire("message" , { x = x , y = y , message = _"They're here!"})
 
 			bandits_found(x,y)

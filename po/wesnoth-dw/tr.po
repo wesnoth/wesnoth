@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-dw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2022-01-05 20:15+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish\n"
@@ -106,13 +106,6 @@ msgstr "Betik düzenleme ve temizlik"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Sanatsal Tasarım"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"sersemlemiş: Bu birim sersemletilmiş.  Bu birimin Etki Alanı geçersiz hale "
-"gelir."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -1209,8 +1202,8 @@ msgstr ""
 #| "'Inspire the slaves to revolt'."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
-"captors. When you are ready, right-click anywhere and select 'Inspire the "
-"slaves to revolt'."
+"captors. When you are ready, right-click anywhere and select ‘Inspire the "
+"slaves to revolt’."
 msgstr ""
 "Kölelerin köylerinden çıkıp sahiplerine saldıracakları zamanı "
 "seçebilirsiniz. Hazır olduğunuzda herhangi bir yere sağ tıklayın ve "
@@ -2608,7 +2601,7 @@ msgstr ""
 "savaşta katılacağız, Şah Krellis. Biz sizin emrinizdeyiz ve ücret "
 "almayacağız."
 
-#. [unit]: type=Footpad, id=Lyllan
+#. [unit]: type=Footpad, gender=female, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
 msgstr "Lillan"
@@ -2619,7 +2612,7 @@ msgid "Trudd"
 msgstr "Trud"
 
 #. [unit]: type=Thug, id=Dorcyn
-#. [unit]: type=Footpad, id=Dorcyn
+#. [unit]: type=Footpad, gender=male, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"
@@ -3224,32 +3217,6 @@ msgstr ""
 "İnki, Krellis ile sarayda yaşadı ve Jotha'nın yosun yataklarında şişko bir "
 "tembel haline geldi."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Susal Kavgacı"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"İstisnai olarak büyük ve güçlü susallar bazen kendi yumruk ve kuyruklarıyla "
-"silahlı olanlardan daha iyi dövüşür."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "sersemlemiş"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "sersemlemiş"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3270,38 +3237,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "as"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Susal Yurttaş"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Susallar çoğunlukla barışçıdır, ancak evlerini savunmak için savaşmaktan "
-"geri durmazlar. Bu durumda, silahı veya eğitimi olmayan susallar bile "
-"tehlikeli olabilir."
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:5
-msgid "Kraken"
-msgstr "Kraken"
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:20
-msgid ""
-"Krakens are gigantic creatures of the seas. They can grab their opponents "
-"with strong tentacles, or spit a poisonous black ink from a distance. The "
-"best way to survive an encounter with these monsters is to remain ashore."
-msgstr ""
-"Krakenler, denizlerin devasa yaratıklarıdır. Rakiplerini güçlü "
-"dokunaçlarıyla yakalayabilirler veya uzaktan zehirli bir siyah mürekkep "
-"püskürtebilirler. Bu canavarlarla karşılaşınca hayatta kalmanın en iyi yolu "
-"karada kalmaktır."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3489,22 +3424,63 @@ msgstr ""
 "İnsan sihirbaz bir yüzük takıyordu! Belki sihirlidir. Biri deneyebilir mi, "
 "bakalım ne yapıyormuş?"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "sersemletme"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "sersemlemiş: Bu birim sersemletilmiş.  Bu birimin Etki Alanı geçersiz "
+#~ "hale gelir."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Bu saldırı o kadar sert vurur ki rakip sersemler ve rakiplerini etki alanına "
-"zorlayamaz. Etki, rakibin bir sonraki elinde yokolur."
+#~ msgid "Merman Brawler"
+#~ msgstr "Susal Kavgacı"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr "Bu birim düşmanlarını sersemletebilir ve etki alanlarını bozabilir."
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "İstisnai olarak büyük ve güçlü susallar bazen kendi yumruk ve "
+#~ "kuyruklarıyla silahlı olanlardan daha iyi dövüşür."
+
+#~ msgid "stunned"
+#~ msgstr "sersemlemiş"
+
+#~ msgid "female^stunned"
+#~ msgstr "sersemlemiş"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Susal Yurttaş"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Susallar çoğunlukla barışçıdır, ancak evlerini savunmak için savaşmaktan "
+#~ "geri durmazlar. Bu durumda, silahı veya eğitimi olmayan susallar bile "
+#~ "tehlikeli olabilir."
+
+#~ msgid "stun"
+#~ msgstr "sersemletme"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Bu saldırı o kadar sert vurur ki rakip sersemler ve rakiplerini etki "
+#~ "alanına zorlayamaz. Etki, rakibin bir sonraki elinde yokolur."
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr "Bu birim düşmanlarını sersemletebilir ve etki alanlarını bozabilir."
+
+#~ msgid "Kraken"
+#~ msgstr "Kraken"
+
+#~ msgid ""
+#~ "Krakens are gigantic creatures of the seas. They can grab their opponents "
+#~ "with strong tentacles, or spit a poisonous black ink from a distance. The "
+#~ "best way to survive an encounter with these monsters is to remain ashore."
+#~ msgstr ""
+#~ "Krakenler, denizlerin devasa yaratıklarıdır. Rakiplerini güçlü "
+#~ "dokunaçlarıyla yakalayabilirler veya uzaktan zehirli bir siyah mürekkep "
+#~ "püskürtebilirler. Bu canavarlarla karşılaşınca hayatta kalmanın en iyi "
+#~ "yolu karada kalmaktır."

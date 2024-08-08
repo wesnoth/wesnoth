@@ -1,26 +1,32 @@
 #!/bin/sh
-die() {	echo >&2 "$@"; exit 1; }
-notfound() { echo >&2 "$SOCKET not found, sending to the '$1'."; SOCKET=$SERVERBASE/$1/var/run/socket; }
+die() {	printf '%s\n' "$*" >&2; exit 1; }
+notfound() { printf '%s not found, sending to the "%s".\n' "$fifo" "$1" >&2; fifo=$serverbase/$1/var/run/socket; }
 
 [ $# -ge 1 ] || die "Syntax: $0 <server version> <command [arguments]>"
 
-SERVER=$1
-SERVERBASE=$HOME/servers/$SERVER
-SOCKET=$SERVERBASE/build/var/run/socket
-
-[ -d "$SERVERBASE" ] || die "Server '$SERVER' not found."
-
-[ -e $SOCKET ] || { notfound oldbuild; [ -e $SOCKET ] || notfound revertedbuild; }
-[ -p $SOCKET ] || die "$SOCKET is not a named pipe (fifo).
-Is the $SERVER server running?"
-
+server=$1
+serverbase=$HOME/servers/$server
+fifo=$serverbase/build/var/run/socket
 shift
-echo "$@" > $SOCKET
+
+[ -d "$serverbase" ] || die "Server '$server' not found."
+
+[ -e "$fifo" ] || { notfound oldbuild; [ -e "$fifo" ] || notfound revertedbuild; }
+[ -p "$fifo" ] || die "$fifo is not a named pipe (fifo).
+Is the $server server running?"
+
+printf '%s\n' "$*" > "$fifo"
 
 # hack to start the irc echo for the old instance on a restart
-case "$1" in
+case $server in
 restart*)
-	# delay for a bit to make sure we get the right log file since log rotation is also delayed
-	sleep 10
-	screen -S wesnoth-mp-servers -X eval "select lobby-echo" "stuff \"/wl-old $SERVER\012\"" ;;
+	irc_echo() {
+		sleep 10  # delay for a bit to make sure we get the right log file since log rotation is also delayed
+		screen -S wesnoth-mp-servers -X eval 'select lobby-echo' "stuff \"/wl-old $1\012\""
+	}
+	case $server in
+	dev|trunk) ;;
+	stable)    irc_echo stable;;
+	oldstable) irc_echo oldstable;;
+	esac;;
 esac

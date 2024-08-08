@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -290,6 +290,11 @@ bool variant_container<T>::iterator_equals(const utils::any& first, const utils:
 // Force compilation of the following template instantiations
 template class variant_container<variant_vector>;
 template class variant_container<variant_map_raw>;
+
+variant_list::variant_list(const variant_vector& vec)
+	: variant_container<variant_vector>(vec)
+{
+}
 
 variant variant_list::list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func)
 {

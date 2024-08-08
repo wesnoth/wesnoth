@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,30 +22,15 @@
 #include <string>
 #include <vector>
 
-class display;
 class unit_type;
 
 namespace gui2
 {
 
-class menu_button;
-class text_box_base;
 
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the debug-mode dialog to create new units on the map.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * male_toggle       | toggle_button |yes      |Option button to select the "male" gender for created units.
- * female_toggle     | toggle_button |yes      |Option button to select the "female" gender for created units.
- * unit_type_list    | @ref listbox  |yes      |Listbox displaying existing unit types sorted by name and race.
- * unit_type         | control       |yes      |Widget which shows the unit type name label.
- * race              | control       |yes      |Widget which shows the unit race name label.
- */
 class unit_create : public modal_dialog
 {
 public:

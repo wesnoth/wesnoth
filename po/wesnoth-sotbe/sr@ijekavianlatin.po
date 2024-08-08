@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sotbe\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-03-20 03:46 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2011-12-10 09:11+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
 "X-Wrapping: fine\n"
 
@@ -180,8 +180,8 @@ msgstr "Nastrada li Kapue"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
 msgid "Kapou’e"
 msgstr "Kapue"
 
@@ -830,9 +830,13 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Toward_Mountains_of_Haag.cfg:204
+#, fuzzy
+#| msgid ""
+#| "Whatever else happens, we have to pass through these mountains and I "
+#| "dislike leaving enemies in our rear. Stab, smite, and slay!"
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
-"leaving enemies in our rear. Stab, smite, and slay!"
+"leaving enemies to our rear. Stab, smite, and slay!"
 msgstr ""
 "Kako god bilo, moramo proći kroz ove planine i ne želim da ostavljamo "
 "neprijatelje u pozadini. Bodite, drobite, i secite!"
@@ -1071,7 +1075,7 @@ msgstr "Etelijel"
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:69
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:102
@@ -1567,7 +1571,7 @@ msgstr "Ne može! Gri želi da zdrobi nešto nemrtvih."
 msgid ""
 "Grüü is right. It is not wise to let these undead remain here, cutting off "
 "our supply lines and path of retreat. In these days of turmoil, we don’t "
-"know what lies ahead, so it is best not to leave any threats in our rear."
+"know what lies ahead, so it is best not to leave any threats to our rear."
 msgstr ""
 "Gri je u pravu. Nije mudro da ostavimo nemrtve ovde, gde nam mogu odseći "
 "linije snabdevanja i put za povlačenje. U ova nemirna vremena ne znamo šta "
@@ -2141,7 +2145,7 @@ msgid "Defeat the elves"
 msgstr "Poraziš li vilenjake"
 
 # |, no-check-spell
-#. [side]: type=Elvish Sharpshooter, id=Lucile
+#. [side]: type=Elvish Sharpshooter, gender=female, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:76
 msgid "Lucile"
 msgstr "Lusila"
@@ -4452,7 +4456,7 @@ msgid "What! Fight like an orc, you gutless coward!"
 msgstr "Šta! Bori se kako priliči orku, kolebljiva kukavice!"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:289
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:292
 msgid ""
 "Hey Chief, it’s pretty odd. Shan Taum doesn’t seem to have too many of his "
 "men around. He was given control of half the Great Horde. Do you think they "
@@ -4462,7 +4466,7 @@ msgstr ""
 "blizini. Dato mu je vođstvo nad polovinom Velike horde. Da ga nisu napustili?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:294
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:297
 #, fuzzy
 #| msgid ""
 #| "I doubt it. Shan Taum knows how to dissemble. I’ll bet he sent them out "
@@ -4478,7 +4482,7 @@ msgstr ""
 "utoliko bolje za nas sada."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:303
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:306
 msgid ""
 "Good, we crushed this pocket of resistance too. Now where in the world did "
 "that coward Shan Taum run off to?"
@@ -5149,72 +5153,6 @@ msgstr ""
 "postade još poznatiji od Kapua. Priče o njegovoj hrabrosti i lukavosti "
 "stigoše sve do samog Vesnota."
 
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
-msgid "Novice Orcish Shaman"
-msgstr "orko-vrač novajlija"
-
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Novice Shamans are still young and vigorous, but "
-#| "their spell-casting ability still needs improvement."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Novice Shamans are still young and vigorous, but their "
-"spell-casting ability still needs improvement."
-msgstr ""
-"Orkovski vračevi su čuvari orkovske magije. Cijenjeni među orkovskim "
-"plemenima, obrazuju oni Orkovsko vijeće, koje donosi važne odluke za cijelu "
-"orkovsku zajednicu i sudi u mnogi sukobima koji nastaju među plemenima ove "
-"razmirničke rase. Iako fizički slabi (bar za orkove), vračevi su dobri "
-"bacači čarolija i mogu prokleti neprijatelje, crpeći im životnu silu. "
-"Vračevi novajlije su još mladi i bodri, ali još moraju da porade na bacanju "
-"čarolija."
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
-msgid "Old Orcish Shaman"
-msgstr "orko-vrač starješina"
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Old Orcish Shamans are shamans that have mastered "
-#| "magic, although their physical strength has declined with age."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Old Orcish Shamans are shamans that have mastered "
-"magic, although their physical strength has declined with age."
-msgstr ""
-"Orkovski vračevi su čuvari orkovske magije. Cenjeni među orkovskim "
-"plemenima, obrazuju oni Orkovsko veće, koje donosi važne odluke za celu "
-"orkovsku zajednicu i sudi u mnogi sukobima koji nastaju među plemenima ove "
-"razmirničke rase. Iako fizički slabi (bar za orkove), vračevi su dobri "
-"bacači čarolija i mogu prokleti neprijatelje, crpeći im životnu silu. "
-"Vračevi starešine su zagospodarili magijom, ali im je fizička snaga opala sa "
-"godinama."
-
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 msgid "Orcish Shaman"
@@ -5243,6 +5181,72 @@ msgstr ""
 "orkovsku zajednicu i sudi u mnogi sukobima koji nastaju među plemenima ove "
 "razmirničke rase. Iako fizički slabi (bar za orkove), vračevi su dobri "
 "bacači čarolija i mogu prokleti neprijatelje, crpeći im životnu silu."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
+msgid "variation^Novice"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Novice Shamans are still young and vigorous, but "
+#| "their spell-casting ability still needs improvement."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Novice Shamans are still young and vigorous, but their "
+"spell-casting ability still needs improvement."
+msgstr ""
+"Orkovski vračevi su čuvari orkovske magije. Cijenjeni među orkovskim "
+"plemenima, obrazuju oni Orkovsko vijeće, koje donosi važne odluke za cijelu "
+"orkovsku zajednicu i sudi u mnogi sukobima koji nastaju među plemenima ove "
+"razmirničke rase. Iako fizički slabi (bar za orkove), vračevi su dobri "
+"bacači čarolija i mogu prokleti neprijatelje, crpeći im životnu silu. "
+"Vračevi novajlije su još mladi i bodri, ali još moraju da porade na bacanju "
+"čarolija."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
+msgid "variation^Elder"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Old Orcish Shamans are shamans that have mastered "
+#| "magic, although their physical strength has declined with age."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Old Orcish Shamans are shamans that have mastered "
+"magic, although their physical strength has declined with age."
+msgstr ""
+"Orkovski vračevi su čuvari orkovske magije. Cenjeni među orkovskim "
+"plemenima, obrazuju oni Orkovsko veće, koje donosi važne odluke za celu "
+"orkovsku zajednicu i sudi u mnogi sukobima koji nastaju među plemenima ove "
+"razmirničke rase. Iako fizički slabi (bar za orkove), vračevi su dobri "
+"bacači čarolija i mogu prokleti neprijatelje, crpeći im životnu silu. "
+"Vračevi starešine su zagospodarili magijom, ali im je fizička snaga opala sa "
+"godinama."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
@@ -5283,18 +5287,24 @@ msgstr ""
 "Prokletstvo, bez Inariksa da predvodi svoje saurijance, ne možemo više "
 "računati na njihovu pomoć."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
 msgid "Al’Brock"
 msgstr "Albrok"
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
 msgid "Flar’Tar"
 msgstr "Flartar"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "Velika horda: izdaci svake jedinice smanjeni su za po jedan."
+
+#~ msgid "Novice Orcish Shaman"
+#~ msgstr "orko-vrač novajlija"
+
+#~ msgid "Old Orcish Shaman"
+#~ msgstr "orko-vrač starješina"
 
 #~ msgid "Defeat Ar-Dant"
 #~ msgstr "Poraziš li Ar-Danta"

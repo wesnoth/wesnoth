@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,8 +21,6 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 
-#include "desktop/clipboard.hpp"
-#include "desktop/open.hpp"
 
 #include "help/help.hpp"
 #include "gettext.hpp"
@@ -37,28 +35,20 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
 #include "language.hpp"
-#include "preferences/general.hpp"
 #include "utils/general.hpp"
 
 #include "config.hpp"
 
 #include <functional>
-#include <iomanip>
 #include <set>
 #include <sstream>
-#include <stdexcept>
 
 namespace gui2::dialogs
 {
@@ -325,7 +315,18 @@ void addon_manager::pre_show(window& window)
 	if(addr_visible) {
 		auto addr_box = dynamic_cast<styled_widget*>(addr_visible->find("server_addr", false));
 		if(addr_box) {
-			addr_box->set_label(client_.addr());
+			if(!client_.server_id().empty()) {
+				auto full_id = formatter()
+					<< client_.addr() << ' '
+					<< font::unicode_em_dash << ' '
+					<< client_.server_id();
+				if(game_config::debug && !client_.server_version().empty()) {
+					full_id << " (" << client_.server_version() << ')';
+				}
+				addr_box->set_label(full_id.str());
+			} else {
+				addr_box->set_label(client_.addr());
+			}
 		}
 	}
 
@@ -399,15 +400,18 @@ void addon_manager::pre_show(window& window)
 			languages_available.insert(b);
 		}
 	}
-
+	std::set<std::string> language_strings_available;
 	for (const auto& i: languages_available) {
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
+		// Also put them into a set, so same lang strings are not producing doublettes
 		if (std::string lang_code_string = langcode_to_string(i); !lang_code_string.empty()) {
-			language_filter_types_.emplace_back(language_filter_types_.size(), std::move(lang_code_string));
+			language_strings_available.insert(lang_code_string);
 		}
 	}
-
+	for (auto& i: language_strings_available) {
+		language_filter_types_.emplace_back(language_filter_types_.size(), std::move(i));
+	}
 	// The language filter
 	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
 	std::vector<config> language_filter_entries;
@@ -441,8 +445,8 @@ void addon_manager::pre_show(window& window)
 
 	order_dropdown.set_values(order_dropdown_entries);
 	{
-		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
-		const sort_order::type saved_order_direction = preferences::addon_manager_saved_order_direction();
+		const std::string saved_order_name = prefs::get().addon_manager_saved_order_name();
+		const sort_order::type saved_order_direction = prefs::get().addon_manager_saved_order_direction();
 
 		if(!saved_order_name.empty()) {
 			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
@@ -525,7 +529,7 @@ void addon_manager::pre_show(window& window)
 	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
-	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
+	window.set_exit_hook(window::exit_hook::on_all, std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
 }
 
 void addon_manager::toggle_details(button& btn, stacked_widget& stk)
@@ -541,8 +545,8 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 
 void addon_manager::fetch_addons_list()
 {
-	client_.request_addons_list(cfg_);
-	if(!cfg_) {
+	bool success = client_.request_addons_list(cfg_);
+	if(!success) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		get_window()->close();
 	}
@@ -565,16 +569,18 @@ void addon_manager::load_addon_list()
 			// to match add-ons in the config list. It also fills in addon_info's id field. It's also
 			// neccessay to set local_only here so that flag can be properly set after addons_ is cleared
 			// and recreated by read_addons_list.
-			config pbl_cfg = get_addon_pbl_info(id);
-			pbl_cfg["name"] = id;
-			pbl_cfg["local_only"] = true;
+			try {
+				config pbl_cfg = get_addon_pbl_info(id, false);
+				pbl_cfg["name"] = id;
+				pbl_cfg["local_only"] = true;
 
-			// Add the add-on to the list.
-			addon_info addon(pbl_cfg);
-			addons_[id] = addon;
+				// Add the add-on to the list.
+				addon_info addon(pbl_cfg);
+				addons_[id] = addon;
 
-			// Add the addon to the config entry
-			cfg_.add_child("campaign", std::move(pbl_cfg));
+				// Add the addon to the config entry
+				cfg_.add_child("campaign", std::move(pbl_cfg));
+			} catch(invalid_pbl_exception&) {}
 		}
 	}
 
@@ -782,8 +788,8 @@ void addon_manager::order_addons()
 	}
 
 	find_widget<addon_list>(get_window(), "addons", false).set_addon_order(func);
-	preferences::set_addon_manager_saved_order_name(order_struct.as_preference);
-	preferences::set_addon_manager_saved_order_direction(order);
+	prefs::get().set_addon_manager_saved_order_name(order_struct.as_preference);
+	prefs::get().set_addon_manager_saved_order_direction(order);
 }
 
 void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type order)
@@ -796,8 +802,8 @@ void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type 
 		++index;
 	}
 	order_menu.set_value(index);
-	preferences::set_addon_manager_saved_order_name(order_it->as_preference);
-	preferences::set_addon_manager_saved_order_direction(order);
+	prefs::get().set_addon_manager_saved_order_name(order_it->as_preference);
+	prefs::get().set_addon_manager_saved_order_direction(order);
 }
 
 template<void(addon_manager::*fptr)(const addon_info& addon)>
@@ -904,7 +910,8 @@ void addon_manager::publish_addon(const addon_info& addon)
 	std::string server_msg;
 
 	const std::string addon_id = addon.id;
-	config cfg = get_addon_pbl_info(addon_id);
+	// Since the user is planning to upload an addon, this is the right time to validate the .pbl.
+	config cfg = get_addon_pbl_info(addon_id, true);
 
 	const version_info& version_to_publish = cfg["version"].str();
 
@@ -920,12 +927,16 @@ void addon_manager::publish_addon(const addon_info& addon)
 
 	// if the passphrase isn't provided from the _server.pbl, try to pre-populate it from the preferences before prompting for it
 	if(cfg["passphrase"].empty()) {
-		cfg["passphrase"] = preferences::password(preferences::campaign_server(), cfg["author"]);
+		cfg["passphrase"] = prefs::get().password(prefs::get().campaign_server(), cfg["author"]);
 		if(!gui2::dialogs::addon_auth::execute(cfg)) {
 			return;
 		} else {
-			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
+			prefs::get().set_password(prefs::get().campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
+	} else if(cfg["forum_auth"].to_bool()) {
+		// if the uploader's forum password is present in the _server.pbl
+		gui2::show_error_message(_("The passphrase attribute cannot be present when forum_auth is used."));
+		return;
 	}
 
 	if(!::image::exists(cfg["icon"].str())) {
@@ -1023,10 +1034,12 @@ static std::string format_addon_time(std::time_t time)
 	if(time) {
 		std::ostringstream ss;
 
-		const std::string format = preferences::use_twelve_hour_clock_format()
+		const std::string format = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			? _("%B %d %Y, %I:%M %p")
 			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			: _("%B %d %Y, %H:%M");
 
 		ss << translation::strftime(format, std::localtime(&time));
@@ -1089,6 +1102,7 @@ void addon_manager::on_addon_select()
 
 	const std::string& feedback_url = info->feedback_url;
 	find_widget<label>(parent, "url", false).set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
+	find_widget<label>(parent, "id", false).set_label(info->id);
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;

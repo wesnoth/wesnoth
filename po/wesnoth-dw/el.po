@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
+"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
 "PO-Revision-Date: 2012-07-12 13:10+0100\n"
 "Last-Translator: nikos\n"
 "Language-Team: none\n"
@@ -106,11 +106,6 @@ msgstr "Καθάρισμα και επιμέλεια διαλόγου"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Γραφικά"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -1278,8 +1273,8 @@ msgstr ""
 #| "slave revolt."
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
-"captors. When you are ready, right-click anywhere and select 'Inspire the "
-"slaves to revolt'."
+"captors. When you are ready, right-click anywhere and select ‘Inspire the "
+"slaves to revolt’."
 msgstr ""
 "Μπορείς να επιλέξεις πότε οι αιχμάλωτοι θα βγουν από τα χωριά τους για να "
 "επιτεθούν στους δουλέμπορους. Όταν είσαι έτοιμος, κάνε δεξί κλικ οπουδήποτε "
@@ -2747,7 +2742,7 @@ msgstr ""
 "φίλοι μου και εγώ θα σε ακολουθήσουμε στη μάχη, Κάι Κρέλις. Είμαστε δικοί "
 "σου, και αρνούμαστε να πληρωθούμε ο,τιδήποτε."
 
-#. [unit]: type=Footpad, id=Lyllan
+#. [unit]: type=Footpad, gender=female, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
 msgstr ""
@@ -2758,7 +2753,7 @@ msgid "Trudd"
 msgstr ""
 
 #. [unit]: type=Thug, id=Dorcyn
-#. [unit]: type=Footpad, id=Dorcyn
+#. [unit]: type=Footpad, gender=male, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"
@@ -3425,34 +3420,6 @@ msgstr ""
 "Τζόθα μέχρι να γίνει το χοντρό και τεμπέλικο καλαμάρι που ήταν στα γεράματά "
 "του."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Γοργόνος Καυγατζής"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Γοργόνοι που είναι προικισμένοι με σωματικές διαστάσεις και δύναμη "
-"μεγαλύτερη από τους άλλους προτιμούν συνήθως τις γροθιές τους από άλλα όπλα."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "ζαλισμένος"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-#, fuzzy
-#| msgid "stunned"
-msgid "female^stunned"
-msgstr "ζαλισμένος"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3481,42 +3448,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "σκήπτρο"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Γοργόνος Υπήκοος"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Mermen are mostly peaceful, but will fight to defend their homes. In this "
-#| "situation, even mermen with no weapons or training can be dangerous."
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Οι Γοργόνοι είναι φιλειρηνικοί, αλλά θα πολεμήσουν για να προστατέψουν τις "
-"εστίες τους. Σε μια τέτοια περίπτωση, ακόμα και άμαχοι χωρίς εξοπλισμό ή "
-"ιδιαίτερη εκπαίδευση μπορούν να αποδειχθούν ιδιαίτερα επικίνδυνοι."
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:5
-msgid "Kraken"
-msgstr "Κράκεν"
-
-#. [unit_type]: id=Kraken, race=monster
-#: data/campaigns/Dead_Water/units/Kraken.cfg:20
-msgid ""
-"Krakens are gigantic creatures of the seas. They can grab their opponents "
-"with strong tentacles, or spit a poisonous black ink from a distance. The "
-"best way to survive an encounter with these monsters is to remain ashore."
-msgstr ""
-"Τα κράκεν είναι γιγάντια θαλάσσια τέρατα. Μπορούν να αρπάξουν τους "
-"αντιπάλους τους με τα γλιστερά πλοκάμια τους, ή να τους τυφλώσουν με την "
-"φαρμακερή μελάνη τους από απόσταση. Ο πιο αποτελεσματικός τρόπος να επιζήσει "
-"κανείς μια τέτοια συνάντηση είναι να παραμείνει στην ακτή."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3716,35 +3647,79 @@ msgstr ""
 "Ο μάγος φορούσε ένα δαχτυλίδι! Ίσως να είναι μαγικό! Κάποιος πρέπει να το "
 "δοκιμάσει, να δούμε τι είναι!"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "ζάλισμα"
+#~ msgid "Merman Brawler"
+#~ msgstr "Γοργόνος Καυγατζής"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-#, fuzzy
-#| msgid ""
-#| "This attack hits so hard that the defender is dazed and can no longer "
-#| "enforce a zone of control. The effect wears off on the defenders next turn"
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Αυτή η επίθεση είναι τόσο δυνατη, που ο αντίπαλος ζαλίζεται, και δεν μπορεί "
-"να ασκήσει την ζώνη ελέγχου του. Στον επόμενο γύρο του αμυνόμενου η μονάδα "
-"σταματά να είναι ζαλισμένη."
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Γοργόνοι που είναι προικισμένοι με σωματικές διαστάσεις και δύναμη "
+#~ "μεγαλύτερη από τους άλλους προτιμούν συνήθως τις γροθιές τους από άλλα "
+#~ "όπλα."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid "stunned"
+#~ msgstr "ζαλισμένος"
+
 #, fuzzy
-#| msgid ""
-#| " This unit is able stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Αυτή η μονάδα μπορεί να ζαλίσει τους αντιπάλους της. Ένας ζαλισμένος "
-"αντίπαλος δεν μπορεί να εμποδίσει κανέναν να περάσει."
+#~| msgid "stunned"
+#~ msgid "female^stunned"
+#~ msgstr "ζαλισμένος"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Γοργόνος Υπήκοος"
+
+#, fuzzy
+#~| msgid ""
+#~| "Mermen are mostly peaceful, but will fight to defend their homes. In "
+#~| "this situation, even mermen with no weapons or training can be dangerous."
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Οι Γοργόνοι είναι φιλειρηνικοί, αλλά θα πολεμήσουν για να προστατέψουν "
+#~ "τις εστίες τους. Σε μια τέτοια περίπτωση, ακόμα και άμαχοι χωρίς "
+#~ "εξοπλισμό ή ιδιαίτερη εκπαίδευση μπορούν να αποδειχθούν ιδιαίτερα "
+#~ "επικίνδυνοι."
+
+#~ msgid "stun"
+#~ msgstr "ζάλισμα"
+
+#, fuzzy
+#~| msgid ""
+#~| "This attack hits so hard that the defender is dazed and can no longer "
+#~| "enforce a zone of control. The effect wears off on the defenders next "
+#~| "turn"
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Αυτή η επίθεση είναι τόσο δυνατη, που ο αντίπαλος ζαλίζεται, και δεν "
+#~ "μπορεί να ασκήσει την ζώνη ελέγχου του. Στον επόμενο γύρο του αμυνόμενου "
+#~ "η μονάδα σταματά να είναι ζαλισμένη."
+
+#, fuzzy
+#~| msgid ""
+#~| " This unit is able stun its enemies, disrupting their zones of control."
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Αυτή η μονάδα μπορεί να ζαλίσει τους αντιπάλους της. Ένας ζαλισμένος "
+#~ "αντίπαλος δεν μπορεί να εμποδίσει κανέναν να περάσει."
+
+#~ msgid "Kraken"
+#~ msgstr "Κράκεν"
+
+#~ msgid ""
+#~ "Krakens are gigantic creatures of the seas. They can grab their opponents "
+#~ "with strong tentacles, or spit a poisonous black ink from a distance. The "
+#~ "best way to survive an encounter with these monsters is to remain ashore."
+#~ msgstr ""
+#~ "Τα κράκεν είναι γιγάντια θαλάσσια τέρατα. Μπορούν να αρπάξουν τους "
+#~ "αντιπάλους τους με τα γλιστερά πλοκάμια τους, ή να τους τυφλώσουν με την "
+#~ "φαρμακερή μελάνη τους από απόσταση. Ο πιο αποτελεσματικός τρόπος να "
+#~ "επιζήσει κανείς μια τέτοια συνάντηση είναι να παραμείνει στην ακτή."
 
 #, fuzzy
 #~| msgid "(Beginner)"

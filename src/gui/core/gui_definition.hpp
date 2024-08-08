@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -59,6 +59,10 @@ public:
 
 	/** Activates this GUI. */
 	void activate() const;
+
+	t_string description() {
+		return description_;
+	}
 
 private:
 	std::string id_;

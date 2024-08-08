@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "units/unit.hpp"
 #include "tod_manager.hpp"
 #include "game_version.hpp"
 

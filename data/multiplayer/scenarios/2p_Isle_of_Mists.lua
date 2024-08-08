@@ -1,6 +1,6 @@
 local _ = wesnoth.textdomain 'wesnoth-multiplayer'
 local T = wml.tag
-local on_event = wesnoth.game_events.add_repeating
+local on_event = wesnoth.require("on_event")
 
 local random_spawns = {
 	{
@@ -343,6 +343,7 @@ on_event("die", function()
 		message = _"As you finally defeat your last remaining foes, the dreary mists around the island seem to lift. The phantoms fade away, at last released from their eternal guardianship. You have finally cleansed the ancient shrine... for now.",
 		image ="wesnoth-icon.png",
 	}
+	wesnoth.achievements.set("wesnoth_MP_survivals","Wesnoth_MP_Isle_of_Mists")
 	wesnoth.wml_actions.endlevel {
 		result = "victory",
 	}

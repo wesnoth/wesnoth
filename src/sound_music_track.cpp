@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>, Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -74,9 +74,9 @@ void music_track::resolve()
 		return;
 	}
 
-	file_path_ = filesystem::get_binary_file_location("music", id_);
-
-	if (file_path_.empty()) {
+	if(auto path = filesystem::get_binary_file_location("music", id_)) {
+		file_path_ = path.value();
+	} else {
 		LOG_AUDIO << "could not find track '" << id_ << "' for track identification";
 		return;
 	}

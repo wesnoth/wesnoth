@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,11 +23,9 @@
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
 #include "gui/widgets/settings.hpp"
-#include "sdl/rect.hpp"
 #include "tstring.hpp"
 #include "sdl/input.hpp" // get_mouse_location
 
-#include <SDL2/SDL.h>
 
 namespace gui2
 {
@@ -55,6 +53,42 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 color_t decode_color(const std::string& color)
 {
 	return color_t::from_rgba_string(color);
+}
+
+PangoWeight decode_text_weight(const std::string& weight)
+{
+	if(weight == "thin") {
+		return PANGO_WEIGHT_THIN;
+	} else if (weight == "light") {
+		return PANGO_WEIGHT_LIGHT;
+	} else if (weight == "semibold") {
+		return PANGO_WEIGHT_SEMIBOLD;
+	} else if (weight == "bold") {
+		return PANGO_WEIGHT_BOLD;
+	} else if (weight == "heavy") {
+		return PANGO_WEIGHT_HEAVY;
+	}
+
+	if(!weight.empty() && weight != "normal") {
+		ERR_GUI_E << "Invalid text weight '" << weight << "', falling back to 'normal'.";
+	}
+
+	return PANGO_WEIGHT_NORMAL;
+}
+
+PangoStyle decode_text_style(const std::string& style)
+{
+	if(style == "italic") {
+		return PANGO_STYLE_ITALIC;
+	} else if(style == "oblique") {
+		return PANGO_STYLE_OBLIQUE;
+	}
+
+	if(!style.empty() && style != "normal") {
+		ERR_GUI_E << "Invalid text style '" << style << "', falling back to 'normal'.";
+	}
+
+	return PANGO_STYLE_NORMAL;
 }
 
 PangoAlignment decode_text_alignment(const std::string& alignment)
@@ -116,7 +150,7 @@ point get_mouse_position()
 	return sdl::get_mouse_location();
 }
 
-std::string debug_truncate(const std::string& text)
+std::string_view debug_truncate(std::string_view text)
 {
 	return text.substr(0, 15);
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include "lua/lauxlib.h"
 
 namespace lua_stringx {
 
@@ -327,13 +326,20 @@ static int intf_str_format(lua_State* L)
 /**
  * Parses a range string of the form a-b into an interval pair
  * Accepts the string "infinity" as representing a Very Large Number
+ * Arg 2: (optional) If true, parse as real numbers instead of integers
  */
 static int intf_parse_range(lua_State* L)
 {
 	const std::string str = luaL_checkstring(L, 1);
-	auto interval = utils::parse_range(str);
-	lua_pushnumber(L, interval.first);
-	lua_pushnumber(L, interval.second);
+	if(luaL_opt(L, lua_toboolean, 2, false)) {
+		auto interval = utils::parse_range_real(str);
+		lua_pushnumber(L, interval.first);
+		lua_pushnumber(L, interval.second);
+	} else {
+		auto interval = utils::parse_range(str);
+		lua_pushinteger(L, interval.first);
+		lua_pushinteger(L, interval.second);
+	}
 	return 2;
 }
 

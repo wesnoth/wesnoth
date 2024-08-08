@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,7 +24,6 @@
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
-#include "gui/core/event/handler.hpp"
 #include "gui/core/top_level_drawable.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
@@ -38,7 +37,6 @@
 #include <string>
 #include <vector>
 
-struct point;
 
 namespace gui2
 {
@@ -49,8 +47,6 @@ namespace event { struct message; }
 // ------------ WIDGET -----------{
 
 namespace dialogs { class modal_dialog; }
-class debug_layout_graph;
-class pane;
 
 namespace event
 {
@@ -58,8 +54,6 @@ class distributor;
 } // namespace event
 
 /**
- * @ingroup GUIWidgetWML
- *
  * base class of top level items, the only item which needs to store the final canvases to draw on.
  * A window is a kind of panel see the panel for which fields exist.
  */
@@ -159,11 +153,56 @@ public:
 	 */
 	virtual void layout() override;
 
-	/** Called by draw_manager when it believes a redraw is necessary. */
+	/** Ensure the window's internal render buffer is up-to-date.
+	 *
+	 * This renders the window to an off-screen texture, which is then
+	 * copied to the screen during expose().
+	 */
+	virtual void render() override;
+
+private:
+	/** The internal render buffer used by render() and expose(). */
+	texture render_buffer_ = {};
+
+	/** The part of the window (if any) currently marked for rerender. */
+	rect awaiting_rerender_;
+
+	/** Parts of the window (if any) with rendering deferred to next frame */
+	std::vector<rect> deferred_regions_;
+
+	/** Ensure render textures are valid and correct. */
+	void update_render_textures();
+
+public:
+	/**
+	 * Called by draw_manager when it believes a redraw is necessary.
+	 * Can be called multiple times per vsync.
+	 */
 	virtual bool expose(const rect& region) override;
 
 	/** The current draw location of the window, on the screen. */
 	virtual rect screen_location() override;
+
+	/**
+	 * Queue a rerender of the internal render buffer.
+	 *
+	 * This does not request a repaint. Ordinarily use queue_redraw()
+	 * on a widget, which will call this automatically.
+	 *
+	 * @param region    The region to rerender in screen coordinates.
+	 */
+	void queue_rerender(const rect& region);
+	void queue_rerender();
+
+	/**
+	 * Defer rendering of a particular region to next frame.
+	 *
+	 * This is used for blur, which must render the region underneath once
+	 * before rendering the blur.
+	 *
+	 * @param region    The region to defer in screen coordinates.
+	 */
+	void defer_region(const rect& region);
 
 	/** The status of the window. */
 	enum class status {
@@ -176,8 +215,8 @@ public:
 	/**
 	 * Requests to close the window.
 	 *
-	 * At the moment the request is always honored but that might change in the
-	 * future.
+	 * This request is not always honored immediately, and so callers must account for the window remaining open.
+	 * For example, when overriding draw_manager's update() method.
 	 */
 	void close()
 	{
@@ -397,21 +436,30 @@ public:
 		return point(-1, -1);
 	}
 
+	enum class exit_hook {
+		/** Always run hook */
+		on_all,
+		/** Run hook *only* if result is OK. */
+		on_ok,
+	};
+
 	/**
 	 * Sets the window's exit hook.
 	 *
-	 * A window will only close if this function returns true.
-	 *
-	 * @param func A function taking a window reference and returning a boolean result.
+	 * A window will only close if the given function returns true under the specified mode.
 	 */
-	void set_exit_hook(std::function<bool(window&)> func)
+	void set_exit_hook(exit_hook mode, std::function<bool(window&)> func)
 	{
-		exit_hook_ = func;
-	}
-
-	void set_exit_hook_ok_only(std::function<bool(window&)> func)
-	{
-		exit_hook_ = [func](window& w)->bool { return w.get_retval() != OK || func(w); };
+		exit_hook_ = [mode, func](window& w) {
+			switch(mode) {
+			case exit_hook::on_all:
+				return func(w);
+			case exit_hook::on_ok:
+				return w.get_retval() != OK || func(w);
+			default:
+				return true;
+			}
+		};
 	}
 
 	enum class show_mode {

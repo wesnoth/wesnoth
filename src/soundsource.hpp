@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Karol Nowak <grzywacz@sul.uni.lodz.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,6 @@ class display;
 namespace soundsource {
 
 class sourcespec;
-class manager;
 
 /*
  * Sound source is an object on a map (a location) which has one or more

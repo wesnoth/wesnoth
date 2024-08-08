@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,14 +24,12 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
 #include "units/animation_component.hpp"
 #include "game_version.hpp"
 #include "deprecation.hpp"
 
-#include "lua/lauxlib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -244,19 +242,26 @@ static int impl_unit_equality(lua_State* L)
 static int impl_unit_tostring(lua_State* L)
 {
 	const lua_unit* lu = luaW_tounit_ref(L, 1);
-	unit &u = *lu->get();
+	unit* u = lu->get();
 	std::ostringstream str;
 
 	str << "unit: <";
-	if(!u.id().empty()) {
-		str << u.id() << " ";
+	if(!u) {
+		str << "invalid";
+	} else if(!u->id().empty()) {
+		str << u->id() << " ";
 	} else {
-		str << u.type_id() << " ";
+		str << u->type_id() << " ";
 	}
-	if(int side = lu->on_recall_list()) {
-		str << "at (side " << side << " recall list)";
-	} else {
-		str << "at (" << u.get_location() << ")";
+	if(u) {
+		if(int side = lu->on_recall_list()) {
+			str << "at (side " << side << " recall list)";
+		} else {
+			if(!lu->on_map()) {
+				str << "private ";
+			}
+			str << "at (" << u->get_location() << ")";
+		}
 	}
 	str << '>';
 
@@ -347,7 +352,7 @@ static int impl_unit_get(lua_State *L)
 		if(int* v = utils::get_if<int>(&upkeep)) {
 			lua_push(L, *v);
 		} else {
-			const std::string type = utils::visit(unit::upkeep_type_visitor{}, upkeep);
+			const std::string type = utils::visit(unit::upkeep_type_visitor(), upkeep);
 			lua_push(L, type);
 		}
 
@@ -404,7 +409,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_string_attrib("portrait", u.big_profile() == u.absolute_image()
-		? u.absolute_image() + u.image_mods() + "~XBRZ(2)"
+		? u.absolute_image() + u.image_mods() + "~SCALE_SHARP(144,144)"
 		: u.big_profile());
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
 

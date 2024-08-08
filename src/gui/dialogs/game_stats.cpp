@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,19 +17,11 @@
 #include "gui/dialogs/game_stats.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/log.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "display.hpp"
 #include "formatter.hpp"
-#include "game_board.hpp"
 #include "game_classification.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"

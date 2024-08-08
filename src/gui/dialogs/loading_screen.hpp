@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,17 +14,15 @@
 
 #pragma once
 
-#include "gui/core/top_level_drawable.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include "events.hpp"
 #include "tstring.hpp"
 
 #include <atomic>
-#include <chrono>
 #include <future>
 #include <map>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <vector>
 
 namespace cursor
@@ -139,7 +137,7 @@ private:
 	label* progress_stage_label_;
 	drawing* animation_;
 
-	std::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
+	utils::optional<decltype(std::chrono::steady_clock::now())> animation_start_;
 
 	std::atomic<loading_stage> current_stage_;
 

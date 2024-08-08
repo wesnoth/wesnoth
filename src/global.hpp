@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,4 +39,24 @@
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
+#endif
+
+/*
+ * GCC-13 and GCC-14 warn about functions that return a reference and whose arguments also include a
+ * reference to a temporary, because they assume that the returned reference may point into the
+ * argument. This causes false positives for functions that take a std::map-like object as a
+ * separate argument (or as their "this" pointer), where the temporary being passed in is only used
+ * as a key to find an object in the map, and the returned reference points to an object owned by
+ * the map. Similarly, it's a false positive for data owned by a singleton.
+ *
+ * GCC-14 supports supressing the warnings with [[gnu::no_dangling]]. Clang complains about unknown
+ * attributes in the gnu:: namespace, so has to have the #if, and the #if means we need the #ifdef.
+ */
+#ifdef __has_cpp_attribute
+#if __has_cpp_attribute(gnu::no_dangling)
+#define NOT_DANGLING [[gnu::no_dangling]]
+#endif
+#endif
+#ifndef NOT_DANGLING
+#define NOT_DANGLING
 #endif

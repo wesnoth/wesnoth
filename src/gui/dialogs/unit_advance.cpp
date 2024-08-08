@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,11 +18,8 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
@@ -66,7 +63,8 @@ void unit_advance::pre_show(window& window)
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {
-			const auto& back = sample.get_modifications().child_range("advancement").back();
+			const auto range = sample.get_modifications().child_range("advancement");
+			const auto& back = range.back();
 
 			if(back.has_attribute("image")) {
 				image_string = back["image"].str();

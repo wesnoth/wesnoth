@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_widget.hpp"
 
-#include "lua/lauxlib.h"
+#include "lua/wrapper_lauxlib.h"
 #include "global.hpp"
 #include "tstring.hpp"
 #include "map/location.hpp"
@@ -341,7 +341,7 @@ namespace lua_check_impl
 	lua_check(lua_State *L, int n)
 	{
 		std::string str = lua_check_impl::lua_check<std::string>(L, n);
-		std::optional<typename T::type> val = T::get_enum(str);
+		utils::optional<typename T::type> val = T::get_enum(str);
 		if(!val) {
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum.").c_str());
 		}

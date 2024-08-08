@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -22,6 +22,10 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
+
+#include <algorithm>
+#include <array>
+#include <utility>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -357,41 +361,69 @@ std::string vngettext_impl(const char* domain,
 	return msg;
 }
 
-int edit_distance_approx(const std::string &str_1, const std::string &str_2)
+[[nodiscard]] std::size_t edit_distance_approx(std::string_view str_1, std::string_view str_2) noexcept
 {
-	int edit_distance = 0;
-	if(str_1.length() == 0) {
-		return str_2.length();
+	// First, trim prefixes
+	auto s1_first = str_1.begin();
+	auto s2_first = str_2.begin();
+
+	while(s1_first != str_1.end() && s2_first != str_2.end() && *s1_first == *s2_first) {
+		++s1_first;
+		++s2_first;
 	}
-	else if(str_2.length() == 0) {
-		return str_1.length();
+
+	// Then, trim suffixes
+	auto s1_size = static_cast<std::size_t>(str_1.end() - s1_first);
+	auto s2_size = static_cast<std::size_t>(str_2.end() - s2_first);
+
+	while(s1_size != 0 && s2_size != 0 && s1_first[s1_size - 1] == s2_first[s2_size - 1]) {
+		--s1_size;
+		--s2_size;
 	}
-	else {
-		int j = 0;
-		int len_max = std::max(str_1.length(), str_2.length());
-		for(int i = 0; i < len_max; i++) {
-			if(str_1[i] != str_2[j]) {
-				//SWAP
-				if(str_1[i+1] == str_2[j] && str_1[i] == str_2[j+1]) {
-					// No need to test the next letter
-					i++;j++;
-				}
-				//ADDITION
-				else if(str_1[i+1] == str_2[j]) {
-					j--;
-				}
-				//DELETION
-				else if(str_1[i] == str_2[j+1]) {
-					i--;
-				}
-				// CHANGE (no need to do anything, next letter MAY be successful).
-				edit_distance++;
-				if(edit_distance * 100 / std::min(str_1.length(), str_2.length()) > 33) {
-					break;
-				}
+
+	if(s1_size == 0) {
+		return s2_size;
+	}
+
+	if(s2_size == 0) {
+		return s1_size;
+	}
+
+	// Limit the relevant characters to no more than 15
+	s1_size = std::min(s1_size, std::size_t{15});
+	s2_size = std::min(s2_size, std::size_t{15});
+
+	if(s1_size < s2_size) {
+		std::swap(s1_first, s2_first);
+		std::swap(s1_size, s2_size);
+	}
+
+	// This is an 'optimal string alignment distance' algorithm
+	// (https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance#Optimal_string_alignment_distance)
+	// with some optimizations. Two variables are used to track the previous row instead of using another array.
+	// `up` handles deletion, `row[j]` handles insertion, and `upper_left` handles substitution.
+
+	// This is a single row of the matrix
+	std::array<std::size_t, 16> row{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+
+	for(std::size_t i = 0; i != s1_size; ++i) {
+		auto upper_left = i;
+		row[0] = i + 1;
+
+		for(std::size_t j = 0; j != s2_size; ++j) {
+			const auto up = row[j + 1];
+			const bool transposed = i > 0 && j > 0 && s1_first[i] == s2_first[j - 1] && s1_first[i - 1] == s2_first[j];
+
+			if(s1_first[i] != s2_first[j] && !transposed) {
+				row[j + 1] = std::min({up, row[j], upper_left}) + 1;
+			} else {
+				row[j + 1] = upper_left;
 			}
-			j++;
+
+			// When moving to the next element of a row, the previous `up` element is now the `upper_left`
+			upper_left = up;
 		}
 	}
-	return edit_distance;
+
+	return row[s2_size];
 }

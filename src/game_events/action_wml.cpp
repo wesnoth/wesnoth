@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,41 +20,25 @@
  */
 
 #include "game_events/action_wml.hpp"
-#include "game_events/conditional_wml.hpp"
-#include "game_events/pump.hpp"
 
-#include "actions/attack.hpp"
 #include "actions/create.hpp"
-#include "actions/move.hpp"
-#include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
-#include "map/label.hpp"
 #include "pathfind/teleport.hpp"
 #include "pathfind/pathfind.hpp"
 #include "persist_var.hpp"
 #include "play_controller.hpp"
 #include "recall_list_manager.hpp"
-#include "replay.hpp"
-#include "random.hpp"
 #include "mouse_handler_base.hpp" // for events::commands_disabled
 #include "resources.hpp"
-#include "scripting/game_lua_kernel.hpp"
-#include "side_filter.hpp"
-#include "soundsource.hpp"
 #include "synced_context.hpp"
 #include "synced_user_choice.hpp"
 #include "team.hpp"
-#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
@@ -239,16 +223,16 @@ wml_action::wml_action(const std::string & tag, handler function)
  *
  * Generated code looks like this:
  * \code
- * void wml_func_foo(...);
+ * static void wml_func_foo(...);
  * static wml_action wml_action_foo("foo", &wml_func_foo);
- * void wml_func_foo(...)
+ * static void wml_func_foo(...)
  * {
  *    // code for foo
  * }
  * \endcode
  */
 #define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
-	static void wml_func_##pname(const queued_event &pei, const vconfig &pcfg); \
+	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg); \
 	static wml_action wml_action_##pname(#pname, &wml_func_##pname);  \
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
@@ -285,27 +269,17 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "custom_command"};
 
-	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
-	const bool is_unsynced_too_early = resources::gamedata->phase() != game_data::PLAY;
+	const bool is_too_early = resources::gamedata->phase() == game_data::INITIAL || resources::gamedata->phase() == game_data::PRELOAD;
+	const bool is_during_turn = resources::gamedata->phase() == game_data::TURN_PLAYING;
 	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
 		ERR_NG << "[do_command] called too early, only allowed at START or later";
 		return;
 	}
-	if(is_unsynced && resources::controller->is_lingering())
+	if(is_unsynced && !is_during_turn)
 	{
-		ERR_NG << "[do_command] cannot be used in linger mode";
-		return;
-	}
-	if(is_unsynced && !resources::controller->gamestate().init_side_done())
-	{
-		ERR_NG << "[do_command] cannot be used before the turn has started";
-		return;
-	}
-	if(is_unsynced && is_unsynced_too_early)
-	{
-		ERR_NG << "[do_command] called too early";
+		ERR_NG << "[do_command] can only be used during a turn when a user woudl also be able to invoke commands";
 		return;
 	}
 	if(is_unsynced && events::commands_disabled)
@@ -640,7 +614,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	}
 
-	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+	utils::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
 		lg::log_to_chat() << *errmsg << '\n';
@@ -857,6 +831,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 		        << cfg.get_config().debug();
+	} else if (cfg.get_children("source").size() > 1 ||
+		cfg.get_children("target").size() > 1 ||
+		cfg.get_children("filter").size() > 1) {
+		ERR_WML << "[tunnel] should have exactly one of each mandatory tag:\n"
+		        << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
@@ -917,15 +896,6 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 	uc.add_unit(parsed_cfg, &cfg);
 
-}
-
-WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
-{
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_undo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_undo_commands(cfg.get_parsed_config(), event_info);
-	}
 }
 
 } // end namespace game_events

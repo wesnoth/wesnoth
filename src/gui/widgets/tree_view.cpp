@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/window_builder/helper.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include <functional>
 #include "wml_exception.hpp"
@@ -265,11 +264,10 @@ tree_view_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("tree_view_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("tree_view_definition][resolution", "state_disabled")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("tree_view_definition][resolution", "grid"));
 
 	grid = std::make_shared<builder_grid>(child);
 }
@@ -326,10 +324,7 @@ tree_node::tree_node(const config& cfg)
 	// TODO: interpolate this value into the error message
 	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
 
-	const config& node_definition = cfg.child("node_definition");
-
-	VALIDATE(node_definition, _("No node defined."));
-
+	auto node_definition = VALIDATE_WML_CHILD(cfg, "node_definition", missing_mandatory_wml_tag("node", "node_definition"));
 	builder = std::make_shared<builder_grid>(node_definition);
 }
 

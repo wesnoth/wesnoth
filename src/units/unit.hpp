@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,14 +21,12 @@
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
+#include "utils/optional_fwd.hpp"
 #include "utils/variant.hpp"
 
-#include <boost/dynamic_bitset_fwd.hpp>
-
 #include <bitset>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
-class display;
 class team;
 class unit_animation_component;
 class unit_formula_manager;
@@ -94,18 +92,32 @@ public:
 	const unit_ability& front() const  { return cfgs_.front(); }
 	unit_ability&       back()         { return cfgs_.back();  }
 	const unit_ability& back()  const  { return cfgs_.back();  }
+	std::size_t         size()         { return cfgs_.size();  }
 
 	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
+	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
 
 	template<typename... T>
 	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
 
 	const map_location& loc() const { return loc_; }
 
-	/** Appens the abilities from @a other to @a this, ignores other.loc() */
+	/** Appends the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
-		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
+		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
+	}
+
+	/**
+	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
+	 *
+	 * @param other where to copy the elements from
+	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
+	 */
+	template<typename Predicate>
+	void append_if(const unit_ability_list& other, const Predicate& predicate)
+	{
+		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
 	}
 
 private:
@@ -212,8 +224,6 @@ public:
 	}
 
 	virtual ~unit();
-
-	void swap(unit&);
 
 	unit& operator=(const unit&) = delete;
 
@@ -847,14 +857,16 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
-		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
-		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
-		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
-		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
-		STATE_UNHEALABLE, /** The unit cannot be healed */
-		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
-		STATE_UNKNOWN = -1/** A status effect not known to the engine */
+		STATE_SLOWED = 0,   /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,     /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,    /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,    /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,    /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE,   /** The unit cannot be healed */
+		STATE_GUARDIAN,     /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_INVULNERABLE, /** The unit is invulnerable - it cannot be hit by any attack */
+		NUMBER_OF_STATES,   /** To set the size of known_boolean_states_ */
+		STATE_UNKNOWN = -1  /** A status effect not known to the engine */
 	};
 
 	/**
@@ -1012,6 +1024,15 @@ public:
 	int defense_modifier(const t_translation::terrain_code& terrain) const;
 
 	/**
+	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.
+	 *
+	 * @param resistance_list A list of resistance abilities that the unit has.
+	 * @param damage_name The name of the damage type, for example "blade".
+	 * @return The resistance value for a unit with the provided resistance abilities to the provided damage type.
+	 */
+	int resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const;
+
+	/**
 	 * The unit's resistance against a given damage type
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
@@ -1040,7 +1061,7 @@ public:
 	}
 
 private:
-	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
+	bool resistance_filter_matches(const config& cfg, const std::string& damage_name, int res) const;
 
 	/**
 	 * @}
@@ -1084,11 +1105,41 @@ public:
 	}
 
 	/**
-	 * Gets a list of the traits this unit currently has.
+	 * Gets the ids of the traits corresponding to those returned by trait_names() and
+	 * trait_descriptions(). Omits hidden traits, which are those with an empty name.
 	 *
 	 * @returns                   A list of trait IDs.
 	 */
-	std::vector<std::string> get_traits_list() const;
+	std::vector<std::string> trait_nonhidden_ids() const
+	{
+		return trait_nonhidden_ids_;
+	}
+
+	/** Gets a list of the modification this unit currently has.
+	 * @param mod_type type of modification.
+	 * @returns                   A list of modification IDs.
+	 */
+	std::vector<std::string> get_modifications_list(const std::string& mod_type) const;
+
+	/**
+	 * Gets a list of the traits this unit currently has, including hidden traits.
+	 *
+	 * @returns                   A list of trait IDs.
+	 */
+	std::vector<std::string> get_traits_list() const
+	{
+		return get_modifications_list("trait");
+	}
+
+	std::vector<std::string> get_objects_list() const
+	{
+		return get_modifications_list("object");
+	}
+
+	std::vector<std::string> get_advancements_list() const
+	{
+		return get_modifications_list("advancement");
+	}
 
 	/**
 	 * Register a trait's name and its description for the UI's use.
@@ -1230,6 +1281,8 @@ public:
 
 	/** Gets whether this unit is loyal - ie, it costs no upkeep. */
 	bool loyal() const;
+
+	void set_loyal(bool loyal);
 
 	/** Gets whether this unit is fearless - ie, unaffected by time of day. */
 	bool is_fearless() const
@@ -1485,6 +1538,29 @@ public:
 	std::size_t modification_count(const std::string& type, const std::string& id) const;
 
 	/**
+	 * Count modifications of a particular type.
+	 * @param type The type of modification to count.
+	 *             Valid values are "advancement", "trait", "object"
+	 * @return The total number of modifications of that type.
+	 */
+	std::size_t modification_count(const std::string& type) const;
+
+	std::size_t traits_count() const
+	{
+		return modification_count("trait");
+	}
+
+	std::size_t objects_count() const
+	{
+		return modification_count("object");
+	}
+
+	std::size_t advancements_count() const
+	{
+		return modification_count("advancement");
+	}
+
+	/**
 	 * Add a new modification to the unit.
 	 * @param type The type of modification to add.
 	 *             Valid values are "advancement", "trait", "object"
@@ -1546,6 +1622,14 @@ public:
 		return halo_.value_or("");
 	}
 
+	const std::vector<std::string> halo_or_icon_abilities(const std::string& image_type) const;
+
+	/** Get the [halo] abilities halo image(s). */
+	const std::vector<std::string> halo_abilities() const
+	{
+		return halo_or_icon_abilities("halo");
+	}
+
 	/** Set the unit's halo image. */
 	void set_image_halo(const std::string& halo);
 
@@ -1589,6 +1673,11 @@ public:
 		return overlays_;
 	}
 
+	/** Get the [overlay] ability overlay images. */
+	const std::vector<std::string> overlays_abilities() const
+	{
+		return halo_or_icon_abilities("overlay");
+	}
 	/**
 	 * Color for this unit's *current* hitpoints.
 	 *
@@ -1759,10 +1848,24 @@ public:
 	 */
 	void remove_ability_by_id(const std::string& ability);
 
+	/**
+	 * Removes a unit's abilities with a specific ID or other attribute.
+	 * @param filter the config of ability to remove.
+	 */
+	void remove_ability_by_attribute(const config& filter);
+
+	/**
+	 * Verify what abilities attributes match with filter.
+	 * @param cfg the config of ability to check.
+	 * @param tag_name the tag name of ability to check.
+	 * @param filter the filter used for checking.
+	 */
+	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+
 
 private:
 
-	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
@@ -1894,7 +1997,7 @@ private:
 
 	std::set<std::string> states_;
 
-	static const std::size_t num_bool_states = 7;
+	static const std::size_t num_bool_states = state_t::NUMBER_OF_STATES;
 
 	std::bitset<num_bool_states> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
@@ -1918,6 +2021,7 @@ protected:
 private:
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
+	std::vector<std::string> trait_nonhidden_ids_;
 
 	int unit_value_;
 	map_location goto_, interrupted_move_;
@@ -1942,9 +2046,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	std::optional<std::string> usage_;
-	std::optional<std::string> halo_;
-	std::optional<std::string> ellipse_;
+	utils::optional<std::string> usage_;
+	utils::optional<std::string> halo_;
+	utils::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;
@@ -1979,9 +2083,6 @@ private:
 	}
 };
 
-/** Implement non-member swap function for std::swap (calls @ref unit::swap). */
-void swap(unit& lhs, unit& rhs);
-
 /**
  * Object which temporarily resets a unit's movement.
  *
@@ -2001,6 +2102,19 @@ private:
 	int moves_;
 };
 
+namespace backwards_compatibility
+{
+/**
+ * Optional parameter for get_checksum to use the algorithm of an older version of Wesnoth,
+ * thus preventing spurious OOS warnings while watching old replays.
+ */
+enum class unit_checksum_version {
+	current,
+	version_1_16_or_older /**< Included some of the flavortext from weapon specials. */
+};
+
+} // namespace backwards_compatibility
+
 /**
  * Gets a checksum for a unit.
  *
@@ -2009,7 +2123,9 @@ private:
  * same problem.
  *
  *  @param u                    this unit
+ *  @param version              allows the checksum expected in older replays to be used
  *
  *  @returns                    the checksum for a unit
  */
-std::string get_checksum(const unit& u);
+std::string get_checksum(const unit& u,
+	backwards_compatibility::unit_checksum_version version = backwards_compatibility::unit_checksum_version::current);

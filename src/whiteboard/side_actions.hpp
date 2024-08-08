@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,7 +32,6 @@
 namespace wb
 {
 
-class move;
 
 /**
  * Datastructure holding the actions of a side on multiple turns.

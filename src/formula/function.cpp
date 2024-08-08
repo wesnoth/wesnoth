@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@
 #include "game_display.hpp"
 #include "global.hpp"
 #include "log.hpp"
+#include "pathutils.hpp"
 
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
@@ -514,7 +515,7 @@ DEFINE_WFL_FUNCTION(tan, 1, 1)
 {
 	const double angle = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double result = std::tan(angle * pi<double>() / 180.0);
-	if(std::isnan(result) || result <= INT_MIN || result >= INT_MAX) {
+	if(std::isnan(result) || result <= std::numeric_limits<int>::min() || result >= std::numeric_limits<int>::max()) {
 		return variant();
 	}
 
@@ -612,7 +613,7 @@ DEFINE_WFL_FUNCTION(exp, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double result = std::exp(num);
-	if(result == 0 || result >= INT_MAX) {
+	if(result == 0 || result >= std::numeric_limits<int>::max()) {
 		// These are range errors rather than NaNs,
 		// but I figure it's better than returning INT_MIN.
 		return variant();
@@ -1268,6 +1269,35 @@ DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 	return variant(v);
 }
 
+DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
+{
+	const map_location loc = args()[0]->evaluate(variables, fdb).convert_to<location_callable>()->loc();
+
+	int range = args()[1]->evaluate(variables, fdb).as_int();
+
+	if(range < 0) {
+		return variant();
+	}
+
+	if(!range) {
+		return variant(std::make_shared<location_callable>(loc));
+	}
+
+	std::vector<map_location> res;
+
+	get_tiles_in_radius(loc, range, res);
+
+	std::vector<variant> v;
+	v.reserve(res.size() + 1);
+	v.emplace_back(std::make_shared<location_callable>(loc));
+
+	for(std::size_t n = 0; n != res.size(); ++n) {
+		v.emplace_back(std::make_shared<location_callable>(res[n]));
+	}
+
+	return variant(v);
+}
+
 DEFINE_WFL_FUNCTION(are_adjacent, 2, 2)
 {
 	const map_location loc1 = args()[0]
@@ -1322,7 +1352,7 @@ DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 		.convert_to<location_callable>()
 		->loc();
 
-	const map_location loc = args()[0]
+	const map_location loc = args()[1]
 		->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location"))
 		.convert_to<location_callable>()
 		->loc();
@@ -1540,6 +1570,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(loc);
 		DECLARE_WFL_FUNCTION(distance_between);
 		DECLARE_WFL_FUNCTION(adjacent_locs);
+		DECLARE_WFL_FUNCTION(locations_in_radius);
 		DECLARE_WFL_FUNCTION(are_adjacent);
 		DECLARE_WFL_FUNCTION(relative_dir);
 		DECLARE_WFL_FUNCTION(direction_from);

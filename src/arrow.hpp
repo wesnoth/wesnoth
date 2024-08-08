@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2024
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -91,7 +91,7 @@ protected:
 	 */
 	virtual void update_symbols();
 
-	display::drawing_layer layer_;
+	drawing_layer layer_;
 
 	std::string color_;
 	/** represents the subdirectory that holds images for this arrow style */

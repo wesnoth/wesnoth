@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,8 +25,6 @@
 #include "utils/const_clone.hpp"
 #include "gui/core/event/message.hpp"
 #include "gettext.hpp"
-#include "lexical_cast.hpp"
-#include "sdl/rect.hpp"
 
 #include <functional>
 
@@ -358,7 +356,7 @@ builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_dir(*grow_direction::get_enum(cfg["grow_direction"].str()))
 	, parallel_items(cfg["parallel_items"])
-	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
+	, item_definition(new builder_grid(VALIDATE_WML_CHILD(cfg, "item_definition", missing_mandatory_wml_tag("pane", "item_definition"))))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }

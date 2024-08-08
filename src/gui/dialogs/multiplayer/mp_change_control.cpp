@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2024
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,11 +22,10 @@
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
@@ -108,7 +107,7 @@ void mp_change_control::pre_show(window& window)
 	temp_nicks.insert(observers.begin(), observers.end());
 
 	// In case we are an observer, it isn't in the observers set and has to be added manually.
-	temp_nicks.insert(preferences::login());
+	temp_nicks.insert(prefs::get().login());
 
 	//
 	// Initialize nick list

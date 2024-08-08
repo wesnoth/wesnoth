@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -57,7 +57,7 @@
 #include "game_events/handlers.hpp"
 #include "game_events/manager_impl.hpp" // for pending_event_handler
 #include "game_events/pump.hpp"         // for queued_event
-#include "preferences/game.hpp"         // for encountered_units
+#include "preferences/preferences.hpp"         // for encountered_units
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                      // for gamemap
 #include "map/label.hpp"
@@ -67,6 +67,7 @@
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
+#include "preferences/preferences.hpp"
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
@@ -85,10 +86,8 @@
 #include "scripting/push_check.hpp"
 #include "synced_commands.hpp"
 #include "color.hpp"                // for surface
-#include "sdl/surface.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
-#include "soundsource.hpp"
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
@@ -110,7 +109,6 @@
 #include "variable_info.hpp"
 #include "video.hpp"                    // only for faked
 #include "whiteboard/manager.hpp"       // for whiteboard
-#include "wml_exception.hpp"
 #include "deprecation.hpp"
 
 #include <functional>               // for bind_t, bind
@@ -126,13 +124,13 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
-#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
 #endif
 
 static lg::log_domain log_scripting_lua("scripting/lua");
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -179,7 +177,7 @@ void game_lua_kernel::extract_preload_scripts(const game_config_view& game_confi
 	for (const config& cfg : game_config.child_range("lua")) {
 		game_lua_kernel::preload_scripts.push_back(cfg);
 	}
-	game_lua_kernel::preload_config = game_config.child("game_config");
+	game_lua_kernel::preload_config = game_config.mandatory_child("game_config");
 }
 
 void game_lua_kernel::log_error(char const * msg, char const * context)
@@ -371,7 +369,7 @@ static int impl_add_animation(lua_State* L)
 
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
-	if(video::headless()) {
+	if(video::headless() || resources::controller->is_skipping_replay()) {
 		return 0;
 	}
 	events::command_disabler command_disabler;
@@ -420,7 +418,15 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
 {
 	if (game_display_) {
-		return lua_gui2::show_gamestate_inspector(luaW_checkvconfig(L, 1), gamedata(), game_state_);
+		vconfig cfg = vconfig::unconstructed_vconfig();
+		std::string name;
+		if(luaW_tovconfig(L, 1, cfg)) {
+			name = cfg["name"].str();
+			deprecated_message("gui.show_inspector(cfg)", DEP_LEVEL::INDEFINITE, {1, 19, 0}, "Instead of {name = 'title' }, pass just 'title'.");
+		} else {
+			name = luaL_optstring(L, 1, "");
+		}
+		return lua_gui2::show_gamestate_inspector(name, gamedata(), game_state_);
 	}
 	return 0;
 }
@@ -633,11 +639,11 @@ int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 
 	// Support WML names for some common data
 	if(data.has_child("primary_attack")) {
-		data.add_child("first", data.child("primary_attack"));
+		data.add_child("first", data.mandatory_child("primary_attack"));
 		data.remove_children("primary_attack");
 	}
 	if(data.has_child("secondary_attack")) {
-		data.add_child("second", data.child("secondary_attack"));
+		data.add_child("second", data.mandatory_child("secondary_attack"));
 		data.remove_children("secondary_attack");
 	}
 
@@ -1038,7 +1044,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::terrain_code t = t_translation::read_terrain_code(m);
-	if (t == t_translation::NONE_TERRAIN) return 0;
+	if (t == t_translation::NONE_TERRAIN || !board().map().tdata()->is_known(t)) return 0;
 	const terrain_type& info = board().map().tdata()->get_terrain_info(t);
 
 	lua_newtable(L);
@@ -1238,12 +1244,12 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 static int intf_get_resource(lua_State *L)
 {
 	std::string m = luaL_checkstring(L, 1);
-	if(const config& res = game_config_manager::get()->game_config().find_child("resource","id",m)) {
-		luaW_pushconfig(L, res);
+	if(auto res = game_config_manager::get()->game_config().find_child("resource","id",m)) {
+		luaW_pushconfig(L, *res);
 		return 1;
 	}
 	else {
-		return luaL_argerror(L, 1, ("Cannot find ressource with id '" + m + "'").c_str());
+		return luaL_argerror(L, 1, ("Cannot find resource with id '" + m + "'").c_str());
 	}
 }
 
@@ -1255,8 +1261,14 @@ static int intf_get_resource(lua_State *L)
  */
 static int intf_get_era(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	luaW_pushconfig(L, game_config_manager::get()->game_config().find_child("era","id",m));
+	std::string m = luaL_checkstring(L, 1);
+	if(auto res = game_config_manager::get()->game_config().find_child("era","id",m)) {
+		luaW_pushconfig(L, *res);
+		return 1;
+	}
+	else {
+		return luaL_argerror(L, 1, ("Cannot find era with id '" + m + "'").c_str());
+	}
 	return 1;
 }
 
@@ -1268,7 +1280,7 @@ static int intf_get_era(lua_State *L)
  */
 int game_lua_kernel::impl_game_config_get(lua_State *L)
 {
-	LOG_LUA << "impl_game_config_get";
+	DBG_LUA << "impl_game_config_get";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1305,7 +1317,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	if(classification.type==campaign_type::type::multiplayer) {
 		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
 		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
-			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
+			game_config_manager::get()->game_config().find_mandatory_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 	}
 
@@ -1320,7 +1332,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
  */
 int game_lua_kernel::impl_game_config_set(lua_State *L)
 {
-	LOG_LUA << "impl_game_config_set";
+	DBG_LUA << "impl_game_config_set";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1347,7 +1359,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 namespace {
 	static config find_addon(const std::string& type, const std::string& id)
 	{
-		return game_config_manager::get()->game_config().find_child(type, "id", id);
+		return game_config_manager::get()->game_config().find_mandatory_child(type, "id", id);
 	}
 }
 
@@ -1542,7 +1554,7 @@ static int impl_mp_settings_len(lua_State* L)
  */
 int game_lua_kernel::impl_scenario_get(lua_State *L)
 {
-	LOG_LUA << "impl_scenario_get";
+	DBG_LUA << "impl_scenario_get";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1627,7 +1639,7 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
  */
 int game_lua_kernel::impl_scenario_set(lua_State *L)
 {
-	LOG_LUA << "impl_scenario_set";
+	DBG_LUA << "impl_scenario_set";
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
@@ -1649,9 +1661,9 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 		data.prescenario_save = cfg["save"].to_bool(true);
 		data.replay_save = cfg["replay_save"].to_bool(true);
 		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
-		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
+		data.transient.reveal_map = cfg["reveal_map"].to_bool(play_controller_.reveal_map_default());
 		data.is_victory = cfg["result"] == level_result::victory;
-		data.test_result = cfg["test_result"].str(level_result::result_not_set);
+		data.test_result = cfg["test_result"].str();
 		play_controller_.set_end_level_data(data);
 
 		return 1;
@@ -1697,7 +1709,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 	return_int_attrib("side", play_controller_.current_side());
 	return_int_attrib("turn", play_controller_.turn());
 	return_string_attrib("synced_state", synced_state());
-	return_bool_attrib("user_can_invoke_commands", !play_controller_.is_lingering() && play_controller_.gamestate().init_side_done() && !events::commands_disabled && gamedata().phase() == game_data::PLAY);
+	return_bool_attrib("user_can_invoke_commands", !events::commands_disabled && gamedata().phase() == game_data::TURN_PLAYING);
 
 	if(strcmp(m, "map") == 0) {
 		return intf_terrainmap_get(L);
@@ -1714,11 +1726,11 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		cfg["name"] = ev.name;
 		cfg["id"]   = ev.id;
 		cfg.add_child("data", ev.data);
-		if (const config &weapon = ev.data.child("first")) {
-			cfg.add_child("weapon", weapon);
+		if (auto weapon = ev.data.optional_child("first")) {
+			cfg.add_child("weapon", *weapon);
 		}
-		if (const config &weapon = ev.data.child("second")) {
-			cfg.add_child("second_weapon", weapon);
+		if (auto weapon = ev.data.optional_child("second")) {
+			cfg.add_child("second_weapon", *weapon);
 		}
 
 		const config::attribute_value di = ev.data["damage_inflicted"];
@@ -2381,11 +2393,19 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			} else {
 				auto vec = lua_check<std::vector<int>>(L, -1);
 				if(vec.size() != 3) {
-					return luaL_error(L, "floating label text color should be a hex string or an array of 3 integers");
+					int idx = lua_absindex(L, -1);
+					if(luaW_tableget(L, idx, "r") && luaW_tableget(L, idx, "g") && luaW_tableget(L, idx, "b")) {
+						color.r = luaL_checkinteger(L, -3);
+						color.g = luaL_checkinteger(L, -2);
+						color.b = luaL_checkinteger(L, -1);
+					} else {
+						return luaL_error(L, "floating label text color should be a hex string, an array of 3 integers, or a table with r,g,b keys");
+					}
+				} else {
+					color.r = vec[0];
+					color.g = vec[1];
+					color.b = vec[2];
 				}
-				color.r = vec[0];
-				color.g = vec[1];
-				color.b = vec[2];
 			}
 		}
 		if(luaW_tableget(L, 2, "bgcolor")) {
@@ -2394,11 +2414,19 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			} else {
 				auto vec = lua_check<std::vector<int>>(L, -1);
 				if(vec.size() != 3) {
-					return luaL_error(L, "floating label background color should be a hex string or an array of 3 integers");
+					int idx = lua_absindex(L, -1);
+					if(luaW_tableget(L, idx, "r") && luaW_tableget(L, idx, "g") && luaW_tableget(L, idx, "b")) {
+						bgcolor.r = luaL_checkinteger(L, -3);
+						bgcolor.g = luaL_checkinteger(L, -2);
+						bgcolor.b = luaL_checkinteger(L, -1);
+					} else {
+						return luaL_error(L, "floating label background color should be a hex string, an array of 3 integers, or a table with r,g,b keys");
+					}
+				} else {
+					bgcolor.r = vec[0];
+					bgcolor.g = vec[1];
+					bgcolor.b = vec[2];
 				}
-				bgcolor.r = vec[0];
-				bgcolor.g = vec[1];
-				bgcolor.b = vec[2];
 				bgcolor.a = ALPHA_OPAQUE;
 			}
 			if(luaW_tableget(L, 2, "bgalpha")) {
@@ -2524,7 +2552,6 @@ void game_lua_kernel::put_unit_helper(const map_location& loc)
 		game_display_->invalidate(loc);
 	}
 
-	units().erase(loc);
 	resources::whiteboard->on_kill_unit();
 }
 
@@ -2575,6 +2602,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 
 		unit_ptr u = unit::create(cfg, true, vcfg);
+		units().erase(loc);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
@@ -3065,6 +3093,267 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 }
 
 /**
+ * Sets an achievement as being completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - id.
+ */
+int game_lua_kernel::intf_set_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+
+	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(achievement& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// already achieved
+					if(achieve.achieved_) {
+						return 0;
+					}
+					// found the achievement - mark it as completed
+					if(!play_controller_.is_replay()) {
+						prefs::get().set_achievement(content_for, id);
+					}
+					achieve.achieved_ = true;
+					// progressable achievements can also check for current progress equals -1
+					if(achieve.max_progress_ != 0) {
+						achieve.current_progress_ = -1;
+					}
+					if(achieve.sound_path_ != "") {
+						sound::play_sound(achieve.sound_path_, sound::SOUND_FX);
+					}
+					// show the achievement popup
+					luaW_getglobal(L, "gui", "show_popup");
+					luaW_pushtstring(L, achieve.name_completed_);
+					luaW_pushtstring(L, achieve.description_completed_);
+					lua_pushstring(L, achieve.icon_completed_.c_str());
+					luaW_pcall(L, 3, 0, 0);
+					return 0;
+				}
+			}
+			// achievement not found - existing achievement group but non-existing achievement id
+			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
+			return 0;
+		}
+	}
+
+	// achievement group not found
+	ERR_LUA << "Achievement group " << content_for << " not found";
+	return 0;
+}
+
+/**
+ * Returns whether an achievement has been completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - id.
+ * - Ret 1: boolean.
+ */
+int game_lua_kernel::intf_has_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+
+	if(resources::controller->is_networked_mp() && synced_context::is_synced()) {
+		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
+		lua_pushboolean(L, false);
+	} else {
+		lua_pushboolean(L, prefs::get().achievement(content_for, id));
+	}
+
+	return 1;
+}
+
+/**
+ * Returns information on a single achievement, or no data if the achievement is not found.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - id.
+ * - Ret 1: WML table returned by the function.
+ */
+int game_lua_kernel::intf_get_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+
+	config cfg;
+	for(const auto& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(const auto& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// found the achievement - return it as a config
+					cfg["id"] = achieve.id_;
+					cfg["name"] = achieve.name_;
+					cfg["name_completed"] = achieve.name_completed_;
+					cfg["description"] = achieve.description_;
+					cfg["description_completed"] = achieve.description_completed_;
+					cfg["icon"] = achieve.icon_;
+					cfg["icon_completed"] = achieve.icon_completed_;
+					cfg["hidden"] = achieve.hidden_;
+					cfg["achieved"] = achieve.achieved_;
+					cfg["max_progress"] = achieve.max_progress_;
+					cfg["current_progress"] = achieve.current_progress_;
+
+					for(const auto& sub_ach : achieve.sub_achievements_) {
+						config& sub = cfg.add_child("sub_achievement");
+						sub["id"] = sub_ach.id_;
+						sub["description"] = sub_ach.description_;
+						sub["icon"] = sub_ach.icon_;
+						sub["achieved"] = sub_ach.achieved_;
+					}
+
+					luaW_pushconfig(L, cfg);
+					return 1;
+				}
+			}
+			// return empty config - existing achievement group but non-existing achievement id
+			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
+			luaW_pushconfig(L, cfg);
+			return 1;
+		}
+	}
+	// return empty config - non-existing achievement group
+	ERR_LUA << "Achievement group " << content_for << " not found";
+	luaW_pushconfig(L, cfg);
+	return 1;
+}
+
+/**
+ * Progresses the provided achievement.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - achievement id.
+ * - Arg 3: int - the amount to progress the achievement.
+ * - Arg 4: int - the limit the achievement can progress by
+ * - Ret 1: int - the achievement's current progress after adding amount or -1 if not a progressable achievement (including if it's already achieved)
+ * - Ret 2: int - the achievement's max progress or -1 if not a progressable achievement
+ */
+int game_lua_kernel::intf_progress_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+	int amount = luaL_checkinteger(L, 3);
+	int limit = luaL_optinteger(L, 4, 999999999);
+
+	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(achievement& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// check that this is a progressable achievement
+					if(achieve.max_progress_ == 0 || achieve.sub_achievements_.size() > 0) {
+						ERR_LUA << "Attempted to progress achievement " << id << " for achievement group " << content_for << ", is not a progressible achievement.";
+						lua_pushinteger(L, -1);
+						lua_pushinteger(L, -1);
+						return 2;
+					}
+
+					if(!achieve.achieved_) {
+						int progress = 0;
+						if(!play_controller_.is_replay()) {
+							progress = prefs::get().progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
+						}
+						if(progress >= achieve.max_progress_) {
+							intf_set_achievement(L);
+							achieve.current_progress_ = -1;
+						} else {
+							achieve.current_progress_ = progress;
+						}
+						lua_pushinteger(L, progress);
+					} else {
+						lua_pushinteger(L, -1);
+					}
+					lua_pushinteger(L, achieve.max_progress_);
+
+					return 2;
+				}
+			}
+			// achievement not found - existing achievement group but non-existing achievement id
+			lua_push(L, "Achievement " + std::string(id) + " not found for achievement group " + content_for);
+			return lua_error(L);
+		}
+	}
+
+	// achievement group not found
+	lua_push(L, "Achievement group " + std::string(content_for) + " not found");
+	return lua_error(L);
+}
+
+/**
+ * Returns whether an achievement has been completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - achievement id.
+ * - Arg 3: string - sub-achievement id
+ * - Ret 1: boolean.
+ */
+int game_lua_kernel::intf_has_sub_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+	const char* sub_id = luaL_checkstring(L, 3);
+
+	if(resources::controller->is_networked_mp() && synced_context::is_synced()) {
+		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
+		lua_pushboolean(L, false);
+	} else {
+		lua_pushboolean(L, prefs::get().sub_achievement(content_for, id, sub_id));
+	}
+
+	return 1;
+}
+
+/**
+ * Marks a single sub-achievement as completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - achievement id.
+ * - Arg 3: string - sub-achievement id
+ */
+int game_lua_kernel::intf_set_sub_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+	const char* sub_id = luaL_checkstring(L, 3);
+
+	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(achievement& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// the whole achievement is already completed
+					if(achieve.achieved_) {
+						return 0;
+					}
+
+					for(sub_achievement& sub_ach : achieve.sub_achievements_) {
+						if(sub_ach.id_ == sub_id) {
+							// this particular sub-achievement is already achieved
+							if(sub_ach.achieved_) {
+								return 0;
+							} else {
+								if(!play_controller_.is_replay()) {
+									prefs::get().set_sub_achievement(content_for, id, sub_id);
+								}
+								sub_ach.achieved_ = true;
+								achieve.current_progress_++;
+								if(achieve.current_progress_ == achieve.max_progress_) {
+									intf_set_achievement(L);
+								}
+								return 0;
+							}
+						}
+					}
+					// sub-achievement not found - existing achievement group and achievement but non-existing sub-achievement id
+					lua_push(L, "Sub-achievement " + std::string(id) + " not found for achievement" + id + " in achievement group " + content_for);
+					return lua_error(L);
+				}
+			}
+			// achievement not found - existing achievement group but non-existing achievement id
+			lua_push(L, "Achievement " + std::string(id) + " not found for achievement group " + content_for);
+			return lua_error(L);
+		}
+	}
+
+	// achievement group not found
+	lua_push(L, "Achievement group " + std::string(content_for) + " not found");
+	return lua_error(L);
+}
+
+/**
  * Scrolls to given tile.
  * - Arg 1: location.
  * - Arg 2: boolean preventing scroll to fog.
@@ -3466,9 +3755,9 @@ static int intf_append_ai(lua_State *L)
 		cfg = config {"ai", cfg};
 	}
 	bool added_dummy_stage = false;
-	if(!cfg.child("ai").has_child("stage")) {
+	if(!cfg.mandatory_child("ai").has_child("stage")) {
 		added_dummy_stage = true;
-		cfg.child("ai").add_child("stage", config {"name", "empty"});
+		cfg.mandatory_child("ai").add_child("stage", config {"name", "empty"});
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {
@@ -3478,7 +3767,7 @@ static int intf_append_ai(lua_State *L)
 			}
 		}
 	}
-	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.child("ai"));
+	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.mandatory_child("ai"));
 	return 0;
 }
 
@@ -3565,14 +3854,23 @@ static int intf_remove_modifications(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
 	config filter = luaW_checkconfig(L, 2);
-	std::string tag = luaL_optstring(L, 3, "object");
+	std::vector<std::string> tags;
+	if(lua_isstring(L, 3)) {
+		tags.push_back(lua_check<std::string>(L, 3));
+	} else if (lua_istable(L, 3)){
+		tags = lua_check<std::vector<std::string>>(L, 3);
+	} else {
+		tags.push_back("object");
+	}
 	//TODO
 	if(filter.attribute_count() == 1 && filter.all_children_count() == 0 && filter.attribute_range().front().first == "duration") {
 		u.expire_modifications(filter["duration"]);
 	} else {
-		for(config& obj : u.get_modifications().child_range(tag)) {
-			if(obj.matches(filter)) {
-				obj["duration"] = "now";
+		for(const std::string& tag : tags) {
+			for(config& obj : u.get_modifications().child_range(tag)) {
+				if(obj.matches(filter)) {
+					obj["duration"] = "now";
+				}
 			}
 		}
 		u.expire_modifications("now");
@@ -3615,7 +3913,7 @@ static int intf_add_known_unit(lua_State *L)
 		ss << "unknown unit type: '" << ty << "'";
 		return luaL_argerror(L, 1, ss.str().c_str());
 	}
-	preferences::encountered_units().insert(ty);
+	prefs::get().encountered_units().insert(ty);
 	return 0;
 }
 
@@ -3725,15 +4023,36 @@ static std::string read_event_name(lua_State* L, int idx)
 	}
 }
 
+/**
+ * Add undo actions for the current active event
+ * Arg 1: Either a table of ActionWML or a function to call
+ * Arg 2: (optional) If Arg 1 is a function, this is a WML table that will be passed to it
+ */
+int game_lua_kernel::intf_add_undo_actions(lua_State *L)
+{
+	config cfg;
+	if(luaW_toconfig(L, 1, cfg)) {
+		synced_context::add_undo_commands(cfg, get_event_info());
+	} else {
+		luaW_toconfig(L, 2, cfg);
+		synced_context::add_undo_commands(save_wml_event(1), cfg, get_event_info());
+	}
+	return 0;
+}
+
 /** Add a new event handler
  * Arg 1: Table of options.
  * name: Event to handle, as a string or list of strings
  * id: Event ID
  * menu_item: True if this is a menu item (an ID is required); this means removing the menu item will automatically remove this event. Default false.
  * first_time_only: Whether this event should fire again after the first time; default true.
+ * priority: Number that determines execution order. Events execute in order of decreasing priority, and secondarily in order of addition.
  * filter: Event filters as a config with filter tags, a table of the form {filter_type = filter_contents}, or a function
+ * filter_args: Arbitrary data that will be passed to the filter, if it is a function. Ignored if the filter is specified as WML or a table.
  * content: The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML.
  * action: The function to call when the event triggers. Defaults to wesnoth.wml_actions.command.
+ *
+ * Lua API: wesnoth.game_events.add
  */
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
@@ -3741,6 +4060,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	using namespace std::literals;
 	std::string name, id = luaW_table_get_def(L, 1, "id", ""s);
 	bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
+	double priority = luaW_table_get_def(L, 1, "priority", 0.);
 	if(luaW_tableget(L, 1, "name")) {
 		name = read_event_name(L, -1);
 	} else if(is_menu_item) {
@@ -3752,7 +4072,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	if(id.empty() && name.empty()) {
 		return luaL_argerror(L, 1, "either a name or id is required");
 	}
-	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, priority, is_menu_item);
 	if(new_handler.valid()) {
 		bool has_lua_filter = false;
 		new_handler->set_arguments(luaW_table_get_def(L, 1, "content", config{"__empty_lua_event", true}));
@@ -3766,25 +4086,25 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 					new_handler->add_filter(std::make_unique<lua_event_filter>(*this, fcnIdx, luaW_table_get_def(L, 1, "filter_args", config())));
 					has_lua_filter = true;
 				} else {
-#define READ_ONE_FILTER(key) \
+#define READ_ONE_FILTER(key, tag) \
 					do { \
 						if(luaW_tableget(L, filterIdx, key)) { \
 							if(lua_isstring(L, -1)) { \
 								filters.add_child("insert_tag", config{ \
-									"name", "filter_" key, \
+									"name", tag, \
 									"variable", luaL_checkstring(L, -1) \
 								}); \
 							} else { \
-								filters.add_child("filter_" key, luaW_checkconfig(L, -1)); \
+								filters.add_child(tag, luaW_checkconfig(L, -1)); \
 							} \
 						} \
 					} while(false);
-					READ_ONE_FILTER("condition");
-					READ_ONE_FILTER("side");
-					READ_ONE_FILTER("unit");
-					READ_ONE_FILTER("attack");
-					READ_ONE_FILTER("second_unit");
-					READ_ONE_FILTER("second_attack");
+					READ_ONE_FILTER("condition", "filter_condition");
+					READ_ONE_FILTER("side", "filter_side");
+					READ_ONE_FILTER("unit", "filter");
+					READ_ONE_FILTER("attack", "filter_attack");
+					READ_ONE_FILTER("second_unit", "filter_second");
+					READ_ONE_FILTER("second_attack", "filter_second_attack");
 #undef READ_ONE_FILTER
 					if(luaW_tableget(L, filterIdx, "formula")) {
 						filters["filter_formula"] = luaL_checkstring(L, -1);
@@ -3808,9 +4128,29 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	return 0;
 }
 
+/**
+ * Upvalue 1: The event function
+ * Upvalue 2: The undo function
+ * Arg 1: The event content
+ */
+int game_lua_kernel::cfun_undoable_event(lua_State* L)
+{
+	lua_pushvalue(L, lua_upvalueindex(1));
+	lua_push(L, 1);
+	luaW_pcall(L, 1, 0);
+	synced_context::add_undo_commands(lua_upvalueindex(2), get_event_info());
+	return 0;
+}
+
 /** Add a new event handler
  * Arg 1: Event to handle, as a string or list of strings; or menu item ID if this is a menu item
  * Arg 2: The function to call when the event triggers
+ * Arg 3: (optional) Event priority
+ * Arg 4: (optional, non-menu-items only) The function to call when the event is undone
+ *
+ * Lua API:
+ * - wesnoth.game_events.add_repeating
+ * - wesnoth.game_events.add_menu
  */
 template<bool is_menu_item>
 int game_lua_kernel::intf_add_event_simple(lua_State *L)
@@ -3818,14 +4158,19 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 	game_events::manager & man = *game_state_.events_manager_;
 	bool repeat = true;
 	std::string name = read_event_name(L, 1), id;
+	double priority = luaL_optnumber(L, 3, 0.);
 	if(name.empty()) {
 		return luaL_argerror(L, 1, "must not be empty");
 	}
 	if(is_menu_item) {
 		id = name;
 		name = "menu item " + name;
+	} else if(lua_absindex(L, -1) > 2 && lua_isfunction(L, -1)) {
+		// If undo is provided as a separate function, link them together into a single function
+		// The function can be either the 3rd or 4th argument.
+		lua_pushcclosure(L, &dispatch<&game_lua_kernel::cfun_undoable_event>, 2);
 	}
-	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, priority, is_menu_item);
 	if(new_handler.valid()) {
 		// An event with empty arguments is not added, so set some dummy arguments
 		new_handler->set_arguments(config{"__quick_lua_event", true});
@@ -3836,6 +4181,8 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 
 /** Add a new event handler
  * Arg: A full event specification as a WML config
+ *
+ * WML API: [event]
  */
 int game_lua_kernel::intf_add_event_wml(lua_State *L)
 {
@@ -4332,10 +4679,16 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	int x = luaL_checkinteger(L, 1), y = luaL_checkinteger(L, 2);
+	int x = luaL_checkinteger(L, 1);
+	int y = luaL_checkinteger(L, 2);
 
 	if (game_display_) {
 		game_display_->scroll(x, y, true);
+
+		lua_remove(L, 1);
+		lua_remove(L, 1);
+		lua_push(L, 25);
+		intf_delay(L);
 	}
 
 	return 0;
@@ -4348,10 +4701,10 @@ namespace {
 		std::string name;
 		lua_report_generator(lua_State *L, const std::string &n)
 			: mState(L), name(n) {}
-		virtual config generate(reports::context & rc);
+		virtual config generate(const reports::context & rc);
 	};
 
-	config lua_report_generator::generate(reports::context & /*rc*/)
+	config lua_report_generator::generate(const reports::context & /*rc*/)
 	{
 		lua_State *L = mState;
 		config cfg;
@@ -4641,7 +4994,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
@@ -4885,6 +5237,23 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "interface");
 	lua_pop(L, 1);
 
+	// Create the achievements module
+	cmd_log_ << "Adding achievements module...\n";
+	static luaL_Reg const achievement_callbacks[] {
+		{ "set", &dispatch<&game_lua_kernel::intf_set_achievement> },
+		{ "has", &dispatch<&game_lua_kernel::intf_has_achievement> },
+		{ "get", &dispatch<&game_lua_kernel::intf_get_achievement> },
+		{ "progress", &dispatch<&game_lua_kernel::intf_progress_achievement> },
+		{ "has_sub_achievement", &dispatch<&game_lua_kernel::intf_has_sub_achievement> },
+		{ "set_sub_achievement", &dispatch<&game_lua_kernel::intf_set_sub_achievement> },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, achievement_callbacks, 0);
+	lua_setfield(L, -2, "achievements");
+	lua_pop(L, 1);
+
 	// Create the audio module
 	cmd_log_ << "Adding audio module...\n";
 	static luaL_Reg const audio_callbacks[] {
@@ -4992,6 +5361,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "remove", &dispatch<&game_lua_kernel::intf_remove_event> },
 		{ "fire", &dispatch2<&game_lua_kernel::intf_fire_event, false> },
 		{ "fire_by_id", &dispatch2<&game_lua_kernel::intf_fire_event, true> },
+		{ "add_undo_actions", &dispatch<&game_lua_kernel::intf_add_undo_actions> },
+		{ "set_undoable", &dispatch<&game_lua_kernel::intf_allow_undo >        },
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
@@ -5623,6 +5994,25 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 	lua_push(L, loc.wml_y());
 	luaW_pcall(L, 2, 0, false);
 	return;
+}
+
+bool game_lua_kernel::mouse_button_callback(const map_location& loc, const std::string &button, const std::string &event)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_button")) {
+		return false;
+	}
+
+	lua_push(L, loc.wml_x());
+	lua_push(L, loc.wml_y());
+	lua_push(L, button);
+	lua_push(L, event);
+
+	if (!luaW_pcall(L, 4, 1)) return false;
+	bool result = luaW_toboolean(L, -1);
+	lua_pop(L, 1);
+	return result;
 }
 
 void game_lua_kernel::select_hex_callback(const map_location& loc)

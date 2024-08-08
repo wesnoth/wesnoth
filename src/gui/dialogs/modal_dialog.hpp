@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -417,8 +417,6 @@ private:
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.
-	 *
-	 * @param window              The window which has been shown.
 	 */
 	virtual void init_fields();
 	// TODO: Nothing else uses this. Why is it virtual?

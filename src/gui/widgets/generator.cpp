@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,6 @@
 
 #include "gui/widgets/generator_private.hpp"
 
-#include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
 #include <numeric>
@@ -580,14 +579,11 @@ point table::calculate_best_size() const
 		);
 
 		int row_max_width = row_min_width + max_xtra;
-		int row = 0;
 
 		point row_size, total_size;
 
 		for(std::size_t n = 0; n < item_sizes.size(); n++) {
 			if(row_size.x + item_sizes[n].x > row_max_width) {
-				// Start new row
-				row++;
 
 				total_size.y += row_size.y;
 
@@ -1074,10 +1070,8 @@ void selection::init(grid* g,
 
 void show::init(grid* grid,
 		const widget_data& data,
-		const std::function<void(widget&)>& callback)
+		const std::function<void(widget&)>& /*callback*/)
 {
-	assert(!callback);
-
 	for(const auto& item : data) {
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {

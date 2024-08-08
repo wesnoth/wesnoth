@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -20,9 +20,8 @@
 #include "game_initialization/random_faction_mode.hpp"
 #include "game_initialization/saved_game_mode.hpp"
 #include "game_version.hpp"
-#include "gettext.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 struct mp_game_settings
 {
@@ -74,8 +73,8 @@ struct mp_game_settings
 
 	struct addon_version_info
 	{
-		std::optional<version_info> version;
-		std::optional<version_info> min_version;
+		utils::optional<version_info> version;
+		utils::optional<version_info> min_version;
 		std::string name;
 		bool required;
 		std::vector<addon_content> content;

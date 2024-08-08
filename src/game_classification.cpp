@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_version.hpp"
 #include "game_config_manager.hpp"
@@ -77,6 +78,7 @@ config game_classification::to_config() const
 	cfg["difficulty"] = difficulty;
 	cfg["random_mode"] = random_mode;
 	cfg["oos_debug"] = oos_debug;
+	cfg["core"] = prefs::get().core();
 
 	return cfg;
 }
@@ -142,11 +144,11 @@ std::set<std::string> game_classification::active_addons(const std::string& scen
 				continue;
 			}
 		}
-		if(const config& cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)) {
+		if(auto cfg = game_config_manager::get()->game_config().find_child(current.type, "id", current.id)) {
 			if(!cfg["addon_id"].empty()) {
 				res.insert(cfg["addon_id"]);
 			}
-			for (const config& load_res : cfg.child_range("load_resource")) {
+			for (const config& load_res : cfg->child_range("load_resource")) {
 				mods.emplace_back("resource", load_res["id"].str());
 			}
 		} else {

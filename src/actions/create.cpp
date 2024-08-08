@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,15 +29,14 @@
 #include "filter_context.hpp"
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
-#include "preferences/game.hpp"
-#include "game_data.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
+#include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
-#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_checkup.hpp"
@@ -516,6 +515,14 @@ namespace { // Helpers for place_recruit()
 		bool checksum_equals = checkup_instance->local_checkup(config {"checksum", checksum},original_checksum_config);
 		if(!checksum_equals)
 		{
+			// This can't call local_checkup() again, but local_checkup() should have already stored the
+			// expected value in original_checksum_config. If it hasn't then the result will be the same as
+			// if the checksum didn't match, which is a reasonably graceful failure.
+			const std::string alternate_checksum = get_checksum(new_unit, backwards_compatibility::unit_checksum_version::version_1_16_or_older);
+			checksum_equals = original_checksum_config["checksum"] == alternate_checksum;
+		}
+		if(!checksum_equals)
+		{
 			const std::string old_checksum = original_checksum_config["checksum"];
 			std::stringstream error_msg;
 			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
@@ -584,7 +591,7 @@ namespace { // Helpers for place_recruit()
 		const unit_map & units = resources::gameboard->units();
 		unit_map::const_iterator unit_itor;
 		map_location min_loc;
-		int min_dist = INT_MAX;
+		int min_dist = std::numeric_limits<int>::max();
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
@@ -596,7 +603,7 @@ namespace { // Helpers for place_recruit()
 				}
 			}
 		}
-		if (min_dist < INT_MAX) {
+		if (min_dist < std::numeric_limits<int>::max()) {
 			// Face towards closest enemy
 			new_unit_itor->set_facing(recruit_loc.get_relative_dir(min_loc));
 		} else if (leader_loc != map_location::null_location()) {
@@ -649,7 +656,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
-	resources::game_events->pump().fire("unit_placed", current_loc);
+	std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire("unit_placed", current_loc));
 	if(!new_unit_itor.valid()) {
 		return place_recruit_result { true, 0, false };
 	}
@@ -664,7 +671,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 			return std::tuple(true, 0, false);
 		new_unit_itor->set_hidden(true);
 	}
-	preferences::encountered_units().insert(new_unit_itor->type_id());
+	prefs::get().encountered_units().insert(new_unit_itor->type_id());
 	current_team.spend_gold(cost);
 
 	if ( show ) {
@@ -714,7 +721,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 	// Place the recruit.
 	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::NDIRECTIONS, show);
-	statistics::recruit_unit(*new_unit);
+	resources::controller->statistics().recruit_unit(*new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
@@ -723,7 +730,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
 		// Check for information uncovered or randomness used.
 
-		if ( std::get<0>(res) || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -759,14 +766,14 @@ bool recall_unit(const std::string & id, team & current_team,
 		res = place_recruit(recall, loc, from, recall->recall_cost(),
 	                             true, facing, show);
 	}
-	statistics::recall_unit(*recall);
+	resources::controller->statistics().recall_unit(*recall);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
-		if ( std::get<0>(res) || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		}
 	}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2024-07-21 22:32-0500\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -229,13 +229,13 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 msgid "poisoned"
 msgstr "enverinat"
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:398
-#: data/core/macros/items.cfg:544
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
+#: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "trident de la tormenta"
 
@@ -255,7 +255,7 @@ msgid "Notes:"
 msgstr ""
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:691
 msgid "Close"
 msgstr "Tancar"
 
@@ -307,59 +307,59 @@ msgid "Programming"
 msgstr "Programació"
 
 #. [about]
-#: data/core/about.cfg:271
+#: data/core/about.cfg:282
 msgid "General Purpose Administration and Coordination"
 msgstr "Administrador de propòsit general i coordinació"
 
 #. [about]
-#: data/core/about.cfg:308
+#: data/core/about.cfg:319
 msgid "Internationalization Managers"
 msgstr "Coordinació traduccions"
 
 #. [about]
-#: data/core/about.cfg:333
+#: data/core/about.cfg:344
 #, fuzzy
 #| msgid "Traits"
 msgid "Trailers"
 msgstr "Traces"
 
 #. [about]
-#: data/core/about.cfg:349
+#: data/core/about.cfg:360
 msgid "Artwork and Graphics"
 msgstr "Ilustracions i gràfics"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:818
 msgid "Music"
 msgstr "Música"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:855
 msgid "Sound Effects"
 msgstr "Efectes de so"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:879
 msgid "Campaign Design"
 msgstr "Disseny de campanyes"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:970
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapes i equilibrat per a Multijugador"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1019
 msgid "Packagers"
 msgstr "Empaquetadors"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1131
 msgid "Miscellaneous Contributors"
 msgstr "Atres colaboradors"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1882
 msgid "Bots"
 msgstr "Robots"
 
@@ -394,262 +394,276 @@ msgstr "Traducció al vasc"
 
 #. [about]
 #: data/core/about_i18n.cfg:65
+#, fuzzy
+#| msgid "Bulgarian Translation"
+msgid "Bengali Translation"
+msgstr "Traducció al búlgar"
+
+#. [about]
+#: data/core/about_i18n.cfg:77
 msgid "Bulgarian Translation"
 msgstr "Traducció al búlgar"
 
 #. [about]
-#: data/core/about_i18n.cfg:101
+#: data/core/about_i18n.cfg:113
 msgid "Catalan Translation"
 msgstr "Traducció al català"
 
 #. [about]
-#: data/core/about_i18n.cfg:147
+#: data/core/about_i18n.cfg:159
 msgid "Chinese Translation"
 msgstr "Traducció al chinenc"
 
 #. [about]
-#: data/core/about_i18n.cfg:241
+#: data/core/about_i18n.cfg:257
 msgid "Chinese (Taiwan) Translation"
 msgstr "Traducció al chinenc (Taiwan)"
 
 #. [about]
-#: data/core/about_i18n.cfg:254
+#: data/core/about_i18n.cfg:270
 msgid "Croatian Translation"
 msgstr "Traducció al croata"
 
 #. [about]
-#: data/core/about_i18n.cfg:264
+#: data/core/about_i18n.cfg:280
 msgid "Czech Translation"
 msgstr "Traducció al chec"
 
 #. [about]
-#: data/core/about_i18n.cfg:336
+#: data/core/about_i18n.cfg:352
 msgid "Danish Translation"
 msgstr "Traducció al danés"
 
 #. [about]
-#: data/core/about_i18n.cfg:367
+#: data/core/about_i18n.cfg:383
 msgid "Dutch Translation"
 msgstr "Traducció a l'holandés"
 
 #. [about]
-#: data/core/about_i18n.cfg:438
+#: data/core/about_i18n.cfg:454
 msgid "English (GB) Translation"
 msgstr "Traducció a l'anglés (Gran Bretanya)"
 
 #. [about]
-#: data/core/about_i18n.cfg:463
+#: data/core/about_i18n.cfg:479
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Traducció a l'anglés (Gran Bretanya)"
 
 #. [about]
-#: data/core/about_i18n.cfg:481
+#: data/core/about_i18n.cfg:497
 msgid "Esperanto Translation"
 msgstr "Traducció a l'esperanto"
 
 #. [about]
-#: data/core/about_i18n.cfg:500
+#: data/core/about_i18n.cfg:516
 msgid "Estonian Translation"
 msgstr "Traducció a l'estoni"
 
 #. [about]
-#: data/core/about_i18n.cfg:510
+#: data/core/about_i18n.cfg:526
 msgid "Filipino Translation"
 msgstr "Traducció al tagal (filipí)"
 
 #. [about]
-#: data/core/about_i18n.cfg:520
+#: data/core/about_i18n.cfg:536
 msgid "Finnish Translation"
 msgstr "Traducció al finés"
 
 #. [about]
-#: data/core/about_i18n.cfg:579
+#: data/core/about_i18n.cfg:601
 msgid "French Translation"
 msgstr "Traducció al francés"
 
 #. [about]
-#: data/core/about_i18n.cfg:744
+#: data/core/about_i18n.cfg:769
 msgid "Friulian Translation"
 msgstr "Traducció al friulà"
 
 #. [about]
-#: data/core/about_i18n.cfg:748
+#: data/core/about_i18n.cfg:773
 msgid "Galician Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about_i18n.cfg:784
+#: data/core/about_i18n.cfg:809
 msgid "German Translation"
 msgstr "Traducció a l'alemany"
 
 #. [about]
-#: data/core/about_i18n.cfg:892
+#: data/core/about_i18n.cfg:934
 msgid "Greek Translation"
 msgstr "Traducció al grec"
 
 #. [about]
-#: data/core/about_i18n.cfg:935
+#: data/core/about_i18n.cfg:977
 msgid "Hebrew Translation"
 msgstr "Traducció a l'hebreu"
 
 #. [about]
-#: data/core/about_i18n.cfg:948
+#: data/core/about_i18n.cfg:990
 msgid "Hungarian Translation"
 msgstr "Traducció a l'hongarés"
 
 #. [about]
-#: data/core/about_i18n.cfg:1009
+#: data/core/about_i18n.cfg:1051
 #, fuzzy
 msgid "Icelandic Translation"
 msgstr "Traducció a l'italià"
 
 #. [about]
-#: data/core/about_i18n.cfg:1019
+#: data/core/about_i18n.cfg:1061
 msgid "Indonesian Translation"
 msgstr "Traducció a l'indonesi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1047
+#: data/core/about_i18n.cfg:1089
 #, fuzzy
 msgid "Irish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1054
+#: data/core/about_i18n.cfg:1096
 msgid "Italian Translation"
 msgstr "Traducció a l'italià"
 
 #. [about]
-#: data/core/about_i18n.cfg:1101
+#: data/core/about_i18n.cfg:1143
 msgid "Japanese Translation"
 msgstr "Traducció al japonés"
 
 #. [about]
-#: data/core/about_i18n.cfg:1194
+#: data/core/about_i18n.cfg:1236
 msgid "Korean Translation"
 msgstr "Traducció al coreà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1202
+#: data/core/about_i18n.cfg:1244
 msgid "Latin Translation"
 msgstr "Traducció al llatí"
 
 #. [about]
-#: data/core/about_i18n.cfg:1228
+#: data/core/about_i18n.cfg:1270
 msgid "Latvian Translation"
 msgstr "Traducció al letó"
 
 #. [about]
-#: data/core/about_i18n.cfg:1243
+#: data/core/about_i18n.cfg:1285
 msgid "Lithuanian Translation"
 msgstr "Traducció al lituà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1268
+#: data/core/about_i18n.cfg:1310
 msgid "Macedonian Translation"
 msgstr "Traducció al macedoni"
 
 #. [about]
-#: data/core/about_i18n.cfg:1275
+#: data/core/about_i18n.cfg:1317
 #, fuzzy
 msgid "Marathi Translation"
 msgstr "Traducció al llatí"
 
 #. [about]
-#: data/core/about_i18n.cfg:1284
+#: data/core/about_i18n.cfg:1326
 msgid "Norwegian Translation"
 msgstr "Traducció al noruec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1309
+#: data/core/about_i18n.cfg:1355
 #, fuzzy
 msgid "Old English Translation"
 msgstr "Traducció a l'anglés (Gran Bretanya)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1327
+#: data/core/about_i18n.cfg:1373
 msgid "Polish Translation"
 msgstr "Traducció al polac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1392
+#: data/core/about_i18n.cfg:1448
 msgid "Portuguese Translation"
 msgstr "Traducció al portugués"
 
 #. [about]
-#: data/core/about_i18n.cfg:1406
+#: data/core/about_i18n.cfg:1462
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portugués (Brasil)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1464
+#: data/core/about_i18n.cfg:1520
 msgid "Romanian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1472
+#: data/core/about_i18n.cfg:1528
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about_i18n.cfg:1579
+#: data/core/about_i18n.cfg:1635
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1588
+#: data/core/about_i18n.cfg:1644
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1607
+#: data/core/about_i18n.cfg:1663
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1636
+#: data/core/about_i18n.cfg:1698
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslové"
 
 #. [about]
-#: data/core/about_i18n.cfg:1652
+#: data/core/about_i18n.cfg:1714
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1742
+#: data/core/about_i18n.cfg:1804
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1787
+#: data/core/about_i18n.cfg:1849
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1812
+#: data/core/about_i18n.cfg:1874
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1828
+#: data/core/about_i18n.cfg:1908
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
 #. [about]
-#: data/core/about_i18n.cfg:1841
+#: data/core/about_i18n.cfg:1921
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al chinenc"
 
 #. [about]
+#: data/core/about_i18n.cfg:1940
+#, fuzzy
+#| msgid "Polish Translation"
+msgid "Welsh Translation"
+msgstr "Traducció al polac"
+
+#. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1861
+#: data/core/about_i18n.cfg:1949
 #, fuzzy
 msgid "RACV’s Translation"
 msgstr "Traducció al chinenc"
@@ -1189,7 +1203,7 @@ msgstr ""
 #. [item]: id=storm-trident2
 #. [object]
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:552
 msgid "Storm Trident"
 msgstr "Trident de la Tormenta"
 
@@ -1911,82 +1925,82 @@ msgstr ""
 "final de l'escenari actual."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:320
+#: data/core/macros/items.cfg:335
 msgid "Potion of Strength"
 msgstr "Poció de força"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:323
+#: data/core/macros/items.cfg:338
 msgid "Strength is given to the drinker."
 msgstr "El bevedor té força adicional."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:365
+#: data/core/macros/items.cfg:380
 msgid "Potion of Decay"
 msgstr "Poció de decaïment"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:383
 msgid "This poor unit drank something really bad."
 msgstr "Esta unitat ha begut alguna cosa realment roïn."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:404
+#: data/core/macros/items.cfg:419
 msgid "Ring of Regeneration"
 msgstr "Anell de regeneració"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:407
+#: data/core/macros/items.cfg:422
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Est anell curarà un poc al seu portador cada tanda."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:445
+#: data/core/macros/items.cfg:460
 msgid "Ring of Slowness"
 msgstr "Anell de lentitut"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:448
+#: data/core/macros/items.cfg:463
 msgid "The bearer of this ring is slowed."
 msgstr "El portador d'est anell anirà més lent."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:499
 msgid "Staff of Swiftness"
 msgstr "Bastó de la rapidea"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:487
+#: data/core/macros/items.cfg:502
 msgid "This staff will grant the bearer swift movement."
 msgstr "Este bastó concedirà al seu portador moviments més ràpits."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:488
+#: data/core/macros/items.cfg:503
 msgid "Only magical beings can wield such an object."
 msgstr "Només sers màgics poden portar est objecte."
 
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:547
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:548
 #, fuzzy
 msgid "storm trident^Take it"
 msgstr "trident de la tormenta"
 
-#: data/core/macros/items.cfg:534
+#: data/core/macros/items.cfg:549
 #, fuzzy
 msgid "storm trident^Leave it"
 msgstr "trident de la tormenta"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:550
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:555
 #, fuzzy
 #| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
@@ -1996,7 +2010,7 @@ msgstr ""
 "enemics."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:568
+#: data/core/macros/items.cfg:583
 #, fuzzy
 msgid "sceptre of fire"
 msgstr "rubí de foc"
@@ -3431,13 +3445,13 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:656
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:246
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:265
 msgid "Red"
 msgstr "Roig"
 
@@ -3454,7 +3468,7 @@ msgstr "Adepte obscur"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:252
+#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:271
 msgid "Blue"
 msgstr "Blau"
 
@@ -3467,7 +3481,7 @@ msgstr "Rellamp"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:258
+#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:277
 msgid "Green"
 msgstr "Vert"
 
@@ -3478,25 +3492,25 @@ msgstr ""
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:264
+#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:283
 msgid "Purple"
 msgstr "Morat"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:276
+#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:295
 msgid "Black"
 msgstr "Negre"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:288
+#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:307
 msgid "Brown"
 msgstr "Marró"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:270
+#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:289
 msgid "Orange"
 msgstr "Taronja"
 
@@ -3507,13 +3521,13 @@ msgstr ""
 
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:282
+#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:301
 msgid "White"
 msgstr "Blanc"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:294
+#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:313
 msgid "Teal"
 msgstr "Vert blavós"
 
@@ -3522,123 +3536,138 @@ msgstr "Vert blavós"
 msgid "color^Gold"
 msgstr ""
 
+#. [color_range]: id=yellow
+#: data/core/team-colors.cfg:113
+msgid "Yellow"
+msgstr ""
+
+#. [color_range]: id=pink
+#: data/core/team-colors.cfg:119
+msgid "Pink"
+msgstr ""
+
 #. [color_range]: id=darkblue
-#: data/core/team-colors.cfg:114
+#: data/core/team-colors.cfg:126
 #, fuzzy
 msgid "Dark blue"
 msgstr "Adepte obscur"
 
 #. [color_range]: id=reef
-#: data/core/team-colors.cfg:123
+#: data/core/team-colors.cfg:135
 msgid "Reef"
 msgstr ""
 
 #. [color_range]: id=shallow_water
-#: data/core/team-colors.cfg:129
+#: data/core/team-colors.cfg:141
 #, fuzzy
 #| msgid "Shallow Water"
 msgid "Shallow water"
 msgstr "Aigües someres"
 
 #. [color_range]: id=deep_water
-#: data/core/team-colors.cfg:135
+#: data/core/team-colors.cfg:147
 #, fuzzy
 #| msgid "Deep Water"
 msgid "Deep water"
 msgstr "Aigües fondes"
 
 #. [color_range]: id=swamp_water
-#: data/core/team-colors.cfg:141
+#: data/core/team-colors.cfg:153
 #, fuzzy
 #| msgid "Swamp"
 msgid "Swamp water"
 msgstr "Pantà"
 
 #. [color_range]: id=flat
-#: data/core/team-colors.cfg:147
+#: data/core/team-colors.cfg:159
 msgid "Flat"
 msgstr ""
 
 #. [color_range]: id=hills
-#: data/core/team-colors.cfg:153
+#: data/core/team-colors.cfg:165
 msgid "Hills"
 msgstr "Tossals"
 
 #. [color_range]: id=mountains
-#: data/core/team-colors.cfg:159
+#: data/core/team-colors.cfg:171
 msgid "Mountains"
 msgstr "Montanyes"
 
 #. [color_range]: id=forest
-#: data/core/team-colors.cfg:165
+#: data/core/team-colors.cfg:177
 msgid "Forest"
 msgstr "Bosc"
 
 #. [color_range]: id=sand
-#: data/core/team-colors.cfg:171
+#: data/core/team-colors.cfg:183
 msgid "Sand"
 msgstr "Arena"
 
 #. [color_range]: id=frozen
-#: data/core/team-colors.cfg:177
+#: data/core/team-colors.cfg:189
 msgid "Frozen"
 msgstr ""
 
 #. [color_range]: id=cave
-#: data/core/team-colors.cfg:183
+#: data/core/team-colors.cfg:195
 msgid "Cave"
 msgstr "Cova"
 
 #. [color_range]: id=fungus
-#: data/core/team-colors.cfg:189
+#: data/core/team-colors.cfg:201
 msgid "Fungus"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:188
+#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:186
 msgid "Village"
 msgstr "Aldea"
 
 #. [color_range]: id=castle
-#: data/core/team-colors.cfg:201
+#: data/core/team-colors.cfg:213
 #, fuzzy
 msgid "Castle"
 msgstr "Castell"
 
 #. [color_range]: id=keep
-#: data/core/team-colors.cfg:207
+#: data/core/team-colors.cfg:219
 msgid "Keep"
 msgstr "Torrelló"
 
 #. [color_range]: id=rails
-#: data/core/team-colors.cfg:213
+#: data/core/team-colors.cfg:225
 msgid "Rail"
 msgstr ""
 
 #. [color_range]: id=unwalkable
-#: data/core/team-colors.cfg:219
+#: data/core/team-colors.cfg:231
 msgid "Unwalkable"
 msgstr ""
 
 #. [color_range]: id=impassable
-#: data/core/team-colors.cfg:225
+#: data/core/team-colors.cfg:237
 #, fuzzy
 msgid "Impassable"
 msgstr "Montanyes infranquejables"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:386
+#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:383
 msgid "Fog"
 msgstr "Boira"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:389
-#: src/game_initialization/lobby_data.cpp:392
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:386
+#: src/game_initialization/lobby_data.cpp:389
 msgid "Shroud"
 msgstr "Ocultació"
+
+#. [color_range]: id=urbanjungle
+#: data/core/team-colors.cfg:256
+msgid "Urban"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -3926,20 +3955,20 @@ msgid "Alternate Wesnoth Server"
 msgstr "Servidor alternatiu de Wesnoth"
 
 #. [label]: id=title
-#: data/gui/window/install_dependencies.cfg:37
+#: data/gui/themes/default/window/install_dependencies.cfg:37
 #, fuzzy
 msgid "Install Dependencies"
 msgstr "Dependències"
 
 #. [button]: id=ok
-#: data/gui/window/install_dependencies.cfg:84
+#: data/gui/themes/default/window/install_dependencies.cfg:84
 #, fuzzy
 #| msgid "Yes!"
 msgid "Yes"
 msgstr "¡Sí!"
 
 #. [button]: id=cancel
-#: data/gui/window/install_dependencies.cfg:95
+#: data/gui/themes/default/window/install_dependencies.cfg:95
 #, fuzzy
 #| msgid "No"
 msgid "No"
@@ -3947,8 +3976,8 @@ msgstr "No"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:635
+#: data/gui/themes/default/window/screenshot_notification.cfg:95
+#: src/hotkey/command_executor.cpp:628
 msgid "Screenshot"
 msgstr "captura"
 
@@ -3981,45 +4010,45 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core/_initial.lua:38 src/deprecation.cpp:69
+#: data/lua/core/_initial.lua:38 src/deprecation.cpp:68
 msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:884
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
 #, fuzzy
 msgid "female^poisoned"
 msgstr "no morta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 #, fuzzy
 msgid "female^slowed"
 msgstr "lleal"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
 msgid "slowed"
 msgstr "retardat"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 #, fuzzy
 msgid "female^petrified"
 msgstr "no morta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
 #, fuzzy
 msgid "petrified"
 msgstr "Espectre"
@@ -4037,8 +4066,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3224
-#: src/scripting/game_lua_kernel.cpp:3259
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3512
+#: src/scripting/game_lua_kernel.cpp:3547
 msgid "input"
 msgstr ""
 
@@ -4077,7 +4106,7 @@ msgstr "Punts d'Experiència per a alvançar"
 #: data/modifications.cfg:7
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
-"if it advances on another player's turn. With this modification you can set "
+"if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
@@ -4097,42 +4126,42 @@ msgid ""
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:30
+#. [lua]: preshow
+#: data/modifications/pick_advance/dialog.lua:36
+#, fuzzy
+msgid "No planned advancement"
+msgstr "Alvanços"
+
+#. [label]
+#: data/modifications/pick_advance/gui/pick_advance.cfg:14
 #: data/modifications/pick_advance/main.lua:10
 #, fuzzy
 #| msgid "Advancements"
 msgid "Plan Advancement"
 msgstr "Alvanços"
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:67
+#. [image]: id=global_icon
+#: data/modifications/pick_advance/gui/pick_advance.cfg:53
 msgid ""
 "This advancement is currently the default for all units of the same type"
 msgstr ""
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:129
+#. [toggle_button]: id=apply_to_all
+#: data/modifications/pick_advance/gui/pick_advance.cfg:118
 msgid "Apply to all units of this type"
 msgstr ""
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:145
+#. [button]
+#: data/modifications/pick_advance/gui/pick_advance.cfg:134
 #, fuzzy
 #| msgid "Saved"
 msgid "Save"
 msgstr "Partida guardada"
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:154
+#. [button]: id=cancel
+#: data/modifications/pick_advance/gui/pick_advance.cfg:143
 msgid "Cancel"
 msgstr "Cancelar"
-
-#. [lua]: preshow
-#: data/modifications/pick_advance/dialog.lua:174
-#, fuzzy
-msgid "No planned advancement"
-msgstr "Alvanços"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
@@ -4259,12 +4288,12 @@ msgid "Menu"
 msgstr "Menú"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Fi de la tanda"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Fi de l'escenari"
 
@@ -4287,33 +4316,40 @@ msgstr "IA predeterminada"
 msgid "Load Turn..."
 msgstr "Carregar partida..."
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "jugar tanda"
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Accions"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "PV"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "PE"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "Multijug."
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:408
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -4358,9 +4394,9 @@ msgstr ""
 "a sobreviure futures batalles."
 
 #. [tip]
-#: data/tips.cfg:17 data/tips.cfg:149
+#: data/tips.cfg:17
 #, fuzzy
-msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgid "<i>― Great Mage Delfador, 520YW</i>"
 msgstr "- Gran Mac Delfador, 516AW"
 
 #. [tip]
@@ -4840,6 +4876,12 @@ msgstr ""
 "te des d'allà, mentres es beneficia de la defensa i la curació de l'aldea."
 
 #. [tip]
+#: data/tips.cfg:149
+#, fuzzy
+msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgstr "- Gran Mac Delfador, 516AW"
+
+#. [tip]
 #: data/tips.cfg:152
 msgid ""
 "For any player, controlling villages is often key to winning a scenario. You "
@@ -5183,98 +5225,98 @@ msgstr ""
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:259
+#: src/actions/advancement.cpp:256
 #, fuzzy
 msgid "waiting for^an advancement choice"
 msgstr "Alvanços"
 
-#: src/actions/attack.cpp:597 src/actions/attack.cpp:1388
+#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "L'era seleccionada no és vàlida"
 
-#: src/actions/create.cpp:341
+#: src/actions/create.cpp:340
 #, fuzzy
 #| msgid "You don’t have a leader to recruit with."
 msgid "You do not have a leader to recall with."
 msgstr "No tens un líder ab el que reclutar."
 
-#: src/actions/create.cpp:345
+#: src/actions/create.cpp:344
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders are able to recall that unit."
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/actions/create.cpp:349
+#: src/actions/create.cpp:348
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/actions/create.cpp:353
+#: src/actions/create.cpp:352
 #, fuzzy
 #| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "El castell no dispon de més zones lliures per a reclutar."
 
-#: src/actions/create.cpp:363 src/actions/create.cpp:499
+#: src/actions/create.cpp:362 src/actions/create.cpp:498
 msgid "An unrecognized error has occurred."
 msgstr ""
 
-#: src/actions/create.cpp:477
+#: src/actions/create.cpp:476
 msgid "You do not have a leader to recruit with."
 msgstr "No tens un líder ab el que reclutar."
 
-#: src/actions/create.cpp:481
+#: src/actions/create.cpp:480
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders are able to recruit this unit."
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/actions/create.cpp:485
+#: src/actions/create.cpp:484
 #, fuzzy
 #| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/actions/create.cpp:489
+#: src/actions/create.cpp:488
 #, fuzzy
 #| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "El castell no dispon de més zones lliures per a reclutar."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "cures"
 msgid "cured"
 msgstr "cura"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 msgid "female^cured"
 msgstr "intrèpida"
 
-#: src/actions/move.cpp:611
+#: src/actions/move.cpp:650
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions/move.cpp:1111
+#: src/actions/move.cpp:1194
 msgid "Failed teleport! Exit not empty"
 msgstr "¡No s'ha pogut teletransportar! La eixida no està buida"
 
 #. TRANSLATORS: This becomes the "friendphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1127
+#: src/actions/move.cpp:1210
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "amiga"
 msgstr[1] "$friends amigues"
 
 #. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
-#: src/actions/move.cpp:1129
+#: src/actions/move.cpp:1212
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "enemiga"
@@ -5282,13 +5324,13 @@ msgstr[1] "$enemies enemigues"
 
 #. TRANSLATORS: Both friends and enemies sighted -- neutral message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1132
+#: src/actions/move.cpp:1215
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "¡Unitats a la vista! ($friendphrase, $enemyphrase)"
 
 #. TRANSLATORS: Only enemies sighted -- bad message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1137
+#: src/actions/move.cpp:1220
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "¡Unitat enemiga a la vista!"
@@ -5296,45 +5338,57 @@ msgstr[1] "¡$enemies unitats enemigues a la vista!"
 
 #. TRANSLATORS: Only friends sighted -- good message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
-#: src/actions/move.cpp:1142
+#: src/actions/move.cpp:1225
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "S'ha vist una unitat amiga."
 msgstr[1] "S'han vist $friends unitats amigues"
 
-#: src/actions/move.cpp:1157
+#: src/actions/move.cpp:1240
 msgid "(press $hotkey to keep moving)"
 msgstr "(pulsa $hotkey per a seguir movent-se)"
 
-#: src/addon/client.cpp:81
+#: src/actions/undo.cpp:402
+#, fuzzy
+#| msgid "Error"
+msgid "Redo Error"
+msgstr "Erro"
+
+#: src/actions/undo.cpp:403
+msgid ""
+"The redo stack is out of sync. This is most commonly caused by a corrupt "
+"save file or by faulty WML code in the scenario or era. Details:"
+msgstr ""
+
+#: src/addon/client.cpp:78
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Conectant ab el servidor..."
 
-#: src/addon/client.cpp:128
+#: src/addon/client.cpp:125
 #, fuzzy
 msgid "Downloading list of add-ons..."
 msgstr "S'està solicitant el llistat d'expansions"
 
-#: src/addon/client.cpp:149
+#: src/addon/client.cpp:146
 #, fuzzy
 msgid "Requesting distribution terms..."
 msgstr "S'està solicitant el llistat d'expansions"
 
-#: src/addon/client.cpp:173
+#: src/addon/client.cpp:170
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
 
-#: src/addon/client.cpp:185
+#: src/addon/client.cpp:182
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
 
-#: src/addon/client.cpp:193
+#: src/addon/client.cpp:190
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5344,30 +5398,30 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:201
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
 
-#: src/addon/client.cpp:211
+#: src/addon/client.cpp:208
 msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
-#: src/addon/client.cpp:224
+#: src/addon/client.cpp:221
 #, fuzzy
 msgid "Requesting file index..."
 msgstr "S'està solicitant el llistat d'expansions"
 
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:237
 #, fuzzy
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Descarregant expansió..."
 
-#: src/addon/client.cpp:261
+#: src/addon/client.cpp:258
 #, fuzzy
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Descarregant expansió..."
@@ -5377,41 +5431,41 @@ msgstr "Descarregant expansió..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Descarregant expansió..."
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:335
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Descarregant expansió..."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:347 src/addon/client.cpp:708
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "Expansió instalada"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:347
 #, fuzzy
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Descarregant expansió..."
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:359 src/addon/client.cpp:385
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:364 src/addon/client.cpp:390
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:423 src/gui/dialogs/multiplayer/match_history.cpp:248
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "El servidor ha respost ab un erro: \""
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:478
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5421,12 +5475,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:487
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "Dependències"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:527
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5436,108 +5490,108 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:531
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:554
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:558
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:562
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:566
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "¿Vols guardar la teua partida?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
-#: src/game_initialization/multiplayer.cpp:363
+#: src/addon/client.cpp:568 src/addon/manager_ui.cpp:171
+#: src/game_initialization/multiplayer.cpp:358
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: src/addon/info.cpp:253
+#: src/addon/info.cpp:252
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon/info.cpp:255
+#: src/addon/info.cpp:254
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon/info.cpp:257
+#: src/addon/info.cpp:256
 #, fuzzy
 msgid "addon_type^SP/MP Campaign"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:259
+#: src/addon/info.cpp:258
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:261
+#: src/addon/info.cpp:260
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:263
+#: src/addon/info.cpp:262
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:265
+#: src/addon/info.cpp:264
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:267
+#: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon/info.cpp:269
+#: src/addon/info.cpp:268
 #, fuzzy
 msgid "addon_type^Modification"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:271
+#: src/addon/info.cpp:270
 #, fuzzy
 msgid "addon_type^Core"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:273
+#: src/addon/info.cpp:272
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon/info.cpp:275
+#: src/addon/info.cpp:274
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Escenari remot"
 
-#: src/addon/info.cpp:277
+#: src/addon/info.cpp:276
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon/info.cpp:314
+#: src/addon/info.cpp:313
 msgid "unit_byte^B"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:326
+#: src/addon/manager_ui.cpp:81 src/addon/manager_ui.cpp:322
 msgid "Network communication error."
 msgstr "Erro de comunicació en la ret."
 
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:329
+#: src/addon/manager_ui.cpp:84 src/addon/manager_ui.cpp:325
 msgid "Remote host disconnected."
 msgstr "Servidor remot desconectat."
 
-#: src/addon/manager_ui.cpp:91 src/addon/manager_ui.cpp:332
+#: src/addon/manager_ui.cpp:87 src/addon/manager_ui.cpp:328
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
@@ -5546,7 +5600,7 @@ msgstr ""
 "S'ha produït un problema creant els archius necessaris per a instalar esta "
 "expansió."
 
-#: src/addon/manager_ui.cpp:100 src/addon/manager_ui.cpp:341
+#: src/addon/manager_ui.cpp:96 src/addon/manager_ui.cpp:337
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -5554,16 +5608,16 @@ msgid ""
 "Error message: $msg"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:108 src/addon/manager_ui.cpp:347
+#: src/addon/manager_ui.cpp:104 src/addon/manager_ui.cpp:343
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
-#: src/addon/manager_ui.cpp:121
+#: src/addon/manager_ui.cpp:117
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "No tens cap expansió instalada."
 
-#: src/addon/manager_ui.cpp:170
+#: src/addon/manager_ui.cpp:166
 #, fuzzy
 #| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
@@ -5571,7 +5625,7 @@ msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "¿Esteu segur que voleu eliminar l'expansió «$addon|»?"
 msgstr[1] "¿Esteu segur que voleu eliminar l'expansió «$addon|»?"
 
-#: src/addon/manager_ui.cpp:196
+#: src/addon/manager_ui.cpp:192
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5581,14 +5635,14 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:206
+#: src/addon/manager_ui.cpp:202
 #, fuzzy
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "L'expansió no s'ha pogut eliminar; no s'ha trobat l'archiu."
 msgstr[1] "L'expansió no s'ha pogut eliminar; no s'ha trobat l'archiu."
 
-#: src/addon/manager_ui.cpp:213
+#: src/addon/manager_ui.cpp:209
 #, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-on Deleted"
@@ -5596,7 +5650,7 @@ msgid_plural "Add-ons Deleted"
 msgstr[0] "Expansió eliminada"
 msgstr[1] "Expansió eliminada"
 
-#: src/addon/manager_ui.cpp:215
+#: src/addon/manager_ui.cpp:211
 #, fuzzy
 #| msgid "The following add-on had errors and could not be loaded:"
 #| msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -5605,12 +5659,12 @@ msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "La següent expansió conté erros i no s'ha pogut carregar:"
 msgstr[1] "Les següents expansions contenen erros i no s'han pogut carregar:"
 
-#: src/addon/manager_ui.cpp:272
+#: src/addon/manager_ui.cpp:268
 #, fuzzy
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Erro de comunicació ab el servidor."
 
-#: src/addon/manager_ui.cpp:319
+#: src/addon/manager_ui.cpp:315
 #, fuzzy
 #| msgid "There are no add-ons available for download from this server."
 msgid ""
@@ -5766,51 +5820,160 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:82
+#: src/carryover_show_gold.cpp:51
+msgid "Scenario Report"
+msgstr "Informe de l'escenari"
+
+#: src/carryover_show_gold.cpp:53
+msgid "Victory"
+msgstr "Victòria"
+
+#: src/carryover_show_gold.cpp:54
+msgid "You have emerged victorious!"
+msgstr "¡Has segut el vencedor!"
+
+#: src/carryover_show_gold.cpp:56
+msgid "Defeat"
+msgstr "Derrota"
+
+#: src/carryover_show_gold.cpp:57
+msgid "You have been defeated!"
+msgstr "¡Has segut derrotat!"
+
+#: src/carryover_show_gold.cpp:93
+msgid "Remaining gold: "
+msgstr "Or restant: "
+
+#: src/carryover_show_gold.cpp:97
+msgid "Turns finished early: "
+msgstr "Tandes acabades pronte: "
+
+#: src/carryover_show_gold.cpp:98
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "per tanda"
+
+#: src/carryover_show_gold.cpp:98
+msgid "Early finish bonus: "
+msgstr "Bonificació per rapidea: "
+
+#: src/carryover_show_gold.cpp:99
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "Tandes bonificades: "
+
+#: src/carryover_show_gold.cpp:102
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Or per aldea: "
+
+#: src/carryover_show_gold.cpp:106
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "Percentage pospost:"
+
+#: src/carryover_show_gold.cpp:110
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Bonificació d'or: "
+
+#: src/carryover_show_gold.cpp:112
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Or conservat: "
+
+#: src/carryover_show_gold.cpp:125
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+msgstr[1] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+
+#: src/carryover_show_gold.cpp:132
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+msgstr[1] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+
+#: src/carryover_show_gold.cpp:139
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
+"definit, lo que siga més alt."
+msgstr[1] ""
+"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
+"definit, lo que siga més alt."
+
+#: src/chat_command_handler.cpp:81
 #, fuzzy
 msgid "Added to ignore list: $nick"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/chat_command_handler.cpp:82
+#: src/chat_command_handler.cpp:81
 #, fuzzy
 msgid "ignores list"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
+#: src/chat_command_handler.cpp:85 src/chat_command_handler.cpp:104
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "Nom d'usuari invàlit"
 
-#: src/chat_command_handler.cpp:101
+#: src/chat_command_handler.cpp:100
 #, fuzzy
 msgid "Added to friends list: $nick"
 msgstr "Afegir al llistat d'amics:"
 
-#: src/chat_command_handler.cpp:101
+#: src/chat_command_handler.cpp:100
 #, fuzzy
 msgid "friends list"
 msgstr "Afegir al llistat d'amics:"
 
-#: src/chat_command_handler.cpp:117
+#: src/chat_command_handler.cpp:116
 #, fuzzy
 msgid "Removed from list: $nick"
 msgstr "Eliminat del llistat:"
 
-#: src/chat_command_handler.cpp:117
+#: src/chat_command_handler.cpp:116
 #, fuzzy
 msgid "friends and ignores list"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/chat_command_handler.cpp:127
+#: src/chat_command_handler.cpp:126
 #, fuzzy
 msgid "version"
 msgstr "Versió"
 
-#: src/chat_command_handler.cpp:139
+#: src/chat_command_handler.cpp:138
 msgid "nick registration"
 msgstr ""
 
-#: src/chat_command_handler.cpp:139
+#: src/chat_command_handler.cpp:138
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "No s'ha trobat l'informació sobre les eres."
@@ -5819,7 +5982,7 @@ msgstr "No s'ha trobat l'informació sobre les eres."
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1186
 #, fuzzy
 msgid "(admin only)"
 msgstr "Només equip"
@@ -5944,7 +6107,7 @@ msgstr "No s'ha trobat l'informació sobre les eres."
 msgid "Request information about a nickname."
 msgstr "No s'ha trobat l'informació sobre les eres."
 
-#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1244
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1236
 #, fuzzy
 msgid "Clear chat history."
 msgstr ""
@@ -5952,51 +6115,51 @@ msgstr ""
 "Borrar els mensages del chat.\n"
 "\n"
 
-#: src/chat_events.cpp:60
+#: src/chat_events.cpp:57
 msgid "Unknown debug level: '$level'."
 msgstr "Nivell de depuració desconegut: '$level'."
 
-#: src/chat_events.cpp:62 src/chat_events.cpp:71
+#: src/chat_events.cpp:59 src/chat_events.cpp:68
 msgid "error"
 msgstr "erró"
 
-#: src/chat_events.cpp:69
+#: src/chat_events.cpp:66
 msgid "Unknown debug domain: '$domain'."
 msgstr "Domini de depuració desconegut: '$domain'."
 
-#: src/chat_events.cpp:79
+#: src/chat_events.cpp:76
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Domini canviat: '$domain' a nivell: '$level'."
 
-#: src/chat_events.cpp:148
+#: src/chat_events.cpp:145
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/chat_events.cpp:155
+#: src/chat_events.cpp:152
 msgid "whisper: $sender"
 msgstr ""
 
-#: src/deprecation.cpp:40
+#: src/deprecation.cpp:39
 msgid "$elem has been deprecated indefinitely."
 msgstr ""
 
-#: src/deprecation.cpp:47
+#: src/deprecation.cpp:46
 msgid "$elem has been deprecated and may be removed in version $version."
 msgstr ""
 
-#: src/deprecation.cpp:49
+#: src/deprecation.cpp:48
 msgid "$elem has been deprecated and may be removed at any time."
 msgstr ""
 
-#: src/deprecation.cpp:56
+#: src/deprecation.cpp:55
 msgid "$elem has been deprecated and will be removed in version $version."
 msgstr ""
 
-#: src/deprecation.cpp:61
+#: src/deprecation.cpp:60
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
-#: src/desktop/notifications.cpp:78
+#: src/desktop/notifications.cpp:77
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6008,11 +6171,11 @@ msgstr ""
 "Borrar els mensages del chat.\n"
 "\n"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:582
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
-#: src/font/text_formatting.cpp:52
+#: src/font/text_formatting.cpp:51
 msgid "Invalid Color"
 msgstr "Color no vàlit"
 
@@ -6050,69 +6213,69 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:530
+#: src/game_config.cpp:528
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
 msgstr "Ranc de color invàlit:"
 
-#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
-#: src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
+#: src/game_config_manager.cpp:265
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:245
+#: src/game_config_manager.cpp:244
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
-#: src/game_config_manager.cpp:270
+#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:269
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:289
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:255
 #, fuzzy
 msgid "The ID is already in use."
 msgstr "La partida ha acabat."
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:267
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:268
 #, fuzzy
 #| msgid "No era information found."
 msgid "File not found."
 msgstr "No s'ha trobat l'informació sobre les eres."
 
-#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:290
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:292
+#: src/game_config_manager.cpp:291
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:301
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:303
+#: src/game_config_manager.cpp:302
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game_config_manager.cpp:364
+#: src/game_config_manager.cpp:363
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6120,7 +6283,7 @@ msgid ""
 "loading add-ons."
 msgstr "Erro carregant els archius de configuració del joc: '"
 
-#: src/game_config_manager.cpp:371
+#: src/game_config_manager.cpp:370
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6128,7 +6291,7 @@ msgid ""
 "default core files."
 msgstr "Erro carregant els archius de configuració del joc: '"
 
-#: src/game_config_manager.cpp:380
+#: src/game_config_manager.cpp:379
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -6138,145 +6301,145 @@ msgstr "Erro carregant els archius de configuració del joc: '"
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:541
+#: src/game_config_manager.cpp:404
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:579
+#: src/game_config_manager.cpp:441
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:634
+#: src/game_config_manager.cpp:635
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La següent expansió conté erros i no s'ha pogut carregar:"
 msgstr[1] "Les següents expansions contenen erros i no s'han pogut carregar:"
 
-#: src/game_config_manager.cpp:638
+#: src/game_config_manager.cpp:639
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:956
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:952
 #, fuzzy
 msgid "Error: "
 msgstr "Erro"
 
-#: src/game_events/pump.cpp:394
+#: src/game_events/pump.cpp:391
 #, fuzzy
 msgid "Warning: "
 msgstr "Matí"
 
-#: src/game_events/pump.cpp:396
+#: src/game_events/pump.cpp:393
 msgid "Debug: "
 msgstr ""
 
-#: src/game_events/pump.cpp:398
+#: src/game_events/pump.cpp:395
 msgid "Info: "
 msgstr ""
 
-#: src/game_initialization/configure_engine.cpp:64
+#: src/game_initialization/configure_engine.cpp:61
 msgid "$login|’s game"
 msgstr "Partida d'en/na $login"
 
-#: src/game_initialization/connect_engine.cpp:102
+#: src/game_initialization/connect_engine.cpp:98
 msgid "Team"
 msgstr "Equip"
 
-#: src/game_initialization/connect_engine.cpp:954
+#: src/game_initialization/connect_engine.cpp:935
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Jugador anònim local"
 
-#: src/game_initialization/connect_engine.cpp:959
-#: src/game_initialization/connect_engine.cpp:1257
+#: src/game_initialization/connect_engine.cpp:940
+#: src/game_initialization/connect_engine.cpp:1238
 msgid "Computer Player"
 msgstr "Ordinador"
 
-#: src/game_initialization/connect_engine.cpp:1001
+#: src/game_initialization/connect_engine.cpp:982
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1253
+#: src/game_initialization/connect_engine.cpp:1234
 msgid "Network Player"
 msgstr "Jugador en ret"
 
-#: src/game_initialization/connect_engine.cpp:1256
+#: src/game_initialization/connect_engine.cpp:1237
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/game_initialization/connect_engine.cpp:1258
+#: src/game_initialization/connect_engine.cpp:1239
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1261
+#: src/game_initialization/connect_engine.cpp:1242
 #, fuzzy
 msgid "Reserved"
 msgstr "Servidor: "
 
-#: src/game_initialization/create_engine.cpp:77
-#: src/game_initialization/create_engine.cpp:669
+#: src/game_initialization/create_engine.cpp:73
+#: src/game_initialization/create_engine.cpp:665
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game_initialization/create_engine.cpp:81
+#: src/game_initialization/create_engine.cpp:77
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game_initialization/create_engine.cpp:98
+#: src/game_initialization/create_engine.cpp:94
 #, fuzzy
 #| msgid "Era not available"
 msgid "not available."
 msgstr "Era no disponible"
 
-#: src/game_initialization/create_engine.cpp:153
+#: src/game_initialization/create_engine.cpp:149
 #, fuzzy
 #| msgid "Commands"
 msgid "Custom map."
 msgstr "Órdens"
 
-#: src/game_initialization/depcheck.cpp:492
+#: src/game_initialization/depcheck.cpp:491
 #, fuzzy
 msgid "Failed to resolve dependencies"
 msgstr "Dependències"
 
-#: src/game_initialization/depcheck.cpp:492
+#: src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "D'acort"
 
-#: src/game_initialization/depcheck.cpp:517
+#: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:571
-#: src/game_initialization/depcheck.cpp:694
+#: src/game_initialization/depcheck.cpp:570
+#: src/game_initialization/depcheck.cpp:693
 #, fuzzy
 #| msgid "No eras found."
 msgid "No compatible eras found."
 msgstr "No s'han trobat eres"
 
-#: src/game_initialization/depcheck.cpp:586
+#: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:639
-#: src/game_initialization/depcheck.cpp:731
+#: src/game_initialization/depcheck.cpp:638
+#: src/game_initialization/depcheck.cpp:730
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
 msgstr "No s'ha trobat cap bando."
 
-#: src/game_initialization/depcheck.cpp:668
+#: src/game_initialization/depcheck.cpp:667
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -6299,43 +6462,43 @@ msgstr "No ha segut possible trobar un líder de la facció $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:163
+#: src/game_initialization/lobby_data.cpp:160
 msgid "Missing addon: $name"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:165
+#: src/game_initialization/lobby_data.cpp:162
 msgid "Missing addon: $id"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:197
+#: src/game_initialization/lobby_data.cpp:194
 msgid "Unknown era"
 msgstr "Era desconeguda"
 
-#: src/game_initialization/lobby_data.cpp:264
-#: src/game_initialization/lobby_data.cpp:298
+#: src/game_initialization/lobby_data.cpp:261
+#: src/game_initialization/lobby_data.cpp:295
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Bando"
 
-#: src/game_initialization/lobby_data.cpp:284
+#: src/game_initialization/lobby_data.cpp:281
 msgid "Remote scenario"
 msgstr "Escenari remot"
 
-#: src/game_initialization/lobby_data.cpp:305
-#: src/game_initialization/lobby_data.cpp:331
+#: src/game_initialization/lobby_data.cpp:302
+#: src/game_initialization/lobby_data.cpp:328
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:337
+#: src/game_initialization/lobby_data.cpp:334
 msgid "Unknown scenario"
 msgstr "Escenari desconegut"
 
-#: src/game_initialization/lobby_data.cpp:351
+#: src/game_initialization/lobby_data.cpp:348
 msgid "Reloaded game"
 msgstr "Partida recarregada"
 
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:363
 #, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
@@ -6344,34 +6507,34 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
 msgstr[1] "Places lliures:"
 
-#: src/game_initialization/lobby_data.cpp:368
+#: src/game_initialization/lobby_data.cpp:365
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:379
-#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:662
+#: src/game_initialization/lobby_data.cpp:376
+#: src/game_initialization/lobby_data.cpp:378 src/savegame.cpp:652
 msgid "Turn"
 msgstr "Tanda"
 
-#: src/game_initialization/lobby_data.cpp:394
+#: src/game_initialization/lobby_data.cpp:391
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "Versió:"
 
-#: src/game_initialization/lobby_data.cpp:403
+#: src/game_initialization/lobby_data.cpp:400
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Temps llímit"
 
-#: src/game_initialization/lobby_data.cpp:447
+#: src/game_initialization/lobby_data.cpp:444
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:461
+#: src/game_initialization/lobby_data.cpp:458
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6390,11 +6553,11 @@ msgstr ""
 msgid "Cannot find era '$era'"
 msgstr "No ha segut possible trobar $era."
 
-#: src/game_initialization/multiplayer.cpp:238
+#: src/game_initialization/multiplayer.cpp:233
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:268
 #, fuzzy
 #| msgid ""
 #| "The server requires version '$version1' while you are using version "
@@ -6406,300 +6569,191 @@ msgstr ""
 "El servidor requerïx la versió '$version1', pero estàs usant la versió "
 "'$version2'."
 
-#: src/game_initialization/multiplayer.cpp:286
+#: src/game_initialization/multiplayer.cpp:281
 msgid "Server-side redirect loop"
 msgstr "Redirecció del servidor"
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:331
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:340
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "¿Vols guardar la teua partida?"
 
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:342
 #, fuzzy
 msgid "Warning"
 msgstr "Matí"
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:405
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:407
 #, fuzzy
 msgid "You must login first."
 msgstr "Has d'entrar en este servidor"
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:409
 msgid "The nickname ‘$nick’ is already taken."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:416
+#: src/game_initialization/multiplayer.cpp:411
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:415
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:417
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:424
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:425
+#: src/game_initialization/multiplayer.cpp:420
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:430
+#: src/game_initialization/multiplayer.cpp:425
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:429
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:436
+#: src/game_initialization/multiplayer.cpp:431
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:435
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:442
+#: src/game_initialization/multiplayer.cpp:437
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:445
-#: src/game_initialization/multiplayer.cpp:447
+#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:442
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:448
+#: src/game_initialization/multiplayer.cpp:443
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The password you provided was incorrect."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:448
 msgid "You have made too many login attempts."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:455
+#: src/game_initialization/multiplayer.cpp:450
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Informe de l'escenari"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Victòria"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "¡Has segut el vencedor!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Derrota"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "¡Has segut derrotat!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Or restant: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Tandes acabades pronte: "
-
-#: src/game_initialization/playcampaign.cpp:124
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "per tanda"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Bonificació per rapidea: "
-
-#: src/game_initialization/playcampaign.cpp:125
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "Tandes bonificades: "
-
-#: src/game_initialization/playcampaign.cpp:128
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Or per aldea: "
-
-#: src/game_initialization/playcampaign.cpp:132
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "Percentage pospost:"
-
-#: src/game_initialization/playcampaign.cpp:136
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Bonificació d'or: "
-
-#: src/game_initialization/playcampaign.cpp:138
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Or conservat: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-msgstr[1] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-
-#: src/game_initialization/playcampaign.cpp:158
-#, fuzzy
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-msgstr[1] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
-"definit, lo que siga més alt."
-msgstr[1] ""
-"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
-"definit, lo que siga més alt."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:149 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:155 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:158 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "No ha segut possible carregar la partida:"
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
-#: src/game_launcher.cpp:1029
+#: src/game_initialization/playcampaign.cpp:161 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:163
 msgid "Error while reading the WML: "
 msgstr "Erro mentres es llegia el WML:"
 
-#: src/game_initialization/playcampaign.cpp:353
-#: src/playsingle_controller.cpp:332
+#: src/game_initialization/playcampaign.cpp:210
+#: src/playsingle_controller.cpp:384
 msgid "Game Over"
 msgstr "Partida perduda"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:211
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Est escenari ha acabat. ¿Voleu continuar la campanya?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:279
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: '$scenario|'"
 
-#: src/game_initialization/singleplayer.cpp:44
+#: src/game_initialization/singleplayer.cpp:43
 #, fuzzy
 #| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
 msgstr "No hi ha campanyes disponibles.\n"
 
-#: src/game_launcher.cpp:714 src/game_launcher.cpp:733
+#: src/game_launcher.cpp:708 src/game_launcher.cpp:727 src/replay.cpp:678
 msgid "The file you have tried to load is corrupt"
 msgstr "L'archiu que ha intentat carregar està danyat."
 
-#: src/game_launcher.cpp:716 src/game_launcher.cpp:735
-#: src/hotkey/hotkey_handler_sp.cpp:316 src/savegame.cpp:154
-#: src/savegame.cpp:315
+#: src/game_launcher.cpp:710 src/game_launcher.cpp:729
+#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:147
+#: src/savegame.cpp:308
 msgid "The file you have tried to load is corrupt: '"
 msgstr "L'archiu que has intentat carregar està danyat: '"
 
-#: src/game_launcher.cpp:725
+#: src/game_launcher.cpp:719
 msgid "File I/O Error while reading the game"
 msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 
-#: src/game_launcher.cpp:727
+#: src/game_launcher.cpp:721
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 
-#: src/game_launcher.cpp:907
+#: src/game_launcher.cpp:903
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_launcher.cpp:929
+#: src/game_launcher.cpp:925
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
 msgstr "Conexió perduda."
 
-#: src/generators/default_map_generator_job.cpp:707
+#: src/generators/default_map_generator_job.cpp:706
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Mapes aleatoris ab un amplària impar no són compatibles."
 
-#: src/generators/default_map_generator_job.cpp:970
+#: src/generators/default_map_generator_job.cpp:969
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -6709,7 +6763,7 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:34
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6719,74 +6773,173 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/dialogs/game_stats.hpp:42
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+#, fuzzy
+msgid "Create a new add-on"
+msgstr "Crear partida"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+#, fuzzy
+#| msgid "Remove Add-ons"
+msgid "New Add-on"
+msgstr "Eliminar expansions"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+msgid "Mainline"
+msgstr ""
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+#, fuzzy
+#| msgid "No multiplayer sides."
+msgid "Mainline multiplayer scenarios"
+msgstr "No hi ha bandos."
+
+#: src/gui/dialogs/game_stats.hpp:38
 #, fuzzy
 #| msgid "No multiplayer sides found"
 msgid "No visible sides found."
 msgstr "No s'ha trobat cap bando."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:172
 #, fuzzy
 msgid "Selected Game"
 msgstr "Selecciona una unitat:"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 #, fuzzy
 #| msgid "Game Lobby"
 msgid "Lobby"
 msgstr "Sala de joc"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other Games"
 msgstr "Observar joc"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:107
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Fi de l'escenari"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "Era:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+msgid "Modification"
+msgstr "Color no vàlit"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:150
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Era:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:151
+msgid " UTC+0"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
+#, fuzzy
+#| msgid "No eras found."
+msgid "No game history found."
+msgstr "No s'han trobat eres"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:266
+msgid "Request timed out."
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:276
+msgid "Request encountered an unexpected error, please check the logs."
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/player_info.cpp:105
 #, fuzzy
 msgid "In game:"
 msgstr "Nom: "
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:109
+#: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "(observing)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:111
+#: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(playing)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:114
+#: src/gui/dialogs/multiplayer/player_info.cpp:112
 msgid "In lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:143
+#: src/gui/dialogs/multiplayer/player_info.cpp:141
 #, fuzzy
 msgid "On friends list"
 msgstr "Afegir al llistat d'amics:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:148
+#: src/gui/dialogs/multiplayer/player_info.cpp:146
 #, fuzzy
 msgid "On ignores list"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:153
+#: src/gui/dialogs/multiplayer/player_info.cpp:151
 msgid "Neither a friend nor ignored"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:158
+#: src/gui/dialogs/multiplayer/player_info.cpp:156
 #, fuzzy
 msgid "You"
 msgstr "Jove"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:161
+#: src/gui/dialogs/multiplayer/player_info.cpp:159
 msgid "Error"
 msgstr "Erro"
 
-#: src/gui/dialogs/unit_list.hpp:41
+#: src/gui/dialogs/unit_attack.cpp:158 src/gui/dialogs/unit_attack.cpp:173
+#, fuzzy
+#| msgid "Observe Game"
+msgid "Other aspects: "
+msgstr "Observar joc"
+
+#: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
+#: src/reports.cpp:818 src/reports.cpp:1090 src/reports.cpp:1102
+#, fuzzy
+msgid "Weapon: "
+msgstr "alcanç de l'arma: "
+
+#: src/gui/dialogs/unit_attack.cpp:186 src/gui/dialogs/unit_attack.cpp:199
+#: src/reports.cpp:191
+#, fuzzy
+msgid "Type: "
+msgstr "Tipo"
+
+#: src/gui/dialogs/unit_attack.cpp:187 src/gui/dialogs/unit_attack.cpp:200
+#: src/reports.cpp:819 src/reports.cpp:1091
+#, fuzzy
+msgid "Damage: "
+msgstr "Dany"
+
+#: src/gui/dialogs/unit_attack.cpp:188 src/gui/dialogs/unit_attack.cpp:201
+#: src/reports.cpp:840
+#, fuzzy
+msgid "Attacks: "
+msgstr "atacs"
+
+#: src/gui/dialogs/unit_attack.cpp:189 src/gui/dialogs/unit_attack.cpp:202
+#, fuzzy
+#| msgid "Advances to: "
+msgid "Chance to hit: "
+msgstr "Alvança a: "
+
+#: src/gui/dialogs/unit_list.hpp:40
 #, fuzzy
 #| msgid "No eras found."
 msgid "No units found."
@@ -6800,241 +6953,256 @@ msgstr "no"
 msgid "yes"
 msgstr "sí"
 
-#: src/help/help_browser.cpp:158
+#: src/help/help_browser.cpp:155
 msgid "Reference to unknown topic: "
 msgstr "Referència a un tema desconegut: "
 
-#: src/help/help_impl.cpp:406
+#: src/help/help_impl.cpp:407
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:407 src/help/help_impl.cpp:443
+#: src/help/help_impl.cpp:408 src/help/help_impl.cpp:444
 #, fuzzy
 msgid "Time of Day Schedule"
 msgstr "Hora del dia"
 
-#: src/help/help_impl.cpp:434
+#: src/help/help_impl.cpp:435
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Unitats llegals: "
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:436
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Unitats neutrals: "
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:437
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Unitats caòtiques: "
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:438
 #, fuzzy
 msgid "Liminal Bonus:"
 msgstr "Unitats llegals: "
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:439
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:530
+#: src/help/help_impl.cpp:531
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Unitats ab est atac especial'</header>"
 
-#: src/help/help_impl.cpp:594
+#: src/help/help_impl.cpp:595
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Unitats ab esta habilitat'</header>"
 
-#: src/help/help_impl.cpp:624
+#: src/help/help_impl.cpp:625
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help/help_impl.cpp:632
+#: src/help/help_impl.cpp:633
 #, fuzzy
 msgid "Factions"
 msgstr "Facció"
 
-#: src/help/help_impl.cpp:680
+#: src/help/help_impl.cpp:681
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Raça:"
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1053
+#: src/help/help_impl.cpp:690 src/help/help_impl.cpp:1138
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Alineació: "
 
-#: src/help/help_impl.cpp:696
+#: src/help/help_impl.cpp:697
 #, fuzzy
 msgid "Leaders"
 msgstr "Líder: "
 
-#: src/help/help_impl.cpp:705
+#: src/help/help_impl.cpp:706
 msgid "Recruits"
 msgstr "Reclutes"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:791 src/units/types.cpp:487
 #, fuzzy
 msgid "No description available."
 msgstr "No hi ha objectius"
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-#, fuzzy
-msgid "Availability: "
-msgstr "Habilitats: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr ""
-
-#: src/help/help_impl.cpp:773
-#, fuzzy
-#| msgid "Era not available"
-msgid "Unavailable"
-msgstr "Era no disponible"
-
-#: src/help/help_impl.cpp:853 src/help/help_impl.cpp:1030
+#: src/help/help_impl.cpp:901 src/help/help_impl.cpp:1115
 msgid "race^Miscellaneous"
 msgstr "Miscelànea"
 
-#: src/help/help_impl.cpp:1053 src/reports.cpp:385
+#: src/help/help_impl.cpp:1138 src/reports.cpp:389
 msgid "Alignment: "
 msgstr "Alineació: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1072
+#: src/help/help_impl.cpp:1157
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1077
+#: src/help/help_impl.cpp:1162
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unitats ab esta habilitat'</header>"
 
-#: src/help/help_impl.cpp:1079
+#: src/help/help_impl.cpp:1164
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:1173
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1090
+#: src/help/help_impl.cpp:1175
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1411
+#: src/help/help_impl.cpp:1525
 msgid "corrupted original file"
 msgstr "archiu original corromput"
 
-#: src/hotkey/command_executor.cpp:398
+#: src/hotkey/command_executor.cpp:402
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "¿Estàs segur de que vols suprimir esta partida?"
 
-#: src/hotkey/command_executor.cpp:398
+#: src/hotkey/command_executor.cpp:402
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:811
+#: src/hotkey/command_executor.cpp:804
 #, fuzzy
 #| msgid "Screenshot"
 msgid "Map-Screenshot"
 msgstr "captura"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:232
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "(pulsa $hotkey per a seguir movent-se)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:232
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:236
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:426
-#, fuzzy
-#| msgid "Back to turn "
-msgid "Back to Turn "
-msgstr "Tornar a la tanda"
-
-#: src/hotkey/hotkey_handler.cpp:432
+#: src/hotkey/hotkey_handler.cpp:436
 #, fuzzy
 #| msgid "Back to start"
 msgid "Back to Start"
 msgstr "Tornar a començar"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146
+#: src/hotkey/hotkey_handler.cpp:436
+#, fuzzy
+#| msgid "Back to turn "
+msgid "Back to Turn "
+msgstr "Tornar a la tanda"
+
+#: src/hotkey/hotkey_handler.cpp:452
+#, fuzzy
+#| msgid "Back to start"
+msgid "Replay from Start"
+msgstr "Tornar a començar"
+
+#: src/hotkey/hotkey_handler.cpp:452
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "jugar tanda"
+
+#: src/hotkey/hotkey_handler_sp.cpp:155
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(pulsa $hotkey per a seguir movent-se)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2100
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2092
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "¡Modo de depuració activat!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2103
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2095
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "¡Modo de depuració desactivat!"
 
-#: src/language.cpp:115
+#: src/hotkey/hotkey_handler_sp.cpp:326
+#, fuzzy
+#| msgid "Do you still want to download it?"
+msgid "Do you want to load it anyway?"
+msgstr "¿Encara vols descarregar-ho?"
+
+#: src/hotkey/hotkey_handler_sp.cpp:342
+#, fuzzy
+#| msgid "The file you have tried to load is corrupt"
+msgid "The file you have tried to load has no replay information. "
+msgstr "L'archiu que ha intentat carregar està danyat."
+
+#: src/hotkey/hotkey_handler_sp.cpp:346
+#, fuzzy
+#| msgid "The file you have tried to load is corrupt"
+msgid "The file you have tried to load is not from the current session."
+msgstr "L'archiu que ha intentat carregar està danyat."
+
+#: src/language.cpp:114
 msgid "System default language"
 msgstr "Idioma predeterminat del sistema"
 
-#: src/map/location.cpp:166
+#: src/map/location.cpp:165
 #, fuzzy
 #| msgid "Northerners"
 msgid "North"
 msgstr "Norteny"
 
-#: src/map/location.cpp:168
+#: src/map/location.cpp:167
 #, fuzzy
 #| msgid "Northerners"
 msgid "North East"
 msgstr "Norteny"
 
-#: src/map/location.cpp:170
+#: src/map/location.cpp:169
 #, fuzzy
 #| msgid "Northerners"
 msgid "North West"
 msgstr "Norteny"
 
-#: src/map/location.cpp:172
+#: src/map/location.cpp:171
 msgid "South"
 msgstr ""
 
-#: src/map/location.cpp:174
+#: src/map/location.cpp:173
 #, fuzzy
 #| msgid "teamname^South-East"
 msgid "South East"
 msgstr "Equip surest"
 
-#: src/map/location.cpp:176
+#: src/map/location.cpp:175
 #, fuzzy
 #| msgid "teamname^South-West"
 msgid "South West"
@@ -7116,36 +7284,36 @@ msgid_plural "Aliases:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/menu_events.cpp:165
+#: src/menu_events.cpp:157
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Guardar el mapa com"
 
-#: src/menu_events.cpp:176
+#: src/menu_events.cpp:168
 msgid "Map saved."
 msgstr "Mapa guardat."
 
-#: src/menu_events.cpp:180
+#: src/menu_events.cpp:172
 msgid "Could not save the map: $msg"
 msgstr "No s'ha pogut guardar el mapa: $msg"
 
-#: src/menu_events.cpp:208
+#: src/menu_events.cpp:200
 msgid "Message:"
 msgstr "Mensage: "
 
-#: src/menu_events.cpp:210
+#: src/menu_events.cpp:202
 msgid "Send to observers only"
 msgstr "Enviar només als observadors"
 
-#: src/menu_events.cpp:211
+#: src/menu_events.cpp:203
 msgid "Send to allies only"
 msgstr "Enviar només als aliats"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:267
+#: src/menu_events.cpp:259
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7153,26 +7321,26 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/menu_events.cpp:275
+#: src/menu_events.cpp:267
 msgid "You have no units available to recruit."
 msgstr "No tens unitats disponibles per a reclutar."
 
-#: src/menu_events.cpp:285
+#: src/menu_events.cpp:277
 #, fuzzy
 #| msgid "No eras found."
 msgid "No unit recruited."
 msgstr "No s'han trobat eres"
 
-#: src/menu_events.cpp:310
+#: src/menu_events.cpp:302
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
 
-#: src/menu_events.cpp:316
+#: src/menu_events.cpp:308
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr ""
 
 #. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:330
+#: src/menu_events.cpp:322
 #, fuzzy
 #| msgid "You do not have enough gold to recruit that unit"
 msgid ""
@@ -7180,19 +7348,19 @@ msgid ""
 "unit."
 msgstr "No tens suficient diners per a reclutar esta unitat."
 
-#: src/menu_events.cpp:332
+#: src/menu_events.cpp:324
 #, fuzzy
 #| msgid "You do not have enough gold to recruit that unit"
 msgid "You do not have enough gold to recruit this unit."
 msgstr "No tens suficient diners per a reclutar esta unitat."
 
-#: src/menu_events.cpp:375
+#: src/menu_events.cpp:367
 #, fuzzy
 #| msgid "You are separated from your soldiers and may not recall them"
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Estàs llunt dels teus soldats i no pots reincorporar-los."
 
-#: src/menu_events.cpp:396
+#: src/menu_events.cpp:388
 #, fuzzy
 #| msgid ""
 #| "There are no troops available to recall\n"
@@ -7204,17 +7372,17 @@ msgstr ""
 "No hi ha tropes disponibles per a reincorporar.\n"
 "(Has de tindre supervivents veterans d'escenaris anteriors.)"
 
-#: src/menu_events.cpp:400
+#: src/menu_events.cpp:392
 msgid "You currently can't recall at the highlighted location."
 msgstr ""
 
-#: src/menu_events.cpp:412
+#: src/menu_events.cpp:404
 #, fuzzy
 #| msgid "No eras found."
 msgid "No unit recalled."
 msgstr "No s'han trobat eres"
 
-#: src/menu_events.cpp:429
+#: src/menu_events.cpp:421
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -7224,24 +7392,24 @@ msgstr[0] "Has de tindre a lo manco 1 peça d'or per a reincorporar una unitat."
 msgstr[1] ""
 "Has de tindre a lo manco $cost peces d'or per a reincorporar una unitat."
 
-#: src/menu_events.cpp:575
+#: src/menu_events.cpp:567
 #, fuzzy
 msgid "You cannot end your turn yet!"
 msgstr "pausa a la fi de la tanda"
 
-#: src/menu_events.cpp:590
+#: src/menu_events.cpp:582
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "No has començat a moure les unitats. ¿Segur que vols finalisar la teua tanda?"
 
-#: src/menu_events.cpp:599
+#: src/menu_events.cpp:591
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunes unitats encara es poden moure. ¿Segur que vols finalisar la teua "
 "tanda?"
 
-#: src/menu_events.cpp:608
+#: src/menu_events.cpp:600
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
@@ -7249,228 +7417,228 @@ msgstr ""
 "Algunes unitats encara es poden moure. ¿Segur que vols finalisar la teua "
 "tanda?"
 
-#: src/menu_events.cpp:665
+#: src/menu_events.cpp:657
 msgid "Rename Unit"
 msgstr "Renomenar unitat"
 
-#: src/menu_events.cpp:666
+#: src/menu_events.cpp:658
 #, fuzzy
 #| msgid "Name: "
 msgid "Name:"
 msgstr "Nom: "
 
-#: src/menu_events.cpp:842
+#: src/menu_events.cpp:834
 #, fuzzy
 #| msgid "Place Label"
 msgid "Clear Labels"
 msgstr "Posar etiqueta"
 
-#: src/menu_events.cpp:843
+#: src/menu_events.cpp:835
 #, fuzzy
 #| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to clear map labels?"
 msgstr "¿Esteu segur que voleu eliminar l'expansió «$addon|»?"
 
-#: src/menu_events.cpp:1045
+#: src/menu_events.cpp:1037
 msgid "Search"
 msgstr "Busca"
 
-#: src/menu_events.cpp:1185
+#: src/menu_events.cpp:1177
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1184
 #, fuzzy
 msgid "(debug command)"
 msgstr "Órdens del modo de depuració"
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1185
 #, fuzzy
 msgid "(network only)"
 msgstr "Jugador en ret"
 
-#: src/menu_events.cpp:1195
+#: src/menu_events.cpp:1187
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1217
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:1226
+#: src/menu_events.cpp:1218
 msgid "Switch a side to/from AI control."
 msgstr ""
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1222
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1223
 msgid "Change terrain type of current hex"
 msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1225
 msgid "<terrain type> [both|base|overlay]"
 msgstr ""
 
-#: src/menu_events.cpp:1234
+#: src/menu_events.cpp:1226
 msgid "Switch a side to/from idle state."
 msgstr ""
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1238
+#: src/menu_events.cpp:1230
 msgid "command_idle^[<side> [on/off]]"
 msgstr ""
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1231
 msgid "Change the in-game theme."
 msgstr ""
 
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1233
 #, fuzzy
 msgid "<side> <nickname>"
 msgstr "Us: control <bando> <renom>"
 
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1233
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1234
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1235
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1237
 msgid "Debug foreground terrain."
 msgstr ""
 
-#: src/menu_events.cpp:1247
+#: src/menu_events.cpp:1239
 msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1240
 msgid "Display and log fps (Frames Per Second)."
 msgstr ""
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1241
 msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1242
 #, fuzzy
 msgid "Save game."
 msgstr "Guardar partida"
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1244
 #, fuzzy
 msgid "Quit game."
 msgstr "Eixir del joc"
 
-#: src/menu_events.cpp:1255
+#: src/menu_events.cpp:1247
 msgid "Save and quit."
 msgstr ""
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1249
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:1258
+#: src/menu_events.cpp:1250
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1252
 msgid "<id>"
 msgstr ""
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1252
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1254
 #, fuzzy
 msgid "Choose next scenario"
 msgstr "Descarregant el següent escenari..."
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1257
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1257
 msgid "[turn]"
 msgstr ""
 
-#: src/menu_events.cpp:1268
+#: src/menu_events.cpp:1260
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:1268
+#: src/menu_events.cpp:1260
 msgid "[limit]"
 msgstr ""
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1262
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "Órdens del modo de depuració"
 
-#: src/menu_events.cpp:1271
+#: src/menu_events.cpp:1263
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:1273 src/menu_events.cpp:1277
+#: src/menu_events.cpp:1265 src/menu_events.cpp:1269
 msgid "<command>[;<command>...]"
 msgstr ""
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1265
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:1275
+#: src/menu_events.cpp:1267
 msgid "Grant higher privileges to Lua scripts."
 msgstr ""
 
-#: src/menu_events.cpp:1276
+#: src/menu_events.cpp:1268
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1271
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1272
 msgid "Launch the gamestate inspector"
 msgstr ""
 
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1274
 msgid "<name>[=<command>]"
 msgstr ""
 
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1274
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:1284 src/menu_events.cpp:1289
+#: src/menu_events.cpp:1276 src/menu_events.cpp:1281
 msgid "<var>=<value>"
 msgstr ""
 
-#: src/menu_events.cpp:1284
+#: src/menu_events.cpp:1276
 #, fuzzy
 msgid "Set a scenario variable."
 msgstr ""
@@ -7478,11 +7646,11 @@ msgstr ""
 "Mostrar una variable d'estat del joc.\n"
 "\n"
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1277
 msgid "<var>"
 msgstr ""
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1277
 #, fuzzy
 msgid "Show a scenario variable."
 msgstr ""
@@ -7491,30 +7659,30 @@ msgstr ""
 "\n"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1288
+#: src/menu_events.cpp:1280
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
 msgstr ""
 
-#: src/menu_events.cpp:1295
+#: src/menu_events.cpp:1287
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1296
+#: src/menu_events.cpp:1288
 msgid "'Undiscover' all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1289
 msgid "<unit type id>"
 msgstr ""
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1289
 #, fuzzy
 msgid "Create a unit."
 msgstr "Crear partida"
 
-#: src/menu_events.cpp:1298
+#: src/menu_events.cpp:1290
 #, fuzzy
 msgid "Toggle fog for the current player."
 msgstr ""
@@ -7522,7 +7690,7 @@ msgstr ""
 "Activa boira/ocultació per al bando actual.\n"
 "\n"
 
-#: src/menu_events.cpp:1299
+#: src/menu_events.cpp:1291
 #, fuzzy
 msgid "Toggle shroud for the current player."
 msgstr ""
@@ -7530,158 +7698,158 @@ msgstr ""
 "Activa boira/ocultació per al bando actual.\n"
 "\n"
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1292
 msgid "<amount>"
 msgstr ""
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1292
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:1301
+#: src/menu_events.cpp:1293
 #, fuzzy
 msgid "<event name>"
 msgstr "Us: control <bando> <renom>"
 
-#: src/menu_events.cpp:1301
+#: src/menu_events.cpp:1293
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:1304
+#: src/menu_events.cpp:1296
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1307
+#: src/menu_events.cpp:1299
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1302
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1304
 msgid "Toggle planning mode."
 msgstr ""
 
-#: src/menu_events.cpp:1315
+#: src/menu_events.cpp:1307
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:1435
+#: src/menu_events.cpp:1427
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "No s'ha trobat cap etiqueta o unitat ab el nom '$search'."
 
-#: src/menu_events.cpp:1482
+#: src/menu_events.cpp:1474
 msgid "Can't droid invalid side: '$side'."
 msgstr "No es pot prendre el control del bando invàlit: '$side'."
 
-#: src/menu_events.cpp:1485
+#: src/menu_events.cpp:1477
 msgid "Can't droid networked side: '$side'."
 msgstr "No es pot prendre el control del bando en ret: '$side'."
 
-#: src/menu_events.cpp:1497 src/menu_events.cpp:1513 src/menu_events.cpp:1545
+#: src/menu_events.cpp:1489 src/menu_events.cpp:1505 src/menu_events.cpp:1537
 msgid ""
 "It is not allowed to change a side from AI to human control when it's not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1507 src/menu_events.cpp:1563
+#: src/menu_events.cpp:1499 src/menu_events.cpp:1555
 msgid "Side '$side' controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1509
+#: src/menu_events.cpp:1501
 msgid "Side '$side' is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1523 src/menu_events.cpp:1555
+#: src/menu_events.cpp:1515 src/menu_events.cpp:1547
 msgid "Side '$side' controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1525
+#: src/menu_events.cpp:1517
 msgid "Side '$side' is already not droided."
 msgstr ""
 
-#: src/menu_events.cpp:1529
+#: src/menu_events.cpp:1521
 msgid ""
 "It is not allowed to change a side from human to AI control when it's not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1539
+#: src/menu_events.cpp:1531
 msgid "Side '$side' controller is now fully controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1541
+#: src/menu_events.cpp:1533
 msgid "Side '$side' is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1566
+#: src/menu_events.cpp:1558
 msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1608
+#: src/menu_events.cpp:1600
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "No es pot prendre el control del bando invàlit: '$side'."
 
-#: src/menu_events.cpp:1613
+#: src/menu_events.cpp:1605
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "No es pot prendre el control del bando en ret: '$side'."
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1610
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "No es pot prendre el control del bando invàlit: '$side'."
 
-#: src/menu_events.cpp:1679
+#: src/menu_events.cpp:1671
 msgid "Can't change control of invalid side: '$side'."
 msgstr "No es pot canviar el control del bando invàlit: '$side'."
 
-#: src/menu_events.cpp:1689
+#: src/menu_events.cpp:1681
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "No es pot canviar el control al bando fora de llímits: '$side'."
 
-#: src/menu_events.cpp:1706
+#: src/menu_events.cpp:1698
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "No es pot canviar el control del bando invàlit: '$side'."
 
-#: src/menu_events.cpp:1713
+#: src/menu_events.cpp:1705
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "No es pot canviar el control al bando fora de llímits: '$side'."
 
-#: src/menu_events.cpp:1835
+#: src/menu_events.cpp:1827
 #, fuzzy
 msgid "Choose Scenario (Debug!)"
 msgstr "Crear unitat (¡Depuració!)"
 
-#: src/menu_events.cpp:1871
+#: src/menu_events.cpp:1863
 msgid "Debug mode activated!"
 msgstr "¡Modo de depuració activat!"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1866
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1873
 msgid "Debug mode deactivated!"
 msgstr "¡Modo de depuració desactivat!"
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1893
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1902
+#: src/menu_events.cpp:1894
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7690,43 +7858,43 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1907
+#: src/menu_events.cpp:1899
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:1956
+#: src/menu_events.cpp:1948
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:1989
+#: src/menu_events.cpp:1981
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:2007
+#: src/menu_events.cpp:1999
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:2033
+#: src/menu_events.cpp:2025
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:2047
+#: src/menu_events.cpp:2039
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Nom d'etiqueta invàlit"
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:2046
 #, fuzzy
 msgid "Invalid location"
 msgstr "Color no vàlit"
 
-#: src/menu_events.cpp:2127 src/menu_events.cpp:2153
+#: src/menu_events.cpp:2119 src/menu_events.cpp:2145
 msgid "prompt^Command:"
 msgstr "Orde:"
 
-#: src/mouse_events.cpp:1178
+#: src/mouse_events.cpp:1263
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7734,48 +7902,87 @@ msgid ""
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/mouse_events.cpp:1273
+#: src/mouse_events.cpp:1358
+#, fuzzy
+#| msgid "Attacker"
+msgid "No Attacks"
+msgstr "Atacant"
+
+#: src/mouse_events.cpp:1358
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Sens arma utilisable"
 
-#: src/mp_ui_alerts.cpp:88
+#: src/mp_ui_alerts.cpp:46
 msgid "A game ($name|, $scenario|) has been created"
 msgstr ""
 
-#: src/mp_ui_alerts.cpp:89 src/mp_ui_alerts.cpp:104 src/mp_ui_alerts.cpp:119
-#: src/mp_ui_alerts.cpp:194 src/mp_ui_alerts.cpp:205
+#: src/mp_ui_alerts.cpp:47 src/mp_ui_alerts.cpp:62 src/mp_ui_alerts.cpp:77
+#: src/mp_ui_alerts.cpp:152 src/mp_ui_alerts.cpp:163
 #, fuzzy
 msgid "Wesnoth"
 msgstr "Batalla per Wesnoth"
 
-#: src/mp_ui_alerts.cpp:104
+#: src/mp_ui_alerts.cpp:62
 msgid "A player has joined"
 msgstr ""
 
-#: src/mp_ui_alerts.cpp:119
+#: src/mp_ui_alerts.cpp:77
 msgid "A player has left"
 msgstr ""
 
-#: src/mp_ui_alerts.cpp:194
+#: src/mp_ui_alerts.cpp:152
 #, fuzzy
 #| msgid "Back to start"
 msgid "Ready to start!"
 msgstr "Tornar a començar"
 
-#: src/mp_ui_alerts.cpp:205
+#: src/mp_ui_alerts.cpp:163
 msgid "Game has begun!"
 msgstr ""
 
-#: src/mp_ui_alerts.cpp:214
+#: src/mp_ui_alerts.cpp:172
 msgid "$name has taken control"
 msgstr ""
 
-#: src/mp_ui_alerts.cpp:214
+#: src/mp_ui_alerts.cpp:172
 #, fuzzy
 msgid "Turn changed"
 msgstr "distància"
+
+#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
+#: src/network_download_file.cpp:91
+#, fuzzy
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr "Erro de comunicació ab el servidor."
+
+#: src/network_download_file.cpp:68 src/network_download_file.cpp:83
+#: src/network_download_file.cpp:91
+#, fuzzy
+msgid "Download error"
+msgstr "Descàrregues "
+
+#: src/network_download_file.cpp:72
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:72
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:85
+#, fuzzy
+msgid "Download complete"
+msgstr "Descàrregues "
+
+#: src/network_download_file.cpp:85
+#, fuzzy
+#| msgid "The game has been saved"
+msgid "The file has been downloaded."
+msgstr "La partida ha segut guardada."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -7784,19 +7991,23 @@ msgstr "S'ha trobat un terreny ab un cost de moviment menor que 1."
 #. TRANSLATORS:  In networked games, this text is shown for other
 #. clients, while they wait to receive the content of a global variable
 #. from another player. This text will be embedded into a sentence.
-#: src/persist_var.cpp:59
+#: src/persist_var.cpp:58
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:254
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:256
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:558
+msgid "Trying to create a corrupt file, please report this bug"
+msgstr ""
+
+#: src/play_controller.cpp:1021
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7805,18 +8016,18 @@ msgstr ""
 "La partida no està sincronisada i haurà de finalisar. ¿Vols guardar un "
 "registre d'erros de la partida?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1022
 #, fuzzy
 msgid "Error details:"
 msgstr "Erro"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1208
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1214
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7825,7 +8036,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1221
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7835,44 +8046,19 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1225
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1304
 msgid "No objectives available"
 msgstr "No hi ha objectius"
 
-#: src/playmp_controller.cpp:162
+#: src/playmp_controller.cpp:138
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:377
-#, fuzzy
-msgid ""
-"A network disconnection has occurred, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-"S'ha produït una desconexió de la ret i la partida no pot continuar. ¿Vols "
-"guardar la partida?"
-
-#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
-msgid ""
-"\n"
-"Do you want to save the game?"
-msgstr "¿Estàs segur de que vols suprimir esta partida?"
-
-#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
-#, fuzzy
-#| msgid "The game has been saved"
-msgid ""
-"This game has been ended.\n"
-"Reason: "
-msgstr "La partida ha segut guardada."
-
-#: src/playmp_controller.cpp:389
+#: src/playmp_controller.cpp:245
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7889,69 +8075,94 @@ msgstr ""
 "\n"
 "¿Vols guardar un registre d'erros de la teua partida?"
 
-#: src/playmp_controller.cpp:433
+#: src/playmp_controller.cpp:276
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:159
-#, fuzzy
-#| msgid "Error"
-msgid "Game Error"
-msgstr "Erro"
-
-#: src/playsingle_controller.cpp:160
-msgid ""
-"This multiplayer game uses an alternative random mode, if you don't know "
-"what this message means, then most likely someone is cheating or someone "
-"reloaded a corrupt game."
-msgstr ""
-
-#: src/playsingle_controller.cpp:332
-msgid "The game is over."
-msgstr "La partida ha acabat."
-
-#: src/playsingle_controller.cpp:480
-msgid "It is now $name|’s turn"
-msgstr "És la tanda de $name|."
-
-#: src/playturn.cpp:276
+#: src/playmp_controller.cpp:546
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playturn.cpp:285
+#: src/playmp_controller.cpp:555
 #, fuzzy
 #| msgid "Send to observers only"
 msgid "Give control to observer $player"
 msgstr "Enviar només als observadors"
 
-#: src/playturn.cpp:290
+#: src/playmp_controller.cpp:560
 msgid "Replace with AI"
 msgstr "Reemplaçar ab IA"
 
-#: src/playturn.cpp:291
+#: src/playmp_controller.cpp:561
 msgid "Replace with local player"
 msgstr "Reemplaçar ab jugador local"
 
-#: src/playturn.cpp:292
+#: src/playmp_controller.cpp:562
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:293
+#: src/playmp_controller.cpp:563
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Acabar la partida"
 
-#: src/playturn.cpp:297
+#: src/playmp_controller.cpp:567
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
 msgstr "$player ha deixat la partida. ¿Qué vols fer?"
+
+#: src/playsingle_controller.cpp:182
+#, fuzzy
+#| msgid "Error"
+msgid "Game Error"
+msgstr "Erro"
+
+#: src/playsingle_controller.cpp:183
+msgid ""
+"This multiplayer game uses an alternative random mode, if you don't know "
+"what this message means, then most likely someone is cheating or someone "
+"reloaded a corrupt game."
+msgstr ""
+
+#: src/playsingle_controller.cpp:384
+msgid "The game is over."
+msgstr "La partida ha acabat."
+
+#: src/playsingle_controller.cpp:463
+#, fuzzy
+msgid ""
+"A network disconnection has occurred, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr ""
+"S'ha produït una desconexió de la ret i la partida no pot continuar. ¿Vols "
+"guardar la partida?"
+
+#: src/playsingle_controller.cpp:467
+#, fuzzy
+#| msgid "Do you really want to delete this game?"
+msgid ""
+"\n"
+"Do you want to save the game?"
+msgstr "¿Estàs segur de que vols suprimir esta partida?"
+
+#: src/playsingle_controller.cpp:467
+#, fuzzy
+#| msgid "The game has been saved"
+msgid ""
+"This game has been ended.\n"
+"Reason: "
+msgstr "La partida ha segut guardada."
+
+#: src/playsingle_controller.cpp:558
+msgid "It is now $name|’s turn"
+msgstr "És la tanda de $name|."
 
 #: src/quit_confirmation.cpp:55
 msgid "Quit"
@@ -7963,16 +8174,11 @@ msgstr "Eixir"
 msgid "Do you really want to quit?"
 msgstr "¿Estàs segur de que vols despedir-ho?"
 
-#: src/reports.cpp:174 src/savegame.cpp:430
+#: src/reports.cpp:170 src/savegame.cpp:423
 msgid "Name: "
 msgstr "Nom: "
 
-#: src/reports.cpp:195
-#, fuzzy
-msgid "Type: "
-msgstr "Tipo"
-
-#: src/reports.cpp:198
+#: src/reports.cpp:194
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -7984,33 +8190,33 @@ msgstr ""
 "\n"
 "Notes especials:"
 
-#: src/reports.cpp:221
+#: src/reports.cpp:217
 msgid "Race: "
 msgstr "Raça:"
 
-#: src/reports.cpp:240
+#: src/reports.cpp:236
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr ""
 
-#: src/reports.cpp:318
+#: src/reports.cpp:314
 #, fuzzy
 msgid "Trait: "
 msgstr "Traces"
 
-#: src/reports.cpp:341
+#: src/reports.cpp:337
 msgid "invisible: "
 msgstr "invisible: "
 
-#: src/reports.cpp:342
+#: src/reports.cpp:338
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Esta unitat és invisible. No pot ser vista ni atacada per unitats enemigues."
 
-#: src/reports.cpp:345
+#: src/reports.cpp:341
 msgid "slowed: "
 msgstr "retardat"
 
-#: src/reports.cpp:346
+#: src/reports.cpp:342
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -8019,11 +8225,11 @@ msgstr ""
 "Esta unitat ha segut retardada. Només farà la mitat del dany normal quan "
 "ataque."
 
-#: src/reports.cpp:349
+#: src/reports.cpp:345
 msgid "poisoned: "
 msgstr "enverinat: "
 
-#: src/reports.cpp:350
+#: src/reports.cpp:346
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -8039,176 +8245,187 @@ msgstr ""
 "Les unitats no poden morir només a causa del verí, que només reduirà els "
 "punts de vida fins a 1."
 
-#: src/reports.cpp:353
+#: src/reports.cpp:349
 msgid "petrified: "
 msgstr ""
 
-#: src/reports.cpp:354
+#: src/reports.cpp:350
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Esta unitat ha segut convertida en pedra. No es pot moure ni atacar."
 
-#: src/reports.cpp:432
+#: src/reports.cpp:353
+#, fuzzy
+#| msgid "Era not available"
+msgid "unhealable: "
+msgstr "Era no disponible"
+
+#: src/reports.cpp:354
+msgid ""
+"This unit is unhealable. It cannot be healed by healers or villages and "
+"doesn’t benefit from resting."
+msgstr ""
+
+#: src/reports.cpp:357
+#, fuzzy
+#| msgid "invisible: "
+msgid "invulnerable: "
+msgstr "invisible: "
+
+#: src/reports.cpp:358
+#, fuzzy
+#| msgid ""
+#| "This unit is invisible. It cannot be seen or attacked by enemy units."
+msgid "This unit is invulnerable. It cannot be harmed by any attack."
+msgstr ""
+"Esta unitat és invisible. No pot ser vista ni atacada per unitats enemigues."
+
+#: src/reports.cpp:436
 #, fuzzy
 msgid "Ability: "
 msgstr "Habilitats: "
 
-#: src/reports.cpp:434 src/reports.cpp:979
+#: src/reports.cpp:438 src/reports.cpp:1001
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:502
+#: src/reports.cpp:506
 msgid "Resistances: "
 msgstr "Resistències:"
 
-#: src/reports.cpp:504
+#: src/reports.cpp:508
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:535
+#: src/reports.cpp:539
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modificador d'experiència: "
 
-#: src/reports.cpp:585
+#: src/reports.cpp:589
 #, fuzzy
 msgid "Terrain: "
 msgstr "Terreny"
 
-#: src/reports.cpp:602
+#: src/reports.cpp:606
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:602
+#: src/reports.cpp:606
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:607
+#: src/reports.cpp:611
 #, fuzzy
 msgid "Defense: "
 msgstr "Defensa"
 
-#: src/reports.cpp:642 src/reports.cpp:643
+#: src/reports.cpp:646 src/reports.cpp:647
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "Versió:"
 
-#: src/reports.cpp:647 src/reports.cpp:648
+#: src/reports.cpp:651 src/reports.cpp:652
 #, fuzzy
 msgid "jamming:"
 msgstr "Matí"
 
-#: src/reports.cpp:677
+#: src/reports.cpp:681
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Cost de moviment"
 
-#: src/reports.cpp:814 src/reports.cpp:1068 src/reports.cpp:1080
-#, fuzzy
-msgid "Weapon: "
-msgstr "alcanç de l'arma: "
-
-#: src/reports.cpp:815 src/reports.cpp:1069
-#, fuzzy
-msgid "Damage: "
-msgstr "Dany"
-
-#: src/reports.cpp:819
+#: src/reports.cpp:823
 #, fuzzy
 msgid "Base damage: "
 msgstr "Dany total"
 
-#: src/reports.cpp:821 src/reports.cpp:855 src/reports.cpp:865
+#: src/reports.cpp:825 src/reports.cpp:859 src/reports.cpp:869
 #, fuzzy
 msgid "With specials: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:824
+#: src/reports.cpp:828
 #, fuzzy
 msgid "Time of day: "
 msgstr "Hora del dia"
 
-#: src/reports.cpp:828
+#: src/reports.cpp:832
 #, fuzzy
 msgid "Leadership: "
 msgstr "Liderage"
 
-#: src/reports.cpp:832
+#: src/reports.cpp:836
 #, fuzzy
 msgid "Slowed: "
 msgstr "retardat"
 
-#: src/reports.cpp:836
-#, fuzzy
-msgid "Attacks: "
-msgstr "atacs"
-
-#: src/reports.cpp:840
+#: src/reports.cpp:844
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Bonificació PV màxim +"
 
-#: src/reports.cpp:841 src/reports.cpp:860
+#: src/reports.cpp:845 src/reports.cpp:864
 #, fuzzy
 msgid "Swarm: "
 msgstr "eixam"
 
-#: src/reports.cpp:842 src/reports.cpp:853 src/reports.cpp:864
+#: src/reports.cpp:846 src/reports.cpp:857 src/reports.cpp:868
 #, fuzzy
 msgid "Base attacks: "
 msgstr "atacs"
 
-#: src/reports.cpp:848
+#: src/reports.cpp:852
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Especial"
 
-#: src/reports.cpp:858
+#: src/reports.cpp:862
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:885
+#: src/reports.cpp:902
 #, fuzzy
 msgid "Weapon range: "
 msgstr "alcanç de l'arma: "
 
-#: src/reports.cpp:886
+#: src/reports.cpp:903
 #, fuzzy
 msgid "Damage type: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:887
+#: src/reports.cpp:904
 #, fuzzy
 msgid "Damage versus: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:946
+#: src/reports.cpp:968
 msgid "Accuracy:"
 msgstr ""
 
-#: src/reports.cpp:951
+#: src/reports.cpp:973
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:977
+#: src/reports.cpp:999
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:1052
+#: src/reports.cpp:1074
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1081
+#: src/reports.cpp:1103
 msgid "Total damage"
 msgstr "Dany total"
 
-#: src/reports.cpp:1145
+#: src/reports.cpp:1167
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8217,83 +8434,83 @@ msgstr[0] "Atacant"
 msgstr[1] "Atacant"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1153
+#: src/reports.cpp:1175
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1157
+#: src/reports.cpp:1179
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Est archiu no correspon a una partida multijugador."
 
-#: src/reports.cpp:1249
+#: src/reports.cpp:1271
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "Hora del dia"
 
-#: src/reports.cpp:1298
+#: src/reports.cpp:1320
 #, fuzzy
 msgid "Time of day:"
 msgstr "Hora del dia"
 
-#: src/reports.cpp:1299 src/reports.cpp:1353
+#: src/reports.cpp:1321 src/reports.cpp:1375
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1301 src/reports.cpp:1355
+#: src/reports.cpp:1323 src/reports.cpp:1377
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:1302 src/reports.cpp:1356
+#: src/reports.cpp:1324 src/reports.cpp:1378
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:1304 src/reports.cpp:1358
+#: src/reports.cpp:1326 src/reports.cpp:1380
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1417
+#: src/reports.cpp:1439
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Tanda"
 
-#: src/reports.cpp:1419
+#: src/reports.cpp:1441
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1444
+#: src/reports.cpp:1466
 msgid "Gold"
 msgstr "Or"
 
-#: src/reports.cpp:1444
+#: src/reports.cpp:1466
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1463
+#: src/reports.cpp:1485
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1463
+#: src/reports.cpp:1485
 msgid "Villages"
 msgstr "Aldees"
 
-#: src/reports.cpp:1468
+#: src/reports.cpp:1490
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1468
+#: src/reports.cpp:1490
 msgid "Units"
 msgstr "Unitats"
 
-#: src/reports.cpp:1478
+#: src/reports.cpp:1500
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8302,73 +8519,73 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1478
+#: src/reports.cpp:1500
 msgid "Upkeep"
 msgstr "Manteniment"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1537
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Beneficis"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1537
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1683
+#: src/reports.cpp:1737
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/reports.cpp:1725
+#: src/reports.cpp:1757
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1736
+#: src/reports.cpp:1768
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1767
+#: src/reports.cpp:1799
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1767
+#: src/reports.cpp:1799
 msgid "Turn Countdown"
 msgstr ""
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
-#: src/save_index.cpp:257
+#: src/save_index.cpp:255
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
-#: src/save_index.cpp:259
+#: src/save_index.cpp:257
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:279 src/savegame.cpp:588
+#: src/save_index.cpp:277 src/savegame.cpp:578
 msgid "replay"
 msgstr "repetició"
 
-#: src/save_index.cpp:363 src/savegame.cpp:71 src/savegame.cpp:624
-#: src/savegame.cpp:626
+#: src/save_index.cpp:361 src/savegame.cpp:64 src/savegame.cpp:614
+#: src/savegame.cpp:616
 msgid "Auto-Save"
 msgstr "Partida guardada automàticament"
 
-#: src/savegame.cpp:205 src/savegame.cpp:207
+#: src/savegame.cpp:198 src/savegame.cpp:200
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Avís: l'archiu que has intentat carregar està danyat. S'intentarà carregar "
 "de totes maneres.\n"
 
-#: src/savegame.cpp:251
+#: src/savegame.cpp:244
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -8376,7 +8593,7 @@ msgid ""
 "be loaded."
 msgstr "Esta partida és d'una versió massa antiga com per a carregar-se."
 
-#: src/savegame.cpp:260
+#: src/savegame.cpp:253
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -8394,34 +8611,34 @@ msgid ""
 "Do you wish to continue?"
 msgstr ""
 
-#: src/savegame.cpp:274 src/savegame.cpp:320
+#: src/savegame.cpp:267 src/savegame.cpp:313
 msgid "Load Game"
 msgstr "Carrega una partida"
 
-#: src/savegame.cpp:320
+#: src/savegame.cpp:313
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
-#: src/savegame.cpp:327
+#: src/savegame.cpp:320
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Est archiu no correspon a una partida multijugador."
 
-#: src/savegame.cpp:361
+#: src/savegame.cpp:354
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "No s'ha pogut guardar la partida."
 
-#: src/savegame.cpp:430
+#: src/savegame.cpp:423
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Ya existix una partida ab este nom. ¿Vols sobreescriure-la?"
 
-#: src/savegame.cpp:431
+#: src/savegame.cpp:424
 msgid "Overwrite?"
 msgstr "¿Vols sobreescriure?"
 
-#: src/savegame.cpp:438
+#: src/savegame.cpp:431
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -8430,42 +8647,42 @@ msgstr ""
 "Els noms de les partides guardades no poden acabar en «.gz». Per favor, tria "
 "un atre nom."
 
-#: src/savegame.cpp:443
+#: src/savegame.cpp:436
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
 
-#: src/savegame.cpp:490
+#: src/savegame.cpp:483
 msgid "Saved"
 msgstr "Partida guardada"
 
-#: src/savegame.cpp:490
+#: src/savegame.cpp:483
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "La partida ha segut guardada."
 
-#: src/savegame.cpp:522 src/savegame.cpp:542
+#: src/savegame.cpp:515 src/savegame.cpp:532
 msgid "Could not write to file"
 msgstr "No ha segut possible escriure en l'archiu."
 
-#: src/savegame.cpp:577
+#: src/savegame.cpp:567
 msgid "Save Replay"
 msgstr "Guardar Repetició"
 
-#: src/savegame.cpp:606
+#: src/savegame.cpp:596
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "No ha segut possible guardar la partida automàticament. Per favor, guarda-la "
 "manualment."
 
-#: src/savegame.cpp:656
+#: src/savegame.cpp:646
 msgid "Save Game"
 msgstr "Guardar partida"
 
-#: src/savegame.cpp:670
+#: src/savegame.cpp:660
 msgid "Game state is corrupted"
 msgstr ""
 
@@ -8544,77 +8761,77 @@ msgstr ""
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:551
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_milli^m"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:552
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_micro^µ"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:553
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_nano^n"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:554
+#: src/serialization/string_utils.cpp:560
 msgid "prefix_pico^p"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:555
+#: src/serialization/string_utils.cpp:561
 msgid "prefix_femto^f"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:556
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_atto^a"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:557
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_zepto^z"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:558
+#: src/serialization/string_utils.cpp:564
 msgid "prefix_yocto^y"
 msgstr ""
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_kibi^K"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_kilo^k"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_mega^M"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_giga^G"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:582
 msgid "prefix_tera^T"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:583
 msgid "prefix_peta^P"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:584
 msgid "prefix_exa^E"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:585
 msgid "prefix_zetta^Z"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:586
 msgid "prefix_yotta^Y"
 msgstr ""
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:601
 msgid "infix_binary^i"
 msgstr ""
 
@@ -8652,11 +8869,11 @@ msgstr "¿Vols guardar la repetició d'est escenari?"
 msgid "Debug Command Used"
 msgstr "Órdens del modo de depuració"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:341
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] ""
@@ -8671,27 +8888,27 @@ msgstr ""
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1003
+#: src/team.cpp:1005
 msgid "“$color_id”"
 msgstr ""
 
-#: src/terrain/terrain.cpp:193
+#: src/terrain/terrain.cpp:191
 msgid "Allied village"
 msgstr "Aldea aliada"
 
-#: src/terrain/terrain.cpp:198
+#: src/terrain/terrain.cpp:196
 msgid "Enemy village"
 msgstr "Aldea enemiga"
 
-#: src/terrain/terrain.cpp:203
+#: src/terrain/terrain.cpp:201
 msgid "Owned village"
 msgstr "Aldea pròpia"
 
-#: src/theme.cpp:315
+#: src/theme.cpp:314
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size deuria estar entre 0.0 i 0.5."
 
-#: src/theme.cpp:566 src/theme.cpp:571
+#: src/theme.cpp:565 src/theme.cpp:570
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8705,8 +8922,28 @@ msgstr "Hora del dia"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
+#: src/units/abilities.cpp:965
+#, fuzzy
+#| msgid "slowed: "
+msgid "Owned: "
+msgstr "retardat"
+
+#. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+#: src/units/abilities.cpp:969
+msgid "Taught: "
+msgstr ""
+
+#. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+#: src/units/abilities.cpp:973
+msgid "Taught: (by an enemy): "
+msgstr ""
+
+#: src/units/abilities.cpp:986
+msgid "Used by opponent: "
+msgstr ""
+
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:444
+#: src/units/attack_type.cpp:472
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8714,7 +8951,7 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/attack_type.cpp:453
+#: src/units/attack_type.cpp:481
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8724,7 +8961,7 @@ msgstr[0] "dany"
 msgstr[1] "danys"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:462
+#: src/units/attack_type.cpp:490
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -8733,7 +8970,7 @@ msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:471
+#: src/units/attack_type.cpp:499
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -8743,7 +8980,7 @@ msgstr[0] "colp"
 msgstr[1] "colps"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:480
+#: src/units/attack_type.cpp:508
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8751,14 +8988,14 @@ msgid "$number| accuracy"
 msgstr "dany"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:487
+#: src/units/attack_type.cpp:515
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "per tanda"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:494
+#: src/units/attack_type.cpp:522
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8766,14 +9003,14 @@ msgid "$number parry"
 msgstr "dany"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:501
+#: src/units/attack_type.cpp:529
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "per tanda"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:536
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "$number movement point"
@@ -8782,7 +9019,7 @@ msgstr[0] "Cost de moviment"
 msgstr[1] "Cost de moviment"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:517
+#: src/units/attack_type.cpp:545
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -8790,71 +9027,90 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/helper.cpp:59
+#. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:554
+#, fuzzy
+#| msgid "damage"
+#| msgid_plural "damage"
+msgid "$number attack used"
+msgid_plural "$number attacks used"
+msgstr[0] "dany"
+msgstr[1] "danys"
+
+#. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:563
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> attack used"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
+msgstr[0] "per tanda"
+msgstr[1] "per tanda"
+
+#: src/units/helper.cpp:57
 #, fuzzy
 msgid "Level: "
 msgstr "Nivell"
 
-#: src/units/helper.cpp:62
+#: src/units/helper.cpp:60
 #, fuzzy
 #| msgid "Advancements"
 msgid "Advancements:"
 msgstr "Alvanços"
 
-#: src/units/helper.cpp:75
+#: src/units/helper.cpp:73
 #, fuzzy
 msgid "No advancement"
 msgstr "Alvanços"
 
-#: src/units/types.cpp:841
-msgid "chaotic"
-msgstr "caòtic"
-
-#: src/units/types.cpp:841
-#, fuzzy
-msgid "lawful"
-msgstr "lleal"
-
-#: src/units/types.cpp:841
-#, fuzzy
-msgid "liminal"
-msgstr "lleal"
-
-#: src/units/types.cpp:841
-msgid "neutral"
-msgstr "neutral"
-
-#: src/units/types.cpp:842
-#, fuzzy
-msgid "female^chaotic"
-msgstr "mecànica"
-
-#: src/units/types.cpp:842
+#: src/units/types.cpp:845 src/units/types.cpp:853
 #, fuzzy
 msgid "female^lawful"
 msgstr "lleal"
 
-#: src/units/types.cpp:842
-#, fuzzy
-msgid "female^liminal"
-msgstr "lleal"
-
-#: src/units/types.cpp:842
+#: src/units/types.cpp:847
 #, fuzzy
 msgid "female^neutral"
 msgstr "no morta"
 
-#: src/units/unit.cpp:1860
+#: src/units/types.cpp:849
+#, fuzzy
+msgid "female^chaotic"
+msgstr "mecànica"
+
+#: src/units/types.cpp:851
+#, fuzzy
+msgid "female^liminal"
+msgstr "lleal"
+
+#: src/units/types.cpp:859 src/units/types.cpp:867
+#, fuzzy
+msgid "lawful"
+msgstr "lleal"
+
+#: src/units/types.cpp:861
+msgid "neutral"
+msgstr "neutral"
+
+#: src/units/types.cpp:863
+msgid "chaotic"
+msgstr "caòtic"
+
+#: src/units/types.cpp:865
+#, fuzzy
+msgid "liminal"
+msgstr "lleal"
+
+#: src/units/unit.cpp:2066
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:2072
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:2082
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8862,25 +9118,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:2088
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:2092
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:2097
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:2101
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8889,65 +9145,97 @@ msgid_plural ""
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:2108
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2564
 msgid "$effect_description per level"
 msgstr "$effect_description per nivell"
 
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
-#: src/utils/irdya_datetime.cpp:62
+#: src/utils/irdya_datetime.cpp:60
 msgid "$year BW"
 msgstr ""
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
-#: src/utils/irdya_datetime.cpp:65
+#: src/utils/irdya_datetime.cpp:63
 msgid "$year YW"
 msgstr ""
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
-#: src/utils/irdya_datetime.cpp:68
+#: src/utils/irdya_datetime.cpp:66
 msgid "$year BF"
 msgstr ""
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
-#: src/utils/irdya_datetime.cpp:71
+#: src/utils/irdya_datetime.cpp:69
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:549
+#: src/wesnoth.cpp:727
+msgid ""
+"Unable to create log files in directory $logdir. This is often caused by "
+"incorrect folder permissions, anti-virus software restricting folder access, "
+"or using OneDrive to manage your My Documents folder."
+msgstr ""
+
+#: src/wesnoth.cpp:728
+#, fuzzy
+#| msgid "Loading data files"
+msgid "Logging Failure"
+msgstr "Llegint archius de senyes."
+
+#: src/wesnothd_connection.cpp:548
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Disconnected from server."
 msgstr "Conecta ab el servidor"
 
-#: src/whiteboard/manager.cpp:1118
+#: src/whiteboard/manager.cpp:1117
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1119
+#: src/whiteboard/manager.cpp:1118
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1133
+#: src/whiteboard/manager.cpp:1132
 #, fuzzy
 #| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "Mostra la repetició"
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1134
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "Reemplaçar ab $player"
 
-#: src/whiteboard/manager.cpp:1138
+#: src/whiteboard/manager.cpp:1137
 msgid "Whiteboard Options"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Availability: "
+#~ msgstr "Habilitats: "
+
+#, fuzzy
+#~| msgid "Era not available"
+#~ msgid "Unavailable"
+#~ msgstr "Era no disponible"
+
+#, fuzzy
+#~| msgid "Unit List"
+#~ msgid "Unit Test "
+#~ msgstr "Llistat d'unitats"
+
+#, fuzzy
+#~| msgid "Brown"
+#~ msgid "Bob"
+#~ msgstr "Marró"
 
 #, fuzzy
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
@@ -9006,11 +9294,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "female^feral"
 #~ msgstr "no morta"
-
-#, fuzzy
-#~| msgid "Era not available"
-#~ msgid "Unhealable"
-#~ msgstr "Era no disponible"
 
 #, fuzzy
 #~ msgid "magical leadership"
@@ -9358,11 +9641,6 @@ msgstr ""
 #~ "igualment?"
 
 #, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Fi de l'escenari"
-
-#, fuzzy
 #~| msgid "Princess"
 #~ msgid "Provinces"
 #~ msgstr "Princesa"
@@ -9531,9 +9809,6 @@ msgstr ""
 #~ msgid "Advances from: "
 #~ msgstr "Alvança de:"
 
-#~ msgid "Advances to: "
-#~ msgstr "Alvança a: "
-
 #, fuzzy
 #~ msgid "Base unit: "
 #~ msgstr "atacs"
@@ -9647,11 +9922,6 @@ msgstr ""
 
 #~ msgid "Undead"
 #~ msgstr "No morts"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "Atacant"
 
 #, fuzzy
 #~| msgid "Choose weapon:"
@@ -10104,10 +10374,6 @@ msgstr ""
 #~ "for this game."
 #~ msgstr "No hi ha bandos disponibles en esta partida."
 
-#, fuzzy
-#~ msgid "Modifications:"
-#~ msgstr "Color no vàlit"
-
 #~ msgid "Next"
 #~ msgstr "Següent"
 
@@ -10141,11 +10407,6 @@ msgstr ""
 #~| msgid "Random"
 #~ msgid "Random Maps"
 #~ msgstr "Aleatori"
-
-#, fuzzy
-#~| msgid "No eras found."
-#~ msgid "No games found."
-#~ msgstr "No s'han trobat eres"
 
 #~ msgid "No eras found"
 #~ msgstr "No s'han trobat eres"
@@ -10457,9 +10718,6 @@ msgstr ""
 #~ msgid "unit list^Traits"
 #~ msgstr "Traces"
 
-#~ msgid "Unit List"
-#~ msgstr "Llistat d'unitats"
-
 #~ msgid "Scroll To"
 #~ msgstr "Desplaçar a"
 
@@ -10658,9 +10916,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Searching for installed add-ons"
 #~ msgstr "S'està solicitant el llistat d'expansions"
-
-#~ msgid "Loading data files"
-#~ msgstr "Llegint archius de senyes."
 
 #, fuzzy
 #~ msgid "Loading level"
@@ -11124,11 +11379,6 @@ msgstr ""
 #~ msgstr "Multijugador"
 
 #, fuzzy
-#~| msgid "Remove Add-ons"
-#~ msgid "Manage Add-ons"
-#~ msgstr "Eliminar expansions"
-
-#, fuzzy
 #~| msgid "Show replay"
 #~ msgid "Show Credits"
 #~ msgstr "Mostra la repetició"
@@ -11570,10 +11820,6 @@ msgstr ""
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Multijugador"
-
-#, fuzzy
-#~ msgid "Download"
-#~ msgstr "Descàrregues "
 
 #~ msgid "No time of day has been defined."
 #~ msgstr "No s'ha definit l'hora del dia."
@@ -15470,9 +15716,6 @@ msgstr ""
 #~ msgid "Play a campaign"
 #~ msgstr "Jugar una campanya"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "¿Encara vols descarregar-ho?"
-
 #~ msgid "Ignore All"
 #~ msgstr "Ignorar tot"
 
@@ -15860,9 +16103,6 @@ msgstr ""
 
 #~ msgid "time left"
 #~ msgstr "Temps restant"
-
-#~ msgid "No multiplayer sides."
-#~ msgstr "No hi ha bandos."
 
 #, fuzzy
 #~ msgid "TitleScreen button^More"

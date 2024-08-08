@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,13 +15,11 @@
 
 #pragma once
 
-#include "chat_events.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/lobby_player_list_helper.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
-#include "gui/widgets/tree_view.hpp"
 #include "quit_confirmation.hpp"
 
 class wesnothd_connection;
@@ -114,6 +112,8 @@ private:
 	void show_server_info();
 
 	void open_profile_url();
+
+	void open_match_history();
 
 	void tab_switch_callback();
 

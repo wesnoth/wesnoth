@@ -50,14 +50,6 @@ compártalas con otros.
 Muestra todas las traducciones en la lista de selección de idioma del juego,
 incluso si se considera que no están lo bastante completas.
 .TP 
-\fB\-\-bunzip2\fP\fI\ archivo_de_entrada.bz2\fP
-descomprime un archivo que debería estar en formato bzip2 y lo almacena sin
-el sufijo .bz2. El \fIarchivo_de_entrada.bz2\fP será eliminado.
-.TP 
-\fB\-\-bzip2\fP\fI\ archivo_de_entrada\fP
-comprime un archivo en formato bzip2, lo guarda como
-\fIarchivo_de_entrada\fP.bz2 y elimina \fIarchivo_de_entrada\fP.
-.TP 
 \fB\-c[\fP\fIid_de_campaña\fP\fB],\ \-\-campaign[\fP\fI=id_de_campaña\fP\fB]\fP
 va directamente a la campaña con el id \fIid_de_campaña\fP. Si no se especifica
 id aparecerá un menú de selección.
@@ -76,13 +68,8 @@ Omite las pantallas de [story] y los diálogos hasta el final del evento
 \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Añade la opción de mostrar un reloj para probar el tiempo de trazado.
-.TP 
-\fB\-\-config\-dir\fP\fI\ nombre\fP
-Obsoleto, utilice \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Obsoleto, utilice \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_modulo\fP
 reemplaza el módulo cargado con aquel cuya id se especifica.
@@ -121,14 +108,6 @@ valores en un archivo del directorio userdata
 \fB\-f, \-\-fullscreen\fP
 ejecuta el juego en modo de pantalla completa.
 .TP 
-\fB\-\-gunzip\fP\fI\ archivo_de_entrada.gz\fP
-descomprime un archivo que debería estar en formato gzip y lo almacena sin
-el sufijo .gz. El \fIarchivo_de_entrada.gz\fP será eliminado.
-.TP 
-\fB\-\-gzip\fP\fI\ archivo_de_entrada\fP
-comprime un archivo en formato gzip, lo guarda como \fIarchivo_de_entrada\fP.gz
-y elimina \fIarchivo_de_entrada\fP.
-.TP 
 \fB\-h, \-\-help\fP
 muestra un resumen de las opciones de línea de comandos en la salida
 estándar, y regresa.
@@ -154,19 +133,31 @@ opción \fB\-d\fP.
 muestra los marcadores de tiempo del archivo de registro con mayor
 precisión.
 .TP 
-\fB\-\-log\-strict\fP
-establece el nivel de precisión del registro. Cualquier mensaje enviado a
-los dominios de registro con este nivel o mayor causará un fallo en el
-análisis de la unidad a pesar de un resultado victorioso. Solo es relevante
-cuando se usa con \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
 muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fIfiltro\fP si es indicado) y regresa
 .TP 
+\fB\-\-no\-log\-to\-file\fP
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
+.TP 
 \fB\-\-log\-to\-file\fP
-redirects logged output to a file. Log files are created in the logs
-directory under the userdata folder.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
@@ -296,10 +287,9 @@ cualquier \fB\-\-nogui.\fP implícito.
 trata los errores de validación como fatales.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-ejecuta el juego en un pequeño escenario de prueba. El escenario debería de
-ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
-\fBtest\fP. Una demostración de la característica \fB[micro_ai]\fP puede ser
-iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui\fP.
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 Establece a \fIpercent\fP el estándar para considerar que una traducción está
@@ -318,19 +308,6 @@ de wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 configura el patrón WML para su uso con \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ nombre\fP
-establece el directorio de configuración del usuario como \fInombre\fP en $HOME
-o "Mis documentos\eMis juegos" en Windows. También es posible especificar
-una ruta absoluta para el directorio de configuración fuera de $HOME o "Mis
-documentos\eMis juegos". En Windows también es posible especificar un
-directorio relativo al directorio donde corre el proceso usando una ruta que
-comience por ".\e" or "..\e". Con X11 está predeterminado como
-$XDG_CONFIG_HOME o $HOME/.config/wesnoth, en otros sistemas para la ruta de
-los datos de usuario.
-.TP 
-\fB\-\-userconfig\-path\fP
-muestra la ruta del directorio de la configuración del usuario y regresa.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nombre\fP
 establece el directorio de datos del usuario como \fInombre\fP en $HOME o "Mis
@@ -366,7 +343,7 @@ asume que el caché es válido (peligroso).
 muestra el número de versión y finaliza.
 .TP 
 \fB\-\-simple\-version\fP
-shows the version number and nothing else, then exits.
+muestra el número de versión y nada más, y finaliza.
 .TP 
 \fB\-w, \-\-windowed\fP
 ejecuta el juego en una ventana.
@@ -465,7 +442,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,7 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
-#include "preferences/game.hpp"         // for encountered_terrains, etc
+#include "preferences/preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
@@ -32,10 +32,9 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // for game_canvas_size
+#include "utils/optional_fwd.hpp"
+#include "video.hpp"                    // fore current_resolution
 
-#include <map>                          // for map, etc
-#include <optional>
 #include <set>
 
 static lg::log_domain log_help("help");
@@ -75,7 +74,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	if (start == end) return "";
 	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
-	std::optional<ter_iter> last_change_pos;
+	utils::optional<ter_iter> last_change_pos;
 
 	bool best = begin_best;
 	for (ter_iter i = start; i != end; ++i) {
@@ -90,9 +89,14 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	if (!last_change_pos) {
 		std::vector<std::string> names;
 		for (ter_iter i = start; i != end; ++i) {
-			const terrain_type tt = tdata->get_terrain_info(*i);
-			if (!tt.editor_name().empty())
-				names.push_back(tt.editor_name());
+			if (*i == t_translation::BASE) {
+				// TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
+				names.push_back(_("base terrain"));
+			} else {
+				const terrain_type tt = tdata->get_terrain_info(*i);
+				if (!tt.editor_name().empty())
+					names.push_back(tt.editor_name());
+			}
 		}
 
 		if (names.empty()) return "";
@@ -190,21 +194,31 @@ std::string terrain_topic_generator::operator()() const {
 	// Almost all terrains will show the data in this conditional block. The ones that don't are the
 	// archetypes used in [movetype]'s subtags such as [movement_costs].
 	if (!type_.is_indivisible()) {
-		ss << "\n" << _("Base Terrain: ");
-
-		bool first = true;
+		std::vector<t_string> underlying;
 		for (const auto& underlying_terrain : type_.union_type()) {
 			const terrain_type& base = tdata->get_terrain_info(underlying_terrain);
-
-			if (base.editor_name().empty()) continue;
-
-			if (!first) {
-				ss << ", ";
-			} else {
-				first = false;
+			if (!base.editor_name().empty()) {
+				underlying.push_back(make_link(base.editor_name(), ".." + terrain_prefix + base.id()));
 			}
+		}
+		utils::string_map symbols;
+		symbols["types"] = utils::format_conjunct_list("", underlying);
+		// TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+		// The terrain names will be hypertext links to the help page of the corresponding terrain type.
+		// There will always be at least 1 item in the list, but unlikely to be more than 3.
+		ss << "\n" << VNGETTEXT("Basic terrain type: $types", "Basic terrain types: $types", underlying.size(), symbols);
 
-			ss << make_link(base.editor_name(), ".." + terrain_prefix + base.id());
+		if (type_.has_default_base()) {
+			const terrain_type& base = tdata->get_terrain_info(type_.default_base());
+
+			symbols.clear();
+			if (base.is_indivisible()) {
+				symbols["type"] = make_link(base.editor_name(), ".." + terrain_prefix + base.id());
+			} else {
+				symbols["type"] = make_link(base.editor_name(), terrain_prefix + base.id());
+			}
+			// TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
+			ss << "\n" << VGETTEXT("Typical base terrain: $type", symbols);
 		}
 
 		ss << "\n";
@@ -299,14 +313,13 @@ std::string unit_topic_generator::operator()() const {
 
 	ss << "<img>src='" << male_type.image();
 	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1200) ss << "~XBRZ(2)";
+	if (screen_width >= 1200) ss << "~SCALE_SHARP(200%,200%)";
 	ss << "' box='no'</img> ";
 
-
-	if (&female_type != &male_type) {
+	if (female_type.image() != male_type.image()) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1200) ss << "~XBRZ(2)";
+		if (screen_width >= 1200) ss << "~SCALE_SHARP(200%,200%)";
 		ss << "' box='no'</img> ";
 	}
 
@@ -324,6 +337,10 @@ std::string unit_topic_generator::operator()() const {
 	} else if (screen_width >= 1920) {
 		sz = 400;
 	}
+
+	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
+	// can't use the preferences value since it may be different than the actual value
+	sz *= video::get_pixel_scale();
 
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {
@@ -686,7 +703,7 @@ std::string unit_topic_generator::operator()() const {
 		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
 				for (const config & effect : t.child_range("effect")) {
-					if (!effect.child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
+					if (!effect.has_child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
 							&& movetype::effects.find(effect["apply_to"].str()) != movetype::effects.end()) {
 						movement_type.merge(effect, effect["replace"].to_bool());
 					}
@@ -739,7 +756,7 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Defense"));
 		push_header(first_row, _("Movement Cost"));
 
-		const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(preferences::encountered_terrains());
+		const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(prefs::get().encountered_terrains());
 		if (has_terrain_defense_caps) {
 			push_header(first_row, _("Defense Cap"));
 		}
@@ -757,7 +774,7 @@ std::string unit_topic_generator::operator()() const {
 
 		std::set<terrain_movement_info> terrain_moves;
 
-		for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+		for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}

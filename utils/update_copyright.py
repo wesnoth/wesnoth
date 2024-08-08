@@ -28,7 +28,7 @@ current_notice = "^\tCopyright \(C\) 20[0-9]{2} - "+new_year+"$"
 extensions = re.compile("\..pp$|\.mm$|^wesnoth_lua_config\.h$")
 old_copyright = re.compile(previous_notice)
 new_copyright = re.compile(current_notice)
-ignored_dirs = ["src/lua", "src/modules/mariadbpp", "src/spirit_po", "src/xBRZ"]
+ignored_dirs = ["src/modules/lua", "src/modules/mariadbpp", "src/spirit_po", "src/xBRZ"]
 
 print("Updating copyright from year '"+previous_year+"' to year '"+new_year+"'")
 for root, dirs, files in os.walk('src'):

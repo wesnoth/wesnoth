@@ -11,11 +11,17 @@ local function revindex(p)
 	return x, p - x * 16384 - 2000
 end
 
----@alias location_set_operation fun(x:integer, y:integer, value:any):boolean
+---@alias location_set_operation fun(x:integer, y:integer, value:any):boolean|nil
 ---@alias location_set_resolver fun(x:integer, y:integer, old:any, new:any):any
+
 ---A set of locations, with an optional associated value for each one.
----@class location_set
+---@class location_set : { [location]: any }
 ---@field values table<integer, any>
+---@operator bnot:location_set
+---@operator band:location_set
+---@operator bor:location_set
+---@operator bxor:location_set
+---@operator sub:location_set
 local methods = {}
 local locset_meta = {}
 
@@ -101,8 +107,8 @@ function methods:clear()
 end
 
 ---Look up a location in the set
----@overload fun(x:integer, y:integer):any
----@overload fun(loc:location):any
+---@overload fun(set:location_set, x:integer, y:integer):any
+---@overload fun(set:location_set, loc:location):any
 function methods:get(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -123,8 +129,8 @@ function methods:insert(...)
 end
 
 ---Remove a location from the set
----@overload fun(x:integer, y:integer)
----@overload fun(loc:location|unit)
+---@overload fun(self:location_set, x:integer, y:integer)
+---@overload fun(self:location_set, loc:location|unit)
 function methods:remove(...)
 	local loc = wesnoth.map.read_location(...)
 	if loc ~= nil then
@@ -227,7 +233,8 @@ function methods:invert(width, height, border_size)
 	if type(width) == 'number' and type(height) == 'number' then
 		border_size = border_size or 0
 	elseif type(width) == 'userdata' and getmetatable(width) == 'terrain map' then
-		local map = width
+		---@type terrain_map
+		local map = width ---@diagnostic disable-line : assign-type-mismatch
 		width = map.playable_width
 		height = map.playable_height
 		border_size = map.border_size
@@ -352,15 +359,15 @@ end
 ---The third element of each location is used as the value.
 ---@param t location_triple[]
 function methods:of_triples(t)
-    -- Create a location set from a table of 3-element tables
-    -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
-    for k,v in pairs(t) do
+	-- Create a location set from a table of 3-element tables
+	-- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
+	for k,v in pairs(t) do
 		if #v == 0 then
 			self:insert(v.x, v.y, v.value)
 		else
 			self:insert(v[1], v[2], v[3])
 		end
-    end
+	end
 end
 
 --- Add values from a table of location->element mappings
@@ -404,7 +411,7 @@ end
 
 ---Store the set in a WML variable
 ---@param name string
----@param mode "'always_clear'"|"'append'"|"'replace'"
+---@param mode? "'always_clear'"|"'append'"|"'replace'"
 function methods:to_wml_var(name, mode)
 	mode = mode or "always_clear"
 	local is_explicit_index = name[-1] == "]"
@@ -423,7 +430,7 @@ function methods:to_wml_var(name, mode)
 		elseif wml.valid{value = v} then
 			wml.variables[string.format("%s[%d]", name, i)] = {value = v}
 		elseif type(v) ~= 'boolean' then
-			warning('Location set value could not be converted to a WML variable:', v)
+			warn('Location set value could not be converted to a WML variable:', v)
 		end
 		wml.variables[string.format("%s[%d].x", name, i)] = x
 		wml.variables[string.format("%s[%d].y", name, i)] = y
@@ -434,11 +441,11 @@ end
 ---Convert the set to an array of triples - locations with an extra element for the value.
 ---@return location_triple[]
 function methods:to_triples()
-    local res = {}
-    self:iter(function(x, y, v)
+	local res = {}
+	self:iter(function(x, y, v)
 		table.insert(res, wesnoth.named_tuple({ x, y, v }, {"x", "y", "value"}))
 	end)
-    return res
+	return res
 end
 
 ---Convert the set to a map of location -> value
@@ -513,9 +520,9 @@ end
 ---@param t location_triple[]
 ---@return location_set
 function location_set.of_triples(t)
-    local s = location_set.create()
-    s:of_triples(t)
-    return s
+	local s = location_set.create()
+	s:of_triples(t)
+	return s
 end
 
 --- Create a set from a table of location->element mappings

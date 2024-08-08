@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,12 +20,9 @@
 
 #include "movetype.hpp"
 
-#include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "terrain/translation.hpp"
-#include "units/types.hpp" // for attack_type
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -724,7 +721,7 @@ void movetype::terrain_defense::merge(const config & new_data, bool overwrite)
 
 
 /**
- * Returns a map from attack types to resistances.
+ * Returns a map from damage types to resistances.
  */
 utils::string_map_res movetype::resistances::damage_table() const
 {
@@ -736,16 +733,6 @@ utils::string_map_res movetype::resistances::damage_table() const
 
 	return result;
 }
-
-
-/**
- * Returns the resistance against the indicated attack.
- */
-int movetype::resistances::resistance_against(const attack_type & attack) const
-{
-	return cfg_[attack.type()].to_int(100);
-}
-
 
 /**
  * Returns the resistance against the indicated damage type.
@@ -868,10 +855,6 @@ bool movetype::has_terrain_defense_caps(const std::set<t_translation::terrain_co
 	return false;
 }
 
-/**
- * Merges the given config over the existing data.
- * If @a overwrite is false, the new values will be added to the old.
- */
 void movetype::merge(const config & new_cfg, bool overwrite)
 {
 	for (const auto & applies_to : movetype::effects) {
@@ -916,10 +899,7 @@ void movetype::merge(const config & new_cfg, const std::string & applies_to, boo
 const std::set<std::string> movetype::effects {"movement_costs",
 	"vision_costs", "jamming_costs", "defense", "resistance"};
 
-/**
- * Writes the movement type data to the provided config.
- */
-void movetype::write(config & cfg) const
+void movetype::write(config& cfg, bool include_notes) const
 {
 	movement_.write(cfg, "movement_costs", false);
 	vision_.write(cfg, "vision_costs", false);
@@ -927,10 +907,12 @@ void movetype::write(config & cfg) const
 	defense_.write(cfg, "defense");
 	resist_.write(cfg, "resistance");
 
-	if ( flying_ )
+	if(flying_)
 		cfg["flying"] = true;
 
-	for(const auto& note : special_notes_) {
-		cfg.add_child("special_note", config{"note", note});
+	if(include_notes) {
+		for(const auto& note : special_notes_) {
+			cfg.add_child("special_note", config{"note", note});
+		}
 	}
 }

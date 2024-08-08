@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
-#include "editor/editor_main.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -31,27 +30,23 @@
 #include "game_launcher.hpp" // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp" // for tmanager
-#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
-#include "picture.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
-#include "preferences/general.hpp"      // for core_id, etc
+#include "preferences/preferences.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp" // for exception
-#include "sdl/rect.hpp"
 #include "serialization/binary_or_text.hpp" // for config_writer
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
-#include "serialization/unicode_cast.hpp"
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
-#include "statistics.hpp"              // for fresh_stats
+#include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
@@ -72,25 +67,9 @@
 
 #include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
 
-#include <boost/iostreams/categories.hpp>   // for input, output
-#include <boost/iostreams/copy.hpp>         // for copy
-#include <boost/iostreams/filter/bzip2.hpp> // for bzip2_compressor, etc
-
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable : 4456)
-#pragma warning(disable : 4458)
-#endif
-
-#include <boost/iostreams/filter/gzip.hpp> // for gzip_compressor, etc
-
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
-
-#include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
-#include <optional>
+#include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
+#include "utils/optional_fwd.hpp"
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
@@ -126,12 +105,6 @@
 #include "gui/widgets/debug.hpp"
 #endif
 
-class end_level_exception;
-namespace game
-{
-struct error;
-}
-
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
@@ -147,75 +120,6 @@ static void safe_exit(int res)
 {
 	LOG_GENERAL << "exiting with code " << res;
 	exit(res);
-}
-
-// maybe this should go in a util file somewhere?
-template<typename filter>
-static void encode(const std::string& input_file, const std::string& output_file)
-{
-	try {
-		std::ifstream ifile(input_file.c_str(), std::ios_base::in | std::ios_base::binary);
-		ifile.peek(); // We need to touch the stream to set the eof bit
-
-		if(!ifile.good()) {
-			PLAIN_LOG << "Input file " << input_file
-					  << " is not good for reading. Exiting to prevent bzip2 from segfaulting";
-			safe_exit(1);
-		}
-
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out | std::ios_base::binary);
-
-		boost::iostreams::filtering_stream<boost::iostreams::output> stream;
-		stream.push(filter());
-		stream.push(ofile);
-
-		boost::iostreams::copy(ifile, stream);
-		ifile.close();
-
-		safe_exit(remove(input_file.c_str()));
-	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "IO error: " << e.what();
-	}
-}
-
-template<typename filter>
-static void decode(const std::string& input_file, const std::string& output_file)
-{
-	try {
-		std::ofstream ofile(output_file.c_str(), std::ios_base::out | std::ios_base::binary);
-		std::ifstream ifile(input_file.c_str(), std::ios_base::in | std::ios_base::binary);
-
-		boost::iostreams::filtering_stream<boost::iostreams::input> stream;
-		stream.push(filter());
-		stream.push(ifile);
-
-		boost::iostreams::copy(stream, ofile);
-		ifile.close();
-
-		safe_exit(remove(input_file.c_str()));
-	} catch(const filesystem::io_exception& e) {
-		PLAIN_LOG << "IO error: " << e.what();
-	}
-}
-
-static void gzip_encode(const std::string& input_file, const std::string& output_file)
-{
-	encode<boost::iostreams::gzip_compressor>(input_file, output_file);
-}
-
-static void gzip_decode(const std::string& input_file, const std::string& output_file)
-{
-	decode<boost::iostreams::gzip_decompressor>(input_file, output_file);
-}
-
-static void bzip2_encode(const std::string& input_file, const std::string& output_file)
-{
-	encode<boost::iostreams::bzip2_compressor>(input_file, output_file);
-}
-
-static void bzip2_decode(const std::string& input_file, const std::string& output_file)
-{
-	decode<boost::iostreams::bzip2_decompressor>(input_file, output_file);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -352,7 +256,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		defines_map.emplace(define, preproc_define(define));
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
-	lg::set_strict_severity(0);
+	lg::set_strict_severity(lg::severity::LG_ERROR);
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
 	read(result, *stream, &validator);
@@ -365,14 +269,74 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 }
 
 /** Process commandline-arguments */
-static int process_command_args(const commandline_options& cmdline_opts)
+static int process_command_args(commandline_options& cmdline_opts)
 {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
+
+	if(cmdline_opts.no_log_sanitize) {
+		lg::set_log_sanitize(false);
+	}
+
+	// If true, output will be redirected to file, else output be written to console.
+	// On Windows, if Wesnoth was not started from a console, one will be allocated.
+	const auto should_redirect_to_file = [&cmdline_opts] {
+		if(cmdline_opts.log_to_file) {
+			return true;
+		} else if(cmdline_opts.no_log_to_file) {
+			return false;
+		} else {
+			return !getenv("WESNOTH_NO_LOG_FILE")
+				// command line options that imply not redirecting output to a log file
+				// Some switches force a Windows console to be attached to the process even
+				// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
+				// turn it into a CLI application. Also, --no-log-to-file in particular attaches
+				// a console to a regular GUI game session.
+				&& !cmdline_opts.data_path
+				&& !cmdline_opts.help
+				&& !cmdline_opts.logdomains
+				&& !cmdline_opts.nogui
+				&& !cmdline_opts.report
+				&& !cmdline_opts.simple_version
+				&& !cmdline_opts.userdata_path
+				&& !cmdline_opts.version
+				&& !cmdline_opts.do_diff
+				&& !cmdline_opts.do_patch
+				&& !cmdline_opts.preprocess
+				&& !cmdline_opts.render_image
+				&& !cmdline_opts.screenshot
+				&& !cmdline_opts.headless_unit_test
+				&& !cmdline_opts.validate_schema
+				&& !cmdline_opts.validate_wml;
+		}
+	};
+
+	if(cmdline_opts.usercache_dir) {
+		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
+	}
+
+	if(cmdline_opts.userdata_dir) {
+		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
+	}
+
+	// earliest possible point to ensure the userdata directory is known
+	if(!filesystem::is_userdata_initialized()) {
+		filesystem::set_user_data_dir(std::string());
+	}
+
+	// userdata is initialized, so initialize logging to file if enabled
+	if(should_redirect_to_file()) {
+		lg::set_log_to_file();
+	}
+#ifdef _WIN32
+	else if(!cmdline_opts.no_console) {
+		lg::do_console_redirect();
+	}
+#endif
 
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
 			const std::string log_domain = log_pair.second;
-			const int severity = log_pair.first;
+			const lg::severity severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
 				PLAIN_LOG << "unknown log domain: " << log_domain;
 				return 2;
@@ -380,35 +344,19 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 	}
 
-	if(cmdline_opts.usercache_dir) {
-		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
-	}
-
 	if(cmdline_opts.usercache_path) {
-		PLAIN_LOG << filesystem::get_cache_dir();
+		std::cout << filesystem::get_cache_dir();
 		return 0;
-	}
-
-	if(cmdline_opts.userconfig_dir) {
-		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
-	}
-
-	if(cmdline_opts.userconfig_path) {
-		PLAIN_LOG << filesystem::get_user_config_dir();
-		return 0;
-	}
-
-	if(cmdline_opts.userdata_dir) {
-		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
 	}
 
 	if(cmdline_opts.userdata_path) {
-		PLAIN_LOG << filesystem::get_user_data_dir();
+		std::cout << filesystem::get_user_data_dir();
 		return 0;
 	}
 
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
+		PLAIN_LOG << "Starting with directory: '" << datadir << "'";
 #ifdef _WIN32
 		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
 		if(datadir.c_str()[1] == ':') {
@@ -420,9 +368,10 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			game_config::path = filesystem::get_cwd() + '/' + datadir;
 		}
 
+		PLAIN_LOG << "Now have with directory: '" << game_config::path << "'";
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(!cmdline_opts.nobanner) {
-			PLAIN_LOG << "Overriding data directory with " << game_config::path;
+			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 
 		if(!filesystem::is_directory(game_config::path)) {
@@ -434,8 +383,28 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		// font_manager_.update_font_path();
 	}
 
+	if(!cmdline_opts.nobanner) {
+		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
+		const std::time_t t = std::time(nullptr);
+		PLAIN_LOG << "Started on " << ctime(&t);
+	}
+
+	if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
+		if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
+			if(!cmdline_opts.nobanner) {
+				PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
+			}
+			game_config::path = std::move(auto_dir);
+		} else if(game_config::path.empty()) {
+			if (!cmdline_opts.data_dir.has_value()) {
+				PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+				return 1;
+			}
+		}
+	}
+
 	if(cmdline_opts.data_path) {
-		PLAIN_LOG << game_config::path;
+		std::cout << game_config::path;
 		return 0;
 	}
 
@@ -451,47 +420,13 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		game_config::strict_lua = true;
 	}
 
-	if(cmdline_opts.gunzip) {
-		const std::string input_file(*cmdline_opts.gunzip);
-		if(!filesystem::is_gzip_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .gz file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 3);
-		gzip_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bunzip2) {
-		const std::string input_file(*cmdline_opts.bunzip2);
-		if(!filesystem::is_bzip2_file(input_file)) {
-			PLAIN_LOG << "file '" << input_file << "'isn't a .bz2 file";
-			return 2;
-		}
-
-		const std::string output_file(input_file, 0, input_file.length() - 4);
-		bzip2_decode(input_file, output_file);
-	}
-
-	if(cmdline_opts.gzip) {
-		const std::string input_file(*cmdline_opts.gzip);
-		const std::string output_file(*cmdline_opts.gzip + ".gz");
-		gzip_encode(input_file, output_file);
-	}
-
-	if(cmdline_opts.bzip2) {
-		const std::string input_file(*cmdline_opts.bzip2);
-		const std::string output_file(*cmdline_opts.bzip2 + ".bz2");
-		bzip2_encode(input_file, output_file);
-	}
-
 	if(cmdline_opts.help) {
 		std::cout << cmdline_opts;
 		return 0;
 	}
 
 	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_logdomains(*cmdline_opts.logdomains);
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
 		return 0;
 	}
 
@@ -503,7 +438,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		srand(*cmdline_opts.rng_seed);
 	}
 
-	if(cmdline_opts.screenshot || cmdline_opts.render_image) {
+	if(cmdline_opts.render_image) {
 		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
@@ -586,8 +521,17 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::string schema_path;
 		if(cmdline_opts.validate_with) {
 			schema_path = *cmdline_opts.validate_with;
+			if(!filesystem::file_exists(schema_path)) {
+				if(auto check = filesystem::get_wml_location(schema_path)) {
+					schema_path = check.value();
+				} else {
+					PLAIN_LOG << "Could not find schema file: " << schema_path;
+				}
+			} else {
+				schema_path = filesystem::normalize_path(schema_path);
+			}
 		} else {
-			schema_path = filesystem::get_wml_location("schema/game_config.cfg");
+			schema_path = filesystem::get_wml_location("schema/game_config.cfg").value();
 		}
 		schema_validation::schema_validator validator(schema_path);
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
@@ -742,24 +686,9 @@ static void check_fpu()
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
-static int do_gameloop(const std::vector<std::string>& args)
+static int do_gameloop(commandline_options& cmdline_opts)
 {
 	srand(std::time(nullptr));
-
-	commandline_options cmdline_opts = commandline_options(args);
-	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
-
-	int finished = process_command_args(cmdline_opts);
-	if(finished != -1) {
-#ifdef _WIN32
-		if(lg::using_own_console()) {
-			std::cerr << "Press enter to continue..." << std::endl;
-			std::cin.get();
-		}
-#endif
-
-		return finished;
-	}
 
 	const auto game = std::make_unique<game_launcher>(cmdline_opts);
 	const int start_ticks = SDL_GetTicks();
@@ -800,7 +729,18 @@ static int do_gameloop(const std::vector<std::string>& args)
 #endif
 
 	gui2::init();
+	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
+
+	// if the log directory is not writable, then this is the error condition so show the error message.
+	// if the log directory is writable, then there's no issue.
+	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
+	if(!lg::log_dir_writable().value_or(true)) {
+		utils::string_map symbols;
+		symbols["logdir"] = filesystem::get_logs_dir();
+		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
+		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+	}
 
 	game_config_manager config_manager(cmdline_opts);
 
@@ -854,12 +794,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	while(true) {
-		statistics::fresh_stats();
-
 		if(!game->has_load_data()) {
-			const config& cfg = config_manager.game_config().child("titlescreen_music");
+			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
 			if(cfg) {
-				for(const config& i : cfg.child_range("music")) {
+				for(const config& i : cfg->child_range("music")) {
 					sound::play_music_config(i);
 				}
 
@@ -932,7 +870,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 		{ // scope to not keep the title screen alive all game
 			gui2::dialogs::title_screen dlg(*game);
 
-			// Allows re-layout on resize
+			// Allows re-layout on resize.
+			// Since RELOAD_UI is not checked here, it causes
+			// the dialog to be closed and reshown with changes.
 			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
@@ -963,24 +903,17 @@ static int do_gameloop(const std::vector<std::string>& args)
 		case gui2::dialogs::title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
-		case gui2::dialogs::title_screen::SHOW_ABOUT:
-			gui2::dialogs::end_credits::display();
-			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
+		case gui2::dialogs::title_screen::RELOAD_UI:
+			gui2::switch_theme(prefs::get().gui2_theme());
+			break;
 		}
 	}
 }
-
-#ifndef _WIN32
-static void wesnoth_terminate_handler(int)
-{
-	exit(0);
-}
-#endif
 
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
@@ -1005,150 +938,54 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
-	// --nobanner needs to be detected before the main command-line parsing happens
-	// --log-to needs to be detected so the logging output location is set before any actual logging happens
-	bool nobanner = false;
-	for(const auto& arg : args) {
-		if(arg == "--nobanner") {
-			nobanner = true;
-			break;
-		}
-#ifndef _WIN32
-		else if(arg == "--log-to-file") {
-			lg::set_log_to_file();
-		}
-#endif
-	}
-
 #ifdef _WIN32
-	bool log_redirect = true, native_console_implied = false;
-	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
-	std::optional<bool> native_console_force;
-
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
-
-	// Some switches force a Windows console to be attached to the process even
-	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-	// turn it into a CLI application. Also, --wconsole in particular attaches
-	// a console to a regular GUI game session.
-	//
-	// It's up to commandline_options later to handle these switches (other
-	// --wconsole) later and emit any applicable console output, but right here
-	// we need a rudimentary check for the switches in question to set up the
-	// console before proceeding any further.
-	for(const auto& arg : args) {
-		// Switches that don't take arguments
-		static const std::set<std::string> wincon_switches = {
-			"--wconsole", "-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
-			"--data-path", "--userdata-path", "--userconfig-path",
-		};
-
-		// Switches that take arguments, the switch may have the argument past
-		// the first = character, or in a subsequent argv entry which we don't
-		// care about -- we just want to see if the switch is there.
-		static const std::set<std::string> wincon_arg_switches = {
-			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-schema",
-		};
-
-		auto switch_matches_arg = [&arg](const std::string& sw) {
-			const auto pos = arg.find('=');
-			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
-		};
-
-		if(wincon_switches.find(arg) != wincon_switches.end() ||
-			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			native_console_implied = true;
-		}
-
-		if(arg == "--wnoconsole") {
-			native_console_force = false;
-		} else if(arg == "--wconsole") {
-			native_console_force = true;
-		} else if(arg == "--wnoredirect") {
-			log_redirect = false;
-		}
-	}
-
-	if(native_console_force.value_or(native_console_implied)) {
-		lg::enable_native_console_output();
-	}
-	lg::early_log_file_setup(!log_redirect);
 #endif
-
-	// Is there a reason not to just use SDL_INIT_EVERYTHING?
-	if(SDL_Init(SDL_INIT_TIMER) < 0) {
-		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-		return (1);
-	}
-	atexit(SDL_Quit);
-
-#ifndef _WIN32
-	struct sigaction terminate_handler;
-	terminate_handler.sa_handler = wesnoth_terminate_handler;
-	terminate_handler.sa_flags = 0;
-
-	sigemptyset(&terminate_handler.sa_mask);
-	sigaction(SIGTERM, &terminate_handler, nullptr);
-	sigaction(SIGINT, &terminate_handler, nullptr);
-#endif
-
-	// Mac's touchpad generates touch events too.
-	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
-	SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-	SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-	SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
-#endif
-
-	// declare this here so that it will always be at the front of the event queue.
-	events::event_context global_context;
-
-	SDL_StartTextInput();
 
 	try {
-		if(!nobanner) {
-			PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-			const std::time_t t = std::time(nullptr);
-			PLAIN_LOG << "Started on " << ctime(&t);
+		commandline_options cmdline_opts = commandline_options(args);
+		int finished = process_command_args(cmdline_opts);
+
+		if(finished != -1) {
+#ifdef _WIN32
+			if(lg::using_own_console()) {
+				std::cerr << "Press enter to continue..." << std::endl;
+				std::cin.get();
+			}
+#endif
+			safe_exit(finished);
 		}
 
-		const std::string& exe_dir = filesystem::get_exe_dir();
-		if(!exe_dir.empty()) {
-			// Try to autodetect the location of the game data dir. Note that
-			// the root of the source tree currently doubles as the data dir.
-			std::string auto_dir;
-
-			// scons leaves the resulting binaries at the root of the source
-			// tree by default.
-			if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
-				auto_dir = exe_dir;
-			}
-			// cmake encourages creating a subdir at the root of the source
-			// tree for the build, and the resulting binaries are found in it.
-			else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
-				auto_dir = filesystem::normalize_path(exe_dir + "/..");
-			}
-			// In Windows debug builds, the EXE is placed away from the game data dir
-			// (in projectfiles\VCx\Debug), but the working directory is set to the
-			// game data dir. Thus, check if the working dir is the game data dir.
-			else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
-				auto_dir = filesystem::get_cwd();
-			}
-
-			if(!auto_dir.empty()) {
-				if(!nobanner) {
-					PLAIN_LOG << "Automatically found a possible data directory at " << auto_dir;
-				}
-				game_config::path = auto_dir;
-			}
+		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
+		// Is there a reason not to just use SDL_INIT_EVERYTHING?
+		if(SDL_Init(SDL_INIT_TIMER) < 0) {
+			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
+			return (1);
 		}
+		atexit(SDL_Quit);
 
-		const int res = do_gameloop(args);
+		// Mac's touchpad generates touch events too.
+		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
+		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+#endif
+
+		// declare this here so that it will always be at the front of the event queue.
+		events::event_context global_context;
+
+		SDL_StartTextInput();
+
+		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
-		PLAIN_LOG << "Error in command line: " << e.what();
+		// logging hasn't been initialized by this point
+		std::string error = "Error parsing command line arguments: ";
+		error += e.what();
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", error.c_str(), nullptr);
+		std::cerr << "Error in command line: " << e.what();
 		error_exit(1);
 	} catch(const video::error& e) {
 		PLAIN_LOG << "Video system error: " << e.what();
@@ -1206,326 +1043,3 @@ int main(int argc, char** argv)
 
 	return 0;
 } // end main
-
-/**
- * @page GUIToolkitWML GUIToolkitWML
- * @tableofcontents
- *
- * @section State State
- *
- * A state contains the info what to do in a state. At the moment this is rather focussed on the drawing part, might change later. Keys:
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-------------
- * draw             | @ref guivartype_section "section"  |mandatory|Section with drawing directions for a canvas.
- *
- * @section WindowDefinition Window Definition
- *
- * A window defines how a window looks in the game.
- * Key              |Type                                |Default  |Description
- * -----------------|------------------------------------|---------|-------------
- * id               | @ref guivartype_string "string"    |mandatory|Unique id for this window.
- * description      | @ref guivartype_t_string "t_string"|mandatory|Unique translatable name for this window.
- * resolution       | @ref guivartype_section "section"  |mandatory|The definitions of the window in various resolutions.
- *
- * @section Cell Cell
- *
- * Every grid cell has some cell configuration values and one widget in the grid cell.
- * Here we describe the what is available more information about the usage can be found at @ref GUILayout.
- *
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * id                  | @ref guivartype_string "string"        |""       |A grid is a widget and can have an id. This isn't used that often, but is allowed.
- * linked_group        | @ref guivartype_string "string"        |0        |.
- *
- * @section RowValues Row Values
- *
- * For every row the following variables are available:
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * grow_factor         | @ref guivartype_unsigned "unsigned"    |0        |The grow factor for a row.
- *
- * @section CellValues Cell Values
- *
- * For every column the following variables are available:
- * Key                 |Type                                    |Default  |Description
- * --------------------|----------------------------------------|---------|-------------
- * grow_factor         | @ref guivartype_unsigned "unsigned"    |0        |The grow factor for a column, this value is only read for the first row.
- * border_size         | @ref guivartype_unsigned "unsigned"    |0        |The border size for this grid cell.
- * border              | @ref guivartype_border "border"        |""       |Where to place the border in this grid cell.
- * vertical_alignment  | @ref guivartype_v_align "v_align"      |""       |The vertical alignment of the widget in the grid cell. (This value is ignored if vertical_grow is true.)
- * horizontal_alignment| @ref guivartype_h_align "h_align"      |""       |The horizontal alignment of the widget in the grid cell.(This value is ignored if horizontal_grow is true.)
- * vertical_grow       | @ref guivartype_bool "bool"            |false    |Does the widget grow in vertical direction when the grid cell grows in the vertical direction. This is used if the grid cell is wider as the best width for the widget.
- * horizontal_grow     | @ref guivartype_bool "bool"            |false    |Does the widget grow in horizontal direction when the grid cell grows in the horizontal direction. This is used if the grid cell is higher as the best width for the widget.
- */
-
-/**
- * @page GUILayout GUILayout
- * @tableofcontents
- *
- * @section Abstract Abstract
- *
- * In the widget library the placement and sizes of elements is determined by
- * a grid. Therefore most widgets have no fixed size.
- *
- * @section Theory Theory
- *
- * We have two examples for the addon dialog, the first example the lower
- * buttons are in one grid, that means if the remove button gets wider
- * (due to translations) the connect button (4.1 - 2.2) will be aligned
- * to the left of the remove button. In the second example the connect
- * button will be partial underneath the remove button.
- *
- * A grid exists of x rows and y columns for all rows the number of columns
- * needs to be the same, there is no column (nor row) span. If spanning is
- * required place a nested grid to do so. In the examples every row has 1 column
- * but rows 3, 4 (and in the second 5) have a nested grid to add more elements
- * per row.
- *
- * In the grid every cell needs to have a widget, if no widget is wanted place
- * the special widget @a spacer. This is a non-visible item which normally
- * shouldn't have a size. It is possible to give a spacer a size as well but
- * that is discussed elsewhere.
- *
- * Every row and column has a @a grow_factor, since all columns in a grid are
- * aligned only the columns in the first row need to define their grow factor.
- * The grow factor is used to determine with the extra size available in a
- * dialog. The algorithm determines the extra size work like this:
- *
- * * determine the extra size
- * * determine the sum of the grow factors
- * * if this sum is 0 set the grow factor for every item to 1 and sum to sum of items.
- * * divide the extra size with the sum of grow factors
- * * for every item multiply the grow factor with the division value
- *
- * eg:
- * * extra size 100
- * * grow factors 1, 1, 2, 1
- * * sum 5
- * * division 100 / 5 = 20
- * * extra sizes 20, 20, 40, 20
- *
- * Since we force the factors to 1 if all zero it's not possible to have non
- * growing cells. This can be solved by adding an extra cell with a spacer and a
- * grow factor of 1. This is used for the buttons in the examples.
- *
- * Every cell has a @a border_size and @a border the @a border_size is the
- * number of pixels in the cell which aren't available for the widget. This is
- * used to make sure the items in different cells aren't put side to side. With
- * @a border it can be determined which sides get the border. So a border is
- * either 0 or @a border_size.
- *
- * If the widget doesn't grow when there's more space available the alignment
- * determines where in the cell the widget is placed.
- *
- * @subsection AbstractExample Abstract Example
- *
- *  	|---------------------------------------|
- *  	| 1.1                                   |
- *  	|---------------------------------------|
- *  	| 2.1                                   |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 3.1 - 1.1          | 3.1 - 1.2    | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 4.1 - 1.1 | 4.1 - 1.2 | 4.1 - 1.3 | |
- *  	| |-----------------------------------| |
- *  	| | 4.1 - 2.1 | 4.1 - 2.2 | 4.1 - 2.3 | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *
- *
- *  	1.1       label : title
- *  	2.1       label : description
- *  	3.1 - 1.1 label : server
- *  	3.1 - 1.2 text box : server to connect to
- *  	4.1 - 1.1 spacer
- *  	4.1 - 1.2 spacer
- *  	4.1 - 1.3 button : remove addon
- *  	4.1 - 2.1 spacer
- *  	4.1 - 2.2 button : connect
- *  	4.1 - 2.3 button : cancel
- *
- *
- *  	|---------------------------------------|
- *  	| 1.1                                   |
- *  	|---------------------------------------|
- *  	| 2.1                                   |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 3.1 - 1.1          | 3.1 - 1.2    | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 4.1 - 1.1         | 4.1 - 1.2     | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *  	| |-----------------------------------| |
- *  	| | 5.1 - 1.1 | 5.1 - 1.2 | 5.1 - 2.3 | |
- *  	| |-----------------------------------| |
- *  	|---------------------------------------|
- *
- *
- *  	1.1       label : title
- *  	2.1       label : description
- *  	3.1 - 1.1 label : server
- *  	3.1 - 1.2 text box : server to connect to
- *  	4.1 - 1.1 spacer
- *  	4.1 - 1.2 button : remove addon
- *  	5.1 - 1.1 spacer
- *  	5.1 - 1.2 button : connect
- *  	5.1 - 1.3 button : cancel
- *
- * @subsection ConcreteExample Concrete Example
- *
- * This is the code needed to create the skeleton for the structure the extra
- * flags are omitted.
- *
- *  	[grid]
- *  		[row]
- *  			[column]
- *  				[label]
- *  					# 1.1
- *  				[/label]
- *  			[/column]
- *  		[/row]
- *  		[row]
- *  			[column]
- *  				[label]
- *  					# 2.1
- *  				[/label]
- *  			[/column]
- *  		[/row]
- *  		[row]
- *  			[column]
- *  				[grid]
- *  					[row]
- *  						[column]
- *  							[label]
- *  								# 3.1 - 1.1
- *  							[/label]
- *  						[/column]
- *  						[column]
- *  							[text_box]
- *  								# 3.1 - 1.2
- *  							[/text_box]
- *  						[/column]
- *  					[/row]
- *  				[/grid]
- *  			[/column]
- *  		[/row]
- *  		[row]
- *  			[column]
- *  				[grid]
- *  					[row]
- *  						[column]
- *  							[spacer]
- *  								# 4.1 - 1.1
- *  							[/spacer]
- *  						[/column]
- *  						[column]
- *  							[spacer]
- *  								# 4.1 - 1.2
- *  							[/spacer]
- *  						[/column]
- *  						[column]
- *  							[button]
- *  								# 4.1 - 1.3
- *  							[/button]
- *  						[/column]
- *  					[/row]
- *  					[row]
- *  						[column]
- *  							[spacer]
- *  								# 4.1 - 2.1
- *  							[/spacer]
- *  						[/column]
- *  						[column]
- *  							[button]
- *  								# 4.1 - 2.2
- *  							[/button]
- *  						[/column]
- *  						[column]
- *  							[button]
- *  								# 4.1 - 2.3
- *  							[/button]
- *  						[/column]
- *  					[/row]
- *  				[/grid]
- *  			[/column]
- *  		[/row]
- *  	[/grid]
- */
-
-/**
- * @defgroup GUIWidgetWML GUIWidgetWML
- * In various parts of the GUI there are several variables types in use. This section describes them.
- *
- * Below are the simple types which have one value or a short list of options:
- * Variable                                        |description
- * ------------------------------------------------|-----------
- * @anchor guivartype_unsigned unsigned            |Unsigned number (positive whole numbers and zero).
- * @anchor guivartype_f_unsigned f_unsigned        |Unsigned number or formula returning an unsigned number.
- * @anchor guivartype_int int                      |Signed number (whole numbers).
- * @anchor guivartype_f_int f_int                  |Signed number or formula returning an signed number.
- * @anchor guivartype_bool bool                    |A boolean value accepts the normal values as the rest of the game.
- * @anchor guivartype_f_bool f_bool                |Boolean value or a formula returning a boolean value.
- * @anchor guivartype_string string                |A text.
- * @anchor guivartype_t_string t_string            |A translatable string.
- * @anchor guivartype_f_tstring f_tstring          |Formula returning a translatable string.
- * @anchor guivartype_function function            |A string containing a set of function definition for the formula language.
- * @anchor guivartype_color color                  |A string which contains the color, this a group of 4 numbers between 0 and 255 separated by a comma. The numbers are red component, green component, blue component and alpha. A color of 0 is not available. An alpha of 255 is fully transparent. Omitted values are set to 0.
- * @anchor guivartype_font_style font_style        |A string which contains the style of the font:<ul><li>normal</li><li>bold</li><li>italic</li><li>underlined</li></ul>Since SDL has problems combining these styles only one can be picked. Once SDL will allow multiple options, this type will be transformed to a comma separated list. If empty we default to the normal style. Since the render engine is replaced by Pango markup this field will change later on. Note widgets that allow marked up text can use markup to change the font style.
- * @anchor guivartype_v_align v_align              |Vertical alignment; how an item is aligned vertically in the available space. Possible values:<ul><li>top</li><li>bottom</li><li>center</li></ul>When nothing is set or an another value as in the list the item is centered.
- * @anchor guivartype_h_align h_align              |Horizontal alignment; how an item is aligned horizontal in the available space. Possible values:<ul><li>left</li><li>right</li><li>center</li></ul>
- * @anchor guivartype_f_h_align f_h_align          |A horizontal alignment or a formula returning a horizontal alignment.
- * @anchor guivartype_border border                |Comma separated list of borders to use. Possible values:<ul><li>left</li><li>right</li><li>top</li><li>bottom</li><li>all alias for "left, right, top, bottom"</li></ul>
- * @anchor guivartype_scrollbar_mode scrollbar_mode|How to show the scrollbar of a widget. Possible values:<ul><li>always - The scrollbar is always shown, regardless whether it's required or not.</li><li>never - The scrollbar is never shown, even not when needed. (Note when setting this mode dialogs might not properly fit anymore).</li><li>auto - Shows the scrollbar when needed. The widget will reserve space for the scrollbar, but only show when needed.</li><li>initial_auto - Like auto, but when the scrollbar is not needed the space is not reserved.</li></ul>Use auto when the list can be changed dynamically eg the game list in the lobby. For optimization you can also use auto when you really expect a scrollbar, but don't want it to be shown when not needed eg the language list will need a scrollbar on most screens.
- * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled smoothly.</li><li>scale_sharp - The image is scaled with sharp (nearest neighbour) interpolation. This is good for sprites.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li><li>tile_center - like tile, except aligned so that one tile is always centered.</li><li>tile_highres - like tile, except rendered at full output resolution in high-dpi contexts. This is useful for texturing effects, but final tile size will be unpredictable.</li></ul>
- * @anchor guivartype_grow_direction grow_direction|The direction in which newly added items will grow a container. Possible values:<ul><li>horizontal</li><li>vertical</li></ul>
- *
- * For more complex parts, there are sections. Sections contain of several lines of WML and can have sub sections. For example a grid has sub sections which contain various widgets. Here's the list of sections:
- * Variable                                        |description
- * ------------------------------------------------|-----------
- * @anchor guivartype_section section              |A generic section. The documentation about the section should describe the section in further detail.
- * @anchor guivartype_grid grid                    |A grid contains several widgets.
- * @anchor guivartype_config config                |.
- *
- * Every widget has some parts in common. First of all, every definition has the following fields:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * id           | @ref guivartype_string "string"    |mandatory|Unique id for this gui (theme).
- * description  | @ref guivartype_t_string "t_string"|mandatory|Unique translatable name for this gui.
- * resolution   | @ref guivartype_section "section"  |mandatory|The definitions of the widget in various resolutions.
- * Inside a grid (which is inside all container widgets) a widget is instantiated. With this instantiation some more variables of a widget can be tuned.
- */
-
-/**
- * @defgroup GUICanvasWML GUICanvasWML
- *
- * A canvas is a blank drawing area on which the user can draw several shapes.
- * The drawing is done by adding WML structures to the canvas.
- *
- * @section PreCommit Pre-commit
- *
- * This section contains the pre commit functions.
- * These functions will be executed before the drawn canvas is applied on top of the normal background.
- * There should only be one pre commit section and its order regarding the other shapes doesn't matter.
- * The function has effect on the entire canvas, it's not possible to affect only a small part of the canvas.
- *
- * @subsection Blur Blur
- *
- * Blurs the background before applying the canvas. This doesn't make sense if the widget isn't semi-transparent.
- *
- * Keys:
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * depth        | @ref guivartype_unsigned "unsigned"|0        |The depth to blur.
- */
-
-/**
- * @defgroup GUIWindowDefinitionWML GUIWindowDefinitionWML
- *
- * The window definition define how the windows shown in the dialog look.
- */

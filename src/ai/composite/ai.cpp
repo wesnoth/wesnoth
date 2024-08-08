@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2024
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,6 @@
 #include "ai/composite/property_handler.hpp"
 #include "ai/composite/stage.hpp"
 #include "ai/configuration.hpp"
-#include "ai/manager.hpp"
 #include "actions/attack.hpp"
 #include "log.hpp"
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2024
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,8 +22,6 @@
 
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/unicode_cast.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/name_generator_factory.hpp"
 
@@ -158,6 +156,13 @@ unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
 	return def;
 }
 
+const config::attribute_value & gender_value(
+    const config & cfg, unit_race::GENDER gender, const std::string & male_key,
+    const std::string & female_key, const std::string & default_key)
+{
+    return cfg.get_or(gender == unit_race::MALE ? male_key : female_key, default_key);
+}
+
 std::string unit_race::get_icon_path_stem() const
 {
 	if(!icon_.empty()) {
@@ -167,7 +172,7 @@ std::string unit_race::get_icon_path_stem() const
 	std::string path = "icons/unit-groups/race_" + id_;
 
 	// FIXME: hardcoded '30' is bad...
-	if(!filesystem::file_exists(filesystem::get_binary_file_location("images", path + "_30.png"))) {
+	if(!filesystem::get_binary_file_location("images", path + "_30.png")) {
 		path = "icons/unit-groups/race_custom";
 	}
 

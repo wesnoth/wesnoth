@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,21 +19,19 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/viewport.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
 #include <functional>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -198,7 +196,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
 
-		resize_needed = !content_resize_request();
+		resize_needed = !content_resize_request(true);
 	}
 
 	if(resize_needed) {
@@ -345,7 +343,7 @@ bool listbox::update_content_size()
 
 void listbox::place(const point& origin, const point& size)
 {
-	std::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+	utils::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 
 	// Check if this is the first time placing the list box
 	if(get_origin() != point {-1, -1}) {
@@ -643,9 +641,10 @@ const listbox::order_pair listbox::get_active_sorting_option()
 {
 	for(unsigned int column = 0; column < orders_.size(); ++column) {
 		selectable_item* w = orders_[column].first;
-		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		if(!w) continue;
 
-		if(w && sort != sort_order::type::none) {
+		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		if(sort != sort_order::type::none) {
 			return std::pair(column, sort);
 		}
 	}
@@ -706,12 +705,10 @@ listbox_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_disabled")));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
-
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("listbox_definition][resolution", "grid"));
 	grid = std::make_shared<builder_grid>(child);
 }
 
@@ -758,26 +755,27 @@ builder_listbox::builder_listbox(const config& cfg)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
+	, allow_selection_(cfg["allow_selection"].to_bool(true))
 {
-	if(const config& h = cfg.child("header")) {
-		header = std::make_shared<builder_grid>(h);
+	if(auto h = cfg.optional_child("header")) {
+		header = std::make_shared<builder_grid>(*h);
 	}
 
-	if(const config& f = cfg.child("footer")) {
-		footer = std::make_shared<builder_grid>(f);
+	if(auto f = cfg.optional_child("footer")) {
+		footer = std::make_shared<builder_grid>(*f);
 	}
 
-	const config& l = cfg.child("list_definition");
+	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
 
@@ -795,7 +793,7 @@ std::unique_ptr<widget> builder_listbox::build() const
 
 	widget->init_grid(*conf->grid);
 
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, true);
+	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, allow_selection_);
 	widget->finalize(std::move(generator), header, footer, list_data);
 
 	return widget;
@@ -810,17 +808,17 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
-	const config& l = cfg.child("list_definition");
+	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
 
@@ -853,17 +851,17 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
-	const config& l = cfg.child("list_definition");
+	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
 

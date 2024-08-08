@@ -48,7 +48,7 @@ function ca_transport:execution()
     local landing_site_map = LS.of_pairs(
         wesnoth.map.find {
             terrain = 'W*',
-            { "filter_adjacent_location", { terrain = '!, W*' } }
+            wml.tag.filter_adjacent_location { terrain = '!, W*' }
         }
     )
 
@@ -79,7 +79,7 @@ function ca_transport:execution()
                                 elseif wesnoth.map.matches(x, y,
                                     {
                                         terrain = "W*",
-                                        { "filter_adjacent_location", { terrain = "!, W*" } }
+                                        wml.tag.filter_adjacent_location { terrain = "!, W*" }
                                     }
                                 )
                                 then
@@ -123,7 +123,7 @@ function ca_transport:execution()
     local deep_water_map = LS.of_pairs(
         wesnoth.map.find {
             terrain = 'Wo',
-            { "not", { { "filter_adjacent_location", { terrain = '!, Wo' } } } }
+            wml.tag["not"] { wml.tag.filter_adjacent_location { terrain = '!, Wo' } }
         }
     )
 

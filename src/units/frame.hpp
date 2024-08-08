@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,13 +23,19 @@
 #include "units/frame_private.hpp"
 
 #include "color.hpp"
+#include "drawing_layer.hpp"
 #include "halo.hpp"
 #include "picture.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <boost/logic/tribool.hpp>
 
 class config;
+
+constexpr int get_abs_frame_layer(drawing_layer layer)
+{
+	return int(layer) - int(drawing_layer::unit_first);
+}
 
 /** All parameters from a frame at a given instant */
 struct frame_parameters
@@ -51,8 +57,8 @@ struct frame_parameters
 	std::string sound;
 	std::string text;
 
-	std::optional<color_t> text_color;
-	std::optional<color_t> blend_with;
+	utils::optional<color_t> text_color;
+	utils::optional<color_t> blend_with;
 
 	double blend_ratio;
 	double highlight_ratio;
@@ -74,7 +80,6 @@ struct frame_parameters
 /**
  * Easily build frame parameters with the serialized constructors
  */
-class frame_parsed_parameters;
 class frame_builder
 {
 public:
@@ -116,8 +121,8 @@ private:
 	std::string sound_;
 	std::string text_;
 
-	std::optional<color_t> text_color_;
-	std::optional<color_t> blend_with_;
+	utils::optional<color_t> text_color_;
+	utils::optional<color_t> blend_with_;
 
 	std::string blend_ratio_;
 	std::string highlight_ratio_;
@@ -178,8 +183,8 @@ private:
 	std::string sound_;
 	std::string text_;
 
-	std::optional<color_t> text_color_;
-	std::optional<color_t> blend_with_;
+	utils::optional<color_t> text_color_;
+	utils::optional<color_t> blend_with_;
 
 	progressive_double blend_ratio_;
 	progressive_double highlight_ratio_;
@@ -207,15 +212,15 @@ public:
 	void redraw(const int frame_time, bool on_start_time, bool in_scope_of_frame, const map_location& src, const map_location& dst,
 		halo::handle& halo_id, halo::manager& halo_man, const frame_parameters& animation_val, const frame_parameters& engine_val) const;
 
-	const frame_parameters merge_parameters(int current_time, const frame_parameters& animation_val,
+	frame_parameters merge_parameters(int current_time, const frame_parameters& animation_val,
 		const frame_parameters& engine_val = frame_parameters()) const;
 
-	const frame_parameters parameters(int current_time) const
+	frame_parameters parameters(int current_time) const
 	{
 		return builder_.parameters(current_time);
 	}
 
-	const frame_parameters end_parameters() const
+	frame_parameters end_parameters() const
 	{
 		return builder_.parameters(duration());
 	}

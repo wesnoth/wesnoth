@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2024
 	by Karol Nowak <grzywacz@sul.uni.lodz.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -14,7 +14,6 @@
 */
 
 #include "display.hpp"
-#include "log.hpp"
 #include "random.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
