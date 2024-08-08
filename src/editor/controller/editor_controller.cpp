@@ -107,6 +107,7 @@ void editor_controller::init_gui()
 	gui().set_debug_flag(display::DEBUG_COORDINATES, prefs::get().editor_draw_hex_coordinates());
 	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, prefs::get().editor_draw_terrain_codes());
 	gui().set_debug_flag(display::DEBUG_NUM_BITMAPS, prefs::get().editor_draw_num_of_bitmaps());
+	gui().set_help_string_enabled(prefs::get().editor_help_text_shown());
 //	halo_manager_.reset(new halo::manager(*gui_));
 //	resources::halo = halo_manager_.get();
 //	^ These lines no longer necessary, the gui owns its halo manager.
@@ -514,6 +515,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
+		case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
 		case HOTKEY_MINIMAP_CODING_UNIT:
 		case HOTKEY_MINIMAP_DRAW_UNITS:
@@ -600,7 +602,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		return gui_->debug_flag_set(display::DEBUG_TERRAIN_CODES) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
-
+	case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
+		return gui_->help_string_enabled() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return (prefs::get().minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_UNIT:
@@ -1131,6 +1134,10 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			gui().toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
 			prefs::get().set_editor_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
 			gui().invalidate_all();
+			return true;
+		case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
+			gui().set_help_string_enabled(!gui().help_string_enabled());
+			prefs::get().set_editor_help_text_shown(gui().help_string_enabled());
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());

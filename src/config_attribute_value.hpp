@@ -141,6 +141,12 @@ public:
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;
 
+	bool to(const bool def) const { return to_bool(def); }
+	int to(int def) const { return to_int(def); }
+	unsigned to(unsigned def) const { return to_unsigned(def); }
+	double to(double def) const { return to_double(def); }
+	std::string to(const std::string& def) const { return str(def); }
+
 	// Implicit conversions:
 	operator int() const { return to_int(); }
 	operator std::string() const { return str(); }

@@ -239,10 +239,10 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
-		drawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
+		drawing_layer hex_top_layer = drawing_layer::mouseover_bottom;
 		const unit* u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()]);
 		if(u != nullptr) {
-			hex_top_layer = LAYER_MOUSEOVER_TOP;
+			hex_top_layer = drawing_layer::mouseover_top;
 		}
 
 		const std::string* mo_top_path;
@@ -265,7 +265,7 @@ void game_display::draw_hex(const map_location& loc)
 		drawing_buffer_add(hex_top_layer, loc,
 			[tex = image::get_texture(*mo_top_path, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 
-		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc,
+		drawing_buffer_add(drawing_layer::mouseover_bottom, loc,
 			[tex = image::get_texture(*mo_bot_path, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
@@ -273,7 +273,7 @@ void game_display::draw_hex(const map_location& loc)
 	// We remove the reachability mask of the unit that we want to attack.
 	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
-		drawing_buffer_add(LAYER_REACHMAP, loc,
+		drawing_buffer_add(drawing_layer::reachmap, loc,
 			[tex = image::get_texture(unreachable, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
@@ -283,7 +283,7 @@ void game_display::draw_hex(const map_location& loc)
 		if(!(w->is_active() && w->has_temp_move())) {
 			std::vector<texture> footstepImages = footsteps_images(loc, route_, dc_);
 			if(!footstepImages.empty()) {
-				drawing_buffer_add(LAYER_FOOTSTEPS, loc, [images = std::move(footstepImages)](const rect& dest) {
+				drawing_buffer_add(drawing_layer::footsteps, loc, [images = std::move(footstepImages)](const rect& dest) {
 					for(const texture& t : images) {
 						draw::blit(t, dest);
 					}
@@ -294,12 +294,12 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc,
+		drawing_buffer_add(drawing_layer::attack_indicator, loc,
 			[tex = image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)
 		 	{ draw::blit(tex, dest); }
 		);
 	} else if(on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc,
+		drawing_buffer_add(drawing_layer::attack_indicator, loc,
 			[tex = image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)
 			{ draw::blit(tex, dest); }
 		);
@@ -309,13 +309,13 @@ void game_display::draw_hex(const map_location& loc)
 	// so it's drawn over the shroud and fog.
 	if(mode_ != RUNNING) {
 		static const image::locator linger(game_config::images::linger);
-		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc,
+		drawing_buffer_add(drawing_layer::linger_overlay, loc,
 			[tex = image::get_texture(linger, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		static const image::locator selected(game_config::images::selected);
-		drawing_buffer_add(LAYER_SELECTED_HEX, loc,
+		drawing_buffer_add(drawing_layer::selected_hex, loc,
 			[tex = image::get_texture(selected, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
@@ -328,7 +328,7 @@ void game_display::draw_hex(const map_location& loc)
 		int debugH = debugHighlights_[loc];
 		if (debugH) {
 			std::string txt = std::to_string(debugH);
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
+			draw_text_in_hex(loc, drawing_layer::move_info, txt, 18, font::BAD_COLOR);
 		}
 	}
 }
@@ -401,9 +401,9 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);
+			draw_text_in_hex(loc, drawing_layer::move_info, def_text.str(), def_font, color);
 
-			drawing_buffer_add(LAYER_MOVE_INFO, loc,
+			drawing_buffer_add(drawing_layer::move_info, loc,
 				[inv = w->second.invisible, zoc = w->second.zoc, cap = w->second.capture](const rect& dest) {
 					if(inv) {
 						draw::blit(image::get_texture(image::locator{"misc/hidden.png"}, image::HEXED), dest);
@@ -422,7 +422,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
 				std::stringstream turns_text;
 				turns_text << w->second.turns;
-				draw_text_in_hex(loc, LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+				draw_text_in_hex(loc, drawing_layer::move_info, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 			}
 
 			// The hex is full now, so skip the "show enemy moves"
@@ -446,7 +446,7 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			// use small font
 			int def_font = 16;
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);
+			draw_text_in_hex(loc, drawing_layer::move_info, def_text.str(), def_font, color);
 		}
 	}
 
@@ -454,7 +454,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = std::to_string(reach->second);
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
+			draw_text_in_hex(loc, drawing_layer::move_info, num, 16, font::YELLOW_COLOR);
 		}
 	}
 }
@@ -587,7 +587,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 
 void game_display::float_label(const map_location& loc, const std::string& text, const color_t& color)
 {
-	if(prefs::get().show_floating_labels() == false || fogged(loc)) {
+	if(prefs::get().floating_labels() == false || fogged(loc)) {
 		return;
 	}
 

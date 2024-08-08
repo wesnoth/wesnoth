@@ -39,7 +39,7 @@ frame_parameters::frame_parameters()
 	, auto_vflip(boost::logic::indeterminate)
 	, auto_hflip(boost::logic::indeterminate)
 	, primary_frame(boost::logic::indeterminate)
-	, drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST)
+	, drawing_layer(get_abs_frame_layer(drawing_layer::unit_default))
 {}
 
 frame_builder::frame_builder()
@@ -47,7 +47,7 @@ frame_builder::frame_builder()
 	, auto_vflip_(boost::logic::indeterminate)
 	, auto_hflip_(boost::logic::indeterminate)
 	, primary_frame_(boost::logic::indeterminate)
-	, drawing_layer_(std::to_string(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
+	, drawing_layer_(std::to_string(get_abs_frame_layer(drawing_layer::unit_default)))
 {}
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
@@ -315,7 +315,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.auto_vflip = auto_vflip_;
 	result.auto_hflip = auto_hflip_;
 	result.primary_frame = primary_frame_;
-	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+	result.drawing_layer = drawing_layer_.get_current_element(current_time, get_abs_frame_layer(drawing_layer::unit_default));
 	return result;
 }
 
@@ -479,7 +479,7 @@ namespace
 void render_unit_image(
 	int x,
 	int y,
-	const display::drawing_layer drawing_layer,
+	const drawing_layer drawing_layer,
 	const map_location& loc,
 	const image::locator& i_locator,
 	bool hreverse,
@@ -699,7 +699,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 		if(alpha != 0) {
 			render_unit_image(my_x, my_y,
-				static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
+				drawing_layer { int(drawing_layer::unit_first) + current_data.drawing_layer },
 				src,
 				image_loc,
 				facing_west,
@@ -1014,8 +1014,8 @@ frame_parameters unit_frame::merge_parameters(int current_time, const frame_para
 	assert(engine_val.directional_y == 0);
 	result.directional_y = current_val.directional_y ? current_val.directional_y : animation_val.directional_y;
 
-	assert(engine_val.drawing_layer == display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST);
-	result.drawing_layer = current_val.drawing_layer != display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST
+	assert(engine_val.drawing_layer == get_abs_frame_layer(drawing_layer::unit_default));
+	result.drawing_layer = current_val.drawing_layer != get_abs_frame_layer(drawing_layer::unit_default)
 		? current_val.drawing_layer
 		: animation_val.drawing_layer;
 

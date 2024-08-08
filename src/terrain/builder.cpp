@@ -477,13 +477,11 @@ bool terrain_builder::load_images(building_rule& rule)
 								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back();
 							}
 						}
-						image::locator locator;
 						if(ri.global_image) {
-							locator = image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif);
+							res.add_frame(time, image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif));
 						} else {
-							locator = image::locator(filename, modif);
+							res.add_frame(time, image::locator(filename, modif));
 						}
-						res.add_frame(time, locator);
 					}
 					if(res.get_frames_count() == 0)
 						break; // no valid images, don't register it

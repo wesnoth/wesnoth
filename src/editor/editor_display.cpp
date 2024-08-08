@@ -78,7 +78,7 @@ void editor_display::draw_hex(const map_location& loc)
 	}
 
 	if(map().in_selection(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc,
+		drawing_buffer_add(drawing_layer::fog_shroud, loc,
 			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
 				draw::blit(tex, d);
 			});
@@ -86,14 +86,14 @@ void editor_display::draw_hex(const map_location& loc)
 
 	if(brush_locations_.find(loc) != brush_locations_.end()) {
 		static const image::locator brush(game_config::images::editor_brush);
-		drawing_buffer_add(LAYER_SELECTED_HEX, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d) {
+		drawing_buffer_add(drawing_layer::selected_hex, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d) {
 			draw::blit(tex, d);
 		});
 	}
 
 	// Paint mouseover overlays
 	if(mouseover_hex_overlay_ && loc == mouseoverHex_) {
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, [this](const rect& dest) {
+		drawing_buffer_add(drawing_layer::mouseover_overlay, loc, [this](const rect& dest) {
 			mouseover_hex_overlay_.set_alpha_mod(196);
 			draw::blit(mouseover_hex_overlay_, dest);
 			mouseover_hex_overlay_.set_alpha_mod(SDL_ALPHA_OPAQUE);
@@ -157,6 +157,17 @@ display::overlay_map& editor_display::get_overlays()
 	return controller_.get_current_map_context().get_overlays();
 }
 
+void editor_display::set_help_string_enabled(bool value)
+{
+	help_string_enabled_ = value;
+
+	if (!value) {
+		clear_help_string();
+	} else if (!help_string_.empty()) {
+		set_help_string(help_string_);
+	}
+}
+
 void editor_display::clear_help_string()
 {
 	font::remove_floating_label(help_handle_);
@@ -165,7 +176,15 @@ void editor_display::clear_help_string()
 
 void editor_display::set_help_string(const std::string& str)
 {
+	// Always update the internal string so we can toggle its visibility back
+	// at any time without having to ask the current editor_palette.
+	help_string_ = str;
+
 	clear_help_string();
+
+	if (!help_string_enabled_ || help_string_.empty()) {
+		return;
+	}
 
 	const color_t color{0, 0, 0, 0xbb};
 

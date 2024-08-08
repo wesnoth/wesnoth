@@ -336,7 +336,7 @@ const language_def& get_locale()
 
 	assert(!known_languages.empty());
 
-	const std::string& prefs_locale = prefs::get().language();
+	const std::string& prefs_locale = prefs::get().locale();
 	if(prefs_locale.empty() == false) {
 		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();

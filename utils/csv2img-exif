@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+##
+# This script reads from the existing Wesnoth copyrights CSV file, and writes it to the CreateDate, ModifyDate, Artist, Copyright, and UserComment Exif tags of the images
+# requires exiftool and cwebp
+##
+
+import argparse
+import contextlib
+import csv
+import os
+from pathlib import Path
+from subprocess import check_output
+from datetime import datetime
+import sys
+import re
+
+##
+# csv file layout:
+# [0] = current file modified date -> CreateDate tag (not totally accurate)
+# [1] = file path, relative to the repository root
+# [2] = license name(s) -> Copyright Exif tag
+# [3] = authorship information -> Artist Exif tag
+# [4] = notes -> UserComment Exif tag
+# [5] = new git commit date (not used) -> ModifyDate (today)
+# [6] = md5 hash (not used, not updated)
+##
+
+##
+# Add new licenses to this list:
+# Avoid things like "GNU GPL v2+;CC BY-SA 4.0", unless you mean to dual license
+# under either GNU GPL v2+ or CC BY-SA 4.0.  GNU GPL v2+ and CC BY-SA 4.0 (e.g.
+# a GNU GPL v2+ file with CC BY-SA 4.0 modifications) isn't legally possible.
+##
+known_licenses = (
+        "CC BY-SA 4.0",
+        "CC0",
+        "GNU GPL v2+",
+        )
+# to check that the date has a four-digit pattern (the year), meaning it really is a date
+dv = re.compile('\d\d\d\d/')
+
+# "-all=" to clear out existing metadata before writing the data from the CSV
+def write_exif(target,date_value,copyright_value,artist_value,usercomment_value):
+    if dv.match(date_value) != None:
+        date_value = datetime.strptime(str(date_value),"%Y/%m/%d").strftime("%Y:%m:%d %H:%M:%S")
+    else:
+        date_value = datetime.today().strftime("%Y:%m:%d %H:%M:%S")
+    return str(check_output(["exiftool", "-overwrite_original", "-all=", "-ModifyDate=now", "-CreateDate=%s" % date_value, "-Copyright=%s" % copyright_value, "-Artist=%s" % artist_value, "-UserComment=%s" % usercomment_value, target]), 'UTF-8')
+
+# This cwebp call is to work around a current exiftool limitation, where RIFF alpha tags cannot be written, yet are needed by Extended (because we now include Exif tags) WEBP if there is to be any transparency.
+def fix_webp(target):
+    return str(check_output(["cwebp", "-quiet", "-mt", "-z", "9", "-metadata", "exif", target, "-o", target]), 'UTF-8')
+
+
+##
+# program logic start
+##
+
+args = argparse.ArgumentParser()
+args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
+args.add_argument("--input", default="copyrights.csv", help="The file to read the existing copyright data from.")
+args.add_argument("--output", default="csv2img-exif_output.csv", help="The file to write the results of this script to.")
+options = args.parse_args()
+os.chdir(options.repo)
+
+
+csv_data = {}
+# Too few fields
+missing_fields = []
+# Too many fields, possibly due to an unquoted comma
+extra_fields = []
+# previously untracked images
+added = []
+# lacking something in either the license or author fields
+incomplete = []
+unchanged = []
+removed = []
+unknown_licenses = []
+
+
+with open(options.input, encoding="utf-8") as csvfile:
+    reader = csv.reader(csvfile)
+    previous_file = ""
+    for row in reader:
+        if row[0] == "Date":
+            continue
+
+        file = row[1]
+        previous_file = file
+
+        if not os.path.exists(file):
+            removed.append(file)
+            continue
+
+        csv_data[file] = row
+
+with contextlib.suppress(FileNotFoundError):
+    os.remove(options.output)
+
+# only transfer the info from complete, properly formatted CSV rows (unchanged)
+# but keep track of all the rest for summary output
+for root, _, files in os.walk("."):
+    for filename in files:
+        filetype = Path(filename).suffix
+        if filetype == ".png" or filetype == ".jpg":
+            file = os.path.normpath(os.path.join(root, filename))
+
+            if not file in csv_data:
+                added.append(["NEW", file, "", "", "", "NO_DATA", "NO_DATA"])
+            elif len(csv_data[file]) < 7:
+                missing_fields.append(csv_data[file])
+            elif len(csv_data[file]) > 7:
+                extra_fields.append(csv_data[file])
+            elif csv_data[file][2].strip() == "" or csv_data[file][3].strip() == "":
+                incomplete.append(csv_data[file])
+            elif not csv_data[file][2] in known_licenses:
+                unknown_licenses.append(csv_data[file][2])
+                incomplete.append(csv_data[file])
+            else:
+                unchanged.append(csv_data[file])
+                write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])
+
+        elif filetype == ".webp":
+            file = os.path.normpath(os.path.join(root, filename))
+
+            if not file in csv_data:
+                added.append(["NEW", file, "", "", "", "NO_DATA", "NO_DATA"])
+            elif len(csv_data[file]) < 7:
+                missing_fields.append(csv_data[file])
+            elif len(csv_data[file]) > 7:
+                extra_fields.append(csv_data[file])
+            elif csv_data[file][2].strip() == "" or csv_data[file][3].strip() == "":
+                incomplete.append(csv_data[file])
+            elif not csv_data[file][2] in known_licenses:
+                unknown_licenses.append(csv_data[file][2])
+                incomplete.append(csv_data[file])
+            else:
+                unchanged.append(csv_data[file])
+                write_exif(file,csv_data[file][0],csv_data[file][2],csv_data[file][3],csv_data[file][4])
+                fix_webp(file)
+
+# output reports
+final_output = added + missing_fields + extra_fields + incomplete + unchanged
+
+if options.output != "":
+    with open(options.output, 'w', encoding="utf-8") as f:
+        writer = csv.writer(f, lineterminator="\n")
+        writer.writerow(["Date", "File", "License", "Author - Real Name(other name);Real Name(other name);etc", "Notes", "Needs Update", "MD5"])
+        writer.writerows(final_output)
+else:
+    writer = csv.writer(sys.stdout, lineterminator="\n")
+    writer.writerows(final_output)
+
+any_check_failed = False
+
+count_missing_fields = len(missing_fields)
+count_extra_fields = len(extra_fields)
+count_added = len(added)
+count_removed = len(removed)
+count_incomplete = len(incomplete)
+
+if count_missing_fields > 0 or count_extra_fields > 0 or count_added > 0 or count_incomplete > 0:
+    any_check_failed = True
+    print("\nThere are "+str(count_missing_fields)+" rows with too few fields\n"+"\n".join(",".join(a) for a in missing_fields))
+    print("\nThere are "+str(count_extra_fields)+" rows with too many fields, possibly due to an unquoted comma\n"+"\n".join(",".join(a) for a in extra_fields))
+    print("\nThere are "+str(count_added)+" new images:\n"+"\n".join(a[1] for a in added))
+    print("\nThere are "+str(count_removed)+" missing images:\n"+"\n".join(removed))
+    print("\nThere are "+str(count_incomplete)+" images that lack license or author information"+"\n".join(a[1] for a in incomplete))
+
+if len(unknown_licenses) > 0:
+    any_check_failed = True
+    print("Unknown licenses:")
+    print("    " + "\n    ".join(unknown_licenses))
+
+if any_check_failed:
+    sys.exit(1)
