@@ -36,7 +36,9 @@ jobs:
         run: utils/CI/check_wml_images.sh
       - name: Run luacheck
         if: success() || failure()
-        run: luacheck .
+        uses: nebularg/actions-luacheck@v1
+        with:
+          annotate: 'warning'
       - name: Doxygen check
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
