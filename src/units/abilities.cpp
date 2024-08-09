@@ -1338,6 +1338,99 @@ namespace { // Helpers for attack_type::special_active()
 		return false;
 	}
 
+	//return false if an attribute detected inside filter.
+	static bool matches_simple_filter_without_weapon(const config & filter)
+	{
+		if(filter.has_attribute("range"))
+			return false;
+		if(filter.has_attribute("damage"))
+			return false;
+		if(filter.has_attribute("number"))
+			return false;
+		if(filter.has_attribute("accuracy"))
+			return false;
+		if(filter.has_attribute("parry"))
+			return false;
+		if(filter.has_attribute("movement_used"))
+			return false;
+		if(filter.has_attribute("attacks_used"))
+			return false;
+		if(filter.has_attribute("name"))
+			return false;
+		if(filter.has_attribute("special"))
+			return false;
+		if(filter.has_attribute("special_id"))
+			return false;
+		if(filter.has_attribute("special_type"))
+			return false;
+		if(filter.has_attribute("special_active"))
+			return false;
+		if(filter.has_attribute("special_id_active"))
+			return false;
+		if(filter.has_attribute("special_type_active"))
+			return false;
+		if(filter.has_attribute("formula"))
+			return false;
+		if(filter.has_attribute("type"))
+			return false;
+
+		// Passed all tests.
+		return true;
+	}
+
+	/**
+	 * Returns whether or not if @a filter empty or not.
+	 */
+	bool matches_filter_without_weapon(const config& filter)
+	{
+		// Handle the basic filter.
+		bool matches = matches_simple_filter_without_weapon(filter);
+
+		// Handle [and], [or], and [not] with in-order precedence
+		for (const config::any_child condition : filter.all_children_range() )
+		{
+			// Handle [and]
+			if ( condition.key == "and" )
+				matches = matches && matches_filter_without_weapon(condition.cfg);
+
+			// Handle [or]
+			else if ( condition.key == "or" )
+				matches = matches || matches_filter_without_weapon(condition.cfg);
+
+			// Handle [not]
+			else if ( condition.key == "not" )
+				matches = matches && !matches_filter_without_weapon(condition.cfg);
+		}
+
+		return matches;
+	}
+
+	/**
+	 * update check_tag_name_ and check_cfg_variables if weapon exist.
+	 * @param  weapon      the attack where modification applied
+	 * @param  tag_name    string used for modification
+	 * @param  cfg         config used for modification
+	 */
+	void update_variables(const_attack_ptr& weapon, const std::string& tag_name, const config& cfg)
+	{
+		if(weapon){
+			weapon->update_check_tag_name(tag_name);
+			weapon->update_check_cfg(cfg);
+		}
+	}
+
+	/**
+	 * reinitialise check_tag_name_ and check_cfg_variables if weapon exist.
+	 * @param  weapon      the attack where modification applied
+	 */
+	void reinitialise_variables(const_attack_ptr& weapon)
+	{
+		if(weapon){
+			config n;
+			weapon->update_check_cfg(n);
+			weapon->update_check_tag_name();
+		}
+	}
 	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
@@ -1353,7 +1446,7 @@ namespace { // Helpers for attack_type::special_active()
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
 		                             const map_location & loc,
-		                             const_attack_ptr weapon,
+		                             const_attack_ptr& weapon,
 		                             const config & filter,
 									 const bool for_listing,
 		                             const std::string & child_tag, const std::string& tag_name)
@@ -1366,7 +1459,25 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
-		auto filter_child = filter.optional_child(child_tag);
+		//Add wml filter if "backstab" attribute used.
+		if (!filter["backstab"].blank() && child_tag == "filter_opponent") {
+			deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+		}
+		config cfg = filter;
+		if(filter["backstab"].to_bool() && child_tag == "filter_opponent"){
+			const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+			config& filter_child = cfg.child_or_add("filter_opponent");
+			if(!filter.has_child("filter_opponent")){
+				filter_child["formula"] = backstab_formula;
+			} else {
+				config filter_opponent;
+				filter_opponent["formula"] = backstab_formula;
+				filter_child.add_child("and", filter_opponent);
+			}
+		}
+		const config& filter_backstab = filter["backstab"].to_bool() ? cfg : filter;
+
+		auto filter_child = filter_backstab.optional_child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
@@ -1376,6 +1487,8 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
+		update_variables(weapon, tag_name, filter);
+
 		unit_filter ufilt{vconfig(*filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
@@ -1383,16 +1496,25 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
+			bool matches = weapon ? weapon->matches_filter(*filter_weapon) : matches_filter_without_weapon(*filter_weapon);
+			if (!matches){
+				reinitialise_variables(weapon);
 				return false;
+			}
 		}
 
 		// Passed.
 		// If the other unit doesn't exist, try matching without it
+		bool u_match = false;
 		if (!u2) {
-			return ufilt.matches(*u, loc);
+			u_match = ufilt.matches(*u, loc);
+			//reinitialise check_tag_name before return result of checking
+			reinitialise_variables(weapon);
+			return u_match;
 		}
-		return ufilt.matches(*u, loc, *u2);
+		u_match = ufilt.matches(*u, loc, *u2);
+		reinitialise_variables(weapon);
+		return u_match;
 	}
 
 }//anonymous namespace
@@ -1911,6 +2033,24 @@ bool attack_type::special_active_impl(
 	bool is_for_listing = self_attack ? self_attack->is_for_listing_ : other_attack->is_for_listing_;
 	//log_scope("special_active");
 
+	//if same special check itself return false for prevent recursion
+	if(self_attack && self_attack->check_cfg() == special)
+		return false;
+	if(other_attack && other_attack->check_cfg() == special)
+		return false;
+
+	//if self weapon active if a weapon special opponent active but this special active if self special active
+	//then return false for don't have infinite recursion.
+	if(self_attack && !self_attack->check_cfg().empty()){
+		if(special_active_impl(other_attack, self_attack, self_attack->check_cfg(), whom, tag_name, filter_self)){
+			return false;
+		}
+	}
+	if(other_attack && !other_attack->check_cfg().empty()){
+		if(special_active_impl(self_attack, other_attack, other_attack->check_cfg(), whom, tag_name, filter_self)){
+			return false;
+		}
+	}
 
 	// Does this affect the specified unit?
 	if ( whom == AFFECT_SELF ) {
@@ -1989,8 +2129,8 @@ bool attack_type::special_active_impl(
 	unit_const_ptr & def = is_attacker ? other : self;
 	const map_location & att_loc   = is_attacker ? self_loc : other_loc;
 	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
-	const_attack_ptr att_weapon = is_attacker ? self_attack : other_attack;
-	const_attack_ptr def_weapon = is_attacker ? other_attack : self_attack;
+	const_attack_ptr& att_weapon = is_attacker ? self_attack : other_attack;
+	const_attack_ptr& def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
 	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
@@ -2000,38 +2140,23 @@ bool attack_type::special_active_impl(
 			return false;
 	}
 
-	//Add wml filter if "backstab" attribute used.
-	if (!special["backstab"].blank()) {
-		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
-	}
-	config cfg = special;
-	if(special["backstab"].to_bool()){
-		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
-		config& filter_child = cfg.child_or_add("filter_opponent");
-		if(!special.has_child("filter_opponent")){
-			filter_child["formula"] = backstab_formula;
-		} else {
-			config filter;
-			filter["formula"] = backstab_formula;
-			filter_child.add_child("and", filter);
-		}
-	}
-	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
-
 	// Filter the units involved.
 	//If filter concerns the unit on which special is applied,
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
-	std::string self_tag_name = whom_is_self ? tag_name : "";
+	bool applied_both = special["apply_to"] == "both";
+	std::string self_tag_name = (applied_both || whom_is_self) ? tag_name : "";
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
 		return false;
-	std::string opp_tag_name = !whom_is_self ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
+	std::string opp_tag_name = (applied_both || !whom_is_self) ? tag_name : "";
+	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent", opp_tag_name))
 		return false;
-	std::string att_tag_name = is_attacker ? tag_name : "";
+	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
+	std::string att_tag_name = applied_to_attacker ? tag_name : "";
 	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
 		return false;
-	std::string def_tag_name = !is_attacker ? tag_name : "";
+	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
+	std::string def_tag_name = applied_to_defender ? tag_name : "";
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
 		return false;
 

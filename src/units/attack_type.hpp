@@ -137,7 +137,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter) const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -150,6 +150,15 @@ public:
 	inline config to_config() const { config c; write(c); return c; }
 
 	void add_formula_context(wfl::map_formula_callable&) const;
+
+	//used in self infinite recursion case for prevent crash.
+	const std::string& check_tag_name() const {return check_tag_name_;}
+	//used for update variable of recursion after each checking.
+	void update_check_tag_name(const std::string& tag_name = "") const {check_tag_name_ = tag_name;}
+	//used in for prevent recursion by autochecking of weapon special
+	const config& check_cfg() const {return check_cfg_;}
+	//used for update variable of recursion after each checking.
+	void update_check_cfg(const config& cfg) const {check_cfg_ = cfg;}
 private:
 	// In unit_abilities.cpp:
 
@@ -365,6 +374,9 @@ private:
 	int parry_;
 	config specials_;
 	bool changed_;
+	mutable std::string check_tag_name_ = "";
+	/** mutable config used for prevent weapon special to check itself.*/
+	mutable config check_cfg_;
 };
 
 using attack_list = std::vector<attack_ptr>;
