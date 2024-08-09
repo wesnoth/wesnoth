@@ -128,7 +128,8 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
-        if: success() || steps.build.outcome == 'success'
+        # only run on release builds (takes ~10 times as long on debug)
+        if: matrix.cfg == 'release' && (success() || steps.build.outcome == 'success')
         run: ./run_wml_tests -g -c -t 20 -bt 1000
       - name: Run play tests
         if: success() || steps.build.outcome == 'success'
@@ -137,7 +138,8 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
-        if: success() || steps.build.outcome == 'success'
+        # only run on release builds (takes ~10 times as long on debug)
+        if: matrix.cfg == 'release' && (success() || steps.build.outcome == 'success')
         run: ./run_boost_tests
 
   steam-runtime:
