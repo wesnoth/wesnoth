@@ -15,6 +15,7 @@
 
 #include "scripting/lua_gui2.hpp"
 
+#include "gui/gui.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
@@ -169,6 +170,16 @@ int show_story(lua_State* L) {
 }
 
 /**
+ * Changes the current ui(gui2) theme
+ * - Arg 1: The id of the theme to switch to
+ */
+int switch_theme(lua_State* L) {
+	std::string theme_id = luaL_checkstring(L, 1);
+	gui2::switch_theme(theme_id);
+	return 0;
+}
+
+/**
  * Displays a popup menu at the current mouse position
  * Best used from a [set_menu_item], to show a submenu
  * - Arg 1: Configs defining each item, with keys icon, image/label, second_label, tooltip
@@ -281,6 +292,7 @@ int luaW_open(lua_State* L)
 		{ "show_story",         &show_story },
 		{ "show_prompt",        &show_message_box },
 		{ "show_help",          &show_help   },
+		{ "switch_theme",             &switch_theme   },
 		{ "add_widget_definition",    &intf_add_widget_definition },
 		{ "show_dialog",              &intf_show_dialog   },
 		{ nullptr, nullptr },

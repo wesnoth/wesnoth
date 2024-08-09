@@ -28,6 +28,7 @@
 #include "game_initialization/multiplayer.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/outro.hpp"
 #include "gui/widgets/retval.hpp"
@@ -205,6 +206,7 @@ level_result::type campaign_controller::play_game()
 				}
 			}
 
+			gui2::switch_theme(prefs::get().gui_theme());
 			return res;
 		} else if(res == level_result::type::observer_end && mp_info_ && !mp_info_->is_host) {
 			const int dlg_res = gui2::show_message(_("Game Over"),

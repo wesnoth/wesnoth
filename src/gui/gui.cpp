@@ -42,17 +42,43 @@ void init()
 	// Read and validate the WML files.
 	//
 	config guis_cfg;
+	std::string current_file;
+	const std::string schema_file = "schema/gui.cfg";
 	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
+		schema_validation::schema_validator validator(filesystem::get_wml_location(schema_file).value());
 
+		// Core theme files
+		current_file = "gui/_main.cfg";
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(current_file).value(), &preproc);
 		read(guis_cfg, *stream, &validator);
+
+		// Add-on theme files
+		// Append the $user_campaign_dir/*/gui.cfg files to the main gui config.
+		std::vector<std::string> user_dirs;
+		{
+			const std::string user_campaign_dir = filesystem::get_addons_dir();
+			std::vector<std::string> user_files;
+			filesystem::get_files_in_dir(
+				user_campaign_dir, &user_files, &user_dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
+		}
+
+		for(const std::string& umc : user_dirs) {
+			const std::string gui_file = umc + "/gui-theme.cfg";
+			current_file = filesystem::get_short_wml_path(gui_file);
+			if(filesystem::file_exists(gui_file)) {
+				config addon_cfg;
+				schema_validation::schema_validator validator(filesystem::get_wml_location(schema_file).value());
+				read(addon_cfg, *preprocess_file(gui_file, &preproc), &validator);
+				guis_cfg.append(addon_cfg);
+			}
+		}
+
 	} catch(const config::error& e) {
 		ERR_GUI_P << e.what();
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
+		ERR_GUI_P << "Setting: could not read gui file: " << current_file;
 	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
+		ERR_GUI_P << "Setting: could not read schema file: " << schema_file;
 		ERR_GUI_P << e.message;
 	}
 

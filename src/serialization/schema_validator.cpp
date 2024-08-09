@@ -418,6 +418,10 @@ void schema_validator::close_tag()
 
 void schema_validator::print_cache()
 {
+	if (cache_.empty()) {
+		return;
+	}
+
 	for(auto& m : cache_.top()) {
 		for(auto& list : m.second) {
 			print(list);
@@ -432,10 +436,12 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	// close previous errors and print them to output.
 	print_cache();
 
-	// clear cache
-	auto cache_it = cache_.top().find(&cfg);
-	if(cache_it != cache_.top().end()) {
-		cache_it->second.clear();
+	if (!cache_.empty()) {
+		// clear cache
+		auto cache_it = cache_.top().find(&cfg);
+		if(cache_it != cache_.top().end()) {
+			cache_it->second.clear();
+		}
 	}
 
 	// Please note that validating unknown tag keys the result will be false
