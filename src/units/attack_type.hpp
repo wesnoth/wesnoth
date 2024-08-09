@@ -85,8 +85,6 @@ public:
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
 
-	const std::set<std::string>& checking_alignment() const { return checking_alignment_; }
-
 	const std::string& attack_alignment() const { return attack_alignment_; }
 	/** Returns alignment specified by 'attack_alignment' If empty and have unit's alignment returns the unit's alignment.
 	 */
@@ -356,8 +354,6 @@ public:
 		return changed_;
 	}
 private:
-
-	const std::set<std::string> checking_alignment_{"neutral", "lawful", "chaotic", "liminal"};
 
 	t_string description_;
 	std::string id_;
