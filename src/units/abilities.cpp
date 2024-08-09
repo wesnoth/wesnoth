@@ -1290,6 +1290,12 @@ int attack_type::modified_damage() const
 	return damage_value;
 }
 
+unit_alignments::type attack_type::alignment_in_attack() const
+{
+	// pick attack alignment or fall back to unit alignment
+	return unit_alignments::get_enum(attack_alignment()).value_or(self_ ? self_->alignment() : unit_alignments::type::neutral);
+}
+
 
 namespace { // Helpers for attack_type::special_active()
 
