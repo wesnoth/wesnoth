@@ -55,7 +55,11 @@ const std::string hotkey_base::get_name() const
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	if(mod_ & KMOD_ALT) {
+#ifdef __APPLE__
+		ret += "opt";
+#else
 		ret += "alt";
+#endif
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
