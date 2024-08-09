@@ -51,21 +51,20 @@ using game_config::tile_size;
 template<>
 struct std::hash<image::locator>
 {
-	std::size_t operator()(const image::locator& loc) const
+	std::size_t operator()(const image::locator& val) const
 	{
-		const image::locator::value& val = loc.val_;
-		std::size_t hash = std::hash<unsigned>{}(val.type);
+		std::size_t hash = std::hash<unsigned>{}(val.type_);
 
-		if(val.type == image::locator::FILE || val.type == image::locator::SUB_FILE) {
-			boost::hash_combine(hash, val.filename);
+		if(val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
+			boost::hash_combine(hash, val.filename_);
 		}
 
-		if(val.type == image::locator::SUB_FILE) {
-			boost::hash_combine(hash, val.loc.x);
-			boost::hash_combine(hash, val.loc.y);
-			boost::hash_combine(hash, val.center_x);
-			boost::hash_combine(hash, val.center_y);
-			boost::hash_combine(hash, val.modifications);
+		if(val.type_ == image::locator::SUB_FILE) {
+			boost::hash_combine(hash, val.loc_.x);
+			boost::hash_combine(hash, val.loc_.y);
+			boost::hash_combine(hash, val.center_x_);
+			boost::hash_combine(hash, val.center_y_);
+			boost::hash_combine(hash, val.modifications_);
 		}
 
 		return hash;
@@ -223,8 +222,8 @@ locator locator::clone(const std::string& mods) const
 {
 	locator res = *this;
 	if(!mods.empty()) {
-		res.val_.modifications += mods;
-		res.val_.type = SUB_FILE;
+		res.modifications_ += mods;
+		res.type_ = SUB_FILE;
 	}
 
 	return res;
@@ -242,76 +241,76 @@ std::ostream& operator<<(std::ostream& s, const locator& l)
 	return s;
 }
 
-locator::value::value(const std::string& fn)
-	: type(FILE)
-	, filename(fn)
+locator::locator(const std::string& fn)
+	: type_(FILE)
+	, filename_(fn)
 {
-	if(filename.empty()) {
+	if(filename_.empty()) {
 		return;
 	}
 
-	if(boost::algorithm::starts_with(filename, data_uri_prefix)) {
-		if(parsed_data_URI parsed{ filename }; !parsed.good) {
-			std::string_view view{ filename };
+	if(boost::algorithm::starts_with(filename_, data_uri_prefix)) {
+		if(parsed_data_URI parsed{ filename_ }; !parsed.good) {
+			std::string_view view{ filename_ };
 			std::string_view stripped = view.substr(0, view.find(","));
 			ERR_IMG << "Invalid data URI: " << stripped;
 		}
 
-		is_data_uri = true;
+		is_data_uri_ = true;
 	}
 
-	if(const std::size_t markup_field = filename.find('~'); markup_field != std::string::npos) {
-		type = SUB_FILE;
-		modifications = filename.substr(markup_field, filename.size() - markup_field);
-		filename = filename.substr(0, markup_field);
+	if(const std::size_t markup_field = filename_.find('~'); markup_field != std::string::npos) {
+		type_ = SUB_FILE;
+		modifications_ = filename_.substr(markup_field, filename_.size() - markup_field);
+		filename_ = filename_.substr(0, markup_field);
 	}
 }
 
-locator::value::value(const std::string& filename, const std::string& modifications)
-	: type(SUB_FILE)
-	, filename(filename)
-	, modifications(modifications)
+locator::locator(const std::string& filename, const std::string& modifications)
+	: type_(SUB_FILE)
+	, filename_(filename)
+	, modifications_(modifications)
 {
 }
 
-locator::value::value(
+locator::locator(
 		const std::string& filename,
 		const map_location& loc,
 		int center_x,
 		int center_y,
 		const std::string& modifications)
-	: type(SUB_FILE)
-	, filename(filename)
-	, modifications(modifications)
-	, loc(loc)
-	, center_x(center_x)
-	, center_y(center_y)
+	: type_(SUB_FILE)
+	, filename_(filename)
+	, modifications_(modifications)
+	, loc_(loc)
+	, center_x_(center_x)
+	, center_y_(center_y)
 {
 }
 
-bool locator::value::operator==(const value& a) const
+bool locator::locator::operator==(const locator& a) const
 {
-	if(a.type != type) {
+	if(a.type_ != type_) {
 		return false;
-	} else if(type == FILE) {
-		return filename == a.filename;
-	} else if(type == SUB_FILE) {
-		return std::tie(filename, loc, modifications, center_x, center_y) ==
-			std::tie(a.filename, a.loc, a.modifications, a.center_x, a.center_y);
+	} else if(type_ == FILE) {
+		return filename_ == a.filename_;
+	} else if(type_ == SUB_FILE) {
+		return std::tie(filename_, loc_, modifications_, center_x_, center_y_) ==
+			std::tie(a.filename_, a.loc_, a.modifications_, a.center_x_, a.center_y_);
 	}
 
 	return false;
 }
 
-bool locator::value::operator<(const value& a) const
+bool locator::locator::operator<(const locator& a) const
 {
-	if(type != a.type) {
-		return type < a.type;
-	} else if(type == FILE) {
-		return filename < a.filename;
-	} else if(type == SUB_FILE) {
-		return std::tie(filename, loc, modifications, center_x, center_y) <
-			std::tie(a.filename, a.loc, a.modifications, a.center_x, a.center_y);
+	if(type_ != a.type_) {
+		return type_ < a.type_;
+	} else if(type_ == FILE) {
+		return filename_ < a.filename_;
+	} else if(type_ == SUB_FILE) {
+		return std::tie(filename_, loc_, modifications_, center_x_, center_y_) <
+			std::tie(a.filename_, a.loc_, a.modifications_, a.center_x_, a.center_y_);
 	}
 
 	return false;
