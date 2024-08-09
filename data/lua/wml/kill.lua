@@ -22,6 +22,7 @@ function wesnoth.wml_actions.kill(cfg)
 	end
 	local dead_men_walking = wesnoth.units.find_on_map(cfg)
 	for i,unit in ipairs(dead_men_walking) do
+		unit.hitpoints = 0
 		local death_loc = {x = tonumber(unit.x) or 0, y = tonumber(unit.y) or 0}
 		if not secondary_unit then killer_loc = death_loc end
 		local can_fire = false
