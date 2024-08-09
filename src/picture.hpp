@@ -64,10 +64,9 @@ public:
 	locator(locator&&) noexcept = default;
 	locator(const locator&) = default;
 
-	template<typename... Args>
-	locator(Args&&... args) : val_(std::forward<Args>(args)...)
-	{
-	}
+	locator(const std::string& filename);
+	locator(const std::string& filename, const std::string& modifications);
+	locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications = "");
 
 	locator& operator=(const locator& a) = default;
 	locator& operator=(locator&&) = default;
@@ -75,21 +74,23 @@ public:
 	/** Returns a copy of this locator with the given IPF */
 	locator clone(const std::string& mods) const;
 
-	bool operator==(const locator& a) const { return val_ == a.val_; }
+	bool operator==(const locator& a) const;
 	bool operator!=(const locator& a) const { return !operator==(a); }
 
-	const std::string& get_filename() const { return val_.filename; }
-	bool is_data_uri() const { return val_.is_data_uri; }
-	const map_location& get_loc() const { return val_.loc ; }
-	int get_center_x() const { return val_.center_x; }
-	int get_center_y() const { return val_.center_y; }
-	const std::string& get_modifications() const { return val_.modifications; }
-	type get_type() const { return val_.type; }
+	bool operator<(const locator& a) const;
+
+	const std::string& get_filename() const { return filename_; }
+	bool is_data_uri() const { return is_data_uri_; }
+	const map_location& get_loc() const { return loc_ ; }
+	int get_center_x() const { return center_x_; }
+	int get_center_y() const { return center_y_; }
+	const std::string& get_modifications() const { return modifications_; }
+	type get_type() const { return type_; }
 
 	/**
 	 * Returns @a true if the locator does not correspond to an actual image.
 	 */
-	bool is_void() const { return val_.type == NONE; }
+	bool is_void() const { return type_ == NONE; }
 
 	/**
 	 * Tests whether the file the locator points at exists.
@@ -105,27 +106,13 @@ public:
 	bool file_exists() const;
 
 private:
-	struct value
-	{
-		value() = default;
-
-		value(const std::string& filename);
-		value(const std::string& filename, const std::string& modifications);
-		value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications = "");
-
-		bool operator==(const value& a) const;
-		bool operator<(const value& a) const;
-
-		locator::type type = NONE;
-		bool is_data_uri = false;
-		std::string filename{};
-		std::string modifications{};
-		map_location loc{};
-		int center_x = 0;
-		int center_y = 0;
-	};
-
-	value val_;
+	locator::type type_ = NONE;
+	bool is_data_uri_ = false;
+	std::string filename_{};
+	std::string modifications_{};
+	map_location loc_{};
+	int center_x_ = 0;
+	int center_y_ = 0;
 
 public:
 	friend struct std::hash<locator>;

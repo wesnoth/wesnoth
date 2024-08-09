@@ -144,16 +144,17 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						}
 
 						// FIXME: use shaders instead of textures for this once we can actually do that
+						using namespace std::string_literals;
 
 						if(fogged(loc)) {
 							// Hex-shaped texture to apply #000000 at 40% opacity
-							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png");
+							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 
 						if(highlighted) {
 							// Hex-shaped texture to apply #ffffff at 40% opacity
-							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png");
+							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 					}
