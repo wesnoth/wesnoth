@@ -77,6 +77,7 @@ public:
 		keep_open_ = keep_open;
 	}
 
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -106,6 +107,8 @@ private:
 
 	bool keep_open_;
 
+	/* Whether or not the button's label should be updated when an option is selected */
+	bool update_label_;
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
@@ -157,8 +160,10 @@ public:
 
 	virtual std::unique_ptr<widget> build() const override;
 
+	bool update_label;
 private:
 	std::vector<::config> options_;
+
 };
 
 } // namespace implementation

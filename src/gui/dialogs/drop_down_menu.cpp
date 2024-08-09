@@ -88,6 +88,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, selected_item_(selected_item)
 	, use_markup_(parent->get_use_markup())
 	, keep_open_(keep_open)
+	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
 }
@@ -100,6 +101,7 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	, selected_item_(selected_item)
 	, use_markup_(use_markup)
 	, keep_open_(keep_open)
+	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
 }
@@ -216,7 +218,7 @@ void drop_down_menu::pre_show(window& window)
 	}
 
 	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
-		list.select_row(selected_item_);
+		list.select_row(selected_item_,start_selected_);
 	}
 
 	window.keyboard_capture(&list);
