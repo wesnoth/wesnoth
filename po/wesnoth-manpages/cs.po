@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-07-21 22:31-0500\n"
-"PO-Revision-Date: 2024-06-27 20:34+0200\n"
+"PO-Revision-Date: 2024-07-27 09:44+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -192,12 +192,13 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
-#, fuzzy
-#| msgid "Adds the option to show a clock for testing the drawing timer."
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
-msgstr "Přidá volbu pro ukázání hodin na testování časovače kreslení."
+msgstr ""
+"Přidá volbu pro ukázání hodin na testování časovače kreslení. Také přidá "
+"možnost zobrazení dialogového okna pro testování grafického uživatelského "
+"rozhraní."
 
 # type: TP
 #. type: TP
@@ -498,10 +499,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:169
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
+#, no-wrap
 msgid "B<--no-log-sanitize>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
@@ -509,6 +509,8 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
+"vypne anonymizaci, která se běžně používá při zaznamenávání, například "
+"nahrazení uživatelských jmen jménem USER."
 
 # type: TP
 #. type: TP
@@ -2156,10 +2158,10 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
-"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
-"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
-"12 hodin a 30 minut."
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" "
+"(roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty "
+"(m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, 12 "
+"hodin a 30 minut."
 
 # type: Plain text
 #. type: Plain text
@@ -2459,49 +2461,3 @@ msgstr ""
 #: doc/man/wesnothd.6:287
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--config-dir>I<\\ name>"
-#~ msgstr "B<--config-dir>I<\\ název>"
-
-#~ msgid "Deprecated, use B<--userdata-dir>."
-#~ msgstr "Zastaralé, použij B<--userdata-dir>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--config-path>"
-#~ msgstr "B<--config-path>"
-
-# type: TP
-#~ msgid "Deprecated, use B<--userdata-path>."
-#~ msgstr "Zastaralé, použij B<--userdata-path>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgstr "B<--userconfig-dir>I<\\ název>"
-
-#~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  This defaults to the userdata path."
-#~ msgstr ""
-#~ "nastaví I<název> adresáře s uživatelským nastavením v $HOME, nebo pro "
-#~ "Windows v „My Documents\\eMy Games“. Pro adresář s nastavením můžeš také "
-#~ "určit absolutní cestu mimo $HOME nebo „My Documents\\eMy Games“. Na "
-#~ "Windows je kromě toho možné zadat adresář relativně k pracovnímu adresáři "
-#~ "procesu užitím cesty, která začíná na „.\\e“ nebo „..\\e“. Výchozí "
-#~ "hodnotou je cesta k uživatelským datům."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--userconfig-path>"
-#~ msgstr "B<--userconfig-path>"
-
-# type: Plain text
-#~ msgid "prints the path of the user configuration directory and exits."
-#~ msgstr "vytiskne cestu k adresáři s uživatelským nastavením a skončí."

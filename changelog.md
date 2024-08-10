@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), French
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French
  ### Units
    * New cat units: Jumpcat, Forest Lion, and zombie/soulless cat
  ### User interface
