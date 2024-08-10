@@ -497,14 +497,8 @@ std::string unit_topic_generator::operator()() const {
 				must_have_count << "\n (" << must_have_traits.size() << ") : ";
 				std::stringstream random_count;
 				random_count << " (" << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits) << ") : ";
-
-//				int second_line_whitespace = font::pango_line_width(traits_label+must_have_count.str(), normal_font_size)
-//					- font::pango_line_width(random_count.str(), normal_font_size);
-				// This ensures that the second line is justified so that the ':' characters are aligned.
-
 				ss << must_have_count.str();
 				print_trait_list(ss, must_have_traits);
-//				ss << "\n" << jump(second_line_whitespace) << random_count.str();
 				ss << "\n" << random_count.str();
 				print_trait_list(ss, random_traits);
 			} else {
@@ -618,14 +612,14 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n" << detailed_description;
 
 	if(const auto notes = type_.special_notes(); !notes.empty()) {
-		ss << "\n" << _("<header>Special Notes</header>");
+		ss << "<br/><header>" << _("Special Notes") << "</header>\n";
 		for(const auto& note : notes) {
 			ss << font::unicode_bullet << " <i>" << note << "</i>" << '\n';
 		}
 	}
 
 	// Print the attacks table
-	ss << "\n<header>Attacks</header>";
+	ss << "\n<header>" << _("Attacks") << "</header>";
 
 	if (!type_.attacks().empty()) {
 		// Start table
@@ -711,9 +705,9 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	// Print the resistance table of the unit.
-	ss << "\n<header>Resistances</header>";
+	ss << "\n<header>" << _("Resistances") << "</header>";
 
-//	 Start table
+	// Start table
 	ss << "<table col=2/>";
 	ss << _("<b>Attack Type</b>") << "<jump/>";
 	ss << _("<b>Resistance</b>") << "<br/>";
@@ -743,7 +737,7 @@ std::string unit_topic_generator::operator()() const {
 
 	if (std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
 		// Print the terrain modifier table of the unit.
-		ss << "\n<header>Terrain Modifiers</header>";
+		ss << "\n<header>" << _("Terrain Modifiers") << "</header>";
 		ss << "<table col=3/>";
 		ss << _("<b>Terrain</b>") << "<jump/>";
 		ss << _("<b>Defense</b>") << "<jump/>";
