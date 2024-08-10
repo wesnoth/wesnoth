@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-07-21 22:32-0500\n"
-"PO-Revision-Date: 2024-06-28 23:36+0200\n"
+"PO-Revision-Date: 2024-07-30 22:06+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2408,10 +2408,8 @@ msgstr "Kopírovat"
 #. [draw]
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Domovská stránka:</b>"
+msgstr "<span font_family='DejaVu Sans'>✔</span> Zkopírováno"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widget/chatbox.cfg:40
@@ -2713,10 +2711,8 @@ msgstr "Webové stránky:"
 
 #. [label]
 #: data/gui/themes/default/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Identifikátor:"
 
 #. [button]: id=delete
 #: data/gui/themes/default/window/addon_manager.cfg:659
@@ -3181,10 +3177,8 @@ msgstr "Náhled obrázku"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/window/custom_tod.cfg:108
-#, fuzzy
-#| msgid "Player joins"
 msgid "Play sound"
-msgstr "Hráč se připojil"
+msgstr "Přehrát zvuk"
 
 #. [label]
 #: data/gui/themes/default/window/custom_tod.cfg:186
@@ -3276,7 +3270,7 @@ msgstr "Smazat ToD"
 #. [button]: id=preview_color
 #: data/gui/themes/default/window/custom_tod.cfg:498
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Ukázat změny barev na mapě"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3357,7 +3351,7 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
-"Vyber rozšíření, které má být spojeno se stávající prací v editoru. Pokud je "
+"Vyber rozšíření, které má být spojeno se stávající prací v editoru. Pokud je "
 "zvolena možnost Nové rozšíření, lze jeho ID změnit pomocí volby Změnit ID "
 "rozšíření."
 
@@ -4088,12 +4082,12 @@ msgstr "Odebrat současnou záložku ze záložek"
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:318
 msgid "Open External"
-msgstr ""
+msgstr "Otevřít externě"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:319
 msgid "Open selected using platform's default applications"
-msgstr ""
+msgstr "Otevřít vybraný pomocí výchozích programů platformy"
 
 # adresář?
 #. [button]: id=new_dir
@@ -6087,10 +6081,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/03_display.cfg:168
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Motiv rozhraní:"
+msgstr "Motiv ve hře:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/window/preferences/03_display.cfg:181
@@ -6103,28 +6095,22 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/03_display.cfg:192
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "UI theme:"
-msgstr "Motiv rozhraní:"
+msgstr "Motiv uživ. rozhraní:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/window/preferences/03_display.cfg:205
-#, fuzzy
-#| msgid ""
-#| "Change the in-game interface theme. Additional themes may be provided by "
-#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
-"Změnit motiv rozhraní ve hře. Další motivy mohou být poskytnuty "
-"v rozšířeních vytvořených komunitou."
+"Změnit motiv uživatelského rozhraní (GUI2). Další motivy mohou být "
+"poskytnuty v rozšířeních vytvořených komunitou."
 
 #. [label]: id=restart_msg
 #: data/gui/themes/default/window/preferences/03_display.cfg:217
 msgid "<span color='red'>*restart required</span>"
-msgstr ""
+msgstr "<span color='red'>*je vyžadován restart</span>"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/window/preferences/03_display.cfg:238
@@ -7642,10 +7628,12 @@ msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Tento soubor se nachází mimo adresáře s daty Wesnothu. Chceš jej zkopírovat "
+"do svého rozšíření?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1085
 msgid "Unit type saved."
-msgstr ""
+msgstr "Typ jednotky uložen."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -7672,10 +7660,8 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: src/gui/dialogs/file_dialog.cpp:305
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Otevírání odkazů není podporováno, kontaktujte správce vašeho balíčku"
+msgstr "Otevření souborů není podporováno, obrať se na správce balíčku"
 
 #: src/gui/dialogs/file_dialog.cpp:362
 msgid "The file already exists. Do you wish to overwrite it?"
@@ -7957,16 +7943,16 @@ msgid "lua console"
 msgstr "konzole lua"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:48
-#, fuzzy
-#| msgid "No eras found"
 msgid "No Other Version Found"
-msgstr "Žádný věk nenalezen"
+msgstr "Nebyla nalezena žádná další verze"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:48
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"Tohle by importovalo nastavení z předchozí verze Wesnothu, ale v tomto "
+"zařízení nebyla nalezena žádná jiná verze."
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:138
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:497
@@ -8930,10 +8916,8 @@ msgid "New Scenario"
 msgstr "Nový scénář"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Upravit scénář"
+msgstr "Načíst mapu/scénář"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Save Map As"
@@ -9285,16 +9269,12 @@ msgid "Change Add-on ID"
 msgstr "Změnit ID rozšíření"
 
 #: src/hotkey/hotkey_command.cpp:275
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Vybrat verzi rozšíření"
+msgstr "Vybrat aktivní rozšíření"
 
 #: src/hotkey/hotkey_command.cpp:276
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Otevřít složku s uloženými soubory"
+msgstr "Otevřít složku s rozšířeními"
 
 #: src/hotkey/hotkey_command.cpp:279
 msgid "Edit Side"
@@ -9454,38 +9434,3 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "page^✔ Copied"
-#~ msgstr "✔ Zkopírováno"
-
-#~ msgid "Stats"
-#~ msgstr "Statistiky"
-
-#~ msgid "Configuration:"
-#~ msgstr "Nastavení:"
-
-#~ msgid "filesystem_path_game^User preferences"
-#~ msgstr "Uživatelské nastavení"
-
-#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
-#~ msgstr "--userdata-dir=<relativní cesta, která nezačíná tečkou>"
-
-#~ msgid ""
-#~ "Use an absolute path, or a relative path that starts with a period and a "
-#~ "backslash"
-#~ msgstr ""
-#~ "Použij absolutní cestu nebo relativní cestu, která začíná tečkou "
-#~ "a zpětným lomítkem"
-
-#~ msgid "--userdata-dir=<relative path>"
-#~ msgstr "--userdata-dir=<relativní cesta>"
-
-#~ msgid ""
-#~ "Use absolute paths. Relative paths are deprecated because they are "
-#~ "interpreted relative to $HOME"
-#~ msgstr ""
-#~ "Použij absolutní cesty. Relativní cesty jsou zastaralé, protože jsou "
-#~ "interpretovány relativně k $HOME"
-
-#~ msgid "Load Map"
-#~ msgstr "Načíst mapu"
