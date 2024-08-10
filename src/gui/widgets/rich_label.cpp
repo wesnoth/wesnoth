@@ -603,16 +603,11 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					add_text_with_attributes((*curr_item), line, attrs, attr_data);
 					is_image = false;
 
-				// }---------- TABLE TAGS -----------{
-
-
 				} else if (tag.key == "text") {
+
 					DBG_GUI_RL << "text: text=" << ((line.size() > 20) ? line.substr(0,20) : line) << "...";
 
 					(*curr_item)["font_size"] = font::SIZE_NORMAL;
-
-					int tmp_h = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_)).y;
-
 					(*curr_item)["text"] = (*curr_item)["text"].str() + line;
 
 					point text_size = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_));
