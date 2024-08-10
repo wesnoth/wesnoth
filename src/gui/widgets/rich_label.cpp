@@ -342,7 +342,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 	bool in_table = false;
 	unsigned col_idx = 0;
 	unsigned col_width = 0;
-	unsigned max_col_height = 0;
+	unsigned max_row_height = 0;
 	unsigned row_y = 0;
 
 	DBG_GUI_RL << parsed_text.debug();
@@ -420,8 +420,8 @@ config rich_label::get_parsed_text(const config& parsed_text)
 				}
 
 				if (col_width > 0) {
-					max_col_height = std::max(max_col_height, txt_height_);
-					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
+					max_row_height = std::max(max_row_height, txt_height_);
+					max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
 					txt_height_ = 0;
 
 					col_idx++;
@@ -453,33 +453,32 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					DBG_GUI_RL << txt_height_;
 					DBG_GUI_RL << img_size;
 
-					max_col_height = std::max(max_col_height, txt_height_);
-					max_col_height = std::max(max_col_height, static_cast<unsigned>(img_size.y));
+					max_row_height = std::max(max_row_height, txt_height_);
+					max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
 
-					DBG_GUI_RL << max_col_height;
+					DBG_GUI_RL << "row height: " << max_row_height;
 
 					//linebreak
 					col_idx = 0;
-					x_ = 0;
-					prev_blk_height_ += max_col_height + padding_;
+					prev_blk_height_ = row_y;
+					prev_blk_height_ += max_row_height + padding_;
 					row_y = prev_blk_height_;
 
-					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_col_height % padding_ % col_width);
+					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_row_height % padding_ % col_width);
 
-					max_col_height = 0;
+					max_row_height = 0;
 					txt_height_ = 0;
 
 				} else {
 					// TODO correct height update
 					if (is_image && !is_float) {
-						x_ = 0;
 						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
-						img_size.y = 0;
 					} else {
 						add_text_with_attribute(*curr_item, "\n");
 					}
 				}
 
+				x_ = 0;
 				is_image = false;
 				img_size = point(0,0);
 
@@ -497,7 +496,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					new_text_block = false;
 				}
 
-				DBG_GUI_RL << "end table: " << max_col_height;
+				DBG_GUI_RL << "end table: " << max_row_height;
 				col_width = 0;
 				in_table = false;
 				is_image = false;
