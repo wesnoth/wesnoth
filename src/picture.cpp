@@ -288,7 +288,7 @@ locator::locator(
 {
 }
 
-bool locator::locator::operator==(const locator& a) const
+bool locator::operator==(const locator& a) const
 {
 	if(a.type_ != type_) {
 		return false;
@@ -302,7 +302,7 @@ bool locator::locator::operator==(const locator& a) const
 	return false;
 }
 
-bool locator::locator::operator<(const locator& a) const
+bool locator::operator<(const locator& a) const
 {
 	if(type_ != a.type_) {
 		return type_ < a.type_;
