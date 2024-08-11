@@ -209,10 +209,12 @@ private:
 	/** Height of all previous blocks, combined */
 	unsigned prev_blk_height_;
 
-	/** template for canvas text config */
+	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, t_string text = "");
 
-	void add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "");
+	void add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "") {
+		add_text_with_attributes(curr_item, text, {attr_name}, {extra_data});
+	}
 	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
 	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool is_prev_float, bool floating, point& img_size, point& float_size);
 	void add_link(config& curr_item, std::string name, std::string dest, int img_width);
