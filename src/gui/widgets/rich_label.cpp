@@ -108,49 +108,24 @@ point rich_label::get_image_size(config img_cfg) {
 	return point(variables.query_value("image_width").as_int(), variables.query_value("image_height").as_int());
 }
 
-void rich_label::add_text_with_attribute(config& curr_item, std::string text, std::string attr_name, std::string extra_data) {
-	size_t start = curr_item["text"].str().size();
-
-	curr_item["text"] = curr_item["text"].str() + text;
-
-	if (!attr_name.empty()) {
-		append_if_not_empty(&curr_item["attr_name"], ",");
-		curr_item["attr_name"] = curr_item["attr_name"].str() + attr_name;
-
-		append_if_not_empty(&curr_item["attr_start"], ",");
-		curr_item["attr_start"] = curr_item["attr_start"].str() + std::to_string(start);
-
-		append_if_not_empty(&curr_item["attr_end"], ",");
-		curr_item["attr_end"] = curr_item["attr_end"].str() + std::to_string(curr_item["text"].str().size());
-
-		if (!extra_data.empty()) {
-			append_if_not_empty(&curr_item["attr_data"], ",");
-			curr_item["attr_data"] = curr_item["attr_data"].str() + extra_data;
-		}
-	}
-}
-
 void rich_label::add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data) {
-
 	size_t start = curr_item["text"].str().size();
 	curr_item["text"] = curr_item["text"].str() + text;
+	size_t end = curr_item["text"].str().size();
 
 	if (!attr_names.empty()) {
-		append_if_not_empty(&curr_item["attr_name"], ",");
-		curr_item["attr_name"] = curr_item["attr_name"].str() + utils::join(attr_names);
-
 		for (size_t i = 0; i < attr_names.size(); i++) {
-			append_if_not_empty(&curr_item["attr_start"], ",");
-			curr_item["attr_start"] = curr_item["attr_start"].str() + std::to_string(start);
-			append_if_not_empty(&curr_item["attr_end"], ",");
-			curr_item["attr_end"] = curr_item["attr_end"].str() + std::to_string(curr_item["text"].str().size());
-		}
+			config& attr_cfg = curr_item.add_child("attribute");
+			attr_cfg["name"] = attr_names[i];
+			attr_cfg["start"] = start;
+			attr_cfg["end"] = end;
 
-		if (!extra_data.empty()) {
-			append_if_not_empty(&curr_item["attr_data"], ",");
-			curr_item["attr_data"] = curr_item["attr_data"].str() + utils::join(extra_data);
+			if (!extra_data.empty()) {
+				attr_cfg["value"] = extra_data[i];
+			}
 		}
 	}
+
 }
 
 void rich_label::add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool is_prev_float, bool floating, point& img_size, point& float_size) {
@@ -544,7 +519,6 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					DBG_GUI_RL << "ref: dst=" << child["dst"];
 
 				} else if(tag.key == "bold" || tag.key == "b") {
-
 					add_text_with_attribute(*curr_item, line, "bold");
 					is_image = false;
 
@@ -565,11 +539,6 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					DBG_GUI_RL << "u: text=" << line;
 
 				} else if(tag.key == "header" || tag.key == "h") {
-
-					append_if_not_empty(&((*curr_item)["attr_name"]), ",");
-					append_if_not_empty(&((*curr_item)["attr_start"]), ",");
-					append_if_not_empty(&((*curr_item)["attr_end"]), ",");
-					append_if_not_empty(&((*curr_item)["attr_data"]), ",");
 
 					std::vector<std::string> attrs = {"face", "color", "size"};
 					std::vector<std::string> attr_data;

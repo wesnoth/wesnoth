@@ -31,6 +31,7 @@
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "font/font_config.hpp"
 #include "font/standard_colors.hpp"
 #include "picture.hpp"
 #include "sdl/point.hpp"
@@ -414,6 +415,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: rect_bounded_shape(cfg)
+	, cfg_(cfg)
 	, font_family_(font::str_to_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
@@ -464,68 +466,51 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	font::pango_text& text_renderer = font::get_text_renderer();
 	text_renderer.clear_attribute_list();
 
+	//
+	// Highlight
+	//
 	std::vector<std::string> starts = utils::split(highlight_start_, ',');
 	std::vector<std::string> stops = utils::split(highlight_end_, ',');
 
 	for(size_t i = 0; i < std::min(starts.size(), stops.size()); i++) {
 		typed_formula<int> hstart(starts.at(i));
 		typed_formula<int> hstop(stops.at(i));
-		text_renderer.set_highlight_area(hstart(variables), hstop(variables), highlight_color_(variables));
+		text_renderer.add_attribute_bg_color(hstart(variables), hstop(variables), highlight_color_(variables));
 	}
 
-	// TODO check the strings before parsing them
-	starts = utils::split(attr_start_, ',');
-	stops = utils::split(attr_end_, ',');
-	std::vector<std::string> styles = utils::split(attr_name_, ',');
-	std::vector<std::string> data = utils::split(attr_data_, ',');
-
-	for(size_t i = 0, data_index = 0; i < std::min(starts.size(), stops.size()); i++) {
-		if (styles.at(i).empty()) {
+	//
+	// Attribute subtags
+	//
+	for (const auto& attr : cfg_.child_range("attribute")) {
+		if (attr["name"].empty()) {
 			continue;
 		}
 
-		typed_formula<int> attr_start(starts.at(i));
-		typed_formula<int> attr_stop(stops.at(i));
+		const unsigned start = attr["start"].to_int(0);
+		const unsigned end = attr["end"].to_int(text.size());
 
-		// Note that the value corresponding to the attribute is not the i-th item
-		// but rather the data_index-th one. Using data_index so that we can get rid of excess commas
-		// that is, things like 'attr_data=value1,,,valu2,value3'
-		if (styles.at(i) == "color"||styles.at(i) == "fgcolor"||styles.at(i) == "foreground") {
-			text_renderer.add_attribute_fg_color(attr_start(variables), attr_stop(variables), font::string_to_color(data.at(data_index)));
-			data_index++;
-		} else if (styles.at(i) == "bgcolor"||styles.at(i) == "background") {
-			text_renderer.set_highlight_area(attr_start(variables), attr_stop(variables), font::string_to_color(data.at(data_index)));
-			data_index++;
-		} else if (styles.at(i) == "font_size"||styles.at(i) == "size") {
-			text_renderer.add_attribute_size(attr_start(variables), attr_stop(variables), std::stoi(data.at(data_index)));
-			data_index++;
-		} else if (styles.at(i) == "font_family"||styles.at(i) == "face") {
-			text_renderer.add_attribute_font_family(attr_start(variables), attr_stop(variables), data.at(data_index));
-			data_index++;
-		} else if (styles.at(i) == "weight") {
-			text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), decode_text_weight(data.at(data_index)));
-			data_index++;
-		} else if (styles.at(i) == "style") {
-			text_renderer.add_attribute_style(attr_start(variables), attr_stop(variables), decode_text_style(data.at(data_index)));
-			data_index++;
+		if (attr["name"] == "color" || attr["name"] == "fgcolor" || attr["name"] == "foreground") {
+			text_renderer.add_attribute_fg_color(start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
+		} else if (attr["name"] == "bgcolor"||attr["name"] == "background") {
+			text_renderer.add_attribute_bg_color(start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
+		} else if (attr["name"] == "font_size"||attr["name"] == "size") {
+			text_renderer.add_attribute_size(start, end, attr["value"].to_int(font::SIZE_NORMAL));
+		} else if (attr["name"] == "font_family"||attr["name"] == "face") {
+			text_renderer.add_attribute_font_family(start, end, attr["value"].str(font::get_font_families(font::FONT_SANS_SERIF)));
+		} else if (attr["name"] == "weight") {
+			text_renderer.add_attribute_weight(start, end, decode_text_weight(attr["value"]));
+		} else if (attr["name"] == "style") {
+			text_renderer.add_attribute_style(start, end, decode_text_style(attr["value"]));
+		} else if (attr["name"] == "bold" || attr["name"] == "b") {
+			text_renderer.add_attribute_weight(start, end, PANGO_WEIGHT_BOLD);
+		} else if (attr["name"] == "italic" || attr["name"] == "i") {
+			text_renderer.add_attribute_style(start, end, PANGO_STYLE_ITALIC);
+		} else if (attr["name"] == "underline" || attr["name"] == "u") {
+			text_renderer.add_attribute_underline(start, end, PANGO_UNDERLINE_SINGLE);
 		} else {
-			font::pango_text::FONT_STYLE attr_style = decode_font_style(styles.at(i));
-			switch(attr_style)
-			{
-			case font::pango_text::STYLE_BOLD:
-				text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), PANGO_WEIGHT_BOLD);
-				break;
-			case font::pango_text::STYLE_ITALIC:
-				text_renderer.add_attribute_style(attr_start(variables), attr_stop(variables), PANGO_STYLE_ITALIC);
-				break;
-			case font::pango_text::STYLE_UNDERLINE:
-				text_renderer.add_attribute_underline(attr_start(variables), attr_stop(variables), PANGO_UNDERLINE_SINGLE);
-				break;
-			default:
-				// Unsupported formatting or normal text
-				text_renderer.add_attribute_weight(attr_start(variables), attr_stop(variables), PANGO_WEIGHT_NORMAL);
-				text_renderer.add_attribute_style(attr_start(variables), attr_stop(variables), PANGO_STYLE_NORMAL);
-			}
+			// Unsupported formatting or normal text
+			text_renderer.add_attribute_weight(start, end, PANGO_WEIGHT_NORMAL);
+			text_renderer.add_attribute_style(start, end, PANGO_STYLE_NORMAL);
 		}
 	}
 

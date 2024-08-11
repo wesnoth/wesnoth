@@ -433,7 +433,7 @@ void pango_text::add_attribute_font_family(const unsigned start_offset, const un
 	}
 }
 
-void pango_text::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color) {
+void pango_text::add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color) {
 	attribute_start_offset_ = start_offset;
 	attribute_end_offset_ = end_offset;
 	highlight_color_ = color;

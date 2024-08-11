@@ -324,12 +324,11 @@ public:
  	* @param end_offset          Column offset of the cursor where selection/highlight ends
  	* @param color               Highlight color
 	*/
-	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-
 	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
 	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
 	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
 	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+	void add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
 	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
 	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family);
 
