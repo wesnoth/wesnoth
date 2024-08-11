@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burnings Suns
+     * S04: added sprite for the Cold Dagger item (PR #9189)
  ### Editor
  ### Multiplayer
  ### Lua API
