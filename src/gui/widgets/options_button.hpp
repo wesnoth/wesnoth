@@ -31,7 +31,8 @@ namespace implementation
 class options_button : public styled_widget
 {
 public:
-	explicit options_button(const implementation::builder_options_button& builder);
+	//explicit options_button(const implementation::builder_options_button& builder);
+	options_button(const implementation::builder_styled_widget& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -67,6 +68,12 @@ public:
 		keep_open_ = keep_open;
 	}
 
+	void set_persistent(bool persistent)
+	{
+       		persistent_ = persistent;
+	}
+
+
 
 private:
 	/**
@@ -99,6 +106,7 @@ private:
 
 	/* Whether or not the item selected should be remembered if menu is re-opened */
 	bool persistent_;
+
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();

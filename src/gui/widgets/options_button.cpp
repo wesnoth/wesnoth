@@ -37,9 +37,8 @@ namespace gui2
 
 REGISTER_WIDGET(options_button)
 
-options_button::options_button(const implementation::builder_options_button& builder)
+options_button::options_button(const implementation::builder_styled_widget& builder)
 	: styled_widget(builder, type())
-//	, selectable_item()
 	, state_(ENABLED)
 	, values_()
 	, selected_(0)
@@ -144,7 +143,7 @@ void options_button::signal_handler_left_button_click(const event::ui_event even
 	// If a button has a retval do the default handling.
 	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
-	// Whether we want the DDM to retain the selected item if previously opened 
+	// Whether we want the DDM to retain the selected item if previously opened
 	droplist.set_start_selected(persistent_);
 
 	if(droplist.show()) {
@@ -250,7 +249,6 @@ namespace implementation
 
 builder_options_button::builder_options_button(const config& cfg)
 	: builder_styled_widget(cfg)
-//	, persistent_(false)
 	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
