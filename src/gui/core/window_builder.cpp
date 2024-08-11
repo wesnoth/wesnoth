@@ -107,7 +107,7 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 
 	// FAIL() doesn't return
 	//
-	// To fix this: add your new widget to source-lists/libwesnoth_widgets and rebuild.
+	// To fix this: add your new widget to source_lists/libwesnoth_widgets and rebuild.
 
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 }
