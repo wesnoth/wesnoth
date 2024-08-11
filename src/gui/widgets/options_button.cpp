@@ -15,7 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/options_button.hpp"
 
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
@@ -35,61 +35,61 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-REGISTER_WIDGET(menu_button)
+REGISTER_WIDGET(options_button)
 
-menu_button::menu_button(const implementation::builder_menu_button& builder)
+options_button::options_button(const implementation::builder_options_button& builder)
 	: styled_widget(builder, type())
-	, selectable_item()
+//	, selectable_item()
 	, state_(ENABLED)
 	, values_()
 	, selected_(0)
 	, keep_open_(false)
-	, persistent_(true)
+	, persistent_(false)
 {
 	values_.emplace_back("label", this->get_label());
 
 	connect_signal<event::MOUSE_ENTER>(
-		std::bind(&menu_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
+		std::bind(&options_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&menu_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
+		std::bind(&options_button::signal_handler_mouse_leave, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-		std::bind(&menu_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
+		std::bind(&options_button::signal_handler_left_button_down, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_UP>(
-		std::bind(&menu_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
+		std::bind(&options_button::signal_handler_left_button_up, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&menu_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
+		std::bind(&options_button::signal_handler_left_button_click, this, std::placeholders::_2, std::placeholders::_3));
 
 	connect_signal<event::SDL_WHEEL_UP>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_up, this, std::placeholders::_2, std::placeholders::_3),
+		std::bind(&options_button::signal_handler_sdl_wheel_up, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_DOWN>(
-		std::bind(&menu_button::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
+		std::bind(&options_button::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
 }
 
-void menu_button::set_active(const bool active)
+void options_button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool menu_button::get_active() const
+bool options_button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned menu_button::get_state() const
+unsigned options_button::get_state() const
 {
 	return state_;
 }
 
-void menu_button::set_state(const state_t state)
+void options_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -97,7 +97,7 @@ void menu_button::set_state(const state_t state)
 	}
 }
 
-void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
+void options_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -105,7 +105,7 @@ void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& 
 	handled = true;
 }
 
-void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
+void options_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -113,7 +113,7 @@ void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& 
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
+void options_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -126,7 +126,7 @@ void menu_button::signal_handler_left_button_down(const event::ui_event event, b
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
+void options_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -134,7 +134,7 @@ void menu_button::signal_handler_left_button_up(const event::ui_event event, boo
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
+void options_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
@@ -144,8 +144,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	// If a button has a retval do the default handling.
 	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
-	// If we're not using the selected value to update the button label, we don't want the ddm to start with
-	// an item selected either.
+	// Whether we want the DDM to retain the selected item if previously opened 
 	droplist.set_start_selected(persistent_);
 
 	if(droplist.show()) {
@@ -163,7 +162,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	handled = true;
 }
 
-void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled)
+void options_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -175,7 +174,7 @@ void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool&
 	handled = true;
 }
 
-void menu_button::signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled)
+void options_button::signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
@@ -187,7 +186,7 @@ void menu_button::signal_handler_sdl_wheel_down(const event::ui_event event, boo
 	handled = true;
 }
 
-void menu_button::set_values(const std::vector<::config>& values, unsigned selected)
+void options_button::set_values(const std::vector<::config>& values, unsigned selected)
 {
 	assert(selected < values.size());
 	assert(selected_ < values_.size());
@@ -204,7 +203,7 @@ void menu_button::set_values(const std::vector<::config>& values, unsigned selec
 	}
 }
 
-void menu_button::set_selected(unsigned selected, bool fire_event)
+void options_button::set_selected(unsigned selected, bool fire_event)
 {
 	assert(selected < values_.size());
 	assert(selected_ < values_.size());
@@ -226,22 +225,22 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 
 // }---------- DEFINITION ---------{
 
-menu_button_definition::menu_button_definition(const config& cfg)
+options_button_definition::options_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing menu_button " << id;
+	DBG_GUI_P << "Parsing options_button " << id;
 
 	load_resolutions<resolution>(cfg);
 }
 
-menu_button_definition::resolution::resolution(const config& cfg)
+options_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum state_t in menu_button.hpp.
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_enabled")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_disabled")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_pressed")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_focused")));
+	// Note the order should be the same as the enum state_t in options_button.hpp.
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("options_button][resolution", "state_enabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("options_button][resolution", "state_disabled")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("options_button][resolution", "state_pressed")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", missing_mandatory_wml_tag("options_button][resolution", "state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -249,8 +248,9 @@ menu_button_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_menu_button::builder_menu_button(const config& cfg)
+builder_options_button::builder_options_button(const config& cfg)
 	: builder_styled_widget(cfg)
+//	, persistent_(false)
 	, options_()
 {
 	for(const auto& option : cfg.child_range("option")) {
@@ -258,15 +258,15 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_menu_button::build() const
+std::unique_ptr<widget> builder_options_button::build() const
 {
-	auto widget = std::make_unique<menu_button>(*this);
+	auto widget = std::make_unique<options_button>(*this);
 
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
 
-	DBG_GUI_G << "Window builder: placed menu_button '" << id
+	DBG_GUI_G << "Window builder: placed options_button '" << id
 	          << "' with definition '" << definition << "'.";
 
 	return widget;
