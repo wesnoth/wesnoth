@@ -310,7 +310,6 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		dst.w = scaled_w;
 		dst.h = scaled_h;
 
-		auto clip_setter = draw::reduce_clip(dst);
 		draw::blit(minimap, dst);
 
 		// Let the caller know where the minimap *actually* ended up being drawn
