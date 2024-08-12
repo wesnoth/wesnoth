@@ -59,6 +59,8 @@ public:
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
+	void set_min_range(int value) { min_range_ = value; set_changed(true); }
+	void set_max_range(int value) { max_range_ = value; set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
