@@ -195,7 +195,7 @@ public:
 	 *
 	 * This is a cheap function, so no reason to optimise by doing some filters before calling it.
 	 * However, it only expects to be called in a single thread, but the whole of attack_type makes
-	 * that assumption, for example its' mutable members are assumed to be set up by the current
+	 * that assumption, for example its mutable members are assumed to be set up by the current
 	 * caller (or caller's caller, probably several layers up).
 	 */
 	recursion_guard update_variables_recursion() const;
