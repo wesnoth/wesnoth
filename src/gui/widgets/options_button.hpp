@@ -31,8 +31,7 @@ namespace implementation
 class options_button : public styled_widget
 {
 public:
-	//explicit options_button(const implementation::builder_options_button& builder);
-	options_button(const implementation::builder_styled_widget& builder);
+	explicit options_button(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

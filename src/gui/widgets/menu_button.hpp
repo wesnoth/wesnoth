@@ -72,9 +72,6 @@ private:
 
 	unsigned selected_;
 
-//	bool keep_open_;
-
-//	bool persistent_;
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();

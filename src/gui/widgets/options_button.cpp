@@ -37,8 +37,9 @@ namespace gui2
 
 REGISTER_WIDGET(options_button)
 
-options_button::options_button(const implementation::builder_styled_widget& builder)
-	: styled_widget(builder, type())
+
+options_button::options_button(const implementation::builder_styled_widget& builder, const std::string& control_type)
+	: styled_widget(builder, control_type)
 	, state_(ENABLED)
 	, values_()
 	, selected_(0)
@@ -258,7 +259,7 @@ builder_options_button::builder_options_button(const config& cfg)
 
 std::unique_ptr<widget> builder_options_button::build() const
 {
-	auto widget = std::make_unique<options_button>(*this);
+	auto widget = std::make_unique<options_button>(*this, options_button::type());
 
 	if(!options_.empty()) {
 		widget->set_values(options_);

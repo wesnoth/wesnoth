@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(menu_button)
 
 menu_button::menu_button(const implementation::builder_menu_button& builder)
-	: options_button(builder)
+	: options_button(builder,type())
 	, selectable_item()
 	, state_(ENABLED)
 	, values_()
