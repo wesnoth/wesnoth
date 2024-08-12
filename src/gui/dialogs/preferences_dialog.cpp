@@ -563,7 +563,7 @@ void preferences_dialog::initialize_callbacks()
 	register_bool("animate_units_idle", true,
 		[]() {return prefs::get().idle_anim();},
 		[](bool v) {prefs::get().set_idle_anim(v);},
-		[&](widget& w) { disable_widget_on_toggle<slider>(*this, w, "idle_anim_frequency"); });
+		[&](widget& w) { disable_widget_on_toggle<slider>(*this, w, "idle_anim_frequency"); }, true);
 
 	register_integer("idle_anim_frequency", true,
 		[]() {return prefs::get().idle_anim_rate();},
