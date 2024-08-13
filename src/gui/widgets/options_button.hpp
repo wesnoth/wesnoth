@@ -72,8 +72,6 @@ public:
        		persistent_ = persistent;
 	}
 
-
-
 private:
 	/**
 	 * Possible states of the widget.
@@ -99,8 +97,10 @@ private:
 
 	std::vector<::config> values_;
 
+protected:
 	unsigned selected_;
 
+private:
 	bool keep_open_;
 
 	/* Whether or not the item selected should be remembered if menu is re-opened */

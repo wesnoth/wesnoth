@@ -37,7 +37,6 @@ namespace gui2
 
 REGISTER_WIDGET(options_button)
 
-
 options_button::options_button(const implementation::builder_styled_widget& builder, const std::string& control_type)
 	: styled_widget(builder, control_type)
 	, state_(ENABLED)
