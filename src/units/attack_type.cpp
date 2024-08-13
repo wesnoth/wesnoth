@@ -163,7 +163,7 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_min_range = filter["min_range"];
-	const std::string& filter_max_range = filter["min_range"];
+	const std::string& filter_max_range = filter["max_range"];
 	const std::string& filter_damage = filter["damage"];
 	const std::string& filter_attacks = filter["number"];
 	const std::string& filter_accuracy = filter["accuracy"];
@@ -585,7 +585,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_max_range.empty()) {
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> max_range",
+				"<span color=\"$color\">$number_or_percent</span> max range",
 				{{"number_or_percent", utils::print_modifier(increase_max_range)}, {"color", increase_max_range[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
