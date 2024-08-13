@@ -24,6 +24,8 @@
 		19B14238AD52EC06ED2094F1 /* tab_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162C4B1E9F7373592D0F3B89 /* tab_container.cpp */; };
 		1BC74FED857215A162E9E0F2 /* tab_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162C4B1E9F7373592D0F3B89 /* tab_container.cpp */; };
 		1C3D48879EAC414AE3DB122E /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875E45698F8A8D5B750E7317 /* combobox.cpp */; };
+		25374E54A646C38A05018493 /* menu_button2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 303B4654864F9490CCF413D0 /* menu_button2.cpp */; };
+		27A7476D975637F6D741F5CF /* options_button.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BEFC49BBBF8BA9D16167C444 /* options_button.hpp */; };
 		285C4E7A9E891E1DCB215683 /* back_edge_detector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DA034C90BB2E6C060B0A0B93 /* back_edge_detector.hpp */; };
 		365D4F89BD511BC074E639D7 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
@@ -621,6 +623,7 @@
 		4E4A4DBC9F44444A5867EC2B /* migrate_version_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7B1444E9B79504502208B82 /* migrate_version_selection.cpp */; };
 		508C40A885166B2E3F4245F4 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		529242A8856DE8D00988B9BD /* test_schema_self_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */; };
+		586747B897819BDE6204D661 /* menu_button2.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 70054A6B874CF1579E28F52B /* menu_button2.hpp */; };
 		620A386E15E9364E00A4F513 /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386215E9364E00A4F513 /* attack.cpp */; };
 		620A386F15E9364E00A4F513 /* create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386415E9364E00A4F513 /* create.cpp */; };
 		620A387015E9364F00A4F513 /* heal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386615E9364E00A4F513 /* heal.cpp */; };
@@ -1117,6 +1120,7 @@
 		91FAC70A1C7FBC3400DAB2C3 /* lua_formula_bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FAC7091C7FBC2C00DAB2C3 /* lua_formula_bridge.cpp */; };
 		91FBBAD81CB6BC3F00470BFE /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
+		93E84B41B2E684F1B6CF3B0E /* options_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88A640BCA515CBB01955F2E1 /* options_button.cpp */; };
 		9577DD192C1E0AD20031135F /* ai_target.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9577DD182C1E0AD20031135F /* ai_target.hpp */; };
 		9577DD1B2C1E0AF40031135F /* campaign_type.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9577DD1A2C1E0AF40031135F /* campaign_type.hpp */; };
 		9577DD1D2C1E0C020031135F /* defeat_condition.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9577DD1C2C1E0C020031135F /* defeat_condition.hpp */; };
@@ -1153,6 +1157,7 @@
 		9C2743DE8100448B66F7E0AF /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875E45698F8A8D5B750E7317 /* combobox.cpp */; };
 		9C6342BC8A95B6D23D384486 /* gui_test_dialog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0110429EAA81AED07D53B749 /* gui_test_dialog.hpp */; };
 		9FE64884AE8121CDBABF7D8A /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1D64406873FEB11E9758A05 /* preferences.cpp */; };
+		A64A467CB952AC6E23489FD2 /* menu_button2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 303B4654864F9490CCF413D0 /* menu_button2.cpp */; };
 		AC4242F78B39C571E34AF48F /* edit_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A05D48F0A2C022FC128C8B3E /* edit_unit.cpp */; };
 		B45C431C9B7250C3321F8BC2 /* preferences.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2CFD4922B64EA6C9F71F71A2 /* preferences.hpp */; };
 		B508D193100146E300B12852 /* engine_fai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D191100146E300B12852 /* engine_fai.cpp */; };
@@ -1302,6 +1307,7 @@
 		B5BB6D040F8949CF00444FBF /* wesnothd in Copy Game Server */ = {isa = PBXBuildFile; fileRef = B5BB6B4B0F890FBA00444FBF /* wesnothd */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6EFD0F93B83500444FBF /* SDLMain.nib */; };
 		B5CE46F912A0417D00D665EE /* side_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE46F712A0417D00D665EE /* side_filter.cpp */; };
+		B780482D98D6D8E6F0527B08 /* menu_button2.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 70054A6B874CF1579E28F52B /* menu_button2.hpp */; };
 		B7B34687A61290490C1616D3 /* tab_container.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF3B41AF9FEBC9C3A11736A2 /* tab_container.hpp */; };
 		BC624F2F923836331DCFD078 /* choose_addon.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9A141EAAE90E98B6F6171D6 /* choose_addon.hpp */; };
 		C0454A6592DCD67D93323D9C /* edit_pbl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */; };
@@ -1309,6 +1315,7 @@
 		C9D14DC39B87182A00397A3D /* choose_addon.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D9A141EAAE90E98B6F6171D6 /* choose_addon.hpp */; };
 		D09A4D40A36568E32D8723F7 /* combobox.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3534BCB9BB2673B5E513D67 /* combobox.hpp */; };
 		D1254FCA82471825B83AA786 /* multiline_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F48CE9CF65D9813BE6CDC /* multiline_text.cpp */; };
+		D2E7492D84B92EED1A56CB17 /* options_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88A640BCA515CBB01955F2E1 /* options_button.cpp */; };
 		D2E9440BBCDCE2A75C93F85D /* migrate_version_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7B1444E9B79504502208B82 /* migrate_version_selection.cpp */; };
 		D9E94D2083155213BFA6EDD6 /* preferences.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2CFD4922B64EA6C9F71F71A2 /* preferences.hpp */; };
 		DC764C9F94D8B634B47A92B0 /* rich_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5E2430098E9A628933A1DB1 /* rich_label.cpp */; };
@@ -1465,6 +1472,7 @@
 		ECFB9FAA193BFB4B00146ED0 /* game_board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FA9193BFB4B00146ED0 /* game_board.cpp */; };
 		ECFB9FAC193BFB6E00146ED0 /* rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FAB193BFB6E00146ED0 /* rect.cpp */; };
 		F00C4D628A6DEFF4F2A66243 /* rich_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5E2430098E9A628933A1DB1 /* rich_label.cpp */; };
+		F0E74BB9A80E07D454A05CDA /* options_button.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BEFC49BBBF8BA9D16167C444 /* options_button.hpp */; };
 		F13D4C33BAA4CB9E9AACFCC2 /* spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4214F3DA80B54080C4B548F /* spinner.cpp */; };
 		F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */ = {isa = PBXBuildFile; fileRef = F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */; };
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
@@ -1611,6 +1619,7 @@
 		26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_self_validator.cpp; sourceTree = "<group>"; };
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
 		2CFD4922B64EA6C9F71F71A2 /* preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = preferences.hpp; path = preferences/preferences.hpp; sourceTree = "<group>"; };
+		303B4654864F9490CCF413D0 /* menu_button2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = menu_button2.cpp; path = menu_button2.cpp; sourceTree = "<group>"; };
 		46081FED2B2F0F6A006ACAD7 /* libpcre2-8.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpcre2-8.0.dylib"; path = "lib/libpcre2-8.0.dylib"; sourceTree = "<group>"; };
 		46081FF02B2F103E006ACAD7 /* libwebpdemux.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebpdemux.2.dylib; path = lib/libwebpdemux.2.dylib; sourceTree = "<group>"; };
 		46081FF32B2F11F3006ACAD7 /* libsharpyuv.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsharpyuv.0.dylib; path = lib/libsharpyuv.0.dylib; sourceTree = "<group>"; };
@@ -2231,11 +2240,13 @@
 		62D24F341519995200350848 /* palette_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = palette_manager.cpp; sourceTree = "<group>"; };
 		67044415B63F5888193BD7A6 /* prompt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = prompt.cpp; sourceTree = "<group>"; };
 		6FA542D78393E8FF067775DA /* edit_pbl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = edit_pbl.cpp; sourceTree = "<group>"; };
+		70054A6B874CF1579E28F52B /* menu_button2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = menu_button2.hpp; path = menu_button2.hpp; sourceTree = "<group>"; };
 		755D4555A1DEA29125E7F338 /* scroll_text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = scroll_text.cpp; sourceTree = "<group>"; };
 		7CF14AB694764953E2CB3AF7 /* test_schema_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_validator.cpp; sourceTree = "<group>"; };
 		7FBD4033B4B52E9424819B5F /* gui_test_dialog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gui_test_dialog.cpp; sourceTree = "<group>"; };
 		84234C54BB84519421FD4136 /* general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = general.cpp; sourceTree = "<group>"; };
 		875E45698F8A8D5B750E7317 /* combobox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
+		88A640BCA515CBB01955F2E1 /* options_button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = options_button.cpp; path = options_button.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* The Battle for Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Battle for Wesnoth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90606A2A1D5599BA00719B40 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
@@ -2785,6 +2796,7 @@
 		B5BB6EFD0F93B83500444FBF /* SDLMain.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = SDLMain.nib; path = Resources/SDLMain.nib; sourceTree = "<group>"; };
 		B5CE46F712A0417D00D665EE /* side_filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = side_filter.cpp; sourceTree = "<group>"; };
 		B5CE46F812A0417D00D665EE /* side_filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = side_filter.hpp; sourceTree = "<group>"; };
+		BEFC49BBBF8BA9D16167C444 /* options_button.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = options_button.hpp; path = options_button.hpp; sourceTree = "<group>"; };
 		BF3B41AF9FEBC9C3A11736A2 /* tab_container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tab_container.hpp; sourceTree = "<group>"; };
 		C1D64406873FEB11E9758A05 /* preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = preferences.cpp; path = preferences/preferences.cpp; sourceTree = "<group>"; };
 		C61F473D9AC43768A445E218 /* tod_new_schedule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tod_new_schedule.cpp; sourceTree = "<group>"; };
@@ -4174,6 +4186,10 @@
 				46F92D342174F6A300602C1C /* window_private.hpp */,
 				46F92D2E2174F6A300602C1C /* window.cpp */,
 				46F92D472174F6A300602C1C /* window.hpp */,
+				88A640BCA515CBB01955F2E1 /* options_button.cpp */,
+				BEFC49BBBF8BA9D16167C444 /* options_button.hpp */,
+				303B4654864F9490CCF413D0 /* menu_button2.cpp */,
+				70054A6B874CF1579E28F52B /* menu_button2.hpp */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -5252,6 +5268,8 @@
 				9577DD292C1E0E530031135F /* sort_order.hpp in Headers */,
 				9C6342BC8A95B6D23D384486 /* gui_test_dialog.hpp in Headers */,
 				9577DD402C1E36170031135F /* carryover_show_gold.hpp in Headers */,
+				27A7476D975637F6D741F5CF /* options_button.hpp in Headers */,
+				B780482D98D6D8E6F0527B08 /* menu_button2.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5271,6 +5289,8 @@
 				B45C431C9B7250C3321F8BC2 /* preferences.hpp in Headers */,
 				022640C59A7BD907C810FA99 /* rich_label.hpp in Headers */,
 				6A1F44688986D07EB5DBEF75 /* gui_test_dialog.hpp in Headers */,
+				F0E74BB9A80E07D454A05CDA /* options_button.hpp in Headers */,
+				586747B897819BDE6204D661 /* menu_button2.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6024,6 +6044,8 @@
 				F00C4D628A6DEFF4F2A66243 /* rich_label.cpp in Sources */,
 				805143B8BABF92CA79BEC8F5 /* gui_test_dialog.cpp in Sources */,
 				9FE64884AE8121CDBABF7D8A /* preferences.cpp in Sources */,
+				D2E7492D84B92EED1A56CB17 /* options_button.cpp in Sources */,
+				25374E54A646C38A05018493 /* menu_button2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6706,6 +6728,8 @@
 				DC764C9F94D8B634B47A92B0 /* rich_label.cpp in Sources */,
 				DDA14069BCE29DE0FE71B970 /* gui_test_dialog.cpp in Sources */,
 				DDE34117BDAA30C965F6E4DB /* preferences.cpp in Sources */,
+				93E84B41B2E684F1B6CF3B0E /* options_button.cpp in Sources */,
+				A64A467CB952AC6E23489FD2 /* menu_button2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
