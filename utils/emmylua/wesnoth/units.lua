@@ -15,6 +15,8 @@
 ---@field defense_weight number
 ---@field accuracy integer
 ---@field parry integer
+---@field max_range integer
+---@field min_range integer
 ---@field specials WMLTable
 ---@field __cfg WMLTable
 
