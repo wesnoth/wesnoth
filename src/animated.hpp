@@ -122,13 +122,6 @@ private:
 		{
 		}
 
-		frame()
-			: duration_(0)
-			, value_(void_value_)
-			, start_time_(0)
-		{
-		}
-
 		// Represents the timestamp of the frame start
 		int duration_;
 		T value_;
