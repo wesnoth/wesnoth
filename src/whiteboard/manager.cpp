@@ -314,7 +314,7 @@ void manager::on_init_side()
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()";
 
-	if (self_activate_once_ && prefs::get().enable_whiteboard_mode_on_start())
+	if (self_activate_once_ && prefs::get().enable_planning_mode_on_start())
 	{
 		self_activate_once_ = false;
 		set_active(true);
@@ -483,7 +483,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 				number_text, font_size, color, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;

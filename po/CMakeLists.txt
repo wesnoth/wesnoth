@@ -61,14 +61,10 @@ if(ENABLE_POT_UPDATE_TARGET)
 		add_custom_command(
 			# misses bug address
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
-			# create the pot file make sure we always get output.
+			# create the pot file, make sure we always get output and replace the charset
 			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} ${GETTEXT_XGETTEXT_OPTIONS}
 					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_CPP.in
-					--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
-			# replace the chartype
-			COMMAND sed -i
-				s/charset=CHARSET/charset=UTF-8/
-				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
+					--output=- | sed s/charset=CHARSET/charset=UTF-8/ > ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_CPP.in
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update [${DOMAIN}]: Generating source pot file."
@@ -77,15 +73,11 @@ if(ENABLE_POT_UPDATE_TARGET)
 		# Generate pot file for Python strings.
 		add_custom_command(
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
-			# create the pot file make sure we always get output.
+			# create the pot file, make sure we always get output and replace the charset
 			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} ${GETTEXT_XGETTEXT_OPTIONS}
 					--language=Python
 					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_PY.in
-					--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
-			# replace the chartype
-			COMMAND sed -i
-				s/charset=CHARSET/charset=UTF-8/
-				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
+					--output=- | sed s/charset=CHARSET/charset=UTF-8/ > ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_PY.in
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update [${DOMAIN}]: Generating python pot file."

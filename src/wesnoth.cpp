@@ -54,6 +54,7 @@
 #include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
+#include "utils/spritesheet_generator.hpp"
 #ifdef _WIN32
 #include "log_windows.hpp"
 
@@ -503,6 +504,12 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.generate_spritesheet) {
+		PLAIN_LOG << "sheet path " << *cmdline_opts.generate_spritesheet;
+		image::build_spritesheet_from(*cmdline_opts.generate_spritesheet);
+		return 0;
+	}
+
 	// Options changing their behavior dependent on some others should be checked below.
 
 	if(cmdline_opts.preprocess) {
@@ -722,7 +729,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #endif
 
 	gui2::init();
-	gui2::switch_theme(prefs::get().gui_theme());
+	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
@@ -902,7 +909,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
 		case gui2::dialogs::title_screen::RELOAD_UI:
-			gui2::switch_theme(prefs::get().gui_theme());
+			gui2::switch_theme(prefs::get().gui2_theme());
 			break;
 		}
 	}

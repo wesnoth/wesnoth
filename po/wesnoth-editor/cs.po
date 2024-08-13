@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-07-21 22:32-0500\n"
-"PO-Revision-Date: 2024-06-06 23:54+0200\n"
+"PO-Revision-Date: 2024-07-28 11:19+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -298,17 +298,12 @@ msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
 #: src/editor/controller/editor_controller.cpp:876
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Rozšíření"
+msgstr "Soubory rozšíření"
 
 #: src/editor/controller/editor_controller.cpp:889
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr ""
-"Podpora pro schránku nebyla nalezena, kontaktujte správce vašeho balíčku"
+msgstr "Otevření souborů není podporováno, obrať se na správce balíčku"
 
 #: src/editor/controller/editor_controller.cpp:1307
 msgid "Change Unit ID"
@@ -387,10 +382,8 @@ msgstr "Chyba"
 
 #: src/editor/map/context_manager.cpp:706
 #: src/editor/map/context_manager.cpp:755
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Opravdu si přeješ skončit?"
+msgstr "Opravdu chceš uložit typ $type1 do složky typu $type2?"
 
 #: src/editor/map/context_manager.cpp:714
 #: src/editor/map/context_manager.cpp:923
@@ -493,16 +486,12 @@ msgid "Unable to parse file to find map data"
 msgstr "Nedokážu rozebrat soubor a najít mapová data"
 
 #: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Nepodařilo se uložit scénář: $msg"
+msgstr "Nelze uložit rozvrh dne: $msg"
 
 #: src/editor/map/map_context.cpp:855
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Nastavení času"
+msgstr "Rozvrh dne uložen."
 
 #: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
@@ -593,9 +582,11 @@ msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Tento soubor se nachází mimo adresáře s daty Wesnothu. Chceš jej zkopírovat "
+"do svého rozšíření?"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:188
 #: src/gui/dialogs/editor/custom_tod.cpp:195
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdit"

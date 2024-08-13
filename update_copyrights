@@ -155,12 +155,12 @@ count_update = len(update)
 
 if count_missing_fields > 0 or count_extra_fields > 0 or count_added > 0 or count_changed > 0 or count_incomplete > 0 or count_update > 0:
     any_check_failed = True
-    print("\nThere are "+str(count_missing_fields)+" rows with too few fields\n"+"\n".join(",".join(a) for a in missing_fields))
-    print("\nThere are "+str(count_extra_fields)+" rows with too many fields, possibly due to an unquoted comma\n"+"\n".join(",".join(a) for a in extra_fields))
+    print("\nThere are "+str(count_missing_fields)+" rows with too few fields:\n"+"\n".join(",".join(a) for a in missing_fields))
+    print("\nThere are "+str(count_extra_fields)+" rows with too many fields, possibly due to an unquoted comma:\n"+"\n".join(",".join(a) for a in extra_fields))
     print("\nThere are "+str(count_added)+" new images:\n"+"\n".join(a[1] for a in added))
-    print("\nThere are "+str(count_changed)+" changed images"+"\n".join(a[1] for a in changed))
-    print("\nThere are "+str(count_incomplete)+" images that lack license or author information"+"\n".join(a[1] for a in incomplete))
-    print("\nThere are "+str(count_update)+" images that need updated information"+"\n".join(a[1] for a in update))
+    print("\nThere are "+str(count_changed)+" changed images:\n"+"\n".join(a[1] for a in changed))
+    print("\nThere are "+str(count_incomplete)+" images that lack license or author information:\n"+"\n".join(a[1] for a in incomplete))
+    print("\nThere are "+str(count_update)+" images that need updated information:\n"+"\n".join(a[1] for a in update))
 
 if len(unknown_licenses) > 0:
     any_check_failed = True

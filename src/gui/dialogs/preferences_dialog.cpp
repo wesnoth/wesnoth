@@ -165,7 +165,7 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 
 void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 {
-	std::string current_gui_theme_name = prefs::get().gui_theme();
+	std::string current_gui_theme_name = prefs::get().gui2_theme();
 
 	std::vector<config> options;
 	bool theme_found = false;
@@ -373,7 +373,7 @@ void preferences_dialog::initialize_sound_option_group(const std::string& id_suf
 }
 
 /* SOUND FX wrappers for template */
-static bool sound_on(){return prefs::get().sound_on();}
+static bool sound(){return prefs::get().sound();}
 static bool set_sound(bool v){return prefs::get().set_sound(v);}
 static int sound_volume(){return prefs::get().sound_volume();}
 static void set_sound_volume(int v){prefs::get().set_sound_volume(v);}
@@ -448,8 +448,8 @@ void preferences_dialog::initialize_callbacks()
 
 	/* ENABLE PLANNING MODE */
 	register_bool("whiteboard_on_start", true,
-		[]() {return prefs::get().enable_whiteboard_mode_on_start();},
-		[](bool v) {prefs::get().set_enable_whiteboard_mode_on_start(v);});
+		[]() {return prefs::get().enable_planning_mode_on_start();},
+		[](bool v) {prefs::get().set_enable_planning_mode_on_start(v);});
 
 	/* HIDE ALLY PLANS */
 	register_bool("whiteboard_hide_allies", true,
@@ -458,8 +458,8 @@ void preferences_dialog::initialize_callbacks()
 
 	/* INTERRUPT ON SIGHTING */
 	register_bool("interrupt_move_when_ally_sighted", true,
-		[]() {return prefs::get().interrupt_when_ally_sighted();},
-		[](bool v) {prefs::get().set_interrupt_when_ally_sighted(v);});
+		[]() {return prefs::get().ally_sighted_interrupts();},
+		[](bool v) {prefs::get().set_ally_sighted_interrupts(v);});
 
 	/* SAVE REPLAYS */
 	register_bool("save_replays", true,
@@ -473,8 +473,8 @@ void preferences_dialog::initialize_callbacks()
 
 	/* MAX AUTO SAVES */
 	register_integer("max_saves_slider", true,
-		[]() {return prefs::get().autosavemax();},
-		[](int v) {prefs::get().set_autosavemax(v);});
+		[]() {return prefs::get().auto_save_max();},
+		[](int v) {prefs::get().set_auto_save_max(v);});
 
 	/* CACHE MANAGE */
 	connect_signal_mouse_left_click(find_widget<button>(this, "cachemg", false),
@@ -530,8 +530,8 @@ void preferences_dialog::initialize_callbacks()
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
-		[]() {return prefs::get().show_floating_labels();},
-		[](bool v) {prefs::get().set_show_floating_labels(v);});
+		[]() {return prefs::get().floating_labels();},
+		[](bool v) {prefs::get().set_floating_labels(v);});
 
 	/* SHOW TEAM COLORS */
 	register_bool("show_ellipses", true,
@@ -563,7 +563,7 @@ void preferences_dialog::initialize_callbacks()
 	register_bool("animate_units_idle", true,
 		[]() {return prefs::get().idle_anim();},
 		[](bool v) {prefs::get().set_idle_anim(v);},
-		[&](widget& w) { disable_widget_on_toggle<slider>(*this, w, "idle_anim_frequency"); });
+		[&](widget& w) { disable_widget_on_toggle<slider>(*this, w, "idle_anim_frequency"); }, true);
 
 	register_integer("idle_anim_frequency", true,
 		[]() {return prefs::get().idle_anim_rate();},
@@ -599,7 +599,7 @@ void preferences_dialog::initialize_callbacks()
 	//
 
 	/* SOUND FX */
-	initialize_sound_option_group<sound_on, set_sound, sound_volume, set_sound_volume>("sfx");
+	initialize_sound_option_group<sound, set_sound, sound_volume, set_sound_volume>("sfx");
 
 	/* MUSIC */
 	initialize_sound_option_group<music_on, set_music, music_volume, set_music_volume>("music");
@@ -625,8 +625,8 @@ void preferences_dialog::initialize_callbacks()
 
 	/* CHAT TIMESTAMPPING */
 	register_bool("chat_timestamps", true,
-		[]() {return prefs::get().chat_timestamping();},
-		[](bool v) {prefs::get().set_chat_timestamping(v);});
+		[]() {return prefs::get().chat_timestamp();},
+		[](bool v) {prefs::get().set_chat_timestamp(v);});
 
 	/* SAVE PASSWORD */
 	register_bool("remember_password", true,
@@ -635,8 +635,8 @@ void preferences_dialog::initialize_callbacks()
 
 	/* WHISPERS FROM FRIENDS ONLY */
 	register_bool("lobby_whisper_friends_only", true,
-		[]() {return prefs::get().whisper_friends_only();},
-		[](bool v) {prefs::get().set_whisper_friends_only(v);});
+		[]() {return prefs::get().lobby_whisper_friends_only();},
+		[](bool v) {prefs::get().set_lobby_whisper_friends_only(v);});
 
 	/* LOBBY JOIN NOTIFICATIONS */
 	lobby_joins_group.add_member(find_widget<toggle_button>(this, "lobby_joins_none", false, true), pref_constants::lobby_joins::show_none);
@@ -1215,7 +1215,7 @@ void preferences_dialog::handle_gui2_theme_select()
 	unsigned selected_theme = gui2_theme_list.get_value();
 	if (selected_theme != current_gui_theme_) {
 		current_gui_theme_ = selected_theme;
-		prefs::get().set_gui_theme(gui2_themes_.at(selected_theme));
+		prefs::get().set_gui2_theme(gui2_themes_.at(selected_theme));
 		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
 	}
 }

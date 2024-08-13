@@ -2,14 +2,17 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burnings Suns
+     * S04: added sprite for the Cold Dagger item (PR #9189)
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified)
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French
  ### Units
+   * New cat units: Jumpcat, Forest Lion, and zombie/soulless cat
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes

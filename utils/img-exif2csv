@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+##
+# This script reads the Artist, Copyright, UserComment, CreatDate, and ModifyDate Exif tags from the images and outputs them to a CSV
+##
+
+import argparse
+import contextlib
+import hashlib
+import os
+from pathlib import Path
+from subprocess import check_output
+
+##
+# csv file layout:
+# [0] = created date (taken from original CSV, isn't really the creation date, but should still be tracked)
+# [1] = file path, relative to the repository root
+# [2] = license name(s) -> Copyright Exif tag
+# [3] = authorship information -> Artist Exif tag
+# [4] = notes -> UserComment Exif tag
+# [5] = modified date
+# [6] = md5 hash
+##
+
+def read_exif(target,hash_data,error_file):
+    return str(check_output(["exiftool", "-d", "%Y/%m/%d", "-efile1", error_file, "-f", "-api", "MissingTagValue=NO_DATA", "-p", "$CreateDate,$Directory/$FileName,$Copyright,$Artist,$UserComment,$ModifyDate,$hash", "-userparam", "hash=%s" % hash_data, target]), 'UTF-8')
+
+def do_hash(file):
+    md5 = hashlib.md5()
+    with open(file, 'rb') as f:
+        while True:
+            data = f.read(65536)
+            if not data:
+                break
+            md5.update(data)
+    return str(md5.hexdigest())
+
+##
+# program logic start
+##
+
+args = argparse.ArgumentParser()
+args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
+args.add_argument("--output", default="img-exif2csv_output.csv", help="The file to write the results of this script to.")
+args.add_argument("--error", default="exiftool_errors.txt", help="The file to write the errors and warning from exiftool to.")
+options = args.parse_args()
+os.chdir(options.repo)
+
+with contextlib.suppress(FileNotFoundError):
+    os.remove(options.output)
+    os.remove(options.error)
+
+with open(options.output, 'w', encoding="utf-8") as f:
+  f.write("Date, File, License, Author - Real Name(other name);Real Name(other name);etc, Notes, Modified Date, MD5 \n")
+  for root, _, files in os.walk("."):
+    for filename in files:
+        filetype = Path(filename).suffix
+        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp":
+            file = os.path.normpath(os.path.join(root, filename))
+            hash = do_hash(file)
+            f.write(read_exif(file,hash,options.error))

@@ -319,6 +319,22 @@ void tree_view_node::unfold(const bool recursive)
 
 void tree_view_node::fold_internal()
 {
+	/**
+	 * Important! Set this first. See issues #8689 and #9146.
+	 *
+	 * For context, when the unfolded_ flag was introduced in 21001bcb3201b46f4c4b15de1388d4bb843a2403, it
+	 * was set at the end of this function, and of unfold_internal. Commentary in #8689 indicates that there
+	 * were no folding issues until recently, and it seems possible tha the graphics overhaul was caused a
+	 * subtly-hidden flaw to reveal itself.
+	 *
+	 * The bugs above technically only involve this function (not unfold_internal), and *only* if unfolded_
+	 * is set after the call to resize_content. My best guess is because tree_view::resize_content calls
+	 * queue_redraw, and that somehow still being in an "unfolded state" causes things to draw incorrectly.
+	 *
+	 * - vultraz, 2024-08-12
+	 */
+	unfolded_ = false;
+
 	const point current_size(get_current_size().x, get_unfolded_size().y);
 	const point new_size = get_folded_size();
 
@@ -327,11 +343,13 @@ void tree_view_node::fold_internal()
 	assert(height_modification <= 0);
 
 	get_tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-	unfolded_ = false;
 }
 
 void tree_view_node::unfold_internal()
 {
+	/** Important! Set this first. See comment in @ref fold_internal */
+	unfolded_ = true;
+
 	const point current_size(get_current_size().x, get_folded_size().y);
 	const point new_size = get_unfolded_size();
 
@@ -340,7 +358,6 @@ void tree_view_node::unfold_internal()
 	assert(height_modification >= 0);
 
 	get_tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
-	unfolded_ = true;
 }
 
 void tree_view_node::clear()
