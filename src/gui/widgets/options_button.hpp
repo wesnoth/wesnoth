@@ -159,8 +159,6 @@ public:
 	virtual std::unique_ptr<widget> build() const override;
 
 private:
-	bool persistent_;
-
 	std::vector<::config> options_;
 
 };
