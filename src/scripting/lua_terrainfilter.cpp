@@ -774,7 +774,7 @@ lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index)
 	return nullptr;
 }
 
-[[maybe_unused]] lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
+lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
 {
 	if(luaW_is_mgfilter(L, index)) {
 		lua_mapgen::filter_ptr ptr;
