@@ -53,10 +53,29 @@
  * attributes in the gnu:: namespace, so has to have the #if, and the #if means we need the #ifdef.
  */
 #ifdef __has_cpp_attribute
+
 #if __has_cpp_attribute(gnu::no_dangling)
 #define NOT_DANGLING [[gnu::no_dangling]]
 #endif
+
+#if __has_cpp_attribute(likely)
+#define LIKELY [[likely]]
 #endif
+
+#if __has_cpp_attribute(unlikely)
+#define UNLIKELY [[unlikely]]
+#endif
+
+#endif // __has_cpp_attribute
+
 #ifndef NOT_DANGLING
 #define NOT_DANGLING
+#endif
+
+#ifndef LIKELY
+#define LIKELY
+#endif
+
+#ifndef UNLIKELY
+#define UNLIKELY
 #endif

@@ -21,6 +21,8 @@
 #include <cmath> //std::sqrt
 #include "xbrz_tools.hpp"
 
+#include "../global.hpp" // for LIKELY
+
 using namespace xbrz;
 
 
@@ -487,7 +489,7 @@ public:
 
     void readDhlp(Kernel_4x4& ker, int x) const //(x, y) is at kernel position F
     {
-        [[likely]] if (const int x_p2 = x + 2; 0 <= x_p2 && x_p2 < srcWidth_)
+        LIKELY if (const int x_p2 = x + 2; 0 <= x_p2 && x_p2 < srcWidth_)
         {
             ker.d = s_m1 ? s_m1[x_p2] : 0;
             ker.h = s_0  ? s_0 [x_p2] : 0;
@@ -693,7 +695,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
                 addTopR(blend_xy1, res.blend_j); //set 2nd known corner for (x, y + 1)
                 preProcBuf[x] = blend_xy1; //store on current buffer position for use on next row
 
-                [[likely]] if (x + 1 < srcWidth)
+                LIKELY if (x + 1 < srcWidth)
                 {
                     //blend_xy1 -> blend_x1y1
                     clearAddTopL(blend_xy1, res.blend_k); //set 1st known corner for (x + 1, y + 1) and buffer for use on next column
