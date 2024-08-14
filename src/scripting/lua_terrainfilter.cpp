@@ -774,7 +774,7 @@ lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index)
 	return nullptr;
 }
 
-lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
+[[maybe_unused]] lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
 {
 	if(luaW_is_mgfilter(L, index)) {
 		lua_mapgen::filter_ptr ptr;
@@ -835,7 +835,7 @@ int intf_terrainfilter_create(lua_State *L)
  */
 static int impl_terrainfilter_get(lua_State *L)
 {
-	[[maybe_unused]] auto f = luaW_check_mgfilter(L, 1); // FIXME: why a var?
+	luaW_check_mgfilter(L, 1);
 	return 0;
 }
 
@@ -847,7 +847,7 @@ static int impl_terrainfilter_get(lua_State *L)
  */
 static int impl_terrainfilter_set(lua_State *L)
 {
-	[[maybe_unused]] auto f = luaW_check_mgfilter(L, 1); // FIXME: why a var?
+	luaW_check_mgfilter(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string err_msg = "unknown modifiable property of map: ";
 	err_msg += m;
@@ -860,7 +860,7 @@ static int impl_terrainfilter_set(lua_State *L)
  */
 static int intf_clearcache(lua_State *L)
 {
-	[[maybe_unused]] auto f = luaW_check_mgfilter(L, 1); // TODO: why a var?
+	luaW_check_mgfilter(L, 1);
 	return 0;
 }
 /**
