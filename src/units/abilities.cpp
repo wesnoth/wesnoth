@@ -1103,10 +1103,9 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, u
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking)
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& /*self_type*/, const map_location& loc, bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	UNUSED(self_type);
 	weapon.self_ = unit_ptr();
 	weapon.other_ = unit_ptr();
 	weapon.self_loc_ = loc;

@@ -891,7 +891,6 @@ DEFINE_WFL_FUNCTION(set_unit_var, 3, 3)
 
 DEFINE_WFL_FUNCTION(fallback, 0, 1)
 {
-	UNUSED(fdb);
 	// The parameter is not used, but is accepted for legacy compatibility
 	if(args().size() == 1 && args()[0]->evaluate(variables).as_string() != "human")
 		return variant();

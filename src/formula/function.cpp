@@ -624,8 +624,6 @@ DEFINE_WFL_FUNCTION(exp, 1, 1)
 
 DEFINE_WFL_FUNCTION(pi, 0, 0)
 {
-	UNUSED(variables);
-	UNUSED(fdb);
 	return variant(pi<double>(), variant::DECIMAL_VARIANT);
 }
 
