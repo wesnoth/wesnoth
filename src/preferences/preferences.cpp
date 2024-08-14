@@ -719,9 +719,14 @@ void prefs::set_bell_volume(int vol)
 	sound::set_bell_volume(bell_volume());
 }
 
+// old pref name had uppercase UI
 int prefs::ui_volume()
 {
-	return preferences_[prefs_list::ui_volume].to_int(100);
+	if(preferences_.has_attribute(prefs_list::ui_volume)) {
+		return preferences_[prefs_list::ui_volume].to_int(100);
+	} else {
+		return preferences_["UI_volume"].to_int(100);
+	}
 }
 
 void prefs::set_ui_volume(int vol)
@@ -758,9 +763,14 @@ bool prefs::set_turn_bell(bool ison)
 	return true;
 }
 
+// old pref name had uppercase UI
 bool prefs::ui_sound_on()
 {
-	return preferences_[prefs_list::ui_sound].to_bool(true);
+	if(preferences_.has_attribute(prefs_list::ui_sound)) {
+		return preferences_[prefs_list::ui_sound].to_bool(true);
+	} else {
+		return preferences_["UI_sound"].to_bool(true);
+	}
 }
 
 bool prefs::set_ui_sound(bool ison)
