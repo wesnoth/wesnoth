@@ -10,26 +10,29 @@ LOOP_TIME=6
 serverpid=$!
 sleep 5
 
+JOIN_LOG="--log-info=gui/*"
+HOST_LOG="--log-info=gui/*"
+
 #./wesnoth --log-info=gui/* --log-debug=gui/layout  --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &> wesnoth-host.log &
-./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui 2>&1 > wesnoth-host.log &
+./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui $HOST_LOG 2>&1 > wesnoth-host.log &
 hostpid=$!
 sleep 2
 
 while grep -q 'Could not initialize SDL_video' wesnoth-host.log; do
     echo "Could not initialize SDL_video error, retrying..."
-    ./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &> wesnoth-host.log &
+    ./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui $HOST_LOG 2>&1 > wesnoth-host.log &
     hostpid=$!
     sleep 2
 done
 
 #./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &> wesnoth-join.log &
-./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui 2>&1 > wesnoth-join.log &
+./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui $JOIN_LOG 2>&1 > wesnoth-join.log &
 joinpid=$!
 sleep 2
 
 while grep -q 'Could not initialize SDL_video' wesnoth-join.log; do
     echo "Could not initialize SDL_video error, retrying..."
-    ./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &> wesnoth-join.log &
+    ./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui $JOIN_LOG 2>&1 > wesnoth-join.log &
     joinpid=$!
     sleep 2
 done
