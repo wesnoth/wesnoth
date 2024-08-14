@@ -28,7 +28,6 @@
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "game_board.hpp"
-#include "global.hpp"
 #include "display.hpp"
 #include "log.hpp"
 #include "map/label.hpp"

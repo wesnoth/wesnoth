@@ -16,7 +16,6 @@
 #include "scripting/lua_terrainmap.hpp"
 
 #include "formatter.hpp"
-#include "global.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"

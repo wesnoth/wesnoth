@@ -24,7 +24,6 @@
 #include "game_board.hpp"
 #include "game_version.hpp" // for version_info
 #include "gettext.hpp"
-#include "global.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
