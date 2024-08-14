@@ -85,7 +85,7 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 		const_surface_lock src_lock(surf);
 		surface_lock dst_lock(dst);
 
-		xbrz::scale(z, src_lock.pixels(), dst_lock.pixels(), surf->w, surf->h);
+		xbrz::scale(z, src_lock.pixels(), dst_lock.pixels(), surf->w, surf->h, xbrz::ColorFormat::ARGB);
 	}
 
 	return dst;
@@ -1838,7 +1838,7 @@ namespace
 constexpr bool not_alpha(uint32_t pixel)
 {
 	return (pixel >> 24) != 0x00;
-	}
+}
 }
 
 rect get_non_transparent_portion(const surface &surf)
