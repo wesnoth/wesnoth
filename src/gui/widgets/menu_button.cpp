@@ -42,7 +42,6 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	, selectable_item()
 	, state_(ENABLED)
 	, values_()
-	, selected_(0)
 {
 
 	values_.emplace_back("label", this->get_label());

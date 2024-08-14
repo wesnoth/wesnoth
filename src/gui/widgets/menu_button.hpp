@@ -70,8 +70,6 @@ private:
 
 	std::vector<::config> values_;
 
-	unsigned selected_;
-
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
