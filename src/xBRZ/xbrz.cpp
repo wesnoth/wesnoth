@@ -328,6 +328,11 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
     return result;
 }
 
+#ifdef __APPLE__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-function"
+#endif
+
 #define DEF_GETTER(x) template <RotationDegree rotDeg> uint32_t inline get_##x(const Kernel_3x3& ker) { return ker.x; }
 //we cannot and NEED NOT write "ker.##x" since ## concatenates preprocessor tokens but "." is not a token
 DEF_GETTER(a) DEF_GETTER(b) DEF_GETTER(c)
@@ -353,6 +358,9 @@ DEF_GETTER(d, b) DEF_GETTER(e, e) DEF_GETTER(f, h)
 DEF_GETTER(g, a) DEF_GETTER(h, d) DEF_GETTER(i, g)
 #undef DEF_GETTER
 
+#ifdef __APPLE__
+#pragma clang diagnostic pop
+#endif
 
 //compress four blend types into a single byte
 //inline BlendType getTopL   (unsigned char b) { return static_cast<BlendType>(0x3 & b); }
