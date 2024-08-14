@@ -149,7 +149,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	{
 		const int distance = distance_between(u_loc, opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-		disable = weapon->has_special("disable") || out_of_range;
+		disable = weapon->has_special_or_ability("disable") || out_of_range;
 	}
 
 	// Handle plague.
