@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 #ifdef __cpp_lib_ranges
 #include <ranges>
 #else

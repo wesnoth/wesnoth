@@ -13,8 +13,6 @@
 
 #pragma once
 
-#include "global.hpp"
-
 #ifndef __APPLE__
 #include <optional>
 #else

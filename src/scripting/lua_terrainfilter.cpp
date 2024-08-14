@@ -16,7 +16,6 @@
 #include "scripting/lua_terrainmap.hpp"
 
 #include "formatter.hpp"
-#include "global.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
@@ -836,8 +835,7 @@ int intf_terrainfilter_create(lua_State *L)
  */
 static int impl_terrainfilter_get(lua_State *L)
 {
-	auto f = luaW_check_mgfilter(L, 1);
-	UNUSED(f);
+	luaW_check_mgfilter(L, 1);
 	return 0;
 }
 
@@ -849,8 +847,7 @@ static int impl_terrainfilter_get(lua_State *L)
  */
 static int impl_terrainfilter_set(lua_State *L)
 {
-	auto f = luaW_check_mgfilter(L, 1);
-	UNUSED(f);
+	luaW_check_mgfilter(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string err_msg = "unknown modifiable property of map: ";
 	err_msg += m;
@@ -863,8 +860,7 @@ static int impl_terrainfilter_set(lua_State *L)
  */
 static int intf_clearcache(lua_State *L)
 {
-	auto f = luaW_check_mgfilter(L, 1);
-	UNUSED(f);
+	luaW_check_mgfilter(L, 1);
 	return 0;
 }
 /**
