@@ -112,7 +112,6 @@ builder_drawing::builder_drawing(const config& cfg)
 	, height(cfg["height"])
 	, draw(VALIDATE_WML_CHILD(cfg, "draw", missing_mandatory_wml_tag("drawing", "draw")))
 {
-	assert(!draw.empty());
 }
 
 std::unique_ptr<widget> builder_drawing::build() const
