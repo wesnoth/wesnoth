@@ -1,0 +1,78 @@
+name: Map Diff
+
+on:
+  pull_request_target:
+    paths:
+    - '**.map'
+
+jobs:
+  comment-map-diff:
+    permissions:
+      pull-requests: write
+    continue-on-error: true
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: utils/wesnoth-map-diff
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    - name: Package install
+      run: npm install
+    - name: Package build
+      run: npm run build:prod
+    - name: Get maps diff
+      id: get-maps-diff
+      env:
+        SHA: ${{ github.event.pull_request.head.sha }}
+      run: |
+        sudo apt-get -y -q install pngquant
+        comment_body=""
+        log() { printf '\e[1m%s\e[m\n' "$*"; } # write log message in bold
+
+        ## Get changed maps
+        git fetch --depth=1 origin "$SHA"
+        mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" | grep '\.map$')
+
+        for map_path in "${map_paths[@]}"
+        do
+          ## Get new map version
+          log "Check out $map_path from $SHA..."
+          new_map=${map_path##*/}
+          git show "$SHA":"$map_path" > "$new_map"
+
+          log "Generate map diff image for $map_path..."
+          node build/index.js "../../$map_path" "$new_map" diff_image.png
+          identify diff_image.png
+
+          log 'Compress image...'
+          pngquant --force --output diff_image.png diff_image.png
+          identify diff_image.png
+
+          log 'Uploading diff_image.png...'
+          json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr) || continue
+
+          log 'Generating HTML comment...'
+          html=$(jq -r --arg path "$map_path" 'if .data.link != null
+            then @html "<h3>\($path)</h3><img src=\"\(.data.link)\" /> <br />"
+            elif has("errors") then .errors[].status | halt_error
+            else "Unexpected JSON structure!\n" | halt_error end' <<< "$json") || continue
+          comment_body+=$html
+        done
+
+        printf 'COMMENT_BODY=%s\n' "$comment_body" >> "$GITHUB_OUTPUT"
+    - name: Find comment
+      uses: peter-evans/find-comment@v2
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+    - name: Add comment
+      uses: peter-evans/create-or-update-comment@v3
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        edit-mode: replace
+        body: ${{ steps.get-maps-diff.outputs.COMMENT_BODY }}

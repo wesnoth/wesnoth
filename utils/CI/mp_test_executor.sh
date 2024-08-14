@@ -6,33 +6,28 @@ set -v #Print shell commands as they are read
 TIMEOUT_TIME=300
 LOOP_TIME=6
 
-./wesnothd --port 12345 --log-debug=mp/* --log-debug=server --log-warning=config &> wesnothd.log &
+./wesnothd --port 12345 --log-debug=server --log-warning=config &> wesnothd.log &
 serverpid=$!
 sleep 5
 
-JOIN_LOG="--log-debug=gui/* --log-debug=mp/*,plugins"
-HOST_LOG="--log-debug=gui/* --log-debug=mp/*,plugins --log-debug=network"
-
-#./wesnoth --log-info=gui/* --log-debug=gui/layout  --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &> wesnoth-host.log &
-./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui $HOST_LOG > wesnoth-host.log 2>&1 &
+./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &> wesnoth-host.log &
 hostpid=$!
 sleep 2
 
 while grep -q 'Could not initialize SDL_video' wesnoth-host.log; do
     echo "Could not initialize SDL_video error, retrying..."
-    ./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui $HOST_LOG > wesnoth-host.log 2>&1  &
+    ./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &> wesnoth-host.log &
     hostpid=$!
     sleep 2
 done
 
-#./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &> wesnoth-join.log &
-./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui $JOIN_LOG > wesnoth-join.log 2>&1 &
+./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &> wesnoth-join.log &
 joinpid=$!
 sleep 2
 
 while grep -q 'Could not initialize SDL_video' wesnoth-join.log; do
     echo "Could not initialize SDL_video error, retrying..."
-    ./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui $JOIN_LOG > wesnoth-join.log 2>&1 &
+    ./wesnoth --plugin=data/test/plugin/join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &> wesnoth-join.log &
     joinpid=$!
     sleep 2
 done
