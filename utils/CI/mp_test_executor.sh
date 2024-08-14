@@ -3,15 +3,15 @@ set -e #Error if any line errors
 set -m #Enable job control
 set -v #Print shell commands as they are read
 
-TIMEOUT_TIME=300
+TIMEOUT_TIME=120
 LOOP_TIME=6
 
 ./wesnothd --port 12345 --log-debug=server --log-warning=config &> wesnothd.log &
 serverpid=$!
 sleep 5
 
-JOIN_LOG="--log-info=gui/*"
-HOST_LOG="--log-info=gui/*"
+JOIN_LOG="--log-info=gui/* --log-debug=mp/*"
+HOST_LOG="--log-info=gui/* --log-debug=mp/*"
 
 #./wesnoth --log-info=gui/* --log-debug=gui/layout  --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &> wesnoth-host.log &
 ./wesnoth --plugin=data/test/plugin/host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui $HOST_LOG 2>&1 > wesnoth-host.log &
