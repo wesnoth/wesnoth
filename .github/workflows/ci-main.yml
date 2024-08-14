@@ -30,7 +30,6 @@ jobs:
       matrix:
         include:
           - { tool: scons, cc: gcc,   cxx: g++,     cfg: debug,   lto: false, sys_lua: false }
-#          - { tool: cmake, cc: clang, cxx: clang++, cfg: release, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
       image: wesnoth/wesnoth:2404-master
