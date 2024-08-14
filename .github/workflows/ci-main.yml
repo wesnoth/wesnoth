@@ -32,7 +32,7 @@ jobs:
           - { tool: scons, cc: gcc,   cxx: g++,     cfg: debug,   lto: false, sys_lua: false }
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2204-master
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
