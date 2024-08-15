@@ -59,8 +59,8 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 	if(surf == nullptr)
 		return nullptr;
 
-	if (z > 5) {
-		PLAIN_LOG << "Cannot use xbrz scaling with zoom factor > 5.";
+	if (z > xbrz::SCALE_FACTOR_MAX) {
+		PLAIN_LOG << "Cannot use xbrz scaling with zoom factor > " << xbrz::SCALE_FACTOR_MAX;
 		z = 1;
 	}
 
