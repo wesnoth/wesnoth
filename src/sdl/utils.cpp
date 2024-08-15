@@ -91,42 +91,6 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 	return dst;
 }
 
-surface scale_surface_nn (const surface & surf, int w, int h)
-{
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
-
-	if (surf == nullptr)
-		return nullptr;
-
-	if(w == surf->w && h == surf->h) {
-		return surf;
-	}
-	assert(w >= 0);
-	assert(h >= 0);
-
-	surface dst(w,h);
-
-	if (w == 0 || h ==0) {
-		PLAIN_LOG << "Create an empty image";
-		return dst;
-	}
-
-	if(surf == nullptr || dst == nullptr) {
-		PLAIN_LOG << "Could not create surface to scale onto";
-		return nullptr;
-	}
-
-	{
-		const_surface_lock src_lock(surf);
-		surface_lock dst_lock(dst);
-
-		xbrz::nearestNeighborScale(src_lock.pixels(), surf->w, surf->h, dst_lock.pixels(), w, h);
-	}
-
-	return dst;
-}
-
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(const surface &surf, int w, int h)
 {
