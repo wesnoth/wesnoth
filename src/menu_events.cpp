@@ -53,7 +53,6 @@
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
 #include "gui/dialogs/unit_recall.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/retval.hpp"

@@ -114,7 +114,6 @@
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
 #include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
 #include "gui/dialogs/unit_recall.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/dialogs/wml_error.hpp"
@@ -688,7 +687,6 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"preferences_dialog",
 		"unit_recruit",
 		"unit_recall",
-		"unit_list",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
