@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "team.hpp"
 #include "units/ptr.hpp"
 
 #include <string>
@@ -32,26 +33,42 @@ namespace dialogs
 class unit_recall : public modal_dialog
 {
 public:
-	unit_recall(std::vector<unit_const_ptr>& recall_list, team& team);
+	unit_recall(std::vector<unit_const_ptr>& recall_list, team* team = nullptr);
 
 	int get_selected_index() const
 	{
 		return selected_index_;
 	}
 
+	enum class dialog_type {
+		RECRUIT,
+		RECALL,
+		UNIT_LIST,
+		UNIT_CREATE
+	};
+
+	void set_mode(dialog_type mode) {
+		mode_ = mode;
+		update_dialog();
+	}
+
 private:
 	std::vector<unit_const_ptr>& recall_list_;
 
-	team& team_;
+	team* team_;
 
 	int selected_index_;
 
 	std::vector<std::string> filter_options_;
 	std::vector<std::string> last_words_;
 
+	dialog_type mode_;
+
+	void update_dialog();
+
 	/** Callbacks */
 	void list_item_clicked();
-	void filter_text_changed(const std::string& text);
+	void filter_text_changed();
 	void rename_unit();
 	void dismiss_unit();
 	void show_help();

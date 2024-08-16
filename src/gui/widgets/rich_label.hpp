@@ -132,6 +132,8 @@ public:
 	// Attaches a callback function that will be called when a link is clicked
 	void register_link_callback(std::function<void(std::string)> link_handler)
 	{
+		connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
 		link_handler_ = link_handler;
 	}
 

@@ -135,7 +135,23 @@ void menu_handler::show_statistics(int side_num)
 
 void menu_handler::unit_list()
 {
-	gui2::dialogs::show_unit_list(*gui_);
+	std::vector<unit_const_ptr> unit_list;
+
+	const unit_map& units = gui_->get_units();
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->side() != gui_->viewing_side()) {
+			continue;
+		}
+		unit_list.push_back(i.get_shared_ptr());
+	}
+
+	gui2::dialogs::unit_recall unit_dlg(unit_list);
+	unit_dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::UNIT_LIST);
+	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
+		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
+		gui_->scroll_to_tile(loc, display::WARP);
+		gui_->select_hex(loc);
+	}
 }
 
 void menu_handler::status_table()
@@ -395,7 +411,8 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
+	gui2::dialogs::unit_recall dlg(recall_list_team, &current_team);
+	dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::RECALL);
 
 	if(!dlg.show()) {
 		return;

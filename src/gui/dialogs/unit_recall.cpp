@@ -23,7 +23,9 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
@@ -53,18 +55,23 @@ static listbox::order_pair sort_default { 2, sort_order::type::descending};
 
 REGISTER_DIALOG(unit_recall)
 
-unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team& team)
+unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 	: modal_dialog(window_id())
 	, recall_list_(recall_list)
-	, team_(team)
 	, selected_index_()
 	, filter_options_()
 	, last_words_()
+	, mode_(dialog_type::RECALL)
 {
+	team_ = team;
 }
 
+namespace {
+
+const color_t inactive_row_color(0x96, 0x96, 0x96);
+
 template<typename T>
-static void dump_recall_list_to_console(const T& units)
+void dump_recall_list_to_console(const T& units)
 {
 	log_scope2(log_display, "dump_recall_list_to_console()")
 
@@ -76,9 +83,7 @@ static void dump_recall_list_to_console(const T& units)
 	}
 }
 
-static const color_t inactive_row_color(0x96, 0x96, 0x96);
-
-static const inline std::string maybe_inactive(const std::string& str, bool active)
+const inline std::string maybe_inactive(const std::string& str, bool active)
 {
 	if(active)
 		return str;
@@ -86,7 +91,31 @@ static const inline std::string maybe_inactive(const std::string& str, bool acti
 		return markup::span_color(inactive_row_color, str);
 }
 
-static std::string format_level_string(const int level, bool recallable)
+std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
+{
+	std::stringstream str;
+
+	if(unit_recall_cost < 0) {
+		unit_recall_cost = team_recall_cost;
+	}
+
+	if(unit_recall_cost > team_recall_cost) {
+		str << "<img src='~BLIT(themes/gold.png, 0, 30)'/><span color='#ff0000'>" << unit_recall_cost << "</span>";
+	} else if(unit_recall_cost == team_recall_cost) {
+		str << "<img src='themes/gold.png'/>" << unit_recall_cost;
+	} else if(unit_recall_cost < team_recall_cost) {
+		str << "<img src='themes/gold.png~GS()'/><span color='#00ff00'>" << unit_recall_cost << "</span>";
+	}
+
+	return str.str();
+}
+
+std::string format_name_string(const std::string& str, const bool can_recruit)
+{
+	return can_recruit ? "<span color='#cdad00'>" + str + "</span>" : str;
+}
+
+std::string format_level_string(const int level, bool recallable)
 {
 	if(!recallable) {
 		// Same logic as when recallable, but always in inactive_row_color.
@@ -98,31 +127,36 @@ static std::string format_level_string(const int level, bool recallable)
 		return std::to_string(level);
 	} else if(level == 2) {
 		return markup::bold(level);
+	} else if(level == 3) {
+		return markup::bold(markup::span_color("#e2b776", level));
 	} else {
-		return markup::bold(markup::span_color("#ffffff", level));
+		return markup::bold(markup::span_color("#dd6600", level));
 	}
 }
 
-static std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
+std::string format_movement_string(const int moves_left, const int moves_max)
 {
-	std::stringstream str;
+	std::string color = "#00ff00";
 
-	if(unit_recall_cost < 0) {
-		unit_recall_cost = team_recall_cost;
+	if(moves_left == 0) {
+		color = "#ff0000";
+	} else if(moves_left < moves_max) {
+		color = "#ffff00";
 	}
 
-	if(unit_recall_cost > team_recall_cost) {
-		str << markup::span_color("#ff0000", unit_recall_cost);
-	} else if(unit_recall_cost == team_recall_cost) {
-		str << unit_recall_cost;
-	} else if(unit_recall_cost < team_recall_cost) {
-		str << markup::span_color("#00ff00", unit_recall_cost);
-	}
+	// if(unit_recall_cost > team_recall_cost) {
+	// 	str << markup::span_color("#ff0000", unit_recall_cost);
+	// } else if(unit_recall_cost == team_recall_cost) {
+	// 	str << unit_recall_cost;
+	// } else if(unit_recall_cost < team_recall_cost) {
+	// 	str << markup::span_color("#00ff00", unit_recall_cost);
+	// }
 
-	return str.str();
+	// return str.str();
+	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
 }
 
-static std::string get_title_suffix(int side_num)
+std::string get_title_suffix(int side_num)
 {
 	if(!resources::gameboard) {
 		return "";
@@ -151,16 +185,14 @@ static std::string get_title_suffix(int side_num)
 void unit_recall::pre_show()
 {
 	label& title = find_widget<label>("title", true);
-	title.set_label(title.get_label() + get_title_suffix(team_.side()));
+	if (team_) {
+		title.set_label(title.get_label() + get_title_suffix(team_->side()));
+	}
 
-	text_box* filter
-			= find_widget<text_box>("filter_box", false, true);
-
-	filter->set_text_changed_callback(
-			std::bind(&unit_recall::filter_text_changed, this, std::placeholders::_2));
+	text_box& filter = find_widget<text_box>("filter_box");
+	connect_signal_notify_modified(filter, std::bind(&unit_recall::filter_text_changed, this));
 
 	listbox& list = find_widget<listbox>("recall_list");
-
 	connect_signal_notify_modified(list, std::bind(&unit_recall::list_item_clicked, this));
 
 	list.clear();
@@ -172,14 +204,21 @@ void unit_recall::pre_show()
 		find_widget<button>("rename"),
 		std::bind(&unit_recall::rename_unit, this));
 
-	connect_signal_mouse_left_click(
-		find_widget<button>("dismiss"),
-		std::bind(&unit_recall::dismiss_unit, this));
+	if (team_) {
+		connect_signal_mouse_left_click(
+			find_widget<button>("dismiss"),
+			std::bind(&unit_recall::dismiss_unit, this));
+	} else {
+		find_widget<button>("dismiss").set_visible(widget::visibility::hidden);
+	}
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("show_help"),
 		std::bind(&unit_recall::show_help, this));
 
+	//
+	// Formatting
+	//
 	for(const unit_const_ptr& unit : recall_list_) {
 		widget_data row_data;
 		widget_item column;
@@ -187,17 +226,24 @@ void unit_recall::pre_show()
 		std::string mods = unit->image_mods();
 
 		int wb_gold = 0;
-		if(resources::controller) {
-			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
-				wb::future_map future; // So gold takes into account planned spending
-				wb_gold = whiteb->get_spent_gold_for(team_.side());
+		if (team_) {
+			if(resources::controller) {
+				if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
+					wb::future_map future; // So gold takes into account planned spending
+					wb_gold = whiteb->get_spent_gold_for(team_->side());
+				}
 			}
 		}
 
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
-		const int recall_cost = (unit->recall_cost() > -1 ? unit->recall_cost() : team_.recall_cost());
-		const bool recallable = (recall_cost <= team_.gold() - wb_gold);
+
+		int recall_cost = unit->recall_cost();
+		bool recallable = true;
+		if (team_) {
+			recall_cost = (unit->recall_cost() > -1) ? unit->recall_cost() : team_->recall_cost();
+			recallable = (recall_cost <= team_->gold() - wb_gold);
+		}
 
 		if(unit->can_recruit()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
@@ -219,26 +265,63 @@ void unit_recall::pre_show()
 
 		column["use_markup"] = "true";
 
-		column["label"] = unit->absolute_image() + mods;
-		row_data.emplace("unit_image", column);
+		std::stringstream details;
+		if (mode_ != dialog_type::UNIT_LIST) {
+			column["label"] = unit->absolute_image() + mods;
+			row_data.emplace("unit_image", column);
+		}
+		details << maybe_inactive(unit->type_name().str(), recallable);
 
-		column["label"] = maybe_inactive(unit->type_name(), recallable);
-		row_data.emplace("unit_type", column);
-
-		// gold_icon is handled below
-
-		column["label"] =
-			recallable
-			? format_cost_string(unit->recall_cost(), team_.recall_cost())
-			: maybe_inactive(std::to_string(recall_cost), recallable);
-		row_data.emplace("unit_recall_cost", column);
+		if (team_) {
+			if (recallable) {
+				details << format_cost_string(unit->recall_cost(), team_->recall_cost());
+			} else {
+				details << maybe_inactive(std::to_string(recall_cost), recallable);
+			}
+		}
+		column["label"] = details.str();
+		row_data.emplace("unit_details", column);
 
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		column["label"] = maybe_inactive(name, recallable);
+		column["label"] = maybe_inactive(format_name_string(name, unit->can_recruit()), recallable);
+		column["use_markup"] = "true";
 		row_data.emplace("unit_name", column);
 
+		column["label"] = format_movement_string(unit->movement_left(), unit->total_movement());
+		row_data.emplace("unit_moves", column);
+
 		column["label"] = format_level_string(unit->level(), recallable);
+		column["use_markup"] = "true";
 		row_data.emplace("unit_level", column);
+
+		std::stringstream hp_str;
+		hp_str
+			<< font::span_color(unit->hp_color())
+			<< unit->hitpoints() << "/" << unit->max_hitpoints()
+			<< "</span>";
+		column["label"] = hp_str.str();
+		row_data.emplace("unit_hp", column);
+
+		if (mode_ == dialog_type::UNIT_LIST) {
+			column["label"] = "";
+			// Status
+			if(unit->get_state(unit::STATE_PETRIFIED)) {
+				column["label"] = "misc/petrified.png";
+			}
+
+			if(unit->get_state(unit::STATE_POISONED)) {
+				column["label"] = "misc/poisoned.png";
+			}
+
+			if(unit->get_state(unit::STATE_SLOWED)) {
+				column["label"] = "misc/slowed.png";
+			}
+
+			if(unit->invisible(unit->get_location(), false)) {
+				column["label"] = "misc/invisible.png";
+			}
+			row_data.emplace("unit_status", column);
+		}
 
 		std::stringstream exp_str;
 		if(unit->can_advance()) {
@@ -266,34 +349,36 @@ void unit_recall::pre_show()
 			filter_text += " " + std::string("vvv");
 		}
 
-		std::string traits;
-		for(const std::string& trait : unit->trait_names()) {
-			traits += (traits.empty() ? "" : "\n") + trait;
-			filter_text += " " + trait;
+		if (mode_ == dialog_type::UNIT_LIST) {
+			column["label"] = utils::join(unit->trait_names(), ", ");
+		} else {
+			std::string traits;
+			for(const std::string& trait : unit->trait_names()) {
+				traits += (traits.empty() ? "" : "\n") + trait;
+				filter_text += " " + trait;
+			}
+			column["label"] = maybe_inactive(
+						!traits.empty() ? traits : font::unicode_en_dash,
+						recallable);
 		}
-
-		column["label"] = maybe_inactive(
-					!traits.empty() ? traits : font::unicode_en_dash,
-					recallable);
 		row_data.emplace("unit_traits", column);
 
 		filter_options_.push_back(filter_text);
-		grid& grid = list.add_row(row_data);
-		if(!recallable) {
-			image *gold_icon = dynamic_cast<image*>(grid.find("gold_icon", false));
-			assert(gold_icon);
-			gold_icon->set_image(gold_icon->get_image() + "~GS()");
-		}
+		list.add_row(row_data);
 	}
 
+	//
+	// List sorting
+	//
 	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
 	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
 	list.register_sorting_option(2, [this](const int i) {
 		const unit& u = *recall_list_[i];
 		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
 	});
-	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
-	list.register_translatable_sorting_option(4, [this](const int i) {
+	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->movement_left(); });
+	list.register_sorting_option(6, [this](const int i) { return recall_list_[i]->experience(); });
+	list.register_translatable_sorting_option(7, [this](const int i) {
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
@@ -337,6 +422,11 @@ void unit_recall::rename_unit()
 
 void unit_recall::dismiss_unit()
 {
+	if (team_ == nullptr) {
+		LOG_DP << "No team specificed, can't dismiss.";
+		return;
+	}
+
 	LOG_DP << "Recall list units:"; dump_recall_list_to_console(recall_list_);
 
 	listbox& list = find_widget<listbox>("recall_list");
@@ -385,10 +475,11 @@ void unit_recall::dismiss_unit()
 
 	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'";
 	LOG_DP << "That side's recall list:";
-	dump_recall_list_to_console(team_.recall_list());
+	dump_recall_list_to_console(team_->recall_list());
+
 
 	// Find the unit in the recall list.
-	unit_ptr dismissed_unit = team_.recall_list().find_if_matches_id(u.id());
+	unit_ptr dismissed_unit = team_->recall_list().find_if_matches_id(u.id());
 	assert(dismissed_unit);
 
 	// Record the dismissal, then delete the unit.
@@ -400,9 +491,33 @@ void unit_recall::dismiss_unit()
 	}
 }
 
+void unit_recall::update_dialog()
+{
+	switch(mode_) {
+	case dialog_type::RECALL:
+		find_widget<label>(get_window(), "title", false).set_label(_("Recall Unit"));
+		find_widget<button>(get_window(), "ok", false).set_label(_("Recall"));
+		break;
+	case dialog_type::RECRUIT:
+		find_widget<label>(get_window(), "title", false).set_label(_("Recruit Unit"));
+		find_widget<button>(get_window(), "ok", false).set_label(_("Recruit"));
+		break;
+	case dialog_type::UNIT_LIST:
+		find_widget<label>(get_window(), "title", false).set_label(_("Unit List"));
+		find_widget<button>(get_window(), "ok", false).set_label(_("Scroll To"));
+		break;
+	case dialog_type::UNIT_CREATE:
+		break;
+	}
+}
+
 void unit_recall::show_help()
 {
-	help::show_help("recruit_and_recall");
+	if (mode_ == dialog_type::RECRUIT || mode_ == dialog_type::RECALL) {
+		help::show_help("recruit_and_recall");
+	} else {
+		help::show_help("units");
+	}
 }
 
 void unit_recall::list_item_clicked()
@@ -432,8 +547,9 @@ void unit_recall::post_show()
 	}
 }
 
-void unit_recall::filter_text_changed(const std::string& text)
+void unit_recall::filter_text_changed()
 {
+	const std::string& text = find_widget<text_box>("filter_box").get_value();
 	listbox& list = find_widget<listbox>("recall_list");
 
 	const std::vector<std::string> words = utils::split(text, ' ');

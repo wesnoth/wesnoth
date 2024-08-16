@@ -73,8 +73,6 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, size_(0, 0)
 	, padding_(5)
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
 	connect_signal<event::MOUSE_MOTION>(
 		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
