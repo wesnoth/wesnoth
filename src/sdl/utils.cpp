@@ -1805,15 +1805,9 @@ constexpr bool not_alpha(uint32_t pixel)
 }
 }
 
-rect get_non_transparent_portion(const surface &surf)
+rect get_non_transparent_portion(surface nsurf)
 {
 	rect res {0,0,0,0};
-
-	surface nsurf = surf.clone();
-	if(nsurf == nullptr) {
-		PLAIN_LOG << "failed to make neutral surface";
-		return res;
-	}
 
 	surface_lock lock(nsurf);
 	const uint32_t* const pixels = lock.pixels();
@@ -1830,7 +1824,7 @@ rect get_non_transparent_portion(const surface &surf)
 	res.y = n;
 
 	for(n = 0; n != nsurf->h-res.y; ++n) {
-		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*surf->w;
+		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*nsurf->w;
 		const uint32_t* const end_row = start_row + nsurf->w;
 
 		if(std::find_if(start_row,end_row,not_alpha) != end_row)
@@ -1859,7 +1853,7 @@ rect get_non_transparent_portion(const surface &surf)
 	for(n = 0; n != nsurf->w-res.x; ++n) {
 		int y;
 		for(y = 0; y != nsurf->h; ++y) {
-			const uint32_t pixel = pixels[y*nsurf->w + surf->w - n - 1];
+			const uint32_t pixel = pixels[y*nsurf->w + nsurf->w - n - 1];
 			if(not_alpha(pixel))
 				break;
 		}
