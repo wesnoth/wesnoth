@@ -28,6 +28,7 @@
 #include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
+#include "global.hpp"
 #include "preferences/preferences.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
@@ -1293,11 +1294,7 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 		int(zoom_)
 	};
 
-#ifdef __cpp_aggregate_paren_init
-	drawing_buffer_.emplace_back(generate_hex_key(layer, loc), draw_func, dest);
-#else
-	drawing_buffer_.push_back({generate_hex_key(layer, loc), draw_func, dest});
-#endif
+	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, dest);
 }
 
 void display::drawing_buffer_commit()
