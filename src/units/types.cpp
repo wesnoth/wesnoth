@@ -1495,7 +1495,7 @@ void adjust_profile(std::string& profile)
 
 	// If the path already refers to /transparent...
 	if(profile.find(path_adjust) != std::string::npos && offset != std::string::npos) {
-		if(!image::locator(profile).file_exists()) {
+		if(!image::exists(profile)) {
 			profile.replace(profile.find(path_adjust), path_adjust.length(), "");
 		}
 
@@ -1506,7 +1506,7 @@ void adjust_profile(std::string& profile)
 	offset != std::string::npos ? temp.insert(offset, path_adjust) : temp = path_adjust + temp;
 
 	// and use that path if it exists.
-	if(image::locator(temp).file_exists()) {
+	if(image::exists(temp)) {
 		profile = temp;
 	}
 }

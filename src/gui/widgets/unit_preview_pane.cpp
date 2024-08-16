@@ -224,8 +224,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	for(const auto& a : attacks) {
 		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
 		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO(16,16)";
-		const bool range_png_exists = ::image::locator(range_png).file_exists();
-		const bool type_png_exists = ::image::locator(type_png).file_exists();
+		const bool range_png_exists = ::image::exists(range_png);
+		const bool type_png_exists = ::image::exists(type_png);
 
 		const t_string& range = string_table["range_" + a.range()];
 		const t_string& type = string_table["type_" + a.type()];

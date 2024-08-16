@@ -546,13 +546,6 @@ static surface apply_light(surface surf, const light_string& ls)
 	return light_surface(surf, lightmap);
 }
 
-bool locator::file_exists() const
-{
-	return is_data_uri()
-		? parsed_data_URI{get_filename()}.good
-		: filesystem::get_binary_file_location("images", get_filename()).has_value();
-}
-
 static surface load_from_disk(const locator& loc)
 {
 	switch(loc.get_type()) {
@@ -825,7 +818,11 @@ bool exists(const image::locator& i_locator)
 
 	bool& cache = iter->second;
 	if(success) {
-		cache = i_locator.file_exists();
+		if(i_locator.is_data_uri()) {
+			cache = parsed_data_URI{i_locator.get_filename()}.good;
+		} else {
+			cache = filesystem::get_binary_file_location("images", i_locator.get_filename()).has_value();
+		}
 	}
 
 	return cache;

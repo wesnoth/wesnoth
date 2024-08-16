@@ -969,7 +969,7 @@ REGISTER_MOD_PARSER(CROP, args)
 
 static bool check_image(const image::locator& img, std::stringstream & message)
 {
-	if(img.file_exists()) return true;
+	if(image::exists(img)) return true;
 	message << " image not found: '" << img.get_filename() << "'\n";
 	ERR_DP << message.str();
 	return false;

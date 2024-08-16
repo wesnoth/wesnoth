@@ -92,19 +92,6 @@ public:
 	 */
 	bool is_void() const { return type_ == NONE; }
 
-	/**
-	 * Tests whether the file the locator points at exists.
-	 *
-	 * is_void does not work before the image is loaded, and also a placeholder
-	 * is returned instead in debug mode. Thus it's not possible to test for
-	 * the existence of an actual file without this function.
-	 *
-	 * @note This does not test whether the image is valid or not.
-	 *
-	 * @return                Whether or not the file exists.
-	 */
-	bool file_exists() const;
-
 private:
 	locator::type type_ = NONE;
 	bool is_data_uri_ = false;
