@@ -15,16 +15,17 @@
 
 #include "units/animation.hpp"
 
+#include "color.hpp"
 #include "display.hpp"
+#include "global.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
+#include "random.hpp"
 #include "resources.hpp"
-#include "color.hpp"
-#include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
+#include "units/unit.hpp"
 #include "variable.hpp"
-#include "random.hpp"
 
 #include <algorithm>
 
@@ -35,11 +36,6 @@ static std::string get_heal_sound(const config& cfg)
 
 struct animation_branch
 {
-	animation_branch()
-		: attributes()
-		, children()
-	{}
-
 	config merge() const
 	{
 		config result = attributes;
@@ -1308,18 +1304,12 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 {
 	if(!animated_unit) return;
 
-	anim_elem tmp;
-	tmp.my_unit = std::move(animated_unit);
-	tmp.text = text;
-	tmp.text_color = text_color;
-	tmp.src = src;
-	tmp.with_bars= with_bars;
-	tmp.animation = tmp.my_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
+	const unit_animation* anim =
+		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
+	if(!anim) return;
 
-	if(!tmp.animation) return;
-
-	start_time_ = std::max<int>(start_time_, tmp.animation->get_begin_time());
-	animated_units_.push_back(std::move(tmp));
+	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1329,20 +1319,10 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	, const std::string& text
 	, const color_t text_color)
 {
-	if(!animated_unit) return;
+	if(!animated_unit || !anim) return;
 
-	anim_elem tmp;
-	tmp.my_unit = std::move(animated_unit);
-	tmp.text = text;
-	tmp.text_color = text_color;
-	tmp.src = src;
-	tmp.with_bars = with_bars;
-	tmp.animation = anim;
-
-	if(!tmp.animation) return;
-
-	start_time_ = std::max<int>(start_time_, tmp.animation->get_begin_time());
-	animated_units_.push_back(std::move(tmp));
+	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
 }
 
 bool unit_animator::has_animation(unit_const_ptr animated_unit
@@ -1378,15 +1358,7 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 		 animated_unit->anim_comp().get_animation()->matches(
 			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
-		anim_elem tmp;
-		tmp.my_unit = animated_unit;
-		tmp.text = text;
-		tmp.text_color = text_color;
-		tmp.src = src;
-		tmp.with_bars= with_bars;
-		tmp.animation = nullptr;
-
-		animated_units_.push_back(std::move(tmp));
+		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, with_bars);
 	} else {
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
