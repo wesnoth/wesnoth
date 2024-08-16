@@ -24,24 +24,6 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-frame_parameters::frame_parameters()
-	: duration(0)
-	, halo_x(0)
-	, halo_y(0)
-	, blend_ratio(0.0)
-	, highlight_ratio(1.0)
-	, offset(0)
-	, submerge(0.0)
-	, x(0)
-	, y(0)
-	, directional_x(0)
-	, directional_y(0)
-	, auto_vflip(boost::logic::indeterminate)
-	, auto_hflip(boost::logic::indeterminate)
-	, primary_frame(boost::logic::indeterminate)
-	, drawing_layer(get_abs_frame_layer(drawing_layer::unit_default))
-{}
-
 frame_builder::frame_builder()
 	: duration_(1)
 	, auto_vflip_(boost::logic::indeterminate)

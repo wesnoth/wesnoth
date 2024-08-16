@@ -40,9 +40,7 @@ constexpr int get_abs_frame_layer(drawing_layer layer)
 /** All parameters from a frame at a given instant */
 struct frame_parameters
 {
-	frame_parameters();
-
-	int duration;
+	int duration = 0;
 
 	image::locator image;
 	image::locator image_diagonal;
@@ -50,8 +48,8 @@ struct frame_parameters
 	std::string image_mod;
 	std::string halo;
 
-	int halo_x;
-	int halo_y;
+	int halo_x = 0;
+	int halo_y = 0;
 
 	std::string halo_mod;
 	std::string sound;
@@ -60,21 +58,21 @@ struct frame_parameters
 	utils::optional<color_t> text_color;
 	utils::optional<color_t> blend_with;
 
-	double blend_ratio;
-	double highlight_ratio;
-	double offset;
-	double submerge;
+	double blend_ratio = 0.0;
+	double highlight_ratio = 1.0;
+	double offset = 0.0;
+	double submerge = 0.0;
 
-	int x;
-	int y;
-	int directional_x;
-	int directional_y;
+	int x = 0;
+	int y = 0;
+	int directional_x = 0;
+	int directional_y = 0;
 
-	boost::tribool auto_vflip;
-	boost::tribool auto_hflip;
-	boost::tribool primary_frame;
+	boost::tribool auto_vflip = boost::logic::indeterminate;
+	boost::tribool auto_hflip = boost::logic::indeterminate;
+	boost::tribool primary_frame = boost::logic::indeterminate;
 
-	int drawing_layer;
+	int drawing_layer = get_abs_frame_layer(drawing_layer::unit_default);
 };
 
 /**
