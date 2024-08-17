@@ -1805,11 +1805,11 @@ constexpr bool not_alpha(uint32_t pixel)
 }
 }
 
-rect get_non_transparent_portion(surface nsurf)
+rect get_non_transparent_portion(const surface& nsurf)
 {
 	rect res {0,0,0,0};
 
-	surface_lock lock(nsurf);
+	const_surface_lock lock(nsurf);
 	const uint32_t* const pixels = lock.pixels();
 
 	int n;
