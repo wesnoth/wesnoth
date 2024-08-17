@@ -630,7 +630,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 
 static surface get_tod_colored(const locator& i_locator, bool skip_cache = false)
 {
-	surface img = get_surface(i_locator, HEXED, skip_cache);
+	surface img = get_surface(i_locator, HEXED, skip_cache).clone();
 	adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 	return img;
 }
