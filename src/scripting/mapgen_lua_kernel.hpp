@@ -31,14 +31,19 @@ public:
 
 	virtual std::string my_name() { return "Mapgen Lua Kernel"; }
 
-	void user_config(const char * prog, const config & generator); // throws game::lua_error
-	std::string create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed); // throws game::lua_error
-	config create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed); // throws game::lua_error
+	bool has_user_config(std::string_view file);
+	void user_config(std::string_view file, const config & generator); // throws game::lua_error
+
+	std::string create_map(std::string_view file, const config & generator, utils::optional<uint32_t> seed); // throws game::lua_error
+	config create_scenario(std::string_view file, const config & generator, utils::optional<uint32_t> seed); // throws game::lua_error
 
 	virtual uint32_t get_random_seed();
 	std::mt19937& get_default_rng();
 private:
-	void run_generator(const char * prog, const config & generator);
+	std::string return_map(); // throws game::lua_error
+	config return_scenario(); // throws game::lua_error
+	bool run_generator(std::string_view file, const char * field, const config & generator);
+
 	int intf_get_variable(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
 	utils::optional<uint32_t> random_seed_;

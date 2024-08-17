@@ -489,6 +489,15 @@ std::string get_short_wml_path(const std::string &filename);
 utils::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string &filename);
 
 /**
+ * Returns an asset path to @a filename for binary path-independent use in wml. (that can be passed to get_wml_location)
+ *
+ * Example:
+ *   images, units/konrad-fighter.png ->
+ *   campaigns/Heir_To_The_Throne/images/units/konrad-fighter.png
+ */
+utils::optional<std::string> get_wml_binary_file_path(const std::string& type, const std::string &filename);
+
+/**
  * Returns the appropriate invocation for a Wesnoth-related binary, assuming
  * that it is located in the same directory as the running wesnoth binary.
  * This is just a string-transformation based on argv[0], so the returned

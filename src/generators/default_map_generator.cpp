@@ -56,7 +56,7 @@ default_map_generator::default_map_generator(const config& cfg)
 {
 }
 
-bool default_map_generator::allow_user_config() const { return true; }
+bool default_map_generator::allow_user_config() { return true; }
 
 void default_map_generator::user_config()
 {

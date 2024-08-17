@@ -60,7 +60,7 @@ public:
 	void add_log(const char* str) { cmd_log_ << str; }
 	void clear_log() { cmd_log_.log_.str(""); cmd_log_.log_.clear(); }
 
-	using external_log_type = std::function<void(const std::string &)>;
+	using external_log_type = std::function<void(std::string_view)>;
 	void set_external_log( external_log_type lg ) { cmd_log_.external_log_ = lg; }
 
 	/** Error reporting mechanisms, used by virtual methods protected_call and load_string*/
@@ -92,7 +92,7 @@ protected:
 			, external_log_(nullptr)
 		{}
 
-		inline command_log & operator<< (const std::string & str) {
+		inline command_log & operator<< (std::string_view str) {
 			log_ << str;
 			if (external_log_) {
 				external_log_(str);

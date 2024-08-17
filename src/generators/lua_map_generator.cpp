@@ -16,8 +16,10 @@
 #include "generators/lua_map_generator.hpp"
 
 #include "config.hpp"
+#include "filesystem.hpp"
 #include "game_errors.hpp"
 #include "scripting/mapgen_lua_kernel.hpp"
+#include "scripting/lua_common.hpp"
 #include "log.hpp"
 
 #include <array>
@@ -27,24 +29,21 @@ static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 
-lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
-	: id_(cfg["id"])
-	, config_name_(cfg["config_name"])
-	, user_config_(cfg["user_config"])
-	, create_map_(cfg["create_map"])
-	, create_scenario_(cfg["create_scenario"])
+lua_map_generator::lua_map_generator(const std::string& file_name, const config & cfg, const config* vars)
+	: config_name_(cfg["config_name"])
+	, file_name_()
 	, lk_(vars)
 	, generator_data_(cfg)
 {
+	file_name_ = filesystem::get_wml_binary_file_path("map_generators", file_name + ".lua").value_or("");
+
 	lk_.load_core();
+
+
 	using namespace std::string_literals;
-	const std::array required {"id"s, "config_name"s, "create_map"s};
+	const std::array required {"config_name"s};
 	for(const auto& req : required) {
 		if (!cfg.has_attribute(req)) {
-			if(req == "create_map" && cfg.has_attribute("create_scenario")) {
-				// One of these is required, but not both
-				continue;
-			}
 			std::string msg = "Error when constructing a lua map generator -- missing a required attribute '";
 			msg += req + "'\n";
 			msg += "Config was '" + cfg.debug() + "'";
@@ -53,10 +52,15 @@ lua_map_generator::lua_map_generator(const config & cfg, const config* vars)
 	}
 }
 
+bool lua_map_generator::allow_user_config()
+{
+	return lk_.has_user_config(file_name_);
+}
+
 void lua_map_generator::user_config()
 {
 	try {
-		lk_.user_config(user_config_.c_str(), generator_data_);
+		lk_.user_config(file_name_, generator_data_);
 	} catch(const game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator user_config.\n";
 		msg += "The generator was: " + config_name_ + "\n";
@@ -67,28 +71,22 @@ void lua_map_generator::user_config()
 
 std::string lua_map_generator::create_map(utils::optional<uint32_t> seed)
 {
-	if(create_map_.empty()) {
-		return map_generator::create_map(seed);
-	}
 
 	try {
-		return lk_.create_map(create_map_.c_str(), generator_data_, seed);
+		return lk_.create_map(file_name_, generator_data_, seed);
 	} catch (const game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator create_map.\n";
 		msg += "The generator was: " + config_name_ + "\n";
 		msg += e.what();
 		throw mapgen_exception(msg);
 	}
+	return map_generator::create_map(seed);
 }
 
 config lua_map_generator::create_scenario(utils::optional<uint32_t> seed)
 {
-	if(create_scenario_.empty()) {
-		return map_generator::create_scenario(seed);
-	}
-
 	try {
-		return lk_.create_scenario(create_scenario_.c_str(), generator_data_, seed);
+		return lk_.create_scenario(file_name_.c_str(), generator_data_, seed);
 	} catch (const game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator create_scenario.\n";
 		msg += "The generator was: " + config_name_ + "\n";
@@ -96,4 +94,5 @@ config lua_map_generator::create_scenario(utils::optional<uint32_t> seed)
 		ERR_NG << msg;
 		throw mapgen_exception(msg);
 	}
+	return map_generator::create_scenario(seed);
 }
