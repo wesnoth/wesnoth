@@ -295,16 +295,40 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
 }
 
-void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
+bool mapgen_lua_kernel::run_generator(std::string_view file, const char * field, const config & generator)
 {
-	load_string(prog, "", std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
+	luaW_getglobal(mState, "wesnoth", "require");
+	lua_push(mState, file);
+	if(!protected_call(1, 1)) {
+		cmd_log_ << "Error: Failed to load '" << file << "'mapgen.\n";
+	}
+	lua_getfield(mState, -1, field);
+	if(lua_isnoneornil(mState, -1)) {
+		lua_pop(mState, 1);
+		return false;
+	}
 	luaW_pushconfig(mState, generator);
 	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
+	return true;
 }
 
-void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
+bool mapgen_lua_kernel::has_user_config(std::string_view file)
 {
-	run_generator(prog, generator);
+	luaW_getglobal(mState, "wesnoth", "require");
+	lua_push(mState, file);
+	if(!protected_call(1, 1)) {
+		cmd_log_ << "Error: Failed to load '" << file << "'mapgen.\n";
+	}
+	lua_getfield(mState, -1, "user_config");
+	auto res = !lua_isnoneornil(mState, -1);
+	lua_pop(mState, 1);
+	return res;
+
+}
+
+void mapgen_lua_kernel::user_config(std::string_view file, const config & generator)
+{
+	run_generator(file, "user_config", generator);
 }
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
@@ -322,12 +346,24 @@ int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
 	return 1;
 }
 
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(std::string_view file, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
-	run_generator(prog, generator);
 
+	if(run_generator(file, "create_map", generator)) {
+		return return_map();
+	}
+
+	if(run_generator(file, "create_scenario", generator)) {
+		return return_scenario()["map_data"];
+	}
+
+	throw game::lua_error(std::string(file), "invalid mapgen file");
+}
+
+std::string mapgen_lua_kernel::return_map() // throws game::lua_error
+{
 	if (!lua_isstring(mState,-1)) {
 		std::string msg = "expected a string, found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));
@@ -335,15 +371,27 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}
 
-	return lua_tostring(mState, -1);
+	return std::string(lua_tostring(mState, -1));
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(std::string_view file, const config & generator, utils::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;
 	default_rng_ = std::mt19937(get_random_seed());
-	run_generator(prog, generator);
 
+	if(run_generator(file, "create_scenario", generator)) {
+		return return_scenario();
+	}
+
+	if(run_generator(file, "create_map", generator)) {
+		return config { "map_data", return_map()};
+	}
+
+	throw game::lua_error(std::string(file), "invalid mapgen file");
+}
+
+config mapgen_lua_kernel::return_scenario() // throws game::lua_error
+{
 	if (!lua_istable(mState, -1)) {
 		std::string msg = "expected a config (table), found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));

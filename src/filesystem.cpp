@@ -1733,6 +1733,27 @@ utils::optional<std::string> get_independent_binary_file_path(const std::string&
 	return full_path.generic_string();
 }
 
+utils::optional<std::string> get_wml_binary_file_path(const std::string& type, const std::string& filename)
+{
+	auto bp = get_binary_file_location(type, filename);
+	if(!bp) {
+		return utils::nullopt;
+	}
+
+	bfs::path full_path{bp.value()};
+	bfs::path partial = subtract_path(full_path, get_user_data_path() / "data");
+	if(!partial.empty()) {
+		return std::string("~") + partial.generic_string();
+	}
+
+	partial = subtract_path(full_path, bfs::path(game_config::path) / "data");
+	if(!partial.empty()) {
+		return partial.generic_string();
+	}
+
+	return utils::nullopt;
+}
+
 std::string get_program_invocation(const std::string& program_name)
 {
 #ifdef _WIN32

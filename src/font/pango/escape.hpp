@@ -30,7 +30,7 @@ namespace font
  *
  * @returns                       The escaped text.
  */
-inline std::string escape_text(const std::string& text)
+inline std::string escape_text(std::string_view text)
 {
 	std::ostringstream ss;
 	for(const char c : text) {

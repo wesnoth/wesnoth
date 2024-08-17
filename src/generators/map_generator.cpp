@@ -40,7 +40,7 @@ std::string map_generator::create_map(utils::optional<uint32_t> randomseed)
 /**
 	by default we don't allow user configs.
 */
-bool map_generator::allow_user_config() const
+bool map_generator::allow_user_config()
 {
 	return false;
 }
