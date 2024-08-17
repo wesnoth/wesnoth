@@ -967,18 +967,6 @@ void light_surface(surface& nsurf, const surface &lightmap)
 	}
 }
 
-surface blur_surface(surface surf, int depth)
-{
-	if(surf == nullptr) {
-		return nullptr;
-	}
-
-	SDL_Rect rect {0, 0, surf->w, surf->h};
-	blur_surface(surf, rect, depth);
-
-	return surf;
-}
-
 void blur_surface(surface& surf, SDL_Rect rect, int depth)
 {
 	if(surf == nullptr) {

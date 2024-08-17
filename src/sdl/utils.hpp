@@ -121,8 +121,6 @@ void swap_channels_image(surface& surf, channel r, channel g, channel b, channel
  * @param surf               The source surface.
  * @param map_rgb            Map of color values, with the keys corresponding to the
  *                           source palette, and the values to the recolored palette.
- * @return                   A recolored surface, or a null surface if there are
- *                           problems with the source.
  */
 void recolor_image(surface& surf, const color_range_map& map_rgb);
 
@@ -158,15 +156,6 @@ bool in_mask_surface(surface surf, surface mask);
 void light_surface(surface& surf, const surface &lightmap);
 
 /**
- * Cross-fades a surface.
- *
- * @param surf                    The source surface.
- * @param depth                   The depth of the blurring.
- * @return                        A new, blurred, neutral surface.
- */
-surface blur_surface(surface surf, int depth = 1);
-
-/**
  * Cross-fades a surface in place.
  *
  * @param surf                    The surface to blur, must have 32 bits per pixel.
@@ -180,7 +169,6 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
  *
  * @param surf                    The source surface.
  * @param depth                   The depth of the blurring.
- * @return                        A new, blurred, neutral surface.
  */
 void blur_alpha_surface(surface& surf, int depth = 1);
 
@@ -199,8 +187,6 @@ surface cut_surface(const surface &surf, const SDL_Rect& r);
  *                                [0, 1].
  * @param color                   The color to blend width, note its alpha
  *                                channel is ignored.
- *
- * @return                        The blended surface.
  */
 void blend_surface(surface& surf, const double amount, const color_t color);
 
