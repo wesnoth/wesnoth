@@ -101,18 +101,18 @@ surface scale_surface_legacy(const surface &surf, int w, int h);
  */
 surface scale_surface_sharp(const surface& surf, int w, int h);
 
-surface adjust_surface_color(const surface &surf, int r, int g, int b);
-surface greyscale_image(const surface &surf);
-surface monochrome_image(const surface &surf, const int threshold);
-surface sepia_image(const surface &surf);
-surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB);
-surface alpha_to_greyscale(const surface & surf);
-surface wipe_alpha(const surface & surf);
+void adjust_surface_color(surface& surf, int r, int g, int b);
+void greyscale_image(surface& surf);
+void monochrome_image(surface& surf, const int threshold);
+void sepia_image(surface& surf);
+void negative_image(surface& surf, const int thresholdR, const int thresholdG, const int thresholdB);
+void alpha_to_greyscale(surface& surf);
+void wipe_alpha(surface& surf);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
-surface shadow_image(const surface &surf, int scale = 1);
+void shadow_image(surface& surf, int scale = 1);
 
 enum channel { RED, GREEN, BLUE, ALPHA };
-surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a);
+void swap_channels_image(surface& surf, channel r, channel g, channel b, channel a);
 
 /**
  * Recolors a surface using a map with source and converted palette values.
@@ -124,9 +124,9 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
  * @return                   A recolored surface, or a null surface if there are
  *                           problems with the source.
  */
-surface recolor_image(surface surf, const color_range_map& map_rgb);
+void recolor_image(surface& surf, const color_range_map& map_rgb);
 
-surface brighten_image(const surface &surf, int32_t amount);
+void brighten_image(surface& surf, int32_t amount);
 
 /** Get a portion of the screen.
  *  Send nullptr if the portion is outside of the screen.
@@ -139,13 +139,13 @@ surface brighten_image(const surface &surf, int32_t amount);
 surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
 void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
-surface adjust_surface_alpha_add(const surface &surf, int amount);
+void adjust_surface_alpha_add(surface& surf, int amount);
 
 /** Applies a mask on a surface. */
-surface mask_surface(const surface &surf, const surface &mask, bool* empty_result = nullptr, const std::string& filename = std::string());
+void mask_surface(surface& surf, const surface& mask, bool* empty_result = nullptr, const std::string& filename = std::string());
 
 /** Check if a surface fit into a mask */
-bool in_mask_surface(const surface &surf, const surface &mask);
+bool in_mask_surface(surface surf, surface mask);
 
 /**
  * Light surf using lightmap
@@ -155,7 +155,7 @@ bool in_mask_surface(const surface &surf, const surface &mask);
  *                           to cover the full (-256,256) spectrum.
  *                           Should already be neutral
 */
-surface light_surface(const surface &surf, const surface &lightmap);
+void light_surface(surface& surf, const surface &lightmap);
 
 /**
  * Cross-fades a surface.
@@ -164,7 +164,7 @@ surface light_surface(const surface &surf, const surface &lightmap);
  * @param depth                   The depth of the blurring.
  * @return                        A new, blurred, neutral surface.
  */
-surface blur_surface(const surface &surf, int depth = 1);
+surface blur_surface(surface surf, int depth = 1);
 
 /**
  * Cross-fades a surface in place.
@@ -182,7 +182,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
  * @param depth                   The depth of the blurring.
  * @return                        A new, blurred, neutral surface.
  */
-surface blur_alpha_surface(const surface &surf, int depth = 1);
+void blur_alpha_surface(surface& surf, int depth = 1);
 
 /** Cuts a rectangle from a surface. */
 surface cut_surface(const surface &surf, const SDL_Rect& r);
@@ -202,10 +202,7 @@ surface cut_surface(const surface &surf, const SDL_Rect& r);
  *
  * @return                        The blended surface.
  */
-surface blend_surface(
-		  const surface &surf
-		, const double amount
-		, const color_t color);
+void blend_surface(surface& surf, const double amount, const color_t color);
 
 /**
  * Rotates a surface by any degrees.
@@ -220,8 +217,7 @@ surface blend_surface(
  *
  * @return                        The rotated surface.
  */
-surface rotate_any_surface(const surface& surf, float angle,
-		int zoom, int offset);
+surface rotate_any_surface(const surface& surf, float angle, int zoom, int offset);
 
 /**
  * Rotates a surface 180 degrees.
@@ -230,7 +226,7 @@ surface rotate_any_surface(const surface& surf, float angle,
  *
  * @return                        The rotated surface.
  */
-surface rotate_180_surface(const surface &surf);
+surface rotate_180_surface(const surface& surf);
 
 /**
  * Rotates a surface 90 degrees.
@@ -241,10 +237,10 @@ surface rotate_180_surface(const surface &surf);
  *
  * @return                        The rotated surface.
  */
-surface rotate_90_surface(const surface &surf, bool clockwise);
+surface rotate_90_surface(const surface& surf, bool clockwise);
 
-surface flip_surface(const surface &surf);
-surface flop_surface(const surface &surf);
+void flip_surface(surface& surf);
+void flop_surface(surface& surf);
 
 rect get_non_transparent_portion(const surface& surf);
 
