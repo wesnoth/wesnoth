@@ -316,320 +316,320 @@ config rich_label::get_parsed_text(const config& parsed_text)
 
 	DBG_GUI_RL << parsed_text.debug();
 	for(config::any_child tag : parsed_text.all_children_range()) {
-			config& child = tag.cfg;
+		config& child = tag.cfg;
 
-			if(tag.key == "img") {
-				prev_blk_height_ += txt_height_ + padding_;
-				txt_height_ = 0;
+		if(tag.key == "img") {
+			prev_blk_height_ += txt_height_ + padding_;
+			txt_height_ = 0;
 
-				std::string name = child["src"];
-				std::string align = child["align"];
-				bool is_curr_float = child["float"].to_bool();
+			std::string name = child["src"];
+			std::string align = child["align"];
+			bool is_curr_float = child["float"].to_bool();
 
-				if (wrap_mode) {
-					// do nothing, keep float on
+			if (wrap_mode) {
+				// do nothing, keep float on
+				wrap_mode = true;
+			} else {
+				// is current img floating
+				if(is_curr_float) {
 					wrap_mode = true;
-				} else {
-					// is current img floating
-					if(is_curr_float) {
-						wrap_mode = true;
-					}
 				}
-				DBG_GUI_RL << "wrap mode: " << wrap_mode << ",floating: " << is_float;
+			}
+			DBG_GUI_RL << "wrap mode: " << wrap_mode << ",floating: " << is_float;
 
-				curr_item = &(text_dom.add_child("image"));
-				add_image(*curr_item, name, align, is_image, is_float, is_curr_float, img_size, float_size);
+			curr_item = &(text_dom.add_child("image"));
+			add_image(*curr_item, name, align, is_image, is_float, is_curr_float, img_size, float_size);
 
-				DBG_GUI_RL << "image: src=" << name << ", size=" << get_image_size(*curr_item);
+			DBG_GUI_RL << "image: src=" << name << ", size=" << get_image_size(*curr_item);
 
-				is_image = true;
-				is_float = is_curr_float;
-				is_text = false;
-				new_text_block = true;
+			is_image = true;
+			is_float = is_curr_float;
+			is_text = false;
+			new_text_block = true;
 
-			} else if(tag.key == "table") {
-				if (curr_item == nullptr) {
-					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item);
-					new_text_block = false;
-				}
+		} else if(tag.key == "table") {
+			if (curr_item == nullptr) {
+				curr_item = &(text_dom.add_child("text"));
+				default_text_config(curr_item);
+				new_text_block = false;
+			}
 
-				in_table = true;
-				col_idx = 0;
+			in_table = true;
+			col_idx = 0;
 
-				// table doesn't support floating images alongside
-				img_size = point(0,0);
-				float_size = point(0,0);
+			// table doesn't support floating images alongside
+			img_size = point(0,0);
+			float_size = point(0,0);
 
-				// setup column width
-				unsigned columns = child["col"].to_int();
-				unsigned width = child["width"].to_int();
-				width = width > 0 ? width : w_;
-				col_width = width/columns;
+			// setup column width
+			unsigned columns = child["col"].to_int();
+			unsigned width = child["width"].to_int();
+			width = width > 0 ? width : w_;
+			col_width = width/columns;
 
-				// start on a new line
-				(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %s), set_var('tw', width - pos_x - %d)])") % (is_image ? "image_height" : "text_height") % col_width);
-				x_ = 0;
-				prev_blk_height_ += txt_height_;
+			// start on a new line
+			(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %s), set_var('tw', width - pos_x - %d)])") % (is_image ? "image_height" : "text_height") % col_width);
+			x_ = 0;
+			prev_blk_height_ += txt_height_;
+			txt_height_ = 0;
+			row_y = prev_blk_height_;
+
+			is_text = false;
+			new_text_block = true;
+			is_image = false;
+
+			DBG_GUI_RL << "start table : " << "col=" << columns;
+			DBG_GUI_RL << "col_width : " << col_width;
+
+		} else if(tag.key == "jump") {
+			if (curr_item == nullptr) {
+				curr_item = &(text_dom.add_child("text"));
+				default_text_config(curr_item);
+				new_text_block = false;
+			}
+
+			if (col_width > 0) {
+				max_row_height = std::max(max_row_height, txt_height_);
+				max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
 				txt_height_ = 0;
-				row_y = prev_blk_height_;
 
-				is_text = false;
-				new_text_block = true;
-				is_image = false;
+				col_idx++;
+				x_ = col_idx * col_width;
 
-				DBG_GUI_RL << "start table : " << "col=" << columns;
-				DBG_GUI_RL << "col_width : " << col_width;
+				DBG_GUI_RL << "jump to next column";
 
-			} else if(tag.key == "jump") {
-				if (curr_item == nullptr) {
-					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item);
-					new_text_block = false;
-				}
+				(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('tw', width - %d - %d)])") % x_ % x_ % col_width);
 
-				if (col_width > 0) {
-					max_row_height = std::max(max_row_height, txt_height_);
-					max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
-					txt_height_ = 0;
-
-					col_idx++;
-					x_ = col_idx * col_width;
-
-					DBG_GUI_RL << "jump to next column";
-
-					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('tw', width - %d - %d)])") % x_ % x_ % col_width);
-
-					prev_blk_height_ = row_y;
-
-					if (!is_image) {
-						new_text_block = true;
-					}
-					is_image = false;
-				}
-
-				is_text = false;
-
-			} else if(tag.key == "break" || tag.key == "br") {
-				if (curr_item == nullptr) {
-					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item);
-					new_text_block = false;
-				}
-
-				if (in_table) {
-					DBG_GUI_RL << "break";
-					DBG_GUI_RL << txt_height_;
-					DBG_GUI_RL << img_size;
-
-					max_row_height = std::max(max_row_height, txt_height_);
-					max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
-
-					DBG_GUI_RL << "row height: " << max_row_height;
-
-					//linebreak
-					col_idx = 0;
-					prev_blk_height_ = row_y;
-					prev_blk_height_ += max_row_height + padding_;
-					row_y = prev_blk_height_;
-
-					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_row_height % padding_ % col_width);
-
-					max_row_height = 0;
-					txt_height_ = 0;
-
-				} else {
-					// TODO correct height update
-					if (is_image && !is_float) {
-						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
-					} else {
-						add_text_with_attribute(*curr_item, "\n");
-					}
-				}
-
-				x_ = 0;
-				is_image = false;
-				img_size = point(0,0);
-
-				DBG_GUI_RL << "linebreak";
+				prev_blk_height_ = row_y;
 
 				if (!is_image) {
 					new_text_block = true;
 				}
-				is_text = false;
-
-			} else if(tag.key == "endtable") {
-				if (curr_item == nullptr) {
-					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item);
-					new_text_block = false;
-				}
-
-				DBG_GUI_RL << "end table: " << max_row_height;
-				col_width = 0;
-				in_table = false;
 				is_image = false;
-				is_text = false;
-				row_y = 0;
+			}
+
+			is_text = false;
+
+		} else if(tag.key == "break" || tag.key == "br") {
+			if (curr_item == nullptr) {
+				curr_item = &(text_dom.add_child("text"));
+				default_text_config(curr_item);
+				new_text_block = false;
+			}
+
+			if (in_table) {
+				DBG_GUI_RL << "break";
+				DBG_GUI_RL << txt_height_;
+				DBG_GUI_RL << img_size;
+
+				max_row_height = std::max(max_row_height, txt_height_);
+				max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
+
+				DBG_GUI_RL << "row height: " << max_row_height;
+
+				//linebreak
+				col_idx = 0;
+				prev_blk_height_ = row_y;
+				prev_blk_height_ += max_row_height + padding_;
+				row_y = prev_blk_height_;
+
+				(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_row_height % padding_ % col_width);
+
+				max_row_height = 0;
+				txt_height_ = 0;
 
 			} else {
-				std::string line = child["text"];
+				// TODO correct height update
+				if (is_image && !is_float) {
+					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
+				} else {
+					add_text_with_attribute(*curr_item, "\n");
+				}
+			}
 
-				if (is_image && (!is_float)) {
-					if (line.size() > 0 && line.at(0) == '\n') {
-						x_ = 0;
-						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
-						line = line.substr(1);
-					} else {
-						prev_blk_height_ -= img_size.y + padding_;
+			x_ = 0;
+			is_image = false;
+			img_size = point(0,0);
+
+			DBG_GUI_RL << "linebreak";
+
+			if (!is_image) {
+				new_text_block = true;
+			}
+			is_text = false;
+
+		} else if(tag.key == "endtable") {
+			if (curr_item == nullptr) {
+				curr_item = &(text_dom.add_child("text"));
+				default_text_config(curr_item);
+				new_text_block = false;
+			}
+
+			DBG_GUI_RL << "end table: " << max_row_height;
+			col_width = 0;
+			in_table = false;
+			is_image = false;
+			is_text = false;
+			row_y = 0;
+
+		} else {
+			std::string line = child["text"];
+
+			if (is_image && (!is_float)) {
+				if (line.size() > 0 && line.at(0) == '\n') {
+					x_ = 0;
+					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
+					line = line.substr(1);
+				} else {
+					prev_blk_height_ -= img_size.y + padding_;
+				}
+			}
+
+			if (curr_item == nullptr || new_text_block) {
+				if (!in_table) {
+					// table will calculate this by itself, no need to calculate here
+					prev_blk_height_ += txt_height_ + padding_;
+					txt_height_ = 0;
+				}
+
+				curr_item = &(text_dom.add_child("text"));
+				default_text_config(curr_item);
+				new_text_block = false;
+			}
+
+			// }---------- TEXT TAGS -----------{
+			int tmp_h = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_)).y;
+
+			if (is_text && tag.key == "text") {
+				add_text_with_attribute(*curr_item, "\n\n");
+			}
+			is_text = false;
+
+			if(tag.key == "ref") {
+
+				add_link(*curr_item, line, child["dst"], float_size.x);
+				is_image = false;
+
+				DBG_GUI_RL << "ref: dst=" << child["dst"];
+
+			} else if(tag.key == "bold" || tag.key == "b") {
+				add_text_with_attribute(*curr_item, line, "bold");
+				is_image = false;
+
+				DBG_GUI_RL << "bold: text=" << line;
+
+			} else if(tag.key == "italic" || tag.key == "i") {
+
+				add_text_with_attribute(*curr_item, line, "italic");
+				is_image = false;
+
+				DBG_GUI_RL << "italic: text=" << line;
+
+			} else if(tag.key == "underline" || tag.key == "u") {
+
+				add_text_with_attribute(*curr_item, line, "underline");
+				is_image = false;
+
+				DBG_GUI_RL << "u: text=" << line;
+
+			} else if(tag.key == "header" || tag.key == "h") {
+
+				std::vector<std::string> attrs = {"face", "color", "size"};
+				std::vector<std::string> attr_data;
+				attr_data.push_back("serif");
+				attr_data.push_back(font::string_to_color("white").to_hex_string());
+				attr_data.push_back(std::to_string(font::SIZE_TITLE - 2));
+
+				add_text_with_attributes((*curr_item), line, attrs, attr_data);
+
+				is_image = false;
+
+				DBG_GUI_RL << "h: text=" << line;
+
+			} else if(tag.key == "span" || tag.key == "format") {
+
+				std::vector<std::string> attrs;
+				std::vector<std::string> attr_data;
+
+				DBG_GUI_RL << "span/format: text=" << line;
+				DBG_GUI_RL << "attributes:";
+
+				for (const auto& attr : child.attribute_range()) {
+					if (attr.first != "text") {
+						attrs.push_back(attr.first);
+						attr_data.push_back(attr.second);
+						DBG_GUI_RL << attr.first << "=" << attr.second;
 					}
 				}
 
-				if (curr_item == nullptr || new_text_block) {
-					if (!in_table) {
-						// table will calculate this by itself, no need to calculate here
-						prev_blk_height_ += txt_height_ + padding_;
-						txt_height_ = 0;
-					}
+				add_text_with_attributes((*curr_item), line, attrs, attr_data);
+				is_image = false;
 
+			} else if (tag.key == "text") {
+
+				DBG_GUI_RL << "text: text=" << ((line.size() > 20) ? line.substr(0,20) : line) << "...";
+
+				(*curr_item)["font_size"] = font::SIZE_NORMAL;
+				(*curr_item)["text"] = (*curr_item)["text"].str() + line;
+
+				point text_size = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_));
+				text_size.x -= x_;
+
+				is_text = true;
+
+				if (wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
+					DBG_GUI_RL << "wrap start";
+
+					size_t len = get_split_location((*curr_item)["text"].str(), point(w_ - float_size.x, float_size.y));
+					DBG_GUI_RL << "wrap around area: " << float_size;
+
+					// first part of the text
+					t_string* removed_part = new t_string((*curr_item)["text"].str().substr(len+1));
+					(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
+					(*curr_item)["maximum_width"] = w_ - float_size.x;
+					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + " + std::to_string(0.3*font::get_max_height(font::SIZE_NORMAL)) + ")])";
+
+					// Height update
+					int ah = get_text_size(*curr_item, w_ - float_size.x).y; // no x_?
+					if (tmp_h > ah) {
+						tmp_h = 0;
+					}
+					txt_height_ += ah - tmp_h;
+					prev_blk_height_ += txt_height_ + 0.3*font::get_max_height(font::SIZE_NORMAL);
+					DBG_GUI_RL << "wrap: " << prev_blk_height_ << "," << txt_height_;
+					txt_height_ = 0;
+
+					// New text block
+					x_ = 0;
+					wrap_mode = false;
+
+					// rest of the text
 					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
-					new_text_block = false;
+					tmp_h = get_text_size(*curr_item, w_).y;
+					add_text_with_attribute(*curr_item, *removed_part);
+
+				} else if ((float_size.y > 0) && (text_size.y < float_size.y)) {
+					// text height less than floating image's height, don't split
+					DBG_GUI_RL << "no wrap";
+					(*curr_item)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
 				}
 
-				// }---------- TEXT TAGS -----------{
-				int tmp_h = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_)).y;
-
-				if (is_text && tag.key == "text") {
-					add_text_with_attribute(*curr_item, "\n\n");
-				}
-				is_text = false;
-
-				if(tag.key == "ref") {
-
-					add_link(*curr_item, line, child["dst"], float_size.x);
-					is_image = false;
-
-					DBG_GUI_RL << "ref: dst=" << child["dst"];
-
-				} else if(tag.key == "bold" || tag.key == "b") {
-					add_text_with_attribute(*curr_item, line, "bold");
-					is_image = false;
-
-					DBG_GUI_RL << "bold: text=" << line;
-
-				} else if(tag.key == "italic" || tag.key == "i") {
-
-					add_text_with_attribute(*curr_item, line, "italic");
-					is_image = false;
-
-					DBG_GUI_RL << "italic: text=" << line;
-
-				} else if(tag.key == "underline" || tag.key == "u") {
-
-					add_text_with_attribute(*curr_item, line, "underline");
-					is_image = false;
-
-					DBG_GUI_RL << "u: text=" << line;
-
-				} else if(tag.key == "header" || tag.key == "h") {
-
-					std::vector<std::string> attrs = {"face", "color", "size"};
-					std::vector<std::string> attr_data;
-					attr_data.push_back("serif");
-					attr_data.push_back(font::string_to_color("white").to_hex_string());
-					attr_data.push_back(std::to_string(font::SIZE_TITLE - 2));
-
-					add_text_with_attributes((*curr_item), line, attrs, attr_data);
-
-					is_image = false;
-
-					DBG_GUI_RL << "h: text=" << line;
-
-				} else if(tag.key == "span" || tag.key == "format") {
-
-					std::vector<std::string> attrs;
-					std::vector<std::string> attr_data;
-
-					DBG_GUI_RL << "span/format: text=" << line;
-					DBG_GUI_RL << "attributes:";
-
-					for (const auto& attr : child.attribute_range()) {
-						if (attr.first != "text") {
-							attrs.push_back(attr.first);
-							attr_data.push_back(attr.second);
-							DBG_GUI_RL << attr.first << "=" << attr.second;
-						}
-					}
-
-					add_text_with_attributes((*curr_item), line, attrs, attr_data);
-					is_image = false;
-
-				} else if (tag.key == "text") {
-
-					DBG_GUI_RL << "text: text=" << ((line.size() > 20) ? line.substr(0,20) : line) << "...";
-
-					(*curr_item)["font_size"] = font::SIZE_NORMAL;
-					(*curr_item)["text"] = (*curr_item)["text"].str() + line;
-
-					point text_size = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_));
-					text_size.x -= x_;
-
-					is_text = true;
-
-					if (wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
-						DBG_GUI_RL << "wrap start";
-
-						size_t len = get_split_location((*curr_item)["text"].str(), point(w_ - float_size.x, float_size.y));
-						DBG_GUI_RL << "wrap around area: " << float_size;
-
-						// first part of the text
-						t_string* removed_part = new t_string((*curr_item)["text"].str().substr(len+1));
-						(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
-						(*curr_item)["maximum_width"] = w_ - float_size.x;
-						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + " + std::to_string(0.3*font::get_max_height(font::SIZE_NORMAL)) + ")])";
-
-						// Height update
-						int ah = get_text_size(*curr_item, w_ - float_size.x).y; // no x_?
-						if (tmp_h > ah) {
-							tmp_h = 0;
-						}
-						txt_height_ += ah - tmp_h;
-						prev_blk_height_ += txt_height_ + 0.3*font::get_max_height(font::SIZE_NORMAL);
-						DBG_GUI_RL << "wrap: " << prev_blk_height_ << "," << txt_height_;
-						txt_height_ = 0;
-
-						// New text block
-						x_ = 0;
-						wrap_mode = false;
-
-						// rest of the text
-						curr_item = &(text_dom.add_child("text"));
-						default_text_config(curr_item);
-						tmp_h = get_text_size(*curr_item, w_).y;
-						add_text_with_attribute(*curr_item, *removed_part);
-
-					} else if ((float_size.y > 0) && (text_size.y < float_size.y)) {
-						// text height less than floating image's height, don't split
-						DBG_GUI_RL << "no wrap";
-						(*curr_item)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
-					}
-
-					if (!wrap_mode) {
-						float_size = point(0,0);
-					}
-
-					is_image = false;
+				if (!wrap_mode) {
+					float_size = point(0,0);
 				}
 
-				int ah = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_)).y;
-				// update text size and widget height
-				if (tmp_h > ah) {
-					tmp_h = 0;
-				}
-
-				txt_height_ += ah - tmp_h;
+				is_image = false;
 			}
+
+			int ah = get_text_size(*curr_item, w_ - (x_ == 0 ? float_size.x : x_)).y;
+			// update text size and widget height
+			if (tmp_h > ah) {
+				tmp_h = 0;
+			}
+
+			txt_height_ += ah - tmp_h;
+		}
 
 		if (!is_image && !wrap_mode && img_size.y > 0) {
 			if (!in_table) {
