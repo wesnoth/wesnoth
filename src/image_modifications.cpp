@@ -852,10 +852,10 @@ REGISTER_MOD_PARSER(CS, args)
 	r = utils::from_chars<int>(factors[0]).value_or(0);
 
 	if(s > 1 ) {
-		g = utils::from_chars<int>(factors[0]).value_or(0);
+		g = utils::from_chars<int>(factors[1]).value_or(0);
 	}
 	if(s > 2 ) {
-		b = utils::from_chars<int>(factors[0]).value_or(0);
+		b = utils::from_chars<int>(factors[2]).value_or(0);
 	}
 
 	return std::make_unique<cs_modification>(r, g , b);
