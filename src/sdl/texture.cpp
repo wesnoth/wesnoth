@@ -155,7 +155,7 @@ void texture::set_alpha_mod(uint8_t alpha)
 	}
 }
 
-uint8_t texture::get_alpha_mod()
+uint8_t texture::get_alpha_mod() const
 {
 	if (!texture_) {
 		return 0;
@@ -178,7 +178,7 @@ void texture::set_color_mod(uint8_t r, uint8_t g, uint8_t b)
 	}
 }
 
-color_t texture::get_color_mod()
+color_t texture::get_color_mod() const
 {
 	if (!texture_) {
 		return {0,0,0};
@@ -195,7 +195,7 @@ void texture::set_blend_mode(SDL_BlendMode b)
 	}
 }
 
-SDL_BlendMode texture::get_blend_mode()
+SDL_BlendMode texture::get_blend_mode() const
 {
 	if (!texture_) {
 		return SDL_BLENDMODE_NONE;
