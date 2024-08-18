@@ -229,16 +229,3 @@ void flip_surface(surface& surf);
 void flop_surface(surface& surf);
 
 rect get_non_transparent_portion(const surface& surf);
-
-/**
- * Helper methods for setting/getting a single pixel in an image.
- * Lifted from http://sdl.beuc.net/sdl.wiki/Pixel_Access
- *
- * @param surf           The image to get or receive the pixel from.
- * @param surf_lock      The locked surface to make sure the pointers are valid.
- * @param x              The position in the row of the pixel.
- * @param y              The row of the pixel.
- * @param pixel          The pixel value.
- */
-void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
-uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);

@@ -1344,8 +1344,12 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 	surface dst(dst_w, dst_h);
 	{
 		surface_lock dst_lock(dst);
+		uint32_t* const dst_pixels = dst_lock.pixels();
+
 		const surface src = scale_surface(surf, src_w, src_h);
 		const_surface_lock src_lock(src);
+		const uint32_t* const src_pixels = src_lock.pixels();
+
 		const float scale =   1.f / zoom;
 		const int   max_x = dst_w * zoom;
 		const int   max_y = dst_h * zoom;
@@ -1357,68 +1361,15 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 				const float source_x = (x + min_x)*cosine + (y + min_y)*sine;
 				const float source_y = (y + min_y)*cosine - (x + min_x)*sine;
 				// if the pixel exists on the src surface
-				if (source_x >= 0 && source_x < src_w
-						&& source_y >= 0 && source_y < src_h)
+				if (source_x >= 0 && source_x < src_w && source_y >= 0 && source_y < src_h) {
 					// get it from the src surface and place it on the dst surface
-					put_pixel(dst, dst_lock, x*scale , y*scale, // multiply with scale
-							get_pixel(src, src_lock, source_x, source_y));
+					dst_pixels[int((y * scale)) * dst->w + int((x * scale))] =
+						src_pixels[int(source_y) * src->w + int(source_x)];
+				}
 			}
 	}
 
 	return dst;
-}
-
-void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel)
-{
-	const int bpp = surf->format->BytesPerPixel;
-	/* dst is the address to the pixel we want to set */
-	uint8_t* const dst = reinterpret_cast<uint8_t*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
-	switch (bpp) {
-	case 1:
-		*dst = pixel;
-		break;
-	case 2:
-		*reinterpret_cast<uint16_t*>(dst) = pixel;
-		break;
-	case 3:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-		dst[0] = (pixel >> 16) & 0xff;
-		dst[1] = (pixel >> 8) & 0xff;
-		dst[2] = pixel & 0xff;
-#else
-		dst[0] = pixel & 0xff;
-		dst[1] = (pixel >> 8) & 0xff;
-		dst[2] = (pixel >> 16) & 0xff;
-#endif
-		break;
-	case 4:
-		*reinterpret_cast<uint32_t*>(dst) = pixel;
-		break;
-	default:
-		break;
-	}
-}
-
-uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y)
-{
-	const int bpp = surf->format->BytesPerPixel;
-	/* p is the address to the pixel we want to retrieve */
-	const uint8_t* const src = reinterpret_cast<const uint8_t*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
-	switch (bpp) {
-	case 1:
-		return *src;
-	case 2:
-		return *reinterpret_cast<const uint16_t*>(src);
-	case 3:
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-		return src[0] << 16 | src[1] << 8 | src[2];
-#else
-		return src[0] | src[1] << 8 | src[2] << 16;
-#endif
-	case 4:
-		return *reinterpret_cast<const uint32_t*>(src);
-	}
-	return 0;
 }
 
 // Rotates a surface 180 degrees.
