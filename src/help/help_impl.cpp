@@ -1503,6 +1503,10 @@ static config parse_text_until(std::string::const_iterator& beg, std::string::co
 		}
 		saw_newline = false;
 	}
+	// If the span ended in a newline, preserve it
+	if(saw_newline) {
+		s << '\n';
+	}
 	res.add_child("text", config("text", s.str()));
 	assert(beg == end || *beg == close);
 	return res;

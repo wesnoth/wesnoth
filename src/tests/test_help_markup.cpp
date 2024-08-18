@@ -486,6 +486,96 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("img", 1)["src"], "help/orb-green.png");
 	BOOST_CHECK(output.mandatory_child("img", 1).has_attribute("align"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("img", 1)["align"], "there");
+
+	// Two tags with a newline between them should have an intervening text span containing exactly that.
+	output = help::parse_text("<link dst=foo>First</link>\n<link dst=bar>Second</link>");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
+	BOOST_CHECK(output.has_child("text"));
+	BOOST_CHECK_EQUAL(output.child_count("link"), 2);
+	BOOST_CHECK_EQUAL(output.find_total_first_of("text"), 1);
+	BOOST_CHECK(output.mandatory_child("link").has_attribute("dst"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link")["dst"], "foo");
+	BOOST_CHECK(output.mandatory_child("link").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link")["text"], "First");
+	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\n");
+	BOOST_CHECK(output.mandatory_child("link", 1).has_attribute("dst"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link", 1)["dst"], "bar");
+	BOOST_CHECK(output.mandatory_child("link", 1).has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link", 1)["text"], "Second");
+
+	// Tag at the end of a paragraph produces an empty text span.
+	output = help::parse_text("See also: <link dst=details>Details</link>\n\nAnd here's an extra paragraph!");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 4);
+	BOOST_CHECK(output.has_child("link"));
+	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
+	BOOST_CHECK_EQUAL(output.find_total_first_of("link"), 1);
+	BOOST_CHECK(output.mandatory_child("link").has_attribute("dst"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link")["dst"], "details");
+	BOOST_CHECK(output.mandatory_child("link").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link")["text"], "Details");
+	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "See also: ");
+	BOOST_CHECK((output.mandatory_child("text", 1).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "");
+	BOOST_CHECK((output.mandatory_child("text", 2).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "And here's an extra paragraph!");
+
+	// Tag at the beginning of a paragraph produces an empty text span.
+	output = help::parse_text("This is some information.\n\n<img src='help/orb-red.png'/>And some more info!");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 4);
+	BOOST_CHECK(output.has_child("img"));
+	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
+	BOOST_CHECK_EQUAL(output.find_total_first_of("img"), 2);
+	BOOST_CHECK(output.mandatory_child("img").has_attribute("src"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("img")["src"], "help/orb-red.png");
+	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "This is some information.");
+	BOOST_CHECK((output.mandatory_child("text", 1).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "");
+	BOOST_CHECK((output.mandatory_child("text", 2).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "And some more info!");
+
+	// Paragraph break between two tags produces two empty text spans.
+	output = help::parse_text("<link dst=toc>Table of Contents</link>\n\n<img src='fancy-bullet.png'/>First...");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 5);
+	BOOST_CHECK(output.has_child("link"));
+	BOOST_CHECK(output.has_child("img"));
+	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
+	BOOST_CHECK_EQUAL(output.find_total_first_of("link"), 0);
+	BOOST_CHECK_EQUAL(output.find_total_first_of("img"), 3);
+	BOOST_CHECK(output.mandatory_child("link").has_attribute("dst"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link")["dst"], "toc");
+	BOOST_CHECK(output.mandatory_child("link").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("link")["text"], "Table of Contents");
+	BOOST_CHECK(output.mandatory_child("img").has_attribute("src"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("img")["src"], "fancy-bullet.png");
+	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "");
+	BOOST_CHECK((output.mandatory_child("text", 1).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "");
+	BOOST_CHECK((output.mandatory_child("text", 2).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "First...");
+
+	// Three consecutive newlines produces a paragraph beginning with a newline.
+	output = help::parse_text("Let's have...\n\n\n...three consecutive newlines!");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 2);
+	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
+	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "Let's have...");
+	BOOST_CHECK((output.mandatory_child("text", 1).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "\n...three consecutive newlines!");
+
+	// Four consecutive newlines produces an empty paragraph.
+	output = help::parse_text("Let's have...\n\n\n\n...four consecutive newlines!");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
+	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
+	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "Let's have...");
+	BOOST_CHECK((output.mandatory_child("text", 1).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "");
+	BOOST_CHECK((output.mandatory_child("text", 2).has_attribute("text")));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "...four consecutive newlines!");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
