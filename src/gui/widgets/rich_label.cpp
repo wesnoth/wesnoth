@@ -255,20 +255,9 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 size_t rich_label::get_split_location(std::string text, const point& pos) {
 	font::get_text_renderer().set_maximum_width(pos.x);
 	font::get_text_renderer().set_text(text, true);
-	point wrap_position = get_column_line(pos);
 
-	size_t len = 0;
-	for (int i = 0; i < wrap_position.y; i++) {
-		PangoLayoutLine* line = font::get_text_renderer().get_line(i);
-		if (line != nullptr) {
-			len += line->length;
-		} else {
-			break;
-		}
-	}
-	len += wrap_position.x;
-	// size() and utf::size() can return different values
-	len = len > (text.size()-1) ? text.size()-1 : len;
+	size_t len = get_offset_from_xy(pos);
+	len = (len > text.size()-1) ? text.size()-1 : len;
 
 	// break only at word boundary
 	char c;
