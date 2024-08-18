@@ -1637,7 +1637,6 @@ void display::draw_minimap()
 	}
 
 	if(!minimap_renderer_) {
-		ERR_DP << "trying to draw null minimap";
 		return;
 	}
 
@@ -2490,10 +2489,6 @@ void display::render()
 	const rect& area = minimap_area();
 	if(!area.empty() && !minimap_renderer_) {
 		recalculate_minimap();
-		if(!minimap_renderer_) {
-			ERR_DP << "error creating minimap";
-			return;
-		}
 	}
 }
 
