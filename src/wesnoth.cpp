@@ -996,9 +996,6 @@ int main(int argc, char** argv)
 	} catch(const config::error& e) {
 		PLAIN_LOG << e.message;
 		error_exit(1);
-	} catch(const gui::button::error&) {
-		PLAIN_LOG << "Could not create button: Image could not be found";
-		error_exit(1);
 	} catch(const video::quit&) {
 		// just means the game should quit
 	} catch(const return_to_play_side_exception&) {
