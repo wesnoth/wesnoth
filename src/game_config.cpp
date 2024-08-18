@@ -477,11 +477,8 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Ggenerate palette of same name;
-		std::vector<color_t> tp = palette(team_rgb_range[id]);
-		if(!tp.empty()) {
-			team_rgb_colors.emplace(id, tp);
-		}
+		// Generate palette of same name;
+		team_rgb_colors.emplace(id, palette(team_rgb_range[id]));
 
 		if(build_defaults && teamC["default"].to_bool()) {
 			default_colors.push_back(*a1);
