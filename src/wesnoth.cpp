@@ -527,9 +527,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
-		// Return an error status other than -1, because in our caller -1 means no error
-		return -2;
+		std::cerr << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
+		return 2;
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
@@ -967,11 +966,11 @@ int main(int argc, char** argv)
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
 		// logging hasn't been initialized by this point
+		std::cerr << "Error in command line: " << e.what() << std::endl;
 		std::string error = "Error parsing command line arguments: ";
 		error += e.what();
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", error.c_str(), nullptr);
-		std::cerr << "Error in command line: " << e.what();
-		error_exit(1);
+		error_exit(2);
 	} catch(const video::error& e) {
 		PLAIN_LOG << "Video system error: " << e.what();
 		error_exit(1);
