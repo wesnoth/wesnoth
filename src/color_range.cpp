@@ -57,17 +57,17 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, const Cont
 			float old_ratio = static_cast<float>(old_avg) / reference_avg;
 
 			clist.emplace_back(
-				std::min<uint8_t>(255u, old_ratio * mid_c.r + (1 - old_ratio) * min_c.r),
-				std::min<uint8_t>(255u, old_ratio * mid_c.g + (1 - old_ratio) * min_c.g),
-				std::min<uint8_t>(255u, old_ratio * mid_c.b + (1 - old_ratio) * min_c.b)
+				std::min<uint32_t>(255u, old_ratio * mid_c.r + (1 - old_ratio) * min_c.r),
+				std::min<uint32_t>(255u, old_ratio * mid_c.g + (1 - old_ratio) * min_c.g),
+				std::min<uint32_t>(255u, old_ratio * mid_c.b + (1 - old_ratio) * min_c.b)
 			);
 		} else if(reference_avg != 255) {
 			float old_ratio = (255.0f - static_cast<float>(old_avg)) / (255.0f - reference_avg);
 
 			clist.emplace_back(
-				std::min<uint8_t>(255u, old_ratio * mid_c.r + (1 - old_ratio) * max_c.r),
-				std::min<uint8_t>(255u, old_ratio * mid_c.g + (1 - old_ratio) * max_c.r),
-				std::min<uint8_t>(255u, old_ratio * mid_c.b + (1 - old_ratio) * max_c.r)
+				std::min<uint32_t>(255u, old_ratio * mid_c.r + (1 - old_ratio) * max_c.r),
+				std::min<uint32_t>(255u, old_ratio * mid_c.g + (1 - old_ratio) * max_c.r),
+				std::min<uint32_t>(255u, old_ratio * mid_c.b + (1 - old_ratio) * max_c.r)
 			);
 		} else {
 			// Should never get here. Would imply old_avg > reference_avg = 255
