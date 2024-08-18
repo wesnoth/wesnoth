@@ -657,6 +657,7 @@ draw::render_target_setter::~render_target_setter()
 	}
 	video::force_render_target(target_);
 	SDL_RenderSetViewport(renderer(), &viewport_);
+	if(clip_ == sdl::empty_rect) return;
 	SDL_RenderSetClipRect(renderer(), &clip_);
 }
 
