@@ -66,8 +66,8 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, const Cont
 
 			clist.emplace_back(
 				std::min<uint32_t>(255u, old_ratio * mid_c.r + (1 - old_ratio) * max_c.r),
-				std::min<uint32_t>(255u, old_ratio * mid_c.g + (1 - old_ratio) * max_c.r),
-				std::min<uint32_t>(255u, old_ratio * mid_c.b + (1 - old_ratio) * max_c.r)
+				std::min<uint32_t>(255u, old_ratio * mid_c.g + (1 - old_ratio) * max_c.g),
+				std::min<uint32_t>(255u, old_ratio * mid_c.b + (1 - old_ratio) * max_c.b)
 			);
 		} else {
 			// Should never get here. Would imply old_avg > reference_avg = 255
