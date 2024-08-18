@@ -224,6 +224,8 @@ public:
 	 */
 	point get_column_line(const point& position) const;
 
+	int xy_to_index(const point& position) const;
+
 	/**
 	 * Retrieves a list of strings with contents for each rendered line.
 	 *

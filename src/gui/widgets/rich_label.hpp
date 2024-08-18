@@ -238,9 +238,9 @@ private:
 
 	std::function<void(std::string)> link_handler_;
 
-	point get_column_line(const point& position) const
+	int get_offset_from_xy(const point& position) const
 	{
-		return font::get_text_renderer().get_column_line(position);
+		return font::get_text_renderer().xy_to_index(position);
 	}
 
 	point get_xy_from_offset(const unsigned offset) const

@@ -317,6 +317,18 @@ point pango_text::get_column_line(const point& position) const
 	}
 }
 
+int pango_text::xy_to_index(const point& position) const
+{
+	this->recalculate();
+
+	// Get the index of the character.
+	int index, trailing;
+	pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE,
+		position.y * PANGO_SCALE, &index, &trailing);
+
+	return index;
+}
+
 void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
 {
 	attribute_start_offset_ = start_offset;
