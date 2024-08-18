@@ -384,7 +384,8 @@ static surface load_image_file(const image::locator& loc)
 
 static surface load_image_sub_file(const image::locator& loc)
 {
-	surface surf = get_surface(loc.get_filename(), UNSCALED);
+	// Create a new surface in-memory on which to apply the modifications
+	surface surf = get_surface(loc.get_filename(), UNSCALED).clone();
 	if(surf == nullptr) {
 		return nullptr;
 	}
@@ -395,7 +396,7 @@ static surface load_image_sub_file(const image::locator& loc)
 		modification* mod = mods.top();
 
 		try {
-			surf = (*mod)(surf);
+			std::invoke(*mod, surf);
 		} catch(const image::modification::imod_exception& e) {
 			std::ostringstream ss;
 			ss << "\n";
@@ -428,9 +429,9 @@ static surface load_image_sub_file(const image::locator& loc)
 		}
 
 		// cut and hex mask, but also check and cache if empty result
-		surface cut(cut_surface(surf, srcrect));
+		surface cut = cut_surface(surf, srcrect);
 		bool is_empty = false;
-		surf = mask_surface(cut, get_hexmask(), &is_empty);
+		mask_surface(cut, get_hexmask(), &is_empty);
 
 		// discard empty images to free memory
 		if(is_empty) {
@@ -438,6 +439,8 @@ static surface load_image_sub_file(const image::locator& loc)
 			// and it filters them out.
 			// A safer and more general way would be to keep only one copy of it
 			surf = nullptr;
+		} else {
+			surf = cut;
 		}
 
 		is_empty_hex_.add_to_cache(loc, is_empty);
@@ -499,7 +502,8 @@ static surface apply_light(surface surf, const light_string& ls)
 		// if no lightmap (first char = -1) then we need the initial value
 		//(before the halving done for lightmap)
 		int m = ls[0] == -1 ? 2 : 1;
-		return adjust_surface_color(surf, ls[1] * m, ls[2] * m, ls[3] * m);
+		adjust_surface_color(surf, ls[1] * m, ls[2] * m, ls[3] * m);
+		return surf;
 	}
 
 	// check if the lightmap is already cached or need to be generated
@@ -543,7 +547,8 @@ static surface apply_light(surface surf, const light_string& ls)
 	}
 
 	// apply the final lightmap
-	return light_surface(surf, lightmap);
+	light_surface(surf, lightmap);
+	return surf;
 }
 
 static surface load_from_disk(const locator& loc)
@@ -586,8 +591,8 @@ void set_color_adjustment(int r, int g, int b)
 
 static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 {
-	surface image(get_surface(i_locator, UNSCALED, skip_cache));
-	surface mask(get_hexmask());
+	surface image = get_surface(i_locator, UNSCALED, skip_cache).clone();
+	surface mask = get_hexmask();
 	// Ensure the image is the correct size by cropping and/or centering.
 	// TODO: this should probably be a function of sdl/utils
 	if(image && (image->w != mask->w || image->h != mask->h)) {
@@ -618,15 +623,16 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 	}
 	// hex cut tiles, also check and cache if empty result
 	bool is_empty = false;
-	surface res = mask_surface(image, mask, &is_empty, i_locator.get_filename());
+	mask_surface(image, mask, &is_empty, i_locator.get_filename());
 	is_empty_hex_.add_to_cache(i_locator, is_empty);
-	return res;
+	return image;
 }
 
 static surface get_tod_colored(const locator& i_locator, bool skip_cache = false)
 {
-	surface img = get_surface(i_locator, HEXED, skip_cache);
-	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
+	surface img = get_surface(i_locator, HEXED, skip_cache).clone();
+	adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
+	return img;
 }
 
 /** translate type to a simpler one when possible */
@@ -727,7 +733,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	DBG_IMG << "lit surface cache miss: " << i_locator;
 
 	// not cached yet, generate it
-	surface res = apply_light(get_surface(i_locator, HEXED), ls);
+	surface res = apply_light(get_surface(i_locator, HEXED).clone(), ls);
 
 	// record the lighted surface in the corresponding variants cache
 	lvar[ls] = res;
@@ -790,7 +796,7 @@ bool is_in_hex(const locator& i_locator)
 bool is_empty_hex(const locator& i_locator)
 {
 	if(!is_empty_hex_.in_cache(i_locator)) {
-		const surface surf = get_surface(i_locator, HEXED);
+		surface surf = get_surface(i_locator, HEXED);
 		// emptiness of terrain image is checked during hex cut
 		// so, maybe in cache now, let's recheck
 		if(!is_empty_hex_.in_cache(i_locator)) {
