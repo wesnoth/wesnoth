@@ -94,9 +94,6 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(const surface &surf, int w, int h)
 {
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
-
 	if(surf == nullptr)
 		return nullptr;
 
@@ -223,9 +220,6 @@ surface scale_surface(const surface &surf, int w, int h)
 
 surface scale_surface_legacy(const surface &surf, int w, int h)
 {
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT==0);
-
 	if(surf == nullptr)
 		return nullptr;
 
@@ -359,9 +353,6 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 
 surface scale_surface_sharp(const surface& surf, int w, int h)
 {
-	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
-	assert(SDL_ALPHA_TRANSPARENT == 0);
-
 	if(surf == nullptr) {
 		return nullptr;
 	}
