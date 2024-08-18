@@ -272,12 +272,12 @@ void prefs::load_preferences()
 			}
 		}
 
-		for(const auto& child : synced_prefs.all_children_range()) {
+		for(const auto child : synced_prefs.all_children_range()) {
 			if(std::find(synced_children_.begin(), synced_children_.end(), child.key) == synced_children_.end()) {
 				unknown_synced_children_.insert(child.key);
 			}
 		}
-		for(const auto& child : unsynced_prefs.all_children_range()) {
+		for(const auto child : unsynced_prefs.all_children_range()) {
 			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), child.key) == unsynced_children_.end()) {
 				unknown_unsynced_children_.insert(child.key);
 			}
