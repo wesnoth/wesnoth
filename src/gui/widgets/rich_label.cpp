@@ -259,7 +259,12 @@ size_t rich_label::get_split_location(std::string text, const point& pos) {
 
 	size_t len = 0;
 	for (int i = 0; i < wrap_position.y; i++) {
-		len += utf8::size(font::get_text_renderer().get_lines()[i]);
+		PangoLayoutLine* line = font::get_text_renderer().get_line(i);
+		if (line != nullptr) {
+			len += line->length;
+		} else {
+			break;
+		}
 	}
 	len += wrap_position.x;
 	// size() and utf::size() can return different values
