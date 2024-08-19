@@ -364,7 +364,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 			// setup column width
 			unsigned columns = child["col"].to_int();
 			unsigned width = child["width"].to_int();
-			width = width > 0 ? width : w_;
+			width = (width > 0) ? width : w_;
 			col_width = width/columns;
 
 			// start on a new line
@@ -378,7 +378,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 			new_text_block = true;
 			is_image = false;
 
-			DBG_GUI_RL << "start table : " << "col=" << columns;
+			DBG_GUI_RL << "start table : " << "col=" << columns << " width=" << width;
 			DBG_GUI_RL << "col_width : " << col_width;
 
 		} else if(tag.key == "jump") {
@@ -465,12 +465,13 @@ config rich_label::get_parsed_text(const config& parsed_text)
 				new_text_block = false;
 			}
 
-			DBG_GUI_RL << "end table: " << max_row_height;
-			col_width = 0;
 			in_table = false;
 			is_image = false;
 			is_text = false;
+
+			col_width = 0;
 			row_y = 0;
+			max_row_height = 0;
 
 		} else {
 			std::string line = child["text"];
