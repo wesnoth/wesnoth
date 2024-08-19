@@ -317,7 +317,7 @@ public:
 	pango_text& set_link_color(const color_t& color);
 
 	pango_text& set_add_outline(bool do_add);
-	
+
 	// The following add attribute methods are thin wrappers around the corresponding pango
 	// add attribute methods. For more details, refer to the Pango docs.
 
@@ -329,7 +329,7 @@ public:
  	 * @param weight              Pango font weight
 	 */
 	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
-	
+
 	/**
 	 * Add pango font style attribute to a specific portion of text, used to set italic/oblique text
 	 * @param start_offset        Byte index of the cursor where font style change starts
@@ -337,7 +337,7 @@ public:
  	 * @param style               Pango font style (normal/italic/oblique)
 	 */
 	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
-	
+
 	/**
 	 * Add pango underline attribute to a specific portion of text. This adds an underline to the
 	 * corresponding part of the text.
@@ -346,7 +346,7 @@ public:
  	 * @param underline           Pango underline style
 	 */
 	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
-	
+
 	/**
 	 * Add pango fg color attribute to a specific portion of text. This changes the foreground
 	 * color of the corresponding part of the text.
@@ -355,7 +355,7 @@ public:
  	 * @param color               Foreground color
 	 */
 	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-	
+
 	/**
 	 * Mark a specific portion of text for highlighting. Used for selection box.
 	 * BGColor is set in set_text(), this just marks the area to be colored.
@@ -365,7 +365,7 @@ public:
  	 * @param color               Highlight/Background color
 	 */
 	void add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-	
+
 	/**
 	 * Add pango font size attribute to a specific portion of text. This changes the font size
 	 * of the corresponding part of the text.
@@ -374,7 +374,7 @@ public:
  	 * @param size                Font size
 	 */
 	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
-	
+
 	/**
 	 * Add pango font family attribute to a specific portion of text. This changes
 	 * the font family of the corresponding part of the text.
