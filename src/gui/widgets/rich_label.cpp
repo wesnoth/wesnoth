@@ -546,6 +546,20 @@ config rich_label::get_parsed_text(const config& parsed_text)
 
 				DBG_GUI_RL << "h: text=" << line;
 
+			} else if(tag.key == "character_entity") {
+				line = "&" + child["name"].str() + ";";
+
+				std::vector<std::string> attrs = {"face", "color"};
+				std::vector<std::string> attr_data;
+				attr_data.push_back("monospace");
+				attr_data.push_back(font::string_to_color("red").to_hex_string());
+
+				add_text_with_attributes((*curr_item), line, attrs, attr_data);
+
+				is_image = false;
+
+				DBG_GUI_RL << "h: text=" << line;
+
 			} else if(tag.key == "span" || tag.key == "format") {
 
 				std::vector<std::string> attrs;
