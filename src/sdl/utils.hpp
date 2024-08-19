@@ -36,18 +36,6 @@ version_info get_version();
  */
 bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
 
-/**
- * Fill a rectangle on a given surface. Alias for SDL_FillRect.
- *
- * @param dst                     The surface to operate on.
- * @param dst_rect                The rectangle to fill.
- * @param color                   Color of the rectangle.
- */
-inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const uint32_t color)
-{
-	SDL_FillRect(dst, dst_rect, color);
-}
-
 } // namespace sdl
 
 

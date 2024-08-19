@@ -603,9 +603,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		// if the image is too large in either dimension, crop it.
 		if(image->w > mask->w || image->h >= mask->h) {
 			// fill the crop surface with transparency
-			sdl::fill_surface_rect(fit, nullptr,
-				SDL_MapRGBA(fit->format, 0, 0, 0, 0)
-			);
+			SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
 			// crop the input image to hexmask dimensions
 			int cutx = std::max(0, image->w - mask->w) / 2;
 			int cuty = std::max(0, image->h - mask->h) / 2;
