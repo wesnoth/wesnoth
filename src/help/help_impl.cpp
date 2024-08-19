@@ -624,7 +624,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 		}
 
 		std::stringstream text;
-		text << "<header>text='" << _("Era:") << " " << era["name"] << "'</header>" << "\n";
+		text << "<header>" << _("Era:") << " " << era["name"] << "</header>" << "\n";
 		text << "\n";
 		const config::attribute_value& description = era["description"];
 		if (!description.empty()) {
@@ -632,7 +632,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 			text << "\n";
 		}
 
-		text << "<header>text='" << _("Factions") << "'</header>" << "\n";
+		text << "<header>" << _("Factions") << "</header>" << "\n";
 
 		std::sort(faction_links.begin(), faction_links.end());
 		for (const std::string &link : faction_links) {
