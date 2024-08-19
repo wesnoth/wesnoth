@@ -143,7 +143,7 @@ std::string terrain_topic_generator::operator()() const {
 			<< ")~BLIT("<< "terrain/" << type_.icon_image() << "_30.png)" << "'</img>";
 
 	if (!type_.editor_image().empty())
-		ss << "<img>src='" << type_.editor_image() << "'</img>";
+		ss << "<img>src='" << type_.editor_image() << "'</img><br/>";
 
 	if (!type_.help_topic_text().empty())
 		ss << "\n" << type_.help_topic_text().str() << "\n";
