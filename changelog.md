@@ -5,6 +5,7 @@
    * Under the Burnings Suns
      * S04: added sprite for the Cold Dagger item (PR #9189)
  ### Editor
+   * Added Show Tool Information toggle option in the menus and toolbar to allow hiding the informational tooltip on the edge of the screen that shows the current editor tool's usage and palette information
  ### Multiplayer
  ### Lua API
  ### Packaging
@@ -14,7 +15,10 @@
  ### Units
    * New cat units: Jumpcat, Forest Lion, and zombie/soulless cat
  ### User interface
+   * Added a few more images that can be shown on the new titlescreen
  ### WML Engine
+   * Fix crash when weapon specials' filters lead to infinite recursion (issue #8940)
+   * Updated xBRZ implementation to v1.8
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.2
