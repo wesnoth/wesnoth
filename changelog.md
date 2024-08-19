@@ -1,15 +1,9 @@
-## Version 1.19.2+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.19.3
  ### Campaigns
    * Under the Burnings Suns
      * S04: added sprite for the Cold Dagger item (PR #9189)
  ### Editor
    * Added Show Tool Information toggle option in the menus and toolbar to allow hiding the informational tooltip on the edge of the screen that shows the current editor tool's usage and palette information
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French
  ### Units
@@ -19,7 +13,6 @@
  ### WML Engine
    * Fix crash when weapon specials' filters lead to infinite recursion (issue #8940)
    * Updated xBRZ implementation to v1.8
- ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.2
  ### Campaigns
