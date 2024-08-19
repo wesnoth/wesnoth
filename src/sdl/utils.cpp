@@ -414,9 +414,9 @@ void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 				g = (*beg) >> 8;
 				b = (*beg) >> 0;
 
-				r = std::max<int>(0,std::min<int>(255,static_cast<int>(r)+red));
-				g = std::max<int>(0,std::min<int>(255,static_cast<int>(g)+green));
-				b = std::max<int>(0,std::min<int>(255,static_cast<int>(b)+blue));
+				r = std::clamp(static_cast<int>(r) + red, 0, 255);
+				g = std::clamp(static_cast<int>(g) + green, 0, 255);
+				b = std::clamp(static_cast<int>(b) + blue, 0, 255);
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -793,7 +793,7 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = uint8_t(std::max<int>(0,std::min<int>(255,static_cast<int>(alpha) + amount)));
+				alpha = uint8_t(std::clamp(static_cast<int>(alpha) + amount, 0, 255));
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
@@ -946,9 +946,9 @@ void light_surface(surface& nsurf, const surface &lightmap)
 				int dg = (static_cast<int>(lg) - 128) * 2;
 				int db = (static_cast<int>(lb) - 128) * 2;
 				//note that r + dr will promote r to int (needed to avoid uint8_t math)
-				r = std::max<int>(0,std::min<int>(255, r + dr));
-				g = std::max<int>(0,std::min<int>(255, g + dg));
-				b = std::max<int>(0,std::min<int>(255, b + db));
+				r = std::clamp(r + dr, 0, 255);
+				g = std::clamp(g + dg, 0, 255);
+				b = std::clamp(b + db, 0, 255);
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
